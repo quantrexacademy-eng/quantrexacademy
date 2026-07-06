@@ -51,5 +51,17 @@ service cloud.firestore {
       allow read: if isSignedIn();
       allow write: if false;
     }
+
+    // Payment records (user reads own, server writes via admin SDK)
+    match /payments/{paymentId} {
+      allow read: if isSignedIn() && resource.data.uid == request.auth.uid;
+      allow write: if false;
+    }
+
+    // Subscription status
+    match /subscriptions/{userId} {
+      allow read: if isOwner(userId);
+      allow write: if false;
+    }
   }
 }

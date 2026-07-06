@@ -22,11 +22,14 @@ echo     - quantrexacademy.vercel.app
 echo     - localhost
 start https://console.firebase.google.com/project/quantrexacademy-5da32/authentication/settings
 echo.
-echo [4] Deploy Firestore Rules
-firebase use quantrexacademy-5da32
-firebase deploy --only firestore:rules,firestore:indexes --non-interactive
+echo [4] Enable Firebase Storage
+start https://console.firebase.google.com/project/quantrexacademy-5da32/storage
 echo.
-echo [5] Create test user (optional)
+echo [5] Deploy Firestore + Storage Rules
+firebase use quantrexacademy-5da32
+firebase deploy --only firestore:rules,firestore:indexes,storage --non-interactive
+echo.
+echo [6] Create test user (optional)
 echo     Email: quantrexacademy@gmail.com
 echo     Password: function13@
 start https://console.firebase.google.com/project/quantrexacademy-5da32/authentication/users

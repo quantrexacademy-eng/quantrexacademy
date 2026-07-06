@@ -66,11 +66,20 @@ Enable in Firebase Console (one-time):
   4. Login at: https://quantrexacademy-lemon.vercel.app/login
 
 ================================================================================
-BEST STACK COMBINATION
+BEST STACK COMBINATION (PRODUCTION)
 ================================================================================
-  GitHub  --> Code version control + push updates
-  Vercel  --> Website hosting (fast, free SSL, auto-deploy)
-  Firebase --> Login + user progress database (Firestore)
+  Component          Provider              Status
+  -------------------------------------------------------------------------
+  Frontend (Website) Vercel                LIVE - quantrexacademy-lemon.vercel.app
+  Source Code        GitHub                LIVE - quantrexacademy-eng/quantrexacademy
+  Backend            Firebase              LIVE - Auth + APIs
+  Database           Firebase Firestore    LIVE - user progress synced
+  File Storage       Firebase Storage      READY - storage.rules deployed
+  Videos             Bunny.net / Cloudflare PENDING - add CDN keys in stack-config.js
+  Payment            Cashfree              PENDING - add appId in stack-config.js
+  Domain             Cloudflare            PENDING - point DNS to Vercel
+
+  Config file: stack-config.js (all providers in one place)
 
 ================================================================================
 QUICK DEPLOY (ONE CLICK)
