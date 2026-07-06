@@ -3,7 +3,7 @@ const QuantrexTheme = (() => {
   const KEY = "quantrex_theme";
 
   function get() {
-    return localStorage.getItem(KEY) || "light";
+    return localStorage.getItem(KEY) || "dark";
   }
 
   function updateButtons(m) {
@@ -34,8 +34,7 @@ const QuantrexTheme = (() => {
   function init() {
     const saved = localStorage.getItem(KEY);
     if (saved) apply(saved);
-    else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) apply("dark");
-    else apply("light");
+    else apply("dark");
     const btn = document.getElementById("themeToggle");
     if (btn) btn.onclick = toggle;
     const side = document.getElementById("sidebarThemeToggle");

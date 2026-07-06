@@ -211,6 +211,15 @@ function cpyqbYearCounts(qs) {
   return Object.entries(counts).sort((a, b) => Number(b[0]) - Number(a[0])).slice(0, 2);
 }
 
+function cpyqbYearArrow(counts, idx) {
+  if (!counts || idx >= counts.length - 1) return "";
+  const curr = counts[idx][1];
+  const older = counts[idx + 1][1];
+  if (curr > older) return '<span class="cpyqb-yr-up">↑</span>';
+  if (curr < older) return '<span class="cpyqb-yr-down">↓</span>';
+  return "";
+}
+
 function cpyqbChapterStats(examSlug, subject, chapterName, total) {
   const solvedSet = new Set(STATE.solved.map(s => s.id));
   const qs = QUESTIONS.filter(q => q._bank === examSlug && q.subject === subject && q.chapter === chapterName);
@@ -347,6 +356,28 @@ async function viewCpyqb(payload) {
   const nav = await fetchNav("cpyqb");
   const exams = nav.filter(e => e.category === STATE.exam);
 
+  if (!p.forceExamList && (!p.step || p.step === "exams") && !p.exam) {
+    const slug = (typeof MarksShell !== "undefined" && localStorage.getItem(MarksShell.EXAM_KEY))
+      || (typeof PRIMARY_BANK !== "undefined" && PRIMARY_BANK[STATE.exam])
+      || "jee_main";
+    const autoExam = exams.find(e => e.slug === slug) || exams[0];
+    if (autoExam) {
+      const subj = (typeof MarksShell !== "undefined" && localStorage.getItem(MarksShell.SUBJ_KEY))
+        || (autoExam.subjects[0] && autoExam.subjects[0].name);
+      if (subj) return viewCpyqb({ ...p, step: "chapters", exam: autoExam.slug, subject: subj });
+    }
+  }
+
+  if (!p.forceExamList && p.step === "subjects" && p.exam && !p.subject) {
+    const saved = typeof MarksShell !== "undefined" ? localStorage.getItem(MarksShell.SUBJ_KEY) : null;
+    if (saved) {
+      const ex = exams.find(e => e.slug === p.exam);
+      if (ex && ex.subjects.some(s => s.name === saved)) {
+        return viewCpyqb({ ...p, step: "chapters", subject: saved });
+      }
+    }
+  }
+
   if (p.step === "exams" || !p.exam) {
     _lastListFn = () => ({ step: "exams" });
     const cards = exams.map(e => `
@@ -439,7 +470,7 @@ async function viewCpyqb(payload) {
     const renderChRow = (c, ctCh, stats, isContinue) => {
       const displayName = (ctCh && ctCh.shortName) || c.name;
       const yearHtml = stats.yearCounts.length
-        ? stats.yearCounts.map(([y, n]) => `<span class="cpyqb-yr"><b>${y}:</b> ${n} Qs <span class="cpyqb-yr-up">↑</span></span>`).join("")
+        ? stats.yearCounts.map(([y, n], i) => `<span class="cpyqb-yr"><b>${y}:</b> ${n} Qs ${cpyqbYearArrow(stats.yearCounts, i)}</span>`).join("")
         : "";
       const continueBtn = isContinue ? `<span class="cpyqb-continue-btn">Continue Solving</span>` : "";
       return `<div class="cpyqb-ch-row${isContinue ? " is-continue" : ""}" ${mg("cpyqb", { step: "chapterHub", exam: p.exam, subject: p.subject, chapter: c.name })}>
@@ -460,15 +491,21 @@ async function viewCpyqb(payload) {
 
     const footTabs = `<div class="cpyqb-foot-tabs">
       <button type="button" class="cpyqb-ftab" onclick="go('notebook')">${p.subject} Bookmarks</button>
-      <button type="button" class="cpyqb-ftab on" onclick="showToast('📊 ${p.subject} Analysis coming soon')">${p.subject} Analysis</button>
+      <button type="button" class="cpyqb-ftab on" onclick="go('analytics')">${p.subject} Analysis</button>
     </div>`;
 
-    return `<div class="cpyqb-marks-page">
+    const pageHtml = `<div class="cpyqb-marks-page">
       <div class="cpyqb-marks-head">
         <h1>${p.subject} PYQs</h1>
         <p>Chapter-wise Collection of ${p.subject} PYQs</p>
       </div>
       ${filterBar}<div class="cpyqb-ch-list">${cards}</div>${footTabs}</div>`;
+    if (typeof MarksShell !== "undefined") {
+      await MarksShell.enrichExamMeta(exam);
+      MarksShell.saveContext(p.exam, p.subject);
+      return MarksShell.splitLayout(exam, p.subject, pageHtml);
+    }
+    return pageHtml;
   }
 
   const chMetaNav = subj.chapters.find(c => c.name === p.chapter);
@@ -873,15 +910,116 @@ async function viewFormulaMarks(payload) {
 }
 
 // ============ QUANTREX TESTS (MARKS web exact) ============
+const TEST_SERIES_META = {
+  jeeboth: {
+    id: "jeeboth", tone: "jeeboth", logo: "JEE MAIN<br>JEE ADV",
+    title: "JEE Mains + Advanced 2027 Test Series",
+    tagline: "Complete preparation for both JEE Main & Advanced",
+    tests: 48, fullMocks: 12, partTests: 36, price: "₹2,999",
+    features: ["Full syllabus coverage", "NTA pattern mocks", "Detailed solutions", "All India rank", "Performance analytics"]
+  },
+  jeemain: {
+    id: "jeemain", tone: "jeemain", logo: "JEE MAIN",
+    title: "JEE Mains 2027 Test Series",
+    tagline: "Focused JEE Main preparation with NTA-style papers",
+    tests: 30, fullMocks: 10, partTests: 20, price: "₹1,499",
+    features: ["Chapter-wise part tests", "Full mock papers", "Shift-wise PYQ style", "Rank predictor", "Weak area analysis"]
+  },
+  jeeadv: {
+    id: "jeeadv", tone: "jeeadv", logo: "JEE ADV",
+    title: "JEE Advanced 2027 Test Series",
+    tagline: "Advanced-level papers for IIT aspirants",
+    tests: 24, fullMocks: 8, partTests: 16, price: "₹1,999",
+    features: ["IIT pattern papers", "Multi-correct & integer", "Advanced difficulty", "Video solutions", "Peer comparison"]
+  },
+  neet: {
+    id: "neet", tone: "neet", logo: "NEET",
+    title: "NEET 2027 Test Series",
+    tagline: "India's most trusted NEET test series",
+    tests: 40, fullMocks: 15, partTests: 25, price: "₹1,999",
+    features: ["NCERT aligned", "Full syllabus mocks", "Biology heavy analysis", "All India rank", "Previous year trends"]
+  },
+  neet2: {
+    id: "neet2", tone: "neet2", logo: "NEET",
+    title: "NEET Part Test Series",
+    tagline: "Subject & chapter-wise NEET part tests",
+    tests: 60, fullMocks: 0, partTests: 60, price: "₹999",
+    features: ["Physics/Chem/Bio splits", "Chapter tests", "Quick revision", "Instant results", "Bookmark mistakes"]
+  },
+  aiims: {
+    id: "aiims", tone: "aiims", logo: "AIIMS",
+    title: "AIIMS Pattern Test Series",
+    tagline: "Higher difficulty medical entrance pattern",
+    tests: 20, fullMocks: 8, partTests: 12, price: "₹1,499",
+    features: ["Assertion-reason", "Clinical scenarios", "Advanced biology", "Timed sections", "Expert solutions"]
+  },
+  nda: {
+    id: "nda", tone: "nda", logo: "NDA",
+    title: "NDA 2027 Test Series",
+    tagline: "Complete NDA written exam preparation",
+    tests: 24, fullMocks: 8, partTests: 16, price: "₹999",
+    features: ["Math + GAT papers", "Previous year pattern", "Time management", "Sectional analysis", "GK booster"]
+  },
+  nda2: {
+    id: "nda2", tone: "nda2", logo: "NDA",
+    title: "NDA Subject Test Series",
+    tagline: "Subject-wise practice for NDA",
+    tests: 36, fullMocks: 0, partTests: 36, price: "₹699",
+    features: ["Mathematics drills", "English & GK", "Weekly schedule", "Instant scoring", "Progress tracking"]
+  },
+  gk: {
+    id: "gk", tone: "gk", logo: "GK",
+    title: "Defence GK Test Series",
+    tagline: "General Knowledge for defence exams",
+    tests: 30, fullMocks: 0, partTests: 30, price: "₹499",
+    features: ["Current affairs", "History & polity", "Science GK", "Defence specific", "Daily quizzes"]
+  }
+};
+
+function viewTestSeries(payload) {
+  const id = (payload && payload.id) || "jeeboth";
+  const meta = TEST_SERIES_META[id] || TEST_SERIES_META.jeeboth;
+  const featList = meta.features.map(f => `<li>${f}</li>`).join("");
+  return `<div class="marks-tests-page marks-ts-detail">
+    <button type="button" class="pyqmock-back" onclick="go('tests')">← Tests</button>
+    <div class="mts-detail-hero mts-${meta.tone}">
+      <div class="mts-detail-logo">${meta.logo}</div>
+      <div class="mts-detail-body">
+        <h1>${meta.title}</h1>
+        <p>${meta.tagline}</p>
+        <div class="mts-detail-stats">
+          <span><strong>${meta.tests}</strong> Total Tests</span>
+          ${meta.fullMocks ? `<span><strong>${meta.fullMocks}</strong> Full Mocks</span>` : ""}
+          <span><strong>${meta.partTests}</strong> Part Tests</span>
+        </div>
+      </div>
+    </div>
+    <div class="mts-detail-card">
+      <h3>What's Included</h3>
+      <ul class="mts-feat-list">${featList}</ul>
+      <div class="mts-detail-price">
+        <span class="mts-price-label">Starting at</span>
+        <strong>${meta.price}</strong>
+      </div>
+      <button type="button" class="btn-primary big" onclick="showToast('🚀 Test Series launching soon! You will be notified.')">Notify Me — Coming Soon</button>
+      <p class="mts-detail-note">Same trusted test series experience as MARKS — launching on Quantrex Academy shortly.</p>
+    </div>
+  </div>`;
+}
+
 function marksTestSeriesCards() {
-  const card = (tone, logo, title) => `
-    <div class="mts-card mts-${tone}" onclick="showToast('🚀 Test Series coming soon! Stay tuned.')">
+  const card = (tone, logo, title) => {
+    const meta = TEST_SERIES_META[tone];
+    const id = meta ? meta.id : tone;
+    return `
+    <div class="mts-card mts-${tone}" ${mg("testseries", { id })}>
       <div class="mts-logo">${logo}</div>
       <div class="mts-body">
         <strong>${title}</strong>
         <span class="mts-details">View Details →</span>
       </div>
     </div>`;
+  };
   if (STATE.exam === "Medical") {
     return [
       card("neet", "NEET", "NEET 2027 Test Series"),
@@ -910,7 +1048,7 @@ function viewTests() {
   return `<div class="marks-tests-page">
     <div class="marks-tests-head">
       <span class="marks-tests-shield">🛡️</span>
-      <h1>Quantrex Tests</h1>
+      <h1>Tests</h1>
     </div>
     <div class="marks-tests-hero">
       <div class="mth-card" ${mg("custom", { step: "chapters", _draftInit: true, fromTests: true })}>
@@ -1340,7 +1478,7 @@ async function marksDashboardSections() {
       ${bookScroll}
     </div>
     <div class="marks-section">
-      <div class="marks-sec-head"><h3>Chapter-wise PYQ Bank</h3><a href="#" ${mg("cpyqb", { step: "exams" })}>View All →</a></div>
+      <div class="marks-sec-head"><h3>Chapter-wise PYQ Bank</h3><a href="#" ${mg("cpyqb", {})}>View All →</a></div>
       <div class="exam-scroll">${examScroll}</div>
     </div>`;
 }

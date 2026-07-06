@@ -25,6 +25,12 @@ function finishRender(html) {
   if (typeof bindMarksInfiniteScroll === "function") bindMarksInfiniteScroll(main);
   if (typeof bindBooksOpen === "function") bindBooksOpen(main);
   if (typeof QuantrexSearch !== "undefined") QuantrexSearch.bind(main);
+  if (typeof MarksShell !== "undefined") {
+    MarksShell.bind(main);
+    MarksShell.initSidebar();
+  }
+  const contentEl = document.querySelector(".content");
+  if (contentEl) contentEl.classList.toggle("marks-wide", !!main.querySelector(".marks-split-layout"));
   if (typeof Mx !== "undefined") Mx.afterRender(main);
 }
 
@@ -39,6 +45,7 @@ function render(view, payload) {
     books: viewBooks,
     custom: typeof viewCustomTests === "function" ? viewCustomTests : null,
     pyqmock: typeof viewPyqMock === "function" ? viewPyqMock : null,
+    testseries: typeof viewTestSeries === "function" ? viewTestSeries : null,
     quickconcepts: typeof viewQuickConcepts === "function" ? viewQuickConcepts : null
   };
   if (asyncMap[view]) {
@@ -490,6 +497,14 @@ function bootApp() {
   document.querySelectorAll(".nav-item").forEach(n => {
     n.onclick = () => go(n.dataset.view);
   });
+  const navMore = document.getElementById("navMoreToggle");
+  const navMoreList = document.getElementById("navMoreList");
+  if (navMore && navMoreList) {
+    navMore.onclick = () => {
+      const open = navMoreList.style.display !== "none";
+      navMoreList.style.display = open ? "none" : "block";
+    };
+  }
   document.getElementById("examPill").textContent = EXAMS[STATE.exam].name;
   document.getElementById("examPillTop").textContent = EXAMS[STATE.exam].name;
   document.getElementById("navToggle").onclick = () => {
@@ -552,7 +567,7 @@ go = function(view, payload) {
   main.scrollTop = 0;
   _listPage = 1;
   document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
-  const navMap = { allqs: "allqs", ncert: "allqs", cpyqb: "cpyqb", books: "books", tests: "tests", custom: "tests", analytics: "analytics", search: "search", quickconcepts: "quickconcepts", premium: "premium" };
+  const navMap = { allqs: "allqs", ncert: "allqs", cpyqb: "cpyqb", books: "books", tests: "tests", custom: "tests", testseries: "tests", pyqmock: "tests", analytics: "analytics", search: "search", quickconcepts: "quickconcepts", premium: "premium" };
   const navView = navMap[view] || view;
   const navEl = document.querySelector(`.nav-item[data-view="${navView}"]`);
   if (navEl) navEl.classList.add("active");
