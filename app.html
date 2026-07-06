@@ -69,6 +69,12 @@
         .topbar .exam-tag { background: var(--primary-light); color: var(--primary); padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 700; }
         .topbar .streak { display: flex; align-items: center; gap: 4px; background: var(--orange-light); color: #9a6b00; padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 700; }
         .logout-link { border: none; cursor: pointer; font-size: 20px; width: 36px; height: 36px; border-radius: 50%; background: var(--bg); display: flex; align-items: center; justify-content: center; transition: background .15s; }
+        .comm-section { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+        .comm-post { background: var(--bg); border-radius: 10px; padding: 14px; margin-bottom: 10px; }
+        .comm-head { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; }
+        .comm-head small { color: var(--gray); }
+        .comm-add textarea { width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 10px; font-family: inherit; margin-bottom: 10px; resize: vertical; }
+        .lb-lc small { display: block; font-size: 10px; color: var(--gray); font-weight: 400; }
         .logout-link:hover { background: var(--primary-light); }
         .content { padding: 28px; flex: 1; max-width: 1100px; margin: 0 auto; width: 100%; }
 
@@ -618,8 +624,9 @@
     <script src="firebase-db.js"></script>
     <script src="firebase-storage.js"></script>
     <script src="payments.js"></script>
-    <script src="cloudflare-stream.js"></script>
     <script src="premium.js"></script>
+    <script src="leaderboard.js"></script>
+    <script src="community.js"></script>
     <script src="book-covers.js"></script>
     <script src="marks-features.js"></script>
     <script src="custom-test.js"></script>

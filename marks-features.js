@@ -444,11 +444,15 @@ async function viewNeetModuleBank(payload, moduleId) {
     return `${topbar(p.chapter, "Topicwise · " + title)}${bc}<div class="ch-grid qx-topic-grid">${cards || '<div class="empty">No MARKS subtopics.</div>'}</div>`;
   }
 
-  const bankSlugs = moduleId === "allqs" ? ["neet", "nta_abhyas_neet"] : ["neet"];
-  for (const slug of bankSlugs) {
-    if (!_banksLoaded[slug]) {
-      showToast("📚 Loading questions…");
-      await loadSingleBank(slug);
+  const bankSlugs = moduleId === "allqs"
+    ? (typeof banksForAllQs === "function" ? banksForAllQs() : ["neet", "nta_abhyas_neet"])
+    : ["neet"];
+  if (typeof loadMultipleBanks === "function") {
+    showToast("📚 Loading " + bankSlugs.length + " question banks…");
+    await loadMultipleBanks(bankSlugs);
+  } else {
+    for (const slug of bankSlugs) {
+      if (!_banksLoaded[slug]) { showToast("📚 Loading questions…"); await loadSingleBank(slug); }
     }
   }
   let qs = QUESTIONS.filter(q => bankSlugs.includes(q._bank) && q.subject === p.subject && q.chapter === p.chapter);

@@ -206,6 +206,12 @@ const CHAPTERS = {
 const BOOKS = [];
 const PRIMARY_BANK = { Engineering: "jee_main", Medical: "neet", Foundation: "nda" };
 
+const ALLQS_BANKS = {
+  Medical: ["neet", "nta_abhyas_neet", "aiims", "jipmer", "mht_cet_medical"],
+  Engineering: ["jee_main", "jee_advanced", "nta_abhyas_jee_main", "bitsat", "wbjee", "viteee", "kcet", "mht_cet", "comedk", "ap_eamcet", "ts_eamcet", "manipal_met", "kvpy", "nest_niser", "iat_iiser"],
+  Foundation: ["nda"]
+};
+
 const MODULES = [
   { id:"allqs", icon:"📋", name:"All Question Bank", desc:"Chapter-wise questions by subject", color:"#dbeafe", target:"allqs" },
   { id:"ncert", icon:"📚", name:"NCERT Qs Bank", desc:"Syllabus-aligned NCERT questions", color:"#eaf4fd", target:"ncert" },
@@ -215,8 +221,8 @@ const MODULES = [
   { id:"formula", icon:"🧮", name:"Formula Cards", desc:"All formulas in one place", color:"#f3eafe", target:"formula" },
   { id:"tests", icon:"🧪", name:"Assessment Center", desc:"Mocks, chapter tests & custom", color:"#fef9c3", target:"tests" },
   { id:"quickconcepts", icon:"⚡", name:"Quick Concepts", desc:"Fast revision notes", color:"#fff3cd", target:"quickconcepts" },
-  { id:"leaderboard", icon:"🏆", name:"Leaderboard", desc:"Compete & earn leagues", color:"#fee2e2", target:"leaderboard" },
-  { id:"notebook", icon:"📓", name:"Notebook", desc:"Saved notes & bookmarks", color:"#e0e7ff", target:"notebook" }
+  { id:"leaderboard", icon:"🏆", name:"Leaderboard", desc:"Live rankings · compete & earn leagues", color:"#fee2e2", target:"leaderboard" },
+  { id:"notebook", icon:"📓", name:"Notebook", desc:"Saved notes & bookmarks (cloud sync)", color:"#e0e7ff", target:"notebook" }
 ];
 
 const LEADERBOARD = [
@@ -372,6 +378,16 @@ let _currentBankSlug = localStorage.getItem("quantrex_bank") || null;
 
 function getBanksForExam(category) {
   return Object.entries(BANK_INDEX).filter(([, b]) => b.category === category);
+}
+
+async function loadMultipleBanks(slugs) {
+  const list = [...new Set((slugs || []).filter(s => BANK_INDEX[s]))];
+  for (const slug of list) await loadSingleBank(slug);
+  return QUESTIONS.filter(q => list.includes(q._bank));
+}
+
+function banksForAllQs() {
+  return ALLQS_BANKS[STATE.exam] || ALLQS_BANKS.Engineering;
 }
 
 async function loadSingleBank(slug) {
@@ -13811,7 +13827,7 @@ const STATE = {
   get bookmarks() { return JSON.parse(localStorage.getItem("quantrex_bookmarks") || "[]"); },
   toggleBookmark(id) { const b=this.bookmarks,i=b.indexOf(id); if(i>=0)b.splice(i,1);else b.push(id); localStorage.setItem("quantrex_bookmarks",JSON.stringify(b)); _syncDb(); },
   get solved() { return JSON.parse(localStorage.getItem("quantrex_solved") || "[]"); },
-  markSolved(id,correct) { const s=JSON.parse(localStorage.getItem("quantrex_solved")||"[]"); if(!s.find(x=>x.id===id))s.push({id,correct,date:Date.now()}); localStorage.setItem("quantrex_solved",JSON.stringify(s)); _syncDb(); },
+  markSolved(id,correct) { const s=JSON.parse(localStorage.getItem("quantrex_solved")||"[]"); if(!s.find(x=>x.id===id))s.push({id,correct,date:Date.now()}); localStorage.setItem("quantrex_solved",JSON.stringify(s)); _syncDb(); if(typeof QuantrexLeaderboard!=="undefined")QuantrexLeaderboard.recordSolve(correct); },
   get notes() { return JSON.parse(localStorage.getItem("quantrex_notes") || "[]"); },
   addNote(text) { const n=this.notes; n.unshift({id:Date.now(),text,date:new Date().toLocaleString()}); localStorage.setItem("quantrex_notes",JSON.stringify(n)); _syncDb(); },
   deleteNote(id) { localStorage.setItem("quantrex_notes",JSON.stringify(this.notes.filter(x=>x.id!==id))); _syncDb(); }

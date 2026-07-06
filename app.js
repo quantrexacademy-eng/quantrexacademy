@@ -47,13 +47,20 @@ function render(view, payload) {
   const map = {
     practice: viewPractice,
     tests: viewTests,
-    leaderboard: viewLeaderboard,
+    leaderboard: () => '<div class="empty">⏳ Loading leaderboard…</div>',
     notebook: viewNotebook,
     profile: viewProfile,
     analytics: () => typeof QuantrexAnalytics !== "undefined" ? QuantrexAnalytics.viewAnalytics() : '<div class="empty">Analytics loading…</div>',
     search: () => typeof QuantrexSearch !== "undefined" ? QuantrexSearch.viewSearch() : '<div class="empty">Search unavailable</div>',
     premium: viewPremium
   };
+  if (view === "leaderboard" && typeof QuantrexLeaderboard !== "undefined") {
+    finishRender('<div class="empty">⏳ Loading leaderboard…</div>');
+    QuantrexLeaderboard.renderView().then(html => finishRender(
+      topbar("Leaderboard", "Live rankings · " + EXAMS[STATE.exam].name) + html
+    )).catch(() => finishRender(topbar("Leaderboard", "") + '<div class="empty">Leaderboard unavailable. Login required.</div>'));
+    return;
+  }
   finishRender(map[view] ? map[view](payload) : `<div class="empty">Page not found.</div>`);
 }
 
@@ -66,7 +73,7 @@ async function viewPremium() {
   if (typeof QuantrexPremium === "undefined") {
     return topbar("Premium", "") + '<div class="empty">Premium module loading…</div>';
   }
-  const html = topbar("Premium & Videos", "Cashfree payments · Cloudflare Stream lectures") + QuantrexPremium.render(user, sub);
+  const html = topbar("Premium Plans", "Unlock all 127k+ questions & features") + QuantrexPremium.render(user, sub);
   setTimeout(() => {
     const main = document.getElementById("app-main");
     if (main) QuantrexPremium.bind(main, user, sub);
@@ -215,6 +222,7 @@ function viewQuestion(id) {
   const q = getQ(id);
   if (!q) return viewPractice();
   const bm = STATE.bookmarks.includes(q.id);
+  setTimeout(() => loadCommunityForQuestion(q), 0);
   return `${topbar("Practice Question", `${q.subject} · ${q.chapter}`)}
   <div class="qa-wrap">
     <div class="qa-head">
@@ -227,10 +235,24 @@ function viewQuestion(id) {
         <span class="opt-letter">${String.fromCharCode(65+i)}</span><span class="qx-content">${typeof Mx!=="undefined"?Mx.html(o):o}</span></button>`).join("")}
     </div>
     <div id="qaResult"></div>
+    <div id="qaCommunity"><div class="empty" style="padding:16px">Loading community solutions…</div></div>
     <div class="qa-nav">
       <button class="btn-soft" onclick="go('practice')">← Back to list</button>
     </div>
   </div>`;
+}
+
+async function loadCommunityForQuestion(q) {
+  const el = document.getElementById("qaCommunity");
+  if (!el || typeof QuantrexCommunity === "undefined") return;
+  try {
+    const posts = await QuantrexCommunity.fetchPosts(q);
+    el.innerHTML = QuantrexCommunity.renderPanel(q, posts);
+    QuantrexCommunity.bind(q, el);
+    if (typeof Mx !== "undefined") Mx.afterRender(el);
+  } catch (e) {
+    el.innerHTML = '<p class="empty">Community solutions unavailable. Login to post.</p>';
+  }
 }
 
 function answerQ(qid, idx) {
@@ -316,31 +338,7 @@ async function createCustomTest() {
 
 // Test engine: test-engine.js (startTest, renderTest, startChapterTest, startMockTest)
 
-// ============ LEADERBOARD ============
-function viewLeaderboard() {
-  const leagueInfo = { Legend: "👑", Platinum: "💎", Gold: "🥇", Silver: "🥈", Bronze: "🥉" };
-  const rows = LEADERBOARD.map(p => `
-    <div class="lb-row-app ${p.rank<=3?'top-'+p.rank:''}">
-      <span class="lb-rank-app">${p.rank<=3?['🥇','🥈','🥉'][p.rank-1]:p.rank}</span>
-      <span class="lb-av" style="background:${p.color}">${p.avatar}</span>
-      <span class="lb-name-app">${p.name}</span>
-      <span class="lb-league">${leagueInfo[p.league]} ${p.league}</span>
-      <span class="lb-pts-app">${p.points}</span>
-    </div>`).join("") + `
-    <div class="lb-row-app you">
-      <span class="lb-rank-app">42</span>
-      <span class="lb-av" style="background:#1589EE">You</span>
-      <span class="lb-name-app">You</span>
-      <span class="lb-league">🥇 Gold</span>
-      <span class="lb-pts-app">${STATE.solved.filter(s=>s.correct).length * 10}</span>
-    </div>`;
-
-  return `${topbar("Leaderboard", "This Week · Compete with 1M+ students")}
-  <div class="lb-leagues">
-    ${Object.entries(leagueInfo).map(([k,v]) => `<div class="lb-lc"><span>${v}</span><strong>${k}</strong></div>`).join("")}
-  </div>
-  <div class="lb-list-app">${rows}</div>`;
-}
+// Leaderboard: leaderboard.js (Firebase live rankings)
 
 // ============ NOTEBOOK ============
 function viewNotebook() {

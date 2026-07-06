@@ -67,5 +67,27 @@ service cloud.firestore {
         && request.resource.data.planId is string
         && request.resource.data.orderId is string;
     }
+
+    // Live leaderboard
+    match /leaderboard/{userId} {
+      allow read: if true;
+      allow create, update: if isOwner(userId)
+        && request.resource.data.uid == userId
+        && request.resource.data.exam is string
+        && request.resource.data.points is number;
+    }
+
+    // Community solutions per question
+    match /solutions/{questionKey} {
+      allow read: if isSignedIn();
+      match /posts/{postId} {
+        allow read: if isSignedIn();
+        allow create: if isSignedIn()
+          && request.resource.data.uid == request.auth.uid
+          && request.resource.data.text is string
+          && request.resource.data.text.size() <= 8000;
+        allow update, delete: if isSignedIn() && resource.data.uid == request.auth.uid;
+      }
+    }
   }
 }

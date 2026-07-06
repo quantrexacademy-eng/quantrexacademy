@@ -34,16 +34,8 @@ const QUANTREX_STACK = {
     }
   },
   video: {
-    provider: "Cloudflare Stream",
-    customerCode: "", // e.g. "abc123" → customer-abc123.cloudflarestream.com
-    accountId: "",
-    console: "https://dash.cloudflare.com/?to=/:account/stream",
-    // Demo videos — replace with real Stream UIDs from Cloudflare dashboard
-    catalog: [
-      { id: "demo_physics", title: "Physics — Kinematics Revision", uid: "", subject: "Physics" },
-      { id: "demo_chem", title: "Chemistry — Mole Concept", uid: "", subject: "Chemistry" },
-      { id: "demo_maths", title: "Maths — Calculus Basics", uid: "", subject: "Mathematics" }
-    ]
+    provider: "none",
+    note: "Video lectures disabled per product requirement"
   },
   payment: {
     provider: "Cashfree",

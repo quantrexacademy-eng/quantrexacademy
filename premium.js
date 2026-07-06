@@ -1,4 +1,4 @@
-// Quantrex — Premium + Videos UI
+// Quantrex — Premium Plans (Cashfree — no video)
 const QuantrexPremium = (() => {
   const CSS = `
     .premium-page { max-width: 900px; margin: 0 auto; }
@@ -11,22 +11,8 @@ const QuantrexPremium = (() => {
     .pay-price { font-size: 36px; font-weight: 800; color: var(--primary); margin: 8px 0; }
     .pay-desc { color: var(--gray); font-size: 13px; margin-bottom: 16px; }
     .pay-btn { width: 100%; }
-    .video-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); gap: 14px; margin-top: 16px; }
-    .video-card { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; cursor: pointer; background: var(--white); transition: box-shadow .15s; }
-    .video-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
-    .video-thumb { background: linear-gradient(135deg,#1a1a2e,#1589EE); height: 120px; display: flex; align-items: center; justify-content: center; font-size: 36px; color: #fff; }
-    .video-info { padding: 14px; }
-    .video-sub { font-size: 11px; color: var(--primary); font-weight: 700; text-transform: uppercase; }
-    .video-info h4 { font-size: 14px; margin: 4px 0 8px; }
-    .video-badge { font-size: 11px; font-weight: 700; color: var(--green); }
-    .video-badge.pending { color: var(--orange); }
-    .cf-stream-wrap { position: relative; padding-top: 56.25%; border-radius: 12px; overflow: hidden; background: #000; margin-bottom: 20px; }
-    .cf-stream-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-    .video-placeholder { text-align: center; padding: 48px 24px; background: var(--bg); border-radius: 12px; border: 2px dashed var(--border); }
-    .svc-status { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 10px; margin: 20px 0; }
-    .svc-chip { padding: 12px; border-radius: 10px; background: var(--bg); font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
-    .svc-chip.live { background: #e6f9f0; color: #059669; }
-    .svc-chip.pending { background: #fff7ed; color: #d97706; }
+    .premium-feats { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 12px; margin: 24px 0; }
+    .premium-feat { padding: 16px; background: var(--bg); border-radius: 12px; font-size: 14px; font-weight: 600; }
   `;
 
   function injectStyles() {
@@ -37,67 +23,31 @@ const QuantrexPremium = (() => {
     document.head.appendChild(s);
   }
 
-  function serviceStatus() {
-    const auth = typeof QuantrexDB !== "undefined" && QuantrexDB.ready;
-    const storage = typeof QuantrexStorage !== "undefined";
-    const video = typeof QuantrexVideo !== "undefined" && QuantrexVideo.isConfigured();
-    const pay = typeof QuantrexPayments !== "undefined";
-    return [
-      { name: "Firebase Auth", live: auth },
-      { name: "Firestore DB", live: auth },
-      { name: "Firebase Storage", live: storage },
-      { name: "Cloudflare Stream", live: video },
-      { name: "Cashfree Payments", live: pay }
-    ];
-  }
-
-  function renderServices() {
-    return '<div class="svc-status">' + serviceStatus().map(s =>
-      '<div class="svc-chip ' + (s.live ? 'live' : 'pending') + '">' +
-      (s.live ? '✅' : '⏳') + ' ' + s.name + '</div>'
-    ).join("") + '</div>';
-  }
-
   function render(user, sub) {
     injectStyles();
     const isPremium = sub && sub.active;
-    let html = '<div class="premium-page">';
-    html += '<div class="premium-hero">';
+    let html = '<div class="premium-page"><div class="premium-hero">';
     html += '<span class="premium-badge">' + (isPremium ? '⭐ PREMIUM ACTIVE' : '🔓 UPGRADE') + '</span>';
     html += '<h2>' + (isPremium ? 'Quantrex Premium' : 'Unlock Full Access') + '</h2>';
-    html += '<p style="color:var(--gray)">Video lectures, unlimited tests, formula cards &amp; more</p>';
-    html += renderServices();
+    html += '<p style="color:var(--gray)">Unlimited tests, all question banks, formula cards &amp; more</p>';
     html += '</div>';
-
+    html += '<div class="premium-feats">';
+    ["All 127k+ Questions", "Custom Tests", "Formula Cards", "DPP Sets", "Digital Books", "Leaderboard"].forEach(f => {
+      html += '<div class="premium-feat">✅ ' + f + '</div>';
+    });
+    html += '</div>';
     if (!isPremium && typeof QuantrexPayments !== "undefined") {
-      html += '<h3 style="margin-bottom:8px">Choose Plan</h3>';
-      html += QuantrexPayments.renderPlans();
+      html += '<h3>Choose Plan</h3>' + QuantrexPayments.renderPlans();
     } else if (isPremium) {
-      html += '<p style="color:var(--green);font-weight:600;margin-bottom:16px">✅ Plan: ' + (sub.planId || 'Premium') + ' · Valid till ' +
-        (sub.expiresAt && sub.expiresAt.toDate ? sub.expiresAt.toDate().toLocaleDateString() : 'active') + '</p>';
-    }
-
-    html += '<h3 style="margin:24px 0 8px">📺 Video Lectures</h3>';
-    html += '<div id="videoPlayerArea"></div>';
-    if (typeof QuantrexVideo !== "undefined") {
-      html += QuantrexVideo.renderCatalog();
+      html += '<p style="color:var(--green);font-weight:600">✅ Plan: ' + (sub.planId || 'Premium') + '</p>';
     }
     html += '</div>';
     return html;
   }
 
   function bind(container, user, sub) {
-    if (!container) return;
-    if (!sub || !sub.active) QuantrexPayments.bindPlans(container, user);
-    const playerArea = container.querySelector("#videoPlayerArea");
-    if (typeof QuantrexVideo !== "undefined") {
-      QuantrexVideo.bindCatalog(container, (uid, title) => {
-        if (playerArea) {
-          playerArea.innerHTML = '<h4 style="margin-bottom:12px">' + title + '</h4>' + QuantrexVideo.renderPlayer(uid, title);
-          playerArea.scrollIntoView({ behavior: "smooth" });
-        }
-      });
-    }
+    if (!container || sub && sub.active) return;
+    if (typeof QuantrexPayments !== "undefined") QuantrexPayments.bindPlans(container, user);
   }
 
   return { render, bind, injectStyles };
