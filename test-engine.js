@@ -461,6 +461,9 @@ async function startMockTest(examSlug, options) {
   }
   let pool = QUESTIONS.filter(q => q._bank === examSlug);
   if (opts.subject) pool = pool.filter(q => q.subject === opts.subject);
+  if (opts.year && typeof qYearFromSource === "function") {
+    pool = pool.filter(q => qYearFromSource(q.source) === Number(opts.year));
+  }
   if (!pool.length) { showToast("⚠️ No questions found for this mock."); return; }
   const count = opts.count || (STATE.exam === "Medical" ? 180 : 90);
   const ids = pool.map(q => q.id);

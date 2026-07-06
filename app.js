@@ -38,6 +38,7 @@ function render(view, payload) {
     formula: viewFormulaMarks,
     books: viewBooks,
     custom: typeof viewCustomTests === "function" ? viewCustomTests : null,
+    pyqmock: typeof viewPyqMock === "function" ? viewPyqMock : null,
     quickconcepts: typeof viewQuickConcepts === "function" ? viewQuickConcepts : null
   };
   if (asyncMap[view]) {

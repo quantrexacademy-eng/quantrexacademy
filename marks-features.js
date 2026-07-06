@@ -253,14 +253,19 @@ function bindCpyqbFilters(root) {
     const unit = bar.querySelector("#cpyqbUnit");
     if (cls) payload.filterClass = cls.value;
     if (unit) payload.filterUnit = unit.value;
-    payload.filterNotStarted = !!bar.querySelector("#cpyqbNotStarted")?.checked;
-    payload.filterWeak = !!bar.querySelector("#cpyqbWeak")?.checked;
+    payload.filterNotStarted = bar.querySelector('[data-filter="notStarted"]')?.classList.contains("on") || false;
+    payload.filterWeak = bar.querySelector('[data-filter="weak"]')?.classList.contains("on") || false;
     const sort = bar.querySelector("#cpyqbSort");
     if (sort) payload.sortBy = sort.value;
     render("cpyqb", payload);
   };
-  bar.querySelectorAll("select, input[type=checkbox]").forEach(el => {
-    el.onchange = apply;
+  bar.querySelectorAll("select").forEach(el => { el.onchange = apply; });
+  bar.querySelectorAll("[data-filter]").forEach(btn => {
+    btn.onclick = (e) => {
+      e.preventDefault();
+      btn.classList.toggle("on");
+      apply();
+    };
   });
   const sortBtn = bar.querySelector("[data-cpyqb-sort-toggle]");
   if (sortBtn) {
@@ -391,11 +396,14 @@ async function viewCpyqb(payload) {
       return { nav: c, ct: ctCh, stats };
     });
 
+    const hasFilters = filterClass !== "all" || filterUnit !== "all" || p.filterNotStarted || p.filterWeak;
     let filtered = rows.filter(row => {
       if (filterClass !== "all" && row.ct && !row.ct.classes.includes(filterClass)) return false;
       if (filterUnit !== "all" && row.ct && row.ct.unitId !== filterUnit) return false;
-      if (p.filterNotStarted && row.stats.solved > 0) return false;
-      if (p.filterWeak && !row.stats.weak) return false;
+      if (p.filterNotStarted && p.filterWeak) {
+        if (row.stats.solved > 0 && !row.stats.weak) return false;
+      } else if (p.filterNotStarted && row.stats.solved > 0) return false;
+      else if (p.filterWeak && !row.stats.weak) return false;
       return true;
     });
 
@@ -406,61 +414,61 @@ async function viewCpyqb(payload) {
     const continueRow = rows
       .filter(r => r.stats.solved > 0 && r.stats.solved < r.stats.total)
       .sort((a, b) => b.stats.lastDate - a.stats.lastDate)[0];
-
-    const bc = breadcrumb([
-      { label: "PYQ Bank", view: "cpyqb", payload: { step: "exams" } },
-      { label: exam.title, view: "cpyqb", payload: { step: "subjects", exam: p.exam } },
-      { label: p.subject }
-    ]);
-
-    const continueCard = continueRow ? `<div class="cpyqb-continue" ${mg("cpyqb", { step: "chapterHub", exam: p.exam, subject: p.subject, chapter: continueRow.nav.name })}>
-      <div class="cpyqb-continue-body">
-        <strong>${continueRow.nav.name}</strong>
-        <span class="cpyqb-continue-btn">Continue Solving</span>
-      </div>
-      <div class="cpyqb-continue-prog">
-        <div class="cpyqb-prog-bar"><span style="width:${Math.round(continueRow.stats.solved / Math.max(1, continueRow.stats.total) * 100)}%"></span></div>
-        <small>${continueRow.stats.solved}/${continueRow.stats.total} Qs</small>
-      </div>
-    </div>` : "";
+    const continueId = continueRow ? continueRow.nav.name : null;
 
     const classOpts = `<option value="all"${filterClass === "all" ? " selected" : ""}>All Classes</option>
       <option value="Class 11"${filterClass === "Class 11" ? " selected" : ""}>Class 11</option>
       <option value="Class 12"${filterClass === "Class 12" ? " selected" : ""}>Class 12</option>`;
     const unitOpts = `<option value="all"${filterUnit === "all" ? " selected" : ""}>All Units</option>` +
       units.map(u => `<option value="${u._id}"${filterUnit === u._id ? " selected" : ""}>${u.title}</option>`).join("");
+    const countLabel = hasFilters
+      ? `Showing ${filtered.length} chapter${filtered.length === 1 ? "" : "s"}`
+      : `Showing all chapters (${subj.chapters.length})`;
 
     const filterBar = `<div class="cpyqb-filter-bar" id="cpyqbFilterBar">
-      <span class="cpyqb-filter-label">Filter</span>
-      <select id="cpyqbClass" class="cpyqb-filter-sel">${classOpts}</select>
-      <select id="cpyqbUnit" class="cpyqb-filter-sel">${unitOpts}</select>
-      <label class="cpyqb-filter-chip${p.filterNotStarted ? " on" : ""}"><input type="checkbox" id="cpyqbNotStarted"${p.filterNotStarted ? " checked" : ""}> Not Started</label>
-      <label class="cpyqb-filter-chip${p.filterWeak ? " on" : ""}"><input type="checkbox" id="cpyqbWeak"${p.filterWeak ? " checked" : ""}> Weak Chapter</label>
-      <span class="cpyqb-filter-count">Showing ${filtered.length} chapter${filtered.length === 1 ? "" : "s"}</span>
-      <a href="#" class="cpyqb-sort-link" data-cpyqb-sort-toggle>Sort</a>
+      <button type="button" class="cpyqb-filter-main" tabindex="-1"><span>⚙</span> Filter</button>
+      <select id="cpyqbClass" class="cpyqb-pill-sel">${classOpts}</select>
+      <select id="cpyqbUnit" class="cpyqb-pill-sel">${unitOpts}</select>
+      <button type="button" class="cpyqb-chip-btn${p.filterNotStarted ? " on" : ""}" data-filter="notStarted">Not Started</button>
+      <button type="button" class="cpyqb-chip-btn${p.filterWeak ? " on" : ""}" data-filter="weak">Weak Chapter</button>
+      <span class="cpyqb-filter-count">${countLabel}</span>
+      <a href="#" class="cpyqb-sort-link" data-cpyqb-sort-toggle>↑ Sort</a>
       <select id="cpyqbSort" class="cpyqb-sort-hidden"><option value="default"${sortBy === "default" ? " selected" : ""}>Default</option><option value="importance"${sortBy === "importance" ? " selected" : ""}>Importance</option><option value="progress"${sortBy === "progress" ? " selected" : ""}>Progress</option><option value="name"${sortBy === "name" ? " selected" : ""}>Name</option></select>
     </div>`;
 
-    const cards = filtered.length ? filtered.map(({ nav: c, ct: ctCh, stats }) => {
+    const renderChRow = (c, ctCh, stats, isContinue) => {
+      const displayName = (ctCh && ctCh.shortName) || c.name;
       const yearHtml = stats.yearCounts.length
-        ? stats.yearCounts.map(([y, n]) => `<span class="cpyqb-yr"><em>${y}</em> ${n} Qs</span>`).join("")
-        : `<span class="cpyqb-yr muted">—</span>`;
-      return `<div class="cpyqb-ch-row" ${mg("cpyqb", { step: "chapterHub", exam: p.exam, subject: p.subject, chapter: c.name })}>
+        ? stats.yearCounts.map(([y, n]) => `<span class="cpyqb-yr"><b>${y}:</b> ${n} Qs <span class="cpyqb-yr-up">↑</span></span>`).join("")
+        : "";
+      const continueBtn = isContinue ? `<span class="cpyqb-continue-btn">Continue Solving</span>` : "";
+      return `<div class="cpyqb-ch-row${isContinue ? " is-continue" : ""}" ${mg("cpyqb", { step: "chapterHub", exam: p.exam, subject: p.subject, chapter: c.name })}>
         <div class="cpyqb-ch-left">
           ${cpyqbChapterIcon(ctCh)}
           <div class="cpyqb-ch-info">
-            <div class="cpyqb-ch-title">${c.name} ${cpyqbSyllabusBadge(ctCh && ctCh.syllabusCategory)}</div>
-            <div class="cpyqb-ch-years">${yearHtml}</div>
+            <div class="cpyqb-ch-title">${isContinue ? c.name : displayName} ${cpyqbSyllabusBadge(ctCh && ctCh.syllabusCategory)} ${continueBtn}</div>
+            ${yearHtml ? `<div class="cpyqb-ch-years">${yearHtml}</div>` : ""}
           </div>
         </div>
-        <div class="cpyqb-ch-right">
-          <span class="cpyqb-ch-prog">${stats.solved}/${stats.total} Qs</span>
-        </div>
+        <div class="cpyqb-ch-right"><span class="cpyqb-ch-prog">${stats.solved}/${stats.total} Qs</span></div>
       </div>`;
-    }).join("") : `<div class="empty">No chapters match these filters.</div>`;
+    };
 
-    return `${topbar(`${p.subject} PYQs`, `Chapter-wise Collection of ${p.subject} PYQs`)}
-      ${bc}${continueCard}${filterBar}<div class="cpyqb-ch-list">${cards}</div>`;
+    const cards = filtered.length ? filtered.map(({ nav: c, ct: ctCh, stats }) =>
+      renderChRow(c, ctCh, stats, continueId === c.name)
+    ).join("") : `<div class="empty">No chapters match these filters.</div>`;
+
+    const footTabs = `<div class="cpyqb-foot-tabs">
+      <button type="button" class="cpyqb-ftab" onclick="go('notebook')">${p.subject} Bookmarks</button>
+      <button type="button" class="cpyqb-ftab on" onclick="showToast('📊 ${p.subject} Analysis coming soon')">${p.subject} Analysis</button>
+    </div>`;
+
+    return `<div class="cpyqb-marks-page">
+      <div class="cpyqb-marks-head">
+        <h1>${p.subject} PYQs</h1>
+        <p>Chapter-wise Collection of ${p.subject} PYQs</p>
+      </div>
+      ${filterBar}<div class="cpyqb-ch-list">${cards}</div>${footTabs}</div>`;
   }
 
   const chMetaNav = subj.chapters.find(c => c.name === p.chapter);
@@ -864,66 +872,62 @@ async function viewFormulaMarks(payload) {
   return `${topbar(p.chapter, p.subject)}${bc}<div class="fc-grid">${cards}</div>`;
 }
 
-// ============ QUANTREX TESTS (MARKS-style) ============
+// ============ QUANTREX TESTS (MARKS web exact) ============
 function marksTestSeriesCards() {
-  const soon = (title, sub, tone, logo) => `
+  const card = (tone, logo, title) => `
     <div class="mts-card mts-${tone}" onclick="showToast('🚀 Test Series coming soon! Stay tuned.')">
       <div class="mts-logo">${logo}</div>
       <div class="mts-body">
         <strong>${title}</strong>
-        <small>${sub}</small>
-        <span class="mts-soon">Coming Soon</span>
+        <span class="mts-details">View Details →</span>
       </div>
     </div>`;
   if (STATE.exam === "Medical") {
     return [
-      soon("NEET 2027 Full Test Series", "Full syllabus mocks · 180 questions", "neet", "NEET"),
-      soon("NEET 2027 Part Tests", "Subject-wise & chapter tests", "neet2", "NEET"),
-      soon("AIIMS Pattern Tests", "Advanced difficulty mocks", "aiims", "AIIMS")
+      card("neet", "NEET", "NEET 2027 Test Series"),
+      card("neet2", "NEET", "NEET Part Test Series"),
+      card("aiims", "AIIMS", "AIIMS Pattern Test Series")
     ].join("");
   }
   if (STATE.exam === "Foundation") {
     return [
-      soon("NDA 2027 Test Series", "Mathematics + GAT full mocks", "nda", "NDA"),
-      soon("NDA Subject Tests", "Topic-wise practice sets", "nda2", "NDA"),
-      soon("Defence GK Tests", "Current affairs & static GK", "gk", "GK")
+      card("nda", "NDA", "NDA 2027 Test Series"),
+      card("nda2", "NDA", "NDA Subject Test Series"),
+      card("gk", "GK", "Defence GK Test Series")
     ].join("");
   }
   return [
-    soon("JEE Mains + Advanced 2027 Test Series", "Complete JEE preparation package", "jeeboth", "JEE MAIN<br>JEE ADV"),
-    soon("JEE Mains 2027 Test Series", "Main-focused full & part tests", "jeemain", "JEE MAIN"),
-    soon("JEE Advanced 2027 Test Series", "Advanced-level challenge mocks", "jeeadv", "JEE ADV")
+    card("jeeboth", "JEE MAIN<br>JEE ADV", "JEE Mains + Advanced 2027 Test Series"),
+    card("jeemain", "JEE MAIN", "JEE Mains 2027 Test Series"),
+    card("jeeadv", "JEE ADV", "JEE Advanced 2027 Test Series")
   ].join("");
 }
 
 function viewTests() {
   const hour = new Date().getHours();
-  const ctCount = 420 + (hour * 17) % 180;
-  const pyqCount = 510 + (hour * 13) % 160;
-  const primarySlug = (typeof PRIMARY_BANK !== "undefined" && PRIMARY_BANK[STATE.exam]) || "jee_main";
-  const examLabel = STATE.exam === "Medical" ? "NEET" : STATE.exam === "Foundation" ? "NDA" : "JEE";
-
+  const ctCount = 589 + (hour * 11) % 120;
+  const pyqCount = 600 + (hour * 9) % 110;
   return `<div class="marks-tests-page">
     <div class="marks-tests-head">
       <span class="marks-tests-shield">🛡️</span>
       <h1>Quantrex Tests</h1>
     </div>
     <div class="marks-tests-hero">
-      <div class="mth-card mth-custom" ${mg("custom", { step: "landing" })}>
+      <div class="mth-card" ${mg("custom", { step: "landing" })}>
         <div class="mth-body">
           <strong>Create Your Own Test</strong>
           <small>${ctCount}+ students took a Custom Test in last hour!</small>
         </div>
-        <span class="mth-ic">🧪</span>
-        <span class="mth-arrow">→</span>
+        <div class="mth-sq mth-sq-blue"></div>
+        <span class="mth-arrow">›</span>
       </div>
-      <div class="mth-card mth-pyq" ${mg("cpyqb", { step: "exams" })}>
+      <div class="mth-card" ${mg("pyqmock", { step: "exams" })}>
         <div class="mth-body">
           <strong>PYQ Mock Tests</strong>
           <small>${pyqCount}+ students took a PYQ Mock Test in last hour!</small>
         </div>
-        <span class="mth-ic">📋</span>
-        <span class="mth-arrow">→</span>
+        <div class="mth-sq mth-sq-pink"></div>
+        <span class="mth-arrow">›</span>
       </div>
     </div>
     <div class="marks-ts-section">
@@ -931,30 +935,64 @@ function viewTests() {
       <p class="marks-ts-sub">Brought to you by Quantrex Academy</p>
       <div class="marks-ts-grid">${marksTestSeriesCards()}</div>
     </div>
-    <div class="marks-tests-more">
-      <h4 class="sec-title">More Practice Options</h4>
-      <div class="tests-grid">
-        <div class="test-card" onclick="startMockTest('${primarySlug}')">
-          <span class="test-ic">⏱️</span>
-          <strong>${examLabel} Full Mock</strong>
-          <small>Timed simulation with real exam scoring</small>
-          <button class="btn-primary sm">Start Mock →</button>
-        </div>
-        <div class="test-card" ${mg("dpp", { step: "subjects" })}>
-          <span class="test-ic">📝</span>
-          <strong>DPP Timed Sets</strong>
-          <small>Daily practice with timer & solutions</small>
-          <button class="btn-soft sm">Start DPP →</button>
-        </div>
-        <div class="test-card" onclick="go('analytics')">
-          <span class="test-ic">📊</span>
-          <strong>Performance Analytics</strong>
-          <small>Subject breakdown & accuracy trends</small>
-          <button class="btn-soft sm">View Stats →</button>
-        </div>
-      </div>
-    </div>
   </div>`;
+}
+
+let _pyqMockPayload = { step: "exams" };
+
+async function viewPyqMock(payload) {
+  const p = { ..._pyqMockPayload, ...(payload || {}) };
+  _pyqMockPayload = p;
+  const nav = await fetchNav("cpyqb");
+  const exams = nav.filter(e => e.category === STATE.exam);
+
+  if (p.step === "years" && p.exam) {
+    const exam = exams.find(e => e.slug === p.exam);
+    if (!exam) return viewPyqMock({ step: "exams" });
+    if (!_banksLoaded[p.exam]) await loadSingleBank(p.exam);
+    const years = {};
+    QUESTIONS.filter(q => q._bank === p.exam).forEach(q => {
+      const y = qYearFromSource(q.source);
+      if (y) years[y] = (years[y] || 0) + 1;
+    });
+    const yearList = Object.entries(years).sort((a, b) => Number(b[0]) - Number(a[0])).slice(0, 10);
+    const cards = yearList.map(([y, n]) => `
+      <div class="pyqmock-year-card" onclick="startPyqYearMock('${p.exam}', ${y})">
+        <strong>${y}</strong>
+        <small>${n.toLocaleString()} PYQs</small>
+        <span class="pyqmock-go">Start Mock →</span>
+      </div>`).join("");
+    return `<div class="marks-tests-page">
+      <div class="cpyqb-marks-head">
+        <h1>PYQ Mock Tests</h1>
+        <p>${exam.title} · Year-wise timed mocks</p>
+      </div>
+      <button type="button" class="btn-soft sm" style="margin-bottom:16px" ${mg("pyqmock", { step: "exams" })}>← All Exams</button>
+      <div class="pyqmock-year-grid">${cards || '<div class="empty">No PYQ data for this exam yet.</div>'}</div>
+    </div>`;
+  }
+
+  const cards = exams.map(e => `
+    <div class="mth-card" ${mg("pyqmock", { step: "years", exam: e.slug })}>
+      <div class="mth-body">
+        <strong>${e.title}</strong>
+        <small>${e.count.toLocaleString()} PYQs · Pick year</small>
+      </div>
+      <div class="mth-sq mth-sq-pink"></div>
+      <span class="mth-arrow">›</span>
+    </div>`).join("");
+  return `<div class="marks-tests-page">
+    <div class="cpyqb-marks-head">
+      <h1>PYQ Mock Tests</h1>
+      <p>Select exam · Same as MARKS web</p>
+    </div>
+    <div class="marks-tests-hero">${cards || '<div class="empty">No exams for this category.</div>'}</div>
+  </div>`;
+}
+
+function startPyqYearMock(slug, year) {
+  const count = STATE.exam === "Medical" ? 180 : 90;
+  startMockTest(slug, { year, count, title: `PYQ Mock ${year}`, durationSec: STATE.exam === "Medical" ? 3 * 3600 : 3 * 3600 });
 }
 
 // ============ DIGITAL BOOKS (MARKS Selected — real book questions) ============
