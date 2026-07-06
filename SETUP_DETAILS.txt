@@ -64,6 +64,9 @@ Enable in Firebase Console (one-time):
   2. Authentication > Settings > Authorized domains > add quantrexacademy-lemon.vercel.app
   3. Authentication > Users > Add user: quantrexacademy@gmail.com / function13@
   4. Login at: https://quantrexacademy-lemon.vercel.app/login
+     Backup (auth works): https://quantrexacademy-5da32.web.app/login
+  5. Add Vercel domain: run FIREBASE_AUTH_ADD.bat OR add manually in Auth Settings
+     Domain: quantrexacademy-lemon.vercel.app
 
 ================================================================================
 BEST STACK COMBINATION (PRODUCTION)
