@@ -151,6 +151,131 @@ async function fetchChapterMeta(examSlug, subject, chapter) {
   return _chapterMetaCache[key];
 }
 
+const CT_EXAM_FOR_SLUG = {
+  jee_main: "JEE Main", jee_advanced: "JEE Main", nta_abhyas_jee_main: "JEE Main",
+  neet: "NEET", nta_abhyas_neet: "NEET", aiims: "NEET", jipmer: "NEET",
+  mht_cet: "MHT CET", mht_cet_medical: "MHT CET"
+};
+const CT_CLASS_IDS = {
+  "615d7802c52ffa3c944600e8": "Class 11",
+  "615d780ec52ffa3c944600e9": "Class 12"
+};
+const CPYQB_CDN = "https://cdn-assets.getmarks.app/app_assets/img/cpyqb";
+let _marksCtIndex = null;
+
+async function fetchMarksCtIndex() {
+  if (_marksCtIndex) return _marksCtIndex;
+  _marksCtIndex = {};
+  try {
+    const res = await fetch("data/nav/custom_test_exams.json");
+    if (!res.ok) throw new Error(res.status);
+    const data = await res.json();
+    (data.data && data.data.exams || []).forEach(exam => {
+      const bySubject = {};
+      (exam.subjects || []).forEach(sub => {
+        const byChapter = {};
+        (sub.units || []).forEach(unit => {
+          (unit.chapters || []).forEach(ch => {
+            byChapter[ch.title] = {
+              unitId: unit._id,
+              unitTitle: unit.title,
+              classes: (ch.classes || []).map(id => CT_CLASS_IDS[id] || id),
+              syllabusCategory: ch.syllabusCategory || "noChange",
+              icon: ch.icon,
+              shortName: ch.shortName || ch.title,
+              importance: ch.importance || 0
+            };
+          });
+        });
+        bySubject[sub.title] = { units: sub.units || [], byChapter };
+      });
+      _marksCtIndex[exam.title] = bySubject;
+    });
+  } catch (e) {
+    _marksCtIndex = {};
+  }
+  return _marksCtIndex;
+}
+
+function qYearFromSource(source) {
+  const m = String(source || "").match(/\b(20\d{2})\b/);
+  return m ? parseInt(m[1], 10) : null;
+}
+
+function cpyqbYearCounts(qs) {
+  const counts = {};
+  qs.forEach(q => {
+    const y = qYearFromSource(q.source);
+    if (y) counts[y] = (counts[y] || 0) + 1;
+  });
+  return Object.entries(counts).sort((a, b) => Number(b[0]) - Number(a[0])).slice(0, 2);
+}
+
+function cpyqbChapterStats(examSlug, subject, chapterName, total) {
+  const solvedSet = new Set(STATE.solved.map(s => s.id));
+  const qs = QUESTIONS.filter(q => q._bank === examSlug && q.subject === subject && q.chapter === chapterName);
+  const ids = qs.length ? qs.map(q => q.id) : [];
+  let solved = 0;
+  let correct = 0;
+  let lastDate = 0;
+  ids.forEach(id => {
+    if (!solvedSet.has(id)) return;
+    solved++;
+    const rec = STATE.solved.find(s => s.id === id);
+    if (rec && rec.correct) correct++;
+    if (rec && rec.date > lastDate) lastDate = rec.date;
+  });
+  const totalQs = total || qs.length || 0;
+  const accuracy = solved ? Math.round(correct / solved * 100) : 0;
+  return { solved, total: totalQs, accuracy, lastDate, yearCounts: cpyqbYearCounts(qs), weak: solved >= 3 && accuracy < 45 };
+}
+
+function cpyqbChapterIcon(meta) {
+  if (!meta || !meta.icon) return "";
+  const src = meta.icon.startsWith("http") ? meta.icon : `${CPYQB_CDN}/chapters/${meta.icon}`;
+  const letter = (meta.shortName || "?").slice(0, 1).replace(/'/g, "");
+  return `<img class="cpyqb-ch-ic" src="${src}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'cpyqb-ch-ic-fb',textContent:'${letter}'}))">`;
+}
+
+function cpyqbSyllabusBadge(cat) {
+  if (cat === "reduced") return `<span class="cpyqb-syl reduced">REDUCED</span>`;
+  if (cat === "removed") return `<span class="cpyqb-syl removed">REMOVED</span>`;
+  return "";
+}
+
+function bindCpyqbFilters(root) {
+  const bar = (root || document).querySelector("#cpyqbFilterBar");
+  if (!bar || bar._bound) return;
+  bar._bound = true;
+  const apply = () => {
+    const payload = { ..._cpyqbPayload };
+    const cls = bar.querySelector("#cpyqbClass");
+    const unit = bar.querySelector("#cpyqbUnit");
+    if (cls) payload.filterClass = cls.value;
+    if (unit) payload.filterUnit = unit.value;
+    payload.filterNotStarted = !!bar.querySelector("#cpyqbNotStarted")?.checked;
+    payload.filterWeak = !!bar.querySelector("#cpyqbWeak")?.checked;
+    const sort = bar.querySelector("#cpyqbSort");
+    if (sort) payload.sortBy = sort.value;
+    render("cpyqb", payload);
+  };
+  bar.querySelectorAll("select, input[type=checkbox]").forEach(el => {
+    el.onchange = apply;
+  });
+  const sortBtn = bar.querySelector("[data-cpyqb-sort-toggle]");
+  if (sortBtn) {
+    sortBtn.onclick = (e) => {
+      e.preventDefault();
+      const sel = bar.querySelector("#cpyqbSort");
+      if (!sel) return;
+      const opts = ["default", "importance", "progress", "name"];
+      const i = opts.indexOf(sel.value);
+      sel.value = opts[(i + 1) % opts.length];
+      apply();
+    };
+  }
+}
+
 function filterByMarksIds(qs, ids) {
   if (!ids || !ids.length) return qs;
   const set = new Set(ids);
@@ -250,23 +375,92 @@ async function viewCpyqb(payload) {
   if (!subj) return viewCpyqb({ step: "subjects", exam: p.exam });
 
   if (p.step === "chapters" || !p.chapter) {
-    _lastListFn = () => ({ step: "chapters", exam: p.exam, subject: p.subject });
+    _lastListFn = () => ({ step: "chapters", exam: p.exam, subject: p.subject, filterClass: p.filterClass, filterUnit: p.filterUnit, filterNotStarted: p.filterNotStarted, filterWeak: p.filterWeak, sortBy: p.sortBy });
+    if (!_banksLoaded[p.exam]) await loadSingleBank(p.exam);
+    const ctIndex = await fetchMarksCtIndex();
+    const ctExam = CT_EXAM_FOR_SLUG[p.exam];
+    const ctSubj = ctExam && ctIndex[ctExam] ? ctIndex[ctExam][p.subject] : null;
+    const units = ctSubj ? (ctSubj.units || []) : [];
+    const filterClass = p.filterClass || "all";
+    const filterUnit = p.filterUnit || "all";
+    const sortBy = p.sortBy || "default";
+
+    const rows = subj.chapters.map(c => {
+      const ctCh = ctSubj && ctSubj.byChapter ? ctSubj.byChapter[c.name] : null;
+      const stats = cpyqbChapterStats(p.exam, p.subject, c.name, c.count);
+      return { nav: c, ct: ctCh, stats };
+    });
+
+    let filtered = rows.filter(row => {
+      if (filterClass !== "all" && row.ct && !row.ct.classes.includes(filterClass)) return false;
+      if (filterUnit !== "all" && row.ct && row.ct.unitId !== filterUnit) return false;
+      if (p.filterNotStarted && row.stats.solved > 0) return false;
+      if (p.filterWeak && !row.stats.weak) return false;
+      return true;
+    });
+
+    if (sortBy === "importance") filtered.sort((a, b) => (b.ct?.importance || 0) - (a.ct?.importance || 0));
+    else if (sortBy === "progress") filtered.sort((a, b) => b.stats.solved - a.stats.solved);
+    else if (sortBy === "name") filtered.sort((a, b) => a.nav.name.localeCompare(b.nav.name));
+
+    const continueRow = rows
+      .filter(r => r.stats.solved > 0 && r.stats.solved < r.stats.total)
+      .sort((a, b) => b.stats.lastDate - a.stats.lastDate)[0];
+
     const bc = breadcrumb([
       { label: "PYQ Bank", view: "cpyqb", payload: { step: "exams" } },
       { label: exam.title, view: "cpyqb", payload: { step: "subjects", exam: p.exam } },
       { label: p.subject }
     ]);
-    const cards = subj.chapters.map(c => {
-      const parts = [`${c.count} questions`];
-      if (c.buckets && c.buckets.length) parts.push(`${c.buckets.length} buckets`);
-      if (c.topics && c.topics.length) parts.push(`${c.topics.length} subtopics`);
-      return `<div class="ch-card qx-ch-row" ${mg("cpyqb", { step: "chapterHub", exam: p.exam, subject: p.subject, chapter: c.name })}>
-        <div class="qx-ch-body"><strong>${c.name}</strong><small>${parts.join(" · ")}</small></div>
-        ${c.topics && c.topics.length ? `<span class="qx-ch-badge topic">Topicwise</span>` : ""}
-        ${c.buckets && c.buckets.length ? `<span class="qx-ch-badge bucket">Buckets</span>` : ""}
+
+    const continueCard = continueRow ? `<div class="cpyqb-continue" ${mg("cpyqb", { step: "chapterHub", exam: p.exam, subject: p.subject, chapter: continueRow.nav.name })}>
+      <div class="cpyqb-continue-body">
+        <strong>${continueRow.nav.name}</strong>
+        <span class="cpyqb-continue-btn">Continue Solving</span>
+      </div>
+      <div class="cpyqb-continue-prog">
+        <div class="cpyqb-prog-bar"><span style="width:${Math.round(continueRow.stats.solved / Math.max(1, continueRow.stats.total) * 100)}%"></span></div>
+        <small>${continueRow.stats.solved}/${continueRow.stats.total} Qs</small>
+      </div>
+    </div>` : "";
+
+    const classOpts = `<option value="all"${filterClass === "all" ? " selected" : ""}>All Classes</option>
+      <option value="Class 11"${filterClass === "Class 11" ? " selected" : ""}>Class 11</option>
+      <option value="Class 12"${filterClass === "Class 12" ? " selected" : ""}>Class 12</option>`;
+    const unitOpts = `<option value="all"${filterUnit === "all" ? " selected" : ""}>All Units</option>` +
+      units.map(u => `<option value="${u._id}"${filterUnit === u._id ? " selected" : ""}>${u.title}</option>`).join("");
+
+    const filterBar = `<div class="cpyqb-filter-bar" id="cpyqbFilterBar">
+      <span class="cpyqb-filter-label">Filter</span>
+      <select id="cpyqbClass" class="cpyqb-filter-sel">${classOpts}</select>
+      <select id="cpyqbUnit" class="cpyqb-filter-sel">${unitOpts}</select>
+      <label class="cpyqb-filter-chip${p.filterNotStarted ? " on" : ""}"><input type="checkbox" id="cpyqbNotStarted"${p.filterNotStarted ? " checked" : ""}> Not Started</label>
+      <label class="cpyqb-filter-chip${p.filterWeak ? " on" : ""}"><input type="checkbox" id="cpyqbWeak"${p.filterWeak ? " checked" : ""}> Weak Chapter</label>
+      <span class="cpyqb-filter-count">Showing ${filtered.length} chapter${filtered.length === 1 ? "" : "s"}</span>
+      <a href="#" class="cpyqb-sort-link" data-cpyqb-sort-toggle>Sort</a>
+      <select id="cpyqbSort" class="cpyqb-sort-hidden"><option value="default"${sortBy === "default" ? " selected" : ""}>Default</option><option value="importance"${sortBy === "importance" ? " selected" : ""}>Importance</option><option value="progress"${sortBy === "progress" ? " selected" : ""}>Progress</option><option value="name"${sortBy === "name" ? " selected" : ""}>Name</option></select>
+    </div>`;
+
+    const cards = filtered.length ? filtered.map(({ nav: c, ct: ctCh, stats }) => {
+      const yearHtml = stats.yearCounts.length
+        ? stats.yearCounts.map(([y, n]) => `<span class="cpyqb-yr"><em>${y}</em> ${n} Qs</span>`).join("")
+        : `<span class="cpyqb-yr muted">—</span>`;
+      return `<div class="cpyqb-ch-row" ${mg("cpyqb", { step: "chapterHub", exam: p.exam, subject: p.subject, chapter: c.name })}>
+        <div class="cpyqb-ch-left">
+          ${cpyqbChapterIcon(ctCh)}
+          <div class="cpyqb-ch-info">
+            <div class="cpyqb-ch-title">${c.name} ${cpyqbSyllabusBadge(ctCh && ctCh.syllabusCategory)}</div>
+            <div class="cpyqb-ch-years">${yearHtml}</div>
+          </div>
+        </div>
+        <div class="cpyqb-ch-right">
+          <span class="cpyqb-ch-prog">${stats.solved}/${stats.total} Qs</span>
+        </div>
       </div>`;
-    }).join("");
-    return `${topbar(p.subject, exam.title)}${bc}<div class="ch-grid">${cards}</div>`;
+    }).join("") : `<div class="empty">No chapters match these filters.</div>`;
+
+    return `${topbar(`${p.subject} PYQs`, `Chapter-wise Collection of ${p.subject} PYQs`)}
+      ${bc}${continueCard}${filterBar}<div class="cpyqb-ch-list">${cards}</div>`;
   }
 
   const chMetaNav = subj.chapters.find(c => c.name === p.chapter);
@@ -670,56 +864,97 @@ async function viewFormulaMarks(payload) {
   return `${topbar(p.chapter, p.subject)}${bc}<div class="fc-grid">${cards}</div>`;
 }
 
-// ============ QUANTREX TESTS ============
-function viewTests() {
-  const sum = typeof QuantrexAnalytics !== "undefined" ? QuantrexAnalytics.summary() : { attempts: 0, avgPct: 0, bestPct: 0 };
-  const primarySlug = (typeof PRIMARY_BANK !== "undefined" && PRIMARY_BANK[STATE.exam]) || "jee_main";
-  const mockLabel = STATE.exam === "Medical" ? "NEET Full Mock (180 Q)" : "JEE Main Mock (90 Q)";
-  return `${topbar("Assessment Center", "Timed mocks, chapter tests & custom practice")}
-    <div class="dash-stats">
-      <div class="ds"><strong>${sum.attempts}</strong><small>Tests Completed</small></div>
-      <div class="ds"><strong>${sum.avgPct}%</strong><small>Average Score</small></div>
-      <div class="ds"><strong>${sum.bestPct}%</strong><small>Personal Best</small></div>
-      <div class="ds"><strong>${STATE.solved.length}</strong><small>Practice Solved</small></div>
-    </div>
-    <div class="tests-grid">
-      <div class="test-card" ${mg("custom", { step: "landing" })}>
-        <span class="test-ic">🧪</span>
-        <strong>Custom Tests</strong>
-        <small>Select chapters → configure → timed or practice test</small>
-        <button class="btn-primary sm">Create Test →</button>
-      </div>
-      <div class="test-card" onclick="startMockTest('${primarySlug}')">
-        <span class="test-ic">⏱️</span>
-        <strong>${mockLabel}</strong>
-        <small>3-hour simulation with JEE/NEET scoring (+4/−1)</small>
-        <button class="btn-primary sm">Start Mock →</button>
-      </div>
-      <div class="test-card" ${mg("cpyqb", { step: "exams" })}>
-        <span class="test-ic">📋</span>
-        <strong>Chapter PYQ Tests</strong>
-        <small>30-question timed tests from any PYQ chapter</small>
-        <button class="btn-soft sm">Browse PYQs →</button>
-      </div>
-      <div class="test-card" ${mg("dpp", { step: "subjects" })}>
-        <span class="test-ic">📝</span>
-        <strong>DPP Timed Sets</strong>
-        <small>Daily practice with timer & solutions</small>
-        <button class="btn-soft sm">Start DPP →</button>
-      </div>
-      <div class="test-card" onclick="go('analytics')">
-        <span class="test-ic">📊</span>
-        <strong>Performance Analytics</strong>
-        <small>Subject breakdown, history & accuracy trends</small>
-        <button class="btn-soft sm">View Stats →</button>
-      </div>
-      <div class="test-card" ${mg("books", { step: "list" })}>
-        <span class="test-ic">📖</span>
-        <strong>Digital Book Tests</strong>
-        <small>Chapter tests from expert question banks</small>
-        <button class="btn-soft sm">Open Books →</button>
+// ============ QUANTREX TESTS (MARKS-style) ============
+function marksTestSeriesCards() {
+  const soon = (title, sub, tone, logo) => `
+    <div class="mts-card mts-${tone}" onclick="showToast('🚀 Test Series coming soon! Stay tuned.')">
+      <div class="mts-logo">${logo}</div>
+      <div class="mts-body">
+        <strong>${title}</strong>
+        <small>${sub}</small>
+        <span class="mts-soon">Coming Soon</span>
       </div>
     </div>`;
+  if (STATE.exam === "Medical") {
+    return [
+      soon("NEET 2027 Full Test Series", "Full syllabus mocks · 180 questions", "neet", "NEET"),
+      soon("NEET 2027 Part Tests", "Subject-wise & chapter tests", "neet2", "NEET"),
+      soon("AIIMS Pattern Tests", "Advanced difficulty mocks", "aiims", "AIIMS")
+    ].join("");
+  }
+  if (STATE.exam === "Foundation") {
+    return [
+      soon("NDA 2027 Test Series", "Mathematics + GAT full mocks", "nda", "NDA"),
+      soon("NDA Subject Tests", "Topic-wise practice sets", "nda2", "NDA"),
+      soon("Defence GK Tests", "Current affairs & static GK", "gk", "GK")
+    ].join("");
+  }
+  return [
+    soon("JEE Mains + Advanced 2027 Test Series", "Complete JEE preparation package", "jeeboth", "JEE MAIN<br>JEE ADV"),
+    soon("JEE Mains 2027 Test Series", "Main-focused full & part tests", "jeemain", "JEE MAIN"),
+    soon("JEE Advanced 2027 Test Series", "Advanced-level challenge mocks", "jeeadv", "JEE ADV")
+  ].join("");
+}
+
+function viewTests() {
+  const hour = new Date().getHours();
+  const ctCount = 420 + (hour * 17) % 180;
+  const pyqCount = 510 + (hour * 13) % 160;
+  const primarySlug = (typeof PRIMARY_BANK !== "undefined" && PRIMARY_BANK[STATE.exam]) || "jee_main";
+  const examLabel = STATE.exam === "Medical" ? "NEET" : STATE.exam === "Foundation" ? "NDA" : "JEE";
+
+  return `<div class="marks-tests-page">
+    <div class="marks-tests-head">
+      <span class="marks-tests-shield">🛡️</span>
+      <h1>Quantrex Tests</h1>
+    </div>
+    <div class="marks-tests-hero">
+      <div class="mth-card mth-custom" ${mg("custom", { step: "landing" })}>
+        <div class="mth-body">
+          <strong>Create Your Own Test</strong>
+          <small>${ctCount}+ students took a Custom Test in last hour!</small>
+        </div>
+        <span class="mth-ic">🧪</span>
+        <span class="mth-arrow">→</span>
+      </div>
+      <div class="mth-card mth-pyq" ${mg("cpyqb", { step: "exams" })}>
+        <div class="mth-body">
+          <strong>PYQ Mock Tests</strong>
+          <small>${pyqCount}+ students took a PYQ Mock Test in last hour!</small>
+        </div>
+        <span class="mth-ic">📋</span>
+        <span class="mth-arrow">→</span>
+      </div>
+    </div>
+    <div class="marks-ts-section">
+      <h3>India's Most Trusted Test Series</h3>
+      <p class="marks-ts-sub">Brought to you by Quantrex Academy</p>
+      <div class="marks-ts-grid">${marksTestSeriesCards()}</div>
+    </div>
+    <div class="marks-tests-more">
+      <h4 class="sec-title">More Practice Options</h4>
+      <div class="tests-grid">
+        <div class="test-card" onclick="startMockTest('${primarySlug}')">
+          <span class="test-ic">⏱️</span>
+          <strong>${examLabel} Full Mock</strong>
+          <small>Timed simulation with real exam scoring</small>
+          <button class="btn-primary sm">Start Mock →</button>
+        </div>
+        <div class="test-card" ${mg("dpp", { step: "subjects" })}>
+          <span class="test-ic">📝</span>
+          <strong>DPP Timed Sets</strong>
+          <small>Daily practice with timer & solutions</small>
+          <button class="btn-soft sm">Start DPP →</button>
+        </div>
+        <div class="test-card" onclick="go('analytics')">
+          <span class="test-ic">📊</span>
+          <strong>Performance Analytics</strong>
+          <small>Subject breakdown & accuracy trends</small>
+          <button class="btn-soft sm">View Stats →</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
 }
 
 // ============ DIGITAL BOOKS (MARKS Selected — real book questions) ============

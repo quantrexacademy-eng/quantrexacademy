@@ -56,6 +56,9 @@
         .nav-item.active { background: var(--primary-light); color: var(--primary); }
         .nav-item .ic { font-size: 19px; width: 24px; text-align: center; }
         .sidebar-foot { padding: 14px 12px; border-top: 1px solid var(--border); }
+        .sidebar-theme { display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 12px; margin-bottom: 8px; font-size: 13px; font-weight: 600; color: var(--gray); background: none; border: none; border-radius: 10px; cursor: pointer; font-family: inherit; text-align: left; transition: background .15s, color .15s; }
+        .sidebar-theme:hover { background: var(--bg); color: var(--dark); }
+        .sidebar-theme .ic { font-size: 18px; width: 24px; text-align: center; }
         .back-link { display: flex; align-items: center; gap: 10px; padding: 10px 12px; margin-bottom: 8px; font-size: 13px; font-weight: 700; color: var(--primary); text-decoration: none; border-radius: 10px; transition: background .15s; }
         .back-link:hover { background: var(--primary-light); }
         .back-link .ic { font-size: 16px; }
@@ -167,6 +170,78 @@
         .dpp-set-card.level-tough .dpp-level { background: var(--red-light); color: var(--red); }
         .test-card { display: flex; flex-direction: column; gap: 8px; }
         .test-ic { font-size: 32px; }
+
+        /* MARKS-style Tests page */
+        .marks-tests-page { max-width: 720px; margin: 0 auto; }
+        .marks-tests-head { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .marks-tests-head h1 { font-family: 'Kanit'; font-size: 28px; font-weight: 800; margin: 0; }
+        .marks-tests-shield { font-size: 28px; }
+        .marks-tests-hero { display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
+        .mth-card { display: flex; align-items: center; gap: 14px; background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 18px 20px; cursor: pointer; transition: transform .15s, box-shadow .15s, border-color .15s; }
+        .mth-card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px var(--shadow); border-color: var(--primary); }
+        .mth-body { flex: 1; min-width: 0; }
+        .mth-body strong { display: block; font-size: 17px; font-weight: 800; margin-bottom: 4px; }
+        .mth-body small { color: var(--gray); font-size: 13px; }
+        .mth-ic { font-size: 28px; flex-shrink: 0; }
+        .mth-arrow { font-size: 20px; color: var(--gray); font-weight: 700; }
+        .mth-custom { border-left: 4px solid var(--primary); }
+        .mth-pyq { border-left: 4px solid #ec4899; }
+        .marks-ts-section { margin-bottom: 32px; }
+        .marks-ts-section h3 { font-size: 20px; font-weight: 800; margin: 0 0 4px; text-align: center; }
+        .marks-ts-sub { text-align: center; color: var(--gray); font-size: 13px; margin-bottom: 20px; }
+        .marks-ts-grid { display: flex; flex-direction: column; gap: 12px; }
+        .mts-card { display: flex; align-items: stretch; gap: 14px; background: var(--white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; cursor: pointer; transition: transform .15s, opacity .15s; opacity: .92; }
+        .mts-card:hover { transform: translateY(-2px); opacity: 1; }
+        .mts-logo { width: 88px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 900; text-align: center; line-height: 1.2; color: #fff; padding: 12px 8px; }
+        .mts-jeeboth .mts-logo { background: linear-gradient(135deg, #7c3aed, #4f46e5); }
+        .mts-jeemain .mts-logo { background: linear-gradient(135deg, #1e3a5f, #0f172a); }
+        .mts-jeeadv .mts-logo { background: linear-gradient(135deg, #15803d, #166534); }
+        .mts-neet .mts-logo, .mts-neet2 .mts-logo { background: linear-gradient(135deg, #0d9488, #0f766e); }
+        .mts-aiims .mts-logo { background: linear-gradient(135deg, #dc2626, #b91c1c); }
+        .mts-nda .mts-logo, .mts-nda2 .mts-logo { background: linear-gradient(135deg, #1d4ed8, #1e40af); }
+        .mts-gk .mts-logo { background: linear-gradient(135deg, #ca8a04, #a16207); }
+        .mts-body { flex: 1; padding: 14px 14px 14px 0; display: flex; flex-direction: column; justify-content: center; }
+        .mts-body strong { font-size: 15px; font-weight: 700; display: block; margin-bottom: 3px; }
+        .mts-body small { color: var(--gray); font-size: 12px; display: block; margin-bottom: 6px; }
+        .mts-soon { display: inline-block; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; color: var(--orange); background: var(--orange-light); padding: 3px 8px; border-radius: 6px; }
+        .marks-tests-more { margin-top: 8px; }
+
+        /* MARKS-style CPYQB chapter list */
+        .cpyqb-continue { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; margin-bottom: 16px; cursor: pointer; transition: border-color .15s, box-shadow .15s; }
+        .cpyqb-continue:hover { border-color: var(--primary); box-shadow: 0 6px 18px var(--shadow); }
+        .cpyqb-continue-body strong { display: block; font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+        .cpyqb-continue-btn { display: inline-block; font-size: 12px; font-weight: 700; color: var(--primary); background: var(--primary-light); padding: 4px 10px; border-radius: 8px; }
+        .cpyqb-continue-prog { text-align: right; min-width: 100px; }
+        .cpyqb-prog-bar { width: 100px; height: 6px; background: var(--bg); border-radius: 99px; overflow: hidden; margin-bottom: 4px; margin-left: auto; }
+        .cpyqb-prog-bar span { display: block; height: 100%; background: var(--primary); border-radius: 99px; }
+        .cpyqb-continue-prog small { color: var(--gray); font-size: 12px; font-weight: 600; }
+        .cpyqb-filter-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 14px; padding: 10px 12px; background: var(--white); border: 1px solid var(--border); border-radius: 12px; }
+        .cpyqb-filter-label { font-size: 13px; font-weight: 700; color: var(--gray); margin-right: 4px; }
+        .cpyqb-filter-sel { padding: 6px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 12px; font-weight: 600; font-family: inherit; background: var(--bg); color: var(--dark); cursor: pointer; }
+        .cpyqb-filter-chip { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; padding: 6px 12px; border: 1px solid var(--border); border-radius: 20px; cursor: pointer; user-select: none; transition: border-color .12s, background .12s; }
+        .cpyqb-filter-chip.on { border-color: var(--orange); background: var(--orange-light); color: #9a6b00; }
+        .cpyqb-filter-chip input { display: none; }
+        .cpyqb-filter-count { font-size: 12px; color: var(--gray); margin-left: auto; }
+        .cpyqb-sort-link { font-size: 12px; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .cpyqb-sort-hidden { position: absolute; opacity: 0; pointer-events: none; width: 0; height: 0; }
+        .cpyqb-ch-list { display: flex; flex-direction: column; gap: 8px; }
+        .cpyqb-ch-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; cursor: pointer; transition: border-color .12s, transform .12s; }
+        .cpyqb-ch-row:hover { border-color: var(--primary); transform: translateX(2px); }
+        .cpyqb-ch-left { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+        .cpyqb-ch-ic { width: 36px; height: 36px; border-radius: 10px; object-fit: contain; flex-shrink: 0; }
+        .cpyqb-ch-ic-fb { width: 36px; height: 36px; border-radius: 10px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0; }
+        .cpyqb-ch-title { font-size: 14px; font-weight: 700; line-height: 1.35; margin-bottom: 4px; }
+        .cpyqb-syl { font-size: 9px; font-weight: 800; letter-spacing: .04em; vertical-align: middle; margin-left: 6px; padding: 2px 6px; border-radius: 4px; }
+        .cpyqb-syl.reduced { color: #dc2626; background: var(--red-light); }
+        .cpyqb-syl.removed { color: #991b1b; background: #fecaca; }
+        .cpyqb-ch-years { display: flex; flex-wrap: wrap; gap: 10px; }
+        .cpyqb-yr { font-size: 11px; color: var(--gray); font-weight: 600; }
+        .cpyqb-yr em { font-style: normal; font-weight: 800; color: var(--dark); margin-right: 3px; }
+        .cpyqb-yr.muted { opacity: .5; }
+        .cpyqb-ch-prog { font-size: 12px; font-weight: 700; color: var(--gray); white-space: nowrap; }
+        [data-theme="dark"] .mth-card, [data-theme="dark"] .mts-card, [data-theme="dark"] .cpyqb-continue,
+        [data-theme="dark"] .cpyqb-filter-bar, [data-theme="dark"] .cpyqb-ch-row { background: var(--card); }
+        [data-theme="dark"] .cpyqb-filter-sel { background: var(--bg); color: var(--text); }
         .marks-section { margin-bottom: 24px; }
         .marks-sec-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
         .marks-sec-head h3 { font-size: 18px; font-weight: 700; margin: 0; }
@@ -587,6 +662,9 @@
                 <div class="nav-item" data-view="profile"><span class="ic">👤</span> Profile</div>
             </nav>
             <div class="sidebar-foot">
+                <button type="button" class="sidebar-theme" id="sidebarThemeToggle" title="Toggle light/dark mode">
+                    <span class="ic">🌙</span><span class="st-label">Turn on dark mode</span>
+                </button>
                 <a href="index.html" class="back-link"><span class="ic">🌐</span> Back to Website</a>
                 <div class="exam-pill" onclick="go('profile')">
                     <span class="dot"></span>

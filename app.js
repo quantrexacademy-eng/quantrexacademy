@@ -21,6 +21,7 @@ function finishRender(html) {
   document.getElementById("examPill").textContent = EXAMS[STATE.exam].name;
   bindDynamic();
   if (typeof bindMarksGo === "function") bindMarksGo(main);
+  if (typeof bindCpyqbFilters === "function") bindCpyqbFilters(main);
   if (typeof bindMarksInfiniteScroll === "function") bindMarksInfiniteScroll(main);
   if (typeof bindBooksOpen === "function") bindBooksOpen(main);
   if (typeof QuantrexSearch !== "undefined") QuantrexSearch.bind(main);
