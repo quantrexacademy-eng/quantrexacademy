@@ -159,6 +159,23 @@ function ctSyllabusBadge(cat) {
   return `<span class="ct-syl ${x.cls}">${x.label}</span>`;
 }
 
+function ctFromTests() {
+  return !!(_ctPayload && _ctPayload.fromTests);
+}
+
+function ctMarksShell(title, subtitle, backHtml, body) {
+  return `<div class="marks-ct-page">
+    <div class="marks-ct-top">
+      ${backHtml}
+      <div class="marks-ct-head-text">
+        <h1>${title}</h1>
+        ${subtitle ? `<p>${subtitle}</p>` : ""}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
 function ctStepBar(step) {
   const steps = [
     { id: 1, label: "Select Chapters" },
@@ -298,9 +315,8 @@ function ctChaptersHtml(draft) {
     `<span class="ct-sel-chip">${c.subjectTitle}: ${c.shortName || c.title}</span>`
   ).join("") + (selected.length > 8 ? `<span class="ct-sel-chip more">+${selected.length - 8} more</span>` : "");
 
-  return `${topbar("Create Test", draft.examTitle)}
-    <div class="breadcrumb"><a href="#" onclick="ctResetWizard();go('custom',{step:'landing'});return false;">Custom Tests</a><span>›</span><span class="bc-cur">Select Chapters</span></div>
-    ${ctStepBar("chapters")}
+  const body = `${ctStepBar("chapters")}
+    <div class="ct-exam-badge">${draft.examIcon ? `<img src="${draft.examIcon}" alt="">` : ""}<span>${draft.examTitle}</span></div>
     <div class="ct-chapters-layout">
       <div class="ct-chapters-main">
         <div class="ct-toolbar">
@@ -318,6 +334,13 @@ function ctChaptersHtml(draft) {
       <span><strong>${selected.length}</strong> chapters · ${sub.meta.title}</span>
       <button type="button" class="btn-primary" ${selected.length ? "" : "disabled"} onclick="ctGoSettings()">Continue →</button>
     </div>`;
+  if (ctFromTests()) {
+    return ctMarksShell("Create Your Own Test", "Select chapters for your custom test",
+      `<button type="button" class="marks-ct-back" onclick="ctResetWizard();go('tests')">←</button>`, body);
+  }
+  return `${topbar("Create Test", draft.examTitle)}
+    <div class="breadcrumb"><a href="#" onclick="ctResetWizard();go('custom',{step:'landing'});return false;">Custom Tests</a><span>›</span><span class="bc-cur">Select Chapters</span></div>
+    ${body}`;
 }
 
 function ctSettingsHtml(draft) {
@@ -350,9 +373,7 @@ function ctSettingsHtml(draft) {
   const durationMin = draft.mode === "timed" ? Math.ceil((draft.totalQs * draft.timePerQ) / 60) : null;
   const summary = selected.map(c => `<span class="ct-sum-chip">${c.subjectTitle}: ${c.shortName || c.title}</span>`).join("");
 
-  return `${topbar("Test Settings", `${selected.length} chapters · ${subjCount} subject${subjCount !== 1 ? "s" : ""}`)}
-    <div class="breadcrumb"><a href="#" onclick="go('custom',{step:'chapters'});return false;">Select Chapters</a><span>›</span><span class="bc-cur">Test Settings</span></div>
-    ${ctStepBar("settings")}
+  const body = `${ctStepBar("settings")}
     <div class="ct-settings-layout">
       <div class="ct-settings-main">
         <section class="ct-panel">
@@ -396,9 +417,16 @@ function ctSettingsHtml(draft) {
       </aside>
     </div>
     <div class="ct-sticky-foot">
-      <button type="button" class="btn-soft" onclick="go('custom', { step: 'chapters' })">← Back</button>
+      <button type="button" class="btn-soft" onclick="go('custom', { step: 'chapters', fromTests: ${ctFromTests()} })">← Back</button>
       <button type="button" class="btn-primary" onclick="ctGenerateTest()">Create Test</button>
     </div>`;
+  if (ctFromTests()) {
+    return ctMarksShell("Test Settings", `${selected.length} chapters · ${subjCount} subject${subjCount !== 1 ? "s" : ""}`,
+      `<button type="button" class="marks-ct-back" onclick="go('custom',{step:'chapters',fromTests:true})">←</button>`, body);
+  }
+  return `${topbar("Test Settings", `${selected.length} chapters · ${subjCount} subject${subjCount !== 1 ? "s" : ""}`)}
+    <div class="breadcrumb"><a href="#" onclick="go('custom',{step:'chapters'});return false;">Select Chapters</a><span>›</span><span class="bc-cur">Test Settings</span></div>
+    ${body}`;
 }
 
 function ctGeneratingHtml() {
@@ -411,9 +439,15 @@ function ctGeneratingHtml() {
 }
 
 async function viewCustomTests(payload) {
+  const keepFromTests = _ctPayload.fromTests;
   const p = { ..._ctPayload, ...(payload || {}) };
+  if (p.fromTests == null && keepFromTests) p.fromTests = keepFromTests;
   _ctPayload = p;
   await fetchCtExams();
+
+  if (p.fromTests && (p.step === "landing" || !p.step)) {
+    return viewCustomTests({ step: "chapters", _draftInit: true, fromTests: true });
+  }
 
   if (p.step === "landing" || !p.step) {
     const tests = ctLoadTests();
@@ -429,6 +463,7 @@ async function viewCustomTests(payload) {
   if (p.step === "chapters") {
     if (p._draftInit || !_ctDraft) _ctDraft = ctNewDraft(ctExamForState());
     if (_ctDraft && !(_ctDraft.collapsedUnits instanceof Set)) _ctDraft.collapsedUnits = new Set();
+    _ctPayload.fromTests = !!p.fromTests;
     return ctChaptersHtml(_ctDraft);
   }
   if (p.step === "settings") return ctSettingsHtml(_ctDraft);
@@ -439,13 +474,13 @@ async function viewCustomTests(payload) {
 function ctSetSubject(id) {
   if (!_ctDraft) return;
   _ctDraft.activeSubjectId = id;
-  render("custom", { step: "chapters" });
+  render("custom", { step: "chapters", fromTests: ctFromTests() });
 }
 
 function ctSetSearch(v) {
   if (!_ctDraft) return;
   _ctDraft.search = v;
-  render("custom", { step: "chapters" });
+  render("custom", { step: "chapters", fromTests: ctFromTests() });
 }
 
 function ctSetSyllabusFilter(hideOut) {

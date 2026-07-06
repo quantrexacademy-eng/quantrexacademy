@@ -913,7 +913,7 @@ function viewTests() {
       <h1>Quantrex Tests</h1>
     </div>
     <div class="marks-tests-hero">
-      <div class="mth-card" ${mg("custom", { step: "landing" })}>
+      <div class="mth-card" ${mg("custom", { step: "chapters", _draftInit: true, fromTests: true })}>
         <div class="mth-body">
           <strong>Create Your Own Test</strong>
           <small>${ctCount}+ students took a Custom Test in last hour!</small>
@@ -939,6 +939,59 @@ function viewTests() {
 }
 
 let _pyqMockPayload = { step: "exams" };
+let _pyqPaperIndex = {};
+
+function pyqPaperLabel(source) {
+  const m = String(source || "").match(/\(([^)]+)\)\s*$/);
+  return m ? m[1] : String(source || "Paper");
+}
+
+function pyqSubjectLine(subjects) {
+  return Object.entries(subjects || {})
+    .map(([s, n]) => `${s}: ${n}`)
+    .join(" · ");
+}
+
+function pyqPaperDuration(count) {
+  if (STATE.exam === "Medical" || count >= 150) return 200 * 60;
+  return 180 * 60;
+}
+
+async function buildPyqPaperIndex(slug) {
+  if (_pyqPaperIndex[slug]) return _pyqPaperIndex[slug];
+  if (!_banksLoaded[slug]) await loadSingleBank(slug);
+  const papers = {};
+  QUESTIONS.filter(q => q._bank === slug).forEach(q => {
+    const src = q.source || "Unknown";
+    if (!papers[src]) {
+      papers[src] = { source: src, count: 0, subjects: {}, ids: [], year: qYearFromSource(src) };
+    }
+    papers[src].count++;
+    papers[src].subjects[q.subject] = (papers[src].subjects[q.subject] || 0) + 1;
+    papers[src].ids.push(q.id);
+  });
+  const byYear = {};
+  Object.values(papers).forEach(p => {
+    const y = String(p.year || "Other");
+    if (!byYear[y]) byYear[y] = [];
+    byYear[y].push(p);
+  });
+  Object.keys(byYear).forEach(y => {
+    byYear[y].sort((a, b) => b.source.localeCompare(a.source));
+  });
+  _pyqPaperIndex[slug] = byYear;
+  return byYear;
+}
+
+function pyqMockBackBar(step, exam, year) {
+  if (step === "papers" && exam && year) {
+    return `<button type="button" class="pyqmock-back" ${mg("pyqmock", { step: "years", exam })}>← ${year}</button>`;
+  }
+  if (step === "years" && exam) {
+    return `<button type="button" class="pyqmock-back" ${mg("pyqmock", { step: "exams" })}>← All Exams</button>`;
+  }
+  return `<button type="button" class="pyqmock-back" onclick="go('tests')">← Tests</button>`;
+}
 
 async function viewPyqMock(payload) {
   const p = { ..._pyqMockPayload, ...(payload || {}) };
@@ -946,29 +999,60 @@ async function viewPyqMock(payload) {
   const nav = await fetchNav("cpyqb");
   const exams = nav.filter(e => e.category === STATE.exam);
 
+  if (p.step === "papers" && p.exam && p.year) {
+    const exam = exams.find(e => e.slug === p.exam);
+    if (!exam) return viewPyqMock({ step: "exams" });
+    const byYear = await buildPyqPaperIndex(p.exam);
+    const papers = byYear[String(p.year)] || [];
+    const cards = papers.map(paper => {
+      const srcEnc = encodeURIComponent(paper.source);
+      const subLine = pyqSubjectLine(paper.subjects);
+      return `<div class="pyqmock-paper-card" onclick="startPyqPaperMock('${p.exam}', decodeURIComponent('${srcEnc}'))">
+        <div class="pyqmock-paper-main">
+          <strong>${pyqPaperLabel(paper.source)}</strong>
+          <small>${subLine}</small>
+        </div>
+        <div class="pyqmock-paper-meta">
+          <span class="pyqmock-full-badge">Full Paper</span>
+          <span class="pyqmock-qcount">${paper.count} Qs</span>
+          <span class="pyqmock-go">Start →</span>
+        </div>
+      </div>`;
+    }).join("");
+    return `<div class="marks-tests-page pyqmock-page">
+      ${pyqMockBackBar("papers", p.exam, p.year)}
+      <div class="cpyqb-marks-head">
+        <h1>${exam.title} ${p.year}</h1>
+        <p>${papers.length} full paper${papers.length === 1 ? "" : "s"} · ${STATE.exam === "Medical" ? "3 hr 20 min" : "3 hr"} each</p>
+      </div>
+      <div class="pyqmock-paper-list">${cards || '<div class="empty">No papers for this year.</div>'}</div>
+    </div>`;
+  }
+
   if (p.step === "years" && p.exam) {
     const exam = exams.find(e => e.slug === p.exam);
     if (!exam) return viewPyqMock({ step: "exams" });
-    if (!_banksLoaded[p.exam]) await loadSingleBank(p.exam);
-    const years = {};
-    QUESTIONS.filter(q => q._bank === p.exam).forEach(q => {
-      const y = qYearFromSource(q.source);
-      if (y) years[y] = (years[y] || 0) + 1;
-    });
-    const yearList = Object.entries(years).sort((a, b) => Number(b[0]) - Number(a[0])).slice(0, 10);
-    const cards = yearList.map(([y, n]) => `
-      <div class="pyqmock-year-card" onclick="startPyqYearMock('${p.exam}', ${y})">
+    const byYear = await buildPyqPaperIndex(p.exam);
+    const yearList = Object.keys(byYear)
+      .filter(y => y !== "Other")
+      .sort((a, b) => Number(b) - Number(a));
+    const cards = yearList.map(y => {
+      const papers = byYear[y];
+      const totalQs = papers.reduce((s, x) => s + x.count, 0);
+      return `<div class="pyqmock-year-card" ${mg("pyqmock", { step: "papers", exam: p.exam, year: y })}>
         <strong>${y}</strong>
-        <small>${n.toLocaleString()} PYQs</small>
-        <span class="pyqmock-go">Start Mock →</span>
-      </div>`).join("");
-    return `<div class="marks-tests-page">
+        <small>${papers.length} Full Paper${papers.length === 1 ? "" : "s"}</small>
+        <em>${totalQs.toLocaleString()} Questions</em>
+        <span class="pyqmock-go">View Papers →</span>
+      </div>`;
+    }).join("");
+    return `<div class="marks-tests-page pyqmock-page">
+      ${pyqMockBackBar("years", p.exam)}
       <div class="cpyqb-marks-head">
         <h1>PYQ Mock Tests</h1>
-        <p>${exam.title} · Year-wise timed mocks</p>
+        <p>${exam.title} · Select year</p>
       </div>
-      <button type="button" class="btn-soft sm" style="margin-bottom:16px" ${mg("pyqmock", { step: "exams" })}>← All Exams</button>
-      <div class="pyqmock-year-grid">${cards || '<div class="empty">No PYQ data for this exam yet.</div>'}</div>
+      <div class="pyqmock-year-grid">${cards || '<div class="empty">No PYQ papers for this exam.</div>'}</div>
     </div>`;
   }
 
@@ -976,23 +1060,37 @@ async function viewPyqMock(payload) {
     <div class="mth-card" ${mg("pyqmock", { step: "years", exam: e.slug })}>
       <div class="mth-body">
         <strong>${e.title}</strong>
-        <small>${e.count.toLocaleString()} PYQs · Pick year</small>
+        <small>${e.count.toLocaleString()} PYQs · Year-wise full papers</small>
       </div>
       <div class="mth-sq mth-sq-pink"></div>
       <span class="mth-arrow">›</span>
     </div>`).join("");
-  return `<div class="marks-tests-page">
+  return `<div class="marks-tests-page pyqmock-page">
+    ${pyqMockBackBar("exams")}
     <div class="cpyqb-marks-head">
       <h1>PYQ Mock Tests</h1>
-      <p>Select exam · Same as MARKS web</p>
+      <p>Full exam papers · Year & shift wise — same as MARKS</p>
     </div>
     <div class="marks-tests-hero">${cards || '<div class="empty">No exams for this category.</div>'}</div>
   </div>`;
 }
 
-function startPyqYearMock(slug, year) {
-  const count = STATE.exam === "Medical" ? 180 : 90;
-  startMockTest(slug, { year, count, title: `PYQ Mock ${year}`, durationSec: STATE.exam === "Medical" ? 3 * 3600 : 3 * 3600 });
+async function startPyqPaperMock(slug, source) {
+  if (!_banksLoaded[slug]) await loadSingleBank(slug);
+  const qs = QUESTIONS.filter(q => q._bank === slug && q.source === source);
+  if (!qs.length) {
+    showToast("⚠️ Paper not found. Try again.");
+    return;
+  }
+  const ids = qs.map(q => q.id);
+  const duration = pyqPaperDuration(qs.length);
+  startTest(ids, source, "tests", {
+    testType: "pyqmock",
+    timed: true,
+    durationSec: duration,
+    shuffle: false,
+    modeLabel: `Full Paper · ${qs.length} Qs · ${Math.floor(duration / 60)} min`
+  });
 }
 
 // ============ DIGITAL BOOKS (MARKS Selected — real book questions) ============

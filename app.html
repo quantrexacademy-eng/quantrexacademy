@@ -203,12 +203,32 @@
         .mts-body { flex: 1; padding: 16px 18px; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
         .mts-body strong { font-size: 15px; font-weight: 700; line-height: 1.35; }
         .mts-details { font-size: 13px; font-weight: 700; color: var(--primary); }
-        .pyqmock-year-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
-        .pyqmock-year-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px 16px; cursor: pointer; text-align: center; transition: border-color .12s; }
-        .pyqmock-year-card:hover { border-color: #ec4899; }
-        .pyqmock-year-card strong { display: block; font-size: 22px; font-weight: 900; margin-bottom: 4px; }
-        .pyqmock-year-card small { display: block; color: var(--gray); font-size: 12px; margin-bottom: 8px; }
+        .pyqmock-page { padding-bottom: 24px; }
+        .pyqmock-back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 16px; padding: 8px 14px; border: 1px solid var(--border); border-radius: 10px; background: var(--card); font-size: 13px; font-weight: 700; font-family: inherit; color: var(--gray); cursor: pointer; }
+        .pyqmock-back:hover { color: var(--dark); border-color: var(--primary); }
+        .pyqmock-year-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+        .pyqmock-year-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px 16px; cursor: pointer; text-align: center; transition: border-color .12s, transform .12s; }
+        .pyqmock-year-card:hover { border-color: #ec4899; transform: translateY(-2px); }
+        .pyqmock-year-card strong { display: block; font-size: 26px; font-weight: 900; margin-bottom: 6px; }
+        .pyqmock-year-card small { display: block; color: var(--dark); font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+        .pyqmock-year-card em { display: block; color: var(--gray); font-size: 11px; font-style: normal; margin-bottom: 10px; }
         .pyqmock-go { font-size: 12px; font-weight: 700; color: var(--primary); }
+        .pyqmock-paper-list { display: flex; flex-direction: column; gap: 10px; }
+        .pyqmock-paper-card { display: flex; align-items: center; justify-content: space-between; gap: 14px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; cursor: pointer; transition: border-color .12s, transform .12s; }
+        .pyqmock-paper-card:hover { border-color: #ec4899; transform: translateX(3px); }
+        .pyqmock-paper-main { flex: 1; min-width: 0; }
+        .pyqmock-paper-main strong { display: block; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+        .pyqmock-paper-main small { color: var(--gray); font-size: 12px; line-height: 1.4; }
+        .pyqmock-paper-meta { text-align: right; flex-shrink: 0; }
+        .pyqmock-full-badge { display: block; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; color: #ec4899; margin-bottom: 4px; }
+        .pyqmock-qcount { display: block; font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+        .marks-ct-page { max-width: 100%; }
+        .marks-ct-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+        .marks-ct-back { width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--border); background: var(--card); font-size: 18px; cursor: pointer; flex-shrink: 0; color: var(--gray); }
+        .marks-ct-back:hover { border-color: var(--primary); color: var(--primary); }
+        .marks-ct-head-text h1 { font-family: 'Kanit'; font-size: 24px; font-weight: 800; margin: 0 0 4px; }
+        .marks-ct-head-text p { color: var(--gray); font-size: 14px; margin: 0; }
+        [data-theme="dark"] .pyqmock-paper-card, [data-theme="dark"] .pyqmock-year-card, [data-theme="dark"] .pyqmock-back, [data-theme="dark"] .marks-ct-back { background: var(--card); }
 
         /* MARKS web — CPYQB chapter page */
         .cpyqb-marks-page { max-width: 100%; }
