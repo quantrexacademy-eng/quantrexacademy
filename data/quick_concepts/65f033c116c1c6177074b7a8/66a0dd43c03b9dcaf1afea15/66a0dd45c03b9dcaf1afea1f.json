@@ -1,0 +1,28 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd43c03b9dcaf1afea15",
+  "topicId": "66a0dd45c03b9dcaf1afea1f",
+  "title": "Differentiation and Integration of Determinants",
+  "concepts": [
+    {
+      "title": "Differentiation of determinant",
+      "conceptBody": "<h3>Differential coefficient of a determinant</h3><p>Let $y=\\left| \\begin{array}{*{35}{l}} {{f}_{1}}(x) &amp; {{f}_{2}}(x) &amp; {{f}_{3}}(x) \\\\ {{g}_{1}}(x) &amp; {{g}_{2}}(x) &amp; {{g}_{3}}(x) \\\\ {{h}_{1}}(x) &amp; {{h}_{2}}(x) &amp; {{h}_{3}}(x) \\\\ \\end{array} \\right|$ where ${{f}_{i}}(x),{{g}_{i}}(x),{{h}_{i}}(x),i=1,2,3$ are differentiable functions of $x$.&nbsp;</p><p>\\(\\frac{d y}{d x}=\\left|\\begin{array}{lll} f_1^{\\prime}(x) &amp; f_2^{\\prime}(x) &amp; f_3^{\\prime}(x) \\\\ g_1(x) &amp; g_2(x) &amp; g_3(x) \\\\ h_1(x) &amp; h_2(x) &amp; h_3(x) \\end{array}\\right|+\\left|\\begin{array}{lll} f_1(x) &amp; f_2(x) &amp; f_3(x) \\\\ g_1^{\\prime}(x) &amp; g_2^{\\prime}(x) &amp; g_3^{\\prime}(x) \\\\ h_1(x) &amp; h_2(x) &amp; h_3(x) \\end{array}\\right|\\)\\(+\\left|\\begin{array}{lll} f_1(x) &amp; f_2(x) &amp; f_3(x) \\\\ g_1(x) &amp; g_2(x) &amp; g_3(x) \\\\ h_1^{\\prime}(x) &amp; h_2^{\\prime}(x) &amp; h_3^{\\prime}(x) \\end{array}\\right|\\)</p>",
+      "position": 0,
+      "qcConcept": "66a0dd45c03b9dcaf1afea20"
+    },
+    {
+      "title": "Integration of determinant",
+      "conceptBody": "<h3>Integration of a Determinant</h3><p>If $f(x)=\\left| \\begin{matrix} f &amp; g &amp; h \\\\ a &amp; b &amp; c \\\\ {{a}_{1}} &amp; {{b}_{1}} &amp; {{c}_{1}} \\\\ \\end{matrix} \\right|$</p><p>when $\\text{f},\\text{g},\\text{h}$ are the function of $\\text{x}$ and $\\text{a},\\text{b},\\text{c},{{\\text{a}}_{1}},~{{\\text{b}}_{1}},{{\\text{c}}_{1}}$ are constants, then</p><p>$\\int_{\\lambda }^{\\mu }{F}(x)dx=\\left| \\begin{matrix} \\int_{\\lambda }^{\\mu }{fdx} &amp; \\int_{\\lambda }^{\\mu }{gdx} &amp; \\int_{\\lambda }^{\\mu }{hdx} \\\\ a &amp; b &amp; c \\\\ {{a}_{1}} &amp; ~{{b}_{1}} &amp; {{c}_{1}} \\\\ \\end{matrix} \\right|$</p><p>Also if $F(x)=\\left| \\begin{array}{*{35}{l}} f &amp; a &amp; {{a}_{1}} \\\\ g &amp; b &amp; {{b}_{1}} \\\\ h &amp; c &amp; {{c}_{1}} \\\\ \\end{array} \\right|$</p><p>then $\\int_{\\lambda }^{\\mu }{\\mathbf{F}}(\\text{x})\\text{dx}=\\left| \\begin{array}{*{35}{l}} \\int_{\\lambda }^{\\mu }{\\text{fdx}} &amp; \\text{a} &amp; {{\\text{a}}_{1}} \\\\ \\int_{\\lambda }^{\\mu }{\\text{gdx}} &amp; \\text{b} &amp; {{\\text{b}}_{1}} \\\\ \\int_{\\lambda }^{\\mu }{\\text{hdx}} &amp; \\text{c} &amp; {{\\text{c}}_{1}} \\\\ \\end{array} \\right|$</p>",
+      "position": 1,
+      "qcConcept": "66a0dd45c03b9dcaf1afea21"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f422d384bfb4a537fdb",
+      "title": "$\\Delta(x)=\\left|\\begin{array}{ccc}x^n & \\sin x & \\cos x \\\\ n! & \\sin \\frac{n \\pi}{2} & \\cos \\frac{n \\pi}{2} \\\\ a & a^2 & a^3\\end{array}\\right|$ then the value of $\\frac{d^n}{d x^n}[\\Delta(x)]$ at $x=0$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d379647479b8e869647b",
+  "chapterId": "680920073a10446a207fdd71",
+  "subject": "Mathematics",
+  "chapter": "Matrices",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6809206a3a10446a207fe1f8",
+      "title": "Formation and Basic of Matrix",
+      "count": 1,
+      "questionIds": [
+        "680920083a10446a207fdd72"
+      ]
+    },
+    {
+      "id": "68e78b5e6105b8763ce72cb1",
+      "title": "Determinants",
+      "count": 1,
+      "questionIds": [
+        "68e78b0d6105b8763ce72c6c"
+      ]
+    },
+    {
+      "id": "6809206a3a10446a207fe1fd",
+      "title": "Basic Algebra of Matrices",
+      "count": 2,
+      "questionIds": [
+        "680920283a10446a207fdec0",
+        "680920213a10446a207fde79"
+      ]
+    },
+    {
+      "id": "6809206a3a10446a207fe1f9",
+      "title": "Product of Matrices",
+      "count": 7,
+      "questionIds": [
+        "680920273a10446a207fdeb4",
+        "680920203a10446a207fde70",
+        "6809201f3a10446a207fde60",
+        "680920143a10446a207fddfa",
+        "680920123a10446a207fdddf",
+        "680920103a10446a207fddca",
+        "6809200b3a10446a207fdd97"
+      ]
+    },
+    {
+      "id": "6809206a3a10446a207fe1fa",
+      "title": "Trace of a Matrix",
+      "count": 1,
+      "questionIds": [
+        "6809200e3a10446a207fddbb"
+      ]
+    },
+    {
+      "id": "6809206a3a10446a207fe1fb",
+      "title": "Symmetric & Skew Symmetric Matrices",
+      "count": 1,
+      "questionIds": [
+        "680920173a10446a207fde13"
+      ]
+    },
+    {
+      "id": "6809206a3a10446a207fe1fc",
+      "title": "Adjoint and its Properties",
+      "count": 1,
+      "questionIds": [
+        "680920183a10446a207fde21"
+      ]
+    },
+    {
+      "id": "6809206a3a10446a207fe1f7",
+      "title": "Inverse of a Matrix",
+      "count": 4,
+      "questionIds": [
+        "680920213a10446a207fde77",
+        "680920173a10446a207fde17",
+        "680920173a10446a207fde10",
+        "680920073a10446a207fdd6f"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b34d4b564dfab4f94cc",
+  "chapterId": "66d58534a75f05ee8564f531",
+  "subject": "Physics",
+  "chapter": "Center of Mass Momentum and Collision",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d58695a75f05ee85650279",
+      "title": "momentum",
+      "count": 8,
+      "questionIds": [
+        "66d5865ca75f05ee85650004",
+        "66d5865ca75f05ee8564fffe",
+        "66d585e9a75f05ee8564fbd1",
+        "66d585d9a75f05ee8564fb3e",
+        "66d585d6a75f05ee8564fb26",
+        "66d5858ba75f05ee8564f873",
+        "66d58579a75f05ee8564f7cd",
+        "66d58534a75f05ee8564f52f"
+      ]
+    },
+    {
+      "id": "66d58695a75f05ee8565027e",
+      "title": "Centre of mass of discrete particles",
+      "count": 2,
+      "questionIds": [
+        "66d58622a75f05ee8564fde9",
+        "66d5860fa75f05ee8564fd36"
+      ]
+    },
+    {
+      "id": "66d58695a75f05ee8565027c",
+      "title": "Centre of mass of continuous mass distribution",
+      "count": 2,
+      "questionIds": [
+        "66d5860aa75f05ee8564fd06",
+        "66d5858da75f05ee8564f887"
+      ]
+    },
+    {
+      "id": "66d58695a75f05ee8565027d",
+      "title": "Motion of centre of mass",
+      "count": 1,
+      "questionIds": [
+        "66d585d9a75f05ee8564fb41"
+      ]
+    },
+    {
+      "id": "66d58695a75f05ee8565027a",
+      "title": "Impulse",
+      "count": 2,
+      "questionIds": [
+        "66d5865ba75f05ee8564fff6",
+        "66d58535a75f05ee8564f538"
+      ]
+    },
+    {
+      "id": "66d58695a75f05ee8565027b",
+      "title": "Collisions",
+      "count": 5,
+      "questionIds": [
+        "66d5865aa75f05ee8564ffeb",
+        "66d58636a75f05ee8564fe9f",
+        "66d58622a75f05ee8564fde5",
+        "66d5860da75f05ee8564fd24",
+        "66d5856aa75f05ee8564f73a"
+      ]
+    }
+  ]
+}

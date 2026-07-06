@@ -1,0 +1,46 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dda6c03b9dcaf1afec15",
+  "topicId": "66a0dda9c03b9dcaf1afec21",
+  "title": "Independent Events",
+  "concepts": [
+    {
+      "title": "Independent Events",
+      "conceptBody": "<h3><strong>Independent events</strong></h3><p>Two or more events are said to be independent if the probability of occurrence of any of them does not change by the occurrence of other.</p><p>For example:</p><p>If two coins are tossed, then the occurrence of either heads or tail on the coins is independent. i.e. there can be anything on the either of coins.</p><p>But, now consider the scenario.</p><p>A bag contains 5 white and 5 black balls.</p><p>Now we define 2 events $A$ and $B$ such that</p><p>$\\text{ A }\\text{ : }\\text{ first }\\text{ ball }\\text{ drawn }\\text{ is }\\text{ black }\\text{ without }\\text{ replacement}\\text{. }$</p><p>$\\text{ B }\\text{ : }\\text{ second }\\text{ ball }\\text{ drawn }\\text{ is }\\text{ again }\\text{ black}\\text{. }$</p><p>here A &amp; B are not independent as the event B depends on the outcome of event A. (for example now in case of event $\\text{B}$, only 4 black balls are available to choose from)</p><p><strong>Mutually exclusive and independent events</strong></p><p>Let us do the definition of mutual exclusive event once more to understand the difference.</p><p>Two events are mutually exclusive events if they cannot occur simultaneously.</p><p>Students generally confuse the word simultaneously with occurrence term in independent events. They are irrelevant.</p><p>Mutual exclusion is the property of events occurring at same stage i.e. at same point of time. Like occurrence head and tail on a single toss of a coin is an example of mutual exclusion as both cannot occur simultaneously.</p><p>Whereas, if we say we toss the coin twice. Head occurs on the first time whereas tail on the second. We call these events independent and not mutual exclusive events.</p><p>These is no point of saying that they cannot occur simultaneously when already they have been defined separately in different stages.</p><p><strong>Results on independent events</strong></p><p>1.<strong> </strong>Two events $\\text{A}$ and $\\text{B}$ are independent if and only if</p><p>$\\text{P}\\left( \\text{A}\\cap \\text{B} \\right)=\\text{P}\\left( \\text{A} \\right)\\text{P}\\left( \\text{B} \\right)$</p><p>this result can be extended to any number of independent events</p><p>i.e., $\\text{ }\\!\\!~\\!\\!\\text{ P}\\left( \\text{A}\\cap \\text{B}\\cap \\text{C} \\right)=\\text{P}\\left( \\text{A} \\right)\\text{P}\\left( \\text{B} \\right)\\text{P}\\left( \\text{C} \\right)$</p><p>$\\text{P}\\left( {{\\text{A}}_{1}}\\cap {{\\text{A}}_{2}}\\cap \\ldots {{\\text{A}}_{\\text{n}}} \\right)=\\text{P}\\left( {{\\text{A}}_{1}} \\right)\\text{P}\\left( {{\\text{A}}_{2}} \\right)\\ldots \\text{P}\\left( {{\\text{A}}_{\\text{n}}} \\right)$</p><p>where ${{A}_{1}}{{A}_{2}}\\ldots {{A}_{n}}$ are mutually exclusive events.</p><p>2. $\\text{P}\\left( {{\\text{A}}_{1}}\\cup {{\\text{A}}_{2}}\\cup \\ldots {{\\text{A}}_{\\text{n}}} \\right)=1-\\text{P}\\left( {{{\\bar{A}}}_{1}} \\right)\\text{P}\\left( {{{\\bar{A}}}_{2}} \\right)\\ldots \\text{P}\\left( {{{\\bar{A}}}_{\\text{n}}} \\right)$</p><p>How is easy to prove using the above result</p><p>i.e., $\\text{ }\\!\\!~\\!\\!\\text{ P}\\left( {{{\\bar{A}}}_{1}}\\cap {{{\\bar{A}}}_{2}} \\right)=\\text{P}\\left( {{{\\bar{A}}}_{1}} \\right)\\text{P}\\left( {{{\\bar{A}}}_{2}} \\right)$</p><p>3. Mutually independent events are always pair wise independent but converse is not necessarily true</p>",
+      "position": 0,
+      "qcConcept": "66a0dda9c03b9dcaf1afec22"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f6b2d384bfb4a53833b",
+      "title": "The probability of solving a question by three students are $\\frac{1}{2}, \\frac{1}{4}, \\frac{1}{6}$ respectively. Probability of question is being solved will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6b2d384bfb4a53833c",
+      "title": "$A$ and $B$ are two independent events. The probability that both $A$ and $B$ occur is $\\frac{1}{6}$ and the probability that neither of them occurs is $\\frac{1}{3}$. Then the probability of the two events are respectively",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6b2d384bfb4a53833d",
+      "title": "Let $A$ and $B$ be two events such that $P(A)=0.3$ and $P(A \\cup B)=0.8$. If $A$ and $B$ are independent events, then $P(B)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6b2d384bfb4a53833e",
+      "title": "If $A$ and $B$ are two independent events such that $P\\left(A \\cap B^{\\prime}\\right)=\\frac{3}{25}$ and $P\\left(A^{\\prime} \\cap B\\right)=\\frac{8}{25}$, then $P(A)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6b2d384bfb4a53833f",
+      "title": "If $E$ and $F$ are independent events such that $0 \\lt P(E) \\lt 1$ and $0 \\lt P(F) \\lt 1$,then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd6cc03b9dcaf1afeadd",
+  "topicId": "66a0dd72c03b9dcaf1afeb03",
+  "title": "Chord with given Middle Point",
+  "concepts": [
+    {
+      "title": "Equation of chord with a given mid-point",
+      "conceptBody": "<h3><strong>Chord with a given mid-point&nbsp;</strong></h3><p>The equation of chord of the hyperbola $\\frac{{{x}^{2}}}{{{a}^{2}}}-\\frac{{{y}^{2}}}{{{b}^{2}}}=1$ with $P\\left( {{x}_{1}},{{y}_{1}} \\right)$ as its middle point is given by $\\mathbf{T}={{\\mathbf{S}}_{1}}$ where $\\text{T}\\equiv \\frac{\\text{x}{{\\text{x}}_{1}}}{{{\\text{a}}^{2}}}-\\frac{\\text{y}{{\\text{y}}_{1}}}{\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}^{2}}}-1$ and ${{\\text{S}}_{1}}\\equiv \\frac{\\text{x}_{1}^{2}}{{{\\text{a}}^{2}}}-\\frac{\\text{y}_{1}^{2}}{\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}^{2}}}-1$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd72c03b9dcaf1afeb04"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f602d384bfb4a538142",
+      "title": "What will be equation of that chord of hyperbola $25 x^2-16 y^2=400$, whose mid point is $(5,3)$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddb4c03b9dcaf1afec61",
+  "topicId": "66a0ddbfc03b9dcaf1afec91",
+  "title": "Harmonic Progression",
+  "concepts": [
+    {
+      "title": "Harmonic Progression and its expression",
+      "conceptBody": "<h3><strong>Harmonic Progression (H.P.)&nbsp;</strong></h3><p>The sequence ${{a}_{1}},{{a}_{2}},\\ldots ..{{a}_{n}}$ is said to be a H.P. if $\\frac{1}{{{a}_{1}}},\\frac{1}{{{a}_{2}}},\\frac{1}{{{a}_{3}}}\\ldots \\ldots .\\frac{1}{{{a}_{n}}}$ is an A.P.</p><p>The ${{n}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ term of a H.P. $\\left( {{t}_{n}} \\right)$ is given by ${{t}_{n}}=\\frac{1}{a+\\left( n-1 \\right)d}$ where $a=\\frac{1}{{{a}_{1}}}$ and $d=\\frac{1}{{{a}_{2}}}-\\frac{1}{{{a}_{1}}}$</p>",
+      "position": 0,
+      "qcConcept": "66a0ddbfc03b9dcaf1afec92"
+    },
+    {
+      "title": "Solved Problems on Harmonic Progression",
+      "conceptBody": "<h3><strong>Solved Problems on Harmonic Progression</strong></h3><p><strong>Q) If the ${{(m+1)}^{\\text{th }\\!\\!~\\!\\!\\text{ }}},{{(n+1)}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ and ${{(r+1)}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ term of an A.P. are in G.P. $m,n,r$ are in H.P., Show that ratio of the common difference to the first term in the AP is $\\left( -2/n \\right)$.&nbsp;</strong></p><p><strong>Solution :&nbsp;</strong></p><p>Let ' $a$ ' be the first term and ' $d$ ' be common difference of the AP. Let $x,y,z$ be the ${{(m+1)}^{\\text{th }\\!\\!~\\!\\!\\text{ }}},{{(n+1)}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ and ${{(r+1)}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ term of the A.P. then $x=a+md,y=a+nd,z=a+rd$. Since $x,y,z$ are in G.P.</p><p>$\\therefore \\text{ }\\!\\!~\\!\\!\\text{ }{{y}^{2}}=xz$ i.e. ${{(a+nd)}^{2}}=\\left( a+rd \\right)\\left( a+md \\right)$</p><p>$\\therefore \\text{ }\\!\\!~\\!\\!\\text{ }\\frac{\\text{d}}{\\text{a}}=\\frac{\\text{r}+\\text{m}-2\\text{n}}{{{\\text{n}}^{2}}-\\text{rm}}$</p><p>Now, m, n, $r$ in H.P.</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }\\frac{2}{\\text{n}}=\\frac{1}{\\text{ }\\!\\!~\\!\\!\\text{ m}}+\\frac{1}{\\text{r}}$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }\\frac{2}{\\text{n}}=\\frac{\\text{m}+\\text{r}}{\\text{mr}}$</p><p>Hence $\\text{ }\\!\\!~\\!\\!\\text{ }\\frac{\\text{d}}{\\text{a}}=\\frac{2\\left( \\frac{\\text{r}+\\text{m}}{2}-\\text{n} \\right)}{\\text{n}\\left( \\text{n}-\\frac{\\text{rm}}{\\text{n}} \\right)}$</p><p>$\\frac{2\\left( \\frac{\\text{mr}}{\\text{n}}-\\text{n} \\right)}{\\text{n}\\left( \\text{n}-\\frac{\\text{rm}}{\\text{n}} \\right)}=-\\frac{2}{\\text{n}}$</p><p><strong>Q) If $a,b,c$ are respectively ${{p}^{\\text{th }\\!\\!~\\!\\!\\text{ }}},{{q}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$, and ${{r}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ terms of H.P., prove that&nbsp;</strong></p><p>$\\left( q-r \\right)+ca\\left( r-p \\right)+ab\\left( p-q \\right)=0$</p><p><strong>Solution :&nbsp;</strong></p><p>$\\text{A}$ and $\\text{D}$ be the first term and common difference of the AP formed by the reciprocals of the given H.P.</p><p>$\\frac{1}{a}=A+(p-1) D$ (i)</p><p>$\\frac{1}{b}=A+(q-1) D$ (ii)</p><p>$\\frac{1}{c}=A+(r-1) D$ (iii)</p><p>Subtracting (iii) from (ii) we get $\\frac{c-b}{bc}=\\left( q-r \\right)D$</p><p>$\\Rightarrow$ $b c(q-r)$ $=-\\frac{(b-c)}{D}$</p><p>L.H.S $=\\sum b c(q-r)$</p><p>$=-\\sum \\frac{\\mathrm{b}-\\mathrm{c}}{\\mathrm{D}}=\\frac{1}{\\mathrm{D}} \\sum(\\mathrm{b}-\\mathrm{c})$</p><p>$=\\frac{1}{\\mathrm{D}}[\\mathrm{b}-\\mathrm{c}+\\mathrm{c}-\\mathrm{a}+\\mathrm{a}-\\mathrm{b}]=0=$ R.H.S.</p><p><strong>Q) If $\\frac{1}{a}+\\frac{1}{c}+\\frac{1}{a-b}+\\frac{1}{c-b}=0$, prove that $a,b,c$ are in H.P., unless $b=a+c$&nbsp;</strong></p><p><strong>Solution :&nbsp;</strong></p><p>$\\begin{array}{*{35}{r}} {} &amp; \\frac{1}{a}+\\frac{1}{c}+\\frac{1}{a-b}+\\frac{1}{c-b}=0 \\\\ {} &amp; ~\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }\\frac{a+c}{ac}+\\frac{a+c-2b}{ac-b\\left( a+c \\right)+{{b}^{2}}}=0 \\\\ \\end{array}$</p><p>Let $\\text{a}+\\text{c}=\\text{t}$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }\\frac{\\text{t}}{\\text{ac}}+\\frac{\\text{t}-2\\text{ }\\!\\!~\\!\\!\\text{ b}}{\\text{ac}-\\text{bt}+{{\\text{b}}^{2}}}=0$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }act-b{{t}^{2}}+{{b}^{2}}t+act-2abc=0$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ b}{{\\text{t}}^{2}}-{{\\text{b}}^{2}}\\text{t}-2\\text{act}+2\\text{bac}=0$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }$ bt $\\left( \\text{t}-\\text{b} \\right)-2\\text{ac}\\left( \\text{t}-\\text{b} \\right)=0$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }\\left( \\text{t}-\\text{b} \\right)\\left( \\text{bt}-2\\text{ac} \\right)=0$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ t}=\\text{b}$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }a+c=b\\text{ }\\!\\!~\\!\\!\\text{ }$ or $\\text{ }\\!\\!~\\!\\!\\text{ }b\\left( a+c \\right)2ac$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }a+c=b\\text{ }\\!\\!~\\!\\!\\text{ }$ or $\\text{ }\\!\\!~\\!\\!\\text{ }b=\\frac{2ac}{a+c}$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }$ a, b, c are in H.P. or $a+c=b$</p>",
+      "position": 1,
+      "qcConcept": "66a0ddc0c03b9dcaf1afec93"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f6c2d384bfb4a538383",
+      "title": "If the $m^{\\text {th }}$ term of a H.P. be $n$ and $n^{\\text {th }}$ be $m$, then the $r^{\\text {th }}$ term will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538384",
+      "title": "The fifth term of the H.P.,$2,2 \\frac{1}{2}, 3 \\frac{1}{3} \\ldots\\ldots\\ldots$ will be in A.P.",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538385",
+      "title": "Which number should be added to the numbers $13,15,19$ so that the resulting numbers be the consecutive terms of a H.P.",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538386",
+      "title": "If $5^{\\text {th }}$ term of a H.P. is $\\frac{1}{45}$ and $11^{\\text{th }}$ term is $\\frac{1}{69}$, then its $16^{\\text {th }}$ term will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538387",
+      "title": "The first term of a harmonic progression is $1 / 7$ and the second term is $1 / 9$. The $12^{\\text {th }}$ term is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538388",
+      "title": "If $a, b, c, d$ are in H.P., then $a b+b c+c d$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538389",
+      "title": "If sixth term of a H.P. is $\\frac{1}{61}$ and its tenth term is $\\frac{1}{105}$, then first term of that H.P. is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53838a",
+      "title": "In a H.P., $p^{\\text {th }}$ term is $q$ and the $g^{\\text {th }}$ term is $p$. Then $p q^{\\text {th }}$ term is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53838b",
+      "title": "If $a, b, c$ be in H.P., then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53838c",
+      "title": "If $a, b, c, d$ are in H.P., then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

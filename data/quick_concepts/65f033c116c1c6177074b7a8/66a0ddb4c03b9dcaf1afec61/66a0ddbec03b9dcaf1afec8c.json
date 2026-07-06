@@ -1,0 +1,100 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddb4c03b9dcaf1afec61",
+  "topicId": "66a0ddbec03b9dcaf1afec8c",
+  "title": "Inequalities",
+  "concepts": [
+    {
+      "title": "Relation between Arithmetic Mean and Geometric Mean ",
+      "conceptBody": "<h3><strong>Arithmetic Means and Geometric Means&nbsp;</strong></h3><p>The arithmetic mean, or less precisely the average, of a list of $n$ numbers ${{x}_{1}},{{x}_{2}},\\ldots ,{{x}_{n}}$ is the sum of the numbers divided by $\\text{n}$ :</p><p>$\\frac{{{\\text{x}}_{1}}+{{\\text{x}}_{2}}+\\ldots ..+{{\\text{x}}_{\\text{n}}}}{\\text{n}}$</p><p>The geometric mean is similar, except that it is only defined for a list of nonnegative real numbers, and uses multiplication and a root in place of addition and division.</p><p>$\\sqrt[n]{{{\\text{x}}_{1}}\\cdot {{\\text{x}}_{2}}\\ldots {{\\text{x}}_{\\text{n}}}}$</p><p>If ${{x}_{1}},{{x}_{2}},\\ldots {{x}_{n}}&gt;0$, this is equal to the exponential of the arithmetic mean of the natural logarithms of the numbers :</p><p>$\\text{exp}\\left( \\frac{1n{{x}_{1}}+1n{{x}_{2}}+\\ldots +1n{{x}_{n}}}{n} \\right)$</p>",
+      "position": 0,
+      "qcConcept": "66a0ddbec03b9dcaf1afec8d"
+    },
+    {
+      "title": "Weighted AM-GM inequality ",
+      "conceptBody": "<h3><strong>The AM-GM Inequality&nbsp;</strong></h3><p>Restating the inequality using mathematical notation, we have that for any list of $\\text{n}$ nonnegative real numbers ${{\\text{x}}_{1}},{{\\text{x}}_{2}},\\ldots .{{\\text{x}}_{\\text{n}}}$,</p><p>$\\frac{{{\\text{x}}_{1}}+{{\\text{x}}_{2}}+\\ldots .+{{\\text{x}}_{\\text{n}}}}{\\text{n}}\\ge \\sqrt[n]{{{\\text{x}}_{1}}\\cdot {{\\text{x}}_{2}}\\ldots {{\\text{x}}_{\\text{n}}}}\\text{ }\\!\\!~\\!\\!\\text{ (known }\\!\\!~\\!\\!\\text{ as }\\!\\!~\\!\\!\\text{ AM-GM }\\!\\!~\\!\\!\\text{ inequality) }\\!\\!~\\!\\!\\text{ }$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ AM}\\ge \\text{GM}$</p><p>and that equality holds if and only if ${{x}_{1}}={{x}_{2}}=\\ldots {{x}_{n}}$.</p><p><strong>Generalizations&nbsp;</strong></p><p>There is a similar inequality for the weighted arithmetic mean and weighted geometric mean. Specially, let the nonnegative numbers ${{\\text{x}}_{1}},{{\\text{x}}_{2}},\\ldots ..,{{\\text{x}}_{\\text{n}}}$ and the nonnegative weights ${{\\text{a}}_{1}},{{\\text{a}}_{2}},\\ldots ...{{\\text{a}}_{\\text{n}}}$ be given. Set $\\alpha ={{\\alpha }_{1}}+{{\\alpha }_{2}}+\\ldots ..+{{\\alpha }_{n}}$. If $\\alpha &gt;0$, then the inequality</p><p>$\\frac{{{\\alpha }_{1}}{{x}_{1}}+{{\\alpha }_{2}}{{x}_{2}}+\\ldots +{{a}_{n}}{{x}_{n}}}{\\alpha }\\ge \\sqrt[\\alpha ]{x_{1}^{{{\\alpha }_{1}}}x_{2}^{{{\\alpha }_{2}}}\\ldots x_{n}^{{{a}_{n}}}}$</p><p>holds with equality if and only if all the ${{x}_{k}}$ with ak $&gt;0$ are equal. Here the convention $0=1$ is used. If all ${{\\text{a}}_{\\text{k}}}=1$, this reduces to the above AM-GM inequality.</p>",
+      "position": 1,
+      "qcConcept": "66a0ddbfc03b9dcaf1afec8e"
+    },
+    {
+      "title": "Relation between Arithmetic and Geometric Mean for the mth power of a sequence of numbers",
+      "conceptBody": "<h3><strong>Arithmetic mean of ${{\\text{m}}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ power&nbsp;</strong></h3><p>Let ${{a}_{1}},{{a}_{2}}\\ldots \\ldots {{a}_{n}}$ be $n$ positive real numbers and let $m$ be a real number, then</p><p>$\\frac{\\text{a}_{1}^{\\text{m}}+\\text{a}_{2}^{\\text{m}}+\\ldots ..\\text{a}_{\\text{n}}^{\\text{m}}}{\\text{n}}\\ge {{\\left( \\frac{{{\\text{a}}_{1}}+{{\\text{a}}_{2}}+\\ldots .{{\\text{a}}_{\\text{n}}}}{\\text{n}} \\right)}^{\\text{m}}}\\text{ }\\!\\!~\\!\\!\\text{ if }\\!\\!~\\!\\!\\text{ m}\\in \\text{R}-\\left[ 0,1 \\right]$</p><p>for $\\text{m}\\in \\left( 0,1 \\right)$, then $\\frac{\\text{a}_{1}^{\\text{m}}+\\text{a}_{2}^{\\text{m}}+\\ldots .\\text{a}_{\\text{n}}^{\\text{m}}}{\\text{n}}\\le {{\\left( \\frac{{{\\text{a}}_{1}}+{{\\text{a}}_{2}}+\\ldots .{{\\text{a}}_{\\text{n}}}}{\\text{n}} \\right)}^{\\text{m}}}$</p><p>and for $\\text{m}=0~\\And~ 1\\frac{\\text{a}_{1}^{\\text{m}}+\\text{a}_{2}^{\\text{m}}+\\ldots .\\text{a}_{\\text{n}}^{\\text{m}}}{\\text{n}}={{\\left( \\frac{{{\\text{a}}_{1}}+{{\\text{a}}_{2}}+\\ldots .{{\\text{a}}_{\\text{n}}}}{\\text{n}} \\right)}^{\\text{m}}}$</p><p><strong>Q) Prove that ${{a}^{4}}+{{b}^{4}}+{{c}^{4}}\\ge abc\\left( a+b+c \\right)\\left[ {{a},}{{b},}c&gt;0 \\right]$&nbsp;</strong></p><p><strong>Solution :&nbsp;</strong></p><p>Using ${{\\text{m}}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ power inequality</p><p>$\\frac{{{a}^{4}}+{{b}^{4}}+{{c}^{4}}}{3}\\ge {{\\left( \\frac{a+b+c}{3} \\right)}^{4}}$ (i)</p><p>Now we have ${{\\left( \\frac{a+b+c}{3} \\right)}^{4}}$ in RHS</p><p>$\\begin{array}{*{35}{l}} \\text{ }\\!\\!~\\!\\!\\text{ using }\\!\\!~\\!\\!\\text{ } &amp; \\text{ }\\!\\!~\\!\\!\\text{ AM }\\!\\!~\\!\\!\\text{ }&gt;\\text{ }\\!\\!~\\!\\!\\text{ GM }\\!\\!~\\!\\!\\text{ } \\\\ \\Rightarrow &amp; \\frac{a+b+c}{3}\\geq {{(abc)}^{1/3}} \\\\ \\Rightarrow &amp; {{\\left( \\frac{a+b+c}{3} \\right)}^{3}}\\geq abc \\\\ \\end{array}$</p><p>but we require ${{\\left( \\frac{a+b+c}{3} \\right)}^{4}}$, so multiplying both sides by $\\frac{\\left( a+b+c \\right)}{3}$</p><p>${{\\left( \\frac{a+b+c}{3} \\right)}^{4}}\\ge \\frac{abc\\left( a+b+c \\right)}{3}$ (ii)</p><p>From (i) &amp; (ii) we get</p><p>$\\begin{array}{*{35}{r}} {} &amp; \\frac{{{a}^{4}}+{{b}^{4}}+{{c}^{4}}}{3}\\ge \\frac{abc\\left( a+b+c \\right)}{3} \\\\ \\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ } &amp; {{a}^{4}}+{{b}^{4}}+{{c}^{4}}\\ge abc\\left( a+b+c \\right) \\\\ \\end{array}$</p><p>Hence proved.</p>",
+      "position": 2,
+      "qcConcept": "66a0ddbfc03b9dcaf1afec8f"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f6c2d384bfb4a53838d",
+      "title": "If the arithmetic, geometric and harmonic means between two distinct positive real numbers be $A, G$ and H respectively, then the relation between them is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53838e",
+      "title": "If the arithmetic, geometric and harmonic means between two positive real numbers be $A, G$ and $H$, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53838f",
+      "title": "If the arithmetic and geometric means of $a$ and $b$ be $A$ and $G$ respectively, then the value of $A-G$ will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538390",
+      "title": "If the arithmetic mean of two numbers be $A$ and geometric mean be $G$, then the numbers will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538391",
+      "title": "If $a$ and $b$ are two different positive real numbers, then which of the following relations is true",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538392",
+      "title": "If G.M. $=18$ and A.M. $=27$, then H.M. is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538393",
+      "title": "If the A.M. is twice the G.M. of the numbers $a$ and $b$, then $a: b$ will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538394",
+      "title": "If the ratio of H.M. and G.M. of two quantities is $12: 13$, then the ratio of the numbers is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538395",
+      "title": "If $a, b, c$ are in H.P., then for all $n \\in N$ the true statement is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538396",
+      "title": "If $a, b, c$ are the positive integers, then $(a+b)(b+c)(c+a)$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538397",
+      "title": "If $A_1, A_2 ; G_1, G_2$ and $H_1, H_2$ be $A M^{\\prime} s, G M^{\\prime} s$ and $H M^{\\prime} s$ between two quantities, then the value of $\\frac{G_1 G_2}{H_1 H_2}$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538398",
+      "title": "If $a_1, a_2, \\ldots . a_n$ are positive real numbers whose product is a fixed number $c$, then the minimum value of $a_1+a_2+\\ldots+a_{n-1}+2 a_n$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

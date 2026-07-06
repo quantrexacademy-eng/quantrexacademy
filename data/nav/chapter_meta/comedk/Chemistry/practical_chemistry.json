@@ -1,0 +1,39 @@
+{
+  "examSlug": "comedk",
+  "examId": "629105adee9e3ae00d63352e",
+  "subjectId": "629105adee9e3ae00d63352c",
+  "chapterId": "629109dfc9ae11aadb209385",
+  "subject": "Chemistry",
+  "chapter": "Practical Chemistry",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64c57c1c20fc93db0c28bdc2",
+      "title": "Radicals",
+      "count": 2,
+      "questionIds": [
+        "64c57b9920fc93db0c28b8b1",
+        "64c57b8420fc93db0c28b7f9"
+      ]
+    },
+    {
+      "id": "64c57c1c20fc93db0c28bdc0",
+      "title": "Preliminary Tests",
+      "count": 3,
+      "questionIds": [
+        "64c57ba820fc93db0c28b940",
+        "64c57b1b20fc93db0c28b44a",
+        "64c57b1b20fc93db0c28b449"
+      ]
+    },
+    {
+      "id": "64c57c1c20fc93db0c28bdc1",
+      "title": "Identification of Basic Radicals",
+      "count": 2,
+      "questionIds": [
+        "64c57bab20fc93db0c28b954",
+        "64c57b6f20fc93db0c28b73a"
+      ]
+    }
+  ]
+}

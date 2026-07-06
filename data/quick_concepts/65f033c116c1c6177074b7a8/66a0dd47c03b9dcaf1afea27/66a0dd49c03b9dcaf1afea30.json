@@ -1,0 +1,130 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd47c03b9dcaf1afea27",
+  "topicId": "66a0dd49c03b9dcaf1afea30",
+  "title": "Variable Separable Form",
+  "concepts": [
+    {
+      "title": "Solution of a Differential Equation(General Solution and Particular Solution)  ",
+      "conceptBody": "<h3><strong>Solution of a Differential Equation</strong></h3><p>Any relation between dependent and independent variables which when substituted in the differential equation, reduce it to an identity is called a solution of the differential equation. A solution of a differential equation does not contain the derivatives of the dependent variables with respect to the independent variable.</p><p><strong>Example :&nbsp;</strong></p><p>Consider the differential equation</p><p>$\\frac{{{d}^{2}}y}{d{{x}^{2}}}+y=0$ ...(i)</p><p>Let $\\mathrm{y}=\\mathrm{A} \\sin \\mathrm{x}-\\mathrm{B} \\cos \\mathrm{x}$, where $\\mathrm{A}, \\mathrm{B}$ are arbitrary constant ...(ii)</p><p>Differentiating (ii) twice w.r.t. x, we get</p><p>$\\frac{{{\\text{d}}^{2}}\\text{y}}{\\text{d}{{\\text{x}}^{2}}}=-A\\sin \\text{x}-\\text{B}\\cos \\text{x }$</p><p>$\\Rightarrow $ $\\frac{{{\\text{d}}^{2}}\\text{y}}{\\text{d}{{\\text{x}}^{2}}}-\\text{y }\\Rightarrow \\,\\,\\,\\,\\,\\frac{{{\\text{d}}^{2}}\\text{y}}{\\text{d}{{\\text{x}}^{2}}}+\\text{y}=0$</p><p>Therefore $\\mathrm{y}=\\mathrm{A} \\sin \\mathrm{x}+\\mathrm{B} \\cos \\mathrm{x}$ is a solution of differential equation (i).</p><p>It can be easily seen that $y=3 \\sin x-2 \\cos x, y=B \\cos x$ are all solutions of (i). The most general of these solution is (ii), all others are particular solutions of the differential equation (i).</p>",
+      "position": 0,
+      "qcConcept": "66a0dd49c03b9dcaf1afea31"
+    },
+    {
+      "title": "Method of Solving First Order First Degree Linear Differential Equation when dy/dx=f(x) ",
+      "conceptBody": "<h3>Types of Differential Equations</h3><p><strong>Type-1 Differential Equation of type </strong>$\\frac{dy}{dx}=f(x)$</p><p>This is a very simple type which can be solved easily by using</p><p>$\\int{d}y=\\int{f}(x)dx+C$</p>",
+      "position": 1,
+      "qcConcept": "66a0dd49c03b9dcaf1afea32"
+    },
+    {
+      "title": "Method of Solving First Order First Degree Linear Differential Equation when dy/dx=f(y) ",
+      "conceptBody": "<h3><strong>Method of Solving First Order First Degree Linear Differential Equation when dy/dx=f(y)&nbsp;</strong></h3><p><strong>Type-2 Differential equation of the type </strong>$\\frac{dy}{dx}=f(y)$</p><p>This is the same type as above with the only change in functions on R.H.S. Here we solve it by the following manner.</p><p>If, $\\frac{dy}{dx}=f(y)$ then</p><p>$dx=\\frac{dy}{f(y)}\\Rightarrow \\int{d}x=\\int{\\frac{dy}{f(y)}}+C$</p>",
+      "position": 2,
+      "qcConcept": "66a0dd4ac03b9dcaf1afea33"
+    },
+    {
+      "title": "Method of Solving First Order First Degree Linear Differential Equation when it is variable separable",
+      "conceptBody": "<h3><strong>Method of Solving First Order First Degree Linear Differential Equation when it is variable separable</strong></h3><p><strong>Type-3 Equation in variable separable form </strong>$\\frac{dy}{dx}=f(x)$</p><p>In this type the differential equation exists as product of two separate functions of $\\text{x }\\!\\!\\And\\!\\!\\text{ y}$ respectively in R.H.S. We solve them as follow,</p><p>$\\frac{dy}{dx}=f(x)g(y)$</p><p>⇒ $\\frac{dy}{g(y)}=f(x)dx$</p><p>⇒ $\\int{\\frac{dy}{g(y)}}=\\int{f}(x)dx+C$</p><p>Other forms of this could be</p><p>$\\int{g}(y)dy=\\int{f}(x)dx+C\\text{ }$</p><p>or $\\int{g}(y)dy=\\int{\\frac{dx}{f(x)}}+C$</p>",
+      "position": 3,
+      "qcConcept": "66a0dd4ac03b9dcaf1afea34"
+    },
+    {
+      "title": "First Order First Degree Linear Differential Equation reducible to variable separable form",
+      "conceptBody": "<h3><strong>First Order First Degree Linear Differential Equation reducible to variable separable form</strong></h3><p><strong>Type-4 Equation reducible to variable separable form i.e </strong>. $\\frac{dy}{dx}=f(ax+by+c)$</p><p>In this form the D.E. is not directly in Type-3 but by proper substitution it can be reduced to Type-3.</p><p>For this put $\\mathrm{ax}+\\mathrm{by}+\\mathrm{C}=\\mathrm{t}$</p><p>⇒ $\\text{a}+\\text{b}\\frac{\\text{dy}}{\\text{dx}}=\\frac{\\text{dt}}{\\text{dx}}$</p><p>Other form of this type</p><p>$\\text{f}\\left( \\text{ax}+\\text{by}+{{\\text{c}}_{1}} \\right)\\text{dx}\\pm \\text{f}\\left( \\text{ax}+\\text{by}+{{\\text{c}}_{2}} \\right)\\text{dy}=0$</p><p>$\\text{in this substitute ax}+\\text{by}=\\text{t}$</p><p>⇒ $\\text{a}+\\text{b}\\frac{\\text{dy}}{\\text{dx}}=\\frac{\\text{dt}}{\\text{dx}}$</p>",
+      "position": 4,
+      "qcConcept": "66a0dd4ac03b9dcaf1afea35"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f452d384bfb4a53802e",
+      "title": "The solution of the differential equation $\\frac{d y}{d x}=\\frac{1+y^2}{1+x^2}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f452d384bfb4a53802f",
+      "title": "The solution of the differential equation $\\left(1+x^2\\right) \\frac{d y}{d x}=x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f452d384bfb4a538030",
+      "title": "The solution of the differential equation $\\frac{d y}{d x}=\\sec x(\\sec x+\\tan x)$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f452d384bfb4a538031",
+      "title": "The solution of the differential equation $\\frac{d y}{d x}+\\frac{1+x^2}{x}=0$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f452d384bfb4a538032",
+      "title": "The solution of differential equation $\\frac{d y}{d x}+\\sin ^2 y=0$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f452d384bfb4a538033",
+      "title": "The solution of the differential equation $\\frac{d y}{d x}=(1+x)\\left(1+y^2\\right)$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f452d384bfb4a538034",
+      "title": "The solution of $\\frac{d y}{d x}=e^x(\\sin x+\\cos x)$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f452d384bfb4a538035",
+      "title": "The general solution of $x^2 \\frac{d y}{d x}=2$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f452d384bfb4a538036",
+      "title": "The solution of $\\frac{d y}{d x}=x \\log x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f452d384bfb4a538037",
+      "title": "The solution of the differential equation $\\frac{d y}{d x}=1+x+y+x y$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f452d384bfb4a538038",
+      "title": "The solution of the differential equation $x \\sec y \\frac{d y}{d x}=1$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f452d384bfb4a538039",
+      "title": "The solution of differential equation $x \\frac{d y}{d x}+\\boldsymbol{y}=\\boldsymbol{y}^2$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f452d384bfb4a53803a",
+      "title": "The solution of the differential equation $\\frac{d y}{d x}=x^2+\\sin 3 x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f452d384bfb4a53803b",
+      "title": "The solution of the equation $\\left(1+x^2\\right) \\frac{d y}{d x}=1$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f452d384bfb4a53803c",
+      "title": "The solution of the equation $\\frac{d y}{d x}=y\\left(e^x+1\\right)$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

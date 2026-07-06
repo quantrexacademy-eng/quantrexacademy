@@ -1,0 +1,51 @@
+{
+  "examSlug": "comedk",
+  "examId": "629105adee9e3ae00d63352e",
+  "subjectId": "629105adee9e3ae00d63352d",
+  "chapterId": "64c57b4f20fc93db0c28b615",
+  "subject": "Mathematics",
+  "chapter": "Statistics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64c57c3520fc93db0c28bed7",
+      "title": "Mean",
+      "count": 1,
+      "questionIds": [
+        "64c57b4e20fc93db0c28b613"
+      ]
+    },
+    {
+      "id": "64c57c3520fc93db0c28bed8",
+      "title": "Relation Between Variance and Mean Deviation",
+      "count": 1,
+      "questionIds": [
+        "64c57b6420fc93db0c28b6d4"
+      ]
+    },
+    {
+      "id": "681378a12d288c475c04cea1",
+      "title": "Measures of Dispersion",
+      "count": 8,
+      "questionIds": [
+        "6a0c7b5672354c537d084f5d",
+        "6a0c7b4772354c537d084eb0",
+        "6881bd3c2781fbe80ff8d433",
+        "6881bd2d2781fbe80ff8d39d",
+        "6881bd1d2781fbe80ff8d2f9",
+        "6881bd0c2781fbe80ff8d247",
+        "681377be2d288c475c04cc1e",
+        "681377902d288c475c04cabc"
+      ]
+    },
+    {
+      "id": "681378a12d288c475c04cea2",
+      "title": "Statistics",
+      "count": 2,
+      "questionIds": [
+        "681377ef2d288c475c04cd9d",
+        "681377d22d288c475c04ccc0"
+      ]
+    }
+  ]
+}

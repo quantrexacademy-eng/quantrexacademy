@@ -1,0 +1,41 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa602f4468eb1307ceb0ae",
+  "chapterId": "67fdff53378e1624ea7b6a3a",
+  "subject": "Chemistry",
+  "chapter": "General Organic Chemistry",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff89378e1624ea7b6cc5",
+      "title": "Conjugation and Aromaticity",
+      "count": 3,
+      "questionIds": [
+        "67fdff6d378e1624ea7b6b5c",
+        "67fdff68378e1624ea7b6b18",
+        "67fdff53378e1624ea7b6a38"
+      ]
+    },
+    {
+      "id": "67fdff89378e1624ea7b6cc6",
+      "title": "Isomerism of Organic Compounds",
+      "count": 5,
+      "questionIds": [
+        "6a4521838c20d3b91d64f966",
+        "67fdff72378e1624ea7b6b9a",
+        "67fdff6d378e1624ea7b6b5a",
+        "67fdff62378e1624ea7b6ad8",
+        "67fdff61378e1624ea7b6ad4"
+      ]
+    },
+    {
+      "id": "6a45218a8c20d3b91d64f998",
+      "title": "Purification of Organic Compounds",
+      "count": 1,
+      "questionIds": [
+        "6a4521838c20d3b91d64f967"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd33c03b9dcaf1afe9c6",
+  "topicId": "66a0dd33c03b9dcaf1afe9c8",
+  "title": "Power of iota",
+  "concepts": [
+    {
+      "title": "Basic properties of complex numbers",
+      "conceptBody": "<h3><strong>Some properties of imaginary numbers&nbsp;</strong></h3><ul><li>If $a\\And b$ are positive real numbers, then $\\sqrt{-a}\\times \\sqrt{-b}=-\\sqrt{ab}$</li><li><strong>$\\sqrt{\\text{a}}\\times \\sqrt{\\text{b}}=\\sqrt{\\text{ab}}$ </strong>is not valid if both $\\text{a}\\And \\text{ }\\!\\!~\\!\\!\\text{ b}$ are negative. This is valid only when at least one of $a$ or $b$ is positive or zero.</li><li>The sum of four consecutive powers of $i$ is zero.</li></ul><p>$\\text{ }\\!\\!~\\!\\!\\text{ i}\\text{.e}\\text{. }\\!\\!~\\!\\!\\text{ }{{i}^{n}}+{{i}^{n+1}}+{{i}^{n+2}}+{{i}^{n+3}}=0,\\left( n\\in I \\right)$</p><p><strong>Complex Numbers&nbsp;</strong></p><p>If two numbers $a,b$ are real, then a number $a+ib$ will be a complex number. here, $a$ is the real part represented by $\\text{Re}\\left( \\text{z} \\right)\\And \\text{ }\\!\\!~\\!\\!\\text{ b}$ is the imaginary part $\\text{Im}\\left( \\text{z} \\right)$</p><p>where $z=a+ib$</p><p>for ex. $z=5-3i$, then $\\text{Re}\\left( z \\right)=5$, $\\text{Im}\\left( \\text{z} \\right)=-3$</p><p>If for $z=a+ib$</p><ul><li>$\\text{Im}\\left( z \\right)$ is zero, then the no. is purely real, &amp; if Re (z) is zero, then the no. is purely imaginary.</li><li>Like we represent real numbers by the set $\\text{R}$, complex numbers are denoted by the set C.</li></ul><p>Note: Real numbers are subsets of complex numbers.</p><p>i.e., every real number is a complex number.</p>",
+      "position": 0,
+      "qcConcept": "66a0dd34c03b9dcaf1afe9c9"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f3f2d384bfb4a537f60",
+      "title": "$\\sqrt{-2} \\sqrt{-3}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3f2d384bfb4a537f61",
+      "title": "If $i=\\sqrt{-1}$, then $1+i^2+i^3-i^6+i^8$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3f2d384bfb4a537f62",
+      "title": "If $i^2=-1$, then sum $i+i^2+i^3+\\ldots$ to 1000 terms is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3f2d384bfb4a537f63",
+      "title": "$1+i^2+i^4+i^6+\\ldots .+i^{2 n}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3f2d384bfb4a537f64",
+      "title": "The value of $\\frac{i^{592}+i^{590}+i^{588}+i^{586}+i^{584}}{i^{582}+i^{580}+i^{578}+i^{576}+i^{574}}-1=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3f2d384bfb4a537f65",
+      "title": "If $i^2=-1$, then the value of $\\sum_{n=1}^{200} i^n$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3f2d384bfb4a537f66",
+      "title": "If $\\left(\\frac{1+i}{1-i}\\right)^m=1$, then the least integral value of $m$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

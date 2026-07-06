@@ -1,0 +1,45 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19156220c83fbf1e0bce11",
+  "chapterId": "6a192ba0e4cc9575516b5673",
+  "subject": "Physics",
+  "chapter": "Center of Mass Momentum and Collision",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec1e2ef1faeb9633e2560",
+      "title": "Collisions",
+      "count": 2,
+      "questionIds": [
+        "6a1ec12cef1faeb9633e2217",
+        "6a1ec050ef1faeb9633e1cb2"
+      ]
+    },
+    {
+      "id": "6a1ec1e2ef1faeb9633e2561",
+      "title": "momentum",
+      "count": 2,
+      "questionIds": [
+        "6a1ec0efef1faeb9633e2095",
+        "6a1ec06eef1faeb9633e1d6b"
+      ]
+    },
+    {
+      "id": "6a1ec1e2ef1faeb9633e2562",
+      "title": "Impulse",
+      "count": 1,
+      "questionIds": [
+        "6a1ec0d3ef1faeb9633e1fe8"
+      ]
+    },
+    {
+      "id": "6a1ec1e2ef1faeb9633e2563",
+      "title": "Centre of mass of discrete particles",
+      "count": 1,
+      "questionIds": [
+        "6a1ec0f3ef1faeb9633e20ae"
+      ]
+    }
+  ]
+}

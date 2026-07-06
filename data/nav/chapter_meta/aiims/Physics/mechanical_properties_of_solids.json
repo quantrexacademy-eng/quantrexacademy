@@ -1,0 +1,50 @@
+{
+  "examSlug": "aiims",
+  "examId": "61961afba5a5260118868014",
+  "subjectId": "64d50bd73df7f4a7f3017f6f",
+  "chapterId": "64eb06df3118f713ecfef1c2",
+  "subject": "Physics",
+  "chapter": "Mechanical Properties of Solids",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66bb66b108a93761696e3df8",
+      "title": "Elasticity",
+      "count": 1,
+      "questionIds": [
+        "66bb649b08a93761696e2da1"
+      ]
+    },
+    {
+      "id": "66bb66b108a93761696e3df7",
+      "title": "Young’s Modulus and Breaking Stres",
+      "count": 7,
+      "questionIds": [
+        "66bb660f08a93761696e382b",
+        "66bb65f608a93761696e3777",
+        "66bb659308a93761696e34a7",
+        "66bb64e508a93761696e2fbe",
+        "66bb64cd08a93761696e2f0b",
+        "66bb645108a93761696e2b89",
+        "66bb645108a93761696e2b88"
+      ]
+    },
+    {
+      "id": "66bb66b108a93761696e3df9",
+      "title": "Bulk Modulus",
+      "count": 2,
+      "questionIds": [
+        "66bb659308a93761696e34a6",
+        "66bb649b08a93761696e2da2"
+      ]
+    },
+    {
+      "id": "66bb66b208a93761696e3dfa",
+      "title": "Work Done in Stretching a Wire",
+      "count": 1,
+      "questionIds": [
+        "66bb660f08a93761696e382c"
+      ]
+    }
+  ]
+}

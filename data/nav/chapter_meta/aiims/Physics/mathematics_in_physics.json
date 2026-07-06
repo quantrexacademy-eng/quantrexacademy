@@ -1,0 +1,52 @@
+{
+  "examSlug": "aiims",
+  "examId": "61961afba5a5260118868014",
+  "subjectId": "64d50bd73df7f4a7f3017f6f",
+  "chapterId": "64eb06c53118f713ecfef0a8",
+  "subject": "Physics",
+  "chapter": "Mathematics in Physics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66bb668d08a93761696e3c9a",
+      "title": "Fundamentals of Vectors",
+      "count": 2,
+      "questionIds": [
+        "66bb662608a93761696e38d4",
+        "66bb65dc08a93761696e36bc"
+      ]
+    },
+    {
+      "id": "66bb668d08a93761696e3c99",
+      "title": "Addition and Subtraction of Vectors",
+      "count": 2,
+      "questionIds": [
+        "66bb65f408a93761696e376a",
+        "66bb65aa08a93761696e3550"
+      ]
+    },
+    {
+      "id": "66bb668d08a93761696e3c98",
+      "title": "Multiplication of Vectors",
+      "count": 4,
+      "questionIds": [
+        "66bb662608a93761696e38d3",
+        "66bb65f508a93761696e376b",
+        "66bb656008a93761696e333a",
+        "66bb645008a93761696e2b7f"
+      ]
+    },
+    {
+      "id": "66bb668c08a93761696e3c97",
+      "title": "Errors of Measurement",
+      "count": 5,
+      "questionIds": [
+        "66bb660e08a93761696e3821",
+        "66bb65f408a93761696e3769",
+        "66bb65dc08a93761696e36bb",
+        "66bb65c408a93761696e360a",
+        "66bb643908a93761696e2ad5"
+      ]
+    }
+  ]
+}

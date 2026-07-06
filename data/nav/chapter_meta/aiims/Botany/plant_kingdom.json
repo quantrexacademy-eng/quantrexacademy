@@ -1,0 +1,72 @@
+{
+  "examSlug": "aiims",
+  "examId": "61961afba5a5260118868014",
+  "subjectId": "68c3e007fe196d2e684aacab",
+  "chapterId": "64eb06ed3118f713ecfef24d",
+  "subject": "Botany",
+  "chapter": "Plant Kingdom",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66bb66b908a93761696e3e42",
+      "title": "Introduction",
+      "count": 2,
+      "questionIds": [
+        "66bb65ee08a93761696e373f",
+        "66bb64dd08a93761696e2f80"
+      ]
+    },
+    {
+      "id": "66bb66b908a93761696e3e3c",
+      "title": "Algae: Thallophytes",
+      "count": 6,
+      "questionIds": [
+        "66bb662008a93761696e38a5",
+        "66bb65ee08a93761696e373e",
+        "66bb65a308a93761696e3520",
+        "66bb64f608a93761696e3036",
+        "66bb649208a93761696e2d61",
+        "66bb646108a93761696e2bfe"
+      ]
+    },
+    {
+      "id": "66bb66b908a93761696e3e3d",
+      "title": "Bryophytes",
+      "count": 4,
+      "questionIds": [
+        "66bb65d608a93761696e368a",
+        "66bb65bd08a93761696e35d5",
+        "66bb64dd08a93761696e2f7f",
+        "66bb646208a93761696e2bff"
+      ]
+    },
+    {
+      "id": "66bb66b908a93761696e3e3e",
+      "title": "Pteridophytes",
+      "count": 9,
+      "questionIds": [
+        "66bb663908a93761696e3958",
+        "66bb662008a93761696e38a4",
+        "66bb65d608a93761696e368b",
+        "66bb65bc08a93761696e35d4",
+        "66bb65a308a93761696e351f",
+        "66bb657108a93761696e33b6",
+        "66bb654008a93761696e324f",
+        "66bb64dd08a93761696e2f81",
+        "66bb646208a93761696e2c00"
+      ]
+    },
+    {
+      "id": "66bb66b908a93761696e3e40",
+      "title": "Gymnosperms",
+      "count": 5,
+      "questionIds": [
+        "66bb65a308a93761696e351e",
+        "66bb658b08a93761696e346d",
+        "66bb658b08a93761696e346c",
+        "66bb64f608a93761696e3035",
+        "66bb649208a93761696e2d5f"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "subjectId": "65f032625469774910ab0337",
+  "chapterId": "66a0dcfbc03b9dcaf1afe89c",
+  "topicId": "66a0dd04c03b9dcaf1afe8c3",
+  "title": "Critical phenomena and liquefaction",
+  "concepts": [
+    {
+      "title": "Critical Constants",
+      "conceptBody": "<h3><strong>Critical Constants</strong></h3><p><strong>Critical temperature</strong></p><p>The critical temperature, ${{T}_{c}}$ is the temperature beyond which a gas can’t be liquefied no matter how great the pressure may be. The reason for this is that the molecules have so much thermal energy that the intermolecular forces are not powerful enough to make the molecules stick together. Each gas has its own critical temperature because the strengths of intermolecular forces are different in each gas.</p><p>${{\\text{T}}_{\\text{c}}}=\\frac{8\\text{a}}{27\\text{Rb}}$</p><p>Normal boiling point ${{T}_{b}}$ of a liquid is approximately two-thirds of its critical temperature Tc when both are expressed in Kelvin scale.</p><p>$\\frac{{{\\text{T}}_{\\text{b}}}}{{{\\text{T}}_{\\text{c}}}}=\\frac{2}{3}$</p><p><strong>Critical pressure</strong></p><p>The critical pressure, ${{\\text{P}}_{\\text{c}}}$ is the pressure beyond which a liquid cann’t be vapourised, no matter how high is the temperature. (or)</p><p>${{\\text{P}}_{\\text{c}}}$ is the minimum pressure required to cause liquefaction at the temperature ${{T}_{c}}$.</p><p>${{\\text{P}}_{\\text{c}}}=\\frac{\\text{a}}{27~{{\\text{b}}^{2}}}$</p><p><strong>Critical volume</strong></p><p>The critical volume, ${{\\text{V}}_{\\text{c}}}$ is the volume occupied by one mole of a gas at critical temperature and critical pressure.</p><p>${{\\text{V}}_{\\text{c}}}=3/\\text{b}$</p><p>Boyle Temperature</p><p>It is a particular temperature for a real gas above which the gas behave as an ideal gas over a long range of pressure.</p><p>${{\\text{T}}_{\\text{b}}}=\\frac{\\text{a}}{\\text{bR}}$</p><p>where a &amp; b are Van der Waal’s constants.</p>",
+      "position": 0,
+      "qcConcept": "66a0dd04c03b9dcaf1afe8c4"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66584e581814fc7e94209e2d",
+      "title": "An ideal gas can't be liquefied because",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e2e",
+      "title": "However great the pressure, a gas cannot be liquefied above its",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e2f",
+      "title": "A gas can be liquefied",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e30",
+      "title": "An ideal gas obeying kinetic theory of gases can be liquefied if",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e31",
+      "title": "The temperature at which real gases obey the ideal gas laws over a wide range of pressure is called",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e32",
+      "title": "Which of the following is correct for critical temperature",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e33",
+      "title": "Which set of sonditions represents easiest way to liquefy a gas",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e34",
+      "title": "\\(\\begin{array}{c|c|c} \\hline \\text {Gas } & \\mathrm{a}\\left(\\mathrm{atm}^2 \\mathrm{~mol}^{-2}\\right) & \\mathrm{b}\\left(\\mathrm{Lmol}^{-1}\\right) \\\\ \\hline \\mathrm{W} & 4.0 & 0.027 \\\\ X & 8.0 & 0.030 \\\\ Y & 6.0 & 0.032 \\\\ Z & 12.0 & 0.027 \\\\ \\hline \\end{array}\\)\nWhich one of these gases has the highest critical temperature",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e35",
+      "title": "Weight of $112 \\mathrm{~ml}$ of oxygen at NTP on liquefaction would be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e36",
+      "title": "The Vander Waal's constant ' $a$ ' for the gases $\\mathrm{O}_2, \\mathrm{~N}_2, \\mathrm{NH}_3$ and $\\mathrm{CH}_4$ are $1.3,1.390,4.170$ and $2.253 \\mathrm{~L}^2$ atmmol $^{-2}$ respectively. The gas which can be most easily liquefied is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

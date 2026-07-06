@@ -1,0 +1,64 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd92c03b9dcaf1afeba2",
+  "topicId": "66a0dd94c03b9dcaf1afebb1",
+  "title": "Adjoint and its Properties",
+  "concepts": [
+    {
+      "title": "Properties of adjoint of a matrix",
+      "conceptBody": "<h3>Adjoint of a Matrix</h3><p>If $A=\\left[ {{a}_{ij}} \\right]$ be a <strong>n-squared matrix </strong>then the matrix $B=\\left[ {{b}_{ij}} \\right]$ such that ${{b}_{ij}}$ is the co-factor of the element ${{a}_{ji}}$ in the determinant $|\\text{A}|$ is called the adjoint of matrix $\\text{A}$ and is written as adj $\\text{A}$.</p><p>In simple language we can say that adj. A is the transpose of the matrix formed by theco factors of elements of |A|.</p><p><strong>Working rule for finding the adjoint of A.&nbsp;</strong></p><p>Write down the determinant IA I and the co-factors of various rows which will be columns of adj.A or replace each element in A by its co-factors and then take transpose to get adj.A.</p><p><strong>Rule to write the cofactors of an element ${{a}_{ij}}$&nbsp;</strong></p><p>Cross the row and column intersecting at the element ${{a}_{ij}}$ and the determinant which is left be denoted by D, then</p><p>$\\left[ \\begin{matrix} \\text{ Cofactor of }{{a}_{ij}}=D &amp; \\text{ if }i+j=\\text{ even } \\\\ =-D &amp; \\text{ if }i+j=\\text{ odd } \\\\ \\end{matrix} \\right]$</p><p>Illustration 25</p><p>$A=\\left[ \\begin{array}{*{35}{l}} \\alpha &amp; \\beta \\\\ \\gamma &amp; \\delta \\\\ \\end{array} \\right]$ find $\\operatorname{adj}.\\mathbf{A}$ and show that $\\operatorname{adj}\\cdot (\\operatorname{adj}.\\mathbf{A})=\\mathbf{A}$</p><p>Co-factor of $\\alpha$ is $\\delta$ and co-factor of $\\beta$ is $-\\gamma$.</p><p>Co-factor of $\\gamma$ is $-\\beta $ and co-factor of $\\delta$ is $\\alpha$.</p><p>$\\therefore \\quad$ Matrix formed by co-factors is $\\left[ \\begin{matrix} \\delta &amp; -\\gamma \\\\ -\\beta &amp; \\alpha \\\\ \\end{matrix} \\right]$ …(1)</p><p>Adj. $A=$ transpose of matrix (1)</p><p>$=\\left[ \\begin{matrix} \\delta &amp; -\\beta \\\\ -\\gamma &amp; \\alpha \\\\ \\end{matrix} \\right]$ … (2)</p><p>You may see that $\\delta ,-\\gamma $ are the co-factors of first row of A and it forms the first column of adj.A, $-\\beta ,\\alpha $ are the co-factors of 2 nd row of $A$ and it forms the second column of adj.A</p><p><strong>Rule for adjoint of 2 2 matrix: </strong>If A be 22 then adj. A is written by interchanging the elements of leading diagonal and changing the sign of the elements of other diagonal i.e. if $A=\\left[ \\begin{matrix} 3 &amp; 4 \\\\ -5 &amp; 7 \\\\ \\end{matrix} \\right]$ then adj. $A=\\left[ \\begin{matrix} 7 &amp; -4 \\\\ 5 &amp; 3 \\\\ \\end{matrix} \\right]$ ...(3)</p><p>i.e. elements 3,7 of leading diagonal have been interchanged and the sign of $4,-5$ in the other diagonal have been changed.</p><p>Properties of adjoint A.</p><p><strong>The product of a matrix and its adjoint is commutative.&nbsp;</strong></p><p>(a) If A be n-rowed square matrix, then (adj.A) A $=\\text{A}(\\operatorname{adj}.\\text{A})=|\\text{A}|{{\\text{l}}_{\\text{n}}}$</p><p>$=|\\text{A}|\\left[ \\begin{array}{*{35}{l}} 1 &amp; 0 &amp; 0 \\\\ 0 &amp; 1 &amp; 0 \\\\ 0 &amp; 0 &amp; 1 \\\\ \\end{array} \\right]=\\left[ \\begin{matrix} |\\text{A}| &amp; 0 &amp; 0 \\\\ 0 &amp; |~\\text{A}| &amp; 0 \\\\ 0 &amp; 0 &amp; |~\\text{A}| \\\\ \\end{matrix} \\right]$ … (I)</p><p>where |A| is determinant $A$ and ${{l}_{n}}$ is the n-rowed unit matrix.</p><p>Deduction (a) If A is a n-squared singular matrix i.e, $|A|=0$, then</p><p>$\\text{A}(\\operatorname{adj}\\cdot \\text{A})=(\\operatorname{adj}\\cdot \\text{A})=\\text{O}($ null matrix by $(\\text{I})$</p><p>A matrix is said to be singular if its determinant is zero i.e. $|\\text{A}|=0$</p><p>Deduction (b) $|\\operatorname{adj}\\mathbf{A}|=|\\mathbf{A}{{|}^{\\text{n}-1}}$ if |A|is not zero.</p><p>If clearly follows from above on taking determinants of both sides in (I) (a) that</p><p>$|\\text{A}|$. ${{\\left. |adj\\text{A}|=|\\text{A} \\right|}^{\\text{n}}}=|\\operatorname{adj}\\text{A}|$. $|\\text{A}|$</p><p>$|\\operatorname{adj}.\\text{A}|=|\\text{A}{{|}^{\\text{n}-1}}$ provided $|\\text{A}|$ is not zero.</p><p><strong>If |A| is not zero then A is said to be non-singular matrix.&nbsp;</strong></p><p><strong>Verification of the rule&nbsp;</strong></p><p>$(\\operatorname{adj}.\\mathbf{A})\\mathbf{A}=\\mathbf{A}(\\operatorname{Adj}\\mathbf{A})=|\\mathbf{A}{{|}_{\\text{n}}}$</p><p>$A=\\left[ \\begin{matrix} 0 &amp; 1 &amp; 1 \\\\ 1 &amp; 2 &amp; 0 \\\\ 3 &amp; -1 &amp; 4 \\\\ \\end{matrix} \\right]$</p><p>$\\text{ then Adj }A=\\left[ \\begin{matrix} 8 &amp; -5 &amp; -2 \\\\ -4 &amp; -3 &amp; 1 \\\\ -7 &amp; 3 &amp; -1 \\\\ \\end{matrix} \\right]$</p><p>Also $|\\text{A}|=-11$ by calculation</p><p>$\\therefore \\quad$ A (adj.A) by actual multiplication</p><p>$=\\left[ \\begin{matrix} -11 &amp; 0 &amp; 0 \\\\ 0 &amp; -11 &amp; 0 \\\\ 0 &amp; 0 &amp; -11 \\\\ \\end{matrix} \\right]=\\left[ \\begin{matrix} |\\text{A}| &amp; 0 &amp; 0 \\\\ 0 &amp; |~\\text{A}| &amp; 0 \\\\ 0 &amp; 0 &amp; |~\\text{A}| \\\\ \\end{matrix} \\right]$</p><p>$=\\operatorname{diag}[|\\text{A}|.|\\text{A}|.|\\text{A}|]$</p><p>Taking determinants of both sides, we get</p><p>$|\\text{Aadj}.\\text{A}|=\\mid \\text{ diag}\\text{. }[|\\text{A}|,|\\text{A}|,|\\text{A}|]$</p><p>or $|\\text{A}|\\,\\,|\\operatorname{adj}\\text{A}|=|\\text{A}{{|}^{\\text{n}}}$</p><p>$\\therefore |\\operatorname{adj}\\text{A}|=|\\text{A}{{|}^{\\text{n}-1}}$ provided</p><p>$|A|\\ne 0$ i.e. $A$ is non-singular.</p><p>(b) Adj. $(\\operatorname{Adj}\\cdot \\mathbf{A})=|\\mathbf{A}{{|}^{\\text{n}-2}}\\mathbf{A}$ if $\\text{A}$ be non-singular</p><p>Put Adj.A = B then</p><p>$\\text{B adj}\\text{.B }=|\\text{B}|{{\\text{I}}_{\\text{n}}}=\\operatorname{diag}.[|\\text{B}|,|\\text{B},\\ldots |\\text{B}\\mid ]$</p><p>$\\therefore \\quad \\text{A}(\\text{B adj}\\text{.B })=\\text{ A diag}\\text{. }[|\\text{B}|,|\\text{B}|\\ldots |\\text{B}|]$</p><p>$=|\\text{B}|\\text{A}$</p><p>Now put $B=\\operatorname{adj}.A$ in $(I)$</p><p>$\\therefore \\quad |\\text{B}|=|\\operatorname{adj}\\text{A}|=|\\text{A}{{|}^{\\text{n}-1}}$</p><p>$\\therefore \\quad A(\\operatorname{adj}\\cdot A)\\operatorname{adj}\\cdot (\\operatorname{adj}\\cdot A)=|A{{|}^{n-1}}A$</p><p>$|\\text{A}|{{\\text{I}}_{\\text{n}}}\\operatorname{adj}\\cdot (\\operatorname{adj}\\cdot \\text{A})=|\\text{A}{{|}^{\\text{n}-1}}~\\text{A}$</p><p>$\\therefore \\quad \\text{ }\\operatorname{adj}\\cdot (\\operatorname{adj}\\cdot \\text{A})=|\\text{A}{{|}^{\\text{n}-2}}~\\text{A}$</p><p>Particular Case: If A be 3 matrix, then</p><p>$\\operatorname{adj}.(\\operatorname{adj}\\cdot \\text{A})\\text{ }=|\\text{A}{{|}^{\\text{n}-2}}~\\text{A}$</p><p>$=|\\text{A}{{|}^{3-2}}~\\text{A}=|\\text{A}|\\cdot \\text{A}$</p><p>Minor of $2=\\left| \\begin{matrix} -2 &amp; 5 \\\\ 0 &amp; 6 \\\\ \\end{matrix} \\right|=-12-0=-12$</p><p>Cofactor of $2={{(-1)}^{1+2}}(-12)=12[\\therefore 2$ occurs in the 1 st row and 2 nd column]</p>",
+      "position": 0,
+      "qcConcept": "66a0dd94c03b9dcaf1afebb2"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f652d384bfb4a53824d",
+      "title": "Adjoint of the matrix\n$N=\\left[\\begin{array}{ccc}-4 & -3 & -3 \\\\ 1 & 0 & 1 \\\\ 4 & 4 & 3\\end{array}\\right]$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a53824e",
+      "title": "If $A$ is a $n \\times n$ matrix, then $\\operatorname{adj}(\\operatorname{adj} A)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a53824f",
+      "title": "If $k$ is a scalar and $/$ is a unit matrix of order 3 , then $\\operatorname{adj}(k I)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a538250",
+      "title": "If $A$ is a non- singular matrix, then $A(\\operatorname{adj} A)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a538251",
+      "title": "If $A=\\left[\\begin{array}{cc}\\cos \\alpha & \\sin \\alpha \\\\ -\\sin \\alpha & \\cos \\alpha\\end{array}\\right]$ and $A$ adj $A=\\left[\\begin{array}{ll}k & 0 \\\\ 0 & k\\end{array}\\right]$,then $k$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a538252",
+      "title": "$A=\\left[\\begin{array}{ll}4 & 2 \\\\ 3 & 4\\end{array}\\right]$ then $|\\operatorname{adj} A|$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a538253",
+      "title": "If $A$ and $B$ are non-singular square matrices of same order, then $\\operatorname{adj}(A B)$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a538254",
+      "title": "The adjoint matrix of $\\left[\\begin{array}{lll}3 & -3 & 4 \\\\ 2 & -3 & 4 \\\\ 0 & -1 & 1\\end{array}\\right]$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

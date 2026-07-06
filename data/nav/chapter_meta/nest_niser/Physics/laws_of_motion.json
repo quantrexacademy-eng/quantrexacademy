@@ -1,0 +1,41 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d2ad647479b8e8696479",
+  "chapterId": "680920323a10446a207fdf3e",
+  "subject": "Physics",
+  "chapter": "Laws of Motion",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "680920743a10446a207fe28a",
+      "title": "Newton's laws of motion",
+      "count": 6,
+      "questionIds": [
+        "680920403a10446a207fdfe0",
+        "6809203f3a10446a207fdfd8",
+        "6809203b3a10446a207fdfa5",
+        "6809203a3a10446a207fdf95",
+        "680920373a10446a207fdf72",
+        "680920323a10446a207fdf3c"
+      ]
+    },
+    {
+      "id": "680920743a10446a207fe28c",
+      "title": "Spring force",
+      "count": 1,
+      "questionIds": [
+        "680920423a10446a207fdffb"
+      ]
+    },
+    {
+      "id": "680920743a10446a207fe28b",
+      "title": "Frictional force",
+      "count": 2,
+      "questionIds": [
+        "6809203a3a10446a207fdf9f",
+        "680920383a10446a207fdf87"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b34d4b564dfab4f94cc",
+  "chapterId": "66d58538a75f05ee8564f554",
+  "subject": "Physics",
+  "chapter": "Electrostatics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d58699a75f05ee856502a7",
+      "title": "Electric Charge and Coulomb's law",
+      "count": 10,
+      "questionIds": [
+        "66d5865ca75f05ee85650000",
+        "66d58649a75f05ee8564ff53",
+        "66d58644a75f05ee8564ff22",
+        "66d58635a75f05ee8564fe99",
+        "66d58634a75f05ee8564fe8d",
+        "66d58620a75f05ee8564fdd9",
+        "66d5860ea75f05ee8564fd2c",
+        "66d5860aa75f05ee8564fd0c",
+        "66d585a2a75f05ee8564f941",
+        "66d5853ba75f05ee8564f572"
+      ]
+    },
+    {
+      "id": "66d58699a75f05ee856502a6",
+      "title": "Electric Field and Electric Field Lines",
+      "count": 10,
+      "questionIds": [
+        "66d58659a75f05ee8564ffe5",
+        "66d58635a75f05ee8564fe9a",
+        "66d585fba75f05ee8564fc77",
+        "66d585a5a75f05ee8564f95c",
+        "66d5856ca75f05ee8564f74c",
+        "66d58569a75f05ee8564f72f",
+        "66d58568a75f05ee8564f725",
+        "66d58556a75f05ee8564f686",
+        "66d58554a75f05ee8564f66c",
+        "66d58538a75f05ee8564f552"
+      ]
+    },
+    {
+      "id": "66d5869aa75f05ee856502a8",
+      "title": "Electric Potential and Potential Energy",
+      "count": 9,
+      "questionIds": [
+        "66d58634a75f05ee8564fe8e",
+        "66d58633a75f05ee8564fe81",
+        "66d5861fa75f05ee8564fdcd",
+        "66d5860ca75f05ee8564fd18",
+        "66d585faa75f05ee8564fc76",
+        "66d585f9a75f05ee8564fc69",
+        "66d585b5a75f05ee8564f9f4",
+        "66d5858da75f05ee8564f889",
+        "66d5857aa75f05ee8564f7d4"
+      ]
+    },
+    {
+      "id": "66d5869aa75f05ee856502aa",
+      "title": "Electric Dipole",
+      "count": 1,
+      "questionIds": [
+        "66d585fca75f05ee8564fc86"
+      ]
+    },
+    {
+      "id": "66d5869aa75f05ee856502a9",
+      "title": "Electric Flux and Gauss Law",
+      "count": 4,
+      "questionIds": [
+        "66d5865da75f05ee8565000d",
+        "66d5861ea75f05ee8564fdbe",
+        "66d585fca75f05ee8564fc84",
+        "66d585b5a75f05ee8564f9f3"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19156220c83fbf1e0bce11",
+  "chapterId": "6a192b9ee4cc9575516b565d",
+  "subject": "Physics",
+  "chapter": "Laws of Motion",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec16eef1faeb9633e23af",
+      "title": "Newton's laws of motion",
+      "count": 4,
+      "questionIds": [
+        "6a1ec074ef1faeb9633e1d8f",
+        "6a1ec090ef1faeb9633e1e40",
+        "6a1ec00eef1faeb9633e1b0f",
+        "6a1ec113ef1faeb9633e2177"
+      ]
+    },
+    {
+      "id": "6a1ec16eef1faeb9633e23b0",
+      "title": "Equilibrium of Forces",
+      "count": 3,
+      "questionIds": [
+        "6a1ec0d3ef1faeb9633e1fe6",
+        "6a1ec02eef1faeb9633e1bd7",
+        "6a1ec054ef1faeb9633e1cc7"
+      ]
+    },
+    {
+      "id": "6a1ec16eef1faeb9633e23b1",
+      "title": "Non-uniform Circular Motion",
+      "count": 3,
+      "questionIds": [
+        "6a1ec06def1faeb9633e1d65",
+        "6a1ec0aeef1faeb9633e1efe",
+        "6a1ec052ef1faeb9633e1cbe"
+      ]
+    }
+  ]
+}

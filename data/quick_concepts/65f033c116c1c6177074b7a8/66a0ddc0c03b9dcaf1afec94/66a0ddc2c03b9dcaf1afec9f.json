@@ -1,0 +1,58 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddc0c03b9dcaf1afec94",
+  "topicId": "66a0ddc2c03b9dcaf1afec9f",
+  "title": "Mode",
+  "concepts": [
+    {
+      "title": "Mode",
+      "conceptBody": "<h3><strong>Mode</strong></h3><p>The mode or model value of a distribution is that value of the variable for which the frequency is maximum.</p><p>Mode $={{l}_{1}}+\\left[ \\frac{{{f}_{1}}-{{f}_{0}}}{2{{f}_{1}}-{{f}_{0}}-{{f}_{2}}} \\right]\\times i$</p><p>Where,</p><p>${{l}_{1}}$= The lower limit of the model class</p><p>${{f}_{1}}$= The frequency of the model class</p><p>${{f}_{0}}$= The frequency of the class preceding the model class</p><p>${{f}_{2}}$= The frequency of the class succeeding the model class</p><p><i>i </i>= The size of the model class.</p><p>Mean – Mode = 3(Mean – Median) ⇒ Mode = 3 Median – 2 Mean. It is known as Empirical relation</p>",
+      "position": 0,
+      "qcConcept": "66a0ddc2c03b9dcaf1afeca0"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66891f351010aab82c8aa6a7",
+      "title": "Which one of the following measures of marks is the most suitable one of central location for computing intelligence of students",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6a8",
+      "title": "For a continuous series the mode is computed by the formula",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6a9",
+      "title": "The mode of the following items is $0,1,6,7,2,3,7,6,6,2,6,0,5,6,0$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6aa",
+      "title": "The mode of the distribution\n<img src=\"https://cdn-question-pool.getmarks.app/modules/qc/NYLQiwXDLghTt-2laumpJGs3xml8H4cj8-0n8w-8y44.original.fullsize.png\"/><br/>",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6ab",
+      "title": "Consider the following statements\n(1) Mode can be computed from histogram\n(2) Median is not independent of change of scale\n(3) Variance is independent of change of origin and scale\nWhich of these is/are correct",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6ac",
+      "title": "In a moderately asymmetrical distribution the mode and mean are 7 and 4 respectively. The median is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6ad",
+      "title": "If in a frequency distribution, the mean and median are 21 and 22 respectively, then its mode is approximately",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

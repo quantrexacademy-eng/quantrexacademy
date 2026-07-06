@@ -1,0 +1,44 @@
+{
+  "examSlug": "comedk",
+  "examId": "629105adee9e3ae00d63352e",
+  "subjectId": "629105adee9e3ae00d63352b",
+  "chapterId": "629109ea3eeeda8325a8d9f6",
+  "subject": "Physics",
+  "chapter": "Communication System",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64c57c1420fc93db0c28bd65",
+      "title": "Communication System",
+      "count": 6,
+      "questionIds": [
+        "64c57bcd20fc93db0c28ba8a",
+        "64c57bb520fc93db0c28b9af",
+        "64c57b4220fc93db0c28b5a7",
+        "64c57b3f20fc93db0c28b58c",
+        "64c57b3f20fc93db0c28b58b",
+        "64c57b1520fc93db0c28b416"
+      ]
+    },
+    {
+      "id": "64c57c1420fc93db0c28bd66",
+      "title": "Modulation",
+      "count": 4,
+      "questionIds": [
+        "64c57bdc20fc93db0c28bb10",
+        "64c57b5420fc93db0c28b645",
+        "64c57b5420fc93db0c28b644",
+        "64c57b3c20fc93db0c28b56d"
+      ]
+    },
+    {
+      "id": "65424534242a07fec9fa76aa",
+      "title": "Propagation of EM Waves",
+      "count": 2,
+      "questionIds": [
+        "681377ae2d288c475c04cba2",
+        "654244cd242a07fec9fa75ce"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d2ad647479b8e8696479",
+  "chapterId": "680920293a10446a207fdece",
+  "subject": "Physics",
+  "chapter": "Rotational Motion",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6809206f3a10446a207fe242",
+      "title": "Moment of inertia of rigid bodies",
+      "count": 2,
+      "questionIds": [
+        "6809203c3a10446a207fdfb1",
+        "6809202b3a10446a207fdee1"
+      ]
+    },
+    {
+      "id": "6809206f3a10446a207fe245",
+      "title": "Torque",
+      "count": 1,
+      "questionIds": [
+        "680920483a10446a207fe037"
+      ]
+    },
+    {
+      "id": "6809206f3a10446a207fe241",
+      "title": "Rotational kinematics",
+      "count": 7,
+      "questionIds": [
+        "680920443a10446a207fe012",
+        "6809203b3a10446a207fdfab",
+        "680920333a10446a207fdf49",
+        "680920333a10446a207fdf41",
+        "680920313a10446a207fdf31",
+        "680920303a10446a207fdf23",
+        "680920293a10446a207fdecc"
+      ]
+    },
+    {
+      "id": "6809206f3a10446a207fe243",
+      "title": "Angular momentum and Angular impulse",
+      "count": 3,
+      "questionIds": [
+        "680920423a10446a207fdff1",
+        "6809203e3a10446a207fdfc9",
+        "680920353a10446a207fdf60"
+      ]
+    },
+    {
+      "id": "6809206f3a10446a207fe246",
+      "title": "Rolling without Slipping",
+      "count": 2,
+      "questionIds": [
+        "6a45fe565aa758e832e06eda",
+        "680920483a10446a207fe039"
+      ]
+    },
+    {
+      "id": "6809206f3a10446a207fe244",
+      "title": "Frictional force",
+      "count": 1,
+      "questionIds": [
+        "680920443a10446a207fe008"
+      ]
+    }
+  ]
+}

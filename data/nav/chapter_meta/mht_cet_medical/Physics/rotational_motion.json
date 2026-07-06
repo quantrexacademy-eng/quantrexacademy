@@ -1,0 +1,54 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19156220c83fbf1e0bce11",
+  "chapterId": "6a192b9fe4cc9575516b5664",
+  "subject": "Physics",
+  "chapter": "Rotational Motion",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec178ef1faeb9633e23d6",
+      "title": "Moment of inertia of rigid bodies",
+      "count": 15,
+      "questionIds": [
+        "6a1ec0f1ef1faeb9633e209e",
+        "6a1ec0f0ef1faeb9633e209b",
+        "6a1ec06def1faeb9633e1d66",
+        "6a1ec06def1faeb9633e1d64",
+        "6a1ec0ccef1faeb9633e1fbc",
+        "6a1ec0aeef1faeb9633e1f00",
+        "6a1ec0aeef1faeb9633e1eff",
+        "6a1ec092ef1faeb9633e1e4e",
+        "6a1ec08cef1faeb9633e1e2c",
+        "6a1ec02fef1faeb9633e1bdf",
+        "6a1ec12def1faeb9633e221f",
+        "6a1ec14bef1faeb9633e22dc",
+        "6a1ec00fef1faeb9633e1b17",
+        "6a1ec053ef1faeb9633e1cc0",
+        "6a1ec052ef1faeb9633e1cbf"
+      ]
+    },
+    {
+      "id": "6a1ec179ef1faeb9633e23d7",
+      "title": "Angular momentum and Angular impulse",
+      "count": 5,
+      "questionIds": [
+        "6a1ec094ef1faeb9633e1e5c",
+        "6a1ec02fef1faeb9633e1bde",
+        "6a1ec02def1faeb9633e1bd5",
+        "6a1ec12def1faeb9633e221e",
+        "6a1ec14bef1faeb9633e22dd"
+      ]
+    },
+    {
+      "id": "6a1ec179ef1faeb9633e23d8",
+      "title": "Rolling without Slipping",
+      "count": 2,
+      "questionIds": [
+        "6a1ec0ccef1faeb9633e1fbd",
+        "6a1ec14cef1faeb9633e22de"
+      ]
+    }
+  ]
+}

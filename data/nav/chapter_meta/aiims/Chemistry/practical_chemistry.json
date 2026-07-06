@@ -1,0 +1,39 @@
+{
+  "examSlug": "aiims",
+  "examId": "61961afba5a5260118868014",
+  "subjectId": "64d50c263df7f4a7f3017f70",
+  "chapterId": "64eb06ea3118f713ecfef22b",
+  "subject": "Chemistry",
+  "chapter": "Practical Chemistry",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66bb66be08a93761696e3e6c",
+      "title": "Radicals",
+      "count": 1,
+      "questionIds": [
+        "66bb659c08a93761696e34ed"
+      ]
+    },
+    {
+      "id": "66bb66be08a93761696e3e6a",
+      "title": "Preliminary Tests",
+      "count": 4,
+      "questionIds": [
+        "66bb662e08a93761696e390e",
+        "66bb661808a93761696e386d",
+        "66bb64a408a93761696e2de4",
+        "66bb648b08a93761696e2d2e"
+      ]
+    },
+    {
+      "id": "66bb66be08a93761696e3e6b",
+      "title": "Identification of Basic Radicals",
+      "count": 2,
+      "questionIds": [
+        "66bb65e408a93761696e36f5",
+        "66bb650808a93761696e30b6"
+      ]
+    }
+  ]
+}

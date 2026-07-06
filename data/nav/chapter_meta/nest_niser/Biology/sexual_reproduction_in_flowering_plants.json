@@ -1,0 +1,33 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d392647479b8e869647c",
+  "chapterId": "68091fbc3a10446a207fda56",
+  "subject": "Biology",
+  "chapter": "Sexual Reproduction in Flowering Plants",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "680920593a10446a207fe115",
+      "title": "Asexual Reproduction",
+      "count": 2,
+      "questionIds": [
+        "68091fce3a10446a207fdb21",
+        "68091fc33a10446a207fdaaf"
+      ]
+    },
+    {
+      "id": "680920593a10446a207fe114",
+      "title": "Sexual Reproduction",
+      "count": 6,
+      "questionIds": [
+        "68091fda3a10446a207fdb8e",
+        "68091fd33a10446a207fdb52",
+        "68091fc93a10446a207fdae8",
+        "68091fc93a10446a207fdae6",
+        "68091fc03a10446a207fda8c",
+        "68091fbc3a10446a207fda54"
+      ]
+    }
+  ]
+}

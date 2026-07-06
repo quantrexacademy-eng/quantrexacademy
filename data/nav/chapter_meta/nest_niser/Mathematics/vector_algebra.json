@@ -1,0 +1,53 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d379647479b8e869647b",
+  "chapterId": "680920063a10446a207fdd62",
+  "subject": "Mathematics",
+  "chapter": "Vector Algebra",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "680920693a10446a207fe1e6",
+      "title": "Algebra of Vectors",
+      "count": 4,
+      "questionIds": [
+        "680920213a10446a207fde75",
+        "6809201d3a10446a207fde52",
+        "680920123a10446a207fddde",
+        "6809200a3a10446a207fdd89"
+      ]
+    },
+    {
+      "id": "680920683a10446a207fe1e5",
+      "title": "Product of 2 vectors",
+      "count": 6,
+      "questionIds": [
+        "680920243a10446a207fde92",
+        "680920193a10446a207fde2a",
+        "680920143a10446a207fddfb",
+        "680920133a10446a207fddeb",
+        "680920103a10446a207fddd2",
+        "680920063a10446a207fdd60"
+      ]
+    },
+    {
+      "id": "680920693a10446a207fe1e8",
+      "title": "Scalar Triple Product",
+      "count": 2,
+      "questionIds": [
+        "680920163a10446a207fde0d",
+        "6809200e3a10446a207fddb9"
+      ]
+    },
+    {
+      "id": "680920693a10446a207fe1e7",
+      "title": "Vector Triple Product",
+      "count": 2,
+      "questionIds": [
+        "6809201f3a10446a207fde5e",
+        "6809200c3a10446a207fdda0"
+      ]
+    }
+  ]
+}

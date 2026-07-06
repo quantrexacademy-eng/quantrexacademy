@@ -1,0 +1,58 @@
+{
+  "subjectId": "65dcf3d937445f4fe46f420e",
+  "chapterId": "66a0db84c03b9dcaf1afe229",
+  "topicId": "66a0db89c03b9dcaf1afe241",
+  "title": "Non-uniform Motion",
+  "concepts": [
+    {
+      "title": "Non Uniformly Accelerated Motion",
+      "conceptBody": "<h3>Calculation of Integrals</h3><p>We have two types of integrals: Indefinite integrals and Definite integrals. Indefinite integrals are basically anti-derivatives i.e., they are inverse of derivatives.&nbsp;</p><p>For example, we know that derivative of ${{\\text{t}}^{2}}=2\\text{t}$ and this means that the indefinite integral of $2\\text{t}$ is ${{\\text{t}}^{2}}$. Similarly, the derivative of ${{\\text{t}}_{\\text{n}}}$ is $\\text{nt}{{\\text{t}}^{\\text{n}-1}}$ and hence the indefinite integral of $n{{\\text{t}}^{\\text{n}-1}}$ is $\\text{tn}$.</p><p>Proceeding in the similar way, we get:</p><p>$\\int ~{{t}^{n}}dt=\\frac{{{t}^{n+1}}}{n+1}\\text{ }\\!\\!~\\!\\!\\text{ }\\!\\!~\\!\\!\\text{ Note }\\!\\!~\\!\\!\\text{ that }\\!\\!~\\!\\!\\text{ the }\\!\\!~\\!\\!\\text{ derivative }\\!\\!~\\!\\!\\text{ of }\\!\\!~\\!\\!\\text{ }\\frac{{{t}^{n+1}}}{n+1}\\text{ }\\!\\!~\\!\\!\\text{ is }\\!\\!~\\!\\!\\text{ }{{t}^{n}}$</p><p>(We can add a constant to the right hand side because the derivative of a constant is zero.)</p><p>Definite integrals are calculated over some intervals i.e., between an upper limit and a lower limit. To calculate a definite integral, first find its indefinite integral (anti-derivative) and then substitute upper and lower limits and subtract.</p><p>For example: $\\left. \\text{ }\\!\\!~\\!\\!\\text{ }\\int \\text{tdt}=\\frac{{{\\text{t}}^{2}}}{2} \\right]=\\frac{{{2}^{2}}}{2}-\\frac{{{1}^{2}}}{2}=\\frac{3}{2}$</p><p>Some quantities defined as derivatives and integrals.</p><figure class=\"table\"><table><tbody><tr><td>$v\\left( t \\right)=\\frac{dx}{dt}$</td><td>$v=$ slope of $x-t$ graph</td></tr><tr><td>$\\left( t \\right)=\\frac{dv}{dt}a$</td><td>$a=$ slope of $v-t$ graph</td></tr><tr><td>$F\\left( t \\right)=\\frac{dp}{dt}$</td><td>$F=$ slope of $p-t$ graph</td></tr><tr><td>&nbsp;</td><td>$(p=$ linear momentum $)$</td></tr></tbody></table></figure><figure class=\"table\"><table><tbody><tr><td>$\\text{ }\\!\\!\\Delta\\!\\!\\text{ x}=\\int \\text{dx}=\\int _{1}^{2}\\text{v}\\left( \\text{t} \\right)\\text{dt}$</td><td>$\\text{ }\\!\\!\\Delta\\!\\!\\text{ x}=$ area under $\\text{v}-\\text{t}$ graph</td></tr><tr><td>$\\text{ }\\!\\!\\Delta\\!\\!\\text{ v}=\\int \\text{dv}=\\int _{1}^{2}\\text{a}\\left( \\text{t} \\right)\\text{dt}$</td><td>$\\text{ }\\!\\!\\Delta\\!\\!\\text{ v}=$ area under $\\text{a}-\\text{t}$ graph</td></tr><tr><td>$\\text{ }\\!\\!\\Delta\\!\\!\\text{ p}=\\int \\text{dp}=\\int _{1}^{2}\\text{ }\\!\\!~\\!\\!\\text{ F}\\left( \\text{t} \\right)\\text{dt}$</td><td>$\\text{ }\\!\\!\\Delta\\!\\!\\text{ p}=$ area under $\\text{F}-\\text{t}$ graph</td></tr><tr><td>$\\text{W}=\\int \\text{dW}=\\int _{1}^{2}\\text{ }\\!\\!~\\!\\!\\text{ F}\\left( \\text{x} \\right)\\text{dx}$</td><td>$\\text{W}=$ area under $\\text{F}-\\text{x}$ graph</td></tr></tbody></table></figure>",
+      "position": 0,
+      "qcConcept": "66a0db89c03b9dcaf1afe242"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "665850f61ebdecde60539af5",
+      "title": "A particle moves along a straight line such that its displacement at any time t is given by\n$S=t^3-6 t^2+3 t+4$ meters\nThe velocity when the acceleration is zero is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f61ebdecde60539af6",
+      "title": "The displacement is given by $x=2 t^2+t+5$, the acceleration at $t=2 s$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f61ebdecde60539af7",
+      "title": "The displacement of a particle, moving in a straight line, is given by $s=2 t^2+2 t+4$ where s in metres and ${ }^t$ in seconds. The acceleration of the particle is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f61ebdecde60539af8",
+      "title": "The displacement of a particle is proportional to the cube of time elapsed. How does the acceleration of the particle depends on time obtained",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f61ebdecde60539af9",
+      "title": "Starting from rest, acceleration of a particle is $a=2(t-1)$. The velocity of the particle at $t=5 \\mathrm{~s}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f61ebdecde60539afa",
+      "title": "A particle moves along $x$-axis as\n$x=4(t-2)+a(t-2)^2$\nWhich of the following is true?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f61ebdecde60539afb",
+      "title": "A body is moving according to the equation $x=a t+b t^2-c t^3$ where $x=$ displacement and ${ }^{a, b}$ and $c$ are constants. The acceleration of the body is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

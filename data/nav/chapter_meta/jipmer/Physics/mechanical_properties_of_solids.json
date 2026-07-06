@@ -1,0 +1,41 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b34d4b564dfab4f94cc",
+  "chapterId": "66d585b4a75f05ee8564f9e6",
+  "subject": "Physics",
+  "chapter": "Mechanical Properties of Solids",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d586c7a75f05ee85650499",
+      "title": "Young’s Modulus and Breaking Stres",
+      "count": 4,
+      "questionIds": [
+        "66d5865ba75f05ee8564fff3",
+        "66d585f9a75f05ee8564fc65",
+        "66d585d8a75f05ee8564fb34",
+        "66d585b4a75f05ee8564f9e4"
+      ]
+    },
+    {
+      "id": "66d586c7a75f05ee8565049b",
+      "title": "Bulk Modulus",
+      "count": 4,
+      "questionIds": [
+        "66d58645a75f05ee8564ff2d",
+        "66d5860ca75f05ee8564fd1e",
+        "66d5860ca75f05ee8564fd1b",
+        "66d585c9a75f05ee8564faa8"
+      ]
+    },
+    {
+      "id": "66d586c7a75f05ee8565049a",
+      "title": "Shearing stress",
+      "count": 1,
+      "questionIds": [
+        "66d585b4a75f05ee8564f9e7"
+      ]
+    }
+  ]
+}

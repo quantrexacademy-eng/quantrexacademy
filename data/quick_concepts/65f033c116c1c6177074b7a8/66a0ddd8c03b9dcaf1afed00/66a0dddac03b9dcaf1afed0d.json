@@ -1,0 +1,76 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddd8c03b9dcaf1afed00",
+  "topicId": "66a0dddac03b9dcaf1afed0d",
+  "title": "Sum and Difference & Multiple angle Formula",
+  "concepts": [
+    {
+      "title": "Sum and difference formulas for sin,cos,tan and cot",
+      "conceptBody": "<h3><strong>Sum and difference formulas&nbsp;</strong></h3><ul><li>$\\text{ }\\!\\!~\\!\\!\\text{ sin}\\left( \\text{A}+\\text{B} \\right)=\\text{sinAcosB}+\\text{sinBcosA}$</li><li>$\\text{ }\\!\\!~\\!\\!\\text{ sin}\\left( \\text{A}-\\text{B} \\right)=\\text{sinAcosB}-\\text{sinBcosA}$</li><li>$\\text{ }\\!\\!~\\!\\!\\text{ cos}\\left( \\text{A}+\\text{B} \\right)=\\text{cosAcosB}-\\text{sinAsinB}$</li><li>$\\text{ }\\!\\!~\\!\\!\\text{ cos}\\left( \\text{A}-\\text{B} \\right)=\\text{cosAcosB}+\\text{sinAsinB}$</li></ul><p><strong>Note </strong>the cos formulas, they have (-) sign for sum formula and (+) ve sign for difference</p><ul><li>$\\text{ }\\!\\!~\\!\\!\\text{ tan}\\left( \\text{A}+\\text{B} \\right)=\\frac{\\text{tanA}+\\text{tanB}}{1-\\text{tanAtanB}}$</li><li>$\\text{tan}\\left( \\text{A}-\\text{B} \\right)=\\frac{\\text{tanA}-\\text{tanB}}{1+\\text{tanAtanB}}$</li></ul><p>where $\\text{A},\\text{B}\\ne \\left( \\text{n}+\\frac{1}{2} \\right)\\pi $</p><ul><li>$\\text{ }\\!\\!~\\!\\!\\text{ cot}\\left( \\text{A}+\\text{B} \\right)=\\frac{\\text{cotAcotB}-1}{\\text{cotA}+\\text{cotB}}$</li><li>$\\text{ }\\!\\!~\\!\\!\\text{ cot}\\left( \\text{A}-\\text{B} \\right)=\\frac{\\text{cotAcotB}+1}{\\text{cotB}-\\text{cotA}}$</li></ul><p>where $A,B\\ne n\\pi $</p><p>Cot formula's are opposite of tan formulas, the denominator &amp; numerator part are switched.</p>",
+      "position": 0,
+      "qcConcept": "66a0dddbc03b9dcaf1afed0e"
+    },
+    {
+      "title": "Important deductions",
+      "conceptBody": "<h3><strong>Some Important deduction&nbsp;</strong></h3><ul><li>$\\text{ }\\!\\!~\\!\\!\\text{ sin}\\left( \\text{A}+\\text{B} \\right)\\text{sin}\\left( \\text{A}-\\text{B} \\right)=\\text{si}{{\\text{n}}^{2}}\\text{ }\\!\\!~\\!\\!\\text{ A}-\\text{si}{{\\text{n}}^{2}}\\text{ }\\!\\!~\\!\\!\\text{ B}\\,\\,={{\\cos }^{2}}B-{{\\cos }^{2}}A$</li><li>$\\begin{align} &amp; \\cos (A+B)\\cos (A-B)={{\\cos }^{2}}A-{{\\sin }^{2}}B \\\\ &amp; \\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,={{\\cos }^{2}}B-{{\\sin }^{2}}A \\\\ \\end{align}$</li><li>$\\text{tan}A\\pm \\text{tan}B=\\frac{\\text{sin}\\left( A\\pm B \\right)}{\\text{cos}A\\text{cos}B}$</li><li>$\\text{ }\\!\\!~\\!\\!\\text{ cot}A\\pm \\text{cot}B=\\frac{\\text{sin}\\left( B\\pm A \\right)}{\\text{sin}A\\text{sin}B}$</li><li>$\\text{tan}\\left( \\frac{\\pi }{4}+\\theta \\right)=\\frac{1+\\text{tan}\\theta }{1-\\text{tan}\\theta }\\And \\text{tan}\\left( \\frac{\\pi }{4}-\\theta \\right)=\\frac{1-\\text{tan}\\theta }{1+\\text{tan}\\theta }$</li></ul><p>This formula will be used in various number of questions.</p>",
+      "position": 1,
+      "qcConcept": "66a0dddbc03b9dcaf1afed0f"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f6e2d384bfb4a538472",
+      "title": "If $\\cos \\theta=\\frac{3}{5}$ and $\\cos \\phi=\\frac{4}{5}$, where $\\theta$ and $\\phi$ are positive acute angles, then $\\cos \\frac{\\theta-\\phi}{2}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538473",
+      "title": "If $\\cos P=\\frac{1}{7}$ and $\\cos Q=\\frac{13}{14}$, where $P$ and $Q$ both are acute angles. Then the value of $P-Q$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538474",
+      "title": "$\\frac{\\sin (B+A)+\\cos (B-A)}{\\sin (B-A)+\\cos (B+A)}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538475",
+      "title": "$\\sec 50^{\\circ}+\\tan 50^{\\circ}$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538476",
+      "title": "If $\\cos (A+B)=\\alpha \\cos A \\cos B+\\beta \\sin A \\sin B$, then $(\\alpha, \\beta)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538477",
+      "title": "$\\sin 50^{\\circ}-\\sin 70^{\\circ}+\\sin 10^{\\circ}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538478",
+      "title": "$\\tan 20^{\\circ}+\\tan 40^{\\circ}+\\sqrt{3} \\tan 20^{\\circ} \\tan 40^{\\circ}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538479",
+      "title": "The value of $\\cos A-\\sin A$ when $A=\\frac{5 \\pi}{4}$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a53847a",
+      "title": "The value $\\cos 105^{\\circ}+\\sin 105^{\\circ}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b89d4b564dfab4f94d0",
+  "chapterId": "66d5856da75f05ee8564f756",
+  "subject": "Chemistry",
+  "chapter": "Environmental Chemistry",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d586c4a75f05ee85650479",
+      "title": "Air Pollution",
+      "count": 3,
+      "questionIds": [
+        "66d5863ca75f05ee8564fedb",
+        "66d58629a75f05ee8564fe27",
+        "66d585dda75f05ee8564fb66"
+      ]
+    },
+    {
+      "id": "66d586c4a75f05ee8565047a",
+      "title": "Water Pollution",
+      "count": 3,
+      "questionIds": [
+        "66d58616a75f05ee8564fd76",
+        "66d58616a75f05ee8564fd74",
+        "66d585efa75f05ee8564fc09"
+      ]
+    },
+    {
+      "id": "66d586c4a75f05ee85650478",
+      "title": "Environmental Pollution and pollutants",
+      "count": 4,
+      "questionIds": [
+        "66d58611a75f05ee8564fd47",
+        "66d58601a75f05ee8564fcb1",
+        "66d58593a75f05ee8564f8ba",
+        "66d5856ca75f05ee8564f754"
+      ]
+    },
+    {
+      "id": "66d586c4a75f05ee8565047b",
+      "title": "Control of environmental pollution",
+      "count": 1,
+      "questionIds": [
+        "66d58600a75f05ee8564fcac"
+      ]
+    }
+  ]
+}

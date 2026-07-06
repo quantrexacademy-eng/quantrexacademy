@@ -1,0 +1,68 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d392647479b8e869647c",
+  "chapterId": "68091fbc3a10446a207fda5c",
+  "subject": "Biology",
+  "chapter": "Biological Classification",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "680920593a10446a207fe11d",
+      "title": "Introduction",
+      "count": 2,
+      "questionIds": [
+        "68091fdf3a10446a207fdbc6",
+        "68091fbc3a10446a207fda5a"
+      ]
+    },
+    {
+      "id": "680920593a10446a207fe11f",
+      "title": "Kingdom Monera",
+      "count": 6,
+      "questionIds": [
+        "6a45fe4e5aa758e832e06e91",
+        "68091fe03a10446a207fdbcb",
+        "68091fdd3a10446a207fdbb5",
+        "68091fd63a10446a207fdb67",
+        "68091fd33a10446a207fdb4a",
+        "68091fd13a10446a207fdb3e"
+      ]
+    },
+    {
+      "id": "680920593a10446a207fe11e",
+      "title": "Kingdom Protista",
+      "count": 1,
+      "questionIds": [
+        "68091fce3a10446a207fdb1d"
+      ]
+    },
+    {
+      "id": "680920593a10446a207fe121",
+      "title": "Kingdom Fungi",
+      "count": 2,
+      "questionIds": [
+        "68091fde3a10446a207fdbba",
+        "68091fdb3a10446a207fdb9c"
+      ]
+    },
+    {
+      "id": "680920593a10446a207fe120",
+      "title": "Viruses",
+      "count": 3,
+      "questionIds": [
+        "68091fdc3a10446a207fdba6",
+        "68091fd83a10446a207fdb7b",
+        "68091fd53a10446a207fdb61"
+      ]
+    },
+    {
+      "id": "6809205a3a10446a207fe122",
+      "title": "Algae: Thallophytes",
+      "count": 1,
+      "questionIds": [
+        "68091fdf3a10446a207fdbc8"
+      ]
+    }
+  ]
+}

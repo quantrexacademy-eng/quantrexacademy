@@ -1,0 +1,30 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff50378e1624ea7b6a0d",
+  "subject": "Physics",
+  "chapter": "Laws of Motion",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff88378e1624ea7b6cb1",
+      "title": "Newton's laws of motion",
+      "count": 3,
+      "questionIds": [
+        "67fdff5e378e1624ea7b6ab5",
+        "67fdff50378e1624ea7b6a0f",
+        "67fdff50378e1624ea7b6a0b"
+      ]
+    },
+    {
+      "id": "67fdff88378e1624ea7b6cb2",
+      "title": "Frictional force",
+      "count": 2,
+      "questionIds": [
+        "67fdff6a378e1624ea7b6b35",
+        "67fdff5d378e1624ea7b6aad"
+      ]
+    }
+  ]
+}

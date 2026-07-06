@@ -1,0 +1,42 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa607a4468eb1307ceb0af",
+  "chapterId": "67fdff42378e1624ea7b6953",
+  "subject": "Mathematics",
+  "chapter": "Functions",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff80378e1624ea7b6c37",
+      "title": "Functional Equation",
+      "count": 1,
+      "questionIds": [
+        "67fdff74378e1624ea7b6bad"
+      ]
+    },
+    {
+      "id": "67fdff80378e1624ea7b6c36",
+      "title": "Composite Function",
+      "count": 4,
+      "questionIds": [
+        "67fdff74378e1624ea7b6ba8",
+        "67fdff5d378e1624ea7b6aaa",
+        "67fdff4d378e1624ea7b69e2",
+        "67fdff4c378e1624ea7b69d5"
+      ]
+    },
+    {
+      "id": "67fdff80378e1624ea7b6c35",
+      "title": "Types of Function (Mapping)",
+      "count": 5,
+      "questionIds": [
+        "68e7a680ce75e72648a45e7d",
+        "67fdff63378e1624ea7b6ae7",
+        "67fdff55378e1624ea7b6a4c",
+        "67fdff44378e1624ea7b6969",
+        "67fdff42378e1624ea7b6951"
+      ]
+    }
+  ]
+}

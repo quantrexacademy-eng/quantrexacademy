@@ -1,0 +1,35 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b89d4b564dfab4f94d0",
+  "chapterId": "66d58581a75f05ee8564f818",
+  "subject": "Chemistry",
+  "chapter": "Practical Chemistry",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d586c6a75f05ee8565048e",
+      "title": "Preliminary Tests",
+      "count": 1,
+      "questionIds": [
+        "66d585eda75f05ee8564fbfb"
+      ]
+    },
+    {
+      "id": "66d586c6a75f05ee8565048d",
+      "title": "Radicals",
+      "count": 1,
+      "questionIds": [
+        "66d585dda75f05ee8564fb68"
+      ]
+    },
+    {
+      "id": "66d586c6a75f05ee8565048c",
+      "title": "Identification of Acid Radicals",
+      "count": 1,
+      "questionIds": [
+        "66d58581a75f05ee8564f816"
+      ]
+    }
+  ]
+}

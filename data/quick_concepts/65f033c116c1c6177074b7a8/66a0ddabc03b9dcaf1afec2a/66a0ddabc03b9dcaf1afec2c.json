@@ -1,0 +1,52 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddabc03b9dcaf1afec2a",
+  "topicId": "66a0ddabc03b9dcaf1afec2c",
+  "title": "Sine Rule and its application",
+  "concepts": [
+    {
+      "title": "Standard Results",
+      "conceptBody": "<h3>Some useful results</h3><p>A set of three mutually perpendicular axes $\\text{OX},\\text{OY},\\text{OZ}$ along which unit vectors are respectively $\\widetilde{\\text{i}},\\widetilde{\\text{j}},\\widetilde{\\text{k}}$ constitute a reference frame. If a point $\\text{P}$ is represented in its position by the ordered triplet ( $\\text{x},\\text{y},\\text{z}$) then the vector $\\overrightarrow{\\text{OP}}=\\text{x}\\widetilde{\\text{i}}+\\text{yj}+\\text{z}\\widetilde{\\text{k}}$ represents the position vector of $\\text{P}$ with respect to the origin $\\text{O}$. Therefore $\\text{A}\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}},{{\\text{z}}_{1}} \\right)$ can be represented uniquely by its position vector drawn from $\\text{O}$ to $A$ so that $OA={{x}_{1}}\\tilde{i}+{{y}_{1}}\\tilde{j}+{{z}_{1}}\\tilde{k}$, where $\\left( {{x}_{1}},{{y}_{1}},{{z}_{1}} \\right)$ are the coordinates of $A$.</p><p>A number of useful results, analogous to what are available in coordinate Geometry, (or in complex number theory) is available in vector also.</p><ul><li>Thus, if $\\vec{b}$ and $\\vec{a}$ are the position vector of $A$ and $B$, then the midpoint of A B has position vector $\\frac{\\overrightarrow{\\text{a}}+\\overrightarrow{\\text{b}}}{2}$</li><li>More generally a point $\\text{P}$ dividing the joint of $\\overrightarrow{\\text{a}}$ and $\\overrightarrow{\\text{b}}$ in the ratio $\\text{m}:\\text{n}$ has position vector $\\frac{\\text{mb}+\\text{n}\\vec{a}}{~\\text{m}+\\text{n}}$.</li></ul><p>We also have the following:</p><p>If $\\vec{a},\\vec{b},\\vec{c}$ are the position vectors of the vertices of a triangle A B C, then</p><p>(i) The centroid of the triangle has position vector$\\frac{\\overrightarrow{\\text{a}}+\\overrightarrow{\\text{b}}+\\overrightarrow{\\text{c}}}{3}$.</p><p>(ii) If $\\vec{a},\\vec{b},\\vec{c}$ are position vectors of vertices of an equilateral triangle, whose orthocentre is at origin, then $\\vec{a}+\\vec{b}+\\vec{c}=\\vec{0}$</p><p>(iii) The orthocentre $O$, the triangle has position vector $\\frac{(a\\sec A)\\vec{a}+(b\\sec B)\\vec{b}+(\\operatorname{csec}C)\\vec{c}}{a\\sec A+b\\sec B+c\\sec C}$,</p><p>(a, b, c are the sides and A, B, C are the angles of the triangle.)</p><p>(iv) The circumcentre S of the triangle has position vector $\\frac{\\sin 2~\\text{A}\\vec{a}+\\sin 2\\text{Bb}+\\sin 2\\text{C}\\overrightarrow{\\text{c}}}{\\sin 2~\\text{A}+\\sin 2~\\text{B}+\\sin 2\\text{C}}\\text{. }$</p><p>(v) Further, if $\\overrightarrow{\\text{OA}}=\\overrightarrow{\\text{a}};\\overrightarrow{\\text{OB}}=\\overrightarrow{\\text{b}}$,</p><p>$\\overrightarrow{\\text{AB}}=\\overrightarrow{\\text{OB}}-\\overrightarrow{\\text{OA}}$</p><p>Specially if $\\vec{a}={{x}_{1}}\\tilde{i}+{{y}_{1}}j+{{z}_{1}}\\tilde{k}$ so that is $\\left( {{x}_{1}},{{y}_{1}},{{z}_{1}} \\right)$ and</p><p>$\\overrightarrow{\\text{b}}={{\\text{x}}_{2}}\\widetilde{\\text{i}}+{{\\text{y}}_{2}}\\widetilde{\\text{j}}+{{\\text{z}}_{2}}\\widetilde{\\text{k}}$ so that $\\text{B}$ is $\\left( {{\\text{x}}_{2}},{{\\text{y}}_{2}},{{\\text{z}}_{2}} \\right)$ then</p><p>$-\\text{a}+\\overrightarrow{\\text{b}}=\\overrightarrow{\\text{AB}}=\\left( {{\\text{x}}_{2}}-{{\\text{x}}_{1}} \\right)\\widetilde{\\text{i}}+\\left( {{\\text{y}}_{2}}-{{\\text{y}}_{1}} \\right)\\widetilde{\\text{j}}+\\left( {{\\text{z}}_{2}}-{{\\text{z}}_{1}} \\right)\\widetilde{\\text{k}}$</p><p>and hence $|\\vec{b}-\\vec{a}|=\\sqrt{{{\\left( {{x}_{2}}-{{x}_{1}} \\right)}^{2}}+{{\\left( {{y}_{2}}-{{y}_{1}} \\right)}^{2}}+{{\\left( {{z}_{2}}-{{z}_{1}} \\right)}^{2}}}$</p><p>which gives relatively the distance between $A\\left( {{x}_{1}},{{y}_{1}},{{z}_{1}} \\right)$ and $B\\left( {{x}_{2}},{{y}_{2}},{{z}_{2}} \\right)$.</p>",
+      "position": 0,
+      "qcConcept": "66a0ddabc03b9dcaf1afec2d"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f6c2d384bfb4a538354",
+      "title": "Consider the following for the next items that follow:\nThe angles $A, B$ and $C$ of a triangle $A B C$ are in the ratio $3: 5: 4$.\nWhat is the value of $a+b+\\sqrt{2} c$ equal to?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538355",
+      "title": "If the angle of triangle $A, B$ and $C$ are in $A P$ and $b: a=\\sqrt{3}: 1$, then what is the value of $A$ ?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538356",
+      "title": "In a triangle $\\mathrm{ABC}$, if $\\mathrm{a}=3, \\mathrm{~b}=4$ and $\\sin \\mathrm{A}=\\frac{3}{4}$, then $\\angle \\mathrm{B}$ equals",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538357",
+      "title": "If $\\mathrm{A}=75^{\\circ}, \\mathrm{B}=45^{\\circ}$, then $\\mathrm{b}+\\mathrm{c} \\sqrt{2}$ equals",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538358",
+      "title": "In a triangle $A B C$, side $\\mathrm{C}=2$, angle $\\mathrm{A}=45^{\\circ}$, side $\\mathrm{a}=2 \\sqrt{2}$, then what is angle $\\mathrm{C}$ equal to?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538359",
+      "title": "Consider the following statements:\n1. There exists no triangle $A B C$ for which $\\sin A+\\sin B=\\sin C$.\n2. If the angles of a triangle are in the ratio $1: 2: 3$, then its sides will be in the ratio $1: \\sqrt{3} : 2$. Which of the above statements is/are correct?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

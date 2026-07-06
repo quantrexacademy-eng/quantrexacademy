@@ -1,0 +1,88 @@
+{
+  "subjectId": "65dcf3d937445f4fe46f420e",
+  "chapterId": "66a0dbd0c03b9dcaf1afe38f",
+  "topicId": "66a0dbd7c03b9dcaf1afe3b3",
+  "title": "Polarization of Light",
+  "concepts": [
+    {
+      "title": "Unpolarised Light",
+      "conceptBody": "<h3><strong>Unpolarized Light&nbsp;</strong></h3><p>The ordinary light also called as unpolarized light, consists of a very large number of vibrations in all planes with equal probability at right angle to the planes with equal probability at right angle to the direction of propagation. So unpolarized light is symmetrical about its direction of propagation.</p>",
+      "position": 0,
+      "qcConcept": "66a0dbd8c03b9dcaf1afe3b4"
+    },
+    {
+      "title": "Polarised Light",
+      "conceptBody": "<h3><strong>Polarized Light&nbsp;</strong></h3><p>The light which has acquired the property of one sidedness is called polarized light or the lack of symmetry of vibration around the direction of wave propagation is called polarization. Polarization of light waves exhibits that they are transverse waves. When the vibrations are confined only to a single direction in a plane perpendicular to the direction of propagation, it is called a plane polarized light. A plane passing through the direction of propagation and perpendicular to the plane of vibration is known as plane of polarization.</p>",
+      "position": 1,
+      "qcConcept": "66a0dbd8c03b9dcaf1afe3b5"
+    },
+    {
+      "title": "Plane Polarised Light",
+      "conceptBody": "<h3><strong>Production of Plane Polarized Light&nbsp;</strong></h3><p>The plane polarized light can be produced by the following methods :</p><ol><li>by reflection : Brewster's law $\\mu =\\text{tanp}$, where $\\text{p}$ is the angle of polarization (Brewster's angle) and $\\mu $ is refractive index of the reflecting medium.</li><li>by refraction (piles of plates)</li><li>by double refraction (Nicol's prism)</li><li>by scattering.</li></ol>",
+      "position": 2,
+      "qcConcept": "66a0dbd8c03b9dcaf1afe3b6"
+    },
+    {
+      "title": "Nicol's Prism",
+      "conceptBody": "<h3><strong>Nicol's Prism&nbsp;</strong></h3><p>Nicol's prism is a device for producing and analyzing a plane polarized light. It is based on the phenomenon of double refraction. Bartholin us discovered that when a beam of ordinary unpolarized light is passed through a calcite crystal, the refracted light is split up into two refracted rays. The one which always obeys the ordinary laws of refraction and having vibrations perpendicular to the principal section is known as ordinary ray. The other, in general does not obey the laws of refraction and having vibration in principal section is called as extra-ordinary ray. Bot the rays are plane polarized. The phenomenon is known as double refraction. The crystals showing this phenomenon are know as doubly refracting crystals.</p>",
+      "position": 3,
+      "qcConcept": "66a0dbd8c03b9dcaf1afe3b7"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "665850fd1ebdecde60539c35",
+      "title": "A polariser is used to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fd1ebdecde60539c36",
+      "title": "Out of the following statements which is not correct",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fd1ebdecde60539c37",
+      "title": "Refractive index of material is equal to tangent of polarising angle. It is called",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fd1ebdecde60539c38",
+      "title": "A ray of light is incident on the surface of a glass plate at an angle of incidence equal to Brewster's angle $\\phi$. If $\\mu$ represents the refractive index of glass with respect to air, then the angle between reflected and refracted rays is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fd1ebdecde60539c39",
+      "title": "A polaroid is placed at $45^{\\circ}$ to an incoming light of intensity $I_0$. Now the intensity of light passing through polaroid after polarisation would be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fd1ebdecde60539c3a",
+      "title": "The angle of polarisation for any medium is $60^{\\circ}$, what will be critical angle for this",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fd1ebdecde60539c3b",
+      "title": "When a plane polarised light is passed through an analyser and analyser is rotated through $90^{\\circ}$, the intensity of the emerging light",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fd1ebdecde60539c3c",
+      "title": "When an unpolarized light of intensity $I_0$ is incident on a polarizing sheet, the intensity of the light which does not get transmitted is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fd1ebdecde60539c3d",
+      "title": "The angle of incidence at which reflected light is totally polarized for reflection from air to glass (refraction index $n$ ) is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

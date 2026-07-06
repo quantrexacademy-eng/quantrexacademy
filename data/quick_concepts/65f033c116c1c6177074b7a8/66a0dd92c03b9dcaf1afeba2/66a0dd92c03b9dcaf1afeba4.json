@@ -1,0 +1,28 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd92c03b9dcaf1afeba2",
+  "topicId": "66a0dd92c03b9dcaf1afeba4",
+  "title": "Formation and Basic of Matrix",
+  "concepts": [
+    {
+      "title": "What is matrix",
+      "conceptBody": "<h3>Matrix&nbsp;</h3><p><strong>Definition</strong></p><p>Matrix is a rectangular array of real complex numbers in rows and columns. A matrix is denoted by the capital letters A, B, C etc. If there are $m$ rows and $n$ columns in the matrix, then the matrix is called a $m\\times n$ matrix.</p><p>Let us consider the following system of equations</p><p>$x+2y+3z\\text{ }=11$</p><p>$2x-y-z\\text{ }=-3$</p><p>$3x+4y+2z\\text{ }=17$</p><p>If we arrange the coefficients of $\\text{x},\\text{y}$ and $\\text{z}$ in the order in which they occur in the given equations and enclose them in brackets, we get the following rectangular array of numbers.</p><p>$\\left[ \\begin{matrix} 1 &amp; 2 &amp; 3 \\\\ 2 &amp; -1 &amp; -1 \\\\ 3 &amp; 4 &amp; 2 \\\\ \\end{matrix} \\right]\\text{ or }\\left[ \\begin{matrix} 1 &amp; 2 &amp; 3 \\\\ 2 &amp; -1 &amp; -1 \\\\ 3 &amp; 4 &amp; 2 \\\\ \\end{matrix} \\right]$</p><p>This type of rectangular array of numbers has been given the name matrix. The horizontal lines are called rows and the vertical lines are called columns.</p><p><strong>Example: $\\text{A}=\\left( \\begin{matrix} 1 &amp; 2 &amp; 3 \\\\ 3 &amp; 2 &amp; -4 \\\\ \\end{matrix} \\right)\\text{ or A}=\\left[ \\begin{matrix} 1 &amp; 2 &amp; 3 \\\\ 3 &amp; 2 &amp; -4 \\\\ \\end{matrix} \\right]$</strong></p><p>Here $\\text{A}$ is a $2\\times 3$ matrix because A has two rows and three columns.</p>",
+      "position": 0,
+      "qcConcept": "66a0dd92c03b9dcaf1afeba5"
+    },
+    {
+      "title": "Difference between matrix and determinant",
+      "conceptBody": "<h3>Difference between a Matrix and a Determinant</h3><p>(i) A matrix can not be reduced to a number but determinant can be reduced to a number.</p><p>(ii) The number of rows may or may not be equal to the number of columns in matrices but in determinant the number of rows is equal to the number of columns.</p><p>(iii) On interchanging the rows and columns, a different matrix is formed but in determinant it does not change the value.</p><p>(iv) A square matrix A such that $|\\text{A}|\\ne 0$, is called a <strong>non-singular matrix </strong>if $|\\text{A}{{|}^{\\prime }}=0$, then the matrix $\\text{A}$ is called a <strong>singular matrix </strong>.</p><p>(v) Matrices represented by [ ], (), | | | | but determinant is represented by | |</p>",
+      "position": 1,
+      "qcConcept": "66a0dd92c03b9dcaf1afeba6"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f662d384bfb4a53825a",
+      "title": "If $a_{i j}=\\frac{1}{2}(3 i-2 j)$ and $A=\\left[a_{i j}\\right]_{2 \\times 2}$, then $A$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

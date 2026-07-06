@@ -1,0 +1,36 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff4f378e1624ea7b69fd",
+  "subject": "Physics",
+  "chapter": "Thermal Properties of Matter",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff87378e1624ea7b6ca4",
+      "title": "Thermal Expansion",
+      "count": 1,
+      "questionIds": [
+        "67fdff4f378e1624ea7b69fb"
+      ]
+    },
+    {
+      "id": "67fdff87378e1624ea7b6ca6",
+      "title": "Calorimetry",
+      "count": 1,
+      "questionIds": [
+        "67fdff66378e1624ea7b6afe"
+      ]
+    },
+    {
+      "id": "67fdff87378e1624ea7b6ca5",
+      "title": "Radiation",
+      "count": 2,
+      "questionIds": [
+        "68e7a681ce75e72648a45e84",
+        "67fdff58378e1624ea7b6a71"
+      ]
+    }
+  ]
+}

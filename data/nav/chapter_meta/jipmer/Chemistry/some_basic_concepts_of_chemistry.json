@@ -1,0 +1,62 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b89d4b564dfab4f94d0",
+  "chapterId": "66d5853ca75f05ee8564f57f",
+  "subject": "Chemistry",
+  "chapter": "Some Basic Concepts of Chemistry",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d5869ea75f05ee856502d9",
+      "title": "Physical Quantities",
+      "count": 1,
+      "questionIds": [
+        "66d5853fa75f05ee8564f59c"
+      ]
+    },
+    {
+      "id": "66d5869ea75f05ee856502da",
+      "title": "Mole concept",
+      "count": 6,
+      "questionIds": [
+        "66d58663a75f05ee85650043",
+        "66d58662a75f05ee85650037",
+        "66d5862aa75f05ee8564fe2f",
+        "66d58612a75f05ee8564fd50",
+        "66d585caa75f05ee8564fab2",
+        "66d58570a75f05ee8564f777"
+      ]
+    },
+    {
+      "id": "66d5869ea75f05ee856502d8",
+      "title": "Quantitative measures in chemical equations",
+      "count": 5,
+      "questionIds": [
+        "66d5864da75f05ee8564ff77",
+        "66d58639a75f05ee8564febc",
+        "66d58624a75f05ee8564fdf9",
+        "66d5857ea75f05ee8564f7f9",
+        "66d5853ea75f05ee8564f596"
+      ]
+    },
+    {
+      "id": "66d5869ea75f05ee856502db",
+      "title": "Concentration terms",
+      "count": 3,
+      "questionIds": [
+        "66d58660a75f05ee85650021",
+        "66d5863da75f05ee8564fee3",
+        "66d58637a75f05ee8564feac"
+      ]
+    },
+    {
+      "id": "66d5869ea75f05ee856502d7",
+      "title": "Significant Figures",
+      "count": 1,
+      "questionIds": [
+        "66d5853ca75f05ee8564f57d"
+      ]
+    }
+  ]
+}

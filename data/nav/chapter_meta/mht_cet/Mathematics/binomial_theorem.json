@@ -1,0 +1,48 @@
+{
+  "examSlug": "mht_cet",
+  "examId": "61c05599e8ce0dc8a5c62d32",
+  "subjectId": "61c05603e8ce0dc8a5c62d35",
+  "chapterId": "65a2601d0279619d9d8a21db",
+  "subject": "Mathematics",
+  "chapter": "Binomial Theorem",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "65a263510279619d9d8a3e21",
+      "title": "Properties of Binomial Coefficients",
+      "count": 6,
+      "questionIds": [
+        "6a44d30f8c30a4553e1bdfb8",
+        "68871c02bf9280d7f9932e75",
+        "68871ba2bf9280d7f9932b18",
+        "65a261ef0279619d9d8a3080",
+        "65a260a20279619d9d8a2613",
+        "65a2601d0279619d9d8a21d9"
+      ]
+    },
+    {
+      "id": "6a44d3b08c30a4553e1be407",
+      "title": "Binomial Theorem for Rational Index",
+      "count": 1,
+      "questionIds": [
+        "6a44d2e88c30a4553e1bde19"
+      ]
+    },
+    {
+      "id": "65a263510279619d9d8a3e22",
+      "title": "Series involving Product of Coefficients",
+      "count": 1,
+      "questionIds": [
+        "65a260c40279619d9d8a2725"
+      ]
+    },
+    {
+      "id": "68871ea0bf9280d7f993308b",
+      "title": "Sum of Series",
+      "count": 1,
+      "questionIds": [
+        "68871bb1bf9280d7f9932b9f"
+      ]
+    }
+  ]
+}

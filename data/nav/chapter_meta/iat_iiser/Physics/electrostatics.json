@@ -1,0 +1,68 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff48378e1624ea7b699b",
+  "subject": "Physics",
+  "chapter": "Electrostatics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff84378e1624ea7b6c73",
+      "title": "Capacitance",
+      "count": 1,
+      "questionIds": [
+        "67fdff57378e1624ea7b6a6b"
+      ]
+    },
+    {
+      "id": "67fdff84378e1624ea7b6c75",
+      "title": "Electric Charge and Coulomb's law",
+      "count": 1,
+      "questionIds": [
+        "67fdff70378e1624ea7b6b7c"
+      ]
+    },
+    {
+      "id": "67fdff84378e1624ea7b6c70",
+      "title": "Electric Field and Electric Field Lines",
+      "count": 6,
+      "questionIds": [
+        "6a4521868c20d3b91d64f987",
+        "68e7a681ce75e72648a45e87",
+        "67fdff75378e1624ea7b6bbb",
+        "67fdff6b378e1624ea7b6b3b",
+        "67fdff58378e1624ea7b6a75",
+        "67fdff48378e1624ea7b6999"
+      ]
+    },
+    {
+      "id": "67fdff84378e1624ea7b6c74",
+      "title": "Electric Potential and Potential Energy",
+      "count": 2,
+      "questionIds": [
+        "67fdff6b378e1624ea7b6b3a",
+        "67fdff65378e1624ea7b6af7"
+      ]
+    },
+    {
+      "id": "67fdff84378e1624ea7b6c71",
+      "title": "Electric Dipole",
+      "count": 1,
+      "questionIds": [
+        "67fdff4e378e1624ea7b69f6"
+      ]
+    },
+    {
+      "id": "67fdff84378e1624ea7b6c72",
+      "title": "Electric Flux and Gauss Law",
+      "count": 4,
+      "questionIds": [
+        "6a4521878c20d3b91d64f991",
+        "67fdff6b378e1624ea7b6b3f",
+        "67fdff5d378e1624ea7b6ab0",
+        "67fdff56378e1624ea7b6a5c"
+      ]
+    }
+  ]
+}

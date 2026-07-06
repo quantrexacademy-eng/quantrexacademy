@@ -1,0 +1,404 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login · Quantrex App - IIT JEE &amp; NEET Prep</title>
+<meta name="theme-color" content="#1589EE">
+<link rel="icon" type="image/png" href="assets/favicon-32x32.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Kanit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#1589EE;--primary-dark:#0f6fc4;--primary-light:#eaf4fd;--green:#2bc48a;--orange:#f59e0b;--red:#ef4444;--dark:#1a1a2e;--gray:#6b7280;--border:#e8ecf2;--bg:#f4f6f9;--white:#fff}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;display:flex}
+/* Left brand panel */
+.brand{flex:1;background:linear-gradient(135deg,#1589EE,#4da6f5);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:60px;position:relative;overflow:hidden}
+.brand::before{content:'';position:absolute;top:-150px;right:-150px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%)}
+.brand::after{content:'';position:absolute;bottom:-200px;left:-100px;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.1),transparent 70%)}
+.brand-inner{position:relative;z-index:2;max-width:460px}
+.brand-logo{display:flex;align-items:center;gap:12px;margin-bottom:40px}
+.brand-mark{width:50px;height:50px;background:#fff;border-radius:13px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-family:'Kanit';font-weight:800;font-size:26px}
+.brand-text{font-family:'Kanit';font-weight:800;font-size:28px}
+.brand h1{font-family:'Kanit';font-size:46px;font-weight:800;line-height:1.1;margin-bottom:18px}
+.brand p{font-size:18px;opacity:.95;margin-bottom:36px;line-height:1.5}
+.brand-feats{list-style:none;display:flex;flex-direction:column;gap:14px}
+.brand-feats li{display:flex;align-items:center;gap:12px;font-size:16px;font-weight:500}
+.brand-feats .ic{width:34px;height:34px;background:rgba(255,255,255,.2);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.brand-stats{display:flex;gap:30px;margin-top:40px;padding-top:30px;border-top:1px solid rgba(255,255,255,.25)}
+.brand-stats div strong{display:block;font-family:'Kanit';font-size:28px}
+.brand-stats div small{font-size:13px;opacity:.85}
+/* Right form panel */
+.form-side{flex:1;display:flex;align-items:center;justify-content:center;padding:40px}
+.form-card{width:100%;max-width:420px}
+.form-logo{display:none}
+.head-back{display:flex;align-items:center;gap:10px;margin-bottom:30px;text-decoration:none;color:var(--gray);font-size:14px;font-weight:600;width:fit-content}
+.head-back:hover{color:var(--primary)}
+.form-card h2{font-family:'Kanit';font-size:30px;font-weight:800;margin-bottom:6px}
+.form-card > p.sub{color:var(--gray);font-size:15px;margin-bottom:30px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:13px;font-weight:600;margin-bottom:7px}
+.input-wrap{position:relative}
+.input-wrap .flag{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-weight:600;color:var(--dark);font-size:15px;pointer-events:none}
+.input-wrap .flag + input{padding-left:64px}
+input{width:100%;padding:14px 16px;border:2px solid var(--border);border-radius:11px;font-size:15px;font-family:inherit;transition:border .2s,box-shadow .2s;background:var(--white)}
+input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(21,137,238,.12)}
+.btn{width:100%;padding:15px;border:none;border-radius:11px;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 8px 20px rgba(21,137,238,.3)}
+.btn-primary:disabled{opacity:.6;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-google{background:var(--white);color:var(--dark);border:2px solid var(--border);margin-top:14px}
+.btn-google:hover{background:var(--bg)}
+.divider{text-align:center;margin:22px 0;position:relative;color:var(--gray);font-size:13px}
+.divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:var(--border)}
+.divider span{background:var(--white);padding:0 14px;position:relative}
+.otp-row{display:flex;gap:10px;justify-content:center;margin-bottom:22px}
+.otp-row input{width:52px;height:60px;text-align:center;font-size:22px;font-weight:800;padding:0;border-width:2px}
+.otp-row input:focus{transform:scale(1.05)}
+.resend{margin-top:16px;text-align:center;font-size:14px;color:var(--gray)}
+.resend a{color:var(--primary);font-weight:600;text-decoration:none}
+.resend a:hover{text-decoration:underline}
+.timer{color:var(--orange);font-weight:700}
+.exam-pick{margin-bottom:24px}
+.exam-pick > label{display:block;font-size:13px;font-weight:600;margin-bottom:10px}
+.exam-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.exam-opt{border:2px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:all .15s;font-size:12px;font-weight:600;background:var(--white)}
+.exam-opt:hover{border-color:var(--primary)}
+.exam-opt.sel{border-color:var(--primary);background:var(--primary-light);color:var(--primary)}
+.exam-opt .ic{font-size:22px;display:block;margin-bottom:4px}
+.terms{font-size:12px;color:var(--gray);text-align:center;margin-top:18px;line-height:1.5}
+.terms a{color:var(--primary)}
+.msg{padding:11px 14px;border-radius:9px;font-size:13px;font-weight:600;margin-bottom:16px;display:none;align-items:center;gap:8px}
+.msg.show{display:flex}
+.msg.err{background:#fee2e2;color:var(--red);border:1px solid #fecaca}
+.msg.ok{background:#e6f9f0;color:var(--green);border:1px solid #bbf7d0}
+.hidden{display:none!important}
+.login-tabs{display:flex;gap:8px;margin-bottom:22px;background:var(--bg);padding:5px;border-radius:12px}
+.login-tab{flex:1;padding:10px;border:none;border-radius:9px;background:transparent;font-size:14px;font-weight:700;color:var(--gray);cursor:pointer;transition:all .15s}
+.login-tab.active{background:var(--white);color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+/* responsive */
+@media(max-width:860px){
+  body{flex-direction:column}
+  .brand{display:none}
+  .form-logo{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+  .form-logo .brand-mark{background:var(--primary);color:#fff}
+  .form-logo span{font-family:'Kanit';font-weight:800;font-size:24px;color:var(--dark)}
+  .form-side{padding:30px 20px}
+}
+</style>
+</head>
+<body>
+  <!-- LEFT: Brand panel -->
+  <div class="brand">
+    <div class="brand-inner">
+      <div class="brand-logo">
+        <div class="brand-mark">Q</div>
+        <span class="brand-text">Quantrex</span>
+      </div>
+      <h1>Padho chahe kahise,<br>Practice karo Quantrex se</h1>
+      <p>India's smartest IIT JEE &amp; NEET prep app. Chapter-wise questions, custom tests, formula cards &amp; much more.</p>
+      <ul class="brand-feats">
+        <li><span class="ic">🎯</span> 50,000+ Practice Questions</li>
+        <li><span class="ic">🧮</span> Formula Cards for every chapter</li>
+        <li><span class="ic">🏆</span> Leaderboard &amp; leagues</li>
+        <li><span class="ic">📊</span> Smart preparation tracker</li>
+      </ul>
+      <div class="brand-stats">
+        <div><strong>1M+</strong><small>Students</small></div>
+        <div><strong>4.7★</strong><small>Play Store</small></div>
+        <div><strong>2M+</strong><small>Qs Solved Daily</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Login form -->
+  <div class="form-side">
+    <div class="form-card">
+      <a href="index.html" class="head-back">← Back to Website</a>
+      <div class="form-logo"><div class="brand-mark">Q</div><span>Quantrex</span></div>
+
+      <!-- STEP 1: Login -->
+      <div id="step1">
+        <h2>Welcome back 👋</h2>
+        <p class="sub">Sign in to continue your preparation</p>
+        <div class="msg" id="msg1"></div>
+        <div class="exam-pick">
+          <label>I am preparing for</label>
+          <div class="exam-opts">
+            <div class="exam-opt sel" data-exam="Engineering"><span class="ic">⚙️</span>JEE</div>
+            <div class="exam-opt" data-exam="Medical"><span class="ic">⚕️</span>NEET</div>
+            <div class="exam-opt" data-exam="Foundation"><span class="ic">📚</span>Class 9-10</div>
+          </div>
+        </div>
+        <div class="login-tabs">
+          <button type="button" class="login-tab active" data-mode="email">Email</button>
+          <button type="button" class="login-tab" data-mode="phone">Phone OTP</button>
+        </div>
+        <div id="emailLogin">
+          <div class="field">
+            <label>Email Address</label>
+            <input type="email" id="email" placeholder="you@quantrexacademy.com" autocomplete="email">
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password">
+          </div>
+          <button class="btn btn-primary" id="emailLoginBtn">Sign In →</button>
+        </div>
+        <div id="phoneLogin" class="hidden">
+          <div class="field">
+            <label>Mobile Number</label>
+            <div class="input-wrap">
+              <span class="flag">🇮🇳 +91</span>
+              <input type="tel" id="phone" placeholder="98765 43210" maxlength="10" inputmode="numeric">
+            </div>
+          </div>
+          <button class="btn btn-primary" id="sendOtpBtn">Send OTP →</button>
+        </div>
+        <div class="divider"><span>or</span></div>
+        <button class="btn btn-google" id="googleLoginBtn">🔒 Continue with Google</button>
+        <p class="terms">By continuing, you agree to our <a href="#">Terms of Service</a> &amp; <a href="#">Privacy Policy</a>.</p>
+      </div>
+
+      <!-- STEP 2: OTP -->
+      <div id="step2" class="hidden">
+        <h2>Verify OTP</h2>
+        <p class="sub">Enter the 4-digit code sent to <strong id="phoneShown">+91 XXXXX</strong></p>
+        <div class="msg" id="msg2"></div>
+        <div class="otp-row">
+          <input type="text" maxlength="1" inputmode="numeric" class="otp">
+          <input type="text" maxlength="1" inputmode="numeric" class="otp">
+          <input type="text" maxlength="1" inputmode="numeric" class="otp">
+          <input type="text" maxlength="1" inputmode="numeric" class="otp">
+        </div>
+        <button class="btn btn-primary" id="verifyBtn">Verify &amp; Continue</button>
+        <p class="resend">Didn't receive code? <a href="#" id="resendLink">Resend in <span class="timer" id="timer">30s</span></a></p>
+        <p class="resend"><a href="#" id="changeNum" style="color:var(--gray)">← Change number</a></p>
+      </div>
+
+      <!-- STEP 3: Loading / success -->
+      <div id="step3" class="hidden" style="text-align:center;padding:40px 0">
+        <div style="font-size:64px;margin-bottom:20px">✅</div>
+        <h2 style="margin-bottom:8px">Login Successful!</h2>
+        <p class="sub" id="welcomeMsg">Welcome to Quantrex. Redirecting...</p>
+        <div style="margin-top:24px;font-size:24px;color:var(--primary)">⏳</div>
+      </div>
+    </div>
+  </div>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="firebase-db.js"></script>
+<script>
+QuantrexDB.init();
+const auth = QuantrexDB.auth;
+
+// State
+let chosenExam = "Engineering";
+let enteredPhone = "";
+let otpTimer = null, secondsLeft = 30;
+let loginMode = "email";
+
+// Exam picker
+document.querySelectorAll(".exam-opt").forEach(opt => {
+  opt.onclick = () => {
+    document.querySelectorAll(".exam-opt").forEach(o => o.classList.remove("sel"));
+    opt.classList.add("sel");
+    chosenExam = opt.dataset.exam;
+  };
+});
+
+async function saveSession(user) {
+  localStorage.setItem("quantrex_exam", chosenExam);
+  localStorage.setItem("quantrex_user", JSON.stringify({
+    uid: user.uid,
+    email: user.email || null,
+    phone: user.phoneNumber || null,
+    name: user.displayName || user.email || "Quantrex Student",
+    exam: chosenExam,
+    loggedAt: Date.now()
+  }));
+  try {
+    await QuantrexDB.ensureUserProfile(user, chosenExam);
+    await QuantrexDB.syncForUser(user);
+  } catch (e) {
+    console.warn("Firebase sync:", e.message);
+  }
+}
+
+function showSuccess(name) {
+  document.getElementById("step1").classList.add("hidden");
+  document.getElementById("step2").classList.add("hidden");
+  document.getElementById("step3").classList.remove("hidden");
+  document.getElementById("welcomeMsg").textContent = "Welcome to Quantrex, " + name + ". Taking you to the app...";
+  setTimeout(() => { window.location.href = "app.html"; }, 1600);
+}
+
+document.querySelectorAll(".login-tab").forEach(tab => {
+  tab.onclick = () => {
+    document.querySelectorAll(".login-tab").forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+    loginMode = tab.dataset.mode;
+    document.getElementById("emailLogin").classList.toggle("hidden", loginMode !== "email");
+    document.getElementById("phoneLogin").classList.toggle("hidden", loginMode !== "phone");
+  };
+});
+
+document.getElementById("emailLoginBtn").onclick = async () => {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  if (!email || !password) {
+    showMsg("msg1", "⚠️ Please enter email and password", "err");
+    return;
+  }
+  const btn = document.getElementById("emailLoginBtn");
+  btn.disabled = true;
+  btn.textContent = "Signing in...";
+  try {
+    const cred = await auth.signInWithEmailAndPassword(email, password);
+    await saveSession(cred.user);
+    showSuccess(cred.user.displayName || cred.user.email);
+  } catch (err) {
+    showMsg("msg1", "❌ " + (err.message || "Login failed"), "err");
+    btn.disabled = false;
+    btn.textContent = "Sign In →";
+  }
+};
+
+document.getElementById("googleLoginBtn").onclick = async () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  try {
+    const cred = await auth.signInWithPopup(provider);
+    await saveSession(cred.user);
+    showSuccess(cred.user.displayName || "Google User");
+  } catch (err) {
+    showMsg("msg1", "❌ " + (err.message || "Google sign-in failed"), "err");
+  }
+};
+
+// Phone input: digits only
+const phoneInput = document.getElementById("phone");
+phoneInput.addEventListener("input", e => {
+  e.target.value = e.target.value.replace(/\D/g, "").slice(0, 10);
+});
+
+function showMsg(id, text, type) {
+  const m = document.getElementById(id);
+  m.textContent = text;
+  m.className = "msg show " + type;
+  setTimeout(() => m.className = "msg", 4000);
+}
+
+// STEP 1 -> 2: send OTP
+document.getElementById("sendOtpBtn").onclick = () => {
+  const phone = phoneInput.value.trim();
+  if (phone.length !== 10) {
+    showMsg("msg1", "⚠️ Please enter a valid 10-digit mobile number", "err");
+    phoneInput.focus();
+    return;
+  }
+  if (!/^[6-9]/.test(phone)) {
+    showMsg("msg1", "⚠️ Number should start with 6, 7, 8 or 9", "err");
+    return;
+  }
+  enteredPhone = phone;
+  // Save exam choice
+  localStorage.setItem("quantrex_exam", chosenExam);
+  // Generate a demo OTP (in real app this comes from server)
+  window._demoOtp = String(Math.floor(1000 + Math.random() * 9000));
+  console.log("Demo OTP (for testing):", window._demoOtp);
+  // Move to step 2
+  document.getElementById("step1").classList.add("hidden");
+  document.getElementById("step2").classList.remove("hidden");
+  document.getElementById("phoneShown").textContent = "+91 " + phone.slice(0,5) + " " + phone.slice(5);
+  startTimer();
+  // focus first OTP box
+  document.querySelector(".otp").focus();
+  showMsg("msg2", "📩 OTP sent! For this demo, check console (F12) for the code: " + window._demoOtp, "ok");
+};
+
+// STEP 2: OTP inputs auto-advance
+const otpInputs = document.querySelectorAll(".otp");
+otpInputs.forEach((inp, i) => {
+  inp.addEventListener("input", e => {
+    e.target.value = e.target.value.replace(/\D/g, "").slice(0,1);
+    if (e.target.value && i < otpInputs.length - 1) otpInputs[i+1].focus();
+  });
+  inp.addEventListener("keydown", e => {
+    if (e.key === "Backspace" && !e.target.value && i > 0) otpInputs[i-1].focus();
+  });
+  inp.addEventListener("paste", e => {
+    e.preventDefault();
+    const digits = (e.clipboardData.getData("text") || "").replace(/\D/g, "").slice(0,4).split("");
+    digits.forEach((d, j) => { if (otpInputs[j]) otpInputs[j].value = d; });
+    otpInputs[Math.min(digits.length, 3)].focus();
+  });
+});
+
+// STEP 2 -> 3: verify OTP
+document.getElementById("verifyBtn").onclick = () => {
+  const entered = [...otpInputs].map(i => i.value).join("");
+  if (entered.length !== 4) {
+    showMsg("msg2", "⚠️ Please enter all 4 digits", "err");
+    return;
+  }
+  if (entered !== window._demoOtp) {
+    showMsg("msg2", "❌ Incorrect OTP. Hint: " + window._demoOtp, "err");
+    return;
+  }
+  // Success: save session
+  localStorage.setItem("quantrex_user", JSON.stringify({
+    phone: "+91" + enteredPhone,
+    exam: chosenExam,
+    loggedAt: Date.now()
+  }));
+  clearInterval(otpTimer);
+  document.getElementById("step2").classList.add("hidden");
+  document.getElementById("step3").classList.remove("hidden");
+  document.getElementById("welcomeMsg").textContent = "Welcome to Quantrex " + chosenExam + " prep. Taking you to the app...";
+  // redirect to app after delay
+  setTimeout(() => { window.location.href = "app.html"; }, 1600);
+};
+
+// Resend timer
+function startTimer() {
+  secondsLeft = 30;
+  document.getElementById("resendLink").innerHTML = 'Resend in <span class="timer" id="timer">30s</span>';
+  const tEl = document.getElementById("timer");
+  clearInterval(otpTimer);
+  otpTimer = setInterval(() => {
+    secondsLeft--;
+    if (secondsLeft <= 0) {
+      clearInterval(otpTimer);
+      document.getElementById("resendLink").innerHTML = '<a href="#" onclick="resendOtp();return false;">Resend OTP</a>';
+    } else {
+      tEl.textContent = secondsLeft + "s";
+    }
+  }, 1000);
+}
+function resendOtp() {
+  window._demoOtp = String(Math.floor(1000 + Math.random() * 9000));
+  console.log("Resent Demo OTP:", window._demoOtp);
+  showMsg("msg2", "📩 OTP resent! Code: " + window._demoOtp, "ok");
+  startTimer();
+}
+
+// Change number
+document.getElementById("changeNum").onclick = (e) => {
+  e.preventDefault();
+  clearInterval(otpTimer);
+  document.getElementById("step2").classList.add("hidden");
+  document.getElementById("step1").classList.remove("hidden");
+  otpInputs.forEach(i => i.value = "");
+};
+
+// Allow Enter key to proceed
+document.getElementById("email").addEventListener("keydown", e => { if (e.key === "Enter") document.getElementById("emailLoginBtn").click(); });
+document.getElementById("password").addEventListener("keydown", e => { if (e.key === "Enter") document.getElementById("emailLoginBtn").click(); });
+phoneInput.addEventListener("keydown", e => { if (e.key === "Enter") document.getElementById("sendOtpBtn").click(); });
+otpInputs.forEach((inp,i) => inp.addEventListener("keydown", e => { if (e.key === "Enter" && i === otpInputs.length-1) document.getElementById("verifyBtn").click(); }));
+</script>
+</body>
+</html>

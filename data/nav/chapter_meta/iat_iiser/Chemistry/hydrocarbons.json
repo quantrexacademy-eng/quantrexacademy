@@ -1,0 +1,44 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa602f4468eb1307ceb0ae",
+  "chapterId": "67fdff67378e1624ea7b6b15",
+  "subject": "Chemistry",
+  "chapter": "Hydrocarbons",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff8d378e1624ea7b6cf3",
+      "title": "Reactions of alkenes",
+      "count": 2,
+      "questionIds": [
+        "68e7a67ece75e72648a45e69",
+        "67fdff68378e1624ea7b6b1c"
+      ]
+    },
+    {
+      "id": "67fdff8d378e1624ea7b6cf5",
+      "title": "Reactions of alkynes",
+      "count": 1,
+      "questionIds": [
+        "67fdff73378e1624ea7b6b9d"
+      ]
+    },
+    {
+      "id": "67fdff8d378e1624ea7b6cf2",
+      "title": "Preparation and Properties of Benzene",
+      "count": 1,
+      "questionIds": [
+        "67fdff67378e1624ea7b6b13"
+      ]
+    },
+    {
+      "id": "67fdff8d378e1624ea7b6cf4",
+      "title": "Reactions of aromatic compounds",
+      "count": 1,
+      "questionIds": [
+        "67fdff6d378e1624ea7b6b59"
+      ]
+    }
+  ]
+}

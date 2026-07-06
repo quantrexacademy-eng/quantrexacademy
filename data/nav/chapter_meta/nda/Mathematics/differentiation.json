@@ -1,0 +1,164 @@
+{
+  "examSlug": "nda",
+  "examId": "61961abda5a5260118868012",
+  "subjectId": "61964fcda5a5260118868020",
+  "chapterId": "61964d101772a1ddb43e1542",
+  "subject": "Mathematics",
+  "chapter": "Differentiation",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "68a57ca58914574e8d212af6",
+      "title": "Parametric differentiation",
+      "count": 8,
+      "questionIds": [
+        "6a3ca5cd81f9e22541d5a945",
+        "68a57ba88914574e8d211dc0",
+        "68a57a9a8914574e8d21123e",
+        "68a57a778914574e8d2110c9",
+        "68a57a778914574e8d2110c8",
+        "68a57a008914574e8d210bc3",
+        "68a579ac8914574e8d21085b",
+        "68a579918914574e8d21074f"
+      ]
+    },
+    {
+      "id": "68a57ca58914574e8d212af7",
+      "title": "Differentiation of composite functions",
+      "count": 63,
+      "questionIds": [
+        "6a3e43023bb70e6e12f31c99",
+        "6a3ca5e981f9e22541d5aa4b",
+        "6a3ca5e881f9e22541d5aa4a",
+        "6a3ca5cd81f9e22541d5a949",
+        "6a3ca5cd81f9e22541d5a944",
+        "68a57c448914574e8d212493",
+        "68a57c448914574e8d212492",
+        "68a57c398914574e8d212411",
+        "68a57c1f8914574e8d2122ef",
+        "68a57c1f8914574e8d2122ee",
+        "68a57c1d8914574e8d2122d9",
+        "68a57c098914574e8d2121fd",
+        "68a57c098914574e8d2121fb",
+        "68a57c098914574e8d2121f7",
+        "68a57c098914574e8d2121f6",
+        "68a57c098914574e8d2121f5",
+        "68a57bf18914574e8d2120eb",
+        "68a57bf18914574e8d2120ea",
+        "68a57bf08914574e8d2120df",
+        "68a57bf08914574e8d2120de",
+        "68a57bd78914574e8d211fc9",
+        "68a57bc08914574e8d211ecd",
+        "68a57bc08914574e8d211ecc",
+        "68a57bc08914574e8d211ecb",
+        "68a57bbe8914574e8d211eb5",
+        "68a57ba88914574e8d211dc2",
+        "68a57ba88914574e8d211dbf",
+        "68a57b788914574e8d211bac",
+        "68a57b788914574e8d211ba8",
+        "68a57b5f8914574e8d211a8c",
+        "68a57b5e8914574e8d211a84",
+        "68a57b488914574e8d21198f",
+        "68a57b488914574e8d21198e",
+        "68a57b488914574e8d21198a",
+        "68a57b2f8914574e8d211883",
+        "68a57b2f8914574e8d211882",
+        "68a57b2e8914574e8d211878",
+        "68a57b148914574e8d21175c",
+        "68a57b138914574e8d211752",
+        "68a57afe8914574e8d211664",
+        "68a57afd8914574e8d21165e",
+        "68a57acb8914574e8d21142e",
+        "68a57ab18914574e8d211328",
+        "68a57ab08914574e8d211322",
+        "68a57a948914574e8d21120b",
+        "68a57a948914574e8d21120a",
+        "68a57a778914574e8d2110cb",
+        "68a57a668914574e8d211011",
+        "68a57a658914574e8d210fff",
+        "68a57a4f8914574e8d210f0c",
+        "68a57a4e8914574e8d210f09",
+        "68a57a4c8914574e8d210eee",
+        "68a57a4c8914574e8d210eed",
+        "68a57a358914574e8d210dfc",
+        "68a57a348914574e8d210df3",
+        "68a57a188914574e8d210cd1",
+        "68a57a188914574e8d210ccd",
+        "68a57a188914574e8d210ccc",
+        "68a57a008914574e8d210bca",
+        "68a579e18914574e8d210a89",
+        "68a579e08914574e8d210a7c",
+        "68a579b08914574e8d210879",
+        "68a579988914574e8d210791"
+      ]
+    },
+    {
+      "id": "68a57ca58914574e8d212af8",
+      "title": "Derivative of f(x) wrt g(x)",
+      "count": 1,
+      "questionIds": [
+        "68a579998914574e8d2107a3"
+      ]
+    },
+    {
+      "id": "68a57ca58914574e8d212af9",
+      "title": "Differentiation of implicit functions",
+      "count": 13,
+      "questionIds": [
+        "6a3e43033bb70e6e12f31c9f",
+        "6a3e43033bb70e6e12f31c9e",
+        "6a3ca5e981f9e22541d5aa4f",
+        "6a3ca5e981f9e22541d5aa4e",
+        "68a57bd78914574e8d211fc8",
+        "68a57b918914574e8d211cbf",
+        "68a57b908914574e8d211cb5",
+        "68a57b778914574e8d211b9f",
+        "68a57ac78914574e8d211403",
+        "68a57ab18914574e8d21132b",
+        "68a57a2c8914574e8d210d9c",
+        "68a57a178914574e8d210cc7",
+        "68a579b18914574e8d210881"
+      ]
+    },
+    {
+      "id": "68a57ca68914574e8d212afa",
+      "title": "Higher order derivatives",
+      "count": 14,
+      "questionIds": [
+        "68a57b778914574e8d211ba0",
+        "68a57b5f8914574e8d211a90",
+        "68a57b488914574e8d21198b",
+        "68a57afc8914574e8d211655",
+        "68a57acb8914574e8d211429",
+        "68a57acb8914574e8d211428",
+        "68a57aca8914574e8d211427",
+        "68a57aca8914574e8d211426",
+        "68a57ab38914574e8d211339",
+        "68a57ab28914574e8d211331",
+        "68a57a9a8914574e8d21123f",
+        "68a57a2d8914574e8d210da2",
+        "68a579d08914574e8d2109ca",
+        "68a579b28914574e8d210884"
+      ]
+    },
+    {
+      "id": "68a57ca68914574e8d212afb",
+      "title": "Logarithmic differentiation",
+      "count": 1,
+      "questionIds": [
+        "68a57a2d8914574e8d210da4"
+      ]
+    },
+    {
+      "id": "68a57ca68914574e8d212afc",
+      "title": "Differentiation of Inverse Trigonometric Functions",
+      "count": 4,
+      "questionIds": [
+        "6a3ca5ea81f9e22541d5aa5f",
+        "68a57b8f8914574e8d211ca8",
+        "68a57b478914574e8d21197c",
+        "68a57a968914574e8d21121d"
+      ]
+    }
+  ]
+}

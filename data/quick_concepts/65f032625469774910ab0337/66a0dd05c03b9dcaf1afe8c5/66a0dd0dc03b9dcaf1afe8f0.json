@@ -1,0 +1,100 @@
+{
+  "subjectId": "65f032625469774910ab0337",
+  "chapterId": "66a0dd05c03b9dcaf1afe8c5",
+  "topicId": "66a0dd0dc03b9dcaf1afe8f0",
+  "title": "Electronic configuration",
+  "concepts": [
+    {
+      "title": "Aufbau principle",
+      "conceptBody": "<h3><strong>Aufbau Principle</strong></h3><p>An atom in its lowest state of energy is said to be in ground state. The ground state is the most stable state in an atom. According to Aufbau principle:</p><p>\"electrons are added progressively to the various orbitals in their order of increasing energy starting with the orbital of lowest energy.\"</p><p>The order of increasing energy may be summed up as follows:</p><p>$1~\\text{s},2~\\text{s},2\\text{p},3~\\text{s},3\\text{p},4~\\text{s},3~\\text{d},4\\text{p},5~\\text{s},4~\\text{d},5\\text{p},6~\\text{s},4\\text{f},5~\\text{d},6\\text{p},7~\\text{s},5\\text{f},6~\\text{d},\\ldots .$.</p><p>As a working rule, a new electron enters an empty orbital for which the value of $(n+l)$ is minimum. If the value of $(n+l)$ is same for two or more orbitals, the new electron enters an orbital having lower value of $n$.</p>",
+      "position": 0,
+      "qcConcept": "66a0dd0dc03b9dcaf1afe8f1"
+    },
+    {
+      "title": "Pauli's exclusion principle",
+      "conceptBody": "<h3><strong>Pauli Exclusion Principle</strong></h3><p><strong>According to this principle:&nbsp;</strong></p><p>\"no two electrons in an atom can have the same set of all the quantum numbers or one can say that no two electrons can have the same quantised states.\"</p><p>Consider an electronic arrangement in Ist energy level $(\\text{n}=1)$. For $\\text{n}=1,\\text{l}=0,\\,\\,\\And \\,~\\text{m}=0$. Now $\\text{s}$ can have two values corresponding to each value of $m$ i.e. $s=+1/2,-1/2$. Hence, the possible designation of an electron in a state with $\\text{n}=1$ is $1,0,0,+1/2$ and $1,0,0,-1/2(\\text{n},1,~\\text{m},~\\text{s})$ i.e., two quantised states. This implies that an orbital can accommodate (for $\\text{n}=1,~\\text{m}=0,\\Rightarrow $ one orbital) maximum of two electrons having opposite spins.</p><p>The maximum number of electrons in the different subshells are:</p><p>$\\text{ s sub-shell }=2,\\text{p sub-shell }=6,~\\text{d sub-shell }=10\\text{ and f sub-shell }=14.\\text{ }$</p>",
+      "position": 1,
+      "qcConcept": "66a0dd0dc03b9dcaf1afe8f2"
+    },
+    {
+      "title": "Hunds rule of maximum multiplicity",
+      "conceptBody": "<h3><strong>Hund's Rule of Maximum Multiplicity</strong></h3><p><strong>According to this rule:&nbsp;</strong></p><p>\"electrons never pair until no available empty degenerate orbitals are left to them.\"</p><p>This means an electron always occupies a vacant orbital in the same sub-shell (degenerate orbital) and pairing starts only when all of the degenerate orbitals are filled up. This means that the pairing starts with 2nd electron in s sub-shell, 4th electron in p sub-shell, 6th electron in d sub-shell and 8th electron in $\\text{f}$ sub-shell.</p><p>By doing this, the electrons stay as far away from each other as possible. This is highly reasonable if we consider the electron-electron repulsion. Hence electrons obey Hund's rule as it results in lower energy state and hence more stability.</p>",
+      "position": 2,
+      "qcConcept": "66a0dd0ec03b9dcaf1afe8f3"
+    },
+    {
+      "title": "Extra stability of half filled and completely filled orbitals",
+      "conceptBody": "<h3><strong>Extra Stability of Half and Fully Filled Orbitals</strong></h3><p>A particularly stable system is obtained when a set of equivalent orbitals (degenerate orbitals) is either fully filled or half filled, i.e., each containing one or a pair of electrons. This effect is more dominant in $\\text{d}$ and $\\text{f}$ sub-shells.</p><p>This means three or six electrons in $p$ sub-shell, five or ten electrons in $d$ sub-shell, and seven or fourteen electrons in $\\text{f}$ sub-shell forms a stable arrangement. Note this effect when filling of electrons takes place in d sub-shells (for atomic numbers $\\text{Z}=24,25$ and 29,30 ).</p>",
+      "position": 3,
+      "qcConcept": "66a0dd0ec03b9dcaf1afe8f4"
+    },
+    {
+      "title": "Ground state electronic configuration of elements",
+      "conceptBody": "<h3><strong>Ground state electronic configuration of elements</strong></h3><p>In the following table you should analyse how to employ the above rules to write electronic configuration of various elements.</p><p>Electronic configuration of an element is represented by the notation $n{{l}^{x}}$:</p><p>$\\text{x}$: number of electrons present in an orbital</p><p>1: denotes the sub-shell</p><p>$\\text{n}$: principal quantum number</p><p>Ground-State Electronic Configuration of the Elements</p><figure class=\"table\"><table><tbody><tr><td>Atomic Number</td><td>Symbol</td><td>1s</td><td>2s</td><td>2p</td><td>3s</td><td>3p</td><td>3d</td><td>4s</td><td>4p</td><td>4d</td><td>4f</td></tr><tr><td><p>1</p><p>2</p></td><td><p>H</p><p>He</p></td><td><p>1</p><p>2</p></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p><p>9</p><p>10</p></td><td><p>Li</p><p>Be</p><p>B</p><p>C</p><p>N</p><p>O</p><p>F</p><p>Ne</p></td><td><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p></td><td><p>1</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p></td><td><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><p>11</p><p>12</p><p>13</p><p>14</p><p>15</p><p>16</p><p>17</p><p>18</p></td><td><p>Na</p><p>Mg</p><p>Al</p><p>Si</p><p>P</p><p>S</p><p>Cl</p><p>Ar</p></td><td><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p></td><td><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p></td><td><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p></td><td><p>1</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p></td><td><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><p>19</p><p>20</p><p>21</p><p>22</p><p>23</p><p>24</p><p>25</p><p>26</p><p>27</p><p>28</p><p>29</p><p>30</p><p>31</p><p>32</p><p>33</p><p>34</p><p>35</p><p>36</p></td><td><p>K</p><p>Ca</p><p>Sc</p><p>Ti</p><p>V</p><p>Cr</p><p>Mn</p><p>Fe</p><p>Co</p><p>Ni</p><p>Cu</p><p>Zn</p><p>Ga</p><p>Ge</p><p>As</p><p>Se</p><p>Br</p><p>Kr</p></td><td><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p></td><td><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p></td><td><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p></td><td><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p></td><td><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p><p>6</p></td><td><p>1</p><p>2</p><p>1</p><p>2</p><p>3</p><p>5</p><p>5</p><p>6</p><p>7</p><p>8</p><p>10</p><p>10</p><p>10</p><p>10</p><p>10</p><p>10</p><p>10</p><p>10</p></td><td><p>2</p><p>2</p><p>2</p><p>1</p><p>2</p><p>2</p><p>2</p><p>2</p><p>1</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p></td><td><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p></td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><strong>Note: </strong>In atomic numbers, 24 and 29, observe the rule of extra-stability of half filled and fully filled orbitals.</p><p>Example</p><p>(a) Find the orbital angular momentum of an electron in the following orbital</p><p>(i) $3p$ (ii) 3d (iii) $3~\\text{s}$</p><p>(b) Arrange the electrons represented by the following sets of quantum numbers in decreasing order of energy</p><p>(i) $\\text{n}=4,\\text{l}=0,~\\text{m}=0,~\\text{s}=\\pm 1/2$ (ii) $\\text{n}=3,\\text{l}=2,~\\text{m}=0,~\\text{s}=\\pm 1/2$</p><p>(iii) $\\text{n}=3,\\text{l}=1,~\\text{m}=1,~\\text{s}=-1/2$ (iv) $\\text{n}=3,\\text{l}=0,~\\text{m}=0,~\\text{s}=-1/2$</p><p><strong>Solution.&nbsp;</strong></p><p>(a) $\\mu =\\sqrt{l(l+1)}\\frac{\\text{h}}{2\\pi }=\\sqrt{l(l+1)h}$</p><p>(i) For 3p, $l=1,{{\\mu }_{1}}=\\sqrt{1(1+1)}h=\\sqrt{2}h$</p><p>(ii) For 3d, $l=2,{{\\mu }_{1}}=\\sqrt{2(2+1)}\\frac{h}{2\\pi }=\\sqrt{6}h$</p><p>(iii) For 3s, $l=0,{{\\mu }_{1}}=0$</p><p>(b) Higher the value of (n + l) higher will be the energy of orbital. If the two values are same then one having higher value of $n$ the energy will be higher</p><p>For (i) $(n+l)=44$ s orbital</p><p>For (ii), $(\\text{n}+\\text{l})=5,3~\\text{d}$ orbital</p><p>For (iii) $(\\text{n}+\\text{l})=43\\text{p}$ orbital</p><p>For (iv), $(\\text{n}+\\text{l})=33~\\text{s}$ orbital</p><p>Decreasing order of energy: (ii) &gt;$(i)$&gt;$(iii)$&gt; (iv)</p>",
+      "position": 4,
+      "qcConcept": "66a0dd0ec03b9dcaf1afe8f5"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66584e591814fc7e94209e91",
+      "title": "The statements\n(i) In filling a group of orbitals of equal energy, it is energetically preferable to assign electrons to empty orbitals rather than pair them into a particular orbital.\n(ii) When two electrons are placed in two different orbitals, energy is lower if the spins are parallel. are valid for",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209e92",
+      "title": "According to Aufbau's principle, which of the three $4 d, 5 p$ and $5 s_{\\text {will be filled with electrons first }}$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209e93",
+      "title": "Following Hund's rule which element contains six unpaired electron",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209e94",
+      "title": "The correct order of increasing energy of atomic orbitals is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209e95",
+      "title": "Which of the following electronic configuration is not possible according to Hund's rule",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209e96",
+      "title": "Aufbau principle is obeyed in which of the following electronic configurations",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209e97",
+      "title": "The electronic configuration of element with atomic number 24 is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209e98",
+      "title": "The number of $d$ electrons in $\\mathrm{Fe}{ }^{+2}$ (atomic number of $F e=26$) is not equal to that of the",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209e99",
+      "title": "Which of the following metal ions will have maximum number of unpaired electrons",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209e9a",
+      "title": "Number of unpaired electrons in $1 s^2 2 s^2 2 p^3$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

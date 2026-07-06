@@ -1,0 +1,44 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d2ad647479b8e8696479",
+  "chapterId": "6809202a3a10446a207fded4",
+  "subject": "Physics",
+  "chapter": "Current Electricity",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "680920703a10446a207fe24e",
+      "title": "Resistance and Resistivity",
+      "count": 1,
+      "questionIds": [
+        "6809203c3a10446a207fdfb3"
+      ]
+    },
+    {
+      "id": "680920703a10446a207fe24d",
+      "title": "Combination of Resistances",
+      "count": 1,
+      "questionIds": [
+        "6809202a3a10446a207fded2"
+      ]
+    },
+    {
+      "id": "680920703a10446a207fe24f",
+      "title": "Kirchoffs Laws",
+      "count": 2,
+      "questionIds": [
+        "6a45fe565aa758e832e06edb",
+        "680920413a10446a207fdfeb"
+      ]
+    },
+    {
+      "id": "680920703a10446a207fe250",
+      "title": "Electric Power and Heating Effect of Current",
+      "count": 1,
+      "questionIds": [
+        "680920453a10446a207fe017"
+      ]
+    }
+  ]
+}

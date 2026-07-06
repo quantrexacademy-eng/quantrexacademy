@@ -1,0 +1,48 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d350647479b8e869647a",
+  "chapterId": "68091fe23a10446a207fdbed",
+  "subject": "Chemistry",
+  "chapter": "States of Matter",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "680920633a10446a207fe19a",
+      "title": "Gas laws and Ideal Gas Equation",
+      "count": 1,
+      "questionIds": [
+        "68091ffa3a10446a207fdce8"
+      ]
+    },
+    {
+      "id": "680920623a10446a207fe199",
+      "title": "Mixture of gases",
+      "count": 1,
+      "questionIds": [
+        "68091ff73a10446a207fdcc5"
+      ]
+    },
+    {
+      "id": "680920623a10446a207fe197",
+      "title": "Kinetic theory of gases",
+      "count": 1,
+      "questionIds": [
+        "68091fe23a10446a207fdbeb"
+      ]
+    },
+    {
+      "id": "680920623a10446a207fe198",
+      "title": "Real Gases and Van der Waal's Equation",
+      "count": 6,
+      "questionIds": [
+        "68091ffa3a10446a207fdce9",
+        "68091ff53a10446a207fdcb3",
+        "68091ff43a10446a207fdca5",
+        "68091fee3a10446a207fdc68",
+        "68091fe93a10446a207fdc32",
+        "68091fe33a10446a207fdbee"
+      ]
+    }
+  ]
+}

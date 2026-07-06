@@ -1,0 +1,37 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19156220c83fbf1e0bce11",
+  "chapterId": "6a192b9ee4cc9575516b565b",
+  "subject": "Physics",
+  "chapter": "Motion In Two Dimensions",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec16cef1faeb9633e23a8",
+      "title": "Uniform Circular Motion",
+      "count": 8,
+      "questionIds": [
+        "6a1ec02fef1faeb9633e1be0",
+        "6a1ec12def1faeb9633e2220",
+        "6a1ec00fef1faeb9633e1b18",
+        "6a1ec00fef1faeb9633e1b16",
+        "6a1ec00eef1faeb9633e1b0d",
+        "6a1ec10eef1faeb9633e215b",
+        "6a1ec10eef1faeb9633e215a",
+        "6a1ec10eef1faeb9633e2159"
+      ]
+    },
+    {
+      "id": "6a1ec16def1faeb9633e23a9",
+      "title": "Projectile motion",
+      "count": 4,
+      "questionIds": [
+        "6a1ec0edef1faeb9633e2089",
+        "6a1ec0acef1faeb9633e1ef6",
+        "6a1ec152ef1faeb9633e2306",
+        "6a1ec054ef1faeb9633e1cc6"
+      ]
+    }
+  ]
+}

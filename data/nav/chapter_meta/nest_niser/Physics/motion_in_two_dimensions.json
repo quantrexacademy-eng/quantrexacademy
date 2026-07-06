@@ -1,0 +1,30 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d2ad647479b8e8696479",
+  "chapterId": "6809202e3a10446a207fdf09",
+  "subject": "Physics",
+  "chapter": "Motion In Two Dimensions",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "680920733a10446a207fe27a",
+      "title": "Projectile motion",
+      "count": 4,
+      "questionIds": [
+        "680920403a10446a207fdfdd",
+        "6809203f3a10446a207fdfcf",
+        "680920313a10446a207fdf2a",
+        "6809202e3a10446a207fdf07"
+      ]
+    },
+    {
+      "id": "6a45fe615aa758e832e06eef",
+      "title": "Uniform Circular Motion",
+      "count": 1,
+      "questionIds": [
+        "6a45fe545aa758e832e06ece"
+      ]
+    }
+  ]
+}

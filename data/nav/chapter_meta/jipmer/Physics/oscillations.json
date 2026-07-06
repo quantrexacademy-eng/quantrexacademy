@@ -1,0 +1,67 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b34d4b564dfab4f94cc",
+  "chapterId": "66d5853ca75f05ee8564f57b",
+  "subject": "Physics",
+  "chapter": "Oscillations",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d5869da75f05ee856502d3",
+      "title": "Simple Harmonic Motion",
+      "count": 7,
+      "questionIds": [
+        "66d58659a75f05ee8564ffe2",
+        "66d58633a75f05ee8564fe87",
+        "66d5860ca75f05ee8564fd1a",
+        "66d585a3a75f05ee8564f94a",
+        "66d5857aa75f05ee8564f7d6",
+        "66d58555a75f05ee8564f67b",
+        "66d58555a75f05ee8564f67a"
+      ]
+    },
+    {
+      "id": "66d5869da75f05ee856502d2",
+      "title": "Energy of Simple Harmonic Motion",
+      "count": 5,
+      "questionIds": [
+        "66d58649a75f05ee8564ff4e",
+        "66d58647a75f05ee8564ff3d",
+        "66d58568a75f05ee8564f72c",
+        "66d58552a75f05ee8564f65f",
+        "66d5853ba75f05ee8564f579"
+      ]
+    },
+    {
+      "id": "66d5869ea75f05ee856502d4",
+      "title": "Time Period and Frequency",
+      "count": 6,
+      "questionIds": [
+        "66d58648a75f05ee8564ff47",
+        "66d58631a75f05ee8564fe75",
+        "66d5860da75f05ee8564fd20",
+        "66d585eba75f05ee8564fbe9",
+        "66d5857aa75f05ee8564f7d7",
+        "66d58568a75f05ee8564f727"
+      ]
+    },
+    {
+      "id": "66d5869ea75f05ee856502d6",
+      "title": "Applications of SHM",
+      "count": 2,
+      "questionIds": [
+        "66d5861da75f05ee8564fdbd",
+        "66d585faa75f05ee8564fc71"
+      ]
+    },
+    {
+      "id": "66d5869ea75f05ee856502d5",
+      "title": "Angular oscillations",
+      "count": 1,
+      "questionIds": [
+        "66d585e9a75f05ee8564fbd9"
+      ]
+    }
+  ]
+}

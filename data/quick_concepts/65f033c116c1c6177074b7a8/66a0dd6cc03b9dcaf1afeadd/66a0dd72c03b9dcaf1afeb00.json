@@ -1,0 +1,22 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd6cc03b9dcaf1afeadd",
+  "topicId": "66a0dd72c03b9dcaf1afeb00",
+  "title": "Chord of Contact",
+  "concepts": [
+    {
+      "title": "Equation of chord of contact of hyperbola",
+      "conceptBody": "<h3><strong>Chord of Contact&nbsp;</strong></h3><p>The equation of chord of contact of tangent drawn from a point $\\text{P}\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}} \\right)$ to the hyperbola $\\frac{{{x}^{2}}}{{{a}^{2}}}-\\frac{{{y}^{2}}}{{{b}^{2}}}=1$ is $T=0$ where $T\\equiv \\frac{{{x}_{1}}}{{{a}^{2}}}-\\frac{{{y}_{1}}}{{{b}^{2}}}-1$</p><p>The equation of the chord joining the points $\\text{P}\\equiv \\left( \\text{asec}{{\\theta }_{1}},\\text{ }\\!\\!~\\!\\!\\text{ btan}{{\\theta }_{1}} \\right)$ and $\\text{Q}\\equiv \\left( \\text{asec}{{\\theta }_{2}},\\text{ }\\!\\!~\\!\\!\\text{ btan}{{\\theta }_{2}} \\right)$ is</p><p>$\\frac{\\text{x}}{\\text{a}}\\text{cos}\\left( \\frac{{{\\theta }_{1}}-{{\\theta }_{2}}}{2} \\right)-\\frac{\\text{y}}{\\text{b}}\\text{sin}\\left( \\frac{{{\\theta }_{1}}+{{\\theta }_{2}}}{2} \\right)=\\text{cos}\\left( \\frac{{{\\theta }_{1}}+{{\\theta }_{2}}}{2} \\right)\\text{ }\\!\\!~\\!\\!\\text{ or }\\!\\!~\\!\\!\\text{ }\\left| \\begin{array}{*{35}{l}} \\text{x} &amp; \\text{y} &amp; 1 \\\\ \\text{asec}{{\\theta }_{1}} &amp; \\text{ }\\!\\!~\\!\\!\\text{ btan}{{\\theta }_{1}} &amp; 1 \\\\ \\text{asec}{{\\theta }_{2}} &amp; \\text{ }\\!\\!~\\!\\!\\text{ btan}{{\\theta }_{2}} &amp; 1 \\\\ \\end{array} \\right|=0$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd72c03b9dcaf1afeb01"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f602d384bfb4a538141",
+      "title": "The length of the chord of the parabola $y^2=4 a x$ which passes through the vertex and makes an angle $\\theta$ with the axis of the parabola, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

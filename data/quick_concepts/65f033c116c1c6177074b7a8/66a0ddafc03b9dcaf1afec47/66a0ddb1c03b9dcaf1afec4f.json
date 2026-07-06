@@ -1,0 +1,52 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddafc03b9dcaf1afec47",
+  "topicId": "66a0ddb1c03b9dcaf1afec4f",
+  "title": "Range of Quadratic Function",
+  "concepts": [
+    {
+      "title": "Properties of quadratic equation",
+      "conceptBody": "<h3><strong>Properties of Quadratic Equations</strong></h3><p>(1) If <i>f </i>( <i>a </i>) and <i>f </i>( <i>b </i>) are of opposite signs then at least one or in general odd number of roots of the equation $f(x)=0$ lie between <i>a </i>and <i>b </i>.</p><p>(2) If $f(a)=f(b)$ then there exists a point <i>c </i>between <i>a </i>and <i>b </i>such that ${f}'(c)=0$, $a&lt;c&lt;b$.</p><p>(3) If <i>α </i>is a root of the equation $f(x)=0$ then the polynomial $f(x)$ is exactly divisible by $(x-\\alpha )$, then $(x-\\alpha )$ is factor of $f(x)$.</p><p>(4) If the roots of the quadratic equations ${{a}_{1}}{{x}^{2}}+{{b}_{1}}x+{{c}_{1}}=0$ and ${{a}_{2}}{{x}^{2}}+{{b}_{2}}x+{{c}_{2}}=0$ are in the same ratio $\\left( i.e.\\,\\,\\frac{{{\\alpha }_{1}}}{{{\\beta }_{1}}}=\\frac{{{\\alpha }_{2}}}{{{\\beta }_{2}}} \\right)$ then $b_{1}^{2}/b_{2}^{2}={{a}_{1}}{{c}_{1}}/{{a}_{2}}{{c}_{2}}$.</p>",
+      "position": 0,
+      "qcConcept": "66a0ddb1c03b9dcaf1afec50"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66891f2e1010aab82c8aa62b",
+      "title": "The quadratic function $f(x)=2 x^2-8 x+6$ has a range of:",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa62c",
+      "title": "The quadratic function $f(x)=-3 x^2+12 x-7$ has a range of:",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa62d",
+      "title": "The quadratic function $f(x)=2 x^2-4 x+1$ attains its minimum value at:",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa62e",
+      "title": "For which values of $k$ does the quadratic function $f(x)=x^2+2 x+k$ have its range as $[-1, \\infty)$ ?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa62f",
+      "title": "Consider the quadratic function $f(x)=a x^2+b x+c$, where $a, b$, and $c$ are real numbers with $a \\neq 0$. Which of the following statements correctly describes the range of $f(x)$ ?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa630",
+      "title": "It $x$ is real, then the maximum and minimum values of expression $\\frac{x^2+14 x+9}{x^2+2 x+3}$ will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "examSlug": "kcet",
+  "examId": "62962075e7f8e9ac4daeafda",
+  "subjectId": "6a0edfdf03a76e5089429de4",
+  "chapterId": "6a0eeebcca8be59d93857cc9",
+  "subject": "Biology",
+  "chapter": "Evolution",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a21664f1c6b1a0dc8c6c85f",
+      "title": "Origin of Universe and Life",
+      "count": 1,
+      "questionIds": [
+        "6a2166441c6b1a0dc8c6c81f"
+      ]
+    },
+    {
+      "id": "6a21664f1c6b1a0dc8c6c860",
+      "title": "Mutation Theory of Hugo De Vries",
+      "count": 1,
+      "questionIds": [
+        "6a2166441c6b1a0dc8c6c820"
+      ]
+    },
+    {
+      "id": "6a2166501c6b1a0dc8c6c861",
+      "title": "Human Evolution",
+      "count": 1,
+      "questionIds": [
+        "6a2166451c6b1a0dc8c6c821"
+      ]
+    }
+  ]
+}

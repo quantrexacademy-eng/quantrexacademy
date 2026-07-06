@@ -1,0 +1,78 @@
+{
+  "examSlug": "viteee",
+  "examId": "61bb57e81213731910ea0b6f",
+  "subjectId": "61bb58181213731910ea0b70",
+  "chapterId": "61bb82298adb7037e33f5e90",
+  "subject": "Physics",
+  "chapter": "Electromagnetic Induction",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64e459a5ec226f2f4360aed0",
+      "title": "Induced Electric Field",
+      "count": 1,
+      "questionIds": [
+        "64e45932ec226f2f4360a9e2"
+      ]
+    },
+    {
+      "id": "64e459a5ec226f2f4360aed1",
+      "title": "Motional and Rotational EMF",
+      "count": 1,
+      "questionIds": [
+        "64e4595fec226f2f4360ab97"
+      ]
+    },
+    {
+      "id": "64e459a4ec226f2f4360aece",
+      "title": "Inductance",
+      "count": 3,
+      "questionIds": [
+        "64e4590dec226f2f4360a875",
+        "64e4590dec226f2f4360a874",
+        "64e458f7ec226f2f4360a79c"
+      ]
+    },
+    {
+      "id": "64e459a4ec226f2f4360aecf",
+      "title": "LR Circuit",
+      "count": 3,
+      "questionIds": [
+        "64e4595fec226f2f4360ab94",
+        "64e4593dec226f2f4360aa4d",
+        "64e45928ec226f2f4360a979"
+      ]
+    },
+    {
+      "id": "64e459a4ec226f2f4360aecc",
+      "title": "Self and Mutual Inductance",
+      "count": 7,
+      "questionIds": [
+        "64e4595fec226f2f4360ab96",
+        "64e4595fec226f2f4360ab95",
+        "64e45925ec226f2f4360a962",
+        "64e45910ec226f2f4360a891",
+        "64e45902ec226f2f4360a80d",
+        "64e458dcec226f2f4360a695",
+        "64e458b9ec226f2f4360a53e"
+      ]
+    },
+    {
+      "id": "64e459a4ec226f2f4360aecd",
+      "title": "Magnetic Flux, Faraday's and Lenz law",
+      "count": 10,
+      "questionIds": [
+        "64e45958ec226f2f4360ab4d",
+        "64e45941ec226f2f4360aa73",
+        "64e45928ec226f2f4360a97a",
+        "64e45925ec226f2f4360a963",
+        "64e45925ec226f2f4360a961",
+        "64e4591bec226f2f4360a8ff",
+        "64e4591bec226f2f4360a8fe",
+        "64e458f5ec226f2f4360a78e",
+        "64e458e9ec226f2f4360a70f",
+        "64e458e8ec226f2f4360a70e"
+      ]
+    }
+  ]
+}

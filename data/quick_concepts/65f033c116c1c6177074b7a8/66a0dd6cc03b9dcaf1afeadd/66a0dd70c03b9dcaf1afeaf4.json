@@ -1,0 +1,40 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd6cc03b9dcaf1afeadd",
+  "topicId": "66a0dd70c03b9dcaf1afeaf4",
+  "title": "Pair of Tangents",
+  "concepts": [
+    {
+      "title": "Equation of the pair of tangents",
+      "conceptBody": "<h3><strong>Equation of the pair of tangents&nbsp;</strong></h3><p>The equation of the pair of tangents drawn from a point $\\text{P}\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}} \\right)$ to the hyperbola $\\frac{{{\\text{x}}^{2}}}{{{\\text{a}}^{2}}}-\\frac{{{\\text{y}}^{2}}}{\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}^{2}}}=1$ is $\\mathbf{S}{{\\mathbf{S}}_{1}}={{\\mathbf{T}}^{2}}$ , where $\\text{S}\\equiv \\frac{{{\\text{x}}^{2}}}{{{\\text{a}}^{2}}}-\\frac{{{\\text{y}}^{2}}}{\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}^{2}}}-1,\\text{ }\\!\\!~\\!\\!\\text{ S}\\equiv \\frac{\\text{x}_{1}^{2}}{{{\\text{a}}^{2}}}-\\frac{\\text{y}_{1}^{2}}{\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}^{2}}}-1$ and $\\text{T}\\equiv \\frac{\\text{x}{{\\text{x}}_{1}}}{{{\\text{a}}^{2}}}-\\frac{\\text{y}{{\\text{y}}_{1}}}{\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}^{2}}}-1$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd70c03b9dcaf1afeaf5"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f612d384bfb4a53816b",
+      "title": "The equation of the tangents to the conic $3 x^2-y^2=3$ perpendicular to the line $x+3 y=2$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f612d384bfb4a53816c",
+      "title": "The locus of the point of intersection of any two perpendicular tangents to the hyperbola is a circle which is called the director circle of the hyperbola, then the $\\mathrm{eq}^{\\mathrm{n}}$ of this circle is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f612d384bfb4a53816d",
+      "title": "The equation of the tangents to the hyperbola $3 x^2-4 y^2=12$ which cuts equal intercepts from the axes, are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f612d384bfb4a53816e",
+      "title": "If $m_1$ and $m_2$ are the slopes of the tangents to the hyperbola $\\frac{x^2}{25}-\\frac{y^2}{16}=1$ which pass through the point $(6,2)$, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

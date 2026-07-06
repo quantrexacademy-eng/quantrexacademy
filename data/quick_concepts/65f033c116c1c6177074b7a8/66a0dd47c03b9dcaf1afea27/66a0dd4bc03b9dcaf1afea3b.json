@@ -1,0 +1,130 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd47c03b9dcaf1afea27",
+  "topicId": "66a0dd4bc03b9dcaf1afea3b",
+  "title": "Linear Differential Equation",
+  "concepts": [
+    {
+      "title": "Linear and Non-Linear Differential Equations",
+      "conceptBody": "<h3><strong>Linear and non-linear differential equation</strong></h3><p>A differential equation which is of degree one in the dependent variable (unknown variable) and its derivative is called a linear differential equation.</p><p>A differential equation which is not linear is called a non-linear differential equation.</p><p>A differential equation is linear if it can be expressed as</p><p>${{a}_{0}}\\frac{{{d}^{n}}y}{d{{x}^{n}}}+{{a}_{1}}\\frac{{{d}^{n-1}}y}{d{{x}^{n-1}}}+\\ldots +{{a}_{n-1}}\\frac{dy}{dx}+{{a}_{n}}y={{P}_{n}}$</p><p>Where ${{a}_{0}},{{a}_{1}},{{a}_{2}},\\ldots ,{{a}_{n}}and\\,{{p}_{n}}$ are constants or functions of independent variable x.</p><p>Thus a differential equation will be non-linear differential equation if and only if</p><ol><li>its degree is more than one</li><li>exponent of the dependent variable is more than one.</li><li>any of the differential coefficient has exponent more than one</li><li>products containing dependent variable and its differential coefficients are present.</li></ol><p><strong>Examples :&nbsp;</strong></p><p><strong>1) $2\\frac{{{\\text{d}}^{3}}\\text{y}}{\\text{d}{{\\text{x}}^{3}}}-5{{\\left( \\frac{\\text{dy}}{\\text{dx}} \\right)}^{2}}+7\\text{y}={{\\text{x}}^{2}}\\,\\,(non-linear)$&nbsp;</strong></p><p>$Here\\,exponent\\,of\\,\\,\\frac{dy}{dx}\\,\\,is\\,\\,2.$&nbsp;</p><p><strong>2) $y\\frac{dy}{dx}=x\\quad (non-linear)$</strong></p><p>$Here\\,degree\\,of\\,the\\,term\\,y\\frac{dy}{dx}\\,\\,is\\,\\,2.$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd4cc03b9dcaf1afea3c"
+    },
+    {
+      "title": "Understanding of the First Order Differential Equation ",
+      "conceptBody": "<h3><strong>First Order Differential Equation</strong></h3><p>A <strong>first order </strong>differential equation is a relation</p><p>$\\frac{dy}{dx}=f(x,y)$</p><p>in which $f(x,y)$ is a function of two variables defined on a region in the xy-plane.</p><p><strong>Example :&nbsp;</strong></p><p>The equation $\\frac{dy}{dx}=1-\\frac{y}{x}$ is a first order differential equation in which $f(x,y)=1-\\frac{y}{x}$.</p>",
+      "position": 1,
+      "qcConcept": "66a0dd4cc03b9dcaf1afea3d"
+    },
+    {
+      "title": "Solution of Linear Differential Equation done with the help of I.F",
+      "conceptBody": "<h3><strong>Linear Differential Equation&nbsp;</strong></h3><p>A differential equation is linear if the dependent variable (y) and its derivative appear only in the first degree. The general form of a linear differential equation of first degree is</p><p>$\\frac{dy}{dx}+Py=Q$</p><p>Where $\\text{P}$ and $\\text{Q}$ are the functions of $\\text{x}$ (&amp; not of $\\text{y}$ ).</p><p><strong>Example : </strong>$\\frac{dy}{dx}+xy={{x}^{2}},\\frac{xdy}{dx}+2y={{x}^{3}},\\frac{dy}{dx}+2y=\\text{sin}x$</p><p>Similarly, $\\frac{dx}{dy}+Px=Q$ is a linear differential equation, where P and Q are functions of y$(\\And \\text{not}$ of x).</p><p>Solution of Linear differential equation.</p><p>Multiplying equation (i) throughout by ${{\\text{e}}^{\\int \\text{Pdx}}}$, we get</p><p>$\\begin{align} &amp; \\frac{dy}{dx}\\cdot {{e}^{\\int{P}dx}}+Py\\cdot {{e}^{\\int{P}dx}}=Q\\cdot {{e}^{\\int{P}dx}} \\\\ &amp; or\\frac{d}{dx}\\left( y\\cdot {{e}^{\\int{P}dx}} \\right)=Q\\cdot {{e}^{\\int{P}dx}} \\\\ \\end{align}$</p><p>Integrating both sides w.r.t. $\\text{x}$, we get</p><p>$y\\cdot {{e}^{\\int ~Pdx}}=\\int ~Q\\cdot {{e}^{\\int ~Pdx}}dx+c$</p><p>Which is the required solution.</p><p>The factor ${{e}^{\\int Pdx}}$ is called an integration factor of the differential equation &amp; is shortly written as <strong>I.F.&nbsp;</strong></p><p><strong>Remember: </strong>The solution of<strong> </strong>$\\frac{dy}{dx}+Pt=Q$ is $y\\cdot \\left( I.F \\right)=\\int Q\\cdot \\left( I.F \\right)dx+c$.</p>",
+      "position": 2,
+      "qcConcept": "66a0dd4cc03b9dcaf1afea3e"
+    },
+    {
+      "title": "Steps to check whether the given Differential equation can be reduced to Linear form or not",
+      "conceptBody": "<h3><strong>How to decide whether given D.E. is linear or not&nbsp;</strong></h3><p><strong>Step-1 : </strong>Make R.H.S. independent of y.</p><p><strong>Step-2 : </strong>Make coefficeint of $\\frac{dy}{dx}$ independent of x</p><p><strong>Step-3 : </strong>If derivative of terms of y from middle term $=$ coefficeint of $\\frac{dy}{dx}$ term then the equation is reducible to linear D.E. by assuming the coefficient of middle term $=\\text{t}$ else interchange middle term &amp; R.H.S. in original D.E. &amp; then go to Step-1 again.</p><p><strong>For example&nbsp;</strong></p><p>take D.E., $\\frac{\\text{dy}}{\\text{dx}}+\\frac{\\text{y}}{\\text{x}}\\text{log}\\left( \\text{y} \\right)=\\frac{\\text{y}{{(\\text{logy})}^{2}}}{{{\\text{x}}^{2}}}$</p><p><strong>Step-1 </strong>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }$ R.H.S. independent of y</p><p>$\\frac{1}{y{{(\\text{log}y)}^{2}}}\\frac{dy}{dx}+\\frac{1}{\\left( \\text{log}y \\right)x}=\\frac{1}{{{x}^{2}}}$</p><p><strong>Step-2 : </strong>Coefficient of $\\frac{dy}{dx}$ independent of x</p><p><strong>Step-3 : </strong>$\\text{ }\\!\\!~\\!\\!\\text{ }$ Middle term $=\\frac{1}{\\text{xlogy}}$</p><p>&amp; terms of $y=\\frac{1}{\\left( \\text{log }y \\right)}$</p><p>derivative of terms of $y=\\frac{d}{dx}\\left( \\frac{1}{\\text{log}y} \\right)=-\\frac{1}{y{{(\\text{log}y)}^{2}}}=$ coefficient of $\\frac{dy}{dx}$</p><p>Hence this is in Linear form</p><p>$\\begin{align} &amp; \\text{now put }\\quad \\frac{1}{\\log y}=t \\\\ &amp; -\\frac{1}{y{{(\\log y)}^{2}}}dy=dt \\\\ \\end{align}$</p><p>$\\therefore \\text{ }\\!\\!~\\!\\!\\text{ }$ original $\\text{DE}$ becomes</p><p>$-\\frac{dt}{dx}+\\frac{t}{x}=\\frac{1}{{{x}^{2}}}$</p><ul><li>$\\frac{\\text{dt}}{\\text{dx}}-\\frac{\\text{t}}{\\text{x}}=-\\frac{1}{{{\\text{x}}^{2}}}$</li></ul><p>which is our normal linear D.E. Solve it using the method used in earlier questions.</p><p>(2) But now take the example</p><p>$\\frac{dy}{dx}-\\left( 1+x \\right){{e}^{x}}\\text{sec}y=\\frac{\\text{tan }y}{1+x}$</p><p>applying the above procedure here too</p><p>$\\frac{1}{\\text{tan }y}\\left( \\frac{dy}{dx} \\right)-\\frac{\\left( 1+x \\right){{e}^{x}}}{\\text{tan }y}\\text{sec }y=\\frac{1}{\\left( 1+x \\right)}$</p><p>now terms of y in middle terms $=\\frac{\\text{sec}y}{\\text{tan}y}=\\text{cosec y}$</p><p>&amp; \\(\\frac{d}{dy}\\left( \\text{cos}ec\\,y \\right)\\ne \\frac{1}{\\text{tan}\\,y}\\)</p><p>as it is - cotx cosecy, hence not in linear from</p><p>so going through the else part, i.e. interchanging the middle term and R.H.S.</p><p>so DE becomes</p><p>$\\frac{dy}{dx}-\\frac{\\text{tan }y}{1+x}=\\left( 1+x \\right){{e}^{x}}\\text{sec }y$</p><p>removing terms of y from R.H.S.</p><p>$\\begin{align} &amp; \\frac{1}{\\sec y}\\frac{dy}{dx}-\\frac{\\tan y}{\\sec y(1+x)}=(1+x){{e}^{x}} \\\\ &amp; \\cos y\\,\\,\\frac{dy}{dx}-\\frac{\\sin y}{(1+x)}=(1+x){{e}^{x}}\\text{ } \\\\ &amp; \\text{now }\\frac{d}{dx}(\\sin y)=-\\cos y \\\\ \\end{align}$</p><p>which is equal to coefficeint of $\\frac{dy}{dx}$ except for the minus sign which can neglected.</p>",
+      "position": 3,
+      "qcConcept": "66a0dd4cc03b9dcaf1afea3f"
+    },
+    {
+      "title": "Bernoulli's Equation",
+      "conceptBody": "<h3><strong>Bernoulli's Equation</strong></h3><p>For this type, the equation is as follows</p><p>$\\frac{dy}{dx}+Py=Q{{y}^{n}}$</p><p>where $\\text{P}\\And \\text{Q}$ are functions of $\\text{x}$ alone and do not contain $\\text{y}$. How to solve it then :</p><p><strong>Step-1 : </strong>Make R.H.S. free of y</p><p>$\\therefore \\text{ }\\!\\!~\\!\\!\\text{ }$ dividing by ${{\\text{y}}^{\\text{n}}}$</p><p>$\\frac{1}{{{y}^{n}}}\\frac{dy}{dx}+\\frac{P}{{{y}^{n-1}}}=Q$</p><p><strong>Step-2 : </strong>Make the coefficient of $\\frac{dy}{dx}$ free of x. Here it is already free so go to Step-3.</p><p><strong>Step-3 : </strong>Substitute $\\frac{1}{{{y}^{n-1}}}=t\\text{ }\\!\\!~\\!\\!\\text{ }$ {Substituting the coefficient of middle term i.e.f.}</p><p>$\\frac{-\\left( \\text{n}-1 \\right)}{{{\\text{y}}^{\\text{n}}}}\\frac{\\text{dy}}{\\text{dx}}=\\frac{\\text{dt}}{\\text{dx}}$</p><p>putting in DE</p><p>$\\begin{matrix} \\frac{1}{\\left( 1-n \\right)}\\frac{dt}{dx}+P=Q \\\\ \\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }\\frac{dt}{dx}+P\\left( 1-n \\right)=Q\\left( 1-n \\right) \\\\ \\end{matrix}$</p><p>which becomes our normal linear form now &amp; can be solved as done earlier.</p><p><strong>Q) (a) $\\left( y\\,\\text{log}\\,x-1 \\right)ydx=xdy$ (b) $\\text{se}{{\\text{c}}^{2}}y\\frac{dy}{dx}+x\\,\\text{tan}\\,y={{x}^{3}}$&nbsp;</strong></p><p><strong>Solution.&nbsp;</strong></p><ol><li>$\\left( y\\text{log}x-1 \\right)ydx=xdy$</li></ol><p>$\\begin{align} &amp; {{y}^{2}}\\log x-y=x\\frac{dy}{dx}\\text{ } \\\\ &amp; \\text{or }\\quad \\,\\,\\,x\\frac{dy}{dx}+y={{y}^{2}}\\log x \\\\ \\end{align}$</p><p>or $\\frac{1}{{{y}^{2}}}\\frac{dy}{dx}+\\frac{1}{xy}=\\frac{\\text{log}x}{x}$</p><p>Now put $\\text{ }\\!\\!~\\!\\!\\text{ }\\frac{1}{y}=\\text{t}$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }-\\frac{1}{{{y}^{2}}}\\frac{dy}{dx}=\\frac{dt}{dx}$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }-\\frac{dt}{dx}+\\frac{t}{x}=\\frac{\\text{log}x}{x}$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }\\frac{dt}{dx}-\\frac{t}{x}=\\frac{-\\text{log}x}{x}$</p><p>Now this is normal linear form</p><p>$\\text{ }\\!\\!~\\!\\!\\text{ I}\\text{.F}\\text{. }\\!\\!~\\!\\!\\text{ }={{e}^{\\int ~P\\cdot dx}}={{e}^{\\int ~-\\frac{1}{x}dx}}={{e}^{-\\text{log}x}}={{e}^{\\text{log}\\left( 1/x \\right)}}=\\frac{1}{x}$</p><p>$\\therefore \\text{ }\\!\\!~\\!\\!\\text{ }$ Solution becomes</p><p>$\\text{ }\\!\\!~\\!\\!\\text{ t}\\text{. }\\!\\!~\\!\\!\\text{ }\\left( \\frac{1}{x} \\right)=\\int ~-\\left( \\frac{\\text{log}x}{x} \\right)\\left( \\frac{1}{x} \\right)dx=\\int ~-\\left( \\frac{\\text{log}x}{{{x}^{2}}} \\right)dx$</p><p>integratign using by parts</p><p>$\\begin{align} &amp; \\frac{\\text{t}}{\\text{x}}=\\frac{1}{\\text{x}}\\log \\text{x}-\\int{\\frac{1}{\\text{x}}}\\cdot \\frac{1}{\\text{x}}\\text{dx } \\\\ &amp; \\text{or }\\quad \\frac{\\text{t}}{\\text{x}}=\\frac{1}{\\text{x}}\\log \\text{x}+\\frac{1}{\\text{x}}+\\text{C} \\\\ &amp; \\Rightarrow \\quad \\text{t}=\\log \\text{x}+1+\\text{Cx} \\\\ &amp; =\\log \\text{x}+\\log \\text{e}+\\text{Cx} \\\\ &amp; =\\log \\text{ex}+\\text{Cx} \\\\ \\end{align}$</p><p>replacing the value of t</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }\\frac{1}{y}=\\text{logex}+\\text{Cx}$</p><ol><li>$\\text{se}{{\\text{c}}^{2}}y\\frac{dy}{dx}+x\\,\\text{tan}\\,y={{x}^{3}}$</li></ol><p>This is again bernoulli's equation through simplified one as step-1 &amp; step-2 have already been done here. Only step-3 is required to be done</p><p>putting tan y = t</p><p>$\\begin{array}{*{35}{l}} \\Rightarrow &amp; \\text{se}{{\\text{c}}^{2}}y\\frac{dy}{dx}=\\frac{dt}{dx} \\\\ \\Rightarrow &amp; \\frac{dt}{dx}+xt={{x}^{3}} \\\\ \\end{array}$</p><p>Now this is normal Linear form</p><p>$\\begin{align} &amp; \\therefore \\text{ }\\text{I}\\text{.F}\\text{. }={{\\text{e}}^{\\int{x}~\\text{d}x}}={{\\text{e}}^{{{\\text{x}}^{3}}/2}}\\,\\,\\text{ } \\\\ &amp; \\text{t}\\text{. }{{\\text{e}}^{{{\\text{x}}^{2}}/2}}=\\int{{{\\text{x}}^{3}}}{{\\text{e}}^{{{\\text{x}}^{2}}/2}} \\\\ \\end{align}$</p><p>for R.H.S. now putting $\\frac{{{x}^{2}}}{2}=z$</p><p>$\\begin{array}{*{35}{l}} \\Rightarrow &amp; \\text{xdx}=\\text{dz} \\\\ \\Rightarrow &amp; \\text{t}\\cdot {{\\text{e}}^{{{\\text{x}}^{2}}/2}}=\\int ~{{2}^{\\text{z}}}{{\\text{e}}^{\\text{z}}}\\text{dt} \\\\ \\end{array}$</p><p>using by parts</p><p>$\\text{ }\\!\\!~\\!\\!\\text{ t}\\text{. }\\!\\!~\\!\\!\\text{ }{{\\text{e}}^{{{\\text{x}}^{2}}/2}}=2{{\\text{e}}^{\\text{z}}}\\left( \\text{z}-1 \\right)+\\text{C}$</p><p>replacing value of $\\text{t}\\And \\text{z}$</p><p>$\\begin{align} &amp; \\Rightarrow \\tan \\text{y}\\cdot {{\\text{e}}^{{{\\text{x}}^{2}}/2}}=2{{\\text{e}}^{{{\\text{x}}^{2}}/2}}\\left( \\frac{{{\\text{x}}^{2}}}{2}-1 \\right)+\\text{C} \\\\ &amp; \\Rightarrow \\tan \\text{y}=2\\left( \\frac{{{\\text{x}}^{2}}}{2}-1 \\right)+\\text{C}{{\\text{e}}^{-{{\\text{x}}^{2}}/2}} \\\\ &amp; \\therefore solution\\,\\,is\\,\\, \\\\ &amp; \\tan y=\\left( {{x}^{2}}-2 \\right)+\\text{C}{{\\text{e}}^{-2{{x}^{2}}/2}} \\\\ \\end{align}$</p>",
+      "position": 4,
+      "qcConcept": "66a0dd4cc03b9dcaf1afea40"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f442d384bfb4a538010",
+      "title": "Which of the following equation is non-linear",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a538011",
+      "title": "Which of the following equation is non-linear",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a538012",
+      "title": "Which of the following equation is linear",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a538013",
+      "title": "The solution of the equation $x \\frac{d y}{d x}+3 y=x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a538014",
+      "title": "The solution of the differential equation $\\frac{d y}{d x}+y=\\cos x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a538015",
+      "title": "The integrating factor of the differential equation $\\frac{d y}{d x}=y \\tan x-y^2 \\sec x$,",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a538016",
+      "title": "Integrating factor of differential equation $\\cos x \\frac{d y}{d x}+y \\sin x=1$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a538017",
+      "title": "The integrating factor of the differential equation $(x \\log x) \\frac{d y}{d x}+y=2 \\log x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a538018",
+      "title": "Integrating factor of the differential equation $\\frac{d y}{d x}+y \\tan x-\\sec x=0$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a538019",
+      "title": "The solution of the differential equation $\\frac{d y}{d x}+y \\cot x=2 \\cos x$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a53801a",
+      "title": "The solution of the equation $\\frac{d y}{d x}+y \\tan x=x^m \\cos x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a53801b",
+      "title": "An integrating factor for the differential equation $\\left(1+y^2\\right) d x-\\left(\\tan ^{-1} y-x\\right) d y=0$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a53801c",
+      "title": "The solution of the differential equation $\\frac{d y}{d x}+\\frac{y}{x}=x^2$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a53801d",
+      "title": "The solution of the differential equation $x \\frac{d y}{d x}+y=x^2+3 x+2$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a53801e",
+      "title": "The solution of the differential equation $\\frac{d y}{d x}+\\frac{3 x^2}{1+x^3} y=\\frac{\\sin ^2 x}{1+x^3}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

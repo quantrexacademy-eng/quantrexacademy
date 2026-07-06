@@ -1,0 +1,129 @@
+{
+  "examSlug": "ts_eamcet",
+  "examId": "629f39e4ac11b26562e0625e",
+  "subjectId": "629f39e4ac11b26562e0625c",
+  "chapterId": "629f3a884b08972cdee11152",
+  "subject": "Chemistry",
+  "chapter": "Thermodynamics (C)",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "65b6b83604bd81e61a27e800",
+      "title": "System and surrounding",
+      "count": 5,
+      "questionIds": [
+        "65b6b79004bd81e61a27df5e",
+        "65b6b69f04bd81e61a27d741",
+        "65b6b67f04bd81e61a27d636",
+        "65b6b5f104bd81e61a27d19d",
+        "65b6b4eb04bd81e61a27c8fa"
+      ]
+    },
+    {
+      "id": "65b6b83604bd81e61a27e7fd",
+      "title": "First Law and Basic Fundamentals of Thermodynamics",
+      "count": 18,
+      "questionIds": [
+        "68e73a5742e36fb63e4cc014",
+        "68e73a3042e36fb63e4cbed4",
+        "68e73a0942e36fb63e4cbd94",
+        "677b9e0272c536f56b16ae0c",
+        "677b9dd872c536f56b16acca",
+        "677b9dc372c536f56b16ac2c",
+        "65b6b7b104bd81e61a27e09e",
+        "65b6b75f04bd81e61a27dd7e",
+        "65b6b72504bd81e61a27dba1",
+        "65b6b6f004bd81e61a27d9e9",
+        "65b6b6dd04bd81e61a27d949",
+        "65b6b6c504bd81e61a27d87e",
+        "65b6b63e04bd81e61a27d41f",
+        "65b6b61804bd81e61a27d2df",
+        "65b6b5de04bd81e61a27d0fd",
+        "65b6b59304bd81e61a27ce7e",
+        "65b6b4a804bd81e61a27c6bf",
+        "65b6b48904bd81e61a27c5b8"
+      ]
+    },
+    {
+      "id": "65b6b83604bd81e61a27e7fc",
+      "title": "Laws of Thermochemistry and Enthalpy Change",
+      "count": 39,
+      "questionIds": [
+        "68e739f642e36fb63e4cbcf4",
+        "677b9ded72c536f56b16ad6c",
+        "677b9dd872c536f56b16accc",
+        "677b9dae72c536f56b16ab8c",
+        "65b6b78004bd81e61a27debe",
+        "65b6b76f04bd81e61a27de1e",
+        "65b6b74c04bd81e61a27dce1",
+        "65b6b73904bd81e61a27dc41",
+        "65b6b71204bd81e61a27db01",
+        "65b6b6f104bd81e61a27d9ef",
+        "65b6b6ef04bd81e61a27d9e2",
+        "65b6b67804bd81e61a27d601",
+        "65b6b65104bd81e61a27d4ba",
+        "65b6b5cb04bd81e61a27d05d",
+        "65b6b5a604bd81e61a27cf20",
+        "65b6b5a504bd81e61a27cf1d",
+        "65b6b58004bd81e61a27cde3",
+        "65b6b58004bd81e61a27cddd",
+        "65b6b55904bd81e61a27cc9d",
+        "65b6b54604bd81e61a27cbfd",
+        "65b6b50604bd81e61a27c9e0",
+        "65b6b50504bd81e61a27c9d1",
+        "65b6b4f104bd81e61a27c92d",
+        "65b6b4a904bd81e61a27c6c7",
+        "65b6b49404bd81e61a27c611",
+        "65b6b47104bd81e61a27c4e9",
+        "65b6b46d04bd81e61a27c4c3",
+        "65b6b45c04bd81e61a27c433",
+        "65b6b44904bd81e61a27c390",
+        "65b6b44804bd81e61a27c388",
+        "65b6b43804bd81e61a27c301",
+        "65b6b43604bd81e61a27c2f2",
+        "65b6b42504bd81e61a27c261",
+        "65b6b41404bd81e61a27c1c9",
+        "65b6b41304bd81e61a27c1c2",
+        "65b6b3fe04bd81e61a27c10b",
+        "65b6b3eb04bd81e61a27c06c",
+        "65b6b3e604bd81e61a27c042",
+        "65b6b3cf04bd81e61a27bf80"
+      ]
+    },
+    {
+      "id": "65b6b83604bd81e61a27e7fe",
+      "title": "Entropy and Second law of thermodynamics",
+      "count": 7,
+      "questionIds": [
+        "65b6b67d04bd81e61a27d629",
+        "65b6b66504bd81e61a27d561",
+        "65b6b65104bd81e61a27d4bf",
+        "65b6b5b804bd81e61a27cfbd",
+        "65b6b53304bd81e61a27cb5d",
+        "65b6b4b904bd81e61a27c752",
+        "65b6b49404bd81e61a27c614"
+      ]
+    },
+    {
+      "id": "65b6b83604bd81e61a27e7ff",
+      "title": "Third law of thermodynamics",
+      "count": 14,
+      "questionIds": [
+        "68e73a4342e36fb63e4cbf74",
+        "68e73a1d42e36fb63e4cbe34",
+        "65b6b7a104bd81e61a27dffe",
+        "65b6b78104bd81e61a27dece",
+        "65b6b6d804bd81e61a27d921",
+        "65b6b6c504bd81e61a27d881",
+        "65b6b66504bd81e61a27d562",
+        "65b6b62b04bd81e61a27d37f",
+        "65b6b60404bd81e61a27d23f",
+        "65b6b5a504bd81e61a27cf1e",
+        "65b6b56c04bd81e61a27cd3d",
+        "65b6b55904bd81e61a27cc9e",
+        "65b6b52004bd81e61a27cabd",
+        "65b6b4cd04bd81e61a27c7fa"
+      ]
+    }
+  ]
+}

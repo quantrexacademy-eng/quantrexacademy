@@ -1,0 +1,38 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff50378e1624ea7b6a07",
+  "subject": "Physics",
+  "chapter": "Motion In One Dimension",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff88378e1624ea7b6cad",
+      "title": "Rest and Motion",
+      "count": 2,
+      "questionIds": [
+        "67fdff6f378e1624ea7b6b77",
+        "67fdff4f378e1624ea7b6a05"
+      ]
+    },
+    {
+      "id": "67fdff88378e1624ea7b6cae",
+      "title": "Uniform Motion",
+      "count": 3,
+      "questionIds": [
+        "67fdff75378e1624ea7b6bb3",
+        "67fdff70378e1624ea7b6b7f",
+        "67fdff65378e1624ea7b6af3"
+      ]
+    },
+    {
+      "id": "67fdff88378e1624ea7b6caf",
+      "title": "Non-uniform Motion",
+      "count": 1,
+      "questionIds": [
+        "67fdff6a378e1624ea7b6b33"
+      ]
+    }
+  ]
+}

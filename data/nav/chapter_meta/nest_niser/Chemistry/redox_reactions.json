@@ -1,0 +1,35 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d350647479b8e869647a",
+  "chapterId": "68091ffb3a10446a207fdcef",
+  "subject": "Chemistry",
+  "chapter": "Redox Reactions",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "680920663a10446a207fe1c8",
+      "title": "Oxidation and Reduction Reactions",
+      "count": 1,
+      "questionIds": [
+        "68091ffb3a10446a207fdced"
+      ]
+    },
+    {
+      "id": "6a45fe5c5aa758e832e06ee8",
+      "title": "Types of redox reactions",
+      "count": 1,
+      "questionIds": [
+        "6a45fe515aa758e832e06eb1"
+      ]
+    },
+    {
+      "id": "680920663a10446a207fe1c9",
+      "title": "Balancing of redox reactions",
+      "count": 1,
+      "questionIds": [
+        "680920013a10446a207fdd29"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "subjectId": "65dcf3d937445f4fe46f420e",
+  "chapterId": "66a0db6fc03b9dcaf1afe1c6",
+  "topicId": "66a0db73c03b9dcaf1afe1d9",
+  "title": "Errors of Measurement",
+  "concepts": [
+    {
+      "title": "Precision and Accuracy",
+      "conceptBody": "<h3>Significant Figures</h3><p>Significant figures in the measured value of a physical quantity tell the number of digits in which we have confidence. Larger the number of significant figures obtained in a measurement, greater is the accuracy of the measurement. The reverse is also true.</p><p>The following rules are observed in counting the number of significant figures in a given measured quantity.</p><p>(1) All non-zero digits are significant.</p><p><i>Example </i>: 42.3 has three significant figures.</p><p>243.4 has four significant figures.</p><p>24.123 has five significant figures.</p><p>(2) A zero becomes significant figure if it appears between two non-zero digits.</p><p><i>Example </i>: 5.03 has three significant figures.</p><p>5.604 has four significant figures.</p><p>4.004 has four significant figures.</p><p>(3) Leading zeros or the zeros placed to the left of the number are never significant.</p><p><i>Example </i>: 0.543 has three significant figures.</p><p>0.045 has two significant figures.</p><p>0.006 has one significant figure.</p><p>(4) Trailing zeros or the zeros placed to the right of the number are significant.</p><p><i>Example </i>: 4.330 has four significant figures.</p><p>433.00 has five significant figures.</p><p>343.000 has six significant figures.</p><p>(5) In exponential notation, the numerical portion gives the number of significant figures.</p><p><i>Example </i>: 1.32 × 10 –2 has three significant figures.</p><p>1.32 × 10 4 has three significant figures.</p>",
+      "position": 0,
+      "qcConcept": "66a0db73c03b9dcaf1afe1da"
+    },
+    {
+      "title": "Precision and Accuracy",
+      "conceptBody": "<h3>Rounding Off</h3><p>While rounding off measurements, we use the following rules by convention:</p><p>(1) If the digit to be dropped is less than 5, then the preceding digit is left unchanged.</p><p><i>Example </i>: $x=7.82$ is rounded off to 7.8,</p><p>again $x=3.94$ is rounded off to 3.9.</p><p>(2) If the digit to be dropped is more than 5, then the preceding digit is raised by one.</p><p><i>Example </i>: <i>x = </i>6.87 is rounded off to 6.9,</p><p>again <i>x = </i>12.78 is rounded off to 12.8.</p><p>(3) If the digit to be dropped is 5 followed by digits other than zero, then the preceding digit is raised by one.</p><p><i>Example </i>: <i>x </i>= 16.351 is rounded off to 16.4,</p><p>again <i>x = </i>6.758 is rounded off to 6.8.</p><p>(4) If digit to be dropped is 5 or 5 followed by zeros, then preceding digit is left unchanged, if it is even.</p><p><i>Example </i>: <i>x </i>= 3.250 becomes 3.2 on rounding off,</p><p>again <i>x </i>= 12.650 becomes 12.6 on rounding off.</p><p>(5) If digit to be dropped is 5 or 5 followed by zeros, then the preceding digit is raised by one, if it is odd.</p><p><i>Example </i>: <i>x </i>= 3.750 is rounded off to 3.8,</p><p>again <i>x </i>= 16.150 is rounded off to 16.2.</p>",
+      "position": 1,
+      "qcConcept": "66a0db73c03b9dcaf1afe1db"
+    },
+    {
+      "title": "Precision and Accuracy",
+      "conceptBody": "<h3>Significant Figures in Calculation</h3><p>The following two rules should be followed to obtain the proper number of significant figures in any calculation.</p><p>(1) The result of an addition or subtraction in the number having different precisions should be reported to the same number of decimal places as present in the number having the least number of decimal places. The rule is illustrated by the following examples :</p><p>(i) 33.3 ← (has only one decimal place)</p><p>+ 3.11</p><p>+ 0.313</p><p>36.723 ← (answer should be reported to</p><p>one decimal place)</p><p>Answer = 36.7</p><p>(ii) 3.1421</p><p>+ 0.241</p><p>+ 0.09 ← (has 2 decimal places)</p><p>3.4731 ← (answer should be reported</p><p>to 2 decimal places)</p><p>Answer = 3.47</p><p>(iii) 62.831 ← (has 3 decimal places)</p><p>&nbsp;– 24.5492</p><p>38.2818 ← (answer should be reported to 3</p><p>decimal places after rounding off)</p><p>Answer = 38.282</p><p>(2) The answer to a multiplication or division is rounded off to the same number of significant figures as possessed by the least precise term used in the calculation. The rule is illustrated by the following examples :</p><p>(i) 142.06</p><p>× 0.23 ← (two significant figures)</p><p>32.6738 ← (answer should have two</p><p>significant figures)</p><p>Answer = 33</p><p>(ii) 51.028</p><p>× 1.31 ← (three significant figures)</p><p>66.84668</p><p>Answer = 66.8</p><p>(iii) $\\frac{0.90}{4.26}=0.2112676$</p><p>Answer = 0.21</p>",
+      "position": 2,
+      "qcConcept": "66a0db74c03b9dcaf1afe1dc"
+    },
+    {
+      "title": "Combination of errors",
+      "conceptBody": "<h3>Errors of Measurement</h3><p>This difference in the true value and measured value of a quantity is called error of measurement.</p><p>(1) <strong>Absolute error : </strong>Absolute error in the measurement of a physical quantity is the magnitude of the difference between the true value and the measured value of the quantity.</p><p>Let a physical quantity be measured <i>n </i>times. Let the measured value be <i>a </i>1 , <i>a </i>2 , <i>a </i>3 , ….. <i>a n </i>. The arithmetic mean of these value is ${{a}_{m}}=\\frac{{{a}_{1}}+{{a}_{2}}+......+{{a}_{n}}}{n}$</p><p>Usually, <i>a m </i>is taken as the true value of the quantity, if the same is unknown otherwise.</p><p>By definition, absolute errors in the measured values of the quantity are</p><p>$\\Delta {{a}_{1}}={{a}_{m}}-{{a}_{1}}$</p><p>$\\Delta {{a}_{2}}={{a}_{m}}-{{a}_{2}}$</p><p>………….</p><p>$\\Delta {{a}_{n}}={{a}_{m}}-{{a}_{n}}$</p><p>The absolute errors may be positive in certain cases and negative in certain other cases.</p><p>(2) <strong>Mean absolute error : </strong>It is the arithmetic mean of the magnitudes of absolute errors in all the measurements of the quantity. It is represented by $\\overline{\\Delta a}.$ Thus</p><p>$\\overline{\\Delta a}=\\frac{|\\Delta {{a}_{1}}|+|\\Delta {{a}_{2}}|+.....|\\Delta {{a}_{n}}|}{n}$</p><p>Hence the final result of measurement may be written as $a={{a}_{m}}\\pm \\overline{\\Delta a}$</p><p>This implies that any measurement of the quantity is likely to lie between $({{a}_{m}}+\\overline{\\Delta a})$ and $({{a}_{m}}-\\overline{\\Delta a}).$</p><p>(3) <strong>Relative error or Fractional error : </strong>The relative error or fractional error of measurement is defined as the ratio of mean absolute error to the mean value of the quantity measured. Thus</p><p>Relative error or Fractional error $=\\frac{Mean absolute error}{Mean value }=\\frac{\\overline{\\Delta a}}{{{a}_{m}}}$</p><p>(4) <strong>Percentage error : </strong>When the relative/fractional error is expressed in percentage, we call it percentage error. Thus</p><p>Percentage error $=\\frac{\\overline{\\Delta a}}{{{a}_{m}}}\\times 100%$</p>",
+      "position": 3,
+      "qcConcept": "66a0db74c03b9dcaf1afe1dd"
+    },
+    {
+      "title": "Different Methods used to find Error (By taking log)",
+      "conceptBody": "<h3>Propagation of Errors</h3><p>(1) <strong>Error in sum of the quantities : </strong>Suppose <i>x </i>= <i>a </i>+ <i>b&nbsp;</i></p><p>Let Δ <i>a </i>= absolute error in measurement of <i>a&nbsp;</i></p><p>Δ <i>b </i>= absolute error in measurement of <i>b&nbsp;</i></p><p>Δ <i>x </i>= absolute error in calculation of <i>x&nbsp;</i></p><p><i>i.e. </i>sum of <i>a </i>and <i>b </i>.</p><p>The maximum absolute error in <i>x </i>is $\\Delta x=\\pm (\\Delta a+\\Delta b)$</p><p>Percentage error in the value of $x=\\frac{(\\Delta a+\\Delta b)}{a+b}\\times 100%$</p><p>(2) <strong>Error in difference of the quantities : </strong>Suppose <i>x </i>= <i>a </i>– <i>b&nbsp;</i></p><p>Let Δ <i>a </i>= absolute error in measurement of <i>a </i>,</p><p>Δ <i>b </i>= absolute error in measurement of <i>b&nbsp;</i></p><p>Δ <i>x </i>= absolute error in calculation of <i>x i.e. </i>difference of <i>a </i>and <i>b </i>.</p><p>The maximum absolute error in <i>x </i>is $\\Delta x=\\pm (\\Delta a+\\Delta b)$</p><p>Percentage error in the value of $x=\\frac{(\\Delta a+\\Delta b)}{a-b}\\times 100%$</p><p>(3) <strong>Error in product of quantities :&nbsp;</strong></p><p>Suppose <i>x </i>= <i>a </i>× <i>b&nbsp;</i></p><p>Let Δ <i>a </i>= absolute error in measurement of <i>a </i>,</p><p>Δ <i>b </i>= absolute error in measurement of <i>b&nbsp;</i></p><p>Δ <i>x </i>= absolute error in calculation of <i>x i.e. </i>product of <i>a </i>and <i>b </i>.</p><p>The maximum fractional error in <i>x </i>is $\\frac{\\Delta x}{x}=\\pm \\,\\left( \\frac{\\Delta a}{a}+\\frac{\\Delta b}{b} \\right)$</p><p>Percentage error in the value of <i>x </i>= (% error in value of <i>a </i>) + (% error in value of <i>b </i>)</p><p>(4) <strong>Error in division of quantities : </strong>Suppose $x=\\frac{a}{b}$</p><p>Let Δ <i>a </i>= absolute error in measurement of <i>a </i>,</p><p>Δ <i>b </i>= absolute error in measurement of <i>b&nbsp;</i></p><p>Δ <i>x </i>= absolute error in calculation of <i>x i.e. </i>division of <i>a </i>and <i>b </i>.</p><p>The maximum fractional error in <i>x </i>is $\\frac{\\Delta x}{x}=\\pm \\,\\left( \\frac{\\Delta a}{a}+\\frac{\\Delta b}{b} \\right)$</p><p>Percentage error in the value of <i>x </i>= (% error in value of <i>a </i>) + (% error in value of <i>b </i>)</p><p>(5) <strong>Error in quantity raised to some power : </strong>Suppose $x=\\frac{{{a}^{n}}}{{{b}^{m}}}$</p><p>Let Δ <i>a </i>= absolute error in measurement of <i>a </i>,</p><p>Δ <i>b </i>= absolute error in measurement of <i>b&nbsp;</i></p><p>Δ <i>x </i>= absolute error in calculation of <i>x&nbsp;</i></p><p>The maximum fractional error in <i>x </i>is $\\frac{\\Delta x}{x}=\\pm \\,\\left( n\\frac{\\Delta a}{a}+m\\frac{\\Delta b}{b} \\right)$</p><p>Percentage error in the value of <i>x </i>= <i>n </i>(% error in value of <i>a </i>) + <i>m </i>(%error in value of <i>b </i>)</p>",
+      "position": 4,
+      "qcConcept": "66a0db74c03b9dcaf1afe1de"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66891f2d1010aab82c8aa5ce",
+      "title": "A screw gauge gives the following reading when used to measure the diameter of a wire.\nMain scale reading : 0 mm\nCircular scale reading : 52 divisions\nGiven that $1 \\mathrm{~mm}$ on main scale corresponds to 100 divisions of the circular scale.\nThe diameter of wire from the above data is :",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2d1010aab82c8aa5cf",
+      "title": "In an experiment, the angles are required to be measured using an instrument. 29 divisions of the main scale exactly coincide with the 30 divisions of the vernier scale. If the smallest division of the main scale is half-a-degree $\\left(=0.5^{\\circ}\\right)$, then the least count of the instrument is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2d1010aab82c8aa5d0",
+      "title": "A student measured the length of a rod and wrote it as $3.50 \\mathrm{~cm}$. Which instrument did he use to measure it?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2d1010aab82c8aa5d1",
+      "title": "The density of a material in the shape of a cube is determined by measuring three sides of the cube and its mass. If the relative errors in measuring the mass and length are respectively $1.5 \\%$ and $1 \\%$, the maximum error in determining the density is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2d1010aab82c8aa5d2",
+      "title": "Resistance of a given wire is obtained by measuring the current flowing in it and the voltage difference applied across it. If the percentage errors in the measurement of the current and the voltage difference are $3 \\%$ each, then the error in the value of resistance of the wire is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2d1010aab82c8aa5d3",
+      "title": "The density of a solid ball is to be determined in an experiment. The diameter of the ball is measured with a screw gauge, whose pitch is $0.5 \\mathrm{~mm}$ and there are 50 divisions on the circular scale. The reading on the main scale is $2.5 \\mathrm{~mm}$ and that on the circular scale is $20$ divisions. If the measured mass of the ball has a relative error of $2 \\%$, the relative percentage error in the density is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2d1010aab82c8aa5d4",
+      "title": "The least count of the main scale of a screw gauge is $1 \\mathrm{~mm}$. The minimum number of divisions on its circular scale required to measure $5 \\mu \\mathrm{m}$ diameter of a wire is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2d1010aab82c8aa5d5",
+      "title": "A copper wire is stretched to make it $0.5 \\%$ longer. The percentage change in its electrical resistance if its volume remains unchanged is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

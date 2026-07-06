@@ -1,0 +1,51 @@
+{
+  "examSlug": "kcet",
+  "examId": "62962075e7f8e9ac4daeafda",
+  "subjectId": "62962075e7f8e9ac4daeafd9",
+  "chapterId": "6296211e26fe5de094bb70ae",
+  "subject": "Mathematics",
+  "chapter": "Permutation Combination",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64cc9b3b08d12fed62b18ed1",
+      "title": "Permutation",
+      "count": 5,
+      "questionIds": [
+        "6a0f2e77120c20281ef3405a",
+        "684b135aa54ceb3b13fdb8c1",
+        "65423ea81b8c26a3894b730a",
+        "64cc9ad908d12fed62b18a69",
+        "64cc9a3b08d12fed62b184f1"
+      ]
+    },
+    {
+      "id": "64cc9b3b08d12fed62b18ed2",
+      "title": "Combination",
+      "count": 4,
+      "questionIds": [
+        "6a0f2e76120c20281ef34059",
+        "684b135aa54ceb3b13fdb8c2",
+        "64cc9ac508d12fed62b189ba",
+        "64cc9a8908d12fed62b187a3"
+      ]
+    },
+    {
+      "id": "64cc9b3b08d12fed62b18ed3",
+      "title": "Arrangement under Constraint",
+      "count": 2,
+      "questionIds": [
+        "64cc9a9e08d12fed62b1885c",
+        "64cc9a8a08d12fed62b187a9"
+      ]
+    },
+    {
+      "id": "677d2d378098cf077bbe127a",
+      "title": "Summation of Numbers",
+      "count": 1,
+      "questionIds": [
+        "677d2c768098cf077bbe11e3"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff46378e1624ea7b6987",
+  "subject": "Physics",
+  "chapter": "Current Electricity",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff83378e1624ea7b6c61",
+      "title": "Electric Current and Drift of Electrons",
+      "count": 1,
+      "questionIds": [
+        "67fdff47378e1624ea7b6992"
+      ]
+    },
+    {
+      "id": "67fdff83378e1624ea7b6c60",
+      "title": "Resistance and Resistivity",
+      "count": 1,
+      "questionIds": [
+        "67fdff46378e1624ea7b6988"
+      ]
+    },
+    {
+      "id": "67fdff83378e1624ea7b6c5f",
+      "title": "Combination of Resistances",
+      "count": 3,
+      "questionIds": [
+        "67fdff70378e1624ea7b6b81",
+        "67fdff5e378e1624ea7b6ab8",
+        "67fdff46378e1624ea7b6985"
+      ]
+    },
+    {
+      "id": "67fdff83378e1624ea7b6c62",
+      "title": "Kirchoffs Laws",
+      "count": 2,
+      "questionIds": [
+        "67fdff6b378e1624ea7b6b3d",
+        "67fdff4e378e1624ea7b69f7"
+      ]
+    },
+    {
+      "id": "67fdff83378e1624ea7b6c63",
+      "title": "Electric Power and Heating Effect of Current",
+      "count": 1,
+      "questionIds": [
+        "67fdff70378e1624ea7b6b7b"
+      ]
+    }
+  ]
+}

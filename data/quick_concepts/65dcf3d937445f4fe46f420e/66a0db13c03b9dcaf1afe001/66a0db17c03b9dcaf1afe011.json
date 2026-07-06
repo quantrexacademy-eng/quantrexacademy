@@ -1,0 +1,52 @@
+{
+  "subjectId": "65dcf3d937445f4fe46f420e",
+  "chapterId": "66a0db13c03b9dcaf1afe001",
+  "topicId": "66a0db17c03b9dcaf1afe011",
+  "title": "Quality and Power Factor",
+  "concepts": [
+    {
+      "title": "Power Factor",
+      "conceptBody": "<h3><strong>Power in AC Circuit&nbsp;</strong></h3><p>If an ac voltage $\\text{V}={{\\text{V}}_{0}}$ sin $\\omega \\text{t}$ is applied to a circuit and the resulting current is,</p><p>$I={{I}_{0}}\\text{sin}\\left( \\omega t-\\phi \\right)$</p><p>with, $\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{I}}_{0}}=\\frac{{{\\text{V}}_{0}}}{\\text{Z}}$ and $\\phi =\\text{ta}{{\\text{n}}^{-1}}\\left( \\frac{\\text{X}}{\\text{R}} \\right)$</p><p>the instantaneous power consumed by the circuit,</p><p>$\\text{P}=\\text{VI}={{\\text{I}}_{0}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{V}}_{0}}\\text{sin}\\omega \\text{tsin}\\left( \\omega \\text{t}-\\phi \\right)$</p><p>So, average power consumed,</p><p>${{\\text{P}}_{\\text{av}}}=\\frac{\\mathop{\\int }_{0}^{\\text{T}}\\text{Pdt}}{\\mathop{\\int }_{0}^{\\text{T}}\\text{dt}}=\\frac{1}{\\text{ }\\!\\!~\\!\\!\\text{ T}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{V}}_{0}}{{\\text{I}}_{0}}\\mathop{\\int }_{0}^{\\text{T}}\\text{sin}\\omega \\text{tsin}\\left( \\omega \\text{t}-\\phi \\right)\\text{dt}$</p><p>$\\text{ }\\!\\!~\\!\\!\\text{ or }\\!\\!~\\!\\!\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{P}}_{\\text{av}}}=\\frac{{{\\text{V}}_{0}}{{\\text{I}}_{0}}}{2\\text{ }\\!\\!~\\!\\!\\text{ T}}\\mathop{\\int }_{0}^{\\text{T}}\\left[ \\text{cos}\\phi -\\text{cos}\\left( 2\\omega \\text{t}-\\phi \\right) \\right]\\text{dt}$</p><p>which on simplification with $\\text{T}=\\frac{2\\pi }{\\omega }$ gives,</p><p>${{\\text{P}}_{\\text{av}}}=\\frac{1}{2}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{V}}_{0}}{{\\text{I}}_{0}}\\text{cos}\\phi ={{\\text{V}}_{\\text{rms}}}{{\\text{I}}_{\\text{rms}}}\\text{cos}\\phi $</p><p>$\\text{cos}\\phi $ is called <strong>'power factor' </strong>of the circuit.</p><p>This it is clear that:</p><p>(1) In case of a 'pure resistance' as $\\text{X}=0$</p><p>$\\text{PF}=\\text{cos}\\phi =\\frac{\\text{R}}{\\text{Z}}=\\frac{\\text{R}}{\\text{R}}=1$</p><p>$\\text{ }\\!\\!~\\!\\!\\text{ So, }\\!\\!~\\!\\!\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{P}}_{\\text{av}}}={{\\text{V}}_{\\text{rms}}}{{\\text{I}}_{\\text{rms}}}\\text{ }\\!\\!~\\!\\!\\text{ }1=\\frac{1}{2}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{V}}_{0}}{{\\text{I}}_{0}}=\\text{max}$</p><p>(2) In case of a pure inductance or capacitance as $R=0$</p><p>$\\text{PF}=\\text{cos}\\phi =\\frac{\\text{R}}{\\text{Z}}=\\frac{0}{\\text{X}}=0$</p><p>So, $\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{P}}_{\\text{av }\\!\\!~\\!\\!\\text{ }}}={{\\text{V}}_{\\text{rms }\\!\\!~\\!\\!\\text{ }}}{{\\text{I}}_{\\text{rms }\\!\\!~\\!\\!\\text{ }}}\\text{ }\\!\\!~\\!\\!\\text{ }0=0$</p><p>i.e., average power consumed per cycle in a pure inductance or capacitance is zero. So in an ac circuit if the phase difference between $\\text{V}$ and $\\text{I}$ is $\\frac{\\pi }{2}$.</p><p>i.e., if $\\text{V}={{\\text{V}}_{0}}\\text{sin}\\omega \\text{t}$</p><p>$\\text{I}={{\\text{I}}_{0}}\\text{cos}\\omega \\text{t}$</p><p>the power consumed by the circuit is zero. Such current is called <strong>'wattless'.&nbsp;</strong></p>",
+      "position": 0,
+      "qcConcept": "66a0db17c03b9dcaf1afe012"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66585caca5616da869a6a942",
+      "title": "The quality factor of $L C R$ circuit having resistance $(R)$ and inductance $(L)$ at resonance frequency $(\\omega)$ is given by",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66585caca5616da869a6a943",
+      "title": "In an ac circuit, the power factor",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66585caca5616da869a6a944",
+      "title": "The power factor of $L C R$ circuit at resonance is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66585caca5616da869a6a945",
+      "title": "The power factor of an ac circuit having resistance $(R)$ and inductance $(L)$ connected in series and an angular velocity $\\omega$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66585caca5616da869a6a946",
+      "title": "The power factor of a good choke coil is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66585caca5616da869a6a947",
+      "title": "The impedance of a circuit consists of $3 \\mathrm{ohm}$ resistance and $4 \\mathrm{ohm}$ reactance. The power factor of the circuit is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

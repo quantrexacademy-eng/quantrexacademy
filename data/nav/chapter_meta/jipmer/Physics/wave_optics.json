@@ -1,0 +1,56 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b34d4b564dfab4f94cc",
+  "chapterId": "66d5858ca75f05ee8564f87d",
+  "subject": "Physics",
+  "chapter": "Wave Optics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d586c6a75f05ee85650494",
+      "title": "Wave Theory and Wavefronts",
+      "count": 3,
+      "questionIds": [
+        "66d5865da75f05ee85650009",
+        "66d585e7a75f05ee8564fbc5",
+        "66d585b5a75f05ee8564f9f1"
+      ]
+    },
+    {
+      "id": "66d586c6a75f05ee85650493",
+      "title": "Interference of Light",
+      "count": 4,
+      "questionIds": [
+        "66d58635a75f05ee8564fe97",
+        "66d585f9a75f05ee8564fc67",
+        "66d585a2a75f05ee8564f940",
+        "66d5858ca75f05ee8564f87b"
+      ]
+    },
+    {
+      "id": "66d586c7a75f05ee85650495",
+      "title": "Youngs Double Slit Experiment",
+      "count": 9,
+      "questionIds": [
+        "66d5865ca75f05ee85650002",
+        "66d58649a75f05ee8564ff4c",
+        "66d58634a75f05ee8564fe92",
+        "66d58632a75f05ee8564fe7a",
+        "66d58621a75f05ee8564fdde",
+        "66d5861ea75f05ee8564fdc6",
+        "66d585d6a75f05ee8564fb28",
+        "66d585c6a75f05ee8564fa8e",
+        "66d585b5a75f05ee8564f9f2"
+      ]
+    },
+    {
+      "id": "66d586c7a75f05ee85650496",
+      "title": "Diffraction of Light",
+      "count": 1,
+      "questionIds": [
+        "66d585fba75f05ee8564fc7c"
+      ]
+    }
+  ]
+}

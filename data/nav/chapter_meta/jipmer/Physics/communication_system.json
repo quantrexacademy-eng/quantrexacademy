@@ -1,0 +1,28 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b34d4b564dfab4f94cc",
+  "chapterId": "66d5858da75f05ee8564f885",
+  "subject": "Physics",
+  "chapter": "Communication System",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d586c7a75f05ee85650497",
+      "title": "Communication System",
+      "count": 1,
+      "questionIds": [
+        "66d5858da75f05ee8564f883"
+      ]
+    },
+    {
+      "id": "66d586c7a75f05ee85650498",
+      "title": "Modulation",
+      "count": 2,
+      "questionIds": [
+        "66d585d8a75f05ee8564fb39",
+        "66d585c6a75f05ee8564fa8f"
+      ]
+    }
+  ]
+}

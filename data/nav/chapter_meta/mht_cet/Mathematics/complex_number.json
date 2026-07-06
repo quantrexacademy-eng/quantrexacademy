@@ -1,0 +1,158 @@
+{
+  "examSlug": "mht_cet",
+  "examId": "61c05599e8ce0dc8a5c62d32",
+  "subjectId": "61c05603e8ce0dc8a5c62d35",
+  "chapterId": "61c0899d61d92b93b6f83a98",
+  "subject": "Mathematics",
+  "chapter": "Complex Number",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "65a2634a0279619d9d8a3ddd",
+      "title": "Power of iota",
+      "count": 6,
+      "questionIds": [
+        "6a44d2ad8c30a4553e1bdb9d",
+        "6a44d30f8c30a4553e1bdfb7",
+        "65a2624f0279619d9d8a3378",
+        "65a261b50279619d9d8a2eb3",
+        "65a261000279619d9d8a2900",
+        "65a2602f0279619d9d8a2272"
+      ]
+    },
+    {
+      "id": "65a2634a0279619d9d8a3ddc",
+      "title": "Algebra of complex numbers",
+      "count": 20,
+      "questionIds": [
+        "6a44d3748c30a4553e1be3e8",
+        "68871bd1bf9280d7f9932cb6",
+        "68871bb0bf9280d7f9932b9a",
+        "679214040aee93fa0796dd51",
+        "6792137b0aee93fa0796d91d",
+        "65a262830279619d9d8a3522",
+        "65a262290279619d9d8a324b",
+        "65a262140279619d9d8a319d",
+        "65a261a20279619d9d8a2e20",
+        "65a2617c0279619d9d8a2cf6",
+        "65a2616b0279619d9d8a2c6d",
+        "65a261580279619d9d8a2bd0",
+        "65a261240279619d9d8a2a20",
+        "65a261120279619d9d8a2993",
+        "65a260fb0279619d9d8a28d9",
+        "65a260d40279619d9d8a27a8",
+        "65a2609c0279619d9d8a25e3",
+        "65a260790279619d9d8a24c5",
+        "65a260650279619d9d8a2422",
+        "65a25ea90279619d9d8a163d"
+      ]
+    },
+    {
+      "id": "65a2634a0279619d9d8a3ddf",
+      "title": "Conjugate, modulus and argument",
+      "count": 20,
+      "questionIds": [
+        "6a44d3398c30a4553e1be180",
+        "68871bf5bf9280d7f9932e05",
+        "68871be3bf9280d7f9932d52",
+        "68871b9dbf9280d7f9932ae8",
+        "68871b7fbf9280d7f99329ca",
+        "68871b50bf9280d7f993281d",
+        "68871b08bf9280d7f99325cd",
+        "6792144b0aee93fa0796df82",
+        "679214130aee93fa0796ddc6",
+        "679213eb0aee93fa0796dc92",
+        "679213a40aee93fa0796da60",
+        "679213560aee93fa0796d800",
+        "6792132e0aee93fa0796d6c6",
+        "65a262730279619d9d8a349d",
+        "65a262620279619d9d8a3416",
+        "65a261f20279619d9d8a3099",
+        "65a261cb0279619d9d8a2f61",
+        "65a261350279619d9d8a2aae",
+        "65a260eb0279619d9d8a2859",
+        "65a260540279619d9d8a2398"
+      ]
+    },
+    {
+      "id": "65a2634a0279619d9d8a3de2",
+      "title": "Polar and Euler Form",
+      "count": 3,
+      "questionIds": [
+        "6a44d2bb8c30a4553e1bdc33",
+        "65a2615b0279619d9d8a2be9",
+        "65a261230279619d9d8a2a1d"
+      ]
+    },
+    {
+      "id": "65a2634b0279619d9d8a3de3",
+      "title": "De Moivres Theorem",
+      "count": 6,
+      "questionIds": [
+        "6a44d3018c30a4553e1bdf21",
+        "6a44d3478c30a4553e1be20f",
+        "6a44d2d78c30a4553e1bdd5f",
+        "68871b41bf9280d7f993278b",
+        "68871b07bf9280d7f99325c3",
+        "65a262060279619d9d8a312f"
+      ]
+    },
+    {
+      "id": "6a44d3a18c30a4553e1be406",
+      "title": "Rotation Theorem",
+      "count": 1,
+      "questionIds": [
+        "6a44d30e8c30a4553e1bdfb3"
+      ]
+    },
+    {
+      "id": "65a2634a0279619d9d8a3dde",
+      "title": "Cube Root of Unity",
+      "count": 15,
+      "questionIds": [
+        "6a44d3568c30a4553e1be2a5",
+        "6a44d32a8c30a4553e1be0e3",
+        "6a44d2c98c30a4553e1bdcc9",
+        "6a44d2e58c30a4553e1bddfa",
+        "6a44d31d8c30a4553e1be04d",
+        "6a44d29f8c30a4553e1bdb07",
+        "6a44d3648c30a4553e1be33b",
+        "68871c02bf9280d7f9932e78",
+        "679213ca0aee93fa0796db86",
+        "6792136b0aee93fa0796d8a7",
+        "65a262050279619d9d8a3129",
+        "65a2618f0279619d9d8a2d8c",
+        "65a261460279619d9d8a2b3a",
+        "65a2608c0279619d9d8a2561",
+        "65a260430279619d9d8a230e"
+      ]
+    },
+    {
+      "id": "65a2634a0279619d9d8a3de0",
+      "title": "Locus Based on Distance Formula",
+      "count": 5,
+      "questionIds": [
+        "68871b71bf9280d7f9932949",
+        "68871b5ebf9280d7f99328a0",
+        "68871b2dbf9280d7f99326ea",
+        "679213420aee93fa0796d763",
+        "65a260b10279619d9d8a268a"
+      ]
+    },
+    {
+      "id": "65a2634a0279619d9d8a3de1",
+      "title": "Geometry of Complex Number",
+      "count": 8,
+      "questionIds": [
+        "68871bbfbf9280d7f9932c16",
+        "68871b1dbf9280d7f993265f",
+        "6792143e0aee93fa0796df18",
+        "679214270aee93fa0796de68",
+        "679213910aee93fa0796d9c8",
+        "65a2623b0279619d9d8a32e0",
+        "65a261dc0279619d9d8a2fec",
+        "65a260c20279619d9d8a2717"
+      ]
+    }
+  ]
+}

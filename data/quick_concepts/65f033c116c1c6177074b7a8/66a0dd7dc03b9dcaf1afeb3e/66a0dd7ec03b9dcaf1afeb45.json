@@ -1,0 +1,64 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd7dc03b9dcaf1afeb3e",
+  "topicId": "66a0dd7ec03b9dcaf1afeb45",
+  "title": "Converting one Inverse T function to other Inverse T",
+  "concepts": [
+    {
+      "title": "Angle sum properties Part 1",
+      "conceptBody": "<h3><strong>Angle sum properties</strong></h3><p>(1) If $x&gt;0,y&gt;0$ then</p><p>$\\begin{array}{*{35}{r}} \\text{ta}{{\\text{n}}^{-1}}x+\\text{ta}{{\\text{n}}^{-1}}y &amp; ~=\\text{ta}{{\\text{n}}^{-1}}\\left( \\frac{x+y}{1-xy} \\right) &amp; {} &amp; \\text{ }\\!\\!~\\!\\!\\text{ if }\\!\\!~\\!\\!\\text{ }xy&lt;1 \\\\ {} &amp; ~=\\pi +\\text{ta}{{\\text{n}}^{-1}}\\left( \\frac{x+y}{1-xy} \\right) &amp; {} &amp; \\text{ }\\!\\!~\\!\\!\\text{ if }\\!\\!~\\!\\!\\text{ }xy&gt;1 \\\\ \\end{array}$</p><p>&nbsp;</p><p>(2) If $x&gt;0,y&gt;0$ then</p><p>$\\text{ta}{{\\text{n}}^{-1}}x-\\text{ta}{{\\text{n}}^{-1}}y=\\text{ta}{{\\text{n}}^{-1}}\\left( \\frac{x-y}{1+xy} \\right)$</p><p>(3) If $x&gt;0$</p><p>$\\left. \\begin{array}{*{35}{l}} \\text{si}{{\\text{n}}^{-1}}x=\\text{co}{{\\text{s}}^{-1}}\\sqrt{1-{{x}^{2}}},\\text{ }\\!\\!~\\!\\!\\text{ co}{{\\text{s}}^{-1}}x=\\text{si}{{\\text{n}}^{-1}}\\sqrt{1-{{x}^{2}}} \\\\ \\text{si}{{\\text{n}}^{-1}}x=\\text{ta}{{\\text{n}}^{-1}}\\frac{x}{\\sqrt{1-{{x}^{2}}}},\\text{ }\\!\\!~\\!\\!\\text{ co}{{\\text{s}}^{-1}}x=\\text{ta}{{\\text{n}}^{-1}}\\frac{\\sqrt{1-{{x}^{2}}}}{2} \\\\ \\end{array} \\right\\}-1&lt;x&lt;1$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd7ec03b9dcaf1afeb46"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f622d384bfb4a5381bd",
+      "title": "The value of $\\sin ^{-\\cot ^{-1}} \\tan ^{-\\cos ^{-1} x}$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f622d384bfb4a5381be",
+      "title": "$\\sin ^{-1} \\frac{\\sqrt{x}}{\\sqrt{x+a}}$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f622d384bfb4a5381bf",
+      "title": "$\\tan \\left(\\cos ^{-1} x\\right)$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f622d384bfb4a5381c0",
+      "title": "If $x$ takes non-positive permissible value, then $\\sin ^{-1} x=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f622d384bfb4a5381c1",
+      "title": "The value of $x$ which satisfies the equation $\\tan ^{-1} x=\\sin ^{-1}\\left(\\frac{3}{\\sqrt{10}}\\right)$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f622d384bfb4a5381c2",
+      "title": "$\\sin \\left[\\cot ^{-1}\\left(\\operatorname{costan}^{-1} x\\right)\\right]=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f622d384bfb4a5381c3",
+      "title": "If $\\sin \\left(\\cot ^{-1}(x+1)=\\cos \\left(\\tan ^{-1} x\\right)\\right.$, then $x=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f622d384bfb4a5381c4",
+      "title": "$\\sin ^{-1} x=\\frac{\\pi}{5}$ for some $x \\in(-1,1)$, then the value of $\\cos ^{-1} x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

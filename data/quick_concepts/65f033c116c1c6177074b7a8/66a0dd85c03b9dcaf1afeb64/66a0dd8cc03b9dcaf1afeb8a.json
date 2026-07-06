@@ -1,0 +1,94 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd85c03b9dcaf1afeb64",
+  "topicId": "66a0dd8cc03b9dcaf1afeb8a",
+  "title": "Special Forms",
+  "concepts": [
+    {
+      "title": "1^∞ form",
+      "conceptBody": "<h3><strong>Indeterminate form ${{1}^{\\infty }}$</strong></h3><p>When base $\\to 1$ (but no equal to 1 ) and power $\\to \\infty $, the form is called Indeterminate form ${{1}^{\\infty }}$.</p><p><strong>Example : </strong>$\\text{L}{{\\text{t}}_{x\\to \\frac{\\pi }{2}}}{{(\\text{sin}x)}^{\\text{tan}x}}\\left[ {{1}^{\\infty }} \\right.$ form $]$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd8dc03b9dcaf1afeb8b"
+    },
+    {
+      "title": "0^0 form",
+      "conceptBody": "<h3><strong>Indeterminate form ${{0}^{0}}$</strong></h3><p>When base $\\to 0+0$ (but base is not equal to zero) and power $\\to 0$ (but power is not equal to zero), the form is called the indeterminate form ${{0}^{0}}$.</p><p><strong>Example : </strong>$\\text{L}{{\\text{t}}_{x\\to 0}}{{(\\text{sin}x)}^{\\text{tan}x}}\\left[ {{0}^{0}} \\right.$ form $]$</p>",
+      "position": 1,
+      "qcConcept": "66a0dd8dc03b9dcaf1afeb8c"
+    },
+    {
+      "title": "∞^0 form",
+      "conceptBody": "<h3><strong>Indeterminate form ${{\\infty }^{0}}$</strong></h3><p>When base $\\to \\infty $ and power $\\to 0$ (but power is not equal to zero), the form is called the indeterminate form.</p><p><strong>Example :</strong> $\\text{L}{{\\text{t}}_{x\\to 0}}{{(\\text{cot}x)}^{\\text{sin}x}}\\left[ {{\\infty }^{0}} \\right.$ form $]$</p>",
+      "position": 2,
+      "qcConcept": "66a0dd8dc03b9dcaf1afeb8d"
+    },
+    {
+      "title": "Equating the Limit to A and taking log on both sides",
+      "conceptBody": "<h3><strong>Miscellaneous Forms&nbsp;</strong></h3><p><strong>(I) $\\text{ }\\!\\!~\\!\\!\\text{ }{{0}^{0}}$ form : </strong>When $\\text{li}{{\\text{m}}_{\\text{x}\\to \\text{a}}}\\text{f}\\left( \\text{x} \\right)\\ne 1$ but $\\text{f}\\left( \\text{x} \\right)$ is positive in the neighbourhood of $\\text{x}=\\text{a}$.</p><p>In this case we write, \\[{{\\left. \\left\\{ (\\text{f}\\left( \\text{x} \\right) \\right. \\right\\}}^{\\text{g}\\left( \\text{x} \\right)}}={{\\text{e}}^{\\text{lo}{{\\text{g}}_{\\text{e}}}{{\\{\\text{f}\\left( \\text{x} \\right)\\}}^{\\text{g}\\left( \\text{x} \\right)}}}}\\]</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ li}{{\\text{m}}_{x\\to a}}{{[f\\left( x \\right)]}^{g\\left( x \\right)}}={{e}^{\\text{li}{{\\text{m}}^{x\\to ag\\left( x \\right)\\text{lo}{{\\text{g}}_{e}}f\\left( x \\right)}}}}$</p><p><strong>Illustration</strong></p><p><strong>Evaluate $li{{m}_{x\\to {{0}^{+}}}}{{(sinx)}^{x}}$&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>$\\text{ }\\!\\!~\\!\\!\\text{ Let }\\!\\!~\\!\\!\\text{ }A=\\underset{x\\to {{0}^{+}}}{\\mathop{\\text{lim}}}\\,{{(\\text{sin}x)}^{x}}$</p><p>$\\Rightarrow $ $~\\text{ }\\!\\!~\\!\\!\\text{ logA }\\!\\!~\\!\\!\\text{ }=\\underset{\\text{x}\\to {{0}^{+}}}{\\mathop{\\text{lim}}}\\,\\text{xlog}\\left( \\text{sinx} \\right)$</p><p>$\\text{logA }\\!\\!~\\!\\!\\text{ }=\\underset{\\text{x}\\to {{0}^{+}}}{\\mathop{\\text{lim}}}\\,\\frac{\\text{log}\\left( \\text{sinx} \\right)}{1/\\text{x}}\\text{ }\\!\\!~\\!\\!\\text{ }\\!\\!~\\!\\!\\text{ }\\!\\![\\!\\!\\text{ By }\\!\\!~\\!\\!\\text{ L }\\!\\!'\\!\\!\\text{ Hospital }\\!\\!'\\!\\!\\text{ s }\\!\\!~\\!\\!\\text{ rule }\\!\\!]\\!\\!\\text{ }\\!\\!~\\!\\!\\text{ }$</p><p>=$~\\underset{x\\to {{0}^{+}}}{\\mathop{\\text{lim}}}\\,\\frac{\\frac{1}{\\text{sin}x}\\cdot \\text{cos}x}{-\\frac{1}{{{x}^{2}}}}=-\\underset{x\\to {{0}^{+}}}{\\mathop{\\text{lim}}}\\,{{x}^{2}}\\text{ cot}x$</p><p>$~=\\underset{x\\to {{0}^{+}}}{\\mathop{\\text{lim}}}\\,\\frac{{{x}^{2}}}{\\text{tan}x}=0$</p><p>$\\Rightarrow $ $~\\text{ }\\!\\!~\\!\\!\\text{ A}=1\\text{ }\\!\\!~\\!\\!\\text{ }\\!\\!~\\!\\!\\text{ or }\\!\\!~\\!\\!\\text{ }\\!\\!~\\!\\!\\text{ }\\underset{\\text{x}\\to {{0}^{+}}}{\\mathop{\\text{lim}}}\\,{{(\\text{sinx})}^{\\text{x}}}=1$</p><p><strong>Illustration</strong></p><p><strong>Evaluate \\[li{{m}_{x\\to 0}}{{(cosecx)}^{x}}\\]&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>$\\text{ }\\!\\!~\\!\\!\\text{ Let }\\!\\!~\\!\\!\\text{ }A=\\underset{x\\to 0}{\\mathop{\\text{lim}}}\\,{{(\\text{cosec}x)}^{x}}$ $\\left( {{\\infty }^{0}}\\text{ }\\!\\!~\\!\\!\\text{ form }\\!\\!~\\!\\!\\text{ } \\right)$</p><p>\\[\\text{log}A=\\underset{x\\to 0}{\\mathop{\\text{lim}}}\\,x\\text{log}\\left( \\text{cosec}x \\right)\\]</p><p>$\\underset{x\\to 0}{\\mathop{\\text{lim}}}\\,\\frac{\\text{log}\\left( \\text{cosec}x \\right)}{\\frac{1}{x}}$ $\\text{ }\\!\\!~\\!\\!\\text{ }\\!\\!~\\!\\!\\text{ }\\left( \\frac{\\infty }{\\infty }\\text{ }\\!\\!~\\!\\!\\text{ form }\\!\\!~\\!\\!\\text{ } \\right)$</p><p>$~=\\underset{x\\to 0}{\\mathop{\\text{lim}}}\\,\\frac{1}{\\text{cosec}x}\\cdot \\frac{\\left( -\\text{cosec}x\\text{cot}x \\right)}{-\\frac{1}{{{x}^{2}}}}\\text{ }\\!\\!~\\!\\!\\text{ }\\!\\!~\\!\\!\\text{ }\\!\\![\\!\\!\\text{ By }\\!\\!~\\!\\!\\text{ L }\\!\\!'\\!\\!\\text{ Hospital }\\!\\!'\\!\\!\\text{ s }\\!\\!~\\!\\!\\text{ rule) }\\!\\!~\\!\\!\\text{ }$</p><p>$\\text{ }\\!\\!~\\!\\!\\text{ }=\\underset{x\\to 0}{\\mathop{\\text{lim}}}\\,\\frac{{{x}^{2}}}{\\text{tan}x}=0$</p><p>$\\therefore $ $\\text{lo}{{\\text{g}}_{x}}=0$ or $A=1$</p><p>$\\Rightarrow $ $~\\text{ }\\!\\!~\\!\\!\\text{ }\\underset{x\\to 0}{\\mathop{\\text{lim}}}\\,{{(\\text{cosec}x)}^{x}}=1$</p><p><strong>Illustration</strong></p><p><strong>Evaluate $li{{m}_{x\\to 0}}{{e}^{\\frac{1}{xlogx}}}$&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>Let $A=\\text{li}{{\\text{m}}_{x\\to 0}}{{e}^{\\frac{1}{x\\text{log}x}}}$</p><p>$\\text{log}A=\\text{li}{{\\text{m}}_{x\\to 0}}\\frac{1}{x\\text{log}x}\\cdot \\text{log}{{e}^{x}}\\text{ }\\!\\!~\\!\\!\\text{ }=\\text{li}{{\\text{m}}_{x\\to 0}}\\frac{1/x}{\\text{log}x}\\cdot \\text{log}{{e}^{x}}\\text{ }\\!\\!~\\!\\!\\text{ }\\left( \\frac{\\infty }{\\infty } \\right.$ form $)\\text{ }\\!\\!~\\!\\!\\text{ }$ [By L'Hospital's rule]</p><p>$=\\underset{x\\to 0}{\\mathop{\\text{lim}}}\\,\\frac{-1/{{x}^{2}}}{1/x}=-\\infty $</p><p>$\\text{lo}{{\\text{g}}_{\\text{e}}}\\text{A}=-\\infty $</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }A={{e}^{-\\infty }}\\text{ }\\!\\!~\\!\\!\\text{ or }\\!\\!~\\!\\!\\text{ }\\underset{x\\to 0}{\\mathop{\\text{lim}}}\\,\\frac{1}{{{e}^{x\\text{log}x}}}=0$</p><p><strong>Illustration</strong></p><p><strong>Evaluate $li{{m}_{x\\to 0}}|x{{|}^{sinx}}$&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>$\\underset{x\\to 0}{\\mathop{\\text{lim}}}\\,|x{{|}^{\\text{sin}x}}=\\underset{x\\to 0}{\\mathop{\\text{lim}}}\\,{{e}^{\\text{sin}x\\text{lo}{{\\text{g}}_{e}}\\left| x \\right|={{e}^{\\overset{\\lim }{\\mathop{x\\to 0}}\\,\\frac{\\text{lo}{{\\text{g}}_{e}}\\left| x \\right|}{\\text{cosec}x}}}}}$</p><p>$={{e}^{\\underset{x\\to 0}{\\mathop{\\text{lim}}}\\,\\frac{1/x}{-\\text{cosec}x\\text{cot}x}}}$</p><p>$~=\\underset{\\text{x}\\to 0}{\\mathop{\\text{lim}}}\\,-\\frac{\\text{si}{{\\text{n}}^{2}}x}{\\text{xcos}x}={{\\text{e}}^{\\text{lim}\\to 0}}-{{\\left( \\frac{\\text{sin}x}{\\text{x}} \\right)}^{2}}\\cdot \\left( \\frac{\\text{x}}{\\text{cos}x} \\right)$</p><p>$~={{\\text{e}}^{-\\left( 1 \\right)\\cdot \\left( 0 \\right)}}={{\\text{e}}^{0}}=1$</p><p><strong>Illustration&nbsp;</strong></p><p><strong>Solve $li{{m}_{x\\to {{0}^{+}}}}lo{{g}_{sinx}}sin2x$&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>Here, $\\text{li}{{\\text{m}}_{x\\to {{0}^{+}}}}\\text{lo}{{\\text{g}}_{\\text{sin}x}}\\text{sin}2x$</p><p>\\[~=\\underset{x\\to {{0}^{+}}}{\\mathop{\\text{lim}}}\\,\\frac{\\text{logsin}2x}{\\text{logsin}x}\\text{ }\\!\\!~\\!\\!\\text{ }\\left( \\frac{-\\infty }{-\\infty }\\text{ }\\!\\!~\\!\\!\\text{ form }\\!\\!~\\!\\!\\text{ } \\right)\\]</p><p>\\[~=\\underset{x\\to {{0}^{+}}}{\\mathop{\\text{lim}}}\\,\\frac{\\frac{1}{\\text{sin}2x}\\cdot 2\\text{cos}2x}{\\frac{1}{\\text{sin}x}\\cdot \\text{cos}x}=\\underset{x\\to {{0}^{+}}}{\\mathop{\\text{lim}}}\\,\\frac{\\left( \\frac{2x}{\\text{sin}\\left( 2x \\right)} \\right)\\text{cos}2x}{\\left( \\frac{x}{\\text{sin}x} \\right)\\text{cos}x}\\] [By L'Hospital's rule]</p><p>\\[~=\\underset{x\\to {{0}^{+}}}{\\mathop{\\text{lim}}}\\,\\frac{\\text{cos}2x}{\\text{cos}x}=1\\]</p><p><strong>Illustration&nbsp;</strong></p><p><strong>Solve $li{{m}_{x\\to {{0}^{+}}}}{{(sinx)}^{tanx}}$&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>Here $\\underset{x\\to {{0}^{+}}}{\\mathop{\\text{lim}}}\\,{{(\\text{sin}x)}^{\\text{tan}x}}$ (${{\\mathrm{0}}^{\\mathrm{0}}}\\mathrm{form}$)</p><p>Let $A=\\underset{x\\to {{0}^{+}}}{\\mathop{\\text{lim}}}\\,{{(\\text{sin}x)}^{\\text{tan}x}}$</p><p>Taking $\\text{log}$ on both sides, we get</p><p>$\\text{lo}{{\\text{g}}_{e}}A$ $~=\\underset{x\\to {{0}^{+}}}{\\mathop{\\text{lim}}}\\,\\text{tan}x\\text{log}\\left( \\text{sin}x \\right)$</p><p>$~=\\underset{x\\to {{0}^{+}}}{\\mathop{\\text{lim}}}\\,\\frac{\\text{log}\\left( \\text{sin}x \\right)}{\\text{cot}x}\\text{ }\\!\\!~\\!\\!\\text{ }\\left( \\frac{-\\infty }{-\\infty }\\text{ }\\!\\!~\\!\\!\\text{ form }\\!\\!~\\!\\!\\text{ } \\right)$ [By L'Hospital's rule]</p><p>$\\text{ }\\!\\!~\\!\\!\\text{ Applying }\\!\\!~\\!\\!\\text{ L-Hospital }\\!\\!'\\!\\!\\text{ s }\\!\\!~\\!\\!\\text{ rule }\\!\\!~\\!\\!\\text{ }=\\underset{x\\to {{0}^{+}}}{\\mathop{\\text{lim}}}\\,\\frac{1}{\\frac{\\text{sin}x}{-\\text{cose}{{\\text{c}}^{2}}x}}\\cdot \\text{cos}x=\\underset{x\\to {{0}^{+}}}{\\mathop{\\text{lim}}}\\,-\\text{sin}x\\cdot \\text{cos}x=0$</p><p>$\\therefore $ $~\\text{ }\\!\\!~\\!\\!\\text{ logeA}=0$</p><p>$\\Rightarrow $ $\\text{A}={{\\text{e}}^{0}}=1\\text{ }\\!\\!~\\!\\!\\text{ }$ $\\Rightarrow $ $\\text{A}=1$</p><p><strong>Illustration</strong></p><p><strong>Evaluate $li{{m}_{n\\to \\infty }}{{(\\pi n)}^{2/n}}$&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>Here; $A$ $~=\\underset{n\\to \\infty }{\\mathop{\\text{lim}}}\\,{{(\\pi n)}^{2/n}}\\text{ }\\!\\!~\\!\\!\\text{ }\\left( {{\\infty }^{0}}\\text{ }\\!\\!~\\!\\!\\text{ form }\\!\\!~\\!\\!\\text{ } \\right)$</p><p>$\\text{log}A$ $~=\\underset{n\\to \\infty }{\\mathop{\\text{lim}}}\\,\\frac{2\\text{log}\\left( \\pi n \\right)}{n}\\text{ }\\!\\!~\\!\\!\\text{ }\\left( \\frac{\\infty }{\\infty }\\text{ }\\!\\!~\\!\\!\\text{ form }\\!\\!~\\!\\!\\text{ } \\right)$</p><p>$~=\\underset{n\\to \\infty }{\\mathop{\\text{lim}}}\\,\\frac{2\\cdot \\frac{1}{\\pi n}\\cdot \\pi }{1}=\\underset{n\\to \\infty }{\\mathop{\\text{lim}}}\\,\\frac{2}{n}=0$</p><p>$\\text{loge }A$ $=0\\text{ }\\!\\!~\\!\\!\\text{ }$ $\\Rightarrow $ $A=1$</p><p><strong>Illustration</strong></p><p><strong>Evaluate $li{{m}_{n\\to \\infty }}{{\\left( \\frac{{{e}^{n}}}{\\pi } \\right)}^{1/n}}$&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>Here, $A$ $~=\\underset{n\\to \\infty }{\\mathop{\\text{lim}}}\\,{{\\left( \\frac{{{e}^{n}}}{\\pi } \\right)}^{1/n}}\\text{ }\\!\\!~\\!\\!\\text{ }\\left( {{\\infty }^{0}}\\text{ }\\!\\!~\\!\\!\\text{ form }\\!\\!~\\!\\!\\text{ } \\right)$</p><p>$\\text{log}A$ $~=\\underset{n\\to \\infty }{\\mathop{\\text{lim}}}\\,\\frac{1}{n}\\text{log}\\left( \\frac{{{e}^{n}}}{\\pi } \\right)$</p><p>$~=\\underset{n\\to \\infty }{\\mathop{\\text{lim}}}\\,\\frac{n\\text{log}e-\\text{log}\\pi }{n}\\text{ }\\!\\!~\\!\\!\\text{ }\\left( \\frac{\\infty }{\\infty }\\text{ }\\!\\!~\\!\\!\\text{ form }\\!\\!~\\!\\!\\text{ } \\right)$</p><p>$~=\\underset{n\\to \\infty }{\\mathop{\\text{lim}}}\\,\\frac{\\text{log}e-0}{1}$</p><p>$~=\\text{lo}{{\\text{g}}_{{}}}e$</p><p>$\\Rightarrow $A = e</p>",
+      "position": 3,
+      "qcConcept": "66a0dd8dc03b9dcaf1afeb8e"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f652d384bfb4a538235",
+      "title": "$\\lim _{x \\rightarrow \\infty}\\left(1+\\frac{2}{x}\\right)^x=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a538236",
+      "title": "$\\lim _{x \\rightarrow 0} x^x=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a538237",
+      "title": "$\\lim _{x \\rightarrow \\infty}\\left(\\frac{x+2}{x+1}\\right)^{x+3}$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a538238",
+      "title": "If $a, b, c, d$ are positive, then $\\lim _{x \\rightarrow \\infty}\\left(1+\\frac{1}{a+b x}\\right)^{c+d x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a538239",
+      "title": "$\\lim _{x \\rightarrow 0}\\left(\\frac{1+\\tan x}{1+\\sin x}\\right)^{\\operatorname{cosec} x}$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a53823a",
+      "title": "$\\lim _{n \\rightarrow \\infty}\\left(4^n+5^n\\right)^{1 / n}$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a53823b",
+      "title": "$\\lim _{x \\rightarrow 0}\\left\\{\\tan \\left(\\frac{\\pi}{4}+x\\right)\\right\\}^{1 / x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a53823c",
+      "title": "If $0 \\lt x \\lt y$ then $\\lim _{n \\rightarrow \\infty}\\left(y^n+x^n\\right)^{1 / n}$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a53823d",
+      "title": "$\\lim _{x \\rightarrow \\infty}\\left[1+\\frac{1}{m x}\\right]^x$ equal to",
+      "isAttempted": true,
+      "evalStatus": "correct"
+    },
+    {
+      "_id": "66588f652d384bfb4a53823e",
+      "title": "$\\lim _{n \\rightarrow \\infty}\\left(\\frac{n}{n+y}\\right)^n$ equals",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

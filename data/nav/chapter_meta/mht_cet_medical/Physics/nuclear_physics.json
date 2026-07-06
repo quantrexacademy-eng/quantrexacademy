@@ -1,0 +1,44 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19156220c83fbf1e0bce11",
+  "chapterId": "6a192ba0e4cc9575516b5670",
+  "subject": "Physics",
+  "chapter": "Nuclear Physics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec184ef1faeb9633e2409",
+      "title": "Radioactivity",
+      "count": 9,
+      "questionIds": [
+        "6a1ec0d2ef1faeb9633e1fdf",
+        "6a1ec0b4ef1faeb9633e1f23",
+        "6a1ec08eef1faeb9633e1e35",
+        "6a1ec034ef1faeb9633e1c01",
+        "6a1ec132ef1faeb9633e223b",
+        "6a1ec131ef1faeb9633e223a",
+        "6a1ec151ef1faeb9633e2301",
+        "6a1ec015ef1faeb9633e1b3a",
+        "6a1ec10def1faeb9633e214f"
+      ]
+    },
+    {
+      "id": "6a1ec184ef1faeb9633e240a",
+      "title": "Nuclear reactions",
+      "count": 2,
+      "questionIds": [
+        "6a1ec072ef1faeb9633e1d88",
+        "6a1ec051ef1faeb9633e1cb3"
+      ]
+    },
+    {
+      "id": "6a1ec184ef1faeb9633e240b",
+      "title": "Nuclear structure",
+      "count": 1,
+      "questionIds": [
+        "6a1ec090ef1faeb9633e1e43"
+      ]
+    }
+  ]
+}

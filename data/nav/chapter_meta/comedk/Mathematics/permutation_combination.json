@@ -1,0 +1,111 @@
+{
+  "examSlug": "comedk",
+  "examId": "629105adee9e3ae00d63352e",
+  "subjectId": "629105adee9e3ae00d63352d",
+  "chapterId": "629109e76e6c112641b907f5",
+  "subject": "Mathematics",
+  "chapter": "Permutation Combination",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64c57c2c20fc93db0c28be7e",
+      "title": "Factorial",
+      "count": 2,
+      "questionIds": [
+        "64c57bdb20fc93db0c28bb05",
+        "64c57b2420fc93db0c28b49e"
+      ]
+    },
+    {
+      "id": "64c57c2d20fc93db0c28be7f",
+      "title": "Permutation",
+      "count": 16,
+      "questionIds": [
+        "6a0c7b4772354c537d084eb4",
+        "6a0c7b4672354c537d084ea8",
+        "6881bd1e2781fbe80ff8d303",
+        "6881bd0b2781fbe80ff8d242",
+        "6881bd0a2781fbe80ff8d23a",
+        "681377ed2d288c475c04cd8b",
+        "681377d62d288c475c04ccdf",
+        "681377bf2d288c475c04cc23",
+        "681377a92d288c475c04cb7e",
+        "681377a32d288c475c04cb4c",
+        "6813778d2d288c475c04caa5",
+        "654244de242a07fec9fa7672",
+        "64c57b8720fc93db0c28b814",
+        "64c57b5f20fc93db0c28b6a7",
+        "64c57b4b20fc93db0c28b5f1",
+        "64c57b3a20fc93db0c28b55a"
+      ]
+    },
+    {
+      "id": "64c57c2d20fc93db0c28be80",
+      "title": "Combination",
+      "count": 11,
+      "questionIds": [
+        "6a0c7b5572354c537d084f4d",
+        "6a0c7b4772354c537d084eaf",
+        "6881bd3f2781fbe80ff8d455",
+        "6881bd3c2781fbe80ff8d435",
+        "681377d72d288c475c04cce2",
+        "681377ba2d288c475c04cc01",
+        "681377a62d288c475c04cb65",
+        "681377a52d288c475c04cb5c",
+        "64c57ba020fc93db0c28b8ef",
+        "64c57b5f20fc93db0c28b6a6",
+        "64c57b4f20fc93db0c28b61d"
+      ]
+    },
+    {
+      "id": "6542454c242a07fec9fa76b5",
+      "title": "Selection of one or more item",
+      "count": 3,
+      "questionIds": [
+        "6813778d2d288c475c04caa9",
+        "654244de242a07fec9fa7673",
+        "654244de242a07fec9fa7671"
+      ]
+    },
+    {
+      "id": "64c57c2d20fc93db0c28be81",
+      "title": "Summation of Numbers",
+      "count": 1,
+      "questionIds": [
+        "64c57b8720fc93db0c28b813"
+      ]
+    },
+    {
+      "id": "64c57c2d20fc93db0c28be82",
+      "title": "Geometric Permutation",
+      "count": 7,
+      "questionIds": [
+        "677d329f8b409a1009ac2329",
+        "677d329e8b409a1009ac231e",
+        "64c57bef20fc93db0c28bbba",
+        "64c57bef20fc93db0c28bbb8",
+        "64c57bdb20fc93db0c28bb06",
+        "64c57bda20fc93db0c28bb04",
+        "64c57bda20fc93db0c28bb03"
+      ]
+    },
+    {
+      "id": "6813789c2d288c475c04ce9f",
+      "title": "Arrangement under Constraint",
+      "count": 3,
+      "questionIds": [
+        "6881bd2f2781fbe80ff8d3ad",
+        "6881bd2b2781fbe80ff8d386",
+        "6813778f2d288c475c04cab3"
+      ]
+    },
+    {
+      "id": "6813789c2d288c475c04cea0",
+      "title": "Terms of Binomial Expansion",
+      "count": 1,
+      "questionIds": [
+        "681377e92d288c475c04cd69"
+      ]
+    }
+  ]
+}

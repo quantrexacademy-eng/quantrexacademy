@@ -1,0 +1,50 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d2ad647479b8e8696479",
+  "chapterId": "6809202b3a10446a207fdee4",
+  "subject": "Physics",
+  "chapter": "Oscillations",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "680920713a10446a207fe25e",
+      "title": "Simple Harmonic Motion",
+      "count": 5,
+      "questionIds": [
+        "680920443a10446a207fe00f",
+        "680920433a10446a207fe000",
+        "680920363a10446a207fdf6e",
+        "680920363a10446a207fdf6a",
+        "6809202b3a10446a207fdee2"
+      ]
+    },
+    {
+      "id": "680920713a10446a207fe260",
+      "title": "Energy of Simple Harmonic Motion",
+      "count": 1,
+      "questionIds": [
+        "6809202f3a10446a207fdf18"
+      ]
+    },
+    {
+      "id": "680920713a10446a207fe25f",
+      "title": "Applications of SHM",
+      "count": 4,
+      "questionIds": [
+        "6a45fe565aa758e832e06ee1",
+        "68e78b126105b8763ce72c85",
+        "680920313a10446a207fdf32",
+        "6809202e3a10446a207fdf02"
+      ]
+    },
+    {
+      "id": "680920713a10446a207fe261",
+      "title": "Angular oscillations",
+      "count": 1,
+      "questionIds": [
+        "680920343a10446a207fdf55"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "subjectId": "65f032625469774910ab0337",
+  "chapterId": "66a0dbffc03b9dcaf1afe46f",
+  "topicId": "66a0dc10c03b9dcaf1afe4a9",
+  "title": "Reactions for Aldehydes",
+  "concepts": [
+    {
+      "title": "Oxidation of Aldehydes",
+      "conceptBody": "<h3><strong>Oxidation&nbsp;</strong></h3><ul><li>Aldehydes are easily oxidised to carboxylic acids with same number of $\\text{C}$ atoms.</li></ul><p>$\\text{RCHO}\\xrightarrow{[\\text{O}]}\\text{RCOOH}$</p><ul><li>Not only strong oxidizing agents $\\left( \\text{KMn}{{\\text{O}}_{4}},~{{\\text{K}}_{2}}\\text{C}{{\\text{r}}_{2}}{{\\text{O}}_{7}} \\right)$ but even mild oxidants like $\\text{A}{{\\text{g}}^{+}},\\text{C}{{\\text{u}}^{2+}}$ etc., can oxidise aldehydes. Thus aldehydes are very powerful reducing agents.</li></ul>",
+      "position": 0,
+      "qcConcept": "66a0dc10c03b9dcaf1afe4aa"
+    },
+    {
+      "title": "Tollens Reagent",
+      "conceptBody": "<p><strong>Tollen’s reagent:</strong></p><p><strong>&nbsp;</strong>This is also called silver mirror test. It is reduced by aldehyde to Ag.</p><p>$\\underset{{}}{\\mathop{\\text{RCHO}+\\underset{\\begin{smallmatrix} \\,\\,\\,\\,\\,\\,Tollen's\\,\\,reagent \\\\ \\{colour\\,\\,less\\,\\,solution\\} \\end{smallmatrix}}{\\mathop{2\\left[ \\text{Ag}{{\\left( \\text{N}{{\\text{H}}_{3}} \\right)}_{2}} \\right]\\text{OH}}}\\,}}\\,\\xrightarrow{{}}\\text{RCOON}{{\\text{H}}_{4}}+\\underset{\\left( silver\\,mirror \\right)}{\\mathop{2\\text{Ag}(\\downarrow )+3\\text{N}{{\\text{H}}_{3}}}}\\,+{{\\text{H}}_{2}}\\text{O}$</p><p><strong>Note: </strong>ketones do not react with them, hence it is used in differentiating aldehydes from ketones.</p>",
+      "position": 1,
+      "qcConcept": "66a0dc10c03b9dcaf1afe4ab"
+    },
+    {
+      "title": "Fehlings Solution",
+      "conceptBody": "<p><strong>Fehling’s solution: </strong>Aldehydes (except benzaldehyde) reduce fehling’s solution $\\left( \\text{C}{{\\text{u}}^{2+}} \\right.$ reduced to $\\text{C}{{\\text{u}}^{+}}$) ion complexed with tartarate ion.</p><p>$\\text{RCHO}+2\\text{C}{{\\text{u}}^{2+}}+3\\text{O}{{\\text{H}}^{-}}\\xrightarrow{\\Delta }\\text{RCO}{{\\text{O}}^{-}}+\\underset{\\text{ Red ppt}\\text{. }}{\\mathop{2\\text{C}{{\\text{u}}^{+}}(\\downarrow )}}\\,+2{{\\text{H}}_{2}}\\text{O}$</p><p>Aldehydes also reduce Benedict’s solution$(\\text{C}{{\\text{u}}^{2+}}$.complexed with citrate ion) to$\\text{C}{{\\text{u}}^{+}}$</p>",
+      "position": 2,
+      "qcConcept": "66a0dc10c03b9dcaf1afe4ac"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66584e3a1814fc7e94209aef",
+      "title": "When acetaldehyde is heated with Tollen's reagent, following is obtained",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e3a1814fc7e94209af0",
+      "title": "Aldehyde turns pink with",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e3a1814fc7e94209af1",
+      "title": "Fehling solution is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e3a1814fc7e94209af2",
+      "title": "The most appropriate reagent to distinguish between acetaldehyde and formaldehyde is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e3a1814fc7e94209af3",
+      "title": "Which one of the following reacts with $H C N$ and Tollen's reagent, but is not oxidised by Fehling's solution",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e3a1814fc7e94209af4",
+      "title": "Contents of three bottles were found to react\n(i)Neither with Fehling's solution nor with Tollen's reagent\n(ii)Only with Tollen's reagent but not with Fehling's solution\n(iii)With both Tollen's reagent and Fehling's solution.\n\nIf they contained either ethanal (acetaldehyde) or propanone (acetone) or benzal (benzaldehyde), which bottle contained which",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

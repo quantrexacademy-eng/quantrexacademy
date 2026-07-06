@@ -1,0 +1,94 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddc0c03b9dcaf1afec94",
+  "topicId": "66a0ddc0c03b9dcaf1afec96",
+  "title": "Mean",
+  "concepts": [
+    {
+      "title": "Arithmetic Mean",
+      "conceptBody": "<h3><strong>Arithmetic Mean for Ungrouped Data</strong></h3><p>The arithmetic mean is the amount secured by dividing the sum of values of the items in a series by their</p><p>(i) <strong>Direct method: </strong>If the series in this case be ${{x}_{1}},\\,{{x}_{2}},\\,{{x}_{3}},\\,......,\\,{{x}_{n}}$; then the arithmetic mean $\\bar{x}$ is given by</p><p>$\\bar{x}=\\frac{\\text{ Sum of theseries }}{\\text{ Number of terms }}$</p><p>$\\bar{x}=\\frac{{{x}_{1}}+{{x}_{2}}+{{x}_{3}}+\\ldots .+{{x}_{n}}}{n}=\\frac{1}{n}\\sum\\limits_{i=1}^{n}{{{x}_{i}}}$</p><p>(ii) <strong>Short cut method&nbsp;</strong></p><p>$(\\bar{x})=A+\\frac{\\sum{d}}{n}$,</p><p>where, <i>A </i>= assumed mean, <i>d </i>= deviation from assumed mean = <i>x – A </i>, where <i>x </i>is the individual item,</p><p>Σ <i>d </i>= sum of deviations and <i>n </i>= number of items.</p>",
+      "position": 0,
+      "qcConcept": "66a0ddc0c03b9dcaf1afec97"
+    },
+    {
+      "title": "Arithmetic Mean",
+      "conceptBody": "<h3><strong>Arithmetic Mean Based on Frequency</strong></h3><p>(i) <strong>Direct method : </strong>If the terms of the given series be ${{x}_{1}},\\,{{x}_{2}},\\,....,\\,{{x}_{n}}$ and the corresponding frequencies be ${{f}_{1}},\\,{{f}_{2}},\\,....{{f}_{n}}$, then the arithmetic mean $\\bar{x}$ is given by,</p><p>$\\bar{x}=\\frac{{{f}_{1}}{{x}_{1}}+{{f}_{2}}{{x}_{2}}+....+{{f}_{n}}{{x}_{n}}}{{{f}_{1}}+{{f}_{2}}+....+{{f}_{n}}}=\\frac{\\sum\\limits_{i=1}^{n}{{{f}_{i}}{{x}_{i}}}}{\\sum\\limits_{i=1}^{n}{{{f}_{i}}}}$.</p><p>(ii) <strong>Short cut method&nbsp;</strong></p><p>$(\\bar{x})=A+\\frac{\\sum f(x-A)}{\\sum f}$,</p><p>where <i>A </i>= assumed mean, <i>f </i>= frequency and <i>x – A </i>= deviation of each item from the assumed mean.</p>",
+      "position": 1,
+      "qcConcept": "66a0ddc1c03b9dcaf1afec98"
+    },
+    {
+      "title": "Geometric Mean",
+      "conceptBody": "<h3><strong>Geometric mean</strong></h3><p>If ${{x}_{1}},\\,{{x}_{2}},\\,{{x}_{3}},\\,......,\\,{{x}_{n}}$ are <i>n </i>values of a variate <i>x </i>, none of them being zero, then geometric mean (G.M.) is given by</p><p>$G.M.={{\\left( {{X}_{1}},{{X}_{2}}\\cdot {{X}_{3}}\\ldots \\ldots ..{{X}_{n}} \\right)}^{1/n}}$</p><p>⇒ $\\log (G.M.)=\\frac{1}{n}\\left( \\log {{x}_{1}}+\\log {{x}_{2}}+\\ldots ..+\\log {{x}_{n}} \\right)$.</p><p>In case of frequency distribution, G.M. of <i>n </i>values ${{x}_{1}},\\,{{x}_{2}},\\,.....{{x}_{n}}$ of a variate <i>x </i>occurring with frequency ${{f}_{1}},\\,{{f}_{2}},\\,.....,\\,{{f}_{n}}$ is given by</p><p>$\\text{ G}\\text{.M}\\text{. }={{\\left( x_{1}^{1}x_{2}^{{{R}_{2}}}\\ldots ..x_{n}^{{{l}_{n}}} \\right)}^{1/N}}$, where $N={{f}_{1}}+{{f}_{2}}+.....+{{f}_{n}}$.</p>",
+      "position": 2,
+      "qcConcept": "66a0ddc1c03b9dcaf1afec99"
+    },
+    {
+      "title": "Harmonic Mean",
+      "conceptBody": "<h3><strong>Harmonic mean</strong></h3><p>The harmonic mean of <i>n </i>items ${{x}_{1}},\\,{{x}_{2}},\\,......,\\,{{x}_{n}}$ is defined as</p><p>$H.M.=\\frac{n}{\\frac{1}{{{x}_{1}}}+\\frac{1}{{{x}_{2}}}+\\ldots ..+\\frac{1}{{{x}_{n}}}}$.</p><p>If the frequency distribution is ${{f}_{1}},\\,{{f}_{2}},\\,{{f}_{3}},\\,......,\\,{{f}_{n}}$ respectively, then</p><p>$\\text{ H}\\text{.M}\\text{. }=\\frac{{{f}_{1}}+{{f}_{2}}+{{f}_{3}}+\\ldots ..+{{f}_{n}}}{\\left( \\frac{{{f}_{1}}}{{{x}_{1}}}+\\frac{{{f}_{2}}}{{{x}_{2}}}+\\ldots .+\\frac{{{f}_{n}}}{{{x}_{n}}} \\right)}$.</p>",
+      "position": 3,
+      "qcConcept": "66a0ddc1c03b9dcaf1afec9a"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66891f341010aab82c8aa68b",
+      "title": "If the arithmetic mean of the numbers $x_1, x_2, x_3, \\ldots . ., x_n$ is $\\bar{x}$, then the arithmetic mean of numbers $a x_1+b, a x_2+b, a x_3+b, \\ldots \\ldots . ., a x_n+b$, where $a, b$ are two constants would be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa68c",
+      "title": "If the algebraic sum of deviations of $20$ observations from $30$ is $20$ , then the mean of observations is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa68d",
+      "title": "The mean age of a combined group of men and women is 30 years. If the means of the age of men and women are respectively 32 and 27 , then the percentage of women in the group is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa68e",
+      "title": "An automobile driver travels from plane to a hill station $120 \\mathrm{~km}$ distant at an average speed of $30 \\mathrm{~km}$ per hour. He then makes the return trip at an average speed of $25 \\mathrm{~km}$ per hour. He covers another $120 \\mathrm{~km}$ distance on plane at an average speed of $50 \\mathrm{~km}$ per hour. His average speed over the entire distance of $360 \\mathrm{~km}$ will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa68f",
+      "title": "If the mean of the distribution is 2.6 , then the value of $y$ is\n<img src=\"https://cdn-question-pool.getmarks.app/modules/qc/ThM_9msP5PmwuKvgS_8IZTcIw-C3sxv713cvmLoSKBk.original.fullsize.png\"/><br/>",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa690",
+      "title": "Mean of 100 items is 49 . It was discovered that three items which should have been $60,70,80$ were wrongly read as $40,20,50$ respectively. The correct mean is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa691",
+      "title": "Let $x_1, x_2, \\ldots, x_n$ be $n$ observations such that $\\sum x_i^2=400$ and $\\sum x_i=80$. Then a possible value of $n$ among the following is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa692",
+      "title": "If the values $1, \\frac{1}{2}, \\frac{1}{3}, \\frac{1}{4}, \\frac{1}{5}, \\ldots \\ldots, \\frac{1}{n}$ occur at frequencies 1 , $2,3,4,5, \\ldots, n$ in a distribution, then the mean is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa693",
+      "title": "In a moderately asymmetrical distribution the mode and mean are 7 and 4 respectively. The median is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa694",
+      "title": "If in a frequency distribution, the mean and median are 21 and 22 respectively, then its mode is approximately",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

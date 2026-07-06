@@ -1,0 +1,46 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd33c03b9dcaf1afe9c6",
+  "topicId": "66a0dd39c03b9dcaf1afe9e3",
+  "title": "nth roots of unity",
+  "concepts": [
+    {
+      "title": "Properties of nth root of unity",
+      "conceptBody": "<h3><strong>Properties of nth roots of unity&nbsp;</strong></h3><ol><li>nth roots of unity form a G.P with common ratio $\\alpha $.</li><li>Sum of nth roots of unit is zero.</li><li>Product of roots $\\left\\{ \\begin{matrix} -1,\\text{ }\\!\\!~\\!\\!\\text{ if }\\!\\!~\\!\\!\\text{ }n\\text{ }\\!\\!~\\!\\!\\text{ is }\\!\\!~\\!\\!\\text{ even }\\!\\!~\\!\\!\\text{ } \\\\ 1,\\text{ }\\!\\!~\\!\\!\\text{ if }\\!\\!~\\!\\!\\text{ }n\\text{ }\\!\\!~\\!\\!\\text{ is }\\!\\!~\\!\\!\\text{ odd }\\!\\!~\\!\\!\\text{ } \\\\ \\end{matrix} \\right\\}$</li></ol><p>Note: Try &amp; prove the last two properties yourself.</p><ol><li>nth roots of unity lie on a unit circle and divide the circumference into $\\text{n}$ equal parts.</li></ol>",
+      "position": 0,
+      "qcConcept": "66a0dd39c03b9dcaf1afe9e4"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f3f2d384bfb4a537f55",
+      "title": "The $n^{\\text {th }}$ roots of unity are in",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3f2d384bfb4a537f56",
+      "title": "If $\\omega$ is an $n^{\\text {th }}$ root of unity, other than unity, then the value of $1+\\omega+\\omega^2+\\ldots+\\omega^{n-1}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3f2d384bfb4a537f57",
+      "title": "The common roots of the equations $x^{12}-1=0, x^4+x^2+1=0$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3f2d384bfb4a537f58",
+      "title": "If $z_1, z_2 z_3, z_4$ are the roots of the equation $z^4=1$, then the value of $\\sum_{i=1}^4 z_i^3$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3f2d384bfb4a537f59",
+      "title": "Which of the following is a fourth root of $\\frac{1}{2}+\\frac{i \\sqrt{3}}{2}$ (given $cis(K) = e^{iK})$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

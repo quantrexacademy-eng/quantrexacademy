@@ -1,0 +1,54 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa607a4468eb1307ceb0af",
+  "chapterId": "67fdff44378e1624ea7b6968",
+  "subject": "Mathematics",
+  "chapter": "Differential Equations",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff81378e1624ea7b6c47",
+      "title": "Order and Degree",
+      "count": 1,
+      "questionIds": [
+        "67fdff6f378e1624ea7b6b6e"
+      ]
+    },
+    {
+      "id": "68e7a693ce75e72648a45ead",
+      "title": "Linear Differential Equation",
+      "count": 1,
+      "questionIds": [
+        "68e7a680ce75e72648a45e7e"
+      ]
+    },
+    {
+      "id": "67fdff81378e1624ea7b6c46",
+      "title": "Formation of Differential Equation",
+      "count": 3,
+      "questionIds": [
+        "67fdff6a378e1624ea7b6b32",
+        "67fdff63378e1624ea7b6ae5",
+        "67fdff5c378e1624ea7b6aa1"
+      ]
+    },
+    {
+      "id": "67fdff81378e1624ea7b6c48",
+      "title": "Variable Separable Form",
+      "count": 1,
+      "questionIds": [
+        "67fdff74378e1624ea7b6bb1"
+      ]
+    },
+    {
+      "id": "67fdff81378e1624ea7b6c45",
+      "title": "Applications of DE",
+      "count": 2,
+      "questionIds": [
+        "67fdff4d378e1624ea7b69e1",
+        "67fdff44378e1624ea7b6966"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2714 @@
+[
+  {
+    "id": "65dcf3d937445f4fe46f420e",
+    "name": "Physics",
+    "chaptersCount": 30,
+    "topicsCount": 150,
+    "chapters": [
+      {
+        "id": "66a0db6fc03b9dcaf1afe1c6",
+        "name": "Mathematics in Physics",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0db72c03b9dcaf1afe1d3",
+            "title": "Resolution of Vector Into Components"
+          },
+          {
+            "id": "66a0db6fc03b9dcaf1afe1c8",
+            "title": "Fundamentals of Vectors"
+          },
+          {
+            "id": "66a0db70c03b9dcaf1afe1cd",
+            "title": "Addition and Subtraction of Vectors"
+          },
+          {
+            "id": "66a0db72c03b9dcaf1afe1d5",
+            "title": "Multiplication of Vectors"
+          },
+          {
+            "id": "66a0db73c03b9dcaf1afe1d9",
+            "title": "Errors of Measurement"
+          }
+        ]
+      },
+      {
+        "id": "66a0dbcec03b9dcaf1afe385",
+        "name": "Units and Dimensions",
+        "topicsCount": 2,
+        "topics": [
+          {
+            "id": "66a0dbcec03b9dcaf1afe387",
+            "title": "Units"
+          },
+          {
+            "id": "66a0dbcfc03b9dcaf1afe38c",
+            "title": "Dimensions"
+          }
+        ]
+      },
+      {
+        "id": "66a0db84c03b9dcaf1afe229",
+        "name": "Motion In One Dimension",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0db84c03b9dcaf1afe22b",
+            "title": "Rest and Motion"
+          },
+          {
+            "id": "66a0db87c03b9dcaf1afe238",
+            "title": "Uniform Motion"
+          },
+          {
+            "id": "66a0db88c03b9dcaf1afe23b",
+            "title": "Graphs of motion in one dimension"
+          },
+          {
+            "id": "66a0db89c03b9dcaf1afe241",
+            "title": "Non-uniform Motion"
+          },
+          {
+            "id": "66a0db86c03b9dcaf1afe235",
+            "title": "Motion Under Gravity"
+          }
+        ]
+      },
+      {
+        "id": "66a0db8ac03b9dcaf1afe243",
+        "name": "Motion In Two Dimensions",
+        "topicsCount": 3,
+        "topics": [
+          {
+            "id": "66a0db8ac03b9dcaf1afe245",
+            "title": "Projectile motion"
+          },
+          {
+            "id": "66a0db8cc03b9dcaf1afe24d",
+            "title": "Relative motion"
+          },
+          {
+            "id": "66a0db8dc03b9dcaf1afe255",
+            "title": "Uniform Circular Motion"
+          }
+        ]
+      },
+      {
+        "id": "66a0db58c03b9dcaf1afe156",
+        "name": "Laws of Motion",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0db59c03b9dcaf1afe158",
+            "title": "Newton's laws of motion"
+          },
+          {
+            "id": "66a0db5bc03b9dcaf1afe166",
+            "title": "Equilibrium of Forces"
+          },
+          {
+            "id": "66a0db5fc03b9dcaf1afe175",
+            "title": "Spring force"
+          },
+          {
+            "id": "66a0db5dc03b9dcaf1afe16f",
+            "title": "Frictional force"
+          },
+          {
+            "id": "66a0db60c03b9dcaf1afe17a",
+            "title": "Non-uniform Circular Motion"
+          }
+        ]
+      },
+      {
+        "id": "66a0dbe2c03b9dcaf1afe3ee",
+        "name": "Work Power Energy",
+        "topicsCount": 4,
+        "topics": [
+          {
+            "id": "66a0dbe2c03b9dcaf1afe3f0",
+            "title": "Work done"
+          },
+          {
+            "id": "66a0dbe4c03b9dcaf1afe3f8",
+            "title": "Energy"
+          },
+          {
+            "id": "66a0dbe6c03b9dcaf1afe406",
+            "title": "Power"
+          },
+          {
+            "id": "66a0dbe7c03b9dcaf1afe409",
+            "title": "Circular motion"
+          }
+        ]
+      },
+      {
+        "id": "66a0db22c03b9dcaf1afe048",
+        "name": "Center of Mass Momentum and Collision",
+        "topicsCount": 7,
+        "topics": [
+          {
+            "id": "66a0db29c03b9dcaf1afe06a",
+            "title": "momentum"
+          },
+          {
+            "id": "66a0db22c03b9dcaf1afe04a",
+            "title": "Centre of mass of discrete particles"
+          },
+          {
+            "id": "66a0db23c03b9dcaf1afe04e",
+            "title": "Centre of mass of continuous mass distribution"
+          },
+          {
+            "id": "66a0db25c03b9dcaf1afe058",
+            "title": "Motion of centre of mass"
+          },
+          {
+            "id": "66a0db27c03b9dcaf1afe060",
+            "title": "Impulse"
+          },
+          {
+            "id": "66a0db27c03b9dcaf1afe065",
+            "title": "Collisions"
+          },
+          {
+            "id": "66a0db26c03b9dcaf1afe05d",
+            "title": "Variable mass system"
+          }
+        ]
+      },
+      {
+        "id": "66a0dbaec03b9dcaf1afe2eb",
+        "name": "Rotational Motion",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0dbb1c03b9dcaf1afe2f8",
+            "title": "Moment of inertia of rigid bodies"
+          },
+          {
+            "id": "66a0dbb0c03b9dcaf1afe2f4",
+            "title": "Torque"
+          },
+          {
+            "id": "66a0dbaec03b9dcaf1afe2ed",
+            "title": "Rotational kinematics"
+          },
+          {
+            "id": "66a0dbb5c03b9dcaf1afe30b",
+            "title": "Angular momentum and Angular impulse"
+          },
+          {
+            "id": "66a0dbb4c03b9dcaf1afe306",
+            "title": "Rolling without Slipping"
+          }
+        ]
+      },
+      {
+        "id": "66a0db4dc03b9dcaf1afe11d",
+        "name": "Gravitation",
+        "topicsCount": 6,
+        "topics": [
+          {
+            "id": "66a0db50c03b9dcaf1afe12c",
+            "title": "Gravitational Field"
+          },
+          {
+            "id": "66a0db4ec03b9dcaf1afe125",
+            "title": "Acceleration Due to Gravity"
+          },
+          {
+            "id": "66a0db51c03b9dcaf1afe132",
+            "title": "Gravitational Potential and Potential Energy"
+          },
+          {
+            "id": "66a0db53c03b9dcaf1afe13c",
+            "title": "Motion of Satellite"
+          },
+          {
+            "id": "66a0db55c03b9dcaf1afe146",
+            "title": "Kepler laws"
+          },
+          {
+            "id": "66a0db4dc03b9dcaf1afe11f",
+            "title": "Newton’s Law of Gravitation"
+          }
+        ]
+      },
+      {
+        "id": "66a0db7ec03b9dcaf1afe20f",
+        "name": "Mechanical Properties of Solids",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0db7ec03b9dcaf1afe211",
+            "title": "Elasticity"
+          },
+          {
+            "id": "66a0db7fc03b9dcaf1afe214",
+            "title": "Young’s Modulus and Breaking Stres"
+          },
+          {
+            "id": "66a0db82c03b9dcaf1afe220",
+            "title": "Bulk Modulus"
+          },
+          {
+            "id": "66a0db81c03b9dcaf1afe21b",
+            "title": "Shearing stress"
+          },
+          {
+            "id": "66a0db83c03b9dcaf1afe226",
+            "title": "Work Done in Stretching a Wire"
+          }
+        ]
+      },
+      {
+        "id": "66a0db74c03b9dcaf1afe1df",
+        "name": "Mechanical Properties of Fluids",
+        "topicsCount": 7,
+        "topics": [
+          {
+            "id": "66a0db74c03b9dcaf1afe1e1",
+            "title": "Pressure and thrust"
+          },
+          {
+            "id": "66a0db76c03b9dcaf1afe1ec",
+            "title": "Pascal's Law"
+          },
+          {
+            "id": "66a0db77c03b9dcaf1afe1f2",
+            "title": "Archmidies Principle"
+          },
+          {
+            "id": "66a0db79c03b9dcaf1afe1fa",
+            "title": "Hydrodynamics"
+          },
+          {
+            "id": "66a0db7bc03b9dcaf1afe201",
+            "title": "Efflux of Liquid"
+          },
+          {
+            "id": "66a0db7dc03b9dcaf1afe209",
+            "title": "Surface Tension"
+          },
+          {
+            "id": "66a0db7cc03b9dcaf1afe204",
+            "title": "Viscosity"
+          }
+        ]
+      },
+      {
+        "id": "66a0dbc0c03b9dcaf1afe339",
+        "name": "Thermal Properties of Matter",
+        "topicsCount": 6,
+        "topics": [
+          {
+            "id": "66a0dbc0c03b9dcaf1afe33b",
+            "title": "Thermometry"
+          },
+          {
+            "id": "66a0dbc0c03b9dcaf1afe33e",
+            "title": "Thermal Expansion"
+          },
+          {
+            "id": "66a0dbc3c03b9dcaf1afe34a",
+            "title": "Calorimetry"
+          },
+          {
+            "id": "66a0dbc4c03b9dcaf1afe353",
+            "title": "Conduction"
+          },
+          {
+            "id": "66a0dbc6c03b9dcaf1afe35a",
+            "title": "Convection"
+          },
+          {
+            "id": "66a0dbc6c03b9dcaf1afe35d",
+            "title": "Radiation"
+          }
+        ]
+      },
+      {
+        "id": "66a0dbc8c03b9dcaf1afe369",
+        "name": "Thermodynamics",
+        "topicsCount": 4,
+        "topics": [
+          {
+            "id": "66a0dbc8c03b9dcaf1afe36b",
+            "title": "Thermodynamic Systems"
+          },
+          {
+            "id": "66a0dbc9c03b9dcaf1afe36f",
+            "title": "First Law of Thermodynamics"
+          },
+          {
+            "id": "66a0dbcac03b9dcaf1afe378",
+            "title": "Thermodynamic Processes"
+          },
+          {
+            "id": "66a0dbcdc03b9dcaf1afe383",
+            "title": "Heat Engine, Refrigerator and Second Law of Thermodynamics"
+          }
+        ]
+      },
+      {
+        "id": "66a0db55c03b9dcaf1afe148",
+        "name": "Kinetic Theory of Gases",
+        "topicsCount": 3,
+        "topics": [
+          {
+            "id": "66a0db57c03b9dcaf1afe14f",
+            "title": "Speed of Gas"
+          },
+          {
+            "id": "66a0db57c03b9dcaf1afe152",
+            "title": "Degree of Freedom and Specific Heat"
+          },
+          {
+            "id": "66a0db55c03b9dcaf1afe14a",
+            "title": "Pressure and Energy of Gas"
+          }
+        ]
+      },
+      {
+        "id": "66a0db94c03b9dcaf1afe27a",
+        "name": "Oscillations",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0db94c03b9dcaf1afe27c",
+            "title": "Simple Harmonic Motion"
+          },
+          {
+            "id": "66a0db97c03b9dcaf1afe28c",
+            "title": "Energy of Simple Harmonic Motion"
+          },
+          {
+            "id": "66a0db97c03b9dcaf1afe288",
+            "title": "Time Period and Frequency"
+          },
+          {
+            "id": "66a0db98c03b9dcaf1afe292",
+            "title": "Applications of SHM"
+          },
+          {
+            "id": "66a0db9ac03b9dcaf1afe299",
+            "title": "Angular Oscillations"
+          }
+        ]
+      },
+      {
+        "id": "66a0dbd8c03b9dcaf1afe3b8",
+        "name": "Waves and Sound",
+        "topicsCount": 10,
+        "topics": [
+          {
+            "id": "66a0dbd8c03b9dcaf1afe3ba",
+            "title": "Basics of Mechanical Waves"
+          },
+          {
+            "id": "66a0dbdac03b9dcaf1afe3c1",
+            "title": "Travelling Waves"
+          },
+          {
+            "id": "66a0dbdbc03b9dcaf1afe3c7",
+            "title": "Interference and Superposition of Waves"
+          },
+          {
+            "id": "66a0dbddc03b9dcaf1afe3d0",
+            "title": "Stationary waves"
+          },
+          {
+            "id": "66a0dbdcc03b9dcaf1afe3cc",
+            "title": "Vibration of String"
+          },
+          {
+            "id": "66a0dbe0c03b9dcaf1afe3e1",
+            "title": "Organ Pipe (Vibration of Air Column)"
+          },
+          {
+            "id": "66a0dbe1c03b9dcaf1afe3e9",
+            "title": "Beats"
+          },
+          {
+            "id": "66a0dbdec03b9dcaf1afe3d5",
+            "title": "Speed of Sound Waves"
+          },
+          {
+            "id": "66a0dbdfc03b9dcaf1afe3dc",
+            "title": "Properties of Sound Waves"
+          },
+          {
+            "id": "66a0dbe2c03b9dcaf1afe3ec",
+            "title": "Doppler’s Effect"
+          }
+        ]
+      },
+      {
+        "id": "66a0db43c03b9dcaf1afe0eb",
+        "name": "Electrostatics",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0db43c03b9dcaf1afe0ed",
+            "title": "Electric Charge and Coulomb's Law"
+          },
+          {
+            "id": "66a0db44c03b9dcaf1afe0f6",
+            "title": "Electric Field and Electric Field Lines"
+          },
+          {
+            "id": "66a0db46c03b9dcaf1afe0fc",
+            "title": "Electric Potential and Potential Energy"
+          },
+          {
+            "id": "66a0db48c03b9dcaf1afe108",
+            "title": "Electric Dipole"
+          },
+          {
+            "id": "66a0db4ac03b9dcaf1afe10f",
+            "title": "Electric Flux and Gauss Law"
+          }
+        ]
+      },
+      {
+        "id": "66a0db1cc03b9dcaf1afe02c",
+        "name": "Capacitance",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0db1cc03b9dcaf1afe02e",
+            "title": "Capacitance"
+          },
+          {
+            "id": "66a0db1ec03b9dcaf1afe034",
+            "title": "Grouping of Capacitors"
+          },
+          {
+            "id": "66a0db20c03b9dcaf1afe03d",
+            "title": "Capacitors with Dielectric"
+          },
+          {
+            "id": "66a0db1fc03b9dcaf1afe038",
+            "title": "Force and Energy stored in capacitor"
+          },
+          {
+            "id": "66a0db21c03b9dcaf1afe041",
+            "title": "Charging and Discarging of capacitors"
+          }
+        ]
+      },
+      {
+        "id": "66a0db2dc03b9dcaf1afe07e",
+        "name": "Current Electricity",
+        "topicsCount": 8,
+        "topics": [
+          {
+            "id": "66a0db2dc03b9dcaf1afe080",
+            "title": "Electric Current and Drift of Electrons"
+          },
+          {
+            "id": "66a0db2fc03b9dcaf1afe088",
+            "title": "Resistance and Resistivity"
+          },
+          {
+            "id": "66a0db30c03b9dcaf1afe08f",
+            "title": "Combination of Resistances"
+          },
+          {
+            "id": "66a0db33c03b9dcaf1afe09d",
+            "title": "Electric Cell or Battery"
+          },
+          {
+            "id": "66a0db31c03b9dcaf1afe093",
+            "title": "Kirchoffs Laws"
+          },
+          {
+            "id": "66a0db38c03b9dcaf1afe0b0",
+            "title": "Electric Power and Heating Effect of Current"
+          },
+          {
+            "id": "66a0db37c03b9dcaf1afe0ad",
+            "title": "Wheatstone Bridge"
+          },
+          {
+            "id": "66a0db36c03b9dcaf1afe0a7",
+            "title": "Electric Instruments"
+          }
+        ]
+      },
+      {
+        "id": "66a0db62c03b9dcaf1afe181",
+        "name": "Magnetic Effects of Current",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0db62c03b9dcaf1afe183",
+            "title": "Biot-Savart’s Law and Ampere’s Circuital Law"
+          },
+          {
+            "id": "66a0db63c03b9dcaf1afe187",
+            "title": "Magnetic Field"
+          },
+          {
+            "id": "66a0db65c03b9dcaf1afe191",
+            "title": "Motion of Charged Particle in Magnetic Field"
+          },
+          {
+            "id": "66a0db66c03b9dcaf1afe198",
+            "title": "Force and Torque on Current Carrying Conductor"
+          },
+          {
+            "id": "66a0db68c03b9dcaf1afe19e",
+            "title": "Magnetic Dipole"
+          }
+        ]
+      },
+      {
+        "id": "66a0db68c03b9dcaf1afe1a1",
+        "name": "Magnetic Properties of Matter",
+        "topicsCount": 4,
+        "topics": [
+          {
+            "id": "66a0db6cc03b9dcaf1afe1b5",
+            "title": "Earths magnetic field"
+          },
+          {
+            "id": "66a0db6dc03b9dcaf1afe1ba",
+            "title": "Magnetic Equipments"
+          },
+          {
+            "id": "66a0db6ec03b9dcaf1afe1c0",
+            "title": "Magnetic Materials and their Properties"
+          },
+          {
+            "id": "66a0db68c03b9dcaf1afe1a3",
+            "title": "Magnetism and Properties of Magnet"
+          }
+        ]
+      },
+      {
+        "id": "66a0db3cc03b9dcaf1afe0c9",
+        "name": "Electromagnetic Induction",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0db3cc03b9dcaf1afe0cb",
+            "title": "Magnetic Flux, Faraday's and Lenz law"
+          },
+          {
+            "id": "66a0db3ec03b9dcaf1afe0d2",
+            "title": "Motional and Rotational EMF"
+          },
+          {
+            "id": "66a0db41c03b9dcaf1afe0e0",
+            "title": "Inductance"
+          },
+          {
+            "id": "66a0db40c03b9dcaf1afe0da",
+            "title": "Self and Mutual Inductance"
+          },
+          {
+            "id": "66a0db42c03b9dcaf1afe0e6",
+            "title": "LR Circuit"
+          }
+        ]
+      },
+      {
+        "id": "66a0db13c03b9dcaf1afe001",
+        "name": "Alternating Current",
+        "topicsCount": 3,
+        "topics": [
+          {
+            "id": "66a0db13c03b9dcaf1afe003",
+            "title": "Alternating Current, Voltage and Power"
+          },
+          {
+            "id": "66a0db14c03b9dcaf1afe008",
+            "title": "AC Circuits"
+          },
+          {
+            "id": "66a0db17c03b9dcaf1afe011",
+            "title": "Quality and Power Factor"
+          }
+        ]
+      },
+      {
+        "id": "66a0db9ac03b9dcaf1afe29d",
+        "name": "Ray Optics",
+        "topicsCount": 7,
+        "topics": [
+          {
+            "id": "66a0db9ac03b9dcaf1afe29f",
+            "title": "Reflection of Light from Plane Mirror"
+          },
+          {
+            "id": "66a0db9ec03b9dcaf1afe2ae",
+            "title": "Mirror Formula, Reflection in Spherical Mirror"
+          },
+          {
+            "id": "66a0dba3c03b9dcaf1afe2bf",
+            "title": "Critical Angle and Total Internal Reflection"
+          },
+          {
+            "id": "66a0dba4c03b9dcaf1afe2c4",
+            "title": "Refraction of Light from Plane Surface"
+          },
+          {
+            "id": "66a0dba9c03b9dcaf1afe2d9",
+            "title": "Lens Formula, Refraction of Light from Curved Surface"
+          },
+          {
+            "id": "66a0dba7c03b9dcaf1afe2d1",
+            "title": "Prism and Dispersion of Light"
+          },
+          {
+            "id": "66a0dbacc03b9dcaf1afe2e4",
+            "title": "Optical Instruments"
+          }
+        ]
+      },
+      {
+        "id": "66a0dbd0c03b9dcaf1afe38f",
+        "name": "Wave Optics",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0dbd0c03b9dcaf1afe391",
+            "title": "Wave Theory and Wavefronts"
+          },
+          {
+            "id": "66a0dbd1c03b9dcaf1afe395",
+            "title": "Interference of Light"
+          },
+          {
+            "id": "66a0dbd5c03b9dcaf1afe3a9",
+            "title": "Diffraction of Light"
+          },
+          {
+            "id": "66a0dbd7c03b9dcaf1afe3b3",
+            "title": "Polarization of Light"
+          },
+          {
+            "id": "66a0dbd3c03b9dcaf1afe39e",
+            "title": "Young's Double Slit Experiment"
+          }
+        ]
+      },
+      {
+        "id": "66a0db17c03b9dcaf1afe013",
+        "name": "Atomic Physics",
+        "topicsCount": 4,
+        "topics": [
+          {
+            "id": "66a0db17c03b9dcaf1afe015",
+            "title": "Atomic Models"
+          },
+          {
+            "id": "66a0db18c03b9dcaf1afe018",
+            "title": "Atomic Structure"
+          },
+          {
+            "id": "66a0db1ac03b9dcaf1afe01f",
+            "title": "Bohr's Atomic Model"
+          },
+          {
+            "id": "66a0db1bc03b9dcaf1afe027",
+            "title": "Atomic Spectrum"
+          }
+        ]
+      },
+      {
+        "id": "66a0db38c03b9dcaf1afe0b3",
+        "name": "Dual Nature of Matter",
+        "topicsCount": 4,
+        "topics": [
+          {
+            "id": "66a0db38c03b9dcaf1afe0b5",
+            "title": "Cathode Rays and Positive Rays"
+          },
+          {
+            "id": "66a0db39c03b9dcaf1afe0b9",
+            "title": "Matter Waves"
+          },
+          {
+            "id": "66a0db3ac03b9dcaf1afe0c1",
+            "title": "Photoelectric Effect"
+          },
+          {
+            "id": "66a0db3cc03b9dcaf1afe0c7",
+            "title": "Davison and Germer Experiment"
+          }
+        ]
+      },
+      {
+        "id": "66a0db8fc03b9dcaf1afe25b",
+        "name": "Nuclear Physics",
+        "topicsCount": 4,
+        "topics": [
+          {
+            "id": "66a0db8fc03b9dcaf1afe25d",
+            "title": "Nuclear structure"
+          },
+          {
+            "id": "66a0db90c03b9dcaf1afe263",
+            "title": "Nuclear energy"
+          },
+          {
+            "id": "66a0db91c03b9dcaf1afe269",
+            "title": "Nuclear reactions"
+          },
+          {
+            "id": "66a0db93c03b9dcaf1afe271",
+            "title": "Radioactivity"
+          }
+        ]
+      },
+      {
+        "id": "66a0dbb7c03b9dcaf1afe314",
+        "name": "Semiconductors",
+        "topicsCount": 7,
+        "topics": [
+          {
+            "id": "66a0dbb8c03b9dcaf1afe316",
+            "title": "Energy Bands in Solids"
+          },
+          {
+            "id": "66a0dbb8c03b9dcaf1afe319",
+            "title": "Semiconductors"
+          },
+          {
+            "id": "66a0dbbac03b9dcaf1afe31f",
+            "title": "Diodes"
+          },
+          {
+            "id": "66a0dbbbc03b9dcaf1afe324",
+            "title": "Rectifier"
+          },
+          {
+            "id": "66a0dbbcc03b9dcaf1afe328",
+            "title": "Special purpose diodes"
+          },
+          {
+            "id": "66a0dbbdc03b9dcaf1afe32b",
+            "title": "Junction Transistors"
+          },
+          {
+            "id": "66a0dbbec03b9dcaf1afe333",
+            "title": "Logic gates"
+          }
+        ]
+      },
+      {
+        "id": "66a0db2ac03b9dcaf1afe06c",
+        "name": "Communication System",
+        "topicsCount": 2,
+        "topics": [
+          {
+            "id": "66a0db2ac03b9dcaf1afe06e",
+            "title": "Communication System"
+          },
+          {
+            "id": "66a0db2bc03b9dcaf1afe076",
+            "title": "Modulation"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "65f032625469774910ab0337",
+    "name": "Chemistry",
+    "chaptersCount": 31,
+    "topicsCount": 163,
+    "chapters": [
+      {
+        "id": "66a0dcf8c03b9dcaf1afe890",
+        "name": "Some Basic Concepts of Chemistry",
+        "topicsCount": 2,
+        "topics": [
+          {
+            "id": "66a0dcf8c03b9dcaf1afe892",
+            "title": "Quantitative measures in chemical equations"
+          },
+          {
+            "id": "66a0dcf9c03b9dcaf1afe896",
+            "title": "Concentration terms"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd05c03b9dcaf1afe8c5",
+        "name": "Structure of Atom",
+        "topicsCount": 7,
+        "topics": [
+          {
+            "id": "66a0dd06c03b9dcaf1afe8d0",
+            "title": "Atomic Models"
+          },
+          {
+            "id": "66a0dd05c03b9dcaf1afe8c7",
+            "title": "Atomic Mass and Atomic Size"
+          },
+          {
+            "id": "66a0dd08c03b9dcaf1afe8d6",
+            "title": "Bohr's model"
+          },
+          {
+            "id": "66a0dd09c03b9dcaf1afe8dd",
+            "title": "Hydrogen spectrum"
+          },
+          {
+            "id": "66a0dd0ac03b9dcaf1afe8e2",
+            "title": "Dual Behaviour of Matter and Heisenberg Uncertainty Principle"
+          },
+          {
+            "id": "66a0dd0bc03b9dcaf1afe8e7",
+            "title": "Quantum mechanical model"
+          },
+          {
+            "id": "66a0dd0dc03b9dcaf1afe8f0",
+            "title": "Electronic configuration"
+          }
+        ]
+      },
+      {
+        "id": "66a0dc45c03b9dcaf1afe59e",
+        "name": "Classification of Elements and Periodicity in Properties",
+        "topicsCount": 3,
+        "topics": [
+          {
+            "id": "66a0dc45c03b9dcaf1afe5a0",
+            "title": "Earlier attempts of periodic classification"
+          },
+          {
+            "id": "66a0dc46c03b9dcaf1afe5a6",
+            "title": "Modern periodic table"
+          },
+          {
+            "id": "66a0dc48c03b9dcaf1afe5af",
+            "title": "Periodic properties"
+          }
+        ]
+      },
+      {
+        "id": "66a0dc2cc03b9dcaf1afe51f",
+        "name": "Chemical Bonding and Molecular Structure",
+        "topicsCount": 10,
+        "topics": [
+          {
+            "id": "66a0dc2cc03b9dcaf1afe521",
+            "title": "Covalent and Co-ordinate Bonding"
+          },
+          {
+            "id": "66a0dc31c03b9dcaf1afe53d",
+            "title": "Hybridisation and VSEPR Theory"
+          },
+          {
+            "id": "66a0dc35c03b9dcaf1afe54c",
+            "title": "Back Bonding"
+          },
+          {
+            "id": "66a0dc32c03b9dcaf1afe542",
+            "title": "Molecular Orbital Theory"
+          },
+          {
+            "id": "66a0dc2fc03b9dcaf1afe52c",
+            "title": "Characteristics of covalent compound"
+          },
+          {
+            "id": "66a0dc2fc03b9dcaf1afe52f",
+            "title": "Ionic bond"
+          },
+          {
+            "id": "66a0dc31c03b9dcaf1afe53a",
+            "title": "Polarization"
+          },
+          {
+            "id": "66a0dc30c03b9dcaf1afe534",
+            "title": "Properties of ionic compounds"
+          },
+          {
+            "id": "66a0dc30c03b9dcaf1afe537",
+            "title": "Dipole moment"
+          },
+          {
+            "id": "66a0dc34c03b9dcaf1afe547",
+            "title": "Van Der Waals Forces, Hydrogen Bonding and Metallic Bonding"
+          }
+        ]
+      },
+      {
+        "id": "66a0dcfbc03b9dcaf1afe89c",
+        "name": "States of Matter",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0dcfbc03b9dcaf1afe89e",
+            "title": "Gas laws and Ideal Gas Equation"
+          },
+          {
+            "id": "66a0dcffc03b9dcaf1afe8ac",
+            "title": "Mixture of gases"
+          },
+          {
+            "id": "66a0dd00c03b9dcaf1afe8b2",
+            "title": "Kinetic theory of gases"
+          },
+          {
+            "id": "66a0dd03c03b9dcaf1afe8bc",
+            "title": "Real Gases and Van der Waal's Equation"
+          },
+          {
+            "id": "66a0dd04c03b9dcaf1afe8c3",
+            "title": "Critical phenomena and liquefaction"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd15c03b9dcaf1afe920",
+        "name": "Thermodynamics (C)",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0dd15c03b9dcaf1afe922",
+            "title": "System and surrounding"
+          },
+          {
+            "id": "66a0dd17c03b9dcaf1afe92a",
+            "title": "First Law and Basic Fundamentals of Thermodynamics"
+          },
+          {
+            "id": "66a0dd1ac03b9dcaf1afe93a",
+            "title": "Entropy and Second law of thermodynamics"
+          },
+          {
+            "id": "66a0dd1bc03b9dcaf1afe942",
+            "title": "Third law of thermodynamics"
+          },
+          {
+            "id": "66a0dd1dc03b9dcaf1afe94a",
+            "title": "Laws of Thermochemistry and Enthalpy Change"
+          }
+        ]
+      },
+      {
+        "id": "66a0dc35c03b9dcaf1afe54f",
+        "name": "Chemical Equilibrium",
+        "topicsCount": 2,
+        "topics": [
+          {
+            "id": "66a0dc35c03b9dcaf1afe551",
+            "title": "Law of Mass Action, Equilibrium Constant (Kc and Kp) and its Application"
+          },
+          {
+            "id": "66a0dc38c03b9dcaf1afe55f",
+            "title": "Le chatelier's principle"
+          }
+        ]
+      },
+      {
+        "id": "66a0dcb4c03b9dcaf1afe74e",
+        "name": "Ionic Equilibrium",
+        "topicsCount": 6,
+        "topics": [
+          {
+            "id": "66a0dcb4c03b9dcaf1afe750",
+            "title": "Theories of Acids and Bases"
+          },
+          {
+            "id": "66a0dcb6c03b9dcaf1afe758",
+            "title": "Ionic Product of Water"
+          },
+          {
+            "id": "66a0dcb8c03b9dcaf1afe760",
+            "title": "PH of solutions"
+          },
+          {
+            "id": "66a0dcb9c03b9dcaf1afe766",
+            "title": "Salt Hydrolysis"
+          },
+          {
+            "id": "66a0dcbbc03b9dcaf1afe76f",
+            "title": "Buffer solutions"
+          },
+          {
+            "id": "66a0dcbcc03b9dcaf1afe776",
+            "title": "Solubility"
+          }
+        ]
+      },
+      {
+        "id": "66a0dcd3c03b9dcaf1afe7e0",
+        "name": "Redox Reactions",
+        "topicsCount": 6,
+        "topics": [
+          {
+            "id": "66a0dcd4c03b9dcaf1afe7e2",
+            "title": "Oxidation and Reduction Reactions"
+          },
+          {
+            "id": "66a0dcd5c03b9dcaf1afe7ea",
+            "title": "Types of redox reactions"
+          },
+          {
+            "id": "66a0dcd4c03b9dcaf1afe7e6",
+            "title": "Oxidation number"
+          },
+          {
+            "id": "66a0dcd6c03b9dcaf1afe7ee",
+            "title": "Balancing of redox reactions"
+          },
+          {
+            "id": "66a0dcd6c03b9dcaf1afe7f2",
+            "title": "Equivalence concept"
+          },
+          {
+            "id": "66a0dcd8c03b9dcaf1afe7fa",
+            "title": "Redox titration"
+          }
+        ]
+      },
+      {
+        "id": "66a0dcb1c03b9dcaf1afe73c",
+        "name": "Hydrogen",
+        "topicsCount": 4,
+        "topics": [
+          {
+            "id": "66a0dcb1c03b9dcaf1afe73e",
+            "title": "Preparation and Properties of Hydrogen"
+          },
+          {
+            "id": "66a0dcb2c03b9dcaf1afe743",
+            "title": "Hydrides"
+          },
+          {
+            "id": "66a0dcb3c03b9dcaf1afe748",
+            "title": "Preparation and Properties of Hydrogen Peroxide"
+          },
+          {
+            "id": "66a0dcb3c03b9dcaf1afe74c",
+            "title": "Chemical properties of hydrogen peroxide"
+          }
+        ]
+      },
+      {
+        "id": "66a0dcd9c03b9dcaf1afe7ff",
+        "name": "s Block Elements",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0dcd9c03b9dcaf1afe801",
+            "title": "General Characteristics of Alkali Metals"
+          },
+          {
+            "id": "66a0dcdec03b9dcaf1afe81a",
+            "title": "Compounds of Alkali Metals"
+          },
+          {
+            "id": "66a0dce0c03b9dcaf1afe824",
+            "title": "Alkaline Earth Metals"
+          },
+          {
+            "id": "66a0dce3c03b9dcaf1afe833",
+            "title": "Compounds of Alkaline Earth Metals"
+          },
+          {
+            "id": "66a0dcddc03b9dcaf1afe817",
+            "title": "Properties of S-block elements"
+          }
+        ]
+      },
+      {
+        "id": "66a0dcbdc03b9dcaf1afe779",
+        "name": "p Block Elements (Group 13 & 14)",
+        "topicsCount": 4,
+        "topics": [
+          {
+            "id": "66a0dcbdc03b9dcaf1afe77b",
+            "title": "Boron and Its Compounds"
+          },
+          {
+            "id": "66a0dcc0c03b9dcaf1afe786",
+            "title": "Aluminium and Its Compounds"
+          },
+          {
+            "id": "66a0dcc1c03b9dcaf1afe78b",
+            "title": "Carbon and Its Compounds"
+          },
+          {
+            "id": "66a0dcc4c03b9dcaf1afe799",
+            "title": "Silicon and Its Compounds"
+          }
+        ]
+      },
+      {
+        "id": "66a0dc6ac03b9dcaf1afe64c",
+        "name": "General Organic Chemistry",
+        "topicsCount": 8,
+        "topics": [
+          {
+            "id": "66a0dc6ac03b9dcaf1afe652",
+            "title": "IUPAC Nomenclature"
+          },
+          {
+            "id": "66a0dc6ac03b9dcaf1afe64e",
+            "title": "Classification of organic compounds"
+          },
+          {
+            "id": "66a0dc71c03b9dcaf1afe668",
+            "title": "Bond Cleavage"
+          },
+          {
+            "id": "66a0dc72c03b9dcaf1afe66e",
+            "title": "Reaction Intermediates"
+          },
+          {
+            "id": "66a0dc74c03b9dcaf1afe675",
+            "title": "Electron displacement effects"
+          },
+          {
+            "id": "66a0dc6ec03b9dcaf1afe65c",
+            "title": "Conjugation and Aromaticity"
+          },
+          {
+            "id": "66a0dc72c03b9dcaf1afe66b",
+            "title": "Attacking reagents"
+          },
+          {
+            "id": "66a0dc77c03b9dcaf1afe67d",
+            "title": "Isomerism of Organic Compounds"
+          }
+        ]
+      },
+      {
+        "id": "66a0dc99c03b9dcaf1afe6e6",
+        "name": "Hydrocarbons",
+        "topicsCount": 10,
+        "topics": [
+          {
+            "id": "66a0dc99c03b9dcaf1afe6e8",
+            "title": "Properties and Preparation of Alkanes"
+          },
+          {
+            "id": "66a0dc9bc03b9dcaf1afe6f1",
+            "title": "Reactions of alkanes"
+          },
+          {
+            "id": "66a0dc9dc03b9dcaf1afe6fb",
+            "title": "Properties and Preparation of Alkenes"
+          },
+          {
+            "id": "66a0dc9bc03b9dcaf1afe6f4",
+            "title": "Reactions of alkenes"
+          },
+          {
+            "id": "66a0dca2c03b9dcaf1afe70b",
+            "title": "Properties and Preparation of Alkynes"
+          },
+          {
+            "id": "66a0dca3c03b9dcaf1afe710",
+            "title": "Reactions of alkynes"
+          },
+          {
+            "id": "66a0dca4c03b9dcaf1afe715",
+            "title": "Preparation and Reactions of Conjugate Dienes"
+          },
+          {
+            "id": "66a0dca5c03b9dcaf1afe71a",
+            "title": "Preparation and Properties of Benzene"
+          },
+          {
+            "id": "66a0dca6c03b9dcaf1afe71f",
+            "title": "Reactions of Benzene"
+          },
+          {
+            "id": "66a0dca7c03b9dcaf1afe724",
+            "title": "Reactions of aromatic compounds"
+          }
+        ]
+      },
+      {
+        "id": "66a0dce4c03b9dcaf1afe837",
+        "name": "Solid State",
+        "topicsCount": 6,
+        "topics": [
+          {
+            "id": "66a0dce4c03b9dcaf1afe839",
+            "title": "Properties and Types of Solids"
+          },
+          {
+            "id": "66a0dce5c03b9dcaf1afe840",
+            "title": "Cubic system"
+          },
+          {
+            "id": "66a0dceec03b9dcaf1afe85c",
+            "title": "Ionic structure"
+          },
+          {
+            "id": "66a0dcf1c03b9dcaf1afe86b",
+            "title": "Stoichiometric defects"
+          },
+          {
+            "id": "66a0dcf2c03b9dcaf1afe86e",
+            "title": "Non-stoichiometric defects"
+          },
+          {
+            "id": "66a0dcf2c03b9dcaf1afe872",
+            "title": "Electrical and Magnetic properties"
+          }
+        ]
+      },
+      {
+        "id": "66a0dcf3c03b9dcaf1afe876",
+        "name": "Solutions",
+        "topicsCount": 3,
+        "topics": [
+          {
+            "id": "66a0dcf3c03b9dcaf1afe878",
+            "title": "Solubility and Concentration of Solutions"
+          },
+          {
+            "id": "66a0dcf4c03b9dcaf1afe87b",
+            "title": "Vapour pressure and raoult's law"
+          },
+          {
+            "id": "66a0dcf6c03b9dcaf1afe885",
+            "title": "Colligative Properties and Abnormal Molecular Masses"
+          }
+        ]
+      },
+      {
+        "id": "66a0dc5cc03b9dcaf1afe60c",
+        "name": "Electrochemistry",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0dc5cc03b9dcaf1afe60e",
+            "title": "Cells and Electrode Potential, Nernst Equation"
+          },
+          {
+            "id": "66a0dc68c03b9dcaf1afe642",
+            "title": "Types of half cells"
+          },
+          {
+            "id": "66a0dc67c03b9dcaf1afe63a",
+            "title": "Concentration cell"
+          },
+          {
+            "id": "66a0dc68c03b9dcaf1afe645",
+            "title": "Commercial Cells and Batteries"
+          },
+          {
+            "id": "66a0dc5fc03b9dcaf1afe617",
+            "title": "Conductance and Conductivity"
+          }
+        ]
+      },
+      {
+        "id": "66a0dc3ac03b9dcaf1afe565",
+        "name": "Chemical Kinetics",
+        "topicsCount": 4,
+        "topics": [
+          {
+            "id": "66a0dc3ac03b9dcaf1afe567",
+            "title": "Rate law and rate constant"
+          },
+          {
+            "id": "66a0dc3cc03b9dcaf1afe56e",
+            "title": "Integrated rate laws"
+          },
+          {
+            "id": "66a0dc3fc03b9dcaf1afe57c",
+            "title": "Parallel and Sequencial rate laws"
+          },
+          {
+            "id": "66a0dc3fc03b9dcaf1afe580",
+            "title": "Arrhenius theory"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd0ec03b9dcaf1afe8f6",
+        "name": "Surface Chemistry",
+        "topicsCount": 7,
+        "topics": [
+          {
+            "id": "66a0dd0ec03b9dcaf1afe8f8",
+            "title": "Adsorption"
+          },
+          {
+            "id": "66a0dd0fc03b9dcaf1afe8fd",
+            "title": "Adsorption isotherms"
+          },
+          {
+            "id": "66a0dd10c03b9dcaf1afe902",
+            "title": "Catalysis and Theories of Catalysis"
+          },
+          {
+            "id": "66a0dd11c03b9dcaf1afe906",
+            "title": "Colloids"
+          },
+          {
+            "id": "66a0dd12c03b9dcaf1afe90f",
+            "title": "Preparation and Purification of colloids"
+          },
+          {
+            "id": "66a0dd13c03b9dcaf1afe913",
+            "title": "Properties of colloidal solution"
+          },
+          {
+            "id": "66a0dd15c03b9dcaf1afe91d",
+            "title": "Emulsions and Gels"
+          }
+        ]
+      },
+      {
+        "id": "66a0dcc5c03b9dcaf1afe79f",
+        "name": "p Block Elements (Group 15, 16, 17 & 18)",
+        "topicsCount": 6,
+        "topics": [
+          {
+            "id": "66a0dcc5c03b9dcaf1afe7a1",
+            "title": "Nitrogen and Its Compounds"
+          },
+          {
+            "id": "66a0dcc7c03b9dcaf1afe7a9",
+            "title": "Phosphorus and Its Compounds"
+          },
+          {
+            "id": "66a0dcc8c03b9dcaf1afe7af",
+            "title": "Oxygen and Its Compounds"
+          },
+          {
+            "id": "66a0dcc9c03b9dcaf1afe7b3",
+            "title": "Sulphur and Its Compounds"
+          },
+          {
+            "id": "66a0dccac03b9dcaf1afe7bb",
+            "title": "Halogens and Its Compounds"
+          },
+          {
+            "id": "66a0dccdc03b9dcaf1afe7c4",
+            "title": "Noble Gases"
+          }
+        ]
+      },
+      {
+        "id": "66a0dc55c03b9dcaf1afe5ea",
+        "name": "d and f Block Elements",
+        "topicsCount": 3,
+        "topics": [
+          {
+            "id": "66a0dc55c03b9dcaf1afe5ec",
+            "title": "Properties of D-block elements"
+          },
+          {
+            "id": "66a0dc59c03b9dcaf1afe5fa",
+            "title": "Compounds of Transition Metals"
+          },
+          {
+            "id": "66a0dc5bc03b9dcaf1afe60a",
+            "title": "F-Block elements"
+          }
+        ]
+      },
+      {
+        "id": "66a0dc4fc03b9dcaf1afe5c8",
+        "name": "Coordination Compounds",
+        "topicsCount": 7,
+        "topics": [
+          {
+            "id": "66a0dc4fc03b9dcaf1afe5ca",
+            "title": "Terminology of coordination compounds"
+          },
+          {
+            "id": "66a0dc50c03b9dcaf1afe5ce",
+            "title": "Nomenclature of coordination compounds"
+          },
+          {
+            "id": "66a0dc52c03b9dcaf1afe5d6",
+            "title": "Isomerism of coordination compounds"
+          },
+          {
+            "id": "66a0dc50c03b9dcaf1afe5d2",
+            "title": "Werner's theory and Valence Bond Theory"
+          },
+          {
+            "id": "66a0dc54c03b9dcaf1afe5e1",
+            "title": "Crystal Field Theory"
+          },
+          {
+            "id": "66a0dc53c03b9dcaf1afe5dd",
+            "title": "Stability of complex ion"
+          },
+          {
+            "id": "66a0dc55c03b9dcaf1afe5e7",
+            "title": "Carbonyl Compounds"
+          }
+        ]
+      },
+      {
+        "id": "66a0dc7bc03b9dcaf1afe686",
+        "name": "General Principles and Processes of Isolation of Metals",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0dc7bc03b9dcaf1afe688",
+            "title": "Minerals and ores"
+          },
+          {
+            "id": "66a0dc7cc03b9dcaf1afe68c",
+            "title": "Extraction of Metals"
+          },
+          {
+            "id": "66a0dc7dc03b9dcaf1afe68f",
+            "title": "Concentration of the Ore"
+          },
+          {
+            "id": "66a0dc7fc03b9dcaf1afe699",
+            "title": "Reduction to Crude Metal"
+          },
+          {
+            "id": "66a0dc7fc03b9dcaf1afe69f",
+            "title": "Refining of Crude Metal"
+          }
+        ]
+      },
+      {
+        "id": "66a0dc81c03b9dcaf1afe6a8",
+        "name": "Haloalkanes and Haloarenes",
+        "topicsCount": 4,
+        "topics": [
+          {
+            "id": "66a0dc81c03b9dcaf1afe6aa",
+            "title": "Preparation and Properties of Monohalides"
+          },
+          {
+            "id": "66a0dc94c03b9dcaf1afe6d3",
+            "title": "Preparation and Properties of Geminal and Vicinal Dihalides"
+          },
+          {
+            "id": "66a0dc97c03b9dcaf1afe6e2",
+            "title": "Preparation and Properties of Aryl Halides"
+          },
+          {
+            "id": "66a0dc95c03b9dcaf1afe6d7",
+            "title": "Grignard Reagent"
+          }
+        ]
+      },
+      {
+        "id": "66a0dbe8c03b9dcaf1afe40f",
+        "name": "Alcohols Phenols and Ethers",
+        "topicsCount": 10,
+        "topics": [
+          {
+            "id": "66a0dbe8c03b9dcaf1afe411",
+            "title": "Preparation and Properties of Alcohols"
+          },
+          {
+            "id": "66a0dbedc03b9dcaf1afe424",
+            "title": "Reactions of Alcohols"
+          },
+          {
+            "id": "66a0dbf0c03b9dcaf1afe431",
+            "title": "Preparation of Phenols"
+          },
+          {
+            "id": "66a0dbf2c03b9dcaf1afe43c",
+            "title": "Reactions of Phenol"
+          },
+          {
+            "id": "66a0dbfac03b9dcaf1afe453",
+            "title": "Preparation of Ethers"
+          },
+          {
+            "id": "66a0dbf8c03b9dcaf1afe44c",
+            "title": "Reactions of Ethers"
+          },
+          {
+            "id": "66a0dbfdc03b9dcaf1afe462",
+            "title": "Preparation of Oxiranes"
+          },
+          {
+            "id": "66a0dbfdc03b9dcaf1afe465",
+            "title": "Preparation and Reactions of Glycol"
+          },
+          {
+            "id": "66a0dbfec03b9dcaf1afe469",
+            "title": "Methods of Preparation of Carbonyl Compounds"
+          },
+          {
+            "id": "66a0dbffc03b9dcaf1afe46c",
+            "title": "Reactions of Carbonyl Compounds"
+          }
+        ]
+      },
+      {
+        "id": "66a0dbffc03b9dcaf1afe46f",
+        "name": "Aldehydes and Ketones",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0dc00c03b9dcaf1afe471",
+            "title": "Method of Preparation for Both Aldehydes and Ketones"
+          },
+          {
+            "id": "66a0dc03c03b9dcaf1afe480",
+            "title": "Method of Preparation for Aldehydes"
+          },
+          {
+            "id": "66a0dc04c03b9dcaf1afe485",
+            "title": "Method of Preparation for Ketones"
+          },
+          {
+            "id": "66a0dc05c03b9dcaf1afe48b",
+            "title": "Chemical Reactions for Aldehydes and Ketones"
+          },
+          {
+            "id": "66a0dc10c03b9dcaf1afe4a9",
+            "title": "Reactions for Aldehydes"
+          }
+        ]
+      },
+      {
+        "id": "66a0dc21c03b9dcaf1afe4f0",
+        "name": "Carboxylic Acid Derivatives",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0dc21c03b9dcaf1afe4f2",
+            "title": "Preparation and Properties of Carboxylic Acids"
+          },
+          {
+            "id": "66a0dc24c03b9dcaf1afe4fd",
+            "title": "Reaction Involving Cleavage of –OH Group"
+          },
+          {
+            "id": "66a0dc28c03b9dcaf1afe50d",
+            "title": "Reactions Involving Acid Group"
+          },
+          {
+            "id": "66a0dc25c03b9dcaf1afe501",
+            "title": "Preparation and Properties of Acid Derivatives"
+          },
+          {
+            "id": "66a0dc2ac03b9dcaf1afe515",
+            "title": "Preparation and Properties of Esters"
+          }
+        ]
+      },
+      {
+        "id": "66a0dc10c03b9dcaf1afe4ad",
+        "name": "Amines",
+        "topicsCount": 4,
+        "topics": [
+          {
+            "id": "66a0dc11c03b9dcaf1afe4af",
+            "title": "Preparation and Properties of Amines"
+          },
+          {
+            "id": "66a0dc1ac03b9dcaf1afe4d0",
+            "title": "Separation of Mixture of Amines"
+          },
+          {
+            "id": "66a0dc14c03b9dcaf1afe4bf",
+            "title": "Preparation and Properties of Amides"
+          },
+          {
+            "id": "66a0dc19c03b9dcaf1afe4cd",
+            "title": "Preparation and Properties of Isocyanides"
+          }
+        ]
+      },
+      {
+        "id": "66a0dc1ac03b9dcaf1afe4d2",
+        "name": "Biomolecules",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0dc1ac03b9dcaf1afe4d4",
+            "title": "Carbohydrates"
+          },
+          {
+            "id": "66a0dc1cc03b9dcaf1afe4da",
+            "title": "Preparation and Reactions of Glucose"
+          },
+          {
+            "id": "66a0dc1dc03b9dcaf1afe4de",
+            "title": "Disaccharides and Polysaccharides"
+          },
+          {
+            "id": "66a0dc1fc03b9dcaf1afe4e7",
+            "title": "Properties and Preparation of Amino Acids"
+          },
+          {
+            "id": "66a0dc1ec03b9dcaf1afe4e2",
+            "title": "Proteins"
+          }
+        ]
+      },
+      {
+        "id": "66a0dccec03b9dcaf1afe7c7",
+        "name": "Practical Chemistry",
+        "topicsCount": 4,
+        "topics": [
+          {
+            "id": "66a0dccec03b9dcaf1afe7c9",
+            "title": "Radicals"
+          },
+          {
+            "id": "66a0dcd2c03b9dcaf1afe7db",
+            "title": "Preliminary Tests"
+          },
+          {
+            "id": "66a0dccfc03b9dcaf1afe7cd",
+            "title": "Identification of Acid Radicals"
+          },
+          {
+            "id": "66a0dcd0c03b9dcaf1afe7d3",
+            "title": "Identification of Basic Radicals"
+          }
+        ]
+      },
+      {
+        "id": "66a0dc42c03b9dcaf1afe58c",
+        "name": "Chemistry in Everyday Life",
+        "topicsCount": 3,
+        "topics": [
+          {
+            "id": "66a0dc42c03b9dcaf1afe58e",
+            "title": "Drugs and It's Classification"
+          },
+          {
+            "id": "66a0dc44c03b9dcaf1afe598",
+            "title": "Artificial Sweetning Agents and Food Preservatives"
+          },
+          {
+            "id": "66a0dc45c03b9dcaf1afe59b",
+            "title": "Cleansing Agents"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "65f033c116c1c6177074b7a8",
+    "name": "Mathematics",
+    "chaptersCount": 31,
+    "topicsCount": 198,
+    "chapters": [
+      {
+        "id": "66a0ddafc03b9dcaf1afec47",
+        "name": "Quadratic Equation",
+        "topicsCount": 7,
+        "topics": [
+          {
+            "id": "66a0ddb0c03b9dcaf1afec49",
+            "title": "Nature of roots"
+          },
+          {
+            "id": "66a0ddb0c03b9dcaf1afec4c",
+            "title": "Relation between Roots and Coefficients"
+          },
+          {
+            "id": "66a0ddb1c03b9dcaf1afec4f",
+            "title": "Range of Quadratic Function"
+          },
+          {
+            "id": "66a0ddb2c03b9dcaf1afec52",
+            "title": "Graph and Sign of Quadratic"
+          },
+          {
+            "id": "66a0ddb2c03b9dcaf1afec56",
+            "title": "Common Roots"
+          },
+          {
+            "id": "66a0ddb3c03b9dcaf1afec59",
+            "title": "Location of Roots"
+          },
+          {
+            "id": "66a0ddb4c03b9dcaf1afec5f",
+            "title": "N degree equation"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd33c03b9dcaf1afe9c6",
+        "name": "Complex Number",
+        "topicsCount": 7,
+        "topics": [
+          {
+            "id": "66a0dd33c03b9dcaf1afe9c8",
+            "title": "Power of iota"
+          },
+          {
+            "id": "66a0dd34c03b9dcaf1afe9cb",
+            "title": "Algebra of complex numbers"
+          },
+          {
+            "id": "66a0dd36c03b9dcaf1afe9d4",
+            "title": "Conjugate, modulus and argument"
+          },
+          {
+            "id": "66a0dd37c03b9dcaf1afe9dd",
+            "title": "De Moivres Theorem"
+          },
+          {
+            "id": "66a0dd37c03b9dcaf1afe9d9",
+            "title": "Polar and Euler Form"
+          },
+          {
+            "id": "66a0dd38c03b9dcaf1afe9e0",
+            "title": "Cube Root of Unity"
+          },
+          {
+            "id": "66a0dd39c03b9dcaf1afe9e3",
+            "title": "nth roots of unity"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd9fc03b9dcaf1afebee",
+        "name": "Permutation Combination",
+        "topicsCount": 9,
+        "topics": [
+          {
+            "id": "66a0dd9fc03b9dcaf1afebf0",
+            "title": "Factorial"
+          },
+          {
+            "id": "66a0dda1c03b9dcaf1afebf6",
+            "title": "Permutation"
+          },
+          {
+            "id": "66a0dda0c03b9dcaf1afebf3",
+            "title": "Combination"
+          },
+          {
+            "id": "66a0dda2c03b9dcaf1afebfb",
+            "title": "Arrangement under Constraint"
+          },
+          {
+            "id": "66a0dda2c03b9dcaf1afebff",
+            "title": "Selection of one or more item"
+          },
+          {
+            "id": "66a0dda4c03b9dcaf1afec08",
+            "title": "Division and Distribution of Distinct Items"
+          },
+          {
+            "id": "66a0dda5c03b9dcaf1afec0e",
+            "title": "Division of Identical items"
+          },
+          {
+            "id": "66a0dda3c03b9dcaf1afec05",
+            "title": "Circular Permutation"
+          },
+          {
+            "id": "66a0dda6c03b9dcaf1afec13",
+            "title": "Dearrangement"
+          }
+        ]
+      },
+      {
+        "id": "66a0ddb4c03b9dcaf1afec61",
+        "name": "Sequences and Series",
+        "topicsCount": 8,
+        "topics": [
+          {
+            "id": "66a0ddb5c03b9dcaf1afec63",
+            "title": "Arithmetic Progression"
+          },
+          {
+            "id": "66a0ddb7c03b9dcaf1afec6c",
+            "title": "Geometric Progression"
+          },
+          {
+            "id": "66a0ddb8c03b9dcaf1afec73",
+            "title": "Mixed Question on AP and GP"
+          },
+          {
+            "id": "66a0ddb9c03b9dcaf1afec76",
+            "title": "Means"
+          },
+          {
+            "id": "66a0ddbfc03b9dcaf1afec91",
+            "title": "Harmonic Progression"
+          },
+          {
+            "id": "66a0ddbcc03b9dcaf1afec82",
+            "title": "Arithmetic Geometric Progression"
+          },
+          {
+            "id": "66a0ddbcc03b9dcaf1afec86",
+            "title": "Summation of Series"
+          },
+          {
+            "id": "66a0ddbec03b9dcaf1afec8c",
+            "title": "Inequalities"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd28c03b9dcaf1afe981",
+        "name": "Binomial Theorem",
+        "topicsCount": 6,
+        "topics": [
+          {
+            "id": "66a0dd28c03b9dcaf1afe983",
+            "title": "Terms of Binomial Expansion"
+          },
+          {
+            "id": "66a0dd29c03b9dcaf1afe989",
+            "title": "Properties of Binomial Coefficients"
+          },
+          {
+            "id": "66a0dd2ac03b9dcaf1afe98c",
+            "title": "Sum of Series"
+          },
+          {
+            "id": "66a0dd2ac03b9dcaf1afe990",
+            "title": "Series involving Product of Coefficients"
+          },
+          {
+            "id": "66a0dd2bc03b9dcaf1afe993",
+            "title": "Multinomial Theorem"
+          },
+          {
+            "id": "66a0dd2bc03b9dcaf1afe996",
+            "title": "Binomial Theorem for Rational Index"
+          }
+        ]
+      },
+      {
+        "id": "66a0ddd8c03b9dcaf1afed00",
+        "name": "Trigonometric Ratios & Identities",
+        "topicsCount": 6,
+        "topics": [
+          {
+            "id": "66a0ddd8c03b9dcaf1afed05",
+            "title": "Basic Identities & T Ratios"
+          },
+          {
+            "id": "66a0dddac03b9dcaf1afed0d",
+            "title": "Sum and Difference & Multiple angle Formula"
+          },
+          {
+            "id": "66a0dddbc03b9dcaf1afed11",
+            "title": "T-Ratios of Multiple & sub multiple angles"
+          },
+          {
+            "id": "66a0dddcc03b9dcaf1afed16",
+            "title": "Transformation Formulas"
+          },
+          {
+            "id": "66a0ddddc03b9dcaf1afed1a",
+            "title": "Trigonometric Series"
+          },
+          {
+            "id": "66a0ddd8c03b9dcaf1afed02",
+            "title": "Measurement of Angles"
+          }
+        ]
+      },
+      {
+        "id": "66a0ddd5c03b9dcaf1afecf4",
+        "name": "Trigonometric Equations",
+        "topicsCount": 1,
+        "topics": [
+          {
+            "id": "66a0ddd5c03b9dcaf1afecf6",
+            "title": "Basic"
+          }
+        ]
+      },
+      {
+        "id": "66a0ddabc03b9dcaf1afec2a",
+        "name": "Properties of Triangles",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0ddabc03b9dcaf1afec2c",
+            "title": "Sine Rule and its application"
+          },
+          {
+            "id": "66a0ddabc03b9dcaf1afec2f",
+            "title": "Cosine Rule and Projection Formula"
+          },
+          {
+            "id": "66a0ddacc03b9dcaf1afec33",
+            "title": "Napiers Analogy, Area of Triangle & Half angle Formulae"
+          },
+          {
+            "id": "66a0ddadc03b9dcaf1afec38",
+            "title": "Circle Connected to Triangle"
+          },
+          {
+            "id": "66a0ddafc03b9dcaf1afec45",
+            "title": "Circle and Polygon"
+          }
+        ]
+      },
+      {
+        "id": "66a0ddc4c03b9dcaf1afeca7",
+        "name": "Straight Lines",
+        "topicsCount": 7,
+        "topics": [
+          {
+            "id": "66a0ddc4c03b9dcaf1afeca9",
+            "title": "Coordinate System"
+          },
+          {
+            "id": "66a0ddc7c03b9dcaf1afecb9",
+            "title": "Basic Forms of Straight Line"
+          },
+          {
+            "id": "66a0ddc9c03b9dcaf1afecc0",
+            "title": "Angle between Lines"
+          },
+          {
+            "id": "66a0ddc8c03b9dcaf1afecbc",
+            "title": "Derived Forms of Line"
+          },
+          {
+            "id": "66a0ddcac03b9dcaf1afecc3",
+            "title": "Point and Line"
+          },
+          {
+            "id": "66a0ddcbc03b9dcaf1afeccb",
+            "title": "Concurrency & Family of Lines"
+          },
+          {
+            "id": "66a0ddcbc03b9dcaf1afecc8",
+            "title": "Locus"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd2cc03b9dcaf1afe998",
+        "name": "Circle",
+        "topicsCount": 12,
+        "topics": [
+          {
+            "id": "66a0dd2cc03b9dcaf1afe99a",
+            "title": "Equation of Circle & its intercept"
+          },
+          {
+            "id": "66a0dd2dc03b9dcaf1afe9a0",
+            "title": "Position of point"
+          },
+          {
+            "id": "66a0dd2ec03b9dcaf1afe9a3",
+            "title": "line and circle"
+          },
+          {
+            "id": "66a0dd2ec03b9dcaf1afe9a8",
+            "title": "Tangent to circle"
+          },
+          {
+            "id": "66a0dd30c03b9dcaf1afe9ad",
+            "title": "Common Tangents"
+          },
+          {
+            "id": "66a0dd30c03b9dcaf1afe9b0",
+            "title": "Chord of Contact"
+          },
+          {
+            "id": "66a0dd32c03b9dcaf1afe9bc",
+            "title": "Intersection of Circles"
+          },
+          {
+            "id": "66a0dd30c03b9dcaf1afe9b3",
+            "title": "Common Chord"
+          },
+          {
+            "id": "66a0dd31c03b9dcaf1afe9b9",
+            "title": "Family of Circle"
+          },
+          {
+            "id": "66a0dd33c03b9dcaf1afe9c3",
+            "title": "Coaxial systems of circles"
+          },
+          {
+            "id": "66a0dd31c03b9dcaf1afe9b6",
+            "title": "Pole and Polar"
+          },
+          {
+            "id": "66a0dd32c03b9dcaf1afe9bf",
+            "title": "Radical axis and centre"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd97c03b9dcaf1afebc2",
+        "name": "Parabola",
+        "topicsCount": 12,
+        "topics": [
+          {
+            "id": "66a0dd97c03b9dcaf1afebc4",
+            "title": "General Equation of 2nd degree curve"
+          },
+          {
+            "id": "66a0dd98c03b9dcaf1afebc7",
+            "title": "standard equation of parabola"
+          },
+          {
+            "id": "66a0dd99c03b9dcaf1afebcc",
+            "title": "Position of point"
+          },
+          {
+            "id": "66a0dd99c03b9dcaf1afebcf",
+            "title": "Chord of parabola"
+          },
+          {
+            "id": "66a0dd9ac03b9dcaf1afebd2",
+            "title": "Line and parabola"
+          },
+          {
+            "id": "66a0dd9bc03b9dcaf1afebd5",
+            "title": "Tangent to Parabola"
+          },
+          {
+            "id": "66a0dd9dc03b9dcaf1afebde",
+            "title": "Normal to Parabola"
+          },
+          {
+            "id": "66a0dd9cc03b9dcaf1afebdb",
+            "title": "Pair of Tangents & Director Circle"
+          },
+          {
+            "id": "66a0dd9fc03b9dcaf1afebec",
+            "title": "Reflection property"
+          },
+          {
+            "id": "66a0dd9ec03b9dcaf1afebe3",
+            "title": "Conormal Points"
+          },
+          {
+            "id": "66a0dd9fc03b9dcaf1afebe9",
+            "title": "Diameter to parabola"
+          },
+          {
+            "id": "66a0dd9ec03b9dcaf1afebe6",
+            "title": "Locus"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd52c03b9dcaf1afea5f",
+        "name": "Ellipse",
+        "topicsCount": 13,
+        "topics": [
+          {
+            "id": "66a0dd52c03b9dcaf1afea61",
+            "title": "General Equation of 2nd degree curve"
+          },
+          {
+            "id": "66a0dd53c03b9dcaf1afea65",
+            "title": "Equation of Ellipse"
+          },
+          {
+            "id": "66a0dd54c03b9dcaf1afea69",
+            "title": "Position of point"
+          },
+          {
+            "id": "66a0dd54c03b9dcaf1afea6c",
+            "title": "Line and ellipse"
+          },
+          {
+            "id": "66a0dd55c03b9dcaf1afea6f",
+            "title": "Chord of ellipse"
+          },
+          {
+            "id": "66a0dd55c03b9dcaf1afea72",
+            "title": "Tangent to ellipse"
+          },
+          {
+            "id": "66a0dd57c03b9dcaf1afea7d",
+            "title": "Normal to ellipse"
+          },
+          {
+            "id": "66a0dd57c03b9dcaf1afea7a",
+            "title": "Chord of Contact"
+          },
+          {
+            "id": "66a0dd58c03b9dcaf1afea86",
+            "title": "Chord with given Middle Point"
+          },
+          {
+            "id": "66a0dd59c03b9dcaf1afea8a",
+            "title": "Reflection property"
+          },
+          {
+            "id": "66a0dd57c03b9dcaf1afea80",
+            "title": "Conormal Points"
+          },
+          {
+            "id": "66a0dd58c03b9dcaf1afea83",
+            "title": "Diameter to ellipse"
+          },
+          {
+            "id": "66a0dd56c03b9dcaf1afea77",
+            "title": "Director Circle"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd6cc03b9dcaf1afeadd",
+        "name": "Hyperbola",
+        "topicsCount": 14,
+        "topics": [
+          {
+            "id": "66a0dd6cc03b9dcaf1afeadf",
+            "title": "General Equation of 2nd degree curve"
+          },
+          {
+            "id": "66a0dd6dc03b9dcaf1afeae2",
+            "title": "Equation of hyperbola"
+          },
+          {
+            "id": "66a0dd6fc03b9dcaf1afeaec",
+            "title": "Auxillary Circle"
+          },
+          {
+            "id": "66a0dd6fc03b9dcaf1afeae9",
+            "title": "Position of point"
+          },
+          {
+            "id": "66a0dd6fc03b9dcaf1afeaef",
+            "title": "Tangent to hyperbola"
+          },
+          {
+            "id": "66a0dd70c03b9dcaf1afeaf4",
+            "title": "Pair of Tangents"
+          },
+          {
+            "id": "66a0dd72c03b9dcaf1afeb00",
+            "title": "Chord of Contact"
+          },
+          {
+            "id": "66a0dd72c03b9dcaf1afeb03",
+            "title": "Chord with given Middle Point"
+          },
+          {
+            "id": "66a0dd71c03b9dcaf1afeafb",
+            "title": "Normal to hyperbola"
+          },
+          {
+            "id": "66a0dd74c03b9dcaf1afeb0d",
+            "title": "Rectangular hyperbola"
+          },
+          {
+            "id": "66a0dd73c03b9dcaf1afeb0a",
+            "title": "Asymptotes"
+          },
+          {
+            "id": "66a0dd74c03b9dcaf1afeb10",
+            "title": "Diameter to hyperbola"
+          },
+          {
+            "id": "66a0dd71c03b9dcaf1afeaf7",
+            "title": "Director Circle"
+          },
+          {
+            "id": "66a0dd73c03b9dcaf1afeb07",
+            "title": "Locus"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd85c03b9dcaf1afeb64",
+        "name": "Limits",
+        "topicsCount": 6,
+        "topics": [
+          {
+            "id": "66a0dd85c03b9dcaf1afeb66",
+            "title": "Existance of Limit"
+          },
+          {
+            "id": "66a0dd88c03b9dcaf1afeb77",
+            "title": "Algebraic and Rational Limits"
+          },
+          {
+            "id": "66a0dd8ac03b9dcaf1afeb7f",
+            "title": "Trigonometric and Inverse Trigonometric limits"
+          },
+          {
+            "id": "66a0dd8bc03b9dcaf1afeb85",
+            "title": "Exponential and logarithmic limits"
+          },
+          {
+            "id": "66a0dd8cc03b9dcaf1afeb8a",
+            "title": "Special Forms"
+          },
+          {
+            "id": "66a0dd8ec03b9dcaf1afeb90",
+            "title": "Miscellaneous"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd92c03b9dcaf1afeba2",
+        "name": "Matrices",
+        "topicsCount": 8,
+        "topics": [
+          {
+            "id": "66a0dd92c03b9dcaf1afeba4",
+            "title": "Formation and Basic of Matrix"
+          },
+          {
+            "id": "66a0dd92c03b9dcaf1afeba8",
+            "title": "Basic Algebra of Matrices"
+          },
+          {
+            "id": "66a0dd93c03b9dcaf1afebae",
+            "title": "Product of Matrices"
+          },
+          {
+            "id": "66a0dd95c03b9dcaf1afebb8",
+            "title": "Types of Matrices"
+          },
+          {
+            "id": "66a0dd96c03b9dcaf1afebbd",
+            "title": "Symmetric & Skew Symmetric Matrices"
+          },
+          {
+            "id": "66a0dd94c03b9dcaf1afebb1",
+            "title": "Adjoint and its Properties"
+          },
+          {
+            "id": "66a0dd94c03b9dcaf1afebb4",
+            "title": "Inverse of a Matrix"
+          },
+          {
+            "id": "66a0dd97c03b9dcaf1afebc0",
+            "title": "Rank of Matrix"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd43c03b9dcaf1afea15",
+        "name": "Determinants",
+        "topicsCount": 4,
+        "topics": [
+          {
+            "id": "66a0dd43c03b9dcaf1afea17",
+            "title": "Expansion of Determinants"
+          },
+          {
+            "id": "66a0dd46c03b9dcaf1afea23",
+            "title": "System of Linear Equations"
+          },
+          {
+            "id": "66a0dd45c03b9dcaf1afea1f",
+            "title": "Differentiation and Integration of Determinants"
+          },
+          {
+            "id": "66a0dd45c03b9dcaf1afea1c",
+            "title": "Multiplication of Determinants"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd7dc03b9dcaf1afeb3e",
+        "name": "Inverse Trigonometric Functions",
+        "topicsCount": 7,
+        "topics": [
+          {
+            "id": "66a0dd7dc03b9dcaf1afeb40",
+            "title": "Principal Value and Basics"
+          },
+          {
+            "id": "66a0dd7ec03b9dcaf1afeb45",
+            "title": "Converting one Inverse T function to other Inverse T"
+          },
+          {
+            "id": "66a0dd7fc03b9dcaf1afeb48",
+            "title": "T inverse T property"
+          },
+          {
+            "id": "66a0dd83c03b9dcaf1afeb5d",
+            "title": "Negative and reciprocal Properties"
+          },
+          {
+            "id": "66a0dd82c03b9dcaf1afeb59",
+            "title": "Sum of complementary angles"
+          },
+          {
+            "id": "66a0dd80c03b9dcaf1afeb4d",
+            "title": "Sum and difference of angles"
+          },
+          {
+            "id": "66a0dd84c03b9dcaf1afeb62",
+            "title": "Multiple Angles"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd59c03b9dcaf1afea8c",
+        "name": "Functions",
+        "topicsCount": 12,
+        "topics": [
+          {
+            "id": "66a0dd61c03b9dcaf1afeaa9",
+            "title": "Domain"
+          },
+          {
+            "id": "66a0dd64c03b9dcaf1afeab3",
+            "title": "Range"
+          },
+          {
+            "id": "66a0dd67c03b9dcaf1afeac5",
+            "title": "Composite Function"
+          },
+          {
+            "id": "66a0dd65c03b9dcaf1afeab8",
+            "title": "Odd and Even Functions"
+          },
+          {
+            "id": "66a0dd66c03b9dcaf1afeac0",
+            "title": "Periodicity"
+          },
+          {
+            "id": "66a0dd59c03b9dcaf1afea8e",
+            "title": "Defintion of Function"
+          },
+          {
+            "id": "66a0dd68c03b9dcaf1afeaca",
+            "title": "Types of Function (Mapping)"
+          },
+          {
+            "id": "66a0dd6ac03b9dcaf1afead1",
+            "title": "Inverse of a Function"
+          },
+          {
+            "id": "66a0dd6cc03b9dcaf1afeadb",
+            "title": "Functional Equation"
+          },
+          {
+            "id": "66a0dd5ac03b9dcaf1afea91",
+            "title": "Graphical Transformations"
+          },
+          {
+            "id": "66a0dd66c03b9dcaf1afeabd",
+            "title": "Identical Functions"
+          },
+          {
+            "id": "66a0dd6bc03b9dcaf1afead8",
+            "title": "Number of Solutions"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd39c03b9dcaf1afe9e5",
+        "name": "Continuity and Differentiability",
+        "topicsCount": 2,
+        "topics": [
+          {
+            "id": "66a0dd39c03b9dcaf1afe9e7",
+            "title": "Continuity"
+          },
+          {
+            "id": "66a0dd3bc03b9dcaf1afe9f0",
+            "title": "Differentiability"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd4ec03b9dcaf1afea4c",
+        "name": "Differentiation",
+        "topicsCount": 6,
+        "topics": [
+          {
+            "id": "66a0dd4fc03b9dcaf1afea51",
+            "title": "Differentiation of composite functions"
+          },
+          {
+            "id": "66a0dd50c03b9dcaf1afea54",
+            "title": "Differentiation of implicit functions"
+          },
+          {
+            "id": "66a0dd52c03b9dcaf1afea5d",
+            "title": "Parametric differentiation"
+          },
+          {
+            "id": "66a0dd51c03b9dcaf1afea57",
+            "title": "Logarithmic differentiation"
+          },
+          {
+            "id": "66a0dd4ec03b9dcaf1afea4e",
+            "title": "Derivative of function and its inverse"
+          },
+          {
+            "id": "66a0dd51c03b9dcaf1afea5a",
+            "title": "Differentiation of determinants"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd1fc03b9dcaf1afe955",
+        "name": "Application of Derivatives",
+        "topicsCount": 4,
+        "topics": [
+          {
+            "id": "66a0dd1fc03b9dcaf1afe957",
+            "title": "Tangent Normal"
+          },
+          {
+            "id": "66a0dd21c03b9dcaf1afe962",
+            "title": "Monotonicity"
+          },
+          {
+            "id": "66a0dd23c03b9dcaf1afe969",
+            "title": "Maxima Minima"
+          },
+          {
+            "id": "66a0dd21c03b9dcaf1afe95e",
+            "title": "Mean Value Theorem"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd75c03b9dcaf1afeb12",
+        "name": "Indefinite Integration",
+        "topicsCount": 5,
+        "topics": [
+          {
+            "id": "66a0dd75c03b9dcaf1afeb14",
+            "title": "Fundamental of Indefinite Integration"
+          },
+          {
+            "id": "66a0dd77c03b9dcaf1afeb1f",
+            "title": "Integration by Substitution"
+          },
+          {
+            "id": "66a0dd7bc03b9dcaf1afeb33",
+            "title": "Integration by Parts"
+          },
+          {
+            "id": "66a0dd7cc03b9dcaf1afeb38",
+            "title": "Integration using Partial Fraction"
+          },
+          {
+            "id": "66a0dd7dc03b9dcaf1afeb3c",
+            "title": "Miscellaneous Forms"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd3dc03b9dcaf1afe9f6",
+        "name": "Definite Integration",
+        "topicsCount": 6,
+        "topics": [
+          {
+            "id": "66a0dd3dc03b9dcaf1afe9f8",
+            "title": "Definite Integration by Substitution"
+          },
+          {
+            "id": "66a0dd3ec03b9dcaf1afe9fc",
+            "title": "Properties of Definite Integration"
+          },
+          {
+            "id": "66a0dd41c03b9dcaf1afea0b",
+            "title": "Leibnitz Rule of Differentiation"
+          },
+          {
+            "id": "66a0dd42c03b9dcaf1afea11",
+            "title": "Definite as Limit of Sum"
+          },
+          {
+            "id": "66a0dd40c03b9dcaf1afea07",
+            "title": "Properties Involving Inequalities"
+          },
+          {
+            "id": "66a0dd42c03b9dcaf1afea0e",
+            "title": "Walli's Formula"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd25c03b9dcaf1afe973",
+        "name": "Area Under Curves",
+        "topicsCount": 3,
+        "topics": [
+          {
+            "id": "66a0dd25c03b9dcaf1afe975",
+            "title": "Area of Curve along axis"
+          },
+          {
+            "id": "66a0dd26c03b9dcaf1afe979",
+            "title": "Area bounded by two curves"
+          },
+          {
+            "id": "66a0dd27c03b9dcaf1afe97c",
+            "title": "Area bounded by Miscellaneous Curves"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd47c03b9dcaf1afea27",
+        "name": "Differential Equations",
+        "topicsCount": 8,
+        "topics": [
+          {
+            "id": "66a0dd47c03b9dcaf1afea29",
+            "title": "Order and Degree"
+          },
+          {
+            "id": "66a0dd48c03b9dcaf1afea2c",
+            "title": "Formation of Differential Equation"
+          },
+          {
+            "id": "66a0dd49c03b9dcaf1afea30",
+            "title": "Variable Separable Form"
+          },
+          {
+            "id": "66a0dd4ac03b9dcaf1afea37",
+            "title": "Homogeneous DE"
+          },
+          {
+            "id": "66a0dd4bc03b9dcaf1afea3b",
+            "title": "Linear Differential Equation"
+          },
+          {
+            "id": "66a0dd4cc03b9dcaf1afea42",
+            "title": "Exact Forms"
+          },
+          {
+            "id": "66a0dd4dc03b9dcaf1afea48",
+            "title": "Applications of DE"
+          },
+          {
+            "id": "66a0dd4dc03b9dcaf1afea45",
+            "title": "Orthogonal Trajectory"
+          }
+        ]
+      },
+      {
+        "id": "66a0dddec03b9dcaf1afed1e",
+        "name": "Vector Algebra",
+        "topicsCount": 4,
+        "topics": [
+          {
+            "id": "66a0dddec03b9dcaf1afed20",
+            "title": "Algebra of Vectors"
+          },
+          {
+            "id": "66a0dde1c03b9dcaf1afed2e",
+            "title": "Product of 2 vectors"
+          },
+          {
+            "id": "66a0dde3c03b9dcaf1afed32",
+            "title": "Scalar Triple Product"
+          },
+          {
+            "id": "66a0dde5c03b9dcaf1afed3a",
+            "title": "Vector Triple Product"
+          }
+        ]
+      },
+      {
+        "id": "66a0ddccc03b9dcaf1afecce",
+        "name": "Three Dimensional Geometry",
+        "topicsCount": 4,
+        "topics": [
+          {
+            "id": "66a0ddcdc03b9dcaf1afecd0",
+            "title": "Direction Cosines and Direction Ratios"
+          },
+          {
+            "id": "66a0ddcec03b9dcaf1afecd4",
+            "title": "Line in Space"
+          },
+          {
+            "id": "66a0ddd0c03b9dcaf1afecde",
+            "title": "Plane in Space"
+          },
+          {
+            "id": "66a0ddd4c03b9dcaf1afecee",
+            "title": "Line and Plane"
+          }
+        ]
+      },
+      {
+        "id": "66a0dda6c03b9dcaf1afec15",
+        "name": "Probability",
+        "topicsCount": 6,
+        "topics": [
+          {
+            "id": "66a0dda7c03b9dcaf1afec1a",
+            "title": "Classical Definition of Probability"
+          },
+          {
+            "id": "66a0dda8c03b9dcaf1afec1e",
+            "title": "Addition and Subtraction Theorems"
+          },
+          {
+            "id": "66a0dda7c03b9dcaf1afec17",
+            "title": "Conditional Probability and Multiplication Theorem"
+          },
+          {
+            "id": "66a0dda9c03b9dcaf1afec21",
+            "title": "Independent Events"
+          },
+          {
+            "id": "66a0ddaac03b9dcaf1afec28",
+            "title": "Bernoulli Trial and Binomial Distribution"
+          },
+          {
+            "id": "66a0dda9c03b9dcaf1afec25",
+            "title": "Baye's Theorem"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd90c03b9dcaf1afeb98",
+        "name": "Mathematical Reasoning",
+        "topicsCount": 1,
+        "topics": [
+          {
+            "id": "66a0dd90c03b9dcaf1afeb9a",
+            "title": "Mathematical Reasoning"
+          }
+        ]
+      },
+      {
+        "id": "66a0ddc0c03b9dcaf1afec94",
+        "name": "Statistics",
+        "topicsCount": 4,
+        "topics": [
+          {
+            "id": "66a0ddc0c03b9dcaf1afec96",
+            "title": "Mean"
+          },
+          {
+            "id": "66a0ddc1c03b9dcaf1afec9c",
+            "title": "Median"
+          },
+          {
+            "id": "66a0ddc2c03b9dcaf1afec9f",
+            "title": "Mode"
+          },
+          {
+            "id": "66a0ddc2c03b9dcaf1afeca2",
+            "title": "Measures of Dispersion"
+          }
+        ]
+      },
+      {
+        "id": "66a0dd8ec03b9dcaf1afeb92",
+        "name": "Linear Programming",
+        "topicsCount": 1,
+        "topics": [
+          {
+            "id": "66a0dd8ec03b9dcaf1afeb94",
+            "title": "Linear Programming"
+          }
+        ]
+      }
+    ]
+  }
+]

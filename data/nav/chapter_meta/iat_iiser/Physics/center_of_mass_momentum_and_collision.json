@@ -1,0 +1,29 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff46378e1624ea7b6980",
+  "subject": "Physics",
+  "chapter": "Center of Mass Momentum and Collision",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff82378e1624ea7b6c5a",
+      "title": "momentum",
+      "count": 1,
+      "questionIds": [
+        "67fdff46378e1624ea7b6981"
+      ]
+    },
+    {
+      "id": "67fdff82378e1624ea7b6c59",
+      "title": "Collisions",
+      "count": 3,
+      "questionIds": [
+        "68e7a680ce75e72648a45e81",
+        "68e7a680ce75e72648a45e80",
+        "67fdff46378e1624ea7b697e"
+      ]
+    }
+  ]
+}

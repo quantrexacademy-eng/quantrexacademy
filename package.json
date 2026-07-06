@@ -1,0 +1,16 @@
+{
+  "name": "quantrexacademy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Quantrex Academy - IIT JEE & NEET Prep Platform",
+  "scripts": {
+    "start": "npx serve . -l 3000",
+    "dev": "npx serve . -l 3000",
+    "deploy": "vercel --prod --yes",
+    "deploy:github": "git add . && git commit -m \"Deploy update\" && git push origin main",
+    "deploy:all": "npm run deploy:github && npm run deploy"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

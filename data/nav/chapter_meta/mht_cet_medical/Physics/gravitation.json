@@ -1,0 +1,65 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19156220c83fbf1e0bce11",
+  "chapterId": "6a192b9ee4cc9575516b565e",
+  "subject": "Physics",
+  "chapter": "Gravitation",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec16eef1faeb9633e23b2",
+      "title": "Newton’s Law of Gravitation",
+      "count": 3,
+      "questionIds": [
+        "6a1ec0adef1faeb9633e1ef8",
+        "6a1ec00eef1faeb9633e1b10",
+        "6a1ec055ef1faeb9633e1ccd"
+      ]
+    },
+    {
+      "id": "6a1ec16fef1faeb9633e23b3",
+      "title": "Gravitational potential and Potential Energy",
+      "count": 1,
+      "questionIds": [
+        "6a1ec02eef1faeb9633e1bd8"
+      ]
+    },
+    {
+      "id": "6a1ec16fef1faeb9633e23b4",
+      "title": "Acceleration Due to Gravity",
+      "count": 2,
+      "questionIds": [
+        "6a1ec06fef1faeb9633e1d70",
+        "6a1ec113ef1faeb9633e2178"
+      ]
+    },
+    {
+      "id": "6a1ec16fef1faeb9633e23b5",
+      "title": "Kepler laws",
+      "count": 2,
+      "questionIds": [
+        "6a1ec074ef1faeb9633e1d90",
+        "6a1ec152ef1faeb9633e2308"
+      ]
+    },
+    {
+      "id": "6a1ec16fef1faeb9633e23b6",
+      "title": "Motion of satellite",
+      "count": 3,
+      "questionIds": [
+        "6a1ec0f0ef1faeb9633e209c",
+        "6a1ec0d3ef1faeb9633e1fe7",
+        "6a1ec08def1faeb9633e1e32"
+      ]
+    },
+    {
+      "id": "6a1ec170ef1faeb9633e23b7",
+      "title": "Gravitational field",
+      "count": 1,
+      "questionIds": [
+        "6a1ec12cef1faeb9633e2218"
+      ]
+    }
+  ]
+}

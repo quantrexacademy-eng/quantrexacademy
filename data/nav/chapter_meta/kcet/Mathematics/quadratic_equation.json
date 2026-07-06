@@ -1,0 +1,43 @@
+{
+  "examSlug": "kcet",
+  "examId": "62962075e7f8e9ac4daeafda",
+  "subjectId": "62962075e7f8e9ac4daeafd9",
+  "chapterId": "6296211ebb55e3404d02a848",
+  "subject": "Mathematics",
+  "chapter": "Quadratic Equation",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64cc9b3608d12fed62b18ea0",
+      "title": "Relation between Roots and Coefficients",
+      "count": 4,
+      "questionIds": [
+        "6a0f2e76120c20281ef34056",
+        "64cc9ad908d12fed62b18a6d",
+        "64cc9a4b08d12fed62b1857e",
+        "64cc99d608d12fed62b1816d"
+      ]
+    },
+    {
+      "id": "64cc9b3608d12fed62b18e9f",
+      "title": "N degree equation",
+      "count": 6,
+      "questionIds": [
+        "64cc9a9e08d12fed62b1885b",
+        "64cc9a2308d12fed62b18417",
+        "64cc9a1008d12fed62b18372",
+        "64cc99f908d12fed62b182a6",
+        "64cc99e708d12fed62b18202",
+        "64cc99c208d12fed62b180bc"
+      ]
+    },
+    {
+      "id": "64cc9b3608d12fed62b18ea1",
+      "title": "Descartes Rule of Sign",
+      "count": 1,
+      "questionIds": [
+        "64cc9a0d08d12fed62b18357"
+      ]
+    }
+  ]
+}

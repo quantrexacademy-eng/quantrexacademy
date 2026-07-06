@@ -1,0 +1,88 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dda6c03b9dcaf1afec15",
+  "topicId": "66a0ddaac03b9dcaf1afec28",
+  "title": "Bernoulli Trial and Binomial Distribution",
+  "concepts": [
+    {
+      "title": "Binomial Distribution",
+      "conceptBody": "<h3><strong>Binomial Distribution</strong></h3><p>In $\\text{n}$ independent trials of a random experiment, let $\\text{X}$ be the number of times an event $\\text{A}$ occurs. In each trial, event $\\text{A}$ has same probability as $\\text{P}\\left( \\text{A} \\right)=\\text{p}$ referred to as success. Then in a trial nonoccurrence of $\\text{A}$ is referred as failure and given by $\\text{q}=1-\\text{p}$.</p><p>Here $X$ can assumed values from 0 to $n$. Now $X=r$ means A occurs in $r$ trials and $\\left( n-r \\right)$ it does not occur this may look as</p><p>$\\underset{{}}{\\mathop{\\underset{{}}{\\mathop{\\underbrace{\\text{AA}\\ldots \\ldots \\text{A}}_{\\text{r }\\text{ times }}}}\\,}}\\,\\underset{}{\\mathop{\\underset{{}}{\\mathop{\\underbrace{\\bar{A}\\bar{A}\\ldots .\\bar{A}}_{\\text{n}-\\text{r }\\text{ times}}}}\\,}}\\,$</p><p>here $\\bar{A}$ means complement of A. Using the assumption that trials are independent, that is, they do not influence each other, hence has the probability</p><p>$\\underset{}{\\mathop{\\underset{{}}{\\mathop{\\underbrace{pp\\ldots \\ldots ..p}_{\\text{r }\\text{ times}}}}\\,}}\\,\\underset{}{\\mathop{\\underset{{}}{\\mathop{\\underbrace{qq\\ldots \\ldots \\ldots q}_{n-r\\text{ times}}}}\\,}}\\,={{p}^{r}}{{q}^{n-r}}$</p><p>and it can be arranged in $\\frac{\\text{n}!}{\\text{r}!\\left( \\text{n}-\\text{r} \\right)!}={{}^{\\text{n}}}{{\\text{C}}_{\\text{r}}}$ ways.</p><p>Now, if $\\text{X}$ denotes the number of successes in 4 trials, there $\\text{X}$ can take values $0,1,2,3$ and 4 such that</p><p>$\\text{P}\\left( \\text{X}=0 \\right)={{}^{4}}{{\\text{C}}_{0}}{{\\text{p}}^{0}}{{\\text{q}}^{4-0}},\\text{P}\\left( \\text{X}=1 \\right)={{}^{4}}{{\\text{C}}_{1}}{{\\text{p}}^{1}}{{\\text{q}}^{4}}-1$</p><p>$\\text{P}\\left( \\text{X}=2 \\right)={{}^{4}}{{\\text{C}}_{2}}{{\\text{p}}^{2}}{{\\text{q}}^{4-2}},\\text{P}\\left( \\text{X}=3 \\right)={{}^{4}}{{\\text{C}}_{3}}{{\\text{p}}^{3}}{{\\text{q}}^{4-3}}$</p><p>And $\\text{P}\\left( \\text{X}=4 \\right)={{}^{4}}{{\\text{C}}_{4}}{{\\text{p}}^{4}}{{\\text{q}}^{4-4}}.$</p><p>In other words, $\\text{P}\\left( \\text{X}=\\text{r} \\right)={{}^{4}}{{\\text{C}}_{\\text{r}}}{{\\text{p}}^{\\text{r}}}{{\\text{q}}^{4-\\text{r}}};\\text{r}=0,1,2,3,4$.</p><p>This result can be generalized to the case where the experiment is repeated $n$ times under identical conditions. The probability of $r$ successes in $n$ independent trials in a specific order say SSSFSFFSS ... SF is given by $r$-successes, $\\left( n-r \\right)$ failures</p><p>$\\text{P}\\left( \\text{SSSFSFFSS }...\\text{ SF } \\right)$&nbsp;<br>$=\\text{P}\\left( \\text{S} \\right)\\text{P}\\left( \\text{S} \\right)\\text{P}\\left( \\text{S} \\right)\\text{P}\\left( \\text{F} \\right)\\ldots \\text{P}\\left( \\text{S} \\right)\\text{P}\\left( \\text{F} \\right)$</p><p>$(\\text{by }\\text{ multiplication }\\text{ theorem) }$<br>&nbsp;</p><p>$~=\\text{pppq}\\ldots \\text{p}\\cdot \\text{q}={{\\text{p}}^{\\text{r}}}{{\\text{q}}^{\\text{n}-\\text{r}}}$</p><p>Hence the probability of getting $r$ successes or occurrence of $A$ in $r$ trials out of $n$ independent trials is</p><p>$\\text{P}\\left( \\text{X}=\\text{r} \\right)={{~}^{\\text{n}}}{{\\text{C}}_{\\text{r}}}{{\\text{p}}^{\\text{r}}}{{\\text{q}}^{\\text{n}-\\text{r}}}$</p><p>which is denoted as binomial distribution of random variable $\\text{X}$.</p><ul><li>$\\text{ }\\!\\!~\\!\\!\\text{ }$ The probability of getting at least $\\text{k}$ successes in</li></ul><p>\\(\\mathrm{P}(\\mathrm{X} \\geq \\mathrm{k})=\\sum_{\\mathrm{r}=\\mathrm{k}}^{\\mathrm{n}} \\mathrm{C}_{\\mathrm{r}} \\mathrm{p}^{\\mathrm{r}} \\mathrm{q}^{\\mathrm{n}-\\mathrm{r}}\\)</p><ul><li>$\\text{ }\\!\\!~\\!\\!\\text{ }$ The probability of getting almost $\\text{K}$ successes is</li></ul><p>\\(\\begin{array}{l}\\mathrm{P}(\\mathrm{X} \\leq \\mathrm{k})=\\sum_{\\mathrm{r}=0}^{\\mathrm{k}}{ }^{\\mathrm{n}} \\mathrm{C}_{\\mathrm{r}} \\mathrm{p}^{\\mathrm{r}} \\mathrm{q}^{\\mathrm{n}-\\mathrm{r}} \\\\ -\\sum_{\\mathrm{r}=0}^{\\mathrm{n}}{ }^{\\mathrm{n}} \\mathrm{C}_{\\mathrm{r}} \\mathrm{p}^{\\mathrm{r}} \\mathrm{q}^{\\mathrm{n}-\\mathrm{r}}=(\\mathrm{p}+\\mathrm{q})^{\\mathrm{n}}=1\\end{array}\\)</p><p><strong>Illustration</strong></p><p><strong>Ten coins are tossed simultaneously. Find the probability of getting at least 7 heads.&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>In this case $\\text{n}=10;\\text{p}=1/2;\\text{q}=1/2$</p><p>$\\text{P}\\left( \\text{X}\\ge 7 \\right)$ $~=\\text{P}\\left( \\text{X}=7 \\right)+\\text{P}\\left( \\text{X}=8 \\right)+\\text{P}\\left( \\text{X}=9 \\right)+\\text{P}\\left( \\text{X}=10 \\right)$</p><p>$~=\\left( {{~}^{10}}{{\\text{C}}_{3}}+{{~}^{10}}{{\\text{C}}_{2}}+{{~}^{10}}{{\\text{C}}_{1}}+1 \\right)\\frac{1}{{{2}^{10}}}=\\frac{176}{{{2}^{10}}}$</p>",
+      "position": 0,
+      "qcConcept": "66a0ddaac03b9dcaf1afec29"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f6a2d384bfb4a53831e",
+      "title": "If there are $n$ independent trials, $p$ and $q$ the probability of success and failure respectively, then probability of exactly $r$ successes\nor \nLet $p$ be the probability of happening an event and $q$ its failure, then the total chance of $r$ successes in $n$ trials is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6a2d384bfb4a53831f",
+      "title": "A dice is thrown ten times. If getting even number is considered as a success, then the probability of four successes is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6a2d384bfb4a538320",
+      "title": "If a dice is thrown 7 times, then the probability of obtaining 5 , exactly 4 times is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6a2d384bfb4a538321",
+      "title": "If the probability that a student is not a swimmer is $1 / 5$, then the probability that out of 5 students one is swimmer is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6a2d384bfb4a538322",
+      "title": "In a box containing 100 eggs, 10 eggs are rotten. The probability that out of a sample of 5 eggs none is rotten if the sampling is with replacement is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6a2d384bfb4a538323",
+      "title": "In a box of 10 electric bulbs, two are defective. Two bulbs are selected at random one after the other from the box. The first bulb after selection being put back in the box before making the second selection. The probability that both the bulbs are without defect is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6a2d384bfb4a538324",
+      "title": "If three dice are thrown together, then the probability of getting 5 on at least one of them is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6a2d384bfb4a538325",
+      "title": "A man makes attempts to hit the target. The probability of hitting the target is $\\frac{3}{5}$. Then the probability that $A$ hit the target exactly 2 times in 5 attempts, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6a2d384bfb4a538326",
+      "title": "If the mean and variance of a binomial variate $X$ are 2 and 1 respectively, then the probability that $X$ takes a value greater than 1 , is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6a2d384bfb4a538327",
+      "title": "If $X$ follows a binomial distribution with parameters $n=6$ and $\\quad p$ and $4(P(X=4))=P(X=2)$, then $p=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6a2d384bfb4a538328",
+      "title": "A die is tossed thrice. If getting a four is considered a success, then the mean and variance of the probability distribution of the number of successes are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6a2d384bfb4a538329",
+      "title": "A die is tossed twice. Getting a number greater than 4 is considered a success. Then the variance of the probability distribution of the number of successes is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

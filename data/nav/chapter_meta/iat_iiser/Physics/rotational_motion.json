@@ -1,0 +1,29 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff64378e1624ea7b6af1",
+  "subject": "Physics",
+  "chapter": "Rotational Motion",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff8c378e1624ea7b6cef",
+      "title": "Torque",
+      "count": 2,
+      "questionIds": [
+        "68e7a680ce75e72648a45e83",
+        "67fdff75378e1624ea7b6bb5"
+      ]
+    },
+    {
+      "id": "67fdff8c378e1624ea7b6cee",
+      "title": "Angular momentum and Angular impulse",
+      "count": 2,
+      "questionIds": [
+        "6a4521868c20d3b91d64f98a",
+        "67fdff64378e1624ea7b6aef"
+      ]
+    }
+  ]
+}

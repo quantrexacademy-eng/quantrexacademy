@@ -1,0 +1,72 @@
+{
+  "examSlug": "wbjee",
+  "examId": "61961adca5a5260118868013",
+  "subjectId": "61964f81a5a526011886801d",
+  "chapterId": "61964c73ccbc531bd958707c",
+  "subject": "Physics",
+  "chapter": "Motion In One Dimension",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64a814d6e0ff5a5425a8601a",
+      "title": "Rest and Motion",
+      "count": 1,
+      "questionIds": [
+        "64a813cde0ff5a5425a855a2"
+      ]
+    },
+    {
+      "id": "64a814d6e0ff5a5425a86019",
+      "title": "Uniform Motion",
+      "count": 5,
+      "questionIds": [
+        "64a8145ae0ff5a5425a85ad8",
+        "64a81405e0ff5a5425a857b4",
+        "64a813f1e0ff5a5425a856f7",
+        "64a813dee0ff5a5425a85645",
+        "64a813bde0ff5a5425a85508"
+      ]
+    },
+    {
+      "id": "64a814d6e0ff5a5425a86018",
+      "title": "Graphs of motion in one dimension",
+      "count": 5,
+      "questionIds": [
+        "6a22caf79b544592bfdee69f",
+        "684b1a8560ec9a39241c1759",
+        "67729bfb546ddd78415aaf6f",
+        "64a8142be0ff5a5425a85922",
+        "64a813abe0ff5a5425a8545f"
+      ]
+    },
+    {
+      "id": "64a814d6e0ff5a5425a86017",
+      "title": "Non-uniform Motion",
+      "count": 3,
+      "questionIds": [
+        "64a8147be0ff5a5425a85c0c",
+        "64a813dee0ff5a5425a85643",
+        "64a813abe0ff5a5425a8545e"
+      ]
+    },
+    {
+      "id": "64a814d6e0ff5a5425a8601b",
+      "title": "Motion Under Gravity",
+      "count": 4,
+      "questionIds": [
+        "6a22caf39b544592bfdee67d",
+        "64a8149ee0ff5a5425a85d58",
+        "64a81428e0ff5a5425a85908",
+        "64a8141ae0ff5a5425a8587b"
+      ]
+    },
+    {
+      "id": "684b1b8460ec9a39241c17c6",
+      "title": "Relative Motion",
+      "count": 1,
+      "questionIds": [
+        "684b1a8660ec9a39241c175d"
+      ]
+    }
+  ]
+}

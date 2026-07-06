@@ -1,0 +1,50 @@
+{
+  "examSlug": "kcet",
+  "examId": "62962075e7f8e9ac4daeafda",
+  "subjectId": "62962075e7f8e9ac4daeafd7",
+  "chapterId": "629621236200b1bfd3f21914",
+  "subject": "Physics",
+  "chapter": "Mathematics in Physics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64cc9b3808d12fed62b18eb3",
+      "title": "Fundamentals of Vectors",
+      "count": 1,
+      "questionIds": [
+        "64cc9a6508d12fed62b18664"
+      ]
+    },
+    {
+      "id": "64cc9b3808d12fed62b18eb2",
+      "title": "Addition and Subtraction of Vectors",
+      "count": 3,
+      "questionIds": [
+        "677d2c858098cf077bbe124a",
+        "64cc9a1708d12fed62b183ac",
+        "64cc9a0008d12fed62b182e6"
+      ]
+    },
+    {
+      "id": "64cc9b3808d12fed62b18eb4",
+      "title": "Multiplication of Vectors",
+      "count": 1,
+      "questionIds": [
+        "64cc9a7d08d12fed62b1873a"
+      ]
+    },
+    {
+      "id": "64cc9b3808d12fed62b18eb1",
+      "title": "Errors of Measurement",
+      "count": 6,
+      "questionIds": [
+        "65423e9d1b8c26a3894b729c",
+        "64cc9abc08d12fed62b18968",
+        "64cc9a9208d12fed62b187f4",
+        "64cc9a7908d12fed62b1871c",
+        "64cc9a4308d12fed62b18532",
+        "64cc99d808d12fed62b18184"
+      ]
+    }
+  ]
+}

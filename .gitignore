@@ -1,0 +1,10 @@
+node_modules/
+.vercel/
+.firebase/
+marks_data/
+tools/
+pdf_pages/
+*.log
+.DS_Store
+Thumbs.db
+.vercel

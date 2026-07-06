@@ -1,0 +1,69 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19156220c83fbf1e0bce11",
+  "chapterId": "6a192ba0e4cc9575516b566c",
+  "subject": "Physics",
+  "chapter": "Magnetic Effects of Current",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec181ef1faeb9633e23fa",
+      "title": "Magnetic Field",
+      "count": 12,
+      "questionIds": [
+        "6a1ec0f3ef1faeb9633e20ab",
+        "6a1ec0eeef1faeb9633e2090",
+        "6a1ec071ef1faeb9633e1d7d",
+        "6a1ec0d0ef1faeb9633e1fd6",
+        "6a1ec0b2ef1faeb9633e1f16",
+        "6a1ec033ef1faeb9633e1bf8",
+        "6a1ec133ef1faeb9633e2241",
+        "6a1ec132ef1faeb9633e2240",
+        "6a1ec14fef1faeb9633e22f6",
+        "6a1ec013ef1faeb9633e1b2f",
+        "6a1ec112ef1faeb9633e2172",
+        "6a1ec04eef1faeb9633e1ca4"
+      ]
+    },
+    {
+      "id": "6a1ec181ef1faeb9633e23fb",
+      "title": "Biot-Savart’s Law and Ampere’s Circuital Law",
+      "count": 4,
+      "questionIds": [
+        "6a1ec091ef1faeb9633e1e4c",
+        "6a1ec033ef1faeb9633e1bf7",
+        "6a1ec013ef1faeb9633e1b30",
+        "6a1ec112ef1faeb9633e2173"
+      ]
+    },
+    {
+      "id": "6a1ec181ef1faeb9633e23fc",
+      "title": "Magnetic Moment",
+      "count": 1,
+      "questionIds": [
+        "6a1ec013ef1faeb9633e1b31"
+      ]
+    },
+    {
+      "id": "6a1ec181ef1faeb9633e23fd",
+      "title": "Force and Torque on Current Carrying Conductor",
+      "count": 2,
+      "questionIds": [
+        "6a1ec14fef1faeb9633e22f5",
+        "6a1ec04eef1faeb9633e1ca5"
+      ]
+    },
+    {
+      "id": "6a1ec182ef1faeb9633e23fe",
+      "title": "Motion of Charged Particle in Magnetic Field",
+      "count": 4,
+      "questionIds": [
+        "6a1ec071ef1faeb9633e1d7e",
+        "6a1ec0d0ef1faeb9633e1fd5",
+        "6a1ec0b2ef1faeb9633e1f17",
+        "6a1ec08eef1faeb9633e1e38"
+      ]
+    }
+  ]
+}

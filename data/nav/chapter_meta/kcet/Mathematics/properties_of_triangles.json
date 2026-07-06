@@ -1,0 +1,40 @@
+{
+  "examSlug": "kcet",
+  "examId": "62962075e7f8e9ac4daeafda",
+  "subjectId": "62962075e7f8e9ac4daeafd9",
+  "chapterId": "64cc99bf08d12fed62b180a0",
+  "subject": "Mathematics",
+  "chapter": "Properties of Triangles",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64cc9b3608d12fed62b18e99",
+      "title": "Sine Rule and its application",
+      "count": 3,
+      "questionIds": [
+        "64cc99e808d12fed62b1820d",
+        "64cc99d008d12fed62b1813a",
+        "64cc99bf08d12fed62b1809e"
+      ]
+    },
+    {
+      "id": "64cc9b3608d12fed62b18e9b",
+      "title": "Cosine Rule and Projection Formula",
+      "count": 3,
+      "questionIds": [
+        "64cc9a3b08d12fed62b184ee",
+        "64cc9a2408d12fed62b18420",
+        "64cc99f908d12fed62b182a9"
+      ]
+    },
+    {
+      "id": "64cc9b3608d12fed62b18e9a",
+      "title": "Napiers Analogy, Area of Triangle & Half angle Formulae",
+      "count": 2,
+      "questionIds": [
+        "64cc9a7508d12fed62b186f8",
+        "64cc99e508d12fed62b181f9"
+      ]
+    }
+  ]
+}

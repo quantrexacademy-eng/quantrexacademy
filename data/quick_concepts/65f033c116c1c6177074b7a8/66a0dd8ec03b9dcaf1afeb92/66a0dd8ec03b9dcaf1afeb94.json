@@ -1,0 +1,112 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd8ec03b9dcaf1afeb92",
+  "topicId": "66a0dd8ec03b9dcaf1afeb94",
+  "title": "Linear Programming",
+  "concepts": [
+    {
+      "title": "Linear Programming Basics",
+      "conceptBody": "<h3>Linear Programming Basics</h3><p>A linear programming problem is one that is concerned with finding the optimal value (maximum or minimum) of a linear function of several variables (called objective function) subject to the conditions that the variables are non-negative and satisfy a set of linear inequalities (called linear constraints).</p><ul><li>The common region determined by all the constraints including the non-negative constraints x y ≥ 0, ≥ 0 of a linear programming problem is called the <strong>feasible region </strong>(or solution region) for the problem.</li><li>Points within and on the boundary of the feasible region represent feasible solutions of the constraints. Any point outside the feasible region is an <strong>infeasible solution </strong>.</li><li>Any point in the feasible region that gives the optimal value (maximum or minimum) of the objective function is called an <strong>optimal solution </strong>.</li></ul>",
+      "position": 0,
+      "qcConcept": "66a0dd8fc03b9dcaf1afeb95"
+    },
+    {
+      "title": "Theorems of Linear Programming",
+      "conceptBody": "<h3>Theorems of Linear Programming</h3><p><strong>Theorem 1:</strong></p><p>Let R be the feasible region (convex polygon) for a linear programming problem and let Z ax by = + be the objective function. When Z has an optimal value (maximum or minimum), where the variables x and y are subject to constraints described by linear inequalities, this optimal value must occur at a corner point (vertex) of the feasible region.</p><p><strong>Theorem 2:</strong></p><p>Let R be the feasible region for a linear programming problem, and let be the objective function. If R is bounded, then the objective function Z has both a maximum and a minimum value on R and each of these occurs at a corner point (vertex) of R.</p>",
+      "position": 1,
+      "qcConcept": "66a0dd8fc03b9dcaf1afeb96"
+    },
+    {
+      "title": "Corner point method",
+      "conceptBody": "<h3>Corner point method</h3><p>This method comprises of the following steps:</p><p><strong>(i) </strong>Find the feasible region of the linear programming problem and determine its corner points (vertices).</p><p><strong>(ii) </strong>Evaluate the objective function Z ax by = + at each corner point. Let M and m respectively be the largest and smallest values at these points.</p><p><strong>(iii) </strong>If the feasible region is bounded, M and m respectively are the maximum and minimum values of the objective function.</p><p>If the feasible region is unbounded, then,</p><ol><li>M is the maximum value of the objective function, if the open half plane determined by ax by M + &gt; has no point in common with the feasible region. Otherwise, the bjective function has no maximum value.</li><li>m is the minimum value of the objective function, if the open half plane determined by x by m + &lt; has no point in common with the feasible region. Otherwise, the objective function has no minimum value.</li></ol>",
+      "position": 2,
+      "qcConcept": "66a0dd8fc03b9dcaf1afeb97"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66891f2b1010aab82c8aa58c",
+      "title": "A linear programming problem is as follows:\nMaximize $Z=30 x-18 y$\nsubject to the constraints,\n$\\begin{aligned}\n& 3 x+4 y \\leq 60 \\\\\n& 5 x-3 y \\geq 20 \\\\\n& x, y \\geq 0\n\\end{aligned}$<br>In the feasible region, the maximum value of $Z$ occurs at",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2b1010aab82c8aa58d",
+      "title": "In an Linear programming problem, the restrictions or limitations under which the objective function is to be optimised are called",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2b1010aab82c8aa58e",
+      "title": "In an LPP, if the objective function $Z=m x+$ ny has the same maximum value on the two corner points of the feasible region and these two corner points are lying on the same line segment of the constraint then the number of points at which Zmax occurs is?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2b1010aab82c8aa58f",
+      "title": "Maximize $z=4 x+6 y$\nsubject to\n$3 x+2 y \\leq 12, x+y \\geq 2, x, y \\geq 0$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa590",
+      "title": "If there are $m$ sources and $n$ destinations in a transportation matrix, the total number of basic variables in a basic feasible solution is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa591",
+      "title": "Consider the given problem:\n$\\begin{aligned}\n& 5 x+y \\leq 100 \\\\\n& x+y \\leq 60 \\\\\n& x \\geq 0 \\\\\n& y \\geq 0\n\\end{aligned}$<br>If we solve the above linear equations by the graphical method of Linear Programming, then the following point will not form the the boundary of the feasible region.",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa592",
+      "title": "In linear programming problems when does feasibility change ?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa593",
+      "title": "For the constraint of a linear optimizing function $z=x_1+x_2$, given by $x_1+x_2 \\leq 1,3 x_1+x_2 \\geq 3 \\mid$ and $x_1, x_2 \\geq 0$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa594",
+      "title": "Which of the following is not a vertex of the positive region bounded by the inequalities $2 x+3 y \\leq 6,5 x+3 y \\leq$ 15 and $x, y \\geq 0$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa595",
+      "title": "The intermediate solutions of constraints must be checked by substituting them back into",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa596",
+      "title": "For the constraints of a L.P. problem given by $x_1+2 x_2 \\leq 2000, x_1+x_2 \\leq 1500, x_2 \\leq 600$ and $x_1, x_2 \\geq 0$, which one does not lie in the positive bounded region",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa597",
+      "title": "The vertex of common graph of inequalities $2 x+y \\geq 2$ and $x-y \\leq 3$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa598",
+      "title": "The value of objective function is maximum under linear constraints",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa599",
+      "title": "The objective function $z=4 x+3 y$ can be maximized subjected to the constraints $3 x+4 y \\leq 24,8 x+6 y \\leq 48, x \\leq$ $5, y \\leq 6 ; x, y \\geq 0$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

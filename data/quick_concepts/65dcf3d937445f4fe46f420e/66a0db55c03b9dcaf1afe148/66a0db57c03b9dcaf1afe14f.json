@@ -1,0 +1,82 @@
+{
+  "subjectId": "65dcf3d937445f4fe46f420e",
+  "chapterId": "66a0db55c03b9dcaf1afe148",
+  "topicId": "66a0db57c03b9dcaf1afe14f",
+  "title": "Speed of Gas",
+  "concepts": [
+    {
+      "title": "RMS, Average and MP Velocities",
+      "conceptBody": "<h3>RMS, Average and MP Velocities</h3><p>$\\begin{array}{l} {} &amp; \\text{m}=\\text{ mass }\\text{ of }\\text{ each }\\text{ molecule }\\text{ {M}'}=\\text{ mass }\\text{ of }\\text{ gas } \\\\ {} &amp; \\text{N}=\\text{ no}\\text{. }\\text{ of }\\text{ molecules }\\text{ V}=\\text{ volume }\\text{ of }\\text{ gas } \\\\ {} &amp; \\therefore {{\\text{v}}_{\\text{rms}}}=\\sqrt{\\left( \\frac{3\\text{P}}{\\rho } \\right)}=\\sqrt{\\frac{3\\text{RT}}{\\text{M}\\left( \\text{ in }\\text{ kg } \\right)}}=\\sqrt{\\frac{3\\text{KT}}{\\text{m}}} \\\\ \\end{array}$</p><p>where $\\text{K}=\\left( \\frac{\\text{R}}{{{\\text{N}}_{\\text{A}}}} \\right)\\equiv$ Boltzmann constant $=\\left( \\begin{array}{*{35}{l}} 1.38 &amp; {{10}^{-23}}\\text{ J}/\\text{K} \\\\ \\end{array} \\right)$</p><p>${{\\text{v}}_{\\text{avg}}}=\\left( \\frac{{{\\text{v}}_{1}}+{{\\text{v}}_{2}}+\\ldots {{\\text{v}}_{\\text{n}}}}{\\text{N}} \\right)=\\sqrt{\\frac{8\\text{RT}}{\\pi \\text{M}}}=\\sqrt{\\frac{8\\text{P}}{\\pi \\rho }}=\\sqrt{\\frac{8\\text{KT}}{\\pi \\text{m}}}$</p><p>${{\\text{v}}_{\\text{mp}}}=\\sqrt{\\frac{2\\text{RT}}{\\text{M}}}=\\sqrt{\\frac{2\\text{P}}{\\rho }}=\\sqrt{\\left( \\frac{2\\text{KT}}{\\text{m}} \\right)}$</p><p>${{\\text{v}}_{\\text{rms}}}&gt;{{\\text{v}}_{\\text{avg}}}&gt;{{\\text{v}}_{\\text{mp}}}$</p>",
+      "position": 0,
+      "qcConcept": "66a0db57c03b9dcaf1afe150"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66585cbba5616da869a6aa9a",
+      "title": "The average speed $v$ and r.m.s. speed $\\bar{v}$ of the molecules are related as",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66585cbba5616da869a6aa9b",
+      "title": "the respective speeds of five molecules are $2,1.5,1.6,1.6$ and $1.2 \\mathrm{~km} / \\mathrm{sec}$. The most probable speed in $\\mathrm{km} / \\mathrm{sec}$ will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66585cbba5616da869a6aa9c",
+      "title": "According to the kinetic theory of gases the r.m.s. velocity of gas molecules is directly proportional to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66585cbba5616da869a6aa9d",
+      "title": "By what factor the r.m.s. velocity will change, if the temperature is raised from $327^{\\circ} \\mathrm{C}$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66585cbba5616da869a6aa9e",
+      "title": "If the oxygen $\\left(\\mathrm{O}_2\\right)$ has root mean square velocity of $C \\mathrm{~ms}^{-1}$, then root mean square velocity of the hydrogen $\\left(H_2\\right)$ will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66585cbba5616da869a6aa9f",
+      "title": "If the molecular weight of two gases are $M_1$ and $M_1$, then at a temperature the ratio of root mean square velocity $v_1$ and $v_2$ will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66585cbba5616da869a6aaa0",
+      "title": "In thermal equilibrium, the average velocity of gas molecules is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66585cbba5616da869a6aaa1",
+      "title": "The temperature of an ideal gas is increased from $27^{\\circ} \\mathrm{C}$ to $927^{\\circ} \\mathrm{C}$. The root mean square speed of its molecules becomes",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66585cbba5616da869a6aaa2",
+      "title": "Let A and \\(\\mathrm{B}\\) the two gases and given :\r\n\\(\\frac{T_A}{M_A}=4 \\cdot \\frac{T_B}{M_B}\\) Where \\(T\\) is the temperature and \\(M\\) is molecular mass. If \\(C_A\\) and \\(C_B\\) are the r.m.s. speed, then the ratio \\(\\frac{C_A}{C_B}\\) will be equal to:",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66585cbba5616da869a6aaa3",
+      "title": "If \\(V_H, V_N\\) and \\(V_O\\) denote the root mean square velocities of molecules of hydrogen, nitrogen and oxygen respectively at a given temperature, then:",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66585cbba5616da869a6aaa4",
+      "title": "Which of the following statement is true",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

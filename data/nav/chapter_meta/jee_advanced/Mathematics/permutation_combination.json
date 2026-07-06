@@ -1,0 +1,97 @@
+{
+  "examSlug": "jee_advanced",
+  "examId": "616059150283de43c87e3e21",
+  "subjectId": "6160570c0283de43c87e3e17",
+  "chapterId": "6160252aaac414b50bcf64af",
+  "subject": "Mathematics",
+  "chapter": "Permutation Combination",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64b16adff23ac7d519f9b8fd",
+      "title": "Permutation",
+      "count": 3,
+      "questionIds": [
+        "685102bd6bba689a3eb09c78",
+        "64b16a9ff23ac7d519f9b61c",
+        "64b169ddf23ac7d519f9af29"
+      ]
+    },
+    {
+      "id": "6a0be51944d287c9361e5cde",
+      "title": "Division of Identical items",
+      "count": 1,
+      "questionIds": [
+        "6a0be50d44d287c9361e5c82"
+      ]
+    },
+    {
+      "id": "64b16adff23ac7d519f9b902",
+      "title": "Combination",
+      "count": 4,
+      "questionIds": [
+        "6a0be51244d287c9361e5cb2",
+        "64b16a6ff23ac7d519f9b467",
+        "64b16a50f23ac7d519f9b34a",
+        "64b16a3ef23ac7d519f9b2a5"
+      ]
+    },
+    {
+      "id": "64b16adff23ac7d519f9b8fe",
+      "title": "Arrangement under Constraint",
+      "count": 15,
+      "questionIds": [
+        "66965dced603121f43a3ebf3",
+        "64b16aaaf23ac7d519f9b680",
+        "64b16a99f23ac7d519f9b5de",
+        "64b16a87f23ac7d519f9b53c",
+        "64b16a7bf23ac7d519f9b4cd",
+        "64b16a68f23ac7d519f9b429",
+        "64b16a5df23ac7d519f9b3bd",
+        "64b16a44f23ac7d519f9b2d9",
+        "64b16a3df23ac7d519f9b29a",
+        "64b16a37f23ac7d519f9b268",
+        "64b16a24f23ac7d519f9b1b7",
+        "64b16a24f23ac7d519f9b1b6",
+        "64b169f3f23ac7d519f9aff7",
+        "64b169f2f23ac7d519f9afec",
+        "64b169edf23ac7d519f9afc2"
+      ]
+    },
+    {
+      "id": "64b16adff23ac7d519f9b8fc",
+      "title": "Selection of one or more item",
+      "count": 3,
+      "questionIds": [
+        "64b16aabf23ac7d519f9b687",
+        "64b16a92f23ac7d519f9b5a1",
+        "64b169cdf23ac7d519f9ae99"
+      ]
+    },
+    {
+      "id": "64b16adff23ac7d519f9b8ff",
+      "title": "Division and Distribution of Distinct Items",
+      "count": 2,
+      "questionIds": [
+        "64b16a87f23ac7d519f9b53d",
+        "64b16a1cf23ac7d519f9b171"
+      ]
+    },
+    {
+      "id": "64b16adff23ac7d519f9b901",
+      "title": "Dearrangement",
+      "count": 1,
+      "questionIds": [
+        "64b16a3df23ac7d519f9b29c"
+      ]
+    },
+    {
+      "id": "64b16adff23ac7d519f9b900",
+      "title": "Geometric Permutation",
+      "count": 1,
+      "questionIds": [
+        "64b16a37f23ac7d519f9b269"
+      ]
+    }
+  ]
+}

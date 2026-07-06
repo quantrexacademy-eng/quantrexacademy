@@ -1,0 +1,70 @@
+{
+  "subjectId": "65f032625469774910ab0337",
+  "chapterId": "66a0dc7bc03b9dcaf1afe686",
+  "topicId": "66a0dc7fc03b9dcaf1afe699",
+  "title": "Reduction to Crude Metal",
+  "concepts": [
+    {
+      "title": "Smelting",
+      "conceptBody": "<h3><strong>Smelting</strong></h3><p>The process of extracting a metal in the state of fusion is called <i><strong>smelting </strong></i>. In this process the ore is mixed with carbon, obtained after the above reactions and heated in suitable furnace. A suitable <i>flux </i>is added during the operation to convert the non–fusible gangue to fusible slag. The metallic oxide is reduced by carbon and the metal may be obtained in the molten state or as vapours which are condensed. Metals like tin, zinc or lead are obtained by this process.</p><p>$Sn{{O}_{2}}+2C\\to Sn+2CO$; $ZnO+C\\to Zn+CO$</p><p>$F{{e}_{2}}{{O}_{3}}+3CO\\to 2Fe+3C{{O}_{2}}$</p><p><i>Flux and slag </i>: Flux is a substance that is added during smelting to convert infusible silicons or earthy impurities into fusible material known as slag. <strong>Impurities + Flux = Slag </strong>. The slag is immiscible with the metal and has a low melting point and density. The slag floats on the metal and protects it from oxidation. It is removed from the furnance through the slag hole. If the impurities in the ore are acidic ( <i>SiO </i>2 ) in nature, a basic flux e.g., <i>CaO, MgO, FeO </i>etc. are added; and if the impurities are basic ( <i>CaO, FeO </i>, etc.) then on acidic flux ( <i>SiO </i>2 ) is used. The gangue or matrix present in the ore is refractory or non–fusible in nature but it reacts with the flux forming fusible slag which does not mix with the molten metal and forms the upper layer. Slag are usually silicates.</p><p>$\\underset{\\text{Flux}}{\\mathop{CaO}}\\,\\,\\,+\\underset{\\text{Impurities}}{\\mathop{Si{{O}_{2}}}}\\,\\to \\,\\,\\,\\underset{\\text{Slag}}{\\mathop{CaSi{{O}_{3}}}}\\,$ ; $\\underset{\\text{Impurities}}{\\mathop{Si{{O}_{2}}}}\\,+\\,\\,FeO\\to \\underset{\\text{Slag}}{\\mathop{FeSi{{O}_{3}}}}\\,$</p>",
+      "position": 0,
+      "qcConcept": "66a0dc7fc03b9dcaf1afe69a"
+    },
+    {
+      "title": "Reduction by Alumnium",
+      "conceptBody": "<h3><strong>Reduction by Aluminium</strong></h3><p>The process of reduction is used in the case of those oxides which can not be easily reduced by carbon. In this process, metallic oxides ore are mixed with aluminium powder commonly called as thermite and placed in a steel crucible lined inside with a refractory material and ignited by magnesium ribon. By the use of this process a number of metals such as chromium and manganese are obtained on a commercial scale in highly pure state.</p><p>$C{{r}_{2}}{{O}_{3}}+2Al\\to A{{l}_{2}}{{O}_{3}}+2Cr$ ; $2Mn{{O}_{2}}+4Al\\to 2A{{l}_{2}}{{O}_{3}}+3Mn$</p><p>Large amount of heat energy is released during reduction, which fuses both the alumina and the metal.</p>",
+      "position": 1,
+      "qcConcept": "66a0dc7fc03b9dcaf1afe69b"
+    },
+    {
+      "title": "Self Reduction Process",
+      "conceptBody": "<h3><strong>Self Reduction Process</strong></h3><p>This process is also called autoreduction process or air reduction process. The sulphide ores of less electropositive metals like <i><strong>Hg, Pb, Cu </strong></i>etc., are heated in air as to convert part of the ore into oxide or sulphate which then reacts with the remaining sulphide ore to give the metal and sulphur dioxide. No external reducing agent is used in this process.</p>",
+      "position": 2,
+      "qcConcept": "66a0dc7fc03b9dcaf1afe69c"
+    },
+    {
+      "title": "Electrolytic Reduction Process",
+      "conceptBody": "<h3><strong>Electrolytic Reduction Process</strong></h3><p>This process is used in the extraction of the alkali and alkaline earth metals, zinc and aluminium. The material from which a metal to be obtained is first smelted by heating and then electrolysed. Sometimes, some other salt is mixed to lower the melting point of the substance taken. For example,</p><p>electrolysis</p><p>At anode (Oxidation) : $C{{l}^{-}}\\xrightarrow{-{{e}^{-}}}Cl$ ; $Cl+Cl\\to C{{l}_{2}}$,</p><p>At cathode (Reduction) : $N{{a}^{+}}+{{e}^{-}}\\to Na$</p>",
+      "position": 3,
+      "qcConcept": "66a0dc7fc03b9dcaf1afe69d"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66891f2b1010aab82c8aa57e",
+      "title": "Electrometallurgical process is used to extract",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2b1010aab82c8aa57f",
+      "title": "Function of the flux added during smelting is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2b1010aab82c8aa580",
+      "title": "In blast furnace iron oxide is reduced by",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2b1010aab82c8aa581",
+      "title": "Furnaces are lined with calcium oxide because",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2b1010aab82c8aa582",
+      "title": "Which of the following metals cannot be extracted by carbon reduction process",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2b1010aab82c8aa583",
+      "title": "In order to refine blister copper it is melted in a furnace and is stirred with green logs of wood. The purpose is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a1915fc6f6e9bf164f6d502",
+  "chapterId": "6a1928f6aff54f2bc3ca5627",
+  "subject": "Biology",
+  "chapter": "Cell Cycle and Cell Division",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec1e2ef1faeb9633e2564",
+      "title": "Interphase",
+      "count": 1,
+      "questionIds": [
+        "6a1ec067ef1faeb9633e1d3f"
+      ]
+    },
+    {
+      "id": "6a1ec1e2ef1faeb9633e2565",
+      "title": "M-phase (Mitotic Phase)",
+      "count": 1,
+      "questionIds": [
+        "6a1ec10bef1faeb9633e2147"
+      ]
+    }
+  ]
+}

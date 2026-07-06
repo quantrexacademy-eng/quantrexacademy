@@ -1,0 +1,30 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19156220c83fbf1e0bce11",
+  "chapterId": "6a192ba0e4cc9575516b5674",
+  "subject": "Physics",
+  "chapter": "Work Power Energy",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec1e3ef1faeb9633e2566",
+      "title": "Circular motion",
+      "count": 1,
+      "questionIds": [
+        "6a1ec0ccef1faeb9633e1fbe"
+      ]
+    },
+    {
+      "id": "6a1ec1e3ef1faeb9633e2567",
+      "title": "Energy",
+      "count": 4,
+      "questionIds": [
+        "6a1ec0eeef1faeb9633e208f",
+        "6a1ec12fef1faeb9633e2229",
+        "6a1ec152ef1faeb9633e2307",
+        "6a1ec110ef1faeb9633e2166"
+      ]
+    }
+  ]
+}

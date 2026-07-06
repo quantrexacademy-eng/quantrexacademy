@@ -1,0 +1,44 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa60d64468eb1307ceb0b0",
+  "chapterId": "67fdff50378e1624ea7b6a12",
+  "subject": "Biology",
+  "chapter": "Biological Classification",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff88378e1624ea7b6cb4",
+      "title": "Kingdom Monera",
+      "count": 1,
+      "questionIds": [
+        "67fdff51378e1624ea7b6a18"
+      ]
+    },
+    {
+      "id": "67fdff88378e1624ea7b6cb5",
+      "title": "Viruses",
+      "count": 2,
+      "questionIds": [
+        "68e7a67dce75e72648a45e5a",
+        "67fdff66378e1624ea7b6b05"
+      ]
+    },
+    {
+      "id": "6a4521888c20d3b91d64f994",
+      "title": "Introduction",
+      "count": 1,
+      "questionIds": [
+        "6a4521828c20d3b91d64f955"
+      ]
+    },
+    {
+      "id": "67fdff88378e1624ea7b6cb3",
+      "title": "Kingdom Fungi",
+      "count": 1,
+      "questionIds": [
+        "67fdff50378e1624ea7b6a10"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd52c03b9dcaf1afea5f",
+  "topicId": "66a0dd58c03b9dcaf1afea83",
+  "title": "Diameter to ellipse",
+  "concepts": [
+    {
+      "title": "Properties of diameter",
+      "conceptBody": "<h3><strong>Diameter&nbsp;</strong></h3><p><strong>Definition : </strong>The locus of the mid-point of a system of parallel chords of an ellipse is called a diameter and the chords are called its double ordinates.</p><p>The point where the diameter intersects the ellipse is called the vertex of the diameter.</p><p>The equation of the diameter bisecting the chords of slope $m$ of the ellipse $\\frac{{{x}^{2}}}{{{a}^{2}}}+\\frac{{{y}^{2}}}{{{b}^{2}}}=1$ is $y=\\frac{-{{b}^{2}}}{{{a}^{2}}m}x$</p><p><strong>Conjugate diameters : &nbsp;</strong>Two diameters of an ellipse are said to be conjugate diameters if each bisects the chords parallel to the other.</p><p>Let $y={{m}_{1}}x$ and $y={{m}_{2}}x$ be conjugate diameters with respect tothe ellipse $\\frac{{{x}^{2}}}{{{a}^{2}}}+\\frac{{{y}^{2}}}{{{b}^{2}}}=1$. Then, $y$ $={{\\text{m}}_{2}}\\text{x}$ bisects the system of chords parallel to $\\text{y}={{\\text{m}}_{1}}\\text{x}$. So, its equation is</p><p>$y=-\\frac{{{b}^{2}}}{{{a}^{2}}{{m}_{1}}}x$ ...(i)</p><p>Clearly, (i) and $\\text{y}={{\\text{m}}_{2}}\\text{x}$ represent the same time.</p><p>$\\frac{-{{\\text{b}}^{2}}}{{{\\text{a}}^{2}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{m}}_{1}}}\\Rightarrow {{\\text{m}}_{1}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{m}}_{2}}=\\frac{-{{\\text{b}}^{2}}}{{{\\text{a}}^{2}}}$</p><p>Thus, two straight lines $y={{m}_{1}}x$ and $y={{m}_{2}}x$ are conjugate diameters of the ellipse $\\frac{{{x}^{2}}}{{{a}^{2}}}+\\frac{{{y}^{2}}}{{{b}^{2}}}=$ 1, if ${{\\text{m}}_{1}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{m}}_{2}}=\\frac{-{{\\text{b}}^{2}}}{{{\\text{a}}^{2}}}$</p><p><strong>REMARK : </strong>In an ellipse, the major axis bisects all chords parallel to the minor axis and vice-versa, therefore major and minor axes of an ellipse are conjugate diameters of the ellipse but they do not satisfy the condition ${{\\text{m}}_{1}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{m}}_{2}}=-{{\\text{b}}^{2}}/{{\\text{a}}^{2}}$ are the only perpendicular conjugate diameters..</p>",
+      "position": 0,
+      "qcConcept": "66a0dd58c03b9dcaf1afea84"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f492d384bfb4a538088",
+      "title": "An ellipse is drawn by taking a diameter of the circle $(x-1)^2+y^2=4$ as its semi-minor axis and a diameter of the circle $x^2+(y-2)^2=16$ is a semi-major axis. If the center of the ellipse is at the origin and its axes are the coordinate axes, then the equation of the ellipse is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f492d384bfb4a538089",
+      "title": "In the ellipse $x^{\\wedge} 2 \\div a^{\\wedge} 2+y^{\\wedge} 2 \\div b^{\\wedge} 2=1 y=x$ and $3 y+2 x=0$ are a pair of conjugate diameters then the eccentricity of the ellipse is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f492d384bfb4a53808a",
+      "title": "An ellipse is drawn by taking a diameter of the circle $(x-1)^2+y^2=1$ as its semiminor axis and a diameter of the circle $x^2+(y-2)^2=4$ is semi-major axis.If the centre of the ellipse is at the origin and its axes are the coordinate axes, then the equation of the ellipse is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f492d384bfb4a53808b",
+      "title": "An ellipse is drawn by taking the diameter of the circle $(x-1)^2+y^2=1$ as its semiminor axis and the diameter of the circle $x^2+(y-2)^2=4$ as the semi-major axis, if the center of the ellipse at the origin and its axis are the coordinates axes, then the equation of the ellipse is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f492d384bfb4a53808c",
+      "title": "If one end of a diameter of the ellipse $4 x^2+y^2=16$ is $(\\sqrt{3}, 2)$, then the other end is:",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

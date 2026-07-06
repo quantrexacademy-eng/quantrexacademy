@@ -1,0 +1,29 @@
+{
+  "examSlug": "manipal_met",
+  "examId": "678ea9152ea3ea0be38439eb",
+  "subjectId": "678ea9a09cc79e5f592bdc12",
+  "chapterId": "67921db01d5b5072da5e9d1c",
+  "subject": "Chemistry",
+  "chapter": "Environmental Chemistry",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67921ef51d5b5072da5ea7ff",
+      "title": "Air Pollution",
+      "count": 2,
+      "questionIds": [
+        "67921e151d5b5072da5ea038",
+        "67921dfd1d5b5072da5e9f76"
+      ]
+    },
+    {
+      "id": "67921ef51d5b5072da5ea7fe",
+      "title": "Water Pollution",
+      "count": 2,
+      "questionIds": [
+        "67921e151d5b5072da5ea037",
+        "67921db01d5b5072da5e9d1a"
+      ]
+    }
+  ]
+}

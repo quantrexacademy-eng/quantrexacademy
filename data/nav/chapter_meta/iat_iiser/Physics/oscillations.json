@@ -1,0 +1,41 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff4e378e1624ea7b69f4",
+  "subject": "Physics",
+  "chapter": "Oscillations",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff87378e1624ea7b6ca2",
+      "title": "Simple Harmonic Motion",
+      "count": 1,
+      "questionIds": [
+        "67fdff64378e1624ea7b6af2"
+      ]
+    },
+    {
+      "id": "67fdff87378e1624ea7b6ca1",
+      "title": "Time Period and Frequency",
+      "count": 5,
+      "questionIds": [
+        "6a4521868c20d3b91d64f984",
+        "67fdff75378e1624ea7b6bb9",
+        "67fdff75378e1624ea7b6bb4",
+        "67fdff6a378e1624ea7b6b36",
+        "67fdff57378e1624ea7b6a6a"
+      ]
+    },
+    {
+      "id": "67fdff87378e1624ea7b6ca0",
+      "title": "Applications of SHM",
+      "count": 3,
+      "questionIds": [
+        "6a4521868c20d3b91d64f986",
+        "67fdff75378e1624ea7b6bb7",
+        "67fdff4e378e1624ea7b69f2"
+      ]
+    }
+  ]
+}

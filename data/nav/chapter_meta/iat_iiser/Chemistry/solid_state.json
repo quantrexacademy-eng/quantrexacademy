@@ -1,0 +1,28 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa602f4468eb1307ceb0ae",
+  "chapterId": "67fdff4c378e1624ea7b69d0",
+  "subject": "Chemistry",
+  "chapter": "Solid State",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff85378e1624ea7b6c8d",
+      "title": "Cubic system",
+      "count": 2,
+      "questionIds": [
+        "67fdff59378e1624ea7b6a8b",
+        "67fdff4c378e1624ea7b69ce"
+      ]
+    },
+    {
+      "id": "67fdff85378e1624ea7b6c8e",
+      "title": "Non-stoichiometric defects",
+      "count": 1,
+      "questionIds": [
+        "67fdff54378e1624ea7b6a41"
+      ]
+    }
+  ]
+}

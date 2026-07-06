@@ -1,0 +1,73 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d379647479b8e869647b",
+  "chapterId": "680920093a10446a207fdd85",
+  "subject": "Mathematics",
+  "chapter": "Probability",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6809206b3a10446a207fe20c",
+      "title": "Classical Definition of Probability",
+      "count": 6,
+      "questionIds": [
+        "6a45fe535aa758e832e06ec6",
+        "6a45fe535aa758e832e06ec4",
+        "68e78b106105b8763ce72c74",
+        "680920153a10446a207fde01",
+        "680920133a10446a207fddea",
+        "6809200e3a10446a207fddb5"
+      ]
+    },
+    {
+      "id": "6809206b3a10446a207fe20d",
+      "title": "Conditional Probability and Multiplication Theorem",
+      "count": 6,
+      "questionIds": [
+        "68e78b116105b8763ce72c7a",
+        "680920283a10446a207fdeb9",
+        "680920223a10446a207fde7f",
+        "6809201f3a10446a207fde65",
+        "680920183a10446a207fde20",
+        "680920103a10446a207fddcb"
+      ]
+    },
+    {
+      "id": "6809206b3a10446a207fe20b",
+      "title": "Independent Events",
+      "count": 2,
+      "questionIds": [
+        "6a45fe535aa758e832e06ec3",
+        "6809200d3a10446a207fddaf"
+      ]
+    },
+    {
+      "id": "6809206b3a10446a207fe20f",
+      "title": "Total Probability",
+      "count": 2,
+      "questionIds": [
+        "680920253a10446a207fdea3",
+        "680920203a10446a207fde6c"
+      ]
+    },
+    {
+      "id": "6809206b3a10446a207fe20e",
+      "title": "Baye's Theorem",
+      "count": 1,
+      "questionIds": [
+        "6809201d3a10446a207fde53"
+      ]
+    },
+    {
+      "id": "6809206b3a10446a207fe20a",
+      "title": "Bernoulli Trial and Binomial Distribution",
+      "count": 3,
+      "questionIds": [
+        "680920143a10446a207fddf8",
+        "680920113a10446a207fddd5",
+        "680920093a10446a207fdd83"
+      ]
+    }
+  ]
+}

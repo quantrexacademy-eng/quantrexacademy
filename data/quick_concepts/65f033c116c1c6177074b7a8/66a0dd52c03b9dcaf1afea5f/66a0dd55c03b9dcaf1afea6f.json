@@ -1,0 +1,46 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd52c03b9dcaf1afea5f",
+  "topicId": "66a0dd55c03b9dcaf1afea6f",
+  "title": "Chord of ellipse",
+  "concepts": [
+    {
+      "title": "Equation of pair of tangents ",
+      "conceptBody": "<p><strong>&nbsp;Equation of pair of tangents to an ellipse from an external point $\\left( {{x}_{1}},{{y}_{1}} \\right)$.&nbsp;</strong></p><p>Let the given ellipse be $\\frac{{{x}^{2}}}{{{a}^{2}}}+\\frac{{{y}^{2}}}{{{b}^{2}}}=1$</p><p>Let $\\text{P}\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}} \\right)$ be an external point.</p><p>$\\left( \\frac{{{x}^{2}}}{{{a}^{2}}}+\\frac{{{y}^{2}}}{{{b}^{2}}}-1 \\right)\\left( \\frac{x_{1}^{2}}{{{a}^{2}}}+\\frac{y_{1}^{2}}{{{b}^{2}}}-1 \\right)={{\\left( \\frac{{{x}_{1}}}{{{a}^{2}}}+\\frac{{{y}_{1}}}{{{b}^{2}}}-1 \\right)}^{2}}$</p><p>This can be written as \\(\\mathrm{SS}_1=\\mathrm{T}^2\\)</p><p>where $\\text{S},{{\\text{S}}_{1}}$ and $\\text{T}$ have usual meanings</p><p><strong>&nbsp;Equation to the chord of contact of tangents drawn from a point $\\left( {{x}_{1}},{{y}_{1}} \\right)$ is&nbsp;</strong></p><p><strong>\\(\\frac{x_1}{a^2}+\\frac{y y_1}{b^2}=1\\)</strong></p>",
+      "position": 0,
+      "qcConcept": "66a0dd55c03b9dcaf1afea70"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f492d384bfb4a538079",
+      "title": "Chords of an ellipse are drawn through the positive end of the minor axis. Then their mid point lies on",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f492d384bfb4a53807a",
+      "title": "If $\\alpha$ and $\\beta$ are the eccentric angles of the extremities of a focal chord of an ellipse, then the eccentricity of the ellipse is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f492d384bfb4a53807b",
+      "title": "Find the length of the chord of the ellipse $\\frac{x^2}{25}+\\frac{y^2}{16}=1$, whose middle point is $\\left(\\frac{1}{2}, \\frac{2}{5}\\right)$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f492d384bfb4a53807c",
+      "title": "If $l x+m y+n=0$ represents a chord of the ellipse $b^2 x^2+a^2 y^2=a^2 b^2$ whose eccentric angles differ by $90^{\\circ}$, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f492d384bfb4a53807d",
+      "title": "Statement II The condition on $a$ and $\\mathrm{b}$ for which two distinct chords of the ellipse $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=$ 2 passing through $(a,-b)$ are bisected by the line $x+y=b$ is $a^2+6 a b-7 b^2\\gt0$ Statement II Equation of chord of the ellipse $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ whose mid-point $\\left(x_1, y_1\\right)$ is $T=S_1$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

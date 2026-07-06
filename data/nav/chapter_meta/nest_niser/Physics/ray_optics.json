@@ -1,0 +1,74 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d2ad647479b8e8696479",
+  "chapterId": "680920293a10446a207fdecb",
+  "subject": "Physics",
+  "chapter": "Ray Optics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6809206f3a10446a207fe23d",
+      "title": "Mirror Formula, Reflection in Spherical Mirror",
+      "count": 4,
+      "questionIds": [
+        "680920463a10446a207fe024",
+        "680920463a10446a207fe01f",
+        "680920383a10446a207fdf86",
+        "680920363a10446a207fdf68"
+      ]
+    },
+    {
+      "id": "6809206f3a10446a207fe23f",
+      "title": "Critical angle and total internal reflection",
+      "count": 3,
+      "questionIds": [
+        "68e78b136105b8763ce72c92",
+        "680920463a10446a207fe021",
+        "680920383a10446a207fdf83"
+      ]
+    },
+    {
+      "id": "6809206f3a10446a207fe23c",
+      "title": "Refraction of light from plane surface",
+      "count": 6,
+      "questionIds": [
+        "68e78b126105b8763ce72c84",
+        "680920483a10446a207fe03a",
+        "680920443a10446a207fe00e",
+        "6809203e3a10446a207fdfc8",
+        "6809203b3a10446a207fdfa7",
+        "680920303a10446a207fdf20"
+      ]
+    },
+    {
+      "id": "6809206f3a10446a207fe23b",
+      "title": "Lens Formula, Refraction of light from curved surface",
+      "count": 6,
+      "questionIds": [
+        "6a45fe555aa758e832e06ed4",
+        "680920473a10446a207fe02f",
+        "680920423a10446a207fdff9",
+        "6809203c3a10446a207fdfb5",
+        "680920343a10446a207fdf51",
+        "680920293a10446a207fdec9"
+      ]
+    },
+    {
+      "id": "6809206f3a10446a207fe240",
+      "title": "Prism and Dispersion of Light",
+      "count": 1,
+      "questionIds": [
+        "680920413a10446a207fdfe7"
+      ]
+    },
+    {
+      "id": "6809206f3a10446a207fe23e",
+      "title": "Optical Instruments",
+      "count": 1,
+      "questionIds": [
+        "680920383a10446a207fdf7d"
+      ]
+    }
+  ]
+}

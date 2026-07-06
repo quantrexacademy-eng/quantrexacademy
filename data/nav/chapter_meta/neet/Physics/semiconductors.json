@@ -1,0 +1,147 @@
+{
+  "examSlug": "neet",
+  "examId": "616059730283de43c87e3e22",
+  "subjectId": "616057190283de43c87e3e18",
+  "chapterId": "6160245904d4c5ba91160e33",
+  "subject": "Physics",
+  "chapter": "Semiconductors",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66bcc13eae81d148616b317b",
+      "title": "Energy Bands in Solids",
+      "count": 3,
+      "questionIds": [
+        "66bcbe04ae81d148616b15ea",
+        "66bcbdd2ae81d148616b145b",
+        "66bcbdb8ae81d148616b1391"
+      ]
+    },
+    {
+      "id": "66bcc13eae81d148616b317d",
+      "title": "Semiconductors",
+      "count": 12,
+      "questionIds": [
+        "66bcc081ae81d148616b29d6",
+        "66bcc01cae81d148616b26b5",
+        "66bcc006ae81d148616b25fe",
+        "66bcbfefae81d148616b254a",
+        "66bcbfc2ae81d148616b23e4",
+        "66bcbf95ae81d148616b227b",
+        "66bcbef8ae81d148616b1d8d",
+        "66bcbedfae81d148616b1cc9",
+        "66bcbeb7ae81d148616b1b87",
+        "66bcbea4ae81d148616b1af1",
+        "66bcbe8fae81d148616b1a46",
+        "66bcbdd1ae81d148616b1458"
+      ]
+    },
+    {
+      "id": "66bcc13eae81d148616b3178",
+      "title": "Diodes",
+      "count": 35,
+      "questionIds": [
+        "6a3d1aec6497277835df186c",
+        "6a3d1aea6497277835df1858",
+        "6a0ae781c9ba4cd28e74403b",
+        "6a0ae77fc9ba4cd28e744025",
+        "6a0ae77dc9ba4cd28e744016",
+        "682c9a9ac2281abe1696a0c8",
+        "66bcc096ae81d148616b2a81",
+        "66bcc068ae81d148616b290f",
+        "66bcc04fae81d148616b2846",
+        "66bcc036ae81d148616b277e",
+        "66bcc01cae81d148616b26b6",
+        "66bcc005ae81d148616b25fb",
+        "66bcbfefae81d148616b2547",
+        "66bcbfabae81d148616b232d",
+        "66bcbf7fae81d148616b21c6",
+        "66bcbf68ae81d148616b2111",
+        "66bcbf52ae81d148616b205e",
+        "66bcbf3bae81d148616b1faa",
+        "66bcbf25ae81d148616b1ef7",
+        "66bcbf0eae81d148616b1e43",
+        "66bcbedfae81d148616b1cc7",
+        "66bcbeb7ae81d148616b1b88",
+        "66bcbea4ae81d148616b1af3",
+        "66bcbea3ae81d148616b1ae5",
+        "66bcbe8fae81d148616b1a47",
+        "66bcbe67ae81d148616b1908",
+        "66bcbe35ae81d148616b1778",
+        "66bcbdeaae81d148616b1520",
+        "66bcbdd2ae81d148616b145a",
+        "66bcbdd1ae81d148616b1459",
+        "66bcbdb9ae81d148616b1395",
+        "66bcbd9fae81d148616b12cb",
+        "66bcbd9fae81d148616b12c8",
+        "66bcbd86ae81d148616b1201",
+        "66bcbd86ae81d148616b11ff"
+      ]
+    },
+    {
+      "id": "66bcc13eae81d148616b317a",
+      "title": "Rectifier",
+      "count": 4,
+      "questionIds": [
+        "66bcc068ae81d148616b290e",
+        "66bcc036ae81d148616b2780",
+        "66bcbdb8ae81d148616b1392",
+        "66bcbd9fae81d148616b12ca"
+      ]
+    },
+    {
+      "id": "66bcc13eae81d148616b317c",
+      "title": "Special purpose diodes",
+      "count": 5,
+      "questionIds": [
+        "66bcc0afae81d148616b2b46",
+        "66bcbf25ae81d148616b1ef6",
+        "66bcbe4eae81d148616b1841",
+        "66bcbe1cae81d148616b16af",
+        "66bcbdb9ae81d148616b1394"
+      ]
+    },
+    {
+      "id": "66bcc13eae81d148616b3179",
+      "title": "Logic gates",
+      "count": 35,
+      "questionIds": [
+        "682c9a94c2281abe1696a0a8",
+        "66bcc09aae81d148616b2aa0",
+        "66bcc098ae81d148616b2a8d",
+        "66bcc0b1ae81d148616b2b59",
+        "66bcc0b1ae81d148616b2b57",
+        "66bcc081ae81d148616b29d7",
+        "66bcc068ae81d148616b2910",
+        "66bcc04fae81d148616b2847",
+        "66bcc036ae81d148616b277f",
+        "66bcc01dae81d148616b26b7",
+        "66bcc005ae81d148616b25fd",
+        "66bcbfefae81d148616b2549",
+        "66bcbfd8ae81d148616b2495",
+        "66bcbfc2ae81d148616b23e3",
+        "66bcbfabae81d148616b232e",
+        "66bcbf95ae81d148616b227a",
+        "66bcbf7fae81d148616b21c7",
+        "66bcbf68ae81d148616b2113",
+        "66bcbf3bae81d148616b1fab",
+        "66bcbf0eae81d148616b1e41",
+        "66bcbef8ae81d148616b1d8f",
+        "66bcbedfae81d148616b1ccb",
+        "66bcbeceae81d148616b1c40",
+        "66bcbeb7ae81d148616b1b86",
+        "66bcbe94ae81d148616b1a6e",
+        "66bcbe7eae81d148616b19c0",
+        "66bcbe67ae81d148616b1909",
+        "66bcbe4eae81d148616b1842",
+        "66bcbe35ae81d148616b1779",
+        "66bcbe1dae81d148616b16b2",
+        "66bcbe03ae81d148616b15e8",
+        "66bcbdeaae81d148616b1521",
+        "66bcbdb9ae81d148616b1393",
+        "66bcbda0ae81d148616b12cc",
+        "66bcbd86ae81d148616b1200"
+      ]
+    }
+  ]
+}

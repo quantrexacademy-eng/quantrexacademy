@@ -1,0 +1,52 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19156220c83fbf1e0bce11",
+  "chapterId": "6a192b9ee4cc9575516b565c",
+  "subject": "Physics",
+  "chapter": "Motion In One Dimension",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec16def1faeb9633e23aa",
+      "title": "Rest and Motion",
+      "count": 1,
+      "questionIds": [
+        "6a1ec00eef1faeb9633e1b0e"
+      ]
+    },
+    {
+      "id": "6a1ec16def1faeb9633e23ab",
+      "title": "Relative Motion",
+      "count": 1,
+      "questionIds": [
+        "6a1ec073ef1faeb9633e1d8e"
+      ]
+    },
+    {
+      "id": "6a1ec16def1faeb9633e23ac",
+      "title": "Graphs of motion in one dimension",
+      "count": 2,
+      "questionIds": [
+        "6a1ec094ef1faeb9633e1e5d",
+        "6a1ec113ef1faeb9633e2176"
+      ]
+    },
+    {
+      "id": "6a1ec16def1faeb9633e23ad",
+      "title": "Motion Under Gravity",
+      "count": 1,
+      "questionIds": [
+        "6a1ec0adef1faeb9633e1ef7"
+      ]
+    },
+    {
+      "id": "6a1ec16eef1faeb9633e23ae",
+      "title": "Uniform Motion",
+      "count": 1,
+      "questionIds": [
+        "6a1ec12cef1faeb9633e2216"
+      ]
+    }
+  ]
+}

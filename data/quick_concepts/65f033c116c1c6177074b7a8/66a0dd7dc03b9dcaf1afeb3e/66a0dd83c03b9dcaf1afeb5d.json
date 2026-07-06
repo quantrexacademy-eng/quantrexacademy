@@ -1,0 +1,76 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd7dc03b9dcaf1afeb3e",
+  "topicId": "66a0dd83c03b9dcaf1afeb5d",
+  "title": "Negative and reciprocal Properties",
+  "concepts": [
+    {
+      "title": "Properties of inverse trigonometric functions part 2",
+      "conceptBody": "<h3><strong>Properties of inverse trigonometric functions</strong></h3><p><strong>(i) $\\text{si}{{\\text{n}}^{-1}}\\left( -\\text{x} \\right)=-\\text{si}{{\\text{n}}^{-1}}\\text{x }\\!\\!~\\!\\!\\text{ }$ </strong>Provided that $-1\\le \\text{x}\\le 1$</p><p>Let $\\text{si}{{\\text{n}}^{-1}}\\left( -x \\right)=\\theta $</p><p>or $-\\text{x}=\\text{sin}\\theta \\Rightarrow \\text{x}=-\\text{sin}\\theta $ or $\\text{x}=\\text{sin}\\left( -\\theta \\right)$</p><p>or $-\\theta =\\text{si}{{\\text{n}}^{-1}}x\\text{ }\\!\\!~\\!\\!\\text{ }$ or $\\text{ }\\!\\!~\\!\\!\\text{ }\\theta =-\\text{si}{{\\text{n}}^{-1}}x$</p><p>$\\text{si}{{\\text{n}}^{-1}}\\left( -\\text{x} \\right)=-\\text{si}{{\\text{n}}^{-1}}\\text{x}$</p><p><strong>(ii) $\\text{co}{{\\text{s}}^{-1}}\\left( -\\text{x} \\right)=\\pi -\\text{co}{{\\text{s}}^{-1}}\\text{x }\\!\\!~\\!\\!\\text{ }$ </strong>Provided that $-1\\le \\text{x}\\le 1$</p><p><strong>(iii) $\\text{tai}{{\\text{n}}^{-1}}\\left( -\\text{x} \\right)=-\\text{ta}{{\\text{n}}^{-1}}\\text{x }\\!\\!~\\!\\!\\text{ }$ </strong>Provided that $-\\infty &lt;\\text{x}&lt;\\infty $</p><p><strong>(iv) $\\text{co}{{\\text{t}}^{-1}}\\left( -\\text{x} \\right)=\\pi -\\text{co}{{\\text{t}}^{-1}}\\text{x }\\!\\!~\\!\\!\\text{ }$ </strong>Provided that $-\\infty &lt;\\text{x}&lt;\\infty $</p><p><strong>(v) $\\text{se}{{\\text{c}}^{-1}}\\left( -\\text{x} \\right)=\\pi -\\text{se}{{\\text{c}}^{-1}}\\text{x }\\!\\!~\\!\\!\\text{ }$ </strong>Provided that $-\\infty &lt;\\text{x}\\le 1$ or $1\\le \\text{x}&lt;\\infty $</p><p><strong>(vi) $\\text{cose}{{\\text{c}}^{-1}}\\left( -\\text{x} \\right)-\\text{cose}{{\\text{c}}^{-1}}\\text{x }\\!\\!~\\!\\!\\text{ }$ </strong>Provided that $-\\infty &lt;\\text{x}\\le -1$ or $1\\le \\text{x}&lt;\\infty $</p>",
+      "position": 0,
+      "qcConcept": "66a0dd83c03b9dcaf1afeb5e"
+    },
+    {
+      "title": "Tan inverse properties",
+      "conceptBody": "<h3><strong>Tan inverse properties</strong></h3><p>(i) $2\\text{ta}{{\\text{n}}^{-1}}\\text{x}=\\text{ta}{{\\text{n}}^{-1}}\\frac{2\\text{x}}{1-{{\\text{x}}^{2}}},-1&lt;\\text{x}&lt;1$</p><p>(ii) $2\\text{tan}x=\\text{si}{{\\text{n}}^{-1}}\\frac{2\\text{x}}{1-{{\\text{x}}^{2}}},-1&lt;\\text{x}&lt;1$</p><p>(iii) $2\\text{ta}{{\\text{n}}^{-1}}\\text{x}=\\text{co}{{\\text{s}}^{-1}}\\frac{1-{{\\text{x}}^{2}}}{1+{{\\text{x}}^{2}}},\\text{x}&gt;0$</p>",
+      "position": 1,
+      "qcConcept": "66a0dd84c03b9dcaf1afeb5f"
+    },
+    {
+      "title": "Conversion Properties",
+      "conceptBody": "<h3><strong>&nbsp;Conversion Property&nbsp;</strong></h3><p><strong>(i) $\\text{si}{{\\text{n}}^{-1}}=\\text{cose}{{\\text{c}}^{-1}}\\left( \\frac{1}{x} \\right);-1\\le x\\le 1$ and $\\text{cose}{{\\text{c}}^{-1}}x=\\text{si}{{\\text{n}}^{-1}}\\left( \\frac{1}{x} \\right),x\\in R-\\left( -1,1 \\right)$&nbsp;</strong></p><p>Let $\\text{si}{{\\text{n}}^{-1}}\\text{x}=\\text{y }\\!\\!~\\!\\!\\text{ }\\Rightarrow \\text{x}=\\text{siny}\\Rightarrow \\text{cosecy}=\\frac{1}{\\text{x}}\\text{ }\\!\\!~\\!\\!\\text{ }\\Rightarrow \\text{y}=\\text{cose}{{\\text{c}}^{-1}}\\frac{1}{\\text{x}}$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ si}{{\\text{n}}^{-1}}x=\\text{cose}{{\\text{c}}^{-1}}\\left( \\frac{1}{x} \\right)$</p><p><strong>(ii) $\\text{co}{{\\text{s}}^{-1}}x=\\text{se}{{\\text{c}}^{-1}}\\left( \\frac{1}{x} \\right)\\text{ }\\!\\!~\\!\\!\\text{ }-1\\le x\\le 1$ and $\\text{se}{{\\text{c}}^{-1}}x=\\text{co}{{\\text{s}}^{-1}}\\left( \\frac{1}{x} \\right),x\\in R-\\left( 1,1 \\right)$&nbsp;</strong></p><p><strong>(iii) $\\text{ta}{{\\text{n}}^{-1}}x=\\text{co}{{\\text{t}}^{-1}}\\left( \\frac{1}{x} \\right)\\text{ }\\!\\!~\\!\\!\\text{ }x\\in R$ and $\\text{co}{{\\text{t}}^{-1}}x=\\text{ta}{{\\text{n}}^{-1}}\\left( \\frac{1}{x} \\right),x&gt;0=\\pi +\\text{ta}{{\\text{n}}^{-1}}\\left( \\frac{1}{x} \\right)x&lt;0$&nbsp;</strong></p><p>$=\\pi +\\text{ta}{{\\text{n}}^{-1}}\\left( \\frac{1}{x} \\right)x&lt;0$</p>",
+      "position": 2,
+      "qcConcept": "66a0dd84c03b9dcaf1afeb60"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f632d384bfb4a5381d4",
+      "title": "$\\tan ^{-1} x+\\cot ^{-1}(x+1)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f632d384bfb4a5381d5",
+      "title": "$\\cot ^{-1} x+\\tan ^{-1} 3=\\frac{\\pi}{2}$, then $x=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f632d384bfb4a5381d6",
+      "title": "$\\tan ^{-1} 1+\\tan ^{-1} 2+\\tan ^{-1} 3=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f632d384bfb4a5381d7",
+      "title": "The principal value of $\\sin ^{-1}\\left(\\sin \\frac{5 \\pi}{3}\\right)$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f632d384bfb4a5381d8",
+      "title": "$\\cos ^{-1}\\left(\\cos \\frac{7 \\pi}{6}\\right)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f632d384bfb4a5381d9",
+      "title": "$\\tan ^{-1} \\frac{1}{\\sqrt{x^2-1}}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f632d384bfb4a5381da",
+      "title": "$\\sec ^{-1}\\left[\\sec \\left(-30^{\\circ}\\right)\\right]=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f632d384bfb4a5381db",
+      "title": "$\\cot ^{-1}\\left[\\frac{\\sqrt{1-\\sin x}+\\sqrt{1+\\sin x}}{\\sqrt{1-\\sin x}-\\sqrt{1+\\sin x}}\\right]=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19157088eaed7250738f35",
+  "chapterId": "6a192bbb49662a7489133194",
+  "subject": "Chemistry",
+  "chapter": "Hydrogen",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec189ef1faeb9633e241f",
+      "title": "Preparation and Properties of Hydrogen",
+      "count": 2,
+      "questionIds": [
+        "6a1ec016ef1faeb9633e1b42",
+        "6a1ec115ef1faeb9633e2182"
+      ]
+    },
+    {
+      "id": "6a1ec189ef1faeb9633e2420",
+      "title": "Chemical properties of hydrogen",
+      "count": 1,
+      "questionIds": [
+        "6a1ec0b5ef1faeb9633e1f2a"
+      ]
+    }
+  ]
+}

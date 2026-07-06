@@ -1,0 +1,40 @@
+{
+  "examSlug": "viteee",
+  "examId": "61bb57e81213731910ea0b6f",
+  "subjectId": "61bb58181213731910ea0b70",
+  "chapterId": "61bb820e84bb3c3de959b92e",
+  "subject": "Physics",
+  "chapter": "Thermodynamics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64e459afec226f2f4360af49",
+      "title": "First Law of Thermodynamics",
+      "count": 2,
+      "questionIds": [
+        "67793a5ebd05e008167c112d",
+        "64e4594dec226f2f4360aae5"
+      ]
+    },
+    {
+      "id": "64e459afec226f2f4360af48",
+      "title": "Heat Engine, Refrigerator and\nSecond Law of Thermodynamics",
+      "count": 2,
+      "questionIds": [
+        "64e458d0ec226f2f4360a621",
+        "64e458d0ec226f2f4360a620"
+      ]
+    },
+    {
+      "id": "64e459afec226f2f4360af47",
+      "title": "Thermodynamic Processes",
+      "count": 4,
+      "questionIds": [
+        "67793a5ebd05e008167c112b",
+        "64e45903ec226f2f4360a813",
+        "64e458ddec226f2f4360a69b",
+        "64e458d0ec226f2f4360a61f"
+      ]
+    }
+  ]
+}

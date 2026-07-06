@@ -1,0 +1,27 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d392647479b8e869647c",
+  "chapterId": "68091fc33a10446a207fdaaa",
+  "subject": "Biology",
+  "chapter": "Digestion and Absorption",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6809205d3a10446a207fe154",
+      "title": "Pancreas",
+      "count": 1,
+      "questionIds": [
+        "68091fc33a10446a207fdaa8"
+      ]
+    },
+    {
+      "id": "6809205d3a10446a207fe155",
+      "title": "Stomach",
+      "count": 1,
+      "questionIds": [
+        "68091fca3a10446a207fdaf5"
+      ]
+    }
+  ]
+}

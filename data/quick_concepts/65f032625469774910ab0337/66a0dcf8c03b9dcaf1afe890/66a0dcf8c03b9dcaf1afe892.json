@@ -1,0 +1,88 @@
+{
+  "subjectId": "65f032625469774910ab0337",
+  "chapterId": "66a0dcf8c03b9dcaf1afe890",
+  "topicId": "66a0dcf8c03b9dcaf1afe892",
+  "title": "Quantitative measures in chemical equations",
+  "concepts": [
+    {
+      "title": "Chemical Reactions",
+      "conceptBody": "<h3><strong>&nbsp;Chemical Equations and Stoichiometry</strong></h3><p>Let the balanced chemical equation we have is</p><p>$\\text{Mn}{{\\text{O}}_{2}}+4\\text{HCl}\\to \\text{MnC}{{\\text{l}}_{2}}+2{{\\text{H}}_{2}}\\text{O}+\\text{C}{{\\text{l}}_{2}}$</p><p>The quantitative information drawn from this balanced chemical equation is</p><p>(a) The molar ratio in which two reactants (MnO 2 and HCl) reacting is 1: 4.</p><p>(b) The molar ratio between two products can be known i.e. moles of ${{\\text{H}}_{2}}\\text{O}$ produced would be double the moles of $\\text{MnC}{{\\text{l}}_{2}}$ produced.</p><p>(c) The initial moles of $\\text{Mn}{{\\text{O}}_{2}}$ and $\\text{HCl}$ (to be taken in vessel) for the reaction to occur may not necessarily be 1 and 4 respectively or also should not be in the molar ratio of 1: 4.</p><p>(d) We can start reaction with$\\text{Mn}{{\\text{O}}_{2}}$ and $\\text{HCl}$ taken in any molar ratio, but the moles of two reacting will always be in the molar ratio of 1: 4.</p><p>(e) The balanced chemical equation should follow the law of conservation of mass.</p><p>Let us consider the same chemical system with initial composition (in terms of mole) as$\\text{n}_{\\text{Mn}{{\\text{O}}_{2}}}^{o}\\text{,}\\,\\,\\text{n}_{\\text{MnC}{{\\text{l}}_{2}}}^{o},\\text{n}_{{{\\text{H}}_{2}}O}^{o}$ and $\\text{n}_{\\text{C}{{\\text{l}}_{2}}}^{o}$. The $\\text{n}_{\\text{HCl}}^{o}$ is four times of $\\text{n}_{\\text{Mn}{{\\text{O}}_{2}}}^{o}$. When the reaction occurs, these mole numbers change as the reaction progresses. The mole numbers of the various species do not change independently but the change are related by the stoichiometric coefficients in the chemical equation. Let after time ‘t’ from the commencement of reaction, the moles of $\\text{Mn}{{\\text{O}}_{2}}$ reacting be $\\text{x}$, then the moles of $\\text{HCl}$ reacting in the same time interval be $4\\text{x}$ since $\\text{Mn}{{\\text{O}}_{2}}$ and $\\text{HCl}$ react in the molar ratio of 1: 4.</p><p>Thus, after time t, the composition of the system would be</p><p>${{\\text{n}}_{\\text{Mn}{{\\text{O}}_{2}}}}\\text{ }=\\text{n}_{\\text{Mn}{{\\text{O}}_{2}}}^{o}-\\text{x}$</p><p>${{\\text{n}}_{\\text{HCl}}}\\text{ }=\\text{n}_{\\text{HCl}}^{o}-4\\text{x}$</p><p>${{\\text{n}}_{\\text{MnC}{{\\text{l}}_{2}}}}\\text{ }=\\text{n}_{\\text{MnC}{{\\text{l}}_{2}}}^{o}+\\text{x}$</p><p>${{\\text{n}}_{{{\\text{H}}_{2}}\\text{O}}}\\text{ }=\\text{n}_{\\text{Mn}{{\\text{O}}_{2}}}^{o}+2\\text{x}$</p><p>${{\\text{n}}_{\\text{C}{{\\text{l}}_{2}}}}\\text{ }=\\text{n}_{\\text{C}{{\\text{l}}_{2}}}^{o}+\\text{x}$</p><p>The algebraic signs, + and – indicates that the reactants are consumed and products are produced. After long time interval from the commencement of reaction i.e. after $\\infty $ time, the composition of the system would be</p><p>${{\\text{n}}_{\\text{Mn}{{\\text{O}}_{2}}}}=0,{{\\text{n}}_{\\text{HCl}}}=0$</p><p>${{\\text{n}}_{\\text{MnC}{{\\text{l}}_{2}}}}=\\text{n}_{\\text{MnC}{{\\text{l}}_{2}}}^{o}+\\text{n}_{\\text{Mn}{{\\text{O}}_{2}}}^{o}=\\text{n}_{\\text{MnC}{{\\text{l}}_{2}}}^{o}+\\frac{\\text{n}_{\\text{HCl}}^{o}}{4}$</p><p>${{\\text{n}}_{{{\\text{H}}_{2}}\\text{O}}}=\\text{n}_{{{\\text{H}}_{2}}\\text{O}}^{o}+2\\text{n}_{\\text{Mn}{{\\text{O}}_{2}}}^{o}=\\text{n}_{{{\\text{H}}_{2}}\\text{O}}^{o}+\\frac{\\text{n}_{\\text{HCl}}^{o}}{2}$</p><p>${{\\text{n}}_{\\text{C}{{\\text{l}}_{2}}}}=\\text{n}_{\\text{C}{{\\text{l}}_{2}}}^{o}+\\text{n}_{\\text{Mn}{{\\text{O}}_{2}}}^{o}=\\text{n}_{\\text{C}{{\\text{l}}_{2}}}^{o}+\\frac{\\text{n}_{\\text{HCl}}^{o}}{4}$</p><p>Example 1</p><p>Calculate the weight of time ($\\text{CaO}$) that can be prepared by heating $200~\\text{kg}$ of limestone $\\left( \\text{CaC}{{\\text{O}}_{3}} \\right)$ which is $95%$ pure.</p><p><strong>Solution.&nbsp;</strong></p><p>$\\text{CaC}{{\\text{O}}_{3}}\\to \\text{CaO}+\\text{C}{{\\text{O}}_{2}}$</p><p>Actual amount of $\\text{CaC}{{\\text{O}}_{3}}=\\frac{95}{100}\\times 200000~\\text{g}=190000~\\text{g}$.</p><p>Since $\\text{Ca}$ atoms are conserved,</p><p>$\\therefore \\quad \\text{ moles of Ca in CaC}{{\\text{O}}_{3}}=\\text{ moles of Ca in CaO}$</p><p>1 moles of $\\text{CaC}{{\\text{O}}_{3}}=1$ moles of $\\text{CaO}$</p><p>$\\frac{190000}{100}=\\frac{\\text{ Wt}\\text{. of CaO}}{56}$</p><p>Wt. of $\\text{CaO}=106400=106.4~\\text{kg}$</p>",
+      "position": 0,
+      "qcConcept": "66a0dcf9c03b9dcaf1afe893"
+    },
+    {
+      "title": "Limiting Reagents",
+      "conceptBody": "<h3>&nbsp;<strong>Concept of Limiting Reagent</strong></h3><p>In the single-reactant reactions, the calculations are carried out with only that amount of the reactant which has converted to the product.</p><p>In the reactions where more than one reactant are involved, one has first to identify the <strong>limiting reactant, i.e., the reactant which is completely consumed. </strong>All calculations are to be carried out with the amount of the limiting reactant only. <strong>Now the question is how to know the limiting reactant? </strong>The procedure is simple as illustrated below:</p><p>Initially … 5 mole 12 mole 0 mole</p><p>A + 2 B $\\to$ 4 C</p><p>If $\\text{A}$ is the limiting reactant: Moles of $\\text{C}$ produced $=20$</p><p>If $\\text{B}$ is the limiting reactant: Moles of $\\text{C}$ produced $=24$</p><p><strong>The reactant producing the least number of moles of the product is the limiting reactant </strong>and hence $\\text{A}$ is the limiting reactant. Thus;</p><p>Initially … 5 mole 12 mole 0 mole</p><p>A + 2 B $\\to$ 4 C</p><p>Finally … 0 mole 2 mole 20 mole</p><p>The limiting reactant can also be ascertained by the knowing the initial number of equivalents (or milli-equivalents) of each reactant. <strong>The reactant with the least number of equivalents (or milli-equivalents) is the limiting reactant. </strong>The equivalent method to identify the limiting reactant can be applied even if the chemical equation is not balanced.</p><p>Suppose you are given 5 moles of $\\text{Mn}{{\\text{O}}_{2}}$ and 18 moles of $\\text{HCl}$ and you have to calculate the maximum amount of $\\text{MnC}{{\\text{l}}_{2}}$ being produced.</p><p>The balanced equation is:</p><p>$\\text{Mn}{{\\text{O}}_{2}}+4\\text{HCl}\\to \\text{MnC}{{\\text{l}}_{2}}+2{{\\text{H}}_{2}}\\text{O}+\\text{C}{{\\text{l}}_{2}}$</p><p>initial moles 5, 18</p><p>Now since 1 mole of $\\text{Mn}{{\\text{O}}_{2}}$ reacts completely with 4 mole of $\\text{HCl}$ to produce 1 mole of $\\text{MnC}{{\\text{l}}_{2}}$. Therefore, 5 mole of $\\text{MnC}{{\\text{l}}_{2}}$ will react with 20 mole of $\\text{HCl}$. But since moles of $\\text{HCl}$ is only 18. So, $\\text{HCl}$ will be the reagent, which will be consumed first, and hence $\\text{HCl}$ is the limiting reagent. If $\\text{Mn}{{\\text{O}}_{2}}$ have been the limiting reagent 5 mole of it would have given 5 moles of $\\text{MnC}{{\\text{l}}_{2}}$ but it is not so. As one can see from the balanced chemical equation that 1 mole of $\\text{MnC}{{\\text{l}}_{2}}$ is produced from 4 mole of $\\text{HCl}$. So 18 moles of $\\text{HCl}$ will produce 4.5 moles of $\\text{MnC}{{\\text{l}}_{2}}$. So, one can define limiting reagent. \"The reagent producing the least number of moles of products is the limiting reagent.\"</p><p>YIELD IN A REACTION WITH LIMITING REAGENT</p><p>For reactions where one of the reagent is limiting, the product yield would not be $100%$ but would depend on amount of limiting reagent.</p><p>$\\text{Percentage yield }=\\frac{\\text{ actual yield }}{\\text{ Theoretical maximum yield }}\\times 100$</p><p>$%\\text{ yield of the product }=\\frac{\\text{ actual yield }}{\\text{ Theoretical maximum yield }}\\times 100$</p><p>Example 2</p><p>The reaction, $2\\text{C}+{{\\text{O}}_{2}}\\to 2\\text{CO}$ is carried out by taking $24~\\text{g}$ of carbon and $96~\\text{g}{{\\text{O}}_{2}}$, find out:</p><p>(a) Which reactant is left in excess?</p><p>(b) How much of it is left?</p><p>(c) How many mole of CO are formed?</p><p>(d) How many gm of other reactant should be taken so that nothing is left at the end of reaction?</p><p><strong>Solution.&nbsp;</strong></p><p>$2\\text{C}\\quad +\\quad {{\\text{O}}_{2}}\\quad \\to \\quad 2\\text{CO}$</p><p>Mole before reaction $\\frac{24}{12}$ $\\frac{96}{32}$</p><p>= 2 = 3 0</p><p>Mole after reaction 0 2 2</p><p>(a) ${{\\text{O}}_{2}}$ is left in excess.</p><p>(b) 2 mole of ${{\\text{O}}_{2}}$ or $64\\text{gm}{{\\text{O}}_{2}}$ is left</p><p>(c) 2 mole of CO or $56\\text{gmCO}$ is formed</p><p>(d) To use ${{\\text{O}}_{2}}$ completely total 6 mole of carbon or $72\\text{gm}$ carbon is needed.</p>",
+      "position": 1,
+      "qcConcept": "66a0dcf9c03b9dcaf1afe894"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66584e581814fc7e94209e22",
+      "title": "A sample of calcium carbonate $\\left(\\mathrm{CaCO}_3\\right)$ has the following percentage composition : $\\mathrm{Ca}=40 \\% ; \\mathrm{C}=$ $12 \\% ; O=48 \\%$\nIf the law of constant proportions is true, then the weight of calcium in $4 g$ of a sample of calcium carbonate obtained from another source will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e23",
+      "title": "$n g$ of substance $X$ reacts with $m g$ of substance $Y$ to form $p g$ of substance $R$ and $q g$ of substance $S$. This reaction can be represented as, $X+Y=R+S$. The relation which can be established in the amounts of the reactants and the products will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e24",
+      "title": "$2.76 \\mathrm{~g}$ of silver carbonate on being strongly heated yield a residue weighing",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e25",
+      "title": "The percentage of $\\mathrm{P}_2 \\mathrm{O}_5$ in diammonium hydrogen phosphate $\\left(\\mathrm{NH}_4\\right)_2 \\mathrm{HPO}_4$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e26",
+      "title": "On complete combustion, 0.500 g of an organic compound gave 0.150 of carbon dioxide. Determine the percentage composition of carbon in the compound.",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e27",
+      "title": "Under similar conditions of pressure and temperature, 40 ml of slightly moist hydrogen chloride gas is mixed with 20 ml of ammonia gas, the final volume of gas at the same temperature and pressure will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e28",
+      "title": "A hydrocarbon contains $86 \\%$ carbon, $488 \\mathrm{ml}$ of the hydrocarbon weight $1.68 \\mathrm{~g}$ at STP. Then the hydrocarbon is an",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e29",
+      "title": "The mass of $\\mathrm{BaCO}_3$ produced when excess $\\mathrm{CO}_2$ is bubbled through a solution of $0.205 \\mathrm{~mol}$ $\\mathrm{Ba}(\\mathrm{OH})_2$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e2a",
+      "title": "In the reaction, $4 \\mathrm{NH}_3(\\mathrm{~g})+5 \\mathrm{O}_2(\\mathrm{~g}) \\rightarrow 4 \\mathrm{NO}(\\mathrm{g})+6 \\mathrm{H}_2 \\mathrm{O}(\\mathrm{g})$, When 1 mole of ammonia and 1 mole of $\\mathrm{O}_2$ are made to react to completion",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e2b",
+      "title": "If \\(1 \\frac{1}{2}\\) moles of oxygen combine with \\(\\mathrm{Al}\\) to form \\(\\mathrm{Al}_2 \\mathrm{O}_3\\) the weight of \\(\\mathrm{Al}\\) used in the reaction is \\((\\mathrm{Al}=27)\\)",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e581814fc7e94209e2c",
+      "title": "If isobutane and n-butane are present in a gas, then how much oxygen should be required for complete combustion of $5 \\mathrm{~kg}$ of this gas",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

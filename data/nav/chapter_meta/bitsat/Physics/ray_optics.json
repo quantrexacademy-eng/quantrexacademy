@@ -1,0 +1,98 @@
+{
+  "examSlug": "bitsat",
+  "examId": "61a8a124e8ce0dc8a5c62d2c",
+  "subjectId": "61a8a2c2e8ce0dc8a5c62d2d",
+  "chapterId": "61e7bd71a2dd607688d6c01b",
+  "subject": "Physics",
+  "chapter": "Ray Optics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64c0e85b6f5bfc7ab78aed3d",
+      "title": "Reflection of Light from Plane Mirror",
+      "count": 1,
+      "questionIds": [
+        "64c0e82e6f5bfc7ab78aeb4d"
+      ]
+    },
+    {
+      "id": "64c0e85b6f5bfc7ab78aed3a",
+      "title": "Mirror Formula, Reflection in Spherical Mirror",
+      "count": 2,
+      "questionIds": [
+        "67726cf8c49e8ef28ee2b33d",
+        "64c0e7c76f5bfc7ab78ae7cf"
+      ]
+    },
+    {
+      "id": "64c0e85b6f5bfc7ab78aed3c",
+      "title": "Critical angle and total internal reflection",
+      "count": 1,
+      "questionIds": [
+        "64c0e81e6f5bfc7ab78aeac0"
+      ]
+    },
+    {
+      "id": "64c0e85b6f5bfc7ab78aed39",
+      "title": "Refraction of light from plane surface",
+      "count": 5,
+      "questionIds": [
+        "64c0e80f6f5bfc7ab78aea3d",
+        "64c0e7d86f5bfc7ab78ae859",
+        "64c0e7af6f5bfc7ab78ae6f4",
+        "64c0e79f6f5bfc7ab78ae674",
+        "64c0e7906f5bfc7ab78ae5f6"
+      ]
+    },
+    {
+      "id": "64c0e85a6f5bfc7ab78aed38",
+      "title": "Lens Formula, Refraction of light from curved surface",
+      "count": 9,
+      "questionIds": [
+        "67726d10c49e8ef28ee2b3f9",
+        "64c0e8036f5bfc7ab78ae9d5",
+        "64c0e8036f5bfc7ab78ae9d0",
+        "64c0e7f66f5bfc7ab78ae960",
+        "64c0e7f56f5bfc7ab78ae954",
+        "64c0e7db6f5bfc7ab78ae86e",
+        "64c0e7d76f5bfc7ab78ae84f",
+        "64c0e7af6f5bfc7ab78ae6f5",
+        "64c0e7906f5bfc7ab78ae5f5"
+      ]
+    },
+    {
+      "id": "64c0e85a6f5bfc7ab78aed36",
+      "title": "Combination of Lens and Mirrors",
+      "count": 4,
+      "questionIds": [
+        "64c0e82f6f5bfc7ab78aeb53",
+        "64c0e7e76f5bfc7ab78ae8dd",
+        "64c0e7ca6f5bfc7ab78ae7e5",
+        "64c0e7746f5bfc7ab78ae4fa"
+      ]
+    },
+    {
+      "id": "64c0e85b6f5bfc7ab78aed3b",
+      "title": "Prism and Dispersion of Light",
+      "count": 3,
+      "questionIds": [
+        "65b7b87a97ae24e9e2db8cc3",
+        "64c0e7e56f5bfc7ab78ae8c7",
+        "64c0e7da6f5bfc7ab78ae865"
+      ]
+    },
+    {
+      "id": "64c0e85a6f5bfc7ab78aed37",
+      "title": "Optical Instruments",
+      "count": 6,
+      "questionIds": [
+        "67726d11c49e8ef28ee2b3ff",
+        "67726d05c49e8ef28ee2b3a0",
+        "65b7b87097ae24e9e2db8c5c",
+        "64c0e7bc6f5bfc7ab78ae76c",
+        "64c0e7bc6f5bfc7ab78ae76b",
+        "64c0e7836f5bfc7ab78ae57b"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b89d4b564dfab4f94d0",
+  "chapterId": "66d58559a75f05ee8564f69e",
+  "subject": "Chemistry",
+  "chapter": "Solid State",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d586bea75f05ee8565043e",
+      "title": "Properties and Types of Solids",
+      "count": 2,
+      "questionIds": [
+        "66d58661a75f05ee8565002e",
+        "66d585dea75f05ee8564fb70"
+      ]
+    },
+    {
+      "id": "66d586bea75f05ee8565043d",
+      "title": "Crystal Structure of Solids",
+      "count": 4,
+      "questionIds": [
+        "66d58614a75f05ee8564fd60",
+        "66d58613a75f05ee8564fd5e",
+        "66d585ffa75f05ee8564fca2",
+        "66d58591a75f05ee8564f8ac"
+      ]
+    },
+    {
+      "id": "66d586bea75f05ee8565043c",
+      "title": "Cubic system",
+      "count": 10,
+      "questionIds": [
+        "66d5864da75f05ee8564ff72",
+        "66d5864da75f05ee8564ff71",
+        "66d58638a75f05ee8564feb1",
+        "66d58625a75f05ee8564fe04",
+        "66d585eca75f05ee8564fbf4",
+        "66d585dca75f05ee8564fb60",
+        "66d585bba75f05ee8564fa2e",
+        "66d585baa75f05ee8564fa1e",
+        "66d58581a75f05ee8564f812",
+        "66d5857da75f05ee8564f7f4"
+      ]
+    },
+    {
+      "id": "66d586bea75f05ee8565043f",
+      "title": "Ionic structure",
+      "count": 1,
+      "questionIds": [
+        "66d5863ca75f05ee8564fedc"
+      ]
+    },
+    {
+      "id": "66d586bea75f05ee8565043a",
+      "title": "Stoichiometric defects",
+      "count": 4,
+      "questionIds": [
+        "66d58662a75f05ee85650034",
+        "66d58661a75f05ee8565002f",
+        "66d58570a75f05ee8564f77a",
+        "66d58559a75f05ee8564f69c"
+      ]
+    },
+    {
+      "id": "66d586bea75f05ee8565043b",
+      "title": "Electrical and Magnetic properties",
+      "count": 2,
+      "questionIds": [
+        "66d58592a75f05ee8564f8ad",
+        "66d5856da75f05ee8564f75b"
+      ]
+    }
+  ]
+}

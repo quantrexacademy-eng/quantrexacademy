@@ -1,0 +1,133 @@
+{
+  "examSlug": "neet",
+  "examId": "616059730283de43c87e3e22",
+  "subjectId": "616057210283de43c87e3e19",
+  "chapterId": "6160248c9998cacece0c307b",
+  "subject": "Chemistry",
+  "chapter": "Thermodynamics (C)",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66bcc143ae81d148616b31b3",
+      "title": "System and surrounding",
+      "count": 3,
+      "questionIds": [
+        "66bcc06aae81d148616b291d",
+        "66bcbe37ae81d148616b1782",
+        "66bcbe1fae81d148616b16c2"
+      ]
+    },
+    {
+      "id": "66bcc143ae81d148616b31b0",
+      "title": "First Law and Basic Fundamentals of Thermodynamics",
+      "count": 23,
+      "questionIds": [
+        "6a3d1af26497277835df18a0",
+        "6a0ae785c9ba4cd28e74405d",
+        "6a0ae782c9ba4cd28e744043",
+        "66bcc0a0ae81d148616b2ad0",
+        "66bcc09cae81d148616b2ab0",
+        "66bcc0b8ae81d148616b2b8e",
+        "66bcc0b4ae81d148616b2b6e",
+        "66bcc06aae81d148616b291e",
+        "66bcc051ae81d148616b2856",
+        "66bcc038ae81d148616b278d",
+        "66bcc01eae81d148616b26c5",
+        "66bcc01eae81d148616b26c4",
+        "66bcbff1ae81d148616b2557",
+        "66bcbfdaae81d148616b24a2",
+        "66bcbfdaae81d148616b24a1",
+        "66bcbfc4ae81d148616b23f0",
+        "66bcbf96ae81d148616b2285",
+        "66bcbeb9ae81d148616b1b9b",
+        "66bcbe7fae81d148616b19ca",
+        "66bcbdecae81d148616b1531",
+        "66bcbdbaae81d148616b13a1",
+        "66bcbda1ae81d148616b12d7",
+        "66bcbd88ae81d148616b120f"
+      ]
+    },
+    {
+      "id": "66bcc143ae81d148616b31b1",
+      "title": "Laws of Thermochemistry and Enthalpy Change",
+      "count": 27,
+      "questionIds": [
+        "682c9ab3c2281abe1696a14f",
+        "682c9ab0c2281abe1696a13b",
+        "66bcc09fae81d148616b2ac9",
+        "66bcc09eae81d148616b2abf",
+        "66bcc083ae81d148616b29e5",
+        "66bcc007ae81d148616b260b",
+        "66bcbfaeae81d148616b233e",
+        "66bcbf6aae81d148616b211e",
+        "66bcbf53ae81d148616b206c",
+        "66bcbf10ae81d148616b1e51",
+        "66bcbf10ae81d148616b1e50",
+        "66bcbee1ae81d148616b1cd9",
+        "66bcbebcae81d148616b1bad",
+        "66bcbeb9ae81d148616b1b97",
+        "66bcbea7ae81d148616b1b0a",
+        "66bcbe7fae81d148616b19cc",
+        "66bcbe69ae81d148616b1918",
+        "66bcbe51ae81d148616b1853",
+        "66bcbe1fae81d148616b16c3",
+        "66bcbe05ae81d148616b15f6",
+        "66bcbe05ae81d148616b15f5",
+        "66bcbdedae81d148616b1533",
+        "66bcbdd4ae81d148616b146c",
+        "66bcbdbaae81d148616b139e",
+        "66bcbda1ae81d148616b12d6",
+        "66bcbda0ae81d148616b12d3",
+        "66bcbd8aae81d148616b1221"
+      ]
+    },
+    {
+      "id": "66bcc143ae81d148616b31af",
+      "title": "Entropy and Second law of thermodynamics",
+      "count": 13,
+      "questionIds": [
+        "6a3d1af26497277835df18a3",
+        "6a3d1af06497277835df188b",
+        "66bcc0b4ae81d148616b2b71",
+        "66bcc007ae81d148616b260a",
+        "66bcbff0ae81d148616b2556",
+        "66bcbfc4ae81d148616b23f1",
+        "66bcbf80ae81d148616b21d1",
+        "66bcbee1ae81d148616b1cd8",
+        "66bcbe90ae81d148616b1a51",
+        "66bcbdbaae81d148616b13a0",
+        "66bcbda1ae81d148616b12d5",
+        "66bcbd88ae81d148616b1210",
+        "66bcbd88ae81d148616b120e"
+      ]
+    },
+    {
+      "id": "66bcc143ae81d148616b31b2",
+      "title": "Third law of thermodynamics",
+      "count": 21,
+      "questionIds": [
+        "66bcc06aae81d148616b291f",
+        "66bcbff1ae81d148616b2558",
+        "66bcbf97ae81d148616b2286",
+        "66bcbf69ae81d148616b211d",
+        "66bcbf3dae81d148616b1fb9",
+        "66bcbf27ae81d148616b1f06",
+        "66bcbf26ae81d148616b1f05",
+        "66bcbee1ae81d148616b1cd7",
+        "66bcbe7fae81d148616b19cb",
+        "66bcbe7fae81d148616b19c9",
+        "66bcbe69ae81d148616b1919",
+        "66bcbe50ae81d148616b1851",
+        "66bcbe38ae81d148616b178b",
+        "66bcbe1fae81d148616b16c5",
+        "66bcbe1fae81d148616b16c4",
+        "66bcbdedae81d148616b1532",
+        "66bcbdecae81d148616b1530",
+        "66bcbdd4ae81d148616b146b",
+        "66bcbdd4ae81d148616b146a",
+        "66bcbdbaae81d148616b139f",
+        "66bcbda1ae81d148616b12d4"
+      ]
+    }
+  ]
+}

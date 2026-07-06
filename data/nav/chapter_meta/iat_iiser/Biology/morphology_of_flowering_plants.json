@@ -1,0 +1,36 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa60d64468eb1307ceb0b0",
+  "chapterId": "67fdff51378e1624ea7b6a15",
+  "subject": "Biology",
+  "chapter": "Morphology of Flowering Plants",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff88378e1624ea7b6cb7",
+      "title": "The Root",
+      "count": 1,
+      "questionIds": [
+        "67fdff59378e1624ea7b6a86"
+      ]
+    },
+    {
+      "id": "67fdff88378e1624ea7b6cb8",
+      "title": "The Seed",
+      "count": 1,
+      "questionIds": [
+        "67fdff6c378e1624ea7b6b46"
+      ]
+    },
+    {
+      "id": "67fdff88378e1624ea7b6cb6",
+      "title": "Technical Description of Angiosperm",
+      "count": 2,
+      "questionIds": [
+        "67fdff60378e1624ea7b6acc",
+        "67fdff50378e1624ea7b6a13"
+      ]
+    }
+  ]
+}

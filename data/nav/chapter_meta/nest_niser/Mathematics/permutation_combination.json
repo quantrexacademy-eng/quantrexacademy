@@ -1,0 +1,57 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d379647479b8e869647b",
+  "chapterId": "680920043a10446a207fdd4e",
+  "subject": "Mathematics",
+  "chapter": "Permutation Combination",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "680920673a10446a207fe1d0",
+      "title": "Permutation",
+      "count": 6,
+      "questionIds": [
+        "680920233a10446a207fde86",
+        "680920283a10446a207fdebd",
+        "6809201b3a10446a207fde39",
+        "6809201a3a10446a207fde30",
+        "680920153a10446a207fddfc",
+        "680920043a10446a207fdd4c"
+      ]
+    },
+    {
+      "id": "680920673a10446a207fe1d1",
+      "title": "Combination",
+      "count": 9,
+      "questionIds": [
+        "680920233a10446a207fde8d",
+        "680920223a10446a207fde7a",
+        "680920213a10446a207fde76",
+        "680920203a10446a207fde69",
+        "6809201c3a10446a207fde45",
+        "6809201b3a10446a207fde41",
+        "680920183a10446a207fde1f",
+        "680920083a10446a207fdd76",
+        "680920053a10446a207fdd55"
+      ]
+    },
+    {
+      "id": "680920673a10446a207fe1d2",
+      "title": "Selection of one or more item",
+      "count": 1,
+      "questionIds": [
+        "680920193a10446a207fde26"
+      ]
+    },
+    {
+      "id": "680920673a10446a207fe1d3",
+      "title": "Division of Identical items",
+      "count": 2,
+      "questionIds": [
+        "680920253a10446a207fde9f",
+        "680920243a10446a207fde8f"
+      ]
+    }
+  ]
+}

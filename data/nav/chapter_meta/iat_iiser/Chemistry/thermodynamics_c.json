@@ -1,0 +1,40 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa602f4468eb1307ceb0ae",
+  "chapterId": "67fdff42378e1624ea7b694d",
+  "subject": "Chemistry",
+  "chapter": "Thermodynamics (C)",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff80378e1624ea7b6c30",
+      "title": "First Law and Basic Fundamentals of Thermodynamics",
+      "count": 4,
+      "questionIds": [
+        "6a4521848c20d3b91d64f96d",
+        "68e7a67fce75e72648a45e6a",
+        "67fdff5a378e1624ea7b6a95",
+        "67fdff42378e1624ea7b694b"
+      ]
+    },
+    {
+      "id": "67fdff80378e1624ea7b6c31",
+      "title": "Laws of Thermochemistry and Enthalpy Change",
+      "count": 2,
+      "questionIds": [
+        "67fdff6e378e1624ea7b6b61",
+        "67fdff4b378e1624ea7b69cc"
+      ]
+    },
+    {
+      "id": "67fdff80378e1624ea7b6c32",
+      "title": "Third law of thermodynamics",
+      "count": 2,
+      "questionIds": [
+        "67fdff73378e1624ea7b6b9f",
+        "67fdff54378e1624ea7b6a3f"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "examSlug": "comedk",
+  "examId": "629105adee9e3ae00d63352e",
+  "subjectId": "629105adee9e3ae00d63352c",
+  "chapterId": "629109e0d178b5b9ecf4c073",
+  "subject": "Chemistry",
+  "chapter": "Solid State",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64c57c1a20fc93db0c28bdaf",
+      "title": "Properties and Types of Solids",
+      "count": 2,
+      "questionIds": [
+        "64c57b8320fc93db0c28b7ed",
+        "64c57b7020fc93db0c28b746"
+      ]
+    },
+    {
+      "id": "64c57c1a20fc93db0c28bdb1",
+      "title": "Crystal Structure of Solids",
+      "count": 1,
+      "questionIds": [
+        "64c57b9620fc93db0c28b89f"
+      ]
+    },
+    {
+      "id": "6542453e242a07fec9fa76af",
+      "title": "Ionic structure",
+      "count": 1,
+      "questionIds": [
+        "654244d5242a07fec9fa761b"
+      ]
+    },
+    {
+      "id": "64c57c1a20fc93db0c28bdac",
+      "title": "Cubic system",
+      "count": 16,
+      "questionIds": [
+        "681377a12d288c475c04cb3a",
+        "6813779e2d288c475c04cb28",
+        "654244d6242a07fec9fa7627",
+        "64c57be620fc93db0c28bb6c",
+        "64c57bd220fc93db0c28babb",
+        "64c57bd020fc93db0c28baa9",
+        "64c57bcf20fc93db0c28ba9c",
+        "64c57baa20fc93db0c28b951",
+        "64c57b8320fc93db0c28b7ee",
+        "64c57b8320fc93db0c28b7eb",
+        "64c57b7120fc93db0c28b74a",
+        "64c57b5920fc93db0c28b672",
+        "64c57b4520fc93db0c28b5c0",
+        "64c57b4520fc93db0c28b5bf",
+        "64c57b3220fc93db0c28b514",
+        "64c57b1a20fc93db0c28b445"
+      ]
+    },
+    {
+      "id": "64c57c1a20fc93db0c28bdae",
+      "title": "Stoichiometric defects",
+      "count": 4,
+      "questionIds": [
+        "681377a22d288c475c04cb44",
+        "654244d4242a07fec9fa760f",
+        "64c57be520fc93db0c28bb5f",
+        "64c57b4520fc93db0c28b5be"
+      ]
+    },
+    {
+      "id": "64c57c1a20fc93db0c28bdad",
+      "title": "Non-stoichiometric defects",
+      "count": 1,
+      "questionIds": [
+        "64c57b3020fc93db0c28b500"
+      ]
+    },
+    {
+      "id": "64c57c1a20fc93db0c28bdb0",
+      "title": "Electrical and Magnetic properties",
+      "count": 2,
+      "questionIds": [
+        "64c57be320fc93db0c28bb50",
+        "64c57b9520fc93db0c28b895"
+      ]
+    }
+  ]
+}

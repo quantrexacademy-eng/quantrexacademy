@@ -1,0 +1,32 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d379647479b8e869647b",
+  "chapterId": "680920083a10446a207fdd7b",
+  "subject": "Mathematics",
+  "chapter": "Area Under Curves",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6809206a3a10446a207fe201",
+      "title": "Area of Curve along axis",
+      "count": 5,
+      "questionIds": [
+        "680920273a10446a207fdeb8",
+        "680920283a10446a207fdec2",
+        "680920113a10446a207fddda",
+        "6809200b3a10446a207fdd95",
+        "680920083a10446a207fdd79"
+      ]
+    },
+    {
+      "id": "6809206a3a10446a207fe202",
+      "title": "Area bounded by two curves",
+      "count": 2,
+      "questionIds": [
+        "680920273a10446a207fdeb2",
+        "680920253a10446a207fde9d"
+      ]
+    }
+  ]
+}

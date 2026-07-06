@@ -1,0 +1,47 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b34d4b564dfab4f94cc",
+  "chapterId": "66d58534a75f05ee8564f534",
+  "subject": "Physics",
+  "chapter": "Units and Dimensions",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d58696a75f05ee85650280",
+      "title": "Units",
+      "count": 1,
+      "questionIds": [
+        "66d5858fa75f05ee8564f898"
+      ]
+    },
+    {
+      "id": "66d58696a75f05ee8565027f",
+      "title": "Dimensions",
+      "count": 13,
+      "questionIds": [
+        "66d5865ba75f05ee8564fff9",
+        "66d58659a75f05ee8564ffe4",
+        "66d58644a75f05ee8564ff24",
+        "66d585faa75f05ee8564fc6e",
+        "66d585eba75f05ee8564fbe8",
+        "66d585c4a75f05ee8564fa81",
+        "66d585b3a75f05ee8564f9df",
+        "66d585a5a75f05ee8564f95d",
+        "66d5857aa75f05ee8564f7d8",
+        "66d5856ba75f05ee8564f741",
+        "66d58568a75f05ee8564f726",
+        "66d58558a75f05ee8564f691",
+        "66d58534a75f05ee8564f532"
+      ]
+    },
+    {
+      "id": "66d58696a75f05ee85650281",
+      "title": "Applications of SHM",
+      "count": 1,
+      "questionIds": [
+        "66d585fca75f05ee8564fc83"
+      ]
+    }
+  ]
+}

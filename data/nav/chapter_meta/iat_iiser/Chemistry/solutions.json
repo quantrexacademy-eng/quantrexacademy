@@ -1,0 +1,38 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa602f4468eb1307ceb0ae",
+  "chapterId": "67fdff41378e1624ea7b6941",
+  "subject": "Chemistry",
+  "chapter": "Solutions",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff7f378e1624ea7b6c25",
+      "title": "Solubility and Concentration of Solutions",
+      "count": 1,
+      "questionIds": [
+        "67fdff41378e1624ea7b693f"
+      ]
+    },
+    {
+      "id": "67fdff7f378e1624ea7b6c26",
+      "title": "Vapour pressure and raoult's law",
+      "count": 3,
+      "questionIds": [
+        "6a4521848c20d3b91d64f96f",
+        "67fdff6e378e1624ea7b6b62",
+        "67fdff4c378e1624ea7b69d1"
+      ]
+    },
+    {
+      "id": "67fdff7f378e1624ea7b6c27",
+      "title": "Colligative Properties and Abnormal Molecular Masses",
+      "count": 2,
+      "questionIds": [
+        "67fdff73378e1624ea7b6ba2",
+        "67fdff68378e1624ea7b6b22"
+      ]
+    }
+  ]
+}

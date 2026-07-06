@@ -1,0 +1,33 @@
+{
+  "examSlug": "comedk",
+  "examId": "629105adee9e3ae00d63352e",
+  "subjectId": "629105adee9e3ae00d63352c",
+  "chapterId": "629109df7e4bef5f9f831599",
+  "subject": "Chemistry",
+  "chapter": "Polymers",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64c57c3220fc93db0c28beba",
+      "title": "Classification of Polymers",
+      "count": 3,
+      "questionIds": [
+        "6813779c2d288c475c04cb15",
+        "654244d3242a07fec9fa7605",
+        "64c57b4920fc93db0c28b5e2"
+      ]
+    },
+    {
+      "id": "64c57c3220fc93db0c28beb9",
+      "title": "Preparation and Properties of Polymers",
+      "count": 5,
+      "questionIds": [
+        "64c57b7f20fc93db0c28b7ce",
+        "64c57b7020fc93db0c28b742",
+        "64c57b5d20fc93db0c28b697",
+        "64c57b5d20fc93db0c28b696",
+        "64c57b3220fc93db0c28b515"
+      ]
+    }
+  ]
+}

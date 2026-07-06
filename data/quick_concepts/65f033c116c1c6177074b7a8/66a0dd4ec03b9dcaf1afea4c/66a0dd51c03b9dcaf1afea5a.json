@@ -1,0 +1,40 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd4ec03b9dcaf1afea4c",
+  "topicId": "66a0dd51c03b9dcaf1afea5a",
+  "title": "Differentiation of determinants",
+  "concepts": [
+    {
+      "title": "Differentiation of Determinants",
+      "conceptBody": "<h3><strong>Differentiation of Determinants</strong></h3><p>Differentiation of a function given in form of a determinant $$ \\begin{aligned} &amp; \\mathrm{y}=\\left|\\begin{array}{lll} \\mathrm{u}(\\mathrm{x}) &amp; \\mathrm{v}(\\mathrm{x}) &amp; \\mathrm{w}(\\mathrm{x}) \\\\ \\mathrm{p}(\\mathrm{x}) &amp; \\mathrm{q}(\\mathrm{x}) &amp; \\mathrm{r}(\\mathrm{x}) \\\\ \\lambda(\\mathrm{x}) &amp; \\mu(\\mathrm{x}) &amp; \\gamma(\\mathrm{x}) \\end{array}\\right| \\\\ &amp; \\frac{\\mathrm{dy}}{\\mathrm{dx}}=\\left|\\begin{array}{lll} \\mathrm{u}^{\\prime}(\\mathrm{x}) &amp; \\mathrm{v}^{\\prime}(\\mathrm{x}) &amp; \\mathrm{w}^{\\prime}(\\mathrm{x}) \\\\ \\mathrm{p}(\\mathrm{x}) &amp; \\mathrm{q}(\\mathrm{x}) &amp; \\mathrm{r}(\\mathrm{x}) \\\\ \\lambda(\\mathrm{x}) &amp; \\mu(\\mathrm{x}) &amp; \\gamma(\\mathrm{x}) \\end{array}\\right|+\\left|\\begin{array}{lll} \\mathrm{u}(\\mathrm{x}) &amp; \\mathrm{v}(\\mathrm{x}) &amp; \\mathrm{w}(\\mathrm{x}) \\\\ \\mathrm{p}^{\\prime}(\\mathrm{x}) &amp; \\mathrm{q}^{\\prime}(\\mathrm{x}) &amp; \\mathrm{r}^{\\prime}(\\mathrm{x}) \\\\ \\lambda(\\mathrm{x}) &amp; \\mu(\\mathrm{x}) &amp; \\gamma(\\mathrm{x}) \\end{array}\\right|+\\left|\\begin{array}{lll} \\mathrm{u}(\\mathrm{x}) &amp; \\mathrm{v}(\\mathrm{x}) &amp; \\mathrm{w}(\\mathrm{x}) \\\\ \\mathrm{p}(\\mathrm{x}) &amp; \\mathrm{q}(\\mathrm{x}) &amp; \\mathrm{r}(\\mathrm{x}) \\\\ \\lambda^{\\prime}(\\mathrm{x}) &amp; \\mu^{\\prime}(\\mathrm{x}) &amp; \\gamma^{\\prime}(\\mathrm{x}) \\end{array}\\right| \\end{aligned} $$ The differentiation can also be done by column-wise.</p>",
+      "position": 0,
+      "qcConcept": "66a0dd52c03b9dcaf1afea5b"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f472d384bfb4a538058",
+      "title": "If $f_n(x), g_n(x), h_n(x), n=1,2,3$ are polynomials in $x$ such that $f_n(a)=g_n(a)=h_n(a), n=1,2,3$ and $F(x)=\\left|\\begin{array}{lll}f_1(x) & f_2(x) & f_3(x) \\\\ g_1(x) & g_2(x) & g_3(x) \\\\ h_1(x) & h_2(x) & h_3(x)\\end{array}\\right| . \\quad$ Then $F^{\\prime}(a)$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f472d384bfb4a538059",
+      "title": "Let $f(x)=\\left|\\begin{array}{ccc}x^3 & \\sin x & \\cos x \\\\ 6 & -1 & 0 \\\\ p & p^2 & p^3\\end{array}\\right|$, where $p$ is a constant. Then $\\frac{d^3}{d x^3}\\{f(x)\\}$ at $x=0$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f472d384bfb4a53805a",
+      "title": "$f(x)=\\left|\\begin{array}{ccc}x^3 & x^2 & 3 x^2 \\\\ 1 & -6 & 4 \\\\ p & p^2 & p^3\\end{array}\\right|$, here $p$ is a constant, then $\\frac{d^3 f(x)}{d x^3}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f472d384bfb4a53805b",
+      "title": "If $y=\\sin p x$ and $y_n$ is the $n^{\\text {th }}$ derivative of $y$, then $\\left|\\begin{array}{lll}y & y_1 & y_2 \\\\ y_3 & y_4 & y_5 \\\\ y_6 & y_7 & y_8\\end{array}\\right|$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

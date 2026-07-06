@@ -1,0 +1,88 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd7dc03b9dcaf1afeb3e",
+  "topicId": "66a0dd82c03b9dcaf1afeb59",
+  "title": "Sum of complementary angles",
+  "concepts": [
+    {
+      "title": "Properties of inverse trigonometric functions",
+      "conceptBody": "<h3><strong>Properties of inverse trigonometric functions</strong></h3><ol><li>$\\text{si}{{\\text{n}}^{-1}}x+\\text{co}{{\\text{s}}^{-1}}x=\\frac{\\pi }{2}\\text{ }\\!\\!~\\!\\!\\text{ }x\\in \\left[ -1,1 \\right]$</li><li>$\\text{ta}{{\\text{n}}^{-1}}x+\\text{co}{{\\text{t}}^{-1}}x=\\frac{\\pi }{2}\\text{ }\\!\\!~\\!\\!\\text{ }x\\in R$</li><li>$\\text{se}{{\\text{c}}^{-1}}x+\\text{cose}{{\\text{c}}^{-1}}x=\\frac{\\pi }{2}$</li></ol>",
+      "position": 0,
+      "qcConcept": "66a0dd83c03b9dcaf1afeb5a"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f642d384bfb4a5381f4",
+      "title": "$\\sin ^{-1} x+\\cot ^{-1}\\left(\\frac{1}{2}\\right)=\\frac{\\pi}{2} \\text {, }$ then $x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a5381f5",
+      "title": "$\\text { The value of } \\cos ^{-1}\\left(\\cos \\frac{5 \\pi}{3}\\right)+\\sin ^{-1}\\left(\\cos \\frac{5 \\pi}{3}\\right)$is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a5381f6",
+      "title": "$\\sin ^{-1} x+\\sin ^{-1} \\frac{1}{x}+\\cos ^{-1} x+\\cos ^{-1} \\frac{1}{x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a5381f7",
+      "title": "$\\cot ^{-1} 3+\\operatorname{cosec}^{-1} \\sqrt{5}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a5381f8",
+      "title": "If $\\cos ^{-1} x+\\cos ^{-1} y=2 \\pi$, then $\\sin ^{-1} x+\\sin ^{-1} y$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a5381f9",
+      "title": "If $\\sin ^{-1} x+\\sin ^{-1} y=\\frac{2 \\pi}{3}$, then $\\cos ^{-1} x+\\cos ^{-1} y=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a5381fa",
+      "title": "$\\tan ^{-1}\\left(\\frac{x}{y}\\right)-\\tan ^{-1}\\left(\\frac{x-y}{x+y}\\right)$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a5381fb",
+      "title": "The greatest and the least value of $\\left(\\sin ^{-1} x\\right)^3+\\left(\\cos ^{-1} x\\right)^3$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a5381fc",
+      "title": "If $k \\leq \\sin ^{-1} x+\\cos ^{-1} x+\\tan ^{-1} x \\leq K$, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a5381fd",
+      "title": "$\\left(\\tan ^{-1} x\\right)^2+\\left(\\cot ^{-1} x\\right)^2=\\frac{5 \\pi^2}{8}$, then $x$ equals",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a5381fe",
+      "title": "If $\\sin ^{-1}(1-x)-2 \\sin ^{-1} x=\\pi / 2$, then $x$ equals",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a5381ff",
+      "title": "If $\\sin ^{-1} x=\\frac{\\pi}{5}$ for some $x \\in(-1,1)$, then the value of $\\cos ^{-1} x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

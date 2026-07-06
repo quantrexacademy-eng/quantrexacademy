@@ -1,0 +1,42 @@
+{
+  "examSlug": "jee_advanced",
+  "examId": "616059150283de43c87e3e21",
+  "subjectId": "6160570c0283de43c87e3e17",
+  "chapterId": "6160255bd7528621361d4f53",
+  "subject": "Mathematics",
+  "chapter": "Differentiation",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64b16adef23ac7d519f9b8ec",
+      "title": "Differentiation of composite functions",
+      "count": 6,
+      "questionIds": [
+        "685102c26bba689a3eb09cac",
+        "64b16a51f23ac7d519f9b354",
+        "64b16a2af23ac7d519f9b1f1",
+        "64b16a08f23ac7d519f9b0b3",
+        "64b169faf23ac7d519f9b035",
+        "64b169cdf23ac7d519f9ae96"
+      ]
+    },
+    {
+      "id": "64b16adef23ac7d519f9b8ee",
+      "title": "Differentiation of implicit functions",
+      "count": 2,
+      "questionIds": [
+        "64b169edf23ac7d519f9afba",
+        "64b169e6f23ac7d519f9af7b"
+      ]
+    },
+    {
+      "id": "64b16adef23ac7d519f9b8ed",
+      "title": "Higher order derivatives",
+      "count": 2,
+      "questionIds": [
+        "6a0be51144d287c9361e5cac",
+        "64b169ddf23ac7d519f9af28"
+      ]
+    }
+  ]
+}

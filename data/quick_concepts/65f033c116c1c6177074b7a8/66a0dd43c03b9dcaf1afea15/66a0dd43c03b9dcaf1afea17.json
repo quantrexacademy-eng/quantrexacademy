@@ -1,0 +1,178 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd43c03b9dcaf1afea15",
+  "topicId": "66a0dd43c03b9dcaf1afea17",
+  "title": "Expansion of Determinants",
+  "concepts": [
+    {
+      "title": "Determinant Expansion",
+      "conceptBody": "<h3><strong>Determinants</strong></h3><p>Determinant is a number associated with every square matrix, i.e. the number of rows and columns are equal. Determinant of a square matrix $A=\\left[ {{a}_{ij}} \\right]$ is denoted by $|A|=\\left| {{a}_{ij}} \\right|$ or $\\Delta =|A|$</p><p>$\\text{ or }\\quad \\left| \\begin{matrix} {{a}_{11}} &amp; {{a}_{12}} &amp; \\cdots &amp; {{a}_{1n}} \\\\ {{a}_{21}} &amp; {{a}_{22}} &amp; \\cdots &amp; {{a}_{2n}} \\\\ \\vdots &amp; {} &amp; {} &amp; {} \\\\ {{a}_{n1}} &amp; {{a}_{n2}} &amp; \\cdots &amp; {{a}_{nn}} \\\\ \\end{matrix} \\right|$</p><p>Determinant of order 2:</p><p>Order 2 means 2 rows $\\And 2$ columns.</p><p>i.e. $|\\text{A}|=\\left| \\begin{array}{*{35}{l}} {{\\text{a}}_{11}} &amp; {{\\text{a}}_{12}} \\\\ {{\\text{a}}_{21}} &amp; {{\\text{a}}_{22}} \\\\ \\end{array} \\right|$</p><p>denotion ${{\\text{a}}_{\\text{ij}}}$ means number associated with ${{\\text{i}}^{\\text{th }}}$ row &amp; ${{\\text{j}}^{\\text{th }}}$ column.</p><p>Also notice in order 2 there are $2 \\times 2=4$ numbers</p><p>Determinant of order 3:</p><p>$\\text{ order }=3\\text{ rows }3\\text{ columns }$</p><p>$\\text{ i}\\text{.e}\\text{. }|A|=\\left| \\begin{array}{*{35}{l}} {{a}_{11}} &amp; {{a}_{12}} &amp; {{a}_{13}} \\\\ {{a}_{21}} &amp; {{a}_{22}} &amp; {{a}_{23}} \\\\ {{a}_{31}} &amp; {{a}_{32}} &amp; {{a}_{33}} \\\\ \\end{array} \\right|$</p><p>Value of determinant of order 2:</p><p>For $|A|\\text{ }=\\left| \\begin{array}{*{35}{l}} {{\\text{a}}_{11}} &amp; {{\\text{a}}_{12}} \\\\ {{\\text{a}}_{21}} &amp; {{\\text{a}}_{22}} \\\\ \\end{array} \\right|$</p><p>$=\\left( \\begin{array}{*{35}{l}} {{\\text{a}}_{11}} &amp; {{\\text{a}}_{22}}-{{\\text{a}}_{21}} &amp; {{\\text{a}}_{12}} \\\\ \\end{array} \\right)$</p><p>i.e. cross multiply and subtract</p><p>or Oder 3:</p><p>$\\text{ for }\\quad |A|=\\left| \\begin{array}{*{35}{l}} {{a}_{11}} &amp; {{a}_{12}} &amp; {{a}_{13}} \\\\ {{a}_{21}} &amp; {{a}_{22}} &amp; {{a}_{23}} \\\\ {{a}_{31}} &amp; {{a}_{32}} &amp; {{a}_{33}} \\\\ \\end{array} \\right|$</p><p>Here there are 2 possibilities of expanding the determinant i.e. finding its value. One is by expanding row &amp; the other is by expanding column. We will solve first by expanding row.</p><p>$|A|={{a}_{11}}\\underbrace{\\left| \\begin{array}{*{35}{l}} {{\\text{a}}_{22}} &amp; {{\\text{a}}_{23}} \\\\ {{\\text{a}}_{32}} &amp; {{\\text{a}}_{33}} \\\\ \\end{array} \\right|}_{{}}-{{\\text{a}}_{12}}\\left| \\begin{array}{*{35}{l}} {{\\text{a}}_{21}} &amp; {{\\text{a}}_{23}} \\\\ {{\\text{a}}_{31}} &amp; {{\\text{a}}_{33}} \\\\ \\end{array} \\right|+{{\\text{a}}_{13}}\\left| \\begin{array}{*{35}{l}} {{\\text{a}}_{21}} &amp; {{\\text{a}}_{22}} \\\\ {{\\text{a}}_{31}} &amp; {{\\text{a}}_{32}} \\\\ \\end{array} \\right|$</p><p>we can achieve this by leaving the elements of that row &amp; column.</p><p>Similarly for ${{\\text{a}}_{12}}\\text{ }\\And\\text{ }{{\\text{a}}_{13}}$.</p><p><strong>Sign Convention:&nbsp;</strong></p><p>Why there is (-) sign for ${{\\text{a}}_{12}}$ ?</p><p><strong>How to decide:&nbsp;</strong></p><p>1. multiply the term with ${{(-1)}^{i+j}}$</p><p>for example for ${{\\text{a}}_{11}}$, it is ${{(-1)}^{1+1}}=1$</p><p>for ${{\\text{a}}_{12}}$, it is ${{(-1)}^{1+2}}=1$ that is the reason for -1 sign.</p><p>for ${{\\text{a}}_{13}}$, it is ${{(-1)}^{1+3}}=1$</p><p>or other way to learn sign convention is by alternate,+-</p><p>$\\left| \\begin{matrix} + &amp; - &amp; + \\\\ - &amp; + &amp; - \\\\ + &amp; - &amp; + \\\\ \\end{matrix} \\right|$</p><p><strong>Expanding by column&nbsp;</strong></p><p>For $\\quad |A|=\\left| \\begin{array}{*{35}{l}} {{a}_{11}} &amp; {{a}_{12}} &amp; {{a}_{13}} \\\\ {{a}_{21}} &amp; {{a}_{22}} &amp; {{a}_{23}} \\\\ {{a}_{31}} &amp; {{a}_{32}} &amp; {{a}_{33}} \\\\ \\end{array} \\right|$</p><p>$|A|={{a}_{11}}\\left| \\begin{array}{*{35}{l}} {{a}_{22}} &amp; {{a}_{23}} \\\\ {{a}_{32}} &amp; {{a}_{33}} \\\\ \\end{array} \\right|-{{a}_{21}}\\left| \\begin{array}{*{35}{l}} {{a}_{12}} &amp; {{a}_{13}} \\\\ {{a}_{32}} &amp; {{a}_{33}} \\\\ \\end{array} \\right|+{{a}_{31}}\\left| \\begin{array}{*{35}{l}} {{a}_{12}} &amp; {{a}_{13}} \\\\ {{a}_{22}} &amp; {{a}_{23}} \\\\ \\end{array} \\right|$</p><p>though we will generally use expension by row method.</p>",
+      "position": 0,
+      "qcConcept": "66a0dd44c03b9dcaf1afea18"
+    },
+    {
+      "title": "Minor and Cofactor",
+      "conceptBody": "<h3>Minors and cofactors</h3><p>In the determinant</p><p>$\\Delta =\\left| \\begin{array}{*{35}{l}} {{\\text{a}}_{11}} &amp; {{\\text{a}}_{12}} &amp; {{\\text{a}}_{13}} \\\\ {{\\text{a}}_{21}} &amp; {{\\text{a}}_{22}} &amp; {{\\text{a}}_{23}} \\\\ {{\\text{a}}_{31}} &amp; {{\\text{a}}_{32}} &amp; {{\\text{a}}_{33}} \\\\ \\end{array} \\right|$</p><p>if we leave the row and the column passing through the element ${{a}_{ij}}$ then the second order determinant thus obtained is called the minor of ${{a}_{ij}}$ and it is denoted by ${{M}_{ij}}$ Thus we can get 9 minors corresponding to the 9 elements.</p><p>For example, in determinant (i)</p><p>The minor of the element ${{\\text{a}}_{21}}=\\left| \\begin{array}{*{35}{l}} {{\\text{a}}_{12}} &amp; {{\\text{a}}_{13}} \\\\ {{\\text{a}}_{32}} &amp; {{\\text{a}}_{33}} \\\\ \\end{array} \\right|={{\\text{M}}_{21}}$</p><p>Rhw minor of the element ${{\\text{a}}_{32}}=\\left| \\begin{array}{*{35}{l}} {{\\text{a}}_{11}} &amp; {{\\text{a}}_{13}} \\\\ {{\\text{a}}_{21}} &amp; {{\\text{a}}_{23}} \\\\ \\end{array} \\right|={{\\text{M}}_{32}}$</p><p>In terms of the notation of minors if we expand the determinant along the first row, then,</p><p>$\\Delta \\text{ }={{(-1)}^{1+1}}{{\\text{a}}_{11}}{{\\text{M}}_{11}}+{{(-1)}^{1+2}}{{\\text{a}}_{12}}{{\\text{M}}_{12}}+{{(-1)}^{1+3}}{{\\text{a}}_{13}}{{\\text{M}}_{13}}$</p><p>$={{\\text{a}}_{11}}{{\\text{M}}_{11}}-{{\\text{a}}_{12}}{{\\text{M}}_{12}}+{{\\text{a}}_{13}}{{\\text{M}}_{13}}$</p><p>Similarly expanding $\\Delta $ along the second column. We have,</p><p>$\\Delta ={{\\text{a}}_{1}}{{\\text{M}}_{12}}+{{\\text{a}}_{22}}{{\\text{M}}_{22}}-{{\\text{a}}_{32}}{{\\text{M}}_{32}}$</p><p><strong>Cofactors: </strong>The minor ${{\\text{M}}_{\\text{ij}}}$ multiplied by ${{(-1)}^{\\text{i}+\\text{j}}}$ is called the cofactor of the element aij If we note the cofactor of the element ${{\\text{a}}_{\\text{ij}}}$, by ${{\\text{A}}_{\\text{ij}}}$, then Cofactor of ${{a}_{ij}}={{A}_{ij}}={{(-1)}^{i+j}}{{M}_{ij}}$</p><p>$\\text{ Cofactor of the element }{{\\text{a}}_{21}}={{\\text{A}}_{21}}={{(-1)}^{2+1}}{{\\text{M}}_{21}}=-\\left| \\begin{array}{*{35}{l}} {{\\text{a}}_{12}} &amp; {{\\text{a}}_{13}} \\\\ {{\\text{a}}_{32}} &amp; {{\\text{a}}_{33}} \\\\ \\end{array} \\right|$</p><p>$\\text{ Cofactor of the element }{{\\text{a}}_{32}}={{\\text{A}}_{32}}={{(-1)}^{3+2}}{{\\text{M}}_{32}}=-\\left| \\begin{array}{*{35}{l}} {{\\text{a}}_{11}} &amp; {{\\text{a}}_{13}} \\\\ {{\\text{a}}_{21}} &amp; {{\\text{a}}_{23}} \\\\ \\end{array} \\right|$</p><p>So the cofactor of an element aij $={{(-1)}^{i+j}}$ the determinant obtained by leaving the row and the column passing through that element.</p><p>In terms of the notation of the cofactors.</p><p>$\\Delta ={{\\text{a}}_{11}}~{{\\text{A}}_{11}}+{{\\text{a}}_{12}}~{{\\text{A}}_{12}}+{{\\text{a}}_{13}}~{{\\text{A}}_{13}}$</p><p>$\\Delta ={{\\text{a}}_{21}}~{{\\text{A}}_{21}}+{{\\text{a}}_{22}}~{{\\text{A}}_{22}}+{{\\text{a}}_{23}}~{{\\text{A}}_{23}}$</p><p>$\\Delta ={{\\text{a}}_{31}}~{{\\text{A}}_{31}}+{{\\text{a}}_{32}}~{{\\text{A}}_{32}}+{{\\text{a}}_{33}}~{{\\text{A}}_{33}}\\text{ }$</p><p>Also ${{\\text{a}}_{11}}~{{\\text{A}}_{21}}+{{\\text{a}}_{12}}~{{\\text{A}}_{22}}+{{\\text{a}}_{13}}~{{\\text{A}}_{23}}=0$</p><p>${{\\text{a}}_{11}}~{{\\text{A}}_{31}}+{{\\text{a}}_{12}}~{{\\text{A}}_{32}}+{{\\text{a}}_{13}}~{{\\text{A}}_{33}}=0\\text{ etc}\\text{. }$</p><p>Therefore, in a determinant the sum of the products of the elements of any row or column with the corresponding cofactors is equal value of the determinant. Also the sum of the products of the elements of any row or column with the cofactors of the corresponding elements of any other row or column is zero.</p>",
+      "position": 1,
+      "qcConcept": "66a0dd45c03b9dcaf1afea19"
+    },
+    {
+      "title": "Properties of determinant",
+      "conceptBody": "<h3><strong>Properties of determinant</strong></h3><p><strong>Property I </strong>. The value of a determinant is not changed when rows arechanged into corresponding columns. Naturally when rows are changed into corresponding columns, then columns will be changed into corresponding rows.</p><p><strong>Proof:</strong> Let$\\Delta =\\left| \\begin{array}{*{35}{l}}<br>{{\\text{a}}_{1}} &amp; ~{{\\text{b}}_{1}} &amp; {{\\text{c}}_{1}} \\\\<br>{{\\text{a}}_{2}} &amp; ~{{\\text{b}}_{2}} &amp; {{\\text{c}}_{2}} \\\\<br>{{\\text{a}}_{3}} &amp; ~{{\\text{b}}_{3}} &amp; {{\\text{c}}_{3}} \\\\<br>\\end{array} \\right|$</p><p>Expanding the determinant along first row,</p><p>${{\\text{a}}_{1}}\\left( ~{{\\text{b}}_{2}}{{\\text{c}}_{3}}-{{\\text{b}}_{3}}{{\\text{c}}_{2}} \\right)-{{\\text{b}}_{1}}\\left( {{\\text{a}}_{2}}{{\\text{c}}_{3}}-{{\\text{a}}_{3}}{{\\text{c}}_{2}} \\right)+{{\\text{c}}_{1}}\\left( {{\\text{a}}_{2}}~{{\\text{b}}_{3}}-{{\\text{a}}_{3}}~{{\\text{b}}_{2}} \\right)$</p><p><strong>Example:</strong> $\\Delta =\\left| \\begin{array}{*{35}{l}}&nbsp;<br>1 &amp; 2 &amp; 3 \\\\&nbsp;<br>2 &amp; 3 &amp; 4 \\\\&nbsp;<br>0 &amp; 1 &amp; 5 \\\\<br>\\end{array} \\right|=1(15-4)-2(10-0)+3(2-0)=-3$</p><p>$\\text{ and }{{\\Delta }^{\\prime }}=\\left| \\begin{array}{*{35}{l}}<br>1 &amp; 2 &amp; 0 \\\\<br>2 &amp; 3 &amp; 1 \\\\<br>3 &amp; 4 &amp; 5 \\\\<br>\\end{array} \\right|=1(15-4)-2(10-3)+0(8-9)=-3$</p><p>Clearly $\\quad {{\\Delta }^{\\prime }}=\\Delta $<br><strong>Property II. </strong>If any two rows or columns of a determinant are interchanged, the sign of the determinant is changed, but its value remains the same.<br>Example: $\\Delta \\text{ }=\\left| \\begin{array}{*{35}{l}}&nbsp;<br>1 &amp; 2 &amp; 3 \\\\&nbsp;<br>2 &amp; 3 &amp; 4 \\\\&nbsp;<br>0 &amp; 1 &amp; 5 \\\\&nbsp;<br>\\end{array} \\right|=1(15-4)-2(10-0)+3(2-0)=-3\\text{ }$</p><p>and ${{\\Delta }^{\\prime }}=\\left| \\begin{array}{*{35}{l}}<br>2 &amp; 3 &amp; 4 \\\\<br>1 &amp; 2 &amp; 3 \\\\<br>0 &amp; 1 &amp; 5 \\\\<br>\\end{array} \\right|\\left[ {{\\text{R}}_{1}}&gt;{{\\text{R}}_{2}} \\right]$<br>$=2(10-3)-3(5-0)+4(1-0)=3$<br>Property III. The value of a determinant is zero if any two rows or columns are identical Example: $\\Delta =\\left| \\begin{array}{*{35}{l}}<br>1 &amp; 2 &amp; 3 \\\\<br>2 &amp; 3 &amp; 4 \\\\<br>1 &amp; 2 &amp; 3 \\\\<br>\\end{array} \\right|=1(9-8)-2(6-4)+3(4-3)=0$</p><p><strong>Property IV.</strong> A common factor of all elements of any row (or of any column) may be taken outside the sign of the determinant. In other words if all the elements of the same row (or the same column) are multiplied by a certain number, then the determinant becomes multiplied by that number.</p><p><strong>Example:</strong> $\\left| \\begin{matrix}<br>32 &amp; 24 &amp; 16 \\\\<br>8 &amp; 3 &amp; 5 \\\\<br>4 &amp; 5 &amp; 3 \\\\<br>\\end{matrix} \\right|=8\\left| \\begin{array}{*{35}{l}}<br>4 &amp; 3 &amp; 2 \\\\<br>8 &amp; 3 &amp; 5 \\\\<br>4 &amp; 5 &amp; 3 \\\\<br>\\end{array} \\right|$ [taking 8 common from Ist row]<br>$=8\\times 4\\left| \\begin{array}{*{35}{l}}<br>1 &amp; 3 &amp; 2 \\\\<br>2 &amp; 3 &amp; 5 \\\\<br>1 &amp; 5 &amp; 3 \\\\<br>\\end{array} \\right|[\\text{taking 4 common from the Ist column}]$</p><p><strong>Property V.</strong> If every element of some column or (row) is the sum of two terms, then the determinant is equal to the sum of two determinants; one containing only the first term in place of each sum, the other only the second term. The remaining element of both determinants are the same as in the given determinant.</p><p>&nbsp;<strong>Proof :</strong> $\\text{We have to prove that }\\left| \\begin{array}{*{35}{l}}<br>{{a}_{1}}+{{\\alpha }_{1}} &amp; {{b}_{1}} &amp; {{c}_{1}} \\\\<br>{{a}_{2}}+{{\\alpha }_{2}} &amp; {{b}_{2}} &amp; {{c}_{2}} \\\\<br>{{a}_{8}}+{{\\alpha }_{3}} &amp; {{b}_{3}} &amp; {{c}_{3}} \\\\<br>\\end{array} \\right|$ $=\\left| \\begin{array}{*{35}{l}}<br>{{\\text{a}}_{1}} &amp; ~{{\\text{b}}_{1}} &amp; {{\\text{c}}_{1}} \\\\<br>{{\\text{a}}_{2}} &amp; ~{{\\text{b}}_{2}} &amp; {{\\text{c}}_{2}} \\\\<br>{{\\text{a}}_{3}} &amp; ~{{\\text{b}}_{3}} &amp; {{\\text{c}}_{3}} \\\\<br>\\end{array} \\right|+\\left| \\begin{array}{*{35}{l}}<br>{{\\text{d}}_{1}} &amp; ~{{\\text{b}}_{1}} &amp; {{\\text{c}}_{1}} \\\\<br>{{\\alpha }_{2}} &amp; ~{{\\text{b}}_{2}} &amp; {{\\text{c}}_{2}} \\\\<br>{{\\text{c}}_{3}} &amp; ~{{\\text{b}}_{3}} &amp; {{\\text{c}}_{3}} \\\\<br>\\end{array} \\right|$<br>$\\text{ Note : }\\left| \\begin{array}{*{35}{l}}<br>{{\\text{a}}_{1}}+{{\\text{b}}_{1}} &amp; {{\\text{c}}_{1}}+{{\\text{d}}_{1}} &amp; {{\\text{e}}_{1}} \\\\<br>{{\\text{a}}_{2}}+{{\\text{b}}_{2}} &amp; {{\\text{c}}_{2}}+{{\\text{d}}_{2}} &amp; {{\\text{e}}_{2}} \\\\<br>{{\\text{a}}_{3}}+{{\\text{b}}_{3}} &amp; {{\\text{c}}_{3}}+{{\\text{d}}_{3}} &amp; {{\\text{e}}_{3}} \\\\<br>\\end{array} \\right|=$ $\\left| \\begin{array}{*{35}{l}}<br>{{\\text{a}}_{1}} &amp; {{\\text{c}}_{1}} &amp; {{\\text{e}}_{1}} \\\\<br>{{\\text{a}}_{2}} &amp; {{\\text{c}}_{2}} &amp; {{\\text{e}}_{2}} \\\\<br>{{\\text{a}}_{3}} &amp; {{\\text{c}}_{3}} &amp; {{\\text{e}}_{3}} \\\\<br>\\end{array} \\right|+$ $\\left| \\begin{array}{*{35}{l}}<br>{{\\text{a}}_{1}} &amp; ~{{\\text{d}}_{1}} &amp; {{\\text{e}}_{1}} \\\\<br>{{\\text{a}}_{2}} &amp; ~{{\\text{d}}_{2}} &amp; {{\\text{e}}_{2}} \\\\<br>{{\\text{a}}_{3}} &amp; ~{{\\text{d}}_{3}} &amp; {{\\text{e}}_{3}} \\\\<br>\\end{array} \\right|+\\left| \\begin{array}{*{35}{l}}<br>{{\\text{b}}_{1}} &amp; {{\\text{c}}_{1}} &amp; {{\\text{e}}_{1}} \\\\<br>~{{\\text{b}}_{2}} &amp; {{\\text{c}}_{2}} &amp; {{\\text{e}}_{2}} \\\\<br>~{{\\text{b}}_{3}} &amp; {{\\text{c}}_{3}} &amp; {{\\text{e}}_{3}} \\\\<br>\\end{array} \\right|$ $+\\left| \\begin{array}{*{35}{l}}<br>{{\\text{b}}_{1}} &amp; ~{{\\text{d}}_{1}} &amp; {{\\text{e}}_{1}} \\\\<br>~{{\\text{b}}_{2}} &amp; ~{{\\text{d}}_{2}} &amp; {{\\text{e}}_{2}} \\\\<br>~{{\\text{b}}_{3}} &amp; ~{{\\text{d}}_{3}} &amp; {{\\text{e}}_{3}} \\\\<br>\\end{array} \\right|$</p><p><strong>Property VI. </strong>The value of a determinant does not change when any row or column is multiplied by a number or an expression and is then added to or subtracted from any other row or column.</p><p>Here it should be noted that if the row or column which is changed is multiplied by a number, then the determinant will have to be divided by that number.</p>",
+      "position": 2,
+      "qcConcept": "66a0dd45c03b9dcaf1afea1a"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f422d384bfb4a537fc2",
+      "title": "The value of the determinant $\\left|\\begin{array}{ccc}31 & 37 & 92 \\\\ 31 & 58 & 71 \\\\ 31 & 105 & 24\\end{array}\\right|$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fc3",
+      "title": "If $\\left|\\begin{array}{ll}4 & 1 \\\\ 2 & 1\\end{array}\\right|^2=\\left|\\begin{array}{ll}3 & 2 \\\\ 1 & x\\end{array}\\right|-\\left|\\begin{array}{cc}x & 3 \\\\ -2 & 1\\end{array}\\right|$, then $x=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fc4",
+      "title": "If $a \\neq b \\neq c$, the value of $x$ which satisfies the equation$\\left|\\begin{array}{ccc}0 & x-a & x-b \\\\ x+a & 0 & x-c \\\\ x+b & x+c & 0\\end{array}\\right|=0$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fc5",
+      "title": "$\\left|\\begin{array}{ccc}1+i & 1-i & i \\\\ 1-i & i & 1+i \\\\ i & 1+i & 1-i\\end{array}\\right|=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fc6",
+      "title": "If $\\omega$ is a cube root of unity, then $\\left|\\begin{array}{ccc}x+1 & \\omega & \\omega^2 \\\\ \\omega & x+\\omega^2 & 1 \\\\ \\omega^2 & 1 & x+\\omega\\end{array}\\right|=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fc7",
+      "title": "$\\left|\\begin{array}{ccc}0 & p-q & p-r \\\\ q-p & 0 & q-r \\\\ r-p & r-q & 0\\end{array}\\right|=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fc8",
+      "title": "The value of $x$, if $\\left|\\begin{array}{ccc}-x & 1 & 0 \\\\ 1 & -x & 1 \\\\ 0 & 1 & -x\\end{array}\\right|=0$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fc9",
+      "title": "At what value of $X$, will $\\left|\\begin{array}{ccc}x+\\omega^2 & \\omega & 1 \\\\ \\omega & \\omega^2 & 1+x \\\\ 1 & x+\\omega & \\omega^2\\end{array}\\right|=0$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fca",
+      "title": "$\\left|\\begin{array}{ccc}5 & 3 & -1 \\\\ -7 & x & -3 \\\\ 9 & 6 & -2\\end{array}\\right|=0$ , then $x$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fcb",
+      "title": "$f(x)=\\left|\\begin{array}{ccc}x-3 & 2 x^2-18 & 3 x^3-81 \\\\ x-5 & 2 x^2-50 & 4 x^3-500 \\\\ 1 & 2 & 3\\end{array}\\right|$ then $f(1) \\cdot f(3)+f(3) \\cdot f(5)+f(5) \\cdot f(1)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fcc",
+      "title": "$\\left|\\begin{array}{lll}1 & a & a^2-b c \\\\ 1 & b & b^2-a c \\\\ 1 & c & c^2-a b\\end{array}\\right|=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fcd",
+      "title": "$\\left|\\begin{array}{lll}a & b & c \\\\ b & c & a \\\\ c & a & b\\end{array}\\right|=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fce",
+      "title": "If $\\left|\\begin{array}{lll}x+1 & x+2 & x+3 \\\\ x+2 & x+3 & x+4 \\\\ x+a & x+b & x+c\\end{array}\\right|=0$, then $a, b, c$ are in",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fcf",
+      "title": "The value of the determinant $\\left|\\begin{array}{lll}1 & a & b+c \\\\ 1 & b & c+a \\\\ 1 & c & a+b\\end{array}\\right|$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fd0",
+      "title": "If $\\Delta=\\left|\\begin{array}{lll}a & b & c \\\\ x & y & z \\\\ p & q & r\\end{array}\\right|$, then $\\left|\\begin{array}{lll}k a & k b & k c \\\\ k x & k y & k z \\\\ k p & k q & k r\\end{array}\\right|=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fd1",
+      "title": "If $a, b, c$ are in A.P., then the value of $\\left|\\begin{array}{ccc}x+2 & x+3 & x+a \\\\ x+4 & x+5 & x+b \\\\ x+6 & x+7 & x+c\\end{array}\\right|$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fd2",
+      "title": "If $\\left|\\begin{array}{lll}y+z & x-z & x-y \\\\ y-z & z-x & y-x \\\\ z-y & z-x & x+y\\end{array}\\right|=k x y z$ then the value of $k$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fd3",
+      "title": "If $a^{-1}+b^{-1}+c^{-1}=0$ such that $\\left|\\begin{array}{ccc}1+a & 1 & 1 \\\\ 1 & 1+b & 1 \\\\ 1 & 1 & 1+c\\end{array}\\right|=\\lambda$, then the value of $\\lambda$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fd4",
+      "title": "$\\Delta=\\left|\\begin{array}{lll}x & y & z \\\\ p & q & r \\\\ a & b & c\\end{array}\\right|_{\\text {then }}\\left|\\begin{array}{ccc}x & 2 y & z \\\\ 2 p & 4 q & 2 r \\\\ a & 2 b & c\\end{array}\\right|_{\\text {equals }}$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fd5",
+      "title": "$\\left|\\begin{array}{ccc}a-1 & a & b c \\\\ b-1 & b & c a \\\\ c-1 & c & a b\\end{array}\\right|=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fd6",
+      "title": "If $a, b, c$ are positive integers, then the determinant $\\Delta=\\left|\\begin{array}{ccc}a^2+x & a b & a c \\\\ a b & b^2+x & b c \\\\ a c & b c & c^2+x\\end{array}\\right|$ is divisible by",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fd7",
+      "title": "If $p+q+r=0=a+b+c$, then the value of the determinant $\\left|\\begin{array}{lll}p a & q b & r c \\\\ q c & r a & p b \\\\ r b & p c & q a\\end{array}\\right|$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fd8",
+      "title": "The cofactor of the element ' 4 ' in the determinant $\\left|\\begin{array}{llll}1 & 3 & 5 & 1 \\\\ 2 & 3 & 4 & 2 \\\\ 8 & 0 & 1 & 1 \\\\ 0 & 2 & 1 & 1\\end{array}\\right|$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fd9",
+      "title": "The minors of -4 and 9 and the co-factors of -4 and 9 in determinant $\\left|\\begin{array}{ccc}-1 & -2 & 3 \\\\ -4 & -5 & -6 \\\\ -7 & 8 & 9\\end{array}\\right|$ are respectively",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f422d384bfb4a537fda",
+      "title": "$\\Delta=\\left|\\begin{array}{lll}a_1 & b_1 & c_1 \\\\ a_2 & b_2 & c_2 \\\\ a_3 & b_3 & c_3\\end{array}\\right|$ and $A_1, B_1, C_1$ denote the co-factors of $a_1, b_1, c_1$ respectively, then the value of the determinant $\\left|\\begin{array}{lll}A_1 & B_1 & C_1 \\\\ A_2 & B_2 & C_2 \\\\ A_3 & B_3 & C_3\\end{array}\\right|$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd92c03b9dcaf1afeba2",
+  "topicId": "66a0dd97c03b9dcaf1afebc0",
+  "title": "Rank of Matrix",
+  "concepts": [
+    {
+      "title": "Conditions for finding rank of a matrix",
+      "conceptBody": "<h3>Rank of a Matrix</h3><p>The rank of a given matrix $A$ is said to be $r$ i</p><p>(a) Every minor of $\\text{A}$ of order $\\text{r}+1$ is zero.</p><p>(b) There is at least one minor of $\\text{A}$ of order $\\text{r}$ which does not vanish.</p><p>The rank $\\text{r}$ of matrix $\\text{A}$ is written as $\\rho (\\text{A})=\\text{r}$</p><p><strong>Note: </strong>From above it clearly follows that the rank of a null matrix i.e., zero matrix all of whose elements are zeroes is zero.</p><p>Also the rank of a <strong>singular square matrix </strong>of order $n$ cannot be $n$ because minor of highest orderi.e., $|\\text{A}|=0$ and there is only one minor of highest order.</p><p><strong>Working rule:&nbsp;</strong></p><p>Calculate the minors of highest possible order of a given matrix A. If it is not zero then the order of the minor is the rank. If it is zero and all other minors of the same order be also zero then calculate minors of next lower order and if at least one of them is not zero then this next lower order will be the rank. If, however, all the minors of next lower order are zero then calculate minors of still next lower order and so on.</p>",
+      "position": 0,
+      "qcConcept": "66a0dd97c03b9dcaf1afebc1"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f662d384bfb4a53826c",
+      "title": "The rank of the matrix $A=\\left[\\begin{array}{cccc}2 & 3 & 1 & 4 \\\\ 0 & 1 & 2 & -1 \\\\ 0 & -2 & -4 & 2\\end{array}\\right]$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53826d",
+      "title": "If $A=\\left[\\begin{array}{ccc}2 & 4 & 5 \\\\ 4 & 8 & 10 \\\\ -6 & -12 & -15\\end{array}\\right]$. Then rank of $A$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53826e",
+      "title": "Rank of matrix $\\left[\\begin{array}{cccc}4 & 1 & 0 & 0 \\\\ 3 & 0 & 1 & 0 \\\\ 6 & 0 & 2 & 0\\end{array}\\right]$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53826f",
+      "title": "The rank of the matrix\n$\\left[\\begin{array}{ccc}-1 & 2 & 5 \\\\ 2 & -4 & a-4 \\\\ 1 & -2 & a+1\\end{array}\\right]$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

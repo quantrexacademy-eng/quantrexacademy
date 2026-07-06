@@ -1,0 +1,94 @@
+{
+  "subjectId": "65dcf3d937445f4fe46f420e",
+  "chapterId": "66a0dbb7c03b9dcaf1afe314",
+  "topicId": "66a0dbbcc03b9dcaf1afe328",
+  "title": "Special purpose diodes",
+  "concepts": [
+    {
+      "title": "Photodiode",
+      "conceptBody": "<h3>Special Purpose Diodes</h3><p><strong>Light emitting diode (LED) :</strong></p><p>Specially designed diodes, which give out light radiations when forward biases.</p><p>These are forward biased <i>P-N- </i>junctions which emits spontaneous radiation.</p><p><img src=\"data:image/png;base64,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\"></p><p><strong>Photo diode:</strong></p><p>Photodiode is a special type of photo-detector. Suppose an optical photons of frequency <i>ν </i>is incident on a semiconductor, such that its energy is greater than the band gap of the semiconductor ( <i>i.e. hν </i>&gt; <i>E </i>g ) This photon will excite an electron from the valence band to the conduction band leaving a vacancy or hole in the valence band.</p><p>Which obviously increase the conductivity of the semiconductor. Therefore, by measuring the change in the conductance (or resistance) of the semiconductor, one can measure the intensity of the optical signal.</p><p><img src=\"data:image/png;base64,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\"></p><p><strong>Solar cells :</strong></p><p>It is based on the photovoltaic effect. One of the semiconductor region is made so thin that the light incident on it reaches the <i>P-N- </i>junction and gets absorbed. It converts solar energy into electrical energy.</p><p><img src=\"data:image/png;base64,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\"></p>",
+      "position": 0,
+      "qcConcept": "66a0dbbcc03b9dcaf1afe329"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66891f331010aab82c8aa67e",
+      "title": "Identify the device whose $\\mathrm{V}$ - I characteristics are shown in the given image.\n<img src=\"https://cdn-question-pool.getmarks.app/modules/qc/R0lr3zR9Ci__8HJq56CZIogjvOzmibWbmgOrmmx6D8U.original.fullsize.png\"/><br/>",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f331010aab82c8aa67f",
+      "title": "Which of the following diodes is used in forward biased condition?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f331010aab82c8aa680",
+      "title": "Which of the following is the main application of Zener diode?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f331010aab82c8aa681",
+      "title": "Which of the following diode exhibits negative resistance in its I-V characteristics?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f331010aab82c8aa682",
+      "title": "A Zener diode is always ______ connected.",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa683",
+      "title": "Identify the one on which no external bias is applied.",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa684",
+      "title": "Which of the following is used as a voltage regulator?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa685",
+      "title": "Refer to this figure. Which symbol is correct for an LED?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa686",
+      "title": "A Zener diode is operating in its breakdown region. What will be the change in output voltage if the input voltage is increased?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa687",
+      "title": "In an amplifier the load resistance $R_L$ is equal to the plate resistance $\\left(r_p\\right)$. The voltage amplification is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa688",
+      "title": "Which diode is primarily used in optocouplers to provide electrical isolation between circuits?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa689",
+      "title": "In which region of the photodiode does the majority of electron-hole pair generation occur when exposed to light?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa68a",
+      "title": "What happens to the reverse current in a Zener diode when the reverse voltage is less than the Zener voltage?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

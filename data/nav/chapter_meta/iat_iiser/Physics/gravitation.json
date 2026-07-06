@@ -1,0 +1,45 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff47378e1624ea7b698e",
+  "subject": "Physics",
+  "chapter": "Gravitation",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff83378e1624ea7b6c6a",
+      "title": "Acceleration Due to Gravity",
+      "count": 1,
+      "questionIds": [
+        "67fdff5d378e1624ea7b6ab1"
+      ]
+    },
+    {
+      "id": "67fdff83378e1624ea7b6c67",
+      "title": "Gravitational potential and Potential Energy",
+      "count": 2,
+      "questionIds": [
+        "67fdff70378e1624ea7b6b82",
+        "67fdff47378e1624ea7b698c"
+      ]
+    },
+    {
+      "id": "67fdff83378e1624ea7b6c69",
+      "title": "Motion of satellite",
+      "count": 2,
+      "questionIds": [
+        "6a4521868c20d3b91d64f989",
+        "67fdff56378e1624ea7b6a5b"
+      ]
+    },
+    {
+      "id": "67fdff83378e1624ea7b6c68",
+      "title": "Kepler laws",
+      "count": 1,
+      "questionIds": [
+        "67fdff50378e1624ea7b6a0e"
+      ]
+    }
+  ]
+}

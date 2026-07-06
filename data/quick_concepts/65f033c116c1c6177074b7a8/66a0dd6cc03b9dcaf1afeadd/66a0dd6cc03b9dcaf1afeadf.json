@@ -1,0 +1,46 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd6cc03b9dcaf1afeadd",
+  "topicId": "66a0dd6cc03b9dcaf1afeadf",
+  "title": "General Equation of 2nd degree curve",
+  "concepts": [
+    {
+      "title": "Standard equation of hyperbola",
+      "conceptBody": "<h3><strong>Standard Equations of Hyperbola&nbsp;</strong></h3><p>Let $\\text{S}$ be the focus and ZM the directrix of a hyperbola. Since e $&gt;1$, we can divide SZ internally and externally in the ratio e : 1 , let the points of division be $\\text{A}$ and $\\text{A'}$ as in the figure.</p><p>Let $\\text{A}{{\\text{A}}^{\\text{ }\\!\\!'\\!\\!\\text{ }}}=2\\text{a}$ and is bisected at $\\text{C}$.</p><p>Then, $\\text{SA}=$ e. AZ, SA´ = e.ZA´</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ SA}+\\text{S}{{\\text{A}}^{\\text{ }\\!\\!'\\!\\!\\text{ }}}=\\text{e}\\left( \\text{AZ}+\\text{Z}{{\\text{A}}^{\\text{ }\\!\\!'\\!\\!\\text{ }}} \\right)=2\\text{ae}$</p><p>i.e., $\\text{ }\\!\\!~\\!\\!\\text{ }2\\text{SC}=2\\text{ae}$ or $\\text{SC}=\\text{ae}$</p><p>similarly, by subtraction,</p><p>$\\begin{array}{*{35}{r}} {} &amp; \\text{S}{{\\text{A}}^{\\text{ }\\!\\!'\\!\\!\\text{ }}}-\\text{SA}=\\text{e}\\left( \\text{Z}{{\\text{A}}^{\\text{ }\\!\\!'\\!\\!\\text{ }}}-\\text{ZA} \\right)=2\\text{e}\\cdot \\text{ZC} \\\\ \\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ } &amp; 2\\text{a}=2\\text{eZC}\\Rightarrow \\text{ZC}=\\text{a}/\\text{e} \\\\ \\end{array}$</p><p>Now, take $\\text{C}$ as the origin, $\\text{CA}$ as the $\\text{x}$-axis, and the perpendicular line $\\text{CY}$ as the $\\text{y}$-axis. Then, $\\text{S}$ is the point (ae, 0) and ZM the line $\\text{x}=\\text{a}/\\text{e}$. Let $\\text{P}\\left( \\text{x},\\text{y} \\right)$ be any point on the hyperbola.</p><p>Then the condition $\\text{P}{{\\text{S}}^{2}}={{\\text{e}}^{2}}$. (distance of $\\text{P}$ from ${{\\left. \\text{ZM} \\right)}^{2}}$ gives ${{(\\text{x}-\\text{ae})}^{2}}+{{\\text{y}}^{2}}={{\\text{e}}^{2}}{{(\\text{x}-\\text{a}/\\text{e})}^{2}}$</p><p>or $\\text{ }\\!\\!~\\!\\!\\text{ }{{x}^{2}}{{(1-e)}^{2}}+{{y}^{2}}={{a}^{2}}{{(1-e)}^{2}}$ i.e., $\\frac{{{x}^{2}}}{{{a}^{2}}}-\\frac{{{y}^{2}}}{{{a}^{2}}\\left( {{e}^{2}}-1 \\right)}=1$ …(i)</p><p>Since e $&gt;1,{{e}^{2}}-1$ is positive. Let ${{a}^{2}}\\left( {{e}^{2}}-1 \\right)={{b}^{2}}$. Then the equation (i) becomes $\\frac{{{x}^{2}}}{{{a}^{2}}}-\\frac{{{y}^{2}}}{{{b}^{2}}}=1$.</p><p>The eccentricity e of the hyperbola $\\frac{{{x}^{2}}}{{{a}^{2}}}-\\frac{{{y}^{2}}}{{{b}^{2}}}=1$ is given by the relation ${{e}^{2}}=\\left( 1+\\frac{{{b}^{2}}}{{{a}^{2}}} \\right)$.</p><p>Since the curve is symmetrical about the y-axis, it is clear that there exists another focus $\\text{S'}$ at $(-$ ae, 0$)$ and a corresponding directrix $Z'M'$ with the equation $x=-a/e$, such that the same hyperbola is described if a point moves so that its distance from $\\text{S'}$ is e times its distance from $\\text{Z'M'}$.</p>",
+      "position": 0,
+      "qcConcept": "66a0dd6dc03b9dcaf1afeae0"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f602d384bfb4a538158",
+      "title": "The one which does not represent a hyperbola is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f602d384bfb4a538159",
+      "title": "The equation $13\\left[(x-1)^2+(y-2)^2\\right]=3(2 x+3 y-2)^2$ represents",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f602d384bfb4a53815a",
+      "title": "The equation $x^2+4 x y+y^2+2 x+4 y+2=0$ represents",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f602d384bfb4a53815b",
+      "title": "The equation $x^2-16 x y-11 y^2-12 x+6 y+21=0$ represents",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f602d384bfb4a53815c",
+      "title": "$x^2-4 y^2-2 x+16 y-40=0$ represents",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "examSlug": "viteee",
+  "examId": "61bb57e81213731910ea0b6f",
+  "subjectId": "61bb58181213731910ea0b70",
+  "chapterId": "61bb822a6a93c4900f6083d4",
+  "subject": "Physics",
+  "chapter": "Communication System",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64e45994ec226f2f4360ae00",
+      "title": "Communication System",
+      "count": 2,
+      "questionIds": [
+        "64e45900ec226f2f4360a7f5",
+        "64e458aeec226f2f4360a4cf"
+      ]
+    },
+    {
+      "id": "64e45994ec226f2f4360ae02",
+      "title": "Modulation",
+      "count": 2,
+      "questionIds": [
+        "64e4596cec226f2f4360ac16",
+        "64e45961ec226f2f4360aba9"
+      ]
+    },
+    {
+      "id": "64e45994ec226f2f4360ae01",
+      "title": "Propagation of EM Waves",
+      "count": 4,
+      "questionIds": [
+        "64e4590dec226f2f4360a871",
+        "64e458e9ec226f2f4360a718",
+        "64e458e9ec226f2f4360a717",
+        "64e458aeec226f2f4360a4d1"
+      ]
+    }
+  ]
+}

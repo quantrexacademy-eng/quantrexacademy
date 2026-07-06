@@ -1,0 +1,100 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd7dc03b9dcaf1afeb3e",
+  "topicId": "66a0dd7fc03b9dcaf1afeb48",
+  "title": "T inverse T property",
+  "concepts": [
+    {
+      "title": "Methods for finding principal values",
+      "conceptBody": "<h3><strong>Method for finding principal value&nbsp;</strong></h3><p><strong>Step I. </strong>Mark the quadrant in which the angle may lie.</p><p><strong>Step II. </strong>Mark the direction to be taken. Select anticlockwise direction for 1st and 2nd</p><p>quadrants and select clockwise direction for 3rd and 4th quadrants.</p><p><strong>Step III. </strong>Find the angles in the first circle.</p><p><strong>Step IV. </strong>Select the numerically smallest angle. i.e., in the first rotation.</p><p>In case, two values, one with positive sign and the other with negative sign,</p><p>qualify for principal value, we conventionally select the angle with positive sign</p><p>as principal value.</p>",
+      "position": 0,
+      "qcConcept": "66a0dd7fc03b9dcaf1afeb49"
+    },
+    {
+      "title": "Differentiation of inverse trigonometric functions",
+      "conceptBody": "<h3><strong>Differentiation and integration of inverse trigonometric functions&nbsp;</strong></h3><p>To differentiate the arc tangent function, we imitate the method we used to differentiate</p><p>the logarithm function. Namely, if $y=\\text{ta}{{\\text{n}}^{-1}}\\left( \\text{x} \\right)$, then $\\text{tan}\\left( \\text{y} \\right)=\\text{x}$, so</p><p>$\\frac{d}{dx}\\text{tan}\\left( y \\right)=\\frac{d}{dx}x\\text{ }\\!\\!~\\!\\!\\text{ Hence }\\!\\!~\\!\\!\\text{ se}{{\\text{c}}^{2}}\\left( y \\right)\\frac{dy}{dx}=1$</p><p>from which it follows that $\\frac{dy}{dx}=\\frac{1}{\\text{se}{{\\text{c}}^{2}}\\left( y \\right)}$</p><p>Now, $\\text{se}{{\\text{c}}^{2}}\\left( y \\right)=1+\\text{ta}{{\\text{n}}^{2}}\\left( y \\right)=1+{{x}^{2}}$</p><p>so we have $\\frac{dy}{dx}=\\frac{1}{1+{{x}^{2}}}$</p><p>Hence we have demonstrated the following proposition.</p><p><strong>Proposition </strong>$:\\frac{\\text{d}}{\\text{dx}}\\text{ta}{{\\text{n}}^{-1}}\\left( \\text{x} \\right)=\\frac{1}{1+{{\\text{x}}^{2}}}$</p><p>As a consequence of the proposition, we have $\\int \\frac{1}{1+{{x}^{2}}}dx=\\text{ta}{{\\text{n}}^{-1}}\\left( x \\right)+c$</p><p>$1+{{\\text{x}}^{2}}$ is an irreducible polynomial. We will see more example of this type in the</p><p>following examples.</p><p>Using the chain rule, we have $\\frac{d}{dx}\\text{ta}{{\\text{n}}^{-1}}\\left( 4{{x}^{2}} \\right)=\\frac{8x}{1+16{{x}^{4}}}$</p>",
+      "position": 1,
+      "qcConcept": "66a0dd7fc03b9dcaf1afeb4a"
+    },
+    {
+      "title": "Integration of inverse trigonometric functions",
+      "conceptBody": "<h3><strong>Integration of inverse trigonometric functions</strong></h3><p><strong>Evaluating $\\int \\text{ta}{{\\text{n}}^{-1}}\\left( x \\right)dx$ is similar to evaluating $\\int \\text{log}\\left( x \\right)dx$.&nbsp;</strong></p><p>That is, we will use</p><p>integration by parts with</p><p>$\\begin{array}{*{35}{l}} \\text{u}=\\text{ta}{{\\text{n}}^{-1}}\\left( \\text{x} \\right) &amp; \\text{v}=\\text{x} \\\\ \\text{du}=\\frac{1}{1+{{\\text{x}}^{2}}}\\text{dx} &amp; \\text{dv}=\\text{dx} \\\\ \\end{array}$</p><p>Then, $\\text{ }\\!\\!~\\!\\!\\text{ }\\int \\text{ta}{{\\text{n}}^{-1}}xdx=x\\text{ta}{{\\text{n}}^{-1}}x-\\int \\frac{x}{1+{{x}^{2}}}dx$</p><p>Using the substitution,</p><p>$\\begin{array}{*{35}{r}} {} &amp; u=1+{{x}^{2}} \\\\ {} &amp; du=2xdx \\\\ \\end{array}$</p><p>we have, $\\frac{1}{2}du=xdx$, from which it follows that</p><p>$\\int ~\\frac{\\text{x}}{1+{{\\text{x}}^{2}}}\\text{dx}=\\frac{1}{2}\\int ~\\frac{1}{\\text{u}}\\text{du}=\\frac{1}{2}\\text{log}\\left| \\text{u} \\right|+\\text{c}=\\frac{1}{2}\\text{log}\\left( 1+{{\\text{x}}^{2}} \\right)+\\text{c}$</p><p>Thus, $\\int \\text{ta}{{\\text{n}}^{-1}}\\left( \\text{x} \\right)\\text{dx}=\\text{xta}{{\\text{n}}^{-1}}\\left( \\text{x} \\right)-\\frac{1}{2}\\text{log}\\left( 1+{{\\text{x}}^{2}} \\right)+\\text{c}$</p>",
+      "position": 2,
+      "qcConcept": "66a0dd7fc03b9dcaf1afeb4b"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f642d384bfb4a538200",
+      "title": "$\\tan ^{-1}\\left[\\frac{\\cos x}{1+\\sin x}\\right]=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a538201",
+      "title": "$\\sec ^2\\left(\\tan ^{-1} 2\\right)+\\operatorname{cosec}^2\\left(\\cot ^{-1} 3\\right)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a538202",
+      "title": "$\\sin ^{-1}\\left[x \\sqrt{1-x}-\\sqrt{x} \\sqrt{1-x^2}\\right]=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a538203",
+      "title": "$\\cos ^{-1}\\left(\\cos \\frac{7 \\pi}{6}\\right)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a538204",
+      "title": "$\\cot \\left[\\cos ^{-1}\\left(\\frac{7}{25}\\right)\\right]=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a538205",
+      "title": "If $\\frac{\\pi}{2} \\leq x \\leq \\frac{3 \\pi}{2}$, then $\\sin ^{-1}(\\sin x)$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a538206",
+      "title": "If $\\pi \\leq x \\leq 2 \\pi$, then $\\cos ^{-1}(\\cos x)$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a538207",
+      "title": "The value of $\\sin ^{-1}(\\sin 10)$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a538208",
+      "title": "If $\\theta=\\sin ^{-1}\\left[\\sin \\left(-600^{\\circ}\\right)\\right]$, then one of the possible value of $\\theta$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a538209",
+      "title": "$\\sin \\left[\\frac{\\pi}{2}-\\sin ^{-1}\\left(-\\frac{\\sqrt{3}}{2}\\right)\\right]=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a53820a",
+      "title": "$\\cot ^{-1}\\left[\\frac{\\sqrt{1-\\sin x}+\\sqrt{1+\\sin x}}{\\sqrt{1-\\sin x}-\\sqrt{1+\\sin x}}\\right]=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f642d384bfb4a53820b",
+      "title": "If $\\tan \\left(\\cos ^{-1} x\\right)=\\sin \\left(\\cot ^{-1} \\frac{1}{2}\\right)$, then $x=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

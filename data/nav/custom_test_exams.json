@@ -1,0 +1,4287 @@
+{
+  "success": true,
+  "message": "Fetched custom test exams.",
+  "filters": {
+    "platform": "web"
+  },
+  "data": {
+    "isUserPremium": true,
+    "showing": 3,
+    "exams": [
+      {
+        "_id": "615d76b2c52ffa3c944600df",
+        "title": "JEE Main",
+        "icon": "https://cdn-assets.getmarks.app/app_assets/img/exams/ic_content_exam_jee_main.png",
+        "hasOutOfSyllabusFilter": true,
+        "subjects": [
+          {
+            "_id": "615d708dbd4a37c4058ee5a8",
+            "title": "Physics",
+            "shortName": "Phy",
+            "icon": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_physics_icon.svg",
+            "borderColor": {
+              "light": "Subject-Gradient-Physics",
+              "dark": "Subject-Gradient-Physics"
+            },
+            "iconIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_physics_icon_illustration.svg",
+            "iconWithIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_physics_icon_with_illustration.svg",
+            "totalUnits": 7,
+            "totalChapters": 32,
+            "units": [
+              {
+                "_id": "615d6ff644b529f0efd75268",
+                "title": "Electromagnetism",
+                "shortName": "Electromagnetism",
+                "totalChapters": 7,
+                "chapters": [
+                  {
+                    "_id": "615d6fed2b295b085ab6eba0",
+                    "title": "Alternating Current",
+                    "shortName": "AC Circuits",
+                    "icon": "ic_content_chapter_physics_alternating_current.svg",
+                    "importance": 24,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb9b",
+                    "title": "Capacitance",
+                    "shortName": "Capacitance",
+                    "icon": "ic_content_chapter_physics_capacitance.svg",
+                    "importance": 25,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb9c",
+                    "title": "Current Electricity",
+                    "shortName": "Current Electricity",
+                    "icon": "ic_content_chapter_physics_current_electricity.svg",
+                    "importance": 22,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb9f",
+                    "title": "Electromagnetic Induction",
+                    "shortName": "EMI",
+                    "icon": "ic_content_chapter_physics_electromagenetic_induction.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb9a",
+                    "title": "Electrostatics",
+                    "shortName": "Electrostatics",
+                    "icon": "ic_content_chapter_physics_electrostatics.svg",
+                    "importance": 26,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb9e",
+                    "title": "Magnetic Effects of Current",
+                    "shortName": "Magnetism & Current",
+                    "icon": "ic_content_chapter_physics_magnetic_effects_of_current.svg",
+                    "importance": 21,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb9d",
+                    "title": "Magnetic Properties of Matter",
+                    "shortName": "Magnetic Properties",
+                    "icon": "ic_content_chapter_physics_magnetic_properties_of_matter.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "reduced"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff544b529f0efd75265",
+                "title": "Mechanics 1",
+                "shortName": "Mechanics 1",
+                "totalChapters": 9,
+                "chapters": [
+                  {
+                    "_id": "615d6fec2b295b085ab6eb90",
+                    "title": "Center of Mass Momentum and Collision",
+                    "shortName": "COM & Collisions",
+                    "icon": "ic_content_chapter_physics_center_of_mass_momentum_and_collision.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb92",
+                    "title": "Gravitation",
+                    "shortName": "Gravitation",
+                    "icon": "ic_content_chapter_physics_gravitation.svg",
+                    "importance": 27,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb8e",
+                    "title": "Laws of Motion",
+                    "shortName": "Laws of Motion",
+                    "icon": "ic_content_chapter_physics_laws_of_motion.svg",
+                    "importance": 22,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6feb2b295b085ab6eb8a",
+                    "title": "Mathematics in Physics",
+                    "shortName": "Math in Physics",
+                    "icon": "ic_content_chapter_physics_math_in_phyics.svg",
+                    "importance": 42,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb8c",
+                    "title": "Motion In One Dimension",
+                    "shortName": "Motion in 1D",
+                    "icon": "ic_content_chapter_physics_motion_in_one_dimension.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb8d",
+                    "title": "Motion In Two Dimensions",
+                    "shortName": "Motion in 2D",
+                    "icon": "ic_content_chapter_physics_motion_in_two_dimension.svg",
+                    "importance": 26,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb91",
+                    "title": "Rotational Motion",
+                    "shortName": "Rotational Motion",
+                    "icon": "ic_content_chapter_physics_rotational_motion.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb8b",
+                    "title": "Units and Dimensions",
+                    "shortName": "Units & Dimensions",
+                    "icon": "ic_content_chapter_physics_units_and_dimensions.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb8f",
+                    "title": "Work Power Energy",
+                    "shortName": "Work Power Energy",
+                    "icon": "ic_content_chapter_physics_work_power_energy.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75266",
+                "title": "Mechanics 2",
+                "shortName": "Mechanics 2",
+                "totalChapters": 4,
+                "chapters": [
+                  {
+                    "_id": "615d6fed2b295b085ab6eb94",
+                    "title": "Mechanical Properties of Fluids",
+                    "shortName": "Properties of Fluids",
+                    "icon": "ic_content_chapter_physics_mechanical_properties_of_fluids.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75266",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb93",
+                    "title": "Mechanical Properties of Solids",
+                    "shortName": "Properties of Solids",
+                    "icon": "ic_content_chapter_physics_mechanical_properties_of_solids.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75266",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb98",
+                    "title": "Oscillations",
+                    "shortName": "Oscillations",
+                    "icon": "ic_content_chapter_physics_oscillations.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75266",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb99",
+                    "title": "Waves and Sound",
+                    "shortName": "Waves & Sound",
+                    "icon": "ic_content_chapter_physics_waves_and_sounds.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75266",
+                    "syllabusCategory": "reduced"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75269",
+                "title": "Miscellaneous Physics",
+                "shortName": "Miscellaneous",
+                "totalChapters": 4,
+                "chapters": [
+                  {
+                    "_id": "615d6fed2b295b085ab6eba8",
+                    "title": "Communication System",
+                    "shortName": "Communication System",
+                    "icon": "ic_content_chapter_physics_communication_systems.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75269",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eba1",
+                    "title": "Electromagnetic Waves",
+                    "shortName": "EM Waves",
+                    "icon": "ic_content_chapter_physics_electromagnetic_waves.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75269",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eba9",
+                    "title": "Experimental Physics",
+                    "shortName": "Experimental Physics",
+                    "icon": "ic_content_chapter_physics_experimental_physics.svg",
+                    "importance": 43,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75269",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eba7",
+                    "title": "Semiconductors",
+                    "shortName": "Semiconductors",
+                    "icon": "ic_content_chapter_physics_semiconductors.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75269",
+                    "syllabusCategory": "reduced"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd7526b",
+                "title": "Modern Physics",
+                "shortName": "Modern Physics",
+                "totalChapters": 3,
+                "chapters": [
+                  {
+                    "_id": "615d6fed2b295b085ab6eba5",
+                    "title": "Atomic Physics",
+                    "shortName": "Atomic Physics",
+                    "icon": "ic_content_chapter_physics_atomic_physics.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526b",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eba4",
+                    "title": "Dual Nature of Matter",
+                    "shortName": "Dual Nature",
+                    "icon": "ic_content_chapter_physics_dual_nature_of_matter.svg",
+                    "importance": 39,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526b",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eba6",
+                    "title": "Nuclear Physics",
+                    "shortName": "Nuclear Physics",
+                    "icon": "ic_content_chapter_physics_nuclear_physics.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526b",
+                    "syllabusCategory": "reduced"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd7526a",
+                "title": "Optics",
+                "shortName": "Optics",
+                "totalChapters": 2,
+                "chapters": [
+                  {
+                    "_id": "615d6fed2b295b085ab6eba2",
+                    "title": "Ray Optics",
+                    "shortName": "Ray Optics",
+                    "icon": "ic_content_chapter_physics_ray_optics.svg",
+                    "importance": 25,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526a",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eba3",
+                    "title": "Wave Optics",
+                    "shortName": "Wave Optics",
+                    "icon": "ic_content_chapter_physics_wave_optics.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526a",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75267",
+                "title": "Thermodynamics",
+                "shortName": "Thermodynamics",
+                "totalChapters": 3,
+                "chapters": [
+                  {
+                    "_id": "615d6fed2b295b085ab6eb97",
+                    "title": "Kinetic Theory of Gases",
+                    "shortName": "KTG",
+                    "icon": "ic_content_chapter_physics_kinetic_theory_of_gases.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75267",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb95",
+                    "title": "Thermal Properties of Matter",
+                    "shortName": "Thermal Properties",
+                    "icon": "ic_content_chapter_physics_thermal_properties_of_matter.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75267",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb96",
+                    "title": "Thermodynamics",
+                    "shortName": "Thermodynamics",
+                    "icon": "ic_content_chapter_physics_thermodynamics.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75267",
+                    "syllabusCategory": "reduced"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_id": "615d70bd9948bc1b21da2b1f",
+            "title": "Chemistry",
+            "shortName": "Chem",
+            "icon": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_chemistry_icon.svg",
+            "borderColor": {
+              "light": "Subject-Gradient-Chemistry",
+              "dark": "Subject-Gradient-Chemistry"
+            },
+            "iconIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_chemistry_icon_illustration.svg",
+            "iconWithIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_chemistry_icon_with_illustration.svg",
+            "totalUnits": 3,
+            "totalChapters": 33,
+            "units": [
+              {
+                "_id": "615d6ff644b529f0efd7526d",
+                "title": "Inorganic Chemistry",
+                "shortName": "Inorganic Chemistry",
+                "totalChapters": 10,
+                "chapters": [
+                  {
+                    "_id": "615d6fee2b295b085ab6ebad",
+                    "title": "Chemical Bonding and Molecular Structure",
+                    "shortName": "Chemical Bonding",
+                    "icon": "ic_content_chapter_chemistry_chemical_bonding_and_molecular_structure.svg",
+                    "importance": 17,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6ebac",
+                    "title": "Classification of Elements and Periodicity in Properties",
+                    "shortName": "Periodic Table",
+                    "icon": "ic_content_chapter_chemistry_classification_of_elements_and_periodicity_in_properties.svg",
+                    "importance": 27,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc1",
+                    "title": "Coordination Compounds",
+                    "shortName": "Coordination Compounds",
+                    "icon": "ic_content_chapter_chemistry_coordination_compounds.svg",
+                    "importance": 24,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebbe",
+                    "title": "General Principles and Processes of Isolation of Metals",
+                    "shortName": "Metallurgy",
+                    "icon": "ic_content_chapter_chemistry_general_principles_and_processes_of_isolation_of_metals.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb3",
+                    "title": "Hydrogen",
+                    "shortName": "Hydrogen",
+                    "icon": "ic_content_chapter_chemistry_hydrogen.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebca",
+                    "title": "Practical Chemistry",
+                    "shortName": "Practical Chemistry",
+                    "icon": "ic_content_chapter_chemistry_practical_chemistry.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc0",
+                    "title": "d and f Block Elements",
+                    "shortName": "d & f Block",
+                    "icon": "ic_content_chapter_chemistry_d_and_f_block_elements.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb5",
+                    "title": "p Block Elements (Group 13 & 14)",
+                    "shortName": "p Block (G13-14)",
+                    "icon": "ic_content_chapter_chemistry_p_block_elements_group_13_14.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebbf",
+                    "title": "p Block Elements (Group 15, 16, 17 & 18)",
+                    "shortName": "p Block (G15-18)",
+                    "icon": "ic_content_chapter_chemistry_p_block_elements_group_15_16_17_18.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb4",
+                    "title": "s Block Elements",
+                    "shortName": "s Block",
+                    "icon": "ic_content_chapter_chemistry_s_block_elemets.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "removed"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd7526e",
+                "title": "Organic Chemistry",
+                "shortName": "Organic Chemistry",
+                "totalChapters": 11,
+                "chapters": [
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc3",
+                    "title": "Alcohols Phenols and Ethers",
+                    "shortName": "Alcohols, Phenols & Ethers",
+                    "icon": "ic_content_chapter_chemistry_alcohols_phenols_and_ethers.svg",
+                    "importance": 26,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc4",
+                    "title": "Aldehydes and Ketones",
+                    "shortName": "Aldehydes & Ketones",
+                    "icon": "ic_content_chapter_chemistry_aldehydes_and_ketones.svg",
+                    "importance": 27,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc6",
+                    "title": "Amines",
+                    "shortName": "Amines",
+                    "icon": "ic_content_chapter_chemistry_amines.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebc7",
+                    "title": "Biomolecules",
+                    "shortName": "Biomolecules",
+                    "icon": "ic_content_chapter_chemistry_biomolecules.svg",
+                    "importance": 41,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc5",
+                    "title": "Carboxylic Acid Derivatives",
+                    "shortName": "Carboxylic Acids",
+                    "icon": "ic_content_chapter_chemistry_carboxylic_acid_derivatives.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebc9",
+                    "title": "Chemistry in Everyday Life",
+                    "shortName": "Everyday Chemistry",
+                    "icon": "ic_content_chapter_chemistry_chemistry_in_everyday_life.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb8",
+                    "title": "Environmental Chemistry",
+                    "shortName": "Env. Chemistry",
+                    "icon": "ic_content_chapter_chemistry_environmental_chemistry.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb6",
+                    "title": "General Organic Chemistry",
+                    "shortName": "GOC",
+                    "icon": "ic_content_chapter_chemistry_general_organic_chemistry.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc2",
+                    "title": "Haloalkanes and Haloarenes",
+                    "shortName": "Haloalkanes & Haloarenes",
+                    "icon": "ic_content_chapter_chemistry_haloalkanes_and_haloarenes.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb7",
+                    "title": "Hydrocarbons",
+                    "shortName": "Hydrocarbons",
+                    "icon": "ic_content_chapter_chemistry_hydrocarbons.svg",
+                    "importance": 26,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebc8",
+                    "title": "Polymers",
+                    "shortName": "Polymers",
+                    "icon": "ic_content_chapter_chemistry_polymers.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "removed"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd7526c",
+                "title": "Physical Chemistry",
+                "shortName": "Physical Chemistry",
+                "totalChapters": 12,
+                "chapters": [
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb0",
+                    "title": "Chemical Equilibrium",
+                    "shortName": "Chemical Equilibrium",
+                    "icon": "ic_content_chapter_chemistry_chemical_equilibrium.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebbc",
+                    "title": "Chemical Kinetics",
+                    "shortName": "Chemical Kinetics",
+                    "icon": "ic_content_chapter_chemistry_chemical_kinetics.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebbb",
+                    "title": "Electrochemistry",
+                    "shortName": "Electrochemistry",
+                    "icon": "ic_content_chapter_chemistry_electrochemistry.svg",
+                    "importance": 22,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb1",
+                    "title": "Ionic Equilibrium",
+                    "shortName": "Ionic Equilibrium",
+                    "icon": "ic_content_chapter_chemistry_ionic_equilibrium.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb2",
+                    "title": "Redox Reactions",
+                    "shortName": "Redox Reactions",
+                    "icon": "ic_content_chapter_chemistry_redox_reactions.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb9",
+                    "title": "Solid State",
+                    "shortName": "Solid State",
+                    "icon": "ic_content_chapter_chemistry_solid_state.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebba",
+                    "title": "Solutions",
+                    "shortName": "Solutions",
+                    "icon": "ic_content_chapter_chemistry_solutions.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6ebaa",
+                    "title": "Some Basic Concepts of Chemistry",
+                    "shortName": "Mole Concept",
+                    "icon": "ic_content_chapter_chemistry_some_basic_concepts_of_chemistry.svg",
+                    "importance": 25,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebae",
+                    "title": "States of Matter",
+                    "shortName": "States of Matter",
+                    "icon": "ic_content_chapter_chemistry_states_of_matter.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6ebab",
+                    "title": "Structure of Atom",
+                    "shortName": "Atomic Structure",
+                    "icon": "ic_content_chapter_chemistry_structure_of_atom.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebbd",
+                    "title": "Surface Chemistry",
+                    "shortName": "Surface Chemistry",
+                    "icon": "ic_content_chapter_chemistry_surface_chemistry.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebaf",
+                    "title": "Thermodynamics (C)",
+                    "shortName": "Thermodynamics (C)",
+                    "icon": "ic_content_chapter_chemistry_thermodynamics.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_id": "615d70e621450b3f267390c8",
+            "title": "Mathematics",
+            "shortName": "Math",
+            "icon": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_mathematics_icon.svg",
+            "borderColor": {
+              "light": "Subject-Gradient-Mathematics",
+              "dark": "Subject-Gradient-Mathematics"
+            },
+            "iconIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_mathematics_icon_illustration.svg",
+            "iconWithIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_mathematics_icon_with_illustration.svg",
+            "totalUnits": 6,
+            "totalChapters": 36,
+            "units": [
+              {
+                "_id": "615d6ff644b529f0efd75270",
+                "title": "Algebra",
+                "shortName": "Algebra",
+                "totalChapters": 12,
+                "chapters": [
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd1",
+                    "title": "Binomial Theorem",
+                    "shortName": "Binomial Theorem",
+                    "icon": "ic_content_chapter_mathematics_binomial_theorem.svg",
+                    "importance": 24,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebcd",
+                    "title": "Complex Number",
+                    "shortName": "Complex Numbers",
+                    "icon": "ic_content_chapter_mathematics_complex_number.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe1",
+                    "title": "Determinants",
+                    "shortName": "Determinants",
+                    "icon": "ic_content_chapter_mathematics_determinants.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebed",
+                    "title": "Linear Programming",
+                    "shortName": "Linear Programming",
+                    "icon": "ic_content_chapter_mathematics_linear_programming.svg",
+                    "importance": 36,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd0",
+                    "title": "Mathematical Induction",
+                    "shortName": "Math Induction",
+                    "icon": "ic_content_chapter_mathematics_mathematical_induction.svg",
+                    "importance": 35,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebdb",
+                    "title": "Mathematical Reasoning",
+                    "shortName": "Mathematical Reasoning",
+                    "icon": "ic_content_chapter_mathematics_mathematical_reasoning.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe0",
+                    "title": "Matrices",
+                    "shortName": "Matrices",
+                    "icon": "ic_content_chapter_mathematics_matrices.svg",
+                    "importance": 27,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebce",
+                    "title": "Permutation Combination",
+                    "shortName": "P&C",
+                    "icon": "ic_content_chapter_mathematics_permutation_combination.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebee",
+                    "title": "Probability",
+                    "shortName": "Probability",
+                    "icon": "ic_content_chapter_mathematics_probability.svg",
+                    "importance": 36,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebcc",
+                    "title": "Quadratic Equation",
+                    "shortName": "Quadratic Equations",
+                    "icon": "ic_content_chapter_mathematics_quadratic_equation.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebcf",
+                    "title": "Sequences and Series",
+                    "shortName": "Sequences & Series",
+                    "icon": "ic_content_chapter_mathematics_sequences_and_series.svg",
+                    "importance": 34,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebdc",
+                    "title": "Statistics",
+                    "shortName": "Statistics",
+                    "icon": "ic_content_chapter_mathematics_statistics.svg",
+                    "importance": 35,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75273",
+                "title": "Calculus",
+                "shortName": "Calculus",
+                "totalChapters": 10,
+                "chapters": [
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe6",
+                    "title": "Application of Derivatives",
+                    "shortName": "AOD",
+                    "icon": "ic_content_chapter_mathematics_application_of_derivatives.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe9",
+                    "title": "Area Under Curves",
+                    "shortName": "Area Under Curves",
+                    "icon": "ic_content_chapter_mathematics_area_under_curves.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe4",
+                    "title": "Continuity and Differentiability",
+                    "shortName": "C&D",
+                    "icon": "ic_content_chapter_mathematics_continuity_and_differentiability.svg",
+                    "importance": 27,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe8",
+                    "title": "Definite Integration",
+                    "shortName": "Definite Integration",
+                    "icon": "ic_content_chapter_mathematics_definite_integration.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebea",
+                    "title": "Differential Equations",
+                    "shortName": "Differential Eqns",
+                    "icon": "ic_content_chapter_mathematics_differential_equations.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe5",
+                    "title": "Differentiation",
+                    "shortName": "Differentiation",
+                    "icon": "ic_content_chapter_mathematics_differentiations.svg",
+                    "importance": 34,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe3",
+                    "title": "Functions",
+                    "shortName": "Functions",
+                    "icon": "ic_content_chapter_mathematics_functions.svg",
+                    "importance": 25,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe7",
+                    "title": "Indefinite Integration",
+                    "shortName": "Indefinite Integration",
+                    "icon": "ic_content_chapter_mathematics_indefinite_intergration.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebda",
+                    "title": "Limits",
+                    "shortName": "Limits",
+                    "icon": "ic_content_chapter_mathematics_limits.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebdf",
+                    "title": "Sets and Relations",
+                    "shortName": "Sets & Relations",
+                    "icon": "ic_content_chapter_mathematics_sets_and_relations.svg",
+                    "importance": 34,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75272",
+                "title": "Coordinate Geometry",
+                "shortName": "Coordinate Geometry",
+                "totalChapters": 6,
+                "chapters": [
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd6",
+                    "title": "Circle",
+                    "shortName": "Circle",
+                    "icon": "ic_content_chapter_mathematics_circle.svg",
+                    "importance": 25,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75272",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd8",
+                    "title": "Ellipse",
+                    "shortName": "Ellipse",
+                    "icon": "ic_content_chapter_mathematics_ellipse.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75272",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd9",
+                    "title": "Hyperbola",
+                    "shortName": "Hyperbola",
+                    "icon": "ic_content_chapter_mathematics_hyperbola.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75272",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd5",
+                    "title": "Pair of Lines",
+                    "shortName": "Pair of Lines",
+                    "icon": "ic_content_chapter_mathematics_pair_of_lines.svg",
+                    "importance": 34,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75272",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd7",
+                    "title": "Parabola",
+                    "shortName": "Parabola",
+                    "icon": "ic_content_chapter_mathematics_parabola.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75272",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd4",
+                    "title": "Straight Lines",
+                    "shortName": "Straight Lines",
+                    "icon": "ic_content_chapter_mathematics_straight_lines.svg",
+                    "importance": 23,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75272",
+                    "syllabusCategory": "reduced"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd7526f",
+                "title": "Miscellaneous Mathematics",
+                "shortName": "Miscellaneous",
+                "totalChapters": 1,
+                "chapters": [
+                  {
+                    "_id": "615d6fef2b295b085ab6ebcb",
+                    "title": "Basic of Mathematics",
+                    "shortName": "Basic Math",
+                    "icon": "ic_content_chapter_mathematics_basics_of_mathematics.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526f",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75271",
+                "title": "Trigonometry",
+                "shortName": "Trigonometry",
+                "totalChapters": 5,
+                "chapters": [
+                  {
+                    "_id": "615d6fef2b295b085ab6ebdd",
+                    "title": "Heights and Distances",
+                    "shortName": "Heights & Distances",
+                    "icon": "ic_content_chapter_mathematics_height_and_distances.svg",
+                    "importance": 35,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75271",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe2",
+                    "title": "Inverse Trigonometric Functions",
+                    "shortName": "ITF",
+                    "icon": "ic_content_chapter_mathematics_inverse_trigonometric_functions.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75271",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebde",
+                    "title": "Properties of Triangles",
+                    "shortName": "Properties of Triangles",
+                    "icon": "ic_content_chapter_mathematics_properties_of_triangles.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75271",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd3",
+                    "title": "Trigonometric Equations",
+                    "shortName": "Trigonometric Equations",
+                    "icon": "ic_content_chapter_mathematics_trigonometric_equations.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75271",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd2",
+                    "title": "Trigonometric Ratios & Identities",
+                    "shortName": "Trigonometry",
+                    "icon": "ic_content_chapter_mathematics_trigonometric_ratios_and_identities.svg",
+                    "importance": 35,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75271",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75274",
+                "title": "Vector",
+                "shortName": "Vector",
+                "totalChapters": 2,
+                "chapters": [
+                  {
+                    "_id": "615d6ff02b295b085ab6ebec",
+                    "title": "Three Dimensional Geometry",
+                    "shortName": "3D Geometry",
+                    "icon": "ic_content_chapter_mathematics_three_dimensional_geometry.svg",
+                    "importance": 34,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75274",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebeb",
+                    "title": "Vector Algebra",
+                    "shortName": "Vector Algebra",
+                    "icon": "ic_content_chapter_mathematics_vector_algebra.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75274",
+                    "syllabusCategory": "reduced"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "filtersApplied": {
+          "hideOutOfSyllabus": false
+        }
+      },
+      {
+        "_id": "615d76e4c52ffa3c944600e1",
+        "title": "NEET",
+        "icon": "https://cdn-assets.getmarks.app/app_assets/img/exams/ic_content_exam_neet.png",
+        "hasOutOfSyllabusFilter": true,
+        "subjects": [
+          {
+            "_id": "615d708dbd4a37c4058ee5a8",
+            "title": "Physics",
+            "shortName": "Phy",
+            "icon": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_physics_icon.svg",
+            "borderColor": {
+              "light": "Subject-Gradient-Physics",
+              "dark": "Subject-Gradient-Physics"
+            },
+            "iconIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_physics_icon_illustration.svg",
+            "iconWithIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_physics_icon_with_illustration.svg",
+            "totalUnits": 7,
+            "totalChapters": 32,
+            "units": [
+              {
+                "_id": "615d6ff644b529f0efd75268",
+                "title": "Electromagnetism",
+                "shortName": "Electromagnetism",
+                "totalChapters": 7,
+                "chapters": [
+                  {
+                    "_id": "615d6fed2b295b085ab6eba0",
+                    "title": "Alternating Current",
+                    "shortName": "AC Circuits",
+                    "icon": "ic_content_chapter_physics_alternating_current.svg",
+                    "importance": 24,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb9b",
+                    "title": "Capacitance",
+                    "shortName": "Capacitance",
+                    "icon": "ic_content_chapter_physics_capacitance.svg",
+                    "importance": 25,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb9c",
+                    "title": "Current Electricity",
+                    "shortName": "Current Electricity",
+                    "icon": "ic_content_chapter_physics_current_electricity.svg",
+                    "importance": 22,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb9f",
+                    "title": "Electromagnetic Induction",
+                    "shortName": "EMI",
+                    "icon": "ic_content_chapter_physics_electromagenetic_induction.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb9a",
+                    "title": "Electrostatics",
+                    "shortName": "Electrostatics",
+                    "icon": "ic_content_chapter_physics_electrostatics.svg",
+                    "importance": 26,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb9e",
+                    "title": "Magnetic Effects of Current",
+                    "shortName": "Magnetism & Current",
+                    "icon": "ic_content_chapter_physics_magnetic_effects_of_current.svg",
+                    "importance": 21,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb9d",
+                    "title": "Magnetic Properties of Matter",
+                    "shortName": "Magnetic Properties",
+                    "icon": "ic_content_chapter_physics_magnetic_properties_of_matter.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "reduced"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff544b529f0efd75265",
+                "title": "Mechanics 1",
+                "shortName": "Mechanics 1",
+                "totalChapters": 9,
+                "chapters": [
+                  {
+                    "_id": "615d6fec2b295b085ab6eb90",
+                    "title": "Center of Mass Momentum and Collision",
+                    "shortName": "COM & Collisions",
+                    "icon": "ic_content_chapter_physics_center_of_mass_momentum_and_collision.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb92",
+                    "title": "Gravitation",
+                    "shortName": "Gravitation",
+                    "icon": "ic_content_chapter_physics_gravitation.svg",
+                    "importance": 27,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb8e",
+                    "title": "Laws of Motion",
+                    "shortName": "Laws of Motion",
+                    "icon": "ic_content_chapter_physics_laws_of_motion.svg",
+                    "importance": 22,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6feb2b295b085ab6eb8a",
+                    "title": "Mathematics in Physics",
+                    "shortName": "Math in Physics",
+                    "icon": "ic_content_chapter_physics_math_in_phyics.svg",
+                    "importance": 42,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb8c",
+                    "title": "Motion In One Dimension",
+                    "shortName": "Motion in 1D",
+                    "icon": "ic_content_chapter_physics_motion_in_one_dimension.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb8d",
+                    "title": "Motion In Two Dimensions",
+                    "shortName": "Motion in 2D",
+                    "icon": "ic_content_chapter_physics_motion_in_two_dimension.svg",
+                    "importance": 26,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb91",
+                    "title": "Rotational Motion",
+                    "shortName": "Rotational Motion",
+                    "icon": "ic_content_chapter_physics_rotational_motion.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb8b",
+                    "title": "Units and Dimensions",
+                    "shortName": "Units & Dimensions",
+                    "icon": "ic_content_chapter_physics_units_and_dimensions.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb8f",
+                    "title": "Work Power Energy",
+                    "shortName": "Work Power Energy",
+                    "icon": "ic_content_chapter_physics_work_power_energy.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75266",
+                "title": "Mechanics 2",
+                "shortName": "Mechanics 2",
+                "totalChapters": 4,
+                "chapters": [
+                  {
+                    "_id": "615d6fed2b295b085ab6eb94",
+                    "title": "Mechanical Properties of Fluids",
+                    "shortName": "Properties of Fluids",
+                    "icon": "ic_content_chapter_physics_mechanical_properties_of_fluids.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75266",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb93",
+                    "title": "Mechanical Properties of Solids",
+                    "shortName": "Properties of Solids",
+                    "icon": "ic_content_chapter_physics_mechanical_properties_of_solids.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75266",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb98",
+                    "title": "Oscillations",
+                    "shortName": "Oscillations",
+                    "icon": "ic_content_chapter_physics_oscillations.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75266",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb99",
+                    "title": "Waves and Sound",
+                    "shortName": "Waves & Sound",
+                    "icon": "ic_content_chapter_physics_waves_and_sounds.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75266",
+                    "syllabusCategory": "reduced"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75269",
+                "title": "Miscellaneous Physics",
+                "shortName": "Miscellaneous",
+                "totalChapters": 4,
+                "chapters": [
+                  {
+                    "_id": "615d6fed2b295b085ab6eba8",
+                    "title": "Communication System",
+                    "shortName": "Communication System",
+                    "icon": "ic_content_chapter_physics_communication_systems.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75269",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eba1",
+                    "title": "Electromagnetic Waves",
+                    "shortName": "EM Waves",
+                    "icon": "ic_content_chapter_physics_electromagnetic_waves.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75269",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eba9",
+                    "title": "Experimental Physics",
+                    "shortName": "Experimental Physics",
+                    "icon": "ic_content_chapter_physics_experimental_physics.svg",
+                    "importance": 43,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75269",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eba7",
+                    "title": "Semiconductors",
+                    "shortName": "Semiconductors",
+                    "icon": "ic_content_chapter_physics_semiconductors.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75269",
+                    "syllabusCategory": "reduced"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd7526b",
+                "title": "Modern Physics",
+                "shortName": "Modern Physics",
+                "totalChapters": 3,
+                "chapters": [
+                  {
+                    "_id": "615d6fed2b295b085ab6eba5",
+                    "title": "Atomic Physics",
+                    "shortName": "Atomic Physics",
+                    "icon": "ic_content_chapter_physics_atomic_physics.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526b",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eba4",
+                    "title": "Dual Nature of Matter",
+                    "shortName": "Dual Nature",
+                    "icon": "ic_content_chapter_physics_dual_nature_of_matter.svg",
+                    "importance": 39,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526b",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eba6",
+                    "title": "Nuclear Physics",
+                    "shortName": "Nuclear Physics",
+                    "icon": "ic_content_chapter_physics_nuclear_physics.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526b",
+                    "syllabusCategory": "reduced"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd7526a",
+                "title": "Optics",
+                "shortName": "Optics",
+                "totalChapters": 2,
+                "chapters": [
+                  {
+                    "_id": "615d6fed2b295b085ab6eba2",
+                    "title": "Ray Optics",
+                    "shortName": "Ray Optics",
+                    "icon": "ic_content_chapter_physics_ray_optics.svg",
+                    "importance": 25,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526a",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eba3",
+                    "title": "Wave Optics",
+                    "shortName": "Wave Optics",
+                    "icon": "ic_content_chapter_physics_wave_optics.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526a",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75267",
+                "title": "Thermodynamics",
+                "shortName": "Thermodynamics",
+                "totalChapters": 3,
+                "chapters": [
+                  {
+                    "_id": "615d6fed2b295b085ab6eb97",
+                    "title": "Kinetic Theory of Gases",
+                    "shortName": "KTG",
+                    "icon": "ic_content_chapter_physics_kinetic_theory_of_gases.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75267",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb95",
+                    "title": "Thermal Properties of Matter",
+                    "shortName": "Thermal Properties",
+                    "icon": "ic_content_chapter_physics_thermal_properties_of_matter.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75267",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb96",
+                    "title": "Thermodynamics",
+                    "shortName": "Thermodynamics",
+                    "icon": "ic_content_chapter_physics_thermodynamics.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75267",
+                    "syllabusCategory": "reduced"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_id": "615d70bd9948bc1b21da2b1f",
+            "title": "Chemistry",
+            "shortName": "Chem",
+            "icon": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_chemistry_icon.svg",
+            "borderColor": {
+              "light": "Subject-Gradient-Chemistry",
+              "dark": "Subject-Gradient-Chemistry"
+            },
+            "iconIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_chemistry_icon_illustration.svg",
+            "iconWithIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_chemistry_icon_with_illustration.svg",
+            "totalUnits": 3,
+            "totalChapters": 33,
+            "units": [
+              {
+                "_id": "615d6ff644b529f0efd7526d",
+                "title": "Inorganic Chemistry",
+                "shortName": "Inorganic Chemistry",
+                "totalChapters": 10,
+                "chapters": [
+                  {
+                    "_id": "615d6fee2b295b085ab6ebad",
+                    "title": "Chemical Bonding and Molecular Structure",
+                    "shortName": "Chemical Bonding",
+                    "icon": "ic_content_chapter_chemistry_chemical_bonding_and_molecular_structure.svg",
+                    "importance": 17,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6ebac",
+                    "title": "Classification of Elements and Periodicity in Properties",
+                    "shortName": "Periodic Table",
+                    "icon": "ic_content_chapter_chemistry_classification_of_elements_and_periodicity_in_properties.svg",
+                    "importance": 27,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc1",
+                    "title": "Coordination Compounds",
+                    "shortName": "Coordination Compounds",
+                    "icon": "ic_content_chapter_chemistry_coordination_compounds.svg",
+                    "importance": 24,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebbe",
+                    "title": "General Principles and Processes of Isolation of Metals",
+                    "shortName": "Metallurgy",
+                    "icon": "ic_content_chapter_chemistry_general_principles_and_processes_of_isolation_of_metals.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb3",
+                    "title": "Hydrogen",
+                    "shortName": "Hydrogen",
+                    "icon": "ic_content_chapter_chemistry_hydrogen.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebca",
+                    "title": "Practical Chemistry",
+                    "shortName": "Practical Chemistry",
+                    "icon": "ic_content_chapter_chemistry_practical_chemistry.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc0",
+                    "title": "d and f Block Elements",
+                    "shortName": "d & f Block",
+                    "icon": "ic_content_chapter_chemistry_d_and_f_block_elements.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb5",
+                    "title": "p Block Elements (Group 13 & 14)",
+                    "shortName": "p Block (G13-14)",
+                    "icon": "ic_content_chapter_chemistry_p_block_elements_group_13_14.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebbf",
+                    "title": "p Block Elements (Group 15, 16, 17 & 18)",
+                    "shortName": "p Block (G15-18)",
+                    "icon": "ic_content_chapter_chemistry_p_block_elements_group_15_16_17_18.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "reduced"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb4",
+                    "title": "s Block Elements",
+                    "shortName": "s Block",
+                    "icon": "ic_content_chapter_chemistry_s_block_elemets.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "removed"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd7526e",
+                "title": "Organic Chemistry",
+                "shortName": "Organic Chemistry",
+                "totalChapters": 11,
+                "chapters": [
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc3",
+                    "title": "Alcohols Phenols and Ethers",
+                    "shortName": "Alcohols, Phenols & Ethers",
+                    "icon": "ic_content_chapter_chemistry_alcohols_phenols_and_ethers.svg",
+                    "importance": 26,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc4",
+                    "title": "Aldehydes and Ketones",
+                    "shortName": "Aldehydes & Ketones",
+                    "icon": "ic_content_chapter_chemistry_aldehydes_and_ketones.svg",
+                    "importance": 27,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc6",
+                    "title": "Amines",
+                    "shortName": "Amines",
+                    "icon": "ic_content_chapter_chemistry_amines.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebc7",
+                    "title": "Biomolecules",
+                    "shortName": "Biomolecules",
+                    "icon": "ic_content_chapter_chemistry_biomolecules.svg",
+                    "importance": 41,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc5",
+                    "title": "Carboxylic Acid Derivatives",
+                    "shortName": "Carboxylic Acids",
+                    "icon": "ic_content_chapter_chemistry_carboxylic_acid_derivatives.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebc9",
+                    "title": "Chemistry in Everyday Life",
+                    "shortName": "Everyday Chemistry",
+                    "icon": "ic_content_chapter_chemistry_chemistry_in_everyday_life.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb8",
+                    "title": "Environmental Chemistry",
+                    "shortName": "Env. Chemistry",
+                    "icon": "ic_content_chapter_chemistry_environmental_chemistry.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb6",
+                    "title": "General Organic Chemistry",
+                    "shortName": "GOC",
+                    "icon": "ic_content_chapter_chemistry_general_organic_chemistry.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc2",
+                    "title": "Haloalkanes and Haloarenes",
+                    "shortName": "Haloalkanes & Haloarenes",
+                    "icon": "ic_content_chapter_chemistry_haloalkanes_and_haloarenes.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb7",
+                    "title": "Hydrocarbons",
+                    "shortName": "Hydrocarbons",
+                    "icon": "ic_content_chapter_chemistry_hydrocarbons.svg",
+                    "importance": 26,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebc8",
+                    "title": "Polymers",
+                    "shortName": "Polymers",
+                    "icon": "ic_content_chapter_chemistry_polymers.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "removed"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd7526c",
+                "title": "Physical Chemistry",
+                "shortName": "Physical Chemistry",
+                "totalChapters": 12,
+                "chapters": [
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb0",
+                    "title": "Chemical Equilibrium",
+                    "shortName": "Chemical Equilibrium",
+                    "icon": "ic_content_chapter_chemistry_chemical_equilibrium.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebbc",
+                    "title": "Chemical Kinetics",
+                    "shortName": "Chemical Kinetics",
+                    "icon": "ic_content_chapter_chemistry_chemical_kinetics.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebbb",
+                    "title": "Electrochemistry",
+                    "shortName": "Electrochemistry",
+                    "icon": "ic_content_chapter_chemistry_electrochemistry.svg",
+                    "importance": 22,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb1",
+                    "title": "Ionic Equilibrium",
+                    "shortName": "Ionic Equilibrium",
+                    "icon": "ic_content_chapter_chemistry_ionic_equilibrium.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb2",
+                    "title": "Redox Reactions",
+                    "shortName": "Redox Reactions",
+                    "icon": "ic_content_chapter_chemistry_redox_reactions.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb9",
+                    "title": "Solid State",
+                    "shortName": "Solid State",
+                    "icon": "ic_content_chapter_chemistry_solid_state.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebba",
+                    "title": "Solutions",
+                    "shortName": "Solutions",
+                    "icon": "ic_content_chapter_chemistry_solutions.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6ebaa",
+                    "title": "Some Basic Concepts of Chemistry",
+                    "shortName": "Mole Concept",
+                    "icon": "ic_content_chapter_chemistry_some_basic_concepts_of_chemistry.svg",
+                    "importance": 25,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebae",
+                    "title": "States of Matter",
+                    "shortName": "States of Matter",
+                    "icon": "ic_content_chapter_chemistry_states_of_matter.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6ebab",
+                    "title": "Structure of Atom",
+                    "shortName": "Atomic Structure",
+                    "icon": "ic_content_chapter_chemistry_structure_of_atom.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebbd",
+                    "title": "Surface Chemistry",
+                    "shortName": "Surface Chemistry",
+                    "icon": "ic_content_chapter_chemistry_surface_chemistry.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "removed"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebaf",
+                    "title": "Thermodynamics (C)",
+                    "shortName": "Thermodynamics (C)",
+                    "icon": "ic_content_chapter_chemistry_thermodynamics.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_id": "67571269f3f011c45798c243",
+            "title": "Botany",
+            "shortName": "Bot",
+            "icon": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_botany_icon.svg",
+            "borderColor": {
+              "light": "Subject-Gradient-Biology",
+              "dark": "Subject-Gradient-Biology"
+            },
+            "iconIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_biology_icon_illustration.svg",
+            "iconWithIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_biology_icon_with_illustration.svg",
+            "totalUnits": 5,
+            "totalChapters": 18,
+            "units": [
+              {
+                "_id": "615d6ff644b529f0efd75277",
+                "title": "Cell: Structure and Function",
+                "shortName": "Cell: Structure and Function",
+                "totalChapters": 3,
+                "chapters": [
+                  {
+                    "_id": "615d6ff02b295b085ab6ebf7",
+                    "title": "Biomolecules (B)",
+                    "shortName": "Biomolecules (B)",
+                    "icon": "ic_content_chapter_biology_biomolecules.svg",
+                    "importance": 9,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8",
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75277",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebf8",
+                    "title": "Cell - The Unit of Life",
+                    "shortName": "Cell - Unit of Life",
+                    "icon": "ic_content_chapter_biology_cell_the_unit_of_life.svg",
+                    "importance": 10,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75277",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebf6",
+                    "title": "Cell Cycle and Cell Division",
+                    "shortName": "Cell Cycle & Division",
+                    "icon": "ic_content_chapter_biology_cell_cycle_and_cell_division.svg",
+                    "importance": 11,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75277",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75275",
+                "title": "Diversity of Living Organisms",
+                "shortName": "Diversity of Living Organisms",
+                "totalChapters": 4,
+                "chapters": [
+                  {
+                    "_id": "615d6ff02b295b085ab6ebf2",
+                    "title": "Animal Kingdom",
+                    "shortName": "Animal Kingdom",
+                    "icon": "ic_content_chapter_biology_animal_kingdom.svg",
+                    "importance": 4,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75275",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebf0",
+                    "title": "Biological Classification",
+                    "shortName": "Bio Classification",
+                    "icon": "ic_content_chapter_biology_biological_classification.svg",
+                    "importance": 4,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75275",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebf1",
+                    "title": "Plant Kingdom",
+                    "shortName": "Plant Kingdom",
+                    "icon": "ic_content_chapter_biology_plant_kingdom.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75275",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebef",
+                    "title": "The Living World",
+                    "shortName": "Living World",
+                    "icon": "ic_content_chapter_biology_the_living_work.svg",
+                    "importance": 38,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75275",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd7527e",
+                "title": "Ecology and Environment",
+                "shortName": "Ecology and Environment",
+                "totalChapters": 4,
+                "chapters": [
+                  {
+                    "_id": "615d6ff22b295b085ab6ec13",
+                    "title": "Biodiversity and its Conservation",
+                    "shortName": "Biodiversity",
+                    "icon": "ic_content_chapter_biology_biodiversity_and_its_conservation.svg",
+                    "importance": 37,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7527e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff22b295b085ab6ec14",
+                    "title": "Ecosystem",
+                    "shortName": "Ecosystem",
+                    "icon": "ic_content_chapter_biology_ecosystem.svg",
+                    "importance": 38,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7527e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ec11",
+                    "title": "Environmental Issues",
+                    "shortName": "Environmental Issues",
+                    "icon": "ic_content_chapter_biology_enviromental_issues.svg",
+                    "importance": 35,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7527e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ec12",
+                    "title": "Organisms and Populations",
+                    "shortName": "Organisms & Populations",
+                    "icon": "ic_content_chapter_biology_organisms_and_population.svg",
+                    "importance": 36,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7527e",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75278",
+                "title": "Plant Physiology",
+                "shortName": "Plant Physiology",
+                "totalChapters": 5,
+                "chapters": [
+                  {
+                    "_id": "615d6ff12b295b085ab6ebfc",
+                    "title": "Mineral Nutrition",
+                    "shortName": "Mineral Nutrition",
+                    "icon": "ic_content_chapter_biology_mineral_nutrition.svg",
+                    "importance": 23,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75278",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ebfd",
+                    "title": "Photosynthesis in Higher Plants",
+                    "shortName": "Photosynthesis",
+                    "icon": "ic_content_chapter_biology_photosynthesis_in_higher_plants.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75278",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebf9",
+                    "title": "Plant - Growth and Development",
+                    "shortName": "Plant Growth & Dev",
+                    "icon": "ic_content_chapter_biology_plant_growth_and_development.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75278",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ebfb",
+                    "title": "Respiration in Plants",
+                    "shortName": "Plant Respiration",
+                    "icon": "ic_content_chapter_biology_respiration_in_plants.svg",
+                    "importance": 34,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75278",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ebfa",
+                    "title": "Transport in Plants",
+                    "shortName": "Plant Transport",
+                    "icon": "ic_content_chapter_biology_transport_in_plants.svg",
+                    "importance": 20,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75278",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75276",
+                "title": "Structural Organisation in Plants & Animals",
+                "shortName": "Structural Organisation in Plants & Animals",
+                "totalChapters": 2,
+                "chapters": [
+                  {
+                    "_id": "615d6ff02b295b085ab6ebf4",
+                    "title": "Anatomy of Flowering Plants",
+                    "shortName": "Anatomy of Plants",
+                    "icon": "ic_content_chapter_biology_anatomy_of_flowering_plants.svg",
+                    "importance": 6,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75276",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebf3",
+                    "title": "Morphology of Flowering Plants",
+                    "shortName": "Morphology of Plants",
+                    "icon": "ic_content_chapter_biology_morphology_of_flowering_plants.svg",
+                    "importance": 25,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75276",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_id": "67571269f3f011c45798c244",
+            "title": "Zoology",
+            "shortName": "Zoo",
+            "icon": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_zoology_icon.svg",
+            "borderColor": {
+              "light": "Subject-Gradient-Biology",
+              "dark": "Subject-Gradient-Biology"
+            },
+            "iconIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_biology_icon_illustration.svg",
+            "iconWithIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_biology_icon_with_illustration.svg",
+            "totalUnits": 6,
+            "totalChapters": 20,
+            "units": [
+              {
+                "_id": "615d6ff644b529f0efd7527c",
+                "title": "Biology and Human Welfare",
+                "shortName": "Biology and Human Welfare",
+                "totalChapters": 3,
+                "chapters": [
+                  {
+                    "_id": "615d6ff12b295b085ab6ec0c",
+                    "title": "Human Health and Diseases",
+                    "shortName": "Health & Diseases",
+                    "icon": "ic_content_chapter_biology_human_health_and_diseases.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7527c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ec0d",
+                    "title": "Microbes in Human Welfare",
+                    "shortName": "Microbes & Welfare",
+                    "icon": "ic_content_chapter_biology_microbes_in_human_welfare.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7527c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ec0e",
+                    "title": "Strategies for Enhancement in Food Production",
+                    "shortName": "Food Production Strategies",
+                    "icon": "ic_content_chapter_biology_strategies_for_enhancement_in_food_production.svg",
+                    "importance": 36,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7527c",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd7527d",
+                "title": "Biotechnology and its Applications",
+                "shortName": "Biotechnology and its Applications",
+                "totalChapters": 2,
+                "chapters": [
+                  {
+                    "_id": "615d6ff12b295b085ab6ec10",
+                    "title": "Biotechnology - Principles and Processes",
+                    "shortName": "Biotech Principles",
+                    "icon": "ic_content_chapter_biology_biotechnology_principles_and_processes.svg",
+                    "importance": 34,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7527d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ec0f",
+                    "title": "Biotechnology and Its Applications",
+                    "shortName": "Biotech Applications",
+                    "icon": "ic_content_chapter_biology_biotechnology_and_its_applications.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7527d",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd7527b",
+                "title": "Genetics and Evolution",
+                "shortName": "Genetics and Evolution",
+                "totalChapters": 3,
+                "chapters": [
+                  {
+                    "_id": "615d6ff12b295b085ab6ec0b",
+                    "title": "Evolution",
+                    "shortName": "Evolution",
+                    "icon": "ic_content_chapter_biology_evolution.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7527b",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ec09",
+                    "title": "Molecular Basis of Inheritance",
+                    "shortName": "Molecular Inheritance",
+                    "icon": "ic_content_chapter_biology_molecular_basis_of_inheritance.svg",
+                    "importance": 27,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7527b",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ec0a",
+                    "title": "Principles of Inheritance and Variation",
+                    "shortName": "Inheritance & Variation",
+                    "icon": "ic_content_chapter_biology_principles_of_inheritance_and_variation.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7527b",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75279",
+                "title": "Human Physiology",
+                "shortName": "Human Physiology",
+                "totalChapters": 7,
+                "chapters": [
+                  {
+                    "_id": "615d6ff12b295b085ab6ec00",
+                    "title": "Body Fluids and Circulation",
+                    "shortName": "Body Fluids & Circulation",
+                    "icon": "ic_content_chapter_biology_body_fluids_and_circulation.svg",
+                    "importance": 18,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75279",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ec03",
+                    "title": "Breathing and Exchange of Gases",
+                    "shortName": "Breathing & Exchange",
+                    "icon": "ic_content_chapter_biology_breathing_and_exchanging_of_gases.svg",
+                    "importance": 21,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75279",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ebfe",
+                    "title": "Chemical Coordination and Integration",
+                    "shortName": "Chemical Coordination",
+                    "icon": "ic_content_chapter_biology_chemical_coordination_and_integration.svg",
+                    "importance": 16,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75279",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ebff",
+                    "title": "Digestion and Absorption",
+                    "shortName": "Digestion & Absorption",
+                    "icon": "ic_content_chapter_biology_digestion_and_absorption.svg",
+                    "importance": 17,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75279",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ec02",
+                    "title": "Excretory Products and their Elimination",
+                    "shortName": "Excretion",
+                    "icon": "ic_content_chapter_biology_excretory_products_and_their_elimination.svg",
+                    "importance": 20,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75279",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ec04",
+                    "title": "Locomotion and Movement",
+                    "shortName": "Locomotion & Movement",
+                    "icon": "ic_content_chapter_biology_locomotion_and_movement.svg",
+                    "importance": 22,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75279",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ec01",
+                    "title": "Neural Control and Coordination",
+                    "shortName": "Neural Control",
+                    "icon": "ic_content_chapter_biology_neural_control_and_coordination.svg",
+                    "importance": 26,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75279",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd7527a",
+                "title": "Reproduction",
+                "shortName": "Reproduction",
+                "totalChapters": 4,
+                "chapters": [
+                  {
+                    "_id": "615d6ff12b295b085ab6ec08",
+                    "title": "Human Reproduction",
+                    "shortName": "Human Reproduction",
+                    "icon": "ic_content_chapter_biology_human_reproduction.svg",
+                    "importance": 26,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7527a",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ec07",
+                    "title": "Reproduction in Organisms",
+                    "shortName": "Reproduction",
+                    "icon": "ic_content_chapter_biology_reproduction_in_organisms.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7527a",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ec05",
+                    "title": "Reproductive Health",
+                    "shortName": "Reproductive Health",
+                    "icon": "ic_content_chapter_biology_reproductive_health.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7527a",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff12b295b085ab6ec06",
+                    "title": "Sexual Reproduction in Flowering Plants",
+                    "shortName": "Reproduction in Plants",
+                    "icon": "ic_content_chapter_biology_sexual_repoduction_in_flowering_plants.svg",
+                    "importance": 35,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7527a",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75276",
+                "title": "Structural Organisation in Plants & Animals",
+                "shortName": "Structural Organisation in Plants & Animals",
+                "totalChapters": 1,
+                "chapters": [
+                  {
+                    "_id": "615d6ff02b295b085ab6ebf5",
+                    "title": "Structural Organisation in Animals",
+                    "shortName": "Structural Org in Animals",
+                    "icon": "ic_content_chapter_biology_structural_organization_in_animals.svg",
+                    "importance": 37,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75276",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "filtersApplied": null
+      },
+      {
+        "_id": "615d7745c52ffa3c944600e5",
+        "title": "MHT CET",
+        "icon": "https://cdn-assets.getmarks.app/app_assets/img/exams/ic_content_exam_mhtcet.png",
+        "hasOutOfSyllabusFilter": false,
+        "subjects": [
+          {
+            "_id": "615d708dbd4a37c4058ee5a8",
+            "title": "Physics",
+            "shortName": "Phy",
+            "icon": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_physics_icon.svg",
+            "borderColor": {
+              "light": "Subject-Gradient-Physics",
+              "dark": "Subject-Gradient-Physics"
+            },
+            "iconIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_physics_icon_illustration.svg",
+            "iconWithIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_physics_icon_with_illustration.svg",
+            "totalUnits": 7,
+            "totalChapters": 32,
+            "units": [
+              {
+                "_id": "615d6ff644b529f0efd75268",
+                "title": "Electromagnetism",
+                "shortName": "Electromagnetism",
+                "totalChapters": 7,
+                "chapters": [
+                  {
+                    "_id": "615d6fed2b295b085ab6eba0",
+                    "title": "Alternating Current",
+                    "shortName": "AC Circuits",
+                    "icon": "ic_content_chapter_physics_alternating_current.svg",
+                    "importance": 24,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb9b",
+                    "title": "Capacitance",
+                    "shortName": "Capacitance",
+                    "icon": "ic_content_chapter_physics_capacitance.svg",
+                    "importance": 25,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb9c",
+                    "title": "Current Electricity",
+                    "shortName": "Current Electricity",
+                    "icon": "ic_content_chapter_physics_current_electricity.svg",
+                    "importance": 22,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb9f",
+                    "title": "Electromagnetic Induction",
+                    "shortName": "EMI",
+                    "icon": "ic_content_chapter_physics_electromagenetic_induction.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb9a",
+                    "title": "Electrostatics",
+                    "shortName": "Electrostatics",
+                    "icon": "ic_content_chapter_physics_electrostatics.svg",
+                    "importance": 26,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb9e",
+                    "title": "Magnetic Effects of Current",
+                    "shortName": "Magnetism & Current",
+                    "icon": "ic_content_chapter_physics_magnetic_effects_of_current.svg",
+                    "importance": 21,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb9d",
+                    "title": "Magnetic Properties of Matter",
+                    "shortName": "Magnetic Properties",
+                    "icon": "ic_content_chapter_physics_magnetic_properties_of_matter.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75268",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff544b529f0efd75265",
+                "title": "Mechanics 1",
+                "shortName": "Mechanics 1",
+                "totalChapters": 9,
+                "chapters": [
+                  {
+                    "_id": "615d6fec2b295b085ab6eb90",
+                    "title": "Center of Mass Momentum and Collision",
+                    "shortName": "COM & Collisions",
+                    "icon": "ic_content_chapter_physics_center_of_mass_momentum_and_collision.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb92",
+                    "title": "Gravitation",
+                    "shortName": "Gravitation",
+                    "icon": "ic_content_chapter_physics_gravitation.svg",
+                    "importance": 27,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb8e",
+                    "title": "Laws of Motion",
+                    "shortName": "Laws of Motion",
+                    "icon": "ic_content_chapter_physics_laws_of_motion.svg",
+                    "importance": 22,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6feb2b295b085ab6eb8a",
+                    "title": "Mathematics in Physics",
+                    "shortName": "Math in Physics",
+                    "icon": "ic_content_chapter_physics_math_in_phyics.svg",
+                    "importance": 42,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb8c",
+                    "title": "Motion In One Dimension",
+                    "shortName": "Motion in 1D",
+                    "icon": "ic_content_chapter_physics_motion_in_one_dimension.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb8d",
+                    "title": "Motion In Two Dimensions",
+                    "shortName": "Motion in 2D",
+                    "icon": "ic_content_chapter_physics_motion_in_two_dimension.svg",
+                    "importance": 26,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb91",
+                    "title": "Rotational Motion",
+                    "shortName": "Rotational Motion",
+                    "icon": "ic_content_chapter_physics_rotational_motion.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb8b",
+                    "title": "Units and Dimensions",
+                    "shortName": "Units & Dimensions",
+                    "icon": "ic_content_chapter_physics_units_and_dimensions.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb8f",
+                    "title": "Work Power Energy",
+                    "shortName": "Work Power Energy",
+                    "icon": "ic_content_chapter_physics_work_power_energy.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff544b529f0efd75265",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75266",
+                "title": "Mechanics 2",
+                "shortName": "Mechanics 2",
+                "totalChapters": 4,
+                "chapters": [
+                  {
+                    "_id": "615d6fed2b295b085ab6eb94",
+                    "title": "Mechanical Properties of Fluids",
+                    "shortName": "Properties of Fluids",
+                    "icon": "ic_content_chapter_physics_mechanical_properties_of_fluids.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75266",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fec2b295b085ab6eb93",
+                    "title": "Mechanical Properties of Solids",
+                    "shortName": "Properties of Solids",
+                    "icon": "ic_content_chapter_physics_mechanical_properties_of_solids.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75266",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb98",
+                    "title": "Oscillations",
+                    "shortName": "Oscillations",
+                    "icon": "ic_content_chapter_physics_oscillations.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75266",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb99",
+                    "title": "Waves and Sound",
+                    "shortName": "Waves & Sound",
+                    "icon": "ic_content_chapter_physics_waves_and_sounds.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75266",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75269",
+                "title": "Miscellaneous Physics",
+                "shortName": "Miscellaneous",
+                "totalChapters": 4,
+                "chapters": [
+                  {
+                    "_id": "615d6fed2b295b085ab6eba8",
+                    "title": "Communication System",
+                    "shortName": "Communication System",
+                    "icon": "ic_content_chapter_physics_communication_systems.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75269",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eba1",
+                    "title": "Electromagnetic Waves",
+                    "shortName": "EM Waves",
+                    "icon": "ic_content_chapter_physics_electromagnetic_waves.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75269",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eba9",
+                    "title": "Experimental Physics",
+                    "shortName": "Experimental Physics",
+                    "icon": "ic_content_chapter_physics_experimental_physics.svg",
+                    "importance": 43,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75269",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eba7",
+                    "title": "Semiconductors",
+                    "shortName": "Semiconductors",
+                    "icon": "ic_content_chapter_physics_semiconductors.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75269",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd7526b",
+                "title": "Modern Physics",
+                "shortName": "Modern Physics",
+                "totalChapters": 3,
+                "chapters": [
+                  {
+                    "_id": "615d6fed2b295b085ab6eba5",
+                    "title": "Atomic Physics",
+                    "shortName": "Atomic Physics",
+                    "icon": "ic_content_chapter_physics_atomic_physics.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526b",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eba4",
+                    "title": "Dual Nature of Matter",
+                    "shortName": "Dual Nature",
+                    "icon": "ic_content_chapter_physics_dual_nature_of_matter.svg",
+                    "importance": 39,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526b",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eba6",
+                    "title": "Nuclear Physics",
+                    "shortName": "Nuclear Physics",
+                    "icon": "ic_content_chapter_physics_nuclear_physics.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526b",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd7526a",
+                "title": "Optics",
+                "shortName": "Optics",
+                "totalChapters": 2,
+                "chapters": [
+                  {
+                    "_id": "615d6fed2b295b085ab6eba2",
+                    "title": "Ray Optics",
+                    "shortName": "Ray Optics",
+                    "icon": "ic_content_chapter_physics_ray_optics.svg",
+                    "importance": 25,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526a",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eba3",
+                    "title": "Wave Optics",
+                    "shortName": "Wave Optics",
+                    "icon": "ic_content_chapter_physics_wave_optics.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526a",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75267",
+                "title": "Thermodynamics",
+                "shortName": "Thermodynamics",
+                "totalChapters": 3,
+                "chapters": [
+                  {
+                    "_id": "615d6fed2b295b085ab6eb97",
+                    "title": "Kinetic Theory of Gases",
+                    "shortName": "KTG",
+                    "icon": "ic_content_chapter_physics_kinetic_theory_of_gases.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75267",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb95",
+                    "title": "Thermal Properties of Matter",
+                    "shortName": "Thermal Properties",
+                    "icon": "ic_content_chapter_physics_thermal_properties_of_matter.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75267",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6eb96",
+                    "title": "Thermodynamics",
+                    "shortName": "Thermodynamics",
+                    "icon": "ic_content_chapter_physics_thermodynamics.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75267",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_id": "615d70bd9948bc1b21da2b1f",
+            "title": "Chemistry",
+            "shortName": "Chem",
+            "icon": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_chemistry_icon.svg",
+            "borderColor": {
+              "light": "Subject-Gradient-Chemistry",
+              "dark": "Subject-Gradient-Chemistry"
+            },
+            "iconIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_chemistry_icon_illustration.svg",
+            "iconWithIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_chemistry_icon_with_illustration.svg",
+            "totalUnits": 3,
+            "totalChapters": 33,
+            "units": [
+              {
+                "_id": "615d6ff644b529f0efd7526d",
+                "title": "Inorganic Chemistry",
+                "shortName": "Inorganic Chemistry",
+                "totalChapters": 10,
+                "chapters": [
+                  {
+                    "_id": "615d6fee2b295b085ab6ebad",
+                    "title": "Chemical Bonding and Molecular Structure",
+                    "shortName": "Chemical Bonding",
+                    "icon": "ic_content_chapter_chemistry_chemical_bonding_and_molecular_structure.svg",
+                    "importance": 17,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6ebac",
+                    "title": "Classification of Elements and Periodicity in Properties",
+                    "shortName": "Periodic Table",
+                    "icon": "ic_content_chapter_chemistry_classification_of_elements_and_periodicity_in_properties.svg",
+                    "importance": 27,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc1",
+                    "title": "Coordination Compounds",
+                    "shortName": "Coordination Compounds",
+                    "icon": "ic_content_chapter_chemistry_coordination_compounds.svg",
+                    "importance": 24,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebbe",
+                    "title": "General Principles and Processes of Isolation of Metals",
+                    "shortName": "Metallurgy",
+                    "icon": "ic_content_chapter_chemistry_general_principles_and_processes_of_isolation_of_metals.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb3",
+                    "title": "Hydrogen",
+                    "shortName": "Hydrogen",
+                    "icon": "ic_content_chapter_chemistry_hydrogen.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebca",
+                    "title": "Practical Chemistry",
+                    "shortName": "Practical Chemistry",
+                    "icon": "ic_content_chapter_chemistry_practical_chemistry.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc0",
+                    "title": "d and f Block Elements",
+                    "shortName": "d & f Block",
+                    "icon": "ic_content_chapter_chemistry_d_and_f_block_elements.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb5",
+                    "title": "p Block Elements (Group 13 & 14)",
+                    "shortName": "p Block (G13-14)",
+                    "icon": "ic_content_chapter_chemistry_p_block_elements_group_13_14.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebbf",
+                    "title": "p Block Elements (Group 15, 16, 17 & 18)",
+                    "shortName": "p Block (G15-18)",
+                    "icon": "ic_content_chapter_chemistry_p_block_elements_group_15_16_17_18.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb4",
+                    "title": "s Block Elements",
+                    "shortName": "s Block",
+                    "icon": "ic_content_chapter_chemistry_s_block_elemets.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526d",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd7526e",
+                "title": "Organic Chemistry",
+                "shortName": "Organic Chemistry",
+                "totalChapters": 11,
+                "chapters": [
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc3",
+                    "title": "Alcohols Phenols and Ethers",
+                    "shortName": "Alcohols, Phenols & Ethers",
+                    "icon": "ic_content_chapter_chemistry_alcohols_phenols_and_ethers.svg",
+                    "importance": 26,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc4",
+                    "title": "Aldehydes and Ketones",
+                    "shortName": "Aldehydes & Ketones",
+                    "icon": "ic_content_chapter_chemistry_aldehydes_and_ketones.svg",
+                    "importance": 27,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc6",
+                    "title": "Amines",
+                    "shortName": "Amines",
+                    "icon": "ic_content_chapter_chemistry_amines.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebc7",
+                    "title": "Biomolecules",
+                    "shortName": "Biomolecules",
+                    "icon": "ic_content_chapter_chemistry_biomolecules.svg",
+                    "importance": 41,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc5",
+                    "title": "Carboxylic Acid Derivatives",
+                    "shortName": "Carboxylic Acids",
+                    "icon": "ic_content_chapter_chemistry_carboxylic_acid_derivatives.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebc9",
+                    "title": "Chemistry in Everyday Life",
+                    "shortName": "Everyday Chemistry",
+                    "icon": "ic_content_chapter_chemistry_chemistry_in_everyday_life.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb8",
+                    "title": "Environmental Chemistry",
+                    "shortName": "Env. Chemistry",
+                    "icon": "ic_content_chapter_chemistry_environmental_chemistry.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb6",
+                    "title": "General Organic Chemistry",
+                    "shortName": "GOC",
+                    "icon": "ic_content_chapter_chemistry_general_organic_chemistry.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebc2",
+                    "title": "Haloalkanes and Haloarenes",
+                    "shortName": "Haloalkanes & Haloarenes",
+                    "icon": "ic_content_chapter_chemistry_haloalkanes_and_haloarenes.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb7",
+                    "title": "Hydrocarbons",
+                    "shortName": "Hydrocarbons",
+                    "icon": "ic_content_chapter_chemistry_hydrocarbons.svg",
+                    "importance": 26,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebc8",
+                    "title": "Polymers",
+                    "shortName": "Polymers",
+                    "icon": "ic_content_chapter_chemistry_polymers.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526e",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd7526c",
+                "title": "Physical Chemistry",
+                "shortName": "Physical Chemistry",
+                "totalChapters": 12,
+                "chapters": [
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb0",
+                    "title": "Chemical Equilibrium",
+                    "shortName": "Chemical Equilibrium",
+                    "icon": "ic_content_chapter_chemistry_chemical_equilibrium.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebbc",
+                    "title": "Chemical Kinetics",
+                    "shortName": "Chemical Kinetics",
+                    "icon": "ic_content_chapter_chemistry_chemical_kinetics.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebbb",
+                    "title": "Electrochemistry",
+                    "shortName": "Electrochemistry",
+                    "icon": "ic_content_chapter_chemistry_electrochemistry.svg",
+                    "importance": 22,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb1",
+                    "title": "Ionic Equilibrium",
+                    "shortName": "Ionic Equilibrium",
+                    "icon": "ic_content_chapter_chemistry_ionic_equilibrium.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb2",
+                    "title": "Redox Reactions",
+                    "shortName": "Redox Reactions",
+                    "icon": "ic_content_chapter_chemistry_redox_reactions.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebb9",
+                    "title": "Solid State",
+                    "shortName": "Solid State",
+                    "icon": "ic_content_chapter_chemistry_solid_state.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebba",
+                    "title": "Solutions",
+                    "shortName": "Solutions",
+                    "icon": "ic_content_chapter_chemistry_solutions.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6ebaa",
+                    "title": "Some Basic Concepts of Chemistry",
+                    "shortName": "Mole Concept",
+                    "icon": "ic_content_chapter_chemistry_some_basic_concepts_of_chemistry.svg",
+                    "importance": 25,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebae",
+                    "title": "States of Matter",
+                    "shortName": "States of Matter",
+                    "icon": "ic_content_chapter_chemistry_states_of_matter.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fed2b295b085ab6ebab",
+                    "title": "Structure of Atom",
+                    "shortName": "Atomic Structure",
+                    "icon": "ic_content_chapter_chemistry_structure_of_atom.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebbd",
+                    "title": "Surface Chemistry",
+                    "shortName": "Surface Chemistry",
+                    "icon": "ic_content_chapter_chemistry_surface_chemistry.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fee2b295b085ab6ebaf",
+                    "title": "Thermodynamics (C)",
+                    "shortName": "Thermodynamics (C)",
+                    "icon": "ic_content_chapter_chemistry_thermodynamics.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526c",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_id": "615d70e621450b3f267390c8",
+            "title": "Mathematics",
+            "shortName": "Math",
+            "icon": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_mathematics_icon.svg",
+            "borderColor": {
+              "light": "Subject-Gradient-Mathematics",
+              "dark": "Subject-Gradient-Mathematics"
+            },
+            "iconIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_mathematics_icon_illustration.svg",
+            "iconWithIllustration": "https://cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/ic_mathematics_icon_with_illustration.svg",
+            "totalUnits": 6,
+            "totalChapters": 36,
+            "units": [
+              {
+                "_id": "615d6ff644b529f0efd75270",
+                "title": "Algebra",
+                "shortName": "Algebra",
+                "totalChapters": 12,
+                "chapters": [
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd1",
+                    "title": "Binomial Theorem",
+                    "shortName": "Binomial Theorem",
+                    "icon": "ic_content_chapter_mathematics_binomial_theorem.svg",
+                    "importance": 24,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebcd",
+                    "title": "Complex Number",
+                    "shortName": "Complex Numbers",
+                    "icon": "ic_content_chapter_mathematics_complex_number.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe1",
+                    "title": "Determinants",
+                    "shortName": "Determinants",
+                    "icon": "ic_content_chapter_mathematics_determinants.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebed",
+                    "title": "Linear Programming",
+                    "shortName": "Linear Programming",
+                    "icon": "ic_content_chapter_mathematics_linear_programming.svg",
+                    "importance": 36,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd0",
+                    "title": "Mathematical Induction",
+                    "shortName": "Math Induction",
+                    "icon": "ic_content_chapter_mathematics_mathematical_induction.svg",
+                    "importance": 35,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebdb",
+                    "title": "Mathematical Reasoning",
+                    "shortName": "Mathematical Reasoning",
+                    "icon": "ic_content_chapter_mathematics_mathematical_reasoning.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe0",
+                    "title": "Matrices",
+                    "shortName": "Matrices",
+                    "icon": "ic_content_chapter_mathematics_matrices.svg",
+                    "importance": 27,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebce",
+                    "title": "Permutation Combination",
+                    "shortName": "P&C",
+                    "icon": "ic_content_chapter_mathematics_permutation_combination.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebee",
+                    "title": "Probability",
+                    "shortName": "Probability",
+                    "icon": "ic_content_chapter_mathematics_probability.svg",
+                    "importance": 36,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebcc",
+                    "title": "Quadratic Equation",
+                    "shortName": "Quadratic Equations",
+                    "icon": "ic_content_chapter_mathematics_quadratic_equation.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebcf",
+                    "title": "Sequences and Series",
+                    "shortName": "Sequences & Series",
+                    "icon": "ic_content_chapter_mathematics_sequences_and_series.svg",
+                    "importance": 34,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebdc",
+                    "title": "Statistics",
+                    "shortName": "Statistics",
+                    "icon": "ic_content_chapter_mathematics_statistics.svg",
+                    "importance": 35,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75270",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75273",
+                "title": "Calculus",
+                "shortName": "Calculus",
+                "totalChapters": 10,
+                "chapters": [
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe6",
+                    "title": "Application of Derivatives",
+                    "shortName": "AOD",
+                    "icon": "ic_content_chapter_mathematics_application_of_derivatives.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe9",
+                    "title": "Area Under Curves",
+                    "shortName": "Area Under Curves",
+                    "icon": "ic_content_chapter_mathematics_area_under_curves.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe4",
+                    "title": "Continuity and Differentiability",
+                    "shortName": "C&D",
+                    "icon": "ic_content_chapter_mathematics_continuity_and_differentiability.svg",
+                    "importance": 27,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe8",
+                    "title": "Definite Integration",
+                    "shortName": "Definite Integration",
+                    "icon": "ic_content_chapter_mathematics_definite_integration.svg",
+                    "importance": 30,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebea",
+                    "title": "Differential Equations",
+                    "shortName": "Differential Eqns",
+                    "icon": "ic_content_chapter_mathematics_differential_equations.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe5",
+                    "title": "Differentiation",
+                    "shortName": "Differentiation",
+                    "icon": "ic_content_chapter_mathematics_differentiations.svg",
+                    "importance": 34,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe3",
+                    "title": "Functions",
+                    "shortName": "Functions",
+                    "icon": "ic_content_chapter_mathematics_functions.svg",
+                    "importance": 25,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe7",
+                    "title": "Indefinite Integration",
+                    "shortName": "Indefinite Integration",
+                    "icon": "ic_content_chapter_mathematics_indefinite_intergration.svg",
+                    "importance": 29,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebda",
+                    "title": "Limits",
+                    "shortName": "Limits",
+                    "icon": "ic_content_chapter_mathematics_limits.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebdf",
+                    "title": "Sets and Relations",
+                    "shortName": "Sets & Relations",
+                    "icon": "ic_content_chapter_mathematics_sets_and_relations.svg",
+                    "importance": 34,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75273",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75272",
+                "title": "Coordinate Geometry",
+                "shortName": "Coordinate Geometry",
+                "totalChapters": 6,
+                "chapters": [
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd6",
+                    "title": "Circle",
+                    "shortName": "Circle",
+                    "icon": "ic_content_chapter_mathematics_circle.svg",
+                    "importance": 25,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75272",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd8",
+                    "title": "Ellipse",
+                    "shortName": "Ellipse",
+                    "icon": "ic_content_chapter_mathematics_ellipse.svg",
+                    "importance": 28,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75272",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd9",
+                    "title": "Hyperbola",
+                    "shortName": "Hyperbola",
+                    "icon": "ic_content_chapter_mathematics_hyperbola.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75272",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd5",
+                    "title": "Pair of Lines",
+                    "shortName": "Pair of Lines",
+                    "icon": "ic_content_chapter_mathematics_pair_of_lines.svg",
+                    "importance": 34,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75272",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd7",
+                    "title": "Parabola",
+                    "shortName": "Parabola",
+                    "icon": "ic_content_chapter_mathematics_parabola.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75272",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd4",
+                    "title": "Straight Lines",
+                    "shortName": "Straight Lines",
+                    "icon": "ic_content_chapter_mathematics_straight_lines.svg",
+                    "importance": 23,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75272",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd7526f",
+                "title": "Miscellaneous Mathematics",
+                "shortName": "Miscellaneous",
+                "totalChapters": 1,
+                "chapters": [
+                  {
+                    "_id": "615d6fef2b295b085ab6ebcb",
+                    "title": "Basic of Mathematics",
+                    "shortName": "Basic Math",
+                    "icon": "ic_content_chapter_mathematics_basics_of_mathematics.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd7526f",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75271",
+                "title": "Trigonometry",
+                "shortName": "Trigonometry",
+                "totalChapters": 5,
+                "chapters": [
+                  {
+                    "_id": "615d6fef2b295b085ab6ebdd",
+                    "title": "Heights and Distances",
+                    "shortName": "Heights & Distances",
+                    "icon": "ic_content_chapter_mathematics_height_and_distances.svg",
+                    "importance": 35,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75271",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebe2",
+                    "title": "Inverse Trigonometric Functions",
+                    "shortName": "ITF",
+                    "icon": "ic_content_chapter_mathematics_inverse_trigonometric_functions.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75271",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebde",
+                    "title": "Properties of Triangles",
+                    "shortName": "Properties of Triangles",
+                    "icon": "ic_content_chapter_mathematics_properties_of_triangles.svg",
+                    "importance": 32,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75271",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd3",
+                    "title": "Trigonometric Equations",
+                    "shortName": "Trigonometric Equations",
+                    "icon": "ic_content_chapter_mathematics_trigonometric_equations.svg",
+                    "importance": 31,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75271",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6fef2b295b085ab6ebd2",
+                    "title": "Trigonometric Ratios & Identities",
+                    "shortName": "Trigonometry",
+                    "icon": "ic_content_chapter_mathematics_trigonometric_ratios_and_identities.svg",
+                    "importance": 35,
+                    "classes": [
+                      "615d7802c52ffa3c944600e8"
+                    ],
+                    "unit": "615d6ff644b529f0efd75271",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              },
+              {
+                "_id": "615d6ff644b529f0efd75274",
+                "title": "Vector",
+                "shortName": "Vector",
+                "totalChapters": 2,
+                "chapters": [
+                  {
+                    "_id": "615d6ff02b295b085ab6ebec",
+                    "title": "Three Dimensional Geometry",
+                    "shortName": "3D Geometry",
+                    "icon": "ic_content_chapter_mathematics_three_dimensional_geometry.svg",
+                    "importance": 34,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75274",
+                    "syllabusCategory": "noChange"
+                  },
+                  {
+                    "_id": "615d6ff02b295b085ab6ebeb",
+                    "title": "Vector Algebra",
+                    "shortName": "Vector Algebra",
+                    "icon": "ic_content_chapter_mathematics_vector_algebra.svg",
+                    "importance": 33,
+                    "classes": [
+                      "615d780ec52ffa3c944600e9"
+                    ],
+                    "unit": "615d6ff644b529f0efd75274",
+                    "syllabusCategory": "noChange"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "filtersApplied": null
+      }
+    ]
+  }
+}

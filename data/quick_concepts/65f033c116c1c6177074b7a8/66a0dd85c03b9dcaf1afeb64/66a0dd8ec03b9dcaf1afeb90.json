@@ -1,0 +1,52 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd85c03b9dcaf1afeb64",
+  "topicId": "66a0dd8ec03b9dcaf1afeb90",
+  "title": "Miscellaneous",
+  "concepts": [
+    {
+      "title": "Using Expansion series",
+      "conceptBody": "<h3><strong>Some questions on expansion series&nbsp;</strong></h3><p>Generally expanding makes the question a bit easy. Lt us see how.</p><p><strong>Illustration</strong></p><p><strong>Evaluate $\\underset{x\\to \\infty }{\\mathop{Lt}}\\,\\frac{{{x}^{5}}}{{{e}^{x}}}$&nbsp;</strong></p><p><strong>Solution : ${{e}^{x}}=1+x+\\frac{{{x}^{2}}}{2!}+\\frac{{{x}^{3}}}{3!}+\\ldots $&nbsp;</strong></p><p>putting this back in the limit</p><p>$\\text{L}{{\\text{t}}_{x\\to \\infty }}\\frac{{{x}^{5}}}{1+x+\\frac{{{x}^{2}}}{2!}+\\frac{{{x}^{3}}}{3!}+\\frac{{{x}^{4}}}{4!}+\\frac{{{x}^{5}}}{5!}+\\ldots }$</p><p>dividing by ${{\\text{x}}^{5}}$</p><p>$\\text{L}{{\\text{t}}_{x\\to \\infty }}\\frac{1}{\\frac{1}{{{x}^{5}}}+\\frac{1}{{{x}^{4}}}+\\frac{1}{2!{{x}^{3}}}+\\frac{1}{3!{{x}^{2}}}+\\frac{1}{4!x}+1+\\frac{x}{6!}+\\ldots }$</p><p>we can see that denominator is approaching $\\infty $</p><p>Hence the limit becomes $\\underset{x\\to \\infty }{\\mathop{\\text{Lt}}}\\,\\frac{1}{\\to \\infty }$ which is 0 .</p><p><strong>Illustration</strong></p><p><strong>Find $\\underset{x\\to 0}{\\mathop{Lt}}\\,\\frac{log\\left( 1+x \\right)}{{{3}^{x}}-1}$&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>Here we will apply expansion series of both $\\text{log}\\left( 1+\\text{x} \\right)\\And {{\\text{a}}^{\\text{x}}}$ which is</p><p>$\\text{log}\\left( 1+\\text{x} \\right)$ $~=\\text{x}-\\frac{{{\\text{x}}^{2}}}{2}+\\frac{{{\\text{x}}^{3}}}{3}-\\frac{{{\\text{x}}^{4}}}{4}+\\ldots $</p><p>$\\And {{\\text{a}}^{\\text{x}}}$ $~=1+\\text{x}\\left( \\text{loga} \\right)+\\frac{{{\\text{x}}^{2}}}{2!}{{(\\text{loga})}^{2}}+\\ldots $</p><p>using these</p><p>$\\text{L}{{\\text{t}}_{x\\to 0}}\\frac{x-\\frac{{{x}^{2}}}{2}+\\frac{{{x}^{3}}}{3}-\\frac{{{x}^{4}}}{4}}{1+x\\text{log}3+\\frac{{{x}^{2}}}{2!}{{(\\text{log}3)}^{2}}\\ldots -1}$</p><p>=$\\text{L}{{\\text{t}}_{x\\to 0}}\\frac{x\\left( 1-\\frac{x}{2}+\\frac{{{x}^{2}}}{3}-\\frac{{{x}^{3}}}{4}\\ldots \\right)}{x\\text{log}3\\left( 1+\\frac{x}{2}\\text{log}3+\\ldots \\right)}$</p><p>Now we can put $\\text{x}=0$ in the limit also</p><p>Hence limit is $\\frac{1}{\\text{log}3}$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd8ec03b9dcaf1afeb91"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f652d384bfb4a53822f",
+      "title": "$\\lim _{x \\rightarrow 0}\\left(\\frac{a^x-b^x}{x}\\right)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a538230",
+      "title": "$\\lim _{x \\rightarrow \\infty} \\frac{(2 x+1)^{40}(4 x-1)^5}{(2 x+3)^{45}}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a538231",
+      "title": "${ }_{x \\rightarrow-1} \\frac{\\sqrt{\\pi}-\\sqrt{\\cos ^{-1} x}}{\\sqrt{x+1}}$ is given by",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a538232",
+      "title": "$\\lim _{x \\rightarrow 0} \\frac{a^x-b^x}{e^x-1}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a538233",
+      "title": "The value of $\\lim _{x \\rightarrow 0^{+}} x^m(\\log x)^n, m, n \\in N$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f652d384bfb4a538234",
+      "title": "$\\lim _{x \\rightarrow 0} \\frac{a^{\\sin x}-1}{b^{\\sin x}-1}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

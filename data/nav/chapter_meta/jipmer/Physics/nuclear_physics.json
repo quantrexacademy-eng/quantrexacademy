@@ -1,0 +1,83 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b34d4b564dfab4f94cc",
+  "chapterId": "66d58537a75f05ee8564f54e",
+  "subject": "Physics",
+  "chapter": "Nuclear Physics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d58699a75f05ee856502a3",
+      "title": "Nuclear structure",
+      "count": 4,
+      "questionIds": [
+        "66d5865ba75f05ee8564fffa",
+        "66d5860fa75f05ee8564fd33",
+        "66d585c5a75f05ee8564fa8a",
+        "66d5857aa75f05ee8564f7d3"
+      ]
+    },
+    {
+      "id": "66d58699a75f05ee856502a1",
+      "title": "Nuclear energy",
+      "count": 9,
+      "questionIds": [
+        "66d58648a75f05ee8564ff48",
+        "66d58634a75f05ee8564fe8a",
+        "66d58620a75f05ee8564fdd6",
+        "66d5860fa75f05ee8564fd32",
+        "66d585e9a75f05ee8564fbd5",
+        "66d585c5a75f05ee8564fa8b",
+        "66d585a4a75f05ee8564f959",
+        "66d5857aa75f05ee8564f7d1",
+        "66d58538a75f05ee8564f555"
+      ]
+    },
+    {
+      "id": "66d58699a75f05ee856502a0",
+      "title": "Radioactivity",
+      "count": 14,
+      "questionIds": [
+        "66d58635a75f05ee8564fe96",
+        "66d5860ea75f05ee8564fd30",
+        "66d585fca75f05ee8564fc81",
+        "66d585eba75f05ee8564fbe3",
+        "66d585e8a75f05ee8564fbc8",
+        "66d585c7a75f05ee8564fa9c",
+        "66d585c5a75f05ee8564fa85",
+        "66d585b7a75f05ee8564fa07",
+        "66d585b7a75f05ee8564fa06",
+        "66d585b7a75f05ee8564fa02",
+        "66d5856ca75f05ee8564f74d",
+        "66d5856aa75f05ee8564f73c",
+        "66d58569a75f05ee8564f737",
+        "66d58537a75f05ee8564f54c"
+      ]
+    },
+    {
+      "id": "66d58699a75f05ee856502a2",
+      "title": "Nuclear reactions",
+      "count": 17,
+      "questionIds": [
+        "66d5865ea75f05ee85650010",
+        "66d58658a75f05ee8564ffd8",
+        "66d58648a75f05ee8564ff45",
+        "66d58646a75f05ee8564ff35",
+        "66d58632a75f05ee8564fe77",
+        "66d58631a75f05ee8564fe74",
+        "66d58621a75f05ee8564fde2",
+        "66d5861ea75f05ee8564fdc3",
+        "66d585a3a75f05ee8564f94c",
+        "66d585a2a75f05ee8564f942",
+        "66d585a1a75f05ee8564f93f",
+        "66d5858fa75f05ee8564f897",
+        "66d5858ea75f05ee8564f892",
+        "66d5858da75f05ee8564f888",
+        "66d5857ba75f05ee8564f7de",
+        "66d5857ba75f05ee8564f7dc",
+        "66d58558a75f05ee8564f693"
+      ]
+    }
+  ]
+}

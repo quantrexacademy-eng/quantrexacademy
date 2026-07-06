@@ -1,0 +1,36 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa607a4468eb1307ceb0af",
+  "chapterId": "67fdff4d378e1624ea7b69e7",
+  "subject": "Mathematics",
+  "chapter": "Basic of Mathematics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff86378e1624ea7b6c97",
+      "title": "Ratio and Proportion",
+      "count": 1,
+      "questionIds": [
+        "67fdff4d378e1624ea7b69e5"
+      ]
+    },
+    {
+      "id": "67fdff86378e1624ea7b6c98",
+      "title": "Logarithm",
+      "count": 1,
+      "questionIds": [
+        "67fdff5b378e1624ea7b6a9e"
+      ]
+    },
+    {
+      "id": "67fdff86378e1624ea7b6c99",
+      "title": "Inequalities",
+      "count": 2,
+      "questionIds": [
+        "68e7a67fce75e72648a45e73",
+        "67fdff5c378e1624ea7b6aa7"
+      ]
+    }
+  ]
+}

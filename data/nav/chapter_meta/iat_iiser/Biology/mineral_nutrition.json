@@ -1,0 +1,28 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa60d64468eb1307ceb0b0",
+  "chapterId": "67fdff59378e1624ea7b6a83",
+  "subject": "Biology",
+  "chapter": "Mineral Nutrition",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff8b378e1624ea7b6ce2",
+      "title": "Biofertilizer",
+      "count": 1,
+      "questionIds": [
+        "67fdff59378e1624ea7b6a81"
+      ]
+    },
+    {
+      "id": "67fdff8b378e1624ea7b6ce3",
+      "title": "Nitrogen Metabolism",
+      "count": 2,
+      "questionIds": [
+        "67fdff6c378e1624ea7b6b48",
+        "67fdff60378e1624ea7b6ac6"
+      ]
+    }
+  ]
+}

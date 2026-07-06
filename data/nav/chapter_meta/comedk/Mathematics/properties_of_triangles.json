@@ -1,0 +1,39 @@
+{
+  "examSlug": "comedk",
+  "examId": "629105adee9e3ae00d63352e",
+  "subjectId": "629105adee9e3ae00d63352d",
+  "chapterId": "629109e714780874e91f8f63",
+  "subject": "Mathematics",
+  "chapter": "Properties of Triangles",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64c57c2d20fc93db0c28be84",
+      "title": "Sine Rule and its application",
+      "count": 3,
+      "questionIds": [
+        "64c57bb120fc93db0c28b990",
+        "64c57b7520fc93db0c28b772",
+        "64c57b3b20fc93db0c28b569"
+      ]
+    },
+    {
+      "id": "64c57c2d20fc93db0c28be83",
+      "title": "Cosine Rule and Projection Formula",
+      "count": 1,
+      "questionIds": [
+        "64c57b2520fc93db0c28b4a1"
+      ]
+    },
+    {
+      "id": "64c57c2d20fc93db0c28be85",
+      "title": "Circle Connected to Triangle",
+      "count": 3,
+      "questionIds": [
+        "6881bd1a2781fbe80ff8d2da",
+        "64c57bc520fc93db0c28ba3f",
+        "64c57b8820fc93db0c28b81b"
+      ]
+    }
+  ]
+}

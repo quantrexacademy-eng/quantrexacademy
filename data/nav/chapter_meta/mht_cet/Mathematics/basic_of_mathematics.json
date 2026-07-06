@@ -1,0 +1,48 @@
+{
+  "examSlug": "mht_cet",
+  "examId": "61c05599e8ce0dc8a5c62d32",
+  "subjectId": "61c05603e8ce0dc8a5c62d35",
+  "chapterId": "61c089bff16721489e89c8cc",
+  "subject": "Mathematics",
+  "chapter": "Basic of Mathematics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "65a263510279619d9d8a3e20",
+      "title": "Ratio and Proportion",
+      "count": 5,
+      "questionIds": [
+        "6792143d0aee93fa0796df14",
+        "679214250aee93fa0796de55",
+        "65a262860279619d9d8a353a",
+        "65a262750279619d9d8a34af",
+        "65a262270279619d9d8a323b"
+      ]
+    },
+    {
+      "id": "65a263510279619d9d8a3e1f",
+      "title": "Logarithm",
+      "count": 7,
+      "questionIds": [
+        "6a44d2e58c30a4553e1bddf4",
+        "68871be3bf9280d7f9932d50",
+        "68871b5dbf9280d7f9932899",
+        "68871b08bf9280d7f99325ce",
+        "6792137b0aee93fa0796d921",
+        "679213690aee93fa0796d895",
+        "65a261ca0279619d9d8a2f5d"
+      ]
+    },
+    {
+      "id": "65a263510279619d9d8a3e1e",
+      "title": "Inequalities",
+      "count": 4,
+      "questionIds": [
+        "6a44d2ad8c30a4553e1bdba5",
+        "6a44d2bb8c30a4553e1bdc39",
+        "68871b30bf9280d7f99326fb",
+        "65a25f2b0279619d9d8a1a53"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff4f378e1624ea7b6a00",
+  "subject": "Physics",
+  "chapter": "Work Power Energy",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff87378e1624ea7b6ca7",
+      "title": "Energy",
+      "count": 3,
+      "questionIds": [
+        "67fdff75378e1624ea7b6bb6",
+        "67fdff5e378e1624ea7b6ab6",
+        "67fdff4f378e1624ea7b69fe"
+      ]
+    },
+    {
+      "id": "67fdff87378e1624ea7b6ca8",
+      "title": "Circular motion",
+      "count": 2,
+      "questionIds": [
+        "68e7a680ce75e72648a45e82",
+        "67fdff6a378e1624ea7b6b34"
+      ]
+    }
+  ]
+}

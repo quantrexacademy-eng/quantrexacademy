@@ -1,0 +1,53 @@
+{
+  "examSlug": "bitsat",
+  "examId": "61a8a124e8ce0dc8a5c62d2c",
+  "subjectId": "61a8a2cce8ce0dc8a5c62d2e",
+  "chapterId": "61e7bd81485abb823f4d4e5f",
+  "subject": "Chemistry",
+  "chapter": "Solid State",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64c0e8616f5bfc7ab78aed84",
+      "title": "Crystal Structure of Solids",
+      "count": 4,
+      "questionIds": [
+        "64c0e8316f5bfc7ab78aeb64",
+        "64c0e8236f5bfc7ab78aeaec",
+        "64c0e8146f5bfc7ab78aea6a",
+        "64c0e7eb6f5bfc7ab78ae900"
+      ]
+    },
+    {
+      "id": "64c0e8616f5bfc7ab78aed81",
+      "title": "Cubic system",
+      "count": 5,
+      "questionIds": [
+        "64c0e7f76f5bfc7ab78ae96a",
+        "64c0e7df6f5bfc7ab78ae896",
+        "64c0e7bf6f5bfc7ab78ae786",
+        "64c0e7936f5bfc7ab78ae610",
+        "64c0e7776f5bfc7ab78ae516"
+      ]
+    },
+    {
+      "id": "64c0e8616f5bfc7ab78aed82",
+      "title": "Stoichiometric defects",
+      "count": 4,
+      "questionIds": [
+        "65b7b87c97ae24e9e2db8cd7",
+        "65b7b87297ae24e9e2db8c6f",
+        "64c0e8056f5bfc7ab78ae9e7",
+        "64c0e7b16f5bfc7ab78ae70d"
+      ]
+    },
+    {
+      "id": "64c0e8616f5bfc7ab78aed83",
+      "title": "Non-stoichiometric defects",
+      "count": 1,
+      "questionIds": [
+        "64c0e7df6f5bfc7ab78ae895"
+      ]
+    }
+  ]
+}

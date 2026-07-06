@@ -1,0 +1,44 @@
+{
+  "examSlug": "bitsat",
+  "examId": "61a8a124e8ce0dc8a5c62d2c",
+  "subjectId": "61a8a2cce8ce0dc8a5c62d2e",
+  "chapterId": "61e7bd772a8aeaa5a90af103",
+  "subject": "Chemistry",
+  "chapter": "Practical Chemistry",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64c0e8656f5bfc7ab78aedb5",
+      "title": "Radicals",
+      "count": 4,
+      "questionIds": [
+        "64c0e7c16f5bfc7ab78ae79c",
+        "64c0e7b36f5bfc7ab78ae71f",
+        "64c0e7a46f5bfc7ab78ae6a3",
+        "64c0e7796f5bfc7ab78ae528"
+      ]
+    },
+    {
+      "id": "64c0e8666f5bfc7ab78aedb6",
+      "title": "Preliminary Tests",
+      "count": 6,
+      "questionIds": [
+        "64c0e8256f5bfc7ab78aeafb",
+        "64c0e8086f5bfc7ab78aea00",
+        "64c0e8086f5bfc7ab78ae9fd",
+        "64c0e7fa6f5bfc7ab78ae984",
+        "64c0e7dd6f5bfc7ab78ae881",
+        "64c0e7876f5bfc7ab78ae5a6"
+      ]
+    },
+    {
+      "id": "64c0e8666f5bfc7ab78aedb7",
+      "title": "Identification of Basic Radicals",
+      "count": 2,
+      "questionIds": [
+        "64c0e7cf6f5bfc7ab78ae812",
+        "64c0e7926f5bfc7ab78ae607"
+      ]
+    }
+  ]
+}

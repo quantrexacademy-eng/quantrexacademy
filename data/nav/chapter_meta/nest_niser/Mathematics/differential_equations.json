@@ -1,0 +1,37 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d379647479b8e869647b",
+  "chapterId": "6809201b3a10446a207fde3c",
+  "subject": "Mathematics",
+  "chapter": "Differential Equations",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6809206e3a10446a207fe22e",
+      "title": "Order and Degree",
+      "count": 2,
+      "questionIds": [
+        "680920263a10446a207fdead",
+        "680920253a10446a207fde9e"
+      ]
+    },
+    {
+      "id": "68e78b656105b8763ce72cb6",
+      "title": "Differential Equations",
+      "count": 1,
+      "questionIds": [
+        "68e78b106105b8763ce72c77"
+      ]
+    },
+    {
+      "id": "6809206e3a10446a207fe22d",
+      "title": "Variable Separable Form",
+      "count": 2,
+      "questionIds": [
+        "680920233a10446a207fde87",
+        "6809201b3a10446a207fde3a"
+      ]
+    }
+  ]
+}

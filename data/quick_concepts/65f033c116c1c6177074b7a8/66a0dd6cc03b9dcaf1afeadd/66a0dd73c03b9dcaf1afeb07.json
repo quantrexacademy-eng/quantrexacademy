@@ -1,0 +1,70 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd6cc03b9dcaf1afeadd",
+  "topicId": "66a0dd73c03b9dcaf1afeb07",
+  "title": "Locus",
+  "concepts": [
+    {
+      "title": "Properties of pole and polar of hyperbola",
+      "conceptBody": "<h3><strong>Pole And Polar&nbsp;</strong></h3><p>The polar of a point $\\text{P}\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}} \\right)$ w.r.t. the hyperbola $\\frac{{{\\text{x}}^{2}}}{{{\\text{a}}^{2}}}-\\frac{{{\\text{y}}^{2}}}{\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}^{2}}}=1$ is $\\text{T}=0$, where $\\text{T}\\equiv \\frac{\\text{x}{{\\text{x}}_{1}}}{{{\\text{a}}^{2}}}-\\frac{\\text{y}{{\\text{y}}_{1}}}{\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}^{2}}}-1$</p><p>(i) Pole of a given line $\\text{l}x+\\text{my}+\\text{n}=0$ w.r.t. the hyperbola $\\frac{{{\\text{x}}^{2}}}{{{\\text{a}}^{2}}}-\\frac{{{\\text{y}}^{2}}}{\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}^{2}}}=1$ is $\\left( \\frac{-{{\\text{a}}^{2}}\\text{l}}{\\text{n}},\\frac{-{{\\text{b}}^{2}}\\text{ }\\!\\!~\\!\\!\\text{ m}}{\\text{n}} \\right)$</p><p>(ii) Polar of the focus is the directrix.</p><p>(iii) Any tangent is the polar of its point of contact.</p><p>(iv) If the polar of $\\text{P}\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}} \\right)$ passes through $\\text{Q}\\left( {{\\text{x}}_{2}},{{\\text{y}}_{2}} \\right)$ then the polar of $\\text{Q}$ will pass through</p><p>$\\text{P}$ and such points are said to conjugate points.</p><p>(v) If the pole of a line $lx+my+n=0$ lies on the another line ${l}'x+{m}'y+{n}'=0$, then the pole of the second line will lie on the first and such lines are said to be conjugate lines.</p>",
+      "position": 0,
+      "qcConcept": "66a0dd73c03b9dcaf1afeb08"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f602d384bfb4a53815d",
+      "title": "The locus of the point of intersection of the lines $b x t-a y t=a b$ and $b x+a y=a b t$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f602d384bfb4a53815e",
+      "title": "The locus of the point of intersection of the lines $a x \\sec \\theta+b y \\tan \\theta=a$ and $a x \\tan \\theta+b y \\sec \\theta=b$ where $\\theta$ is the parameter, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f602d384bfb4a53815f",
+      "title": "The locus of the point of intersection of the lines $\\sqrt{3} x-y-4 \\sqrt{3} k=0$ and $\\sqrt{3} k x+k y-4 \\sqrt{3}=0$ for different value of $k$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f602d384bfb4a538160",
+      "title": "The locus of the centre of a circle, which touches externally the given two circles, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f602d384bfb4a538161",
+      "title": "Locus of the point of intersection of straight lines $\\frac{x}{a}-\\frac{y}{b}=m$ and $\\frac{x}{a}+\\frac{y}{b}=\\frac{1}{m}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f602d384bfb4a538162",
+      "title": "The locus of a point which moves such that the difference of its distances from two fixed points is always a constant is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f602d384bfb4a538163",
+      "title": "The locus of the point of intersection of any two perpendicular tangents to the hyperbola is a circle which is called the director circle of the hyperbola, then the equn of this circle is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f602d384bfb4a538164",
+      "title": "The locus of the point of intersection of lines $(x+y) t=a$ and $x-y=a t$, where $t$ is the parameter, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f602d384bfb4a538165",
+      "title": "The locus of a point $P(\\alpha, \\beta)$ moving under the condition that the line $y=\\alpha x+\\beta$ is a tangent to the hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

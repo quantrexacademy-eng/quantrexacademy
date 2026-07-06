@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quantrex Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Kanit:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: Inter, sans-serif; background:#0f1419; color:#e8ecf2; min-height:100vh; padding:28px; }
+    h1 { font-family: Kanit; font-size:28px; margin-bottom:6px; }
+    .sub { color:#9ca3af; margin-bottom:28px; font-size:14px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:16px; margin-bottom:28px; }
+    .card { background:#1a2332; border:1px solid #2a3441; border-radius:14px; padding:20px; }
+    .card strong { display:block; font-family:Kanit; font-size:32px; color:#3b9eff; }
+    .card small { color:#9ca3af; font-size:13px; }
+    table { width:100%; border-collapse:collapse; background:#1a2332; border-radius:12px; overflow:hidden; }
+    th, td { padding:12px 16px; text-align:left; border-bottom:1px solid #2a3441; font-size:14px; }
+    th { background:#243044; font-weight:700; }
+    .btn { display:inline-block; margin-top:20px; padding:10px 18px; background:#1589EE; color:#fff; text-decoration:none; border-radius:10px; font-weight:700; font-size:14px; }
+    .warn { color:#f59e0b; }
+    #gate { max-width:400px; margin:80px auto; text-align:center; }
+    #gate input { width:100%; padding:12px; margin:12px 0; border-radius:10px; border:1px solid #2a3441; background:#1a2332; color:#fff; }
+    #gate button { width:100%; padding:12px; background:#1589EE; color:#fff; border:none; border-radius:10px; font-weight:700; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <div id="gate">
+    <h1>Quantrex Admin</h1>
+    <p class="sub">Enter admin key to view platform stats</p>
+    <input type="password" id="adminKey" placeholder="Admin key">
+    <button onclick="unlock()">Unlock</button>
+  </div>
+  <div id="panel" style="display:none">
+    <h1>Quantrex Academy — Admin Panel</h1>
+    <p class="sub">Content inventory &amp; system health (read-only)</p>
+    <div class="grid" id="stats"></div>
+    <h2 style="font-size:18px;margin-bottom:12px">Question Banks</h2>
+    <table><thead><tr><th>Bank</th><th>Category</th><th>Questions</th></tr></thead><tbody id="banks"></tbody></table>
+    <h2 style="font-size:18px;margin:24px 0 12px">Digital Books</h2>
+    <table><thead><tr><th>Book</th><th>Questions</th><th>Status</th></tr></thead><tbody id="books"></tbody></table>
+    <a class="btn" href="app.html">→ Open Student App</a>
+  </div>
+  <script>
+    const ADMIN_KEY = "quantrex2026";
+    function unlock() {
+      if (document.getElementById("adminKey").value === ADMIN_KEY) {
+        document.getElementById("gate").style.display = "none";
+        document.getElementById("panel").style.display = "block";
+        loadStats();
+      } else alert("Invalid key");
+    }
+    async function loadStats() {
+      let cpyqb = [], booksIndex = {};
+      try { cpyqb = await (await fetch("data/nav/cpyqb.json")).json(); } catch(e) {}
+      try { booksIndex = await (await fetch("data/books_index.json")).json(); } catch(e) {}
+      const totalQs = cpyqb.reduce((s,b) => s + (b.count||0), 0);
+      const books = (booksIndex.books || []);
+      const bookQs = books.reduce((s,b) => s + (b.count||0), 0);
+      document.getElementById("stats").innerHTML = `
+        <div class="card"><strong>${totalQs.toLocaleString()}</strong><small>PYQ Bank Questions</small></div>
+        <div class="card"><strong>${cpyqb.length}</strong><small>Exam Papers</small></div>
+        <div class="card"><strong>${books.length}</strong><small>Digital Books</small></div>
+        <div class="card"><strong>${bookQs.toLocaleString()}</strong><small>Book Questions</small></div>`;
+      document.getElementById("banks").innerHTML = cpyqb.map(b =>
+        `<tr><td>${b.title}</td><td>${b.category}</td><td>${(b.count||0).toLocaleString()}</td></tr>`).join("");
+      document.getElementById("books").innerHTML = books.map(b =>
+        `<tr><td>${b.title}</td><td>${(b.count||0).toLocaleString()}</td><td>${b.count > 0 ? "Live" : '<span class="warn">Import pending</span>'}</td></tr>`).join("");
+    }
+  </script>
+</body>
+</html>

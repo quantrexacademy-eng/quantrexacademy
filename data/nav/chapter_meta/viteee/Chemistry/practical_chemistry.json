@@ -1,0 +1,44 @@
+{
+  "examSlug": "viteee",
+  "examId": "61bb57e81213731910ea0b6f",
+  "subjectId": "61bb58281213731910ea0b71",
+  "chapterId": "61bb821be054bcb5ace679ee",
+  "subject": "Chemistry",
+  "chapter": "Practical Chemistry",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64e459b2ec226f2f4360af6d",
+      "title": "Identification of Basic Radicals",
+      "count": 1,
+      "questionIds": [
+        "64e458edec226f2f4360a73d"
+      ]
+    },
+    {
+      "id": "64e459b2ec226f2f4360af6e",
+      "title": "Identification of Acid Radicals",
+      "count": 1,
+      "questionIds": [
+        "64e458efec226f2f4360a750"
+      ]
+    },
+    {
+      "id": "64e459b2ec226f2f4360af70",
+      "title": "Radicals",
+      "count": 1,
+      "questionIds": [
+        "64e4594fec226f2f4360aafa"
+      ]
+    },
+    {
+      "id": "64e459b2ec226f2f4360af6f",
+      "title": "Preliminary Tests",
+      "count": 2,
+      "questionIds": [
+        "64e4591eec226f2f4360a91a",
+        "64e45910ec226f2f4360a894"
+      ]
+    }
+  ]
+}

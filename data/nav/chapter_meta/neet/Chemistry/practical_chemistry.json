@@ -1,0 +1,45 @@
+{
+  "examSlug": "neet",
+  "examId": "616059730283de43c87e3e22",
+  "subjectId": "616057210283de43c87e3e19",
+  "chapterId": "61602520127d8ed2c32765fb",
+  "subject": "Chemistry",
+  "chapter": "Practical Chemistry",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66bcc148ae81d148616b31e9",
+      "title": "Preliminary Tests",
+      "count": 1,
+      "questionIds": [
+        "66bcbd8bae81d148616b1225"
+      ]
+    },
+    {
+      "id": "682c9e11c2281abe1696a187",
+      "title": "Radicals",
+      "count": 1,
+      "questionIds": [
+        "682c9aacc2281abe1696a12a"
+      ]
+    },
+    {
+      "id": "66bcc148ae81d148616b31eb",
+      "title": "Identification of Acid Radicals",
+      "count": 2,
+      "questionIds": [
+        "6a0ae785c9ba4cd28e744060",
+        "66bcc09fae81d148616b2acb"
+      ]
+    },
+    {
+      "id": "66bcc148ae81d148616b31ea",
+      "title": "Identification of Basic Radicals",
+      "count": 2,
+      "questionIds": [
+        "66bcc09fae81d148616b2ac8",
+        "66bcc0b8ae81d148616b2b93"
+      ]
+    }
+  ]
+}

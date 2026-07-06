@@ -1,0 +1,50 @@
+{
+  "examSlug": "manipal_met",
+  "examId": "678ea9152ea3ea0be38439eb",
+  "subjectId": "678ea9a09cc79e5f592bdc11",
+  "chapterId": "67921d631d5b5072da5e9a9f",
+  "subject": "Physics",
+  "chapter": "Kinetic Theory of Gases",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67921eca1d5b5072da5ea64e",
+      "title": "Gas Laws",
+      "count": 1,
+      "questionIds": [
+        "67921e771d5b5072da5ea340"
+      ]
+    },
+    {
+      "id": "67921eca1d5b5072da5ea64b",
+      "title": "Speed of Gas",
+      "count": 4,
+      "questionIds": [
+        "67921e621d5b5072da5ea29e",
+        "67921e0a1d5b5072da5e9fe4",
+        "67921df51d5b5072da5e9f3a",
+        "67921d631d5b5072da5e9a9d"
+      ]
+    },
+    {
+      "id": "67921eca1d5b5072da5ea64c",
+      "title": "Degree of Freedom and Specific Heat",
+      "count": 5,
+      "questionIds": [
+        "67921e641d5b5072da5ea2ad",
+        "67921e0e1d5b5072da5e9ffd",
+        "67921df81d5b5072da5e9f53",
+        "67921dc81d5b5072da5e9ddd",
+        "67921d8d1d5b5072da5e9c0b"
+      ]
+    },
+    {
+      "id": "67921eca1d5b5072da5ea64d",
+      "title": "Pressure and Energy of gas",
+      "count": 1,
+      "questionIds": [
+        "67921da91d5b5072da5e9ce8"
+      ]
+    }
+  ]
+}

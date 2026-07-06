@@ -1,0 +1,76 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd3dc03b9dcaf1afe9f6",
+  "topicId": "66a0dd42c03b9dcaf1afea0e",
+  "title": "Walli's Formula",
+  "concepts": [
+    {
+      "title": "Gamma function",
+      "conceptBody": "<h3><strong>Gamma Function&nbsp;</strong></h3><p>It is defined by the improper integral, by $\\int _{0}^{\\infty }{{\\text{e}}^{-\\text{x}}}{{\\text{x}}^{\\text{n}-1}}\\text{dx}$ and is denoted by $\\Gamma \\text{ n}$</p><p>$\\therefore \\Gamma\\text{ n}=\\mathop{\\int }_{0}^{\\infty }{{\\text{e}}^{-\\text{x}}}{{\\text{x}}^{\\text{n}-1}}\\text{dx }\\text{ where }\\text{ x }\\text{ is }\\text{ a }\\text{ positive }\\text{ rational }\\text{ number}\\text{. }$</p><p>Properties of Gamma function</p><p>$\\begin{array}{l} \\text{1}\\text{.} &amp; \\Gamma1=1,\\Gamma0=\\infty \\text{ and }\\Gamma\\left( n+1 \\right)=n\\Gamma \\text{ n} \\\\ \\text{2}\\text{.} &amp; \\text{ if }n\\in N,\\Gamma\\left( n+1 \\right)=n! \\\\ \\text{3}\\text{. } &amp; \\Gamma\\left( 1/2 \\right)=\\sqrt{\\pi } \\\\ \\end{array}$</p><p>Useful extensions of gamma function:</p><ol><li>$\\int _{0}^{\\pi /2}\\text{si}{{\\text{n}}^{2}}xdx=\\int _{0}^{\\pi /2}\\text{co}{{\\text{s}}^{n}}xdx$</li></ol><p>\\(=\\left\\{ \\begin{array}{*{35}{l}} \\frac{n-1}{n}\\cdot \\frac{n-3}{n-2}\\cdot \\frac{n-5}{n-4}\\cdots \\frac{3}{4}\\cdot \\frac{1}{2}\\left( \\frac{\\pi }{2}. \\right) &amp; &nbsp;\\text{ if } n \\text{ is }\\text{ even } &nbsp;\\\\ \\frac{n-1}{n}\\cdot \\frac{n-3}{n-2}\\cdot \\frac{n-5}{n-4}\\cdots \\frac{4}{5}\\cdot \\frac{2}{3}\\cdot 1, &amp; &nbsp;\\text{ if } n \\text{ is }\\text{ odd } &nbsp;\\\\ \\end{array} \\right.\\)</p><ol><li>$\\int _{0}^{\\pi /2}\\text{si}{{\\text{n}}^{\\text{m}}}x\\text{co}{{\\text{s}}^{\\text{n}}}\\text{xdx}=\\int _{0}^{\\pi /2}\\text{si}{{\\text{n}}^{\\text{n}}}\\text{xco}{{\\text{s}}^{\\text{m}}}\\text{xdx}$</li></ol><p>$\\begin{array}{l} {} &amp; =\\frac{\\left( m-1 \\right)\\left( m-3 \\right)\\ldots \\left( 1 \\right)\\left( n-1 \\right)\\left( n-3 \\right)\\ldots \\left( 1 \\right)}{\\left( m+n \\right)\\left( m+n-2 \\right)\\ldots 2}\\cdot \\frac{\\pi }{2} &nbsp;\\text{ when }\\text{ both } m~\\And~ n \\text{ belong }\\text{ to }\\text{ even }\\text{ integer } &nbsp;\\\\ {} &amp; =\\frac{\\left( m-1 \\right)\\left( m-3 \\right)\\ldots \\left( 1 \\text{ or } 2 \\right)\\left( n-1 \\right)\\left( n-3 \\right)\\ldots \\left( 1 \\text{ or } 2 \\right)}{\\left( m+n \\right)\\left( m+n-2 \\right)\\ldots 1 \\text{ or } 2} \\text{ when }\\text{ either }\\text{ of } m \\text{ or } n \\text{ belong }\\text{ to }\\text{ odd }\\text{ integer } &nbsp;\\\\ \\end{array}$</p><ol><li>$\\int _{0}^{\\pi }\\text{si}{{\\text{n}}^{\\text{m}}}x\\text{co}{{\\text{s}}^{\\text{n}}}\\text{xdx}=0,$ if $\\text{n}$ is odd</li></ol><p>$=2\\mathop{\\int }_{0}^{\\pi /2}\\text{si}{{\\text{n}}^{\\text{m}}}\\text{xco}{{\\text{s}}^{\\text{n}}}\\text{xdx},\\text{ if }\\text{ n }\\text{ is }\\text{ even }$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd42c03b9dcaf1afea0f"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f412d384bfb4a537fb8",
+      "title": "$\\int_0^{\\pi / 2} \\sin ^2 x \\cos ^3 x d x=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f412d384bfb4a537fb9",
+      "title": "$\\int_{-\\pi / 2}^{\\pi / 2} \\sin ^2 x d x=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f412d384bfb4a537fba",
+      "title": "$\\int_0^{\\pi / 2} \\cos ^2 x d x=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f412d384bfb4a537fbb",
+      "title": "The correct evaluation of $\\int_0^\\pi\\left|\\sin ^4 x\\right| d x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f412d384bfb4a537fbc",
+      "title": "$\\int_0^{\\pi / 2} \\sin ^{2 m} x d x=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f412d384bfb4a537fbd",
+      "title": "$\\int_0^{\\infty} \\frac{x^2 d x}{\\left(x^2+a^2\\right)\\left(x^2+b^2\\right)}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f412d384bfb4a537fbe",
+      "title": "$\\int_{-\\pi / 2}^{\\pi / 2} \\sin ^2 x \\cos ^2 x(\\sin x+\\cos x) d x=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f412d384bfb4a537fbf",
+      "title": "The value of $\\int_a^{a+(\\pi / 2)}\\left(\\sin ^4 x+\\cos ^4 x\\right) d x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f412d384bfb4a537fc0",
+      "title": "$\\int_0^a x^4 \\sqrt{a^2-x^2} d x=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f412d384bfb4a537fc1",
+      "title": "$\\int_0^a x^2\\left(a^2-x^2\\right)^{3 / 2} d x=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

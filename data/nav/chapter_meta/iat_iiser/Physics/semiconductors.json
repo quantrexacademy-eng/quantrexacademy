@@ -1,0 +1,37 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff47378e1624ea7b698b",
+  "subject": "Physics",
+  "chapter": "Semiconductors",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff83378e1624ea7b6c66",
+      "title": "Semiconductors",
+      "count": 1,
+      "questionIds": [
+        "67fdff70378e1624ea7b6b7e"
+      ]
+    },
+    {
+      "id": "67fdff83378e1624ea7b6c64",
+      "title": "Diodes",
+      "count": 3,
+      "questionIds": [
+        "67fdff5e378e1624ea7b6ab4",
+        "67fdff4f378e1624ea7b6a04",
+        "67fdff46378e1624ea7b6989"
+      ]
+    },
+    {
+      "id": "67fdff83378e1624ea7b6c65",
+      "title": "Logic gates",
+      "count": 1,
+      "questionIds": [
+        "67fdff65378e1624ea7b6af9"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "subjectId": "65dcf3d937445f4fe46f420e",
+  "chapterId": "66a0db7ec03b9dcaf1afe20f",
+  "topicId": "66a0db7ec03b9dcaf1afe211",
+  "title": "Elasticity",
+  "concepts": [
+    {
+      "title": "Elasticity and its causes",
+      "conceptBody": "<h3><strong>Elasticity</strong></h3><p>The property of a body due to which it opposes the action of the deforming forces is called as <strong>Elasticity.&nbsp;</strong></p><ul><li>A material is said to be elastic if it returns back to its original shape or size, when the deforming forces are removed. Plastic materials on the other hand, remain permanently distorted when the deforming forces are removed.</li><li>There are a number of elastic modulii (young's modulus, bulk modulus, shear modulus) that measure the response of an elastic solid which is acted upon by the deforming forces.</li><li>The deforming force is measured (described) in terms of a physical quantity, the stress, that it develops in the body. The deformation of the solid is described in terms of a physical quantity the strain, that is created in the body as a result of deformation force.</li></ul>",
+      "position": 0,
+      "qcConcept": "66a0db7fc03b9dcaf1afe212"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "665850f21ebdecde60539ab8",
+      "title": "An elastic string has a mass $M$ suspended at its lower end,the upper being fixed to a support. When the mass is pulled down over a short distance and let go, then it executes SHM with Time period given by\n$T=2 \\pi \\sqrt{\\frac{l_1}{g}}$\nWhere $I_1$ is the elongation of the string. Now the mass $m$ is added to the mass $M$, then it is found that Time period of oscillation $\\left(T_2\\right)$ such that\n$\\frac{T_1}{T_2}=\\frac{5}{4}$\nFind the ratio $\\mathrm{m}: \\mathrm{M}$\nGiven $Y$ is the Young modulus of elasticity. $L$ be the original length of string.",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f21ebdecde60539ab9",
+      "title": "A uniform metallic wire is elongated by $0.04 \\mathrm{~m}$ when subjected to a linear force $\\mathrm{F}$. The elongation, if its length and diameter is doubled and subjected to the same force will be $\\qquad$ $\\mathrm{cm}$.",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f21ebdecde60539aba",
+      "title": "The length of metallic wire is $\\ell_1$ when tension in it is $T_1$. It is $\\ell_2$ when the tension is $T_2$. The original length of the wire will be -",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f21ebdecde60539abb",
+      "title": "Two separate wires A and B are stretched by $2 \\mathrm{~mm}$ and $4 \\mathrm{~mm}$ respectively, when they are subjected to a force of $2 \\mathrm{~N}$. Assume that both the wires are made up of same material and the radius of wire $B$ is 4 times that of the radius of wire $A$. The length of the wires $A$ and $B$ are in the ratio of $\\mathrm{a}: \\mathrm{b}$. Then $\\mathrm{a} / \\mathrm{b}$ can be expressed as $1 / x$ where $x$ is $\\qquad$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f21ebdecde60539abc",
+      "title": "Wires $W_1$ and $W_2$ are made of same material having the breaking stress of $1.25 \\times 10^9 \\mathrm{~N} / \\mathrm{m}^2$. $\\mathrm{W}_1$ and $\\mathrm{W}_2$ have cross-sectional area of $8 \\times 10^{-7}$ $\\mathrm{m}^2$ and $4 \\times 10^{-7} \\mathrm{~m}^2$, respectively. Masses of 20 $\\mathrm{kg}$ and $10 \\mathrm{~kg}$ hang from them as shown in the figure. The maximum mass that can be placed in the pan without breaking the wires is _______ kg. (Use $\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^2$)\n<img src=\"https://cdn-question-pool.getmarks.app/modules/qc/sfc56463_dhuetr3t4.png\">",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f21ebdecde60539abd",
+      "title": "A uniform heavy rod of weight $10 \\mathrm{~kg} \\mathrm{~ms}^{-2}$, cross-sectional area $100 \\mathrm{~cm}^2$ and length $20 \\mathrm{~cm}$ is hanging from a fixed support. Young modulus of the material of the rod is $2 \\times 10^{11}$ $\\mathrm{Nm}^{-2}$. Neglecting the lateral contraction, find the elongation of rod due to its own weight.",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f31ebdecde60539abe",
+      "title": "A wire suspended vertically from one of its ends is stretched by attaching a weight of $200 \\mathrm{~N}$ to the lower end. The weight stretches the wire by $1 \\mathrm{~mm}$. Then the elastic energy stored in the wire is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f31ebdecde60539abf",
+      "title": "A steel wire having a radius of $2.0 \\mathrm{~mm}$, carrying a load of $4 \\mathrm{~kg}$, is hanging from a ceiling. Given that $\\mathrm{g}=3.1 \\mathrm{~mm} / \\mathrm{s}^2$, what will be the tensile stress that would be developed in the wire?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f31ebdecde60539ac0",
+      "title": "Two wires are made of the same material and have the same volume. However, wire 1 has a cross-sectional area $A$ and wire 2 has cross-sectional area $3 A$. If the length of the wire 1 increases by $\\Delta x$ on applying force $F$, how much force is needed to stretch wire 2 by the same amount?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f31ebdecde60539ac1",
+      "title": "When a $100 \\mathrm{Kg}$ mass is suspended from wire of length 1 meter and and area $1 \\mathrm{~cm}^2$, it length increases.\nFind the elastic potential energy stored in the wire",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

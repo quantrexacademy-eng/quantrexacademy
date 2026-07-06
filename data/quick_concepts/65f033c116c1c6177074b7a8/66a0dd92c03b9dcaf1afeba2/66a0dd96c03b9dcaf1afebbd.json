@@ -1,0 +1,106 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd92c03b9dcaf1afeba2",
+  "topicId": "66a0dd96c03b9dcaf1afebbd",
+  "title": "Symmetric & Skew Symmetric Matrices",
+  "concepts": [
+    {
+      "title": "Symmetric and skew symmetric",
+      "conceptBody": "<h3><strong>Symmetric Matrices</strong></h3><p>A square matrix $A=\\left[ {{a}_{ij}} \\right]$ will be called symmetric it for all values of $i$ and $j,{{a}_{ij}}={{a}_{jj}}$.</p><p>i.e. every $\\text{i}$-jth element $=\\text{j}$-ith element.</p><p>eg. $A={{\\left[ \\begin{array}{*{35}{l}} a &amp; h &amp; g \\\\ h &amp; b &amp; f \\\\ g &amp; f &amp; c \\\\ \\end{array} \\right]}_{3\\times 3}}$</p><p><strong>Property $\\mathbf{A}'\\mathbf{=A}$&nbsp;</strong></p><p>Skew Symmetric Matrix:</p><p>A square matrix $A=\\left[ {{a}_{ij}} \\right]$ wil be called skew symmetric if its $i-j$ th element is -ive of $j$-ith element for all values of $i$ and $j$ i.e. $an=$ an for all values of $i$ and $j$.</p><p>Since diagonal elements will be of the type ${{a}_{11}}\\cdot {{a}_{22}}\\cdot {{a}_{33}},\\ldots {{a}_{n}}$ and by given condition ${{a}_{n}}=-{{a}_{n}}$ for all values of $i$ or</p><p>$2{{\\text{a}}_{\\text{ii}}}=0\\therefore \\quad {{\\text{a}}_{\\text{ii}}}=\\mathbf{0}$</p><p>Hence the diagonal elements of a skew symmetric matrix are zero.</p><p>$\\text{ e}\\text{.g}\\text{. }\\left[ \\begin{matrix} 0 &amp; h &amp; g \\\\ -h &amp; 0 &amp; f \\\\ -g &amp; -f &amp; 0 \\\\ \\end{matrix} \\right]\\text{ is a skew symmetric matrix}\\text{. }$</p><p><strong>Property: </strong>${{A}^{\\prime }}=-A$.</p><p>Some results related to symmetric and skew symmetric matrices:</p><p>(i) If $\\text{A}$ is any square matrix, then $\\text{A}+{{\\text{A}}^{\\prime }}$ is a symmetric matrix and $\\text{A}-{{\\text{A}}^{\\prime }}$ is a skew symmetric matrix. $A-{{A}^{\\prime }}$ is a skew symmetric matrix.</p><p><strong>Proof: </strong>$\\left( A+{{A}^{\\prime }} \\right)={{A}^{\\prime }}+\\left( {{A}^{\\prime }} \\right)={{A}^{\\prime }}+A+{{A}^{\\prime }}\\left[ \\therefore {{(A+B)}^{\\prime }}\\left( {{A}^{\\prime }}+{{B}^{\\prime }} \\right] \\right.$</p><p>Hence $\\text{A}+{{\\text{A}}^{\\prime }}$ is a symmetric matrix.</p><p>Again $\\left( A-{{A}^{\\prime }} \\right)={{A}^{\\prime }}-\\left( {{A}^{\\prime }} \\right)={{A}^{\\prime }}-A=-\\left( A-{{A}^{\\prime }} \\right)$</p><p>Hence $\\text{A}-{{\\text{A}}^{\\prime }}$ is a skew symmetric matrix</p><p><strong>(ii) Every square matrix can be uniquely expressed as the sum of asymmetric matrix and askew symmetric matrix </strong>.</p><p><strong>Proof: </strong>Let A be any square matrix. Then as in (i) $\\frac{1}{2}\\left( A+{{A}^{\\prime }} \\right)$ will be a symmetric matrix and $\\frac{1}{2}\\left( A-{{A}^{\\prime }} \\right)$ will be a skew symmetric matrix.</p><p>$\\text{ Let }B=\\frac{1}{2}\\left( A+{{A}^{\\prime }} \\right)\\text{ and }C=\\frac{1}{2}\\left( A-{{A}^{\\prime }} \\right)$</p><p>$\\text{ Then }A=\\frac{1}{2}\\left( A+{{A}^{\\prime }} \\right)+\\frac{1}{2}\\left( A-{{A}^{\\prime }} \\right)=B+C$</p><p>where $\\text{B}$ is a symmetric matrix and $\\text{C}$ is a skew symmetric matrix.</p><p><strong>To prove that the representation is unique:&nbsp;</strong></p><p>If possible let $\\text{A}=\\text{D}+\\text{E}$ where $\\text{D}$ is a symmetric and $\\text{E}$ is a skew symmetric matrix. Then ${{\\text{D}}^{\\prime }}={{\\text{D}}_{\\text{and }}}{{\\text{E}}^{\\prime }}=-\\text{E}$. ...(1)</p><p>Now $\\text{A}=\\text{D}+\\text{E}\\Rightarrow {{\\text{A}}^{\\prime }}={{\\text{D}}^{\\prime }}+{{\\text{E}}^{\\prime }}=\\text{D}-\\text{E}[$ From (1)]</p><p>$\\left. \\begin{matrix} \\text{ Thus }A &amp; =\\text{D}+\\text{E} \\\\ \\text{ and }{{\\text{A}}^{\\prime }} &amp; =\\text{D}-\\text{E} \\\\ \\end{matrix} \\right\\}\\text{ and E}=\\frac{1}{2}\\left( ~\\text{A}-{{\\text{A}}^{\\prime }} \\right)=\\text{C}\\text{. }$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd97c03b9dcaf1afebbe"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f662d384bfb4a538270",
+      "title": "If $A$ is a symmetric matrix, then matrix $M^{\\prime} A M$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538271",
+      "title": "The inverse of a symmetric matrix is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538272",
+      "title": "For any square matrix $A, A A^T$ is a",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538273",
+      "title": "Matrix $\\left[\\begin{array}{ccc}0 & -4 & 1 \\\\ 4 & 0 & -5 \\\\ -1 & 5 & 0\\end{array}\\right]$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538274",
+      "title": "If $A$ is a skew-symmetric matrix of order $n$, and $C$ is a column matrix of order $n \\times 1$, then $C^T A C$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538275",
+      "title": "If $A$ is a skew symmetric matrix and $n$ is a positive integer, then $A^n$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538276",
+      "title": "The matrix $A=\\left[\\begin{array}{cc}i & 1-2 i \\\\ -1-2 i & 0\\end{array}\\right]$ is which of the following",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538277",
+      "title": "If $A$ is a singular matrix, then $\\operatorname{adj} A$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538278",
+      "title": "If $A$ is a square matrix for which $a_{i j}=i^2-j^2$, then $A$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538279",
+      "title": "Which of the following is not true",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53827a",
+      "title": "Out of the following a skew-symmetric matrix is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53827b",
+      "title": "Which one of the following is correct",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53827c",
+      "title": "For a matrix $A, A I=A$ and $A A^{\\top}=1$ is true for",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53827d",
+      "title": "If $A$ is a square matrix, then $A+A^{\\top}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53827e",
+      "title": "The matrix $\\left[\\begin{array}{ccc}0 & 5 & -7 \\\\ -5 & 0 & 11 \\\\ 7 & -11 & 0\\end{array}\\right]$ is known as",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d392647479b8e869647c",
+  "chapterId": "68091fbe3a10446a207fda76",
+  "subject": "Biology",
+  "chapter": "Plant - Growth and Development",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6809205b3a10446a207fe137",
+      "title": "Growth",
+      "count": 2,
+      "questionIds": [
+        "68091fc73a10446a207fdad2",
+        "68091fc53a10446a207fdabe"
+      ]
+    },
+    {
+      "id": "6809205b3a10446a207fe136",
+      "title": "Plant Growth Regulators",
+      "count": 3,
+      "questionIds": [
+        "68091fd53a10446a207fdb62",
+        "68091fce3a10446a207fdb1f",
+        "68091fbe3a10446a207fda74"
+      ]
+    }
+  ]
+}

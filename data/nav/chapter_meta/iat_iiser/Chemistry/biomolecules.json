@@ -1,0 +1,51 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa602f4468eb1307ceb0ae",
+  "chapterId": "67fdff53378e1624ea7b6a34",
+  "subject": "Chemistry",
+  "chapter": "Biomolecules",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff89378e1624ea7b6cc4",
+      "title": "Carbohydrates",
+      "count": 1,
+      "questionIds": [
+        "67fdff73378e1624ea7b6b9e"
+      ]
+    },
+    {
+      "id": "68e7a68cce75e72648a45ea1",
+      "title": "Lipids",
+      "count": 1,
+      "questionIds": [
+        "68e7a67bce75e72648a45e51"
+      ]
+    },
+    {
+      "id": "67fdff89378e1624ea7b6cc2",
+      "title": "Disaccharides and Polysaccharides",
+      "count": 1,
+      "questionIds": [
+        "67fdff5a378e1624ea7b6a91"
+      ]
+    },
+    {
+      "id": "67fdff89378e1624ea7b6cc1",
+      "title": "Proteins",
+      "count": 1,
+      "questionIds": [
+        "67fdff53378e1624ea7b6a32"
+      ]
+    },
+    {
+      "id": "67fdff89378e1624ea7b6cc3",
+      "title": "Nucleic Acids",
+      "count": 1,
+      "questionIds": [
+        "67fdff6d378e1624ea7b6b5b"
+      ]
+    }
+  ]
+}

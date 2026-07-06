@@ -1,0 +1,58 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b34d4b564dfab4f94cc",
+  "chapterId": "66d58539a75f05ee8564f55f",
+  "subject": "Physics",
+  "chapter": "Electromagnetic Induction",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d5869ba75f05ee856502b6",
+      "title": "Magnetic Flux, Faraday's and Lenz law",
+      "count": 3,
+      "questionIds": [
+        "66d5865ca75f05ee85650003",
+        "66d58610a75f05ee8564fd40",
+        "66d585c7a75f05ee8564fa9b"
+      ]
+    },
+    {
+      "id": "66d5869ba75f05ee856502b5",
+      "title": "Induced Electric Field",
+      "count": 3,
+      "questionIds": [
+        "66d585eaa75f05ee8564fbdc",
+        "66d585d7a75f05ee8564fb31",
+        "66d585b6a75f05ee8564f9ff"
+      ]
+    },
+    {
+      "id": "66d5869ba75f05ee856502b2",
+      "title": "Motional and Rotational EMF",
+      "count": 2,
+      "questionIds": [
+        "66d5865aa75f05ee8564fff1",
+        "66d58539a75f05ee8564f55d"
+      ]
+    },
+    {
+      "id": "66d5869ba75f05ee856502b3",
+      "title": "Self and Mutual Inductance",
+      "count": 2,
+      "questionIds": [
+        "66d5861ea75f05ee8564fdc4",
+        "66d58539a75f05ee8564f562"
+      ]
+    },
+    {
+      "id": "66d5869ba75f05ee856502b4",
+      "title": "LR Circuit",
+      "count": 2,
+      "questionIds": [
+        "66d585b6a75f05ee8564fa00",
+        "66d585a4a75f05ee8564f954"
+      ]
+    }
+  ]
+}

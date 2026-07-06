@@ -1,0 +1,124 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd90c03b9dcaf1afeb98",
+  "topicId": "66a0dd90c03b9dcaf1afeb9a",
+  "title": "Mathematical Reasoning",
+  "concepts": [
+    {
+      "title": "Basics of Mathematical Reasoning",
+      "conceptBody": "<h3>Basics of Mathematical Reasoning</h3><p><strong>Propositions </strong>: A statement or a proposition is an assertive (or declarative) sentence which is either true or false but not both a true statement is called valid statement. If a statement is false, then it is called invalid statement.</p><p><strong>Open statement: </strong>A declarative sentence containing variable ( <i>s </i>) is an open statement if it becomes a statement when the variable ( <i>s </i>) is (are) replaced by some definite value ( <i>s </i>).</p><p><strong>Truth Set: </strong>The set of all those values of the variable ( <i>s </i>) in an open statement for which it becomes a true statement is called the truth set of the open statement.</p><p><strong>Truth Value </strong>: The truth or falsity of a statement is called its truth value.</p><p>If a statement is true, then we say that its truth value is ‘True’ or ‘ <i>T </i>’. On the other hand the truth value of a false statement is ‘False’ or ‘ <i>F </i>’.</p><p><strong>Logical variables: </strong>In the study of logic, statements are represented by lower case letters such as <i>p </i>, <i>q </i>, <i>r </i>, <i>s </i>.. These letters are called logical variables.</p><p>For example, the statement ‘The sun is a star’ may be represented or denoted by <i>p </i>and we write</p><p><i>p </i>: The sun is a star&nbsp;</p><p>Similarly, we may denote the statement</p><p>14 – 5 =– 2.</p><p><strong>Quantifiers: </strong>The symbol $\\forall $(stands for ‘for all’) and $\\exists $(stands for “there exists”) are known as quantifiers.</p><p>In other word, quantifiers are symbols used to denote a group of words or a phrase.</p><p>The symbols $\\forall $ and $\\exists $ are known as existential quantifiers. An open sentence used with quantifiers always becomes a statement.</p><p><strong>Quantified statements: </strong>The statements containing quantifiers are known as quantified statements.</p><p>${{x}^{2}}&gt;0.\\forall x\\in R$ is a quantified statement. Its truth value is <i>T </i>.</p>",
+      "position": 0,
+      "qcConcept": "66a0dd90c03b9dcaf1afeb9b"
+    },
+    {
+      "title": "Types of statements",
+      "conceptBody": "<h3>Types of statements</h3><p>In Mathematical logic, we generally come across two types of statements or proposition, namely, simple statements and compound statements as defined below.</p><p>(i) <strong>Simple statements: </strong>Any statement or proposition whose truth value does not explicity depend on another statement is said to be a simple statement.</p><p>In other words, a statement is said to be simple if it cannot be broken down into simpler statements, that is, if it is not composed of simpler statements.</p><p>(ii) <strong>Compound statements: </strong>If a statement is combination of two or more simple statements, then it is said to be a compound statement or a compound proposition.</p>",
+      "position": 1,
+      "qcConcept": "66a0dd90c03b9dcaf1afeb9c"
+    },
+    {
+      "title": "Truth tables",
+      "conceptBody": "<h3>Truth tables</h3><p>A table that shows the relationship between the truth value of a compound statement S ( <i>p </i>, <i>q </i>, <i>r,.. </i>) and the truth values of its sub-statement <i>p </i>, <i>q </i>, <i>r </i>, .....etc, is called the truth table of statement <i>S </i>.</p><p><strong>Construction of truth table: </strong>In order to construct the truth table for a compound statement, we first prepare a table consisting of rows and columns. At the top of the initial columns, we write the variables denoting the sub-statements or constituent statements and then we write their truth values, in the last column. We write the truth value of the compound statement on the basis of the truth values of the constituent statements written in the initial columns. If a compound statement is made up of two simple statement, then the number of rows in the truth table will be ${{2}^{2}}$ and if it is made up of three simple statements, then the number of rows will be ${{2}^{3}}$. In general, if the compound statement is made up of <i>n </i>sub-statements, then its truth table will contain ${{2}^{n}}$ rows.</p>",
+      "position": 2,
+      "qcConcept": "66a0dd91c03b9dcaf1afeb9d"
+    },
+    {
+      "title": "Basic logical connectives",
+      "conceptBody": "<h3>Basic logical connectives</h3><p>The phrases or words which connect simple statements are called logical connectives or sentential connectives or simply connectives or logical operators.</p><p>In the following table, we list some possible connectives, their symbols and the nature of the compound statement formed by them.</p><figure class=\"table\"><table><tbody><tr><td><strong>Connective&nbsp;</strong></td><td><strong>Symbol&nbsp;</strong></td><td><strong>Compound Statement&nbsp;</strong></td></tr><tr><td>and</td><td>$\\wedge $</td><td>Conjunction</td></tr><tr><td>or</td><td>$\\vee $</td><td>disjunction</td></tr><tr><td>If....then</td><td>⇒ or $\\to $</td><td>Implication or conditional</td></tr><tr><td>If and only if (iff)</td><td>⇔ or $\\leftrightarrow $</td><td>Equivalence or bi-conditional</td></tr><tr><td>not</td><td>~ or ┓</td><td>Negation</td></tr></tbody></table></figure><p>(i) <strong>Conjunction: </strong>Any two simple statements can be connected by the word “and” to form a compound statement called the conjunction of the original statements.</p><p>Symbolically if <i>p </i>and <i>q </i>are two simple statements, then $p\\wedge q$ denotes the conjunction of <i>p </i>and <i>q </i>and is read as “ <i>p </i>and <i>q </i>”.</p><p>(ii) <strong>Disjunction or alternation </strong>Any two statements can be connected by the word “or” to form a compound statement called the disjunction of the original statements.</p><p>Symbolically, if <i>p </i>and <i>q </i>are two simple statements, then $p\\vee q$ denotes the disjunction of <i>p </i>and <i>q </i>and is read as “ <i>p </i>or <i>q </i>”.</p><p>(iii) <strong>Negation: </strong>The denial of a statement <i>p </i>is called its negation, written as ~ <i>p </i>.</p><p>Negation of any statement p is formed by writing “ It is not the case that ..... “ or “ It is false that.......” before <i>p </i>or, if possible by inserting in <i>p </i>the word “not”.</p><p>Negation is called a connective although it does not combine two or more statements. In fact, it only modifies a statement.</p><p>(iv) <strong>Implication or conditional statements: </strong>Any two statements connected by the connective phrase “if.. then” give rise to a compound statement which is known as an implication or a conditional statement.</p><p>If <i>p </i>and <i>q </i>are two statements forming the implication ‘if <i>p </i>then <i>q </i>′, then we denote this implication by $''p\\Rightarrow q''\\,\\,\\text{or}\\,\\,''p\\to q''$.</p><p>In the implication $''p\\Rightarrow q'',\\,p$is the antecedent and <i>q </i>is the consequent.</p><p>Truth table for a conditional a statement</p><figure class=\"table\"><table><tbody><tr><td><i>p&nbsp;</i></td><td><i>q&nbsp;</i></td><td><i>$p\\Rightarrow q$&nbsp;</i></td></tr><tr><td><i>T&nbsp;</i></td><td><i>T&nbsp;</i></td><td><i>T&nbsp;</i></td></tr><tr><td><i>T&nbsp;</i></td><td><i>F&nbsp;</i></td><td><i>F&nbsp;</i></td></tr><tr><td><i>F&nbsp;</i></td><td><i>T&nbsp;</i></td><td><i>T&nbsp;</i></td></tr><tr><td><i>F&nbsp;</i></td><td><i>F&nbsp;</i></td><td><i>T&nbsp;</i></td></tr></tbody></table></figure><p>(v) <strong>Biconditional statement: </strong>A statement is a biconditional statement if it is the conjunction of two conditional statements (implications) one converse to the other.</p><p>Thus, if <i>p </i>and <i>q </i>are two statements, then the compound statement $p\\Rightarrow q$ and $q\\Rightarrow p$ is called a biconditional statements or an equivalence and is denoted by $p\\Leftrightarrow q$.</p><p>Thus, $p\\Leftrightarrow q$: $(p\\Rightarrow q)\\wedge (q\\Rightarrow p)$</p><p><strong>Truth table for a biconditional statement: </strong>Since $p\\Leftrightarrow q$ is the conjunction of $p\\Rightarrow q$ and $q\\Rightarrow p$. So, we have the following truth table for $p\\Leftrightarrow q$</p><figure class=\"table\"><table><tbody><tr><td><i>p&nbsp;</i></td><td><i>q&nbsp;</i></td><td><i>$p\\Rightarrow q$&nbsp;</i></td><td><i>q </i>⇒ <i>p&nbsp;</i></td><td>$p\\Leftrightarrow q$=$(p\\Rightarrow q)\\wedge (q\\Rightarrow p)$</td></tr><tr><td><i>T&nbsp;</i></td><td><i>T&nbsp;</i></td><td><i>T&nbsp;</i></td><td><i>T&nbsp;</i></td><td><i>T&nbsp;</i></td></tr><tr><td><i>T&nbsp;</i></td><td><i>F&nbsp;</i></td><td><i>F&nbsp;</i></td><td><i>T&nbsp;</i></td><td><i>F&nbsp;</i></td></tr><tr><td><i>F&nbsp;</i></td><td><i>T&nbsp;</i></td><td><i>T&nbsp;</i></td><td><i>F&nbsp;</i></td><td><i>F&nbsp;</i></td></tr><tr><td><i>F&nbsp;</i></td><td><i>F&nbsp;</i></td><td><i>T&nbsp;</i></td><td><i>T&nbsp;</i></td><td><i>T&nbsp;</i></td></tr></tbody></table></figure>",
+      "position": 3,
+      "qcConcept": "66a0dd91c03b9dcaf1afeb9e"
+    },
+    {
+      "title": "Logically equivalent statement",
+      "conceptBody": "<h3>Logically equivalent statement</h3><p>Two compound ${{S}_{1}}(p,q,r,...)$ and ${{S}_{2}}(p,q,r...)$ are said to be logically equivalent, or simply equivalent if they have the same truth values for all logically possibilities.</p><p>If statements ${{S}_{1}}(p,q,r,...)$ and ${{S}_{2}}(p,q,r...)$ are logically equivalent, then we write</p><p>${{S}_{1}}(p,q,r,...)\\equiv {{S}_{2}}(p,q,r...)$</p><p>It follows from the above definition that two statements ${{S}_{1}}$ and ${{S}_{2}}$ are logically equivalent if they have identical truth tables <i>i.e. </i>, the entries in the last column of the truth tables are same.</p>",
+      "position": 4,
+      "qcConcept": "66a0dd91c03b9dcaf1afeb9f"
+    },
+    {
+      "title": "Tautologies and contradictions",
+      "conceptBody": "<h3>Tautologies and contradictions</h3><p><strong>Tautology: </strong>A statement pattern is called a tautology, if it is always true, whatever may be the truth values of constitute statements. A tautology is called a theorem or a logically valid statement pattern. A tautology, contains only <i>T </i>in the last column of its truth table.</p><p><strong>Contradiction: </strong>A statement pattern is called a contradiction, if it is always false, whatever may the truth values of its constitute statements.</p>",
+      "position": 5,
+      "qcConcept": "66a0dd91c03b9dcaf1afeba0"
+    },
+    {
+      "title": "Algebra of statements",
+      "conceptBody": "<p>Algebra of statements</p><p>The following are some laws of algebra of statements.</p><p>(i) <strong>Idempotent laws:</strong> For any statement <i>p</i>, we have</p><p>(a) $p \\vee p \\equiv p$&nbsp;<br>(b) $p \\wedge p \\equiv p$</p><p>(ii) <strong>Commutative laws:</strong> For any two statements <i>p</i> and <i>q</i>, we have</p><p>(a) $p \\vee q \\equiv q \\vee p$&nbsp;<br>(b) $p \\wedge q \\equiv q \\wedge p$</p><p>(iii) <strong>Association laws:</strong> For any three statements <i>p</i>, <i>q</i>, <i>r</i>, we have</p><p>(a) $(p \\vee q) \\vee r \\equiv p \\vee (q \\vee r)$&nbsp;<br>(b) $(p \\wedge q) \\wedge r \\equiv p \\wedge (q \\wedge r)$</p><p>(iv) <strong>Distributive laws:</strong> For any three statements <i>p</i>, <i>q</i>, <i>r</i>, we have</p><p>(a) $p \\wedge (q \\vee r) \\equiv (p \\wedge q) \\vee (p \\wedge r)$&nbsp;<br>(b) $p \\vee (q \\wedge r) \\equiv (p \\vee q) \\wedge (p \\vee r)$</p><p>(v) <strong>De Morgan’s laws:</strong> If <i>p</i> and <i>q</i> are two statements, then</p><p>(a) $\\sim (p \\wedge q) \\equiv \\sim p \\vee \\sim q$&nbsp;<br>(b) $\\sim (p \\vee q) \\equiv \\sim p \\wedge \\sim q$</p><p>(vi) <strong>Identity laws:</strong> If <i>t</i> and <i>c</i> denote a tautology and a contradiction respectively, then for any statement <i>p</i>, we have</p><p>(a) $p \\wedge t \\equiv p$&nbsp;<br>(b) $p \\vee c \\equiv p$&nbsp;<br>(c) $p \\vee t \\equiv t$&nbsp;<br>(d) $p \\wedge c \\equiv c$</p><p>(vii) <strong>Complement laws:</strong> For any statement <i>p</i>, we have</p><p>(a) $p \\vee \\sim p \\equiv t$&nbsp;<br>(b) $p \\wedge \\sim p \\equiv c$&nbsp;<br>(c) $\\sim t \\equiv c$&nbsp;<br>(d) $\\sim c \\equiv t$</p><p>where <i>t</i> and <i>c</i> denote a tautology and a contradiction respectively.</p><p>(viii) <strong>Law of contrapositive:</strong> For any two statements <i>p</i> and <i>q</i>, we have</p><p>$p \\Rightarrow q \\equiv \\sim q \\Rightarrow \\sim p$</p><p>(ix) <strong>Involution laws:</strong> For any statement <i>p</i>, we have $\\sim (\\sim p) \\equiv p$</p>",
+      "position": 6,
+      "qcConcept": "66a0dd91c03b9dcaf1afeba1"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66891f2c1010aab82c8aa5b8",
+      "title": "Which of the following is not a statement",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa5b9",
+      "title": "Negation of the conditional : \"If it rains, I shall go to school\" is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa5ba",
+      "title": "The conditional $(p \\wedge q) \\Rightarrow p$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa5bb",
+      "title": "Negation is \" $2+3=5$ and $8 \\lt 10$ \" is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa5bc",
+      "title": "Which of the following is a contradiction?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa5bd",
+      "title": "$\\sim(p \\vee(\\sim q))$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa5be",
+      "title": "If $p, q, r$ are simple propositions with truth alues $\\mathrm{T}, \\mathrm{F}, \\mathrm{T}$, then the truth value of $(\\sim p \\vee q) \\wedge \\sim r \\Rightarrow p$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa5bf",
+      "title": "If $p, q, r$ are simple propositions, then $(p \\wedge q) \\wedge(q \\wedge r)$ is true then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa5c0",
+      "title": "If $p$: It rains today, $q:$ I go to school, $r:$ I shall meet any friends and $s$ : I shall go for a movie, then which of the following is the proposition :\nIf it does not rain or if I do not go to school, then I shall meet my friend and go for a movie.",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa5c1",
+      "title": "$\\sim(p \\vee q) \\vee(\\sim p \\wedge q)$ is logically equivalent to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa5c2",
+      "title": "The contrapositive of $(p \\vee q) \\Rightarrow r$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2c1010aab82c8aa5c3",
+      "title": "Let $p$ be the proposition : Mathematics is a interesting and let $q$ be the propositions that Mathematics is difficult,then the symbol $p \\wedge q$ means",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

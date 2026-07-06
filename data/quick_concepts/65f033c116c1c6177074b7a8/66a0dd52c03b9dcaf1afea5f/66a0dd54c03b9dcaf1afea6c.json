@@ -1,0 +1,40 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd52c03b9dcaf1afea5f",
+  "topicId": "66a0dd54c03b9dcaf1afea6c",
+  "title": "Line and ellipse",
+  "concepts": [
+    {
+      "title": "Condition for line to be Tangent and Secant of ellipse",
+      "conceptBody": "<h3><strong>Intersection of a line and an ellipse</strong></h3><p>The abscissae of points of the intersection of the line $y=mx+c$ and the ellipse $\\frac{{{x}^{2}}}{{{a}^{2}}}+\\frac{{{y}^{2}}}{{{b}^{2}}}=1$, are given by the quadratic equation $\\frac{{{x}^{2}}}{{{a}^{2}}}+\\frac{{{(mx+c)}^{2}}}{{{b}^{2}}}=1$ Or $\\left( {{a}^{2}}{{m}^{2}}+{{b}^{2}} \\right){{x}^{2}}+2{{a}^{2}}mcx+{{a}^{2}}\\left( {{c}^{2}}-{{b}^{2}} \\right)=$ $0\\left( * \\right)$. If the roots be ${{x}_{1}},{{x}_{2}}$ then</p><p>${{x}_{1}}+{{x}_{2}}=-\\frac{2{{a}^{2}}mc}{{{a}^{2}}{{m}^{2}}+{{b}^{2}}};{{x}_{1}}{{x}_{2}}=\\frac{{{a}^{2}}\\left( {{c}^{2}}-{{b}^{2}} \\right)}{{{a}^{2}}{{m}^{2}}+{{b}^{2}}}$</p><p>If ordinates of the points be ${{\\text{y}}_{1}}$ and ${{\\text{y}}_{2}}$ then</p><p>${{\\text{y}}_{1}}=\\text{m}{{\\text{x}}_{1}}+\\text{c},{{\\text{y}}_{2}}=\\text{m}{{\\text{x}}_{2}}+\\text{c}\\Rightarrow {{\\text{y}}_{1}}+{{\\text{y}}_{2}}=\\text{m}\\left( {{\\text{x}}_{1}}-{{\\text{x}}_{2}} \\right)$</p><p>Now the distance between these points is equal to length intercepted by the line $\\text{y}=\\text{mx}+\\text{c}$ on the ellipse $\\frac{{{\\text{x}}^{2}}}{{{\\text{a}}^{2}}}+\\frac{{{\\text{y}}^{2}}}{\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}^{2}}}=1$ which is equal to</p><p>$\\sqrt{{{\\left( {{\\text{x}}_{1}}-{{\\text{x}}_{2}} \\right)}^{2}}+{{\\left( {{\\text{y}}_{1}}-{{\\text{y}}_{2}} \\right)}^{2}}}=\\sqrt{{{\\left( {{\\text{x}}_{1}}-{{\\text{x}}_{2}} \\right)}^{2}}+{{\\text{m}}^{2}}{{\\left( {{\\text{x}}_{1}}-{{\\text{x}}_{2}} \\right)}^{2}}}=\\left| {{\\text{x}}_{1}}-{{\\text{x}}_{2}} \\right|\\sqrt{1+{{\\text{m}}^{2}}}$</p><p>$=\\sqrt{{{\\left( {{\\text{x}}_{1}}-{{\\text{x}}_{2}} \\right)}^{2}}-4{{\\text{x}}_{1}}{{\\text{x}}_{2}}}\\sqrt{1+{{\\text{m}}^{2}}}$</p><p>$=\\frac{2\\text{ab}\\sqrt{{{\\text{a}}^{2}}~{{\\text{m}}^{2}}+{{\\text{b}}^{2}}-{{\\text{c}}^{2}}}}{{{\\text{a}}^{2}}~{{\\text{m}}^{2}}+{{\\text{b}}^{2}}}$</p><p>(on putting the values of ${{x}_{1}}+{{x}_{2}}$ and ${{x}_{1}}{{x}_{2}}$)</p><p>If the line happens to be tangent to the ellipse the length intercepted by it on the ellipse $\\frac{{{x}^{2}}}{{{a}^{2}}}+\\frac{{{y}^{2}}}{{{b}^{2}}}=1$ must be zero</p><p>$\\Rightarrow {{a}^{2}}{{m}^{2}}+{{b}^{2}}-{{c}^{2}}=0\\Rightarrow {{c}^{2}}={{a}^{2}}{{m}^{2}}+{{b}^{2}}\\Rightarrow c=\\pm \\sqrt{{{a}^{2}}{{m}^{2}}+{{b}^{2}}}$</p><p>In case ${{c}^{2}}={{a}^{2}}{{m}^{2}}+{{b}^{2}}$ the equal root of the quadratic equation $\\left( * \\right)$ is$x=-\\frac{{{a}^{2}}mc}{{{a}^{2}}{{m}^{2}}+{{b}^{2}}}=-\\frac{{{a}^{2}}m}{c}$ (If the equation $\\text{A}{{\\text{x}}^{2}}+\\text{Bx}+\\text{C}=0$ has equal root then it is equal to $-\\text{B}/2\\text{ }\\!\\!~\\!\\!\\text{ A}$ ). Also,</p><p>$y=mx+c=m\\left( -\\frac{{{a}^{2}}m}{c} \\right)+c=\\frac{-{{a}^{2}}{{m}^{2}}+{{c}^{2}}}{c}=\\frac{{{b}^{2}}}{c}$</p><p>Thus we have the following important result.</p><p>The line $y=mx+c$ will be a tangent to the ellipse $\\frac{{{x}^{2}}}{{{a}^{2}}}+\\frac{{{y}^{2}}}{{{b}^{2}}}=1$ if ${{c}^{2}}={{a}^{2}}{{m}^{2}}+{{b}^{2}}$ and it will touch the ellipse at $\\left( -\\frac{{{\\text{a}}^{2}}\\text{ }\\!\\!~\\!\\!\\text{ m}}{\\text{c}},\\frac{{{\\text{b}}^{2}}}{\\text{c}} \\right)$. The line $\\text{y}=\\text{mx}\\pm \\sqrt{{{\\text{a}}^{2}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{m}}^{2}}+{{\\text{b}}^{2}}}$ will be a tangent to the ellipse $\\frac{{{\\text{x}}^{2}}}{{{\\text{a}}^{2}}}+\\frac{{{\\text{y}}^{2}}}{\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}^{2}}}=$ 1 for all values of $m$.</p><p><strong>NOTE : </strong>If m = 0 then equation (3) gives</p><p>${{b}^{2}}{{x}^{2}}+{{c}^{2}}{{a}^{2}}-{{a}^{2}}{{b}^{2}}=0$</p><p>or ${{b}^{2}}{{x}^{2}}+\\left( {{a}^{2}}{{m}^{2}}+{{b}^{2}} \\right){{a}^{2}}-{{b}^{2}}=0$</p><p>∴ $\\text{x}=\\pm \\frac{{{\\text{a}}^{2}}~\\text{m}}{~\\text{b}}$</p><p>which gives two values of $\\text{x}$.</p>",
+      "position": 0,
+      "qcConcept": "66a0dd54c03b9dcaf1afea6d"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f4a2d384bfb4a5380a4",
+      "title": "The line $\\ lx+m y-n=0$ will be tangent to the ellipse $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$, if",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f4a2d384bfb4a5380a5",
+      "title": "If the line $y=m x+c$ touches the ellipse $\\frac{x^2}{b^2}+\\frac{y^2}{a^2}=1$, then $c=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f4a2d384bfb4a5380a6",
+      "title": "The ellipse $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ and the straight line $y=m x+c$ intersect in real points only if",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f4a2d384bfb4a5380a7",
+      "title": "If $y=m x+c$ is tangent on the ellipse $\\frac{x^2}{9}+\\frac{y^2}{4}=1$, then the value of $c$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

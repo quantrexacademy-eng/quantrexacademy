@@ -1,0 +1,106 @@
+{
+  "subjectId": "65dcf3d937445f4fe46f420e",
+  "chapterId": "66a0dbc0c03b9dcaf1afe339",
+  "topicId": "66a0dbc3c03b9dcaf1afe34a",
+  "title": "Calorimetry",
+  "concepts": [
+    {
+      "title": "Heat Capacity",
+      "conceptBody": "<h3><strong>Heat Capacity (Thermal capacity) C'</strong></h3><p>The amount of heat required to raise the temperature of a substance of $1\\text{C}$ (or $1\\text{ K}$)</p><p>$\\text{C'}=\\frac{\\Delta\\text{ Q}}{\\Delta\\text{ T}}\\Rightarrow \\Delta\\text{ Q}=\\text{C' }\\Delta\\text{ T}~(\\text{Avg}\\text{. }\\text{ value) }$</p><p>But, strictly $\\text{C'}$ is not constant for a temperature change.</p><p>Unit : J/ C or $\\text{J}/\\text{K}$</p><p>Absolute Value : $\\left( C'=\\frac{dQ}{dT} \\right)$</p><p>$\\therefore \\text{ dQ}=\\text{C'dT}$</p><p>$\\therefore \\Delta\\text{ Q}=\\int _{{{\\text{T}}_{1}}}^{{{\\text{T}}_{2}}}\\text{C'dT}$ Take the limits in given range with proper scale $(0\\text{C}$ or $\\text{K})$</p>",
+      "position": 0,
+      "qcConcept": "66a0dbc3c03b9dcaf1afe34b"
+    },
+    {
+      "title": "Molar Heat Capacity",
+      "conceptBody": "<h3><strong>Molar Heat Capacity (C)</strong></h3><p>The amount of heat required to increase the temp. of $1\\text{ }\\!\\!~\\!\\!\\text{ mol}$ of a substance of $1\\text{C}$ or $1\\text{ }\\!\\!~\\!\\!\\text{ K}$.</p><p>$\\text{C}=\\frac{\\text{ }\\!\\!\\Delta\\!\\!\\text{ Q}}{\\text{n }\\!\\!\\Delta\\!\\!\\text{ T}}\\text{ }\\!\\!~\\!\\!\\text{ }\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }\\!\\!\\Delta\\!\\!\\text{ Q}=\\text{nC }\\!\\!\\Delta\\!\\!\\text{ T}\\left( \\text{ }\\!\\!~\\!\\!\\text{ Avg}\\text{. }\\!\\!~\\!\\!\\text{ value }\\!\\!~\\!\\!\\text{ } \\right)$</p><p>Absolute value $\\text{ }\\!\\!\\Delta\\!\\!\\text{ Q}=\\int _{{{\\text{T}}_{1}}}^{{{\\text{T}}_{2}}}\\text{nCdT }\\!\\!~\\!\\!\\text{ }$ units : $\\text{J}/\\text{mol}/\\text{K}$</p>",
+      "position": 1,
+      "qcConcept": "66a0dbc3c03b9dcaf1afe34c"
+    },
+    {
+      "title": "Specific Heat Capacity",
+      "conceptBody": "<h3><strong>Specific Heat Capacity (S)</strong></h3><p>The amount of heat required to raise the temperature of unit mass of a substance by $1\\text{C}$ (or $1\\text{ }\\!\\!~\\!\\!\\text{ K}$ ).</p><p>\\(\\begin{array}{l}\\mathrm{S}=\\frac{\\Delta \\mathrm{Q}}{\\mathrm{m} \\Delta \\mathrm{T}} \\Rightarrow \\Delta \\mathrm{Q}=\\mathrm{ms} \\Delta \\mathrm{T}~(\\text {Avg.value}) \\\\ \\Delta \\mathrm{Q}=\\int_{\\mathrm{T}_1}^{\\mathrm{T}_2} \\operatorname{msdT}~(\\text {Absolute value) unit: } \\mathrm{J} / \\mathrm{kg} / \\mathrm{K}\\end{array}\\)</p>",
+      "position": 2,
+      "qcConcept": "66a0dbc3c03b9dcaf1afe34d"
+    },
+    {
+      "title": "Latent Heat of Fusion and Vapourization",
+      "conceptBody": "<h3><strong>Latent Heat of Fusion and Vapourization</strong></h3><p><strong>Latent Heat : </strong>The amount of heat required to change the state of unit mass of a substance at constant temperature is called latent heat.</p><p>$\\begin{matrix} \\text{L}=\\frac{\\text{ }\\!\\!\\Delta\\!\\!\\text{ Q}}{\\text{m}}\\text{ }\\!\\!~\\!\\!\\text{ }\\!\\!~\\!\\!\\text{ unit }\\!\\!~\\!\\!\\text{ }:\\left( \\text{J}/\\text{Kg} \\right) \\\\ \\therefore \\text{ }\\!\\!\\Delta\\!\\!\\text{ Q}=\\text{mL} \\\\ \\end{matrix}$</p><p><strong>(1) Latent Heat of Fusion : </strong>The amount of heat required to change the state of unit mass of substance from solid to liquid form at its melting point is called latent heat of fusion.</p><p><strong>(2) Latent Heat of Vaporization : </strong>The amount of heat required to change the state of a unit mass of substance from liquid to vapour form at its boiling point is called latent heat of vaporization.</p><p><strong>Principle of Calorimetry :&nbsp;</strong></p><p>Total heat lost by system $=$ Total heat gained by system [for an isolated system]</p>",
+      "position": 3,
+      "qcConcept": "66a0dbc4c03b9dcaf1afe34e"
+    },
+    {
+      "title": "Water Equivalent",
+      "conceptBody": "<h3><strong>Water Equivalent (W)</strong></h3><p>It is the mass of water to which if same amount of heat is given, cause the same temp. change as that of the body.</p><p>$\\mathrm{C}^{\\prime}=\\mathrm{m} \\quad \\mathrm{S}$</p><p>= (mass) (specific heat of water)</p><p>(Replace the body by same amount of water)</p>",
+      "position": 4,
+      "qcConcept": "66a0dbc4c03b9dcaf1afe34f"
+    },
+    {
+      "title": "Relation Between Heat Capacity, Molar Heat Capacity and Specific Heat Capacity",
+      "conceptBody": "<h3><strong>Relation between $\\mathbf{C},\\text{C'}$ and S</strong></h3><p>$\\text{C'}=\\text{mS}=\\text{nC}$</p><p>(i) Thermal capacity $=($mass) (specific heat capacity)</p><p>$=\\left( \\text{ moles } \\right)\\left( \\text{ molar }\\text{ heat }\\text{ capacity} \\right)$</p><p>(ii) $\\text{C}=\\text{MS}$</p><p>Molar heat capacity $=($molecular mass) (specific heat capacity)</p>",
+      "position": 5,
+      "qcConcept": "66a0dbc4c03b9dcaf1afe350"
+    },
+    {
+      "title": "Law of Mixtures",
+      "conceptBody": "<h3><strong>Relation between ${{\\mathbf{C}}_{\\mathbf{P}}},{{\\mathbf{C}}_{\\mathbf{V}}}$ and </strong>γ</h3><p>$\\gamma_{\\mathrm{g}}=3 \\alpha_{\\mathrm{g}}=27 \\quad 10^{-6} / \\mathrm{C}$</p><p>$\\mathrm{U}=\\mathrm{f}\\left(\\frac{1}{2} \\mathrm{KT}\\right) \\rightarrow$ for 1 molecule</p><p>for $\\mathrm{n}$ moles of a gas $\\mathrm{U}=\\left(\\mathrm{n} \\mathrm{N}_{\\mathrm{A}}\\right) \\mathrm{f}\\left(\\frac{1}{2} \\mathrm{KT}\\right)=\\mathrm{n}\\left(\\frac{\\mathrm{fR}}{2} \\mathrm{~T}\\right)$</p><p>$\\mathrm{C}_{\\mathrm{V}}=\\frac{\\mathrm{dU}}{\\mathrm{ndT}}=\\frac{\\mathrm{nfR} / 2}{\\mathrm{ndT}} \\mathrm{dT}=\\left(\\frac{\\mathrm{fR}}{2}\\right)$</p><p>$\\mathrm{C}_{\\mathrm{V}}=\\left(\\frac{\\mathrm{fR}}{2}\\right)$</p><p>$\\mathrm{C}_{\\mathrm{P}}=\\left(\\frac{\\mathrm{fR}}{2}+\\mathrm{R}\\right)=\\left(\\frac{\\mathrm{f}}{2}+1\\right) \\mathrm{R}$</p><p>$\\gamma=\\frac{\\mathrm{C}_{\\mathrm{P}}}{\\mathrm{C}_{\\mathrm{V}}}=\\frac{(\\mathrm{f}+2) \\mathrm{R}(2)}{2 \\mathrm{fR}}=\\left(1+\\frac{2}{\\mathrm{f}}\\right)$</p><p><strong>for monoatomic gas&nbsp;</strong></p><p>${{\\text{C}}_{\\text{V}}}=\\frac{3\\text{R}}{2},{{\\text{C}}_{\\text{P}}}=\\frac{5\\text{R}}{2},\\gamma =\\left( \\frac{5}{3} \\right)$</p><p><strong>for diatomic gas (also $\\text{C}{{\\text{O}}_{2}}$ ) :&nbsp;</strong></p><p>${{\\text{C}}_{\\text{V}}}=\\frac{5\\text{R}}{2},{{\\text{C}}_{\\text{P}}}=\\frac{7\\text{R}}{2},\\left( \\gamma =7/5 \\right)$</p><p><strong>${{\\mathbf{C}}_{\\mathbf{P}}},{{\\mathbf{C}}_{\\mathbf{V}}}$ and γ for a mixture of gases&nbsp;</strong></p><p>Let ${{n}_{1}}$ mol of monoatomic, ${{n}_{2}}$ mol of diatomic, ${{n}_{3}}$ mol of gas mixture be present whose temperature is increased by $\\text{dT}$ at constant volume.</p><p>$\\begin{array}{*{35}{r}} {} &amp; \\left( {{\\text{n}}_{1}}{{\\text{C}}_{{{\\text{V}}_{1}}}}\\text{dT}+{{\\text{n}}_{2}}{{\\text{C}}_{{{\\text{V}}_{2}}}}\\text{dT}+{{\\text{n}}_{3}}{{\\text{C}}_{{{\\text{V}}_{3}}}}\\text{dT} \\right)=\\left( {{\\text{n}}_{1}}+{{\\text{n}}_{2}}+{{\\text{n}}_{3}} \\right){{\\text{C}}_{\\text{Vmix}}} \\\\ {} &amp; ~\\therefore {{\\left( {{\\text{C}}_{\\text{V}}} \\right)}_{\\text{mix }\\!\\!~\\!\\!\\text{ }}}=\\left( \\frac{{{\\text{n}}_{1}}{{\\text{C}}_{{{\\text{V}}_{1}}}}+\\text{n}2{{\\text{C}}_{{{\\text{V}}_{2}}}}+{{\\text{n}}_{3}}{{\\text{C}}_{{{\\text{V}}_{3}}}}}{{{\\text{n}}_{1}}+{{\\text{n}}_{2}}+{{\\text{n}}_{3}}} \\right) \\\\ \\end{array}$</p><p>Similarly, if you increase temperature by dT at constant pressure you get</p><p>${{\\left( {{\\text{C}}_{\\text{P}}} \\right)}_{\\text{mix }\\!\\!~\\!\\!\\text{ }}}=\\left( \\frac{{{\\text{n}}_{1}}{{\\text{C}}_{{{\\text{P}}_{1}}}}+{{\\text{n}}_{2}}{{\\text{C}}_{{{\\text{P}}_{2}}}}+{{\\text{n}}_{3}}{{\\text{C}}_{{{\\text{P}}_{3}}}}}{{{\\text{n}}_{1}}+{{\\text{n}}_{2}}+{{\\text{n}}_{3}}} \\right)$</p><p>for $\\left( {{\\gamma }_{\\text{mixture }\\!\\!~\\!\\!\\text{ }}} \\right)$,</p><p>$\\left( {{\\gamma }_{\\text{mixture }\\!\\!~\\!\\!\\text{ }}} \\right)=\\frac{{{C}_{\\text{P}}}\\left( \\text{mix} \\right)}{{{\\text{C}}_{\\text{V}}}\\left( \\text{mix} \\right)}$</p><p>or, $\\text{ }\\!\\!~\\!\\!\\text{ }\\frac{{{\\text{n}}_{1}}\\text{R}}{\\left( {{\\gamma }_{{{1}^{-1}}}} \\right)}\\text{dT}+\\frac{{{\\text{n}}_{2}}\\left( \\text{R} \\right)}{\\left( {{\\gamma }_{{{2}^{-1}}}} \\right)}\\text{dT}+\\frac{{{\\text{n}}_{3}}\\text{RdT}}{\\left( {{\\gamma }_{{{3}^{-1}}}} \\right)}=\\left( {{\\text{n}}_{1}}+{{\\text{n}}_{2}}+{{\\text{n}}_{3}} \\right)\\frac{\\text{R}d\\text{ }\\!\\!~\\!\\!\\text{ T}}{\\left( {{\\gamma }_{\\text{mi}{{\\text{x}}^{-1}}}} \\right)}$</p><p>$\\therefore \\text{ }\\!\\!~\\!\\!\\text{ }\\frac{{{\\text{n}}_{1}}+{{\\text{n}}_{2}}+{{\\text{n}}_{3}}}{\\left( {{\\gamma }_{\\text{mix}{{\\text{ }\\!\\!~\\!\\!\\text{ }}^{-1}}}} \\right)}=\\frac{{{\\text{n}}_{1}}}{\\left( {{\\gamma }_{{{1}^{-1}}}} \\right)}+\\frac{{{\\text{n}}_{2}}}{\\left( {{\\gamma }_{{{2}^{-1}}}} \\right)}+\\frac{{{\\text{n}}_{3}}}{\\left( {{\\gamma }_{{{3}^{-1}}}} \\right)}$</p>",
+      "position": 6,
+      "qcConcept": "66a0dbc4c03b9dcaf1afe351"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "665850fc1ebdecde60539bd4",
+      "title": "When vapour condenses into liquid",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fc1ebdecde60539bd5",
+      "title": "How much heat energy is gained when $5 \\mathrm{~kg}$ of water at $20^{\\circ} \\mathrm{C}$ is brought to its boiling point\n(Specific heat of water $=4.2 \\mathrm{~kJ}^{-\\mathrm{kg}^{-1} \\mathrm{c}^{-1}}$ )",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fc1ebdecde60539bd6",
+      "title": "Two liquids $A$ and $B$ are at $32^{\\circ} \\mathrm{C}$ and $24^{\\circ} \\mathrm{C}$. When mixed in equal masses the temperature of the mixture is found to be $28^{\\circ} \\mathrm{C}$. Their specific heats are in the ratio of",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fc1ebdecde60539bd7",
+      "title": "A beaker contains $200 \\mathrm{gm}$ of water. The heat capacity of the beaker is equal to that of $20 \\mathrm{gm}$ of water. The initial temperature of water in the beaker is $20^{\\circ} \\mathrm{C}$. If $440 \\mathrm{gm}$ of hot water at $92^{\\circ} \\mathrm{C}$ is poured in it, the final temperature (neglecting radiation loss) will be nearest to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fc1ebdecde60539bd8",
+      "title": "One kilogram of ice at $0^{\\circ} \\mathrm{C}$ is mixed with one kilogram of water at $80^{\\circ} \\mathrm{C}$. The final temperature of the mixture is\n(Take : specific heat of water $=4200 \\mathrm{~J}^{-1} \\mathrm{~K}^{-1}$, latent heat of ice $=336 \\mathrm{~kJ}^{-1} \\mathrm{~kg}^{-1}$ )",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fc1ebdecde60539bd9",
+      "title": "Calculate the amount of heat (in calories) required to convert $5 \\mathrm{gm}$ of ice at $0^{\\circ} \\mathrm{C}$ to steam at $100^{\\circ} \\mathrm{C}$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fc1ebdecde60539bda",
+      "title": "Three liquids with masses $m_1, m_2, m_3$ are thoroughly mixed. If their specific heats are $c_1, c_2, c_3$ and their temperatures $T_1, T_2, T_3$ respectively, then the temperature of the mixture is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fc1ebdecde60539bdb",
+      "title": "A vessel contains $110 \\mathrm{~g}$ of water. The heat capacity of the vessel is equal to $10 \\mathrm{~g}$ of water. The initial temperature of water in vessel is $10^{\\circ} \\mathrm{C}$. If $220 \\mathrm{~g}$ of hot water at $70^{\\circ} \\mathrm{C}$ is poured in the vessel, the final temperature neglecting radiation loss, will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fc1ebdecde60539bdc",
+      "title": "The temperature of equal masses of three different liquids $A, B$ and $C$ are $12^{\\circ} \\mathrm{C}, 19^{\\circ} \\mathrm{C}$ and $28^{\\circ} \\mathrm{C}$ respectively. The temperature when $A$ and $B$ are mixed is $16^{\\circ} \\mathrm{C}$ and when $B$ and $C$ are mixed is $23^{\\circ} \\mathrm{C}$. The temperature when $A$ and $C$ are mixed is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

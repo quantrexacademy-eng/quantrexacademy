@@ -1,0 +1,84 @@
+================================================================================
+  QUANTREX PREMIUM - COMPLETE SETUP DETAILS
+================================================================================
+
+LOGIN (All Services)
+--------------------
+Email:    quantrexacademy@gmail.com
+Password: function13@
+
+One-Click Login Setup:  Double-click LOGIN_ALL.bat on Desktop
+
+================================================================================
+1. WEBSITE HOSTING - VERCEL
+================================================================================
+Live URL:     https://quantrexacademy-lemon.vercel.app
+Dashboard:    https://vercel.com/ajay-kumar-saroj-s-projects/quantrexacademy
+Vercel User:  quantrexacademy-4922
+Login:        https://vercel.com/login  (use quantrexacademy@gmail.com)
+Deploy:       Double-click deploy.bat  OR  run: vercel --prod --yes
+Project Path: C:\Users\Admin\Desktop\quantrexacademy
+USB Copy:     E:\quantrexacademy
+
+================================================================================
+2. CODE PUSH - GITHUB
+================================================================================
+Website:      https://github.com/
+Repo URL:     https://github.com/quantrexacademy-eng/quantrexacademy
+Account:      quantrexacademy-eng (quantrexacademy@gmail.com)
+Setup:        Double-click github-setup.bat (login + create repo + push)
+Manual Push:  git add . && git commit -m "update" && git push origin main
+Git Config:
+  user.email = quantrexacademy@gmail.com
+  user.name  = Quantrex Academy
+
+================================================================================
+3. DATABASE - FIREBASE (quantrex-premimum)
+================================================================================
+Console:      https://console.firebase.google.com/project/quantrex-premimum
+Project ID:   quantrex-premimum
+Auth Domain:  quantrex-premimum.firebaseapp.com
+
+Firebase Config (already in firebase-config.js):
+  apiKey:            AIzaSyBi5ysUaKEDYtLCOpRqHGO3yA3evG4u330
+  authDomain:        quantrex-premimum.firebaseapp.com
+  projectId:         quantrex-premimum
+  storageBucket:     quantrex-premimum.firebasestorage.app
+  messagingSenderId: 468712708195
+  appId:             1:468712708195:web:235b20e1d42bf4e9254056
+  measurementId:     G-QV521BZ9E3
+
+Database:     Firestore (Cloud Firestore)
+Collections:
+  users/{uid}           - user profile
+  users/{uid}/data/progress - bookmarks, solved questions, notes
+  content/questions     - question bank (optional seed)
+  app/meta              - app metadata
+
+Firebase Status: LINKED (quantrex-premimum)
+  Console: https://console.firebase.google.com/project/quantrex-premimum
+
+Enable in Firebase Console (if not done):
+  1. Authentication > Sign-in method > Enable Email/Password + Google
+  2. Firestore Database > Create database > paste rules from firestore.rules
+  3. Login at: https://quantrexacademy-lemon.vercel.app/login
+
+================================================================================
+BEST STACK COMBINATION
+================================================================================
+  GitHub  --> Code version control + push updates
+  Vercel  --> Website hosting (fast, free SSL, auto-deploy)
+  Firebase --> Login + user progress database (Firestore)
+
+================================================================================
+QUICK DEPLOY (ONE CLICK)
+================================================================================
+Desktop:  Upload_To_Website.bat
+Project:  deploy.bat
+
+Pages:
+  Landing:  index.html  ->  https://quantrexacademy-lemon.vercel.app
+  Login:    login.html  ->  https://quantrexacademy-lemon.vercel.app/login
+  App:      app.html    ->  https://quantrexacademy-lemon.vercel.app/app
+
+================================================================================

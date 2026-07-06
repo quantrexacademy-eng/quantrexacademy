@@ -1,0 +1,78 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b89d4b564dfab4f94d0",
+  "chapterId": "66d58542a75f05ee8564f5be",
+  "subject": "Chemistry",
+  "chapter": "Chemical Kinetics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d586a7a75f05ee8565033f",
+      "title": "Rate of reaction",
+      "count": 3,
+      "questionIds": [
+        "66d58626a75f05ee8564fe0c",
+        "66d585fea75f05ee8564fc95",
+        "66d58592a75f05ee8564f8af"
+      ]
+    },
+    {
+      "id": "66d586a7a75f05ee8565033d",
+      "title": "Rate law and rate constant",
+      "count": 6,
+      "questionIds": [
+        "66d58639a75f05ee8564fec0",
+        "66d58626a75f05ee8564fe0f",
+        "66d58615a75f05ee8564fd6e",
+        "66d58615a75f05ee8564fd6c",
+        "66d585dca75f05ee8564fb61",
+        "66d58570a75f05ee8564f778"
+      ]
+    },
+    {
+      "id": "66d586a7a75f05ee8565033b",
+      "title": "Integrated rate laws",
+      "count": 10,
+      "questionIds": [
+        "66d58663a75f05ee85650045",
+        "66d5865fa75f05ee85650019",
+        "66d5863da75f05ee8564fedd",
+        "66d58629a75f05ee8564fe28",
+        "66d585dba75f05ee8564fb53",
+        "66d585caa75f05ee8564fab8",
+        "66d585caa75f05ee8564fab7",
+        "66d5857fa75f05ee8564f808",
+        "66d5855ba75f05ee8564f6b4",
+        "66d58542a75f05ee8564f5bc"
+      ]
+    },
+    {
+      "id": "66d586a7a75f05ee8565033e",
+      "title": "Methods to determine order of reaction",
+      "count": 3,
+      "questionIds": [
+        "66d585b9a75f05ee8564fa16",
+        "66d585a8a75f05ee8564f979",
+        "66d58580a75f05ee8564f811"
+      ]
+    },
+    {
+      "id": "66d586a7a75f05ee8565033c",
+      "title": "Arrhenius theory",
+      "count": 2,
+      "questionIds": [
+        "66d5863aa75f05ee8564fec3",
+        "66d5855ba75f05ee8564f6b3"
+      ]
+    },
+    {
+      "id": "66d586a7a75f05ee85650340",
+      "title": "Parallel and Sequencial rate laws",
+      "count": 1,
+      "questionIds": [
+        "66d5864ea75f05ee8564ff7a"
+      ]
+    }
+  ]
+}

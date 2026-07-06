@@ -1,0 +1,46 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b34d4b564dfab4f94cc",
+  "chapterId": "66d58554a75f05ee8564f671",
+  "subject": "Physics",
+  "chapter": "Mathematics in Physics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d586bca75f05ee85650429",
+      "title": "Fundamentals of Vectors",
+      "count": 1,
+      "questionIds": [
+        "66d585d7a75f05ee8564fb2e"
+      ]
+    },
+    {
+      "id": "66d586bca75f05ee8565042a",
+      "title": "Addition and Subtraction of Vectors",
+      "count": 2,
+      "questionIds": [
+        "66d5861ea75f05ee8564fdbf",
+        "66d5860aa75f05ee8564fd03"
+      ]
+    },
+    {
+      "id": "66d586bca75f05ee85650428",
+      "title": "Multiplication of Vectors",
+      "count": 2,
+      "questionIds": [
+        "66d5857da75f05ee8564f7f0",
+        "66d5857ba75f05ee8564f7e0"
+      ]
+    },
+    {
+      "id": "66d586bca75f05ee85650427",
+      "title": "Errors of Measurement",
+      "count": 2,
+      "questionIds": [
+        "66d58649a75f05ee8564ff50",
+        "66d58554a75f05ee8564f66f"
+      ]
+    }
+  ]
+}

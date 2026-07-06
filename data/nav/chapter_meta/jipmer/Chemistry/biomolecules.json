@@ -1,0 +1,78 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b89d4b564dfab4f94d0",
+  "chapterId": "66d5856fa75f05ee8564f770",
+  "subject": "Chemistry",
+  "chapter": "Biomolecules",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d586c4a75f05ee8565047f",
+      "title": "Carbohydrates",
+      "count": 4,
+      "questionIds": [
+        "66d58664a75f05ee85650048",
+        "66d58629a75f05ee8564fe25",
+        "66d58612a75f05ee8564fd4f",
+        "66d58594a75f05ee8564f8c3"
+      ]
+    },
+    {
+      "id": "66d586c4a75f05ee8565047d",
+      "title": "Preparation and Reactions of Glucose",
+      "count": 3,
+      "questionIds": [
+        "66d58660a75f05ee85650029",
+        "66d58593a75f05ee8564f8bc",
+        "66d5856fa75f05ee8564f771"
+      ]
+    },
+    {
+      "id": "66d586c4a75f05ee85650480",
+      "title": "Disaccharides and Polysaccharides",
+      "count": 4,
+      "questionIds": [
+        "66d5864ba75f05ee8564ff66",
+        "66d5863ca75f05ee8564fed9",
+        "66d585cca75f05ee8564fac6",
+        "66d585b8a75f05ee8564fa0a"
+      ]
+    },
+    {
+      "id": "66d586c4a75f05ee8565047c",
+      "title": "Properties and Preparation of Amino Acids",
+      "count": 2,
+      "questionIds": [
+        "66d58612a75f05ee8564fd4d",
+        "66d5856fa75f05ee8564f76e"
+      ]
+    },
+    {
+      "id": "66d586c4a75f05ee8565047e",
+      "title": "Proteins",
+      "count": 3,
+      "questionIds": [
+        "66d585baa75f05ee8564fa21",
+        "66d585b9a75f05ee8564fa13",
+        "66d58581a75f05ee8564f814"
+      ]
+    },
+    {
+      "id": "66d586c5a75f05ee85650482",
+      "title": "Nucleic Acids",
+      "count": 1,
+      "questionIds": [
+        "66d585ffa75f05ee8564fc9f"
+      ]
+    },
+    {
+      "id": "66d586c5a75f05ee85650481",
+      "title": "Vitamins",
+      "count": 1,
+      "questionIds": [
+        "66d585efa75f05ee8564fc08"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "subjectId": "65dcf3d937445f4fe46f420e",
+  "chapterId": "66a0dbc8c03b9dcaf1afe369",
+  "topicId": "66a0dbc8c03b9dcaf1afe36b",
+  "title": "Thermodynamic Systems",
+  "concepts": [
+    {
+      "title": "Some Basic Terms of Thermodynamics",
+      "conceptBody": "<h3><strong>Some Basic Terms of Thermodynamics</strong></h3><p><strong>(a) Thermodynamics : </strong>The branch of science which deals with transformation of heat energy into other forms of energy or vice-versa.</p><p><strong>(b) Thermal equilibrium : </strong>If two systems are at same temperature, they are said to be in thermal equilibrium.</p><p><strong>(c) Thermodynamical equilibrium : </strong>A system is said to be in thermodynamical equilibrium when it is in a state of thermal, mechanical and chemical equilibrium.</p><p><strong>(d) Thermodynamical variables : </strong>These are macroscopic physical quantities like pressure (P), volume (V) and temperature (T), etc., which are used to describe the state of the system. The relation between these variables is called equation of state.</p><p><strong>(e) Thermodynamical process : </strong>If the state of a system changes in such a way that any of $\\text{P},\\text{V},\\text{T}$, etc. changes, the process is called thermodynamical process.</p><p><strong>(f) Cyclic process : </strong>If a system after undergoing through a series of changes comes back to its initial state, the process is called cyclic.</p><p><strong>(g) Reversible process : </strong>A reversible process is one which can be reversed in such a way that all changes taking place in the direct process are exactly replaced in the inverse order and opposite sense and no changes are left behind.</p><p>Reversibility in physics is an ideal concept that cannot be realised in practice.</p>",
+      "position": 0,
+      "qcConcept": "66a0dbc8c03b9dcaf1afe36c"
+    },
+    {
+      "title": "Zeroth law of thermodynamics",
+      "conceptBody": "<h3><strong>Zeroth law of thermodynamics</strong></h3><p>According to it, \"If systems A and B are each in thermal equilibrium with a third system C, then $\\text{A}$ and $\\text{B}$ are in thermal equilibrium with each other\".</p><p>Regarding zeroth law it is worth noting that :</p><p>It defines temperature as the property of the system which equals that of another system when the two systems are in thermal equilibrium, e.g., if two gases in different containers at different pressures, temperature and volumes are put in thermal contact for sufficient time to reach thermal equilibrium, their pressures will in general not be equal, nor will their volumes; their temperatures, however, will always be equal in thermal equilibrium.</p>",
+      "position": 1,
+      "qcConcept": "66a0dbc8c03b9dcaf1afe36d"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "665850fd1ebdecde60539c1f",
+      "title": "Which of the following statements is correct for any thermodynamic system",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fd1ebdecde60539c20",
+      "title": "A system goes from $A$ to $B$ via two processes I and II as shown in figure. If $\\Delta U_1$ and $\\Delta U_2$ are the changes in internal energies in the processes I and II respectively, then\n<img src=\"https://cdn-question-pool.getmarks.app/modules/qc/TVCma4uM0U4hX83__Nded5M6Ur31O03meag9jK_adeU.original.fullsize.png\"/><br/>",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fd1ebdecde60539c21",
+      "title": "Heat is not being exchanged in a body. If its internal energy is increased, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850fd1ebdecde60539c22",
+      "title": "A thermodynamic system is taken through the cycle $P Q R S P$ process. The net work done by the system is\n<img src=\"https://cdn-question-pool.getmarks.app/modules/qc/OiyLEvde9t8rjnX-dSmXYBxH2eO4NgRuwz6eGIsuV00.original.fullsize_2.png\"/><br/>",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

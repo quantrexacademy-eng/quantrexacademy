@@ -1,0 +1,52 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd4ec03b9dcaf1afea4c",
+  "topicId": "66a0dd52c03b9dcaf1afea5d",
+  "title": "Parametric differentiation",
+  "concepts": [
+    {
+      "title": "Parametric Form",
+      "conceptBody": "<h3><strong>Differentiation of a function defined by a parameter</strong></h3><p><strong>Parametric Equation&nbsp;</strong></p><p>When both $\\text{x}$ and $\\text{y}$ are functions of a third variable $\\text{t}$, then given equation are said to be parametric equation and $\\text{t}$ is called the parameter.</p><p>Let $\\text{x}=\\text{f}\\left( \\text{t} \\right)$</p><p>and $\\text{ }\\!\\!~\\!\\!\\text{ y}=\\phi \\left( \\text{t} \\right)$ (i)</p><p>be function of variable $t$ and inverse function of $x=f\\left( t \\right)$ be $t=\\psi \\left( x \\right)$, then</p><p>$\\text{y}=\\phi \\left( \\text{t} \\right)=\\phi \\left[ \\psi \\left( \\text{x} \\right) \\right]$ (ii)</p><p>will be a function of $\\text{x}$.</p><p>Equation (i) is the parametric form of equation (ii) and $t$ is called the parameter.</p><p><strong>To find $\\frac{dy}{dx}$ when parametric equations are given:&nbsp;</strong></p><p>Let $\\text{x}=\\text{f}\\left( \\text{t} \\right)$ and $\\text{y}=\\phi \\left( \\text{t} \\right)$, be differentiable functions of parameter $\\text{t}$ and $\\text{t}=\\psi \\left( \\text{x} \\right)$ be the inverse function of function $\\text{x}=\\text{f}\\left( \\text{t} \\right)$, then $\\text{y}=\\phi \\left[ \\psi \\left( \\text{x} \\right) \\right]$, is a function of $\\text{x}$ and $\\text{y}$ is a function of $\\text{t}$ and $\\text{t}$ is a function of $\\text{x}$.</p><p>Now $\\frac{dy}{dx}=\\frac{dy}{dt}\\cdot \\frac{dt}{dx}$ (i)</p><p>But $\\frac{\\text{dt}}{\\text{dx}}=\\frac{1}{\\text{dx}/\\text{dt}}$ (ii)</p><p>$\\therefore $ from (i), $\\frac{dy}{dx}=\\frac{dy}{dt}\\cdot \\frac{1}{dx/dt}=\\frac{dy/dt}{dx/dt}$</p><p>Hence $\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}$</p><p><strong>Working Rule:&nbsp;</strong></p><p>(i) If $x$ and $y$ are functions of parameter $t$, then find $\\frac{dx}{dt}$ and $\\frac{dy}{dt}$ separately.</p><p>(ii) Then find $\\frac{\\text{dy}}{\\text{dx}}$ by the following formula</p><p>$\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}$</p><p>&nbsp;</p><p><strong>Q) If $x=a\\left( \\theta +\\text{sin}\\theta \\right),y=a\\left( 1-\\text{cos}\\theta \\right)$, find $\\frac{dy}{dx}$.&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>$\\text{x}=\\left( \\theta +\\text{sin}\\theta \\right)\\text{ }\\!\\!~\\!\\!\\text{ }$ $\\therefore \\frac{\\mathrm{dx}}{\\mathrm{d} \\theta}=\\mathrm{a}(1+\\cos \\theta)$ (i)</p><p>and $\\text{y}=\\text{a}\\left( 1-\\text{cso}\\theta \\right)\\text{ }\\!\\!~\\!\\!\\text{ }$ $\\therefore \\frac{\\mathrm{dy}}{\\mathrm{d} \\theta}=\\mathrm{a}(0+\\sin \\theta)=\\mathrm{a} \\sin \\theta$ (ii)</p><p>Now, $\\frac{dy}{dx}=\\frac{dy/d\\theta }{dx/d\\theta }=\\frac{a\\text{sin}\\theta }{a\\left( 1+\\text{cos}\\theta \\right)}=\\frac{2\\text{sin}\\frac{\\theta }{2}\\text{cos}\\frac{\\theta }{2}}{2\\text{co}{{\\text{s}}^{2}}\\frac{\\theta }{2}}$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd52c03b9dcaf1afea5e"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f482d384bfb4a53806e",
+      "title": "If $x=a(t-\\sin t)$ and $y=a(1-\\cos t)$, then $\\frac{d y}{d x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f482d384bfb4a53806f",
+      "title": "$x=\\frac{1-t^2}{1+t^2}$ and $y=\\frac{2 a t}{1+t^2}$, then $\\frac{d y}{d x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f482d384bfb4a538070",
+      "title": "$\\tan y=\\frac{2 t}{1-t^2}$ and $\\sin x=\\frac{2 t}{1+t^2}$, then $\\frac{d y}{d x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f482d384bfb4a538071",
+      "title": "$x=\\frac{1-t^2}{1+t^2}$ and $y=\\frac{2 t}{1+t^2}$, then $\\frac{d y}{d x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f482d384bfb4a538072",
+      "title": "If $x=a t^2, y=2 a t$, then $\\frac{d^2 y}{d x^2}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f482d384bfb4a538073",
+      "title": "$y=\\frac{1}{4} u^4, u=\\frac{2}{3} x^3+5$, then $\\frac{d y}{d x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

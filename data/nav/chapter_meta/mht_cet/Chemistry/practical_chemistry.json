@@ -1,0 +1,29 @@
+{
+  "examSlug": "mht_cet",
+  "examId": "61c05599e8ce0dc8a5c62d32",
+  "subjectId": "61c055f6e8ce0dc8a5c62d34",
+  "chapterId": "61c0899c23b783a64f4650ae",
+  "subject": "Chemistry",
+  "chapter": "Practical Chemistry",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "65a263480279619d9d8a3dcd",
+      "title": "Radicals",
+      "count": 1,
+      "questionIds": [
+        "65a25eb40279619d9d8a1699"
+      ]
+    },
+    {
+      "id": "65a263480279619d9d8a3dcc",
+      "title": "Preliminary Tests",
+      "count": 3,
+      "questionIds": [
+        "65a262130279619d9d8a319a",
+        "65a261fd0279619d9d8a30e7",
+        "65a25e8e0279619d9d8a1562"
+      ]
+    }
+  ]
+}

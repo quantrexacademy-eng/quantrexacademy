@@ -1,0 +1,76 @@
+{
+  "subjectId": "65f032625469774910ab0337",
+  "chapterId": "66a0dcb1c03b9dcaf1afe73c",
+  "topicId": "66a0dcb2c03b9dcaf1afe743",
+  "title": "Hydrides",
+  "concepts": [
+    {
+      "title": "Ionic hydrides",
+      "conceptBody": "<h3><strong>Hydrides</strong></h3><p>Binary compounds of the elements (metals or non-metals) with the hydrogen are called hydrides. The type of hydride which an element forms depends on its electro negativity and hence the type of bond formed. While there is no sharp divison between ionic, covalent and metallic bonding, there are classified as metallic bonding, there are classified as:</p><p>(a) Ionic or salt like hydride</p><p>(b) Covalent or molecular hydride</p><p>(c) metallic or interstitial hydride</p><p><strong>Ionic Hydrides</strong></p><p>When hydrogen directly combines with any alkali metal or with alkaline earth metals $\\text{Ca},\\text{Sr}$ or $\\text{Ba}$</p><p>$2\\text{Li}(\\text{s})+{{\\text{H}}_{2}}(~\\text{g})\\to 2\\text{LiH}(\\text{s})$</p><p>$\\text{Ca}(\\text{s})+{{\\text{H}}_{2}}(~\\text{g})\\to \\text{Ca}{{\\text{H}}_{2}}(~\\text{s})$</p>",
+      "position": 0,
+      "qcConcept": "66a0dcb2c03b9dcaf1afe744"
+    },
+    {
+      "title": "Covalent hydrides",
+      "conceptBody": "<h3>Covalent Hydrides</h3><p>These hydrides are formed by all the true non-metals (except zero group elements) and the elements like$\\text{Al},\\text{Ga},\\text{Sn},\\text{Pb},\\text{Sb},\\text{Bi}$, etc., which are normally metallic in nature i.e. this class includes the hydrides of $\\text{p}$-block elements.</p><p>Molecular hydrides are further classified according to their relative numbers of electrons and bonds in their Lewis structures</p><p><strong>(i) Electron deficient molecular hydrides:&nbsp;</strong></p><p>Diborane $\\left( {{\\text{B}}_{2}}{{\\text{H}}_{6}} \\right)$ is an example.</p><p><strong>(ii) Electron-precise molecular hydrides:&nbsp;</strong></p><p>These are formed by elements of group 14. The molecules are tetrahedral. Methane $\\left( \\text{C}{{\\text{H}}_{4}} \\right)$ is an example.</p><p><strong>(iii) Electron-rich molecular hydrides:&nbsp;</strong></p><p>$\\text{N}{{\\text{H}}_{3}},{{\\text{H}}_{2}}\\text{O},\\text{HF}$ etc. are examples.</p>",
+      "position": 1,
+      "qcConcept": "66a0dcb2c03b9dcaf1afe745"
+    },
+    {
+      "title": "Metallic hydrides",
+      "conceptBody": "<h3><strong>Metallic Hydrides</strong></h3><p>These hydrides are often non-stoichiometric and their composition vary with temperature and pressure. Formula of some of the hydrides of this class are:</p><p>$\\text{Ti}{{\\text{H}}_{1.73}},\\text{Ce}{{\\text{H}}_{2.7}},\\text{La}{{\\text{H}}_{2.8}}$</p>",
+      "position": 2,
+      "qcConcept": "66a0dcb3c03b9dcaf1afe746"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66584e511814fc7e94209c37",
+      "title": "When electric current is passed through an ionic hydride in the molten state",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e511814fc7e94209c38",
+      "title": "Ionic hydrides are usually",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e511814fc7e94209c39",
+      "title": "Electrolysis of fused sodium hydride liberate hydrogen at the",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e511814fc7e94209c3a",
+      "title": "Group 2 hydrides with significant covalent character is/are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e511814fc7e94209c3b",
+      "title": "Limiting compositions of $f$-block hydrides are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e511814fc7e94209c3c",
+      "title": "The hydride ion $\\mathrm{H}^{-}$is a stronger base than its hydroxide ion $\\mathrm{OH}^{-}$ Which of the following reactions will occur if sodium hydride $(\\mathrm{NaH})$ is dissolved in water",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e511814fc7e94209c3d",
+      "title": "Saline hydrides react explosively with water, such fires can be extinguished by",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e511814fc7e94209c3e",
+      "title": "Metals of groups 7,8 and 9 do not form metallic hydrides. This is termed as",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd75c03b9dcaf1afeb12",
+  "topicId": "66a0dd7dc03b9dcaf1afeb3c",
+  "title": "Miscellaneous Forms",
+  "concepts": [
+    {
+      "title": "Integrals of some special forms",
+      "conceptBody": "<h3><strong>Integrals of some special forms</strong></h3><p>When integrand consists of even powers of $\\text{x}$ only</p><p><strong>Q) Integrate $\\frac{\\left( {{x}^{2}}+1 \\right)\\left( {{x}^{2}}+2 \\right)}{\\left( {{x}^{2}}+3 \\right)\\left( {{x}^{2}}+4 \\right)}$&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>For these kind of question, we can put ${{\\text{x}}^{2}}=\\text{t}$ for making partial fractions $\\And $ then put the value back for finding integrand.</p><p>$\\frac{\\left( {{x}^{2}}+1 \\right)\\left( {{x}^{2}}+2 \\right)}{\\left( {{x}^{2}}+3 \\right)\\left( {{x}^{2}}+4 \\right)}\\overset{{{x}^{2}}=t}{\\mathop{\\to }}\\,\\frac{\\left( t+1 \\right)\\left( t+2 \\right)}{\\left( t+3 \\right)\\left( t+4 \\right)}$</p><p>since the term is not in proper rational form, we will first convert it into that.</p><p>$1+\\frac{\\left( t+1 \\right)\\left( t+2 \\right)}{\\left( t+3 \\right)\\left( t+4 \\right)}-1$</p><p>$~=1+\\frac{\\left( t+1 \\right)\\left( t+2 \\right)-\\left( t+3 \\right)\\left( t+4 \\right)}{\\left( t+3 \\right)\\left( t+4 \\right)}$</p><p>now degree of denominator is greater than numerator making it a proper fraction (as ${{\\text{t}}^{2}}$ term will cancel out).</p><p>$=1+\\frac{\\left( -4t-10 \\right)}{\\left( t+3 \\right)\\left( t+4 \\right)}\\to \\text{ }\\!\\!~\\!\\!\\text{ now }\\!\\!~\\!\\!\\text{ using }\\!\\!~\\!\\!\\text{ partial }\\!\\!~\\!\\!\\text{ fraction }\\!\\!~\\!\\!\\text{ for }\\!\\!~\\!\\!\\text{ this }\\!\\!~\\!\\!\\text{ part}\\text{. }\\!\\!~\\!\\!\\text{ }$</p><p>Let, $\\text{ }\\!\\!~\\!\\!\\text{ }{{I}_{1}}=\\frac{4t+10}{\\left( t+3 \\right)\\left( t+4 \\right)}=2\\frac{2t+5}{\\left( t+3 \\right)\\left( t+4 \\right)}dt$</p><p>$\\frac{2t+5}{\\left( t+3 \\right)\\left( t+4 \\right)}=\\frac{A}{t+3}+\\frac{B}{t+4}$</p><p>$\\text{A}={{\\left. \\frac{2\\text{t}+5}{\\text{t}+4} \\right|}_{\\text{t}=-3}}=-1$</p><p>$\\text{B}={{\\left. \\frac{2\\text{t}+5}{\\text{t}+3} \\right|}_{\\text{t}=-4}}=3$</p><p>$\\therefore \\text{ }\\!\\!~\\!\\!\\text{ }$ Net function becomes</p><p>$1+\\frac{2}{t+3}-\\frac{6}{t+3}$</p><p>putting back the value of $t$</p><p>$=1+\\frac{2}{{{x}^{2}}+3}-\\frac{6}{{{x}^{2}}+4}$</p><p>integrating it</p><p>I $~=\\int ~dx+2\\int ~\\frac{dt}{{{x}^{2}}+3}-6\\int ~\\frac{dt}{{{x}^{2}}+4}$</p><p>$~=x+\\frac{2}{\\sqrt{3}}\\text{ta}{{\\text{n}}^{-1}}\\frac{x}{\\sqrt{3}}-\\frac{6}{2}\\text{ta}{{\\text{n}}^{-1}}\\frac{x}{2}+C$</p><p><strong>Some Special integrals&nbsp;</strong></p><p><strong>Set-I $1.\\int \\frac{dx}{{{x}^{2}}-{{a}^{2}}}=\\frac{1}{2a}\\text{log}\\left| \\frac{x-a}{x+a} \\right|+c\\text{ }\\!\\!~\\!\\!\\text{ }$ 2. $\\int \\frac{dx}{{{a}^{2}}-{{x}^{2}}}=\\frac{1}{2a}\\text{log}\\left| \\frac{a+x}{a-x} \\right|+c$&nbsp;</strong></p><p><strong>3.$\\int \\frac{dx}{{{x}^{2}}+{{a}^{2}}}=\\frac{1}{a}\\text{ta}{{\\text{n}}^{-1}}\\frac{x}{a}+c$&nbsp;</strong><br>&nbsp;</p><p><strong>Q)</strong> <strong>(i) $\\int \\frac{dx}{1+4{{x}^{2}}}$ (ii) $\\int \\frac{dx}{1-25{{x}^{2}}}$ (iii) $\\int \\frac{\\text{dx}}{9{{\\text{x}}^{2}}-1}$&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>(i) $\\text{ }\\!\\!~\\!\\!\\text{ I}=\\int \\frac{\\text{dx}}{1+4{{\\text{x}}^{2}}}=\\frac{1}{4}\\int \\frac{\\text{dx}}{\\frac{1}{4}+{{\\text{x}}^{2}}}$</p><p>$=\\frac{1}{4}\\int ~\\frac{\\text{dx}}{{{\\left( \\frac{1}{2} \\right)}^{2}}+{{\\text{x}}^{2}}}=\\frac{1}{4}\\cdot \\frac{1}{\\frac{1}{2}}\\text{ta}{{\\text{n}}^{-1}}\\left( \\frac{\\text{x}}{\\frac{1}{2}} \\right)+\\text{c}=\\frac{1}{2}\\text{ta}{{\\text{n}}^{-1}}\\left( 2\\text{x} \\right)+\\text{c}$</p><p>(ii) $\\text{I}=\\int \\frac{\\text{dx}}{1-25{{\\text{x}}^{2}}}=\\frac{1}{25}\\int \\frac{\\text{dx}}{\\frac{1}{25}-{{\\text{x}}^{2}}}$</p><p>$=\\frac{1}{25}\\int \\frac{\\text{dx}}{{{\\left( \\frac{1}{5} \\right)}^{2}}-{{\\text{x}}^{2}}}=\\frac{1}{25}\\cdot \\frac{1}{2\\left( \\frac{1}{5} \\right)}\\text{log}\\left| \\frac{\\frac{1}{5}+\\text{x}}{\\frac{1}{5}-\\text{x}} \\right|+\\text{c}=\\frac{1}{10}\\text{log}\\left| \\frac{1+5\\text{x}}{1-5\\text{x}} \\right|+\\text{c}$</p><p>(iii) I $=\\int \\frac{\\text{dx}}{9{{\\text{x}}^{2}}-1}=\\frac{1}{9}\\int \\frac{\\text{dx}}{{{\\text{x}}^{2}}-\\frac{1}{9}}=\\frac{1}{9}\\int \\frac{\\text{dx}}{{{\\text{x}}^{2}}-{{\\left( \\frac{1}{3} \\right)}^{2}}}$</p><p>$=\\frac{1}{9}\\frac{1}{2\\left( \\frac{1}{3} \\right)}\\text{log}\\left| \\frac{\\text{x}-\\frac{1}{3}}{\\text{x}+\\frac{1}{3}} \\right|+\\text{c}=\\frac{1}{6}\\text{log}\\left| \\frac{3\\text{x}-1}{3\\text{x}+1} \\right|+\\text{c}$</p><p><strong>Q) Evaluate :&nbsp;</strong><br><strong>(i) $\\int \\frac{3x}{1+2{{x}^{4}}}dx$&nbsp;</strong><br><strong>(ii) $\\int \\frac{{{2}^{\\text{x}}}}{1-{{4}^{\\text{x}}}}\\text{dx}$&nbsp;</strong><br><strong>(iii) $\\int \\frac{2{{\\text{x}}^{3}}}{4+{{\\text{x}}^{8}}}dx$&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>(i) $\\text{ }\\!\\!~\\!\\!\\text{ }I=\\int \\frac{3\\text{x}}{1+2{{\\text{x}}^{4}}}d\\text{x}$</p><p>Putting ${{x}^{2}}=t\\Rightarrow 2xdx=dt\\Rightarrow dx=\\frac{1}{2}dt$</p><p>$I=\\frac{3}{2}\\int \\frac{dt}{1+2{{t}^{2}}}=\\frac{3}{2}\\cdot \\frac{1}{2}\\int \\frac{dt}{\\frac{1}{2}+{{t}^{2}}}=\\frac{3}{4}\\int \\frac{dt}{{{(1/\\sqrt{2})}^{2}}+{{t}^{2}}}$</p><p>$=\\frac{3}{4}\\cdot \\frac{1}{1/\\sqrt{2}}\\text{ta}{{\\text{n}}^{-1}}\\frac{\\text{t}}{1/\\sqrt{2}}+\\text{c}=\\frac{3}{2\\sqrt{2}}\\text{ta}{{\\text{n}}^{-1}}\\left( \\sqrt{2}\\text{t} \\right)+\\text{c}=\\frac{3}{2\\sqrt{2}}\\text{ta}{{\\text{n}}^{-1}}\\left( \\sqrt{2}{{\\text{x}}^{2}} \\right)+\\text{c}$</p><p>(ii) $\\text{ }\\!\\!~\\!\\!\\text{ I}=\\int \\frac{{{2}^{\\text{x}}}}{1-{{4}^{\\text{x}}}}\\text{dx}=\\int \\frac{{{2}^{\\text{x}}}}{1-{{\\left( {{2}^{2}} \\right)}^{\\text{x}}}}\\text{dx}=\\int \\frac{{{2}^{\\text{x}}}}{1-{{\\left( {{2}^{\\text{x}}} \\right)}^{2}}}\\text{dx}$</p><p>Putting ${{2}^{\\text{x}}}=\\text{t}\\Rightarrow {{2}^{\\text{x}}}\\text{log}2\\text{dx}=\\text{dt}\\Rightarrow {{2}^{\\text{x}}}\\text{dx}=\\frac{\\text{dt}}{\\text{log}2}$</p><p>$I=\\frac{1}{\\text{log}2}\\int \\frac{dt}{1-{{t}^{2}}}=\\frac{1}{2\\text{log}2}\\text{log}\\left| \\frac{1+t}{1-t} \\right|+c=\\frac{1}{2\\text{log}2}\\text{log}\\left| \\frac{1+{{2}^{x}}}{1-{{2}^{x}}} \\right|+c$</p><p>(iii) $\\text{ }\\!\\!~\\!\\!\\text{ I}=\\int \\frac{2{{\\text{x}}^{3}}}{4+{{\\text{x}}^{8}}}\\text{dx}$</p><p>Putting ${{\\text{x}}^{4}}=\\text{t}\\Rightarrow 4{{\\text{x}}^{3}}\\text{dx}=\\text{dt}\\Rightarrow 2{{\\text{x}}^{3}}\\text{dx}=\\frac{1}{2}\\text{dt}$</p><p>I $~=\\frac{1}{2}\\int ~\\frac{\\text{dt}}{4+{{\\text{t}}^{2}}}=\\frac{1}{2}\\int ~\\frac{\\text{dt}}{{{2}^{2}}+{{\\text{t}}^{2}}}$</p><p>$~=\\frac{1}{2}\\cdot \\frac{1}{2}\\text{ta}{{\\text{n}}^{-1}}\\frac{\\text{t}}{2}+\\text{c}=\\frac{1}{4}\\text{ta}{{\\text{n}}^{-1}}\\frac{{{\\text{x}}^{4}}}{2}+\\text{c}$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd7dc03b9dcaf1afeb3d"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f622d384bfb4a5381b8",
+      "title": "$\\int \\frac{d x}{\\left(x^2+1\\right)\\left(x^2+4\\right)}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f622d384bfb4a5381b9",
+      "title": "$\\int \\frac{1}{\\left(x^2+a^2\\right)\\left(x^2+b^2\\right)} d x=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f622d384bfb4a5381ba",
+      "title": "$\\int \\frac{x^2}{\\left(x^2+2\\right)\\left(x^2+3\\right)} d x=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f622d384bfb4a5381bb",
+      "title": "$\\int \\frac{\\sin x d x}{3+4 \\cos ^2 x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f622d384bfb4a5381bc",
+      "title": "$\\int x \\sin x \\sec ^3 x d x=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

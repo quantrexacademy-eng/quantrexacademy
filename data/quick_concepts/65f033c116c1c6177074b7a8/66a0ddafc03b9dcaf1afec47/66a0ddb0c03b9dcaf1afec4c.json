@@ -1,0 +1,76 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddafc03b9dcaf1afec47",
+  "topicId": "66a0ddb0c03b9dcaf1afec4c",
+  "title": "Relation between Roots and Coefficients",
+  "concepts": [
+    {
+      "title": "Sum and Product of Roots",
+      "conceptBody": "<h3><strong>Relations between roots and coefficients</strong></h3><p>If <i>α </i>and <i>β </i>are the roots of quadratic equation $a{{x}^{2}}+bx+c=0$, ( <i>a </i>≠ 0) then</p><p>Sum of roots $=S=\\alpha +\\beta =\\frac{-b}{a}=-\\frac{\\text{Coefficien}\\text{t of }x}{\\text{Coefficien}\\text{t of }{{x}^{2}}}$</p><p>Product of roots $=P=\\alpha .\\beta =\\frac{c}{a}=\\frac{\\text{Constant term}}{\\text{Coefficient of }{{x}^{2}}}$</p><p><strong>Formation of an equation with given roots : </strong>A quadratic equation whose roots are <i>α </i>and <i>β </i>is given by $(x-\\alpha )(x-\\beta )=0$.</p><p>∴ ${{x}^{2}}-(\\alpha +\\beta )x+\\alpha \\beta =0$</p><p><i>i.e. </i>${{x}^{2}}-(\\text{sum of roots)}x+(\\text{product of roots})=0$</p><p>∴ ${{x}^{2}}-Sx+P=0$</p>",
+      "position": 0,
+      "qcConcept": "66a0ddb1c03b9dcaf1afec4d"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66891f2e1010aab82c8aa631",
+      "title": "If $\\alpha, \\beta$ are the roots of the equation $a x^2+b x+c=0$ then the equation whose roots are $\\alpha+\\frac{1}{\\beta}$ and $\\beta+\\frac{1}{\\alpha}$,is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa632",
+      "title": "If a root of the equation $a x^2+b x+c=0$ be reciprocal of a root of the equation then $a^{\\prime} x^2+b^{\\prime} x+c^{\\prime}=0$, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa633",
+      "title": "If $2+i \\sqrt{3}$ is a root of the equation $x^2+p x+q=0$, where $p$ and $q$ are real, then $(p, q)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa634",
+      "title": "If the sum of the roots of the equation $a x^2+b x+c=0$ be equal to the sum of their squares, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa635",
+      "title": "If $\\alpha$ and $\\beta$ are the roots of the equation $(x-a)(x-b)=c, c \\neq 0$; then the roots of the equation $(x-\\alpha)(x-\\beta)+c=0$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa636",
+      "title": "If the sum of the roots of the equation $x^2+p x+q=0$ is three times their difference, then which one of the following is true",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa637",
+      "title": "If $\\alpha, \\beta$ are the roots of $x^2-2 x+4=0$, then $\\alpha^5+\\beta^5$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa638",
+      "title": "If the ratio of the roots of $x^2+b x+c=0$ and $x^2+q x+r=0$ be the same, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa639",
+      "title": "The equation formed by decreasing each root of $a x^2+b x+c=0$ by 1 is $2 x^2+8 x+2=0$, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa63a",
+      "title": "The equation of the smallest degree with real coefficients having $1+i$ as one of the root is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

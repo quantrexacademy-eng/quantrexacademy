@@ -1,0 +1,68 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19156220c83fbf1e0bce11",
+  "chapterId": "6a192b9fe4cc9575516b566b",
+  "subject": "Physics",
+  "chapter": "Current Electricity",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec17fef1faeb9633e23f5",
+      "title": "Wheatstone Bridge",
+      "count": 8,
+      "questionIds": [
+        "6a1ec0f2ef1faeb9633e20a8",
+        "6a1ec0d0ef1faeb9633e1fd4",
+        "6a1ec08def1faeb9633e1e31",
+        "6a1ec033ef1faeb9633e1bf5",
+        "6a1ec132ef1faeb9633e223f",
+        "6a1ec14fef1faeb9633e22f3",
+        "6a1ec013ef1faeb9633e1b2d",
+        "6a1ec050ef1faeb9633e1caf"
+      ]
+    },
+    {
+      "id": "6a1ec180ef1faeb9633e23f6",
+      "title": "Electric Instruments",
+      "count": 11,
+      "questionIds": [
+        "6a1ec0edef1faeb9633e208a",
+        "6a1ec071ef1faeb9633e1d7c",
+        "6a1ec0d0ef1faeb9633e1fd3",
+        "6a1ec0b1ef1faeb9633e1f15",
+        "6a1ec093ef1faeb9633e1e57",
+        "6a1ec033ef1faeb9633e1bf6",
+        "6a1ec132ef1faeb9633e223e",
+        "6a1ec013ef1faeb9633e1b2e",
+        "6a1ec111ef1faeb9633e216e",
+        "6a1ec111ef1faeb9633e216d",
+        "6a1ec050ef1faeb9633e1cb0"
+      ]
+    },
+    {
+      "id": "6a1ec180ef1faeb9633e23f7",
+      "title": "Electric Current and Drift of Electrons",
+      "count": 1,
+      "questionIds": [
+        "6a1ec070ef1faeb9633e1d7b"
+      ]
+    },
+    {
+      "id": "6a1ec180ef1faeb9633e23f8",
+      "title": "Kirchoffs Laws",
+      "count": 1,
+      "questionIds": [
+        "6a1ec0b1ef1faeb9633e1f14"
+      ]
+    },
+    {
+      "id": "6a1ec180ef1faeb9633e23f9",
+      "title": "Combination of Resistances",
+      "count": 1,
+      "questionIds": [
+        "6a1ec14fef1faeb9633e22f4"
+      ]
+    }
+  ]
+}

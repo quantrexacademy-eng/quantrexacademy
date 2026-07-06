@@ -1,0 +1,50 @@
+{
+  "examSlug": "manipal_met",
+  "examId": "678ea9152ea3ea0be38439eb",
+  "subjectId": "678ea9a09cc79e5f592bdc12",
+  "chapterId": "67921d701d5b5072da5e9b12",
+  "subject": "Chemistry",
+  "chapter": "Solid State",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67921ed71d5b5072da5ea6c6",
+      "title": "Crystal Structure of Solids",
+      "count": 1,
+      "questionIds": [
+        "67921e541d5b5072da5ea228"
+      ]
+    },
+    {
+      "id": "67921ed61d5b5072da5ea6c2",
+      "title": "Cubic system",
+      "count": 6,
+      "questionIds": [
+        "67921e2b1d5b5072da5ea0e7",
+        "67921e001d5b5072da5e9f90",
+        "67921de41d5b5072da5e9eb6",
+        "67921de31d5b5072da5e9eb5",
+        "67921db21d5b5072da5e9d29",
+        "67921d701d5b5072da5e9b10"
+      ]
+    },
+    {
+      "id": "67921ed61d5b5072da5ea6c4",
+      "title": "Ionic structure",
+      "count": 4,
+      "questionIds": []
+    },
+    {
+      "id": "67921ed71d5b5072da5ea6c5",
+      "title": "Non-stoichiometric defects",
+      "count": 1,
+      "questionIds": []
+    },
+    {
+      "id": "67921ed61d5b5072da5ea6c3",
+      "title": "Electrical and Magnetic properties",
+      "count": 3,
+      "questionIds": []
+    }
+  ]
+}

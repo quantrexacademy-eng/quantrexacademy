@@ -1,0 +1,76 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd47c03b9dcaf1afea27",
+  "topicId": "66a0dd47c03b9dcaf1afea29",
+  "title": "Order and Degree",
+  "concepts": [
+    {
+      "title": "Order and Degree of Differential Equation",
+      "conceptBody": "<h3><strong>Order and degree of a differential equation</strong></h3><p><strong>Defintion </strong>.</p><ol><li>Order of the higehst order derivative occuring in the given differential equation is called the order of the differential equation.</li><li>Degree of a differential equation is the degree of the highest order derivative i.e. degree of a differential equation is the power of the highest order derivative when the differential equation has been made rational and integral i.e. free from radicals and fractions so far as the differential co-efficietns are concerned.</li></ol><p><strong>Examples :&nbsp;</strong></p><ol><li>$\\frac{{{d}^{2}}y}{{{d}^{2}}}-\\frac{dy}{dx}+y=0$. This differential equation is of second order because order of the highest order derivative $\\frac{{{d}^{2}}y}{d{{x}^{2}}}$ is two. Degree of this differential equation is one because power of the highest order derivative $\\frac{{{\\text{d}}^{2}}\\text{y}}{\\text{d}{{\\text{x}}^{2}}}$ is one.</li><li>${{\\left( \\frac{{{\\text{d}}^{3}}\\text{y}}{\\text{d}{{\\text{x}}^{3}}} \\right)}^{2}}-3{{\\left( \\frac{\\text{dy}}{\\text{dx}} \\right)}^{3}}+2=0.$</li></ol><p>This differential equation is of 3rd order because highest order derivative is $\\frac{{{d}^{3}}y}{d{{x}^{3}}}$ and its degree is 2 because power of the highest order derivative $\\frac{{{d}^{3}}y}{{{d}^{3}}}$ is 2 .</p><ol><li>$\\sqrt{1-{{\\text{x}}^{2}}}\\text{dx}+\\sqrt{1-{{\\text{y}}^{2}}}\\text{dy}=0$</li></ol><p>This differential equation can be written as $\\frac{dy}{dx}=-\\frac{\\sqrt{1-{{x}^{2}}}}{\\sqrt{1-{{y}^{2}}}}$. It is of first order and first degree.</p>",
+      "position": 0,
+      "qcConcept": "66a0dd47c03b9dcaf1afea2a"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f442d384bfb4a53801f",
+      "title": "order and degree of differential equation $\\frac{d^2 y}{d x^2}=\\left\\{y+\\left(\\frac{d y}{d x}\\right)^2\\right\\}^{1 / 4}$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a538020",
+      "title": "$\\frac{d^3 y}{d x^3}+2\\left[1+\\frac{d^2 y}{d x^2}\\right]=1$ has degree and order as",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a538021",
+      "title": "The second order differential equation is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a538022",
+      "title": "The order and degree of the differential equation $x \\frac{d^2 y}{d x^2}+\\left(\\frac{d y}{d x}\\right)^2+y^2=0$ are respectively",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a538023",
+      "title": "The order and degree of the differential equation$x\\left(\\frac{d y}{d x}\\right)^3+2\\left(\\frac{d^2 y}{d x^2}\\right)^2+3 y+x=0$ are respectively",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a538024",
+      "title": "The degree of the differential equation $\\frac{d^2 y}{d x^2}-\\sqrt{\\frac{d y}{d x}-3}=x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a538025",
+      "title": "The degree of the differential equation $\\frac{d^2 y}{d x^2}+\\sqrt{1+\\left(\\frac{d y}{d x}\\right)^3}=0$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a538026",
+      "title": "Degree of the given differential equation $\\left(\\frac{d^2 y}{d x^2}\\right)^3=\\left(1+\\frac{d y}{d x}\\right)^{1 / 2}$ , is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a538027",
+      "title": "Which of the following differential equations has the same order and degree",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f442d384bfb4a538028",
+      "title": "The differential equation $\\frac{d^2 y}{d x^2}+x \\frac{d y}{d x}+\\sin y+x^2=0$ is of the following type",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}
