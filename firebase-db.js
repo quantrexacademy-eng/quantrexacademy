@@ -175,6 +175,46 @@ const QuantrexDB = (() => {
     });
   }
 
+  function subscriptionRef(uid) {
+    return db.collection("subscriptions").doc(uid);
+  }
+
+  async function getSubscription(uid) {
+    if (!uid || !db) return { active: false };
+    const snap = await subscriptionRef(uid).get();
+    if (!snap.exists) return { active: false };
+    const data = snap.data();
+    const expires = data.expiresAt && data.expiresAt.toDate ? data.expiresAt.toDate().getTime() : data.expiresAt;
+    const active = !!data.active && (!expires || expires > Date.now());
+    return { ...data, active };
+  }
+
+  async function activateSubscription(uid, { planId, orderId, planDays, amount }) {
+    if (!uid || !db) return false;
+    const days = Number(planDays) || 30;
+    const expiresAt = new Date(Date.now() + days * 86400000);
+    await subscriptionRef(uid).set({
+      uid,
+      active: true,
+      planId,
+      orderId,
+      amount: amount || 0,
+      expiresAt: firebase.firestore.Timestamp.fromDate(expiresAt),
+      activatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    }, { merge: true });
+    await userRef(uid).set({ premium: true, planId }, { merge: true });
+    return true;
+  }
+
+  function watchSubscription(uid, callback) {
+    if (!uid || !db) return () => {};
+    return subscriptionRef(uid).onSnapshot(snap => {
+      const data = snap.exists ? snap.data() : { active: false };
+      const expires = data.expiresAt && data.expiresAt.toDate ? data.expiresAt.toDate().getTime() : 0;
+      callback({ ...data, active: !!data.active && expires > Date.now() });
+    });
+  }
+
   async function signOut() {
     if (listener) { listener(); listener = null; }
     currentUid = null;
@@ -210,6 +250,9 @@ const QuantrexDB = (() => {
     ensureUserProfile,
     watchAuth,
     seedAppMeta,
+    getSubscription,
+    activateSubscription,
+    watchSubscription,
     signOut,
     authErrorMessage,
     set onDataChange(fn) { onDataChange = fn; }

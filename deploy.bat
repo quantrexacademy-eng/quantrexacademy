@@ -43,7 +43,7 @@ if errorlevel 1 (
 
 echo.
 echo Firebase database runs automatically from the website.
-echo Project: quantrex-premimum
-echo Console: https://console.firebase.google.com/project/quantrex-premimum
+echo Project: quantrexacademy-5da32
+echo Console: https://console.firebase.google.com/project/quantrexacademy-5da32
 echo.
 pause

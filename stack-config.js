@@ -11,18 +11,21 @@ const QUANTREX_STACK = {
     repo: "https://github.com/quantrexacademy-eng/quantrexacademy",
     account: "quantrexacademy-eng"
   },
-  backend: {
-    provider: "Firebase",
+  auth: {
+    provider: "Firebase Authentication",
     projectId: "quantrexacademy-5da32",
-    console: "https://console.firebase.google.com/project/quantrexacademy-5da32"
+    methods: ["email", "google", "phone"],
+    console: "https://console.firebase.google.com/project/quantrexacademy-5da32/authentication"
   },
   database: {
     provider: "Firebase Firestore",
-    collections: ["users", "users/{uid}/data/progress", "app/meta", "payments", "subscriptions"]
+    projectId: "quantrexacademy-5da32",
+    collections: ["users", "users/{uid}/data/progress", "app/meta", "payments", "subscriptions", "videos"]
   },
   storage: {
     provider: "Firebase Storage",
     bucket: "quantrexacademy-5da32.firebasestorage.app",
+    console: "https://console.firebase.google.com/project/quantrexacademy-5da32/storage",
     paths: {
       pdfs: "pdfs/",
       images: "images/",
@@ -31,22 +34,31 @@ const QUANTREX_STACK = {
     }
   },
   video: {
-    provider: "Bunny.net", // alternative: Cloudflare Stream
-    cdn: "", // set after Bunny.net account
-    libraryId: ""
+    provider: "Cloudflare Stream",
+    customerCode: "", // e.g. "abc123" → customer-abc123.cloudflarestream.com
+    accountId: "",
+    console: "https://dash.cloudflare.com/?to=/:account/stream",
+    // Demo videos — replace with real Stream UIDs from Cloudflare dashboard
+    catalog: [
+      { id: "demo_physics", title: "Physics — Kinematics Revision", uid: "", subject: "Physics" },
+      { id: "demo_chem", title: "Chemistry — Mole Concept", uid: "", subject: "Chemistry" },
+      { id: "demo_maths", title: "Maths — Calculus Basics", uid: "", subject: "Mathematics" }
+    ]
   },
   payment: {
     provider: "Cashfree",
-    mode: "sandbox", // switch to "production" when live
-    appId: "", // set in Firebase env / Vercel env
+    mode: "sandbox",
+    sdk: "https://sdk.cashfree.com/js/v3/cashfree.js",
+    apiBase: "sandbox", // "production" when live
+    console: "https://merchant.cashfree.com/merchants/login",
     plans: {
-      monthly: { id: "plan_monthly", amount: 299, label: "Monthly Premium" },
-      yearly: { id: "plan_yearly", amount: 2499, label: "Yearly Premium" }
+      monthly: { id: "plan_monthly", amount: 299, label: "Monthly Premium", days: 30 },
+      yearly: { id: "plan_yearly", amount: 2499, label: "Yearly Premium", days: 365 }
     }
   },
   domain: {
     provider: "Cloudflare",
     target: "quantrexacademy-lemon.vercel.app",
-    custom: "" // e.g. quantrexacademy.com
+    custom: ""
   }
 };

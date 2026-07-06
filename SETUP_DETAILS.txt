@@ -74,12 +74,15 @@ BEST STACK COMBINATION (PRODUCTION)
   Source Code        GitHub                LIVE - quantrexacademy-eng/quantrexacademy
   Backend            Firebase              LIVE - Auth + APIs
   Database           Firebase Firestore    LIVE - user progress synced
-  File Storage       Firebase Storage      READY - storage.rules deployed
-  Videos             Bunny.net / Cloudflare PENDING - add CDN keys in stack-config.js
-  Payment            Cashfree              PENDING - add appId in stack-config.js
-  Domain             Cloudflare            PENDING - point DNS to Vercel
+  Firebase Auth      Firebase Authentication  LIVE - login.html (email, google, signup)
+  Firebase Firestore Firebase Firestore       LIVE - user progress sync
+  Firebase Storage   Firebase Storage         READY - enable in console + upload files
+  Videos             Cloudflare Stream        READY - stack-config.js video.customerCode
+  Payment            Cashfree                 READY - Vercel env + /api/create-payment
+  Domain             Cloudflare DNS           PENDING - point to Vercel
 
-  Config file: stack-config.js (all providers in one place)
+  Config: stack-config.js | Setup: STACK_SERVICES_SETUP.bat
+  Vercel Env: CASHFREE_APP_ID, CASHFREE_SECRET_KEY, CASHFREE_MODE, SITE_URL
 
 ================================================================================
 QUICK DEPLOY (ONE CLICK)

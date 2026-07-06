@@ -58,10 +58,14 @@ service cloud.firestore {
       allow write: if false;
     }
 
-    // Subscription status
+    // Subscription status (user activates after Cashfree payment verify)
     match /subscriptions/{userId} {
       allow read: if isOwner(userId);
-      allow write: if false;
+      allow create, update: if isOwner(userId)
+        && request.resource.data.uid == userId
+        && request.resource.data.active is bool
+        && request.resource.data.planId is string
+        && request.resource.data.orderId is string;
     }
   }
 }

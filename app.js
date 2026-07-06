@@ -51,9 +51,27 @@ function render(view, payload) {
     notebook: viewNotebook,
     profile: viewProfile,
     analytics: () => typeof QuantrexAnalytics !== "undefined" ? QuantrexAnalytics.viewAnalytics() : '<div class="empty">Analytics loading…</div>',
-    search: () => typeof QuantrexSearch !== "undefined" ? QuantrexSearch.viewSearch() : '<div class="empty">Search unavailable</div>'
+    search: () => typeof QuantrexSearch !== "undefined" ? QuantrexSearch.viewSearch() : '<div class="empty">Search unavailable</div>',
+    premium: viewPremium
   };
   finishRender(map[view] ? map[view](payload) : `<div class="empty">Page not found.</div>`);
+}
+
+async function viewPremium() {
+  const user = JSON.parse(localStorage.getItem("quantrex_user") || "null");
+  let sub = { active: false };
+  if (user && user.uid && typeof QuantrexDB !== "undefined") {
+    sub = await QuantrexDB.getSubscription(user.uid);
+  }
+  if (typeof QuantrexPremium === "undefined") {
+    return topbar("Premium", "") + '<div class="empty">Premium module loading…</div>';
+  }
+  const html = topbar("Premium & Videos", "Cashfree payments · Cloudflare Stream lectures") + QuantrexPremium.render(user, sub);
+  setTimeout(() => {
+    const main = document.getElementById("app-main");
+    if (main) QuantrexPremium.bind(main, user, sub);
+  }, 0);
+  return html;
 }
 
 // ---------- Top bar / helpers ----------
@@ -509,6 +527,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const name = user.displayName || user.email || "Student";
       showToast("🔥 Firebase DB connected · Welcome, " + name);
       QuantrexDB.seedAppMeta().catch(() => {});
+      if (typeof QuantrexPayments !== "undefined") QuantrexPayments.handleReturnQuery().catch(() => {});
       bootApp();
     } else {
       const cached = JSON.parse(localStorage.getItem("quantrex_user") || "null");
@@ -533,7 +552,7 @@ go = function(view, payload) {
   main.scrollTop = 0;
   _listPage = 1;
   document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
-  const navMap = { allqs: "allqs", ncert: "allqs", cpyqb: "cpyqb", books: "books", tests: "tests", custom: "tests", analytics: "analytics", search: "search", quickconcepts: "quickconcepts" };
+  const navMap = { allqs: "allqs", ncert: "allqs", cpyqb: "cpyqb", books: "books", tests: "tests", custom: "tests", analytics: "analytics", search: "search", quickconcepts: "quickconcepts", premium: "premium" };
   const navView = navMap[view] || view;
   const navEl = document.querySelector(`.nav-item[data-view="${navView}"]`);
   if (navEl) navEl.classList.add("active");
