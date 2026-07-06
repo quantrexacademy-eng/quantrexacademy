@@ -479,6 +479,15 @@ function bootApp() {
   };
   const searchBtn = document.getElementById("searchBtn");
   if (searchBtn) searchBtn.onclick = () => typeof QuantrexSearch !== "undefined" ? QuantrexSearch.openOverlay() : go("search");
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) logoutBtn.onclick = async () => {
+    if (typeof QuantrexDB !== "undefined" && QuantrexDB.signOut) {
+      await QuantrexDB.signOut();
+    } else {
+      localStorage.removeItem("quantrex_user");
+    }
+    window.location.href = "login.html";
+  };
   go("dashboard");
 }
 

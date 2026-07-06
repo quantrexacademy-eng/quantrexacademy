@@ -33,20 +33,20 @@ Git Config:
   user.name  = Quantrex Academy
 
 ================================================================================
-3. DATABASE - FIREBASE (quantrex-premimum)
+3. DATABASE - FIREBASE (quantrexacademy-5da32)
 ================================================================================
-Console:      https://console.firebase.google.com/project/quantrex-premimum
-Project ID:   quantrex-premimum
-Auth Domain:  quantrex-premimum.firebaseapp.com
+Console:      https://console.firebase.google.com/project/quantrexacademy-5da32
+Project ID:   quantrexacademy-5da32
+Auth Domain:  quantrexacademy-5da32.firebaseapp.com
+Setup:        Double-click FIREBASE_DATABASE_SETUP.bat
 
 Firebase Config (already in firebase-config.js):
-  apiKey:            AIzaSyBi5ysUaKEDYtLCOpRqHGO3yA3evG4u330
-  authDomain:        quantrex-premimum.firebaseapp.com
-  projectId:         quantrex-premimum
-  storageBucket:     quantrex-premimum.firebasestorage.app
-  messagingSenderId: 468712708195
-  appId:             1:468712708195:web:235b20e1d42bf4e9254056
-  measurementId:     G-QV521BZ9E3
+  apiKey:            AIzaSyD3cBlEmI2xxPzwiY09I5Depx9gRspvKjc
+  authDomain:        quantrexacademy-5da32.firebaseapp.com
+  projectId:         quantrexacademy-5da32
+  storageBucket:     quantrexacademy-5da32.firebasestorage.app
+  messagingSenderId: 1007093580220
+  appId:             1:1007093580220:web:181060e53f856f2a1eabb9
 
 Database:     Firestore (Cloud Firestore)
 Collections:
@@ -55,13 +55,15 @@ Collections:
   content/questions     - question bank (optional seed)
   app/meta              - app metadata
 
-Firebase Status: LINKED (quantrex-premimum)
-  Console: https://console.firebase.google.com/project/quantrex-premimum
+Firebase Status: LINKED (quantrexacademy-5da32)
+  Console: https://console.firebase.google.com/project/quantrexacademy-5da32
+  Firestore Rules: DEPLOYED
 
-Enable in Firebase Console (if not done):
+Enable in Firebase Console (one-time):
   1. Authentication > Sign-in method > Enable Email/Password + Google
-  2. Firestore Database > Create database > paste rules from firestore.rules
-  3. Login at: https://quantrexacademy-lemon.vercel.app/login
+  2. Authentication > Settings > Authorized domains > add quantrexacademy-lemon.vercel.app
+  3. Authentication > Users > Add user: quantrexacademy@gmail.com / function13@
+  4. Login at: https://quantrexacademy-lemon.vercel.app/login
 
 ================================================================================
 BEST STACK COMBINATION

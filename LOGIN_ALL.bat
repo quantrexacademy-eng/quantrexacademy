@@ -21,9 +21,10 @@ echo     A browser window will open for device login.
 echo.
 echo [3] FIREBASE (Database)
 echo     Login with quantrexacademy@gmail.com Google account
-start https://console.firebase.google.com/project/quantrex-premimum
-start https://console.firebase.google.com/project/quantrex-premimum/authentication/users
-start https://console.firebase.google.com/project/quantrex-premimum/firestore
+firebase login
+start https://console.firebase.google.com/project/quantrexacademy-5da32/authentication/providers
+start https://console.firebase.google.com/project/quantrexacademy-5da32/authentication/settings
+start https://console.firebase.google.com/project/quantrexacademy-5da32/firestore
 echo.
 echo After login, run deploy.bat to push code and go live.
 echo.

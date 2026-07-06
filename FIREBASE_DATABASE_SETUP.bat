@@ -1,23 +1,35 @@
 @echo off
-title Firebase Database Setup - Quantrex Premium
+title Firebase Setup - Quantrex Academy
+cd /d "%~dp0"
+
+echo ============================================================
+echo   FIREBASE SETUP - quantrexacademy-5da32
+echo   Account: quantrexacademy@gmail.com
+echo ============================================================
 echo.
-echo FIREBASE DATABASE (Firestore) Setup
-echo Project: quantrex-premimum
+echo [1] Login to Firebase (browser)
+start https://console.firebase.google.com/project/quantrexacademy-5da32/overview
+firebase login
 echo.
-echo Step 1: Open Firestore Database
-start https://console.firebase.google.com/project/quantrex-premimum/firestore
+echo [2] Enable Authentication providers
+echo     - Email/Password: ON
+echo     - Google: ON
+start https://console.firebase.google.com/project/quantrexacademy-5da32/authentication/providers
 echo.
-echo Step 2: Open Firestore Rules (paste firestore.rules content)
-start https://console.firebase.google.com/project/quantrex-premimum/firestore/rules
+echo [3] Add Authorized Domains (for Vercel login)
+echo     - quantrexacademy-lemon.vercel.app
+echo     - quantrexacademy.vercel.app
+echo     - localhost
+start https://console.firebase.google.com/project/quantrexacademy-5da32/authentication/settings
 echo.
-echo Step 3: Open Authentication
-start https://console.firebase.google.com/project/quantrex-premimum/authentication/providers
+echo [4] Deploy Firestore Rules
+firebase use quantrexacademy-5da32
+firebase deploy --only firestore:rules,firestore:indexes --non-interactive
 echo.
-echo Rules file: %~dp0firestore.rules
+echo [5] Create test user (optional)
+echo     Email: quantrexacademy@gmail.com
+echo     Password: function13@
+start https://console.firebase.google.com/project/quantrexacademy-5da32/authentication/users
 echo.
-echo Database structure:
-echo   users/{uid}              - user profile
-echo   users/{uid}/data/progress - bookmarks, solved, notes
-echo   app/meta                 - app info
-echo.
+echo Done! Firebase project: quantrexacademy-5da32
 pause

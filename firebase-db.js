@@ -168,11 +168,32 @@ const QuantrexDB = (() => {
     if (meta.exists) return;
     await metaRef.set({
       name: "Quantrex Academy",
-      project: "quantrex-premimum",
+      project: "quantrexacademy-5da32",
       version: "1.0.0",
       questionCount: typeof QUESTIONS !== "undefined" ? QUESTIONS.length : 0,
       seededAt: firebase.firestore.FieldValue.serverTimestamp()
     });
+  }
+
+  async function signOut() {
+    if (listener) { listener(); listener = null; }
+    currentUid = null;
+    if (auth) await auth.signOut();
+    localStorage.removeItem("quantrex_user");
+  }
+
+  function authErrorMessage(code) {
+    const map = {
+      "auth/user-not-found": "Account nahi mila. Pehle Sign Up karo.",
+      "auth/wrong-password": "Galat password. Dobara try karo.",
+      "auth/invalid-email": "Email sahi format mein daalo.",
+      "auth/email-already-in-use": "Yeh email pehle se registered hai. Sign In karo.",
+      "auth/weak-password": "Password kam se kam 6 characters ka hona chahiye.",
+      "auth/too-many-requests": "Bahut zyada tries. Thodi der baad try karo.",
+      "auth/popup-closed-by-user": "Google login cancel ho gaya.",
+      "auth/unauthorized-domain": "Domain authorized nahi hai. Firebase Console mein domain add karo."
+    };
+    return map[code] || "Login failed. Dobara try karo.";
   }
 
   return {
@@ -189,6 +210,8 @@ const QuantrexDB = (() => {
     ensureUserProfile,
     watchAuth,
     seedAppMeta,
+    signOut,
+    authErrorMessage,
     set onDataChange(fn) { onDataChange = fn; }
   };
 })();

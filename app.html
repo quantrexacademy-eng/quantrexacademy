@@ -68,7 +68,7 @@
         .topbar-right { display: flex; align-items: center; gap: 12px; }
         .topbar .exam-tag { background: var(--primary-light); color: var(--primary); padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 700; }
         .topbar .streak { display: flex; align-items: center; gap: 4px; background: var(--orange-light); color: #9a6b00; padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 700; }
-        .logout-link { text-decoration: none; font-size: 20px; width: 36px; height: 36px; border-radius: 50%; background: var(--bg); display: flex; align-items: center; justify-content: center; transition: background .15s; }
+        .logout-link { border: none; cursor: pointer; font-size: 20px; width: 36px; height: 36px; border-radius: 50%; background: var(--bg); display: flex; align-items: center; justify-content: center; transition: background .15s; }
         .logout-link:hover { background: var(--primary-light); }
         .content { padding: 28px; flex: 1; max-width: 1100px; margin: 0 auto; width: 100%; }
 
@@ -596,7 +596,7 @@
                     <button type="button" class="theme-btn" id="themeToggle" title="Toggle theme">🌙</button>
                     <span class="streak">🔥 14 day streak</span>
                     <span class="exam-tag" id="examPillTop">Engineering</span>
-                    <a href="login.html" class="logout-link" title="Switch user / Login">👤</a>
+                    <button type="button" class="logout-link" id="logoutBtn" title="Logout">👤</button>
                 </div>
             </div>
             <div class="content" id="app-main"></div>

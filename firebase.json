@@ -2,5 +2,21 @@
   "firestore": {
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
+  },
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "marks_data/**",
+      "tools/**",
+      "pdf_pages/**",
+      "scripts/**"
+    ],
+    "rewrites": [
+      { "source": "/login", "destination": "/login.html" },
+      { "source": "/app", "destination": "/app.html" }
+    ]
   }
 }

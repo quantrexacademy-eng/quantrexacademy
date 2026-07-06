@@ -130,18 +130,20 @@ input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(2
           </div>
         </div>
         <div class="login-tabs">
-          <button type="button" class="login-tab active" data-mode="email">Email</button>
+          <button type="button" class="login-tab active" data-mode="signin">Sign In</button>
+          <button type="button" class="login-tab" data-mode="signup">Sign Up</button>
           <button type="button" class="login-tab" data-mode="phone">Phone OTP</button>
         </div>
         <div id="emailLogin">
           <div class="field">
             <label>Email Address</label>
-            <input type="email" id="email" placeholder="you@quantrexacademy.com" autocomplete="email">
+            <input type="email" id="email" placeholder="quantrexacademy@gmail.com" autocomplete="email">
           </div>
           <div class="field">
             <label>Password</label>
-            <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password">
+            <input type="password" id="password" placeholder="Min 6 characters" autocomplete="current-password">
           </div>
+          <p id="forgotWrap" style="text-align:right;margin:-8px 0 14px;font-size:13px"><a href="#" id="forgotLink" style="color:var(--primary);font-weight:600;text-decoration:none">Forgot password?</a></p>
           <button class="btn btn-primary" id="emailLoginBtn">Sign In →</button>
         </div>
         <div id="phoneLogin" class="hidden">
@@ -199,7 +201,7 @@ const auth = QuantrexDB.auth;
 let chosenExam = "Engineering";
 let enteredPhone = "";
 let otpTimer = null, secondsLeft = 30;
-let loginMode = "email";
+let loginMode = "signin";
 
 // Exam picker
 document.querySelectorAll(".exam-opt").forEach(opt => {
@@ -236,34 +238,68 @@ function showSuccess(name) {
   setTimeout(() => { window.location.href = "app.html"; }, 1600);
 }
 
+function setAuthMode(mode) {
+  loginMode = mode;
+  document.querySelectorAll(".login-tab").forEach(t => t.classList.toggle("active", t.dataset.mode === mode));
+  document.getElementById("emailLogin").classList.toggle("hidden", mode === "phone");
+  document.getElementById("phoneLogin").classList.toggle("hidden", mode !== "phone");
+  const btn = document.getElementById("emailLoginBtn");
+  const forgot = document.getElementById("forgotWrap");
+  if (mode === "signup") {
+    btn.textContent = "Create Account →";
+    forgot.style.display = "none";
+  } else if (mode === "signin") {
+    btn.textContent = "Sign In →";
+    forgot.style.display = "block";
+  }
+}
+
 document.querySelectorAll(".login-tab").forEach(tab => {
-  tab.onclick = () => {
-    document.querySelectorAll(".login-tab").forEach(t => t.classList.remove("active"));
-    tab.classList.add("active");
-    loginMode = tab.dataset.mode;
-    document.getElementById("emailLogin").classList.toggle("hidden", loginMode !== "email");
-    document.getElementById("phoneLogin").classList.toggle("hidden", loginMode !== "phone");
-  };
+  tab.onclick = () => setAuthMode(tab.dataset.mode);
 });
+
+document.getElementById("forgotLink").onclick = async (e) => {
+  e.preventDefault();
+  const email = document.getElementById("email").value.trim();
+  if (!email) {
+    showMsg("msg1", "⚠️ Pehle apna email daalo", "err");
+    return;
+  }
+  try {
+    await auth.sendPasswordResetEmail(email);
+    showMsg("msg1", "✅ Password reset link bhej diya: " + email, "ok");
+  } catch (err) {
+    const msg = QuantrexDB.authErrorMessage ? QuantrexDB.authErrorMessage(err.code) : err.message;
+    showMsg("msg1", "❌ " + msg, "err");
+  }
+};
 
 document.getElementById("emailLoginBtn").onclick = async () => {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
   if (!email || !password) {
-    showMsg("msg1", "⚠️ Please enter email and password", "err");
+    showMsg("msg1", "⚠️ Email aur password daalo", "err");
+    return;
+  }
+  if (password.length < 6) {
+    showMsg("msg1", "⚠️ Password kam se kam 6 characters ka hona chahiye", "err");
     return;
   }
   const btn = document.getElementById("emailLoginBtn");
+  const isSignup = loginMode === "signup";
   btn.disabled = true;
-  btn.textContent = "Signing in...";
+  btn.textContent = isSignup ? "Creating account..." : "Signing in...";
   try {
-    const cred = await auth.signInWithEmailAndPassword(email, password);
+    const cred = isSignup
+      ? await auth.createUserWithEmailAndPassword(email, password)
+      : await auth.signInWithEmailAndPassword(email, password);
     await saveSession(cred.user);
     showSuccess(cred.user.displayName || cred.user.email);
   } catch (err) {
-    showMsg("msg1", "❌ " + (err.message || "Login failed"), "err");
+    const msg = QuantrexDB.authErrorMessage ? QuantrexDB.authErrorMessage(err.code) : err.message;
+    showMsg("msg1", "❌ " + msg, "err");
     btn.disabled = false;
-    btn.textContent = "Sign In →";
+    btn.textContent = isSignup ? "Create Account →" : "Sign In →";
   }
 };
 
@@ -274,7 +310,8 @@ document.getElementById("googleLoginBtn").onclick = async () => {
     await saveSession(cred.user);
     showSuccess(cred.user.displayName || "Google User");
   } catch (err) {
-    showMsg("msg1", "❌ " + (err.message || "Google sign-in failed"), "err");
+    const msg = QuantrexDB.authErrorMessage ? QuantrexDB.authErrorMessage(err.code) : err.message;
+    showMsg("msg1", "❌ " + msg, "err");
   }
 };
 
