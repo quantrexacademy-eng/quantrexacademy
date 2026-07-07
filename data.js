@@ -1,8 +1,8 @@
 // Quantrex Academy — Premium Question Bank (120781 questions, LaTeX preserved)
 const EXAMS = {
-  Engineering: { name: "JEE Main & Advanced", subjects: ["Physics", "Chemistry", "Mathematics"], color: "#0D9488", icon: "⚙️" },
-  Medical:     { name: "NEET UG", subjects: ["Physics", "Chemistry", "Biology", "Zoology", "Botany"], color: "#2bc48a", icon: "⚕️" },
-  Foundation:  { name: "Class 9 & 10", subjects: ["Science", "Mathematics"], color: "#7c5ce7", icon: "📚" }
+  Engineering: { name: "JEE Main & Advanced", subjects: ["Physics", "Chemistry", "Mathematics"], color: "#0D9488", icon: "⚙️", logo: "assets/exam-logos/jee-main.svg" },
+  Medical:     { name: "NEET UG", subjects: ["Physics", "Chemistry", "Biology", "Zoology", "Botany"], color: "#2bc48a", icon: "⚕️", logo: "assets/exam-logos/neet.svg" },
+  Foundation:  { name: "Class 9 & 10", subjects: ["Science", "Mathematics"], color: "#7c5ce7", icon: "📚", logo: "assets/exam-logos/nda.svg" }
 };
 
 const CHAPTERS = {

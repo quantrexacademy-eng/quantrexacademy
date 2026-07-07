@@ -40,9 +40,12 @@ const MarksShell = (() => {
 
     const yearMeta = exam._marksYearRange ? `<small class="marks-exam-meta">${exam._marksYearRange}${exam._marksPaperCount ? ` · ${exam._marksPaperCount} Papers` : ""} · ${exam.count.toLocaleString()} Qs</small>` : `<small class="marks-exam-meta">${exam.count.toLocaleString()} Questions</small>`;
 
+    const examLogo = typeof QuantrexExamLogos !== "undefined"
+      ? QuantrexExamLogos.html(exam.slug, 40, "marks-exam-ic-img")
+      : '<span class="marks-exam-ic">📝</span>';
     return `<aside class="marks-subj-rail">
       <div class="marks-exam-head" title="Switch exam" ${typeof mg === "function" ? mg("cpyqb", { step: "exams", forceExamList: true }) : ""}>
-        <span class="marks-exam-ic">📝</span>
+        ${examLogo}
         <div><strong>${exam.title}</strong>${yearMeta}</div>
       </div>
       <nav class="marks-subj-list">${items}</nav>
@@ -78,7 +81,7 @@ const MarksShell = (() => {
     if (!block || !exam) return;
     block.innerHTML = `
       <div class="marks-side-exam" ${typeof mg === "function" ? mg("cpyqb", { step: "chapters", exam: exam.slug, subject: localStorage.getItem(SUBJ_KEY) || (exam.subjects[0] && exam.subjects[0].name) }) : ""}>
-        <span class="marks-side-exam-ic">🔶</span>
+        ${typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(exam.slug, 32, "marks-side-exam-ic-img") : '<span class="marks-side-exam-ic">🔶</span>'}
         <div><strong>${exam.title}</strong><small>${exam._marksYearRange || ""} ${exam._marksPaperCount ? `· ${exam._marksPaperCount} Papers` : ""}</small></div>
       </div>`;
   }

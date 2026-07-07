@@ -108,7 +108,7 @@ const QuantrexAssignments = (() => {
         <small>By ${a.teacherName || "Teacher"} · Code <b>${a.code}</b></small>
         <button type="button" class="btn-primary sm" onclick="QuantrexAssignments.start('${a.id}')">Start Assignment →</button>
       </div>`).join("");
-    return `${topbar("Quantrex Assignments", "Classroom learning — MARKS style")}
+    return `${topbar("Quantrex Assignments", "Classroom learning — live assignments")}
       ${rolePickerHtml()}
       <div class="assign-join-box">
         <h3>Join with code</h3>

@@ -434,7 +434,10 @@ function viewQuestion(id) {
   const bm = STATE.bookmarks.includes(q.id);
   const sv = STATE.solved.find(s => s.id === q.id);
   const subjTag = (q.subject || "").toLowerCase().replace(/\s+/g, "-");
-  const sourceLabel = q._book && typeof bookQuestionLabel === "function" ? bookQuestionLabel(q) : (q.source || "");
+  const sourceLabel = typeof QuantrexStrip !== "undefined"
+    ? QuantrexStrip.sourceLabel(q)
+    : (q._book && typeof bookQuestionLabel === "function" ? bookQuestionLabel(q) : (q.source || ""));
+  const sourceLogo = typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.forQuestion(q) : "";
   const done = !!pc.done[q.id];
   const sel = pc.selected[q.id];
 
@@ -442,7 +445,7 @@ function viewQuestion(id) {
     ? MarksLive.isQuestionIncomplete(q)
     : false;
   const opts = incomplete
-    ? `<div class="empty" style="padding:20px">Loading options from MARKS…</div>`
+    ? `<div class="empty" style="padding:20px">Loading options…</div>`
     : (q.options || []).map((o, i) => {
     let cls = "qx-prac-opt";
     if (sel === i) cls += " selected";
@@ -485,7 +488,7 @@ function viewQuestion(id) {
     <div class="qx-prac-meta">
       <span class="tag tag-${subjTag}">${q.subject}</span>
       <span class="tag tag-diff">${q.difficulty || "Medium"}</span>
-      <span class="tag" title="${sourceLabel}">📌 ${sourceLabel}</span>
+      <span class="tag qx-src-tag" title="${sourceLabel}">${sourceLogo}<span>${typeof QuantrexStrip !== "undefined" ? QuantrexStrip.tagLabel(sourceLabel) : sourceLabel}</span></span>
       ${sv ? `<span class="tag ${sv.correct ? "tag-ok" : "tag-no"}">${sv.correct ? "✓ Solved" : "✗ Wrong"}</span>` : ""}
     </div>
     <div class="qx-prac-q qx-content">${qBody}</div>
@@ -520,7 +523,7 @@ function qxPracticeResultHtml(q, sel) {
     <strong>${correct ? "✅ Correct!" : "❌ Incorrect"}</strong>
     ${!correct ? `<p class="qx-prac-correct-ans">Correct answer: <b>${String.fromCharCode(65 + q.answer)}.</b> <span class="qx-content">${ansLabel}</span></p>` : ""}
     ${solBlock}
-    ${!solBlock ? `<p class="qx-no-sol-note">Solution not available for this question on MARKS.</p>` : ""}
+    ${!solBlock ? `<p class="qx-no-sol-note">Solution not available for this question.</p>` : ""}
   </div>`;
 }
 
@@ -779,6 +782,7 @@ function resetData() {
 // ---------- Toast ----------
 let toastTimer;
 function showToast(msg) {
+  if (typeof QuantrexStrip !== "undefined") msg = QuantrexStrip.toastText(msg);
   const t = document.getElementById("appToast");
   t.textContent = msg; t.classList.add("show");
   clearTimeout(toastTimer);

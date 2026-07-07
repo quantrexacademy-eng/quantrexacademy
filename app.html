@@ -803,6 +803,71 @@
         .qx-chapter-test-bar { display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, var(--primary-light), var(--white)); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; margin-bottom: 16px; }
         .qx-chapter-test-bar strong { display: block; font-size: 15px; }
         .qx-chapter-test-bar small { color: var(--gray); font-size: 12px; }
+        /* Quantrex Analytics — unique intelligence UI */
+        .qx-analytics-page { max-width: 960px; margin: 0 auto; }
+        .qx-an-hero {
+            display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+            padding: 24px 28px; border-radius: 20px; margin-bottom: 20px;
+            background: linear-gradient(135deg, #0f766e 0%, #0d9488 40%, #6366f1 100%);
+            color: #fff; box-shadow: 0 12px 40px rgba(13,148,136,.25);
+        }
+        .qx-an-hero-left { display: flex; align-items: center; gap: 16px; }
+        .qx-an-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; opacity: .75; margin-bottom: 4px; }
+        .qx-an-hero h2 { font-family: 'Kanit'; font-size: 26px; font-weight: 800; margin: 0; }
+        .qx-an-sub { font-size: 13px; opacity: .8; margin-top: 4px; }
+        .qx-an-exam-logo { border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,.2); }
+        .qx-an-hero-ring { flex-shrink: 0; }
+        .qx-an-ring { width: 120px; height: 120px; }
+        .qx-an-kpis { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 20px; }
+        .qx-an-kpi { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
+        .qx-an-kpi-val { display: block; font-family: 'Kanit'; font-size: 24px; font-weight: 800; color: var(--primary); }
+        .qx-an-kpi-lbl { font-size: 11px; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: .04em; }
+        .qx-an-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .qx-an-panel { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+        .qx-an-panel h3 { font-family: 'Kanit'; font-size: 16px; font-weight: 700; margin-bottom: 14px; }
+        .qx-an-trend { display: flex; align-items: flex-end; gap: 8px; height: 100px; }
+        .qx-an-trend-col { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: flex-end; }
+        .qx-an-trend-bar { width: 100%; max-width: 36px; background: linear-gradient(180deg, #2dd4bf, #0d9488); border-radius: 8px 8px 4px 4px; min-height: 8px; transition: height .3s; }
+        .qx-an-trend-col small { font-size: 10px; color: var(--gray); margin-top: 6px; font-weight: 600; }
+        .qx-an-diff-row { display: flex; flex-wrap: wrap; gap: 10px; }
+        .qx-an-diff-pill { background: var(--bg); border-radius: 12px; padding: 12px 16px; min-width: 100px; }
+        .qx-an-diff-pill span { display: block; font-size: 12px; color: var(--gray); font-weight: 600; }
+        .qx-an-diff-pill strong { font-size: 20px; color: var(--primary); }
+        .qx-an-diff-pill small { font-size: 11px; color: var(--gray); }
+        .qx-an-subj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+        .qx-an-subj-card { background: var(--bg); border-radius: 12px; padding: 14px; }
+        .qx-an-subj-top { display: flex; justify-content: space-between; font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+        .qx-an-subj-track { height: 8px; background: var(--border); border-radius: 99px; overflow: hidden; margin-bottom: 6px; }
+        .qx-an-subj-fill { height: 100%; border-radius: 99px; }
+        .qx-an-subj-card small { font-size: 11px; color: var(--gray); }
+        .qx-an-history { display: flex; flex-direction: column; gap: 8px; }
+        .qx-an-hist-row { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--bg); border-radius: 12px; border: 1px solid var(--border); }
+        .qx-an-hist-body { flex: 1; min-width: 0; }
+        .qx-an-hist-body strong { display: block; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .qx-an-hist-body small { color: var(--gray); font-size: 11px; }
+        .qx-an-hist-score { text-align: right; }
+        .qx-an-pct { display: inline-block; font-weight: 800; font-size: 15px; padding: 4px 10px; border-radius: 8px; }
+        .qx-an-pct.ok { background: var(--green-light); color: var(--green); }
+        .qx-an-pct.low { background: var(--red-light); color: var(--red); }
+        .qx-an-hist-logo { border-radius: 8px; flex-shrink: 0; }
+        .qx-an-empty, .qx-an-muted { color: var(--gray); font-size: 14px; padding: 20px; text-align: center; }
+        .qx-an-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+        .qx-exam-logo, .marks-exam-ic-img, .marks-side-exam-ic-img, .dash-board-logo, .dash-tool-logo, .qx-card-exam-logo {
+            border-radius: 8px; object-fit: contain; vertical-align: middle; flex-shrink: 0;
+        }
+        .qx-src-tag { display: inline-flex; align-items: center; gap: 6px; }
+        .qx-src-tag img { width: 18px; height: 18px; border-radius: 4px; }
+        .q-footer .qx-card-exam-logo { width: 20px; height: 20px; margin-right: 4px; vertical-align: middle; }
+        .dash-board-pill { display: inline-flex; align-items: center; gap: 8px; }
+        .dash-tool-card .dash-tool-logo { margin-bottom: 8px; }
+        .marks-exam-head { display: flex; align-items: flex-start; gap: 10px; }
+        .marks-exam-ic-img { border-radius: 10px; }
+        .exam-card-logo { width: 44px; height: 44px; border-radius: 12px; }
+        .exam-card-ic { display: flex; align-items: center; justify-content: center; }
+        @media (max-width: 768px) {
+            .qx-an-kpis { grid-template-columns: repeat(2, 1fr); }
+            .qx-an-grid { grid-template-columns: 1fr; }
+        }
         .qx-analytics-bars { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
         .qx-subj-bar { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; }
         .qx-subj-label { display: flex; justify-content: space-between; font-weight: 600; font-size: 14px; margin-bottom: 8px; }
@@ -1234,7 +1299,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxdiagram417</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxbrand418</div>
             </div>
         </aside>
 
@@ -1260,28 +1325,30 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
-    <script>window.QX_BUILD="qxdiagram417";</script>
-    <script src="qx-perf.js?v=qxdiagram417"></script>
-    <script src="firebase-config.js?v=qxdiagram417" defer></script>
-    <script src="stack-config.js?v=qxdiagram417" defer></script>
-    <script src="math-render.js?v=qxdiagram417" defer></script>
-    <script src="data.js?v=qxdiagram417" defer></script>
-    <script src="firebase-db.js?v=qxdiagram417" defer></script>
-    <script src="firebase-storage.js?v=qxdiagram417" defer></script>
-    <script src="payments.js?v=qxdiagram417" defer></script>
-    <script src="premium.js?v=qxdiagram417" defer></script>
-    <script src="leaderboard.js?v=qxdiagram417" defer></script>
-    <script src="community.js?v=qxdiagram417" defer></script>
-    <script src="book-covers.js?v=qxdiagram417" defer></script>
-    <script src="marks-shell.js?v=qxdiagram417" defer></script>
-    <script src="marks-live.js?v=qxdiagram417" defer></script>
-    <script src="marks-features.js?v=qxdiagram417" defer></script>
-    <script src="assignments.js?v=qxdiagram417" defer></script>
-    <script src="custom-test.js?v=qxdiagram417" defer></script>
-    <script src="test-engine.js?v=qxdiagram417" defer></script>
-    <script src="analytics.js?v=qxdiagram417" defer></script>
-    <script src="search.js?v=qxdiagram417" defer></script>
-    <script src="theme.js?v=qxdiagram417" defer></script>
-    <script src="app.js?v=qxdiagram417" defer></script>
+    <script>window.QX_BUILD="qxbrand418";</script>
+    <script src="qx-perf.js?v=qxbrand418"></script>
+    <script src="firebase-config.js?v=qxbrand418" defer></script>
+    <script src="stack-config.js?v=qxbrand418" defer></script>
+    <script src="strip/branding-strip.js?v=qxbrand418" defer></script>
+    <script src="exam-logos.js?v=qxbrand418" defer></script>
+    <script src="math-render.js?v=qxbrand418" defer></script>
+    <script src="data.js?v=qxbrand418" defer></script>
+    <script src="firebase-db.js?v=qxbrand418" defer></script>
+    <script src="firebase-storage.js?v=qxbrand418" defer></script>
+    <script src="payments.js?v=qxbrand418" defer></script>
+    <script src="premium.js?v=qxbrand418" defer></script>
+    <script src="leaderboard.js?v=qxbrand418" defer></script>
+    <script src="community.js?v=qxbrand418" defer></script>
+    <script src="book-covers.js?v=qxbrand418" defer></script>
+    <script src="marks-shell.js?v=qxbrand418" defer></script>
+    <script src="marks-live.js?v=qxbrand418" defer></script>
+    <script src="marks-features.js?v=qxbrand418" defer></script>
+    <script src="assignments.js?v=qxbrand418" defer></script>
+    <script src="custom-test.js?v=qxbrand418" defer></script>
+    <script src="test-engine.js?v=qxbrand418" defer></script>
+    <script src="analytics.js?v=qxbrand418" defer></script>
+    <script src="search.js?v=qxbrand418" defer></script>
+    <script src="theme.js?v=qxbrand418" defer></script>
+    <script src="app.js?v=qxbrand418" defer></script>
 </body>
 </html>

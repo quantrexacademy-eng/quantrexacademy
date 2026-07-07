@@ -142,9 +142,11 @@ function renderQCard(q) {
   const dateLine = q.paperDate && typeof MarksLive !== "undefined"
     ? MarksLive.fmtDate(q.paperDate)
     : "";
+  const srcText = typeof QuantrexStrip !== "undefined" ? QuantrexStrip.sourceLabel(q) : (q.source || q.paperSource || "");
+  const examLogo = typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.forQuestion(q).replace('class="qx-exam-logo"', 'class="qx-exam-logo qx-card-exam-logo"') : "";
   const srcLine = bookLabel
     ? `<span class="qx-book-badge" title="${bookTip}">📕 ${bookLabel}</span>`
-    : (dateLine ? `📅 ${dateLine} · 📌 ${q.source || q.paperSource || ""}` : `📖 ${q.chapter} · 📌 ${q.source}`);
+    : `${examLogo}${dateLine ? `📅 ${dateLine} · ` : ""}<span class="qx-src-label">📌 ${srcText}</span>`;
   const hasSol = typeof MarksLive !== "undefined" && MarksLive.hasRealSolution
     ? MarksLive.hasRealSolution(q.solution)
     : !!String(q.solution || "").replace(/<[^>]+>/g, "").trim();
@@ -466,7 +468,7 @@ async function viewCpyqb(payload) {
     _lastListFn = () => ({ step: "exams" });
     const cards = exams.map(e => `
       <div class="exam-card" ${mg("cpyqb", { step: "subjects", exam: e.slug })}>
-        <div class="exam-card-ic">📝</div>
+        <div class="exam-card-ic">${typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(e.slug, 44, "exam-card-logo") : "📝"}</div>
         <strong>${e.title}</strong>
         <small>${e.count.toLocaleString()} questions · ${e.subjects.length} subjects</small>
       </div>`).join("");
@@ -710,7 +712,7 @@ async function viewNeetModuleBank(payload, moduleId, opts) {
   const navName = opts.navName || (moduleId === "ncert" ? "neet_ncert" : "neet_allqs");
   const mod = await fetchModuleNav(navName);
   const title = opts.title || (mod && mod.title) || (moduleId === "ncert" ? "NCERT Based Qs Bank" : "All Question Bank");
-  const subtitle = opts.subtitle || (moduleId === "ncert" ? "Syllabus-aligned NCERT questions from MARKS" : "Chapter-wise questions by subject");
+  const subtitle = opts.subtitle || (moduleId === "ncert" ? "Syllabus-aligned NCERT questions · Quantrex" : "Chapter-wise questions by subject");
   const examSlug = (mod && mod.examSlug) || "neet";
   const subjects = filterNcertSubjects((mod && mod.subjects) || [], mod);
   const viewKey = opts.viewKey || moduleId;
@@ -811,7 +813,7 @@ async function viewNeetModuleBank(payload, moduleId, opts) {
 
 async function viewBoardMarksBank(payload) {
   if (typeof MarksLive === "undefined") {
-    return `${topbar("Board PYQs", "")}<div class="empty">MARKS live module loading…</div>`;
+    return `${topbar("Board PYQs", "")}<div class="empty">Loading board questions…</div>`;
   }
   const p = { step: "subjects", ...(payload || {}) };
   const examId = p.examId || MarksLive.boardId();
@@ -825,7 +827,7 @@ async function viewBoardMarksBank(payload) {
     await MarksLive.ensureToken();
     examData = await MarksLive.boardSubjects(examId);
   } catch (e) {
-    return `${topbar(title, subtitle)}<div class="empty">Could not load ${boardName} board data from MARKS. Check connection.</div>`;
+    return `${topbar(title, subtitle)}<div class="empty">Could not load ${boardName} board data. Check connection.</div>`;
   }
 
   const subjects = examData.subjects || [];
@@ -914,10 +916,10 @@ async function viewBoardMarksBank(payload) {
 }
 
 const NCERT_KIND_NAV = {
-  lblq: { title: "NCERT Line by Line Qs", sub: "Concept-by-concept · MARKS" },
-  ncoq: { title: "NCERT & Exemplar Qs", sub: "NCERT + Exemplar · MARKS" },
-  dbq: { title: "Diagram Based Qs", sub: "Figure-based NCERT Qs · MARKS" },
-  ncert: { title: "NCERT Based Qs Bank", sub: "Syllabus-aligned · MARKS" }
+  lblq: { title: "NCERT Line by Line Qs", sub: "Concept-by-concept · Quantrex" },
+  ncoq: { title: "NCERT & Exemplar Qs", sub: "NCERT + Exemplar · Quantrex" },
+  dbq: { title: "Diagram Based Qs", sub: "Figure-based NCERT Qs" },
+  ncert: { title: "NCERT Based Qs Bank", sub: "Syllabus-aligned · Quantrex" }
 };
 
 async function viewNcert(payload) {
@@ -926,18 +928,18 @@ async function viewNcert(payload) {
     return viewNeetModuleBank(payload, "ncert");
   }
   if (typeof MarksLive === "undefined") {
-    return `${topbar("NCERT Toolbox", "")}<div class="empty">MARKS live module loading…</div>`;
+    return `${topbar("NCERT Toolbox", "")}<div class="empty">Loading NCERT questions…</div>`;
   }
 
   const liveMeta = MarksLive.NCERT_KIND_META[kind] || MarksLive.NCERT_KIND_META.lblq;
   const title = (NCERT_KIND_NAV[kind] && NCERT_KIND_NAV[kind].title) || liveMeta.title;
-  const subtitle = (NCERT_KIND_NAV[kind] && NCERT_KIND_NAV[kind].sub) || "Real MARKS NCERT questions";
+  const subtitle = (NCERT_KIND_NAV[kind] && NCERT_KIND_NAV[kind].sub) || "NCERT-aligned question bank";
   const p = { step: "subjects", ncertKind: kind, ...(payload || {}) };
 
   try {
     await MarksLive.ensureToken();
   } catch (e) {
-    return `${topbar(title, subtitle)}<div class="empty">MARKS token missing — cannot load NCERT questions.</div>`;
+    return `${topbar(title, subtitle)}<div class="empty">Session expired — refresh and login again.</div>`;
   }
 
   if (p.step === "subjects" || !p.subject) {
@@ -952,7 +954,7 @@ async function viewNcert(payload) {
         <span class="subj-ic">${subjectIcon(s.name)}</span>
         <div><strong>${s.name}</strong><small>${title}</small></div>
       </div>`).join("");
-    return `${topbar(title, subtitle)}<div class="subj-grid">${cards || '<div class="empty">No NCERT subjects from MARKS.</div>'}</div>`;
+    return `${topbar(title, subtitle)}<div class="subj-grid">${cards || '<div class="empty">No NCERT subjects available.</div>'}</div>`;
   }
 
   const nav = await MarksLive.ncertSubjects(kind);
@@ -995,7 +997,7 @@ async function viewNcert(payload) {
     return `${topbar(p.chapter, p.subject + " · " + title)}${bc}<div class="ch-grid qx-topic-grid">${cards || '<div class="empty">No question sets for this chapter.</div>'}</div>`;
   }
 
-  showToast("📚 Loading NCERT questions from MARKS…");
+  showToast("📚 Loading NCERT questions…");
   const qs = await MarksLive.ncertSetQuestions(subj.id, chapterId, p.moduleId, p.setId, {
     subject: p.subject,
     chapter: p.chapter,
@@ -1593,7 +1595,7 @@ async function pyqResumePaper(slug, source) {
   }
   if (!_banksLoaded[slug]) await loadSingleBank(slug);
   if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
-    showToast("📚 Loading full paper options from MARKS…");
+    showToast("📚 Loading full paper options…");
     await MarksLive.prefetchQuestions(saved.ids);
   }
   const attemptKey = pyqAttemptKey(slug, source);
@@ -1779,7 +1781,7 @@ async function startPyqPaperMock(slug, source, freshStart) {
   if (freshStart) marksClearSession();
   const ids = qs.map(q => q.id);
   if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
-    showToast("📚 Loading full paper options from MARKS…");
+    showToast("📚 Loading full paper options…");
     await MarksLive.prefetchQuestions(ids);
   }
   const duration = pyqPaperDuration(qs.length);
@@ -2034,26 +2036,29 @@ async function marksDashboardSections() {
   const examLabel = EXAMS[STATE.exam].name;
   const board = dashBoardSelected();
   const boards = [
-    { id: "CBSE", label: "CBSE", icon: "📘" },
-    { id: "HSC", label: "HSC (Maharashtra)", icon: "🟡" }
+    { id: "CBSE", label: "CBSE" },
+    { id: "HSC", label: "HSC (Maharashtra)" }
   ];
-  const boardPills = boards.map(b => `
-    <button type="button" class="dash-board-pill${board === b.id ? " on" : ""}" data-dash-board="${b.id}">
-      <span>${b.icon}</span>${b.label}
-    </button>`).join("");
+  const boardPills = boards.map(b => {
+    const logo = typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(b.id, 22, "dash-board-logo") : "";
+    return `<button type="button" class="dash-board-pill${board === b.id ? " on" : ""}" data-dash-board="${b.id}">
+      ${logo}<span>${b.label}</span>
+    </button>`;
+  }).join("");
 
   const boardTitle = board === "HSC" ? "HSC (Maharashtra)" : "CBSE";
+  const boardLogo = typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(board, 36, "dash-tool-logo") : "";
   const boardPyqCard = `
     <div class="dash-tool-card dash-board-pyq-card" ${mg("board", { step: "subjects" })}>
-      <span class="dash-tool-ic">${board === "HSC" ? "🟡" : "📘"}</span>
+      ${boardLogo}
       <strong>${boardTitle} Board PYQs</strong>
       <small>Physics · Chemistry · Mathematics · Biology · with dates</small>
     </div>`;
 
   const ncertTools = [
-    { icon: "📋", title: "NCERT Line by Line Qs", sub: "MARKS LBLQ module", view: "ncert", payload: { step: "subjects", ncertKind: "lblq" } },
-    { icon: "🔵", title: "NCERT & Exemplar Qs", sub: "MARKS NCOQ module", view: "ncert", payload: { step: "subjects", ncertKind: "ncoq" } },
-    { icon: "📊", title: "Diagram Based Qs", sub: "MARKS figure-based Qs", view: "ncert", payload: { step: "subjects", ncertKind: "dbq" } }
+    { icon: "📋", title: "NCERT Line by Line Qs", sub: "Concept-by-concept", view: "ncert", payload: { step: "subjects", ncertKind: "lblq" } },
+    { icon: "🔵", title: "NCERT & Exemplar Qs", sub: "NCERT + Exemplar", view: "ncert", payload: { step: "subjects", ncertKind: "ncoq" } },
+    { icon: "📊", title: "Diagram Based Qs", sub: "Figure-based NCERT", view: "ncert", payload: { step: "subjects", ncertKind: "dbq" } }
   ];
   const toolCards = ncertTools.map(t => `
     <div class="dash-tool-card" ${mg(t.view, t.payload)}>
@@ -2086,7 +2091,7 @@ async function marksDashboardSections() {
       <div class="dash-ncert-block">
         <div class="dash-ncert-head">
           <h2><span class="dash-ncert-tag">NCERT</span> Toolbox</h2>
-          <p>Same questions as MARKS web — LBLQ · NCOQ · Diagram</p>
+          <p>Line-by-line · Exemplar · Diagram-based NCERT</p>
         </div>
         <div class="dash-tool-scroll">${toolCards}</div>
       </div>

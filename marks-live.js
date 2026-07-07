@@ -142,7 +142,7 @@ const MarksLive = (() => {
 
     const papers = d.previousYearPapers || d.yearsAppeared || [];
     const paper = papers[0] || {};
-    const source = paper.title || meta.source || d.source || "MARKS";
+    const source = paper.title || meta.source || d.source || "Quantrex PYQ";
     const paperDate = paper.heldOn || d.previousYear || null;
 
     const solRaw = htmlPart((d.solution || {}).text, (d.solution || {}).image);
