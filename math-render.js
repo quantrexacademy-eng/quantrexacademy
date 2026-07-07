@@ -53,12 +53,47 @@ window.Mx = (() => {
   const QUESTION_IMG_RX = /cdn-question-pool\.getmarks/i;
   const FORMULA_IMG_RX = /formula_cards/i;
 
+  function diagramWrapClass(attrs) {
+    return QUESTION_IMG_RX.test(attrs) || /cbse|diagram|question-pool|twelfth|tenth/i.test(attrs)
+      ? "qx-diagram-wrap"
+      : "qx-img-wrap";
+  }
+
   function wrapDiagramImages(html) {
     return html.replace(/<img([^>]*)>/gi, (m, attrs) => {
       if (FORMULA_IMG_RX.test(attrs)) return m;
       if (BRAND_IMG_RX.test(attrs)) return "";
-      if (/class=["'][^"']*qx-img-wrap/i.test(attrs)) return m;
-      return `<span class="qx-img-wrap"><img${attrs}></span>`;
+      if (/class=["'][^"']*qx-(img|diagram)-wrap/i.test(attrs)) return m;
+      const wrap = diagramWrapClass(attrs);
+      const hasLoading = /loading=/i.test(attrs);
+      const extra = hasLoading ? "" : ' loading="lazy" decoding="async"';
+      const hint = wrap === "qx-diagram-wrap"
+        ? '<small class="qx-diagram-hint">Tap diagram to zoom</small>'
+        : "";
+      return `<span class="${wrap}"><img${attrs}${extra}></span>${hint}`;
+    });
+  }
+
+  function openDiagramModal(src) {
+    if (!src) return;
+    document.querySelectorAll(".qx-diagram-modal").forEach(n => n.remove());
+    const overlay = document.createElement("div");
+    overlay.className = "qx-diagram-modal";
+    overlay.innerHTML = `<button type="button" class="qx-diagram-modal-close" aria-label="Close">✕</button><img src="${src.replace(/"/g, "&quot;")}" alt="Diagram">`;
+    overlay.onclick = e => { if (e.target === overlay || e.target.classList.contains("qx-diagram-modal-close")) overlay.remove(); };
+    document.body.appendChild(overlay);
+  }
+
+  function bindDiagramZoom(root) {
+    const scope = root || document.getElementById("app-main") || document.body;
+    if (!scope) return;
+    scope.querySelectorAll(".qx-diagram-wrap").forEach(wrap => {
+      if (wrap._qxZoomBound) return;
+      wrap._qxZoomBound = true;
+      wrap.onclick = () => {
+        const img = wrap.querySelector("img");
+        if (img && img.src) openDiagramModal(img.src);
+      };
     });
   }
 
@@ -79,17 +114,25 @@ window.Mx = (() => {
       const src = img.getAttribute("src") || "";
       const alt = img.getAttribute("alt") || "";
       if (FORMULA_IMG_RX.test(src) || img.classList.contains("fc-img")) return;
-      if (QUESTION_IMG_RX.test(src)) {
-        if (!img.closest(".qx-img-wrap")) {
+      if (QUESTION_IMG_RX.test(src) || /cbse|diagram|question-pool/i.test(src)) {
+        if (!img.closest(".qx-diagram-wrap") && !img.closest(".qx-img-wrap")) {
           const wrap = document.createElement("span");
-          wrap.className = "qx-img-wrap";
+          wrap.className = "qx-diagram-wrap";
           img.parentNode.insertBefore(wrap, img);
           wrap.appendChild(img);
+          if (!wrap.nextElementSibling || !wrap.nextElementSibling.classList.contains("qx-diagram-hint")) {
+            const hint = document.createElement("small");
+            hint.className = "qx-diagram-hint";
+            hint.textContent = "Tap diagram to zoom";
+            wrap.parentNode.insertBefore(hint, wrap.nextSibling);
+          }
         }
+        img.loading = img.loading || "lazy";
+        img.decoding = "async";
         return;
       }
       if (BRAND_IMG_RX.test(src) || BRAND_IMG_RX.test(alt)) { img.remove(); return; }
-      if (!img.closest(".qx-img-wrap") && src && !src.startsWith("data:")) {
+      if (!img.closest(".qx-img-wrap") && !img.closest(".qx-diagram-wrap") && src && !src.startsWith("data:")) {
         const wrap = document.createElement("span");
         wrap.className = "qx-img-wrap";
         img.parentNode.insertBefore(wrap, img);
@@ -145,6 +188,7 @@ window.Mx = (() => {
   function afterRender(root) {
     requestAnimationFrame(() => {
       cleanDom(root);
+      bindDiagramZoom(root);
       if (typeof QxPerf !== "undefined") {
         QxPerf.lazyImages(root);
         QxPerf.smoothPaint(root);
@@ -153,5 +197,5 @@ window.Mx = (() => {
     });
   }
 
-  return { html, typeset, afterRender, cleanDom, initMathJax };
+  return { html, typeset, afterRender, cleanDom, bindDiagramZoom, openDiagramModal, initMathJax };
 })();

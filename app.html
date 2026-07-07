@@ -487,7 +487,7 @@
 
         /* Quantrex math & question formatting */
         .qx-content { line-height: 1.65; word-wrap: break-word; }
-        .qx-content img { max-width: 100%; height: auto; border-radius: 8px; margin: 8px 0; }
+        .qx-content img { max-width: 100%; height: auto; border-radius: 8px; margin: 8px 0; display: block; }
         .qx-content table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 14px; }
         .qx-content td, .qx-content th { border: 1px solid var(--border); padding: 8px 10px; }
         .qx-content p { margin: 6px 0; }
@@ -500,9 +500,38 @@
         img[src*="marks_selected"]:not([src*="formula_cards"]),
         img[src*="web_assets"], img[alt*="Get Marks App"] { display: none !important; }
         .fc-formula img.fc-img, .fc-img { display: block !important; }
-        .qx-img-wrap { display: inline-block; max-width: 100%; overflow: hidden; line-height: 0; vertical-align: middle; position: relative; }
-        .qx-img-wrap img { display: block; max-width: 100%; height: auto; clip-path: inset(0 0 10% 0); margin-bottom: -10%; }
-        .qx-img-wrap::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 12%; background: var(--card, #fff); pointer-events: none; }
+        .qx-img-wrap { display: block; max-width: 100%; margin: 10px 0; line-height: 0; }
+        .qx-img-wrap img { display: block; max-width: 100%; height: auto; border-radius: 8px; }
+        .qx-diagram-wrap {
+            display: block; max-width: min(100%, 720px); margin: 16px auto; padding: 14px;
+            background: var(--white); border: 1px solid var(--border); border-radius: 14px;
+            box-shadow: 0 4px 18px rgba(0,0,0,.07); line-height: 0; cursor: zoom-in;
+            transition: box-shadow .15s, transform .15s;
+        }
+        .qx-diagram-wrap:hover { box-shadow: 0 6px 24px rgba(0,0,0,.1); transform: translateY(-1px); }
+        .qx-diagram-wrap img {
+            display: block; width: 100%; height: auto; max-width: 100%; border-radius: 10px;
+            object-fit: contain; image-rendering: -webkit-optimize-contrast;
+        }
+        .qx-prac-q .qx-diagram-wrap, .mtk-q-text .qx-diagram-wrap, .qa-q .qx-diagram-wrap { max-width: min(100%, 780px); }
+        .qx-prac-opt-text .qx-diagram-wrap, .mtk-opt-text .qx-diagram-wrap { max-width: 100%; margin: 10px 0; padding: 10px; }
+        .qx-diagram-hint { display: block; font-size: 11px; color: var(--gray); text-align: center; margin-top: 8px; line-height: 1.3; letter-spacing: .02em; }
+        .qx-diagram-modal {
+            position: fixed; inset: 0; z-index: 10050; background: rgba(8,12,20,.88);
+            display: flex; align-items: center; justify-content: center; padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+        .qx-diagram-modal img {
+            max-width: min(96vw, 1100px); max-height: 92vh; width: auto; height: auto;
+            object-fit: contain; border-radius: 12px; background: #fff; padding: 8px;
+            box-shadow: 0 12px 40px rgba(0,0,0,.35);
+        }
+        .qx-diagram-modal-close {
+            position: fixed; top: 16px; right: 16px; width: 44px; height: 44px; border-radius: 50%;
+            border: none; background: rgba(255,255,255,.15); color: #fff; font-size: 22px; cursor: pointer;
+        }
+        [data-theme="dark"] .qx-diagram-wrap { background: #161b26; border-color: #3b4254; box-shadow: 0 4px 18px rgba(0,0,0,.25); }
+        [data-theme="dark"] .qx-diagram-modal img { background: #1a1f2e; }
         mjx-container { overflow-x: auto; max-width: 100%; }
         .fc-formula mjx-container { font-size: 1.2em !important; }
         .qa-q mjx-container { font-size: 1.1em !important; }
@@ -1165,7 +1194,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxhydrate414</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxdiagram415</div>
             </div>
         </aside>
 
@@ -1191,28 +1220,28 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
-    <script>window.QX_BUILD="qxhydrate414";</script>
-    <script src="qx-perf.js?v=qxhydrate414"></script>
-    <script src="firebase-config.js?v=qxhydrate414" defer></script>
-    <script src="stack-config.js?v=qxhydrate414" defer></script>
-    <script src="math-render.js?v=qxhydrate414" defer></script>
-    <script src="data.js?v=qxhydrate414" defer></script>
-    <script src="firebase-db.js?v=qxhydrate414" defer></script>
-    <script src="firebase-storage.js?v=qxhydrate414" defer></script>
-    <script src="payments.js?v=qxhydrate414" defer></script>
-    <script src="premium.js?v=qxhydrate414" defer></script>
-    <script src="leaderboard.js?v=qxhydrate414" defer></script>
-    <script src="community.js?v=qxhydrate414" defer></script>
-    <script src="book-covers.js?v=qxhydrate414" defer></script>
-    <script src="marks-shell.js?v=qxhydrate414" defer></script>
-    <script src="marks-live.js?v=qxhydrate414" defer></script>
-    <script src="marks-features.js?v=qxhydrate414" defer></script>
-    <script src="assignments.js?v=qxhydrate414" defer></script>
-    <script src="custom-test.js?v=qxhydrate414" defer></script>
-    <script src="test-engine.js?v=qxhydrate414" defer></script>
-    <script src="analytics.js?v=qxhydrate414" defer></script>
-    <script src="search.js?v=qxhydrate414" defer></script>
-    <script src="theme.js?v=qxhydrate414" defer></script>
-    <script src="app.js?v=qxhydrate414" defer></script>
+    <script>window.QX_BUILD="qxdiagram415";</script>
+    <script src="qx-perf.js?v=qxdiagram415"></script>
+    <script src="firebase-config.js?v=qxdiagram415" defer></script>
+    <script src="stack-config.js?v=qxdiagram415" defer></script>
+    <script src="math-render.js?v=qxdiagram415" defer></script>
+    <script src="data.js?v=qxdiagram415" defer></script>
+    <script src="firebase-db.js?v=qxdiagram415" defer></script>
+    <script src="firebase-storage.js?v=qxdiagram415" defer></script>
+    <script src="payments.js?v=qxdiagram415" defer></script>
+    <script src="premium.js?v=qxdiagram415" defer></script>
+    <script src="leaderboard.js?v=qxdiagram415" defer></script>
+    <script src="community.js?v=qxdiagram415" defer></script>
+    <script src="book-covers.js?v=qxdiagram415" defer></script>
+    <script src="marks-shell.js?v=qxdiagram415" defer></script>
+    <script src="marks-live.js?v=qxdiagram415" defer></script>
+    <script src="marks-features.js?v=qxdiagram415" defer></script>
+    <script src="assignments.js?v=qxdiagram415" defer></script>
+    <script src="custom-test.js?v=qxdiagram415" defer></script>
+    <script src="test-engine.js?v=qxdiagram415" defer></script>
+    <script src="analytics.js?v=qxdiagram415" defer></script>
+    <script src="search.js?v=qxdiagram415" defer></script>
+    <script src="theme.js?v=qxdiagram415" defer></script>
+    <script src="app.js?v=qxdiagram415" defer></script>
 </body>
 </html>
