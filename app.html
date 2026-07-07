@@ -325,8 +325,19 @@
         .marks-sec-head h3 { font-size: 18px; font-weight: 700; margin: 0; }
         .marks-sec-head a { font-size: 13px; font-weight: 700; color: var(--primary); text-decoration: none; }
         .sec-desc { color: var(--gray); font-size: 13px; margin: 0 0 12px; }
-        .exam-scroll { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; }
-        .exam-pill-card { flex-shrink: 0; min-width: 140px; text-align: center; }
+        .exam-scroll { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: thin; }
+        .exam-pill-card {
+            flex-shrink: 0; min-width: 128px; text-align: center;
+            background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+            padding: 14px 12px; cursor: pointer; transition: transform .15s, box-shadow .15s;
+        }
+        .exam-pill-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,.06); border-color: var(--primary); }
+        .exam-pill-ic { display: flex; align-items: center; justify-content: center; margin-bottom: 8px; min-height: 44px; }
+        .exam-pill-logo { width: 44px; height: 44px; object-fit: contain; }
+        .exam-pill-card strong { display: block; font-size: 13px; margin-bottom: 4px; line-height: 1.25; }
+        .exam-pill-card small { color: var(--gray); font-size: 11px; }
+        .subj-mini-ic { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; }
+        .subj-mini-ic img { width: 24px; height: 24px; object-fit: contain; }
         .subj-mini-grid { display: flex; gap: 10px; flex-wrap: wrap; }
         .subj-mini { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all .15s; }
         .subj-mini:hover { border-color: var(--primary); background: var(--primary-light); }
@@ -552,7 +563,7 @@
         img[src*="marks_selected"]:not([src*="formula_cards"]),
         img[src*="web_assets"], img[alt*="Get Marks App"] { display: none !important; }
         .fc-formula img.fc-img, .fc-img { display: block !important; }
-        img.qx-marks-icon, .board-subj-ic img, .marks-board-subj-ic, .marks-exam-ic-img { display: block !important; }
+        img.qx-marks-icon, .board-subj-ic img, .marks-board-subj-ic, .marks-exam-ic-img, .exam-pill-logo, .subj-mini-ic img { display: block !important; }
         .qx-img-wrap { display: block; max-width: 100%; margin: 10px 0; line-height: 0; }
         .qx-img-wrap img { display: block; max-width: 100%; height: auto; border-radius: 8px; }
 
@@ -1352,7 +1363,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxmarks423</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxexams424</div>
             </div>
         </aside>
 
@@ -1378,30 +1389,30 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
-    <script>window.QX_BUILD="qxmarks423";</script>
-    <script src="qx-perf.js?v=qxmarks423"></script>
-    <script src="firebase-config.js?v=qxmarks423" defer></script>
-    <script src="stack-config.js?v=qxmarks423" defer></script>
-    <script src="strip/branding-strip.js?v=qxmarks423" defer></script>
-    <script src="exam-logos.js?v=qxmarks423" defer></script>
-    <script src="math-render.js?v=qxmarks423" defer></script>
-    <script src="data.js?v=qxmarks423" defer></script>
-    <script src="firebase-db.js?v=qxmarks423" defer></script>
-    <script src="firebase-storage.js?v=qxmarks423" defer></script>
-    <script src="payments.js?v=qxmarks423" defer></script>
-    <script src="premium.js?v=qxmarks423" defer></script>
-    <script src="leaderboard.js?v=qxmarks423" defer></script>
-    <script src="community.js?v=qxmarks423" defer></script>
-    <script src="book-covers.js?v=qxmarks423" defer></script>
-    <script src="marks-shell.js?v=qxmarks423" defer></script>
-    <script src="marks-live.js?v=qxmarks423" defer></script>
-    <script src="marks-features.js?v=qxmarks423" defer></script>
-    <script src="assignments.js?v=qxmarks423" defer></script>
-    <script src="custom-test.js?v=qxmarks423" defer></script>
-    <script src="test-engine.js?v=qxmarks423" defer></script>
-    <script src="analytics.js?v=qxmarks423" defer></script>
-    <script src="search.js?v=qxmarks423" defer></script>
-    <script src="theme.js?v=qxmarks423" defer></script>
-    <script src="app.js?v=qxmarks423" defer></script>
+    <script>window.QX_BUILD="qxexams424";</script>
+    <script src="qx-perf.js?v=qxexams424"></script>
+    <script src="firebase-config.js?v=qxexams424" defer></script>
+    <script src="stack-config.js?v=qxexams424" defer></script>
+    <script src="strip/branding-strip.js?v=qxexams424" defer></script>
+    <script src="exam-logos.js?v=qxexams424" defer></script>
+    <script src="math-render.js?v=qxexams424" defer></script>
+    <script src="data.js?v=qxexams424" defer></script>
+    <script src="firebase-db.js?v=qxexams424" defer></script>
+    <script src="firebase-storage.js?v=qxexams424" defer></script>
+    <script src="payments.js?v=qxexams424" defer></script>
+    <script src="premium.js?v=qxexams424" defer></script>
+    <script src="leaderboard.js?v=qxexams424" defer></script>
+    <script src="community.js?v=qxexams424" defer></script>
+    <script src="book-covers.js?v=qxexams424" defer></script>
+    <script src="marks-shell.js?v=qxexams424" defer></script>
+    <script src="marks-live.js?v=qxexams424" defer></script>
+    <script src="marks-features.js?v=qxexams424" defer></script>
+    <script src="assignments.js?v=qxexams424" defer></script>
+    <script src="custom-test.js?v=qxexams424" defer></script>
+    <script src="test-engine.js?v=qxexams424" defer></script>
+    <script src="analytics.js?v=qxexams424" defer></script>
+    <script src="search.js?v=qxexams424" defer></script>
+    <script src="theme.js?v=qxexams424" defer></script>
+    <script src="app.js?v=qxexams424" defer></script>
 </body>
 </html>

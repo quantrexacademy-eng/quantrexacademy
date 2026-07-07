@@ -824,7 +824,11 @@ function bindDynamic() {
 function bootApp() {
   if (typeof QuantrexTheme !== "undefined") QuantrexTheme.init();
   document.querySelectorAll(".nav-item").forEach(n => {
-    n.onclick = () => go(n.dataset.view);
+    n.onclick = () => {
+      const v = n.dataset.view;
+      if (v === "cpyqb") go(v, { step: "exams", forceExamList: true });
+      else go(v);
+    };
   });
   const navMore = document.getElementById("navMoreToggle");
   const navMoreList = document.getElementById("navMoreList");

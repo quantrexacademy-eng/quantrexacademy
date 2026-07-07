@@ -45,6 +45,7 @@ const MarksShell = (() => {
     const examLogo = typeof QuantrexExamLogos !== "undefined"
       ? QuantrexExamLogos.html(exam.slug, 40, "marks-exam-ic-img")
       : '<span class="marks-exam-ic">📝</span>';
+    const cpyqbSwitchPayload = JSON.stringify({ step: "exams", forceExamList: true }).replace(/'/g, "&#39;");
     return `<aside class="marks-subj-rail">
       <div class="marks-exam-head" title="Switch exam" ${typeof mg === "function" ? mg("cpyqb", { step: "exams", forceExamList: true }) : ""}>
         ${examLogo}
@@ -54,7 +55,7 @@ const MarksShell = (() => {
       <button type="button" class="marks-analysis-btn" onclick="go('analytics')">
         <span>📊</span> Analysis <em class="marks-new-badge">NEW</em>
       </button>
-      <button type="button" class="marks-exam-switch" ${typeof mg === "function" ? mg("cpyqb", { step: "exams", forceExamList: true }) : ""}>Switch Exam</button>
+      <button type="button" class="marks-exam-switch" data-mg="cpyqb" data-mgp='${cpyqbSwitchPayload}'>Switch Exam</button>
     </aside>`;
   }
 

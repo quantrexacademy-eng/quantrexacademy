@@ -111,6 +111,26 @@ function marksThemedIcon(icon, size, cls, alt) {
     : "";
 }
 
+function dashExamIconFor(exam, apiItems) {
+  const item = (apiItems || []).find(i =>
+    i.title === exam.title
+    || (exam.slug && String(i.title || "").toLowerCase().replace(/[^a-z0-9]+/g, "_") === exam.slug)
+  );
+  if (item && item.icon) return marksThemedIcon(item.icon, 44, "exam-pill-logo", exam.title);
+  return typeof QuantrexExamLogos !== "undefined"
+    ? QuantrexExamLogos.html(exam.slug, 44, "exam-pill-logo")
+    : "";
+}
+
+function renderDashExamScroll(exams, apiItems) {
+  return (exams || []).map(e => `
+    <div class="exam-pill-card" ${mg("cpyqb", { step: "subjects", exam: e.slug })}>
+      <div class="exam-pill-ic">${dashExamIconFor(e, apiItems)}</div>
+      <strong>${e.title}</strong>
+      <small>${(e.count || 0).toLocaleString()} qs</small>
+    </div>`).join("");
+}
+
 function dashUserName() {
   try {
     const u = JSON.parse(localStorage.getItem("quantrex_user") || "null");
@@ -485,7 +505,7 @@ async function viewCpyqb(payload) {
   const nav = await fetchNav("cpyqb");
   const exams = nav.filter(e => e.category === STATE.exam);
 
-  if (!p.forceExamList && (!p.step || p.step === "exams") && !p.exam) {
+  if (p.resume && !p.forceExamList && (!p.step || p.step === "exams") && !p.exam) {
     const slug = (typeof MarksShell !== "undefined" && localStorage.getItem(MarksShell.EXAM_KEY))
       || (typeof PRIMARY_BANK !== "undefined" && PRIMARY_BANK[STATE.exam])
       || "jee_main";
@@ -493,11 +513,11 @@ async function viewCpyqb(payload) {
     if (autoExam) {
       const subj = (typeof MarksShell !== "undefined" && localStorage.getItem(MarksShell.SUBJ_KEY))
         || (autoExam.subjects[0] && autoExam.subjects[0].name);
-      if (subj) return viewCpyqb({ ...p, step: "chapters", exam: autoExam.slug, subject: subj });
+      if (subj) return viewCpyqb({ ...p, step: "chapters", exam: autoExam.slug, subject: subj, resume: true });
     }
   }
 
-  if (!p.forceExamList && p.step === "subjects" && p.exam && !p.subject) {
+  if (p.resume && !p.forceExamList && p.step === "subjects" && p.exam && !p.subject) {
     const saved = typeof MarksShell !== "undefined" ? localStorage.getItem(MarksShell.SUBJ_KEY) : null;
     if (saved) {
       const ex = exams.find(e => e.slug === p.exam);
@@ -2129,11 +2149,20 @@ async function viewQuickConcepts(payload) {
 
 // ============ MARKS-STYLE DASHBOARD (screens 407 + 408 flow) ============
 async function marksDashboardSections() {
-  const [bookCatalog, marksDash] = await Promise.all([
+  const [cpyqbNav, bookCatalog, marksDash] = await Promise.all([
+    fetchNav("cpyqb"),
     fetchBooks(),
     fetchMarksDashboard(),
     typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.loadExamIconsFromApi() : Promise.resolve()
   ]);
+  const dashExams = (cpyqbNav || []).filter(e => e.category === STATE.exam);
+  const cpyqbApiItems = (marksDash && marksDash.cpyqb && marksDash.cpyqb.items) || [];
+  const examScroll = renderDashExamScroll(dashExams, cpyqbApiItems);
+  const subjects = EXAMS[STATE.exam].subjects;
+  const subjGrid = subjects.map(s => `
+    <div class="subj-mini" ${mg("allqs", { step: "chapters", subject: s })}>
+      <span class="subj-mini-ic">${subjectIcon(s, null, 24)}</span><strong>${s}</strong>
+    </div>`).join("");
   const dashBooks = STATE.exam === "Medical"
     ? (bookCatalog.medical || [])
     : (bookCatalog.engineering || []);
@@ -2213,6 +2242,19 @@ async function marksDashboardSections() {
 
   return `
     <div class="dash-marks-home">
+      <div class="marks-section">
+        <div class="marks-sec-head"><h3>Chapter-wise PYQ Bank</h3><a href="#" ${mg("cpyqb", { step: "exams", forceExamList: true })}>View All →</a></div>
+        <p class="sec-desc">${dashExams.length} exams · tap to practice PYQs</p>
+        <div class="exam-scroll">${examScroll || '<div class="empty">No exams loaded.</div>'}</div>
+      </div>
+      <div class="marks-section">
+        <div class="marks-sec-head"><h3>All Question Bank</h3><a href="#" ${mg("allqs", { step: "subjects" })}>View All →</a></div>
+        <div class="subj-mini-grid">${subjGrid}</div>
+      </div>
+      ${STATE.exam === "Medical" ? `<div class="marks-section">
+        <div class="marks-sec-head"><h3>NCERT Based Qs Bank</h3><a href="#" ${mg("ncert", { step: "subjects", ncertKind: "lblq" })}>Open →</a></div>
+        <p class="sec-desc">100% aligned with latest NEET syllabus</p>
+      </div>` : ""}
       <div class="dash-ncert-block dash-board-block">
         <div class="dash-ncert-head">
           <h2>Board Exam PYQs</h2>
