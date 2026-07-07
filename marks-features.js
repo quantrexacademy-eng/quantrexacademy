@@ -162,6 +162,11 @@ function renderQCard(q) {
 
 function renderQList(qs, page, testMeta) {
   window._qxListQs = qs;
+  setTimeout(() => {
+    if (typeof qxBackgroundPrefetch === "function") {
+      qxBackgroundPrefetch(qs.slice(0, Math.min(qs.length, 250)).map(q => q.id));
+    }
+  }, 0);
   const shown = Math.min(qs.length, PAGE_SIZE * Math.max(1, page || _listPage || 1));
   _listPage = Math.ceil(shown / PAGE_SIZE) || 1;
   if (testMeta && qs.length >= 5) {
@@ -1587,6 +1592,10 @@ async function pyqResumePaper(slug, source) {
     return startPyqPaperMock(slug, source, true);
   }
   if (!_banksLoaded[slug]) await loadSingleBank(slug);
+  if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
+    showToast("📚 Loading full paper options from MARKS…");
+    await MarksLive.prefetchQuestions(saved.ids);
+  }
   const attemptKey = pyqAttemptKey(slug, source);
   pyqSaveAttempt(attemptKey, { status: "inProgress", slug, source });
   startTest(saved.ids, saved.title || pyqPaperLabel(source), "tests", {

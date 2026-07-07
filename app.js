@@ -203,6 +203,8 @@ function viewPractice() {
   const totalPages = Math.max(1, Math.ceil(qs.length / PRACTICE_PAGE_SIZE));
   if (practicePage > totalPages) practicePage = totalPages;
   const pageQs = qs.slice((practicePage - 1) * PRACTICE_PAGE_SIZE, practicePage * PRACTICE_PAGE_SIZE);
+  window._qxListQs = pageQs;
+  setTimeout(() => qxBackgroundPrefetch(pageQs.map(q => q.id)), 0);
 
   const subjects = ["all", ...EXAMS[STATE.exam].subjects];
   const subjectChips = subjects.map(s =>
@@ -255,14 +257,32 @@ function qxHasSolution(q) {
   return !!String(q.solution || "").replace(/<[^>]+>/g, "").trim();
 }
 
+async function qxHydrateQuestion(q, toast) {
+  if (!q || typeof MarksLive === "undefined" || !q._marksId) return q;
+  const needOpts = MarksLive.needsFullQuestion(q);
+  const needSol = !qxHasSolution(q);
+  if (!needOpts && !needSol && q._fullFetched) return q;
+  if (toast) showToast("📚 Loading question…");
+  try {
+    return await MarksLive.ensureQuestionFull(q, { force: needOpts || !q._fullFetched, solution: needSol });
+  } catch (e) {
+    return q;
+  }
+}
+
+function qxBackgroundPrefetch(ids) {
+  if (typeof MarksLive === "undefined" || !MarksLive.prefetchQuestions || !ids || !ids.length) return;
+  const need = ids.filter(id => {
+    const q = getQ(id);
+    return q && q._marksId && MarksLive.needsFullQuestion(q);
+  });
+  if (!need.length) return;
+  MarksLive.prefetchQuestions(need).catch(() => {});
+}
+
 async function openPracticeQuestion(id) {
   let q = getQ(id);
-  if (q && typeof MarksLive !== "undefined" && (q._live || q._marksId) && MarksLive.needsFullQuestion(q)) {
-    try {
-      showToast("📚 Loading question & solution…");
-      q = await MarksLive.ensureQuestionFull(q);
-    } catch (e) { /* use preview */ }
-  }
+  if (q && q._marksId) q = await qxHydrateQuestion(q, true);
   const list = window._qxListQs || [];
   const ids = list.length ? list.map(x => x.id) : [id];
   const idx = Math.max(0, ids.indexOf(id));
@@ -388,9 +408,9 @@ async function qxPracticeNav(delta) {
   const qid = ctx.ids[ctx.idx];
   const main = document.getElementById("app-main");
   let q = getQ(qid);
-  if (q && typeof MarksLive !== "undefined" && (q._live || q._marksId) && MarksLive.needsFullQuestion(q)) {
-    main.innerHTML = `<div class="qx-practice-page"><div class="empty" style="padding:48px;text-align:center">Loading question & solution…</div></div>`;
-    try { q = await MarksLive.ensureQuestionFull(q); } catch (e) { /* use preview */ }
+  if (q && q._marksId && typeof MarksLive !== "undefined" && (MarksLive.needsFullQuestion(q) || !qxHasSolution(q))) {
+    main.innerHTML = `<div class="qx-practice-page"><div class="empty" style="padding:48px;text-align:center">Loading question…</div></div>`;
+    q = await qxHydrateQuestion(q, false);
   }
   main.innerHTML = viewQuestion(qid);
   bindPracticeQuestion(main);
@@ -418,19 +438,31 @@ function viewQuestion(id) {
   const done = !!pc.done[q.id];
   const sel = pc.selected[q.id];
 
-  const opts = (q.options || []).map((o, i) => {
+  const incomplete = typeof MarksLive !== "undefined" && MarksLive.isQuestionIncomplete
+    ? MarksLive.isQuestionIncomplete(q)
+    : false;
+  const opts = incomplete
+    ? `<div class="empty" style="padding:20px">Loading options from MARKS…</div>`
+    : (q.options || []).map((o, i) => {
     let cls = "qx-prac-opt";
     if (sel === i) cls += " selected";
     if (done) {
       if (i === q.answer) cls += " correct";
       else if (sel === i) cls += " wrong";
     }
+    const letter = String.fromCharCode(65 + i);
+    const plain = String(o || "").replace(/<[^>]+>/g, "").trim();
+    const showLetter = !plain || plain === letter;
     return `<button type="button" class="${cls}" data-prac-opt="${i}" ${done ? "disabled" : ""}>
       <span class="qx-prac-radio"></span>
-      <span class="qx-prac-letter">${String.fromCharCode(65 + i)}</span>
+      ${showLetter ? `<span class="qx-prac-letter">${letter}</span>` : ""}
       <span class="qx-prac-opt-text qx-content">${typeof Mx !== "undefined" ? Mx.html(o) : o}</span>
     </button>`;
   }).join("");
+
+  const qBody = incomplete
+    ? `<div class="empty" style="padding:20px 0">Loading question text…</div>`
+    : (typeof Mx !== "undefined" ? Mx.html(q.q) : q.q);
 
   const resultHtml = done ? qxPracticeResultHtml(q, sel) : "";
   const hasSol = qxHasSolution(q);
@@ -456,14 +488,14 @@ function viewQuestion(id) {
       <span class="tag" title="${sourceLabel}">📌 ${sourceLabel}</span>
       ${sv ? `<span class="tag ${sv.correct ? "tag-ok" : "tag-no"}">${sv.correct ? "✓ Solved" : "✗ Wrong"}</span>` : ""}
     </div>
-    <div class="qx-prac-q qx-content">${typeof Mx !== "undefined" ? Mx.html(q.q) : q.q}</div>
+    <div class="qx-prac-q qx-content">${qBody}</div>
     <div class="qx-prac-opts" id="qaOpts">${opts}</div>
     ${hasSol && !done ? `<div class="qx-sol-actions"><button type="button" class="btn-soft qx-view-sol-btn" id="qxViewSolBtn">💡 View Solution</button></div>` : ""}
     <div id="qaSolReveal">${solReveal}</div>
     <div id="qaResult">${resultHtml}</div>
     <div class="qx-prac-foot">
       <button type="button" class="btn-soft" onclick="qxPracticeNav(-1)" ${pc.idx <= 0 ? "disabled" : ""}>← Previous</button>
-      ${done ? "" : `<button type="button" class="btn-primary qx-prac-submit" id="qxPracSubmit" ${sel == null ? "disabled" : ""}>Submit Answer</button>`}
+      ${done || incomplete ? "" : `<button type="button" class="btn-primary qx-prac-submit" id="qxPracSubmit" ${sel == null ? "disabled" : ""}>Submit Answer</button>`}
       <button type="button" class="btn-soft" onclick="qxPracticeNav(1)" ${pc.idx >= total - 1 ? "disabled" : ""}>Next →</button>
     </div>
     <div id="qaCommunity"><div class="empty" style="padding:16px">Loading community solutions…</div></div>
@@ -547,9 +579,7 @@ async function answerQ(qid, idx) {
   if (idx == null) return;
   let q = getQ(qid);
   if (!q) return;
-  if (q && typeof MarksLive !== "undefined" && (q._live || q._marksId) && MarksLive.needsFullQuestion(q)) {
-    try { q = await MarksLive.ensureQuestionFull(q); } catch (e) { /* continue */ }
-  }
+  if (q && q._marksId) q = await qxHydrateQuestion(q, false);
   const ctx = window._qxPracticeCtx || { done: {}, selected: {} };
   ctx.done[qid] = true;
   ctx.selected[qid] = idx;
@@ -580,9 +610,12 @@ function toggleBm(id) {
   STATE.toggleBookmark(id);
   const main = document.getElementById("app-main");
   if (currentView === "question" && main) {
-    main.innerHTML = viewQuestion(id);
-    bindPracticeQuestion(main);
-    if (typeof Mx !== "undefined") Mx.afterRender(main);
+    (async () => {
+      await qxHydrateQuestion(getQ(id), false);
+      main.innerHTML = viewQuestion(id);
+      bindPracticeQuestion(main);
+      if (typeof Mx !== "undefined") Mx.afterRender(main);
+    })();
   } else {
     render("question", id);
   }
@@ -672,7 +705,7 @@ function viewNotebook() {
   </div>
   <div class="nb-section">
     <h3 class="sec-title">🔖 Saved Questions (${bmQs.length})</h3>
-    ${bmQs.length ? bmQs.map(q => `<div class="q-card" onclick="go('question',${q.id})"><div class="q-text qx-content">${typeof Mx!=="undefined"?Mx.html(q.q):q.q}</div>
+    ${bmQs.length ? bmQs.map(q => `<div class="q-card" onclick="openPracticeQuestion(${q.id})"><div class="q-text qx-content">${typeof Mx!=="undefined"?Mx.html(q.q):q.q}</div>
       <small>📖 ${q.subject} · ${q.chapter}</small></div>`).join("")
       : '<div class="empty">Bookmark questions from practice to see them here.</div>'}
   </div>
@@ -877,10 +910,23 @@ go = function(view, payload) {
   if (navEl) navEl.classList.add("active");
 
   if (view === "question") {
-    main.innerHTML = viewQuestion(payload);
-    document.getElementById("examPill").textContent = EXAMS[STATE.exam].name;
-    bindPracticeQuestion(main);
-    if (typeof Mx !== "undefined") Mx.afterRender(main);
+    (async () => {
+      let q = getQ(payload);
+      if (q && q._marksId) {
+        main.innerHTML = `<div class="qx-practice-page"><div class="empty" style="padding:48px;text-align:center">Loading question…</div></div>`;
+        q = await qxHydrateQuestion(q, false);
+      }
+      main.innerHTML = viewQuestion(payload);
+      document.getElementById("examPill").textContent = EXAMS[STATE.exam].name;
+      bindPracticeQuestion(main);
+      if (typeof Mx !== "undefined") Mx.afterRender(main);
+      if (q && typeof MarksLive !== "undefined" && MarksLive.isQuestionIncomplete(q)) {
+        q = await qxHydrateQuestion(getQ(payload), false);
+        main.innerHTML = viewQuestion(payload);
+        bindPracticeQuestion(main);
+        if (typeof Mx !== "undefined") Mx.afterRender(main);
+      }
+    })();
     return;
   }
   if (view === "test") {

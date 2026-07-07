@@ -221,12 +221,17 @@ const QuantrexTestEngine = (() => {
   function renderMarksQuestion() {
     const q = getQ(session.ids[session.idx]);
     if (!q) return '<div class="empty">Question not found.</div>';
+    const incomplete = typeof MarksLive !== "undefined" && MarksLive.isQuestionIncomplete
+      ? MarksLive.isQuestionIncomplete(q)
+      : false;
     const selected = session.answers[session.idx];
     const wrongMark = session.scoring.wrong < 0 ? `<span class="mtk-neg-mark">${session.scoring.wrong}</span>` : "";
     const timerHtml = session.durationSec != null
       ? `<div class="mtk-timer" id="qxTimer"><span class="mtk-timer-ic">🕐</span>${formatMarksTime(session.remainingSec)}</div>` : "";
 
-    const opts = (q.options || []).map((o, i) => {
+    const opts = incomplete
+      ? `<div class="empty" style="padding:24px;grid-column:1/-1">Loading options…</div>`
+      : (q.options || []).map((o, i) => {
       const letter = String.fromCharCode(65 + i);
       const text = String(o).replace(/<[^>]+>/g, "").trim();
       const showLetter = !text || text === letter;
@@ -253,7 +258,7 @@ const QuantrexTestEngine = (() => {
           <div class="mtk-q-head">
             <span class="mtk-q-num">Q${session.idx + 1}</span>${wrongMark}
           </div>
-          <div class="mtk-q-text qx-content">${htmlContent(q.q)}</div>
+          <div class="mtk-q-text qx-content">${incomplete ? '<div class="empty">Loading question…</div>' : htmlContent(q.q)}</div>
           <div class="mtk-options mtk-options-grid" id="qxOpts">${opts}</div>
           <div class="mtk-controls">
             <button type="button" class="mtk-btn-ghost" id="qxClearBtn">Clear Response</button>
@@ -273,6 +278,9 @@ const QuantrexTestEngine = (() => {
 
     const q = getQ(session.ids[session.idx]);
     if (!q) return '<div class="empty">Question not found.</div>';
+    const incomplete = typeof MarksLive !== "undefined" && MarksLive.isQuestionIncomplete
+      ? MarksLive.isQuestionIncomplete(q)
+      : false;
     const total = session.ids.length;
     const selected = session.answers[session.idx];
     const isReview = session.review.has(session.idx);
@@ -302,11 +310,16 @@ const QuantrexTestEngine = (() => {
             </div>
             <button type="button" class="bm-btn ${isReview ? "on" : ""}" id="qxReviewBtn">${isReview ? "🔖 Marked" : "🏷️ Mark for Review"}</button>
           </div>
-          <div class="qa-q qx-content">${htmlContent(q.q)}</div>
+          <div class="qa-q qx-content">${incomplete ? '<div class="empty">Loading question…</div>' : htmlContent(q.q)}</div>
           <div class="qa-options" id="qxOpts">
-            ${q.options.map((o, i) => `<button type="button" class="qa-opt ${selected === i ? "selected" : ""}" data-opt="${i}">
-              <span class="opt-letter">${String.fromCharCode(65 + i)}</span>
-              <span class="qx-content">${htmlContent(o)}</span></button>`).join("")}
+            ${incomplete ? '<div class="empty" style="padding:16px">Loading options…</div>' : (q.options || []).map((o, i) => {
+              const letter = String.fromCharCode(65 + i);
+              const plain = String(o || "").replace(/<[^>]+>/g, "").trim();
+              const showLetter = !plain || plain === letter;
+              return `<button type="button" class="qa-opt ${selected === i ? "selected" : ""}" data-opt="${i}">
+              ${showLetter ? `<span class="opt-letter">${letter}</span>` : ""}
+              <span class="qx-content">${htmlContent(o)}</span></button>`;
+            }).join("")}
           </div>
           <div class="qx-controls">
             <button type="button" class="btn-soft" id="qxPrevBtn" ${session.idx <= 0 ? "disabled" : ""}>← Previous</button>
@@ -383,9 +396,18 @@ const QuantrexTestEngine = (() => {
     if (!main || !session || _refreshBusy) return;
     _refreshBusy = true;
     const q = getQ(session.ids[session.idx]);
-    if (q && typeof MarksLive !== "undefined" && MarksLive.needsFullQuestion(q)) {
+    const incomplete = q && typeof MarksLive !== "undefined" && MarksLive.isQuestionIncomplete
+      ? MarksLive.isQuestionIncomplete(q)
+      : (q && typeof MarksLive !== "undefined" && MarksLive.needsFullQuestion(q));
+    if (incomplete) {
       main.innerHTML = `<div class="mtk-test-root"><div class="empty" style="padding:48px;text-align:center">Loading question options…</div></div>`;
-      try { await MarksLive.ensureQuestionFull(q); } catch (e) { /* continue */ }
+      try { await MarksLive.ensureQuestionFull(q, { force: true }); } catch (e) { /* continue */ }
+    }
+    if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
+      const near = [session.idx - 1, session.idx + 1, session.idx + 2]
+        .filter(i => i >= 0 && i < session.ids.length)
+        .map(i => session.ids[i]);
+      MarksLive.prefetchQuestions(near).catch(() => {});
     }
     main.innerHTML = renderQuestion();
     bindEvents(main);
@@ -834,7 +856,7 @@ function launchTestSession(main) {
   if (typeof Mx !== "undefined") Mx.afterRender(main);
 }
 
-function startTest(questionIds, title, returnTo, options) {
+async function startTest(questionIds, title, returnTo, options) {
   const opts = options || {};
   const marksMode = opts.marksMode !== false && (opts.testType === "pyqmock" || opts.testType === "custom" || opts.marksMode);
   const config = {
@@ -859,7 +881,17 @@ function startTest(questionIds, title, returnTo, options) {
   };
 
   const main = document.getElementById("app-main");
-  const run = () => {
+  const run = async () => {
+    if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
+      const need = questionIds.filter(id => {
+        const q = getQ(id);
+        return q && MarksLive.needsFullQuestion(q);
+      });
+      if (need.length) {
+        showToast("📚 Loading question options…");
+        await MarksLive.prefetchQuestions(questionIds);
+      }
+    }
     const ok = QuantrexTestEngine.begin(config);
     if (!ok) {
       exitMarksTestMode();
@@ -884,6 +916,9 @@ function renderTest() {
 
 async function startChapterTest(questionIds, meta) {
   if (!questionIds.length) { showToast("⚠️ No questions in this chapter."); return; }
+  if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
+    await MarksLive.prefetchQuestions(questionIds.slice(0, 50));
+  }
   const limit = meta.limit || Math.min(30, questionIds.length);
   const pool = questionIds.slice();
   for (let i = pool.length - 1; i > 0; i--) {
@@ -915,6 +950,10 @@ async function startMockTest(examSlug, options) {
   if (!pool.length) { showToast("⚠️ No questions found for this mock."); return; }
   const count = opts.count || (STATE.exam === "Medical" ? 180 : 90);
   const ids = pool.map(q => q.id);
+  if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
+    showToast("📚 Loading mock test options…");
+    await MarksLive.prefetchQuestions(ids.slice(0, Math.min(ids.length, 120)));
+  }
   for (let i = ids.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [ids[i], ids[j]] = [ids[j], ids[i]];

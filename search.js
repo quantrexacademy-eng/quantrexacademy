@@ -65,7 +65,7 @@ const QuantrexSearch = (() => {
     box.innerHTML = `<p class="result-count">${results.length} result${results.length !== 1 ? "s" : ""} for "${query.replace(/</g, "")}"</p>
       <div class="q-list">${results.map(q => {
         const tag = (q.subject || "").toLowerCase().replace(/\s+/g, "-");
-        return `<div class="q-card" onclick="go('question', ${q.id})">
+        return `<div class="q-card" onclick="openPracticeQuestion(${q.id})">
           <div class="q-meta"><span class="tag tag-${tag}">${q.subject}</span><span class="tag tag-diff">${q.difficulty || ""}</span></div>
           <div class="q-text">${preview(q.q)}</div>
           <div class="q-footer"><small>📖 ${q.chapter || ""}</small></div>

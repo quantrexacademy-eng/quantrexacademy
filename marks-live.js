@@ -87,6 +87,14 @@ const MarksLive = (() => {
     return b === "HSC" ? "HSC (Maharashtra)" : "CBSE";
   }
 
+  function isBlankText(text) {
+    return !String(text || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  }
+
+  function isNonMcqType(type) {
+    return /numerical|subjective|integer|long|descriptive|fill|assertion/i.test(type || "");
+  }
+
   function isPlaceholderOptions(options) {
     if (!options || !options.length) return true;
     const letters = new Set(["A", "B", "C", "D", "a", "b", "c", "d", "1", "2", "3", "4"]);
@@ -94,6 +102,12 @@ const MarksLive = (() => {
       const t = String(o || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
       return !t || letters.has(t);
     });
+  }
+
+  function isQuestionIncomplete(q) {
+    if (!q) return true;
+    if (!q._marksId) return isBlankText(q.q) || isPlaceholderOptions(q.options);
+    return needsFullQuestion(q);
   }
 
   function hasRealSolution(sol) {
@@ -110,8 +124,12 @@ const MarksLive = (() => {
 
   function needsFullQuestion(q) {
     if (!q || !q._marksId) return false;
-    if (q._fullFetched) return isPlaceholderOptions(q.options);
-    return !!q._needsFull || isPlaceholderOptions(q.options) || !hasRealSolution(q.solution);
+    const nonMcq = isNonMcqType(q.questionType);
+    if (q._fullFetched) {
+      if (isBlankText(q.q)) return true;
+      return !nonMcq && isPlaceholderOptions(q.options);
+    }
+    return !!q._needsFull || isBlankText(q.q) || (!nonMcq && isPlaceholderOptions(q.options));
   }
 
   function fieldsFromApi(d, meta) {
@@ -143,7 +161,7 @@ const MarksLive = (() => {
       paperSource: source,
       _needsFull: false,
       _fullFetched: true,
-      questionType: d.type || d.questionType || "singleCorrect"
+      questionType: d.type || d.questionType || (opts.length ? "singleCorrect" : "subjective")
     };
   }
 
@@ -177,7 +195,10 @@ const MarksLive = (() => {
       examName: meta.examName || boardLabel(),
       ...fields
     };
-    if (!rec.options.length) rec.options = ["Option A", "Option B", "Option C", "Option D"];
+    if (!rec.options.length && !isNonMcqType(rec.questionType)) {
+      rec._needsFull = true;
+      rec._fullFetched = false;
+    }
     if (typeof QUESTIONS !== "undefined") QUESTIONS.push(rec);
     _fullCache[marksId] = rec;
     return rec;
@@ -225,8 +246,11 @@ const MarksLive = (() => {
     return normalizeFull(data, meta || {});
   }
 
-  async function ensureQuestionFull(q) {
-    if (!q || !q._marksId || !needsFullQuestion(q)) return q;
+  async function ensureQuestionFull(q, opts) {
+    if (!q || !q._marksId) return q;
+    const force = !!(opts && opts.force);
+    const needSol = !!(opts && opts.solution);
+    if (!force && !needsFullQuestion(q) && !(needSol && !hasRealSolution(q.solution))) return q;
     try {
       return await fetchFullQuestion(q._marksId, {
         subject: q.subject,
@@ -459,7 +483,10 @@ const MarksLive = (() => {
     boardId,
     boardLabel,
     fmtDate,
+    isBlankText,
+    isNonMcqType,
     isPlaceholderOptions,
+    isQuestionIncomplete,
     hasRealSolution,
     cleanSolution,
     needsFullQuestion,
