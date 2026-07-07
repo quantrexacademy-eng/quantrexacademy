@@ -6,6 +6,13 @@ const CT_DAILY = "quantrex_ct_daily_v1";
 const CT_CDN = "https://cdn-assets.getmarks.app/app_assets/img/cpyqb";
 const CT_DEFAULT_QS = 25;
 const CT_DEFAULT_MINS = 60;
+const CT_Q_PRESETS = [5, 10, 15, 20, 25, 30, 45, 60];
+const CT_TIME_PRESETS = [
+  { sec: 60, label: "1 min" },
+  { sec: 90, label: "1.5 min" },
+  { sec: 120, label: "2 min" },
+  { sec: 180, label: "3 min" }
+];
 
 let _ctPayload = { step: "landing" };
 let _ctExamsCache = null;
@@ -77,12 +84,29 @@ function ctNewDraft(exam) {
     subjectMeta: subj || null,
     chapterIds: new Set(),
     hideOutOfSyllabus: true,
-    showUnits: false,
+    unitsSubjectId: subj ? subj._id : null,
+    expandedUnits: new Set(),
     yearPreset: "all",
     customSources: new Set(),
     totalQs: CT_DEFAULT_QS,
-    durationSec: CT_DEFAULT_MINS * 60
+    timePerQ: 120,
+    durationSec: CT_DEFAULT_QS * 120
   };
+}
+
+function ctSyncDuration(draft) {
+  if (!draft) return;
+  draft.durationSec = Math.max(60, (draft.totalQs || CT_DEFAULT_QS) * (draft.timePerQ || 120));
+}
+
+function ctExamSubjects(draft) {
+  const exam = (_ctExamsCache || []).find(e => e._id === draft.examId);
+  return (exam && exam.subjects) || (draft.subjectMeta ? [draft.subjectMeta] : []);
+}
+
+function ctBanksForYears() {
+  if (STATE.exam === "Medical") return ["neet", "nta_abhyas_neet", "aiims"].filter(s => typeof BANK_INDEX !== "undefined" && BANK_INDEX[s]);
+  return ["jee_main", "nta_abhyas_jee_main", "jee_advanced"].filter(s => typeof BANK_INDEX !== "undefined" && BANK_INDEX[s]);
 }
 
 function ctNormTitle(s) {
@@ -133,15 +157,24 @@ function ctSourceLabel(source) {
   return year ? `${year} ${month}`.trim() : String(source || "").slice(0, 24);
 }
 
-function ctBuildYearShifts() {
-  if (_ctYearShiftsCache) return _ctYearShiftsCache;
-  const bank = (typeof PRIMARY_BANK !== "undefined" && PRIMARY_BANK[STATE.exam]) || "jee_main";
+async function ctBuildYearShifts(force) {
+  if (_ctYearShiftsCache && !force) return _ctYearShiftsCache;
   const map = new Map();
-  QUESTIONS.filter(q => q._bank === bank && q.source).forEach(q => {
-    const label = ctSourceLabel(q.source);
-    if (!map.has(q.source)) map.set(q.source, { source: q.source, label, year: qYearFromSource(q.source) || 0 });
-  });
-  _ctYearShiftsCache = [...map.values()].sort((a, b) => b.year - a.year || a.label.localeCompare(b.label));
+  for (const slug of ctBanksForYears()) {
+    if (typeof loadSingleBank === "function" && !_banksLoaded[slug]) {
+      try { await loadSingleBank(slug); } catch (e) { /* skip */ }
+    }
+    QUESTIONS.filter(q => q._bank === slug && q.source).forEach(q => {
+      if (!map.has(q.source)) {
+        map.set(q.source, {
+          source: q.source,
+          label: ctSourceLabel(q.source),
+          year: typeof qYearFromSource === "function" ? (qYearFromSource(q.source) || 0) : 0
+        });
+      }
+    });
+  }
+  _ctYearShiftsCache = [...map.values()].sort((a, b) => b.year - a.year || b.source.localeCompare(a.source));
   return _ctYearShiftsCache;
 }
 
@@ -164,9 +197,10 @@ function ctYearFilterOk(source, draft) {
 }
 
 function ctSelectedChapters(draft) {
-  if (!draft || !draft.subjectMeta) return [];
+  if (!draft) return [];
   const list = [];
-  (draft.subjectMeta.units || []).forEach(unit => {
+  ctExamSubjects(draft).forEach(sub => {
+  (sub.units || []).forEach(unit => {
     (unit.chapters || []).forEach(ch => {
       if (draft.chapterIds.has(ch._id)) {
         list.push({
@@ -174,10 +208,12 @@ function ctSelectedChapters(draft) {
           title: ch.title,
           shortName: ch.shortName || ch.title,
           unitTitle: unit.title,
+          subjectTitle: sub.title,
           syllabusCategory: ch.syllabusCategory
         });
       }
     });
+  });
   });
   return list;
 }
@@ -256,38 +292,62 @@ function ctPickStepHtml(draft, exams) {
 }
 
 function ctChaptersStepHtml(draft) {
-  const sub = draft.subjectMeta;
-  if (!sub) return `<div class="empty">Select a subject</div>`;
-  const cnt = ctSubjectCount(sub);
+  const subjects = ctExamSubjects(draft);
+  const unitsSub = subjects.find(s => s._id === draft.unitsSubjectId) || draft.subjectMeta;
+  if (!unitsSub) return `<div class="empty">Select a subject</div>`;
   const sel = ctSelectedChapters(draft).length;
-  const units = (sub.units || []).map(unit => {
+  const showingUnits = !!draft.unitsSubjectId;
+
+  const subjectRows = subjects.map(s => {
+    const cnt = ctSubjectCount(s);
+    const open = draft.unitsSubjectId === s._id;
+    const selInSub = (s.units || []).reduce((n, u) => n + (u.chapters || []).filter(ch => draft.chapterIds.has(ch._id)).length, 0);
+    return `<div class="ct-wiz-subj-block ${open ? "open" : ""}">
+      <div class="ct-wiz-subj-row">
+        <div class="ct-wiz-subj-row-main">
+          ${ctSubjectIcon(s)}
+          <div><strong>${s.title}</strong><small>${cnt.units} Units, ${cnt.chapters} Chapters${selInSub ? ` · ${selInSub} selected` : ""}</small></div>
+        </div>
+        <button type="button" class="ct-wiz-show-units" onclick="ctShowUnitsFor('${s._id}')">${open ? "HIDE UNITS" : "SHOW UNITS"}</button>
+      </div>
+    </div>`;
+  }).join("");
+
+  const units = showingUnits ? (unitsSub.units || []).map(unit => {
     const chapters = (unit.chapters || []).filter(ch => {
       if (draft.hideOutOfSyllabus && ch.syllabusCategory === "outOfSyllabus") return false;
       return true;
     });
     if (!chapters.length) return "";
     const unitSel = chapters.filter(ch => draft.chapterIds.has(ch._id)).length;
-    return `<div class="ct-wiz-unit">
-      <div class="ct-wiz-unit-head">
+    const expanded = !draft.expandedUnits || draft.expandedUnits.has(unit._id);
+    return `<div class="ct-wiz-unit ${expanded ? "expanded" : "collapsed"}">
+      <div class="ct-wiz-unit-head" onclick="ctToggleUnitExpand('${unit._id}')">
+        <span class="ct-wiz-unit-chev">${expanded ? "▾" : "▸"}</span>
         <strong>${unit.title}</strong>
-        <small>${unitSel}/${chapters.length}</small>
-        <button type="button" class="ct-wiz-unit-all" onclick="ctToggleUnitAll('${unit._id}')">${unitSel === chapters.length ? "Clear" : "Select all"}</button>
+        <small>${unitSel}/${chapters.length} selected</small>
+        <button type="button" class="ct-wiz-unit-all" onclick="event.stopPropagation();ctToggleUnitAll('${unitsSub._id}','${unit._id}')">${unitSel === chapters.length ? "Clear unit" : "Select unit"}</button>
       </div>
-      <div class="ct-wiz-ch-list">${chapters.map(ch => {
+      ${expanded ? `<div class="ct-wiz-ch-grid">${chapters.map(ch => {
         const on = draft.chapterIds.has(ch._id);
-        return `<label class="ct-wiz-ch-row ${on ? "on" : ""}">
-          <input type="checkbox" ${on ? "checked" : ""} onchange="ctToggleChapter('${ch._id}', this.checked)">
-          ${ctChapterIcon(ch)}
-          <div><strong>${ch.shortName || ch.title}</strong><small>${ch.title}</small></div>
+        return `<label class="ct-wiz-ch-card ${on ? "on" : ""}">
+          <input type="checkbox" class="ct-wiz-ch-check" ${on ? "checked" : ""} onchange="ctToggleChapter('${ch._id}', this.checked)">
+          <div class="ct-wiz-ch-card-ic">${ctChapterIcon(ch)}</div>
+          <div class="ct-wiz-ch-card-body">
+            <strong>${ch.shortName || ch.title}</strong>
+            <small>${ch.title}</small>
+          </div>
         </label>`;
-      }).join("")}</div>
+      }).join("")}</div>` : ""}
     </div>`;
-  }).join("");
+  }).join("") : "";
 
-  const right = draft.showUnits ? `<div class="ct-wizard-right-inner">${units || '<div class="empty">No chapters</div>'}</div>` : `<div class="ct-wizard-right-empty"></div>`;
+  const right = showingUnits
+    ? `<div class="ct-wizard-right-inner"><div class="ct-wiz-right-head"><strong>${unitsSub.title}</strong><small>Select chapters from units</small></div>${units || '<div class="empty">No chapters in this subject.</div>'}</div>`
+    : `<div class="ct-wizard-right-empty"><p>Tap <strong>SHOW UNITS</strong> on a subject to pick chapters</p></div>`;
 
   return `<div class="ct-wizard-split">
-    <div class="ct-wizard-left-panel">${`<div class="ct-wizard-left-inner">
+    <div class="ct-wizard-left-panel"><div class="ct-wizard-left-inner">
       <div class="ct-wiz-head">
         <h2>Create your own test</h2>
         <button type="button" class="ct-wiz-close" onclick="ctCloseWizard()">✕</button>
@@ -297,23 +357,25 @@ function ctChaptersStepHtml(draft) {
         <span>⚠️ Don't include out of syllabus Qs</span>
         <input type="checkbox" ${draft.hideOutOfSyllabus ? "checked" : ""} onchange="ctSetSyllabus(this.checked)">
       </label>
-      <div class="ct-wiz-subj-row">
-        <div class="ct-wiz-subj-row-main">
-          ${ctSubjectIcon(sub)}
-          <div><strong>${sub.title}</strong><small>${cnt.units} Units, ${cnt.chapters} Chapters</small></div>
-        </div>
-        <button type="button" class="ct-wiz-show-units" onclick="ctToggleShowUnits()">${draft.showUnits ? "HIDE UNITS" : "SHOW UNITS"}</button>
-      </div>
+      <div class="ct-wiz-subj-list">${subjectRows}</div>
+      <p class="ct-wiz-sel-count">${sel} chapter${sel !== 1 ? "s" : ""} selected</p>
       ${ctWizardPreviewBar(draft, "Next", "ctGoYears()", !sel)}
-    </div>`}</div>
+    </div></div>
     ${right}
   </div>`;
 }
 
 function ctYearsStepHtml(draft) {
-  const shifts = ctBuildYearShifts();
+  const shifts = _ctYearShiftsCache || [];
   const minY = shifts.length ? shifts[shifts.length - 1].year : 2002;
   const maxY = shifts.length ? shifts[0].year : new Date().getFullYear();
+  const mins = Math.round((draft.durationSec || CT_DEFAULT_MINS * 60) / 60);
+  const qChips = CT_Q_PRESETS.map(n =>
+    `<button type="button" class="ct-wiz-set-chip ${draft.totalQs === n ? "on" : ""}" onclick="ctSetTotalQs(${n})">${n}</button>`
+  ).join("");
+  const tChips = CT_TIME_PRESETS.map(t =>
+    `<button type="button" class="ct-wiz-set-chip ${draft.timePerQ === t.sec ? "on" : ""}" onclick="ctSetTimePerQ(${t.sec})">${t.label}</button>`
+  ).join("");
   const presets = [
     { id: "all", label: "All Years", sub: "The test will be created from All PYQs" },
     { id: "last3", label: "Last 3 Years", num: "3" },
@@ -337,6 +399,13 @@ function ctYearsStepHtml(draft) {
       <button type="button" class="ct-wiz-close" onclick="ctCloseWizard()">✕</button>
     </div>
     ${ctWizardProgress("years")}
+    <section class="ct-wiz-section ct-wiz-settings">
+      <h4>Number of Questions</h4>
+      <div class="ct-wiz-set-chips">${qChips}</div>
+      <h4 style="margin-top:14px">Time per Question</h4>
+      <div class="ct-wiz-set-chips">${tChips}</div>
+      <p class="ct-wiz-est-time">Estimated duration: <strong>${mins} min</strong> · ${draft.totalQs} Qs × ${draft.timePerQ >= 60 ? (draft.timePerQ / 60) + " min" : draft.timePerQ + "s"} per Q</p>
+    </section>
     <section class="ct-wiz-section">
       <h4>Select Year of Paper You Want to Include</h4>
       <p class="ct-wiz-hint">The test will be created from All PYQs</p>
@@ -423,8 +492,8 @@ function ctLandingHtml(tests) {
 }
 
 function ctYearModalHtml(draft) {
-  const shifts = ctBuildYearShifts();
-  window._ctYearModalShifts = shifts.slice(0, 40);
+  const shifts = _ctYearShiftsCache || [];
+  window._ctYearModalShifts = shifts;
   const minY = shifts.length ? shifts[shifts.length - 1].year : 2002;
   const maxY = shifts.length ? shifts[0].year : new Date().getFullYear();
   const grid = window._ctYearModalShifts.map((s, i) => {
@@ -562,17 +631,22 @@ function ctPickSubject(id) {
 function ctGoChapters() {
   if (!_ctDraft || !_ctDraft.subjectId) return;
   _ctDraft.wizardStep = "chapters";
-  _ctDraft.showUnits = false;
+  _ctDraft.unitsSubjectId = _ctDraft.subjectId;
+  if (!_ctDraft.expandedUnits) _ctDraft.expandedUnits = new Set();
+  (ctExamSubjects(_ctDraft).find(s => s._id === _ctDraft.subjectId)?.units || []).forEach(u => _ctDraft.expandedUnits.add(u._id));
   render("custom", { step: "wizard", fromTests: ctFromTests() });
 }
 
-function ctGoYears() {
+async function ctGoYears() {
   if (!ctSelectedChapters(_ctDraft).length) {
     showToast("⚠️ Select at least one chapter");
     return;
   }
   _ctDraft.wizardStep = "years";
+  ctSyncDuration(_ctDraft);
+  finishRender(`<div class="ct-wizard-overlay"><div class="ct-wizard-shell"><div class="ct-wiz-generating"><div class="ct-spinner"></div><strong>Loading year papers…</strong></div></div></div>`);
   _ctYearShiftsCache = null;
+  await ctBuildYearShifts(true);
   render("custom", { step: "wizard", fromTests: ctFromTests() });
 }
 
@@ -582,9 +656,39 @@ function ctSetSyllabus(hideOut) {
   render("custom", { step: "wizard", fromTests: ctFromTests() });
 }
 
-function ctToggleShowUnits() {
+function ctShowUnitsFor(subjectId) {
   if (!_ctDraft) return;
-  _ctDraft.showUnits = !_ctDraft.showUnits;
+  if (_ctDraft.unitsSubjectId === subjectId) {
+    _ctDraft.unitsSubjectId = null;
+  } else {
+    _ctDraft.unitsSubjectId = subjectId;
+    const sub = ctExamSubjects(_ctDraft).find(s => s._id === subjectId);
+    if (sub && (!_ctDraft.expandedUnits || !_ctDraft.expandedUnits.size)) {
+      _ctDraft.expandedUnits = new Set((sub.units || []).map(u => u._id));
+    }
+  }
+  render("custom", { step: "wizard", fromTests: ctFromTests() });
+}
+
+function ctToggleUnitExpand(unitId) {
+  if (!_ctDraft) return;
+  if (!_ctDraft.expandedUnits) _ctDraft.expandedUnits = new Set();
+  if (_ctDraft.expandedUnits.has(unitId)) _ctDraft.expandedUnits.delete(unitId);
+  else _ctDraft.expandedUnits.add(unitId);
+  render("custom", { step: "wizard", fromTests: ctFromTests() });
+}
+
+function ctSetTotalQs(n) {
+  if (!_ctDraft) return;
+  _ctDraft.totalQs = n;
+  ctSyncDuration(_ctDraft);
+  render("custom", { step: "wizard", fromTests: ctFromTests() });
+}
+
+function ctSetTimePerQ(sec) {
+  if (!_ctDraft) return;
+  _ctDraft.timePerQ = sec;
+  ctSyncDuration(_ctDraft);
   render("custom", { step: "wizard", fromTests: ctFromTests() });
 }
 
@@ -595,9 +699,11 @@ function ctToggleChapter(chId, checked) {
   render("custom", { step: "wizard", fromTests: ctFromTests() });
 }
 
-function ctToggleUnitAll(unitId) {
-  if (!_ctDraft || !_ctDraft.subjectMeta) return;
-  const unit = (_ctDraft.subjectMeta.units || []).find(u => u._id === unitId);
+function ctToggleUnitAll(subjectId, unitId) {
+  if (!_ctDraft) return;
+  const sub = ctExamSubjects(_ctDraft).find(s => s._id === subjectId);
+  if (!sub) return;
+  const unit = (sub.units || []).find(u => u._id === unitId);
   if (!unit) return;
   const visible = (unit.chapters || []).filter(ch => {
     if (_ctDraft.hideOutOfSyllabus && ch.syllabusCategory === "outOfSyllabus") return false;
@@ -615,8 +721,12 @@ function ctSetYearPreset(preset) {
   render("custom", { step: "wizard", fromTests: ctFromTests() });
 }
 
-function ctOpenYearModal() {
+async function ctOpenYearModal() {
   if (!_ctDraft) return;
+  if (!_ctYearShiftsCache || !_ctYearShiftsCache.length) {
+    showToast("📚 Loading all year papers…");
+    await ctBuildYearShifts(true);
+  }
   const existing = document.getElementById("ctYearModal");
   if (existing) existing.remove();
   document.body.insertAdjacentHTML("beforeend", ctYearModalHtml(_ctDraft));
@@ -661,7 +771,8 @@ function ctAutoTitle(draft, chapters) {
 }
 
 function ctMatchQuestion(q, chapters, draft) {
-  if (draft.subjectMeta && q.subject !== draft.subjectMeta.title) return false;
+  const allowedSubs = new Set(chapters.map(c => c.subjectTitle).filter(Boolean));
+  if (allowedSubs.size && !allowedSubs.has(q.subject)) return false;
   const titles = new Set(chapters.map(c => ctNormTitle(c.title)));
   const shorts = new Set(chapters.map(c => ctNormTitle(c.shortName || c.title)));
   const ch = ctNormTitle(q.chapter);
@@ -674,7 +785,7 @@ function ctMatchQuestion(q, chapters, draft) {
 }
 
 function ctYearLabelsForDraft(draft) {
-  const shifts = ctBuildYearShifts();
+  const shifts = _ctYearShiftsCache || [];
   return shifts.filter(s => ctYearFilterOk(s.source, draft)).map(s => s.label);
 }
 
@@ -726,7 +837,8 @@ async function ctGenerateTest() {
     examTitle: _ctDraft.examTitle,
     subjectTitle: _ctDraft.subjectMeta?.title,
     chapterCount: chapters.length,
-    chapters: chapters.map(c => ({ title: c.title, shortName: c.shortName, subjectTitle: _ctDraft.subjectMeta?.title })),
+    chapters: chapters.map(c => ({ title: c.title, shortName: c.shortName, subjectTitle: c.subjectTitle || _ctDraft.subjectMeta?.title })),
+    timePerQ: _ctDraft.timePerQ,
     totalQs: take,
     status: "notStarted",
     createdAt: new Date().toISOString(),

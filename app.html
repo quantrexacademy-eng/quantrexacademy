@@ -935,7 +935,33 @@
         .ct-wiz-subj-emoji { font-size: 28px; }
         .ct-wiz-syllabus-toggle { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; background: #1a1d26; border: 1px solid #2a2f3d; border-radius: 12px; margin-bottom: 14px; font-size: 13px; cursor: pointer; }
         .ct-wiz-syllabus-toggle input { accent-color: #3b82f6; width: 40px; height: 22px; }
-        .ct-wiz-subj-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px; background: #1a1d26; border: 1px solid #2a2f3d; border-radius: 12px; margin-bottom: auto; }
+        .ct-wiz-subj-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; flex: 1; min-height: 0; overflow-y: auto; }
+        .ct-wiz-subj-block { border: 1px solid #2a2f3d; border-radius: 12px; background: #1a1d26; overflow: hidden; }
+        .ct-wiz-subj-block.open { border-color: #3b82f6; }
+        .ct-wiz-subj-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px; }
+        .ct-wiz-sel-count { font-size: 12px; color: #64748b; margin: 8px 0 0; }
+        .ct-wiz-right-head { margin-bottom: 16px; }
+        .ct-wiz-right-head strong { display: block; font-size: 18px; color: #f1f5f9; }
+        .ct-wiz-right-head small { color: #64748b; font-size: 12px; }
+        .ct-wizard-right-empty { flex: 1; background: #050608; min-height: 100vh; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 14px; text-align: center; padding: 40px; }
+        .ct-wizard-right-empty strong { color: #38bdf8; }
+        .ct-wiz-unit-chev { color: #38bdf8; font-size: 12px; width: 14px; }
+        .ct-wiz-unit.collapsed .ct-wiz-ch-grid { display: none; }
+        .ct-wiz-unit-head { cursor: pointer; user-select: none; }
+        .ct-wiz-ch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; padding-bottom: 8px; }
+        .ct-wiz-ch-card { display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: start; padding: 12px; border: 1px solid #2a2f3d; border-radius: 12px; background: #12151c; cursor: pointer; transition: border-color .12s; }
+        .ct-wiz-ch-card:hover { border-color: #3b82f6; }
+        .ct-wiz-ch-card.on { border-color: #3b82f6; border-bottom-width: 3px; background: rgba(59,130,246,.1); }
+        .ct-wiz-ch-check { grid-column: 1 / -1; accent-color: #3b82f6; }
+        .ct-wiz-ch-card-ic { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+        .ct-wiz-ch-card-body strong { display: block; font-size: 13px; line-height: 1.3; }
+        .ct-wiz-ch-card-body small { display: block; color: #64748b; font-size: 11px; margin-top: 2px; line-height: 1.3; }
+        .ct-wiz-set-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .ct-wiz-set-chip { padding: 8px 14px; border-radius: 999px; border: 1px solid #3b4254; background: #1a1d26; color: #cbd5e1; font-size: 12px; font-weight: 700; cursor: pointer; font-family: inherit; }
+        .ct-wiz-set-chip.on { border-color: #3b82f6; background: rgba(59,130,246,.15); color: #93c5fd; }
+        .ct-wiz-est-time { font-size: 12px; color: #64748b; margin-top: 10px; }
+        .ct-wiz-est-time strong { color: #38bdf8; }
+        .ct-wiz-settings { background: #1a1d26; border: 1px solid #2a2f3d; border-radius: 12px; padding: 14px; }
         .ct-wiz-subj-row-main { display: flex; align-items: center; gap: 12px; }
         .ct-wiz-subj-row-main strong { display: block; font-size: 15px; }
         .ct-wiz-subj-row-main small { color: #64748b; font-size: 12px; }
@@ -975,11 +1001,11 @@
         .ct-wiz-next-btn { background: #f1f5f9; color: #0f172a; border: none; padding: 12px 22px; border-radius: 10px; font-weight: 800; font-size: 14px; cursor: pointer; font-family: inherit; flex-shrink: 0; }
         .ct-wiz-next-btn.disabled, .ct-wiz-next-btn:disabled { opacity: .4; cursor: not-allowed; }
         .ct-wiz-generating { text-align: center; padding: 80px 24px; color: #e2e8f0; }
-        .ct-year-modal { max-width: 520px; }
+        .ct-year-modal { max-width: 560px; }
         .ct-year-quick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
         .ct-year-quick button { padding: 8px; border-radius: 10px; border: 1px solid #3b4254; background: #1a1d26; color: #cbd5e1; font-size: 11px; font-weight: 700; cursor: pointer; font-family: inherit; }
         .ct-year-modal-head2 { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 13px; color: #94a3b8; }
-        .ct-year-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-height: 320px; overflow-y: auto; }
+        .ct-year-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-height: 55vh; overflow-y: auto; }
         .ct-year-cell { padding: 12px; border-radius: 10px; border: 1px solid #3b4254; background: #1a1d26; color: #e2e8f0; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; text-align: left; }
         .ct-year-cell.on { border-color: #3b82f6; background: rgba(59,130,246,.15); }
         .ct-preview-years, .ct-preview-subj { font-size: 13px; color: #94a3b8; line-height: 1.6; margin-bottom: 14px; max-height: 100px; overflow-y: auto; }
@@ -1027,7 +1053,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build ct394fix</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build ct394b</div>
             </div>
         </aside>
 
@@ -1053,25 +1079,25 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js"></script>
-    <script>window.QX_BUILD="ct394fix";</script>
-    <script src="firebase-config.js?v=ct394fix"></script>
-    <script src="stack-config.js?v=ct394fix"></script>
-    <script src="math-render.js?v=ct394fix"></script>
-    <script src="data.js?v=ct394fix"></script>
-    <script src="firebase-db.js?v=ct394fix"></script>
-    <script src="firebase-storage.js?v=ct394fix"></script>
-    <script src="payments.js?v=ct394fix"></script>
-    <script src="premium.js?v=ct394fix"></script>
-    <script src="leaderboard.js?v=ct394fix"></script>
-    <script src="community.js?v=ct394fix"></script>
-    <script src="book-covers.js?v=ct394fix"></script>
-    <script src="marks-shell.js?v=ct394fix"></script>
-    <script src="marks-features.js?v=ct394fix"></script>
-    <script src="custom-test.js?v=ct394fix"></script>
-    <script src="test-engine.js?v=ct394fix"></script>
-    <script src="analytics.js?v=ct394fix"></script>
-    <script src="search.js?v=ct394fix"></script>
-    <script src="theme.js?v=ct394fix"></script>
-    <script src="app.js?v=ct394fix"></script>
+    <script>window.QX_BUILD="ct394b";</script>
+    <script src="firebase-config.js?v=ct394b"></script>
+    <script src="stack-config.js?v=ct394b"></script>
+    <script src="math-render.js?v=ct394b"></script>
+    <script src="data.js?v=ct394b"></script>
+    <script src="firebase-db.js?v=ct394b"></script>
+    <script src="firebase-storage.js?v=ct394b"></script>
+    <script src="payments.js?v=ct394b"></script>
+    <script src="premium.js?v=ct394b"></script>
+    <script src="leaderboard.js?v=ct394b"></script>
+    <script src="community.js?v=ct394b"></script>
+    <script src="book-covers.js?v=ct394b"></script>
+    <script src="marks-shell.js?v=ct394b"></script>
+    <script src="marks-features.js?v=ct394b"></script>
+    <script src="custom-test.js?v=ct394b"></script>
+    <script src="test-engine.js?v=ct394b"></script>
+    <script src="analytics.js?v=ct394b"></script>
+    <script src="search.js?v=ct394b"></script>
+    <script src="theme.js?v=ct394b"></script>
+    <script src="app.js?v=ct394b"></script>
 </body>
 </html>
