@@ -577,17 +577,34 @@
         .sol strong { font-size: 14px; color: var(--primary); margin-bottom: 4px; }
         .sol p, .sol-body { font-size: 15px; color: var(--text); line-height: 1.72; }
 
-        /* Exam-style readable typography (MARKS-like) */
-        .qx-exam-text, .mtk-q-text, .marks-result .rv-q, .marks-result .sol-body, .marks-result .rv-correct,
-        .marks-result .rv-ans, .qx-exam-sol {
-          font-family: 'Literata', 'Georgia', 'Times New Roman', Times, serif;
+        /* Test engine typography — clean Inter (NTA/MARKS CBT style) */
+        .mtk-test-root .mtk-q-text,
+        .mtk-test-root .mtk-q-text .qx-content,
+        .mtk-test-root .mtk-opt-text,
+        .mtk-test-root .mtk-opt-text .qx-content {
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 1.65;
+          letter-spacing: 0;
+          color: #e8eaed;
+        }
+        .mtk-test-root .mtk-opt-text,
+        .mtk-test-root .mtk-opt-text .qx-content { font-size: 15px; line-height: 1.6; }
+        .mtk-test-root .mtk-q-text p,
+        .mtk-test-root .mtk-opt-text p { margin: 4px 0; }
+        .mtk-test-root .qx-content .MathJax { font-size: 1.02em !important; }
+        .mtk-test-root[data-test-theme="light"] .mtk-q-text,
+        .mtk-test-root[data-test-theme="light"] .mtk-q-text .qx-content,
+        .mtk-test-root[data-test-theme="light"] .mtk-opt-text,
+        .mtk-test-root[data-test-theme="light"] .mtk-opt-text .qx-content { color: #1e293b; }
+        /* Results review typography */
+        .marks-result .rv-q, .marks-result .sol-body, .marks-result .rv-correct, .marks-result .rv-ans {
+          font-family: 'Inter', -apple-system, sans-serif;
           font-size: 15px;
-          line-height: 1.72;
-          letter-spacing: 0.01em;
+          line-height: 1.65;
           color: var(--text);
         }
-        .mtk-q-text { font-size: 16px; font-weight: 500; }
-        .mtk-opt-text { font-family: 'Literata', 'Georgia', 'Times New Roman', Times, serif; font-size: 14px; line-height: 1.65; }
         .marks-result .rv-q { font-size: 16px; padding-bottom: 4px; }
         .marks-result .sol-body { font-size: 15px; }
         .qx-exam-sol strong, .marks-result .sol strong {
@@ -595,15 +612,15 @@
           letter-spacing: .08em; text-transform: uppercase; color: var(--primary);
           display: block; margin-bottom: 8px;
         }
-        .qx-match-opt { font-size: 14px; }
-        .qx-match-pairs { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+        .qx-match-opt { font-size: 15px; }
+        .qx-match-pairs { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
         .qx-match-pair {
           display: inline-flex; padding: 4px 10px; border-radius: 6px;
-          background: rgba(13,148,136,.08); border: 1px solid rgba(13,148,136,.2);
-          font-weight: 600; font-size: 13px; font-family: 'Inter', sans-serif; letter-spacing: .02em;
+          background: rgba(37,99,235,.1); border: 1px solid rgba(37,99,235,.25);
+          font-weight: 600; font-size: 14px; font-family: 'Inter', sans-serif;
         }
         .mtk-opt-match, .qx-prac-opt-match { align-items: center; }
-        .mtk-test-root .qx-content .MathJax, .marks-result .MathJax { font-size: 1.06em !important; }
+        .marks-result .MathJax { font-size: 1.04em !important; }
 
         /* Quantrex math & question formatting */
         .qx-content { line-height: 1.65; word-wrap: break-word; }
@@ -1238,13 +1255,13 @@
         .mtk-q-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
         .mtk-q-num { font-size: 18px; font-weight: 800; color: #f1f5f9; }
         .mtk-neg-mark { background: #dc2626; color: #fff; font-size: 12px; font-weight: 800; padding: 2px 8px; border-radius: 4px; }
-        .mtk-q-text { font-size: 15px; line-height: 1.65; margin-bottom: 24px; color: #e2e8f0; }
+        .mtk-q-text { margin-bottom: 24px; }
         .mtk-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
         .mtk-options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .mtk-options-exam { display: flex; flex-direction: column; gap: 10px; }
         .mtk-options-match-col .mtk-opt { min-height: auto; }
         @media (max-width: 640px) { .mtk-options-grid { grid-template-columns: 1fr; } }
-        .mtk-opt { display: flex; align-items: flex-start; gap: 12px; background: #1e2128; border: 1px solid #3d4455; border-radius: 8px; padding: 12px 14px; cursor: pointer; text-align: left; font-family: 'Literata', Georgia, serif; color: #f1f5f9; transition: border-color .12s, background .12s, box-shadow .12s; width: 100%; }
+        .mtk-opt { display: flex; align-items: flex-start; gap: 12px; background: #1e2128; border: 1px solid #3d4455; border-radius: 8px; padding: 12px 14px; cursor: pointer; text-align: left; font-family: 'Inter', sans-serif; color: #f1f5f9; transition: border-color .12s, background .12s, box-shadow .12s; width: 100%; }
         .mtk-opt:hover { border-color: #60a5fa; background: #232733; }
         .mtk-opt.selected { border-color: #3b82f6; background: rgba(37,99,235,.15); box-shadow: 0 0 0 1px rgba(59,130,246,.35); }
         .mtk-opt-radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #6b7280; flex-shrink: 0; margin-top: 3px; position: relative; background: #12151c; }
@@ -1255,9 +1272,9 @@
         .mtk-opt.selected .mtk-opt-check::after { content: '✓'; position: absolute; inset: 0; color: #fff; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
         .mtk-q-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
         .mtk-numerical-wrap { display: block; }
-        .mtk-numerical .qx-num-input { background: #1a1d26; border-color: #2a2f3d; color: #e2e8f0; font-family: 'Literata', Georgia, serif; font-size: 15px; }
-        .mtk-opt-letter { font-weight: 800; font-size: 15px; color: #93c5fd; flex-shrink: 0; min-width: 20px; font-family: 'Inter', sans-serif; }
-        .mtk-opt-text { flex: 1; font-size: 15px; line-height: 1.72; }
+        .mtk-numerical .qx-num-input { background: #1a1d26; border-color: #2a2f3d; color: #e2e8f0; font-family: 'Inter', sans-serif; font-size: 16px; }
+        .mtk-opt-letter { font-weight: 700; font-size: 15px; color: #93c5fd; flex-shrink: 0; min-width: 20px; font-family: 'Inter', sans-serif; }
+        .mtk-opt-text { flex: 1; }
         .mtk-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding-top: 12px; border-top: 1px solid #2a2f3d; }
         .mtk-btn { padding: 10px 18px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; border: none; transition: background .15s, opacity .15s; }
         .mtk-btn:disabled { opacity: .45; cursor: not-allowed; }
@@ -1529,7 +1546,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxtest432</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxtest433</div>
             </div>
         </aside>
 
@@ -1555,32 +1572,32 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
-    <script>window.QX_BUILD="qxtest432";</script>
-    <script src="qx-perf.js?v=qxtest432"></script>
-    <script src="firebase-config.js?v=qxtest432" defer></script>
-    <script src="stack-config.js?v=qxtest432" defer></script>
-    <script src="strip/branding-strip.js?v=qxtest432" defer></script>
-    <script src="exam-logos.js?v=qxtest432" defer></script>
-    <script src="math-render.js?v=qxtest432" defer></script>
-    <script src="question-format.js?v=qxtest432" defer></script>
-    <script src="data.js?v=qxtest432" defer></script>
-    <script src="firebase-db.js?v=qxtest432" defer></script>
-    <script src="firebase-storage.js?v=qxtest432" defer></script>
-    <script src="payments.js?v=qxtest432" defer></script>
-    <script src="premium.js?v=qxtest432" defer></script>
-    <script src="leaderboard.js?v=qxtest432" defer></script>
-    <script src="community.js?v=qxtest432" defer></script>
-    <script src="book-covers.js?v=qxtest432" defer></script>
-    <script src="marks-shell.js?v=qxtest432" defer></script>
-    <script src="marks-live.js?v=qxtest432" defer></script>
-    <script src="marks-features.js?v=qxtest432" defer></script>
-    <script src="assignments.js?v=qxtest432" defer></script>
-    <script src="custom-test.js?v=qxtest432" defer></script>
-    <script src="test-engine.js?v=qxtest432" defer></script>
-    <script src="bookmarks.js?v=qxtest432" defer></script>
-    <script src="analytics.js?v=qxtest432" defer></script>
-    <script src="search.js?v=qxtest432" defer></script>
-    <script src="theme.js?v=qxtest432" defer></script>
-    <script src="app.js?v=qxtest432" defer></script>
+    <script>window.QX_BUILD="qxtest433";</script>
+    <script src="qx-perf.js?v=qxtest433"></script>
+    <script src="firebase-config.js?v=qxtest433" defer></script>
+    <script src="stack-config.js?v=qxtest433" defer></script>
+    <script src="strip/branding-strip.js?v=qxtest433" defer></script>
+    <script src="exam-logos.js?v=qxtest433" defer></script>
+    <script src="math-render.js?v=qxtest433" defer></script>
+    <script src="question-format.js?v=qxtest433" defer></script>
+    <script src="data.js?v=qxtest433" defer></script>
+    <script src="firebase-db.js?v=qxtest433" defer></script>
+    <script src="firebase-storage.js?v=qxtest433" defer></script>
+    <script src="payments.js?v=qxtest433" defer></script>
+    <script src="premium.js?v=qxtest433" defer></script>
+    <script src="leaderboard.js?v=qxtest433" defer></script>
+    <script src="community.js?v=qxtest433" defer></script>
+    <script src="book-covers.js?v=qxtest433" defer></script>
+    <script src="marks-shell.js?v=qxtest433" defer></script>
+    <script src="marks-live.js?v=qxtest433" defer></script>
+    <script src="marks-features.js?v=qxtest433" defer></script>
+    <script src="assignments.js?v=qxtest433" defer></script>
+    <script src="custom-test.js?v=qxtest433" defer></script>
+    <script src="test-engine.js?v=qxtest433" defer></script>
+    <script src="bookmarks.js?v=qxtest433" defer></script>
+    <script src="analytics.js?v=qxtest433" defer></script>
+    <script src="search.js?v=qxtest433" defer></script>
+    <script src="theme.js?v=qxtest433" defer></script>
+    <script src="app.js?v=qxtest433" defer></script>
 </body>
 </html>

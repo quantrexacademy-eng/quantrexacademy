@@ -292,7 +292,7 @@ const QuantrexTestEngine = (() => {
             <span class="mtk-q-num">Q${session.idx + 1}</span>${wrongMark}
             ${typeBadge}
           </div>
-          <div class="mtk-q-text qx-content qx-exam-text">${incomplete ? '<div class="empty">Loading question…</div>' : htmlContent(q.q)}</div>
+          <div class="mtk-q-text qx-content">${incomplete ? '<div class="empty">Loading question…</div>' : htmlContent(q.q)}</div>
           <div class="${optsClass}" id="qxOpts">${opts}</div>
           <div class="mtk-controls">
             <button type="button" class="mtk-btn mtk-btn-clear" id="qxClearBtn">Clear Response</button>
@@ -1374,10 +1374,7 @@ async function startTest(questionIds, title, returnTo, options) {
     launchTestSession(main);
   };
 
-  if (marksMode && !opts.skipCountdown && !opts.resumeData) {
-    showMarksInstructions(config, () => showMarksCountdown(run), () => go(returnTo || "tests"));
-  } else if (marksMode && !opts.skipCountdown && opts.resumeData) {
-    enterMarksTestMode();
+  if (marksMode && !opts.skipCountdown) {
     showMarksCountdown(run);
   } else if (marksMode && opts.skipCountdown) {
     enterMarksTestMode();

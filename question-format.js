@@ -188,7 +188,7 @@ const QuantrexQFormat = (() => {
       return `<button type="button" class="mtk-opt ${multi ? "mtk-opt-multi" : ""} ${match ? "mtk-opt-match" : ""} ${on ? "selected" : ""}" data-opt="${i}">
         <span class="${ctrl}"></span>
         <span class="mtk-opt-letter">${letter(i)}</span>
-        <span class="mtk-opt-text qx-exam-text ${match ? "qx-match-opt" : "qx-content"}">${optBody}</span>
+        <span class="mtk-opt-text ${match ? "qx-match-opt qx-content" : "qx-content"}">${optBody}</span>
       </button>`;
     }).join("");
   }
