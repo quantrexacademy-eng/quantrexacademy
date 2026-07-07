@@ -25,6 +25,7 @@ function finishRender(html) {
   if (typeof bindMarksInfiniteScroll === "function") bindMarksInfiniteScroll(main);
   if (typeof bindBooksOpen === "function") bindBooksOpen(main);
   if (typeof bindDashHome === "function") bindDashHome(main);
+  if (typeof QuantrexAssignments !== "undefined") QuantrexAssignments.bind(main);
   if (typeof QuantrexSearch !== "undefined") QuantrexSearch.bind(main);
   if (typeof MarksShell !== "undefined") {
     MarksShell.bind(main);
@@ -47,7 +48,10 @@ function render(view, payload) {
     custom: typeof viewCustomTests === "function" ? viewCustomTests : null,
     pyqmock: typeof viewPyqMock === "function" ? viewPyqMock : null,
     testseries: typeof viewTestSeries === "function" ? viewTestSeries : null,
-    quickconcepts: typeof viewQuickConcepts === "function" ? viewQuickConcepts : null
+    quickconcepts: typeof viewQuickConcepts === "function" ? viewQuickConcepts : null,
+    assignments: typeof viewAssignments === "function" ? viewAssignments : null,
+    teacher: typeof viewTeacherPortal === "function" ? viewTeacherPortal : null,
+    board: typeof viewBoardMarksBank === "function" ? viewBoardMarksBank : null
   };
   if (asyncMap[view]) {
     finishRender(`<div class="empty">⏳ Loading…</div>`);
@@ -712,7 +716,7 @@ go = function(view, payload) {
   main.scrollTop = 0;
   _listPage = 1;
   document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
-  const navMap = { allqs: "allqs", ncert: "allqs", cpyqb: "cpyqb", books: "books", tests: "tests", custom: "tests", testseries: "tests", pyqmock: "tests", analytics: "analytics", search: "search", quickconcepts: "quickconcepts", premium: "premium" };
+  const navMap = { allqs: "allqs", ncert: "allqs", board: "allqs", cpyqb: "cpyqb", books: "books", tests: "tests", custom: "tests", testseries: "tests", pyqmock: "tests", analytics: "analytics", search: "search", quickconcepts: "quickconcepts", premium: "premium", assignments: "dashboard", teacher: "dashboard" };
   const navView = navMap[view] || view;
   const navEl = document.querySelector(`.nav-item[data-view="${navView}"]`);
   if (navEl) navEl.classList.add("active");

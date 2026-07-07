@@ -1,0 +1,3626 @@
+{
+  "module": "LBLQSubject",
+  "title": "NCERT Line by Line Qs",
+  "examSlug": "neet",
+  "subjects": [
+    {
+      "id": "68beb997ce5994228caed8f7",
+      "name": "Zoology",
+      "count": 1883,
+      "chapters": [
+        {
+          "id": "6160258bab021a64c66b3862",
+          "name": "Structural Organisation in Animals",
+          "count": 99,
+          "topics": [
+            {
+              "id": "66bcc164ae81d148616b331c",
+              "title": "Animal Tissue",
+              "count": 8
+            },
+            {
+              "id": "66bcc164ae81d148616b3321",
+              "title": "Epithelial Tissue",
+              "count": 17
+            },
+            {
+              "id": "66bcc164ae81d148616b331f",
+              "title": "Connective Tissue",
+              "count": 17
+            },
+            {
+              "id": "66bcc164ae81d148616b3322",
+              "title": "Muscle Tissue",
+              "count": 6
+            },
+            {
+              "id": "66bcc164ae81d148616b331e",
+              "title": "Frog",
+              "count": 12
+            }
+          ],
+          "buckets": [],
+          "topicCount": 7
+        },
+        {
+          "id": "616025a79fd0ba00a6729b37",
+          "name": "Chemical Coordination and Integration",
+          "count": 90,
+          "topics": [
+            {
+              "id": "66bcc154ae81d148616b3270",
+              "title": "Introduction",
+              "count": 19
+            },
+            {
+              "id": "682c9e0ec2281abe1696a186",
+              "title": "Heart",
+              "count": 1
+            },
+            {
+              "id": "6a3d1b0e6497277835df1915",
+              "title": "Hypothalamus and Pituitary",
+              "count": 2
+            },
+            {
+              "id": "66bcc154ae81d148616b326e",
+              "title": "Hypothalamus",
+              "count": 3
+            },
+            {
+              "id": "66bcc155ae81d148616b3277",
+              "title": "Pituitary Gland",
+              "count": 3
+            },
+            {
+              "id": "66bcc154ae81d148616b326c",
+              "title": "Pineal Body",
+              "count": 5
+            },
+            {
+              "id": "66bcc155ae81d148616b3275",
+              "title": "Thyroid",
+              "count": 11
+            },
+            {
+              "id": "66bcc155ae81d148616b3274",
+              "title": "Parathyroid Gland",
+              "count": 6
+            },
+            {
+              "id": "66bcc154ae81d148616b326d",
+              "title": "Adrenal Gland",
+              "count": 17
+            },
+            {
+              "id": "66bcc154ae81d148616b326f",
+              "title": "Pancreas",
+              "count": 12
+            },
+            {
+              "id": "66bcc155ae81d148616b3273",
+              "title": "Testis",
+              "count": 3
+            },
+            {
+              "id": "66bcc154ae81d148616b3271",
+              "title": "Ovary",
+              "count": 4
+            },
+            {
+              "id": "66bcc154ae81d148616b3272",
+              "title": "Placenta",
+              "count": 1
+            },
+            {
+              "id": "66bcc155ae81d148616b3276",
+              "title": "Kidney",
+              "count": 1
+            },
+            {
+              "id": "66bcc155ae81d148616b3278",
+              "title": "Gastrointestinal Mucosa",
+              "count": 2
+            }
+          ],
+          "buckets": [],
+          "topicCount": 15
+        },
+        {
+          "id": "616025aa989aba1b9b7c3874",
+          "name": "Digestion and Absorption",
+          "count": 65,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 12
+        },
+        {
+          "id": "616025ad89ee13bae06050dc",
+          "name": "Body Fluids and Circulation",
+          "count": 95,
+          "topics": [
+            {
+              "id": "66bcc156ae81d148616b3288",
+              "title": "Blood",
+              "count": 32
+            },
+            {
+              "id": "6a3d1b0f6497277835df1916",
+              "title": "Blood Clotting and Lymph",
+              "count": 1
+            },
+            {
+              "id": "66bcc156ae81d148616b3287",
+              "title": "Blood Group",
+              "count": 14
+            },
+            {
+              "id": "6a3d1b0f6497277835df1917",
+              "title": "Heart Structure",
+              "count": 2
+            },
+            {
+              "id": "66bcc156ae81d148616b3286",
+              "title": "Lymph",
+              "count": 4
+            },
+            {
+              "id": "66bcc156ae81d148616b3289",
+              "title": "Circulatory Pathways",
+              "count": 8
+            },
+            {
+              "id": "66bcc156ae81d148616b3285",
+              "title": "Human Circulatory System",
+              "count": 11
+            },
+            {
+              "id": "66bcc157ae81d148616b328e",
+              "title": "Cardiac Cycle",
+              "count": 5
+            },
+            {
+              "id": "66bcc157ae81d148616b328b",
+              "title": "Electrocardiograph",
+              "count": 9
+            },
+            {
+              "id": "66bcc157ae81d148616b328d",
+              "title": "Double Circulation",
+              "count": 1
+            },
+            {
+              "id": "66bcc157ae81d148616b328c",
+              "title": "Regulation of Cardiac Activity",
+              "count": 4
+            },
+            {
+              "id": "66bcc157ae81d148616b328a",
+              "title": "Disorders",
+              "count": 4
+            }
+          ],
+          "buckets": [],
+          "topicCount": 12
+        },
+        {
+          "id": "616025b1f56d2b31cc12d2e8",
+          "name": "Neural Control and Coordination",
+          "count": 67,
+          "topics": [
+            {
+              "id": "6a3d1b106497277835df191a",
+              "title": "Central Nervous System - Brain",
+              "count": 1
+            },
+            {
+              "id": "66bcc157ae81d148616b3294",
+              "title": "Nerve",
+              "count": 4
+            },
+            {
+              "id": "6a3d1b106497277835df191b",
+              "title": "Synaptic Transmission",
+              "count": 1
+            },
+            {
+              "id": "66bcc157ae81d148616b328f",
+              "title": "Nerve Fibres",
+              "count": 2
+            },
+            {
+              "id": "66bcc157ae81d148616b3295",
+              "title": "Definition of Nerve Impulse",
+              "count": 6
+            },
+            {
+              "id": "66bcc157ae81d148616b3291",
+              "title": "The Synapse",
+              "count": 8
+            },
+            {
+              "id": "66bcc157ae81d148616b3290",
+              "title": "Parts of Nervous System",
+              "count": 5
+            },
+            {
+              "id": "66bcc157ae81d148616b3292",
+              "title": "Structure of Human Brain",
+              "count": 16
+            }
+          ],
+          "buckets": [],
+          "topicCount": 9
+        },
+        {
+          "id": "616025b5c4bf8e454bdf9d87",
+          "name": "Excretory Products and their Elimination",
+          "count": 58,
+          "topics": [
+            {
+              "id": "66bcc165ae81d148616b3329",
+              "title": "Introduction",
+              "count": 10
+            },
+            {
+              "id": "6a3d1b1a6497277835df1930",
+              "title": "Urine Formation",
+              "count": 1
+            },
+            {
+              "id": "66bcc165ae81d148616b3328",
+              "title": "Mammalian Urinary System",
+              "count": 47
+            }
+          ],
+          "buckets": [],
+          "topicCount": 3
+        },
+        {
+          "id": "616025b8661f7863bf136352",
+          "name": "Breathing and Exchange of Gases",
+          "count": 54,
+          "topics": [
+            {
+              "id": "66bcc169ae81d148616b3350",
+              "title": "Introduction",
+              "count": 1
+            },
+            {
+              "id": "6a3d1b0e6497277835df1914",
+              "title": "Respiratory Organs and Pathway",
+              "count": 2
+            },
+            {
+              "id": "66bcc169ae81d148616b334e",
+              "title": "Types of Respiration",
+              "count": 1
+            },
+            {
+              "id": "66bcc169ae81d148616b334f",
+              "title": "Respiratory Organs",
+              "count": 4
+            },
+            {
+              "id": "66bcc168ae81d148616b334d",
+              "title": "Human Respiratory System",
+              "count": 46
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "616025bb78d0fa8a6eecf8b0",
+          "name": "Locomotion and Movement",
+          "count": 54,
+          "topics": [
+            {
+              "id": "66bcc158ae81d148616b3297",
+              "title": "Movement",
+              "count": 2
+            },
+            {
+              "id": "6a0ae7a8c9ba4cd28e7440d0",
+              "title": "Muscular Tissue",
+              "count": 1
+            },
+            {
+              "id": "66bcc158ae81d148616b3296",
+              "title": "Locomotion",
+              "count": 46
+            },
+            {
+              "id": "6a0ae7a8c9ba4cd28e7440d1",
+              "title": "Skeletal System",
+              "count": 4
+            },
+            {
+              "id": "6a3d1b0d6497277835df1912",
+              "title": "Types of Movement",
+              "count": 1
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "616025be8549504b724745b9",
+          "name": "Reproductive Health",
+          "count": 62,
+          "topics": [
+            {
+              "id": "66bcc165ae81d148616b332e",
+              "title": "Problems and Strategies",
+              "count": 2
+            },
+            {
+              "id": "6a3d1b116497277835df191e",
+              "title": "Assisted Reproductive Technologies",
+              "count": 1
+            },
+            {
+              "id": "66bcc165ae81d148616b332b",
+              "title": "Population Explosion and Birth Control",
+              "count": 31
+            },
+            {
+              "id": "6a3d1b126497277835df191f",
+              "title": "Sexually Transmitted Infections (STIs)",
+              "count": 1
+            },
+            {
+              "id": "66bcc165ae81d148616b332c",
+              "title": "Medical Termination of Pregnancy",
+              "count": 4
+            },
+            {
+              "id": "66bcc165ae81d148616b332d",
+              "title": "Sexually Transmitted Diseases",
+              "count": 10
+            },
+            {
+              "id": "66bcc165ae81d148616b332a",
+              "title": "Infertility",
+              "count": 13
+            }
+          ],
+          "buckets": [],
+          "topicCount": 7
+        },
+        {
+          "id": "616025c81d98d204f8cbb063",
+          "name": "Human Reproduction",
+          "count": 130,
+          "topics": [
+            {
+              "id": "6a3d1b176497277835df192b",
+              "title": "Fertilisation and Embryonic Development",
+              "count": 1
+            },
+            {
+              "id": "66bcc158ae81d148616b329d",
+              "title": "Mammalian Reproductive System",
+              "count": 2
+            },
+            {
+              "id": "66bcc158ae81d148616b329c",
+              "title": "Male Reproductive System",
+              "count": 17
+            },
+            {
+              "id": "6a3d1b186497277835df192c",
+              "title": "Menstrual Cycle",
+              "count": 1
+            },
+            {
+              "id": "66bcc158ae81d148616b329a",
+              "title": "Female Reproductive System",
+              "count": 63
+            },
+            {
+              "id": "6a3d1b186497277835df192d",
+              "title": "Pregnancy, Parturition, and Lactation",
+              "count": 1
+            },
+            {
+              "id": "66bcc158ae81d148616b329b",
+              "title": "Embryology",
+              "count": 45
+            }
+          ],
+          "buckets": [],
+          "topicCount": 7
+        },
+        {
+          "id": "616025cc3a61b04cbfa67cc0",
+          "name": "Molecular Basis of Inheritance",
+          "count": 188,
+          "topics": [
+            {
+              "id": "66bcc159ae81d148616b32a9",
+              "title": "Structure of DNA",
+              "count": 22
+            },
+            {
+              "id": "66bcc159ae81d148616b32a8",
+              "title": "Central Dogma",
+              "count": 5
+            },
+            {
+              "id": "66bcc159ae81d148616b32aa",
+              "title": "Packaging of DNA Helix",
+              "count": 7
+            },
+            {
+              "id": "66bcc158ae81d148616b329e",
+              "title": "The Search for Genetic Material",
+              "count": 16
+            },
+            {
+              "id": "66bcc159ae81d148616b32a0",
+              "title": "Properties of Genetic Material",
+              "count": 13
+            },
+            {
+              "id": "66bcc159ae81d148616b32a3",
+              "title": "Replication",
+              "count": 11
+            },
+            {
+              "id": "66bcc159ae81d148616b32a5",
+              "title": "Transcription",
+              "count": 38
+            },
+            {
+              "id": "66bcc159ae81d148616b32a1",
+              "title": "Genetic Code",
+              "count": 22
+            },
+            {
+              "id": "66bcc159ae81d148616b32a2",
+              "title": "Structure of T-RNA",
+              "count": 4
+            },
+            {
+              "id": "66bcc159ae81d148616b32a4",
+              "title": "Translation",
+              "count": 11
+            },
+            {
+              "id": "66bcc159ae81d148616b329f",
+              "title": "Regulation of Gene Expression",
+              "count": 22
+            },
+            {
+              "id": "66bcc159ae81d148616b32a6",
+              "title": "Human Genome Project",
+              "count": 5
+            },
+            {
+              "id": "66bcc159ae81d148616b32a7",
+              "title": "DNA Fingerprinting",
+              "count": 12
+            }
+          ],
+          "buckets": [],
+          "topicCount": 13
+        },
+        {
+          "id": "616025d0eb47b6e940bd7489",
+          "name": "Principles of Inheritance and Variation",
+          "count": 201,
+          "topics": [
+            {
+              "id": "682c9e0cc2281abe1696a185",
+              "title": "Polygenic inheritance",
+              "count": 1
+            },
+            {
+              "id": "6a3d1b136497277835df1923",
+              "title": "Mendel's Experiments and Laws",
+              "count": 1
+            },
+            {
+              "id": "66bcc15bae81d148616b32b7",
+              "title": "Mendel's Experiment",
+              "count": 8
+            },
+            {
+              "id": "6a3d1b146497277835df1924",
+              "title": "Non-Mendelian Inheritance",
+              "count": 1
+            },
+            {
+              "id": "66bcc15aae81d148616b32b4",
+              "title": "Working Method",
+              "count": 10
+            },
+            {
+              "id": "66bcc15aae81d148616b32b0",
+              "title": "Mendel's Work and Results",
+              "count": 6
+            },
+            {
+              "id": "66bcc15aae81d148616b32ae",
+              "title": "Mendel's Laws of Inheritance",
+              "count": 7
+            },
+            {
+              "id": "66bcc15aae81d148616b32af",
+              "title": "F1 and F2 Cross",
+              "count": 11
+            },
+            {
+              "id": "66bcc15aae81d148616b32b5",
+              "title": "Test Cross",
+              "count": 8
+            },
+            {
+              "id": "66bcc15aae81d148616b32b2",
+              "title": "Incomplete Dominance",
+              "count": 6
+            },
+            {
+              "id": "66bcc15aae81d148616b32b3",
+              "title": "Multiple Alleles / Co-dominance",
+              "count": 19
+            },
+            {
+              "id": "66bcc15aae81d148616b32ad",
+              "title": "Chromosome Theory of Inheritance",
+              "count": 29
+            },
+            {
+              "id": "66bcc15aae81d148616b32b1",
+              "title": "Sex Determination",
+              "count": 11
+            },
+            {
+              "id": "66bcc15aae81d148616b32b6",
+              "title": "Sex Determination in Humans",
+              "count": 2
+            },
+            {
+              "id": "66bcc15aae81d148616b32ac",
+              "title": "Mutation",
+              "count": 13
+            },
+            {
+              "id": "66bcc15aae81d148616b32ab",
+              "title": "Genetic Disorders",
+              "count": 68
+            }
+          ],
+          "buckets": [],
+          "topicCount": 16
+        },
+        {
+          "id": "616025d5df15dcb57fd5eea7",
+          "name": "Evolution",
+          "count": 127,
+          "topics": [
+            {
+              "id": "66bcc15bae81d148616b32c0",
+              "title": "Origin of Universe and Life",
+              "count": 3
+            },
+            {
+              "id": "6a3d1b126497277835df1920",
+              "title": "Evidence for Evolution",
+              "count": 3
+            },
+            {
+              "id": "66bcc15bae81d148616b32be",
+              "title": "The Earth",
+              "count": 10
+            },
+            {
+              "id": "6a3d1b126497277835df1921",
+              "title": "Human Evolution- Homo Genus Lineage",
+              "count": 1
+            },
+            {
+              "id": "66bcc15bae81d148616b32bd",
+              "title": "Evidences of Evolution",
+              "count": 43
+            },
+            {
+              "id": "6a3d1b136497277835df1922",
+              "title": "Mechanisms of Evolution",
+              "count": 2
+            },
+            {
+              "id": "66bcc15bae81d148616b32b9",
+              "title": "Process or Mechanism of Evolution",
+              "count": 7
+            },
+            {
+              "id": "66bcc15bae81d148616b32bc",
+              "title": "Theory of Darwin",
+              "count": 12
+            },
+            {
+              "id": "66bcc15bae81d148616b32bf",
+              "title": "Mutation Theory of Hugo De Vries",
+              "count": 4
+            },
+            {
+              "id": "66bcc15bae81d148616b32b8",
+              "title": "Modern Theory of Evolution",
+              "count": 18
+            },
+            {
+              "id": "66bcc15bae81d148616b32ba",
+              "title": "Geological Timescale",
+              "count": 7
+            },
+            {
+              "id": "66bcc15bae81d148616b32bb",
+              "title": "Human Evolution",
+              "count": 17
+            }
+          ],
+          "buckets": [],
+          "topicCount": 12
+        },
+        {
+          "id": "616025d9b048a7bdf3428b79",
+          "name": "Human Health and Diseases",
+          "count": 131,
+          "topics": [
+            {
+              "id": "66bcc15cae81d148616b32c4",
+              "title": "Introduction",
+              "count": 7
+            },
+            {
+              "id": "682c9e09c2281abe1696a184",
+              "title": "Acquired immunity",
+              "count": 1
+            },
+            {
+              "id": "6a3d1b156497277835df1926",
+              "title": "Drugs and Alcohol Abuse",
+              "count": 1
+            },
+            {
+              "id": "66bcc15cae81d148616b32c9",
+              "title": "Innate",
+              "count": 6
+            },
+            {
+              "id": "6a3d1b156497277835df1927",
+              "title": "Vaccination and Immunisation",
+              "count": 1
+            },
+            {
+              "id": "66bcc15cae81d148616b32c8",
+              "title": "Acquired",
+              "count": 4
+            },
+            {
+              "id": "6a3d1b166497277835df1928",
+              "title": "Common Infectious Diseases",
+              "count": 1
+            },
+            {
+              "id": "66bcc15cae81d148616b32cb",
+              "title": "Specific Immunity",
+              "count": 4
+            },
+            {
+              "id": "66bcc15cae81d148616b32c3",
+              "title": "Acquired Immunity",
+              "count": 17
+            },
+            {
+              "id": "66bcc15cae81d148616b32c7",
+              "title": "Lymphoid Organs",
+              "count": 4
+            },
+            {
+              "id": "66bcc15cae81d148616b32cc",
+              "title": "Vaccination",
+              "count": 1
+            },
+            {
+              "id": "66bcc15dae81d148616b32cf",
+              "title": "Immune System Disorder",
+              "count": 2
+            },
+            {
+              "id": "66bcc15cae81d148616b32c2",
+              "title": "Common Health Disease",
+              "count": 38
+            },
+            {
+              "id": "66bcc15cae81d148616b32ca",
+              "title": "STDs",
+              "count": 3
+            },
+            {
+              "id": "66bcc15cae81d148616b32c5",
+              "title": "Aids",
+              "count": 11
+            },
+            {
+              "id": "66bcc15bae81d148616b32c1",
+              "title": "Cancer",
+              "count": 13
+            },
+            {
+              "id": "66bcc15cae81d148616b32cd",
+              "title": "Alcoholism",
+              "count": 1
+            },
+            {
+              "id": "66bcc15cae81d148616b32c6",
+              "title": "Drug Addiction",
+              "count": 14
+            },
+            {
+              "id": "66bcc15cae81d148616b32ce",
+              "title": "Drug Abuse",
+              "count": 2
+            }
+          ],
+          "buckets": [],
+          "topicCount": 19
+        },
+        {
+          "id": "616025dc1d4313b4e41c98ba",
+          "name": "Microbes in Human Welfare",
+          "count": 65,
+          "topics": [
+            {
+              "id": "66bcc15dae81d148616b32d4",
+              "title": "Introduction",
+              "count": 2
+            },
+            {
+              "id": "682c9dfec2281abe1696a17f",
+              "title": "products",
+              "count": 1
+            },
+            {
+              "id": "682c9dffc2281abe1696a180",
+              "title": "biofertilizers",
+              "count": 1
+            },
+            {
+              "id": "6a3d1b186497277835df192e",
+              "title": "Microbes in Industrial Products",
+              "count": 1
+            },
+            {
+              "id": "66bcc15dae81d148616b32d1",
+              "title": "Products",
+              "count": 29
+            },
+            {
+              "id": "66bcc15dae81d148616b32d2",
+              "title": "Sewage Treatment",
+              "count": 15
+            },
+            {
+              "id": "66bcc15dae81d148616b32d0",
+              "title": "Production of Biogas",
+              "count": 6
+            },
+            {
+              "id": "66bcc15dae81d148616b32d3",
+              "title": "Biocontrol Agents",
+              "count": 9
+            },
+            {
+              "id": "66bcc15dae81d148616b32d5",
+              "title": "Biofertilizer",
+              "count": 1
+            }
+          ],
+          "buckets": [],
+          "topicCount": 9
+        },
+        {
+          "id": "616025e0e6f38cc5cfbb365a",
+          "name": "Strategies for Enhancement in Food Production",
+          "count": 47,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 6
+        },
+        {
+          "id": "616025e3fe26a548c6c9606c",
+          "name": "Biotechnology and Its Applications",
+          "count": 109,
+          "topics": [
+            {
+              "id": "66bcc15eae81d148616b32de",
+              "title": "Introduction",
+              "count": 2
+            },
+            {
+              "id": "682c9e05c2281abe1696a181",
+              "title": "applications of biotechnology",
+              "count": 1
+            },
+            {
+              "id": "6a3d1b196497277835df192f",
+              "title": "Biotechnological Applications in Agriculture",
+              "count": 1
+            },
+            {
+              "id": "66bcc15eae81d148616b32dc",
+              "title": "Application in Agriculture",
+              "count": 18
+            },
+            {
+              "id": "66bcc15eae81d148616b32dd",
+              "title": "Genetic Modified Crops",
+              "count": 46
+            },
+            {
+              "id": "66bcc15eae81d148616b32df",
+              "title": "Application in Medicine",
+              "count": 31
+            },
+            {
+              "id": "66bcc15eae81d148616b32e0",
+              "title": "Transgenic Animals",
+              "count": 3
+            },
+            {
+              "id": "66bcc15eae81d148616b32e1",
+              "title": "Ethical Issues",
+              "count": 7
+            }
+          ],
+          "buckets": [],
+          "topicCount": 8
+        },
+        {
+          "id": "616025e7231d150595f071ea",
+          "name": "Biotechnology - Principles and Processes",
+          "count": 136,
+          "topics": [
+            {
+              "id": "6a3d1b116497277835df191d",
+              "title": "Processes of Recombinant DNA Technology",
+              "count": 2
+            },
+            {
+              "id": "66bcc15fae81d148616b32e5",
+              "title": "Principles of Biotechnology",
+              "count": 11
+            },
+            {
+              "id": "66bcc15eae81d148616b32e2",
+              "title": "Conceptual Development of Genetic Engineering",
+              "count": 13
+            },
+            {
+              "id": "66bcc15eae81d148616b32e3",
+              "title": "Tools of Recombinant DNA Technology",
+              "count": 71
+            },
+            {
+              "id": "66bcc15eae81d148616b32e4",
+              "title": "Separation and Isolation of DNA Fragments",
+              "count": 39
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "616025eeb6e1178c0298e542",
+          "name": "Organisms and Populations",
+          "count": 105,
+          "topics": [
+            {
+              "id": "682c9dfbc2281abe1696a17e",
+              "title": "Introduction",
+              "count": 1
+            },
+            {
+              "id": "66bcc15fae81d148616b32ed",
+              "title": "Branches of Ecology",
+              "count": 3
+            },
+            {
+              "id": "6a0ae7a8c9ba4cd28e7440cf",
+              "title": "Population Interactions",
+              "count": 3
+            },
+            {
+              "id": "66bcc15fae81d148616b32e8",
+              "title": "Organisms and its Environment",
+              "count": 14
+            },
+            {
+              "id": "66bcc15fae81d148616b32eb",
+              "title": "Abiotic Factors",
+              "count": 6
+            },
+            {
+              "id": "66bcc15fae81d148616b32e9",
+              "title": "Response to Abiotic Factors",
+              "count": 5
+            },
+            {
+              "id": "66bcc15fae81d148616b32e7",
+              "title": "Ecological Adaptations",
+              "count": 6
+            },
+            {
+              "id": "66bcc15fae81d148616b32ec",
+              "title": "Populations",
+              "count": 64
+            },
+            {
+              "id": "66bcc15fae81d148616b32ea",
+              "title": "Biotic Community",
+              "count": 3
+            }
+          ],
+          "buckets": [],
+          "topicCount": 9
+        }
+      ]
+    },
+    {
+      "id": "68beb946b3c89f70a7f8a848",
+      "name": "Botany",
+      "count": 1725,
+      "chapters": [
+        {
+          "id": "61602575187508697aeef5d5",
+          "name": "The Living World",
+          "count": 34,
+          "topics": [
+            {
+              "id": "66bcc163ae81d148616b3315",
+              "title": "Introduction",
+              "count": 1
+            },
+            {
+              "id": "6a3d1b0d6497277835df1913",
+              "title": "Taxonomic Categories and Hierarchy",
+              "count": 3
+            },
+            {
+              "id": "66bcc163ae81d148616b3317",
+              "title": "Diversity vs Classification",
+              "count": 2
+            },
+            {
+              "id": "66bcc164ae81d148616b331a",
+              "title": "What is Living",
+              "count": 2
+            },
+            {
+              "id": "66bcc164ae81d148616b331b",
+              "title": "Diversity in the Living World",
+              "count": 9
+            },
+            {
+              "id": "66bcc163ae81d148616b3316",
+              "title": "Taxonomic Categories",
+              "count": 7
+            },
+            {
+              "id": "66bcc163ae81d148616b3319",
+              "title": "Taxonomy",
+              "count": 3
+            }
+          ],
+          "buckets": [],
+          "topicCount": 8
+        },
+        {
+          "id": "616025787cda8c2a99be0c08",
+          "name": "Biological Classification",
+          "count": 123,
+          "topics": [
+            {
+              "id": "66bcc14cae81d148616b3212",
+              "title": "Introduction",
+              "count": 11
+            },
+            {
+              "id": "66bcc14cae81d148616b3213",
+              "title": "Kingdom Monera",
+              "count": 46
+            },
+            {
+              "id": "6a3d1b0b6497277835df190b",
+              "title": "Viruses, Viriods and Prions",
+              "count": 1
+            },
+            {
+              "id": "66bcc14cae81d148616b3215",
+              "title": "Kingdom Protista",
+              "count": 12
+            },
+            {
+              "id": "66bcc14cae81d148616b3216",
+              "title": "Kingdom Fungi",
+              "count": 32
+            },
+            {
+              "id": "66bcc14cae81d148616b3214",
+              "title": "Viruses",
+              "count": 13
+            },
+            {
+              "id": "66bcc14dae81d148616b3218",
+              "title": "Viroids",
+              "count": 3
+            },
+            {
+              "id": "66bcc14cae81d148616b3217",
+              "title": "Prions",
+              "count": 5
+            }
+          ],
+          "buckets": [],
+          "topicCount": 8
+        },
+        {
+          "id": "6160257c88583108671090ad",
+          "name": "Plant Kingdom",
+          "count": 121,
+          "topics": [
+            {
+              "id": "66bcc14dae81d148616b321b",
+              "title": "Introduction",
+              "count": 3
+            },
+            {
+              "id": "66bcc14dae81d148616b321f",
+              "title": "Algae: Thallophytes",
+              "count": 31
+            },
+            {
+              "id": "66bcc14dae81d148616b321d",
+              "title": "Bryophytes",
+              "count": 14
+            },
+            {
+              "id": "66bcc14dae81d148616b321c",
+              "title": "Pteridophytes",
+              "count": 29
+            },
+            {
+              "id": "66bcc14dae81d148616b321a",
+              "title": "Gymnosperms",
+              "count": 31
+            }
+          ],
+          "buckets": [],
+          "topicCount": 7
+        },
+        {
+          "id": "6160258031f20d890d6b0ed5",
+          "name": "Animal Kingdom",
+          "count": 125,
+          "topics": [
+            {
+              "id": "66bcc14eae81d148616b3223",
+              "title": "Basis of Classification",
+              "count": 10
+            },
+            {
+              "id": "6a3d1b086497277835df1907",
+              "title": "Chordata",
+              "count": 2
+            },
+            {
+              "id": "66bcc14dae81d148616b3221",
+              "title": "Porifera",
+              "count": 8
+            },
+            {
+              "id": "6a0ae7a6c9ba4cd28e7440ce",
+              "title": "Respiratory Organs",
+              "count": 1
+            },
+            {
+              "id": "66bcc14eae81d148616b3228",
+              "title": "Coelenterata or Cnideria",
+              "count": 6
+            },
+            {
+              "id": "66bcc14eae81d148616b322d",
+              "title": "Phylum Ctenophora",
+              "count": 1
+            },
+            {
+              "id": "66bcc14eae81d148616b322b",
+              "title": "Phylum Platyhelminthes",
+              "count": 7
+            },
+            {
+              "id": "66bcc14eae81d148616b3229",
+              "title": "Phylum Aschelminthes",
+              "count": 4
+            },
+            {
+              "id": "66bcc14dae81d148616b3222",
+              "title": "Phylum Annelida",
+              "count": 11
+            },
+            {
+              "id": "66bcc14eae81d148616b3225",
+              "title": "Phylum Arthropoda",
+              "count": 17
+            },
+            {
+              "id": "66bcc14eae81d148616b3226",
+              "title": "Phylum Mollusca",
+              "count": 4
+            },
+            {
+              "id": "66bcc14eae81d148616b3224",
+              "title": "Phylum Echinodermata",
+              "count": 4
+            },
+            {
+              "id": "66bcc14dae81d148616b3220",
+              "title": "Phylum Chordata",
+              "count": 22
+            },
+            {
+              "id": "66bcc14eae81d148616b322c",
+              "title": "Sub Phylum Hemichordata",
+              "count": 2
+            },
+            {
+              "id": "66bcc14eae81d148616b322a",
+              "title": "Subphylum Cephalochordata",
+              "count": 3
+            },
+            {
+              "id": "66bcc14eae81d148616b3227",
+              "title": "Euchordata",
+              "count": 23
+            }
+          ],
+          "buckets": [],
+          "topicCount": 16
+        },
+        {
+          "id": "616025836a44c4d339a09c6a",
+          "name": "Morphology of Flowering Plants",
+          "count": 140,
+          "topics": [
+            {
+              "id": "66bcc14eae81d148616b322e",
+              "title": "The Root",
+              "count": 10
+            },
+            {
+              "id": "66bcc14fae81d148616b3236",
+              "title": "The Stem",
+              "count": 11
+            },
+            {
+              "id": "6a3d1b0c6497277835df1910",
+              "title": "Semi-technical Description and Families",
+              "count": 1
+            },
+            {
+              "id": "66bcc14fae81d148616b3233",
+              "title": "The Leaf",
+              "count": 10
+            },
+            {
+              "id": "66bcc14fae81d148616b3230",
+              "title": "Inflorescence",
+              "count": 7
+            },
+            {
+              "id": "66bcc14fae81d148616b3232",
+              "title": "The Flower",
+              "count": 54
+            },
+            {
+              "id": "66bcc14fae81d148616b3231",
+              "title": "The Fruit",
+              "count": 17
+            },
+            {
+              "id": "66bcc14fae81d148616b3234",
+              "title": "The Seed",
+              "count": 13
+            },
+            {
+              "id": "66bcc14fae81d148616b3235",
+              "title": "Technical Description of Angiosperm",
+              "count": 2
+            },
+            {
+              "id": "66bcc14fae81d148616b322f",
+              "title": "Families",
+              "count": 15
+            }
+          ],
+          "buckets": [],
+          "topicCount": 10
+        },
+        {
+          "id": "61602587fcf5b78a8bab79b1",
+          "name": "Anatomy of Flowering Plants",
+          "count": 90,
+          "topics": [
+            {
+              "id": "66bcc150ae81d148616b323b",
+              "title": "Introduction",
+              "count": 3
+            },
+            {
+              "id": "66bcc14fae81d148616b3239",
+              "title": "Meristematic Tissues",
+              "count": 12
+            },
+            {
+              "id": "66bcc14fae81d148616b323a",
+              "title": "Permanent Tissues",
+              "count": 30
+            },
+            {
+              "id": "66bcc14fae81d148616b3237",
+              "title": "Tissue System",
+              "count": 5
+            },
+            {
+              "id": "66bcc14fae81d148616b3238",
+              "title": "Anatomy of Plant Parts",
+              "count": 15
+            },
+            {
+              "id": "66bcc150ae81d148616b323d",
+              "title": "Anatomy of Leaf",
+              "count": 5
+            }
+          ],
+          "buckets": [],
+          "topicCount": 7
+        },
+        {
+          "id": "6160258e3b31e13c06dc70b4",
+          "name": "Cell Cycle and Cell Division",
+          "count": 88,
+          "topics": [
+            {
+              "id": "66bcc150ae81d148616b3241",
+              "title": "Cell Cycle Involves Two Stages",
+              "count": 2
+            },
+            {
+              "id": "66bcc150ae81d148616b323f",
+              "title": "Interphase",
+              "count": 17
+            },
+            {
+              "id": "6a3d1b116497277835df191c",
+              "title": "Cell Cycle Overview",
+              "count": 1
+            },
+            {
+              "id": "66bcc150ae81d148616b323e",
+              "title": "M-phase (Mitotic Phase)",
+              "count": 30
+            },
+            {
+              "id": "66bcc150ae81d148616b3240",
+              "title": "Meiosis",
+              "count": 38
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "616025966a1cef9af5528821",
+          "name": "Cell - The Unit of Life",
+          "count": 135,
+          "topics": [
+            {
+              "id": "66bcc151ae81d148616b324d",
+              "title": "Cell Wall",
+              "count": 7
+            },
+            {
+              "id": "6a3d1b0b6497277835df190c",
+              "title": "Mitochondria and Plastids",
+              "count": 3
+            },
+            {
+              "id": "66bcc151ae81d148616b324b",
+              "title": "Cell Membranes",
+              "count": 23
+            },
+            {
+              "id": "6a3d1b0b6497277835df190d",
+              "title": "Cell Theory and Discovery",
+              "count": 1
+            },
+            {
+              "id": "66bcc151ae81d148616b324c",
+              "title": "Cell Organelles",
+              "count": 98
+            },
+            {
+              "id": "6a3d1b0b6497277835df190e",
+              "title": "Endomembrane System",
+              "count": 2
+            },
+            {
+              "id": "6a3d1b0b6497277835df190f",
+              "title": "Prokaryotic Cell",
+              "count": 1
+            }
+          ],
+          "buckets": [],
+          "topicCount": 7
+        },
+        {
+          "id": "61602599e962f1fddb35be8b",
+          "name": "Plant - Growth and Development",
+          "count": 83,
+          "topics": [
+            {
+              "id": "66bcc151ae81d148616b324f",
+              "title": "Growth",
+              "count": 16
+            },
+            {
+              "id": "66bcc151ae81d148616b324e",
+              "title": "Plant Growth Regulators",
+              "count": 51
+            },
+            {
+              "id": "6a3d1b0d6497277835df1911",
+              "title": "Growth — Characteristics and Phases",
+              "count": 1
+            },
+            {
+              "id": "66bcc152ae81d148616b3253",
+              "title": "Senescence",
+              "count": 2
+            },
+            {
+              "id": "66bcc152ae81d148616b3250",
+              "title": "Seed Germination",
+              "count": 3
+            }
+          ],
+          "buckets": [],
+          "topicCount": 8
+        },
+        {
+          "id": "6160259cfcb296ec6df680cf",
+          "name": "Transport in Plants",
+          "count": 56,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 7
+        },
+        {
+          "id": "6160259f82dd259bc6fdf1da",
+          "name": "Respiration in Plants",
+          "count": 55,
+          "topics": [
+            {
+              "id": "66bcc153ae81d148616b325f",
+              "title": "Glycolysis",
+              "count": 7
+            },
+            {
+              "id": "66bcc153ae81d148616b325e",
+              "title": "Cellular Respiration",
+              "count": 7
+            },
+            {
+              "id": "66bcc153ae81d148616b325d",
+              "title": "Fermentation",
+              "count": 8
+            },
+            {
+              "id": "66bcc153ae81d148616b325c",
+              "title": "Aerobic Respiration",
+              "count": 28
+            },
+            {
+              "id": "66bcc153ae81d148616b3260",
+              "title": "Amphibolic Pathway",
+              "count": 3
+            },
+            {
+              "id": "66bcc153ae81d148616b3261",
+              "title": "Respiratory Quotient",
+              "count": 2
+            }
+          ],
+          "buckets": [],
+          "topicCount": 6
+        },
+        {
+          "id": "616025a2bd4440d3cce24d14",
+          "name": "Mineral Nutrition",
+          "count": 72,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "616025a44946f4e4a198e5b3",
+          "name": "Photosynthesis in Higher Plants",
+          "count": 81,
+          "topics": [
+            {
+              "id": "6a3d1b096497277835df1908",
+              "title": "Dark Reaction (Biosynthetic Phase) — C3 and C4",
+              "count": 2
+            },
+            {
+              "id": "66bcc154ae81d148616b326a",
+              "title": "History",
+              "count": 3
+            },
+            {
+              "id": "66bcc153ae81d148616b3264",
+              "title": "The Site of Photosynthesis",
+              "count": 7
+            },
+            {
+              "id": "6a3d1b096497277835df1909",
+              "title": "Site and Pigments",
+              "count": 1
+            },
+            {
+              "id": "66bcc154ae81d148616b3267",
+              "title": "Pigments",
+              "count": 4
+            },
+            {
+              "id": "6a3d1b0a6497277835df190a",
+              "title": "Early Experiments",
+              "count": 1
+            },
+            {
+              "id": "66bcc153ae81d148616b3265",
+              "title": "Absorption Spectrum",
+              "count": 2
+            },
+            {
+              "id": "66bcc153ae81d148616b3266",
+              "title": "Action Spectrum",
+              "count": 1
+            },
+            {
+              "id": "66bcc154ae81d148616b3269",
+              "title": "Quantum Requirement & Quantum Yield",
+              "count": 1
+            },
+            {
+              "id": "66bcc153ae81d148616b3262",
+              "title": "Red Drop & Emerson Enhancement Effect",
+              "count": 2
+            },
+            {
+              "id": "66bcc154ae81d148616b3268",
+              "title": "Two Pigment System",
+              "count": 4
+            },
+            {
+              "id": "66bcc153ae81d148616b3263",
+              "title": "Mechanism of Photosynthesis",
+              "count": 52
+            },
+            {
+              "id": "66bcc154ae81d148616b326b",
+              "title": "Factor Affecting Photosynthesis",
+              "count": 1
+            }
+          ],
+          "buckets": [],
+          "topicCount": 13
+        },
+        {
+          "id": "616025c2822b7bb5e27982e5",
+          "name": "Sexual Reproduction in Flowering Plants",
+          "count": 134,
+          "topics": [
+            {
+              "id": "66bcc158ae81d148616b3299",
+              "title": "Asexual Reproduction",
+              "count": 1
+            },
+            {
+              "id": "6a3d1b166497277835df1929",
+              "title": "Double Fertilisation and Post-Fertilisation",
+              "count": 2
+            },
+            {
+              "id": "66bcc158ae81d148616b3298",
+              "title": "Sexual Reproduction",
+              "count": 128
+            },
+            {
+              "id": "6a0ae7a3c9ba4cd28e7440cd",
+              "title": "Pollination",
+              "count": 1
+            },
+            {
+              "id": "6a3d1b176497277835df192a",
+              "title": "Flower Structure for Reproduction",
+              "count": 2
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "616025c6a10e96f8041f5a6a",
+          "name": "Reproduction in Organisms",
+          "count": 17,
+          "topics": [
+            {
+              "id": "6a0ae7a9c9ba4cd28e7440d2",
+              "title": "Parthenogenesis",
+              "count": 1
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "616025929c9b0c22c359aa8e",
+          "name": "Biomolecules (B)",
+          "count": 95,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 11
+        },
+        {
+          "id": "616025ea2711a65bdd491026",
+          "name": "Environmental Issues",
+          "count": 85,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 1
+        },
+        {
+          "id": "616025f1471a25fb7be4daa7",
+          "name": "Biodiversity and its Conservation",
+          "count": 93,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 7
+        },
+        {
+          "id": "616025f47a4fd69d9d3cdeb4",
+          "name": "Ecosystem",
+          "count": 98,
+          "topics": [
+            {
+              "id": "66bcc160ae81d148616b32f4",
+              "title": "Introduction",
+              "count": 4
+            },
+            {
+              "id": "66bcc160ae81d148616b32f7",
+              "title": "On the Basis Development",
+              "count": 2
+            },
+            {
+              "id": "66bcc160ae81d148616b32f6",
+              "title": "Components of Ecosystem",
+              "count": 12
+            },
+            {
+              "id": "66bcc160ae81d148616b32f5",
+              "title": "Structure of Ecosystem",
+              "count": 16
+            },
+            {
+              "id": "66bcc160ae81d148616b32f8",
+              "title": "Functions of Ecosystem",
+              "count": 41
+            },
+            {
+              "id": "66bcc161ae81d148616b32fb",
+              "title": "Cycles Operating",
+              "count": 6
+            },
+            {
+              "id": "66bcc161ae81d148616b32fa",
+              "title": "Ecosystem Services",
+              "count": 3
+            },
+            {
+              "id": "66bcc161ae81d148616b32fc",
+              "title": "Biomes",
+              "count": 1
+            }
+          ],
+          "buckets": [],
+          "topicCount": 9
+        }
+      ]
+    },
+    {
+      "id": "616057210283de43c87e3e19",
+      "name": "Chemistry",
+      "count": 1831,
+      "chapters": [
+        {
+          "id": "616024679855063dabed05e1",
+          "name": "Some Basic Concepts of Chemistry",
+          "count": 50,
+          "topics": [
+            {
+              "id": "66bcc144ae81d148616b31b9",
+              "title": "Laws of chemical combination",
+              "count": 2
+            },
+            {
+              "id": "66bcc144ae81d148616b31b7",
+              "title": "Mole concept",
+              "count": 17
+            },
+            {
+              "id": "66bcc144ae81d148616b31b8",
+              "title": "Quantitative measures in chemical equations",
+              "count": 19
+            },
+            {
+              "id": "66bcc143ae81d148616b31b6",
+              "title": "Concentration terms",
+              "count": 10
+            },
+            {
+              "id": "66bcc144ae81d148616b31ba",
+              "title": "Significant Figures",
+              "count": 2
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "61602471c78c4e1d1f28322c",
+          "name": "Structure of Atom",
+          "count": 78,
+          "topics": [
+            {
+              "id": "66bcc140ae81d148616b3194",
+              "title": "Atomic Mass and Atomic Size",
+              "count": 12
+            },
+            {
+              "id": "66bcc140ae81d148616b3195",
+              "title": "Bohr's model",
+              "count": 11
+            },
+            {
+              "id": "66bcc141ae81d148616b3199",
+              "title": "Hydrogen spectrum",
+              "count": 4
+            },
+            {
+              "id": "66bcc141ae81d148616b3196",
+              "title": "Dual Behaviour of Matter and Heisenberg Uncertainty Principle",
+              "count": 15
+            },
+            {
+              "id": "66bcc141ae81d148616b3197",
+              "title": "Quantum mechanical model",
+              "count": 29
+            },
+            {
+              "id": "66bcc141ae81d148616b3198",
+              "title": "Electronic configuration",
+              "count": 7
+            }
+          ],
+          "buckets": [],
+          "topicCount": 6
+        },
+        {
+          "id": "6160247ab6649a28dbb20abf",
+          "name": "Classification of Elements and Periodicity in Properties",
+          "count": 51,
+          "topics": [
+            {
+              "id": "66bcc140ae81d148616b3193",
+              "title": "Earlier attempts of periodic classification",
+              "count": 1
+            },
+            {
+              "id": "66bcc140ae81d148616b3191",
+              "title": "Modern periodic table",
+              "count": 7
+            },
+            {
+              "id": "66bcc140ae81d148616b3192",
+              "title": "Periodic properties",
+              "count": 43
+            }
+          ],
+          "buckets": [],
+          "topicCount": 3
+        },
+        {
+          "id": "6160247f51abd88ba55ab331",
+          "name": "Chemical Bonding and Molecular Structure",
+          "count": 139,
+          "topics": [
+            {
+              "id": "66bcc141ae81d148616b319c",
+              "title": "Covalent and Co-ordinate Bonding",
+              "count": 14
+            },
+            {
+              "id": "66bcc141ae81d148616b319b",
+              "title": "Hybridisation and VSEPR Theory",
+              "count": 64
+            },
+            {
+              "id": "66bcc141ae81d148616b319a",
+              "title": "Back Bonding",
+              "count": 1
+            },
+            {
+              "id": "66bcc141ae81d148616b319f",
+              "title": "Molecular Orbital Theory",
+              "count": 30
+            },
+            {
+              "id": "66bcc141ae81d148616b31a1",
+              "title": "Ionic bond",
+              "count": 2
+            },
+            {
+              "id": "66bcc141ae81d148616b319e",
+              "title": "Polarization",
+              "count": 2
+            },
+            {
+              "id": "66bcc142ae81d148616b31a2",
+              "title": "Properties of ionic compounds",
+              "count": 3
+            },
+            {
+              "id": "66bcc141ae81d148616b319d",
+              "title": "Dipole moment",
+              "count": 14
+            },
+            {
+              "id": "66bcc141ae81d148616b31a0",
+              "title": "Van Der Waals Forces, Hydrogen Bonding and Metallic Bonding",
+              "count": 9
+            }
+          ],
+          "buckets": [],
+          "topicCount": 9
+        },
+        {
+          "id": "61602486ed0fed57066a330b",
+          "name": "States of Matter",
+          "count": 34,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 6
+        },
+        {
+          "id": "6160248c9998cacece0c307b",
+          "name": "Thermodynamics (C)",
+          "count": 87,
+          "topics": [
+            {
+              "id": "66bcc143ae81d148616b31b3",
+              "title": "System and surrounding",
+              "count": 3
+            },
+            {
+              "id": "66bcc143ae81d148616b31b0",
+              "title": "First Law and Basic Fundamentals of Thermodynamics",
+              "count": 23
+            },
+            {
+              "id": "66bcc143ae81d148616b31b1",
+              "title": "Laws of Thermochemistry and Enthalpy Change",
+              "count": 27
+            },
+            {
+              "id": "66bcc143ae81d148616b31af",
+              "title": "Entropy and Second law of thermodynamics",
+              "count": 13
+            },
+            {
+              "id": "66bcc143ae81d148616b31b2",
+              "title": "Third law of thermodynamics",
+              "count": 21
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "61602492dd1229595b6a58b8",
+          "name": "Chemical Equilibrium",
+          "count": 36,
+          "topics": [
+            {
+              "id": "66bcc143ae81d148616b31b4",
+              "title": "Law of Mass Action, Equilibrium Constant (Kc and Kp) and its Application",
+              "count": 31
+            },
+            {
+              "id": "66bcc143ae81d148616b31b5",
+              "title": "Le chatelier's principle",
+              "count": 5
+            }
+          ],
+          "buckets": [],
+          "topicCount": 2
+        },
+        {
+          "id": "6160249933d66f15e519334a",
+          "name": "Ionic Equilibrium",
+          "count": 70,
+          "topics": [
+            {
+              "id": "66bcc142ae81d148616b31a6",
+              "title": "Theories of Acids and Bases",
+              "count": 16
+            },
+            {
+              "id": "66bcc142ae81d148616b31a8",
+              "title": "Ionic Product of Water",
+              "count": 1
+            },
+            {
+              "id": "66bcc142ae81d148616b31a4",
+              "title": "PH of solutions",
+              "count": 16
+            },
+            {
+              "id": "6a0ae797c9ba4cd28e7440ca",
+              "title": "Indicators",
+              "count": 1
+            },
+            {
+              "id": "66bcc142ae81d148616b31a7",
+              "title": "Salt Hydrolysis",
+              "count": 5
+            },
+            {
+              "id": "66bcc142ae81d148616b31a3",
+              "title": "Buffer solutions",
+              "count": 12
+            },
+            {
+              "id": "66bcc142ae81d148616b31a5",
+              "title": "Solubility",
+              "count": 19
+            }
+          ],
+          "buckets": [],
+          "topicCount": 7
+        },
+        {
+          "id": "6160249f7cf0910e3a0dde90",
+          "name": "Redox Reactions",
+          "count": 31,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "616024a40be1bed16dd4a0f1",
+          "name": "Hydrogen",
+          "count": 10,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 4
+        },
+        {
+          "id": "616024a9237a25efd60dbdcd",
+          "name": "s Block Elements",
+          "count": 42,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "616024aeb7939a45137c4bff",
+          "name": "p Block Elements (Group 13 & 14)",
+          "count": 28,
+          "topics": [
+            {
+              "id": "66bcc168ae81d148616b3346",
+              "title": "Boron and Its Compounds",
+              "count": 10
+            },
+            {
+              "id": "66bcc168ae81d148616b3347",
+              "title": "Aluminium and Its Compounds",
+              "count": 6
+            },
+            {
+              "id": "66bcc168ae81d148616b3349",
+              "title": "Carbon and Its Compounds",
+              "count": 2
+            },
+            {
+              "id": "66bcc168ae81d148616b3345",
+              "title": "Silicon and Its Compounds",
+              "count": 9
+            },
+            {
+              "id": "66bcc168ae81d148616b3348",
+              "title": "Tin and Lead Containing Compounds",
+              "count": 1
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "616024b40048a39f6f22a9ec",
+          "name": "General Organic Chemistry",
+          "count": 125,
+          "topics": [
+            {
+              "id": "66bcc146ae81d148616b31d2",
+              "title": "IUPAC Nomenclature",
+              "count": 16
+            },
+            {
+              "id": "66bcc147ae81d148616b31d7",
+              "title": "Classification of organic compounds",
+              "count": 3
+            },
+            {
+              "id": "66bcc146ae81d148616b31d6",
+              "title": "Reaction Intermediates",
+              "count": 10
+            },
+            {
+              "id": "66bcc146ae81d148616b31d3",
+              "title": "Electron displacement effects",
+              "count": 28
+            },
+            {
+              "id": "66bcc146ae81d148616b31d1",
+              "title": "Conjugation and Aromaticity",
+              "count": 10
+            },
+            {
+              "id": "66bcc147ae81d148616b31d8",
+              "title": "Attacking reagents",
+              "count": 4
+            },
+            {
+              "id": "66bcc146ae81d148616b31d0",
+              "title": "Isomerism of Organic Compounds",
+              "count": 35
+            },
+            {
+              "id": "66bcc146ae81d148616b31d5",
+              "title": "Purification of Organic Compounds",
+              "count": 8
+            },
+            {
+              "id": "66bcc147ae81d148616b31d9",
+              "title": "Qualitative analysis of organic compounds",
+              "count": 5
+            },
+            {
+              "id": "66bcc146ae81d148616b31d4",
+              "title": "Quantitative analysis of organic compounds",
+              "count": 6
+            }
+          ],
+          "buckets": [],
+          "topicCount": 10
+        },
+        {
+          "id": "616024ba1114e5121ec36d78",
+          "name": "Hydrocarbons",
+          "count": 72,
+          "topics": [
+            {
+              "id": "66bcc14bae81d148616b320c",
+              "title": "Properties and Preparation of Alkanes",
+              "count": 7
+            },
+            {
+              "id": "66bcc14bae81d148616b3208",
+              "title": "Reactions of alkanes",
+              "count": 4
+            },
+            {
+              "id": "66bcc14cae81d148616b320d",
+              "title": "Properties and Preparation of Alkenes",
+              "count": 8
+            },
+            {
+              "id": "66bcc14bae81d148616b3209",
+              "title": "Reactions of alkenes",
+              "count": 17
+            },
+            {
+              "id": "66bcc14bae81d148616b3207",
+              "title": "Properties and Preparation of Alkynes",
+              "count": 3
+            },
+            {
+              "id": "66bcc14bae81d148616b320b",
+              "title": "Reactions of alkynes",
+              "count": 5
+            },
+            {
+              "id": "66bcc14cae81d148616b320e",
+              "title": "Preparation and Reactions of cycloalkanes and cycloalkenes",
+              "count": 1
+            },
+            {
+              "id": "66bcc14cae81d148616b3210",
+              "title": "Preparation and Reactions of Conjugate Dienes",
+              "count": 2
+            },
+            {
+              "id": "66bcc14cae81d148616b3211",
+              "title": "Preparation and Properties of Benzene",
+              "count": 1
+            },
+            {
+              "id": "66bcc14cae81d148616b320f",
+              "title": "Reactions of Benzene",
+              "count": 2
+            },
+            {
+              "id": "66bcc14bae81d148616b320a",
+              "title": "Reactions of aromatic compounds",
+              "count": 22
+            }
+          ],
+          "buckets": [],
+          "topicCount": 11
+        },
+        {
+          "id": "616024c0ed5ddc5eda13d64d",
+          "name": "Environmental Chemistry",
+          "count": 19,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 3
+        },
+        {
+          "id": "616024c5212b28f0d9886af8",
+          "name": "Solid State",
+          "count": 56,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 7
+        },
+        {
+          "id": "616024c9726050da762a9cd9",
+          "name": "Solutions",
+          "count": 63,
+          "topics": [
+            {
+              "id": "66bcc148ae81d148616b31e3",
+              "title": "Solubility and Concentration of Solutions",
+              "count": 11
+            },
+            {
+              "id": "66bcc148ae81d148616b31e2",
+              "title": "Vapour pressure and raoult's law",
+              "count": 24
+            },
+            {
+              "id": "66bcc148ae81d148616b31e4",
+              "title": "Henry's law",
+              "count": 4
+            },
+            {
+              "id": "66bcc147ae81d148616b31e1",
+              "title": "Colligative Properties and Abnormal Molecular Masses",
+              "count": 24
+            }
+          ],
+          "buckets": [],
+          "topicCount": 4
+        },
+        {
+          "id": "616024ce69c6f27b5954f678",
+          "name": "Electrochemistry",
+          "count": 81,
+          "topics": [
+            {
+              "id": "66bcc148ae81d148616b31e5",
+              "title": "Cells and Electrode Potential, Nernst Equation",
+              "count": 56
+            },
+            {
+              "id": "66bcc148ae81d148616b31e6",
+              "title": "Concentration cell",
+              "count": 2
+            },
+            {
+              "id": "66bcc148ae81d148616b31e7",
+              "title": "Commercial Cells and Batteries",
+              "count": 4
+            },
+            {
+              "id": "66bcc148ae81d148616b31e8",
+              "title": "Conductance and Conductivity",
+              "count": 19
+            }
+          ],
+          "buckets": [],
+          "topicCount": 4
+        },
+        {
+          "id": "616024d4b1349be0edb49c08",
+          "name": "Chemical Kinetics",
+          "count": 89,
+          "topics": [
+            {
+              "id": "66bcc13fae81d148616b3182",
+              "title": "Rate of reaction",
+              "count": 15
+            },
+            {
+              "id": "66bcc13fae81d148616b3185",
+              "title": "Rate law and rate constant",
+              "count": 20
+            },
+            {
+              "id": "66bcc13fae81d148616b3184",
+              "title": "Integrated rate laws",
+              "count": 22
+            },
+            {
+              "id": "66bcc13fae81d148616b3186",
+              "title": "Methods to determine order of reaction",
+              "count": 8
+            },
+            {
+              "id": "66bcc13fae81d148616b3183",
+              "title": "Arrhenius theory",
+              "count": 24
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "616024dac1316bb36fe63190",
+          "name": "Surface Chemistry",
+          "count": 28,
+          "topics": [
+            {
+              "id": "66bcc14aae81d148616b31fc",
+              "title": "Colloids",
+              "count": 2
+            }
+          ],
+          "buckets": [],
+          "topicCount": 6
+        },
+        {
+          "id": "616024df171efccb87bad68f",
+          "name": "General Principles and Processes of Isolation of Metals",
+          "count": 25,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 7
+        },
+        {
+          "id": "616024e4a6c25e36152cb2b2",
+          "name": "p Block Elements (Group 15, 16, 17 & 18)",
+          "count": 62,
+          "topics": [
+            {
+              "id": "66bcc163ae81d148616b3312",
+              "title": "Nitrogen and Its Compounds",
+              "count": 12
+            },
+            {
+              "id": "66bcc163ae81d148616b3311",
+              "title": "Phosphorus and Its Compounds",
+              "count": 8
+            },
+            {
+              "id": "66bcc163ae81d148616b3313",
+              "title": "Oxygen and Its Compounds",
+              "count": 5
+            },
+            {
+              "id": "66bcc163ae81d148616b330f",
+              "title": "Sulphur and Its Compounds",
+              "count": 13
+            },
+            {
+              "id": "66bcc163ae81d148616b3310",
+              "title": "Halogens and Its Compounds",
+              "count": 20
+            },
+            {
+              "id": "66bcc163ae81d148616b3314",
+              "title": "Noble Gases",
+              "count": 4
+            }
+          ],
+          "buckets": [],
+          "topicCount": 6
+        },
+        {
+          "id": "616024eb5cd52bad3baecd60",
+          "name": "d and f Block Elements",
+          "count": 79,
+          "topics": [
+            {
+              "id": "66bcc144ae81d148616b31bd",
+              "title": "Properties of D-block elements",
+              "count": 34
+            },
+            {
+              "id": "66bcc144ae81d148616b31bb",
+              "title": "Compounds of Transition Metals",
+              "count": 17
+            },
+            {
+              "id": "66bcc144ae81d148616b31bc",
+              "title": "F-Block elements",
+              "count": 28
+            }
+          ],
+          "buckets": [],
+          "topicCount": 3
+        },
+        {
+          "id": "616024f22bdae059334a53e7",
+          "name": "Coordination Compounds",
+          "count": 105,
+          "topics": [
+            {
+              "id": "66bcc149ae81d148616b31ee",
+              "title": "Terminology of coordination compounds",
+              "count": 20
+            },
+            {
+              "id": "66bcc149ae81d148616b31ed",
+              "title": "Nomenclature of coordination compounds",
+              "count": 4
+            },
+            {
+              "id": "66bcc149ae81d148616b31ef",
+              "title": "Isomerism of coordination compounds",
+              "count": 20
+            },
+            {
+              "id": "66bcc149ae81d148616b31ec",
+              "title": "Werner's theory and Valence Bond Theory",
+              "count": 31
+            },
+            {
+              "id": "66bcc149ae81d148616b31f1",
+              "title": "Crystal Field Theory",
+              "count": 20
+            },
+            {
+              "id": "66bcc149ae81d148616b31f2",
+              "title": "Stability of complex ion",
+              "count": 3
+            },
+            {
+              "id": "66bcc149ae81d148616b31f0",
+              "title": "Carbonyl Compounds",
+              "count": 7
+            }
+          ],
+          "buckets": [],
+          "topicCount": 7
+        },
+        {
+          "id": "616024fa8b0163bbfb0e8dbf",
+          "name": "Haloalkanes and Haloarenes",
+          "count": 44,
+          "topics": [
+            {
+              "id": "66bcc14aae81d148616b31fa",
+              "title": "Preparation and Properties of Monohalides",
+              "count": 26
+            },
+            {
+              "id": "6a3d1b046497277835df1906",
+              "title": "Grignard Reagent",
+              "count": 1
+            },
+            {
+              "id": "66bcc14aae81d148616b31fb",
+              "title": "Preparation and Properties of Aryl Halides",
+              "count": 17
+            }
+          ],
+          "buckets": [],
+          "topicCount": 3
+        },
+        {
+          "id": "616024ff6c5648f1725cc495",
+          "name": "Alcohols Phenols and Ethers",
+          "count": 57,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 10
+        },
+        {
+          "id": "61602504b52b96e91d912eb4",
+          "name": "Aldehydes and Ketones",
+          "count": 58,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 7
+        },
+        {
+          "id": "616025097bba192c137d015e",
+          "name": "Carboxylic Acid Derivatives",
+          "count": 24,
+          "topics": [
+            {
+              "id": "66bcc14bae81d148616b3205",
+              "title": "Preparation and Properties of Carboxylic Acids",
+              "count": 8
+            },
+            {
+              "id": "66bcc14bae81d148616b3206",
+              "title": "Reaction Involving Cleavage of -OH Group",
+              "count": 2
+            },
+            {
+              "id": "66bcc14bae81d148616b3202",
+              "title": "Reactions Involving Acid Group",
+              "count": 7
+            },
+            {
+              "id": "66bcc14bae81d148616b3204",
+              "title": "Preparation and Properties of Acid Derivatives",
+              "count": 5
+            },
+            {
+              "id": "66bcc14bae81d148616b3203",
+              "title": "Preparation and Properties of Esters",
+              "count": 2
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "6160250e68c245c4e270e54e",
+          "name": "Amines",
+          "count": 47,
+          "topics": [
+            {
+              "id": "66bcc149ae81d148616b31f6",
+              "title": "Preparation and Properties of Amines",
+              "count": 34
+            },
+            {
+              "id": "66bcc149ae81d148616b31f7",
+              "title": "Separation of mixture of amines",
+              "count": 1
+            },
+            {
+              "id": "66bcc149ae81d148616b31f5",
+              "title": "Preparation and Properties of Amides",
+              "count": 5
+            },
+            {
+              "id": "66bcc149ae81d148616b31f3",
+              "title": "Preparation and Properties of Cyanides",
+              "count": 1
+            },
+            {
+              "id": "66bcc149ae81d148616b31f4",
+              "title": "Preparation and Properties of Isocyanides",
+              "count": 6
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "616025169a31925943ecef00",
+          "name": "Polymers",
+          "count": 36,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 2
+        },
+        {
+          "id": "6160251a20999870b58d5b37",
+          "name": "Chemistry in Everyday Life",
+          "count": 28,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 4
+        },
+        {
+          "id": "61602520127d8ed2c32765fb",
+          "name": "Practical Chemistry",
+          "count": 6,
+          "topics": [
+            {
+              "id": "66bcc148ae81d148616b31e9",
+              "title": "Preliminary Tests",
+              "count": 1
+            },
+            {
+              "id": "682c9e11c2281abe1696a187",
+              "title": "Radicals",
+              "count": 1
+            },
+            {
+              "id": "66bcc148ae81d148616b31eb",
+              "title": "Identification of Acid Radicals",
+              "count": 2
+            },
+            {
+              "id": "66bcc148ae81d148616b31ea",
+              "title": "Identification of Basic Radicals",
+              "count": 2
+            }
+          ],
+          "buckets": [],
+          "topicCount": 4
+        },
+        {
+          "id": "648d9714f3fc9c246caf7de6",
+          "name": "Biomolecules",
+          "count": 71,
+          "topics": [
+            {
+              "id": "66bcc146ae81d148616b31cd",
+              "title": "Carbohydrates",
+              "count": 8
+            },
+            {
+              "id": "6a0ae798c9ba4cd28e7440cb",
+              "title": "Protein",
+              "count": 4
+            },
+            {
+              "id": "66bcc146ae81d148616b31cb",
+              "title": "Preparation and Reactions of Glucose",
+              "count": 5
+            },
+            {
+              "id": "66bcc145ae81d148616b31c8",
+              "title": "Disaccharides and Polysaccharides",
+              "count": 7
+            },
+            {
+              "id": "66bcc146ae81d148616b31cf",
+              "title": "Properties and Preparation of Amino Acids",
+              "count": 4
+            },
+            {
+              "id": "66bcc145ae81d148616b31c9",
+              "title": "Proteins",
+              "count": 15
+            },
+            {
+              "id": "66bcc146ae81d148616b31cc",
+              "title": "Nucleic Acids",
+              "count": 11
+            },
+            {
+              "id": "682c9e06c2281abe1696a182",
+              "title": "Enzymes",
+              "count": 5
+            },
+            {
+              "id": "682c9e06c2281abe1696a183",
+              "title": "Nucleic Acid",
+              "count": 1
+            },
+            {
+              "id": "66bcc145ae81d148616b31ca",
+              "title": "Vitamins",
+              "count": 10
+            },
+            {
+              "id": "66bcc146ae81d148616b31ce",
+              "title": "Fats",
+              "count": 1
+            }
+          ],
+          "buckets": [],
+          "topicCount": 11
+        }
+      ]
+    },
+    {
+      "id": "616057190283de43c87e3e18",
+      "name": "Physics",
+      "count": 1800,
+      "chapters": [
+        {
+          "id": "6160239f750c8acf0af5535d",
+          "name": "Mathematics in Physics",
+          "count": 29,
+          "topics": [
+            {
+              "id": "66bcc161ae81d148616b3300",
+              "title": "Fundamentals of Vectors",
+              "count": 1
+            },
+            {
+              "id": "66bcc161ae81d148616b32fd",
+              "title": "Addition and Subtraction of Vectors",
+              "count": 9
+            },
+            {
+              "id": "66bcc161ae81d148616b32fe",
+              "title": "Multiplication of Vectors",
+              "count": 7
+            },
+            {
+              "id": "66bcc161ae81d148616b32ff",
+              "title": "Errors of Measurement",
+              "count": 12
+            }
+          ],
+          "buckets": [],
+          "topicCount": 4
+        },
+        {
+          "id": "616023a2f10cbbb7a2220ac9",
+          "name": "Units and Dimensions",
+          "count": 37,
+          "topics": [
+            {
+              "id": "66bcc166ae81d148616b332f",
+              "title": "Units",
+              "count": 6
+            },
+            {
+              "id": "66bcc166ae81d148616b3330",
+              "title": "Dimensions",
+              "count": 30
+            },
+            {
+              "id": "682c9df1c2281abe1696a17d",
+              "title": "Errors of Measurement",
+              "count": 1
+            }
+          ],
+          "buckets": [],
+          "topicCount": 3
+        },
+        {
+          "id": "616023a9b8280cfa2a85aec0",
+          "name": "Motion In One Dimension",
+          "count": 61,
+          "topics": [
+            {
+              "id": "66bcc134ae81d148616b3111",
+              "title": "Rest and Motion",
+              "count": 12
+            },
+            {
+              "id": "66bcc134ae81d148616b3110",
+              "title": "Uniform Motion",
+              "count": 14
+            },
+            {
+              "id": "66bcc134ae81d148616b3114",
+              "title": "Graphs of motion in one dimension",
+              "count": 4
+            },
+            {
+              "id": "66bcc134ae81d148616b310f",
+              "title": "Non-uniform Motion",
+              "count": 18
+            },
+            {
+              "id": "66bcc134ae81d148616b3112",
+              "title": "Relative Motion",
+              "count": 7
+            },
+            {
+              "id": "66bcc134ae81d148616b3113",
+              "title": "Motion Under Gravity",
+              "count": 6
+            }
+          ],
+          "buckets": [],
+          "topicCount": 6
+        },
+        {
+          "id": "616023af43c51275f749f558",
+          "name": "Motion In Two Dimensions",
+          "count": 33,
+          "topics": [
+            {
+              "id": "66bcc135ae81d148616b3117",
+              "title": "Relative motion",
+              "count": 2
+            },
+            {
+              "id": "66bcc134ae81d148616b3115",
+              "title": "Projectile motion",
+              "count": 18
+            },
+            {
+              "id": "66bcc135ae81d148616b3116",
+              "title": "Uniform Circular Motion",
+              "count": 13
+            }
+          ],
+          "buckets": [],
+          "topicCount": 3
+        },
+        {
+          "id": "616023b542cfec4323be20b3",
+          "name": "Laws of Motion",
+          "count": 56,
+          "topics": [
+            {
+              "id": "66bcc136ae81d148616b3121",
+              "title": "Newton's laws of motion",
+              "count": 15
+            },
+            {
+              "id": "66bcc135ae81d148616b311f",
+              "title": "Equilibrium of Forces",
+              "count": 6
+            },
+            {
+              "id": "66bcc135ae81d148616b3120",
+              "title": "Spring force",
+              "count": 5
+            },
+            {
+              "id": "66bcc135ae81d148616b311e",
+              "title": "Frictional force",
+              "count": 16
+            },
+            {
+              "id": "66bcc136ae81d148616b3122",
+              "title": "Non-uniform Circular Motion",
+              "count": 14
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "616023bd4bf85baf0acdc7af",
+          "name": "Work Power Energy",
+          "count": 53,
+          "topics": [
+            {
+              "id": "66bcc161ae81d148616b3302",
+              "title": "Work done",
+              "count": 10
+            },
+            {
+              "id": "66bcc161ae81d148616b3301",
+              "title": "Energy",
+              "count": 25
+            },
+            {
+              "id": "66bcc161ae81d148616b3303",
+              "title": "Power",
+              "count": 13
+            },
+            {
+              "id": "66bcc161ae81d148616b3304",
+              "title": "Circular motion",
+              "count": 5
+            }
+          ],
+          "buckets": [],
+          "topicCount": 4
+        },
+        {
+          "id": "616023c39895a1b5f083657e",
+          "name": "Center of Mass Momentum and Collision",
+          "count": 60,
+          "topics": [
+            {
+              "id": "66bcc136ae81d148616b3124",
+              "title": "momentum",
+              "count": 22
+            },
+            {
+              "id": "66bcc136ae81d148616b3125",
+              "title": "Centre of mass of discrete particles",
+              "count": 11
+            },
+            {
+              "id": "66bcc136ae81d148616b3123",
+              "title": "Centre of mass of continuous mass distribution",
+              "count": 3
+            },
+            {
+              "id": "66bcc136ae81d148616b3129",
+              "title": "Motion of centre of mass",
+              "count": 3
+            },
+            {
+              "id": "66bcc136ae81d148616b3128",
+              "title": "Impulse",
+              "count": 4
+            },
+            {
+              "id": "66bcc136ae81d148616b3126",
+              "title": "Collisions",
+              "count": 12
+            },
+            {
+              "id": "66bcc136ae81d148616b3127",
+              "title": "Variable mass system",
+              "count": 5
+            }
+          ],
+          "buckets": [],
+          "topicCount": 7
+        },
+        {
+          "id": "616023c9d383c4c41c614007",
+          "name": "Rotational Motion",
+          "count": 78,
+          "topics": [
+            {
+              "id": "66bcc135ae81d148616b3119",
+              "title": "Moment of inertia of rigid bodies",
+              "count": 27
+            },
+            {
+              "id": "66bcc135ae81d148616b311c",
+              "title": "Torque",
+              "count": 10
+            },
+            {
+              "id": "66bcc135ae81d148616b311b",
+              "title": "Rotational kinematics",
+              "count": 12
+            },
+            {
+              "id": "66bcc135ae81d148616b311a",
+              "title": "Angular momentum and Angular impulse",
+              "count": 17
+            },
+            {
+              "id": "66bcc135ae81d148616b3118",
+              "title": "Rolling without Slipping",
+              "count": 10
+            },
+            {
+              "id": "66bcc135ae81d148616b311d",
+              "title": "Combination of translation and rotation",
+              "count": 2
+            }
+          ],
+          "buckets": [],
+          "topicCount": 6
+        },
+        {
+          "id": "616023d0c98042c9b38a7982",
+          "name": "Gravitation",
+          "count": 62,
+          "topics": [
+            {
+              "id": "66bcc137ae81d148616b312c",
+              "title": "Newton's Law of Gravitation",
+              "count": 3
+            },
+            {
+              "id": "66bcc137ae81d148616b312f",
+              "title": "Gravitational field",
+              "count": 6
+            },
+            {
+              "id": "66bcc136ae81d148616b312b",
+              "title": "Acceleration Due to Gravity",
+              "count": 15
+            },
+            {
+              "id": "66bcc136ae81d148616b312a",
+              "title": "Gravitational potential and Potential Energy",
+              "count": 21
+            },
+            {
+              "id": "66bcc137ae81d148616b312d",
+              "title": "Motion of satellite",
+              "count": 9
+            },
+            {
+              "id": "66bcc137ae81d148616b312e",
+              "title": "Kepler laws",
+              "count": 8
+            }
+          ],
+          "buckets": [],
+          "topicCount": 6
+        },
+        {
+          "id": "616023d614fc4f965518e97a",
+          "name": "Mechanical Properties of Solids",
+          "count": 17,
+          "topics": [
+            {
+              "id": "66bcc16bae81d148616b3365",
+              "title": "Young's Modulus and Breaking Stres",
+              "count": 11
+            },
+            {
+              "id": "6a0ae790c9ba4cd28e7440c8",
+              "title": "Young’s Modulus and Breaking Stres",
+              "count": 1
+            },
+            {
+              "id": "66bcc16bae81d148616b3366",
+              "title": "Bulk Modulus",
+              "count": 2
+            },
+            {
+              "id": "66bcc16bae81d148616b3367",
+              "title": "Shearing stress",
+              "count": 2
+            },
+            {
+              "id": "66bcc16bae81d148616b3368",
+              "title": "Work Done in Stretching a Wire",
+              "count": 1
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "616023dc2e23ae5dc98f4412",
+          "name": "Mechanical Properties of Fluids",
+          "count": 35,
+          "topics": [
+            {
+              "id": "66bcc16aae81d148616b3359",
+              "title": "Pressure and thrust",
+              "count": 7
+            },
+            {
+              "id": "66bcc169ae81d148616b3355",
+              "title": "Pascal's Law",
+              "count": 2
+            },
+            {
+              "id": "66bcc169ae81d148616b3356",
+              "title": "Archmidies Principle",
+              "count": 2
+            },
+            {
+              "id": "66bcc16aae81d148616b3358",
+              "title": "Hydrodynamics",
+              "count": 5
+            },
+            {
+              "id": "66bcc16aae81d148616b335a",
+              "title": "Efflux of liquid",
+              "count": 2
+            },
+            {
+              "id": "66bcc169ae81d148616b3357",
+              "title": "Surface tension",
+              "count": 10
+            },
+            {
+              "id": "66bcc16aae81d148616b335b",
+              "title": "Viscosity",
+              "count": 7
+            }
+          ],
+          "buckets": [],
+          "topicCount": 7
+        },
+        {
+          "id": "616023e23a74832357599443",
+          "name": "Thermal Properties of Matter",
+          "count": 54,
+          "topics": [
+            {
+              "id": "66bcc137ae81d148616b3132",
+              "title": "Thermometry",
+              "count": 6
+            },
+            {
+              "id": "66bcc137ae81d148616b3134",
+              "title": "Thermal Expansion",
+              "count": 4
+            },
+            {
+              "id": "66bcc137ae81d148616b3133",
+              "title": "Calorimetry",
+              "count": 8
+            },
+            {
+              "id": "66bcc137ae81d148616b3131",
+              "title": "Conduction",
+              "count": 13
+            },
+            {
+              "id": "66bcc137ae81d148616b3130",
+              "title": "Radiation",
+              "count": 23
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "616023e9f3960ab2f8134e29",
+          "name": "Thermodynamics",
+          "count": 58,
+          "topics": [
+            {
+              "id": "66bcc138ae81d148616b3138",
+              "title": "Thermodynamic Systems",
+              "count": 3
+            },
+            {
+              "id": "66bcc138ae81d148616b3137",
+              "title": "First Law of Thermodynamics",
+              "count": 11
+            },
+            {
+              "id": "66bcc138ae81d148616b3136",
+              "title": "Thermodynamic Processes",
+              "count": 28
+            },
+            {
+              "id": "66bcc138ae81d148616b3135",
+              "title": "Heat Engine, Refrigerator and Second Law of Thermodynamics",
+              "count": 16
+            }
+          ],
+          "buckets": [],
+          "topicCount": 4
+        },
+        {
+          "id": "616023eff9a30607b30377c7",
+          "name": "Kinetic Theory of Gases",
+          "count": 33,
+          "topics": [
+            {
+              "id": "66bcc166ae81d148616b3331",
+              "title": "Gas Laws",
+              "count": 11
+            },
+            {
+              "id": "66bcc166ae81d148616b3334",
+              "title": "Speed of Gas",
+              "count": 5
+            },
+            {
+              "id": "66bcc166ae81d148616b3332",
+              "title": "Degree of Freedom and Specific Heat",
+              "count": 9
+            },
+            {
+              "id": "66bcc166ae81d148616b3333",
+              "title": "Pressure and Energy of gas",
+              "count": 8
+            }
+          ],
+          "buckets": [],
+          "topicCount": 4
+        },
+        {
+          "id": "616023f4946fab7b921bf28d",
+          "name": "Oscillations",
+          "count": 63,
+          "topics": [
+            {
+              "id": "66bcc138ae81d148616b313a",
+              "title": "Simple Harmonic Motion",
+              "count": 35
+            },
+            {
+              "id": "66bcc138ae81d148616b313b",
+              "title": "Energy of Simple Harmonic Motion",
+              "count": 7
+            },
+            {
+              "id": "66bcc138ae81d148616b3139",
+              "title": "Time Period and Frequency",
+              "count": 13
+            },
+            {
+              "id": "66bcc138ae81d148616b313c",
+              "title": "Applications of SHM",
+              "count": 7
+            },
+            {
+              "id": "66bcc138ae81d148616b313d",
+              "title": "Superposition of S.H.M's and Resonance",
+              "count": 1
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "616023fc290ac5aa3e782a03",
+          "name": "Waves and Sound",
+          "count": 62,
+          "topics": [
+            {
+              "id": "66bcc139ae81d148616b3141",
+              "title": "Basics of Mechanical Waves",
+              "count": 8
+            },
+            {
+              "id": "66bcc138ae81d148616b313e",
+              "title": "Travelling Waves",
+              "count": 9
+            },
+            {
+              "id": "66bcc139ae81d148616b3144",
+              "title": "Interference and Superposition of Waves",
+              "count": 2
+            },
+            {
+              "id": "66bcc139ae81d148616b3146",
+              "title": "Vibration of String",
+              "count": 5
+            },
+            {
+              "id": "66bcc139ae81d148616b3140",
+              "title": "Organ Pipe (Vibration of Air Column)",
+              "count": 14
+            },
+            {
+              "id": "66bcc139ae81d148616b3143",
+              "title": "Beats",
+              "count": 12
+            },
+            {
+              "id": "66bcc139ae81d148616b3145",
+              "title": "Speed of Sound Waves",
+              "count": 1
+            },
+            {
+              "id": "66bcc139ae81d148616b3142",
+              "title": "Properties of Sound Waves",
+              "count": 1
+            }
+          ],
+          "buckets": [],
+          "topicCount": 9
+        },
+        {
+          "id": "616024041a305c0e66419287",
+          "name": "Electrostatics",
+          "count": 85,
+          "topics": [
+            {
+              "id": "66bcc139ae81d148616b3149",
+              "title": "Electric Charge and Coulomb's law",
+              "count": 12
+            },
+            {
+              "id": "66bcc139ae81d148616b314b",
+              "title": "Electric Field and Electric Field Lines",
+              "count": 18
+            },
+            {
+              "id": "66bcc139ae81d148616b3147",
+              "title": "Electric Potential and Potential Energy",
+              "count": 32
+            },
+            {
+              "id": "66bcc139ae81d148616b314a",
+              "title": "Electric Dipole",
+              "count": 13
+            },
+            {
+              "id": "66bcc139ae81d148616b3148",
+              "title": "Electric Flux and Gauss Law",
+              "count": 10
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "6160240bda5af4913929a0b8",
+          "name": "Capacitance",
+          "count": 41,
+          "topics": [
+            {
+              "id": "66bcc13aae81d148616b314c",
+              "title": "Capacitance",
+              "count": 5
+            },
+            {
+              "id": "66bcc13aae81d148616b314d",
+              "title": "Grouping of capacitors",
+              "count": 11
+            },
+            {
+              "id": "66bcc13aae81d148616b3150",
+              "title": "Capacitors with Dielectric",
+              "count": 5
+            },
+            {
+              "id": "66bcc13aae81d148616b314f",
+              "title": "Force and Energy stored in capacitor",
+              "count": 14
+            },
+            {
+              "id": "66bcc13aae81d148616b314e",
+              "title": "Charging and Discarging of capacitors",
+              "count": 6
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "616024121e978b1a23a5d68b",
+          "name": "Current Electricity",
+          "count": 136,
+          "topics": [
+            {
+              "id": "66bcc13bae81d148616b3158",
+              "title": "Electric Current and Drift of Electrons",
+              "count": 9
+            },
+            {
+              "id": "66bcc13aae81d148616b3151",
+              "title": "Resistance and Resistivity",
+              "count": 25
+            },
+            {
+              "id": "66bcc13bae81d148616b3156",
+              "title": "Combination of Resistances",
+              "count": 16
+            },
+            {
+              "id": "66bcc13aae81d148616b3152",
+              "title": "Electric Cell or Battery",
+              "count": 13
+            },
+            {
+              "id": "66bcc13bae81d148616b3157",
+              "title": "Kirchoffs Laws",
+              "count": 12
+            },
+            {
+              "id": "66bcc13aae81d148616b3155",
+              "title": "Electric Power and Heating Effect of Current",
+              "count": 18
+            },
+            {
+              "id": "66bcc13aae81d148616b3154",
+              "title": "Wheatstone Bridge",
+              "count": 9
+            },
+            {
+              "id": "66bcc13aae81d148616b3153",
+              "title": "Electric Instruments",
+              "count": 31
+            }
+          ],
+          "buckets": [],
+          "topicCount": 9
+        },
+        {
+          "id": "6160241a32805db750457ecb",
+          "name": "Magnetic Properties of Matter",
+          "count": 35,
+          "topics": [
+            {
+              "id": "66bcc13bae81d148616b315a",
+              "title": "Magnetism and Properties of Magnet",
+              "count": 13
+            },
+            {
+              "id": "66bcc13bae81d148616b315b",
+              "title": "Magnetic Equipments",
+              "count": 3
+            },
+            {
+              "id": "66bcc13bae81d148616b315c",
+              "title": "Magnetic Materials and their Properties",
+              "count": 15
+            }
+          ],
+          "buckets": [],
+          "topicCount": 4
+        },
+        {
+          "id": "61602420ae6dd863a9d1d7d8",
+          "name": "Magnetic Effects of Current",
+          "count": 81,
+          "topics": [
+            {
+              "id": "66bcc13cae81d148616b3163",
+              "title": "Biot-Savart's Law and Ampere's Circuital Law",
+              "count": 3
+            },
+            {
+              "id": "66bcc13bae81d148616b315e",
+              "title": "Magnetic Field",
+              "count": 26
+            },
+            {
+              "id": "6a0ae795c9ba4cd28e7440c9",
+              "title": "Biot-Savart’s Law and Ampere’s Circuital Law",
+              "count": 1
+            },
+            {
+              "id": "66bcc13bae81d148616b315f",
+              "title": "Motion of Charged Particle in Magnetic Field",
+              "count": 23
+            },
+            {
+              "id": "66bcc13cae81d148616b3162",
+              "title": "Force and Torque on Current Carrying Conductor",
+              "count": 17
+            },
+            {
+              "id": "66bcc13cae81d148616b3161",
+              "title": "Magnetic Moment",
+              "count": 8
+            },
+            {
+              "id": "66bcc13bae81d148616b3160",
+              "title": "Magnetic Dipole",
+              "count": 3
+            }
+          ],
+          "buckets": [],
+          "topicCount": 7
+        },
+        {
+          "id": "6160242803cde39247fbcbae",
+          "name": "Electromagnetic Induction",
+          "count": 43,
+          "topics": [
+            {
+              "id": "66bcc166ae81d148616b3338",
+              "title": "Magnetic Flux, Faraday's and Lenz law",
+              "count": 18
+            },
+            {
+              "id": "66bcc166ae81d148616b3336",
+              "title": "Induced Electric Field",
+              "count": 5
+            },
+            {
+              "id": "66bcc167ae81d148616b3339",
+              "title": "Motional and Rotational EMF",
+              "count": 9
+            },
+            {
+              "id": "66bcc167ae81d148616b333a",
+              "title": "Inductance",
+              "count": 2
+            },
+            {
+              "id": "66bcc166ae81d148616b3337",
+              "title": "Self and Mutual Inductance",
+              "count": 7
+            },
+            {
+              "id": "66bcc166ae81d148616b3335",
+              "title": "LR Circuit",
+              "count": 2
+            }
+          ],
+          "buckets": [],
+          "topicCount": 6
+        },
+        {
+          "id": "6160242ef5478541e9167738",
+          "name": "Alternating Current",
+          "count": 65,
+          "topics": [
+            {
+              "id": "66bcc13cae81d148616b3165",
+              "title": "Alternating Current, Voltage and Power",
+              "count": 14
+            },
+            {
+              "id": "66bcc13cae81d148616b3164",
+              "title": "AC Circuits",
+              "count": 36
+            },
+            {
+              "id": "66bcc13cae81d148616b3166",
+              "title": "Quality and Power Factor",
+              "count": 5
+            },
+            {
+              "id": "66bcc13cae81d148616b3167",
+              "title": "Transformers",
+              "count": 10
+            }
+          ],
+          "buckets": [],
+          "topicCount": 4
+        },
+        {
+          "id": "61602434741e389e3bfe9c28",
+          "name": "Electromagnetic Waves",
+          "count": 47,
+          "topics": [
+            {
+              "id": "66bcc13cae81d148616b3169",
+              "title": "Electromagnetic Waves and Maxwell's equations",
+              "count": 36
+            },
+            {
+              "id": "66bcc13cae81d148616b3168",
+              "title": "Electromagnetic Spectrum",
+              "count": 11
+            }
+          ],
+          "buckets": [],
+          "topicCount": 2
+        },
+        {
+          "id": "61602438690b07c861db4cc9",
+          "name": "Ray Optics",
+          "count": 88,
+          "topics": [
+            {
+              "id": "66bcc13dae81d148616b3172",
+              "title": "Reflection of Light from Plane Mirror",
+              "count": 1
+            },
+            {
+              "id": "66bcc13dae81d148616b3171",
+              "title": "Mirror Formula, Reflection in Spherical Mirror",
+              "count": 6
+            },
+            {
+              "id": "66bcc13cae81d148616b316a",
+              "title": "Critical angle and total internal reflection",
+              "count": 10
+            },
+            {
+              "id": "66bcc13dae81d148616b316d",
+              "title": "Refraction of light from plane surface",
+              "count": 9
+            },
+            {
+              "id": "66bcc13dae81d148616b316c",
+              "title": "Lens Formula, Refraction of light from curved surface",
+              "count": 24
+            },
+            {
+              "id": "66bcc13dae81d148616b3170",
+              "title": "Combination of Lens and Mirrors",
+              "count": 6
+            },
+            {
+              "id": "66bcc13dae81d148616b316e",
+              "title": "Prism and Dispersion of Light",
+              "count": 16
+            },
+            {
+              "id": "66bcc13dae81d148616b316f",
+              "title": "Optical Instruments",
+              "count": 14
+            }
+          ],
+          "buckets": [],
+          "topicCount": 9
+        },
+        {
+          "id": "6160243f6067541f280c4e8f",
+          "name": "Wave Optics",
+          "count": 38,
+          "topics": [
+            {
+              "id": "66bcc16bae81d148616b3363",
+              "title": "Wave Theory and Wavefronts",
+              "count": 2
+            },
+            {
+              "id": "66bcc16aae81d148616b3360",
+              "title": "Interference of Light",
+              "count": 5
+            },
+            {
+              "id": "66bcc16aae81d148616b3361",
+              "title": "Youngs Double Slit Experiment",
+              "count": 18
+            },
+            {
+              "id": "66bcc16aae81d148616b3362",
+              "title": "Diffraction of Light",
+              "count": 6
+            },
+            {
+              "id": "66bcc16bae81d148616b3364",
+              "title": "Polarization of Light",
+              "count": 7
+            }
+          ],
+          "buckets": [],
+          "topicCount": 5
+        },
+        {
+          "id": "6160244cb4f517cc680aa439",
+          "name": "Atomic Physics",
+          "count": 49,
+          "topics": [
+            {
+              "id": "66bcc162ae81d148616b3306",
+              "title": "Atomic Structure",
+              "count": 5
+            },
+            {
+              "id": "66bcc162ae81d148616b3305",
+              "title": "Bohr's Atomic Model",
+              "count": 23
+            },
+            {
+              "id": "66bcc162ae81d148616b3307",
+              "title": "Atomic Spectrum",
+              "count": 21
+            }
+          ],
+          "buckets": [],
+          "topicCount": 3
+        },
+        {
+          "id": "6160245293da78d2d21777a1",
+          "name": "Nuclear Physics",
+          "count": 81,
+          "topics": [
+            {
+              "id": "66bcc13dae81d148616b3175",
+              "title": "Nuclear structure",
+              "count": 13
+            },
+            {
+              "id": "66bcc13dae81d148616b3176",
+              "title": "Nuclear energy",
+              "count": 15
+            },
+            {
+              "id": "66bcc13dae81d148616b3174",
+              "title": "Radioactivity",
+              "count": 40
+            },
+            {
+              "id": "66bcc13dae81d148616b3173",
+              "title": "Nuclear reactions",
+              "count": 13
+            }
+          ],
+          "buckets": [],
+          "topicCount": 4
+        },
+        {
+          "id": "6160245904d4c5ba91160e33",
+          "name": "Semiconductors",
+          "count": 119,
+          "topics": [
+            {
+              "id": "66bcc13eae81d148616b317b",
+              "title": "Energy Bands in Solids",
+              "count": 3
+            },
+            {
+              "id": "66bcc13eae81d148616b317d",
+              "title": "Semiconductors",
+              "count": 12
+            },
+            {
+              "id": "66bcc13eae81d148616b3178",
+              "title": "Diodes",
+              "count": 35
+            },
+            {
+              "id": "66bcc13eae81d148616b317a",
+              "title": "Rectifier",
+              "count": 4
+            },
+            {
+              "id": "66bcc13eae81d148616b317c",
+              "title": "Special purpose diodes",
+              "count": 5
+            },
+            {
+              "id": "66bcc13eae81d148616b3179",
+              "title": "Logic gates",
+              "count": 35
+            }
+          ],
+          "buckets": [],
+          "topicCount": 7
+        },
+        {
+          "id": "616024609ab7a7d407c369e5",
+          "name": "Communication System",
+          "count": 0,
+          "topics": [],
+          "buckets": [],
+          "topicCount": 1
+        },
+        {
+          "id": "616024645ad00d0ed6d002fb",
+          "name": "Experimental Physics",
+          "count": 12,
+          "topics": [
+            {
+              "id": "66bcc16bae81d148616b3369",
+              "title": "Experimental Physics",
+              "count": 11
+            },
+            {
+              "id": "6a3d1b016497277835df1905",
+              "title": "Vernier Callipers",
+              "count": 1
+            }
+          ],
+          "buckets": [],
+          "topicCount": 2
+        },
+        {
+          "id": "648d9722f3f321bd231480e6",
+          "name": "Dual Nature of Matter",
+          "count": 89,
+          "topics": [
+            {
+              "id": "66bcc13eae81d148616b3180",
+              "title": "Cathode Rays and Positive Rays",
+              "count": 6
+            },
+            {
+              "id": "66bcc13eae81d148616b317e",
+              "title": "Matter Waves",
+              "count": 25
+            },
+            {
+              "id": "66bcc13eae81d148616b317f",
+              "title": "Photoelectric Effect",
+              "count": 57
+            }
+          ],
+          "buckets": [],
+          "topicCount": 4
+        }
+      ]
+    }
+  ],
+  "board": "CBSE",
+  "filterSubjects": {
+    "Engineering": [
+      "Physics",
+      "Chemistry"
+    ],
+    "Medical": [
+      "Physics",
+      "Chemistry",
+      "Botany",
+      "Zoology"
+    ]
+  }
+}

@@ -681,37 +681,46 @@ async function viewCpyqb(payload) {
 // ============ ALL QUESTION BANK / NCERT (MARKS NEET modules) ============
 let _bankPayload = { module: "allqs", step: "subjects" };
 
-async function viewNeetModuleBank(payload, moduleId) {
+function filterNcertSubjects(subjects, mod) {
+  const allow = (mod && mod.filterSubjects && mod.filterSubjects[STATE.exam]) || null;
+  if (!allow || !allow.length) return subjects || [];
+  const set = new Set(allow);
+  return (subjects || []).filter(s => set.has(s.name));
+}
+
+async function viewNeetModuleBank(payload, moduleId, opts) {
+  opts = opts || {};
   const p = { ..._bankPayload, module: moduleId, ...(payload || {}) };
   _bankPayload = p;
-  const navName = moduleId === "ncert" ? "neet_ncert" : "neet_allqs";
+  const navName = opts.navName || (moduleId === "ncert" ? "neet_ncert" : "neet_allqs");
   const mod = await fetchModuleNav(navName);
-  const title = (mod && mod.title) || (moduleId === "ncert" ? "NCERT Based Qs Bank" : "All Question Bank");
-  const subtitle = moduleId === "ncert" ? "100% aligned with latest NEET syllabus" : "Chapter-wise questions by subject";
+  const title = opts.title || (mod && mod.title) || (moduleId === "ncert" ? "NCERT Based Qs Bank" : "All Question Bank");
+  const subtitle = opts.subtitle || (moduleId === "ncert" ? "Syllabus-aligned NCERT questions from MARKS" : "Chapter-wise questions by subject");
   const examSlug = (mod && mod.examSlug) || "neet";
-  const subjects = (mod && mod.subjects) || [];
+  const subjects = filterNcertSubjects((mod && mod.subjects) || [], mod);
+  const viewKey = opts.viewKey || moduleId;
 
   if (p.step === "subjects" || !p.subject) {
-    _lastListFn = () => ({ module: moduleId, step: "subjects" });
+    _lastListFn = () => ({ module: moduleId, step: "subjects", ...(opts.ncertKind ? { ncertKind: opts.ncertKind } : {}) });
     const cards = subjects.map(s => `
-      <div class="subj-card" ${mg(moduleId, { step: "chapters", subject: s.name })}>
+      <div class="subj-card" ${mg(viewKey, { step: "chapters", subject: s.name, ...(opts.ncertKind ? { ncertKind: opts.ncertKind } : {}) })}>
         <span class="subj-ic">${subjectIcon(s.name)}</span>
         <div><strong>${s.name}</strong><small>${s.chapters.length} chapters · ${s.count.toLocaleString()} qs</small></div>
       </div>`).join("");
-    return `${topbar(title, subtitle)}<div class="subj-grid">${cards || '<div class="empty">NEET module data loading…</div>'}</div>`;
+    return `${topbar(title, subtitle)}<div class="subj-grid">${cards || '<div class="empty">NCERT module data loading…</div>'}</div>`;
   }
 
   const subj = subjects.find(s => s.name === p.subject);
-  if (!subj) return viewNeetModuleBank({ step: "subjects" }, moduleId);
+  if (!subj) return viewNeetModuleBank({ step: "subjects", ...(opts.ncertKind ? { ncertKind: opts.ncertKind } : {}) }, moduleId, opts);
 
   if (p.step === "chapters" || !p.chapter) {
     _lastListFn = () => ({ module: moduleId, step: "chapters", subject: p.subject });
-    const bc = breadcrumb([{ label: title, view: moduleId, payload: { step: "subjects" } }, { label: p.subject }]);
+    const bc = breadcrumb([{ label: title, view: viewKey, payload: { step: "subjects", ...(opts.ncertKind ? { ncertKind: opts.ncertKind } : {}) } }, { label: p.subject }]);
     const cards = subj.chapters.map(c => {
       const tc = c.topicCount || (c.topics && c.topics.length) || 0;
       const parts = [`${(c.count || 0).toLocaleString()} questions`];
       if (tc) parts.push(`${tc} subtopics`);
-      return `<div class="ch-card qx-ch-row" ${mg(moduleId, { step: "chapterHub", subject: p.subject, chapter: c.name })}>
+      return `<div class="ch-card qx-ch-row" ${mg(viewKey, { step: "chapterHub", subject: p.subject, chapter: c.name, ...(opts.ncertKind ? { ncertKind: opts.ncertKind } : {}) })}>
         <div class="qx-ch-body"><strong>${c.name}</strong><small>${parts.join(" · ")}</small></div>
         ${tc ? `<span class="qx-ch-badge topic">Topicwise</span>` : ""}
       </div>`;
@@ -720,10 +729,11 @@ async function viewNeetModuleBank(payload, moduleId) {
   }
 
   const chNav = subj.chapters.find(c => c.name === p.chapter);
+  const basePayload = { ...(opts.ncertKind ? { ncertKind: opts.ncertKind } : {}) };
   const baseBc = [
-    { label: title, view: moduleId, payload: { step: "subjects" } },
-    { label: p.subject, view: moduleId, payload: { step: "chapters", subject: p.subject } },
-    { label: p.chapter, view: moduleId, payload: { step: "chapterHub", subject: p.subject, chapter: p.chapter } }
+    { label: title, view: viewKey, payload: { step: "subjects", ...basePayload } },
+    { label: p.subject, view: viewKey, payload: { step: "chapters", subject: p.subject, ...basePayload } },
+    { label: p.chapter, view: viewKey, payload: { step: "chapterHub", subject: p.subject, chapter: p.chapter, ...basePayload } }
   ];
 
   async function resolveMeta() {
@@ -736,25 +746,25 @@ async function viewNeetModuleBank(payload, moduleId) {
   if (p.step === "chapterHub" || (!p.topicId && !p.topicTitle && p.step !== "topics" && p.step !== "questions")) {
     const meta = await resolveMeta();
     const topics = (meta && meta.topics) || [];
-    if (topics.length) return viewNeetModuleBank({ ...p, step: "topics" }, moduleId);
-    return viewNeetModuleBank({ ...p, step: "questions" }, moduleId);
+    if (topics.length) return viewNeetModuleBank({ ...p, step: "topics" }, moduleId, opts);
+    return viewNeetModuleBank({ ...p, step: "questions" }, moduleId, opts);
   }
 
   if (p.step === "topics" && !p.topicId && !p.topicTitle) {
-    _lastListFn = () => ({ module: moduleId, step: "topics", subject: p.subject, chapter: p.chapter });
+    _lastListFn = () => ({ module: moduleId, step: "topics", subject: p.subject, chapter: p.chapter, ...(opts.ncertKind ? { ncertKind: opts.ncertKind } : {}) });
     const meta = await resolveMeta();
     const topics = (meta && meta.topics) || (chNav && chNav.topics) || [];
     const bc = breadcrumb(baseBc.slice(0, -1).concat([{ label: p.chapter }]));
     const cards = topics.map(t => `
-      <div class="ch-card qx-topic-card" ${mg(moduleId, { step: "questions", mode: "topic", subject: p.subject, chapter: p.chapter, topicId: t.id, topicTitle: t.title })}>
+      <div class="ch-card qx-topic-card" ${mg(viewKey, { step: "questions", mode: "topic", subject: p.subject, chapter: p.chapter, topicId: t.id, topicTitle: t.title, ...(opts.ncertKind ? { ncertKind: opts.ncertKind } : {}) })}>
         <div class="qx-topic-body"><strong>${t.title}</strong><small>${(t.count || 0).toLocaleString()} questions</small></div>
       </div>`).join("");
     return `${topbar(p.chapter, "Topicwise · " + title)}${bc}<div class="ch-grid qx-topic-grid">${cards || '<div class="empty">No subtopics for this chapter yet.</div>'}</div>`;
   }
 
-  const bankSlugs = moduleId === "allqs"
+  const bankSlugs = opts.bankSlugs || (moduleId === "allqs"
     ? (typeof banksForAllQs === "function" ? banksForAllQs() : ["neet", "nta_abhyas_neet"])
-    : ["neet"];
+    : ["neet"]);
   if (typeof loadMultipleBanks === "function") {
     showToast("📚 Loading " + bankSlugs.length + " question banks…");
     await loadMultipleBanks(bankSlugs);
@@ -777,15 +787,134 @@ async function viewNeetModuleBank(payload, moduleId) {
   _lastListFn = () => ({ ...p, step: "questions" });
   const modeLabel = p.topicTitle || "All Questions";
   const bc = breadcrumb(baseBc.concat([
-    p.topicTitle ? { label: "Topicwise", view: moduleId, payload: { step: "topics", subject: p.subject, chapter: p.chapter } } : null,
+    p.topicTitle ? { label: "Topicwise", view: viewKey, payload: { step: "topics", subject: p.subject, chapter: p.chapter, ...basePayload } } : null,
     { label: modeLabel }
   ].filter(Boolean)));
-  const testMeta = { title: `${p.chapter} · ${modeLabel}`, returnTo: moduleId, limit: 30 };
+  const testMeta = { title: `${p.chapter} · ${modeLabel}`, returnTo: viewKey, limit: 30 };
   return `${topbar(p.chapter, `${p.subject} · ${title}`)}${bc}${filterNote}${renderQList(qs, _listPage, testMeta)}`;
+}
+
+async function viewBoardMarksBank(payload) {
+  const p = { step: "subjects", ...(payload || {}) };
+  const mod = await fetchModuleNav("hsc_board");
+  const title = (mod && mod.title) || "HSC Maharashtra PYQ Bank";
+  const subtitle = "Board exam PYQs — Maharashtra HSC pattern";
+  const examSlug = (mod && mod.examSlug) || "mht_cet";
+  const subjects = (mod && mod.subjects) || [];
+  const viewKey = "board";
+
+  if (p.step === "subjects" || !p.subject) {
+    _lastListFn = () => ({ step: "subjects" });
+    const cards = subjects.map(s => `
+      <div class="subj-card" ${mg("board", { step: "chapters", subject: s.name })}>
+        <span class="subj-ic">${subjectIcon(s.name)}</span>
+        <div><strong>${s.name}</strong><small>${s.chapters.length} chapters · ${(s.count || 0).toLocaleString()} qs</small></div>
+      </div>`).join("");
+    return `${topbar(title, subtitle)}<div class="subj-grid">${cards || '<div class="empty">HSC board data loading…</div>'}</div>`;
+  }
+
+  const subj = subjects.find(s => s.name === p.subject);
+  if (!subj) return viewBoardMarksBank({ step: "subjects" });
+
+  if (p.step === "chapters" || !p.chapter) {
+    _lastListFn = () => ({ step: "chapters", subject: p.subject });
+    const bc = breadcrumb([{ label: title, view: "board", payload: { step: "subjects" } }, { label: p.subject }]);
+    const cards = subj.chapters.map(c => `
+      <div class="ch-card qx-ch-row" ${mg("board", { step: "chapterHub", subject: p.subject, chapter: c.name })}>
+        <div class="qx-ch-body"><strong>${c.name}</strong><small>${(c.count || 0).toLocaleString()} questions</small></div>
+      </div>`).join("");
+    return `${topbar(p.subject, title)}${bc}<div class="ch-grid">${cards}</div>`;
+  }
+
+  const chNav = subj.chapters.find(c => c.name === p.chapter);
+  const baseBc = [
+    { label: title, view: "board", payload: { step: "subjects" } },
+    { label: p.subject, view: "board", payload: { step: "chapters", subject: p.subject } },
+    { label: p.chapter, view: "board", payload: { step: "chapterHub", subject: p.subject, chapter: p.chapter } }
+  ];
+
+  async function resolveMeta() {
+    let meta = await fetchChapterMeta(examSlug, p.subject, p.chapter);
+    if (meta) return meta;
+    if (chNav && chNav.topics && chNav.topics.length) return { topics: chNav.topics, buckets: [] };
+    return null;
+  }
+
+  if (p.step === "chapterHub" || (!p.topicId && !p.topicTitle && p.step !== "topics" && p.step !== "questions")) {
+    const meta = await resolveMeta();
+    const topics = (meta && meta.topics) || (chNav && chNav.topics) || [];
+    if (topics.length) return viewBoardMarksBank({ ...p, step: "topics" });
+    return viewBoardMarksBank({ ...p, step: "questions" });
+  }
+
+  if (p.step === "topics" && !p.topicId && !p.topicTitle) {
+    _lastListFn = () => ({ step: "topics", subject: p.subject, chapter: p.chapter });
+    const meta = await resolveMeta();
+    const topics = (meta && meta.topics) || (chNav && chNav.topics) || [];
+    const bc = breadcrumb(baseBc.slice(0, -1).concat([{ label: p.chapter }]));
+    const cards = topics.map(t => `
+      <div class="ch-card qx-topic-card" ${mg("board", { step: "questions", mode: "topic", subject: p.subject, chapter: p.chapter, topicId: t.id, topicTitle: t.title })}>
+        <div class="qx-topic-body"><strong>${t.title}</strong><small>${(t.count || 0).toLocaleString()} questions</small></div>
+      </div>`).join("");
+    return `${topbar(p.chapter, "Topicwise · " + title)}${bc}<div class="ch-grid qx-topic-grid">${cards || '<div class="empty">No subtopics.</div>'}</div>`;
+  }
+
+  if (!_banksLoaded[examSlug]) {
+    showToast("📚 Loading HSC question bank…");
+    await loadSingleBank(examSlug);
+  }
+  let qs = QUESTIONS.filter(q => q._bank === examSlug && q.subject === p.subject && q.chapter === p.chapter);
+  const meta = await resolveMeta();
+  let filterNote = "";
+  if (p.mode === "topic" && (p.topicId || p.topicTitle) && meta) {
+    const topic = findMetaItem(meta.topics, p.topicId, p.topicTitle);
+    if (topic && topic.questionIds && topic.questionIds.length) {
+      const filtered = filterByMarksIds(qs, topic.questionIds);
+      if (filtered.length) qs = filtered;
+      else filterNote = `<p class="result-count">Could not match subtopic (${topic.questionIds.length} IDs).</p>`;
+    }
+  }
+  _lastListFn = () => ({ ...p, step: "questions" });
+  const modeLabel = p.topicTitle || "All Questions";
+  const bc = breadcrumb(baseBc.concat([
+    p.topicTitle ? { label: "Topicwise", view: "board", payload: { step: "topics", subject: p.subject, chapter: p.chapter } } : null,
+    { label: modeLabel }
+  ].filter(Boolean)));
+  const testMeta = { title: `${p.chapter} · ${modeLabel}`, returnTo: "board", limit: 30 };
+  return `${topbar(p.chapter, `${p.subject} · ${title}`)}${bc}${filterNote}${renderQList(qs, _listPage, testMeta)}`;
+}
+
+const NCERT_KIND_NAV = {
+  lblq: { nav: "cbse_lblq", title: "NCERT Line by Line Qs" },
+  ncoq: { nav: "cbse_ncoq", title: "NCERT & Exemplar Qs" },
+  dbq: { nav: "cbse_dbq", title: "Diagram Based Qs" },
+  ncert: { nav: "cbse_ncert", title: "NCERT Based Qs Bank" }
+};
+
+async function viewNcert(payload) {
+  const board = dashBoardSelected();
+  if (board === "HSC") return viewBoardMarksBank(payload);
+  const kind = (payload && payload.ncertKind) || "ncert";
+  if (STATE.exam === "Medical" && kind === "ncert") {
+    return viewNeetModuleBank(payload, "ncert");
+  }
+  const meta = NCERT_KIND_NAV[kind] || NCERT_KIND_NAV.ncert;
+  let navName = meta.nav;
+  const probe = await fetchModuleNav(navName);
+  if (!probe || !(probe.subjects && probe.subjects.length)) navName = "neet_ncert";
+  return viewNeetModuleBank(payload, "ncert", {
+    navName,
+    title: meta.title,
+    subtitle: "Real NCERT questions · CBSE syllabus",
+    bankSlugs: ["neet"],
+    ncertKind: kind,
+    viewKey: "ncert"
+  });
 }
 
 async function viewSubjectBank(payload, moduleId) {
   if (STATE.exam === "Medical") return viewNeetModuleBank(payload, moduleId);
+  if (moduleId === "ncert") return viewNcert(payload);
   const p = { ..._bankPayload, module: moduleId, ...(payload || {}) };
   _bankPayload = p;
   const slug = PRIMARY_BANK[STATE.exam] || "jee_main";
@@ -830,7 +959,6 @@ async function viewSubjectBank(payload, moduleId) {
 }
 
 function viewAllQs(p) { return viewSubjectBank(p, "allqs"); }
-function viewNcert(p) { return viewSubjectBank(p, "ncert"); }
 
 // ============ DPP (MARKS: Subject → Chapter → Sets) ============
 let _dppPayload = { step: "subjects" };
@@ -1805,15 +1933,20 @@ async function marksDashboardSections() {
       <span>${b.icon}</span>${b.label}
     </button>`).join("");
 
-  const ncertTools = STATE.exam === "Medical" ? [
-    { icon: "📋", title: "NCERT Line by Line Qs", sub: "NEET syllabus aligned", view: "ncert", payload: { step: "subjects" } },
-    { icon: "🔵", title: "NCERT & Exemplar Qs", sub: "Board + exemplar mix", view: "ncert", payload: { step: "subjects" } },
-    { icon: "🩺", title: "Diagram Based Qs", sub: "Image-based practice", view: "allqs", payload: { step: "subjects" } }
+  const boardView = board === "HSC" ? "board" : "ncert";
+  const ncertTools = board === "HSC" ? [
+    { icon: "🟡", title: "HSC Physics PYQs", sub: "Maharashtra board pattern", view: "board", payload: { step: "subjects" } },
+    { icon: "🟡", title: "HSC Chemistry PYQs", sub: "Chapter-wise board Qs", view: "board", payload: { step: "subjects" } },
+    { icon: "🟡", title: "HSC Mathematics PYQs", sub: "MHT-CET aligned bank", view: "board", payload: { step: "subjects" } }
+  ] : (STATE.exam === "Medical" ? [
+    { icon: "📋", title: "NCERT Line by Line Qs", sub: "NEET syllabus aligned", view: "ncert", payload: { step: "subjects", ncertKind: "lblq" } },
+    { icon: "🔵", title: "NCERT & Exemplar Qs", sub: "Board + exemplar mix", view: "ncert", payload: { step: "subjects", ncertKind: "ncoq" } },
+    { icon: "🩺", title: "Diagram Based Qs", sub: "Image-based NCERT Qs", view: "ncert", payload: { step: "subjects", ncertKind: "dbq" } }
   ] : [
-    { icon: "📋", title: "NCERT Line by Line Qs", sub: "Concept-by-concept", view: "ncert", payload: { step: "subjects" } },
-    { icon: "🔵", title: "NCERT & Exemplar Qs", sub: "Class 11 & 12 mix", view: "ncert", payload: { step: "subjects" } },
-    { icon: "📊", title: "Diagram Based Qs", sub: "Visual PYQ practice", view: "allqs", payload: { step: "subjects" } }
-  ];
+    { icon: "📋", title: "NCERT Line by Line Qs", sub: "Concept-by-concept", view: "ncert", payload: { step: "subjects", ncertKind: "lblq" } },
+    { icon: "🔵", title: "NCERT & Exemplar Qs", sub: "Class 11 & 12 mix", view: "ncert", payload: { step: "subjects", ncertKind: "ncoq" } },
+    { icon: "📊", title: "Diagram Based Qs", sub: "Visual NCERT practice", view: "ncert", payload: { step: "subjects", ncertKind: "dbq" } }
+  ]);
   const toolCards = ncertTools.map(t => `
     <div class="dash-tool-card" ${mg(t.view, t.payload)}>
       <span class="dash-tool-ic">${t.icon}</span>
@@ -1846,12 +1979,12 @@ async function marksDashboardSections() {
         <div class="dash-assign-box">
           <h3>Quantrex Assignment</h3>
           <p>A new way of classroom learning.</p>
-          <button type="button" class="dash-assign-btn" onclick="showToast('📋 Assignments launching soon — stay tuned!')">View Assignments</button>
+          <button type="button" class="dash-assign-btn" onclick="go('assignments')">View Assignments</button>
         </div>
         <div class="dash-teach-box">
           <h3>Quantrex For Teachers</h3>
           <p>Create live assignments &amp; share with your students.</p>
-          <button type="button" class="dash-teach-btn" onclick="showToast('👩‍🏫 Teacher portal coming soon!')">Explore Now →</button>
+          <button type="button" class="dash-teach-btn" onclick="go('teacher')">Explore Now →</button>
         </div>
       </div>
       <div class="dash-util-row">${utilCards}</div>
@@ -1865,10 +1998,13 @@ async function marksDashboardSections() {
 
 function bindDashHome(root) {
   (root || document).querySelectorAll("[data-dash-board]").forEach(btn => {
-    btn.onclick = () => {
+    btn.onclick = async () => {
       localStorage.setItem("quantrex_board", btn.dataset.dashBoard);
       document.querySelectorAll("[data-dash-board]").forEach(b => b.classList.toggle("on", b === btn));
       showToast(`📚 Board: ${btn.textContent.trim()}`);
+      if (currentView === "dashboard" && typeof viewDashboard === "function") {
+        finishRender(await viewDashboard());
+      }
     };
   });
 }

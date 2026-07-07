@@ -51,9 +51,11 @@ window.Mx = (() => {
   ];
   const BRAND_IMG_RX = /(?:logo|watermark|branding|marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|scoremarks)/i;
   const QUESTION_IMG_RX = /cdn-question-pool\.getmarks/i;
+  const FORMULA_IMG_RX = /formula_cards/i;
 
   function wrapDiagramImages(html) {
     return html.replace(/<img([^>]*)>/gi, (m, attrs) => {
+      if (FORMULA_IMG_RX.test(attrs)) return m;
       if (BRAND_IMG_RX.test(attrs)) return "";
       if (/class=["'][^"']*qx-img-wrap/i.test(attrs)) return m;
       return `<span class="qx-img-wrap"><img${attrs}></span>`;
@@ -76,6 +78,7 @@ window.Mx = (() => {
     el.querySelectorAll("img").forEach(img => {
       const src = img.getAttribute("src") || "";
       const alt = img.getAttribute("alt") || "";
+      if (FORMULA_IMG_RX.test(src) || img.classList.contains("fc-img")) return;
       if (QUESTION_IMG_RX.test(src)) {
         if (!img.closest(".qx-img-wrap")) {
           const wrap = document.createElement("span");
