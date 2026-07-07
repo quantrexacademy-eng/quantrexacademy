@@ -188,7 +188,7 @@ const QuantrexQFormat = (() => {
       return `<button type="button" class="mtk-opt ${multi ? "mtk-opt-multi" : ""} ${match ? "mtk-opt-match" : ""} ${on ? "selected" : ""}" data-opt="${i}">
         <span class="${ctrl}"></span>
         <span class="mtk-opt-letter">${letter(i)}</span>
-        <span class="mtk-opt-text ${match ? "qx-match-opt" : "qx-content"}">${optBody}</span>
+        <span class="mtk-opt-text qx-exam-text ${match ? "qx-match-opt" : "qx-content"}">${optBody}</span>
       </button>`;
     }).join("");
   }
@@ -197,7 +197,8 @@ const QuantrexQFormat = (() => {
     const t = getType(q);
     if (t === "numerical" || t === "subjective") return "mtk-options mtk-numerical-wrap";
     const extra = optsLayoutClass(q);
-    return "mtk-options mtk-options-grid" + (extra ? " " + extra : "");
+    const layout = (extra && extra.includes("match")) ? "mtk-options-exam mtk-options-match-col" : "mtk-options-exam";
+    return "mtk-options " + layout + (extra && !extra.includes("match") ? " " + extra : "");
   }
 
   function practiceOptsContainerClass(q) {

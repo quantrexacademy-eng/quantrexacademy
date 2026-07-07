@@ -292,13 +292,13 @@ const QuantrexTestEngine = (() => {
             <span class="mtk-q-num">Q${session.idx + 1}</span>${wrongMark}
             ${typeBadge}
           </div>
-          <div class="mtk-q-text qx-content">${incomplete ? '<div class="empty">Loading question…</div>' : htmlContent(q.q)}</div>
+          <div class="mtk-q-text qx-content qx-exam-text">${incomplete ? '<div class="empty">Loading question…</div>' : htmlContent(q.q)}</div>
           <div class="${optsClass}" id="qxOpts">${opts}</div>
           <div class="mtk-controls">
-            <button type="button" class="mtk-btn-ghost" id="qxClearBtn">Clear Response</button>
-            <button type="button" class="mtk-btn-ghost" id="qxReviewNextBtn">Mark For Review &amp; Next</button>
-            <button type="button" class="mtk-btn-ghost" id="qxPrevBtn" ${session.idx <= 0 ? "disabled" : ""}>Previous</button>
-            <button type="button" class="mtk-btn-save" id="qxSaveBtn">Save &amp; Next</button>
+            <button type="button" class="mtk-btn mtk-btn-clear" id="qxClearBtn">Clear Response</button>
+            <button type="button" class="mtk-btn mtk-btn-review" id="qxReviewNextBtn">Mark For Review &amp; Next</button>
+            <button type="button" class="mtk-btn mtk-btn-prev" id="qxPrevBtn" ${session.idx <= 0 ? "disabled" : ""}>Previous</button>
+            <button type="button" class="mtk-btn mtk-btn-save" id="qxSaveBtn">Save &amp; Next</button>
           </div>
         </div>
         ${renderMarksPalette()}
@@ -768,7 +768,9 @@ const QuantrexTestEngine = (() => {
       sections,
       deferTimer: !!config.deferTimer,
       persistKey: config.persistKey || null,
-      meta: config.meta || null
+      meta: config.meta || null,
+      paperFormat: config.paperFormat || null,
+      shuffle: config.shuffle !== false
     };
     if (!session.deferTimer) startTimer();
     marksPersistSession();
@@ -1129,6 +1131,21 @@ function exitMarksTestMode() {
 
 const MARKS_SESSION_STORE = "quantrex_marks_session_v1";
 
+function marksAutoPersistKey(title, ids, meta) {
+  const slug = (meta && meta.slug) || "test";
+  const src = meta && meta.source ? String(meta.source).replace(/[^\w\s.-]/g, "").slice(0, 48) : "";
+  const t = String(title || "exam").replace(/[^\w\s.-]/g, "").slice(0, 32);
+  return `qx::${slug}::${src || t}::${(ids || []).length}`;
+}
+
+function marksGetActiveSession() {
+  try {
+    const data = JSON.parse(localStorage.getItem(MARKS_SESSION_STORE) || "null");
+    if (data && data.remainingSec > 0 && data.persistKey) return data;
+  } catch (e) { /* ignore */ }
+  return null;
+}
+
 function marksPersistSession() {
   if (!QuantrexTestEngine.getSession()) return;
   const s = QuantrexTestEngine.getSession();
@@ -1150,6 +1167,8 @@ function marksPersistSession() {
     marksMode: s.marksMode,
     organizeJee: true,
     meta: s.meta,
+    paperFormat: s.paperFormat || (s.meta && s.meta.slug) || null,
+    shuffle: s.shuffle !== false,
     startedAt: s.startedAt,
     savedAt: Date.now()
   };
@@ -1173,43 +1192,63 @@ function marksInstructionHtml(config) {
   const n = (config.questionIds || []).length;
   const mins = config.durationSec ? Math.floor(config.durationSec / 60) : "—";
   const format = resolvePaperFormat({ paperFormat: config.paperFormat, examSlug: config.meta && config.meta.slug });
-  const formatName = format === "jee_advanced" ? "JEE Advanced" : format === "neet" ? "NEET" : "JEE Main";
   const preview = organizeExamPaper(config.questionIds || [], {
     paperFormat: format,
     examSlug: config.meta && config.meta.slug,
     shuffle: config.shuffle !== false
   });
-  const secList = (preview && preview.sections || []).map(s =>
-    `<li><strong>${s.label}</strong> — ${s.count} Qs</li>`
-  ).join("") || `<li>${n} questions · ${formatName} format</li>`;
-  const wrongTxt = scoring.wrong < 0 ? `${scoring.wrong} for wrong` : "no negative marking";
+  const secRows = (preview && preview.sections || []).map(s =>
+    `<tr><td>${s.label}</td><td>${s.count}</td></tr>`
+  ).join("");
+  const examTitle = format === "jee_advanced" ? "JEE (Advanced)" : format === "neet" ? "NEET (UG)" : "JEE (Main)";
+  const markingBlock = format === "jee_advanced"
+    ? `<p><strong>Marking Scheme (JEE Advanced):</strong> Section 1 (Single Correct): +3, −1 · Section 2 (Multiple Correct / Column Match): +4 with partial marking, −2 · Section 3 (Numerical): +4, 0 (no negative marking).</p>`
+    : format === "neet"
+      ? `<p><strong>Marking Scheme:</strong> Each correct answer <strong>+4</strong> marks. Each incorrect answer <strong>−1</strong> mark. Unattempted questions carry <strong>0</strong> marks.</p>`
+      : `<p><strong>Marking Scheme:</strong> Each correct answer <strong>+${scoring.correct}</strong> marks. Each incorrect answer <strong>${scoring.wrong}</strong> mark. Unattempted questions carry <strong>${scoring.unattempted}</strong> marks.</p>`;
   return `<div class="marks-modal-overlay" id="marksInstrOverlay">
-    <div class="marks-modal marks-instr-modal">
-      <div class="marks-modal-head"><h3>Instructions</h3></div>
+    <div class="marks-modal marks-instr-modal marks-instr-official">
+      <div class="marks-instr-banner">
+        <div class="marks-instr-org">${examTitle} — Computer Based Test</div>
+        <h2 class="marks-instr-title">${config.title || "Examination"}</h2>
+      </div>
       <div class="marks-modal-body marks-instr-body">
-        <h2 class="marks-instr-title">${config.title || "Assessment"}</h2>
-        <div class="marks-instr-stats">
-          <span><strong>${n}</strong> Questions</span>
-          <span><strong>${mins}</strong> Minutes</span>
-          <span><strong>+${scoring.correct}</strong> / ${wrongTxt}</span>
+        <p class="marks-instr-lead"><strong>Please read the instructions carefully before you proceed.</strong></p>
+        <div class="marks-instr-meta">
+          <div><span>Total Questions</span><strong>${n}</strong></div>
+          <div><span>Duration</span><strong>${mins} Minutes</strong></div>
+          <div><span>Mode</span><strong>Online CBT</strong></div>
         </div>
+        ${markingBlock}
         <div class="marks-instr-section">
-          <h4>Paper sections</h4>
-          <ul class="marks-instr-list">${secList}</ul>
+          <h4>General Instructions</h4>
+          <ol class="marks-instr-rules">
+            <li>The total duration of the examination is <strong>${mins} minutes</strong>. The clock is server-controlled. The countdown timer on the top will display the remaining time.</li>
+            <li>When the timer reaches zero, the examination will end automatically. You must submit before time expires.</li>
+            <li>The <strong>Question Palette</strong> on the right shows the status of each question. Click a question number to navigate directly.</li>
+            <li>Click <strong>Save &amp; Next</strong> to save your response and move to the next question.</li>
+            <li>Click <strong>Mark For Review &amp; Next</strong> to mark a question for review and move ahead. You may revisit marked questions before final submission.</li>
+            <li>Click <strong>Clear Response</strong> to erase the selected answer for the current question.</li>
+            <li>You may change your response any number of times before final submission.</li>
+            <li>Do not refresh the page or close the browser during the test. Progress is auto-saved — you can <strong>Resume Test</strong> if interrupted.</li>
+          </ol>
         </div>
+        ${secRows ? `<div class="marks-instr-section"><h4>Paper Sections</h4>
+          <table class="marks-instr-table"><thead><tr><th>Section</th><th>Questions</th></tr></thead><tbody>${secRows}</tbody></table></div>` : ""}
         <div class="marks-instr-section">
-          <h4>Before you begin</h4>
-          <ul class="marks-instr-rules">
-            <li>Timer starts after you accept — use the question palette to jump between sections.</li>
-            <li>Mark questions for review and revisit before submit.</li>
-            <li>Do not refresh or close the tab during the test.</li>
-            <li>Submit only when you have attempted all sections or time runs out.</li>
-          </ul>
+          <h4>Question Status Legend</h4>
+          <div class="marks-instr-legend">
+            <span><i class="mtk-dot answered"></i> Green — Answered</span>
+            <span><i class="mtk-dot not-answered"></i> Red — Not Answered</span>
+            <span><i class="mtk-dot unvisited"></i> Grey — Not Visited</span>
+            <span><i class="mtk-dot rev-ans"></i> Purple — Marked for Review (Answered)</span>
+            <span><i class="mtk-dot rev-skip"></i> Violet — Marked for Review (Not Answered)</span>
+          </div>
         </div>
       </div>
-      <div class="marks-modal-foot">
+      <div class="marks-modal-foot marks-instr-foot">
         <button type="button" class="marks-modal-cancel" onclick="marksCancelInstructions()">Cancel</button>
-        <button type="button" class="marks-modal-apply" onclick="marksAcceptInstructions()">I have read the instructions — Start Test</button>
+        <button type="button" class="marks-modal-apply marks-instr-start" onclick="marksAcceptInstructions()">I have read and understood the instructions — Proceed</button>
       </div>
     </div>
   </div>`;
@@ -1308,10 +1347,11 @@ async function startTest(questionIds, title, returnTo, options) {
     organizeJee: opts.organizeJee !== false,
     sections: opts.sections || null,
     deferTimer: marksMode && !opts.skipCountdown,
-    persistKey: opts.persistKey || null,
+    persistKey: opts.persistKey || (marksMode ? marksAutoPersistKey(title, questionIds, opts.meta) : null),
     meta: opts.meta || null,
     resumeData: opts.resumeData || null,
-    paperFormat: opts.paperFormat || null
+    paperFormat: opts.paperFormat || (opts.resumeData && opts.resumeData.paperFormat) || null,
+    shuffle: opts.resumeData ? opts.resumeData.shuffle !== false : (opts.shuffle !== false)
   };
 
   const main = document.getElementById("app-main");
@@ -1334,7 +1374,10 @@ async function startTest(questionIds, title, returnTo, options) {
     launchTestSession(main);
   };
 
-  if (marksMode && !opts.skipCountdown) {
+  if (marksMode && !opts.skipCountdown && !opts.resumeData) {
+    showMarksInstructions(config, () => showMarksCountdown(run), () => go(returnTo || "tests"));
+  } else if (marksMode && !opts.skipCountdown && opts.resumeData) {
+    enterMarksTestMode();
     showMarksCountdown(run);
   } else if (marksMode && opts.skipCountdown) {
     enterMarksTestMode();

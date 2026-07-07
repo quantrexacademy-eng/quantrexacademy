@@ -1814,8 +1814,10 @@ function pyqResumeModalHtml(slug, source, title) {
     <div class="marks-resume-modal">
       <button type="button" class="marks-resume-close" onclick="pyqCloseResume()">✕</button>
       <div class="marks-resume-icon">⚙️</div>
-      <h3>Resume ${title}</h3>
-      <button type="button" class="marks-resume-btn" onclick="pyqCloseResume();pyqResumePaper('${slug}', decodeURIComponent('${encodeURIComponent(source)}'))">Resume Test</button>
+      <h3>Resume Test</h3>
+      <p class="marks-resume-sub">${title}</p>
+      <p class="marks-resume-hint">Your answers &amp; timer are saved. Continue where you left off.</p>
+      <button type="button" class="marks-resume-btn" onclick="pyqCloseResume();pyqResumePaper('${slug}', decodeURIComponent('${encodeURIComponent(source)}'))">▶ Resume Test</button>
       <button type="button" class="marks-resume-cancel" onclick="pyqCloseResume()">Cancel</button>
     </div>
   </div>`;
@@ -1850,11 +1852,11 @@ async function pyqResumePaper(slug, source) {
   startTest(saved.ids, saved.title || pyqPaperLabel(source), "tests", {
     testType: "pyqmock",
     timed: true,
-    durationSec: saved.durationSec,
+    durationSec: saved.remainingSec != null ? saved.remainingSec : saved.durationSec,
     shuffle: false,
     marksMode: true,
     organizeJee: true,
-    paperFormat: slug,
+    paperFormat: saved.paperFormat || slug,
     skipCountdown: true,
     persistKey: key,
     resumeData: saved,

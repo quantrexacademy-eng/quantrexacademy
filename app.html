@@ -1064,12 +1064,27 @@
         .qx-bm-or { text-align: center; font-size: 12px; color: var(--gray); margin: 8px 0; }
         .qx-bm-grp-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
         .qx-bm-grp-opt { text-align: left; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border); background: color-mix(in srgb, var(--gc) 12%, var(--white)); font-weight: 600; cursor: pointer; font-family: inherit; }
-        .marks-instr-modal { max-width: 520px; }
-        .marks-instr-title { font-size: 20px; font-weight: 800; margin: 0 0 14px; }
-        .marks-instr-stats { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; font-size: 14px; }
-        .marks-instr-stats strong { color: #2DD4BF; }
-        .marks-instr-list, .marks-instr-rules { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.65; color: #cbd5e1; }
-        .marks-instr-list li, .marks-instr-rules li { margin-bottom: 6px; }
+        .marks-instr-modal { max-width: 640px; }
+        .marks-instr-official { max-width: 680px; }
+        .marks-instr-banner { background: linear-gradient(135deg, #1e3a5f, #0f172a); padding: 20px 22px; border-bottom: 2px solid #2563eb; }
+        .marks-instr-org { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #93c5fd; margin-bottom: 6px; }
+        .marks-instr-title { font-size: 20px; font-weight: 800; margin: 0; color: #f8fafc; font-family: 'Literata', Georgia, serif; }
+        .marks-instr-lead { font-size: 14px; color: #e2e8f0; margin: 0 0 16px; line-height: 1.6; }
+        .marks-instr-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+        .marks-instr-meta div { background: #12151c; border: 1px solid #2a2f3d; border-radius: 8px; padding: 10px; text-align: center; }
+        .marks-instr-meta span { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: #94a3b8; margin-bottom: 4px; }
+        .marks-instr-meta strong { font-size: 16px; color: #f1f5f9; }
+        .marks-instr-body p { font-size: 13px; line-height: 1.65; color: #cbd5e1; margin-bottom: 14px; }
+        .marks-instr-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
+        .marks-instr-table th, .marks-instr-table td { border: 1px solid #2a2f3d; padding: 8px 10px; text-align: left; }
+        .marks-instr-table th { background: #12151c; color: #94a3b8; font-weight: 700; }
+        .marks-instr-legend { display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: #cbd5e1; }
+        .marks-instr-legend span { display: flex; align-items: center; gap: 8px; }
+        .marks-instr-foot { flex-direction: column; }
+        .marks-instr-start { width: 100%; background: #2563eb !important; color: #fff !important; padding: 14px !important; font-size: 14px !important; }
+        .marks-instr-rules { margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.7; color: #cbd5e1; font-family: 'Literata', Georgia, serif; }
+        .marks-instr-rules li { margin-bottom: 8px; }
+        .marks-instr-section h4 { font-size: 11px; font-weight: 800; letter-spacing: .08em; color: #60a5fa; margin: 0 0 10px; text-transform: uppercase; }
         .mtk-theme-btn { background: none; border: 1px solid #3b4254; color: #94a3b8; border-radius: 8px; padding: 6px 10px; font-size: 16px; cursor: pointer; flex-shrink: 0; }
         .mtk-test-root[data-test-theme="light"] { background: #f8fafc; color: #0f172a; }
         .mtk-test-root[data-test-theme="light"] .mtk-header { background: #fff; border-bottom-color: #e2e8f0; }
@@ -1226,27 +1241,37 @@
         .mtk-q-text { font-size: 15px; line-height: 1.65; margin-bottom: 24px; color: #e2e8f0; }
         .mtk-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
         .mtk-options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .mtk-options-exam { display: flex; flex-direction: column; gap: 10px; }
+        .mtk-options-match-col .mtk-opt { min-height: auto; }
         @media (max-width: 640px) { .mtk-options-grid { grid-template-columns: 1fr; } }
-        .mtk-opt { display: flex; align-items: flex-start; gap: 12px; background: #1a1d26; border: 1px solid #2a2f3d; border-radius: 12px; padding: 14px 16px; cursor: pointer; text-align: left; font-family: inherit; color: #e2e8f0; transition: border-color .12s, background .12s; width: 100%; }
-        .mtk-opt:hover { border-color: #2DD4BF; }
-        .mtk-opt.selected { border-color: #2DD4BF; background: rgba(45,212,191,.12); }
-        .mtk-opt-radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #4b5563; flex-shrink: 0; margin-top: 2px; position: relative; }
-        .mtk-opt.selected .mtk-opt-radio { border-color: #2DD4BF; }
-        .mtk-opt.selected .mtk-opt-radio::after { content: ''; position: absolute; inset: 3px; background: #2DD4BF; border-radius: 50%; }
+        .mtk-opt { display: flex; align-items: flex-start; gap: 12px; background: #1e2128; border: 1px solid #3d4455; border-radius: 8px; padding: 12px 14px; cursor: pointer; text-align: left; font-family: 'Literata', Georgia, serif; color: #f1f5f9; transition: border-color .12s, background .12s, box-shadow .12s; width: 100%; }
+        .mtk-opt:hover { border-color: #60a5fa; background: #232733; }
+        .mtk-opt.selected { border-color: #3b82f6; background: rgba(37,99,235,.15); box-shadow: 0 0 0 1px rgba(59,130,246,.35); }
+        .mtk-opt-radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #6b7280; flex-shrink: 0; margin-top: 3px; position: relative; background: #12151c; }
+        .mtk-opt.selected .mtk-opt-radio { border-color: #3b82f6; }
+        .mtk-opt.selected .mtk-opt-radio::after { content: ''; position: absolute; inset: 3px; background: #3b82f6; border-radius: 50%; }
         .mtk-opt-check { width: 18px; height: 18px; border-radius: 4px; border: 2px solid #4b5563; flex-shrink: 0; margin-top: 2px; position: relative; }
-        .mtk-opt.selected .mtk-opt-check { border-color: #2DD4BF; background: #2DD4BF; }
-        .mtk-opt.selected .mtk-opt-check::after { content: '✓'; position: absolute; inset: 0; color: #0f172a; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+        .mtk-opt.selected .mtk-opt-check { border-color: #3b82f6; background: #3b82f6; }
+        .mtk-opt.selected .mtk-opt-check::after { content: '✓'; position: absolute; inset: 0; color: #fff; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
         .mtk-q-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
         .mtk-numerical-wrap { display: block; }
-        .mtk-numerical .qx-num-input { background: #1a1d26; border-color: #2a2f3d; color: #e2e8f0; }
-        .mtk-opt-letter { font-weight: 800; font-size: 14px; color: #94a3b8; flex-shrink: 0; min-width: 18px; }
-        .mtk-opt-text { flex: 1; font-size: 14px; line-height: 1.5; }
-        .mtk-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding-top: 8px; border-top: 1px solid #2a2f3d; }
-        .mtk-btn-ghost { background: #2a2f3d; border: 1px solid #3b4254; color: #cbd5e1; padding: 10px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; }
-        .mtk-btn-ghost:hover:not(:disabled) { background: #3b4254; color: #fff; }
+        .mtk-numerical .qx-num-input { background: #1a1d26; border-color: #2a2f3d; color: #e2e8f0; font-family: 'Literata', Georgia, serif; font-size: 15px; }
+        .mtk-opt-letter { font-weight: 800; font-size: 15px; color: #93c5fd; flex-shrink: 0; min-width: 20px; font-family: 'Inter', sans-serif; }
+        .mtk-opt-text { flex: 1; font-size: 15px; line-height: 1.72; }
+        .mtk-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding-top: 12px; border-top: 1px solid #2a2f3d; }
+        .mtk-btn { padding: 10px 18px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; border: none; transition: background .15s, opacity .15s; }
+        .mtk-btn:disabled { opacity: .45; cursor: not-allowed; }
+        .mtk-btn-clear { background: #374151; color: #e5e7eb; border: 1px solid #4b5563; }
+        .mtk-btn-clear:hover:not(:disabled) { background: #4b5563; }
+        .mtk-btn-review { background: #7c3aed; color: #fff; }
+        .mtk-btn-review:hover:not(:disabled) { background: #6d28d9; }
+        .mtk-btn-prev { background: #374151; color: #e5e7eb; border: 1px solid #4b5563; }
+        .mtk-btn-prev:hover:not(:disabled) { background: #4b5563; }
+        .mtk-btn-save { background: #f8fafc; color: #0f172a; margin-left: auto; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+        .mtk-btn-save:hover:not(:disabled) { background: #fff; }
+        .mtk-btn-ghost { background: #374151; border: 1px solid #4b5563; color: #e5e7eb; padding: 10px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; }
+        .mtk-btn-ghost:hover:not(:disabled) { background: #4b5563; color: #fff; }
         .mtk-btn-ghost:disabled { opacity: .4; cursor: not-allowed; }
-        .mtk-btn-save { background: #f1f5f9; border: none; color: #0f172a; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; margin-left: auto; }
-        .mtk-btn-save:hover { background: #fff; }
         .mtk-palette { background: #1a1d26; border-left: 1px solid #2a2f3d; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; }
         .mtk-pal-head { font-size: 15px; font-weight: 700; margin-bottom: 10px; color: #f1f5f9; }
         .mtk-pal-legend { display: flex; flex-wrap: wrap; gap: 8px 12px; margin-bottom: 12px; font-size: 10px; color: #64748b; }
@@ -1254,23 +1279,23 @@
         .mtk-pal-stats { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; font-size: 11px; color: #94a3b8; border-bottom: 1px solid #2a2f3d; padding-bottom: 12px; }
         .mtk-stat { display: flex; align-items: center; gap: 8px; }
         .mtk-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-        .mtk-dot.answered { background: #22c55e; }
-        .mtk-dot.not-answered { background: #ef4444; }
-        .mtk-dot.unvisited { background: #4b5563; }
-        .mtk-dot.rev-ans { background: #a855f7; }
-        .mtk-dot.rev-skip { background: #7c3aed; }
+        .mtk-dot.answered { background: #28a745; }
+        .mtk-dot.not-answered { background: #dc3545; }
+        .mtk-dot.unvisited { background: #6c757d; }
+        .mtk-dot.rev-ans { background: #6f42c1; }
+        .mtk-dot.rev-skip { background: #9b59b6; }
         .mtk-pal-groups { flex: 1; overflow-y: auto; margin-bottom: 12px; }
         .mtk-pal-group { margin-bottom: 14px; }
         .mtk-pal-grp-label { font-size: 10px; font-weight: 800; color: #64748b; letter-spacing: .06em; margin-bottom: 8px; text-transform: uppercase; }
         .mtk-pal-grp-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
         .mtk-pal-grp-grid.flat { grid-template-columns: repeat(6, 1fr); }
         .mtk-pal-cell { aspect-ratio: 1; border: 1px solid #3b4254; border-radius: 6px; background: #12151c; color: #94a3b8; font-size: 11px; font-weight: 700; cursor: pointer; font-family: inherit; transition: all .1s; }
-        .mtk-pal-cell.answered { background: #14532d; border-color: #22c55e; color: #86efac; }
-        .mtk-pal-cell.not-answered { background: #450a0a; border-color: #ef4444; color: #fca5a5; }
-        .mtk-pal-cell.unvisited { background: #1e2230; border-color: #3b4254; color: #64748b; }
-        .mtk-pal-cell.rev-ans { background: #3b0764; border-color: #a855f7; color: #e9d5ff; }
-        .mtk-pal-cell.rev-skip { background: #2e1065; border-color: #7c3aed; color: #ddd6fe; }
-        .mtk-pal-cell.cur { box-shadow: 0 0 0 2px #2DD4BF; }
+        .mtk-pal-cell.answered { background: #155724; border-color: #28a745; color: #d4edda; }
+        .mtk-pal-cell.not-answered { background: #721c24; border-color: #dc3545; color: #f8d7da; }
+        .mtk-pal-cell.unvisited { background: #2a2f3d; border-color: #6c757d; color: #adb5bd; }
+        .mtk-pal-cell.rev-ans { background: #4a235a; border-color: #6f42c1; color: #e8daef; }
+        .mtk-pal-cell.rev-skip { background: #5b2c6f; border-color: #9b59b6; color: #f5eef8; }
+        .mtk-pal-cell.cur { box-shadow: 0 0 0 2px #2563eb; border-color: #3b82f6; }
         .mtk-pal-cell:hover { transform: scale(1.06); }
         .mtk-submit-btn { width: 100%; background: #dc2626; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
         .mtk-submit-btn:hover { background: #b91c1c; }
@@ -1323,7 +1348,9 @@
         .marks-resume-modal { background: #1e2230; border: 1px solid #3b4254; border-radius: 16px; padding: 32px 28px 24px; width: 100%; max-width: 400px; text-align: center; position: relative; color: #f1f5f9; }
         .marks-resume-close { position: absolute; top: 14px; right: 14px; width: 28px; height: 28px; border-radius: 50%; border: 1px solid #3b4254; background: transparent; color: #94a3b8; cursor: pointer; font-size: 12px; }
         .marks-resume-icon { width: 56px; height: 56px; border-radius: 50%; border: 2px solid #2DD4BF; display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 20px; background: rgba(45,212,191,.1); }
-        .marks-resume-modal h3 { margin: 0 0 24px; font-size: 17px; font-weight: 700; line-height: 1.4; }
+        .marks-resume-modal h3 { margin: 0 0 8px; font-size: 18px; font-weight: 800; line-height: 1.4; }
+        .marks-resume-sub { margin: 0 0 8px; font-size: 14px; color: #94a3b8; line-height: 1.4; }
+        .marks-resume-hint { margin: 0 0 20px; font-size: 12px; color: #64748b; line-height: 1.5; }
         .marks-resume-btn { width: 100%; background: #38bdf8; color: #0f172a; border: none; padding: 14px; border-radius: 10px; font-weight: 700; font-size: 15px; cursor: pointer; font-family: inherit; margin-bottom: 10px; }
         .marks-resume-btn:hover { background: #7dd3fc; }
         .marks-resume-cancel { width: 100%; background: #2a2f3d; color: #cbd5e1; border: 1px solid #3b4254; padding: 12px; border-radius: 10px; font-weight: 600; font-size: 14px; cursor: pointer; font-family: inherit; }
@@ -1502,7 +1529,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxtest431</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxtest432</div>
             </div>
         </aside>
 
@@ -1528,32 +1555,32 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
-    <script>window.QX_BUILD="qxtest431";</script>
-    <script src="qx-perf.js?v=qxtest431"></script>
-    <script src="firebase-config.js?v=qxtest431" defer></script>
-    <script src="stack-config.js?v=qxtest431" defer></script>
-    <script src="strip/branding-strip.js?v=qxtest431" defer></script>
-    <script src="exam-logos.js?v=qxtest431" defer></script>
-    <script src="math-render.js?v=qxtest431" defer></script>
-    <script src="question-format.js?v=qxtest431" defer></script>
-    <script src="data.js?v=qxtest431" defer></script>
-    <script src="firebase-db.js?v=qxtest431" defer></script>
-    <script src="firebase-storage.js?v=qxtest431" defer></script>
-    <script src="payments.js?v=qxtest431" defer></script>
-    <script src="premium.js?v=qxtest431" defer></script>
-    <script src="leaderboard.js?v=qxtest431" defer></script>
-    <script src="community.js?v=qxtest431" defer></script>
-    <script src="book-covers.js?v=qxtest431" defer></script>
-    <script src="marks-shell.js?v=qxtest431" defer></script>
-    <script src="marks-live.js?v=qxtest431" defer></script>
-    <script src="marks-features.js?v=qxtest431" defer></script>
-    <script src="assignments.js?v=qxtest431" defer></script>
-    <script src="custom-test.js?v=qxtest431" defer></script>
-    <script src="test-engine.js?v=qxtest431" defer></script>
-    <script src="bookmarks.js?v=qxtest431" defer></script>
-    <script src="analytics.js?v=qxtest431" defer></script>
-    <script src="search.js?v=qxtest431" defer></script>
-    <script src="theme.js?v=qxtest431" defer></script>
-    <script src="app.js?v=qxtest431" defer></script>
+    <script>window.QX_BUILD="qxtest432";</script>
+    <script src="qx-perf.js?v=qxtest432"></script>
+    <script src="firebase-config.js?v=qxtest432" defer></script>
+    <script src="stack-config.js?v=qxtest432" defer></script>
+    <script src="strip/branding-strip.js?v=qxtest432" defer></script>
+    <script src="exam-logos.js?v=qxtest432" defer></script>
+    <script src="math-render.js?v=qxtest432" defer></script>
+    <script src="question-format.js?v=qxtest432" defer></script>
+    <script src="data.js?v=qxtest432" defer></script>
+    <script src="firebase-db.js?v=qxtest432" defer></script>
+    <script src="firebase-storage.js?v=qxtest432" defer></script>
+    <script src="payments.js?v=qxtest432" defer></script>
+    <script src="premium.js?v=qxtest432" defer></script>
+    <script src="leaderboard.js?v=qxtest432" defer></script>
+    <script src="community.js?v=qxtest432" defer></script>
+    <script src="book-covers.js?v=qxtest432" defer></script>
+    <script src="marks-shell.js?v=qxtest432" defer></script>
+    <script src="marks-live.js?v=qxtest432" defer></script>
+    <script src="marks-features.js?v=qxtest432" defer></script>
+    <script src="assignments.js?v=qxtest432" defer></script>
+    <script src="custom-test.js?v=qxtest432" defer></script>
+    <script src="test-engine.js?v=qxtest432" defer></script>
+    <script src="bookmarks.js?v=qxtest432" defer></script>
+    <script src="analytics.js?v=qxtest432" defer></script>
+    <script src="search.js?v=qxtest432" defer></script>
+    <script src="theme.js?v=qxtest432" defer></script>
+    <script src="app.js?v=qxtest432" defer></script>
 </body>
 </html>
