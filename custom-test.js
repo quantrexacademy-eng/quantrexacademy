@@ -1,25 +1,17 @@
-// MARKS-style Custom Test creation panel (multi-step wizard)
+// MARKS-style Custom Test — /ct flow (landing → wizard → preview → test)
 
 const CT_DAILY_LIMIT = 25;
 const CT_STORE = "quantrex_custom_tests_v1";
 const CT_DAILY = "quantrex_ct_daily_v1";
 const CT_CDN = "https://cdn-assets.getmarks.app/app_assets/img/cpyqb";
-const CT_Q_PRESETS = [5, 10, 15, 20, 25, 30, 45, 60, 90];
-const CT_TIME_PRESETS = [
-  { sec: 60, label: "1 min" },
-  { sec: 90, label: "1.5 min" },
-  { sec: 120, label: "2 min" },
-  { sec: 180, label: "3 min" }
-];
-const CT_SOURCE_OPTS = [
-  { id: "all", label: "All Sources" },
-  { id: "pyq", label: "PYQ Only" },
-  { id: "books", label: "Books Only" }
-];
+const CT_DEFAULT_QS = 25;
+const CT_DEFAULT_MINS = 60;
 
 let _ctPayload = { step: "landing" };
 let _ctExamsCache = null;
 let _ctDraft = null;
+let _ctFilter = "all";
+let _ctYearShiftsCache = null;
 
 function ctTodayKey() {
   return new Date().toISOString().slice(0, 10);
@@ -37,11 +29,8 @@ function ctBumpDaily() {
 }
 
 function ctLoadTests() {
-  try {
-    return JSON.parse(localStorage.getItem(CT_STORE) || "[]");
-  } catch (e) {
-    return [];
-  }
+  try { return JSON.parse(localStorage.getItem(CT_STORE) || "[]"); }
+  catch (e) { return []; }
 }
 
 function ctSaveTests(list) {
@@ -61,33 +50,38 @@ async function fetchCtExams() {
   return _ctExamsCache;
 }
 
-function ctExamForState() {
+function ctExamsForWizard() {
+  const all = _ctExamsCache || [];
+  if (STATE.exam === "Medical") {
+    return all.filter(e => /neet/i.test(e.title || ""));
+  }
+  const order = ["JEE Main", "NEET", "MHT CET"];
+  const picked = order.map(t => all.find(e => (e.title || "") === t)).filter(Boolean);
+  return picked.length ? picked : all.slice(0, 3);
+}
+
+function ctDefaultExam() {
+  const list = ctExamsForWizard();
   const want = STATE.exam === "Medical" ? "NEET" : "JEE Main";
-  return (_ctExamsCache || []).find(e => (e.title || "") === want)
-    || (_ctExamsCache || []).find(e => (e.title || "").includes(want.split(" ")[0]))
-    || (_ctExamsCache || [])[0];
+  return list.find(e => (e.title || "") === want) || list[0];
 }
 
 function ctNewDraft(exam) {
-  const subjects = {};
-  (exam.subjects || []).forEach(s => {
-    subjects[s._id] = { meta: s, chapterIds: new Set() };
-  });
+  const subj = (exam.subjects || [])[0];
   return {
+    wizardStep: "pick",
     examId: exam._id,
     examTitle: exam.title,
     examIcon: exam.icon || "",
-    activeSubjectId: (exam.subjects || [])[0]?._id || null,
-    subjects,
-    collapsedUnits: new Set(),
-    search: "",
-    outOfSyllabus: false,
-    totalQs: 20,
-    difficulty: "all",
-    qType: "all",
-    mode: "timed",
-    timePerQ: 90,
-    source: "all"
+    subjectId: subj ? subj._id : null,
+    subjectMeta: subj || null,
+    chapterIds: new Set(),
+    hideOutOfSyllabus: true,
+    showUnits: false,
+    yearPreset: "all",
+    customSources: new Set(),
+    totalQs: CT_DEFAULT_QS,
+    durationSec: CT_DEFAULT_MINS * 60
   };
 }
 
@@ -95,98 +89,680 @@ function ctNormTitle(s) {
   return String(s || "").toLowerCase().replace(/[^a-z0-9]/g, "");
 }
 
-function ctSelectedChapters(draft) {
-  const list = [];
-  Object.entries(draft.subjects).forEach(([sid, sub]) => {
-    (sub.meta.units || []).forEach(unit => {
-      (unit.chapters || []).forEach(ch => {
-        if (sub.chapterIds.has(ch._id)) {
-          list.push({
-            id: ch._id,
-            title: ch.title,
-            shortName: ch.shortName || ch.title,
-            subjectId: sid,
-            subjectTitle: sub.meta.title,
-            unitTitle: unit.title,
-            importance: ch.importance || 0
-          });
-        }
-      });
-    });
-  });
-  return list;
+function ctFromTests() {
+  return !!(_ctPayload && _ctPayload.fromTests);
 }
 
 function ctSubjectStyle(title) {
   const m = {
-    Physics: { bg: "#eff6ff", border: "#3b82f6", color: "#1d4ed8", ring: "#93c5fd" },
-    Chemistry: { bg: "#f0fdf4", border: "#22c55e", color: "#15803d", ring: "#86efac" },
-    Mathematics: { bg: "#fef3c7", border: "#f59e0b", color: "#b45309", ring: "#fcd34d" },
-    Biology: { bg: "#fdf2f8", border: "#ec4899", color: "#be185d", ring: "#f9a8d4" },
-    Botany: { bg: "#ecfdf5", border: "#10b981", color: "#047857", ring: "#6ee7b7" },
-    Zoology: { bg: "#fff7ed", border: "#f97316", color: "#c2410c", ring: "#fdba74" }
+    Physics: { bg: "rgba(249,115,22,.15)", border: "#f97316", color: "#fb923c", short: "Phy" },
+    Chemistry: { bg: "rgba(34,197,94,.15)", border: "#22c55e", color: "#4ade80", short: "Chem" },
+    Mathematics: { bg: "rgba(59,130,246,.15)", border: "#3b82f6", color: "#60a5fa", short: "Math" },
+    Biology: { bg: "rgba(236,72,153,.15)", border: "#ec4899", color: "#f472b6", short: "Bio" },
+    Botany: { bg: "rgba(16,185,129,.15)", border: "#10b981", color: "#34d399", short: "Bot" },
+    Zoology: { bg: "rgba(249,115,22,.15)", border: "#f97316", color: "#fb923c", short: "Zoo" }
   };
-  return m[title] || { bg: "#f8fafc", border: "#94a3b8", color: "#475569", ring: "#cbd5e1" };
-}
-
-function ctChapterIcon(ch) {
-  if (!ch || !ch.icon) return `<span class="ct-ch-icon-fallback">${(ch.shortName || ch.title || "?").slice(0, 1)}</span>`;
-  const src = ch.icon.startsWith("http") ? ch.icon : `${CT_CDN}/chapters/${ch.icon}`;
-  return `<img class="ct-ch-icon" src="${src}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'ct-ch-icon-fallback',textContent:'${(ch.shortName || ch.title || "?").slice(0, 1).replace(/'/g, "")}'}))">`;
+  return m[title] || { bg: "rgba(148,163,184,.15)", border: "#94a3b8", color: "#cbd5e1", short: (title || "Sub").slice(0, 4) };
 }
 
 function ctSubjectIcon(sub) {
   const src = sub.iconWithIllustration || sub.iconIllustration || sub.icon;
   if (src && String(src).startsWith("http")) {
-    return `<img class="ct-subj-icon" src="${src}" alt="${sub.title}">`;
+    return `<img class="ct-wiz-subj-ic" src="${src}" alt="">`;
   }
-  return `<span class="ct-subj-emoji">${typeof subjectIcon === "function" ? subjectIcon(sub.title) : "📖"}</span>`;
+  return `<span class="ct-wiz-subj-emoji">${typeof subjectIcon === "function" ? subjectIcon(sub.title) : "📖"}</span>`;
 }
 
-function ctImpBar(pct) {
-  const n = Math.min(100, Math.max(0, Number(pct) || 0));
-  return `<div class="ct-imp-bar" title="${n}% importance"><span style="width:${n}%"></span><em>${n}%</em></div>`;
+function ctChapterIcon(ch) {
+  if (!ch || !ch.icon) return `<span class="ct-wiz-ch-fb">${(ch.shortName || ch.title || "?").slice(0, 1)}</span>`;
+  const src = ch.icon.startsWith("http") ? ch.icon : `${CT_CDN}/chapters/${ch.icon}`;
+  return `<img class="ct-wiz-ch-ic" src="${src}" alt="" loading="lazy" onerror="this.style.display='none'">`;
 }
 
-function ctSyllabusBadge(cat) {
-  const m = {
-    reduced: { label: "Reduced", cls: "ct-syl-reduced" },
-    noChange: { label: "In Syllabus", cls: "ct-syl-ok" },
-    added: { label: "Added", cls: "ct-syl-added" },
-    outOfSyllabus: { label: "Out of Syllabus", cls: "ct-syl-out" }
-  };
-  const x = m[cat] || m.noChange;
-  return `<span class="ct-syl ${x.cls}">${x.label}</span>`;
+function ctSourceLabel(source) {
+  const year = typeof qYearFromSource === "function" ? qYearFromSource(source) : null;
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  let month = "";
+  for (const m of months) {
+    if (new RegExp(m, "i").test(source || "")) { month = m; break; }
+  }
+  if (!month) {
+    const abbr = (source || "").match(/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b/i);
+    if (abbr) month = abbr[1];
+  }
+  return year ? `${year} ${month}`.trim() : String(source || "").slice(0, 24);
 }
 
-function ctFromTests() {
-  return !!(_ctPayload && _ctPayload.fromTests);
+function ctBuildYearShifts() {
+  if (_ctYearShiftsCache) return _ctYearShiftsCache;
+  const bank = (typeof PRIMARY_BANK !== "undefined" && PRIMARY_BANK[STATE.exam]) || "jee_main";
+  const map = new Map();
+  QUESTIONS.filter(q => q._bank === bank && q.source).forEach(q => {
+    const label = ctSourceLabel(q.source);
+    if (!map.has(q.source)) map.set(q.source, { source: q.source, label, year: qYearFromSource(q.source) || 0 });
+  });
+  _ctYearShiftsCache = [...map.values()].sort((a, b) => b.year - a.year || a.label.localeCompare(b.label));
+  return _ctYearShiftsCache;
 }
 
-function ctMarksShell(title, subtitle, backHtml, body) {
-  return `<div class="marks-ct-page">
-    <div class="marks-ct-top">
-      ${backHtml}
-      <div class="marks-ct-head-text">
-        <h1>${title}</h1>
-        ${subtitle ? `<p>${subtitle}</p>` : ""}
-      </div>
+function ctYearPresetRange(preset) {
+  const maxY = new Date().getFullYear();
+  if (preset === "last3") return maxY - 2;
+  if (preset === "last5") return maxY - 4;
+  if (preset === "last10") return maxY - 9;
+  return 0;
+}
+
+function ctYearFilterOk(source, draft) {
+  const year = typeof qYearFromSource === "function" ? qYearFromSource(source) : null;
+  if (draft.yearPreset === "custom") {
+    return draft.customSources.size ? draft.customSources.has(source) : true;
+  }
+  if (draft.yearPreset === "all") return true;
+  const min = ctYearPresetRange(draft.yearPreset);
+  return year != null && year >= min;
+}
+
+function ctSelectedChapters(draft) {
+  if (!draft || !draft.subjectMeta) return [];
+  const list = [];
+  (draft.subjectMeta.units || []).forEach(unit => {
+    (unit.chapters || []).forEach(ch => {
+      if (draft.chapterIds.has(ch._id)) {
+        list.push({
+          id: ch._id,
+          title: ch.title,
+          shortName: ch.shortName || ch.title,
+          unitTitle: unit.title,
+          syllabusCategory: ch.syllabusCategory
+        });
+      }
+    });
+  });
+  return list;
+}
+
+function ctSubjectCount(sub) {
+  let units = (sub.units || []).length;
+  let chapters = 0;
+  (sub.units || []).forEach(u => { chapters += (u.chapters || []).length; });
+  return { units, chapters };
+}
+
+function ctPreviewBadges(draft) {
+  const exam = draft.examTitle || "JEE Main";
+  const sub = draft.subjectMeta ? draft.subjectMeta.title : "";
+  const sty = ctSubjectStyle(sub);
+  return `<span class="ct-wiz-prev-badge exam">📝 ${exam}</span>
+    ${sub ? `<span class="ct-wiz-prev-badge subj" style="background:${sty.bg};color:${sty.color};border-color:${sty.border}">${sty.short || sub}</span>` : ""}`;
+}
+
+function ctWizardProgress(step) {
+  const steps = ["pick", "chapters", "years"];
+  const idx = steps.indexOf(step);
+  const pct = idx < 0 ? 10 : Math.round(((idx + 1) / steps.length) * 100);
+  return `<div class="ct-wiz-progress"><span style="width:${pct}%"></span></div>`;
+}
+
+function ctWizardPreviewBar(draft, nextLabel, nextFn, nextDisabled) {
+  const mins = Math.round((draft.durationSec || CT_DEFAULT_MINS * 60) / 60);
+  return `<div class="ct-wiz-preview-bar">
+    <button type="button" class="ct-wiz-back-btn" onclick="ctWizardBack()">←</button>
+    <div class="ct-wiz-preview-mid">
+      <small>Test Preview</small>
+      <div class="ct-wiz-prev-badges">${ctPreviewBadges(draft)}</div>
+      ${draft.wizardStep === "years" ? `<div class="ct-wiz-prev-stats"><span><strong>${draft.totalQs}</strong> Qs</span><span><strong>${mins}</strong> Mins</span></div>` : ""}
     </div>
-    ${body}
+    <button type="button" class="ct-wiz-next-btn ${nextDisabled ? "disabled" : ""}" ${nextDisabled ? "disabled" : ""} onclick="${nextFn}">${nextLabel}</button>
   </div>`;
 }
 
-function ctStepBar(step) {
-  const steps = [
-    { id: 1, label: "Select Chapters" },
-    { id: 2, label: "Test Settings" }
+function ctPickStepHtml(draft, exams) {
+  const examCards = exams.map(ex => {
+    const on = draft.examId === ex._id;
+    return `<button type="button" class="ct-wiz-card ${on ? "on" : ""}" onclick="ctPickExam('${ex._id}')">
+      ${ex.icon ? `<img src="${ex.icon}" alt="">` : `<span class="ct-wiz-card-fb">${(ex.title || "?").slice(0, 1)}</span>`}
+      <strong>${ex.title}</strong>
+    </button>`;
+  }).join("");
+
+  const exam = exams.find(e => e._id === draft.examId) || exams[0];
+  const subCards = (exam && exam.subjects || []).map(s => {
+    const on = draft.subjectId === s._id;
+    const sty = ctSubjectStyle(s.title);
+    return `<button type="button" class="ct-wiz-card subj ${on ? "on" : ""}" style="--ct-card-c:${sty.color}" onclick="ctPickSubject('${s._id}')">
+      ${ctSubjectIcon(s)}
+      <strong>${s.title}</strong>
+    </button>`;
+  }).join("");
+
+  const canNext = draft.examId && draft.subjectId;
+  return `<div class="ct-wizard-left-inner">
+    <div class="ct-wiz-head">
+      <h2>Create your own test</h2>
+      <button type="button" class="ct-wiz-close" onclick="ctCloseWizard()">✕</button>
+    </div>
+    ${ctWizardProgress("pick")}
+    <section class="ct-wiz-section">
+      <h4>Choose your exam</h4>
+      <div class="ct-wiz-exam-grid">${examCards}</div>
+    </section>
+    <section class="ct-wiz-section">
+      <h4>Subject</h4>
+      <div class="ct-wiz-subj-grid">${subCards}</div>
+    </section>
+    ${ctWizardPreviewBar(draft, "Next", "ctGoChapters()", !canNext)}
+  </div>`;
+}
+
+function ctChaptersStepHtml(draft) {
+  const sub = draft.subjectMeta;
+  if (!sub) return `<div class="empty">Select a subject</div>`;
+  const cnt = ctSubjectCount(sub);
+  const sel = ctSelectedChapters(draft).length;
+  const units = (sub.units || []).map(unit => {
+    const chapters = (unit.chapters || []).filter(ch => {
+      if (draft.hideOutOfSyllabus && ch.syllabusCategory === "outOfSyllabus") return false;
+      return true;
+    });
+    if (!chapters.length) return "";
+    const unitSel = chapters.filter(ch => draft.chapterIds.has(ch._id)).length;
+    return `<div class="ct-wiz-unit">
+      <div class="ct-wiz-unit-head">
+        <strong>${unit.title}</strong>
+        <small>${unitSel}/${chapters.length}</small>
+        <button type="button" class="ct-wiz-unit-all" onclick="ctToggleUnitAll('${unit._id}')">${unitSel === chapters.length ? "Clear" : "Select all"}</button>
+      </div>
+      <div class="ct-wiz-ch-list">${chapters.map(ch => {
+        const on = draft.chapterIds.has(ch._id);
+        return `<label class="ct-wiz-ch-row ${on ? "on" : ""}">
+          <input type="checkbox" ${on ? "checked" : ""} onchange="ctToggleChapter('${ch._id}', this.checked)">
+          ${ctChapterIcon(ch)}
+          <div><strong>${ch.shortName || ch.title}</strong><small>${ch.title}</small></div>
+        </label>`;
+      }).join("")}</div>
+    </div>`;
+  }).join("");
+
+  const right = draft.showUnits ? `<div class="ct-wizard-right-inner">${units || '<div class="empty">No chapters</div>'}</div>` : `<div class="ct-wizard-right-empty"></div>`;
+
+  return `<div class="ct-wizard-split">
+    <div class="ct-wizard-left-panel">${`<div class="ct-wizard-left-inner">
+      <div class="ct-wiz-head">
+        <h2>Create your own test</h2>
+        <button type="button" class="ct-wiz-close" onclick="ctCloseWizard()">✕</button>
+      </div>
+      ${ctWizardProgress("chapters")}
+      <label class="ct-wiz-syllabus-toggle">
+        <span>⚠️ Don't include out of syllabus Qs</span>
+        <input type="checkbox" ${draft.hideOutOfSyllabus ? "checked" : ""} onchange="ctSetSyllabus(this.checked)">
+      </label>
+      <div class="ct-wiz-subj-row">
+        <div class="ct-wiz-subj-row-main">
+          ${ctSubjectIcon(sub)}
+          <div><strong>${sub.title}</strong><small>${cnt.units} Units, ${cnt.chapters} Chapters</small></div>
+        </div>
+        <button type="button" class="ct-wiz-show-units" onclick="ctToggleShowUnits()">${draft.showUnits ? "HIDE UNITS" : "SHOW UNITS"}</button>
+      </div>
+      ${ctWizardPreviewBar(draft, "Next", "ctGoYears()", !sel)}
+    </div>`}</div>
+    ${right}
+  </div>`;
+}
+
+function ctYearsStepHtml(draft) {
+  const shifts = ctBuildYearShifts();
+  const minY = shifts.length ? shifts[shifts.length - 1].year : 2002;
+  const maxY = shifts.length ? shifts[0].year : new Date().getFullYear();
+  const presets = [
+    { id: "all", label: "All Years", sub: "The test will be created from All PYQs" },
+    { id: "last3", label: "Last 3 Years", num: "3" },
+    { id: "last5", label: "Last 5 Years", num: "5" },
+    { id: "last10", label: "Last 10 Years", num: "10" }
   ];
-  const cur = step === "settings" ? 2 : 1;
-  return `<div class="ct-steps">${steps.map(s => `
-    <div class="ct-step ${s.id === cur ? "active" : s.id < cur ? "done" : ""}">
-      <span class="ct-step-num">${s.id < cur ? "✓" : s.id}</span>
-      <span class="ct-step-label">${s.label}</span>
-    </div>`).join('<span class="ct-step-line"></span>')}</div>`;
+  const presetCards = presets.map(p => {
+    const on = draft.yearPreset === p.id;
+    return `<button type="button" class="ct-wiz-year-preset ${on ? "on" : ""}" onclick="ctSetYearPreset('${p.id}')">
+      <span class="ct-wiz-preset-check">${on ? "✓" : ""}</span>
+      ${p.num ? `<span class="ct-wiz-preset-num">${p.num}</span>` : `<span class="ct-wiz-preset-globe">🌐</span>`}
+      <strong>${p.label}</strong>
+      ${p.sub ? `<small>${p.sub}</small>` : ""}
+    </button>`;
+  }).join("");
+
+  const customSel = draft.yearPreset === "custom" && draft.customSources.size;
+  return `<div class="ct-wizard-left-inner ct-wizard-years">
+    <div class="ct-wiz-head">
+      <h2>Create your own test</h2>
+      <button type="button" class="ct-wiz-close" onclick="ctCloseWizard()">✕</button>
+    </div>
+    ${ctWizardProgress("years")}
+    <section class="ct-wiz-section">
+      <h4>Select Year of Paper You Want to Include</h4>
+      <p class="ct-wiz-hint">The test will be created from All PYQs</p>
+      <div class="ct-wiz-year-presets">${presetCards}</div>
+      <button type="button" class="ct-wiz-custom-years" onclick="ctOpenYearModal()">
+        <span>✏️ Select Custom Years</span>
+        ${customSel ? `<em>${draft.customSources.size} selected</em>` : ""}
+      </button>
+    </section>
+    ${ctWizardPreviewBar(draft, "Generate Test", "ctGenerateTest()", false)}
+  </div>`;
+}
+
+function ctWizardHtml() {
+  if (!_ctDraft) return "";
+  const exams = ctExamsForWizard();
+  if (_ctDraft.wizardStep === "pick") {
+    return `<div class="ct-wizard-overlay"><div class="ct-wizard-shell">${ctPickStepHtml(_ctDraft, exams)}</div></div>`;
+  }
+  if (_ctDraft.wizardStep === "chapters") {
+    return `<div class="ct-wizard-overlay"><div class="ct-wizard-shell wide">${ctChaptersStepHtml(_ctDraft)}</div></div>`;
+  }
+  if (_ctDraft.wizardStep === "years") {
+    return `<div class="ct-wizard-overlay"><div class="ct-wizard-shell">${ctYearsStepHtml(_ctDraft)}</div></div>`;
+  }
+  if (_ctDraft.wizardStep === "generating") {
+    return `<div class="ct-wizard-overlay"><div class="ct-wizard-shell"><div class="ct-wiz-generating">
+      <div class="ct-spinner"></div>
+      <strong>Generating your custom test. Please wait…</strong>
+    </div></div></div>`;
+  }
+  return "";
+}
+
+function ctFilterTests(tests) {
+  if (_ctFilter === "attempted") return tests.filter(t => t.status === "completed");
+  if (_ctFilter === "notAttempted") return tests.filter(t => t.status !== "completed");
+  if (_ctFilter === "resume") return tests.filter(t => t.status === "inProgress");
+  return tests;
+}
+
+function ctLandingHtml(tests) {
+  const filtered = ctFilterTests(tests);
+  const filters = [
+    { id: "all", label: "All" },
+    { id: "attempted", label: "Attempted" },
+    { id: "notAttempted", label: "Not Attempted" },
+    { id: "resume", label: "Resume" }
+  ];
+  const filterPills = filters.map(f =>
+    `<button type="button" class="ct-landing-filter ${ _ctFilter === f.id ? "on" : ""}" onclick="ctSetFilter('${f.id}')">${f.label}</button>`
+  ).join("");
+
+  const cards = filtered.length ? filtered.slice(0, 40).map(t => {
+    const action = t.status === "completed" ? "View Analysis →" : (t.status === "inProgress" ? "Resume →" : "Attempt Now →");
+    const cls = t.status === "completed" ? "done" : "";
+    const date = t.createdAt ? new Date(t.createdAt).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" }) : "";
+    return `<div class="ct-landing-row ${cls}" onclick="ctShowPreview('${t.id}')">
+      <div class="ct-landing-row-main">
+        <strong>${t.title}</strong>
+        <small>${t.examTitle || "JEE Main"} · ${date}</small>
+        ${t.status === "completed" && t.pct != null ? `<small class="ct-landing-score">${t.pct}% correct</small>` : ""}
+      </div>
+      <span class="ct-landing-action">${action}</span>
+    </div>`;
+  }).join("") : `<div class="ct-landing-empty">No tests in this filter.</div>`;
+
+  const back = ctFromTests()
+    ? `<button type="button" class="marks-ct-back" onclick="go('tests')">←</button>`
+    : "";
+
+  return `<div class="ct-landing-page">
+    <div class="ct-landing-head">
+      ${back}
+      <div>
+        <h1>Custom Test</h1>
+        <p>${tests.length} Custom tests generated</p>
+      </div>
+    </div>
+    <div class="ct-landing-filters">${filterPills}</div>
+    <div class="ct-landing-list">${cards}</div>
+    <button type="button" class="ct-create-sticky" onclick="ctStartWizard()">+ Create new custom test</button>
+  </div>`;
+}
+
+function ctYearModalHtml(draft) {
+  const shifts = ctBuildYearShifts();
+  window._ctYearModalShifts = shifts.slice(0, 40);
+  const minY = shifts.length ? shifts[shifts.length - 1].year : 2002;
+  const maxY = shifts.length ? shifts[0].year : new Date().getFullYear();
+  const grid = window._ctYearModalShifts.map((s, i) => {
+    const on = draft.customSources.has(s.source);
+    return `<button type="button" class="ct-year-cell ${on ? "on" : ""}" onclick="ctToggleYearIdx(${i})">${s.label}</button>`;
+  }).join("");
+
+  return `<div class="marks-modal-overlay" id="ctYearModal" onclick="if(event.target===this)ctCloseYearModal()">
+    <div class="marks-modal ct-year-modal">
+      <div class="marks-modal-head">
+        <h3>Select Year of Paper You Want to Include</h3>
+        <button type="button" class="marks-modal-cancel" style="flex:0;padding:6px 12px" onclick="ctCloseYearModal()">✕</button>
+      </div>
+      <div class="marks-modal-body">
+        <div class="ct-year-quick">
+          <button type="button" onclick="ctSetYearPreset('all');ctCloseYearModal()">All Years</button>
+          <button type="button" onclick="ctSetYearPreset('last3');ctCloseYearModal()">Last 3 Years</button>
+          <button type="button" onclick="ctSetYearPreset('last5');ctCloseYearModal()">Last 5 Years</button>
+          <button type="button" onclick="ctSetYearPreset('last10');ctCloseYearModal()">Last 10 Years</button>
+        </div>
+        <div class="ct-year-modal-head2">
+          <span>All Years (${maxY} – ${minY})</span>
+          <button type="button" class="marks-modal-clear" onclick="ctClearCustomYears()">Clear All</button>
+        </div>
+        <div class="ct-year-grid">${grid}</div>
+      </div>
+      <div class="marks-modal-foot">
+        <button type="button" class="marks-modal-apply" onclick="ctApplyCustomYears()">Select</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function ctPreviewModalHtml(test) {
+  const mins = test.durationSec ? Math.round(test.durationSec / 60) : CT_DEFAULT_MINS;
+  const sub = (test.chapters && test.chapters[0] && test.chapters[0].subjectTitle) || test.subjectTitle || "";
+  const sty = ctSubjectStyle(sub);
+  const chList = (test.chapters || []).map(c => c.shortName || c.title).join(", ");
+  const yearLines = (test.yearLabels || []).slice(0, 8).join(", ");
+  const yearMeta = test.yearPreset === "all" ? "All Years" : (test.yearPreset === "custom" ? `Custom (${(test.yearLabels || []).length} shifts)` : test.yearPresetLabel || "Selected years");
+
+  return `<div class="marks-modal-overlay" id="ctPreviewModal" onclick="if(event.target===this)ctClosePreview()">
+    <div class="marks-modal marks-preview-modal">
+      <div class="marks-modal-head">
+        <h3>Test preview</h3>
+        <button type="button" class="marks-modal-cancel" style="flex:0;padding:6px 12px" onclick="ctClosePreview()">✕</button>
+      </div>
+      <div class="marks-modal-body">
+        <h2 class="marks-preview-title">${test.title}</h2>
+        <div class="marks-preview-badges">
+          <span class="marks-preview-badge exam">${test.examTitle || "JEE Main"}</span>
+          ${sub ? `<span class="marks-preview-badge subj" style="background:${sty.bg};color:${sty.color};border-color:${sty.border}">${sub}</span>` : ""}
+        </div>
+        <div class="marks-preview-stats">
+          <div class="marks-preview-stat"><strong>${test.totalQs}</strong><small>Questions</small></div>
+          <div class="marks-preview-stat"><strong>${mins} Mins</strong><small>Duration</small></div>
+        </div>
+        ${yearLines ? `<p class="ct-preview-years"><strong>Previous year (${yearMeta})</strong><br>${yearLines}</p>` : ""}
+        ${sub ? `<p class="ct-preview-subj"><strong>${sub}</strong><br>${chList}</p>` : (chList ? `<p class="marks-preview-chapters">${chList}</p>` : "")}
+        <button type="button" class="marks-preview-attempt" onclick="ctClosePreview();ctAttemptTest('${test.id}')">Attempt test now →</button>
+        <button type="button" class="marks-preview-later" onclick="ctClosePreview()">Attempt Later</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+async function viewCustomTests(payload) {
+  const keepFromTests = _ctPayload.fromTests;
+  const p = { ..._ctPayload, ...(payload || {}) };
+  if (p.fromTests == null && keepFromTests) p.fromTests = keepFromTests;
+  _ctPayload = p;
+  await fetchCtExams();
+
+  if (p.step === "wizard" || _ctDraft) {
+    if (p._draftInit || !_ctDraft) {
+      _ctDraft = ctNewDraft(ctDefaultExam());
+      _ctDraft.wizardStep = p.sub || "pick";
+    }
+    return ctWizardHtml();
+  }
+
+  const tests = ctLoadTests();
+  return ctLandingHtml(tests);
+}
+
+function ctStartWizard() {
+  _ctDraft = ctNewDraft(ctDefaultExam());
+  _ctDraft.wizardStep = "pick";
+  render("custom", { step: "wizard", fromTests: ctFromTests() });
+}
+
+function ctCloseWizard() {
+  _ctDraft = null;
+  render("custom", { step: "landing", fromTests: ctFromTests() });
+}
+
+function ctWizardBack() {
+  if (!_ctDraft) return;
+  if (_ctDraft.wizardStep === "years") _ctDraft.wizardStep = "chapters";
+  else if (_ctDraft.wizardStep === "chapters") _ctDraft.wizardStep = "pick";
+  else ctCloseWizard();
+  render("custom", { step: "wizard", fromTests: ctFromTests() });
+}
+
+function ctSetFilter(f) {
+  _ctFilter = f;
+  render("custom", { step: "landing", fromTests: ctFromTests() });
+}
+
+function ctPickExam(id) {
+  if (!_ctDraft) return;
+  const exam = (_ctExamsCache || []).find(e => e._id === id);
+  if (!exam) return;
+  _ctDraft.examId = exam._id;
+  _ctDraft.examTitle = exam.title;
+  _ctDraft.examIcon = exam.icon || "";
+  const sub = (exam.subjects || [])[0];
+  _ctDraft.subjectId = sub ? sub._id : null;
+  _ctDraft.subjectMeta = sub || null;
+  _ctDraft.chapterIds = new Set();
+  render("custom", { step: "wizard", fromTests: ctFromTests() });
+}
+
+function ctPickSubject(id) {
+  if (!_ctDraft) return;
+  const exam = (_ctExamsCache || []).find(e => e._id === _ctDraft.examId);
+  const sub = exam && (exam.subjects || []).find(s => s._id === id);
+  if (!sub) return;
+  _ctDraft.subjectId = sub._id;
+  _ctDraft.subjectMeta = sub;
+  _ctDraft.chapterIds = new Set();
+  render("custom", { step: "wizard", fromTests: ctFromTests() });
+}
+
+function ctGoChapters() {
+  if (!_ctDraft || !_ctDraft.subjectId) return;
+  _ctDraft.wizardStep = "chapters";
+  _ctDraft.showUnits = false;
+  render("custom", { step: "wizard", fromTests: ctFromTests() });
+}
+
+function ctGoYears() {
+  if (!ctSelectedChapters(_ctDraft).length) {
+    showToast("⚠️ Select at least one chapter");
+    return;
+  }
+  _ctDraft.wizardStep = "years";
+  _ctYearShiftsCache = null;
+  render("custom", { step: "wizard", fromTests: ctFromTests() });
+}
+
+function ctSetSyllabus(hideOut) {
+  if (!_ctDraft) return;
+  _ctDraft.hideOutOfSyllabus = hideOut;
+  render("custom", { step: "wizard", fromTests: ctFromTests() });
+}
+
+function ctToggleShowUnits() {
+  if (!_ctDraft) return;
+  _ctDraft.showUnits = !_ctDraft.showUnits;
+  render("custom", { step: "wizard", fromTests: ctFromTests() });
+}
+
+function ctToggleChapter(chId, checked) {
+  if (!_ctDraft) return;
+  if (checked) _ctDraft.chapterIds.add(chId);
+  else _ctDraft.chapterIds.delete(chId);
+  render("custom", { step: "wizard", fromTests: ctFromTests() });
+}
+
+function ctToggleUnitAll(unitId) {
+  if (!_ctDraft || !_ctDraft.subjectMeta) return;
+  const unit = (_ctDraft.subjectMeta.units || []).find(u => u._id === unitId);
+  if (!unit) return;
+  const visible = (unit.chapters || []).filter(ch => {
+    if (_ctDraft.hideOutOfSyllabus && ch.syllabusCategory === "outOfSyllabus") return false;
+    return true;
+  });
+  const allOn = visible.every(ch => _ctDraft.chapterIds.has(ch._id));
+  visible.forEach(ch => { if (allOn) _ctDraft.chapterIds.delete(ch._id); else _ctDraft.chapterIds.add(ch._id); });
+  render("custom", { step: "wizard", fromTests: ctFromTests() });
+}
+
+function ctSetYearPreset(preset) {
+  if (!_ctDraft) return;
+  _ctDraft.yearPreset = preset;
+  if (preset !== "custom") _ctDraft.customSources = new Set();
+  render("custom", { step: "wizard", fromTests: ctFromTests() });
+}
+
+function ctOpenYearModal() {
+  if (!_ctDraft) return;
+  const existing = document.getElementById("ctYearModal");
+  if (existing) existing.remove();
+  document.body.insertAdjacentHTML("beforeend", ctYearModalHtml(_ctDraft));
+}
+
+function ctCloseYearModal() {
+  const el = document.getElementById("ctYearModal");
+  if (el) el.remove();
+}
+
+function ctToggleYearIdx(idx) {
+  if (!_ctDraft) return;
+  const s = (window._ctYearModalShifts || [])[idx];
+  if (!s) return;
+  if (_ctDraft.customSources.has(s.source)) _ctDraft.customSources.delete(s.source);
+  else _ctDraft.customSources.add(s.source);
+  const modal = document.getElementById("ctYearModal");
+  if (modal) modal.outerHTML = ctYearModalHtml(_ctDraft);
+}
+
+function ctClearCustomYears() {
+  if (!_ctDraft) return;
+  _ctDraft.customSources = new Set();
+  const modal = document.getElementById("ctYearModal");
+  if (modal) modal.outerHTML = ctYearModalHtml(_ctDraft);
+}
+
+function ctApplyCustomYears() {
+  if (!_ctDraft) return;
+  _ctDraft.yearPreset = "custom";
+  ctCloseYearModal();
+  render("custom", { step: "wizard", fromTests: ctFromTests() });
+}
+
+function ctAutoTitle(draft, chapters) {
+  const subjShort = { Physics: "P", Chemistry: "C", Mathematics: "M", Biology: "B", Botany: "Bo", Zoology: "Z" };
+  const prefix = subjShort[draft.subjectMeta?.title] || "T";
+  const n = chapters.length;
+  const chName = n === 1 ? (chapters[0].shortName || chapters[0].title.split(" ")[0]) : `${n} Chapters`;
+  const num = ctLoadTests().length + 1;
+  return `${prefix} - ${chName} Test ${num}`;
+}
+
+function ctMatchQuestion(q, chapters, draft) {
+  if (draft.subjectMeta && q.subject !== draft.subjectMeta.title) return false;
+  const titles = new Set(chapters.map(c => ctNormTitle(c.title)));
+  const shorts = new Set(chapters.map(c => ctNormTitle(c.shortName || c.title)));
+  const ch = ctNormTitle(q.chapter);
+  const hit = titles.has(ch) || [...titles].some(t => ch.includes(t) || t.includes(ch))
+    || [...shorts].some(s => s.length > 4 && (ch.includes(s) || s.includes(ch)));
+  if (!hit) return false;
+  if (!ctYearFilterOk(q.source, draft)) return false;
+  if (draft.hideOutOfSyllabus && q._syllabusCategory === "outOfSyllabus") return false;
+  return true;
+}
+
+function ctYearLabelsForDraft(draft) {
+  const shifts = ctBuildYearShifts();
+  return shifts.filter(s => ctYearFilterOk(s.source, draft)).map(s => s.label);
+}
+
+async function ctGenerateTest() {
+  if (!_ctDraft) return;
+  if (ctDailyCount() >= CT_DAILY_LIMIT) {
+    showToast("⚠️ Daily limit reached (25 tests). Try tomorrow.");
+    return;
+  }
+  const chapters = ctSelectedChapters(_ctDraft);
+  if (!chapters.length) return;
+
+  _ctDraft.wizardStep = "generating";
+  render("custom", { step: "wizard", fromTests: ctFromTests() });
+
+  const bank = (typeof PRIMARY_BANK !== "undefined" && PRIMARY_BANK[STATE.exam]) || "jee_main";
+  if (typeof ensureQuestionsLoaded === "function") await ensureQuestionsLoaded(bank);
+  _ctYearShiftsCache = null;
+
+  let pool = QUESTIONS.filter(q => ctMatchQuestion(q, chapters, _ctDraft));
+  if (!pool.length) {
+    const subj = _ctDraft.subjectMeta?.title;
+    pool = QUESTIONS.filter(q => q.subject === subj && chapters.some(c => {
+      const a = ctNormTitle(q.chapter);
+      const b = ctNormTitle(c.title);
+      return a.includes(b.slice(0, 8)) || b.includes(a.slice(0, 8));
+    })).filter(q => ctYearFilterOk(q.source, _ctDraft));
+  }
+  if (!pool.length) {
+    showToast("⚠️ No questions found. Try more chapters or different years.");
+    _ctDraft.wizardStep = "years";
+    render("custom", { step: "wizard", fromTests: ctFromTests() });
+    return;
+  }
+
+  await new Promise(r => setTimeout(r, 800));
+
+  const shuffled = pool.sort(() => Math.random() - 0.5);
+  const take = Math.min(_ctDraft.totalQs, shuffled.length);
+  const ids = shuffled.slice(0, take).map(q => q.id);
+  const title = ctAutoTitle(_ctDraft, chapters);
+  const testId = "ct_" + Date.now();
+  const yearLabels = ctYearLabelsForDraft(_ctDraft);
+  const presetLabels = { all: "All Years", last3: "Last 3 Years", last5: "Last 5 Years", last10: "Last 10 Years", custom: "Custom Years" };
+
+  const record = {
+    id: testId,
+    title,
+    examTitle: _ctDraft.examTitle,
+    subjectTitle: _ctDraft.subjectMeta?.title,
+    chapterCount: chapters.length,
+    chapters: chapters.map(c => ({ title: c.title, shortName: c.shortName, subjectTitle: _ctDraft.subjectMeta?.title })),
+    totalQs: take,
+    status: "notStarted",
+    createdAt: new Date().toISOString(),
+    questionIds: ids,
+    timed: true,
+    durationSec: _ctDraft.durationSec,
+    modeLabel: `Custom · ${Math.round(_ctDraft.durationSec / 60)} min`,
+    yearPreset: _ctDraft.yearPreset,
+    yearPresetLabel: presetLabels[_ctDraft.yearPreset],
+    yearLabels
+  };
+
+  const list = ctLoadTests();
+  list.unshift(record);
+  ctSaveTests(list);
+  ctBumpDaily();
+
+  const fromTests = ctFromTests();
+  _ctDraft = null;
+  _ctPayload = { step: "landing", fromTests };
+
+  render("custom", { step: "landing", fromTests });
+  setTimeout(() => ctShowPreview(testId), 150);
+}
+
+function ctShowPreview(testId) {
+  const t = ctLoadTests().find(x => x.id === testId);
+  if (!t) return;
+  const existing = document.getElementById("ctPreviewModal");
+  if (existing) existing.remove();
+  document.body.insertAdjacentHTML("beforeend", ctPreviewModalHtml(t));
+}
+
+function ctClosePreview() {
+  const el = document.getElementById("ctPreviewModal");
+  if (el) el.remove();
 }
 
 function ctOnCompleteHook(testId) {
@@ -205,58 +781,15 @@ function ctOnCompleteHook(testId) {
   };
 }
 
-function ctSubjectBadges(chapters) {
-  const subs = [...new Set((chapters || []).map(c => c.subjectTitle))];
-  return subs.map(s => {
-    const sty = ctSubjectStyle(s);
-    return `<span class="marks-preview-badge subj" style="background:${sty.bg};color:${sty.color};border-color:${sty.border}">${s}</span>`;
-  }).join("");
-}
-
-function ctPreviewModalHtml(test) {
-  const mins = test.durationSec ? Math.round(test.durationSec / 60) : "∞";
-  const chList = (test.chapters || []).map(c => c.shortName || c.title).join(", ");
-  const subBadges = ctSubjectBadges(test.chapters);
-  return `<div class="marks-modal-overlay" id="ctPreviewModal" onclick="if(event.target===this)ctClosePreview()">
-    <div class="marks-modal marks-preview-modal">
-      <div class="marks-modal-head">
-        <h3>Test preview</h3>
-        <button type="button" class="marks-modal-cancel" style="flex:0;padding:6px 12px" onclick="ctClosePreview()">✕</button>
-      </div>
-      <div class="marks-modal-body">
-        <h2 class="marks-preview-title">${test.title}</h2>
-        <div class="marks-preview-badges">
-          <span class="marks-preview-badge exam">${test.examTitle || "JEE Main"}</span>
-          ${subBadges}
-        </div>
-        <div class="marks-preview-stats">
-          <div class="marks-preview-stat"><strong>${test.totalQs}</strong><small>Questions</small></div>
-          <div class="marks-preview-stat"><strong>${mins}${mins !== "∞" ? " Mins" : ""}</strong><small>Duration</small></div>
-        </div>
-        ${chList ? `<p class="marks-preview-chapters">${chList}</p>` : ""}
-        <button type="button" class="marks-preview-attempt" onclick="ctClosePreview();ctAttemptTest('${test.id}')">Attempt test now →</button>
-        <button type="button" class="marks-preview-later" onclick="ctClosePreview()">Attempt Later</button>
-      </div>
-    </div>
-  </div>`;
-}
-
-function ctShowPreview(testId) {
-  const t = ctLoadTests().find(x => x.id === testId);
-  if (!t) return;
-  const existing = document.getElementById("ctPreviewModal");
-  if (existing) existing.remove();
-  document.body.insertAdjacentHTML("beforeend", ctPreviewModalHtml(t));
-}
-
-function ctClosePreview() {
-  const el = document.getElementById("ctPreviewModal");
-  if (el) el.remove();
-}
-
 function ctAttemptTest(id) {
   const t = ctLoadTests().find(x => x.id === id);
   if (!t) return;
+  const list = ctLoadTests();
+  const item = list.find(x => x.id === id);
+  if (item && item.status !== "completed") {
+    item.status = "inProgress";
+    ctSaveTests(list);
+  }
   startTest(t.questionIds, t.title, "custom", {
     testType: "custom",
     timed: t.timed,
@@ -267,459 +800,6 @@ function ctAttemptTest(id) {
     organizeJee: false,
     onComplete: ctOnCompleteHook(t.id)
   });
-}
-
-function ctLandingHtml(tests, dailyCreated) {
-  const exam = ctExamForState();
-  const examBadge = exam ? `<div class="ct-exam-badge">${exam.icon ? `<img src="${exam.icon}" alt="">` : ""}<span>${exam.title}</span></div>` : "";
-  const remaining = Math.max(0, CT_DAILY_LIMIT - dailyCreated);
-
-  const cards = tests.length ? tests.slice(0, 30).map(t => {
-    const action = t.status === "completed" ? "View Analysis →" : "Attempt Now →";
-    return `<div class="ct-marks-row" onclick="ctShowPreview('${t.id}')">
-      <div class="ct-marks-row-main">
-        <strong>${t.title}</strong>
-        <small>${t.examTitle} · ${t.chapterCount} chapters · ${t.totalQs} Qs · ${new Date(t.createdAt).toLocaleDateString()}</small>
-        ${t.status === "completed" && t.pct != null ? `<small style="color:var(--green)">${t.pct}% · ${t.correct || 0}/${t.totalQs} correct</small>` : ""}
-      </div>
-      <span class="ct-marks-action">${action}</span>
-    </div>`;
-  }).join("") : `<div class="empty">No custom tests yet. Tap Create Test below to begin.</div>`;
-
-  return `${topbar("Custom Test", `${tests.length} Custom tests generated`)}
-    ${examBadge}
-    <div class="ct-hero">
-      <div class="ct-hero-stat"><strong>${dailyCreated}/${CT_DAILY_LIMIT}</strong><small>Tests created today</small></div>
-      <div class="ct-hero-stat"><strong>${remaining}</strong><small>Remaining today</small></div>
-      <div class="ct-hero-stat"><strong>${tests.length}</strong><small>Total custom tests</small></div>
-    </div>
-    <div class="ct-marks-list">${cards}</div>
-    <div class="ct-create-banner" style="margin-top:20px" ${mg("custom", { step: "chapters", _draftInit: true })}>
-      <div class="ct-create-left">
-        <span class="ct-create-icon">+</span>
-        <div><strong>Create new custom test</strong><small>Select chapters → configure settings → preview → start</small></div>
-      </div>
-      <span class="ct-create-go">→</span>
-    </div>`;
-}
-
-function ctChaptersHtml(draft) {
-  const sub = draft.subjects[draft.activeSubjectId];
-  if (!sub) return `<div class="empty">Select a subject</div>`;
-  const selected = ctSelectedChapters(draft);
-  const q = (draft.search || "").toLowerCase();
-  const visibleInSubject = [];
-  (sub.meta.units || []).forEach(unit => {
-    (unit.chapters || []).forEach(ch => {
-      if (draft.outOfSyllabus && ch.syllabusCategory === "outOfSyllabus") return;
-      if (q && !(ch.title + " " + (ch.shortName || "")).toLowerCase().includes(q)) return;
-      visibleInSubject.push(ch._id);
-    });
-  });
-  const allSubjectOn = visibleInSubject.length && visibleInSubject.every(id => sub.chapterIds.has(id));
-
-  const subjectPills = Object.values(draft.subjects).map(s => {
-    const cnt = s.chapterIds.size;
-    const active = s.meta._id === draft.activeSubjectId;
-    const sty = ctSubjectStyle(s.meta.title);
-    return `<button type="button" class="ct-subj-pill ${active ? "active" : ""}" style="--ct-subj-bg:${sty.bg};--ct-subj-bd:${sty.border};--ct-subj-fg:${sty.color};--ct-subj-ring:${sty.ring}"
-      onclick="ctSetSubject('${s.meta._id}')">
-      ${ctSubjectIcon(s.meta)}
-      <strong>${s.meta.shortName || s.meta.title}</strong>
-      ${cnt ? `<em>${cnt}</em>` : ""}
-    </button>`;
-  }).join("");
-
-  const units = (sub.meta.units || []).map(unit => {
-    const chapters = (unit.chapters || []).filter(ch => {
-      if (draft.outOfSyllabus && ch.syllabusCategory === "outOfSyllabus") return false;
-      if (!q) return true;
-      return (ch.title + " " + (ch.shortName || "")).toLowerCase().includes(q);
-    });
-    if (!chapters.length) return "";
-    const unitSel = chapters.filter(ch => sub.chapterIds.has(ch._id)).length;
-    const collapsed = draft.collapsedUnits && draft.collapsedUnits.has(unit._id);
-    return `<div class="ct-unit ${collapsed ? "collapsed" : ""}">
-      <div class="ct-unit-head" onclick="ctToggleUnitCollapse('${unit._id}')">
-        <div class="ct-unit-title">
-          <span class="ct-unit-chev">${collapsed ? "▸" : "▾"}</span>
-          <strong>${unit.title}</strong>
-          <small>${unitSel}/${chapters.length} selected</small>
-        </div>
-        <button type="button" class="btn-soft sm" onclick="event.stopPropagation();ctToggleUnit('${sub.meta._id}','${unit._id}')">${unitSel === chapters.length ? "Clear unit" : "Select unit"}</button>
-      </div>
-      <div class="ct-ch-grid">${chapters.map(ch => {
-        const on = sub.chapterIds.has(ch._id);
-        return `<label class="ct-ch-card ${on ? "on" : ""}">
-          <input type="checkbox" class="ct-ch-check" ${on ? "checked" : ""} onchange="ctToggleChapter('${sub.meta._id}','${ch._id}', this.checked)">
-          <div class="ct-ch-icon-wrap">${ctChapterIcon(ch)}</div>
-          <div class="ct-ch-body">
-            <strong>${ch.shortName || ch.title}</strong>
-            <small>${ch.title}</small>
-            <div class="ct-ch-meta">
-              ${ctImpBar(ch.importance)}
-              ${ctSyllabusBadge(ch.syllabusCategory)}
-            </div>
-          </div>
-        </label>`;
-      }).join("")}</div>
-    </div>`;
-  }).join("");
-
-  const selChips = selected.slice(0, 8).map(c =>
-    `<span class="ct-sel-chip">${c.subjectTitle}: ${c.shortName || c.title}</span>`
-  ).join("") + (selected.length > 8 ? `<span class="ct-sel-chip more">+${selected.length - 8} more</span>` : "");
-
-  const body = `${ctStepBar("chapters")}
-    <div class="ct-exam-badge">${draft.examIcon ? `<img src="${draft.examIcon}" alt="">` : ""}<span>${draft.examTitle}</span></div>
-    <div class="ct-chapters-layout">
-      <div class="ct-chapters-main">
-        <div class="ct-toolbar">
-          <input type="search" class="ct-search" placeholder="Search chapters…" value="${draft.search || ""}" oninput="ctSetSearch(this.value)">
-          <label class="ct-toggle"><input type="checkbox" ${draft.outOfSyllabus ? "" : "checked"} onchange="ctSetSyllabusFilter(this.checked)"> Hide out-of-syllabus</label>
-          <button type="button" class="btn-soft sm" onclick="ctToggleSubjectAll('${sub.meta._id}')">${allSubjectOn ? "Clear subject" : "Select subject"}</button>
-        </div>
-        <div class="ct-subj-pills">${subjectPills}</div>
-        <p class="result-count">${selected.length} chapter${selected.length !== 1 ? "s" : ""} selected across all subjects</p>
-        <div class="ct-units">${units || '<div class="empty">No chapters match your search.</div>'}</div>
-      </div>
-      ${selected.length ? `<aside class="ct-sel-panel"><h4>Selected (${selected.length})</h4><div class="ct-sel-chips">${selChips}</div></aside>` : ""}
-    </div>
-    <div class="ct-sticky-foot">
-      <span><strong>${selected.length}</strong> chapters · ${sub.meta.title}</span>
-      <button type="button" class="btn-primary" ${selected.length ? "" : "disabled"} onclick="ctGoSettings()">Continue →</button>
-    </div>`;
-  if (ctFromTests()) {
-    return ctMarksShell("Create Your Own Test", "Select chapters for your custom test",
-      `<button type="button" class="marks-ct-back" onclick="ctResetWizard();go('tests')">←</button>`, body);
-  }
-  return `${topbar("Create Test", draft.examTitle)}
-    <div class="breadcrumb"><a href="#" onclick="ctResetWizard();go('custom',{step:'landing'});return false;">Custom Tests</a><span>›</span><span class="bc-cur">Select Chapters</span></div>
-    ${body}`;
-}
-
-function ctSettingsHtml(draft) {
-  const selected = ctSelectedChapters(draft);
-  const subjCount = new Set(selected.map(c => c.subjectTitle)).size;
-  const diffChips = ["all", "Easy", "Medium", "Hard"].map(d => `
-    <button type="button" class="ct-chip ${draft.difficulty === d ? "on" : ""}" onclick="ctSetDiff('${d}')">${d === "all" ? "All Levels" : d}</button>`).join("");
-  const qChips = CT_Q_PRESETS.map(n => `
-    <button type="button" class="ct-chip ${draft.totalQs === n ? "on" : ""}" onclick="ctSetTotalQs(${n})">${n}</button>`).join("");
-  const typeChips = [
-    { id: "all", label: "All Types" },
-    { id: "single", label: "Single Correct" },
-    { id: "numerical", label: "Numerical" }
-  ].map(t => `<button type="button" class="ct-chip ${draft.qType === t.id ? "on" : ""}" onclick="ctSetQType('${t.id}')">${t.label}</button>`).join("");
-  const srcChips = CT_SOURCE_OPTS.map(t =>
-    `<button type="button" class="ct-chip ${draft.source === t.id ? "on" : ""}" onclick="ctSetSource('${t.id}')">${t.label}</button>`
-  ).join("");
-  const modeChips = `
-    <button type="button" class="ct-mode-card ${draft.mode === "timed" ? "on" : ""}" onclick="ctSetMode('timed')">
-      <span class="ct-mode-ic">⏱️</span>
-      <div><strong>Timed Test</strong><small>Exam-like timer per question</small></div>
-    </button>
-    <button type="button" class="ct-mode-card ${draft.mode === "practice" ? "on" : ""}" onclick="ctSetMode('practice')">
-      <span class="ct-mode-ic">📖</span>
-      <div><strong>Practice Mode</strong><small>No timer — learn at your pace</small></div>
-    </button>`;
-  const timeChips = draft.mode === "timed" ? CT_TIME_PRESETS.map(t => `
-    <button type="button" class="ct-chip ${draft.timePerQ === t.sec ? "on" : ""}" onclick="ctSetTimePerQ(${t.sec})">${t.label}</button>`).join("") : "";
-
-  const durationMin = draft.mode === "timed" ? Math.ceil((draft.totalQs * draft.timePerQ) / 60) : null;
-  const summary = selected.map(c => `<span class="ct-sum-chip">${c.subjectTitle}: ${c.shortName || c.title}</span>`).join("");
-
-  const body = `${ctStepBar("settings")}
-    <div class="ct-settings-layout">
-      <div class="ct-settings-main">
-        <section class="ct-panel">
-          <h4>Number of Questions</h4>
-          <div class="ct-chips">${qChips}</div>
-          <div class="ct-range-wrap">
-            <input type="range" min="5" max="90" step="5" value="${draft.totalQs}" oninput="ctSetTotalQs(parseInt(this.value,10))">
-            <span>${draft.totalQs} questions</span>
-          </div>
-        </section>
-        <section class="ct-panel">
-          <h4>Difficulty Level</h4>
-          <div class="ct-chips">${diffChips}</div>
-        </section>
-        <section class="ct-panel">
-          <h4>Question Type</h4>
-          <div class="ct-chips">${typeChips}</div>
-        </section>
-        <section class="ct-panel">
-          <h4>Question Source</h4>
-          <div class="ct-chips">${srcChips}</div>
-        </section>
-        <section class="ct-panel">
-          <h4>Test Mode</h4>
-          <div class="ct-mode-grid">${modeChips}</div>
-        </section>
-        ${draft.mode === "timed" ? `<section class="ct-panel"><h4>Time per Question</h4><div class="ct-chips">${timeChips}</div><p class="ct-est-time">Estimated duration: <strong>~${durationMin} min</strong></p></section>` : ""}
-      </div>
-      <aside class="ct-settings-side">
-        <section class="ct-panel ct-summary">
-          <h4>Test Summary</h4>
-          <div class="ct-sum-stats">
-            <div><strong>${draft.totalQs}</strong><small>Questions</small></div>
-            <div><strong>${selected.length}</strong><small>Chapters</small></div>
-            <div><strong>${subjCount}</strong><small>Subjects</small></div>
-            ${durationMin ? `<div><strong>${durationMin}m</strong><small>Duration</small></div>` : `<div><strong>∞</strong><small>Duration</small></div>`}
-          </div>
-          <h4>Selected Chapters</h4>
-          <div class="ct-sum-chips">${summary}</div>
-        </section>
-      </aside>
-    </div>
-    <div class="ct-sticky-foot">
-      <button type="button" class="btn-soft" onclick="go('custom', { step: 'chapters', fromTests: ${ctFromTests()} })">← Back</button>
-      <button type="button" class="btn-primary" onclick="ctGenerateTest()">Create Test</button>
-    </div>`;
-  if (ctFromTests()) {
-    return ctMarksShell("Test Settings", `${selected.length} chapters · ${subjCount} subject${subjCount !== 1 ? "s" : ""}`,
-      `<button type="button" class="marks-ct-back" onclick="go('custom',{step:'chapters',fromTests:true})">←</button>`, body);
-  }
-  return `${topbar("Test Settings", `${selected.length} chapters · ${subjCount} subject${subjCount !== 1 ? "s" : ""}`)}
-    <div class="breadcrumb"><a href="#" onclick="go('custom',{step:'chapters'});return false;">Select Chapters</a><span>›</span><span class="bc-cur">Test Settings</span></div>
-    ${body}`;
-}
-
-function ctGeneratingHtml() {
-  return `${topbar("Create Test", "")}
-    <div class="ct-generating">
-      <div class="ct-spinner"></div>
-      <strong>Generating your custom test. Please wait…</strong>
-      <small>Picking questions from selected chapters</small>
-    </div>`;
-}
-
-async function viewCustomTests(payload) {
-  const keepFromTests = _ctPayload.fromTests;
-  const p = { ..._ctPayload, ...(payload || {}) };
-  if (p.fromTests == null && keepFromTests) p.fromTests = keepFromTests;
-  _ctPayload = p;
-  await fetchCtExams();
-
-  if (p.fromTests && (p.step === "landing" || !p.step)) {
-    return viewCustomTests({ step: "chapters", _draftInit: true, fromTests: true });
-  }
-
-  if (p.step === "landing" || !p.step) {
-    const tests = ctLoadTests();
-    return ctLandingHtml(tests, ctDailyCount());
-  }
-
-  if (!_ctDraft) {
-    const exam = ctExamForState();
-    if (!exam) return `${topbar("Custom Tests", "")}<div class="empty">Exam data loading…</div>`;
-    _ctDraft = ctNewDraft(exam);
-  }
-
-  if (p.step === "chapters") {
-    if (p._draftInit || !_ctDraft) _ctDraft = ctNewDraft(ctExamForState());
-    if (_ctDraft && !(_ctDraft.collapsedUnits instanceof Set)) _ctDraft.collapsedUnits = new Set();
-    _ctPayload.fromTests = !!p.fromTests;
-    return ctChaptersHtml(_ctDraft);
-  }
-  if (p.step === "settings") return ctSettingsHtml(_ctDraft);
-  if (p.step === "generating") return ctGeneratingHtml();
-  return viewCustomTests({ step: "landing" });
-}
-
-function ctSetSubject(id) {
-  if (!_ctDraft) return;
-  _ctDraft.activeSubjectId = id;
-  render("custom", { step: "chapters", fromTests: ctFromTests() });
-}
-
-function ctSetSearch(v) {
-  if (!_ctDraft) return;
-  _ctDraft.search = v;
-  render("custom", { step: "chapters", fromTests: ctFromTests() });
-}
-
-function ctSetSyllabusFilter(hideOut) {
-  if (!_ctDraft) return;
-  _ctDraft.outOfSyllabus = !hideOut;
-  render("custom", { step: "chapters" });
-}
-
-function ctToggleUnitCollapse(unitId) {
-  if (!_ctDraft) return;
-  if (!_ctDraft.collapsedUnits) _ctDraft.collapsedUnits = new Set();
-  if (_ctDraft.collapsedUnits.has(unitId)) _ctDraft.collapsedUnits.delete(unitId);
-  else _ctDraft.collapsedUnits.add(unitId);
-  render("custom", { step: "chapters" });
-}
-
-function ctToggleChapter(subjectId, chapterId, checked) {
-  if (!_ctDraft || !_ctDraft.subjects[subjectId]) return;
-  const set = _ctDraft.subjects[subjectId].chapterIds;
-  if (checked) set.add(chapterId); else set.delete(chapterId);
-  render("custom", { step: "chapters" });
-}
-
-function ctToggleUnit(subjectId, unitId) {
-  if (!_ctDraft || !_ctDraft.subjects[subjectId]) return;
-  const sub = _ctDraft.subjects[subjectId];
-  const unit = (sub.meta.units || []).find(u => u._id === unitId);
-  if (!unit) return;
-  const visible = (unit.chapters || []).filter(ch => {
-    if (_ctDraft.outOfSyllabus && ch.syllabusCategory === "outOfSyllabus") return false;
-    const q = (_ctDraft.search || "").toLowerCase();
-    if (q && !(ch.title + " " + (ch.shortName || "")).toLowerCase().includes(q)) return false;
-    return true;
-  });
-  const allOn = visible.every(ch => sub.chapterIds.has(ch._id));
-  visible.forEach(ch => { if (allOn) sub.chapterIds.delete(ch._id); else sub.chapterIds.add(ch._id); });
-  render("custom", { step: "chapters" });
-}
-
-function ctToggleSubjectAll(subjectId) {
-  if (!_ctDraft || !_ctDraft.subjects[subjectId]) return;
-  const sub = _ctDraft.subjects[subjectId];
-  const visible = [];
-  (sub.meta.units || []).forEach(unit => {
-    (unit.chapters || []).forEach(ch => {
-      if (_ctDraft.outOfSyllabus && ch.syllabusCategory === "outOfSyllabus") return;
-      const q = (_ctDraft.search || "").toLowerCase();
-      if (q && !(ch.title + " " + (ch.shortName || "")).toLowerCase().includes(q)) return;
-      visible.push(ch._id);
-    });
-  });
-  const allOn = visible.length && visible.every(id => sub.chapterIds.has(id));
-  visible.forEach(id => { if (allOn) sub.chapterIds.delete(id); else sub.chapterIds.add(id); });
-  render("custom", { step: "chapters" });
-}
-
-function ctGoSettings() {
-  if (!ctSelectedChapters(_ctDraft).length) {
-    showToast("⚠️ Select at least one chapter");
-    return;
-  }
-  render("custom", { step: "settings" });
-}
-
-function ctSetTotalQs(n) { if (_ctDraft) { _ctDraft.totalQs = n; render("custom", { step: "settings" }); } }
-function ctSetDiff(d) { if (_ctDraft) { _ctDraft.difficulty = d; render("custom", { step: "settings" }); } }
-function ctSetQType(t) { if (_ctDraft) { _ctDraft.qType = t; render("custom", { step: "settings" }); } }
-function ctSetSource(s) { if (_ctDraft) { _ctDraft.source = s; render("custom", { step: "settings" }); } }
-function ctSetMode(m) { if (_ctDraft) { _ctDraft.mode = m; render("custom", { step: "settings" }); } }
-function ctSetTimePerQ(s) { if (_ctDraft) { _ctDraft.timePerQ = s; render("custom", { step: "settings" }); } }
-
-function ctAutoTitle(draft, chapters) {
-  const subjShort = { Physics: "P", Chemistry: "C", Mathematics: "M", Biology: "B", Botany: "Bo", Zoology: "Z" };
-  const first = chapters[0];
-  const prefix = subjShort[first?.subjectTitle] || "T";
-  const n = chapters.length;
-  const chName = n === 1 ? (first.shortName || first.title.split(" ")[0]) : `${n} Chapters`;
-  const num = ctLoadTests().length + 1;
-  return `${prefix} - ${chName} Test ${num}`;
-}
-
-function ctMatchQuestion(q, chapters, draft) {
-  const titles = new Set(chapters.map(c => ctNormTitle(c.title)));
-  const shorts = new Set(chapters.map(c => ctNormTitle(c.shortName || c.title)));
-  const ch = ctNormTitle(q.chapter);
-  const hit = titles.has(ch) || [...titles].some(t => ch.includes(t) || t.includes(ch))
-    || [...shorts].some(s => s.length > 4 && (ch.includes(s) || s.includes(ch)));
-  if (!hit) return false;
-  if (draft.difficulty !== "all" && q.difficulty !== draft.difficulty) return false;
-  if (draft.source === "pyq" && q._book) return false;
-  if (draft.source === "books" && !q._book) return false;
-  if (draft.qType === "numerical") {
-    const opts = q.options || [];
-    if (opts.length !== 4) return false;
-    if (!opts.every(o => /^[\d.\-+$\\s]+$/.test(String(o).replace(/<[^>]+>/g, "")))) return false;
-  }
-  if (draft.qType === "single" && (q.options || []).length !== 4) return false;
-  return true;
-}
-
-async function ctGenerateTest() {
-  if (!_ctDraft) return;
-  if (ctDailyCount() >= CT_DAILY_LIMIT) {
-    showToast("⚠️ Daily limit reached (25 tests). Try tomorrow.");
-    return;
-  }
-  const chapters = ctSelectedChapters(_ctDraft);
-  if (!chapters.length) return;
-
-  render("custom", { step: "generating" });
-  const bank = (typeof PRIMARY_BANK !== "undefined" && PRIMARY_BANK[STATE.exam]) || "jee_main";
-  if (typeof ensureQuestionsLoaded === "function") await ensureQuestionsLoaded(bank);
-
-  let pool = QUESTIONS.filter(q => ctMatchQuestion(q, chapters, _ctDraft));
-  if (!pool.length) {
-    const subs = new Set(chapters.map(c => c.subjectTitle));
-    pool = QUESTIONS.filter(q => subs.has(q.subject) && chapters.some(c => {
-      const a = ctNormTitle(q.chapter);
-      const b = ctNormTitle(c.title);
-      return a.includes(b.slice(0, 8)) || b.includes(a.slice(0, 8));
-    }));
-  }
-  if (!pool.length) {
-    showToast("⚠️ No questions found for selected chapters. Try more chapters.");
-    render("custom", { step: "settings" });
-    return;
-  }
-
-  await new Promise(r => setTimeout(r, 900));
-
-  const shuffled = pool.sort(() => Math.random() - 0.5);
-  const take = Math.min(_ctDraft.totalQs, shuffled.length);
-  const qs = shuffled.slice(0, take);
-  const ids = qs.map(q => q.id);
-  const title = ctAutoTitle(_ctDraft, chapters);
-  const testId = "ct_" + Date.now();
-  const timed = _ctDraft.mode === "timed";
-  const durationSec = timed ? take * _ctDraft.timePerQ : null;
-
-  const record = {
-    id: testId,
-    title,
-    examTitle: _ctDraft.examTitle,
-    chapterCount: chapters.length,
-    chapters: chapters.map(c => ({ title: c.title, shortName: c.shortName, subjectTitle: c.subjectTitle })),
-    totalQs: take,
-    status: "notStarted",
-    createdAt: new Date().toISOString(),
-    questionIds: ids,
-    timed,
-    durationSec,
-    modeLabel: timed ? `Custom · ${Math.ceil(durationSec / 60)} min` : "Practice Mode"
-  };
-
-  const list = ctLoadTests();
-  list.unshift(record);
-  ctSaveTests(list);
-  ctBumpDaily();
-  const fromTests = ctFromTests();
-  _ctDraft = null;
-  _ctPayload = fromTests ? { fromTests: true } : { step: "landing" };
-
-  if (fromTests) {
-    finishRender(ctMarksShell("Custom Test", "Test generated — preview before you start",
-      `<button type="button" class="marks-ct-back" onclick="go('tests')">←</button>`,
-      `<div class="empty" style="margin:24px 0">Your test is ready!</div>`));
-    setTimeout(() => ctShowPreview(testId), 100);
-  } else {
-    render("custom", { step: "landing" });
-    setTimeout(() => ctShowPreview(testId), 200);
-  }
-}
-
-function ctResumeTest(id, viewResult) {
-  const t = ctLoadTests().find(x => x.id === id);
-  if (!t) return;
-  if (viewResult) {
-    if (t.pct != null) {
-      showToast(`📊 ${t.title}: ${t.pct}% (${t.correct || 0}/${t.totalQs} correct)`);
-    }
-    go("analytics");
-    return;
-  }
-  ctShowPreview(id);
 }
 
 function ctResetWizard() {

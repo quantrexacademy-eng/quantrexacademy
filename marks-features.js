@@ -1077,7 +1077,7 @@ function viewTests() {
       <h1>Tests</h1>
     </div>
     <div class="marks-tests-hero">
-      <div class="mth-card" ${mg("custom", { step: "chapters", _draftInit: true, fromTests: true })}>
+      <div class="mth-card" ${mg("custom", { step: "landing", fromTests: true })}>
         <div class="mth-body">
           <strong>Create Your Own Test</strong>
           <small>${ctCount}+ students took a Custom Test in last hour!</small>
