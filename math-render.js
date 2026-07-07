@@ -71,7 +71,7 @@ window.Mx = (() => {
       <span class="qx-diagram-badge">📊 Figure</span>
       <span class="qx-diagram-wrap"><img${attrs}${extra}></span>
     </div>
-    <small class="qx-diagram-hint">🔍 Tap diagram to zoom</small>`;
+    <small class="qx-diagram-hint">🔍 Tap to view full diagram</small>`;
   }
 
   function wrapDiagramImages(html) {
@@ -162,7 +162,7 @@ window.Mx = (() => {
           if (!panel.nextElementSibling || !panel.nextElementSibling.classList.contains("qx-diagram-hint")) {
             const hint = document.createElement("small");
             hint.className = "qx-diagram-hint";
-            hint.textContent = "🔍 Tap diagram to zoom";
+            hint.textContent = "🔍 Tap to view full diagram";
             parent.insertBefore(hint, panel.nextSibling);
           }
         }

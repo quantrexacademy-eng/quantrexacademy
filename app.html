@@ -503,42 +503,48 @@
         .qx-img-wrap { display: block; max-width: 100%; margin: 10px 0; line-height: 0; }
         .qx-img-wrap img { display: block; max-width: 100%; height: auto; border-radius: 8px; }
 
-        /* Diagram panel — MARKS screen 410 style */
+        /* Diagram panel — compact in question, full size on zoom */
         .qx-diagram-panel {
-            display: block; max-width: min(100%, 820px); margin: 20px auto;
-            padding: 22px 20px 20px;
+            display: block; max-width: min(100%, 420px); margin: 12px auto;
+            padding: 12px 14px 10px;
             background: linear-gradient(165deg, #ecfdf5 0%, #d1fae5 55%, #ccfbf1 100%);
-            border: 1px solid rgba(13,148,136,.18); border-radius: 20px;
-            box-shadow: 0 8px 28px rgba(13,148,136,.1);
-            cursor: zoom-in; transition: box-shadow .2s, transform .2s;
+            border: 1px solid rgba(13,148,136,.18); border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(13,148,136,.08);
+            cursor: zoom-in; transition: box-shadow .2s;
         }
-        .qx-diagram-panel:hover { box-shadow: 0 12px 36px rgba(13,148,136,.16); transform: translateY(-2px); }
+        .qx-diagram-panel:hover { box-shadow: 0 6px 20px rgba(13,148,136,.12); }
         .qx-diagram-badge {
-            display: inline-flex; align-items: center; gap: 6px;
-            font-size: 12px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
-            color: #0f766e; background: rgba(255,255,255,.75);
-            border: 1px solid rgba(13,148,136,.2); padding: 7px 14px; border-radius: 999px;
-            margin-bottom: 14px; box-shadow: 0 2px 8px rgba(13,148,136,.08);
+            display: inline-flex; align-items: center; gap: 4px;
+            font-size: 10px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase;
+            color: #0f766e; background: rgba(255,255,255,.8);
+            border: 1px solid rgba(13,148,136,.2); padding: 4px 10px; border-radius: 999px;
+            margin-bottom: 8px;
         }
         .qx-diagram-wrap {
-            display: block; width: 100%; padding: 18px;
-            background: #ffffff; border: 2px solid rgba(13,148,136,.14);
-            border-radius: 16px; line-height: 0;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 4px 16px rgba(15,118,110,.06);
+            display: flex; align-items: center; justify-content: center;
+            width: 100%; padding: 8px;
+            background: #ffffff; border: 1px solid rgba(13,148,136,.12);
+            border-radius: 10px; line-height: 0;
         }
         .qx-diagram-wrap img, .qx-diagram-panel img {
-            display: block; width: 100%; height: auto; min-height: 120px;
-            max-width: 100%; border-radius: 12px; object-fit: contain;
+            display: block; width: auto; height: auto;
+            max-width: 100%; max-height: 200px;
+            border-radius: 8px; object-fit: contain;
             image-rendering: auto; background: #fafafa;
         }
-        .qx-prac-q .qx-diagram-panel { max-width: min(100%, 860px); }
+        .qx-prac-q { font-size: 17px; font-weight: 600; line-height: 1.6; margin-bottom: 18px; }
+        .qx-prac-q .qx-diagram-panel { max-width: min(100%, 380px); margin: 10px auto 6px; }
+        .qx-prac-q .qx-diagram-wrap img { max-height: 180px; }
+        .qa-q .qx-diagram-panel, .mtk-q-text .qx-diagram-panel { max-width: min(100%, 400px); }
+        .qa-q .qx-diagram-wrap img, .mtk-q-text .qx-diagram-wrap img { max-height: 190px; }
         .qx-prac-opt-text .qx-diagram-panel, .mtk-opt-text .qx-diagram-panel {
-            max-width: 100%; margin: 12px 0; padding: 14px;
+            max-width: 100%; margin: 8px 0; padding: 10px;
             background: linear-gradient(165deg, #f0fdf9 0%, #ecfdf5 100%);
         }
+        .qx-prac-opt-text .qx-diagram-wrap img, .mtk-opt-text .qx-diagram-wrap img { max-height: 100px; }
         .qx-diagram-hint {
-            display: block; font-size: 12px; font-weight: 600; color: #0d9488;
-            text-align: center; margin: 10px 0 4px; line-height: 1.4; letter-spacing: .02em;
+            display: block; font-size: 11px; font-weight: 600; color: #0d9488;
+            text-align: center; margin: 6px 0 2px; line-height: 1.3;
         }
         .qx-diagram-modal {
             position: fixed; inset: 0; z-index: 10050;
@@ -583,7 +589,7 @@
         .qx-prac-icon { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); cursor: pointer; font-size: 18px; }
         .qx-prac-icon.on { background: var(--orange-light); border-color: var(--orange); }
         .qx-prac-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
-        .qx-prac-q { font-size: 17px; font-weight: 600; line-height: 1.6; margin-bottom: 22px; }
+
         .qx-prac-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
         @media (max-width: 640px) { .qx-prac-opts { grid-template-columns: 1fr; } }
         .qx-prac-opt { display: flex; align-items: flex-start; gap: 10px; padding: 14px 16px; border: 2px solid var(--border); border-radius: 14px; background: var(--card); cursor: pointer; text-align: left; font-family: inherit; color: var(--text); transition: border-color .12s, background .12s; min-height: 56px; }
@@ -1228,7 +1234,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxdiagram416</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxdiagram417</div>
             </div>
         </aside>
 
@@ -1254,28 +1260,28 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
-    <script>window.QX_BUILD="qxdiagram416";</script>
-    <script src="qx-perf.js?v=qxdiagram416"></script>
-    <script src="firebase-config.js?v=qxdiagram416" defer></script>
-    <script src="stack-config.js?v=qxdiagram416" defer></script>
-    <script src="math-render.js?v=qxdiagram416" defer></script>
-    <script src="data.js?v=qxdiagram416" defer></script>
-    <script src="firebase-db.js?v=qxdiagram416" defer></script>
-    <script src="firebase-storage.js?v=qxdiagram416" defer></script>
-    <script src="payments.js?v=qxdiagram416" defer></script>
-    <script src="premium.js?v=qxdiagram416" defer></script>
-    <script src="leaderboard.js?v=qxdiagram416" defer></script>
-    <script src="community.js?v=qxdiagram416" defer></script>
-    <script src="book-covers.js?v=qxdiagram416" defer></script>
-    <script src="marks-shell.js?v=qxdiagram416" defer></script>
-    <script src="marks-live.js?v=qxdiagram416" defer></script>
-    <script src="marks-features.js?v=qxdiagram416" defer></script>
-    <script src="assignments.js?v=qxdiagram416" defer></script>
-    <script src="custom-test.js?v=qxdiagram416" defer></script>
-    <script src="test-engine.js?v=qxdiagram416" defer></script>
-    <script src="analytics.js?v=qxdiagram416" defer></script>
-    <script src="search.js?v=qxdiagram416" defer></script>
-    <script src="theme.js?v=qxdiagram416" defer></script>
-    <script src="app.js?v=qxdiagram416" defer></script>
+    <script>window.QX_BUILD="qxdiagram417";</script>
+    <script src="qx-perf.js?v=qxdiagram417"></script>
+    <script src="firebase-config.js?v=qxdiagram417" defer></script>
+    <script src="stack-config.js?v=qxdiagram417" defer></script>
+    <script src="math-render.js?v=qxdiagram417" defer></script>
+    <script src="data.js?v=qxdiagram417" defer></script>
+    <script src="firebase-db.js?v=qxdiagram417" defer></script>
+    <script src="firebase-storage.js?v=qxdiagram417" defer></script>
+    <script src="payments.js?v=qxdiagram417" defer></script>
+    <script src="premium.js?v=qxdiagram417" defer></script>
+    <script src="leaderboard.js?v=qxdiagram417" defer></script>
+    <script src="community.js?v=qxdiagram417" defer></script>
+    <script src="book-covers.js?v=qxdiagram417" defer></script>
+    <script src="marks-shell.js?v=qxdiagram417" defer></script>
+    <script src="marks-live.js?v=qxdiagram417" defer></script>
+    <script src="marks-features.js?v=qxdiagram417" defer></script>
+    <script src="assignments.js?v=qxdiagram417" defer></script>
+    <script src="custom-test.js?v=qxdiagram417" defer></script>
+    <script src="test-engine.js?v=qxdiagram417" defer></script>
+    <script src="analytics.js?v=qxdiagram417" defer></script>
+    <script src="search.js?v=qxdiagram417" defer></script>
+    <script src="theme.js?v=qxdiagram417" defer></script>
+    <script src="app.js?v=qxdiagram417" defer></script>
 </body>
 </html>
