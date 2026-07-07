@@ -82,7 +82,7 @@ const MarksShell = (() => {
     if (!examData) return "";
     const metaSmall = boardMetaLine(examData.meta);
     const examIcon = examData.icon
-      ? `<img class="qx-marks-icon marks-exam-ic-img" src="${examData.icon}" width="40" height="40" alt="${examData.title || ""}" loading="lazy" decoding="async">`
+      ? `<img class="qx-marks-icon marks-exam-ic-img" src="${examData.icon}" width="48" height="48" alt="${examData.title || ""}" loading="eager" decoding="async">`
       : (typeof QuantrexExamLogos !== "undefined"
         ? QuantrexExamLogos.html(typeof dashBoardSelected === "function" ? dashBoardSelected() : "CBSE", 40, "marks-exam-ic-img")
         : '<span class="marks-exam-ic">📝</span>');

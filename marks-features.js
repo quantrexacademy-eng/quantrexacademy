@@ -876,7 +876,7 @@ async function viewBoardMarksBank(payload) {
     return `${topbar(title, subtitle)}
       <div class="board-marks-page">
         <div class="board-marks-hero">
-          ${boardExamIconHtml(examData, 56, "board-marks-hero-ic")}
+          ${boardExamIconHtml(examData, 72, "board-marks-hero-ic")}
           <div class="board-marks-hero-text">
             <h1>${examData.title || boardName}</h1>
             <p>Previous Year Question Bank</p>
@@ -2112,8 +2112,8 @@ async function marksDashboardSections() {
   }
   const boardTitle = (boardExamData && boardExamData.title) || (board === "HSC" ? "HSC (Maharashtra)" : "CBSE");
   const boardLogo = boardExamData
-    ? boardExamIconHtml(boardExamData, 52, "dash-board-hero-logo")
-    : (typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(board, 48, "dash-board-hero-logo") : "");
+    ? boardExamIconHtml(boardExamData, 64, "dash-board-hero-logo")
+    : (typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(board, 64, "dash-board-hero-logo") : "");
   const boardMetaRow = boardExamData ? boardMetaPillsHtml(boardExamData.meta) : "";
   const boardPills = boards.map(b => {
     const logo = typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(b.id, 24, "dash-board-tab-logo") : "";

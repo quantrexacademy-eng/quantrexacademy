@@ -50,25 +50,37 @@ window.Mx = (() => {
     /\bMARKS\s*Selected\b/gi, /marks_selected/gi, /\bMARKS\s*web\b/gi
   ];
   const PROTECTED_IMG_RX = /cdn-question-pool\.getmarks|formula_cards|cbse\/|NEET\/NCERT/i;
-  const BRAND_IMG_RX = /(?:logo|watermark|branding|marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|scoremarks)/i;
+  const BRAND_IMG_RX = /(?:watermark|branding|marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|scoremarks)/i;
+  const BRAND_LOGO_RX = /(?:watermark|marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|scoremarks)/i;
+  const MARKS_UI_ICON_RX = /ic_content_exam_|cpyqb\/subjects\/|qx-marks-icon|qx-exam-logo|board-exam|board-subj|marks-exam-ic|marks-board-subj|dash-board.*logo|exam-card-logo/i;
   const QUESTION_IMG_RX = /cdn-question-pool\.getmarks/i;
   const FORMULA_IMG_RX = /formula_cards/i;
 
+  function isMarksUiIcon(str) {
+    return MARKS_UI_ICON_RX.test(str || "");
+  }
+
+  function isQuestionDiagram(str) {
+    if (!str || isMarksUiIcon(str)) return false;
+    if (QUESTION_IMG_RX.test(str)) return true;
+    return /cdn-question-pool[^"']*\/cbse\//i.test(str)
+      || /\/cbse\/\d/i.test(str)
+      || /diagram|question-pool|twelfth|tenth/i.test(str);
+  }
+
   function diagramWrapClass(attrs) {
-    return QUESTION_IMG_RX.test(attrs) || /cbse|diagram|question-pool|twelfth|tenth/i.test(attrs)
-      ? "qx-diagram-wrap"
-      : "qx-img-wrap";
+    return isQuestionDiagram(attrs) ? "qx-diagram-wrap" : "qx-img-wrap";
   }
 
   function isDiagramImg(attrs) {
-    return diagramWrapClass(attrs) === "qx-diagram-wrap";
+    return isQuestionDiagram(attrs);
   }
 
   function diagramPanelHtml(attrs) {
     const hasLoading = /loading=/i.test(attrs);
     const extra = hasLoading ? "" : ' loading="eager" decoding="async" fetchpriority="high"';
     return `<div class="qx-diagram-panel">
-      <span class="qx-diagram-badge">📊 Figure</span>
+      <span class="qx-diagram-badge" aria-hidden="true">📊</span>
       <span class="qx-diagram-wrap"><img${attrs}${extra}></span>
     </div>
     <small class="qx-diagram-hint">🔍 Tap to view full diagram</small>`;
@@ -77,7 +89,8 @@ window.Mx = (() => {
   function wrapDiagramImages(html) {
     return html.replace(/<img([^>]*)>/gi, (m, attrs) => {
       if (FORMULA_IMG_RX.test(attrs)) return m;
-      if (BRAND_IMG_RX.test(attrs)) return "";
+      if (isMarksUiIcon(attrs)) return m;
+      if (BRAND_LOGO_RX.test(attrs)) return "";
       if (/class=["'][^"']*qx-(img|diagram)-wrap/i.test(attrs)) return m;
       if (isDiagramImg(attrs)) return diagramPanelHtml(attrs);
       const hasLoading = /loading=/i.test(attrs);
@@ -145,14 +158,17 @@ window.Mx = (() => {
     el.querySelectorAll("img").forEach(img => {
       const src = img.getAttribute("src") || "";
       const alt = img.getAttribute("alt") || "";
+      const cls = img.className || "";
       if (FORMULA_IMG_RX.test(src) || img.classList.contains("fc-img")) return;
-      if (QUESTION_IMG_RX.test(src) || /cbse|diagram|question-pool/i.test(src)) {
+      if (isMarksUiIcon(src) || isMarksUiIcon(cls) || img.classList.contains("qx-marks-icon")) return;
+      if (isQuestionDiagram(src)) {
         if (!img.closest(".qx-diagram-panel")) {
           const panel = document.createElement("div");
           panel.className = "qx-diagram-panel";
           const badge = document.createElement("span");
           badge.className = "qx-diagram-badge";
-          badge.textContent = "📊 Figure";
+          badge.setAttribute("aria-hidden", "true");
+          badge.textContent = "📊";
           const wrap = document.createElement("span");
           wrap.className = "qx-diagram-wrap";
           const parent = img.parentNode;
@@ -172,7 +188,7 @@ window.Mx = (() => {
         img.fetchPriority = "high";
         return;
       }
-      if (BRAND_IMG_RX.test(src) || BRAND_IMG_RX.test(alt)) { img.remove(); return; }
+      if (BRAND_LOGO_RX.test(src) || BRAND_LOGO_RX.test(alt)) { img.remove(); return; }
       if (!img.closest(".qx-img-wrap") && !img.closest(".qx-diagram-wrap") && src && !src.startsWith("data:")) {
         const wrap = document.createElement("span");
         wrap.className = "qx-img-wrap";
