@@ -49,7 +49,8 @@ window.Mx = (() => {
     /Powered\s+by\s+MARKS/gi, /MOG\s*Premium/gi, /\bMARKS\s*Premium\b/gi,
     /\bMARKS\s*Selected\b/gi, /marks_selected/gi, /\bMARKS\s*web\b/gi
   ];
-  const BRAND_IMG_RX = /(?:logo|watermark|branding|marks-premium|ic_marks|marks_selected|getmarks|scoremarks)/i;
+  const BRAND_IMG_RX = /(?:logo|watermark|branding|marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|scoremarks)/i;
+  const QUESTION_IMG_RX = /cdn-question-pool\.getmarks/i;
 
   function wrapDiagramImages(html) {
     return html.replace(/<img([^>]*)>/gi, (m, attrs) => {
@@ -75,6 +76,15 @@ window.Mx = (() => {
     el.querySelectorAll("img").forEach(img => {
       const src = img.getAttribute("src") || "";
       const alt = img.getAttribute("alt") || "";
+      if (QUESTION_IMG_RX.test(src)) {
+        if (!img.closest(".qx-img-wrap")) {
+          const wrap = document.createElement("span");
+          wrap.className = "qx-img-wrap";
+          img.parentNode.insertBefore(wrap, img);
+          wrap.appendChild(img);
+        }
+        return;
+      }
       if (BRAND_IMG_RX.test(src) || BRAND_IMG_RX.test(alt)) { img.remove(); return; }
       if (!img.closest(".qx-img-wrap") && src && !src.startsWith("data:")) {
         const wrap = document.createElement("span");

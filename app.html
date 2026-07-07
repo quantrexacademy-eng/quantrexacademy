@@ -496,7 +496,7 @@
         .qx-content [class*="watermark"], .qx-content [class*="Watermark"],
         .qx-content [data-brand], .qx-content .marks-brand, .qx-content .getmarks-brand,
         .qx-content [class*="getmarks"], .qx-content [class*="marks_selected"],
-        img[src*="getmarks"], img[alt*="MARKS"], img[alt*="Get Marks"] { display: none !important; }
+        img[src*="cdn-assets.getmarks"], img[src*="marks_selected"], img[src*="web_assets"], img[alt*="Get Marks App"] { display: none !important; }
         .qx-img-wrap { display: inline-block; max-width: 100%; overflow: hidden; line-height: 0; vertical-align: middle; position: relative; }
         .qx-img-wrap img { display: block; max-width: 100%; height: auto; clip-path: inset(0 0 10% 0); margin-bottom: -10%; }
         .qx-img-wrap::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 12%; background: var(--card, #fff); pointer-events: none; }
@@ -504,6 +504,39 @@
         .fc-formula mjx-container { font-size: 1.2em !important; }
         .qa-q mjx-container { font-size: 1.1em !important; }
         .qa-nav { margin-top: 22px; display: flex; justify-content: space-between; }
+
+        /* MARKS-style practice question (screen 409) */
+        .qx-practice-page { max-width: 900px; margin: 0 auto; }
+        .qx-prac-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+        .qx-prac-back { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); cursor: pointer; font-size: 18px; color: var(--text); }
+        .qx-prac-mid { flex: 1; min-width: 0; }
+        .qx-prac-mid strong { font-family: 'Kanit'; font-size: 20px; }
+        .qx-prac-of { color: var(--gray); font-weight: 600; font-size: 14px; }
+        .qx-prac-mid small { display: block; color: var(--gray); font-size: 12px; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .qx-prac-actions { display: flex; gap: 8px; }
+        .qx-prac-icon { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); cursor: pointer; font-size: 18px; }
+        .qx-prac-icon.on { background: var(--orange-light); border-color: var(--orange); }
+        .qx-prac-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+        .qx-prac-q { font-size: 17px; font-weight: 600; line-height: 1.6; margin-bottom: 22px; }
+        .qx-prac-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+        @media (max-width: 640px) { .qx-prac-opts { grid-template-columns: 1fr; } }
+        .qx-prac-opt { display: flex; align-items: flex-start; gap: 10px; padding: 14px 16px; border: 2px solid var(--border); border-radius: 14px; background: var(--card); cursor: pointer; text-align: left; font-family: inherit; color: var(--text); transition: border-color .12s, background .12s; min-height: 56px; }
+        .qx-prac-opt:hover:not(:disabled) { border-color: var(--primary); }
+        .qx-prac-opt.selected { border-color: var(--primary); background: var(--primary-light); }
+        .qx-prac-opt.correct { border-color: var(--green); background: var(--green-light); }
+        .qx-prac-opt.wrong { border-color: var(--red); background: var(--red-light); }
+        .qx-prac-opt:disabled { cursor: default; }
+        .qx-prac-radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--gray); flex-shrink: 0; margin-top: 2px; position: relative; }
+        .qx-prac-opt.selected .qx-prac-radio { border-color: var(--primary); }
+        .qx-prac-opt.selected .qx-prac-radio::after { content: ''; position: absolute; inset: 3px; background: var(--primary); border-radius: 50%; }
+        .qx-prac-opt.correct .qx-prac-radio { border-color: var(--green); }
+        .qx-prac-opt.correct .qx-prac-radio::after { background: var(--green); }
+        .qx-prac-letter { font-weight: 800; font-size: 14px; color: var(--gray); flex-shrink: 0; min-width: 16px; }
+        .qx-prac-opt-text { flex: 1; font-size: 14px; line-height: 1.5; }
+        .qx-prac-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 20px 0 24px; flex-wrap: wrap; }
+        .qx-prac-submit { flex: 1; min-width: 140px; max-width: 220px; margin: 0 auto; }
+        .qx-prac-submit:disabled { opacity: .45; cursor: not-allowed; }
+        .qx-prac-correct-ans { font-size: 14px; margin: 6px 0 10px; color: var(--gray); }
         .btn-soft { background: var(--white); border: 1px solid var(--border); padding: 10px 18px; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 14px; color: var(--dark); font-family: inherit; transition: all .15s; }
         .btn-soft:hover { background: var(--bg); }
         .btn-soft.sm { padding: 6px 12px; font-size: 13px; }
@@ -1105,7 +1138,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxdash408</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxprac409</div>
             </div>
         </aside>
 
@@ -1131,26 +1164,26 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
-    <script>window.QX_BUILD="qxdash408";</script>
-    <script src="qx-perf.js?v=qxdash408"></script>
-    <script src="firebase-config.js?v=qxdash408" defer></script>
-    <script src="stack-config.js?v=qxdash408" defer></script>
-    <script src="math-render.js?v=qxdash408" defer></script>
-    <script src="data.js?v=qxdash408" defer></script>
-    <script src="firebase-db.js?v=qxdash408" defer></script>
-    <script src="firebase-storage.js?v=qxdash408" defer></script>
-    <script src="payments.js?v=qxdash408" defer></script>
-    <script src="premium.js?v=qxdash408" defer></script>
-    <script src="leaderboard.js?v=qxdash408" defer></script>
-    <script src="community.js?v=qxdash408" defer></script>
-    <script src="book-covers.js?v=qxdash408" defer></script>
-    <script src="marks-shell.js?v=qxdash408" defer></script>
-    <script src="marks-features.js?v=qxdash408" defer></script>
-    <script src="custom-test.js?v=qxdash408" defer></script>
-    <script src="test-engine.js?v=qxdash408" defer></script>
-    <script src="analytics.js?v=qxdash408" defer></script>
-    <script src="search.js?v=qxdash408" defer></script>
-    <script src="theme.js?v=qxdash408" defer></script>
-    <script src="app.js?v=qxdash408" defer></script>
+    <script>window.QX_BUILD="qxprac409";</script>
+    <script src="qx-perf.js?v=qxprac409"></script>
+    <script src="firebase-config.js?v=qxprac409" defer></script>
+    <script src="stack-config.js?v=qxprac409" defer></script>
+    <script src="math-render.js?v=qxprac409" defer></script>
+    <script src="data.js?v=qxprac409" defer></script>
+    <script src="firebase-db.js?v=qxprac409" defer></script>
+    <script src="firebase-storage.js?v=qxprac409" defer></script>
+    <script src="payments.js?v=qxprac409" defer></script>
+    <script src="premium.js?v=qxprac409" defer></script>
+    <script src="leaderboard.js?v=qxprac409" defer></script>
+    <script src="community.js?v=qxprac409" defer></script>
+    <script src="book-covers.js?v=qxprac409" defer></script>
+    <script src="marks-shell.js?v=qxprac409" defer></script>
+    <script src="marks-features.js?v=qxprac409" defer></script>
+    <script src="custom-test.js?v=qxprac409" defer></script>
+    <script src="test-engine.js?v=qxprac409" defer></script>
+    <script src="analytics.js?v=qxprac409" defer></script>
+    <script src="search.js?v=qxprac409" defer></script>
+    <script src="theme.js?v=qxprac409" defer></script>
+    <script src="app.js?v=qxprac409" defer></script>
 </body>
 </html>

@@ -139,7 +139,7 @@ function renderQCard(q) {
   const tag = q.subject.toLowerCase().replace(/\s+/g, "-");
   const bookLabel = q._book ? bookQuestionLabel(q) : null;
   const bookTip = q._book ? bookQuestionTitle(q) : "";
-  return `<div class="q-card" onclick="go('question', ${q.id})">
+  return `<div class="q-card" onclick="openPracticeQuestion(${q.id})">
     <div class="q-meta">
       <span class="tag tag-${tag}">${q.subject}</span>
       <span class="tag tag-diff">${q.difficulty}</span>

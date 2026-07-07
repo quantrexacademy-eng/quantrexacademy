@@ -214,7 +214,7 @@ function viewPractice() {
     const bm = STATE.bookmarks.includes(q.id);
     const sv = STATE.solved.find(s => s.id === q.id);
     const subjTag = q.subject.toLowerCase().replace(/\s+/g, "-");
-    return `<div class="q-card" onclick="go('question', ${q.id})">
+    return `<div class="q-card" onclick="openPracticeQuestion(${q.id})">
       <div class="q-meta">
         <span class="tag tag-${subjTag}">${q.subject}</span>
         <span class="tag tag-diff">${q.difficulty}</span>
@@ -240,29 +240,143 @@ function viewPractice() {
   ${pagination}`;
 }
 
-// ============ SINGLE QUESTION (interactive) ============
+// ============ SINGLE QUESTION — MARKS-style practice ============
+window._qxPracticeCtx = null;
+
+function openPracticeQuestion(id) {
+  const list = window._qxListQs || [];
+  const ids = list.length ? list.map(q => q.id) : [id];
+  const idx = Math.max(0, ids.indexOf(id));
+  window._qxPracticeCtx = {
+    ids,
+    idx,
+    selected: {},
+    done: {},
+    returnView: currentView,
+    listFn: typeof _lastListFn === "function" ? _lastListFn : null
+  };
+  go("question", id);
+}
+
+function qxPracticeBack() {
+  const ctx = window._qxPracticeCtx;
+  if (ctx && ctx.listFn && typeof _lastListFn !== "undefined") {
+    _lastListFn = ctx.listFn;
+    render(ctx.returnView || currentView, ctx.listFn());
+    return;
+  }
+  if (ctx && ctx.returnView) { go(ctx.returnView); return; }
+  go("practice");
+}
+
+function qxPracticeNav(delta) {
+  const ctx = window._qxPracticeCtx;
+  if (!ctx || !ctx.ids.length) return;
+  const next = ctx.idx + delta;
+  if (next < 0 || next >= ctx.ids.length) return;
+  ctx.idx = next;
+  const main = document.getElementById("app-main");
+  main.innerHTML = viewQuestion(ctx.ids[ctx.idx]);
+  bindPracticeQuestion(main);
+  if (typeof Mx !== "undefined") Mx.afterRender(main);
+}
+
 function viewQuestion(id) {
   const q = getQ(id);
-  if (!q) return viewPractice();
+  if (!q) return `<div class="empty">Question not found. <button class="btn-soft" onclick="qxPracticeBack()">← Back</button></div>`;
+
+  const ctx = window._qxPracticeCtx;
+  if (ctx) {
+    const i = ctx.ids.indexOf(id);
+    if (i >= 0) ctx.idx = i;
+  } else {
+    window._qxPracticeCtx = { ids: [id], idx: 0, selected: {}, done: {}, returnView: currentView, listFn: null };
+  }
+  const pc = window._qxPracticeCtx;
+  const total = pc.ids.length;
+  const pos = pc.idx + 1;
   const bm = STATE.bookmarks.includes(q.id);
+  const sv = STATE.solved.find(s => s.id === q.id);
+  const subjTag = (q.subject || "").toLowerCase().replace(/\s+/g, "-");
+  const sourceLabel = q._book && typeof bookQuestionLabel === "function" ? bookQuestionLabel(q) : (q.source || "");
+  const done = !!pc.done[q.id];
+  const sel = pc.selected[q.id];
+
+  const opts = (q.options || []).map((o, i) => {
+    let cls = "qx-prac-opt";
+    if (sel === i) cls += " selected";
+    if (done) {
+      if (i === q.answer) cls += " correct";
+      else if (sel === i) cls += " wrong";
+    }
+    return `<button type="button" class="${cls}" data-prac-opt="${i}" ${done ? "disabled" : ""}>
+      <span class="qx-prac-radio"></span>
+      <span class="qx-prac-letter">${String.fromCharCode(65 + i)}</span>
+      <span class="qx-prac-opt-text qx-content">${typeof Mx !== "undefined" ? Mx.html(o) : o}</span>
+    </button>`;
+  }).join("");
+
+  const resultHtml = done ? qxPracticeResultHtml(q, sel) : "";
+
   setTimeout(() => loadCommunityForQuestion(q), 0);
-  return `${topbar("Practice Question", `${q.subject} · ${q.chapter}`)}
-  <div class="qa-wrap">
-    <div class="qa-head">
-      <div><span class="tag tag-${q.subject.toLowerCase()}">${q.subject}</span> <span class="tag tag-diff">${q.difficulty}</span> <span class="tag" title="${q._book && typeof bookQuestionTitle === 'function' ? bookQuestionTitle(q) : q.source}">📌 ${q._book && typeof bookQuestionLabel === 'function' ? bookQuestionLabel(q) : q.source}</span>${q._book && q.paperSource ? ` <span class="tag tag-diff">${q.paperSource}</span>` : ""}</div>
-      <button class="bm-btn ${bm?'on':''}" onclick="toggleBm(${q.id})">${bm?'🔖 Saved':'🤍 Save'}</button>
+
+  return `<div class="qx-practice-page">
+    <header class="qx-prac-bar">
+      <button type="button" class="qx-prac-back" onclick="qxPracticeBack()">←</button>
+      <div class="qx-prac-mid">
+        <strong>Q${pos} <span class="qx-prac-of">/ ${total}</span></strong>
+        <small>${q.chapter || q.subject}</small>
+      </div>
+      <div class="qx-prac-actions">
+        <button type="button" class="qx-prac-icon ${bm ? "on" : ""}" onclick="toggleBm(${q.id})" title="Bookmark">${bm ? "🔖" : "🤍"}</button>
+        <button type="button" class="qx-prac-icon" onclick="showToast('🚩 Thanks — report noted.')" title="Report">🚩</button>
+      </div>
+    </header>
+    <div class="qx-prac-meta">
+      <span class="tag tag-${subjTag}">${q.subject}</span>
+      <span class="tag tag-diff">${q.difficulty || "Medium"}</span>
+      <span class="tag" title="${sourceLabel}">📌 ${sourceLabel}</span>
+      ${sv ? `<span class="tag ${sv.correct ? "tag-ok" : "tag-no"}">${sv.correct ? "✓ Solved" : "✗ Wrong"}</span>` : ""}
     </div>
-    <div class="qa-q qx-content">${typeof Mx!=="undefined"?Mx.html(q.q):q.q}</div>
-    <div class="qa-options" id="qaOpts">
-      ${q.options.map((o, i) => `<button class="qa-opt" data-idx="${i}" onclick="answerQ(${q.id}, ${i})">
-        <span class="opt-letter">${String.fromCharCode(65+i)}</span><span class="qx-content">${typeof Mx!=="undefined"?Mx.html(o):o}</span></button>`).join("")}
+    <div class="qx-prac-q qx-content">${typeof Mx !== "undefined" ? Mx.html(q.q) : q.q}</div>
+    <div class="qx-prac-opts" id="qaOpts">${opts}</div>
+    <div id="qaResult">${resultHtml}</div>
+    <div class="qx-prac-foot">
+      <button type="button" class="btn-soft" onclick="qxPracticeNav(-1)" ${pc.idx <= 0 ? "disabled" : ""}>← Previous</button>
+      ${done ? "" : `<button type="button" class="btn-primary qx-prac-submit" id="qxPracSubmit" ${sel == null ? "disabled" : ""}>Submit Answer</button>`}
+      <button type="button" class="btn-soft" onclick="qxPracticeNav(1)" ${pc.idx >= total - 1 ? "disabled" : ""}>Next →</button>
     </div>
-    <div id="qaResult"></div>
     <div id="qaCommunity"><div class="empty" style="padding:16px">Loading community solutions…</div></div>
-    <div class="qa-nav">
-      <button class="btn-soft" onclick="go('practice')">← Back to list</button>
-    </div>
   </div>`;
+}
+
+function qxPracticeResultHtml(q, sel) {
+  const correct = sel === q.answer;
+  const solHtml = typeof Mx !== "undefined" ? Mx.html(q.solution) : q.solution;
+  return `<div class="result-box ${correct ? "ok" : "no"}">
+    <strong>${correct ? "✅ Correct!" : "❌ Incorrect"}</strong>
+    ${!correct ? `<p class="qx-prac-correct-ans">Correct answer: <b>${String.fromCharCode(65 + q.answer)}</b></p>` : ""}
+    <div class="sol"><strong>💡 Solution</strong><div class="qx-content sol-body">${solHtml}</div></div>
+  </div>`;
+}
+
+function bindPracticeQuestion(root) {
+  const scope = root || document.getElementById("app-main");
+  if (!scope) return;
+  const ctx = window._qxPracticeCtx;
+  const qid = ctx && ctx.ids[ctx.idx];
+  scope.querySelectorAll("[data-prac-opt]").forEach(btn => {
+    btn.onclick = () => {
+      if (!ctx || ctx.done[qid]) return;
+      const idx = parseInt(btn.dataset.pracOpt, 10);
+      ctx.selected[qid] = idx;
+      scope.querySelectorAll("[data-prac-opt]").forEach(b => b.classList.toggle("selected", parseInt(b.dataset.pracOpt, 10) === idx));
+      const sub = scope.querySelector("#qxPracSubmit");
+      if (sub) sub.disabled = false;
+    };
+  });
+  const submit = scope.querySelector("#qxPracSubmit");
+  if (submit) submit.onclick = () => answerQ(qid, ctx.selected[qid]);
 }
 
 async function loadCommunityForQuestion(q) {
@@ -280,26 +394,39 @@ async function loadCommunityForQuestion(q) {
 
 function answerQ(qid, idx) {
   const q = getQ(qid);
-  const opts = document.querySelectorAll(".qa-opt");
-  opts.forEach((o, i) => {
+  if (!q || idx == null) return;
+  const ctx = window._qxPracticeCtx || { done: {}, selected: {} };
+  ctx.done[qid] = true;
+  ctx.selected[qid] = idx;
+  const main = document.getElementById("app-main");
+  main.querySelectorAll("[data-prac-opt]").forEach((o, i) => {
     o.disabled = true;
+    o.classList.remove("selected");
     if (i === q.answer) o.classList.add("correct");
     if (i === idx && idx !== q.answer) o.classList.add("wrong");
+    if (i === idx && idx === q.answer) o.classList.add("selected", "correct");
   });
   const correct = idx === q.answer;
   STATE.markSolved(qid, correct);
-  const solHtml = typeof Mx !== "undefined" ? Mx.html(q.solution) : q.solution;
-  document.getElementById("qaResult").innerHTML = `
-    <div class="result-box ${correct?'ok':'no'}">
-      <strong>${correct?'✅ Correct!':'❌ Incorrect'}</strong>
-      <div class="sol"><strong>💡 Solution:</strong><div class="qx-content sol-body">${solHtml}</div></div>
-    </div>`;
-  if (typeof Mx !== "undefined") Mx.afterRender(document.getElementById("qaResult"));
+  const res = document.getElementById("qaResult");
+  if (res) {
+    res.innerHTML = qxPracticeResultHtml(q, idx);
+    if (typeof Mx !== "undefined") Mx.afterRender(res);
+  }
+  const sub = main.querySelector("#qxPracSubmit");
+  if (sub) sub.remove();
 }
 
 function toggleBm(id) {
   STATE.toggleBookmark(id);
-  render("question", id);
+  const main = document.getElementById("app-main");
+  if (currentView === "question" && main) {
+    main.innerHTML = viewQuestion(id);
+    bindPracticeQuestion(main);
+    if (typeof Mx !== "undefined") Mx.afterRender(main);
+  } else {
+    render("question", id);
+  }
   showToast(STATE.bookmarks.includes(id) ? "🔖 Bookmarked!" : "Removed bookmark");
 }
 
@@ -590,7 +717,13 @@ go = function(view, payload) {
   const navEl = document.querySelector(`.nav-item[data-view="${navView}"]`);
   if (navEl) navEl.classList.add("active");
 
-  if (view === "question") { main.innerHTML = viewQuestion(payload); document.getElementById("examPill").textContent = EXAMS[STATE.exam].name; if (typeof Mx!=="undefined") Mx.afterRender(main); return; }
+  if (view === "question") {
+    main.innerHTML = viewQuestion(payload);
+    document.getElementById("examPill").textContent = EXAMS[STATE.exam].name;
+    bindPracticeQuestion(main);
+    if (typeof Mx !== "undefined") Mx.afterRender(main);
+    return;
+  }
   if (view === "test") {
     main.innerHTML = renderTest();
     if (typeof QuantrexTestEngine !== "undefined") QuantrexTestEngine.bindEvents(main);
