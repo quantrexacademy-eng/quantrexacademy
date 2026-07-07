@@ -1362,6 +1362,51 @@
             .ch-hub-page { grid-template-columns: 1fr; }
             .ch-hub-modes { grid-template-columns: 1fr; }
         }
+
+        /* JEE Main Test Series 2027 — Quizrr-style folder */
+        .ts-folder-page { max-width: 1100px; }
+        .ts-folder-hero { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; flex-wrap: wrap; }
+        .ts-folder-logo { width: 72px; height: 72px; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 900; text-align: center; line-height: 1.2; flex-shrink: 0; }
+        .ts-folder-hero h1 { margin: 0 0 4px; font-family: 'Kanit'; font-size: 24px; font-weight: 800; }
+        .ts-folder-hero p { margin: 0; color: var(--gray); font-size: 14px; }
+        .ts-sync-src { display: block; margin-top: 6px; color: var(--gray); font-size: 12px; }
+        .ts-notify-pill { background: #ef4444; color: #fff; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 999px; margin-left: auto; }
+        .ts-sync-banner { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 12px 14px; background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.35); border-radius: 12px; margin-bottom: 16px; font-size: 13px; }
+        .ts-filter-panel { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; margin-bottom: 16px; }
+        .ts-filter-row { margin-bottom: 12px; }
+        .ts-filter-row:last-child { margin-bottom: 0; }
+        .ts-filter-label { display: block; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; }
+        .ts-filter-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .ts-filter-chip { padding: 7px 12px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg); font-size: 12px; font-weight: 700; cursor: pointer; font-family: inherit; color: var(--text); }
+        .ts-filter-chip.on { border-color: var(--primary); background: var(--primary-light); color: var(--primary); }
+        .ts-analytics { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px; margin-bottom: 18px; }
+        .ts-analytics h3 { margin: 0 0 12px; font-size: 16px; font-weight: 800; }
+        .ts-an-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
+        .ts-an-card { text-align: center; padding: 12px 8px; background: var(--bg); border-radius: 10px; }
+        .ts-an-card strong { display: block; font-size: 22px; color: var(--primary); }
+        .ts-an-card small { color: var(--gray); font-size: 11px; }
+        .ts-an-subs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .ts-an-sub { padding: 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); }
+        .ts-an-sub strong { display: block; font-size: 14px; margin-bottom: 4px; }
+        .ts-an-sub span, .ts-an-sub em { display: block; font-size: 12px; color: var(--gray); }
+        .ts-test-list h3 { margin: 0 0 12px; font-size: 17px; font-weight: 800; }
+        .ts-test-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; cursor: pointer; transition: border-color .15s; }
+        .ts-test-row:hover { border-color: var(--primary); }
+        .ts-test-row.completed { border-left: 4px solid #22c55e; }
+        .ts-test-row.inProgress { border-left: 4px solid #f59e0b; }
+        .ts-test-main strong { display: block; font-size: 15px; margin-bottom: 2px; }
+        .ts-test-main small { color: var(--gray); font-size: 12px; }
+        .ts-test-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 8px; }
+        .ts-sub-badge { font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 6px; }
+        .ts-date { font-size: 11px; color: var(--gray); font-weight: 600; }
+        .ts-test-side { text-align: right; flex-shrink: 0; }
+        .ts-score { display: block; font-size: 13px; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
+        .ts-action { font-size: 13px; font-weight: 700; color: var(--primary); }
+        @media (max-width: 768px) {
+            .ts-an-cards, .ts-an-subs { grid-template-columns: 1fr 1fr; }
+            .ts-test-row { flex-direction: column; align-items: flex-start; }
+            .ts-test-side { text-align: left; }
+        }
         .mtk-pal-legend { display: flex; flex-wrap: wrap; gap: 8px 12px; margin-bottom: 12px; font-size: 10px; color: #64748b; }
         .mtk-pal-legend span { display: flex; align-items: center; gap: 5px; }
         .mtk-pal-stats { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; font-size: 11px; color: #94a3b8; border-bottom: 1px solid #2a2f3d; padding-bottom: 12px; }
@@ -1624,7 +1669,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxtest436</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxtest437</div>
             </div>
         </aside>
 
@@ -1650,32 +1695,33 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
-    <script>window.QX_BUILD="qxtest436";</script>
-    <script src="qx-perf.js?v=qxtest436"></script>
-    <script src="firebase-config.js?v=qxtest436" defer></script>
-    <script src="stack-config.js?v=qxtest436" defer></script>
-    <script src="strip/branding-strip.js?v=qxtest436" defer></script>
-    <script src="exam-logos.js?v=qxtest436" defer></script>
-    <script src="math-render.js?v=qxtest436" defer></script>
-    <script src="question-format.js?v=qxtest436" defer></script>
-    <script src="data.js?v=qxtest436" defer></script>
-    <script src="firebase-db.js?v=qxtest436" defer></script>
-    <script src="firebase-storage.js?v=qxtest436" defer></script>
-    <script src="payments.js?v=qxtest436" defer></script>
-    <script src="premium.js?v=qxtest436" defer></script>
-    <script src="leaderboard.js?v=qxtest436" defer></script>
-    <script src="community.js?v=qxtest436" defer></script>
-    <script src="book-covers.js?v=qxtest436" defer></script>
-    <script src="marks-shell.js?v=qxtest436" defer></script>
-    <script src="marks-live.js?v=qxtest436" defer></script>
-    <script src="marks-features.js?v=qxtest436" defer></script>
-    <script src="assignments.js?v=qxtest436" defer></script>
-    <script src="custom-test.js?v=qxtest436" defer></script>
-    <script src="test-engine.js?v=qxtest436" defer></script>
-    <script src="bookmarks.js?v=qxtest436" defer></script>
-    <script src="analytics.js?v=qxtest436" defer></script>
-    <script src="search.js?v=qxtest436" defer></script>
-    <script src="theme.js?v=qxtest436" defer></script>
-    <script src="app.js?v=qxtest436" defer></script>
+    <script>window.QX_BUILD="qxtest437";</script>
+    <script src="qx-perf.js?v=qxtest437"></script>
+    <script src="firebase-config.js?v=qxtest437" defer></script>
+    <script src="stack-config.js?v=qxtest437" defer></script>
+    <script src="strip/branding-strip.js?v=qxtest437" defer></script>
+    <script src="exam-logos.js?v=qxtest437" defer></script>
+    <script src="math-render.js?v=qxtest437" defer></script>
+    <script src="question-format.js?v=qxtest437" defer></script>
+    <script src="data.js?v=qxtest437" defer></script>
+    <script src="firebase-db.js?v=qxtest437" defer></script>
+    <script src="firebase-storage.js?v=qxtest437" defer></script>
+    <script src="payments.js?v=qxtest437" defer></script>
+    <script src="premium.js?v=qxtest437" defer></script>
+    <script src="leaderboard.js?v=qxtest437" defer></script>
+    <script src="community.js?v=qxtest437" defer></script>
+    <script src="book-covers.js?v=qxtest437" defer></script>
+    <script src="marks-shell.js?v=qxtest437" defer></script>
+    <script src="marks-live.js?v=qxtest437" defer></script>
+    <script src="marks-features.js?v=qxtest437" defer></script>
+    <script src="test-series.js?v=qxtest437" defer></script>
+    <script src="assignments.js?v=qxtest437" defer></script>
+    <script src="custom-test.js?v=qxtest437" defer></script>
+    <script src="test-engine.js?v=qxtest437" defer></script>
+    <script src="bookmarks.js?v=qxtest437" defer></script>
+    <script src="analytics.js?v=qxtest437" defer></script>
+    <script src="search.js?v=qxtest437" defer></script>
+    <script src="theme.js?v=qxtest437" defer></script>
+    <script src="app.js?v=qxtest437" defer></script>
 </body>
 </html>

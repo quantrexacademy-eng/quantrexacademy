@@ -1633,7 +1633,7 @@ const TEST_SERIES_META = {
   }
 };
 
-function viewTestSeries(payload) {
+function viewTestSeriesLegacy(payload) {
   const id = (payload && payload.id) || "jeeboth";
   const meta = TEST_SERIES_META[id] || TEST_SERIES_META.jeeboth;
   const featList = meta.features.map(f => `<li>${f}</li>`).join("");
@@ -1668,8 +1668,9 @@ function marksTestSeriesCards() {
   const card = (tone, logo, title) => {
     const meta = TEST_SERIES_META[tone];
     const id = meta ? meta.id : tone;
+    const payload = id === "jeemain" ? { folder: "jee_main_test_series_2027" } : { id };
     return `
-    <div class="mts-card mts-${tone}" ${mg("testseries", { id })}>
+    <div class="mts-card mts-${tone}" ${mg("testseries", payload)}>
       <div class="mts-logo">${logo}</div>
       <div class="mts-body">
         <strong>${title}</strong>
@@ -1693,7 +1694,7 @@ function marksTestSeriesCards() {
   }
   return [
     card("jeeboth", "JEE MAIN<br>JEE ADV", "JEE Mains + Advanced 2027 Test Series"),
-    card("jeemain", "JEE MAIN", "JEE Mains 2027 Test Series"),
+    card("jeemain", "JEE MAIN", "JEE Main Test Series 2027"),
     card("jeeadv", "JEE ADV", "JEE Advanced 2027 Test Series")
   ].join("");
 }

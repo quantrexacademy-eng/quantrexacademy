@@ -1,0 +1,338 @@
+{
+  "id": "jee_main_test_series_2027",
+  "title": "JEE Main Test Series 2027",
+  "exam": "JEE Main",
+  "year": 2027,
+  "tagline": "NTA pattern full & part tests with analytics",
+  "syncedFrom": "quantrex_seed",
+  "syncedAt": "2026-07-07T18:34:46.317Z",
+  "pendingQuizrrSync": true,
+  "filters": {
+    "testTypes": [
+      "All Tests",
+      "Full Mock",
+      "Part Test",
+      "Revision Test",
+      "Speed Test"
+    ],
+    "subjects": [
+      "Overall",
+      "Physics",
+      "Chemistry",
+      "Mathematics"
+    ],
+    "dateRanges": [
+      "All Dates",
+      "Last 5 Tests",
+      "Last 10 Tests"
+    ]
+  },
+  "tests": [
+    {
+      "id": "fm_01",
+      "title": "Full Mock Test 1",
+      "shortTitle": "FM 1",
+      "testType": "Full Mock",
+      "subjects": [
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "scheduledDate": "2026-01-10",
+      "durationMin": 180,
+      "totalQs": 75,
+      "file": "tests/fm_01.json"
+    },
+    {
+      "id": "fm_02",
+      "title": "Full Mock Test 2",
+      "shortTitle": "FM 2",
+      "testType": "Full Mock",
+      "subjects": [
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "scheduledDate": "2026-01-24",
+      "durationMin": 180,
+      "totalQs": 75,
+      "file": "tests/fm_02.json"
+    },
+    {
+      "id": "fm_03",
+      "title": "Full Mock Test 3",
+      "shortTitle": "FM 3",
+      "testType": "Full Mock",
+      "subjects": [
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "scheduledDate": "2026-02-07",
+      "durationMin": 180,
+      "totalQs": 75,
+      "file": "tests/fm_03.json"
+    },
+    {
+      "id": "fm_04",
+      "title": "Full Mock Test 4",
+      "shortTitle": "FM 4",
+      "testType": "Full Mock",
+      "subjects": [
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "scheduledDate": "2026-02-21",
+      "durationMin": 180,
+      "totalQs": 75,
+      "file": "tests/fm_04.json"
+    },
+    {
+      "id": "fm_05",
+      "title": "Full Mock Test 5",
+      "shortTitle": "FM 5",
+      "testType": "Full Mock",
+      "subjects": [
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "scheduledDate": "2026-03-07",
+      "durationMin": 180,
+      "totalQs": 75,
+      "file": "tests/fm_05.json"
+    },
+    {
+      "id": "fm_06",
+      "title": "Full Mock Test 6",
+      "shortTitle": "FM 6",
+      "testType": "Full Mock",
+      "subjects": [
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "scheduledDate": "2026-03-21",
+      "durationMin": 180,
+      "totalQs": 75,
+      "file": "tests/fm_06.json"
+    },
+    {
+      "id": "fm_07",
+      "title": "Full Mock Test 7",
+      "shortTitle": "FM 7",
+      "testType": "Full Mock",
+      "subjects": [
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "scheduledDate": "2026-04-04",
+      "durationMin": 180,
+      "totalQs": 75,
+      "file": "tests/fm_07.json"
+    },
+    {
+      "id": "fm_08",
+      "title": "Full Mock Test 8",
+      "shortTitle": "FM 8",
+      "testType": "Full Mock",
+      "subjects": [
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "scheduledDate": "2026-04-18",
+      "durationMin": 180,
+      "totalQs": 75,
+      "file": "tests/fm_08.json"
+    },
+    {
+      "id": "fm_09",
+      "title": "Full Mock Test 9",
+      "shortTitle": "FM 9",
+      "testType": "Full Mock",
+      "subjects": [
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "scheduledDate": "2026-05-02",
+      "durationMin": 180,
+      "totalQs": 75,
+      "file": "tests/fm_09.json"
+    },
+    {
+      "id": "fm_10",
+      "title": "Full Mock Test 10",
+      "shortTitle": "FM 10",
+      "testType": "Full Mock",
+      "subjects": [
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "scheduledDate": "2026-05-16",
+      "durationMin": 180,
+      "totalQs": 75,
+      "file": "tests/fm_10.json"
+    },
+    {
+      "id": "pt_phys_01",
+      "title": "Physics Part Test 1",
+      "shortTitle": "Phy 1",
+      "testType": "Part Test",
+      "subjects": [
+        "Physics"
+      ],
+      "scheduledDate": "2026-05-30",
+      "durationMin": 60,
+      "totalQs": 30,
+      "file": "tests/pt_phys_01.json"
+    },
+    {
+      "id": "pt_phys_02",
+      "title": "Physics Part Test 2",
+      "shortTitle": "Phy 2",
+      "testType": "Part Test",
+      "subjects": [
+        "Physics"
+      ],
+      "scheduledDate": "2026-06-06",
+      "durationMin": 60,
+      "totalQs": 30,
+      "file": "tests/pt_phys_02.json"
+    },
+    {
+      "id": "pt_chem_03",
+      "title": "Chemistry Part Test 3",
+      "shortTitle": "Che 3",
+      "testType": "Part Test",
+      "subjects": [
+        "Chemistry"
+      ],
+      "scheduledDate": "2026-06-13",
+      "durationMin": 60,
+      "totalQs": 30,
+      "file": "tests/pt_chem_03.json"
+    },
+    {
+      "id": "pt_chem_04",
+      "title": "Chemistry Part Test 4",
+      "shortTitle": "Che 4",
+      "testType": "Part Test",
+      "subjects": [
+        "Chemistry"
+      ],
+      "scheduledDate": "2026-06-20",
+      "durationMin": 60,
+      "totalQs": 30,
+      "file": "tests/pt_chem_04.json"
+    },
+    {
+      "id": "pt_math_05",
+      "title": "Mathematics Part Test 5",
+      "shortTitle": "Mat 5",
+      "testType": "Part Test",
+      "subjects": [
+        "Mathematics"
+      ],
+      "scheduledDate": "2026-06-27",
+      "durationMin": 60,
+      "totalQs": 30,
+      "file": "tests/pt_math_05.json"
+    },
+    {
+      "id": "pt_math_06",
+      "title": "Mathematics Part Test 6",
+      "shortTitle": "Mat 6",
+      "testType": "Part Test",
+      "subjects": [
+        "Mathematics"
+      ],
+      "scheduledDate": "2026-07-04",
+      "durationMin": 60,
+      "totalQs": 30,
+      "file": "tests/pt_math_06.json"
+    },
+    {
+      "id": "pt_phys_07",
+      "title": "Physics Revision Test 7",
+      "shortTitle": "Phy 7",
+      "testType": "Revision Test",
+      "subjects": [
+        "Physics"
+      ],
+      "scheduledDate": "2026-07-11",
+      "durationMin": 50,
+      "totalQs": 25,
+      "file": "tests/pt_phys_07.json"
+    },
+    {
+      "id": "pt_chem_08",
+      "title": "Chemistry Revision Test 8",
+      "shortTitle": "Che 8",
+      "testType": "Revision Test",
+      "subjects": [
+        "Chemistry"
+      ],
+      "scheduledDate": "2026-07-18",
+      "durationMin": 50,
+      "totalQs": 25,
+      "file": "tests/pt_chem_08.json"
+    },
+    {
+      "id": "pt_math_09",
+      "title": "Mathematics Revision Test 9",
+      "shortTitle": "Mat 9",
+      "testType": "Revision Test",
+      "subjects": [
+        "Mathematics"
+      ],
+      "scheduledDate": "2026-07-25",
+      "durationMin": 50,
+      "totalQs": 25,
+      "file": "tests/pt_math_09.json"
+    },
+    {
+      "id": "pt_phys_10",
+      "title": "Physics Speed Test 10",
+      "shortTitle": "Phy 10",
+      "testType": "Speed Test",
+      "subjects": [
+        "Physics"
+      ],
+      "scheduledDate": "2026-08-01",
+      "durationMin": 40,
+      "totalQs": 20,
+      "file": "tests/pt_phys_10.json"
+    },
+    {
+      "id": "pt_chem_11",
+      "title": "Chemistry Speed Test 11",
+      "shortTitle": "Che 11",
+      "testType": "Speed Test",
+      "subjects": [
+        "Chemistry"
+      ],
+      "scheduledDate": "2026-08-08",
+      "durationMin": 40,
+      "totalQs": 20,
+      "file": "tests/pt_chem_11.json"
+    },
+    {
+      "id": "pt_math_12",
+      "title": "Mathematics Speed Test 12",
+      "shortTitle": "Mat 12",
+      "testType": "Speed Test",
+      "subjects": [
+        "Mathematics"
+      ],
+      "scheduledDate": "2026-08-15",
+      "durationMin": 40,
+      "totalQs": 20,
+      "file": "tests/pt_math_12.json"
+    }
+  ]
+}
