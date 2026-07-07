@@ -735,16 +735,10 @@ const QuantrexTestEngine = (() => {
       return false;
     }
     let sections = resume ? resume.sections : (config.sections || null);
-    if (!resume && config.marksMode && config.organizeJee && ids.length >= 30) {
-      const organized = organizeExamPaper(ids, {
-        paperFormat: config.paperFormat,
-        shuffle: config.shuffle !== false,
-        examSlug: config.meta && config.meta.slug
-      });
-      if (organized) {
-        ids = organized.orderedIds;
-        sections = organized.sections;
-      }
+    if (!resume && config.marksMode && config.organizeJee && ids.length >= 60) {
+      const organized = organizeJeeMainPaper(ids);
+      ids = organized.orderedIds;
+      sections = organized.sections;
     }
     const duration = config.durationSec ?? (config.timed ? Math.max(600, ids.length * 90) : null);
     session = {
@@ -1182,6 +1176,9 @@ function showMarksInstructions(config, onDone, onCancel) {
 }
 
 function showMarksCountdown(onDone) {
+  enterMarksTestMode();
+  const main = document.getElementById("app-main");
+  if (main) main.innerHTML = "";
   const existing = document.getElementById("marksCountdownOverlay");
   if (existing) existing.remove();
   const overlay = document.createElement("div");
@@ -1265,11 +1262,7 @@ async function startTest(questionIds, title, returnTo, options) {
     launchTestSession(main);
   };
 
-  if (!opts.skipCountdown && !opts.resumeData && (marksMode || opts.timed)) {
-    const afterInstr = () => (marksMode ? showMarksCountdown(run) : run());
-    showMarksInstructions(config, afterInstr, () => go(returnTo || "tests"));
-  } else if (marksMode && !opts.skipCountdown && opts.resumeData) {
-    enterMarksTestMode();
+  if (marksMode && !opts.skipCountdown) {
     showMarksCountdown(run);
   } else if (marksMode && opts.skipCountdown) {
     enterMarksTestMode();
@@ -1337,8 +1330,6 @@ async function startMockTest(examSlug, options) {
     modeLabel: "Full Mock · 3 hr",
     shuffle: true,
     marksMode: true,
-    organizeJee: selected.length >= 30,
-    paperFormat: /jee_advanced/i.test(examSlug) ? "jee_advanced" : (STATE.exam === "Medical" ? "neet" : "jee_main"),
-    meta: { slug: examSlug }
+    organizeJee: selected.length >= 60
   });
 }

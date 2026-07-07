@@ -1749,9 +1749,7 @@ function pyqPreviewModalHtml(slug, source, paper) {
           <div class="marks-preview-stat"><strong>${mins} Mins</strong><small>Duration</small></div>
         </div>
         <p class="marks-preview-chapters">${subLine}</p>
-        <p class="marks-preview-chapters">${slug === "jee_advanced"
-          ? "Sections: Mathematics S1–S3 → Physics S1–S3 → Chemistry S1–S3 (SC, Multiple Correct, Numerical)"
-          : "Sections: Mathematics SC &amp; Numerical → Physics SC &amp; Numerical → Chemistry SC &amp; Numerical"}</p>
+        <p class="marks-preview-chapters">Sections: Mathematics SC &amp; Numerical → Physics SC &amp; Numerical → Chemistry SC &amp; Numerical</p>
         <button type="button" class="marks-preview-attempt" onclick="pyqClosePreview();startPyqPaperMock('${slug}', decodeURIComponent('${encodeURIComponent(source)}'), ${status === "completed"})">${status === "completed" ? "Retake test now →" : "Attempt test now →"}</button>
         <button type="button" class="marks-preview-later" onclick="pyqClosePreview()">Attempt Later</button>
       </div>
@@ -1851,8 +1849,7 @@ async function pyqResumePaper(slug, source) {
     durationSec: saved.durationSec,
     shuffle: false,
     marksMode: true,
-    organizeJee: saved.ids.length >= 30,
-    paperFormat: slug === "jee_advanced" ? "jee_advanced" : (/neet|aiims/i.test(slug) ? "neet" : "jee_main"),
+    organizeJee: saved.ids.length >= 60 && STATE.exam === "Engineering",
     skipCountdown: true,
     persistKey: key,
     resumeData: saved,
@@ -2034,15 +2031,13 @@ async function startPyqPaperMock(slug, source, freshStart) {
   const attemptKey = pyqAttemptKey(slug, source);
   const title = pyqFullPaperTitle(source);
   pyqSaveAttempt(attemptKey, { status: "inProgress", slug, source, title });
-  const paperFormat = slug === "jee_advanced" ? "jee_advanced" : (/neet|aiims/i.test(slug) ? "neet" : "jee_main");
   startTest(ids, title, "tests", {
     testType: "pyqmock",
     timed: true,
     durationSec: duration,
     shuffle: false,
     marksMode: true,
-    organizeJee: qs.length >= 30,
-    paperFormat,
+    organizeJee: qs.length >= 60 && STATE.exam === "Engineering",
     persistKey: key,
     meta: { slug, source },
     modeLabel: `Full Paper · ${qs.length} Qs · ${Math.floor(duration / 60)} min`,
