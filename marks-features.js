@@ -196,7 +196,7 @@ function bookQuestionTitle(q) {
 }
 
 function renderQCard(q) {
-  const bm = STATE.bookmarks.includes(q.id);
+  const bm = typeof QuantrexBookmarks !== "undefined" ? QuantrexBookmarks.isBookmarked(q.id) : STATE.bookmarks.includes(q.id);
   const sv = STATE.solved.find(s => s.id === q.id);
   const tag = q.subject.toLowerCase().replace(/\s+/g, "-");
   const bookLabel = q._book ? bookQuestionLabel(q) : null;
@@ -1749,7 +1749,9 @@ function pyqPreviewModalHtml(slug, source, paper) {
           <div class="marks-preview-stat"><strong>${mins} Mins</strong><small>Duration</small></div>
         </div>
         <p class="marks-preview-chapters">${subLine}</p>
-        <p class="marks-preview-chapters">Sections: Mathematics SC &amp; Numerical → Physics SC &amp; Numerical → Chemistry SC &amp; Numerical</p>
+        <p class="marks-preview-chapters">${slug === "jee_advanced"
+          ? "Sections: Mathematics S1–S3 → Physics S1–S3 → Chemistry S1–S3 (SC, Multiple Correct, Numerical)"
+          : "Sections: Mathematics SC &amp; Numerical → Physics SC &amp; Numerical → Chemistry SC &amp; Numerical"}</p>
         <button type="button" class="marks-preview-attempt" onclick="pyqClosePreview();startPyqPaperMock('${slug}', decodeURIComponent('${encodeURIComponent(source)}'), ${status === "completed"})">${status === "completed" ? "Retake test now →" : "Attempt test now →"}</button>
         <button type="button" class="marks-preview-later" onclick="pyqClosePreview()">Attempt Later</button>
       </div>
@@ -1794,6 +1796,8 @@ function pyqSubjectLine(subjects) {
 function pyqFullPaperTitle(source) {
   const label = pyqPaperLabel(source);
   const year = typeof qYearFromSource === "function" ? qYearFromSource(source) : null;
+  const src = String(source || "");
+  if (/JEE Advanced/i.test(src)) return label || src;
   if (year && !String(label).includes(String(year))) return `JEE Main ${year} (${label})`;
   return label || String(source || "Full Paper");
 }
@@ -1847,7 +1851,8 @@ async function pyqResumePaper(slug, source) {
     durationSec: saved.durationSec,
     shuffle: false,
     marksMode: true,
-    organizeJee: saved.ids.length >= 60 && STATE.exam === "Engineering",
+    organizeJee: saved.ids.length >= 30,
+    paperFormat: slug === "jee_advanced" ? "jee_advanced" : (/neet|aiims/i.test(slug) ? "neet" : "jee_main"),
     skipCountdown: true,
     persistKey: key,
     resumeData: saved,
@@ -2029,13 +2034,15 @@ async function startPyqPaperMock(slug, source, freshStart) {
   const attemptKey = pyqAttemptKey(slug, source);
   const title = pyqFullPaperTitle(source);
   pyqSaveAttempt(attemptKey, { status: "inProgress", slug, source, title });
+  const paperFormat = slug === "jee_advanced" ? "jee_advanced" : (/neet|aiims/i.test(slug) ? "neet" : "jee_main");
   startTest(ids, title, "tests", {
     testType: "pyqmock",
     timed: true,
     durationSec: duration,
     shuffle: false,
     marksMode: true,
-    organizeJee: qs.length >= 60 && STATE.exam === "Engineering",
+    organizeJee: qs.length >= 30,
+    paperFormat,
     persistKey: key,
     meta: { slug, source },
     modeLabel: `Full Paper · ${qs.length} Qs · ${Math.floor(duration / 60)} min`,

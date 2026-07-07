@@ -228,6 +228,23 @@ const QuantrexTestEngine = (() => {
     </aside>`;
   }
 
+  function getTestTheme() {
+    return localStorage.getItem("quantrex_test_theme") || "dark";
+  }
+
+  function setTestTheme(mode) {
+    const m = mode === "light" ? "light" : "dark";
+    localStorage.setItem("quantrex_test_theme", m);
+    const root = document.querySelector(".mtk-test-root");
+    if (root) root.setAttribute("data-test-theme", m);
+    const btn = document.getElementById("mtkThemeBtn");
+    if (btn) btn.textContent = m === "dark" ? "☀️" : "🌙";
+  }
+
+  function toggleTestTheme() {
+    setTestTheme(getTestTheme() === "dark" ? "light" : "dark");
+  }
+
   function renderMarksQuestion() {
     const q = getQ(session.ids[session.idx]);
     if (!q) return '<div class="empty">Question not found.</div>';
@@ -238,6 +255,7 @@ const QuantrexTestEngine = (() => {
     const wrongMark = session.scoring.wrong < 0 ? `<span class="mtk-neg-mark">${session.scoring.wrong}</span>` : "";
     const timerHtml = session.durationSec != null
       ? `<div class="mtk-timer" id="qxTimer"><span class="mtk-timer-ic">🕐</span>${formatMarksTime(session.remainingSec)}</div>` : "";
+    const testTheme = getTestTheme();
 
     const typeBadge = typeof QuantrexQFormat !== "undefined" ? QuantrexQFormat.typeBadgeHtml(q) : "";
     const optsClass = typeof QuantrexQFormat !== "undefined"
@@ -256,13 +274,14 @@ const QuantrexTestEngine = (() => {
           </button>`;
         }).join(""));
 
-    return `<div class="mtk-test-root">
+    return `<div class="mtk-test-root" data-test-theme="${testTheme}">
       <header class="mtk-header">
         <div class="mtk-header-left">
           <button type="button" class="mtk-close-btn" id="mtkCloseBtn" title="Exit test">✕</button>
           <div class="mtk-brand"><span class="mtk-logo">Q</span><span class="mtk-brand-text">Quantrex</span></div>
         </div>
         ${timerHtml}
+        <button type="button" class="mtk-theme-btn" id="mtkThemeBtn" title="Toggle light/dark">${testTheme === "dark" ? "☀️" : "🌙"}</button>
         <button type="button" class="mtk-report-btn" id="mtkReportBtn" title="Report mistake">🚩 Report</button>
         <button type="button" class="mtk-submit-top" id="qxSubmitTop">Submit</button>
       </header>
@@ -395,6 +414,8 @@ const QuantrexTestEngine = (() => {
         if (q) openQuestionReport(q.id);
       };
     }
+    const mtkTheme = root.querySelector("#mtkThemeBtn");
+    if (mtkTheme) mtkTheme.onclick = toggleTestTheme;
     root.querySelectorAll(".qx-pal-cell, .mtk-pal-cell").forEach(cell => {
       cell.onclick = () => goTo(parseInt(cell.dataset.qidx, 10));
     });
@@ -573,10 +594,71 @@ const QuantrexTestEngine = (() => {
     return { correct, wrong, skipped, score, pct, total, rows, breakdown, timeUsed, maxScore: total * scoring.correct };
   }
 
+  function renderReviewRow(r, i) {
+    if (!r.q) return "";
+    const hasSol = typeof MarksLive !== "undefined" && MarksLive.hasRealSolution
+      ? MarksLive.hasRealSolution(r.q.solution)
+      : !!String(r.q.solution || "").replace(/<[^>]+>/g, "").trim();
+    const sol = hasSol ? `<div class="sol"><strong>Solution</strong><div class="qx-content sol-body">${htmlContent(r.q.solution)}</div></div>` : "";
+    const chosenHtml = typeof QuantrexQFormat !== "undefined"
+      ? QuantrexQFormat.formatChosenAnswer(r.q, r.chosen)
+      : htmlContent((r.q.options || [])[r.chosen]);
+    const correctHtml = typeof QuantrexQFormat !== "undefined"
+      ? QuantrexQFormat.formatCorrectAnswer(r.q)
+      : htmlContent((r.q.options || [])[r.q.answer]);
+    return `<div class="rv-row ${r.isCorrect ? "ok" : r.isSkip ? "" : "no"}" data-rv-idx="${i}">
+      <div class="rv-q qx-content"><strong>Q${i + 1}.</strong> ${htmlContent(r.q.q)}</div>
+      <div class="rv-ans">
+        ${r.isSkip ? '<span class="tag tag-skip">Not attempted</span>' :
+          `<span class="tag ${r.isCorrect ? "tag-ok" : "tag-no"}">${r.isCorrect ? "✓" : "✗"} <span class="qx-content">${chosenHtml}</span></span>`}
+        ${r.isWrong ? `<div class="rv-correct">✓ Answer: <span class="qx-content">${correctHtml}</span></div>` : ""}
+      </div>${sol}</div>`;
+  }
+
+  function renderMarksReviewRail(data) {
+    const subjectOrder = ["Mathematics", "Physics", "Chemistry", "Biology", "Botany", "Zoology"];
+    const bySub = {};
+    data.rows.forEach((r, i) => {
+      if (!r.q) return;
+      const sub = r.q.subject || "Other";
+      if (!bySub[sub]) bySub[sub] = [];
+      bySub[sub].push({ i, r });
+    });
+    const subs = subjectOrder.filter(s => bySub[s]).concat(Object.keys(bySub).filter(s => !subjectOrder.includes(s)));
+    return subs.map(sub => {
+      const cells = bySub[sub].map(({ i, r }) => {
+        const st = r.isCorrect ? "ok" : r.isSkip ? "skip" : "no";
+        return `<button type="button" class="qx-rv-qpill ${st}" data-rv-jump="${i}">${i + 1}</button>`;
+      }).join("");
+      return `<div class="qx-rv-subj-block">
+        <div class="qx-rv-subj-name">${sub}</div>
+        <div class="qx-rv-subj-grid">${cells}</div>
+      </div>`;
+    }).join("");
+  }
+
+  function bindReviewSplit(root) {
+    if (!root) return;
+    const main = root.querySelector(".qx-review-main");
+    const rows = root.querySelectorAll(".rv-row");
+    const pills = root.querySelectorAll(".qx-rv-qpill");
+    const show = (idx) => {
+      rows.forEach(row => row.classList.toggle("active", parseInt(row.dataset.rvIdx, 10) === idx));
+      pills.forEach(p => p.classList.toggle("cur", parseInt(p.dataset.rvJump, 10) === idx));
+      const active = root.querySelector(`.rv-row[data-rv-idx="${idx}"]`);
+      if (active && main) main.scrollTop = 0;
+    };
+    pills.forEach(p => {
+      p.onclick = () => show(parseInt(p.dataset.rvJump, 10));
+    });
+    if (rows.length) show(0);
+  }
+
   function renderResults(data) {
     const ret = session.returnTo;
     const title = session.title;
     const mode = session.testType;
+    const marksReview = session.marksMode;
     const pass = data.pct >= 60;
     const subjectBars = Object.entries(data.breakdown.subject).map(([sub, v]) => {
       const acc = v.total ? Math.round(v.correct / v.total * 100) : 0;
@@ -585,26 +667,13 @@ const QuantrexTestEngine = (() => {
         <small>${v.correct}/${v.total} correct</small></div>`;
     }).join("");
 
-    const reviewHtml = data.rows.map((r, i) => {
-      if (!r.q) return "";
-      const hasSol = typeof MarksLive !== "undefined" && MarksLive.hasRealSolution
-        ? MarksLive.hasRealSolution(r.q.solution)
-        : !!String(r.q.solution || "").replace(/<[^>]+>/g, "").trim();
-      const sol = hasSol ? `<div class="sol"><strong>Solution</strong><div class="qx-content sol-body">${htmlContent(r.q.solution)}</div></div>` : "";
-      const chosenHtml = typeof QuantrexQFormat !== "undefined"
-        ? QuantrexQFormat.formatChosenAnswer(r.q, r.chosen)
-        : htmlContent((r.q.options || [])[r.chosen]);
-      const correctHtml = typeof QuantrexQFormat !== "undefined"
-        ? QuantrexQFormat.formatCorrectAnswer(r.q)
-        : htmlContent((r.q.options || [])[r.q.answer]);
-      return `<div class="rv-row ${r.isCorrect ? "ok" : r.isSkip ? "" : "no"}">
-        <div class="rv-q qx-content"><strong>Q${i + 1}.</strong> ${htmlContent(r.q.q)}</div>
-        <div class="rv-ans">
-          ${r.isSkip ? '<span class="tag tag-skip">Not attempted</span>' :
-            `<span class="tag ${r.isCorrect ? "tag-ok" : "tag-no"}">${r.isCorrect ? "✓" : "✗"} <span class="qx-content">${chosenHtml}</span></span>`}
-          ${r.isWrong ? `<div class="rv-correct">✓ Answer: <span class="qx-content">${correctHtml}</span></div>` : ""}
-        </div>${sol}</div>`;
-    }).join("");
+    const reviewRows = data.rows.map((r, i) => renderReviewRow(r, i)).join("");
+    const reviewBlock = marksReview
+      ? `<div class="qx-review-split" id="qxReviewSplit">
+          <div class="qx-review-main"><div class="review-list marks-review-list">${reviewRows}</div></div>
+          <aside class="qx-review-rail"><div class="qx-rv-rail-head">Questions</div>${renderMarksReviewRail(data)}</aside>
+        </div>`
+      : `<div class="review-list">${reviewRows}</div>`;
 
     if (typeof QuantrexAnalytics !== "undefined") {
       QuantrexAnalytics.recordAttempt({
@@ -617,7 +686,7 @@ const QuantrexTestEngine = (() => {
     marksClearSession();
     session = null;
     exitMarksTestMode();
-    return `<div class="result-screen">
+    return `<div class="result-screen ${marksReview ? "marks-result" : ""}">
       <div class="result-hero ${pass ? "pass" : "fail"}">
         <div class="result-ring">${data.pct}%</div>
         <h2>${pass ? "Strong performance!" : "Room to improve"}</h2>
@@ -632,7 +701,7 @@ const QuantrexTestEngine = (() => {
       </div>
       ${subjectBars ? `<h3 class="sec-title">Subject Breakdown</h3><div class="qx-analytics-bars">${subjectBars}</div>` : ""}
       <h3 class="sec-title">Solutions Review</h3>
-      <div class="review-list">${reviewHtml}</div>
+      ${reviewBlock}
       <div class="result-actions">
         <button class="btn-primary" onclick="go('dashboard')">← Home</button>
         <button class="btn-soft" onclick="go('analytics')">View Analytics</button>
@@ -652,6 +721,7 @@ const QuantrexTestEngine = (() => {
     const main = document.getElementById("app-main");
     if (main) {
       main.innerHTML = renderResults(data);
+      bindReviewSplit(main.querySelector("#qxReviewSplit"));
       if (typeof Mx !== "undefined") Mx.afterRender(main);
     }
     if (!auto) showToast("✅ Assessment submitted!");
@@ -665,10 +735,16 @@ const QuantrexTestEngine = (() => {
       return false;
     }
     let sections = resume ? resume.sections : (config.sections || null);
-    if (!resume && config.marksMode && config.organizeJee && ids.length >= 60) {
-      const organized = organizeJeeMainPaper(ids);
-      ids = organized.orderedIds;
-      sections = organized.sections;
+    if (!resume && config.marksMode && config.organizeJee && ids.length >= 30) {
+      const organized = organizeExamPaper(ids, {
+        paperFormat: config.paperFormat,
+        shuffle: config.shuffle !== false,
+        examSlug: config.meta && config.meta.slug
+      });
+      if (organized) {
+        ids = organized.orderedIds;
+        sections = organized.sections;
+      }
     }
     const duration = config.durationSec ?? (config.timed ? Math.max(600, ids.length * 90) : null);
     session = {
@@ -739,6 +815,7 @@ const QuantrexTestEngine = (() => {
 
 function isNumericalQuestion(q) {
   if (!q) return false;
+  if (typeof QuantrexQFormat !== "undefined") return QuantrexQFormat.getType(q) === "numerical";
   const opts = (q.options || []).map(o => String(o).replace(/<[^>]+>/g, "").trim());
   const abcd = opts.every(o => !o || o === "A" || o === "B" || o === "C" || o === "D");
   const qtext = String(q.q || "").toLowerCase();
@@ -746,6 +823,165 @@ function isNumericalQuestion(q) {
   if (abcd && (fillBlank || opts.every(o => !o))) return true;
   if (opts.length === 4 && opts.every(o => /^[\d.\-+\s,]+$/.test(o) && o)) return true;
   return false;
+}
+
+function questionSectionType(q) {
+  if (!q) return "SC";
+  if (typeof QuantrexQFormat !== "undefined") {
+    const t = QuantrexQFormat.getType(q);
+    if (t === "multipleCorrect") return "MC";
+    if (t === "numerical") return "NUM";
+    return "SC";
+  }
+  if (Array.isArray(q.answers) && q.answers.length > 1) return "MC";
+  if (isNumericalQuestion(q)) return "NUM";
+  return "SC";
+}
+
+const SECTION_TYPE_LABELS = {
+  SC: "Single Correct",
+  MC: "Multiple Correct",
+  NUM: "Numerical"
+};
+
+const SECTION_TYPE_SHORT = {
+  SC: "SC",
+  MC: "MC",
+  NUM: "NUM"
+};
+
+function buildSectionsFromOrder(questionIds) {
+  const orderedIds = [...questionIds];
+  const sections = [];
+  questionIds.forEach((id, i) => {
+    const q = getQ(id);
+    const sub = (q && q.subject) || "Other";
+    const type = questionSectionType(q);
+    const key = sub + "::" + type;
+    const last = sections[sections.length - 1];
+    if (!last || last.key !== key) {
+      sections.push({
+        key,
+        label: `${sub} ${SECTION_TYPE_LABELS[type]}`,
+        shortLabel: `${sub.toUpperCase().slice(0, 3)} ${SECTION_TYPE_SHORT[type]}`,
+        subject: sub,
+        type,
+        start: i,
+        count: 1
+      });
+    } else {
+      last.count++;
+    }
+  });
+  return { orderedIds, sections };
+}
+
+function organizeJeeAdvancedPaper(questionIds) {
+  const subjectOrder = ["Mathematics", "Physics", "Chemistry"];
+  const typeOrder = ["SC", "MC", "NUM"];
+  const bySubType = {};
+  questionIds.forEach(id => {
+    const q = getQ(id);
+    if (!q) return;
+    const sub = q.subject || "Other";
+    const type = questionSectionType(q);
+    const key = sub + "::" + type;
+    if (!bySubType[key]) bySubType[key] = { sub, type, ids: [] };
+    bySubType[key].ids.push(id);
+  });
+
+  const orderedIds = [];
+  const sections = [];
+  subjectOrder.forEach(sub => {
+    typeOrder.forEach((type, ti) => {
+      const key = sub + "::" + type;
+      const bucket = bySubType[key];
+      if (!bucket || !bucket.ids.length) return;
+      const secNum = typeOrder.indexOf(type) + 1;
+      sections.push({
+        label: `${sub} Section ${secNum} — ${SECTION_TYPE_LABELS[type]}`,
+        shortLabel: `${sub.toUpperCase().slice(0, 3)} S${secNum}`,
+        subject: sub,
+        type,
+        start: orderedIds.length,
+        count: bucket.ids.length
+      });
+      orderedIds.push(...bucket.ids);
+      delete bySubType[key];
+    });
+  });
+  Object.values(bySubType).forEach(bucket => {
+    if (!bucket.ids.length) return;
+    sections.push({
+      label: `${bucket.sub} ${SECTION_TYPE_LABELS[bucket.type]}`,
+      shortLabel: `${bucket.sub.toUpperCase().slice(0, 3)} ${SECTION_TYPE_SHORT[bucket.type]}`,
+      subject: bucket.sub,
+      type: bucket.type,
+      start: orderedIds.length,
+      count: bucket.ids.length
+    });
+    orderedIds.push(...bucket.ids);
+  });
+  const placed = new Set(orderedIds);
+  questionIds.forEach(id => { if (!placed.has(id)) orderedIds.push(id); });
+  return { orderedIds, sections };
+}
+
+function organizeNeetPaper(questionIds) {
+  const subjectOrder = ["Physics", "Chemistry", "Botany", "Zoology"];
+  const bySubject = {};
+  questionIds.forEach(id => {
+    const q = getQ(id);
+    const sub = (q && q.subject) || "Other";
+    if (!bySubject[sub]) bySubject[sub] = [];
+    bySubject[sub].push(id);
+  });
+  const orderedIds = [];
+  const sections = [];
+  subjectOrder.forEach(sub => {
+    const ids = bySubject[sub] || [];
+    if (!ids.length) return;
+    sections.push({
+      label: sub,
+      shortLabel: sub.toUpperCase().slice(0, 4),
+      subject: sub,
+      start: orderedIds.length,
+      count: ids.length
+    });
+    orderedIds.push(...ids);
+    delete bySubject[sub];
+  });
+  Object.keys(bySubject).forEach(sub => {
+    const ids = bySubject[sub];
+    sections.push({
+      label: sub,
+      shortLabel: sub.toUpperCase().slice(0, 4),
+      subject: sub,
+      start: orderedIds.length,
+      count: ids.length
+    });
+    orderedIds.push(...ids);
+  });
+  return { orderedIds, sections };
+}
+
+function resolvePaperFormat(opts) {
+  const slug = (opts && opts.examSlug) || "";
+  if (opts && opts.paperFormat) return opts.paperFormat;
+  if (/jee_advanced/i.test(slug)) return "jee_advanced";
+  if (/jee_main|nta_abhyas_jee/i.test(slug)) return "jee_main";
+  if (/neet|aiims|nta_abhyas_neet/i.test(slug)) return "neet";
+  if (typeof STATE !== "undefined" && STATE.exam === "Medical") return "neet";
+  return "jee_main";
+}
+
+function organizeExamPaper(questionIds, opts) {
+  const format = resolvePaperFormat(opts || {});
+  if (opts && opts.shuffle === false) return buildSectionsFromOrder(questionIds);
+  if (format === "jee_advanced") return organizeJeeAdvancedPaper(questionIds);
+  if (format === "neet") return organizeNeetPaper(questionIds);
+  if (questionIds.length >= 60) return organizeJeeMainPaper(questionIds);
+  return buildSectionsFromOrder(questionIds);
 }
 
 function organizeJeeMainPaper(questionIds) {
@@ -866,10 +1102,86 @@ function marksClearSession() {
   try { localStorage.removeItem(MARKS_SESSION_STORE); } catch (e) { /* ignore */ }
 }
 
-function showMarksCountdown(onDone) {
-  enterMarksTestMode();
+function marksInstructionHtml(config) {
+  const scoring = config.scoring || { correct: 4, wrong: -1, unattempted: 0 };
+  const n = (config.questionIds || []).length;
+  const mins = config.durationSec ? Math.floor(config.durationSec / 60) : "—";
+  const format = resolvePaperFormat({ paperFormat: config.paperFormat, examSlug: config.meta && config.meta.slug });
+  const formatName = format === "jee_advanced" ? "JEE Advanced" : format === "neet" ? "NEET" : "JEE Main";
+  const preview = organizeExamPaper(config.questionIds || [], {
+    paperFormat: format,
+    examSlug: config.meta && config.meta.slug,
+    shuffle: config.shuffle !== false
+  });
+  const secList = (preview && preview.sections || []).map(s =>
+    `<li><strong>${s.label}</strong> — ${s.count} Qs</li>`
+  ).join("") || `<li>${n} questions · ${formatName} format</li>`;
+  const wrongTxt = scoring.wrong < 0 ? `${scoring.wrong} for wrong` : "no negative marking";
+  return `<div class="marks-modal-overlay" id="marksInstrOverlay">
+    <div class="marks-modal marks-instr-modal">
+      <div class="marks-modal-head"><h3>Instructions</h3></div>
+      <div class="marks-modal-body marks-instr-body">
+        <h2 class="marks-instr-title">${config.title || "Assessment"}</h2>
+        <div class="marks-instr-stats">
+          <span><strong>${n}</strong> Questions</span>
+          <span><strong>${mins}</strong> Minutes</span>
+          <span><strong>+${scoring.correct}</strong> / ${wrongTxt}</span>
+        </div>
+        <div class="marks-instr-section">
+          <h4>Paper sections</h4>
+          <ul class="marks-instr-list">${secList}</ul>
+        </div>
+        <div class="marks-instr-section">
+          <h4>Before you begin</h4>
+          <ul class="marks-instr-rules">
+            <li>Timer starts after you accept — use the question palette to jump between sections.</li>
+            <li>Mark questions for review and revisit before submit.</li>
+            <li>Do not refresh or close the tab during the test.</li>
+            <li>Submit only when you have attempted all sections or time runs out.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="marks-modal-foot">
+        <button type="button" class="marks-modal-cancel" onclick="marksCancelInstructions()">Cancel</button>
+        <button type="button" class="marks-modal-apply" onclick="marksAcceptInstructions()">I have read the instructions — Start Test</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+let _marksInstrDone = null;
+let _marksInstrCancel = null;
+
+function marksCancelInstructions() {
+  const el = document.getElementById("marksInstrOverlay");
+  if (el) el.remove();
+  if (document.body.classList.contains("marks-test-active")) exitMarksTestMode();
+  if (typeof _marksInstrCancel === "function") _marksInstrCancel();
+  _marksInstrDone = null;
+  _marksInstrCancel = null;
+}
+
+function marksAcceptInstructions() {
+  const el = document.getElementById("marksInstrOverlay");
+  if (el) el.remove();
+  if (typeof _marksInstrDone === "function") _marksInstrDone();
+  _marksInstrDone = null;
+  _marksInstrCancel = null;
+}
+
+function showMarksInstructions(config, onDone, onCancel) {
+  const marksMode = config.marksMode;
+  if (marksMode) enterMarksTestMode();
   const main = document.getElementById("app-main");
-  if (main) main.innerHTML = "";
+  if (main && marksMode) main.innerHTML = "";
+  const existing = document.getElementById("marksInstrOverlay");
+  if (existing) existing.remove();
+  _marksInstrDone = onDone;
+  _marksInstrCancel = onCancel;
+  document.body.insertAdjacentHTML("beforeend", marksInstructionHtml(config));
+}
+
+function showMarksCountdown(onDone) {
   const existing = document.getElementById("marksCountdownOverlay");
   if (existing) existing.remove();
   const overlay = document.createElement("div");
@@ -929,7 +1241,8 @@ async function startTest(questionIds, title, returnTo, options) {
     deferTimer: marksMode && !opts.skipCountdown,
     persistKey: opts.persistKey || null,
     meta: opts.meta || null,
-    resumeData: opts.resumeData || null
+    resumeData: opts.resumeData || null,
+    paperFormat: opts.paperFormat || null
   };
 
   const main = document.getElementById("app-main");
@@ -952,7 +1265,11 @@ async function startTest(questionIds, title, returnTo, options) {
     launchTestSession(main);
   };
 
-  if (marksMode && !opts.skipCountdown) {
+  if (!opts.skipCountdown && !opts.resumeData && (marksMode || opts.timed)) {
+    const afterInstr = () => (marksMode ? showMarksCountdown(run) : run());
+    showMarksInstructions(config, afterInstr, () => go(returnTo || "tests"));
+  } else if (marksMode && !opts.skipCountdown && opts.resumeData) {
+    enterMarksTestMode();
     showMarksCountdown(run);
   } else if (marksMode && opts.skipCountdown) {
     enterMarksTestMode();
@@ -1020,6 +1337,8 @@ async function startMockTest(examSlug, options) {
     modeLabel: "Full Mock · 3 hr",
     shuffle: true,
     marksMode: true,
-    organizeJee: selected.length >= 60
+    organizeJee: selected.length >= 30,
+    paperFormat: /jee_advanced/i.test(examSlug) ? "jee_advanced" : (STATE.exam === "Medical" ? "neet" : "jee_main"),
+    meta: { slug: examSlug }
   });
 }

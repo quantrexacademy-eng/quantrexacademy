@@ -13858,8 +13858,18 @@ function _syncDb() {
 const STATE = {
   get exam() { return localStorage.getItem("quantrex_exam") || "Engineering"; },
   set exam(v) { localStorage.setItem("quantrex_exam", v); _banksLoaded = {}; _currentBankSlug = null; localStorage.removeItem("quantrex_bank"); QUESTIONS = []; _syncDb(); },
-  get bookmarks() { return JSON.parse(localStorage.getItem("quantrex_bookmarks") || "[]"); },
-  toggleBookmark(id) { const b=this.bookmarks,i=b.indexOf(id); if(i>=0)b.splice(i,1);else b.push(id); localStorage.setItem("quantrex_bookmarks",JSON.stringify(b)); _syncDb(); },
+  get bookmarks() {
+    if (typeof QuantrexBookmarks !== "undefined") return QuantrexBookmarks.load().items.map(x => x.id);
+    return JSON.parse(localStorage.getItem("quantrex_bookmarks") || "[]");
+  },
+  toggleBookmark(id, meta) {
+    if (typeof QuantrexBookmarks !== "undefined") { QuantrexBookmarks.toggle(id, meta); _syncDb(); return; }
+    const b = JSON.parse(localStorage.getItem("quantrex_bookmarks") || "[]");
+    const i = b.indexOf(id);
+    if (i >= 0) b.splice(i, 1); else b.push(id);
+    localStorage.setItem("quantrex_bookmarks", JSON.stringify(b));
+    _syncDb();
+  },
   get solved() { return JSON.parse(localStorage.getItem("quantrex_solved") || "[]"); },
   markSolved(id,correct) { const s=JSON.parse(localStorage.getItem("quantrex_solved")||"[]"); if(!s.find(x=>x.id===id))s.push({id,correct,date:Date.now()}); localStorage.setItem("quantrex_solved",JSON.stringify(s)); _syncDb(); if(typeof QuantrexLeaderboard!=="undefined")QuantrexLeaderboard.recordSolve(correct); },
   get notes() { return JSON.parse(localStorage.getItem("quantrex_notes") || "[]"); },

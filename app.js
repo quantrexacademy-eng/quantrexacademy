@@ -209,7 +209,7 @@ function viewPractice() {
     chapters.map(c => `<button class="chip ${practiceFilter.chapter===c?'active':''}" data-chapter="${c}">${c}</button>`).join("") + "</div>" : "";
 
   const list = pageQs.length ? pageQs.map(q => {
-    const bm = STATE.bookmarks.includes(q.id);
+    const bm = typeof QuantrexBookmarks !== "undefined" ? QuantrexBookmarks.isBookmarked(q.id) : STATE.bookmarks.includes(q.id);
     const sv = STATE.solved.find(s => s.id === q.id);
     const subjTag = q.subject.toLowerCase().replace(/\s+/g, "-");
     return `<div class="q-card" onclick="openPracticeQuestion(${q.id})">
@@ -423,7 +423,7 @@ function viewQuestion(id) {
   const pc = window._qxPracticeCtx;
   const total = pc.ids.length;
   const pos = pc.idx + 1;
-  const bm = STATE.bookmarks.includes(q.id);
+  const bm = typeof QuantrexBookmarks !== "undefined" ? QuantrexBookmarks.isBookmarked(q.id) : STATE.bookmarks.includes(q.id);
   const sv = STATE.solved.find(s => s.id === q.id);
   const subjTag = (q.subject || "").toLowerCase().replace(/\s+/g, "-");
   const sourceLabel = typeof QuantrexStrip !== "undefined"
@@ -467,7 +467,8 @@ function viewQuestion(id) {
         <small>${q.chapter || q.subject}</small>
       </div>
       <div class="qx-prac-actions">
-        <button type="button" class="qx-prac-icon ${bm ? "on" : ""}" onclick="toggleBm(${q.id})" title="Bookmark">${bm ? "🔖" : "🤍"}</button>
+        <button type="button" class="qx-prac-icon ${bm ? "on" : ""}" onclick="toggleBm(${q.id})" title="Save bookmark (exam · subject · topic)">${bm ? "🔖" : "🤍"}</button>
+        <button type="button" class="qx-prac-icon" onclick="toggleBmWithGroup(${q.id})" title="Save to group">📁</button>
         <button type="button" class="qx-prac-icon" onclick="openQuestionReport(${q.id})" title="Report mistake">🚩</button>
       </div>
     </header>
@@ -602,27 +603,21 @@ async function answerQ(qid, response) {
   if (sub) sub.remove();
 }
 
-function toggleBm(id) {
-  STATE.toggleBookmark(id);
-  const main = document.getElementById("app-main");
-  if (currentView === "question" && main) {
-    (async () => {
-      await qxHydrateQuestion(getQ(id), false);
-      main.innerHTML = viewQuestion(id);
-      bindPracticeQuestion(main);
-      if (typeof Mx !== "undefined") Mx.afterRender(main);
-    })();
-  } else {
-    render("question", id);
-  }
-  showToast(STATE.bookmarks.includes(id) ? "🔖 Bookmarked!" : "Removed bookmark");
-}
+// toggleBm, viewNotebook — bookmarks.js
 
 // DPP & Formula views are in marks-features.js (viewDppMarks, viewFormulaMarks)
 
 function toggleFcBm(id) {
-  STATE.toggleBookmark("f" + id);
-  showToast(STATE.bookmarks.includes("f"+id) ? "🔖 Formula saved!" : "Removed");
+  const fid = "f" + id;
+  let added;
+  if (typeof QuantrexBookmarks !== "undefined") {
+    added = QuantrexBookmarks.toggle(fid, QuantrexBookmarks.metaFromQuestion(fid));
+  } else {
+    const had = STATE.bookmarks.includes(fid);
+    STATE.toggleBookmark(fid);
+    added = !had;
+  }
+  showToast(added ? "🔖 Formula saved!" : "Removed");
   render("formula");
 }
 
@@ -677,40 +672,6 @@ async function createCustomTest() {
 // Test engine: test-engine.js (startTest, renderTest, startChapterTest, startMockTest)
 
 // Leaderboard: leaderboard.js (Firebase live rankings)
-
-// ============ NOTEBOOK ============
-function viewNotebook() {
-  const notes = STATE.notes;
-  const bmQs = STATE.bookmarks.filter(b => typeof b === "number").map(getQ).filter(Boolean);
-  const bmFs = STATE.bookmarks.filter(b => typeof b === "string" && b.startsWith("f"))
-    .map(b => FORMULAS.find(f => "f"+f.id === b)).filter(Boolean);
-
-  return `${topbar("My Notebook", "Your saved notes, questions & formulas")}
-  <div class="nb-section">
-    <h3 class="sec-title">➕ Quick Note</h3>
-    <div class="note-add">
-      <textarea id="noteText" placeholder="Type a quick note or concept you want to remember..."></textarea>
-      <button class="btn-primary" onclick="addNoteFromInput()">Save Note</button>
-    </div>
-  </div>
-  <div class="nb-section">
-    <h3 class="sec-title">📝 My Notes (${notes.length})</h3>
-    ${notes.length ? notes.map(n => `<div class="note-card"><p>${n.text.replace(/</g,'&lt;')}</p>
-      <div class="note-meta"><small>${n.date}</small><button onclick="deleteNote(${n.id})">🗑️</button></div></div>`).join("")
-      : '<div class="empty">No notes yet. Add one above!</div>'}
-  </div>
-  <div class="nb-section">
-    <h3 class="sec-title">🔖 Saved Questions (${bmQs.length})</h3>
-    ${bmQs.length ? bmQs.map(q => `<div class="q-card" onclick="openPracticeQuestion(${q.id})"><div class="q-text qx-content">${typeof Mx!=="undefined"?Mx.html(q.q):q.q}</div>
-      <small>📖 ${q.subject} · ${q.chapter}</small></div>`).join("")
-      : '<div class="empty">Bookmark questions from practice to see them here.</div>'}
-  </div>
-  <div class="nb-section">
-    <h3 class="sec-title">🧮 Saved Formulas (${bmFs.length})</h3>
-    ${bmFs.length ? bmFs.map(f => `<div class="note-card"><div class="fc-formula qx-content">${typeof Mx!=="undefined"?Mx.html(f.formula):f.formula}</div><small>${f.subject} · ${f.topic}</small></div>`).join("")
-      : '<div class="empty">Bookmark formulas to revisit them quickly.</div>'}
-  </div>`;
-}
 
 function addNoteFromInput() {
   const txt = document.getElementById("noteText").value.trim();
@@ -767,6 +728,7 @@ function resetData() {
     localStorage.removeItem("quantrex_solved");
     localStorage.removeItem("quantrex_notes");
     localStorage.removeItem("quantrex_bookmarks");
+    localStorage.removeItem("quantrex_bookmarks_v2");
     showToast("🗑️ All progress reset");
     go("dashboard");
   }
