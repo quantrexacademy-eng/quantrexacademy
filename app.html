@@ -331,6 +331,65 @@
         .subj-mini { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all .15s; }
         .subj-mini:hover { border-color: var(--primary); background: var(--primary-light); }
         .subj-mini span { font-size: 20px; }
+
+        /* Dashboard home (screen 407) */
+        .dash-marks-wrap { max-width: 920px; }
+        .dash-greet-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+        .dash-greet-left { display: flex; align-items: center; gap: 14px; }
+        .dash-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--qx-gradient); color: #fff; font-family: 'Kanit'; font-weight: 800; font-size: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px var(--qx-glow); }
+        .dash-greet-left h1 { font-family: 'Kanit'; font-size: 26px; font-weight: 800; margin: 0; letter-spacing: -.03em; }
+        .dash-greet-left p { color: var(--gray); font-size: 14px; margin: 2px 0 0; font-weight: 600; }
+        .qx-premium-pill { display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 8px; background: linear-gradient(135deg, #f59e0b, #f97316); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: .04em; border: none; cursor: pointer; font-family: inherit; }
+        .dash-premium-btn { padding: 8px 16px; font-size: 12px; }
+        .dash-stats-compact { margin-bottom: 22px; }
+        .dash-board-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+        .dash-board-pill { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 12px; border: 1px solid var(--border); background: var(--card); color: var(--text); font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; transition: all .15s; }
+        .dash-board-pill.on { border-color: var(--primary); background: var(--primary-light); color: var(--primary-dark); box-shadow: 0 0 0 2px rgba(13,148,136,.15); }
+        [data-theme="dark"] .dash-board-pill.on { color: var(--primary); }
+        .dash-ncert-block { margin-bottom: 22px; }
+        .dash-ncert-head h2 { font-family: 'Kanit'; font-size: 22px; font-weight: 800; margin: 0 0 4px; }
+        .dash-ncert-tag { color: var(--accent, #7C3AED); }
+        .dash-ncert-head p { color: var(--gray); font-size: 13px; margin: 0 0 14px; }
+        .dash-tool-scroll { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: thin; }
+        .dash-tool-card { flex: 0 0 200px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px; cursor: pointer; transition: transform .15s, box-shadow .15s; }
+        .dash-tool-card:hover { transform: translateY(-2px); box-shadow: 0 8px 22px var(--qx-glow); border-color: var(--primary); }
+        .dash-tool-ic { font-size: 28px; display: block; margin-bottom: 10px; }
+        .dash-tool-card strong { display: block; font-size: 14px; margin-bottom: 4px; line-height: 1.3; }
+        .dash-tool-card small { color: var(--gray); font-size: 11px; }
+        .dash-promo-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px; }
+        .dash-assign-box { background: var(--qx-gradient); color: #fff; border-radius: 16px; padding: 20px; }
+        .dash-assign-box h3, .dash-teach-box h3 { font-family: 'Kanit'; font-size: 18px; font-weight: 800; margin: 0 0 8px; }
+        .dash-assign-box p, .dash-teach-box p { font-size: 13px; opacity: .92; margin: 0 0 16px; line-height: 1.45; }
+        .dash-assign-btn { background: #fff; color: var(--primary-dark); border: none; padding: 10px 18px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; font-family: inherit; }
+        .dash-teach-box { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+        .dash-teach-btn { background: var(--green); color: #fff; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; font-family: inherit; }
+        .dash-util-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+        .dash-util-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px; cursor: pointer; transition: all .15s; }
+        .dash-util-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+        .dash-util-ic { font-size: 24px; display: block; margin-bottom: 8px; }
+        .dash-util-card strong { display: block; font-size: 14px; margin-bottom: 4px; }
+        .dash-util-card small { color: var(--gray); font-size: 11px; }
+
+        /* Solve DPPs (screen 408) */
+        .dpp-marks-page { max-width: 720px; margin: 0 auto; padding-top: 8px; }
+        .dpp-marks-head { margin-bottom: 20px; }
+        .dpp-marks-head h1 { font-family: 'Kanit'; font-size: 28px; font-weight: 800; margin: 0 0 8px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .dpp-social-proof { color: var(--gray); font-size: 13px; font-weight: 700; letter-spacing: .02em; margin: 0; text-transform: uppercase; }
+        .dpp-promo-banner { display: flex; align-items: flex-start; gap: 10px; background: rgba(249,115,22,.12); border: 1px solid rgba(249,115,22,.35); border-radius: 12px; padding: 14px 16px; margin-bottom: 24px; font-size: 13px; font-weight: 600; line-height: 1.45; color: var(--text); }
+        .dpp-promo-ic { color: #f97316; font-size: 20px; font-weight: 800; flex-shrink: 0; }
+        .dpp-promo-banner b { color: #f97316; }
+        .dpp-subj-row { display: flex; flex-direction: column; gap: 14px; }
+        .dpp-subj-card { display: flex; align-items: center; gap: 16px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px 20px; cursor: pointer; transition: transform .15s, box-shadow .15s, border-color .15s; }
+        .dpp-subj-card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px var(--qx-glow); border-color: var(--primary); }
+        .dpp-subj-ic { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+        .dpp-subj-body { flex: 1; min-width: 0; }
+        .dpp-subj-body strong { display: block; font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+        .dpp-subj-body small { color: var(--gray); font-size: 13px; font-weight: 600; }
+        .dpp-subj-arr { font-size: 28px; color: var(--gray); font-weight: 300; opacity: .7; }
+        @media (max-width: 720px) {
+            .dash-promo-duo, .dash-util-row { grid-template-columns: 1fr; }
+            .dash-greet-bar { flex-direction: column; align-items: flex-start; }
+        }
         .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 18px; margin-bottom: 24px; }
         .books-scroll { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
         .books-scroll .qx-book-card-compact { flex: 0 0 156px; scroll-snap-align: start; }
@@ -1046,7 +1105,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxbrand1</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxdash408</div>
             </div>
         </aside>
 
@@ -1072,26 +1131,26 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
-    <script>window.QX_BUILD="qxbrand1";</script>
-    <script src="qx-perf.js?v=qxbrand1"></script>
-    <script src="firebase-config.js?v=qxbrand1" defer></script>
-    <script src="stack-config.js?v=qxbrand1" defer></script>
-    <script src="math-render.js?v=qxbrand1" defer></script>
-    <script src="data.js?v=qxbrand1" defer></script>
-    <script src="firebase-db.js?v=qxbrand1" defer></script>
-    <script src="firebase-storage.js?v=qxbrand1" defer></script>
-    <script src="payments.js?v=qxbrand1" defer></script>
-    <script src="premium.js?v=qxbrand1" defer></script>
-    <script src="leaderboard.js?v=qxbrand1" defer></script>
-    <script src="community.js?v=qxbrand1" defer></script>
-    <script src="book-covers.js?v=qxbrand1" defer></script>
-    <script src="marks-shell.js?v=qxbrand1" defer></script>
-    <script src="marks-features.js?v=qxbrand1" defer></script>
-    <script src="custom-test.js?v=qxbrand1" defer></script>
-    <script src="test-engine.js?v=qxbrand1" defer></script>
-    <script src="analytics.js?v=qxbrand1" defer></script>
-    <script src="search.js?v=qxbrand1" defer></script>
-    <script src="theme.js?v=qxbrand1" defer></script>
-    <script src="app.js?v=qxbrand1" defer></script>
+    <script>window.QX_BUILD="qxdash408";</script>
+    <script src="qx-perf.js?v=qxdash408"></script>
+    <script src="firebase-config.js?v=qxdash408" defer></script>
+    <script src="stack-config.js?v=qxdash408" defer></script>
+    <script src="math-render.js?v=qxdash408" defer></script>
+    <script src="data.js?v=qxdash408" defer></script>
+    <script src="firebase-db.js?v=qxdash408" defer></script>
+    <script src="firebase-storage.js?v=qxdash408" defer></script>
+    <script src="payments.js?v=qxdash408" defer></script>
+    <script src="premium.js?v=qxdash408" defer></script>
+    <script src="leaderboard.js?v=qxdash408" defer></script>
+    <script src="community.js?v=qxdash408" defer></script>
+    <script src="book-covers.js?v=qxdash408" defer></script>
+    <script src="marks-shell.js?v=qxdash408" defer></script>
+    <script src="marks-features.js?v=qxdash408" defer></script>
+    <script src="custom-test.js?v=qxdash408" defer></script>
+    <script src="test-engine.js?v=qxdash408" defer></script>
+    <script src="analytics.js?v=qxdash408" defer></script>
+    <script src="search.js?v=qxdash408" defer></script>
+    <script src="theme.js?v=qxdash408" defer></script>
+    <script src="app.js?v=qxdash408" defer></script>
 </body>
 </html>

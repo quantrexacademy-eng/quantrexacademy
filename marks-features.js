@@ -69,6 +69,46 @@ function subjectIcon(subj) {
   return m[subj] || "📖";
 }
 
+function dashUserName() {
+  try {
+    const u = JSON.parse(localStorage.getItem("quantrex_user") || "null");
+    if (u && u.name) return String(u.name).split(" ")[0];
+    if (u && u.email) return String(u.email).split("@")[0];
+  } catch (e) { /* ignore */ }
+  return "Student";
+}
+
+function dashUserInitial() {
+  return dashUserName().slice(0, 1).toUpperCase() || "S";
+}
+
+function dashBoardSelected() {
+  return localStorage.getItem("quantrex_board") || "CBSE";
+}
+
+function dppSubjectStyle(name) {
+  const m = {
+    Physics: { tone: "phy", icon: "⚛️", color: "#f97316", bg: "rgba(249,115,22,.15)" },
+    Chemistry: { tone: "chem", icon: "🧪", color: "#22c55e", bg: "rgba(34,197,94,.15)" },
+    Mathematics: { tone: "math", icon: "➕", color: "#3b82f6", bg: "rgba(59,130,246,.15)" },
+    Biology: { tone: "bio", icon: "🧬", color: "#ec4899", bg: "rgba(236,72,153,.15)" },
+    Botany: { tone: "bot", icon: "🌿", color: "#10b981", bg: "rgba(16,185,129,.15)" },
+    Zoology: { tone: "zoo", icon: "🦠", color: "#f59e0b", bg: "rgba(245,158,11,.15)" }
+  };
+  return m[name] || { tone: "sub", icon: subjectIcon(name), color: "#94a3b8", bg: "rgba(148,163,184,.15)" };
+}
+
+function dppLiveAspirantCount() {
+  const base = 620 + (new Date().getHours() % 12) * 7;
+  return base + (new Date().getMinutes() % 50);
+}
+
+function dppTotalSets(nav) {
+  let n = 0;
+  (nav || []).forEach(s => (s.chapters || []).forEach(c => { n += (c.sets || []).length; }));
+  return n || 700;
+}
+
 function bookQuestionLabel(q) {
   if (!q || !q._book) return null;
   const bid = q._bookId || q._book;
@@ -802,13 +842,31 @@ async function viewDppMarks(payload) {
 
   if (p.step === "subjects" || !p.subject) {
     _lastListFn = () => ({ step: "subjects" });
-    const cards = nav.map(s => `
-      <div class="subj-card" ${mg("dpp", { step: "chapters", subject: s.name })}>
-        <span class="subj-ic">${subjectIcon(s.name)}</span>
-        <div><strong>${s.name}</strong><small>${s.chapters.length} chapters · ${s.count} DPP sets</small></div>
-      </div>`).join("");
-    return `${topbar("Solve DPPs", "620+ aspirants solved DPP in the last hour! 🔥")}
-      <div class="subj-grid">${cards || '<div class="empty">No DPP data.</div>'}</div>`;
+    const aspirants = dppLiveAspirantCount();
+    const totalSets = dppTotalSets(nav);
+    const cards = nav.map(s => {
+      const st = dppSubjectStyle(s.name);
+      const chCount = (s.chapters || []).length;
+      return `<div class="dpp-subj-card tone-${st.tone}" ${mg("dpp", { step: "chapters", subject: s.name })}>
+        <div class="dpp-subj-ic" style="background:${st.bg};color:${st.color}">${st.icon}</div>
+        <div class="dpp-subj-body">
+          <strong>${s.name}</strong>
+          <small>${chCount} Chapter${chCount === 1 ? "" : "s"}</small>
+        </div>
+        <span class="dpp-subj-arr">›</span>
+      </div>`;
+    }).join("");
+    return `<div class="dpp-marks-page">
+      <div class="dpp-marks-head">
+        <h1>Solve DPPs <span class="qx-premium-pill">PREMIUM</span></h1>
+        <p class="dpp-social-proof">${aspirants}+ ASPIRANTS SOLVED DPP IN 1 LAST HR! 🔥</p>
+      </div>
+      <div class="dpp-promo-banner">
+        <span class="dpp-promo-ic">›</span>
+        <span>NOW SOLVE <b>${totalSets}+</b> DIFFICULTY-WISE DPPS HANDPICKED BY EXPERTS FOR EACH CHAPTER!</span>
+      </div>
+      <div class="dpp-subj-row">${cards || '<div class="empty">No DPP data.</div>'}</div>
+    </div>`;
   }
 
   const subj = nav.find(s => s.name === p.subject);
@@ -1729,39 +1787,88 @@ async function viewQuickConcepts(payload) {
     ${examples ? `<h3 class="sec-title">Examples</h3><div class="qc-examples">${examples}</div>` : ""}`;
 }
 
-// ============ MARKS-STYLE DASHBOARD SECTIONS ============
+// ============ MARKS-STYLE DASHBOARD (screens 407 + 408 flow) ============
 async function marksDashboardSections() {
-  const [nav, bookCatalog] = await Promise.all([fetchNav("cpyqb"), fetchBooks()]);
-  const exams = nav.filter(e => e.category === STATE.exam).slice(0, 8);
+  const [bookCatalog] = await Promise.all([fetchBooks()]);
   const dashBooks = STATE.exam === "Medical"
     ? (bookCatalog.medical || [])
     : (bookCatalog.engineering || []);
   const bookScroll = typeof renderBookScroll === "function" ? renderBookScroll(dashBooks, 7) : "";
-  const examScroll = exams.map(e => `
-    <div class="exam-pill-card" ${mg("cpyqb", { step: "subjects", exam: e.slug })}>
-      <strong>${e.title}</strong><small>${e.count.toLocaleString()} qs</small>
+  const examLabel = EXAMS[STATE.exam].name;
+  const board = dashBoardSelected();
+  const boards = [
+    { id: "CBSE", label: "CBSE", icon: "📘" },
+    { id: "HSC", label: "HSC (Maharashtra)", icon: "🟡" }
+  ];
+  const boardPills = boards.map(b => `
+    <button type="button" class="dash-board-pill${board === b.id ? " on" : ""}" data-dash-board="${b.id}">
+      <span>${b.icon}</span>${b.label}
+    </button>`).join("");
+
+  const ncertTools = STATE.exam === "Medical" ? [
+    { icon: "📋", title: "NCERT Line by Line Qs", sub: "NEET syllabus aligned", view: "ncert", payload: { step: "subjects" } },
+    { icon: "🔵", title: "NCERT & Exemplar Qs", sub: "Board + exemplar mix", view: "ncert", payload: { step: "subjects" } },
+    { icon: "🩺", title: "Diagram Based Qs", sub: "Image-based practice", view: "allqs", payload: { step: "subjects" } }
+  ] : [
+    { icon: "📋", title: "NCERT Line by Line Qs", sub: "Concept-by-concept", view: "ncert", payload: { step: "subjects" } },
+    { icon: "🔵", title: "NCERT & Exemplar Qs", sub: "Class 11 & 12 mix", view: "ncert", payload: { step: "subjects" } },
+    { icon: "📊", title: "Diagram Based Qs", sub: "Visual PYQ practice", view: "allqs", payload: { step: "subjects" } }
+  ];
+  const toolCards = ncertTools.map(t => `
+    <div class="dash-tool-card" ${mg(t.view, t.payload)}>
+      <span class="dash-tool-ic">${t.icon}</span>
+      <strong>${t.title}</strong>
+      <small>${t.sub}</small>
     </div>`).join("");
-  const subjects = EXAMS[STATE.exam].subjects;
-  const subjGrid = subjects.map(s => `
-    <div class="subj-mini" ${mg("allqs", { step: "chapters", subject: s })}>
-      <span>${subjectIcon(s)}</span><strong>${s}</strong>
+
+  const utilCards = [
+    { icon: "✏️", title: "My Solutions", sub: "Bookmarks & notes", view: "notebook" },
+    { icon: "📗", title: STATE.exam === "Medical" ? "NEET Revision Notes" : "JEE Main Revision Notes", sub: "Quick Concepts", view: "quickconcepts", payload: { step: "subjects" } },
+    { icon: "📕", title: STATE.exam === "Medical" ? "NEET Formula Sheet" : "JEE Main Formula Sheet", sub: "All formulas", view: "formula", payload: { step: "subjects" } }
+  ].map(c => `
+    <div class="dash-util-card" ${mg(c.view, c.payload || {})}>
+      <span class="dash-util-ic">${c.icon}</span>
+      <strong>${c.title}</strong>
+      <small>${c.sub}</small>
     </div>`).join("");
+
   return `
-    <div class="marks-section">
-      <div class="marks-sec-head"><h3>All Question Bank</h3><a href="#" ${mg("allqs", { step: "subjects" })}>View All →</a></div>
-      <div class="subj-mini-grid">${subjGrid}</div>
-    </div>
-    ${STATE.exam === "Medical" ? `<div class="marks-section">
-      <div class="marks-sec-head"><h3>NCERT Based Qs Bank</h3><a href="#" ${mg("ncert", { step: "subjects" })}>Open →</a></div>
-      <p class="sec-desc">100% aligned with latest NEET syllabus</p>
-    </div>` : ""}
-    <div class="marks-section">
-      <div class="marks-sec-head"><h3>Digital Books</h3><a href="#" ${mg("books", { step: "list" })}>View All →</a></div>
-      <p class="sec-desc">HC Verma, Irodov, 99% Bank & more — tap cover to open</p>
-      ${bookScroll}
-    </div>
-    <div class="marks-section">
-      <div class="marks-sec-head"><h3>Chapter-wise PYQ Bank</h3><a href="#" ${mg("cpyqb", {})}>View All →</a></div>
-      <div class="exam-scroll">${examScroll}</div>
+    <div class="dash-marks-home">
+      <div class="dash-board-row">${boardPills}</div>
+      <div class="dash-ncert-block">
+        <div class="dash-ncert-head">
+          <h2><span class="dash-ncert-tag">NCERT</span> Toolbox</h2>
+          <p>For future Doctors and Engineers</p>
+        </div>
+        <div class="dash-tool-scroll">${toolCards}</div>
+      </div>
+      <div class="dash-promo-duo">
+        <div class="dash-assign-box">
+          <h3>Quantrex Assignment</h3>
+          <p>A new way of classroom learning.</p>
+          <button type="button" class="dash-assign-btn" onclick="showToast('📋 Assignments launching soon — stay tuned!')">View Assignments</button>
+        </div>
+        <div class="dash-teach-box">
+          <h3>Quantrex For Teachers</h3>
+          <p>Create live assignments &amp; share with your students.</p>
+          <button type="button" class="dash-teach-btn" onclick="showToast('👩‍🏫 Teacher portal coming soon!')">Explore Now →</button>
+        </div>
+      </div>
+      <div class="dash-util-row">${utilCards}</div>
+      <div class="marks-section">
+        <div class="marks-sec-head"><h3>Digital Books</h3><a href="#" ${mg("books", { step: "list" })}>View books →</a></div>
+        <p class="sec-desc">Expert-picked question banks — tap a cover to practice</p>
+        ${bookScroll}
+      </div>
     </div>`;
+}
+
+function bindDashHome(root) {
+  (root || document).querySelectorAll("[data-dash-board]").forEach(btn => {
+    btn.onclick = () => {
+      localStorage.setItem("quantrex_board", btn.dataset.dashBoard);
+      document.querySelectorAll("[data-dash-board]").forEach(b => b.classList.toggle("on", b === btn));
+      showToast(`📚 Board: ${btn.textContent.trim()}`);
+    };
+  });
 }

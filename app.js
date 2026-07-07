@@ -24,6 +24,7 @@ function finishRender(html) {
   if (typeof bindCpyqbFilters === "function") bindCpyqbFilters(main);
   if (typeof bindMarksInfiniteScroll === "function") bindMarksInfiniteScroll(main);
   if (typeof bindBooksOpen === "function") bindBooksOpen(main);
+  if (typeof bindDashHome === "function") bindDashHome(main);
   if (typeof QuantrexSearch !== "undefined") QuantrexSearch.bind(main);
   if (typeof MarksShell !== "undefined") {
     MarksShell.bind(main);
@@ -105,12 +106,17 @@ function filterChips(items, activeKey, filterFn, allLabel) {
   return html + "</div>";
 }
 
-// ============ DASHBOARD (MARKS-style) ============
+// ============ DASHBOARD (MARKS home — screen 407) ============
 async function viewDashboard() {
   const exam = EXAMS[STATE.exam];
   const solved = STATE.solved;
   const correct = solved.filter(s => s.correct).length;
   const accuracy = solved.length ? Math.round(correct / solved.length * 100) : 0;
+  const name = typeof dashUserName === "function" ? dashUserName() : "Student";
+  const initial = typeof dashUserInitial === "function" ? dashUserInitial() : "S";
+
+  const todayDPP = DPPS.filter(d => d.date === "Today")[0];
+  const marksSections = typeof marksDashboardSections === "function" ? await marksDashboardSections() : "";
 
   const moduleCards = MODULES.map(m => `
     <div class="dash-card" onclick="go('${m.target || m.id}')">
@@ -119,26 +125,34 @@ async function viewDashboard() {
       <small>${m.desc}</small>
     </div>`).join("");
 
-  const todayDPP = DPPS.filter(d => d.date === "Today")[0];
-  const marksSections = typeof marksDashboardSections === "function" ? await marksDashboardSections() : "";
-
-  return `${topbar(`Welcome back 👋`, `${exam.name} · Keep your streak alive!`)}
-  <div class="dash-stats">
-    <div class="ds"><strong>${solved.length}</strong><small>Questions Solved</small></div>
-    <div class="ds"><strong>${accuracy}%</strong><small>Accuracy</small></div>
-    <div class="ds"><strong>${STATE.bookmarks.length}</strong><small>Bookmarked</small></div>
-    <div class="ds"><strong>🔥 14</strong><small>Day Streak</small></div>
-  </div>
-  ${todayDPP ? `<div class="dpp-banner" onclick="startDppSet('${todayDPP.id}')">
-    <div class="dpp-banner-left">
-      <span class="live-dot"></span>
-      <div><strong>Today's DPP is Live</strong><small>${todayDPP.title}</small></div>
+  return `<div class="dash-marks-wrap">
+    <div class="dash-greet-bar">
+      <div class="dash-greet-left">
+        <div class="dash-avatar">${initial}</div>
+        <div>
+          <h1>Hey, ${name}!</h1>
+          <p>${exam.name}</p>
+        </div>
+      </div>
+      <button type="button" class="qx-premium-pill dash-premium-btn" onclick="go('premium')">QUANTREX PREMIUM</button>
     </div>
-    <span class="dpp-go">Start →</span>
-  </div>` : ""}
-  ${marksSections}
-  <h3 class="sec-title">All Modules</h3>
-  <div class="dash-grid">${moduleCards}</div>`;
+    <div class="dash-stats dash-stats-compact">
+      <div class="ds"><strong>${solved.length}</strong><small>Solved</small></div>
+      <div class="ds"><strong>${accuracy}%</strong><small>Accuracy</small></div>
+      <div class="ds"><strong>${STATE.bookmarks.length}</strong><small>Bookmarks</small></div>
+      <div class="ds"><strong>🔥 14</strong><small>Streak</small></div>
+    </div>
+    ${todayDPP ? `<div class="dpp-banner" onclick="startDppSet('${todayDPP.id}')">
+      <div class="dpp-banner-left">
+        <span class="live-dot"></span>
+        <div><strong>Today's DPP is Live</strong><small>${todayDPP.title}</small></div>
+      </div>
+      <span class="dpp-go">Start →</span>
+    </div>` : ""}
+    ${marksSections}
+    <h3 class="sec-title">All Modules</h3>
+    <div class="dash-grid">${moduleCards}</div>
+  </div>`;
 }
 
 // ============ PRACTICE (PYQ Question Bank) ============
