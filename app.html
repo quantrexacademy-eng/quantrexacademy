@@ -955,6 +955,14 @@
         .marks-modal-foot { display: flex; gap: 10px; padding: 16px 20px; border-top: 1px solid #2a2f3d; }
         .marks-modal-cancel { flex: 1; background: #2a2f3d; border: none; color: #cbd5e1; padding: 12px; border-radius: 10px; font-weight: 600; cursor: pointer; font-family: inherit; }
         .marks-modal-apply { flex: 1; background: #f1f5f9; border: none; color: #0f172a; padding: 12px; border-radius: 10px; font-weight: 700; cursor: pointer; font-family: inherit; }
+        .qx-report-modal { max-width: 440px; }
+        .qx-report-hint { font-size: 13px; color: #94a3b8; margin: 0 0 12px; }
+        .qx-report-types { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+        .qx-report-type { border: 1px solid #3b4254; background: #12151c; color: #e2e8f0; padding: 8px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit; }
+        .qx-report-type.on { background: rgba(249,115,22,.2); border-color: #f97316; color: #fdba74; }
+        .qx-report-notes-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #94a3b8; margin-bottom: 8px; }
+        .qx-report-notes { width: 100%; box-sizing: border-box; background: #12151c; border: 1px solid #3b4254; border-radius: 10px; color: #e2e8f0; padding: 10px 12px; font-family: inherit; font-size: 14px; resize: vertical; }
+        .mtk-report-btn { background: none; border: 1px solid #3b4254; color: #94a3b8; border-radius: 8px; padding: 6px 10px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: inherit; }
         .marks-preview-modal { max-width: 480px; }
         .marks-preview-title { font-size: 20px; font-weight: 800; margin: 0 0 12px; }
         .marks-preview-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
@@ -1151,7 +1159,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxboard411</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxoptions412</div>
             </div>
         </aside>
 
@@ -1177,28 +1185,28 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
-    <script>window.QX_BUILD="qxboard411";</script>
-    <script src="qx-perf.js?v=qxboard411"></script>
-    <script src="firebase-config.js?v=qxboard411" defer></script>
-    <script src="stack-config.js?v=qxboard411" defer></script>
-    <script src="math-render.js?v=qxboard411" defer></script>
-    <script src="data.js?v=qxboard411" defer></script>
-    <script src="firebase-db.js?v=qxboard411" defer></script>
-    <script src="firebase-storage.js?v=qxboard411" defer></script>
-    <script src="payments.js?v=qxboard411" defer></script>
-    <script src="premium.js?v=qxboard411" defer></script>
-    <script src="leaderboard.js?v=qxboard411" defer></script>
-    <script src="community.js?v=qxboard411" defer></script>
-    <script src="book-covers.js?v=qxboard411" defer></script>
-    <script src="marks-shell.js?v=qxboard411" defer></script>
-    <script src="marks-live.js?v=qxboard411" defer></script>
-    <script src="marks-features.js?v=qxboard411" defer></script>
-    <script src="assignments.js?v=qxboard411" defer></script>
-    <script src="custom-test.js?v=qxboard411" defer></script>
-    <script src="test-engine.js?v=qxboard411" defer></script>
-    <script src="analytics.js?v=qxboard411" defer></script>
-    <script src="search.js?v=qxboard411" defer></script>
-    <script src="theme.js?v=qxboard411" defer></script>
-    <script src="app.js?v=qxboard411" defer></script>
+    <script>window.QX_BUILD="qxoptions412";</script>
+    <script src="qx-perf.js?v=qxoptions412"></script>
+    <script src="firebase-config.js?v=qxoptions412" defer></script>
+    <script src="stack-config.js?v=qxoptions412" defer></script>
+    <script src="math-render.js?v=qxoptions412" defer></script>
+    <script src="data.js?v=qxoptions412" defer></script>
+    <script src="firebase-db.js?v=qxoptions412" defer></script>
+    <script src="firebase-storage.js?v=qxoptions412" defer></script>
+    <script src="payments.js?v=qxoptions412" defer></script>
+    <script src="premium.js?v=qxoptions412" defer></script>
+    <script src="leaderboard.js?v=qxoptions412" defer></script>
+    <script src="community.js?v=qxoptions412" defer></script>
+    <script src="book-covers.js?v=qxoptions412" defer></script>
+    <script src="marks-shell.js?v=qxoptions412" defer></script>
+    <script src="marks-live.js?v=qxoptions412" defer></script>
+    <script src="marks-features.js?v=qxoptions412" defer></script>
+    <script src="assignments.js?v=qxoptions412" defer></script>
+    <script src="custom-test.js?v=qxoptions412" defer></script>
+    <script src="test-engine.js?v=qxoptions412" defer></script>
+    <script src="analytics.js?v=qxoptions412" defer></script>
+    <script src="search.js?v=qxoptions412" defer></script>
+    <script src="theme.js?v=qxoptions412" defer></script>
+    <script src="app.js?v=qxoptions412" defer></script>
 </body>
 </html>

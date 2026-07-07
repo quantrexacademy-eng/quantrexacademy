@@ -249,10 +249,10 @@ window._qxPracticeCtx = null;
 
 async function openPracticeQuestion(id) {
   let q = getQ(id);
-  if (q && q._needsFull && q._marksId && typeof MarksLive !== "undefined") {
+  if (q && typeof MarksLive !== "undefined" && MarksLive.needsFullQuestion(q)) {
     try {
-      showToast("📚 Loading question…");
-      q = await MarksLive.fetchFullQuestion(q._marksId, { subject: q.subject, chapter: q.chapter, bank: q._bank });
+      showToast("📚 Loading full question…");
+      q = await MarksLive.ensureQuestionFull(q);
     } catch (e) { /* use preview */ }
   }
   const list = window._qxListQs || [];
@@ -268,6 +268,97 @@ async function openPracticeQuestion(id) {
   };
   go("question", id);
 }
+
+const QX_REPORT_TYPES = [
+  { id: "wrong_answer", label: "Wrong answer key" },
+  { id: "wrong_question", label: "Wrong question text" },
+  { id: "wrong_options", label: "Wrong / missing options" },
+  { id: "image_missing", label: "Image / diagram missing" },
+  { id: "solution_wrong", label: "Solution incorrect" },
+  { id: "other", label: "Other mistake" }
+];
+
+function qxCloseReportModal() {
+  const el = document.getElementById("qxReportModal");
+  if (el) el.remove();
+}
+
+function qxReportModalHtml(q) {
+  const types = QX_REPORT_TYPES.map(t =>
+    `<button type="button" class="qx-report-type" data-report-type="${t.id}">${t.label}</button>`
+  ).join("");
+  return `<div class="marks-modal-overlay" id="qxReportModal" onclick="if(event.target===this)qxCloseReportModal()">
+    <div class="marks-modal qx-report-modal">
+      <div class="marks-modal-head">
+        <h3>Report Question</h3>
+        <button type="button" class="marks-modal-clear" onclick="qxCloseReportModal()">✕</button>
+      </div>
+      <div class="marks-modal-body">
+        <p class="qx-report-hint">Select mistake type (no name needed)</p>
+        <div class="qx-report-types" id="qxReportTypes">${types}</div>
+        <label class="qx-report-notes-label">Notes (optional)</label>
+        <textarea class="qx-report-notes" id="qxReportNotes" rows="3" placeholder="Describe the issue…"></textarea>
+      </div>
+      <div class="marks-modal-foot">
+        <button type="button" class="marks-modal-cancel" onclick="qxCloseReportModal()">Cancel</button>
+        <button type="button" class="marks-modal-apply" id="qxReportSubmit">Submit Report</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function qxBindReportModal(q) {
+  let selected = null;
+  document.querySelectorAll(".qx-report-type").forEach(btn => {
+    btn.onclick = () => {
+      selected = btn.dataset.reportType;
+      document.querySelectorAll(".qx-report-type").forEach(b => b.classList.toggle("on", b === btn));
+    };
+  });
+  const submit = document.getElementById("qxReportSubmit");
+  if (submit) submit.onclick = () => qxSubmitQuestionReport(q, selected);
+}
+
+async function qxSubmitQuestionReport(q, type) {
+  if (!type) {
+    showToast("⚠️ Select mistake type first");
+    return;
+  }
+  const notes = (document.getElementById("qxReportNotes")?.value || "").trim();
+  const payload = {
+    questionId: q.id,
+    marksId: q._marksId || null,
+    type,
+    notes,
+    subject: q.subject || "",
+    chapter: q.chapter || "",
+    source: q.source || q.paperSource || "",
+    bank: q._bank || "",
+    ts: Date.now()
+  };
+  try {
+    const key = "quantrex_question_reports";
+    const prev = JSON.parse(localStorage.getItem(key) || "[]");
+    prev.push(payload);
+    localStorage.setItem(key, JSON.stringify(prev.slice(-300)));
+    if (typeof firebase !== "undefined" && firebase.firestore) {
+      firebase.firestore().collection("question_reports").add(payload).catch(() => {});
+    }
+  } catch (e) { /* ignore */ }
+  qxCloseReportModal();
+  showToast("✅ Report submitted — thank you!");
+}
+
+function openQuestionReport(qid) {
+  const q = getQ(qid);
+  if (!q) { showToast("⚠️ Question not found"); return; }
+  qxCloseReportModal();
+  document.body.insertAdjacentHTML("beforeend", qxReportModalHtml(q));
+  qxBindReportModal(q);
+}
+
+window.openQuestionReport = openQuestionReport;
+window.qxCloseReportModal = qxCloseReportModal;
 
 function qxPracticeBack() {
   const ctx = window._qxPracticeCtx;
@@ -340,7 +431,7 @@ function viewQuestion(id) {
       </div>
       <div class="qx-prac-actions">
         <button type="button" class="qx-prac-icon ${bm ? "on" : ""}" onclick="toggleBm(${q.id})" title="Bookmark">${bm ? "🔖" : "🤍"}</button>
-        <button type="button" class="qx-prac-icon" onclick="showToast('🚩 Thanks — report noted.')" title="Report">🚩</button>
+        <button type="button" class="qx-prac-icon" onclick="openQuestionReport(${q.id})" title="Report mistake">🚩</button>
       </div>
     </header>
     <div class="qx-prac-meta">
@@ -364,9 +455,11 @@ function viewQuestion(id) {
 function qxPracticeResultHtml(q, sel) {
   const correct = sel === q.answer;
   const solHtml = typeof Mx !== "undefined" ? Mx.html(q.solution) : q.solution;
+  const ansOpt = (q.options && q.options[q.answer]) ? q.options[q.answer] : String.fromCharCode(65 + q.answer);
+  const ansLabel = typeof Mx !== "undefined" ? Mx.html(ansOpt) : ansOpt;
   return `<div class="result-box ${correct ? "ok" : "no"}">
     <strong>${correct ? "✅ Correct!" : "❌ Incorrect"}</strong>
-    ${!correct ? `<p class="qx-prac-correct-ans">Correct answer: <b>${String.fromCharCode(65 + q.answer)}</b></p>` : ""}
+    ${!correct ? `<p class="qx-prac-correct-ans">Correct answer: <b>${String.fromCharCode(65 + q.answer)}.</b> <span class="qx-content">${ansLabel}</span></p>` : ""}
     <div class="sol"><strong>💡 Solution</strong><div class="qx-content sol-body">${solHtml}</div></div>
   </div>`;
 }

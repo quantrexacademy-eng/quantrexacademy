@@ -879,14 +879,20 @@ async function viewBoardMarksBank(payload) {
     return `${topbar(p.chapter, p.subject + " · " + boardName)}${bc}${blocks || '<div class="empty">No buckets for this chapter.</div>'}`;
   }
 
-  showToast("📚 Loading board questions…");
+  showToast("📚 Loading board questions with options…");
   const bucketData = await MarksLive.boardBucketQuestions(
     examId, subj.id, chapterId, p.bucketId, 0, 200,
     { subject: p.subject, chapter: p.chapter, examName: boardName, bank: "board_live" }
   );
-  let qs = await MarksLive.hydrateQuestions(bucketData.questions || [], {
-    subject: p.subject, chapter: p.chapter, examName: boardName, bank: "board_live"
-  });
+  let qs = bucketData.questions || [];
+  if (MarksLive.prefetchQuestions) {
+    await MarksLive.prefetchQuestions(qs.map(q => q.id));
+    qs = qs.map(q => getQ(q.id) || q);
+  } else {
+    qs = await MarksLive.hydrateQuestions(qs, {
+      subject: p.subject, chapter: p.chapter, examName: boardName, bank: "board_live"
+    });
+  }
 
   _lastListFn = () => ({ ...p, step: "questions" });
   const modeLabel = p.bucketTitle || "Questions";
@@ -1759,6 +1765,10 @@ async function startPyqPaperMock(slug, source, freshStart) {
   const key = pyqPersistKey(slug, source);
   if (freshStart) marksClearSession();
   const ids = qs.map(q => q.id);
+  if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
+    showToast("📚 Loading full paper options from MARKS…");
+    await MarksLive.prefetchQuestions(ids);
+  }
   const duration = pyqPaperDuration(qs.length);
   const attemptKey = pyqAttemptKey(slug, source);
   const title = pyqFullPaperTitle(source);

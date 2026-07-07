@@ -87,23 +87,65 @@ const MarksLive = (() => {
     return b === "HSC" ? "HSC (Maharashtra)" : "CBSE";
   }
 
-  function normalizeFull(data, meta) {
-    const d = data.data || data;
+  function isPlaceholderOptions(options) {
+    if (!options || !options.length) return true;
+    const letters = new Set(["A", "B", "C", "D", "a", "b", "c", "d", "1", "2", "3", "4"]);
+    return options.every(o => {
+      const t = String(o || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      return !t || letters.has(t);
+    });
+  }
+
+  function needsFullQuestion(q) {
+    if (!q || !q._marksId) return false;
+    return !!q._needsFull || isPlaceholderOptions(q.options) || !String(q.solution || "").trim();
+  }
+
+  function fieldsFromApi(d, meta) {
     const qBody = d.question || d.title || {};
-    const opts = (d.options || []).map(o => htmlPart(o.text, o.image));
-    let answer = opts.findIndex((_, i) => d.options[i] && d.options[i].isCorrect);
+    const rawOpts = d.options || [];
+    const opts = rawOpts.map(o => htmlPart(o.text, o.image));
+    let answer = rawOpts.findIndex(o => o && o.isCorrect);
     if (answer < 0 && d.correctValue != null) answer = 0;
+    if (answer < 0 && d.type === "numerical") answer = 0;
 
     const papers = d.previousYearPapers || d.yearsAppeared || [];
     const paper = papers[0] || {};
-    const source = paper.title || meta.source || "MARKS";
+    const source = paper.title || meta.source || d.source || "MARKS";
     const paperDate = paper.heldOn || d.previousYear || null;
 
+    return {
+      q: htmlPart(qBody.text, qBody.image),
+      options: opts.length ? opts : [],
+      answer: Math.max(0, answer),
+      solution: htmlPart((d.solution || {}).text, (d.solution || {}).image),
+      difficulty: levelLabel(d.level),
+      source,
+      paperDate,
+      paperSource: source,
+      _needsFull: false,
+      questionType: d.type || d.questionType || "singleCorrect"
+    };
+  }
+
+  function normalizeFull(data, meta) {
+    const d = data.data || data;
     const marksId = d._id || d.id;
+    const fields = fieldsFromApi(d, meta || {});
+
     let existing = marksId && typeof QUESTIONS !== "undefined"
       ? QUESTIONS.find(q => q._marksId === marksId)
       : null;
-    if (existing) return existing;
+
+    if (existing) {
+      Object.assign(existing, fields, {
+        subject: meta.subject || existing.subject,
+        chapter: meta.chapter || existing.chapter,
+        _bank: meta.bank || existing._bank
+      });
+      _fullCache[marksId] = existing;
+      return existing;
+    }
 
     const rec = {
       id: _idSeq++,
@@ -114,16 +156,11 @@ const MarksLive = (() => {
       chapter: meta.chapter || "",
       exam: meta.exam || (typeof STATE !== "undefined" ? STATE.exam : "Engineering"),
       examName: meta.examName || boardLabel(),
-      q: htmlPart(qBody.text, qBody.image),
-      options: opts.length ? opts : ["A", "B", "C", "D"],
-      answer: Math.max(0, answer),
-      solution: htmlPart((d.solution || {}).text, (d.solution || {}).image),
-      difficulty: levelLabel(d.level),
-      source,
-      paperDate,
-      paperSource: source
+      ...fields
     };
+    if (!rec.options.length) rec.options = ["Option A", "Option B", "Option C", "Option D"];
     if (typeof QUESTIONS !== "undefined") QUESTIONS.push(rec);
+    _fullCache[marksId] = rec;
     return rec;
   }
 
@@ -163,20 +200,33 @@ const MarksLive = (() => {
     return rec;
   }
 
-  async function fetchFullQuestion(qid, meta) {
-    if (_fullCache[qid]) return _fullCache[qid];
+  async function fetchFullQuestion(qid, meta, force) {
+    if (!force && _fullCache[qid] && !needsFullQuestion(_fullCache[qid])) return _fullCache[qid];
     const data = await api("/api/v1/questions/" + qid);
-    const rec = normalizeFull(data, meta || {});
-    _fullCache[qid] = rec;
-    return rec;
+    return normalizeFull(data, meta || {});
+  }
+
+  async function ensureQuestionFull(q) {
+    if (!q || !q._marksId || !needsFullQuestion(q)) return q;
+    try {
+      return await fetchFullQuestion(q._marksId, {
+        subject: q.subject,
+        chapter: q.chapter,
+        bank: q._bank,
+        examName: q.examName,
+        source: q.source
+      }, true);
+    } catch (e) {
+      return q;
+    }
   }
 
   async function hydrateQuestions(qs, meta) {
     const out = [];
     for (const q of qs) {
-      if (q._needsFull && q._marksId) {
+      if (needsFullQuestion(q)) {
         try {
-          out.push(await fetchFullQuestion(q._marksId, { ...meta, subject: q.subject, chapter: q.chapter }));
+          out.push(await ensureQuestionFull({ ...q, ...meta }));
         } catch (e) {
           out.push(q);
         }
@@ -185,6 +235,31 @@ const MarksLive = (() => {
       }
     }
     return out;
+  }
+
+  async function prefetchQuestions(ids, onProgress) {
+    const need = [];
+    const seen = new Set();
+    (ids || []).forEach(id => {
+      const q = typeof getQ === "function" ? getQ(id) : null;
+      if (q && q._marksId && needsFullQuestion(q) && !seen.has(q._marksId)) {
+        seen.add(q._marksId);
+        need.push(q);
+      }
+    });
+    if (!need.length) return 0;
+    let done = 0;
+    const batch = 6;
+    for (let i = 0; i < need.length; i += batch) {
+      await Promise.all(need.slice(i, i + batch).map(async q => {
+        try {
+          await ensureQuestionFull(q);
+        } catch (e) { /* skip */ }
+        done++;
+        if (typeof onProgress === "function") onProgress(done, need.length);
+      }));
+    }
+    return done;
   }
 
   async function boardSubjects(examId) {
@@ -365,6 +440,8 @@ const MarksLive = (() => {
     boardId,
     boardLabel,
     fmtDate,
+    isPlaceholderOptions,
+    needsFullQuestion,
     boardSubjects,
     boardChapters,
     boardChapterDetails,
@@ -374,7 +451,9 @@ const MarksLive = (() => {
     ncertChapterSets,
     ncertSetQuestions,
     fetchFullQuestion,
+    ensureQuestionFull,
     hydrateQuestions,
+    prefetchQuestions,
     ensureToken
   };
 })();

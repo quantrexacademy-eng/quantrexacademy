@@ -244,6 +244,7 @@ const QuantrexTestEngine = (() => {
           <div class="mtk-brand"><span class="mtk-logo">Q</span><span class="mtk-brand-text">Quantrex</span></div>
         </div>
         ${timerHtml}
+        <button type="button" class="mtk-report-btn" id="mtkReportBtn" title="Report mistake">🚩 Report</button>
         <button type="button" class="mtk-submit-top" id="qxSubmitTop">Submit</button>
       </header>
       ${renderMarksSectionTabs()}
@@ -348,6 +349,13 @@ const QuantrexTestEngine = (() => {
     if (submitTop) submitTop.onclick = () => confirmSubmit();
     const mtkClose = root.querySelector("#mtkCloseBtn");
     if (mtkClose) mtkClose.onclick = quit;
+    const mtkReport = root.querySelector("#mtkReportBtn");
+    if (mtkReport && typeof openQuestionReport === "function") {
+      mtkReport.onclick = () => {
+        const q = getQ(session.ids[session.idx]);
+        if (q) openQuestionReport(q.id);
+      };
+    }
     root.querySelectorAll(".qx-pal-cell, .mtk-pal-cell").forEach(cell => {
       cell.onclick = () => goTo(parseInt(cell.dataset.qidx, 10));
     });
@@ -369,15 +377,23 @@ const QuantrexTestEngine = (() => {
     };
   }
 
-  function refresh() {
+  let _refreshBusy = false;
+  async function refresh() {
     const main = document.getElementById("app-main");
-    if (!main) return;
+    if (!main || !session || _refreshBusy) return;
+    _refreshBusy = true;
+    const q = getQ(session.ids[session.idx]);
+    if (q && typeof MarksLive !== "undefined" && MarksLive.needsFullQuestion(q)) {
+      main.innerHTML = `<div class="mtk-test-root"><div class="empty" style="padding:48px;text-align:center">Loading question options…</div></div>`;
+      try { await MarksLive.ensureQuestionFull(q); } catch (e) { /* continue */ }
+    }
     main.innerHTML = renderQuestion();
     bindEvents(main);
     if (typeof Mx !== "undefined") Mx.afterRender(main);
     marksPersistSession();
     const activeTab = main.querySelector(".mtk-sec-tab.active");
     if (activeTab) activeTab.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+    _refreshBusy = false;
   }
 
   function selectAnswer(idx) {
@@ -603,6 +619,9 @@ const QuantrexTestEngine = (() => {
     };
     if (!session.deferTimer) startTimer();
     marksPersistSession();
+    if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
+      MarksLive.prefetchQuestions(ids).catch(() => {});
+    }
     return true;
   }
 
