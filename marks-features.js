@@ -71,12 +71,20 @@ function subjectIcon(subj) {
 
 function bookQuestionLabel(q) {
   if (!q || !q._book) return null;
+  const bid = q._bookId || q._book;
+  if (typeof BOOK_COVER_PRESETS !== "undefined" && BOOK_COVER_PRESETS[bid]) {
+    const p = BOOK_COVER_PRESETS[bid];
+    return `${p.brand}${p.vol ? " · " + p.vol : ""}`;
+  }
   const src = String(q.source || "").trim();
   const exam = String(q.examName || q._bookTitle || "").trim();
   const paper = String(q.paperSource || "").trim();
-  if (/^(JEE Main|JEE Advanced|NEET) \d{4}/i.test(src) && exam) return exam;
-  if (exam) return exam;
-  return src || "Digital Book";
+  if (/^(JEE Main|JEE Advanced|NEET) \d{4}/i.test(src) && exam) {
+    return exam.replace(/\s+for\s+JEE\s+Main/gi, "").replace(/\s+of\s+JEE\s+Main[\s\d\-–]+/gi, "").trim() || exam;
+  }
+  let name = exam || src;
+  name = name.replace(/\s+for\s+JEE\s+Main/gi, "").replace(/\s+of\s+JEE\s+Main[\s\d\-–]+/gi, "").trim();
+  return name || "Digital Book";
 }
 
 function bookQuestionTitle(q) {

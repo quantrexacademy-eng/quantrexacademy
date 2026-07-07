@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#881337"/>
+      <stop offset="55%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fda4af"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="400" fill="url(#bg)"/>
+  <rect x="0" y="0" width="18" height="400" fill="rgba(0,0,0,.25)"/>
+  <text x="36" y="52" fill="#fff" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="2">QUANTREX</text>
+  <text x="36" y="120" fill="#fff" font-family="Georgia,serif" font-size="34" font-weight="700">Must Do</text>
+  <text x="36" y="158" fill="#fff" font-family="Georgia,serif" font-size="28" font-weight="700">Top PYQs</text>
+  <text x="36" y="200" fill="rgba(255,255,255,.92)" font-family="Arial,sans-serif" font-size="18" font-weight="600">JEE Main 2024</text>
+  <rect x="36" y="230" width="120" height="28" rx="14" fill="rgba(255,255,255,.18)"/>
+  <text x="52" y="249" fill="#fff" font-family="Arial,sans-serif" font-size="12" font-weight="700">490 Questions</text>
+  <text x="36" y="360" fill="rgba(255,255,255,.75)" font-family="Arial,sans-serif" font-size="11" font-weight="700">DIGITAL BOOK</text>
+</svg>

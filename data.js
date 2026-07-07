@@ -13855,7 +13855,7 @@ async function loadBookChapter(bookId, chapterKey) {
   const res = await fetch(`data/books/chapters/${bookId}/${chapterKey}.json`);
   if (!res.ok) return [];
   const data = await res.json();
-  const qs = (data.questions || []).map(q => ({ ...q, _book: bookId, _chapterKey: chapterKey }));
+  const qs = (data.questions || []).map(q => ({ ...q, _book: bookId, _bookId: bookId, _chapterKey: chapterKey }));
   QUESTIONS = QUESTIONS.filter(q => !(q._book === bookId && q._chapterKey === chapterKey)).concat(qs);
   _bookChaptersLoaded[cacheKey] = true;
   return qs;

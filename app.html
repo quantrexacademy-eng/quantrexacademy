@@ -360,7 +360,20 @@
         .qx-cover-tag, .qx-cover-soon { align-self: flex-start; font-size: 9px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 3px 7px; border-radius: 6px; margin-bottom: 6px; }
         .qx-cover-tag { background: rgba(255,255,255,.92); color: #b91c1c; text-shadow: none; }
         .qx-cover-soon { background: rgba(0,0,0,.35); color: #fff; }
-        .qx-cover-exam { font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; opacity: .9; margin-bottom: auto; }
+        .qx-cover-badge { font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; opacity: .9; margin-bottom: auto; padding: 3px 8px; border-radius: 999px; background: rgba(255,255,255,.16); align-self: flex-start; }
+        .qx-book-photo { position: relative; aspect-ratio: 3 / 4; perspective: 900px; }
+        .qx-book-photo.qx-cover-sm { aspect-ratio: 3 / 3.6; }
+        .qx-book-photo.qx-cover-lg { aspect-ratio: 3 / 4.2; }
+        .qx-book-photo-frame { position: relative; width: 100%; height: 100%; border-radius: 10px 14px 14px 10px; overflow: hidden; transform: rotateY(-7deg); transform-origin: left center; box-shadow: 8px 10px 24px rgba(0,0,0,.28), inset -2px 0 0 rgba(255,255,255,.08); transition: transform .2s, box-shadow .2s; background: #1e293b; }
+        .qx-book-card:hover:not(.soon) .qx-book-photo-frame { transform: rotateY(-3deg) translateY(-2px); box-shadow: 12px 16px 30px rgba(0,0,0,.32); }
+        .qx-book-photo-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .qx-book-photo-spine { position: absolute; left: 0; top: 0; bottom: 0; width: 16px; background: linear-gradient(90deg, rgba(0,0,0,.42), rgba(0,0,0,.12)); pointer-events: none; }
+        .qx-book-photo-shine { position: absolute; inset: 0; background: linear-gradient(125deg, rgba(255,255,255,.22) 0%, transparent 38%, transparent 62%, rgba(255,255,255,.08) 100%); pointer-events: none; }
+        .qx-photo-count, .qx-photo-tag, .qx-photo-soon { position: absolute; z-index: 2; font-size: 9px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 4px 8px; border-radius: 6px; }
+        .qx-photo-count { right: 8px; bottom: 8px; background: rgba(0,0,0,.55); color: #fff; }
+        .qx-photo-tag { left: 20px; top: 8px; background: rgba(255,255,255,.92); color: #b91c1c; }
+        .qx-photo-soon { left: 20px; top: 8px; background: rgba(0,0,0,.45); color: #fff; }
+        .qx-photo-broken .qx-book-photo-frame { background: linear-gradient(145deg, #1e3a8a, #3b82f6); }
         .qx-cover-icon { font-size: 26px; margin: 4px 0 6px; filter: drop-shadow(0 2px 4px rgba(0,0,0,.2)); }
         .qx-cover-brand { font-family: 'Kanit', sans-serif; font-size: 17px; font-weight: 800; line-height: 1.1; letter-spacing: -.02em; }
         .qx-cover-line { font-size: 11px; font-weight: 600; opacity: .95; margin-top: 3px; line-height: 1.25; }
