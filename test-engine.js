@@ -150,16 +150,7 @@ const QuantrexTestEngine = (() => {
   }
 
   function renderMarksSectionTabs() {
-    if (!session.sections || !session.sections.length) return "";
-    const curSec = currentSectionIdx();
-    const tabs = session.sections.map((s, i) =>
-      `<button type="button" class="mtk-sec-tab ${i === curSec ? "active" : ""}" data-sec="${i}">${s.label}</button>`
-    ).join("");
-    return `<div class="mtk-sec-bar">
-      <button type="button" class="mtk-sec-nav" id="mtkSecPrev" title="Previous section">‹</button>
-      <div class="mtk-sec-tabs" id="mtkSecTabs">${tabs}</div>
-      <button type="button" class="mtk-sec-nav" id="mtkSecNext" title="Next section">›</button>
-    </div>`;
+    return "";
   }
 
   function renderMarksPaletteHead() {
@@ -1097,19 +1088,74 @@ function buildJeeAdvancedSections(questionIds) {
   return { orderedIds, sections };
 }
 
-function organizeExamPaper(questionIds, opts) {
+const EXAM_SUBJECT_ORDER = {
+  jee_main: ["Mathematics", "Physics", "Chemistry"],
+  nta_abhyas_jee_main: ["Mathematics", "Physics", "Chemistry"],
+  jee_advanced: ["Chemistry", "Mathematics", "Physics"],
+  neet: ["Physics", "Chemistry", "Botany", "Zoology"],
+  nta_abhyas_neet: ["Physics", "Chemistry", "Botany", "Zoology"],
+  aiims: ["Physics", "Chemistry", "Biology", "Botany", "Zoology"],
+  jipmer: ["Physics", "Chemistry", "Biology", "Botany", "Zoology"],
+  mht_cet: ["Mathematics", "Physics", "Chemistry"],
+  mht_cet_medical: ["Physics", "Chemistry", "Biology"],
+  nda: ["Mathematics", "English", "General Science", "General Studies", "General Ability"],
+  bitsat: ["Mathematics", "Physics", "Chemistry", "English", "Logical Reasoning"],
+  comedk: ["Mathematics", "Physics", "Chemistry"],
+  wbjee: ["Mathematics", "Physics", "Chemistry"],
+  kcet: ["Mathematics", "Physics", "Chemistry"],
+  ap_eamcet: ["Mathematics", "Physics", "Chemistry"],
+  ts_eamcet: ["Mathematics", "Physics", "Chemistry"],
+  viteee: ["Mathematics", "Physics", "Chemistry", "English", "Aptitude"],
+  manipal_met: ["Mathematics", "Physics", "Chemistry", "English", "General English"],
+  nest_niser: ["Mathematics", "Physics", "Chemistry", "Biology"],
+  iat_iiser: ["Mathematics", "Physics", "Chemistry", "Biology"],
+  kvpy: ["Mathematics", "Physics", "Chemistry", "Biology"]
+};
+
+function subjectOrderForExam(format, slug) {
+  if (slug && EXAM_SUBJECT_ORDER[slug]) return EXAM_SUBJECT_ORDER[slug];
+  if (format === "neet") return EXAM_SUBJECT_ORDER.neet;
+  if (format === "jee_advanced") return EXAM_SUBJECT_ORDER.jee_advanced;
+  return EXAM_SUBJECT_ORDER.jee_main;
+}
+
+function organizeSubjectWisePaper(questionIds, opts) {
+  const slug = (opts && opts.examSlug) || "";
   const format = resolvePaperFormat(opts || {});
-  const preserveOrder = opts && opts.shuffle === false;
-  if (preserveOrder) {
-    if (format === "jee_advanced") return buildJeeAdvancedSections(questionIds);
-    if (format === "neet") return buildSectionsBySubject(questionIds);
-    if (format === "jee_main" && questionIds.length >= 60) return organizeJeeMainPaper(questionIds);
-    return buildSectionsFromOrder(questionIds);
-  }
-  if (format === "jee_advanced") return organizeJeeAdvancedPaper(questionIds);
-  if (format === "neet") return organizeNeetPaper(questionIds);
-  if (questionIds.length >= 60) return organizeJeeMainPaper(questionIds);
-  return buildSectionsFromOrder(questionIds);
+  const preferred = subjectOrderForExam(format, slug);
+  const bySubject = {};
+  const seen = [];
+  questionIds.forEach(id => {
+    const q = getQ(id);
+    const sub = (q && q.subject) || "Other";
+    if (!bySubject[sub]) {
+      bySubject[sub] = [];
+      seen.push(sub);
+    }
+    bySubject[sub].push(id);
+  });
+  const orderedSubjects = [];
+  preferred.forEach(s => { if (bySubject[s] && !orderedSubjects.includes(s)) orderedSubjects.push(s); });
+  seen.forEach(s => { if (!orderedSubjects.includes(s)) orderedSubjects.push(s); });
+  const orderedIds = [];
+  const sections = [];
+  orderedSubjects.forEach(sub => {
+    const ids = bySubject[sub];
+    if (!ids.length) return;
+    sections.push({
+      label: sub,
+      shortLabel: sub.toUpperCase().slice(0, 4),
+      subject: sub,
+      start: orderedIds.length,
+      count: ids.length
+    });
+    orderedIds.push(...ids);
+  });
+  return { orderedIds, sections };
+}
+
+function organizeExamPaper(questionIds, opts) {
+  return organizeSubjectWisePaper(questionIds, opts || {});
 }
 
 function organizeJeeMainPaper(questionIds) {

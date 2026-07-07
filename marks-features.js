@@ -1840,18 +1840,14 @@ function pyqPreviewModalHtml(slug, source, paper) {
         <h2 class="marks-preview-title">${pyqFullPaperTitle(source)}</h2>
         <div class="marks-preview-badges">
           <span class="marks-preview-badge exam">🎯 Full Paper</span>
-          <span class="marks-preview-badge subj">Physics · Chemistry · Mathematics</span>
+          <span class="marks-preview-badge subj">${pyqSubjectNames(paper.subjects) || "Subject-wise"}</span>
         </div>
         <div class="marks-preview-stats">
           <div class="marks-preview-stat"><strong>${paper.count}</strong><small>Questions</small></div>
           <div class="marks-preview-stat"><strong>${mins} Mins</strong><small>Duration</small></div>
         </div>
         <p class="marks-preview-chapters">${subLine}</p>
-        <p class="marks-preview-chapters">${slug === "jee_advanced"
-          ? "Paper order preserved · Chemistry → Mathematics → Physics with Section 1/2/3 per subject"
-          : slug === "neet" || /neet|aiims/i.test(slug)
-            ? "Physics → Chemistry → Botany → Zoology (subject-wise)"
-            : "Sections: Mathematics SC &amp; Numerical → Physics SC &amp; Numerical → Chemistry SC &amp; Numerical"}</p>
+        <p class="marks-preview-chapters">${pyqSubjectWiseHint(slug)}</p>
         <button type="button" class="marks-preview-attempt" onclick="pyqClosePreview();startPyqPaperMock('${slug}', decodeURIComponent('${encodeURIComponent(source)}'), ${status === "completed"})">${status === "completed" ? "Retake test now →" : "Attempt test now →"}</button>
         <button type="button" class="marks-preview-later" onclick="pyqClosePreview()">Attempt Later</button>
       </div>
@@ -1884,13 +1880,35 @@ function pyqPaperLabel(source) {
 }
 
 function pyqSubjectLine(subjects) {
-  const order = ["Mathematics", "Physics", "Chemistry", "Biology", "Botany", "Zoology"];
+  const order = ["Mathematics", "Physics", "Chemistry", "Biology", "Botany", "Zoology", "English", "General Science", "General Studies", "General Ability"];
   const subs = subjects || {};
   const lines = order.filter(s => subs[s]).map(s => `${s}: ${subs[s]}`);
   Object.keys(subs).forEach(s => {
     if (!order.includes(s)) lines.push(`${s}: ${subs[s]}`);
   });
   return lines.join(" · ");
+}
+
+function pyqSubjectNames(subjects) {
+  const order = ["Mathematics", "Physics", "Chemistry", "Biology", "Botany", "Zoology", "English", "General Science", "General Studies", "General Ability"];
+  const subs = subjects || {};
+  const names = order.filter(s => subs[s]);
+  Object.keys(subs).forEach(s => { if (!names.includes(s)) names.push(s); });
+  return names.join(" · ");
+}
+
+function pyqSubjectWiseHint(slug) {
+  const hints = {
+    jee_advanced: "Subject-wise · Chemistry → Mathematics → Physics",
+    neet: "Subject-wise · Physics → Chemistry → Botany → Zoology",
+    nta_abhyas_neet: "Subject-wise · Physics → Chemistry → Botany → Zoology",
+    aiims: "Subject-wise · Physics → Chemistry → Biology",
+    jipmer: "Subject-wise · Physics → Chemistry → Biology",
+    nda: "Subject-wise · Mathematics → English → General Science → General Studies",
+    mht_cet: "Subject-wise · Mathematics → Physics → Chemistry",
+    bitsat: "Subject-wise · Mathematics → Physics → Chemistry → English"
+  };
+  return hints[slug] || "Subject-wise · Mathematics → Physics → Chemistry";
 }
 
 function pyqFullPaperTitle(source) {
@@ -2060,7 +2078,7 @@ async function viewPyqMock(payload) {
       ${pyqMockBackBar("papers", p.exam, p.year)}
       <div class="cpyqb-marks-head">
         <h1>${exam.title} ${p.year}</h1>
-        <p>${papers.length} full paper${papers.length === 1 ? "" : "s"} · Physics, Chemistry, Mathematics · ${STATE.exam === "Medical" ? "3 hr 20 min" : "3 hr"} each</p>
+        <p>${papers.length} full paper${papers.length === 1 ? "" : "s"} · Subject-wise test · ${STATE.exam === "Medical" ? "3 hr 20 min" : "3 hr"} each</p>
       </div>
       <div class="pyqmock-filter-bar">
         <button type="button" class="pyqmock-filter-btn" onclick="pyqOpenFilterModal()">⚙ Filter</button>
