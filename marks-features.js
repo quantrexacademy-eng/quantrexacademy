@@ -120,12 +120,14 @@ function dashExamIconFor(exam) {
 }
 
 function renderDashExamScroll(exams) {
-  return (exams || []).map(e => `
-    <div class="exam-pill-card" ${mg("cpyqb", { step: "subjects", exam: e.slug })}>
+  return (exams || []).map(e => {
+    const yrs = typeof cpyqbExamYearLabel === "function" ? cpyqbExamYearLabel(e.slug) : "";
+    return `<div class="exam-pill-card" ${mg("cpyqb", { step: "subjects", exam: e.slug })}>
       <div class="exam-pill-ic">${dashExamIconFor(e)}</div>
       <strong>${e.title}</strong>
-      <small>${(e.count || 0).toLocaleString()} qs</small>
-    </div>`).join("");
+      <small>${yrs || (e.count || 0).toLocaleString() + " qs"}</small>
+    </div>`;
+  }).join("");
 }
 
 function dashUserName() {
@@ -296,6 +298,9 @@ async function fetchChapterMeta(examSlug, subject, chapter) {
 
 const CT_EXAM_FOR_SLUG = {
   jee_main: "JEE Main", jee_advanced: "JEE Main", nta_abhyas_jee_main: "JEE Main",
+  bitsat: "JEE Main", wbjee: "JEE Main", kcet: "JEE Main", ap_eamcet: "JEE Main",
+  ts_eamcet: "JEE Main", viteee: "JEE Main", manipal_met: "JEE Main", iat_iiser: "JEE Main",
+  nest_niser: "JEE Main", kvpy: "JEE Main", nda: "JEE Main", comedk: "JEE Main",
   neet: "NEET", nta_abhyas_neet: "NEET", aiims: "NEET", jipmer: "NEET",
   mht_cet: "MHT CET", mht_cet_medical: "MHT CET"
 };
@@ -383,7 +388,10 @@ function cpyqbChapterStats(examSlug, subject, chapterName, total) {
   });
   const totalQs = total || qs.length || 0;
   const accuracy = solved ? Math.round(correct / solved * 100) : 0;
-  return { solved, total: totalQs, accuracy, lastDate, yearCounts: cpyqbYearCounts(qs), weak: solved >= 3 && accuracy < 45 };
+  const weak = solved >= 3 && accuracy < 45;
+  const strong = solved >= 3 && accuracy >= 70;
+  const average = solved >= 3 && !weak && !strong;
+  return { solved, total: totalQs, accuracy, lastDate, yearCounts: cpyqbYearCounts(qs), weak, strong, average };
 }
 
 function cpyqbChapterIcon(meta) {
@@ -398,40 +406,156 @@ function cpyqbSyllabusBadge(cat) {
   return "";
 }
 
-function bindCpyqbFilters(root) {
-  const bar = (root || document).querySelector("#cpyqbFilterBar");
-  if (!bar || bar._bound) return;
-  bar._bound = true;
-  const apply = () => {
-    const payload = { ..._cpyqbPayload };
-    const cls = bar.querySelector("#cpyqbClass");
-    const unit = bar.querySelector("#cpyqbUnit");
-    if (cls) payload.filterClass = cls.value;
-    if (unit) payload.filterUnit = unit.value;
-    payload.filterNotStarted = bar.querySelector('[data-filter="notStarted"]')?.classList.contains("on") || false;
-    payload.filterWeak = bar.querySelector('[data-filter="weak"]')?.classList.contains("on") || false;
-    const sort = bar.querySelector("#cpyqbSort");
-    if (sort) payload.sortBy = sort.value;
-    render("cpyqb", payload);
+function cpyqbFilterPayloadFromDrawer(drawer) {
+  if (!drawer) return {};
+  const p = {};
+  const sort = drawer.querySelector('input[name="cpyqbSort"]:checked');
+  if (sort) p.sortBy = sort.value;
+  const cls = drawer.querySelector('input[name="cpyqbClass"]:checked');
+  if (cls) p.filterClass = cls.value;
+  const syl = drawer.querySelector('input[name="cpyqbSyllabus"]:checked');
+  if (syl) p.filterSyllabus = syl.value;
+  const imp = drawer.querySelector('input[name="cpyqbImportance"]:checked');
+  if (imp) p.filterImportance = imp.value;
+  const unit = drawer.querySelector('input[name="cpyqbUnit"]:checked');
+  if (unit) p.filterUnit = unit.value;
+  p.filterNotStarted = !!drawer.querySelector('[data-filter="notStarted"].on');
+  p.filterStrong = !!drawer.querySelector('[data-filter="strong"].on');
+  p.filterWeak = !!drawer.querySelector('[data-filter="weak"].on');
+  p.filterAverage = !!drawer.querySelector('[data-filter="average"].on');
+  return p;
+}
+
+function cpyqbFilterDrawerHtml(p, subject, units) {
+  const sort = p.sortBy || "default";
+  const filterClass = p.filterClass || "all";
+  const filterUnit = p.filterUnit || "all";
+  const filterSyllabus = p.filterSyllabus || "all";
+  const filterImportance = p.filterImportance || "all";
+  const unitLabel = subject ? `${subject} Units` : "Units";
+  const unitRadios = `<label class="cpyqb-f-radio"><input type="radio" name="cpyqbUnit" value="all"${filterUnit === "all" ? " checked" : ""}> All Units</label>` +
+    (units || []).map(u => `<label class="cpyqb-f-radio"><input type="radio" name="cpyqbUnit" value="${u._id}"${filterUnit === u._id ? " checked" : ""}> ${u.title}</label>`).join("");
+  const chip = (key, label, on) => `<button type="button" class="cpyqb-f-chip${on ? " on" : ""}" data-filter="${key}">${label}</button>`;
+  return `<div class="cpyqb-filter-overlay" id="cpyqbFilterOverlay">
+    <aside class="cpyqb-filter-drawer" id="cpyqbFilterDrawer">
+      <div class="cpyqb-f-head">
+        <strong>Filter &amp; Sorting</strong>
+        <button type="button" class="cpyqb-f-clear" id="cpyqbFilterClear">Clear Filters</button>
+      </div>
+      <div class="cpyqb-f-body">
+        <section class="cpyqb-f-sec">
+          <h4>Sort by</h4>
+          <label class="cpyqb-f-radio"><input type="radio" name="cpyqbSort" value="default"${sort === "default" ? " checked" : ""}> Default</label>
+          <label class="cpyqb-f-radio"><input type="radio" name="cpyqbSort" value="name_asc"${sort === "name_asc" ? " checked" : ""}> Alphabetical Order (A - Z)</label>
+          <label class="cpyqb-f-radio"><input type="radio" name="cpyqbSort" value="name_desc"${sort === "name_desc" ? " checked" : ""}> Alphabetical Order (Z - A)</label>
+          <label class="cpyqb-f-radio"><input type="radio" name="cpyqbSort" value="importance_high"${sort === "importance_high" ? " checked" : ""}> Importance (High to Low)</label>
+          <label class="cpyqb-f-radio"><input type="radio" name="cpyqbSort" value="importance_low"${sort === "importance_low" ? " checked" : ""}> Importance (Low to High)</label>
+        </section>
+        <section class="cpyqb-f-sec">
+          <h4>👍 Recommended Chapter</h4>
+          <div class="cpyqb-f-chips">
+            ${chip("notStarted", "Not Started", p.filterNotStarted)}
+            ${chip("strong", "Strong Chapter", p.filterStrong)}
+            ${chip("weak", "Weak Chapter", p.filterWeak)}
+            ${chip("average", "Average Chapter", p.filterAverage)}
+          </div>
+        </section>
+        <section class="cpyqb-f-sec">
+          <h4>Syllabus Chapter</h4>
+          <label class="cpyqb-f-radio"><input type="radio" name="cpyqbSyllabus" value="all"${filterSyllabus === "all" ? " checked" : ""}> All Chapters</label>
+          <label class="cpyqb-f-radio"><input type="radio" name="cpyqbSyllabus" value="reduced"${filterSyllabus === "reduced" ? " checked" : ""}> Reduced Chapters</label>
+          <label class="cpyqb-f-radio"><input type="radio" name="cpyqbSyllabus" value="removed"${filterSyllabus === "removed" ? " checked" : ""}> Removed Chapters</label>
+        </section>
+        <section class="cpyqb-f-sec">
+          <h4>Importance</h4>
+          <label class="cpyqb-f-radio"><input type="radio" name="cpyqbImportance" value="all"${filterImportance === "all" ? " checked" : ""}> All</label>
+          <label class="cpyqb-f-radio"><input type="radio" name="cpyqbImportance" value="high"${filterImportance === "high" ? " checked" : ""}> High Output Low Input</label>
+          <label class="cpyqb-f-radio"><input type="radio" name="cpyqbImportance" value="low"${filterImportance === "low" ? " checked" : ""}> Low Output High Input</label>
+        </section>
+        <section class="cpyqb-f-sec">
+          <h4>Class</h4>
+          <label class="cpyqb-f-radio"><input type="radio" name="cpyqbClass" value="all"${filterClass === "all" ? " checked" : ""}> All Classes</label>
+          <label class="cpyqb-f-radio"><input type="radio" name="cpyqbClass" value="Class 11"${filterClass === "Class 11" ? " checked" : ""}> Class 11</label>
+          <label class="cpyqb-f-radio"><input type="radio" name="cpyqbClass" value="Class 12"${filterClass === "Class 12" ? " checked" : ""}> Class 12</label>
+        </section>
+        <section class="cpyqb-f-sec">
+          <h4>${unitLabel}</h4>
+          ${unitRadios}
+        </section>
+      </div>
+      <div class="cpyqb-f-foot">
+        <button type="button" class="btn-soft" id="cpyqbFilterCancel">Cancel</button>
+        <button type="button" class="btn-primary" id="cpyqbFilterApply">Show Results</button>
+      </div>
+    </aside>
+  </div>`;
+}
+
+function renderCpyqbExamBank(allExams) {
+  const eng = typeof sortCpyqbExams === "function"
+    ? sortCpyqbExams(allExams.filter(e => e.category === "Engineering"), "Engineering")
+    : allExams.filter(e => e.category === "Engineering");
+  const med = typeof sortCpyqbExams === "function"
+    ? sortCpyqbExams(allExams.filter(e => e.category === "Medical"), "Medical")
+    : allExams.filter(e => e.category === "Medical");
+  const tile = e => {
+    const yrs = typeof cpyqbExamYearLabel === "function" ? cpyqbExamYearLabel(e.slug) : "";
+    const sub = yrs ? `${e.title} ${yrs}` : `${e.count.toLocaleString()} questions`;
+    const logo = typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(e.slug, 40, "cpyqb-exam-tile-logo") : "";
+    return `<div class="cpyqb-exam-tile" ${mg("cpyqb", { step: "subjects", exam: e.slug })}>
+      <div class="cpyqb-exam-tile-ic">${logo}</div>
+      <strong>${e.title}</strong>
+      <small>${sub}</small>
+    </div>`;
   };
-  bar.querySelectorAll("select").forEach(el => { el.onchange = apply; });
-  bar.querySelectorAll("[data-filter]").forEach(btn => {
-    btn.onclick = (e) => {
-      e.preventDefault();
-      btn.classList.toggle("on");
-      apply();
-    };
+  return `<div class="cpyqb-exam-bank-page">
+    <div class="cpyqb-exam-bank-head">
+      <h1>Chapter wise Previous Year Questions Bank</h1>
+    </div>
+    <h2 class="cpyqb-exam-sec-title">Engineering</h2>
+    <div class="cpyqb-exam-grid">${eng.map(tile).join("") || '<div class="empty">No engineering exams.</div>'}</div>
+    <h2 class="cpyqb-exam-sec-title">Medical</h2>
+    <div class="cpyqb-exam-grid">${med.map(tile).join("") || '<div class="empty">No medical exams.</div>'}</div>
+  </div>`;
+}
+
+function bindCpyqbFilters(root) {
+  const scope = root || document;
+  const bar = scope.querySelector("#cpyqbFilterBar");
+  if (bar && !bar._bound) {
+    bar._bound = true;
+    const openBtn = bar.querySelector("#cpyqbFilterOpen");
+    if (openBtn) {
+      openBtn.onclick = (e) => {
+        e.preventDefault();
+        const overlay = scope.querySelector("#cpyqbFilterOverlay");
+        if (overlay) overlay.classList.add("open");
+      };
+    }
+  }
+  const overlay = scope.querySelector("#cpyqbFilterOverlay");
+  if (!overlay || overlay._bound) return;
+  overlay._bound = true;
+  const drawer = overlay.querySelector("#cpyqbFilterDrawer");
+  const close = () => overlay.classList.remove("open");
+  overlay.onclick = e => { if (e.target === overlay) close(); };
+  const cancel = overlay.querySelector("#cpyqbFilterCancel");
+  if (cancel) cancel.onclick = close;
+  drawer.querySelectorAll("[data-filter]").forEach(btn => {
+    btn.onclick = e => { e.preventDefault(); btn.classList.toggle("on"); };
   });
-  const sortBtn = bar.querySelector("[data-cpyqb-sort-toggle]");
-  if (sortBtn) {
-    sortBtn.onclick = (e) => {
-      e.preventDefault();
-      const sel = bar.querySelector("#cpyqbSort");
-      if (!sel) return;
-      const opts = ["default", "importance", "progress", "name"];
-      const i = opts.indexOf(sel.value);
-      sel.value = opts[(i + 1) % opts.length];
-      apply();
+  const clear = overlay.querySelector("#cpyqbFilterClear");
+  if (clear) {
+    clear.onclick = () => {
+      render("cpyqb", { ..._cpyqbPayload, filterClass: "all", filterUnit: "all", filterSyllabus: "all", filterImportance: "all", sortBy: "default", filterNotStarted: false, filterStrong: false, filterWeak: false, filterAverage: false });
+    };
+  }
+  const applyBtn = overlay.querySelector("#cpyqbFilterApply");
+  if (applyBtn) {
+    applyBtn.onclick = () => {
+      const filters = cpyqbFilterPayloadFromDrawer(drawer);
+      render("cpyqb", { ..._cpyqbPayload, ...filters });
+      close();
     };
   }
 }
@@ -525,15 +649,9 @@ async function viewCpyqb(payload) {
   }
 
   if (p.step === "exams" || !p.exam) {
-    _lastListFn = () => ({ step: "exams" });
-    const cards = exams.map(e => `
-      <div class="exam-card" ${mg("cpyqb", { step: "subjects", exam: e.slug })}>
-        <div class="exam-card-ic">${typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(e.slug, 32, "exam-card-logo") : "📝"}</div>
-        <strong>${e.title}</strong>
-        <small>${e.count.toLocaleString()} questions · ${e.subjects.length} subjects</small>
-      </div>`).join("");
-    return `${topbar("Chapter-wise PYQ Bank", "Select an exam to start practicing")}
-      <div class="exam-grid">${cards || '<div class="empty">No exams for this category.</div>'}</div>`;
+    _lastListFn = () => ({ step: "exams", forceExamList: true });
+    return `${topbar("Chapter-wise PYQ Bank", "Select an exam · MARKS order")}
+      ${renderCpyqbExamBank(nav)}`;
   }
 
   const exam = exams.find(e => e.slug === p.exam);
@@ -565,6 +683,8 @@ async function viewCpyqb(payload) {
     const units = ctSubj ? (ctSubj.units || []) : [];
     const filterClass = p.filterClass || "all";
     const filterUnit = p.filterUnit || "all";
+    const filterSyllabus = p.filterSyllabus || "all";
+    const filterImportance = p.filterImportance || "all";
     const sortBy = p.sortBy || "default";
 
     const rows = subj.chapters.map(c => {
@@ -573,45 +693,46 @@ async function viewCpyqb(payload) {
       return { nav: c, ct: ctCh, stats };
     });
 
-    const hasFilters = filterClass !== "all" || filterUnit !== "all" || p.filterNotStarted || p.filterWeak;
+    const recFilters = [p.filterNotStarted, p.filterStrong, p.filterWeak, p.filterAverage].filter(Boolean).length;
+    const hasFilters = filterClass !== "all" || filterUnit !== "all" || filterSyllabus !== "all"
+      || filterImportance !== "all" || recFilters > 0;
     let filtered = rows.filter(row => {
       if (filterClass !== "all" && row.ct && !row.ct.classes.includes(filterClass)) return false;
       if (filterUnit !== "all" && row.ct && row.ct.unitId !== filterUnit) return false;
-      if (p.filterNotStarted && p.filterWeak) {
-        if (row.stats.solved > 0 && !row.stats.weak) return false;
-      } else if (p.filterNotStarted && row.stats.solved > 0) return false;
-      else if (p.filterWeak && !row.stats.weak) return false;
+      if (filterSyllabus === "reduced" && row.ct && row.ct.syllabusCategory !== "reduced") return false;
+      if (filterSyllabus === "removed" && row.ct && row.ct.syllabusCategory !== "removed") return false;
+      if (filterImportance === "high" && row.ct && (row.ct.importance || 0) < 22) return false;
+      if (filterImportance === "low" && row.ct && (row.ct.importance || 0) >= 18) return false;
+      if (recFilters) {
+        const matchRec = (p.filterNotStarted && row.stats.solved === 0)
+          || (p.filterStrong && row.stats.strong)
+          || (p.filterWeak && row.stats.weak)
+          || (p.filterAverage && row.stats.average);
+        if (!matchRec) return false;
+      }
       return true;
     });
 
-    if (sortBy === "importance") filtered.sort((a, b) => (b.ct?.importance || 0) - (a.ct?.importance || 0));
+    if (sortBy === "importance" || sortBy === "importance_high") filtered.sort((a, b) => (b.ct?.importance || 0) - (a.ct?.importance || 0));
+    else if (sortBy === "importance_low") filtered.sort((a, b) => (a.ct?.importance || 0) - (b.ct?.importance || 0));
     else if (sortBy === "progress") filtered.sort((a, b) => b.stats.solved - a.stats.solved);
-    else if (sortBy === "name") filtered.sort((a, b) => a.nav.name.localeCompare(b.nav.name));
+    else if (sortBy === "name" || sortBy === "name_asc") filtered.sort((a, b) => a.nav.name.localeCompare(b.nav.name));
+    else if (sortBy === "name_desc") filtered.sort((a, b) => b.nav.name.localeCompare(a.nav.name));
 
     const continueRow = rows
       .filter(r => r.stats.solved > 0 && r.stats.solved < r.stats.total)
       .sort((a, b) => b.stats.lastDate - a.stats.lastDate)[0];
     const continueId = continueRow ? continueRow.nav.name : null;
 
-    const classOpts = `<option value="all"${filterClass === "all" ? " selected" : ""}>All Classes</option>
-      <option value="Class 11"${filterClass === "Class 11" ? " selected" : ""}>Class 11</option>
-      <option value="Class 12"${filterClass === "Class 12" ? " selected" : ""}>Class 12</option>`;
-    const unitOpts = `<option value="all"${filterUnit === "all" ? " selected" : ""}>All Units</option>` +
-      units.map(u => `<option value="${u._id}"${filterUnit === u._id ? " selected" : ""}>${u.title}</option>`).join("");
     const countLabel = hasFilters
       ? `Showing ${filtered.length} chapter${filtered.length === 1 ? "" : "s"}`
       : `Showing all chapters (${subj.chapters.length})`;
 
     const filterBar = `<div class="cpyqb-filter-bar" id="cpyqbFilterBar">
-      <button type="button" class="cpyqb-filter-main" tabindex="-1"><span>⚙</span> Filter</button>
-      <select id="cpyqbClass" class="cpyqb-pill-sel">${classOpts}</select>
-      <select id="cpyqbUnit" class="cpyqb-pill-sel">${unitOpts}</select>
-      <button type="button" class="cpyqb-chip-btn${p.filterNotStarted ? " on" : ""}" data-filter="notStarted">Not Started</button>
-      <button type="button" class="cpyqb-chip-btn${p.filterWeak ? " on" : ""}" data-filter="weak">Weak Chapter</button>
+      <button type="button" class="cpyqb-filter-main" id="cpyqbFilterOpen"><span>⚙</span> Filter</button>
       <span class="cpyqb-filter-count">${countLabel}</span>
-      <a href="#" class="cpyqb-sort-link" data-cpyqb-sort-toggle>↑ Sort</a>
-      <select id="cpyqbSort" class="cpyqb-sort-hidden"><option value="default"${sortBy === "default" ? " selected" : ""}>Default</option><option value="importance"${sortBy === "importance" ? " selected" : ""}>Importance</option><option value="progress"${sortBy === "progress" ? " selected" : ""}>Progress</option><option value="name"${sortBy === "name" ? " selected" : ""}>Name</option></select>
-    </div>`;
+    </div>
+    ${cpyqbFilterDrawerHtml(p, p.subject, units)}`;
 
     const renderChRow = (c, ctCh, stats, isContinue) => {
       const displayName = (ctCh && ctCh.shortName) || c.name;
@@ -2152,7 +2273,9 @@ async function marksDashboardSections() {
     fetchMarksDashboard(),
     typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.loadExamIconsFromApi() : Promise.resolve()
   ]);
-  const dashExams = (cpyqbNav || []).filter(e => e.category === STATE.exam);
+  const dashExams = typeof sortCpyqbExams === "function"
+    ? sortCpyqbExams((cpyqbNav || []).filter(e => e.category === STATE.exam), STATE.exam)
+    : (cpyqbNav || []).filter(e => e.category === STATE.exam);
   const cpyqbApiItems = (marksDash && marksDash.cpyqb && marksDash.cpyqb.items) || [];
   const examScroll = renderDashExamScroll(dashExams);
   const subjects = EXAMS[STATE.exam].subjects;

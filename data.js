@@ -206,9 +206,43 @@ const CHAPTERS = {
 const BOOKS = [];
 const PRIMARY_BANK = { Engineering: "jee_main", Medical: "neet", Foundation: "nda" };
 
+/** MARKS web chapter-wise PYQ order (screenshot 417) */
+const CPYQB_EXAM_ORDER = {
+  Engineering: [
+    "jee_main", "jee_advanced", "nta_abhyas_jee_main", "mht_cet", "comedk", "bitsat", "wbjee",
+    "kcet", "ap_eamcet", "ts_eamcet", "viteee", "manipal_met", "iat_iiser", "nest_niser", "kvpy", "nda"
+  ],
+  Medical: ["neet", "aiims", "nta_abhyas_neet", "jipmer", "mht_cet_medical"]
+};
+
+const CPYQB_YEAR_RANGE = {
+  jee_main: "2026 - 2012", jee_advanced: "2026 - 2006", nta_abhyas_jee_main: "2020",
+  mht_cet: "2026 - 2012", comedk: "2026 - 2012", bitsat: "2024 - 2009", wbjee: "2026 - 2012",
+  kcet: "2026 - 2012", ap_eamcet: "2025 - 2012", ts_eamcet: "2025 - 2012", viteee: "2024 - 2006",
+  manipal_met: "2024 - 2010", iat_iiser: "2026 - 2012", nest_niser: "2026 - 2012", kvpy: "2020 - 2010",
+  nda: "2026 - 2012", neet: "2026 - 2012", aiims: "2019 - 2001", nta_abhyas_neet: "2020",
+  jipmer: "2019 - 2004", mht_cet_medical: "2026"
+};
+
+function sortCpyqbExams(exams, category) {
+  const order = (typeof CPYQB_EXAM_ORDER !== "undefined" && CPYQB_EXAM_ORDER[category]) || [];
+  const rank = new Map(order.map((s, i) => [s, i]));
+  return [...(exams || [])].sort((a, b) => {
+    const ra = rank.has(a.slug) ? rank.get(a.slug) : 999;
+    const rb = rank.has(b.slug) ? rank.get(b.slug) : 999;
+    if (ra !== rb) return ra - rb;
+    return (a.title || "").localeCompare(b.title || "");
+  });
+}
+
+function cpyqbExamYearLabel(slug) {
+  if (typeof CPYQB_YEAR_RANGE !== "undefined" && CPYQB_YEAR_RANGE[slug]) return CPYQB_YEAR_RANGE[slug];
+  return "";
+}
+
 const ALLQS_BANKS = {
-  Medical: ["neet", "nta_abhyas_neet", "aiims", "jipmer", "mht_cet_medical"],
-  Engineering: ["jee_main", "jee_advanced", "nta_abhyas_jee_main", "bitsat", "wbjee", "viteee", "kcet", "mht_cet", "comedk", "ap_eamcet", "ts_eamcet", "manipal_met", "kvpy", "nest_niser", "iat_iiser"],
+  Medical: CPYQB_EXAM_ORDER.Medical,
+  Engineering: CPYQB_EXAM_ORDER.Engineering,
   Foundation: ["nda"]
 };
 
