@@ -247,11 +247,19 @@ function viewPractice() {
 // ============ SINGLE QUESTION — MARKS-style practice ============
 window._qxPracticeCtx = null;
 
+function qxHasSolution(q) {
+  if (!q) return false;
+  if (typeof MarksLive !== "undefined" && MarksLive.hasRealSolution) {
+    return MarksLive.hasRealSolution(q.solution);
+  }
+  return !!String(q.solution || "").replace(/<[^>]+>/g, "").trim();
+}
+
 async function openPracticeQuestion(id) {
   let q = getQ(id);
-  if (q && typeof MarksLive !== "undefined" && MarksLive.needsFullQuestion(q)) {
+  if (q && typeof MarksLive !== "undefined" && (q._live || q._marksId) && MarksLive.needsFullQuestion(q)) {
     try {
-      showToast("📚 Loading full question…");
+      showToast("📚 Loading question & solution…");
       q = await MarksLive.ensureQuestionFull(q);
     } catch (e) { /* use preview */ }
   }
@@ -371,14 +379,20 @@ function qxPracticeBack() {
   go("practice");
 }
 
-function qxPracticeNav(delta) {
+async function qxPracticeNav(delta) {
   const ctx = window._qxPracticeCtx;
   if (!ctx || !ctx.ids.length) return;
   const next = ctx.idx + delta;
   if (next < 0 || next >= ctx.ids.length) return;
   ctx.idx = next;
+  const qid = ctx.ids[ctx.idx];
   const main = document.getElementById("app-main");
-  main.innerHTML = viewQuestion(ctx.ids[ctx.idx]);
+  let q = getQ(qid);
+  if (q && typeof MarksLive !== "undefined" && (q._live || q._marksId) && MarksLive.needsFullQuestion(q)) {
+    main.innerHTML = `<div class="qx-practice-page"><div class="empty" style="padding:48px;text-align:center">Loading question & solution…</div></div>`;
+    try { q = await MarksLive.ensureQuestionFull(q); } catch (e) { /* use preview */ }
+  }
+  main.innerHTML = viewQuestion(qid);
   bindPracticeQuestion(main);
   if (typeof Mx !== "undefined") Mx.afterRender(main);
 }
@@ -419,6 +433,8 @@ function viewQuestion(id) {
   }).join("");
 
   const resultHtml = done ? qxPracticeResultHtml(q, sel) : "";
+  const hasSol = qxHasSolution(q);
+  const solReveal = (window._qxSolRevealed && window._qxSolRevealed[q.id]) ? qxSolutionBlockHtml(q) : "";
 
   setTimeout(() => loadCommunityForQuestion(q), 0);
 
@@ -442,6 +458,8 @@ function viewQuestion(id) {
     </div>
     <div class="qx-prac-q qx-content">${typeof Mx !== "undefined" ? Mx.html(q.q) : q.q}</div>
     <div class="qx-prac-opts" id="qaOpts">${opts}</div>
+    ${hasSol && !done ? `<div class="qx-sol-actions"><button type="button" class="btn-soft qx-view-sol-btn" id="qxViewSolBtn">💡 View Solution</button></div>` : ""}
+    <div id="qaSolReveal">${solReveal}</div>
     <div id="qaResult">${resultHtml}</div>
     <div class="qx-prac-foot">
       <button type="button" class="btn-soft" onclick="qxPracticeNav(-1)" ${pc.idx <= 0 ? "disabled" : ""}>← Previous</button>
@@ -452,15 +470,25 @@ function viewQuestion(id) {
   </div>`;
 }
 
+function qxSolutionBlockHtml(q) {
+  if (!qxHasSolution(q)) return "";
+  const solHtml = typeof Mx !== "undefined" ? Mx.html(q.solution) : q.solution;
+  return `<div class="result-box ok qx-sol-reveal-box">
+    <strong>💡 Solution</strong>
+    <div class="qx-content sol-body">${solHtml}</div>
+  </div>`;
+}
+
 function qxPracticeResultHtml(q, sel) {
   const correct = sel === q.answer;
-  const solHtml = typeof Mx !== "undefined" ? Mx.html(q.solution) : q.solution;
   const ansOpt = (q.options && q.options[q.answer]) ? q.options[q.answer] : String.fromCharCode(65 + q.answer);
   const ansLabel = typeof Mx !== "undefined" ? Mx.html(ansOpt) : ansOpt;
+  const solBlock = qxHasSolution(q) ? qxSolutionBlockHtml(q) : "";
   return `<div class="result-box ${correct ? "ok" : "no"}">
     <strong>${correct ? "✅ Correct!" : "❌ Incorrect"}</strong>
     ${!correct ? `<p class="qx-prac-correct-ans">Correct answer: <b>${String.fromCharCode(65 + q.answer)}.</b> <span class="qx-content">${ansLabel}</span></p>` : ""}
-    <div class="sol"><strong>💡 Solution</strong><div class="qx-content sol-body">${solHtml}</div></div>
+    ${solBlock}
+    ${!solBlock ? `<p class="qx-no-sol-note">Solution not available for this question on MARKS.</p>` : ""}
   </div>`;
 }
 
@@ -481,6 +509,25 @@ function bindPracticeQuestion(root) {
   });
   const submit = scope.querySelector("#qxPracSubmit");
   if (submit) submit.onclick = () => answerQ(qid, ctx.selected[qid]);
+  const viewSol = scope.querySelector("#qxViewSolBtn");
+  if (viewSol) viewSol.onclick = () => qxRevealSolution(qid);
+}
+
+function qxRevealSolution(qid) {
+  const q = getQ(qid);
+  if (!q || !qxHasSolution(q)) {
+    showToast("⚠️ No solution available for this question");
+    return;
+  }
+  window._qxSolRevealed = window._qxSolRevealed || {};
+  window._qxSolRevealed[qid] = true;
+  const el = document.getElementById("qaSolReveal");
+  if (el) {
+    el.innerHTML = qxSolutionBlockHtml(q);
+    if (typeof Mx !== "undefined") Mx.afterRender(el);
+  }
+  const btn = document.getElementById("qxViewSolBtn");
+  if (btn) btn.remove();
 }
 
 async function loadCommunityForQuestion(q) {
@@ -496,13 +543,21 @@ async function loadCommunityForQuestion(q) {
   }
 }
 
-function answerQ(qid, idx) {
-  const q = getQ(qid);
-  if (!q || idx == null) return;
+async function answerQ(qid, idx) {
+  if (idx == null) return;
+  let q = getQ(qid);
+  if (!q) return;
+  if (q && typeof MarksLive !== "undefined" && (q._live || q._marksId) && MarksLive.needsFullQuestion(q)) {
+    try { q = await MarksLive.ensureQuestionFull(q); } catch (e) { /* continue */ }
+  }
   const ctx = window._qxPracticeCtx || { done: {}, selected: {} };
   ctx.done[qid] = true;
   ctx.selected[qid] = idx;
   const main = document.getElementById("app-main");
+  const solActs = main.querySelector(".qx-sol-actions");
+  if (solActs) solActs.remove();
+  const solReveal = document.getElementById("qaSolReveal");
+  if (solReveal) solReveal.innerHTML = "";
   main.querySelectorAll("[data-prac-opt]").forEach((o, i) => {
     o.disabled = true;
     o.classList.remove("selected");

@@ -96,9 +96,22 @@ const MarksLive = (() => {
     });
   }
 
+  function hasRealSolution(sol) {
+    const plain = String(sol || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().toLowerCase();
+    if (!plain) return false;
+    if (/^no solution\.?$/.test(plain)) return false;
+    if (plain === "solution not available") return false;
+    return true;
+  }
+
+  function cleanSolution(sol) {
+    return hasRealSolution(sol) ? sol : "";
+  }
+
   function needsFullQuestion(q) {
     if (!q || !q._marksId) return false;
-    return !!q._needsFull || isPlaceholderOptions(q.options) || !String(q.solution || "").trim();
+    if (q._fullFetched) return isPlaceholderOptions(q.options);
+    return !!q._needsFull || isPlaceholderOptions(q.options) || !hasRealSolution(q.solution);
   }
 
   function fieldsFromApi(d, meta) {
@@ -114,16 +127,22 @@ const MarksLive = (() => {
     const source = paper.title || meta.source || d.source || "MARKS";
     const paperDate = paper.heldOn || d.previousYear || null;
 
+    const solRaw = htmlPart((d.solution || {}).text, (d.solution || {}).image);
+    const video = d.videoSolution || null;
     return {
       q: htmlPart(qBody.text, qBody.image),
       options: opts.length ? opts : [],
       answer: Math.max(0, answer),
-      solution: htmlPart((d.solution || {}).text, (d.solution || {}).image),
+      solution: cleanSolution(solRaw),
+      hasSolution: hasRealSolution(solRaw),
+      videoSolution: video,
+      hasVideoSolution: !!(d.hasVideoSolution || (video && video.videoId)),
       difficulty: levelLabel(d.level),
       source,
       paperDate,
       paperSource: source,
       _needsFull: false,
+      _fullFetched: true,
       questionType: d.type || d.questionType || "singleCorrect"
     };
   }
@@ -441,6 +460,8 @@ const MarksLive = (() => {
     boardLabel,
     fmtDate,
     isPlaceholderOptions,
+    hasRealSolution,
+    cleanSolution,
     needsFullQuestion,
     boardSubjects,
     boardChapters,

@@ -145,10 +145,14 @@ function renderQCard(q) {
   const srcLine = bookLabel
     ? `<span class="qx-book-badge" title="${bookTip}">📕 ${bookLabel}</span>`
     : (dateLine ? `📅 ${dateLine} · 📌 ${q.source || q.paperSource || ""}` : `📖 ${q.chapter} · 📌 ${q.source}`);
+  const hasSol = typeof MarksLive !== "undefined" && MarksLive.hasRealSolution
+    ? MarksLive.hasRealSolution(q.solution)
+    : !!String(q.solution || "").replace(/<[^>]+>/g, "").trim();
   return `<div class="q-card" onclick="openPracticeQuestion(${q.id})">
     <div class="q-meta">
       <span class="tag tag-${tag}">${q.subject}</span>
       <span class="tag tag-diff">${q.difficulty}</span>
+      ${hasSol ? `<span class="tag tag-sol">💡 Solution</span>` : ""}
       ${sv ? `<span class="tag ${sv.correct ? "tag-ok" : "tag-no"}">${sv.correct ? "✓" : "✗"}</span>` : ""}
     </div>
     <div class="q-text">${qPreview(q.q)}</div>
