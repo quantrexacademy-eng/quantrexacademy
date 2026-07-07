@@ -369,6 +369,31 @@
         [data-theme="dark"] .dash-board-hero-text h3 { color: #93c5fd; }
         [data-theme="dark"] .dash-board-tab { background: rgba(15,23,42,.6); color: #cbd5e1; border-color: rgba(96,165,250,.25); }
         [data-theme="dark"] .dash-board-tab.on { background: #1e3a5f; color: #93c5fd; }
+        .dash-board-meta { margin: 0 0 12px; }
+        .dash-board-meta .board-meta-pills { margin: 0; }
+        .board-marks-page { max-width: 920px; }
+        .board-marks-hero { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+        .board-marks-hero-ic { width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0; object-fit: contain; }
+        .board-marks-hero-text h1 { font-family: 'Kanit'; font-size: 28px; font-weight: 800; margin: 0 0 4px; letter-spacing: -.02em; }
+        .board-marks-hero-text p { margin: 0; color: var(--gray); font-size: 14px; font-weight: 600; }
+        .board-meta-pills { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+        .board-meta-pill {
+            display: flex; flex-direction: column; gap: 2px; min-width: 100px;
+            padding: 10px 14px; border-radius: 12px; background: var(--card);
+            border: 1px solid var(--border);
+        }
+        .board-meta-k { font-size: 11px; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: .04em; }
+        .board-meta-v { font-family: 'Kanit'; font-size: 18px; font-weight: 800; color: var(--dark); line-height: 1.2; }
+        .board-subj-ic { background: var(--bg); display: flex; align-items: center; justify-content: center; }
+        .board-subj-ic img, .board-subj-ic-img { width: 36px; height: 36px; object-fit: contain; }
+        .board-subj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+        .board-marks-head { margin-bottom: 16px; }
+        .board-marks-head h1 { font-family: 'Kanit'; font-size: 24px; font-weight: 800; margin: 0 0 4px; }
+        .board-marks-head p { margin: 0; color: var(--gray); font-size: 13px; font-weight: 600; }
+        .board-marks-head.compact h1 { font-size: 20px; }
+        .marks-board-subj-ic { width: 22px; height: 22px; object-fit: contain; flex-shrink: 0; }
+        .marks-exam-ic-img { width: 40px; height: 40px; object-fit: contain; border-radius: 10px; flex-shrink: 0; }
+        .dash-board-hero-logo, .dash-board-tab-logo { object-fit: contain; background: transparent; }
         .dash-ncert-block { margin-bottom: 22px; }
         .dash-ncert-head h2 { font-family: 'Kanit'; font-size: 22px; font-weight: 800; margin: 0 0 4px; }
         .dash-ncert-tag { color: var(--accent, #7C3AED); }
@@ -519,10 +544,11 @@
         .qx-content [class*="watermark"], .qx-content [class*="Watermark"],
         .qx-content [data-brand], .qx-content .marks-brand, .qx-content .getmarks-brand,
         .qx-content [class*="getmarks"], .qx-content [class*="marks_selected"],
-        img[src*="cdn-assets.getmarks"]:not([src*="formula_cards"]):not([src*="cdn-question-pool"]),
+        img[src*="cdn-assets.getmarks"]:not([src*="formula_cards"]):not([src*="cdn-question-pool"]):not(.qx-marks-icon):not([src*="ic_content_exam_"]):not([src*="cpyqb/subjects/"]),
         img[src*="marks_selected"]:not([src*="formula_cards"]),
         img[src*="web_assets"], img[alt*="Get Marks App"] { display: none !important; }
         .fc-formula img.fc-img, .fc-img { display: block !important; }
+        img.qx-marks-icon, .board-subj-ic img, .marks-board-subj-ic, .marks-exam-ic-img { display: block !important; }
         .qx-img-wrap { display: block; max-width: 100%; margin: 10px 0; line-height: 0; }
         .qx-img-wrap img { display: block; max-width: 100%; height: auto; border-radius: 8px; }
 
@@ -1322,7 +1348,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxcbse420</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxcbse421</div>
             </div>
         </aside>
 
@@ -1348,30 +1374,30 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
-    <script>window.QX_BUILD="qxcbse420";</script>
-    <script src="qx-perf.js?v=qxcbse420"></script>
-    <script src="firebase-config.js?v=qxcbse420" defer></script>
-    <script src="stack-config.js?v=qxcbse420" defer></script>
-    <script src="strip/branding-strip.js?v=qxcbse420" defer></script>
-    <script src="exam-logos.js?v=qxcbse420" defer></script>
-    <script src="math-render.js?v=qxcbse420" defer></script>
-    <script src="data.js?v=qxcbse420" defer></script>
-    <script src="firebase-db.js?v=qxcbse420" defer></script>
-    <script src="firebase-storage.js?v=qxcbse420" defer></script>
-    <script src="payments.js?v=qxcbse420" defer></script>
-    <script src="premium.js?v=qxcbse420" defer></script>
-    <script src="leaderboard.js?v=qxcbse420" defer></script>
-    <script src="community.js?v=qxcbse420" defer></script>
-    <script src="book-covers.js?v=qxcbse420" defer></script>
-    <script src="marks-shell.js?v=qxcbse420" defer></script>
-    <script src="marks-live.js?v=qxcbse420" defer></script>
-    <script src="marks-features.js?v=qxcbse420" defer></script>
-    <script src="assignments.js?v=qxcbse420" defer></script>
-    <script src="custom-test.js?v=qxcbse420" defer></script>
-    <script src="test-engine.js?v=qxcbse420" defer></script>
-    <script src="analytics.js?v=qxcbse420" defer></script>
-    <script src="search.js?v=qxcbse420" defer></script>
-    <script src="theme.js?v=qxcbse420" defer></script>
-    <script src="app.js?v=qxcbse420" defer></script>
+    <script>window.QX_BUILD="qxcbse421";</script>
+    <script src="qx-perf.js?v=qxcbse421"></script>
+    <script src="firebase-config.js?v=qxcbse421" defer></script>
+    <script src="stack-config.js?v=qxcbse421" defer></script>
+    <script src="strip/branding-strip.js?v=qxcbse421" defer></script>
+    <script src="exam-logos.js?v=qxcbse421" defer></script>
+    <script src="math-render.js?v=qxcbse421" defer></script>
+    <script src="data.js?v=qxcbse421" defer></script>
+    <script src="firebase-db.js?v=qxcbse421" defer></script>
+    <script src="firebase-storage.js?v=qxcbse421" defer></script>
+    <script src="payments.js?v=qxcbse421" defer></script>
+    <script src="premium.js?v=qxcbse421" defer></script>
+    <script src="leaderboard.js?v=qxcbse421" defer></script>
+    <script src="community.js?v=qxcbse421" defer></script>
+    <script src="book-covers.js?v=qxcbse421" defer></script>
+    <script src="marks-shell.js?v=qxcbse421" defer></script>
+    <script src="marks-live.js?v=qxcbse421" defer></script>
+    <script src="marks-features.js?v=qxcbse421" defer></script>
+    <script src="assignments.js?v=qxcbse421" defer></script>
+    <script src="custom-test.js?v=qxcbse421" defer></script>
+    <script src="test-engine.js?v=qxcbse421" defer></script>
+    <script src="analytics.js?v=qxcbse421" defer></script>
+    <script src="search.js?v=qxcbse421" defer></script>
+    <script src="theme.js?v=qxcbse421" defer></script>
+    <script src="app.js?v=qxcbse421" defer></script>
 </body>
 </html>

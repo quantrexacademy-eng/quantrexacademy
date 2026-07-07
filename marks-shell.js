@@ -63,6 +63,59 @@ const MarksShell = (() => {
     </div>`;
   }
 
+  function boardMetaLine(meta) {
+    return (meta || [])
+      .slice()
+      .sort((a, b) => Number(a.position || 0) - Number(b.position || 0))
+      .map(m => `${m.title}: ${m.description}`)
+      .join(" · ");
+  }
+
+  function boardSubjIcon(s) {
+    if (s && s.icon) {
+      return `<img class="qx-marks-icon marks-board-subj-ic" src="${s.icon}" width="22" height="22" alt="${s.name || ""}" loading="lazy" decoding="async">`;
+    }
+    return `<span class="marks-subj-ic">${SUBJ_ICONS[s.name] || "📖"}</span>`;
+  }
+
+  function boardSubjectRail(examData, activeSubject, examId) {
+    if (!examData) return "";
+    const metaSmall = boardMetaLine(examData.meta);
+    const examIcon = examData.icon
+      ? `<img class="qx-marks-icon marks-exam-ic-img" src="${examData.icon}" width="40" height="40" alt="${examData.title || ""}" loading="lazy" decoding="async">`
+      : (typeof QuantrexExamLogos !== "undefined"
+        ? QuantrexExamLogos.html(typeof dashBoardSelected === "function" ? dashBoardSelected() : "CBSE", 40, "marks-exam-ic-img")
+        : '<span class="marks-exam-ic">📝</span>');
+    const items = (examData.subjects || []).map(s => {
+      const active = s.name === activeSubject ? " active" : "";
+      const payload = JSON.stringify({ step: "chapters", subject: s.name, subjectId: s.id, examId }).replace(/'/g, "&#39;");
+      return `<button type="button" class="marks-subj-item${active}" data-mg="board" data-mgp='${payload}'>
+        ${boardSubjIcon(s)}
+        <span>${s.name}</span>
+        <span class="marks-subj-arr">›</span>
+      </button>`;
+    }).join("");
+    const switchPayload = JSON.stringify({ step: "subjects", examId }).replace(/'/g, "&#39;");
+    return `<aside class="marks-subj-rail marks-board-rail">
+      <div class="marks-exam-head" title="Board home" data-mg="board" data-mgp='${switchPayload}'>
+        ${examIcon}
+        <div><strong>${examData.title || "Board"}</strong>${metaSmall ? `<small class="marks-exam-meta">${metaSmall}</small>` : ""}</div>
+      </div>
+      <nav class="marks-subj-list">${items}</nav>
+      <button type="button" class="marks-analysis-btn" onclick="go('analytics')">
+        <span>📊</span> Analysis <em class="marks-new-badge">NEW</em>
+      </button>
+      <button type="button" class="marks-exam-switch" data-mg="board" data-mgp='${switchPayload}'>Switch Board</button>
+    </aside>`;
+  }
+
+  function boardSplitLayout(examData, activeSubject, mainHtml, examId) {
+    return `<div class="marks-split-layout marks-board-split">
+      ${boardSubjectRail(examData, activeSubject, examId)}
+      <div class="marks-split-main">${mainHtml}</div>
+    </div>`;
+  }
+
   async function enrichExamMeta(exam) {
     if (!exam || exam._marksEnriched) return exam;
     if (typeof buildPyqPaperIndex === "function") {
@@ -112,5 +165,5 @@ const MarksShell = (() => {
     });
   }
 
-  return { splitLayout, enrichExamMeta, saveContext, primarySlug, initSidebar, bind, SUBJ_KEY, EXAM_KEY };
+  return { splitLayout, boardSplitLayout, boardSubjectRail, enrichExamMeta, saveContext, primarySlug, initSidebar, bind, SUBJ_KEY, EXAM_KEY };
 })();

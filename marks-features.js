@@ -811,6 +811,40 @@ async function viewNeetModuleBank(payload, moduleId, opts) {
   return `${topbar(p.chapter, `${p.subject} · ${title}`)}${bc}${filterNote}${renderQList(qs, _listPage, testMeta)}`;
 }
 
+function boardSubjIconHtml(s) {
+  if (s && s.icon) {
+    return `<img class="qx-marks-icon board-subj-ic-img" src="${s.icon}" alt="${s.name || ""}" width="36" height="36" loading="lazy" decoding="async">`;
+  }
+  return subjectIcon(s.name);
+}
+
+function boardExamIconHtml(examData, size, cls) {
+  const s = size || 48;
+  const c = cls || "board-exam-icon";
+  if (examData && examData.icon) {
+    return `<img class="qx-marks-icon ${c}" src="${examData.icon}" width="${s}" height="${s}" alt="${examData.title || ""}" loading="lazy" decoding="async">`;
+  }
+  const board = typeof dashBoardSelected === "function" ? dashBoardSelected() : "CBSE";
+  return typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(board, s, c) : "";
+}
+
+function boardMetaPillsHtml(meta) {
+  if (!meta || !meta.length) return "";
+  const pills = meta
+    .slice()
+    .sort((a, b) => Number(a.position || 0) - Number(b.position || 0))
+    .map(m => `<div class="board-meta-pill"><span class="board-meta-k">${m.title}</span><span class="board-meta-v">${m.description}</span></div>`)
+    .join("");
+  return `<div class="board-meta-pills">${pills}</div>`;
+}
+
+function boardWrapSplit(examData, subject, mainHtml, examId) {
+  if (typeof MarksShell !== "undefined" && MarksShell.boardSplitLayout) {
+    return MarksShell.boardSplitLayout(examData, subject, mainHtml, examId);
+  }
+  return mainHtml;
+}
+
 async function viewBoardMarksBank(payload) {
   if (typeof MarksLive === "undefined") {
     return `${topbar("Board PYQs", "")}<div class="empty">Loading board questions…</div>`;
@@ -831,18 +865,26 @@ async function viewBoardMarksBank(payload) {
   }
 
   const subjects = examData.subjects || [];
-  const metaLine = (examData.meta || []).map(m => `${m.title}: ${m.description}`).join(" · ");
 
   if (p.step === "subjects" || !p.subject) {
     _lastListFn = () => ({ step: "subjects", examId });
     const cards = subjects.map(s => `
-      <div class="subj-card" ${mg("board", { step: "chapters", subject: s.name, subjectId: s.id, examId })}>
-        <span class="subj-ic">${subjectIcon(s.name)}</span>
-        <div><strong>${s.name}</strong><small>${boardName} board PYQs</small></div>
+      <div class="subj-card board-subj-card" ${mg("board", { step: "chapters", subject: s.name, subjectId: s.id, examId })}>
+        <span class="subj-ic board-subj-ic">${boardSubjIconHtml(s)}</span>
+        <div><strong>${s.name}</strong><small>${s.shortTitle || boardName} · Board PYQs</small></div>
       </div>`).join("");
     return `${topbar(title, subtitle)}
-      ${metaLine ? `<p class="sec-desc">${metaLine}</p>` : ""}
-      <div class="subj-grid">${cards || '<div class="empty">No subjects.</div>'}</div>`;
+      <div class="board-marks-page">
+        <div class="board-marks-hero">
+          ${boardExamIconHtml(examData, 56, "board-marks-hero-ic")}
+          <div class="board-marks-hero-text">
+            <h1>${examData.title || boardName}</h1>
+            <p>Previous Year Question Bank</p>
+          </div>
+        </div>
+        ${boardMetaPillsHtml(examData.meta)}
+        <div class="subj-grid board-subj-grid">${cards || '<div class="empty">No subjects.</div>'}</div>
+      </div>`;
   }
 
   const subj = subjects.find(s => s.name === p.subject);
@@ -858,12 +900,19 @@ async function viewBoardMarksBank(payload) {
 
   if (p.step === "chapters" || !p.chapter) {
     _lastListFn = () => ({ step: "chapters", subject: p.subject, subjectId: subj.id, examId, _chapters: chapters });
-    const bc = breadcrumb([{ label: title, view: "board", payload: { step: "subjects", examId } }, { label: p.subject }]);
+    const bc = breadcrumb([{ label: examData.title || title, view: "board", payload: { step: "subjects", examId } }, { label: p.subject }]);
     const cards = chapters.map(c => `
-      <div class="ch-card qx-ch-row" ${mg("board", { step: "chapterHub", subject: p.subject, subjectId: subj.id, chapter: c.name, chapterId: c.id, examId, _chapters: chapters })}>
+      <div class="ch-card qx-ch-row board-ch-card" ${mg("board", { step: "chapterHub", subject: p.subject, subjectId: subj.id, chapter: c.name, chapterId: c.id, examId, _chapters: chapters })}>
         <div class="qx-ch-body"><strong>${c.name}</strong><small>${(c.count || 0).toLocaleString()} questions</small></div>
       </div>`).join("");
-    return `${topbar(p.subject, boardName)}${bc}<div class="ch-grid">${cards}</div>`;
+    const pageHtml = `<div class="board-marks-page board-marks-inner">
+      <div class="board-marks-head">
+        <h1>${p.subject} PYQs</h1>
+        <p>Chapter-wise Collection of ${p.subject} Board PYQs</p>
+      </div>
+      ${bc}<div class="ch-grid board-ch-grid">${cards}</div>
+    </div>`;
+    return boardWrapSplit(examData, p.subject, pageHtml, examId);
   }
 
   const ch = chapters.find(c => c.name === p.chapter);
@@ -887,7 +936,14 @@ async function viewBoardMarksBank(payload) {
         </div>`).join("");
       return `<h3 class="sec-title">${sec.title}</h3><div class="ch-grid qx-topic-grid">${cards}</div>`;
     }).join("");
-    return `${topbar(p.chapter, p.subject + " · " + boardName)}${bc}${blocks || '<div class="empty">No buckets for this chapter.</div>'}`;
+    const hubHtml = `<div class="board-marks-page board-marks-inner">
+      <div class="board-marks-head compact">
+        <h1>${p.chapter}</h1>
+        <p>${p.subject} · ${examData.title || boardName}</p>
+      </div>
+      ${bc}${blocks || '<div class="empty">No buckets for this chapter.</div>'}
+    </div>`;
+    return boardWrapSplit(examData, p.subject, hubHtml, examId);
   }
 
   showToast("📚 Loading board questions with options…");
@@ -912,7 +968,14 @@ async function viewBoardMarksBank(payload) {
     { label: modeLabel }
   ]));
   const testMeta = { title: `${p.chapter} · ${modeLabel}`, returnTo: "board", limit: 30 };
-  return `${topbar(p.chapter, `${p.subject} · ${boardName}`)}${bc}${renderQList(qs, _listPage, testMeta)}`;
+  const listHtml = `<div class="board-marks-page board-marks-inner">
+    <div class="board-marks-head compact">
+      <h1>${modeLabel}</h1>
+      <p>${p.chapter} · ${p.subject}</p>
+    </div>
+    ${bc}${renderQList(qs, _listPage, testMeta)}
+  </div>`;
+  return boardWrapSplit(examData, p.subject, listHtml, examId);
 }
 
 const NCERT_KIND_NAV = {
@@ -2039,8 +2102,19 @@ async function marksDashboardSections() {
     { id: "CBSE", label: "CBSE" },
     { id: "HSC", label: "HSC (Maharashtra)" }
   ];
-  const boardTitle = board === "HSC" ? "HSC (Maharashtra)" : "CBSE";
-  const boardLogo = typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(board, 48, "dash-board-hero-logo") : "";
+  let boardExamData = null;
+  if (typeof MarksLive !== "undefined") {
+    try {
+      await MarksLive.ensureToken();
+      const examId = MarksLive.BOARD_EXAMS[board] || MarksLive.BOARD_EXAMS.CBSE;
+      boardExamData = await MarksLive.boardSubjects(examId);
+    } catch (e) { /* use fallback logos */ }
+  }
+  const boardTitle = (boardExamData && boardExamData.title) || (board === "HSC" ? "HSC (Maharashtra)" : "CBSE");
+  const boardLogo = boardExamData
+    ? boardExamIconHtml(boardExamData, 52, "dash-board-hero-logo")
+    : (typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(board, 48, "dash-board-hero-logo") : "");
+  const boardMetaRow = boardExamData ? boardMetaPillsHtml(boardExamData.meta) : "";
   const boardPills = boards.map(b => {
     const logo = typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(b.id, 24, "dash-board-tab-logo") : "";
     return `<button type="button" class="dash-board-tab${board === b.id ? " on" : ""}" data-dash-board="${b.id}">
@@ -2057,6 +2131,7 @@ async function marksDashboardSections() {
         </div>
         <span class="dash-board-go">Open →</span>
       </div>
+      ${boardMetaRow ? `<div class="dash-board-meta">${boardMetaRow}</div>` : ""}
       <div class="dash-board-tabs">${boardPills}</div>
     </div>`;
 

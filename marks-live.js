@@ -314,6 +314,7 @@ const MarksLive = (() => {
     const out = {
       examId: id,
       title: d.title || boardLabel(),
+      icon: d.icon || null,
       meta: d.keyPointsMeta || [],
       subjects: (d.subjects || []).map(s => ({
         id: s.subjectId,

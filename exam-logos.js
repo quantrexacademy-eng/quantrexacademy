@@ -1,6 +1,7 @@
-// Quantrex — official-style exam logos (SVG assets)
+// Quantrex — exam logos (MARKS CDN for board exams, local SVG for competitive)
 const QuantrexExamLogos = (() => {
   const BASE = "assets/exam-logos/";
+  const MARKS_CDN = "https://cdn-assets.getmarks.app/app_assets/img/exams/";
   const MAP = {
     Engineering: { file: "jee-main.svg", label: "JEE Main & Advanced", short: "JEE" },
     Medical: { file: "neet.svg", label: "NEET UG", short: "NEET" },
@@ -18,9 +19,9 @@ const QuantrexExamLogos = (() => {
     ap_eamcet: { file: "ap-eamcet.svg", label: "AP EAPCET" },
     nda: { file: "nda.svg", label: "NDA" },
     kvpy: { file: "kvpy.svg", label: "KVPY" },
-    CBSE: { file: "cbse.svg", label: "CBSE Board", color: "#2563eb" },
-    HSC: { file: "hsc.svg", label: "HSC Maharashtra" },
-    board_live: { file: "cbse.svg", label: "Board PYQ" }
+    CBSE: { cdn: MARKS_CDN + "ic_content_exam_cbse.svg", label: "CBSE" },
+    HSC: { cdn: MARKS_CDN + "ic_content_exam_hsc_boards.svg", label: "HSC (Maharashtra)" },
+    board_live: { cdn: MARKS_CDN + "ic_content_exam_cbse.svg", label: "Board PYQ" }
   };
 
   function meta(key) {
@@ -34,15 +35,18 @@ const QuantrexExamLogos = (() => {
   }
 
   function src(key) {
-    return BASE + meta(key).file;
+    const m = meta(key);
+    if (m.cdn) return m.cdn;
+    return BASE + m.file;
   }
 
   function html(key, size, cls) {
     const m = meta(key);
     const s = size || 36;
-    const c = cls || "qx-exam-logo";
+    const c = (cls || "qx-exam-logo") + " qx-marks-icon";
     const v = typeof window !== "undefined" && window.QX_BUILD ? window.QX_BUILD : "1";
-    return `<img class="${c}" src="${src(key)}?v=${v}" width="${s}" height="${s}" alt="${m.label}" loading="lazy" decoding="async">`;
+    const url = m.cdn ? m.cdn : src(key) + "?v=" + v;
+    return `<img class="${c}" src="${url}" width="${s}" height="${s}" alt="${m.label}" loading="lazy" decoding="async">`;
   }
 
   function forQuestion(q) {
