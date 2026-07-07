@@ -3,7 +3,7 @@
 const CT_DAILY_LIMIT = 25;
 const CT_STORE = "quantrex_custom_tests_v1";
 const CT_DAILY = "quantrex_ct_daily_v1";
-const CT_CDN = "https://cdn-assets.getmarks.app/app_assets/img/cpyqb";
+
 const CT_DEFAULT_QS = 25;
 const CT_DEFAULT_MINS = 60;
 const CT_Q_PRESETS = [5, 10, 15, 20, 25, 30, 45, 60];
@@ -130,17 +130,18 @@ function ctSubjectStyle(title) {
 }
 
 function ctSubjectIcon(sub) {
-  const src = sub.iconWithIllustration || sub.iconIllustration || sub.icon;
-  if (src && String(src).startsWith("http")) {
-    return `<img class="ct-wiz-subj-ic" src="${src}" alt="">`;
-  }
   return `<span class="ct-wiz-subj-emoji">${typeof subjectIcon === "function" ? subjectIcon(sub.title) : "📖"}</span>`;
 }
 
+function ctExamIcon(ex) {
+  const t = String(ex.title || "").toLowerCase();
+  const ic = /neet/i.test(t) ? "🩺" : /mht/i.test(t) ? "🎓" : /jee/i.test(t) ? "📝" : "📋";
+  return `<span class="ct-wiz-card-fb">${ic}</span>`;
+}
+
 function ctChapterIcon(ch) {
-  if (!ch || !ch.icon) return `<span class="ct-wiz-ch-fb">${(ch.shortName || ch.title || "?").slice(0, 1)}</span>`;
-  const src = ch.icon.startsWith("http") ? ch.icon : `${CT_CDN}/chapters/${ch.icon}`;
-  return `<img class="ct-wiz-ch-ic" src="${src}" alt="" loading="lazy" onerror="this.style.display='none'">`;
+  if (!ch) return "";
+  return `<span class="ct-wiz-ch-fb">${(ch.shortName || ch.title || "?").slice(0, 1)}</span>`;
 }
 
 function ctSourceLabel(source) {
@@ -159,6 +160,11 @@ function ctSourceLabel(source) {
 
 async function ctBuildYearShifts(force) {
   if (_ctYearShiftsCache && !force) return _ctYearShiftsCache;
+  const cacheKey = "qx_year_shifts_" + (STATE.exam || "Engineering");
+  if (!force && typeof QxPerf !== "undefined") {
+    const cached = QxPerf.cacheGet(cacheKey, 1800000);
+    if (cached) { _ctYearShiftsCache = cached; return _ctYearShiftsCache; }
+  }
   const map = new Map();
   for (const slug of ctBanksForYears()) {
     if (typeof loadSingleBank === "function" && !_banksLoaded[slug]) {
@@ -175,6 +181,7 @@ async function ctBuildYearShifts(force) {
     });
   }
   _ctYearShiftsCache = [...map.values()].sort((a, b) => b.year - a.year || b.source.localeCompare(a.source));
+  if (typeof QxPerf !== "undefined") QxPerf.cacheSet(cacheKey, _ctYearShiftsCache);
   return _ctYearShiftsCache;
 }
 
@@ -257,7 +264,7 @@ function ctPickStepHtml(draft, exams) {
   const examCards = exams.map(ex => {
     const on = draft.examId === ex._id;
     return `<button type="button" class="ct-wiz-card ${on ? "on" : ""}" onclick="ctPickExam('${ex._id}')">
-      ${ex.icon ? `<img src="${ex.icon}" alt="">` : `<span class="ct-wiz-card-fb">${(ex.title || "?").slice(0, 1)}</span>`}
+      ${ctExamIcon(ex)}
       <strong>${ex.title}</strong>
     </button>`;
   }).join("");

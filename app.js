@@ -521,6 +521,10 @@ function bootApp() {
     }
     window.location.href = "login.html";
   };
+  if (typeof QxPerf !== "undefined") {
+    QxPerf.prefetchPrimaryBank();
+    QxPerf.onIdle(() => QxPerf.lazyImages(document));
+  }
   go("dashboard");
 }
 

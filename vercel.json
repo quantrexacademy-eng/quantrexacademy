@@ -4,9 +4,15 @@
   "outputDirectory": ".",
   "headers": [
     {
-      "source": "/(.*)\\.js",
+      "source": "/(.*)\\.(js|css|svg|png|jpg|jpeg|webp|woff2?|ico)",
       "headers": [
-        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache, must-revalidate" }
       ]
     },
     {

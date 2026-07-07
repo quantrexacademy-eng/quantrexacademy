@@ -1,10 +1,10 @@
 // Quantrex Academy — Firebase Configuration
-// Project: quantrexacademy-5da32 (quantrexacademy@gmail.com)
+// Project: quantrexacademy-live (quantrexacademy@gmail.com)
 const firebaseConfig = {
-  apiKey: "AIzaSyD3cBlEmI2xxPzwiY09I5Depx9gRspvKjc",
-  authDomain: "quantrexacademy-5da32.firebaseapp.com",
-  projectId: "quantrexacademy-5da32",
-  storageBucket: "quantrexacademy-5da32.firebasestorage.app",
-  messagingSenderId: "1007093580220",
-  appId: "1:1007093580220:web:181060e53f856f2a1eabb9"
+  apiKey: "AIzaSyDdzzuny3f9N5jZGRWotSmY4kZXZUK2MJs",
+  authDomain: "quantrexacademy-live.firebaseapp.com",
+  projectId: "quantrexacademy-live",
+  storageBucket: "quantrexacademy-live.firebasestorage.app",
+  messagingSenderId: "821213526444",
+  appId: "1:821213526444:web:2c95befe647d14d71de209"
 };

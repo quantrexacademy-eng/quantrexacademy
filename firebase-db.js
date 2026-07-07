@@ -168,7 +168,7 @@ const QuantrexDB = (() => {
     if (meta.exists) return;
     await metaRef.set({
       name: "Quantrex Academy",
-      project: "quantrexacademy-5da32",
+      project: "quantrexacademy-live",
       version: "1.0.0",
       questionCount: typeof QUESTIONS !== "undefined" ? QUESTIONS.length : 0,
       seededAt: firebase.firestore.FieldValue.serverTimestamp()

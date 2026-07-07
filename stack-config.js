@@ -4,7 +4,7 @@ const QUANTREX_STACK = {
   frontend: {
     provider: "Vercel",
     url: "https://quantrexacademy-lemon.vercel.app",
-    dashboard: "https://vercel.com/ajay-kumar-saroj-s-projects/quantrexacademy"
+    dashboard: "https://vercel.com/quantrexacademy-4922/quantrexacademy"
   },
   source: {
     provider: "GitHub",
@@ -13,19 +13,19 @@ const QUANTREX_STACK = {
   },
   auth: {
     provider: "Firebase Authentication",
-    projectId: "quantrexacademy-5da32",
+    projectId: "quantrexacademy-live",
     methods: ["email", "google", "phone"],
-    console: "https://console.firebase.google.com/project/quantrexacademy-5da32/authentication"
+    console: "https://console.firebase.google.com/project/quantrexacademy-live/authentication"
   },
   database: {
     provider: "Firebase Firestore",
-    projectId: "quantrexacademy-5da32",
-    collections: ["users", "users/{uid}/data/progress", "app/meta", "payments", "subscriptions", "videos"]
+    projectId: "quantrexacademy-live",
+    collections: ["users", "users/{uid}/data/progress", "app/meta", "payments", "subscriptions", "leaderboard", "solutions"]
   },
   storage: {
     provider: "Firebase Storage",
-    bucket: "quantrexacademy-5da32.firebasestorage.app",
-    console: "https://console.firebase.google.com/project/quantrexacademy-5da32/storage",
+    bucket: "quantrexacademy-live.firebasestorage.app",
+    console: "https://console.firebase.google.com/project/quantrexacademy-live/storage",
     paths: {
       pdfs: "pdfs/",
       images: "images/",

@@ -1,0 +1,225 @@
+{
+  "project": "quantrexacademy-live",
+  "steps": [
+    {
+      "step": "enable_identitytoolkit.googleapis.com",
+      "status": 200,
+      "detail": {
+        "name": "operations/noop.DONE_OPERATION",
+        "done": true,
+        "response": {
+          "@type": "type.googleapis.com/google.api.serviceusage.v1.EnableServiceResponse",
+          "service": {
+            "name": "projects/821213526444/services/identitytoolkit.googleapis.com",
+            "config": {
+              "name": "identitytoolkit.googleapis.com",
+              "title": "Identity Toolkit API",
+              "documentation": {
+                "summary": "The Google Identity Toolkit API lets you use open standards to verify a\n    user's identity."
+              },
+              "quota": {},
+              "authentication": {},
+              "usage": {
+                "requirements": [
+                  "serviceusage.googleapis.com/tos/cloud"
+                ]
+              },
+              "monitoredResources": [
+                {
+                  "type": "identitytoolkit_project",
+                  "displayName": "Project",
+                  "description": "An Identity Toolkit project.",
+                  "labels": [
+                    {
+                      "key": "project_id",
+                      "description": "The identifier of the GCP project associated with this resource."
+                    }
+                  ],
+                  "launchStage": "GA"
+                },
+                {
+                  "type": "identitytoolkit_tenant",
+                  "displayName": "Identity Toolkit Tenant",
+                  "description": "An Identity Toolkit tenant.",
+                  "labels": [
+                    {
+                      "key": "project_id",
+                      "description": "The identifier of the GCP project associated with this resource."
+                    },
+                    {
+                      "key": "tenant_name",
+                      "description": "The name of the tenant."
+                    }
+                  ],
+                  "launchStage": "GA"
+                }
+              ],
+              "monitoring": {
+                "consumerDestinations": [
+                  {
+                    "monitoredResource": "identitytoolkit_project",
+                    "metrics": [
+                      "identitytoolkit.googleapis.com/quota/free_daily_signin/exceeded",
+                      "identitytoolkit.googleapis.com/usage/daily_new_signin_count",
+                      "identitytoolkit.googleapis.com/usage/monthly_new_signin_count",
+                      "identitytoolkit.googleapis.com/usage/sent_sms_count",
+                      "identitytoolkit.googleapis.com/usage/verification_sms_count",
+                      "identitytoolkit.googleapis.com/usage/blocked_sms_count"
+                    ]
+                  },
+                  {
+                    "monitoredResource": "identitytoolkit_tenant",
+                    "metrics": [
+                      "identitytoolkit.googleapis.com/recaptcha/token_count",
+                      "identitytoolkit.googleapis.com/recaptcha/verdict_count",
+                      "identitytoolkit.googleapis.com/recaptcha/risk_scores",
+                      "identitytoolkit.googleapis.com/recaptcha/sms_tf_risk_scores",
+                      "identitytoolkit.googleapis.com/password_policy/weak_password_sign_in_count",
+                      "identitytoolkit.googleapis.com/mfa/totp/enrollment_attempt_count",
+                      "identitytoolkit.googleapis.com/mfa/totp/sign_in_challenge_attempt_count"
+                    ]
+                  }
+                ]
+              }
+            },
+            "state": "ENABLED",
+            "parent": "projects/821213526444"
+          }
+        }
+      }
+    },
+    {
+      "step": "enable_firebasestorage.googleapis.com",
+      "status": 200,
+      "detail": {
+        "name": "operations/noop.DONE_OPERATION",
+        "done": true,
+        "response": {
+          "@type": "type.googleapis.com/google.api.serviceusage.v1.EnableServiceResponse",
+          "service": {
+            "name": "projects/821213526444/services/firebasestorage.googleapis.com",
+            "config": {
+              "name": "firebasestorage.googleapis.com",
+              "title": "Cloud Storage for Firebase API",
+              "documentation": {
+                "summary": "The Cloud Storage for Firebase API enables programmatic management of Cloud Storage buckets for use in Firebase projects"
+              },
+              "quota": {},
+              "authentication": {},
+              "usage": {
+                "requirements": [
+                  "serviceusage.googleapis.com/tos/cloud"
+                ]
+              },
+              "monitoring": {}
+            },
+            "state": "ENABLED",
+            "parent": "projects/821213526444"
+          }
+        }
+      }
+    },
+    {
+      "step": "idp_password",
+      "status": 400,
+      "detail": {
+        "error": {
+          "code": 400,
+          "message": "INVALID_PROVIDER_ID : Invalid Idp name",
+          "status": "INVALID_ARGUMENT"
+        }
+      },
+      "action": "created"
+    },
+    {
+      "step": "idp_google.com",
+      "status": 400,
+      "detail": {
+        "error": {
+          "code": 400,
+          "message": "INVALID_CONFIG : client_id cannot be empty.",
+          "status": "INVALID_ARGUMENT"
+        }
+      },
+      "action": "created"
+    },
+    {
+      "step": "authorized_domains",
+      "status": 404,
+      "detail": {
+        "error": {
+          "code": 404,
+          "message": "CONFIGURATION_NOT_FOUND",
+          "status": "NOT_FOUND"
+        }
+      },
+      "domains": [
+        "localhost",
+        "quantrexacademy-live.web.app",
+        "quantrexacademy-live.firebaseapp.com",
+        "quantrexacademy-lemon.vercel.app",
+        "quantrexacademy.vercel.app"
+      ]
+    },
+    {
+      "step": "create_user",
+      "status": 400,
+      "detail": {
+        "error": {
+          "code": 400,
+          "message": "CONFIGURATION_NOT_FOUND",
+          "errors": [
+            {
+              "message": "CONFIGURATION_NOT_FOUND",
+              "domain": "global",
+              "reason": "invalid"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "step": "sign_in_test",
+      "status": 400,
+      "ok": false,
+      "detail": {
+        "error": {
+          "code": 400,
+          "message": "CONFIGURATION_NOT_FOUND",
+          "errors": [
+            {
+              "message": "CONFIGURATION_NOT_FOUND",
+              "domain": "global",
+              "reason": "invalid"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "step": "storage_bucket",
+      "status": 403,
+      "detail": {
+        "error": {
+          "code": 403,
+          "message": "The billing account for the owning project is disabled in state absent",
+          "errors": [
+            {
+              "message": "The billing account for the owning project is disabled in state absent",
+              "domain": "global",
+              "reason": "accountDisabled",
+              "locationType": "header",
+              "location": "Authorization"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "step": "storage_rules_deploy",
+      "status": "fail",
+      "detail": "(node:14304) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n"
+    }
+  ],
+  "at": "2026-07-06T17:45:02.360Z"
+}

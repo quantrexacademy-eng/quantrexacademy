@@ -1,4 +1,4 @@
-// Quantrex digital book covers — MARKS CDN banners + per-book identity (no generic JEE tags)
+// Quantrex digital book covers — local SVG only (no external watermarks)
 
 const BOOK_COVER_PRESETS = {
   "6a0addba4b032b031e049a36": { brand: "HC Verma", line: "Concepts of Physics", vol: "Volume 2", subject: "Physics", badge: "HC Verma", colors: ["#0c4a6e", "#0284c7", "#38bdf8"], icon: "⚛️", pattern: "waves" },
@@ -85,9 +85,9 @@ function inferBookCoverStyle(book) {
 
 function bookCoverImage(book) {
   if (!book) return null;
-  if (book.banner) return book.banner;
   if (BOOK_COVER_LOCAL[book.id]) return BOOK_COVER_LOCAL[book.id];
-  if (book.cover) return book.cover;
+  const cover = book.cover || book.banner || "";
+  if (cover && !/getmarks\.app/i.test(cover)) return cover;
   return null;
 }
 
@@ -146,7 +146,7 @@ function renderBookArtCover(book, size, inline) {
     <div class="qx-cover-spine"></div>
     <div class="qx-cover-inner">
       ${tag}${soon}
-      <span class="qx-cover-publisher">MARKS Selected</span>
+      <span class="qx-cover-publisher">Quantrex Digital</span>
       <span class="qx-cover-icon">${st.icon}</span>
       <strong class="qx-cover-brand">${st.brand}</strong>
       <span class="qx-cover-line">${st.line}</span>

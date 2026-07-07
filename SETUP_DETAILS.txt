@@ -13,7 +13,7 @@ One-Click Login Setup:  Double-click LOGIN_ALL.bat on Desktop
 1. WEBSITE HOSTING - VERCEL
 ================================================================================
 Live URL:     https://quantrexacademy-lemon.vercel.app
-Dashboard:    https://vercel.com/ajay-kumar-saroj-s-projects/quantrexacademy
+Dashboard:    https://vercel.com/quantrexacademy-4922/quantrexacademy
 Vercel User:  quantrexacademy-4922
 Login:        https://vercel.com/login  (use quantrexacademy@gmail.com)
 Deploy:       Double-click deploy.bat  OR  run: vercel --prod --yes
@@ -33,20 +33,20 @@ Git Config:
   user.name  = Quantrex Academy
 
 ================================================================================
-3. DATABASE - FIREBASE (quantrexacademy-5da32)
+3. DATABASE - FIREBASE (quantrexacademy-live)
 ================================================================================
-Console:      https://console.firebase.google.com/project/quantrexacademy-5da32
-Project ID:   quantrexacademy-5da32
-Auth Domain:  quantrexacademy-5da32.firebaseapp.com
+Console:      https://console.firebase.google.com/project/quantrexacademy-live
+Project ID:   quantrexacademy-live
+Auth Domain:  quantrexacademy-live.firebaseapp.com
 Setup:        Double-click FIREBASE_DATABASE_SETUP.bat
 
 Firebase Config (already in firebase-config.js):
-  apiKey:            AIzaSyD3cBlEmI2xxPzwiY09I5Depx9gRspvKjc
-  authDomain:        quantrexacademy-5da32.firebaseapp.com
-  projectId:         quantrexacademy-5da32
-  storageBucket:     quantrexacademy-5da32.firebasestorage.app
-  messagingSenderId: 1007093580220
-  appId:             1:1007093580220:web:181060e53f856f2a1eabb9
+  apiKey:            AIzaSyDdzzuny3f9N5jZGRWotSmY4kZXZUK2MJs
+  authDomain:        quantrexacademy-live.firebaseapp.com
+  projectId:         quantrexacademy-live
+  storageBucket:     quantrexacademy-live.firebasestorage.app
+  messagingSenderId: 821213526444
+  appId:             1:821213526444:web:2c95befe647d14d71de209
 
 Database:     Firestore (Cloud Firestore)
 Collections:
@@ -55,8 +55,8 @@ Collections:
   content/questions     - question bank (optional seed)
   app/meta              - app metadata
 
-Firebase Status: LINKED (quantrexacademy-5da32)
-  Console: https://console.firebase.google.com/project/quantrexacademy-5da32
+Firebase Status: LINKED (quantrexacademy-live)
+  Console: https://console.firebase.google.com/project/quantrexacademy-live
   Firestore Rules: DEPLOYED
 
 Enable in Firebase Console (one-time):
@@ -64,7 +64,7 @@ Enable in Firebase Console (one-time):
   2. Authentication > Settings > Authorized domains > add quantrexacademy-lemon.vercel.app
   3. Authentication > Users > Add user: quantrexacademy@gmail.com / function13@
   4. Login at: https://quantrexacademy-lemon.vercel.app/login
-     Backup (auth works): https://quantrexacademy-5da32.web.app/login
+     Backup (auth works): https://quantrexacademy-live.web.app/login
   5. Add Vercel domain: run FIREBASE_AUTH_ADD.bat OR add manually in Auth Settings
      Domain: quantrexacademy-lemon.vercel.app
 

@@ -22,9 +22,9 @@ echo.
 echo [3] FIREBASE (Database)
 echo     Login with quantrexacademy@gmail.com Google account
 firebase login
-start https://console.firebase.google.com/project/quantrexacademy-5da32/authentication/providers
-start https://console.firebase.google.com/project/quantrexacademy-5da32/authentication/settings
-start https://console.firebase.google.com/project/quantrexacademy-5da32/firestore
+start https://console.firebase.google.com/project/quantrexacademy-live/authentication/providers
+start https://console.firebase.google.com/project/quantrexacademy-live/authentication/settings
+start https://console.firebase.google.com/project/quantrexacademy-live/firestore
 echo.
 echo After login, run deploy.bat to push code and go live.
 echo.

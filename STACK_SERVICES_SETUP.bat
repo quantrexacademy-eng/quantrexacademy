@@ -10,17 +10,17 @@ echo.
 
 echo [1] Firebase Authentication
 echo     Enable: Email/Password + Google
-start https://console.firebase.google.com/project/quantrexacademy-5da32/authentication/providers
+start https://console.firebase.google.com/project/quantrexacademy-live/authentication/providers
 echo.
 
 echo [2] Firebase Firestore
 echo     Rules deployed via CLI
-start https://console.firebase.google.com/project/quantrexacademy-5da32/firestore
+start https://console.firebase.google.com/project/quantrexacademy-live/firestore
 echo.
 
 echo [3] Firebase Storage
 echo     Click Get Started, then deploy rules
-start https://console.firebase.google.com/project/quantrexacademy-5da32/storage
+start https://console.firebase.google.com/project/quantrexacademy-live/storage
 echo.
 
 echo [4] Cloudflare Stream (Videos)
@@ -35,7 +35,7 @@ start https://vercel.com/ajay-kumar-saroj-s-projects/quantrexacademy/settings/en
 echo.
 
 echo Deploying Firebase rules...
-firebase use quantrexacademy-5da32
+firebase use quantrexacademy-live
 firebase deploy --only firestore:rules,storage --non-interactive 2>nul
 echo.
 echo Config files:

@@ -26,7 +26,7 @@ ACCOUNTS
 --------
 Email: quantrexacademy@gmail.com
 Password: function13@
-Firebase Project: quantrex-premimum
+Firebase Project: quantrexacademy-live
 Live Site: https://quantrexacademy-lemon.vercel.app
 
 MARKS LOGIN (for extraction)

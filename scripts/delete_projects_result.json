@@ -1,0 +1,37 @@
+{
+  "kept": "quantrexacademy-live",
+  "results": [
+    {
+      "id": "gen-lang-client-0152704106",
+      "status": "deleted",
+      "detail": {}
+    },
+    {
+      "id": "planning-with-ai-c7e08",
+      "status": "deleted",
+      "detail": {}
+    },
+    {
+      "id": "quantrex-9c898",
+      "status": "denied",
+      "detail": {
+        "error": {
+          "code": 403,
+          "message": "The caller does not have permission",
+          "status": "PERMISSION_DENIED"
+        }
+      }
+    },
+    {
+      "id": "quantrex-academy",
+      "status": "deleted",
+      "detail": {}
+    },
+    {
+      "id": "quantrexacademy-5da32",
+      "status": "deleted",
+      "detail": {}
+    }
+  ],
+  "at": "2026-07-06T17:32:38.458Z"
+}

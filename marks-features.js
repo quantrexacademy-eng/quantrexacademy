@@ -186,11 +186,14 @@ const CT_CLASS_IDS = {
   "615d7802c52ffa3c944600e8": "Class 11",
   "615d780ec52ffa3c944600e9": "Class 12"
 };
-const CPYQB_CDN = "https://cdn-assets.getmarks.app/app_assets/img/cpyqb";
 let _marksCtIndex = null;
 
 async function fetchMarksCtIndex() {
   if (_marksCtIndex) return _marksCtIndex;
+  if (typeof QxPerf !== "undefined") {
+    const cached = QxPerf.cacheGet("qx_ct_index", 86400000);
+    if (cached) { _marksCtIndex = cached; return _marksCtIndex; }
+  }
   _marksCtIndex = {};
   try {
     const res = await fetch("data/nav/custom_test_exams.json");
@@ -220,6 +223,7 @@ async function fetchMarksCtIndex() {
   } catch (e) {
     _marksCtIndex = {};
   }
+  if (typeof QxPerf !== "undefined") QxPerf.cacheSet("qx_ct_index", _marksCtIndex);
   return _marksCtIndex;
 }
 
@@ -266,10 +270,9 @@ function cpyqbChapterStats(examSlug, subject, chapterName, total) {
 }
 
 function cpyqbChapterIcon(meta) {
-  if (!meta || !meta.icon) return "";
-  const src = meta.icon.startsWith("http") ? meta.icon : `${CPYQB_CDN}/chapters/${meta.icon}`;
+  if (!meta) return "";
   const letter = (meta.shortName || "?").slice(0, 1).replace(/'/g, "");
-  return `<img class="cpyqb-ch-ic" src="${src}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'cpyqb-ch-ic-fb',textContent:'${letter}'}))">`;
+  return `<span class="cpyqb-ch-ic-fb">${letter}</span>`;
 }
 
 function cpyqbSyllabusBadge(cat) {
@@ -412,7 +415,7 @@ async function viewCpyqb(payload) {
         <strong>${e.title}</strong>
         <small>${e.count.toLocaleString()} questions · ${e.subjects.length} subjects</small>
       </div>`).join("");
-    return `${topbar("Chapter-wise PYQ Bank", "Select an exam — same as MARKS web")}
+    return `${topbar("Chapter-wise PYQ Bank", "Select an exam to start practicing")}
       <div class="exam-grid">${cards || '<div class="empty">No exams for this category.</div>'}</div>`;
   }
 
@@ -566,7 +569,7 @@ async function viewCpyqb(payload) {
       const allQs = QUESTIONS.filter(q => q._bank === p.exam && q.subject === p.subject && q.chapter === p.chapter);
       const testMeta = { title: `${p.chapter} · Chapter Test`, returnTo: "cpyqb", limit: 30 };
       return `${topbar(p.chapter, `${exam.title} · ${p.subject}`)}${bc}
-        <p class="result-count">MARKS subtopic data not available for this chapter yet — showing all ${allQs.length} questions.</p>
+        <p class="result-count">Topic breakdown not available for this chapter yet — showing all ${allQs.length} questions.</p>
         ${renderQList(allQs, _listPage, testMeta)}`;
     }
     return `${topbar(p.chapter, "Choose practice mode")}${bc}${chapterModeCards(meta, p)}`;
@@ -581,7 +584,7 @@ async function viewCpyqb(payload) {
     const cards = buckets.length ? buckets.map(b => `
       <div class="ch-card qx-bucket-card ${bucketTone(b)}" ${mg("cpyqb", { step: "questions", mode: "bucket", exam: p.exam, subject: p.subject, chapter: p.chapter, bucketId: b.id, bucketTitle: b.title })}>
         <strong>${b.title}</strong><small>${(b.count || 0).toLocaleString()} questions</small>
-      </div>`).join("") : `<div class="empty">No PYQ buckets for this chapter on MARKS.</div>`;
+      </div>`).join("") : `<div class="empty">No PYQ buckets for this chapter yet.</div>`;
     return `${topbar(p.chapter, "All PYQs")}${bc}<div class="ch-grid">${cards}</div>`;
   }
 
@@ -595,7 +598,7 @@ async function viewCpyqb(payload) {
           <strong>${t.title}</strong>
           <small>${(t.count || 0).toLocaleString()} questions</small>
         </div>
-      </div>`).join("") : `<div class="empty">No subtopics for this chapter on MARKS.</div>`;
+      </div>`).join("") : `<div class="empty">No subtopics for this chapter yet.</div>`;
     return `${topbar(p.chapter, "Topicwise PYQs")}${bc}<div class="ch-grid qx-topic-grid">${cards}</div>`;
   }
 
@@ -612,7 +615,7 @@ async function viewCpyqb(payload) {
     if (bucket && bucket.questionIds && bucket.questionIds.length) {
       const filtered = filterByMarksIds(qs, bucket.questionIds);
       if (filtered.length) qs = filtered;
-      else filterNote = `<p class="result-count">Could not match MARKS bucket questions (${bucket.questionIds.length} IDs). Re-run patch_marks_ids.py.</p>`;
+      else filterNote = `<p class="result-count">Could not match bucket questions (${bucket.questionIds.length} IDs).</p>`;
     }
   }
   if (meta && p.mode === "topic" && (p.topicId || p.topicTitle)) {
@@ -620,7 +623,7 @@ async function viewCpyqb(payload) {
     if (topic && topic.questionIds && topic.questionIds.length) {
       const filtered = filterByMarksIds(qs, topic.questionIds);
       if (filtered.length) qs = filtered;
-      else filterNote = `<p class="result-count">Could not match MARKS subtopic questions (${topic.questionIds.length} IDs). Re-run patch_marks_ids.py.</p>`;
+      else filterNote = `<p class="result-count">Could not match subtopic questions (${topic.questionIds.length} IDs).</p>`;
     }
   }
 
@@ -706,7 +709,7 @@ async function viewNeetModuleBank(payload, moduleId) {
       <div class="ch-card qx-topic-card" ${mg(moduleId, { step: "questions", mode: "topic", subject: p.subject, chapter: p.chapter, topicId: t.id, topicTitle: t.title })}>
         <div class="qx-topic-body"><strong>${t.title}</strong><small>${(t.count || 0).toLocaleString()} questions</small></div>
       </div>`).join("");
-    return `${topbar(p.chapter, "Topicwise · " + title)}${bc}<div class="ch-grid qx-topic-grid">${cards || '<div class="empty">No MARKS subtopics.</div>'}</div>`;
+    return `${topbar(p.chapter, "Topicwise · " + title)}${bc}<div class="ch-grid qx-topic-grid">${cards || '<div class="empty">No subtopics for this chapter yet.</div>'}</div>`;
   }
 
   const bankSlugs = moduleId === "allqs"
@@ -728,7 +731,7 @@ async function viewNeetModuleBank(payload, moduleId) {
     if (topic && topic.questionIds && topic.questionIds.length) {
       const filtered = filterByMarksIds(qs, topic.questionIds);
       if (filtered.length) qs = filtered;
-      else filterNote = `<p class="result-count">Could not match MARKS subtopic (${topic.questionIds.length} IDs).</p>`;
+      else filterNote = `<p class="result-count">Could not match subtopic (${topic.questionIds.length} IDs).</p>`;
     }
   }
   _lastListFn = () => ({ ...p, step: "questions" });
@@ -1028,7 +1031,7 @@ function viewTestSeries(payload) {
         <strong>${meta.price}</strong>
       </div>
       <button type="button" class="btn-primary big" onclick="showToast('🚀 Test Series launching soon! You will be notified.')">Notify Me — Coming Soon</button>
-      <p class="mts-detail-note">Same trusted test series experience as MARKS — launching on Quantrex Academy shortly.</p>
+      <p class="mts-detail-note">Full-length test series — launching on Quantrex Academy shortly.</p>
     </div>
   </div>`;
 }
@@ -1468,7 +1471,7 @@ async function viewPyqMock(payload) {
     ${pyqMockBackBar("exams")}
     <div class="cpyqb-marks-head">
       <h1>PYQ Mock Tests</h1>
-      <p>Full exam papers · Year & shift wise — same as MARKS</p>
+      <p>Full exam papers · Year & shift wise</p>
     </div>
     <div class="marks-tests-hero">${cards || '<div class="empty">No exams for this category.</div>'}</div>
   </div>`;
@@ -1576,7 +1579,7 @@ async function viewBooks(payload) {
         <strong>${m.title}</strong>
         <small>${m.subtitle || ""}${m.count ? ` · ${m.count.toLocaleString()} questions` : ""}</small>
       </div>`).join("");
-    return `${topbar(bookTitle, nav.exam || "MARKS Selected")}${bc}<div class="exam-grid">${cards}</div>`;
+    return `${topbar(bookTitle, nav.exam || "Quantrex Digital")}${bc}<div class="exam-grid">${cards}</div>`;
   }
 
   if (p.step === "modules" && nav.modules.length === 1) {
@@ -1665,7 +1668,7 @@ async function viewQuickConcepts(payload) {
         <span class="subj-ic">${subjectIcon(s.name)}</span>
         <div><strong>${s.name}</strong><small>${s.chaptersCount || (s.chapters || []).length} chapters · ${s.topicsCount || 0} topics</small></div>
       </div>`).join("");
-    return `${topbar("Quick Concepts", "Fast revision — MARKS topicwise notes & examples")}
+    return `${topbar("Quick Concepts", "Fast revision — topicwise notes & examples")}
       <div class="subj-grid">${cards || '<div class="empty">Quick Concepts syncing…</div>'}</div>`;
   }
 
@@ -1697,7 +1700,7 @@ async function viewQuickConcepts(payload) {
       <div class="ch-card qx-topic-card" ${mg("quickconcepts", { step: "content", subjectId: p.subjectId, subjectName: subj.name, chapterId: p.chapterId, chapterName: ch.name, topicId: t.id, topicTitle: t.title })}>
         <div class="qx-topic-body"><strong>${t.title}</strong></div>
       </div>`).join("");
-    return `${topbar(ch.name, subj.name)}${bc}<div class="ch-grid qx-topic-grid">${cards || '<div class="empty">No topics on MARKS.</div>'}</div>`;
+    return `${topbar(ch.name, subj.name)}${bc}<div class="ch-grid qx-topic-grid">${cards || '<div class="empty">No topics for this chapter yet.</div>'}</div>`;
   }
 
   const content = await fetchQcContent(p.subjectId, p.chapterId, p.topicId);

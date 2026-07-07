@@ -29,7 +29,7 @@ window.Mx = (() => {
     document.head.appendChild(s);
   }
 
-  initMathJax();
+  let _mathRequested = false;
 
   function isHtml(str) {
     return /<[a-z][\s\S]*>/i.test(str);
@@ -44,11 +44,12 @@ window.Mx = (() => {
   }
 
   const BRAND_PATTERNS = [
-    /getmarks\.app/gi, /cdn-assets\.getmarks/gi,
+    /getmarks\.app/gi, /cdn-assets\.getmarks/gi, /cdn-question-pool\.getmarks/gi,
     /Scoremarks\s+Technologies/gi, /Mathongo/gi, /\bGet\s*Marks\b/gi, /\bMARKS\s*App\b/gi,
-    /Powered\s+by\s+MARKS/gi, /MOG\s*Premium/gi, /\bMARKS\s*Premium\b/gi
+    /Powered\s+by\s+MARKS/gi, /MOG\s*Premium/gi, /\bMARKS\s*Premium\b/gi,
+    /\bMARKS\s*Selected\b/gi, /marks_selected/gi, /\bMARKS\s*web\b/gi
   ];
-  const BRAND_IMG_RX = /(?:logo|watermark|branding|marks-premium|ic_marks)/i;
+  const BRAND_IMG_RX = /(?:logo|watermark|branding|marks-premium|ic_marks|marks_selected|getmarks|scoremarks)/i;
 
   function wrapDiagramImages(html) {
     return html.replace(/<img([^>]*)>/gi, (m, attrs) => {
@@ -112,10 +113,18 @@ window.Mx = (() => {
     return out;
   }
 
+  function needsMath(root) {
+    const el = root || document.getElementById("app-main");
+    if (!el) return false;
+    return /[$\\]|math-|mjx-|class="q-text"|class="qx-q"/i.test(el.innerHTML);
+  }
+
   function typeset(root) {
     const el = root || document.getElementById("app-main") || document.body;
+    if (!needsMath(el)) return Promise.resolve();
+    if (!_mathRequested) { _mathRequested = true; initMathJax(); }
     if (!window.MathJax || !MathJax.typesetPromise) {
-      return new Promise(r => setTimeout(r, 300));
+      return new Promise(r => setTimeout(r, 200));
     }
     return MathJax.typesetPromise([el]).catch(() => {});
   }
@@ -123,6 +132,10 @@ window.Mx = (() => {
   function afterRender(root) {
     requestAnimationFrame(() => {
       cleanDom(root);
+      if (typeof QxPerf !== "undefined") {
+        QxPerf.lazyImages(root);
+        QxPerf.smoothPaint(root);
+      }
       typeset(root);
     });
   }

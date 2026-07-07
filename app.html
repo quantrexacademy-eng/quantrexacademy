@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
     <title>Quantrex App - IIT JEE &amp; NEET Prep (Working)</title>
     <meta name="theme-color" content="#1589EE">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Kanit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -45,6 +46,9 @@
         [data-theme="dark"] .empty { background: var(--card); border-color: var(--border); }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--dark); }
+        .content.qx-fade-in { animation: qxFadeIn .22s ease-out; }
+        @keyframes qxFadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+        img[loading="lazy"] { content-visibility: auto; }
 
         .app { display: flex; min-height: 100vh; }
 
@@ -445,9 +449,12 @@
         .qx-content sub, .qx-content sup { font-size: 0.75em; }
         .qx-content .MathJax { font-size: 1.05em !important; }
         .qx-content [class*="watermark"], .qx-content [class*="Watermark"],
-        .qx-content [data-brand], .qx-content .marks-brand, .qx-content .getmarks-brand { display: none !important; }
-        .qx-img-wrap { display: inline-block; max-width: 100%; overflow: hidden; line-height: 0; vertical-align: middle; }
-        .qx-img-wrap img { display: block; max-width: 100%; height: auto; clip-path: inset(0 0 7% 0); margin-bottom: -7%; }
+        .qx-content [data-brand], .qx-content .marks-brand, .qx-content .getmarks-brand,
+        .qx-content [class*="getmarks"], .qx-content [class*="marks_selected"],
+        img[src*="getmarks"], img[alt*="MARKS"], img[alt*="Get Marks"] { display: none !important; }
+        .qx-img-wrap { display: inline-block; max-width: 100%; overflow: hidden; line-height: 0; vertical-align: middle; position: relative; }
+        .qx-img-wrap img { display: block; max-width: 100%; height: auto; clip-path: inset(0 0 10% 0); margin-bottom: -10%; }
+        .qx-img-wrap::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 12%; background: var(--card, #fff); pointer-events: none; }
         mjx-container { overflow-x: auto; max-width: 100%; }
         .fc-formula mjx-container { font-size: 1.2em !important; }
         .qa-q mjx-container { font-size: 1.1em !important; }
@@ -1053,7 +1060,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build ct394b</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxfast1</div>
             </div>
         </aside>
 
@@ -1074,30 +1081,31 @@
 
     <div id="appToast"></div>
 
-    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js"></script>
-    <script>window.QX_BUILD="ct394b";</script>
-    <script src="firebase-config.js?v=ct394b"></script>
-    <script src="stack-config.js?v=ct394b"></script>
-    <script src="math-render.js?v=ct394b"></script>
-    <script src="data.js?v=ct394b"></script>
-    <script src="firebase-db.js?v=ct394b"></script>
-    <script src="firebase-storage.js?v=ct394b"></script>
-    <script src="payments.js?v=ct394b"></script>
-    <script src="premium.js?v=ct394b"></script>
-    <script src="leaderboard.js?v=ct394b"></script>
-    <script src="community.js?v=ct394b"></script>
-    <script src="book-covers.js?v=ct394b"></script>
-    <script src="marks-shell.js?v=ct394b"></script>
-    <script src="marks-features.js?v=ct394b"></script>
-    <script src="custom-test.js?v=ct394b"></script>
-    <script src="test-engine.js?v=ct394b"></script>
-    <script src="analytics.js?v=ct394b"></script>
-    <script src="search.js?v=ct394b"></script>
-    <script src="theme.js?v=ct394b"></script>
-    <script src="app.js?v=ct394b"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
+    <script>window.QX_BUILD="qxfast1";</script>
+    <script src="qx-perf.js?v=qxfast1"></script>
+    <script src="firebase-config.js?v=qxfast1" defer></script>
+    <script src="stack-config.js?v=qxfast1" defer></script>
+    <script src="math-render.js?v=qxfast1" defer></script>
+    <script src="data.js?v=qxfast1" defer></script>
+    <script src="firebase-db.js?v=qxfast1" defer></script>
+    <script src="firebase-storage.js?v=qxfast1" defer></script>
+    <script src="payments.js?v=qxfast1" defer></script>
+    <script src="premium.js?v=qxfast1" defer></script>
+    <script src="leaderboard.js?v=qxfast1" defer></script>
+    <script src="community.js?v=qxfast1" defer></script>
+    <script src="book-covers.js?v=qxfast1" defer></script>
+    <script src="marks-shell.js?v=qxfast1" defer></script>
+    <script src="marks-features.js?v=qxfast1" defer></script>
+    <script src="custom-test.js?v=qxfast1" defer></script>
+    <script src="test-engine.js?v=qxfast1" defer></script>
+    <script src="analytics.js?v=qxfast1" defer></script>
+    <script src="search.js?v=qxfast1" defer></script>
+    <script src="theme.js?v=qxfast1" defer></script>
+    <script src="app.js?v=qxfast1" defer></script>
 </body>
 </html>
