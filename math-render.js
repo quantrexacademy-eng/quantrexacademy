@@ -44,11 +44,12 @@ window.Mx = (() => {
   }
 
   const BRAND_PATTERNS = [
-    /getmarks\.app/gi, /cdn-assets\.getmarks/gi, /cdn-question-pool\.getmarks/gi,
+    /cdn-assets\.getmarks/gi,
     /Scoremarks\s+Technologies/gi, /Mathongo/gi, /\bGet\s*Marks\b/gi, /\bMARKS\s*App\b/gi,
     /Powered\s+by\s+MARKS/gi, /MOG\s*Premium/gi, /\bMARKS\s*Premium\b/gi,
     /\bMARKS\s*Selected\b/gi, /marks_selected/gi, /\bMARKS\s*web\b/gi
   ];
+  const PROTECTED_IMG_RX = /cdn-question-pool\.getmarks|formula_cards|cbse\/|NEET\/NCERT/i;
   const BRAND_IMG_RX = /(?:logo|watermark|branding|marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|scoremarks)/i;
   const QUESTION_IMG_RX = /cdn-question-pool\.getmarks/i;
   const FORMULA_IMG_RX = /formula_cards/i;
@@ -59,18 +60,29 @@ window.Mx = (() => {
       : "qx-img-wrap";
   }
 
+  function isDiagramImg(attrs) {
+    return diagramWrapClass(attrs) === "qx-diagram-wrap";
+  }
+
+  function diagramPanelHtml(attrs) {
+    const hasLoading = /loading=/i.test(attrs);
+    const extra = hasLoading ? "" : ' loading="eager" decoding="async" fetchpriority="high"';
+    return `<div class="qx-diagram-panel">
+      <span class="qx-diagram-badge">📊 Figure</span>
+      <span class="qx-diagram-wrap"><img${attrs}${extra}></span>
+    </div>
+    <small class="qx-diagram-hint">🔍 Tap diagram to zoom</small>`;
+  }
+
   function wrapDiagramImages(html) {
     return html.replace(/<img([^>]*)>/gi, (m, attrs) => {
       if (FORMULA_IMG_RX.test(attrs)) return m;
       if (BRAND_IMG_RX.test(attrs)) return "";
       if (/class=["'][^"']*qx-(img|diagram)-wrap/i.test(attrs)) return m;
-      const wrap = diagramWrapClass(attrs);
+      if (isDiagramImg(attrs)) return diagramPanelHtml(attrs);
       const hasLoading = /loading=/i.test(attrs);
       const extra = hasLoading ? "" : ' loading="lazy" decoding="async"';
-      const hint = wrap === "qx-diagram-wrap"
-        ? '<small class="qx-diagram-hint">Tap diagram to zoom</small>'
-        : "";
-      return `<span class="${wrap}"><img${attrs}${extra}></span>${hint}`;
+      return `<span class="qx-img-wrap"><img${attrs}${extra}></span>`;
     });
   }
 
@@ -87,21 +99,40 @@ window.Mx = (() => {
   function bindDiagramZoom(root) {
     const scope = root || document.getElementById("app-main") || document.body;
     if (!scope) return;
-    scope.querySelectorAll(".qx-diagram-wrap").forEach(wrap => {
-      if (wrap._qxZoomBound) return;
-      wrap._qxZoomBound = true;
-      wrap.onclick = () => {
-        const img = wrap.querySelector("img");
-        if (img && img.src) openDiagramModal(img.src);
+    scope.querySelectorAll(".qx-diagram-panel").forEach(panel => {
+      if (panel._qxZoomBound) return;
+      panel._qxZoomBound = true;
+      panel.onclick = () => {
+        const img = panel.querySelector("img");
+        if (img && img.src && !img.src.includes("__QXIMG")) openDiagramModal(img.src);
       };
     });
   }
 
+  function protectImgUrls(str) {
+    const slots = [];
+    const safe = String(str).replace(/(<img[^>]+src=["'])([^"']+)(["'])/gi, (m, pre, url, post) => {
+      if (!PROTECTED_IMG_RX.test(url) && !FORMULA_IMG_RX.test(url)) return m;
+      const key = `__QXIMG${slots.length}__`;
+      slots.push(url);
+      return `${pre}${key}${post}`;
+    });
+    return { safe, slots };
+  }
+
+  function restoreImgUrls(str, slots) {
+    let out = str;
+    slots.forEach((url, i) => { out = out.split(`__QXIMG${i}__`).join(url); });
+    return out;
+  }
+
   function stripBranding(str) {
-    let out = String(str);
+    const { safe, slots } = protectImgUrls(str);
+    let out = safe;
     BRAND_PATTERNS.forEach(rx => { out = out.replace(rx, ""); });
     out = out.replace(/<[^>]*(?:watermark|getmarks-brand|marks-app)[^>]*>[\s\S]*?<\/[^>]+>/gi, "");
     out = out.replace(/<img[^>]+(?:watermark|marks-premium|ic_marks)[^>]*>/gi, "");
+    out = restoreImgUrls(out, slots);
     if (isHtml(out)) out = wrapDiagramImages(out);
     return out.replace(/\s{2,}/g, " ").trim();
   }
@@ -115,20 +146,29 @@ window.Mx = (() => {
       const alt = img.getAttribute("alt") || "";
       if (FORMULA_IMG_RX.test(src) || img.classList.contains("fc-img")) return;
       if (QUESTION_IMG_RX.test(src) || /cbse|diagram|question-pool/i.test(src)) {
-        if (!img.closest(".qx-diagram-wrap") && !img.closest(".qx-img-wrap")) {
+        if (!img.closest(".qx-diagram-panel")) {
+          const panel = document.createElement("div");
+          panel.className = "qx-diagram-panel";
+          const badge = document.createElement("span");
+          badge.className = "qx-diagram-badge";
+          badge.textContent = "📊 Figure";
           const wrap = document.createElement("span");
           wrap.className = "qx-diagram-wrap";
-          img.parentNode.insertBefore(wrap, img);
+          const parent = img.parentNode;
+          parent.insertBefore(panel, img);
+          panel.appendChild(badge);
+          panel.appendChild(wrap);
           wrap.appendChild(img);
-          if (!wrap.nextElementSibling || !wrap.nextElementSibling.classList.contains("qx-diagram-hint")) {
+          if (!panel.nextElementSibling || !panel.nextElementSibling.classList.contains("qx-diagram-hint")) {
             const hint = document.createElement("small");
             hint.className = "qx-diagram-hint";
-            hint.textContent = "Tap diagram to zoom";
-            wrap.parentNode.insertBefore(hint, wrap.nextSibling);
+            hint.textContent = "🔍 Tap diagram to zoom";
+            parent.insertBefore(hint, panel.nextSibling);
           }
         }
-        img.loading = img.loading || "lazy";
+        img.loading = "eager";
         img.decoding = "async";
+        img.fetchPriority = "high";
         return;
       }
       if (BRAND_IMG_RX.test(src) || BRAND_IMG_RX.test(alt)) { img.remove(); return; }
