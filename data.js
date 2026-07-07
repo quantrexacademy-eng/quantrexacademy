@@ -1,6 +1,6 @@
 // Quantrex Academy — Premium Question Bank (120781 questions, LaTeX preserved)
 const EXAMS = {
-  Engineering: { name: "JEE Main & Advanced", subjects: ["Physics", "Chemistry", "Mathematics"], color: "#1589EE", icon: "⚙️" },
+  Engineering: { name: "JEE Main & Advanced", subjects: ["Physics", "Chemistry", "Mathematics"], color: "#0D9488", icon: "⚙️" },
   Medical:     { name: "NEET UG", subjects: ["Physics", "Chemistry", "Biology", "Zoology", "Botany"], color: "#2bc48a", icon: "⚕️" },
   Foundation:  { name: "Class 9 & 10", subjects: ["Science", "Mathematics"], color: "#7c5ce7", icon: "📚" }
 };
@@ -228,12 +228,12 @@ const MODULES = [
 const LEADERBOARD = [
   { rank: 1, name: "Aarav Sharma", points: 2840, league: "Legend", avatar: "A", color: "#f59e0b" },
   { rank: 2, name: "Priya Patel", points: 2610, league: "Platinum", avatar: "P", color: "#7c5ce7" },
-  { rank: 3, name: "Rohan Verma", points: 2495, league: "Platinum", avatar: "R", color: "#1589EE" },
+  { rank: 3, name: "Rohan Verma", points: 2495, league: "Platinum", avatar: "R", color: "#0D9488" },
   { rank: 4, name: "Ananya Singh", points: 2200, league: "Gold", avatar: "A", color: "#2bc48a" },
   { rank: 5, name: "Karthik Rao", points: 1980, league: "Gold", avatar: "K", color: "#ef4444" },
   { rank: 6, name: "Sneha Gupta", points: 1750, league: "Gold", avatar: "S", color: "#f59e0b" },
   { rank: 7, name: "Vikram Nair", points: 1540, league: "Silver", avatar: "V", color: "#7c5ce7" },
-  { rank: 8, name: "Diya Mehta", points: 1320, league: "Silver", avatar: "D", color: "#1589EE" }
+  { rank: 8, name: "Diya Mehta", points: 1320, league: "Silver", avatar: "D", color: "#6366F1" }
 ];
 
 const BANK_INDEX = {

@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Login · Quantrex App - IIT JEE &amp; NEET Prep</title>
-<meta name="theme-color" content="#1589EE">
+<meta name="theme-color" content="#0D9488">
 <link rel="icon" type="image/png" href="assets/favicon-32x32.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Kanit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/quantrex-brand.css?v=qxbrand1">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--primary:#1589EE;--primary-dark:#0f6fc4;--primary-light:#eaf4fd;--green:#2bc48a;--orange:#f59e0b;--red:#ef4444;--dark:#1a1a2e;--gray:#6b7280;--border:#e8ecf2;--bg:#f4f6f9;--white:#fff}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;display:flex}
 /* Left brand panel */
-.brand{flex:1;background:linear-gradient(135deg,#1589EE,#4da6f5);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:60px;position:relative;overflow:hidden}
+.brand{flex:1;background:var(--qx-gradient);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:60px;position:relative;overflow:hidden}
 .brand::before{content:'';position:absolute;top:-150px;right:-150px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%)}
 .brand::after{content:'';position:absolute;bottom:-200px;left:-100px;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.1),transparent 70%)}
 .brand-inner{position:relative;z-index:2;max-width:460px}
@@ -41,10 +41,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--dark);min-h
 .input-wrap .flag{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-weight:600;color:var(--dark);font-size:15px;pointer-events:none}
 .input-wrap .flag + input{padding-left:64px}
 input{width:100%;padding:14px 16px;border:2px solid var(--border);border-radius:11px;font-size:15px;font-family:inherit;transition:border .2s,box-shadow .2s;background:var(--white)}
-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(21,137,238,.12)}
+input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--qx-glow)}
 .btn{width:100%;padding:15px;border:none;border-radius:11px;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
 .btn-primary{background:var(--primary);color:#fff}
-.btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 8px 20px rgba(21,137,238,.3)}
+.btn-primary{background:var(--qx-gradient)!important;border:none}
+.btn-primary:hover{filter:brightness(1.06);transform:translateY(-1px);box-shadow:0 8px 20px var(--qx-glow)}
 .btn-primary:disabled{opacity:.6;cursor:not-allowed;transform:none;box-shadow:none}
 .btn-google{background:var(--white);color:var(--dark);border:2px solid var(--border);margin-top:14px}
 .btn-google:hover{background:var(--bg)}

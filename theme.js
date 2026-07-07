@@ -24,7 +24,7 @@ const QuantrexTheme = (() => {
     localStorage.setItem(KEY, m);
     updateButtons(m);
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.content = m === "dark" ? "#0f1419" : "#1589EE";
+    if (meta) meta.content = m === "dark" ? "#0B1120" : "#0D9488";
   }
 
   function toggle() {
