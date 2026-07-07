@@ -64,9 +64,51 @@ function breadcrumb(parts) {
   ).join("")}</div>`;
 }
 
-function subjectIcon(subj) {
-  const m = { Physics: "⚛️", Chemistry: "🧪", Mathematics: "📐", Biology: "🧬", Botany: "🌿", Zoology: "🦠", Science: "🔬" };
-  return m[subj] || "📖";
+function subjectIcon(subj, iconUrl, size) {
+  if (typeof QuantrexExamLogos !== "undefined") {
+    const img = QuantrexExamLogos.subjectHtml(subj, size || 36, "subj-ic-img", iconUrl);
+    if (img) return img;
+  }
+  return "";
+}
+
+let _marksDashCache = null;
+async function fetchMarksDashboard() {
+  if (_marksDashCache) return _marksDashCache;
+  try {
+    if (typeof MarksLive !== "undefined") await MarksLive.ensureToken();
+    const token = localStorage.getItem("quantrex_marks_token");
+    if (!token) return null;
+    const res = await fetch("https://web.getmarks.app/api/v3/dashboard/platform/web", {
+      headers: { Authorization: "Bearer " + token, Accept: "application/json" }
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    const comps = [];
+    function walk(obj) {
+      if (!obj || typeof obj !== "object") return;
+      if (obj.componentTitle) comps.push(obj);
+      if (Array.isArray(obj)) obj.forEach(walk);
+      else Object.values(obj).forEach(walk);
+    }
+    walk(data.data || data);
+    _marksDashCache = {
+      board: comps.find(c => c.componentTitle === "BoardExams"),
+      ncert: comps.find(c => c.componentTitle === "NcertToolbox"),
+      cpyqb: comps.find(c => c.componentTitle === "ChapterwiseExams")
+    };
+  } catch (e) {
+    _marksDashCache = null;
+  }
+  return _marksDashCache;
+}
+
+function marksThemedIcon(icon, size, cls, alt) {
+  if (!icon) return "";
+  const url = typeof icon === "string" ? icon : (icon.light || icon.dark || "");
+  return typeof QuantrexExamLogos !== "undefined"
+    ? QuantrexExamLogos.fromUrl(url, size, cls, alt)
+    : "";
 }
 
 function dashUserName() {
@@ -86,16 +128,17 @@ function dashBoardSelected() {
   return localStorage.getItem("quantrex_board") || "CBSE";
 }
 
-function dppSubjectStyle(name) {
+function dppSubjectStyle(name, iconUrl) {
   const m = {
-    Physics: { tone: "phy", icon: "⚛️", color: "#f97316", bg: "rgba(249,115,22,.15)" },
-    Chemistry: { tone: "chem", icon: "🧪", color: "#22c55e", bg: "rgba(34,197,94,.15)" },
-    Mathematics: { tone: "math", icon: "➕", color: "#3b82f6", bg: "rgba(59,130,246,.15)" },
-    Biology: { tone: "bio", icon: "🧬", color: "#ec4899", bg: "rgba(236,72,153,.15)" },
-    Botany: { tone: "bot", icon: "🌿", color: "#10b981", bg: "rgba(16,185,129,.15)" },
-    Zoology: { tone: "zoo", icon: "🦠", color: "#f59e0b", bg: "rgba(245,158,11,.15)" }
+    Physics: { tone: "phy", color: "#f97316", bg: "rgba(249,115,22,.15)" },
+    Chemistry: { tone: "chem", color: "#22c55e", bg: "rgba(34,197,94,.15)" },
+    Mathematics: { tone: "math", color: "#3b82f6", bg: "rgba(59,130,246,.15)" },
+    Biology: { tone: "bio", color: "#ec4899", bg: "rgba(236,72,153,.15)" },
+    Botany: { tone: "bot", color: "#10b981", bg: "rgba(16,185,129,.15)" },
+    Zoology: { tone: "zoo", color: "#f59e0b", bg: "rgba(245,158,11,.15)" }
   };
-  return m[name] || { tone: "sub", icon: subjectIcon(name), color: "#94a3b8", bg: "rgba(148,163,184,.15)" };
+  const base = m[name] || { tone: "sub", color: "#94a3b8", bg: "rgba(148,163,184,.15)" };
+  return { ...base, icon: subjectIcon(name, iconUrl, 28) };
 }
 
 function dppLiveAspirantCount() {
@@ -487,7 +530,7 @@ async function viewCpyqb(payload) {
     ]);
     const cards = exam.subjects.map(s => `
       <div class="subj-card" ${mg("cpyqb", { step: "chapters", exam: p.exam, subject: s.name })}>
-        <span class="subj-ic">${subjectIcon(s.name)}</span>
+        <span class="subj-ic">${subjectIcon(s.name, s.icon)}</span>
         <div><strong>${s.name}</strong><small>${s.chapters.length} chapters · ${s.count.toLocaleString()} qs</small></div>
       </div>`).join("");
     return `${topbar(exam.title, "Select a subject")}${bc}<div class="subj-grid">${cards}</div>`;
@@ -721,7 +764,7 @@ async function viewNeetModuleBank(payload, moduleId, opts) {
     _lastListFn = () => ({ module: moduleId, step: "subjects", ...(opts.ncertKind ? { ncertKind: opts.ncertKind } : {}) });
     const cards = subjects.map(s => `
       <div class="subj-card" ${mg(viewKey, { step: "chapters", subject: s.name, ...(opts.ncertKind ? { ncertKind: opts.ncertKind } : {}) })}>
-        <span class="subj-ic">${subjectIcon(s.name)}</span>
+        <span class="subj-ic">${subjectIcon(s.name, s.icon)}</span>
         <div><strong>${s.name}</strong><small>${s.chapters.length} chapters · ${s.count.toLocaleString()} qs</small></div>
       </div>`).join("");
     return `${topbar(title, subtitle)}<div class="subj-grid">${cards || '<div class="empty">NCERT module data loading…</div>'}</div>`;
@@ -812,20 +855,15 @@ async function viewNeetModuleBank(payload, moduleId, opts) {
 }
 
 function boardSubjIconHtml(s) {
-  if (s && s.icon) {
-    return `<img class="qx-marks-icon board-subj-ic-img" src="${s.icon}" alt="${s.name || ""}" width="36" height="36" loading="lazy" decoding="async">`;
-  }
-  return subjectIcon(s.name);
+  return subjectIcon(s && s.name, s && s.icon, 36);
 }
 
 function boardExamIconHtml(examData, size, cls) {
-  const s = size || 48;
-  const c = cls || "board-exam-icon";
   if (examData && examData.icon) {
-    return `<img class="qx-marks-icon ${c}" src="${examData.icon}" width="${s}" height="${s}" alt="${examData.title || ""}" loading="lazy" decoding="async">`;
+    return marksThemedIcon(examData.icon, size || 48, cls || "board-exam-icon", examData.title);
   }
   const board = typeof dashBoardSelected === "function" ? dashBoardSelected() : "CBSE";
-  return typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(board, s, c) : "";
+  return typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(board, size || 48, cls || "board-exam-icon") : "";
 }
 
 function boardMetaPillsHtml(meta) {
@@ -1014,7 +1052,7 @@ async function viewNcert(payload) {
     const subjects = (nav.subjects || []).filter(s => allow.has(s.name));
     const cards = subjects.map(s => `
       <div class="subj-card" ${mg("ncert", { step: "chapters", subject: s.name, subjectId: s.id, ncertKind: kind })}>
-        <span class="subj-ic">${subjectIcon(s.name)}</span>
+        <span class="subj-ic">${subjectIcon(s.name, s.icon)}</span>
         <div><strong>${s.name}</strong><small>${title}</small></div>
       </div>`).join("");
     return `${topbar(title, subtitle)}<div class="subj-grid">${cards || '<div class="empty">No NCERT subjects available.</div>'}</div>`;
@@ -1227,7 +1265,7 @@ async function viewFormulaMarks(payload) {
   if (p.step === "subjects" || !p.subject) {
     const cards = nav.map(s => `
       <div class="subj-card" ${mg("formula", { step: "chapters", subject: s.name })}>
-        <span class="subj-ic">${subjectIcon(s.name)}</span>
+        <span class="subj-ic">${subjectIcon(s.name, s.icon)}</span>
         <div><strong>${s.name}</strong><small>${s.chapters.length} chapters · ${s.count} formulas</small></div>
       </div>`).join("");
     const fallback = FORMULAS.length ? `<div class="chips" id="fcChips"></div><div class="fc-grid">${FORMULAS.slice(0, 20).map(f => `
@@ -1955,7 +1993,7 @@ async function viewBooks(payload) {
     ]);
     const cards = (mod.subjects || []).map(s => `
       <div class="subj-card" ${mg("books", { step: "chapters", bookId: p.bookId, moduleId: p.moduleId, subjectId: s.id, subjectName: s.name })}>
-        <span class="subj-ic">${subjectIcon(s.name)}</span>
+        <span class="subj-ic">${subjectIcon(s.name, s.icon)}</span>
         <div><strong>${s.name}</strong><small>${(s.chapters || []).length} chapters · ${s.count.toLocaleString()} questions</small></div>
       </div>`).join("");
     return `${topbar(mod.title, bookTitle)}${bc}<div class="subj-grid">${cards}</div>`;
@@ -2025,7 +2063,7 @@ async function viewQuickConcepts(payload) {
   if (p.step === "subjects" || !p.subjectId) {
     const cards = nav.map(s => `
       <div class="subj-card" ${mg("quickconcepts", { step: "chapters", subjectId: s.id, subjectName: s.name })}>
-        <span class="subj-ic">${subjectIcon(s.name)}</span>
+        <span class="subj-ic">${subjectIcon(s.name, s.icon)}</span>
         <div><strong>${s.name}</strong><small>${s.chaptersCount || (s.chapters || []).length} chapters · ${s.topicsCount || 0} topics</small></div>
       </div>`).join("");
     return `${topbar("Quick Concepts", "Fast revision — topicwise notes & examples")}
@@ -2091,7 +2129,11 @@ async function viewQuickConcepts(payload) {
 
 // ============ MARKS-STYLE DASHBOARD (screens 407 + 408 flow) ============
 async function marksDashboardSections() {
-  const [bookCatalog] = await Promise.all([fetchBooks()]);
+  const [bookCatalog, marksDash] = await Promise.all([
+    fetchBooks(),
+    fetchMarksDashboard(),
+    typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.loadExamIconsFromApi() : Promise.resolve()
+  ]);
   const dashBooks = STATE.exam === "Medical"
     ? (bookCatalog.medical || [])
     : (bookCatalog.engineering || []);
@@ -2115,8 +2157,12 @@ async function marksDashboardSections() {
     ? boardExamIconHtml(boardExamData, 64, "dash-board-hero-logo")
     : (typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(board, 64, "dash-board-hero-logo") : "");
   const boardMetaRow = boardExamData ? boardMetaPillsHtml(boardExamData.meta) : "";
+  const boardItems = (marksDash && marksDash.board && marksDash.board.items) || [];
   const boardPills = boards.map(b => {
-    const logo = typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(b.id, 24, "dash-board-tab-logo") : "";
+    const item = boardItems.find(i => i.title === b.label || (b.id === "CBSE" && i.title === "CBSE") || (b.id === "HSC" && /HSC/i.test(i.title || "")));
+    const logo = item && item.icon
+      ? marksThemedIcon(item.icon, 28, "dash-board-tab-logo", b.label)
+      : (typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(b.id, 28, "dash-board-tab-logo") : "");
     return `<button type="button" class="dash-board-tab${board === b.id ? " on" : ""}" data-dash-board="${b.id}">
       ${logo}<span>${b.label}</span>
     </button>`;
@@ -2135,17 +2181,24 @@ async function marksDashboardSections() {
       <div class="dash-board-tabs">${boardPills}</div>
     </div>`;
 
+  const ncertKindMap = { LBLQSubject: "lblq", NCOQSubject: "ncoq", DBQSubject: "dbq" };
+  const ncertApiItems = (marksDash && marksDash.ncert && marksDash.ncert.items) || [];
   const ncertTools = [
-    { icon: "📋", title: "NCERT Line by Line Qs", sub: "Concept-by-concept", view: "ncert", payload: { step: "subjects", ncertKind: "lblq" } },
-    { icon: "🔵", title: "NCERT & Exemplar Qs", sub: "NCERT + Exemplar", view: "ncert", payload: { step: "subjects", ncertKind: "ncoq" } },
-    { icon: "📊", title: "Diagram Based Qs", sub: "Figure-based NCERT", view: "ncert", payload: { step: "subjects", ncertKind: "dbq" } }
+    { kind: "lblq", title: "NCERT Line by Line Qs", sub: "Concept-by-concept", view: "ncert", payload: { step: "subjects", ncertKind: "lblq" } },
+    { kind: "ncoq", title: "NCERT & Exemplar Qs", sub: "NCERT + Exemplar", view: "ncert", payload: { step: "subjects", ncertKind: "ncoq" } },
+    { kind: "dbq", title: "Diagram Based Qs", sub: "Diagram-based NCERT", view: "ncert", payload: { step: "subjects", ncertKind: "dbq" } }
   ];
-  const toolCards = ncertTools.map(t => `
-    <div class="dash-tool-card" ${mg(t.view, t.payload)}>
-      <span class="dash-tool-ic" aria-hidden="true">${t.icon}</span>
-      <strong>${t.title}</strong>
+  const toolCards = ncertTools.map(t => {
+    const apiItem = ncertApiItems.find(i => ncertKindMap[i.moduleId] === t.kind);
+    const logo = apiItem && apiItem.icon
+      ? marksThemedIcon(apiItem.icon, 32, "dash-tool-logo", t.title)
+      : (typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.ncertToolHtml(t.kind, 32, "dash-tool-logo") : "");
+    return `<div class="dash-tool-card" ${mg(t.view, t.payload)}>
+      <span class="dash-tool-ic" aria-hidden="true">${logo}</span>
+      <strong>${(apiItem && apiItem.title) || t.title}</strong>
       <small>${t.sub}</small>
-    </div>`).join("");
+    </div>`;
+  }).join("");
 
   const utilCards = [
     { icon: "✏️", title: "My Solutions", sub: "Bookmarks & notes", view: "notebook" },
@@ -2201,6 +2254,7 @@ function bindDashHome(root) {
       e.preventDefault();
       e.stopPropagation();
       localStorage.setItem("quantrex_board", btn.dataset.dashBoard);
+      _marksDashCache = null;
       document.querySelectorAll("[data-dash-board]").forEach(b => b.classList.toggle("on", b === btn));
       showToast(`📚 Board: ${btn.textContent.trim()}`);
       if (currentView === "dashboard" && typeof viewDashboard === "function") {

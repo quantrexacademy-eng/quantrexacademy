@@ -31,6 +31,7 @@ function finishRender(html) {
     MarksShell.bind(main);
     MarksShell.initSidebar();
   }
+  if (typeof QuantrexExamLogos !== "undefined") QuantrexExamLogos.loadExamIconsFromApi();
   const contentEl = document.querySelector(".content");
   if (contentEl) contentEl.classList.toggle("marks-wide", !!main.querySelector(".marks-split-layout"));
   if (typeof Mx !== "undefined") Mx.afterRender(main);

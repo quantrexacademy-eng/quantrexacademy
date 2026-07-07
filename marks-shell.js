@@ -31,8 +31,10 @@ const MarksShell = (() => {
     if (!exam) return "";
     const items = (exam.subjects || []).map(s => {
       const active = s.name === activeSubject ? " active" : "";
+      const subjIc = (typeof QuantrexExamLogos !== "undefined" && QuantrexExamLogos.subjectHtml(s.name, 22, "marks-board-subj-ic", s.icon))
+        || `<span class="marks-subj-ic">${SUBJ_ICONS[s.name] || "📖"}</span>`;
       return `<button type="button" class="marks-subj-item${active}" data-mg="cpyqb" data-mgp='${JSON.stringify({ step: "chapters", exam: exam.slug, subject: s.name }).replace(/'/g, "&#39;")}'>
-        <span class="marks-subj-ic">${SUBJ_ICONS[s.name] || "📖"}</span>
+        ${subjIc}
         <span>${s.name}</span>
         <span class="marks-subj-arr">›</span>
       </button>`;
@@ -72,8 +74,9 @@ const MarksShell = (() => {
   }
 
   function boardSubjIcon(s) {
-    if (s && s.icon) {
-      return `<img class="qx-marks-icon marks-board-subj-ic" src="${s.icon}" width="22" height="22" alt="${s.name || ""}" loading="lazy" decoding="async">`;
+    if (typeof QuantrexExamLogos !== "undefined") {
+      const img = QuantrexExamLogos.subjectHtml(s && s.name, 22, "marks-board-subj-ic", s && s.icon);
+      if (img) return img;
     }
     return `<span class="marks-subj-ic">${SUBJ_ICONS[s.name] || "📖"}</span>`;
   }
@@ -82,9 +85,11 @@ const MarksShell = (() => {
     if (!examData) return "";
     const metaSmall = boardMetaLine(examData.meta);
     const examIcon = examData.icon
-      ? `<img class="qx-marks-icon marks-exam-ic-img" src="${examData.icon}" width="48" height="48" alt="${examData.title || ""}" loading="eager" decoding="async">`
+      ? (typeof QuantrexExamLogos !== "undefined"
+        ? QuantrexExamLogos.fromUrl(examData.icon, 48, "marks-exam-ic-img", examData.title)
+        : `<img class="qx-marks-icon marks-exam-ic-img" src="${examData.icon}" width="48" height="48" alt="${examData.title || ""}" loading="eager" decoding="async">`)
       : (typeof QuantrexExamLogos !== "undefined"
-        ? QuantrexExamLogos.html(typeof dashBoardSelected === "function" ? dashBoardSelected() : "CBSE", 40, "marks-exam-ic-img")
+        ? QuantrexExamLogos.html(typeof dashBoardSelected === "function" ? dashBoardSelected() : "CBSE", 48, "marks-exam-ic-img")
         : '<span class="marks-exam-ic">📝</span>');
     const items = (examData.subjects || []).map(s => {
       const active = s.name === activeSubject ? " active" : "";
