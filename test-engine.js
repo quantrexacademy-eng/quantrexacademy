@@ -599,15 +599,15 @@ const QuantrexTestEngine = (() => {
     const hasSol = typeof MarksLive !== "undefined" && MarksLive.hasRealSolution
       ? MarksLive.hasRealSolution(r.q.solution)
       : !!String(r.q.solution || "").replace(/<[^>]+>/g, "").trim();
-    const sol = hasSol ? `<div class="sol"><strong>Solution</strong><div class="qx-content sol-body">${htmlContent(r.q.solution)}</div></div>` : "";
+      const sol = hasSol ? `<div class="sol qx-exam-sol"><strong>Solution</strong><div class="qx-content sol-body qx-exam-text">${htmlContent(r.q.solution)}</div></div>` : "";
     const chosenHtml = typeof QuantrexQFormat !== "undefined"
       ? QuantrexQFormat.formatChosenAnswer(r.q, r.chosen)
       : htmlContent((r.q.options || [])[r.chosen]);
     const correctHtml = typeof QuantrexQFormat !== "undefined"
       ? QuantrexQFormat.formatCorrectAnswer(r.q)
       : htmlContent((r.q.options || [])[r.q.answer]);
-    return `<div class="rv-row ${r.isCorrect ? "ok" : r.isSkip ? "" : "no"}" data-rv-idx="${i}">
-      <div class="rv-q qx-content"><strong>Q${i + 1}.</strong> ${htmlContent(r.q.q)}</div>
+      return `<div class="rv-row ${r.isCorrect ? "ok" : r.isSkip ? "" : "no"}" data-rv-idx="${i}">
+        <div class="rv-q qx-content qx-exam-text"><strong>Q${i + 1}.</strong> ${htmlContent(r.q.q)}</div>
       <div class="rv-ans">
         ${r.isSkip ? '<span class="tag tag-skip">Not attempted</span>' :
           `<span class="tag ${r.isCorrect ? "tag-ok" : "tag-no"}">${r.isCorrect ? "✓" : "✗"} <span class="qx-content">${chosenHtml}</span></span>`}
@@ -735,10 +735,16 @@ const QuantrexTestEngine = (() => {
       return false;
     }
     let sections = resume ? resume.sections : (config.sections || null);
-    if (!resume && config.marksMode && config.organizeJee && ids.length >= 60) {
-      const organized = organizeJeeMainPaper(ids);
-      ids = organized.orderedIds;
-      sections = organized.sections;
+    if (!resume && config.marksMode && config.organizeJee) {
+      const organized = organizeExamPaper(ids, {
+        paperFormat: config.paperFormat,
+        examSlug: config.meta && config.meta.slug,
+        shuffle: config.shuffle !== false
+      });
+      if (organized) {
+        ids = organized.orderedIds;
+        sections = organized.sections;
+      }
     }
     const duration = config.durationSec ?? (config.timed ? Math.max(600, ids.length * 90) : null);
     session = {
@@ -822,9 +828,11 @@ function isNumericalQuestion(q) {
 function questionSectionType(q) {
   if (!q) return "SC";
   if (typeof QuantrexQFormat !== "undefined") {
+    if (QuantrexQFormat.isMatchColumn(q)) return "MATCH";
     const t = QuantrexQFormat.getType(q);
     if (t === "multipleCorrect") return "MC";
     if (t === "numerical") return "NUM";
+    if (t === "columnMatch") return "MATCH";
     return "SC";
   }
   if (Array.isArray(q.answers) && q.answers.length > 1) return "MC";
@@ -833,14 +841,23 @@ function questionSectionType(q) {
 }
 
 const SECTION_TYPE_LABELS = {
-  SC: "Single Correct",
-  MC: "Multiple Correct",
-  NUM: "Numerical"
+  SC: "Single Correct Type",
+  MC: "Multiple Correct Type",
+  MATCH: "Column Matching Type",
+  NUM: "Numerical Type"
+};
+
+const JEE_ADV_SECTION_LABEL = {
+  SC: "Section 1 — Single Correct Type",
+  MC: "Section 2 — Multiple Correct Type",
+  MATCH: "Section 2 — Column Matching Type",
+  NUM: "Section 3 — Numerical Type"
 };
 
 const SECTION_TYPE_SHORT = {
   SC: "SC",
   MC: "MC",
+  MATCH: "MATCH",
   NUM: "NUM"
 };
 
@@ -969,9 +986,64 @@ function resolvePaperFormat(opts) {
   return "jee_main";
 }
 
+function buildSectionsBySubject(questionIds) {
+  const orderedIds = [...questionIds];
+  const sections = [];
+  questionIds.forEach((id, i) => {
+    const q = getQ(id);
+    const sub = (q && q.subject) || "Other";
+    const last = sections[sections.length - 1];
+    if (!last || last.subject !== sub) {
+      sections.push({
+        label: sub,
+        shortLabel: sub.toUpperCase().slice(0, 4),
+        subject: sub,
+        start: i,
+        count: 1
+      });
+    } else {
+      last.count++;
+    }
+  });
+  return { orderedIds, sections };
+}
+
+function buildJeeAdvancedSections(questionIds) {
+  const orderedIds = [...questionIds];
+  const sections = [];
+  questionIds.forEach((id, i) => {
+    const q = getQ(id);
+    const sub = (q && q.subject) || "Other";
+    const type = questionSectionType(q);
+    const key = sub + "::" + type;
+    const last = sections[sections.length - 1];
+    if (!last || last.key !== key) {
+      const secSuffix = JEE_ADV_SECTION_LABEL[type] || SECTION_TYPE_LABELS[type] || type;
+      sections.push({
+        key,
+        label: `${sub} ${secSuffix}`,
+        shortLabel: `${sub.slice(0, 3).toUpperCase()} · ${SECTION_TYPE_SHORT[type] || type}`,
+        subject: sub,
+        type,
+        start: i,
+        count: 1
+      });
+    } else {
+      last.count++;
+    }
+  });
+  return { orderedIds, sections };
+}
+
 function organizeExamPaper(questionIds, opts) {
   const format = resolvePaperFormat(opts || {});
-  if (opts && opts.shuffle === false) return buildSectionsFromOrder(questionIds);
+  const preserveOrder = opts && opts.shuffle === false;
+  if (preserveOrder) {
+    if (format === "jee_advanced") return buildJeeAdvancedSections(questionIds);
+    if (format === "neet") return buildSectionsBySubject(questionIds);
+    if (format === "jee_main" && questionIds.length >= 60) return organizeJeeMainPaper(questionIds);
+    return buildSectionsFromOrder(questionIds);
+  }
   if (format === "jee_advanced") return organizeJeeAdvancedPaper(questionIds);
   if (format === "neet") return organizeNeetPaper(questionIds);
   if (questionIds.length >= 60) return organizeJeeMainPaper(questionIds);
@@ -1330,6 +1402,8 @@ async function startMockTest(examSlug, options) {
     modeLabel: "Full Mock · 3 hr",
     shuffle: true,
     marksMode: true,
-    organizeJee: selected.length >= 60
+    organizeJee: selected.length >= 30,
+    paperFormat: /jee_advanced/i.test(examSlug) ? "jee_advanced" : (STATE.exam === "Medical" ? "neet" : "jee_main"),
+    meta: { slug: examSlug }
   });
 }

@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Kanit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Kanit:wght@400;500;600;700;800&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/quantrex-brand.css?v=qxbrand1">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -575,7 +575,35 @@
         .result-box strong { display: block; margin-bottom: 8px; font-size: 16px; }
         .sol { background: var(--white); padding: 14px; border-radius: 8px; margin-top: 10px; }
         .sol strong { font-size: 14px; color: var(--primary); margin-bottom: 4px; }
-        .sol p, .sol-body { font-size: 14px; color: var(--gray); line-height: 1.6; }
+        .sol p, .sol-body { font-size: 15px; color: var(--text); line-height: 1.72; }
+
+        /* Exam-style readable typography (MARKS-like) */
+        .qx-exam-text, .mtk-q-text, .marks-result .rv-q, .marks-result .sol-body, .marks-result .rv-correct,
+        .marks-result .rv-ans, .qx-exam-sol {
+          font-family: 'Literata', 'Georgia', 'Times New Roman', Times, serif;
+          font-size: 15px;
+          line-height: 1.72;
+          letter-spacing: 0.01em;
+          color: var(--text);
+        }
+        .mtk-q-text { font-size: 16px; font-weight: 500; }
+        .mtk-opt-text { font-family: 'Literata', 'Georgia', 'Times New Roman', Times, serif; font-size: 14px; line-height: 1.65; }
+        .marks-result .rv-q { font-size: 16px; padding-bottom: 4px; }
+        .marks-result .sol-body { font-size: 15px; }
+        .qx-exam-sol strong, .marks-result .sol strong {
+          font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800;
+          letter-spacing: .08em; text-transform: uppercase; color: var(--primary);
+          display: block; margin-bottom: 8px;
+        }
+        .qx-match-opt { font-size: 14px; }
+        .qx-match-pairs { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+        .qx-match-pair {
+          display: inline-flex; padding: 4px 10px; border-radius: 6px;
+          background: rgba(13,148,136,.08); border: 1px solid rgba(13,148,136,.2);
+          font-weight: 600; font-size: 13px; font-family: 'Inter', sans-serif; letter-spacing: .02em;
+        }
+        .mtk-opt-match, .qx-prac-opt-match { align-items: center; }
+        .mtk-test-root .qx-content .MathJax, .marks-result .MathJax { font-size: 1.06em !important; }
 
         /* Quantrex math & question formatting */
         .qx-content { line-height: 1.65; word-wrap: break-word; }
@@ -1474,7 +1502,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxtest430</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxtest431</div>
             </div>
         </aside>
 
@@ -1500,32 +1528,32 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
-    <script>window.QX_BUILD="qxtest430";</script>
-    <script src="qx-perf.js?v=qxtest430"></script>
-    <script src="firebase-config.js?v=qxtest430" defer></script>
-    <script src="stack-config.js?v=qxtest430" defer></script>
-    <script src="strip/branding-strip.js?v=qxtest430" defer></script>
-    <script src="exam-logos.js?v=qxtest430" defer></script>
-    <script src="math-render.js?v=qxtest430" defer></script>
-    <script src="question-format.js?v=qxtest430" defer></script>
-    <script src="data.js?v=qxtest430" defer></script>
-    <script src="firebase-db.js?v=qxtest430" defer></script>
-    <script src="firebase-storage.js?v=qxtest430" defer></script>
-    <script src="payments.js?v=qxtest430" defer></script>
-    <script src="premium.js?v=qxtest430" defer></script>
-    <script src="leaderboard.js?v=qxtest430" defer></script>
-    <script src="community.js?v=qxtest430" defer></script>
-    <script src="book-covers.js?v=qxtest430" defer></script>
-    <script src="marks-shell.js?v=qxtest430" defer></script>
-    <script src="marks-live.js?v=qxtest430" defer></script>
-    <script src="marks-features.js?v=qxtest430" defer></script>
-    <script src="assignments.js?v=qxtest430" defer></script>
-    <script src="custom-test.js?v=qxtest430" defer></script>
-    <script src="test-engine.js?v=qxtest430" defer></script>
-    <script src="bookmarks.js?v=qxtest430" defer></script>
-    <script src="analytics.js?v=qxtest430" defer></script>
-    <script src="search.js?v=qxtest430" defer></script>
-    <script src="theme.js?v=qxtest430" defer></script>
-    <script src="app.js?v=qxtest430" defer></script>
+    <script>window.QX_BUILD="qxtest431";</script>
+    <script src="qx-perf.js?v=qxtest431"></script>
+    <script src="firebase-config.js?v=qxtest431" defer></script>
+    <script src="stack-config.js?v=qxtest431" defer></script>
+    <script src="strip/branding-strip.js?v=qxtest431" defer></script>
+    <script src="exam-logos.js?v=qxtest431" defer></script>
+    <script src="math-render.js?v=qxtest431" defer></script>
+    <script src="question-format.js?v=qxtest431" defer></script>
+    <script src="data.js?v=qxtest431" defer></script>
+    <script src="firebase-db.js?v=qxtest431" defer></script>
+    <script src="firebase-storage.js?v=qxtest431" defer></script>
+    <script src="payments.js?v=qxtest431" defer></script>
+    <script src="premium.js?v=qxtest431" defer></script>
+    <script src="leaderboard.js?v=qxtest431" defer></script>
+    <script src="community.js?v=qxtest431" defer></script>
+    <script src="book-covers.js?v=qxtest431" defer></script>
+    <script src="marks-shell.js?v=qxtest431" defer></script>
+    <script src="marks-live.js?v=qxtest431" defer></script>
+    <script src="marks-features.js?v=qxtest431" defer></script>
+    <script src="assignments.js?v=qxtest431" defer></script>
+    <script src="custom-test.js?v=qxtest431" defer></script>
+    <script src="test-engine.js?v=qxtest431" defer></script>
+    <script src="bookmarks.js?v=qxtest431" defer></script>
+    <script src="analytics.js?v=qxtest431" defer></script>
+    <script src="search.js?v=qxtest431" defer></script>
+    <script src="theme.js?v=qxtest431" defer></script>
+    <script src="app.js?v=qxtest431" defer></script>
 </body>
 </html>

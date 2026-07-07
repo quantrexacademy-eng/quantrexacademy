@@ -1,9 +1,10 @@
 // Quantrex — MARKS-style question type rendering (MCQ, multi-correct, numerical, column match)
 const QuantrexQFormat = (() => {
   const TYPE_LABELS = {
-    singleCorrect: "Single Correct",
-    multipleCorrect: "Multiple Correct",
-    numerical: "Numerical",
+    singleCorrect: "Single Correct Type",
+    multipleCorrect: "Multiple Correct Type",
+    numerical: "Numerical Type",
+    columnMatch: "Column Matching Type",
     subjective: "Subjective"
   };
 
@@ -50,6 +51,7 @@ const QuantrexQFormat = (() => {
 
   function getType(q) {
     if (!q) return "singleCorrect";
+    if (isMatchColumn(q)) return "columnMatch";
     const fromField = normalizeType(q.questionType || q.type);
     if (fromField) return fromField;
     if (q.correctValue != null && String(q.correctValue) !== "" && !(q.options || []).length) return "numerical";
@@ -60,8 +62,23 @@ const QuantrexQFormat = (() => {
 
   function typeLabel(q) {
     const t = getType(q);
-    if (isMatchColumn(q) && t === "singleCorrect") return "Column Matching";
-    return TYPE_LABELS[t] || "Single Correct";
+    return TYPE_LABELS[t] || "Single Correct Type";
+  }
+
+  function formatMatchCombo(opt) {
+    const raw = String(opt || "").trim();
+    if (!raw) return "";
+    if (/<[a-z][\s\S]*>/i.test(raw)) return htmlContent(raw);
+    let t = raw.replace(/^\$+|\$+$/g, "");
+    t = t.replace(/\\mathrm\s*\{([^}]+)\}/g, "$1");
+    t = t.replace(/\\text\s*\{([^}]+)\}/g, "$1");
+    t = t.replace(/\\,/g, ", ").replace(/~/g, " ").replace(/\\quad/g, "  ");
+    t = t.replace(/\s+/g, " ").trim();
+    const pairs = t.match(/([A-Z])\s*[-–]\s*(\d+)/g);
+    if (pairs && pairs.length) {
+      return `<span class="qx-match-pairs">${pairs.map(p => `<span class="qx-match-pair">${p.replace(/\s+/g, "")}</span>`).join("")}</span>`;
+    }
+    return `<span class="qx-match-combo qx-content">${htmlContent(t)}</span>`;
   }
 
   function correctIndices(q) {
@@ -82,7 +99,7 @@ const QuantrexQFormat = (() => {
     const t = getType(q);
     if (t === "numerical" || t === "subjective") return "";
     if (t === "multipleCorrect") return "qx-opts-multi";
-    if (isMatchColumn(q)) return "qx-opts-match";
+    if (t === "columnMatch" || isMatchColumn(q)) return "qx-opts-match";
     if (hasImageOptions(q)) return "qx-opts-img";
     return "";
   }
@@ -127,20 +144,22 @@ const QuantrexQFormat = (() => {
     const multi = t === "multipleCorrect";
     const ctrl = optionControlClass(q);
 
+    const match = t === "columnMatch";
     return (q.options || []).map((o, i) => {
       let cls = "qx-prac-opt";
       if (multi) cls += " qx-prac-opt-multi";
+      if (match) cls += " qx-prac-opt-match";
       if (!done && selectedSet.has(i)) cls += " selected";
       if (done) {
         if (correct.has(i)) cls += " correct";
         else if (selectedSet.has(i)) cls += " wrong";
         else if (!multi && selectedSet.has(i)) cls += " wrong";
       }
-      const showLetter = true;
+      const optBody = match ? formatMatchCombo(o) : htmlContent(o);
       return `<button type="button" class="${cls}" data-prac-opt="${i}" ${done ? "disabled" : ""}>
         <span class="${ctrl}"></span>
-        ${showLetter ? `<span class="qx-prac-letter">${letter(i)}</span>` : ""}
-        <span class="qx-prac-opt-text qx-content">${htmlContent(o)}</span>
+        <span class="qx-prac-letter">${letter(i)}</span>
+        <span class="qx-prac-opt-text ${match ? "qx-match-opt" : "qx-content"}">${optBody}</span>
       </button>`;
     }).join("");
   }
@@ -157,6 +176,7 @@ const QuantrexQFormat = (() => {
       </div>`;
     }
     const multi = t === "multipleCorrect";
+    const match = t === "columnMatch";
     const selectedSet = Array.isArray(selected)
       ? new Set(selected)
       : (selected != null ? new Set([selected]) : new Set());
@@ -164,10 +184,11 @@ const QuantrexQFormat = (() => {
 
     return (q.options || []).map((o, i) => {
       const on = selectedSet.has(i);
-      return `<button type="button" class="mtk-opt ${multi ? "mtk-opt-multi" : ""} ${on ? "selected" : ""}" data-opt="${i}">
+      const optBody = match ? formatMatchCombo(o) : render(o);
+      return `<button type="button" class="mtk-opt ${multi ? "mtk-opt-multi" : ""} ${match ? "mtk-opt-match" : ""} ${on ? "selected" : ""}" data-opt="${i}">
         <span class="${ctrl}"></span>
         <span class="mtk-opt-letter">${letter(i)}</span>
-        <span class="mtk-opt-text qx-content">${render(o)}</span>
+        <span class="mtk-opt-text ${match ? "qx-match-opt" : "qx-content"}">${optBody}</span>
       </button>`;
     }).join("");
   }
@@ -241,6 +262,9 @@ const QuantrexQFormat = (() => {
       }).join(" ");
     }
     const opt = (q.options || [])[response];
+    if (getType(q) === "columnMatch") {
+      return `<b>${letter(response)}.</b> ${formatMatchCombo(opt || "")}`;
+    }
     return `<b>${letter(response)}.</b> <span class="qx-content">${htmlContent(opt || "")}</span>`;
   }
 
@@ -256,6 +280,9 @@ const QuantrexQFormat = (() => {
     }
     const i = cor[0] != null ? cor[0] : 0;
     const opt = (q.options || [])[i];
+    if (getType(q) === "columnMatch") {
+      return `<b>${letter(i)}.</b> ${formatMatchCombo(opt || "")}`;
+    }
     return `<b>${letter(i)}.</b> <span class="qx-content">${htmlContent(opt || "")}</span>`;
   }
 
