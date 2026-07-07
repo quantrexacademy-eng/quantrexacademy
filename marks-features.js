@@ -598,28 +598,123 @@ function bucketTone(bucket) {
   return "bucket-default";
 }
 
-function chapterModeCards(meta, payload) {
-  const p = payload || _cpyqbPayload;
+function cpyqbTrendByYear(qs, maxYears) {
+  const byYear = {};
+  (qs || []).forEach(q => {
+    const y = qYearFromSource(q.source);
+    if (!y) return;
+    if (!byYear[y]) byYear[y] = { easy: 0, medium: 0, tough: 0, total: 0 };
+    byYear[y].total++;
+    const d = String(q.difficulty || "Medium").toLowerCase();
+    if (d === "easy") byYear[y].easy++;
+    else if (d === "hard" || d === "tough" || d === "difficult") byYear[y].tough++;
+    else byYear[y].medium++;
+  });
+  return Object.keys(byYear).map(Number).sort((a, b) => b - a).slice(0, maxYears || 3)
+    .map(y => ({ year: y, ...byYear[y] }));
+}
+
+function cpyqbTrendChartHtml(trends) {
+  if (!trends.length) return `<div class="ch-hub-trend-empty">Not enough year data for trends yet.</div>`;
+  const max = Math.max(1, ...trends.map(t => t.total));
+  const bars = trends.slice().reverse().map(t => {
+    const hEasy = Math.round((t.easy / max) * 100);
+    const hMed = Math.round((t.medium / max) * 100);
+    const hTough = Math.round((t.tough / max) * 100);
+    return `<div class="ch-hub-trend-col">
+      <div class="ch-hub-trend-stack" title="Easy ${t.easy} · Moderate ${t.medium} · Tough ${t.tough}">
+        <span class="ch-t-e" style="height:${hEasy}%"></span>
+        <span class="ch-t-m" style="height:${hMed}%"></span>
+        <span class="ch-t-t" style="height:${hTough}%"></span>
+      </div>
+      <em>${t.year}</em>
+    </div>`;
+  }).join("");
+  return `<div class="ch-hub-trend-chart">${bars}</div>
+    <div class="ch-hub-trend-legend">
+      <span><i class="ch-t-e"></i> Easy</span>
+      <span><i class="ch-t-m"></i> Moderate</span>
+      <span><i class="ch-t-t"></i> Tough</span>
+      <span><i class="ch-t-o"></i> Overall</span>
+    </div>`;
+}
+
+function renderChapterHubPage(exam, p, meta, qs, stats) {
   const buckets = (meta && meta.buckets) || [];
   const topics = (meta && meta.topics) || [];
-  const bucketTotal = buckets.reduce((s, b) => s + (b.count || 0), 0);
-  const topicTotal = topics.reduce((s, t) => s + (t.count || 0), 0);
-  const cards = [];
-  if (buckets.length) {
-    cards.push(`<div class="qx-mode-card" ${mg("cpyqb", { step: "buckets", exam: p.exam, subject: p.subject, chapter: p.chapter })}>
-      <span class="qx-mode-ic">📂</span>
-      <strong>All PYQs</strong>
-      <small>${buckets.length} buckets · ${bucketTotal.toLocaleString()} questions</small>
+  const pyqCount = qs.length || buckets.reduce((s, b) => s + (b.count || 0), 0);
+  const topicCount = topics.length;
+  const correct = (() => {
+    let c = 0;
+    qs.forEach(q => {
+      const rec = STATE.solved.find(s => s.id === q.id);
+      if (rec && rec.correct) c++;
+    });
+    return c;
+  })();
+  const overviewRows = stats.yearCounts.length
+    ? stats.yearCounts.map(([y, n]) => `<div class="ch-hub-ov-row"><span>${exam.title} ${y}</span><strong>${n} Qs</strong></div>`).join("")
+    : `<div class="ch-hub-ov-row"><span>Total PYQs</span><strong>${pyqCount}</strong></div>`;
+  const modeCards = [];
+  if (buckets.length || pyqCount) {
+    modeCards.push(`<div class="ch-hub-mode-card" ${mg("cpyqb", { step: buckets.length ? "buckets" : "questions", exam: p.exam, subject: p.subject, chapter: p.chapter })}>
+      <div class="ch-hub-mode-ic">📂</div>
+      <div><strong>All Previous Year Qs</strong><small>${pyqCount} PYQs</small></div>
+      <span class="ch-hub-mode-go">›</span>
     </div>`);
   }
   if (topics.length) {
-    cards.push(`<div class="qx-mode-card" ${mg("cpyqb", { step: "topics", exam: p.exam, subject: p.subject, chapter: p.chapter })}>
-      <span class="qx-mode-ic">📋</span>
-      <strong>Topicwise PYQs</strong>
-      <small>${topics.length} subtopics · ${topicTotal.toLocaleString()} questions</small>
+    modeCards.push(`<div class="ch-hub-mode-card" ${mg("cpyqb", { step: "topics", exam: p.exam, subject: p.subject, chapter: p.chapter })}>
+      <div class="ch-hub-mode-ic">📋</div>
+      <div><strong>Topic-Wise PYQs</strong><small>${topicCount} Topics</small></div>
+      <span class="ch-hub-mode-go">›</span>
     </div>`);
   }
-  return `<div class="qx-mode-grid">${cards.join("")}</div>`;
+  const trends = cpyqbTrendByYear(qs, 3);
+  return `<div class="ch-hub-page">
+    <div class="ch-hub-main">
+      <div class="ch-hub-title-row">
+        <span class="ch-hub-bolt">⚡</span>
+        <div>
+          <h1>${p.chapter}</h1>
+          <p>${exam.title} · ${pyqCount} PYQs${topicCount ? ` | ${topicCount} Topics` : ""}</p>
+        </div>
+      </div>
+      <div class="ch-hub-modes">${modeCards.join("") || '<div class="empty">No PYQs in this chapter yet.</div>'}</div>
+      <section class="ch-hub-trends">
+        <div class="ch-hub-trends-head">
+          <div>
+            <h3>PYQ Trends</h3>
+            <p>Year-wise trend of easy, moderate, and tough questions from this chapter</p>
+          </div>
+          <span class="ch-hub-trend-filter">Last 3 Years</span>
+        </div>
+        ${cpyqbTrendChartHtml(trends)}
+      </section>
+    </div>
+    <aside class="ch-hub-side">
+      <section class="ch-hub-panel">
+        <h4>Overview</h4>
+        ${overviewRows}
+      </section>
+      <section class="ch-hub-panel ch-hub-progress">
+        <h4>Your Progress</h4>
+        <div class="ch-hub-prog-row"><span class="ch-prog-ic">📘</span><div><strong>${stats.solved}/${stats.total}</strong><small>PYQ Solved</small></div></div>
+        <div class="ch-hub-prog-row"><span class="ch-prog-ic">✓</span><div><strong>${correct}/${stats.total}</strong><small>Correct Qs</small></div></div>
+        <div class="ch-hub-prog-row"><span class="ch-prog-ic">🎯</span><div><strong>${stats.accuracy}%</strong><small>Accuracy</small></div></div>
+      </section>
+    </aside>
+  </div>`;
+}
+
+function chapterModeCards(meta, payload) {
+  return renderChapterHubPage(
+    { title: (_cpyqbPayload && _cpyqbPayload.exam) || "Exam" },
+    payload || _cpyqbPayload,
+    meta,
+    [],
+    { solved: 0, total: 0, accuracy: 0, yearCounts: [] }
+  );
 }
 
 async function viewCpyqb(payload) {
@@ -812,7 +907,10 @@ async function viewCpyqb(payload) {
         <p class="result-count">Topic breakdown not available for this chapter yet — showing all ${allQs.length} questions.</p>
         ${renderQList(allQs, _listPage, testMeta)}`;
     }
-    return `${topbar(p.chapter, "Choose practice mode")}${bc}${chapterModeCards(meta, p)}`;
+    if (!_banksLoaded[p.exam]) await loadSingleBank(p.exam);
+    const hubQs = QUESTIONS.filter(q => q._bank === p.exam && q.subject === p.subject && q.chapter === p.chapter);
+    const hubStats = cpyqbChapterStats(p.exam, p.subject, p.chapter, hubQs.length);
+    return `${topbar(p.chapter, "Choose practice mode")}${bc}${renderChapterHubPage(exam, p, meta, hubQs, hubStats)}`;
   }
 
   const meta = await resolveChapterMeta();
@@ -1809,15 +1907,16 @@ function pyqPersistKey(slug, source) {
 }
 
 function pyqResumeModalHtml(slug, source, title) {
-  const esc = (title || "Test").replace(/'/g, "\\'");
+  const srcEnc = encodeURIComponent(source);
   return `<div class="marks-modal-overlay marks-resume-overlay" id="pyqResumeModal" onclick="if(event.target===this)pyqCloseResume()">
     <div class="marks-resume-modal">
       <button type="button" class="marks-resume-close" onclick="pyqCloseResume()">✕</button>
-      <div class="marks-resume-icon">⚙️</div>
+      <div class="marks-resume-icon">⏸</div>
       <h3>Resume Test</h3>
       <p class="marks-resume-sub">${title}</p>
-      <p class="marks-resume-hint">Your answers &amp; timer are saved. Continue where you left off.</p>
-      <button type="button" class="marks-resume-btn" onclick="pyqCloseResume();pyqResumePaper('${slug}', decodeURIComponent('${encodeURIComponent(source)}'))">▶ Resume Test</button>
+      <p class="marks-resume-hint">Your answers &amp; timer are saved. Continue where you left off, or start a fresh attempt.</p>
+      <button type="button" class="marks-resume-btn" onclick="pyqCloseResume();pyqResumePaper('${slug}', decodeURIComponent('${srcEnc}'))">▶ Resume Test</button>
+      <button type="button" class="marks-resume-secondary" onclick="pyqCloseResume();startPyqPaperMock('${slug}', decodeURIComponent('${srcEnc}'), true)">Start Fresh</button>
       <button type="button" class="marks-resume-cancel" onclick="pyqCloseResume()">Cancel</button>
     </div>
   </div>`;

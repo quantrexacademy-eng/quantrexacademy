@@ -589,6 +589,12 @@
           letter-spacing: 0;
           color: #e8eaed;
         }
+        .mtk-test-root[data-font-scale="small"] .mtk-q-text, .mtk-test-root[data-font-scale="small"] .mtk-q-text .qx-content { font-size: 14px; }
+        .mtk-test-root[data-font-scale="small"] .mtk-opt-text, .mtk-test-root[data-font-scale="small"] .mtk-opt-text .qx-content { font-size: 13px; }
+        .mtk-test-root[data-font-scale="large"] .mtk-q-text, .mtk-test-root[data-font-scale="large"] .mtk-q-text .qx-content { font-size: 18px; }
+        .mtk-test-root[data-font-scale="large"] .mtk-opt-text, .mtk-test-root[data-font-scale="large"] .mtk-opt-text .qx-content { font-size: 17px; }
+        .mtk-test-root[data-font-scale="xlarge"] .mtk-q-text, .mtk-test-root[data-font-scale="xlarge"] .mtk-q-text .qx-content { font-size: 20px; }
+        .mtk-test-root[data-font-scale="xlarge"] .mtk-opt-text, .mtk-test-root[data-font-scale="xlarge"] .mtk-opt-text .qx-content { font-size: 18px; }
         .mtk-test-root .mtk-opt-text,
         .mtk-test-root .mtk-opt-text .qx-content { font-size: 15px; line-height: 1.6; }
         .mtk-test-root .mtk-q-text p,
@@ -1291,6 +1297,71 @@
         .mtk-btn-ghost:disabled { opacity: .4; cursor: not-allowed; }
         .mtk-palette { background: #1a1d26; border-left: 1px solid #2a2f3d; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; }
         .mtk-pal-head { font-size: 15px; font-weight: 700; margin-bottom: 10px; color: #f1f5f9; }
+        .mtk-pal-head-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+        .mtk-pal-head-row strong { font-size: 15px; font-weight: 700; color: #f1f5f9; }
+        .mtk-font-tools { display: flex; align-items: center; gap: 4px; }
+        .mtk-font-btn, .mtk-font-gear { width: 28px; height: 28px; border-radius: 6px; border: 1px solid #3b4254; background: #12151c; color: #cbd5e1; font-size: 12px; font-weight: 800; cursor: pointer; font-family: inherit; display: flex; align-items: center; justify-content: center; }
+        .mtk-font-btn:hover, .mtk-font-gear:hover { border-color: #2DD4BF; color: #5EEAD4; }
+        .mtk-font-lbl { font-size: 10px; font-weight: 700; color: #64748b; min-width: 28px; text-align: center; }
+        .mtk-stop-btn { padding: 6px 12px; border-radius: 8px; border: 1px solid #f59e0b; background: rgba(245,158,11,.12); color: #fbbf24; font-size: 12px; font-weight: 700; cursor: pointer; font-family: inherit; white-space: nowrap; }
+        .mtk-stop-btn:hover { background: rgba(245,158,11,.22); }
+        .mtk-qview-overlay { position: fixed; inset: 0; z-index: 9500; background: rgba(0,0,0,.55); display: flex; justify-content: flex-end; }
+        .mtk-qview-panel { width: min(360px, 92vw); height: 100%; background: #12151c; border-left: 1px solid #2a2f3d; padding: 20px; overflow-y: auto; color: #e2e8f0; }
+        .mtk-qview-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .mtk-qview-head strong { font-size: 17px; }
+        .mtk-qview-close { background: none; border: none; color: #94a3b8; font-size: 18px; cursor: pointer; }
+        .mtk-qview-sec h4 { font-size: 11px; font-weight: 800; letter-spacing: .08em; color: #64748b; margin: 0 0 12px; }
+        .mtk-qview-label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; color: #cbd5e1; }
+        .mtk-font-presets { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .mtk-font-preset { padding: 10px 12px; border-radius: 8px; border: 1px solid #3b4254; background: #1a1d26; color: #cbd5e1; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; text-align: left; }
+        .mtk-font-preset.on { border-color: #2563eb; background: rgba(37,99,235,.18); color: #93c5fd; }
+        .mtk-qview-hint { font-size: 12px; color: #64748b; margin-top: 12px; line-height: 1.5; }
+        .marks-resume-secondary { width: 100%; margin-top: 8px; padding: 12px; border-radius: 10px; border: 1px solid #3b4254; background: transparent; color: #cbd5e1; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; }
+        .marks-resume-secondary:hover { border-color: #64748b; background: rgba(255,255,255,.04); }
+        .ch-hub-page { display: grid; grid-template-columns: 1fr 280px; gap: 20px; align-items: start; }
+        .ch-hub-title-row { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 20px; }
+        .ch-hub-bolt { font-size: 28px; line-height: 1; }
+        .ch-hub-title-row h1 { margin: 0 0 4px; font-family: 'Kanit'; font-size: 26px; font-weight: 800; }
+        .ch-hub-title-row p { margin: 0; color: var(--gray); font-size: 14px; }
+        .ch-hub-modes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+        .ch-hub-mode-card { display: flex; align-items: center; gap: 12px; padding: 18px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; cursor: pointer; transition: border-color .15s, box-shadow .15s; }
+        .ch-hub-mode-card:hover { border-color: var(--primary); box-shadow: 0 4px 16px rgba(37,99,235,.08); }
+        .ch-hub-mode-ic { font-size: 28px; }
+        .ch-hub-mode-card strong { display: block; font-size: 15px; margin-bottom: 2px; }
+        .ch-hub-mode-card small { color: var(--gray); font-size: 12px; }
+        .ch-hub-mode-go { margin-left: auto; font-size: 22px; color: var(--gray); }
+        .ch-hub-panel { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px; margin-bottom: 14px; }
+        .ch-hub-panel h4 { margin: 0 0 12px; font-size: 15px; font-weight: 800; }
+        .ch-hub-ov-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+        .ch-hub-ov-row:last-child { border-bottom: none; }
+        .ch-hub-ov-row strong { color: var(--primary); }
+        .ch-hub-prog-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+        .ch-hub-prog-row:last-child { border-bottom: none; }
+        .ch-hub-prog-row strong { display: block; font-size: 16px; }
+        .ch-hub-prog-row small { color: var(--gray); font-size: 12px; }
+        .ch-prog-ic { width: 32px; text-align: center; font-size: 18px; }
+        .ch-hub-trends { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+        .ch-hub-trends-head { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+        .ch-hub-trends-head h3 { margin: 0 0 4px; font-size: 17px; font-weight: 800; }
+        .ch-hub-trends-head p { margin: 0; color: var(--gray); font-size: 12px; max-width: 420px; }
+        .ch-hub-trend-filter { font-size: 12px; font-weight: 700; color: var(--primary); padding: 6px 10px; border-radius: 8px; background: var(--primary-light); align-self: flex-start; }
+        .ch-hub-trend-chart { display: flex; align-items: flex-end; gap: 16px; min-height: 140px; padding: 8px 4px 0; }
+        .ch-hub-trend-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+        .ch-hub-trend-stack { width: 100%; max-width: 48px; height: 120px; display: flex; flex-direction: column-reverse; border-radius: 6px 6px 0 0; overflow: hidden; background: #e2e8f0; }
+        .ch-hub-trend-stack span { display: block; width: 100%; min-height: 2px; }
+        .ch-t-e, .ch-hub-trend-legend .ch-t-e { background: #22c55e; }
+        .ch-t-m, .ch-hub-trend-legend .ch-t-m { background: #eab308; }
+        .ch-t-t, .ch-hub-trend-legend .ch-t-t { background: #ef4444; }
+        .ch-t-o { background: #3b82f6; }
+        .ch-hub-trend-col em { font-size: 11px; font-weight: 700; color: var(--gray); font-style: normal; }
+        .ch-hub-trend-legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; font-size: 11px; font-weight: 600; color: var(--gray); }
+        .ch-hub-trend-legend span { display: flex; align-items: center; gap: 5px; }
+        .ch-hub-trend-legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+        .ch-hub-trend-empty { color: var(--gray); font-size: 13px; padding: 20px 0; text-align: center; }
+        @media (max-width: 900px) {
+            .ch-hub-page { grid-template-columns: 1fr; }
+            .ch-hub-modes { grid-template-columns: 1fr; }
+        }
         .mtk-pal-legend { display: flex; flex-wrap: wrap; gap: 8px 12px; margin-bottom: 12px; font-size: 10px; color: #64748b; }
         .mtk-pal-legend span { display: flex; align-items: center; gap: 5px; }
         .mtk-pal-stats { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; font-size: 11px; color: #94a3b8; border-bottom: 1px solid #2a2f3d; padding-bottom: 12px; }
@@ -1553,7 +1624,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxtest434</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxtest435</div>
             </div>
         </aside>
 
@@ -1579,32 +1650,32 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
-    <script>window.QX_BUILD="qxtest434";</script>
-    <script src="qx-perf.js?v=qxtest434"></script>
-    <script src="firebase-config.js?v=qxtest434" defer></script>
-    <script src="stack-config.js?v=qxtest434" defer></script>
-    <script src="strip/branding-strip.js?v=qxtest434" defer></script>
-    <script src="exam-logos.js?v=qxtest434" defer></script>
-    <script src="math-render.js?v=qxtest434" defer></script>
-    <script src="question-format.js?v=qxtest434" defer></script>
-    <script src="data.js?v=qxtest434" defer></script>
-    <script src="firebase-db.js?v=qxtest434" defer></script>
-    <script src="firebase-storage.js?v=qxtest434" defer></script>
-    <script src="payments.js?v=qxtest434" defer></script>
-    <script src="premium.js?v=qxtest434" defer></script>
-    <script src="leaderboard.js?v=qxtest434" defer></script>
-    <script src="community.js?v=qxtest434" defer></script>
-    <script src="book-covers.js?v=qxtest434" defer></script>
-    <script src="marks-shell.js?v=qxtest434" defer></script>
-    <script src="marks-live.js?v=qxtest434" defer></script>
-    <script src="marks-features.js?v=qxtest434" defer></script>
-    <script src="assignments.js?v=qxtest434" defer></script>
-    <script src="custom-test.js?v=qxtest434" defer></script>
-    <script src="test-engine.js?v=qxtest434" defer></script>
-    <script src="bookmarks.js?v=qxtest434" defer></script>
-    <script src="analytics.js?v=qxtest434" defer></script>
-    <script src="search.js?v=qxtest434" defer></script>
-    <script src="theme.js?v=qxtest434" defer></script>
-    <script src="app.js?v=qxtest434" defer></script>
+    <script>window.QX_BUILD="qxtest435";</script>
+    <script src="qx-perf.js?v=qxtest435"></script>
+    <script src="firebase-config.js?v=qxtest435" defer></script>
+    <script src="stack-config.js?v=qxtest435" defer></script>
+    <script src="strip/branding-strip.js?v=qxtest435" defer></script>
+    <script src="exam-logos.js?v=qxtest435" defer></script>
+    <script src="math-render.js?v=qxtest435" defer></script>
+    <script src="question-format.js?v=qxtest435" defer></script>
+    <script src="data.js?v=qxtest435" defer></script>
+    <script src="firebase-db.js?v=qxtest435" defer></script>
+    <script src="firebase-storage.js?v=qxtest435" defer></script>
+    <script src="payments.js?v=qxtest435" defer></script>
+    <script src="premium.js?v=qxtest435" defer></script>
+    <script src="leaderboard.js?v=qxtest435" defer></script>
+    <script src="community.js?v=qxtest435" defer></script>
+    <script src="book-covers.js?v=qxtest435" defer></script>
+    <script src="marks-shell.js?v=qxtest435" defer></script>
+    <script src="marks-live.js?v=qxtest435" defer></script>
+    <script src="marks-features.js?v=qxtest435" defer></script>
+    <script src="assignments.js?v=qxtest435" defer></script>
+    <script src="custom-test.js?v=qxtest435" defer></script>
+    <script src="test-engine.js?v=qxtest435" defer></script>
+    <script src="bookmarks.js?v=qxtest435" defer></script>
+    <script src="analytics.js?v=qxtest435" defer></script>
+    <script src="search.js?v=qxtest435" defer></script>
+    <script src="theme.js?v=qxtest435" defer></script>
+    <script src="app.js?v=qxtest435" defer></script>
 </body>
 </html>

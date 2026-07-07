@@ -162,6 +162,20 @@ const QuantrexTestEngine = (() => {
     </div>`;
   }
 
+  function renderMarksPaletteHead() {
+    const scale = getTestFontScale();
+    const labels = { small: "Small", medium: "Medium", large: "Large", xlarge: "XL" };
+    return `<div class="mtk-pal-head-row">
+      <strong>Overview</strong>
+      <div class="mtk-font-tools">
+        <button type="button" class="mtk-font-btn" id="mtkFontDown" title="Decrease text size">A−</button>
+        <span class="mtk-font-lbl" id="mtkFontLbl">${labels[scale] || "Medium"}</span>
+        <button type="button" class="mtk-font-btn" id="mtkFontUp" title="Increase text size">A+</button>
+        <button type="button" class="mtk-font-gear" id="mtkQviewGear" title="Question view settings">⚙</button>
+      </div>
+    </div>`;
+  }
+
   function renderMarksPalette() {
     const s = stats();
     let groups = "";
@@ -187,7 +201,7 @@ const QuantrexTestEngine = (() => {
       groups = `<div class="mtk-pal-grp-grid flat">${cells}</div>`;
     }
     return `<aside class="mtk-palette">
-      <div class="mtk-pal-head"><strong>Overview</strong></div>
+      ${renderMarksPaletteHead()}
       <div class="mtk-pal-legend">
         <span><i class="mtk-dot answered"></i>Answered</span>
         <span><i class="mtk-dot not-answered"></i>Not Answered</span>
@@ -228,6 +242,11 @@ const QuantrexTestEngine = (() => {
     </aside>`;
   }
 
+  function getTestFontScale() {
+    if (typeof window.getTestFontScale === "function") return window.getTestFontScale();
+    return localStorage.getItem("quantrex_test_font") || "medium";
+  }
+
   function getTestTheme() {
     return localStorage.getItem("quantrex_test_theme") || "dark";
   }
@@ -256,6 +275,10 @@ const QuantrexTestEngine = (() => {
     const timerHtml = session.durationSec != null
       ? `<div class="mtk-timer" id="qxTimer"><span class="mtk-timer-ic">🕐</span>${formatMarksTime(session.remainingSec)}</div>` : "";
     const testTheme = getTestTheme();
+    const fontScale = getTestFontScale();
+    const stopBtn = session.persistKey
+      ? `<button type="button" class="mtk-stop-btn" id="mtkStopBtn" title="Stop test and resume later">⏸ Stop</button>`
+      : "";
 
     const typeBadge = typeof QuantrexQFormat !== "undefined" ? QuantrexQFormat.typeBadgeHtml(q) : "";
     const optsClass = typeof QuantrexQFormat !== "undefined"
@@ -274,13 +297,14 @@ const QuantrexTestEngine = (() => {
           </button>`;
         }).join(""));
 
-    return `<div class="mtk-test-root" data-test-theme="${testTheme}">
+    return `<div class="mtk-test-root" data-test-theme="${testTheme}" data-font-scale="${fontScale}">
       <header class="mtk-header">
         <div class="mtk-header-left">
           <button type="button" class="mtk-close-btn" id="mtkCloseBtn" title="Exit test">✕</button>
           <div class="mtk-brand"><span class="mtk-logo">Q</span><span class="mtk-brand-text">Quantrex</span></div>
         </div>
         ${timerHtml}
+        ${stopBtn}
         <button type="button" class="mtk-theme-btn" id="mtkThemeBtn" title="Toggle light/dark">${testTheme === "dark" ? "☀️" : "🌙"}</button>
         <button type="button" class="mtk-report-btn" id="mtkReportBtn" title="Report mistake">🚩 Report</button>
         <button type="button" class="mtk-submit-top" id="qxSubmitTop">Submit</button>
@@ -416,6 +440,14 @@ const QuantrexTestEngine = (() => {
     }
     const mtkTheme = root.querySelector("#mtkThemeBtn");
     if (mtkTheme) mtkTheme.onclick = toggleTestTheme;
+    const mtkStop = root.querySelector("#mtkStopBtn");
+    if (mtkStop) mtkStop.onclick = () => { if (typeof mtkShowStopModal === "function") mtkShowStopModal(); };
+    const fontDown = root.querySelector("#mtkFontDown");
+    if (fontDown) fontDown.onclick = () => { if (typeof bumpTestFont === "function") bumpTestFont(-1); };
+    const fontUp = root.querySelector("#mtkFontUp");
+    if (fontUp) fontUp.onclick = () => { if (typeof bumpTestFont === "function") bumpTestFont(1); };
+    const qviewGear = root.querySelector("#mtkQviewGear");
+    if (qviewGear) qviewGear.onclick = () => { if (typeof toggleMtkQviewSettings === "function") toggleMtkQviewSettings(); };
     root.querySelectorAll(".qx-pal-cell, .mtk-pal-cell").forEach(cell => {
       cell.onclick = () => goTo(parseInt(cell.dataset.qidx, 10));
     });
@@ -527,8 +559,35 @@ const QuantrexTestEngine = (() => {
     else confirmSubmit();
   }
 
+  function stopAndSave() {
+    if (!session) return;
+    const hadPersist = !!session.persistKey;
+    const ret = session.returnTo || "tests";
+    stopTimer();
+    if (session.persistKey) {
+      marksPersistSession();
+      if (session.testType === "pyqmock" && session.meta && typeof pyqSaveAttempt === "function") {
+        const attemptKey = typeof pyqAttemptKey === "function"
+          ? pyqAttemptKey(session.meta.slug, session.meta.source) : null;
+        if (attemptKey) pyqSaveAttempt(attemptKey, { status: "inProgress", slug: session.meta.slug, source: session.meta.source, title: session.title });
+      }
+    } else if (session.marksMode) {
+      marksPersistSession();
+    } else {
+      marksClearSession();
+    }
+    exitMarksTestMode();
+    session = null;
+    go(ret);
+    showToast(hadPersist ? "✓ Test stopped. Resume anytime from PYQ Mock Tests." : "✓ Test saved.");
+  }
+
   function quit() {
     if (!session) return;
+    if (session.marksMode && session.persistKey && typeof mtkShowStopModal === "function") {
+      mtkShowStopModal("exit");
+      return;
+    }
     const msg = session.marksMode
       ? "Exit test? Your progress is saved — you can resume later from PYQ Mock Tests."
       : "Leave this assessment? Unsaved answers will be lost.";
@@ -806,6 +865,7 @@ const QuantrexTestEngine = (() => {
     refresh,
     submit,
     quit,
+    stopAndSave,
     isActive,
     getSession,
     launchTimer,
@@ -1446,4 +1506,92 @@ async function startMockTest(examSlug, options) {
     paperFormat: /jee_advanced/i.test(examSlug) ? "jee_advanced" : (STATE.exam === "Medical" ? "neet" : "jee_main"),
     meta: { slug: examSlug }
   });
+}
+
+const TEST_FONT_ORDER = ["small", "medium", "large", "xlarge"];
+const TEST_FONT_LABELS = { small: "Small", medium: "Medium", large: "Large", xlarge: "Extra Large" };
+
+function getTestFontScale() {
+  const v = localStorage.getItem("quantrex_test_font") || "medium";
+  return TEST_FONT_ORDER.includes(v) ? v : "medium";
+}
+
+function setTestFontScale(scale) {
+  const s = TEST_FONT_ORDER.includes(scale) ? scale : "medium";
+  localStorage.setItem("quantrex_test_font", s);
+  const root = document.querySelector(".mtk-test-root");
+  if (root) root.setAttribute("data-font-scale", s);
+  const lbl = document.getElementById("mtkFontLbl");
+  if (lbl) lbl.textContent = s === "xlarge" ? "XL" : (TEST_FONT_LABELS[s] || "Medium");
+  document.querySelectorAll(".mtk-font-preset").forEach(btn => {
+    btn.classList.toggle("on", btn.dataset.scale === s);
+  });
+}
+
+function bumpTestFont(delta) {
+  const cur = getTestFontScale();
+  const idx = TEST_FONT_ORDER.indexOf(cur);
+  const next = TEST_FONT_ORDER[Math.max(0, Math.min(TEST_FONT_ORDER.length - 1, idx + delta))];
+  setTestFontScale(next);
+}
+
+function mtkQviewSettingsHtml() {
+  const scale = getTestFontScale();
+  const presets = TEST_FONT_ORDER.map(s =>
+    `<button type="button" class="mtk-font-preset ${scale === s ? "on" : ""}" data-scale="${s}" onclick="setTestFontScale('${s}');toggleMtkQviewSettings(false)">${TEST_FONT_LABELS[s]}</button>`
+  ).join("");
+  return `<div class="mtk-qview-overlay" id="mtkQviewOverlay" onclick="if(event.target===this)toggleMtkQviewSettings(false)">
+    <aside class="mtk-qview-panel" onclick="event.stopPropagation()">
+      <div class="mtk-qview-head">
+        <strong>Question View Settings</strong>
+        <button type="button" class="mtk-qview-close" onclick="toggleMtkQviewSettings(false)">✕</button>
+      </div>
+      <section class="mtk-qview-sec">
+        <h4>PRACTICE EXPERIENCE</h4>
+        <label class="mtk-qview-label">Text Size</label>
+        <div class="mtk-font-presets">${presets}</div>
+        <p class="mtk-qview-hint">Use A− / A+ on the right panel for quick changes during the test.</p>
+      </section>
+    </aside>
+  </div>`;
+}
+
+function toggleMtkQviewSettings(show) {
+  const existing = document.getElementById("mtkQviewOverlay");
+  if (show === false || existing) {
+    if (existing) existing.remove();
+    return;
+  }
+  document.body.insertAdjacentHTML("beforeend", mtkQviewSettingsHtml());
+}
+
+function mtkStopModalHtml(mode) {
+  const isExit = mode === "exit";
+  return `<div class="marks-modal-overlay" id="mtkStopModal" onclick="if(event.target===this)mtkCloseStopModal()">
+    <div class="marks-resume-modal marks-stop-modal">
+      <button type="button" class="marks-resume-close" onclick="mtkCloseStopModal()">✕</button>
+      <div class="marks-resume-icon">${isExit ? "🚪" : "⏸"}</div>
+      <h3>${isExit ? "Exit Test?" : "Stop Test"}</h3>
+      <p class="marks-resume-hint">Your answers and remaining time will be saved. You can resume this test anytime from PYQ Mock Tests.</p>
+      <button type="button" class="marks-resume-btn" onclick="mtkConfirmStop()">⏸ Stop &amp; Save</button>
+      <button type="button" class="marks-resume-cancel" onclick="mtkCloseStopModal()">Continue Test</button>
+    </div>
+  </div>`;
+}
+
+function mtkShowStopModal(mode) {
+  mtkCloseStopModal();
+  document.body.insertAdjacentHTML("beforeend", mtkStopModalHtml(mode));
+}
+
+function mtkCloseStopModal() {
+  const el = document.getElementById("mtkStopModal");
+  if (el) el.remove();
+}
+
+function mtkConfirmStop() {
+  mtkCloseStopModal();
+  if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.stopAndSave) {
+    QuantrexTestEngine.stopAndSave();
+  }
 }
