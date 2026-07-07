@@ -1,4 +1,4 @@
-// JEE Main Test Series 2027 — Quizrr-style folder, filters, analytics, auto-sync notifications
+// JEE Main Test Series 2027 — Quizrr screenshots 424/425 style
 
 const TS_ATTEMPT_STORE = "quantrex_ts_attempts_v1";
 const TS_NOTIFY_STORE = "quantrex_ts_notify_v1";
@@ -6,7 +6,8 @@ const TS_LAST_SYNC_KEY = "quantrex_ts_last_sync_check";
 
 let _tsPayload = { seriesId: "jee_main_test_series_2027" };
 let _tsManifest = null;
-let _tsFilter = { testType: "All Tests", subject: "Overall", dateRange: "All Dates", status: "all" };
+let _tsCategoryCache = {};
+let _tsFilter = { testType: "All Tests", subject: "Overall", dateRange: "All Dates", statusTab: "available" };
 
 function tsLoadAttempts() {
   try { return JSON.parse(localStorage.getItem(TS_ATTEMPT_STORE) || "{}"); }
@@ -44,10 +45,24 @@ async function tsFetchManifest(seriesId) {
   return res.json();
 }
 
-async function tsFetchTest(seriesId, file) {
+async function tsFetchCategory(seriesId, file) {
+  const key = seriesId + "::" + file;
+  if (_tsCategoryCache[key]) return _tsCategoryCache[key];
   const res = await fetch(`data/quizrr/${seriesId}/${file}?v=${typeof QX_BUILD !== "undefined" ? QX_BUILD : Date.now()}`);
-  if (!res.ok) throw new Error("test");
-  return res.json();
+  if (!res.ok) throw new Error("category");
+  const data = await res.json();
+  _tsCategoryCache[key] = data;
+  return data;
+}
+
+async function tsResolveTest(seriesId, meta) {
+  if (!meta || !meta.file) return null;
+  const data = await tsFetchCategory(seriesId, meta.file);
+  if (data.tests && Array.isArray(data.tests)) {
+    return data.tests.find(t => t.id === meta.id) || data.tests[meta.testIndex] || null;
+  }
+  if (data.questionIds) return data;
+  return null;
 }
 
 function tsFormatDate(iso) {
@@ -68,16 +83,25 @@ function tsSubjectStyle(sub) {
   return m[sub] || { color: "#94a3b8", bg: "rgba(148,163,184,.12)" };
 }
 
-function tsFilterTests(tests) {
+function tsCatIcon(cat) {
+  const ic = { physics: "⚛️", chemistry: "🧪", mathematics: "📐", qpt: "📝", qft: "🎯", year: "📅" };
+  return ic[cat.icon] || "📋";
+}
+
+function tsMatchesStatusTab(t) {
+  const st = tsAttemptStatus(t.id);
+  const tab = _tsFilter.statusTab;
+  if (tab === "attempted") return st === "completed";
+  if (tab === "resume") return st === "inProgress";
+  if (tab === "upcoming") return t.status === "upcoming" || (t.scheduledDate && t.scheduledDate > new Date().toISOString().slice(0, 10));
+  return st === "notStarted" && t.status !== "upcoming";
+}
+
+function tsFilterCategoryTests(tests) {
   let list = [...(tests || [])];
   if (_tsFilter.testType !== "All Tests") list = list.filter(t => t.testType === _tsFilter.testType);
-  if (_tsFilter.subject !== "Overall") {
-    list = list.filter(t => (t.subjects || []).some(s => s === _tsFilter.subject));
-  }
-  if (_tsFilter.status === "attempted") list = list.filter(t => tsAttemptStatus(t.id) === "completed");
-  if (_tsFilter.status === "notStarted") list = list.filter(t => tsAttemptStatus(t.id) === "notStarted");
-  if (_tsFilter.status === "inProgress") list = list.filter(t => tsAttemptStatus(t.id) === "inProgress");
-  list.sort((a, b) => (b.scheduledDate || "").localeCompare(a.scheduledDate || ""));
+  if (_tsFilter.subject !== "Overall") list = list.filter(t => (t.subjects || []).includes(_tsFilter.subject));
+  list = list.filter(tsMatchesStatusTab);
   if (_tsFilter.dateRange === "Last 5 Tests") list = list.slice(0, 5);
   if (_tsFilter.dateRange === "Last 10 Tests") list = list.slice(0, 10);
   return list;
@@ -85,173 +109,267 @@ function tsFilterTests(tests) {
 
 function tsAnalyticsSummary(tests) {
   const attempts = tsLoadAttempts();
-  let attempted = 0, completed = 0, totalScore = 0, totalPct = 0;
+  let attempted = 0, completed = 0, totalPct = 0;
   (tests || []).forEach(t => {
     const a = attempts[t.id];
     if (!a || a.status === "notStarted") return;
     attempted++;
-    if (a.status === "completed") {
-      completed++;
-      totalScore += a.score || 0;
-      totalPct += a.pct || 0;
-    }
+    if (a.status === "completed") { completed++; totalPct += a.pct || 0; }
   });
-  const avgPct = completed ? Math.round(totalPct / completed) : 0;
-  return { attempted, completed, total: tests.length, avgPct };
+  return { attempted, completed, total: tests.length, avgPct: completed ? Math.round(totalPct / completed) : 0 };
 }
 
-function tsFilterBar(manifest) {
-  const types = (manifest.filters && manifest.filters.testTypes) || ["All Tests"];
-  const subs = (manifest.filters && manifest.filters.subjects) || ["Overall"];
-  const dates = (manifest.filters && manifest.filters.dateRanges) || ["All Dates"];
-  const statuses = [
-    { id: "all", label: "All" },
-    { id: "notStarted", label: "Not Started" },
-    { id: "inProgress", label: "Resume" },
-    { id: "attempted", label: "Attempted" }
-  ];
-  const chip = (val, cur, fn) =>
-    `<button type="button" class="ts-filter-chip ${cur === val ? "on" : ""}" onclick="${fn}('${val.replace(/'/g, "\\'")}')">${val}</button>`;
-  return `<div class="ts-filter-panel">
-    <div class="ts-filter-row">
-      <span class="ts-filter-label">Test Type</span>
-      <div class="ts-filter-chips">${types.map(t => chip(t, _tsFilter.testType, "tsSetTestType")).join("")}</div>
-    </div>
-    <div class="ts-filter-row">
-      <span class="ts-filter-label">Subject</span>
-      <div class="ts-filter-chips">${subs.map(s => chip(s, _tsFilter.subject, "tsSetSubject")).join("")}</div>
-    </div>
-    <div class="ts-filter-row">
-      <span class="ts-filter-label">Test Date</span>
-      <div class="ts-filter-chips">${dates.map(d => chip(d, _tsFilter.dateRange, "tsSetDateRange")).join("")}</div>
-    </div>
-    <div class="ts-filter-row">
-      <span class="ts-filter-label">Status</span>
-      <div class="ts-filter-chips">${statuses.map(s => chip(s.id, _tsFilter.status, "tsSetStatus")).join("")}</div>
-    </div>
-  </div>`;
-}
-
-function tsTestRow(t) {
-  const st = tsAttemptStatus(t.id);
-  const att = tsLoadAttempts()[t.id] || {};
-  const subBadges = (t.subjects || []).map(s => {
-    const sty = tsSubjectStyle(s);
-    return `<span class="ts-sub-badge" style="background:${sty.bg};color:${sty.color}">${s}</span>`;
+function tsSidebarHtml(manifest, activeId) {
+  const cats = manifest.categories || [];
+  const items = cats.map(c => {
+    const on = c.id === activeId ? " on" : "";
+    const badge = c.badge ? `<span class="ts-cat-new">${c.badge}</span>` : "";
+    return `<button type="button" class="ts-side-item${on}" onclick="tsOpenCategory('${c.id}')">
+      <span>${tsCatIcon(c)} ${c.title}</span>${badge}
+    </button>`;
   }).join("");
-  const action = st === "completed" ? "View Analysis" : st === "inProgress" ? "Resume" : "Attempt";
-  const scoreLine = st === "completed" && att.pct != null
-    ? `<span class="ts-score">${att.pct}% · ${att.correct || 0}/${att.total || t.totalQs}</span>` : "";
-  return `<div class="ts-test-row ${st}" onclick="tsOpenTest('${t.id}')">
-    <div class="ts-test-main">
-      <strong>${t.title}</strong>
-      <small>${t.testType} · ${t.totalQs} Qs · ${t.durationMin} min</small>
-      <div class="ts-test-meta">${subBadges}<span class="ts-date">📅 ${tsFormatDate(t.scheduledDate)}</span></div>
+  return `<aside class="ts-sidebar">
+    <div class="ts-side-head"><strong>All Tests</strong><small>${manifest.totalTests || (manifest.tests || []).length} tests</small></div>
+    <div class="ts-side-list">${items}</div>
+  </aside>`;
+}
+
+function tsCategoryCard(cat) {
+  const badge = cat.badge ? `<span class="ts-cat-badge">${cat.badge}</span>` : "";
+  return `<div class="ts-cat-card" onclick="tsOpenCategory('${cat.id}')">
+    <div class="ts-cat-card-ic">${tsCatIcon(cat)}</div>
+    <div class="ts-cat-card-body">
+      <strong>${cat.title}</strong>
+      <small>${cat.count} Tests</small>
     </div>
-    <div class="ts-test-side">
-      ${scoreLine}
-      <span class="ts-action">${action} →</span>
-    </div>
+    ${badge}
+    <span class="ts-cat-go">›</span>
   </div>`;
 }
 
-function tsAnalyticsPanel(manifest, tests) {
-  const s = tsAnalyticsSummary(tests);
-  const subs = ["Physics", "Chemistry", "Mathematics"];
-  const subRows = subs.map(sub => {
-    const subTests = tests.filter(t => (t.subjects || []).includes(sub));
-    const subSum = tsAnalyticsSummary(subTests);
-    const sty = tsSubjectStyle(sub);
-    return `<div class="ts-an-sub" style="border-color:${sty.color}">
-      <strong style="color:${sty.color}">${sub}</strong>
-      <span>${subSum.completed}/${subTests.length} done</span>
-      <em>Avg ${subSum.avgPct}%</em>
+function tsResourcesHtml(manifest) {
+  const res = manifest.resources || [];
+  return `<section class="ts-resources">
+    <h3>Resources</h3>
+    <div class="ts-res-pills">${res.map(r =>
+      `<button type="button" class="ts-res-pill" style="--ts-res:${r.color}" onclick="tsOpenResource('${r.id}','${r.link || ""}')">${r.title}</button>`
+    ).join("")}</div>
+  </section>`;
+}
+
+function tsHomeHtml(manifest) {
+  const sections = manifest.sections || [...new Set((manifest.categories || []).map(c => c.section))];
+  const blocks = sections.map(sec => {
+    const cats = (manifest.categories || []).filter(c => c.section === sec);
+    return `<section class="ts-sec-block">
+      <h3 class="ts-sec-title">${sec}</h3>
+      <div class="ts-cat-grid">${cats.map(tsCategoryCard).join("")}</div>
+    </section>`;
+  }).join("");
+  const s = tsAnalyticsSummary(manifest.tests || []);
+  return `<div class="ts-all-tests-layout">
+    ${tsSidebarHtml(manifest, null)}
+    <main class="ts-main-panel">
+      <div class="ts-main-head">
+        <h1>All Tests</h1>
+        <p>${manifest.subtitle || manifest.title}</p>
+        <div class="ts-head-stats">
+          <span><strong>${manifest.totalTests || (manifest.tests || []).length}</strong> Total Tests</span>
+          <span><strong>${s.completed}</strong> Completed</span>
+          <span><strong>${s.avgPct}%</strong> Avg Score</span>
+        </div>
+      </div>
+      ${tsSyncBanner(manifest)}
+      ${blocks}
+      ${tsResourcesHtml(manifest)}
+    </main>
+  </div>`;
+}
+
+function tsFiltersHtml(manifest) {
+  const filters = manifest.filters || {};
+  const types = filters.testTypes || ["All Tests"];
+  const subs = filters.subjects || ["Overall"];
+  const dates = filters.dateRanges || ["All Dates"];
+  return `<div class="ts-filter-bar">
+    <select class="ts-select" aria-label="Test type" onchange="tsSetFilter('testType', this.value)">
+      ${types.map(t => `<option value="${t}"${_tsFilter.testType === t ? " selected" : ""}>${t}</option>`).join("")}
+    </select>
+    <select class="ts-select" aria-label="Subject" onchange="tsSetFilter('subject', this.value)">
+      ${subs.map(s => `<option value="${s}"${_tsFilter.subject === s ? " selected" : ""}>${s}</option>`).join("")}
+    </select>
+    <select class="ts-select" aria-label="Date range" onchange="tsSetFilter('dateRange', this.value)">
+      ${dates.map(d => `<option value="${d}"${_tsFilter.dateRange === d ? " selected" : ""}>${d}</option>`).join("")}
+    </select>
+  </div>`;
+}
+
+function tsStatusTabsHtml() {
+  const tabs = [
+    { id: "available", label: "Available" },
+    { id: "upcoming", label: "Upcoming" },
+    { id: "attempted", label: "Attempted" },
+    { id: "resume", label: "Resume" }
+  ];
+  return `<div class="ts-status-tabs">${tabs.map(t =>
+    `<button type="button" class="ts-status-tab ${_tsFilter.statusTab === t.id ? "on" : ""}" onclick="tsSetStatusTab('${t.id}')">${t.label}</button>`
+  ).join("")}</div>`;
+}
+
+function tsChapterRow(chapter, tests, num) {
+  const done = tests.filter(t => tsAttemptStatus(t.id) === "completed").length;
+  const rows = tests.map(t => {
+    const st = tsAttemptStatus(t.id);
+    const att = tsLoadAttempts()[t.id] || {};
+    const action = st === "completed" ? "Analysis" : st === "inProgress" ? "Resume" : "Attempt";
+    const score = st === "completed" && att.pct != null ? `<em>${att.pct}%</em>` : "";
+    return `<div class="ts-ch-test" onclick="event.stopPropagation();tsOpenTest('${t.id}')">
+      <span>${t.title}</span>
+      <small>${t.totalQs} Qs · ${t.durationMin}m</small>
+      ${score}
+      <button type="button" class="ts-ch-btn">${action}</button>
     </div>`;
   }).join("");
-  return `<section class="ts-analytics">
-    <h3>Series Analytics</h3>
-    <div class="ts-an-cards">
-      <div class="ts-an-card"><strong>${s.completed}</strong><small>Tests Completed</small></div>
-      <div class="ts-an-card"><strong>${s.attempted}</strong><small>In Progress + Done</small></div>
-      <div class="ts-an-card"><strong>${s.avgPct}%</strong><small>Avg Accuracy</small></div>
-      <div class="ts-an-card"><strong>${s.total - s.completed}</strong><small>Remaining</small></div>
-    </div>
-    <div class="ts-an-subs">${subRows}</div>
-  </section>`;
+  return `<details class="ts-chapter-block">
+    <summary class="ts-chapter-head">
+      <span class="ts-ch-num">${num || ""}</span>
+      <strong>${chapter}</strong>
+      <small>${tests.length} test${tests.length === 1 ? "" : "s"} · ${done} done</small>
+    </summary>
+    <div class="ts-chapter-tests">${rows}</div>
+  </details>`;
+}
+
+function tsCategoryListHtml(cat, tests) {
+  const filtered = tsFilterCategoryTests(tests);
+  const byChapter = {};
+  filtered.forEach(t => {
+    const ch = t.chapter || t.testType || "Tests";
+    if (!byChapter[ch]) byChapter[ch] = [];
+    byChapter[ch].push(t);
+  });
+  const chapters = Object.keys(byChapter).sort();
+  if (!chapters.length) return '<div class="empty">No tests in this tab. Try another filter.</div>';
+  if (chapters.length === 1 && chapters[0] === "Tests") {
+    return filtered.map(t => {
+      const st = tsAttemptStatus(t.id);
+      return `<div class="ts-flat-test" onclick="tsOpenTest('${t.id}')">
+        <strong>${t.title}</strong>
+        <small>${t.totalQs} Qs · ${t.durationMin} min · ${t.testType}</small>
+        <span class="ts-action">${st === "completed" ? "Analysis" : st === "inProgress" ? "Resume" : "Attempt"} →</span>
+      </div>`;
+    }).join("");
+  }
+  return chapters.map((ch, i) => tsChapterRow(ch, byChapter[ch], i + 1)).join("");
 }
 
 function tsSyncBanner(manifest) {
   if (!manifest.pendingQuizrrSync) return "";
   return `<div class="ts-sync-banner">
-    <span>🔄 Quizrr auto-sync pending — new tests &amp; dates will appear with notification when credentials sync succeeds.</span>
-    <button type="button" class="btn-soft sm" onclick="tsCheckQuizrrSync()">Check Now</button>
+    <span>🔄 ${manifest.totalTests || 0} tests loaded · Quizrr live dates sync when login succeeds (notification auto).</span>
+    <button type="button" class="btn-soft sm" onclick="tsCheckQuizrrSync()">Sync</button>
+  </div>`;
+}
+
+async function viewTestSeriesCategory(payload) {
+  const p = { ..._tsPayload, ...(payload || {}) };
+  _tsPayload = p;
+  const seriesId = p.folder || "jee_main_test_series_2027";
+  const catId = p.categoryId;
+  if (!_tsManifest) {
+    try { _tsManifest = await tsFetchManifest(seriesId); } catch (e) {
+      return `<div class="empty">Series not found</div>`;
+    }
+  }
+  const cat = (_tsManifest.categories || []).find(c => c.id === catId);
+  if (!cat) return viewTestSeriesFolder(p);
+  let catData;
+  try { catData = await tsFetchCategory(seriesId, cat.file); } catch (e) {
+    return `<div class="empty">Category load failed</div>`;
+  }
+  const tests = (catData.tests || []).map(t => ({
+    ...t,
+    file: cat.file,
+    categoryId: cat.id
+  }));
+  const label = /pyq/i.test(cat.title) ? "Chapter-wise Tests" : "Tests";
+  return `<div class="marks-tests-page ts-folder-page">
+    <button type="button" class="pyqmock-back" onclick="tsOpenCategory(null)">← All Tests</button>
+    <div class="ts-all-tests-layout">
+      ${tsSidebarHtml(_tsManifest, catId)}
+      <main class="ts-main-panel">
+        <div class="ts-cat-head">
+          <h2>${cat.title}</h2>
+          <p>${label} · ${cat.count} tests</p>
+        </div>
+        ${tsFiltersHtml(_tsManifest)}
+        ${tsStatusTabsHtml()}
+        <div class="ts-chapter-list">${tsCategoryListHtml(cat, tests)}</div>
+      </main>
+    </div>
   </div>`;
 }
 
 async function viewTestSeriesFolder(payload) {
   const p = { ..._tsPayload, ...(payload || {}) };
   _tsPayload = p;
+  if (p.categoryId) return viewTestSeriesCategory(p);
   const seriesId = p.folder || p.seriesId || "jee_main_test_series_2027";
   try {
     _tsManifest = await tsFetchManifest(seriesId);
   } catch (e) {
-    return `<div class="marks-tests-page"><div class="empty">Test series not found. Run import from E:\\QUIZRR_IMPORT_TASK</div></div>`;
+    return `<div class="marks-tests-page"><div class="empty">Test series not found.</div></div>`;
   }
-  const tests = _tsFilterTests(_tsManifest.tests || []);
   const unread = tsLoadNotifications().filter(n => !n.read).length;
   return `<div class="marks-tests-page ts-folder-page">
     <button type="button" class="pyqmock-back" onclick="go('tests')">← Tests</button>
-    <div class="ts-folder-hero">
-      <div class="ts-folder-logo">JEE<br>MAIN</div>
-      <div>
-        <h1>${_tsManifest.title}</h1>
-        <p>${_tsManifest.tagline || ""} · ${_tsManifest.tests.length} tests</p>
-        <small class="ts-sync-src">Source: ${_tsManifest.syncedFrom || "local"} · Updated ${tsFormatDate((_tsManifest.syncedAt || "").slice(0, 10))}</small>
-      </div>
+    <div class="ts-top-banner">
+      <span class="ts-batch-pill">JEE Main 2027 Full Test Series for Class 12 (April Batch)</span>
       ${unread ? `<span class="ts-notify-pill">${unread} new</span>` : ""}
     </div>
-    ${tsSyncBanner(_tsManifest)}
-    ${tsFilterBar(_tsManifest)}
-    ${tsAnalyticsPanel(_tsManifest, _tsManifest.tests || [])}
-    <div class="ts-test-list">
-      <h3>Tests (${tests.length})</h3>
-      ${tests.length ? tests.map(tsTestRow).join("") : '<div class="empty">No tests match filters.</div>'}
-    </div>
+    ${tsHomeHtml(_tsManifest)}
   </div>`;
 }
 
-function tsSetTestType(v) { _tsFilter.testType = v; render("testseries", { folder: _tsPayload.folder || "jee_main_test_series_2027" }); }
-function tsSetSubject(v) { _tsFilter.subject = v; render("testseries", { folder: _tsPayload.folder || "jee_main_test_series_2027" }); }
-function tsSetDateRange(v) { _tsFilter.dateRange = v; render("testseries", { folder: _tsPayload.folder || "jee_main_test_series_2027" }); }
-function tsSetStatus(v) { _tsFilter.status = v; render("testseries", { folder: _tsPayload.folder || "jee_main_test_series_2027" }); }
+function tsOpenCategory(catId) {
+  if (!catId) render("testseries", { folder: _tsPayload.folder || "jee_main_test_series_2027" });
+  else render("testseries", { folder: _tsPayload.folder || "jee_main_test_series_2027", categoryId: catId });
+}
+
+function tsSetStatusTab(tab) {
+  _tsFilter.statusTab = tab;
+  render("testseries", { folder: _tsPayload.folder || "jee_main_test_series_2027", categoryId: _tsPayload.categoryId });
+}
+
+function tsSetFilter(key, value) {
+  if (key in _tsFilter) _tsFilter[key] = value;
+  render("testseries", { folder: _tsPayload.folder || "jee_main_test_series_2027", categoryId: _tsPayload.categoryId });
+}
+
+function tsOpenResource(id, link) {
+  if (link && typeof go === "function") go(link);
+  else showToast("📚 " + id + " — opening soon");
+}
 
 async function tsOpenTest(testId) {
   const seriesId = _tsPayload.folder || "jee_main_test_series_2027";
   const meta = (_tsManifest && _tsManifest.tests || []).find(t => t.id === testId);
   if (!meta) return;
   const st = tsAttemptStatus(testId);
-  if (st === "completed") {
-    tsShowAnalysis(testId, meta);
-    return;
-  }
+  if (st === "completed") { tsShowAnalysis(testId, meta); return; }
   showToast("📚 Loading test…");
   let test;
-  try {
-    test = await tsFetchTest(seriesId, meta.file);
-  } catch (e) {
-    showToast("⚠️ Could not load test.");
-    return;
+  try { test = await tsResolveTest(seriesId, meta); } catch (e) {
+    showToast("⚠️ Could not load test."); return;
   }
-  if (!test.questionIds || !test.questionIds.length) {
-    showToast("⚠️ No questions in this test yet.");
-    return;
+  if (!test || !test.questionIds || !test.questionIds.length) {
+    showToast("⚠️ No questions in this test."); return;
   }
   if (typeof loadSingleBank === "function") await loadSingleBank("jee_main");
   if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
-    await MarksLive.prefetchQuestions(test.questionIds);
+    await MarksLive.prefetchQuestions(test.questionIds.slice(0, 80));
   }
-  tsSaveAttempt(testId, { status: "inProgress", title: test.title });
-  const key = `ts::${seriesId}::${testId}`;
+  tsSaveAttempt(testId, { status: "inProgress", title: test.title, categoryId: meta.categoryId });
   startTest(test.questionIds, test.title, "tests", {
     testType: "testseries",
     timed: true,
@@ -260,20 +378,16 @@ async function tsOpenTest(testId) {
     marksMode: true,
     organizeJee: true,
     paperFormat: "jee_main",
-    persistKey: key,
+    persistKey: `ts::${seriesId}::${testId}`,
     meta: { seriesId, testId, slug: "jee_main" },
     modeLabel: `${test.testType} · ${test.totalQs} Qs`,
     onComplete: (data) => {
       marksClearSession();
       tsSaveAttempt(testId, {
-        status: "completed",
-        score: data.score,
-        pct: data.pct,
-        correct: data.correct,
-        total: data.total,
-        completedAt: new Date().toISOString()
+        status: "completed", score: data.score, pct: data.pct,
+        correct: data.correct, total: data.total, completedAt: new Date().toISOString()
       });
-      showToast("✅ Test submitted! View analysis in series folder.");
+      showToast("✅ Submitted! View analysis in test list.");
     }
   });
 }
@@ -292,8 +406,7 @@ function tsShowAnalysis(testId, meta) {
           <div class="marks-preview-stat"><strong>${att.correct != null ? att.correct : "—"}/${att.total || meta.totalQs}</strong><small>Correct</small></div>
           <div class="marks-preview-stat"><strong>${att.score != null ? att.score : "—"}</strong><small>Score</small></div>
         </div>
-        <p class="marks-preview-chapters">${(meta.subjects || []).join(" · ")} · ${tsFormatDate(meta.scheduledDate)}</p>
-        <button type="button" class="marks-preview-attempt" onclick="tsCloseAnalysis();tsRetakeTest('${testId}')">Retake Test →</button>
+        <button type="button" class="marks-preview-attempt" onclick="tsCloseAnalysis();tsRetakeTest('${testId}')">Retake →</button>
       </div>
     </div>
   </div>`);
@@ -310,24 +423,19 @@ async function tsRetakeTest(testId) {
 }
 
 async function tsCheckQuizrrSync() {
-  showToast("🔄 Checking Quizrr for new tests…");
+  showToast("🔄 Checking sync…");
   try {
     const res = await fetch("data/quizrr/sync_status.json?v=" + Date.now());
     if (res.ok) {
       const st = await res.json();
-      if (st.newTests) tsPushNotification(`${st.newTests} new tests added from Quizrr!`);
-      else showToast("✓ Already up to date.");
-    } else {
-      showToast("ℹ️ Run tools/quizrr_full_import.js on E: drive to sync from Quizrr.");
+      tsPushNotification(st.message || "Catalog up to date");
     }
-  } catch (e) {
-    showToast("ℹ️ Sync script ready at E:\\QUIZRR_IMPORT_TASK — login pending.");
-  }
-  localStorage.setItem(TS_LAST_SYNC_KEY, String(Date.now()));
+  } catch (e) { showToast("Run quizrr_full_import.js when login works"); }
 }
 
 async function viewTestSeries(payload) {
   const p = payload || {};
+  if (p.categoryId) return viewTestSeriesCategory({ folder: p.folder || "jee_main_test_series_2027", ...p });
   if (p.folder || p.seriesId === "jee_main_test_series_2027" || p.id === "jeemain") {
     return viewTestSeriesFolder({ folder: p.folder || "jee_main_test_series_2027", ...p });
   }
@@ -335,7 +443,6 @@ async function viewTestSeries(payload) {
   return viewTestSeriesFolder({ folder: "jee_main_test_series_2027" });
 }
 
-// Auto-notify on load if sync status changed
 (function tsInitSyncWatch() {
   if (typeof document === "undefined") return;
   document.addEventListener("DOMContentLoaded", () => {
@@ -347,9 +454,9 @@ async function viewTestSeries(payload) {
         const last = localStorage.getItem("quantrex_ts_sync_hash");
         if (st.hash && st.hash !== last) {
           localStorage.setItem("quantrex_ts_sync_hash", st.hash);
-          if (last) tsPushNotification((st.message || "Test series updated from Quizrr"));
+          if (last) tsPushNotification(st.message || "Test series updated");
         }
-      } catch (e) { /* offline */ }
-    }, 3000);
+      } catch (e) { /* */ }
+    }, 2500);
   });
 })();
