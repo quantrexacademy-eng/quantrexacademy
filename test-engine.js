@@ -599,7 +599,7 @@ const QuantrexTestEngine = (() => {
     const hasSol = typeof MarksLive !== "undefined" && MarksLive.hasRealSolution
       ? MarksLive.hasRealSolution(r.q.solution)
       : !!String(r.q.solution || "").replace(/<[^>]+>/g, "").trim();
-      const sol = hasSol ? `<div class="sol qx-exam-sol"><strong>Solution</strong><div class="qx-content sol-body qx-exam-text">${htmlContent(r.q.solution)}</div></div>` : "";
+      const sol = hasSol ? `<div class="sol qx-exam-sol"><strong>Solution</strong><div class="qx-content sol-body">${htmlContent(r.q.solution)}</div></div>` : "";
     const chosenHtml = typeof QuantrexQFormat !== "undefined"
       ? QuantrexQFormat.formatChosenAnswer(r.q, r.chosen)
       : htmlContent((r.q.options || [])[r.chosen]);
@@ -607,7 +607,7 @@ const QuantrexTestEngine = (() => {
       ? QuantrexQFormat.formatCorrectAnswer(r.q)
       : htmlContent((r.q.options || [])[r.q.answer]);
       return `<div class="rv-row ${r.isCorrect ? "ok" : r.isSkip ? "" : "no"}" data-rv-idx="${i}">
-        <div class="rv-q qx-content qx-exam-text"><strong>Q${i + 1}.</strong> ${htmlContent(r.q.q)}</div>
+        <div class="rv-q qx-content"><strong>Q${i + 1}.</strong> ${htmlContent(r.q.q)}</div>
       <div class="rv-ans">
         ${r.isSkip ? '<span class="tag tag-skip">Not attempted</span>' :
           `<span class="tag ${r.isCorrect ? "tag-ok" : "tag-no"}">${r.isCorrect ? "✓" : "✗"} <span class="qx-content">${chosenHtml}</span></span>`}
