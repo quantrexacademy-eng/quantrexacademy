@@ -2039,20 +2039,25 @@ async function marksDashboardSections() {
     { id: "CBSE", label: "CBSE" },
     { id: "HSC", label: "HSC (Maharashtra)" }
   ];
+  const boardTitle = board === "HSC" ? "HSC (Maharashtra)" : "CBSE";
+  const boardLogo = typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(board, 48, "dash-board-hero-logo") : "";
   const boardPills = boards.map(b => {
-    const logo = typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(b.id, 22, "dash-board-logo") : "";
-    return `<button type="button" class="dash-board-pill${board === b.id ? " on" : ""}" data-dash-board="${b.id}">
+    const logo = typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(b.id, 24, "dash-board-tab-logo") : "";
+    return `<button type="button" class="dash-board-tab${board === b.id ? " on" : ""}" data-dash-board="${b.id}">
       ${logo}<span>${b.label}</span>
     </button>`;
   }).join("");
-
-  const boardTitle = board === "HSC" ? "HSC (Maharashtra)" : "CBSE";
-  const boardLogo = typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(board, 36, "dash-tool-logo") : "";
   const boardPyqCard = `
-    <div class="dash-tool-card dash-board-pyq-card" ${mg("board", { step: "subjects" })}>
-      ${boardLogo}
-      <strong>${boardTitle} Board PYQs</strong>
-      <small>Physics · Chemistry · Mathematics · Biology · with dates</small>
+    <div class="dash-board-hero">
+      <div class="dash-board-hero-top" ${mg("board", { step: "subjects" })}>
+        ${boardLogo}
+        <div class="dash-board-hero-text">
+          <h3>${boardTitle} Board PYQs</h3>
+          <p>Physics · Chemistry · Mathematics · Biology — year &amp; date wise</p>
+        </div>
+        <span class="dash-board-go">Open →</span>
+      </div>
+      <div class="dash-board-tabs">${boardPills}</div>
     </div>`;
 
   const ncertTools = [
@@ -2062,7 +2067,7 @@ async function marksDashboardSections() {
   ];
   const toolCards = ncertTools.map(t => `
     <div class="dash-tool-card" ${mg(t.view, t.payload)}>
-      <span class="dash-tool-ic">${t.icon}</span>
+      <span class="dash-tool-ic" aria-hidden="true">${t.icon}</span>
       <strong>${t.title}</strong>
       <small>${t.sub}</small>
     </div>`).join("");
@@ -2080,13 +2085,12 @@ async function marksDashboardSections() {
 
   return `
     <div class="dash-marks-home">
-      <div class="dash-board-row">${boardPills}</div>
-      <div class="dash-ncert-block">
+      <div class="dash-ncert-block dash-board-block">
         <div class="dash-ncert-head">
-          <h2>PYQ Bank for Board Exams</h2>
-          <p>Real ${boardTitle} board papers — year &amp; date wise</p>
+          <h2>Board Exam PYQs</h2>
+          <p>Previous year papers with solutions</p>
         </div>
-        <div class="dash-tool-scroll">${boardPyqCard}</div>
+        ${boardPyqCard}
       </div>
       <div class="dash-ncert-block">
         <div class="dash-ncert-head">
@@ -2118,7 +2122,9 @@ async function marksDashboardSections() {
 
 function bindDashHome(root) {
   (root || document).querySelectorAll("[data-dash-board]").forEach(btn => {
-    btn.onclick = async () => {
+    btn.onclick = async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       localStorage.setItem("quantrex_board", btn.dataset.dashBoard);
       document.querySelectorAll("[data-dash-board]").forEach(b => b.classList.toggle("on", b === btn));
       showToast(`📚 Board: ${btn.textContent.trim()}`);

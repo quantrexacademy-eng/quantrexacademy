@@ -133,7 +133,7 @@ window.Mx = (() => {
     out = out.replace(/<[^>]*(?:watermark|getmarks-brand|marks-app)[^>]*>[\s\S]*?<\/[^>]+>/gi, "");
     out = out.replace(/<img[^>]+(?:watermark|marks-premium|ic_marks)[^>]*>/gi, "");
     out = restoreImgUrls(out, slots);
-    if (typeof QuantrexStrip !== "undefined") out = QuantrexStrip.displayText(out);
+    if (typeof QuantrexStrip !== "undefined" && !/<img/i.test(out)) out = QuantrexStrip.displayText(out);
     if (isHtml(out)) out = wrapDiagramImages(out);
     return out.replace(/\s{2,}/g, " ").trim();
   }

@@ -13,8 +13,7 @@ const QuantrexStrip = (() => {
     [/Mathongo/gi, ""],
     [/\bfrom\s+MARKS\b/gi, ""],
     [/\bMARKS\s+live\b/gi, "Quantrex Live"],
-    [/\bMARKS\b/g, "Quantrex"],
-    [/\bgetmarks\.app\b/gi, ""]
+    [/\bMARKS\b/g, "Quantrex"]
   ];
 
   const TOAST_RULES = [
@@ -22,10 +21,28 @@ const QuantrexStrip = (() => {
     [/from\s+MARKS/gi, ""]
   ];
 
+  function protectUrls(str) {
+    const slots = [];
+    const safe = String(str).replace(/(https?:\/\/[^\s"'<>]+)/gi, url => {
+      const key = `__QXURL${slots.length}__`;
+      slots.push(url);
+      return key;
+    });
+    return { safe, slots };
+  }
+
+  function restoreUrls(str, slots) {
+    let out = str;
+    slots.forEach((url, i) => { out = out.split(`__QXURL${i}__`).join(url); });
+    return out;
+  }
+
   function displayText(str) {
     if (str == null) return "";
-    let out = String(str);
+    const { safe, slots } = protectUrls(str);
+    let out = safe;
     TEXT_RULES.forEach(([rx, rep]) => { out = out.replace(rx, rep); });
+    out = restoreUrls(out, slots);
     return out.replace(/\s{2,}/g, " ").replace(/\s+·\s*$/g, "").trim();
   }
 
@@ -57,5 +74,5 @@ const QuantrexStrip = (() => {
     return t;
   }
 
-  return { displayText, toastText, sourceLabel, tagLabel };
+  return { displayText, toastText, sourceLabel, tagLabel, protectUrls, restoreUrls };
 })();

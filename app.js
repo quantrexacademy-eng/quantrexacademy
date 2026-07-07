@@ -122,13 +122,6 @@ async function viewDashboard() {
   const todayDPP = DPPS.filter(d => d.date === "Today")[0];
   const marksSections = typeof marksDashboardSections === "function" ? await marksDashboardSections() : "";
 
-  const moduleCards = MODULES.map(m => `
-    <div class="dash-card" onclick="go('${m.target || m.id}')">
-      <div class="dash-ic" style="background:${m.color}">${m.icon}</div>
-      <strong>${m.name}</strong>
-      <small>${m.desc}</small>
-    </div>`).join("");
-
   return `<div class="dash-marks-wrap">
     <div class="dash-greet-bar">
       <div class="dash-greet-left">
@@ -154,8 +147,6 @@ async function viewDashboard() {
       <span class="dpp-go">Start →</span>
     </div>` : ""}
     ${marksSections}
-    <h3 class="sec-title">All Modules</h3>
-    <div class="dash-grid">${moduleCards}</div>
   </div>`;
 }
 
