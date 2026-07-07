@@ -491,13 +491,15 @@ function cpyqbFilterDrawerHtml(p, subject, units) {
   </div>`;
 }
 
+function cpyqbExamsForCategory(allExams, category) {
+  const order = (typeof CPYQB_EXAM_ORDER !== "undefined" && CPYQB_EXAM_ORDER[category]) || [];
+  const bySlug = new Map((allExams || []).map(e => [e.slug, e]));
+  return order.map(s => bySlug.get(s)).filter(Boolean);
+}
+
 function renderCpyqbExamBank(allExams) {
-  const eng = typeof sortCpyqbExams === "function"
-    ? sortCpyqbExams(allExams.filter(e => e.category === "Engineering"), "Engineering")
-    : allExams.filter(e => e.category === "Engineering");
-  const med = typeof sortCpyqbExams === "function"
-    ? sortCpyqbExams(allExams.filter(e => e.category === "Medical"), "Medical")
-    : allExams.filter(e => e.category === "Medical");
+  const eng = cpyqbExamsForCategory(allExams, "Engineering");
+  const med = cpyqbExamsForCategory(allExams, "Medical");
   const tile = e => {
     const yrs = typeof cpyqbExamYearLabel === "function" ? cpyqbExamYearLabel(e.slug) : "";
     const sub = yrs ? `${e.title} ${yrs}` : `${e.count.toLocaleString()} questions`;
@@ -2273,8 +2275,8 @@ async function marksDashboardSections() {
     fetchMarksDashboard(),
     typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.loadExamIconsFromApi() : Promise.resolve()
   ]);
-  const dashExams = typeof sortCpyqbExams === "function"
-    ? sortCpyqbExams((cpyqbNav || []).filter(e => e.category === STATE.exam), STATE.exam)
+  const dashExams = typeof cpyqbExamsForCategory === "function"
+    ? cpyqbExamsForCategory(cpyqbNav || [], STATE.exam)
     : (cpyqbNav || []).filter(e => e.category === STATE.exam);
   const cpyqbApiItems = (marksDash && marksDash.cpyqb && marksDash.cpyqb.items) || [];
   const examScroll = renderDashExamScroll(dashExams);
