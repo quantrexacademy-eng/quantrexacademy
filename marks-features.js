@@ -1925,7 +1925,9 @@ async function viewPyqMock(payload) {
   const p = { ..._pyqMockPayload, ...(payload || {}) };
   _pyqMockPayload = p;
   const nav = await fetchNav("cpyqb");
-  const exams = nav.filter(e => e.category === STATE.exam);
+  const exams = typeof cpyqbExamsForCategory === "function"
+    ? cpyqbExamsForCategory(nav, STATE.exam)
+    : nav.filter(e => e.category === STATE.exam);
 
   if (p.step === "papers" && p.exam && p.year) {
     const exam = exams.find(e => e.slug === p.exam);
@@ -1997,19 +1999,19 @@ async function viewPyqMock(payload) {
     </div>`;
   }
 
-  const yearRangeFor = (slug) => {
-    const m = { jee_main: "2019 – 2026", jee_advanced: "2019 – 2026", neet: "2002 – 2025", mht_cet: "2019 – 2025" };
-    return m[slug] || "Year-wise papers";
-  };
-  const cards = exams.map(e => `
+  const cards = exams.map(e => {
+    const yrs = typeof cpyqbExamYearLabel === "function" ? cpyqbExamYearLabel(e.slug) : "";
+    const sub = yrs ? `${yrs} · ${e.count.toLocaleString()} PYQs` : `${e.count.toLocaleString()} PYQs`;
+    return `
     <div class="mth-card" ${mg("pyqmock", { step: "years", exam: e.slug })}>
       <div class="mth-body">
         <strong>${e.title}</strong>
-        <small>${yearRangeFor(e.slug)} · ${e.count.toLocaleString()} PYQs</small>
+        <small>${sub}</small>
       </div>
       <div class="mth-sq mth-sq-pink"></div>
       <span class="mth-arrow">›</span>
-    </div>`).join("");
+    </div>`;
+  }).join("");
   return `<div class="marks-tests-page pyqmock-page">
     ${pyqMockBackBar("exams")}
     <div class="cpyqb-marks-head">

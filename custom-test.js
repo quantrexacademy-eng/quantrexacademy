@@ -6,13 +6,37 @@ const CT_DAILY = "quantrex_ct_daily_v1";
 
 const CT_DEFAULT_QS = 25;
 const CT_DEFAULT_MINS = 60;
-const CT_Q_PRESETS = [5, 10, 15, 20, 25, 30, 45, 60];
+const CT_Q_PRESETS = [5, 10, 15, 20, 25, 30, 45, 60, 75, 90];
 const CT_TIME_PRESETS = [
   { sec: 60, label: "1 min" },
   { sec: 90, label: "1.5 min" },
   { sec: 120, label: "2 min" },
   { sec: 180, label: "3 min" }
 ];
+const CT_DEFAULT_EXAM = { totalQs: 25, timePerQ: 120 };
+const CT_EXAM_DEFAULTS = {
+  jee_main: { totalQs: 25, timePerQ: 120 },
+  jee_advanced: { totalQs: 18, timePerQ: 180 },
+  nta_abhyas_jee_main: { totalQs: 25, timePerQ: 120 },
+  mht_cet: { totalQs: 50, timePerQ: 72 },
+  comedk: { totalQs: 30, timePerQ: 120 },
+  bitsat: { totalQs: 30, timePerQ: 72 },
+  wbjee: { totalQs: 30, timePerQ: 120 },
+  kcet: { totalQs: 30, timePerQ: 72 },
+  ap_eamcet: { totalQs: 40, timePerQ: 72 },
+  ts_eamcet: { totalQs: 40, timePerQ: 72 },
+  viteee: { totalQs: 30, timePerQ: 60 },
+  manipal_met: { totalQs: 30, timePerQ: 72 },
+  iat_iiser: { totalQs: 30, timePerQ: 120 },
+  nest_niser: { totalQs: 30, timePerQ: 120 },
+  kvpy: { totalQs: 25, timePerQ: 120 },
+  nda: { totalQs: 30, timePerQ: 90 },
+  neet: { totalQs: 45, timePerQ: 80 },
+  aiims: { totalQs: 40, timePerQ: 90 },
+  nta_abhyas_neet: { totalQs: 45, timePerQ: 80 },
+  jipmer: { totalQs: 40, timePerQ: 90 },
+  mht_cet_medical: { totalQs: 50, timePerQ: 72 }
+};
 
 let _ctPayload = { step: "landing" };
 let _ctExamsCache = null;
@@ -44,40 +68,99 @@ function ctSaveTests(list) {
   localStorage.setItem(CT_STORE, JSON.stringify(list));
 }
 
+function ctCpyqbToExam(navEntry) {
+  const slug = navEntry.slug;
+  return {
+    _id: "ct_" + slug,
+    slug,
+    title: navEntry.title,
+    icon: "",
+    hasOutOfSyllabusFilter: false,
+    subjects: (navEntry.subjects || []).map((sub, si) => ({
+      _id: "ct_" + slug + "_s" + si,
+      title: sub.name,
+      shortName: (sub.name || "Sub").slice(0, 3),
+      units: [{
+        _id: "ct_" + slug + "_s" + si + "_u0",
+        title: "All Chapters",
+        shortName: "All",
+        chapters: (sub.chapters || []).map((ch, ci) => ({
+          _id: "ct_" + slug + "_s" + si + "_c" + ci,
+          title: ch.name,
+          shortName: ch.name,
+          syllabusCategory: "noChange"
+        }))
+      }]
+    }))
+  };
+}
+
 async function fetchCtExams() {
   if (_ctExamsCache) return _ctExamsCache;
+  let rich = [];
   try {
     const res = await fetch("data/nav/custom_test_exams.json");
-    if (!res.ok) throw new Error(res.status);
-    const data = await res.json();
-    _ctExamsCache = (data.data && data.data.exams) || [];
-  } catch (e) {
-    _ctExamsCache = [];
-  }
+    if (res.ok) {
+      const data = await res.json();
+      rich = (data.data && data.data.exams) || [];
+    }
+  } catch (e) { /* skip */ }
+  let cpyqb = [];
+  try {
+    if (typeof fetchNav === "function") cpyqb = await fetchNav("cpyqb");
+    else {
+      const res = await fetch("data/nav/cpyqb.json");
+      if (res.ok) cpyqb = await res.json();
+    }
+  } catch (e) { /* skip */ }
+  const richByTitle = new Map(rich.map(e => [e.title, e]));
+  const bySlug = new Map(cpyqb.map(e => [e.slug, e]));
+  const slugs = [
+    ...((typeof CPYQB_EXAM_ORDER !== "undefined" && CPYQB_EXAM_ORDER.Engineering) || []),
+    ...((typeof CPYQB_EXAM_ORDER !== "undefined" && CPYQB_EXAM_ORDER.Medical) || [])
+  ];
+  _ctExamsCache = [...new Set(slugs)].map(slug => {
+    const nav = bySlug.get(slug);
+    if (!nav) return null;
+    const richExam = richByTitle.get(nav.title);
+    if (richExam) return { ...richExam, slug };
+    return ctCpyqbToExam(nav);
+  }).filter(Boolean);
+  if (!_ctExamsCache.length) _ctExamsCache = rich;
   return _ctExamsCache;
 }
 
 function ctExamsForWizard() {
   const all = _ctExamsCache || [];
-  if (STATE.exam === "Medical") {
-    return all.filter(e => /neet/i.test(e.title || ""));
-  }
-  const order = ["JEE Main", "NEET", "MHT CET"];
-  const picked = order.map(t => all.find(e => (e.title || "") === t)).filter(Boolean);
-  return picked.length ? picked : all.slice(0, 3);
+  const order = STATE.exam === "Medical"
+    ? ((typeof CPYQB_EXAM_ORDER !== "undefined" && CPYQB_EXAM_ORDER.Medical) || [])
+    : ((typeof CPYQB_EXAM_ORDER !== "undefined" && CPYQB_EXAM_ORDER.Engineering) || []);
+  return order.map(s => all.find(e => e.slug === s)).filter(Boolean);
 }
 
 function ctDefaultExam() {
   const list = ctExamsForWizard();
-  const want = STATE.exam === "Medical" ? "NEET" : "JEE Main";
-  return list.find(e => (e.title || "") === want) || list[0];
+  const wantSlug = STATE.exam === "Medical" ? "neet" : "jee_main";
+  return list.find(e => e.slug === wantSlug) || list[0];
+}
+
+function ctApplyExamDefaults(draft, exam) {
+  if (!draft || !exam) return;
+  const slug = exam.slug || "";
+  const defs = CT_EXAM_DEFAULTS[slug] || CT_DEFAULT_EXAM;
+  draft.examSlug = slug;
+  draft.totalQs = defs.totalQs;
+  draft.timePerQ = defs.timePerQ;
+  draft.durationManual = false;
+  ctSyncDuration(draft, true);
 }
 
 function ctNewDraft(exam) {
   const subj = (exam.subjects || [])[0];
-  return {
+  const draft = {
     wizardStep: "pick",
     examId: exam._id,
+    examSlug: exam.slug || "",
     examTitle: exam.title,
     examIcon: exam.icon || "",
     subjectId: subj ? subj._id : null,
@@ -90,12 +173,16 @@ function ctNewDraft(exam) {
     customSources: new Set(),
     totalQs: CT_DEFAULT_QS,
     timePerQ: 120,
-    durationSec: CT_DEFAULT_QS * 120
+    durationSec: CT_DEFAULT_QS * 120,
+    durationManual: false
   };
+  ctApplyExamDefaults(draft, exam);
+  return draft;
 }
 
-function ctSyncDuration(draft) {
+function ctSyncDuration(draft, force) {
   if (!draft) return;
+  if (draft.durationManual && !force) return;
   draft.durationSec = Math.max(60, (draft.totalQs || CT_DEFAULT_QS) * (draft.timePerQ || 120));
 }
 
@@ -104,7 +191,14 @@ function ctExamSubjects(draft) {
   return (exam && exam.subjects) || (draft.subjectMeta ? [draft.subjectMeta] : []);
 }
 
-function ctBanksForYears() {
+function ctBanksForYears(draft) {
+  const slug = draft && draft.examSlug;
+  if (slug && typeof BANK_INDEX !== "undefined" && BANK_INDEX[slug]) {
+    const banks = [slug];
+    if (slug === "jee_main" && BANK_INDEX.nta_abhyas_jee_main) banks.push("nta_abhyas_jee_main");
+    if (slug === "neet" && BANK_INDEX.nta_abhyas_neet) banks.push("nta_abhyas_neet");
+    return banks.filter(s => BANK_INDEX[s]);
+  }
   if (STATE.exam === "Medical") return ["neet", "nta_abhyas_neet", "aiims"].filter(s => typeof BANK_INDEX !== "undefined" && BANK_INDEX[s]);
   return ["jee_main", "nta_abhyas_jee_main", "jee_advanced"].filter(s => typeof BANK_INDEX !== "undefined" && BANK_INDEX[s]);
 }
@@ -124,7 +218,11 @@ function ctSubjectStyle(title) {
     Mathematics: { bg: "rgba(59,130,246,.15)", border: "#3b82f6", color: "#60a5fa", short: "Math" },
     Biology: { bg: "rgba(236,72,153,.15)", border: "#ec4899", color: "#f472b6", short: "Bio" },
     Botany: { bg: "rgba(16,185,129,.15)", border: "#10b981", color: "#34d399", short: "Bot" },
-    Zoology: { bg: "rgba(249,115,22,.15)", border: "#f97316", color: "#fb923c", short: "Zoo" }
+    Zoology: { bg: "rgba(249,115,22,.15)", border: "#f97316", color: "#fb923c", short: "Zoo" },
+    "General Ability": { bg: "rgba(99,102,241,.15)", border: "#6366f1", color: "#818cf8", short: "GA" },
+    English: { bg: "rgba(168,85,247,.15)", border: "#a855f7", color: "#c084fc", short: "Eng" },
+    "General Science": { bg: "rgba(14,165,233,.15)", border: "#0ea5e9", color: "#38bdf8", short: "Sci" },
+    "General Studies": { bg: "rgba(234,179,8,.15)", border: "#eab308", color: "#facc15", short: "GS" }
   };
   return m[title] || { bg: "rgba(148,163,184,.15)", border: "#94a3b8", color: "#cbd5e1", short: (title || "Sub").slice(0, 4) };
 }
@@ -134,8 +232,12 @@ function ctSubjectIcon(sub) {
 }
 
 function ctExamIcon(ex) {
+  const slug = ex.slug || "";
+  if (typeof QuantrexExamLogos !== "undefined" && slug) {
+    return QuantrexExamLogos.html(slug, 32, "ct-wiz-card-logo");
+  }
   const t = String(ex.title || "").toLowerCase();
-  const ic = /neet/i.test(t) ? "🩺" : /mht/i.test(t) ? "🎓" : /jee/i.test(t) ? "📝" : "📋";
+  const ic = /neet/i.test(t) ? "🩺" : /nda/i.test(t) ? "🎖️" : /mht/i.test(t) ? "🎓" : /jee/i.test(t) ? "📝" : "📋";
   return `<span class="ct-wiz-card-fb">${ic}</span>`;
 }
 
@@ -166,7 +268,7 @@ async function ctBuildYearShifts(force) {
     if (cached) { _ctYearShiftsCache = cached; return _ctYearShiftsCache; }
   }
   const map = new Map();
-  for (const slug of ctBanksForYears()) {
+  for (const slug of ctBanksForYears(_ctDraft)) {
     if (typeof loadSingleBank === "function" && !_banksLoaded[slug]) {
       try { await loadSingleBank(slug); } catch (e) { /* skip */ }
     }
@@ -377,6 +479,8 @@ function ctYearsStepHtml(draft) {
   const minY = shifts.length ? shifts[shifts.length - 1].year : 2002;
   const maxY = shifts.length ? shifts[0].year : new Date().getFullYear();
   const mins = Math.round((draft.durationSec || CT_DEFAULT_MINS * 60) / 60);
+  const autoMins = Math.round(((draft.totalQs || CT_DEFAULT_QS) * (draft.timePerQ || 120)) / 60);
+  const perQLabel = draft.timePerQ >= 60 ? (draft.timePerQ / 60) + " min" : draft.timePerQ + "s";
   const qChips = CT_Q_PRESETS.map(n =>
     `<button type="button" class="ct-wiz-set-chip ${draft.totalQs === n ? "on" : ""}" onclick="ctSetTotalQs(${n})">${n}</button>`
   ).join("");
@@ -411,7 +515,14 @@ function ctYearsStepHtml(draft) {
       <div class="ct-wiz-set-chips">${qChips}</div>
       <h4 style="margin-top:14px">Time per Question</h4>
       <div class="ct-wiz-set-chips">${tChips}</div>
-      <p class="ct-wiz-est-time">Estimated duration: <strong>${mins} min</strong> · ${draft.totalQs} Qs × ${draft.timePerQ >= 60 ? (draft.timePerQ / 60) + " min" : draft.timePerQ + "s"} per Q</p>
+      <h4 style="margin-top:14px">Total Test Duration</h4>
+      <div class="ct-wiz-duration-row">
+        <input type="number" class="ct-wiz-duration-input" min="1" max="600" value="${mins}" onchange="ctSetDurationMins(+this.value)">
+        <span class="ct-wiz-duration-unit">min</span>
+        <button type="button" class="ct-wiz-duration-bump" onclick="ctBumpDuration(15)">+15 min</button>
+        <button type="button" class="ct-wiz-duration-bump" onclick="ctBumpDuration(30)">+30 min</button>
+      </div>
+      <p class="ct-wiz-est-time">${draft.examTitle || "Exam"} default: <strong>${autoMins} min</strong> (${draft.totalQs} Qs × ${perQLabel}) · Test time: <strong>${mins} min</strong>${draft.durationManual ? " · custom" : ""}</p>
     </section>
     <section class="ct-wiz-section">
       <h4>Select Year of Paper You Want to Include</h4>
@@ -617,10 +728,12 @@ function ctPickExam(id) {
   _ctDraft.examId = exam._id;
   _ctDraft.examTitle = exam.title;
   _ctDraft.examIcon = exam.icon || "";
+  ctApplyExamDefaults(_ctDraft, exam);
   const sub = (exam.subjects || [])[0];
   _ctDraft.subjectId = sub ? sub._id : null;
   _ctDraft.subjectMeta = sub || null;
   _ctDraft.chapterIds = new Set();
+  _ctYearShiftsCache = null;
   render("custom", { step: "wizard", fromTests: ctFromTests() });
 }
 
@@ -688,6 +801,7 @@ function ctToggleUnitExpand(unitId) {
 function ctSetTotalQs(n) {
   if (!_ctDraft) return;
   _ctDraft.totalQs = n;
+  _ctDraft.durationManual = false;
   ctSyncDuration(_ctDraft);
   render("custom", { step: "wizard", fromTests: ctFromTests() });
 }
@@ -695,7 +809,24 @@ function ctSetTotalQs(n) {
 function ctSetTimePerQ(sec) {
   if (!_ctDraft) return;
   _ctDraft.timePerQ = sec;
+  _ctDraft.durationManual = false;
   ctSyncDuration(_ctDraft);
+  render("custom", { step: "wizard", fromTests: ctFromTests() });
+}
+
+function ctSetDurationMins(mins) {
+  if (!_ctDraft) return;
+  const m = Math.max(1, Math.min(600, Math.round(Number(mins) || 0)));
+  _ctDraft.durationSec = m * 60;
+  _ctDraft.durationManual = true;
+  render("custom", { step: "wizard", fromTests: ctFromTests() });
+}
+
+function ctBumpDuration(mins) {
+  if (!_ctDraft) return;
+  const add = Math.max(1, Math.round(Number(mins) || 0));
+  _ctDraft.durationSec = Math.max(60, (_ctDraft.durationSec || CT_DEFAULT_MINS * 60) + add * 60);
+  _ctDraft.durationManual = true;
   render("custom", { step: "wizard", fromTests: ctFromTests() });
 }
 
@@ -808,14 +939,16 @@ async function ctGenerateTest() {
   _ctDraft.wizardStep = "generating";
   render("custom", { step: "wizard", fromTests: ctFromTests() });
 
-  const bank = (typeof PRIMARY_BANK !== "undefined" && PRIMARY_BANK[STATE.exam]) || "jee_main";
-  if (typeof ensureQuestionsLoaded === "function") await ensureQuestionsLoaded(bank);
+  const banks = ctBanksForYears(_ctDraft);
+  if (typeof loadMultipleBanks === "function") await loadMultipleBanks(banks);
+  else if (typeof ensureQuestionsLoaded === "function") await ensureQuestionsLoaded(banks[0]);
+  else for (const b of banks) { if (typeof loadSingleBank === "function") await loadSingleBank(b); }
   _ctYearShiftsCache = null;
 
-  let pool = QUESTIONS.filter(q => ctMatchQuestion(q, chapters, _ctDraft));
+  let pool = QUESTIONS.filter(q => banks.includes(q._bank) && ctMatchQuestion(q, chapters, _ctDraft));
   if (!pool.length) {
     const subj = _ctDraft.subjectMeta?.title;
-    pool = QUESTIONS.filter(q => q.subject === subj && chapters.some(c => {
+    pool = QUESTIONS.filter(q => banks.includes(q._bank) && q.subject === subj && chapters.some(c => {
       const a = ctNormTitle(q.chapter);
       const b = ctNormTitle(c.title);
       return a.includes(b.slice(0, 8)) || b.includes(a.slice(0, 8));
