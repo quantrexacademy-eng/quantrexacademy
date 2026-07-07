@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#134e4a"/>
+      <stop offset="55%" stop-color="#0d9488"/>
+      <stop offset="100%" stop-color="#5eead4"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="400" fill="url(#bg)"/>
+  <rect x="0" y="0" width="20" height="400" fill="rgba(0,0,0,.28)"/>
+  <text x="32" y="44" fill="rgba(255,255,255,.85)" font-family="Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="2">MARKS SELECTED</text>
+  <text x="32" y="120" fill="#fff" font-family="Georgia,serif" font-size="32" font-weight="700">Olympiad</text>
+  <text x="32" y="158" fill="#fff" font-family="Georgia,serif" font-size="28" font-weight="700">Workbook</text>
+  <text x="32" y="198" fill="rgba(255,255,255,.88)" font-family="Arial,sans-serif" font-size="13" font-weight="600">Competitive PCM Problems</text>
+  <text x="220" y="300" font-size="48">🏅</text>
+  <text x="32" y="368" fill="rgba(255,255,255,.65)" font-family="Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="1">DIGITAL BOOK</text>
+</svg>

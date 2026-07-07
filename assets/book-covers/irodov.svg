@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#450a0a"/>
+      <stop offset="55%" stop-color="#b91c1c"/>
+      <stop offset="100%" stop-color="#f87171"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="400" fill="url(#bg)"/>
+  <rect x="0" y="0" width="20" height="400" fill="rgba(0,0,0,.3)"/>
+  <text x="32" y="44" fill="rgba(255,255,255,.85)" font-family="Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="2">MARKS SELECTED</text>
+  <rect x="32" y="58" width="108" height="24" rx="12" fill="rgba(255,255,255,.18)"/>
+  <text x="48" y="75" fill="#fff" font-family="Arial,sans-serif" font-size="11" font-weight="800">TOP SELECTED</text>
+  <text x="32" y="128" fill="#fff" font-family="Georgia,serif" font-size="24" font-weight="700">Problems in</text>
+  <text x="32" y="160" fill="#fff" font-family="Georgia,serif" font-size="24" font-weight="700">General Physics</text>
+  <text x="32" y="210" fill="#fff" font-family="Arial,sans-serif" font-size="20" font-weight="800">I.E. Irodov</text>
+  <text x="32" y="242" fill="rgba(255,255,255,.85)" font-family="Arial,sans-serif" font-size="13" font-weight="600">Advanced Physics Problems</text>
+  <text x="230" y="320" font-size="52">🔥</text>
+  <text x="32" y="368" fill="rgba(255,255,255,.65)" font-family="Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="1">DIGITAL BOOK</text>
+</svg>

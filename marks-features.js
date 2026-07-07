@@ -1104,6 +1104,144 @@ function viewTests() {
 
 let _pyqMockPayload = { step: "exams" };
 let _pyqPaperIndex = {};
+const PYQ_ATTEMPT_STORE = "quantrex_pyq_attempts_v1";
+let _pyqFilters = { status: "all", year: "all" };
+
+function pyqLoadAttempts() {
+  try { return JSON.parse(localStorage.getItem(PYQ_ATTEMPT_STORE) || "{}"); }
+  catch (e) { return {}; }
+}
+
+function pyqSaveAttempt(key, data) {
+  const all = pyqLoadAttempts();
+  all[key] = { ...all[key], ...data, updatedAt: Date.now() };
+  localStorage.setItem(PYQ_ATTEMPT_STORE, JSON.stringify(all));
+}
+
+function pyqAttemptKey(slug, source) {
+  return `${slug}::${source}`;
+}
+
+function pyqAttemptStatus(slug, source) {
+  const rec = pyqLoadAttempts()[pyqAttemptKey(slug, source)];
+  if (!rec) return "notStarted";
+  return rec.status || "notStarted";
+}
+
+function pyqFilterModalHtml() {
+  const st = _pyqFilters.status;
+  const yr = _pyqFilters.year;
+  const statusOpts = [
+    { id: "all", label: "All" },
+    { id: "attempted", label: "Attempted" },
+    { id: "notCompleted", label: "Not Completed" },
+    { id: "notStarted", label: "Not Started" }
+  ].map(o => `<label class="marks-radio"><input type="radio" name="pyqSt" value="${o.id}" ${st === o.id ? "checked" : ""}>${o.label}</label>`).join("");
+  const years = ["all", "2026", "2025", "2024", "2023"];
+  const yearOpts = years.map(y => `<label class="marks-radio"><input type="radio" name="pyqYr" value="${y}" ${yr === y ? "checked" : ""}>${y === "all" ? "All Years" : y}</label>`).join("");
+  return `<div class="marks-modal-overlay" id="pyqFilterModal" onclick="if(event.target===this)pyqCloseFilterModal()">
+    <div class="marks-modal">
+      <div class="marks-modal-head">
+        <h3>Apply filters</h3>
+        <button type="button" class="marks-modal-clear" onclick="pyqClearFilters()">Clear All Filters</button>
+      </div>
+      <div class="marks-modal-body">
+        <div class="marks-modal-section"><h4>Test Attempt Status</h4>${statusOpts}</div>
+        <div class="marks-modal-section"><h4>Year</h4>${yearOpts}</div>
+      </div>
+      <div class="marks-modal-foot">
+        <button type="button" class="marks-modal-cancel" onclick="pyqCloseFilterModal()">Cancel</button>
+        <button type="button" class="marks-modal-apply" onclick="pyqApplyFilters()">Apply filter</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function pyqOpenFilterModal() {
+  const existing = document.getElementById("pyqFilterModal");
+  if (existing) existing.remove();
+  document.body.insertAdjacentHTML("beforeend", pyqFilterModalHtml());
+}
+
+function pyqCloseFilterModal() {
+  const el = document.getElementById("pyqFilterModal");
+  if (el) el.remove();
+}
+
+function pyqClearFilters() {
+  _pyqFilters = { status: "all", year: "all" };
+  pyqCloseFilterModal();
+  render("pyqmock", _pyqMockPayload);
+}
+
+function pyqApplyFilters() {
+  const st = document.querySelector('input[name="pyqSt"]:checked');
+  const yr = document.querySelector('input[name="pyqYr"]:checked');
+  _pyqFilters.status = st ? st.value : "all";
+  _pyqFilters.year = yr ? yr.value : "all";
+  pyqCloseFilterModal();
+  render("pyqmock", _pyqMockPayload);
+}
+
+function pyqMatchesFilter(slug, paper) {
+  if (_pyqFilters.year !== "all" && String(paper.year) !== _pyqFilters.year) return false;
+  const status = pyqAttemptStatus(slug, paper.source);
+  if (_pyqFilters.status === "all") return true;
+  if (_pyqFilters.status === "attempted") return status === "completed";
+  if (_pyqFilters.status === "notStarted") return status === "notStarted";
+  if (_pyqFilters.status === "notCompleted") return status === "inProgress";
+  return true;
+}
+
+function pyqPreviewModalHtml(slug, source, paper) {
+  const subLine = pyqSubjectLine(paper.subjects);
+  const duration = pyqPaperDuration(paper.count);
+  const mins = Math.floor(duration / 60);
+  const status = pyqAttemptStatus(slug, source);
+  const statusLabel = status === "completed" ? "View Analysis →" : "Attempt Now →";
+  return `<div class="marks-modal-overlay" id="pyqPreviewModal" onclick="if(event.target===this)pyqClosePreview()">
+    <div class="marks-modal marks-preview-modal">
+      <div class="marks-modal-head">
+        <h3>Test preview</h3>
+        <button type="button" class="marks-modal-cancel" style="flex:0;padding:6px 12px" onclick="pyqClosePreview()">✕</button>
+      </div>
+      <div class="marks-modal-body">
+        <h2 class="marks-preview-title">${pyqFullPaperTitle(source)}</h2>
+        <div class="marks-preview-badges">
+          <span class="marks-preview-badge exam">🎯 Full Paper</span>
+          <span class="marks-preview-badge subj">Physics · Chemistry · Mathematics</span>
+        </div>
+        <div class="marks-preview-stats">
+          <div class="marks-preview-stat"><strong>${paper.count}</strong><small>Questions</small></div>
+          <div class="marks-preview-stat"><strong>${mins} Mins</strong><small>Duration</small></div>
+        </div>
+        <p class="marks-preview-chapters">${subLine}</p>
+        <p class="marks-preview-chapters">Sections: Mathematics SC &amp; Numerical → Physics SC &amp; Numerical → Chemistry SC &amp; Numerical</p>
+        <button type="button" class="marks-preview-attempt" onclick="pyqClosePreview();startPyqPaperMock('${slug}', decodeURIComponent('${encodeURIComponent(source)}'), ${status === "completed"})">${status === "completed" ? "Retake test now →" : "Attempt test now →"}</button>
+        <button type="button" class="marks-preview-later" onclick="pyqClosePreview()">Attempt Later</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function pyqShowPreview(slug, source) {
+  const byYear = _pyqPaperIndex[slug];
+  if (!byYear) return;
+  let paper = null;
+  Object.values(byYear).forEach(list => {
+    const hit = list.find(p => p.source === source);
+    if (hit) paper = hit;
+  });
+  if (!paper) return;
+  const existing = document.getElementById("pyqPreviewModal");
+  if (existing) existing.remove();
+  document.body.insertAdjacentHTML("beforeend", pyqPreviewModalHtml(slug, source, paper));
+}
+
+function pyqClosePreview() {
+  const el = document.getElementById("pyqPreviewModal");
+  if (el) el.remove();
+}
 
 function pyqPaperLabel(source) {
   const m = String(source || "").match(/\(([^)]+)\)\s*$/);
@@ -1111,9 +1249,89 @@ function pyqPaperLabel(source) {
 }
 
 function pyqSubjectLine(subjects) {
-  return Object.entries(subjects || {})
-    .map(([s, n]) => `${s}: ${n}`)
-    .join(" · ");
+  const order = ["Mathematics", "Physics", "Chemistry", "Biology", "Botany", "Zoology"];
+  const subs = subjects || {};
+  const lines = order.filter(s => subs[s]).map(s => `${s}: ${subs[s]}`);
+  Object.keys(subs).forEach(s => {
+    if (!order.includes(s)) lines.push(`${s}: ${subs[s]}`);
+  });
+  return lines.join(" · ");
+}
+
+function pyqFullPaperTitle(source) {
+  const label = pyqPaperLabel(source);
+  const year = typeof qYearFromSource === "function" ? qYearFromSource(source) : null;
+  if (year && !String(label).includes(String(year))) return `JEE Main ${year} (${label})`;
+  return label || String(source || "Full Paper");
+}
+
+function pyqPersistKey(slug, source) {
+  return `${slug}::${source}`;
+}
+
+function pyqResumeModalHtml(slug, source, title) {
+  const esc = (title || "Test").replace(/'/g, "\\'");
+  return `<div class="marks-modal-overlay marks-resume-overlay" id="pyqResumeModal" onclick="if(event.target===this)pyqCloseResume()">
+    <div class="marks-resume-modal">
+      <button type="button" class="marks-resume-close" onclick="pyqCloseResume()">✕</button>
+      <div class="marks-resume-icon">⚙️</div>
+      <h3>Resume ${title}</h3>
+      <button type="button" class="marks-resume-btn" onclick="pyqCloseResume();pyqResumePaper('${slug}', decodeURIComponent('${encodeURIComponent(source)}'))">Resume Test</button>
+      <button type="button" class="marks-resume-cancel" onclick="pyqCloseResume()">Cancel</button>
+    </div>
+  </div>`;
+}
+
+function pyqCloseResume() {
+  const el = document.getElementById("pyqResumeModal");
+  if (el) el.remove();
+}
+
+function pyqShowResume(slug, source) {
+  const title = pyqFullPaperTitle(source);
+  const existing = document.getElementById("pyqResumeModal");
+  if (existing) existing.remove();
+  document.body.insertAdjacentHTML("beforeend", pyqResumeModalHtml(slug, source, title));
+}
+
+async function pyqResumePaper(slug, source) {
+  const key = pyqPersistKey(slug, source);
+  const saved = typeof marksLoadSession === "function" ? marksLoadSession(key) : null;
+  if (!saved) {
+    showToast("⚠️ No saved session found. Starting fresh…");
+    return startPyqPaperMock(slug, source, true);
+  }
+  if (!_banksLoaded[slug]) await loadSingleBank(slug);
+  const attemptKey = pyqAttemptKey(slug, source);
+  pyqSaveAttempt(attemptKey, { status: "inProgress", slug, source });
+  startTest(saved.ids, saved.title || pyqPaperLabel(source), "tests", {
+    testType: "pyqmock",
+    timed: true,
+    durationSec: saved.durationSec,
+    shuffle: false,
+    marksMode: true,
+    organizeJee: saved.ids.length >= 60 && STATE.exam === "Engineering",
+    skipCountdown: true,
+    persistKey: key,
+    resumeData: saved,
+    meta: { slug, source },
+    modeLabel: `Full Paper · ${saved.ids.length} Qs`,
+    onComplete: (data) => {
+      marksClearSession();
+      pyqSaveAttempt(attemptKey, { status: "completed", score: data.score, pct: data.pct, correct: data.correct, total: data.total });
+    }
+  });
+}
+
+async function pyqOpenPaper(slug, source) {
+  const key = pyqPersistKey(slug, source);
+  const saved = typeof marksLoadSession === "function" ? marksLoadSession(key) : null;
+  const st = pyqAttemptStatus(slug, source);
+  if (saved && (st === "inProgress" || saved.remainingSec > 0)) {
+    pyqShowResume(slug, source);
+    return;
+  }
+  pyqShowPreview(slug, source);
 }
 
 function pyqPaperDuration(count) {
@@ -1167,11 +1385,19 @@ async function viewPyqMock(payload) {
     const exam = exams.find(e => e.slug === p.exam);
     if (!exam) return viewPyqMock({ step: "exams" });
     const byYear = await buildPyqPaperIndex(p.exam);
-    const papers = byYear[String(p.year)] || [];
+    const allPapers = byYear[String(p.year)] || [];
+    const papers = allPapers.filter(paper => pyqMatchesFilter(p.exam, paper));
+    const filterPill = _pyqFilters.status !== "all" || _pyqFilters.year !== "all"
+      ? `<span class="pyqmock-filter-pill">${_pyqFilters.status !== "all" ? _pyqFilters.status : ""}${_pyqFilters.year !== "all" ? " · " + _pyqFilters.year : ""}</span>` : "";
     const cards = papers.map(paper => {
       const srcEnc = encodeURIComponent(paper.source);
       const subLine = pyqSubjectLine(paper.subjects);
-      return `<div class="pyqmock-paper-card" onclick="startPyqPaperMock('${p.exam}', decodeURIComponent('${srcEnc}'))">
+      const st = pyqAttemptStatus(p.exam, paper.source);
+      const action = st === "completed" ? "View Analysis →" : "Attempt Now →";
+      const stCls = st === "completed" ? "done" : st === "inProgress" ? "progress" : "";
+      const clickFn = st === "inProgress" ? `pyqOpenPaper('${p.exam}', decodeURIComponent('${srcEnc}'))` : `pyqShowPreview('${p.exam}', decodeURIComponent('${srcEnc}'))`;
+      const actionLabel = st === "inProgress" ? "Resume Test →" : action;
+      return `<div class="pyqmock-paper-card ${stCls}" onclick="${clickFn}">
         <div class="pyqmock-paper-main">
           <strong>${pyqPaperLabel(paper.source)}</strong>
           <small>${subLine}</small>
@@ -1179,7 +1405,7 @@ async function viewPyqMock(payload) {
         <div class="pyqmock-paper-meta">
           <span class="pyqmock-full-badge">Full Paper</span>
           <span class="pyqmock-qcount">${paper.count} Qs</span>
-          <span class="pyqmock-go">Start →</span>
+          <span class="pyqmock-go">${actionLabel}</span>
         </div>
       </div>`;
     }).join("");
@@ -1187,9 +1413,14 @@ async function viewPyqMock(payload) {
       ${pyqMockBackBar("papers", p.exam, p.year)}
       <div class="cpyqb-marks-head">
         <h1>${exam.title} ${p.year}</h1>
-        <p>${papers.length} full paper${papers.length === 1 ? "" : "s"} · ${STATE.exam === "Medical" ? "3 hr 20 min" : "3 hr"} each</p>
+        <p>${papers.length} full paper${papers.length === 1 ? "" : "s"} · Physics, Chemistry, Mathematics · ${STATE.exam === "Medical" ? "3 hr 20 min" : "3 hr"} each</p>
       </div>
-      <div class="pyqmock-paper-list">${cards || '<div class="empty">No papers for this year.</div>'}</div>
+      <div class="pyqmock-filter-bar">
+        <button type="button" class="pyqmock-filter-btn" onclick="pyqOpenFilterModal()">⚙ Filter</button>
+        <span class="pyqmock-filter-pill">All</span>
+        ${filterPill}
+      </div>
+      <div class="pyqmock-paper-list">${cards || '<div class="empty">No papers match your filters.</div>'}</div>
     </div>`;
   }
 
@@ -1220,11 +1451,15 @@ async function viewPyqMock(payload) {
     </div>`;
   }
 
+  const yearRangeFor = (slug) => {
+    const m = { jee_main: "2019 – 2026", jee_advanced: "2019 – 2026", neet: "2002 – 2025", mht_cet: "2019 – 2025" };
+    return m[slug] || "Year-wise papers";
+  };
   const cards = exams.map(e => `
     <div class="mth-card" ${mg("pyqmock", { step: "years", exam: e.slug })}>
       <div class="mth-body">
         <strong>${e.title}</strong>
-        <small>${e.count.toLocaleString()} PYQs · Year-wise full papers</small>
+        <small>${yearRangeFor(e.slug)} · ${e.count.toLocaleString()} PYQs</small>
       </div>
       <div class="mth-sq mth-sq-pink"></div>
       <span class="mth-arrow">›</span>
@@ -1239,21 +1474,40 @@ async function viewPyqMock(payload) {
   </div>`;
 }
 
-async function startPyqPaperMock(slug, source) {
+async function startPyqPaperMock(slug, source, freshStart) {
   if (!_banksLoaded[slug]) await loadSingleBank(slug);
   const qs = QUESTIONS.filter(q => q._bank === slug && q.source === source);
   if (!qs.length) {
     showToast("⚠️ Paper not found. Try again.");
     return;
   }
+  const key = pyqPersistKey(slug, source);
+  if (freshStart) marksClearSession();
   const ids = qs.map(q => q.id);
   const duration = pyqPaperDuration(qs.length);
-  startTest(ids, source, "tests", {
+  const attemptKey = pyqAttemptKey(slug, source);
+  const title = pyqFullPaperTitle(source);
+  pyqSaveAttempt(attemptKey, { status: "inProgress", slug, source, title });
+  startTest(ids, title, "tests", {
     testType: "pyqmock",
     timed: true,
     durationSec: duration,
     shuffle: false,
-    modeLabel: `Full Paper · ${qs.length} Qs · ${Math.floor(duration / 60)} min`
+    marksMode: true,
+    organizeJee: qs.length >= 60 && STATE.exam === "Engineering",
+    persistKey: key,
+    meta: { slug, source },
+    modeLabel: `Full Paper · ${qs.length} Qs · ${Math.floor(duration / 60)} min`,
+    onComplete: (data) => {
+      marksClearSession();
+      pyqSaveAttempt(attemptKey, {
+        status: "completed",
+        score: data.score,
+        pct: data.pct,
+        correct: data.correct,
+        total: data.total
+      });
+    }
   });
 }
 

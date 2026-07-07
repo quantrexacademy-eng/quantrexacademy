@@ -1,10 +1,16 @@
-// Quantrex Test Engine — original exam simulation (timer, palette, review, scoring)
+// Quantrex Test Engine — MARKS-style exam simulation (sections, fullscreen, countdown)
 const QuantrexTestEngine = (() => {
   const SCORING = {
     jee: { correct: 4, wrong: -1, unattempted: 0 },
     neet: { correct: 4, wrong: -1, unattempted: 0 },
     practice: { correct: 1, wrong: 0, unattempted: 0 }
   };
+
+  const JEE_SECTION_SPEC = [
+    { subject: "Mathematics", sc: 20, num: 5, labels: ["Mathematics Single Correct", "Mathematics Numerical"], shorts: ["MATHEMATICS SINGLE CORRECT", "MATHEMATICS NUMERICAL"] },
+    { subject: "Physics", sc: 20, num: 5, labels: ["Physics Single Correct", "Physics Numerical"], shorts: ["PHYSICS SINGLE CORRECT", "PHYSICS NUMERICAL"] },
+    { subject: "Chemistry", sc: 20, num: 5, labels: ["Chemistry Single Correct", "Chemistry Numerical"], shorts: ["CHEMISTRY SINGLE CORRECT", "CHEMISTRY NUMERICAL"] }
+  ];
 
   let session = null;
   let timerHandle = null;
@@ -34,6 +40,13 @@ const QuantrexTestEngine = (() => {
     return `${String(m).padStart(2, "0")}:${String(r).padStart(2, "0")}`;
   }
 
+  function formatMarksTime(sec) {
+    const s = Math.max(0, Math.floor(sec));
+    const totalM = Math.floor(s / 60);
+    const r = s % 60;
+    return `${totalM}m ${r}s`;
+  }
+
   function stopTimer() {
     if (timerHandle) {
       clearInterval(timerHandle);
@@ -55,40 +68,132 @@ const QuantrexTestEngine = (() => {
         return;
       }
       if (typeof onTick === "function") onTick(session.remainingSec);
-      const el = document.getElementById("qxTimer");
-      if (el) {
-        el.textContent = formatTime(session.remainingSec);
-        el.classList.toggle("warn", session.remainingSec <= 300);
-        el.classList.toggle("danger", session.remainingSec <= 60);
-      }
+      updateTimerEl();
+      if (session.persistKey && session.remainingSec % 10 === 0) marksPersistSession();
     }, 1000);
+    updateTimerEl();
+  }
+
+  function updateTimerEl() {
+    if (!session) return;
+    const el = document.getElementById("qxTimer");
+    if (!el) return;
+    el.textContent = session.marksMode ? formatMarksTime(session.remainingSec) : formatTime(session.remainingSec);
+    el.classList.toggle("warn", session.remainingSec <= 300);
+    el.classList.toggle("danger", session.remainingSec <= 60);
   }
 
   function paletteStatus(i) {
     if (!session) return "unvisited";
-    if (session.review.has(i)) return "review";
-    if (session.answers[i] !== undefined) return "answered";
-    if (session.visited.has(i)) return "skipped";
+    const hasAns = session.answers[i] !== undefined;
+    const isRev = session.review.has(i);
+    const visited = session.visited.has(i);
+    if (session.marksMode) {
+      if (isRev && hasAns) return "rev-ans";
+      if (isRev && !hasAns) return "rev-skip";
+      if (hasAns) return "answered";
+      if (visited) return "not-answered";
+      return "unvisited";
+    }
+    if (isRev) return "review";
+    if (hasAns) return "answered";
+    if (visited) return "skipped";
     return "unvisited";
   }
 
   function stats() {
-    if (!session) return { answered: 0, review: 0, skipped: 0, unvisited: session?.ids?.length || 0 };
+    if (!session) return { answered: 0, review: 0, skipped: 0, unvisited: 0, total: 0 };
     const total = session.ids.length;
-    let answered = 0, review = session.review.size, skipped = 0;
+    let answered = 0, review = 0, skipped = 0, revAns = 0, revSkip = 0;
     for (let i = 0; i < total; i++) {
-      if (session.answers[i] !== undefined) answered++;
-      else if (session.visited.has(i)) skipped++;
+      const hasAns = session.answers[i] !== undefined;
+      const isRev = session.review.has(i);
+      if (hasAns) answered++;
+      if (isRev) {
+        review++;
+        if (hasAns) revAns++; else revSkip++;
+      } else if (session.visited.has(i) && !hasAns) skipped++;
     }
-    return { answered, review, skipped, unvisited: total - answered - skipped, total };
+    return {
+      answered, review, skipped, unvisited: total - answered - skipped,
+      revAns, revSkip, total
+    };
   }
 
   function htmlContent(text) {
     return typeof Mx !== "undefined" ? Mx.html(text) : text;
   }
 
+  function currentSectionIdx() {
+    if (!session || !session.sections || !session.sections.length) return 0;
+    const idx = session.idx;
+    for (let i = 0; i < session.sections.length; i++) {
+      const s = session.sections[i];
+      if (idx >= s.start && idx < s.start + s.count) return i;
+    }
+    return 0;
+  }
+
+  function renderMarksSectionTabs() {
+    if (!session.sections || !session.sections.length) return "";
+    const curSec = currentSectionIdx();
+    const tabs = session.sections.map((s, i) =>
+      `<button type="button" class="mtk-sec-tab ${i === curSec ? "active" : ""}" data-sec="${i}">${s.label}</button>`
+    ).join("");
+    return `<div class="mtk-sec-bar">
+      <button type="button" class="mtk-sec-nav" id="mtkSecPrev" title="Previous section">‹</button>
+      <div class="mtk-sec-tabs" id="mtkSecTabs">${tabs}</div>
+      <button type="button" class="mtk-sec-nav" id="mtkSecNext" title="Next section">›</button>
+    </div>`;
+  }
+
+  function renderMarksPalette() {
+    const s = stats();
+    let groups = "";
+    if (session.sections && session.sections.length) {
+      groups = session.sections.map(sec => {
+        const cells = [];
+        for (let i = sec.start; i < sec.start + sec.count; i++) {
+          const st = paletteStatus(i);
+          const cur = i === session.idx ? " cur" : "";
+          cells.push(`<button type="button" class="mtk-pal-cell ${st}${cur}" data-qidx="${i}">${i + 1}</button>`);
+        }
+        return `<div class="mtk-pal-group">
+          <div class="mtk-pal-grp-label">${sec.shortLabel}</div>
+          <div class="mtk-pal-grp-grid">${cells.join("")}</div>
+        </div>`;
+      }).join("");
+    } else {
+      const cells = session.ids.map((_, i) => {
+        const st = paletteStatus(i);
+        const cur = i === session.idx ? " cur" : "";
+        return `<button type="button" class="mtk-pal-cell ${st}${cur}" data-qidx="${i}">${i + 1}</button>`;
+      }).join("");
+      groups = `<div class="mtk-pal-grp-grid flat">${cells}</div>`;
+    }
+    return `<aside class="mtk-palette">
+      <div class="mtk-pal-head"><strong>Overview</strong></div>
+      <div class="mtk-pal-legend">
+        <span><i class="mtk-dot answered"></i>Answered</span>
+        <span><i class="mtk-dot not-answered"></i>Not Answered</span>
+        <span><i class="mtk-dot unvisited"></i>Not Visited</span>
+        <span><i class="mtk-dot rev-ans"></i>Marked</span>
+      </div>
+      <div class="mtk-pal-stats">
+        <div class="mtk-stat"><i class="mtk-dot answered"></i><span>${s.answered} Qs Answered</span></div>
+        <div class="mtk-stat"><i class="mtk-dot not-answered"></i><span>${s.skipped} Qs Not Answered</span></div>
+        <div class="mtk-stat"><i class="mtk-dot unvisited"></i><span>${s.unvisited} Qs Not Visited</span></div>
+        <div class="mtk-stat"><i class="mtk-dot rev-ans"></i><span>${s.revAns} Qs Answered and Marked For Review</span></div>
+        <div class="mtk-stat"><i class="mtk-dot rev-skip"></i><span>${s.revSkip} Qs Not Answered and Marked For Review</span></div>
+      </div>
+      <div class="mtk-pal-groups">${groups}</div>
+      <button type="button" class="mtk-submit-btn" id="qxSubmitBtn">Submit</button>
+    </aside>`;
+  }
+
   function renderPalette() {
     if (!session) return "";
+    if (session.marksMode) return renderMarksPalette();
     const cells = session.ids.map((_, i) => {
       const st = paletteStatus(i);
       const cur = i === session.idx ? " cur" : "";
@@ -108,8 +213,58 @@ const QuantrexTestEngine = (() => {
     </aside>`;
   }
 
+  function renderMarksQuestion() {
+    const q = getQ(session.ids[session.idx]);
+    if (!q) return '<div class="empty">Question not found.</div>';
+    const selected = session.answers[session.idx];
+    const wrongMark = session.scoring.wrong < 0 ? `<span class="mtk-neg-mark">${session.scoring.wrong}</span>` : "";
+    const timerHtml = session.durationSec != null
+      ? `<div class="mtk-timer" id="qxTimer"><span class="mtk-timer-ic">🕐</span>${formatMarksTime(session.remainingSec)}</div>` : "";
+
+    const opts = (q.options || []).map((o, i) => {
+      const letter = String.fromCharCode(65 + i);
+      const text = String(o).replace(/<[^>]+>/g, "").trim();
+      const showLetter = !text || text === letter;
+      return `<button type="button" class="mtk-opt ${selected === i ? "selected" : ""}" data-opt="${i}">
+        <span class="mtk-opt-radio"></span>
+        ${showLetter ? `<span class="mtk-opt-letter">${letter}</span>` : ""}
+        <span class="mtk-opt-text qx-content">${htmlContent(o)}</span>
+      </button>`;
+    }).join("");
+
+    return `<div class="mtk-test-root">
+      <header class="mtk-header">
+        <div class="mtk-header-left">
+          <button type="button" class="mtk-close-btn" id="mtkCloseBtn" title="Exit test">✕</button>
+          <div class="mtk-brand"><span class="mtk-logo">Q</span><span class="mtk-brand-text">Quantrex</span></div>
+        </div>
+        ${timerHtml}
+        <button type="button" class="mtk-submit-top" id="qxSubmitTop">Submit</button>
+      </header>
+      ${renderMarksSectionTabs()}
+      <div class="mtk-body">
+        <div class="mtk-main">
+          <div class="mtk-q-head">
+            <span class="mtk-q-num">Q${session.idx + 1}</span>${wrongMark}
+          </div>
+          <div class="mtk-q-text qx-content">${htmlContent(q.q)}</div>
+          <div class="mtk-options mtk-options-grid" id="qxOpts">${opts}</div>
+          <div class="mtk-controls">
+            <button type="button" class="mtk-btn-ghost" id="qxClearBtn">Clear Response</button>
+            <button type="button" class="mtk-btn-ghost" id="qxReviewNextBtn">Mark For Review &amp; Next</button>
+            <button type="button" class="mtk-btn-ghost" id="qxPrevBtn" ${session.idx <= 0 ? "disabled" : ""}>Previous</button>
+            <button type="button" class="mtk-btn-save" id="qxSaveBtn">Save &amp; Next</button>
+          </div>
+        </div>
+        ${renderMarksPalette()}
+      </div>
+    </div>`;
+  }
+
   function renderQuestion() {
     if (!session) return '<div class="empty">No active test session.</div>';
+    if (session.marksMode) return renderMarksQuestion();
+
     const q = getQ(session.ids[session.idx]);
     if (!q) return '<div class="empty">Question not found.</div>';
     const total = session.ids.length;
@@ -178,11 +333,35 @@ const QuantrexTestEngine = (() => {
     if (save) save.onclick = saveAndNext;
     const quit = root.querySelector("#qxQuitBtn");
     if (quit) quit.onclick = quit;
+    const clearBtn = root.querySelector("#qxClearBtn");
+    if (clearBtn) clearBtn.onclick = clearResponse;
+    const reviewNext = root.querySelector("#qxReviewNextBtn");
+    if (reviewNext) reviewNext.onclick = markReviewAndNext;
     const submitBtn = root.querySelector("#qxSubmitBtn");
     if (submitBtn) submitBtn.onclick = () => confirmSubmit();
-    root.querySelectorAll(".qx-pal-cell").forEach(cell => {
+    const submitTop = root.querySelector("#qxSubmitTop");
+    if (submitTop) submitTop.onclick = () => confirmSubmit();
+    const mtkClose = root.querySelector("#mtkCloseBtn");
+    if (mtkClose) mtkClose.onclick = quit;
+    root.querySelectorAll(".qx-pal-cell, .mtk-pal-cell").forEach(cell => {
       cell.onclick = () => goTo(parseInt(cell.dataset.qidx, 10));
     });
+    root.querySelectorAll(".mtk-sec-tab").forEach(tab => {
+      tab.onclick = () => {
+        const sec = session.sections[parseInt(tab.dataset.sec, 10)];
+        if (sec) goTo(sec.start);
+      };
+    });
+    const secPrev = root.querySelector("#mtkSecPrev");
+    if (secPrev) secPrev.onclick = () => {
+      const cur = currentSectionIdx();
+      if (cur > 0) goTo(session.sections[cur - 1].start);
+    };
+    const secNext = root.querySelector("#mtkSecNext");
+    if (secNext) secNext.onclick = () => {
+      const cur = currentSectionIdx();
+      if (cur < session.sections.length - 1) goTo(session.sections[cur + 1].start);
+    };
   }
 
   function refresh() {
@@ -191,6 +370,9 @@ const QuantrexTestEngine = (() => {
     main.innerHTML = renderQuestion();
     bindEvents(main);
     if (typeof Mx !== "undefined") Mx.afterRender(main);
+    marksPersistSession();
+    const activeTab = main.querySelector(".mtk-sec-tab.active");
+    if (activeTab) activeTab.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
   }
 
   function selectAnswer(idx) {
@@ -201,11 +383,25 @@ const QuantrexTestEngine = (() => {
     refresh();
   }
 
+  function clearResponse() {
+    if (!session) return;
+    delete session.answers[session.idx];
+    refresh();
+  }
+
   function toggleReview() {
     if (!session) return;
     if (session.review.has(session.idx)) session.review.delete(session.idx);
     else session.review.add(session.idx);
     refresh();
+  }
+
+  function markReviewAndNext() {
+    if (!session) return;
+    session.review.add(session.idx);
+    session.visited.add(session.idx);
+    if (session.idx < session.ids.length - 1) goTo(session.idx + 1);
+    else refresh();
   }
 
   function goTo(idx) {
@@ -233,17 +429,26 @@ const QuantrexTestEngine = (() => {
 
   function quit() {
     if (!session) return;
-    if (confirm("Leave this assessment? Unsaved answers will be lost.")) {
+    const msg = session.marksMode
+      ? "Exit test? Your progress is saved — you can resume later from PYQ Mock Tests."
+      : "Leave this assessment? Unsaved answers will be lost.";
+    if (confirm(msg)) {
       stopTimer();
+      if (session.marksMode && session.persistKey) marksPersistSession();
+      else marksClearSession();
+      const ret = session.returnTo || "tests";
+      exitMarksTestMode();
       session = null;
-      go(session.returnTo || "dashboard");
+      go(ret);
     }
   }
 
   function confirmSubmit() {
     if (!session) return;
     const s = stats();
-    const msg = `Submit now?\n\nAnswered: ${s.answered}\nMarked for review: ${s.review}\nSkipped/Unvisited: ${s.unvisited + s.skipped}`;
+    const msg = session.marksMode
+      ? `Submit test now?\n\nAnswered: ${s.answered}\nNot Answered: ${s.skipped}\nNot Visited: ${s.unvisited}\nMarked for Review: ${s.review}`
+      : `Submit now?\n\nAnswered: ${s.answered}\nMarked for review: ${s.review}\nSkipped/Unvisited: ${s.unvisited + s.skipped}`;
     if (confirm(msg)) submit(false);
   }
 
@@ -311,7 +516,9 @@ const QuantrexTestEngine = (() => {
       });
     }
 
+    marksClearSession();
     session = null;
+    exitMarksTestMode();
     return `<div class="result-screen">
       <div class="result-hero ${pass ? "pass" : "fail"}">
         <div class="result-ring">${data.pct}%</div>
@@ -341,22 +548,29 @@ const QuantrexTestEngine = (() => {
     session.submitted = true;
     stopTimer();
     const data = computeResults();
+    if (typeof session.onComplete === "function") {
+      try { session.onComplete(data); } catch (e) { console.error(e); }
+    }
     const main = document.getElementById("app-main");
     if (main) {
       main.innerHTML = renderResults(data);
       if (typeof Mx !== "undefined") Mx.afterRender(main);
     }
-    if (typeof session.onComplete === "function") {
-      try { session.onComplete(data); } catch (e) { console.error(e); }
-    }
     if (!auto) showToast("✅ Assessment submitted!");
   }
 
   function begin(config) {
-    const ids = config.shuffle !== false ? shuffle(config.questionIds) : [...config.questionIds];
+    const resume = config.resumeData || null;
+    let ids = resume ? [...resume.ids] : (config.shuffle !== false ? shuffle(config.questionIds) : [...config.questionIds]);
     if (!ids.length) {
       showToast("⚠️ No questions available for this test.");
       return false;
+    }
+    let sections = resume ? resume.sections : (config.sections || null);
+    if (!resume && config.marksMode && config.organizeJee && ids.length >= 60) {
+      const organized = organizeJeeMainPaper(ids);
+      ids = organized.orderedIds;
+      sections = organized.sections;
     }
     const duration = config.durationSec ?? (config.timed ? Math.max(600, ids.length * 90) : null);
     session = {
@@ -366,19 +580,32 @@ const QuantrexTestEngine = (() => {
       testType: config.testType || "custom",
       modeLabel: config.modeLabel || (duration ? "Timed Mode" : "Practice Mode"),
       durationSec: duration,
-      remainingSec: duration,
+      remainingSec: resume ? resume.remainingSec : duration,
       scoring: config.scoring || defaultScoring(STATE.exam),
-      idx: 0,
-      answers: {},
-      review: new Set(),
-      visited: new Set([0]),
-      startedAt: Date.now(),
+      idx: resume ? (resume.idx || 0) : 0,
+      answers: resume ? { ...resume.answers } : {},
+      review: new Set(resume ? (resume.review || []) : []),
+      visited: new Set(resume ? (resume.visited || [resume.idx || 0]) : [0]),
+      startedAt: resume ? (resume.startedAt || Date.now()) : Date.now(),
       submitted: false,
       testId: config.testId || null,
-      onComplete: config.onComplete || null
+      onComplete: config.onComplete || null,
+      marksMode: !!config.marksMode,
+      sections,
+      deferTimer: !!config.deferTimer,
+      persistKey: config.persistKey || null,
+      meta: config.meta || null
     };
-    startTimer();
+    if (!session.deferTimer) startTimer();
+    marksPersistSession();
     return true;
+  }
+
+  function launchTimer() {
+    if (session) {
+      session.startedAt = Date.now();
+      startTimer();
+    }
   }
 
   function render() {
@@ -402,14 +629,188 @@ const QuantrexTestEngine = (() => {
     quit,
     isActive,
     getSession,
+    launchTimer,
     formatTime,
+    formatMarksTime,
     set onTick(fn) { onTick = fn; }
   };
 })();
 
+function isNumericalQuestion(q) {
+  if (!q) return false;
+  const opts = (q.options || []).map(o => String(o).replace(/<[^>]+>/g, "").trim());
+  const abcd = opts.every(o => !o || o === "A" || o === "B" || o === "C" || o === "D");
+  const qtext = String(q.q || "").toLowerCase();
+  const fillBlank = /_{3,}|nearest integer|nearest\s+integer|integer\)|numerical|fill in|blank|_______/i.test(qtext);
+  if (abcd && (fillBlank || opts.every(o => !o))) return true;
+  if (opts.length === 4 && opts.every(o => /^[\d.\-+\s,]+$/.test(o) && o)) return true;
+  return false;
+}
+
+function organizeJeeMainPaper(questionIds) {
+  const bySubject = { Mathematics: [], Physics: [], Chemistry: [] };
+  questionIds.forEach(id => {
+    const q = getQ(id);
+    if (!q) return;
+    if (bySubject[q.subject]) bySubject[q.subject].push(id);
+  });
+
+  const orderedIds = [];
+  const sections = [];
+  const spec = [
+    { subject: "Mathematics", sc: 20, num: 5, labels: ["Mathematics Single Correct", "Mathematics Numerical"], shorts: ["MATHEMATICS SINGLE CORRECT", "MATHEMATICS NUMERICAL"] },
+    { subject: "Physics", sc: 20, num: 5, labels: ["Physics Single Correct", "Physics Numerical"], shorts: ["PHYSICS SINGLE CORRECT", "PHYSICS NUMERICAL"] },
+    { subject: "Chemistry", sc: 20, num: 5, labels: ["Chemistry Single Correct", "Chemistry Numerical"], shorts: ["CHEMISTRY SINGLE CORRECT", "CHEMISTRY NUMERICAL"] }
+  ];
+
+  spec.forEach(s => {
+    const ids = bySubject[s.subject] || [];
+    const items = ids.map(id => ({ id, num: isNumericalQuestion(getQ(id)) }));
+    let scPool = items.filter(x => !x.num).map(x => x.id);
+    let numPool = items.filter(x => x.num).map(x => x.id);
+    if (scPool.length < s.sc) {
+      const extra = numPool.splice(0, s.sc - scPool.length);
+      scPool = scPool.concat(extra);
+    }
+    if (numPool.length < s.num) {
+      const extra = scPool.splice(s.sc);
+      numPool = numPool.concat(extra.slice(0, s.num - numPool.length));
+    }
+    const scTake = scPool.slice(0, s.sc);
+    const numTake = numPool.slice(0, s.num);
+
+    [[scTake, s.labels[0], s.shorts[0]], [numTake, s.labels[1], s.shorts[1]]].forEach(([arr, label, short]) => {
+      if (!arr.length) return;
+      sections.push({ label, shortLabel: short, subject: s.subject, start: orderedIds.length, count: arr.length });
+      orderedIds.push(...arr);
+    });
+  });
+
+  const placed = new Set(orderedIds);
+  questionIds.forEach(id => { if (!placed.has(id)) orderedIds.push(id); });
+
+  return { orderedIds, sections };
+}
+
+function enterMarksTestMode() {
+  document.body.classList.add("marks-test-active");
+  const sidebar = document.getElementById("sidebar");
+  const topbar = document.querySelector(".topbar");
+  const main = document.querySelector(".main");
+  const content = document.querySelector(".content");
+  if (sidebar) sidebar.style.display = "none";
+  if (topbar) topbar.style.display = "none";
+  if (main) main.style.marginLeft = "0";
+  if (content) content.style.padding = "0";
+  if (content) content.style.maxWidth = "none";
+  const root = document.documentElement;
+  if (root.requestFullscreen) root.requestFullscreen().catch(() => {});
+  else if (root.webkitRequestFullscreen) root.webkitRequestFullscreen();
+}
+
+function exitMarksTestMode() {
+  document.body.classList.remove("marks-test-active");
+  const overlay = document.getElementById("marksCountdownOverlay");
+  if (overlay) overlay.remove();
+  const sidebar = document.getElementById("sidebar");
+  const topbar = document.querySelector(".topbar");
+  const main = document.querySelector(".main");
+  const content = document.querySelector(".content");
+  if (sidebar) sidebar.style.display = "";
+  if (topbar) topbar.style.display = "";
+  if (main) main.style.marginLeft = "";
+  if (content) content.style.padding = "";
+  if (content) content.style.maxWidth = "";
+  if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(() => {});
+}
+
+const MARKS_SESSION_STORE = "quantrex_marks_session_v1";
+
+function marksPersistSession() {
+  if (!QuantrexTestEngine.getSession()) return;
+  const s = QuantrexTestEngine.getSession();
+  if (!s || s.submitted || !s.persistKey) return;
+  const data = {
+    persistKey: s.persistKey,
+    ids: s.ids,
+    title: s.title,
+    returnTo: s.returnTo,
+    testType: s.testType,
+    modeLabel: s.modeLabel,
+    durationSec: s.durationSec,
+    remainingSec: s.remainingSec,
+    idx: s.idx,
+    answers: s.answers,
+    review: [...s.review],
+    visited: [...s.visited],
+    sections: s.sections,
+    marksMode: s.marksMode,
+    organizeJee: true,
+    meta: s.meta,
+    startedAt: s.startedAt,
+    savedAt: Date.now()
+  };
+  try { localStorage.setItem(MARKS_SESSION_STORE, JSON.stringify(data)); } catch (e) { /* ignore */ }
+}
+
+function marksLoadSession(key) {
+  try {
+    const data = JSON.parse(localStorage.getItem(MARKS_SESSION_STORE) || "null");
+    if (data && data.persistKey === key && data.remainingSec > 0) return data;
+  } catch (e) { /* ignore */ }
+  return null;
+}
+
+function marksClearSession() {
+  try { localStorage.removeItem(MARKS_SESSION_STORE); } catch (e) { /* ignore */ }
+}
+
+function showMarksCountdown(onDone) {
+  enterMarksTestMode();
+  const main = document.getElementById("app-main");
+  if (main) main.innerHTML = "";
+  const existing = document.getElementById("marksCountdownOverlay");
+  if (existing) existing.remove();
+  const overlay = document.createElement("div");
+  overlay.id = "marksCountdownOverlay";
+  overlay.className = "marks-countdown-overlay";
+  overlay.innerHTML = `<div class="marks-countdown-inner">
+    <div class="marks-countdown-grab">Grab Your Pen &amp; Paper</div>
+    <div class="marks-countdown-label">Test starts in</div>
+    <div class="marks-countdown-num">3</div>
+  </div>`;
+  document.body.appendChild(overlay);
+  let n = 3;
+  const numEl = overlay.querySelector(".marks-countdown-num");
+  const tick = () => {
+    if (n > 0) {
+      if (numEl) numEl.textContent = String(n);
+      n--;
+      setTimeout(tick, 1000);
+    } else {
+      if (numEl) numEl.textContent = "Go!";
+      setTimeout(() => {
+        overlay.remove();
+        if (typeof onDone === "function") onDone();
+      }, 600);
+    }
+  };
+  setTimeout(tick, 400);
+}
+
+function launchTestSession(main) {
+  currentView = "test";
+  main.innerHTML = QuantrexTestEngine.render();
+  QuantrexTestEngine.bindEvents(main);
+  QuantrexTestEngine.launchTimer();
+  document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+  if (typeof Mx !== "undefined") Mx.afterRender(main);
+}
+
 function startTest(questionIds, title, returnTo, options) {
   const opts = options || {};
-  const ok = QuantrexTestEngine.begin({
+  const marksMode = opts.marksMode !== false && (opts.testType === "pyqmock" || opts.testType === "custom" || opts.marksMode);
+  const config = {
     questionIds,
     title,
     returnTo,
@@ -420,15 +821,34 @@ function startTest(questionIds, title, returnTo, options) {
     modeLabel: opts.modeLabel,
     scoring: opts.scoring,
     testId: opts.testId,
-    onComplete: opts.onComplete
-  });
-  if (!ok) return;
-  currentView = "test";
+    onComplete: opts.onComplete,
+    marksMode,
+    organizeJee: opts.organizeJee !== false,
+    sections: opts.sections || null,
+    deferTimer: marksMode && !opts.skipCountdown,
+    persistKey: opts.persistKey || null,
+    meta: opts.meta || null,
+    resumeData: opts.resumeData || null
+  };
+
   const main = document.getElementById("app-main");
-  main.innerHTML = QuantrexTestEngine.render();
-  QuantrexTestEngine.bindEvents(main);
-  document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
-  if (typeof Mx !== "undefined") Mx.afterRender(main);
+  const run = () => {
+    const ok = QuantrexTestEngine.begin(config);
+    if (!ok) {
+      exitMarksTestMode();
+      return;
+    }
+    launchTestSession(main);
+  };
+
+  if (marksMode && !opts.skipCountdown) {
+    showMarksCountdown(run);
+  } else if (marksMode && opts.skipCountdown) {
+    enterMarksTestMode();
+    run();
+  } else {
+    run();
+  }
 }
 
 function renderTest() {
@@ -449,7 +869,8 @@ async function startChapterTest(questionIds, meta) {
     testType: "chapter",
     timed: true,
     durationSec: mins * 60,
-    modeLabel: `Chapter Test · ${mins} min`
+    modeLabel: `Chapter Test · ${mins} min`,
+    marksMode: false
   });
 }
 
@@ -479,6 +900,8 @@ async function startMockTest(examSlug, options) {
     timed: true,
     durationSec: duration,
     modeLabel: "Full Mock · 3 hr",
-    shuffle: true
+    shuffle: true,
+    marksMode: true,
+    organizeJee: selected.length >= 60
   });
 }

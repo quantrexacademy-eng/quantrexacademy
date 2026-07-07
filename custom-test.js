@@ -205,47 +205,102 @@ function ctOnCompleteHook(testId) {
   };
 }
 
+function ctSubjectBadges(chapters) {
+  const subs = [...new Set((chapters || []).map(c => c.subjectTitle))];
+  return subs.map(s => {
+    const sty = ctSubjectStyle(s);
+    return `<span class="marks-preview-badge subj" style="background:${sty.bg};color:${sty.color};border-color:${sty.border}">${s}</span>`;
+  }).join("");
+}
+
+function ctPreviewModalHtml(test) {
+  const mins = test.durationSec ? Math.round(test.durationSec / 60) : "∞";
+  const chList = (test.chapters || []).map(c => c.shortName || c.title).join(", ");
+  const subBadges = ctSubjectBadges(test.chapters);
+  return `<div class="marks-modal-overlay" id="ctPreviewModal" onclick="if(event.target===this)ctClosePreview()">
+    <div class="marks-modal marks-preview-modal">
+      <div class="marks-modal-head">
+        <h3>Test preview</h3>
+        <button type="button" class="marks-modal-cancel" style="flex:0;padding:6px 12px" onclick="ctClosePreview()">✕</button>
+      </div>
+      <div class="marks-modal-body">
+        <h2 class="marks-preview-title">${test.title}</h2>
+        <div class="marks-preview-badges">
+          <span class="marks-preview-badge exam">${test.examTitle || "JEE Main"}</span>
+          ${subBadges}
+        </div>
+        <div class="marks-preview-stats">
+          <div class="marks-preview-stat"><strong>${test.totalQs}</strong><small>Questions</small></div>
+          <div class="marks-preview-stat"><strong>${mins}${mins !== "∞" ? " Mins" : ""}</strong><small>Duration</small></div>
+        </div>
+        ${chList ? `<p class="marks-preview-chapters">${chList}</p>` : ""}
+        <button type="button" class="marks-preview-attempt" onclick="ctClosePreview();ctAttemptTest('${test.id}')">Attempt test now →</button>
+        <button type="button" class="marks-preview-later" onclick="ctClosePreview()">Attempt Later</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function ctShowPreview(testId) {
+  const t = ctLoadTests().find(x => x.id === testId);
+  if (!t) return;
+  const existing = document.getElementById("ctPreviewModal");
+  if (existing) existing.remove();
+  document.body.insertAdjacentHTML("beforeend", ctPreviewModalHtml(t));
+}
+
+function ctClosePreview() {
+  const el = document.getElementById("ctPreviewModal");
+  if (el) el.remove();
+}
+
+function ctAttemptTest(id) {
+  const t = ctLoadTests().find(x => x.id === id);
+  if (!t) return;
+  startTest(t.questionIds, t.title, "custom", {
+    testType: "custom",
+    timed: t.timed,
+    durationSec: t.durationSec,
+    modeLabel: t.modeLabel,
+    testId: t.id,
+    marksMode: true,
+    organizeJee: false,
+    onComplete: ctOnCompleteHook(t.id)
+  });
+}
+
 function ctLandingHtml(tests, dailyCreated) {
   const exam = ctExamForState();
   const examBadge = exam ? `<div class="ct-exam-badge">${exam.icon ? `<img src="${exam.icon}" alt="">` : ""}<span>${exam.title}</span></div>` : "";
   const remaining = Math.max(0, CT_DAILY_LIMIT - dailyCreated);
 
-  const cards = tests.length ? tests.slice(0, 20).map(t => {
-    const st = t.status === "completed" ? "Completed" : "Not Started";
-    const cls = t.status === "completed" ? "done" : "pending";
-    const scoreLine = t.status === "completed" && t.pct != null
-      ? `<span class="ct-score-pill">${t.pct}% · ${t.correct || 0}/${t.totalQs} correct</span>` : "";
-    const action = t.status === "completed"
-      ? `<button type="button" class="btn-soft sm" onclick="ctResumeTest('${t.id}', true)">View Result</button>`
-      : `<button type="button" class="btn-primary sm" onclick="ctResumeTest('${t.id}', false)">Start Test</button>`;
-    return `<div class="ct-test-row">
-      <div class="ct-test-dot ${cls}"></div>
-      <div class="ct-test-row-main">
+  const cards = tests.length ? tests.slice(0, 30).map(t => {
+    const action = t.status === "completed" ? "View Analysis →" : "Attempt Now →";
+    return `<div class="ct-marks-row" onclick="ctShowPreview('${t.id}')">
+      <div class="ct-marks-row-main">
         <strong>${t.title}</strong>
         <small>${t.examTitle} · ${t.chapterCount} chapters · ${t.totalQs} Qs · ${new Date(t.createdAt).toLocaleDateString()}</small>
-        ${scoreLine}
+        ${t.status === "completed" && t.pct != null ? `<small style="color:var(--green)">${t.pct}% · ${t.correct || 0}/${t.totalQs} correct</small>` : ""}
       </div>
-      <span class="ct-status ${cls}">${st}</span>
-      ${action}
+      <span class="ct-marks-action">${action}</span>
     </div>`;
   }).join("") : `<div class="empty">No custom tests yet. Tap Create Test below to begin.</div>`;
 
-  return `${topbar("Custom Tests", "Build chapter-wise timed or practice tests")}
+  return `${topbar("Custom Test", `${tests.length} Custom tests generated`)}
     ${examBadge}
     <div class="ct-hero">
       <div class="ct-hero-stat"><strong>${dailyCreated}/${CT_DAILY_LIMIT}</strong><small>Tests created today</small></div>
       <div class="ct-hero-stat"><strong>${remaining}</strong><small>Remaining today</small></div>
       <div class="ct-hero-stat"><strong>${tests.length}</strong><small>Total custom tests</small></div>
     </div>
-    <div class="ct-create-banner" ${mg("custom", { step: "chapters", _draftInit: true })}>
+    <div class="ct-marks-list">${cards}</div>
+    <div class="ct-create-banner" style="margin-top:20px" ${mg("custom", { step: "chapters", _draftInit: true })}>
       <div class="ct-create-left">
         <span class="ct-create-icon">+</span>
-        <div><strong>Create Test</strong><small>Select chapters → configure settings → start</small></div>
+        <div><strong>Create new custom test</strong><small>Select chapters → configure settings → preview → start</small></div>
       </div>
       <span class="ct-create-go">→</span>
-    </div>
-    <h3 class="sec-title">My Custom Tests</h3>
-    <div class="ct-test-list">${cards}</div>`;
+    </div>`;
 }
 
 function ctChaptersHtml(draft) {
@@ -625,6 +680,7 @@ async function ctGenerateTest() {
     title,
     examTitle: _ctDraft.examTitle,
     chapterCount: chapters.length,
+    chapters: chapters.map(c => ({ title: c.title, shortName: c.shortName, subjectTitle: c.subjectTitle })),
     totalQs: take,
     status: "notStarted",
     createdAt: new Date().toISOString(),
@@ -638,17 +694,19 @@ async function ctGenerateTest() {
   list.unshift(record);
   ctSaveTests(list);
   ctBumpDaily();
+  const fromTests = ctFromTests();
   _ctDraft = null;
-  _ctPayload = { step: "landing" };
+  _ctPayload = fromTests ? { fromTests: true } : { step: "landing" };
 
-  startTest(ids, title, "custom", {
-    testType: "custom",
-    timed,
-    durationSec,
-    modeLabel: record.modeLabel,
-    testId,
-    onComplete: ctOnCompleteHook(testId)
-  });
+  if (fromTests) {
+    finishRender(ctMarksShell("Custom Test", "Test generated — preview before you start",
+      `<button type="button" class="marks-ct-back" onclick="go('tests')">←</button>`,
+      `<div class="empty" style="margin:24px 0">Your test is ready!</div>`));
+    setTimeout(() => ctShowPreview(testId), 100);
+  } else {
+    render("custom", { step: "landing" });
+    setTimeout(() => ctShowPreview(testId), 200);
+  }
 }
 
 function ctResumeTest(id, viewResult) {
@@ -661,14 +719,7 @@ function ctResumeTest(id, viewResult) {
     go("analytics");
     return;
   }
-  startTest(t.questionIds, t.title, "custom", {
-    testType: "custom",
-    timed: t.timed,
-    durationSec: t.durationSec,
-    modeLabel: t.modeLabel,
-    testId: t.id,
-    onComplete: ctOnCompleteHook(t.id)
-  });
+  ctShowPreview(id);
 }
 
 function ctResetWizard() {
