@@ -18,7 +18,7 @@ const QuantrexExamLogos = (() => {
     ap_eamcet: { file: "ap-eamcet.svg", label: "AP EAPCET" },
     nda: { file: "nda.svg", label: "NDA" },
     kvpy: { file: "kvpy.svg", label: "KVPY" },
-    CBSE: { file: "cbse.svg", label: "CBSE Board" },
+    CBSE: { file: "cbse.svg", label: "CBSE Board", color: "#2563eb" },
     HSC: { file: "hsc.svg", label: "HSC Maharashtra" },
     board_live: { file: "cbse.svg", label: "Board PYQ" }
   };

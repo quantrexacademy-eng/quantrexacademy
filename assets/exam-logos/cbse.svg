@@ -1,14 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CBSE Board">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="cbse-bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="50%" stop-color="#2563eb"/>
       <stop offset="100%" stop-color="#1d4ed8"/>
     </linearGradient>
+    <linearGradient id="cbse-shine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
-  <rect x="6" y="6" width="52" height="52" rx="12" fill="#fff"/>
-  <rect x="6" y="6" width="52" height="8" rx="12" fill="#dc2626"/>
-  <rect x="6" y="10" width="52" height="4" fill="#dc2626"/>
-  <text x="32" y="38" text-anchor="middle" fill="#1e3a8a" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="15" letter-spacing="1">CBSE</text>
-  <text x="32" y="50" text-anchor="middle" fill="#64748b" font-family="Arial,Helvetica,sans-serif" font-weight="600" font-size="7" letter-spacing=".5">BOARD EXAM</text>
+  <rect width="64" height="64" rx="14" fill="url(#cbse-bg)"/>
+  <rect width="64" height="64" rx="14" fill="url(#cbse-shine)"/>
+  <!-- Open book icon -->
+  <g transform="translate(32,18)" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <path d="M-10 0 C-10 -4 -4 -6 0 -4 C4 -6 10 -4 10 0 L10 8 C10 10 4 12 0 10 C-4 12 -10 10 -10 8 Z"/>
+    <line x1="0" y1="-4" x2="0" y2="10"/>
+  </g>
+  <text x="32" y="42" text-anchor="middle" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="16" letter-spacing="1.5">CBSE</text>
+  <text x="32" y="52" text-anchor="middle" fill="#bfdbfe" font-family="Arial,Helvetica,sans-serif" font-weight="600" font-size="6.5" letter-spacing="0.8">CENTRAL BOARD</text>
 </svg>
