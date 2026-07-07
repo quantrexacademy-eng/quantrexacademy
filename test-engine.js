@@ -88,9 +88,19 @@ const QuantrexTestEngine = (() => {
     el.classList.toggle("danger", session.remainingSec <= 60);
   }
 
+  function hasAnswerAt(i) {
+    if (!session) return false;
+    const a = session.answers[i];
+    if (a === undefined) return false;
+    const q = getQ(session.ids[i]);
+    if (q && typeof QuantrexQFormat !== "undefined") return QuantrexQFormat.isAnswered(q, a);
+    if (Array.isArray(a)) return a.length > 0;
+    return String(a).trim() !== "";
+  }
+
   function paletteStatus(i) {
     if (!session) return "unvisited";
-    const hasAns = session.answers[i] !== undefined;
+    const hasAns = hasAnswerAt(i);
     const isRev = session.review.has(i);
     const visited = session.visited.has(i);
     if (session.marksMode) {
@@ -111,7 +121,7 @@ const QuantrexTestEngine = (() => {
     const total = session.ids.length;
     let answered = 0, review = 0, skipped = 0, revAns = 0, revSkip = 0;
     for (let i = 0; i < total; i++) {
-      const hasAns = session.answers[i] !== undefined;
+      const hasAns = hasAnswerAt(i);
       const isRev = session.review.has(i);
       if (hasAns) answered++;
       if (isRev) {
@@ -229,18 +239,22 @@ const QuantrexTestEngine = (() => {
     const timerHtml = session.durationSec != null
       ? `<div class="mtk-timer" id="qxTimer"><span class="mtk-timer-ic">🕐</span>${formatMarksTime(session.remainingSec)}</div>` : "";
 
+    const typeBadge = typeof QuantrexQFormat !== "undefined" ? QuantrexQFormat.typeBadgeHtml(q) : "";
+    const optsClass = typeof QuantrexQFormat !== "undefined"
+      ? QuantrexQFormat.testOptsContainerClass(q)
+      : "mtk-options mtk-options-grid";
     const opts = incomplete
       ? `<div class="empty" style="padding:24px;grid-column:1/-1">Loading options…</div>`
-      : (q.options || []).map((o, i) => {
-      const letter = String.fromCharCode(65 + i);
-      const text = String(o).replace(/<[^>]+>/g, "").trim();
-      const showLetter = !text || text === letter;
-      return `<button type="button" class="mtk-opt ${selected === i ? "selected" : ""}" data-opt="${i}">
-        <span class="mtk-opt-radio"></span>
-        ${showLetter ? `<span class="mtk-opt-letter">${letter}</span>` : ""}
-        <span class="mtk-opt-text qx-content">${htmlContent(o)}</span>
-      </button>`;
-    }).join("");
+      : (typeof QuantrexQFormat !== "undefined"
+        ? QuantrexQFormat.renderTestOptions(q, selected, htmlContent)
+        : (q.options || []).map((o, i) => {
+          const letter = String.fromCharCode(65 + i);
+          return `<button type="button" class="mtk-opt ${selected === i ? "selected" : ""}" data-opt="${i}">
+            <span class="mtk-opt-radio"></span>
+            <span class="mtk-opt-letter">${letter}</span>
+            <span class="mtk-opt-text qx-content">${htmlContent(o)}</span>
+          </button>`;
+        }).join(""));
 
     return `<div class="mtk-test-root">
       <header class="mtk-header">
@@ -257,9 +271,10 @@ const QuantrexTestEngine = (() => {
         <div class="mtk-main">
           <div class="mtk-q-head">
             <span class="mtk-q-num">Q${session.idx + 1}</span>${wrongMark}
+            ${typeBadge}
           </div>
           <div class="mtk-q-text qx-content">${incomplete ? '<div class="empty">Loading question…</div>' : htmlContent(q.q)}</div>
-          <div class="mtk-options mtk-options-grid" id="qxOpts">${opts}</div>
+          <div class="${optsClass}" id="qxOpts">${opts}</div>
           <div class="mtk-controls">
             <button type="button" class="mtk-btn-ghost" id="qxClearBtn">Clear Response</button>
             <button type="button" class="mtk-btn-ghost" id="qxReviewNextBtn">Mark For Review &amp; Next</button>
@@ -311,15 +326,15 @@ const QuantrexTestEngine = (() => {
             <button type="button" class="bm-btn ${isReview ? "on" : ""}" id="qxReviewBtn">${isReview ? "🔖 Marked" : "🏷️ Mark for Review"}</button>
           </div>
           <div class="qa-q qx-content">${incomplete ? '<div class="empty">Loading question…</div>' : htmlContent(q.q)}</div>
-          <div class="qa-options" id="qxOpts">
-            ${incomplete ? '<div class="empty" style="padding:16px">Loading options…</div>' : (q.options || []).map((o, i) => {
-              const letter = String.fromCharCode(65 + i);
-              const plain = String(o || "").replace(/<[^>]+>/g, "").trim();
-              const showLetter = !plain || plain === letter;
-              return `<button type="button" class="qa-opt ${selected === i ? "selected" : ""}" data-opt="${i}">
-              ${showLetter ? `<span class="opt-letter">${letter}</span>` : ""}
-              <span class="qx-content">${htmlContent(o)}</span></button>`;
-            }).join("")}
+          <div class="${typeof QuantrexQFormat !== "undefined" ? QuantrexQFormat.practiceOptsContainerClass(q) : "qa-options"}" id="qxOpts">
+            ${incomplete ? '<div class="empty" style="padding:16px">Loading options…</div>' : (typeof QuantrexQFormat !== "undefined"
+              ? QuantrexQFormat.renderOptions(q, { selected, done: false })
+              : (q.options || []).map((o, i) => {
+                const letter = String.fromCharCode(65 + i);
+                return `<button type="button" class="qa-opt ${selected === i ? "selected" : ""}" data-opt="${i}">
+                <span class="opt-letter">${letter}</span>
+                <span class="qx-content">${htmlContent(o)}</span></button>`;
+              }).join(""))}
           </div>
           <div class="qx-controls">
             <button type="button" class="btn-soft" id="qxPrevBtn" ${session.idx <= 0 ? "disabled" : ""}>← Previous</button>
@@ -337,8 +352,19 @@ const QuantrexTestEngine = (() => {
 
   function bindEvents(root) {
     if (!session || !root) return;
+    const q = getQ(session.ids[session.idx]);
+    const numInput = root.querySelector("#qxNumInput");
+    if (numInput) {
+      numInput.oninput = () => {
+        session.answers[session.idx] = numInput.value.trim();
+        session.visited.add(session.idx);
+      };
+    }
     root.querySelectorAll("[data-opt]").forEach(btn => {
       btn.onclick = () => selectAnswer(parseInt(btn.dataset.opt, 10));
+    });
+    root.querySelectorAll("[data-prac-opt]").forEach(btn => {
+      btn.onclick = () => selectAnswer(parseInt(btn.dataset.pracOpt, 10));
     });
     const reviewBtn = root.querySelector("#qxReviewBtn");
     if (reviewBtn) reviewBtn.onclick = toggleReview;
@@ -420,7 +446,17 @@ const QuantrexTestEngine = (() => {
 
   function selectAnswer(idx) {
     if (!session || session.submitted) return;
-    session.answers[session.idx] = idx;
+    const q = getQ(session.ids[session.idx]);
+    const multi = q && typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.getType(q) === "multipleCorrect";
+    if (multi) {
+      let sel = session.answers[session.idx];
+      if (!Array.isArray(sel)) sel = [];
+      if (sel.includes(idx)) sel = sel.filter(x => x !== idx);
+      else sel = [...sel, idx].sort((a, b) => a - b);
+      session.answers[session.idx] = sel;
+    } else {
+      session.answers[session.idx] = idx;
+    }
     session.visited.add(session.idx);
     session.review.delete(session.idx);
     refresh();
@@ -502,10 +538,20 @@ const QuantrexTestEngine = (() => {
     const rows = session.ids.map((id, i) => {
       const q = getQ(id);
       const chosen = session.answers[i];
-      const isCorrect = chosen !== undefined && q && chosen === q.answer;
-      const isWrong = chosen !== undefined && q && chosen !== q.answer;
-      const isSkip = chosen === undefined;
+      let isCorrect = false;
+      let isWrong = false;
+      let isPartial = false;
+      const isSkip = chosen === undefined || (typeof QuantrexQFormat !== "undefined" && q && !QuantrexQFormat.isAnswered(q, chosen));
+      if (!isSkip && q) {
+        const graded = typeof QuantrexQFormat !== "undefined"
+          ? QuantrexQFormat.grade(q, chosen)
+          : { correct: chosen === q.answer, partial: false };
+        isCorrect = graded.correct;
+        isPartial = graded.partial;
+        isWrong = !isCorrect && !isPartial;
+      }
       if (isCorrect) { correct++; score += scoring.correct; }
+      else if (isPartial) { wrong++; score += (scoring.partial != null ? scoring.partial : Math.round(scoring.correct / 2)); }
       else if (isWrong) { wrong++; score += scoring.wrong; }
       else { skipped++; score += scoring.unattempted; }
       if (q) {
@@ -545,12 +591,18 @@ const QuantrexTestEngine = (() => {
         ? MarksLive.hasRealSolution(r.q.solution)
         : !!String(r.q.solution || "").replace(/<[^>]+>/g, "").trim();
       const sol = hasSol ? `<div class="sol"><strong>Solution</strong><div class="qx-content sol-body">${htmlContent(r.q.solution)}</div></div>` : "";
+      const chosenHtml = typeof QuantrexQFormat !== "undefined"
+        ? QuantrexQFormat.formatChosenAnswer(r.q, r.chosen)
+        : htmlContent((r.q.options || [])[r.chosen]);
+      const correctHtml = typeof QuantrexQFormat !== "undefined"
+        ? QuantrexQFormat.formatCorrectAnswer(r.q)
+        : htmlContent((r.q.options || [])[r.q.answer]);
       return `<div class="rv-row ${r.isCorrect ? "ok" : r.isSkip ? "" : "no"}">
         <div class="rv-q qx-content"><strong>Q${i + 1}.</strong> ${htmlContent(r.q.q)}</div>
         <div class="rv-ans">
           ${r.isSkip ? '<span class="tag tag-skip">Not attempted</span>' :
-            `<span class="tag ${r.isCorrect ? "tag-ok" : "tag-no"}">${r.isCorrect ? "✓" : "✗"} ${htmlContent(r.q.options[r.chosen])}</span>`}
-          ${r.isWrong ? `<div class="rv-correct">✓ Answer: ${htmlContent(r.q.options[r.q.answer])}</div>` : ""}
+            `<span class="tag ${r.isCorrect ? "tag-ok" : "tag-no"}">${r.isCorrect ? "✓" : "✗"} <span class="qx-content">${chosenHtml}</span></span>`}
+          ${r.isWrong ? `<div class="rv-correct">✓ Answer: <span class="qx-content">${correctHtml}</span></div>` : ""}
         </div>${sol}</div>`;
     }).join("");
 

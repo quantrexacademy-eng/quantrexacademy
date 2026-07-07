@@ -436,24 +436,18 @@ function viewQuestion(id) {
   const incomplete = typeof MarksLive !== "undefined" && MarksLive.isQuestionIncomplete
     ? MarksLive.isQuestionIncomplete(q)
     : false;
+  const qTypeBadge = typeof QuantrexQFormat !== "undefined" ? QuantrexQFormat.typeBadgeHtml(q) : "";
   const opts = incomplete
     ? `<div class="empty" style="padding:20px">Loading options…</div>`
-    : (q.options || []).map((o, i) => {
-    let cls = "qx-prac-opt";
-    if (sel === i) cls += " selected";
-    if (done) {
-      if (i === q.answer) cls += " correct";
-      else if (sel === i) cls += " wrong";
-    }
-    const letter = String.fromCharCode(65 + i);
-    const plain = String(o || "").replace(/<[^>]+>/g, "").trim();
-    const showLetter = !plain || plain === letter;
-    return `<button type="button" class="${cls}" data-prac-opt="${i}" ${done ? "disabled" : ""}>
-      <span class="qx-prac-radio"></span>
-      ${showLetter ? `<span class="qx-prac-letter">${letter}</span>` : ""}
-      <span class="qx-prac-opt-text qx-content">${typeof Mx !== "undefined" ? Mx.html(o) : o}</span>
-    </button>`;
-  }).join("");
+    : (typeof QuantrexQFormat !== "undefined"
+      ? QuantrexQFormat.renderOptions(q, { selected: sel, done })
+      : "");
+  const optsClass = typeof QuantrexQFormat !== "undefined"
+    ? QuantrexQFormat.practiceOptsContainerClass(q)
+    : "qx-prac-opts";
+  const canSubmit = typeof QuantrexQFormat !== "undefined"
+    ? QuantrexQFormat.isAnswered(q, sel)
+    : sel != null;
 
   const qBody = incomplete
     ? `<div class="empty" style="padding:20px 0">Loading question text…</div>`
@@ -478,19 +472,20 @@ function viewQuestion(id) {
       </div>
     </header>
     <div class="qx-prac-meta">
+      ${qTypeBadge}
       <span class="tag tag-${subjTag}">${q.subject}</span>
       <span class="tag tag-diff">${q.difficulty || "Medium"}</span>
       <span class="tag qx-src-tag" title="${sourceLabel}">${sourceLogo}<span>${typeof QuantrexStrip !== "undefined" ? QuantrexStrip.tagLabel(sourceLabel) : sourceLabel}</span></span>
       ${sv ? `<span class="tag ${sv.correct ? "tag-ok" : "tag-no"}">${sv.correct ? "✓ Solved" : "✗ Wrong"}</span>` : ""}
     </div>
     <div class="qx-prac-q qx-content">${qBody}</div>
-    <div class="qx-prac-opts" id="qaOpts">${opts}</div>
+    <div class="${optsClass}" id="qaOpts">${opts}</div>
     ${hasSol && !done ? `<div class="qx-sol-actions"><button type="button" class="btn-soft qx-view-sol-btn" id="qxViewSolBtn">💡 View Solution</button></div>` : ""}
     <div id="qaSolReveal">${solReveal}</div>
     <div id="qaResult">${resultHtml}</div>
     <div class="qx-prac-foot">
       <button type="button" class="btn-soft" onclick="qxPracticeNav(-1)" ${pc.idx <= 0 ? "disabled" : ""}>← Previous</button>
-      ${done || incomplete ? "" : `<button type="button" class="btn-primary qx-prac-submit" id="qxPracSubmit" ${sel == null ? "disabled" : ""}>Submit Answer</button>`}
+      ${done || incomplete ? "" : `<button type="button" class="btn-primary qx-prac-submit" id="qxPracSubmit" ${canSubmit ? "" : "disabled"}>Submit Answer</button>`}
       <button type="button" class="btn-soft" onclick="qxPracticeNav(1)" ${pc.idx >= total - 1 ? "disabled" : ""}>Next →</button>
     </div>
     <div id="qaCommunity"><div class="empty" style="padding:16px">Loading community solutions…</div></div>
@@ -507,13 +502,19 @@ function qxSolutionBlockHtml(q) {
 }
 
 function qxPracticeResultHtml(q, sel) {
-  const correct = sel === q.answer;
-  const ansOpt = (q.options && q.options[q.answer]) ? q.options[q.answer] : String.fromCharCode(65 + q.answer);
-  const ansLabel = typeof Mx !== "undefined" ? Mx.html(ansOpt) : ansOpt;
+  const graded = typeof QuantrexQFormat !== "undefined"
+    ? QuantrexQFormat.grade(q, sel)
+    : { correct: sel === q.answer, partial: false };
+  const { correct, partial } = graded;
+  const ansLabel = typeof QuantrexQFormat !== "undefined"
+    ? QuantrexQFormat.formatCorrectAnswer(q)
+    : "";
   const solBlock = qxHasSolution(q) ? qxSolutionBlockHtml(q) : "";
-  return `<div class="result-box ${correct ? "ok" : "no"}">
-    <strong>${correct ? "✅ Correct!" : "❌ Incorrect"}</strong>
-    ${!correct ? `<p class="qx-prac-correct-ans">Correct answer: <b>${String.fromCharCode(65 + q.answer)}.</b> <span class="qx-content">${ansLabel}</span></p>` : ""}
+  const title = correct ? "✅ Correct!" : (partial ? "⚠️ Partially Correct" : "❌ Incorrect");
+  const boxCls = correct ? "ok" : (partial ? "partial" : "no");
+  return `<div class="result-box ${boxCls}">
+    <strong>${title}</strong>
+    ${!correct ? `<p class="qx-prac-correct-ans">Correct answer: <span class="qx-content">${ansLabel}</span></p>` : ""}
     ${solBlock}
     ${!solBlock ? `<p class="qx-no-sol-note">Solution not available for this question.</p>` : ""}
   </div>`;
@@ -524,18 +525,22 @@ function bindPracticeQuestion(root) {
   if (!scope) return;
   const ctx = window._qxPracticeCtx;
   const qid = ctx && ctx.ids[ctx.idx];
-  scope.querySelectorAll("[data-prac-opt]").forEach(btn => {
-    btn.onclick = () => {
-      if (!ctx || ctx.done[qid]) return;
-      const idx = parseInt(btn.dataset.pracOpt, 10);
-      ctx.selected[qid] = idx;
-      scope.querySelectorAll("[data-prac-opt]").forEach(b => b.classList.toggle("selected", parseInt(b.dataset.pracOpt, 10) === idx));
-      const sub = scope.querySelector("#qxPracSubmit");
-      if (sub) sub.disabled = false;
-    };
-  });
-  const submit = scope.querySelector("#qxPracSubmit");
-  if (submit) submit.onclick = () => answerQ(qid, ctx.selected[qid]);
+  if (typeof QuantrexQFormat !== "undefined") {
+    QuantrexQFormat.bindPractice(scope, ctx, qid, answerQ);
+  } else {
+    scope.querySelectorAll("[data-prac-opt]").forEach(btn => {
+      btn.onclick = () => {
+        if (!ctx || ctx.done[qid]) return;
+        const idx = parseInt(btn.dataset.pracOpt, 10);
+        ctx.selected[qid] = idx;
+        scope.querySelectorAll("[data-prac-opt]").forEach(b => b.classList.toggle("selected", parseInt(b.dataset.pracOpt, 10) === idx));
+        const sub = scope.querySelector("#qxPracSubmit");
+        if (sub) sub.disabled = false;
+      };
+    });
+    const submit = scope.querySelector("#qxPracSubmit");
+    if (submit) submit.onclick = () => answerQ(qid, ctx.selected[qid]);
+  }
   const viewSol = scope.querySelector("#qxViewSolBtn");
   if (viewSol) viewSol.onclick = () => qxRevealSolution(qid);
 }
@@ -570,31 +575,27 @@ async function loadCommunityForQuestion(q) {
   }
 }
 
-async function answerQ(qid, idx) {
-  if (idx == null) return;
+async function answerQ(qid, response) {
+  if (response == null) return;
+  if (typeof QuantrexQFormat !== "undefined" && !QuantrexQFormat.isAnswered(getQ(qid), response)) return;
   let q = getQ(qid);
   if (!q) return;
   if (q && q._marksId) q = await qxHydrateQuestion(q, false);
   const ctx = window._qxPracticeCtx || { done: {}, selected: {} };
   ctx.done[qid] = true;
-  ctx.selected[qid] = idx;
+  ctx.selected[qid] = response;
   const main = document.getElementById("app-main");
   const solActs = main.querySelector(".qx-sol-actions");
   if (solActs) solActs.remove();
   const solReveal = document.getElementById("qaSolReveal");
   if (solReveal) solReveal.innerHTML = "";
-  main.querySelectorAll("[data-prac-opt]").forEach((o, i) => {
-    o.disabled = true;
-    o.classList.remove("selected");
-    if (i === q.answer) o.classList.add("correct");
-    if (i === idx && idx !== q.answer) o.classList.add("wrong");
-    if (i === idx && idx === q.answer) o.classList.add("selected", "correct");
-  });
-  const correct = idx === q.answer;
-  STATE.markSolved(qid, correct);
+  const graded = typeof QuantrexQFormat !== "undefined"
+    ? QuantrexQFormat.applyPracticeResult(main, q, response)
+    : { correct: response === q.answer, partial: false };
+  STATE.markSolved(qid, graded.correct || graded.partial);
   const res = document.getElementById("qaResult");
   if (res) {
-    res.innerHTML = qxPracticeResultHtml(q, idx);
+    res.innerHTML = qxPracticeResultHtml(q, response);
     if (typeof Mx !== "undefined") Mx.afterRender(res);
   }
   const sub = main.querySelector("#qxPracSubmit");

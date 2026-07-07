@@ -92,7 +92,9 @@ const MarksLive = (() => {
   }
 
   function isNonMcqType(type) {
-    return /numerical|subjective|integer|long|descriptive|fill|assertion/i.test(type || "");
+    const t = String(type || "").toLowerCase();
+    if (/multiple|single|match/i.test(t)) return false;
+    return /numerical|subjective|integer|long|descriptive|fill/i.test(t);
   }
 
   function isPlaceholderOptions(options) {
@@ -136,9 +138,13 @@ const MarksLive = (() => {
     const qBody = d.question || d.title || {};
     const rawOpts = d.options || [];
     const opts = rawOpts.map(o => htmlPart(o.text, o.image));
-    let answer = rawOpts.findIndex(o => o && o.isCorrect);
+    const correctList = rawOpts.map((o, i) => (o && o.isCorrect) ? i : -1).filter(i => i >= 0);
+    let answer = correctList[0] != null ? correctList[0] : -1;
     if (answer < 0 && d.correctValue != null) answer = 0;
-    if (answer < 0 && d.type === "numerical") answer = 0;
+    if (answer < 0 && (d.type === "numerical" || d.questionType === "numerical")) answer = 0;
+    const qType = d.type || d.questionType || (opts.length ? "singleCorrect" : "subjective");
+    const numVal = d.correctValue != null ? d.correctValue
+      : (d.correctAnswer != null ? d.correctAnswer : null);
 
     const papers = d.previousYearPapers || d.yearsAppeared || [];
     const paper = papers[0] || {};
@@ -151,6 +157,8 @@ const MarksLive = (() => {
       q: htmlPart(qBody.text, qBody.image),
       options: opts.length ? opts : [],
       answer: Math.max(0, answer),
+      answers: correctList.length ? correctList : (answer >= 0 ? [answer] : []),
+      correctValue: numVal,
       solution: cleanSolution(solRaw),
       hasSolution: hasRealSolution(solRaw),
       videoSolution: video,
@@ -161,7 +169,7 @@ const MarksLive = (() => {
       paperSource: source,
       _needsFull: false,
       _fullFetched: true,
-      questionType: d.type || d.questionType || (opts.length ? "singleCorrect" : "subjective")
+      questionType: qType
     };
   }
 

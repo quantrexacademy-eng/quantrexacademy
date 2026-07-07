@@ -653,9 +653,22 @@
         .qx-prac-icon { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); cursor: pointer; font-size: 18px; }
         .qx-prac-icon.on { background: var(--orange-light); border-color: var(--orange); }
         .qx-prac-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+        .qx-qtype-badge {
+            display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 20px;
+            font-size: 11px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase;
+            background: rgba(21,137,238,.1); color: var(--primary); border: 1px solid rgba(21,137,238,.2);
+        }
+        .qx-qtype-multiplecorrect { background: rgba(124,92,231,.1); color: #7c5ce7; border-color: rgba(124,92,231,.22); }
+        .qx-qtype-numerical { background: rgba(245,158,11,.12); color: #d97706; border-color: rgba(245,158,11,.25); }
+        .qx-qtype-subjective { background: rgba(100,116,139,.1); color: #64748b; border-color: rgba(100,116,139,.2); }
 
         .qx-prac-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-        @media (max-width: 640px) { .qx-prac-opts { grid-template-columns: 1fr; } }
+        .qx-prac-opts.qx-opts-multi, .qx-prac-opts.qx-opts-match, .mtk-options.qx-opts-multi, .mtk-options.qx-opts-match {
+            grid-template-columns: 1fr;
+        }
+        .qx-prac-opts.qx-opts-match .qx-prac-opt, .mtk-options.qx-opts-match .mtk-opt { min-height: auto; }
+        .qx-prac-opts.qx-opts-img, .mtk-options.qx-opts-img { grid-template-columns: 1fr 1fr; }
+        @media (max-width: 640px) { .qx-prac-opts, .qx-prac-opts.qx-opts-img, .mtk-options.qx-opts-img { grid-template-columns: 1fr; } }
         .qx-prac-opt { display: flex; align-items: flex-start; gap: 10px; padding: 14px 16px; border: 2px solid var(--border); border-radius: 14px; background: var(--card); cursor: pointer; text-align: left; font-family: inherit; color: var(--text); transition: border-color .12s, background .12s; min-height: 56px; }
         .qx-prac-opt:hover:not(:disabled) { border-color: var(--primary); }
         .qx-prac-opt.selected { border-color: var(--primary); background: var(--primary-light); }
@@ -663,10 +676,25 @@
         .qx-prac-opt.wrong { border-color: var(--red); background: var(--red-light); }
         .qx-prac-opt:disabled { cursor: default; }
         .qx-prac-radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--gray); flex-shrink: 0; margin-top: 2px; position: relative; }
+        .qx-prac-check { width: 18px; height: 18px; border-radius: 4px; border: 2px solid var(--gray); flex-shrink: 0; margin-top: 2px; position: relative; }
         .qx-prac-opt.selected .qx-prac-radio { border-color: var(--primary); }
         .qx-prac-opt.selected .qx-prac-radio::after { content: ''; position: absolute; inset: 3px; background: var(--primary); border-radius: 50%; }
+        .qx-prac-opt.selected .qx-prac-check { border-color: var(--primary); background: var(--primary); }
+        .qx-prac-opt.selected .qx-prac-check::after { content: '✓'; position: absolute; inset: 0; color: #fff; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; line-height: 1; }
         .qx-prac-opt.correct .qx-prac-radio { border-color: var(--green); }
         .qx-prac-opt.correct .qx-prac-radio::after { background: var(--green); }
+        .qx-prac-opt.correct .qx-prac-check { border-color: var(--green); background: var(--green); }
+        .qx-prac-numerical { margin-bottom: 20px; padding: 16px; border: 2px solid var(--border); border-radius: 14px; background: var(--card); }
+        .qx-prac-numerical.correct { border-color: var(--green); background: var(--green-light); }
+        .qx-prac-numerical.wrong { border-color: var(--red); background: var(--red-light); }
+        .qx-num-label { display: block; font-size: 13px; font-weight: 700; color: var(--gray); margin-bottom: 8px; }
+        .qx-num-input { width: 100%; max-width: 280px; padding: 12px 14px; border: 2px solid var(--border); border-radius: 10px; font-size: 16px; font-family: inherit; background: var(--white); color: var(--text); }
+        .qx-num-input:focus { outline: none; border-color: var(--primary); }
+        .qx-num-correct { margin: 10px 0 0; font-size: 14px; color: var(--gray); }
+        .qx-prac-q table, .mtk-q-text table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 14px; }
+        .qx-prac-q table th, .qx-prac-q table td, .mtk-q-text table th, .mtk-q-text table td { border: 1px solid var(--border); padding: 8px 10px; vertical-align: top; }
+        .qx-prac-q table th, .mtk-q-text table th { background: var(--bg); font-weight: 700; }
+        .result-box.partial { background: #fffbeb; border: 1px solid #f59e0b; }
         .qx-prac-letter { font-weight: 800; font-size: 14px; color: var(--gray); flex-shrink: 0; min-width: 16px; }
         .qx-prac-opt-text { flex: 1; font-size: 14px; line-height: 1.5; }
         .qx-prac-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 20px 0 24px; flex-wrap: wrap; }
@@ -1100,6 +1128,12 @@
         .mtk-opt-radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #4b5563; flex-shrink: 0; margin-top: 2px; position: relative; }
         .mtk-opt.selected .mtk-opt-radio { border-color: #2DD4BF; }
         .mtk-opt.selected .mtk-opt-radio::after { content: ''; position: absolute; inset: 3px; background: #2DD4BF; border-radius: 50%; }
+        .mtk-opt-check { width: 18px; height: 18px; border-radius: 4px; border: 2px solid #4b5563; flex-shrink: 0; margin-top: 2px; position: relative; }
+        .mtk-opt.selected .mtk-opt-check { border-color: #2DD4BF; background: #2DD4BF; }
+        .mtk-opt.selected .mtk-opt-check::after { content: '✓'; position: absolute; inset: 0; color: #0f172a; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+        .mtk-q-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .mtk-numerical-wrap { display: block; }
+        .mtk-numerical .qx-num-input { background: #1a1d26; border-color: #2a2f3d; color: #e2e8f0; }
         .mtk-opt-letter { font-weight: 800; font-size: 14px; color: #94a3b8; flex-shrink: 0; min-width: 18px; }
         .mtk-opt-text { flex: 1; font-size: 14px; line-height: 1.5; }
         .mtk-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding-top: 8px; border-top: 1px solid #2a2f3d; }
@@ -1363,7 +1397,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxlogos425</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxqformat426</div>
             </div>
         </aside>
 
@@ -1389,30 +1423,31 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
-    <script>window.QX_BUILD="qxlogos425";</script>
-    <script src="qx-perf.js?v=qxlogos425"></script>
-    <script src="firebase-config.js?v=qxlogos425" defer></script>
-    <script src="stack-config.js?v=qxlogos425" defer></script>
-    <script src="strip/branding-strip.js?v=qxlogos425" defer></script>
-    <script src="exam-logos.js?v=qxlogos425" defer></script>
-    <script src="math-render.js?v=qxlogos425" defer></script>
-    <script src="data.js?v=qxlogos425" defer></script>
-    <script src="firebase-db.js?v=qxlogos425" defer></script>
-    <script src="firebase-storage.js?v=qxlogos425" defer></script>
-    <script src="payments.js?v=qxlogos425" defer></script>
-    <script src="premium.js?v=qxlogos425" defer></script>
-    <script src="leaderboard.js?v=qxlogos425" defer></script>
-    <script src="community.js?v=qxlogos425" defer></script>
-    <script src="book-covers.js?v=qxlogos425" defer></script>
-    <script src="marks-shell.js?v=qxlogos425" defer></script>
-    <script src="marks-live.js?v=qxlogos425" defer></script>
-    <script src="marks-features.js?v=qxlogos425" defer></script>
-    <script src="assignments.js?v=qxlogos425" defer></script>
-    <script src="custom-test.js?v=qxlogos425" defer></script>
-    <script src="test-engine.js?v=qxlogos425" defer></script>
-    <script src="analytics.js?v=qxlogos425" defer></script>
-    <script src="search.js?v=qxlogos425" defer></script>
-    <script src="theme.js?v=qxlogos425" defer></script>
-    <script src="app.js?v=qxlogos425" defer></script>
+    <script>window.QX_BUILD="qxqformat426";</script>
+    <script src="qx-perf.js?v=qxqformat426"></script>
+    <script src="firebase-config.js?v=qxqformat426" defer></script>
+    <script src="stack-config.js?v=qxqformat426" defer></script>
+    <script src="strip/branding-strip.js?v=qxqformat426" defer></script>
+    <script src="exam-logos.js?v=qxqformat426" defer></script>
+    <script src="math-render.js?v=qxqformat426" defer></script>
+    <script src="question-format.js?v=qxqformat426" defer></script>
+    <script src="data.js?v=qxqformat426" defer></script>
+    <script src="firebase-db.js?v=qxqformat426" defer></script>
+    <script src="firebase-storage.js?v=qxqformat426" defer></script>
+    <script src="payments.js?v=qxqformat426" defer></script>
+    <script src="premium.js?v=qxqformat426" defer></script>
+    <script src="leaderboard.js?v=qxqformat426" defer></script>
+    <script src="community.js?v=qxqformat426" defer></script>
+    <script src="book-covers.js?v=qxqformat426" defer></script>
+    <script src="marks-shell.js?v=qxqformat426" defer></script>
+    <script src="marks-live.js?v=qxqformat426" defer></script>
+    <script src="marks-features.js?v=qxqformat426" defer></script>
+    <script src="assignments.js?v=qxqformat426" defer></script>
+    <script src="custom-test.js?v=qxqformat426" defer></script>
+    <script src="test-engine.js?v=qxqformat426" defer></script>
+    <script src="analytics.js?v=qxqformat426" defer></script>
+    <script src="search.js?v=qxqformat426" defer></script>
+    <script src="theme.js?v=qxqformat426" defer></script>
+    <script src="app.js?v=qxqformat426" defer></script>
 </body>
 </html>
