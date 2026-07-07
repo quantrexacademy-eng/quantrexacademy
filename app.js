@@ -235,7 +235,7 @@ function viewQuestion(id) {
   return `${topbar("Practice Question", `${q.subject} · ${q.chapter}`)}
   <div class="qa-wrap">
     <div class="qa-head">
-      <div><span class="tag tag-${q.subject.toLowerCase()}">${q.subject}</span> <span class="tag tag-diff">${q.difficulty}</span> <span class="tag">📌 ${q.source}</span></div>
+      <div><span class="tag tag-${q.subject.toLowerCase()}">${q.subject}</span> <span class="tag tag-diff">${q.difficulty}</span> <span class="tag" title="${q._book && typeof bookQuestionTitle === 'function' ? bookQuestionTitle(q) : q.source}">📌 ${q._book && typeof bookQuestionLabel === 'function' ? bookQuestionLabel(q) : q.source}</span>${q._book && q.paperSource ? ` <span class="tag tag-diff">${q.paperSource}</span>` : ""}</div>
       <button class="bm-btn ${bm?'on':''}" onclick="toggleBm(${q.id})">${bm?'🔖 Saved':'🤍 Save'}</button>
     </div>
     <div class="qa-q qx-content">${typeof Mx!=="undefined"?Mx.html(q.q):q.q}</div>

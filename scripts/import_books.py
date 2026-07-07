@@ -39,7 +39,7 @@ def load_questions_file(path: Path, subject, chapter, book_title):
         qid = item.get("_id")
         if not qid:
             continue
-        parsed = parse_marks_question(item, 0, subject, chapter, book_title, "Engineering")
+        parsed = parse_marks_question(item, 0, subject, chapter, book_title, "Engineering", book_mode=True)
         parsed["_marksId"] = qid
         out.append(parsed)
     return out

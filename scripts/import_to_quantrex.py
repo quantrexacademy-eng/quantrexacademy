@@ -71,7 +71,7 @@ def slugify(name: str) -> str:
     return s[:80] or "untitled"
 
 
-def parse_marks_question(item, qid, subject, chapter, exam_title, category):
+def parse_marks_question(item, qid, subject, chapter, exam_title, category, book_mode=False):
     q_obj = item.get("question") or item.get("title") or {}
     qtext = sanitize_content(text_field(item, "question", "title"))
     if isinstance(q_obj, dict):
@@ -92,12 +92,13 @@ def parse_marks_question(item, qid, subject, chapter, exam_title, category):
     sol = sanitize_content(text_field(item, "solution", "explanation"))
     if isinstance(sol_obj, dict):
         sol = append_image_html(sol, sol_obj.get("image"))
-    source = exam_title
+    paper_source = None
     if item.get("previousYearPapers"):
-        source = item["previousYearPapers"][0].get("title", exam_title)
+        paper_source = item["previousYearPapers"][0].get("title") or None
     elif item.get("yearsAppeared"):
-        source = item["yearsAppeared"][0].get("title", exam_title)
-    return {
+        paper_source = item["yearsAppeared"][0].get("title") or None
+    source = exam_title if book_mode else (paper_source or exam_title)
+    row = {
         "id": qid,
         "_marksId": item.get("_id"),
         "subject": subject,
@@ -111,6 +112,9 @@ def parse_marks_question(item, qid, subject, chapter, exam_title, category):
         "difficulty": {1: "Easy", 2: "Medium", 3: "Hard"}.get(item.get("level"), "Medium"),
         "source": source or "Quantrex PYQ",
     }
+    if book_mode and paper_source:
+        row["paperSource"] = paper_source
+    return row
 
 
 def load_questions_from_cpyqb():

@@ -69,10 +69,28 @@ function subjectIcon(subj) {
   return m[subj] || "📖";
 }
 
+function bookQuestionLabel(q) {
+  if (!q || !q._book) return null;
+  const src = String(q.source || "").trim();
+  const exam = String(q.examName || q._bookTitle || "").trim();
+  const paper = String(q.paperSource || "").trim();
+  if (/^(JEE Main|JEE Advanced|NEET) \d{4}/i.test(src) && exam) return exam;
+  if (exam) return exam;
+  return src || "Digital Book";
+}
+
+function bookQuestionTitle(q) {
+  const label = bookQuestionLabel(q);
+  const paper = q && (q.paperSource || (/^(JEE Main|JEE Advanced|NEET) \d{4}/i.test(q.source || "") ? q.source : ""));
+  return paper ? `${label} · ${paper}` : (label || "");
+}
+
 function renderQCard(q) {
   const bm = STATE.bookmarks.includes(q.id);
   const sv = STATE.solved.find(s => s.id === q.id);
   const tag = q.subject.toLowerCase().replace(/\s+/g, "-");
+  const bookLabel = q._book ? bookQuestionLabel(q) : null;
+  const bookTip = q._book ? bookQuestionTitle(q) : "";
   return `<div class="q-card" onclick="go('question', ${q.id})">
     <div class="q-meta">
       <span class="tag tag-${tag}">${q.subject}</span>
@@ -80,7 +98,7 @@ function renderQCard(q) {
       ${sv ? `<span class="tag ${sv.correct ? "tag-ok" : "tag-no"}">${sv.correct ? "✓" : "✗"}</span>` : ""}
     </div>
     <div class="q-text">${qPreview(q.q)}</div>
-    <div class="q-footer"><small>${q._book ? `<span class="qx-book-badge" title="${q.source || ""}">📕 ${q.source || "Digital Book"}</span>` : "📖 " + q.chapter}${q._book ? "" : " · 📌 " + q.source}</small><span>${bm ? "🔖" : "🤍"}</span></div>
+    <div class="q-footer"><small>${bookLabel ? `<span class="qx-book-badge" title="${bookTip}">📕 ${bookLabel}</span>` : "📖 " + q.chapter + " · 📌 " + q.source}</small><span>${bm ? "🔖" : "🤍"}</span></div>
   </div>`;
 }
 
