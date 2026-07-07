@@ -139,6 +139,12 @@ function renderQCard(q) {
   const tag = q.subject.toLowerCase().replace(/\s+/g, "-");
   const bookLabel = q._book ? bookQuestionLabel(q) : null;
   const bookTip = q._book ? bookQuestionTitle(q) : "";
+  const dateLine = q.paperDate && typeof MarksLive !== "undefined"
+    ? MarksLive.fmtDate(q.paperDate)
+    : "";
+  const srcLine = bookLabel
+    ? `<span class="qx-book-badge" title="${bookTip}">📕 ${bookLabel}</span>`
+    : (dateLine ? `📅 ${dateLine} · 📌 ${q.source || q.paperSource || ""}` : `📖 ${q.chapter} · 📌 ${q.source}`);
   return `<div class="q-card" onclick="openPracticeQuestion(${q.id})">
     <div class="q-meta">
       <span class="tag tag-${tag}">${q.subject}</span>
@@ -146,7 +152,7 @@ function renderQCard(q) {
       ${sv ? `<span class="tag ${sv.correct ? "tag-ok" : "tag-no"}">${sv.correct ? "✓" : "✗"}</span>` : ""}
     </div>
     <div class="q-text">${qPreview(q.q)}</div>
-    <div class="q-footer"><small>${bookLabel ? `<span class="qx-book-badge" title="${bookTip}">📕 ${bookLabel}</span>` : "📖 " + q.chapter + " · 📌 " + q.source}</small><span>${bm ? "🔖" : "🤍"}</span></div>
+    <div class="q-footer"><small>${srcLine}</small><span>${bm ? "🔖" : "🤍"}</span></div>
   </div>`;
 }
 
@@ -795,121 +801,201 @@ async function viewNeetModuleBank(payload, moduleId, opts) {
 }
 
 async function viewBoardMarksBank(payload) {
+  if (typeof MarksLive === "undefined") {
+    return `${topbar("Board PYQs", "")}<div class="empty">MARKS live module loading…</div>`;
+  }
   const p = { step: "subjects", ...(payload || {}) };
-  const mod = await fetchModuleNav("hsc_board");
-  const title = (mod && mod.title) || "HSC Maharashtra PYQ Bank";
-  const subtitle = "Board exam PYQs — Maharashtra HSC pattern";
-  const examSlug = (mod && mod.examSlug) || "mht_cet";
-  const subjects = (mod && mod.subjects) || [];
+  const examId = p.examId || MarksLive.boardId();
+  const boardName = MarksLive.boardLabel();
+  const title = "PYQ Bank for Board Exams";
+  const subtitle = boardName + " · real board papers with dates";
   const viewKey = "board";
 
+  let examData;
+  try {
+    await MarksLive.ensureToken();
+    examData = await MarksLive.boardSubjects(examId);
+  } catch (e) {
+    return `${topbar(title, subtitle)}<div class="empty">Could not load ${boardName} board data from MARKS. Check connection.</div>`;
+  }
+
+  const subjects = examData.subjects || [];
+  const metaLine = (examData.meta || []).map(m => `${m.title}: ${m.description}`).join(" · ");
+
   if (p.step === "subjects" || !p.subject) {
-    _lastListFn = () => ({ step: "subjects" });
+    _lastListFn = () => ({ step: "subjects", examId });
     const cards = subjects.map(s => `
-      <div class="subj-card" ${mg("board", { step: "chapters", subject: s.name })}>
+      <div class="subj-card" ${mg("board", { step: "chapters", subject: s.name, subjectId: s.id, examId })}>
         <span class="subj-ic">${subjectIcon(s.name)}</span>
-        <div><strong>${s.name}</strong><small>${s.chapters.length} chapters · ${(s.count || 0).toLocaleString()} qs</small></div>
+        <div><strong>${s.name}</strong><small>${boardName} board PYQs</small></div>
       </div>`).join("");
-    return `${topbar(title, subtitle)}<div class="subj-grid">${cards || '<div class="empty">HSC board data loading…</div>'}</div>`;
+    return `${topbar(title, subtitle)}
+      ${metaLine ? `<p class="sec-desc">${metaLine}</p>` : ""}
+      <div class="subj-grid">${cards || '<div class="empty">No subjects.</div>'}</div>`;
   }
 
   const subj = subjects.find(s => s.name === p.subject);
-  if (!subj) return viewBoardMarksBank({ step: "subjects" });
+  if (!subj) return viewBoardMarksBank({ step: "subjects", examId });
+
+  let chapters = p._chapters;
+  if (!chapters) {
+    showToast("📚 Loading " + p.subject + " chapters…");
+    const chData = await MarksLive.boardChapters(examId, subj.id);
+    chapters = chData.chapters || [];
+    p._chapters = chapters;
+  }
 
   if (p.step === "chapters" || !p.chapter) {
-    _lastListFn = () => ({ step: "chapters", subject: p.subject });
-    const bc = breadcrumb([{ label: title, view: "board", payload: { step: "subjects" } }, { label: p.subject }]);
-    const cards = subj.chapters.map(c => `
-      <div class="ch-card qx-ch-row" ${mg("board", { step: "chapterHub", subject: p.subject, chapter: c.name })}>
+    _lastListFn = () => ({ step: "chapters", subject: p.subject, subjectId: subj.id, examId, _chapters: chapters });
+    const bc = breadcrumb([{ label: title, view: "board", payload: { step: "subjects", examId } }, { label: p.subject }]);
+    const cards = chapters.map(c => `
+      <div class="ch-card qx-ch-row" ${mg("board", { step: "chapterHub", subject: p.subject, subjectId: subj.id, chapter: c.name, chapterId: c.id, examId, _chapters: chapters })}>
+        <div class="qx-ch-body"><strong>${c.name}</strong><small>${(c.count || 0).toLocaleString()} questions</small></div>
+      </div>`).join("");
+    return `${topbar(p.subject, boardName)}${bc}<div class="ch-grid">${cards}</div>`;
+  }
+
+  const ch = chapters.find(c => c.name === p.chapter);
+  const chapterId = p.chapterId || (ch && ch.id);
+  const baseBc = [
+    { label: title, view: "board", payload: { step: "subjects", examId } },
+    { label: p.subject, view: "board", payload: { step: "chapters", subject: p.subject, subjectId: subj.id, examId, _chapters: chapters } },
+    { label: p.chapter, view: "board", payload: { step: "chapterHub", subject: p.subject, subjectId: subj.id, chapter: p.chapter, chapterId, examId, _chapters: chapters } }
+  ];
+
+  if (p.step === "chapterHub" || (!p.bucketId && !p.bucketTitle && p.step !== "questions")) {
+    _lastListFn = () => ({ step: "chapterHub", subject: p.subject, subjectId: subj.id, chapter: p.chapter, chapterId, examId, _chapters: chapters });
+    showToast("📊 Loading chapter buckets…");
+    const detail = await MarksLive.boardChapterDetails(examId, subj.id, chapterId);
+    const sections = detail.sections || [];
+    const bc = breadcrumb(baseBc);
+    const blocks = sections.map(sec => {
+      const cards = (sec.buckets || []).map(b => `
+        <div class="ch-card qx-topic-card" ${mg("board", { step: "questions", subject: p.subject, subjectId: subj.id, chapter: p.chapter, chapterId, bucketId: b.bucketId, bucketTitle: b.title, examId, _chapters: chapters })}>
+          <div class="qx-topic-body"><strong>${b.title}</strong><small>${(b.totalQuestions || 0).toLocaleString()} questions</small></div>
+        </div>`).join("");
+      return `<h3 class="sec-title">${sec.title}</h3><div class="ch-grid qx-topic-grid">${cards}</div>`;
+    }).join("");
+    return `${topbar(p.chapter, p.subject + " · " + boardName)}${bc}${blocks || '<div class="empty">No buckets for this chapter.</div>'}`;
+  }
+
+  showToast("📚 Loading board questions…");
+  const bucketData = await MarksLive.boardBucketQuestions(
+    examId, subj.id, chapterId, p.bucketId, 0, 200,
+    { subject: p.subject, chapter: p.chapter, examName: boardName, bank: "board_live" }
+  );
+  let qs = await MarksLive.hydrateQuestions(bucketData.questions || [], {
+    subject: p.subject, chapter: p.chapter, examName: boardName, bank: "board_live"
+  });
+
+  _lastListFn = () => ({ ...p, step: "questions" });
+  const modeLabel = p.bucketTitle || "Questions";
+  const bc = breadcrumb(baseBc.concat([
+    { label: "Buckets", view: "board", payload: { step: "chapterHub", subject: p.subject, subjectId: subj.id, chapter: p.chapter, chapterId, examId, _chapters: chapters } },
+    { label: modeLabel }
+  ]));
+  const testMeta = { title: `${p.chapter} · ${modeLabel}`, returnTo: "board", limit: 30 };
+  return `${topbar(p.chapter, `${p.subject} · ${boardName}`)}${bc}${renderQList(qs, _listPage, testMeta)}`;
+}
+
+const NCERT_KIND_NAV = {
+  lblq: { title: "NCERT Line by Line Qs", sub: "Concept-by-concept · MARKS" },
+  ncoq: { title: "NCERT & Exemplar Qs", sub: "NCERT + Exemplar · MARKS" },
+  dbq: { title: "Diagram Based Qs", sub: "Figure-based NCERT Qs · MARKS" },
+  ncert: { title: "NCERT Based Qs Bank", sub: "Syllabus-aligned · MARKS" }
+};
+
+async function viewNcert(payload) {
+  const kind = (payload && payload.ncertKind) || "lblq";
+  if (STATE.exam === "Medical" && kind === "ncert") {
+    return viewNeetModuleBank(payload, "ncert");
+  }
+  if (typeof MarksLive === "undefined") {
+    return `${topbar("NCERT Toolbox", "")}<div class="empty">MARKS live module loading…</div>`;
+  }
+
+  const liveMeta = MarksLive.NCERT_KIND_META[kind] || MarksLive.NCERT_KIND_META.lblq;
+  const title = (NCERT_KIND_NAV[kind] && NCERT_KIND_NAV[kind].title) || liveMeta.title;
+  const subtitle = (NCERT_KIND_NAV[kind] && NCERT_KIND_NAV[kind].sub) || "Real MARKS NCERT questions";
+  const p = { step: "subjects", ncertKind: kind, ...(payload || {}) };
+
+  try {
+    await MarksLive.ensureToken();
+  } catch (e) {
+    return `${topbar(title, subtitle)}<div class="empty">MARKS token missing — cannot load NCERT questions.</div>`;
+  }
+
+  if (p.step === "subjects" || !p.subject) {
+    _lastListFn = () => ({ step: "subjects", ncertKind: kind });
+    const nav = await MarksLive.ncertSubjects(kind);
+    const allow = STATE.exam === "Medical"
+      ? new Set(["Physics", "Chemistry", "Botany", "Zoology", "Biology"])
+      : new Set(["Physics", "Chemistry", "Mathematics", "Biology", "Botany", "Zoology"]);
+    const subjects = (nav.subjects || []).filter(s => allow.has(s.name));
+    const cards = subjects.map(s => `
+      <div class="subj-card" ${mg("ncert", { step: "chapters", subject: s.name, subjectId: s.id, ncertKind: kind })}>
+        <span class="subj-ic">${subjectIcon(s.name)}</span>
+        <div><strong>${s.name}</strong><small>${title}</small></div>
+      </div>`).join("");
+    return `${topbar(title, subtitle)}<div class="subj-grid">${cards || '<div class="empty">No NCERT subjects from MARKS.</div>'}</div>`;
+  }
+
+  const nav = await MarksLive.ncertSubjects(kind);
+  const subj = (nav.subjects || []).find(s => s.name === p.subject);
+  if (!subj) return viewNcert({ step: "subjects", ncertKind: kind });
+
+  let chapters = p._chapters;
+  if (!chapters) {
+    showToast("📚 Loading chapters…");
+    chapters = await MarksLive.ncertChapters(subj.id, kind);
+    p._chapters = chapters;
+  }
+
+  if (p.step === "chapters" || !p.chapter) {
+    _lastListFn = () => ({ step: "chapters", subject: p.subject, subjectId: subj.id, ncertKind: kind, _chapters: chapters });
+    const bc = breadcrumb([{ label: title, view: "ncert", payload: { step: "subjects", ncertKind: kind } }, { label: p.subject }]);
+    const cards = chapters.map(c => `
+      <div class="ch-card qx-ch-row" ${mg("ncert", { step: "sets", subject: p.subject, subjectId: subj.id, chapter: c.name, chapterId: c.id, ncertKind: kind, _chapters: chapters })}>
         <div class="qx-ch-body"><strong>${c.name}</strong><small>${(c.count || 0).toLocaleString()} questions</small></div>
       </div>`).join("");
     return `${topbar(p.subject, title)}${bc}<div class="ch-grid">${cards}</div>`;
   }
 
-  const chNav = subj.chapters.find(c => c.name === p.chapter);
+  const ch = chapters.find(c => c.name === p.chapter);
+  const chapterId = p.chapterId || (ch && ch.id);
   const baseBc = [
-    { label: title, view: "board", payload: { step: "subjects" } },
-    { label: p.subject, view: "board", payload: { step: "chapters", subject: p.subject } },
-    { label: p.chapter, view: "board", payload: { step: "chapterHub", subject: p.subject, chapter: p.chapter } }
+    { label: title, view: "ncert", payload: { step: "subjects", ncertKind: kind } },
+    { label: p.subject, view: "ncert", payload: { step: "chapters", subject: p.subject, subjectId: subj.id, ncertKind: kind, _chapters: chapters } },
+    { label: p.chapter, view: "ncert", payload: { step: "sets", subject: p.subject, subjectId: subj.id, chapter: p.chapter, chapterId, ncertKind: kind, _chapters: chapters } }
   ];
 
-  async function resolveMeta() {
-    let meta = await fetchChapterMeta(examSlug, p.subject, p.chapter);
-    if (meta) return meta;
-    if (chNav && chNav.topics && chNav.topics.length) return { topics: chNav.topics, buckets: [] };
-    return null;
-  }
-
-  if (p.step === "chapterHub" || (!p.topicId && !p.topicTitle && p.step !== "topics" && p.step !== "questions")) {
-    const meta = await resolveMeta();
-    const topics = (meta && meta.topics) || (chNav && chNav.topics) || [];
-    if (topics.length) return viewBoardMarksBank({ ...p, step: "topics" });
-    return viewBoardMarksBank({ ...p, step: "questions" });
-  }
-
-  if (p.step === "topics" && !p.topicId && !p.topicTitle) {
-    _lastListFn = () => ({ step: "topics", subject: p.subject, chapter: p.chapter });
-    const meta = await resolveMeta();
-    const topics = (meta && meta.topics) || (chNav && chNav.topics) || [];
-    const bc = breadcrumb(baseBc.slice(0, -1).concat([{ label: p.chapter }]));
-    const cards = topics.map(t => `
-      <div class="ch-card qx-topic-card" ${mg("board", { step: "questions", mode: "topic", subject: p.subject, chapter: p.chapter, topicId: t.id, topicTitle: t.title })}>
-        <div class="qx-topic-body"><strong>${t.title}</strong><small>${(t.count || 0).toLocaleString()} questions</small></div>
+  if (p.step === "sets" || (!p.setId && p.step !== "questions")) {
+    _lastListFn = () => ({ step: "sets", subject: p.subject, subjectId: subj.id, chapter: p.chapter, chapterId, ncertKind: kind, _chapters: chapters });
+    const sets = await MarksLive.ncertChapterSets(subj.id, chapterId, kind);
+    const bc = breadcrumb(baseBc);
+    const cards = sets.map(s => `
+      <div class="ch-card qx-topic-card" ${mg("ncert", { step: "questions", subject: p.subject, subjectId: subj.id, chapter: p.chapter, chapterId, setId: s.setId, moduleId: s.moduleId, setTitle: s.title, ncertKind: kind, _chapters: chapters })}>
+        <div class="qx-topic-body"><strong>${s.title}</strong><small>${(s.count || 0).toLocaleString()} questions</small></div>
       </div>`).join("");
-    return `${topbar(p.chapter, "Topicwise · " + title)}${bc}<div class="ch-grid qx-topic-grid">${cards || '<div class="empty">No subtopics.</div>'}</div>`;
+    return `${topbar(p.chapter, p.subject + " · " + title)}${bc}<div class="ch-grid qx-topic-grid">${cards || '<div class="empty">No question sets for this chapter.</div>'}</div>`;
   }
 
-  if (!_banksLoaded[examSlug]) {
-    showToast("📚 Loading HSC question bank…");
-    await loadSingleBank(examSlug);
-  }
-  let qs = QUESTIONS.filter(q => q._bank === examSlug && q.subject === p.subject && q.chapter === p.chapter);
-  const meta = await resolveMeta();
-  let filterNote = "";
-  if (p.mode === "topic" && (p.topicId || p.topicTitle) && meta) {
-    const topic = findMetaItem(meta.topics, p.topicId, p.topicTitle);
-    if (topic && topic.questionIds && topic.questionIds.length) {
-      const filtered = filterByMarksIds(qs, topic.questionIds);
-      if (filtered.length) qs = filtered;
-      else filterNote = `<p class="result-count">Could not match subtopic (${topic.questionIds.length} IDs).</p>`;
-    }
-  }
-  _lastListFn = () => ({ ...p, step: "questions" });
-  const modeLabel = p.topicTitle || "All Questions";
-  const bc = breadcrumb(baseBc.concat([
-    p.topicTitle ? { label: "Topicwise", view: "board", payload: { step: "topics", subject: p.subject, chapter: p.chapter } } : null,
-    { label: modeLabel }
-  ].filter(Boolean)));
-  const testMeta = { title: `${p.chapter} · ${modeLabel}`, returnTo: "board", limit: 30 };
-  return `${topbar(p.chapter, `${p.subject} · ${title}`)}${bc}${filterNote}${renderQList(qs, _listPage, testMeta)}`;
-}
-
-const NCERT_KIND_NAV = {
-  lblq: { nav: "cbse_lblq", title: "NCERT Line by Line Qs" },
-  ncoq: { nav: "cbse_ncoq", title: "NCERT & Exemplar Qs" },
-  dbq: { nav: "cbse_dbq", title: "Diagram Based Qs" },
-  ncert: { nav: "cbse_ncert", title: "NCERT Based Qs Bank" }
-};
-
-async function viewNcert(payload) {
-  const board = dashBoardSelected();
-  if (board === "HSC") return viewBoardMarksBank(payload);
-  const kind = (payload && payload.ncertKind) || "ncert";
-  if (STATE.exam === "Medical" && kind === "ncert") {
-    return viewNeetModuleBank(payload, "ncert");
-  }
-  const meta = NCERT_KIND_NAV[kind] || NCERT_KIND_NAV.ncert;
-  let navName = meta.nav;
-  const probe = await fetchModuleNav(navName);
-  if (!probe || !(probe.subjects && probe.subjects.length)) navName = "neet_ncert";
-  return viewNeetModuleBank(payload, "ncert", {
-    navName,
-    title: meta.title,
-    subtitle: "Real NCERT questions · CBSE syllabus",
-    bankSlugs: ["neet"],
-    ncertKind: kind,
-    viewKey: "ncert"
+  showToast("📚 Loading NCERT questions from MARKS…");
+  const qs = await MarksLive.ncertSetQuestions(subj.id, chapterId, p.moduleId, p.setId, {
+    subject: p.subject,
+    chapter: p.chapter,
+    examName: title,
+    bank: "ncert_live"
   });
+
+  _lastListFn = () => ({ ...p, step: "questions" });
+  const modeLabel = p.setTitle || "Questions";
+  const bc = breadcrumb(baseBc.concat([
+    { label: "Sets", view: "ncert", payload: { step: "sets", subject: p.subject, subjectId: subj.id, chapter: p.chapter, chapterId, ncertKind: kind, _chapters: chapters } },
+    { label: modeLabel }
+  ]));
+  const testMeta = { title: `${p.chapter} · ${modeLabel}`, returnTo: "ncert", limit: 30 };
+  return `${topbar(p.chapter, `${p.subject} · ${title}`)}${bc}${renderQList(qs, _listPage, testMeta)}`;
 }
 
 async function viewSubjectBank(payload, moduleId) {
@@ -1933,20 +2019,19 @@ async function marksDashboardSections() {
       <span>${b.icon}</span>${b.label}
     </button>`).join("");
 
-  const boardView = board === "HSC" ? "board" : "ncert";
-  const ncertTools = board === "HSC" ? [
-    { icon: "🟡", title: "HSC Physics PYQs", sub: "Maharashtra board pattern", view: "board", payload: { step: "subjects" } },
-    { icon: "🟡", title: "HSC Chemistry PYQs", sub: "Chapter-wise board Qs", view: "board", payload: { step: "subjects" } },
-    { icon: "🟡", title: "HSC Mathematics PYQs", sub: "MHT-CET aligned bank", view: "board", payload: { step: "subjects" } }
-  ] : (STATE.exam === "Medical" ? [
-    { icon: "📋", title: "NCERT Line by Line Qs", sub: "NEET syllabus aligned", view: "ncert", payload: { step: "subjects", ncertKind: "lblq" } },
-    { icon: "🔵", title: "NCERT & Exemplar Qs", sub: "Board + exemplar mix", view: "ncert", payload: { step: "subjects", ncertKind: "ncoq" } },
-    { icon: "🩺", title: "Diagram Based Qs", sub: "Image-based NCERT Qs", view: "ncert", payload: { step: "subjects", ncertKind: "dbq" } }
-  ] : [
-    { icon: "📋", title: "NCERT Line by Line Qs", sub: "Concept-by-concept", view: "ncert", payload: { step: "subjects", ncertKind: "lblq" } },
-    { icon: "🔵", title: "NCERT & Exemplar Qs", sub: "Class 11 & 12 mix", view: "ncert", payload: { step: "subjects", ncertKind: "ncoq" } },
-    { icon: "📊", title: "Diagram Based Qs", sub: "Visual NCERT practice", view: "ncert", payload: { step: "subjects", ncertKind: "dbq" } }
-  ]);
+  const boardTitle = board === "HSC" ? "HSC (Maharashtra)" : "CBSE";
+  const boardPyqCard = `
+    <div class="dash-tool-card dash-board-pyq-card" ${mg("board", { step: "subjects" })}>
+      <span class="dash-tool-ic">${board === "HSC" ? "🟡" : "📘"}</span>
+      <strong>${boardTitle} Board PYQs</strong>
+      <small>Physics · Chemistry · Mathematics · Biology · with dates</small>
+    </div>`;
+
+  const ncertTools = [
+    { icon: "📋", title: "NCERT Line by Line Qs", sub: "MARKS LBLQ module", view: "ncert", payload: { step: "subjects", ncertKind: "lblq" } },
+    { icon: "🔵", title: "NCERT & Exemplar Qs", sub: "MARKS NCOQ module", view: "ncert", payload: { step: "subjects", ncertKind: "ncoq" } },
+    { icon: "📊", title: "Diagram Based Qs", sub: "MARKS figure-based Qs", view: "ncert", payload: { step: "subjects", ncertKind: "dbq" } }
+  ];
   const toolCards = ncertTools.map(t => `
     <div class="dash-tool-card" ${mg(t.view, t.payload)}>
       <span class="dash-tool-ic">${t.icon}</span>
@@ -1970,8 +2055,15 @@ async function marksDashboardSections() {
       <div class="dash-board-row">${boardPills}</div>
       <div class="dash-ncert-block">
         <div class="dash-ncert-head">
+          <h2>PYQ Bank for Board Exams</h2>
+          <p>Real ${boardTitle} board papers — year &amp; date wise</p>
+        </div>
+        <div class="dash-tool-scroll">${boardPyqCard}</div>
+      </div>
+      <div class="dash-ncert-block">
+        <div class="dash-ncert-head">
           <h2><span class="dash-ncert-tag">NCERT</span> Toolbox</h2>
-          <p>For future Doctors and Engineers</p>
+          <p>Same questions as MARKS web — LBLQ · NCOQ · Diagram</p>
         </div>
         <div class="dash-tool-scroll">${toolCards}</div>
       </div>

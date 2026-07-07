@@ -247,9 +247,16 @@ function viewPractice() {
 // ============ SINGLE QUESTION — MARKS-style practice ============
 window._qxPracticeCtx = null;
 
-function openPracticeQuestion(id) {
+async function openPracticeQuestion(id) {
+  let q = getQ(id);
+  if (q && q._needsFull && q._marksId && typeof MarksLive !== "undefined") {
+    try {
+      showToast("📚 Loading question…");
+      q = await MarksLive.fetchFullQuestion(q._marksId, { subject: q.subject, chapter: q.chapter, bank: q._bank });
+    } catch (e) { /* use preview */ }
+  }
   const list = window._qxListQs || [];
-  const ids = list.length ? list.map(q => q.id) : [id];
+  const ids = list.length ? list.map(x => x.id) : [id];
   const idx = Math.max(0, ids.indexOf(id));
   window._qxPracticeCtx = {
     ids,
