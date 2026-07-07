@@ -73,6 +73,9 @@ const QuantrexExamLogos = (() => {
     "comedk": "comedk",
     "kcet": "kcet",
     "ap eamcet": "ap_eamcet",
+    "ts eamcet": "ts_eamcet",
+    "viteee": "viteee",
+    "nest (niser)": "nest_niser",
     "nda": "nda",
     "kvpy": "kvpy",
     "manipal (met)": "manipal_met",
@@ -83,6 +86,8 @@ const QuantrexExamLogos = (() => {
     "cbse": "CBSE",
     "hsc (maharashtra)": "HSC"
   };
+
+  const CATEGORY_KEYS = new Set(["Engineering", "Medical", "Foundation"]);
 
   let _apiIcons = null;
   let _apiLoading = null;
@@ -123,13 +128,14 @@ const QuantrexExamLogos = (() => {
         for (const cat of (data.data && data.data.exams) || []) {
           for (const r of cat.records || []) {
             const icon = r.icon || (r.examId && r.examId.icon);
-            if (!icon) continue;
+            const url = resolveThemedUrl(icon);
+            if (!url) continue;
             const slug = slugFromTitle(r.title);
-            if (slug) map[slug] = icon;
+            if (slug) map[slug] = url;
             if (typeof BANK_INDEX !== "undefined") {
               for (const [bankSlug, meta] of Object.entries(BANK_INDEX)) {
                 if (meta.title && meta.title.toLowerCase() === String(r.title).toLowerCase()) {
-                  map[bankSlug] = icon;
+                  map[bankSlug] = url;
                 }
               }
             }
@@ -155,16 +161,29 @@ const QuantrexExamLogos = (() => {
     return { key: k, label };
   }
 
+  function staticExamSrc(slug) {
+    if (!slug) return "";
+    if (EXAM_FILES[slug] && !CATEGORY_KEYS.has(slug)) return EXAM_BASE + EXAM_FILES[slug];
+    if (typeof BANK_INDEX !== "undefined" && BANK_INDEX[slug]) {
+      const file = EXAM_FILES[slug];
+      if (file) return EXAM_BASE + file;
+      const derived = slugFromTitle(BANK_INDEX[slug].title);
+      if (derived && EXAM_FILES[derived]) return EXAM_BASE + EXAM_FILES[derived];
+    }
+    return "";
+  }
+
   function examSrc(key) {
     const k = key || (typeof STATE !== "undefined" ? STATE.exam : "Engineering");
-    if (_apiIcons && _apiIcons[k]) return _apiIcons[k];
-    const file = EXAM_FILES[k];
-    if (file) return EXAM_BASE + file;
-    if (typeof BANK_INDEX !== "undefined" && BANK_INDEX[k]) {
-      const slug = slugFromTitle(BANK_INDEX[k].title);
-      if (slug && EXAM_FILES[slug]) return EXAM_BASE + EXAM_FILES[slug];
+    const staticUrl = staticExamSrc(k);
+    if (staticUrl) return staticUrl;
+    if (_apiIcons && _apiIcons[k]) {
+      const url = resolveThemedUrl(_apiIcons[k]);
+      if (url) return url;
     }
-    return EXAM_BASE + EXAM_FILES.Medical;
+    if (EXAM_FILES[k]) return EXAM_BASE + EXAM_FILES[k];
+    const cat = (typeof STATE !== "undefined" && STATE.exam) || "Engineering";
+    return EXAM_BASE + (EXAM_FILES[cat] || EXAM_FILES.jee_main);
   }
 
   function imgHtml(src, label, size, cls) {
@@ -221,7 +240,8 @@ const QuantrexExamLogos = (() => {
   }
 
   return {
-    meta, examSrc, html, fromUrl, subjectSrc, subjectHtml, ncertToolHtml, ncertToolSrc,
-    forQuestion, loadExamIconsFromApi, EXAM_FILES, SUBJ_FILES, NCERT_KIND, EXAM_BASE
+    meta, examSrc, staticExamSrc, slugFromTitle, html, fromUrl, subjectSrc, subjectHtml,
+    ncertToolHtml, ncertToolSrc, forQuestion, loadExamIconsFromApi,
+    EXAM_FILES, SUBJ_FILES, NCERT_KIND, EXAM_BASE
   };
 })();

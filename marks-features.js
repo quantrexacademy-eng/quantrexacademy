@@ -111,21 +111,18 @@ function marksThemedIcon(icon, size, cls, alt) {
     : "";
 }
 
-function dashExamIconFor(exam, apiItems) {
-  const item = (apiItems || []).find(i =>
-    i.title === exam.title
-    || (exam.slug && String(i.title || "").toLowerCase().replace(/[^a-z0-9]+/g, "_") === exam.slug)
-  );
-  if (item && item.icon) return marksThemedIcon(item.icon, 44, "exam-pill-logo", exam.title);
-  return typeof QuantrexExamLogos !== "undefined"
-    ? QuantrexExamLogos.html(exam.slug, 44, "exam-pill-logo")
-    : "";
+function dashExamIconFor(exam) {
+  if (!exam || typeof QuantrexExamLogos === "undefined") return "";
+  const slug = exam.slug
+    || (typeof QuantrexExamLogos.slugFromTitle === "function" ? QuantrexExamLogos.slugFromTitle(exam.title) : null);
+  if (!slug) return "";
+  return QuantrexExamLogos.html(slug, 32, "exam-pill-logo");
 }
 
-function renderDashExamScroll(exams, apiItems) {
+function renderDashExamScroll(exams) {
   return (exams || []).map(e => `
     <div class="exam-pill-card" ${mg("cpyqb", { step: "subjects", exam: e.slug })}>
-      <div class="exam-pill-ic">${dashExamIconFor(e, apiItems)}</div>
+      <div class="exam-pill-ic">${dashExamIconFor(e)}</div>
       <strong>${e.title}</strong>
       <small>${(e.count || 0).toLocaleString()} qs</small>
     </div>`).join("");
@@ -531,7 +528,7 @@ async function viewCpyqb(payload) {
     _lastListFn = () => ({ step: "exams" });
     const cards = exams.map(e => `
       <div class="exam-card" ${mg("cpyqb", { step: "subjects", exam: e.slug })}>
-        <div class="exam-card-ic">${typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(e.slug, 44, "exam-card-logo") : "📝"}</div>
+        <div class="exam-card-ic">${typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(e.slug, 32, "exam-card-logo") : "📝"}</div>
         <strong>${e.title}</strong>
         <small>${e.count.toLocaleString()} questions · ${e.subjects.length} subjects</small>
       </div>`).join("");
@@ -2157,7 +2154,7 @@ async function marksDashboardSections() {
   ]);
   const dashExams = (cpyqbNav || []).filter(e => e.category === STATE.exam);
   const cpyqbApiItems = (marksDash && marksDash.cpyqb && marksDash.cpyqb.items) || [];
-  const examScroll = renderDashExamScroll(dashExams, cpyqbApiItems);
+  const examScroll = renderDashExamScroll(dashExams);
   const subjects = EXAMS[STATE.exam].subjects;
   const subjGrid = subjects.map(s => `
     <div class="subj-mini" ${mg("allqs", { step: "chapters", subject: s })}>
