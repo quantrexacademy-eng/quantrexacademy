@@ -78,7 +78,12 @@ const QuantrexTestEngine = (() => {
     if (!session) return;
     const el = document.getElementById("qxTimer");
     if (!el) return;
-    el.textContent = session.marksMode ? formatMarksTime(session.remainingSec) : formatTime(session.remainingSec);
+    const txt = session.marksMode ? formatMarksTime(session.remainingSec) : formatTime(session.remainingSec);
+    if (session.marksMode) {
+      el.innerHTML = `<span class="mtk-timer-ic">🕐</span>${txt}`;
+    } else {
+      el.textContent = txt;
+    }
     el.classList.toggle("warn", session.remainingSec <= 300);
     el.classList.toggle("danger", session.remainingSec <= 60);
   }
