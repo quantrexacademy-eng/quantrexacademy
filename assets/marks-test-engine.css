@@ -115,7 +115,15 @@ body.marks-test-active #app-main { padding: 0; min-height: 100vh; }
 .mtk-pal-cell:hover { transform: scale(1.06); }
 .mtk-submit-btn { width: 100%; background: #dc2626; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
 .mtk-submit-btn:hover { background: #b91c1c; }
+.mtk-header-tools {
+  display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+  padding: 4px 8px; border-radius: 10px; border: 1px solid #3b4254; background: rgba(18,21,28,.85);
+}
 .mtk-theme-btn { background: none; border: 1px solid #3b4254; color: #94a3b8; border-radius: 8px; padding: 6px 10px; font-size: 16px; cursor: pointer; flex-shrink: 0; }
+.mtk-theme-btn:hover { border-color: #2DD4BF; color: #e2e8f0; }
+.mtk-theme-lbl { font-size: 11px; font-weight: 700; color: #94a3b8; min-width: 32px; text-align: center; }
+.mtk-test-root[data-test-theme="light"] .mtk-header-tools { background: rgba(255,255,255,.9); border-color: #e2e8f0; }
+.mtk-test-root[data-test-theme="light"] .mtk-theme-lbl { color: #64748b; }
 
 .mtk-test-root .mtk-q-text,
 .mtk-test-root .mtk-q-text .qx-content,

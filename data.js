@@ -13909,4 +13909,13 @@ function getBookQuestions(bookId, chapterKey) {
   return QUESTIONS.filter(q => q._book === bookId && q._chapterKey === chapterKey);
 }
 
-function getQ(id) { return QUESTIONS.find(q => q.id === id) || null; }
+function getQ(id) {
+  if (id == null || id === "") return null;
+  let q = QUESTIONS.find(x => x.id === id);
+  if (q) return q;
+  if (typeof id === "string" && /^\d+$/.test(id)) q = QUESTIONS.find(x => x.id === Number(id));
+  if (q) return q;
+  if (typeof id === "number") q = QUESTIONS.find(x => Number(x.id) === id);
+  if (q) return q;
+  return QUESTIONS.find(x => String(x.id) === String(id)) || null;
+}

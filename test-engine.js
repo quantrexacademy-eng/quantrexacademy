@@ -1,4 +1,34 @@
 // Quantrex Test Engine — MARKS-style exam simulation (sections, fullscreen, countdown)
+
+function getTestMountEl() {
+  const appMain = document.getElementById("app-main");
+  if (appMain) return appMain;
+  return document.getElementById("ts-root");
+}
+window.getTestMountEl = getTestMountEl;
+
+function getTestTheme() {
+  return localStorage.getItem("quantrex_test_theme") || "dark";
+}
+
+function setTestTheme(mode) {
+  const m = mode === "light" ? "light" : "dark";
+  localStorage.setItem("quantrex_test_theme", m);
+  const root = document.querySelector(".mtk-test-root");
+  if (root) root.setAttribute("data-test-theme", m);
+  document.querySelectorAll(".mtk-theme-lbl").forEach(el => {
+    el.textContent = m === "light" ? "Light" : "Dark";
+  });
+  const btn = document.getElementById("mtkThemeBtn");
+  if (btn) btn.textContent = m === "dark" ? "☀️" : "🌙";
+}
+window.setTestTheme = setTestTheme;
+
+function toggleTestTheme() {
+  setTestTheme(getTestTheme() === "dark" ? "light" : "dark");
+}
+window.toggleTestTheme = toggleTestTheme;
+
 const QuantrexTestEngine = (() => {
   const SCORING = {
     jee: { correct: 4, wrong: -1, unattempted: 0 },
@@ -150,7 +180,16 @@ const QuantrexTestEngine = (() => {
   }
 
   function renderMarksSectionTabs() {
-    return "";
+    if (!session || !session.sections || session.sections.length < 2) return "";
+    const cur = currentSectionIdx();
+    const tabs = session.sections.map((sec, i) =>
+      `<button type="button" class="mtk-sec-tab${i === cur ? " active" : ""}" data-sec="${i}">${sec.shortLabel || sec.label}</button>`
+    ).join("");
+    return `<div class="mtk-sec-bar">
+      <button type="button" class="mtk-sec-nav" id="mtkSecPrev" title="Previous section">‹</button>
+      <div class="mtk-sec-tabs">${tabs}</div>
+      <button type="button" class="mtk-sec-nav" id="mtkSecNext" title="Next section">›</button>
+    </div>`;
   }
 
   function renderMarksPaletteHead() {
@@ -233,28 +272,6 @@ const QuantrexTestEngine = (() => {
     </aside>`;
   }
 
-  function getTestFontScale() {
-    if (typeof window.getTestFontScale === "function") return window.getTestFontScale();
-    return localStorage.getItem("quantrex_test_font") || "medium";
-  }
-
-  function getTestTheme() {
-    return localStorage.getItem("quantrex_test_theme") || "dark";
-  }
-
-  function setTestTheme(mode) {
-    const m = mode === "light" ? "light" : "dark";
-    localStorage.setItem("quantrex_test_theme", m);
-    const root = document.querySelector(".mtk-test-root");
-    if (root) root.setAttribute("data-test-theme", m);
-    const btn = document.getElementById("mtkThemeBtn");
-    if (btn) btn.textContent = m === "dark" ? "☀️" : "🌙";
-  }
-
-  function toggleTestTheme() {
-    setTestTheme(getTestTheme() === "dark" ? "light" : "dark");
-  }
-
   function renderMarksQuestion() {
     const q = getQ(session.ids[session.idx]);
     if (!q) return '<div class="empty">Question not found.</div>';
@@ -295,9 +312,13 @@ const QuantrexTestEngine = (() => {
           <div class="mtk-brand"><span class="mtk-logo">Q</span><span class="mtk-brand-text">Quantrex</span></div>
         </div>
         ${timerHtml}
+        <div class="mtk-header-tools">
+          <button type="button" class="mtk-theme-btn" id="mtkThemeBtn" title="Toggle light/dark mode">${testTheme === "dark" ? "☀️" : "🌙"}</button>
+          <span class="mtk-theme-lbl" id="mtkThemeLbl">${testTheme === "light" ? "Light" : "Dark"}</span>
+          <button type="button" class="mtk-font-btn" id="mtkFontDownHdr" title="Decrease text size">A−</button>
+          <button type="button" class="mtk-font-btn" id="mtkFontUpHdr" title="Increase text size">A+</button>
+        </div>
         ${stopBtn}
-        <button type="button" class="mtk-theme-btn" id="mtkThemeBtn" title="Toggle light/dark">${testTheme === "dark" ? "☀️" : "🌙"}</button>
-        <button type="button" class="mtk-report-btn" id="mtkReportBtn" title="Report mistake">🚩 Report</button>
         <button type="button" class="mtk-submit-top" id="qxSubmitTop">Submit</button>
       </header>
       ${renderMarksSectionTabs()}
@@ -430,13 +451,16 @@ const QuantrexTestEngine = (() => {
       };
     }
     const mtkTheme = root.querySelector("#mtkThemeBtn");
-    if (mtkTheme) mtkTheme.onclick = toggleTestTheme;
+    if (mtkTheme) mtkTheme.onclick = () => { if (typeof toggleTestTheme === "function") toggleTestTheme(); };
     const mtkStop = root.querySelector("#mtkStopBtn");
     if (mtkStop) mtkStop.onclick = () => { if (typeof mtkShowStopModal === "function") mtkShowStopModal(); };
-    const fontDown = root.querySelector("#mtkFontDown");
-    if (fontDown) fontDown.onclick = () => { if (typeof bumpTestFont === "function") bumpTestFont(-1); };
-    const fontUp = root.querySelector("#mtkFontUp");
-    if (fontUp) fontUp.onclick = () => { if (typeof bumpTestFont === "function") bumpTestFont(1); };
+    const bindFont = (btn, delta) => {
+      if (btn) btn.onclick = () => { if (typeof bumpTestFont === "function") bumpTestFont(delta); };
+    };
+    bindFont(root.querySelector("#mtkFontDown"), -1);
+    bindFont(root.querySelector("#mtkFontUp"), 1);
+    bindFont(root.querySelector("#mtkFontDownHdr"), -1);
+    bindFont(root.querySelector("#mtkFontUpHdr"), 1);
     const qviewGear = root.querySelector("#mtkQviewGear");
     if (qviewGear) qviewGear.onclick = () => { if (typeof toggleMtkQviewSettings === "function") toggleMtkQviewSettings(); };
     root.querySelectorAll(".qx-pal-cell, .mtk-pal-cell").forEach(cell => {
@@ -1155,6 +1179,10 @@ function organizeSubjectWisePaper(questionIds, opts) {
 }
 
 function organizeExamPaper(questionIds, opts) {
+  const format = resolvePaperFormat(opts || {});
+  if (format === "jee_main" && questionIds.length >= 20) {
+    return organizeJeeMainPaper(questionIds);
+  }
   return organizeSubjectWisePaper(questionIds, opts || {});
 }
 
@@ -1203,12 +1231,10 @@ function organizeJeeMainPaper(questionIds) {
   return { orderedIds, sections };
 }
 
-function getTestMountEl() {
-  return document.getElementById("app-main") || document.getElementById("ts-root");
-}
-
 function enterMarksTestMode() {
   document.body.classList.add("marks-test-active");
+  const appMain = document.getElementById("app-main");
+  if (appMain) appMain.style.display = "block";
   const sidebar = document.getElementById("sidebar");
   const topbar = document.querySelector(".topbar");
   const main = document.querySelector(".main");
@@ -1218,9 +1244,11 @@ function enterMarksTestMode() {
   if (main) main.style.marginLeft = "0";
   if (content) content.style.padding = "0";
   if (content) content.style.maxWidth = "none";
-  const root = document.documentElement;
-  if (root.requestFullscreen) root.requestFullscreen().catch(() => {});
-  else if (root.webkitRequestFullscreen) root.webkitRequestFullscreen();
+  if (!window.TS_STANDALONE) {
+    const root = document.documentElement;
+    if (root.requestFullscreen) root.requestFullscreen().catch(() => {});
+    else if (root.webkitRequestFullscreen) root.webkitRequestFullscreen();
+  }
 }
 
 function exitMarksTestMode() {
@@ -1466,12 +1494,27 @@ function launchTestSession(main) {
     if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") tsRenderStandalone();
     return;
   }
-  currentView = "test";
-  main.innerHTML = QuantrexTestEngine.render();
-  QuantrexTestEngine.bindEvents(main);
-  QuantrexTestEngine.launchTimer();
-  document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
-  if (typeof Mx !== "undefined") Mx.afterRender(main);
+  try {
+    enterMarksTestMode();
+    document.body.classList.remove("marks-instr-active");
+    if (main.id === "app-main") main.style.display = "block";
+    currentView = "test";
+    const html = QuantrexTestEngine.render();
+    if (!html || !String(html).trim()) {
+      throw new Error("Test render returned empty HTML");
+    }
+    main.innerHTML = html;
+    QuantrexTestEngine.bindEvents(main);
+    QuantrexTestEngine.launchTimer();
+    document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+    if (typeof Mx !== "undefined") Mx.afterRender(main);
+  } catch (err) {
+    console.error("Quantrex launchTestSession failed:", err);
+    showToast("⚠️ Test UI failed to load. Refresh and try again.");
+    exitMarksTestMode();
+    main.innerHTML = "";
+    if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") tsRenderStandalone();
+  }
 }
 
 async function startTest(questionIds, title, returnTo, options) {
@@ -1502,22 +1545,30 @@ async function startTest(questionIds, title, returnTo, options) {
 
   const main = getTestMountEl();
   const run = async () => {
-    if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
-      const need = questionIds.filter(id => {
-        const q = getQ(id);
-        return q && MarksLive.needsFullQuestion(q);
-      });
-      if (need.length) {
-        showToast("📚 Loading question options…");
-        await MarksLive.prefetchQuestions(questionIds);
+    try {
+      if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
+        const need = questionIds.filter(id => {
+          const q = getQ(id);
+          return q && MarksLive.needsFullQuestion(q);
+        });
+        if (need.length) {
+          showToast("📚 Loading question options…");
+          await MarksLive.prefetchQuestions(questionIds);
+        }
       }
-    }
-    const ok = QuantrexTestEngine.begin(config);
-    if (!ok) {
+      const ok = QuantrexTestEngine.begin(config);
+      if (!ok) {
+        exitMarksTestMode();
+        if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") tsRenderStandalone();
+        return;
+      }
+      launchTestSession(main);
+    } catch (err) {
+      console.error("Quantrex startTest run failed:", err);
+      showToast("⚠️ Could not start test. Try again.");
       exitMarksTestMode();
-      return;
+      if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") tsRenderStandalone();
     }
-    launchTestSession(main);
   };
 
   const launchMarks = () => {
@@ -1618,19 +1669,23 @@ function setTestFontScale(scale) {
   localStorage.setItem("quantrex_test_font", s);
   const root = document.querySelector(".mtk-test-root");
   if (root) root.setAttribute("data-font-scale", s);
-  const lbl = document.getElementById("mtkFontLbl");
-  if (lbl) lbl.textContent = s === "xlarge" ? "XL" : (TEST_FONT_LABELS[s] || "Medium");
+  const lblText = s === "xlarge" ? "XL" : (TEST_FONT_LABELS[s] || "Medium");
+  document.querySelectorAll("#mtkFontLbl, .mtk-font-lbl").forEach(lbl => {
+    lbl.textContent = lblText;
+  });
   document.querySelectorAll(".mtk-font-preset").forEach(btn => {
     btn.classList.toggle("on", btn.dataset.scale === s);
   });
 }
-
 function bumpTestFont(delta) {
   const cur = getTestFontScale();
   const idx = TEST_FONT_ORDER.indexOf(cur);
   const next = TEST_FONT_ORDER[Math.max(0, Math.min(TEST_FONT_ORDER.length - 1, idx + delta))];
   setTestFontScale(next);
 }
+window.setTestFontScale = setTestFontScale;
+window.bumpTestFont = bumpTestFont;
+window.getTestFontScale = getTestFontScale;
 
 function mtkQviewSettingsHtml() {
   const scale = getTestFontScale();

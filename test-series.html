@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Kanit:wght@400;500;600;700;800&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/quantrex-brand.css?v=qxbrand1">
-    <link rel="stylesheet" href="test-series-page.css?v=qxtest446">
-    <link rel="stylesheet" href="assets/marks-test-engine.css?v=qxtest446">
+    <link rel="stylesheet" href="test-series-page.css?v=qxtest447">
+    <link rel="stylesheet" href="assets/marks-test-engine.css?v=qxtest447">
     <style>
         body.marks-instr-active { overflow: hidden; }
         .marks-instr-fullpage { position: fixed; inset: 0; z-index: 10000; display: flex; flex-direction: column; background: #0c0e14; color: #e2e8f0; }
@@ -52,9 +52,11 @@
         .mtk-dot.unvisited { background: #6c757d; }
         .mtk-dot.rev-ans { background: #6f42c1; }
         .mtk-dot.rev-skip { background: #9b59b6; }
+        #app-main { display: none; }
         body.marks-test-active .ts-app,
         body.marks-test-active #ts-root { display: none !important; }
         body.marks-test-active #app-main {
+            display: block !important;
             position: fixed;
             inset: 0;
             z-index: 9000;
@@ -69,12 +71,12 @@
     <div id="ts-root"><div class="ts-loading">Loading JEE Main Test Series 2027…</div></div>
     <div id="app-main"></div>
     <div id="appToast"></div>
-    <script>window.QX_BUILD = "qxtest446"; window.TS_STANDALONE = true;</script>
-    <script src="math-render.js?v=qxtest446" defer></script>
-    <script src="question-format.js?v=qxtest446" defer></script>
-    <script src="data.js?v=qxtest446" defer></script>
+    <script>window.QX_BUILD = "qxtest447"; window.TS_STANDALONE = true;</script>
+    <script src="math-render.js?v=qxtest447" defer></script>
+    <script src="question-format.js?v=qxtest447" defer></script>
+    <script src="data.js?v=qxtest447" defer></script>
 
-    <script src="test-engine.js?v=qxtest446" defer></script>
-    <script src="test-series.js?v=qxtest446" defer></script>
+    <script src="test-engine.js?v=qxtest447" defer></script>
+    <script src="test-series.js?v=qxtest447" defer></script>
 </body>
 </html>

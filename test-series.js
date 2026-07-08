@@ -137,8 +137,8 @@ async function tsLoadQuestionsForTest(test) {
       const loadedQs = qs.map(tsNormalizeShardQuestion).filter(Boolean);
       const idsFromShard = loadedQs.map(q => q.id).filter(Boolean);
       const checkIds = wantIds.length ? wantIds : idsFromShard;
-      const found = checkIds.filter(id => typeof getQ === "function" && getQ(id)).length;
-      if (found > 0) return { count: found, ids: wantIds.length ? wantIds : idsFromShard };
+      const resolvedIds = (wantIds.length ? wantIds : idsFromShard).filter(id => typeof getQ === "function" && getQ(id));
+      if (resolvedIds.length > 0) return { count: resolvedIds.length, ids: resolvedIds };
     } catch (e) { /* try next */ }
   }
 
@@ -212,9 +212,8 @@ function quizrrInstructionHtml(config) {
 }
 
 function showQuizrrInstructions(config, onDone, onCancel) {
-  if (config.marksMode !== false) enterMarksTestMode();
   const mount = typeof getTestMountEl === "function" ? getTestMountEl() : document.getElementById("app-main");
-  if (mount) mount.innerHTML = "";
+  if (mount && mount.id === "app-main") mount.innerHTML = "";
   const tsApp = document.querySelector(".ts-app");
   if (tsApp) { tsApp.dataset.prevDisplay = tsApp.style.display || ""; tsApp.style.display = "none"; }
   const existing = document.getElementById("marksInstrOverlay");
@@ -367,13 +366,31 @@ function tsIconNavHtml() {
   </nav>`;
 }
 
+function tsPageThemeIcon() {
+  const t = document.documentElement.getAttribute("data-theme") || "dark";
+  return t === "light" ? "🌙" : "☀️";
+}
+
+function tsTogglePageTheme() {
+  const root = document.documentElement;
+  const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+  root.setAttribute("data-theme", next);
+  localStorage.setItem("quantrex_page_theme", next);
+  const btn = document.getElementById("tsPageThemeBtn");
+  if (btn) btn.textContent = next === "light" ? "🌙" : "☀️";
+}
+window.tsTogglePageTheme = tsTogglePageTheme;
+
 function tsAppShell(inner) {
   return `<div class="ts-app">
     ${tsIconNavHtml()}
     <div class="ts-app-main">
       <header class="ts-topbar">
         ${tsBreadcrumb()}
-        <div class="ts-user-greet"><strong>Hey, ${tsUserName()}</strong><span>JEE Main 2027 Batch</span></div>
+        <div class="ts-topbar-actions">
+          <button type="button" class="ts-theme-btn" id="tsPageThemeBtn" onclick="tsTogglePageTheme()" title="Light / Dark mode">${tsPageThemeIcon()}</button>
+          <div class="ts-user-greet"><strong>Hey, ${tsUserName()}</strong><span>JEE Main 2027 Batch</span></div>
+        </div>
       </header>
       <div class="ts-content">${inner}</div>
     </div>
@@ -966,6 +983,10 @@ function tsBootFromUrl() {
 
 (function tsInit() {
   if (typeof document === "undefined") return;
+  try {
+    const saved = localStorage.getItem("quantrex_page_theme");
+    if (saved === "light" || saved === "dark") document.documentElement.setAttribute("data-theme", saved);
+  } catch (e) { /* */ }
   document.addEventListener("DOMContentLoaded", () => {
     if (window.TS_STANDALONE) tsBootFromUrl();
     setTimeout(async () => {
