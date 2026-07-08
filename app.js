@@ -838,6 +838,22 @@ function bindDynamic() {
 }
 
 // ---------- Init ----------
+let _qxBooted = false;
+let _qxAuthResolved = false;
+
+function qxShowBootLoading() {
+  const main = document.getElementById("app-main");
+  if (main && !main.innerHTML.trim()) {
+    main.innerHTML = '<div class="empty">⏳ Loading dashboard…</div>';
+  }
+}
+
+function qxScheduleBoot() {
+  if (_qxBooted) return;
+  _qxBooted = true;
+  bootApp();
+}
+
 function bootApp() {
   if (typeof qxForceResetShell === "function") qxForceResetShell({ clearContent: false });
   else if (typeof qxClearBlockingMount === "function") qxClearBlockingMount();
@@ -881,8 +897,10 @@ function bootApp() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  qxShowBootLoading();
+
   if (typeof QuantrexDB === "undefined" || !QuantrexDB.init()) {
-    bootApp();
+    qxScheduleBoot();
     return;
   }
 
@@ -892,22 +910,30 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentView) render(currentView);
   };
 
+  const authTimeout = setTimeout(() => {
+    if (_qxAuthResolved || _qxBooted) return;
+    console.warn("Quantrex: auth timeout — booting with local data");
+    qxScheduleBoot();
+  }, 2800);
+
   QuantrexDB.watchAuth((user, loggedIn) => {
+    _qxAuthResolved = true;
+    clearTimeout(authTimeout);
+
     if (loggedIn && user) {
       if (localStorage.getItem("quantrex_exam")) STATE.exam = localStorage.getItem("quantrex_exam");
       const name = user.displayName || user.email || "Student";
       showToast("🔥 Firebase DB connected · Welcome, " + name);
       QuantrexDB.seedAppMeta().catch(() => {});
       if (typeof QuantrexPayments !== "undefined") QuantrexPayments.handleReturnQuery().catch(() => {});
-      bootApp();
+      qxScheduleBoot();
     } else {
       const cached = JSON.parse(localStorage.getItem("quantrex_user") || "null");
       if (cached && (cached.uid || cached.phone || cached.email)) {
         if (cached.uid) {
-          QuantrexDB.syncForUser({ uid: cached.uid, email: cached.email, displayName: cached.name }).then(() => bootApp());
-        } else {
-          bootApp();
+          QuantrexDB.syncForUser({ uid: cached.uid, email: cached.email, displayName: cached.name }).catch(() => {});
         }
+        qxScheduleBoot();
       } else {
         window.location.href = "login.html";
       }

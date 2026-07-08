@@ -141,7 +141,7 @@ const QuantrexDB = (() => {
 
   function watchAuth(callback) {
     if (!init()) return;
-    auth.onAuthStateChanged(async user => {
+    auth.onAuthStateChanged(user => {
       if (user) {
         localStorage.setItem("quantrex_user", JSON.stringify({
           uid: user.uid,
@@ -151,8 +151,8 @@ const QuantrexDB = (() => {
           exam: localStorage.getItem("quantrex_exam") || "Engineering",
           loggedAt: Date.now()
         }));
-        await syncForUser(user);
         if (callback) callback(user, true);
+        syncForUser(user).catch(e => console.warn("Firebase sync:", e.message));
       } else {
         currentUid = null;
         if (listener) { listener(); listener = null; }
