@@ -160,7 +160,26 @@ body:not(.marks-test-active):not(.allen-practice-active) #app-main {
 .mtk-test-root.allen-cbt .mtk-sec-tab.mtk-sec-math.active { border-bottom-color: #2563eb; background: rgba(37,99,235,.1); color: #1d4ed8; }
 .mtk-test-root.allen-cbt .mtk-sec-tab.mtk-sec-phys.active { border-bottom-color: #16a34a; background: rgba(22,163,74,.1); color: #15803d; }
 .mtk-test-root.allen-cbt .mtk-sec-tab.mtk-sec-chem.active { border-bottom-color: #9333ea; background: rgba(147,51,234,.1); color: #7e22ce; }
-.mtk-test-root.allen-cbt .mtk-main { background: var(--allen-card); }
+.mtk-test-root.allen-cbt .mtk-body {
+  grid-template-columns: minmax(0, 1fr) 272px;
+}
+.mtk-test-root.allen-cbt .mtk-main {
+  background: var(--allen-card);
+  padding: 14px 22px 18px;
+}
+.mtk-test-root.allen-cbt .mtk-q-text { margin-bottom: 16px; line-height: 1.6; }
+.mtk-test-root.allen-cbt .mtk-options-grid .mtk-opt,
+.mtk-test-root.allen-cbt .mtk-options-exam-cols .mtk-opt {
+  padding: 10px 12px;
+  align-items: center;
+  min-height: 48px;
+}
+.mtk-test-root.allen-cbt .mtk-opt-letter { min-width: 18px; }
+.mtk-test-root.allen-cbt .mtk-palette {
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
+}
+.mtk-test-root.allen-cbt .mtk-pal-groups { flex: 1; min-height: 0; }
 .mtk-test-root.allen-cbt .mtk-q-text,
 .mtk-test-root.allen-cbt .mtk-q-text .qx-content,
 .mtk-test-root.allen-cbt .mtk-opt-text,

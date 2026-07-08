@@ -52,9 +52,14 @@ body.marks-test-active #app-main { padding: 0; min-height: 100vh; }
 .mtk-options.qx-opts-img .mtk-opt-text { display: flex; justify-content: center; }
 .mtk-q-text { margin-bottom: 24px; }
 .mtk-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
-.mtk-options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.mtk-options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.mtk-options-exam-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .mtk-options-exam { display: flex; flex-direction: column; gap: 10px; }
 .mtk-options-match-col .mtk-opt { min-height: auto; }
+@media (max-width: 900px) {
+  .mtk-options-grid,
+  .mtk-options-exam-cols { grid-template-columns: 1fr; }
+}
 @media (max-width: 640px) { .mtk-options-grid { grid-template-columns: 1fr; } }
 .mtk-opt { display: flex; align-items: flex-start; gap: 12px; background: #1e2128; border: 1px solid #3d4455; border-radius: 8px; padding: 12px 14px; cursor: pointer; text-align: left; font-family: 'Inter', sans-serif; color: #f1f5f9; transition: border-color .12s, background .12s, box-shadow .12s; width: 100%; }
 .mtk-opt:hover { border-color: #60a5fa; background: #232733; }

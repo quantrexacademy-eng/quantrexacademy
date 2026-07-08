@@ -347,9 +347,11 @@ const QuantrexTestEngine = (() => {
         <div class="mtk-main" style="padding:40px"><div class="empty" style="color:#f87171;font-size:16px">Question not found (id: ${session.ids[session.idx]}). <button type="button" class="mtk-btn mtk-btn-ghost" onclick="if(typeof go==='function')go('tests')">← Back</button></div></div>
       </div>`;
     }
-    const incomplete = typeof MarksLive !== "undefined" && MarksLive.isQuestionIncomplete
-      ? MarksLive.isQuestionIncomplete(q)
+    const textReady = typeof MarksLive === "undefined" || MarksLive.isQuestionTextReady(q);
+    const optsIncomplete = textReady && typeof MarksLive !== "undefined" && MarksLive.isOptionsIncomplete
+      ? MarksLive.isOptionsIncomplete(q)
       : false;
+    const isNumQ = typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.getType(q) === "numerical";
     const selected = session.answers[session.idx];
     const markBadges = renderMarkingBadges();
     const timerHtml = session.durationSec != null
@@ -364,7 +366,9 @@ const QuantrexTestEngine = (() => {
     const optsClass = typeof QuantrexQFormat !== "undefined"
       ? QuantrexQFormat.testOptsContainerClass(q)
       : "mtk-options mtk-options-grid";
-    const opts = incomplete
+    const opts = (!textReady)
+      ? `<div class="empty" style="padding:24px;grid-column:1/-1">Loading options…</div>`
+      : (optsIncomplete && !isNumQ)
       ? `<div class="empty" style="padding:24px;grid-column:1/-1">Loading options…</div>`
       : (typeof QuantrexQFormat !== "undefined"
         ? QuantrexQFormat.renderTestOptions(q, selected, htmlContent)
@@ -406,7 +410,7 @@ const QuantrexTestEngine = (() => {
             <span class="mtk-q-num">Q${session.idx + 1}</span>${markBadges}
             ${typeBadge}
           </div>
-          <div class="mtk-q-text qx-content">${incomplete ? '<div class="empty">Loading question…</div>' : htmlContent(q.q)}</div>
+          <div class="mtk-q-text qx-content">${textReady ? htmlContent(q.q) : '<div class="empty">Loading question…</div>'}</div>
           <div class="${optsClass}" id="qxOpts">${opts}</div>
           <div class="mtk-controls">
             <button type="button" class="mtk-btn mtk-btn-clear" id="qxClearBtn">Clear Response</button>
@@ -570,11 +574,8 @@ const QuantrexTestEngine = (() => {
   }
 
   let _refreshBusy = false;
-  function questionNeedsHydrate(q) {
+  function questionTextNeedsHydrate(q) {
     if (!q) return false;
-    if (typeof MarksLive !== "undefined" && MarksLive.isQuestionReady) {
-      return !MarksLive.isQuestionReady(q);
-    }
     return typeof MarksLive !== "undefined" && MarksLive.isQuestionIncomplete
       ? MarksLive.isQuestionIncomplete(q)
       : false;
@@ -586,8 +587,11 @@ const QuantrexTestEngine = (() => {
     _refreshBusy = true;
     try {
     const q = getQ(session.ids[session.idx]);
-    const incomplete = questionNeedsHydrate(q);
-    if (incomplete && q && q._marksId && typeof MarksLive !== "undefined") {
+    const textNeed = questionTextNeedsHydrate(q);
+    const optsNeed = q && typeof MarksLive !== "undefined" && MarksLive.isOptionsIncomplete
+      ? MarksLive.isOptionsIncomplete(q)
+      : false;
+    if (textNeed && q && q._marksId && typeof MarksLive !== "undefined") {
       main.innerHTML = `<div class="mtk-test-root allen-cbt" data-test-theme="${getTestTheme()}"><div class="empty" style="padding:48px;text-align:center">Loading question…</div></div>`;
       try {
         await MarksLive.ensureQuestionFull(q, { force: true });
@@ -598,6 +602,19 @@ const QuantrexTestEngine = (() => {
         q2._needsFull = false;
         q2._fullFetched = true;
       }
+    } else if (optsNeed && q && q._marksId && typeof MarksLive !== "undefined") {
+      main.innerHTML = renderQuestion();
+      bindEvents(main);
+      setTestTheme(getTestTheme());
+      setTestFontScale(getTestFontScale());
+      if (typeof Mx !== "undefined") Mx.afterRender(main);
+      marksPersistSession();
+      MarksLive.ensureQuestionFull(q, { force: true }).then(() => {
+        if (typeof tsSyncQMap === "function") tsSyncQMap([session.ids[session.idx]]);
+        _refreshBusy = false;
+        refresh();
+      }).catch(() => { _refreshBusy = false; });
+      return;
     }
     if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
       const near = [session.idx - 1, session.idx + 1, session.idx + 2]

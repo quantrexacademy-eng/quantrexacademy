@@ -294,8 +294,13 @@ const QuantrexQFormat = (() => {
     const t = getType(q);
     if (t === "numerical" || t === "subjective") return "mtk-options mtk-numerical-wrap";
     const extra = optsLayoutClass(q);
-    const layout = (extra && extra.includes("match")) ? "mtk-options-exam mtk-options-match-col" : "mtk-options-exam";
-    return "mtk-options " + layout + (extra && !extra.includes("match") ? " " + extra : "");
+    if (extra && extra.includes("match")) {
+      return "mtk-options mtk-options-exam mtk-options-match-col" + (extra ? " " + extra : "");
+    }
+    if (extra && extra.includes("img")) {
+      return "mtk-options mtk-options-grid qx-opts-img" + (extra ? " " + extra : "");
+    }
+    return "mtk-options mtk-options-grid mtk-options-exam-cols";
   }
 
   function practiceOptsContainerClass(q) {

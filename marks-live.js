@@ -116,19 +116,38 @@ const MarksLive = (() => {
     return !options.some(optionHasContent);
   }
 
-  function isQuestionReady(q) {
+  function isNumericalQuestion(q) {
     if (!q) return false;
-    const qType = q.questionType || q.type || "";
-    if (isNonMcqType(qType)) return !isBlankText(q.q);
-    if (q._shardLoaded || q._bank === "ts_active") {
-      return !isBlankText(q.q) && !isPlaceholderOptions(q.options);
-    }
-    if (!q._marksId) return !isBlankText(q.q) && !isPlaceholderOptions(q.options);
-    return !needsFullQuestion(q);
+    if (isNonMcqType(q.questionType || q.type)) return true;
+    if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.getType(q) === "numerical") return true;
+    const text = String(q.q || "");
+    if (/nearest\s+integer|nearest integer|integer\s*value|integer\s*type|_______|_{3,}/i.test(text)) return true;
+    if (q.correctValue != null && String(q.correctValue) !== "") return true;
+    return false;
+  }
+
+  function isQuestionTextReady(q) {
+    return !!q && !isBlankText(q.q);
+  }
+
+  function isOptionsReady(q) {
+    if (!q) return false;
+    if (isNumericalQuestion(q)) return isQuestionTextReady(q);
+    if (q._shardLoaded || q._bank === "ts_active") return !isPlaceholderOptions(q.options);
+    if (!q._marksId) return !isPlaceholderOptions(q.options);
+    return !needsFullQuestion(q) || !isPlaceholderOptions(q.options);
+  }
+
+  function isQuestionReady(q) {
+    return isQuestionTextReady(q) && isOptionsReady(q);
   }
 
   function isQuestionIncomplete(q) {
-    return !isQuestionReady(q);
+    return !isQuestionTextReady(q);
+  }
+
+  function isOptionsIncomplete(q) {
+    return isQuestionTextReady(q) && !isOptionsReady(q);
   }
 
   function hasRealSolution(sol) {
@@ -525,6 +544,10 @@ const MarksLive = (() => {
     isNonMcqType,
     isPlaceholderOptions,
     optionHasContent,
+    isNumericalQuestion,
+    isQuestionTextReady,
+    isOptionsReady,
+    isOptionsIncomplete,
     isQuestionReady,
     isQuestionIncomplete,
     hasRealSolution,

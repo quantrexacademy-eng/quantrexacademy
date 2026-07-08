@@ -156,6 +156,33 @@ function tsNormalizeQuestionId(raw) {
   return raw;
 }
 
+function tsDerivePaperSource(test) {
+  if (!test) return null;
+  if (test.paperSource) return String(test.paperSource);
+  const title = String(test.title || test.source || "").trim();
+  const m = title.match(/JEE\s+Main\s+(\d{4})\s*\(\s*(\d{1,2})\s+(\w+)\s+Shift\s+(\d)\s*\)/i);
+  if (!m) return null;
+  const monMap = {
+    jan: "january", feb: "february", mar: "march", apr: "april", april: "april",
+    may: "may", jun: "june", june: "june", jul: "july", july: "july",
+    aug: "august", august: "august", sep: "september", sept: "september", september: "september",
+    oct: "october", october: "october", nov: "november", november: "november", dec: "december", december: "december"
+  };
+  const monKey = m[3].toLowerCase();
+  const mon = monMap[monKey] || monMap[monKey.slice(0, 3)] || monKey;
+  const day = String(m[2]).padStart(2, "0");
+  return `jee_main_${m[1]}_${day}_${mon}_shift_${m[4]}`;
+}
+
+function tsIsNumericalShard(q) {
+  if (!q) return false;
+  if (/numerical|integer/i.test(String(q.type || q.questionType || ""))) return true;
+  const text = String(q.q || q.question || "");
+  if (/nearest\s+integer|nearest integer|integer\s*value|_______|_{3,}/i.test(text)) return true;
+  if (q.correctValue != null && String(q.correctValue) !== "") return true;
+  return false;
+}
+
 function tsNormalizeShardQuestion(q) {
   if (!q) return null;
   const text = tsFixUrls(q.q || q.question || q.text || q.stem || "");
@@ -173,11 +200,11 @@ function tsNormalizeShardQuestion(q) {
   const hasOpts = (out.options || []).some(o => {
     const s = String(o || "");
     if (/<img/i.test(s)) return true;
-    const t = s.replace(/<[^>]+>/g, " ").trim();
+    const t = s.replace(/<br\s*\/?>/gi, " ").replace(/<[^>]+>/g, " ").trim();
     return t.length > 0 && !/^[ABCDabcd1234]$/.test(t);
   });
   const hasQ = String(out.q || "").replace(/<[^>]+>/g, " ").trim().length > 8;
-  const isNum = /numerical|integer/i.test(String(out.questionType || out.type || ""));
+  const isNum = tsIsNumericalShard(out);
   if (hasQ && (hasOpts || isNum)) {
     out._shardLoaded = true;
     out._fullFetched = true;
@@ -201,9 +228,14 @@ async function tsLoadQuestionsForTest(test) {
   await tsEnsureQuestionMeta();
   const v = typeof QX_BUILD !== "undefined" ? QX_BUILD : Date.now();
   const paths = [];
+  const derived = tsDerivePaperSource(test);
+  if (derived) {
+    paths.push(`data/quizrr/jee_main_test_series_2027/paper_banks/${derived}.json`);
+  }
   if (test.paperSource) {
     const ps = String(test.paperSource).toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "").slice(0, 64);
-    paths.push(`data/quizrr/jee_main_test_series_2027/paper_banks/${ps}.json`);
+    const bankPath = `data/quizrr/jee_main_test_series_2027/paper_banks/${ps}.json`;
+    if (!paths.includes(bankPath)) paths.push(bankPath);
   }
   paths.push(`data/quizrr/jee_main_test_series_2027/questions/${test.id}.json`);
 
@@ -1076,6 +1108,8 @@ function tsStandaloneLaunchTest(testId, test, meta, seriesId, questionIds, opts)
         const need = questionIds.filter(id => {
           const q = getQ(id);
           if (!q) return false;
+          if (q._shardLoaded || q._bank === "ts_active") return false;
+          if (MarksLive.isOptionsIncomplete && MarksLive.isOptionsIncomplete(q)) return true;
           if (MarksLive.isQuestionIncomplete && MarksLive.isQuestionIncomplete(q)) return true;
           return MarksLive.needsFullQuestion(q);
         });
