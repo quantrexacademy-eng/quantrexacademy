@@ -293,12 +293,20 @@ const MarksLive = (() => {
     return out;
   }
 
+  function needsPrefetch(q) {
+    if (!q || !q._marksId) return false;
+    if (needsFullQuestion(q)) return true;
+    const opts = q.options || [];
+    const hasBody = opts.some(o => String(o || "").replace(/<[^>]+>/g, " ").trim());
+    return !hasBody && !isNonMcqType(q.questionType || q.type);
+  }
+
   async function prefetchQuestions(ids, onProgress) {
     const need = [];
     const seen = new Set();
     (ids || []).forEach(id => {
       const q = typeof getQ === "function" ? getQ(id) : null;
-      if (q && q._marksId && needsFullQuestion(q) && !seen.has(q._marksId)) {
+      if (q && needsPrefetch(q) && !seen.has(q._marksId)) {
         seen.add(q._marksId);
         need.push(q);
       }

@@ -15,18 +15,49 @@ let _tsSort = "default";
 let _tsFilter = { testType: "All Tests", subject: "Overall", dateRange: "All Dates", statusTab: "available" };
 
 window.TS_ACTIVE_QMAP = window.TS_ACTIVE_QMAP || {};
+window._tsQuestionMeta = window._tsQuestionMeta || null;
+let _tsMetaLoading = null;
 let currentView = "testseries";
+
+function tsFixUrls(val) {
+  if (val == null) return val;
+  const fix = s => String(s).replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/");
+  if (typeof val === "string") return fix(val);
+  if (Array.isArray(val)) return val.map(tsFixUrls);
+  return val;
+}
+
+async function tsEnsureQuestionMeta() {
+  if (window._tsQuestionMeta) return window._tsQuestionMeta;
+  if (_tsMetaLoading) return _tsMetaLoading;
+  _tsMetaLoading = (async () => {
+    try {
+      const v = typeof QX_BUILD !== "undefined" ? QX_BUILD : Date.now();
+      const res = await fetch(`data/quizrr/jee_main_test_series_2027/question_meta.json?v=${v}`);
+      if (res.ok) window._tsQuestionMeta = await res.json();
+      else window._tsQuestionMeta = {};
+    } catch (e) { window._tsQuestionMeta = {}; }
+    return window._tsQuestionMeta;
+  })();
+  return _tsMetaLoading;
+}
 
 const _tsDataGetQ = (typeof window.getQ === "function") ? window.getQ : null;
 window.getQ = function tsGetQ(id) {
   if (id == null || id === "") return null;
   const map = window.TS_ACTIVE_QMAP;
+  let q = null;
   if (map) {
-    if (map[id]) return map[id];
-    if (typeof id === "string" && /^\d+$/.test(id) && map[Number(id)]) return map[Number(id)];
-    if (typeof id === "number" && map[String(id)]) return map[String(id)];
+    q = map[id] || (typeof id === "string" && /^\d+$/.test(id) ? map[Number(id)] : null)
+      || (typeof id === "number" ? map[String(id)] : null);
   }
-  return _tsDataGetQ ? _tsDataGetQ(id) : null;
+  if (!q && _tsDataGetQ) q = _tsDataGetQ(id);
+  if (!q) return null;
+  if (map && q.id != null) {
+    map[q.id] = q;
+    map[String(q.id)] = q;
+  }
+  return q;
 };
 
 function tsEscHtml(s) {
@@ -128,11 +159,20 @@ function tsNormalizeQuestionId(raw) {
 
 function tsNormalizeShardQuestion(q) {
   if (!q) return null;
-  const text = q.q || q.question || q.text || q.stem || "";
-  const out = { ...q, q: text, question: text, _bank: "ts_active" };
-  if (out._marksId && typeof MarksLive !== "undefined" && MarksLive.needsFullQuestion(out)) {
-    out._needsFull = true;
-  }
+  const text = tsFixUrls(q.q || q.question || q.text || q.stem || "");
+  const meta = window._tsQuestionMeta;
+  const marksId = q._marksId || (meta && meta[q.id] && meta[q.id]._marksId) || null;
+  const out = {
+    ...q,
+    q: text,
+    question: text,
+    options: tsFixUrls(q.options || q.choices || []),
+    solution: tsFixUrls(q.solution || ""),
+    _marksId: marksId,
+    _bank: "ts_active"
+  };
+  const emptyOpts = !(out.options || []).some(o => String(o || "").replace(/<[^>]+>/g, "").trim());
+  if (marksId && (emptyOpts || out._needsFull)) out._needsFull = true;
   return out;
 }
 
@@ -146,6 +186,7 @@ function tsSyncQMap(ids) {
 }
 
 async function tsLoadQuestionsForTest(test) {
+  await tsEnsureQuestionMeta();
   const v = typeof QX_BUILD !== "undefined" ? QX_BUILD : Date.now();
   const paths = [];
   if (test.paperSource) {
@@ -1022,10 +1063,12 @@ function tsStandaloneLaunchTest(testId, test, meta, seriesId, questionIds, opts)
       if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
         const need = questionIds.filter(id => {
           const q = getQ(id);
-          return q && MarksLive.needsFullQuestion(q);
+          if (!q) return false;
+          if (MarksLive.isQuestionIncomplete && MarksLive.isQuestionIncomplete(q)) return true;
+          return MarksLive.needsFullQuestion(q);
         });
         if (need.length) {
-          showToast("📚 Loading question images…");
+          showToast(`📚 Loading ${need.length} question(s)…`);
           await MarksLive.prefetchQuestions(questionIds);
           tsSyncQMap(questionIds);
         }

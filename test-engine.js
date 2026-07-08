@@ -563,7 +563,10 @@ const QuantrexTestEngine = (() => {
       : (q && typeof MarksLive !== "undefined" && MarksLive.needsFullQuestion(q));
     if (incomplete) {
       main.innerHTML = `<div class="mtk-test-root"><div class="empty" style="padding:48px;text-align:center">Loading question options…</div></div>`;
-      try { await MarksLive.ensureQuestionFull(q, { force: true }); } catch (e) { /* continue */ }
+      try {
+        await MarksLive.ensureQuestionFull(q, { force: true });
+        if (typeof tsSyncQMap === "function") tsSyncQMap([session.ids[session.idx]]);
+      } catch (e) { /* continue */ }
     }
     if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
       const near = [session.idx - 1, session.idx + 1, session.idx + 2]
