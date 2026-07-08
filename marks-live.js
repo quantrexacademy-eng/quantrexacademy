@@ -72,7 +72,7 @@ const MarksLive = (() => {
   function htmlPart(text, image) {
     let out = String(text || "").trim();
     if (typeof Mx !== "undefined" && Mx.html) out = Mx.html(out);
-    if (image) out += (out ? "<br>" : "") + `<img src="${fixImgUrl(image)}" alt="">`;
+    if (image) out += (out ? "<br>" : "") + `<img class="qx-no-wm" src="${fixImgUrl(image)}" alt="">`;
     return out;
   }
 

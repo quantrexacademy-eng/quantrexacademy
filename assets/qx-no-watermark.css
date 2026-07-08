@@ -1,0 +1,62 @@
+/* Quantrex — hide MARKS / third-party watermarks site-wide */
+
+/* Baked-in gray "MARKS" text on CDN question diagrams — boost contrast to whiten watermark */
+img.qx-no-wm,
+.qx-diagram-wrap img,
+.qx-diagram-panel img,
+.qx-content img[src*="cdn-question-pool"],
+.qx-content img[src*="/pyq/jee_main/"],
+.mtk-q-text img[src*="cdn-question-pool"],
+.mtk-q-text img[src*="/pyq/"],
+.mtk-opt-text img[src*="cdn-question-pool"],
+.mtk-opt-text img[src*="/pyq/"],
+.qa-q img[src*="cdn-question-pool"],
+.qx-prac-q img[src*="cdn-question-pool"],
+.qx-prac-opt-text img[src*="cdn-question-pool"],
+.qx-diagram-modal img[src*="cdn-question-pool"],
+.marks-result img[src*="cdn-question-pool"],
+.sol-body img[src*="cdn-question-pool"] {
+  filter: contrast(2.75) brightness(1.07) saturate(1.12);
+  -webkit-filter: contrast(2.75) brightness(1.07) saturate(1.12);
+}
+
+/* HTML overlay watermarks from imported content */
+[class*="watermark"],
+[class*="Watermark"],
+[data-brand="marks"],
+[data-watermark],
+.marks-brand,
+.getmarks-brand,
+.watermark-text,
+.watermark-overlay,
+img[src*="watermark"],
+img[src*="marks-premium"],
+img[src*="marks_selected"],
+img[src*="getmarks-brand"],
+img[src*="web_assets"][alt*="Marks"],
+img[alt*="Get Marks App"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Keep legitimate UI icons visible */
+img.qx-marks-icon,
+img.fc-img,
+.marks-exam-ic-img,
+.marks-board-subj-ic,
+.exam-pill-logo,
+.subj-mini-ic img,
+.dash-board-logo,
+.dash-tool-logo,
+.qx-exam-logo {
+  filter: none !important;
+  -webkit-filter: none !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-height: none !important;
+}

@@ -81,9 +81,10 @@ window.Mx = (() => {
   function diagramPanelHtml(attrs) {
     const hasLoading = /loading=/i.test(attrs);
     const extra = hasLoading ? "" : ' loading="eager" decoding="async" fetchpriority="high"';
+    const cls = /class=/i.test(attrs) ? attrs.replace(/class=(["'])([^"']*)\1/i, 'class=$1$2 qx-no-wm$1') : attrs + ' class="qx-no-wm"';
     return `<div class="qx-diagram-panel">
       <span class="qx-diagram-badge" aria-hidden="true">📊</span>
-      <span class="qx-diagram-wrap"><img${attrs}${extra}></span>
+      <span class="qx-diagram-wrap"><img${cls}${extra}></span>
     </div>
     <small class="qx-diagram-hint">🔍 Tap to view full diagram</small>`;
   }
@@ -150,8 +151,11 @@ window.Mx = (() => {
     const { safe, slots } = protectImgUrls(raw);
     let out = safe;
     BRAND_PATTERNS.forEach(rx => { out = out.replace(rx, ""); });
-    out = out.replace(/<[^>]*(?:watermark|getmarks-brand|marks-app)[^>]*>[\s\S]*?<\/[^>]+>/gi, "");
-    out = out.replace(/<img[^>]+(?:watermark|marks-premium|ic_marks)[^>]*>/gi, "");
+    if (typeof QxWM !== "undefined") out = QxWM.cleanHtml(out);
+    else {
+      out = out.replace(/<[^>]*(?:watermark|getmarks-brand|marks-app)[^>]*>[\s\S]*?<\/[^>]+>/gi, "");
+      out = out.replace(/<img[^>]+(?:watermark|marks-premium|ic_marks)[^>]*>/gi, "");
+    }
     out = restoreImgUrls(out, slots);
     if (typeof QuantrexStrip !== "undefined" && !/<img/i.test(out)) out = QuantrexStrip.displayText(out);
     if (isHtml(out)) out = wrapDiagramImages(out);
@@ -161,7 +165,8 @@ window.Mx = (() => {
   function cleanDom(root) {
     const el = root || document.getElementById("app-main") || document.body;
     if (!el) return;
-    el.querySelectorAll("[class*='watermark'],[class*='Watermark'],[data-brand],.marks-brand,.getmarks-brand").forEach(n => n.remove());
+    if (typeof QxWM !== "undefined") QxWM.scan(el);
+    else el.querySelectorAll("[class*='watermark'],[class*='Watermark'],[data-brand],.marks-brand,.getmarks-brand").forEach(n => n.remove());
     el.querySelectorAll("img").forEach(img => {
       const src = img.getAttribute("src") || "";
       const alt = img.getAttribute("alt") || "";
@@ -190,6 +195,7 @@ window.Mx = (() => {
             parent.insertBefore(hint, panel.nextSibling);
           }
         }
+        img.classList.add("qx-no-wm");
         img.loading = "eager";
         img.decoding = "async";
         img.fetchPriority = "high";
