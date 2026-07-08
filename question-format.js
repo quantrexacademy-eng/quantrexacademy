@@ -12,6 +12,70 @@ const QuantrexQFormat = (() => {
     return String.fromCharCode(65 + i);
   }
 
+  function renderNumericalEntry(val, opts) {
+    const o = opts || {};
+    const valEsc = String(val != null ? val : "").replace(/"/g, "&quot;");
+    const disabled = o.disabled ? " disabled" : "";
+    const readonly = o.readonly !== false ? " readonly" : "";
+    const extraCls = o.cbt ? " qx-num-cbt" : "";
+    const wrapCls = o.wrapClass || "qx-prac-numerical";
+    return `<div class="${wrapCls} mtk-numerical">
+      <div class="qx-num-entry${extraCls}">
+        <label class="qx-num-label" for="qxNumInput">Enter your answer</label>
+        <input type="text" class="qx-num-input" id="qxNumInput" inputmode="none" autocomplete="off"
+          placeholder="0" value="${valEsc}"${readonly}${disabled}>
+        <div class="qx-num-keypad" id="qxNumKeypad" role="group" aria-label="Numeric keypad">
+          <button type="button" class="qx-num-key qx-num-key-wide qx-num-key-back" data-num-key="back">⌫ Backspace</button>
+          <button type="button" class="qx-num-key" data-num-key="7">7</button>
+          <button type="button" class="qx-num-key" data-num-key="8">8</button>
+          <button type="button" class="qx-num-key" data-num-key="9">9</button>
+          <button type="button" class="qx-num-key" data-num-key="4">4</button>
+          <button type="button" class="qx-num-key" data-num-key="5">5</button>
+          <button type="button" class="qx-num-key" data-num-key="6">6</button>
+          <button type="button" class="qx-num-key" data-num-key="1">1</button>
+          <button type="button" class="qx-num-key" data-num-key="2">2</button>
+          <button type="button" class="qx-num-key" data-num-key="3">3</button>
+          <button type="button" class="qx-num-key" data-num-key="0">0</button>
+          <button type="button" class="qx-num-key" data-num-key=".">.</button>
+          <button type="button" class="qx-num-key" data-num-key="-">−</button>
+          <button type="button" class="qx-num-key qx-num-key-wide" data-num-key="clear">Clear All</button>
+        </div>
+      </div>
+      ${o.correctHtml || ""}
+    </div>`;
+  }
+
+  function bindNumericalKeypad(scope, onChange) {
+    const input = scope.querySelector("#qxNumInput");
+    const keypad = scope.querySelector("#qxNumKeypad");
+    if (!input) return;
+    const emit = () => {
+      const v = String(input.value || "").trim();
+      if (typeof onChange === "function") onChange(v);
+    };
+    if (keypad) {
+      keypad.querySelectorAll("[data-num-key]").forEach(btn => {
+        btn.onclick = (e) => {
+          e.preventDefault();
+          if (input.disabled) return;
+          const key = btn.getAttribute("data-num-key");
+          let v = String(input.value || "");
+          if (key === "back") v = v.slice(0, -1);
+          else if (key === "clear") v = "";
+          else if (key === ".") { if (!v.includes(".")) v += "."; }
+          else if (key === "-") v = v.startsWith("-") ? v.slice(1) : "-" + v;
+          else v += key;
+          input.value = v;
+          emit();
+        };
+      });
+    }
+    input.oninput = emit;
+    input.onkeydown = (e) => {
+      if (input.readOnly && !["Tab", "ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) e.preventDefault();
+    };
+  }
+
   function htmlContent(text) {
     return typeof Mx !== "undefined" ? Mx.html(text) : String(text || "");
   }
@@ -136,12 +200,10 @@ const QuantrexQFormat = (() => {
         const ok = checkNumerical(val, cor);
         cls += ok ? " correct" : " wrong";
       }
-      return `<div class="${cls}">
-        <label class="qx-num-label" for="qxNumInput">Enter your answer</label>
-        <input type="text" class="qx-num-input" id="qxNumInput" inputmode="decimal" autocomplete="off"
-          placeholder="Type numerical answer" value="${val.replace(/"/g, "&quot;")}" ${done ? "disabled" : ""}>
-        ${done && cor ? `<p class="qx-num-correct">Correct answer: <strong>${cor.replace(/</g, "&lt;")}</strong></p>` : ""}
-      </div>`;
+      const correctHtml = done && cor
+        ? `<p class="qx-num-correct">Correct answer: <strong>${cor.replace(/</g, "&lt;")}</strong></p>`
+        : "";
+      return renderNumericalEntry(val, { wrapClass: cls, disabled: done, correctHtml });
     }
 
     const selected = st.selected;
@@ -177,11 +239,7 @@ const QuantrexQFormat = (() => {
     const render = htmlFn || htmlContent;
     if (t === "numerical" || t === "subjective") {
       const val = selected != null ? String(selected) : "";
-      return `<div class="qx-prac-numerical mtk-numerical">
-        <label class="qx-num-label" for="qxNumInput">Enter your answer</label>
-        <input type="text" class="qx-num-input" id="qxNumInput" inputmode="decimal" autocomplete="off"
-          placeholder="Type numerical answer" value="${val.replace(/"/g, "&quot;")}">
-      </div>`;
+      return renderNumericalEntry(val, { cbt: true, readonly: true });
     }
     const multi = t === "multipleCorrect";
     const match = t === "columnMatch";
@@ -305,13 +363,15 @@ const QuantrexQFormat = (() => {
     const t = getType(q);
 
     if (t === "numerical" || t === "subjective") {
-      const input = scope.querySelector("#qxNumInput");
       const submit = scope.querySelector("#qxPracSubmit");
-      if (input && submit) {
-        const sync = () => { submit.disabled = !String(input.value || "").trim(); };
-        input.oninput = sync;
-        sync();
-        submit.onclick = () => onSubmit && onSubmit(qid, input.value.trim());
+      bindNumericalKeypad(scope, (v) => {
+        if (submit) submit.disabled = !String(v || "").trim();
+      });
+      if (submit) {
+        submit.onclick = () => {
+          const input = scope.querySelector("#qxNumInput");
+          onSubmit && onSubmit(qid, input ? input.value.trim() : "");
+        };
       }
       return;
     }
@@ -388,7 +448,7 @@ const QuantrexQFormat = (() => {
   return {
     getType, typeLabel, typeBadgeHtml, correctIndices, correctNumerical,
     optsLayoutClass, practiceOptsContainerClass, testOptsContainerClass,
-    renderOptions, renderTestOptions, grade, isAnswered, formatCorrectAnswer, formatChosenAnswer,
-    bindPractice, applyPracticeResult, isMatchColumn, checkNumerical
+    renderOptions, renderTestOptions, renderNumericalEntry, grade, isAnswered, formatCorrectAnswer, formatChosenAnswer,
+    bindPractice, bindNumericalKeypad, applyPracticeResult, isMatchColumn, checkNumerical
   };
 })();

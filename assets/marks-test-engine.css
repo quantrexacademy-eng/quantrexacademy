@@ -66,7 +66,7 @@ body.marks-test-active #app-main { padding: 0; min-height: 100vh; }
 .mtk-opt.selected .mtk-opt-check { border-color: #3b82f6; background: #3b82f6; }
 .mtk-opt.selected .mtk-opt-check::after { content: '✓'; position: absolute; inset: 0; color: #fff; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
 .mtk-numerical-wrap { display: block; }
-.mtk-numerical .qx-num-input { background: #1a1d26; border-color: #2a2f3d; color: #e2e8f0; font-family: 'Inter', sans-serif; font-size: 16px; }
+/* numerical keypad — see assets/qx-num-keypad.css */
 .mtk-opt-letter { font-weight: 700; font-size: 15px; color: #93c5fd; flex-shrink: 0; min-width: 20px; font-family: 'Inter', sans-serif; }
 .mtk-opt-text { flex: 1; }
 .mtk-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding-top: 12px; border-top: 1px solid #2a2f3d; }
@@ -180,7 +180,7 @@ body.marks-test-active #app-main { padding: 0; min-height: 100vh; }
 .mtk-test-root[data-test-theme="light"] .mtk-opt-text .qx-content { color: #1e293b; }
 
 .mtk-opt-match { align-items: center; }
-/* diagram zoom — see assets/qx-diagram-zoom.css */
+/* figures — see assets/qx-figure.css */
 .mtk-options.qx-opts-multi, .mtk-options.qx-opts-match { display: flex; flex-direction: column; gap: 10px; }
 .mtk-options.qx-opts-match .mtk-opt { min-height: auto; }
 .mtk-options.qx-opts-img { grid-template-columns: 1fr 1fr; }

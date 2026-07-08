@@ -1,0 +1,133 @@
+/* Quantrex — clean question & option figures (no zoom chrome) */
+
+.qx-diagram-panel,
+.qx-diag-toolbar,
+.qx-diagram-hint,
+.qx-diagram-badge { display: none !important; }
+
+/* Question-body figures */
+.qx-fig {
+  display: block;
+  margin: 14px auto;
+  padding: 0;
+  max-width: min(100%, 560px);
+  text-align: center;
+  border: none;
+  background: transparent;
+}
+
+.qx-fig-img,
+.qx-fig img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 380px;
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.mtk-q-text .qx-fig,
+.qa-q .qx-fig,
+.qx-prac-q .qx-fig {
+  margin: 16px 0;
+}
+
+.mtk-q-text .qx-fig-img,
+.qa-q .qx-fig-img,
+.qx-prac-q .qx-fig-img {
+  max-height: 420px;
+}
+
+/* Option images — centered inside option card */
+.qx-opt-fig {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 4px 0;
+  padding: 6px;
+  background: #fff;
+  border-radius: 8px;
+  min-height: 80px;
+}
+
+.qx-opt-fig img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 140px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.mtk-opt-text .qx-fig,
+.mtk-opt-text .qx-opt-fig,
+.qx-prac-opt-text .qx-fig,
+.qx-prac-opt-text .qx-opt-fig {
+  margin: 6px 0 0;
+}
+
+.mtk-opt-text .qx-fig-img,
+.mtk-opt-text .qx-opt-fig img,
+.qx-prac-opt-text .qx-fig-img,
+.qx-prac-opt-text .qx-opt-fig img {
+  max-height: 130px;
+}
+
+.mtk-opt {
+  align-items: flex-start;
+}
+
+.mtk-opt-text {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  min-width: 0;
+}
+
+.mtk-options.qx-opts-img .mtk-opt {
+  flex-direction: column;
+  align-items: stretch;
+  text-align: center;
+  padding: 14px 12px;
+}
+
+.mtk-options.qx-opts-img .mtk-opt-letter {
+  align-self: flex-start;
+}
+
+.mtk-options.qx-opts-img .mtk-opt-text {
+  width: 100%;
+}
+
+/* Light CBT theme */
+.mtk-test-root[data-test-theme="light"] .qx-opt-fig {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.mtk-test-root[data-test-theme="light"] .qx-fig-img,
+.mtk-test-root[data-test-theme="light"] .qx-fig img {
+  background: #fff;
+}
+
+/* Dark app theme */
+[data-theme="dark"] .qx-fig-img,
+[data-theme="dark"] .qx-fig img {
+  background: #fff;
+}
+
+[data-theme="dark"] .qx-opt-fig {
+  background: #fff;
+}
+
+@media (max-width: 640px) {
+  .qx-fig-img,
+  .qx-fig img { max-height: 280px; }
+  .qx-opt-fig img { max-height: 110px; }
+}

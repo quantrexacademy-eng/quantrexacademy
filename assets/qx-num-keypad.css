@@ -1,0 +1,141 @@
+/* Quantrex — NTA-style numerical answer keypad */
+
+.qx-num-entry {
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 20px 16px;
+}
+
+.qx-num-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.qx-num-input {
+  display: block;
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 22px;
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+  text-align: center;
+  background: #fff;
+  color: #0f172a;
+  letter-spacing: 0.04em;
+  margin-bottom: 14px;
+}
+
+.qx-num-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.qx-num-input:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.qx-num-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.qx-num-key {
+  padding: 12px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+  min-height: 44px;
+}
+
+.qx-num-key:hover:not(:disabled) {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+}
+
+.qx-num-key:active:not(:disabled) {
+  background: #cbd5e1;
+}
+
+.qx-num-key-wide {
+  grid-column: 1 / -1;
+}
+
+.qx-num-key-back {
+  font-size: 14px;
+}
+
+/* CBT dark shell */
+.mtk-numerical-wrap {
+  display: block;
+  padding: 8px 0 16px;
+}
+
+.mtk-numerical .qx-num-entry {
+  max-width: 340px;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-num-input,
+.mtk-test-root:not([data-test-theme="light"]) .qx-num-input {
+  background: #1a1d26;
+  border-color: #3b4254;
+  color: #f1f5f9;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-num-key,
+.mtk-test-root:not([data-test-theme="light"]) .qx-num-key {
+  background: #232733;
+  border-color: #3b4254;
+  color: #e2e8f0;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-num-key:hover:not(:disabled),
+.mtk-test-root:not([data-test-theme="light"]) .qx-num-key:hover:not(:disabled) {
+  background: #2d3344;
+  border-color: #60a5fa;
+}
+
+.mtk-test-root[data-test-theme="light"] .qx-num-label {
+  color: #475569;
+}
+
+.mtk-test-root[data-test-theme="light"] .qx-num-input {
+  background: #fff;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+.mtk-test-root[data-test-theme="light"] .qx-num-key {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+/* Practice mode */
+.qx-prac-numerical .qx-num-entry {
+  max-width: 100%;
+}
+
+.qx-prac-numerical.correct .qx-num-input {
+  border-color: #16a34a;
+  background: #f0fdf4;
+}
+
+.qx-prac-numerical.wrong .qx-num-input {
+  border-color: #dc2626;
+  background: #fef2f2;
+}

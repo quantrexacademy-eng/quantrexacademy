@@ -78,60 +78,19 @@ window.Mx = (() => {
     return isQuestionDiagram(attrs);
   }
 
-  const QX_ZOOM_STEP = 0.2;
-  const QX_ZOOM_MIN = 0.6;
-  const QX_ZOOM_MAX = 3.5;
-  const QX_ZOOM_DEFAULT = 1;
+  const OPT_IMG_SEL = ".mtk-opt-text, .qx-prac-opt-text, .mtk-opt, .qa-opt, .qx-prac-opt";
 
-  function diagramToolbarHtml() {
-    return `<div class="qx-diag-toolbar">
-      <span class="qx-diag-label">Figure</span>
-      <div class="qx-diag-zoom-btns">
-        <button type="button" class="qx-diag-btn" data-qx-zoom="out" title="Zoom out" aria-label="Zoom out">−</button>
-        <span class="qx-diag-pct" data-qx-zoom-pct>100%</span>
-        <button type="button" class="qx-diag-btn" data-qx-zoom="in" title="Zoom in" aria-label="Zoom in">+</button>
-        <button type="button" class="qx-diag-btn qx-diag-reset" data-qx-zoom="reset" title="Reset zoom" aria-label="Reset zoom">↺</button>
-      </div>
-    </div>`;
+  function isInOptionContext(node) {
+    return !!(node && node.closest && node.closest(OPT_IMG_SEL));
   }
 
-  function diagramPanelHtml(attrs) {
+  function figureHtml(attrs) {
     const hasLoading = /loading=/i.test(attrs);
     const extra = hasLoading ? "" : ' loading="eager" decoding="async" fetchpriority="high"';
-    const cls = /class=/i.test(attrs) ? attrs.replace(/class=(["'])([^"']*)\1/i, 'class=$1$2 qx-no-wm$1') : attrs + ' class="qx-no-wm"';
-    return `<div class="qx-diagram-panel">
-      ${diagramToolbarHtml()}
-      <div class="qx-diagram-viewport">
-        <span class="qx-diagram-wrap"><img${cls}${extra}></span>
-      </div>
-    </div>`;
-  }
-
-  function applyPanelZoom(panel, level) {
-    const img = panel.querySelector(".qx-diagram-wrap img");
-    const pctEl = panel.querySelector("[data-qx-zoom-pct]");
-    if (!img) return;
-    const z = Math.max(QX_ZOOM_MIN, Math.min(QX_ZOOM_MAX, level));
-    panel._qxZoom = z;
-    img.style.transform = "scale(" + z + ")";
-    img.style.transformOrigin = "center center";
-    if (pctEl) pctEl.textContent = Math.round(z * 100) + "%";
-  }
-
-  function upgradeDiagramPanel(panel) {
-    panel.querySelector(".qx-diagram-badge")?.remove();
-    const next = panel.nextElementSibling;
-    if (next && next.classList.contains("qx-diagram-hint")) next.remove();
-    if (!panel.querySelector(".qx-diag-toolbar")) {
-      panel.insertAdjacentHTML("afterbegin", diagramToolbarHtml());
-    }
-    let wrap = panel.querySelector(".qx-diagram-wrap");
-    if (wrap && !panel.querySelector(".qx-diagram-viewport")) {
-      const viewport = document.createElement("div");
-      viewport.className = "qx-diagram-viewport";
-      wrap.parentNode.insertBefore(viewport, wrap);
-      viewport.appendChild(wrap);
-    }
+    const cls = /class=/i.test(attrs)
+      ? attrs.replace(/class=(["'])([^"']*)\1/i, 'class=$1$2 qx-fig-img qx-no-wm$1')
+      : attrs + ' class="qx-fig-img qx-no-wm"';
+    return `<figure class="qx-fig"><img${cls}${extra}></figure>`;
   }
 
   function wrapDiagramImages(html) {
@@ -139,56 +98,61 @@ window.Mx = (() => {
       if (FORMULA_IMG_RX.test(attrs)) return m;
       if (isMarksUiIcon(attrs)) return m;
       if (BRAND_LOGO_RX.test(attrs)) return "";
-      if (/class=["'][^"']*qx-(img|diagram)-wrap/i.test(attrs)) return m;
-      if (isDiagramImg(attrs)) return diagramPanelHtml(attrs);
+      if (/class=["'][^"']*qx-(fig-img|opt-fig|img)-wrap/i.test(attrs)) return m;
+      if (/class=["'][^"']*qx-fig-img/i.test(attrs)) return m;
+      if (isDiagramImg(attrs)) return figureHtml(attrs);
       const hasLoading = /loading=/i.test(attrs);
       const extra = hasLoading ? "" : ' loading="lazy" decoding="async"';
       return `<span class="qx-img-wrap"><img${attrs}${extra}></span>`;
     });
   }
 
-  function openDiagramModal(src) {
-    if (!src) return;
-    document.querySelectorAll(".qx-diagram-modal").forEach(n => n.remove());
-    const overlay = document.createElement("div");
-    overlay.className = "qx-diagram-modal";
-    overlay.innerHTML = `<button type="button" class="qx-diagram-modal-close" aria-label="Close">✕</button><img src="${src.replace(/"/g, "&quot;")}" alt="Diagram">`;
-    overlay.onclick = e => { if (e.target === overlay || e.target.classList.contains("qx-diagram-modal-close")) overlay.remove(); };
-    document.body.appendChild(overlay);
+  function unwrapLegacyPanel(panel) {
+    const img = panel.querySelector("img");
+    if (!img || !panel.parentNode) {
+      panel.remove();
+      return null;
+    }
+    panel.parentNode.insertBefore(img, panel);
+    panel.remove();
+    return img;
   }
 
-  function bindDiagramZoom(root) {
-    const scope = root || document.getElementById("app-main") || document.body;
-    if (!scope) return;
-    scope.querySelectorAll(".qx-diagram-panel").forEach(panel => {
-      if (panel._qxZoomBound) return;
-      panel._qxZoomBound = true;
-      upgradeDiagramPanel(panel);
-      applyPanelZoom(panel, panel._qxZoom || QX_ZOOM_DEFAULT);
-      panel.querySelectorAll("[data-qx-zoom]").forEach(btn => {
-        btn.onclick = (e) => {
-          e.stopPropagation();
-          e.preventDefault();
-          const act = btn.getAttribute("data-qx-zoom");
-          let z = panel._qxZoom || QX_ZOOM_DEFAULT;
-          if (act === "in") z += QX_ZOOM_STEP;
-          else if (act === "out") z -= QX_ZOOM_STEP;
-          else if (act === "reset") z = QX_ZOOM_DEFAULT;
-          applyPanelZoom(panel, z);
-        };
-      });
-      const viewport = panel.querySelector(".qx-diagram-viewport");
-      if (viewport && !viewport._qxWheelBound) {
-        viewport._qxWheelBound = true;
-        viewport.addEventListener("wheel", (e) => {
-          if (!e.ctrlKey && !e.metaKey) return;
-          e.preventDefault();
-          const z = (panel._qxZoom || QX_ZOOM_DEFAULT) + (e.deltaY < 0 ? QX_ZOOM_STEP : -QX_ZOOM_STEP);
-          applyPanelZoom(panel, z);
-        }, { passive: false });
-      }
-    });
-    scope.querySelectorAll(".qx-diagram-hint").forEach(h => h.remove());
+  function stripHeavyWrap(img) {
+    const panel = img.closest(".qx-diagram-panel");
+    if (panel) unwrapLegacyPanel(panel);
+    const fig = img.closest(".qx-fig, figure");
+    if (fig && isInOptionContext(img)) {
+      fig.parentNode.insertBefore(img, fig);
+      fig.remove();
+    }
+    img.style.transform = "";
+    img.style.transformOrigin = "";
+  }
+
+  function wrapOptFig(img) {
+    stripHeavyWrap(img);
+    if (img.closest(".qx-opt-fig")) return;
+    const span = document.createElement("span");
+    span.className = "qx-opt-fig";
+    img.parentNode.insertBefore(span, img);
+    span.appendChild(img);
+    img.classList.add("qx-no-wm");
+    img.loading = "eager";
+    img.decoding = "async";
+  }
+
+  function wrapQuestionFig(img) {
+    stripHeavyWrap(img);
+    if (img.closest(".qx-fig")) return;
+    const fig = document.createElement("figure");
+    fig.className = "qx-fig";
+    img.parentNode.insertBefore(fig, img);
+    fig.appendChild(img);
+    img.classList.add("qx-fig-img", "qx-no-wm");
+    img.loading = "eager";
+    img.decoding = "async";
+    img.fetchPriority = "high";
   }
 
   function protectImgUrls(str) {
@@ -233,32 +197,21 @@ window.Mx = (() => {
     if (!el) return;
     if (typeof QxWM !== "undefined") QxWM.scan(el);
     else el.querySelectorAll("[class*='watermark'],[class*='Watermark'],[data-brand],.marks-brand,.getmarks-brand").forEach(n => n.remove());
+    el.querySelectorAll(".qx-diagram-panel").forEach(panel => unwrapLegacyPanel(panel));
+    el.querySelectorAll(".qx-diag-toolbar, .qx-diagram-hint, .qx-diagram-badge").forEach(n => n.remove());
     el.querySelectorAll("img").forEach(img => {
       const src = img.getAttribute("src") || "";
       const alt = img.getAttribute("alt") || "";
       const cls = img.className || "";
       if (FORMULA_IMG_RX.test(src) || img.classList.contains("fc-img")) return;
       if (isMarksUiIcon(src) || isMarksUiIcon(cls) || img.classList.contains("qx-marks-icon")) return;
+      if (BRAND_LOGO_RX.test(src) || BRAND_LOGO_RX.test(alt)) { img.remove(); return; }
       if (isQuestionDiagram(src)) {
-        if (!img.closest(".qx-diagram-panel")) {
-          const panel = document.createElement("div");
-          panel.className = "qx-diagram-panel";
-          panel.innerHTML = diagramToolbarHtml() + '<div class="qx-diagram-viewport"><span class="qx-diagram-wrap"></span></div>';
-          const wrap = panel.querySelector(".qx-diagram-wrap");
-          const parent = img.parentNode;
-          parent.insertBefore(panel, img);
-          wrap.appendChild(img);
-        }
-        const panel = img.closest(".qx-diagram-panel");
-        if (panel && !panel._qxZoomBound) upgradeDiagramPanel(panel);
-        img.classList.add("qx-no-wm");
-        img.loading = "eager";
-        img.decoding = "async";
-        img.fetchPriority = "high";
+        if (isInOptionContext(img)) wrapOptFig(img);
+        else wrapQuestionFig(img);
         return;
       }
-      if (BRAND_LOGO_RX.test(src) || BRAND_LOGO_RX.test(alt)) { img.remove(); return; }
-      if (!img.closest(".qx-img-wrap") && !img.closest(".qx-diagram-wrap") && src && !src.startsWith("data:")) {
+      if (!img.closest(".qx-img-wrap") && src && !src.startsWith("data:")) {
         const wrap = document.createElement("span");
         wrap.className = "qx-img-wrap";
         img.parentNode.insertBefore(wrap, img);
@@ -314,7 +267,6 @@ window.Mx = (() => {
   function afterRender(root) {
     requestAnimationFrame(() => {
       cleanDom(root);
-      bindDiagramZoom(root);
       if (typeof QxPerf !== "undefined") {
         QxPerf.lazyImages(root);
         QxPerf.smoothPaint(root);
@@ -323,5 +275,5 @@ window.Mx = (() => {
     });
   }
 
-  return { html, typeset, afterRender, cleanDom, bindDiagramZoom, openDiagramModal, initMathJax };
+  return { html, typeset, afterRender, cleanDom, initMathJax };
 })();

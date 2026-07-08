@@ -2,8 +2,9 @@
 
 /* Baked-in gray "MARKS" text on CDN question diagrams — boost contrast to whiten watermark */
 img.qx-no-wm,
-.qx-diagram-wrap img,
-.qx-diagram-panel img,
+.qx-fig-img,
+.qx-fig img,
+.qx-opt-fig img,
 .qx-content img[src*="cdn-question-pool"],
 .qx-content img[src*="/pyq/jee_main/"],
 .mtk-q-text img[src*="cdn-question-pool"],
