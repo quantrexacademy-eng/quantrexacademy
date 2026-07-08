@@ -125,17 +125,21 @@ async function tsLoadQuestionsForTest(test) {
         QUESTIONS = QUESTIONS.filter(q => q._bank !== "ts_active")
           .concat(qs.map(tsNormalizeShardQuestion).filter(Boolean));
       }
-      const found = wantIds.filter(id => typeof getQ === "function" && getQ(id)).length;
-      if (found > 0) return found;
+      const loadedQs = qs.map(tsNormalizeShardQuestion).filter(Boolean);
+      const idsFromShard = loadedQs.map(q => q.id).filter(Boolean);
+      const checkIds = wantIds.length ? wantIds : idsFromShard;
+      const found = checkIds.filter(id => typeof getQ === "function" && getQ(id)).length;
+      if (found > 0) return { count: found, ids: wantIds.length ? wantIds : idsFromShard };
     } catch (e) { /* try next */ }
   }
 
   if (typeof loadSingleBank === "function") {
     showToast("📚 Loading question bank…");
     await loadSingleBank("jee_main");
-    return wantIds.filter(id => typeof getQ === "function" && getQ(id)).length;
+    const found = wantIds.filter(id => typeof getQ === "function" && getQ(id)).length;
+    if (found > 0) return { count: found, ids: wantIds };
   }
-  return 0;
+  return { count: 0, ids: [] };
 }
 
 function quizrrInstructionHtml(config) {
@@ -809,13 +813,17 @@ function tsOpenResource(id, link) {
 async function tsLaunchTest(testId, test, meta, seriesId) {
   const st = tsAttemptStatus(testId);
   if (st === "completed") { tsShowAnalysis(testId, meta); return; }
-  const loaded = await tsLoadQuestionsForTest(test);
-  if (!loaded) {
+  const loadResult = await tsLoadQuestionsForTest(test);
+  const loaded = loadResult && (loadResult.count || 0) > 0;
+  const questionIds = (loadResult && loadResult.ids && loadResult.ids.length)
+    ? loadResult.ids
+    : (test.questionIds || []).map(tsNormalizeQuestionId).filter(Boolean);
+  if (!loaded || !questionIds.length) {
     showToast("⚠️ Questions could not load. Try again.");
     return;
   }
   tsSaveAttempt(testId, { status: "inProgress", title: test.title, categoryId: meta.categoryId });
-  startTest(test.questionIds, test.title, "tests", {
+  startTest(questionIds, test.title, "tests", {
     testType: "testseries",
     timed: true,
     durationSec: (test.durationMin || 180) * 60,
@@ -857,9 +865,7 @@ async function tsOpenTest(testId) {
   let test;
   try { test = await tsResolveTest(seriesId, meta); }
   catch (e) { showToast("⚠️ Could not load test."); return; }
-  if (!test || !test.questionIds || !test.questionIds.length) {
-    showToast("⚠️ No questions in this test."); return;
-  }
+  if (!test) { showToast("⚠️ Test not found."); return; }
   await tsLaunchTest(testId, test, meta, seriesId);
 }
 
