@@ -203,6 +203,39 @@ body.ts-standalone-body {
 .ts-an-card small { color: var(--ts-muted); font-size: 11px; }
 .empty { padding: 32px; text-align: center; color: var(--ts-muted); font-size: 14px; }
 
+.ts-mock-list { display: flex; flex-direction: column; gap: 12px; }
+.ts-mock-card {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 16px 18px; background: var(--ts-card); border: 1px solid var(--ts-border);
+  border-radius: 14px; transition: border-color .15s;
+}
+.ts-mock-card:hover { border-color: rgba(99,102,241,.45); }
+.ts-mock-card.ts-upcoming { opacity: .88; }
+.ts-mock-main { display: flex; align-items: flex-start; gap: 14px; flex: 1; min-width: 0; }
+.ts-mock-lock { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.ts-mock-body strong { display: block; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.ts-mock-body small { display: block; color: var(--ts-muted); font-size: 12px; margin-bottom: 10px; }
+.ts-mock-meta { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; font-weight: 600; color: var(--ts-muted); }
+.ts-mock-meta span::before { content: "· "; color: var(--ts-border); }
+.ts-mock-meta span:first-child::before { content: ""; }
+.ts-mock-actions { display: flex; gap: 10px; flex-shrink: 0; }
+.ts-mock-syllabus {
+  padding: 9px 14px; border-radius: 10px; border: 1px solid var(--ts-border);
+  background: transparent; color: var(--ts-text); font-size: 12px; font-weight: 700;
+  cursor: pointer; font-family: inherit;
+}
+.ts-mock-attempt {
+  padding: 9px 18px; border-radius: 10px; border: none;
+  background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff;
+  font-size: 12px; font-weight: 700; cursor: pointer; font-family: inherit;
+}
+.ts-mock-attempt:hover { filter: brightness(1.08); }
+@media (max-width: 720px) {
+  .ts-mock-card { flex-direction: column; align-items: stretch; }
+  .ts-mock-actions { width: 100%; }
+  .ts-mock-syllabus, .ts-mock-attempt { flex: 1; }
+}
+
 @media (max-width: 960px) {
   .ts-dash-layout { grid-template-columns: 1fr; }
   .ts-all-tests-layout { grid-template-columns: 1fr; }

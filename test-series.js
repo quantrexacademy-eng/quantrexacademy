@@ -452,6 +452,40 @@ function tsStatusTabsHtml() {
   ).join("")}</div>`;
 }
 
+function tsIsPyqMockCategory(cat) {
+  return cat && /^pyq_20/.test(cat.id);
+}
+
+function tsMockCardHtml(t) {
+  const st = tsAttemptStatus(t.id);
+  const up = tsIsUpcoming(t);
+  const qs = t.totalQs || 75;
+  const marks = t.totalMarks || 300;
+  const mins = t.durationMin || 180;
+  const btnLabel = up ? "Upcoming" : st === "completed" ? "Analysis" : st === "inProgress" ? "Resume" : "Attempt Test";
+  const click = up
+    ? `showToast('📅 Available on ${tsFormatDate(t.scheduledDate)}')`
+    : `tsOpenTest('${t.id}')`;
+  return `<div class="ts-mock-card${up ? " ts-upcoming" : ""}${st === "completed" ? " ts-done" : ""}">
+    <div class="ts-mock-main">
+      <span class="ts-mock-lock" aria-hidden="true">${up ? "🔒" : "📄"}</span>
+      <div class="ts-mock-body">
+        <strong>${t.title}</strong>
+        <small>${t.subtitle || "Previous Year Paper as Mock"}</small>
+        <div class="ts-mock-meta">
+          <span>${qs} Qs</span>
+          <span>${mins} Min</span>
+          <span>Total Marks: ${marks}</span>
+        </div>
+      </div>
+    </div>
+    <div class="ts-mock-actions">
+      <button type="button" class="ts-mock-syllabus" onclick="event.stopPropagation();showToast('📋 Full JEE Main syllabus for this paper')">View Syllabus</button>
+      <button type="button" class="ts-mock-attempt" onclick="event.stopPropagation();${click}">${btnLabel}</button>
+    </div>
+  </div>`;
+}
+
 function tsTestActionBtn(t, st) {
   if (tsIsUpcoming(t)) return `<button type="button" class="ts-ch-btn locked" onclick="event.stopPropagation();showToast('📅 Available on ${tsFormatDate(t.scheduledDate)}')">🔒 ${tsFormatDate(t.scheduledDate)}</button>`;
   if (st === "completed") return `<button type="button" class="ts-ch-btn">Analysis</button>`;
@@ -482,6 +516,10 @@ function tsChapterRow(chapter, tests, num) {
 
 function tsCategoryListHtml(cat, tests) {
   const filtered = tsFilterCategoryTests(tests);
+  if (tsIsPyqMockCategory(cat)) {
+    if (!filtered.length) return '<div class="empty">No tests in this tab. Try another filter.</div>';
+    return `<div class="ts-mock-list">${filtered.map(t => tsMockCardHtml(t)).join("")}</div>`;
+  }
   const byChapter = {};
   filtered.forEach(t => {
     const ch = t.chapter || t.testType || "Tests";
@@ -553,11 +591,11 @@ async function tsCategoryInner(manifest) {
   try { catData = await tsFetchCategory(seriesId, cat.file); }
   catch (e) { return '<div class="empty">Category load failed</div>'; }
   const tests = (catData.tests || []).map(t => ({ ...t, file: cat.file, categoryId: cat.id }));
-  const label = /pyq/i.test(cat.title) ? "Chapter-wise Tests" : "Tests";
+  const label = tsIsPyqMockCategory(cat) ? cat.title : /pyq/i.test(cat.title) && !tsIsPyqMockCategory(cat) ? "Chapter-wise Tests" : "Tests";
   return `<div class="ts-all-tests-layout">
     ${tsSidebarHtml(manifest, catId)}
     <main class="ts-main-panel">
-      <div class="ts-cat-head"><h2>${label}</h2><p>${cat.title} · ${cat.count} tests</p></div>
+      <div class="ts-cat-head"><h2>${label}</h2><p>${tsIsPyqMockCategory(cat) ? "Previous Year Papers as Mock · 75 Qs · 180 Min · 300 Marks" : cat.title + " · " + cat.count + " tests"}</p></div>
       ${tsFiltersHtml(manifest)}
       ${tsStatusTabsHtml()}
       <div class="ts-chapter-list">${tsCategoryListHtml(cat, tests)}</div>
