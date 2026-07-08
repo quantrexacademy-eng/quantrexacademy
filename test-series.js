@@ -17,7 +17,6 @@ let _tsFilter = { testType: "All Tests", subject: "Overall", dateRange: "All Dat
 window.TS_ACTIVE_QMAP = window.TS_ACTIVE_QMAP || {};
 window._tsQuestionMeta = window._tsQuestionMeta || null;
 let _tsMetaLoading = null;
-let currentView = "testseries";
 
 function tsFixUrls(val) {
   if (val == null) return val;

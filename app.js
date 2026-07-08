@@ -935,7 +935,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         qxScheduleBoot();
       } else {
-        window.location.href = "login.html";
+        qxScheduleBoot();
       }
     }
   });
