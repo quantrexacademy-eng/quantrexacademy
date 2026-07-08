@@ -21,6 +21,15 @@ const TS_ICON_NAV = [
   { id: "resources", label: "Resources", icon: "📚" }
 ];
 
+if (typeof go !== "function") {
+  window.go = function goStandalone(view) {
+    if (typeof exitMarksTestMode === "function") exitMarksTestMode();
+    const mount = typeof getTestMountEl === "function" ? getTestMountEl() : document.getElementById("app-main");
+    if (mount) mount.innerHTML = "";
+    if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") tsRenderStandalone();
+  };
+}
+
 if (typeof showToast !== "function") {
   let _tsToastTimer;
   window.showToast = function showToast(msg) {
@@ -204,10 +213,8 @@ function quizrrInstructionHtml(config) {
 
 function showQuizrrInstructions(config, onDone, onCancel) {
   if (config.marksMode !== false) enterMarksTestMode();
-  const main = document.getElementById("app-main");
-  const tsRoot = document.getElementById("ts-root");
-  if (main) main.innerHTML = "";
-  if (tsRoot) tsRoot.innerHTML = "";
+  const mount = typeof getTestMountEl === "function" ? getTestMountEl() : document.getElementById("app-main");
+  if (mount) mount.innerHTML = "";
   const tsApp = document.querySelector(".ts-app");
   if (tsApp) { tsApp.dataset.prevDisplay = tsApp.style.display || ""; tsApp.style.display = "none"; }
   const existing = document.getElementById("marksInstrOverlay");

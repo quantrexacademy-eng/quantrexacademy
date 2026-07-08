@@ -462,7 +462,7 @@ const QuantrexTestEngine = (() => {
 
   let _refreshBusy = false;
   async function refresh() {
-    const main = document.getElementById("app-main");
+    const main = getTestMountEl();
     if (!main || !session || _refreshBusy) return;
     _refreshBusy = true;
     const q = getQ(session.ids[session.idx]);
@@ -768,7 +768,7 @@ const QuantrexTestEngine = (() => {
     if (typeof session.onComplete === "function") {
       try { session.onComplete(data); } catch (e) { console.error(e); }
     }
-    const main = document.getElementById("app-main");
+    const main = getTestMountEl();
     if (main) {
       main.innerHTML = renderResults(data);
       bindReviewSplit(main.querySelector("#qxReviewSplit"));
@@ -1203,6 +1203,10 @@ function organizeJeeMainPaper(questionIds) {
   return { orderedIds, sections };
 }
 
+function getTestMountEl() {
+  return document.getElementById("app-main") || document.getElementById("ts-root");
+}
+
 function enterMarksTestMode() {
   document.body.classList.add("marks-test-active");
   const sidebar = document.getElementById("sidebar");
@@ -1404,10 +1408,8 @@ function marksAcceptInstructions() {
 function showMarksInstructions(config, onDone, onCancel) {
   const marksMode = config.marksMode;
   if (marksMode) enterMarksTestMode();
-  const main = document.getElementById("app-main");
-  const tsRoot = document.getElementById("ts-root");
+  const main = getTestMountEl();
   if (main && marksMode) main.innerHTML = "";
-  if (tsRoot && marksMode) tsRoot.innerHTML = "";
   const tsApp = document.querySelector(".ts-app");
   if (tsApp) {
     tsApp.dataset.prevDisplay = tsApp.style.display || "";
@@ -1424,7 +1426,7 @@ function showMarksInstructions(config, onDone, onCancel) {
 
 function showMarksCountdown(onDone) {
   enterMarksTestMode();
-  const main = document.getElementById("app-main");
+  const main = getTestMountEl();
   if (main) main.innerHTML = "";
   const existing = document.getElementById("marksCountdownOverlay");
   if (existing) existing.remove();
@@ -1456,6 +1458,14 @@ function showMarksCountdown(onDone) {
 }
 
 function launchTestSession(main) {
+  if (!main) main = getTestMountEl();
+  if (!main) {
+    console.error("Quantrex: no test mount element (#app-main or #ts-root)");
+    showToast("⚠️ Could not open test. Refresh and try again.");
+    exitMarksTestMode();
+    if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") tsRenderStandalone();
+    return;
+  }
   currentView = "test";
   main.innerHTML = QuantrexTestEngine.render();
   QuantrexTestEngine.bindEvents(main);
@@ -1490,7 +1500,7 @@ async function startTest(questionIds, title, returnTo, options) {
     shuffle: opts.resumeData ? opts.resumeData.shuffle !== false : (opts.shuffle !== false)
   };
 
-  const main = document.getElementById("app-main");
+  const main = getTestMountEl();
   const run = async () => {
     if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
       const need = questionIds.filter(id => {
