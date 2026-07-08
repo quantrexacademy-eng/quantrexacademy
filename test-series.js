@@ -93,6 +93,17 @@ async function tsResolveTest(seriesId, meta) {
   return null;
 }
 
+function tsNormalizeQuestionId(raw) {
+  if (raw && typeof raw === "object") return raw.id;
+  return raw;
+}
+
+function tsNormalizeShardQuestion(q) {
+  if (!q) return null;
+  const text = q.q || q.question || q.text || q.stem || "";
+  return { ...q, q: text, question: text, _bank: "ts_active" };
+}
+
 async function tsLoadQuestionsForTest(test) {
   const v = typeof QX_BUILD !== "undefined" ? QX_BUILD : Date.now();
   const paths = [];
@@ -102,6 +113,8 @@ async function tsLoadQuestionsForTest(test) {
   }
   paths.push(`data/quizrr/jee_main_test_series_2027/questions/${test.id}.json`);
 
+  const wantIds = (test.questionIds || []).map(tsNormalizeQuestionId).filter(Boolean);
+
   for (const p of paths) {
     try {
       const res = await fetch(`${p}?v=${v}`);
@@ -109,9 +122,10 @@ async function tsLoadQuestionsForTest(test) {
       const qs = await res.json();
       if (!Array.isArray(qs) || !qs.length) continue;
       if (typeof QUESTIONS !== "undefined") {
-        QUESTIONS = QUESTIONS.filter(q => q._bank !== "ts_active").concat(qs.map(q => ({ ...q, _bank: "ts_active" })));
+        QUESTIONS = QUESTIONS.filter(q => q._bank !== "ts_active")
+          .concat(qs.map(tsNormalizeShardQuestion).filter(Boolean));
       }
-      const found = (test.questionIds || []).filter(id => typeof getQ === "function" && getQ(id)).length;
+      const found = wantIds.filter(id => typeof getQ === "function" && getQ(id)).length;
       if (found > 0) return found;
     } catch (e) { /* try next */ }
   }
@@ -119,7 +133,7 @@ async function tsLoadQuestionsForTest(test) {
   if (typeof loadSingleBank === "function") {
     showToast("📚 Loading question bank…");
     await loadSingleBank("jee_main");
-    return (test.questionIds || []).filter(id => typeof getQ === "function" && getQ(id)).length;
+    return wantIds.filter(id => typeof getQ === "function" && getQ(id)).length;
   }
   return 0;
 }
