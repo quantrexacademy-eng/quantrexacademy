@@ -180,10 +180,7 @@ body.marks-test-active #app-main { padding: 0; min-height: 100vh; }
 .mtk-test-root[data-test-theme="light"] .mtk-opt-text .qx-content { color: #1e293b; }
 
 .mtk-opt-match { align-items: center; }
-.mtk-q-text .qx-diagram-panel { max-width: min(100%, 400px); }
-.mtk-q-text .qx-diagram-wrap img { max-height: 190px; }
-.mtk-opt-text .qx-diagram-panel { max-width: min(100%, 280px); }
-.mtk-opt-text .qx-diagram-wrap img { max-height: 100px; }
+/* diagram zoom — see assets/qx-diagram-zoom.css */
 .mtk-options.qx-opts-multi, .mtk-options.qx-opts-match { display: flex; flex-direction: column; gap: 10px; }
 .mtk-options.qx-opts-match .mtk-opt { min-height: auto; }
 .mtk-options.qx-opts-img { grid-template-columns: 1fr 1fr; }

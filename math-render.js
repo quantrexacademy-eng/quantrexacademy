@@ -78,15 +78,60 @@ window.Mx = (() => {
     return isQuestionDiagram(attrs);
   }
 
+  const QX_ZOOM_STEP = 0.2;
+  const QX_ZOOM_MIN = 0.6;
+  const QX_ZOOM_MAX = 3.5;
+  const QX_ZOOM_DEFAULT = 1;
+
+  function diagramToolbarHtml() {
+    return `<div class="qx-diag-toolbar">
+      <span class="qx-diag-label">Figure</span>
+      <div class="qx-diag-zoom-btns">
+        <button type="button" class="qx-diag-btn" data-qx-zoom="out" title="Zoom out" aria-label="Zoom out">−</button>
+        <span class="qx-diag-pct" data-qx-zoom-pct>100%</span>
+        <button type="button" class="qx-diag-btn" data-qx-zoom="in" title="Zoom in" aria-label="Zoom in">+</button>
+        <button type="button" class="qx-diag-btn qx-diag-reset" data-qx-zoom="reset" title="Reset zoom" aria-label="Reset zoom">↺</button>
+      </div>
+    </div>`;
+  }
+
   function diagramPanelHtml(attrs) {
     const hasLoading = /loading=/i.test(attrs);
     const extra = hasLoading ? "" : ' loading="eager" decoding="async" fetchpriority="high"';
     const cls = /class=/i.test(attrs) ? attrs.replace(/class=(["'])([^"']*)\1/i, 'class=$1$2 qx-no-wm$1') : attrs + ' class="qx-no-wm"';
     return `<div class="qx-diagram-panel">
-      <span class="qx-diagram-badge" aria-hidden="true">📊</span>
-      <span class="qx-diagram-wrap"><img${cls}${extra}></span>
-    </div>
-    <small class="qx-diagram-hint">🔍 Tap to view full diagram</small>`;
+      ${diagramToolbarHtml()}
+      <div class="qx-diagram-viewport">
+        <span class="qx-diagram-wrap"><img${cls}${extra}></span>
+      </div>
+    </div>`;
+  }
+
+  function applyPanelZoom(panel, level) {
+    const img = panel.querySelector(".qx-diagram-wrap img");
+    const pctEl = panel.querySelector("[data-qx-zoom-pct]");
+    if (!img) return;
+    const z = Math.max(QX_ZOOM_MIN, Math.min(QX_ZOOM_MAX, level));
+    panel._qxZoom = z;
+    img.style.transform = "scale(" + z + ")";
+    img.style.transformOrigin = "center center";
+    if (pctEl) pctEl.textContent = Math.round(z * 100) + "%";
+  }
+
+  function upgradeDiagramPanel(panel) {
+    panel.querySelector(".qx-diagram-badge")?.remove();
+    const next = panel.nextElementSibling;
+    if (next && next.classList.contains("qx-diagram-hint")) next.remove();
+    if (!panel.querySelector(".qx-diag-toolbar")) {
+      panel.insertAdjacentHTML("afterbegin", diagramToolbarHtml());
+    }
+    let wrap = panel.querySelector(".qx-diagram-wrap");
+    if (wrap && !panel.querySelector(".qx-diagram-viewport")) {
+      const viewport = document.createElement("div");
+      viewport.className = "qx-diagram-viewport";
+      wrap.parentNode.insertBefore(viewport, wrap);
+      viewport.appendChild(wrap);
+    }
   }
 
   function wrapDiagramImages(html) {
@@ -118,11 +163,32 @@ window.Mx = (() => {
     scope.querySelectorAll(".qx-diagram-panel").forEach(panel => {
       if (panel._qxZoomBound) return;
       panel._qxZoomBound = true;
-      panel.onclick = () => {
-        const img = panel.querySelector("img");
-        if (img && img.src && !img.src.includes("__QXIMG")) openDiagramModal(img.src);
-      };
+      upgradeDiagramPanel(panel);
+      applyPanelZoom(panel, panel._qxZoom || QX_ZOOM_DEFAULT);
+      panel.querySelectorAll("[data-qx-zoom]").forEach(btn => {
+        btn.onclick = (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          const act = btn.getAttribute("data-qx-zoom");
+          let z = panel._qxZoom || QX_ZOOM_DEFAULT;
+          if (act === "in") z += QX_ZOOM_STEP;
+          else if (act === "out") z -= QX_ZOOM_STEP;
+          else if (act === "reset") z = QX_ZOOM_DEFAULT;
+          applyPanelZoom(panel, z);
+        };
+      });
+      const viewport = panel.querySelector(".qx-diagram-viewport");
+      if (viewport && !viewport._qxWheelBound) {
+        viewport._qxWheelBound = true;
+        viewport.addEventListener("wheel", (e) => {
+          if (!e.ctrlKey && !e.metaKey) return;
+          e.preventDefault();
+          const z = (panel._qxZoom || QX_ZOOM_DEFAULT) + (e.deltaY < 0 ? QX_ZOOM_STEP : -QX_ZOOM_STEP);
+          applyPanelZoom(panel, z);
+        }, { passive: false });
+      }
     });
+    scope.querySelectorAll(".qx-diagram-hint").forEach(h => h.remove());
   }
 
   function protectImgUrls(str) {
@@ -177,24 +243,14 @@ window.Mx = (() => {
         if (!img.closest(".qx-diagram-panel")) {
           const panel = document.createElement("div");
           panel.className = "qx-diagram-panel";
-          const badge = document.createElement("span");
-          badge.className = "qx-diagram-badge";
-          badge.setAttribute("aria-hidden", "true");
-          badge.textContent = "📊";
-          const wrap = document.createElement("span");
-          wrap.className = "qx-diagram-wrap";
+          panel.innerHTML = diagramToolbarHtml() + '<div class="qx-diagram-viewport"><span class="qx-diagram-wrap"></span></div>';
+          const wrap = panel.querySelector(".qx-diagram-wrap");
           const parent = img.parentNode;
           parent.insertBefore(panel, img);
-          panel.appendChild(badge);
-          panel.appendChild(wrap);
           wrap.appendChild(img);
-          if (!panel.nextElementSibling || !panel.nextElementSibling.classList.contains("qx-diagram-hint")) {
-            const hint = document.createElement("small");
-            hint.className = "qx-diagram-hint";
-            hint.textContent = "🔍 Tap to view full diagram";
-            parent.insertBefore(hint, panel.nextSibling);
-          }
         }
+        const panel = img.closest(".qx-diagram-panel");
+        if (panel && !panel._qxZoomBound) upgradeDiagramPanel(panel);
         img.classList.add("qx-no-wm");
         img.loading = "eager";
         img.decoding = "async";
