@@ -1516,6 +1516,12 @@ async function startTest(questionIds, title, returnTo, options) {
     else run();
   };
 
+  if (marksMode && !opts.skipInstructions && opts.testType === "testseries" && typeof showQuizrrInstructions === "function") {
+    showQuizrrInstructions(config, launchMarks, () => {
+      if (typeof marksCancelInstructions === "function") marksCancelInstructions();
+    });
+    return;
+  }
   if (marksMode && !opts.skipInstructions && typeof showMarksInstructions === "function") {
     showMarksInstructions(config, launchMarks, () => {
       if (typeof marksCancelInstructions === "function") marksCancelInstructions();

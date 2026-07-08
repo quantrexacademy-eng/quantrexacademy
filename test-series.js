@@ -93,6 +93,125 @@ async function tsResolveTest(seriesId, meta) {
   return null;
 }
 
+async function tsLoadQuestionsForTest(test) {
+  const v = typeof QX_BUILD !== "undefined" ? QX_BUILD : Date.now();
+  const paths = [];
+  if (test.paperSource) {
+    const ps = String(test.paperSource).toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "").slice(0, 64);
+    paths.push(`data/quizrr/jee_main_test_series_2027/paper_banks/${ps}.json`);
+  }
+  paths.push(`data/quizrr/jee_main_test_series_2027/questions/${test.id}.json`);
+
+  for (const p of paths) {
+    try {
+      const res = await fetch(`${p}?v=${v}`);
+      if (!res.ok) continue;
+      const qs = await res.json();
+      if (!Array.isArray(qs) || !qs.length) continue;
+      if (typeof QUESTIONS !== "undefined") {
+        QUESTIONS = QUESTIONS.filter(q => q._bank !== "ts_active").concat(qs.map(q => ({ ...q, _bank: "ts_active" })));
+      }
+      const found = (test.questionIds || []).filter(id => typeof getQ === "function" && getQ(id)).length;
+      if (found > 0) return found;
+    } catch (e) { /* try next */ }
+  }
+
+  if (typeof loadSingleBank === "function") {
+    showToast("📚 Loading question bank…");
+    await loadSingleBank("jee_main");
+    return (test.questionIds || []).filter(id => typeof getQ === "function" && getQ(id)).length;
+  }
+  return 0;
+}
+
+function quizrrInstructionHtml(config) {
+  const n = (config.questionIds || []).length;
+  const mins = config.durationSec ? Math.floor(config.durationSec / 60) : 180;
+  const marks = config.totalMarks || n * 4 || 300;
+  const preview = typeof organizeExamPaper === "function"
+    ? organizeExamPaper(config.questionIds || [], { paperFormat: "jee_main", examSlug: "jee_main", shuffle: false })
+    : null;
+  const secRows = (preview && preview.sections || []).map(s => {
+    const ms = s.marking || { correct: 4, wrong: -1 };
+    return `<tr><td>${s.label}</td><td>${s.count}</td><td>+${ms.correct} / ${ms.wrong}</td></tr>`;
+  }).join("");
+  const title = config.title || "Test";
+  return `<div id="marksInstrOverlay" class="qz-instr-fullpage">
+    <header class="qz-instr-top">
+      <div class="qz-instr-brand"><span class="qz-logo">Q</span><div><strong>Quizrr</strong><small>Test Instructions</small></div></div>
+      <button type="button" class="qz-instr-exit" onclick="marksCancelInstructions()">✕</button>
+    </header>
+    <div class="qz-instr-scroll">
+      <div class="qz-instr-inner">
+        <h1 class="qz-instr-title">${title}</h1>
+        <p class="qz-instr-desc">${config.subtitle || "Read all instructions carefully before starting the test."}</p>
+        <div class="qz-instr-stats">
+          <div><span>Total Questions</span><strong>${n}</strong></div>
+          <div><span>Total Time</span><strong>${mins} min</strong></div>
+          <div><span>Total Marks</span><strong>${marks}</strong></div>
+        </div>
+        ${secRows ? `<div class="qz-instr-block"><h3>Section-wise Instructions</h3>
+          <table class="qz-instr-table"><thead><tr><th>Section</th><th>Questions</th><th>Marking (+/−)</th></tr></thead><tbody>${secRows}</tbody></table></div>` : ""}
+        <div class="qz-instr-block">
+          <h3>General Instructions</h3>
+          <ol class="qz-instr-list">
+            <li>The clock will be set at the server. The countdown timer on the top right corner will display remaining time.</li>
+            <li>When the timer reaches zero, the test will end automatically. Submit before time expires.</li>
+            <li>Click a question number in the palette to jump to that question.</li>
+            <li><strong>Save &amp; Next</strong> saves your answer and moves forward.</li>
+            <li><strong>Mark for Review &amp; Next</strong> marks a question to revisit later.</li>
+            <li>You can change your response any number of times before final submission.</li>
+            <li>Do not refresh or close the browser during the test. Use <strong>Resume</strong> if interrupted.</li>
+          </ol>
+        </div>
+        <div class="qz-instr-block">
+          <h3>Question Palette Legend</h3>
+          <div class="qz-instr-legend">
+            <span><i class="mtk-dot answered"></i> Answered</span>
+            <span><i class="mtk-dot not-answered"></i> Not Answered</span>
+            <span><i class="mtk-dot unvisited"></i> Not Visited</span>
+            <span><i class="mtk-dot rev-ans"></i> Marked for Review (Answered)</span>
+            <span><i class="mtk-dot rev-skip"></i> Marked for Review (Not Answered)</span>
+          </div>
+        </div>
+        <label class="qz-instr-check"><input type="checkbox" id="qzInstrAgree" onchange="document.getElementById('qzInstrProceed').disabled=!this.checked"/> I have read and understood the instructions.</label>
+      </div>
+    </div>
+    <footer class="qz-instr-foot">
+      <button type="button" class="qz-instr-cancel" onclick="marksCancelInstructions()">Go Back</button>
+      <button type="button" class="qz-instr-proceed" id="qzInstrProceed" disabled onclick="quizrrAcceptInstructions()">Proceed to Test →</button>
+    </footer>
+  </div>`;
+}
+
+function showQuizrrInstructions(config, onDone, onCancel) {
+  if (config.marksMode !== false) enterMarksTestMode();
+  const main = document.getElementById("app-main");
+  const tsRoot = document.getElementById("ts-root");
+  if (main) main.innerHTML = "";
+  if (tsRoot) tsRoot.innerHTML = "";
+  const tsApp = document.querySelector(".ts-app");
+  if (tsApp) { tsApp.dataset.prevDisplay = tsApp.style.display || ""; tsApp.style.display = "none"; }
+  const existing = document.getElementById("marksInstrOverlay");
+  if (existing) existing.remove();
+  window._marksInstrDone = onDone;
+  window._marksInstrCancel = onCancel;
+  document.body.classList.add("marks-instr-active");
+  document.body.insertAdjacentHTML("beforeend", quizrrInstructionHtml(config));
+  window.scrollTo(0, 0);
+}
+
+function quizrrAcceptInstructions() {
+  const cb = document.getElementById("qzInstrAgree");
+  if (cb && !cb.checked) { showToast("Please confirm you read the instructions"); return; }
+  const el = document.getElementById("marksInstrOverlay");
+  if (el) el.remove();
+  if (typeof marksRestoreInstrShell === "function") marksRestoreInstrShell();
+  if (typeof window._marksInstrDone === "function") window._marksInstrDone();
+  window._marksInstrDone = null;
+  window._marksInstrCancel = null;
+}
+
 function tsFormatDate(iso) {
   if (!iso) return "—";
   try {
@@ -676,9 +795,10 @@ function tsOpenResource(id, link) {
 async function tsLaunchTest(testId, test, meta, seriesId) {
   const st = tsAttemptStatus(testId);
   if (st === "completed") { tsShowAnalysis(testId, meta); return; }
-  if (typeof loadSingleBank === "function") await loadSingleBank("jee_main");
-  if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
-    await MarksLive.prefetchQuestions(test.questionIds.slice(0, 80));
+  const loaded = await tsLoadQuestionsForTest(test);
+  if (!loaded) {
+    showToast("⚠️ Questions could not load. Try again.");
+    return;
   }
   tsSaveAttempt(testId, { status: "inProgress", title: test.title, categoryId: meta.categoryId });
   startTest(test.questionIds, test.title, "tests", {
@@ -692,6 +812,8 @@ async function tsLaunchTest(testId, test, meta, seriesId) {
     persistKey: `ts::${seriesId}::${testId}`,
     meta: { seriesId, testId, slug: "jee_main" },
     modeLabel: `${test.testType} · ${test.totalQs} Qs`,
+    subtitle: test.subtitle || "Previous Year Paper as Mock",
+    totalMarks: test.totalMarks || 300,
     scoring: { correct: 4, wrong: -1, unattempted: 0 },
     onComplete: (data) => {
       marksClearSession();
