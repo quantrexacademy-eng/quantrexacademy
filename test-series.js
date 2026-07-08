@@ -14,6 +14,21 @@ let _tsSearch = "";
 let _tsSort = "default";
 let _tsFilter = { testType: "All Tests", subject: "Overall", dateRange: "All Dates", statusTab: "available" };
 
+window.TS_ACTIVE_QMAP = window.TS_ACTIVE_QMAP || {};
+let currentView = "testseries";
+
+const _tsOrigGetQ = typeof getQ === "function" ? getQ : null;
+function getQ(id) {
+  const map = window.TS_ACTIVE_QMAP;
+  if (map && id != null) {
+    if (map[id]) return map[id];
+    if (typeof id === "string" && /^\d+$/.test(id) && map[Number(id)]) return map[Number(id)];
+    if (typeof id === "number" && map[String(id)]) return map[String(id)];
+  }
+  return _tsOrigGetQ ? _tsOrigGetQ(id) : null;
+}
+window.getQ = getQ;
+
 const TS_ICON_NAV = [
   { id: "test", label: "Test", icon: "📝" },
   { id: "solution", label: "Solution", icon: "💡" },
@@ -130,15 +145,20 @@ async function tsLoadQuestionsForTest(test) {
       if (!res.ok) continue;
       const qs = await res.json();
       if (!Array.isArray(qs) || !qs.length) continue;
-      if (typeof QUESTIONS !== "undefined") {
-        QUESTIONS = QUESTIONS.filter(q => q._bank !== "ts_active")
-          .concat(qs.map(tsNormalizeShardQuestion).filter(Boolean));
-      }
       const loadedQs = qs.map(tsNormalizeShardQuestion).filter(Boolean);
-      const idsFromShard = loadedQs.map(q => q.id).filter(Boolean);
-      const checkIds = wantIds.length ? wantIds : idsFromShard;
-      const resolvedIds = (wantIds.length ? wantIds : idsFromShard).filter(id => typeof getQ === "function" && getQ(id));
-      if (resolvedIds.length > 0) return { count: resolvedIds.length, ids: resolvedIds };
+      loadedQs.forEach(q => {
+        if (!q || q.id == null) return;
+        window.TS_ACTIVE_QMAP[q.id] = q;
+        window.TS_ACTIVE_QMAP[String(q.id)] = q;
+      });
+      if (typeof QUESTIONS !== "undefined") {
+        QUESTIONS = QUESTIONS.filter(q => q._bank !== "ts_active").concat(loadedQs);
+      }
+      const idsFromShard = loadedQs.map(q => q.id).filter(id => id != null);
+      const shardResolved = idsFromShard.filter(id => getQ(id));
+      if (shardResolved.length > 0) return { count: shardResolved.length, ids: shardResolved };
+      const catalogResolved = wantIds.filter(id => getQ(id));
+      if (catalogResolved.length > 0) return { count: catalogResolved.length, ids: catalogResolved };
     } catch (e) { /* try next */ }
   }
 
@@ -212,16 +232,20 @@ function quizrrInstructionHtml(config) {
 }
 
 function showQuizrrInstructions(config, onDone, onCancel) {
-  const mount = typeof getTestMountEl === "function" ? getTestMountEl() : document.getElementById("app-main");
-  if (mount && mount.id === "app-main") mount.innerHTML = "";
-  const tsApp = document.querySelector(".ts-app");
-  if (tsApp) { tsApp.dataset.prevDisplay = tsApp.style.display || ""; tsApp.style.display = "none"; }
   const existing = document.getElementById("marksInstrOverlay");
   if (existing) existing.remove();
   window._marksInstrDone = onDone;
   window._marksInstrCancel = onCancel;
   document.body.classList.add("marks-instr-active");
-  document.body.insertAdjacentHTML("beforeend", quizrrInstructionHtml(config));
+  try {
+    document.body.insertAdjacentHTML("beforeend", quizrrInstructionHtml(config));
+  } catch (err) {
+    console.error("Quizrr instructions render failed:", err);
+    document.body.classList.remove("marks-instr-active");
+    showToast("⚠️ Could not show instructions. Starting test…");
+    if (typeof onDone === "function") onDone();
+    return;
+  }
   window.scrollTo(0, 0);
 }
 
@@ -846,14 +870,19 @@ async function tsLaunchTest(testId, test, meta, seriesId) {
     showToast("⚠️ Questions could not load. Try again.");
     return;
   }
+  const verified = questionIds.filter(id => getQ(id));
+  if (!verified.length) {
+    showToast("⚠️ Questions could not load. Try again.");
+    return;
+  }
   tsSaveAttempt(testId, { status: "inProgress", title: test.title, categoryId: meta.categoryId });
-  startTest(questionIds, test.title, "tests", {
+  startTest(verified, test.title, "tests", {
     testType: "testseries",
     timed: true,
     durationSec: (test.durationMin || 180) * 60,
     shuffle: false,
     marksMode: true,
-    organizeJee: true,
+    organizeJee: verified.length >= 75,
     paperFormat: "jee_main",
     persistKey: `ts::${seriesId}::${testId}`,
     meta: { seriesId, testId, slug: "jee_main" },

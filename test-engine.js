@@ -29,6 +29,42 @@ function toggleTestTheme() {
 }
 window.toggleTestTheme = toggleTestTheme;
 
+const TEST_FONT_ORDER = ["small", "medium", "large", "xlarge"];
+const TEST_FONT_LABELS = { small: "Small", medium: "Medium", large: "Large", xlarge: "Extra Large" };
+
+function getTestFontScale() {
+  const v = localStorage.getItem("quantrex_test_font") || "medium";
+  return TEST_FONT_ORDER.includes(v) ? v : "medium";
+}
+
+function setTestFontScale(scale) {
+  const s = TEST_FONT_ORDER.includes(scale) ? scale : "medium";
+  localStorage.setItem("quantrex_test_font", s);
+  const root = document.querySelector(".mtk-test-root");
+  if (root) root.setAttribute("data-font-scale", s);
+  const lblText = s === "xlarge" ? "XL" : (TEST_FONT_LABELS[s] || "Medium");
+  document.querySelectorAll("#mtkFontLbl, .mtk-font-lbl").forEach(lbl => {
+    lbl.textContent = lblText;
+  });
+  document.querySelectorAll(".mtk-font-preset").forEach(btn => {
+    btn.classList.toggle("on", btn.dataset.scale === s);
+  });
+}
+
+function bumpTestFont(delta) {
+  const cur = getTestFontScale();
+  const idx = TEST_FONT_ORDER.indexOf(cur);
+  const next = TEST_FONT_ORDER[Math.max(0, Math.min(TEST_FONT_ORDER.length - 1, idx + delta))];
+  setTestFontScale(next);
+}
+window.getTestFontScale = getTestFontScale;
+window.setTestFontScale = setTestFontScale;
+window.bumpTestFont = bumpTestFont;
+
+function tsTestLoadingHtml() {
+  return `<div class="mtk-test-root ts-test-loading" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#12151c;color:#e2e8f0;font-size:17px;font-family:Inter,sans-serif">Loading questions…</div>`;
+}
+
 const QuantrexTestEngine = (() => {
   const SCORING = {
     jee: { correct: 4, wrong: -1, unattempted: 0 },
@@ -274,7 +310,12 @@ const QuantrexTestEngine = (() => {
 
   function renderMarksQuestion() {
     const q = getQ(session.ids[session.idx]);
-    if (!q) return '<div class="empty">Question not found.</div>';
+    if (!q) {
+      return `<div class="mtk-test-root" data-test-theme="${getTestTheme()}">
+        <header class="mtk-header"><div class="mtk-brand"><span class="mtk-logo">Q</span><span class="mtk-brand-text">Quantrex</span></div></header>
+        <div class="mtk-main" style="padding:40px"><div class="empty" style="color:#f87171;font-size:16px">Question not found (id: ${session.ids[session.idx]}). <button type="button" class="mtk-btn mtk-btn-ghost" onclick="if(typeof go==='function')go('tests')">← Back</button></div></div>
+      </div>`;
+    }
     const incomplete = typeof MarksLive !== "undefined" && MarksLive.isQuestionIncomplete
       ? MarksLive.isQuestionIncomplete(q)
       : false;
@@ -1234,7 +1275,10 @@ function organizeJeeMainPaper(questionIds) {
 function enterMarksTestMode() {
   document.body.classList.add("marks-test-active");
   const appMain = document.getElementById("app-main");
-  if (appMain) appMain.style.display = "block";
+  if (appMain) {
+    appMain.style.display = "block";
+    appMain.style.visibility = "visible";
+  }
   const sidebar = document.getElementById("sidebar");
   const topbar = document.querySelector(".topbar");
   const main = document.querySelector(".main");
@@ -1253,8 +1297,17 @@ function enterMarksTestMode() {
 
 function exitMarksTestMode() {
   document.body.classList.remove("marks-test-active");
+  document.body.classList.remove("marks-instr-active");
+  const appMain = document.getElementById("app-main");
+  if (appMain) {
+    appMain.innerHTML = "";
+    appMain.style.display = "";
+    appMain.style.visibility = "";
+  }
   const overlay = document.getElementById("marksCountdownOverlay");
   if (overlay) overlay.remove();
+  const instr = document.getElementById("marksInstrOverlay");
+  if (instr) instr.remove();
   const sidebar = document.getElementById("sidebar");
   const topbar = document.querySelector(".topbar");
   const main = document.querySelector(".main");
@@ -1417,20 +1470,28 @@ function marksCancelInstructions() {
   const el = document.getElementById("marksInstrOverlay");
   if (el) el.remove();
   marksRestoreInstrShell();
+  document.body.classList.remove("marks-instr-active");
   if (document.body.classList.contains("marks-test-active")) exitMarksTestMode();
-  if (typeof _marksInstrCancel === "function") _marksInstrCancel();
+  const cancelFn = window._marksInstrCancel || _marksInstrCancel;
+  if (typeof cancelFn === "function") cancelFn();
   if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") tsRenderStandalone();
   _marksInstrDone = null;
   _marksInstrCancel = null;
+  window._marksInstrDone = null;
+  window._marksInstrCancel = null;
 }
 
 function marksAcceptInstructions() {
   const el = document.getElementById("marksInstrOverlay");
   if (el) el.remove();
   marksRestoreInstrShell();
-  if (typeof _marksInstrDone === "function") _marksInstrDone();
+  document.body.classList.remove("marks-instr-active");
+  const doneFn = window._marksInstrDone || _marksInstrDone;
+  if (typeof doneFn === "function") doneFn();
   _marksInstrDone = null;
   _marksInstrCancel = null;
+  window._marksInstrDone = null;
+  window._marksInstrCancel = null;
 }
 
 function showMarksInstructions(config, onDone, onCancel) {
@@ -1453,9 +1514,6 @@ function showMarksInstructions(config, onDone, onCancel) {
 }
 
 function showMarksCountdown(onDone) {
-  enterMarksTestMode();
-  const main = getTestMountEl();
-  if (main) main.innerHTML = "";
   const existing = document.getElementById("marksCountdownOverlay");
   if (existing) existing.remove();
   const overlay = document.createElement("div");
@@ -1478,7 +1536,20 @@ function showMarksCountdown(onDone) {
       if (numEl) numEl.textContent = "Go!";
       setTimeout(() => {
         overlay.remove();
-        if (typeof onDone === "function") onDone();
+        enterMarksTestMode();
+        const main = getTestMountEl();
+        if (main) {
+          main.style.display = "block";
+          main.innerHTML = typeof tsTestLoadingHtml === "function" ? tsTestLoadingHtml() : '<div style="padding:48px;color:#fff;text-align:center">Loading test…</div>';
+        }
+        const run = typeof onDone === "function" ? onDone() : null;
+        Promise.resolve(run).catch(err => {
+          console.error("Quantrex countdown onDone failed:", err);
+          showToast("⚠️ Could not start test. Try again.");
+          exitMarksTestMode();
+          if (main) main.innerHTML = "";
+          if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") tsRenderStandalone();
+        });
       }, 600);
     }
   };
@@ -1498,7 +1569,7 @@ function launchTestSession(main) {
     enterMarksTestMode();
     document.body.classList.remove("marks-instr-active");
     if (main.id === "app-main") main.style.display = "block";
-    currentView = "test";
+    if (typeof currentView !== "undefined") currentView = "test";
     const html = QuantrexTestEngine.render();
     if (!html || !String(html).trim()) {
       throw new Error("Test render returned empty HTML");
@@ -1655,37 +1726,6 @@ async function startMockTest(examSlug, options) {
     meta: { slug: examSlug }
   });
 }
-
-const TEST_FONT_ORDER = ["small", "medium", "large", "xlarge"];
-const TEST_FONT_LABELS = { small: "Small", medium: "Medium", large: "Large", xlarge: "Extra Large" };
-
-function getTestFontScale() {
-  const v = localStorage.getItem("quantrex_test_font") || "medium";
-  return TEST_FONT_ORDER.includes(v) ? v : "medium";
-}
-
-function setTestFontScale(scale) {
-  const s = TEST_FONT_ORDER.includes(scale) ? scale : "medium";
-  localStorage.setItem("quantrex_test_font", s);
-  const root = document.querySelector(".mtk-test-root");
-  if (root) root.setAttribute("data-font-scale", s);
-  const lblText = s === "xlarge" ? "XL" : (TEST_FONT_LABELS[s] || "Medium");
-  document.querySelectorAll("#mtkFontLbl, .mtk-font-lbl").forEach(lbl => {
-    lbl.textContent = lblText;
-  });
-  document.querySelectorAll(".mtk-font-preset").forEach(btn => {
-    btn.classList.toggle("on", btn.dataset.scale === s);
-  });
-}
-function bumpTestFont(delta) {
-  const cur = getTestFontScale();
-  const idx = TEST_FONT_ORDER.indexOf(cur);
-  const next = TEST_FONT_ORDER[Math.max(0, Math.min(TEST_FONT_ORDER.length - 1, idx + delta))];
-  setTestFontScale(next);
-}
-window.setTestFontScale = setTestFontScale;
-window.bumpTestFont = bumpTestFont;
-window.getTestFontScale = getTestFontScale;
 
 function mtkQviewSettingsHtml() {
   const scale = getTestFontScale();
