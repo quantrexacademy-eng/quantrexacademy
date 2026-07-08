@@ -1276,8 +1276,9 @@ function enterMarksTestMode() {
   document.body.classList.add("marks-test-active");
   const appMain = document.getElementById("app-main");
   if (appMain) {
-    appMain.style.display = "block";
-    appMain.style.visibility = "visible";
+    appMain.style.opacity = "1";
+    appMain.style.pointerEvents = "auto";
+    appMain.style.zIndex = "9500";
   }
   const sidebar = document.getElementById("sidebar");
   const topbar = document.querySelector(".topbar");
@@ -1301,8 +1302,9 @@ function exitMarksTestMode() {
   const appMain = document.getElementById("app-main");
   if (appMain) {
     appMain.innerHTML = "";
-    appMain.style.display = "";
-    appMain.style.visibility = "";
+    appMain.style.opacity = "";
+    appMain.style.pointerEvents = "";
+    appMain.style.zIndex = "";
   }
   const overlay = document.getElementById("marksCountdownOverlay");
   if (overlay) overlay.remove();
@@ -1496,14 +1498,8 @@ function marksAcceptInstructions() {
 
 function showMarksInstructions(config, onDone, onCancel) {
   const marksMode = config.marksMode;
-  if (marksMode) enterMarksTestMode();
   const main = getTestMountEl();
-  if (main && marksMode) main.innerHTML = "";
-  const tsApp = document.querySelector(".ts-app");
-  if (tsApp) {
-    tsApp.dataset.prevDisplay = tsApp.style.display || "";
-    tsApp.style.display = "none";
-  }
+  if (main && marksMode && main.id === "app-main") main.innerHTML = "";
   const existing = document.getElementById("marksInstrOverlay");
   if (existing) existing.remove();
   _marksInstrDone = onDone;
@@ -1539,7 +1535,9 @@ function showMarksCountdown(onDone) {
         enterMarksTestMode();
         const main = getTestMountEl();
         if (main) {
-          main.style.display = "block";
+          main.style.opacity = "1";
+          main.style.pointerEvents = "auto";
+          main.style.zIndex = "9500";
           main.innerHTML = typeof tsTestLoadingHtml === "function" ? tsTestLoadingHtml() : '<div style="padding:48px;color:#fff;text-align:center">Loading test…</div>';
         }
         const run = typeof onDone === "function" ? onDone() : null;
@@ -1568,7 +1566,11 @@ function launchTestSession(main) {
   try {
     enterMarksTestMode();
     document.body.classList.remove("marks-instr-active");
-    if (main.id === "app-main") main.style.display = "block";
+    if (main.id === "app-main") {
+      main.style.opacity = "1";
+      main.style.pointerEvents = "auto";
+      main.style.zIndex = "9500";
+    }
     if (typeof currentView !== "undefined") currentView = "test";
     const html = QuantrexTestEngine.render();
     if (!html || !String(html).trim()) {

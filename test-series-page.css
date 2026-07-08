@@ -244,7 +244,7 @@ body.ts-standalone-body {
 }
 
 /* Quizrr-style instructions (not Marks web) */
-.qz-instr-fullpage { position: fixed; inset: 0; z-index: 10000; display: flex; flex-direction: column; background: #0a0a0f; color: #e4e4e7; }
+.qz-instr-fullpage { position: fixed; inset: 0; z-index: 10050; display: flex; flex-direction: column; background: linear-gradient(160deg, #1a1033 0%, #0f0a1a 50%, #0a0812 100%); color: #e4e4e7; }
 .qz-instr-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; background: #111118; border-bottom: 1px solid #27272f; }
 .qz-instr-brand { display: flex; align-items: center; gap: 12px; }
 .qz-logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, #7c3aed, #6366f1); color: #fff; font-weight: 900; display: flex; align-items: center; justify-content: center; }

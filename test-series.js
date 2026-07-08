@@ -17,17 +17,21 @@ let _tsFilter = { testType: "All Tests", subject: "Overall", dateRange: "All Dat
 window.TS_ACTIVE_QMAP = window.TS_ACTIVE_QMAP || {};
 let currentView = "testseries";
 
-const _tsOrigGetQ = typeof getQ === "function" ? getQ : null;
-function getQ(id) {
+const _tsDataGetQ = (typeof window.getQ === "function") ? window.getQ : null;
+window.getQ = function tsGetQ(id) {
+  if (id == null || id === "") return null;
   const map = window.TS_ACTIVE_QMAP;
-  if (map && id != null) {
+  if (map) {
     if (map[id]) return map[id];
     if (typeof id === "string" && /^\d+$/.test(id) && map[Number(id)]) return map[Number(id)];
     if (typeof id === "number" && map[String(id)]) return map[String(id)];
   }
-  return _tsOrigGetQ ? _tsOrigGetQ(id) : null;
+  return _tsDataGetQ ? _tsDataGetQ(id) : null;
+};
+
+function tsEscHtml(s) {
+  return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
-window.getQ = getQ;
 
 const TS_ICON_NAV = [
   { id: "test", label: "Test", icon: "📝" },
@@ -175,15 +179,9 @@ function quizrrInstructionHtml(config) {
   const n = (config.questionIds || []).length;
   const mins = config.durationSec ? Math.floor(config.durationSec / 60) : 180;
   const marks = config.totalMarks || n * 4 || 300;
-  const preview = typeof organizeExamPaper === "function"
-    ? organizeExamPaper(config.questionIds || [], { paperFormat: "jee_main", examSlug: "jee_main", shuffle: false })
-    : null;
-  const secRows = (preview && preview.sections || []).map(s => {
-    const ms = s.marking || { correct: 4, wrong: -1 };
-    return `<tr><td>${s.label}</td><td>${s.count}</td><td>+${ms.correct} / ${ms.wrong}</td></tr>`;
-  }).join("");
-  const title = config.title || "Test";
-  return `<div id="marksInstrOverlay" class="qz-instr-fullpage">
+  const title = tsEscHtml(config.title || "Test");
+  const subtitle = tsEscHtml(config.subtitle || "Read all instructions carefully before starting the test.");
+  return `<div id="marksInstrOverlay" class="qz-instr-fullpage" role="dialog" aria-modal="true">
     <header class="qz-instr-top">
       <div class="qz-instr-brand"><span class="qz-logo">Q</span><div><strong>Quizrr</strong><small>Test Instructions</small></div></div>
       <button type="button" class="qz-instr-exit" onclick="marksCancelInstructions()">✕</button>
@@ -191,14 +189,12 @@ function quizrrInstructionHtml(config) {
     <div class="qz-instr-scroll">
       <div class="qz-instr-inner">
         <h1 class="qz-instr-title">${title}</h1>
-        <p class="qz-instr-desc">${config.subtitle || "Read all instructions carefully before starting the test."}</p>
+        <p class="qz-instr-desc">${subtitle}</p>
         <div class="qz-instr-stats">
           <div><span>Total Questions</span><strong>${n}</strong></div>
           <div><span>Total Time</span><strong>${mins} min</strong></div>
           <div><span>Total Marks</span><strong>${marks}</strong></div>
         </div>
-        ${secRows ? `<div class="qz-instr-block"><h3>Section-wise Instructions</h3>
-          <table class="qz-instr-table"><thead><tr><th>Section</th><th>Questions</th><th>Marking (+/−)</th></tr></thead><tbody>${secRows}</tbody></table></div>` : ""}
         <div class="qz-instr-block">
           <h3>General Instructions</h3>
           <ol class="qz-instr-list">
@@ -876,50 +872,92 @@ async function tsLaunchTest(testId, test, meta, seriesId) {
     return;
   }
   tsSaveAttempt(testId, { status: "inProgress", title: test.title, categoryId: meta.categoryId });
-  startTest(verified, test.title, "tests", {
+  tsStandaloneLaunchTest(testId, test, meta, seriesId, verified);
+}
+
+function tsBuildTestConfig(testId, test, meta, seriesId, questionIds) {
+  return {
+    questionIds,
+    title: test.title || "Test",
+    returnTo: "tests",
     testType: "testseries",
-    timed: true,
     durationSec: (test.durationMin || 180) * 60,
+    timed: true,
     shuffle: false,
     marksMode: true,
-    organizeJee: verified.length >= 75,
+    organizeJee: questionIds.length >= 75,
     paperFormat: "jee_main",
     persistKey: `ts::${seriesId}::${testId}`,
     meta: { seriesId, testId, slug: "jee_main" },
-    modeLabel: `${test.testType} · ${test.totalQs} Qs`,
+    modeLabel: `${test.testType || "Test"} · ${test.totalQs || questionIds.length} Qs`,
     subtitle: test.subtitle || "Previous Year Paper as Mock",
     totalMarks: test.totalMarks || 300,
     scoring: { correct: 4, wrong: -1, unattempted: 0 },
     onComplete: (data) => {
-      marksClearSession();
+      if (typeof marksClearSession === "function") marksClearSession();
       tsSaveAttempt(testId, {
         status: "completed", score: data.score, pct: data.pct,
         correct: data.correct, total: data.total, completedAt: new Date().toISOString()
       });
       showToast("✅ Submitted! View analysis in test list.");
     }
+  };
+}
+
+function tsStandaloneLaunchTest(testId, test, meta, seriesId, questionIds) {
+  const config = tsBuildTestConfig(testId, test, meta, seriesId, questionIds);
+  const runTest = () => {
+    try {
+      if (typeof QuantrexTestEngine === "undefined") throw new Error("Test engine not loaded");
+      const ok = QuantrexTestEngine.begin(config);
+      if (!ok) throw new Error("No questions in session");
+      const mount = document.getElementById("app-main") || document.getElementById("ts-root");
+      if (!mount) throw new Error("No mount element");
+      if (typeof launchTestSession === "function") launchTestSession(mount);
+      else throw new Error("launchTestSession missing");
+    } catch (err) {
+      console.error("tsStandaloneLaunchTest:", err);
+      showToast("⚠️ Test could not start: " + (err.message || "error"));
+      if (typeof exitMarksTestMode === "function") exitMarksTestMode();
+      tsRenderStandalone();
+    }
+  };
+  const afterCountdown = () => {
+    if (typeof showMarksCountdown === "function") showMarksCountdown(runTest);
+    else runTest();
+  };
+  showQuizrrInstructions(config, afterCountdown, () => {
+    if (typeof marksCancelInstructions === "function") marksCancelInstructions();
+    else tsRenderStandalone();
   });
 }
 
 async function tsOpenTest(testId) {
-  const seriesId = _tsPayload.folder || TS_SERIES_ID;
-  if (!_tsManifest) {
-    try { _tsManifest = await tsFetchManifest(seriesId); } catch (e) { return; }
+  try {
+    const seriesId = _tsPayload.folder || TS_SERIES_ID;
+    if (!_tsManifest) {
+      try { _tsManifest = await tsFetchManifest(seriesId); } catch (e) { showToast("⚠️ Could not load catalog."); return; }
+    }
+    const meta = (_tsManifest.tests || []).find(t => t.id === testId);
+    if (!meta) { showToast("⚠️ Test not found."); return; }
+    if (tsIsUpcoming(meta)) {
+      showToast("📅 This test will be available on " + tsFormatDate(meta.scheduledDate));
+      return;
+    }
+    const st = tsAttemptStatus(testId);
+    if (st === "completed") { tsShowAnalysis(testId, meta); return; }
+    showToast("📚 Loading test…");
+    let test;
+    try { test = await tsResolveTest(seriesId, meta); }
+    catch (e) { showToast("⚠️ Could not load test."); return; }
+    if (!test) { showToast("⚠️ Test not found."); return; }
+    await tsLaunchTest(testId, test, meta, seriesId);
+  } catch (err) {
+    console.error("tsOpenTest failed:", err);
+    showToast("⚠️ Error opening test. Try again.");
+    if (typeof exitMarksTestMode === "function") exitMarksTestMode();
+    tsRenderStandalone();
   }
-  const meta = (_tsManifest.tests || []).find(t => t.id === testId);
-  if (!meta) return;
-  if (tsIsUpcoming(meta)) {
-    showToast("📅 This test will be available on " + tsFormatDate(meta.scheduledDate));
-    return;
-  }
-  const st = tsAttemptStatus(testId);
-  if (st === "completed") { tsShowAnalysis(testId, meta); return; }
-  showToast("📚 Loading test…");
-  let test;
-  try { test = await tsResolveTest(seriesId, meta); }
-  catch (e) { showToast("⚠️ Could not load test."); return; }
-  if (!test) { showToast("⚠️ Test not found."); return; }
-  await tsLaunchTest(testId, test, meta, seriesId);
 }
 
 function tsShowAnalysis(testId, meta) {
