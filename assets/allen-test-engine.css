@@ -224,13 +224,78 @@ body.allen-cbt-active .marks-countdown-overlay { background: var(--allen-header-
 body.allen-cbt-active .marks-countdown-num { color: var(--allen-orange); }
 body.allen-cbt-active .marks-countdown-grab { color: #fff; }
 
-/* Force light readable theme for Allen CBT even if user prefers dark */
+/* Dark mode — full CBT shell (light/dark toggle) */
 .mtk-test-root.allen-cbt[data-test-theme="dark"] {
-  background: var(--allen-body-bg); color: var(--allen-text);
+  background: #0f1419;
+  color: #e2e8f0;
 }
-.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-header { background: var(--allen-header-bg); }
-.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-main { background: var(--allen-card); }
-.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-opt { background: #fff; color: var(--allen-text); }
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-header {
+  background: #0b2540;
+  border-bottom-color: #F58220;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-main {
+  background: #1a1f28;
+  color: #e2e8f0;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-q-text,
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-q-text .qx-content,
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-opt-text {
+  color: #e8eaed;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-opt {
+  background: #232733;
+  border-color: #3b4254;
+  color: #e2e8f0;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-opt:hover {
+  border-color: #60a5fa;
+  background: #2a3040;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-palette {
+  background: #1a1f28;
+  border-left-color: #2a2f3d;
+  color: #e2e8f0;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-sec-bar {
+  background: #141820;
+  border-bottom-color: #2a2f3d;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-sec-tab {
+  color: #94a3b8;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-sec-tab.active {
+  color: #f1f5f9;
+  border-bottom-color: #F58220;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-brand-text,
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-timer,
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-q-num {
+  color: #f1f5f9;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-header-tools {
+  background: rgba(20,24,32,.9);
+  border-color: #3b4254;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-theme-lbl {
+  color: #94a3b8;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-font-btn {
+  background: #232733;
+  border-color: #3b4254;
+  color: #cbd5e1;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-btn-clear,
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-btn-prev {
+  background: #374151;
+  border-color: #4b5563;
+  color: #e5e7eb;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-controls {
+  border-top-color: #2a2f3d;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .qx-opt-fig {
+  background: #fff;
+}
 
 @media (max-width: 900px) {
   .allen-instr-stats { grid-template-columns: 1fr; }

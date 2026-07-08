@@ -14,13 +14,18 @@ function getTestTheme() {
 function setTestTheme(mode) {
   const m = mode === "light" ? "light" : "dark";
   localStorage.setItem("quantrex_test_theme", m);
-  const root = document.querySelector(".mtk-test-root");
-  if (root) root.setAttribute("data-test-theme", m);
+  document.querySelectorAll(".mtk-test-root").forEach(root => {
+    root.setAttribute("data-test-theme", m);
+  });
+  document.body.classList.toggle("qx-test-light", m === "light");
+  document.body.classList.toggle("qx-test-dark", m === "dark");
   document.querySelectorAll(".mtk-theme-lbl").forEach(el => {
     el.textContent = m === "light" ? "Light" : "Dark";
   });
-  const btn = document.getElementById("mtkThemeBtn");
-  if (btn) btn.textContent = m === "dark" ? "☀️" : "🌙";
+  document.querySelectorAll("#mtkThemeBtn, .mtk-theme-btn").forEach(btn => {
+    btn.textContent = m === "dark" ? "☀️" : "🌙";
+    btn.setAttribute("title", m === "dark" ? "Switch to light mode" : "Switch to dark mode");
+  });
 }
 window.setTestTheme = setTestTheme;
 
@@ -565,20 +570,34 @@ const QuantrexTestEngine = (() => {
   }
 
   let _refreshBusy = false;
+  function questionNeedsHydrate(q) {
+    if (!q) return false;
+    if (typeof MarksLive !== "undefined" && MarksLive.isQuestionReady) {
+      return !MarksLive.isQuestionReady(q);
+    }
+    return typeof MarksLive !== "undefined" && MarksLive.isQuestionIncomplete
+      ? MarksLive.isQuestionIncomplete(q)
+      : false;
+  }
+
   async function refresh() {
     const main = getTestMountEl();
     if (!main || !session || _refreshBusy) return;
     _refreshBusy = true;
+    try {
     const q = getQ(session.ids[session.idx]);
-    const incomplete = q && typeof MarksLive !== "undefined" && MarksLive.isQuestionIncomplete
-      ? MarksLive.isQuestionIncomplete(q)
-      : (q && typeof MarksLive !== "undefined" && MarksLive.needsFullQuestion(q));
-    if (incomplete) {
-      main.innerHTML = `<div class="mtk-test-root"><div class="empty" style="padding:48px;text-align:center">Loading question options…</div></div>`;
+    const incomplete = questionNeedsHydrate(q);
+    if (incomplete && q && q._marksId && typeof MarksLive !== "undefined") {
+      main.innerHTML = `<div class="mtk-test-root allen-cbt" data-test-theme="${getTestTheme()}"><div class="empty" style="padding:48px;text-align:center">Loading question…</div></div>`;
       try {
         await MarksLive.ensureQuestionFull(q, { force: true });
         if (typeof tsSyncQMap === "function") tsSyncQMap([session.ids[session.idx]]);
       } catch (e) { /* continue */ }
+      const q2 = getQ(session.ids[session.idx]);
+      if (q2 && q2._shardLoaded) {
+        q2._needsFull = false;
+        q2._fullFetched = true;
+      }
     }
     if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
       const near = [session.idx - 1, session.idx + 1, session.idx + 2]
@@ -588,11 +607,15 @@ const QuantrexTestEngine = (() => {
     }
     main.innerHTML = renderQuestion();
     bindEvents(main);
+    setTestTheme(getTestTheme());
+    setTestFontScale(getTestFontScale());
     if (typeof Mx !== "undefined") Mx.afterRender(main);
     marksPersistSession();
     const activeTab = main.querySelector(".mtk-sec-tab.active");
     if (activeTab) activeTab.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
-    _refreshBusy = false;
+    } finally {
+      _refreshBusy = false;
+    }
   }
 
   function selectAnswer(idx) {
@@ -665,6 +688,13 @@ const QuantrexTestEngine = (() => {
     stopTimer();
     if (session.persistKey) {
       marksPersistSession();
+      if (session.testType === "testseries" && session.meta && session.meta.testId && typeof tsSaveAttempt === "function") {
+        tsSaveAttempt(session.meta.testId, {
+          status: "inProgress",
+          title: session.title,
+          categoryId: session.meta.categoryId || null
+        });
+      }
       if (session.testType === "pyqmock" && session.meta && typeof pyqSaveAttempt === "function") {
         const attemptKey = typeof pyqAttemptKey === "function"
           ? pyqAttemptKey(session.meta.slug, session.meta.source) : null;
@@ -677,7 +707,11 @@ const QuantrexTestEngine = (() => {
     }
     exitMarksTestMode();
     session = null;
-    go(ret);
+    if (testType === "testseries" && window.TS_STANDALONE && typeof tsRenderStandalone === "function") {
+      tsRenderStandalone();
+    } else {
+      go(ret);
+    }
     const resumeHint = testType === "testseries" ? "Test Series → Resume tab" : "PYQ Mock Tests";
     showToast(hadPersist ? `✓ Test stopped. Resume anytime from ${resumeHint}.` : "✓ Test saved.");
   }
@@ -1471,8 +1505,15 @@ function marksLoadSession(key) {
   return null;
 }
 
-function marksClearSession() {
-  try { localStorage.removeItem(MARKS_SESSION_STORE); } catch (e) { /* ignore */ }
+function marksClearSession(key) {
+  try {
+    if (key) {
+      const data = JSON.parse(localStorage.getItem(MARKS_SESSION_STORE) || "null");
+      if (data && data.persistKey === key) localStorage.removeItem(MARKS_SESSION_STORE);
+    } else {
+      localStorage.removeItem(MARKS_SESSION_STORE);
+    }
+  } catch (e) { /* ignore */ }
 }
 
 function marksInstructionHtml(config) {
@@ -1667,6 +1708,8 @@ function launchTestSession(main) {
       throw new Error("Test render returned empty HTML");
     }
     main.innerHTML = html;
+    setTestTheme(getTestTheme());
+    setTestFontScale(getTestFontScale());
     QuantrexTestEngine.bindEvents(main);
     QuantrexTestEngine.launchTimer();
     document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));

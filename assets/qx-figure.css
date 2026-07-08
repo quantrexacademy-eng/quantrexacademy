@@ -22,11 +22,14 @@
   max-width: 100%;
   width: auto;
   height: auto;
-  max-height: 380px;
+  max-height: 480px;
   margin: 0 auto;
   object-fit: contain;
-  border-radius: 6px;
+  border-radius: 4px;
   background: #fff;
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .mtk-q-text .qx-fig,
@@ -59,9 +62,10 @@
   max-width: 100%;
   width: auto;
   height: auto;
-  max-height: 140px;
+  max-height: 180px;
   object-fit: contain;
   margin: 0 auto;
+  image-rendering: auto;
 }
 
 .mtk-opt-text .qx-fig,

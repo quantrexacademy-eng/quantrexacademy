@@ -19,13 +19,14 @@ const QuantrexQFormat = (() => {
     const readonly = o.readonly !== false ? " readonly" : "";
     const extraCls = o.cbt ? " qx-num-cbt" : "";
     const wrapCls = o.wrapClass || "qx-prac-numerical";
+    const ntaCls = o.cbt ? " qx-num-nta" : "";
     return `<div class="${wrapCls} mtk-numerical">
-      <div class="qx-num-entry${extraCls}">
+      <div class="qx-num-entry${extraCls}${ntaCls}">
         <label class="qx-num-label" for="qxNumInput">Enter your answer</label>
         <input type="text" class="qx-num-input" id="qxNumInput" inputmode="none" autocomplete="off"
-          placeholder="0" value="${valEsc}"${readonly}${disabled}>
+          placeholder="" value="${valEsc}"${readonly}${disabled}>
         <div class="qx-num-keypad" id="qxNumKeypad" role="group" aria-label="Numeric keypad">
-          <button type="button" class="qx-num-key qx-num-key-wide qx-num-key-back" data-num-key="back">⌫ Backspace</button>
+          <button type="button" class="qx-num-key qx-num-key-wide qx-num-key-back" data-num-key="back">backspace</button>
           <button type="button" class="qx-num-key" data-num-key="7">7</button>
           <button type="button" class="qx-num-key" data-num-key="8">8</button>
           <button type="button" class="qx-num-key" data-num-key="9">9</button>
@@ -35,10 +36,13 @@ const QuantrexQFormat = (() => {
           <button type="button" class="qx-num-key" data-num-key="1">1</button>
           <button type="button" class="qx-num-key" data-num-key="2">2</button>
           <button type="button" class="qx-num-key" data-num-key="3">3</button>
+          <button type="button" class="qx-num-key qx-num-key-arrow" data-num-key="left" title="Move left">←</button>
           <button type="button" class="qx-num-key" data-num-key="0">0</button>
           <button type="button" class="qx-num-key" data-num-key=".">.</button>
-          <button type="button" class="qx-num-key" data-num-key="-">−</button>
-          <button type="button" class="qx-num-key qx-num-key-wide" data-num-key="clear">Clear All</button>
+          <button type="button" class="qx-num-key" data-num-key="-">-</button>
+          <button type="button" class="qx-num-key qx-num-key-arrow" data-num-key="right" title="Move right">→</button>
+          <span class="qx-num-key-spacer" aria-hidden="true"></span>
+          <button type="button" class="qx-num-key qx-num-key-wide qx-num-key-clear" data-num-key="clear">ClearAll</button>
         </div>
       </div>
       ${o.correctHtml || ""}
@@ -60,12 +64,36 @@ const QuantrexQFormat = (() => {
           if (input.disabled) return;
           const key = btn.getAttribute("data-num-key");
           let v = String(input.value || "");
-          if (key === "back") v = v.slice(0, -1);
-          else if (key === "clear") v = "";
-          else if (key === ".") { if (!v.includes(".")) v += "."; }
-          else if (key === "-") v = v.startsWith("-") ? v.slice(1) : "-" + v;
-          else v += key;
-          input.value = v;
+          const pos = input.selectionStart != null ? input.selectionStart : v.length;
+          if (key === "back") {
+            if (pos > 0) v = v.slice(0, pos - 1) + v.slice(pos);
+            input.value = v;
+            const np = Math.max(0, pos - 1);
+            input.setSelectionRange(np, np);
+          } else if (key === "clear") {
+            v = "";
+            input.value = v;
+          } else if (key === "left") {
+            input.value = v;
+            const np = Math.max(0, pos - 1);
+            input.setSelectionRange(np, np);
+          } else if (key === "right") {
+            input.value = v;
+            const np = Math.min(v.length, pos + 1);
+            input.setSelectionRange(np, np);
+          } else if (key === ".") {
+            v = v.slice(0, pos) + "." + v.slice(pos);
+            if ((v.match(/\./g) || []).length > 1) return;
+            input.value = v;
+            input.setSelectionRange(pos + 1, pos + 1);
+          } else if (key === "-") {
+            v = v.startsWith("-") ? v.slice(1) : "-" + v;
+            input.value = v;
+          } else {
+            v = v.slice(0, pos) + key + v.slice(pos);
+            input.value = v;
+            input.setSelectionRange(pos + 1, pos + 1);
+          }
           emit();
         };
       });

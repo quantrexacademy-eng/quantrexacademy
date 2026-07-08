@@ -102,19 +102,33 @@ const MarksLive = (() => {
     return /numerical|subjective|integer|long|descriptive|fill/i.test(t);
   }
 
+  function optionHasContent(o) {
+    const s = String(o || "");
+    if (/<img/i.test(s)) return true;
+    const t = s.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    if (!t) return false;
+    const letters = new Set(["A", "B", "C", "D", "a", "b", "c", "d", "1", "2", "3", "4"]);
+    return !letters.has(t);
+  }
+
   function isPlaceholderOptions(options) {
     if (!options || !options.length) return true;
-    const letters = new Set(["A", "B", "C", "D", "a", "b", "c", "d", "1", "2", "3", "4"]);
-    return options.every(o => {
-      const t = String(o || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-      return !t || letters.has(t);
-    });
+    return !options.some(optionHasContent);
+  }
+
+  function isQuestionReady(q) {
+    if (!q) return false;
+    const qType = q.questionType || q.type || "";
+    if (isNonMcqType(qType)) return !isBlankText(q.q);
+    if (q._shardLoaded || q._bank === "ts_active") {
+      return !isBlankText(q.q) && !isPlaceholderOptions(q.options);
+    }
+    if (!q._marksId) return !isBlankText(q.q) && !isPlaceholderOptions(q.options);
+    return !needsFullQuestion(q);
   }
 
   function isQuestionIncomplete(q) {
-    if (!q) return true;
-    if (!q._marksId) return isBlankText(q.q) || isPlaceholderOptions(q.options);
-    return needsFullQuestion(q);
+    return !isQuestionReady(q);
   }
 
   function hasRealSolution(sol) {
@@ -131,7 +145,8 @@ const MarksLive = (() => {
 
   function needsFullQuestion(q) {
     if (!q || !q._marksId) return false;
-    const nonMcq = isNonMcqType(q.questionType);
+    if (q._shardLoaded || q._bank === "ts_active") return false;
+    const nonMcq = isNonMcqType(q.questionType || q.type);
     if (q._fullFetched) {
       if (isBlankText(q.q)) return true;
       return !nonMcq && isPlaceholderOptions(q.options);
@@ -295,6 +310,7 @@ const MarksLive = (() => {
 
   function needsPrefetch(q) {
     if (!q || !q._marksId) return false;
+    if (q._shardLoaded || q._bank === "ts_active") return false;
     if (needsFullQuestion(q)) return true;
     const opts = q.options || [];
     const hasBody = opts.some(o => String(o || "").replace(/<[^>]+>/g, " ").trim());
@@ -508,6 +524,8 @@ const MarksLive = (() => {
     isBlankText,
     isNonMcqType,
     isPlaceholderOptions,
+    optionHasContent,
+    isQuestionReady,
     isQuestionIncomplete,
     hasRealSolution,
     cleanSolution,

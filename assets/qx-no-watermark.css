@@ -17,8 +17,12 @@ img.qx-no-wm,
 .qx-diagram-modal img[src*="cdn-question-pool"],
 .marks-result img[src*="cdn-question-pool"],
 .sol-body img[src*="cdn-question-pool"] {
-  filter: contrast(2.75) brightness(1.07) saturate(1.12);
-  -webkit-filter: contrast(2.75) brightness(1.07) saturate(1.12);
+  /* Mild fade — high contrast destroyed diagram clarity (screenshot 448) */
+  filter: contrast(1.12) brightness(1.04) saturate(1.05);
+  -webkit-filter: contrast(1.12) brightness(1.04) saturate(1.05);
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* HTML overlay watermarks from imported content */

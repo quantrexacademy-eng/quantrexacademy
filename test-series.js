@@ -170,8 +170,21 @@ function tsNormalizeShardQuestion(q) {
     _marksId: marksId,
     _bank: "ts_active"
   };
-  const emptyOpts = !(out.options || []).some(o => String(o || "").replace(/<[^>]+>/g, "").trim());
-  if (marksId && (emptyOpts || out._needsFull)) out._needsFull = true;
+  const hasOpts = (out.options || []).some(o => {
+    const s = String(o || "");
+    if (/<img/i.test(s)) return true;
+    const t = s.replace(/<[^>]+>/g, " ").trim();
+    return t.length > 0 && !/^[ABCDabcd1234]$/.test(t);
+  });
+  const hasQ = String(out.q || "").replace(/<[^>]+>/g, " ").trim().length > 8;
+  const isNum = /numerical|integer/i.test(String(out.questionType || out.type || ""));
+  if (hasQ && (hasOpts || isNum)) {
+    out._shardLoaded = true;
+    out._fullFetched = true;
+    out._needsFull = false;
+  } else if (marksId && (!hasOpts || out._needsFull)) {
+    out._needsFull = true;
+  }
   return out;
 }
 
@@ -982,7 +995,7 @@ async function tsResumeTest(testId) {
 async function tsStartFreshTest(testId) {
   const seriesId = _tsPayload.folder || TS_SERIES_ID;
   const persistKey = `ts::${seriesId}::${testId}`;
-  if (typeof marksClearSession === "function") marksClearSession();
+  if (typeof marksClearSession === "function") marksClearSession(persistKey);
   tsSaveAttempt(testId, { status: "notStarted" });
   const meta = (_tsManifest && _tsManifest.tests || []).find(t => t.id === testId);
   if (!meta) { showToast("⚠️ Test not found."); return; }
@@ -1034,7 +1047,7 @@ function tsBuildTestConfig(testId, test, meta, seriesId, questionIds) {
     organizeJee: questionIds.length >= 75,
     paperFormat: "jee_main",
     persistKey: `ts::${seriesId}::${testId}`,
-    meta: { seriesId, testId, slug: "jee_main" },
+    meta: { seriesId, testId, categoryId: meta.categoryId || null, slug: "jee_main" },
     modeLabel: `${test.testType || "Test"} · ${test.totalQs || questionIds.length} Qs`,
     subtitle: test.subtitle || "Previous Year Paper as Mock",
     totalMarks: test.totalMarks || 300,
