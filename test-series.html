@@ -9,9 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Kanit:wght@400;500;600;700;800&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/quantrex-brand.css?v=qxbrand1">
-    <link rel="stylesheet" href="test-series-page.css?v=qxtest453">
-    <link rel="stylesheet" href="assets/marks-test-engine.css?v=qxtest453">
-    <link rel="stylesheet" href="assets/allen-test-engine.css?v=qxtest453">
+    <link rel="stylesheet" href="test-series-page.css?v=qxtest454">
+    <link rel="stylesheet" href="assets/marks-test-engine.css?v=qxtest454">
+    <link rel="stylesheet" href="assets/allen-test-engine.css?v=qxtest454">
     <style>
         body.marks-instr-active { overflow: hidden; }
         .marks-instr-fullpage { position: fixed; inset: 0; z-index: 10000; display: flex; flex-direction: column; background: #0c0e14; color: #e2e8f0; }
@@ -60,10 +60,11 @@
             opacity: 0;
             pointer-events: none;
             min-height: 100vh;
-            background: #0f1117;
+            background: #f4f7fb;
         }
         body.marks-instr-active { overflow: hidden; }
         body.marks-instr-active #marksInstrOverlay { z-index: 10050 !important; }
+        body.marks-instr-active #ts-root { visibility: visible !important; }
         body.marks-test-active .ts-app,
         body.marks-test-active #ts-root { display: none !important; }
         body.marks-test-active #app-main {
@@ -72,6 +73,7 @@
             pointer-events: auto !important;
             padding: 0;
             overflow: auto;
+            background: #f4f7fb;
         }
     </style>
 </head>
@@ -79,14 +81,14 @@
     <div id="ts-root"><div class="ts-loading">Loading JEE Main Test Series 2027…</div></div>
     <div id="app-main"></div>
     <div id="appToast"></div>
-    <script>window.QX_BUILD = "qxtest453"; window.TS_STANDALONE = true;</script>
-    <script src="strip/branding-strip.js?v=qxtest453" defer></script>
-    <script src="math-render.js?v=qxtest453" defer></script>
-    <script src="question-format.js?v=qxtest453" defer></script>
-    <script src="data.js?v=qxtest453" defer></script>
-    <script src="marks-live.js?v=qxtest453" defer></script>
-    <script src="allen-test-ui.js?v=qxtest453" defer></script>
-    <script src="test-engine.js?v=qxtest453" defer></script>
-    <script src="test-series.js?v=qxtest453" defer></script>
+    <script>window.QX_BUILD = "qxtest454"; window.TS_STANDALONE = true;</script>
+    <script src="strip/branding-strip.js?v=qxtest454" defer></script>
+    <script src="math-render.js?v=qxtest454" defer></script>
+    <script src="question-format.js?v=qxtest454" defer></script>
+    <script src="data.js?v=qxtest454" defer></script>
+    <script src="marks-live.js?v=qxtest454" defer></script>
+    <script src="allen-test-ui.js?v=qxtest454" defer></script>
+    <script src="test-engine.js?v=qxtest454" defer></script>
+    <script src="test-series.js?v=qxtest454" defer></script>
 </body>
 </html>

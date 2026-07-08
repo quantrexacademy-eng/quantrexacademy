@@ -15,7 +15,13 @@
 body.allen-cbt-active { background: var(--allen-body-bg); }
 body.marks-test-active.allen-cbt-active { background: var(--allen-body-bg); }
 body.allen-practice-active .mtk-test-root.allen-practice { min-height: 100vh; }
-body.allen-practice-active #app-main { padding: 0; max-width: none; }
+body.allen-practice-active #app-main,
+body.marks-test-active #app-main {
+  position: fixed; inset: 0; z-index: 9500;
+  padding: 0; max-width: none; overflow: auto;
+  background: var(--allen-body-bg, #f4f7fb);
+}
+body.marks-test-active { background: var(--allen-body-bg, #f4f7fb); }
 
 /* ── Instructions ── */
 .allen-instr-fullpage {

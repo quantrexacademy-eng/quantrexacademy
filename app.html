@@ -13,8 +13,8 @@
     <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Kanit:wght@400;500;600;700;800&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/quantrex-brand.css?v=qxbrand1">
-    <link rel="stylesheet" href="assets/marks-test-engine.css?v=qxtest453">
-    <link rel="stylesheet" href="assets/allen-test-engine.css?v=qxtest453">
+    <link rel="stylesheet" href="assets/marks-test-engine.css?v=qxtest454">
+    <link rel="stylesheet" href="assets/allen-test-engine.css?v=qxtest454">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         [data-theme="dark"] body { background: var(--bg); color: var(--text); }
@@ -1268,9 +1268,9 @@
         }
 
         /* MARKS-style fullscreen test engine */
-        body.marks-test-active { overflow: hidden; background: #0f1117; }
-        body.marks-test-active .main { width: 100vw; min-height: 100vh; }
-        body.marks-test-active #app-main { padding: 0; min-height: 100vh; }
+        body.marks-test-active { overflow: hidden; background: #f4f7fb; }
+        body.marks-test-active .main { width: 100vw; min-height: 100vh; margin-left: 0 !important; }
+        body.marks-test-active #app-main { padding: 0; min-height: 100vh; position: fixed; inset: 0; z-index: 9500; overflow: auto; background: #f4f7fb; }
         .marks-countdown-overlay { position: fixed; inset: 0; z-index: 10000; background: #000; display: flex; align-items: center; justify-content: center; }
         .marks-countdown-inner { text-align: center; }
         .marks-countdown-grab { color: #f1f5f9; font-size: 28px; font-weight: 600; margin-bottom: 28px; letter-spacing: .01em; }
@@ -1768,7 +1768,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxtest438</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxtest454</div>
             </div>
         </aside>
 
@@ -1794,7 +1794,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
-    <script>window.QX_BUILD="qxtest453";</script>
+    <script>window.QX_BUILD="qxtest454";</script>
     <script src="qx-perf.js?v=qxtest438"></script>
     <script src="firebase-config.js?v=qxtest438" defer></script>
     <script src="stack-config.js?v=qxtest438" defer></script>
@@ -1812,16 +1812,16 @@
     <script src="book-covers.js?v=qxtest438" defer></script>
     <script src="marks-shell.js?v=qxtest438" defer></script>
     <script src="marks-live.js?v=qxtest438" defer></script>
-    <script src="marks-features.js?v=qxtest453" defer></script>
-    <script src="allen-test-ui.js?v=qxtest453" defer></script>
-    <script src="test-series.js?v=qxtest453" defer></script>
-    <script src="assignments.js?v=qxtest453" defer></script>
-    <script src="custom-test.js?v=qxtest453" defer></script>
-    <script src="test-engine.js?v=qxtest453" defer></script>
+    <script src="marks-features.js?v=qxtest454" defer></script>
+    <script src="allen-test-ui.js?v=qxtest454" defer></script>
+    <script src="test-series.js?v=qxtest454" defer></script>
+    <script src="assignments.js?v=qxtest454" defer></script>
+    <script src="custom-test.js?v=qxtest454" defer></script>
+    <script src="test-engine.js?v=qxtest454" defer></script>
     <script src="bookmarks.js?v=qxtest438" defer></script>
     <script src="analytics.js?v=qxtest438" defer></script>
     <script src="search.js?v=qxtest438" defer></script>
     <script src="theme.js?v=qxtest438" defer></script>
-    <script src="app.js?v=qxtest453" defer></script>
+    <script src="app.js?v=qxtest454" defer></script>
 </body>
 </html>

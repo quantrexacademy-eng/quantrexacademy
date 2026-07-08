@@ -277,11 +277,19 @@ function enterAllenPracticeMode() {
   const sidebar = document.getElementById("sidebar");
   const topbar = document.querySelector(".topbar");
   const mainEl = document.querySelector(".main");
-  const content = document.querySelector(".content");
+  const mount = document.getElementById("app-main");
   if (sidebar) sidebar.style.display = "none";
   if (topbar) topbar.style.display = "none";
   if (mainEl) mainEl.style.marginLeft = "0";
-  if (content) { content.style.padding = "0"; content.style.maxWidth = "none"; }
+  if (mount) {
+    mount.style.padding = "0";
+    mount.style.maxWidth = "none";
+    mount.style.position = "fixed";
+    mount.style.inset = "0";
+    mount.style.zIndex = "9500";
+    mount.style.overflow = "auto";
+    mount.style.background = "#f4f7fb";
+  }
 }
 
 function exitAllenPracticeMode() {
@@ -289,11 +297,19 @@ function exitAllenPracticeMode() {
   const sidebar = document.getElementById("sidebar");
   const topbar = document.querySelector(".topbar");
   const mainEl = document.querySelector(".main");
-  const content = document.querySelector(".content");
+  const mount = document.getElementById("app-main");
   if (sidebar) sidebar.style.display = "";
   if (topbar) topbar.style.display = "";
   if (mainEl) mainEl.style.marginLeft = "";
-  if (content) { content.style.padding = ""; content.style.maxWidth = ""; }
+  if (mount) {
+    mount.style.padding = "";
+    mount.style.maxWidth = "";
+    mount.style.position = "";
+    mount.style.inset = "";
+    mount.style.zIndex = "";
+    mount.style.overflow = "";
+    mount.style.background = "";
+  }
 }
 
 async function openPracticeQuestion(id) {

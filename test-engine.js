@@ -62,7 +62,7 @@ window.setTestFontScale = setTestFontScale;
 window.bumpTestFont = bumpTestFont;
 
 function tsTestLoadingHtml() {
-  return `<div class="mtk-test-root ts-test-loading" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#12151c;color:#e2e8f0;font-size:17px;font-family:Inter,sans-serif">Loading questions…</div>`;
+  return `<div class="mtk-test-root allen-cbt ts-test-loading" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f4f7fb;color:#1a2b4a;font-size:17px;font-family:Inter,sans-serif">Loading questions…</div>`;
 }
 
 const QuantrexTestEngine = (() => {
@@ -1309,14 +1309,23 @@ function organizeJeeMainPaper(questionIds) {
   return { orderedIds, sections };
 }
 
+function qxShowTestMount(main) {
+  if (!main) return;
+  main.style.opacity = "1";
+  main.style.pointerEvents = "auto";
+  main.style.zIndex = "9500";
+  if (window.TS_STANDALONE || main.id === "app-main") {
+    main.style.position = "fixed";
+    main.style.inset = "0";
+    main.style.overflow = "auto";
+    main.style.background = "#f4f7fb";
+  }
+}
+
 function enterMarksTestMode() {
   document.body.classList.add("marks-test-active", "allen-cbt-active");
   const appMain = document.getElementById("app-main");
-  if (appMain) {
-    appMain.style.opacity = "1";
-    appMain.style.pointerEvents = "auto";
-    appMain.style.zIndex = "9500";
-  }
+  qxShowTestMount(appMain);
   const sidebar = document.getElementById("sidebar");
   const topbar = document.querySelector(".topbar");
   const main = document.querySelector(".main");
@@ -1334,13 +1343,17 @@ function enterMarksTestMode() {
 }
 
 function exitMarksTestMode() {
-  document.body.classList.remove("marks-test-active", "marks-instr-active", "allen-cbt-active");
+  document.body.classList.remove("marks-test-active", "marks-instr-active", "allen-cbt-active", "allen-practice-active");
   const appMain = document.getElementById("app-main");
   if (appMain) {
     appMain.innerHTML = "";
     appMain.style.opacity = "";
     appMain.style.pointerEvents = "";
     appMain.style.zIndex = "";
+    appMain.style.position = "";
+    appMain.style.inset = "";
+    appMain.style.overflow = "";
+    appMain.style.background = "";
   }
   const overlay = document.getElementById("marksCountdownOverlay");
   if (overlay) overlay.remove();
@@ -1353,9 +1366,18 @@ function exitMarksTestMode() {
   if (sidebar) sidebar.style.display = "";
   if (topbar) topbar.style.display = "";
   if (main) main.style.marginLeft = "";
-  if (content) content.style.padding = "";
-  if (content) content.style.maxWidth = "";
+  if (content) {
+    content.style.padding = "";
+    content.style.maxWidth = "";
+    content.style.position = "";
+    content.style.inset = "";
+    content.style.overflow = "";
+    content.style.background = "";
+  }
   if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(() => {});
+  if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") {
+    try { tsRenderStandalone(); } catch (e) { console.error("tsRenderStandalone recovery:", e); }
+  }
 }
 
 const MARKS_SESSION_STORE = "quantrex_marks_session_v1";
@@ -1572,10 +1594,8 @@ function showMarksCountdown(onDone) {
         enterMarksTestMode();
         const main = getTestMountEl();
         if (main) {
-          main.style.opacity = "1";
-          main.style.pointerEvents = "auto";
-          main.style.zIndex = "9500";
-          main.innerHTML = typeof tsTestLoadingHtml === "function" ? tsTestLoadingHtml() : '<div style="padding:48px;color:#fff;text-align:center">Loading test…</div>';
+          qxShowTestMount(main);
+          main.innerHTML = typeof tsTestLoadingHtml === "function" ? tsTestLoadingHtml() : '<div class="mtk-test-root allen-cbt ts-test-loading" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f4f7fb;color:#1a2b4a;font-size:17px">Loading test…</div>';
         }
         const run = typeof onDone === "function" ? onDone() : null;
         Promise.resolve(run).catch(err => {
@@ -1603,11 +1623,7 @@ function launchTestSession(main) {
   try {
     enterMarksTestMode();
     document.body.classList.remove("marks-instr-active");
-    if (main.id === "app-main") {
-      main.style.opacity = "1";
-      main.style.pointerEvents = "auto";
-      main.style.zIndex = "9500";
-    }
+    if (main.id === "app-main") qxShowTestMount(main);
     if (typeof currentView !== "undefined") currentView = "test";
     const html = QuantrexTestEngine.render();
     if (!html || !String(html).trim()) {

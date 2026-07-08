@@ -113,14 +113,18 @@ const AllenTestUI = (() => {
     const n = (config.questionIds || []).length;
     let secRows = "";
     if (typeof organizeExamPaper === "function" && n >= 10) {
-      const preview = organizeExamPaper(config.questionIds || [], {
-        paperFormat: ctx.exam === "jee_advanced" ? "jee_advanced" : (ctx.exam === "neet" ? "neet" : "jee_main"),
-        examSlug: ctx.slug,
-        shuffle: false
-      });
-      secRows = (preview && preview.sections || []).map(s =>
-        `<tr><td>${esc(s.label || s.shortLabel)}</td><td>${s.count}</td></tr>`
-      ).join("");
+      try {
+        const preview = organizeExamPaper(config.questionIds || [], {
+          paperFormat: ctx.exam === "jee_advanced" ? "jee_advanced" : (ctx.exam === "neet" ? "neet" : "jee_main"),
+          examSlug: ctx.slug,
+          shuffle: false
+        });
+        secRows = (preview && preview.sections || []).map(s =>
+          `<tr><td>${esc(s.label || s.shortLabel)}</td><td>${s.count}</td></tr>`
+        ).join("");
+      } catch (e) {
+        console.warn("Allen paper section preview skipped:", e);
+      }
     }
     if (secRows) {
       return `<div class="allen-instr-block"><h3>Paper Sections (This Test)</h3>

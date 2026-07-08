@@ -1084,7 +1084,7 @@ function tsStandaloneLaunchTest(testId, test, meta, seriesId, questionIds, opts)
       console.error("tsStandaloneLaunchTest:", err);
       showToast("⚠️ Test could not start: " + (err.message || "error"));
       if (typeof exitMarksTestMode === "function") exitMarksTestMode();
-      tsRenderStandalone();
+      else if (typeof tsRenderStandalone === "function") tsRenderStandalone();
     }
   };
   const afterCountdown = () => {
