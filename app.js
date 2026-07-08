@@ -272,6 +272,30 @@ function qxBackgroundPrefetch(ids) {
   MarksLive.prefetchQuestions(need).catch(() => {});
 }
 
+function enterAllenPracticeMode() {
+  document.body.classList.add("allen-cbt-active", "allen-practice-active");
+  const sidebar = document.getElementById("sidebar");
+  const topbar = document.querySelector(".topbar");
+  const mainEl = document.querySelector(".main");
+  const content = document.querySelector(".content");
+  if (sidebar) sidebar.style.display = "none";
+  if (topbar) topbar.style.display = "none";
+  if (mainEl) mainEl.style.marginLeft = "0";
+  if (content) { content.style.padding = "0"; content.style.maxWidth = "none"; }
+}
+
+function exitAllenPracticeMode() {
+  document.body.classList.remove("allen-cbt-active", "allen-practice-active");
+  const sidebar = document.getElementById("sidebar");
+  const topbar = document.querySelector(".topbar");
+  const mainEl = document.querySelector(".main");
+  const content = document.querySelector(".content");
+  if (sidebar) sidebar.style.display = "";
+  if (topbar) topbar.style.display = "";
+  if (mainEl) mainEl.style.marginLeft = "";
+  if (content) { content.style.padding = ""; content.style.maxWidth = ""; }
+}
+
 async function openPracticeQuestion(id) {
   let q = getQ(id);
   if (q && q._marksId) q = await qxHydrateQuestion(q, true);
@@ -286,6 +310,7 @@ async function openPracticeQuestion(id) {
     returnView: currentView,
     listFn: typeof _lastListFn === "function" ? _lastListFn : null
   };
+  if (typeof AllenTestUI !== "undefined") enterAllenPracticeMode();
   go("question", id);
 }
 
@@ -381,6 +406,7 @@ window.openQuestionReport = openQuestionReport;
 window.qxCloseReportModal = qxCloseReportModal;
 
 function qxPracticeBack() {
+  exitAllenPracticeMode();
   const ctx = window._qxPracticeCtx;
   if (ctx && ctx.listFn && typeof _lastListFn !== "undefined") {
     _lastListFn = ctx.listFn;
@@ -459,6 +485,21 @@ function viewQuestion(id) {
 
   setTimeout(() => loadCommunityForQuestion(q), 0);
 
+  if (typeof AllenTestUI !== "undefined") {
+    return AllenTestUI.practiceHtml(q, pc, {
+      typeBadge: qTypeBadge,
+      qBody,
+      optsClass,
+      opts,
+      incomplete,
+      canSubmit,
+      solActions: hasSol && !done ? `<div class="qx-sol-actions"><button type="button" class="mtk-btn mtk-btn-ghost qx-view-sol-btn" id="qxViewSolBtn">💡 View Solution</button></div>` : "",
+      solReveal,
+      resultHtml,
+      community: `<div class="empty" style="padding:16px">Loading community solutions…</div>`
+    });
+  }
+
   return `<div class="qx-practice-page">
     <header class="qx-prac-bar">
       <button type="button" class="qx-prac-back" onclick="qxPracticeBack()">←</button>
@@ -526,6 +567,20 @@ function bindPracticeQuestion(root) {
   if (!scope) return;
   const ctx = window._qxPracticeCtx;
   const qid = ctx && ctx.ids[ctx.idx];
+  if (typeof AllenTestUI !== "undefined") {
+    AllenTestUI.bindPractice(scope, {
+      onBack: qxPracticeBack,
+      onNav: (d) => qxPracticeNav(d),
+      onJump: (idx) => {
+        if (!ctx || idx < 0 || idx >= ctx.ids.length) return;
+        ctx.idx = idx;
+        const main = document.getElementById("app-main");
+        main.innerHTML = viewQuestion(ctx.ids[idx]);
+        bindPracticeQuestion(main);
+        if (typeof Mx !== "undefined") Mx.afterRender(main);
+      }
+    });
+  }
   if (typeof QuantrexQFormat !== "undefined") {
     QuantrexQFormat.bindPractice(scope, ctx, qid, answerQ);
   } else {

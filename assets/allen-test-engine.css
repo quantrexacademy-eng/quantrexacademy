@@ -1,0 +1,222 @@
+/* Allen Digital / NTA CBT theme — overrides marks-test-engine */
+:root {
+  --allen-blue: #003DA5;
+  --allen-blue-dark: #002B75;
+  --allen-blue-light: #E8F1FC;
+  --allen-orange: #F58220;
+  --allen-header-bg: #0B4FA3;
+  --allen-body-bg: #F4F7FB;
+  --allen-card: #FFFFFF;
+  --allen-border: #C5D4E8;
+  --allen-text: #1A2B4A;
+  --allen-muted: #5A6F8C;
+}
+
+body.allen-cbt-active { background: var(--allen-body-bg); }
+body.marks-test-active.allen-cbt-active { background: var(--allen-body-bg); }
+body.allen-practice-active .mtk-test-root.allen-practice { min-height: 100vh; }
+body.allen-practice-active #app-main { padding: 0; max-width: none; }
+
+/* ── Instructions ── */
+.allen-instr-fullpage {
+  position: fixed; inset: 0; z-index: 10050;
+  display: flex; flex-direction: column;
+  background: var(--allen-body-bg); color: var(--allen-text);
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+.allen-instr-top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 24px; background: var(--allen-header-bg);
+  border-bottom: 3px solid var(--allen-orange); color: #fff;
+}
+.allen-instr-brand { display: flex; align-items: center; gap: 12px; }
+.allen-instr-brand strong { display: block; font-size: 15px; font-weight: 800; letter-spacing: .02em; }
+.allen-instr-brand small { color: rgba(255,255,255,.82); font-size: 11px; }
+.allen-instr-exit {
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.35);
+  color: #fff; border-radius: 6px; padding: 8px 14px; cursor: pointer;
+  font-family: inherit; font-weight: 700; font-size: 13px;
+}
+.allen-instr-exit:hover { background: rgba(255,255,255,.22); }
+.allen-instr-scroll { flex: 1; overflow-y: auto; }
+.allen-instr-inner { max-width: 900px; margin: 0 auto; padding: 28px 32px 40px; }
+.allen-instr-banner {
+  background: linear-gradient(135deg, var(--allen-blue), var(--allen-blue-dark));
+  color: #fff; border-radius: 10px; padding: 22px 26px; margin-bottom: 20px;
+  border-left: 5px solid var(--allen-orange);
+}
+.allen-instr-title { font-size: 24px; font-weight: 800; margin: 0 0 6px; font-family: 'Literata', Georgia, serif; }
+.allen-instr-desc { margin: 0; font-size: 14px; opacity: .9; }
+.allen-instr-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px;
+}
+.allen-instr-stats div {
+  background: var(--allen-card); border: 1px solid var(--allen-border);
+  border-radius: 10px; padding: 14px; text-align: center;
+  box-shadow: 0 1px 3px rgba(0,45,120,.06);
+}
+.allen-instr-stats span {
+  display: block; font-size: 10px; text-transform: uppercase;
+  letter-spacing: .07em; color: var(--allen-muted); margin-bottom: 4px;
+}
+.allen-instr-stats strong { font-size: 22px; color: var(--allen-blue); font-family: Kanit, sans-serif; }
+.allen-instr-lead { font-size: 14px; margin: 0 0 18px; line-height: 1.6; }
+.allen-instr-block { margin-bottom: 20px; }
+.allen-instr-block h3 {
+  font-size: 14px; font-weight: 800; color: var(--allen-blue);
+  margin: 0 0 10px; text-transform: uppercase; letter-spacing: .05em;
+}
+.allen-instr-table { width: 100%; border-collapse: collapse; font-size: 13px; background: var(--allen-card); }
+.allen-instr-table th, .allen-instr-table td {
+  border: 1px solid var(--allen-border); padding: 10px 12px; text-align: left;
+}
+.allen-instr-table th { background: var(--allen-blue-light); color: var(--allen-blue-dark); font-weight: 700; }
+.allen-instr-note { font-size: 12px; color: var(--allen-muted); margin-top: 8px; line-height: 1.55; }
+.allen-instr-list {
+  margin: 0; padding-left: 22px; line-height: 1.75; font-size: 14px;
+  color: var(--allen-text); font-family: 'Literata', Georgia, serif;
+}
+.allen-instr-legend {
+  display: flex; flex-wrap: wrap; gap: 12px 20px; font-size: 13px; color: var(--allen-text);
+}
+.allen-instr-legend span { display: flex; align-items: center; gap: 8px; }
+.allen-instr-check {
+  display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700;
+  margin-top: 12px; cursor: pointer; color: var(--allen-blue-dark);
+}
+.allen-instr-foot {
+  display: flex; justify-content: flex-end; gap: 12px;
+  padding: 14px 28px; background: var(--allen-card);
+  border-top: 2px solid var(--allen-border);
+}
+.allen-instr-cancel {
+  padding: 12px 20px; border-radius: 8px; border: 1px solid var(--allen-border);
+  background: #fff; color: var(--allen-text); font-weight: 700; cursor: pointer; font-family: inherit;
+}
+.allen-instr-proceed {
+  padding: 12px 26px; border-radius: 8px; border: none;
+  background: var(--allen-orange); color: #fff; font-weight: 800;
+  cursor: pointer; font-family: inherit; font-size: 14px;
+}
+.allen-instr-proceed:disabled { opacity: .45; cursor: not-allowed; }
+.allen-instr-proceed:hover:not(:disabled) { filter: brightness(1.06); }
+
+/* ── Test engine (Allen CBT) ── */
+.mtk-test-root.allen-cbt {
+  background: var(--allen-body-bg); color: var(--allen-text);
+}
+.mtk-test-root.allen-cbt .mtk-header {
+  background: var(--allen-header-bg); border-bottom: 3px solid var(--allen-orange);
+  color: #fff;
+}
+.mtk-test-root.allen-cbt .mtk-brand-text,
+.mtk-test-root.allen-cbt .mtk-timer,
+.mtk-test-root.allen-cbt .mtk-q-num { color: #fff; }
+.mtk-test-root.allen-cbt .mtk-close-btn {
+  border-color: rgba(255,255,255,.4); color: rgba(255,255,255,.9); background: rgba(255,255,255,.08);
+}
+.mtk-test-root.allen-cbt .mtk-close-btn:hover { background: rgba(255,255,255,.18); color: #fff; }
+.mtk-test-root.allen-cbt .allen-brand { gap: 10px; }
+.mtk-test-root.allen-cbt .allen-brand svg { flex-shrink: 0; }
+.mtk-test-root.allen-cbt .mtk-logo {
+  background: var(--allen-orange); border-radius: 6px;
+}
+.mtk-test-root.allen-cbt .mtk-submit-top {
+  background: var(--allen-orange); border-radius: 6px;
+}
+.mtk-test-root.allen-cbt .mtk-submit-top:hover { background: #e07418; }
+.mtk-test-root.allen-cbt .mtk-header-tools {
+  background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.25);
+}
+.mtk-test-root.allen-cbt .mtk-theme-btn,
+.mtk-test-root.allen-cbt .mtk-font-btn {
+  border-color: rgba(255,255,255,.35); color: #fff; background: rgba(255,255,255,.08);
+}
+.mtk-test-root.allen-cbt .mtk-theme-lbl { color: rgba(255,255,255,.85); }
+.mtk-test-root.allen-cbt .mtk-stop-btn {
+  border-color: #fbbf24; color: #fde68a; background: rgba(251,191,36,.15);
+}
+.mtk-test-root.allen-cbt .mtk-sec-bar {
+  background: var(--allen-blue-light); border-bottom: 1px solid var(--allen-border);
+}
+.mtk-test-root.allen-cbt .mtk-sec-tab { color: var(--allen-muted); }
+.mtk-test-root.allen-cbt .mtk-sec-tab.active { color: var(--allen-blue-dark); }
+.mtk-test-root.allen-cbt .mtk-sec-tab.mtk-sec-math.active { border-bottom-color: #2563eb; background: rgba(37,99,235,.1); color: #1d4ed8; }
+.mtk-test-root.allen-cbt .mtk-sec-tab.mtk-sec-phys.active { border-bottom-color: #16a34a; background: rgba(22,163,74,.1); color: #15803d; }
+.mtk-test-root.allen-cbt .mtk-sec-tab.mtk-sec-chem.active { border-bottom-color: #9333ea; background: rgba(147,51,234,.1); color: #7e22ce; }
+.mtk-test-root.allen-cbt .mtk-main { background: var(--allen-card); }
+.mtk-test-root.allen-cbt .mtk-q-text,
+.mtk-test-root.allen-cbt .mtk-q-text .qx-content,
+.mtk-test-root.allen-cbt .mtk-opt-text,
+.mtk-test-root.allen-cbt .mtk-opt-text .qx-content { color: var(--allen-text); }
+.mtk-test-root.allen-cbt .mtk-opt {
+  background: #fff; border-color: var(--allen-border); color: var(--allen-text);
+}
+.mtk-test-root.allen-cbt .mtk-opt:hover { border-color: var(--allen-blue); background: var(--allen-blue-light); }
+.mtk-test-root.allen-cbt .mtk-opt.selected {
+  border-color: var(--allen-blue); background: rgba(0,61,165,.08);
+  box-shadow: 0 0 0 1px rgba(0,61,165,.25);
+}
+.mtk-test-root.allen-cbt .mtk-opt-letter { color: var(--allen-blue); }
+.mtk-test-root.allen-cbt .mtk-opt.selected .mtk-opt-radio { border-color: var(--allen-blue); }
+.mtk-test-root.allen-cbt .mtk-opt.selected .mtk-opt-radio::after { background: var(--allen-blue); }
+.mtk-test-root.allen-cbt .mtk-controls { border-top-color: var(--allen-border); }
+.mtk-test-root.allen-cbt .mtk-btn-clear,
+.mtk-test-root.allen-cbt .mtk-btn-prev {
+  background: #fff; border: 1px solid var(--allen-border); color: var(--allen-text);
+}
+.mtk-test-root.allen-cbt .mtk-btn-review { background: #7c3aed; color: #fff; }
+.mtk-test-root.allen-cbt .mtk-btn-save {
+  background: var(--allen-blue); color: #fff; box-shadow: none;
+}
+.mtk-test-root.allen-cbt .mtk-btn-save:hover:not(:disabled) { background: var(--allen-blue-dark); }
+.mtk-test-root.allen-cbt .mtk-palette {
+  background: var(--allen-blue-light); border-left: 1px solid var(--allen-border);
+}
+.mtk-test-root.allen-cbt .mtk-pal-head-row strong,
+.mtk-test-root.allen-cbt .mtk-pal-head { color: var(--allen-blue-dark); }
+.mtk-test-root.allen-cbt .mtk-pal-legend,
+.mtk-test-root.allen-cbt .mtk-pal-stats { color: var(--allen-muted); }
+.mtk-test-root.allen-cbt .mtk-pal-cell.unvisited { background: #fff; border-color: #94a3b8; color: #64748b; }
+.mtk-test-root.allen-cbt .mtk-pal-cell.cur { box-shadow: 0 0 0 2px var(--allen-blue); border-color: var(--allen-blue); }
+.mtk-test-root.allen-cbt .mtk-submit-btn { background: var(--allen-orange); }
+.mtk-test-root.allen-cbt .mtk-submit-btn:hover { background: #e07418; }
+.mtk-test-root.allen-cbt .mtk-pos-mark { background: #16a34a; }
+.mtk-test-root.allen-cbt .mtk-neg-mark { background: #dc2626; }
+.mtk-test-root.allen-cbt .mtk-font-btn,
+.mtk-test-root.allen-cbt .mtk-font-gear {
+  background: #fff; border-color: var(--allen-border); color: var(--allen-blue);
+}
+.mtk-test-root.allen-cbt .mtk-numerical .qx-num-input {
+  background: #fff; border-color: var(--allen-border); color: var(--allen-text);
+}
+
+/* Practice mode extras */
+.mtk-test-root.allen-practice .mtk-prac-progress {
+  font-family: Kanit, sans-serif; font-size: 18px; font-weight: 800; color: #fff;
+}
+.allen-prac-chapter {
+  font-size: 12px; color: var(--allen-muted); font-weight: 600; margin-left: 8px;
+}
+.mtk-test-root.allen-practice .mtk-body { min-height: calc(100vh - 120px); }
+.mtk-test-root.allen-practice #qaCommunity {
+  margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--allen-border);
+}
+
+/* Countdown — Allen style */
+body.allen-cbt-active .marks-countdown-overlay { background: var(--allen-header-bg); }
+body.allen-cbt-active .marks-countdown-num { color: var(--allen-orange); }
+body.allen-cbt-active .marks-countdown-grab { color: #fff; }
+
+/* Force light readable theme for Allen CBT even if user prefers dark */
+.mtk-test-root.allen-cbt[data-test-theme="dark"] {
+  background: var(--allen-body-bg); color: var(--allen-text);
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-header { background: var(--allen-header-bg); }
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-main { background: var(--allen-card); }
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-opt { background: #fff; color: var(--allen-text); }
+
+@media (max-width: 900px) {
+  .allen-instr-stats { grid-template-columns: 1fr; }
+  .allen-instr-inner { padding: 20px 16px 32px; }
+}

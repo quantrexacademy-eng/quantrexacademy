@@ -8,7 +8,7 @@ function getTestMountEl() {
 window.getTestMountEl = getTestMountEl;
 
 function getTestTheme() {
-  return localStorage.getItem("quantrex_test_theme") || "dark";
+  return localStorage.getItem("quantrex_test_theme") || "light";
 }
 
 function setTestTheme(mode) {
@@ -372,11 +372,16 @@ const QuantrexTestEngine = (() => {
           </button>`;
         }).join(""));
 
-    return `<div class="mtk-test-root" data-test-theme="${testTheme}" data-font-scale="${fontScale}">
+    const ctx = typeof AllenTestUI !== "undefined" ? AllenTestUI.detectContext(session) : null;
+    const examLabel = ctx ? AllenTestUI.examTitle(ctx) : "CBT";
+    const allenLogo = typeof AllenTestUI !== "undefined"
+      ? `<svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#003DA5"/><text x="16" y="22" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-weight="900" font-size="16">A</text></svg>`
+      : `<span class="mtk-logo">Q</span>`;
+    return `<div class="mtk-test-root allen-cbt" data-test-theme="${testTheme}" data-font-scale="${fontScale}">
       <header class="mtk-header">
         <div class="mtk-header-left">
           <button type="button" class="mtk-close-btn" id="mtkCloseBtn" title="Exit test">✕</button>
-          <div class="mtk-brand"><span class="mtk-logo">Q</span><span class="mtk-brand-text">Quantrex</span></div>
+          <div class="mtk-brand allen-brand">${allenLogo}<span class="mtk-brand-text">${examLabel} · CBT</span></div>
         </div>
         ${timerHtml}
         <div class="mtk-header-tools">
@@ -1305,7 +1310,7 @@ function organizeJeeMainPaper(questionIds) {
 }
 
 function enterMarksTestMode() {
-  document.body.classList.add("marks-test-active");
+  document.body.classList.add("marks-test-active", "allen-cbt-active");
   const appMain = document.getElementById("app-main");
   if (appMain) {
     appMain.style.opacity = "1";
@@ -1329,8 +1334,7 @@ function enterMarksTestMode() {
 }
 
 function exitMarksTestMode() {
-  document.body.classList.remove("marks-test-active");
-  document.body.classList.remove("marks-instr-active");
+  document.body.classList.remove("marks-test-active", "marks-instr-active", "allen-cbt-active");
   const appMain = document.getElementById("app-main");
   if (appMain) {
     appMain.innerHTML = "";
@@ -1504,7 +1508,7 @@ function marksCancelInstructions() {
   const el = document.getElementById("marksInstrOverlay");
   if (el) el.remove();
   marksRestoreInstrShell();
-  document.body.classList.remove("marks-instr-active");
+  document.body.classList.remove("marks-instr-active", "allen-cbt-active");
   if (document.body.classList.contains("marks-test-active")) exitMarksTestMode();
   const cancelFn = window._marksInstrCancel || _marksInstrCancel;
   if (typeof cancelFn === "function") cancelFn();
@@ -1520,6 +1524,7 @@ function marksAcceptInstructions() {
   if (el) el.remove();
   marksRestoreInstrShell();
   document.body.classList.remove("marks-instr-active");
+  document.body.classList.add("allen-cbt-active");
   const doneFn = window._marksInstrDone || _marksInstrDone;
   if (typeof doneFn === "function") doneFn();
   _marksInstrDone = null;
@@ -1682,8 +1687,8 @@ async function startTest(questionIds, title, returnTo, options) {
     else run();
   };
 
-  if (marksMode && !opts.skipInstructions && opts.testType === "testseries" && typeof showQuizrrInstructions === "function") {
-    showQuizrrInstructions(config, launchMarks, () => {
+  if (marksMode && !opts.skipInstructions && typeof showAllenInstructions === "function") {
+    showAllenInstructions(config, launchMarks, () => {
       if (typeof marksCancelInstructions === "function") marksCancelInstructions();
     });
     return;

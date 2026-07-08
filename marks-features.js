@@ -1980,7 +1980,7 @@ async function pyqResumePaper(slug, source) {
     skipCountdown: true,
     persistKey: key,
     resumeData: saved,
-    meta: { slug, source },
+    meta: { slug, source, year: typeof qYearFromSource === "function" ? qYearFromSource(source) : null },
     modeLabel: `Full Paper · ${saved.ids.length} Qs`,
     onComplete: (data) => {
       marksClearSession();
@@ -2160,6 +2160,7 @@ async function startPyqPaperMock(slug, source, freshStart) {
   const attemptKey = pyqAttemptKey(slug, source);
   const title = pyqFullPaperTitle(source);
   pyqSaveAttempt(attemptKey, { status: "inProgress", slug, source, title });
+  const pyqYear = typeof qYearFromSource === "function" ? qYearFromSource(source) : null;
   startTest(ids, title, "tests", {
     testType: "pyqmock",
     timed: true,
@@ -2169,7 +2170,7 @@ async function startPyqPaperMock(slug, source, freshStart) {
     organizeJee: true,
     paperFormat: slug,
     persistKey: key,
-    meta: { slug, source },
+    meta: { slug, source, year: pyqYear },
     modeLabel: `Full Paper · ${qs.length} Qs · ${Math.floor(duration / 60)} min`,
     onComplete: (data) => {
       marksClearSession();

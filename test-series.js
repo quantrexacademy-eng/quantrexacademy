@@ -1100,10 +1100,17 @@ function tsStandaloneLaunchTest(testId, test, meta, seriesId, questionIds, opts)
     afterCountdown();
     return;
   }
-  showQuizrrInstructions(config, afterCountdown, () => {
-    if (typeof marksCancelInstructions === "function") marksCancelInstructions();
-    else tsRenderStandalone();
-  });
+  const showInstr = typeof showAllenInstructions === "function"
+    ? showAllenInstructions
+    : (typeof showQuizrrInstructions === "function" ? showQuizrrInstructions : null);
+  if (showInstr) {
+    showInstr(config, afterCountdown, () => {
+      if (typeof marksCancelInstructions === "function") marksCancelInstructions();
+      else tsRenderStandalone();
+    });
+    return;
+  }
+  afterCountdown();
 }
 
 async function tsOpenTest(testId) {
