@@ -1087,11 +1087,53 @@
         .qx-bm-or { text-align: center; font-size: 12px; color: var(--gray); margin: 8px 0; }
         .qx-bm-grp-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
         .qx-bm-grp-opt { text-align: left; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border); background: color-mix(in srgb, var(--gc) 12%, var(--white)); font-weight: 600; cursor: pointer; font-family: inherit; }
-        .marks-instr-modal { max-width: 640px; }
-        .marks-instr-official { max-width: 680px; }
-        .marks-instr-banner { background: linear-gradient(135deg, #1e3a5f, #0f172a); padding: 20px 22px; border-bottom: 2px solid #2563eb; }
-        .marks-instr-org { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #93c5fd; margin-bottom: 6px; }
-        .marks-instr-title { font-size: 20px; font-weight: 800; margin: 0; color: #f8fafc; font-family: 'Literata', Georgia, serif; }
+        body.marks-instr-active { overflow: hidden; }
+        .marks-instr-fullpage {
+            position: fixed; inset: 0; z-index: 10000;
+            display: flex; flex-direction: column;
+            background: #0c0e14; color: #e2e8f0;
+        }
+        .marks-instr-topbar {
+            flex-shrink: 0; display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 24px; background: #141820; border-bottom: 1px solid #2a2f3d;
+        }
+        .marks-instr-topbar-brand { display: flex; align-items: center; gap: 12px; }
+        .marks-instr-topbar-logo {
+            width: 36px; height: 36px; border-radius: 8px; background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #fff; font-weight: 900; font-size: 18px; display: flex; align-items: center; justify-content: center;
+        }
+        .marks-instr-org { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #93c5fd; }
+        .marks-instr-topbar-sub { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+        .marks-instr-exit {
+            padding: 8px 16px; border-radius: 8px; border: 1px solid #3b4254;
+            background: transparent; color: #94a3b8; font-size: 13px; font-weight: 700;
+            cursor: pointer; font-family: inherit;
+        }
+        .marks-instr-exit:hover { color: #fff; border-color: #64748b; }
+        .marks-instr-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+        .marks-instr-inner { max-width: 920px; margin: 0 auto; padding: 28px 32px 40px; }
+        .marks-instr-banner { background: linear-gradient(135deg, #1e3a5f, #0f172a); padding: 24px 28px; border-radius: 12px; border: 1px solid rgba(37,99,235,.35); margin-bottom: 20px; }
+        .marks-instr-title { font-size: 24px; font-weight: 800; margin: 0; color: #f8fafc; font-family: 'Literata', Georgia, serif; }
+        .marks-instr-foot-bar {
+            flex-shrink: 0; display: flex; align-items: center; justify-content: flex-end; gap: 12px;
+            padding: 16px 28px; background: #141820; border-top: 1px solid #2a2f3d;
+        }
+        .marks-instr-cancel-btn {
+            padding: 12px 20px; border-radius: 8px; border: 1px solid #3b4254;
+            background: transparent; color: #cbd5e1; font-size: 14px; font-weight: 700;
+            cursor: pointer; font-family: inherit;
+        }
+        .marks-instr-start {
+            padding: 12px 24px; border-radius: 8px; border: none;
+            background: #2563eb; color: #fff; font-size: 14px; font-weight: 700;
+            cursor: pointer; font-family: inherit;
+        }
+        .marks-instr-start:hover { background: #1d4ed8; }
+        @media (max-width: 640px) {
+            .marks-instr-inner { padding: 20px 16px 32px; }
+            .marks-instr-foot-bar { flex-direction: column; }
+            .marks-instr-cancel-btn, .marks-instr-start { width: 100%; }
+        }
         .marks-instr-lead { font-size: 14px; color: #e2e8f0; margin: 0 0 16px; line-height: 1.6; }
         .marks-instr-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
         .marks-instr-meta div { background: #12151c; border: 1px solid #2a2f3d; border-radius: 8px; padding: 10px; text-align: center; }
@@ -1103,8 +1145,7 @@
         .marks-instr-table th { background: #12151c; color: #94a3b8; font-weight: 700; }
         .marks-instr-legend { display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: #cbd5e1; }
         .marks-instr-legend span { display: flex; align-items: center; gap: 8px; }
-        .marks-instr-foot { flex-direction: column; }
-        .marks-instr-start { width: 100%; background: #2563eb !important; color: #fff !important; padding: 14px !important; font-size: 14px !important; }
+
         .marks-instr-rules { margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.7; color: #cbd5e1; font-family: 'Literata', Georgia, serif; }
         .marks-instr-rules li { margin-bottom: 8px; }
         .marks-instr-section h4 { font-size: 11px; font-weight: 800; letter-spacing: .08em; color: #60a5fa; margin: 0 0 10px; text-transform: uppercase; }
@@ -1751,7 +1792,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
-    <script>window.QX_BUILD="qxtest440";</script>
+    <script>window.QX_BUILD="qxtest441";</script>
     <script src="qx-perf.js?v=qxtest438"></script>
     <script src="firebase-config.js?v=qxtest438" defer></script>
     <script src="stack-config.js?v=qxtest438" defer></script>
@@ -1770,10 +1811,10 @@
     <script src="marks-shell.js?v=qxtest438" defer></script>
     <script src="marks-live.js?v=qxtest438" defer></script>
     <script src="marks-features.js?v=qxtest438" defer></script>
-    <script src="test-series.js?v=qxtest440" defer></script>
+    <script src="test-series.js?v=qxtest441" defer></script>
     <script src="assignments.js?v=qxtest438" defer></script>
     <script src="custom-test.js?v=qxtest438" defer></script>
-    <script src="test-engine.js?v=qxtest440" defer></script>
+    <script src="test-engine.js?v=qxtest441" defer></script>
     <script src="bookmarks.js?v=qxtest438" defer></script>
     <script src="analytics.js?v=qxtest438" defer></script>
     <script src="search.js?v=qxtest438" defer></script>

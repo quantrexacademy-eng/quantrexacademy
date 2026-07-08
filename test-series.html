@@ -9,33 +9,40 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Kanit:wght@400;500;600;700;800&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/quantrex-brand.css?v=qxbrand1">
-    <link rel="stylesheet" href="test-series-page.css?v=qxtest440">
+    <link rel="stylesheet" href="test-series-page.css?v=qxtest441">
     <style>
-        .marks-instr-modal { max-width: 640px; }
-        .marks-instr-official { max-width: 680px; }
-        .marks-instr-banner { background: linear-gradient(135deg, #1e3a5f, #0f172a); padding: 20px 22px; border-bottom: 2px solid #2563eb; }
-        .marks-instr-org { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #93c5fd; margin-bottom: 6px; }
-        .marks-instr-title { font-size: 20px; font-weight: 800; margin: 0; color: #f8fafc; font-family: 'Literata', Georgia, serif; }
+        body.marks-instr-active { overflow: hidden; }
+        .marks-instr-fullpage { position: fixed; inset: 0; z-index: 10000; display: flex; flex-direction: column; background: #0c0e14; color: #e2e8f0; }
+        .marks-instr-topbar { flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; background: #141820; border-bottom: 1px solid #2a2f3d; }
+        .marks-instr-topbar-brand { display: flex; align-items: center; gap: 12px; }
+        .marks-instr-topbar-logo { width: 36px; height: 36px; border-radius: 8px; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; font-weight: 900; font-size: 18px; display: flex; align-items: center; justify-content: center; }
+        .marks-instr-org { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #93c5fd; }
+        .marks-instr-topbar-sub { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+        .marks-instr-exit { padding: 8px 16px; border-radius: 8px; border: 1px solid #3b4254; background: transparent; color: #94a3b8; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; }
+        .marks-instr-scroll { flex: 1; overflow-y: auto; }
+        .marks-instr-inner { max-width: 920px; margin: 0 auto; padding: 28px 32px 40px; }
+        .marks-instr-banner { background: linear-gradient(135deg, #1e3a5f, #0f172a); padding: 24px 28px; border-radius: 12px; border: 1px solid rgba(37,99,235,.35); margin-bottom: 20px; }
+        .marks-instr-title { font-size: 24px; font-weight: 800; margin: 0; color: #f8fafc; font-family: 'Literata', Georgia, serif; }
         .marks-instr-lead { font-size: 14px; color: #e2e8f0; margin: 0 0 16px; line-height: 1.6; }
         .marks-instr-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
         .marks-instr-meta div { background: #12151c; border: 1px solid #2a2f3d; border-radius: 8px; padding: 10px; text-align: center; }
         .marks-instr-meta span { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: #94a3b8; margin-bottom: 4px; }
         .marks-instr-meta strong { font-size: 16px; color: #f1f5f9; }
-        .marks-instr-body p { font-size: 13px; line-height: 1.65; color: #cbd5e1; margin-bottom: 14px; }
+        .marks-instr-inner p { font-size: 13px; line-height: 1.65; color: #cbd5e1; margin-bottom: 14px; }
         .marks-instr-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
         .marks-instr-table th, .marks-instr-table td { border: 1px solid #2a2f3d; padding: 8px 10px; text-align: left; }
         .marks-instr-legend { display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: #cbd5e1; }
-        .marks-instr-foot { flex-direction: column; }
-        .marks-instr-start { width: 100%; background: #2563eb !important; color: #fff !important; padding: 14px !important; font-size: 14px !important; }
         .marks-instr-rules { margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.7; color: #cbd5e1; font-family: 'Literata', Georgia, serif; }
-        .marks-instr-section h4 { font-size: 14px; margin: 0 0 8px; color: #f1f5f9; }
-        .marks-modal-overlay { position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,.65); display: flex; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(4px); }
+        .marks-instr-section h4 { font-size: 11px; font-weight: 800; letter-spacing: .08em; color: #60a5fa; margin: 0 0 10px; text-transform: uppercase; }
+        .marks-instr-foot-bar { flex-shrink: 0; display: flex; align-items: center; justify-content: flex-end; gap: 12px; padding: 16px 28px; background: #141820; border-top: 1px solid #2a2f3d; }
+        .marks-instr-cancel-btn { padding: 12px 20px; border-radius: 8px; border: 1px solid #3b4254; background: transparent; color: #cbd5e1; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; }
+        .marks-instr-start { padding: 12px 24px; border-radius: 8px; border: none; background: #2563eb; color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; }
+        .marks-modal-overlay { position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,.65); display: flex; align-items: center; justify-content: center; padding: 20px; }
         .marks-modal { background: #1a1d26; border: 1px solid #2a2f3d; border-radius: 16px; width: 100%; max-width: 420px; max-height: 90vh; overflow-y: auto; color: #e2e8f0; }
         .marks-modal-head { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; border-bottom: 1px solid #2a2f3d; }
         .marks-modal-body { padding: 18px 20px; }
-        .marks-modal-foot { display: flex; gap: 10px; padding: 14px 20px; border-top: 1px solid #2a2f3d; }
-        .marks-modal-cancel, .marks-modal-apply { padding: 10px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; font-family: inherit; border: 1px solid #3b4254; background: transparent; color: #cbd5e1; }
-        .marks-countdown-overlay { position: fixed; inset: 0; z-index: 9100; background: #0c0e14; display: flex; align-items: center; justify-content: center; }
+        .marks-modal-cancel { padding: 10px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; font-family: inherit; border: 1px solid #3b4254; background: transparent; color: #cbd5e1; }
+        .marks-countdown-overlay { position: fixed; inset: 0; z-index: 10100; background: #0c0e14; display: flex; align-items: center; justify-content: center; }
         .marks-countdown-inner { text-align: center; color: #f1f5f9; }
         .marks-countdown-num { font-family: Kanit, sans-serif; font-size: 96px; font-weight: 800; color: #3b82f6; }
         .mtk-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
@@ -44,17 +51,18 @@
         .mtk-dot.unvisited { background: #6c757d; }
         .mtk-dot.rev-ans { background: #6f42c1; }
         .mtk-dot.rev-skip { background: #9b59b6; }
+        body.marks-test-active .ts-app { display: none !important; }
     </style>
 </head>
 <body class="ts-standalone-body">
     <div id="ts-root"><div class="ts-loading">Loading JEE Main Test Series 2027…</div></div>
     <div id="appToast"></div>
-    <script>window.QX_BUILD = "qxtest440"; window.TS_STANDALONE = true;</script>
-    <script src="math-render.js?v=qxtest440" defer></script>
-    <script src="question-format.js?v=qxtest440" defer></script>
-    <script src="data.js?v=qxtest440" defer></script>
-    <script src="marks-live.js?v=qxtest440" defer></script>
-    <script src="test-engine.js?v=qxtest440" defer></script>
-    <script src="test-series.js?v=qxtest440" defer></script>
+    <script>window.QX_BUILD = "qxtest441"; window.TS_STANDALONE = true;</script>
+    <script src="math-render.js?v=qxtest441" defer></script>
+    <script src="question-format.js?v=qxtest441" defer></script>
+    <script src="data.js?v=qxtest441" defer></script>
+    <script src="marks-live.js?v=qxtest441" defer></script>
+    <script src="test-engine.js?v=qxtest441" defer></script>
+    <script src="test-series.js?v=qxtest441" defer></script>
 </body>
 </html>

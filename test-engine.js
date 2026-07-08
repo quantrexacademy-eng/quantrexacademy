@@ -1312,13 +1312,22 @@ function marksInstructionHtml(config) {
     : format === "neet"
       ? `<p><strong>Marking Scheme:</strong> Each correct answer <strong>+4</strong> marks. Each incorrect answer <strong>−1</strong> mark. Unattempted questions carry <strong>0</strong> marks.</p>`
       : `<p><strong>Marking Scheme:</strong> Each correct answer <strong>+${scoring.correct}</strong> marks. Each incorrect answer <strong>${scoring.wrong}</strong> mark. Unattempted questions carry <strong>${scoring.unattempted}</strong> marks.</p>`;
-  return `<div class="marks-modal-overlay" id="marksInstrOverlay">
-    <div class="marks-modal marks-instr-modal marks-instr-official">
-      <div class="marks-instr-banner">
-        <div class="marks-instr-org">${examTitle} — Computer Based Test</div>
-        <h2 class="marks-instr-title">${config.title || "Examination"}</h2>
+  return `<div id="marksInstrOverlay" class="marks-instr-fullpage" role="document">
+    <header class="marks-instr-topbar">
+      <div class="marks-instr-topbar-brand">
+        <span class="marks-instr-topbar-logo">Q</span>
+        <div>
+          <div class="marks-instr-org">${examTitle} — Computer Based Test</div>
+          <div class="marks-instr-topbar-sub">Instructions to Candidates</div>
+        </div>
       </div>
-      <div class="marks-modal-body marks-instr-body">
+      <button type="button" class="marks-instr-exit" onclick="marksCancelInstructions()" aria-label="Exit">✕ Exit</button>
+    </header>
+    <div class="marks-instr-scroll">
+      <div class="marks-instr-inner">
+        <div class="marks-instr-banner">
+          <h2 class="marks-instr-title">${config.title || "Examination"}</h2>
+        </div>
         <p class="marks-instr-lead"><strong>Please read the instructions carefully before you proceed.</strong></p>
         <div class="marks-instr-meta">
           <div><span>Total Questions</span><strong>${n}</strong></div>
@@ -1352,22 +1361,33 @@ function marksInstructionHtml(config) {
           </div>
         </div>
       </div>
-      <div class="marks-modal-foot marks-instr-foot">
-        <button type="button" class="marks-modal-cancel" onclick="marksCancelInstructions()">Cancel</button>
-        <button type="button" class="marks-modal-apply marks-instr-start" onclick="marksAcceptInstructions()">I have read and understood the instructions — Proceed</button>
-      </div>
     </div>
+    <footer class="marks-instr-foot-bar">
+      <button type="button" class="marks-instr-cancel-btn" onclick="marksCancelInstructions()">Cancel</button>
+      <button type="button" class="marks-instr-start" onclick="marksAcceptInstructions()">I have read and understood the instructions — Proceed</button>
+    </footer>
   </div>`;
 }
 
 let _marksInstrDone = null;
 let _marksInstrCancel = null;
 
+function marksRestoreInstrShell() {
+  document.body.classList.remove("marks-instr-active");
+  const tsApp = document.querySelector(".ts-app");
+  if (tsApp && tsApp.dataset.prevDisplay !== undefined) {
+    tsApp.style.display = tsApp.dataset.prevDisplay;
+    delete tsApp.dataset.prevDisplay;
+  }
+}
+
 function marksCancelInstructions() {
   const el = document.getElementById("marksInstrOverlay");
   if (el) el.remove();
+  marksRestoreInstrShell();
   if (document.body.classList.contains("marks-test-active")) exitMarksTestMode();
   if (typeof _marksInstrCancel === "function") _marksInstrCancel();
+  if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") tsRenderStandalone();
   _marksInstrDone = null;
   _marksInstrCancel = null;
 }
@@ -1375,6 +1395,7 @@ function marksCancelInstructions() {
 function marksAcceptInstructions() {
   const el = document.getElementById("marksInstrOverlay");
   if (el) el.remove();
+  marksRestoreInstrShell();
   if (typeof _marksInstrDone === "function") _marksInstrDone();
   _marksInstrDone = null;
   _marksInstrCancel = null;
@@ -1384,12 +1405,21 @@ function showMarksInstructions(config, onDone, onCancel) {
   const marksMode = config.marksMode;
   if (marksMode) enterMarksTestMode();
   const main = document.getElementById("app-main");
+  const tsRoot = document.getElementById("ts-root");
   if (main && marksMode) main.innerHTML = "";
+  if (tsRoot && marksMode) tsRoot.innerHTML = "";
+  const tsApp = document.querySelector(".ts-app");
+  if (tsApp) {
+    tsApp.dataset.prevDisplay = tsApp.style.display || "";
+    tsApp.style.display = "none";
+  }
   const existing = document.getElementById("marksInstrOverlay");
   if (existing) existing.remove();
   _marksInstrDone = onDone;
   _marksInstrCancel = onCancel;
+  document.body.classList.add("marks-instr-active");
   document.body.insertAdjacentHTML("beforeend", marksInstructionHtml(config));
+  window.scrollTo(0, 0);
 }
 
 function showMarksCountdown(onDone) {
