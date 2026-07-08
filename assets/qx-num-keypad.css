@@ -1,9 +1,33 @@
-/* Quantrex — NTA-style numerical answer keypad (screenshot 445) */
+/* Quantrex — NTA-style numerical answer (keyboard + mouse, centered) */
+
+.mtk-numerical-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding: 20px 0 28px;
+}
+
+.mtk-numerical {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
 .qx-num-entry {
+  width: 100%;
   max-width: 300px;
-  margin: 12px 0 0;
+  margin: 0 auto;
   padding: 0;
+}
+
+.qx-num-entry.qx-num-panel {
+  max-width: 320px;
+  padding: 22px 20px 18px;
+  border: 1px solid #c5d4e8;
+  border-radius: 4px;
+  background: #f8fafc;
+  box-shadow: 0 1px 3px rgba(0, 45, 120, 0.06);
 }
 
 .qx-num-label {
@@ -11,30 +35,32 @@
   font-size: 13px;
   font-weight: 600;
   color: #334155;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .qx-num-input {
   display: block;
   width: 100%;
-  min-height: 42px;
-  padding: 10px 12px;
+  min-height: 48px;
+  padding: 12px 14px;
   border: 2px solid #1a2b4a;
   border-radius: 2px;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
-  font-family: 'Inter', monospace;
-  text-align: left;
+  font-family: 'Inter', 'Consolas', monospace;
+  text-align: center;
   background: #fff;
   color: #0f172a;
-  letter-spacing: 0.02em;
-  margin-bottom: 8px;
+  letter-spacing: 0.06em;
+  margin: 0 auto 12px;
+  cursor: text;
 }
 
 .qx-num-input:focus {
   outline: none;
   border-color: #003DA5;
-  box-shadow: 0 0 0 2px rgba(0, 61, 165, 0.12);
+  box-shadow: 0 0 0 3px rgba(0, 61, 165, 0.14);
 }
 
 .qx-num-input:disabled {
@@ -45,12 +71,14 @@
 .qx-num-keypad {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
-  max-width: 260px;
+  gap: 5px;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
 }
 
 .qx-num-key {
-  padding: 8px 6px;
+  padding: 9px 6px;
   border: 1px solid #94a3b8;
   border-radius: 2px;
   background: #fff;
@@ -60,7 +88,8 @@
   font-family: 'Inter', sans-serif;
   cursor: pointer;
   transition: background 0.1s, border-color 0.1s;
-  min-height: 36px;
+  min-height: 38px;
+  user-select: none;
 }
 
 .qx-num-key:hover:not(:disabled) {
@@ -94,21 +123,13 @@
   visibility: hidden;
 }
 
-/* CBT test area */
-.mtk-numerical-wrap {
-  display: block;
-  padding: 4px 0 12px;
-}
-
-.mtk-numerical .qx-num-entry {
-  max-width: 300px;
-}
-
-.mtk-numerical .qx-num-entry.qx-num-nta {
-  margin-left: 0;
-}
-
 /* Dark CBT theme */
+.mtk-test-root[data-test-theme="dark"] .qx-num-entry.qx-num-panel,
+.mtk-test-root:not([data-test-theme="light"]) .qx-num-entry.qx-num-panel {
+  background: #1e2230;
+  border-color: #3b4254;
+}
+
 .mtk-test-root[data-test-theme="dark"] .qx-num-label,
 .mtk-test-root:not([data-test-theme="light"]) .qx-num-label {
   color: #cbd5e1;
@@ -116,7 +137,7 @@
 
 .mtk-test-root[data-test-theme="dark"] .qx-num-input,
 .mtk-test-root:not([data-test-theme="light"]) .qx-num-input {
-  background: #1e2230;
+  background: #12151c;
   border-color: #4b5563;
   color: #f1f5f9;
 }
@@ -132,6 +153,11 @@
 .mtk-test-root:not([data-test-theme="light"]) .qx-num-key:hover:not(:disabled) {
   background: #374151;
   border-color: #60a5fa;
+}
+
+.mtk-test-root[data-test-theme="light"] .qx-num-entry.qx-num-panel {
+  background: #f8fafc;
+  border-color: #c5d4e8;
 }
 
 .mtk-test-root[data-test-theme="light"] .qx-num-label {
@@ -150,11 +176,20 @@
   color: #0f172a;
 }
 
+.mtk-test-root.allen-cbt .qx-num-entry.qx-num-panel {
+  border-color: var(--allen-border, #c5d4e8);
+}
+
 .mtk-test-root.allen-cbt[data-test-theme="light"] .qx-num-input {
   border-color: #1a2b4a;
 }
 
 /* Practice mode */
+.qx-prac-numerical {
+  display: flex;
+  justify-content: center;
+}
+
 .qx-prac-numerical .qx-num-entry {
   max-width: 320px;
 }
@@ -167,4 +202,9 @@
 .qx-prac-numerical.wrong .qx-num-input {
   border-color: #dc2626;
   background: #fef2f2;
+}
+
+@media (max-width: 640px) {
+  .qx-num-entry.qx-num-panel { max-width: 100%; padding: 16px 12px; }
+  .qx-num-keypad { max-width: 100%; }
 }

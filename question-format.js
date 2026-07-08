@@ -12,19 +12,29 @@ const QuantrexQFormat = (() => {
     return String.fromCharCode(65 + i);
   }
 
+  function sanitizeNumVal(raw) {
+    let v = String(raw || "").replace(/[^\d.\-]/g, "");
+    const neg = v.startsWith("-");
+    v = v.replace(/-/g, "");
+    const dot = v.indexOf(".");
+    if (dot >= 0) v = v.slice(0, dot + 1) + v.slice(dot + 1).replace(/\./g, "");
+    return neg ? "-" + v : v;
+  }
+
   function renderNumericalEntry(val, opts) {
     const o = opts || {};
     const valEsc = String(val != null ? val : "").replace(/"/g, "&quot;");
     const disabled = o.disabled ? " disabled" : "";
-    const readonly = o.readonly !== false ? " readonly" : "";
+    const readonly = o.readonly === true ? " readonly" : "";
     const extraCls = o.cbt ? " qx-num-cbt" : "";
     const wrapCls = o.wrapClass || "qx-prac-numerical";
     const ntaCls = o.cbt ? " qx-num-nta" : "";
+    const panelCls = o.cbt ? " qx-num-panel" : "";
     return `<div class="${wrapCls} mtk-numerical">
-      <div class="qx-num-entry${extraCls}${ntaCls}">
+      <div class="qx-num-entry${extraCls}${ntaCls}${panelCls}">
         <label class="qx-num-label" for="qxNumInput">Enter your answer</label>
-        <input type="text" class="qx-num-input" id="qxNumInput" inputmode="none" autocomplete="off"
-          placeholder="" value="${valEsc}"${readonly}${disabled}>
+        <input type="text" class="qx-num-input" id="qxNumInput" inputmode="decimal" autocomplete="off"
+          placeholder="0" value="${valEsc}"${readonly}${disabled} aria-label="Numerical answer">
         <div class="qx-num-keypad" id="qxNumKeypad" role="group" aria-label="Numeric keypad">
           <button type="button" class="qx-num-key qx-num-key-wide qx-num-key-back" data-num-key="back">backspace</button>
           <button type="button" class="qx-num-key" data-num-key="7">7</button>
@@ -54,54 +64,84 @@ const QuantrexQFormat = (() => {
     const keypad = scope.querySelector("#qxNumKeypad");
     if (!input) return;
     const emit = () => {
-      const v = String(input.value || "").trim();
+      const cleaned = sanitizeNumVal(input.value);
+      if (input.value !== cleaned) input.value = cleaned;
+      const v = String(cleaned || "").trim();
       if (typeof onChange === "function") onChange(v);
+    };
+    const applyKey = (key) => {
+      if (input.disabled || input.readOnly) return;
+      let v = String(input.value || "");
+      const pos = input.selectionStart != null ? input.selectionStart : v.length;
+      if (key === "back") {
+        if (pos > 0) v = v.slice(0, pos - 1) + v.slice(pos);
+        input.value = v;
+        const np = Math.max(0, pos - 1);
+        input.setSelectionRange(np, np);
+      } else if (key === "clear") {
+        input.value = "";
+      } else if (key === "left") {
+        const np = Math.max(0, pos - 1);
+        input.setSelectionRange(np, np);
+      } else if (key === "right") {
+        const np = Math.min(v.length, pos + 1);
+        input.setSelectionRange(np, np);
+      } else if (key === ".") {
+        if (v.includes(".")) return;
+        v = v.slice(0, pos) + "." + v.slice(pos);
+        input.value = v;
+        input.setSelectionRange(pos + 1, pos + 1);
+      } else if (key === "-") {
+        input.value = v.startsWith("-") ? v.slice(1) : "-" + v;
+      } else {
+        v = v.slice(0, pos) + key + v.slice(pos);
+        input.value = v;
+        input.setSelectionRange(pos + 1, pos + 1);
+      }
+      emit();
     };
     if (keypad) {
       keypad.querySelectorAll("[data-num-key]").forEach(btn => {
         btn.onclick = (e) => {
           e.preventDefault();
-          if (input.disabled) return;
-          const key = btn.getAttribute("data-num-key");
-          let v = String(input.value || "");
-          const pos = input.selectionStart != null ? input.selectionStart : v.length;
-          if (key === "back") {
-            if (pos > 0) v = v.slice(0, pos - 1) + v.slice(pos);
-            input.value = v;
-            const np = Math.max(0, pos - 1);
-            input.setSelectionRange(np, np);
-          } else if (key === "clear") {
-            v = "";
-            input.value = v;
-          } else if (key === "left") {
-            input.value = v;
-            const np = Math.max(0, pos - 1);
-            input.setSelectionRange(np, np);
-          } else if (key === "right") {
-            input.value = v;
-            const np = Math.min(v.length, pos + 1);
-            input.setSelectionRange(np, np);
-          } else if (key === ".") {
-            v = v.slice(0, pos) + "." + v.slice(pos);
-            if ((v.match(/\./g) || []).length > 1) return;
-            input.value = v;
-            input.setSelectionRange(pos + 1, pos + 1);
-          } else if (key === "-") {
-            v = v.startsWith("-") ? v.slice(1) : "-" + v;
-            input.value = v;
-          } else {
-            v = v.slice(0, pos) + key + v.slice(pos);
-            input.value = v;
-            input.setSelectionRange(pos + 1, pos + 1);
-          }
-          emit();
+          applyKey(btn.getAttribute("data-num-key"));
         };
       });
     }
     input.oninput = emit;
     input.onkeydown = (e) => {
-      if (input.readOnly && !["Tab", "ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) e.preventDefault();
+      if (input.disabled) return;
+      const k = e.key;
+      if (k === "Backspace") {
+        e.preventDefault();
+        applyKey("back");
+        return;
+      }
+      if (k === "Delete") {
+        e.preventDefault();
+        let v = String(input.value || "");
+        const pos = input.selectionStart != null ? input.selectionStart : v.length;
+        input.value = v.slice(0, pos) + v.slice(pos + 1);
+        emit();
+        return;
+      }
+      if (k === "ArrowLeft") { e.preventDefault(); applyKey("left"); return; }
+      if (k === "ArrowRight") { e.preventDefault(); applyKey("right"); return; }
+      if (/^\d$/.test(k)) { e.preventDefault(); applyKey(k); return; }
+      if (k === "." || k === "Decimal") { e.preventDefault(); applyKey("."); return; }
+      if (k === "-" || k === "Subtract") { e.preventDefault(); applyKey("-"); return; }
+      if (k === "Escape") { e.preventDefault(); applyKey("clear"); return; }
     };
+    input.onpaste = (e) => {
+      e.preventDefault();
+      const text = (e.clipboardData || window.clipboardData).getData("text") || "";
+      input.value = sanitizeNumVal(text);
+      emit();
+    };
+    if (!input.disabled) {
+      try { input.focus(); input.setSelectionRange(input.value.length, input.value.length); } catch (err) { /* ignore */ }
+    }
+    emit();
   }
 
   function htmlContent(text) {
@@ -267,7 +307,7 @@ const QuantrexQFormat = (() => {
     const render = htmlFn || htmlContent;
     if (t === "numerical" || t === "subjective") {
       const val = selected != null ? String(selected) : "";
-      return renderNumericalEntry(val, { cbt: true, readonly: true });
+      return renderNumericalEntry(val, { cbt: true });
     }
     const multi = t === "multipleCorrect";
     const match = t === "columnMatch";
@@ -482,6 +522,6 @@ const QuantrexQFormat = (() => {
     getType, typeLabel, typeBadgeHtml, correctIndices, correctNumerical,
     optsLayoutClass, practiceOptsContainerClass, testOptsContainerClass,
     renderOptions, renderTestOptions, renderNumericalEntry, grade, isAnswered, formatCorrectAnswer, formatChosenAnswer,
-    bindPractice, bindNumericalKeypad, applyPracticeResult, isMatchColumn, checkNumerical
+    bindPractice, bindNumericalKeypad, sanitizeNumVal, applyPracticeResult, isMatchColumn, checkNumerical
   };
 })();

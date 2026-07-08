@@ -490,19 +490,20 @@ const QuantrexTestEngine = (() => {
   function bindEvents(root) {
     if (!session || !root) return;
     const q = getQ(session.ids[session.idx]);
-    if (root.querySelector("#qxNumKeypad") && typeof QuantrexQFormat !== "undefined") {
+    const numInput = root.querySelector("#qxNumInput");
+    if (numInput && typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.bindNumericalKeypad) {
       QuantrexQFormat.bindNumericalKeypad(root, (v) => {
-        session.answers[session.idx] = v;
+        if (v) session.answers[session.idx] = v;
+        else delete session.answers[session.idx];
         session.visited.add(session.idx);
       });
-    } else {
-      const numInput = root.querySelector("#qxNumInput");
-      if (numInput) {
-        numInput.oninput = () => {
-          session.answers[session.idx] = numInput.value.trim();
-          session.visited.add(session.idx);
-        };
-      }
+    } else if (numInput) {
+      numInput.oninput = () => {
+        const v = numInput.value.trim();
+        if (v) session.answers[session.idx] = v;
+        else delete session.answers[session.idx];
+        session.visited.add(session.idx);
+      };
     }
     root.querySelectorAll("[data-opt]").forEach(btn => {
       btn.onclick = () => selectAnswer(parseInt(btn.dataset.opt, 10));
