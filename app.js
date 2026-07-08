@@ -16,6 +16,7 @@ function go(view, payload) {
 }
 
 function finishRender(html) {
+  if (typeof qxClearBlockingMount === "function") qxClearBlockingMount();
   const main = document.getElementById("app-main");
   main.innerHTML = html;
   document.getElementById("examPill").textContent = EXAMS[STATE.exam].name;
@@ -277,19 +278,10 @@ function enterAllenPracticeMode() {
   const sidebar = document.getElementById("sidebar");
   const topbar = document.querySelector(".topbar");
   const mainEl = document.querySelector(".main");
-  const mount = document.getElementById("app-main");
   if (sidebar) sidebar.style.display = "none";
   if (topbar) topbar.style.display = "none";
   if (mainEl) mainEl.style.marginLeft = "0";
-  if (mount) {
-    mount.style.padding = "0";
-    mount.style.maxWidth = "none";
-    mount.style.position = "fixed";
-    mount.style.inset = "0";
-    mount.style.zIndex = "9500";
-    mount.style.overflow = "auto";
-    mount.style.background = "#f4f7fb";
-  }
+  if (typeof qxShowTestMount === "function") qxShowTestMount(document.getElementById("app-main"));
 }
 
 function exitAllenPracticeMode() {
@@ -297,19 +289,10 @@ function exitAllenPracticeMode() {
   const sidebar = document.getElementById("sidebar");
   const topbar = document.querySelector(".topbar");
   const mainEl = document.querySelector(".main");
-  const mount = document.getElementById("app-main");
   if (sidebar) sidebar.style.display = "";
   if (topbar) topbar.style.display = "";
   if (mainEl) mainEl.style.marginLeft = "";
-  if (mount) {
-    mount.style.padding = "";
-    mount.style.maxWidth = "";
-    mount.style.position = "";
-    mount.style.inset = "";
-    mount.style.zIndex = "";
-    mount.style.overflow = "";
-    mount.style.background = "";
-  }
+  if (typeof qxClearMountInlineStyles === "function") qxClearMountInlineStyles(document.getElementById("app-main"));
 }
 
 async function openPracticeQuestion(id) {
@@ -856,6 +839,8 @@ function bindDynamic() {
 
 // ---------- Init ----------
 function bootApp() {
+  if (typeof qxForceResetShell === "function") qxForceResetShell({ clearContent: false });
+  else if (typeof qxClearBlockingMount === "function") qxClearBlockingMount();
   if (typeof QuantrexTheme !== "undefined") QuantrexTheme.init();
   document.querySelectorAll(".nav-item").forEach(n => {
     n.onclick = () => {
@@ -942,6 +927,11 @@ go = function(view, payload) {
   const navView = navMap[view] || view;
   const navEl = document.querySelector(`.nav-item[data-view="${navView}"]`);
   if (navEl) navEl.classList.add("active");
+
+  if (view !== "test" && view !== "question" && typeof qxClearBlockingMount === "function") {
+    qxClearBlockingMount();
+    document.body.classList.remove("allen-cbt-active", "allen-practice-active", "marks-instr-active");
+  }
 
   if (view === "question") {
     (async () => {

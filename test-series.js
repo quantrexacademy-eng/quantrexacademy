@@ -1232,25 +1232,20 @@ function tsBootFromUrl() {
 (function tsInit() {
   if (typeof document === "undefined") return;
   try {
-    document.body.classList.remove("marks-test-active", "marks-instr-active");
-    const appMain = document.getElementById("app-main");
-    if (appMain) {
-      appMain.innerHTML = "";
-      appMain.style.opacity = "";
-      appMain.style.pointerEvents = "";
-      appMain.style.zIndex = "";
-    }
-    const stuck = document.getElementById("marksInstrOverlay");
-    if (stuck) stuck.remove();
-    const cd = document.getElementById("marksCountdownOverlay");
-    if (cd) cd.remove();
-  } catch (e) { /* */ }
-  try {
     const saved = localStorage.getItem("quantrex_page_theme");
     if (saved === "light" || saved === "dark") document.documentElement.setAttribute("data-theme", saved);
   } catch (e) { /* */ }
   document.addEventListener("DOMContentLoaded", () => {
-    if (typeof exitMarksTestMode === "function") exitMarksTestMode();
+    const stuckShell = document.body.classList.contains("marks-test-active")
+      || document.body.classList.contains("allen-practice-active")
+      || document.body.classList.contains("marks-instr-active")
+      || document.getElementById("marksInstrOverlay")
+      || document.getElementById("marksCountdownOverlay");
+    if (stuckShell && typeof qxForceResetShell === "function") {
+      qxForceResetShell({ clearContent: !!window.TS_STANDALONE });
+    } else if (typeof qxClearBlockingMount === "function") {
+      qxClearBlockingMount();
+    }
     if (window.TS_STANDALONE) tsBootFromUrl();
     setTimeout(async () => {
       try {

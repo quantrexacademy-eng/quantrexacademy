@@ -1309,6 +1309,67 @@ function organizeJeeMainPaper(questionIds) {
   return { orderedIds, sections };
 }
 
+function qxClearMountInlineStyles(main) {
+  if (!main) return;
+  main.style.position = "";
+  main.style.inset = "";
+  main.style.top = "";
+  main.style.left = "";
+  main.style.right = "";
+  main.style.bottom = "";
+  main.style.zIndex = "";
+  main.style.opacity = "";
+  main.style.pointerEvents = "";
+  main.style.overflow = "";
+  main.style.background = "";
+  main.style.padding = "";
+  main.style.maxWidth = "";
+}
+
+function qxClearBlockingMount() {
+  if (document.body.classList.contains("marks-test-active") || document.body.classList.contains("allen-practice-active")) return;
+  qxClearMountInlineStyles(document.getElementById("app-main"));
+}
+
+function qxForceResetShell(opts) {
+  const o = opts || {};
+  document.body.classList.remove("marks-test-active", "marks-instr-active", "allen-cbt-active", "allen-practice-active");
+  document.body.style.overflow = "";
+  ["marksInstrOverlay", "marksCountdownOverlay", "mtkStopModal", "pyqResumeModal", "pyqPreviewModal"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.remove();
+  });
+  const appMain = document.getElementById("app-main");
+  if (appMain) {
+    if (o.clearContent) appMain.innerHTML = "";
+    qxClearMountInlineStyles(appMain);
+  }
+  const sidebar = document.getElementById("sidebar");
+  const topbar = document.querySelector(".topbar");
+  const mainEl = document.querySelector(".main");
+  if (sidebar) sidebar.style.display = "";
+  if (topbar) topbar.style.display = "";
+  if (mainEl) mainEl.style.marginLeft = "";
+  if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(() => {});
+}
+window.qxForceResetShell = qxForceResetShell;
+window.qxClearBlockingMount = qxClearBlockingMount;
+window.qxClearMountInlineStyles = qxClearMountInlineStyles;
+window.qxShowTestMount = qxShowTestMount;
+
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape") return;
+  const mount = document.getElementById("app-main");
+  const blocking = mount && (mount.style.position === "fixed" || mount.style.zIndex === "9500")
+    && !document.body.classList.contains("marks-test-active")
+    && !document.body.classList.contains("allen-practice-active");
+  if (!blocking) return;
+  qxForceResetShell({ clearContent: false });
+  if (typeof showToast === "function") showToast("Screen unlocked — tap Home or refresh if needed");
+  if (!window.TS_STANDALONE && typeof go === "function") try { go("dashboard"); } catch (err) { /* */ }
+  else if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") tsRenderStandalone();
+});
+
 function qxShowTestMount(main) {
   if (!main) return;
   main.style.opacity = "1";
@@ -1343,38 +1404,7 @@ function enterMarksTestMode() {
 }
 
 function exitMarksTestMode() {
-  document.body.classList.remove("marks-test-active", "marks-instr-active", "allen-cbt-active", "allen-practice-active");
-  const appMain = document.getElementById("app-main");
-  if (appMain) {
-    appMain.innerHTML = "";
-    appMain.style.opacity = "";
-    appMain.style.pointerEvents = "";
-    appMain.style.zIndex = "";
-    appMain.style.position = "";
-    appMain.style.inset = "";
-    appMain.style.overflow = "";
-    appMain.style.background = "";
-  }
-  const overlay = document.getElementById("marksCountdownOverlay");
-  if (overlay) overlay.remove();
-  const instr = document.getElementById("marksInstrOverlay");
-  if (instr) instr.remove();
-  const sidebar = document.getElementById("sidebar");
-  const topbar = document.querySelector(".topbar");
-  const main = document.querySelector(".main");
-  const content = document.querySelector(".content");
-  if (sidebar) sidebar.style.display = "";
-  if (topbar) topbar.style.display = "";
-  if (main) main.style.marginLeft = "";
-  if (content) {
-    content.style.padding = "";
-    content.style.maxWidth = "";
-    content.style.position = "";
-    content.style.inset = "";
-    content.style.overflow = "";
-    content.style.background = "";
-  }
-  if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(() => {});
+  qxForceResetShell({ clearContent: true });
   if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") {
     try { tsRenderStandalone(); } catch (e) { console.error("tsRenderStandalone recovery:", e); }
   }

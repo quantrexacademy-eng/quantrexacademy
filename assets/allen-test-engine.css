@@ -23,6 +23,16 @@ body.marks-test-active #app-main {
 }
 body.marks-test-active { background: var(--allen-body-bg, #f4f7fb); }
 
+/* Never let an empty mount block the whole app */
+body:not(.marks-test-active):not(.allen-practice-active) #app-main {
+  position: relative !important;
+  inset: auto !important;
+  z-index: auto !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  overflow: visible !important;
+}
+
 /* ── Instructions ── */
 .allen-instr-fullpage {
   position: fixed; inset: 0; z-index: 10050;
