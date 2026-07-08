@@ -65,9 +65,14 @@ const MarksLive = (() => {
     }
   }
 
+  function fixImgUrl(url) {
+    return String(url || "").replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/");
+  }
+
   function htmlPart(text, image) {
     let out = String(text || "").trim();
-    if (image) out += (out ? "<br>" : "") + `<img src="${image}" alt="">`;
+    if (typeof Mx !== "undefined" && Mx.html) out = Mx.html(out);
+    if (image) out += (out ? "<br>" : "") + `<img src="${fixImgUrl(image)}" alt="">`;
     return out;
   }
 

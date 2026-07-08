@@ -49,11 +49,13 @@ window.Mx = (() => {
     /Powered\s+by\s+MARKS/gi, /MOG\s*Premium/gi, /\bMARKS\s*Premium\b/gi,
     /\bMARKS\s*Selected\b/gi, /marks_selected/gi, /\bMARKS\s*web\b/gi
   ];
-  const PROTECTED_IMG_RX = /cdn-question-pool\.getmarks|formula_cards|cbse\/|NEET\/NCERT/i;
+  const PYQ_CDN = "https://cdn-question-pool.getmarks.app/";
+  const BROKEN_CDN_RX = /https?:\/\/\.app\//gi;
+  const PROTECTED_IMG_RX = /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/jee_main\/|formula_cards|cbse\/|NEET\/NCERT/i;
   const BRAND_IMG_RX = /(?:watermark|branding|marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|scoremarks)/i;
   const BRAND_LOGO_RX = /(?:watermark|marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|scoremarks)/i;
   const MARKS_UI_ICON_RX = /ic_content_exam_|cpyqb\/subjects\/|ncert_toolbox\/|subj-ic-img|exam-pill-logo|subj-mini-ic|qx-marks-icon|qx-exam-logo|board-exam|board-subj|marks-exam-ic|marks-board-subj|dash-board.*logo|dash-tool-logo|exam-card-logo/i;
-  const QUESTION_IMG_RX = /cdn-question-pool\.getmarks/i;
+  const QUESTION_IMG_RX = /cdn-question-pool\.getmarks|\/pyq\/jee_main\//i;
   const FORMULA_IMG_RX = /formula_cards/i;
 
   function isMarksUiIcon(str) {
@@ -139,8 +141,13 @@ window.Mx = (() => {
     return out;
   }
 
+  function fixBrokenImgUrls(str) {
+    return String(str || "").replace(BROKEN_CDN_RX, PYQ_CDN);
+  }
+
   function stripBranding(str) {
-    const { safe, slots } = protectImgUrls(str);
+    let raw = fixBrokenImgUrls(str);
+    const { safe, slots } = protectImgUrls(raw);
     let out = safe;
     BRAND_PATTERNS.forEach(rx => { out = out.replace(rx, ""); });
     out = out.replace(/<[^>]*(?:watermark|getmarks-brand|marks-app)[^>]*>[\s\S]*?<\/[^>]+>/gi, "");
@@ -201,7 +208,7 @@ window.Mx = (() => {
   // Render content: HTML preserved, branding stripped, plain text escaped, LaTeX intact
   function html(content) {
     if (content == null) return "";
-    const s = stripBranding(String(content).trim());
+    const s = stripBranding(fixBrokenImgUrls(String(content).trim()));
     if (!s) return "";
     if (isHtml(s)) return s;
     // Convert common unicode math to LaTeX where helpful

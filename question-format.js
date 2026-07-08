@@ -28,7 +28,15 @@ const QuantrexQFormat = (() => {
 
   function isMatchColumn(q) {
     const text = String((q && q.q) || "");
-    return /match\s+(the\s+)?list|list[\s\-]*i.*list[\s\-]*ii|list[\s\-]*-?\s*i\s+with\s+list/i.test(text);
+    if (!/match\s+(the\s+)?list|list[\s\-]*i.*list[\s\-]*ii|list[\s\-]*-?\s*i\s+with\s+list/i.test(text)) return false;
+    const opts = (q && q.options) || [];
+    if (hasImageOptions(q)) return false;
+    const plain = opts.map(o => String(o || "").replace(/<[^>]+>/g, " ").trim()).filter(Boolean);
+    if (!plain.length) return false;
+    const comboLike = plain.filter(o =>
+      /[A-D]\s*[-–,]\s*[IVX\d]+|\([a-d]\)\s*[-–]|;\s*\([a-d]\)/i.test(o)
+    ).length;
+    return comboLike >= Math.max(1, Math.ceil(plain.length * 0.2));
   }
 
   function hasImageOptions(q) {
@@ -184,7 +192,10 @@ const QuantrexQFormat = (() => {
 
     return (q.options || []).map((o, i) => {
       const on = selectedSet.has(i);
-      const optBody = match ? formatMatchCombo(o) : render(o);
+      const raw = String(o || "").trim();
+      const optBody = !raw
+        ? `<span class="mtk-opt-empty">Option image loading…</span>`
+        : (match ? formatMatchCombo(o) : render(o));
       return `<button type="button" class="mtk-opt ${multi ? "mtk-opt-multi" : ""} ${match ? "mtk-opt-match" : ""} ${on ? "selected" : ""}" data-opt="${i}">
         <span class="${ctrl}"></span>
         <span class="mtk-opt-letter">${letter(i)}</span>

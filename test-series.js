@@ -129,7 +129,20 @@ function tsNormalizeQuestionId(raw) {
 function tsNormalizeShardQuestion(q) {
   if (!q) return null;
   const text = q.q || q.question || q.text || q.stem || "";
-  return { ...q, q: text, question: text, _bank: "ts_active" };
+  const out = { ...q, q: text, question: text, _bank: "ts_active" };
+  if (out._marksId && typeof MarksLive !== "undefined" && MarksLive.needsFullQuestion(out)) {
+    out._needsFull = true;
+  }
+  return out;
+}
+
+function tsSyncQMap(ids) {
+  (ids || []).forEach(id => {
+    const q = typeof getQ === "function" ? getQ(id) : null;
+    if (!q || q.id == null) return;
+    window.TS_ACTIVE_QMAP[q.id] = q;
+    window.TS_ACTIVE_QMAP[String(q.id)] = q;
+  });
 }
 
 async function tsLoadQuestionsForTest(test) {
@@ -204,7 +217,7 @@ function quizrrInstructionHtml(config) {
             <li><strong>Save &amp; Next</strong> saves your answer and moves forward.</li>
             <li><strong>Mark for Review &amp; Next</strong> marks a question to revisit later.</li>
             <li>You can change your response any number of times before final submission.</li>
-            <li>Do not refresh or close the browser during the test. Use <strong>Resume</strong> if interrupted.</li>
+            <li>Do not refresh or close the browser during the test. Use <strong>⏸ Stop</strong> to save and <strong>Resume</strong> later from the Resume tab.</li>
           </ol>
         </div>
         <div class="qz-instr-block">
@@ -637,6 +650,38 @@ function tsIsPyqMockCategory(cat) {
   return cat && /^pyq_20/.test(cat.id);
 }
 
+function tsSyllabusText(t) {
+  if (!t) return "";
+  return String(t.syllabus || t.subtitle || "").trim();
+}
+
+function tsSyllabusBtnHtml(t) {
+  const text = tsSyllabusText(t);
+  if (!text) return "";
+  const enc = encodeURIComponent(text);
+  const titleEnc = encodeURIComponent(t.title || "Test");
+  return `<button type="button" class="ts-mock-syllabus" onclick="event.stopPropagation();tsShowSyllabus(decodeURIComponent('${titleEnc}'), decodeURIComponent('${enc}'))">View Syllabus</button>`;
+}
+
+function tsShowSyllabus(title, body) {
+  const existing = document.getElementById("tsSyllabusModal");
+  if (existing) existing.remove();
+  document.body.insertAdjacentHTML("beforeend", `<div class="marks-modal-overlay" id="tsSyllabusModal" onclick="if(event.target===this)tsCloseSyllabus()">
+    <div class="marks-modal marks-preview-modal">
+      <div class="marks-modal-head"><h3>📋 Syllabus</h3><button type="button" class="marks-modal-cancel" onclick="tsCloseSyllabus()">✕</button></div>
+      <div class="marks-modal-body">
+        <h2 class="marks-preview-title">${tsEscHtml(title)}</h2>
+        <p class="ts-syllabus-body">${tsEscHtml(body)}</p>
+      </div>
+    </div>
+  </div>`);
+}
+
+function tsCloseSyllabus() {
+  const el = document.getElementById("tsSyllabusModal");
+  if (el) el.remove();
+}
+
 function tsMockCardHtml(t) {
   const st = tsAttemptStatus(t.id);
   const up = tsIsUpcoming(t);
@@ -661,7 +706,7 @@ function tsMockCardHtml(t) {
       </div>
     </div>
     <div class="ts-mock-actions">
-      <button type="button" class="ts-mock-syllabus" onclick="event.stopPropagation();showToast('📋 Full JEE Main syllabus for this paper')">View Syllabus</button>
+      ${tsSyllabusBtnHtml(t)}
       <button type="button" class="ts-mock-attempt" onclick="event.stopPropagation();${click}">${btnLabel}</button>
     </div>
   </div>`;
@@ -682,11 +727,10 @@ function tsChapterRow(chapter, tests, num) {
     const up = tsIsUpcoming(t);
     const score = st === "completed" && att.pct != null ? `<em>${att.pct}%</em>` : "";
     const dateHint = up ? `<span class="ts-upcoming-date">Available ${tsFormatDate(t.scheduledDate)}</span>` : "";
+    const syl = tsSyllabusBtnHtml(t);
     return `<div class="ts-ch-test${up ? " ts-upcoming" : ""}" onclick="${up ? `showToast('📅 This test opens on ${tsFormatDate(t.scheduledDate)}')` : `tsOpenTest('${t.id}')`}">
-      <span>${t.title}</span>
-      <small>${t.totalQs} Qs · ${t.durationMin}m</small>
-      ${dateHint}${score}
-      ${tsTestActionBtn(t, st)}
+      <div class="ts-ch-test-main"><span>${t.title}</span><small>${t.totalQs} Qs · ${t.durationMin}m</small>${dateHint}${score}</div>
+      <div class="ts-ch-test-actions">${syl}${tsTestActionBtn(t, st)}</div>
     </div>`;
   }).join("");
   return `<details class="ts-chapter-block"><summary class="ts-chapter-head">
@@ -854,9 +898,71 @@ function tsOpenResource(id, link) {
   else showToast("📚 " + id + " — opening soon");
 }
 
-async function tsLaunchTest(testId, test, meta, seriesId) {
+function tsResumeModalHtml(testId, title) {
+  return `<div class="marks-modal-overlay marks-resume-overlay" id="tsResumeModal" onclick="if(event.target===this)tsCloseResume()">
+    <div class="marks-resume-modal">
+      <button type="button" class="marks-resume-close" onclick="tsCloseResume()">✕</button>
+      <div class="marks-resume-icon">⏸</div>
+      <h3>Resume Test</h3>
+      <p class="marks-resume-sub">${tsEscHtml(title)}</p>
+      <p class="marks-resume-hint">Your answers and timer are saved. Continue where you left off, or start fresh.</p>
+      <button type="button" class="marks-resume-btn" onclick="tsCloseResume();tsResumeTest('${testId}')">▶ Resume Test</button>
+      <button type="button" class="marks-resume-secondary" onclick="tsCloseResume();tsStartFreshTest('${testId}')">Start Fresh</button>
+      <button type="button" class="marks-resume-cancel" onclick="tsCloseResume()">Cancel</button>
+    </div>
+  </div>`;
+}
+
+function tsCloseResume() {
+  const el = document.getElementById("tsResumeModal");
+  if (el) el.remove();
+}
+
+function tsShowResume(testId, title) {
+  const existing = document.getElementById("tsResumeModal");
+  if (existing) existing.remove();
+  document.body.insertAdjacentHTML("beforeend", tsResumeModalHtml(testId, title));
+}
+
+async function tsResumeTest(testId) {
+  const seriesId = _tsPayload.folder || TS_SERIES_ID;
+  const meta = (_tsManifest && _tsManifest.tests || []).find(t => t.id === testId);
+  if (!meta) { showToast("⚠️ Test not found."); return; }
+  const test = await tsResolveTest(seriesId, meta);
+  if (!test) { showToast("⚠️ Test not found."); return; }
+  const persistKey = `ts::${seriesId}::${testId}`;
+  const saved = typeof marksLoadSession === "function" ? marksLoadSession(persistKey) : null;
+  if (!saved) {
+    showToast("⚠️ No saved session. Starting fresh…");
+    return tsStartFreshTest(testId);
+  }
+  await tsLaunchTest(testId, test, meta, seriesId, { resumeData: saved, skipResumePrompt: true });
+}
+
+async function tsStartFreshTest(testId) {
+  const seriesId = _tsPayload.folder || TS_SERIES_ID;
+  const persistKey = `ts::${seriesId}::${testId}`;
+  if (typeof marksClearSession === "function") marksClearSession();
+  tsSaveAttempt(testId, { status: "notStarted" });
+  const meta = (_tsManifest && _tsManifest.tests || []).find(t => t.id === testId);
+  if (!meta) { showToast("⚠️ Test not found."); return; }
+  const test = await tsResolveTest(seriesId, meta);
+  if (!test) { showToast("⚠️ Test not found."); return; }
+  await tsLaunchTest(testId, test, meta, seriesId, { fresh: true, skipResumePrompt: true });
+}
+
+async function tsLaunchTest(testId, test, meta, seriesId, opts) {
+  const o = opts || {};
   const st = tsAttemptStatus(testId);
-  if (st === "completed") { tsShowAnalysis(testId, meta); return; }
+  if (st === "completed" && !o.resumeData) { tsShowAnalysis(testId, meta); return; }
+  if (!o.skipResumePrompt && !o.resumeData && !o.fresh) {
+    const persistKey = `ts::${seriesId}::${testId}`;
+    const saved = typeof marksLoadSession === "function" ? marksLoadSession(persistKey) : null;
+    if (saved && (st === "inProgress" || saved.remainingSec > 0)) {
+      tsShowResume(testId, test.title || meta.title);
+      return;
+    }
+  }
   const loadResult = await tsLoadQuestionsForTest(test);
   const loaded = loadResult && (loadResult.count || 0) > 0;
   const questionIds = (loadResult && loadResult.ids && loadResult.ids.length)
@@ -872,7 +978,7 @@ async function tsLaunchTest(testId, test, meta, seriesId) {
     return;
   }
   tsSaveAttempt(testId, { status: "inProgress", title: test.title, categoryId: meta.categoryId });
-  tsStandaloneLaunchTest(testId, test, meta, seriesId, verified);
+  tsStandaloneLaunchTest(testId, test, meta, seriesId, verified, o);
 }
 
 function tsBuildTestConfig(testId, test, meta, seriesId, questionIds) {
@@ -904,10 +1010,26 @@ function tsBuildTestConfig(testId, test, meta, seriesId, questionIds) {
   };
 }
 
-function tsStandaloneLaunchTest(testId, test, meta, seriesId, questionIds) {
+function tsStandaloneLaunchTest(testId, test, meta, seriesId, questionIds, opts) {
+  const o = opts || {};
   const config = tsBuildTestConfig(testId, test, meta, seriesId, questionIds);
-  const runTest = () => {
+  if (o.resumeData) {
+    config.resumeData = o.resumeData;
+    config.skipCountdown = true;
+  }
+  const runTest = async () => {
     try {
+      if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
+        const need = questionIds.filter(id => {
+          const q = getQ(id);
+          return q && MarksLive.needsFullQuestion(q);
+        });
+        if (need.length) {
+          showToast("📚 Loading question images…");
+          await MarksLive.prefetchQuestions(questionIds);
+          tsSyncQMap(questionIds);
+        }
+      }
       if (typeof QuantrexTestEngine === "undefined") throw new Error("Test engine not loaded");
       const ok = QuantrexTestEngine.begin(config);
       if (!ok) throw new Error("No questions in session");
@@ -923,9 +1045,18 @@ function tsStandaloneLaunchTest(testId, test, meta, seriesId, questionIds) {
     }
   };
   const afterCountdown = () => {
+    if (o.resumeData) {
+      if (typeof enterMarksTestMode === "function") enterMarksTestMode();
+      runTest();
+      return;
+    }
     if (typeof showMarksCountdown === "function") showMarksCountdown(runTest);
     else runTest();
   };
+  if (o.resumeData) {
+    afterCountdown();
+    return;
+  }
   showQuizrrInstructions(config, afterCountdown, () => {
     if (typeof marksCancelInstructions === "function") marksCancelInstructions();
     else tsRenderStandalone();
@@ -951,7 +1082,7 @@ async function tsOpenTest(testId) {
     try { test = await tsResolveTest(seriesId, meta); }
     catch (e) { showToast("⚠️ Could not load test."); return; }
     if (!test) { showToast("⚠️ Test not found."); return; }
-    await tsLaunchTest(testId, test, meta, seriesId);
+    await tsLaunchTest(testId, test, meta, seriesId, {});
   } catch (err) {
     console.error("tsOpenTest failed:", err);
     showToast("⚠️ Error opening test. Try again.");

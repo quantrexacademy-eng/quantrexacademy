@@ -215,12 +215,38 @@ const QuantrexTestEngine = (() => {
     return 0;
   }
 
+  function sectionColorClass(subject) {
+    const s = String(subject || "").toLowerCase();
+    if (s.includes("math")) return "mtk-sec-math";
+    if (s.includes("phys")) return "mtk-sec-phys";
+    if (s.includes("chem")) return "mtk-sec-chem";
+    return "mtk-sec-gen";
+  }
+
+  function renderMarksColorStrip() {
+    return `<div class="mtk-color-strip" aria-hidden="true">
+      <span class="mtk-strip-seg mtk-strip-math"></span>
+      <span class="mtk-strip-seg mtk-strip-phys"></span>
+      <span class="mtk-strip-seg mtk-strip-chem"></span>
+      <span class="mtk-strip-seg mtk-strip-acc"></span>
+    </div>`;
+  }
+
+  function renderMarkingBadges() {
+    if (!session) return "";
+    const sc = session.scoring || { correct: 4, wrong: -1 };
+    const pos = sc.correct > 0 ? `<span class="mtk-pos-mark">+${sc.correct}</span>` : "";
+    const neg = sc.wrong < 0 ? `<span class="mtk-neg-mark">${sc.wrong}</span>` : "";
+    return `${pos}${neg}`;
+  }
+
   function renderMarksSectionTabs() {
     if (!session || !session.sections || session.sections.length < 2) return "";
     const cur = currentSectionIdx();
-    const tabs = session.sections.map((sec, i) =>
-      `<button type="button" class="mtk-sec-tab${i === cur ? " active" : ""}" data-sec="${i}">${sec.shortLabel || sec.label}</button>`
-    ).join("");
+    const tabs = session.sections.map((sec, i) => {
+      const cls = sectionColorClass(sec.subject);
+      return `<button type="button" class="mtk-sec-tab ${cls}${i === cur ? " active" : ""}" data-sec="${i}">${sec.shortLabel || sec.label}</button>`;
+    }).join("");
     return `<div class="mtk-sec-bar">
       <button type="button" class="mtk-sec-nav" id="mtkSecPrev" title="Previous section">‹</button>
       <div class="mtk-sec-tabs">${tabs}</div>
@@ -320,7 +346,7 @@ const QuantrexTestEngine = (() => {
       ? MarksLive.isQuestionIncomplete(q)
       : false;
     const selected = session.answers[session.idx];
-    const wrongMark = session.scoring.wrong < 0 ? `<span class="mtk-neg-mark">${session.scoring.wrong}</span>` : "";
+    const markBadges = renderMarkingBadges();
     const timerHtml = session.durationSec != null
       ? `<div class="mtk-timer" id="qxTimer"><span class="mtk-timer-ic">🕐</span>${formatMarksTime(session.remainingSec)}</div>` : "";
     const testTheme = getTestTheme();
@@ -362,11 +388,12 @@ const QuantrexTestEngine = (() => {
         ${stopBtn}
         <button type="button" class="mtk-submit-top" id="qxSubmitTop">Submit</button>
       </header>
+      ${renderMarksColorStrip()}
       ${renderMarksSectionTabs()}
       <div class="mtk-body">
         <div class="mtk-main">
           <div class="mtk-q-head">
-            <span class="mtk-q-num">Q${session.idx + 1}</span>${wrongMark}
+            <span class="mtk-q-num">Q${session.idx + 1}</span>${markBadges}
             ${typeBadge}
           </div>
           <div class="mtk-q-text qx-content">${incomplete ? '<div class="empty">Loading question…</div>' : htmlContent(q.q)}</div>
@@ -618,6 +645,7 @@ const QuantrexTestEngine = (() => {
   function stopAndSave() {
     if (!session) return;
     const hadPersist = !!session.persistKey;
+    const testType = session.testType;
     const ret = session.returnTo || "tests";
     stopTimer();
     if (session.persistKey) {
@@ -635,7 +663,8 @@ const QuantrexTestEngine = (() => {
     exitMarksTestMode();
     session = null;
     go(ret);
-    showToast(hadPersist ? "✓ Test stopped. Resume anytime from PYQ Mock Tests." : "✓ Test saved.");
+    const resumeHint = testType === "testseries" ? "Test Series → Resume tab" : "PYQ Mock Tests";
+    showToast(hadPersist ? `✓ Test stopped. Resume anytime from ${resumeHint}.` : "✓ Test saved.");
   }
 
   function quit() {
@@ -1761,12 +1790,16 @@ function toggleMtkQviewSettings(show) {
 
 function mtkStopModalHtml(mode) {
   const isExit = mode === "exit";
+  const sess = typeof QuantrexTestEngine !== "undefined" ? QuantrexTestEngine.getSession() : null;
+  const resumeWhere = sess && sess.testType === "testseries"
+    ? "Test Series → Resume tab"
+    : "PYQ Mock Tests";
   return `<div class="marks-modal-overlay" id="mtkStopModal" onclick="if(event.target===this)mtkCloseStopModal()">
     <div class="marks-resume-modal marks-stop-modal">
       <button type="button" class="marks-resume-close" onclick="mtkCloseStopModal()">✕</button>
       <div class="marks-resume-icon">${isExit ? "🚪" : "⏸"}</div>
       <h3>${isExit ? "Exit Test?" : "Stop Test"}</h3>
-      <p class="marks-resume-hint">Your answers and remaining time will be saved. You can resume this test anytime from PYQ Mock Tests.</p>
+      <p class="marks-resume-hint">Your answers and remaining time will be saved. Resume anytime from <strong>${resumeWhere}</strong>.</p>
       <button type="button" class="marks-resume-btn" onclick="mtkConfirmStop()">⏸ Stop &amp; Save</button>
       <button type="button" class="marks-resume-cancel" onclick="mtkCloseStopModal()">Continue Test</button>
     </div>
