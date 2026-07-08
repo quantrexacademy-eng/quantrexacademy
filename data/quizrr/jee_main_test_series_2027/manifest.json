@@ -6,7 +6,7 @@
   "year": 2027,
   "tagline": "Complete Quizrr-style test catalog — PYQ, Mock, Chapter-wise",
   "syncedFrom": "quantrex_full_catalog",
-  "syncedAt": "2026-07-07T18:55:05.630Z",
+  "syncedAt": "2026-07-08T00:16:04.122Z",
   "pendingQuizrrSync": true,
   "totalTests": 911,
   "sections": [
@@ -7326,15 +7326,15 @@
     },
     {
       "id": "qpt_1",
-      "title": "QPT 1 · Physics",
-      "shortTitle": "QPT 1 · Physics",
+      "title": "QPT 1",
+      "shortTitle": "QPT 1",
       "testType": "Part Test",
       "categoryId": "qpt",
       "chapter": null,
       "subjects": [
         "Physics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-04-01",
       "durationMin": 60,
       "totalQs": 30,
       "file": "categories/qpt.json",
@@ -7343,15 +7343,15 @@
     },
     {
       "id": "qpt_2",
-      "title": "QPT 2 · Chemistry",
-      "shortTitle": "QPT 2 · Chemistr",
+      "title": "QPT 2",
+      "shortTitle": "QPT 2",
       "testType": "Part Test",
       "categoryId": "qpt",
       "chapter": null,
       "subjects": [
         "Chemistry"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-04-15",
       "durationMin": 60,
       "totalQs": 30,
       "file": "categories/qpt.json",
@@ -7360,15 +7360,15 @@
     },
     {
       "id": "qpt_3",
-      "title": "QPT 3 · Mathematics",
-      "shortTitle": "QPT 3 · Mathemat",
+      "title": "QPT 3",
+      "shortTitle": "QPT 3",
       "testType": "Part Test",
       "categoryId": "qpt",
       "chapter": null,
       "subjects": [
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-04-29",
       "durationMin": 60,
       "totalQs": 30,
       "file": "categories/qpt.json",
@@ -7377,15 +7377,15 @@
     },
     {
       "id": "qpt_4",
-      "title": "QPT 4 · Physics",
-      "shortTitle": "QPT 4 · Physics",
+      "title": "QPT 4",
+      "shortTitle": "QPT 4",
       "testType": "Part Test",
       "categoryId": "qpt",
       "chapter": null,
       "subjects": [
         "Physics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-05-13",
       "durationMin": 60,
       "totalQs": 30,
       "file": "categories/qpt.json",
@@ -7394,15 +7394,15 @@
     },
     {
       "id": "qpt_5",
-      "title": "QPT 5 · Chemistry",
-      "shortTitle": "QPT 5 · Chemistr",
+      "title": "QPT 5",
+      "shortTitle": "QPT 5",
       "testType": "Part Test",
       "categoryId": "qpt",
       "chapter": null,
       "subjects": [
         "Chemistry"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-05-27",
       "durationMin": 60,
       "totalQs": 30,
       "file": "categories/qpt.json",
@@ -7411,15 +7411,15 @@
     },
     {
       "id": "qpt_6",
-      "title": "QPT 6 · Mathematics",
-      "shortTitle": "QPT 6 · Mathemat",
+      "title": "QPT 6",
+      "shortTitle": "QPT 6",
       "testType": "Part Test",
       "categoryId": "qpt",
       "chapter": null,
       "subjects": [
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-06-10",
       "durationMin": 60,
       "totalQs": 30,
       "file": "categories/qpt.json",
@@ -7428,15 +7428,15 @@
     },
     {
       "id": "qpt_7",
-      "title": "QPT 7 · Physics",
-      "shortTitle": "QPT 7 · Physics",
+      "title": "QPT 7",
+      "shortTitle": "QPT 7",
       "testType": "Part Test",
       "categoryId": "qpt",
       "chapter": null,
       "subjects": [
         "Physics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-06-24",
       "durationMin": 60,
       "totalQs": 30,
       "file": "categories/qpt.json",
@@ -7445,15 +7445,15 @@
     },
     {
       "id": "qpt_8",
-      "title": "QPT 8 · Chemistry",
-      "shortTitle": "QPT 8 · Chemistr",
+      "title": "QPT 8",
+      "shortTitle": "QPT 8",
       "testType": "Part Test",
       "categoryId": "qpt",
       "chapter": null,
       "subjects": [
         "Chemistry"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-07-08",
       "durationMin": 60,
       "totalQs": 30,
       "file": "categories/qpt.json",
@@ -7462,71 +7462,71 @@
     },
     {
       "id": "qpt_9",
-      "title": "QPT 9 · Mathematics",
-      "shortTitle": "QPT 9 · Mathemat",
+      "title": "QPT 9",
+      "shortTitle": "QPT 9",
       "testType": "Part Test",
       "categoryId": "qpt",
       "chapter": null,
       "subjects": [
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-07-22",
       "durationMin": 60,
       "totalQs": 30,
       "file": "categories/qpt.json",
       "testIndex": 8,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qpt_10",
-      "title": "QPT 10 · Physics",
-      "shortTitle": "QPT 10 · Physics",
+      "title": "QPT 10",
+      "shortTitle": "QPT 10",
       "testType": "Part Test",
       "categoryId": "qpt",
       "chapter": null,
       "subjects": [
         "Physics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-08-05",
       "durationMin": 60,
       "totalQs": 30,
       "file": "categories/qpt.json",
       "testIndex": 9,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qpt_11",
-      "title": "QPT 11 · Chemistry",
-      "shortTitle": "QPT 11 · Chemist",
+      "title": "QPT 11",
+      "shortTitle": "QPT 11",
       "testType": "Part Test",
       "categoryId": "qpt",
       "chapter": null,
       "subjects": [
         "Chemistry"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-08-19",
       "durationMin": 60,
       "totalQs": 30,
       "file": "categories/qpt.json",
       "testIndex": 10,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qpt_12",
-      "title": "QPT 12 · Mathematics",
-      "shortTitle": "QPT 12 · Mathema",
+      "title": "QPT 12",
+      "shortTitle": "QPT 12",
       "testType": "Part Test",
       "categoryId": "qpt",
       "chapter": null,
       "subjects": [
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-09-02",
       "durationMin": 60,
       "totalQs": 30,
       "file": "categories/qpt.json",
       "testIndex": 11,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_1",
@@ -7540,7 +7540,7 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-05-01",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
@@ -7559,7 +7559,7 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-05-13",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
@@ -7578,7 +7578,7 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-05-25",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
@@ -7597,7 +7597,7 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-06-06",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
@@ -7616,7 +7616,7 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-06-18",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
@@ -7635,7 +7635,7 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-06-30",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
@@ -7654,12 +7654,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-07-12",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 6,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_8",
@@ -7673,12 +7673,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-07-24",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 7,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_9",
@@ -7692,12 +7692,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-08-05",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 8,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_10",
@@ -7711,12 +7711,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-08-17",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 9,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_11",
@@ -7730,12 +7730,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-08-29",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 10,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_12",
@@ -7749,12 +7749,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-09-10",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 11,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_13",
@@ -7768,12 +7768,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-09-22",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 12,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_14",
@@ -7787,12 +7787,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-10-04",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 13,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_15",
@@ -7806,12 +7806,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-10-16",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 14,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_16",
@@ -7825,12 +7825,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-10-28",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 15,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_17",
@@ -7844,12 +7844,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-11-09",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 16,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_18",
@@ -7863,12 +7863,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-11-21",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 17,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_19",
@@ -7882,12 +7882,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-12-03",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 18,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_20",
@@ -7901,12 +7901,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-12-15",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 19,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_21",
@@ -7920,12 +7920,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2026-12-27",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 20,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_22",
@@ -7939,12 +7939,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2027-01-08",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 21,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_23",
@@ -7958,12 +7958,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2027-01-20",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 22,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_24",
@@ -7977,12 +7977,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2027-02-01",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 23,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "qft_25",
@@ -7996,12 +7996,12 @@
         "Chemistry",
         "Mathematics"
       ],
-      "scheduledDate": null,
+      "scheduledDate": "2027-02-13",
       "durationMin": 180,
       "totalQs": 75,
       "file": "categories/qft.json",
       "testIndex": 24,
-      "status": "available"
+      "status": "upcoming"
     },
     {
       "id": "pyq_2026_1",

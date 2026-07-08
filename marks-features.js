@@ -1668,9 +1668,11 @@ function marksTestSeriesCards() {
   const card = (tone, logo, title) => {
     const meta = TEST_SERIES_META[tone];
     const id = meta ? meta.id : tone;
-    const payload = id === "jeemain" ? { folder: "jee_main_test_series_2027" } : { id };
+    const openAttr = id === "jeemain"
+      ? `onclick="window.open('test-series.html','_blank','noopener')" role="button" tabindex="0"`
+      : mg("testseries", { id });
     return `
-    <div class="mts-card mts-${tone}" ${mg("testseries", payload)}>
+    <div class="mts-card mts-${tone}" ${openAttr}>
       <div class="mts-logo">${logo}</div>
       <div class="mts-body">
         <strong>${title}</strong>

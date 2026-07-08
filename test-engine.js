@@ -1480,14 +1480,19 @@ async function startTest(questionIds, title, returnTo, options) {
     launchTestSession(main);
   };
 
-  if (marksMode && !opts.skipCountdown) {
-    showMarksCountdown(run);
-  } else if (marksMode && opts.skipCountdown) {
-    enterMarksTestMode();
-    run();
-  } else {
-    run();
+  const launchMarks = () => {
+    if (marksMode && !opts.skipCountdown) showMarksCountdown(run);
+    else if (marksMode && opts.skipCountdown) { enterMarksTestMode(); run(); }
+    else run();
+  };
+
+  if (marksMode && !opts.skipInstructions && typeof showMarksInstructions === "function") {
+    showMarksInstructions(config, launchMarks, () => {
+      if (typeof marksCancelInstructions === "function") marksCancelInstructions();
+    });
+    return;
   }
+  launchMarks();
 }
 
 function renderTest() {

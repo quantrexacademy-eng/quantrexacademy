@@ -1,13 +1,41 @@
-// JEE Main Test Series 2027 — Quizrr screenshots 424/425 style
+// JEE Main Test Series 2027 — Inter-Marks style (screenshots 427/428)
 
 const TS_ATTEMPT_STORE = "quantrex_ts_attempts_v1";
 const TS_NOTIFY_STORE = "quantrex_ts_notify_v1";
-const TS_LAST_SYNC_KEY = "quantrex_ts_last_sync_check";
+const TS_SERIES_ID = "jee_main_test_series_2027";
 
-let _tsPayload = { seriesId: "jee_main_test_series_2027" };
+let _tsPayload = { seriesId: TS_SERIES_ID };
 let _tsManifest = null;
 let _tsCategoryCache = {};
+let _tsPage = "home";
+let _tsNav = "test";
+let _tsDashTab = "attempted";
+let _tsSearch = "";
+let _tsSort = "default";
 let _tsFilter = { testType: "All Tests", subject: "Overall", dateRange: "All Dates", statusTab: "available" };
+
+const TS_ICON_NAV = [
+  { id: "test", label: "Test", icon: "📝" },
+  { id: "solution", label: "Solution", icon: "💡" },
+  { id: "about", label: "About", icon: "ℹ️" },
+  { id: "resources", label: "Resources", icon: "📚" }
+];
+
+if (typeof showToast !== "function") {
+  let _tsToastTimer;
+  window.showToast = function showToast(msg) {
+    const t = document.getElementById("appToast");
+    if (!t) return;
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(_tsToastTimer);
+    _tsToastTimer = setTimeout(() => t.classList.remove("show"), 2400);
+  };
+}
+
+function tsToday() {
+  return new Date().toISOString().slice(0, 10);
+}
 
 function tsLoadAttempts() {
   try { return JSON.parse(localStorage.getItem(TS_ATTEMPT_STORE) || "{}"); }
@@ -35,11 +63,11 @@ function tsPushNotification(msg) {
   const list = tsLoadNotifications();
   list.unshift({ id: Date.now(), msg, at: new Date().toISOString(), read: false });
   localStorage.setItem(TS_NOTIFY_STORE, JSON.stringify(list.slice(0, 50)));
-  if (typeof showToast === "function") showToast("🔔 " + msg);
+  showToast("🔔 " + msg);
 }
 
 async function tsFetchManifest(seriesId) {
-  const sid = seriesId || "jee_main_test_series_2027";
+  const sid = seriesId || TS_SERIES_ID;
   const res = await fetch(`data/quizrr/${sid}/manifest.json?v=${typeof QX_BUILD !== "undefined" ? QX_BUILD : Date.now()}`);
   if (!res.ok) throw new Error("manifest");
   return res.json();
@@ -73,14 +101,15 @@ function tsFormatDate(iso) {
   } catch (e) { return iso; }
 }
 
-function tsSubjectStyle(sub) {
-  const m = {
-    Physics: { color: "#37B24D", bg: "rgba(55,178,77,.12)" },
-    Chemistry: { color: "#FF8C33", bg: "rgba(255,140,51,.12)" },
-    Mathematics: { color: "#0086FF", bg: "rgba(0,134,255,.12)" },
-    Overall: { color: "#6366f1", bg: "rgba(99,102,241,.12)" }
-  };
-  return m[sub] || { color: "#94a3b8", bg: "rgba(148,163,184,.12)" };
+function tsIsUpcoming(t) {
+  if (!t) return false;
+  if (t.status === "upcoming") return true;
+  if (t.scheduledDate && t.scheduledDate > tsToday()) return true;
+  return false;
+}
+
+function tsIsAvailable(t) {
+  return !tsIsUpcoming(t);
 }
 
 function tsCatIcon(cat) {
@@ -88,35 +117,123 @@ function tsCatIcon(cat) {
   return ic[cat.icon] || "📋";
 }
 
+function tsUserName() {
+  try {
+    const u = JSON.parse(localStorage.getItem("quantrex_user") || "null");
+    if (u && u.name) return u.name;
+  } catch (e) { /* */ }
+  return "Student";
+}
+
 function tsMatchesStatusTab(t) {
   const st = tsAttemptStatus(t.id);
   const tab = _tsFilter.statusTab;
   if (tab === "attempted") return st === "completed";
   if (tab === "resume") return st === "inProgress";
-  if (tab === "upcoming") return t.status === "upcoming" || (t.scheduledDate && t.scheduledDate > new Date().toISOString().slice(0, 10));
-  return st === "notStarted" && t.status !== "upcoming";
+  if (tab === "upcoming") return tsIsUpcoming(t);
+  if (tab === "available") return tsIsAvailable(t) && st !== "completed" && st !== "inProgress";
+  return true;
 }
 
 function tsFilterCategoryTests(tests) {
   let list = [...(tests || [])];
+  if (_tsSearch) {
+    const q = _tsSearch.toLowerCase();
+    list = list.filter(t => (t.title || "").toLowerCase().includes(q) || (t.chapter || "").toLowerCase().includes(q));
+  }
   if (_tsFilter.testType !== "All Tests") list = list.filter(t => t.testType === _tsFilter.testType);
   if (_tsFilter.subject !== "Overall") list = list.filter(t => (t.subjects || []).includes(_tsFilter.subject));
   list = list.filter(tsMatchesStatusTab);
   if (_tsFilter.dateRange === "Last 5 Tests") list = list.slice(0, 5);
   if (_tsFilter.dateRange === "Last 10 Tests") list = list.slice(0, 10);
+  if (_tsSort === "date") list.sort((a, b) => String(a.scheduledDate || "").localeCompare(String(b.scheduledDate || "")));
+  if (_tsSort === "name") list.sort((a, b) => (a.title || "").localeCompare(b.title || ""));
   return list;
 }
 
 function tsAnalyticsSummary(tests) {
   const attempts = tsLoadAttempts();
-  let attempted = 0, completed = 0, totalPct = 0;
+  let attempted = 0, completed = 0, totalPct = 0, inProgress = 0;
   (tests || []).forEach(t => {
     const a = attempts[t.id];
     if (!a || a.status === "notStarted") return;
     attempted++;
     if (a.status === "completed") { completed++; totalPct += a.pct || 0; }
+    if (a.status === "inProgress") inProgress++;
   });
-  return { attempted, completed, total: tests.length, avgPct: completed ? Math.round(totalPct / completed) : 0 };
+  return {
+    attempted, completed, inProgress,
+    total: (tests || []).length,
+    avgPct: completed ? Math.round(totalPct / completed) : 0
+  };
+}
+
+function tsSubjectAnalytics(tests) {
+  const attempts = tsLoadAttempts();
+  const subs = ["Physics", "Chemistry", "Mathematics"];
+  return subs.map(sub => {
+    let done = 0, pctSum = 0;
+    (tests || []).forEach(t => {
+      if (!(t.subjects || []).includes(sub)) return;
+      const a = attempts[t.id];
+      if (a && a.status === "completed") { done++; pctSum += a.pct || 0; }
+    });
+    return { sub, done, avg: done ? Math.round(pctSum / done) : 0 };
+  });
+}
+
+function tsRingSvg(pct) {
+  const p = Math.min(100, Math.max(0, pct || 0));
+  const r = 52;
+  const c = 2 * Math.PI * r;
+  const off = c - (p / 100) * c;
+  return `<svg class="ts-ring-svg" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="${r}" fill="none" stroke="#252a36" stroke-width="10"/>
+    <circle cx="60" cy="60" r="${r}" fill="none" stroke="#3b82f6" stroke-width="10"
+      stroke-dasharray="${c}" stroke-dashoffset="${off}" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+    <text x="60" y="64" text-anchor="middle" fill="#e8ecf4" font-size="22" font-weight="800" font-family="Kanit,sans-serif">${p}%</text>
+  </svg>`;
+}
+
+function tsBreadcrumb() {
+  const cat = _tsPayload.categoryId && _tsManifest
+    ? (_tsManifest.categories || []).find(c => c.id === _tsPayload.categoryId)
+    : null;
+  if (_tsPage === "analytics") return `<span class="ts-breadcrumb"><a onclick="tsGoPage('home')">Your Tests</a> / <strong>Analytics</strong></span>`;
+  if (_tsPage === "alltests" || (_tsPage === "category" && !cat))
+    return `<span class="ts-breadcrumb"><a onclick="tsGoPage('home')">Your Tests</a> / <strong>All Tests</strong></span>`;
+  if (cat)
+    return `<span class="ts-breadcrumb"><a onclick="tsGoPage('home')">Your Tests</a> / <a onclick="tsGoPage('alltests')">All Tests</a> / <strong>${cat.title}</strong></span>`;
+  return `<span class="ts-breadcrumb"><strong>Your Tests</strong> / Dashboard</span>`;
+}
+
+function tsIconNavHtml() {
+  const main = TS_ICON_NAV.map(n =>
+    `<button type="button" class="ts-icon-nav-item${_tsNav === n.id ? " on" : ""}" onclick="tsSetNav('${n.id}')" title="${n.label}">
+      <span class="ic">${n.icon}</span><span>${n.label}</span>
+    </button>`
+  ).join("");
+  return `<nav class="ts-icon-nav">
+    ${main}
+    <div class="ts-icon-nav-spacer"></div>
+    <div class="ts-icon-nav-foot">
+      <button type="button" class="ts-icon-nav-item${_tsPage === "home" ? " on" : ""}" onclick="tsGoPage('home')" title="Home"><span class="ic">🏠</span></button>
+      <button type="button" class="ts-icon-nav-item${_tsPage === "analytics" ? " on" : ""}" onclick="tsGoPage('analytics')" title="Analytics"><span class="ic">📊</span></button>
+    </div>
+  </nav>`;
+}
+
+function tsAppShell(inner) {
+  return `<div class="ts-app">
+    ${tsIconNavHtml()}
+    <div class="ts-app-main">
+      <header class="ts-topbar">
+        ${tsBreadcrumb()}
+        <div class="ts-user-greet"><strong>Hey, ${tsUserName()}</strong><span>JEE Main 2027 Batch</span></div>
+      </header>
+      <div class="ts-content">${inner}</div>
+    </div>
+  </div>`;
 }
 
 function tsSidebarHtml(manifest, activeId) {
@@ -129,7 +246,8 @@ function tsSidebarHtml(manifest, activeId) {
     </button>`;
   }).join("");
   return `<aside class="ts-sidebar">
-    <div class="ts-side-head"><strong>All Tests</strong><small>${manifest.totalTests || (manifest.tests || []).length} tests</small></div>
+    <button type="button" class="ts-side-nav-btn${_tsPage === "alltests" && !activeId ? " on" : ""}" onclick="tsGoPage('alltests')">📋 All Tests</button>
+    <div class="ts-side-head"><strong>Categories</strong><small>${manifest.totalTests || 0} tests</small></div>
     <div class="ts-side-list">${items}</div>
   </aside>`;
 }
@@ -138,33 +256,145 @@ function tsCategoryCard(cat) {
   const badge = cat.badge ? `<span class="ts-cat-badge">${cat.badge}</span>` : "";
   return `<div class="ts-cat-card" onclick="tsOpenCategory('${cat.id}')">
     <div class="ts-cat-card-ic">${tsCatIcon(cat)}</div>
-    <div class="ts-cat-card-body">
-      <strong>${cat.title}</strong>
-      <small>${cat.count} Tests</small>
-    </div>
-    ${badge}
-    <span class="ts-cat-go">›</span>
+    <div class="ts-cat-card-body"><strong>${cat.title}</strong><small>${cat.count} Tests</small></div>
+    ${badge}<span class="ts-cat-go">›</span>
   </div>`;
 }
 
 function tsResourcesHtml(manifest) {
   const res = manifest.resources || [];
-  return `<section class="ts-resources">
-    <h3>Resources</h3>
+  return `<section class="ts-resources"><h3>Resources</h3>
     <div class="ts-res-pills">${res.map(r =>
       `<button type="button" class="ts-res-pill" style="--ts-res:${r.color}" onclick="tsOpenResource('${r.id}','${r.link || ""}')">${r.title}</button>`
-    ).join("")}</div>
-  </section>`;
+    ).join("")}</div></section>`;
+}
+
+function tsNextTestsRows(manifest) {
+  const tests = (manifest.tests || []).filter(tsIsUpcoming).sort((a, b) =>
+    String(a.scheduledDate || "").localeCompare(String(b.scheduledDate || ""))
+  ).slice(0, 8);
+  if (!tests.length) return `<tr><td colspan="4" class="empty">No upcoming tests — you're all caught up!</td></tr>`;
+  return tests.map(t => {
+    const subs = (t.subjects || []).join(" + ") || "All";
+    return `<tr onclick="tsOpenTest('${t.id}')">
+      <td><strong>${t.title}</strong></td>
+      <td><span class="ts-badge-upcoming">Upcoming</span></td>
+      <td class="ts-date-cell">${tsFormatDate(t.scheduledDate)}</td>
+      <td class="ts-date-cell">${subs}</td>
+    </tr>`;
+  }).join("");
+}
+
+function tsRecentTestsRows(manifest) {
+  const attempts = tsLoadAttempts();
+  const metaById = {};
+  (manifest.tests || []).forEach(t => { metaById[t.id] = t; });
+  let rows = Object.keys(attempts).map(id => ({ id, ...attempts[id], meta: metaById[id] }))
+    .filter(r => r.meta && (_tsDashTab === "completed" ? r.status === "completed" : r.status !== "notStarted"));
+  rows.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+  rows = rows.slice(0, 8);
+  if (!rows.length) return `<tr><td colspan="4" class="empty">No ${_tsDashTab} tests yet. Start your first test!</td></tr>`;
+  return rows.map(r => {
+    const badge = r.status === "completed"
+      ? `<span class="ts-badge-done">Completed · ${r.pct != null ? r.pct + "%" : "—"}</span>`
+      : `<span class="ts-badge-available">In Progress</span>`;
+    const date = r.completedAt ? tsFormatDate(r.completedAt.slice(0, 10)) : "—";
+    return `<tr onclick="tsOpenTest('${r.id}')">
+      <td><strong>${r.meta.title}</strong></td>
+      <td>${badge}</td>
+      <td class="ts-date-cell">${date}</td>
+      <td class="ts-date-cell">${(r.meta.subjects || []).join(" + ")}</td>
+    </tr>`;
+  }).join("");
+}
+
+function tsDashboardHtml(manifest) {
+  const s = tsAnalyticsSummary(manifest.tests || []);
+  const subs = tsSubjectAnalytics(manifest.tests || []);
+  const cats = manifest.categories || [];
+  const sideCats = cats.slice(0, 6).map(c =>
+    `<div class="ts-side-cat" onclick="tsOpenCategory('${c.id}')"><strong>${c.title}</strong><small>${c.count} tests</small></div>`
+  ).join("");
+  const subBars = subs.map(x =>
+    `<div class="ts-subj-bar-row"><span>${x.sub}</span><div class="ts-subj-bar-track"><div class="ts-subj-bar-fill" style="width:${x.avg}%;background:${x.sub === "Physics" ? "#22c55e" : x.sub === "Chemistry" ? "#f59e0b" : "#3b82f6"}"></div></div><em>${x.avg}%</em></div>`
+  ).join("");
+  return `<div class="ts-hero-banner">
+    <h1>${manifest.title}</h1>
+    <p>${manifest.tagline || manifest.subtitle}</p>
+  </div>
+  <div class="ts-dash-layout">
+    <div class="ts-dash-main">
+      <div class="ts-dash-stats">
+        <div class="ts-stat-card"><span>Attempted</span><strong>${s.attempted}</strong><em>of ${s.total} tests</em></div>
+        <div class="ts-stat-card"><span>Overall Accuracy</span><strong>${s.avgPct}%</strong><em>${s.completed} completed</em></div>
+        <div class="ts-stat-card"><span>Resume</span><strong>${s.inProgress}</strong><em>in progress</em></div>
+      </div>
+      <div class="ts-panel">
+        <div class="ts-panel-head"><h3>Next Tests</h3><button type="button" class="ts-mini-tab on" onclick="tsGoPage('alltests');tsSetStatusTab('upcoming')">View all upcoming →</button></div>
+        <table class="ts-table"><thead><tr><th>Test</th><th>Status</th><th>Date</th><th>Subjects</th></tr></thead><tbody>${tsNextTestsRows(manifest)}</tbody></table>
+      </div>
+      <div class="ts-panel">
+        <div class="ts-panel-head">
+          <h3>Recent Tests</h3>
+          <div class="ts-mini-tabs">
+            <button type="button" class="ts-mini-tab${_tsDashTab === "attempted" ? " on" : ""}" onclick="tsSetDashTab('attempted')">Attempted</button>
+            <button type="button" class="ts-mini-tab${_tsDashTab === "completed" ? " on" : ""}" onclick="tsSetDashTab('completed')">Completed</button>
+          </div>
+        </div>
+        <table class="ts-table"><thead><tr><th>Test</th><th>Status</th><th>Date</th><th>Subjects</th></tr></thead><tbody>${tsRecentTestsRows(manifest)}</tbody></table>
+      </div>
+    </div>
+    <aside class="ts-dash-side">
+      <div class="ts-panel">
+        <div class="ts-panel-head"><h3>Categories</h3><button type="button" class="ts-mini-tab" onclick="tsGoPage('alltests')">All Tests →</button></div>
+        <div class="ts-side-cats">${sideCats}</div>
+      </div>
+      <div class="ts-panel">
+        <h3 style="margin:0 0 12px;font-size:15px;font-weight:800">Analytics</h3>
+        <div class="ts-analytics-ring">${tsRingSvg(s.avgPct)}<div class="ts-ring-pct">${s.avgPct}%</div><small style="color:var(--ts-muted)">Overall accuracy</small></div>
+        <div class="ts-subj-bars">${subBars}</div>
+        <button type="button" class="ts-mini-tab" style="margin-top:14px;width:100%" onclick="tsGoPage('analytics')">Full Analytics →</button>
+      </div>
+    </aside>
+  </div>`;
+}
+
+function tsAnalyticsPageHtml(manifest) {
+  const s = tsAnalyticsSummary(manifest.tests || []);
+  const subs = tsSubjectAnalytics(manifest.tests || []);
+  const attempts = tsLoadAttempts();
+  const recent = Object.keys(attempts).map(id => ({ id, ...attempts[id] }))
+    .filter(a => a.status === "completed").sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0)).slice(0, 10);
+  const rows = recent.length ? recent.map(a => {
+    const m = (manifest.tests || []).find(t => t.id === a.id);
+    return `<tr><td>${m ? m.title : a.id}</td><td>${a.pct != null ? a.pct + "%" : "—"}</td><td>${a.correct != null ? a.correct + "/" + a.total : "—"}</td></tr>`;
+  }).join("") : `<tr><td colspan="3" class="empty">Complete tests to see analytics</td></tr>`;
+  const subCards = subs.map(x =>
+    `<div class="ts-an-card"><strong>${x.avg}%</strong><small>${x.sub} · ${x.done} done</small></div>`
+  ).join("");
+  return `<div class="ts-analytics-page">
+    <h1 style="font-family:Kanit;font-size:24px;font-weight:800;margin:0 0 16px">Performance Analytics</h1>
+    <div class="ts-an-grid">
+      <div class="ts-an-card"><strong>${s.attempted}</strong><small>Attempted</small></div>
+      <div class="ts-an-card"><strong>${s.completed}</strong><small>Completed</small></div>
+      <div class="ts-an-card"><strong>${s.avgPct}%</strong><small>Avg Accuracy</small></div>
+      <div class="ts-an-card"><strong>${s.inProgress}</strong><small>Resume</small></div>
+    </div>
+    <div class="ts-dash-layout">
+      <div class="ts-panel"><h3 style="margin:0 0 14px">Subject Breakdown</h3><div class="ts-an-grid" style="grid-template-columns:repeat(3,1fr)">${subCards}</div></div>
+      <div class="ts-panel"><h3 style="margin:0 0 14px">Accuracy Ring</h3>${tsRingSvg(s.avgPct)}</div>
+    </div>
+    <div class="ts-panel" style="margin-top:16px"><h3 style="margin:0 0 14px">Recent Scores</h3>
+      <table class="ts-table"><thead><tr><th>Test</th><th>Accuracy</th><th>Score</th></tr></thead><tbody>${rows}</tbody></table>
+    </div>
+  </div>`;
 }
 
 function tsHomeHtml(manifest) {
   const sections = manifest.sections || [...new Set((manifest.categories || []).map(c => c.section))];
   const blocks = sections.map(sec => {
     const cats = (manifest.categories || []).filter(c => c.section === sec);
-    return `<section class="ts-sec-block">
-      <h3 class="ts-sec-title">${sec}</h3>
-      <div class="ts-cat-grid">${cats.map(tsCategoryCard).join("")}</div>
-    </section>`;
+    return `<section class="ts-sec-block"><h3 class="ts-sec-title">${sec}</h3><div class="ts-cat-grid">${cats.map(tsCategoryCard).join("")}</div></section>`;
   }).join("");
   const s = tsAnalyticsSummary(manifest.tests || []);
   return `<div class="ts-all-tests-layout">
@@ -174,9 +404,9 @@ function tsHomeHtml(manifest) {
         <h1>All Tests</h1>
         <p>${manifest.subtitle || manifest.title}</p>
         <div class="ts-head-stats">
-          <span><strong>${manifest.totalTests || (manifest.tests || []).length}</strong> Total Tests</span>
-          <span><strong>${s.completed}</strong> Completed</span>
-          <span><strong>${s.avgPct}%</strong> Avg Score</span>
+          <span><strong>${manifest.totalTests || 0}</strong> Total</span>
+          <span><strong>${s.completed}</strong> Done</span>
+          <span><strong>${s.avgPct}%</strong> Avg</span>
         </div>
       </div>
       ${tsSyncBanner(manifest)}
@@ -192,6 +422,11 @@ function tsFiltersHtml(manifest) {
   const subs = filters.subjects || ["Overall"];
   const dates = filters.dateRanges || ["All Dates"];
   return `<div class="ts-filter-bar">
+    <select class="ts-select" aria-label="Sort" onchange="tsSetSort(this.value)">
+      <option value="default"${_tsSort === "default" ? " selected" : ""}>Sort by Default</option>
+      <option value="date"${_tsSort === "date" ? " selected" : ""}>Sort by Date</option>
+      <option value="name"${_tsSort === "name" ? " selected" : ""}>Sort by Name</option>
+    </select>
     <select class="ts-select" aria-label="Test type" onchange="tsSetFilter('testType', this.value)">
       ${types.map(t => `<option value="${t}"${_tsFilter.testType === t ? " selected" : ""}>${t}</option>`).join("")}
     </select>
@@ -201,6 +436,7 @@ function tsFiltersHtml(manifest) {
     <select class="ts-select" aria-label="Date range" onchange="tsSetFilter('dateRange', this.value)">
       ${dates.map(d => `<option value="${d}"${_tsFilter.dateRange === d ? " selected" : ""}>${d}</option>`).join("")}
     </select>
+    <input type="search" class="ts-search-input" placeholder="Search tests…" value="${_tsSearch.replace(/"/g, "&quot;")}" oninput="tsSetSearch(this.value)"/>
   </div>`;
 }
 
@@ -216,28 +452,32 @@ function tsStatusTabsHtml() {
   ).join("")}</div>`;
 }
 
+function tsTestActionBtn(t, st) {
+  if (tsIsUpcoming(t)) return `<button type="button" class="ts-ch-btn locked" onclick="event.stopPropagation();showToast('📅 Available on ${tsFormatDate(t.scheduledDate)}')">🔒 ${tsFormatDate(t.scheduledDate)}</button>`;
+  if (st === "completed") return `<button type="button" class="ts-ch-btn">Analysis</button>`;
+  if (st === "inProgress") return `<button type="button" class="ts-ch-btn">Resume</button>`;
+  return `<button type="button" class="ts-ch-btn">Attempt</button>`;
+}
+
 function tsChapterRow(chapter, tests, num) {
   const done = tests.filter(t => tsAttemptStatus(t.id) === "completed").length;
   const rows = tests.map(t => {
     const st = tsAttemptStatus(t.id);
     const att = tsLoadAttempts()[t.id] || {};
-    const action = st === "completed" ? "Analysis" : st === "inProgress" ? "Resume" : "Attempt";
+    const up = tsIsUpcoming(t);
     const score = st === "completed" && att.pct != null ? `<em>${att.pct}%</em>` : "";
-    return `<div class="ts-ch-test" onclick="event.stopPropagation();tsOpenTest('${t.id}')">
+    const dateHint = up ? `<span class="ts-upcoming-date">Available ${tsFormatDate(t.scheduledDate)}</span>` : "";
+    return `<div class="ts-ch-test${up ? " ts-upcoming" : ""}" onclick="${up ? `showToast('📅 This test opens on ${tsFormatDate(t.scheduledDate)}')` : `tsOpenTest('${t.id}')`}">
       <span>${t.title}</span>
       <small>${t.totalQs} Qs · ${t.durationMin}m</small>
-      ${score}
-      <button type="button" class="ts-ch-btn">${action}</button>
+      ${dateHint}${score}
+      ${tsTestActionBtn(t, st)}
     </div>`;
   }).join("");
-  return `<details class="ts-chapter-block">
-    <summary class="ts-chapter-head">
-      <span class="ts-ch-num">${num || ""}</span>
-      <strong>${chapter}</strong>
-      <small>${tests.length} test${tests.length === 1 ? "" : "s"} · ${done} done</small>
-    </summary>
-    <div class="ts-chapter-tests">${rows}</div>
-  </details>`;
+  return `<details class="ts-chapter-block"><summary class="ts-chapter-head">
+    <span class="ts-ch-num">${num || ""}</span><strong>${chapter}</strong>
+    <small>${tests.length} test${tests.length === 1 ? "" : "s"} · ${done} done</small>
+  </summary><div class="ts-chapter-tests">${rows}</div></details>`;
 }
 
 function tsCategoryListHtml(cat, tests) {
@@ -253,10 +493,11 @@ function tsCategoryListHtml(cat, tests) {
   if (chapters.length === 1 && chapters[0] === "Tests") {
     return filtered.map(t => {
       const st = tsAttemptStatus(t.id);
-      return `<div class="ts-flat-test" onclick="tsOpenTest('${t.id}')">
-        <strong>${t.title}</strong>
-        <small>${t.totalQs} Qs · ${t.durationMin} min · ${t.testType}</small>
-        <span class="ts-action">${st === "completed" ? "Analysis" : st === "inProgress" ? "Resume" : "Attempt"} →</span>
+      const up = tsIsUpcoming(t);
+      const action = up ? `🔒 ${tsFormatDate(t.scheduledDate)}` : st === "completed" ? "Analysis" : st === "inProgress" ? "Resume" : "Attempt";
+      return `<div class="ts-flat-test${up ? " ts-upcoming" : ""}" onclick="${up ? `showToast('📅 Available on ${tsFormatDate(t.scheduledDate)}')` : `tsOpenTest('${t.id}')`}">
+        <div><strong>${t.title}</strong><small>${t.totalQs} Qs · ${t.durationMin} min${up ? " · Opens " + tsFormatDate(t.scheduledDate) : ""}</small></div>
+        <span class="ts-action">${action} →</span>
       </div>`;
     }).join("");
   }
@@ -265,106 +506,138 @@ function tsCategoryListHtml(cat, tests) {
 
 function tsSyncBanner(manifest) {
   if (!manifest.pendingQuizrrSync) return "";
-  return `<div class="ts-sync-banner">
-    <span>🔄 ${manifest.totalTests || 0} tests loaded · Quizrr live dates sync when login succeeds (notification auto).</span>
-    <button type="button" class="btn-soft sm" onclick="tsCheckQuizrrSync()">Sync</button>
-  </div>`;
+  return `<div class="ts-sync-banner"><span>🔄 ${manifest.totalTests || 0} tests · Live schedule sync when Quizrr login works.</span>
+    <button type="button" class="ts-mini-tab" onclick="tsCheckQuizrrSync()">Sync</button></div>`;
 }
 
-async function viewTestSeriesCategory(payload) {
-  const p = { ..._tsPayload, ...(payload || {}) };
-  _tsPayload = p;
-  const seriesId = p.folder || "jee_main_test_series_2027";
-  const catId = p.categoryId;
+function tsAboutHtml(manifest) {
+  return `<div class="ts-panel"><h2 style="margin:0 0 12px;font-size:20px;font-weight:800">About This Series</h2>
+    <p style="color:var(--ts-muted);line-height:1.7;font-size:14px">${manifest.tagline || ""}</p>
+    <ul style="margin:16px 0 0;padding-left:20px;line-height:1.9;font-size:14px;color:var(--ts-muted)">
+      <li>${manifest.totalTests} tests across PYQ, mocks & chapter-wise</li>
+      <li>NTA-style CBT with official instructions</li>
+      <li>Analytics, filters & resume support</li>
+      <li>Scheduled releases for QPT & QFT mocks</li>
+    </ul></div>`;
+}
+
+function tsSolutionHtml() {
+  return `<div class="ts-panel"><h2 style="margin:0 0 12px;font-size:20px;font-weight:800">Solutions</h2>
+    <p style="color:var(--ts-muted);font-size:14px">Complete any test and open <strong>Analysis</strong> to review accuracy and retake. Full step-by-step solutions load with each question in the test engine.</p></div>`;
+}
+
+async function tsBuildPageHtml() {
+  const seriesId = _tsPayload.folder || TS_SERIES_ID;
   if (!_tsManifest) {
-    try { _tsManifest = await tsFetchManifest(seriesId); } catch (e) {
-      return `<div class="empty">Series not found</div>`;
-    }
+    try { _tsManifest = await tsFetchManifest(seriesId); }
+    catch (e) { return tsAppShell('<div class="empty">Test series not found.</div>'); }
   }
-  const cat = (_tsManifest.categories || []).find(c => c.id === catId);
-  if (!cat) return viewTestSeriesFolder(p);
+  const manifest = _tsManifest;
+
+  if (_tsNav === "about") return tsAppShell(tsAboutHtml(manifest));
+  if (_tsNav === "solution") return tsAppShell(tsSolutionHtml());
+  if (_tsNav === "resources") return tsAppShell(tsResourcesHtml(manifest) + `<div class="ts-panel" style="margin-top:16px"><p style="color:var(--ts-muted);font-size:14px">Tap a resource pill to open Formula Sheets, Revision Notes, and more.</p></div>`);
+
+  if (_tsPage === "analytics") return tsAppShell(tsAnalyticsPageHtml(manifest));
+  if (_tsPage === "alltests") return tsAppShell(tsHomeHtml(manifest));
+  if (_tsPage === "category" && _tsPayload.categoryId) return tsAppShell(await tsCategoryInner(manifest));
+  return tsAppShell(tsDashboardHtml(manifest));
+}
+
+async function tsCategoryInner(manifest) {
+  const seriesId = _tsPayload.folder || TS_SERIES_ID;
+  const catId = _tsPayload.categoryId;
+  const cat = (manifest.categories || []).find(c => c.id === catId);
+  if (!cat) return tsHomeHtml(manifest);
   let catData;
-  try { catData = await tsFetchCategory(seriesId, cat.file); } catch (e) {
-    return `<div class="empty">Category load failed</div>`;
-  }
-  const tests = (catData.tests || []).map(t => ({
-    ...t,
-    file: cat.file,
-    categoryId: cat.id
-  }));
+  try { catData = await tsFetchCategory(seriesId, cat.file); }
+  catch (e) { return '<div class="empty">Category load failed</div>'; }
+  const tests = (catData.tests || []).map(t => ({ ...t, file: cat.file, categoryId: cat.id }));
   const label = /pyq/i.test(cat.title) ? "Chapter-wise Tests" : "Tests";
-  return `<div class="marks-tests-page ts-folder-page">
-    <button type="button" class="pyqmock-back" onclick="tsOpenCategory(null)">← All Tests</button>
-    <div class="ts-all-tests-layout">
-      ${tsSidebarHtml(_tsManifest, catId)}
-      <main class="ts-main-panel">
-        <div class="ts-cat-head">
-          <h2>${cat.title}</h2>
-          <p>${label} · ${cat.count} tests</p>
-        </div>
-        ${tsFiltersHtml(_tsManifest)}
-        ${tsStatusTabsHtml()}
-        <div class="ts-chapter-list">${tsCategoryListHtml(cat, tests)}</div>
-      </main>
-    </div>
+  return `<div class="ts-all-tests-layout">
+    ${tsSidebarHtml(manifest, catId)}
+    <main class="ts-main-panel">
+      <div class="ts-cat-head"><h2>${label}</h2><p>${cat.title} · ${cat.count} tests</p></div>
+      ${tsFiltersHtml(manifest)}
+      ${tsStatusTabsHtml()}
+      <div class="ts-chapter-list">${tsCategoryListHtml(cat, tests)}</div>
+    </main>
   </div>`;
 }
 
-async function viewTestSeriesFolder(payload) {
-  const p = { ..._tsPayload, ...(payload || {}) };
-  _tsPayload = p;
-  if (p.categoryId) return viewTestSeriesCategory(p);
-  const seriesId = p.folder || p.seriesId || "jee_main_test_series_2027";
+async function tsRenderStandalone() {
+  const root = document.getElementById("ts-root");
+  if (!root) return;
+  root.innerHTML = '<div class="ts-loading">Loading…</div>';
   try {
-    _tsManifest = await tsFetchManifest(seriesId);
+    root.innerHTML = await tsBuildPageHtml();
   } catch (e) {
-    return `<div class="marks-tests-page"><div class="empty">Test series not found.</div></div>`;
+    root.innerHTML = tsAppShell('<div class="empty">Failed to load. Refresh and try again.</div>');
   }
-  const unread = tsLoadNotifications().filter(n => !n.read).length;
-  return `<div class="marks-tests-page ts-folder-page">
-    <button type="button" class="pyqmock-back" onclick="go('tests')">← Tests</button>
-    <div class="ts-top-banner">
-      <span class="ts-batch-pill">JEE Main 2027 Full Test Series for Class 12 (April Batch)</span>
-      ${unread ? `<span class="ts-notify-pill">${unread} new</span>` : ""}
-    </div>
-    ${tsHomeHtml(_tsManifest)}
-  </div>`;
+}
+
+function tsGoPage(page) {
+  _tsPage = page;
+  _tsNav = "test";
+  if (page === "home") _tsPayload.categoryId = null;
+  if (page === "alltests") _tsPayload.categoryId = null;
+  tsRerender();
+}
+
+function tsSetNav(nav) {
+  _tsNav = nav;
+  if (nav === "test" && _tsPage === "home") { /* stay */ }
+  else if (nav === "test" && !_tsPayload.categoryId) _tsPage = "home";
+  tsRerender();
+}
+
+function tsSetDashTab(tab) {
+  _tsDashTab = tab;
+  tsRerender();
+}
+
+function tsSetSearch(q) {
+  _tsSearch = q;
+  clearTimeout(window._tsSearchDebounce);
+  window._tsSearchDebounce = setTimeout(() => tsRerender(), 280);
+}
+
+function tsSetSort(v) {
+  _tsSort = v;
+  tsRerender();
 }
 
 function tsOpenCategory(catId) {
-  if (!catId) render("testseries", { folder: _tsPayload.folder || "jee_main_test_series_2027" });
-  else render("testseries", { folder: _tsPayload.folder || "jee_main_test_series_2027", categoryId: catId });
+  _tsNav = "test";
+  if (!catId) { _tsPage = "alltests"; _tsPayload.categoryId = null; }
+  else { _tsPage = "category"; _tsPayload.categoryId = catId; }
+  tsRerender();
 }
 
 function tsSetStatusTab(tab) {
   _tsFilter.statusTab = tab;
-  render("testseries", { folder: _tsPayload.folder || "jee_main_test_series_2027", categoryId: _tsPayload.categoryId });
+  tsRerender();
 }
 
 function tsSetFilter(key, value) {
   if (key in _tsFilter) _tsFilter[key] = value;
-  render("testseries", { folder: _tsPayload.folder || "jee_main_test_series_2027", categoryId: _tsPayload.categoryId });
+  tsRerender();
+}
+
+function tsRerender() {
+  if (window.TS_STANDALONE) tsRenderStandalone();
+  else if (typeof render === "function") render("testseries", { folder: _tsPayload.folder || TS_SERIES_ID, categoryId: _tsPayload.categoryId });
 }
 
 function tsOpenResource(id, link) {
-  if (link && typeof go === "function") go(link);
+  if (link && !window.TS_STANDALONE && typeof go === "function") go(link);
+  else if (link) window.open("app.html#" + link, "_blank");
   else showToast("📚 " + id + " — opening soon");
 }
 
-async function tsOpenTest(testId) {
-  const seriesId = _tsPayload.folder || "jee_main_test_series_2027";
-  const meta = (_tsManifest && _tsManifest.tests || []).find(t => t.id === testId);
-  if (!meta) return;
+async function tsLaunchTest(testId, test, meta, seriesId) {
   const st = tsAttemptStatus(testId);
   if (st === "completed") { tsShowAnalysis(testId, meta); return; }
-  showToast("📚 Loading test…");
-  let test;
-  try { test = await tsResolveTest(seriesId, meta); } catch (e) {
-    showToast("⚠️ Could not load test."); return;
-  }
-  if (!test || !test.questionIds || !test.questionIds.length) {
-    showToast("⚠️ No questions in this test."); return;
-  }
   if (typeof loadSingleBank === "function") await loadSingleBank("jee_main");
   if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
     await MarksLive.prefetchQuestions(test.questionIds.slice(0, 80));
@@ -381,6 +654,7 @@ async function tsOpenTest(testId) {
     persistKey: `ts::${seriesId}::${testId}`,
     meta: { seriesId, testId, slug: "jee_main" },
     modeLabel: `${test.testType} · ${test.totalQs} Qs`,
+    scoring: { correct: 4, wrong: -1, unattempted: 0 },
     onComplete: (data) => {
       marksClearSession();
       tsSaveAttempt(testId, {
@@ -390,6 +664,29 @@ async function tsOpenTest(testId) {
       showToast("✅ Submitted! View analysis in test list.");
     }
   });
+}
+
+async function tsOpenTest(testId) {
+  const seriesId = _tsPayload.folder || TS_SERIES_ID;
+  if (!_tsManifest) {
+    try { _tsManifest = await tsFetchManifest(seriesId); } catch (e) { return; }
+  }
+  const meta = (_tsManifest.tests || []).find(t => t.id === testId);
+  if (!meta) return;
+  if (tsIsUpcoming(meta)) {
+    showToast("📅 This test will be available on " + tsFormatDate(meta.scheduledDate));
+    return;
+  }
+  const st = tsAttemptStatus(testId);
+  if (st === "completed") { tsShowAnalysis(testId, meta); return; }
+  showToast("📚 Loading test…");
+  let test;
+  try { test = await tsResolveTest(seriesId, meta); }
+  catch (e) { showToast("⚠️ Could not load test."); return; }
+  if (!test || !test.questionIds || !test.questionIds.length) {
+    showToast("⚠️ No questions in this test."); return;
+  }
+  await tsLaunchTest(testId, test, meta, seriesId);
 }
 
 function tsShowAnalysis(testId, meta) {
@@ -433,19 +730,57 @@ async function tsCheckQuizrrSync() {
   } catch (e) { showToast("Run quizrr_full_import.js when login works"); }
 }
 
-async function viewTestSeries(payload) {
-  const p = payload || {};
-  if (p.categoryId) return viewTestSeriesCategory({ folder: p.folder || "jee_main_test_series_2027", ...p });
-  if (p.folder || p.seriesId === "jee_main_test_series_2027" || p.id === "jeemain") {
-    return viewTestSeriesFolder({ folder: p.folder || "jee_main_test_series_2027", ...p });
-  }
-  if (typeof viewTestSeriesLegacy === "function") return viewTestSeriesLegacy(p);
-  return viewTestSeriesFolder({ folder: "jee_main_test_series_2027" });
+async function viewTestSeriesFolder(payload) {
+  const p = { ..._tsPayload, ...(payload || {}) };
+  _tsPayload = p;
+  if (p.categoryId) { _tsPage = "category"; return tsBuildPageHtml(); }
+  _tsPage = p.page || "home";
+  return tsBuildPageHtml();
 }
 
-(function tsInitSyncWatch() {
+async function viewTestSeriesCategory(payload) {
+  const p = { ..._tsPayload, ...(payload || {}) };
+  _tsPayload = p;
+  _tsPage = "category";
+  return tsBuildPageHtml();
+}
+
+async function viewTestSeries(payload) {
+  const p = payload || {};
+  const isJeeMain = p.folder === TS_SERIES_ID || p.seriesId === TS_SERIES_ID || p.id === "jeemain";
+
+  if (!window.TS_STANDALONE && isJeeMain && !p._inline) {
+    const qs = new URLSearchParams();
+    if (p.categoryId) qs.set("cat", p.categoryId);
+    if (p.page) qs.set("page", p.page);
+    const url = "test-series.html" + (qs.toString() ? "?" + qs.toString() : "");
+    window.open(url, "_blank", "noopener");
+    return `<div class="marks-tests-page"><div class="ts-panel" style="margin-top:20px">
+      <h2 style="margin:0 0 8px;font-size:18px;font-weight:800">JEE Main Test Series 2027</h2>
+      <p style="color:var(--gray);font-size:14px;margin:0 0 14px">Opened in a new tab — Inter-Marks style dashboard with analytics, filters & scheduled tests.</p>
+      <button type="button" class="btn-primary" onclick="window.open('test-series.html','_blank')">Open Again →</button>
+    </div></div>`;
+  }
+
+  if (p.categoryId) return viewTestSeriesCategory({ folder: p.folder || TS_SERIES_ID, ...p });
+  if (isJeeMain) return viewTestSeriesFolder({ folder: p.folder || TS_SERIES_ID, ...p });
+  if (typeof viewTestSeriesLegacy === "function") return viewTestSeriesLegacy(p);
+  return viewTestSeriesFolder({ folder: TS_SERIES_ID });
+}
+
+function tsBootFromUrl() {
+  const params = new URLSearchParams(location.search);
+  const cat = params.get("cat");
+  const page = params.get("page");
+  if (cat) { _tsPage = "category"; _tsPayload.categoryId = cat; }
+  else if (page) _tsPage = page;
+  tsRenderStandalone();
+}
+
+(function tsInit() {
   if (typeof document === "undefined") return;
   document.addEventListener("DOMContentLoaded", () => {
+    if (window.TS_STANDALONE) tsBootFromUrl();
     setTimeout(async () => {
       try {
         const res = await fetch("data/quizrr/sync_status.json?v=" + Date.now());
