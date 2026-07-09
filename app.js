@@ -256,7 +256,8 @@ function qxHasSolution(q) {
 
 async function qxHydrateQuestion(q, toast) {
   if (!q || typeof MarksLive === "undefined" || !q._marksId) return q;
-  const needOpts = MarksLive.needsFullQuestion(q);
+  const needOpts = MarksLive.needsFullQuestion(q)
+    || (MarksLive.isOptionsIncomplete && MarksLive.isOptionsIncomplete(q));
   const needSol = !qxHasSolution(q);
   if (!needOpts && !needSol && q._fullFetched) return q;
   if (toast) showToast("📚 Loading question…");
@@ -464,7 +465,7 @@ async function qxPracticeNav(delta) {
   const qid = ctx.ids[ctx.idx];
   const main = document.getElementById("app-main");
   let q = getQ(qid);
-  if (q && q._marksId && typeof MarksLive !== "undefined" && (MarksLive.needsFullQuestion(q) || !qxHasSolution(q))) {
+  if (q && q._marksId && typeof MarksLive !== "undefined" && (MarksLive.needsFullQuestion(q) || (MarksLive.isOptionsIncomplete && MarksLive.isOptionsIncomplete(q)) || !qxHasSolution(q))) {
     main.innerHTML = `<div class="qx-practice-page"><div class="empty" style="padding:48px;text-align:center">Loading question…</div></div>`;
     q = await qxHydrateQuestion(q, false);
   }
@@ -1026,7 +1027,12 @@ go = function(view, payload) {
   if (view === "question") {
     (async () => {
       let q = getQ(payload);
-      if (q && q._marksId) {
+      const needHydrate = q && q._marksId && typeof MarksLive !== "undefined" && (
+        MarksLive.needsFullQuestion(q)
+        || MarksLive.isQuestionIncomplete(q)
+        || (MarksLive.isOptionsIncomplete && MarksLive.isOptionsIncomplete(q))
+      );
+      if (needHydrate) {
         main.innerHTML = `<div class="qx-practice-page"><div class="empty" style="padding:48px;text-align:center">Loading question…</div></div>`;
         q = await qxHydrateQuestion(q, false);
       }
@@ -1034,8 +1040,13 @@ go = function(view, payload) {
       document.getElementById("examPill").textContent = EXAMS[STATE.exam].name;
       bindPracticeQuestion(main);
       if (typeof Mx !== "undefined") Mx.afterRender(main);
-      if (q && typeof MarksLive !== "undefined" && MarksLive.isQuestionIncomplete(q)) {
-        q = await qxHydrateQuestion(getQ(payload), false);
+      const q2 = getQ(payload);
+      const stillNeed = q2 && typeof MarksLive !== "undefined" && (
+        MarksLive.isQuestionIncomplete(q2)
+        || (MarksLive.isOptionsIncomplete && MarksLive.isOptionsIncomplete(q2))
+      );
+      if (stillNeed) {
+        await qxHydrateQuestion(q2, false);
         main.innerHTML = viewQuestion(payload);
         bindPracticeQuestion(main);
         if (typeof Mx !== "undefined") Mx.afterRender(main);

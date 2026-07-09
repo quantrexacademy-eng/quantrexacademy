@@ -174,8 +174,7 @@ const QuantrexQFormat = (() => {
   function hasImageOptions(q) {
     const opts = (q && q.options) || [];
     if (!opts.length) return false;
-    const withImg = opts.filter(o => /<img/i.test(String(o || ""))).length;
-    return withImg >= Math.max(2, Math.ceil(opts.length * 0.5));
+    return opts.some(o => /<img/i.test(String(o || "")));
   }
 
   function looksNumerical(q) {
@@ -284,6 +283,8 @@ const QuantrexQFormat = (() => {
 
     const match = t === "columnMatch";
     return (q.options || []).map((o, i) => {
+      const raw = String(o || "").trim();
+      if (!raw) return "";
       let cls = "qx-prac-opt";
       if (multi) cls += " qx-prac-opt-multi";
       if (match) cls += " qx-prac-opt-match";
@@ -299,7 +300,7 @@ const QuantrexQFormat = (() => {
         <span class="qx-prac-letter">${letter(i)}</span>
         <span class="qx-prac-opt-text ${match ? "qx-match-opt" : "qx-content"}">${optBody}</span>
       </button>`;
-    }).join("");
+    }).filter(Boolean).join("");
   }
 
   function renderTestOptions(q, selected, htmlFn) {
@@ -317,17 +318,16 @@ const QuantrexQFormat = (() => {
     const ctrl = multi ? "qx-prac-check mtk-opt-check" : "mtk-opt-radio";
 
     return (q.options || []).map((o, i) => {
-      const on = selectedSet.has(i);
       const raw = String(o || "").trim();
-      const optBody = !raw
-        ? `<span class="mtk-opt-empty">Option image loading…</span>`
-        : (match ? formatMatchCombo(o) : render(o));
+      if (!raw) return "";
+      const on = selectedSet.has(i);
+      const optBody = match ? formatMatchCombo(o) : render(o);
       return `<button type="button" class="mtk-opt ${multi ? "mtk-opt-multi" : ""} ${match ? "mtk-opt-match" : ""} ${on ? "selected" : ""}" data-opt="${i}">
         <span class="${ctrl}"></span>
         <span class="mtk-opt-letter">${letter(i)}</span>
         <span class="mtk-opt-text ${match ? "qx-match-opt qx-content" : "qx-content"}">${optBody}</span>
       </button>`;
-    }).join("");
+    }).filter(Boolean).join("");
   }
 
   function testOptsContainerClass(q) {

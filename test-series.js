@@ -191,6 +191,19 @@ function tsIsNumericalShard(q) {
   return false;
 }
 
+function tsShardOptionsComplete(options) {
+  if (!options || !options.length) return false;
+  if (typeof MarksLive !== "undefined" && MarksLive.allOptionsHaveContent) {
+    return MarksLive.allOptionsHaveContent(options);
+  }
+  return options.every(o => {
+    const s = String(o || "");
+    if (/<img/i.test(s)) return true;
+    const t = s.replace(/<br\s*\/?>/gi, " ").replace(/<[^>]+>/g, " ").trim();
+    return t.length > 0 && !/^[ABCDabcd1234]$/.test(t);
+  });
+}
+
 function tsNormalizeShardQuestion(q) {
   if (!q) return null;
   const text = tsFixUrls(q.q || q.question || q.text || q.stem || "");
@@ -207,23 +220,18 @@ function tsNormalizeShardQuestion(q) {
   };
   const placeholderOpts = typeof MarksLive !== "undefined" && MarksLive.isPlaceholderOptions
     ? MarksLive.isPlaceholderOptions(out.options)
-    : !(out.options || []).some(o => {
-      const s = String(o || "");
-      if (/<img/i.test(s)) return true;
-      const t = s.replace(/<br\s*\/?>/gi, " ").replace(/<[^>]+>/g, " ").trim();
-      return t.length > 0 && !/^[ABCDabcd1234]$/.test(t);
-    });
+    : !tsShardOptionsComplete(out.options);
   const hasQ = String(out.q || "").replace(/<[^>]+>/g, " ").trim().length > 8;
   const isNum = tsIsNumericalShard(out);
   if (hasQ && isNum) {
     out._shardLoaded = true;
     out._fullFetched = true;
     out._needsFull = false;
-  } else if (hasQ && !placeholderOpts) {
+  } else if (hasQ && tsShardOptionsComplete(out.options)) {
     out._shardLoaded = true;
     out._fullFetched = true;
     out._needsFull = false;
-  } else if (marksId && placeholderOpts) {
+  } else if (marksId && (placeholderOpts || (typeof MarksLive !== "undefined" && MarksLive.isPartialOptions && MarksLive.isPartialOptions(out.options)))) {
     out._needsFull = true;
     out._shardLoaded = false;
     out._fullFetched = false;
@@ -1130,7 +1138,6 @@ function tsStandaloneLaunchTest(testId, test, meta, seriesId, questionIds, opts)
         const need = questionIds.filter(id => {
           const q = getQ(id);
           if (!q) return false;
-          if (q._shardLoaded) return false;
           if (MarksLive.isOptionsIncomplete && MarksLive.isOptionsIncomplete(q)) return true;
           if (MarksLive.isQuestionIncomplete && MarksLive.isQuestionIncomplete(q)) return true;
           return MarksLive.needsFullQuestion(q);

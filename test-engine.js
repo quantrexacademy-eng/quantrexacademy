@@ -603,11 +603,6 @@ const QuantrexTestEngine = (() => {
         await MarksLive.ensureQuestionFull(q, { force: true });
         if (typeof tsSyncQMap === "function") tsSyncQMap([session.ids[session.idx]]);
       } catch (e) { /* continue */ }
-      const q2 = getQ(session.ids[session.idx]);
-      if (q2 && q2._shardLoaded) {
-        q2._needsFull = false;
-        q2._fullFetched = true;
-      }
     } else if (optsNeed && q && q._marksId && typeof MarksLive !== "undefined") {
       main.innerHTML = renderQuestion();
       bindEvents(main);

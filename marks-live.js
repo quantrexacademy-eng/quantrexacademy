@@ -117,6 +117,23 @@ const MarksLive = (() => {
     return !options.some(optionHasContent);
   }
 
+  function allOptionsHaveContent(options) {
+    const opts = options || [];
+    if (!opts.length) return false;
+    return opts.every(optionHasContent);
+  }
+
+  function isPartialOptions(options) {
+    if (!options || !options.length) return true;
+    const filled = options.filter(optionHasContent).length;
+    return filled > 0 && filled < options.length;
+  }
+
+  function isImageMcq(q) {
+    if (!q || isNumericalQuestion(q)) return false;
+    return (q.options || []).some(o => /<img/i.test(String(o || "")));
+  }
+
   function isNumericalQuestion(q) {
     if (!q) return false;
     if (isNonMcqType(q.questionType || q.type)) return true;
@@ -134,9 +151,13 @@ const MarksLive = (() => {
   function isOptionsReady(q) {
     if (!q) return false;
     if (isNumericalQuestion(q)) return isQuestionTextReady(q);
-    if (q._shardLoaded) return !isPlaceholderOptions(q.options);
-    if (!q._marksId) return !isPlaceholderOptions(q.options);
-    return !needsFullQuestion(q) || !isPlaceholderOptions(q.options);
+    const opts = q.options || [];
+    if (!opts.length) return false;
+    if (isPartialOptions(opts)) return false;
+    if (isImageMcq(q) && !allOptionsHaveContent(opts)) return false;
+    if (q._shardLoaded) return allOptionsHaveContent(opts);
+    if (!q._marksId) return allOptionsHaveContent(opts);
+    return !needsFullQuestion(q) || allOptionsHaveContent(opts);
   }
 
   function isQuestionReady(q) {
@@ -165,8 +186,12 @@ const MarksLive = (() => {
 
   function needsFullQuestion(q) {
     if (!q || !q._marksId) return false;
-    if (q._shardLoaded) return false;
     const nonMcq = isNonMcqType(q.questionType || q.type);
+    if (q._shardLoaded) {
+      if (isBlankText(q.q)) return true;
+      if (nonMcq || isNumericalQuestion(q)) return false;
+      return isPartialOptions(q.options) || !allOptionsHaveContent(q.options);
+    }
     if (q._bank === "ts_active") {
       if (isBlankText(q.q)) return true;
       return !nonMcq && isPlaceholderOptions(q.options);
@@ -346,7 +371,6 @@ const MarksLive = (() => {
 
   function needsPrefetch(q) {
     if (!q || !q._marksId) return false;
-    if (q._shardLoaded) return false;
     if (needsFullQuestion(q)) return true;
     if (isOptionsIncomplete(q)) return true;
     const opts = q.options || [];
@@ -561,6 +585,9 @@ const MarksLive = (() => {
     isBlankText,
     isNonMcqType,
     isPlaceholderOptions,
+    allOptionsHaveContent,
+    isPartialOptions,
+    isImageMcq,
     optionHasContent,
     isNumericalQuestion,
     isQuestionTextReady,
