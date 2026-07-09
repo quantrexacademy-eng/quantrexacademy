@@ -154,7 +154,7 @@ const QuantrexQFormat = (() => {
     if (/multiple/i.test(k)) return "multipleCorrect";
     if (/numerical|integer/i.test(k)) return "numerical";
     if (/subjective|long|descriptive/i.test(k)) return "subjective";
-    if (/single/i.test(k)) return "singleCorrect";
+    if (/single|^mcq$/i.test(k)) return "singleCorrect";
     return k;
   }
 
@@ -192,11 +192,11 @@ const QuantrexQFormat = (() => {
   function getType(q) {
     if (!q) return "singleCorrect";
     if (isMatchColumn(q)) return "columnMatch";
+    if (looksNumerical(q)) return "numerical";
     const fromField = normalizeType(q.questionType || q.type);
     if (fromField) return fromField;
     if (q.correctValue != null && String(q.correctValue) !== "" && !(q.options || []).length) return "numerical";
     if (Array.isArray(q.answers) && q.answers.length > 1) return "multipleCorrect";
-    if (looksNumerical(q)) return "numerical";
     return "singleCorrect";
   }
 

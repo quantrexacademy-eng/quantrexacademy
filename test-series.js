@@ -18,6 +18,14 @@ window.TS_ACTIVE_QMAP = window.TS_ACTIVE_QMAP || {};
 window._tsQuestionMeta = window._tsQuestionMeta || null;
 let _tsMetaLoading = null;
 
+function tsClearActiveQMap() {
+  window.TS_ACTIVE_QMAP = {};
+  if (typeof QUESTIONS !== "undefined") {
+    QUESTIONS = QUESTIONS.filter(q => q._bank !== "ts_active");
+  }
+}
+window.tsClearActiveQMap = tsClearActiveQMap;
+
 function tsFixUrls(val) {
   if (val == null) return val;
   const fix = s => String(s).replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/");
@@ -197,20 +205,28 @@ function tsNormalizeShardQuestion(q) {
     _marksId: marksId,
     _bank: "ts_active"
   };
-  const hasOpts = (out.options || []).some(o => {
-    const s = String(o || "");
-    if (/<img/i.test(s)) return true;
-    const t = s.replace(/<br\s*\/?>/gi, " ").replace(/<[^>]+>/g, " ").trim();
-    return t.length > 0 && !/^[ABCDabcd1234]$/.test(t);
-  });
+  const placeholderOpts = typeof MarksLive !== "undefined" && MarksLive.isPlaceholderOptions
+    ? MarksLive.isPlaceholderOptions(out.options)
+    : !(out.options || []).some(o => {
+      const s = String(o || "");
+      if (/<img/i.test(s)) return true;
+      const t = s.replace(/<br\s*\/?>/gi, " ").replace(/<[^>]+>/g, " ").trim();
+      return t.length > 0 && !/^[ABCDabcd1234]$/.test(t);
+    });
   const hasQ = String(out.q || "").replace(/<[^>]+>/g, " ").trim().length > 8;
   const isNum = tsIsNumericalShard(out);
-  if (hasQ && (hasOpts || isNum)) {
+  if (hasQ && isNum) {
     out._shardLoaded = true;
     out._fullFetched = true;
     out._needsFull = false;
-  } else if (marksId && (!hasOpts || out._needsFull)) {
+  } else if (hasQ && !placeholderOpts) {
+    out._shardLoaded = true;
+    out._fullFetched = true;
+    out._needsFull = false;
+  } else if (marksId && placeholderOpts) {
     out._needsFull = true;
+    out._shardLoaded = false;
+    out._fullFetched = false;
   }
   return out;
 }
@@ -225,6 +241,7 @@ function tsSyncQMap(ids) {
 }
 
 async function tsLoadQuestionsForTest(test) {
+  tsClearActiveQMap();
   await tsEnsureQuestionMeta();
   const v = typeof QX_BUILD !== "undefined" ? QX_BUILD : Date.now();
   const paths = [];
@@ -267,8 +284,8 @@ async function tsLoadQuestionsForTest(test) {
   if (typeof loadSingleBank === "function") {
     showToast("📚 Loading question bank…");
     await loadSingleBank("jee_main");
-    const found = wantIds.filter(id => typeof getQ === "function" && getQ(id)).length;
-    if (found > 0) return { count: found, ids: wantIds };
+    const resolved = wantIds.filter(id => typeof getQ === "function" && getQ(id));
+    if (resolved.length > 0) return { count: resolved.length, ids: resolved };
   }
   return { count: 0, ids: [] };
 }
@@ -1048,6 +1065,7 @@ async function tsLaunchTest(testId, test, meta, seriesId, opts) {
       return;
     }
   }
+  showToast("📚 Syncing questions…");
   const loadResult = await tsLoadQuestionsForTest(test);
   const loaded = loadResult && (loadResult.count || 0) > 0;
   const questionIds = (loadResult && loadResult.ids && loadResult.ids.length)
@@ -1108,7 +1126,7 @@ function tsStandaloneLaunchTest(testId, test, meta, seriesId, questionIds, opts)
         const need = questionIds.filter(id => {
           const q = getQ(id);
           if (!q) return false;
-          if (q._shardLoaded || q._bank === "ts_active") return false;
+          if (q._shardLoaded) return false;
           if (MarksLive.isOptionsIncomplete && MarksLive.isOptionsIncomplete(q)) return true;
           if (MarksLive.isQuestionIncomplete && MarksLive.isQuestionIncomplete(q)) return true;
           return MarksLive.needsFullQuestion(q);

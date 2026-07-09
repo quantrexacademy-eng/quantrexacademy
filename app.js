@@ -177,7 +177,11 @@ function viewPractice() {
       practiceLoading = false;
       practicePage = 1;
       render("practice");
-    }).catch(() => { practiceLoading = false; render("practice"); });
+    }).catch(() => {
+      practiceLoading = false;
+      if (typeof showToast === "function") showToast("⚠️ Could not load question bank. Check connection and retry.");
+      render("practice");
+    });
     const meta = BANK_INDEX[activeSlug];
     return `${topbar("Question Bank (PYQ)", "Loading questions…")}<div class="empty">⏳ Loading ${meta ? meta.title : "bank"} (${(meta && meta.count) || 0} questions)…</div>`;
   }

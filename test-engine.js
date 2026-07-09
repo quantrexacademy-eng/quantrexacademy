@@ -8,12 +8,16 @@ function getTestMountEl() {
 window.getTestMountEl = getTestMountEl;
 
 function getTestTheme() {
-  return localStorage.getItem("quantrex_test_theme") || "light";
+  return localStorage.getItem("quantrex_test_theme")
+    || localStorage.getItem("quantrex_theme")
+    || "light";
 }
 
 function setTestTheme(mode) {
   const m = mode === "light" ? "light" : "dark";
   localStorage.setItem("quantrex_test_theme", m);
+  localStorage.setItem("quantrex_theme", m);
+  if (typeof QuantrexTheme !== "undefined" && QuantrexTheme.apply) QuantrexTheme.apply(m);
   document.querySelectorAll(".mtk-test-root").forEach(root => {
     root.setAttribute("data-test-theme", m);
   });
@@ -575,6 +579,7 @@ const QuantrexTestEngine = (() => {
   }
 
   let _refreshBusy = false;
+  let _optsLoadTimer = null;
   function questionTextNeedsHydrate(q) {
     if (!q) return false;
     return typeof MarksLive !== "undefined" && MarksLive.isQuestionIncomplete
@@ -610,11 +615,25 @@ const QuantrexTestEngine = (() => {
       setTestFontScale(getTestFontScale());
       if (typeof Mx !== "undefined") Mx.afterRender(main);
       marksPersistSession();
-      MarksLive.ensureQuestionFull(q, { force: true }).then(() => {
+      clearTimeout(_optsLoadTimer);
+      _optsLoadTimer = setTimeout(() => {
+        const optsEl = main.querySelector("#qxOpts .empty");
+        if (optsEl && /Loading options/i.test(optsEl.textContent || "")) {
+          optsEl.innerHTML = `Options could not load. <button type="button" class="mtk-btn mtk-btn-save" id="qxOptsRetry">Retry</button>`;
+          const retry = main.querySelector("#qxOptsRetry");
+          if (retry) retry.onclick = () => { _refreshBusy = false; refresh(); };
+        }
+      }, 12000);
+      MarksLive.ensureQuestionFull(q, { force: true }).then((updated) => {
+        clearTimeout(_optsLoadTimer);
+        if (updated && updated.id != null && window.TS_ACTIVE_QMAP) {
+          window.TS_ACTIVE_QMAP[updated.id] = updated;
+          window.TS_ACTIVE_QMAP[String(updated.id)] = updated;
+        }
         if (typeof tsSyncQMap === "function") tsSyncQMap([session.ids[session.idx]]);
         _refreshBusy = false;
         refresh();
-      }).catch(() => { _refreshBusy = false; });
+      }).catch(() => { clearTimeout(_optsLoadTimer); _refreshBusy = false; });
       return;
     }
     if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
@@ -756,6 +775,10 @@ const QuantrexTestEngine = (() => {
 
   function confirmSubmit() {
     if (!session) return;
+    if (typeof mtkShowSubmitModal === "function") {
+      mtkShowSubmitModal();
+      return;
+    }
     const s = stats();
     const msg = session.marksMode
       ? `Submit test now?\n\nAnswered: ${s.answered}\nNot Answered: ${s.skipped}\nNot Visited: ${s.unvisited}\nMarked for Review: ${s.review}`
@@ -1394,7 +1417,7 @@ function qxForceResetShell(opts) {
   const o = opts || {};
   document.body.classList.remove("marks-test-active", "marks-instr-active", "allen-cbt-active", "allen-practice-active");
   document.body.style.overflow = "";
-  ["marksInstrOverlay", "marksCountdownOverlay", "mtkStopModal", "pyqResumeModal", "pyqPreviewModal"].forEach(id => {
+  ["marksInstrOverlay", "marksCountdownOverlay", "mtkStopModal", "mtkSubmitModal", "tsResumeModal", "pyqResumeModal", "pyqPreviewModal"].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.remove();
   });
@@ -1463,13 +1486,35 @@ function enterMarksTestMode() {
 }
 
 function exitMarksTestMode() {
+  if (typeof tsClearActiveQMap === "function") tsClearActiveQMap();
   qxForceResetShell({ clearContent: true });
   if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") {
     try { tsRenderStandalone(); } catch (e) { console.error("tsRenderStandalone recovery:", e); }
   }
 }
 
-const MARKS_SESSION_STORE = "quantrex_marks_session_v1";
+const MARKS_SESSION_STORE = "quantrex_marks_sessions_v2";
+const MARKS_SESSION_LEGACY = "quantrex_marks_session_v1";
+
+function marksMigrateSessions() {
+  try {
+    if (localStorage.getItem(MARKS_SESSION_STORE)) return;
+    const raw = localStorage.getItem(MARKS_SESSION_LEGACY);
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    if (data && data.persistKey) {
+      localStorage.setItem(MARKS_SESSION_STORE, JSON.stringify({ [data.persistKey]: data }));
+    }
+  } catch (e) { /* ignore */ }
+}
+
+function marksLoadAllSessions() {
+  marksMigrateSessions();
+  try {
+    const data = JSON.parse(localStorage.getItem(MARKS_SESSION_STORE) || "{}");
+    return data && typeof data === "object" && !Array.isArray(data) ? data : {};
+  } catch (e) { return {}; }
+}
 
 function marksAutoPersistKey(title, ids, meta) {
   const slug = (meta && meta.slug) || "test";
@@ -1479,11 +1524,14 @@ function marksAutoPersistKey(title, ids, meta) {
 }
 
 function marksGetActiveSession() {
-  try {
-    const data = JSON.parse(localStorage.getItem(MARKS_SESSION_STORE) || "null");
-    if (data && data.remainingSec > 0 && data.persistKey) return data;
-  } catch (e) { /* ignore */ }
-  return null;
+  const all = marksLoadAllSessions();
+  let best = null;
+  Object.values(all).forEach(data => {
+    if (data && data.remainingSec > 0 && data.persistKey) {
+      if (!best || (data.savedAt || 0) > (best.savedAt || 0)) best = data;
+    }
+  });
+  return best;
 }
 
 function marksPersistSession() {
@@ -1512,24 +1560,29 @@ function marksPersistSession() {
     startedAt: s.startedAt,
     savedAt: Date.now()
   };
-  try { localStorage.setItem(MARKS_SESSION_STORE, JSON.stringify(data)); } catch (e) { /* ignore */ }
+  try {
+    const all = marksLoadAllSessions();
+    all[s.persistKey] = data;
+    localStorage.setItem(MARKS_SESSION_STORE, JSON.stringify(all));
+  } catch (e) { /* ignore */ }
 }
 
 function marksLoadSession(key) {
-  try {
-    const data = JSON.parse(localStorage.getItem(MARKS_SESSION_STORE) || "null");
-    if (data && data.persistKey === key && data.remainingSec > 0) return data;
-  } catch (e) { /* ignore */ }
+  const all = marksLoadAllSessions();
+  const data = all[key];
+  if (data && data.persistKey === key && data.remainingSec > 0) return data;
   return null;
 }
 
 function marksClearSession(key) {
   try {
     if (key) {
-      const data = JSON.parse(localStorage.getItem(MARKS_SESSION_STORE) || "null");
-      if (data && data.persistKey === key) localStorage.removeItem(MARKS_SESSION_STORE);
+      const all = marksLoadAllSessions();
+      delete all[key];
+      localStorage.setItem(MARKS_SESSION_STORE, JSON.stringify(all));
     } else {
       localStorage.removeItem(MARKS_SESSION_STORE);
+      localStorage.removeItem(MARKS_SESSION_LEGACY);
     }
   } catch (e) { /* ignore */ }
 }
@@ -1942,5 +1995,64 @@ function mtkConfirmStop() {
   mtkCloseStopModal();
   if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.stopAndSave) {
     QuantrexTestEngine.stopAndSave();
+  }
+}
+
+function mtkSubmitModalHtml() {
+  const sess = typeof QuantrexTestEngine !== "undefined" ? QuantrexTestEngine.getSession() : null;
+  if (!sess) return "";
+  const s = (() => {
+    let answered = 0, skipped = 0, unvisited = 0, review = 0;
+    sess.ids.forEach((_, i) => {
+      const chosen = sess.answers[i];
+      const visited = sess.visited.has(i);
+      const rev = sess.review.has(i);
+      if (!visited) { unvisited++; return; }
+      if (chosen === undefined) { skipped++; if (rev) review++; return; }
+      answered++;
+      if (rev) review++;
+    });
+    return { answered, skipped, unvisited, review };
+  })();
+  const rows = sess.marksMode
+    ? `<div class="marks-submit-stats">
+        <span><strong>${s.answered}</strong> Answered</span>
+        <span><strong>${s.skipped}</strong> Not Answered</span>
+        <span><strong>${s.unvisited}</strong> Not Visited</span>
+        <span><strong>${s.review}</strong> Marked for Review</span>
+      </div>`
+    : `<div class="marks-submit-stats">
+        <span><strong>${s.answered}</strong> Answered</span>
+        <span><strong>${s.review}</strong> Marked for Review</span>
+        <span><strong>${s.unvisited + s.skipped}</strong> Skipped/Unvisited</span>
+      </div>`;
+  return `<div class="marks-modal-overlay" id="mtkSubmitModal" onclick="if(event.target===this)mtkCloseSubmitModal()">
+    <div class="marks-resume-modal marks-stop-modal">
+      <button type="button" class="marks-resume-close" onclick="mtkCloseSubmitModal()">✕</button>
+      <div class="marks-resume-icon">📋</div>
+      <h3>Submit Test?</h3>
+      <p class="marks-resume-hint">Review your attempt summary before final submission. You cannot change answers after submitting.</p>
+      ${rows}
+      <button type="button" class="marks-resume-btn" onclick="mtkConfirmSubmit()">✓ Submit Test</button>
+      <button type="button" class="marks-resume-cancel" onclick="mtkCloseSubmitModal()">Continue Test</button>
+    </div>
+  </div>`;
+}
+
+function mtkShowSubmitModal() {
+  mtkCloseSubmitModal();
+  const html = mtkSubmitModalHtml();
+  if (html) document.body.insertAdjacentHTML("beforeend", html);
+}
+
+function mtkCloseSubmitModal() {
+  const el = document.getElementById("mtkSubmitModal");
+  if (el) el.remove();
+}
+
+function mtkConfirmSubmit() {
+  mtkCloseSubmitModal();
+  if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.submit) {
+    QuantrexTestEngine.submit(false);
   }
 }

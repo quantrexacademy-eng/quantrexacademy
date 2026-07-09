@@ -133,7 +133,7 @@ const MarksLive = (() => {
   function isOptionsReady(q) {
     if (!q) return false;
     if (isNumericalQuestion(q)) return isQuestionTextReady(q);
-    if (q._shardLoaded || q._bank === "ts_active") return !isPlaceholderOptions(q.options);
+    if (q._shardLoaded) return !isPlaceholderOptions(q.options);
     if (!q._marksId) return !isPlaceholderOptions(q.options);
     return !needsFullQuestion(q) || !isPlaceholderOptions(q.options);
   }
@@ -164,8 +164,12 @@ const MarksLive = (() => {
 
   function needsFullQuestion(q) {
     if (!q || !q._marksId) return false;
-    if (q._shardLoaded || q._bank === "ts_active") return false;
+    if (q._shardLoaded) return false;
     const nonMcq = isNonMcqType(q.questionType || q.type);
+    if (q._bank === "ts_active") {
+      if (isBlankText(q.q)) return true;
+      return !nonMcq && isPlaceholderOptions(q.options);
+    }
     if (q._fullFetched) {
       if (isBlankText(q.q)) return true;
       return !nonMcq && isPlaceholderOptions(q.options);
@@ -293,19 +297,31 @@ const MarksLive = (() => {
     return normalizeFull(data, meta || {});
   }
 
+  function mergeIntoActiveMap(q, fields) {
+    if (!q || q.id == null || !window.TS_ACTIVE_QMAP) return q;
+    const merged = { ...q, ...fields, id: q.id, _bank: q._bank || "ts_active" };
+    window.TS_ACTIVE_QMAP[q.id] = merged;
+    window.TS_ACTIVE_QMAP[String(q.id)] = merged;
+    return merged;
+  }
+
   async function ensureQuestionFull(q, opts) {
     if (!q || !q._marksId) return q;
     const force = !!(opts && opts.force);
     const needSol = !!(opts && opts.solution);
     if (!force && !needsFullQuestion(q) && !(needSol && !hasRealSolution(q.solution))) return q;
     try {
-      return await fetchFullQuestion(q._marksId, {
+      const fetched = await fetchFullQuestion(q._marksId, {
         subject: q.subject,
         chapter: q.chapter,
         bank: q._bank,
         examName: q.examName,
         source: q.source
       }, true);
+      if (q._bank === "ts_active" || window.TS_ACTIVE_QMAP) {
+        return mergeIntoActiveMap(q, fetched);
+      }
+      return fetched;
     } catch (e) {
       return q;
     }
@@ -329,7 +345,7 @@ const MarksLive = (() => {
 
   function needsPrefetch(q) {
     if (!q || !q._marksId) return false;
-    if (q._shardLoaded || q._bank === "ts_active") return false;
+    if (q._shardLoaded) return false;
     if (needsFullQuestion(q)) return true;
     const opts = q.options || [];
     const hasBody = opts.some(o => String(o || "").replace(/<[^>]+>/g, " ").trim());
