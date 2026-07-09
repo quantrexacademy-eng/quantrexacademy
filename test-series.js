@@ -298,7 +298,7 @@ function quizrrInstructionHtml(config) {
   const subtitle = tsEscHtml(config.subtitle || "Read all instructions carefully before starting the test.");
   return `<div id="marksInstrOverlay" class="qz-instr-fullpage" role="dialog" aria-modal="true">
     <header class="qz-instr-top">
-      <div class="qz-instr-brand"><span class="qz-logo">Q</span><div><strong>Quizrr</strong><small>Test Instructions</small></div></div>
+      <div class="qz-instr-brand"><span class="qz-logo">Q</span><div><strong>Quantrex Academy</strong><small>Test Instructions</small></div></div>
       <button type="button" class="qz-instr-exit" onclick="marksCancelInstructions()">✕</button>
     </header>
     <div class="qz-instr-scroll">
@@ -871,7 +871,7 @@ function tsCategoryListHtml(cat, tests) {
 
 function tsSyncBanner(manifest) {
   if (!manifest.pendingQuizrrSync) return "";
-  return `<div class="ts-sync-banner"><span>🔄 ${manifest.totalTests || 0} tests · Live schedule sync when Quizrr login works.</span>
+  return `<div class="ts-sync-banner"><span>🔄 ${manifest.totalTests || 0} tests · Syncing test schedule…</span>
     <button type="button" class="ts-mini-tab" onclick="tsCheckQuizrrSync()">Sync</button></div>`;
 }
 

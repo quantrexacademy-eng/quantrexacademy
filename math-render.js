@@ -47,7 +47,8 @@ window.Mx = (() => {
     /cdn-assets\.getmarks/gi,
     /Scoremarks\s+Technologies/gi, /Mathongo/gi, /\bGet\s*Marks\b/gi, /\bMARKS\s*App\b/gi,
     /Powered\s+by\s+MARKS/gi, /MOG\s*Premium/gi, /\bMARKS\s*Premium\b/gi,
-    /\bMARKS\s*Selected\b/gi, /marks_selected/gi, /\bMARKS\s*web\b/gi
+    /\bMARKS\s*Selected\b/gi, /marks_selected/gi, /\bMARKS\s*web\b/gi,
+    /\bALLEN\s*Digital\b/gi, /\bQuizrr\b/gi
   ];
   const PYQ_CDN = "https://cdn-question-pool.getmarks.app/";
   const BROKEN_CDN_RX = /https?:\/\/\.app\//gi;
@@ -86,7 +87,7 @@ window.Mx = (() => {
 
   function figureHtml(attrs) {
     const hasLoading = /loading=/i.test(attrs);
-    const extra = hasLoading ? "" : ' loading="eager" decoding="async" fetchpriority="high"';
+    const extra = (hasLoading ? "" : ' loading="eager" decoding="async" fetchpriority="high"') + ' crossorigin="anonymous"';
     const cls = /class=/i.test(attrs)
       ? attrs.replace(/class=(["'])([^"']*)\1/i, 'class=$1$2 qx-fig-img qx-no-wm$1')
       : attrs + ' class="qx-fig-img qx-no-wm"';
@@ -140,6 +141,8 @@ window.Mx = (() => {
     img.classList.add("qx-no-wm");
     img.loading = "eager";
     img.decoding = "async";
+    img.crossOrigin = "anonymous";
+    if (typeof QxWM !== "undefined" && QxWM.washBakedWatermark) QxWM.washBakedWatermark(img);
   }
 
   function wrapQuestionFig(img) {
@@ -153,6 +156,8 @@ window.Mx = (() => {
     img.loading = "eager";
     img.decoding = "async";
     img.fetchPriority = "high";
+    img.crossOrigin = "anonymous";
+    if (typeof QxWM !== "undefined" && QxWM.washBakedWatermark) QxWM.washBakedWatermark(img);
   }
 
   function protectImgUrls(str) {

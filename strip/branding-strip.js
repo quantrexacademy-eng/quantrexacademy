@@ -1,23 +1,27 @@
 // Quantrex branding strip — remove third-party labels from display (content unchanged)
 const QuantrexStrip = (() => {
   const TEXT_RULES = [
-    [/\bMOG\s*Premium\b/gi, "Quantrex PYQ"],
+    [/\bALLEN\s*Digital\b/gi, "Quantrex Academy"],
+    [/\bQuizrr\b/gi, "Quantrex Academy"],
+    [/\bMOG\s*Premium\b/gi, "Quantrex Academy PYQ"],
     [/\bMOG\b/g, "PYQ"],
-    [/\bMARKS\s*Premium\b/gi, "Quantrex Premium"],
-    [/\bMARKS\s*Selected\b/gi, "Quantrex Selected"],
-    [/\bMARKS\s*App\b/gi, "Quantrex"],
-    [/\bMARKS\s*web\b/gi, "Quantrex"],
-    [/Get\s*Marks\s*App/gi, "Quantrex"],
+    [/\bMARKS\s*Premium\b/gi, "Quantrex Academy Premium"],
+    [/\bMARKS\s*Selected\b/gi, "Quantrex Academy Selected"],
+    [/\bMARKS\s*App\b/gi, "Quantrex Academy"],
+    [/\bMARKS\s*web\b/gi, "Quantrex Academy"],
+    [/Get\s*Marks\s*App/gi, "Quantrex Academy"],
     [/Powered\s+by\s+MARKS/gi, ""],
     [/Scoremarks\s+Technologies/gi, "Quantrex Academy"],
     [/Mathongo/gi, ""],
     [/\bfrom\s+MARKS\b/gi, ""],
-    [/\bMARKS\s+live\b/gi, "Quantrex Live"],
-    [/\bMARKS\b/g, "Quantrex"]
+    [/\bMARKS\s+live\b/gi, "Quantrex Academy"],
+    [/\bMARKS\b/g, "Quantrex Academy"]
   ];
 
   const TOAST_RULES = [
-    [/\bMARKS\b/g, "Quantrex"],
+    [/\bALLEN\s*Digital\b/gi, "Quantrex Academy"],
+    [/\bQuizrr\b/gi, "Quantrex Academy"],
+    [/\bMARKS\b/g, "Quantrex Academy"],
     [/from\s+MARKS/gi, ""]
   ];
 

@@ -1,10 +1,10 @@
-/* Allen Digital / NTA CBT theme — overrides marks-test-engine */
+/* Quantrex Academy CBT theme — overrides marks-test-engine */
 :root {
-  --allen-blue: #003DA5;
-  --allen-blue-dark: #002B75;
-  --allen-blue-light: #E8F1FC;
-  --allen-orange: #F58220;
-  --allen-header-bg: #0B4FA3;
+  --allen-blue: #0D9488;
+  --allen-blue-dark: #0B7A6E;
+  --allen-blue-light: #E6F7F4;
+  --allen-orange: #0D9488;
+  --allen-header-bg: #0B1120;
   --allen-body-bg: #F4F7FB;
   --allen-card: #FFFFFF;
   --allen-border: #C5D4E8;

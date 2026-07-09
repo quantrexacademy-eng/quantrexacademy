@@ -1,6 +1,8 @@
-// Allen Digital / NTA-style CBT UI — instructions, marking schemes, practice layout
+// Quantrex Academy — NTA-style CBT UI (instructions, marking schemes, practice layout)
 const AllenTestUI = (() => {
-  const LOGO_SVG = `<svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#003DA5"/><text x="16" y="22" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-weight="900" font-size="16">A</text></svg>`;
+  const BRAND_NAME = "Quantrex Academy";
+  const LOGO_SVG = `<svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0D9488"/><text x="16" y="22" text-anchor="middle" fill="#fff" font-family="Kanit,Arial,sans-serif" font-weight="900" font-size="17">Q</text></svg>`;
+  window.QX_BRAND = { name: BRAND_NAME, logo: LOGO_SVG };
 
   function esc(s) {
     return String(s == null ? "" : s)
@@ -191,7 +193,7 @@ const AllenTestUI = (() => {
     return `<div id="marksInstrOverlay" class="allen-instr-fullpage" role="dialog" aria-modal="true">
       <header class="allen-instr-top">
         <div class="allen-instr-brand">${LOGO_SVG}<div>
-          <strong>ALLEN Digital</strong>
+          <strong>${BRAND_NAME}</strong>
           <small>${examLbl}${yearTag} — Instructions</small>
         </div></div>
         <button type="button" class="allen-instr-exit" onclick="marksCancelInstructions()">✕ Exit</button>
@@ -273,7 +275,7 @@ const AllenTestUI = (() => {
       <header class="mtk-header">
         <div class="mtk-header-left">
           <button type="button" class="mtk-close-btn" id="qxPracBackBtn" title="Back">✕</button>
-          <div class="mtk-brand allen-brand">${LOGO_SVG}<span class="mtk-brand-text">Practice · PYQ Bank</span></div>
+          <div class="mtk-brand allen-brand">${LOGO_SVG}<span class="mtk-brand-text">${BRAND_NAME} · Practice</span></div>
         </div>
         <div class="mtk-prac-progress">Q${pos} / ${total}</div>
         <div class="mtk-header-tools">

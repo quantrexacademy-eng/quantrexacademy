@@ -31,12 +31,48 @@ window.QxWM = (() => {
     scope.querySelectorAll("div,span,p").forEach(el => {
       if (el.children.length > 2) return;
       const t = (el.textContent || "").trim();
-      if (!/^(MARKS|Get\s*Marks|MARKS\s*App)$/i.test(t)) return;
+      if (!/^(MARKS|Get\s*Marks|MARKS\s*App|Quizrr|ALLEN)$/i.test(t)) return;
       const st = window.getComputedStyle ? getComputedStyle(el) : el.style;
       if (st && (st.position === "absolute" || st.position === "fixed" || parseFloat(st.opacity) < 1)) {
         el.remove();
       }
     });
+  }
+
+  function washBakedWatermark(img) {
+    if (!img || img.dataset.qxWashed === "1") return;
+    const run = () => {
+      try {
+        const w = img.naturalWidth;
+        const h = img.naturalHeight;
+        if (!w || !h || w > 2800 || h > 2800) return;
+        const canvas = document.createElement("canvas");
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+        ctx.drawImage(img, 0, 0);
+        const frame = ctx.getImageData(0, 0, w, h);
+        const px = frame.data;
+        for (let i = 0; i < px.length; i += 4) {
+          const r = px[i];
+          const g = px[i + 1];
+          const b = px[i + 2];
+          const max = Math.max(r, g, b);
+          const min = Math.min(r, g, b);
+          const sat = max - min;
+          if (sat < 40 && max > 130 && max < 235) {
+            const lift = Math.min(255, max + (255 - max) * 0.62);
+            px[i] = px[i + 1] = px[i + 2] = lift;
+          }
+        }
+        ctx.putImageData(frame, 0, 0);
+        img.src = canvas.toDataURL("image/png");
+        img.dataset.qxWashed = "1";
+      } catch (e) { /* cross-origin or memory */ }
+    };
+    if (img.complete && img.naturalWidth) run();
+    else img.addEventListener("load", run, { once: true });
   }
 
   function tagDiagramImages(root) {
@@ -47,6 +83,8 @@ window.QxWM = (() => {
       if (!isPoolDiagram(src, img)) return;
       img.classList.add("qx-no-wm");
       img.removeAttribute("data-brand");
+      if (!img.getAttribute("crossorigin")) img.setAttribute("crossorigin", "anonymous");
+      washBakedWatermark(img);
     });
   }
 
@@ -55,5 +93,5 @@ window.QxWM = (() => {
     tagDiagramImages(root);
   }
 
-  return { cleanHtml, scan, isPoolDiagram, removeOverlayNodes, tagDiagramImages };
+  return { cleanHtml, scan, isPoolDiagram, removeOverlayNodes, tagDiagramImages, washBakedWatermark };
 })();

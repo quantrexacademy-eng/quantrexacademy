@@ -747,7 +747,7 @@ async function viewCpyqb(payload) {
 
   if (p.step === "exams" || !p.exam) {
     _lastListFn = () => ({ step: "exams", forceExamList: true });
-    return `${topbar("Chapter-wise PYQ Bank", "Select an exam · MARKS order")}
+    return `${topbar("Chapter-wise PYQ Bank", "Select an exam · official chapter order")}
       ${renderCpyqbExamBank(nav)}`;
   }
 

@@ -347,7 +347,7 @@ const QuantrexTestEngine = (() => {
     const q = getQ(session.ids[session.idx]);
     if (!q) {
       return `<div class="mtk-test-root" data-test-theme="${getTestTheme()}">
-        <header class="mtk-header"><div class="mtk-brand"><span class="mtk-logo">Q</span><span class="mtk-brand-text">Quantrex</span></div></header>
+        <header class="mtk-header"><div class="mtk-brand"><span class="mtk-logo">Q</span><span class="mtk-brand-text">Quantrex Academy</span></div></header>
         <div class="mtk-main" style="padding:40px"><div class="empty" style="color:#f87171;font-size:16px">Question not found (id: ${session.ids[session.idx]}). <button type="button" class="mtk-btn mtk-btn-ghost" onclick="if(typeof go==='function')go('tests')">← Back</button></div></div>
       </div>`;
     }
@@ -387,14 +387,14 @@ const QuantrexTestEngine = (() => {
 
     const ctx = typeof AllenTestUI !== "undefined" ? AllenTestUI.detectContext(session) : null;
     const examLabel = ctx ? AllenTestUI.examTitle(ctx) : "CBT";
-    const allenLogo = typeof AllenTestUI !== "undefined"
-      ? `<svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#003DA5"/><text x="16" y="22" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-weight="900" font-size="16">A</text></svg>`
-      : `<span class="mtk-logo">Q</span>`;
+    const brandName = (window.QX_BRAND && window.QX_BRAND.name) || "Quantrex Academy";
+    const brandLogo = (window.QX_BRAND && window.QX_BRAND.logo)
+      || `<span class="mtk-logo">Q</span>`;
     return `<div class="mtk-test-root allen-cbt" data-test-theme="${testTheme}" data-font-scale="${fontScale}">
       <header class="mtk-header">
         <div class="mtk-header-left">
           <button type="button" class="mtk-close-btn" id="mtkCloseBtn" title="Exit test">✕</button>
-          <div class="mtk-brand allen-brand">${allenLogo}<span class="mtk-brand-text">${examLabel} · CBT</span></div>
+          <div class="mtk-brand allen-brand">${brandLogo}<span class="mtk-brand-text">${brandName} · ${examLabel}</span></div>
         </div>
         ${timerHtml}
         <div class="mtk-header-tools">
@@ -1611,8 +1611,8 @@ function marksInstructionHtml(config) {
       <div class="marks-instr-topbar-brand">
         <span class="marks-instr-topbar-logo">Q</span>
         <div>
-          <div class="marks-instr-org">${examTitle} — Computer Based Test</div>
-          <div class="marks-instr-topbar-sub">Instructions to Candidates</div>
+          <div class="marks-instr-org">Quantrex Academy</div>
+          <div class="marks-instr-topbar-sub">${examTitle} — Computer Based Test</div>
         </div>
       </div>
       <button type="button" class="marks-instr-exit" onclick="marksCancelInstructions()" aria-label="Exit">✕ Exit</button>

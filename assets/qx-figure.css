@@ -8,12 +8,42 @@
 /* Question-body figures */
 .qx-fig {
   display: block;
+  position: relative;
   margin: 14px auto;
   padding: 0;
   max-width: min(100%, 560px);
   text-align: center;
   border: none;
   background: transparent;
+  overflow: hidden;
+}
+
+/* Cover baked-in corner/center gray watermarks on CDN diagrams */
+.qx-fig::after,
+.qx-opt-fig::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+.qx-fig::after {
+  right: 0;
+  bottom: 0;
+  width: 32%;
+  height: 22%;
+  background: linear-gradient(135deg, transparent 25%, rgba(255, 255, 255, 0.92) 72%);
+}
+.qx-fig::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 42%;
+  height: 18%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.88) 0%, transparent 72%);
 }
 
 .qx-fig-img,
@@ -49,12 +79,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   width: 100%;
   margin: 4px 0;
   padding: 6px;
   background: #fff;
   border-radius: 8px;
   min-height: 80px;
+  overflow: hidden;
+}
+
+.qx-opt-fig::after {
+  right: 0;
+  bottom: 0;
+  width: 36%;
+  height: 28%;
+  background: linear-gradient(135deg, transparent 20%, rgba(255, 255, 255, 0.94) 70%);
 }
 
 .qx-opt-fig img {
