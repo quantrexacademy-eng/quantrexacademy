@@ -1,7 +1,7 @@
 // Quantrex digital book covers — local SVG only (no external watermarks)
 
 const BOOK_COVER_PRESETS = {
-  "6a0addba4b032b031e049a36": { brand: "HC Verma", line: "Concepts of Physics", vol: "Volume 2", subject: "Physics", badge: "HC Verma", colors: ["#0c4a6e", "#0284c7", "#38bdf8"], icon: "⚛️", pattern: "waves" },
+  "6a0addba4b032b031e049a36": { brand: "HC Verma", line: "Concepts of Physics", vol: "Volume 2", subject: "Physics", badge: "HC Verma", colors: ["#0c1e4a", "#1e3a8a", "#2563eb", "#38bdf8"], icon: "⚛️", pattern: "waves" },
   "69f9cc23681eab6d6021a4d1": { brand: "HC Verma", line: "Concepts of Physics", vol: "Volume 1", subject: "Physics", badge: "HC Verma", colors: ["#1e3a5f", "#2563eb", "#60a5fa"], icon: "⚛️", pattern: "waves" },
   "69cfb5366ecf5579037d96a4": { brand: "I.E. Irodov", line: "General Physics", vol: "Top Problems", subject: "Physics", badge: "Irodov", colors: ["#450a0a", "#b91c1c", "#f87171"], icon: "🔥", pattern: "grid" },
   "68f1ce4cc729e5251bd00430": { brand: "Rank Booster", line: "Most Important Qs", vol: "Advanced Level", subject: "PCM", badge: "Rank Booster", colors: ["#312e81", "#4f46e5", "#818cf8"], icon: "🚀", pattern: "diagonal" },
@@ -83,9 +83,14 @@ function inferBookCoverStyle(book) {
   return style;
 }
 
+const BOOK_COVER_VER = "qxtest470";
+
 function bookCoverImage(book) {
   if (!book) return null;
-  if (BOOK_COVER_LOCAL[book.id]) return BOOK_COVER_LOCAL[book.id];
+  if (BOOK_COVER_LOCAL[book.id]) {
+    const p = BOOK_COVER_LOCAL[book.id];
+    return p.includes("?") ? p : `${p}?v=${BOOK_COVER_VER}`;
+  }
   const cover = book.cover || book.banner || "";
   if (cover && !/getmarks\.app/i.test(cover)) return cover;
   return null;
@@ -146,7 +151,7 @@ function renderBookArtCover(book, size, inline) {
     <div class="qx-cover-spine"></div>
     <div class="qx-cover-inner">
       ${tag}${soon}
-      <span class="qx-cover-publisher">Quantrex Digital</span>
+      <span class="qx-cover-publisher">Quantrex Academy</span>
       <span class="qx-cover-icon">${st.icon}</span>
       <strong class="qx-cover-brand">${st.brand}</strong>
       <span class="qx-cover-line">${st.line}</span>

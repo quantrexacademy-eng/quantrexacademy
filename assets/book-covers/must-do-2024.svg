@@ -1,18 +1,54 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400" role="img" aria-label="Must Do Top Qs">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="mustdo2024-bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#881337"/>
-      <stop offset="55%" stop-color="#e11d48"/>
+      <stop offset="35%" stop-color="#be123c"/>
+      <stop offset="70%" stop-color="#e11d48"/>
       <stop offset="100%" stop-color="#fda4af"/>
     </linearGradient>
+    <linearGradient id="mustdo2024-shine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.35)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <linearGradient id="mustdo2024-gloss" x1="0%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.22)"/>
+      <stop offset="45%" stop-color="rgba(255,255,255,0.04)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <filter id="mustdo2024-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="mustdo2024-emboss">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1" flood-color="rgba(0,0,0,0.45)"/>
+    </filter>
   </defs>
-  <rect width="300" height="400" fill="url(#bg)"/>
-  <rect x="0" y="0" width="18" height="400" fill="rgba(0,0,0,.25)"/>
-  <text x="36" y="52" fill="#fff" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="2">QUANTREX</text>
-  <text x="36" y="120" fill="#fff" font-family="Georgia,serif" font-size="34" font-weight="700">Must Do</text>
-  <text x="36" y="158" fill="#fff" font-family="Georgia,serif" font-size="28" font-weight="700">Top PYQs</text>
-  <text x="36" y="200" fill="rgba(255,255,255,.92)" font-family="Arial,sans-serif" font-size="18" font-weight="600">PYQ 2024 Edition</text>
-  <rect x="36" y="230" width="120" height="28" rx="14" fill="rgba(255,255,255,.18)"/>
-  <text x="52" y="249" fill="#fff" font-family="Arial,sans-serif" font-size="12" font-weight="700">490 Questions</text>
-  <text x="36" y="360" fill="rgba(255,255,255,.75)" font-family="Arial,sans-serif" font-size="11" font-weight="700">DIGITAL BOOK</text>
+  <rect width="300" height="400" fill="url(#mustdo2024-bg)"/>
+  
+    <ellipse cx="220" cy="90" rx="120" ry="80" fill="url(#mustdo2024-shine)"/>
+  <text x="200" y="70" fill="rgba(255,255,255,0.14)" font-family="Georgia,serif" font-size="15" font-style="italic" filter="url(#mustdo2024-glow)">2024</text>
+    <text x="230" y="130" fill="rgba(255,255,255,0.14)" font-family="Georgia,serif" font-size="15" font-style="italic" filter="url(#mustdo2024-glow)">PYQ</text>
+    <text x="180" y="200" fill="rgba(255,255,255,0.14)" font-family="Georgia,serif" font-size="15" font-style="italic" filter="url(#mustdo2024-glow)">★</text>
+  <rect x="0" y="0" width="22" height="400" fill="rgba(0,0,0,0.32)"/>
+  <rect x="22" y="0" width="3" height="400" fill="rgba(255,255,255,0.08)"/>
+  <rect x="296" y="0" width="4" height="400" fill="rgba(255,255,255,0.12)"/>
+  <rect x="0" y="0" width="300" height="400" fill="url(#mustdo2024-gloss)"/>
+  <text x="32" y="34" fill="rgba(255,255,255,0.88)" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="800" letter-spacing="2.2">QUANTREX ACADEMY</text>
+  
+    <rect x="32" y="52" width="72" height="22" rx="11" fill="rgba(255,255,255,0.22)"/>
+    <text x="44" y="67" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="800" letter-spacing="0.5">New</text>
+  <text x="34" y="118" fill="rgba(0,0,0,0.35)" font-family="Literata,Georgia,serif" font-size="28" font-weight="700">Must Do</text>
+    <text x="32" y="116" fill="#ffffff" font-family="Literata,Georgia,serif" font-size="28" font-weight="700">Must Do</text>
+    <text x="34" y="154" fill="rgba(0,0,0,0.35)" font-family="Literata,Georgia,serif" font-size="28" font-weight="700">Top Qs</text>
+    <text x="32" y="152" fill="#ffffff" font-family="Literata,Georgia,serif" font-size="28" font-weight="700">Top Qs</text>
+  <text x="32" y="198" fill="rgba(255,255,255,0.92)" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" filter="url(#mustdo2024-emboss)">JEE Main 2024</text>
+  <rect x="32" y="210" width="108" height="24" rx="12" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.25)" stroke-width="0.5"/>
+  <text x="46" y="227" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700">PYQ Edition</text>
+  <text x="32" y="268" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="800">Essential PYQs</text>
+  <text x="32" y="292" fill="rgba(255,255,255,0.82)" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="600">PCM · Must Solve</text>
+  <circle cx="248" cy="72" r="34" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="248" y="82" text-anchor="middle" font-size="30" filter="url(#mustdo2024-glow)">⭐</text>
+  <rect x="0" y="372" width="300" height="28" fill="rgba(0,0,0,0.22)"/>
+  <text x="32" y="390" fill="rgba(255,255,255,0.7)" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="800" letter-spacing="1.8">DIGITAL EDITION</text>
+  <text x="268" y="390" text-anchor="end" fill="rgba(255,255,255,0.55)" font-family="Inter,Arial,sans-serif" font-size="8" font-weight="700">QX</text>
 </svg>

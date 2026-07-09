@@ -1,23 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400" role="img" aria-label="Concepts of Physics">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="hcvermav1-bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0c4a6e"/>
-      <stop offset="50%" stop-color="#0369a1"/>
-      <stop offset="100%" stop-color="#38bdf8"/>
+      <stop offset="35%" stop-color="#0369a1"/>
+      <stop offset="70%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#7dd3fc"/>
     </linearGradient>
-    <filter id="glow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <linearGradient id="hcvermav1-shine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.35)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <linearGradient id="hcvermav1-gloss" x1="0%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.22)"/>
+      <stop offset="45%" stop-color="rgba(255,255,255,0.04)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <filter id="hcvermav1-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="hcvermav1-emboss">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1" flood-color="rgba(0,0,0,0.45)"/>
+    </filter>
   </defs>
-  <rect width="300" height="400" fill="url(#bg)"/>
-  <rect x="0" y="0" width="20" height="400" fill="rgba(0,0,0,.28)"/>
-  <circle cx="240" cy="70" r="48" fill="rgba(255,255,255,.08)"/>
-  <text x="240" y="82" text-anchor="middle" font-size="42" filter="url(#glow)">⚛️</text>
-  <text x="32" y="44" fill="rgba(255,255,255,.85)" font-family="Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="2">MARKS SELECTED</text>
-  <text x="32" y="108" fill="#fff" font-family="Georgia,serif" font-size="26" font-weight="700">Concepts of</text>
-  <text x="32" y="142" fill="#fff" font-family="Georgia,serif" font-size="26" font-weight="700">Physics</text>
-  <text x="32" y="178" fill="rgba(255,255,255,.9)" font-family="Arial,sans-serif" font-size="14" font-weight="600">MCQ Edition</text>
-  <rect x="32" y="196" width="96" height="26" rx="13" fill="rgba(255,255,255,.2)"/>
-  <text x="48" y="214" fill="#fff" font-family="Arial,sans-serif" font-size="12" font-weight="700">Volume 1</text>
-  <text x="32" y="260" fill="#fff" font-family="Arial,sans-serif" font-size="22" font-weight="800">HC Verma</text>
-  <text x="32" y="290" fill="rgba(255,255,255,.8)" font-family="Arial,sans-serif" font-size="12" font-weight="600">Physics · Expert Qs Bank</text>
-  <text x="32" y="368" fill="rgba(255,255,255,.65)" font-family="Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="1">DIGITAL BOOK</text>
+  <rect width="300" height="400" fill="url(#hcvermav1-bg)"/>
+  
+    <path d="M-20 320 Q80 260 180 320 T380 320" stroke="#7dd3fc" stroke-opacity="0.18" stroke-width="2.5" fill="none"/>
+    <path d="M-20 350 Q100 290 200 350 T400 350" stroke="#7dd3fc" stroke-opacity="0.12" stroke-width="2" fill="none"/>
+    <path d="M-20 380 Q60 340 160 380 T360 380" stroke="#7dd3fc" stroke-opacity="0.08" stroke-width="1.5" fill="none"/>
+    <path d="M200 40 Q260 100 220 180 Q180 260 250 340" stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none"/>
+  <text x="200" y="70" fill="rgba(255,255,255,0.14)" font-family="Georgia,serif" font-size="15" font-style="italic" filter="url(#hcvermav1-glow)">v = u + at</text>
+    <text x="230" y="130" fill="rgba(255,255,255,0.14)" font-family="Georgia,serif" font-size="15" font-style="italic" filter="url(#hcvermav1-glow)">P = IV</text>
+    <text x="180" y="200" fill="rgba(255,255,255,0.14)" font-family="Georgia,serif" font-size="15" font-style="italic" filter="url(#hcvermav1-glow)">τ = r × F</text>
+  <rect x="0" y="0" width="22" height="400" fill="rgba(0,0,0,0.32)"/>
+  <rect x="22" y="0" width="3" height="400" fill="rgba(255,255,255,0.08)"/>
+  <rect x="296" y="0" width="4" height="400" fill="rgba(255,255,255,0.12)"/>
+  <rect x="0" y="0" width="300" height="400" fill="url(#hcvermav1-gloss)"/>
+  <text x="32" y="34" fill="rgba(255,255,255,0.88)" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="800" letter-spacing="2.2">QUANTREX ACADEMY</text>
+  
+  <text x="34" y="118" fill="rgba(0,0,0,0.35)" font-family="Literata,Georgia,serif" font-size="28" font-weight="700">Concepts of</text>
+    <text x="32" y="116" fill="#ffffff" font-family="Literata,Georgia,serif" font-size="28" font-weight="700">Concepts of</text>
+    <text x="34" y="154" fill="rgba(0,0,0,0.35)" font-family="Literata,Georgia,serif" font-size="28" font-weight="700">Physics</text>
+    <text x="32" y="152" fill="#ffffff" font-family="Literata,Georgia,serif" font-size="28" font-weight="700">Physics</text>
+  <text x="32" y="198" fill="rgba(255,255,255,0.92)" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" filter="url(#hcvermav1-emboss)">MCQ Edition</text>
+  <rect x="32" y="210" width="108" height="24" rx="12" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.25)" stroke-width="0.5"/>
+  <text x="46" y="227" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700">Volume 1</text>
+  <text x="32" y="268" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="800">HC Verma</text>
+  <text x="32" y="292" fill="rgba(255,255,255,0.82)" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="600">Physics · IIT-JEE Prep</text>
+  <circle cx="248" cy="72" r="34" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="248" y="82" text-anchor="middle" font-size="30" filter="url(#hcvermav1-glow)">⚛</text>
+  <rect x="0" y="372" width="300" height="28" fill="rgba(0,0,0,0.22)"/>
+  <text x="32" y="390" fill="rgba(255,255,255,0.7)" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="800" letter-spacing="1.8">DIGITAL EDITION</text>
+  <text x="268" y="390" text-anchor="end" fill="rgba(255,255,255,0.55)" font-family="Inter,Arial,sans-serif" font-size="8" font-weight="700">QX</text>
 </svg>
