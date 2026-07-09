@@ -1,0 +1,303 @@
+/* Quantrex — mobile-first layout polish (phones & small tablets) */
+
+/* Safe area for notched phones */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .mtk-controls,
+  .qx-prac-foot,
+  .allen-instr-foot,
+  .qz-instr-foot,
+  #appToast {
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  }
+  .mtk-test-root.allen-cbt .mtk-header,
+  .topbar {
+    padding-top: calc(8px + env(safe-area-inset-top));
+  }
+}
+
+/* Sidebar overlay */
+body.qx-nav-open::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  z-index: 99;
+  backdrop-filter: blur(2px);
+}
+
+@media (max-width: 860px) {
+  .sidebar { width: min(280px, 88vw); z-index: 200; }
+  .sidebar-head { padding: 16px 18px; }
+  .logo-text { font-size: 18px; }
+  .nav-item { padding: 14px 16px; font-size: 16px; min-height: 48px; }
+  .topbar { padding: 10px 14px; gap: 8px; }
+  .topbar h1, .page-head h1 { font-size: 22px !important; }
+  .topbar-right { gap: 8px; }
+  .topbar .exam-tag, .topbar .streak { font-size: 11px; padding: 5px 10px; }
+  .content { padding: 14px 12px 24px; }
+  .content.marks-wide { padding: 12px 10px 20px; }
+  .q-card { padding: 14px; }
+  .qa-wrap { padding: 16px; border-radius: 12px; max-width: 100%; }
+  .qa-q { font-size: 16px; }
+  .marks-modal, .marks-resume-modal, .qx-report-modal { max-width: calc(100vw - 24px); margin: 12px; }
+  .marks-modal-overlay { padding: 12px; align-items: flex-end; }
+  .marks-resume-modal { padding: 24px 20px 20px; }
+}
+
+@media (max-width: 640px) {
+  .dash-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .ds { padding: 14px; }
+  .ds strong { font-size: 22px; }
+  .bank-picker select { font-size: 16px; padding: 12px; }
+  .chips { gap: 6px; }
+  .chip { padding: 8px 12px; font-size: 12px; }
+  .pagination { flex-wrap: wrap; justify-content: center; gap: 6px; }
+  .qx-prac-bar { flex-wrap: wrap; padding-bottom: 10px; }
+  .qx-prac-mid { flex: 1 1 100%; order: 2; }
+  .qx-prac-actions { order: 1; }
+  .qx-prac-meta { gap: 4px; }
+  .qx-prac-foot {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .qx-prac-foot .btn-soft,
+  .qx-prac-foot .btn-primary,
+  .qx-prac-submit {
+    width: 100%;
+    max-width: none;
+    min-height: 48px;
+  }
+  .qx-view-sol-btn { max-width: none; width: 100%; }
+  .qx-sol-shortcut { max-width: 100%; text-align: left; }
+  .qx-sol-tips { align-items: flex-start; }
+  .result-box { padding: 14px; }
+  .fc-grid { grid-template-columns: 1fr; }
+  .books-grid, .curated-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+
+/* CBT test engine — phone layout */
+@media (max-width: 720px) {
+  .mtk-test-root.allen-cbt .mtk-header {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 8px 6px;
+  }
+  .mtk-test-root.allen-cbt .mtk-header-left {
+    grid-column: 1 / -1;
+    flex: none;
+  }
+  .mtk-test-root.allen-cbt .mtk-timer {
+    grid-column: 1;
+    justify-content: flex-start;
+    font-size: 15px;
+    flex: none;
+  }
+  .mtk-test-root.allen-cbt .mtk-header-tools {
+    grid-column: 2;
+    flex: none;
+  }
+  .mtk-test-root.allen-cbt .mtk-stop-btn {
+    grid-column: 3;
+    grid-row: 2;
+  }
+  .mtk-test-root.allen-cbt .mtk-submit-top {
+    grid-column: 2 / -1;
+    grid-row: 2;
+    width: 100%;
+    text-align: center;
+    min-height: 40px;
+  }
+  .mtk-test-root.allen-cbt .mtk-main { padding: 12px 14px 80px; }
+  .mtk-test-root.allen-cbt .mtk-q-text { font-size: 15px; }
+  .mtk-test-root.allen-cbt .mtk-options-grid,
+  .mtk-test-root.allen-cbt .mtk-options-exam-cols {
+    grid-template-columns: 1fr;
+  }
+  .mtk-test-root.allen-cbt .mtk-palette {
+    max-height: 200px;
+    border-top: 2px solid var(--allen-border, #c5d4e8);
+  }
+  .mtk-test-root.allen-cbt .mtk-pal-groups {
+    max-height: 100px;
+    overflow-y: auto;
+  }
+  .mtk-test-root.allen-cbt .mtk-controls {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 10px 12px;
+    background: #fff;
+    border-top: 1px solid var(--allen-border, #c5d4e8);
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+  }
+  .mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-controls {
+    background: #1e2128;
+    border-top-color: #2a2f3d;
+  }
+  .mtk-test-root.allen-cbt .mtk-btn-save,
+  .mtk-test-root.allen-cbt .mtk-btn-review {
+    grid-column: span 1;
+    min-height: 44px;
+    font-size: 12px;
+    padding: 10px 8px;
+  }
+  .mtk-test-root.allen-cbt .mtk-btn-clear,
+  .mtk-test-root.allen-cbt .mtk-btn-prev {
+    grid-column: span 1;
+    min-height: 44px;
+    font-size: 12px;
+  }
+  .mtk-test-root.allen-cbt .mtk-sec-bar { padding: 8px 10px; }
+  .mtk-test-root.allen-cbt .mtk-sec-tab { padding: 8px 10px; font-size: 11px; }
+  .mtk-test-root .mtk-options-grid { grid-template-columns: 1fr; }
+}
+
+/* Practice fullscreen (Allen layout) */
+@media (max-width: 720px) {
+  body.allen-practice-active .mtk-test-root.allen-practice .mtk-body {
+    grid-template-columns: 1fr;
+  }
+  body.allen-practice-active .mtk-test-root.allen-practice .mtk-palette {
+    order: 2;
+    max-height: 180px;
+    border-top: 1px solid var(--allen-border, #c5d4e8);
+  }
+  body.allen-practice-active .mtk-test-root.allen-practice .mtk-main {
+    padding: 12px 14px;
+  }
+  body.allen-practice-active .mtk-test-root.allen-practice .mtk-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: space-between;
+  }
+  body.allen-practice-active .mtk-test-root.allen-practice .mtk-controls .mtk-btn {
+    flex: 1 1 calc(50% - 4px);
+    min-height: 44px;
+  }
+}
+
+/* Numerical keypad — thumb-friendly */
+@media (max-width: 480px) {
+  .qx-num-entry.qx-num-panel {
+    max-width: 100%;
+    padding: 16px 12px;
+  }
+  .qx-num-keypad {
+    max-width: 100%;
+    gap: 6px;
+  }
+  .qx-num-key {
+    min-height: 48px;
+    font-size: 18px;
+  }
+  .qx-num-input {
+    font-size: 20px;
+    min-height: 52px;
+  }
+  .mtk-numerical-wrap { padding: 12px 0 16px; }
+}
+
+/* Instructions — mobile */
+@media (max-width: 640px) {
+  .allen-instr-inner, .qz-instr-inner, .marks-instr-inner {
+    padding: 16px 14px 28px;
+  }
+  .allen-instr-title, .qz-instr-title { font-size: 20px; }
+  .allen-instr-foot, .qz-instr-foot {
+    flex-direction: column-reverse;
+    padding: 12px 14px;
+    gap: 8px;
+  }
+  .allen-instr-proceed, .allen-instr-cancel,
+  .qz-instr-proceed, .qz-instr-cancel {
+    width: 100%;
+    min-height: 48px;
+  }
+  .allen-instr-table, .qz-instr-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Test series standalone */
+@media (max-width: 640px) {
+  .ts-icon-nav {
+    width: 100%;
+    height: 56px;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 4px 8px;
+    border-right: none;
+    border-top: 1px solid var(--ts-border);
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.15);
+  }
+  .ts-icon-nav-item {
+    width: auto;
+    flex: 1;
+    height: 48px;
+    margin-bottom: 0;
+    font-size: 9px;
+  }
+  .ts-icon-nav-spacer { display: none; }
+  .ts-icon-nav-foot {
+    flex-direction: row;
+    border-top: none;
+    width: auto;
+    padding-top: 0;
+  }
+  .ts-app-main {
+    margin-left: 0;
+    margin-bottom: 56px;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+  .ts-topbar {
+    padding: 10px 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .ts-user-greet { display: none; }
+  .ts-content { padding: 12px 14px 20px; }
+  .ts-dash-stats, .ts-analytics-page .ts-an-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .ts-mini-tabs { overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
+  .ts-ch-test { flex-direction: column; align-items: stretch; }
+  .ts-ch-test-actions { width: 100%; justify-content: stretch; }
+  .ts-ch-test-actions .ts-ch-btn,
+  .ts-ch-syllabus { flex: 1; text-align: center; }
+  .ts-filter-row { flex-direction: column; align-items: stretch; }
+  .ts-filter-row select, .ts-filter-row input { width: 100%; }
+}
+
+/* Marks split / tests page */
+@media (max-width: 640px) {
+  .marks-tests-page { padding: 0 4px; }
+  .marks-exam-card { padding: 14px; }
+  .marks-board-grid { grid-template-columns: 1fr; }
+  .cpyqb-chapter-grid { grid-template-columns: 1fr; }
+  .marks-ct-wizard { padding: 12px; }
+}
+
+/* Touch targets */
+@media (hover: none) and (pointer: coarse) {
+  .mtk-opt, .qx-prac-opt, .qa-opt, .mtk-pal-cell, .qx-pal-cell,
+  .nav-item, .chip, .btn-soft, .btn-primary, .ts-ch-btn {
+    min-height: 44px;
+  }
+  .mtk-close-btn, .qx-prac-back { min-width: 44px; min-height: 44px; }
+}

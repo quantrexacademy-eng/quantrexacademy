@@ -920,9 +920,28 @@ function bootApp() {
   }
   document.getElementById("examPill").textContent = EXAMS[STATE.exam].name;
   document.getElementById("examPillTop").textContent = EXAMS[STATE.exam].name;
-  document.getElementById("navToggle").onclick = () => {
-    document.querySelector(".sidebar").classList.toggle("open");
+  window.qxCloseSidebar = function qxCloseSidebar() {
+    const sb = document.querySelector(".sidebar");
+    if (sb) sb.classList.remove("open");
+    document.body.classList.remove("qx-nav-open");
   };
+  document.getElementById("navToggle").onclick = () => {
+    const sb = document.querySelector(".sidebar");
+    if (!sb) return;
+    const open = !sb.classList.contains("open");
+    sb.classList.toggle("open", open);
+    document.body.classList.toggle("qx-nav-open", open);
+  };
+  document.body.addEventListener("click", (e) => {
+    if (!document.body.classList.contains("qx-nav-open")) return;
+    if (e.target.closest(".sidebar") || e.target.closest("#navToggle")) return;
+    qxCloseSidebar();
+  });
+  document.querySelectorAll(".nav-item").forEach(n => {
+    n.addEventListener("click", () => {
+      if (window.innerWidth <= 860) qxCloseSidebar();
+    });
+  });
   const searchBtn = document.getElementById("searchBtn");
   if (searchBtn) searchBtn.onclick = () => typeof QuantrexSearch !== "undefined" ? QuantrexSearch.openOverlay() : go("search");
   const logoutBtn = document.getElementById("logoutBtn");
