@@ -1,4 +1,4 @@
-// Quantrex digital book covers — local SVG only (no external watermarks)
+// Quantrex digital book covers — AI photo covers + SVG fallback (no external watermarks)
 
 const BOOK_COVER_PRESETS = {
   "6a0addba4b032b031e049a36": { brand: "HC Verma", line: "Concepts of Physics", vol: "Volume 2", subject: "Physics", badge: "HC Verma", colors: ["#0c1e4a", "#1e3a8a", "#2563eb", "#38bdf8"], icon: "⚛️", pattern: "waves" },
@@ -14,7 +14,21 @@ const BOOK_COVER_PRESETS = {
   "67656cf0a790fd9b172cf0d2": { brand: "Top 100", line: "Numerical Qs", vol: "2023–2020", subject: "Phy + Math", badge: "Numerical PYQ", colors: ["#065f46", "#059669", "#6ee7b7"], icon: "🔢", pattern: "diagonal", tag: "Numerical" }
 };
 
-const BOOK_COVER_LOCAL = {
+const BOOK_COVER_PHOTO = {
+  "6a0addba4b032b031e049a36": "assets/book-covers/hc-verma-v2.jpg",
+  "69f9cc23681eab6d6021a4d1": "assets/book-covers/hc-verma-v1.jpg",
+  "69cfb5366ecf5579037d96a4": "assets/book-covers/irodov.jpg",
+  "68f1ce4cc729e5251bd00430": "assets/book-covers/rank-booster.jpg",
+  "68946f70ebd145663de38728": "assets/book-covers/99-percentile.jpg",
+  "6894d29d3156b1f3ca5ad0be": "assets/book-covers/backlog-booster.jpg",
+  "69048808ef55966cf1d71f1d": "assets/book-covers/olympiad.jpg",
+  "69968cee494a12a5771e3455": "assets/book-covers/biology-360.jpg",
+  "67656ccf18ff438b6c18cc4c": "assets/book-covers/must-do-2024.jpg",
+  "67656d13c83ed0673b8b7b68": "assets/book-covers/top-250.jpg",
+  "67656cf0a790fd9b172cf0d2": "assets/book-covers/top-100-numerical.jpg"
+};
+
+const BOOK_COVER_SVG = {
   "6a0addba4b032b031e049a36": "assets/book-covers/hc-verma-v2.svg",
   "69f9cc23681eab6d6021a4d1": "assets/book-covers/hc-verma-v1.svg",
   "69cfb5366ecf5579037d96a4": "assets/book-covers/irodov.svg",
@@ -83,22 +97,25 @@ function inferBookCoverStyle(book) {
   return style;
 }
 
-const BOOK_COVER_VER = "qxtest470";
+const BOOK_COVER_VER = "qxtest471";
+
+function withCoverVer(path) {
+  if (!path) return null;
+  return path.includes("?") ? path : `${path}?v=${BOOK_COVER_VER}`;
+}
 
 function bookCoverImage(book) {
   if (!book) return null;
-  if (BOOK_COVER_LOCAL[book.id]) {
-    const p = BOOK_COVER_LOCAL[book.id];
-    return p.includes("?") ? p : `${p}?v=${BOOK_COVER_VER}`;
-  }
+  if (BOOK_COVER_PHOTO[book.id]) return withCoverVer(BOOK_COVER_PHOTO[book.id]);
   const cover = book.cover || book.banner || "";
-  if (cover && !/getmarks\.app/i.test(cover)) return cover;
+  if (cover && !/getmarks\.app/i.test(cover)) return withCoverVer(cover);
+  if (BOOK_COVER_SVG[book.id]) return withCoverVer(BOOK_COVER_SVG[book.id]);
   return null;
 }
 
 function bookCoverFallbackImage(book) {
   if (!book) return null;
-  return BOOK_COVER_LOCAL[book.id] || book.cover || null;
+  return withCoverVer(BOOK_COVER_SVG[book.id]) || withCoverVer(book.cover) || null;
 }
 
 function bookCardMeta(book) {
