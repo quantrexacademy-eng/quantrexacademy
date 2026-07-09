@@ -69,7 +69,8 @@ body.qx-nav-open::before {
     min-height: 48px;
   }
   .qx-view-sol-btn { max-width: none; width: 100%; }
-  .qx-sol-shortcut { max-width: 100%; text-align: left; }
+  .qx-sol-shortcut-panel { margin-bottom: 12px; }
+  .qx-sol-shortcut-text { font-size: 13px; }
   .qx-sol-tips { align-items: flex-start; }
   .result-box { padding: 14px; }
   .fc-grid { grid-template-columns: 1fr; }

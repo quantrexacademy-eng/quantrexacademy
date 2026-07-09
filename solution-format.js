@@ -100,6 +100,54 @@ const QuantrexSolution = (() => {
     return out;
   }
 
+  function isCleanLatex(expr) {
+    const s = String(expr || "").trim();
+    if (!s || s.length < 3 || s.length > 80) return false;
+    if (/f\s*['′]|prime|\.\.\.|undefined|NaN/i.test(s)) return false;
+    if (/[{}]/.test(s) && (s.split("{").length !== s.split("}").length)) return false;
+    return /[=+\-*/\\^]|\\frac|\\sqrt|\\int|\\sum|\\le|\\ge/.test(s);
+  }
+
+  function formatShortcutLine(text) {
+    let t = String(text || "").trim();
+    if (!t) return "";
+    t = t.replace(/\s+/g, " ");
+    if (isCleanLatex(t) && !/\$/.test(t)) t = `$${t}$`;
+    if (typeof Mx !== "undefined") return Mx.html(t);
+    return esc(t);
+  }
+
+  function extractFinalAnswerLine(raw, q) {
+    const patterns = [
+      /(?:answer|hence|therefore|so,?|thus)[:\s]+([^.!\n]{4,90})/i,
+      /(?:required value|correct option|right choice)\s+(?:is\s+)?([^.!\n]{4,90})/i,
+      /=\s*([0-9.\-]+(?:\s*(?:m\/s|J|N|mol|g|Hz|Ω|V|A))?)\s*$/m
+    ];
+    for (const rx of patterns) {
+      const m = raw.match(rx);
+      if (m && m[1]) {
+        const line = m[1].trim().replace(/\s+/g, " ");
+        if (line.length >= 3 && line.length <= 90) return `Final answer: ${line}`;
+      }
+    }
+    if (q && q.answer >= 0 && typeof QuantrexQFormat !== "undefined") {
+      const cor = QuantrexQFormat.formatCorrectAnswer(q);
+      if (cor && plainText(cor).length <= 120) {
+        return `Correct option: ${plainText(cor)}`;
+      }
+    }
+    return "";
+  }
+
+  function extractKeyFormula(solution) {
+    const latex = [...String(solution || "").matchAll(/\$([^$]{3,80})\$/g)]
+      .map(m => m[1].trim())
+      .filter(isCleanLatex);
+    if (!latex.length) return "";
+    const best = latex.find(f => /=/.test(f) && !/\\begin/.test(f)) || latex[latex.length - 1];
+    return `Key step: $${best}$`;
+  }
+
   function extractShortcut(solution, q) {
     if (!solutionLooksRelevant(q, solution)) return [];
     const raw = plainText(solution);
@@ -107,50 +155,66 @@ const QuantrexSolution = (() => {
     const sub = ((q && q.subject) || "").toLowerCase();
 
     if (isMatchQuestion(q)) {
-      tips.push("Match each List-I item to the correct List-II entry");
-      return tips.slice(0, 2);
+      if (q && q.answer >= 0) {
+        const cor = (q.options || [])[q.answer];
+        const corText = plainText(cor);
+        if (corText) tips.push(`Correct mapping — ${corText}`);
+      }
+      tips.push("Step 1: Read List-I and List-II carefully.");
+      tips.push("Step 2: Match each item; eliminate wrong combinations.");
+      return tips.slice(0, 3);
     }
 
-    const latex = [...String(solution || "").matchAll(/\$([^$]{2,90})\$/g)]
-      .map(m => m[1].replace(/\\mathrm\{([^}]+)\}/g, "$1").trim())
-      .filter(f => f.length >= 3 && f.length <= 72 && !/f\s*['′]/.test(f));
-    latex.slice(0, 2).forEach(f => tips.push(f));
+    const finalLine = extractFinalAnswerLine(raw, q);
+    if (finalLine) tips.push(finalLine);
 
-    const chain = raw.match(/[^.]{4,90}(?:→|⟹|=>|=\s*[^.]{2,40})/);
-    if (chain && tips.length < 3) {
-      const t = chain[0].trim().replace(/\s+/g, " ");
-      if (t.length >= 8 && t.length <= 80) tips.push(t);
-    }
+    const keyFormula = extractKeyFormula(solution);
+    if (keyFormula && tips.length < 3) tips.push(keyFormula);
 
-    if (/nearest\s+integer|round\s+off/i.test(raw)) tips.push("Round to nearest integer in the last step");
-    if (/partial\s+mark|multiple\s+correct/i.test(raw)) tips.push("Tick every option that satisfies the condition");
+    if (/nearest\s+integer|round\s+off/i.test(raw)) tips.push("Round your final value to the nearest integer.");
+    if (/partial\s+mark|multiple\s+correct/i.test(raw)) tips.push("Select every option that satisfies the condition.");
 
     if (sub.includes("phys")) {
-      if (/conservation|energy|momentum/i.test(raw)) tips.push("Use conservation laws before long algebra");
-      else if (/kinematic|v\s*=|u\s*\+/i.test(raw)) tips.push("Pick the kinematic equation with the unknown you need");
-      else if (/ohm|resistance|current/i.test(raw)) tips.push("Draw the equivalent circuit first");
-    }
-    if (sub.includes("chem")) {
-      if (/oxidation|reduction|state/i.test(raw)) tips.push("Assign oxidation states before balancing");
-      else if (/equilibrium|Kc|Kp/i.test(raw)) tips.push("Write the equilibrium expression, then substitute");
-      else if (/organic|reagent/i.test(raw)) tips.push("Track functional group change step by step");
-    }
-    if (sub.includes("math")) {
-      if (/integrat/i.test(raw)) tips.push("Check substitution or standard integral form");
-      else if (/differentiat|d\/d/i.test(raw)) tips.push("Differentiate term-by-term; watch chain rule");
-      else if (/probability|permutation|combination/i.test(raw)) tips.push("List favourable outcomes ÷ total outcomes");
-    }
-    if ((sub.includes("bio") || sub.includes("zool") || sub.includes("bot")) && /mitochond|nephron|chlorophyll/i.test(raw)) {
-      tips.push("Link structure to function — one-line recall");
+      if (/conservation|energy|momentum/i.test(raw)) tips.push("Apply conservation laws before lengthy algebra.");
+      else if (/kinematic|v\s*=|u\s*\+/i.test(raw)) tips.push("Choose the kinematic equation with your unknown.");
+      else if (/ohm|resistance|current|circuit/i.test(raw)) tips.push("Draw the equivalent circuit, then apply KVL/KCL.");
+    } else if (sub.includes("chem")) {
+      if (/oxidation|reduction|state/i.test(raw)) tips.push("Assign oxidation states, then balance redox.");
+      else if (/equilibrium|Kc|Kp/i.test(raw)) tips.push("Write Kc/Kp expression, substitute equilibrium moles.");
+      else if (/organic|reagent/i.test(raw)) tips.push("Track functional-group change at each step.");
+    } else if (sub.includes("math")) {
+      if (/integrat/i.test(raw)) tips.push("Look for substitution or a standard integral form.");
+      else if (/differentiat|d\/d/i.test(raw)) tips.push("Differentiate term-by-term; apply chain rule where needed.");
+      else if (/probability|permutation|combination/i.test(raw)) tips.push("Favourable outcomes ÷ total outcomes.");
+    } else if (sub.includes("bio") || sub.includes("zool") || sub.includes("bot")) {
+      tips.push("Recall structure ↔ function link for the concept asked.");
     }
 
     const seen = new Set();
     return tips.filter(t => {
-      const k = t.toLowerCase().slice(0, 48);
-      if (seen.has(k) || t.length < 4) return false;
+      const k = plainText(t).toLowerCase().slice(0, 56);
+      if (!k || seen.has(k) || plainText(t).length < 8) return false;
+      if (/f\s*['′]\s*\(|prime\s*\(/i.test(t)) return false;
       seen.add(k);
       return true;
     }).slice(0, 3);
+  }
+
+  function renderShortcutPanel(shortcuts) {
+    if (!shortcuts || !shortcuts.length) return "";
+    const items = shortcuts.map((t, i) =>
+      `<li class="qx-sol-shortcut-item">
+        <span class="qx-sol-shortcut-num">${i + 1}</span>
+        <span class="qx-sol-shortcut-text qx-content">${formatShortcutLine(t)}</span>
+      </li>`
+    ).join("");
+    return `<div class="qx-sol-shortcut-panel" aria-label="Quick shortcut">
+      <div class="qx-sol-shortcut-head">
+        <span class="qx-sol-shortcut-icon">⚡</span>
+        <span class="qx-sol-shortcut-title">Quick Shortcut</span>
+      </div>
+      <ol class="qx-sol-shortcut-list">${items}</ol>
+    </div>`;
   }
 
   function polishHtml(html) {
@@ -185,17 +249,12 @@ const QuantrexSolution = (() => {
     const body = formatBody(sol, q);
     const shortcuts = extractShortcut(sol, q);
     const theme = subjectTheme(q);
-    const shortcutHtml = shortcuts.length
-      ? `<div class="qx-sol-shortcut" aria-label="Shortcut tips">
-          <span class="qx-sol-shortcut-label">⚡ Shortcut</span>
-          <div class="qx-sol-tips">${shortcuts.map(t => `<span class="qx-sol-tip">${esc(t)}</span>`).join("")}</div>
-        </div>`
-      : "";
+    const shortcutHtml = renderShortcutPanel(shortcuts);
     return `<div class="qx-sol-card ${theme}">
       <div class="qx-sol-head">
         <span class="qx-sol-badge">Quantrex Solution</span>
-        ${shortcutHtml}
       </div>
+      ${shortcutHtml}
       <div class="qx-content sol-body qx-sol-body">${body}</div>
     </div>`;
   }
@@ -205,7 +264,7 @@ const QuantrexSolution = (() => {
   }
 
   return {
-    renderBlock, renderInline, polishHtml, extractShortcut, subjectTheme, formatBody,
-    solutionLooksRelevant, isMatchQuestion, structureSolutionBody
+    renderBlock, renderInline, renderShortcutPanel, polishHtml, extractShortcut, subjectTheme, formatBody,
+    solutionLooksRelevant, isMatchQuestion, structureSolutionBody, formatShortcutLine
   };
 })();
