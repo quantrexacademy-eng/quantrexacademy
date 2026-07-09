@@ -271,10 +271,45 @@ function qxBackgroundPrefetch(ids) {
   if (typeof MarksLive === "undefined" || !MarksLive.prefetchQuestions || !ids || !ids.length) return;
   const need = ids.filter(id => {
     const q = getQ(id);
-    return q && q._marksId && MarksLive.needsFullQuestion(q);
+    if (!q || !q._marksId) return false;
+    if (MarksLive.needsFullQuestion(q)) return true;
+    if (MarksLive.isOptionsIncomplete && MarksLive.isOptionsIncomplete(q)) return true;
+    if (MarksLive.isQuestionIncomplete && MarksLive.isQuestionIncomplete(q)) return true;
+    return false;
   });
   if (!need.length) return;
   MarksLive.prefetchQuestions(need).catch(() => {});
+}
+
+let _qxPracHydrateTimer = null;
+window.qxRetryPracticeLoad = qxRetryPracticeLoad;
+async function qxRetryPracticeLoad() {
+  const ctx = window._qxPracticeCtx;
+  if (!ctx || !ctx.ids.length) return;
+  const qid = ctx.ids[ctx.idx];
+  let q = getQ(qid);
+  if (!q) { showToast("⚠️ Question not found"); return; }
+  const main = document.getElementById("app-main");
+  if (main) main.innerHTML = `<div class="qx-practice-page"><div class="empty" style="padding:48px;text-align:center">Loading question…</div></div>`;
+  q = await qxHydrateQuestion(q, true);
+  if (main) {
+    main.innerHTML = viewQuestion(qid);
+    bindPracticeQuestion(main);
+    if (typeof Mx !== "undefined") Mx.afterRender(main);
+  }
+}
+
+function qxSchedulePracticeHydrate(q) {
+  clearTimeout(_qxPracHydrateTimer);
+  if (!q || !q._marksId || typeof MarksLive === "undefined") return;
+  const needs = (MarksLive.isQuestionIncomplete && MarksLive.isQuestionIncomplete(q))
+    || (MarksLive.isOptionsIncomplete && MarksLive.isOptionsIncomplete(q));
+  if (!needs) return;
+  _qxPracHydrateTimer = setTimeout(() => {
+    const main = document.getElementById("app-main");
+    const stuck = main && main.querySelector(".qx-load-opts, .qx-load-q");
+    if (stuck) qxRetryPracticeLoad();
+  }, 12000);
 }
 
 function enterAllenPracticeMode() {
@@ -465,9 +500,12 @@ function viewQuestion(id) {
   const incomplete = typeof MarksLive !== "undefined" && MarksLive.isQuestionIncomplete
     ? MarksLive.isQuestionIncomplete(q)
     : false;
+  const optsIncomplete = !incomplete && typeof MarksLive !== "undefined" && MarksLive.isOptionsIncomplete
+    ? MarksLive.isOptionsIncomplete(q)
+    : false;
   const qTypeBadge = typeof QuantrexQFormat !== "undefined" ? QuantrexQFormat.typeBadgeHtml(q) : "";
-  const opts = incomplete
-    ? `<div class="empty" style="padding:20px">Loading options…</div>`
+  const opts = (incomplete || optsIncomplete)
+    ? `<div class="empty qx-load-opts" style="padding:20px">Loading options… <button type="button" class="btn-soft sm" onclick="qxRetryPracticeLoad()">Retry</button></div>`
     : (typeof QuantrexQFormat !== "undefined"
       ? QuantrexQFormat.renderOptions(q, { selected: sel, done })
       : "");
@@ -479,14 +517,14 @@ function viewQuestion(id) {
     : sel != null;
 
   const qBody = incomplete
-    ? `<div class="empty" style="padding:20px 0">Loading question text…</div>`
+    ? `<div class="empty qx-load-q" style="padding:20px 0">Loading question text… <button type="button" class="btn-soft sm" onclick="qxRetryPracticeLoad()">Retry</button></div>`
     : (typeof Mx !== "undefined" ? Mx.html(q.q) : q.q);
 
   const resultHtml = done ? qxPracticeResultHtml(q, sel) : "";
   const hasSol = qxHasSolution(q);
   const solReveal = (window._qxSolRevealed && window._qxSolRevealed[q.id]) ? qxSolutionBlockHtml(q) : "";
 
-  setTimeout(() => loadCommunityForQuestion(q), 0);
+  setTimeout(() => { loadCommunityForQuestion(q); qxSchedulePracticeHydrate(q); }, 0);
 
   if (typeof AllenTestUI !== "undefined") {
     return AllenTestUI.practiceHtml(q, pc, {

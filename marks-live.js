@@ -347,6 +347,7 @@ const MarksLive = (() => {
     if (!q || !q._marksId) return false;
     if (q._shardLoaded) return false;
     if (needsFullQuestion(q)) return true;
+    if (isOptionsIncomplete(q)) return true;
     const opts = q.options || [];
     const hasBody = opts.some(o => String(o || "").replace(/<[^>]+>/g, " ").trim());
     return !hasBody && !isNonMcqType(q.questionType || q.type);

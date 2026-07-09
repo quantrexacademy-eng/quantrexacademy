@@ -1072,13 +1072,17 @@ async function tsLaunchTest(testId, test, meta, seriesId, opts) {
     ? loadResult.ids
     : (test.questionIds || []).map(tsNormalizeQuestionId).filter(Boolean);
   if (!loaded || !questionIds.length) {
-    showToast("⚠️ Questions could not load. Try again.");
+    showToast(`⚠️ "${test.title || "Test"}" could not load. Check connection and retry.`);
     return;
   }
   const verified = questionIds.filter(id => getQ(id));
   if (!verified.length) {
-    showToast("⚠️ Questions could not load. Try again.");
+    showToast(`⚠️ "${test.title || "Test"}" — questions failed to open. Retry in a moment.`);
     return;
+  }
+  const expect = test.totalQs || 75;
+  if (verified.length < expect * 0.85) {
+    showToast(`⚠️ Loaded ${verified.length}/${expect} questions — some may still sync.`);
   }
   tsSaveAttempt(testId, { status: "inProgress", title: test.title, categoryId: meta.categoryId });
   tsStandaloneLaunchTest(testId, test, meta, seriesId, verified, o);
@@ -1103,7 +1107,7 @@ function tsBuildTestConfig(testId, test, meta, seriesId, questionIds) {
     totalMarks: test.totalMarks || 300,
     scoring: { correct: 4, wrong: -1, unattempted: 0 },
     onComplete: (data) => {
-      if (typeof marksClearSession === "function") marksClearSession();
+      if (typeof marksClearSession === "function") marksClearSession(`ts::${seriesId}::${testId}`);
       tsSaveAttempt(testId, {
         status: "completed", score: data.score, pct: data.pct,
         correct: data.correct, total: data.total, completedAt: new Date().toISOString()

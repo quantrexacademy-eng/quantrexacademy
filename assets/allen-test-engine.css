@@ -320,3 +320,27 @@ body.allen-cbt-active .marks-countdown-grab { color: #fff; }
   .allen-instr-stats { grid-template-columns: 1fr; }
   .allen-instr-inner { padding: 20px 16px 32px; }
 }
+
+@media (max-width: 720px) {
+  .mtk-test-root.allen-cbt .mtk-header {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 10px;
+    min-height: auto;
+  }
+  .mtk-test-root.allen-cbt .mtk-header-left { min-width: 0; flex: 1 1 100%; }
+  .mtk-test-root.allen-cbt .mtk-brand-text {
+    font-size: 12px;
+    max-width: min(52vw, 200px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .mtk-test-root.allen-cbt .mtk-theme-lbl { display: none; }
+  .mtk-test-root.allen-cbt .mtk-header-tools { padding: 4px 6px; gap: 4px; }
+  .mtk-test-root.allen-cbt .mtk-submit-top { padding: 6px 12px; font-size: 12px; }
+  .mtk-test-root.allen-cbt .mtk-stop-btn { padding: 6px 10px; font-size: 12px; }
+  .mtk-test-root.allen-cbt .mtk-timer { font-size: 13px; }
+  .mtk-test-root.allen-cbt .mtk-body { grid-template-columns: 1fr; }
+  .mtk-test-root.allen-cbt .mtk-palette { max-height: 240px; }
+}

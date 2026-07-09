@@ -753,22 +753,22 @@ const QuantrexTestEngine = (() => {
     showToast(hadPersist ? `✓ Test stopped. Resume anytime from ${resumeHint}.` : "✓ Test saved.");
   }
 
-  function quit() {
+  function quit(force) {
     if (!session) return;
-    if (session.marksMode && session.persistKey && typeof mtkShowStopModal === "function") {
+    if (!force && typeof mtkShowStopModal === "function") {
       mtkShowStopModal("exit");
       return;
     }
-    const msg = session.marksMode
-      ? "Exit test? Your progress is saved — you can resume later from PYQ Mock Tests."
-      : "Leave this assessment? Unsaved answers will be lost.";
-    if (confirm(msg)) {
-      stopTimer();
-      if (session.marksMode && session.persistKey) marksPersistSession();
-      else marksClearSession();
-      const ret = session.returnTo || "tests";
-      exitMarksTestMode();
-      session = null;
+    stopTimer();
+    if (session.marksMode && session.persistKey) marksPersistSession();
+    else marksClearSession(session.persistKey || null);
+    const ret = session.returnTo || "tests";
+    const testType = session.testType;
+    exitMarksTestMode();
+    session = null;
+    if (testType === "testseries" && window.TS_STANDALONE && typeof tsRenderStandalone === "function") {
+      tsRenderStandalone();
+    } else {
       go(ret);
     }
   }
@@ -1973,13 +1973,20 @@ function mtkStopModalHtml(mode) {
   const resumeWhere = sess && sess.testType === "testseries"
     ? "Test Series → Resume tab"
     : "PYQ Mock Tests";
+  const canSave = !!(sess && sess.persistKey);
+  const hint = canSave
+    ? `Your answers and remaining time will be saved. Resume anytime from <strong>${resumeWhere}</strong>.`
+    : "Leave this test? Unsaved progress on this session may be lost.";
+  const actionBtn = isExit
+    ? (canSave ? "🚪 Exit &amp; Save" : "🚪 Exit Test")
+    : "⏸ Stop &amp; Save";
   return `<div class="marks-modal-overlay" id="mtkStopModal" onclick="if(event.target===this)mtkCloseStopModal()">
     <div class="marks-resume-modal marks-stop-modal">
       <button type="button" class="marks-resume-close" onclick="mtkCloseStopModal()">✕</button>
       <div class="marks-resume-icon">${isExit ? "🚪" : "⏸"}</div>
       <h3>${isExit ? "Exit Test?" : "Stop Test"}</h3>
-      <p class="marks-resume-hint">Your answers and remaining time will be saved. Resume anytime from <strong>${resumeWhere}</strong>.</p>
-      <button type="button" class="marks-resume-btn" onclick="mtkConfirmStop()">⏸ Stop &amp; Save</button>
+      <p class="marks-resume-hint">${hint}</p>
+      <button type="button" class="marks-resume-btn" onclick="mtkConfirmStop('${isExit ? "exit" : "stop"}')">${actionBtn}</button>
       <button type="button" class="marks-resume-cancel" onclick="mtkCloseStopModal()">Continue Test</button>
     </div>
   </div>`;
@@ -1995,11 +2002,17 @@ function mtkCloseStopModal() {
   if (el) el.remove();
 }
 
-function mtkConfirmStop() {
+function mtkConfirmStop(mode) {
   mtkCloseStopModal();
-  if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.stopAndSave) {
-    QuantrexTestEngine.stopAndSave();
+  const eng = typeof QuantrexTestEngine !== "undefined" ? QuantrexTestEngine : null;
+  if (!eng) return;
+  if (mode === "exit" && eng.quit) {
+    const sess = eng.getSession && eng.getSession();
+    if (sess && sess.persistKey && eng.stopAndSave) eng.stopAndSave();
+    else if (eng.quit) eng.quit(true);
+    return;
   }
+  if (eng.stopAndSave) eng.stopAndSave();
 }
 
 function mtkSubmitModalHtml() {
