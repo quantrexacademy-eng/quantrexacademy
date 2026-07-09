@@ -29,21 +29,9 @@
 .qx-fig::after {
   right: 0;
   bottom: 0;
-  width: 32%;
-  height: 22%;
-  background: linear-gradient(135deg, transparent 25%, rgba(255, 255, 255, 0.92) 72%);
-}
-.qx-fig::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 42%;
-  height: 18%;
-  pointer-events: none;
-  z-index: 1;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.88) 0%, transparent 72%);
+  width: 18%;
+  height: 14%;
+  background: linear-gradient(135deg, transparent 30%, rgba(255, 255, 255, 0.85) 80%);
 }
 
 .qx-fig-img,
@@ -92,9 +80,9 @@
 .qx-opt-fig::after {
   right: 0;
   bottom: 0;
-  width: 36%;
-  height: 28%;
-  background: linear-gradient(135deg, transparent 20%, rgba(255, 255, 255, 0.94) 70%);
+  width: 20%;
+  height: 16%;
+  background: linear-gradient(135deg, transparent 25%, rgba(255, 255, 255, 0.88) 78%);
 }
 
 .qx-opt-fig img {

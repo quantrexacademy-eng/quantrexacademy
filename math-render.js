@@ -87,7 +87,7 @@ window.Mx = (() => {
 
   function figureHtml(attrs) {
     const hasLoading = /loading=/i.test(attrs);
-    const extra = (hasLoading ? "" : ' loading="eager" decoding="async" fetchpriority="high"') + ' crossorigin="anonymous"';
+    const extra = hasLoading ? "" : ' loading="eager" decoding="async" fetchpriority="high"';
     const cls = /class=/i.test(attrs)
       ? attrs.replace(/class=(["'])([^"']*)\1/i, 'class=$1$2 qx-fig-img qx-no-wm$1')
       : attrs + ' class="qx-fig-img qx-no-wm"';
@@ -141,8 +141,6 @@ window.Mx = (() => {
     img.classList.add("qx-no-wm");
     img.loading = "eager";
     img.decoding = "async";
-    img.crossOrigin = "anonymous";
-    if (typeof QxWM !== "undefined" && QxWM.washBakedWatermark) QxWM.washBakedWatermark(img);
   }
 
   function wrapQuestionFig(img) {
@@ -156,8 +154,6 @@ window.Mx = (() => {
     img.loading = "eager";
     img.decoding = "async";
     img.fetchPriority = "high";
-    img.crossOrigin = "anonymous";
-    if (typeof QxWM !== "undefined" && QxWM.washBakedWatermark) QxWM.washBakedWatermark(img);
   }
 
   function protectImgUrls(str) {

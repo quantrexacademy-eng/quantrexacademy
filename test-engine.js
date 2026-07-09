@@ -833,7 +833,11 @@ const QuantrexTestEngine = (() => {
     const hasSol = typeof MarksLive !== "undefined" && MarksLive.hasRealSolution
       ? MarksLive.hasRealSolution(r.q.solution)
       : !!String(r.q.solution || "").replace(/<[^>]+>/g, "").trim();
-      const sol = hasSol ? `<div class="sol qx-exam-sol"><strong>Solution</strong><div class="qx-content sol-body">${htmlContent(r.q.solution)}</div></div>` : "";
+      const sol = hasSol
+        ? `<div class="sol qx-exam-sol">${typeof QuantrexSolution !== "undefined"
+          ? QuantrexSolution.renderBlock(r.q)
+          : `<strong>Solution</strong><div class="qx-content sol-body">${htmlContent(r.q.solution)}</div>`}</div>`
+        : "";
     const chosenHtml = typeof QuantrexQFormat !== "undefined"
       ? QuantrexQFormat.formatChosenAnswer(r.q, r.chosen)
       : htmlContent((r.q.options || [])[r.chosen]);

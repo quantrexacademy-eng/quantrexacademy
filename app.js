@@ -539,6 +539,9 @@ function viewQuestion(id) {
 
 function qxSolutionBlockHtml(q) {
   if (!qxHasSolution(q)) return "";
+  if (typeof QuantrexSolution !== "undefined") {
+    return `<div class="result-box ok qx-sol-reveal-box">${QuantrexSolution.renderBlock(q)}</div>`;
+  }
   const solHtml = typeof Mx !== "undefined" ? Mx.html(q.solution) : q.solution;
   return `<div class="result-box ok qx-sol-reveal-box">
     <strong>💡 Solution</strong>

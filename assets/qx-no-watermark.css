@@ -17,8 +17,9 @@ img.qx-no-wm,
 .qx-diagram-modal img[src*="cdn-question-pool"],
 .marks-result img[src*="cdn-question-pool"],
 .sol-body img[src*="cdn-question-pool"] {
-  filter: contrast(1.18) brightness(1.07) saturate(1.06);
-  -webkit-filter: contrast(1.18) brightness(1.07) saturate(1.06);
+  /* Filters removed — handled by corner overlay only; clarity in qx-image-quality.css */
+  filter: none;
+  -webkit-filter: none;
   image-rendering: auto;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;

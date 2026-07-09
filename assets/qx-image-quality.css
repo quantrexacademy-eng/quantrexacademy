@@ -1,0 +1,60 @@
+/* Quantrex — crisp, high-visibility question & option images */
+
+img.qx-no-wm,
+.qx-fig-img,
+.qx-fig img,
+.qx-opt-fig img,
+.qx-content img[src*="cdn-question-pool"],
+.qx-content img[src*="/pyq/"],
+.mtk-q-text img,
+.mtk-opt-text img,
+.qa-q img,
+.qx-prac-q img,
+.qx-prac-opt-text img,
+.sol-body img {
+  filter: none !important;
+  -webkit-filter: none !important;
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.qx-fig-img,
+.qx-fig img {
+  max-height: 520px !important;
+}
+
+.mtk-q-text .qx-fig-img,
+.qa-q .qx-fig-img,
+.qx-prac-q .qx-fig-img {
+  max-height: 460px !important;
+}
+
+.qx-opt-fig img,
+.mtk-opt-text .qx-opt-fig img {
+  max-height: 200px !important;
+}
+
+.qx-fig,
+.qx-opt-fig {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
+}
+
+.qx-fig img,
+.qx-opt-fig img {
+  border-radius: 6px;
+}
+
+.mtk-test-root[data-test-theme="light"] .qx-fig,
+.mtk-test-root[data-test-theme="light"] .qx-opt-fig {
+  background: #fff;
+  border: 1px solid #e8eef4;
+}
+
+@media (max-width: 640px) {
+  .qx-fig-img, .qx-fig img { max-height: 320px !important; }
+  .qx-opt-fig img { max-height: 140px !important; }
+}

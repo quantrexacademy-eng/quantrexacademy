@@ -1,0 +1,134 @@
+/* Quantrex — professional solution cards with shortcut corner */
+
+.qx-sol-card {
+  position: relative;
+  border-radius: 14px;
+  border: 1px solid rgba(13, 148, 136, 0.22);
+  background: linear-gradient(145deg, rgba(13, 148, 136, 0.06) 0%, rgba(255, 255, 255, 0.02) 48%);
+  padding: 14px 16px 16px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.qx-sol-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #0d9488, #14b8a6);
+  border-radius: 14px 0 0 14px;
+}
+
+.qx-sol-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.qx-sol-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0f766e;
+  background: rgba(13, 148, 136, 0.12);
+  border: 1px solid rgba(13, 148, 136, 0.25);
+}
+
+.qx-sol-shortcut {
+  margin-left: auto;
+  max-width: min(100%, 280px);
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.14), rgba(251, 191, 36, 0.08));
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  text-align: right;
+}
+
+.qx-sol-shortcut-label {
+  display: block;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b45309;
+  margin-bottom: 4px;
+}
+
+.qx-sol-tips {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
+}
+
+.qx-sol-tip {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #92400e;
+  max-width: 100%;
+  word-break: break-word;
+}
+
+.qx-sol-body {
+  font-size: 15px;
+  line-height: 1.72;
+  color: var(--text, #1e293b);
+}
+
+.qx-sol-body p { margin: 6px 0; }
+.qx-sol-body strong { color: #0f766e; }
+
+/* Subject accent themes */
+.qx-sol-phys {
+  border-color: rgba(37, 99, 235, 0.28);
+  background: linear-gradient(145deg, rgba(37, 99, 235, 0.07) 0%, rgba(255, 255, 255, 0.02) 50%);
+}
+.qx-sol-phys::before { background: linear-gradient(180deg, #2563eb, #3b82f6); }
+.qx-sol-phys .qx-sol-badge { color: #1d4ed8; background: rgba(37, 99, 235, 0.1); border-color: rgba(37, 99, 235, 0.25); }
+
+.qx-sol-chem {
+  border-color: rgba(147, 51, 234, 0.28);
+  background: linear-gradient(145deg, rgba(147, 51, 234, 0.07) 0%, rgba(255, 255, 255, 0.02) 50%);
+}
+.qx-sol-chem::before { background: linear-gradient(180deg, #7c3aed, #a855f7); }
+.qx-sol-chem .qx-sol-badge { color: #6d28d9; background: rgba(147, 51, 234, 0.1); border-color: rgba(147, 51, 234, 0.25); }
+
+.qx-sol-math {
+  border-color: rgba(13, 148, 136, 0.28);
+  background: linear-gradient(145deg, rgba(13, 148, 136, 0.08) 0%, rgba(255, 255, 255, 0.02) 50%);
+}
+
+.qx-sol-bio {
+  border-color: rgba(22, 163, 74, 0.28);
+  background: linear-gradient(145deg, rgba(22, 163, 74, 0.07) 0%, rgba(255, 255, 255, 0.02) 50%);
+}
+.qx-sol-bio::before { background: linear-gradient(180deg, #16a34a, #22c55e); }
+.qx-sol-bio .qx-sol-badge { color: #15803d; background: rgba(22, 163, 74, 0.1); border-color: rgba(22, 163, 74, 0.25); }
+
+.qx-sol-reveal-box .qx-sol-card { margin-top: 0; }
+
+.marks-result .qx-sol-card,
+.qx-exam-sol .qx-sol-card {
+  margin-top: 8px;
+}
+
+[data-theme="dark"] .qx-sol-body { color: #e2e8f0; }
+[data-theme="dark"] .qx-sol-tip { color: #fcd34d; }
+[data-theme="dark"] .qx-sol-shortcut { background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(0, 0, 0, 0.1)); }
+
+@media (max-width: 640px) {
+  .qx-sol-shortcut { max-width: 100%; margin-left: 0; text-align: left; }
+  .qx-sol-tips { align-items: flex-start; }
+}
