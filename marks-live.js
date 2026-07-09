@@ -66,6 +66,7 @@ const MarksLive = (() => {
   }
 
   function fixImgUrl(url) {
+    if (typeof QxImgClean !== "undefined" && QxImgClean.fixUrl) return QxImgClean.fixUrl(url);
     return String(url || "").replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/");
   }
 

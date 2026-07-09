@@ -18,9 +18,9 @@
   overflow: hidden;
 }
 
-/* Cover baked-in corner/center gray watermarks on CDN diagrams */
-.qx-fig::after,
-.qx-opt-fig::after {
+/* Fallback mask for uncleaned CDN diagrams only */
+.qx-fig:not(:has(img.qx-cleaned))::after,
+.qx-opt-fig:not(:has(img.qx-cleaned))::after {
   content: "";
   position: absolute;
   pointer-events: none;

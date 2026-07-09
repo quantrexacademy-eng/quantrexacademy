@@ -268,6 +268,7 @@ window.Mx = (() => {
   function afterRender(root) {
     requestAnimationFrame(() => {
       cleanDom(root);
+      if (typeof QxImgClean !== "undefined") QxImgClean.scan(root);
       if (typeof QxPerf !== "undefined") {
         QxPerf.lazyImages(root);
         QxPerf.smoothPaint(root);

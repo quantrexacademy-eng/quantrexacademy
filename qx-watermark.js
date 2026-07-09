@@ -40,8 +40,9 @@ window.QxWM = (() => {
   }
 
   function washBakedWatermark(img) {
-    if (!img) return;
+    if (!img || img.dataset.qxWashed === "1") return;
     img.dataset.qxWashed = "1";
+    if (typeof QxImgClean !== "undefined") QxImgClean.processImage(img);
   }
 
   function tagDiagramImages(root) {

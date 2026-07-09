@@ -1,0 +1,40 @@
+/* Quantrex — cleaned diagram states */
+
+img.qx-cleaned {
+  filter: none !important;
+  -webkit-filter: none !important;
+  image-rendering: auto;
+}
+
+img.qx-img-flagged {
+  display: none !important;
+}
+
+.qx-img-review-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+  padding: 14px 16px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px dashed #94a3b8;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+[data-theme="dark"] .qx-img-review-note {
+  background: #1e293b;
+  border-color: #475569;
+  color: #94a3b8;
+}
+
+/* Real pixel removal — no corner gradient mask needed */
+.qx-fig.qx-cleaned-wrap::after,
+.qx-opt-fig.qx-cleaned-wrap::after,
+img.qx-cleaned + .qx-fig::after {
+  display: none !important;
+}
