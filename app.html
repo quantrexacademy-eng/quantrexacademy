@@ -493,13 +493,13 @@
         }
         .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 18px; margin-bottom: 24px; }
         .books-scroll { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
-        .books-scroll .qx-book-card-compact { flex: 0 0 156px; scroll-snap-align: start; }
+        .books-scroll .qx-book-card-compact { flex: 0 0 172px; scroll-snap-align: start; }
         .book-card, .qx-book-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; cursor: pointer; transition: transform .18s, box-shadow .18s; }
         .book-card:hover:not(.soon), .qx-book-card:hover:not(.soon) { transform: translateY(-4px); box-shadow: 0 14px 32px var(--qx-glow); }
         .book-card.soon, .qx-book-card.soon { opacity: .72; cursor: default; filter: grayscale(.25); }
-        .book-info { padding: 12px 14px 14px; }
-        .book-info strong { display: block; font-size: 13px; margin-bottom: 4px; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .book-info small { color: var(--gray); font-size: 11px; line-height: 1.4; }
+        .book-info { padding: 12px 14px 14px; background: var(--white); }
+        .book-info strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 5px; line-height: 1.4; color: var(--dark); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .book-info small { color: #475569; font-size: 11px; font-weight: 600; line-height: 1.45; }
         .qx-book-cover { position: relative; aspect-ratio: 3 / 4; background: linear-gradient(145deg, var(--cover-c1), var(--cover-c2) 55%, var(--cover-c3)); overflow: hidden; }
         .qx-book-cover.qx-cover-sm { aspect-ratio: 3 / 3.6; }
         .qx-book-cover.qx-cover-lg { aspect-ratio: 3 / 4.2; }
@@ -522,11 +522,11 @@
         .qx-book-photo { position: relative; aspect-ratio: 3 / 4; perspective: 900px; }
         .qx-book-photo.qx-cover-sm { aspect-ratio: 3 / 3.6; }
         .qx-book-photo.qx-cover-lg { aspect-ratio: 3 / 4.2; }
-        .qx-book-photo-frame { position: relative; width: 100%; height: 100%; border-radius: 10px 14px 14px 10px; overflow: hidden; transform: rotateY(-7deg); transform-origin: left center; box-shadow: 8px 10px 24px rgba(0,0,0,.28), inset -2px 0 0 rgba(255,255,255,.08); transition: transform .2s, box-shadow .2s; background: #1e293b; }
-        .qx-book-card:hover:not(.soon) .qx-book-photo-frame { transform: rotateY(-3deg) translateY(-2px); box-shadow: 12px 16px 30px rgba(0,0,0,.32); }
-        .qx-book-photo-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .qx-book-photo-spine { position: absolute; left: 0; top: 0; bottom: 0; width: 16px; background: linear-gradient(90deg, rgba(0,0,0,.42), rgba(0,0,0,.12)); pointer-events: none; }
-        .qx-book-photo-shine { position: absolute; inset: 0; background: linear-gradient(125deg, rgba(255,255,255,.22) 0%, transparent 38%, transparent 62%, rgba(255,255,255,.08) 100%); pointer-events: none; }
+        .qx-book-photo-frame { position: relative; width: 100%; height: 100%; border-radius: 10px 14px 14px 10px; overflow: hidden; transform: rotateY(-4deg); transform-origin: left center; box-shadow: 8px 10px 24px rgba(0,0,0,.22), inset -2px 0 0 rgba(255,255,255,.12); transition: transform .2s, box-shadow .2s; background: linear-gradient(145deg, #f8fafc, #e2e8f0); }
+        .qx-book-card:hover:not(.soon) .qx-book-photo-frame { transform: rotateY(-2deg) translateY(-2px); box-shadow: 12px 16px 30px rgba(0,0,0,.28); }
+        .qx-book-photo-img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; padding: 3px 4px; box-sizing: border-box; filter: contrast(1.12) brightness(1.08) saturate(1.06); -webkit-backface-visibility: hidden; backface-visibility: hidden; image-rendering: auto; }
+        .qx-book-photo-spine { position: absolute; left: 0; top: 0; bottom: 0; width: 9px; background: linear-gradient(90deg, rgba(0,0,0,.22), transparent); pointer-events: none; z-index: 2; }
+        .qx-book-photo-shine { position: absolute; inset: 0; background: linear-gradient(125deg, rgba(255,255,255,.08) 0%, transparent 42%, transparent 68%, rgba(255,255,255,.03) 100%); pointer-events: none; z-index: 1; }
         .qx-photo-count, .qx-photo-tag, .qx-photo-soon { position: absolute; z-index: 2; font-size: 9px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 4px 8px; border-radius: 6px; }
         .qx-photo-count { right: 8px; bottom: 8px; background: rgba(0,0,0,.55); color: #fff; }
         .qx-photo-tag { left: 20px; top: 8px; background: rgba(255,255,255,.92); color: #b91c1c; }
@@ -550,8 +550,11 @@
         .qx-bucket-card.bucket-numerical { border-left-color: #dc2626; background: linear-gradient(90deg, #fef2f2, var(--white) 40%); }
         .qx-bucket-card.bucket-default { border-left-color: var(--primary); }
         .qx-topic-card strong::before { content: "🎯 "; }
-        .qx-book-card-compact .book-info strong { font-size: 11px; -webkit-line-clamp: 2; }
-        .qx-book-card-compact .book-info small { font-size: 10px; }
+        .qx-book-card-compact .book-info strong { font-size: 12px; font-weight: 700; -webkit-line-clamp: 3; }
+        .qx-book-card-compact .book-info small { font-size: 10px; font-weight: 600; color: #64748b; }
+        [data-theme="dark"] .book-info strong { color: var(--text); }
+        [data-theme="dark"] .book-info small { color: #94a3b8; }
+        [data-theme="dark"] .qx-book-photo-frame { background: linear-gradient(145deg, #1e293b, #0f172a); }
         .qx-book-badge { display: inline-block; font-size: 10px; font-weight: 800; background: var(--primary-light); color: var(--primary); padding: 2px 8px; border-radius: 6px; margin-right: 6px; max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: bottom; }
         .tag-diff { background: var(--orange-light); color: #9a6b00; }
         .tag-ok { background: var(--green-light); color: var(--green); }
@@ -1711,7 +1714,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxtest472</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build — hard refresh if outdated">Build qxtest473</div>
             </div>
         </aside>
 
@@ -1737,7 +1740,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
-    <script>window.QX_BUILD="qxtest472";</script>
+    <script>window.QX_BUILD="qxtest473";</script>
     <script src="qx-perf.js?v=qxtest438"></script>
     <script src="firebase-config.js?v=qxtest438" defer></script>
     <script src="stack-config.js?v=qxtest438" defer></script>
@@ -1755,7 +1758,7 @@
     <script src="premium.js?v=qxtest438" defer></script>
     <script src="leaderboard.js?v=qxtest438" defer></script>
     <script src="community.js?v=qxtest438" defer></script>
-    <script src="book-covers.js?v=qxtest472" defer></script>
+    <script src="book-covers.js?v=qxtest473" defer></script>
     <script src="marks-shell.js?v=qxtest438" defer></script>
     <script src="marks-live.js?v=qxtest465" defer></script>
     <script src="marks-features.js?v=qxtest465" defer></script>
