@@ -599,11 +599,13 @@ function qxPracticeResultHtml(q, sel) {
   const solBlock = qxHasSolution(q) ? qxSolutionBlockHtml(q) : "";
   const title = correct ? "✅ Correct!" : (partial ? "⚠️ Partially Correct" : "❌ Incorrect");
   const boxCls = correct ? "ok" : (partial ? "partial" : "no");
-  return `<div class="result-box ${boxCls}">
-    <strong>${title}</strong>
-    ${!correct ? `<p class="qx-prac-correct-ans">Correct answer: <span class="qx-content">${ansLabel}</span></p>` : ""}
+  return `<div class="qx-prac-result-wrap">
+    <div class="result-box ${boxCls}">
+      <strong>${title}</strong>
+      ${!correct ? `<p class="qx-prac-correct-ans">Correct answer: <span class="qx-content">${ansLabel}</span></p>` : ""}
+      ${!solBlock ? `<p class="qx-no-sol-note">Solution not available for this question.</p>` : ""}
+    </div>
     ${solBlock}
-    ${!solBlock ? `<p class="qx-no-sol-note">Solution not available for this question.</p>` : ""}
   </div>`;
 }
 
@@ -681,7 +683,15 @@ async function answerQ(qid, response) {
   if (typeof QuantrexQFormat !== "undefined" && !QuantrexQFormat.isAnswered(getQ(qid), response)) return;
   let q = getQ(qid);
   if (!q) return;
-  if (q && q._marksId) q = await qxHydrateQuestion(q, false);
+  if (q && q._marksId) {
+    q = await qxHydrateQuestion(q, false);
+    const solBad = qxHasSolution(q) && typeof QuantrexSolution !== "undefined"
+      && QuantrexSolution.solutionLooksRelevant
+      && !QuantrexSolution.solutionLooksRelevant(q, q.solution);
+    if (solBad && typeof MarksLive !== "undefined") {
+      q = await MarksLive.ensureQuestionFull(q, { force: true, solution: true });
+    }
+  }
   const ctx = window._qxPracticeCtx || { done: {}, selected: {} };
   ctx.done[qid] = true;
   ctx.selected[qid] = response;

@@ -1,4 +1,4 @@
-// Quantrex — polished solution display (rephrased, shortcut tips, subject themes)
+// Quantrex — polished solution display (structured steps, shortcut tips, subject themes)
 const QuantrexSolution = (() => {
   const PHRASE_MAP = [
     [/Therefore/gi, "Hence"],
@@ -32,14 +32,88 @@ const QuantrexSolution = (() => {
       .trim();
   }
 
+  function isMatchQuestion(q) {
+    if (!q) return false;
+    const text = String(q.q || "");
+    if (/match\s+(the\s+)?list|list[\s\-]*i.*list[\s\-]*ii|column\s+match/i.test(text)) return true;
+    if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.getType(q) === "columnMatch") return true;
+    const opts = (q.options || []).map(o => plainText(o)).join(" ");
+    return /→|⟶|->/.test(opts) && /\(A\)|\(B\)|\(C\)|\(D\)/i.test(opts);
+  }
+
+  function solutionLooksRelevant(q, sol) {
+    const solText = plainText(sol);
+    if (!solText || solText.length < 20) return false;
+    if (/^no solution\.?$/i.test(solText)) return false;
+    if (isMatchQuestion(q)) {
+      const matchHints = /match|list[\s\-]*i|list[\s\-]*ii|→|mapping|combination|pair|correct\s+option/i.test(solText);
+      const calcHeavy = /f\s*['′]\s*\(|derivative|differentiat|integrat|sin\s*[\-−]?\s*\^?1/i.test(solText);
+      if (calcHeavy && !matchHints && solText.length > 280) return false;
+    }
+    return true;
+  }
+
+  function normalizeMathChars(html) {
+    return String(html || "")
+      .replace(/‹/g, "&lt;")
+      .replace(/›/g, "&gt;")
+      .replace(/≤/g, "$\\le$")
+      .replace(/≥/g, "$\\ge$")
+      .replace(/≠/g, "$\\ne$")
+      .replace(/−/g, "-")
+      .replace(/–/g, "-")
+      .replace(/—/g, "-")
+      .replace(/′/g, "'")
+      .replace(/″/g, "\"");
+  }
+
+  function structureSolutionBody(html) {
+    let out = normalizeMathChars(html);
+    if (/<div[^>]+class=["'][^"']*qx-sol-step/i.test(out)) return out;
+
+    const text = plainText(out);
+    const stepMarkers = text.match(/\([A-D]\)/gi) || [];
+    const hasSteps = stepMarkers.length >= 2 && stepMarkers.length <= 8;
+
+    if (hasSteps) {
+      const chunks = out.split(/(?=(?:<br\s*\/?>|\n)\s*\([A-D]\)\s*)/i);
+      if (chunks.length > 1) {
+        return chunks.map(chunk => {
+          const t = chunk.trim();
+          if (!t) return "";
+          const m = t.match(/^\(?([A-D])\)?\s*/i);
+          if (m) {
+            const label = m[1].toUpperCase();
+            const body = t.replace(/^\(?[A-D]\)?\s*/i, "").trim();
+            return `<div class="qx-sol-step"><span class="qx-sol-step-label">${label}</span><div class="qx-sol-step-body">${body}</div></div>`;
+          }
+          return `<div class="qx-sol-step qx-sol-step-plain"><div class="qx-sol-step-body">${t}</div></div>`;
+        }).filter(Boolean).join("");
+      }
+    }
+
+    out = out.replace(/(<br\s*\/?>\s*){3,}/gi, "<br><br>");
+    const paras = out.split(/(?:<br\s*\/?>\s*){2,}/i).filter(p => p.trim());
+    if (paras.length > 1) {
+      return paras.map(p => `<p class="qx-sol-para">${p.trim()}</p>`).join("");
+    }
+    return out;
+  }
+
   function extractShortcut(solution, q) {
+    if (!solutionLooksRelevant(q, solution)) return [];
     const raw = plainText(solution);
     const tips = [];
     const sub = ((q && q.subject) || "").toLowerCase();
 
+    if (isMatchQuestion(q)) {
+      tips.push("Match each List-I item to the correct List-II entry");
+      return tips.slice(0, 2);
+    }
+
     const latex = [...String(solution || "").matchAll(/\$([^$]{2,90})\$/g)]
       .map(m => m[1].replace(/\\mathrm\{([^}]+)\}/g, "$1").trim())
-      .filter(f => f.length >= 3 && f.length <= 72);
+      .filter(f => f.length >= 3 && f.length <= 72 && !/f\s*['′]/.test(f));
     latex.slice(0, 2).forEach(f => tips.push(f));
 
     const chain = raw.match(/[^.]{4,90}(?:→|⟹|=>|=\s*[^.]{2,40})/);
@@ -95,15 +169,20 @@ const QuantrexSolution = (() => {
     return "qx-sol-default";
   }
 
-  function formatBody(solution) {
-    if (typeof Mx !== "undefined") return polishHtml(Mx.html(solution));
-    return polishHtml(String(solution || ""));
+  function formatBody(solution, q) {
+    let html = typeof Mx !== "undefined" ? Mx.html(solution) : String(solution || "");
+    html = polishHtml(html);
+    html = structureSolutionBody(html);
+    if (q && !solutionLooksRelevant(q, solution)) {
+      html = `<p class="qx-sol-warn">⚠️ The stored solution may not match this question. Re-fetching from source when online.</p>${html}`;
+    }
+    return html;
   }
 
   function renderBlock(q, rawSolution) {
     const sol = rawSolution != null ? rawSolution : (q && q.solution);
     if (!sol || !String(sol).replace(/<[^>]+>/g, "").trim()) return "";
-    const body = formatBody(sol);
+    const body = formatBody(sol, q);
     const shortcuts = extractShortcut(sol, q);
     const theme = subjectTheme(q);
     const shortcutHtml = shortcuts.length
@@ -125,5 +204,8 @@ const QuantrexSolution = (() => {
     return renderBlock(q);
   }
 
-  return { renderBlock, renderInline, polishHtml, extractShortcut, subjectTheme, formatBody };
+  return {
+    renderBlock, renderInline, polishHtml, extractShortcut, subjectTheme, formatBody,
+    solutionLooksRelevant, isMatchQuestion, structureSolutionBody
+  };
 })();
