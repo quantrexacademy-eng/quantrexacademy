@@ -1,10 +1,10 @@
 // Quantrex — embedded watermark removal (never hides or breaks figures)
 window.QxImgClean = (() => {
-  const DB_NAME = "quantrex_clean_images_v3";
+  const DB_NAME = "quantrex_clean_images_v4";
   const DB_STORE = "blobs";
   const MANIFEST_URL = "data/qx_clean_manifest.json";
   const REVIEW_URL = "data/qx_image_review.json";
-  const CLEAN_VER = 3;
+  const CLEAN_VER = 4;
   const PYQ_CDN = "https://cdn-question-pool.getmarks.app/";
   const BROKEN_CDN_RX = /https?:\/\/\.app\//gi;
   const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|\/cbse\/|ap_eamcet/i;
@@ -390,55 +390,58 @@ window.QxImgClean = (() => {
     });
   }
 
-  function waitForDisplay(img, url) {
+  function waitForDisplay(img, url, forceReload) {
     return new Promise(resolve => {
       const finish = () => resolve(img.naturalWidth > 0);
-      if (img.complete && img.naturalWidth > 0) return resolve(true);
+      stripDisplayCors(img);
+      const needsReload = forceReload || !img.naturalWidth || !img.getAttribute("src")
+        || img.getAttribute("src") === window.location.href
+        || String(img.getAttribute("src") || "").includes("://.app/");
+      if (!needsReload && img.complete && img.naturalWidth > 0) return resolve(true);
       img.addEventListener("load", finish, { once: true });
       img.addEventListener("error", finish, { once: true });
-      stripDisplayCors(img);
-      if (!img.getAttribute("src") || img.getAttribute("src") === window.location.href) {
-        img.src = url;
-      }
+      if (needsReload) img.src = url;
+      else if (img.complete) finish();
     });
   }
 
-  async function ensureVisible(img, cdnSrc, manifestPath) {
+  async function ensureVisible(img, cdnSrc) {
     stripDisplayCors(img);
     img.dataset.qxOrigSrc = cdnSrc;
-
-    if (manifestPath && !manifestPath.startsWith("http")) {
-      const ok = await new Promise(resolve => {
-        const done = (success) => {
-          if (success) resolve(true);
-          else {
-            restoreOriginal(img);
-            waitForDisplay(img, cdnSrc).then(() => resolve(img.naturalWidth > 0));
-          }
-        };
-        img.addEventListener("load", () => done(true), { once: true });
-        img.addEventListener("error", () => done(false), { once: true });
-        stripDisplayCors(img);
-        img.src = manifestPath;
-        if (img.complete) done(img.naturalWidth > 0);
-      });
-      if (ok) return true;
-    }
-
-    restoreOriginal(img);
-    await waitForDisplay(img, cdnSrc);
+    const current = fixUrl(img.getAttribute("src") || "");
+    if (current !== cdnSrc) img.src = cdnSrc;
+    await waitForDisplay(img, cdnSrc, current !== cdnSrc);
     return img.naturalWidth > 0;
   }
 
+  async function blobLooksValid(blob) {
+    if (!blob || !blob.size) return false;
+    const url = URL.createObjectURL(blob);
+    try {
+      const probe = await loadProbe(url, false);
+      return !!(probe && probe.naturalWidth > 0 && probe.naturalHeight > 0);
+    } catch (_) {
+      return false;
+    } finally {
+      URL.revokeObjectURL(url);
+    }
+  }
+
   async function tryClean(img, cdnSrc, manifestPath) {
+    if (!img.naturalWidth) return false;
+
     const cached = await getCachedBlob(cdnSrc);
-    if (cached) return applyCleanedBlob(img, cached, cdnSrc);
+    if (cached && await blobLooksValid(cached)) {
+      const ok = await applyCleanedBlob(img, cached, cdnSrc);
+      if (ok) return true;
+    }
 
     const loaded = await loadForCanvas(cdnSrc, manifestPath);
     if (!loaded) return false;
 
     const result = await cleanFromProbe(loaded.img);
     if (!result || !result.blob || result.stats.damaged) return false;
+    if (!(await blobLooksValid(result.blob))) return false;
     return applyCleanedBlob(img, result.blob, cdnSrc);
   }
 
@@ -468,7 +471,7 @@ window.QxImgClean = (() => {
 
     img.dataset.qxCleanPending = "1";
     try {
-      const visible = await ensureVisible(img, cdnSrc, manifestPath);
+      const visible = await ensureVisible(img, cdnSrc);
       if (!visible) {
         restoreOriginal(img);
         return;

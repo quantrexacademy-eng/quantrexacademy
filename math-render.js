@@ -96,17 +96,24 @@ window.Mx = (() => {
     return `<figure class="qx-fig"><img${cls}${extra}></figure>`;
   }
 
+  function fixImgAttrs(attrs) {
+    return String(attrs || "").replace(/src=(["'])([^"']+)\1/i, (m, q, url) => {
+      return `src=${q}${fixBrokenImgUrls(url)}${q}`;
+    });
+  }
+
   function wrapDiagramImages(html) {
     return html.replace(/<img([^>]*)>/gi, (m, attrs) => {
-      if (FORMULA_IMG_RX.test(attrs)) return m;
-      if (isMarksUiIcon(attrs)) return m;
-      if (BRAND_LOGO_RX.test(attrs)) return "";
-      if (/class=["'][^"']*qx-(fig-img|opt-fig|img)-wrap/i.test(attrs)) return m;
-      if (/class=["'][^"']*qx-fig-img/i.test(attrs)) return m;
-      if (isDiagramImg(attrs)) return figureHtml(attrs);
-      const hasLoading = /loading=/i.test(attrs);
+      const fixedAttrs = fixImgAttrs(attrs);
+      if (FORMULA_IMG_RX.test(fixedAttrs)) return m;
+      if (isMarksUiIcon(fixedAttrs)) return m;
+      if (BRAND_LOGO_RX.test(fixedAttrs)) return "";
+      if (/class=["'][^"']*qx-(fig-img|opt-fig|img)-wrap/i.test(fixedAttrs)) return m;
+      if (/class=["'][^"']*qx-fig-img/i.test(fixedAttrs)) return m;
+      if (isDiagramImg(fixedAttrs)) return figureHtml(fixedAttrs);
+      const hasLoading = /loading=/i.test(fixedAttrs);
       const extra = hasLoading ? "" : ' loading="lazy" decoding="async"';
-      return `<span class="qx-img-wrap"><img${attrs}${extra}></span>`;
+      return `<span class="qx-img-wrap"><img${fixedAttrs}${extra}></span>`;
     });
   }
 
@@ -203,12 +210,21 @@ window.Mx = (() => {
     el.querySelectorAll(".qx-diagram-panel").forEach(panel => unwrapLegacyPanel(panel));
     el.querySelectorAll(".qx-diag-toolbar, .qx-diagram-hint, .qx-diagram-badge").forEach(n => n.remove());
     el.querySelectorAll("img").forEach(img => {
-      const src = img.getAttribute("src") || "";
+      let src = img.getAttribute("src") || "";
       const alt = img.getAttribute("alt") || "";
       const cls = img.className || "";
       if (FORMULA_IMG_RX.test(src) || img.classList.contains("fc-img")) return;
       if (isMarksUiIcon(src) || isMarksUiIcon(cls) || img.classList.contains("qx-marks-icon")) return;
       if (BRAND_LOGO_RX.test(src) || BRAND_LOGO_RX.test(alt)) { img.remove(); return; }
+      if (src.includes("://.app/")) {
+        src = fixBrokenImgUrls(src);
+        img.setAttribute("src", src);
+      }
+      img.removeAttribute("crossorigin");
+      if (!img.dataset.qxErrBound && typeof QxImgClean !== "undefined") {
+        img.addEventListener("error", () => QxImgClean.restoreOriginal(img), { once: false });
+        img.dataset.qxErrBound = "1";
+      }
       if (isQuestionDiagram(src)) {
         if (isInOptionContext(img)) wrapOptFig(img);
         else wrapQuestionFig(img);
