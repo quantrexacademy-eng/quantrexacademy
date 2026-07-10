@@ -30,7 +30,7 @@ SCAN = ROOT / "data" / "qx_image_scan.json"
 MANIFEST = ROOT / "data" / "qx_clean_manifest.json"
 REVIEW = ROOT / "data" / "qx_image_review.json"
 OUT_DIR = ROOT / "assets" / "clean-diagrams"
-CLEAN_VER = 2
+CLEAN_VER = 3
 
 FIX_CDN = re.compile(r"https?://\.app/", re.I)
 CDN = "https://cdn-question-pool.getmarks.app/"
@@ -64,7 +64,27 @@ def is_watermark_pixel(r: int, g: int, b: int, a: int = 255) -> bool:
         return False
     avg = (r + g + b) / 3
     chroma = max(r, g, b) - min(r, g, b)
-    return chroma < 40 and 148 <= avg <= 246
+    return chroma < 42 and 140 <= avg <= 248
+
+
+def is_marks_overlay(r: int, g: int, b: int, a: int = 255) -> bool:
+    if a < 8:
+        return False
+    avg = (r + g + b) / 3
+    if avg < 108:
+        return False
+    chroma = max(r, g, b) - min(r, g, b)
+    if chroma >= 60:
+        return False
+    if b >= r - 22 and b >= g - 14 and 125 <= avg <= 252:
+        return True
+    if chroma < 44 and 132 <= avg <= 248:
+        return True
+    return False
+
+
+def is_removable_wm(r: int, g: int, b: int, a: int = 255) -> bool:
+    return is_watermark_pixel(r, g, b, a) or is_marks_overlay(r, g, b, a)
 
 
 def pixel_avg(flat, w, x, y):
@@ -119,7 +139,7 @@ def local_bg_color(flat, w, h, x, y):
             r, g, b = flat[ny * w + nx]
             if is_likely_ink(r, g, b):
                 break
-            if not is_watermark_pixel(r, g, b):
+            if not is_removable_wm(r, g, b):
                 samples.append((r, g, b))
                 break
     if len(samples) >= 2:
@@ -144,17 +164,43 @@ def local_bg_color(flat, w, h, x, y):
 
 def safe_to_remove(flat, w, h, x, y, strict):
     r, g, b = flat[y * w + x]
-    if not is_watermark_pixel(r, g, b):
+    if not is_removable_wm(r, g, b):
         return False
     if is_likely_ink(r, g, b):
         return False
     ink_radius = 2 if strict else 1
     if has_ink_nearby(flat, w, h, x, y, ink_radius):
         return False
-    light_need = 0.40 if strict else 0.55
+    light_need = 0.38 if strict else 0.52
     if light_context_ratio(flat, w, h, x, y, 4) < light_need:
         return False
     return True
+
+
+def safe_overlay_remove(flat, w, h, x, y):
+    r, g, b = flat[y * w + x]
+    avg = (r + g + b) / 3
+    if not is_removable_wm(r, g, b):
+        return False
+    if is_likely_ink(r, g, b):
+        return False
+    if avg < 112:
+        return False
+    return True
+
+
+def count_ink(flat, w, h):
+    return sum(
+        1 for y in range(h) for x in range(w)
+        if is_likely_ink(*flat[y * w + x])
+    )
+
+
+def count_wm(flat, w, h):
+    return sum(
+        1 for y in range(h) for x in range(w)
+        if is_removable_wm(*flat[y * w + x])
+    )
 
 
 def paint_bg(flat, w, h, x, y):
@@ -170,6 +216,8 @@ def clean_image(im: Image.Image):
     flat = [(p[0], p[1], p[2]) for p in px]
     total = w * h
     removed = 0
+    before_ink = count_ink(flat, w, h)
+    before_wm = count_wm(flat, w, h)
 
     corners = [
         (int(w * 0.72), int(h * 0.78), w, h),
@@ -205,17 +253,38 @@ def clean_image(im: Image.Image):
     for y in range(h):
         for x in range(w):
             r, g, b = flat[y * w + x]
-            if not is_watermark_pixel(r, g, b):
+            if not is_removable_wm(r, g, b):
                 continue
-            if light_context_ratio(flat, w, h, x, y, 5) < 0.78:
+            if light_context_ratio(flat, w, h, x, y, 5) < 0.72:
                 continue
             if has_ink_nearby(flat, w, h, x, y, 3):
                 continue
             paint_bg(flat, w, h, x, y)
             removed += 1
 
+    cx0, cy0 = int(w * 0.06), int(h * 0.06)
+    cx1, cy1 = int(w * 0.94) + 1, int(h * 0.94) + 1
+    for y in range(cy0, cy1):
+        for x in range(cx0, cx1):
+            if not safe_overlay_remove(flat, w, h, x, y):
+                continue
+            paint_bg(flat, w, h, x, y)
+            removed += 1
+
+    for _ in range(2):
+        for y in range(h):
+            for x in range(w):
+                if not safe_overlay_remove(flat, w, h, x, y):
+                    continue
+                paint_bg(flat, w, h, x, y)
+                removed += 1
+
+    after_ink = count_ink(flat, w, h)
+    after_wm = count_wm(flat, w, h)
     removed_ratio = removed / max(total, 1)
-    flagged = removed_ratio > 0.38
+    damaged = after_ink < max(45, before_ink * 0.22)
+    improved = after_wm < before_wm * 0.55 or (before_wm > 0 and after_wm == 0)
+    flagged = damaged or not improved
     new_px = [(*flat[i], px[i][3]) for i in range(len(px))]
     out = Image.new("RGBA", (w, h))
     out.putdata(new_px)
@@ -223,6 +292,8 @@ def clean_image(im: Image.Image):
         "removed": removed,
         "flagged": flagged,
         "removed_ratio": removed_ratio,
+        "before_wm": before_wm,
+        "after_wm": after_wm,
     }
 
 

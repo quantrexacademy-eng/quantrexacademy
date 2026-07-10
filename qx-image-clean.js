@@ -1,10 +1,11 @@
 // Quantrex — embedded watermark removal (never hides or breaks figures)
 window.QxImgClean = (() => {
-  const DB_NAME = "quantrex_clean_images_v4";
+  const DB_NAME = "quantrex_clean_images_v5";
   const DB_STORE = "blobs";
   const MANIFEST_URL = "data/qx_clean_manifest.json";
   const REVIEW_URL = "data/qx_image_review.json";
-  const CLEAN_VER = 4;
+  const CLEAN_VER = 5;
+  const MANIFEST_MIN_VER = 3;
   const PYQ_CDN = "https://cdn-question-pool.getmarks.app/";
   const BROKEN_CDN_RX = /https?:\/\/\.app\//gi;
   const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|\/cbse\/|ap_eamcet/i;
@@ -101,8 +102,8 @@ window.QxImgClean = (() => {
   async function cleanUrl(url) {
     const fixed = fixUrl(url);
     const m = await loadManifest();
-    if ((m.version || 1) >= 2 && m.map && m.map[fixed]) return m.map[fixed];
-    if ((m.version || 1) >= 2 && m.map && m.map[url]) return m.map[url];
+    if ((m.version || 1) >= MANIFEST_MIN_VER && m.map && m.map[fixed]) return m.map[fixed];
+    if ((m.version || 1) >= MANIFEST_MIN_VER && m.map && m.map[url]) return m.map[url];
     return fixed;
   }
 
@@ -122,7 +123,22 @@ window.QxImgClean = (() => {
     if (a !== undefined && a < 10) return false;
     const avg = (r + g + b) / 3;
     const chroma = Math.max(r, g, b) - Math.min(r, g, b);
-    return chroma < 40 && avg >= 148 && avg <= 246;
+    return chroma < 42 && avg >= 140 && avg <= 248;
+  }
+
+  function isMarksOverlay(r, g, b, a) {
+    if (a !== undefined && a < 8) return false;
+    const avg = (r + g + b) / 3;
+    if (avg < 108) return false;
+    const chroma = Math.max(r, g, b) - Math.min(r, g, b);
+    if (chroma >= 60) return false;
+    if (b >= r - 22 && b >= g - 14 && avg >= 125 && avg <= 252) return true;
+    if (chroma < 44 && avg >= 132 && avg <= 248) return true;
+    return false;
+  }
+
+  function isRemovableWm(r, g, b, a) {
+    return isWatermarkPixel(r, g, b, a) || isMarksOverlay(r, g, b, a);
   }
 
   function hasInkNearby(data, w, h, x, y, radius) {
@@ -176,7 +192,7 @@ window.QxImgClean = (() => {
         const g = data[i + 1];
         const b = data[i + 2];
         if (isLikelyInk(r, g, b)) break;
-        if (!isWatermarkPixel(r, g, b, data[i + 3])) {
+        if (!isRemovableWm(r, g, b, data[i + 3])) {
           samples.push([r, g, b]);
           break;
         }
@@ -219,12 +235,24 @@ window.QxImgClean = (() => {
     const r = data[i];
     const g = data[i + 1];
     const b = data[i + 2];
-    if (!isWatermarkPixel(r, g, b, data[i + 3])) return false;
+    if (!isRemovableWm(r, g, b, data[i + 3])) return false;
     if (isLikelyInk(r, g, b)) return false;
     const inkRadius = strict ? 2 : 1;
     if (hasInkNearby(data, w, h, x, y, inkRadius)) return false;
-    const lightNeed = strict ? 0.40 : 0.55;
+    const lightNeed = strict ? 0.38 : 0.52;
     if (lightContextRatio(data, w, h, x, y, 4) < lightNeed) return false;
+    return true;
+  }
+
+  function safeOverlayRemove(data, w, h, x, y) {
+    const i = (y * w + x) * 4;
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+    const avg = (r + g + b) / 3;
+    if (!isRemovableWm(r, g, b, data[i + 3])) return false;
+    if (isLikelyInk(r, g, b)) return false;
+    if (avg < 112) return false;
     return true;
   }
 
@@ -239,10 +267,22 @@ window.QxImgClean = (() => {
     return ink;
   }
 
+  function countWm(data, w, h) {
+    let wm = 0;
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        const i = (y * w + x) * 4;
+        if (isRemovableWm(data[i], data[i + 1], data[i + 2], data[i + 3])) wm++;
+      }
+    }
+    return wm;
+  }
+
   function cleanImageData(data, w, h) {
     let removed = 0;
     const total = w * h;
     const beforeInk = countInk(data, w, h);
+    const beforeWm = countWm(data, w, h);
 
     const corners = [
       { x0: Math.floor(w * 0.72), y0: Math.floor(h * 0.78), x1: w, y1: h },
@@ -284,18 +324,42 @@ window.QxImgClean = (() => {
         const r = data[i];
         const g = data[i + 1];
         const b = data[i + 2];
-        if (!isWatermarkPixel(r, g, b, data[i + 3])) continue;
-        if (lightContextRatio(data, w, h, x, y, 5) < 0.78) continue;
+        if (!isRemovableWm(r, g, b, data[i + 3])) continue;
+        if (lightContextRatio(data, w, h, x, y, 5) < 0.72) continue;
         if (hasInkNearby(data, w, h, x, y, 3)) continue;
         paintBg(data, w, h, x, y);
         removed++;
       }
     }
 
+    const cx0 = Math.floor(w * 0.06);
+    const cy0 = Math.floor(h * 0.06);
+    const cx1 = Math.ceil(w * 0.94);
+    const cy1 = Math.ceil(h * 0.94);
+    for (let y = cy0; y < cy1; y++) {
+      for (let x = cx0; x < cx1; x++) {
+        if (!safeOverlayRemove(data, w, h, x, y)) continue;
+        paintBg(data, w, h, x, y);
+        removed++;
+      }
+    }
+
+    for (let pass = 0; pass < 2; pass++) {
+      for (let y = 0; y < h; y++) {
+        for (let x = 0; x < w; x++) {
+          if (!safeOverlayRemove(data, w, h, x, y)) continue;
+          paintBg(data, w, h, x, y);
+          removed++;
+        }
+      }
+    }
+
     const afterInk = countInk(data, w, h);
+    const afterWm = countWm(data, w, h);
     const removedRatio = removed / Math.max(total, 1);
-    const damaged = removedRatio > 0.32 || afterInk < Math.max(60, beforeInk * 0.4);
-    return { removed, damaged, removedRatio, beforeInk, afterInk };
+    const damaged = afterInk < Math.max(45, beforeInk * 0.22);
+    const improved = afterWm < beforeWm * 0.55 || (beforeWm > 0 && afterWm === 0);
+    return { removed, damaged, improved, removedRatio, beforeInk, afterInk, beforeWm, afterWm };
   }
 
   function stripDisplayCors(img) {
@@ -352,7 +416,7 @@ window.QxImgClean = (() => {
       ctx.drawImage(probe, 0, 0);
       const imageData = ctx.getImageData(0, 0, w, h);
       const stats = cleanImageData(imageData.data, w, h);
-      if (stats.damaged) return { blob: null, stats };
+      if (stats.damaged || !stats.improved) return { blob: null, stats };
       ctx.putImageData(imageData, 0, 0);
       const blob = await canvasToBlob(canvas);
       return { blob, stats };
@@ -427,6 +491,28 @@ window.QxImgClean = (() => {
     }
   }
 
+  async function tryDisplayManifest(img, manifestPath, cdnSrc) {
+    if (!manifestPath || manifestPath.startsWith("http")) return false;
+    stripDisplayCors(img);
+    img.dataset.qxOrigSrc = cdnSrc;
+    const ok = await new Promise(resolve => {
+      const done = (success) => {
+        if (success) {
+          img.dataset.qxCleaned = "1";
+          img.dataset.qxCleanVer = String(CLEAN_VER);
+          img.classList.add("qx-no-wm", "qx-cleaned");
+          img.classList.remove("qx-img-flagged");
+        }
+        resolve(!!success);
+      };
+      img.addEventListener("load", () => done(img.naturalWidth > 0), { once: true });
+      img.addEventListener("error", () => done(false), { once: true });
+      img.src = manifestPath;
+      if (img.complete) done(img.naturalWidth > 0);
+    });
+    return ok;
+  }
+
   async function tryClean(img, cdnSrc, manifestPath) {
     if (!img.naturalWidth) return false;
 
@@ -440,7 +526,7 @@ window.QxImgClean = (() => {
     if (!loaded) return false;
 
     const result = await cleanFromProbe(loaded.img);
-    if (!result || !result.blob || result.stats.damaged) return false;
+    if (!result || !result.blob || result.stats.damaged || !result.stats.improved) return false;
     if (!(await blobLooksValid(result.blob))) return false;
     return applyCleanedBlob(img, result.blob, cdnSrc);
   }
@@ -465,12 +551,16 @@ window.QxImgClean = (() => {
     stripDisplayCors(img);
 
     const m = await loadManifest();
-    const manifestPath = (m.version || 1) >= 2 && m.map
+    const manifestPath = (m.version || 1) >= MANIFEST_MIN_VER && m.map
       ? (m.map[cdnSrc] || m.map[rawSrc])
       : null;
 
     img.dataset.qxCleanPending = "1";
     try {
+      if (manifestPath) {
+        const fromManifest = await tryDisplayManifest(img, manifestPath, cdnSrc);
+        if (fromManifest) return;
+      }
       const visible = await ensureVisible(img, cdnSrc);
       if (!visible) {
         restoreOriginal(img);
