@@ -31,6 +31,7 @@ MANIFEST = ROOT / "data" / "qx_clean_manifest.json"
 REVIEW = ROOT / "data" / "qx_image_review.json"
 OUT_DIR = ROOT / "assets" / "clean-diagrams"
 CLEAN_VER = 3
+WM_RESIDUE_MAX = 0.018
 
 FIX_CDN = re.compile(r"https?://\.app/", re.I)
 CDN = "https://cdn-question-pool.getmarks.app/"
@@ -284,7 +285,9 @@ def clean_image(im: Image.Image):
     removed_ratio = removed / max(total, 1)
     damaged = after_ink < max(45, before_ink * 0.22)
     improved = after_wm < before_wm * 0.55 or (before_wm > 0 and after_wm == 0)
-    flagged = damaged or not improved
+    residue_ratio = after_wm / max(total, 1)
+    clean_enough = residue_ratio <= WM_RESIDUE_MAX
+    flagged = damaged or not improved or not clean_enough
     new_px = [(*flat[i], px[i][3]) for i in range(len(px))]
     out = Image.new("RGBA", (w, h))
     out.putdata(new_px)
@@ -294,6 +297,7 @@ def clean_image(im: Image.Image):
         "removed_ratio": removed_ratio,
         "before_wm": before_wm,
         "after_wm": after_wm,
+        "residue_ratio": residue_ratio,
     }
 
 
@@ -356,7 +360,11 @@ def main():
             if stats["flagged"]:
                 if url not in review["flagged"]:
                     review["flagged"].append(url)
-                review["reasons"][url] = f"removed_ratio={stats['removed_ratio']:.3f}"
+                review["reasons"][url] = (
+                    f"removed_ratio={stats['removed_ratio']:.3f} "
+                    f"after_wm={stats.get('after_wm', 0)} "
+                    f"residue={stats.get('residue_ratio', 0):.4f}"
+                )
                 flagged += 1
                 print(f"[{i}/{len(todo)}] FLAG {url} ratio={stats['removed_ratio']:.3f}")
             else:

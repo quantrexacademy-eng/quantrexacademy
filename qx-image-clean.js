@@ -1,11 +1,12 @@
 // Quantrex — embedded watermark removal (never hides or breaks figures)
 window.QxImgClean = (() => {
-  const DB_NAME = "quantrex_clean_images_v5";
+  const DB_NAME = "quantrex_clean_images_v6";
   const DB_STORE = "blobs";
   const MANIFEST_URL = "data/qx_clean_manifest.json";
   const REVIEW_URL = "data/qx_image_review.json";
-  const CLEAN_VER = 5;
+  const CLEAN_VER = 6;
   const MANIFEST_MIN_VER = 3;
+  const WM_RESIDUE_MAX = 0.018;
   const PYQ_CDN = "https://cdn-question-pool.getmarks.app/";
   const BROKEN_CDN_RX = /https?:\/\/\.app\//gi;
   const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|\/cbse\/|ap_eamcet/i;
@@ -359,7 +360,32 @@ window.QxImgClean = (() => {
     const removedRatio = removed / Math.max(total, 1);
     const damaged = afterInk < Math.max(45, beforeInk * 0.22);
     const improved = afterWm < beforeWm * 0.55 || (beforeWm > 0 && afterWm === 0);
-    return { removed, damaged, improved, removedRatio, beforeInk, afterInk, beforeWm, afterWm };
+    const residueRatio = afterWm / Math.max(total, 1);
+    const cleanEnough = residueRatio <= WM_RESIDUE_MAX;
+    return {
+      removed, damaged, improved, cleanEnough, residueRatio,
+      removedRatio, beforeInk, afterInk, beforeWm, afterWm
+    };
+  }
+
+  function showReviewPlaceholder(img) {
+    img.style.display = "none";
+    img.classList.add("qx-img-flagged");
+    const wrap = img.closest(".qx-fig, .qx-opt-fig, .qx-img-wrap, figure") || img.parentElement;
+    if (!wrap || wrap.querySelector(".qx-img-review-note")) return;
+    const note = document.createElement("div");
+    note.className = "qx-img-review-note";
+    note.textContent = "Diagram is being professionally recreated — not published with third-party branding.";
+    wrap.classList.add("qx-img-under-review");
+    wrap.insertBefore(note, img);
+  }
+
+  function markPendingMask(img) {
+    if (!img.classList.contains("qx-cleaned")) {
+      img.classList.add("qx-wm-pending");
+      const fig = img.closest(".qx-fig, .qx-opt-fig");
+      if (fig) fig.classList.add("qx-wm-pending-wrap");
+    }
   }
 
   function stripDisplayCors(img) {
@@ -416,7 +442,7 @@ window.QxImgClean = (() => {
       ctx.drawImage(probe, 0, 0);
       const imageData = ctx.getImageData(0, 0, w, h);
       const stats = cleanImageData(imageData.data, w, h);
-      if (stats.damaged || !stats.improved) return { blob: null, stats };
+      if (stats.damaged || !stats.improved || !stats.cleanEnough) return { blob: null, stats };
       ctx.putImageData(imageData, 0, 0);
       const blob = await canvasToBlob(canvas);
       return { blob, stats };
@@ -501,7 +527,9 @@ window.QxImgClean = (() => {
           img.dataset.qxCleaned = "1";
           img.dataset.qxCleanVer = String(CLEAN_VER);
           img.classList.add("qx-no-wm", "qx-cleaned");
-          img.classList.remove("qx-img-flagged");
+          img.classList.remove("qx-img-flagged", "qx-wm-pending");
+          const fig = img.closest(".qx-fig, .qx-opt-fig");
+          if (fig) fig.classList.remove("qx-wm-pending-wrap");
         }
         resolve(!!success);
       };
@@ -550,6 +578,8 @@ window.QxImgClean = (() => {
     attachErrorFallback(img);
     stripDisplayCors(img);
 
+    const review = await loadReview();
+    const isFlagged = review.has(cdnSrc);
     const m = await loadManifest();
     const manifestPath = (m.version || 1) >= MANIFEST_MIN_VER && m.map
       ? (m.map[cdnSrc] || m.map[rawSrc])
@@ -559,21 +589,39 @@ window.QxImgClean = (() => {
     try {
       if (manifestPath) {
         const fromManifest = await tryDisplayManifest(img, manifestPath, cdnSrc);
-        if (fromManifest) return;
+        if (fromManifest) {
+          img.classList.remove("qx-wm-pending");
+          const fig = img.closest(".qx-fig, .qx-opt-fig");
+          if (fig) fig.classList.remove("qx-wm-pending-wrap");
+          return;
+        }
+      }
+      if (isFlagged && !manifestPath) {
+        showReviewPlaceholder(img);
+        return;
       }
       const visible = await ensureVisible(img, cdnSrc);
       if (!visible) {
         restoreOriginal(img);
         return;
       }
-      await tryClean(img, cdnSrc, manifestPath);
+      const cleaned = await tryClean(img, cdnSrc, manifestPath);
+      if (cleaned) {
+        img.classList.remove("qx-wm-pending");
+        const fig = img.closest(".qx-fig, .qx-opt-fig");
+        if (fig) fig.classList.remove("qx-wm-pending-wrap");
+      } else {
+        markPendingMask(img);
+      }
     } catch (_) {
       restoreOriginal(img);
+      markPendingMask(img);
     } finally {
       delete img.dataset.qxCleanPending;
       img.classList.add("qx-no-wm");
-      img.classList.remove("qx-img-flagged");
-      img.style.display = "";
+      if (!img.classList.contains("qx-img-flagged")) {
+        img.style.display = img.style.display === "none" ? "none" : "";
+      }
     }
   }
 

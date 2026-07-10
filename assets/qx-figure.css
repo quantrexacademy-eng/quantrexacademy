@@ -18,20 +18,51 @@
   overflow: hidden;
 }
 
-/* Fallback mask for uncleaned CDN diagrams only */
-.qx-fig:not(:has(img.qx-cleaned))::after,
-.qx-opt-fig:not(:has(img.qx-cleaned))::after {
+/* Interim mask — hides third-party watermark until pixel-cleaned PNG loads */
+.qx-fig.qx-wm-pending-wrap::before,
+.qx-opt-fig.qx-wm-pending-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    linear-gradient(135deg, transparent 42%, rgba(255, 255, 255, 0.94) 72%) top right / 28% 22% no-repeat,
+    linear-gradient(315deg, transparent 42%, rgba(255, 255, 255, 0.94) 72%) bottom left / 28% 22% no-repeat,
+    linear-gradient(90deg, transparent 8%, rgba(255, 255, 255, 0.92) 28%, rgba(255, 255, 255, 0.92) 72%, transparent 92%) center / 100% 38% no-repeat;
+}
+
+.qx-fig.qx-wm-pending-wrap::after,
+.qx-opt-fig.qx-wm-pending-wrap::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 22%;
+  height: 16%;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(135deg, transparent 25%, rgba(255, 255, 255, 0.92) 75%);
+}
+
+.qx-fig:not(:has(img.qx-cleaned)):not(.qx-wm-pending-wrap)::after,
+.qx-opt-fig:not(:has(img.qx-cleaned)):not(.qx-wm-pending-wrap)::after {
   content: "";
   position: absolute;
   pointer-events: none;
   z-index: 1;
-}
-.qx-fig::after {
   right: 0;
   bottom: 0;
   width: 18%;
   height: 14%;
   background: linear-gradient(135deg, transparent 30%, rgba(255, 255, 255, 0.85) 80%);
+}
+
+.qx-fig.qx-cleaned-wrap::after,
+.qx-opt-fig.qx-cleaned-wrap::after,
+.qx-fig:has(img.qx-cleaned)::after,
+.qx-opt-fig:has(img.qx-cleaned)::after {
+  display: none !important;
 }
 
 .qx-fig-img,

@@ -7,9 +7,11 @@ img.qx-cleaned {
 }
 
 img.qx-img-flagged {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+  display: none !important;
+}
+
+.qx-img-under-review .qx-img-review-note {
+  display: flex !important;
 }
 
 .qx-img-review-note {
