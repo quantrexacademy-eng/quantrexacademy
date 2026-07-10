@@ -106,10 +106,26 @@ window.QxImgClean = (() => {
   }
 
   function isWatermarkPixel(r, g, b, a) {
-    if (a !== undefined && a < 20) return false;
+    if (a !== undefined && a < 12) return false;
     const avg = (r + g + b) / 3;
     const chroma = Math.max(r, g, b) - Math.min(r, g, b);
-    return chroma < 30 && avg >= 178 && avg <= 253;
+    return chroma < 36 && avg >= 162 && avg <= 248;
+  }
+
+  function lightContextRatio(data, w, h, x, y, radius) {
+    let light = 0;
+    let total = 0;
+    for (let dy = -radius; dy <= radius; dy++) {
+      for (let dx = -radius; dx <= radius; dx++) {
+        const nx = x + dx;
+        const ny = y + dy;
+        if (nx < 0 || ny < 0 || nx >= w || ny >= h) continue;
+        total++;
+        const i = (ny * w + nx) * 4;
+        if ((data[i] + data[i + 1] + data[i + 2]) / 3 > 168) light++;
+      }
+    }
+    return total ? light / total : 0;
   }
 
   function hasDarkNeighbor(data, w, h, x, y, radius) {
@@ -198,9 +214,42 @@ window.QxImgClean = (() => {
       }
     }
 
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        const i = (y * w + x) * 4;
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+        const a = data[i + 3];
+        if (!isWatermarkPixel(r, g, b, a)) continue;
+        if (hasDarkNeighbor(data, w, h, x, y, 1)) continue;
+        if (lightContextRatio(data, w, h, x, y, 3) < 0.52) continue;
+        const bg = bgColor(data, w, h, x, y);
+        data[i] = bg[0];
+        data[i + 1] = bg[1];
+        data[i + 2] = bg[2];
+        data[i + 3] = 255;
+        removed++;
+      }
+    }
+
     const darkRatio = zonePixels ? darkInZones / zonePixels : 0;
-    const flagged = darkRatio > 0.42 && removed < 8;
+    const flagged = darkRatio > 0.55 && removed < 4;
     return { removed, flagged, darkRatio };
+  }
+
+  function ensureCors(img) {
+    const src = fixUrl(img.getAttribute("src") || img.dataset.qxOrigSrc || "");
+    if (!src || src.startsWith("blob:") || src.startsWith("data:")) return Promise.resolve();
+    const needsReload = img.crossOrigin !== "anonymous";
+    img.crossOrigin = "anonymous";
+    img.dataset.qxCors = "1";
+    if (!needsReload && img.complete && img.naturalWidth) return Promise.resolve();
+    return new Promise((resolve, reject) => {
+      img.addEventListener("load", () => resolve(), { once: true });
+      img.addEventListener("error", () => reject(new Error("cors load failed")), { once: true });
+      img.src = src;
+    });
   }
 
   function canvasToBlob(canvas) {
@@ -272,6 +321,7 @@ window.QxImgClean = (() => {
     img.dataset.qxCleanPending = "1";
     const run = async () => {
       try {
+        try { await ensureCors(img); } catch (_) { /* try without cors */ }
         if (!img.complete || !img.naturalWidth) {
           await new Promise((res, rej) => {
             img.addEventListener("load", res, { once: true });

@@ -45,7 +45,9 @@ window.Mx = (() => {
 
   const BRAND_PATTERNS = [
     /cdn-assets\.getmarks/gi,
+    /www\.vedantu\.com/gi, /vedantu\.com/gi, /\bMIMS\b/gi,
     /Scoremarks\s+Technologies/gi, /Mathongo/gi, /\bGet\s*Marks\b/gi, /\bMARKS\s*App\b/gi,
+    /\bVedantu\b/gi, /\bUnacademy\b/gi, /\bAakash\b/gi, /\bFIITJEE\b/gi, /\bResonance\b/gi,
     /Powered\s+by\s+MARKS/gi, /MOG\s*Premium/gi, /\bMARKS\s*Premium\b/gi,
     /\bMARKS\s*Selected\b/gi, /marks_selected/gi, /\bMARKS\s*web\b/gi,
     /\bALLEN\s*Digital\b/gi, /\bQuizrr\b/gi
@@ -88,10 +90,11 @@ window.Mx = (() => {
   function figureHtml(attrs) {
     const hasLoading = /loading=/i.test(attrs);
     const extra = hasLoading ? "" : ' loading="eager" decoding="async" fetchpriority="high"';
+    const cors = /crossorigin/i.test(attrs) ? "" : ' crossorigin="anonymous"';
     const cls = /class=/i.test(attrs)
       ? attrs.replace(/class=(["'])([^"']*)\1/i, 'class=$1$2 qx-fig-img qx-no-wm$1')
       : attrs + ' class="qx-fig-img qx-no-wm"';
-    return `<figure class="qx-fig"><img${cls}${extra}></figure>`;
+    return `<figure class="qx-fig"><img${cls}${extra}${cors}></figure>`;
   }
 
   function wrapDiagramImages(html) {

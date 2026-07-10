@@ -48,11 +48,25 @@ def rel_path(url: str) -> str:
 
 
 def is_watermark_pixel(r: int, g: int, b: int, a: int = 255) -> bool:
-    if a < 20:
+    if a < 12:
         return False
     avg = (r + g + b) / 3
     chroma = max(r, g, b) - min(r, g, b)
-    return chroma < 30 and 178 <= avg <= 253
+    return chroma < 36 and 162 <= avg <= 248
+
+
+def light_context_ratio(flat, w, h, x, y, radius=3):
+    light = total = 0
+    for dy in range(-radius, radius + 1):
+        for dx in range(-radius, radius + 1):
+            nx, ny = x + dx, y + dy
+            if nx < 0 or ny < 0 or nx >= w or ny >= h:
+                continue
+            total += 1
+            r, g, b = flat[ny * w + nx]
+            if (r + g + b) / 3 > 168:
+                light += 1
+    return light / max(total, 1)
 
 
 def has_dark_neighbor(px, w, h, x, y, radius=2):
@@ -130,8 +144,23 @@ def clean_image(im: Image.Image):
             flat[i] = bg
             removed += 1
 
+    for y in range(h):
+        for x in range(w):
+            i = y * w + x
+            r, g, b, a = new_px[i]
+            if not is_watermark_pixel(r, g, b, a):
+                continue
+            if has_dark_neighbor(flat, w, h, x, y, radius=1):
+                continue
+            if light_context_ratio(flat, w, h, x, y) < 0.52:
+                continue
+            bg = bg_color(flat, w, h, x, y)
+            new_px[i] = (*bg, 255)
+            flat[i] = bg
+            removed += 1
+
     dark_ratio = dark_in_zones / max(zone_pixels, 1)
-    flagged = dark_ratio > 0.42 and removed < 8
+    flagged = dark_ratio > 0.55 and removed < 4
     out = Image.new("RGBA", (w, h))
     out.putdata(new_px)
     return out.convert("RGB"), {"removed": removed, "flagged": flagged, "dark_ratio": dark_ratio}

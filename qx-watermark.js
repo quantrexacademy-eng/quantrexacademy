@@ -10,12 +10,16 @@ window.QxWM = (() => {
     return POOL_RX.test(src);
   }
 
+  const WM_TEXT_RX = /^(MARKS|Get\s*Marks|MARKS\s*App|Quizrr|ALLEN|MIMS|Vedantu|www\.vedantu|Mathongo|Resonance|FIITJEE|Aakash|Unacademy|Byju'?s?)$/i;
+
   function cleanHtml(html) {
     let out = String(html || "");
-    out = out.replace(/<[^>]*(?:watermark|Watermark|getmarks-brand|marks-app|marks_selected)[^>]*>[\s\S]*?<\/[^>]+>/gi, "");
-    out = out.replace(/<img[^>]+(?:watermark|marks-premium|ic_marks|marks-brand|getmarks-brand)[^>]*>/gi, "");
-    out = out.replace(/<div[^>]*style="[^"]*(?:MARKS|watermark)[^"]*"[^>]*>[\s\S]*?<\/div>/gi, "");
-    out = out.replace(/<span[^>]*style="[^"]*(?:MARKS|watermark)[^"]*"[^>]*>[\s\S]*?<\/span>/gi, "");
+    out = out.replace(/<[^>]*(?:watermark|Watermark|getmarks-brand|marks-app|marks_selected|vedantu)[^>]*>[\s\S]*?<\/[^>]+>/gi, "");
+    out = out.replace(/<img[^>]+(?:watermark|marks-premium|ic_marks|marks-brand|getmarks-brand|vedantu)[^>]*>/gi, "");
+    out = out.replace(/<div[^>]*style="[^"]*(?:MARKS|watermark|vedantu)[^"]*"[^>]*>[\s\S]*?<\/div>/gi, "");
+    out = out.replace(/<span[^>]*style="[^"]*(?:MARKS|watermark|vedantu)[^"]*"[^>]*>[\s\S]*?<\/span>/gi, "");
+    out = out.replace(/www\.vedantu\.com/gi, "");
+    out = out.replace(/vedantu\.com/gi, "");
     return out;
   }
 
@@ -31,7 +35,7 @@ window.QxWM = (() => {
     scope.querySelectorAll("div,span,p").forEach(el => {
       if (el.children.length > 2) return;
       const t = (el.textContent || "").trim();
-      if (!/^(MARKS|Get\s*Marks|MARKS\s*App|Quizrr|ALLEN)$/i.test(t)) return;
+      if (!WM_TEXT_RX.test(t)) return;
       const st = window.getComputedStyle ? getComputedStyle(el) : el.style;
       if (st && (st.position === "absolute" || st.position === "fixed" || parseFloat(st.opacity) < 1)) {
         el.remove();
