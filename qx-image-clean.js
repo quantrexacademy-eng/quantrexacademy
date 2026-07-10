@@ -1,9 +1,10 @@
-// Quantrex — permanent third-party watermark removal from question diagrams
+// Quantrex — embedded watermark removal (preserves diagram ink & visibility)
 window.QxImgClean = (() => {
-  const DB_NAME = "quantrex_clean_images_v1";
+  const DB_NAME = "quantrex_clean_images_v2";
   const DB_STORE = "blobs";
   const MANIFEST_URL = "data/qx_clean_manifest.json";
   const REVIEW_URL = "data/qx_image_review.json";
+  const CLEAN_VER = 2;
   const PYQ_CDN = "https://cdn-question-pool.getmarks.app/";
   const BROKEN_CDN_RX = /https?:\/\/\.app\//gi;
   const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/jee_main\/|\/pyq\/neet\/|\/pyq\/aiims\//i;
@@ -34,7 +35,7 @@ window.QxImgClean = (() => {
 
   function openDb() {
     if (dbPromise) return dbPromise;
-    dbPromise = new Promise((resolve, reject) => {
+    dbPromise = new Promise((resolve) => {
       if (!window.indexedDB) return resolve(null);
       const req = indexedDB.open(DB_NAME, 1);
       req.onupgradeneeded = () => {
@@ -42,7 +43,7 @@ window.QxImgClean = (() => {
         if (!db.objectStoreNames.contains(DB_STORE)) db.createObjectStore(DB_STORE);
       };
       req.onsuccess = () => resolve(req.result);
-      req.onerror = () => reject(req.error);
+      req.onerror = () => resolve(null);
     }).catch(() => null);
     return dbPromise;
   }
@@ -50,7 +51,7 @@ window.QxImgClean = (() => {
   async function getCachedBlob(url) {
     const db = await openDb();
     if (!db) return null;
-    const key = hashUrl(url);
+    const key = hashUrl(url) + ":v" + CLEAN_VER;
     return new Promise(resolve => {
       const tx = db.transaction(DB_STORE, "readonly");
       const req = tx.objectStore(DB_STORE).get(key);
@@ -62,7 +63,7 @@ window.QxImgClean = (() => {
   async function putCachedBlob(url, blob) {
     const db = await openDb();
     if (!db) return;
-    const key = hashUrl(url);
+    const key = hashUrl(url) + ":v" + CLEAN_VER;
     return new Promise(resolve => {
       const tx = db.transaction(DB_STORE, "readwrite");
       tx.objectStore(DB_STORE).put(blob, key);
@@ -76,9 +77,9 @@ window.QxImgClean = (() => {
     try {
       const r = await fetch(MANIFEST_URL, { cache: "no-store" });
       if (r.ok) manifest = await r.json();
-      else manifest = { map: {} };
+      else manifest = { map: {}, version: 1 };
     } catch (_) {
-      manifest = { map: {} };
+      manifest = { map: {}, version: 1 };
     }
     return manifest;
   }
@@ -100,16 +101,42 @@ window.QxImgClean = (() => {
   async function cleanUrl(url) {
     const fixed = fixUrl(url);
     const m = await loadManifest();
-    if (m.map && m.map[fixed]) return m.map[fixed];
-    if (m.map && m.map[url]) return m.map[url];
+    if ((m.version || 1) >= CLEAN_VER && m.map && m.map[fixed]) return m.map[fixed];
+    if ((m.version || 1) >= CLEAN_VER && m.map && m.map[url]) return m.map[url];
     return fixed;
   }
 
-  function isWatermarkPixel(r, g, b, a) {
-    if (a !== undefined && a < 12) return false;
+  function pixelAvg(data, i) {
+    return (data[i] + data[i + 1] + data[i + 2]) / 3;
+  }
+
+  function isLikelyInk(r, g, b) {
     const avg = (r + g + b) / 3;
     const chroma = Math.max(r, g, b) - Math.min(r, g, b);
-    return chroma < 36 && avg >= 162 && avg <= 248;
+    if (avg < 118) return true;
+    if (chroma > 45 && avg < 210) return true;
+    return false;
+  }
+
+  function isWatermarkPixel(r, g, b, a) {
+    if (a !== undefined && a < 10) return false;
+    const avg = (r + g + b) / 3;
+    const chroma = Math.max(r, g, b) - Math.min(r, g, b);
+    return chroma < 40 && avg >= 148 && avg <= 246;
+  }
+
+  function hasInkNearby(data, w, h, x, y, radius) {
+    for (let dy = -radius; dy <= radius; dy++) {
+      for (let dx = -radius; dx <= radius; dx++) {
+        if (!dx && !dy) continue;
+        const nx = x + dx;
+        const ny = y + dy;
+        if (nx < 0 || ny < 0 || nx >= w || ny >= h) continue;
+        const i = (ny * w + nx) * 4;
+        if (isLikelyInk(data[i], data[i + 1], data[i + 2])) return true;
+      }
+    }
+    return false;
   }
 
   function lightContextRatio(data, w, h, x, y, radius) {
@@ -121,74 +148,101 @@ window.QxImgClean = (() => {
         const ny = y + dy;
         if (nx < 0 || ny < 0 || nx >= w || ny >= h) continue;
         total++;
-        const i = (ny * w + nx) * 4;
-        if ((data[i] + data[i + 1] + data[i + 2]) / 3 > 168) light++;
+        if (pixelAvg(data, (ny * w + nx) * 4) > 165) light++;
       }
     }
     return total ? light / total : 0;
   }
 
-  function hasDarkNeighbor(data, w, h, x, y, radius) {
-    for (let dy = -radius; dy <= radius; dy++) {
-      for (let dx = -radius; dx <= radius; dx++) {
-        if (!dx && !dy) continue;
-        const nx = x + dx;
-        const ny = y + dy;
-        if (nx < 0 || ny < 0 || nx >= w || ny >= h) continue;
-        const i = (ny * w + nx) * 4;
-        if ((data[i] + data[i + 1] + data[i + 2]) / 3 < 95) return true;
-      }
-    }
-    return false;
+  function medianChannel(samples, ch) {
+    const arr = samples.map(p => p[ch]).sort((a, b) => a - b);
+    return arr[Math.floor(arr.length / 2)];
   }
 
-  function bgColor(data, w, h, x, y) {
+  function localBgColor(data, w, h, x, y) {
     const samples = [];
-    for (let dy = -3; dy <= 3; dy++) {
-      for (let dx = -3; dx <= 3; dx++) {
+    const rays = [
+      [1, 0], [-1, 0], [0, 1], [0, -1],
+      [2, 0], [-2, 0], [0, 2], [0, -2],
+      [1, 1], [-1, -1], [1, -1], [-1, 1]
+    ];
+    for (const [sdx, sdy] of rays) {
+      for (let step = 1; step <= 10; step++) {
+        const nx = x + sdx * step;
+        const ny = y + sdy * step;
+        if (nx < 0 || ny < 0 || nx >= w || ny >= h) break;
+        const i = (ny * w + nx) * 4;
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+        if (isLikelyInk(r, g, b)) break;
+        if (!isWatermarkPixel(r, g, b, data[i + 3])) {
+          samples.push([r, g, b]);
+          break;
+        }
+      }
+    }
+    if (samples.length >= 2) {
+      return [medianChannel(samples, 0), medianChannel(samples, 1), medianChannel(samples, 2)];
+    }
+    const white = [];
+    for (let dy = -4; dy <= 4; dy++) {
+      for (let dx = -4; dx <= 4; dx++) {
         const nx = x + dx;
         const ny = y + dy;
         if (nx < 0 || ny < 0 || nx >= w || ny >= h) continue;
         const i = (ny * w + nx) * 4;
-        const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
-        if (avg > 248) samples.push([data[i], data[i + 1], data[i + 2]]);
+        if (pixelAvg(data, i) > 242) white.push([data[i], data[i + 1], data[i + 2]]);
       }
     }
-    if (!samples.length) return [255, 255, 255];
-    const r = Math.round(samples.reduce((s, p) => s + p[0], 0) / samples.length);
-    const g = Math.round(samples.reduce((s, p) => s + p[1], 0) / samples.length);
-    const b = Math.round(samples.reduce((s, p) => s + p[2], 0) / samples.length);
-    return [r, g, b];
+    if (white.length) {
+      return [
+        Math.round(white.reduce((s, p) => s + p[0], 0) / white.length),
+        Math.round(white.reduce((s, p) => s + p[1], 0) / white.length),
+        Math.round(white.reduce((s, p) => s + p[2], 0) / white.length)
+      ];
+    }
+    return [255, 255, 255];
+  }
+
+  function paintBg(data, w, h, x, y) {
+    const i = (y * w + x) * 4;
+    const bg = localBgColor(data, w, h, x, y);
+    data[i] = bg[0];
+    data[i + 1] = bg[1];
+    data[i + 2] = bg[2];
+    data[i + 3] = 255;
+  }
+
+  function safeToRemove(data, w, h, x, y, strict) {
+    const i = (y * w + x) * 4;
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+    if (!isWatermarkPixel(r, g, b, data[i + 3])) return false;
+    if (isLikelyInk(r, g, b)) return false;
+    const inkRadius = strict ? 2 : 1;
+    if (hasInkNearby(data, w, h, x, y, inkRadius)) return false;
+    const lightNeed = strict ? 0.40 : 0.55;
+    if (lightContextRatio(data, w, h, x, y, 4) < lightNeed) return false;
+    return true;
   }
 
   function cleanImageData(data, w, h) {
-    const zones = [
-      { x0: Math.floor(w * 0.76), y0: Math.floor(h * 0.80), x1: w, y1: h },
-      { x0: 0, y0: Math.floor(h * 0.80), x1: Math.ceil(w * 0.24), y1: h },
-      { x0: Math.floor(w * 0.76), y0: 0, x1: w, y1: Math.ceil(h * 0.20) }
-    ];
     let removed = 0;
-    let zonePixels = 0;
-    let darkInZones = 0;
+    const total = w * h;
 
-    zones.forEach(z => {
+    const corners = [
+      { x0: Math.floor(w * 0.72), y0: Math.floor(h * 0.78), x1: w, y1: h },
+      { x0: 0, y0: Math.floor(h * 0.78), x1: Math.ceil(w * 0.28), y1: h },
+      { x0: Math.floor(w * 0.72), y0: 0, x1: w, y1: Math.ceil(h * 0.22) }
+    ];
+    corners.forEach(z => {
       for (let y = z.y0; y < z.y1; y++) {
         for (let x = z.x0; x < z.x1; x++) {
-          zonePixels++;
-          const i = (y * w + x) * 4;
-          const r = data[i];
-          const g = data[i + 1];
-          const b = data[i + 2];
-          const a = data[i + 3];
-          if ((r + g + b) / 3 < 100) darkInZones++;
-          if (isWatermarkPixel(r, g, b, a)) {
-            const bg = bgColor(data, w, h, x, y);
-            data[i] = bg[0];
-            data[i + 1] = bg[1];
-            data[i + 2] = bg[2];
-            data[i + 3] = 255;
-            removed++;
-          }
+          if (!safeToRemove(data, w, h, x, y, false)) continue;
+          paintBg(data, w, h, x, y);
+          removed++;
         }
       }
     });
@@ -197,19 +251,17 @@ window.QxImgClean = (() => {
       for (let x = 0; x < w; x++) {
         const d1 = Math.abs(x / Math.max(w, 1) - y / Math.max(h, 1));
         const d2 = Math.abs(1 - x / Math.max(w, 1) - y / Math.max(h, 1));
-        if (d1 > 0.14 && d2 > 0.14) continue;
-        const i = (y * w + x) * 4;
-        const r = data[i];
-        const g = data[i + 1];
-        const b = data[i + 2];
-        const a = data[i + 3];
-        if (!isWatermarkPixel(r, g, b, a)) continue;
-        if (hasDarkNeighbor(data, w, h, x, y, 2)) continue;
-        const bg = bgColor(data, w, h, x, y);
-        data[i] = bg[0];
-        data[i + 1] = bg[1];
-        data[i + 2] = bg[2];
-        data[i + 3] = 255;
+        if (d1 > 0.16 && d2 > 0.16) continue;
+        if (!safeToRemove(data, w, h, x, y, false)) continue;
+        paintBg(data, w, h, x, y);
+        removed++;
+      }
+    }
+
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        if (!safeToRemove(data, w, h, x, y, true)) continue;
+        paintBg(data, w, h, x, y);
         removed++;
       }
     }
@@ -220,22 +272,17 @@ window.QxImgClean = (() => {
         const r = data[i];
         const g = data[i + 1];
         const b = data[i + 2];
-        const a = data[i + 3];
-        if (!isWatermarkPixel(r, g, b, a)) continue;
-        if (hasDarkNeighbor(data, w, h, x, y, 1)) continue;
-        if (lightContextRatio(data, w, h, x, y, 3) < 0.52) continue;
-        const bg = bgColor(data, w, h, x, y);
-        data[i] = bg[0];
-        data[i + 1] = bg[1];
-        data[i + 2] = bg[2];
-        data[i + 3] = 255;
+        if (!isWatermarkPixel(r, g, b, data[i + 3])) continue;
+        if (lightContextRatio(data, w, h, x, y, 5) < 0.78) continue;
+        if (hasInkNearby(data, w, h, x, y, 3)) continue;
+        paintBg(data, w, h, x, y);
         removed++;
       }
     }
 
-    const darkRatio = zonePixels ? darkInZones / zonePixels : 0;
-    const flagged = darkRatio > 0.55 && removed < 4;
-    return { removed, flagged, darkRatio };
+    const removedRatio = removed / Math.max(total, 1);
+    const flagged = removedRatio > 0.38;
+    return { removed, flagged, removedRatio };
   }
 
   function ensureCors(img) {
@@ -274,80 +321,75 @@ window.QxImgClean = (() => {
     return { blob, stats };
   }
 
-  function showReviewPlaceholder(img, reason) {
-    img.classList.add("qx-img-flagged");
-    img.alt = "";
-    img.removeAttribute("src");
-    img.style.display = "none";
-    const wrap = img.closest(".qx-fig, .qx-opt-fig, .qx-img-wrap") || img.parentElement;
-    if (!wrap || wrap.querySelector(".qx-img-review-note")) return;
-    const note = document.createElement("div");
-    note.className = "qx-img-review-note";
-    note.textContent = reason || "Figure flagged for manual review — not published.";
-    wrap.appendChild(note);
+  async function applyCleanedBlob(img, blob, src) {
+    await putCachedBlob(src, blob);
+    const url = URL.createObjectURL(blob);
+    img.src = url;
+    img.dataset.qxCleaned = "1";
+    img.dataset.qxCleanVer = String(CLEAN_VER);
+    img.classList.remove("qx-img-flagged");
+    img.style.display = "";
+    img.classList.add("qx-no-wm", "qx-cleaned");
+  }
+
+  async function runtimeClean(img, src) {
+    try {
+      try { await ensureCors(img); } catch (_) { /* fallback */ }
+      if (!img.complete || !img.naturalWidth) {
+        await new Promise((res, rej) => {
+          img.addEventListener("load", res, { once: true });
+          img.addEventListener("error", rej, { once: true });
+        });
+      }
+      const result = await cleanFromImage(img);
+      if (!result || !result.blob) return;
+      await applyCleanedBlob(img, result.blob, src);
+    } catch (_) {
+      img.classList.add("qx-no-wm");
+    }
   }
 
   async function processImage(img) {
     const rawSrc = img.getAttribute("src") || img.dataset.qxOrigSrc || "";
     if (!isPoolDiagram(rawSrc, img)) return;
-    if (img.dataset.qxCleaned === "1" || img.dataset.qxCleanPending === "1") return;
+    if (img.dataset.qxCleanVer === String(CLEAN_VER) && img.dataset.qxCleaned === "1") return;
+    if (img.dataset.qxCleanPending === "1") return;
 
     const src = fixUrl(rawSrc);
     img.dataset.qxOrigSrc = src;
 
-    const review = await loadReview();
-    if (review.has(src)) {
-      showReviewPlaceholder(img, "Figure under manual review.");
-      img.dataset.qxCleaned = "flagged";
-      return;
-    }
-
-    const manifestPath = await cleanUrl(src);
-    if (manifestPath !== src && !manifestPath.startsWith("http")) {
-      img.src = manifestPath;
-      img.dataset.qxCleaned = "1";
-      img.classList.add("qx-no-wm", "qx-cleaned");
-      return;
-    }
-
     const cached = await getCachedBlob(src);
     if (cached) {
-      img.src = URL.createObjectURL(cached);
-      img.dataset.qxCleaned = "1";
-      img.classList.add("qx-no-wm", "qx-cleaned");
+      await applyCleanedBlob(img, cached, src);
       return;
     }
 
+    const m = await loadManifest();
+    const manifestPath = (m.version || 1) >= CLEAN_VER && m.map ? (m.map[src] || m.map[rawSrc]) : null;
+
     img.dataset.qxCleanPending = "1";
-    const run = async () => {
+    const finish = async () => {
       try {
-        try { await ensureCors(img); } catch (_) { /* try without cors */ }
-        if (!img.complete || !img.naturalWidth) {
+        if (manifestPath && !manifestPath.startsWith("http")) {
+          img.crossOrigin = "anonymous";
+          img.src = manifestPath;
           await new Promise((res, rej) => {
             img.addEventListener("load", res, { once: true });
             img.addEventListener("error", rej, { once: true });
           });
         }
-        const result = await cleanFromImage(img);
-        if (!result || !result.blob) throw new Error("clean failed");
-        if (result.stats.flagged) {
-          showReviewPlaceholder(img, "Watermark overlaps figure — flagged for review.");
-          img.dataset.qxCleaned = "flagged";
-          return;
-        }
-        await putCachedBlob(src, result.blob);
-        img.src = URL.createObjectURL(result.blob);
-        img.dataset.qxCleaned = "1";
-        img.classList.remove("qx-img-flagged");
-        img.classList.add("qx-no-wm", "qx-cleaned");
-      } catch (_) {
-        img.classList.add("qx-no-wm");
+        await runtimeClean(img, src);
       } finally {
         delete img.dataset.qxCleanPending;
       }
     };
-    if (img.complete && img.naturalWidth) run();
-    else img.addEventListener("load", () => run(), { once: true });
+
+    if (img.complete && img.naturalWidth && !manifestPath) finish();
+    else if (manifestPath) finish();
+    else {
+      img.addEventListener("load", () => finish(), { once: true });
+      if (!img.getAttribute("src")) img.src = src;
+    }
   }
 
   let observerStarted = false;
@@ -382,6 +424,7 @@ window.QxImgClean = (() => {
     processImage,
     cleanImageData,
     loadManifest,
-    loadReview
+    loadReview,
+    CLEAN_VER
   };
 })();

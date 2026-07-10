@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """
-Batch-remove third-party watermarks from CDN question diagrams.
+Batch-remove third-party watermarks from CDN question diagrams (v2 algorithm).
 Saves cleaned PNGs to assets/clean-diagrams/ and updates manifest + review list.
 
 Usage:
   python scripts/clean_diagram_images.py --limit 500
   python scripts/clean_diagram_images.py --all
+  python scripts/clean_diagram_images.py --reclean --limit 550
 """
 from __future__ import annotations
 
@@ -29,6 +30,7 @@ SCAN = ROOT / "data" / "qx_image_scan.json"
 MANIFEST = ROOT / "data" / "qx_clean_manifest.json"
 REVIEW = ROOT / "data" / "qx_image_review.json"
 OUT_DIR = ROOT / "assets" / "clean-diagrams"
+CLEAN_VER = 2
 
 FIX_CDN = re.compile(r"https?://\.app/", re.I)
 CDN = "https://cdn-question-pool.getmarks.app/"
@@ -47,29 +49,30 @@ def rel_path(url: str) -> str:
     return f"assets/clean-diagrams/{h[:2]}/{h[2:4]}/{h}.png"
 
 
+def is_likely_ink(r: int, g: int, b: int) -> bool:
+    avg = (r + g + b) / 3
+    chroma = max(r, g, b) - min(r, g, b)
+    if avg < 118:
+        return True
+    if chroma > 45 and avg < 210:
+        return True
+    return False
+
+
 def is_watermark_pixel(r: int, g: int, b: int, a: int = 255) -> bool:
-    if a < 12:
+    if a < 10:
         return False
     avg = (r + g + b) / 3
     chroma = max(r, g, b) - min(r, g, b)
-    return chroma < 36 and 162 <= avg <= 248
+    return chroma < 40 and 148 <= avg <= 246
 
 
-def light_context_ratio(flat, w, h, x, y, radius=3):
-    light = total = 0
-    for dy in range(-radius, radius + 1):
-        for dx in range(-radius, radius + 1):
-            nx, ny = x + dx, y + dy
-            if nx < 0 or ny < 0 or nx >= w or ny >= h:
-                continue
-            total += 1
-            r, g, b = flat[ny * w + nx]
-            if (r + g + b) / 3 > 168:
-                light += 1
-    return light / max(total, 1)
+def pixel_avg(flat, w, x, y):
+    r, g, b = flat[y * w + x]
+    return (r + g + b) / 3
 
 
-def has_dark_neighbor(px, w, h, x, y, radius=2):
+def has_ink_nearby(flat, w, h, x, y, radius):
     for dy in range(-radius, radius + 1):
         for dx in range(-radius, radius + 1):
             if dx == 0 and dy == 0:
@@ -77,25 +80,87 @@ def has_dark_neighbor(px, w, h, x, y, radius=2):
             nx, ny = x + dx, y + dy
             if nx < 0 or ny < 0 or nx >= w or ny >= h:
                 continue
-            r, g, b = px[ny * w + nx]
-            if (r + g + b) / 3 < 95:
+            r, g, b = flat[ny * w + nx]
+            if is_likely_ink(r, g, b):
                 return True
     return False
 
 
-def bg_color(px, w, h, x, y):
-    samples = []
-    for dy in range(-3, 4):
-        for dx in range(-3, 4):
+def light_context_ratio(flat, w, h, x, y, radius=4):
+    light = total = 0
+    for dy in range(-radius, radius + 1):
+        for dx in range(-radius, radius + 1):
             nx, ny = x + dx, y + dy
             if nx < 0 or ny < 0 or nx >= w or ny >= h:
                 continue
-            r, g, b = px[ny * w + nx]
-            if (r + g + b) / 3 > 248:
+            total += 1
+            if pixel_avg(flat, w, nx, ny) > 165:
+                light += 1
+    return light / max(total, 1)
+
+
+def median_channel(samples, ch):
+    arr = sorted(p[ch] for p in samples)
+    return arr[len(arr) // 2]
+
+
+def local_bg_color(flat, w, h, x, y):
+    samples = []
+    rays = [
+        (1, 0), (-1, 0), (0, 1), (0, -1),
+        (2, 0), (-2, 0), (0, 2), (0, -2),
+        (1, 1), (-1, -1), (1, -1), (-1, 1),
+    ]
+    for sdx, sdy in rays:
+        for step in range(1, 11):
+            nx, ny = x + sdx * step, y + sdy * step
+            if nx < 0 or ny < 0 or nx >= w or ny >= h:
+                break
+            r, g, b = flat[ny * w + nx]
+            if is_likely_ink(r, g, b):
+                break
+            if not is_watermark_pixel(r, g, b):
                 samples.append((r, g, b))
-    if not samples:
-        return (255, 255, 255)
-    return tuple(int(sum(c[i] for c in samples) / len(samples)) for i in range(3))
+                break
+    if len(samples) >= 2:
+        return (
+            median_channel(samples, 0),
+            median_channel(samples, 1),
+            median_channel(samples, 2),
+        )
+    white = []
+    for dy in range(-4, 5):
+        for dx in range(-4, 5):
+            nx, ny = x + dx, y + dy
+            if nx < 0 or ny < 0 or nx >= w or ny >= h:
+                continue
+            if pixel_avg(flat, w, nx, ny) > 242:
+                r, g, b = flat[ny * w + nx]
+                white.append((r, g, b))
+    if white:
+        return tuple(int(sum(c[i] for c in white) / len(white)) for i in range(3))
+    return (255, 255, 255)
+
+
+def safe_to_remove(flat, w, h, x, y, strict):
+    r, g, b = flat[y * w + x]
+    if not is_watermark_pixel(r, g, b):
+        return False
+    if is_likely_ink(r, g, b):
+        return False
+    ink_radius = 2 if strict else 1
+    if has_ink_nearby(flat, w, h, x, y, ink_radius):
+        return False
+    light_need = 0.40 if strict else 0.55
+    if light_context_ratio(flat, w, h, x, y, 4) < light_need:
+        return False
+    return True
+
+
+def paint_bg(flat, w, h, x, y):
+    bg = local_bg_color(flat, w, h, x, y)
+    flat[y * w + x] = bg
+    return bg
 
 
 def clean_image(im: Image.Image):
@@ -103,73 +168,68 @@ def clean_image(im: Image.Image):
     w, h = rgb.size
     px = list(rgb.getdata())
     flat = [(p[0], p[1], p[2]) for p in px]
-    zones = [
-        (int(w * 0.76), int(h * 0.80), w, h),
-        (0, int(h * 0.80), int(w * 0.24), h),
-        (int(w * 0.76), 0, w, int(h * 0.20)),
-    ]
+    total = w * h
     removed = 0
-    zone_pixels = 0
-    dark_in_zones = 0
-    new_px = list(px)
 
-    for x0, y0, x1, y1 in zones:
+    corners = [
+        (int(w * 0.72), int(h * 0.78), w, h),
+        (0, int(h * 0.78), int(w * 0.28) + 1, h),
+        (int(w * 0.72), 0, w, int(h * 0.22) + 1),
+    ]
+    for x0, y0, x1, y1 in corners:
         for y in range(y0, y1):
             for x in range(x0, x1):
-                zone_pixels += 1
-                i = y * w + x
-                r, g, b, a = new_px[i]
-                if (r + g + b) / 3 < 100:
-                    dark_in_zones += 1
-                if is_watermark_pixel(r, g, b, a):
-                    bg = bg_color(flat, w, h, x, y)
-                    new_px[i] = (*bg, 255)
-                    flat[i] = bg
-                    removed += 1
+                if not safe_to_remove(flat, w, h, x, y, False):
+                    continue
+                paint_bg(flat, w, h, x, y)
+                removed += 1
 
     for y in range(h):
         for x in range(w):
             d1 = abs(x / max(w, 1) - y / max(h, 1))
             d2 = abs(1 - x / max(w, 1) - y / max(h, 1))
-            if d1 > 0.14 and d2 > 0.14:
+            if d1 > 0.16 and d2 > 0.16:
                 continue
-            i = y * w + x
-            r, g, b, a = new_px[i]
-            if not is_watermark_pixel(r, g, b, a):
+            if not safe_to_remove(flat, w, h, x, y, False):
                 continue
-            if has_dark_neighbor(flat, w, h, x, y):
-                continue
-            bg = bg_color(flat, w, h, x, y)
-            new_px[i] = (*bg, 255)
-            flat[i] = bg
+            paint_bg(flat, w, h, x, y)
             removed += 1
 
     for y in range(h):
         for x in range(w):
-            i = y * w + x
-            r, g, b, a = new_px[i]
-            if not is_watermark_pixel(r, g, b, a):
+            if not safe_to_remove(flat, w, h, x, y, True):
                 continue
-            if has_dark_neighbor(flat, w, h, x, y, radius=1):
-                continue
-            if light_context_ratio(flat, w, h, x, y) < 0.52:
-                continue
-            bg = bg_color(flat, w, h, x, y)
-            new_px[i] = (*bg, 255)
-            flat[i] = bg
+            paint_bg(flat, w, h, x, y)
             removed += 1
 
-    dark_ratio = dark_in_zones / max(zone_pixels, 1)
-    flagged = dark_ratio > 0.55 and removed < 4
+    for y in range(h):
+        for x in range(w):
+            r, g, b = flat[y * w + x]
+            if not is_watermark_pixel(r, g, b):
+                continue
+            if light_context_ratio(flat, w, h, x, y, 5) < 0.78:
+                continue
+            if has_ink_nearby(flat, w, h, x, y, 3):
+                continue
+            paint_bg(flat, w, h, x, y)
+            removed += 1
+
+    removed_ratio = removed / max(total, 1)
+    flagged = removed_ratio > 0.38
+    new_px = [(*flat[i], px[i][3]) for i in range(len(px))]
     out = Image.new("RGBA", (w, h))
     out.putdata(new_px)
-    return out.convert("RGB"), {"removed": removed, "flagged": flagged, "dark_ratio": dark_ratio}
+    return out.convert("RGB"), {
+        "removed": removed,
+        "flagged": flagged,
+        "removed_ratio": removed_ratio,
+    }
 
 
 def fetch(url: str, timeout=25) -> bytes:
     req = urllib.request.Request(
         fix_url(url),
-        headers={"User-Agent": "QuantrexImageCleaner/1.0"},
+        headers={"User-Agent": "QuantrexImageCleaner/2.0"},
     )
     return urllib.request.urlopen(req, timeout=timeout).read()
 
@@ -191,7 +251,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=200, help="Max images to process this run")
     ap.add_argument("--all", action="store_true", help="Process entire scan list")
-    ap.add_argument("--resume", action="store_true", default=True)
+    ap.add_argument("--reclean", action="store_true", help="Re-process URLs already in manifest")
     args = ap.parse_args()
 
     if not SCAN.exists():
@@ -202,13 +262,19 @@ def main():
 
     manifest = load_json(MANIFEST, {"version": 1, "map": {}, "processed": 0})
     review = load_json(REVIEW, {"flagged": [], "reasons": {}})
-    done = set(manifest.get("map", {}).keys()) | set(review.get("flagged", []))
+    flagged_set = set(review.get("flagged", []))
 
-    todo = [u for u in urls if u not in done]
-    if not args.all:
-        todo = todo[: args.limit]
-
-    print(f"total_urls={len(urls)} already_done={len(done)} this_run={len(todo)}")
+    if args.reclean:
+        todo = list(manifest.get("map", {}).keys())
+        if not args.all:
+            todo = todo[: args.limit]
+        print(f"reclean mode: {len(todo)} manifest entries (v{CLEAN_VER})")
+    else:
+        done = set(manifest.get("map", {}).keys()) | flagged_set
+        todo = [u for u in urls if u not in done]
+        if not args.all:
+            todo = todo[: args.limit]
+        print(f"total_urls={len(urls)} already_done={len(done)} this_run={len(todo)}")
 
     ok = fail = flagged = 0
     for i, url in enumerate(todo, 1):
@@ -217,11 +283,16 @@ def main():
             im = Image.open(io.BytesIO(raw))
             cleaned, stats = clean_image(im)
             if stats["flagged"]:
-                review["flagged"].append(url)
-                review["reasons"][url] = "watermark overlaps figure content"
+                if url not in review["flagged"]:
+                    review["flagged"].append(url)
+                review["reasons"][url] = f"removed_ratio={stats['removed_ratio']:.3f}"
                 flagged += 1
-                print(f"[{i}/{len(todo)}] FLAG {url}")
+                print(f"[{i}/{len(todo)}] FLAG {url} ratio={stats['removed_ratio']:.3f}")
             else:
+                if url in flagged_set:
+                    review["flagged"] = [u for u in review["flagged"] if u != url]
+                    review["reasons"].pop(url, None)
+                    flagged_set.discard(url)
                 rel = rel_path(url)
                 dest = ROOT / rel
                 dest.parent.mkdir(parents=True, exist_ok=True)
@@ -230,22 +301,25 @@ def main():
                 ok += 1
                 print(f"[{i}/{len(todo)}] OK {rel} removed={stats['removed']}")
         except (urllib.error.URLError, TimeoutError, OSError, ValueError) as e:
-            review["flagged"].append(url)
+            if url not in review["flagged"]:
+                review["flagged"].append(url)
             review["reasons"][url] = f"fetch/process error: {e}"
             fail += 1
             print(f"[{i}/{len(todo)}] ERR {url} — {e}")
         if i % 25 == 0:
+            manifest["version"] = CLEAN_VER
             manifest["processed"] = len(manifest.get("map", {}))
             manifest["updated"] = int(time.time())
             save_json(MANIFEST, manifest)
             save_json(REVIEW, review)
 
+    manifest["version"] = CLEAN_VER
     manifest["processed"] = len(manifest.get("map", {}))
     manifest["updated"] = int(time.time())
     review["count"] = len(review.get("flagged", []))
     save_json(MANIFEST, manifest)
     save_json(REVIEW, review)
-    print(f"done ok={ok} flagged={flagged} errors={fail}")
+    print(f"done ok={ok} flagged={flagged} errors={fail} manifest_version={CLEAN_VER}")
     print(f"manifest={MANIFEST} review={REVIEW}")
 
 

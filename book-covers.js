@@ -97,7 +97,7 @@ function inferBookCoverStyle(book) {
   return style;
 }
 
-const BOOK_COVER_VER = "qxtest477";
+const BOOK_COVER_VER = "qxtest478";
 
 function withCoverVer(path) {
   if (!path) return null;
