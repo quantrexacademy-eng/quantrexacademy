@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """
-Parallel watermark batch cleaner — splits work across N workers.
+Parallel watermark batch cleaner — up to 100 workers in waves.
 Each worker writes to its own shard manifest; merges at end.
 
 Usage:
-  python scripts/clean_parallel.py --workers 8 --per-worker 600
-  python scripts/clean_parallel.py --workers 8 --per-worker 600 --merge-only
+  python scripts/clean_parallel.py --workers 100 --per-worker 50 --loop
+  python scripts/clean_parallel.py --merge-only
 """
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 import time
@@ -21,6 +22,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SCAN = ROOT / "data" / "qx_image_scan.json"
 MANIFEST = ROOT / "data" / "qx_clean_manifest.json"
 REVIEW = ROOT / "data" / "qx_image_review.json"
+PROGRESS = ROOT / "data" / "qx_watermark_progress.json"
 SHARD_DIR = ROOT / "data" / "clean_shards"
 CLEAN_VER = 3
 
@@ -52,10 +54,11 @@ def remaining_urls() -> list[str]:
 
 def shard_paths(worker_id: int) -> tuple[Path, Path, Path]:
     SHARD_DIR.mkdir(parents=True, exist_ok=True)
-    urls = SHARD_DIR / f"urls_w{worker_id}.json"
-    manifest = SHARD_DIR / f"manifest_w{worker_id}.json"
-    review = SHARD_DIR / f"review_w{worker_id}.json"
-    return urls, manifest, review
+    return (
+        SHARD_DIR / f"urls_w{worker_id}.json",
+        SHARD_DIR / f"manifest_w{worker_id}.json",
+        SHARD_DIR / f"review_w{worker_id}.json",
+    )
 
 
 def run_worker(worker_id: int, url_list: list[str]) -> dict:
@@ -69,21 +72,40 @@ def run_worker(worker_id: int, url_list: list[str]) -> dict:
         "--review-out", str(review_path),
         "--worker", str(worker_id),
     ]
-    print(f"[worker {worker_id}] start n={len(url_list)}")
     t0 = time.time()
     proc = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True)
     elapsed = round(time.time() - t0, 1)
-    tail = (proc.stdout or "").strip().splitlines()[-3:]
-    for line in tail:
-        print(f"[worker {worker_id}] {line}")
-    if proc.returncode != 0:
-        print(f"[worker {worker_id}] STDERR: {(proc.stderr or '')[-500:]}")
-    return {
-        "worker": worker_id,
-        "count": len(url_list),
-        "ok": proc.returncode == 0,
-        "elapsed": elapsed,
+    ok = proc.returncode == 0
+    if ok:
+        print(f"[w{worker_id}] done n={len(url_list)} {elapsed}s")
+    else:
+        print(f"[w{worker_id}] FAIL {(proc.stderr or '')[-200:]}")
+    return {"worker": worker_id, "count": len(url_list), "ok": ok, "elapsed": elapsed}
+
+
+def write_progress(extra: dict | None = None) -> dict:
+    scan = load_json(SCAN, {"urls": []})
+    manifest = load_json(MANIFEST, {"map": {}})
+    review = load_json(REVIEW, {"flagged": []})
+    done = set(manifest.get("map", {})) | set(review.get("flagged", []))
+    total = len(scan.get("urls", []))
+    remaining = total - len(done)
+    state = {
+        "updated": int(time.time()),
+        "build": "qxtest483",
+        "total_scanned": total,
+        "cleaned": len(manifest.get("map", {})),
+        "flagged": len(review.get("flagged", [])),
+        "remaining": remaining,
+        "pct_complete": round(100 * len(done) / max(total, 1), 2),
+        "manifest_version": manifest.get("version"),
+        "resume_command": "python scripts/clean_parallel.py --workers 100 --per-worker 50 --wave 25 --loop",
+        "merge_command": "python scripts/clean_parallel.py --merge-only",
     }
+    if extra:
+        state.update(extra)
+    save_json(PROGRESS, state)
+    return state
 
 
 def merge_shards() -> dict:
@@ -120,49 +142,82 @@ def merge_shards() -> dict:
         "total_cleaned": len(manifest["map"]),
         "total_flagged": len(review["flagged"]),
     }
-    print("MERGE", json.dumps(audit, indent=2))
+    print("MERGE", json.dumps(audit))
+    write_progress({"last_merge": audit})
     return audit
+
+
+def run_wave(chunks: list[tuple[int, list[str]]], wave_size: int) -> list[dict]:
+    results = []
+    for i in range(0, len(chunks), wave_size):
+        wave = chunks[i : i + wave_size]
+        print(f"wave {i // wave_size + 1} workers={len(wave)}")
+        with ProcessPoolExecutor(max_workers=min(wave_size, len(wave))) as pool:
+            futs = {pool.submit(run_worker, wid, urls): wid for wid, urls in wave}
+            for fut in as_completed(futs):
+                results.append(fut.result())
+    return results
+
+
+def run_batch(workers: int, per_worker: int, wave_size: int) -> bool:
+    todo = remaining_urls()
+    total_take = workers * per_worker
+    batch = todo[:total_take]
+    if not batch:
+        merge_shards()
+        return False
+
+    chunks: list[tuple[int, list[str]]] = []
+    for i in range(workers):
+        start = i * per_worker
+        chunk = batch[start : start + per_worker]
+        if chunk:
+            chunks.append((i, chunk))
+
+    print(f"AGENTS={len(chunks)} urls={len(batch)} remaining={len(todo)} wave={wave_size}")
+    write_progress({"batch_urls": len(batch), "workers": len(chunks), "wave_size": wave_size, "status": "running"})
+    t0 = time.time()
+    results = run_wave(chunks, wave_size)
+    merge_shards()
+    elapsed = round(time.time() - t0, 1)
+    ok_workers = sum(1 for r in results if r["ok"])
+    imgs = sum(r["count"] for r in results if r["ok"])
+    write_progress({
+        "status": "batch_done",
+        "last_batch_elapsed_sec": elapsed,
+        "last_batch_workers_ok": ok_workers,
+        "last_batch_images": imgs,
+        "imgs_per_sec": round(imgs / max(elapsed, 1), 2),
+    })
+    print(f"BATCH DONE ok={ok_workers}/{len(results)} imgs={imgs} elapsed={elapsed}s rate={imgs/max(elapsed,1):.1f}/s")
+    return True
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--workers", type=int, default=8, help="Parallel worker count")
-    ap.add_argument("--per-worker", type=int, default=500, help="URLs per worker this run")
-    ap.add_argument("--merge-only", action="store_true", help="Only merge shard manifests")
+    ap.add_argument("--workers", type=int, default=100, help="Total worker agents")
+    ap.add_argument("--per-worker", type=int, default=100, help="URLs per agent")
+    ap.add_argument("--wave", type=int, default=15, help="Concurrent agents per wave")
+    ap.add_argument("--loop", action="store_true", help="Keep running until done")
+    ap.add_argument("--merge-only", action="store_true")
     args = ap.parse_args()
 
     if args.merge_only:
         merge_shards()
         return
 
-    todo = remaining_urls()
-    total_take = args.workers * args.per_worker
-    batch = todo[:total_take]
-    if not batch:
-        print("nothing to do")
-        merge_shards()
+    wave = min(args.wave, args.workers, max(4, (os.cpu_count() or 4) * 2))
+
+    if args.loop:
+        rnd = 0
+        while run_batch(args.workers, args.per_worker, wave):
+            rnd += 1
+            print(f"=== ROUND {rnd} COMPLETE ===")
+        write_progress({"status": "complete"})
+        print("ALL 50K IMAGES PROCESSED")
         return
 
-    chunks: list[tuple[int, list[str]]] = []
-    for i in range(args.workers):
-        start = i * args.per_worker
-        end = start + args.per_worker
-        chunk = batch[start:end]
-        if chunk:
-            chunks.append((i, chunk))
-
-    print(f"parallel workers={len(chunks)} urls={len(batch)} remaining={len(todo)}")
-    t0 = time.time()
-    results = []
-    with ProcessPoolExecutor(max_workers=len(chunks)) as pool:
-        futs = {pool.submit(run_worker, wid, urls): wid for wid, urls in chunks}
-        for fut in as_completed(futs):
-            results.append(fut.result())
-
-    merge_shards()
-    elapsed = round(time.time() - t0, 1)
-    ok_workers = sum(1 for r in results if r["ok"])
-    print(f"done workers_ok={ok_workers}/{len(results)} elapsed={elapsed}s")
+    run_batch(args.workers, args.per_worker, wave)
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 // Quantrex — remove MARKS / third-party watermarks from HTML + DOM
 window.QxWM = (() => {
-  const POOL_RX = /cdn-question-pool\.getmarks|\/pyq\/jee_main\/|\/pyq\/neet\//i;
+  const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|\/cbse\/|ap_eamcet/i;
   const UI_ICON_RX = /ic_content_exam_|cpyqb\/subjects\/|ncert_toolbox\/|formula_cards|qx-marks-icon|fc-img|exam-pill-logo|subj-mini-ic/i;
 
   function isPoolDiagram(src, el) {

@@ -27,9 +27,10 @@
   pointer-events: none;
   z-index: 2;
   background:
-    linear-gradient(135deg, transparent 42%, rgba(255, 255, 255, 0.94) 72%) top right / 28% 22% no-repeat,
-    linear-gradient(315deg, transparent 42%, rgba(255, 255, 255, 0.94) 72%) bottom left / 28% 22% no-repeat,
-    linear-gradient(90deg, transparent 8%, rgba(255, 255, 255, 0.92) 28%, rgba(255, 255, 255, 0.92) 72%, transparent 92%) center / 100% 38% no-repeat;
+    linear-gradient(135deg, transparent 32%, #ffffff 66%) top right / 32% 26% no-repeat,
+    linear-gradient(315deg, transparent 32%, #ffffff 66%) bottom left / 32% 26% no-repeat,
+    linear-gradient(#ffffff, #ffffff) center / 82% 56% no-repeat,
+    radial-gradient(ellipse 90% 72% at 50% 50%, #ffffff 0%, #ffffff 68%, transparent 92%) center / 100% 100% no-repeat;
 }
 
 .qx-fig.qx-wm-pending-wrap::after,

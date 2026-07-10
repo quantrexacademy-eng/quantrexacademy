@@ -1,15 +1,19 @@
 // Quantrex — embedded watermark removal (never hides or breaks figures)
 window.QxImgClean = (() => {
-  const DB_NAME = "quantrex_clean_images_v6";
+  const DB_NAME = "quantrex_clean_images_v7";
   const DB_STORE = "blobs";
   const MANIFEST_URL = "data/qx_clean_manifest.json";
   const REVIEW_URL = "data/qx_image_review.json";
-  const CLEAN_VER = 6;
+  const CLEAN_VER = 7;
   const MANIFEST_MIN_VER = 3;
   const WM_RESIDUE_MAX = 0.018;
   const PYQ_CDN = "https://cdn-question-pool.getmarks.app/";
+  const PROXY_BASE = (typeof QUANTREX_STACK !== "undefined" && QUANTREX_STACK.frontend && QUANTREX_STACK.frontend.url)
+    ? QUANTREX_STACK.frontend.url.replace(/\/$/, "")
+    : "https://quantrexacademy-lemon.vercel.app";
   const BROKEN_CDN_RX = /https?:\/\/\.app\//gi;
   const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|\/cbse\/|ap_eamcet/i;
+  const OPT_IMG_SEL = ".mtk-opt-text, .qx-prac-opt-text, .mtk-opt, .qa-opt, .qx-prac-opt";
   const SKIP_RX = /watermark|marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|formula_cards|ic_content_exam_|cpyqb\/subjects\//i;
 
   let manifest = null;
@@ -380,8 +384,41 @@ window.QxImgClean = (() => {
     wrap.insertBefore(note, img);
   }
 
+  function isInOptionContext(node) {
+    return !!(node && node.closest && node.closest(OPT_IMG_SEL));
+  }
+
+  function ensureDiagramWrap(img) {
+    if (img.closest(".qx-fig, .qx-opt-fig")) return img.closest(".qx-fig, .qx-opt-fig");
+    if (isInOptionContext(img)) {
+      const span = document.createElement("span");
+      span.className = "qx-opt-fig";
+      img.parentNode.insertBefore(span, img);
+      span.appendChild(img);
+      img.classList.add("qx-no-wm");
+      return span;
+    }
+    const fig = document.createElement("figure");
+    fig.className = "qx-fig";
+    img.parentNode.insertBefore(fig, img);
+    fig.appendChild(img);
+    img.classList.add("qx-fig-img", "qx-no-wm");
+    return fig;
+  }
+
+  function proxyImageUrl(cdnSrc) {
+    const fixed = fixUrl(cdnSrc);
+    if (location.origin && !location.origin.includes("localhost")) {
+      if (location.origin.includes("vercel.app")) {
+        return `${location.origin}/api/proxy-image?url=${encodeURIComponent(fixed)}`;
+      }
+    }
+    return `${PROXY_BASE}/api/proxy-image?url=${encodeURIComponent(fixed)}`;
+  }
+
   function markPendingMask(img) {
     if (!img.classList.contains("qx-cleaned")) {
+      ensureDiagramWrap(img);
       img.classList.add("qx-wm-pending");
       const fig = img.closest(".qx-fig, .qx-opt-fig");
       if (fig) fig.classList.add("qx-wm-pending-wrap");
@@ -417,10 +454,13 @@ window.QxImgClean = (() => {
   async function loadForCanvas(cdnSrc, manifestPath) {
     if (manifestPath && !manifestPath.startsWith("http")) {
       const local = await loadProbe(manifestPath, false);
-      if (local) return { img: local, source: manifestPath };
+      if (local) return { img: local, source: manifestPath, canRead: true };
     }
+    const proxy = proxyImageUrl(cdnSrc);
+    const viaProxy = await loadProbe(proxy, true);
+    if (viaProxy) return { img: viaProxy, source: proxy, canRead: true };
     const cors = await loadProbe(cdnSrc, true);
-    if (cors) return { img: cors, source: cdnSrc };
+    if (cors) return { img: cors, source: cdnSrc, canRead: true };
     return null;
   }
 
@@ -577,6 +617,7 @@ window.QxImgClean = (() => {
     img.dataset.qxOrigSrc = cdnSrc;
     attachErrorFallback(img);
     stripDisplayCors(img);
+    ensureDiagramWrap(img);
 
     const review = await loadReview();
     const isFlagged = review.has(cdnSrc);

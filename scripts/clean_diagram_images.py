@@ -11,6 +11,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import gc
 import hashlib
 import io
 import json
@@ -32,6 +33,8 @@ REVIEW = ROOT / "data" / "qx_image_review.json"
 OUT_DIR = ROOT / "assets" / "clean-diagrams"
 CLEAN_VER = 3
 WM_RESIDUE_MAX = 0.018
+MAX_DIM = 2048
+MAX_PIXELS = 3_500_000
 
 FIX_CDN = re.compile(r"https?://\.app/", re.I)
 CDN = "https://cdn-question-pool.getmarks.app/"
@@ -210,11 +213,28 @@ def paint_bg(flat, w, h, x, y):
     return bg
 
 
-def clean_image(im: Image.Image):
+def prepare_image(im: Image.Image) -> Image.Image:
     rgb = im.convert("RGBA")
     w, h = rgb.size
-    px = list(rgb.getdata())
-    flat = [(p[0], p[1], p[2]) for p in px]
+    if max(w, h) > MAX_DIM:
+        scale = MAX_DIM / max(w, h)
+        w, h = max(1, int(w * scale)), max(1, int(h * scale))
+        rgb = rgb.resize((w, h), Image.LANCZOS)
+    if w * h > MAX_PIXELS:
+        scale = (MAX_PIXELS / (w * h)) ** 0.5
+        w, h = max(1, int(w * scale)), max(1, int(h * scale))
+        rgb = rgb.resize((w, h), Image.LANCZOS)
+    return rgb
+
+
+def clean_image(im: Image.Image):
+    rgb = prepare_image(im)
+    w, h = rgb.size
+    flat = []
+    alpha = []
+    for p in rgb.getdata():
+        flat.append((p[0], p[1], p[2]))
+        alpha.append(p[3])
     total = w * h
     removed = 0
     before_ink = count_ink(flat, w, h)
@@ -288,9 +308,10 @@ def clean_image(im: Image.Image):
     residue_ratio = after_wm / max(total, 1)
     clean_enough = residue_ratio <= WM_RESIDUE_MAX
     flagged = damaged or not improved or not clean_enough
-    new_px = [(*flat[i], px[i][3]) for i in range(len(px))]
+    new_px = [(*flat[i], alpha[i]) for i in range(len(flat))]
     out = Image.new("RGBA", (w, h))
     out.putdata(new_px)
+    del flat, alpha
     return out.convert("RGB"), {
         "removed": removed,
         "flagged": flagged,
@@ -396,12 +417,20 @@ def main():
                 manifest["map"][url] = rel.replace("\\", "/")
                 ok += 1
                 print(f"[{i}/{len(todo)}] OK {rel} removed={stats['removed']}")
+        except MemoryError:
+            gc.collect()
+            if url not in review["flagged"]:
+                review["flagged"].append(url)
+            review["reasons"][url] = "memory_error: image too large"
+            fail += 1
+            print(f"[{i}/{len(todo)}] MEM {url}")
         except (urllib.error.URLError, TimeoutError, OSError, ValueError) as e:
             if url not in review["flagged"]:
                 review["flagged"].append(url)
             review["reasons"][url] = f"fetch/process error: {e}"
             fail += 1
             print(f"[{i}/{len(todo)}] ERR {url} — {e}")
+        gc.collect()
         if i % 25 == 0:
             manifest["version"] = CLEAN_VER
             manifest["processed"] = len(manifest.get("map", {}))

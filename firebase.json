@@ -11,6 +11,8 @@
     "ignore": [
       "firebase.json",
       "**/.*",
+      ".git/**",
+      "data/clean_shards/**",
       "**/node_modules/**",
       "marks_data/**",
       "tools/**",
@@ -40,7 +42,8 @@
     ],
     "rewrites": [
       { "source": "/login", "destination": "/login.html" },
-      { "source": "/app", "destination": "/app.html" }
+      { "source": "/app", "destination": "/app.html" },
+      { "source": "/dashboard", "destination": "/app.html" }
     ]
   }
 }

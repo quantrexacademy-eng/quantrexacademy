@@ -58,7 +58,7 @@ window.Mx = (() => {
   const BRAND_IMG_RX = /(?:watermark|branding|marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|scoremarks)/i;
   const BRAND_LOGO_RX = /(?:watermark|marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|scoremarks)/i;
   const MARKS_UI_ICON_RX = /ic_content_exam_|cpyqb\/subjects\/|ncert_toolbox\/|subj-ic-img|exam-pill-logo|subj-mini-ic|qx-marks-icon|qx-exam-logo|board-exam|board-subj|marks-exam-ic|marks-board-subj|dash-board.*logo|dash-tool-logo|exam-card-logo/i;
-  const QUESTION_IMG_RX = /cdn-question-pool\.getmarks|\/pyq\/jee_main\//i;
+  const QUESTION_IMG_RX = /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|\/cbse\/|ap_eamcet/i;
   const FORMULA_IMG_RX = /formula_cards/i;
 
   function isMarksUiIcon(str) {
