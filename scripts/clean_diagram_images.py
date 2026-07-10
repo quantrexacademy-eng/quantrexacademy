@@ -327,29 +327,46 @@ def main():
     ap.add_argument("--limit", type=int, default=200, help="Max images to process this run")
     ap.add_argument("--all", action="store_true", help="Process entire scan list")
     ap.add_argument("--reclean", action="store_true", help="Re-process URLs already in manifest")
+    ap.add_argument("--urls-file", type=str, default="", help="JSON file with {urls:[]} for worker shard")
+    ap.add_argument("--manifest-out", type=str, default="", help="Shard manifest output path")
+    ap.add_argument("--review-out", type=str, default="", help="Shard review output path")
+    ap.add_argument("--worker", type=int, default=-1, help="Worker id for logging")
     args = ap.parse_args()
 
-    if not SCAN.exists():
-        raise SystemExit(f"Run scan_pool_images.py first — missing {SCAN}")
+    manifest_path = Path(args.manifest_out) if args.manifest_out else MANIFEST
+    review_path = Path(args.review_out) if args.review_out else REVIEW
 
-    scan = json.loads(SCAN.read_text(encoding="utf-8"))
-    urls = [fix_url(u) for u in scan.get("urls", [])]
-
-    manifest = load_json(MANIFEST, {"version": 1, "map": {}, "processed": 0})
-    review = load_json(REVIEW, {"flagged": [], "reasons": {}})
-    flagged_set = set(review.get("flagged", []))
-
-    if args.reclean:
-        todo = list(manifest.get("map", {}).keys())
-        if not args.all:
-            todo = todo[: args.limit]
-        print(f"reclean mode: {len(todo)} manifest entries (v{CLEAN_VER})")
+    if args.urls_file:
+        uf = json.loads(Path(args.urls_file).read_text(encoding="utf-8"))
+        urls = [fix_url(u) for u in uf.get("urls", [])]
+        manifest = {"version": CLEAN_VER, "map": {}, "processed": 0}
+        review = {"flagged": [], "reasons": {}}
+        flagged_set: set[str] = set()
+        todo = urls
+        tag = f"worker={args.worker}" if args.worker >= 0 else "shard"
+        print(f"{tag} urls={len(todo)}")
     else:
-        done = set(manifest.get("map", {}).keys()) | flagged_set
-        todo = [u for u in urls if u not in done]
-        if not args.all:
-            todo = todo[: args.limit]
-        print(f"total_urls={len(urls)} already_done={len(done)} this_run={len(todo)}")
+        if not SCAN.exists():
+            raise SystemExit(f"Run scan_pool_images.py first — missing {SCAN}")
+
+        scan = json.loads(SCAN.read_text(encoding="utf-8"))
+        urls = [fix_url(u) for u in scan.get("urls", [])]
+
+        manifest = load_json(manifest_path, {"version": 1, "map": {}, "processed": 0})
+        review = load_json(review_path, {"flagged": [], "reasons": {}})
+        flagged_set = set(review.get("flagged", []))
+
+        if args.reclean:
+            todo = list(manifest.get("map", {}).keys())
+            if not args.all:
+                todo = todo[: args.limit]
+            print(f"reclean mode: {len(todo)} manifest entries (v{CLEAN_VER})")
+        else:
+            done = set(manifest.get("map", {}).keys()) | flagged_set
+            todo = [u for u in urls if u not in done]
+            if not args.all:
+                todo = todo[: args.limit]
+            print(f"total_urls={len(urls)} already_done={len(done)} this_run={len(todo)}")
 
     ok = fail = flagged = 0
     for i, url in enumerate(todo, 1):
@@ -389,17 +406,18 @@ def main():
             manifest["version"] = CLEAN_VER
             manifest["processed"] = len(manifest.get("map", {}))
             manifest["updated"] = int(time.time())
-            save_json(MANIFEST, manifest)
-            save_json(REVIEW, review)
+            save_json(manifest_path, manifest)
+            save_json(review_path, review)
 
     manifest["version"] = CLEAN_VER
     manifest["processed"] = len(manifest.get("map", {}))
     manifest["updated"] = int(time.time())
     review["count"] = len(review.get("flagged", []))
-    save_json(MANIFEST, manifest)
-    save_json(REVIEW, review)
-    print(f"done ok={ok} flagged={flagged} errors={fail} manifest_version={CLEAN_VER}")
-    print(f"manifest={MANIFEST} review={REVIEW}")
+    save_json(manifest_path, manifest)
+    save_json(review_path, review)
+    wtag = f" worker={args.worker}" if args.worker >= 0 else ""
+    print(f"done ok={ok} flagged={flagged} errors={fail} manifest_version={CLEAN_VER}{wtag}")
+    print(f"manifest={manifest_path} review={review_path}")
 
 
 if __name__ == "__main__":
