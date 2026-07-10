@@ -1,13 +1,13 @@
-// Quantrex — embedded watermark removal (preserves diagram ink & visibility)
+// Quantrex — embedded watermark removal (never hides or breaks figures)
 window.QxImgClean = (() => {
-  const DB_NAME = "quantrex_clean_images_v2";
+  const DB_NAME = "quantrex_clean_images_v3";
   const DB_STORE = "blobs";
   const MANIFEST_URL = "data/qx_clean_manifest.json";
   const REVIEW_URL = "data/qx_image_review.json";
-  const CLEAN_VER = 2;
+  const CLEAN_VER = 3;
   const PYQ_CDN = "https://cdn-question-pool.getmarks.app/";
   const BROKEN_CDN_RX = /https?:\/\/\.app\//gi;
-  const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/jee_main\/|\/pyq\/neet\/|\/pyq\/aiims\//i;
+  const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|\/cbse\/|ap_eamcet/i;
   const SKIP_RX = /watermark|marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|formula_cards|ic_content_exam_|cpyqb\/subjects\//i;
 
   let manifest = null;
@@ -101,8 +101,8 @@ window.QxImgClean = (() => {
   async function cleanUrl(url) {
     const fixed = fixUrl(url);
     const m = await loadManifest();
-    if ((m.version || 1) >= CLEAN_VER && m.map && m.map[fixed]) return m.map[fixed];
-    if ((m.version || 1) >= CLEAN_VER && m.map && m.map[url]) return m.map[url];
+    if ((m.version || 1) >= 2 && m.map && m.map[fixed]) return m.map[fixed];
+    if ((m.version || 1) >= 2 && m.map && m.map[url]) return m.map[url];
     return fixed;
   }
 
@@ -228,9 +228,21 @@ window.QxImgClean = (() => {
     return true;
   }
 
+  function countInk(data, w, h) {
+    let ink = 0;
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        const i = (y * w + x) * 4;
+        if (isLikelyInk(data[i], data[i + 1], data[i + 2])) ink++;
+      }
+    }
+    return ink;
+  }
+
   function cleanImageData(data, w, h) {
     let removed = 0;
     const total = w * h;
+    const beforeInk = countInk(data, w, h);
 
     const corners = [
       { x0: Math.floor(w * 0.72), y0: Math.floor(h * 0.78), x1: w, y1: h },
@@ -280,23 +292,46 @@ window.QxImgClean = (() => {
       }
     }
 
+    const afterInk = countInk(data, w, h);
     const removedRatio = removed / Math.max(total, 1);
-    const flagged = removedRatio > 0.38;
-    return { removed, flagged, removedRatio };
+    const damaged = removedRatio > 0.32 || afterInk < Math.max(60, beforeInk * 0.4);
+    return { removed, damaged, removedRatio, beforeInk, afterInk };
   }
 
-  function ensureCors(img) {
-    const src = fixUrl(img.getAttribute("src") || img.dataset.qxOrigSrc || "");
-    if (!src || src.startsWith("blob:") || src.startsWith("data:")) return Promise.resolve();
-    const needsReload = img.crossOrigin !== "anonymous";
-    img.crossOrigin = "anonymous";
-    img.dataset.qxCors = "1";
-    if (!needsReload && img.complete && img.naturalWidth) return Promise.resolve();
-    return new Promise((resolve, reject) => {
-      img.addEventListener("load", () => resolve(), { once: true });
-      img.addEventListener("error", () => reject(new Error("cors load failed")), { once: true });
-      img.src = src;
+  function stripDisplayCors(img) {
+    img.removeAttribute("crossorigin");
+    img.crossOrigin = null;
+  }
+
+  function restoreOriginal(img) {
+    const orig = img.dataset.qxOrigSrc;
+    if (!orig) return;
+    stripDisplayCors(img);
+    if (img.getAttribute("src") !== orig) img.src = orig;
+    img.classList.remove("qx-img-flagged");
+    img.style.display = "";
+    img.style.visibility = "";
+    img.style.opacity = "";
+  }
+
+  function loadProbe(url, useCors) {
+    return new Promise(resolve => {
+      const probe = new Image();
+      if (useCors) probe.crossOrigin = "anonymous";
+      probe.onload = () => resolve(probe.naturalWidth > 0 ? probe : null);
+      probe.onerror = () => resolve(null);
+      probe.src = url;
     });
+  }
+
+  async function loadForCanvas(cdnSrc, manifestPath) {
+    if (manifestPath && !manifestPath.startsWith("http")) {
+      const local = await loadProbe(manifestPath, false);
+      if (local) return { img: local, source: manifestPath };
+    }
+    const cors = await loadProbe(cdnSrc, true);
+    if (cors) return { img: cors, source: cdnSrc };
+    return null;
   }
 
   function canvasToBlob(canvas) {
@@ -305,48 +340,114 @@ window.QxImgClean = (() => {
     });
   }
 
-  async function cleanFromImage(img) {
-    const w = img.naturalWidth || img.width;
-    const h = img.naturalHeight || img.height;
+  async function cleanFromProbe(probe) {
+    const w = probe.naturalWidth || probe.width;
+    const h = probe.naturalHeight || probe.height;
     if (!w || !h) return null;
     const canvas = document.createElement("canvas");
     canvas.width = w;
     canvas.height = h;
     const ctx = canvas.getContext("2d", { willReadFrequently: true });
-    ctx.drawImage(img, 0, 0);
-    const imageData = ctx.getImageData(0, 0, w, h);
-    const stats = cleanImageData(imageData.data, w, h);
-    ctx.putImageData(imageData, 0, 0);
-    const blob = await canvasToBlob(canvas);
-    return { blob, stats };
+    try {
+      ctx.drawImage(probe, 0, 0);
+      const imageData = ctx.getImageData(0, 0, w, h);
+      const stats = cleanImageData(imageData.data, w, h);
+      if (stats.damaged) return { blob: null, stats };
+      ctx.putImageData(imageData, 0, 0);
+      const blob = await canvasToBlob(canvas);
+      return { blob, stats };
+    } catch (_) {
+      return null;
+    }
   }
 
   async function applyCleanedBlob(img, blob, src) {
+    if (!blob) return false;
     await putCachedBlob(src, blob);
     const url = URL.createObjectURL(blob);
-    img.src = url;
-    img.dataset.qxCleaned = "1";
-    img.dataset.qxCleanVer = String(CLEAN_VER);
-    img.classList.remove("qx-img-flagged");
-    img.style.display = "";
-    img.classList.add("qx-no-wm", "qx-cleaned");
+    const prev = img.src;
+    return new Promise(resolve => {
+      const done = (ok) => {
+        if (!ok) {
+          URL.revokeObjectURL(url);
+          restoreOriginal(img);
+        } else {
+          img.dataset.qxCleaned = "1";
+          img.dataset.qxCleanVer = String(CLEAN_VER);
+          img.classList.remove("qx-img-flagged");
+          img.style.display = "";
+          img.classList.add("qx-no-wm", "qx-cleaned");
+        }
+        resolve(ok);
+      };
+      img.addEventListener("load", () => done(true), { once: true });
+      img.addEventListener("error", () => {
+        img.src = prev;
+        done(false);
+      }, { once: true });
+      stripDisplayCors(img);
+      img.src = url;
+    });
   }
 
-  async function runtimeClean(img, src) {
-    try {
-      try { await ensureCors(img); } catch (_) { /* fallback */ }
-      if (!img.complete || !img.naturalWidth) {
-        await new Promise((res, rej) => {
-          img.addEventListener("load", res, { once: true });
-          img.addEventListener("error", rej, { once: true });
-        });
+  function waitForDisplay(img, url) {
+    return new Promise(resolve => {
+      const finish = () => resolve(img.naturalWidth > 0);
+      if (img.complete && img.naturalWidth > 0) return resolve(true);
+      img.addEventListener("load", finish, { once: true });
+      img.addEventListener("error", finish, { once: true });
+      stripDisplayCors(img);
+      if (!img.getAttribute("src") || img.getAttribute("src") === window.location.href) {
+        img.src = url;
       }
-      const result = await cleanFromImage(img);
-      if (!result || !result.blob) return;
-      await applyCleanedBlob(img, result.blob, src);
-    } catch (_) {
-      img.classList.add("qx-no-wm");
+    });
+  }
+
+  async function ensureVisible(img, cdnSrc, manifestPath) {
+    stripDisplayCors(img);
+    img.dataset.qxOrigSrc = cdnSrc;
+
+    if (manifestPath && !manifestPath.startsWith("http")) {
+      const ok = await new Promise(resolve => {
+        const done = (success) => {
+          if (success) resolve(true);
+          else {
+            restoreOriginal(img);
+            waitForDisplay(img, cdnSrc).then(() => resolve(img.naturalWidth > 0));
+          }
+        };
+        img.addEventListener("load", () => done(true), { once: true });
+        img.addEventListener("error", () => done(false), { once: true });
+        stripDisplayCors(img);
+        img.src = manifestPath;
+        if (img.complete) done(img.naturalWidth > 0);
+      });
+      if (ok) return true;
     }
+
+    restoreOriginal(img);
+    await waitForDisplay(img, cdnSrc);
+    return img.naturalWidth > 0;
+  }
+
+  async function tryClean(img, cdnSrc, manifestPath) {
+    const cached = await getCachedBlob(cdnSrc);
+    if (cached) return applyCleanedBlob(img, cached, cdnSrc);
+
+    const loaded = await loadForCanvas(cdnSrc, manifestPath);
+    if (!loaded) return false;
+
+    const result = await cleanFromProbe(loaded.img);
+    if (!result || !result.blob || result.stats.damaged) return false;
+    return applyCleanedBlob(img, result.blob, cdnSrc);
+  }
+
+  function attachErrorFallback(img) {
+    if (img.dataset.qxErrBound === "1") return;
+    img.dataset.qxErrBound = "1";
+    img.addEventListener("error", () => {
+      if (img.dataset.qxOrigSrc) restoreOriginal(img);
+    });
   }
 
   async function processImage(img) {
@@ -355,40 +456,31 @@ window.QxImgClean = (() => {
     if (img.dataset.qxCleanVer === String(CLEAN_VER) && img.dataset.qxCleaned === "1") return;
     if (img.dataset.qxCleanPending === "1") return;
 
-    const src = fixUrl(rawSrc);
-    img.dataset.qxOrigSrc = src;
-
-    const cached = await getCachedBlob(src);
-    if (cached) {
-      await applyCleanedBlob(img, cached, src);
-      return;
-    }
+    const cdnSrc = fixUrl(rawSrc);
+    img.dataset.qxOrigSrc = cdnSrc;
+    attachErrorFallback(img);
+    stripDisplayCors(img);
 
     const m = await loadManifest();
-    const manifestPath = (m.version || 1) >= CLEAN_VER && m.map ? (m.map[src] || m.map[rawSrc]) : null;
+    const manifestPath = (m.version || 1) >= 2 && m.map
+      ? (m.map[cdnSrc] || m.map[rawSrc])
+      : null;
 
     img.dataset.qxCleanPending = "1";
-    const finish = async () => {
-      try {
-        if (manifestPath && !manifestPath.startsWith("http")) {
-          img.crossOrigin = "anonymous";
-          img.src = manifestPath;
-          await new Promise((res, rej) => {
-            img.addEventListener("load", res, { once: true });
-            img.addEventListener("error", rej, { once: true });
-          });
-        }
-        await runtimeClean(img, src);
-      } finally {
-        delete img.dataset.qxCleanPending;
+    try {
+      const visible = await ensureVisible(img, cdnSrc, manifestPath);
+      if (!visible) {
+        restoreOriginal(img);
+        return;
       }
-    };
-
-    if (img.complete && img.naturalWidth && !manifestPath) finish();
-    else if (manifestPath) finish();
-    else {
-      img.addEventListener("load", () => finish(), { once: true });
-      if (!img.getAttribute("src")) img.src = src;
+      await tryClean(img, cdnSrc, manifestPath);
+    } catch (_) {
+      restoreOriginal(img);
+    } finally {
+      delete img.dataset.qxCleanPending;
+      img.classList.add("qx-no-wm");
+      img.classList.remove("qx-img-flagged");
+      img.style.display = "";
     }
   }
 
@@ -425,6 +517,7 @@ window.QxImgClean = (() => {
     cleanImageData,
     loadManifest,
     loadReview,
+    restoreOriginal,
     CLEAN_VER
   };
 })();

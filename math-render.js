@@ -90,11 +90,10 @@ window.Mx = (() => {
   function figureHtml(attrs) {
     const hasLoading = /loading=/i.test(attrs);
     const extra = hasLoading ? "" : ' loading="eager" decoding="async" fetchpriority="high"';
-    const cors = /crossorigin/i.test(attrs) ? "" : ' crossorigin="anonymous"';
     const cls = /class=/i.test(attrs)
       ? attrs.replace(/class=(["'])([^"']*)\1/i, 'class=$1$2 qx-fig-img qx-no-wm$1')
       : attrs + ' class="qx-fig-img qx-no-wm"';
-    return `<figure class="qx-fig"><img${cls}${extra}${cors}></figure>`;
+    return `<figure class="qx-fig"><img${cls}${extra}></figure>`;
   }
 
   function wrapDiagramImages(html) {
