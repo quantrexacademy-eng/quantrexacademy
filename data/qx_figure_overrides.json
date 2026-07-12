@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "rules": [
     {
       "urlRx": "chapter_38_electromagnetic_induction_figure_38_e1\\.png",
@@ -128,6 +128,178 @@
     {
       "urlRx": "hcv-v2-em-induction-ex23-24-two-boys-rhombus\\.png",
       "clean": "/assets/diagrams/hcv-v2-em-induction-e3.png"
+    },
+    {
+      "urlRx": "chapter_23_heat_and_temperature_figure_23_q1\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_23_heat_and_temperature_figure_23_q1.png"
+    },
+    {
+      "urlRx": "chapter_24_kinetic_theory_of_gases_figure_24_q1\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_24_kinetic_theory_of_gases_figure_24_q1.png"
+    },
+    {
+      "urlRx": "chapter_24_kinetic_theory_of_gases_figure_24_q2\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_24_kinetic_theory_of_gases_figure_24_q2.png"
+    },
+    {
+      "urlRx": "chapter_26_laws_of_thermodynamics_figure_26_q1\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_26_laws_of_thermodynamics_figure_26_q1.png"
+    },
+    {
+      "urlRx": "chapter_26_laws_of_thermodynamics_figure_26_q2\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_26_laws_of_thermodynamics_figure_26_q2.png"
+    },
+    {
+      "urlRx": "chapter_26_laws_of_thermodynamics_figure_26_q3\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_26_laws_of_thermodynamics_figure_26_q3.png"
+    },
+    {
+      "urlRx": "chapter_26_laws_of_thermodynamics_figure_26_q4\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_26_laws_of_thermodynamics_figure_26_q4.png"
+    },
+    {
+      "urlRx": "chapter_26_laws_of_thermodynamics_figure_26_q5\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_26_laws_of_thermodynamics_figure_26_q5.png"
+    },
+    {
+      "urlRx": "chapter_27_specific_heat_capacities_of_gases_figure_27_q1\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_27_specific_heat_capacities_of_gases_figure_27_q1.png"
+    },
+    {
+      "urlRx": "chapter_27_specific_heat_capacities_of_gases_figure_27_q2\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_27_specific_heat_capacities_of_gases_figure_27_q2.png"
+    },
+    {
+      "urlRx": "chapter_27_specific_heat_capacities_of_gases_figure_27_q3\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_27_specific_heat_capacities_of_gases_figure_27_q3.png"
+    },
+    {
+      "urlRx": "chapter_28_heat_transfer_figure_28_q1\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_28_heat_transfer_figure_28_q1.png"
+    },
+    {
+      "urlRx": "chapter_29_electric_field_and_potential_figure_29_q2\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_29_electric_field_and_potential_figure_29_q2.png"
+    },
+    {
+      "urlRx": "chapter_29_electric_field_and_potential_figure_29_q3\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_29_electric_field_and_potential_figure_29_q3.png"
+    },
+    {
+      "urlRx": "chapter_30_gausss_law_figure_30_q1\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_30_gausss_law_figure_30_q1.png"
+    },
+    {
+      "urlRx": "chapter_30_gausss_law_figure_30_q3\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_30_gausss_law_figure_30_q3.png"
+    },
+    {
+      "urlRx": "chapter_30_gausss_law_figure_30_q4\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_30_gausss_law_figure_30_q4.png"
+    },
+    {
+      "urlRx": "chapter_30_gausss_law_figure_30_q5\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_30_gausss_law_figure_30_q5.png"
+    },
+    {
+      "urlRx": "chapter_30_gausss_law_figure_30_q6\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_30_gausss_law_figure_30_q6.png"
+    },
+    {
+      "urlRx": "chapter_30_gausss_law_figure_30_q7\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_30_gausss_law_figure_30_q7.png"
+    },
+    {
+      "urlRx": "chapter_31_capacitors_figure_31_q1\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_31_capacitors_figure_31_q1.png"
+    },
+    {
+      "urlRx": "chapter_31_capacitors_figure_31_q2\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_31_capacitors_figure_31_q2.png"
+    },
+    {
+      "urlRx": "chapter_31_capacitors_figure_31_q3\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_31_capacitors_figure_31_q3.png"
+    },
+    {
+      "urlRx": "chapter_32_electric_current_in_conductors_figure_32_q1\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_32_electric_current_in_conductors_figure_32_q1.png"
+    },
+    {
+      "urlRx": "chapter_33_thermal_and_chemical_effects_of_electric_current_figure_33_q2\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_33_thermal_and_chemical_effects_of_electric_current_figure_33_q2.png"
+    },
+    {
+      "urlRx": "chapter_33_thermal_and_chemical_effects_of_electric_current_figure_33_q3\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_33_thermal_and_chemical_effects_of_electric_current_figure_33_q3.png"
+    },
+    {
+      "urlRx": "chapter_35_magnetic_field_due_to_a_current_figure_35_q1\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_35_magnetic_field_due_to_a_current_figure_35_q1.png"
+    },
+    {
+      "urlRx": "chapter_36_permanent_magnets_figure_36_q1\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_36_permanent_magnets_figure_36_q1.png"
+    },
+    {
+      "urlRx": "chapter_36_permanent_magnets_figure_36_q2\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_36_permanent_magnets_figure_36_q2.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_q2\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_38_electromagnetic_induction_figure_38_q2.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_q3\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_38_electromagnetic_induction_figure_38_q3.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_q4\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_38_electromagnetic_induction_figure_38_q4.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_q5\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_38_electromagnetic_induction_figure_38_q5.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_q6\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_38_electromagnetic_induction_figure_38_q6.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_q8\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_38_electromagnetic_induction_figure_38_q8.png"
+    },
+    {
+      "urlRx": "chapter_39_alternating_current_figure_39_q1\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_39_alternating_current_figure_39_q1.png"
+    },
+    {
+      "urlRx": "chapter_41_electric_current_through_gases_figure_41_q1\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_41_electric_current_through_gases_figure_41_q1.png"
+    },
+    {
+      "urlRx": "chapter_42_photoelectric_effect_and_wave_particle_duality_figure_42_q1\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_42_photoelectric_effect_and_wave_particle_duality_figure_42_q1.png"
+    },
+    {
+      "urlRx": "chapter_43_bohrs_model_and_physics_of_the_atom_figure_43_q1\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_43_bohrs_model_and_physics_of_the_atom_figure_43_q1.png"
+    },
+    {
+      "urlRx": "chapter_44_x_rays_figure_44_q1\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_44_x_rays_figure_44_q1.png"
+    },
+    {
+      "urlRx": "chapter_44_x_rays_figure_44_q2\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_44_x_rays_figure_44_q2.png"
+    },
+    {
+      "urlRx": "chapter_45_semiconductors_and_semiconductor_devices_figure_45_q1\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_45_semiconductors_and_semiconductor_devices_figure_45_q1.png"
+    },
+    {
+      "urlRx": "chapter_45_semiconductors_and_semiconductor_devices_figure_45_q2\\.png",
+      "clean": "/assets/diagrams/hcv-v2-obj-chapter_45_semiconductors_and_semiconductor_devices_figure_45_q2.png"
     }
   ]
 }
