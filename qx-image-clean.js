@@ -1061,6 +1061,7 @@ window.QxImgClean = (() => {
   function canonicalCdnSrc(src) {
     const s = fixUrl(src || "");
     if (!s) return "";
+    if (isLocalCleanAsset(s)) return normalizeAssetSrc(s);
     if (isApiFigureSrc(s)) {
       try {
         const u = new URL(s, PROXY_BASE);
@@ -2376,8 +2377,8 @@ window.QxImgClean = (() => {
       const srcM = tag.match(/\bsrc=["']([^"']+)["']/i);
       const raw = origM ? origM[1] : (srcM ? srcM[1] : "");
       if (!raw || isApiFigureSrc(raw)) continue;
-      const src = canonicalCdnSrc(raw) || fixUrl(raw);
-      if (!src || !isPoolDiagram(src)) continue;
+      const src = canonicalCdnSrc(raw) || (isLocalCleanAsset(raw) ? normalizeAssetSrc(raw) : "");
+      if (!src || (!isPoolDiagram(src) && !isLocalCleanAsset(src))) continue;
       if (parts.some(p => p.includes(src))) continue;
       parts.push(poolFigureHtml(src));
     }
@@ -2420,17 +2421,26 @@ window.QxImgClean = (() => {
     srcs.push(cdn);
   }
 
+  function pushDiagramSrc(srcs, raw) {
+    if (isLocalCleanAsset(raw)) {
+      const local = normalizeAssetSrc(raw);
+      if (local && !srcs.includes(local)) srcs.push(local);
+      return;
+    }
+    pushPoolSrc(srcs, raw);
+  }
+
   function extractPoolSrcs(html) {
     const srcs = [];
     const s = String(html || "");
     const origRx = /\bdata-qx-orig-src=["']([^"']+)["']/gi;
     let om;
-    while ((om = origRx.exec(s)) !== null) pushPoolSrc(srcs, om[1]);
+    while ((om = origRx.exec(s)) !== null) pushDiagramSrc(srcs, om[1]);
     const rx = /\bsrc=["']([^"']+)["']/gi;
     let m;
     while ((m = rx.exec(s)) !== null) {
       if (isApiFigureSrc(m[1])) continue;
-      pushPoolSrc(srcs, m[1]);
+      pushDiagramSrc(srcs, m[1]);
     }
     if (!srcs.length && POOL_RX.test(s)) {
       const urlRx = /(https?:\/\/[^\s"'<>]+|\/pyq\/[^\s"'<>]+)/gi;
