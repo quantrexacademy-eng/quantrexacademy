@@ -51,11 +51,14 @@ window.QxImgClean = (() => {
   }
 
   function poolCdnSrc(img) {
-    const orig = fixUrl(img.dataset.qxOrigSrc || "");
-    if (orig && POOL_RX.test(orig) && !SKIP_RX.test(orig)) return orig;
+    const origRaw = fixUrl(img.dataset.qxOrigSrc || "");
+    const orig = canonicalCdnSrc(origRaw) || (origRaw && POOL_RX.test(origRaw) && !SKIP_RX.test(origRaw) ? origRaw : "");
+    if (orig) return orig;
     const cur = fixUrl(img.getAttribute("src") || "");
-    if (cur && !cur.startsWith("blob:") && !cur.includes("clean-diagrams") && !isLocalCleanAsset(cur)) return cur;
-    return orig || cur;
+    const canon = canonicalCdnSrc(cur);
+    if (canon) return canon;
+    if (cur && !cur.startsWith("blob:") && !cur.includes("clean-diagrams") && !isLocalCleanAsset(cur) && !isApiFigureSrc(cur)) return cur;
+    return origRaw || cur;
   }
 
   function hashUrl(url) {
@@ -1050,8 +1053,30 @@ window.QxImgClean = (() => {
     return ["br", "center"];
   }
 
+  function isApiFigureSrc(src) {
+    const s = fixUrl(src || "");
+    return s.includes("/api/restore-image") || s.includes("/api/proxy-image");
+  }
+
+  function canonicalCdnSrc(src) {
+    const s = fixUrl(src || "");
+    if (!s) return "";
+    if (isApiFigureSrc(s)) {
+      try {
+        const u = new URL(s, PROXY_BASE);
+        const inner = u.searchParams.get("url");
+        if (inner) return canonicalCdnSrc(decodeURIComponent(inner));
+      } catch (_) { /* ignore */ }
+      return "";
+    }
+    if (SKIP_RX.test(s)) return "";
+    if (POOL_RX.test(s)) return s;
+    return "";
+  }
+
   function isGetmarksPool(cdnSrc) {
-    return GETMARKS_POOL_RX.test(fixUrl(cdnSrc || ""));
+    const cdn = canonicalCdnSrc(cdnSrc) || fixUrl(cdnSrc || "");
+    return GETMARKS_POOL_RX.test(cdn) && !isApiFigureSrc(cdnSrc);
   }
 
   function marksHideHtml() {
@@ -1422,8 +1447,8 @@ window.QxImgClean = (() => {
   }
 
   function poolDisplaySrc(cdnSrc) {
-    const cdn = fixUrl(cdnSrc || "");
-    if (!cdn) return cdn;
+    const cdn = canonicalCdnSrc(cdnSrc) || fixUrl(cdnSrc || "");
+    if (!cdn) return "";
     if (isGetmarksPool(cdn)) return restoreImageUrl(cdn);
     if (POOL_RX.test(cdn)) return proxyImageUrl(cdn);
     return cdn;
@@ -1482,7 +1507,7 @@ window.QxImgClean = (() => {
   function hideFigureLoading(img) {
     if (!img) return;
     const cur = fixUrl(img.getAttribute("src") || "");
-    if (figureSrcIsDisplayable(cur) || img.dataset.qxPrimed === "1") return;
+    if (figureSrcIsDisplayable(cur) || img.dataset.qxPrimed === "1" || img.dataset.qxOrigSrc) return;
     img.classList.add("qx-wm-loading");
     img.classList.remove("qx-fig-ready");
     const stack = img.closest(".qx-fig-inner");
@@ -2150,6 +2175,29 @@ window.QxImgClean = (() => {
 
     primePoolFigure(img, cdnSrc);
     hideFigureLoading(img);
+
+    const curSrc = fixUrl(img.getAttribute("src") || "");
+    if (img.dataset.qxPrimed === "1" || isApiFigureSrc(curSrc)) {
+      revealFigure(img);
+      if (img.naturalWidth > 0) {
+        markDisplayClean(img);
+        return;
+      }
+      img.dataset.qxProcessing = "1";
+      void (async () => {
+        try {
+          await waitForImageLoad(img, 12000);
+          if (img.naturalWidth > 0) markDisplayClean(img);
+          else await loadPoolFigureSrc(img, cdnSrc);
+          if (img.naturalWidth > 0) markDisplayClean(img);
+        } finally {
+          revealFigure(img);
+          delete img.dataset.qxProcessing;
+        }
+      })();
+      return;
+    }
+
     img.dataset.qxProcessing = "1";
     void processImageAsync(img, cdnSrc).finally(() => {
       delete img.dataset.qxProcessing;
@@ -2217,10 +2265,14 @@ window.QxImgClean = (() => {
     const imgRx = /<img\b[^>]*>/gi;
     let m;
     while ((m = imgRx.exec(s)) !== null) {
-      const srcM = m[0].match(/\bsrc=["']([^"']+)["']/i);
-      if (!srcM || !isPoolDiagram(srcM[1])) continue;
-      if (parts.some(p => p.includes(srcM[1]))) continue;
-      const src = fixUrl(srcM[1]);
+      const tag = m[0];
+      const origM = tag.match(/\bdata-qx-orig-src=["']([^"']+)["']/i);
+      const srcM = tag.match(/\bsrc=["']([^"']+)["']/i);
+      const raw = origM ? origM[1] : (srcM ? srcM[1] : "");
+      if (!raw || isApiFigureSrc(raw)) continue;
+      const src = canonicalCdnSrc(raw) || fixUrl(raw);
+      if (!src || !isPoolDiagram(src)) continue;
+      if (parts.some(p => p.includes(src))) continue;
       parts.push(poolFigureHtml(src));
     }
     return parts.join("");
@@ -2256,22 +2308,30 @@ window.QxImgClean = (() => {
     return { diagrams, text, before, after };
   }
 
+  function pushPoolSrc(srcs, raw) {
+    const cdn = canonicalCdnSrc(raw);
+    if (!cdn || srcs.includes(cdn)) return;
+    srcs.push(cdn);
+  }
+
   function extractPoolSrcs(html) {
     const srcs = [];
     const s = String(html || "");
+    const origRx = /\bdata-qx-orig-src=["']([^"']+)["']/gi;
+    let om;
+    while ((om = origRx.exec(s)) !== null) pushPoolSrc(srcs, om[1]);
     const rx = /\bsrc=["']([^"']+)["']/gi;
     let m;
     while ((m = rx.exec(s)) !== null) {
-      const cdn = fixUrl(m[1]);
-      if (!isPoolDiagram(cdn) || srcs.includes(cdn)) continue;
-      srcs.push(cdn);
+      if (isApiFigureSrc(m[1])) continue;
+      pushPoolSrc(srcs, m[1]);
     }
     if (!srcs.length && POOL_RX.test(s)) {
       const urlRx = /(https?:\/\/[^\s"'<>]+|\/pyq\/[^\s"'<>]+)/gi;
       let um;
       while ((um = urlRx.exec(s)) !== null) {
-        const cdn = fixUrl(um[1].startsWith("/") ? PYQ_CDN.replace(/\/$/, "") + um[1] : um[1]);
-        if (isPoolDiagram(cdn) && !srcs.includes(cdn)) srcs.push(cdn);
+        const raw = um[1].startsWith("/") ? PYQ_CDN.replace(/\/$/, "") + um[1] : um[1];
+        pushPoolSrc(srcs, raw);
       }
     }
     return srcs;
@@ -2323,7 +2383,7 @@ window.QxImgClean = (() => {
   }
 
   function poolFigureHtml(cdn) {
-    const src = normalizeAssetSrc(cdn);
+    const src = normalizeAssetSrc(canonicalCdnSrc(cdn) || cdn);
     const u = escAttr(src);
     const localClean = isLocalCleanAsset(src);
     const pool = !localClean && isPoolDiagram(src);
@@ -2332,7 +2392,7 @@ window.QxImgClean = (() => {
       ? u
       : (pool ? escAttr(poolDisplaySrc(src)) : escAttr(FIG_PLACEHOLDER));
     const wmAttrs = pool
-      ? ` data-qx-has-wm="pending" data-qx-pending-load="1" data-qx-primed="1"`
+      ? ` data-qx-has-wm="0" data-qx-restored-src="1" data-qx-pending-load="1" data-qx-primed="1"`
       : (localClean ? ` data-qx-has-wm="0" data-qx-cleaned="1"` : "");
     const wmClass = (localClean || pool) ? " qx-fig-ready" : " qx-wm-loading";
     const poolAttr = pool ? ` data-qx-pool-wm="1"` : "";

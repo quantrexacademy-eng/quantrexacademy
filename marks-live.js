@@ -298,7 +298,9 @@ const MarksLive = (() => {
 
   function hasPoolFigureInHtml(html) {
     const s = String(html || "");
+    if (/\bdata-qx-orig-src=["'][^"']+(?:cdn-question-pool|cdn\.quizrr|\/pyq\/)/i.test(s)) return true;
     if (/<img\b[^>]*src=["'][^"']+(?:cdn-question-pool|cdn\.quizrr|\/pyq\/|\/cbse\/|ap_eamcet)/i.test(s)) return true;
+    if (/\/api\/(?:restore-image|proxy-image)\?url=[^"']+(?:cdn-question-pool|cdn\.quizrr|%2Fpyq%2F)/i.test(s)) return true;
     return extractPoolImgTags(s).length > 0;
   }
 
