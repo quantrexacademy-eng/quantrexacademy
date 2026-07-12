@@ -1,11 +1,11 @@
 /* Quantrex — hide MARKS / third-party watermarks site-wide */
 
 /* Baked-in gray "MARKS" text on CDN question diagrams — boost contrast to whiten watermark */
-img.qx-no-wm,
-.qx-fig-img,
-.qx-fig img,
-.qx-opt-fig img,
-.qx-content img[src*="cdn-question-pool"],
+img.qx-no-wm:not(.qx-pool-fig),
+.qx-fig-img:not(.qx-pool-fig),
+.qx-fig img:not(.qx-pool-fig),
+.qx-opt-fig img:not(.qx-pool-fig),
+.qx-content img[src*="cdn-question-pool"]:not(.qx-pool-fig),
 .qx-content img[src*="/pyq/jee_main/"],
 .mtk-q-text img[src*="cdn-question-pool"],
 .mtk-q-text img[src*="/pyq/"],
@@ -25,27 +25,81 @@ img.qx-no-wm,
   backface-visibility: hidden;
 }
 
-/* HTML overlay watermarks from imported content */
-[class*="watermark"],
-[class*="Watermark"],
-[data-brand="marks"],
-[data-watermark],
-.marks-brand,
-.getmarks-brand,
-.watermark-text,
-.watermark-overlay,
-img[src*="watermark"],
-img[src*="marks-premium"],
-img[src*="marks_selected"],
-img[src*="getmarks-brand"],
-img[src*="web_assets"][alt*="Marks"],
-img[alt*="Get Marks App"] {
+/* HTML overlay watermarks from imported content — never hide real pool diagrams */
+[class*="watermark"]:not(.qx-pool-fig-wrap):not(:has(img.qx-pool-fig)),
+[class*="Watermark"]:not(.qx-pool-fig-wrap):not(:has(img.qx-pool-fig)),
+[data-brand="marks"]:not(:has(img.qx-pool-fig)),
+[data-watermark]:not(:has(img.qx-pool-fig)),
+.marks-brand:not(:has(img.qx-pool-fig)),
+.getmarks-brand:not(:has(img.qx-pool-fig)),
+.watermark-text:not(:has(img.qx-pool-fig)),
+.watermark-overlay:not(:has(img.qx-pool-fig)),
+img[src*="watermark"]:not(.qx-pool-fig):not(.qx-no-wm):not(.qx-fig-img):not(.qx-brand-logo),
+img[src*="marks-premium"]:not(.qx-pool-fig):not(.qx-no-wm),
+img[src*="marks_selected"]:not(.qx-pool-fig):not(.qx-no-wm),
+img[src*="getmarks-brand"]:not(.qx-pool-fig):not(.qx-no-wm),
+img[src*="web_assets"][alt*="Marks"]:not(.qx-pool-fig):not(.qx-no-wm),
+img[alt*="Get Marks App"]:not(.qx-pool-fig):not(.qx-no-wm) {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
   max-height: 0 !important;
   overflow: hidden !important;
+}
+
+.qx-diag-watermark,
+.qx-brand-overlay {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.qx-fig-inner.qx-wm-active .qx-premium-wm-sheet,
+.qx-wm-active .qx-premium-wm-sheet,
+.qx-brand-covered.qx-wm-active .qx-premium-wm-sheet,
+.qx-premium-wm-active .qx-premium-wm-sheet {
+  display: none !important;
+}
+
+.qx-diagram-slot .qx-premium-wm-sheet,
+#qxDiagramSlot .qx-premium-wm-sheet,
+.qx-question-body .qx-premium-wm-sheet {
+  display: none !important;
+}
+
+.qx-wm-corner-badge {
+  display: none !important;
+}
+
+.qx-marks-strip {
+  display: none !important;
+}
+
+.qx-fig-inner.qx-wm-canvas-active .qx-marks-strip {
+  display: none !important;
+}
+
+.qx-wm-mask,
+.qx-marks-scrub {
+  display: none !important;
+}
+
+img.qx-pool-fig,
+img.qx-no-wm.qx-pool-fig,
+.qx-pool-fig-wrap,
+.qx-pool-fig-wrap img,
+.qx-fig img.qx-pool-fig,
+.qx-opt-fig img.qx-pool-fig {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-height: none !important;
+  pointer-events: auto !important;
+  overflow: visible !important;
 }
 
 /* Keep legitimate UI icons visible */

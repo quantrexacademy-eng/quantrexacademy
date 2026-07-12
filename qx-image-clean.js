@@ -4,7 +4,7 @@ window.QxImgClean = (() => {
   const DB_STORE = "blobs";
   const MANIFEST_URL = "data/qx_clean_manifest.json";
   const REVIEW_URL = "data/qx_image_review.json";
-  const CLEAN_VER = 61;
+  const CLEAN_VER = 62;
   const CENTER_WM_MAX = 0.006;
   const WM_DETECT_MIN = 0.0035;
   const CDN_ONLY = false;
@@ -1217,16 +1217,83 @@ window.QxImgClean = (() => {
   }
 
   function applyWmCover(img) {
-    if (!img || !img.isConnected) return;
-    if (img.dataset.qxHasWm !== "1") return;
+    if (!img || !img.isConnected || img.dataset.qxHasWm !== "1") return;
     enhancePoolFigure(img);
-    if (!img.closest(".qx-fig, .qx-opt-fig")) ensureDiagramWrap(img);
-    overlayTargetForImg(img);
-    paintPremiumWatermark(img);
+    revealFigure(img);
     const target = overlayTargetForImg(img);
-    if (target) syncBrandOverlay(target);
+    if (target) {
+      stripBrandOverlay(target);
+      target.classList.remove("qx-premium-wm-active");
+    }
     const fig = img.closest(".qx-fig, .qx-opt-fig");
-    if (fig) fig.classList.add("qx-wm-active", "qx-brand-covered", "qx-premium-wm-active");
+    if (fig) fig.classList.remove("qx-premium-wm-active");
+    if (img.naturalWidth > 0 && typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
+      void QxPremiumWM.paintMarksHideOnly(img);
+    }
+  }
+
+  function markFigureReady(img, keepScrub) {
+    if (!img) return;
+    revealFigure(img);
+    enhancePoolFigure(img);
+    img.classList.add("qx-fig-ready", "qx-hq-color");
+    const target = overlayTargetForImg(img);
+    if (target) {
+      target.querySelectorAll(".qx-premium-wm-sheet, .qx-quantrex-wm, .qx-diag-watermark, .qx-brand-overlay").forEach(el => el.remove());
+      if (!keepScrub) removeCanvasShield(img);
+      target.classList.remove("qx-premium-wm-active", "qx-wm-active");
+    }
+    const fig = img.closest(".qx-fig, .qx-opt-fig");
+    if (fig) fig.classList.remove("qx-premium-wm-active", "qx-wm-active");
+  }
+
+  async function upgradePoolFigure(img, cdnSrc) {
+    if (!img || !img.isConnected) return;
+    const cdn = canonicalCdnSrc(cdnSrc) || fixUrl(cdnSrc || poolCdnSrc(img) || "");
+    revealFigure(img);
+    enhancePoolFigure(img);
+    if (!cdn || !isPoolDiagram(cdn, img)) {
+      if (img.naturalWidth > 0) markFigureReady(img, false);
+      return;
+    }
+    if (isLocalCleanAsset(cdn) || img.classList.contains("qx-cleaned")) {
+      markDisplayClean(img);
+      return;
+    }
+
+    const fallbackSrc = img.getAttribute("src") || poolDisplaySrc(cdn);
+    if (isGetmarksPool(cdn) && img.dataset.qxRestoreUpgraded !== "1") {
+      img.dataset.qxRestoreUpgraded = "1";
+      const restored = await fetchRestoredBlob(cdn);
+      if (restored && await blobLooksValid(restored)) {
+        const ok = await applyCleanedBlob(img, restored, cdn);
+        if (ok && img.naturalWidth > 0 && await validateProbeInk(img)) {
+          markDisplayClean(img);
+          return;
+        }
+        if (fallbackSrc) {
+          stripDisplayCors(img);
+          img.setAttribute("src", fallbackSrc);
+          await waitForImageLoad(img, 8000);
+        }
+      }
+    }
+
+    if (img.naturalWidth <= 0) {
+      await loadPoolFigureSrc(img, cdn);
+    }
+    if (img.naturalWidth <= 0) return;
+
+    img.dataset.qxHasWm = "1";
+    if (!img.dataset.qxWmZones) img.dataset.qxWmZones = defaultWmZones(cdn).join(",");
+    stripBrandOverlay(overlayTargetForImg(img));
+    let scrubbed = false;
+    if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
+      scrubbed = await QxPremiumWM.paintMarksHideOnly(img);
+    }
+    img.dataset.qxHasWm = "0";
+    img.dataset.qxWmClean = "1";
+    markFigureReady(img, scrubbed);
   }
 
   function shouldBrandOverlay(img) {
@@ -1346,23 +1413,22 @@ window.QxImgClean = (() => {
 
   async function finalizeCleanDisplay(img, stats) {
     if (!img || !img.isConnected) return;
-    if (img.naturalWidth > 0 && (img.dataset.qxPrimed === "1" || img.dataset.qxOrigSrc)) {
-      markWmClean(img);
+    if (img.naturalWidth > 0 && img.dataset.qxOrigSrc) {
+      await upgradePoolFigure(img, poolCdnSrc(img));
       return;
     }
     const cur = String(img.getAttribute("src") || "");
     const cleanedPixels = img.classList.contains("qx-cleaned") || img.classList.contains("qx-restored")
       || cur.includes("clean-diagrams") || cur.startsWith("blob:") || cur.includes("/api/restore-image");
     if (!cleanedPixels) {
-      if (isPoolDiagram(poolCdnSrc(img), img) && img.dataset.qxHasWm === "1") applyWmCover(img);
+      if (isPoolDiagram(poolCdnSrc(img), img)) await upgradePoolFigure(img, poolCdnSrc(img));
       return;
     }
     const centerResidue = stats && typeof stats.centerResidue === "number"
       ? stats.centerResidue
       : await probeCenterWmFromImage(img);
-    if (centerResidue <= CENTER_WM_MAX) markWmClean(img);
-    else if (img.dataset.qxHasWm === "1") applyWmCover(img);
-    else markWmClean(img);
+    if (centerResidue <= CENTER_WM_MAX) markDisplayClean(img);
+    else await upgradePoolFigure(img, poolCdnSrc(img));
   }
 
   function isOptFigure(img) {
@@ -1384,24 +1450,18 @@ window.QxImgClean = (() => {
       if (fig) fig.classList.remove("qx-wm-active", "qx-premium-wm-active", "qx-brand-covered");
       return;
     }
-    target.classList.add("qx-wm-active", "qx-brand-covered", "qx-fig-stack", "qx-marks-hidden");
     if (optFig) {
-      target.classList.remove("qx-premium-wm-active");
+      target.classList.add("qx-wm-active", "qx-brand-covered", "qx-fig-stack");
       stripBrandOverlay(target);
       paintPremiumWatermark(img);
       if (fig) fig.classList.add("qx-brand-covered", "qx-fig-stack", "qx-wm-active");
       return;
     }
-    const zones = String(img.dataset.qxWmZones || defaultWmZones(cdn).join(",")).split(",").map(s => s.trim()).filter(Boolean);
-    const hasOverlay = target.querySelector(".qx-premium-wm-sheet, .qx-marks-strip");
-    if (!hasOverlay) {
-      target.classList.add("qx-premium-wm-active");
-      target.insertAdjacentHTML("beforeend", quantrexWmCoverHtml(zones));
-    } else {
-      target.classList.add("qx-premium-wm-active");
-    }
-    paintPremiumWatermark(img);
-    if (fig) fig.classList.add("qx-brand-covered", "qx-fig-stack", "qx-wm-active", "qx-premium-wm-active");
+    target.classList.add("qx-brand-covered", "qx-fig-stack");
+    stripBrandOverlay(target);
+    target.classList.remove("qx-premium-wm-active", "qx-wm-active");
+    if (fig) fig.classList.remove("qx-premium-wm-active", "qx-wm-active");
+    if (img.naturalWidth > 0) void upgradePoolFigure(img, cdn);
   }
 
   function ensureBrandOverlay(container) {
@@ -2190,16 +2250,15 @@ window.QxImgClean = (() => {
     if (img.dataset.qxPrimed === "1" || isApiFigureSrc(curSrc)) {
       revealFigure(img);
       if (img.naturalWidth > 0) {
-        markDisplayClean(img);
+        void upgradePoolFigure(img, cdnSrc);
         return;
       }
       img.dataset.qxProcessing = "1";
       void (async () => {
         try {
           await waitForImageLoad(img, 12000);
-          if (img.naturalWidth > 0) markDisplayClean(img);
-          else await loadPoolFigureSrc(img, cdnSrc);
-          if (img.naturalWidth > 0) markDisplayClean(img);
+          if (img.naturalWidth <= 0) await loadPoolFigureSrc(img, cdnSrc);
+          if (img.naturalWidth > 0) await upgradePoolFigure(img, cdnSrc);
         } finally {
           revealFigure(img);
           delete img.dataset.qxProcessing;
@@ -2402,7 +2461,7 @@ window.QxImgClean = (() => {
       ? u
       : (pool ? escAttr(poolDisplaySrc(src)) : escAttr(FIG_PLACEHOLDER));
     const wmAttrs = pool
-      ? ` data-qx-has-wm="0" data-qx-restored-src="1" data-qx-pending-load="1" data-qx-primed="1"`
+      ? ` data-qx-has-wm="1" data-qx-wm-zones="${escAttr(defaultWmZones(src).join(","))}" data-qx-pending-load="1" data-qx-primed="1"`
       : (localClean ? ` data-qx-has-wm="0" data-qx-cleaned="1"` : "");
     const wmClass = (localClean || pool) ? " qx-fig-ready" : " qx-wm-loading";
     const poolAttr = pool ? ` data-qx-pool-wm="1"` : "";
