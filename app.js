@@ -306,6 +306,10 @@ function qxRenderPracticeQuestion(id) {
     document.getElementById("examPill").textContent = EXAMS[STATE.exam].name;
     bindPracticeQuestion(main);
     if (typeof Mx !== "undefined") Mx.afterRender(main);
+    const q = typeof getQ === "function" ? getQ(id) : null;
+    if (q && typeof QxImgClean !== "undefined" && QxImgClean.scan) {
+      setTimeout(() => QxImgClean.scan(main), 0);
+    }
   } catch (e) {
     console.error("Practice render failed:", id, e);
     main.innerHTML = `<div class="empty" style="padding:48px;text-align:center">Could not open question. <button class="btn-soft" onclick="qxPracticeBack()">← Back</button></div>`;
@@ -614,8 +618,6 @@ function viewQuestion(id) {
   let qBody;
   if (incomplete) {
     qBody = `<div class="empty qx-load-q" style="padding:20px 0">Loading question text… <button type="button" class="btn-soft sm" onclick="qxRetryPracticeLoad()">Retry</button></div>`;
-  } else if (typeof QxImgClean !== "undefined" && QxImgClean.buildQuestionBodyHtml) {
-    qBody = QxImgClean.buildQuestionBodyHtml(q.id, q.q, qxHtmlContent, q);
   } else if (typeof QxImgClean !== "undefined" && QxImgClean.buildDiagramSlotHtml) {
     diagramSlot = QxImgClean.buildDiagramSlotHtml(q.id, q.q, q);
     const split = QxImgClean.splitQuestionHtml(q.q, q.id);
@@ -1176,7 +1178,11 @@ go = function(view, payload) {
         );
         if (needHydrate) q = await qxHydrateQuestion(q, false) || q;
         await qxPrepareFiguresFast(q);
-        if (currentView === "question") qxRenderPracticeQuestion(payload);
+        if (currentView === "question") {
+          qxRenderPracticeQuestion(payload);
+          const main = document.getElementById("app-main");
+          if (main && typeof QxImgClean !== "undefined" && QxImgClean.scan) QxImgClean.scan(main);
+        }
         const q2 = getQ(payload);
         const stillNeed = q2 && typeof MarksLive !== "undefined" && (
           MarksLive.isQuestionIncomplete(q2)

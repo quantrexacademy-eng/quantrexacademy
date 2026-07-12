@@ -4,7 +4,7 @@ window.QxImgClean = (() => {
   const DB_STORE = "blobs";
   const MANIFEST_URL = "data/qx_clean_manifest.json";
   const REVIEW_URL = "data/qx_image_review.json";
-  const CLEAN_VER = 60;
+  const CLEAN_VER = 61;
   const CENTER_WM_MAX = 0.006;
   const WM_DETECT_MIN = 0.0035;
   const CDN_ONLY = false;
@@ -1346,18 +1346,23 @@ window.QxImgClean = (() => {
 
   async function finalizeCleanDisplay(img, stats) {
     if (!img || !img.isConnected) return;
+    if (img.naturalWidth > 0 && (img.dataset.qxPrimed === "1" || img.dataset.qxOrigSrc)) {
+      markWmClean(img);
+      return;
+    }
     const cur = String(img.getAttribute("src") || "");
     const cleanedPixels = img.classList.contains("qx-cleaned") || img.classList.contains("qx-restored")
       || cur.includes("clean-diagrams") || cur.startsWith("blob:") || cur.includes("/api/restore-image");
     if (!cleanedPixels) {
-      if (isPoolDiagram(poolCdnSrc(img), img)) applyWmCover(img);
+      if (isPoolDiagram(poolCdnSrc(img), img) && img.dataset.qxHasWm === "1") applyWmCover(img);
       return;
     }
     const centerResidue = stats && typeof stats.centerResidue === "number"
       ? stats.centerResidue
       : await probeCenterWmFromImage(img);
     if (centerResidue <= CENTER_WM_MAX) markWmClean(img);
-    else applyWmCover(img);
+    else if (img.dataset.qxHasWm === "1") applyWmCover(img);
+    else markWmClean(img);
   }
 
   function isOptFigure(img) {
@@ -1449,8 +1454,7 @@ window.QxImgClean = (() => {
   function poolDisplaySrc(cdnSrc) {
     const cdn = canonicalCdnSrc(cdnSrc) || fixUrl(cdnSrc || "");
     if (!cdn) return "";
-    if (isGetmarksPool(cdn)) return restoreImageUrl(cdn);
-    if (POOL_RX.test(cdn)) return proxyImageUrl(cdn);
+    if (isGetmarksPool(cdn) || POOL_RX.test(cdn)) return proxyImageUrl(cdn);
     return cdn;
   }
 
@@ -1505,9 +1509,9 @@ window.QxImgClean = (() => {
   }
 
   function hideFigureLoading(img) {
-    if (!img) return;
+    if (!img || img.classList.contains("qx-pool-fig") || img.dataset.qxOrigSrc) return;
     const cur = fixUrl(img.getAttribute("src") || "");
-    if (figureSrcIsDisplayable(cur) || img.dataset.qxPrimed === "1" || img.dataset.qxOrigSrc) return;
+    if (figureSrcIsDisplayable(cur) || img.dataset.qxPrimed === "1") return;
     img.classList.add("qx-wm-loading");
     img.classList.remove("qx-fig-ready");
     const stack = img.closest(".qx-fig-inner");
@@ -1617,13 +1621,15 @@ window.QxImgClean = (() => {
 
   async function loadPoolFigureSrc(img, cdnSrc) {
     if (!img || !cdnSrc) return false;
-    if (isGetmarksPool(cdnSrc) && await loadDisplaySrc(img, restoreImageUrl(cdnSrc), cdnSrc)) return true;
-    if (await loadDisplaySrc(img, proxyImageUrl(cdnSrc), cdnSrc)) return true;
-    const manifestRel = await cleanUrl(cdnSrc);
-    if (isManifestCleanPath(manifestRel, cdnSrc) && await manifestFileExists(manifestRel)) {
-      if (await loadDisplaySrc(img, manifestRel, cdnSrc)) return true;
+    const cdn = canonicalCdnSrc(cdnSrc) || fixUrl(cdnSrc);
+    if (await loadDisplaySrc(img, proxyImageUrl(cdn), cdn)) return true;
+    if (isGetmarksPool(cdn) && await loadDisplaySrc(img, restoreImageUrl(cdn), cdn)) return true;
+    if (await loadDisplaySrc(img, cdn, cdn)) return true;
+    const manifestRel = await cleanUrl(cdn);
+    if (isManifestCleanPath(manifestRel, cdn) && await manifestFileExists(manifestRel)) {
+      if (await loadDisplaySrc(img, manifestRel, cdn)) return true;
     }
-    return await ensurePoolDisplay(img, cdnSrc);
+    return false;
   }
 
   function waitForImageLoad(img, ms) {
@@ -1914,21 +1920,25 @@ window.QxImgClean = (() => {
       }
     });
     img.addEventListener("error", () => {
-      const cdn = fixUrl(img.dataset.qxOrigSrc || poolCdnSrc(img) || "");
+      const cdn = canonicalCdnSrc(img.dataset.qxOrigSrc || "") || fixUrl(img.dataset.qxOrigSrc || poolCdnSrc(img) || "");
       if (!cdn) return;
       const cur = String(img.getAttribute("src") || "");
-      if (cur.includes("/api/restore-image") || cur.includes("clean-diagrams") || cur.startsWith("blob:")) {
-        keepPoolImageVisible(img, cdn, true);
-        markWmNeedsOverlay(img);
-        return;
-      }
-      if (!cur.includes("/api/proxy-image") && img.dataset.qxCdnFailed !== "1") {
-        img.dataset.qxCdnFailed = "1";
+      revealFigure(img);
+      if (!cur.includes("/api/proxy-image") && img.dataset.qxProxyTried !== "1") {
+        img.dataset.qxProxyTried = "1";
         img.setAttribute("src", proxyImageUrl(cdn));
         return;
       }
-      keepPoolImageVisible(img, cdn);
-      markWmNeedsOverlay(img);
+      if (cur !== cdn && img.dataset.qxCdnDirectTried !== "1") {
+        img.dataset.qxCdnDirectTried = "1";
+        stripDisplayCors(img);
+        img.setAttribute("src", cdn);
+        return;
+      }
+      if (isGetmarksPool(cdn) && img.dataset.qxRestoreTried !== "1") {
+        img.dataset.qxRestoreTried = "1";
+        img.setAttribute("src", restoreImageUrl(cdn));
+      }
     });
   }
 
@@ -2366,7 +2376,7 @@ window.QxImgClean = (() => {
     if (!srcs.length) return;
 
     const existing = Array.from(slot.querySelectorAll("img"));
-    const existingSrcs = existing.map(i => fixUrl(i.dataset.qxOrigSrc || i.getAttribute("src") || ""));
+    const existingSrcs = existing.map(i => canonicalCdnSrc(i.dataset.qxOrigSrc || i.getAttribute("src") || "") || fixUrl(i.dataset.qxOrigSrc || ""));
     if (srcs.length === existingSrcs.length && srcs.every((s, i) => s === existingSrcs[i])) {
       if (existing.some(imgIsLoading)) return;
       existing.forEach(img => processImage(img));
