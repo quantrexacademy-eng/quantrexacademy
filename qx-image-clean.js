@@ -10,6 +10,7 @@ window.QxImgClean = (() => {
   const CDN_ONLY = false;
   const _pinnedHtml = new Map();
   const _cleanSrcCache = new Map();
+  const _manifestExistsCache = new Map();
   const FIG_PLACEHOLDER = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
   const MIN_INK_RATIO = 0.004;
   const MIN_INK_VS_CDN = 0.38;
@@ -118,6 +119,21 @@ window.QxImgClean = (() => {
     if (!manifestRel || manifestRel.startsWith("http")) return false;
     const fixed = fixUrl(cdnSrc || "");
     return manifestRel !== fixed && manifestRel !== cdnSrc;
+  }
+
+  async function manifestFileExists(path) {
+    if (!path || path.startsWith("http")) return false;
+    if (_manifestExistsCache.has(path)) return _manifestExistsCache.get(path);
+    const url = path.startsWith("/") ? path : "/" + path;
+    try {
+      const r = await fetch(url, { method: "HEAD" });
+      const ok = r.ok;
+      _manifestExistsCache.set(path, ok);
+      return ok;
+    } catch (_) {
+      _manifestExistsCache.set(path, false);
+      return false;
+    }
   }
 
   async function loadReview() {
@@ -1448,7 +1464,10 @@ window.QxImgClean = (() => {
     if (_cleanSrcCache.has(fixed)) return _cleanSrcCache.get(fixed);
     const task = (async () => {
       const manifestRel = await cleanUrl(fixed);
-      const clean = isManifestCleanPath(manifestRel, fixed) ? manifestRel : null;
+      let clean = null;
+      if (isManifestCleanPath(manifestRel, fixed) && await manifestFileExists(manifestRel)) {
+        clean = manifestRel;
+      }
       return { cdn: fixed, clean };
     })();
     _cleanSrcCache.set(fixed, task);
@@ -1468,12 +1487,7 @@ window.QxImgClean = (() => {
         extractPoolSrcs(window._qxDiagramRaw[key]).forEach(u => urls.add(fixUrl(u)));
       }
     });
-    for (const fixed of urls) {
-      if (_cleanSrcCache.has(fixed)) continue;
-      const manifestRel = await cleanUrl(fixed);
-      const clean = isManifestCleanPath(manifestRel, fixed) ? manifestRel : null;
-      _cleanSrcCache.set(fixed, Promise.resolve({ cdn: fixed, clean }));
-    }
+    await Promise.all([...urls].map(u => preloadCleanSrc(u)));
   }
 
   function waitForMarksHide(img, ms) {
@@ -1498,20 +1512,22 @@ window.QxImgClean = (() => {
     stripDisplayCors(img);
     const prevSrc = img.getAttribute("src") || "";
     return new Promise(resolve => {
+      let settled = false;
       const finish = (ok) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
         if (ok && img.naturalWidth > 0) {
           markDisplayClean(img);
           resolve(true);
           return;
         }
-        void ensurePoolDisplay(img, cdnSrc).then(ok => {
-          if (!ok && isGetmarksPool(cdnSrc)) void loadDisplaySrc(img, restoreImageUrl(cdnSrc), cdnSrc);
-        });
         resolve(false);
       };
+      const timer = setTimeout(() => finish(false), 12000);
       img.addEventListener("load", () => finish(img.naturalWidth > 0), { once: true });
       img.addEventListener("error", () => {
-        if (prevSrc && prevSrc !== src) img.setAttribute("src", prevSrc);
+        if (prevSrc && prevSrc !== src && !img.naturalWidth) img.setAttribute("src", prevSrc);
         finish(false);
       }, { once: true });
       if (img.getAttribute("src") !== src) img.src = src;
@@ -1519,17 +1535,20 @@ window.QxImgClean = (() => {
     });
   }
 
+  async function loadPoolFigureSrc(img, cdnSrc) {
+    if (!img || !cdnSrc) return false;
+    const manifestRel = await cleanUrl(cdnSrc);
+    if (isManifestCleanPath(manifestRel, cdnSrc) && await manifestFileExists(manifestRel)) {
+      if (await loadDisplaySrc(img, manifestRel, cdnSrc)) return true;
+    }
+    if (isGetmarksPool(cdnSrc) && await loadDisplaySrc(img, restoreImageUrl(cdnSrc), cdnSrc)) return true;
+    if (await loadDisplaySrc(img, proxyImageUrl(cdnSrc), cdnSrc)) return true;
+    return await ensurePoolDisplay(img, cdnSrc);
+  }
+
   async function resolveAndShowClean(img, cdnSrc) {
     if (!img || !cdnSrc) return false;
-    if (img.dataset.qxRestoreTried === String(CLEAN_VER) && isCleanedImg(img)) return true;
-
-    const manifestRel = await cleanUrl(cdnSrc);
-    if (isManifestCleanPath(manifestRel, cdnSrc)) {
-      if (await loadDisplaySrc(img, manifestRel, cdnSrc)) {
-        img.dataset.qxRestoreTried = String(CLEAN_VER);
-        return true;
-      }
-    }
+    if (img.dataset.qxRestoreTried === String(CLEAN_VER) && isCleanedImg(img) && img.naturalWidth > 0) return true;
 
     const cached = await getCachedBlob(cdnSrc);
     if (cached && await blobLooksValid(cached)) {
@@ -1544,8 +1563,11 @@ window.QxImgClean = (() => {
       }
     }
 
+    if (await loadPoolFigureSrc(img, cdnSrc)) {
+      img.dataset.qxRestoreTried = String(CLEAN_VER);
+      return true;
+    }
     img.dataset.qxRestoreTried = String(CLEAN_VER);
-    if (await loadDisplaySrc(img, restoreImageUrl(cdnSrc), cdnSrc)) return true;
     return false;
   }
 
@@ -1842,8 +1864,17 @@ window.QxImgClean = (() => {
       }
     };
 
-    img.addEventListener("load", heal, { once: true });
-    img.addEventListener("error", heal, { once: true });
+    img.addEventListener("load", heal);
+    img.addEventListener("error", heal);
+    let ticks = 0;
+    const poll = setInterval(() => {
+      if (!img.isConnected || isCleanedImg(img) || img.naturalWidth > 0) {
+        clearInterval(poll);
+        return;
+      }
+      heal();
+      if (++ticks >= 8) clearInterval(poll);
+    }, 800);
   }
 
   function attachSrcLock(img, cdnSrc) {
@@ -1965,49 +1996,59 @@ window.QxImgClean = (() => {
   async function processImageAsync(img, cdnSrc) {
     if (!img || !img.isConnected) return;
     hideFigureLoading(img);
+    try {
+      if (await resolveAndShowClean(img, cdnSrc)) return;
 
-    if (await resolveAndShowClean(img, cdnSrc)) return;
+      const cached = await preloadCleanSrc(cdnSrc);
+      const manifestPath = cached.clean || null;
+      if (manifestPath && await loadDisplaySrc(img, manifestPath, cdnSrc)) return;
 
-    const cached = await preloadCleanSrc(cdnSrc);
-    const manifestPath = cached.clean || null;
-    if (manifestPath && await loadDisplaySrc(img, manifestPath, cdnSrc)) return;
+      if (!img.naturalWidth && await loadPoolFigureSrc(img, cdnSrc)) return;
 
-    if (!img.naturalWidth || img.getAttribute("src") === FIG_PLACEHOLDER) {
-      await loadDisplaySrc(img, proxyImageUrl(cdnSrc), cdnSrc);
-    }
-    if (!img.naturalWidth && await ensurePoolDisplay(img, cdnSrc)) return;
+      if (await tryClean(img, cdnSrc, manifestPath)) return;
 
-    if (await tryClean(img, cdnSrc, manifestPath)) return;
+      const loaded = await loadForCanvas(cdnSrc, manifestPath);
+      if (loaded && loaded.canRead !== false) {
+        const result = await cleanFromProbe(loaded.img);
+        if (result && result.blob && await applyCleanedBlob(img, result.blob, cdnSrc) && img.naturalWidth > 0) {
+          await finalizeCleanDisplay(img, result.stats);
+          return;
+        }
+      }
 
-    const loaded = await loadForCanvas(cdnSrc, manifestPath);
-    if (loaded && loaded.canRead !== false) {
-      const result = await cleanFromProbe(loaded.img);
-      if (result && result.blob && await applyCleanedBlob(img, result.blob, cdnSrc) && img.naturalWidth > 0) {
-        await finalizeCleanDisplay(img, result.stats);
+      if (await loadPoolFigureSrc(img, cdnSrc)) return;
+
+      enhancePoolFigure(img);
+      flagPoolWatermark(img, { hasWm: true, zones: defaultWmZones(cdnSrc) });
+      applyWmCover(img);
+      await waitForMarksHide(img);
+    } finally {
+      if (!img || !img.isConnected) return;
+      if (img.naturalWidth > 0) {
+        revealFigure(img);
         return;
       }
+      if (!img.classList.contains("qx-fig-ready")) {
+        await loadPoolFigureSrc(img, cdnSrc);
+        if (img.naturalWidth > 0) markDisplayClean(img);
+        else revealFigure(img);
+      }
     }
-
-    if (await ensurePoolDisplay(img, cdnSrc)) return;
-    if (isGetmarksPool(cdnSrc) && await loadDisplaySrc(img, restoreImageUrl(cdnSrc), cdnSrc)) return;
-
-    enhancePoolFigure(img);
-    flagPoolWatermark(img, { hasWm: true, zones: defaultWmZones(cdnSrc) });
-    applyWmCover(img);
-    await waitForMarksHide(img);
-    revealFigure(img);
   }
 
   function processImage(img) {
     const cdnSrc = poolCdnSrc(img);
     if (!cdnSrc || !isPoolDiagram(cdnSrc, img)) return;
     if (img.dataset.qxProcessedVer === String(CLEAN_VER)) {
-      if (isCleanedImg(img) || img.classList.contains("qx-fig-ready")) {
+      if ((isCleanedImg(img) || img.classList.contains("qx-fig-ready")) && img.naturalWidth > 0) {
         revealFigure(img);
         if (isCleanedImg(img)) void finalizeCleanDisplay(img);
         return;
       }
       if (img.dataset.qxProcessing === "1") return;
+      if (img.classList.contains("qx-wm-loading") && !img.classList.contains("qx-fig-ready") && !img.naturalWidth) {
+        delete img.dataset.qxProcessedVer;
+      }
     }
 
     attachErrorFallback(img);
@@ -2255,10 +2296,16 @@ window.QxImgClean = (() => {
     return slot + body;
   }
 
+  function imgHasRealFigure(img) {
+    if (!img || img.naturalWidth <= 12) return false;
+    const src = fixUrl(img.getAttribute("src") || "");
+    if (!src || src === FIG_PLACEHOLDER || src.startsWith("data:image/gif")) return false;
+    return img.offsetHeight > 12;
+  }
+
   function slotFigureVisible(slot) {
     const slotImg = slot && slot.querySelector("img.qx-pool-fig, img");
-    if (!slotImg) return false;
-    return slotImg.naturalWidth > 0 && slotImg.offsetHeight > 12;
+    return imgHasRealFigure(slotImg);
   }
 
   function stripQuestionInlineImgs(root) {
@@ -2289,7 +2336,7 @@ window.QxImgClean = (() => {
         const cdn = fixUrl(img.getAttribute("src") || "");
         if (!isPoolDiagram(cdn, img)) return;
         const slotImg = slot && slot.querySelector("img");
-        const slotOk = slotImg && (slotImg.naturalWidth > 0 || slotImg.offsetHeight > 24 || imgIsLoading(slotImg));
+        const slotOk = slotImg && (imgHasRealFigure(slotImg) || imgIsLoading(slotImg));
         if (slotOk) img.remove();
         else processImage(img);
       });
@@ -2442,8 +2489,12 @@ window.QxImgClean = (() => {
       const cdn = poolCdnSrc(img);
       if (!cdn || !isPoolDiagram(cdn, img)) return;
       const cur = fixUrl(img.getAttribute("src") || "");
-      if (img.classList.contains("qx-wm-loading") && !img.classList.contains("qx-fig-ready")) return;
-      if (isCleanedImg(img) || img.dataset.qxProcessing === "1") return;
+      if (isCleanedImg(img) && img.naturalWidth > 0) return;
+      if (img.dataset.qxProcessing === "1") return;
+      if (img.classList.contains("qx-wm-loading") && !img.classList.contains("qx-fig-ready") && !img.naturalWidth) {
+        queueProcessImage(img);
+        return;
+      }
       if (cur.includes("/api/proxy-image") && usingProxy(img)) return;
       if (!img.isConnected) return;
       if (isWorkingAltSrc(img, cur)) return;
