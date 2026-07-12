@@ -1541,7 +1541,8 @@ window.QxImgClean = (() => {
         extractPoolSrcs(window._qxDiagramRaw[key]).forEach(u => urls.add(fixUrl(u)));
       }
     });
-    await Promise.all([...urls].map(u => preloadCleanSrc(u)));
+    if (!urls.size) return;
+    void Promise.all([...urls].map(u => preloadCleanSrc(u)));
   }
 
   function waitForMarksHide(img, ms) {

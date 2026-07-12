@@ -140,7 +140,8 @@ const MarksLive = (() => {
 
   function htmlPart(text, image) {
     let out = String(text || "").trim();
-    const imgUrl = image || pickImageFromText(out) || null;
+    if (typeof Mx !== "undefined" && Mx.html) out = Mx.html(out);
+    const imgUrl = image || pickImageFromText(String(text || "")) || null;
     if (imgUrl && !/<img\b/i.test(out)) {
       const cdn = fixImgUrl(typeof imgUrl === "string" ? imgUrl : (imgUrl.url || imgUrl.src || ""));
       if (cdn) {
@@ -149,7 +150,6 @@ const MarksLive = (() => {
           : `<img class="qx-no-wm qx-pool-fig" src="${cdn}" alt="" loading="eager" decoding="async">`);
       }
     }
-    if (typeof Mx !== "undefined" && Mx.html) out = Mx.html(out);
     return out;
   }
 
@@ -308,7 +308,8 @@ const MarksLive = (() => {
   }
 
   function questionNeedsFigure(q) {
-    if (!q) return false;
+    if (!q || !q._marksId) return false;
+    if (q._figureFetchAttempted) return false;
     if (hasPoolFigureInHtml(q.q)) return false;
     if (q._questionImage) return true;
     if (questionReferencesFigure(q.q)) return true;

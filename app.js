@@ -257,6 +257,13 @@ function qxHasSolution(q) {
   return !!String(q.solution || "").replace(/<[^>]+>/g, "").trim();
 }
 
+function qxRace(promise, ms) {
+  return Promise.race([
+    promise,
+    new Promise(resolve => setTimeout(() => resolve(null), ms || 8000))
+  ]);
+}
+
 async function qxHydrateQuestion(q, toast) {
   if (!q || typeof MarksLive === "undefined" || !q._marksId) return q;
   const needOpts = MarksLive.needsFullQuestion(q)
@@ -266,10 +273,34 @@ async function qxHydrateQuestion(q, toast) {
   if (!needOpts && !needFig && !needSol && q._fullFetched) return q;
   if (toast) showToast("📚 Loading question…");
   try {
-    return await MarksLive.ensureQuestionFull(q, { force: needOpts || needFig || !q._fullFetched, solution: needSol });
+    const updated = await qxRace(
+      MarksLive.ensureQuestionFull(q, { force: needOpts || needFig || !q._fullFetched, solution: needSol }),
+      8000
+    );
+    if (updated) {
+      if (needFig) updated._figureFetchAttempted = true;
+      return updated;
+    }
+    q._figureFetchAttempted = true;
+    return q;
   } catch (e) {
+    q._figureFetchAttempted = true;
     return q;
   }
+}
+
+function qxPrepareFiguresFast(q) {
+  if (!q || typeof QxImgClean === "undefined" || !QxImgClean.prepareQuestionFigures) return Promise.resolve();
+  return qxRace(QxImgClean.prepareQuestionFigures(q), 600);
+}
+
+function qxRenderPracticeQuestion(id) {
+  const main = document.getElementById("app-main");
+  if (!main) return;
+  main.innerHTML = viewQuestion(id);
+  document.getElementById("examPill").textContent = EXAMS[STATE.exam].name;
+  bindPracticeQuestion(main);
+  if (typeof Mx !== "undefined") Mx.afterRender(main);
 }
 
 function qxBackgroundPrefetch(ids) {
@@ -374,9 +405,7 @@ function exitAllenPracticeMode() {
   if (typeof qxClearMountInlineStyles === "function") qxClearMountInlineStyles(document.getElementById("app-main"));
 }
 
-async function openPracticeQuestion(id) {
-  let q = getQ(id);
-  if (q && q._marksId) q = await qxHydrateQuestion(q, true);
+function openPracticeQuestion(id) {
   const list = window._qxListQs || [];
   const ids = list.length ? list.map(x => x.id) : [id];
   const idx = Math.max(0, ids.indexOf(id));
@@ -508,12 +537,8 @@ async function qxPracticeNav(delta) {
     main.innerHTML = `<div class="qx-practice-page"><div class="empty" style="padding:48px;text-align:center">Loading question…</div></div>`;
     q = await qxHydrateQuestion(q, false);
   }
-  if (q && typeof QxImgClean !== "undefined" && QxImgClean.prepareQuestionFigures) {
-    try { await QxImgClean.prepareQuestionFigures(q); } catch (_) { /* continue */ }
-  }
-  main.innerHTML = viewQuestion(qid);
-  bindPracticeQuestion(main);
-  if (typeof Mx !== "undefined") Mx.afterRender(main);
+  await qxPrepareFiguresFast(q);
+  qxRenderPracticeQuestion(qid);
 }
 
 function viewQuestion(id) {
@@ -1117,35 +1142,31 @@ go = function(view, payload) {
   }
 
   if (view === "question") {
+    qxRenderPracticeQuestion(payload);
     (async () => {
-      let q = getQ(payload);
-      const needHydrate = q && q._marksId && typeof MarksLive !== "undefined" && (
-        MarksLive.needsFullQuestion(q)
-        || MarksLive.isQuestionIncomplete(q)
-        || (MarksLive.isOptionsIncomplete && MarksLive.isOptionsIncomplete(q))
-        || (MarksLive.questionNeedsFigure && MarksLive.questionNeedsFigure(q))
-      );
-      if (needHydrate) {
-        main.innerHTML = `<div class="qx-practice-page"><div class="empty" style="padding:48px;text-align:center">Loading question…</div></div>`;
-        q = await qxHydrateQuestion(q, false);
-      }
-      if (q && typeof QxImgClean !== "undefined" && QxImgClean.prepareQuestionFigures) {
-        try { await QxImgClean.prepareQuestionFigures(q); } catch (_) { /* continue */ }
-      }
-      main.innerHTML = viewQuestion(payload);
-      document.getElementById("examPill").textContent = EXAMS[STATE.exam].name;
-      bindPracticeQuestion(main);
-      if (typeof Mx !== "undefined") Mx.afterRender(main);
-      const q2 = getQ(payload);
-      const stillNeed = q2 && typeof MarksLive !== "undefined" && (
-        MarksLive.isQuestionIncomplete(q2)
-        || (MarksLive.isOptionsIncomplete && MarksLive.isOptionsIncomplete(q2))
-      );
-      if (stillNeed) {
-        await qxHydrateQuestion(q2, false);
-        main.innerHTML = viewQuestion(payload);
-        bindPracticeQuestion(main);
-        if (typeof Mx !== "undefined") Mx.afterRender(main);
+      try {
+        let q = getQ(payload);
+        if (!q) return;
+        const needHydrate = q._marksId && typeof MarksLive !== "undefined" && (
+          MarksLive.needsFullQuestion(q)
+          || MarksLive.isQuestionIncomplete(q)
+          || (MarksLive.isOptionsIncomplete && MarksLive.isOptionsIncomplete(q))
+          || (MarksLive.questionNeedsFigure && MarksLive.questionNeedsFigure(q))
+        );
+        if (needHydrate) q = await qxHydrateQuestion(q, false) || q;
+        await qxPrepareFiguresFast(q);
+        if (currentView === "question") qxRenderPracticeQuestion(payload);
+        const q2 = getQ(payload);
+        const stillNeed = q2 && typeof MarksLive !== "undefined" && (
+          MarksLive.isQuestionIncomplete(q2)
+          || (MarksLive.isOptionsIncomplete && MarksLive.isOptionsIncomplete(q2))
+        );
+        if (stillNeed) {
+          await qxHydrateQuestion(q2, false);
+          if (currentView === "question") qxRenderPracticeQuestion(payload);
+        }
+      } catch (_) {
+        if (currentView === "question") qxRenderPracticeQuestion(payload);
       }
     })();
     return;
