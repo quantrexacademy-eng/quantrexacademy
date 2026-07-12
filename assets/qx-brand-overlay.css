@@ -161,14 +161,7 @@ img.qx-wm-none,
 }
 
 .qx-premium-wm-logo {
-  display: block;
-  width: 22%;
-  min-width: 72px;
-  max-width: 180px;
-  height: auto;
-  opacity: 0.12;
-  mix-blend-mode: multiply;
-  pointer-events: none;
+  display: none !important;
 }
 
 .qx-premium-wm-title {
@@ -226,54 +219,11 @@ img.qx-wm-none,
 }
 
 .qx-diag-watermark,
-.qx-wm-mask {
-  display: none !important;
-}
-
 .qx-brand-overlay,
-.qx-quantrex-wm {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 12;
-  pointer-events: none;
-  opacity: 0.12;
-  mix-blend-mode: multiply;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.qx-fig-inner.qx-wm-canvas-active canvas.qx-premium-wm-canvas {
-  opacity: 1;
-  display: block !important;
-  visibility: visible !important;
-}
-
-img.qx-quantrex-wm-overlay {
-  position: absolute;
-  z-index: 15 !important;
-  pointer-events: none !important;
-  display: block !important;
-  visibility: visible !important;
-  opacity: 0.14;
-  max-width: 32%;
-  min-width: 56px;
-  height: auto;
-  object-fit: contain;
-}
-
-.qx-diagram-slot img.qx-quantrex-wm-overlay,
-#qxDiagramSlot img.qx-quantrex-wm-overlay,
-.mtk-main img.qx-quantrex-wm-overlay {
-  display: block !important;
-  visibility: visible !important;
-}
-
-img.qx-brand-wm,
-.qx-fig-inner.qx-quantrex-wm-active {
-  position: relative;
+.qx-wm-mask,
+img.qx-quantrex-wm-overlay,
+canvas.qx-premium-wm-canvas {
+  display: none !important;
 }
 
 #qxDiagramSlot,
@@ -330,10 +280,7 @@ body.marks-test-active .mtk-q-text img.qx-pool-fig {
 }
 
 body.marks-test-active .qx-premium-wm-logo {
-  width: 18%;
-  min-width: 56px;
-  max-width: 140px;
-  opacity: 0.10;
+  display: none !important;
 }
 
 body.marks-test-active .qx-premium-wm-title {

@@ -364,6 +364,8 @@ window.Mx = (() => {
         }
         if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.scanAllFigures) {
           QxPremiumWM.scanAllFigures(el);
+        } else if (typeof QxImgClean !== "undefined" && QxImgClean.applyQuantrexBrand) {
+          el.querySelectorAll("img.qx-pool-fig, #qxDiagramSlot img, .qx-diagram-slot img").forEach(img => QxImgClean.applyQuantrexBrand(img));
         }
         if (typeof QxPerf !== "undefined") {
           QxPerf.lazyImages(el);

@@ -899,49 +899,54 @@ window.QxPremiumWM = (() => {
     return { stack, rw, rh };
   }
 
-  async function paintQuantrexBrand(img) {
-    if (!img || !img.isConnected) return false;
-    const prep = prepareFigureStack(img);
-    if (!prep) return false;
-    const { stack, rw, rh } = prep;
-    if (img.dataset.qxHasWm === "1") await paintMarksScrub(img, stack, rw, rh);
-    const branded = await paintBrandWatermark(img, stack, rw, rh);
-    if (!img.isConnected) return false;
-    stack.classList.add("qx-wm-active", "qx-premium-wm-active", "qx-brand-covered", "qx-fig-ready");
-    if (img.dataset.qxHasWm === "1") stack.classList.add("qx-marks-hidden");
-    img.classList.add("qx-fig-ready", "qx-brand-wm");
-    img.classList.remove("qx-wm-loading");
-    img.dataset.qxPremiumWm = "1";
-    img.dataset.qxBrandWm = "1";
-    return branded;
+  function stripQuantrexBrand(img) {
+    if (!img) return;
+    const stack = img.closest(".qx-fig-inner") || img.parentElement;
+    if (stack) {
+      stack.querySelectorAll("canvas.qx-premium-wm-canvas, img.qx-quantrex-wm-overlay, .qx-brand-overlay, .qx-quantrex-wm").forEach(el => el.remove());
+      stack.classList.remove("qx-wm-canvas-active", "qx-quantrex-wm-active", "qx-premium-wm-active");
+    }
+    delete img.dataset.qxQuantrexWm;
+    delete img.dataset.qxWmOverlay;
+    delete img.dataset.qxBrandWm;
+    delete img.dataset.qxPremiumWm;
+    img.classList.remove("qx-brand-wm");
   }
 
   function paintMarksHideOnly(img) {
-    return paintQuantrexBrand(img);
+    if (!img || !img.isConnected || img.dataset.qxHasWm !== "1") return Promise.resolve(false);
+    stripQuantrexBrand(img);
+    const prep = prepareFigureStack(img);
+    if (!prep) return Promise.resolve(false);
+    const { stack, rw, rh } = prep;
+    stack.querySelectorAll("canvas.qx-premium-wm-canvas, img.qx-quantrex-wm-overlay").forEach(el => el.remove());
+    return paintMarksScrub(img, stack, rw, rh).then(() => {
+      if (!img.isConnected) return false;
+      stack.classList.add("qx-wm-active", "qx-marks-hidden", "qx-fig-ready");
+      img.classList.add("qx-fig-ready");
+      img.classList.remove("qx-wm-loading");
+      return true;
+    });
+  }
+
+  function paintQuantrexBrand(img) {
+    stripQuantrexBrand(img);
+    return Promise.resolve(false);
   }
 
   function paintPremiumDiagonalWm(img) {
-    return paintQuantrexBrand(img);
+    return paintMarksHideOnly(img);
   }
 
   function premiumWatermarkHtml() {
-    const dark = isDarkTheme();
-    const themeCls = dark ? "qx-premium-wm--dark" : "qx-premium-wm--light";
-    return [
-      `<div class="qx-brand-overlay qx-quantrex-wm ${themeCls}" aria-hidden="true">`,
-      `<img class="qx-premium-wm-logo" src="${LOGO_SRC}" alt="" decoding="async" draggable="false">`,
-      `</div>`
-    ].join("");
+    return "";
   }
 
   function repaintAll(root) {
     const scope = root || document;
     scope.querySelectorAll("img.qx-pool-fig, img.qx-fig-img").forEach(img => {
-      if (img.naturalWidth > 0 || img.offsetWidth > 12) void paintQuantrexBrand(img);
-    });
-    scope.querySelectorAll(".qx-premium-wm-sheet").forEach(el => {
-      el.classList.toggle("qx-premium-wm--dark", isDarkTheme());
-      el.classList.toggle("qx-premium-wm--light", !isDarkTheme());
+      stripQuantrexBrand(img);
+      if (img.dataset.qxHasWm === "1") void paintMarksHideOnly(img);
     });
   }
 
@@ -961,59 +966,17 @@ window.QxPremiumWM = (() => {
 
   startThemeObserver();
 
-  function isPoolFigure(img) {
-    if (!img || img.tagName !== "IMG") return false;
-    if (img.classList.contains("qx-marks-icon") || img.classList.contains("fc-img")) return false;
-    const src = img.getAttribute("src") || img.dataset.qxOrigSrc || "";
-    return img.classList.contains("qx-pool-fig")
-      || img.classList.contains("qx-fig-img")
-      || /cdn-question-pool|\/pyq\/|\/cbse\/|ap_eamcet/i.test(src);
-  }
-
   function scanAllFigures(root) {
     const scope = root || document;
-    scope.querySelectorAll("img.qx-pool-fig, img.qx-fig-img, #qxDiagramSlot img, .qx-diagram-slot img, .qx-opt-fig img").forEach(img => {
-      if (!isPoolFigure(img)) return;
-      if (img.naturalWidth > 12 || img.offsetWidth > 24) void paintQuantrexBrand(img);
-    });
+    scope.querySelectorAll("img.qx-quantrex-wm-overlay, canvas.qx-premium-wm-canvas, .qx-brand-overlay.qx-quantrex-wm").forEach(el => el.remove());
+    scope.querySelectorAll("img.qx-pool-fig, img.qx-fig-img, #qxDiagramSlot img, .qx-diagram-slot img").forEach(img => stripQuantrexBrand(img));
   }
-
-  let brandGuardStarted = false;
-  function startBrandGuardian() {
-    if (brandGuardStarted) return;
-    brandGuardStarted = true;
-    document.addEventListener("load", (e) => {
-      const t = e.target;
-      if (t && t.tagName === "IMG" && isPoolFigure(t)) void paintQuantrexBrand(t);
-    }, true);
-    if (typeof MutationObserver !== "undefined") {
-      let pending = false;
-      const obs = new MutationObserver(() => {
-        if (pending) return;
-        pending = true;
-        requestAnimationFrame(() => {
-          pending = false;
-          scanAllFigures(document);
-        });
-      });
-      const boot = () => {
-        if (!document.body) return;
-        obs.observe(document.body, { childList: true, subtree: true });
-        scanAllFigures(document);
-        setTimeout(() => scanAllFigures(document), 800);
-        setTimeout(() => scanAllFigures(document), 2500);
-      };
-      if (document.body) boot();
-      else document.addEventListener("DOMContentLoaded", boot);
-    }
-  }
-
-  startBrandGuardian();
 
   return {
     paintMarksHideOnly,
     paintPremiumDiagonalWm,
     paintQuantrexBrand,
+    stripQuantrexBrand,
     paintBrandWatermark,
     exportWatermarkedFigure,
     premiumWatermarkHtml,
