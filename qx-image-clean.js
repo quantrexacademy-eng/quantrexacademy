@@ -105,13 +105,19 @@ window.QxImgClean = (() => {
   async function loadManifest() {
     if (manifest) return manifest;
     try {
-      const r = await fetch(MANIFEST_URL, { cache: "no-store" });
+      const r = await fetch(MANIFEST_URL);
       if (r.ok) manifest = await r.json();
       else manifest = { map: {}, version: 1 };
     } catch (_) {
       manifest = { map: {}, version: 1 };
     }
     return manifest;
+  }
+
+  function isManifestCleanPath(manifestRel, cdnSrc) {
+    if (!manifestRel || manifestRel.startsWith("http")) return false;
+    const fixed = fixUrl(cdnSrc || "");
+    return manifestRel !== fixed && manifestRel !== cdnSrc;
   }
 
   async function loadReview() {
@@ -1442,11 +1448,7 @@ window.QxImgClean = (() => {
     if (_cleanSrcCache.has(fixed)) return _cleanSrcCache.get(fixed);
     const task = (async () => {
       const manifestRel = await cleanUrl(fixed);
-      let clean = null;
-      if (manifestRel && manifestRel !== fixed && !manifestRel.startsWith("http")
-        && await manifestFileExists(manifestRel)) {
-        clean = manifestRel;
-      }
+      const clean = isManifestCleanPath(manifestRel, fixed) ? manifestRel : null;
       return { cdn: fixed, clean };
     })();
     _cleanSrcCache.set(fixed, task);
@@ -1456,6 +1458,7 @@ window.QxImgClean = (() => {
   async function prepareQuestionFigures(q) {
     if (!q) return;
     rememberQuestionRaw(q);
+    await loadManifest();
     const urls = new Set();
     extractPoolSrcs(q.q || "").forEach(u => urls.add(fixUrl(u)));
     (q.options || []).forEach((opt, i) => {
@@ -1465,7 +1468,12 @@ window.QxImgClean = (() => {
         extractPoolSrcs(window._qxDiagramRaw[key]).forEach(u => urls.add(fixUrl(u)));
       }
     });
-    await Promise.all([...urls].map(u => preloadCleanSrc(u)));
+    for (const fixed of urls) {
+      if (_cleanSrcCache.has(fixed)) continue;
+      const manifestRel = await cleanUrl(fixed);
+      const clean = isManifestCleanPath(manifestRel, fixed) ? manifestRel : null;
+      _cleanSrcCache.set(fixed, Promise.resolve({ cdn: fixed, clean }));
+    }
   }
 
   function waitForMarksHide(img, ms) {
@@ -1514,25 +1522,30 @@ window.QxImgClean = (() => {
   async function resolveAndShowClean(img, cdnSrc) {
     if (!img || !cdnSrc) return false;
     if (img.dataset.qxRestoreTried === String(CLEAN_VER) && isCleanedImg(img)) return true;
-    img.dataset.qxRestoreTried = String(CLEAN_VER);
 
     const manifestRel = await cleanUrl(cdnSrc);
-    if (manifestRel && manifestRel !== cdnSrc && !manifestRel.startsWith("http")
-      && await manifestFileExists(manifestRel)) {
-      if (await loadDisplaySrc(img, manifestRel, cdnSrc)) return true;
+    if (isManifestCleanPath(manifestRel, cdnSrc)) {
+      if (await loadDisplaySrc(img, manifestRel, cdnSrc)) {
+        img.dataset.qxRestoreTried = String(CLEAN_VER);
+        return true;
+      }
     }
-
-    if (await loadDisplaySrc(img, restoreImageUrl(cdnSrc), cdnSrc)) return true;
 
     const cached = await getCachedBlob(cdnSrc);
     if (cached && await blobLooksValid(cached)) {
       const url = URL.createObjectURL(cached);
       try {
-        if (await loadDisplaySrc(img, url, cdnSrc)) return true;
+        if (await loadDisplaySrc(img, url, cdnSrc)) {
+          img.dataset.qxRestoreTried = String(CLEAN_VER);
+          return true;
+        }
       } finally {
         if (String(img.getAttribute("src") || "") !== url) URL.revokeObjectURL(url);
       }
     }
+
+    img.dataset.qxRestoreTried = String(CLEAN_VER);
+    if (await loadDisplaySrc(img, restoreImageUrl(cdnSrc), cdnSrc)) return true;
     return false;
   }
 
@@ -1829,22 +1842,17 @@ window.QxImgClean = (() => {
       }
     };
 
-    img.addEventListener("load", heal);
-    img.addEventListener("error", heal);
-
-    let ticks = 0;
-    const poll = setInterval(() => {
-      heal();
-      if (++ticks >= 30) clearInterval(poll);
-    }, 300);
+    img.addEventListener("load", heal, { once: true });
+    img.addEventListener("error", heal, { once: true });
   }
 
   function attachSrcLock(img, cdnSrc) {
     if (img.dataset.qxSrcLock === "1" || !window.MutationObserver) return;
+    if (isCleanedImg(img) || usingRestoredSrc(img)) return;
     img.dataset.qxSrcLock = "1";
     const obs = new MutationObserver(() => {
       if (!img.isConnected) { obs.disconnect(); return; }
-      if (isCleanedImg(img) || usingRestoredSrc(img)) return;
+      if (isCleanedImg(img) || usingRestoredSrc(img)) { obs.disconnect(); return; }
       const cdn = poolCdnSrc(img) || cdnSrc;
       const cur = fixUrl(img.getAttribute("src") || "");
       if (!cdn) return;
@@ -1856,18 +1864,6 @@ window.QxImgClean = (() => {
       if (cur !== cdn) keepPoolImageVisible(img, cdn);
     });
     obs.observe(img, { attributes: true, attributeFilter: ["src"] });
-  }
-
-  async function manifestFileExists(path) {
-    if (!path || path.startsWith("http")) return false;
-    try {
-      const r = await fetch(path, { method: "HEAD", cache: "no-store" });
-      if (r.ok) return true;
-      const g = await fetch(path, { method: "GET", cache: "no-store" });
-      return g.ok;
-    } catch (_) {
-      return false;
-    }
   }
 
   let legacyPurged = false;
@@ -1976,8 +1972,6 @@ window.QxImgClean = (() => {
     const manifestPath = cached.clean || null;
     if (manifestPath && await loadDisplaySrc(img, manifestPath, cdnSrc)) return;
 
-    if (isGetmarksPool(cdnSrc) && await loadDisplaySrc(img, restoreImageUrl(cdnSrc), cdnSrc)) return;
-
     if (!img.naturalWidth || img.getAttribute("src") === FIG_PLACEHOLDER) {
       await loadDisplaySrc(img, proxyImageUrl(cdnSrc), cdnSrc);
     }
@@ -2007,10 +2001,13 @@ window.QxImgClean = (() => {
   function processImage(img) {
     const cdnSrc = poolCdnSrc(img);
     if (!cdnSrc || !isPoolDiagram(cdnSrc, img)) return;
-    if (img.dataset.qxProcessedVer === String(CLEAN_VER) && isCleanedImg(img)) {
-      revealFigure(img);
-      void finalizeCleanDisplay(img);
-      return;
+    if (img.dataset.qxProcessedVer === String(CLEAN_VER)) {
+      if (isCleanedImg(img) || img.classList.contains("qx-fig-ready")) {
+        revealFigure(img);
+        if (isCleanedImg(img)) void finalizeCleanDisplay(img);
+        return;
+      }
+      if (img.dataset.qxProcessing === "1") return;
     }
 
     attachErrorFallback(img);
@@ -2036,10 +2033,28 @@ window.QxImgClean = (() => {
     }
 
     hideFigureLoading(img);
-    void processImageAsync(img, cdnSrc);
+    img.dataset.qxProcessing = "1";
+    void processImageAsync(img, cdnSrc).finally(() => {
+      delete img.dataset.qxProcessing;
+    });
   }
 
   let observerStarted = false;
+  let observerPending = false;
+  const observerQueue = new Set();
+
+  function queueProcessImage(img) {
+    if (!img || img.nodeType !== 1) return;
+    observerQueue.add(img);
+    if (observerPending) return;
+    observerPending = true;
+    requestAnimationFrame(() => {
+      observerPending = false;
+      const batch = [...observerQueue];
+      observerQueue.clear();
+      batch.forEach(processImage);
+    });
+  }
 
   function startObserver() {
     if (observerStarted || !window.MutationObserver) return;
@@ -2057,19 +2072,19 @@ window.QxImgClean = (() => {
         }
         m.addedNodes.forEach(n => {
           if (n.nodeType !== 1) return;
-          if (n.tagName === "IMG") processImage(n);
+          if (n.tagName === "IMG") queueProcessImage(n);
           else if (n.querySelectorAll) {
-            n.querySelectorAll("img[src*='cdn-question-pool'], img[src*='/pyq/'], #qxDiagramSlot img").forEach(processImage);
+            n.querySelectorAll("img[src*='cdn-question-pool'], img[src*='/pyq/'], #qxDiagramSlot img").forEach(queueProcessImage);
           }
           if (n.id === "qxDiagramSlot" || n.classList?.contains("qx-diagram-slot")) {
-            n.querySelectorAll?.("img").forEach(processImage);
+            n.querySelectorAll?.("img").forEach(queueProcessImage);
           } else if (n.querySelectorAll) {
-            n.querySelectorAll(".qx-diagram-slot img, #qxDiagramSlot img").forEach(processImage);
+            n.querySelectorAll(".qx-diagram-slot img, #qxDiagramSlot img").forEach(queueProcessImage);
           }
         });
       });
     });
-    obs.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["src", "style", "class"] });
+    obs.observe(document.body, { childList: true, subtree: true });
   }
 
   function extractPoolFigureHtml(html, qid) {
@@ -2418,41 +2433,44 @@ window.QxImgClean = (() => {
   }
 
   let guardianStarted = false;
+  const GUARDIAN_MS = 25000;
+  const GUARDIAN_SEL = "img.qx-pool-fig, .qx-diagram-slot img, .qx-opt-fig img, .qx-fig img";
+
+  function runGuardianPass() {
+    if (document.hidden) return;
+    document.querySelectorAll(GUARDIAN_SEL).forEach(img => {
+      const cdn = poolCdnSrc(img);
+      if (!cdn || !isPoolDiagram(cdn, img)) return;
+      const cur = fixUrl(img.getAttribute("src") || "");
+      if (img.classList.contains("qx-wm-loading") && !img.classList.contains("qx-fig-ready")) return;
+      if (isCleanedImg(img) || img.dataset.qxProcessing === "1") return;
+      if (cur.includes("/api/proxy-image") && usingProxy(img)) return;
+      if (!img.isConnected) return;
+      if (isWorkingAltSrc(img, cur)) return;
+      if (cur.includes("/api/restore-image") && !img.naturalWidth && img.complete) {
+        void ensurePoolDisplay(img, cdn);
+        return;
+      }
+      if (cur.includes("://.app/") || (!img.naturalWidth && img.complete && cur === cdn)) {
+        void ensurePoolDisplay(img, cdn);
+        if (!isCleanedImg(img) && !usingRestoredSrc(img)) queueProcessImage(img);
+        return;
+      }
+      if (isLocalCleanAsset(cur) || isLocalCleanAsset(cdn)) return;
+      if (isGetmarksPool(cdn) && cur === cdn) {
+        void ensurePoolDisplay(img, cdn);
+        return;
+      }
+      if (cur !== cdn && !cur.startsWith("blob:") && !cur.includes("clean-diagrams") && !cur.includes("/api/restore-image")) {
+        keepPoolImageVisible(img, cdn);
+      }
+    });
+  }
+
   function startGuardian() {
     if (guardianStarted) return;
     guardianStarted = true;
-    setInterval(() => {
-      document.querySelectorAll("img").forEach(img => {
-        const cdn = poolCdnSrc(img);
-        if (!cdn || !isPoolDiagram(cdn, img)) return;
-        const cur = fixUrl(img.getAttribute("src") || "");
-        if (img.classList.contains("qx-wm-loading") && !img.classList.contains("qx-fig-ready")) return;
-        if (isGetmarksPool(cdn) && !isCleanedImg(img) && !isWorkingAltSrc(img, cur)) {
-          if (img.dataset.qxHasWm === "1" && !img.closest(".qx-fig-inner.qx-marks-hidden")) applyWmCover(img);
-        }
-        if (isCleanedImg(img)) return;
-        if (cur.includes("/api/proxy-image") && usingProxy(img)) return;
-        if (!img.isConnected) return;
-        if (isWorkingAltSrc(img, cur)) return;
-        if (cur.includes("/api/restore-image") && !img.naturalWidth && img.complete) {
-          void ensurePoolDisplay(img, cdn);
-          return;
-        }
-        if (cur.includes("://.app/") || (!img.naturalWidth && img.complete && cur === cdn)) {
-          void ensurePoolDisplay(img, cdn);
-          if (!isCleanedImg(img) && !usingRestoredSrc(img)) processImage(img);
-          return;
-        }
-        if (isLocalCleanAsset(cur) || isLocalCleanAsset(cdn)) return;
-        if (isGetmarksPool(cdn) && cur === cdn) {
-          void ensurePoolDisplay(img, cdn);
-          return;
-        }
-        if (cur !== cdn && !cur.startsWith("blob:") && !cur.includes("clean-diagrams") && !cur.includes("/api/restore-image")) {
-          keepPoolImageVisible(img, cdn);
-        }
-      });
-    }, 800);
+    setInterval(runGuardianPass, GUARDIAN_MS);
   }
 
   function scan(root) {
