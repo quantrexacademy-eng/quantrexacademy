@@ -96,6 +96,11 @@ def main():
     if e3.exists():
         import shutil
         shutil.copy2(e3, legacy)
+    try:
+        import watermark_hcv_em_figures as wm
+        wm.main()
+    except Exception as e:
+        print("watermark skip", e)
     print("done")
 
 
