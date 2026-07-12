@@ -32,8 +32,8 @@ body.marks-test-active #app-main { padding: 0; min-height: 100vh; }
 .mtk-sec-tab.active { color: #f1f5f9; border-bottom-color: #2DD4BF; background: rgba(45,212,191,.1); }
 .mtk-sec-tab:hover { color: #e2e8f0; }
 .mtk-body { display: grid; grid-template-columns: 1fr 300px; flex: 1; min-height: 0; }
-.mtk-main { padding: 20px 28px; overflow-y: auto; }
-.mtk-q-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.mtk-main { padding: 14px 20px; overflow-y: auto; }
+.mtk-q-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
 .mtk-q-num { font-size: 18px; font-weight: 800; color: #f1f5f9; }
 .mtk-pos-mark { background: #16a34a; color: #fff; font-size: 12px; font-weight: 800; padding: 2px 8px; border-radius: 4px; }
 .mtk-neg-mark { background: #dc2626; color: #fff; font-size: 12px; font-weight: 800; padding: 2px 8px; border-radius: 4px; }
@@ -47,11 +47,30 @@ body.marks-test-active #app-main { padding: 0; min-height: 100vh; }
 .mtk-sec-tab.mtk-sec-phys.active { border-bottom-color: #22c55e; background: rgba(34,197,94,.12); color: #86efac; }
 .mtk-sec-tab.mtk-sec-chem.active { border-bottom-color: #a855f7; background: rgba(168,85,247,.12); color: #d8b4fe; }
 .mtk-opt-empty { color: #94a3b8; font-size: 13px; font-style: italic; }
-.mtk-opt-text .qx-img-wrap img, .mtk-opt-text img { max-height: 180px; width: auto; max-width: 100%; border-radius: 8px; }
+.mtk-opt-text .qx-img-wrap img:not(.qx-pool-fig), .mtk-opt-text img:not(.qx-pool-fig) { max-height: 180px; width: auto; max-width: 100%; border-radius: 8px; }
+.mtk-opt-text img.qx-pool-fig, .mtk-opt-text .qx-opt-diagram-slot img { max-height: none !important; width: auto; max-width: 100%; border-radius: 0; }
+.mtk-q-text img.qx-pool-fig,
+.mtk-main #qxDiagramSlot img,
+.mtk-main .qx-diagram-slot img,
+.mtk-main .qx-fig img,
+.mtk-main .qx-fig-img {
+  max-height: none !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  overflow: visible !important;
+}
+.mtk-main .qx-question-body .qx-diagram-slot {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
 .mtk-options.qx-opts-img .mtk-opt { flex-direction: column; align-items: stretch; }
 .mtk-options.qx-opts-img .mtk-opt-text { display: flex; justify-content: center; }
-.mtk-q-text { margin-bottom: 24px; }
-.mtk-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.mtk-q-text { margin-bottom: 10px; }
+.qx-question-body .mtk-q-text { margin-bottom: 4px !important; }
+.mtk-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
 .mtk-options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .mtk-options-exam-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .mtk-options-exam { display: flex; flex-direction: column; gap: 10px; }

@@ -1,60 +1,103 @@
-/* Quantrex — crisp, high-visibility question & option images */
+/* Quantrex — full-color professional HQ question figures */
 
-img.qx-no-wm,
-.qx-fig-img,
-.qx-fig img,
-.qx-opt-fig img,
-.qx-content img[src*="cdn-question-pool"],
-.qx-content img[src*="/pyq/"],
-.mtk-q-text img,
-.mtk-opt-text img,
-.qa-q img,
-.qx-prac-q img,
-.qx-prac-opt-text img,
-.sol-body img {
-  filter: none !important;
-  -webkit-filter: none !important;
+img.qx-pool-fig,
+.qx-fig-img.qx-pool-fig,
+.qx-fig-inner > img.qx-pool-fig,
+#qxDiagramSlot img,
+.qx-diagram-slot img.qx-pool-fig,
+.mtk-main #qxDiagramSlot img,
+.mtk-main .qx-diagram-slot img.qx-pool-fig,
+img.qx-hq-color {
+  display: block !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 48px !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
   image-rendering: auto;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform: translateZ(0);
+  filter: none !important;
+  -webkit-filter: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+img.qx-cleaned.qx-pool-fig,
+img.qx-restored.qx-pool-fig {
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+img.qx-no-wm:not(.qx-pool-fig),
+.qx-fig-img:not(.qx-pool-fig),
+.qx-fig img:not(.qx-pool-fig),
+.qx-opt-fig img:not(.qx-pool-fig) {
+  filter: none !important;
+  -webkit-filter: none !important;
 }
 
 .qx-fig-img,
-.qx-fig img {
-  max-height: 520px !important;
+.qx-fig img,
+#qxDiagramSlot img {
+  max-height: none !important;
 }
 
 .mtk-q-text .qx-fig-img,
 .qa-q .qx-fig-img,
 .qx-prac-q .qx-fig-img {
-  max-height: 460px !important;
+  max-height: none !important;
 }
 
-.qx-opt-fig img,
-.mtk-opt-text .qx-opt-fig img {
-  max-height: 200px !important;
-}
-
+/* No box around figure — watermark only on image */
 .qx-fig,
-.qx-opt-fig {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
+.qx-opt-fig,
+.qx-pool-fig-wrap {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
 .qx-fig img,
 .qx-opt-fig img {
-  border-radius: 6px;
+  border-radius: 0;
+  background: #fff;
 }
 
 .mtk-test-root[data-test-theme="light"] .qx-fig,
-.mtk-test-root[data-test-theme="light"] .qx-opt-fig {
-  background: #fff;
-  border: 1px solid #e8eef4;
+.mtk-test-root[data-test-theme="light"] .qx-opt-fig,
+.mtk-test-root[data-test-theme="dark"] .qx-fig,
+.mtk-test-root[data-test-theme="dark"] .qx-opt-fig {
+  background: transparent !important;
+  border: none !important;
+}
+
+.qx-opt-fig img.qx-pool-fig,
+.mtk-opt-text .qx-opt-fig img.qx-pool-fig,
+.mtk-opt-text .qx-opt-diagram-slot img,
+.mtk-opt-text img.qx-pool-fig {
+  max-height: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+.qx-opt-fig img:not(.qx-pool-fig),
+.mtk-opt-text .qx-opt-fig img:not(.qx-pool-fig) {
+  max-height: 220px !important;
 }
 
 @media (max-width: 640px) {
-  .qx-fig-img, .qx-fig img { max-height: 320px !important; }
-  .qx-opt-fig img { max-height: 140px !important; }
+  #qxDiagramSlot img,
+  .qx-diagram-slot img,
+  .qx-opt-fig img.qx-pool-fig,
+  .mtk-opt-text .qx-opt-diagram-slot img {
+    max-height: none !important;
+  }
+  .qx-opt-fig img:not(.qx-pool-fig) {
+    max-height: 180px !important;
+  }
 }
