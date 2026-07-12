@@ -1,10 +1,10 @@
 // Quantrex — embedded watermark removal (never hides or breaks figures)
 window.QxImgClean = (() => {
-  const DB_NAME = "quantrex_clean_images_v57";
+  const DB_NAME = "quantrex_clean_images_v58";
   const DB_STORE = "blobs";
   const MANIFEST_URL = "data/qx_clean_manifest.json";
   const REVIEW_URL = "data/qx_image_review.json";
-  const CLEAN_VER = 57;
+  const CLEAN_VER = 58;
   const CENTER_WM_MAX = 0.006;
   const WM_DETECT_MIN = 0.0035;
   const CDN_ONLY = false;
@@ -1283,6 +1283,10 @@ window.QxImgClean = (() => {
     else applyWmCover(img);
   }
 
+  function isOptFigure(img) {
+    return !!(img && img.closest && img.closest(".mtk-opt-text, .qx-prac-opt-text, .mtk-opt, .qa-opt, .qx-prac-opt"));
+  }
+
   function syncBrandOverlay(container) {
     if (!container) return;
     const img = container.matches && container.matches("img")
@@ -1292,18 +1296,27 @@ window.QxImgClean = (() => {
     const target = overlayTargetForImg(img) || container;
     const fig = img.closest(".qx-fig, .qx-opt-fig");
     const cdn = poolCdnSrc(img);
+    const optFig = isOptFigure(img);
     if (!shouldBrandOverlay(img)) {
       stripBrandOverlay(target);
       if (fig) fig.classList.remove("qx-wm-active", "qx-premium-wm-active", "qx-brand-covered");
       return;
     }
+    target.classList.add("qx-wm-active", "qx-brand-covered", "qx-fig-stack", "qx-marks-hidden");
+    if (optFig) {
+      target.classList.remove("qx-premium-wm-active");
+      stripBrandOverlay(target);
+      paintPremiumWatermark(img);
+      if (fig) fig.classList.add("qx-brand-covered", "qx-fig-stack", "qx-wm-active");
+      return;
+    }
     const zones = String(img.dataset.qxWmZones || defaultWmZones(cdn).join(",")).split(",").map(s => s.trim()).filter(Boolean);
     const hasOverlay = target.querySelector(".qx-premium-wm-sheet, .qx-marks-strip");
     if (!hasOverlay) {
-      target.classList.add("qx-wm-active", "qx-brand-covered", "qx-fig-stack", "qx-premium-wm-active", "qx-marks-hidden");
+      target.classList.add("qx-premium-wm-active");
       target.insertAdjacentHTML("beforeend", quantrexWmCoverHtml(zones));
     } else {
-      target.classList.add("qx-wm-active", "qx-brand-covered", "qx-fig-stack", "qx-premium-wm-active", "qx-marks-hidden");
+      target.classList.add("qx-premium-wm-active");
     }
     paintPremiumWatermark(img);
     if (fig) fig.classList.add("qx-brand-covered", "qx-fig-stack", "qx-wm-active", "qx-premium-wm-active");

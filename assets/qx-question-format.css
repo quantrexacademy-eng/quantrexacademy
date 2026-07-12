@@ -1,0 +1,103 @@
+/* Quantrex — consistent question layout (app + test series + practice) */
+
+.qx-question-body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  gap: 10px;
+  margin: 0 0 12px;
+  line-height: 1.55;
+}
+
+.qx-question-body .qx-q-before,
+.qx-question-body .qx-q-after,
+.qx-question-body .qx-q-text-only,
+.qx-question-body .mtk-q-text {
+  width: 100%;
+  text-align: left;
+  line-height: 1.55;
+}
+
+.qx-question-body .qx-q-before {
+  order: 1;
+  margin-bottom: 4px;
+}
+
+.qx-question-body .qx-diagram-slot,
+.qx-question-body #qxDiagramSlot {
+  order: 2;
+  align-self: center;
+  width: 100%;
+  max-width: min(100%, 720px);
+  margin: 6px auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.qx-question-body .qx-q-after {
+  order: 3;
+  margin-top: 4px;
+}
+
+.qx-question-body p {
+  margin: 0 0 6px;
+}
+
+.qx-question-body p:last-child {
+  margin-bottom: 0;
+}
+
+.mtk-main .qx-question-body,
+.mtk-main .mtk-q-text {
+  font-size: 15px;
+  color: inherit;
+}
+
+.mtk-main .qx-question-body .qx-fig,
+.mtk-main .qx-question-body .qx-pool-fig-wrap,
+.mtk-main .qx-question-body .qx-fig-inner {
+  margin: 0 auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.mtk-main .qx-question-body img.qx-pool-fig,
+.mtk-main #qxDiagramSlot img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+}
+
+.mtk-opt-text .qx-opt-diagram-slot,
+.mtk-opt-text .qx-opt-fig {
+  margin: 0 auto;
+  text-align: center;
+  line-height: 0;
+}
+
+.mtk-options.qx-opts-img .qx-opt-diagram-slot,
+.mtk-options.qx-opts-img .qx-opt-fig {
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+.mtk-opt-text .qx-premium-wm-sheet {
+  display: none !important;
+}
+
+.qa-wrap .qx-question-body,
+.qx-prac-q-wrap .qx-question-body {
+  gap: 8px;
+}

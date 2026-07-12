@@ -12,9 +12,10 @@ window.QxPremiumWM = (() => {
   const COVERAGE = 0.44;
   const LOGO_SCALE = 0.14;
   const OPT_LOGO_SCALE = 0.08;
-  const MAX_SCRUB_RATIO = 0.09;
-  const INK_DILATE = 3;
-  const SCRUB_MIN_AVG = 138;
+  const MAX_SCRUB_RATIO = 0.11;
+  const OPT_MAX_SCRUB_RATIO = 0.16;
+  const INK_DILATE = 2;
+  const SCRUB_MIN_AVG = 108;
 
   let logoImg = null;
   let logoReady = false;
@@ -248,17 +249,72 @@ window.QxPremiumWM = (() => {
         const inkR = ink / Math.max(total, 1);
         const wmR = wm / Math.max(total, 1);
         const scrubR = scrub / Math.max(total, 1);
-        if (inkR < 0.07 && (wmR > 0.06 || scrubR > 0.04)) {
+        const centerCell = cx >= 2 && cx <= 5 && ry >= 2 && ry <= 5;
+        const inkMax = centerCell ? 0.2 : 0.09;
+        if (inkR < inkMax && (wmR > 0.035 || scrubR > 0.025)) {
           cellOk[ry * cols + cx] = 1;
-          if (wmR > 0.12) wmHeavy++;
+          if (wmR > 0.08) wmHeavy++;
         }
       }
     }
     return { cellOk, cols, rows, cw, ch, wmHeavy };
   }
 
-  function scrubBgColor() {
-    return isDarkTheme() ? "rgba(15,23,42,0.97)" : "rgba(255,255,255,0.98)";
+  function samplePaperColor(data, w, h) {
+    let sr = 0;
+    let sg = 0;
+    let sb = 0;
+    let n = 0;
+    const pts = [];
+    for (let x = 0; x < w; x += Math.max(1, Math.floor(w / 12))) {
+      pts.push([x, 1], [x, h - 2]);
+    }
+    for (let y = 0; y < h; y += Math.max(1, Math.floor(h / 12))) {
+      pts.push([1, y], [w - 2, y]);
+    }
+    pts.push([2, 2], [w - 3, 2], [2, h - 3], [w - 3, h - 3]);
+    for (const [x, y] of pts) {
+      if (x < 0 || y < 0 || x >= w || y >= h) continue;
+      const i = (y * w + x) * 4;
+      if (isLikelyInk(data[i], data[i + 1], data[i + 2])) continue;
+      sr += data[i];
+      sg += data[i + 1];
+      sb += data[i + 2];
+      n++;
+    }
+    if (!n) return { r: 255, g: 255, b: 255, css: "rgb(255,255,255)" };
+    const r = Math.round(sr / n);
+    const g = Math.round(sg / n);
+    const b = Math.round(sb / n);
+    return { r, g, b, css: `rgb(${r},${g},${b})` };
+  }
+
+  function scrubFillColor(data, w, h) {
+    const paper = samplePaperColor(data, w, h);
+    const avg = (paper.r + paper.g + paper.b) / 3;
+    if (avg >= 175) return paper.css;
+    if (avg >= 128) return paper.css;
+    return paper.css;
+  }
+
+  function isDiagonalWmBand(x, y, w, h) {
+    const dx = x - w / 2;
+    const dy = y - h / 2;
+    const rot = (ROT_DEG * Math.PI) / 180;
+    const across = -dx * Math.sin(rot) + dy * Math.cos(rot);
+    const along = dx * Math.cos(rot) + dy * Math.sin(rot);
+    const band = Math.min(w, h) * 0.14;
+    const len = Math.sqrt(w * w + h * h) * 0.48;
+    return Math.abs(across) < band && Math.abs(along) < len;
+  }
+
+  function isWmScrubPixel(r, g, b, a, inkDilated, idx) {
+    if (inkDilated[idx]) return false;
+    if (isSafeScrubPixel(r, g, b, a, inkDilated, idx)) return true;
+    const avg = (r + g + b) / 3;
+    const chroma = Math.max(r, g, b) - Math.min(r, g, b);
+    if (avg >= 112 && avg <= 252 && chroma < 58 && isRemovableWm(r, g, b, a)) return true;
+    return false;
   }
 
   function parseZoneList(img) {
@@ -267,15 +323,15 @@ window.QxPremiumWM = (() => {
     return zones.length ? zones : ["center", "br"];
   }
 
-  function paintCornerMarksFallback(ctx, rw, rh, zones) {
+  function paintCornerMarksFallback(ctx, rw, rh, zones, fillCss) {
     if (!ctx || rw < 20 || rh < 20) return;
     const z = Array.isArray(zones) ? zones : [];
-    if (!z.includes("br") && !z.includes("bl") && !z.includes("tr") && !z.includes("tl")) return;
-    const cw = Math.max(16, Math.round(rw * 0.18));
-    const ch = Math.max(12, Math.round(rh * 0.12));
+    if (!z.includes("br")) return;
+    const cw = Math.max(14, Math.round(rw * 0.16));
+    const ch = Math.max(10, Math.round(rh * 0.11));
     ctx.save();
-    ctx.fillStyle = scrubBgColor();
-    if (z.includes("br") || (!z.includes("bl") && !z.includes("tr") && !z.includes("tl"))) {
+    ctx.fillStyle = fillCss || "rgb(255,255,255)";
+    if (z.includes("br")) {
       if (typeof ctx.roundRect === "function") {
         ctx.beginPath();
         ctx.roundRect(rw - cw, rh - ch, cw, ch, [6, 0, 0, 0]);
@@ -294,28 +350,34 @@ window.QxPremiumWM = (() => {
     ctx.clearRect(0, 0, rw, rh);
 
     const zones = parseZoneList(img);
+    const isOpt = isOptContext(img);
     const drawable = await loadScrubDrawable(img);
+    const fillFallback = "rgb(255,255,255)";
     if (!drawable || !drawable.sample) {
-      paintCornerMarksFallback(ctx, rw, rh, zones);
+      paintCornerMarksFallback(ctx, rw, rh, zones, fillFallback);
       return true;
     }
 
     const { data, w, h } = drawable.sample;
+    const fillCss = scrubFillColor(data, w, h);
     const inkMask = buildInkMask(data, w, h);
     const inkDilated = dilateInkMask(inkMask, w, h, INK_DILATE);
     const grid = buildScrubGrid(data, w, h, inkDilated);
     const scrubMask = new Uint8Array(w * h);
     let scrubCount = 0;
     const total = w * h;
+    const maxRatio = isOpt ? OPT_MAX_SCRUB_RATIO : MAX_SCRUB_RATIO;
 
     for (let y = 0; y < h; y++) {
       for (let x = 0; x < w; x++) {
         const idx = y * w + x;
         const cx = Math.min(grid.cols - 1, Math.floor(x / grid.cw));
         const ry = Math.min(grid.rows - 1, Math.floor(y / grid.ch));
-        if (!grid.cellOk[ry * grid.cols + cx]) continue;
+        const inCell = grid.cellOk[ry * grid.cols + cx];
+        const inDiag = isDiagonalWmBand(x, y, w, h);
+        if (!inCell && !inDiag) continue;
         const i = idx * 4;
-        if (isSafeScrubPixel(data[i], data[i + 1], data[i + 2], data[i + 3], inkDilated, idx)) {
+        if (isWmScrubPixel(data[i], data[i + 1], data[i + 2], data[i + 3], inkDilated, idx)) {
           scrubMask[idx] = 1;
           scrubCount++;
         }
@@ -323,12 +385,11 @@ window.QxPremiumWM = (() => {
     }
 
     const ratio = scrubCount / Math.max(total, 1);
-    const bg = scrubBgColor();
     const sx = rw / w;
     const sy = rh / h;
 
-    if (scrubCount >= 8 && ratio <= MAX_SCRUB_RATIO) {
-      ctx.fillStyle = bg;
+    if (scrubCount >= 4 && ratio <= maxRatio) {
+      ctx.fillStyle = fillCss;
       for (let dy = 0; dy < rh; dy++) {
         for (let dx = 0; dx < rw; dx++) {
           const sx_ = Math.min(w - 1, Math.floor(dx / sx));
@@ -338,7 +399,7 @@ window.QxPremiumWM = (() => {
       }
     }
 
-    paintCornerMarksFallback(ctx, rw, rh, zones);
+    paintCornerMarksFallback(ctx, rw, rh, zones, fillCss);
     return true;
   }
 

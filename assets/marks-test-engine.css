@@ -66,12 +66,53 @@ body.marks-test-active #app-main { padding: 0; min-height: 100vh; }
   padding: 0 !important;
   box-shadow: none !important;
 }
-.mtk-options.qx-opts-img .mtk-opt { flex-direction: column; align-items: stretch; }
-.mtk-options.qx-opts-img .mtk-opt-text { display: flex; justify-content: center; }
-.mtk-q-text { margin-bottom: 10px; }
+.mtk-options.qx-opts-img { gap: 8px; margin-bottom: 12px; }
+.mtk-options.qx-opts-img .mtk-opt {
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px 10px;
+  gap: 8px;
+}
+.mtk-options.qx-opts-img .mtk-opt-radio { margin-top: 2px; }
+.mtk-options.qx-opts-img .mtk-opt-letter { min-width: 16px; font-size: 14px; }
+.mtk-options.qx-opts-img .mtk-opt-text {
+  display: block;
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  line-height: 0;
+}
+.mtk-options.qx-opts-img .mtk-opt-text .qx-opt-diagram-slot,
+.mtk-options.qx-opts-img .mtk-opt-text .qx-opt-fig,
+.mtk-options.qx-opts-img .mtk-opt-text .qx-fig,
+.mtk-options.qx-opts-img .mtk-opt-text .qx-fig-inner {
+  margin: 0 auto !important;
+  padding: 0 !important;
+  line-height: 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.mtk-options.qx-opts-img .mtk-opt-text img.qx-pool-fig,
+.mtk-options.qx-opts-img .mtk-opt-text .qx-opt-diagram-slot img {
+  display: block !important;
+  max-width: 100% !important;
+  max-height: 150px !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+  background: #fff !important;
+}
+.mtk-options.qx-opts-img .mtk-opt-text .qx-premium-wm-sheet,
+.mtk-options.qx-opts-img .mtk-opt-text canvas.qx-wm-canvas {
+  display: none !important;
+}
+.mtk-q-text { margin-bottom: 8px; }
 .qx-question-body .mtk-q-text { margin-bottom: 4px !important; }
-.mtk-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
-.mtk-options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.mtk-main .mtk-q-head { margin-bottom: 6px; }
+.mtk-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.mtk-options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .mtk-options-exam-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .mtk-options-exam { display: flex; flex-direction: column; gap: 10px; }
 .mtk-options-match-col .mtk-opt { min-height: auto; }
