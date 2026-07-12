@@ -96,11 +96,10 @@ def main():
     if e3.exists():
         import shutil
         shutil.copy2(e3, legacy)
-    try:
-        import watermark_hcv_em_figures as wm
-        wm.main()
-    except Exception as e:
-        print("watermark skip", e)
+    import subprocess
+    wm_script = ROOT / "scripts" / "watermark-hcv-em-figures.py"
+    if wm_script.exists():
+        subprocess.run(["python", str(wm_script)], check=False)
     print("done")
 
 
