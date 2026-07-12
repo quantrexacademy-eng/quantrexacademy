@@ -1,10 +1,10 @@
 // Quantrex — embedded watermark removal (never hides or breaks figures)
 window.QxImgClean = (() => {
-  const DB_NAME = "quantrex_clean_images_v59";
+  const DB_NAME = "quantrex_clean_images_v60";
   const DB_STORE = "blobs";
   const MANIFEST_URL = "data/qx_clean_manifest.json";
   const REVIEW_URL = "data/qx_image_review.json";
-  const CLEAN_VER = 59;
+  const CLEAN_VER = 60;
   const CENTER_WM_MAX = 0.006;
   const WM_DETECT_MIN = 0.0035;
   const CDN_ONLY = false;
@@ -929,7 +929,8 @@ window.QxImgClean = (() => {
     img.style.visibility = "";
     img.style.opacity = "";
     stripDisplayCors(img);
-    if (img.getAttribute("src") !== orig) img.src = orig;
+    const display = poolDisplaySrc(orig);
+    if (img.getAttribute("src") !== display) img.src = display;
   }
 
   function forceKeepVisible(img, cdnSrc) {
@@ -1372,6 +1373,21 @@ window.QxImgClean = (() => {
     return `${apiBase()}/api/proxy-image?url=${encodeURIComponent(fixed)}`;
   }
 
+  function poolDisplaySrc(cdnSrc) {
+    const cdn = fixUrl(cdnSrc || "");
+    if (!cdn) return cdn;
+    if (isGetmarksPool(cdn)) return restoreImageUrl(cdn);
+    if (POOL_RX.test(cdn)) return proxyImageUrl(cdn);
+    return cdn;
+  }
+
+  async function ensurePoolDisplay(img, cdnSrc) {
+    if (!img || !cdnSrc) return false;
+    const display = poolDisplaySrc(cdnSrc);
+    if (!display || display === fixUrl(cdnSrc)) return false;
+    return loadDisplaySrc(img, display, cdnSrc);
+  }
+
   function restoreImageUrl(cdnSrc) {
     const fixed = fixUrl(cdnSrc);
     return `${apiBase()}/api/restore-image?url=${encodeURIComponent(fixed)}`;
@@ -1412,6 +1428,7 @@ window.QxImgClean = (() => {
     img.dataset.qxCleaned = "1";
     img.dataset.qxCleanVer = String(CLEAN_VER);
     img.dataset.qxRestoredSrc = "1";
+    img.dataset.qxHasWm = "0";
     img.classList.remove("qx-img-flagged", "qx-wm-pending", "qx-wm-fallback");
     img.classList.add("qx-no-wm", "qx-cleaned", "qx-restored", "qx-wm-clean");
     const fig = img.closest(".qx-fig, .qx-opt-fig, .qx-diagram-slot, #qxDiagramSlot");
@@ -1479,8 +1496,9 @@ window.QxImgClean = (() => {
           resolve(true);
           return;
         }
-        keepPoolImageVisible(img, cdnSrc, true);
-        if (isGetmarksPool(cdnSrc)) markWmNeedsOverlay(img);
+        void ensurePoolDisplay(img, cdnSrc).then(ok => {
+          if (!ok && isGetmarksPool(cdnSrc)) void loadDisplaySrc(img, restoreImageUrl(cdnSrc), cdnSrc);
+        });
         resolve(false);
       };
       img.addEventListener("load", () => finish(img.naturalWidth > 0), { once: true });
@@ -1744,12 +1762,16 @@ window.QxImgClean = (() => {
     if (!result || !result.blob) return false;
     if (!(await blobLooksValid(result.blob))) return false;
     const ok = await applyCleanedBlob(img, result.blob, cdnSrc);
-    if (!ok || !(await validateProbeInk(img))) {
-      forceKeepVisible(img, cdnSrc);
-      return false;
+    if (ok && img.naturalWidth > 0) {
+      await finalizeCleanDisplay(img, result.stats);
+      return true;
     }
-    await finalizeCleanDisplay(img, result.stats);
-    return true;
+    if (isGetmarksPool(cdnSrc) && await loadDisplaySrc(img, restoreImageUrl(cdnSrc), cdnSrc)) {
+      await finalizeCleanDisplay(img, result.stats);
+      return true;
+    }
+    if (await ensurePoolDisplay(img, cdnSrc)) return true;
+    return false;
   }
 
   function attachErrorFallback(img) {
@@ -1797,9 +1819,14 @@ window.QxImgClean = (() => {
       }
       if (cur.includes("/api/proxy-image") && usingProxy(img)) return;
       if (isLocalCleanAsset(cur) || isLocalCleanAsset(cdn)) return;
-      if (cur !== cdn && !cur.startsWith("blob:") && !cur.includes("clean-diagrams")) keepPoolImageVisible(img, cdn);
+      if (isCleanedImg(img) || usingRestoredSrc(img)) return;
+      if (cur !== cdn && !cur.startsWith("blob:") && !cur.includes("clean-diagrams") && !cur.includes("/api/restore-image")) {
+        keepPoolImageVisible(img, cdn);
+      }
       if (img.naturalWidth > 0) lastGood = img.naturalWidth;
-      else if (lastGood > 0 || img.dataset.qxOrigSrc) keepPoolImageVisible(img, cdn, true);
+      else if ((lastGood > 0 || img.dataset.qxOrigSrc) && !usingRestoredSrc(img) && !isCleanedImg(img)) {
+        void ensurePoolDisplay(img, cdn);
+      }
     };
 
     img.addEventListener("load", heal);
@@ -1891,11 +1918,14 @@ window.QxImgClean = (() => {
     img.dataset.qxOrigSrc = cdn;
     img.classList.remove("qx-img-flagged", "qx-wm-pending");
     stripDisplayCors(img);
-    const proxy = proxyImageUrl(cdn);
+    const display = poolDisplaySrc(cdn);
     if (!force && usingProxy(img) && !broken) {
+      const proxy = proxyImageUrl(cdn);
       if (!cur.includes("/api/proxy-image") && img.getAttribute("src") !== proxy) img.setAttribute("src", proxy);
-    } else if (force || broken || !cur || cur !== cdn || cur.includes("://.app/")) {
-      if (img.getAttribute("src") !== cdn) img.setAttribute("src", cdn);
+    } else if (force || broken || !cur || cur === FIG_PLACEHOLDER || cur.includes("://.app/") || (isGetmarksPool(cdn) && cur === cdn)) {
+      if (img.getAttribute("src") !== display) img.setAttribute("src", display);
+    } else if (cur !== cdn && !usingRestoredSrc(img) && !cur.includes("clean-diagrams") && !cur.startsWith("blob:")) {
+      if (img.getAttribute("src") !== display) img.setAttribute("src", display);
     }
     img.style.removeProperty("display");
     img.style.removeProperty("visibility");
@@ -1940,35 +1970,37 @@ window.QxImgClean = (() => {
     if (!img || !img.isConnected) return;
     hideFigureLoading(img);
 
+    if (await resolveAndShowClean(img, cdnSrc)) return;
+
     const cached = await preloadCleanSrc(cdnSrc);
     const manifestPath = cached.clean || null;
     if (manifestPath && await loadDisplaySrc(img, manifestPath, cdnSrc)) return;
 
-    if (await resolveAndShowClean(img, cdnSrc)) return;
+    if (isGetmarksPool(cdnSrc) && await loadDisplaySrc(img, restoreImageUrl(cdnSrc), cdnSrc)) return;
 
     if (!img.naturalWidth || img.getAttribute("src") === FIG_PLACEHOLDER) {
       await loadDisplaySrc(img, proxyImageUrl(cdnSrc), cdnSrc);
     }
-    if (!img.naturalWidth) {
-      await loadDisplaySrc(img, cdnSrc, cdnSrc);
-    }
-    if (!img.naturalWidth) {
-      revealFigure(img);
-      return;
-    }
+    if (!img.naturalWidth && await ensurePoolDisplay(img, cdnSrc)) return;
 
     if (await tryClean(img, cdnSrc, manifestPath)) return;
 
-    keepPoolImageVisible(img, cdnSrc, true);
-    enhancePoolFigure(img);
-    const wm = await probeWatermarkFromImage(img, cdnSrc);
-    flagPoolWatermark(img, wm);
-    if (wm.hasWm) {
-      applyWmCover(img);
-      await waitForMarksHide(img);
-    } else {
-      markNoWatermark(img);
+    const loaded = await loadForCanvas(cdnSrc, manifestPath);
+    if (loaded && loaded.canRead !== false) {
+      const result = await cleanFromProbe(loaded.img);
+      if (result && result.blob && await applyCleanedBlob(img, result.blob, cdnSrc) && img.naturalWidth > 0) {
+        await finalizeCleanDisplay(img, result.stats);
+        return;
+      }
     }
+
+    if (await ensurePoolDisplay(img, cdnSrc)) return;
+    if (isGetmarksPool(cdnSrc) && await loadDisplaySrc(img, restoreImageUrl(cdnSrc), cdnSrc)) return;
+
+    enhancePoolFigure(img);
+    flagPoolWatermark(img, { hasWm: true, zones: defaultWmZones(cdnSrc) });
+    applyWmCover(img);
+    await waitForMarksHide(img);
     revealFigure(img);
   }
 
@@ -2403,17 +2435,20 @@ window.QxImgClean = (() => {
         if (!img.isConnected) return;
         if (isWorkingAltSrc(img, cur)) return;
         if (cur.includes("/api/restore-image") && !img.naturalWidth && img.complete) {
-          keepPoolImageVisible(img, cdn, true);
-          markWmNeedsOverlay(img);
+          void ensurePoolDisplay(img, cdn);
           return;
         }
-        if (cur.includes("://.app/") || (!img.naturalWidth && img.complete)) {
-          keepPoolImageVisible(img, cdn, true);
-          if (isGetmarksPool(cdn)) markWmNeedsOverlay(img);
+        if (cur.includes("://.app/") || (!img.naturalWidth && img.complete && cur === cdn)) {
+          void ensurePoolDisplay(img, cdn);
+          if (!isCleanedImg(img) && !usingRestoredSrc(img)) processImage(img);
           return;
         }
         if (isLocalCleanAsset(cur) || isLocalCleanAsset(cdn)) return;
-        if (cur !== cdn && !cur.startsWith("blob:") && !cur.includes("clean-diagrams")) {
+        if (isGetmarksPool(cdn) && cur === cdn) {
+          void ensurePoolDisplay(img, cdn);
+          return;
+        }
+        if (cur !== cdn && !cur.startsWith("blob:") && !cur.includes("clean-diagrams") && !cur.includes("/api/restore-image")) {
           keepPoolImageVisible(img, cdn);
         }
       });
