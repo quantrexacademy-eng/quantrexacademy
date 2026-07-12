@@ -13,6 +13,9 @@
       "**/.*",
       ".git/**",
       "data/clean_shards/**",
+      "data/banks/**",
+      "data/qx_image_scan.json",
+      "assets/clean-diagrams/**",
       "**/node_modules/**",
       "marks_data/**",
       "tools/**",
@@ -28,13 +31,25 @@
     ],
     "headers": [
       {
-        "source": "**/*.{js,css,svg,png,jpg,jpeg,webp,woff,woff2,ico}",
+        "source": "**/*.{js,css}",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+        ]
+      },
+      {
+        "source": "**/*.{svg,png,jpg,jpeg,webp,woff,woff2,ico}",
         "headers": [
           { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
         ]
       },
       {
         "source": "**/*.html",
+        "headers": [
+          { "key": "Cache-Control", "value": "no-cache, must-revalidate" }
+        ]
+      },
+      {
+        "source": "data/**/*.json",
         "headers": [
           { "key": "Cache-Control", "value": "no-cache, must-revalidate" }
         ]

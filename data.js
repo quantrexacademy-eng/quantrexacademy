@@ -407,6 +407,7 @@ const BANK_INDEX = {
 
 let QUESTIONS = [];
 let _banksLoaded = {};
+let _banksUnavailable = {};
 let _dppLoaded = false;
 let _currentBankSlug = localStorage.getItem("quantrex_bank") || null;
 
@@ -433,10 +434,17 @@ async function loadSingleBank(slug) {
   }
   const meta = BANK_INDEX[slug];
   const res = await fetch(meta.file);
+  if (!res.ok) {
+    console.warn("Question bank unavailable on hosting:", meta.file, res.status);
+    _banksLoaded[slug] = true;
+    _banksUnavailable[slug] = true;
+    return [];
+  }
   const data = await res.json();
   const qs = (data.questions || []).map(q => ({ ...q, _bank: slug }));
   QUESTIONS = QUESTIONS.filter(q => q._bank !== slug).concat(qs);
   _banksLoaded[slug] = true;
+  _banksUnavailable[slug] = false;
   _currentBankSlug = slug;
   localStorage.setItem("quantrex_bank", slug);
   return qs;
@@ -458,6 +466,10 @@ async function ensureQuestionsLoaded(slug) {
   const banks = getBanksForExam(STATE.exam);
   if (banks.length) return loadSingleBank(banks[0][0]);
   return [];
+}
+
+function isBankUnavailable(slug) {
+  return !!_banksUnavailable[slug];
 }
 
 let FORMULAS = [];
@@ -13878,6 +13890,14 @@ const STATE = {
 };
 let _bookNavCache = {};
 let _bookChaptersLoaded = {};
+const _qxBookDataVer = (typeof window !== "undefined" && window.QX_BUILD) || "1";
+if (typeof sessionStorage !== "undefined") {
+  const prev = sessionStorage.getItem("qxBookDataVer");
+  if (prev !== _qxBookDataVer) {
+    _bookChaptersLoaded = {};
+    sessionStorage.setItem("qxBookDataVer", _qxBookDataVer);
+  }
+}
 
 async function fetchBookNav(bookId) {
   if (_bookNavCache[bookId]) return _bookNavCache[bookId];
@@ -13892,11 +13912,12 @@ async function fetchBookNav(bookId) {
 }
 
 async function loadBookChapter(bookId, chapterKey) {
-  const cacheKey = bookId + "::" + chapterKey;
+  const cacheKey = bookId + "::" + chapterKey + "::" + _qxBookDataVer;
   if (_bookChaptersLoaded[cacheKey]) {
     return QUESTIONS.filter(q => q._book === bookId && q._chapterKey === chapterKey);
   }
-  const res = await fetch(`data/books/chapters/${bookId}/${chapterKey}.json`);
+  const bust = encodeURIComponent(_qxBookDataVer);
+  const res = await fetch(`data/books/chapters/${bookId}/${chapterKey}.json?v=${bust}`, { cache: "no-store" });
   if (!res.ok) return [];
   const data = await res.json();
   const qs = (data.questions || []).map(q => ({ ...q, _book: bookId, _bookId: bookId, _chapterKey: chapterKey }));
