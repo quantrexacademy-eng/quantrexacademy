@@ -86,10 +86,20 @@ canvas.qx-premium-wm-canvas {
   display: none !important;
 }
 
-img.qx-pool-fig.qx-wm-loading,
-.qx-fig-inner:not(.qx-fig-ready) > img.qx-pool-fig {
+img.qx-pool-fig.qx-wm-loading:not([src*="/api/restore-image"]):not([src*="/api/proxy-image"]):not([data-qx-primed="1"]),
+.qx-fig-inner:not(.qx-fig-ready) > img.qx-pool-fig:not([src*="/api/restore-image"]):not([src*="/api/proxy-image"]):not([data-qx-primed="1"]) {
   opacity: 0 !important;
   visibility: hidden !important;
+}
+
+img.qx-pool-fig[src*="/api/restore-image"],
+img.qx-pool-fig[src*="/api/proxy-image"],
+img.qx-pool-fig[data-qx-primed="1"],
+.qx-fig-inner:has(> img.qx-pool-fig[src*="/api/restore-image"]) > img.qx-pool-fig,
+.qx-fig-inner:has(> img.qx-pool-fig[src*="/api/proxy-image"]) > img.qx-pool-fig,
+.qx-fig-inner:has(> img.qx-pool-fig[data-qx-primed="1"]) {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .qx-fig-inner.qx-fig-ready > img.qx-pool-fig,

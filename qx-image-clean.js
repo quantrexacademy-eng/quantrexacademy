@@ -11,6 +11,7 @@ window.QxImgClean = (() => {
   const _pinnedHtml = new Map();
   const _cleanSrcCache = new Map();
   const _manifestExistsCache = new Map();
+  let _manifestAssetsAvailable = null;
   const FIG_PLACEHOLDER = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
   const MIN_INK_RATIO = 0.004;
   const MIN_INK_VS_CDN = 0.38;
@@ -121,8 +122,20 @@ window.QxImgClean = (() => {
     return manifestRel !== fixed && manifestRel !== cdnSrc;
   }
 
+  async function manifestAssetsAvailable() {
+    if (_manifestAssetsAvailable !== null) return _manifestAssetsAvailable;
+    try {
+      const r = await fetch("/assets/clean-diagrams/08/1d/081d55c5d82314ae.png", { method: "HEAD" });
+      _manifestAssetsAvailable = r.ok;
+    } catch (_) {
+      _manifestAssetsAvailable = false;
+    }
+    return _manifestAssetsAvailable;
+  }
+
   async function manifestFileExists(path) {
     if (!path || path.startsWith("http")) return false;
+    if (!(await manifestAssetsAvailable())) return false;
     if (_manifestExistsCache.has(path)) return _manifestExistsCache.get(path);
     const url = path.startsWith("/") ? path : "/" + path;
     try {
@@ -1427,8 +1440,36 @@ window.QxImgClean = (() => {
     }
   }
 
+  function figureSrcIsDisplayable(src) {
+    const s = fixUrl(src || "");
+    if (!s || s === FIG_PLACEHOLDER || s.startsWith("data:image/gif")) return false;
+    return s.includes("/api/restore-image") || s.includes("/api/proxy-image")
+      || s.includes("clean-diagrams") || isLocalCleanAsset(s) || POOL_RX.test(s);
+  }
+
+  function primePoolFigure(img, cdnSrc) {
+    if (!img || !cdnSrc) return;
+    if (imgHasRealFigure(img)) {
+      revealFigure(img);
+      return;
+    }
+    const cur = fixUrl(img.getAttribute("src") || "");
+    if (figureSrcIsDisplayable(cur) && img.naturalWidth > 0) {
+      revealFigure(img);
+      return;
+    }
+    const display = poolDisplaySrc(cdnSrc);
+    if (!display || display === cur) return;
+    img.dataset.qxOrigSrc = fixUrl(cdnSrc);
+    img.dataset.qxPrimed = "1";
+    img.setAttribute("src", display);
+    revealFigure(img);
+  }
+
   function hideFigureLoading(img) {
     if (!img) return;
+    const cur = fixUrl(img.getAttribute("src") || "");
+    if (figureSrcIsDisplayable(cur) || img.dataset.qxPrimed === "1") return;
     img.classList.add("qx-wm-loading");
     img.classList.remove("qx-fig-ready");
     const stack = img.closest(".qx-fig-inner");
@@ -1537,13 +1578,29 @@ window.QxImgClean = (() => {
 
   async function loadPoolFigureSrc(img, cdnSrc) {
     if (!img || !cdnSrc) return false;
+    if (isGetmarksPool(cdnSrc) && await loadDisplaySrc(img, restoreImageUrl(cdnSrc), cdnSrc)) return true;
+    if (await loadDisplaySrc(img, proxyImageUrl(cdnSrc), cdnSrc)) return true;
     const manifestRel = await cleanUrl(cdnSrc);
     if (isManifestCleanPath(manifestRel, cdnSrc) && await manifestFileExists(manifestRel)) {
       if (await loadDisplaySrc(img, manifestRel, cdnSrc)) return true;
     }
-    if (isGetmarksPool(cdnSrc) && await loadDisplaySrc(img, restoreImageUrl(cdnSrc), cdnSrc)) return true;
-    if (await loadDisplaySrc(img, proxyImageUrl(cdnSrc), cdnSrc)) return true;
     return await ensurePoolDisplay(img, cdnSrc);
+  }
+
+  function waitForImageLoad(img, ms) {
+    if (!img) return Promise.resolve(false);
+    if (img.naturalWidth > 0) return Promise.resolve(true);
+    return new Promise(resolve => {
+      const limit = ms || 10000;
+      const done = (ok) => {
+        clearTimeout(timer);
+        resolve(!!ok && img.naturalWidth > 0);
+      };
+      const timer = setTimeout(() => done(false), limit);
+      img.addEventListener("load", () => done(true), { once: true });
+      img.addEventListener("error", () => done(false), { once: true });
+      if (img.complete) done(img.naturalWidth > 0);
+    });
   }
 
   async function resolveAndShowClean(img, cdnSrc) {
@@ -2028,11 +2085,15 @@ window.QxImgClean = (() => {
         revealFigure(img);
         return;
       }
-      if (!img.classList.contains("qx-fig-ready")) {
-        await loadPoolFigureSrc(img, cdnSrc);
-        if (img.naturalWidth > 0) markDisplayClean(img);
-        else revealFigure(img);
+      primePoolFigure(img, cdnSrc);
+      await waitForImageLoad(img, 10000);
+      if (img.naturalWidth > 0) {
+        markDisplayClean(img);
+        return;
       }
+      await loadPoolFigureSrc(img, cdnSrc);
+      if (img.naturalWidth > 0) markDisplayClean(img);
+      revealFigure(img);
     }
   }
 
@@ -2073,6 +2134,7 @@ window.QxImgClean = (() => {
       return;
     }
 
+    primePoolFigure(img, cdnSrc);
     hideFigureLoading(img);
     img.dataset.qxProcessing = "1";
     void processImageAsync(img, cdnSrc).finally(() => {
@@ -2249,15 +2311,17 @@ window.QxImgClean = (() => {
     const src = normalizeAssetSrc(cdn);
     const u = escAttr(src);
     const localClean = isLocalCleanAsset(src);
-    const pool = !localClean && isGetmarksPool(src);
+    const pool = !localClean && isPoolDiagram(src);
     const overlay = "";
-    const displaySrc = localClean ? u : FIG_PLACEHOLDER;
+    const displaySrc = localClean
+      ? u
+      : (pool ? escAttr(poolDisplaySrc(src)) : escAttr(FIG_PLACEHOLDER));
     const wmAttrs = pool
-      ? ` data-qx-has-wm="pending" data-qx-pending-load="1"`
+      ? ` data-qx-has-wm="pending" data-qx-pending-load="1" data-qx-primed="1"`
       : (localClean ? ` data-qx-has-wm="0" data-qx-cleaned="1"` : "");
-    const wmClass = localClean ? " qx-fig-ready" : " qx-wm-loading";
+    const wmClass = (localClean || pool) ? " qx-fig-ready" : " qx-wm-loading";
     const poolAttr = pool ? ` data-qx-pool-wm="1"` : "";
-    const cleanCls = localClean ? " qx-cleaned qx-restored qx-wm-clean qx-fig-ready" : "";
+    const cleanCls = localClean ? " qx-cleaned qx-restored qx-wm-clean qx-fig-ready" : (pool ? " qx-fig-ready" : "");
     return `<figure class="qx-fig qx-pool-fig-wrap qx-brand-covered qx-fig-stack mathjax_ignore tex2jax_ignore${wmClass}"><div class="qx-fig-inner qx-wm-stack${wmClass}"${poolAttr}><img class="qx-fig-img qx-no-wm qx-pool-fig${cleanCls}" src="${displaySrc}" alt="" loading="eager" decoding="async" fetchpriority="high" referrerpolicy="no-referrer" data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs}>${overlay}</div></figure>`;
   }
 
