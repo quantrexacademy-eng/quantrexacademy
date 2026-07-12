@@ -233,7 +233,7 @@ const QuantrexTestEngine = (() => {
     if (!textReady) return '<div class="empty">Loading question…</div>';
     pinQuestionDiagrams(q);
     if (typeof QxImgClean !== "undefined" && QxImgClean.buildQuestionBodyHtml) {
-      return QxImgClean.buildQuestionBodyHtml(q.id, q.q, htmlContent);
+      return QxImgClean.buildQuestionBodyHtml(q.id, q.q, htmlContent, q);
     }
     return `<div class="mtk-q-text qx-content" data-qx-qid="${q.id}">${htmlContent(q.q)}</div>`;
   }

@@ -261,11 +261,12 @@ async function qxHydrateQuestion(q, toast) {
   if (!q || typeof MarksLive === "undefined" || !q._marksId) return q;
   const needOpts = MarksLive.needsFullQuestion(q)
     || (MarksLive.isOptionsIncomplete && MarksLive.isOptionsIncomplete(q));
+  const needFig = MarksLive.questionNeedsFigure && MarksLive.questionNeedsFigure(q);
   const needSol = !qxHasSolution(q);
-  if (!needOpts && !needSol && q._fullFetched) return q;
+  if (!needOpts && !needFig && !needSol && q._fullFetched) return q;
   if (toast) showToast("📚 Loading question…");
   try {
-    return await MarksLive.ensureQuestionFull(q, { force: needOpts || !q._fullFetched, solution: needSol });
+    return await MarksLive.ensureQuestionFull(q, { force: needOpts || needFig || !q._fullFetched, solution: needSol });
   } catch (e) {
     return q;
   }
@@ -279,6 +280,7 @@ function qxBackgroundPrefetch(ids) {
     if (MarksLive.needsFullQuestion(q)) return true;
     if (MarksLive.isOptionsIncomplete && MarksLive.isOptionsIncomplete(q)) return true;
     if (MarksLive.isQuestionIncomplete && MarksLive.isQuestionIncomplete(q)) return true;
+    if (MarksLive.questionNeedsFigure && MarksLive.questionNeedsFigure(q)) return true;
     return false;
   });
   if (!need.length) return;
@@ -506,6 +508,9 @@ async function qxPracticeNav(delta) {
     main.innerHTML = `<div class="qx-practice-page"><div class="empty" style="padding:48px;text-align:center">Loading question…</div></div>`;
     q = await qxHydrateQuestion(q, false);
   }
+  if (q && typeof QxImgClean !== "undefined" && QxImgClean.prepareQuestionFigures) {
+    try { await QxImgClean.prepareQuestionFigures(q); } catch (_) { /* continue */ }
+  }
   main.innerHTML = viewQuestion(qid);
   bindPracticeQuestion(main);
   if (typeof Mx !== "undefined") Mx.afterRender(main);
@@ -559,14 +564,14 @@ function viewQuestion(id) {
     else if (QxImgClean.pinQuestionHtml) QxImgClean.pinQuestionHtml(q.id, q.q);
   }
 
-  const diagramSlot = (!incomplete && typeof QxImgClean !== "undefined" && QxImgClean.buildDiagramSlotHtml)
-    ? QxImgClean.buildDiagramSlotHtml(q.id, q.q)
-    : "";
-
+  let diagramSlot = "";
   let qBody;
   if (incomplete) {
     qBody = `<div class="empty qx-load-q" style="padding:20px 0">Loading question text… <button type="button" class="btn-soft sm" onclick="qxRetryPracticeLoad()">Retry</button></div>`;
-  } else if (typeof QxImgClean !== "undefined" && QxImgClean.splitQuestionHtml) {
+  } else if (typeof QxImgClean !== "undefined" && QxImgClean.buildQuestionBodyHtml) {
+    qBody = QxImgClean.buildQuestionBodyHtml(q.id, q.q, htmlContent, q);
+  } else if (typeof QxImgClean !== "undefined" && QxImgClean.buildDiagramSlotHtml) {
+    diagramSlot = QxImgClean.buildDiagramSlotHtml(q.id, q.q, q);
     const split = QxImgClean.splitQuestionHtml(q.q, q.id);
     const hasSlotFig = diagramSlot && /qx-pool-fig|cdn-question-pool|\/pyq\/|assets\/diagrams/i.test(diagramSlot);
     const qText = hasSlotFig ? (split.text || q.q) : q.q;
@@ -1118,10 +1123,14 @@ go = function(view, payload) {
         MarksLive.needsFullQuestion(q)
         || MarksLive.isQuestionIncomplete(q)
         || (MarksLive.isOptionsIncomplete && MarksLive.isOptionsIncomplete(q))
+        || (MarksLive.questionNeedsFigure && MarksLive.questionNeedsFigure(q))
       );
       if (needHydrate) {
         main.innerHTML = `<div class="qx-practice-page"><div class="empty" style="padding:48px;text-align:center">Loading question…</div></div>`;
         q = await qxHydrateQuestion(q, false);
+      }
+      if (q && typeof QxImgClean !== "undefined" && QxImgClean.prepareQuestionFigures) {
+        try { await QxImgClean.prepareQuestionFigures(q); } catch (_) { /* continue */ }
       }
       main.innerHTML = viewQuestion(payload);
       document.getElementById("examPill").textContent = EXAMS[STATE.exam].name;

@@ -231,10 +231,23 @@ window.QxImgClean = (() => {
     return null;
   }
 
-  function resolveDiagramSrcs(rawHtml, qid) {
+  function questionImageSrc(q) {
+    if (!q) return null;
+    const raw = q._questionImage || q.questionImage || q.image || null;
+    if (!raw) return null;
+    const cdn = fixUrl(typeof raw === "string" ? raw : (raw.url || raw.src || ""));
+    return cdn && isPoolDiagram(cdn) ? normalizeAssetSrc(cdn) : null;
+  }
+
+  function resolveDiagramSrcs(rawHtml, qid, q) {
     const override = getFigureOverrideSrc(rawHtml, qid);
     if (override) return [override];
-    return extractPoolSrcs(rawHtml);
+    const srcs = extractPoolSrcs(rawHtml);
+    if (!srcs.length) {
+      const qSrc = questionImageSrc(q);
+      if (qSrc) srcs.push(qSrc);
+    }
+    return srcs;
   }
 
   function applyLocalCleanFigure(img, src, qid) {
@@ -2281,7 +2294,8 @@ window.QxImgClean = (() => {
   function mountDiagramSlot(slot, qid, rawHtml) {
     if (!slot) return;
     pinQuestionHtml(qid, rawHtml);
-    const srcs = resolveDiagramSrcs(rawHtml, qid);
+    const q = (typeof getQ === "function" && qid != null) ? getQ(qid) : null;
+    const srcs = resolveDiagramSrcs(rawHtml, qid, q);
     slot.classList.add("qx-pool-fig-wrap", "mathjax_ignore", "tex2jax_ignore");
     slot.dataset.qxQid = String(qid);
     slot.dataset.qxLocked = "1";
@@ -2325,8 +2339,8 @@ window.QxImgClean = (() => {
     return `<figure class="qx-fig qx-pool-fig-wrap qx-brand-covered qx-fig-stack mathjax_ignore tex2jax_ignore${wmClass}"><div class="qx-fig-inner qx-wm-stack${wmClass}"${poolAttr}><img class="qx-fig-img qx-no-wm qx-pool-fig${cleanCls}" src="${displaySrc}" alt="" loading="eager" decoding="async" fetchpriority="high" referrerpolicy="no-referrer" data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs}>${overlay}</div></figure>`;
   }
 
-  function buildSlotInnerHtml(rawHtml, qid) {
-    const srcs = resolveDiagramSrcs(rawHtml, qid);
+  function buildSlotInnerHtml(rawHtml, qid, q) {
+    const srcs = resolveDiagramSrcs(rawHtml, qid, q);
     if (srcs.length) {
       return srcs.map(cdn => poolFigureHtml(cdn)).join("");
     }
@@ -2334,10 +2348,10 @@ window.QxImgClean = (() => {
     return pinned || "";
   }
 
-  function buildDiagramSlotHtml(qid, rawHtml) {
+  function buildDiagramSlotHtml(qid, rawHtml, q) {
     if (qid == null || qid === "") return "";
     pinQuestionHtml(qid, rawHtml);
-    const inner = buildSlotInnerHtml(rawHtml, qid);
+    const inner = buildSlotInnerHtml(rawHtml, qid, q);
     if (!inner) return "";
     return `<div class="qx-diagram-slot qx-pool-fig-wrap mathjax_ignore tex2jax_ignore" id="qxDiagramSlot" data-qx-qid="${qid}" data-qx-locked="1">${inner}</div>`;
   }
@@ -2492,11 +2506,11 @@ window.QxImgClean = (() => {
     applyBrandOverlays(root);
   }
 
-  function buildQuestionBodyHtml(qid, rawHtml, renderText) {
+  function buildQuestionBodyHtml(qid, rawHtml, renderText, q) {
     if (qid == null || qid === "") return "";
     const render = typeof renderText === "function" ? renderText : (t => t);
     const { before, after } = splitQuestionHtml(rawHtml, qid);
-    const slot = buildDiagramSlotHtml(qid, rawHtml);
+    const slot = buildDiagramSlotHtml(qid, rawHtml, q);
     const textCls = "mtk-q-text qx-content qx-q-text-only";
     const parts = [];
     if (before) parts.push(`<div class="${textCls} qx-q-before" data-qx-qid="${qid}">${render(before)}</div>`);
