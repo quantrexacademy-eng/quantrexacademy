@@ -1,7 +1,7 @@
 // Quantrex Academy — premium diagonal watermark + pixel-precise MARKS hide
 window.QxPremiumWM = (() => {
-  const LOGO_SRC = "/assets/quantrex-academy-watermark.png";
-  const LOGO_FALLBACK = "/assets/quantrex-academy-watermark.svg";
+  const LOGO_SRC = "/assets/quantrex-academy-brand.png";
+  const LOGO_FALLBACK = "/assets/quantrex-academy-brand.svg";
   const LOGO_FALLBACK2 = "/assets/quantrex-premium-logo.png";
   const PROXY_BASE = (typeof QUANTREX_STACK !== "undefined" && QUANTREX_STACK.frontend && QUANTREX_STACK.frontend.url)
     ? QUANTREX_STACK.frontend.url.replace(/\/$/, "")

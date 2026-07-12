@@ -14,6 +14,7 @@ window.Mx = (() => {
       },
       options: {
         skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+        ignoreHtmlClass: "mathjax_ignore|tex2jax_ignore|qx-diagram-slot|qx-pool-fig-wrap",
         renderActions: { addMenu: [] }
       },
       startup: {
@@ -54,9 +55,17 @@ window.Mx = (() => {
   ];
   const PYQ_CDN = "https://cdn-question-pool.getmarks.app/";
   const BROKEN_CDN_RX = /https?:\/\/\.app\//gi;
-  const PROTECTED_IMG_RX = /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/jee_main\/|formula_cards|cbse\/|NEET\/NCERT/i;
+  const PROTECTED_IMG_RX = /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|formula_cards|cbse\/|NEET\/NCERT|ap_eamcet/i;
   const BRAND_IMG_RX = /(?:watermark|branding|marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|scoremarks)/i;
   const BRAND_LOGO_RX = /(?:watermark|marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|scoremarks)/i;
+  const QUANTREX_BRAND_RX = /quantrex-academy-brand|qx-quantrex-wm-overlay/i;
+
+  function isQuantrexBrandImg(img) {
+    if (!img) return false;
+    const src = img.getAttribute ? (img.getAttribute("src") || "") : "";
+    const cls = img.className || "";
+    return QUANTREX_BRAND_RX.test(src) || cls.includes("qx-quantrex-wm-overlay") || cls.includes("qx-premium-wm-logo");
+  }
   const MARKS_UI_ICON_RX = /ic_content_exam_|cpyqb\/subjects\/|ncert_toolbox\/|subj-ic-img|exam-pill-logo|subj-mini-ic|qx-marks-icon|qx-exam-logo|board-exam|board-subj|marks-exam-ic|marks-board-subj|dash-board.*logo|dash-tool-logo|exam-card-logo/i;
   const QUESTION_IMG_RX = /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|\/cbse\/|ap_eamcet/i;
   const FORMULA_IMG_RX = /formula_cards/i;
@@ -88,12 +97,17 @@ window.Mx = (() => {
   }
 
   function figureHtml(attrs) {
+    const srcM = String(attrs || "").match(/\bsrc=["']([^"']+)["']/i);
+    const src = srcM ? fixBrokenImgUrls(srcM[1]) : "";
+    if (/cdn-question-pool\.getmarks\.app/i.test(src) && typeof QxImgClean !== "undefined" && QxImgClean.poolFigureHtml) {
+      return QxImgClean.poolFigureHtml(src);
+    }
     const hasLoading = /loading=/i.test(attrs);
     const extra = hasLoading ? "" : ' loading="eager" decoding="async" fetchpriority="high"';
     const cls = /class=/i.test(attrs)
-      ? attrs.replace(/class=(["'])([^"']*)\1/i, 'class=$1$2 qx-fig-img qx-no-wm$1')
-      : attrs + ' class="qx-fig-img qx-no-wm"';
-    return `<figure class="qx-fig"><img${cls}${extra}></figure>`;
+      ? attrs.replace(/class=(["'])([^"']*)\1/i, 'class=$1$2 qx-fig-img qx-no-wm qx-pool-fig$1')
+      : attrs + ' class="qx-fig-img qx-no-wm qx-pool-fig"';
+    return `<figure class="qx-fig qx-pool-fig-wrap qx-brand-covered qx-fig-stack"><img${cls}${extra}></figure>`;
   }
 
   function fixImgAttrs(attrs) {
@@ -107,7 +121,8 @@ window.Mx = (() => {
       const fixedAttrs = fixImgAttrs(attrs);
       if (FORMULA_IMG_RX.test(fixedAttrs)) return m;
       if (isMarksUiIcon(fixedAttrs)) return m;
-      if (BRAND_LOGO_RX.test(fixedAttrs)) return "";
+      if (QUANTREX_BRAND_RX.test(fixedAttrs)) return m;
+      if (BRAND_LOGO_RX.test(fixedAttrs) && !isDiagramImg(fixedAttrs)) return "";
       if (/class=["'][^"']*qx-(fig-img|opt-fig|img)-wrap/i.test(fixedAttrs)) return m;
       if (/class=["'][^"']*qx-fig-img/i.test(fixedAttrs)) return m;
       if (isDiagramImg(fixedAttrs)) return figureHtml(fixedAttrs);
@@ -132,7 +147,7 @@ window.Mx = (() => {
     const panel = img.closest(".qx-diagram-panel");
     if (panel) unwrapLegacyPanel(panel);
     const fig = img.closest(".qx-fig, figure");
-    if (fig && isInOptionContext(img)) {
+    if (fig && isInOptionContext(img) && !fig.closest(".qx-diagram-slot, #qxDiagramSlot, .mathjax_ignore, .tex2jax_ignore")) {
       fig.parentNode.insertBefore(img, fig);
       fig.remove();
     }
@@ -147,22 +162,41 @@ window.Mx = (() => {
     span.className = "qx-opt-fig";
     img.parentNode.insertBefore(span, img);
     span.appendChild(img);
-    img.classList.add("qx-no-wm");
+    img.classList.add("qx-no-wm", "qx-pool-fig");
+    span.classList.add("qx-pool-fig-wrap");
     img.loading = "eager";
     img.decoding = "async";
+    if (typeof QxImgClean !== "undefined" && QxImgClean.ensureBrandOverlay) QxImgClean.ensureBrandOverlay(span);
   }
 
   function wrapQuestionFig(img) {
     stripHeavyWrap(img);
     if (img.closest(".qx-fig")) return;
+    const src = fixBrokenImgUrls(img.getAttribute("src") || "");
+    if (/cdn-question-pool\.getmarks\.app/i.test(src) && typeof QxImgClean !== "undefined" && QxImgClean.poolFigureHtml) {
+      const wrap = document.createElement("div");
+      wrap.innerHTML = QxImgClean.poolFigureHtml(src);
+      const fig = wrap.firstElementChild;
+      if (fig) {
+        img.parentNode.insertBefore(fig, img);
+        img.remove();
+        const slotImg = fig.querySelector("img");
+        if (slotImg && QxImgClean.processImage) QxImgClean.processImage(slotImg);
+        return;
+      }
+    }
     const fig = document.createElement("figure");
-    fig.className = "qx-fig";
+    fig.className = "qx-fig qx-pool-fig-wrap";
+    const inner = document.createElement("div");
+    inner.className = "qx-fig-inner qx-wm-stack";
     img.parentNode.insertBefore(fig, img);
-    fig.appendChild(img);
-    img.classList.add("qx-fig-img", "qx-no-wm");
+    fig.appendChild(inner);
+    inner.appendChild(img);
+    img.classList.add("qx-fig-img", "qx-no-wm", "qx-pool-fig");
     img.loading = "eager";
     img.decoding = "async";
     img.fetchPriority = "high";
+    if (typeof QxImgClean !== "undefined" && QxImgClean.processImage) QxImgClean.processImage(img);
   }
 
   function protectImgUrls(str) {
@@ -202,6 +236,15 @@ window.Mx = (() => {
     return out.replace(/\s{2,}/g, " ").trim();
   }
 
+  function isDiagramProtected(node) {
+    if (!node) return false;
+    if (node.classList && (node.classList.contains("qx-pool-fig") || node.classList.contains("qx-fig-img") || node.classList.contains("qx-no-wm"))) {
+      const src = node.getAttribute && (node.getAttribute("src") || "");
+      if (isQuestionDiagram(src)) return true;
+    }
+    return !!(node.closest && node.closest(".qx-diagram-slot, #qxDiagramSlot, .mathjax_ignore, .tex2jax_ignore, .qx-pool-fig-wrap, .qx-fig, .qx-opt-fig"));
+  }
+
   function cleanDom(root) {
     const el = root || document.getElementById("app-main") || document.body;
     if (!el) return;
@@ -210,11 +253,20 @@ window.Mx = (() => {
     el.querySelectorAll(".qx-diagram-panel").forEach(panel => unwrapLegacyPanel(panel));
     el.querySelectorAll(".qx-diag-toolbar, .qx-diagram-hint, .qx-diagram-badge").forEach(n => n.remove());
     el.querySelectorAll("img").forEach(img => {
+      if (isQuantrexBrandImg(img)) return;
+      if (isDiagramProtected(img)) return;
       let src = img.getAttribute("src") || "";
       const alt = img.getAttribute("alt") || "";
       const cls = img.className || "";
       if (FORMULA_IMG_RX.test(src) || img.classList.contains("fc-img")) return;
       if (isMarksUiIcon(src) || isMarksUiIcon(cls) || img.classList.contains("qx-marks-icon")) return;
+      if (isQuestionDiagram(src)) {
+        if (isInOptionContext(img)) wrapOptFig(img);
+        else wrapQuestionFig(img);
+        return;
+      }
+      if (img.classList.contains("qx-brand-logo") || img.classList.contains("qx-wm-badge") || img.closest(".qx-quantrex-wm, .qx-premium-wm, .qx-diag-watermark, .qx-brand-overlay, .qx-wm-mask, .qx-marks-scrub")) return;
+      if (QUANTREX_BRAND_RX.test(src)) return;
       if (BRAND_LOGO_RX.test(src) || BRAND_LOGO_RX.test(alt)) { img.remove(); return; }
       if (src.includes("://.app/")) {
         src = fixBrokenImgUrls(src);
@@ -224,11 +276,6 @@ window.Mx = (() => {
       if (!img.dataset.qxErrBound && typeof QxImgClean !== "undefined") {
         img.addEventListener("error", () => QxImgClean.restoreOriginal(img), { once: false });
         img.dataset.qxErrBound = "1";
-      }
-      if (isQuestionDiagram(src)) {
-        if (isInOptionContext(img)) wrapOptFig(img);
-        else wrapQuestionFig(img);
-        return;
       }
       if (!img.closest(".qx-img-wrap") && src && !src.startsWith("data:")) {
         const wrap = document.createElement("span");
@@ -273,25 +320,58 @@ window.Mx = (() => {
     return /[$\\]|math-|mjx-|class="q-text"|class="qx-q"/i.test(el.innerHTML);
   }
 
+  function typesetTargets(root) {
+    const el = root || document.getElementById("app-main") || document.body;
+    if (!el) return [];
+    const sel = ".mtk-q-text, .qx-q-text-only, .mtk-opt-text, .qa-q, .qx-prac-q, .qx-prac-opt-text, .qa-opt .qx-content, .qx-content";
+    const nodes = Array.from(el.querySelectorAll(sel)).filter(n =>
+      !n.closest(".qx-diagram-slot, #qxDiagramSlot, .mathjax_ignore, .tex2jax_ignore")
+      && !n.querySelector(".qx-diagram-slot, .qx-opt-diagram-slot, #qxDiagramSlot")
+    );
+    return nodes.length ? nodes : (needsMath(el) ? [el] : []);
+  }
+
   function typeset(root) {
     const el = root || document.getElementById("app-main") || document.body;
-    if (!needsMath(el)) return Promise.resolve();
+    const targets = typesetTargets(el);
+    if (!targets.length) return Promise.resolve();
     if (!_mathRequested) { _mathRequested = true; initMathJax(); }
     if (!window.MathJax || !MathJax.typesetPromise) {
       return new Promise(r => setTimeout(r, 200));
     }
-    return MathJax.typesetPromise([el]).catch(() => {});
+    return MathJax.typesetPromise(targets).catch(() => {});
   }
 
   function afterRender(root) {
     requestAnimationFrame(() => {
-      cleanDom(root);
-      if (typeof QxImgClean !== "undefined") QxImgClean.scan(root);
-      if (typeof QxPerf !== "undefined") {
-        QxPerf.lazyImages(root);
-        QxPerf.smoothPaint(root);
-      }
-      typeset(root);
+      const el = root || document.getElementById("app-main") || document.body;
+      const finish = () => {
+        const q = typeof QxImgClean !== "undefined" && QxImgClean.resolveCurrentQuestion
+          ? QxImgClean.resolveCurrentQuestion(el)
+          : null;
+        if (typeof QxImgClean !== "undefined" && QxImgClean.finalizeAll) {
+          QxImgClean.finalizeAll(el, q);
+        }
+        cleanDom(el);
+        if (typeof QxImgClean !== "undefined") {
+          if (QxImgClean.processAllDiagrams) QxImgClean.processAllDiagrams(el);
+          else if (QxImgClean.processImage) {
+            el.querySelectorAll("img[src*='cdn-question-pool'], img[src*='/pyq/'], .qx-pool-fig, #qxDiagramSlot img").forEach(img => QxImgClean.processImage(img));
+          }
+          if (QxImgClean.applyWmCover) {
+            el.querySelectorAll("img[src*='cdn-question-pool.getmarks'], img.qx-pool-fig").forEach(img => QxImgClean.applyWmCover(img));
+          }
+        }
+        if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.scanAllFigures) {
+          QxPremiumWM.scanAllFigures(el);
+        }
+        if (typeof QxPerf !== "undefined") {
+          QxPerf.lazyImages(el);
+          QxPerf.smoothPaint(el);
+        }
+      };
+      finish();
+      typeset(el).then(finish).catch(finish);
     });
   }
 

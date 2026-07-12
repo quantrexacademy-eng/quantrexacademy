@@ -26,7 +26,7 @@ window.QxImgClean = (() => {
   const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|\/cbse\/|ap_eamcet/i;
   const OPT_IMG_SEL = ".mtk-opt-text, .qx-prac-opt-text, .mtk-opt, .qa-opt, .qx-prac-opt";
   const SKIP_RX = /watermark|marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|formula_cards|ic_content_exam_|cpyqb\/subjects\//i;
-  const BRAND_OVERLAY_IMG = "/assets/quantrex-academy-watermark.png";
+  const BRAND_OVERLAY_IMG = "/assets/quantrex-academy-brand.png";
   const GETMARKS_POOL_RX = /cdn-question-pool\.getmarks\.app/i;
   const FIGURE_OVERRIDES_URL = "data/qx_figure_overrides.json";
   const FIGURE_OVERRIDE_FALLBACK = [];
@@ -2472,7 +2472,9 @@ window.QxImgClean = (() => {
     const u = escAttr(src);
     const localClean = isLocalCleanAsset(src);
     const pool = !localClean && isPoolDiagram(src);
-    const overlay = "";
+    const overlay = pool
+      ? `<img class="qx-quantrex-wm-overlay" src="/assets/quantrex-academy-brand.png" alt="" aria-hidden="true" decoding="async" draggable="false" referrerpolicy="no-referrer" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:24%;min-width:72px;max-width:200px;opacity:0.16;z-index:15;pointer-events:none;display:block;">`
+      : "";
     const displaySrc = localClean
       ? u
       : (pool ? escAttr(poolDisplaySrc(src)) : escAttr(FIG_PLACEHOLDER));

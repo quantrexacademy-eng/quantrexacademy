@@ -8,7 +8,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "assets" / "quantrex-academy-watermark.png"
+OUT = ROOT / "assets" / "quantrex-academy-brand.png"
 W, H = 640, 800
 
 
