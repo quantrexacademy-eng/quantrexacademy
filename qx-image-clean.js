@@ -4,7 +4,7 @@ window.QxImgClean = (() => {
   const DB_STORE = "blobs";
   const MANIFEST_URL = "data/qx_clean_manifest.json";
   const REVIEW_URL = "data/qx_image_review.json";
-  const CLEAN_VER = 62;
+  const CLEAN_VER = 63;
   const CENTER_WM_MAX = 0.006;
   const WM_DETECT_MIN = 0.0035;
   const CDN_ONLY = false;
@@ -1261,28 +1261,23 @@ window.QxImgClean = (() => {
       return;
     }
 
-    const fallbackSrc = img.getAttribute("src") || poolDisplaySrc(cdn);
-    if (isGetmarksPool(cdn) && img.dataset.qxRestoreUpgraded !== "1") {
-      img.dataset.qxRestoreUpgraded = "1";
-      const restored = await fetchRestoredBlob(cdn);
-      if (restored && await blobLooksValid(restored)) {
-        const ok = await applyCleanedBlob(img, restored, cdn);
-        if (ok && img.naturalWidth > 0 && await validateProbeInk(img)) {
-          markDisplayClean(img);
-          return;
-        }
-        if (fallbackSrc) {
-          stripDisplayCors(img);
-          img.setAttribute("src", fallbackSrc);
-          await waitForImageLoad(img, 8000);
-        }
+    if (img.naturalWidth <= 0) await loadPoolFigureSrc(img, cdn);
+    if (img.naturalWidth <= 0) return;
+
+    const cur = String(img.getAttribute("src") || "");
+    if (isGetmarksPool(cdn) && !cur.includes("/api/restore-image")) {
+      const ok = await loadDisplaySrc(img, restoreImageUrl(cdn), cdn);
+      if (ok && img.naturalWidth > 12) {
+        markDisplayClean(img);
+        return;
       }
+      await loadDisplaySrc(img, proxyImageUrl(cdn), cdn);
     }
 
-    if (img.naturalWidth <= 0) {
-      await loadPoolFigureSrc(img, cdn);
+    if (img.naturalWidth > 12 && String(img.getAttribute("src") || "").includes("/api/restore-image")) {
+      markDisplayClean(img);
+      return;
     }
-    if (img.naturalWidth <= 0) return;
 
     img.dataset.qxHasWm = "1";
     if (!img.dataset.qxWmZones) img.dataset.qxWmZones = defaultWmZones(cdn).join(",");
@@ -1290,6 +1285,13 @@ window.QxImgClean = (() => {
     let scrubbed = false;
     if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
       scrubbed = await QxPremiumWM.paintMarksHideOnly(img);
+    }
+    if (!scrubbed && isGetmarksPool(cdn)) {
+      const retry = await loadDisplaySrc(img, restoreImageUrl(cdn), cdn);
+      if (retry && img.naturalWidth > 12) {
+        markDisplayClean(img);
+        return;
+      }
     }
     img.dataset.qxHasWm = "0";
     img.dataset.qxWmClean = "1";
@@ -1514,8 +1516,26 @@ window.QxImgClean = (() => {
   function poolDisplaySrc(cdnSrc) {
     const cdn = canonicalCdnSrc(cdnSrc) || fixUrl(cdnSrc || "");
     if (!cdn) return "";
-    if (isGetmarksPool(cdn) || POOL_RX.test(cdn)) return proxyImageUrl(cdn);
+    if (isGetmarksPool(cdn)) return restoreImageUrl(cdn);
+    if (POOL_RX.test(cdn)) return proxyImageUrl(cdn);
     return cdn;
+  }
+
+  function setApiImgCors(img) {
+    if (!img) return;
+    img.crossOrigin = "anonymous";
+    img.setAttribute("crossorigin", "anonymous");
+  }
+
+  function stripDisplayCors(img) {
+    if (!img) return;
+    const src = String(img.getAttribute("src") || "");
+    if (src.includes("/api/restore-image") || src.includes("/api/proxy-image")) {
+      setApiImgCors(img);
+      return;
+    }
+    img.removeAttribute("crossorigin");
+    img.crossOrigin = null;
   }
 
   async function ensurePoolDisplay(img, cdnSrc) {
@@ -1682,8 +1702,8 @@ window.QxImgClean = (() => {
   async function loadPoolFigureSrc(img, cdnSrc) {
     if (!img || !cdnSrc) return false;
     const cdn = canonicalCdnSrc(cdnSrc) || fixUrl(cdnSrc);
-    if (await loadDisplaySrc(img, proxyImageUrl(cdn), cdn)) return true;
     if (isGetmarksPool(cdn) && await loadDisplaySrc(img, restoreImageUrl(cdn), cdn)) return true;
+    if (await loadDisplaySrc(img, proxyImageUrl(cdn), cdn)) return true;
     if (await loadDisplaySrc(img, cdn, cdn)) return true;
     const manifestRel = await cleanUrl(cdn);
     if (isManifestCleanPath(manifestRel, cdn) && await manifestFileExists(manifestRel)) {
@@ -1744,11 +1764,6 @@ window.QxImgClean = (() => {
       const fig = img.closest(".qx-fig, .qx-opt-fig");
       if (fig) fig.classList.add("qx-wm-pending-wrap");
     }
-  }
-
-  function stripDisplayCors(img) {
-    img.removeAttribute("crossorigin");
-    img.crossOrigin = null;
   }
 
   function restoreOriginal(img) {
@@ -1984,19 +1999,22 @@ window.QxImgClean = (() => {
       if (!cdn) return;
       const cur = String(img.getAttribute("src") || "");
       revealFigure(img);
-      if (!cur.includes("/api/proxy-image") && img.dataset.qxProxyTried !== "1") {
+      if (cur.includes("/api/restore-image") && img.dataset.qxProxyTried !== "1") {
         img.dataset.qxProxyTried = "1";
+        setApiImgCors(img);
         img.setAttribute("src", proxyImageUrl(cdn));
         return;
       }
-      if (cur !== cdn && img.dataset.qxCdnDirectTried !== "1") {
+      if (cur.includes("/api/proxy-image") && cur !== cdn && img.dataset.qxCdnDirectTried !== "1") {
         img.dataset.qxCdnDirectTried = "1";
-        stripDisplayCors(img);
+        img.removeAttribute("crossorigin");
+        img.crossOrigin = null;
         img.setAttribute("src", cdn);
         return;
       }
-      if (isGetmarksPool(cdn) && img.dataset.qxRestoreTried !== "1") {
+      if (!cur.includes("/api/restore-image") && isGetmarksPool(cdn) && img.dataset.qxRestoreTried !== "1") {
         img.dataset.qxRestoreTried = "1";
+        setApiImgCors(img);
         img.setAttribute("src", restoreImageUrl(cdn));
       }
     });
@@ -2014,8 +2032,9 @@ window.QxImgClean = (() => {
       const cur = fixUrl(img.getAttribute("src") || "");
       if (isWorkingAltSrc(img, cur)) return;
       if (cur.includes("/api/restore-image") && !img.naturalWidth && img.complete) {
-        keepPoolImageVisible(img, cdn, true);
-        markWmNeedsOverlay(img);
+        setApiImgCors(img);
+        img.setAttribute("src", proxyImageUrl(cdn));
+        void upgradePoolFigure(img, cdn);
         return;
       }
       if (cur.includes("/api/proxy-image") && usingProxy(img)) return;
@@ -2466,7 +2485,8 @@ window.QxImgClean = (() => {
     const wmClass = (localClean || pool) ? " qx-fig-ready" : " qx-wm-loading";
     const poolAttr = pool ? ` data-qx-pool-wm="1"` : "";
     const cleanCls = localClean ? " qx-cleaned qx-restored qx-wm-clean qx-fig-ready" : (pool ? " qx-fig-ready" : "");
-    return `<figure class="qx-fig qx-pool-fig-wrap qx-brand-covered qx-fig-stack mathjax_ignore tex2jax_ignore${wmClass}"><div class="qx-fig-inner qx-wm-stack${wmClass}"${poolAttr}><img class="qx-fig-img qx-no-wm qx-pool-fig${cleanCls}" src="${displaySrc}" alt="" loading="eager" decoding="async" fetchpriority="high" referrerpolicy="no-referrer" data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs}>${overlay}</div></figure>`;
+    const corsAttr = pool ? ` crossorigin="anonymous"` : "";
+    return `<figure class="qx-fig qx-pool-fig-wrap qx-brand-covered qx-fig-stack mathjax_ignore tex2jax_ignore${wmClass}"><div class="qx-fig-inner qx-wm-stack${wmClass}"${poolAttr}><img class="qx-fig-img qx-no-wm qx-pool-fig${cleanCls}" src="${displaySrc}" alt="" loading="eager" decoding="async" fetchpriority="high" referrerpolicy="no-referrer"${corsAttr} data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs}>${overlay}</div></figure>`;
   }
 
   function buildSlotInnerHtml(rawHtml, qid, q) {

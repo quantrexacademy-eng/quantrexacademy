@@ -12,7 +12,7 @@ window.QxPremiumWM = (() => {
   const COVERAGE = 0.44;
   const LOGO_SCALE = 0.14;
   const OPT_LOGO_SCALE = 0.08;
-  const MAX_SCRUB_RATIO = 0.11;
+  const MAX_SCRUB_RATIO = 0.15;
   const OPT_MAX_SCRUB_RATIO = 0.16;
   const INK_DILATE = 2;
   const SCRUB_MIN_AVG = 108;
@@ -159,7 +159,17 @@ window.QxPremiumWM = (() => {
   }
 
   async function loadScrubDrawable(img) {
-    const cdn = img.dataset.qxOrigSrc || img.getAttribute("src") || "";
+    let cdn = img.dataset.qxOrigSrc || "";
+    if (!cdn || cdn.includes("/api/")) {
+      const src = img.getAttribute("src") || "";
+      if (src.includes("url=")) {
+        try {
+          const inner = new URL(src, location.origin).searchParams.get("url");
+          if (inner) cdn = decodeURIComponent(inner);
+        } catch (_) { /* ignore */ }
+      }
+      if (!cdn) cdn = src;
+    }
     const key = cdn + ":scrub";
     if (_scrubCache.has(key)) return _scrubCache.get(key);
 
@@ -336,12 +346,11 @@ window.QxPremiumWM = (() => {
   function paintCornerMarksFallback(ctx, rw, rh, zones, fillCss) {
     if (!ctx || rw < 20 || rh < 20) return;
     const z = Array.isArray(zones) ? zones : [];
-    if (!z.includes("br")) return;
-    const cw = Math.max(14, Math.round(rw * 0.16));
-    const ch = Math.max(10, Math.round(rh * 0.11));
     ctx.save();
     ctx.fillStyle = fillCss || "rgb(255,255,255)";
     if (z.includes("br")) {
+      const cw = Math.max(14, Math.round(rw * 0.18));
+      const ch = Math.max(10, Math.round(rh * 0.12));
       if (typeof ctx.roundRect === "function") {
         ctx.beginPath();
         ctx.roundRect(rw - cw, rh - ch, cw, ch, [6, 0, 0, 0]);
@@ -349,6 +358,21 @@ window.QxPremiumWM = (() => {
       } else {
         ctx.fillRect(rw - cw, rh - ch, cw, ch);
       }
+    }
+    if (z.includes("center")) {
+      const cw = Math.max(20, Math.round(rw * 0.55));
+      const ch = Math.max(12, Math.round(rh * 0.24));
+      ctx.fillRect(Math.round((rw - cw) / 2), Math.round((rh - ch) / 2), cw, ch);
+    }
+    if (z.includes("tr")) {
+      const cw = Math.max(12, Math.round(rw * 0.14));
+      const ch = Math.max(8, Math.round(rh * 0.1));
+      ctx.fillRect(rw - cw, 0, cw, ch);
+    }
+    if (z.includes("bl")) {
+      const cw = Math.max(12, Math.round(rw * 0.14));
+      const ch = Math.max(8, Math.round(rh * 0.1));
+      ctx.fillRect(0, rh - ch, cw, ch);
     }
     ctx.restore();
   }
