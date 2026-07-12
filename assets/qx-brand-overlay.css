@@ -247,7 +247,28 @@ img.qx-wm-none,
 
 .qx-fig-inner.qx-wm-canvas-active canvas.qx-premium-wm-canvas {
   opacity: 1;
-  mix-blend-mode: multiply;
+  display: block !important;
+  visibility: visible !important;
+}
+
+img.qx-quantrex-wm-overlay {
+  position: absolute;
+  z-index: 15 !important;
+  pointer-events: none !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 0.14;
+  max-width: 32%;
+  min-width: 56px;
+  height: auto;
+  object-fit: contain;
+}
+
+.qx-diagram-slot img.qx-quantrex-wm-overlay,
+#qxDiagramSlot img.qx-quantrex-wm-overlay,
+.mtk-main img.qx-quantrex-wm-overlay {
+  display: block !important;
+  visibility: visible !important;
 }
 
 img.qx-brand-wm,

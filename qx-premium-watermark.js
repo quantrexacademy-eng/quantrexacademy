@@ -9,11 +9,11 @@ window.QxPremiumWM = (() => {
   const ROT_DEG = 35;
   const TEXT_OPACITY = 0.12;
   const TAG_OPACITY = 0.10;
-  const LOGO_OPACITY_MIN = 0.08;
-  const LOGO_OPACITY_MAX = 0.15;
+  const LOGO_OPACITY_MIN = 0.12;
+  const LOGO_OPACITY_MAX = 0.18;
   const LOGO_SCALE_MIN = 0.15;
   const LOGO_SCALE_MAX = 0.30;
-  const FALLBACK_OPACITY = 0.07;
+  const FALLBACK_OPACITY = 0.10;
   const FALLBACK_COVERAGE = 0.72;
   const OPT_LOGO_SCALE = 0.12;
   const MAX_SCRUB_RATIO = 0.15;
@@ -709,14 +709,60 @@ window.QxPremiumWM = (() => {
     let canvas = stack.querySelector("canvas.qx-premium-wm-canvas");
     if (!canvas) {
       canvas = document.createElement("canvas");
-      canvas.className = "qx-premium-wm-canvas qx-wm-canvas";
+      canvas.className = "qx-premium-wm-canvas";
       canvas.setAttribute("aria-hidden", "true");
       stack.appendChild(canvas);
     }
     canvas.width = rw;
     canvas.height = rh;
-    canvas.style.cssText = `position:absolute;top:0;left:0;width:${rw}px;height:${rh}px;z-index:12;pointer-events:none;opacity:1;mix-blend-mode:multiply;`;
+    canvas.style.cssText = `position:absolute;top:0;left:0;width:${rw}px;height:${rh}px;z-index:12;pointer-events:none;opacity:1;`;
     return canvas;
+  }
+
+  function applyBrandOverlayDom(stack, placement, rw, rh) {
+    if (!stack || !placement || rw < 12 || rh < 12) return null;
+    let el = stack.querySelector("img.qx-quantrex-wm-overlay");
+    if (!el) {
+      el = document.createElement("img");
+      el.className = "qx-quantrex-wm-overlay";
+      el.alt = "";
+      el.decoding = "async";
+      el.draggable = false;
+      el.setAttribute("aria-hidden", "true");
+      el.setAttribute("referrerpolicy", "no-referrer");
+      stack.appendChild(el);
+    }
+    if (el.getAttribute("src") !== LOGO_SRC) el.src = LOGO_SRC;
+    const aspect = logoImg && logoImg.naturalWidth > 0 ? logoImg.naturalHeight / logoImg.naturalWidth : 1.25;
+    const lw = Math.max(52, Math.round(rw * (placement.scale || LOGO_SCALE_MIN)));
+    const lh = Math.round(lw * aspect);
+    const opacity = placement.opacity || LOGO_OPACITY_MAX;
+    let left = placement.x;
+    let top = placement.y;
+    let transform = "translate(-50%,-50%)";
+    if (placement.mode === "fallback-diagonal") {
+      left = rw / 2;
+      top = rh / 2;
+      transform = `translate(-50%,-50%) rotate(${ROT_DEG}deg)`;
+      el.style.width = `${Math.max(64, Math.round(Math.sqrt(rw * rw + rh * rh) * 0.34))}px`;
+    } else {
+      el.style.width = `${lw}px`;
+    }
+    el.style.cssText = [
+      "position:absolute",
+      `left:${left}px`,
+      `top:${top}px`,
+      `width:${placement.mode === "fallback-diagonal" ? el.style.width : lw + "px"}`,
+      "height:auto",
+      `opacity:${opacity}`,
+      `transform:${transform}`,
+      "z-index:15",
+      "pointer-events:none",
+      "display:block",
+      "visibility:visible"
+    ].join(";");
+    el.dataset.qxWmMode = placement.mode || "region";
+    return el;
   }
 
   function drawPlacedLogo(ctx, rw, rh, logo, placement) {
@@ -788,6 +834,7 @@ window.QxPremiumWM = (() => {
         if (!img.isConnected) return resolve(false);
         const placement = resolvePlacement(drawable && drawable.sample, rw, rh, isOpt, logo);
         drawBrandOnContext(ctx, rw, rh, logo, placement);
+        applyBrandOverlayDom(stack, placement, rw, rh);
         stack.classList.add("qx-wm-canvas-active", "qx-quantrex-wm-active", "qx-premium-wm-active");
         img.dataset.qxQuantrexWm = "1";
         img.dataset.qxWmOverlay = "1";
@@ -914,6 +961,55 @@ window.QxPremiumWM = (() => {
 
   startThemeObserver();
 
+  function isPoolFigure(img) {
+    if (!img || img.tagName !== "IMG") return false;
+    if (img.classList.contains("qx-marks-icon") || img.classList.contains("fc-img")) return false;
+    const src = img.getAttribute("src") || img.dataset.qxOrigSrc || "";
+    return img.classList.contains("qx-pool-fig")
+      || img.classList.contains("qx-fig-img")
+      || /cdn-question-pool|\/pyq\/|\/cbse\/|ap_eamcet/i.test(src);
+  }
+
+  function scanAllFigures(root) {
+    const scope = root || document;
+    scope.querySelectorAll("img.qx-pool-fig, img.qx-fig-img, #qxDiagramSlot img, .qx-diagram-slot img, .qx-opt-fig img").forEach(img => {
+      if (!isPoolFigure(img)) return;
+      if (img.naturalWidth > 12 || img.offsetWidth > 24) void paintQuantrexBrand(img);
+    });
+  }
+
+  let brandGuardStarted = false;
+  function startBrandGuardian() {
+    if (brandGuardStarted) return;
+    brandGuardStarted = true;
+    document.addEventListener("load", (e) => {
+      const t = e.target;
+      if (t && t.tagName === "IMG" && isPoolFigure(t)) void paintQuantrexBrand(t);
+    }, true);
+    if (typeof MutationObserver !== "undefined") {
+      let pending = false;
+      const obs = new MutationObserver(() => {
+        if (pending) return;
+        pending = true;
+        requestAnimationFrame(() => {
+          pending = false;
+          scanAllFigures(document);
+        });
+      });
+      const boot = () => {
+        if (!document.body) return;
+        obs.observe(document.body, { childList: true, subtree: true });
+        scanAllFigures(document);
+        setTimeout(() => scanAllFigures(document), 800);
+        setTimeout(() => scanAllFigures(document), 2500);
+      };
+      if (document.body) boot();
+      else document.addEventListener("DOMContentLoaded", boot);
+    }
+  }
+
+  startBrandGuardian();
+
   return {
     paintMarksHideOnly,
     paintPremiumDiagonalWm,
@@ -925,6 +1021,7 @@ window.QxPremiumWM = (() => {
     resolvePlacement,
     isDarkTheme,
     repaintAll,
+    scanAllFigures,
     ROT_DEG,
     TEXT_OPACITY,
     LOGO_OPACITY_MIN,

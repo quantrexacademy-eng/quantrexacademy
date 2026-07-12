@@ -1171,8 +1171,7 @@ window.QxImgClean = (() => {
   function removeCanvasShield(img) {
     const stack = img && img.closest(".qx-fig-inner");
     if (!stack) return;
-    stack.querySelectorAll("canvas.qx-wm-canvas, canvas.qx-marks-scrub-canvas").forEach(c => c.remove());
-    stack.classList.remove("qx-wm-canvas-active");
+    stack.querySelectorAll("canvas.qx-marks-scrub-canvas").forEach(c => c.remove());
   }
 
   function paintPremiumWatermark(img) {
@@ -1226,9 +1225,8 @@ window.QxImgClean = (() => {
     img.classList.add("qx-fig-ready", "qx-hq-color");
     const target = overlayTargetForImg(img);
     if (target) {
-      target.querySelectorAll(".qx-premium-wm-sheet, .qx-quantrex-wm, .qx-diag-watermark, .qx-brand-overlay").forEach(el => el.remove());
+      target.querySelectorAll(".qx-premium-wm-sheet, .qx-diag-watermark").forEach(el => el.remove());
       if (!keepScrub) removeCanvasShield(img);
-      target.classList.remove("qx-premium-wm-active", "qx-wm-active");
     }
     const fig = img.closest(".qx-fig, .qx-opt-fig");
     if (fig) fig.classList.remove("qx-premium-wm-active", "qx-wm-active");
@@ -1350,16 +1348,14 @@ window.QxImgClean = (() => {
     if (!img) return;
     img.dataset.qxHasWm = "0";
     img.dataset.qxWmClean = "1";
+    img.dataset.qxBrandWm = "1";
     img.classList.add("qx-wm-clean");
     img.classList.remove("qx-wm-pending", "qx-wm-fallback");
     removeCanvasShield(img);
     const target = overlayTargetForImg(img);
     const fig = img.closest(".qx-fig, .qx-opt-fig");
-    if (target) {
-      target.classList.remove("qx-wm-pending-wrap", "qx-wm-canvas-active", "qx-wm-active", "qx-premium-wm-active");
-      stripBrandOverlay(target);
-    }
-    if (fig) fig.classList.remove("qx-wm-pending-wrap", "qx-wm-active", "qx-premium-wm-active");
+    if (target) target.classList.remove("qx-wm-pending-wrap");
+    if (fig) fig.classList.remove("qx-wm-pending-wrap");
   }
 
   function markWmNeedsOverlay(img) {

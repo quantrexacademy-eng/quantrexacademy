@@ -104,9 +104,18 @@ body.marks-test-active #app-main { padding: 0; min-height: 100vh; }
   object-fit: contain !important;
   background: #fff !important;
 }
-.mtk-options.qx-opts-img .mtk-opt-text .qx-premium-wm-sheet,
-.mtk-options.qx-opts-img .mtk-opt-text canvas.qx-wm-canvas {
+.mtk-options.qx-opts-img .mtk-opt-text .qx-premium-wm-sheet {
   display: none !important;
+}
+
+.mtk-main #qxDiagramSlot .qx-quantrex-wm-overlay,
+.mtk-main .qx-diagram-slot .qx-quantrex-wm-overlay,
+.mtk-main .qx-fig-inner .qx-quantrex-wm-overlay,
+.mtk-main canvas.qx-premium-wm-canvas {
+  display: block !important;
+  visibility: visible !important;
+  opacity: inherit;
+  pointer-events: none !important;
 }
 .mtk-q-text { margin-bottom: 8px; }
 .qx-question-body .mtk-q-text { margin-bottom: 4px !important; }
