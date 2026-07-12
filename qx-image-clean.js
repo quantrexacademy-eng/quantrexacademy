@@ -47,6 +47,7 @@ window.QxImgClean = (() => {
     if (s.startsWith("blob:")) return !!(el && el.dataset && el.dataset.qxOrigSrc);
     if (SKIP_RX.test(s)) return false;
     if (el && (el.classList.contains("qx-marks-icon") || el.classList.contains("fc-img"))) return false;
+    if (isLocalCleanAsset(s)) return true;
     return POOL_RX.test(s);
   }
 
@@ -1269,6 +1270,10 @@ window.QxImgClean = (() => {
       return;
     }
     if (isLocalCleanAsset(cdn) || img.classList.contains("qx-cleaned")) {
+      const busted = normalizeAssetSrc(cdn);
+      if (busted && fixUrl(img.getAttribute("src") || "") !== fixUrl(busted)) {
+        img.setAttribute("src", busted);
+      }
       markDisplayClean(img);
       return;
     }
@@ -2262,6 +2267,13 @@ window.QxImgClean = (() => {
       if (img.dataset.qxProcessing === "1") return;
       if (img.classList.contains("qx-wm-loading") && !img.classList.contains("qx-fig-ready") && !img.naturalWidth) {
         delete img.dataset.qxProcessedVer;
+      }
+    }
+
+    if (isLocalCleanAsset(cdnSrc)) {
+      const busted = normalizeAssetSrc(cdnSrc);
+      if (busted && fixUrl(img.getAttribute("src") || "") !== fixUrl(busted)) {
+        img.setAttribute("src", busted);
       }
     }
 

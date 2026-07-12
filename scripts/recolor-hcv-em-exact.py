@@ -97,9 +97,12 @@ def main():
         import shutil
         shutil.copy2(e3, legacy)
     import subprocess
+    import sys
+    sys.stdout.flush()
     wm_script = ROOT / "scripts" / "watermark-hcv-em-figures.py"
     if wm_script.exists():
         subprocess.run(["python", str(wm_script)], check=False)
+    sys.stdout.flush()
     print("done")
 
 

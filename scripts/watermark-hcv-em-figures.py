@@ -12,10 +12,10 @@ OUT = ROOT / "assets" / "diagrams"
 LOGO_SRC = ROOT / "assets" / "quantrex-academy-brand.png"
 LOGO_WM = ROOT / "assets" / "quantrex-academy-brand-wm.png"
 
-LOGO_SCALE = 0.22
-LOGO_OPACITY = 0.25
-FALLBACK_OPACITY = 0.22
-DIAG_COVERAGE = 0.58
+LOGO_SCALE = 0.24
+LOGO_OPACITY = 0.38
+FALLBACK_OPACITY = 0.32
+DIAG_COVERAGE = 0.68
 ROT_DEG = 35
 
 
@@ -25,9 +25,11 @@ def prepare_logo(path: Path, out: Path) -> Image.Image:
     r, g, b, a = arr[..., 0], arr[..., 1], arr[..., 2], arr[..., 3]
     lum = (r + g + b) / 3.0
     alpha = a.copy()
-    alpha[lum < 22] = 0
-    soft = (lum >= 22) & (lum < 50)
-    alpha[soft] = np.minimum(alpha[soft], (lum[soft] - 22) / 28 * 255)
+    alpha[lum < 18] = 0
+    soft = (lum >= 18) & (lum < 42)
+    alpha[soft] = np.minimum(alpha[soft], (lum[soft] - 18) / 24 * 255)
+    visible = lum >= 42
+    alpha[visible] = np.maximum(alpha[visible], 210)
     arr[..., 3] = alpha
     logo = Image.fromarray(arr.astype(np.uint8), "RGBA")
     logo.save(out, "PNG", optimize=True)
@@ -119,7 +121,7 @@ def paste_logo(base: Image.Image, logo: Image.Image, nx, ny, scale, opacity, dia
     w, h = base.size
     if diagonal:
         diag = (w * w + h * h) ** 0.5
-        lw = max(72, int(diag * DIAG_COVERAGE * 0.40))
+        lw = max(84, int(diag * DIAG_COVERAGE * 0.46))
     else:
         lw = max(36, int(w * scale))
     lh = max(36, int(lw * logo.height / logo.width))
