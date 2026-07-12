@@ -181,7 +181,13 @@ window.QxImgClean = (() => {
   function normalizeAssetSrc(src) {
     const s = String(src || "").trim();
     if (!s) return s;
-    if (LOCAL_CLEAN_RX.test(s)) return s.startsWith("/") ? s : "/" + s;
+    if (LOCAL_CLEAN_RX.test(s)) {
+      let path = s.startsWith("/") ? s : "/" + s;
+      const q = path.indexOf("?");
+      const base = q >= 0 ? path.slice(0, q) : path;
+      const build = (typeof window !== "undefined" && window.QX_BUILD) || "1";
+      return `${base}?v=${build}`;
+    }
     return s;
   }
 

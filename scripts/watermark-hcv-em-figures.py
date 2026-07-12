@@ -12,9 +12,10 @@ OUT = ROOT / "assets" / "diagrams"
 LOGO_SRC = ROOT / "assets" / "quantrex-academy-brand.png"
 LOGO_WM = ROOT / "assets" / "quantrex-academy-brand-wm.png"
 
-LOGO_SCALE = 0.17
-LOGO_OPACITY = 0.13
-FALLBACK_OPACITY = 0.11
+LOGO_SCALE = 0.22
+LOGO_OPACITY = 0.20
+FALLBACK_OPACITY = 0.17
+DIAG_COVERAGE = 0.58
 ROT_DEG = 35
 
 
@@ -93,32 +94,35 @@ def footprint_ink(mask, nx, ny, nfw, nfh):
 
 def resolve_placement(mask, logo_aspect: float, is_dense: bool):
     grid = grid_stats(mask, 12, 12)
-    scale = LOGO_SCALE * (0.78 if is_dense else 1.0)
-    opacity = LOGO_OPACITY if not is_dense else LOGO_OPACITY * 0.92
-    nfw = scale
-    nfh = scale * logo_aspect
-    max_ink = 0.055 if is_dense else 0.07
+    opacity = FALLBACK_OPACITY if is_dense else LOGO_OPACITY
+    # Coaching-style: large center diagonal watermark (visible but not blocking).
+    if grid["center_ink"] < 0.20:
+        return 0.5, 0.5, LOGO_SCALE, opacity, True
 
+    scale = LOGO_SCALE * (0.82 if is_dense else 1.0)
+    max_ink = 0.055 if is_dense else 0.07
     candidates = []
-    if grid["center_ink"] < 0.05 and grid["center_blank"] > 0.52:
-        candidates.append(("center", 0.5, 0.5, scale, opacity))
     if grid["best"]["ink_r"] < 0.08:
-        candidates.append(("region", grid["best"]["cx_mid"], grid["best"]["cy_mid"], scale, opacity))
+        candidates.append((grid["best"]["cx_mid"], grid["best"]["cy_mid"], scale, opacity))
     if grid["best_corner"]["ink_r"] < 0.07:
         c = grid["best_corner"]
-        candidates.append(("corner", c["cx_mid"], c["cy_mid"], scale * 0.88, opacity))
+        candidates.append((c["cx_mid"], c["cy_mid"], scale * 0.9, opacity))
 
-    for _, nx, ny, sc, op in candidates:
+    for nx, ny, sc, op in candidates:
         if footprint_ink(mask, nx, ny, sc, sc * logo_aspect) <= max_ink:
             return nx, ny, sc, op, False
 
-    return 0.5, 0.5, scale * 0.82, FALLBACK_OPACITY, True
+    return 0.5, 0.5, scale * 0.9, opacity, True
 
 
 def paste_logo(base: Image.Image, logo: Image.Image, nx, ny, scale, opacity, diagonal):
     w, h = base.size
-    lw = max(28, int(w * scale))
-    lh = max(28, int(lw * logo.height / logo.width))
+    if diagonal:
+        diag = (w * w + h * h) ** 0.5
+        lw = max(72, int(diag * DIAG_COVERAGE * 0.40))
+    else:
+        lw = max(36, int(w * scale))
+    lh = max(36, int(lw * logo.height / logo.width))
     mark = logo.resize((lw, lh), Image.LANCZOS)
     if diagonal:
         mark = mark.rotate(ROT_DEG, expand=True, resample=Image.BICUBIC)
