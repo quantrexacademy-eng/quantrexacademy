@@ -13,8 +13,8 @@ LOGO_SRC = ROOT / "assets" / "quantrex-academy-brand.png"
 LOGO_WM = ROOT / "assets" / "quantrex-academy-brand-wm.png"
 
 LOGO_SCALE = 0.22
-LOGO_OPACITY = 0.20
-FALLBACK_OPACITY = 0.17
+LOGO_OPACITY = 0.25
+FALLBACK_OPACITY = 0.22
 DIAG_COVERAGE = 0.58
 ROT_DEG = 35
 
