@@ -1,14 +1,16 @@
 // Quantrex — embedded watermark removal (never hides or breaks figures)
 window.QxImgClean = (() => {
-  const DB_NAME = "quantrex_clean_images_v58";
+  const DB_NAME = "quantrex_clean_images_v59";
   const DB_STORE = "blobs";
   const MANIFEST_URL = "data/qx_clean_manifest.json";
   const REVIEW_URL = "data/qx_image_review.json";
-  const CLEAN_VER = 58;
+  const CLEAN_VER = 59;
   const CENTER_WM_MAX = 0.006;
   const WM_DETECT_MIN = 0.0035;
   const CDN_ONLY = false;
   const _pinnedHtml = new Map();
+  const _cleanSrcCache = new Map();
+  const FIG_PLACEHOLDER = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
   const MIN_INK_RATIO = 0.004;
   const MIN_INK_VS_CDN = 0.38;
   const MAX_WHITE_RATIO = 0.97;
@@ -1185,6 +1187,7 @@ window.QxImgClean = (() => {
 
   function markNoWatermark(img) {
     if (!img) return;
+    revealFigure(img);
     img.dataset.qxHasWm = "0";
     img.dataset.qxWmClean = "1";
     img.classList.add("qx-wm-none", "qx-wm-clean");
@@ -1386,6 +1389,24 @@ window.QxImgClean = (() => {
     }
   }
 
+  function hideFigureLoading(img) {
+    if (!img) return;
+    img.classList.add("qx-wm-loading");
+    img.classList.remove("qx-fig-ready");
+    const stack = img.closest(".qx-fig-inner");
+    if (stack) stack.classList.remove("qx-fig-ready");
+  }
+
+  function revealFigure(img) {
+    if (!img) return;
+    img.classList.remove("qx-wm-loading");
+    img.classList.add("qx-fig-ready");
+    img.style.removeProperty("opacity");
+    img.style.removeProperty("visibility");
+    const stack = img.closest(".qx-fig-inner");
+    if (stack) stack.classList.add("qx-fig-ready");
+  }
+
   function markDisplayClean(img) {
     if (!img) return;
     img.dataset.qxCleaned = "1";
@@ -1396,6 +1417,54 @@ window.QxImgClean = (() => {
     const fig = img.closest(".qx-fig, .qx-opt-fig, .qx-diagram-slot, #qxDiagramSlot");
     if (fig) fig.classList.remove("qx-wm-pending-wrap", "qx-wm-fallback-wrap");
     markWmClean(img);
+    revealFigure(img);
+  }
+
+  async function preloadCleanSrc(cdn) {
+    const fixed = fixUrl(cdn);
+    if (_cleanSrcCache.has(fixed)) return _cleanSrcCache.get(fixed);
+    const task = (async () => {
+      const manifestRel = await cleanUrl(fixed);
+      let clean = null;
+      if (manifestRel && manifestRel !== fixed && !manifestRel.startsWith("http")
+        && await manifestFileExists(manifestRel)) {
+        clean = manifestRel;
+      }
+      return { cdn: fixed, clean };
+    })();
+    _cleanSrcCache.set(fixed, task);
+    return task;
+  }
+
+  async function prepareQuestionFigures(q) {
+    if (!q) return;
+    rememberQuestionRaw(q);
+    const urls = new Set();
+    extractPoolSrcs(q.q || "").forEach(u => urls.add(fixUrl(u)));
+    (q.options || []).forEach((opt, i) => {
+      extractPoolSrcs(opt || "").forEach(u => urls.add(fixUrl(u)));
+      const key = String(q.id) + ":opt:" + i;
+      if (window._qxDiagramRaw && window._qxDiagramRaw[key]) {
+        extractPoolSrcs(window._qxDiagramRaw[key]).forEach(u => urls.add(fixUrl(u)));
+      }
+    });
+    await Promise.all([...urls].map(u => preloadCleanSrc(u)));
+  }
+
+  function waitForMarksHide(img, ms) {
+    const limit = ms || 4000;
+    return new Promise(resolve => {
+      const start = Date.now();
+      const tick = () => {
+        if (!img || !img.isConnected) return resolve();
+        const stack = img.closest(".qx-fig-inner");
+        if (img.dataset.qxPremiumWm === "1" || (stack && stack.classList.contains("qx-marks-hidden"))) return resolve();
+        if (img.dataset.qxHasWm === "0" || img.classList.contains("qx-wm-clean")) return resolve();
+        if (Date.now() - start > limit) return resolve();
+        requestAnimationFrame(tick);
+      };
+      tick();
+    });
   }
 
   function loadDisplaySrc(img, src, cdnSrc) {
@@ -1867,10 +1936,47 @@ window.QxImgClean = (() => {
     }
   }
 
+  async function processImageAsync(img, cdnSrc) {
+    if (!img || !img.isConnected) return;
+    hideFigureLoading(img);
+
+    const cached = await preloadCleanSrc(cdnSrc);
+    const manifestPath = cached.clean || null;
+    if (manifestPath && await loadDisplaySrc(img, manifestPath, cdnSrc)) return;
+
+    if (await resolveAndShowClean(img, cdnSrc)) return;
+
+    if (!img.naturalWidth || img.getAttribute("src") === FIG_PLACEHOLDER) {
+      await loadDisplaySrc(img, proxyImageUrl(cdnSrc), cdnSrc);
+    }
+    if (!img.naturalWidth) {
+      await loadDisplaySrc(img, cdnSrc, cdnSrc);
+    }
+    if (!img.naturalWidth) {
+      revealFigure(img);
+      return;
+    }
+
+    if (await tryClean(img, cdnSrc, manifestPath)) return;
+
+    keepPoolImageVisible(img, cdnSrc, true);
+    enhancePoolFigure(img);
+    const wm = await probeWatermarkFromImage(img, cdnSrc);
+    flagPoolWatermark(img, wm);
+    if (wm.hasWm) {
+      applyWmCover(img);
+      await waitForMarksHide(img);
+    } else {
+      markNoWatermark(img);
+    }
+    revealFigure(img);
+  }
+
   function processImage(img) {
     const cdnSrc = poolCdnSrc(img);
     if (!cdnSrc || !isPoolDiagram(cdnSrc, img)) return;
     if (img.dataset.qxProcessedVer === String(CLEAN_VER) && isCleanedImg(img)) {
+      revealFigure(img);
       void finalizeCleanDisplay(img);
       return;
     }
@@ -1880,6 +1986,7 @@ window.QxImgClean = (() => {
     attachWatchdog(img, cdnSrc);
     img.classList.add("qx-no-wm", "qx-pool-fig");
     img.dataset.qxProcessedVer = String(CLEAN_VER);
+    if (!img.dataset.qxOrigSrc) img.dataset.qxOrigSrc = fixUrl(cdnSrc);
 
     ensureDiagramWrap(img);
     const fig = img.closest(".qx-fig, .qx-opt-fig, figure, .qx-img-wrap");
@@ -1891,28 +1998,13 @@ window.QxImgClean = (() => {
     }
 
     if (isCleanedImg(img)) {
+      revealFigure(img);
       void finalizeCleanDisplay(img);
       return;
     }
 
-    keepPoolImageVisible(img, cdnSrc, true);
-    enhancePoolFigure(img);
-
-    const afterCdnReady = async () => {
-      if (!img.isConnected) return;
-      if (!img.naturalWidth) {
-        keepPoolImageVisible(img, cdnSrc, true);
-        return;
-      }
-      const wm = await probeWatermarkFromImage(img, cdnSrc);
-      flagPoolWatermark(img, wm);
-      keepPoolImageVisible(img, cdnSrc, true);
-      enhancePoolFigure(img);
-      if (wm.hasWm) applyWmCover(img);
-      else markNoWatermark(img);
-    };
-    if (img.complete && img.naturalWidth > 0) void afterCdnReady();
-    else img.addEventListener("load", () => void afterCdnReady(), { once: true });
+    hideFigureLoading(img);
+    void processImageAsync(img, cdnSrc);
   }
 
   let observerStarted = false;
@@ -2071,13 +2163,14 @@ window.QxImgClean = (() => {
     const localClean = isLocalCleanAsset(src);
     const pool = !localClean && isGetmarksPool(src);
     const overlay = "";
+    const displaySrc = localClean ? u : FIG_PLACEHOLDER;
     const wmAttrs = pool
-      ? ` data-qx-has-wm="pending"`
+      ? ` data-qx-has-wm="pending" data-qx-pending-load="1"`
       : (localClean ? ` data-qx-has-wm="0" data-qx-cleaned="1"` : "");
-    const wmClass = "";
+    const wmClass = localClean ? " qx-fig-ready" : " qx-wm-loading";
     const poolAttr = pool ? ` data-qx-pool-wm="1"` : "";
-    const cleanCls = localClean ? " qx-cleaned qx-restored qx-wm-clean" : "";
-    return `<figure class="qx-fig qx-pool-fig-wrap qx-brand-covered qx-fig-stack mathjax_ignore tex2jax_ignore${wmClass}"><div class="qx-fig-inner qx-wm-stack${wmClass}"${poolAttr}><img class="qx-fig-img qx-no-wm qx-pool-fig${cleanCls}" src="${u}" alt="" loading="eager" decoding="async" fetchpriority="high" referrerpolicy="no-referrer" data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs}>${overlay}</div></figure>`;
+    const cleanCls = localClean ? " qx-cleaned qx-restored qx-wm-clean qx-fig-ready" : "";
+    return `<figure class="qx-fig qx-pool-fig-wrap qx-brand-covered qx-fig-stack mathjax_ignore tex2jax_ignore${wmClass}"><div class="qx-fig-inner qx-wm-stack${wmClass}"${poolAttr}><img class="qx-fig-img qx-no-wm qx-pool-fig${cleanCls}" src="${displaySrc}" alt="" loading="eager" decoding="async" fetchpriority="high" referrerpolicy="no-referrer" data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs}>${overlay}</div></figure>`;
   }
 
   function buildSlotInnerHtml(rawHtml, qid) {
@@ -2301,8 +2394,9 @@ window.QxImgClean = (() => {
         const cdn = poolCdnSrc(img);
         if (!cdn || !isPoolDiagram(cdn, img)) return;
         const cur = fixUrl(img.getAttribute("src") || "");
+        if (img.classList.contains("qx-wm-loading") && !img.classList.contains("qx-fig-ready")) return;
         if (isGetmarksPool(cdn) && !isCleanedImg(img) && !isWorkingAltSrc(img, cur)) {
-          if (!img.closest(".qx-fig-inner canvas.qx-wm-canvas")) applyWmCover(img);
+          if (img.dataset.qxHasWm === "1" && !img.closest(".qx-fig-inner.qx-marks-hidden")) applyWmCover(img);
         }
         if (isCleanedImg(img)) return;
         if (cur.includes("/api/proxy-image") && usingProxy(img)) return;
@@ -2355,6 +2449,8 @@ window.QxImgClean = (() => {
     finalizeDiagrams,
     finalizeOptionDiagrams,
     finalizeAll,
+    prepareQuestionFigures,
+    revealFigure,
     resolveCurrentQuestion,
     reinjectPinned,
     brandOverlayHtml,

@@ -214,6 +214,117 @@ const QuantrexTestEngine = (() => {
     return typeof Mx !== "undefined" ? Mx.html(text) : text;
   }
 
+  function pinQuestionDiagrams(q) {
+    if (!q || q.id == null || typeof QxImgClean === "undefined") return;
+    if (QxImgClean.rememberQuestionRaw) QxImgClean.rememberQuestionRaw(q);
+    else if (QxImgClean.pinQuestionHtml) {
+      QxImgClean.pinQuestionHtml(q.id, q.q);
+      (q.options || []).forEach((o, i) => QxImgClean.pinQuestionHtml(q.id + ":opt:" + i, o));
+    }
+  }
+
+  function finalizeDiagrams(main) {
+    if (!main || !session || typeof QxImgClean === "undefined" || !QxImgClean.finalizeAll) return;
+    const q = getQ(session.ids[session.idx]);
+    if (q) QxImgClean.finalizeAll(main, q);
+  }
+
+  function renderQuestionText(q, textReady) {
+    if (!textReady) return '<div class="empty">Loading question…</div>';
+    pinQuestionDiagrams(q);
+    if (typeof QxImgClean !== "undefined" && QxImgClean.buildQuestionBodyHtml) {
+      return QxImgClean.buildQuestionBodyHtml(q.id, q.q, htmlContent);
+    }
+    return `<div class="mtk-q-text qx-content" data-qx-qid="${q.id}">${htmlContent(q.q)}</div>`;
+  }
+
+  function renderOptsHtml(q, selected) {
+    const isNumQ = typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.getType(q) === "numerical";
+    if (isNumQ) return "";
+    if (typeof QuantrexQFormat !== "undefined") {
+      return QuantrexQFormat.renderTestOptions(q, selected, htmlContent);
+    }
+    return (q.options || []).map((o, i) => {
+      const letter = String.fromCharCode(65 + i);
+      return `<button type="button" class="mtk-opt ${selected === i ? "selected" : ""}" data-opt="${i}">
+        <span class="mtk-opt-radio"></span>
+        <span class="mtk-opt-letter">${letter}</span>
+        <span class="mtk-opt-text qx-content">${htmlContent(o)}</span>
+      </button>`;
+    }).join("");
+  }
+
+  function patchOptionsOnly(main) {
+    if (!main || !session) return false;
+    const q = getQ(session.ids[session.idx]);
+    const optsEl = main.querySelector("#qxOpts");
+    if (!q || !optsEl) return false;
+    pinQuestionDiagrams(q);
+    const optsClass = typeof QuantrexQFormat !== "undefined"
+      ? QuantrexQFormat.testOptsContainerClass(q)
+      : "mtk-options mtk-options-grid";
+    optsEl.className = optsClass;
+    optsEl.innerHTML = renderOptsHtml(q, session.answers[session.idx]);
+    bindEvents(main);
+    finalizeDiagrams(main);
+    if (typeof Mx !== "undefined") Mx.afterRender(optsEl);
+    else finalizeDiagrams(main);
+    marksPersistSession();
+    return true;
+  }
+
+  function patchPaletteCell(main, idx) {
+    if (!main || !session || idx == null) return;
+    const cell = main.querySelector(`.mtk-pal-cell[data-qidx="${idx}"], .qx-pal-cell[data-qidx="${idx}"]`);
+    if (!cell) return;
+    const st = paletteStatus(idx);
+    const cur = idx === session.idx;
+    const base = cell.classList.contains("mtk-pal-cell") ? "mtk-pal-cell" : "qx-pal-cell";
+    cell.className = `${base} ${st}${cur ? " cur" : ""}`;
+  }
+
+  function patchAnswerUI(main) {
+    if (!main || !session) return false;
+    const q = getQ(session.ids[session.idx]);
+    if (!q) return false;
+    const selected = session.answers[session.idx];
+    const multi = typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.getType(q) === "multipleCorrect";
+    const selectedSet = Array.isArray(selected)
+      ? new Set(selected)
+      : (selected != null ? new Set([selected]) : new Set());
+
+    const numInput = main.querySelector("#qxNumInput");
+    if (numInput && (typeof QuantrexQFormat === "undefined" || QuantrexQFormat.getType(q) === "numerical")) {
+      numInput.value = selected != null ? String(selected) : "";
+    }
+
+    main.querySelectorAll("[data-opt]").forEach(btn => {
+      const i = parseInt(btn.dataset.opt, 10);
+      btn.classList.toggle("selected", selectedSet.has(i));
+    });
+    main.querySelectorAll("[data-prac-opt]").forEach(btn => {
+      const i = parseInt(btn.dataset.pracOpt, 10);
+      btn.classList.toggle("selected", selectedSet.has(i));
+    });
+
+    patchPaletteCell(main, session.idx);
+    marksPersistSession();
+    return true;
+  }
+
+  function patchReviewUI(main) {
+    if (!main || !session) return false;
+    const isReview = session.review.has(session.idx);
+    const reviewBtn = main.querySelector("#qxReviewBtn");
+    if (reviewBtn) {
+      reviewBtn.classList.toggle("on", isReview);
+      reviewBtn.textContent = isReview ? "🔖 Marked" : "🏷️ Mark for Review";
+    }
+    patchPaletteCell(main, session.idx);
+    marksPersistSession();
+    return true;
+  }
+
   function currentSectionIdx() {
     if (!session || !session.sections || !session.sections.length) return 0;
     const idx = session.idx;
@@ -381,7 +492,7 @@ const QuantrexTestEngine = (() => {
           return `<button type="button" class="mtk-opt ${selected === i ? "selected" : ""}" data-opt="${i}">
             <span class="mtk-opt-radio"></span>
             <span class="mtk-opt-letter">${letter}</span>
-            <span class="mtk-opt-text qx-content">${htmlContent(o)}</span>
+            <span class="mtk-opt-text qx-content">${typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.optionContent ? QuantrexQFormat.optionContent(q, o, i, htmlContent) : htmlContent(o)}</span>
           </button>`;
         }).join(""));
 
@@ -414,7 +525,7 @@ const QuantrexTestEngine = (() => {
             <span class="mtk-q-num">Q${session.idx + 1}</span>${markBadges}
             ${typeBadge}
           </div>
-          <div class="mtk-q-text qx-content">${textReady ? htmlContent(q.q) : '<div class="empty">Loading question…</div>'}</div>
+          ${renderQuestionText(q, textReady)}
           <div class="${optsClass}" id="qxOpts">${opts}</div>
           <div class="mtk-controls">
             <button type="button" class="mtk-btn mtk-btn-clear" id="qxClearBtn">Clear Response</button>
@@ -466,7 +577,7 @@ const QuantrexTestEngine = (() => {
             </div>
             <button type="button" class="bm-btn ${isReview ? "on" : ""}" id="qxReviewBtn">${isReview ? "🔖 Marked" : "🏷️ Mark for Review"}</button>
           </div>
-          <div class="qa-q qx-content">${incomplete ? '<div class="empty">Loading question…</div>' : htmlContent(q.q)}</div>
+          ${incomplete ? '<div class="qa-q qx-content"><div class="empty">Loading question…</div></div>' : renderQuestionText(q, true)}
           <div class="${typeof QuantrexQFormat !== "undefined" ? QuantrexQFormat.practiceOptsContainerClass(q) : "qa-options"}" id="qxOpts">
             ${incomplete ? '<div class="empty" style="padding:16px">Loading options…</div>' : (typeof QuantrexQFormat !== "undefined"
               ? QuantrexQFormat.renderOptions(q, { selected, done: false })
@@ -604,11 +715,22 @@ const QuantrexTestEngine = (() => {
         if (typeof tsSyncQMap === "function") tsSyncQMap([session.ids[session.idx]]);
       } catch (e) { /* continue */ }
     } else if (optsNeed && q && q._marksId && typeof MarksLive !== "undefined") {
+      pinQuestionDiagrams(q);
+      if (typeof QxImgClean !== "undefined" && QxImgClean.prepareQuestionFigures) {
+        try {
+          await Promise.race([
+            QxImgClean.prepareQuestionFigures(q),
+            new Promise(r => setTimeout(r, 1200))
+          ]);
+        } catch (_) { /* continue */ }
+      }
       main.innerHTML = renderQuestion();
       bindEvents(main);
       setTestTheme(getTestTheme());
       setTestFontScale(getTestFontScale());
+      finalizeDiagrams(main);
       if (typeof Mx !== "undefined") Mx.afterRender(main);
+      else finalizeDiagrams(main);
       marksPersistSession();
       clearTimeout(_optsLoadTimer);
       _optsLoadTimer = setTimeout(() => {
@@ -627,7 +749,7 @@ const QuantrexTestEngine = (() => {
         }
         if (typeof tsSyncQMap === "function") tsSyncQMap([session.ids[session.idx]]);
         _refreshBusy = false;
-        refresh();
+        if (!patchOptionsOnly(main)) refresh();
       }).catch(() => { clearTimeout(_optsLoadTimer); _refreshBusy = false; });
       return;
     }
@@ -637,11 +759,25 @@ const QuantrexTestEngine = (() => {
         .map(i => session.ids[i]);
       MarksLive.prefetchQuestions(near).catch(() => {});
     }
+    const qNow = getQ(session.ids[session.idx]);
+    if (qNow) {
+      pinQuestionDiagrams(qNow);
+      if (typeof QxImgClean !== "undefined" && QxImgClean.prepareQuestionFigures) {
+        try {
+          await Promise.race([
+            QxImgClean.prepareQuestionFigures(qNow),
+            new Promise(r => setTimeout(r, 1200))
+          ]);
+        } catch (_) { /* continue */ }
+      }
+    }
     main.innerHTML = renderQuestion();
     bindEvents(main);
     setTestTheme(getTestTheme());
     setTestFontScale(getTestFontScale());
+    finalizeDiagrams(main);
     if (typeof Mx !== "undefined") Mx.afterRender(main);
+    else finalizeDiagrams(main);
     marksPersistSession();
     const activeTab = main.querySelector(".mtk-sec-tab.active");
     if (activeTab) activeTab.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
@@ -665,12 +801,16 @@ const QuantrexTestEngine = (() => {
     }
     session.visited.add(session.idx);
     session.review.delete(session.idx);
+    const main = getTestMountEl();
+    if (patchAnswerUI(main)) return;
     refresh();
   }
 
   function clearResponse() {
     if (!session) return;
     delete session.answers[session.idx];
+    const main = getTestMountEl();
+    if (patchAnswerUI(main)) return;
     refresh();
   }
 
@@ -678,6 +818,8 @@ const QuantrexTestEngine = (() => {
     if (!session) return;
     if (session.review.has(session.idx)) session.review.delete(session.idx);
     else session.review.add(session.idx);
+    const main = getTestMountEl();
+    if (patchReviewUI(main)) return;
     refresh();
   }
 

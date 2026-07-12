@@ -303,9 +303,18 @@ window.QxPremiumWM = (() => {
     const rot = (ROT_DEG * Math.PI) / 180;
     const across = -dx * Math.sin(rot) + dy * Math.cos(rot);
     const along = dx * Math.cos(rot) + dy * Math.sin(rot);
-    const band = Math.min(w, h) * 0.14;
-    const len = Math.sqrt(w * w + h * h) * 0.48;
+    const band = Math.min(w, h) * 0.24;
+    const len = Math.sqrt(w * w + h * h) * 0.52;
     return Math.abs(across) < band && Math.abs(along) < len;
+  }
+
+  function isStainPixel(r, g, b, a) {
+    if (a !== undefined && a < 6) return false;
+    const avg = (r + g + b) / 3;
+    const chroma = Math.max(r, g, b) - Math.min(r, g, b);
+    if (isLikelyInk(r, g, b)) return false;
+    if (chroma > 52) return false;
+    return avg >= 148 && avg <= 248;
   }
 
   function isWmScrubPixel(r, g, b, a, inkDilated, idx) {
@@ -313,7 +322,8 @@ window.QxPremiumWM = (() => {
     if (isSafeScrubPixel(r, g, b, a, inkDilated, idx)) return true;
     const avg = (r + g + b) / 3;
     const chroma = Math.max(r, g, b) - Math.min(r, g, b);
-    if (avg >= 112 && avg <= 252 && chroma < 58 && isRemovableWm(r, g, b, a)) return true;
+    if (isStainPixel(r, g, b, a)) return true;
+    if (avg >= 105 && avg <= 252 && chroma < 62 && isRemovableWm(r, g, b, a)) return true;
     return false;
   }
 
@@ -545,12 +555,14 @@ window.QxPremiumWM = (() => {
     stack.querySelectorAll("canvas.qx-wm-canvas, canvas.qx-premium-wm-canvas").forEach(c => c.remove());
     stack.classList.remove("qx-wm-canvas-active");
 
-    void paintMarksScrub(img, stack, rw, rh).then(() => {
-      if (!img.isConnected) return;
-      stack.classList.add("qx-wm-active", "qx-premium-wm-active", "qx-marks-hidden");
+    return paintMarksScrub(img, stack, rw, rh).then(() => {
+      if (!img.isConnected) return false;
+      stack.classList.add("qx-wm-active", "qx-premium-wm-active", "qx-marks-hidden", "qx-fig-ready");
+      img.classList.add("qx-fig-ready");
+      img.classList.remove("qx-wm-loading");
       img.dataset.qxPremiumWm = "1";
+      return true;
     });
-    return true;
   }
 
   function paintPremiumDiagonalWm(img) {

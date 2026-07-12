@@ -86,6 +86,19 @@ canvas.qx-premium-wm-canvas {
   display: none !important;
 }
 
+img.qx-pool-fig.qx-wm-loading,
+.qx-fig-inner:not(.qx-fig-ready) > img.qx-pool-fig {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.qx-fig-inner.qx-fig-ready > img.qx-pool-fig,
+img.qx-pool-fig.qx-fig-ready,
+img.qx-pool-fig.qx-cleaned {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 .qx-fig img,
 .qx-fig-img,
 .qx-pool-fig,

@@ -57,7 +57,10 @@ function render(view, payload) {
   };
   if (asyncMap[view]) {
     finishRender(`<div class="empty">⏳ Loading…</div>`);
-    asyncMap[view](payload).then(finishRender).catch(() => finishRender(`<div class="empty">Failed to load. Try again.</div>`));
+    asyncMap[view](payload).then(finishRender).catch((err) => {
+      console.warn("View load failed:", view, err);
+      finishRender(`<div class="empty">Failed to load. <button class="btn-soft" onclick="go('${view}')">Retry</button></div>`);
+    });
     return;
   }
   const map = {
@@ -284,6 +287,26 @@ function qxBackgroundPrefetch(ids) {
 
 let _qxPracHydrateTimer = null;
 window.qxRetryPracticeLoad = qxRetryPracticeLoad;
+function qxPatchPracticeOpts(main, qid) {
+  if (!main) return false;
+  const q = getQ(qid);
+  const optsEl = main.querySelector("#qaOpts");
+  if (!q || !optsEl) return false;
+  const pc = window._qxPracticeCtx || { selected: {}, done: {} };
+  const sel = pc.selected[q.id];
+  const done = !!pc.done[q.id];
+  const optsClass = typeof QuantrexQFormat !== "undefined"
+    ? QuantrexQFormat.practiceOptsContainerClass(q)
+    : "qx-prac-opts";
+  optsEl.className = optsClass;
+  optsEl.innerHTML = typeof QuantrexQFormat !== "undefined"
+    ? QuantrexQFormat.renderOptions(q, { selected: sel, done })
+    : "";
+  if (typeof QxImgClean !== "undefined" && QxImgClean.reinjectPinned) QxImgClean.reinjectPinned(main);
+  if (typeof Mx !== "undefined") Mx.afterRender(optsEl);
+  return true;
+}
+
 async function qxRetryPracticeLoad() {
   const ctx = window._qxPracticeCtx;
   if (!ctx || !ctx.ids.length) return;
@@ -291,12 +314,26 @@ async function qxRetryPracticeLoad() {
   let q = getQ(qid);
   if (!q) { showToast("⚠️ Question not found"); return; }
   const main = document.getElementById("app-main");
-  if (main) main.innerHTML = `<div class="qx-practice-page"><div class="empty" style="padding:48px;text-align:center">Loading question…</div></div>`;
+  const hadDiagram = !!(main && main.querySelector("#qxDiagramSlot img"));
+  if (main && !hadDiagram) main.innerHTML = `<div class="qx-practice-page"><div class="empty" style="padding:48px;text-align:center">Loading question…</div></div>`;
   q = await qxHydrateQuestion(q, true);
+  if (q && typeof QxImgClean !== "undefined" && QxImgClean.prepareQuestionFigures) {
+    try {
+      await Promise.race([
+        QxImgClean.prepareQuestionFigures(q),
+        new Promise(r => setTimeout(r, 1200))
+      ]);
+    } catch (_) { /* continue */ }
+  }
   if (main) {
+    if (hadDiagram && qxPatchPracticeOpts(main, qid)) {
+      bindPracticeQuestion(main);
+      return;
+    }
     main.innerHTML = viewQuestion(qid);
     bindPracticeQuestion(main);
     if (typeof Mx !== "undefined") Mx.afterRender(main);
+    else if (typeof QxImgClean !== "undefined" && QxImgClean.finalizeAll) QxImgClean.finalizeAll(main, q);
   }
 }
 
@@ -310,7 +347,7 @@ function qxSchedulePracticeHydrate(q) {
     const main = document.getElementById("app-main");
     const stuck = main && main.querySelector(".qx-load-opts, .qx-load-q");
     if (stuck) qxRetryPracticeLoad();
-  }, 12000);
+  }, 5000);
 }
 
 function enterAllenPracticeMode() {
@@ -517,19 +554,48 @@ function viewQuestion(id) {
     ? QuantrexQFormat.isAnswered(q, sel)
     : sel != null;
 
-  const qBody = incomplete
-    ? `<div class="empty qx-load-q" style="padding:20px 0">Loading question text… <button type="button" class="btn-soft sm" onclick="qxRetryPracticeLoad()">Retry</button></div>`
-    : (typeof Mx !== "undefined" ? Mx.html(q.q) : q.q);
+  if (typeof QxImgClean !== "undefined") {
+    if (QxImgClean.rememberQuestionRaw) QxImgClean.rememberQuestionRaw(q);
+    else if (QxImgClean.pinQuestionHtml) QxImgClean.pinQuestionHtml(q.id, q.q);
+  }
+
+  const diagramSlot = (!incomplete && typeof QxImgClean !== "undefined" && QxImgClean.buildDiagramSlotHtml)
+    ? QxImgClean.buildDiagramSlotHtml(q.id, q.q)
+    : "";
+
+  let qBody;
+  if (incomplete) {
+    qBody = `<div class="empty qx-load-q" style="padding:20px 0">Loading question text… <button type="button" class="btn-soft sm" onclick="qxRetryPracticeLoad()">Retry</button></div>`;
+  } else if (typeof QxImgClean !== "undefined" && QxImgClean.splitQuestionHtml) {
+    const split = QxImgClean.splitQuestionHtml(q.q, q.id);
+    const hasSlotFig = diagramSlot && /qx-pool-fig|cdn-question-pool|\/pyq\/|assets\/diagrams/i.test(diagramSlot);
+    const qText = hasSlotFig ? (split.text || q.q) : q.q;
+    qBody = typeof Mx !== "undefined" ? Mx.html(qText) : qText;
+  } else {
+    qBody = typeof Mx !== "undefined" ? Mx.html(q.q) : q.q;
+  }
 
   const resultHtml = done ? qxPracticeResultHtml(q, sel) : "";
   const hasSol = qxHasSolution(q);
   const solReveal = (window._qxSolRevealed && window._qxSolRevealed[q.id]) ? qxSolutionBlockHtml(q) : "";
 
-  setTimeout(() => { loadCommunityForQuestion(q); qxSchedulePracticeHydrate(q); }, 0);
+  setTimeout(() => {
+    loadCommunityForQuestion(q);
+    if ((incomplete || optsIncomplete) && q._marksId) {
+      qxHydrateQuestion(q, false).then(hq => {
+        if (!hq) return;
+        const main = document.getElementById("app-main");
+        if (main && main.querySelector(".qx-load-opts, .qx-load-q")) qxRetryPracticeLoad();
+      }).catch(() => qxSchedulePracticeHydrate(q));
+    } else {
+      qxSchedulePracticeHydrate(q);
+    }
+  }, 0);
 
   if (typeof AllenTestUI !== "undefined") {
     return AllenTestUI.practiceHtml(q, pc, {
       typeBadge: qTypeBadge,
+      diagramSlot,
       qBody,
       optsClass,
       opts,
@@ -562,7 +628,8 @@ function viewQuestion(id) {
       <span class="tag qx-src-tag" title="${sourceLabel}">${sourceLogo}<span>${typeof QuantrexStrip !== "undefined" ? QuantrexStrip.tagLabel(sourceLabel) : sourceLabel}</span></span>
       ${sv ? `<span class="tag ${sv.correct ? "tag-ok" : "tag-no"}">${sv.correct ? "✓ Solved" : "✗ Wrong"}</span>` : ""}
     </div>
-    <div class="qx-prac-q qx-content">${qBody}</div>
+    ${diagramSlot}
+    <div class="qx-prac-q qx-content qx-q-text-only" data-qx-qid="${q.id}">${qBody}</div>
     <div class="${optsClass}" id="qaOpts">${opts}</div>
     ${hasSol && !done ? `<div class="qx-sol-actions"><button type="button" class="btn-soft qx-view-sol-btn" id="qxViewSolBtn">💡 View Solution</button></div>` : ""}
     <div id="qaSolReveal">${solReveal}</div>
@@ -979,10 +1046,20 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  let _qxSyncRenderTimer = null;
   QuantrexDB.onDataChange = () => {
-    document.getElementById("examPill").textContent = EXAMS[STATE.exam].name;
-    document.getElementById("examPillTop").textContent = EXAMS[STATE.exam].name;
-    if (currentView) render(currentView);
+    const pill = document.getElementById("examPill");
+    const pillTop = document.getElementById("examPillTop");
+    if (pill) pill.textContent = EXAMS[STATE.exam].name;
+    if (pillTop) pillTop.textContent = EXAMS[STATE.exam].name;
+    if (currentView === "question" || currentView === "test") return;
+    if (document.body.classList.contains("allen-practice-active") || document.body.classList.contains("marks-test-active")) return;
+    clearTimeout(_qxSyncRenderTimer);
+    _qxSyncRenderTimer = setTimeout(() => {
+      if (!currentView || currentView === "question" || currentView === "test") return;
+      if (document.body.classList.contains("allen-practice-active") || document.body.classList.contains("marks-test-active")) return;
+      render(currentView);
+    }, 700);
   };
 
   const authTimeout = setTimeout(() => {
