@@ -575,47 +575,133 @@ window.QxPremiumWM = (() => {
     };
   }
 
-  function resolvePlacement(sample, rw, rh, isOpt) {
-    const grid = analyzePlacementGrid(sample, 10, 10);
+  function footprintInkRatio(sample, nx, ny, nfw, nfh) {
+    if (!sample) return 1;
+    const { data, w, h } = sample;
+    const pad = 0.012;
+    const x0 = Math.max(0, Math.floor((nx - nfw / 2 - pad) * w));
+    const y0 = Math.max(0, Math.floor((ny - nfh / 2 - pad) * h));
+    const x1 = Math.min(w, Math.ceil((nx + nfw / 2 + pad) * w));
+    const y1 = Math.min(h, Math.ceil((ny + nfh / 2 + pad) * h));
+    let ink = 0;
+    let n = 0;
+    for (let y = y0; y < y1; y++) {
+      for (let x = x0; x < x1; x++) {
+        const i = (y * w + x) * 4;
+        n++;
+        if (isLikelyInk(data[i], data[i + 1], data[i + 2])) ink++;
+      }
+    }
+    return ink / Math.max(n, 1);
+  }
+
+  function findLargestEmptyRegion(cells, cols, rows) {
+    if (!cells || !cells.length) return null;
+    const map = new Map();
+    cells.forEach(c => map.set(`${c.cx},${c.ry}`, c));
+    const visited = new Set();
+    let best = null;
+
+    for (const seed of cells) {
+      if (seed.inkR >= 0.065) continue;
+      const sk = `${seed.cx},${seed.ry}`;
+      if (visited.has(sk)) continue;
+      const region = [];
+      const queue = [seed];
+      visited.add(sk);
+      while (queue.length) {
+        const c = queue.shift();
+        region.push(c);
+        const neighbors = [
+          [c.cx - 1, c.ry], [c.cx + 1, c.ry], [c.cx, c.ry - 1], [c.cx, c.ry + 1]
+        ];
+        for (const [nx, ny] of neighbors) {
+          if (nx < 0 || ny < 0 || nx >= cols || ny >= rows) continue;
+          const nk = `${nx},${ny}`;
+          if (visited.has(nk)) continue;
+          const nb = map.get(nk);
+          if (!nb || nb.inkR >= 0.075) continue;
+          visited.add(nk);
+          queue.push(nb);
+        }
+      }
+      if (!best || region.length > best.area) {
+        const cxMid = region.reduce((s, c) => s + c.cxMid, 0) / region.length;
+        const cyMid = region.reduce((s, c) => s + c.cyMid, 0) / region.length;
+        const avgInk = region.reduce((s, c) => s + c.inkR, 0) / region.length;
+        best = { cxMid, cyMid, area: region.length, avgInk };
+      }
+    }
+    return best;
+  }
+
+  function logoAspect(logo) {
+    return logo && logo.naturalWidth > 0 ? logo.naturalHeight / logo.naturalWidth : 1.25;
+  }
+
+  function placementMetrics(rw, rh, scale, logo, isOpt) {
+    const s = isOpt ? Math.max(OPT_LOGO_SCALE, scale * 0.85) : scale;
+    const lw = Math.max(20, rw * s);
+    const aspect = logoAspect(logo);
+    return { scale: s, lw, lh: lw * aspect, nfw: lw / rw, nfh: (lw * aspect) / rh };
+  }
+
+  function isSafePlacement(sample, nx, ny, metrics, maxInk) {
+    if (!sample) return true;
+    return footprintInkRatio(sample, nx, ny, metrics.nfw, metrics.nfh) <= maxInk;
+  }
+
+  function buildPlacement(mode, nx, ny, rw, rh, scale, opacity) {
+    return { mode, x: rw * nx, y: rh * ny, nx, ny, scale, opacity };
+  }
+
+  function resolvePlacement(sample, rw, rh, isOpt, logo) {
+    const grid = analyzePlacementGrid(sample, 12, 12);
     const dense = grid && grid.dense;
     const fullPage = grid && grid.fullPage;
     let scale = isOpt ? OPT_LOGO_SCALE : (fullPage ? LOGO_SCALE_MAX : LOGO_SCALE_MIN + 0.06);
     let opacity = dense ? LOGO_OPACITY_MIN : LOGO_OPACITY_MAX;
     if (dense) scale = Math.max(LOGO_SCALE_MIN, scale * 0.72);
+    const metrics = placementMetrics(rw, rh, scale, logo, isOpt);
+    const maxInk = dense ? 0.045 : 0.065;
+    const candidates = [];
 
-    if (!grid || !grid.best || grid.best.blank < 0.28 || grid.best.inkR > 0.11) {
-      return {
-        mode: "fallback-diagonal",
-        x: rw / 2,
-        y: rh / 2,
-        scale: isOpt ? scale * 0.85 : scale * 1.05,
-        opacity: Math.min(FALLBACK_OPACITY, opacity * 0.75),
-        coverage: FALLBACK_COVERAGE
-      };
+    if (grid && grid.centerInk < 0.045 && grid.centerBlank > 0.55) {
+      candidates.push(buildPlacement("center", 0.5, 0.5, rw, rh, metrics.scale, opacity));
     }
 
-    if (grid.centerBlank > 0.62 && grid.centerInk < 0.05) {
-      return { mode: "center", x: rw * 0.5, y: rh * 0.5, scale, opacity };
+    const largest = grid ? findLargestEmptyRegion(grid.cells, 12, 12) : null;
+    if (largest && largest.avgInk < 0.06) {
+      candidates.push(buildPlacement("region", largest.cxMid, largest.cyMid, rw, rh, metrics.scale, opacity));
     }
 
-    if (grid.bestCorner && grid.bestCorner.blank >= grid.best.blank * 0.92 && grid.bestCorner.inkR < 0.07) {
+    if (grid && grid.best && grid.best.inkR < 0.08) {
+      candidates.push(buildPlacement("region", grid.best.cxMid, grid.best.cyMid, rw, rh, metrics.scale, opacity));
+    }
+
+    if (grid && grid.bestCorner && grid.bestCorner.inkR < 0.065) {
       const c = grid.bestCorner;
-      return {
-        mode: "corner",
-        x: rw * c.cxMid,
-        y: rh * c.cyMid,
-        scale: scale * 0.9,
-        opacity
-      };
+      candidates.push(buildPlacement("corner", c.cxMid, c.cyMid, rw, rh, metrics.scale * 0.9, opacity));
     }
 
-    const b = grid.best;
+    for (const cand of candidates) {
+      if (isSafePlacement(sample, cand.nx, cand.ny, metrics, maxInk)) return cand;
+    }
+
+    if (grid && grid.best && grid.best.inkR < 0.11) {
+      const shrunk = buildPlacement("region", grid.best.cxMid, grid.best.cyMid, rw, rh, metrics.scale * 0.72, LOGO_OPACITY_MIN);
+      if (isSafePlacement(sample, shrunk.nx, shrunk.ny, placementMetrics(rw, rh, shrunk.scale, logo, isOpt), maxInk + 0.02)) {
+        return shrunk;
+      }
+    }
+
     return {
-      mode: "region",
-      x: rw * b.cxMid,
-      y: rh * b.cyMid,
-      scale,
-      opacity
+      mode: "fallback-diagonal",
+      x: rw / 2,
+      y: rh / 2,
+      scale: isOpt ? metrics.scale * 0.8 : metrics.scale,
+      opacity: Math.min(FALLBACK_OPACITY, opacity * 0.7),
+      coverage: FALLBACK_COVERAGE
     };
   }
 
@@ -683,11 +769,16 @@ window.QxPremiumWM = (() => {
     ctx.restore();
   }
 
+  function drawBrandOnContext(ctx, rw, rh, logo, placement) {
+    if (!ctx || !placement) return;
+    if (placement.mode === "fallback-diagonal") drawFallbackDiagonal(ctx, rw, rh, logo, placement);
+    else drawPlacedLogo(ctx, rw, rh, logo, placement);
+  }
+
   async function paintBrandWatermark(img, stack, rw, rh) {
     if (!img || !stack || rw < 12 || rh < 12) return false;
     const isOpt = isOptContext(img);
     const drawable = await loadScrubDrawable(img);
-    const placement = resolvePlacement(drawable && drawable.sample, rw, rh, isOpt);
     const canvas = ensureBrandCanvas(stack, rw, rh);
     const ctx = canvas.getContext("2d");
     if (!ctx) return false;
@@ -695,11 +786,37 @@ window.QxPremiumWM = (() => {
     return new Promise(resolve => {
       ensureLogo(logo => {
         if (!img.isConnected) return resolve(false);
-        if (placement.mode === "fallback-diagonal") drawFallbackDiagonal(ctx, rw, rh, logo, placement);
-        else drawPlacedLogo(ctx, rw, rh, logo, placement);
+        const placement = resolvePlacement(drawable && drawable.sample, rw, rh, isOpt, logo);
+        drawBrandOnContext(ctx, rw, rh, logo, placement);
         stack.classList.add("qx-wm-canvas-active", "qx-quantrex-wm-active", "qx-premium-wm-active");
         img.dataset.qxQuantrexWm = "1";
+        img.dataset.qxWmOverlay = "1";
         resolve(true);
+      });
+    });
+  }
+
+  async function exportWatermarkedFigure(img) {
+    if (!img || img.naturalWidth < 12 || img.naturalHeight < 12) return null;
+    const nw = img.naturalWidth;
+    const nh = img.naturalHeight;
+    const canvas = document.createElement("canvas");
+    canvas.width = nw;
+    canvas.height = nh;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return null;
+    ctx.drawImage(img, 0, 0, nw, nh);
+    const isOpt = isOptContext(img);
+    const drawable = await loadScrubDrawable(img);
+    return new Promise(resolve => {
+      ensureLogo(logo => {
+        const placement = resolvePlacement(drawable && drawable.sample, nw, nh, isOpt, logo);
+        drawBrandOnContext(ctx, nw, nh, logo, placement);
+        try {
+          resolve(canvas.toDataURL("image/png"));
+        } catch (_) {
+          resolve(null);
+        }
       });
     });
   }
@@ -802,6 +919,7 @@ window.QxPremiumWM = (() => {
     paintPremiumDiagonalWm,
     paintQuantrexBrand,
     paintBrandWatermark,
+    exportWatermarkedFigure,
     premiumWatermarkHtml,
     analyzeInkGrid,
     resolvePlacement,

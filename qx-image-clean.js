@@ -2791,6 +2791,11 @@ window.QxImgClean = (() => {
     applyBrandOverlays,
     applyWmCover,
     applyQuantrexBrand,
+    exportWatermarkedFigure: (img) => (
+      typeof QxPremiumWM !== "undefined" && QxPremiumWM.exportWatermarkedFigure
+        ? QxPremiumWM.exportWatermarkedFigure(img)
+        : Promise.resolve(null)
+    ),
     processAllDiagrams,
     cleanImageData,
     loadManifest,
