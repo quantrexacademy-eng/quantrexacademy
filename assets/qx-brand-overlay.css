@@ -1,0 +1,266 @@
+/* Quantrex Academy — full figure visible + MARKS hidden + premium watermark */
+
+.qx-fig,
+.qx-opt-fig,
+.qx-diagram-slot,
+#qxDiagramSlot,
+.qx-opt-diagram-slot,
+.qx-pool-fig-wrap {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.qx-fig.qx-brand-covered,
+.qx-fig-stack,
+.qx-fig.qx-wm-active,
+.qx-opt-fig.qx-wm-active,
+.qx-pool-fig-wrap.qx-wm-active,
+.qx-premium-wm-active {
+  position: relative;
+  overflow: visible !important;
+}
+
+.qx-fig-inner.qx-wm-stack {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  width: fit-content;
+  max-width: 100%;
+  height: fit-content;
+  vertical-align: top;
+  overflow: visible;
+}
+
+.qx-fig-inner.qx-wm-stack > img {
+  display: block !important;
+  position: relative;
+  z-index: 1;
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+canvas.qx-marks-scrub-canvas {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 5 !important;
+  pointer-events: none !important;
+  display: block !important;
+}
+
+canvas.qx-wm-canvas,
+canvas.qx-premium-wm-canvas {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 12 !important;
+  pointer-events: none !important;
+  display: block !important;
+}
+
+/* No large center pseudo-shield — it was hiding diagram content */
+.qx-fig-inner.qx-wm-stack[data-qx-pool-wm="1"]::before,
+.qx-fig-inner.qx-wm-stack:has(> img[src*="cdn-question-pool.getmarks"])::before {
+  display: none !important;
+}
+
+.qx-marks-strip {
+  display: none !important;
+}
+
+.qx-marks-strip--br {
+  right: 0;
+  bottom: 0;
+  width: 22%;
+  height: 14%;
+  border-radius: 6px 0 0 0;
+}
+
+.qx-marks-strip--mid {
+  display: none !important;
+}
+
+.qx-marks-strip--diag {
+  display: none !important;
+}
+
+.qx-fig img,
+.qx-fig-img,
+.qx-pool-fig,
+.qx-diagram-slot img,
+#qxDiagramSlot img,
+.mtk-main #qxDiagramSlot img,
+.mtk-main .qx-diagram-slot img,
+.sol-body img.qx-pool-fig {
+  position: relative;
+  z-index: 1;
+  display: block !important;
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 48px !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+  background: #fff;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+img.qx-wm-none,
+.qx-fig:has(img.qx-wm-none) .qx-premium-wm-sheet,
+.qx-fig:has(img.qx-wm-none) .qx-quantrex-wm {
+  display: none !important;
+}
+
+.qx-premium-wm-sheet.qx-wm-diagonal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform: rotate(-25deg);
+  transform-origin: center center;
+}
+
+.qx-premium-wm-logo {
+  display: none !important;
+}
+
+.qx-premium-wm-title {
+  position: relative;
+  z-index: 1;
+  font-family: 'Kanit', 'Inter', sans-serif;
+  font-size: clamp(10px, 4.8vw, 24px);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.05;
+  white-space: nowrap;
+  opacity: 0.085;
+  margin-bottom: 0.35em;
+}
+
+.qx-premium-wm-tag {
+  position: relative;
+  z-index: 1;
+  font-family: 'Kanit', 'Inter', sans-serif;
+  font-size: clamp(7px, 2.5vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0.065;
+}
+
+.qx-premium-wm--dark .qx-premium-wm-title {
+  color: rgba(248, 250, 252, 0.92);
+  text-shadow: 0 1px 2px rgba(15, 23, 42, 0.25);
+}
+
+.qx-premium-wm--dark .qx-premium-wm-tag {
+  color: rgba(203, 213, 225, 0.85);
+  text-shadow: none;
+}
+
+.qx-premium-wm--light .qx-premium-wm-title {
+  color: rgba(51, 65, 85, 0.9);
+  text-shadow: 0 1px 2px rgba(15, 23, 42, 0.1);
+}
+
+.qx-premium-wm--light .qx-premium-wm-tag {
+  color: rgba(100, 116, 139, 0.85);
+  text-shadow: none;
+}
+
+.qx-fig-inner.qx-wm-canvas-active .qx-marks-strip {
+  display: none !important;
+}
+
+.qx-wm-corner-badge,
+.qx-quantrex-wm.qx-wm-corner-badge {
+  display: none !important;
+}
+
+.qx-diag-watermark,
+.qx-brand-overlay,
+.qx-wm-mask {
+  display: none !important;
+}
+
+#qxDiagramSlot,
+.mtk-main #qxDiagramSlot,
+.mtk-main .qx-diagram-slot {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 8px auto 10px;
+  max-width: min(100%, 720px);
+  overflow: visible !important;
+  box-shadow: none;
+}
+
+.qx-fig::after,
+.qx-opt-fig::after,
+.qx-fig::before,
+.qx-opt-fig::before {
+  display: none !important;
+}
+
+/* JEE Test Series 2027 — full figure, subtle watermark, no box */
+body.marks-test-active .mtk-main .qx-question-body .qx-diagram-slot,
+body.marks-test-active .mtk-main #qxDiagramSlot,
+body.marks-test-active .mtk-main .qx-diagram-slot {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 8px auto !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+  box-shadow: none !important;
+}
+
+body.marks-test-active .mtk-main .qx-fig,
+body.marks-test-active .mtk-main .qx-pool-fig-wrap,
+body.marks-test-active .mtk-main .qx-fig-inner {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+body.marks-test-active .mtk-main img.qx-pool-fig,
+body.marks-test-active .mtk-main #qxDiagramSlot img,
+body.marks-test-active .mtk-main .qx-diagram-slot img,
+body.marks-test-active .mtk-q-text img.qx-pool-fig {
+  max-height: none !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+body.marks-test-active .qx-premium-wm-logo {
+  display: none !important;
+}
+
+body.marks-test-active .qx-premium-wm-title {
+  font-size: clamp(10px, 4.5vw, 22px) !important;
+  opacity: 0.085 !important;
+}
+
+body.marks-test-active .qx-premium-wm-tag {
+  font-size: clamp(7px, 2.4vw, 13px) !important;
+  opacity: 0.075 !important;
+}

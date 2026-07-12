@@ -261,40 +261,29 @@ window.QxPremiumWM = (() => {
     return isDarkTheme() ? "rgba(15,23,42,0.97)" : "rgba(255,255,255,0.98)";
   }
 
-  function paintCornerMarksFallback(ctx, rw, rh) {
-    if (!ctx || rw < 20 || rh < 20) return;
-    const cw = Math.max(18, Math.round(rw * 0.21));
-    const ch = Math.max(14, Math.round(rh * 0.14));
-    ctx.save();
-    ctx.fillStyle = scrubBgColor();
-    if (typeof ctx.roundRect === "function") {
-      ctx.beginPath();
-      ctx.roundRect(rw - cw, rh - ch, cw, ch, [7, 0, 0, 0]);
-      ctx.fill();
-    } else {
-      ctx.fillRect(rw - cw, rh - ch, cw, ch);
-    }
-    ctx.restore();
+  function parseZoneList(img) {
+    const raw = img && img.dataset ? img.dataset.qxWmZones : "";
+    const zones = String(raw || "").split(",").map(s => s.trim()).filter(Boolean);
+    return zones.length ? zones : ["center", "br"];
   }
 
-  function paintDiagonalCoverText(ctx, rw, rh, isOpt) {
-    if (!ctx || rw < 40 || rh < 28) return;
-    const bg = scrubBgColor();
-    const diag = Math.sqrt(rw * rw + rh * rh);
-    const baseW = diag * (isOpt ? 0.36 : 0.44);
-    const titleSize = Math.max(10, Math.round(baseW * (isOpt ? 0.09 : 0.085)));
+  function paintCornerMarksFallback(ctx, rw, rh, zones) {
+    if (!ctx || rw < 20 || rh < 20) return;
+    const z = Array.isArray(zones) ? zones : [];
+    if (!z.includes("br") && !z.includes("bl") && !z.includes("tr") && !z.includes("tl")) return;
+    const cw = Math.max(16, Math.round(rw * 0.18));
+    const ch = Math.max(12, Math.round(rh * 0.12));
     ctx.save();
-    ctx.translate(rw / 2, rh / 2);
-    ctx.rotate((ROT_DEG * Math.PI) / 180);
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.font = `700 ${titleSize}px Kanit, Inter, Arial, sans-serif`;
-    ctx.lineJoin = "round";
-    ctx.lineWidth = Math.max(3, titleSize * 0.28);
-    ctx.strokeStyle = bg;
-    ctx.strokeText("QUANTREX ACADEMY", 0, 0);
-    ctx.fillStyle = bg;
-    ctx.fillText("QUANTREX ACADEMY", 0, 0);
+    ctx.fillStyle = scrubBgColor();
+    if (z.includes("br") || (!z.includes("bl") && !z.includes("tr") && !z.includes("tl"))) {
+      if (typeof ctx.roundRect === "function") {
+        ctx.beginPath();
+        ctx.roundRect(rw - cw, rh - ch, cw, ch, [6, 0, 0, 0]);
+        ctx.fill();
+      } else {
+        ctx.fillRect(rw - cw, rh - ch, cw, ch);
+      }
+    }
     ctx.restore();
   }
 
@@ -304,11 +293,10 @@ window.QxPremiumWM = (() => {
     if (!ctx) return false;
     ctx.clearRect(0, 0, rw, rh);
 
+    const zones = parseZoneList(img);
     const drawable = await loadScrubDrawable(img);
-    const isOpt = isOptContext(img);
     if (!drawable || !drawable.sample) {
-      paintCornerMarksFallback(ctx, rw, rh);
-      paintDiagonalCoverText(ctx, rw, rh, isOpt);
+      paintCornerMarksFallback(ctx, rw, rh, zones);
       return true;
     }
 
@@ -350,10 +338,7 @@ window.QxPremiumWM = (() => {
       }
     }
 
-    paintCornerMarksFallback(ctx, rw, rh);
-    if (grid.wmHeavy > 0 || ratio > MAX_SCRUB_RATIO || scrubCount < 8) {
-      paintDiagonalCoverText(ctx, rw, rh, isOpt);
-    }
+    paintCornerMarksFallback(ctx, rw, rh, zones);
     return true;
   }
 
@@ -481,8 +466,8 @@ window.QxPremiumWM = (() => {
     await paintSafeMarksScrub(img, stack, rw, rh);
   }
 
-  function paintPremiumDiagonalWm(img) {
-    if (!img || !img.isConnected) return false;
+  function paintMarksHideOnly(img) {
+    if (!img || !img.isConnected || img.dataset.qxHasWm !== "1") return false;
     const stack = img.closest(".qx-fig-inner") || img.parentElement;
     if (!stack) return false;
     const w = img.offsetWidth || img.clientWidth || 0;
@@ -496,38 +481,19 @@ window.QxPremiumWM = (() => {
     stack.style.height = `${rh}px`;
     stack.style.maxWidth = "100%";
     stack.style.lineHeight = "0";
-    let canvas = stack.querySelector("canvas.qx-wm-canvas");
-    if (!canvas) {
-      canvas = document.createElement("canvas");
-      canvas.className = "qx-wm-canvas qx-premium-wm-canvas";
-      canvas.setAttribute("aria-hidden", "true");
-      stack.appendChild(canvas);
-    }
-    canvas.width = rw;
-    canvas.height = rh;
-    canvas.style.cssText = `position:absolute;top:0;left:0;width:${rw}px;height:${rh}px;z-index:12;pointer-events:none;`;
+    stack.querySelectorAll("canvas.qx-wm-canvas, canvas.qx-premium-wm-canvas").forEach(c => c.remove());
+    stack.classList.remove("qx-wm-canvas-active");
 
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return false;
-    ctx.clearRect(0, 0, rw, rh);
-
-    const zones = parseZones(img);
-    const offset = computeOffset(img, rw, rh);
-    const palette = themePalette();
-
-    const isOpt = isOptContext(img);
     void paintMarksScrub(img, stack, rw, rh).then(() => {
       if (!img.isConnected) return;
-      ensureLogo(logo => {
-        if (!img.isConnected) return;
-        ctx.clearRect(0, 0, rw, rh);
-        drawPremiumWm(ctx, rw, rh, offset, logo, palette, isOpt);
-        stack.classList.add("qx-wm-active", "qx-wm-canvas-active", "qx-premium-wm-active", "qx-marks-hidden");
-        img.dataset.qxPremiumWm = "1";
-      });
+      stack.classList.add("qx-wm-active", "qx-premium-wm-active", "qx-marks-hidden");
+      img.dataset.qxPremiumWm = "1";
     });
-
     return true;
+  }
+
+  function paintPremiumDiagonalWm(img) {
+    return paintMarksHideOnly(img);
   }
 
   function premiumWatermarkHtml() {
@@ -544,7 +510,7 @@ window.QxPremiumWM = (() => {
   function repaintAll(root) {
     const scope = root || document;
     scope.querySelectorAll("img.qx-pool-fig").forEach(img => {
-      if (img.dataset.qxHasWm === "1" || img.dataset.qxPremiumWm === "1") paintPremiumDiagonalWm(img);
+      if (img.dataset.qxHasWm === "1") paintMarksHideOnly(img);
     });
     scope.querySelectorAll(".qx-premium-wm-sheet").forEach(el => {
       el.classList.toggle("qx-premium-wm--dark", isDarkTheme());
@@ -569,6 +535,7 @@ window.QxPremiumWM = (() => {
   startThemeObserver();
 
   return {
+    paintMarksHideOnly,
     paintPremiumDiagonalWm,
     premiumWatermarkHtml,
     analyzeInkGrid,
