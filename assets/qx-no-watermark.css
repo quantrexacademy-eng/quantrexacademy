@@ -48,27 +48,16 @@ img[alt*="Get Marks App"]:not(.qx-pool-fig):not(.qx-no-wm) {
   overflow: hidden !important;
 }
 
-.qx-diag-watermark,
+.qx-diag-watermark {
+  display: none !important;
+}
+
 .qx-brand-overlay {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-}
-
-.qx-fig-inner.qx-wm-active .qx-premium-wm-sheet,
-.qx-wm-active .qx-premium-wm-sheet,
-.qx-brand-covered.qx-wm-active .qx-premium-wm-sheet,
-.qx-premium-wm-active .qx-premium-wm-sheet {
-  display: none !important;
-}
-
-.qx-diagram-slot .qx-premium-wm-sheet,
-#qxDiagramSlot .qx-premium-wm-sheet,
-.qx-question-body .qx-premium-wm-sheet {
-  display: none !important;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.12;
+  mix-blend-mode: multiply;
+  z-index: 5;
 }
 
 .qx-wm-corner-badge {

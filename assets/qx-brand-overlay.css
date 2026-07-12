@@ -161,7 +161,14 @@ img.qx-wm-none,
 }
 
 .qx-premium-wm-logo {
-  display: none !important;
+  display: block;
+  width: 22%;
+  min-width: 72px;
+  max-width: 180px;
+  height: auto;
+  opacity: 0.12;
+  mix-blend-mode: multiply;
+  pointer-events: none;
 }
 
 .qx-premium-wm-title {
@@ -219,9 +226,33 @@ img.qx-wm-none,
 }
 
 .qx-diag-watermark,
-.qx-brand-overlay,
 .qx-wm-mask {
   display: none !important;
+}
+
+.qx-brand-overlay,
+.qx-quantrex-wm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 12;
+  pointer-events: none;
+  opacity: 0.12;
+  mix-blend-mode: multiply;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qx-fig-inner.qx-wm-canvas-active canvas.qx-premium-wm-canvas {
+  opacity: 1;
+  mix-blend-mode: multiply;
+}
+
+img.qx-brand-wm,
+.qx-fig-inner.qx-quantrex-wm-active {
+  position: relative;
 }
 
 #qxDiagramSlot,
@@ -278,7 +309,10 @@ body.marks-test-active .mtk-q-text img.qx-pool-fig {
 }
 
 body.marks-test-active .qx-premium-wm-logo {
-  display: none !important;
+  width: 18%;
+  min-width: 56px;
+  max-width: 140px;
+  opacity: 0.10;
 }
 
 body.marks-test-active .qx-premium-wm-title {

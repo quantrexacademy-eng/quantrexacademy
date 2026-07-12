@@ -1,17 +1,21 @@
 // Quantrex Academy — premium diagonal watermark + pixel-precise MARKS hide
 window.QxPremiumWM = (() => {
-  const LOGO_SRC = "/assets/quantrex-premium-logo.png";
-  const LOGO_FALLBACK = "/assets/quantrex-brand-badge.png";
+  const LOGO_SRC = "/assets/quantrex-academy-watermark.png";
+  const LOGO_FALLBACK = "/assets/quantrex-academy-watermark.svg";
+  const LOGO_FALLBACK2 = "/assets/quantrex-premium-logo.png";
   const PROXY_BASE = (typeof QUANTREX_STACK !== "undefined" && QUANTREX_STACK.frontend && QUANTREX_STACK.frontend.url)
     ? QUANTREX_STACK.frontend.url.replace(/\/$/, "")
     : "https://quantrexacademy-lemon.vercel.app";
-  const ROT_DEG = -25;
-  const TEXT_OPACITY = 0.11;
-  const TAG_OPACITY = 0.09;
-  const LOGO_OPACITY = 0.035;
-  const COVERAGE = 0.44;
-  const LOGO_SCALE = 0.14;
-  const OPT_LOGO_SCALE = 0.08;
+  const ROT_DEG = 35;
+  const TEXT_OPACITY = 0.12;
+  const TAG_OPACITY = 0.10;
+  const LOGO_OPACITY_MIN = 0.08;
+  const LOGO_OPACITY_MAX = 0.15;
+  const LOGO_SCALE_MIN = 0.15;
+  const LOGO_SCALE_MAX = 0.30;
+  const FALLBACK_OPACITY = 0.07;
+  const FALLBACK_COVERAGE = 0.72;
+  const OPT_LOGO_SCALE = 0.12;
   const MAX_SCRUB_RATIO = 0.15;
   const OPT_MAX_SCRUB_RATIO = 0.16;
   const INK_DILATE = 2;
@@ -54,7 +58,13 @@ window.QxPremiumWM = (() => {
       const fb = new Image();
       fb.decoding = "async";
       fb.onload = () => { logoImg = fb; logoReady = true; cb(fb); };
-      fb.onerror = () => cb(null);
+      fb.onerror = () => {
+        const fb2 = new Image();
+        fb2.decoding = "async";
+        fb2.onload = () => { logoImg = fb2; logoReady = true; cb(fb2); };
+        fb2.onerror = () => cb(null);
+        fb2.src = LOGO_FALLBACK2;
+      };
       fb.src = LOGO_FALLBACK;
     };
     img.src = LOGO_SRC;
@@ -505,46 +515,193 @@ window.QxPremiumWM = (() => {
     return { x: grid.offsetX * rw * 0.35 + zb.x, y: grid.offsetY * rh * 0.35 + zb.y };
   }
 
-  function drawPremiumWm(ctx, rw, rh, offset, logo, palette, isOpt) {
-    const diag = Math.sqrt(rw * rw + rh * rh);
-    const baseW = diag * (isOpt ? COVERAGE * 0.72 : COVERAGE);
-    ctx.save();
-    ctx.translate(rw / 2 + offset.x, rh / 2 + offset.y);
-    ctx.rotate((ROT_DEG * Math.PI) / 180);
+  function analyzePlacementGrid(sample, cols, rows) {
+    if (!sample) return null;
+    const { data, w, h } = sample;
+    const cw = w / cols;
+    const ch = h / rows;
+    const cells = [];
+    let totalInk = 0;
+    let total = 0;
 
-    const titleSize = Math.max(11, Math.round(baseW * (isOpt ? 0.078 : 0.085)));
-    const tagSize = Math.max(7, Math.round(baseW * (isOpt ? 0.028 : 0.032)));
-
-    if (logo && !isOpt) {
-      const logoSize = baseW * LOGO_SCALE;
-      ctx.globalAlpha = LOGO_OPACITY;
-      ctx.drawImage(logo, -logoSize / 2, -titleSize * 0.55, logoSize, logoSize);
-    } else if (logo && isOpt) {
-      const logoSize = baseW * OPT_LOGO_SCALE;
-      ctx.globalAlpha = LOGO_OPACITY * 0.85;
-      ctx.drawImage(logo, -logoSize / 2, -titleSize * 0.5, logoSize, logoSize);
+    for (let ry = 0; ry < rows; ry++) {
+      for (let cx = 0; cx < cols; cx++) {
+        const x0 = Math.floor(cx * cw);
+        const y0 = Math.floor(ry * ch);
+        const x1 = Math.min(w, Math.ceil((cx + 1) * cw));
+        const y1 = Math.min(h, Math.ceil((ry + 1) * ch));
+        let ink = 0;
+        let wm = 0;
+        let n = 0;
+        for (let y = y0; y < y1; y++) {
+          for (let x = x0; x < x1; x++) {
+            const i = (y * w + x) * 4;
+            n++;
+            if (isLikelyInk(data[i], data[i + 1], data[i + 2])) ink++;
+            else if (isRemovableWm(data[i], data[i + 1], data[i + 2], data[i + 3])) wm++;
+          }
+        }
+        const inkR = ink / Math.max(n, 1);
+        const wmR = wm / Math.max(n, 1);
+        const blank = Math.max(0, 1 - inkR * 1.35 - wmR * 0.6);
+        const cxMid = (x0 + x1) / 2 / w;
+        const cyMid = (y0 + y1) / 2 / h;
+        const centerCell = cx >= 3 && cx <= 6 && ry >= 3 && ry <= 6;
+        const cornerCell = (cx <= 1 || cx >= cols - 2) && (ry <= 1 || ry >= rows - 2);
+        cells.push({ cx, ry, inkR, wmR, blank, cxMid, cyMid, centerCell, cornerCell });
+        totalInk += inkR;
+        total++;
+      }
     }
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.shadowColor = palette.shadow;
-    ctx.shadowBlur = palette.glow ? 4 : 2;
 
-    const grad = ctx.createLinearGradient(-baseW / 2, 0, baseW / 2, 0);
-    grad.addColorStop(0, palette.primary);
-    grad.addColorStop(0.5, palette.accent);
-    grad.addColorStop(1, palette.gold);
-    ctx.fillStyle = grad;
+    const avgInk = totalInk / Math.max(total, 1);
+    const sorted = [...cells].sort((a, b) => b.blank - a.blank);
+    const best = sorted.find(c => c.inkR < 0.09) || sorted[0];
+    const centerCells = cells.filter(c => c.centerCell);
+    const centerInk = centerCells.reduce((s, c) => s + c.inkR, 0) / Math.max(centerCells.length, 1);
+    const centerBlank = centerCells.reduce((s, c) => s + c.blank, 0) / Math.max(centerCells.length, 1);
+    const cornerCells = cells.filter(c => c.cornerCell);
+    const bestCorner = [...cornerCells].sort((a, b) => b.blank - a.blank)[0];
 
-    ctx.globalAlpha = TEXT_OPACITY;
-    ctx.font = `700 ${titleSize}px Kanit, Inter, sans-serif`;
-    ctx.fillText("QUANTREX ACADEMY", 0, -baseW * 0.02);
+    return {
+      cells,
+      best,
+      bestCorner,
+      avgInk,
+      centerInk,
+      centerBlank,
+      dense: avgInk > 0.17,
+      fullPage: w * h > 220000
+    };
+  }
 
-    ctx.globalAlpha = TAG_OPACITY;
-    ctx.font = `600 ${tagSize}px Kanit, Inter, sans-serif`;
-    ctx.fillText("CONCEPTS CREATE DESTINY", 0, titleSize * 0.9);
+  function resolvePlacement(sample, rw, rh, isOpt) {
+    const grid = analyzePlacementGrid(sample, 10, 10);
+    const dense = grid && grid.dense;
+    const fullPage = grid && grid.fullPage;
+    let scale = isOpt ? OPT_LOGO_SCALE : (fullPage ? LOGO_SCALE_MAX : LOGO_SCALE_MIN + 0.06);
+    let opacity = dense ? LOGO_OPACITY_MIN : LOGO_OPACITY_MAX;
+    if (dense) scale = Math.max(LOGO_SCALE_MIN, scale * 0.72);
 
-    ctx.shadowBlur = 0;
+    if (!grid || !grid.best || grid.best.blank < 0.28 || grid.best.inkR > 0.11) {
+      return {
+        mode: "fallback-diagonal",
+        x: rw / 2,
+        y: rh / 2,
+        scale: isOpt ? scale * 0.85 : scale * 1.05,
+        opacity: Math.min(FALLBACK_OPACITY, opacity * 0.75),
+        coverage: FALLBACK_COVERAGE
+      };
+    }
+
+    if (grid.centerBlank > 0.62 && grid.centerInk < 0.05) {
+      return { mode: "center", x: rw * 0.5, y: rh * 0.5, scale, opacity };
+    }
+
+    if (grid.bestCorner && grid.bestCorner.blank >= grid.best.blank * 0.92 && grid.bestCorner.inkR < 0.07) {
+      const c = grid.bestCorner;
+      return {
+        mode: "corner",
+        x: rw * c.cxMid,
+        y: rh * c.cyMid,
+        scale: scale * 0.9,
+        opacity
+      };
+    }
+
+    const b = grid.best;
+    return {
+      mode: "region",
+      x: rw * b.cxMid,
+      y: rh * b.cyMid,
+      scale,
+      opacity
+    };
+  }
+
+  function ensureBrandCanvas(stack, rw, rh) {
+    let canvas = stack.querySelector("canvas.qx-premium-wm-canvas");
+    if (!canvas) {
+      canvas = document.createElement("canvas");
+      canvas.className = "qx-premium-wm-canvas qx-wm-canvas";
+      canvas.setAttribute("aria-hidden", "true");
+      stack.appendChild(canvas);
+    }
+    canvas.width = rw;
+    canvas.height = rh;
+    canvas.style.cssText = `position:absolute;top:0;left:0;width:${rw}px;height:${rh}px;z-index:12;pointer-events:none;opacity:1;mix-blend-mode:multiply;`;
+    return canvas;
+  }
+
+  function drawPlacedLogo(ctx, rw, rh, logo, placement) {
+    if (!ctx || !placement) return;
+    const aspect = logo && logo.naturalWidth > 0 ? logo.naturalHeight / logo.naturalWidth : 1.25;
+    const lw = Math.max(24, rw * placement.scale);
+    const lh = lw * aspect;
+    ctx.save();
+    ctx.globalAlpha = placement.opacity;
+    ctx.globalCompositeOperation = "multiply";
+    if (logo && logo.naturalWidth > 0) {
+      ctx.drawImage(logo, placement.x - lw / 2, placement.y - lh / 2, lw, lh);
+    } else {
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = "rgba(30,79,255,0.85)";
+      ctx.font = `700 ${Math.max(10, lw * 0.12)}px Kanit, Inter, sans-serif`;
+      ctx.fillText("QUANTREX", placement.x, placement.y - lh * 0.08);
+      ctx.fillStyle = "rgba(17,24,39,0.85)";
+      ctx.font = `600 ${Math.max(8, lw * 0.07)}px Kanit, Inter, sans-serif`;
+      ctx.fillText("ACADEMY", placement.x, placement.y + lh * 0.08);
+    }
     ctx.restore();
+  }
+
+  function drawFallbackDiagonal(ctx, rw, rh, logo, placement) {
+    if (!ctx) return;
+    const diag = Math.sqrt(rw * rw + rh * rh);
+    const cov = placement && placement.coverage ? placement.coverage : FALLBACK_COVERAGE;
+    const lw = Math.max(28, diag * cov * 0.42);
+    const aspect = logo && logo.naturalWidth > 0 ? logo.naturalHeight / logo.naturalWidth : 1.25;
+    const lh = lw * aspect;
+    const opacity = placement && placement.opacity ? placement.opacity : FALLBACK_OPACITY;
+    ctx.save();
+    ctx.translate(rw / 2, rh / 2);
+    ctx.rotate((ROT_DEG * Math.PI) / 180);
+    ctx.globalAlpha = opacity;
+    ctx.globalCompositeOperation = "multiply";
+    if (logo && logo.naturalWidth > 0) {
+      ctx.drawImage(logo, -lw / 2, -lh / 2, lw, lh);
+    } else {
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = "rgba(51,65,85,0.75)";
+      ctx.font = `700 ${Math.max(12, lw * 0.09)}px Kanit, Inter, sans-serif`;
+      ctx.fillText("QUANTREX ACADEMY", 0, 0);
+      ctx.font = `600 ${Math.max(8, lw * 0.04)}px Kanit, Inter, sans-serif`;
+      ctx.fillText("CONCEPTS CREATE DESTINY", 0, lw * 0.08);
+    }
+    ctx.restore();
+  }
+
+  async function paintBrandWatermark(img, stack, rw, rh) {
+    if (!img || !stack || rw < 12 || rh < 12) return false;
+    const isOpt = isOptContext(img);
+    const drawable = await loadScrubDrawable(img);
+    const placement = resolvePlacement(drawable && drawable.sample, rw, rh, isOpt);
+    const canvas = ensureBrandCanvas(stack, rw, rh);
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return false;
+    ctx.clearRect(0, 0, rw, rh);
+    return new Promise(resolve => {
+      ensureLogo(logo => {
+        if (!img.isConnected) return resolve(false);
+        if (placement.mode === "fallback-diagonal") drawFallbackDiagonal(ctx, rw, rh, logo, placement);
+        else drawPlacedLogo(ctx, rw, rh, logo, placement);
+        stack.classList.add("qx-wm-canvas-active", "qx-quantrex-wm-active", "qx-premium-wm-active");
+        img.dataset.qxQuantrexWm = "1";
+        resolve(true);
+      });
+    });
   }
 
   function parseZones(img) {
@@ -561,14 +718,13 @@ window.QxPremiumWM = (() => {
     await paintSafeMarksScrub(img, stack, rw, rh);
   }
 
-  function paintMarksHideOnly(img) {
-    if (!img || !img.isConnected || img.dataset.qxHasWm !== "1") return false;
+  function prepareFigureStack(img) {
+    if (!img || !img.isConnected) return null;
     const stack = img.closest(".qx-fig-inner") || img.parentElement;
-    if (!stack) return false;
+    if (!stack) return null;
     const w = img.offsetWidth || img.clientWidth || 0;
     const h = img.offsetHeight || img.clientHeight || 0;
-    if (w < 12 || h < 12) return false;
-
+    if (w < 12 || h < 12) return null;
     const rw = Math.round(w);
     const rh = Math.round(h);
     stack.style.display = "inline-block";
@@ -576,38 +732,48 @@ window.QxPremiumWM = (() => {
     stack.style.height = `${rh}px`;
     stack.style.maxWidth = "100%";
     stack.style.lineHeight = "0";
-    stack.querySelectorAll("canvas.qx-wm-canvas, canvas.qx-premium-wm-canvas").forEach(c => c.remove());
-    stack.classList.remove("qx-wm-canvas-active");
+    return { stack, rw, rh };
+  }
 
-    return paintMarksScrub(img, stack, rw, rh).then(() => {
-      if (!img.isConnected) return false;
-      stack.classList.add("qx-wm-active", "qx-premium-wm-active", "qx-marks-hidden", "qx-fig-ready");
-      img.classList.add("qx-fig-ready");
-      img.classList.remove("qx-wm-loading");
-      img.dataset.qxPremiumWm = "1";
-      return true;
-    });
+  async function paintQuantrexBrand(img) {
+    if (!img || !img.isConnected) return false;
+    const prep = prepareFigureStack(img);
+    if (!prep) return false;
+    const { stack, rw, rh } = prep;
+    if (img.dataset.qxHasWm === "1") await paintMarksScrub(img, stack, rw, rh);
+    const branded = await paintBrandWatermark(img, stack, rw, rh);
+    if (!img.isConnected) return false;
+    stack.classList.add("qx-wm-active", "qx-premium-wm-active", "qx-brand-covered", "qx-fig-ready");
+    if (img.dataset.qxHasWm === "1") stack.classList.add("qx-marks-hidden");
+    img.classList.add("qx-fig-ready", "qx-brand-wm");
+    img.classList.remove("qx-wm-loading");
+    img.dataset.qxPremiumWm = "1";
+    img.dataset.qxBrandWm = "1";
+    return branded;
+  }
+
+  function paintMarksHideOnly(img) {
+    return paintQuantrexBrand(img);
   }
 
   function paintPremiumDiagonalWm(img) {
-    return paintMarksHideOnly(img);
+    return paintQuantrexBrand(img);
   }
 
   function premiumWatermarkHtml() {
     const dark = isDarkTheme();
     const themeCls = dark ? "qx-premium-wm--dark" : "qx-premium-wm--light";
     return [
-      `<div class="qx-premium-wm-sheet qx-wm-diagonal ${themeCls}" aria-hidden="true">`,
-      `<span class="qx-premium-wm-title">QUANTREX ACADEMY</span>`,
-      `<span class="qx-premium-wm-tag">CONCEPTS CREATE DESTINY</span>`,
+      `<div class="qx-brand-overlay qx-quantrex-wm ${themeCls}" aria-hidden="true">`,
+      `<img class="qx-premium-wm-logo" src="${LOGO_SRC}" alt="" decoding="async" draggable="false">`,
       `</div>`
     ].join("");
   }
 
   function repaintAll(root) {
     const scope = root || document;
-    scope.querySelectorAll("img.qx-pool-fig").forEach(img => {
-      if (img.dataset.qxHasWm === "1") paintMarksHideOnly(img);
+    scope.querySelectorAll("img.qx-pool-fig, img.qx-fig-img").forEach(img => {
+      if (img.naturalWidth > 0 || img.offsetWidth > 12) void paintQuantrexBrand(img);
     });
     scope.querySelectorAll(".qx-premium-wm-sheet").forEach(el => {
       el.classList.toggle("qx-premium-wm--dark", isDarkTheme());
@@ -634,12 +800,16 @@ window.QxPremiumWM = (() => {
   return {
     paintMarksHideOnly,
     paintPremiumDiagonalWm,
+    paintQuantrexBrand,
+    paintBrandWatermark,
     premiumWatermarkHtml,
     analyzeInkGrid,
+    resolvePlacement,
     isDarkTheme,
     repaintAll,
     ROT_DEG,
     TEXT_OPACITY,
-    LOGO_OPACITY
+    LOGO_OPACITY_MIN,
+    LOGO_OPACITY_MAX
   };
 })();
