@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e3\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-ex23-24-two-boys-rhombus.png"
+    },
+    {
+      "matchAny": [
+        "two boys pull the opposite corners of the square",
+        "metallic square frame of edge"
+      ],
+      "matchMin": 2,
+      "clean": "/assets/diagrams/hcv-v2-em-induction-ex23-24-two-boys-rhombus.png"
+    }
+  ]
+}
