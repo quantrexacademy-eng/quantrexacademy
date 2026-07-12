@@ -1,0 +1,550 @@
+{
+  "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear.",
+  "figures": [
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e1.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e1.png",
+      "file": "hcv-v2-em-induction-e1.png",
+      "prompt": "Circular conducting loop perpendicular to a uniform magnetic field shown with blue field lines and arrows, colorful coil in copper-orange, field vector B labeled, clean physics diagram.",
+      "sample_q": "A conducting loop of area $2.0 \\times 10^{-3} \\text{ m}^2$ is placed perpendicular to a magnetic field. The field varies over four $10 \\text{ ms}$ intervals as depicted in the figure. In which interva",
+      "q_idxs": [
+        6,
+        7
+      ],
+      "q_ids": [
+        304153,
+        304154
+      ],
+      "id": "e1",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Circular conducting loop perpendicular to a uniform magnetic field shown with blue field lines and arrows, colorful coil in copper-orange, field vector B labeled, clean physics diagram."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e2.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e2.png",
+      "file": "hcv-v2-em-induction-e2.png",
+      "prompt": "Square conducting loop parallel to pole faces of a ring magnet, ring magnet shown in red-blue poles, loop in center, colorful educational diagram.",
+      "sample_q": "As illustrated in the figure, a conducting square loop is positioned parallel to the pole-faces of a ring magnet. Each pole-face has an area of $1\\text{ cm}^2$, and the magnetic field between the pole",
+      "q_idxs": [
+        19
+      ],
+      "q_ids": [
+        304166
+      ],
+      "id": "e2",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Square conducting loop parallel to pole faces of a ring magnet, ring magnet shown in red-blue poles, loop in center, colorful educational diagram."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e4.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e4.png",
+      "file": "hcv-v2-em-induction-e4.png",
+      "prompt": "Bar magnet north pole moving down along axis toward horizontal circular coil, coil in copper color, magnetic flux lines, colorful physics illustration.",
+      "sample_q": "A magnet's north pole is brought downward along the axis of a horizontal circular coil, as shown in the figure. This causes the flux through the coil to shift from $0.35\\text{ weber}$ to $0.85\\text{ w",
+      "q_idxs": [
+        26
+      ],
+      "q_ids": [
+        304173
+      ],
+      "id": "e4",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Bar magnet north pole moving down along axis toward horizontal circular coil, coil in copper color, magnetic flux lines, colorful physics illustration."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e5.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e5.png",
+      "file": "hcv-v2-em-induction-e5.png",
+      "prompt": "Square wire loop moving right at speed v toward a region of uniform magnetic field marked with X symbols into page, velocity arrow, colorful diagram.",
+      "sample_q": "As depicted in the figure, a square loop of side $5 \text{ cm}$ is moved towards the right at a constant speed of $1 \text{ cm/s}$. The front edge enters the $20 \text{ cm}$ wide magnetic field at $t = 0",
+      "q_idxs": [
+        27,
+        28,
+        30,
+        32,
+        33
+      ],
+      "q_ids": [
+        304174,
+        304175,
+        304177,
+        304179,
+        304180
+      ],
+      "id": "e5",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Square wire loop moving right at speed v toward a region of uniform magnetic field marked with X symbols into page, velocity arrow, colorful diagram."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e6.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e6.png",
+      "file": "hcv-v2-em-induction-e6.png",
+      "prompt": "Cylindrical region radius 10cm with uniform magnetic field B inside shown by X marks, wire loop outside, colorful physics diagram.",
+      "sample_q": "As shown in the figure, a uniform magnetic field $B$ is present within a cylindrical region having a radius of $10 \\text{ cm}$. A uniform wire with a length of $80 \\text{ cm}$ and a resistance of $4.0",
+      "q_idxs": [
+        31
+      ],
+      "q_ids": [
+        304178
+      ],
+      "id": "e6",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Cylindrical region radius 10cm with uniform magnetic field B inside shown by X marks, wire loop outside, colorful physics diagram."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e7.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e7.png",
+      "file": "hcv-v2-em-induction-e7.png",
+      "prompt": "Cylindrical region with increasing magnetic field, circular loops and paths labeled, colorful EM induction diagram with arrows.",
+      "sample_q": "Consider the cylindrical region shown in the figure, where the magnetic field increases at a constant rate of $20.0 \\text{ mT/s}$. Each side of the square loops $abcd$ and $defa$ is $1.00 \\text{ cm}$ ",
+      "q_idxs": [
+        34,
+        35,
+        36,
+        37
+      ],
+      "q_ids": [
+        304181,
+        304182,
+        304183,
+        304184
+      ],
+      "id": "e7",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Cylindrical region with increasing magnetic field, circular loops and paths labeled, colorful EM induction diagram with arrows."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e8.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e8.png",
+      "file": "hcv-v2-em-induction-e8.png",
+      "prompt": "Circular coil N turns radius a connected to battery and rheostat variable resistor, circuit diagram colorful and clear.",
+      "sample_q": "A circular coil of $N$ turns and radius $a$ is connected to a battery of emf $\\mathcal{E}$ through a rheostat. The rheostat has a total length $L$ and resistance $R$. The resistance of the coil is $r$",
+      "q_idxs": [
+        38,
+        39
+      ],
+      "q_ids": [
+        304185,
+        304186
+      ],
+      "id": "e8",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Circular coil N turns radius a connected to battery and rheostat variable resistor, circuit diagram colorful and clear."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e9.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e9.png",
+      "file": "hcv-v2-em-induction-e9.png",
+      "prompt": "Circular wheel radius 10cm, upper half dark iron semicircle lower half non-magnetic, rotating in magnetic field, colorful diagram.",
+      "sample_q": "A circular wheel of radius $10.0 \\text{ cm}$ is shown in the figure. Its upper half, depicted in dark, is made of iron, while the lower half is of wood. An iron rod connects the two junctions. A unifo",
+      "q_idxs": [
+        49
+      ],
+      "q_ids": [
+        304196
+      ],
+      "id": "e9",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Circular wheel radius 10cm, upper half dark iron semicircle lower half non-magnetic, rotating in magnetic field, colorful diagram."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e10.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e10.png",
+      "file": "hcv-v2-em-induction-e10.png",
+      "prompt": "Right-angled triangle wire abc moving at uniform speed v in plane inside magnetic field region with X symbols, velocity arrow, colorful.",
+      "sample_q": "A right-angled triangle $abc$, formed from a metallic wire, travels at a uniform speed $v$ in its plane as shown in the figure. A uniform magnetic field $B$ is present in the perpendicular direction. ",
+      "q_idxs": [
+        55,
+        56,
+        57,
+        58
+      ],
+      "q_ids": [
+        304202,
+        304203,
+        304204,
+        304205
+      ],
+      "id": "e10",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Right-angled triangle wire abc moving at uniform speed v in plane inside magnetic field region with X symbols, velocity arrow, colorful."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e11.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e11.png",
+      "file": "hcv-v2-em-induction-e11.png",
+      "prompt": "Wire sliding on two parallel conducting rails separation l in perpendicular magnetic field B, colorful rails diagram with current direction.",
+      "sample_q": "As shown in the figure, a wire slides on two parallel, conducting rails positioned at a separation $l$. A magnetic field $B$ is directed perpendicular to the plane of the rails. What force is needed t",
+      "q_idxs": [
+        64
+      ],
+      "q_ids": [
+        304211
+      ],
+      "id": "e11",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Wire sliding on two parallel conducting rails separation l in perpendicular magnetic field B, colorful rails diagram with current direction."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e12.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e12.png",
+      "file": "hcv-v2-em-induction-e12.png",
+      "prompt": "Long U-shaped wire width l in magnetic field B, sliding wire of length l with velocity v, colorful electromagnetic induction rails.",
+      "sample_q": "As shown in the figure, a long U-shaped wire of width $l$ is positioned in a perpendicular magnetic field $B$. A wire of length $l$ slides on the U-shaped wire towards the right at a constant velocity",
+      "q_idxs": [
+        65,
+        67
+      ],
+      "q_ids": [
+        304212,
+        304214
+      ],
+      "id": "e12",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Long U-shaped wire width l in magnetic field B, sliding wire of length l with velocity v, colorful electromagnetic induction rails."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e13.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e13.png",
+      "file": "hcv-v2-em-induction-e13.png",
+      "prompt": "Wire PQ mass m resistance r sliding on horizontal parallel rails in magnetic field, battery or resistor in circuit, colorful diagram.",
+      "sample_q": "A wire $PQ$ with mass $m$ and resistance $r$ is free to slide on smooth, horizontal parallel rails separated by a distance $l$. The resistance of the rails is considered negligible. A uniform magnetic",
+      "q_idxs": [
+        68,
+        69,
+        70,
+        71
+      ],
+      "q_ids": [
+        304215,
+        304216,
+        304217,
+        304218
+      ],
+      "id": "e13",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Wire PQ mass m resistance r sliding on horizontal parallel rails in magnetic field, battery or resistor in circuit, colorful diagram."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e14.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e14.png",
+      "file": "hcv-v2-em-induction-e14.png",
+      "prompt": "Rectangular wire frame abcd 32cm by 8cm in magnetic field, labeled corners, colorful frame diagram.",
+      "sample_q": "A rectangular wire frame $abcd$ has dimensions $32 \\text{ cm} \\times 8.0 \\text{ cm}$ and a total resistance of $2.0 \\text{ }\\Omega$. By applying a force of $3.2 \\times 10^{-5} \\text{ N}$, it is pulled",
+      "q_idxs": [
+        72,
+        73,
+        74,
+        75
+      ],
+      "q_ids": [
+        304219,
+        304220,
+        304221,
+        304222
+      ],
+      "id": "e14",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Rectangular wire frame abcd 32cm by 8cm in magnetic field, labeled corners, colorful frame diagram."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e15.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e15.png",
+      "file": "hcv-v2-em-induction-e15.png",
+      "prompt": "Metallic wire resistance 0.20 ohm sliding on horizontal U-shaped metallic rails in magnetic field, colorful rails problem diagram.",
+      "sample_q": "As shown in the figure, a metallic wire of resistance $0.20 \\text{ }\\Omega$ slides on a horizontal, U-shaped metallic rail. The separation between the parallel arms is $20 \\text{ cm}$. When the wire i",
+      "q_idxs": [
+        79
+      ],
+      "q_ids": [
+        304226
+      ],
+      "id": "e15",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Metallic wire resistance 0.20 ohm sliding on horizontal U-shaped metallic rails in magnetic field, colorful rails problem diagram."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e16.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e16.png",
+      "file": "hcv-v2-em-induction-e16.png",
+      "prompt": "Wire ab length l mass m resistance R slides on smooth thick metallic rails connected at ends, colorful sliding rod on rails.",
+      "sample_q": "A wire $ab$ of length $l$, mass $m$, and resistance $R$ slides on a smooth, thick pair of metallic rails connected at the bottom, as shown in the figure. The plane of the rails forms an angle $\theta$ ",
+      "q_idxs": [
+        76
+      ],
+      "q_ids": [
+        304223
+      ],
+      "id": "e16",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Wire ab length l mass m resistance R slides on smooth thick metallic rails connected at ends, colorful sliding rod on rails."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e17.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e17.png",
+      "file": "hcv-v2-em-induction-e17.png",
+      "prompt": "Two sliding wires P1Q1 and P2Q2 on parallel rails with resistors 2 ohm and 19 ohm, dimension 4cm, magnetic field B=1.0T, colorful labeled diagram like a test circuit.",
+      "sample_q": "Consider the arrangement depicted in the figure. The wires $P_1 Q_1$ and $P_2 Q_2$ are forced to slide along the rails at an identical speed of $5 \\text{ cm s}^{-1}$. Determine the electric current fl",
+      "q_idxs": [
+        77,
+        78,
+        80
+      ],
+      "q_ids": [
+        304224,
+        304225,
+        304227
+      ],
+      "id": "e17",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Two sliding wires P1Q1 and P2Q2 on parallel rails with resistors 2 ohm and 19 ohm, dimension 4cm, magnetic field B=1.0T, colorful labeled diagram like a test circuit."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e18.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e18.png",
+      "file": "hcv-v2-em-induction-e18.png",
+      "prompt": "Wire PQ sliding on three rails at constant speed in magnetic field, triangular or Y rail arrangement, colorful.",
+      "sample_q": "As shown in the figure, the wire $PQ$ possesses negligible resistance and is made to slide on the three rails at a constant speed of $5 \\text{ cm s}^{-1}$. Determine the current in the $10 \\text{ }\\Om",
+      "q_idxs": [
+        81,
+        82
+      ],
+      "q_ids": [
+        304228,
+        304229
+      ],
+      "id": "e18",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Wire PQ sliding on three rails at constant speed in magnetic field, triangular or Y rail arrangement, colorful."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e19.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e19.png",
+      "file": "hcv-v2-em-induction-e19.png",
+      "prompt": "Current generator Ig with constant current i, wire cd held on rails in magnetic field, colorful circuit rails diagram.",
+      "sample_q": "As shown in the figure, a current generator $I_g$ delivers a constant current $i$ to the circuit. The wire $cd$ is held fixed, whereas the wire $ab$ is made to slide on the smooth, thick rails with a ",
+      "q_idxs": [
+        83
+      ],
+      "q_ids": [
+        304230
+      ],
+      "id": "e19",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Current generator Ig with constant current i, wire cd held on rails in magnetic field, colorful circuit rails diagram."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e20.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e20.png",
+      "file": "hcv-v2-em-induction-e20.png",
+      "prompt": "Current generator driving constant current, wire ab on rails in B field, colorful educational physics diagram.",
+      "sample_q": "As depicted in the figure, a current generator $I_g$ drives a constant current $i$ through the circuit. A wire $ab$, having mass $m$ and length $l$, is capable of sliding along the smooth horizontal r",
+      "q_idxs": [
+        84
+      ],
+      "q_ids": [
+        304231
+      ],
+      "id": "e20",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Current generator driving constant current, wire ab on rails in B field, colorful educational physics diagram."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e21.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e21.png",
+      "file": "hcv-v2-em-induction-e21.png",
+      "prompt": "Smooth rails with current generator Ig and sliding wire ab in magnetic field, colorful diagram.",
+      "sample_q": "A constant current $i$ is delivered by a current generator $I_g$ through a circuit featuring smooth rails and a wire $ab$ of length $l$ and mass $m$ capable of sliding on the rails. This system is mai",
+      "q_idxs": [
+        85
+      ],
+      "q_ids": [
+        304232
+      ],
+      "id": "e21",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Smooth rails with current generator Ig and sliding wire ab in magnetic field, colorful diagram."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e22.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e22.png",
+      "file": "hcv-v2-em-induction-e22.png",
+      "prompt": "Rectangular wire frame width d entering uniform magnetic field region from left, constant force F pushing frame, colorful diagram.",
+      "sample_q": "A rectangular wire-frame possesses a width $d$, mass $m$, resistance $R$, and a large length. A uniform magnetic field $B$ is situated to the left of the frame. At $t = 0$, a constant force $F$ begins",
+      "q_idxs": [
+        86,
+        87,
+        88
+      ],
+      "q_ids": [
+        304233,
+        304234,
+        304235
+      ],
+      "id": "e22",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Rectangular wire frame width d entering uniform magnetic field region from left, constant force F pushing frame, colorful diagram."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e23.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e23.png",
+      "file": "hcv-v2-em-induction-e23.png",
+      "prompt": "Thick metallic rails connected to battery emf E, sliding wire in magnetic field, colorful rails and battery circuit.",
+      "sample_q": "A smooth pair of thick metallic rails is connected across a battery of emf $\\mathcal{E}$ with negligible internal resistance. A wire $ab$ having length $l$ and resistance $r$ can slide smoothly on the",
+      "q_idxs": [
+        89,
+        90,
+        91
+      ],
+      "q_ids": [
+        304236,
+        304237,
+        304238
+      ],
+      "id": "e23",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Thick metallic rails connected to battery emf E, sliding wire in magnetic field, colorful rails and battery circuit."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e24.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e24.png",
+      "file": "hcv-v2-em-induction-e24.png",
+      "prompt": "Conducting wire ab length l sliding down smooth vertical rails in magnetic field, gravity and induction setup, colorful diagram.",
+      "sample_q": "At $t = 0$, a conducting wire $ab$ of length $l$, resistance $r$, and mass $m$ begins sliding down a smooth, vertical, thick pair of connected rails. A uniform magnetic field $B$ is present in the spa",
+      "q_idxs": [
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        100
+      ],
+      "q_ids": [
+        304239,
+        304240,
+        304241,
+        304242,
+        304243,
+        304244,
+        304247
+      ],
+      "id": "e24",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Conducting wire ab length l sliding down smooth vertical rails in magnetic field, gravity and induction setup, colorful diagram."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e25.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e25.png",
+      "file": "hcv-v2-em-induction-e25.png",
+      "prompt": "Conducting disc rotating about axis in perpendicular magnetic field B, resistor connected between center and rim, colorful diagram.",
+      "sample_q": "As shown in the figure, a conducting disc rotates about its axis within a perpendicular magnetic field $B$. A resistor having resistance $R$ is linked between the centre and the rim. Evaluate the curr",
+      "q_idxs": [
+        102
+      ],
+      "q_ids": [
+        304249
+      ],
+      "id": "e25",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Conducting disc rotating about axis in perpendicular magnetic field B, resistor connected between center and rim, colorful diagram."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e26.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e26.png",
+      "file": "hcv-v2-em-induction-e26.png",
+      "prompt": "Long straight wire carrying current i and rod length l coplanar, rod moving with velocity, colorful diagram with magnetic field.",
+      "sample_q": "As shown in the figure, a long, straight wire carries a current $i$ and a rod of length $l$ is coplanar with the wire and oriented perpendicular to it. The rod travels with a constant velocity $v$ in ",
+      "q_idxs": [
+        101,
+        104,
+        105,
+        106,
+        107
+      ],
+      "q_ids": [
+        304248,
+        304251,
+        304252,
+        304253,
+        304254
+      ],
+      "id": "e26",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Long straight wire carrying current i and rod length l coplanar, rod moving with velocity, colorful diagram with magnetic field."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e27.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e27.png",
+      "file": "hcv-v2-em-induction-e27.png",
+      "prompt": "Square wire frame resistance r coplanar with long straight current-carrying wire, colorful mutual induction diagram.",
+      "sample_q": "As shown in the figure, a square frame of wire having a total resistance $r$ is placed coplanarly with a long, straight wire. The straight wire carries a current $i$ given by $i = i_0 \\sin \\omega t$. ",
+      "q_idxs": [
+        108,
+        109,
+        110
+      ],
+      "q_ids": [
+        304255,
+        304256,
+        304257
+      ],
+      "id": "e27",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Square wire frame resistance r coplanar with long straight current-carrying wire, colorful mutual induction diagram."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e28.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e28.png",
+      "file": "hcv-v2-em-induction-e28.png",
+      "prompt": "Rectangular metallic loop length l width b coplanar with long wire carrying current i, colorful diagram.",
+      "sample_q": "A rectangular metallic loop having length $l$ and width $b$ is situated coplanar with a long wire carrying a current $i$ (as shown in the figure). The loop travels perpendicular to the wire at a speed",
+      "q_idxs": [
+        111
+      ],
+      "q_ids": [
+        304258
+      ],
+      "id": "e28",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Rectangular metallic loop length l width b coplanar with long wire carrying current i, colorful diagram."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e29.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e29.png",
+      "file": "hcv-v2-em-induction-e29.png",
+      "prompt": "Circular loop radius a in vertical plane in uniform magnetic field B perpendicular to plane, colorful diagram.",
+      "sample_q": "A circular loop of radius $a$ is situated in a vertical plane within a uniform magnetic field $B$ directed perpendicular to the loop. A rod $OA$ of length $a$ and mass $m$ is pivoted at the loop's cen",
+      "q_idxs": [
+        112,
+        113,
+        114
+      ],
+      "q_ids": [
+        304259,
+        304260,
+        304261
+      ],
+      "id": "e29",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Circular loop radius a in vertical plane in uniform magnetic field B perpendicular to plane, colorful diagram."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e30.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e30.png",
+      "file": "hcv-v2-em-induction-e30.png",
+      "prompt": "Circular loop radius a in vertical plane rotating in magnetic field B, colorful diagram with angular motion.",
+      "sample_q": "A circular loop of radius $a$ is situated in a vertical plane within a uniform magnetic field $B$ directed perpendicular to the plane of the loop. A rod $OA$ of length $a$ and mass $m$ is pivoted at t",
+      "q_idxs": [
+        115
+      ],
+      "q_ids": [
+        304262
+      ],
+      "id": "e30",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Circular loop radius a in vertical plane rotating in magnetic field B, colorful diagram with angular motion."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e31.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e31.png",
+      "file": "hcv-v2-em-induction-e31.png",
+      "prompt": "Wire mass m length l sliding on smooth vertical rails in magnetic field, colorful vertical rails diagram.",
+      "sample_q": "Consider a wire of mass $m$ and length $l$ that is free to slide on a pair of smooth vertical rails, as shown in the figure. A magnetic field $B$ is present in the region, directed perpendicular to th",
+      "q_idxs": [
+        116
+      ],
+      "q_ids": [
+        304263
+      ],
+      "id": "e31",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Wire mass m length l sliding on smooth vertical rails in magnetic field, colorful vertical rails diagram."
+    },
+    {
+      "src": "https://cdn.quizrr.in/question-assets/resources/physics/hcv/chapter_38_electromagnetic_induction_figure_38_e32.png",
+      "out": "/assets/diagrams/hcv-v2-em-induction-e32.png",
+      "file": "hcv-v2-em-induction-e32.png",
+      "prompt": "Cylindrical region with dotted boundary, uniform magnetic field B increasing with time inside cylinder, colorful diagram.",
+      "sample_q": "A uniform magnetic field $B$ exists in a cylindrical region, indicated by the dotted line in the figure. The magnetic field increases at a constant rate $\\dfrac{dB}{dt}$. Consider a circle of radius $",
+      "q_idxs": [
+        118
+      ],
+      "q_ids": [
+        304265
+      ],
+      "id": "e32",
+      "style": "Vibrant colorful educational physics textbook illustration, polished digital art, clean white background, no watermark, no logo, no brand text, no MARKS overlay, clear labels and arrows, semi-realistic cartoon style where people appear. Cylindrical region with dotted boundary, uniform magnetic field B increasing with time inside cylinder, colorful diagram."
+    }
+  ]
+}

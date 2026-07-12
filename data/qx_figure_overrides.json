@@ -1,17 +1,133 @@
 {
-  "version": 2,
+  "version": 3,
   "rules": [
     {
-      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e3\\.png",
-      "clean": "/assets/diagrams/hcv-v2-em-induction-ex23-24-two-boys-rhombus.png"
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e1\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e1.png"
     },
     {
-      "matchAny": [
-        "two boys pull the opposite corners of the square",
-        "metallic square frame of edge"
-      ],
-      "matchMin": 2,
-      "clean": "/assets/diagrams/hcv-v2-em-induction-ex23-24-two-boys-rhombus.png"
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e2\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e2.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e4\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e4.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e5\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e5.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e6\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e6.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e7\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e7.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e8\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e8.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e9\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e9.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e10\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e10.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e11\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e11.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e12\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e12.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e13\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e13.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e14\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e14.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e15\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e15.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e16\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e16.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e17\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e17.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e18\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e18.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e19\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e19.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e20\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e20.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e21\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e21.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e22\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e22.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e23\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e23.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e24\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e24.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e25\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e25.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e26\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e26.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e27\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e27.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e28\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e28.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e29\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e29.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e30\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e30.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e31\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e31.png"
+    },
+    {
+      "urlRx": "chapter_38_electromagnetic_induction_figure_38_e32\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e32.png"
+    },
+    {
+      "urlRx": "hcv-v2-em-induction-ex23-24-two-boys-rhombus\\.png",
+      "clean": "/assets/diagrams/hcv-v2-em-induction-e3.png"
     }
   ]
 }
