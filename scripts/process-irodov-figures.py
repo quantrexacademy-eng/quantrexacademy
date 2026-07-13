@@ -96,8 +96,9 @@ def is_wm_pixel(rgb):
 
 
 def find_white_box(rgb, h, w):
+    """True white diagram panel only — reject MARKS watermark bands."""
     L = lum(rgb)
-    white = L > 242
+    white = L > 245
     lower = white[h // 4 :, :]
     if not lower.any():
         return None
@@ -109,6 +110,12 @@ def find_white_box(rgb, h, w):
     y1 = h // 4 + rows[-1] + 1
     x0, x1 = int(cols[0]), int(cols[-1]) + 1
     if (y1 - y0) < h * 0.12 or (x1 - x0) < w * 0.2:
+        return None
+    crop = rgb[y0:y1, x0:x1]
+    cL = lum(crop)
+    white_frac = (cL > 243).mean()
+    ink_frac = (cL < 190).mean()
+    if white_frac < 0.52 or ink_frac < 0.004 or ink_frac > 0.42:
         return None
     return x0, y0, x1, y1
 
@@ -141,20 +148,29 @@ def get_font(size=15):
 
 
 def recover_text_band(rgb, y0, y1):
-    """Recover question ink from watermarked source; re-draw as clean typed strokes."""
+    """Recover question ink — Irodov sources use black bg; invert then extract text on white."""
     band = rgb[y0:y1].copy().astype(np.float32)
-    r, g, b = band[..., 0], band[..., 1], band[..., 2]
     badge = is_blue_badge(band.astype(np.uint8))
-    dark = np.minimum(np.minimum(r, g), b)
-    lo, hi = np.percentile(dark, [0.5, 88])
-    norm = np.clip((dark - lo) / max(hi - lo, 1) * 255, 0, 255)
     L = lum(band.astype(np.uint8))
+    dark_bg = L.mean() < 100
+    if dark_bg:
+        band[badge] = 0
+        band = 255.0 - band
+        L = lum(band.astype(np.uint8))
+        badge = np.zeros_like(badge)
+    else:
+        band[badge] = 255.0
+    r, g, b = band[..., 0], band[..., 1], band[..., 2]
+    dark = np.minimum(np.minimum(r, g), b)
+    lo, hi = np.percentile(dark, [1, 92])
+    norm = np.clip((dark - lo) / max(hi - lo, 1) * 255, 0, 255)
     wm = is_wm_pixel(band.astype(np.uint8))
-    text = (norm < 175) & ~badge
-    text &= (b < r + 10) | (norm < 85)
-    text &= ~((L > 175) & wm & (norm > 95))
-    text &= (chroma(band.astype(np.uint8)) < 55) | (norm < 105)
-    out = np.full_like(band, 255, dtype=np.uint8)
+    med = float(np.median(L))
+    text = (norm < 200) & ~badge
+    text |= (L < med - 12) & ~badge
+    text &= ~((L > 200) & wm)
+    text &= (chroma(band.astype(np.uint8)) < 60) | (norm < 120)
+    out = np.full((*band.shape[:2], 3), 255, dtype=np.uint8)
     out[text] = TEXT_COLOR
     return out
 
@@ -173,6 +189,41 @@ def wrap_text(draw, text, font, max_w):
     if cur:
         lines.append(" ".join(cur))
     return lines or [str(text)]
+
+
+def extract_question_text(src_path: Path) -> str:
+    """OCR question text from source (black-bg invert)."""
+    raw = np.array(Image.open(src_path).convert("RGB"))
+    h, w = raw.shape[:2]
+    box = find_white_box(raw, h, w)
+    y1 = box[1] if box else h
+    prep = recover_text_band(raw, 0, y1)
+    lines = []
+    try:
+        import easyocr
+        reader = getattr(extract_question_text, "_reader", None)
+        if reader is None:
+            reader = easyocr.Reader(["en"], gpu=False, verbose=False)
+            extract_question_text._reader = reader
+        ocr_img = prep
+        if w > 1000:
+            ocr_img = np.array(Image.fromarray(prep).resize((1000, max(60, int(y1 * 1000 / w))), Image.LANCZOS))
+        results = reader.readtext(ocr_img, paragraph=False, detail=1)
+        results += reader.readtext(255 - ocr_img, paragraph=False, detail=1)
+        rows = {}
+        for _box, txt, conf in results:
+            t = re.sub(r"\s+", " ", str(txt)).strip()
+            if conf < 0.08 or len(t) < 1:
+                continue
+            row = int(_box[0][1]) // 14
+            rows.setdefault(row, []).append((int(_box[0][0]), t))
+        for row in sorted(rows):
+            line = " ".join(t for _, t in sorted(rows[row]))
+            if line:
+                lines.append(line)
+    except Exception:
+        pass
+    return " ".join(lines).strip()
 
 
 def render_typed_lines(rgb, y0, y1, min_conf=0.18):
@@ -236,6 +287,19 @@ def gentle_strip_figure(rgb):
     return out.astype(np.uint8)
 
 
+def thicken_ink(mask, passes=1):
+    h, w = mask.shape
+    out = mask.copy()
+    for _ in range(passes):
+        dil = out.copy()
+        dil[1:, :] |= out[:-1, :]
+        dil[:-1, :] |= out[1:, :]
+        dil[:, 1:] |= out[:, :-1]
+        dil[:, :-1] |= out[:, 1:]
+        out = dil
+    return out
+
+
 def recolor_figure_ink(rgb):
     arr = gentle_strip_figure(rgb)
     L = lum(arr)
@@ -245,6 +309,7 @@ def recolor_figure_ink(rgb):
     ink = (~bg) & (~wm) & (L < 220) & (C > 6)
     if ink.sum() < 40:
         return arr
+    ink = thicken_ink(ink, passes=1)
     h, w = ink.shape
     out = np.full((*ink.shape, 3), 255, dtype=np.uint8)
     band = np.zeros((h, w), dtype=np.int32)
@@ -258,31 +323,66 @@ def recolor_figure_ink(rgb):
     for i, c in enumerate(PALETTE):
         mask = ink & (color_idx == i)
         out[mask] = c
-    textish = ink & (L >= 120) & (C < 40)
-    out[textish] = [15, 118, 110]
+    textish = thicken_ink(ink & (L >= 115) & (C < 42), passes=1)
+    out[textish] = [12, 100, 95]
+    return out
+
+
+def recolor_dark_bg_full(raw):
+    """Black-bg Irodov card — invert, strip MARKS, multicolor all ink."""
+    h, w = raw.shape[:2]
+    band = raw.astype(np.float32).copy()
+    badge = is_blue_badge(raw)
+    band[badge] = 0
+    band = 255.0 - band
+    arr = band.astype(np.uint8)
+    wm = is_wm_pixel(arr) | is_blue_badge(arr)
+    L = lum(arr)
+    bg = L > 248
+    ink = (~bg) & (~wm) & (L < 215) & (chroma(arr) > 5)
+    if ink.sum() < 80:
+        return np.full_like(raw, 255)
+    ink = thicken_ink(ink, passes=1)
+    out = np.full((h, w, 3), 255, dtype=np.uint8)
+    band_i = np.zeros((h, w), dtype=np.int32)
+    band_i[ink & (L < 95)] = 0
+    band_i[ink & (L >= 95) & (L < 145)] = 1
+    band_i[ink & (L >= 145)] = 2
+    yy, xx = np.mgrid[0:h, 0:w]
+    xq = np.minimum(3, xx * 4 // max(w, 1))
+    yq = np.minimum(2, yy * 3 // max(h, 1))
+    color_idx = (band_i * 12 + xq * 3 + yq) % len(PALETTE)
+    for i, c in enumerate(PALETTE):
+        mask = ink & (color_idx == i)
+        out[mask] = c
+    textish = thicken_ink(ink & (L >= 110) & (chroma(arr) < 45), passes=1)
+    out[textish] = [12, 100, 95]
     return out
 
 
 def recolor_image_v2(path: Path, out_path: Path):
     raw = np.array(Image.open(path).convert("RGB"))
     h, w = raw.shape[:2]
-    white_box = find_white_box(raw, h, w)
+    dark_bg = lum(raw).mean() < 100
+    white_box = find_white_box(raw, h, w) if dark_bg else find_white_box(raw, h, w)
     split_y = text_split_y(raw, h, white_box)
 
     canvas = np.full_like(raw, 255)
 
     if white_box:
         x0, y0, x1, y1 = white_box
-        canvas[:y0] = render_typed_lines(raw, 0, y0)
+        canvas[:y0] = recover_text_band(raw, 0, y0)
         fig_src = raw[y0:y1, x0:x1]
         fig_out = recolor_figure_ink(fig_src)
         canvas[y0:y1, x0:x1] = fig_out
+    elif dark_bg:
+        canvas[:, :] = recolor_dark_bg_full(raw)
     else:
-        # text-only question image — recover full text, no multicolor blocks
-        canvas[:, :] = render_typed_lines(raw, 0, h)
+        canvas[:, :] = recover_text_band(raw, 0, h)
 
     rgb = Image.fromarray(canvas, "RGB")
-    rgb = ImageEnhance.Contrast(rgb).enhance(1.05)
+    rgb = ImageEnhance.Contrast(rgb).enhance(1.08)
+    rgb = ImageEnhance.Sharpness(rgb).enhance(1.12)
     rgb.save(out_path, "PNG", optimize=True)
     return True
 
