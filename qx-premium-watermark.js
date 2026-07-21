@@ -910,12 +910,12 @@ window.QxPremiumWM = (() => {
   }
 
   /** Soft-strip algorithm version — bump forces re-clean of previously frozen figures */
-  const SOFT_STRIP_VER = "10";
+  const SOFT_STRIP_VER = "11";
 
   /**
    * PERMANENT MARKS wipe (all exams / options A–D):
-   * Hard line-art bleach — pure white background + dark structure only.
-   * Mid-gray diagonal "MARKS" cannot survive (screen 632 C/D).
+   * Binary line-art kill — dark structure kept, ALL gray (incl. MARKS) → pure white.
+   * Result is data: URL; src-lock must not overwrite it (fixed v11).
    */
   function softStripMarksPixels(img) {
     return new Promise(resolve => {
@@ -977,10 +977,10 @@ window.QxPremiumWM = (() => {
           }
           const lum = 0.299 * r + 0.587 * g + 0.114 * b;
           const chroma = Math.max(r, g, b) - Math.min(r, g, b);
-          // Only true structure: dark ink OR strong colour (never mid-gray MARKS ~160-220)
-          if (lum <= 95) inkMask[p] = 1;
-          else if (chroma >= 45 && lum < 210) inkMask[p] = 1;
-          else if (lum <= 110 && chroma < 14) inkMask[p] = 1;
+          // Only true dark structure OR strong colour — MARKS mid-gray never counts as ink
+          if (lum <= 85) inkMask[p] = 1;
+          else if (chroma >= 48 && lum < 200) inkMask[p] = 1;
+          else if (lum <= 98 && chroma < 12) inkMask[p] = 1;
         }
         const dil = new Uint8Array(inkMask);
         for (let y = 0; y < nh; y++) {
@@ -1049,7 +1049,9 @@ window.QxPremiumWM = (() => {
           img.dataset.qxColorClean = "1";
           img.dataset.qxHasWm = "0";
           img.dataset.qxWmClean = "1";
-          img.classList.add("qx-wm-clean", "qx-fig-ready", "qx-hq-color", "qx-nowm");
+          img.dataset.qxCleaned = "1";
+          img.dataset.qxRestoredSrc = "1";
+          img.classList.add("qx-wm-clean", "qx-fig-ready", "qx-hq-color", "qx-nowm", "qx-cleaned");
           img.classList.remove("qx-hcv-ink", "qx-black-redraw", "qx-wm-loading");
           img.style.setProperty("opacity", "1", "important");
           img.style.setProperty("visibility", "visible", "important");
@@ -1114,7 +1116,7 @@ window.QxPremiumWM = (() => {
         ) {
           if (!img.dataset.qxOrigSrc) img.dataset.qxOrigSrc = orig;
           // Always re-point to same-origin proxy for CORS soft-strip
-          if (!/proxy-image/i.test(cur) || (/proxy-image/i.test(cur) && !/v=10/.test(cur))) {
+          if (!/proxy-image/i.test(cur) || (/proxy-image/i.test(cur) && !/v=11/.test(cur))) {
             img.dataset.qxProxyDone = "1";
             img.crossOrigin = "anonymous";
             await new Promise(r => {

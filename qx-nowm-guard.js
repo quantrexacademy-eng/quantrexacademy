@@ -157,8 +157,8 @@
       img.classList.add("qx-pool-fig", "qx-no-wm", "qx-opt-fig-img");
     }
 
-    // Soft-strip v10 — hard line-art bleach (screen 632 MARKS on C/D)
-    const STRIP_VER = "10";
+    // Soft-strip v11 — keep data:URL; do not let src-lock re-apply MARKS
+    const STRIP_VER = "11";
     const key = cacheKey(img);
     if (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === STRIP_VER) {
       forceVisible(img);

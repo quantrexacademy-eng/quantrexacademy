@@ -4,7 +4,7 @@ window.QxImgClean = (() => {
   const DB_STORE = "blobs";
   const MANIFEST_URL = "data/qx_clean_manifest.json";
   const REVIEW_URL = "data/qx_image_review.json";
-  const CLEAN_VER = 72;
+  const CLEAN_VER = 73;
   const CENTER_WM_MAX = 0.006;
   const WM_DETECT_MIN = 0.0035;
   const CDN_ONLY = false;
@@ -1834,8 +1834,8 @@ window.QxImgClean = (() => {
 
   function proxyImageUrl(cdnSrc) {
     const fixed = fixUrl(cdnSrc);
-    // v=10: server-side sharp MARKS wipe + client hard bleach
-    const q = `url=${encodeURIComponent(fixed)}&clean=1&v=10`;
+    // v=11: server clean + client strip that is NOT overwritten by src-lock
+    const q = `url=${encodeURIComponent(fixed)}&clean=1&v=11`;
     try {
       if (typeof location !== "undefined" && location.origin && !/localhost|127\.0\.0\.1/i.test(location.origin)) {
         return `/api/proxy-image?${q}`;
@@ -2601,10 +2601,12 @@ window.QxImgClean = (() => {
       if (!cdn) return;
       if (cur.includes("/api/restore-image")) return;
       if (cur.includes("/api/proxy-image") && usingProxy(img)) return;
-      if (cur.startsWith("blob:")) return;
+      if (cur.startsWith("blob:") || cur.startsWith("data:image")) return;
+      if (img.dataset.qxSoftStrip === "2") { obs.disconnect(); return; }
       if (isLocalCleanAsset(cur) || isLocalCleanAsset(cdn)) return;
       if (cur.includes("clean-diagrams")) return;
-      if (cur !== cdn) keepPoolImageVisible(img, cdn);
+      // Only re-pin if src was wiped/broken — never pull dirty CDN over a clean figure
+      if (!cur || cur === FIG_PLACEHOLDER || cur.includes("://.app/")) keepPoolImageVisible(img, cdn);
     });
     obs.observe(img, { attributes: true, attributeFilter: ["src"] });
   }
@@ -2635,15 +2637,20 @@ window.QxImgClean = (() => {
 
   function usingRestoredSrc(img) {
     const cur = fixUrl(img.getAttribute("src") || "");
-    return !!(img && (img.dataset.qxRestoredSrc === "1" || cur.includes("/api/restore-image")
-      || cur.startsWith("blob:") || isLocalCleanAsset(cur) || cur.includes("clean-diagrams")));
+    // Soft-stripped data: URLs must NEVER be overwritten with dirty CDN (screen 636)
+    return !!(img && (img.dataset.qxRestoredSrc === "1" || img.dataset.qxSoftStrip === "2"
+      || cur.includes("/api/restore-image")
+      || cur.startsWith("blob:") || cur.startsWith("data:image")
+      || isLocalCleanAsset(cur) || cur.includes("clean-diagrams")));
   }
 
   function isWorkingAltSrc(img, cur) {
     if (!img || !cur) return false;
     if (isLocalCleanAsset(cur)) return true;
+    if (cur.startsWith("data:image") || cur.startsWith("blob:")) return true;
+    if (img.dataset && img.dataset.qxSoftStrip === "2") return true;
     if (img.naturalWidth <= 0) return false;
-    return cur.includes("/api/restore-image") || cur.startsWith("blob:") || cur.includes("clean-diagrams");
+    return cur.includes("/api/restore-image") || cur.includes("clean-diagrams");
   }
 
   function keepPoolImageVisible(img, cdnSrc, force) {
@@ -2652,6 +2659,8 @@ window.QxImgClean = (() => {
     if (!cdn) return;
     if (isLocalCleanAsset(cdn)) return;
     const cur = fixUrl(img.getAttribute("src") || "");
+    // Never clobber a successful soft-strip (was re-applying MARKS watermark)
+    if (!force && (cur.startsWith("data:image") || img.dataset.qxSoftStrip === "2")) return;
     if (isWorkingAltSrc(img, cur)) return;
     const broken = cur.includes("://.app/") || (!img.naturalWidth && img.complete);
     if (!force && !broken && isCleanedImg(img) && img.naturalWidth > 0) return;
