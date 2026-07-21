@@ -1,5 +1,5 @@
 {
-  "version": 16,
+  "version": 17,
   "rules": [
     {
       "urlRx": "chapter_38_electromagnetic_induction_figure_38_e1\\.png",
@@ -21346,148 +21346,620 @@
       "clean": "/assets/qx-figures/alcohol-prep/qx-alc-prep-65c6dce9a9c2.png"
     },
     {
+      "urlRx": "TP\\-gULahc2J_vnesBsyRAbCVBEqgYe_iQ8rVFxEn_WQ\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-525054a8379f.png"
+    },
+    {
+      "urlRx": "07Wjh8zlwFZ1ED_JyGjUI7FVJweLSe0UMqFZBqCCP_U\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-4aaf9d18eeb6.png"
+    },
+    {
+      "urlRx": "ioiSkx8_OM2aqsOHacyJ6vZU0yPKZfOIw2CPHPTmNUE\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-9692c343ba1e.png"
+    },
+    {
+      "urlRx": "m6wMouK5\\-mEXGf6qp7dBIoIF89npCuF6djlj2zR1zPk\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-0a24ee1d5afa.png"
+    },
+    {
+      "urlRx": "KSAgCCz0STxutAznjvNserqP5ohuSmIGxfGdpOboY30\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-6a9e94006556.png"
+    },
+    {
+      "urlRx": "xxPxUo8EI4vLLbcZ2pLqzeaB1w9mU\\-BCLo3ahmxDOFM\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-ccfd6116c765.png"
+    },
+    {
+      "urlRx": "4Qe2Dk3wC8KuospSXfUaA9QuMA5gbpXg\\-tL\\-lb\\-_KMA\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-044284786449.png"
+    },
+    {
+      "urlRx": "47mGH4V_v7mjB9psmTpFyFQkrEYU23FiOBoBZccwEEY\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-33c596b72105.png"
+    },
+    {
+      "urlRx": "RO81iJvzYuc4PaPTgYJ7l0b0oZHdTYv0p6GYSDWSdgU\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-9b631c4d7b6d.png"
+    },
+    {
+      "urlRx": "_ixXbF8CxqJOviz4wXcgQorOsymNEMME91tUwYEhXAw\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-17b0910b7990.png"
+    },
+    {
+      "urlRx": "RtBtxl1ejyDdnd6nKI_v8Rs\\-nJZSUozOCUvPRDThnj4\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-3fd79df91bf0.png"
+    },
+    {
+      "urlRx": "EAN3ZRR5lKbQouNPd4Arjoz5yOWOUT5SsvfnMALXx1Y\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-31045905ccfa.png"
+    },
+    {
+      "urlRx": "fXmVsYGcxWTrRls1u8GDaWcTk54DljIG87u8q5rmUOY\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-53e80a916237.png"
+    },
+    {
+      "urlRx": "HbDKDnhqD7Rg8UWQJFXsS1BmX7qsgc6sHpTNCO2CP9w\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-359939d4f711.png"
+    },
+    {
+      "urlRx": "y69PW6n\\-2AcrTCZLGSZRo8uDXTTerLXDOfdgh1EOC\\-s\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-c1b6b445c8a8.png"
+    },
+    {
+      "urlRx": "973162f4\\-76d6\\-4624\\-a757\\-93a1a93048c4\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-fca10aedfa94.png"
+    },
+    {
+      "urlRx": "01aa90e1\\-603a\\-4f09\\-b202\\-0196bd6b0522\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-4ef05fa60405.png"
+    },
+    {
+      "urlRx": "e6c18995\\-39ed\\-47bd\\-9d02\\-053222bf064b\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-b3f99e977825.png"
+    },
+    {
+      "urlRx": "8b0c3af1\\-6c87\\-415e\\-a763\\-e4255ab8e6a0\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-03f77cc47cf1.png"
+    },
+    {
+      "urlRx": "8f39eccc\\-05be\\-4539\\-9d7b\\-66e2d5a724a7\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-a9959a4aaeea.png"
+    },
+    {
+      "urlRx": "18d7b9b4\\-4a50\\-4466\\-8035\\-6f47c6a5b3dc\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-53566e1b96ed.png"
+    },
+    {
+      "urlRx": "5a293a6d\\-e129\\-49aa\\-9e96\\-579f56044756\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-af451b28bf58.png"
+    },
+    {
+      "urlRx": "4157debb\\-91ee\\-4092\\-8bec\\-ed2cbb6ab7e5\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-a0155cee06ef.png"
+    },
+    {
+      "urlRx": "a89f7608\\-ab19\\-4c5d\\-a334\\-8eefdbb5d34a\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-d22fba4cbc60.png"
+    },
+    {
+      "urlRx": "7bc63779\\-5fde\\-4629\\-8bdd\\-b7bc6d44bde9\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-2a5c5892586d.png"
+    },
+    {
+      "urlRx": "2c4df51e\\-9fcc\\-451c\\-9d55\\-4e9047678b1b\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-6241d3f2217e.png"
+    },
+    {
+      "urlRx": "6129d54c\\-53a6\\-41c8\\-aab3\\-22af086f5d8c\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-01adf3fb5cc1.png"
+    },
+    {
+      "urlRx": "9b1ee1a2\\-e261\\-4fdb\\-a8d8\\-143319ee2b12\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-341d5e5a36a8.png"
+    },
+    {
+      "urlRx": "f469202d\\-011a\\-4d1f\\-957c\\-8c0d453e16ea\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-7a87301b14ae.png"
+    },
+    {
+      "urlRx": "034675cd\\-0d48\\-4073\\-b2e3\\-cbca9d44e31a\\-loppk\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-25c17707ebb1.png"
+    },
+    {
+      "urlRx": "90db8e41\\-3403\\-4690\\-b579\\-51671bbaf568\\-imhhj\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-9e354c26e39d.png"
+    },
+    {
+      "urlRx": "a71981bc\\-6caa\\-48dc\\-be6d\\-78323bed3ecc\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-669f98a65ba8.png"
+    },
+    {
+      "urlRx": "bd4c6d54\\-bd53\\-40d5\\-9923\\-616689602dd5\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-e9e48128877d.png"
+    },
+    {
+      "urlRx": "75944ac9\\-ea32\\-4827\\-8878\\-391eee4408e2\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-851305f8d6f5.png"
+    },
+    {
+      "urlRx": "4d09ee65\\-0c97\\-428a\\-b2cf\\-dbf41a1f57e3\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-e44a52f7a25a.png"
+    },
+    {
+      "urlRx": "432bb2e5\\-efba\\-4a92\\-9b5b\\-553e2de82b66\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-6c44457d6a40.png"
+    },
+    {
+      "urlRx": "324c9d98\\-74da\\-4e03\\-a278\\-6379b93b59cc\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-a7c0123dba9e.png"
+    },
+    {
+      "urlRx": "ad1b7107\\-8945\\-47d4\\-af2e\\-347b3d465a48\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-2918358745b0.png"
+    },
+    {
+      "urlRx": "21a3acbb\\-ef1c\\-4dbf\\-9a11\\-215aa605fd16\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-7b17a852bc94.png"
+    },
+    {
+      "urlRx": "82ff9361\\-b0bf\\-4357\\-9f76\\-eecb5948fe54\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-63edac64c4aa.png"
+    },
+    {
+      "urlRx": "dd72d677\\-3154\\-49c3\\-9ae8\\-e83824b10c18\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-4cabc2253d1c.png"
+    },
+    {
+      "urlRx": "fvfdworziiwroxsbzshnbflwobngxhtwargqmyiksjyzjldsig\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-7f53ddbd6004.png"
+    },
+    {
+      "urlRx": "csxopylybwuvsjadjcfeogksbaqjarbntfjvztrqyiplosvkzi\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-ad2caa8bb36e.png"
+    },
+    {
+      "urlRx": "rnaehimndbrcedbvdoqwwodpcwwdunabvpqvxromqliyreoocn\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-0fb8d044b915.png"
+    },
+    {
+      "urlRx": "mnbqszilbipvxwlzmohzcsohoxrccnaojmsyujiqeahylvjyng\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-19157082dea8.png"
+    },
+    {
+      "urlRx": "naygciotkugaflruvjzwyxpfsgtmajurkqdjpwaabotnlrdszs\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-8590ed2f7975.png"
+    },
+    {
+      "urlRx": "ifrjqydutizhplytxoeidvzvpecrvewwcerjavsjwuwsjotfiv\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-60feadf5bc80.png"
+    },
+    {
+      "urlRx": "uubqpdptwwpunsdyxqrpfmarjkqjjqyukciduxeefbyxaaoyxe\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-691c42db429b.png"
+    },
+    {
+      "urlRx": "jfqrzilhsbxmaxhmzfyjxzqaevloldsgsjjqxzazphqdscdxbw\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-a17e1d7df64f.png"
+    },
+    {
+      "urlRx": "gurtrsgxznemsqjhokxieptecsiyglhcqbiyjmovsyhamnyqyb\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-9daf5406b85b.png"
+    },
+    {
+      "urlRx": "xqyzunzlolnsopunhofyoxjkkdfxqdnbggscpuvernhqpfatab\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-c0918b443f30.png"
+    },
+    {
+      "urlRx": "oltoczmmzjvqkskmxizesuqjzguarjweeoevzcvcetzzwmgrgv\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-ba742fe1113f.png"
+    },
+    {
+      "urlRx": "ntunolvhwcigcmyiiphdvusgdrthxhrruxontyolespyhfjmge\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-3d00b1a07dc6.png"
+    },
+    {
+      "urlRx": "ocbpohqejqdtnivltvatnmqpnnkydfpaqswnyhbfybbtxbjknj\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-4097e40812b6.png"
+    },
+    {
+      "urlRx": "uzaohizfzeadglltxaobqgsnjilkififfmdbmbpflsaroalfru\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-092e8c8ecac4.png"
+    },
+    {
+      "urlRx": "pwivbhbenczdsglukaklrgfjrvuaejjwnghucfnlhqrollcmoi\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-5dd3138a94f7.png"
+    },
+    {
+      "urlRx": "uzepipjjcgulpgarknmlravywistarmalixtzghraptybcxtok\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-f3ceb81a34eb.png"
+    },
+    {
+      "urlRx": "zxtnodoqariwxkhybtehjemoathfrhmjqxdcqvlwllipxleikc\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-e0caa7882eb2.png"
+    },
+    {
+      "urlRx": "wfqpvwrjoqkklylgdlfhncqumrpztwoofnnxvxwlvjttvihqoo\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-06ba9d66d39f.png"
+    },
+    {
+      "urlRx": "23_solu_chem_pa_2\\.jpg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-41621047a393.png"
+    },
+    {
+      "urlRx": "kcsceggvmvdvtckjyfyaiivfaqqgpufortmuvzwmxgrboymsex\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-c93b485d99d4.png"
+    },
+    {
+      "urlRx": "cygjlgavfdvwukltirqwzyfezmesiqauritilberfwsrwuozha\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-ce8d8a70cfc7.png"
+    },
+    {
+      "urlRx": "recchxtibuobzulhluqgjzbbsfmfaxngjxxuciymplyrgjesak\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-a68090260cab.png"
+    },
+    {
+      "urlRx": "pfrwjuyhpwttkprsgjwyrpbsnbtqlqnzgjgsrkexfbgsydhuoj\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-f48119ab2901.png"
+    },
+    {
+      "urlRx": "kpxqdjqyykzusjykkkfdufcntexgmemkyhuttvvekcatvjlxny\\.jpeg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-73e2c6a8d073.png"
+    },
+    {
+      "urlRx": "24_solu_chem_pa_2\\.jpg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-60c2e7c98816.png"
+    },
+    {
+      "urlRx": "24_solu_chem_pa_2_1\\.jpg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-b5630c573b2e.png"
+    },
+    {
+      "urlRx": "24_solu_chem_pa_2_2\\.jpg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-694a9f746138.png"
+    },
+    {
+      "urlRx": "24_solu_chem_pa_2_3\\.jpg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-4fe12a7ab065.png"
+    },
+    {
+      "urlRx": "Jee_advance_paper_1_Chem_Q\\.9\\.jpg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-c069b5e0a92e.png"
+    },
+    {
+      "urlRx": "Jee_advance_Paper_1_Chem_Q\\._27_Ans_1_\\.\\.jpg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-8940647053b0.png"
+    },
+    {
+      "urlRx": "Jee_advance_Paper_1_Chem_Q\\._27_Ans_2_\\.\\.jpg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-c9e6b50f57e9.png"
+    },
+    {
+      "urlRx": "Jee_advance_paper_1_Chem_Q\\.9_Opp_1\\.jpg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-7725266badb3.png"
+    },
+    {
+      "urlRx": "Jee_advance_paper_1_Chem_Q\\.9_Opp_2\\.jpg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-543e23f26276.png"
+    },
+    {
+      "urlRx": "Jee_advance_paper_1_Chem_Q\\.9_Opp_3\\.jpg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-8f556281e2fc.png"
+    },
+    {
+      "urlRx": "Jee_advance_paper_1_Chem_Q\\.9_Opp_4\\.jpg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-316713c850b8.png"
+    },
+    {
+      "urlRx": "image29\\-bad152db\\-d3d5\\-4dd6\\-bd4c\\-4fc9691c5547\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-7f93f1146668.png"
+    },
+    {
+      "urlRx": "image34\\-f0d20b9d\\-a847\\-4761\\-a1d8\\-6af1001809f7\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-04a0a6abb973.png"
+    },
+    {
+      "urlRx": "image35\\-83fdcf14\\-40d8\\-4111\\-949c\\-b410b15c4601\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-9911746ee113.png"
+    },
+    {
+      "urlRx": "image30\\-d57e20f1\\-6a0b\\-45d5\\-8092\\-d86ebc8e413b\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-ebfe7d335674.png"
+    },
+    {
+      "urlRx": "image31\\-409febe3\\-36c9\\-4fef\\-92dd\\-d187a0500ddd\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-e09e483968d3.png"
+    },
+    {
+      "urlRx": "image32\\-c8035bd9\\-ba39\\-4e06\\-a0f6\\-d678e8da1efb\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-29d8fe13cf1e.png"
+    },
+    {
+      "urlRx": "image33\\-83ddfcb3\\-7b88\\-44ce\\-9d29\\-649ba7ae9778\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-a53c2335d6b8.png"
+    },
+    {
+      "urlRx": "image53\\-68b93959\\-c9ba\\-4431\\-b27b\\-30d4c61f933b\\.jpg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-70218cd601cd.png"
+    },
+    {
+      "urlRx": "image58\\-3b0dc315\\-6343\\-4360\\-bdf9\\-c447872d812f\\.jpg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-9f3ecae78d63.png"
+    },
+    {
+      "urlRx": "image54\\-c9c29529\\-78c3\\-4866\\-bf6d\\-0271c958fd7b\\.jpg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-597d45dad18e.png"
+    },
+    {
+      "urlRx": "image55\\-73a723b0\\-b1a6\\-49bd\\-a295\\-1ccaef01b516\\.jpg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-85442efdd8c2.png"
+    },
+    {
+      "urlRx": "image56\\-7a272412\\-3e99\\-4013\\-9b52\\-c733fa3d7644\\.jpg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-bca8d47a3ddb.png"
+    },
+    {
+      "urlRx": "image57\\-1fcfd2aa\\-17e5\\-4943\\-a453\\-1f0fc6769454\\.jpg",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-62483dcbeae6.png"
+    },
+    {
+      "urlRx": "d6047e15\\-9a2f\\-456e\\-87e1\\-edcb2344345b\\-image\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-f19b5553b686.png"
+    },
+    {
+      "urlRx": "3Jskadp3YQ0Ek6wFzvnzKRKAsV2LXoPiQgOeJrI_FoQ\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-e8f306d78786.png"
+    },
+    {
+      "urlRx": "mQ\\-BS1F3lcaW9px3IYKgxkGB_DU0EalH19k0RQlvJQg\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-12048efd7ae0.png"
+    },
+    {
+      "urlRx": "hH39OZYv9JS3aVtao692gBsysk2jzAV5wCmVqF9IHhw\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-9ae4f0d6a642.png"
+    },
+    {
+      "urlRx": "wdTrtd5glbmjWpCGRy2P\\-V_cVmw414733MSMbZfgziU\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-61c855c1a175.png"
+    },
+    {
+      "urlRx": "\\-6j4s02v4yqgr57bpjac9YYSCvou2_kNFVFtWIk8cXc\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-eb17e752a094.png"
+    },
+    {
+      "urlRx": "lh0_INxc7OX6W4ob4oDr3E7UOOL2542bF\\-c8IJP35Fc\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-720b976998c7.png"
+    },
+    {
+      "urlRx": "MpnEYdJ1f8onZDPwkextCp1o9AxM\\-68WlKCLasdgo8A\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-7d52110b6796.png"
+    },
+    {
+      "urlRx": "hZVnJUCQWIQNQThoHTPjsAuy\\-_t2OXdFoSbBZMthPOA\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-794198d31a9e.png"
+    },
+    {
+      "urlRx": "TlGg23g9rmm8w6E90tvBxn16wIOKwVTC99xBlYY_EQA\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-b07cbed84682.png"
+    },
+    {
+      "urlRx": "fpYJTUKv8yDLVc5YLPbIZk7cBRJ5wwyHKsvALs5lQAQ\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-45650cde50a7.png"
+    },
+    {
+      "urlRx": "\\-5QbZjQAM1ugZsv0WMrUyaCw7u9QgzqUs4b4tEDJzFM\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-f570fd6b5653.png"
+    },
+    {
+      "urlRx": "aTDXxOCHz7QylfUuGoy6uCg\\-Jwnxg0IHEr5w16_XWaU\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-80f8a18e9b24.png"
+    },
+    {
+      "urlRx": "GAds1b1SMKyU1lcKE12Y1Jpg6vwu1snRPFZPwe2Aieg\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-703035278acf.png"
+    },
+    {
+      "urlRx": "NZw4_QD8GSLGGMqrQZSpuv_AIQiOAXhksXIRa3V8Zsc\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-d9ec8284c8f7.png"
+    },
+    {
+      "urlRx": "A_1q5aGunq7DPFBBiriEIrJRuKWB6MM1Gmr_iTQTi40\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-de949ba313f9.png"
+    },
+    {
+      "urlRx": "SnKyxqtkwcHky7_hoLsc7piAoHmpbYECE7ke4\\-moDUI\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-3b94dc2b408d.png"
+    },
+    {
+      "urlRx": "BlpAWdMlMVe06WBukkkUJtiXPvvYJHs\\-7mVWhElMUWg\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-1c2df7af4f16.png"
+    },
+    {
+      "urlRx": "5\\-QWyE3ce6q4seY\\-y3iZrqY6MBAJ2KAnD2fKv0G2h1w\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-1afa3dca3ad9.png"
+    },
+    {
+      "urlRx": "EWRM37fa9BtKe7lTnyup6dAulowJ4gn46tYeyO_eSUE\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-fcddf41dfd9c.png"
+    },
+    {
+      "urlRx": "piTLmcB5fVTIitK6u_WWUOlNpuukGwUWmlkLBHrK3qA\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-a6af3b81d846.png"
+    },
+    {
+      "urlRx": "kUvdLVZCCRDn5vZcz3oaK6cUZX7TS8jt4MnQjqIiZ1U\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-f8f3d95fc6d4.png"
+    },
+    {
+      "urlRx": "zDNTmjvVgpklMj_DLaJFK3heYy8d8GQqzVcSCiltWI4\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-f3fb0b3eb674.png"
+    },
+    {
+      "urlRx": "xUil9dp4OC\\-2i_JpT3k\\-Ay0mZhy3yc_KoxGe_XOoTO8\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-365db8683c6a.png"
+    },
+    {
+      "urlRx": "Oe_E6km97d_rshVwsJnXpBtvih6O1N6XCJ0vI3uSC5I\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-d442779c00df.png"
+    },
+    {
+      "urlRx": "9oEoYy5QRFL2XT7ezsHdF5ARJDl0lEN4arnP9U2UCIA\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-5f00c9fb42af.png"
+    },
+    {
+      "urlRx": "raLseyC7J4jpeBdxdouJO8i1ntB1EL77OiciIHqKM7A\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-0d1758b2ce6b.png"
+    },
+    {
+      "urlRx": "XWvYR9onQwF915KtQ4fuwkz0nopYgxeL\\-dAMd\\-1wlrc\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-410d7228c553.png"
+    },
+    {
+      "urlRx": "\\-f4PlSCzDHo1546w2x7iTwaj1AXy5kUxT2pDP5IEnWc\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-8178271471b5.png"
+    },
+    {
       "urlRx": "Iic68M_rQJbbL49Tl7ap9USUbh4fTZPpj3JjIAVCA5c\\.original\\.fullsize\\.png",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-006328c968d7.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-006328c968d7.png"
     },
     {
       "urlRx": "qYyssKUWif3I\\-5Ben2uPh0Uaeu4gFi9VyWnvPCABMR0\\.original\\.fullsize\\.png",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-e1d3666a6b01.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-e1d3666a6b01.png"
     },
     {
       "urlRx": "IDc3dRVUmdKFiXkUOr2hqHpIp094Zs_1MxfRtqg5v7w\\.original\\.fullsize\\.png",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-3e4e093a49a6.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-3e4e093a49a6.png"
     },
     {
       "urlRx": "5w9wD5TrBda5j2srXlCi\\-TslpSurZFNHL4qfCII\\-stE\\.original\\.fullsize\\.png",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-ea00218460d7.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-ea00218460d7.png"
     },
     {
       "urlRx": "YojvyX\\-pD0foQoAv\\-nEPdjiwmnyPVOAmeyvFzzq4gG8\\.original\\.fullsize\\.png",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-31506d755094.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-31506d755094.png"
     },
     {
       "urlRx": "Jee_advance_paper_2_Chem_Q\\.35_Ans_1\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-34bb3b321a0b.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-34bb3b321a0b.png"
     },
     {
       "urlRx": "Jee_advance_paper_2_Chem_Q\\.17_Opp_1\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-291908fa235b.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-291908fa235b.png"
     },
     {
       "urlRx": "Jee_advance_paper_2_Chem_Q\\.17_Opp_2\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-f74e2f786d41.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-f74e2f786d41.png"
     },
     {
       "urlRx": "Jee_advance_paper_2_Chem_Q\\.17_Opp_3\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-2f3910ef5ec2.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-2f3910ef5ec2.png"
     },
     {
       "urlRx": "Jee_advance_paper_2_Chem_Q\\.17_Opp_4\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-903a1ccd7f61.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-903a1ccd7f61.png"
     },
     {
       "urlRx": "image35\\-cb4a4830\\-5439\\-4ab1\\-8795\\-d0455f7b0d96\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-f7d483864e21.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-f7d483864e21.png"
     },
     {
       "urlRx": "image36\\-82e8db68\\-938c\\-43a2\\-8e28\\-274f975df8d6\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-0f2d5fe8f036.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-0f2d5fe8f036.png"
     },
     {
       "urlRx": "image37\\-8fe1b260\\-4fd3\\-4461\\-9cf6\\-0c54185b11bb\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-dc813edfea33.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-dc813edfea33.png"
     },
     {
       "urlRx": "image38\\-89e87840\\-dfa5\\-4b33\\-a709\\-deae17f089d1\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-32988d38de0c.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-32988d38de0c.png"
     },
     {
       "urlRx": "image39\\-95d2aa6c\\-02f8\\-455b\\-80c7\\-e82b7db6cf35\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-7f8bfa717da4.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-7f8bfa717da4.png"
     },
     {
       "urlRx": "image40\\-58632105\\-7df4\\-4409\\-8013\\-5880d1602f09\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-c10ba9032c58.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-c10ba9032c58.png"
     },
     {
       "urlRx": "image41\\-3031b9d6\\-aa55\\-4483\\-bc32\\-a84596ccead0\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-7ad94063fbab.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-7ad94063fbab.png"
     },
     {
       "urlRx": "image42\\-620c6937\\-6bf4\\-42ae\\-8767\\-4b7aab5a9723\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-045cdc7ffda5.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-045cdc7ffda5.png"
     },
     {
       "urlRx": "aa960b28\\-94e0\\-4ea5\\-b0c0\\-0bc3629a167d\\-image\\.png",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-7a75b4f5e977.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-7a75b4f5e977.png"
     },
     {
       "urlRx": "227e7b43\\-3e08\\-4942\\-bc95\\-079ba65d85df\\-image\\.png",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-10470c0baecc.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-10470c0baecc.png"
     },
     {
       "urlRx": "514a7883\\-03f1\\-4368\\-afe2\\-4b98b0ff6182\\-image\\.png",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-5b2dbeb80001.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-5b2dbeb80001.png"
     },
     {
       "urlRx": "88faaa50\\-cf32\\-4344\\-ba38\\-6d932e787df0\\-image\\.png",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-d6288b84de90.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-d6288b84de90.png"
     },
     {
       "urlRx": "23a1f665\\-de4b\\-4baf\\-92d5\\-3672c7f3a808\\-image\\.png",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-c2f5f9e18f8f.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-c2f5f9e18f8f.png"
     },
     {
       "urlRx": "image1\\-77f32165\\-a366\\-4f3e\\-8d1f\\-75dd4dc168cf\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-7c46684a1bcf.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-7c46684a1bcf.png"
     },
     {
       "urlRx": "image11\\-788a2d2f\\-bc1e\\-4cbc\\-b523\\-e236d08932e2\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-90f08afbdbda.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-90f08afbdbda.png"
     },
     {
       "urlRx": "image16\\-7dcae031\\-b1d3\\-4980\\-bb7b\\-55a57c13e2ff\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-e1e8d350b9d9.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-e1e8d350b9d9.png"
     },
     {
       "urlRx": "image12\\-5f496f5d\\-c2e0\\-4820\\-bf6d\\-a186b26cdf8a\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-7337d7a7ea11.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-7337d7a7ea11.png"
     },
     {
       "urlRx": "image13\\-3f7c485e\\-2b13\\-4e61\\-8a6a\\-ebc180ed5f23\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-9401caecc986.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-9401caecc986.png"
     },
     {
       "urlRx": "image14\\-ef893983\\-0211\\-4889\\-bfa5\\-2ed4147b3820\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-2deb062f555b.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-2deb062f555b.png"
     },
     {
       "urlRx": "image15\\-943e5cc1\\-2fcf\\-40b9\\-aaca\\-6e086f40a65c\\.jpg",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-e306068fe91f.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-e306068fe91f.png"
     },
     {
       "urlRx": "BeYLjJnusd9Xzxl0vznAVx5d0UUSSlQE221UaLXUoJc\\.original\\.fullsize\\.png",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-c769f8af33cc.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-c769f8af33cc.png"
     },
     {
       "urlRx": "H9cdbc58aJUxa1ExyAOXQsSe72xfyiieY5zntgW4w3g\\.original\\.fullsize\\.png",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-8de7ce7396d2.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-8de7ce7396d2.png"
     },
     {
       "urlRx": "wgJoK_F7PbJi\\-ma8hY9layaKmAHf498O9xvDMW8tGzU\\.original\\.fullsize\\.png",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-dd870abddfcf.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-dd870abddfcf.png"
     },
     {
       "urlRx": "26YC4HDKD_i5rzE2S69CDLXPFvNtlToWRf3zX9dT5rs\\.original\\.fullsize\\.png",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-7b5a3176c40a.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-7b5a3176c40a.png"
     },
     {
       "urlRx": "RMr84\\-hG7z5Kz2mC9SK5vlioGK4LCoSiGYozBfbXyUE\\.original\\.fullsize\\.png",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-89f90a009e67.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-89f90a009e67.png"
     },
     {
       "urlRx": "0GMRPjdKfsKZ3p2JjvHqXxJU5b7ymc8nbnUpmhTnxG4\\.original\\.fullsize\\.png",
-      "clean": "/assets/qx-figures/amides-prep/qx-amide-b0c24af203f0.png"
+      "clean": "/assets/qx-figures/amines-adv/qx-amine-b0c24af203f0.png"
     }
   ]
 }
