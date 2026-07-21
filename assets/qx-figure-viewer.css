@@ -78,19 +78,26 @@ button.qx-fig-zoom-btn:hover {
 .mtk-main .qx-diagram-slot img,
 .mtk-main .qx-content img.qx-pool-fig,
 .mtk-main .mtk-q-text img.qx-pool-fig,
+.mtk-main .qx-question-body img.qx-pool-fig,
 .qx-practice-page .qx-content img.qx-pool-fig,
 .qx-fig-host > img,
-.qx-fig-flat > img {
-  max-width: min(100%, 640px) !important;
-  max-height: min(420px, 70vh) !important;
+.qx-fig-flat > img,
+.mtk-opt-text img.qx-pool-fig,
+.qx-prac-opt-text img.qx-pool-fig {
+  max-width: min(100%, 720px) !important;
+  max-height: min(520px, 75vh) !important;
   width: auto !important;
   height: auto !important;
-  margin: 8px auto !important;
+  min-height: 48px !important;
+  margin: 12px auto !important;
   display: block !important;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
   cursor: default !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  object-fit: contain !important;
 }
 
 /* Lightbox = original Marks (watermark allowed) */

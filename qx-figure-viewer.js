@@ -160,7 +160,7 @@
     if (!isPoolFig(img)) return;
     try {
       if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
-        if (img.dataset.qxSoftStrip !== "2" || img.dataset.qxSoftVer !== "18") {
+        if (img.dataset.qxSoftStrip !== "2" || img.dataset.qxSoftVer !== "19") {
           void QxPremiumWM.paintMarksHideOnly(img);
         }
       }
