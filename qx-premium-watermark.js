@@ -909,17 +909,21 @@ window.QxPremiumWM = (() => {
     return false;
   }
 
+  /** Soft-strip algorithm version — bump forces re-clean of previously frozen figures */
+  const SOFT_STRIP_VER = "9";
+
   /**
-   * PERMANENT MARKS wipe (all exams): strip pale gray/slate "MARKS" watermark pixels.
-   * Keeps real structure ink + color. Never bakes QUANTREX brand.
-   * NOTE: qxCleanedSrc alone must NOT skip — proxy alone leaves residual MARKS.
+   * PERMANENT MARKS wipe (all exams / options A–D):
+   * Keep only dark structure ink + real colour; bleach ALL pale gray/slate haze to pure white.
+   * Screen 632: MARKS on options C/D was surviving a too-gentle detector.
    */
   function softStripMarksPixels(img) {
     return new Promise(resolve => {
       if (!img || !img.isConnected || img.naturalWidth < 8 || img.naturalHeight < 8) {
         return resolve(false);
       }
-      if (img.dataset.qxSoftStrip === "2") {
+      // Re-run if algorithm upgraded (old freeze left residual MARKS)
+      if (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === SOFT_STRIP_VER) {
         stripQuantrexBrand(img);
         return resolve(true);
       }
@@ -936,7 +940,6 @@ window.QxPremiumWM = (() => {
         try {
           data = ctx.getImageData(0, 0, nw, nh);
         } catch (_) {
-          // CORS-tainted — force same-origin proxy then retry once
           try {
             const orig = String(img.dataset.qxOrigSrc || img.getAttribute("src") || "");
             if (
@@ -960,7 +963,7 @@ window.QxPremiumWM = (() => {
         }
         const d = data.data;
         const totalPx = (d.length / 4) | 0;
-        // Pass 1: ink mask (protect structure + dilate so AA edges are not bleached)
+        // Strict ink: only real black/dark bonds and colour accents (NOT gray MARKS letters)
         const inkMask = new Uint8Array(totalPx);
         for (let p = 0, i = 0; i < d.length; i += 4, p++) {
           let r = d[i], g = d[i + 1], b = d[i + 2], a = d[i + 3];
@@ -973,16 +976,20 @@ window.QxPremiumWM = (() => {
           }
           const lum = 0.299 * r + 0.587 * g + 0.114 * b;
           const chroma = Math.max(r, g, b) - Math.min(r, g, b);
-          // Real figure content: dark lines, color, strong mid-tones
-          if (lum < 128 || chroma >= 36 || (lum < 148 && chroma >= 20)) inkMask[p] = 1;
+          // Dark structure lines / atoms (MARKS is mid-gray ~160–220 — not ink)
+          if (lum < 105) inkMask[p] = 1;
+          // Real colour (blue bonds, red labels, multi-colour physics)
+          else if (chroma >= 42 && lum < 220) inkMask[p] = 1;
+          // Mid AA near true black only
+          else if (lum < 125 && chroma < 18) inkMask[p] = 1;
         }
-        // Dilate ink 2px so soft strip never eats anti-aliased bonds/labels
+        // Light dilate (1px) — protect AA without swallowing diagonal MARKS text
         const dil = new Uint8Array(inkMask);
         for (let y = 0; y < nh; y++) {
           for (let x = 0; x < nw; x++) {
             if (!inkMask[y * nw + x]) continue;
-            for (let dy = -2; dy <= 2; dy++) {
-              for (let dx = -2; dx <= 2; dx++) {
+            for (let dy = -1; dy <= 1; dy++) {
+              for (let dx = -1; dx <= 1; dx++) {
                 const nx = x + dx, ny = y + dy;
                 if (nx < 0 || ny < 0 || nx >= nw || ny >= nh) continue;
                 dil[ny * nw + nx] = 1;
@@ -1005,62 +1012,51 @@ window.QxPremiumWM = (() => {
             r = Math.round(r * t + 255 * (1 - t));
             g = Math.round(g * t + 255 * (1 - t));
             b = Math.round(b * t + 255 * (1 - t));
-            a = 255;
           }
           const lum = 0.299 * r + 0.587 * g + 0.114 * b;
           const chroma = Math.max(r, g, b) - Math.min(r, g, b);
-          const isInk = dil[p] === 1;
-          if (isInk) {
+          if (dil[p] === 1) {
             inkBefore++;
             out[i] = r; out[i + 1] = g; out[i + 2] = b; out[i + 3] = 255;
             inkAfter++;
             continue;
           }
-          // Pale gray / slate / blue-gray haze = MARKS watermark (all exams)
+          // Nuclear: any non-ink pixel that is not pure paper white → bleach.
+          // Kills diagonal MARKS (gray/slate/blue-gray) on white organic figures.
           const nearGray =
-            Math.abs(r - g) < 38 &&
-            Math.abs(g - b) < 42 &&
-            Math.abs(r - b) < 44;
+            Math.abs(r - g) < 48 &&
+            Math.abs(g - b) < 52 &&
+            Math.abs(r - b) < 54;
           const isWm =
-            isRemovableWm(r, g, b, a) ||
-            (nearGray && chroma < 42 && lum >= 138 && lum < 252) ||
-            (b >= r - 12 && b >= g - 10 && chroma < 48 && lum >= 135 && lum < 250);
+            lum < 254 && (
+              nearGray ||
+              chroma < 55 ||
+              isRemovableWm(r, g, b, 255) ||
+              (b >= r - 18 && b >= g - 14 && chroma < 60)
+            );
           if (isWm) {
-            // Full bleach to paper white — permanent MARKS kill
-            const lift = Math.min(1, Math.max(0.88, (lum - 120) / 100));
-            out[i] = Math.round(r + (255 - r) * lift);
-            out[i + 1] = Math.round(g + (255 - g) * lift);
-            out[i + 2] = Math.round(b + (255 - b) * lift);
+            out[i] = 255;
+            out[i + 1] = 255;
+            out[i + 2] = 255;
             out[i + 3] = 255;
             stripped++;
           } else {
             out[i] = r; out[i + 1] = g; out[i + 2] = b; out[i + 3] = 255;
           }
         }
-        const wmFrac = stripped / Math.max(totalPx, 1);
         const inkKeep = inkBefore > 0 ? inkAfter / inkBefore : 1;
-        // No detectable WM — freeze as clean (still strip Quantrex DOM stamps)
-        if (wmFrac < 0.0004) {
+        // Always apply when we stripped anything; never "freeze dirty" on low wmFrac
+        if (stripped === 0 || inkKeep < 0.5) {
+          // Still freeze so we stop thrashing; structure untouched
           img.dataset.qxSoftStrip = "2";
+          img.dataset.qxSoftVer = SOFT_STRIP_VER;
           img.dataset.qxFigFrozen = "1";
           img.dataset.qxCleanedSrc = "1";
           img.dataset.qxHasWm = "0";
           img.classList.add("qx-wm-clean", "qx-fig-ready", "qx-nowm", "qx-hq-color");
-          img.classList.remove("qx-black-redraw", "qx-hcv-ink", "qx-wm-loading");
           img.style.setProperty("opacity", "1", "important");
           img.style.setProperty("visibility", "visible", "important");
           img.style.setProperty("display", "block", "important");
-          stripQuantrexBrand(img);
-          return resolve(true);
-        }
-        // Never apply strip that would erase structure
-        if (inkKeep < 0.55) {
-          img.dataset.qxSoftStrip = "2";
-          img.dataset.qxFigFrozen = "1";
-          img.dataset.qxHasWm = "0";
-          img.classList.add("qx-fig-ready", "qx-wm-clean");
-          img.style.setProperty("opacity", "1", "important");
-          img.style.setProperty("visibility", "visible", "important");
           stripQuantrexBrand(img);
           return resolve(true);
         }
@@ -1070,8 +1066,9 @@ window.QxPremiumWM = (() => {
         const prev = img.getAttribute("src") || "";
         img.style.setProperty("opacity", "1", "important");
         img.style.setProperty("visibility", "visible", "important");
-        img.onload = () => {
+        const markClean = () => {
           img.dataset.qxSoftStrip = "2";
+          img.dataset.qxSoftVer = SOFT_STRIP_VER;
           img.dataset.qxFigFrozen = "1";
           img.dataset.qxCleanedSrc = "1";
           img.dataset.qxColorClean = "1";
@@ -1089,20 +1086,20 @@ window.QxPremiumWM = (() => {
               if (k && url.startsWith("data:")) window.QxNoWmGuard.stripCache.set(k, url);
             }
           } catch (_) { /* */ }
+        };
+        img.onload = () => {
+          markClean();
           resolve(true);
         };
         img.onerror = () => {
           if (prev) img.src = prev;
           img.style.setProperty("opacity", "1", "important");
-          // Do NOT freeze as clean on error — allow retry
           resolve(false);
         };
         img.removeAttribute("crossorigin");
         if (img.src !== url) img.src = url;
         else {
-          img.dataset.qxSoftStrip = "2";
-          img.dataset.qxFigFrozen = "1";
-          stripQuantrexBrand(img);
+          markClean();
           resolve(true);
         }
       } catch (_) {
@@ -1139,7 +1136,7 @@ window.QxPremiumWM = (() => {
         ) {
           if (!img.dataset.qxOrigSrc) img.dataset.qxOrigSrc = orig;
           // Always re-point to same-origin proxy for CORS soft-strip
-          if (!/proxy-image/i.test(cur) || (/proxy-image/i.test(cur) && !/v=8/.test(cur))) {
+          if (!/proxy-image/i.test(cur) || (/proxy-image/i.test(cur) && !/v=9/.test(cur))) {
             img.dataset.qxProxyDone = "1";
             img.crossOrigin = "anonymous";
             await new Promise(r => {

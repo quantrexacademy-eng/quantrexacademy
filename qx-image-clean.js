@@ -1846,8 +1846,8 @@ window.QxImgClean = (() => {
 
   function proxyImageUrl(cdnSrc) {
     const fixed = fixUrl(cdnSrc);
-    // v=8: same-origin proxy + stronger client soft-strip (permanent MARKS kill, all exams)
-    const q = `url=${encodeURIComponent(fixed)}&clean=1&v=8`;
+    // v=9: aggressive MARKS bleach (options C/D residual fix)
+    const q = `url=${encodeURIComponent(fixed)}&clean=1&v=9`;
     try {
       if (typeof location !== "undefined" && location.origin && !/localhost|127\.0\.0\.1/i.test(location.origin)) {
         return `/api/proxy-image?${q}`;

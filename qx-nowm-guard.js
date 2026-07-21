@@ -157,21 +157,30 @@
       img.classList.add("qx-pool-fig", "qx-no-wm", "qx-opt-fig-img");
     }
 
-    // Already soft-stripped this element — ensure still visible
-    if (img.dataset.qxSoftStrip === "2") {
+    // Soft-strip v9+ — re-clean if old freeze left residual MARKS (screen 632 C/D)
+    const STRIP_VER = "9";
+    if (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === STRIP_VER) {
       forceVisible(img);
       restoreIfBlank(img);
       return;
     }
+    // Stale cache / old soft-strip — force re-run
+    if (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer !== STRIP_VER) {
+      delete img.dataset.qxSoftStrip;
+      delete img.dataset.qxFigFrozen;
+      delete img.dataset.qxSoftVer;
+    }
 
     const key = cacheKey(img);
-    if (key && stripCache.has(key)) {
+    // Only reuse cache if it was produced by current algorithm
+    if (key && stripCache.has(key) && img.dataset.qxSoftVer === STRIP_VER) {
       const clean = stripCache.get(key);
       if (img.getAttribute("src") !== clean) {
         img.removeAttribute("crossorigin");
         img.src = clean;
       }
       img.dataset.qxSoftStrip = "2";
+      img.dataset.qxSoftVer = STRIP_VER;
       img.dataset.qxFigFrozen = "1";
       img.dataset.qxCleanedSrc = "1";
       img.dataset.qxHasWm = "0";
