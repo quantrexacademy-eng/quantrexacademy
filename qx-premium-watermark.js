@@ -1247,12 +1247,13 @@ window.QxPremiumWM = (() => {
     nukeAllWatermarkDom(scope);
     // Clean MARKS on pool figures + brand all question figures (incl. organic/local)
     scope.querySelectorAll(
-      "img.qx-pool-fig, img.qx-fig-img, img.qx-no-wm, img.qx-org-fig, " +
+      "img.qx-pool-fig, img.qx-fig-img, img.qx-no-wm, img.qx-org-fig, img.qx-sol-fig, " +
       "img[src*='cdn-question-pool'], img[src*='/pyq/'], img[src*='cdn.quizrr'], " +
       "img[src*='proxy-image'], img[src*='restore-image'], " +
       "img[src*='/assets/diagrams/'], img[src*='/assets/qx-figures/'], " +
       "#qxDiagramSlot img, .qx-diagram-slot img, .qx-opt-diagram-slot img, " +
-      ".mtk-opt-text img, .qx-prac-opt-text img, .mtk-q-text img"
+      ".mtk-opt-text img, .qx-prac-opt-text img, .mtk-q-text img, " +
+      ".sol-body img, .qx-sol-body img, .qx-sol-card img, .qx-sol-reveal-box img, .mtk-sol img"
     ).forEach(img => {
       if (!img) return;
       if (img.classList.contains("qx-marks-icon") || img.classList.contains("qx-exam-logo") || img.classList.contains("fc-img")) return;

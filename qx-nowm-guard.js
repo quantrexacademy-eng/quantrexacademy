@@ -5,12 +5,18 @@
     "img.qx-pool-fig",
     "img.qx-fig-img",
     "img.qx-no-wm",
+    "img.qx-sol-fig",
     "#qxDiagramSlot img",
     ".qx-diagram-slot img",
     ".qx-opt-diagram-slot img",
     ".mtk-opt-text img",
     ".qx-prac-opt-text img",
     ".mtk-q-text img",
+    ".sol-body img",
+    ".qx-sol-body img",
+    ".qx-sol-card img",
+    ".qx-sol-reveal-box img",
+    ".mtk-sol img",
     ".qx-content img[src*='cdn-question-pool']",
     ".qx-content img[src*='/pyq/']",
     ".qx-content img[src*='proxy-image']",
@@ -64,10 +70,10 @@
   function isUiIcon(img) {
     if (!img) return true;
     // Option / question structure figures are NEVER icons
-    if (img.closest && img.closest(".mtk-opt-text, .qx-prac-opt-text, .qx-opt-diagram-slot, .qx-opt-pair-struct, .qx-opt-direct-img, #qxDiagramSlot, .qx-diagram-slot, .qx-fig, .qx-opt-fig, .mtk-q-text, .qx-content")) {
+    if (img.closest && img.closest(".mtk-opt-text, .qx-prac-opt-text, .qx-opt-diagram-slot, .qx-opt-pair-struct, .qx-opt-direct-img, #qxDiagramSlot, .qx-diagram-slot, .qx-fig, .qx-opt-fig, .mtk-q-text, .qx-content, .sol-body, .qx-sol-body, .qx-sol-card, .qx-sol-reveal-box, .mtk-sol")) {
       const src0 = String(img.getAttribute("src") || img.dataset.qxOrigSrc || "");
-      if (/cdn-question-pool|cdn\.quizrr|\/pyq\/|proxy-image|data:image\/png|assets\/diagrams/i.test(src0)
-        || img.classList.contains("qx-pool-fig") || img.classList.contains("qx-fig-img") || img.classList.contains("qx-no-wm")) {
+      if (/cdn-question-pool|cdn\.quizrr|\/pyq\/|proxy-image|data:image\/png|assets\/diagrams|assets\/qx-figures/i.test(src0)
+        || img.classList.contains("qx-pool-fig") || img.classList.contains("qx-fig-img") || img.classList.contains("qx-no-wm") || img.classList.contains("qx-sol-fig")) {
         return false;
       }
     }

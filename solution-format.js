@@ -233,9 +233,50 @@ const QuantrexSolution = (() => {
     return "qx-sol-default";
   }
 
+  /** Route Marks/Quizrr solution figures through proxy + tag for soft-strip redraw */
+  function cleanSolutionFigHtml(html) {
+    let out = String(html || "");
+    // Fix broken https://.app/ bank URLs
+    out = out.replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/");
+    out = out.replace(/<img\b([^>]*)>/gi, (full, attrs) => {
+      let a = attrs;
+      // Prefer existing local clean assets
+      const srcM = a.match(/\bsrc=(["'])([^"']+)\1/i);
+      let src = srcM ? srcM[2] : "";
+      if (src && /https?:\/\/\.app\//i.test(src)) {
+        src = src.replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/");
+        a = a.replace(/\bsrc=(["'])[^"']+\1/i, `src=$1${src}$1`);
+      }
+      // Proxy pool CDN for CORS soft-strip
+      if (src && /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|getmarks\.app/i.test(src)
+        && !/proxy-image|restore-image|data:|assets\/(diagrams|qx-figures)/i.test(src)) {
+        const prox = `/api/proxy-image?url=${encodeURIComponent(src)}&clean=1&v=7`;
+        if (!/\bdata-qx-orig-src=/i.test(a)) a += ` data-qx-orig-src="${src}"`;
+        a = a.replace(/\bsrc=(["'])[^"']+\1/i, `src=$1${prox}$1`);
+        if (!/\breferrerpolicy=/i.test(a)) a += ' referrerpolicy="no-referrer"';
+        if (!/\bonerror=/i.test(a)) {
+          a += ` onerror="this.onerror=null;this.src=this.getAttribute('data-qx-orig-src')||this.src;"`;
+        }
+      }
+      // Tag for WM strip + visibility pipeline
+      if (!/\bclass=/i.test(a)) {
+        a += ' class="qx-pool-fig qx-no-wm qx-sol-fig"';
+      } else if (!/qx-pool-fig|qx-sol-fig/i.test(a)) {
+        a = a.replace(/\bclass=(["'])([^"']*)\1/i, (m, q, c) => `class=${q}${c} qx-pool-fig qx-no-wm qx-sol-fig${q}`);
+      }
+      if (!/\bstyle=/i.test(a)) {
+        a += ' style="max-width:100%;height:auto;display:block;margin:10px auto;object-fit:contain;background:#fff"';
+      }
+      if (!/\bloading=/i.test(a)) a += ' loading="eager"';
+      return `<img${a}>`;
+    });
+    return out;
+  }
+
   function formatBody(solution, q) {
     let html = typeof Mx !== "undefined" ? Mx.html(solution) : String(solution || "");
     html = polishHtml(html);
+    html = cleanSolutionFigHtml(html);
     html = structureSolutionBody(html);
     if (q && !solutionLooksRelevant(q, solution)) {
       html = `<p class="qx-sol-warn">⚠️ The stored solution may not match this question. Re-fetching from source when online.</p>${html}`;
@@ -265,6 +306,7 @@ const QuantrexSolution = (() => {
 
   return {
     renderBlock, renderInline, renderShortcutPanel, polishHtml, extractShortcut, subjectTheme, formatBody,
+    cleanSolutionFigHtml,
     solutionLooksRelevant, isMatchQuestion, structureSolutionBody, formatShortcutLine
   };
 })();

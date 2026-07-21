@@ -40,24 +40,38 @@ window.toggleTestTheme = toggleTestTheme;
 
 const TEST_FONT_ORDER = ["small", "medium", "large", "xlarge"];
 const TEST_FONT_LABELS = { small: "Small", medium: "Medium", large: "Large", xlarge: "Extra Large" };
+// Shared key — Test Series + PYQ + Digital Books + all question UIs
+const TEST_FONT_KEY = "quantrex_test_font";
 
 function getTestFontScale() {
-  const v = localStorage.getItem("quantrex_test_font") || "medium";
+  const v = localStorage.getItem(TEST_FONT_KEY) || "medium";
   return TEST_FONT_ORDER.includes(v) ? v : "medium";
 }
 
-function setTestFontScale(scale) {
+function applyTestFontScaleToDom(scale) {
   const s = TEST_FONT_ORDER.includes(scale) ? scale : "medium";
-  localStorage.setItem("quantrex_test_font", s);
-  const root = document.querySelector(".mtk-test-root");
-  if (root) root.setAttribute("data-font-scale", s);
+  // Global: every question surface reads this (PYQ, books, tests, practice)
+  try {
+    document.documentElement.setAttribute("data-font-scale", s);
+    if (document.body) document.body.setAttribute("data-font-scale", s);
+  } catch (_) { /* */ }
+  document.querySelectorAll(
+    ".mtk-test-root, .qx-practice-page, .qx-prac-q-wrap, .marks-result, #app-main.qx-font-host, .qx-font-host"
+  ).forEach(el => el.setAttribute("data-font-scale", s));
   const lblText = s === "xlarge" ? "XL" : (TEST_FONT_LABELS[s] || "Medium");
-  document.querySelectorAll("#mtkFontLbl, .mtk-font-lbl").forEach(lbl => {
+  document.querySelectorAll("#mtkFontLbl, .mtk-font-lbl, #qxFontLbl, .qx-font-lbl").forEach(lbl => {
     lbl.textContent = lblText;
   });
-  document.querySelectorAll(".mtk-font-preset").forEach(btn => {
+  document.querySelectorAll(".mtk-font-preset, .qx-font-preset").forEach(btn => {
     btn.classList.toggle("on", btn.dataset.scale === s);
   });
+  return s;
+}
+
+function setTestFontScale(scale) {
+  const s = applyTestFontScaleToDom(scale);
+  localStorage.setItem(TEST_FONT_KEY, s);
+  return s;
 }
 
 function bumpTestFont(delta) {
@@ -65,10 +79,22 @@ function bumpTestFont(delta) {
   const idx = TEST_FONT_ORDER.indexOf(cur);
   const next = TEST_FONT_ORDER[Math.max(0, Math.min(TEST_FONT_ORDER.length - 1, idx + delta))];
   setTestFontScale(next);
+  return next;
 }
+
+/** Call after any question HTML mounts (practice / books / PYQ / CBT). */
+function syncQuestionFontScale(root) {
+  const s = getTestFontScale();
+  if (root && root.setAttribute) root.setAttribute("data-font-scale", s);
+  applyTestFontScaleToDom(s);
+  return s;
+}
+
 window.getTestFontScale = getTestFontScale;
 window.setTestFontScale = setTestFontScale;
 window.bumpTestFont = bumpTestFont;
+window.syncQuestionFontScale = syncQuestionFontScale;
+window.applyTestFontScaleToDom = applyTestFontScaleToDom;
 
 function tsTestLoadingHtml() {
   return `<div class="mtk-test-root allen-cbt ts-test-loading" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f4f7fb;color:#1a2b4a;font-size:17px;font-family:Inter,sans-serif">Loading questions…</div>`;
@@ -229,26 +255,36 @@ const QuantrexTestEngine = (() => {
     if (q) QxImgClean.finalizeAll(main, q);
   }
 
+  function marksNativeHtmlFn(q) {
+    if (typeof QxImgClean !== "undefined" && QxImgClean.isMarksNativeBook && QxImgClean.isMarksNativeBook(q)
+      && typeof Mx !== "undefined" && Mx.htmlMarksNative) {
+      return Mx.htmlMarksNative;
+    }
+    return htmlContent;
+  }
+
   function renderQuestionText(q, textReady) {
     if (!textReady) return '<div class="empty">Loading question…</div>';
-    pinQuestionDiagrams(q);
-    if (typeof QxImgClean !== "undefined" && QxImgClean.buildQuestionBodyHtml) {
-      return QxImgClean.buildQuestionBodyHtml(q.id, q.q, htmlContent, q);
+    if (!(typeof QxImgClean !== "undefined" && QxImgClean.isMarksNativeBook && QxImgClean.isMarksNativeBook(q))) {
+      pinQuestionDiagrams(q);
     }
-    return `<div class="mtk-q-text qx-content" data-qx-qid="${q.id}">${htmlContent(q.q)}</div>`;
+    const renderFn = marksNativeHtmlFn(q);
+    if (typeof QxImgClean !== "undefined" && QxImgClean.buildQuestionBodyHtml) {
+      return QxImgClean.buildQuestionBodyHtml(q.id, q.q, renderFn, q);
+    }
+    return `<div class="mtk-q-text qx-content" data-qx-qid="${q.id}">${renderFn(q.q)}</div>`;
   }
 
   function renderOptsHtml(q, selected) {
     const isNumQ = typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.getType(q) === "numerical";
     if (isNumQ) return "";
     if (typeof QuantrexQFormat !== "undefined") {
-      return QuantrexQFormat.renderTestOptions(q, selected, htmlContent);
+      return QuantrexQFormat.renderTestOptions(q, selected, marksNativeHtmlFn(q));
     }
     return (q.options || []).map((o, i) => {
       const letter = String.fromCharCode(65 + i);
       return `<button type="button" class="mtk-opt ${selected === i ? "selected" : ""}" data-opt="${i}">
-        <span class="mtk-opt-radio"></span>
-        <span class="mtk-opt-letter">${letter}</span>
+        <span class="mtk-opt-letter" aria-hidden="true">${letter}</span>
         <span class="mtk-opt-text qx-content">${htmlContent(o)}</span>
       </button>`;
     }).join("");
@@ -463,9 +499,22 @@ const QuantrexTestEngine = (() => {
       </div>`;
     }
     const textReady = typeof MarksLive === "undefined" || MarksLive.isQuestionTextReady(q);
-    const optsIncomplete = textReady && typeof MarksLive !== "undefined" && MarksLive.isOptionsIncomplete
+    const egQ = typeof MarksLive !== "undefined" && MarksLive.isExamgoalQuestion && MarksLive.isExamgoalQuestion(q);
+    const hasRenderableOpts = (q.options || []).some(o => {
+      const s = String(o || "");
+      if (/<img\b/i.test(s)) return true;
+      const t = s.replace(/<[^>]+>/g, "").trim();
+      // A–D letter options are valid (not "still loading")
+      return t.length > 0;
+    });
+    let optsIncomplete = textReady && !hasRenderableOpts && typeof MarksLive !== "undefined" && MarksLive.isOptionsIncomplete
       ? MarksLive.isOptionsIncomplete(q)
       : false;
+    if (q && (q._book || q._bookId) && ((q.options || []).length >= 2 || hasRenderableOpts)) {
+      optsIncomplete = false;
+    }
+    const optsReadyFromShard = (egQ || hasRenderableOpts) && (q.options || []).length > 0
+      && (!MarksLive.isNumericalQuestion || !MarksLive.isNumericalQuestion(q));
     const isNumQ = typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.getType(q) === "numerical";
     const selected = session.answers[session.idx];
     const markBadges = renderMarkingBadges();
@@ -474,8 +523,11 @@ const QuantrexTestEngine = (() => {
     const testTheme = getTestTheme();
     const fontScale = getTestFontScale();
     const stopBtn = session.persistKey
-      ? `<button type="button" class="mtk-stop-btn" id="mtkStopBtn" title="Stop test and resume later">⏸ Stop</button>`
+      ? `<button type="button" class="mtk-stop-btn" id="mtkStopBtn" title="Stop test — progress saved, resume later">⏸ Stop</button>`
       : "";
+    const exitSaveBtn = session.persistKey
+      ? `<button type="button" class="mtk-exit-btn" id="mtkExitBtn" title="Exit test — progress saved for resume">🚪 Exit</button>`
+      : `<button type="button" class="mtk-exit-btn" id="mtkExitBtn" title="Exit test">🚪 Exit</button>`;
 
     const typeBadge = typeof QuantrexQFormat !== "undefined" ? QuantrexQFormat.typeBadgeHtml(q) : "";
     const optsClass = typeof QuantrexQFormat !== "undefined"
@@ -483,7 +535,9 @@ const QuantrexTestEngine = (() => {
       : "mtk-options mtk-options-grid";
     const opts = (!textReady)
       ? `<div class="empty" style="padding:24px;grid-column:1/-1">Loading options…</div>`
-      : (optsIncomplete && !isNumQ)
+      : (hasRenderableOpts && typeof QuantrexQFormat !== "undefined")
+      ? QuantrexQFormat.renderTestOptions(q, selected, htmlContent)
+      : (optsIncomplete && !isNumQ && !optsReadyFromShard)
       ? `<div class="empty" style="padding:24px;grid-column:1/-1">Loading options…</div>`
       : (typeof QuantrexQFormat !== "undefined"
         ? QuantrexQFormat.renderTestOptions(q, selected, htmlContent)
@@ -504,7 +558,7 @@ const QuantrexTestEngine = (() => {
     return `<div class="mtk-test-root allen-cbt" data-test-theme="${testTheme}" data-font-scale="${fontScale}">
       <header class="mtk-header">
         <div class="mtk-header-left">
-          <button type="button" class="mtk-close-btn" id="mtkCloseBtn" title="Exit test">✕</button>
+          <button type="button" class="mtk-close-btn" id="mtkCloseBtn" title="Exit &amp; save — resume later">✕</button>
           <div class="mtk-brand allen-brand">${brandLogo}<span class="mtk-brand-text">${brandName} · ${examLabel}</span></div>
         </div>
         ${timerHtml}
@@ -515,6 +569,7 @@ const QuantrexTestEngine = (() => {
           <button type="button" class="mtk-font-btn" id="mtkFontUpHdr" title="Increase text size">A+</button>
         </div>
         ${stopBtn}
+        ${exitSaveBtn}
         <button type="button" class="mtk-submit-top" id="qxSubmitTop">Submit</button>
       </header>
       ${renderMarksColorStrip()}
@@ -636,8 +691,8 @@ const QuantrexTestEngine = (() => {
     if (skip) skip.onclick = skipQuestion;
     const save = root.querySelector("#qxSaveBtn");
     if (save) save.onclick = saveAndNext;
-    const quit = root.querySelector("#qxQuitBtn");
-    if (quit) quit.onclick = quit;
+    const quitBtn = root.querySelector("#qxQuitBtn");
+    if (quitBtn) quitBtn.onclick = () => quit();
     const clearBtn = root.querySelector("#qxClearBtn");
     if (clearBtn) clearBtn.onclick = clearResponse;
     const reviewNext = root.querySelector("#qxReviewNextBtn");
@@ -647,7 +702,9 @@ const QuantrexTestEngine = (() => {
     const submitTop = root.querySelector("#qxSubmitTop");
     if (submitTop) submitTop.onclick = () => confirmSubmit();
     const mtkClose = root.querySelector("#mtkCloseBtn");
-    if (mtkClose) mtkClose.onclick = quit;
+    if (mtkClose) mtkClose.onclick = () => quit();
+    const mtkExit = root.querySelector("#mtkExitBtn");
+    if (mtkExit) mtkExit.onclick = () => quit();
     const mtkReport = root.querySelector("#mtkReportBtn");
     if (mtkReport && typeof openQuestionReport === "function") {
       mtkReport.onclick = () => {
@@ -705,15 +762,26 @@ const QuantrexTestEngine = (() => {
     try {
     const q = getQ(session.ids[session.idx]);
     const textNeed = questionTextNeedsHydrate(q);
-    const optsNeed = q && typeof MarksLive !== "undefined" && MarksLive.isOptionsIncomplete
-      ? MarksLive.isOptionsIncomplete(q)
+    const optsNeed = q && typeof MarksLive !== "undefined" && (
+      (MarksLive.isOptionsIncomplete && MarksLive.isOptionsIncomplete(q))
+      || (MarksLive.isPlaceholderOptions && MarksLive.isPlaceholderOptions(q.options))
+    );
+    const figNeed = q && typeof MarksLive !== "undefined" && MarksLive.questionNeedsFigure
+      ? MarksLive.questionNeedsFigure(q)
       : false;
-    if (textNeed && q && q._marksId && typeof MarksLive !== "undefined") {
-      main.innerHTML = `<div class="mtk-test-root allen-cbt" data-test-theme="${getTestTheme()}"><div class="empty" style="padding:48px;text-align:center">Loading question…</div></div>`;
+    const fullNeed = q && typeof MarksLive !== "undefined" && MarksLive.needsFullQuestion
+      ? MarksLive.needsFullQuestion(q)
+      : false;
+    if ((textNeed || figNeed || fullNeed) && q && q._marksId && typeof MarksLive !== "undefined") {
+      if (textNeed || figNeed) {
+        main.innerHTML = `<div class="mtk-test-root allen-cbt" data-test-theme="${getTestTheme()}"><div class="empty" style="padding:48px;text-align:center">Loading question…</div></div>`;
+      }
       try {
         await MarksLive.ensureQuestionFull(q, { force: true });
         if (typeof tsSyncQMap === "function") tsSyncQMap([session.ids[session.idx]]);
       } catch (e) { /* continue */ }
+    } else if (optsNeed && q && typeof MarksLive !== "undefined" && MarksLive.isExamgoalQuestion && MarksLive.isExamgoalQuestion(q) && (q.options || []).length) {
+      if (patchOptionsOnly(main)) { _refreshBusy = false; return; }
     } else if (optsNeed && q && q._marksId && typeof MarksLive !== "undefined") {
       pinQuestionDiagrams(q);
       if (typeof QxImgClean !== "undefined" && QxImgClean.prepareQuestionFigures) {
@@ -896,16 +964,20 @@ const QuantrexTestEngine = (() => {
       mtkShowStopModal("exit");
       return;
     }
+    // Exit always saves when possible so student can resume later
+    if (session.persistKey || session.marksMode) {
+      stopAndSave();
+      return;
+    }
     stopTimer();
-    if (session.marksMode && session.persistKey) marksPersistSession();
-    else marksClearSession(session.persistKey || null);
+    marksClearSession(session.persistKey || null);
     const ret = session.returnTo || "tests";
     const testType = session.testType;
     exitMarksTestMode();
     session = null;
     if (testType === "testseries" && window.TS_STANDALONE && typeof tsRenderStandalone === "function") {
       tsRenderStandalone();
-    } else {
+    } else if (typeof go === "function") {
       go(ret);
     }
   }
@@ -1059,8 +1131,18 @@ const QuantrexTestEngine = (() => {
     }
 
     marksClearSession();
+    const standalone = window.TS_STANDALONE;
     session = null;
-    exitMarksTestMode();
+    if (standalone) {
+      document.body.classList.remove("marks-instr-active", "allen-cbt-active");
+      document.body.classList.add("marks-results-active");
+      const tsRoot = document.getElementById("ts-root");
+      if (tsRoot) tsRoot.style.display = "none";
+      const appMain = document.getElementById("app-main");
+      if (appMain && typeof qxShowTestMount === "function") qxShowTestMount(appMain);
+    } else {
+      exitMarksTestMode();
+    }
     return `<div class="result-screen ${marksReview ? "marks-result" : ""}">
       <div class="result-hero ${pass ? "pass" : "fail"}">
         <div class="result-ring">${data.pct}%</div>
@@ -1821,29 +1903,54 @@ function marksCancelInstructions() {
   if (el) el.remove();
   marksRestoreInstrShell();
   document.body.classList.remove("marks-instr-active", "allen-cbt-active");
-  if (document.body.classList.contains("marks-test-active")) exitMarksTestMode();
   const cancelFn = window._marksInstrCancel || _marksInstrCancel;
-  if (typeof cancelFn === "function") cancelFn();
-  if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") tsRenderStandalone();
   _marksInstrDone = null;
   _marksInstrCancel = null;
   window._marksInstrDone = null;
   window._marksInstrCancel = null;
+  const tsRoot = document.getElementById("ts-root");
+  if (tsRoot) {
+    tsRoot.style.display = "";
+    tsRoot.style.removeProperty("opacity");
+    tsRoot.style.removeProperty("pointer-events");
+  }
+  const appMain = document.getElementById("app-main");
+  if (appMain && !document.body.classList.contains("marks-test-active")) {
+    appMain.style.removeProperty("opacity");
+    appMain.style.removeProperty("pointer-events");
+    appMain.style.removeProperty("z-index");
+  }
+  if (document.body.classList.contains("marks-test-active")) {
+    if (typeof exitMarksTestMode === "function") exitMarksTestMode();
+    return;
+  }
+  if (typeof cancelFn === "function") {
+    try { cancelFn(); } catch (e) { console.error("marksCancelInstructions:", e); }
+  } else if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") {
+    tsRenderStandalone();
+  }
 }
+window.marksCancelInstructions = marksCancelInstructions;
 
 function marksAcceptInstructions() {
+  const cb = document.getElementById("qzInstrAgree");
+  if (cb && !cb.checked) {
+    if (typeof showToast === "function") showToast("Please confirm you read the instructions");
+    return;
+  }
   const el = document.getElementById("marksInstrOverlay");
   if (el) el.remove();
   marksRestoreInstrShell();
   document.body.classList.remove("marks-instr-active");
   document.body.classList.add("allen-cbt-active");
   const doneFn = window._marksInstrDone || _marksInstrDone;
-  if (typeof doneFn === "function") doneFn();
   _marksInstrDone = null;
   _marksInstrCancel = null;
   window._marksInstrDone = null;
   window._marksInstrCancel = null;
+  if (typeof doneFn === "function") doneFn();
 }
+window.marksAcceptInstructions = marksAcceptInstructions;
 
 function showMarksInstructions(config, onDone, onCancel) {
   const marksMode = config.marksMode;
@@ -1997,13 +2104,13 @@ async function startTest(questionIds, title, returnTo, options) {
 
   if (marksMode && !opts.skipInstructions && typeof showAllenInstructions === "function") {
     showAllenInstructions(config, launchMarks, () => {
-      if (typeof marksCancelInstructions === "function") marksCancelInstructions();
+      if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") tsRenderStandalone();
     });
     return;
   }
   if (marksMode && !opts.skipInstructions && typeof showMarksInstructions === "function") {
     showMarksInstructions(config, launchMarks, () => {
-      if (typeof marksCancelInstructions === "function") marksCancelInstructions();
+      if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") tsRenderStandalone();
     });
     return;
   }
@@ -2108,15 +2215,17 @@ function mtkStopModalHtml(mode) {
   const isExit = mode === "exit";
   const sess = typeof QuantrexTestEngine !== "undefined" ? QuantrexTestEngine.getSession() : null;
   const resumeWhere = sess && sess.testType === "testseries"
-    ? "Test Series → Resume tab"
-    : "PYQ Mock Tests";
-  const canSave = !!(sess && sess.persistKey);
+    ? "Test Series → Resume (or open the same test again)"
+    : sess && sess.testType === "pyqmock"
+      ? "PYQ Mock Tests → Resume"
+      : "your tests list (Resume)";
+  const canSave = !!(sess && (sess.persistKey || sess.marksMode));
   const hint = canSave
-    ? `Your answers and remaining time will be saved. Resume anytime from <strong>${resumeWhere}</strong>.`
-    : "Leave this test? Unsaved progress on this session may be lost.";
+    ? `Your answers and remaining time will be <strong>saved</strong>. You can <strong>Resume</strong> anytime from <strong>${resumeWhere}</strong>.`
+    : "Leave this test? Progress may not be saved for this session.";
   const actionBtn = isExit
-    ? (canSave ? "🚪 Exit &amp; Save" : "🚪 Exit Test")
-    : "⏸ Stop &amp; Save";
+    ? (canSave ? "🚪 Exit &amp; Save for Resume" : "🚪 Exit Test")
+    : "⏸ Stop &amp; Save for Resume";
   return `<div class="marks-modal-overlay" id="mtkStopModal" onclick="if(event.target===this)mtkCloseStopModal()">
     <div class="marks-resume-modal marks-stop-modal">
       <button type="button" class="marks-resume-close" onclick="mtkCloseStopModal()">✕</button>
