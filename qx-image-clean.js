@@ -3521,14 +3521,23 @@ window.QxImgClean = (() => {
   }
 
   function finalizeAll(root, q) {
+    const scope = root || document;
+    // Permanent: strip Quantrex/MARKS DOM chrome on every render (all exams)
+    if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.nukeAllWatermarkDom) {
+      QxPremiumWM.nukeAllWatermarkDom(scope);
+    }
     if (isMarksNativeBook(q)) {
       finalizeMarksNative(root, q);
       dedupeDomFigures(root);
+      // Still soft-strip any pool CDN figures inside native books
+      rewriteAllPoolImgs(scope);
+      if (typeof QxNoWmGuard !== "undefined" && QxNoWmGuard.schedulePass) {
+        QxNoWmGuard.schedulePass(scope);
+      }
       return;
     }
     if (q) rememberQuestionRaw(q);
     // Process existing diagram-seg slots only — do NOT remount full raw HTML (causes duplicates)
-    const scope = root || document;
     scope.querySelectorAll(".qx-diagram-seg[data-qx-qid] img, #qxDiagramSlot img, .qx-diagram-slot[data-qx-locked='1'] img").forEach(img => {
       processImage(img);
     });
@@ -3538,15 +3547,25 @@ window.QxImgClean = (() => {
     dedupeDomFigures(scope);
     dedupeOptionFigures(scope);
     applyBrandOverlays(scope);
+    // Force proxy + soft-strip for every pool figure (Physics, Chem, Bio — all exams)
+    rewriteAllPoolImgs(scope);
+    if (typeof QxNoWmGuard !== "undefined" && QxNoWmGuard.schedulePass) {
+      QxNoWmGuard.schedulePass(scope);
+    }
     setTimeout(() => {
       forceStripStemTextImgs(scope);
       dedupeDomFigures(scope);
       dedupeOptionFigures(scope);
+      rewriteAllPoolImgs(scope);
+      if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.nukeAllWatermarkDom) {
+        QxPremiumWM.nukeAllWatermarkDom(scope);
+      }
     }, 150);
     setTimeout(() => {
       forceStripStemTextImgs(scope);
       dedupeDomFigures(scope);
       dedupeOptionFigures(scope);
+      rewriteAllPoolImgs(scope);
     }, 600);
   }
 
