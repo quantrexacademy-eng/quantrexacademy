@@ -160,12 +160,14 @@ img.ct-wiz-subj-ic {
   max-height: 36px !important;
 }
 
-/* Figure wrappers — light paper plate so black-ink diagrams stay visible in dark mode */
+/* Bare figures — NO rectangular paper plate / border / box */
 .qx-fig,
 .qx-opt-fig,
 .qx-pool-fig-wrap,
 .qx-fig-inner,
 .qx-fig-stack,
+.qx-fig-flat,
+.qx-fig-host,
 .qx-diagram-slot,
 #qxDiagramSlot,
 .qx-diagram-seg,
@@ -173,22 +175,25 @@ img.ct-wiz-subj-ic {
 .qx-diagram-wrap,
 .qx-diagram-viewport,
 .qx-diagram-panel {
-  background: #ffffff !important;
-  border: 1px solid rgba(148, 163, 184, 0.35) !important;
-  border-radius: 12px !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
   box-shadow: none !important;
   filter: none !important;
   -webkit-filter: none !important;
-  padding: 8px 10px !important;
+  padding: 0 !important;
+  outline: none !important;
 }
 
 .qx-fig img,
 .qx-opt-fig img,
 .qx-fig-img,
+.qx-fig-flat img,
 #qxDiagramSlot img,
 .qx-diagram-slot img {
   border-radius: 0 !important;
-  background: #ffffff !important;
+  background: transparent !important;
+  border: none !important;
   box-shadow: none !important;
   max-height: none !important;
   opacity: 1 !important;
@@ -196,12 +201,11 @@ img.ct-wiz-subj-ic {
   display: block !important;
 }
 
-/* Option figures: same paper plate, compact */
 .qx-opt-fig {
-  padding: 8px !important;
+  padding: 0 !important;
   min-height: 0 !important;
-  background: #ffffff !important;
-  border: 1px solid rgba(148, 163, 184, 0.35) !important;
+  background: transparent !important;
+  border: none !important;
 }
 
 .mtk-test-root[data-test-theme="light"] .qx-fig,
@@ -212,8 +216,24 @@ img.ct-wiz-subj-ic {
 .mtk-test-root[data-test-theme="light"] .qx-opt-fig img,
 .mtk-test-root[data-test-theme="dark"] .qx-fig img,
 .mtk-test-root[data-test-theme="dark"] .qx-opt-fig img {
-  background: #ffffff !important;
+  background: transparent !important;
+  border: none !important;
   box-shadow: none !important;
+}
+
+/* Hide zoom + forever */
+button.qx-fig-zoom-btn,
+.qx-fig-zoom-btn,
+.qx-diag-toolbar,
+.qx-diag-zoom-btns,
+.qx-diag-btn,
+.qx-diag-pct {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
 }
 
 .qx-opt-fig img.qx-pool-fig,

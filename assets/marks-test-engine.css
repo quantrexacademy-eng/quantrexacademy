@@ -102,7 +102,9 @@ body.marks-test-active #app-main { padding: 0; min-height: 100vh; }
   height: auto !important;
   margin: 0 auto !important;
   object-fit: contain !important;
-  background: #fff !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 .mtk-options.qx-opts-img .mtk-opt-text .qx-premium-wm-sheet,
 .mtk-options.qx-opts-img .mtk-opt-text canvas.qx-wm-canvas,
