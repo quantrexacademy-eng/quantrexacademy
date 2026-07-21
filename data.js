@@ -442,13 +442,30 @@ async function loadSingleBank(slug) {
     return [];
   }
   const data = await res.json();
-  const qs = (data.questions || []).map(q => ({ ...q, _bank: slug }));
+  const qs = (data.questions || []).map(q => {
+    const fixed = qxFixBankQuestionUrls({ ...q, _bank: slug });
+    return fixed;
+  });
   QUESTIONS = QUESTIONS.filter(q => q._bank !== slug).concat(qs);
   _banksLoaded[slug] = true;
   _banksUnavailable[slug] = false;
   _currentBankSlug = slug;
   localStorage.setItem("quantrex_bank", slug);
   return qs;
+}
+
+/** Repair historic broken CDN host in bank HTML (https://.app/ → getmarks pool) */
+function qxFixBankQuestionUrls(q) {
+  if (!q || typeof q !== "object") return q;
+  const fix = (s) => String(s || "")
+    .replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/")
+    .replace(/https?:\/\/cdn-question-pool\.app\//gi, "https://cdn-question-pool.getmarks.app/");
+  if (q.q) q.q = fix(q.q);
+  if (q.solution) q.solution = fix(q.solution);
+  if (q.sol) q.sol = fix(q.sol);
+  if (q.explanation) q.explanation = fix(q.explanation);
+  if (Array.isArray(q.options)) q.options = q.options.map(fix);
+  return q;
 }
 
 async function loadDppBank() {
@@ -460,7 +477,7 @@ async function loadDppBank() {
     return [];
   }
   const data = await res.json();
-  const qs = (data.questions || []).map(q => ({ ...q, _bank: "dpp" }));
+  const qs = (data.questions || []).map(q => qxFixBankQuestionUrls({ ...q, _bank: "dpp" }));
   QUESTIONS = QUESTIONS.filter(q => q._bank !== "dpp").concat(qs);
   _dppLoaded = true;
   return qs;

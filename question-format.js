@@ -14,11 +14,16 @@ const QuantrexQFormat = (() => {
 
   /** Route Marks/Quizrr CDN images through clean proxy; keep orig for fallback if proxy fails */
   function cleanPoolImgHtml(html) {
-    return String(html || "").replace(/\bsrc=(["'])(https?:\/\/[^"']+)\1/gi, (m, q, url) => {
-      if (/proxy-image|restore-image|data:|assets\/diagrams/i.test(url)) return m;
+    return String(html || "").replace(/\bsrc=(["'])(https?:\/\/[^"']+)\1/gi, (m, q, url0) => {
+      if (/proxy-image|restore-image|data:|assets\/diagrams/i.test(url0)) return m;
+      // Repair bank typo host https://.app/ before proxy (else 403 + dirty fallback)
+      let url = String(url0 || "")
+        .replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/")
+        .replace(/https?:\/\/cdn-question-pool\.app\//gi, "https://cdn-question-pool.getmarks.app/");
       if (/cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|getmarks\.app/i.test(url)) {
-        const prox = `/api/proxy-image?url=${encodeURIComponent(url)}&clean=1&v=15`;
-        return `src=${q}${prox}${q} data-qx-orig-src=${q}${url}${q} referrerpolicy=${q}no-referrer${q} onerror=${q}this.onerror=null;this.src=this.getAttribute('data-qx-orig-src')||this.src;${q}`;
+        const prox = `/api/proxy-image?url=${encodeURIComponent(url)}&clean=1&v=16`;
+        // onerror: re-proxy once, never dump raw MARKS CDN into the page
+        return `src=${q}${prox}${q} data-qx-orig-src=${q}${url}${q} referrerpolicy=${q}no-referrer${q} class="qx-pool-fig qx-no-wm" onerror=${q}if(!this.dataset.qxPe){this.dataset.qxPe=1;this.src='/api/proxy-image?url='+encodeURIComponent(this.getAttribute('data-qx-orig-src')||'')+'&clean=1&v=16';}${q}`;
       }
       return m;
     });

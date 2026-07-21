@@ -680,11 +680,14 @@ window.Mx = (() => {
     // Light cleanup only (never restructure LaTeX inside HTML tables/math)
     s = normalizeLatex(s);
     s = fixBrokenHtml(s);
-    // Marks CDN figures → color-preserving clean proxy (no watermark, no pure-black)
-    s = s.replace(/\bsrc=(["'])(https?:\/\/[^"']+)\1/gi, (m, q, url) => {
-      if (/proxy-image|restore-image|data:|assets\/diagrams/i.test(url)) return m;
+    // Marks CDN figures → clean proxy (strips MARKS watermark server-side)
+    s = s.replace(/\bsrc=(["'])(https?:\/\/[^"']+)\1/gi, (m, q, url0) => {
+      if (/proxy-image|restore-image|data:|assets\/diagrams/i.test(url0)) return m;
+      const url = String(url0 || "")
+        .replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/")
+        .replace(/https?:\/\/cdn-question-pool\.app\//gi, "https://cdn-question-pool.getmarks.app/");
       if (/cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|getmarks\.app/i.test(url)) {
-        return `src=${q}/api/proxy-image?url=${encodeURIComponent(url)}&clean=1&v=6${q}`;
+        return `src=${q}/api/proxy-image?url=${encodeURIComponent(url)}&clean=1&v=16${q} data-qx-orig-src=${q}${url}${q}`;
       }
       return m;
     });

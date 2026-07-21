@@ -25,6 +25,11 @@ module.exports = async function handler(req, res) {
       return res.status(400).json({ error: "Missing url" });
     }
 
+    // Bank data historically stored broken host "https://.app/pyq/..." — repair before fetch
+    target = String(target)
+      .replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/")
+      .replace(/https?:\/\/cdn-question-pool\.app\//gi, "https://cdn-question-pool.getmarks.app/");
+
     let host = "";
     try {
       host = new URL(target).hostname || "";
@@ -175,7 +180,7 @@ module.exports = async function handler(req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("X-Qx-Proxy", "1");
     res.setHeader("X-Qx-Clean", cleaned ? "1" : "0");
-    res.setHeader("X-Qx-Clean-Ver", "15");
+    res.setHeader("X-Qx-Clean-Ver", "16");
     return res.status(200).send(buf);
   } catch (err) {
     console.error("proxy-image", err && err.message);
