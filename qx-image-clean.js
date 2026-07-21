@@ -4,7 +4,7 @@ window.QxImgClean = (() => {
   const DB_STORE = "blobs";
   const MANIFEST_URL = "data/qx_clean_manifest.json";
   const REVIEW_URL = "data/qx_image_review.json";
-  const CLEAN_VER = 73;
+  const CLEAN_VER = 74;
   const CENTER_WM_MAX = 0.006;
   const WM_DETECT_MIN = 0.0035;
   const CDN_ONLY = false;
@@ -3530,13 +3530,22 @@ window.QxImgClean = (() => {
       if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.nukeAllWatermarkDom) {
         QxPremiumWM.nukeAllWatermarkDom(scope);
       }
-      // One soft-strip pass per figure on this question only (color-safe)
-      scope.querySelectorAll("img.qx-org-fig, img.qx-organic-fig, img[src*='qx-org-'], img[src*='cdn-question-pool'], img[src*='/pyq/']").forEach(img => {
-        if (img.dataset.qxSoftVer === "12") return;
-        if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
-          void QxPremiumWM.paintMarksHideOnly(img);
-        }
-      });
+      // Force MARKS wipe on every structure figure (stem + options) — wait for load
+      const stripOne = (img) => {
+        if (!img || img.dataset.qxSoftVer === "13") return;
+        const run = () => {
+          if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
+            void QxPremiumWM.paintMarksHideOnly(img);
+          }
+        };
+        if (img.complete && img.naturalWidth > 8) run();
+        else img.addEventListener("load", run, { once: true });
+      };
+      scope.querySelectorAll(
+        "img.qx-org-fig, img.qx-organic-fig, img.qx-pool-fig, img.qx-fig-img, img.qx-opt-fig-img, " +
+        "img[src*='qx-org-'], img[src*='cdn-question-pool'], img[src*='/pyq/'], img[src*='proxy-image'], " +
+        "#qxDiagramSlot img, .qx-diagram-slot img, .qx-opt-diagram-slot img, .mtk-opt-text img, .qx-prac-opt-text img"
+      ).forEach(stripOne);
       return;
     }
     if (q) rememberQuestionRaw(q);

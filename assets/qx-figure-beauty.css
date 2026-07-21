@@ -1,6 +1,6 @@
-/* ONE white back box + fully visible figures — no nested frames, no brand stamps */
+/* ONE white back-box only + fully visible clean figures — no watermark chrome */
 
-/* Outer slot = the only card */
+/* Outer slot = the only card behind the figure */
 #qxDiagramSlot,
 .qx-diagram-slot,
 .qx-diagram-seg,
@@ -9,12 +9,12 @@
   position: relative !important;
   display: block !important;
   margin: 12px auto !important;
-  padding: 12px 14px !important;
+  padding: 14px 16px !important;
   max-width: min(100%, 720px) !important;
   background: #ffffff !important;
-  border: 1px solid #e8eef6 !important;
+  border: 1px solid #e2e8f0 !important;
   border-radius: 12px !important;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06) !important;
   overflow: visible !important;
   text-align: center !important;
   line-height: 0 !important;
@@ -24,11 +24,11 @@
 .qx-prac-opt-text .qx-opt-diagram-slot,
 .mtk-options.qx-opts-img .qx-opt-diagram-slot {
   margin: 6px auto !important;
-  padding: 8px !important;
+  padding: 10px !important;
   max-width: 100% !important;
 }
 
-/* Everything inside the slot is flat — NO second box */
+/* Inside slot: NO second box */
 #qxDiagramSlot .qx-fig,
 #qxDiagramSlot .qx-fig-flat,
 #qxDiagramSlot .qx-pool-fig-wrap,
@@ -57,22 +57,30 @@
   max-width: 100% !important;
   display: block !important;
   line-height: 0 !important;
+  min-height: 0 !important;
 }
 
-/* Perfect figure visibility */
+/* Perfect figure visibility — always on top, never faded */
 #qxDiagramSlot img,
 .qx-diagram-slot img,
 .qx-diagram-seg img,
 .qx-opt-diagram-slot img,
 .qx-fig-flat img,
-.mtk-opt-text img.qx-pool-fig,
-.qx-prac-opt-text img.qx-pool-fig,
+.mtk-opt-text img,
+.qx-prac-opt-text img,
+.mtk-q-text img,
+.qx-content img.qx-pool-fig,
 .sol-body img,
 .qx-sol-body img,
 img.qx-pool-fig,
 img.qx-fig-img,
 img.qx-org-fig,
-img.qx-organic-fig {
+img.qx-organic-fig,
+img.qx-opt-fig-img,
+img[src*="qx-org-"],
+img[src*="cdn-question-pool"],
+img[src*="/pyq/"],
+img[src*="proxy-image"] {
   position: relative !important;
   z-index: 2 !important;
   display: block !important;
@@ -92,19 +100,18 @@ img.qx-organic-fig {
   pointer-events: auto !important;
 }
 
-/* Organic structures can be larger */
 img.qx-org-fig,
 img.qx-organic-fig,
 img[src*="qx-org-"] {
-  max-height: min(480px, 75vh) !important;
+  max-height: min(520px, 78vh) !important;
 }
 
-/* Options slightly capped for grid */
-.qx-opt-diagram-slot img {
-  max-height: 240px !important;
+.qx-opt-diagram-slot img,
+.mtk-opt-text img.qx-pool-fig,
+.qx-prac-opt-text img.qx-pool-fig {
+  max-height: 260px !important;
 }
 
-/* Dark theme: one dark card only */
 .mtk-test-root[data-test-theme="dark"] #qxDiagramSlot,
 .mtk-test-root[data-test-theme="dark"] .qx-diagram-slot,
 .mtk-test-root[data-test-theme="dark"] .qx-diagram-seg,
@@ -113,28 +120,40 @@ img[src*="qx-org-"] {
   border-color: #1e293b !important;
 }
 
-/* Never paint brand / watermark chrome on figures */
+/* Kill ALL watermark / brand chrome on figures */
 img.qx-coaching-wm,
 img.qx-quantrex-wm-overlay,
 .qx-quantrex-black-wm,
 .qx-quantrex-black-seal,
 .qx-premium-wm-sheet,
+.qx-premium-wm-title,
+.qx-premium-wm-tag,
+.qx-premium-wm-logo,
 .qx-brand-overlay,
 .qx-diag-watermark,
 .qx-wm-diagonal,
 .qx-wm-corner-badge,
 .qx-marks-strip,
+.qx-wm-mask,
+.qx-marks-scrub,
 canvas.qx-premium-wm-canvas,
-canvas.qx-marks-scrub-canvas {
+canvas.qx-marks-scrub-canvas,
+img[src*="quantrex-academy-brand"],
+img[src*="quantrex-watermark"],
+img[src*="getmarks-brand"],
+img[src*="marks-premium"] {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
   width: 0 !important;
   height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
   pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
 }
 
-/* Empty slots: no hollow box */
 .qx-opt-diagram-slot:empty,
 #qxDiagramSlot:empty,
 .qx-diagram-slot:empty {

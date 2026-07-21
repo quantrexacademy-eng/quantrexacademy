@@ -161,8 +161,8 @@
       img.classList.add("qx-pool-fig", "qx-no-wm", "qx-opt-fig-img");
     }
 
-    // Soft-strip v12 — color-safe MARKS wipe, single layer
-    const STRIP_VER = "12";
+    // Soft-strip v13 — aggressive MARKS wipe all structure figures
+    const STRIP_VER = "13";
     const key = cacheKey(img);
     if (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === STRIP_VER) {
       forceVisible(img);

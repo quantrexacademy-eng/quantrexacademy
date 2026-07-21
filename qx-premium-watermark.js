@@ -878,39 +878,41 @@ window.QxPremiumWM = (() => {
     return { stack, rw, rh };
   }
 
+  /** Soft-strip algorithm version — bump forces re-clean of previously frozen figures */
+  const SOFT_STRIP_VER = "13";
+
   /** True only for MARKS/Quizrr pool diagrams that carry baked watermarks */
   function figureNeedsMarksClean(img) {
     if (!img) return false;
-    if (img.dataset.qxSoftStrip === "2") return false;
+    // Already cleaned with current algorithm
+    if (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === SOFT_STRIP_VER) return false;
     if (img.classList.contains("qx-marks-icon") || img.classList.contains("qx-exam-logo")
-      || img.classList.contains("fc-img") || img.classList.contains("subj-ic-img")
-      || img.classList.contains("qx-org-fig") || img.classList.contains("qx-organic-fig")) {
+      || img.classList.contains("fc-img") || img.classList.contains("subj-ic-img")) {
       return false;
     }
     const src = String(img.dataset.qxOrigSrc || img.getAttribute("src") || "");
-    // UI icons from Marks CDN — never treat as pool figures
+    // UI icons — never treat as pool figures
     if (/cdn-assets\.getmarks|app_assets\/img\/(exams|ui|cpyqb)\//i.test(src)) return false;
     if (/ic_content_exam_|formula_cards|ncert_toolbox/i.test(src)) return false;
-    // Local alc-prep / preprocessed clean only — qx-org still may carry pale MARKS haze
+    // Already-soft-stripped data URLs
+    if (src.startsWith("data:image") && img.dataset.qxSoftVer === SOFT_STRIP_VER) return false;
+    // Local alc-prep assets only
     if (/\/assets\/qx-figures\//i.test(src) || /qx-alc-prep|hcv-|qx-irodov/i.test(src)) return false;
-    // Color organic figures: allow ONE soft-strip pass (preserves chroma ink in softStripMarksPixels)
-    if (/\/assets\/diagrams\/qx-org-/i.test(src) || img.classList.contains("qx-org-fig") || img.classList.contains("qx-organic-fig")) {
-      return img.dataset.qxSoftVer !== SOFT_STRIP_VER;
-    }
     if (/\/assets\/diagrams\/org-src\//i.test(src)) return false;
-    // Pool diagrams (incl. already-proxied or data: after partial clean)
-    if (/cdn-question-pool|cdn\.quizrr|\/pyq\/|proxy-image|restore-image/i.test(src)) return true;
-    if (img.dataset.qxHasWm === "1") return true;
-    if (img.classList.contains("qx-pool-fig") || img.classList.contains("qx-fig-img") || img.classList.contains("qx-no-wm")) {
-      // Option/stem figures from Marks often keep pool origin in dataset
-      if (/cdn-question-pool|quizrr|\/pyq\/|proxy-image|getmarks/i.test(src)) return true;
-      if (img.dataset.qxOrigSrc) return true;
+    // EVERY structure figure needs MARKS wipe until softVer matches (organic color + pool + options)
+    if (/\/assets\/diagrams\/qx-org-/i.test(src)
+      || img.classList.contains("qx-org-fig")
+      || img.classList.contains("qx-organic-fig")
+      || img.classList.contains("qx-pool-fig")
+      || img.classList.contains("qx-fig-img")
+      || img.classList.contains("qx-opt-fig-img")
+      || /cdn-question-pool|cdn\.quizrr|\/pyq\/|proxy-image|restore-image|getmarks/i.test(src)
+      || img.dataset.qxHasWm === "1"
+      || img.dataset.qxOrigSrc) {
+      return true;
     }
     return false;
   }
-
-  /** Soft-strip algorithm version — bump forces re-clean of previously frozen figures */
-  const SOFT_STRIP_VER = "12";
 
   /**
    * PERMANENT MARKS wipe (all exams / options A–D):
@@ -977,10 +979,11 @@ window.QxPremiumWM = (() => {
           }
           const lum = 0.299 * r + 0.587 * g + 0.114 * b;
           const chroma = Math.max(r, g, b) - Math.min(r, g, b);
-          // Only true dark structure OR strong colour — MARKS mid-gray never counts as ink
-          if (lum <= 85) inkMask[p] = 1;
-          else if (chroma >= 48 && lum < 200) inkMask[p] = 1;
-          else if (lum <= 98 && chroma < 12) inkMask[p] = 1;
+          // True dark structure ink OR strong color (organic bonds/atoms)
+          // Mid-gray MARKS text (lum ~150–220, low chroma) is NEVER ink
+          if (lum <= 100) inkMask[p] = 1;
+          else if (chroma >= 40 && lum < 230) inkMask[p] = 1;
+          else if (lum <= 115 && chroma < 14) inkMask[p] = 1;
         }
         const dil = new Uint8Array(inkMask);
         for (let y = 0; y < nh; y++) {
@@ -1010,16 +1013,26 @@ window.QxPremiumWM = (() => {
             b = Math.round(b * t + 255 * (1 - t));
           }
           if (dil[p] === 1) {
-            // Keep structure; slightly darken very light AA that made it into mask
             out[i] = r; out[i + 1] = g; out[i + 2] = b; out[i + 3] = 255;
             continue;
           }
-          // EVERY remaining pixel → pure paper white (kills all MARKS haze)
-          out[i] = 255;
-          out[i + 1] = 255;
-          out[i + 2] = 255;
-          out[i + 3] = 255;
-          stripped++;
+          const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+          const chroma = Math.max(r, g, b) - Math.min(r, g, b);
+          // Non-ink: kill pale/mid gray + blue-gray MARKS watermark → pure white
+          const nearGray =
+            Math.abs(r - g) < 50 &&
+            Math.abs(g - b) < 55 &&
+            Math.abs(r - b) < 55;
+          const blueGray = b >= r - 8 && b >= g - 8 && chroma < 55 && lum > 120 && lum < 248;
+          if (nearGray || blueGray || chroma < 38 || lum > 130) {
+            out[i] = 255;
+            out[i + 1] = 255;
+            out[i + 2] = 255;
+            out[i + 3] = 255;
+            stripped++;
+          } else {
+            out[i] = r; out[i + 1] = g; out[i + 2] = b; out[i + 3] = 255;
+          }
         }
         // Always write result (even if stripped count is small — background purify)
         if (stripped === 0) {
