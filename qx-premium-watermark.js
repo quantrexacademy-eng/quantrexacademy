@@ -827,7 +827,7 @@ window.QxPremiumWM = (() => {
   }
 
   /** Soft-strip algorithm version — bump forces re-clean of previously frozen figures */
-  const SOFT_STRIP_VER = "22";
+  const SOFT_STRIP_VER = "23"; // multi-colour book palette + force re-clean
 
   /** True only for MARKS/Quizrr pool diagrams that carry baked watermarks */
   function figureNeedsMarksClean(img) {
@@ -987,26 +987,30 @@ window.QxPremiumWM = (() => {
             if (lum < 200) inkAfter++;
           }
         }
-        // Digital-book neat multi-tone for grayscale exam line-art (bonds → blue ink palette)
-        if (mostlyGray && inkAfter > 40) {
+        // Digital-book multi-colour line art (clearly visible teal/indigo, not pure black)
+        // Run for any mostly-gray pool figure so all exams look like book figures
+        if (mostlyGray && inkAfter > 20) {
           for (let p = 0, i = 0; i < d.length; i += 4, p++) {
             const r = out[i], g = out[i + 1], b = out[i + 2];
             const lum = 0.299 * r + 0.587 * g + 0.114 * b;
             const chroma = Math.max(r, g, b) - Math.min(r, g, b);
-            if (chroma >= 20) continue; // already color
-            if (lum >= 248) {
+            if (chroma >= 28) continue; // keep real colour
+            if (lum >= 242) {
               out[i] = 255; out[i + 1] = 255; out[i + 2] = 255; out[i + 3] = 255;
               continue;
             }
-            if (lum < 95) {
-              // deep bond — indigo (book style)
-              out[i] = 22; out[i + 1] = 48; out[i + 2] = 120; out[i + 3] = 255;
-            } else if (lum < 145) {
-              out[i] = 40; out[i + 1] = 82; out[i + 2] = 155; out[i + 3] = 255;
-            } else if (lum < 200) {
-              out[i] = 70; out[i + 1] = 115; out[i + 2] = 185; out[i + 3] = 255;
+            // Strong book-style palette (visible multi-colour, not subtle)
+            if (lum < 70) {
+              out[i] = 15; out[i + 1] = 90; out[i + 2] = 110; out[i + 3] = 255; // deep teal
+            } else if (lum < 110) {
+              out[i] = 13; out[i + 1] = 120; out[i + 2] = 140; out[i + 3] = 255; // teal
+            } else if (lum < 150) {
+              out[i] = 30; out[i + 1] = 80; out[i + 2] = 170; out[i + 3] = 255; // blue
+            } else if (lum < 190) {
+              out[i] = 55; out[i + 1] = 100; out[i + 2] = 190; out[i + 3] = 255; // mid blue
+            } else if (lum < 225) {
+              out[i] = 90; out[i + 1] = 130; out[i + 2] = 200; out[i + 3] = 255; // light blue AA
             } else {
-              // near-white paper
               out[i] = 255; out[i + 1] = 255; out[i + 2] = 255; out[i + 3] = 255;
             }
           }
@@ -1104,7 +1108,7 @@ window.QxPremiumWM = (() => {
         ) {
           if (!img.dataset.qxOrigSrc) img.dataset.qxOrigSrc = orig;
           // Always re-point to same-origin proxy for CORS soft-strip
-          if (!/proxy-image/i.test(cur) || (/proxy-image/i.test(cur) && !/v=22/.test(cur))) {
+          if (!/proxy-image/i.test(cur) || (/proxy-image/i.test(cur) && !/v=23/.test(cur))) {
             img.dataset.qxProxyDone = "1";
             img.crossOrigin = "anonymous";
             await new Promise(r => {

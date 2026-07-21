@@ -2,11 +2,22 @@
 // Soft-strip MARKS on load; no click-to-open chrome.
 (function () {
   const ZOOM_CLS = "qx-fig-zoom-btn";
-  const STRIP_VER = "22";
+  const STRIP_VER = "23";
 
   function close() {
     document.querySelectorAll("#qxFigLightbox, .qx-fig-lightbox").forEach((el) => el.remove());
     document.body.classList.remove("qx-fig-lb-open");
+  }
+
+  function bustOldStrip(img) {
+    if (!img || !img.dataset) return;
+    if (img.dataset.qxSoftVer && img.dataset.qxSoftVer !== STRIP_VER) {
+      delete img.dataset.qxSoftStrip;
+      delete img.dataset.qxSoftVer;
+      delete img.dataset.qxFigFrozen;
+      delete img.dataset.qxWmClean;
+      img.classList.remove("qx-wm-clean", "qx-nowm", "qx-cleaned");
+    }
   }
 
   function fixOrigUrl(u) {
@@ -54,6 +65,7 @@
 
   function cleanInPage(img) {
     if (!isPoolFig(img)) return;
+    bustOldStrip(img);
     img.classList.add("qx-pool-fig", "qx-no-wm");
     img.style.setProperty("opacity", "1", "important");
     img.style.setProperty("visibility", "visible", "important");
@@ -63,6 +75,10 @@
     try {
       const cur = String(img.getAttribute("src") || "");
       let orig = fixOrigUrl(img.dataset.qxOrigSrc || "");
+      // If previous soft-strip left a stale data: URL, go back to orig CDN for re-clean
+      if (cur.startsWith("data:image") && img.dataset.qxSoftVer !== STRIP_VER && orig) {
+        img.removeAttribute("src");
+      }
       if (!orig || /proxy-image|data:image/i.test(orig)) {
         if (/proxy-image/i.test(cur)) {
           try {
@@ -81,14 +97,17 @@
       if (
         orig &&
         /cdn-question-pool|cdn\.quizrr|\/pyq\//i.test(orig) &&
-        !/data:image/i.test(cur) &&
         typeof QxImgClean !== "undefined" &&
         QxImgClean.proxyImageUrl
       ) {
         const want = QxImgClean.proxyImageUrl(orig);
-        if (!/proxy-image/i.test(cur) || !/v=22/.test(cur)) {
+        const needProxy =
+          cur.startsWith("data:image") ||
+          !/proxy-image/i.test(cur) ||
+          !/v=23/.test(cur);
+        if (needProxy && img.dataset.qxSoftVer !== STRIP_VER) {
           img.crossOrigin = "anonymous";
-          if (img.getAttribute("src") !== want) img.src = want;
+          img.src = want;
         }
       }
 

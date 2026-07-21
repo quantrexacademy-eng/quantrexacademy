@@ -184,7 +184,7 @@ module.exports = async function handler(req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("X-Qx-Proxy", "1");
     res.setHeader("X-Qx-Clean", cleaned ? "1" : "0");
-    res.setHeader("X-Qx-Clean-Ver", "22");
+    res.setHeader("X-Qx-Clean-Ver", "23");
     return res.status(200).send(buf);
   } catch (err) {
     console.error("proxy-image", err && err.message);
