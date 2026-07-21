@@ -4,7 +4,7 @@ window.QxImgClean = (() => {
   const DB_STORE = "blobs";
   const MANIFEST_URL = "data/qx_clean_manifest.json";
   const REVIEW_URL = "data/qx_image_review.json";
-  const CLEAN_VER = 70;
+  const CLEAN_VER = 71;
   const CENTER_WM_MAX = 0.006;
   const WM_DETECT_MIN = 0.0035;
   const CDN_ONLY = false;
@@ -3249,11 +3249,17 @@ window.QxImgClean = (() => {
 
   function finalizeDiagrams(root, q) {
     const scope = root || document;
+    // Already-built segments: only process images, never remount full question HTML
     scope.querySelectorAll(".qx-diagram-seg[data-qx-qid]").forEach(slot => {
       slot.querySelectorAll("img").forEach(img => processImage(img));
     });
+    // Empty locked slots only — if already has img, leave alone (prevents duplicate remount)
     scope.querySelectorAll("#qxDiagramSlot, .qx-diagram-slot[data-qx-qid]").forEach(slot => {
       if (slot.classList.contains("qx-diagram-seg")) return;
+      if (slot.querySelector("img[src]")) {
+        slot.querySelectorAll("img").forEach(img => processImage(img));
+        return;
+      }
       const qid = slot.dataset.qxQid;
       let raw = null;
       if (q && String(q.id) === String(qid)) raw = q.q;
@@ -3351,21 +3357,33 @@ window.QxImgClean = (() => {
       return;
     }
     if (q) rememberQuestionRaw(q);
-    finalizeDiagrams(root, q);
+    // Process existing diagram-seg slots only — do NOT remount full raw HTML (causes duplicates)
+    const scope = root || document;
+    scope.querySelectorAll(".qx-diagram-seg[data-qx-qid] img, #qxDiagramSlot img, .qx-diagram-slot[data-qx-locked='1'] img").forEach(img => {
+      processImage(img);
+    });
     finalizeOptionDiagrams(root, q);
-    stripInlinePoolImgs(root);
-    reinjectPinned(root);
-    dedupeDomFigures(root);
-    applyBrandOverlays(root);
-    // Second pass after images start loading (slot must win over body dupes)
-    setTimeout(() => {
-      stripQuestionInlineImgs(root);
-      dedupeDomFigures(root);
-    }, 200);
-    setTimeout(() => {
-      stripQuestionInlineImgs(root);
-      dedupeDomFigures(root);
-    }, 800);
+    // Strip any leftover imgs that escaped into text nodes
+    forceStripStemTextImgs(scope);
+    dedupeDomFigures(scope);
+    applyBrandOverlays(scope);
+    setTimeout(() => { forceStripStemTextImgs(scope); dedupeDomFigures(scope); }, 150);
+    setTimeout(() => { forceStripStemTextImgs(scope); dedupeDomFigures(scope); }, 600);
+  }
+
+  /** Aggressively remove figure imgs from question TEXT areas (never from diagram slots) */
+  function forceStripStemTextImgs(root) {
+    const scope = root || document;
+    scope.querySelectorAll(
+      ".mtk-q-text img, .qx-q-text-only img, .qx-q-seg-text img, .qx-prac-q img, .qa-q img, .qx-content.qx-q-text-only img"
+    ).forEach(img => {
+      if (img.closest(".qx-diagram-slot, #qxDiagramSlot, .qx-diagram-seg, .qx-opt-diagram-slot, .mtk-opt, .qx-prac-opt, .sol-body, .qx-sol-body")) return;
+      const src = img.getAttribute("src") || img.dataset.qxOrigSrc || "";
+      if (/cdn-question-pool|\/pyq\/|qx-figures|assets\/diagrams|proxy-image|qx-pool-fig/i.test(src)
+        || img.classList.contains("qx-pool-fig") || img.classList.contains("qx-fig-img")) {
+        img.remove();
+      }
+    });
   }
 
   function buildQuestionBodyHtml(qid, rawHtml, renderText, q) {
@@ -3376,25 +3394,39 @@ window.QxImgClean = (() => {
       return `<div class="mtk-q-text qx-content qx-marks-native qx-marks-native-q" data-qx-qid="${qid}">${body}</div>`;
     }
     pinQuestionHtml(qid, rawHtml);
-    const segments = parseQuestionSegments(rawHtml, qid, q);
+    // Single clean pipeline: unique figures once + text with ALL imgs stripped
     const textCls = "mtk-q-text qx-content qx-q-text-only";
-    const hasFig = segments.some(s => s.type === "figure");
-    if (!hasFig) {
-      // Prefer text without raw imgs (prevents later duplicate injection)
-      return `<div class="${textCls}" data-qx-qid="${qid}">${render(stripDiagramTags(rawHtml))}</div>`;
-    }
-    const figTotal = segments.filter(s => s.type === "figure").length;
-    let figIdx = 0;
-    const parts = segments.map(seg => {
-      if (seg.type === "text") {
-        return `<div class="${textCls} qx-q-seg-text" data-qx-qid="${qid}">${render(stripDiagramTags(seg.html))}</div>`;
-      }
-      figIdx += 1;
-      const inner = poolFigureHtml(seg.src, seg.displayW);
-      const idAttr = figTotal === 1 && figIdx === 1 ? ' id="qxDiagramSlot"' : "";
-      return `<div class="qx-diagram-seg qx-diagram-slot qx-pool-fig-wrap mathjax_ignore tex2jax_ignore"${idAttr} data-qx-qid="${qid}" data-qx-seg="${figIdx}" data-qx-locked="1">${inner}</div>`;
+    const entries = resolveDiagramEntries(rawHtml, qid, q);
+    // Dedupe by basename
+    const unique = [];
+    const seen = new Set();
+    entries.forEach(e => {
+      const k = figureSrcKey(e.src);
+      if (!k || seen.has(k)) return;
+      seen.add(k);
+      unique.push(e);
     });
-    return `<div class="qx-question-body qx-question-flow" data-qx-qid="${qid}">${parts.join("")}</div>`;
+    // Fallback extract if resolve missed tags
+    if (!unique.length) {
+      extractPoolSrcs(rawHtml).forEach(src => {
+        const k = figureSrcKey(src);
+        if (!k || seen.has(k)) return;
+        seen.add(k);
+        unique.push({ src, displayW: 0 });
+      });
+    }
+    const textOnly = stripDiagramTags(rawHtml);
+    const textHtml = `<div class="${textCls}" data-qx-qid="${qid}">${render(textOnly)}</div>`;
+    if (!unique.length) {
+      return `<div class="qx-question-body qx-question-flow" data-qx-qid="${qid}">${textHtml}</div>`;
+    }
+    // One figure block only (or unique figures each once — no text-side imgs)
+    const figParts = unique.map((e, i) => {
+      const inner = poolFigureHtml(e.src, e.displayW);
+      const idAttr = i === 0 ? ' id="qxDiagramSlot"' : "";
+      return `<div class="qx-diagram-seg qx-diagram-slot qx-pool-fig-wrap mathjax_ignore tex2jax_ignore"${idAttr} data-qx-qid="${qid}" data-qx-seg="${i + 1}" data-qx-locked="1" data-qx-fig-key="${escAttr(figureSrcKey(e.src))}">${inner}</div>`;
+    });
+    return `<div class="qx-question-body qx-question-flow" data-qx-qid="${qid}">${figParts.join("")}${textHtml}</div>`;
   }
 
   /** Remove duplicate figure imgs in question stem (same file) — keep one */
@@ -3436,8 +3468,21 @@ window.QxImgClean = (() => {
 
   function pinQuestionHtml(qid, html) {
     if (qid == null || qid === "") return;
-    const block = extractPoolFigureHtml(html, qid);
-    if (block) _pinnedHtml.set(String(qid), block);
+    // Store unique figure markup only (not full multi-img blob that duplicates)
+    const entries = resolveDiagramEntries(html, qid);
+    const seen = new Set();
+    const parts = [];
+    entries.forEach(e => {
+      const k = figureSrcKey(e.src);
+      if (!k || seen.has(k)) return;
+      seen.add(k);
+      parts.push(poolFigureHtml(e.src, e.displayW));
+    });
+    if (parts.length) _pinnedHtml.set(String(qid), parts.join(""));
+    else {
+      const block = extractPoolFigureHtml(html, qid);
+      if (block) _pinnedHtml.set(String(qid), block);
+    }
   }
 
   function slotNeedsDiagram(slot) {
@@ -3461,6 +3506,9 @@ window.QxImgClean = (() => {
   function reinjectPinned(scope) {
     const root = scope || document;
     root.querySelectorAll(".qx-diagram-slot[data-qx-qid]").forEach(slot => {
+      // Never reinject over an already-built segment (causes double figures)
+      if (slot.classList.contains("qx-diagram-seg") && slot.querySelector("img[src]")) return;
+      if (slot.querySelector("img[src]") && slot.dataset.qxLocked === "1") return;
       const qid = slot.dataset.qxQid;
       const pin = _pinnedHtml.get(String(qid));
       if (!pin || !slotNeedsDiagram(slot)) return;
@@ -3468,7 +3516,9 @@ window.QxImgClean = (() => {
       slot.classList.add("qx-pool-fig-wrap");
       slot.querySelectorAll("img").forEach(img => processImage(img));
     });
+    forceStripStemTextImgs(root);
     stripQuestionInlineImgs(root);
+    dedupeDomFigures(root);
   }
 
   let guardianStarted = false;
@@ -3555,6 +3605,7 @@ window.QxImgClean = (() => {
     renderOptionContent,
     buildQuestionBodyHtml,
     dedupeDomFigures,
+    forceStripStemTextImgs,
     isMarksNativeBook,
     mountDiagramSlot,
     rememberQuestionRaw,
