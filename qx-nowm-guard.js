@@ -161,8 +161,8 @@
       img.classList.add("qx-pool-fig", "qx-no-wm", "qx-opt-fig-img");
     }
 
-    // Soft-strip v14 — nuclear watermark wipe (screen 640)
-    const STRIP_VER = "14";
+    // Soft-strip v15 — nuclear watermark wipe (screen 640)
+    const STRIP_VER = "15";
     const key = cacheKey(img);
     if (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === STRIP_VER) {
       forceVisible(img);
@@ -297,17 +297,18 @@
       if (!main) return;
       nukeDom(main);
       let dirty = 0;
+      const STRIP_VER = "15";
       main.querySelectorAll(POOL_SEL).forEach((img) => {
         if (isUiIcon(img)) return;
         forceVisible(img);
-        if (img.dataset.qxSoftStrip !== "2") dirty++;
+        if (img.dataset.qxSoftStrip !== "2" || img.dataset.qxSoftVer !== STRIP_VER) dirty++;
       });
       // Also cover solution / test body figures
       document.querySelectorAll(
         ".sol-body img, .qx-sol-body img, .mtk-main img.qx-pool-fig, .marks-test-active img.qx-pool-fig"
       ).forEach((img) => {
         if (isUiIcon(img)) return;
-        if (img.dataset.qxSoftStrip !== "2") dirty++;
+        if (img.dataset.qxSoftStrip !== "2" || img.dataset.qxSoftVer !== STRIP_VER) dirty++;
       });
       if (dirty > 0) pass(main);
     }, 1400);

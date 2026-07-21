@@ -1834,8 +1834,8 @@ window.QxImgClean = (() => {
 
   function proxyImageUrl(cdnSrc) {
     const fixed = fixUrl(cdnSrc);
-    // v=11: server clean + client strip that is NOT overwritten by src-lock
-    const q = `url=${encodeURIComponent(fixed)}&clean=1&v=11`;
+    // v=15: server clean + client strip that is NOT overwritten by src-lock
+    const q = `url=${encodeURIComponent(fixed)}&clean=1&v=15`;
     try {
       if (typeof location !== "undefined" && location.origin && !/localhost|127\.0\.0\.1/i.test(location.origin)) {
         return `/api/proxy-image?${q}`;
@@ -1862,9 +1862,15 @@ window.QxImgClean = (() => {
 
   /** After proxy load → permanent pixel soft-strip (kills residual MARKS) */
   function queueSoftStrip(img) {
-    if (!img || img.dataset.qxSoftStrip === "2") return;
+    const STRIP_VER = "15";
+    if (!img || (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === STRIP_VER)) return;
+    if (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer !== STRIP_VER) {
+      delete img.dataset.qxSoftStrip;
+      delete img.dataset.qxFigFrozen;
+      delete img.dataset.qxSoftVer;
+    }
     const run = () => {
-      if (!img.isConnected || img.dataset.qxSoftStrip === "2") return;
+      if (!img.isConnected || (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === STRIP_VER)) return;
       if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
         void QxPremiumWM.paintMarksHideOnly(img);
       }
@@ -1883,9 +1889,15 @@ window.QxImgClean = (() => {
     const scope = root || document;
     if (!scope || !scope.querySelectorAll) return 0;
     let n = 0;
+    const STRIP_VER = "15";
     scope.querySelectorAll("img").forEach((img) => {
-      // Soft-strip done → leave frozen forever
-      if (!img || img.dataset.qxSoftStrip === "2") return;
+      // Soft-strip done at current ver → leave frozen
+      if (!img || (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === STRIP_VER)) return;
+      if (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer !== STRIP_VER) {
+        delete img.dataset.qxSoftStrip;
+        delete img.dataset.qxFigFrozen;
+        delete img.dataset.qxSoftVer;
+      }
       const cur = fixUrl(img.getAttribute("src") || "");
       const orig = fixUrl(img.dataset.qxOrigSrc || cur);
       const src = orig || cur;
@@ -2789,8 +2801,9 @@ window.QxImgClean = (() => {
   function processImage(img) {
     const cdnSrc = poolCdnSrc(img);
     if (!cdnSrc || !isPoolDiagram(cdnSrc, img)) return;
-    // Never skip soft-strip until current algorithm version is applied (screen 632)
-    const stripDone = img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === "11";
+    // Never skip soft-strip until current algorithm version is applied (screen 640 → v15)
+    const STRIP_VER = "15";
+    const stripDone = img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === STRIP_VER;
     if (img.dataset.qxProcessedVer === String(CLEAN_VER)) {
       const orgPending = isOrganicOrgSrc(cdnSrc) && !isCleanedImg(img);
       if (!orgPending && stripDone && (isCleanedImg(img) || img.classList.contains("qx-fig-ready")) && img.naturalWidth > 0) {
@@ -2804,8 +2817,8 @@ window.QxImgClean = (() => {
         }
         return;
       }
-      // fig-ready without soft-strip → force strip path
-      if (!stripDone && img.naturalWidth > 0 && !isLocalReadyAsset(cdnSrc) && !isPreprocessedQxOrg(cdnSrc)) {
+      // fig-ready without soft-strip → force strip path (incl. qx-org residual MARKS)
+      if (!stripDone && img.naturalWidth > 0 && !isOrganicOrgSrc(cdnSrc)) {
         queueSoftStrip(img);
       }
       if (img.dataset.qxProcessing === "1") return;
@@ -2822,7 +2835,10 @@ window.QxImgClean = (() => {
       img.classList.add("qx-cleaned", "qx-restored", "qx-wm-clean");
       void (async () => {
         await waitForImageLoad(img, 10000);
-        if (img.isConnected && img.naturalWidth > 0) finalizeQxOrgDisplay(img);
+        if (img.isConnected && img.naturalWidth > 0) {
+          finalizeQxOrgDisplay(img);
+          queueSoftStrip(img);
+        }
       })();
     } else if (isOrganicOrgSrc(cdnSrc)) {
       img.dataset.qxHasWm = "1";
@@ -2852,14 +2868,15 @@ window.QxImgClean = (() => {
       fig.style.removeProperty("opacity");
     }
 
-    if (isCleanedImg(img) && (isLocalReadyAsset(cdnSrc) || isPreprocessedQxOrg(cdnSrc) || img.dataset.qxSoftVer === "11")) {
+    if (isCleanedImg(img) && (isLocalReadyAsset(cdnSrc) || isPreprocessedQxOrg(cdnSrc) || img.dataset.qxSoftVer === STRIP_VER)) {
       if (isPreprocessedQxOrg(cdnSrc) || img.dataset.qxDisplayW) {
         if (img.naturalWidth > 0) finalizeQxOrgDisplay(img);
         else img.addEventListener("load", () => finalizeQxOrgDisplay(img), { once: true });
       }
       revealFigure(img);
       if (!isPreprocessedQxOrg(cdnSrc)) void finalizeCleanDisplay(img);
-      if (!isLocalReadyAsset(cdnSrc) && img.dataset.qxSoftVer !== "11") queueSoftStrip(img);
+      // Always soft-strip until v15 freezes (preprocessed qx-org can still carry residual MARKS)
+      if (img.dataset.qxSoftVer !== STRIP_VER) queueSoftStrip(img);
       return;
     }
 
@@ -3533,7 +3550,7 @@ window.QxImgClean = (() => {
       // Proxy first so canvas soft-strip is not CORS-tainted
       rewriteAllPoolImgs(scope);
       const stripOne = (img) => {
-        if (!img || img.dataset.qxSoftVer === "14") return;
+        if (!img || img.dataset.qxSoftVer === "15") return;
         const run = () => {
           if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
             void QxPremiumWM.paintMarksHideOnly(img);

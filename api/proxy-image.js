@@ -85,8 +85,12 @@ module.exports = async function handler(req, res) {
           const d = data;
           const channels = info.channels || 4;
           const total = info.width * info.height;
-          // Pass 1: strict ink mask (dark lines + real colour only)
+          // Nuclear v15: ONLY true dark structure + strong colour survive.
+          // Mid/pale gray-blue MARKS (lum ~120–240) → pure white. No dilate
+          // (dilate was protecting watermark pixels adjacent to ink).
           const ink = new Uint8Array(total);
+          const INK_MAX = 72;
+          const CHROMA_INK = 55;
           for (let p = 0, i = 0; p < total; p++, i += channels) {
             const r = d[i];
             const g = d[i + 1];
@@ -99,34 +103,10 @@ module.exports = async function handler(req, res) {
             const bb = Math.round(b * t + 255 * (1 - t));
             const lum = 0.299 * rr + 0.587 * gg + 0.114 * bb;
             const chroma = Math.max(rr, gg, bb) - Math.min(rr, gg, bb);
-            // Dark structure ink (MARKS is mid-gray ~150–220 — not ink)
-            if (lum < 100) ink[p] = 1;
-            else if (chroma >= 40 && lum < 220) ink[p] = 1;
-            else if (lum < 118 && chroma < 16) ink[p] = 1;
+            if (lum <= INK_MAX) ink[p] = 1;
+            else if (chroma >= CHROMA_INK && lum < 200) ink[p] = 1;
           }
-          // 1px dilate for AA
-          const dil = new Uint8Array(ink);
-          const W = info.width;
-          const H = info.height;
-          for (let y = 0; y < H; y++) {
-            for (let x = 0; x < W; x++) {
-              if (!ink[y * W + x]) continue;
-              for (let dy = -1; dy <= 1; dy++) {
-                for (let dx = -1; dx <= 1; dx++) {
-                  const nx = x + dx;
-                  const ny = y + dy;
-                  if (nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
-                  dil[ny * W + nx] = 1;
-                }
-              }
-            }
-          }
-          // Pass 2: bleach every non-ink mid/pale pixel (kills diagonal MARKS)
           for (let p = 0, i = 0; p < total; p++, i += channels) {
-            if (dil[p]) {
-              d[i + 3] = 255;
-              continue;
-            }
             const r = d[i];
             const g = d[i + 1];
             const b = d[i + 2];
@@ -135,14 +115,26 @@ module.exports = async function handler(req, res) {
             const rr = Math.round(r * t + 255 * (1 - t));
             const gg = Math.round(g * t + 255 * (1 - t));
             const bb = Math.round(b * t + 255 * (1 - t));
+            if (ink[p]) {
+              d[i] = rr;
+              d[i + 1] = gg;
+              d[i + 2] = bb;
+              d[i + 3] = 255;
+              continue;
+            }
             const lum = 0.299 * rr + 0.587 * gg + 0.114 * bb;
             const chroma = Math.max(rr, gg, bb) - Math.min(rr, gg, bb);
             const nearGray =
-              Math.abs(rr - gg) < 50 &&
-              Math.abs(gg - bb) < 54 &&
-              Math.abs(rr - bb) < 56;
-            // Anything not pure white that's low-chroma = watermark haze
-            if (lum < 254 && (nearGray || chroma < 58)) {
+              Math.abs(rr - gg) < 48 &&
+              Math.abs(gg - bb) < 52 &&
+              Math.abs(rr - bb) < 54;
+            // Everything not true ink that is gray/pale → paper white
+            if (lum > INK_MAX && (nearGray || chroma < 50)) {
+              d[i] = 255;
+              d[i + 1] = 255;
+              d[i + 2] = 255;
+              d[i + 3] = 255;
+            } else if (lum > 95 && chroma < 60) {
               d[i] = 255;
               d[i + 1] = 255;
               d[i + 2] = 255;
@@ -183,7 +175,7 @@ module.exports = async function handler(req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("X-Qx-Proxy", "1");
     res.setHeader("X-Qx-Clean", cleaned ? "1" : "0");
-    res.setHeader("X-Qx-Clean-Ver", "11");
+    res.setHeader("X-Qx-Clean-Ver", "15");
     return res.status(200).send(buf);
   } catch (err) {
     console.error("proxy-image", err && err.message);
