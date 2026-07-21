@@ -434,7 +434,9 @@ async function loadSingleBank(slug) {
     return QUESTIONS.filter(q => q._bank === slug);
   }
   const meta = BANK_INDEX[slug];
-  const res = await fetch(meta.file);
+  // Bust CDN/browser cache when figure packs / bank URLs are rebuilt
+  const bankUrl = meta.file + (meta.file.includes("?") ? "&" : "?") + "v=" + (typeof window !== "undefined" && window.QX_BUILD ? window.QX_BUILD : "1");
+  const res = await fetch(bankUrl, { cache: "no-store" });
   if (!res.ok) {
     console.warn("Question bank unavailable on hosting:", meta.file, res.status);
     _banksLoaded[slug] = true;

@@ -1,0 +1,332 @@
+{
+  "topic": "Preparation and Properties of Amides",
+  "exam": "jee_advanced",
+  "chapter": "Amines",
+  "count": 36,
+  "figures": [
+    {
+      "id": "006328c968d7",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/Iic68M_rQJbbL49Tl7ap9USUbh4fTZPpj3JjIAVCA5c.original.fullsize.png",
+      "urlRx": "Iic68M_rQJbbL49Tl7ap9USUbh4fTZPpj3JjIAVCA5c\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-006328c968d7.png",
+      "w": 595,
+      "h": 729,
+      "bytes": 27302
+    },
+    {
+      "id": "e1d3666a6b01",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/qYyssKUWif3I-5Ben2uPh0Uaeu4gFi9VyWnvPCABMR0.original.fullsize.png",
+      "urlRx": "qYyssKUWif3I\\-5Ben2uPh0Uaeu4gFi9VyWnvPCABMR0\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-e1d3666a6b01.png",
+      "w": 465,
+      "h": 138,
+      "bytes": 5963
+    },
+    {
+      "id": "3e4e093a49a6",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/IDc3dRVUmdKFiXkUOr2hqHpIp094Zs_1MxfRtqg5v7w.original.fullsize.png",
+      "urlRx": "IDc3dRVUmdKFiXkUOr2hqHpIp094Zs_1MxfRtqg5v7w\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-3e4e093a49a6.png",
+      "w": 473,
+      "h": 417,
+      "bytes": 19161
+    },
+    {
+      "id": "ea00218460d7",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/5w9wD5TrBda5j2srXlCi-TslpSurZFNHL4qfCII-stE.original.fullsize.png",
+      "urlRx": "5w9wD5TrBda5j2srXlCi\\-TslpSurZFNHL4qfCII\\-stE\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-ea00218460d7.png",
+      "w": 454,
+      "h": 393,
+      "bytes": 15134
+    },
+    {
+      "id": "31506d755094",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/YojvyX-pD0foQoAv-nEPdjiwmnyPVOAmeyvFzzq4gG8.original.fullsize.png",
+      "urlRx": "YojvyX\\-pD0foQoAv\\-nEPdjiwmnyPVOAmeyvFzzq4gG8\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-31506d755094.png",
+      "w": 253,
+      "h": 420,
+      "bytes": 3156
+    },
+    {
+      "id": "34bb3b321a0b",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/Jee_advance_paper_2_Chem_Q.35_Ans_1.jpg",
+      "urlRx": "Jee_advance_paper_2_Chem_Q\\.35_Ans_1\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-34bb3b321a0b.png",
+      "w": 733,
+      "h": 488,
+      "bytes": 30847
+    },
+    {
+      "id": "291908fa235b",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/Jee_advance_paper_2_Chem_Q.17_Opp_1.jpg",
+      "urlRx": "Jee_advance_paper_2_Chem_Q\\.17_Opp_1\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-291908fa235b.png",
+      "w": 420,
+      "h": 333,
+      "bytes": 25802
+    },
+    {
+      "id": "f74e2f786d41",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/Jee_advance_paper_2_Chem_Q.17_Opp_2.jpg",
+      "urlRx": "Jee_advance_paper_2_Chem_Q\\.17_Opp_2\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-f74e2f786d41.png",
+      "w": 417,
+      "h": 419,
+      "bytes": 29800
+    },
+    {
+      "id": "2f3910ef5ec2",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/Jee_advance_paper_2_Chem_Q.17_Opp_3.jpg",
+      "urlRx": "Jee_advance_paper_2_Chem_Q\\.17_Opp_3\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-2f3910ef5ec2.png",
+      "w": 420,
+      "h": 357,
+      "bytes": 28598
+    },
+    {
+      "id": "903a1ccd7f61",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/Jee_advance_paper_2_Chem_Q.17_Opp_4.jpg",
+      "urlRx": "Jee_advance_paper_2_Chem_Q\\.17_Opp_4\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-903a1ccd7f61.png",
+      "w": 420,
+      "h": 394,
+      "bytes": 27379
+    },
+    {
+      "id": "f7d483864e21",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/image35-cb4a4830-5439-4ab1-8795-d0455f7b0d96.jpg",
+      "urlRx": "image35\\-cb4a4830\\-5439\\-4ab1\\-8795\\-d0455f7b0d96\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-f7d483864e21.png",
+      "w": 420,
+      "h": 185,
+      "bytes": 3512
+    },
+    {
+      "id": "0f2d5fe8f036",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/image36-82e8db68-938c-43a2-8e28-274f975df8d6.jpg",
+      "urlRx": "image36\\-82e8db68\\-938c\\-43a2\\-8e28\\-274f975df8d6\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-0f2d5fe8f036.png",
+      "w": 365,
+      "h": 124,
+      "bytes": 4014
+    },
+    {
+      "id": "dc813edfea33",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/image37-8fe1b260-4fd3-4461-9cf6-0c54185b11bb.jpg",
+      "urlRx": "image37\\-8fe1b260\\-4fd3\\-4461\\-9cf6\\-0c54185b11bb\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-dc813edfea33.png",
+      "w": 396,
+      "h": 420,
+      "bytes": 7636
+    },
+    {
+      "id": "32988d38de0c",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/image38-89e87840-dfa5-4b33-a709-deae17f089d1.jpg",
+      "urlRx": "image38\\-89e87840\\-dfa5\\-4b33\\-a709\\-deae17f089d1\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-32988d38de0c.png",
+      "w": 400,
+      "h": 123,
+      "bytes": 4758
+    },
+    {
+      "id": "7f8bfa717da4",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/image39-95d2aa6c-02f8-455b-80c7-e82b7db6cf35.jpg",
+      "urlRx": "image39\\-95d2aa6c\\-02f8\\-455b\\-80c7\\-e82b7db6cf35\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-7f8bfa717da4.png",
+      "w": 323,
+      "h": 420,
+      "bytes": 7760
+    },
+    {
+      "id": "c10ba9032c58",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/image40-58632105-7df4-4409-8013-5880d1602f09.jpg",
+      "urlRx": "image40\\-58632105\\-7df4\\-4409\\-8013\\-5880d1602f09\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-c10ba9032c58.png",
+      "w": 444,
+      "h": 121,
+      "bytes": 5372
+    },
+    {
+      "id": "7ad94063fbab",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/image41-3031b9d6-aa55-4483-bc32-a84596ccead0.jpg",
+      "urlRx": "image41\\-3031b9d6\\-aa55\\-4483\\-bc32\\-a84596ccead0\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-7ad94063fbab.png",
+      "w": 231,
+      "h": 420,
+      "bytes": 5606
+    },
+    {
+      "id": "045cdc7ffda5",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/image42-620c6937-6bf4-42ae-8767-4b7aab5a9723.jpg",
+      "urlRx": "image42\\-620c6937\\-6bf4\\-42ae\\-8767\\-4b7aab5a9723\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-045cdc7ffda5.png",
+      "w": 425,
+      "h": 124,
+      "bytes": 4787
+    },
+    {
+      "id": "7a75b4f5e977",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/aa960b28-94e0-4ea5-b0c0-0bc3629a167d-image.png",
+      "urlRx": "aa960b28\\-94e0\\-4ea5\\-b0c0\\-0bc3629a167d\\-image\\.png",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-7a75b4f5e977.png",
+      "w": 658,
+      "h": 159,
+      "bytes": 7234
+    },
+    {
+      "id": "10470c0baecc",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/227e7b43-3e08-4942-bc95-079ba65d85df-image.png",
+      "urlRx": "227e7b43\\-3e08\\-4942\\-bc95\\-079ba65d85df\\-image\\.png",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-10470c0baecc.png",
+      "w": 336,
+      "h": 164,
+      "bytes": 3588
+    },
+    {
+      "id": "5b2dbeb80001",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/514a7883-03f1-4368-afe2-4b98b0ff6182-image.png",
+      "urlRx": "514a7883\\-03f1\\-4368\\-afe2\\-4b98b0ff6182\\-image\\.png",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-5b2dbeb80001.png",
+      "w": 616,
+      "h": 182,
+      "bytes": 7814
+    },
+    {
+      "id": "d6288b84de90",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/88faaa50-cf32-4344-ba38-6d932e787df0-image.png",
+      "urlRx": "88faaa50\\-cf32\\-4344\\-ba38\\-6d932e787df0\\-image\\.png",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-d6288b84de90.png",
+      "w": 666,
+      "h": 321,
+      "bytes": 11609
+    },
+    {
+      "id": "c2f5f9e18f8f",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/23a1f665-de4b-4baf-92d5-3672c7f3a808-image.png",
+      "urlRx": "23a1f665\\-de4b\\-4baf\\-92d5\\-3672c7f3a808\\-image\\.png",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-c2f5f9e18f8f.png",
+      "w": 576,
+      "h": 183,
+      "bytes": 8646
+    },
+    {
+      "id": "7c46684a1bcf",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/image1-77f32165-a366-4f3e-8d1f-75dd4dc168cf.jpg",
+      "urlRx": "image1\\-77f32165\\-a366\\-4f3e\\-8d1f\\-75dd4dc168cf\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-7c46684a1bcf.png",
+      "w": 485,
+      "h": 161,
+      "bytes": 6678
+    },
+    {
+      "id": "90f08afbdbda",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/image11-788a2d2f-bc1e-4cbc-b523-e236d08932e2.jpg",
+      "urlRx": "image11\\-788a2d2f\\-bc1e\\-4cbc\\-b523\\-e236d08932e2\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-90f08afbdbda.png",
+      "w": 419,
+      "h": 250,
+      "bytes": 6902
+    },
+    {
+      "id": "e1e8d350b9d9",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/image16-7dcae031-b1d3-4980-bb7b-55a57c13e2ff.jpg",
+      "urlRx": "image16\\-7dcae031\\-b1d3\\-4980\\-bb7b\\-55a57c13e2ff\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-e1e8d350b9d9.png",
+      "w": 652,
+      "h": 284,
+      "bytes": 12340
+    },
+    {
+      "id": "7337d7a7ea11",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/image12-5f496f5d-c2e0-4820-bf6d-a186b26cdf8a.jpg",
+      "urlRx": "image12\\-5f496f5d\\-c2e0\\-4820\\-bf6d\\-a186b26cdf8a\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-7337d7a7ea11.png",
+      "w": 420,
+      "h": 357,
+      "bytes": 19368
+    },
+    {
+      "id": "9401caecc986",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/image13-3f7c485e-2b13-4e61-8a6a-ebc180ed5f23.jpg",
+      "urlRx": "image13\\-3f7c485e\\-2b13\\-4e61\\-8a6a\\-ebc180ed5f23\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-9401caecc986.png",
+      "w": 334,
+      "h": 217,
+      "bytes": 4742
+    },
+    {
+      "id": "2deb062f555b",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/image14-ef893983-0211-4889-bfa5-2ed4147b3820.jpg",
+      "urlRx": "image14\\-ef893983\\-0211\\-4889\\-bfa5\\-2ed4147b3820\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-2deb062f555b.png",
+      "w": 420,
+      "h": 352,
+      "bytes": 19924
+    },
+    {
+      "id": "e306068fe91f",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/image15-943e5cc1-2fcf-40b9-aaca-6e086f40a65c.jpg",
+      "urlRx": "image15\\-943e5cc1\\-2fcf\\-40b9\\-aaca\\-6e086f40a65c\\.jpg",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-e306068fe91f.png",
+      "w": 420,
+      "h": 390,
+      "bytes": 23815
+    },
+    {
+      "id": "c769f8af33cc",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/BeYLjJnusd9Xzxl0vznAVx5d0UUSSlQE221UaLXUoJc.original.fullsize.png",
+      "urlRx": "BeYLjJnusd9Xzxl0vznAVx5d0UUSSlQE221UaLXUoJc\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-c769f8af33cc.png",
+      "w": 334,
+      "h": 162,
+      "bytes": 4124
+    },
+    {
+      "id": "8de7ce7396d2",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/H9cdbc58aJUxa1ExyAOXQsSe72xfyiieY5zntgW4w3g.original.fullsize.png",
+      "urlRx": "H9cdbc58aJUxa1ExyAOXQsSe72xfyiieY5zntgW4w3g\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-8de7ce7396d2.png",
+      "w": 369,
+      "h": 173,
+      "bytes": 4388
+    },
+    {
+      "id": "dd870abddfcf",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/wgJoK_F7PbJi-ma8hY9layaKmAHf498O9xvDMW8tGzU.original.fullsize.png",
+      "urlRx": "wgJoK_F7PbJi\\-ma8hY9layaKmAHf498O9xvDMW8tGzU\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-dd870abddfcf.png",
+      "w": 420,
+      "h": 233,
+      "bytes": 14254
+    },
+    {
+      "id": "7b5a3176c40a",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/26YC4HDKD_i5rzE2S69CDLXPFvNtlToWRf3zX9dT5rs.original.fullsize.png",
+      "urlRx": "26YC4HDKD_i5rzE2S69CDLXPFvNtlToWRf3zX9dT5rs\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-7b5a3176c40a.png",
+      "w": 420,
+      "h": 221,
+      "bytes": 13911
+    },
+    {
+      "id": "89f90a009e67",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/RMr84-hG7z5Kz2mC9SK5vlioGK4LCoSiGYozBfbXyUE.original.fullsize.png",
+      "urlRx": "RMr84\\-hG7z5Kz2mC9SK5vlioGK4LCoSiGYozBfbXyUE\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-89f90a009e67.png",
+      "w": 420,
+      "h": 243,
+      "bytes": 14020
+    },
+    {
+      "id": "b0c24af203f0",
+      "url": "https://cdn-question-pool.getmarks.app/pyq/jee_advanced/0GMRPjdKfsKZ3p2JjvHqXxJU5b7ymc8nbnUpmhTnxG4.original.fullsize.png",
+      "urlRx": "0GMRPjdKfsKZ3p2JjvHqXxJU5b7ymc8nbnUpmhTnxG4\\.original\\.fullsize\\.png",
+      "clean": "/assets/qx-figures/amides-prep/qx-amide-b0c24af203f0.png",
+      "w": 420,
+      "h": 242,
+      "bytes": 14288
+    }
+  ]
+}
