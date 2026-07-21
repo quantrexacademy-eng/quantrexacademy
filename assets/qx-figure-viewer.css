@@ -1,24 +1,11 @@
-/* Bare figures only — no card, no zoom chrome, no lightbox */
+/* Question open = clean figure (soft-strip). Click = original Marks (with watermark). */
 
 img.qx-fig-clickable,
 .qx-fig-clickable-wrap {
-  cursor: default !important;
+  cursor: zoom-in !important;
 }
 
-#qxFigLightbox,
-.qx-fig-lightbox,
-.qx-diag-toolbar,
-.qx-diag-zoom-btns,
-.qx-diag-btn,
-.qx-diag-pct,
-.qx-diagram-hint,
-.qx-diagram-badge {
-  display: none !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
-
-/* In-question: image only, no rectangular frame */
+/* Bare figure on question page — no rectangular card */
 .mtk-main #qxDiagramSlot,
 .mtk-main .qx-diagram-slot,
 .mtk-main .qx-diagram-seg,
@@ -30,7 +17,6 @@ img.qx-fig-clickable,
   box-shadow: none !important;
   border-radius: 0 !important;
   padding: 0 !important;
-  outline: none !important;
 }
 
 .mtk-main #qxDiagramSlot img,
@@ -38,23 +24,85 @@ img.qx-fig-clickable,
 .mtk-main .qx-question-body img.qx-pool-fig,
 .mtk-main .mtk-q-text img.qx-pool-fig,
 .mtk-main .qx-content img.qx-pool-fig,
-.mtk-main .qx-fig img.qx-pool-fig,
-.qx-practice-page .qx-content img.qx-pool-fig,
-.qx-practice-page #qxDiagramSlot img {
-  max-width: min(100%, 560px) !important;
-  max-height: 360px !important;
+.qx-practice-page .qx-content img.qx-pool-fig {
+  max-width: min(100%, 640px) !important;
+  max-height: min(420px, 70vh) !important;
   width: auto !important;
   height: auto !important;
-  min-height: 0 !important;
   object-fit: contain !important;
-  margin: 10px auto !important;
+  margin: 12px auto !important;
   display: block !important;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  cursor: default !important;
+  cursor: zoom-in !important;
+}
+
+/* Lightbox for original Marks figure (watermark OK here only) */
+#qxFigLightbox,
+.qx-fig-lightbox {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 99999 !important;
+  background: rgba(8, 12, 20, 0.75) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
+}
+
+.qx-fig-lb-stage {
+  max-width: 96vw;
+  max-height: 92vh;
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qx-fig-lb-img {
+  max-width: min(96vw, 1100px) !important;
+  max-height: 88vh !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: auto !important;
+  background: #fff !important;
+}
+
+.qx-fig-lb-close {
+  position: fixed !important;
+  top: 12px !important;
+  right: 14px !important;
+  z-index: 100000 !important;
+  width: 42px !important;
+  height: 42px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: #fff !important;
+  color: #111 !important;
+  font-size: 28px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
 }
 
 body.qx-fig-lb-open {
-  overflow: auto;
+  overflow: hidden;
+}
+
+/* Hide zoom toolbar chrome (old + button) — use click image only */
+.qx-diag-toolbar,
+.qx-diag-zoom-btns,
+.qx-diag-btn,
+.qx-diag-pct,
+.qx-diagram-hint,
+.qx-diagram-badge {
+  display: none !important;
 }
