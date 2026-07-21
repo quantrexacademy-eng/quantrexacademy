@@ -20,10 +20,12 @@
     "img[src*='proxy-image']"
   ].join(", ");
 
-  // MARKS chrome only — keep light coaching brand image
+  // Kill MARKS chrome + Quantrex brand stamps (figures stay plain clean)
   const KILL_SEL = [
     "canvas.qx-premium-wm-canvas",
     "canvas.qx-marks-scrub-canvas",
+    "img.qx-coaching-wm",
+    "img.qx-quantrex-wm-overlay",
     ".qx-quantrex-black-wm",
     ".qx-quantrex-black-seal",
     ".qx-brand-overlay",
@@ -37,7 +39,9 @@
     "img[src*='getmarks-brand']",
     "img[alt*='Get Marks App']",
     "img[src*='marks-premium']",
-    "img[src*='marks_selected']"
+    "img[src*='marks_selected']",
+    "img[src*='quantrex-academy-brand']",
+    "img[src*='quantrex-watermark']"
   ].join(", ");
 
   // origSrc → cleaned data URL (survives prev/next re-render)
@@ -193,8 +197,8 @@
           img.dataset.qxNowmRetry = "1";
           setTimeout(() => applyCacheOrClean(img), 500);
         }
-        if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintCoachingBrandLight) {
-          void QxPremiumWM.paintCoachingBrandLight(img);
+        if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.stripQuantrexBrand) {
+          QxPremiumWM.stripQuantrexBrand(img);
         }
       });
     } else if (typeof QxImgClean !== "undefined" && QxImgClean.rewriteAllPoolImgs) {

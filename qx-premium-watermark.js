@@ -807,70 +807,26 @@ window.QxPremiumWM = (() => {
   }
 
   async function paintBrandWatermark(img, stack, rw, rh) {
-    return paintCoachingBrandLight(img);
+    if (img) stripQuantrexBrand(img);
+    return false;
   }
 
-  /** Subtle coaching brand BEHIND figure — never covers structure */
   function applyCoachingWmOverlay(stack, rw, rh, lw, opacity) {
-    if (!stack || rw < 48 || rh < 48) return null;
-    const cs = window.getComputedStyle(stack);
-    if (cs.position === "static") stack.style.position = "relative";
-    stack.querySelectorAll("img:not(.qx-coaching-wm):not(.qx-quantrex-wm-overlay)").forEach((im) => {
-      if (!im.style.position || im.style.position === "static") im.style.position = "relative";
-      im.style.zIndex = "2";
-      im.style.opacity = "1";
-      im.style.background = im.style.background || "#fff";
-    });
-    let el = stack.querySelector("img.qx-coaching-wm");
-    if (!el) {
-      el = document.createElement("img");
-      el.className = "qx-coaching-wm qx-quantrex-wm-overlay";
-      el.alt = "";
-      el.setAttribute("aria-hidden", "true");
-      el.draggable = false;
-      el.decoding = "async";
-      stack.insertBefore(el, stack.firstChild);
-    }
-    const side = Math.min(rw, rh);
-    const size = Math.max(COACHING_WM_MIN_PX, Math.min(side * COACHING_WM_SCALE, Math.max(rw, rh) * 0.32));
-    const op = opacity != null ? opacity : COACHING_WM_OPACITY;
-    if (!/quantrex-academy-brand/i.test(el.getAttribute("src") || "")) el.src = COACHING_WM_SRC;
-    el.style.cssText = [
-      "position:absolute", "left:50%", "top:50%",
-      `width:${Math.round(size)}px`, "height:auto",
-      "max-width:55%", "max-height:55%",
-      "transform:translate(-50%,-50%) rotate(-26deg)",
-      `opacity:${op}`,
-      "pointer-events:none", "z-index:0",
-      "mix-blend-mode:multiply", "user-select:none", "display:block"
-    ].join(";");
-    stack.classList.add("qx-coaching-wm-active");
-    return el;
+    // No Quantrex brand on figures — keep neat clean diagrams only
+    if (!stack) return null;
+    stack.querySelectorAll("img.qx-coaching-wm, img.qx-quantrex-wm-overlay").forEach(el => el.remove());
+    stack.classList.remove("qx-coaching-wm-active", "qx-quantrex-wm-active", "qx-brand-covered");
+    return null;
   }
 
   function paintCoachingBrandLight(img) {
-    if (!img || !img.isConnected) return Promise.resolve(false);
-    if (img.classList.contains("qx-marks-icon") || img.classList.contains("fc-img")) {
-      return Promise.resolve(false);
-    }
-    const prep = prepareFigureStack(img);
-    if (!prep || prep.rw < 56 || prep.rh < 56) return Promise.resolve(false);
-    const isOpt = !!(img.closest && img.closest(".mtk-opt-text, .qx-prac-opt-text, .qx-opt-fig"));
-    const op = isOpt ? COACHING_WM_OPACITY_OPT : COACHING_WM_OPACITY;
-    return new Promise((resolve) => {
-      ensureCoachingWmLogo(() => {
-        applyCoachingWmOverlay(prep.stack, prep.rw, prep.rh, null, op);
-        img.style.position = "relative";
-        img.style.zIndex = "2";
-        img.style.opacity = "1";
-        img.dataset.qxBrandWm = "1";
-        resolve(true);
-      });
-    });
+    if (img) stripQuantrexBrand(img);
+    return Promise.resolve(false);
   }
 
   async function paintOrganicCoachingWatermark(img, stack, rw, rh) {
-    return paintCoachingBrandLight(img);
+    if (img) stripQuantrexBrand(img);
+    return false;
   }
 
   async function exportWatermarkedFigure(img) {
@@ -1071,7 +1027,6 @@ window.QxPremiumWM = (() => {
           img.style.setProperty("visibility", "visible", "important");
           img.style.setProperty("display", "block", "important");
           stripQuantrexBrand(img);
-          void paintCoachingBrandLight(img);
           return resolve(true);
         }
         for (let i = 0; i < d.length; i++) d[i] = out[i];
@@ -1093,7 +1048,6 @@ window.QxPremiumWM = (() => {
           img.style.setProperty("visibility", "visible", "important");
           img.style.setProperty("display", "block", "important");
           stripQuantrexBrand(img);
-          void paintCoachingBrandLight(img);
           try {
             if (window.QxNoWmGuard && window.QxNoWmGuard.stripCache) {
               const k = String(img.dataset.qxOrigSrc || prev || "").split("&v=")[0];
@@ -1189,10 +1143,11 @@ window.QxPremiumWM = (() => {
   }
 
   /**
-   * Gentle MARKS strip (keep beautiful AA lines), then light coaching brand behind.
+   * Gentle MARKS strip only — neat clean figures, no Quantrex brand stamp.
    */
   function paintMarksHideOnly(img) {
     if (!img || !img.isConnected) return Promise.resolve(false);
+    stripQuantrexBrand(img);
     if (!figureNeedsMarksClean(img)) {
       img.classList.add("qx-fig-ready", "qx-wm-clean");
       img.dataset.qxHasWm = "0";
@@ -1200,7 +1155,7 @@ window.QxPremiumWM = (() => {
       img.style.setProperty("opacity", "1", "important");
       img.style.setProperty("visibility", "visible", "important");
       img.style.setProperty("display", "block", "important");
-      return paintCoachingBrandLight(img).then(() => true);
+      return Promise.resolve(true);
     }
     return redrawFigureBlackInk(img).then(ok => {
       img.classList.add("qx-fig-ready", "qx-wm-clean", "qx-hq-color");
@@ -1210,12 +1165,14 @@ window.QxPremiumWM = (() => {
       img.style.setProperty("opacity", "1", "important");
       img.style.setProperty("visibility", "visible", "important");
       img.style.setProperty("display", "block", "important");
-      return paintCoachingBrandLight(img).then(() => !!ok);
+      stripQuantrexBrand(img);
+      return !!ok;
     });
   }
 
   function paintQuantrexBrand(img) {
-    return paintCoachingBrandLight(img);
+    if (img) stripQuantrexBrand(img);
+    return Promise.resolve(false);
   }
 
   function paintPremiumDiagonalWm(img) {
@@ -1229,11 +1186,13 @@ window.QxPremiumWM = (() => {
   function nukeAllWatermarkDom(root) {
     const scope = root || document;
     try {
-      // Kill MARKS chrome only — keep light coaching brand (qx-coaching-wm)
+      // Remove MARKS chrome + all Quantrex stamps — figures stay plain clean
       scope.querySelectorAll(
-        "canvas.qx-marks-scrub-canvas, .qx-marks-strip, .qx-marks-scrub, .qx-wm-mask, " +
-        ".qx-premium-wm-sheet, .qx-wm-corner-badge, " +
-        "img[src*='getmarks-brand'], img[alt*='Get Marks App'], img[src*='marks-premium'], img[src*='marks_selected']"
+        "canvas.qx-marks-scrub-canvas, canvas.qx-premium-wm-canvas, .qx-marks-strip, .qx-marks-scrub, .qx-wm-mask, " +
+        ".qx-premium-wm-sheet, .qx-wm-corner-badge, .qx-brand-overlay, .qx-diag-watermark, " +
+        "img.qx-coaching-wm, img.qx-quantrex-wm-overlay, .qx-quantrex-black-wm, .qx-quantrex-black-seal, " +
+        "img[src*='getmarks-brand'], img[alt*='Get Marks App'], img[src*='marks-premium'], img[src*='marks_selected'], " +
+        "img[src*='quantrex-academy-brand'], img[src*='quantrex-watermark']"
       ).forEach(el => el.remove());
     } catch (_) { /* */ }
   }
@@ -1253,14 +1212,10 @@ window.QxPremiumWM = (() => {
       img.style.setProperty("opacity", "1", "important");
       img.style.setProperty("visibility", "visible", "important");
       img.style.setProperty("display", "block", "important");
-      if (img.dataset.qxSoftStrip === "2") {
-        void paintCoachingBrandLight(img);
-        return;
-      }
-      if (figureNeedsMarksClean(img) || img.classList.contains("qx-pool-fig") || /qx-figures|cdn-question-pool|\/pyq\//i.test(img.getAttribute("src") || "")) {
+      stripQuantrexBrand(img);
+      if (img.dataset.qxSoftStrip === "2") return;
+      if (figureNeedsMarksClean(img) || img.classList.contains("qx-pool-fig") || /cdn-question-pool|\/pyq\/|proxy-image/i.test(img.getAttribute("src") || "")) {
         void paintMarksHideOnly(img);
-      } else {
-        void paintCoachingBrandLight(img);
       }
     });
   }

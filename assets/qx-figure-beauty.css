@@ -1,6 +1,5 @@
-/* Beautiful, well-arranged question/solution figures + light coaching brand */
+/* Neat clean beautiful figures — ExamGoal-style arrangement, NO brand stamp */
 
-/* Figure plate — clean white, centered, balanced margins */
 .qx-fig,
 .qx-opt-fig,
 .qx-diagram-slot,
@@ -11,15 +10,23 @@
   position: relative !important;
   display: block !important;
   margin: 12px auto !important;
-  padding: 10px 12px !important;
+  padding: 12px 14px !important;
   max-width: min(100%, 720px) !important;
   background: #ffffff !important;
-  border: none !important;
+  border: 1px solid #e8eef6 !important;
   border-radius: 12px !important;
-  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04) !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
   overflow: visible !important;
   text-align: center !important;
   line-height: 0 !important;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-fig,
+.mtk-test-root[data-test-theme="dark"] .qx-diagram-slot,
+.mtk-test-root[data-test-theme="dark"] #qxDiagramSlot,
+.mtk-test-root[data-test-theme="dark"] .qx-fig-inner {
+  background: #0f172a !important;
+  border-color: #1e293b !important;
 }
 
 .mtk-opt-text .qx-opt-fig,
@@ -28,22 +35,21 @@
   margin: 6px auto !important;
   padding: 8px !important;
   max-width: 100% !important;
-  border-radius: 10px !important;
 }
 
-/* Main diagram image — always visible, never bold/crushed */
-.qx-fig img:not(.qx-coaching-wm):not(.qx-quantrex-wm-overlay),
-.qx-opt-fig img:not(.qx-coaching-wm):not(.qx-quantrex-wm-overlay),
-.qx-fig-inner > img:not(.qx-coaching-wm):not(.qx-quantrex-wm-overlay),
-#qxDiagramSlot img:not(.qx-coaching-wm),
-.qx-diagram-slot img:not(.qx-coaching-wm),
-.sol-body img:not(.qx-coaching-wm),
-.qx-sol-body img:not(.qx-coaching-wm),
+/* Always show clean figures */
+.qx-fig img,
+.qx-opt-fig img,
+.qx-fig-inner > img,
+#qxDiagramSlot img,
+.qx-diagram-slot img,
+.sol-body img,
+.qx-sol-body img,
 img.qx-pool-fig,
 img.qx-sol-fig,
 img.qx-fig-img {
   position: relative !important;
-  z-index: 2 !important;
+  z-index: 1 !important;
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -55,41 +61,33 @@ img.qx-fig-img {
   image-rendering: auto !important;
   filter: none !important;
   -webkit-filter: none !important;
-  background: #ffffff !important;
+  background: transparent !important;
 }
 
-/* Light coaching brand BEHIND figure only */
+/* Never show Quantrex brand on figures */
 img.qx-coaching-wm,
-img.qx-quantrex-wm-overlay {
-  display: block !important;
-  visibility: visible !important;
+img.qx-quantrex-wm-overlay,
+.qx-quantrex-black-wm,
+.qx-quantrex-black-seal,
+canvas.qx-premium-wm-canvas {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
   pointer-events: none !important;
-  position: absolute !important;
-  z-index: 0 !important;
-  left: 50% !important;
-  top: 50% !important;
-  transform: translate(-50%, -50%) rotate(-26deg) !important;
-  opacity: 0.055 !important;
-  max-width: 55% !important;
-  max-height: 55% !important;
-  mix-blend-mode: multiply;
-  user-select: none !important;
 }
 
-/* Solution figures same treatment */
-.sol-body,
-.qx-sol-body,
-.qx-sol-card .qx-content {
-  text-align: center;
-}
 .sol-body img,
 .qx-sol-body img {
   margin: 12px auto !important;
 }
 
-/* Never hide real figures during clean */
-img.qx-wm-loading.qx-pool-fig,
-img.qx-wm-pending.qx-pool-fig {
-  opacity: 1 !important;
+/* ExamGoal paper meta always visible in practice */
+.mtk-test-root.allen-practice .qx-paper-meta,
+.qx-practice-page .qx-paper-meta {
+  display: flex !important;
   visibility: visible !important;
+  opacity: 1 !important;
+  margin: 0 0 14px !important;
 }

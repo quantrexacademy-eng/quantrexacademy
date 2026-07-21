@@ -1,0 +1,197 @@
+/* ExamGoal / ExamSIDE-style paper · date · shift meta (light + dark) */
+
+.qx-paper-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 0 12px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-paper-meta,
+html[data-theme="dark"] .qx-paper-meta {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.qx-paper-exam-logo,
+.qx-paper-meta img.qx-exam-logo {
+  width: 22px !important;
+  height: 22px !important;
+  max-width: 22px !important;
+  max-height: 22px !important;
+  border-radius: 6px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.qx-paper-meta-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.qx-paper-chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: "Roboto", "Inter", system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Light mode chips — ExamSIDE-like muted meta */
+.qx-paper-chip {
+  color: #475569;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+.qx-paper-exam {
+  color: #1d4ed8;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.qx-paper-mode {
+  color: #0f766e;
+  background: #f0fdfa;
+  border-color: #99f6e4;
+}
+
+.qx-paper-date {
+  color: #334155;
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.qx-paper-shift,
+.qx-paper-paper {
+  color: #7c3aed;
+  background: #f5f3ff;
+  border-color: #ddd6fe;
+  font-weight: 700;
+}
+
+.qx-paper-chapter {
+  color: #64748b;
+  background: transparent;
+  border-color: transparent;
+  font-size: 10px;
+  font-weight: 600;
+  opacity: 0.9;
+  padding-left: 2px;
+}
+
+.qx-paper-subject {
+  color: #0d9488;
+  background: #ccfbf1;
+  border-color: #99f6e4;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Dark mode — soft contrast like ExamSIDE dark utilities */
+.mtk-test-root[data-test-theme="dark"] .qx-paper-chip,
+html[data-theme="dark"] .qx-paper-chip {
+  color: #cbd5e1;
+  background: #0f172a;
+  border-color: #334155;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-paper-exam,
+html[data-theme="dark"] .qx-paper-exam {
+  color: #60a5fa; /* dark:text-blue-400 */
+  background: rgba(37, 99, 235, 0.15);
+  border-color: rgba(59, 130, 246, 0.35);
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-paper-mode,
+html[data-theme="dark"] .qx-paper-mode {
+  color: #2dd4bf;
+  background: rgba(13, 148, 136, 0.15);
+  border-color: rgba(45, 212, 191, 0.3);
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-paper-date,
+html[data-theme="dark"] .qx-paper-date {
+  color: #e2e8f0;
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-paper-shift,
+.mtk-test-root[data-test-theme="dark"] .qx-paper-paper,
+html[data-theme="dark"] .qx-paper-shift,
+html[data-theme="dark"] .qx-paper-paper {
+  color: #c4b5fd;
+  background: rgba(124, 58, 237, 0.18);
+  border-color: rgba(167, 139, 250, 0.35);
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-paper-chapter,
+html[data-theme="dark"] .qx-paper-chapter {
+  color: #94a3b8;
+  background: transparent;
+  border-color: transparent;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-paper-subject,
+html[data-theme="dark"] .qx-paper-subject {
+  color: #5eead4;
+  background: rgba(13, 148, 136, 0.2);
+  border-color: rgba(45, 212, 191, 0.3);
+}
+
+/* Question body typography closer to ExamSIDE */
+.mtk-main .mtk-q-text,
+.mtk-main .qx-content.qx-q-text-only,
+.mtk-main .question {
+  font-family: "Roboto", "Inter", "Noto Sans Devanagari", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+@media (min-width: 1280px) {
+  .mtk-main .mtk-q-text,
+  .mtk-main .qx-content.qx-q-text-only {
+    font-size: 17px; /* xl:text-lg-ish */
+  }
+}
+
+.mtk-main .mtk-opt-text,
+.mtk-main .qx-prac-opt-text {
+  font-family: "Roboto", "Inter", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* List cards — compact paper line */
+.q-footer .qx-src-label,
+.q-card .qx-paper-meta {
+  font-size: 11px;
+}
+.q-card .qx-paper-meta {
+  margin: 8px 0 0;
+  padding: 6px 8px;
+  background: transparent;
+  border: none;
+}
