@@ -687,7 +687,7 @@ window.Mx = (() => {
         .replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/")
         .replace(/https?:\/\/cdn-question-pool\.app\//gi, "https://cdn-question-pool.getmarks.app/");
       if (/cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|getmarks\.app/i.test(url)) {
-        return `src=${q}/api/proxy-image?url=${encodeURIComponent(url)}&clean=1&v=17${q} data-qx-orig-src=${q}${url}${q}`;
+        return `src=${q}/api/proxy-image?url=${encodeURIComponent(url)}&clean=1&v=18${q} data-qx-orig-src=${q}${url}${q}`;
       }
       return m;
     });
@@ -880,18 +880,17 @@ window.Mx = (() => {
           ? QxImgClean.resolveCurrentQuestion(el)
           : null;
         const native2 = q2 && QxImgClean.isMarksNativeBook && QxImgClean.isMarksNativeBook(q2);
-        if (!native2 && typeof QxImgClean !== "undefined" && QxImgClean.rewriteAllPoolImgs) {
+        // Always proxy+strip pool figures on-page (clear beautiful, no click)
+        if (typeof QxImgClean !== "undefined" && QxImgClean.rewriteAllPoolImgs) {
           QxImgClean.rewriteAllPoolImgs(el);
-          setTimeout(() => QxImgClean.rewriteAllPoolImgs(el), 400);
+          setTimeout(() => QxImgClean.rewriteAllPoolImgs(el), 200);
+          setTimeout(() => QxImgClean.rewriteAllPoolImgs(el), 700);
         }
-        // Soft-strip guardian only for non-native (organic color books skip — no hang)
-        if (!native2) {
-          if (typeof QxNoWmGuard !== "undefined" && QxNoWmGuard.schedulePass) {
-            QxNoWmGuard.schedulePass(el);
-          } else if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.scanAllFigures) {
-            QxPremiumWM.scanAllFigures(el);
-            setTimeout(() => QxPremiumWM.scanAllFigures(el), 500);
-          }
+        if (typeof QxNoWmGuard !== "undefined" && QxNoWmGuard.schedulePass) {
+          QxNoWmGuard.schedulePass(el, [50, 200, 500, 1200]);
+        } else if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.scanAllFigures) {
+          QxPremiumWM.scanAllFigures(el);
+          setTimeout(() => QxPremiumWM.scanAllFigures(el), 400);
         }
         // Second pass after DOM settles (options sometimes mount late)
         setTimeout(() => { typeset(el).catch(() => {}); }, 600);

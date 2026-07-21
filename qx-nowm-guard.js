@@ -161,8 +161,8 @@
       img.classList.add("qx-pool-fig", "qx-no-wm", "qx-opt-fig-img");
     }
 
-    // Soft-strip v17 — original-quality MARKS wipe (zoom + in-page)
-    const STRIP_VER = "17";
+    // Soft-strip v18 — clear beautiful figures on-page (no click)
+    const STRIP_VER = "18";
     const key = cacheKey(img);
     if (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === STRIP_VER) {
       forceVisible(img);
@@ -297,7 +297,7 @@
       if (!main) return;
       nukeDom(main);
       let dirty = 0;
-      const STRIP_VER = "17";
+      const STRIP_VER = "18";
       main.querySelectorAll(POOL_SEL).forEach((img) => {
         if (isUiIcon(img)) return;
         forceVisible(img);

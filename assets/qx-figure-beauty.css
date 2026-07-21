@@ -90,17 +90,19 @@ img[src*="proxy-image"] {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
-  max-width: 100% !important;
+  max-width: min(100%, 640px) !important;
   width: auto !important;
   height: auto !important;
-  max-height: none !important;
+  max-height: min(420px, 70vh) !important;
   min-height: 0 !important;
-  margin: 0 auto !important;
+  margin: 12px auto !important;
   object-fit: contain !important;
   image-rendering: auto !important;
   filter: none !important;
   -webkit-filter: none !important;
   background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
   pointer-events: auto !important;
 }
 
