@@ -750,61 +750,9 @@ window.QxPremiumWM = (() => {
     return null;
   }
 
-  function drawPlacedLogo(ctx, rw, rh, logo, placement) {
-    if (!ctx || !placement) return;
-    const aspect = logo && logo.naturalWidth > 0 ? logo.naturalHeight / logo.naturalWidth : 1.25;
-    const lw = Math.max(24, rw * placement.scale);
-    const lh = lw * aspect;
-    ctx.save();
-    ctx.globalAlpha = placement.opacity;
-    ctx.globalCompositeOperation = "multiply";
-    if (logo && logo.naturalWidth > 0) {
-      ctx.drawImage(logo, placement.x - lw / 2, placement.y - lh / 2, lw, lh);
-    } else {
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillStyle = "rgba(30,79,255,0.85)";
-      ctx.font = `700 ${Math.max(10, lw * 0.12)}px Kanit, Inter, sans-serif`;
-      ctx.fillText("QUANTREX", placement.x, placement.y - lh * 0.08);
-      ctx.fillStyle = "rgba(17,24,39,0.85)";
-      ctx.font = `600 ${Math.max(8, lw * 0.07)}px Kanit, Inter, sans-serif`;
-      ctx.fillText("ACADEMY", placement.x, placement.y + lh * 0.08);
-    }
-    ctx.restore();
-  }
-
-  function drawFallbackDiagonal(ctx, rw, rh, logo, placement) {
-    if (!ctx) return;
-    const diag = Math.sqrt(rw * rw + rh * rh);
-    const cov = placement && placement.coverage ? placement.coverage : FALLBACK_COVERAGE;
-    const lw = Math.max(28, diag * cov * 0.42);
-    const aspect = logo && logo.naturalWidth > 0 ? logo.naturalHeight / logo.naturalWidth : 1.25;
-    const lh = lw * aspect;
-    const opacity = placement && placement.opacity ? placement.opacity : FALLBACK_OPACITY;
-    ctx.save();
-    ctx.translate(rw / 2, rh / 2);
-    ctx.rotate((ROT_DEG * Math.PI) / 180);
-    ctx.globalAlpha = opacity;
-    ctx.globalCompositeOperation = "multiply";
-    if (logo && logo.naturalWidth > 0) {
-      ctx.drawImage(logo, -lw / 2, -lh / 2, lw, lh);
-    } else {
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillStyle = "rgba(51,65,85,0.75)";
-      ctx.font = `700 ${Math.max(12, lw * 0.09)}px Kanit, Inter, sans-serif`;
-      ctx.fillText("QUANTREX ACADEMY", 0, 0);
-      ctx.font = `600 ${Math.max(8, lw * 0.04)}px Kanit, Inter, sans-serif`;
-      ctx.fillText("CONCEPTS CREATE DESTINY", 0, lw * 0.08);
-    }
-    ctx.restore();
-  }
-
-  function drawBrandOnContext(ctx, rw, rh, logo, placement) {
-    if (!ctx || !placement) return;
-    if (placement.mode === "fallback-diagonal") drawFallbackDiagonal(ctx, rw, rh, logo, placement);
-    else drawPlacedLogo(ctx, rw, rh, logo, placement);
-  }
+  function drawPlacedLogo() { /* permanently disabled — never stamp brand on figures */ }
+  function drawFallbackDiagonal() { /* permanently disabled */ }
+  function drawBrandOnContext() { /* permanently disabled */ }
 
   async function paintBrandWatermark(img, stack, rw, rh) {
     if (img) stripQuantrexBrand(img);
@@ -879,7 +827,7 @@ window.QxPremiumWM = (() => {
   }
 
   /** Soft-strip algorithm version — bump forces re-clean of previously frozen figures */
-  const SOFT_STRIP_VER = "13";
+  const SOFT_STRIP_VER = "14";
 
   /** True only for MARKS/Quizrr pool diagrams that carry baked watermarks */
   function figureNeedsMarksClean(img) {
@@ -979,11 +927,10 @@ window.QxPremiumWM = (() => {
           }
           const lum = 0.299 * r + 0.587 * g + 0.114 * b;
           const chroma = Math.max(r, g, b) - Math.min(r, g, b);
-          // True dark structure ink OR strong color (organic bonds/atoms)
-          // Mid-gray MARKS text (lum ~150–220, low chroma) is NEVER ink
-          if (lum <= 100) inkMask[p] = 1;
-          else if (chroma >= 40 && lum < 230) inkMask[p] = 1;
-          else if (lum <= 115 && chroma < 14) inkMask[p] = 1;
+          // Only very dark structure lines OR strong saturated color
+          // MARKS / QUANTREX pale seals (gray/blue-gray) must NEVER be ink
+          if (lum <= 88) inkMask[p] = 1;
+          else if (chroma >= 50 && lum < 210) inkMask[p] = 1;
         }
         const dil = new Uint8Array(inkMask);
         for (let y = 0; y < nh; y++) {
@@ -1018,13 +965,8 @@ window.QxPremiumWM = (() => {
           }
           const lum = 0.299 * r + 0.587 * g + 0.114 * b;
           const chroma = Math.max(r, g, b) - Math.min(r, g, b);
-          // Non-ink: kill pale/mid gray + blue-gray MARKS watermark → pure white
-          const nearGray =
-            Math.abs(r - g) < 50 &&
-            Math.abs(g - b) < 55 &&
-            Math.abs(r - b) < 55;
-          const blueGray = b >= r - 8 && b >= g - 8 && chroma < 55 && lum > 120 && lum < 248;
-          if (nearGray || blueGray || chroma < 38 || lum > 130) {
+          // Nuclear: anything not true ink → pure paper white (kills MARKS + any pale brand haze)
+          if (lum > 95 || chroma < 45) {
             out[i] = 255;
             out[i + 1] = 255;
             out[i + 2] = 255;
@@ -1034,20 +976,7 @@ window.QxPremiumWM = (() => {
             out[i] = r; out[i + 1] = g; out[i + 2] = b; out[i + 3] = 255;
           }
         }
-        // Always write result (even if stripped count is small — background purify)
-        if (stripped === 0) {
-          img.dataset.qxSoftStrip = "2";
-          img.dataset.qxSoftVer = SOFT_STRIP_VER;
-          img.dataset.qxFigFrozen = "1";
-          img.dataset.qxCleanedSrc = "1";
-          img.dataset.qxHasWm = "0";
-          img.classList.add("qx-wm-clean", "qx-fig-ready", "qx-nowm", "qx-hq-color");
-          img.style.setProperty("opacity", "1", "important");
-          img.style.setProperty("visibility", "visible", "important");
-          img.style.setProperty("display", "block", "important");
-          stripQuantrexBrand(img);
-          return resolve(true);
-        }
+        // ALWAYS write cleaned pixels (even if stripped is 0, re-normalize alpha)
         for (let i = 0; i < d.length; i++) d[i] = out[i];
         ctx.putImageData(data, 0, 0);
         const url = canvas.toDataURL("image/png");
@@ -1190,10 +1119,21 @@ window.QxPremiumWM = (() => {
       return Promise.resolve(true);
     }
     return redrawFigureBlackInk(img).then(ok => {
-      img.classList.add("qx-fig-ready", "qx-wm-clean", "qx-hq-color");
-      img.classList.remove("qx-wm-loading", "qx-black-redraw");
-      img.dataset.qxHasWm = "0";
-      img.dataset.qxWmClean = "1";
+      // Only mark clean when strip actually succeeded (CORS fail must retry)
+      if (ok) {
+        img.classList.add("qx-fig-ready", "qx-wm-clean", "qx-hq-color", "qx-nowm");
+        img.classList.remove("qx-wm-loading", "qx-black-redraw");
+        img.dataset.qxHasWm = "0";
+        img.dataset.qxWmClean = "1";
+        img.dataset.qxSoftStrip = "2";
+        img.dataset.qxSoftVer = SOFT_STRIP_VER;
+      } else {
+        // Retry once after proxy
+        img.dataset.qxStripRetry = String((parseInt(img.dataset.qxStripRetry || "0", 10) || 0) + 1);
+        if (img.dataset.qxStripRetry === "1") {
+          setTimeout(() => paintMarksHideOnly(img), 400);
+        }
+      }
       img.style.setProperty("opacity", "1", "important");
       img.style.setProperty("visibility", "visible", "important");
       img.style.setProperty("display", "block", "important");

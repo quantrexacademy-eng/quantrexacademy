@@ -161,8 +161,8 @@
       img.classList.add("qx-pool-fig", "qx-no-wm", "qx-opt-fig-img");
     }
 
-    // Soft-strip v13 — aggressive MARKS wipe all structure figures
-    const STRIP_VER = "13";
+    // Soft-strip v14 — nuclear watermark wipe (screen 640)
+    const STRIP_VER = "14";
     const key = cacheKey(img);
     if (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === STRIP_VER) {
       forceVisible(img);

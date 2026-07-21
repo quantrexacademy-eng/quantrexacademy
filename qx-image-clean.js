@@ -3523,16 +3523,17 @@ window.QxImgClean = (() => {
       QxPremiumWM.nukeAllWatermarkDom(scope);
     }
     if (isMarksNativeBook(q)) {
-      // Organic etc.: one clean layer only — show figures, strip pale MARKS once, no multi-pass hang
+      // One clean layer: route CDN through proxy then hard-strip MARKS/brand haze
       finalizeMarksNative(root, q);
       dedupeDomFigures(root);
       dedupeOptionFigures(scope);
       if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.nukeAllWatermarkDom) {
         QxPremiumWM.nukeAllWatermarkDom(scope);
       }
-      // Force MARKS wipe on every structure figure (stem + options) — wait for load
+      // Proxy first so canvas soft-strip is not CORS-tainted
+      rewriteAllPoolImgs(scope);
       const stripOne = (img) => {
-        if (!img || img.dataset.qxSoftVer === "13") return;
+        if (!img || img.dataset.qxSoftVer === "14") return;
         const run = () => {
           if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
             void QxPremiumWM.paintMarksHideOnly(img);
@@ -3546,6 +3547,13 @@ window.QxImgClean = (() => {
         "img[src*='qx-org-'], img[src*='cdn-question-pool'], img[src*='/pyq/'], img[src*='proxy-image'], " +
         "#qxDiagramSlot img, .qx-diagram-slot img, .qx-opt-diagram-slot img, .mtk-opt-text img, .qx-prac-opt-text img"
       ).forEach(stripOne);
+      // Second pass after images settle
+      setTimeout(() => {
+        scope.querySelectorAll("#qxDiagramSlot img, .qx-opt-diagram-slot img, .mtk-opt-text img").forEach(stripOne);
+        if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.nukeAllWatermarkDom) {
+          QxPremiumWM.nukeAllWatermarkDom(scope);
+        }
+      }, 500);
       return;
     }
     if (q) rememberQuestionRaw(q);
