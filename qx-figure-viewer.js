@@ -1,6 +1,7 @@
-// Quantrex figures:
-// - Question view: bare image only (no box), MARKS soft-stripped (no watermark)
-// - Top-right zoom (+) button: opens original Marks figure (watermark OK there)
+// Quantrex figures (~4 days ago style):
+// - Question: bare clear figure, NO box, NO MARKS watermark
+// - Circle "+" on the RIGHT of the figure
+// - Click + → open original Marks figure (watermark OK only there)
 (function () {
   const LB_ID = "qxFigLightbox";
   const ZOOM_CLS = "qx-fig-zoom-btn";
@@ -14,10 +15,13 @@
     ".mtk-opt-text img.qx-pool-fig",
     ".qx-prac-opt-text img.qx-pool-fig",
     ".mtk-q-text img.qx-pool-fig",
+    ".mtk-main img[src*='cdn-question-pool']",
+    ".mtk-main img[src*='/pyq/']",
+    ".mtk-main img[src*='proxy-image']",
+    ".mtk-main img[src*='data:image']",
     ".qx-content img[src*='cdn-question-pool']",
     ".qx-content img[src*='/pyq/']",
-    ".qx-content img[src*='proxy-image']",
-    ".qx-content img[src*='data:image']"
+    ".qx-content img[src*='proxy-image']"
   ].join(", ");
 
   function close() {
@@ -34,27 +38,23 @@
   function isUiIcon(img) {
     if (!img) return true;
     if (img.closest(".qx-marks-icon, .exam-pill-logo, .fc-img, .qx-exam-logo, .subj-mini-ic")) return true;
-    if (img.classList.contains("qx-marks-icon") || img.classList.contains("fc-img")) return true;
     const src = String(img.getAttribute("src") || img.dataset.qxOrigSrc || "");
     return /cdn-assets\.getmarks|ic_content_exam_|formula_cards/i.test(src);
   }
 
   function isPoolFig(img) {
     if (!img || img.tagName !== "IMG" || isUiIcon(img)) return false;
-    if (img.matches(FIG_IMG_SEL)) return true;
     const src = img.getAttribute("src") || img.dataset.qxOrigSrc || "";
-    return /cdn-question-pool|cdn\.quizrr|\/pyq\/|proxy-image|data:image/i.test(src)
-      || img.classList.contains("qx-pool-fig")
-      || img.classList.contains("qx-fig-img");
+    if (img.classList.contains("qx-pool-fig") || img.classList.contains("qx-fig-img") || img.classList.contains("qx-no-wm")) {
+      return /cdn-question-pool|cdn\.quizrr|\/pyq\/|proxy-image|data:image|assets\/diagrams|qx-figures/i.test(src) || img.naturalWidth > 40;
+    }
+    return /cdn-question-pool|cdn\.quizrr|\/pyq\/|proxy-image|data:image/i.test(src);
   }
 
-  /** Original Marks CDN — used only in zoom lightbox (may have watermark) */
   function originalMarksSrc(img) {
     if (!img) return "";
     let orig = fixOrigUrl(img.dataset.qxOrigSrc || "");
-    if (/cdn-question-pool|cdn\.quizrr|\/pyq\//i.test(orig) && !/proxy-image|data:image/i.test(orig)) {
-      return orig;
-    }
+    if (/cdn-question-pool|cdn\.quizrr|\/pyq\//i.test(orig) && !/proxy-image|data:image/i.test(orig)) return orig;
     const cur = String(img.getAttribute("src") || "");
     if (/proxy-image/i.test(cur)) {
       try {
@@ -72,37 +72,28 @@
     close();
     const src = originalMarksSrc(img);
     if (!src) return;
-
     const lb = document.createElement("div");
     lb.id = LB_ID;
     lb.className = "qx-fig-lightbox";
-    lb.setAttribute("role", "dialog");
-    lb.setAttribute("aria-modal", "true");
     lb.innerHTML =
       '<button type="button" class="qx-fig-lb-close" aria-label="Close">×</button>' +
-      '<div class="qx-fig-lb-stage">' +
-      '<img class="qx-fig-lb-img" alt="Original figure" referrerpolicy="no-referrer" />' +
-      "</div>";
+      '<div class="qx-fig-lb-stage"><img class="qx-fig-lb-img" alt="" referrerpolicy="no-referrer" /></div>';
     document.body.appendChild(lb);
     document.body.classList.add("qx-fig-lb-open");
-
     const out = lb.querySelector(".qx-fig-lb-img");
-    // RAW Marks CDN — watermark allowed only in this zoom view
     out.removeAttribute("crossorigin");
-    out.src = src;
-
-    lb.querySelector(".qx-fig-lb-close").addEventListener("click", (e) => {
+    out.src = src; // raw Marks — watermark OK only in zoom
+    lb.querySelector(".qx-fig-lb-close").onclick = (e) => {
       e.preventDefault();
       e.stopPropagation();
       close();
-    });
-    lb.addEventListener("click", (e) => {
+    };
+    lb.onclick = (e) => {
       if (e.target === lb || e.target.classList.contains("qx-fig-lb-stage")) close();
-    });
+    };
   }
 
   function hostForImg(img) {
-    if (!img) return null;
     return (
       img.closest(
         "#qxDiagramSlot, .qx-diagram-slot, .qx-opt-diagram-slot, .qx-diagram-seg, " +
@@ -116,19 +107,18 @@
     const host = hostForImg(img);
     if (!host) return;
     host.classList.add("qx-fig-host");
-    // make host positioning context for absolute zoom btn
-    const st = window.getComputedStyle ? getComputedStyle(host) : null;
-    if (st && st.position === "static") {
-      host.style.position = "relative";
-    }
+    // remove duplicate + buttons
+    host.querySelectorAll("." + ZOOM_CLS).forEach((b, i) => {
+      if (i > 0) b.remove();
+    });
     let btn = host.querySelector("." + ZOOM_CLS);
     if (!btn) {
       btn = document.createElement("button");
       btn.type = "button";
       btn.className = ZOOM_CLS;
-      btn.setAttribute("aria-label", "Zoom original figure");
+      btn.setAttribute("aria-label", "Zoom figure");
       btn.title = "Zoom";
-      btn.innerHTML = "+";
+      btn.textContent = "+";
       host.appendChild(btn);
     }
     btn.onclick = (e) => {
@@ -138,32 +128,41 @@
     };
   }
 
-  function stripOldChrome(root) {
-    const scope = root || document;
+  function cleanInPage(img) {
+    if (!isPoolFig(img)) return;
+    img.classList.add("qx-pool-fig", "qx-no-wm");
+    img.style.setProperty("opacity", "1", "important");
+    img.style.setProperty("visibility", "visible", "important");
+    img.style.setProperty("display", "block", "important");
     try {
-      // remove old multi-button toolbars (keep our single +)
-      scope.querySelectorAll(
-        ".qx-diag-toolbar, .qx-diag-zoom-btns, .qx-diag-btn:not(.qx-fig-zoom-btn), .qx-diag-pct, .qx-diagram-hint, .qx-diagram-badge"
-      ).forEach((n) => n.remove());
-      scope.querySelectorAll(".qx-diagram-panel").forEach((panel) => {
-        const img = panel.querySelector("img");
-        if (img && panel.parentNode) {
-          panel.parentNode.insertBefore(img, panel);
-          panel.remove();
-        } else panel.remove();
-      });
+      // Ensure proxy for CORS + server clean
+      const cur = String(img.getAttribute("src") || "");
+      const orig = fixOrigUrl(img.dataset.qxOrigSrc || cur);
+      if (
+        /cdn-question-pool|cdn\.quizrr|\/pyq\//i.test(orig) &&
+        !/proxy-image|data:image/i.test(cur) &&
+        typeof QxImgClean !== "undefined" &&
+        QxImgClean.proxyImageUrl
+      ) {
+        if (!img.dataset.qxOrigSrc) img.dataset.qxOrigSrc = orig;
+        img.crossOrigin = "anonymous";
+        img.src = QxImgClean.proxyImageUrl(orig);
+      }
+      if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
+        if (img.dataset.qxSoftStrip !== "2" || img.dataset.qxSoftVer !== "20") {
+          const run = () => void QxPremiumWM.paintMarksHideOnly(img);
+          if (img.complete && img.naturalWidth > 8) run();
+          else img.addEventListener("load", run, { once: true });
+        }
+      }
     } catch (_) { /* */ }
   }
 
-  /** Soft-strip MARKS on question page (never show watermark until zoom) */
-  function cleanInPage(img) {
-    if (!isPoolFig(img)) return;
+  function stripOldChrome(scope) {
     try {
-      if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
-        if (img.dataset.qxSoftStrip !== "2" || img.dataset.qxSoftVer !== "19") {
-          void QxPremiumWM.paintMarksHideOnly(img);
-        }
-      }
+      scope.querySelectorAll(
+        ".qx-diag-toolbar, .qx-diag-zoom-btns, .qx-diag-btn:not(.qx-fig-zoom-btn), .qx-diag-pct, .qx-diagram-hint, .qx-diagram-badge"
+      ).forEach((n) => n.remove());
     } catch (_) { /* */ }
   }
 
@@ -171,67 +170,53 @@
     const scope = root || document.getElementById("app-main") || document.body;
     if (!scope) return;
     stripOldChrome(scope);
-    try {
-      scope.querySelectorAll(FIG_IMG_SEL).forEach((img) => {
-        if (!isPoolFig(img)) return;
-        img.classList.add("qx-pool-fig", "qx-no-wm");
-        img.style.cursor = "default";
-        ensureZoomBtn(img);
-        cleanInPage(img);
-      });
-    } catch (_) { /* */ }
+    // also test root
+    const roots = [scope];
+    const test = document.querySelector(".mtk-test-root, .mtk-main, .marks-test-active");
+    if (test && !scope.contains(test)) roots.push(test);
+    roots.forEach((r) => {
+      try {
+        r.querySelectorAll(FIG_IMG_SEL + ", .mtk-main img, .mtk-opt-text img").forEach((img) => {
+          if (!isPoolFig(img)) return;
+          cleanInPage(img);
+          ensureZoomBtn(img);
+        });
+      } catch (_) { /* */ }
+    });
   }
-
-  // Clicks on the image itself do NOT open zoom — only the + button
-  document.addEventListener(
-    "click",
-    (e) => {
-      const t = e.target;
-      if (!t) return;
-      if (t.classList && t.classList.contains(ZOOM_CLS)) return; // handled on btn
-      if (t.closest && t.closest("." + ZOOM_CLS)) return;
-      // block accidental legacy open on bare img
-      if (t.tagName === "IMG" && isPoolFig(t) && !t.closest("#" + LB_ID)) {
-        // allow selection; don't open
-      }
-    },
-    true
-  );
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") close();
   });
 
-  let bindTimer = 0;
-  function scheduleBind(root) {
-    if (bindTimer) return;
-    bindTimer = window.setTimeout(() => {
-      bindTimer = 0;
-      bind(root || document.getElementById("app-main") || document.body);
-    }, 60);
+  let t = 0;
+  function scheduleBind() {
+    if (t) return;
+    t = window.setTimeout(() => {
+      t = 0;
+      bind(document);
+    }, 50);
   }
 
-  const obs = new MutationObserver(() => scheduleBind());
+  const obs = new MutationObserver(scheduleBind);
   function start() {
     close();
     bind(document);
     if (document.body) obs.observe(document.body, { childList: true, subtree: true });
+    // keep cleaning during tests
+    setInterval(() => {
+      const dirty = document.querySelectorAll(
+        "img.qx-pool-fig:not([data-qx-soft-strip='2']), .mtk-main img[src*='cdn-question-pool'], .mtk-main img[src*='/pyq/']"
+      );
+      if (dirty.length) bind(document);
+    }, 900);
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", start);
-  } else {
-    start();
-  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
+  else start();
 
-  window.addEventListener("qx:question-rendered", () => scheduleBind());
-  window.addEventListener("qx:practice-ready", () => scheduleBind());
+  window.addEventListener("qx:question-rendered", scheduleBind);
+  window.addEventListener("qx:practice-ready", scheduleBind);
 
-  window.QxFigureViewer = {
-    open: openOriginalMarks,
-    close,
-    bind,
-    markClickable: bind,
-    scheduleBind
-  };
+  window.QxFigureViewer = { open: openOriginalMarks, close, bind, markClickable: bind, scheduleBind };
 })();

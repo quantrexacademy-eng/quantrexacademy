@@ -827,7 +827,7 @@ window.QxPremiumWM = (() => {
   }
 
   /** Soft-strip algorithm version — bump forces re-clean of previously frozen figures */
-  const SOFT_STRIP_VER = "19";
+  const SOFT_STRIP_VER = "20";
 
   /** True only for MARKS/Quizrr pool diagrams that carry baked watermarks */
   function figureNeedsMarksClean(img) {
@@ -913,11 +913,11 @@ window.QxPremiumWM = (() => {
         }
         const d = data.data;
         const totalPx = (d.length / 4) | 0;
-        // v19: same clear structure as zoom view, only remove MARKS haze.
-        // Count ink before/after — if strip destroys figure, keep proxy/original.
+        // v20: strong MARKS kill (screens 643/644 still showed watermark in tests).
+        // Keep true dark structure + colour; bleach mid gray/blue haze hard.
         let inkBefore = 0;
-        const INK_MAX = 115;
-        const CHROMA_INK = 36;
+        const INK_MAX = 100;
+        const CHROMA_INK = 40;
         const core = new Uint8Array(totalPx);
         for (let p = 0, i = 0; i < d.length; i += 4, p++) {
           let r = d[i], g = d[i + 1], b = d[i + 2], a = d[i + 3];
@@ -931,7 +931,7 @@ window.QxPremiumWM = (() => {
           const lum = 0.299 * r + 0.587 * g + 0.114 * b;
           const chroma = Math.max(r, g, b) - Math.min(r, g, b);
           if (lum <= INK_MAX) { core[p] = 1; inkBefore++; }
-          else if (chroma >= CHROMA_INK && lum < 220) { core[p] = 1; inkBefore++; }
+          else if (chroma >= CHROMA_INK && lum < 210) { core[p] = 1; inkBefore++; }
         }
         const inkMask = new Uint8Array(core);
         for (let y = 0; y < nh; y++) {
@@ -962,7 +962,6 @@ window.QxPremiumWM = (() => {
             b = Math.round(b * t + 255 * (1 - t));
           }
           if (inkMask[p] === 1) {
-            // keep original structure pixels (zoom-quality look)
             out[i] = r; out[i + 1] = g; out[i + 2] = b; out[i + 3] = 255;
             inkAfter++;
             continue;
@@ -970,10 +969,13 @@ window.QxPremiumWM = (() => {
           const lum = 0.299 * r + 0.587 * g + 0.114 * b;
           const chroma = Math.max(r, g, b) - Math.min(r, g, b);
           const nearGray =
-            Math.abs(r - g) < 48 && Math.abs(g - b) < 52 && Math.abs(r - b) < 54;
-          const blueGray = b >= r - 6 && b >= g - 4 && nearGray;
-          // Only classic MARKS band — do not wipe light structure AA
-          if ((nearGray || blueGray) && lum >= 130 && lum <= 235 && chroma < 48) {
+            Math.abs(r - g) < 55 && Math.abs(g - b) < 58 && Math.abs(r - b) < 60;
+          const blueGray = b >= r - 10 && b >= g - 8 && chroma < 55;
+          // Aggressive MARKS band (diagonal pale stamps)
+          if ((nearGray || blueGray) && lum > 105 && lum < 248 && chroma < 58) {
+            out[i] = 255; out[i + 1] = 255; out[i + 2] = 255; out[i + 3] = 255;
+            stripped++;
+          } else if (lum > 175 && chroma < 38) {
             out[i] = 255; out[i + 1] = 255; out[i + 2] = 255; out[i + 3] = 255;
             stripped++;
           } else {
@@ -981,8 +983,7 @@ window.QxPremiumWM = (() => {
             if (lum < 200) inkAfter++;
           }
         }
-        // If strip wiped the molecule, keep pre-strip (proxy/CDN) display
-        if (inkBefore > 80 && inkAfter < inkBefore * 0.35) {
+        if (inkBefore > 80 && inkAfter < inkBefore * 0.28) {
           img.dataset.qxSoftStrip = "2";
           img.dataset.qxSoftVer = SOFT_STRIP_VER;
           img.dataset.qxFigFrozen = "1";
@@ -1075,7 +1076,7 @@ window.QxPremiumWM = (() => {
         ) {
           if (!img.dataset.qxOrigSrc) img.dataset.qxOrigSrc = orig;
           // Always re-point to same-origin proxy for CORS soft-strip
-          if (!/proxy-image/i.test(cur) || (/proxy-image/i.test(cur) && !/v=19/.test(cur))) {
+          if (!/proxy-image/i.test(cur) || (/proxy-image/i.test(cur) && !/v=20/.test(cur))) {
             img.dataset.qxProxyDone = "1";
             img.crossOrigin = "anonymous";
             await new Promise(r => {

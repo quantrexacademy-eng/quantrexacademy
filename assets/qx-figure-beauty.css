@@ -1,4 +1,4 @@
-/* Figures = bare image only + room for top-right zoom (+) — no rectangular card */
+/* Bare figure only — no rectangular card (tests + practice) */
 
 #qxDiagramSlot,
 .qx-diagram-slot,
@@ -9,7 +9,10 @@
 .qx-pool-fig-wrap,
 .qx-fig,
 .qx-opt-fig,
-.qx-fig-host {
+.qx-fig-host,
+.mtk-main .qx-diagram-slot,
+.mtk-main #qxDiagramSlot,
+.mtk-opt-text .qx-opt-diagram-slot {
   position: relative !important;
   display: block !important;
   margin: 10px auto !important;

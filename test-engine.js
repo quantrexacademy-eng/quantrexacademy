@@ -250,9 +250,19 @@ const QuantrexTestEngine = (() => {
   }
 
   function finalizeDiagrams(main) {
-    if (!main || !session || typeof QxImgClean === "undefined" || !QxImgClean.finalizeAll) return;
+    if (!main || !session) return;
     const q = getQ(session.ids[session.idx]);
-    if (q) QxImgClean.finalizeAll(main, q);
+    if (typeof QxImgClean !== "undefined" && QxImgClean.finalizeAll && q) {
+      QxImgClean.finalizeAll(main, q);
+    }
+    // Tests must also soft-strip MARKS + attach circle zoom (screens 643/644)
+    if (typeof QxNoWmGuard !== "undefined" && QxNoWmGuard.schedulePass) {
+      QxNoWmGuard.schedulePass(main, [40, 200, 600, 1400]);
+    }
+    if (typeof QxFigureViewer !== "undefined" && QxFigureViewer.bind) {
+      QxFigureViewer.bind(main);
+      setTimeout(() => QxFigureViewer.bind(main), 400);
+    }
   }
 
   function marksNativeHtmlFn(q) {

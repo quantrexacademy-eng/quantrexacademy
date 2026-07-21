@@ -1,6 +1,6 @@
-/* Bare figure + top-right zoom (+) only */
+/* ~4 days ago style: bare clear figure + circle + on the RIGHT */
 
-/* Kill every rectangular figure card */
+/* Kill rectangular figure cards everywhere (tests + practice) */
 #qxDiagramSlot,
 .qx-diagram-slot,
 .qx-diagram-seg,
@@ -11,7 +11,13 @@
 .qx-opt-fig,
 .qx-fig-host,
 .qx-fig-inner,
-.qx-question-body > .qx-diagram-slot {
+.mtk-main .qx-diagram-slot,
+.mtk-main #qxDiagramSlot,
+.mtk-main .qx-fig-flat,
+.mtk-main .qx-pool-fig-wrap,
+.mtk-opt-text .qx-opt-diagram-slot,
+.mtk-opt-text .qx-fig,
+.mtk-opt-text .qx-fig-flat {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -20,50 +26,52 @@
   outline: none !important;
 }
 
-.qx-fig-host,
-#qxDiagramSlot,
-.qx-diagram-slot,
-.qx-fig-flat,
-.qx-pool-fig-wrap {
+/* Host: figure + circle button on right */
+.qx-fig-host {
   position: relative !important;
-  display: block !important;
+  display: inline-block !important;
+  max-width: min(100%, 720px) !important;
   margin: 10px auto !important;
-  max-width: min(100%, 720px) !important;
-  width: fit-content !important;
-  max-width: min(100%, 720px) !important;
+  vertical-align: middle;
+  line-height: 0 !important;
+  padding-right: 44px !important; /* room for circle + on right */
+  box-sizing: border-box !important;
 }
 
-/* Top-right zoom + button */
+/* Circle + on the RIGHT side of figure (not square top-right clutter) */
 button.qx-fig-zoom-btn {
   position: absolute !important;
-  top: 4px !important;
+  top: 50% !important;
   right: 4px !important;
-  z-index: 20 !important;
-  width: 32px !important;
-  height: 32px !important;
-  min-width: 32px !important;
+  left: auto !important;
+  transform: translateY(-50%) !important;
+  z-index: 25 !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
   padding: 0 !important;
   margin: 0 !important;
-  border: 1px solid rgba(15, 23, 42, 0.12) !important;
-  border-radius: 8px !important;
-  background: rgba(255, 255, 255, 0.95) !important;
-  color: #0f172a !important;
+  border: 2px solid #0d9488 !important;
+  border-radius: 50% !important; /* CIRCLE */
+  background: #ffffff !important;
+  color: #0d9488 !important;
   font-size: 22px !important;
-  font-weight: 600 !important;
-  line-height: 28px !important;
+  font-weight: 700 !important;
+  line-height: 32px !important;
   text-align: center !important;
   cursor: pointer !important;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12) !important;
-  opacity: 0.92 !important;
+  box-shadow: 0 2px 10px rgba(13, 148, 136, 0.25) !important;
+  opacity: 0.95 !important;
 }
 
 button.qx-fig-zoom-btn:hover {
+  background: #0d9488 !important;
+  color: #fff !important;
   opacity: 1 !important;
-  background: #fff !important;
-  border-color: rgba(15, 23, 42, 0.22) !important;
 }
 
-/* Old multi-button toolbars off */
+/* Hide old toolbars */
 .qx-diag-toolbar,
 .qx-diag-zoom-btns,
 .qx-diag-btn:not(.qx-fig-zoom-btn),
@@ -73,34 +81,46 @@ button.qx-fig-zoom-btn:hover {
   display: none !important;
 }
 
-/* Clean in-question image */
+/* Clear large figures in question (like good zoom view) */
+.mtk-main img.qx-pool-fig,
 .mtk-main #qxDiagramSlot img,
 .mtk-main .qx-diagram-slot img,
-.mtk-main .qx-content img.qx-pool-fig,
-.mtk-main .mtk-q-text img.qx-pool-fig,
-.mtk-main .qx-question-body img.qx-pool-fig,
-.qx-practice-page .qx-content img.qx-pool-fig,
-.qx-fig-host > img,
-.qx-fig-flat > img,
+.mtk-main .qx-fig-flat > img,
+.mtk-main .qx-fig-host > img,
 .mtk-opt-text img.qx-pool-fig,
-.qx-prac-opt-text img.qx-pool-fig {
-  max-width: min(100%, 720px) !important;
-  max-height: min(520px, 75vh) !important;
+.qx-prac-opt-text img.qx-pool-fig,
+.mtk-q-text img.qx-pool-fig,
+.qx-content img.qx-pool-fig {
+  max-width: min(100%, 680px) !important;
+  max-height: min(480px, 72vh) !important;
   width: auto !important;
   height: auto !important;
-  min-height: 48px !important;
-  margin: 12px auto !important;
+  min-height: 40px !important;
+  margin: 8px auto !important;
   display: block !important;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  cursor: default !important;
   opacity: 1 !important;
   visibility: visible !important;
   object-fit: contain !important;
+  cursor: default !important;
 }
 
-/* Lightbox = original Marks (watermark allowed) */
+.mtk-opt-text img.qx-pool-fig,
+.qx-prac-opt-text img.qx-pool-fig {
+  max-height: 240px !important;
+}
+
+/* Option cards keep UI border — only kill figure inner boxes */
+.mtk-opt-text .qx-opt-diagram-slot,
+.mtk-opt-text .qx-fig-host {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Lightbox = original Marks (watermark OK) */
 #qxFigLightbox,
 .qx-fig-lightbox {
   position: fixed !important;
@@ -111,31 +131,23 @@ button.qx-fig-zoom-btn:hover {
   align-items: center !important;
   justify-content: center !important;
   padding: 20px !important;
-  box-sizing: border-box !important;
 }
 
 .qx-fig-lb-stage {
   max-width: 96vw;
   max-height: 92vh;
   background: #fff;
-  border-radius: 10px;
-  padding: 12px;
+  border-radius: 12px;
+  padding: 14px;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
   overflow: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .qx-fig-lb-img {
   max-width: min(96vw, 1100px) !important;
   max-height: 88vh !important;
-  width: auto !important;
-  height: auto !important;
-  object-fit: contain !important;
   display: block !important;
   margin: auto !important;
-  background: #fff !important;
 }
 
 .qx-fig-lb-close {
@@ -146,11 +158,9 @@ button.qx-fig-zoom-btn:hover {
   width: 42px !important;
   height: 42px !important;
   border: 0 !important;
-  border-radius: 999px !important;
+  border-radius: 50% !important;
   background: #fff !important;
-  color: #111 !important;
-  font-size: 28px !important;
-  line-height: 1 !important;
+  font-size: 26px !important;
   cursor: pointer !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
 }

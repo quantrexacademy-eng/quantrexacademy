@@ -161,8 +161,8 @@
       img.classList.add("qx-pool-fig", "qx-no-wm", "qx-opt-fig-img");
     }
 
-    // Soft-strip v19 — zoom-quality figure in question (no click needed)
-    const STRIP_VER = "19";
+    // Soft-strip v20 — circle-zoom era: clear figures no MARKS in question
+    const STRIP_VER = "20";
     const key = cacheKey(img);
     if (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === STRIP_VER) {
       forceVisible(img);
@@ -297,7 +297,7 @@
       if (!main) return;
       nukeDom(main);
       let dirty = 0;
-      const STRIP_VER = "19";
+      const STRIP_VER = "20";
       main.querySelectorAll(POOL_SEL).forEach((img) => {
         if (isUiIcon(img)) return;
         forceVisible(img);
