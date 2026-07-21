@@ -1,20 +1,24 @@
-/* ONE white back-box only + fully visible clean figures — no watermark chrome */
+/* Figures = bare image only (no rectangular white card / box) */
 
-/* Outer slot = the only card behind the figure */
 #qxDiagramSlot,
 .qx-diagram-slot,
 .qx-diagram-seg,
 .qx-opt-diagram-slot,
-.qx-question-body > .qx-diagram-slot {
+.qx-question-body > .qx-diagram-slot,
+.qx-fig-flat,
+.qx-pool-fig-wrap,
+.qx-fig,
+.qx-opt-fig {
   position: relative !important;
   display: block !important;
-  margin: 12px auto !important;
-  padding: 14px 16px !important;
+  margin: 10px auto !important;
+  padding: 0 !important;
   max-width: min(100%, 720px) !important;
-  background: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
-  border-radius: 12px !important;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06) !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
   overflow: visible !important;
   text-align: center !important;
   line-height: 0 !important;
@@ -24,7 +28,7 @@
 .qx-prac-opt-text .qx-opt-diagram-slot,
 .mtk-options.qx-opts-img .qx-opt-diagram-slot {
   margin: 6px auto !important;
-  padding: 10px !important;
+  padding: 0 !important;
   max-width: 100% !important;
 }
 
@@ -116,8 +120,9 @@ img[src*="qx-org-"] {
 .mtk-test-root[data-test-theme="dark"] .qx-diagram-slot,
 .mtk-test-root[data-test-theme="dark"] .qx-diagram-seg,
 .mtk-test-root[data-test-theme="dark"] .qx-opt-diagram-slot {
-  background: #0f172a !important;
-  border-color: #1e293b !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* Kill ALL watermark / brand chrome on figures */

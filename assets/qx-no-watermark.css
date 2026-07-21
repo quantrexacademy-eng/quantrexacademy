@@ -141,7 +141,9 @@ img.qx-wm-clean,
   min-height: 72px !important;
   max-height: 220px !important;
   margin: 6px auto !important;
-  background: #fff !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* Kill loading hide states that blank figures */

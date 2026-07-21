@@ -1,147 +1,70 @@
-// Quantrex — figure zoom opens CLEAN image only (never raw Marks CDN with watermark).
-// In-page figures keep original quality via proxy + soft-strip; zoom uses same cleaned src.
+// Quantrex — NO click-to-open / lightbox.
+// Click used to load raw CDN and show MARKS watermark. Figures stay as bare images only.
 (function () {
-  const LB_ID = "qxFigLightbox";
-  const FIG_SEL = [
-    "img.qx-pool-fig",
-    "img.qx-fig-img",
-    "img.qx-no-wm",
-    "#qxDiagramSlot img",
-    ".qx-diagram-slot img",
-    ".qx-opt-diagram-slot img",
-    ".mtk-opt-text img",
-    ".qx-prac-opt-text img",
-    ".mtk-q-text img",
-    ".qx-content img[src*='cdn-question-pool']",
-    ".qx-content img[src*='/pyq/']",
-    ".qx-content img[src*='proxy-image']",
-    ".qx-content img[src*='data:image']",
-    ".qx-content img[src*='qx-figures']",
-    ".qx-content img[src*='assets/diagrams']"
-  ].join(", ");
-
   function close() {
-    document.querySelectorAll("#" + LB_ID + ", .qx-fig-lightbox").forEach((el) => el.remove());
+    document.querySelectorAll("#qxFigLightbox, .qx-fig-lightbox").forEach((el) => el.remove());
     document.body.classList.remove("qx-fig-lb-open");
   }
 
-  /** Prefer already-cleaned display (data: after soft-strip, or clean proxy) — never dirty CDN alone */
-  function cleanedSrcFor(img) {
-    if (!img) return "";
-    const cur = String(img.getAttribute("src") || "");
-    if (cur.startsWith("data:image") && img.dataset.qxSoftStrip === "2") return cur;
-    if (cur.startsWith("data:image") && cur.length > 200) return cur;
-    if (/proxy-image/i.test(cur) && /clean=1/i.test(cur)) return cur;
-    if (/\/assets\/(qx-figures|diagrams|clean-diagrams)\//i.test(cur)) return cur;
-    const orig = String(img.dataset.qxOrigSrc || cur || "");
-    if (typeof QxImgClean !== "undefined" && QxImgClean.proxyImageUrl && /cdn-question-pool|cdn\.quizrr|\/pyq\//i.test(orig)) {
-      return QxImgClean.proxyImageUrl(orig);
-    }
-    return cur || orig;
-  }
-
-  async function ensureCleanThenOpen(img) {
-    if (!img) return;
-    close();
-    // Soft-strip in place first so zoom shows watermark-free original-quality art
-    try {
-      if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
-        if (img.dataset.qxSoftStrip !== "2" || img.dataset.qxSoftVer !== "17") {
-          await QxPremiumWM.paintMarksHideOnly(img);
-        }
-      }
-    } catch (_) { /* */ }
-
-    let src = cleanedSrcFor(img);
-    if (!src) return;
-
-    const lb = document.createElement("div");
-    lb.id = LB_ID;
-    lb.className = "qx-fig-lightbox";
-    lb.setAttribute("role", "dialog");
-    lb.setAttribute("aria-modal", "true");
-    lb.innerHTML =
-      '<button type="button" class="qx-fig-lb-close" aria-label="Close">×</button>' +
-      '<div class="qx-fig-lb-stage">' +
-      '<img class="qx-fig-lb-img qx-pool-fig qx-no-wm" alt="Figure" />' +
-      "</div>";
-    document.body.appendChild(lb);
-    document.body.classList.add("qx-fig-lb-open");
-
-    const out = lb.querySelector(".qx-fig-lb-img");
-    out.style.cssText =
-      "max-width:min(96vw,1100px);max-height:88vh;width:auto;height:auto;object-fit:contain;background:#fff;display:block;margin:auto;";
-    out.dataset.qxOrigSrc = String(img.dataset.qxOrigSrc || img.getAttribute("src") || "");
-    out.crossOrigin = "anonymous";
-
-    const finishStrip = async () => {
-      try {
-        if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
-          await QxPremiumWM.paintMarksHideOnly(out);
-        }
-      } catch (_) { /* */ }
-    };
-
-    out.onload = () => {
-      void finishStrip();
-    };
-    out.src = src;
-    if (out.complete && out.naturalWidth > 0) void finishStrip();
-
-    lb.querySelector(".qx-fig-lb-close").addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      close();
-    });
-    lb.addEventListener("click", (e) => {
-      if (e.target === lb || e.target.classList.contains("qx-fig-lb-stage")) close();
-    });
-  }
-
-  function openFromEvent(e) {
-    const t = e.target;
-    if (!t || !t.closest) return;
-    if (t.closest(".qx-fig-lb-close, button, a, input, .mtk-opt-letter, .qx-prac-opt-letter")) return;
-    const img =
-      t.tagName === "IMG"
-        ? t
-        : t.querySelector && t.closest("#qxDiagramSlot, .qx-diagram-slot, .qx-opt-diagram-slot, .qx-fig, .qx-pool-fig-wrap, .qx-fig-flat")
-          ? t.closest("#qxDiagramSlot, .qx-diagram-slot, .qx-opt-diagram-slot, .qx-fig, .qx-pool-fig-wrap, .qx-fig-flat").querySelector("img")
-          : null;
-    if (!img) return;
-    if (!img.matches(FIG_SEL) && !img.classList.contains("qx-pool-fig") && !img.classList.contains("qx-fig-img")) {
-      const src = img.getAttribute("src") || "";
-      if (!/cdn-question-pool|\/pyq\/|proxy-image|data:image|qx-figures|assets\/diagrams/i.test(src)) return;
-    }
-    e.preventDefault();
-    e.stopPropagation();
-    void ensureCleanThenOpen(img);
-  }
-
-  function markClickable(root) {
+  function stripZoomChrome(root) {
     const scope = root || document;
     try {
-      scope.querySelectorAll(FIG_SEL).forEach((img) => {
-        if (!img || img.closest(".qx-marks-icon, .exam-pill-logo, .fc-img")) return;
-        img.classList.add("qx-fig-clickable");
-        img.style.cursor = "zoom-in";
-        img.title = img.title || "Click to enlarge (clean view)";
-        const wrap = img.closest(
-          "#qxDiagramSlot, .qx-diagram-slot, .qx-opt-diagram-slot, .qx-fig, .qx-pool-fig-wrap, .qx-fig-flat, .qx-fig-inner"
-        );
-        if (wrap) {
-          wrap.classList.add("qx-fig-clickable-wrap");
-          wrap.style.cursor = "zoom-in";
+      scope.querySelectorAll(
+        ".qx-diag-toolbar, .qx-diag-zoom-btns, .qx-diag-btn, .qx-diag-pct, .qx-diagram-hint, .qx-diagram-badge, #qxFigLightbox, .qx-fig-lightbox"
+      ).forEach((n) => n.remove());
+      scope.querySelectorAll(".qx-diagram-panel").forEach((panel) => {
+        const img = panel.querySelector("img");
+        if (img && panel.parentNode) {
+          panel.parentNode.insertBefore(img, panel);
+          panel.remove();
+        } else {
+          panel.remove();
         }
+      });
+      scope.querySelectorAll("img.qx-pool-fig, img.qx-fig-img, img.qx-no-wm, .qx-diagram-wrap img, .qx-fig-flat img").forEach((img) => {
+        if (img.style) {
+          if (img.style.transform) img.style.transform = "";
+          if (img.style.zoom) img.style.zoom = "";
+        }
+        img.classList.remove("qx-fig-clickable");
+        img.removeAttribute("title");
+        img.style.cursor = "default";
+      });
+      scope.querySelectorAll(
+        "#qxDiagramSlot, .qx-diagram-slot, .qx-opt-diagram-slot, .qx-fig, .qx-opt-fig, .qx-pool-fig-wrap, .qx-fig-flat, .qx-fig-inner"
+      ).forEach((wrap) => {
+        wrap.classList.remove("qx-fig-clickable-wrap");
+        wrap.style.cursor = "";
       });
     } catch (_) { /* */ }
   }
 
   function bind(root) {
-    markClickable(root || document);
+    stripZoomChrome(root || document);
+    close();
   }
 
-  document.addEventListener("click", openFromEvent, true);
+  // Block figure open / zoom completely (watermark path)
+  function isFigureTarget(t) {
+    if (!t || !t.closest) return false;
+    if (t.closest("#qxFigLightbox, .qx-fig-lightbox")) return true;
+    if (t.closest(".qx-fig, .qx-opt-fig, .qx-diagram-slot, #qxDiagramSlot, .qx-pool-fig-wrap, .qx-fig-inner, .qx-fig-flat")) return true;
+    if (t.tagName === "IMG" && (t.classList.contains("qx-pool-fig") || t.classList.contains("qx-fig-img") || t.classList.contains("qx-no-wm"))) return true;
+    return false;
+  }
+
+  document.addEventListener(
+    "click",
+    (e) => {
+      if (!isFigureTarget(e.target)) return;
+      close();
+      // Prevent open-on-click; allow option letter clicks outside the img
+      if (e.target && e.target.tagName === "IMG") {
+        e.preventDefault();
+      }
+    },
+    true
+  );
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") close();
   });
@@ -172,9 +95,10 @@
   window.addEventListener("qx:practice-ready", scheduleBind);
 
   window.QxFigureViewer = {
-    open: (img) => void ensureCleanThenOpen(img),
+    open: () => close(),
     close,
     bind,
-    markClickable
+    markClickable: () => {},
+    stripZoomChrome
   };
 })();
