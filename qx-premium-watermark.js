@@ -883,16 +883,17 @@ window.QxPremiumWM = (() => {
     if (!img) return false;
     if (img.dataset.qxSoftStrip === "2") return false;
     if (img.classList.contains("qx-marks-icon") || img.classList.contains("qx-exam-logo")
-      || img.classList.contains("fc-img") || img.classList.contains("subj-ic-img")) {
+      || img.classList.contains("fc-img") || img.classList.contains("subj-ic-img")
+      || img.classList.contains("qx-org-fig") || img.classList.contains("qx-organic-fig")) {
       return false;
     }
     const src = String(img.dataset.qxOrigSrc || img.getAttribute("src") || "");
     // UI icons from Marks CDN — never treat as pool figures
     if (/cdn-assets\.getmarks|app_assets\/img\/(exams|ui|cpyqb)\//i.test(src)) return false;
     if (/ic_content_exam_|formula_cards|ncert_toolbox/i.test(src)) return false;
-    // Quizrr organic diagrams ARE pool figures (path may include watermarked_images)
+    // Organic digital book color figures (local qx-org / org-src) — never soft-strip (hang + color kill)
+    if (/\/assets\/diagrams\/(qx-org-|org-src\/)/i.test(src)) return false;
     // Local clean book assets — leave alone
-    // Local gentle-clean assets — already processed, do not re-threshold
     if (/\/assets\/(diagrams|qx-figures)\//i.test(src)
       && /hcv-|qx-book|qx-org|qx-irodov|qx-alc-prep|qx-figures/i.test(src)
       && !/proxy-image|restore-image/i.test(src)) {

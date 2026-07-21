@@ -1,4 +1,4 @@
-marks_data/
+﻿marks_data/
 tools/
 pdf_pages/
 *.bat
@@ -7,3 +7,19 @@ SETUP_DETAILS.txt
 data_old.js
 landing_old.html
 main_site.html
+data/_marks_probe/
+data/_examgoal_ui_probe/
+data/quizrr/
+# Keep clean organic color figures (qx-org-*.png) — only exclude raw sources
+assets/diagrams/org-src/
+assets/clean-diagrams/
+.git/
+node_modules/
+_bump_build.py
+*.pyc
+__pycache__/
+_wm_*.png
+_wm_*.jpg
+_deploy_log.txt
+_deploy_err.txt
+DEPLOY_RULES.txt

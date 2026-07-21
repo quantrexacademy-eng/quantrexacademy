@@ -3531,12 +3531,13 @@ window.QxImgClean = (() => {
       QxPremiumWM.nukeAllWatermarkDom(scope);
     }
     if (isMarksNativeBook(q)) {
+      // Organic / BITSAT / Rank Booster: keep COLOR figures as-authored.
+      // Never soft-strip or proxy-rewrite (was hanging + bleaching color).
       finalizeMarksNative(root, q);
       dedupeDomFigures(root);
-      // Still soft-strip any pool CDN figures inside native books
-      rewriteAllPoolImgs(scope);
-      if (typeof QxNoWmGuard !== "undefined" && QxNoWmGuard.schedulePass) {
-        QxNoWmGuard.schedulePass(scope);
+      dedupeOptionFigures(scope);
+      if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.nukeAllWatermarkDom) {
+        QxPremiumWM.nukeAllWatermarkDom(scope);
       }
       return;
     }

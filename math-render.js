@@ -844,10 +844,13 @@ window.Mx = (() => {
         }
         if (typeof QxImgClean !== "undefined" && QxImgClean.dedupeDomFigures) {
           QxImgClean.dedupeDomFigures(el);
-          setTimeout(() => QxImgClean.dedupeDomFigures(el), 300);
-          setTimeout(() => QxImgClean.dedupeDomFigures(el), 900);
+          if (!marksNative) {
+            setTimeout(() => QxImgClean.dedupeDomFigures(el), 300);
+            setTimeout(() => QxImgClean.dedupeDomFigures(el), 900);
+          }
         }
         cleanDom(el);
+        // Marks-native organic book: leave color figures alone (no heavy clean loops)
         if (!marksNative && typeof QxImgClean !== "undefined") {
           if (QxImgClean.processAllDiagrams) QxImgClean.processAllDiagrams(el);
           else if (QxImgClean.processImage) {
@@ -870,16 +873,22 @@ window.Mx = (() => {
       // Math first (students must read formulas), then images/cleanup
       typeset(el).then(() => {
         finish();
-        if (typeof QxImgClean !== "undefined" && QxImgClean.rewriteAllPoolImgs) {
+        const q2 = typeof QxImgClean !== "undefined" && QxImgClean.resolveCurrentQuestion
+          ? QxImgClean.resolveCurrentQuestion(el)
+          : null;
+        const native2 = q2 && QxImgClean.isMarksNativeBook && QxImgClean.isMarksNativeBook(q2);
+        if (!native2 && typeof QxImgClean !== "undefined" && QxImgClean.rewriteAllPoolImgs) {
           QxImgClean.rewriteAllPoolImgs(el);
           setTimeout(() => QxImgClean.rewriteAllPoolImgs(el), 400);
         }
-        // Permanent no-WM + visibility on every render (incl. prev/next)
-        if (typeof QxNoWmGuard !== "undefined" && QxNoWmGuard.schedulePass) {
-          QxNoWmGuard.schedulePass(el);
-        } else if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.scanAllFigures) {
-          QxPremiumWM.scanAllFigures(el);
-          setTimeout(() => QxPremiumWM.scanAllFigures(el), 500);
+        // Soft-strip guardian only for non-native (organic color books skip — no hang)
+        if (!native2) {
+          if (typeof QxNoWmGuard !== "undefined" && QxNoWmGuard.schedulePass) {
+            QxNoWmGuard.schedulePass(el);
+          } else if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.scanAllFigures) {
+            QxPremiumWM.scanAllFigures(el);
+            setTimeout(() => QxPremiumWM.scanAllFigures(el), 500);
+          }
         }
         // Second pass after DOM settles (options sometimes mount late)
         setTimeout(() => { typeset(el).catch(() => {}); }, 600);

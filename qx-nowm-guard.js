@@ -107,12 +107,19 @@
 
   function isPoolFig(img) {
     if (!img || isUiIcon(img)) return false;
+    const src = String(img.dataset.qxOrigSrc || img.getAttribute("src") || "");
+    // Organic color figures — never soft-strip (prevents hang + bleach)
+    if (/\/assets\/diagrams\/(qx-org-|org-src\/)/i.test(src)
+      || img.classList.contains("qx-org-fig")
+      || img.classList.contains("qx-organic-fig")) {
+      return false;
+    }
     if (img.classList.contains("qx-pool-fig") || img.classList.contains("qx-fig-img") || img.classList.contains("qx-no-wm")) {
-      const src = String(img.dataset.qxOrigSrc || img.getAttribute("src") || "");
       if (/cdn-assets\.getmarks|ic_content_exam_/i.test(src) && !/cdn-question-pool|\/pyq\//i.test(src)) return false;
+      // Local clean assets already free of MARKS
+      if (/\/assets\/(diagrams|qx-figures)\//i.test(src) && !/proxy-image/i.test(src)) return false;
       return true;
     }
-    const src = String(img.dataset.qxOrigSrc || img.getAttribute("src") || "");
     return /cdn-question-pool|cdn\.quizrr|\/pyq\/|proxy-image|restore-image/i.test(src);
   }
 
