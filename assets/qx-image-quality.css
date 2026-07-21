@@ -1,93 +1,247 @@
-/* Quantrex — full-color professional HQ question figures */
+/* Quantrex — natural color QUESTION figures only (never resize UI/exam icons) */
 
+/* Question/option diagrams only — NOT exam/subject UI icons */
 img.qx-pool-fig,
 .qx-fig-img.qx-pool-fig,
 .qx-fig-inner > img.qx-pool-fig,
-#qxDiagramSlot img,
+#qxDiagramSlot img.qx-pool-fig,
 .qx-diagram-slot img.qx-pool-fig,
-.mtk-main #qxDiagramSlot img,
+.qx-opt-diagram-slot img.qx-pool-fig,
+.mtk-main #qxDiagramSlot img.qx-pool-fig,
 .mtk-main .qx-diagram-slot img.qx-pool-fig,
-img.qx-hq-color {
+img.qx-hcv-ink,
+img.qx-black-redraw,
+img.qx-hq-color,
+.qx-fig img.qx-fig-img,
+.qx-fig img.qx-no-wm,
+.qx-opt-fig img.qx-no-wm,
+img.qx-pool-fig[src*="/assets/diagrams/"],
+img.qx-pool-fig[src*="/assets/clean-diagrams/"],
+img.qx-pool-fig[src*="cdn-question-pool"],
+img.qx-pool-fig[src*="cdn.quizrr"],
+img.qx-pool-fig[src*="/pyq/"],
+img.qx-pool-fig[src*="/api/proxy-image"],
+img.qx-pool-fig[src*="/api/restore-image"],
+#qxDiagramSlot img,
+.qx-diagram-slot img,
+.qx-opt-diagram-slot img {
   display: block !important;
   max-width: 100% !important;
-  max-height: none !important;
   width: auto !important;
   height: auto !important;
-  min-height: 48px !important;
   margin: 0 auto !important;
   object-fit: contain !important;
-  image-rendering: auto;
+  image-rendering: auto !important;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  transform: translateZ(0);
   filter: none !important;
   -webkit-filter: none !important;
   opacity: 1 !important;
   visibility: visible !important;
-}
-
-img.qx-cleaned.qx-pool-fig,
-img.qx-restored.qx-pool-fig {
-  filter: none !important;
-  -webkit-filter: none !important;
-}
-
-img.qx-no-wm:not(.qx-pool-fig),
-.qx-fig-img:not(.qx-pool-fig),
-.qx-fig img:not(.qx-pool-fig),
-.qx-opt-fig img:not(.qx-pool-fig) {
-  filter: none !important;
-  -webkit-filter: none !important;
-}
-
-.qx-fig-img,
-.qx-fig img,
-#qxDiagramSlot img {
-  max-height: none !important;
-}
-
-.mtk-q-text .qx-fig-img,
-.qa-q .qx-fig-img,
-.qx-prac-q .qx-fig-img {
-  max-height: none !important;
-}
-
-/* No box around figure — watermark only on image */
-.qx-fig,
-.qx-opt-fig,
-.qx-pool-fig-wrap {
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
+  /* Keep figure pixels solid; paper plate is on the wrapper (qx-theme-practice) */
+  background: #ffffff !important;
   box-shadow: none !important;
 }
 
+/* Exam / subject / tool icons — fixed standard sizes (never full-res PNG) */
+img.qx-marks-icon,
+img.qx-exam-logo,
+img.marks-exam-ic-img,
+img.marks-side-exam-ic-img,
+img.dash-tool-logo,
+img.dash-board-logo,
+img.dash-board-hero-logo,
+img.dash-board-tab-logo,
+img.subj-ic-img,
+img.board-subj-ic-img,
+img.marks-board-subj-ic,
+img.exam-pill-logo,
+img.exam-card-logo,
+img.cpyqb-exam-tile-logo,
+img.qx-card-exam-logo,
+img.qx-an-exam-logo,
+img.qx-an-hist-logo,
+img.ct-subj-icon,
+img.ct-wiz-subj-ic,
+.subj-mini-ic img,
+.board-subj-ic img,
+.dash-tool-ic img,
+.exam-card-ic img,
+.exam-pill-ic img,
+.cpyqb-exam-tile-ic img {
+  display: block !important;
+  width: 32px !important;
+  height: 32px !important;
+  max-width: 32px !important;
+  max-height: 32px !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  object-fit: contain !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Context-specific icon sizes (standard Marks-like UI) */
+img.marks-exam-ic-img {
+  width: 40px !important;
+  height: 40px !important;
+  max-width: 40px !important;
+  max-height: 40px !important;
+  border-radius: 10px;
+}
+img.subj-ic-img,
+.board-subj-ic img,
+img.board-subj-ic-img {
+  width: 36px !important;
+  height: 36px !important;
+  max-width: 36px !important;
+  max-height: 36px !important;
+}
+img.marks-board-subj-ic,
+.subj-mini-ic img {
+  width: 22px !important;
+  height: 22px !important;
+  max-width: 22px !important;
+  max-height: 22px !important;
+}
+img.exam-pill-logo,
+img.exam-card-logo,
+img.dash-tool-logo,
+.dash-tool-ic img {
+  width: 32px !important;
+  height: 32px !important;
+  max-width: 32px !important;
+  max-height: 32px !important;
+}
+img.cpyqb-exam-tile-logo {
+  width: 40px !important;
+  height: 40px !important;
+  max-width: 40px !important;
+  max-height: 40px !important;
+}
+img.qx-card-exam-logo,
+.q-footer .qx-card-exam-logo {
+  width: 20px !important;
+  height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+}
+img.qx-an-exam-logo {
+  width: 48px !important;
+  height: 48px !important;
+  max-width: 48px !important;
+  max-height: 48px !important;
+}
+img.qx-an-hist-logo {
+  width: 32px !important;
+  height: 32px !important;
+  max-width: 32px !important;
+  max-height: 32px !important;
+}
+.qx-src-tag img {
+  width: 18px !important;
+  height: 18px !important;
+  max-width: 18px !important;
+  max-height: 18px !important;
+}
+img.ct-subj-icon {
+  width: 28px !important;
+  height: 28px !important;
+  max-width: 28px !important;
+  max-height: 28px !important;
+}
+img.ct-wiz-subj-ic {
+  width: 36px !important;
+  height: 36px !important;
+  max-width: 36px !important;
+  max-height: 36px !important;
+}
+
+/* Figure wrappers — light paper plate so black-ink diagrams stay visible in dark mode */
+.qx-fig,
+.qx-opt-fig,
+.qx-pool-fig-wrap,
+.qx-fig-inner,
+.qx-fig-stack,
+.qx-diagram-slot,
+#qxDiagramSlot,
+.qx-diagram-seg,
+.qx-opt-diagram-slot,
+.qx-diagram-wrap,
+.qx-diagram-viewport,
+.qx-diagram-panel {
+  background: #ffffff !important;
+  border: 1px solid rgba(148, 163, 184, 0.35) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  padding: 8px 10px !important;
+}
+
 .qx-fig img,
-.qx-opt-fig img {
-  border-radius: 0;
-  background: #fff;
+.qx-opt-fig img,
+.qx-fig-img,
+#qxDiagramSlot img,
+.qx-diagram-slot img {
+  border-radius: 0 !important;
+  background: #ffffff !important;
+  box-shadow: none !important;
+  max-height: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Option figures: same paper plate, compact */
+.qx-opt-fig {
+  padding: 8px !important;
+  min-height: 0 !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(148, 163, 184, 0.35) !important;
 }
 
 .mtk-test-root[data-test-theme="light"] .qx-fig,
 .mtk-test-root[data-test-theme="light"] .qx-opt-fig,
 .mtk-test-root[data-test-theme="dark"] .qx-fig,
-.mtk-test-root[data-test-theme="dark"] .qx-opt-fig {
-  background: transparent !important;
-  border: none !important;
+.mtk-test-root[data-test-theme="dark"] .qx-opt-fig,
+.mtk-test-root[data-test-theme="light"] .qx-fig img,
+.mtk-test-root[data-test-theme="light"] .qx-opt-fig img,
+.mtk-test-root[data-test-theme="dark"] .qx-fig img,
+.mtk-test-root[data-test-theme="dark"] .qx-opt-fig img {
+  background: #ffffff !important;
+  box-shadow: none !important;
 }
 
 .qx-opt-fig img.qx-pool-fig,
 .mtk-opt-text .qx-opt-fig img.qx-pool-fig,
 .mtk-opt-text .qx-opt-diagram-slot img,
-.mtk-opt-text img.qx-pool-fig {
+.mtk-opt-text img.qx-pool-fig,
+.qx-prac-opt-text img {
   max-height: none !important;
   filter: none !important;
   -webkit-filter: none !important;
+  box-shadow: none !important;
 }
 
-.qx-opt-fig img:not(.qx-pool-fig),
-.mtk-opt-text .qx-opt-fig img:not(.qx-pool-fig) {
-  max-height: 220px !important;
+/* Kill any leftover watermark chrome / pseudo shadow layers */
+.qx-fig::before,
+.qx-fig::after,
+.qx-opt-fig::before,
+.qx-opt-fig::after,
+.qx-pool-fig-wrap::before,
+.qx-pool-fig-wrap::after,
+.qx-fig-inner::before,
+.qx-fig-inner::after,
+.qx-fig-stack::before,
+.qx-fig-stack::after {
+  display: none !important;
+  content: none !important;
+  box-shadow: none !important;
+  background: none !important;
 }
 
 @media (max-width: 640px) {
@@ -96,8 +250,5 @@ img.qx-no-wm:not(.qx-pool-fig),
   .qx-opt-fig img.qx-pool-fig,
   .mtk-opt-text .qx-opt-diagram-slot img {
     max-height: none !important;
-  }
-  .qx-opt-fig img:not(.qx-pool-fig) {
-    max-height: 180px !important;
   }
 }

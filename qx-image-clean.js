@@ -39,12 +39,10 @@ window.QxImgClean = (() => {
   // Render like Marks web: preserve native HTML + inline diagrams
   const MARKS_NATIVE_BOOKS = new Set([
     "68f1ce4cc729e5251bd00430", // Rank Booster
-    "69cfb5366ecf5579037d96a4", // Irodov — local figure PNGs; do NOT pixel-strip (wipes labels)
+    "69cfb5366ecf5579037d96a4",
     "6a4ce383c59a7b462185330f", // Fundamentals of Organic Chemistry
     "69736c8362b916d85e52cd1b", // BITSAT English & Logical Reasoning
   ]);
-  const IRODOV_BOOK_ID = "69cfb5366ecf5579037d96a4";
-  const IRODOV_MANIFEST_URL = "data/qx_irodov_figure_manifest.json";
 
   function isMarksNativeBook(q) {
     if (!q) return false;
@@ -52,16 +50,9 @@ window.QxImgClean = (() => {
     return MARKS_NATIVE_BOOKS.has(String(bid));
   }
 
-  function isIrodovBook(q) {
-    if (!q) return false;
-    return String(q._book || q._bookId || "") === IRODOV_BOOK_ID
-      || /irodov/i.test(String(q.examName || q._bookTitle || ""));
-  }
-
   let manifest = null;
   let reviewSet = null;
   let figureOverrides = null;
-  let irodovFigMap = null;
   let dbPromise = null;
 
   function fixUrl(url) {
@@ -204,40 +195,6 @@ window.QxImgClean = (() => {
       figureOverrides = { version: 1, rules: [] };
     }
     return figureOverrides;
-  }
-
-  /** Exact AKCR2 / filename map → local clean qx-irodov diagrams (no MARKS watermark). */
-  async function loadIrodovFigMap() {
-    if (irodovFigMap) return irodovFigMap;
-    irodovFigMap = new Map();
-    try {
-      const r = await fetch(IRODOV_MANIFEST_URL, { cache: "force-cache" });
-      if (!r.ok) return irodovFigMap;
-      const j = await r.json();
-      const map = (j && j.map) || {};
-      Object.keys(map).forEach((k) => {
-        const clean = normalizeAssetSrc(map[k]);
-        if (!clean) return;
-        const base = String(k).split("/").pop().split("?")[0].toLowerCase();
-        if (base) irodovFigMap.set(base, clean);
-        const id = base.match(/^(akcr2_\d+)/i);
-        if (id) irodovFigMap.set(id[1].toLowerCase(), clean);
-      });
-    } catch (_) { /* keep empty map */ }
-    return irodovFigMap;
-  }
-
-  function resolveIrodovCleanSrc(url) {
-    if (!irodovFigMap || !irodovFigMap.size) return null;
-    const s = fixUrl(url || "");
-    if (!s) return null;
-    const base = s.split("/").pop().split("?")[0].toLowerCase();
-    if (base && irodovFigMap.has(base)) return irodovFigMap.get(base);
-    const id = base && base.match(/^(akcr2_\d+)/i);
-    if (id && irodovFigMap.has(id[1].toLowerCase())) return irodovFigMap.get(id[1].toLowerCase());
-    const pathId = s.match(/(AKCR2_\d+)/i);
-    if (pathId && irodovFigMap.has(pathId[1].toLowerCase())) return irodovFigMap.get(pathId[1].toLowerCase());
-    return null;
   }
 
   function normalizeAssetSrc(src) {
@@ -573,23 +530,13 @@ window.QxImgClean = (() => {
 
   async function cleanUrl(url) {
     const fixed = fixUrl(url);
-    // Irodov: exact figure map first (avoids AKCR2_1 matching AKCR2_10 via loose urlRx)
-    if (/AKCR2_|jee_advanced_physics|irodov/i.test(fixed) || /AKCR2_|jee_advanced_physics/i.test(String(url || ""))) {
-      await loadIrodovFigMap();
-      const iro = resolveIrodovCleanSrc(fixed) || resolveIrodovCleanSrc(url);
-      if (iro) return iro;
-    }
     await loadFigureOverrides();
     const rules = [...(figureOverrides?.rules || []), ...FIGURE_OVERRIDE_FALLBACK];
     for (const rule of rules) {
       if (rule.url && (rule.url === fixed || rule.url === url)) return normalizeAssetSrc(rule.clean);
       if (rule.urlRx) {
         try {
-          // Prefer whole id: AKCR2_12 not as prefix of AKCR2_120
-          const rx = /AKCR2_\d+/i.test(rule.urlRx)
-            ? new RegExp("(?:^|[/_.-])" + rule.urlRx.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "(?:\\.|$|[^0-9])", "i")
-            : new RegExp(rule.urlRx, "i");
-          if (rx.test(fixed)) return normalizeAssetSrc(rule.clean);
+          if (new RegExp(rule.urlRx, "i").test(fixed)) return normalizeAssetSrc(rule.clean);
         } catch (_) {}
       }
     }
@@ -1609,11 +1556,12 @@ window.QxImgClean = (() => {
   }
 
   function shouldBrandOverlay(img) {
-    // Never stamp brand on figures — it ruined readability
+    // Always false — Quantrex watermarks removed from all figures
     return false;
   }
 
   function applyQuantrexBrand(img) {
+    // Watermarks disabled — they were covering figures. Only strip leftovers.
     if (!img || !img.isConnected) return Promise.resolve(false);
     if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.stripQuantrexBrand) {
       QxPremiumWM.stripQuantrexBrand(img);
@@ -3353,91 +3301,14 @@ window.QxImgClean = (() => {
   function finalizeMarksNative(root, q) {
     const scope = root || document;
     if (q) rememberQuestionRaw(q);
-    const imgs = scope.querySelectorAll(
-      ".qx-marks-native img, .qx-marks-native-opt img, .mtk-opt-text img, .qx-opt-pair-struct img, .qx-prac-opt-text img"
-    );
-    const irodov = isIrodovBook(q);
-    const rankBooster = q && String(q._book || q._bookId || "") === "68f1ce4cc729e5251bd00430";
-    imgs.forEach(img => {
-      let src = fixUrl(img.getAttribute("src") || img.dataset.qxOrigSrc || "");
-      // Broken /api/proxy-image → fall back to original CDN
-      if (/\/api\/proxy-image/i.test(src)) {
-        try {
-          const u = new URL(src, (typeof location !== "undefined" && location.origin) || "https://www.quantrexacademy.com");
-          const real = u.searchParams.get("url");
-          if (real) {
-            img.dataset.qxOrigSrc = real;
-            // Prefer proxy first; onerror falls back
-            if (!img.getAttribute("onerror")) {
-              img.setAttribute(
-                "onerror",
-                "this.onerror=null;var o=this.getAttribute('data-qx-orig-src');if(o)this.src=o;"
-              );
-            }
-          }
-        } catch (_) { /* keep */ }
-      }
-      // Irodov: local clean diagrams only
-      if (irodov && src && !/\/assets\/diagrams\/qx-irodov/i.test(src)) {
-        const mapped = resolveIrodovCleanSrc(src) || resolveIrodovCleanSrc(img.dataset.qxOrigSrc || "");
-        if (mapped) src = mapped;
-      }
-      if (src && src !== img.getAttribute("src") && !/\/api\/proxy-image/i.test(String(img.getAttribute("src") || ""))) {
-        // don't clobber intentional proxy attempt unless missing
-      }
-      if (src && !img.getAttribute("src")) img.setAttribute("src", src);
-      img.classList.add("qx-marks-inline-fig", "qx-pool-fig", "qx-no-wm");
-      img.classList.remove("qx-wm-loading");
-      img.style.opacity = "1";
-      img.style.visibility = "visible";
-      if (irodov) {
-        img.classList.add("qx-irodov-clean", "qx-wm-clean");
-        img.dataset.qxHasWm = "0";
-        img.dataset.qxCleaned = "1";
-      }
+    scope.querySelectorAll(".qx-marks-native img, .qx-marks-native-opt img").forEach(img => {
+      const src = fixUrl(img.getAttribute("src") || "");
+      if (src && src !== img.getAttribute("src")) img.setAttribute("src", src);
+      img.classList.add("qx-marks-inline-fig");
       img.removeAttribute("crossorigin");
       img.loading = "eager";
       img.decoding = "async";
     });
-    if (irodov) {
-      void loadIrodovFigMap().then(() => {
-        imgs.forEach(img => {
-          if (!img || !img.isConnected) return;
-          const raw = fixUrl(img.getAttribute("src") || "");
-          if (/\/assets\/diagrams\/qx-irodov/i.test(raw)) return;
-          const mapped = resolveIrodovCleanSrc(raw) || resolveIrodovCleanSrc(img.dataset.qxOrigSrc || "");
-          if (mapped) {
-            applyLocalCleanFigure(img, mapped, q && q.id);
-            img.classList.add("qx-marks-inline-fig", "qx-irodov-clean");
-          }
-        });
-      });
-      return;
-    }
-    // Rank Booster / other native books: strip MARKS watermark on pool figures (options + stem)
-    if (rankBooster || (q && (q._book || q._bookId))) {
-      void (async () => {
-        for (const img of imgs) {
-          if (!img || !img.isConnected) continue;
-          const cur = fixUrl(img.getAttribute("src") || "");
-          const orig = fixUrl(img.dataset.qxOrigSrc || "");
-          const cdn = /cdn-question-pool|cdn\.quizrr/i.test(cur) ? cur
-            : (/cdn-question-pool|cdn\.quizrr/i.test(orig) ? orig : "");
-          if (!cdn && !/\/api\/proxy-image/i.test(cur)) continue;
-          img.classList.add("qx-pool-fig", "qx-fig-img");
-          img.classList.remove("qx-wm-loading");
-          try {
-            if (typeof processImage === "function") processImage(img);
-            else if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
-              await QxPremiumWM.paintMarksHideOnly(img);
-            }
-          } catch (_) { /* keep figure */ }
-          img.classList.remove("qx-wm-loading");
-          img.style.opacity = "1";
-          img.style.visibility = "visible";
-        }
-      })();
-    }
   }
 
   function finalizeAll(root, q) {

@@ -32,25 +32,27 @@
   overflow: visible;
 }
 
-/* Hide Marks scrub / legacy sheets — keep Quantrex coaching watermark */
+/* NEVER show watermark overlays on figures */
+.qx-quantrex-wm-overlay,
+.qx-quantrex-black-wm,
+.qx-quantrex-black-seal,
+.qx-premium-wm-canvas,
+.qx-brand-overlay,
+.qx-diag-watermark,
 .qx-premium-wm-sheet,
 .qx-premium-wm-title,
 .qx-premium-wm-tag,
 .qx-wm-diagonal,
+img.qx-quantrex-wm-overlay,
+canvas.qx-premium-wm-canvas,
 canvas.qx-marks-scrub-canvas {
-  display: none !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
-
-img.qx-coaching-wm,
-img.qx-quantrex-wm-overlay {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
   width: 0 !important;
   height: 0 !important;
+  overflow: hidden !important;
 }
 
 /* Standard professional figure size — readable, not oversized (see also qx-figure-viewer.css) */

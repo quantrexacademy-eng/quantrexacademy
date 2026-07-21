@@ -32,13 +32,13 @@
     <link rel="stylesheet" href="assets/qx-font-scale.css?v=qxfont1">
     <link rel="stylesheet" href="assets/marks-test-engine.css?v=qxwmblue1">
     <link rel="stylesheet" href="assets/allen-test-engine.css?v=qxwmblue1">
-    <link rel="stylesheet" href="assets/qx-no-watermark.css?v=qxnowm2">
-    <link rel="stylesheet" href="assets/qx-brand-overlay.css?v=qxnowm2">
-    <link rel="stylesheet" href="assets/qx-figure.css?v=qxnowm2">
+    <link rel="stylesheet" href="assets/qx-no-watermark.css?v=qxrestore2">
+    <link rel="stylesheet" href="assets/qx-brand-overlay.css?v=qxrestore2">
+    <link rel="stylesheet" href="assets/qx-figure.css?v=qxrestore2">
     <link rel="stylesheet" href="assets/qx-figure-viewer.css?v=qxoptfig2">
     <link rel="stylesheet" href="assets/qx-image-clean.css?v=qxoptfig2">
     <link rel="stylesheet" href="assets/qx-num-keypad.css?v=qxnowm2">
-    <link rel="stylesheet" href="assets/qx-image-quality.css?v=qxdarkfig1">
+    <link rel="stylesheet" href="assets/qx-image-quality.css?v=qxrestore2">
     <link rel="stylesheet" href="assets/qx-question-format.css?v=qxoptfig1">
     <link rel="stylesheet" href="assets/qx-solution.css?v=qxsoldark1">
     <link rel="stylesheet" href="assets/qx-mobile.css?v=qxmobseo1">
@@ -966,19 +966,14 @@
           max-height: none !important; min-height: 72px !important; overflow: visible !important;
           object-fit: contain !important; display: block !important; opacity: 1 !important; visibility: visible !important;
         }
-        /* Hide Marks brand chrome only — Quantrex coaching watermark stays visible */
+        /* Restore pre-experiment: hide ALL brand/watermark overlays on figures */
         .qx-premium-wm-sheet, .qx-premium-wm-sheet.qx-wm-diagonal,
         .qx-premium-wm-title, .qx-premium-wm-tag, .qx-premium-wm-logo,
-        canvas.qx-marks-scrub-canvas,
-        .qx-marks-strip, .qx-wm-corner-badge {
-          display: none !important;
-          pointer-events: none !important;
-        }
-        img.qx-coaching-wm,
-        img.qx-quantrex-wm-overlay,
-        .qx-quantrex-black-wm,
-        .qx-quantrex-black-seal,
-        canvas.qx-premium-wm-canvas {
+        canvas.qx-marks-scrub-canvas, canvas.qx-premium-wm-canvas,
+        .qx-marks-strip, .qx-wm-corner-badge, .qx-brand-overlay, .qx-diag-watermark,
+        img.qx-coaching-wm, img.qx-quantrex-wm-overlay,
+        .qx-quantrex-black-wm, .qx-quantrex-black-seal,
+        img[src*="quantrex-academy-brand"], img[src*="quantrex-watermark"] {
           display: none !important;
           visibility: hidden !important;
           opacity: 0 !important;
@@ -2093,19 +2088,19 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js" defer></script>
-    <script>window.QX_BUILD = "qxnowm2";</script>
+    <script>window.QX_BUILD = "qxrestore2";</script>
     <script src="qx-perf.js?v=qxtest605"></script>
     <script src="firebase-config.js?v=qxentry1" defer></script>
     <script src="stack-config.js?v=qxtest605" defer></script>
     <script src="strip/branding-strip.js?v=qxegui1" defer></script>
     <script src="exam-logos.js?v=qxtest605" defer></script>
     <script src="qx-card-icons.js?v=qxicfix1" defer></script>
-    <script src="qx-premium-watermark.js?v=qxnowm2" defer></script>
-    <script src="qx-image-clean.js?v=qxnowm2" defer></script>
+    <script src="qx-premium-watermark.js?v=qxrestore2" defer></script>
+    <script src="qx-image-clean.js?v=qxrestore2" defer></script>
     <script src="qx-figure-viewer.js?v=qxoptfig2" defer></script>
-    <script src="qx-nowm-guard.js?v=qxnowm2" defer></script>
-    <script src="qx-watermark.js?v=qxtest605" defer></script>
-    <script src="math-render.js?v=qxsolwm1" defer></script>
+    <script src="qx-nowm-guard.js?v=qxrestore2" defer></script>
+    <script src="qx-watermark.js?v=qxrestore2" defer></script>
+    <script src="math-render.js?v=qxrestore2" defer></script>
     <script src="question-format.js?v=qxrbwm2" defer></script>
     <script src="solution-format.js?v=qxsolwm1" defer></script>
     <script src="data.js?v=qxorg3d1" defer></script>

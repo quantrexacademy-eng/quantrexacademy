@@ -41,20 +41,17 @@
   max-height: none !important;
 }
 
-/* Hide Marks scrub / legacy sheets only — keep Quantrex coaching watermark */
+/* Hide ALL watermark canvases / brand overlays (user: no watermark on figures) */
 canvas.qx-marks-scrub-canvas,
+canvas.qx-wm-canvas,
+canvas.qx-premium-wm-canvas,
 .qx-premium-wm-sheet,
 .qx-premium-wm-title,
 .qx-premium-wm-tag,
-.qx-wm-diagonal {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-/* Never stamp brand overlays on figures */
-img.qx-coaching-wm,
+.qx-wm-diagonal,
+.qx-quantrex-wm-overlay,
+.qx-brand-overlay,
+.qx-diag-watermark,
 img.qx-quantrex-wm-overlay {
   display: none !important;
   visibility: hidden !important;
@@ -147,13 +144,15 @@ img.qx-wm-none,
   display: none !important;
 }
 
-/* Legacy text sheets off — coaching image watermark is the brand layer */
+/* Watermark sheets disabled permanently (user: remove Quantrex watermark from figures) */
 .qx-premium-wm-sheet,
 .qx-premium-wm-sheet.qx-wm-diagonal,
 .qx-wm-active .qx-premium-wm-sheet,
 .qx-wm-active .qx-premium-wm-sheet.qx-wm-diagonal,
 .qx-fig-inner.qx-wm-canvas-active .qx-premium-wm-sheet {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
   pointer-events: none !important;
 }
 
@@ -218,10 +217,10 @@ img.qx-wm-none,
 .qx-diag-watermark,
 .qx-brand-overlay,
 .qx-wm-mask,
+img.qx-quantrex-wm-overlay,
 canvas.qx-premium-wm-canvas {
   display: none !important;
 }
-/* coaching wm stays visible behind figure (see rules above) */
 
 #qxDiagramSlot,
 .mtk-main #qxDiagramSlot,
@@ -280,16 +279,9 @@ body.marks-test-active .qx-premium-wm-logo,
 body.marks-test-active .qx-premium-wm-title,
 body.marks-test-active .qx-premium-wm-tag,
 body.marks-test-active .qx-premium-wm-sheet,
-body.allen-practice-active .qx-premium-wm-sheet {
-  display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-}
-body.marks-test-active img.qx-coaching-wm,
-body.marks-test-active img.qx-quantrex-wm-overlay,
-body.allen-practice-active img.qx-coaching-wm,
+body.allen-practice-active .qx-premium-wm-sheet,
 body.allen-practice-active img.qx-quantrex-wm-overlay {
   display: none !important;
-  visibility: hidden !important;
   opacity: 0 !important;
+  visibility: hidden !important;
 }

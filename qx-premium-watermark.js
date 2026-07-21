@@ -4,11 +4,9 @@ window.QxPremiumWM = (() => {
   const COACHING_WM_SRC = "/assets/quantrex-academy-brand-wm.png";
   const LOGO_FALLBACK = "/assets/quantrex-academy-brand.svg";
   const LOGO_FALLBACK2 = "/assets/quantrex-premium-logo.png";
-  const COACHING_WM_SCALE = 0.52;
-  // Behind figure, very light — figure must stay fully readable
-  const COACHING_WM_OPACITY = 0.07;
-  const COACHING_WM_OPACITY_OPT = 0.05;
-  const COACHING_WM_MIN_PX = 64;
+  const COACHING_WM_SCALE = 0.68;
+  const COACHING_WM_OPACITY = 0.22;
+  const COACHING_WM_MIN_PX = 88;
   const PROXY_BASE = (typeof location !== "undefined" && location.origin && !/localhost|127\.0\.0\.1/i.test(location.origin))
     ? location.origin.replace(/\/$/, "")
     : "https://quantrexacademy-live.web.app";
@@ -808,25 +806,21 @@ window.QxPremiumWM = (() => {
   }
 
   async function paintBrandWatermark(img, stack, rw, rh) {
-    // Disabled — watermark was covering/ruining figures
+    // Disabled — no watermarks on figures
     if (img) stripQuantrexBrand(img);
     return false;
   }
 
   function applyCoachingWmOverlay(stack, rw, rh, lw, opacity) {
-    // Disabled — never stamp brand on figures
+    // Disabled — remove coaching brand watermark overlays
     if (!stack) return null;
-    stack.querySelectorAll("img.qx-coaching-wm, img.qx-quantrex-wm-overlay").forEach(el => el.remove());
-    stack.classList.remove("qx-quantrex-wm-active", "qx-coaching-wm-active", "qx-brand-covered");
+    stack.querySelectorAll("img.qx-quantrex-wm-overlay, img.qx-coaching-wm").forEach(el => el.remove());
     return null;
   }
 
   async function paintOrganicCoachingWatermark(img, stack, rw, rh) {
-    // Disabled — figures must stay clean and fully readable
+    // Disabled — no watermarks
     if (img) stripQuantrexBrand(img);
-    if (stack) {
-      stack.querySelectorAll("img.qx-coaching-wm, img.qx-quantrex-wm-overlay").forEach(el => el.remove());
-    }
     return false;
   }
 
@@ -892,10 +886,8 @@ window.QxPremiumWM = (() => {
     if (/cdn-assets\.getmarks|app_assets\/img\/(exams|ui|cpyqb)\//i.test(src)) return false;
     if (/ic_content_exam_|formula_cards|ncert_toolbox/i.test(src)) return false;
     // Quizrr organic diagrams ARE pool figures (path may include watermarked_images)
-    // Local clean book / rebuilt PYQ assets — leave pixels alone (already clean)
-    if (/\/assets\/(diagrams|qx-figures)\//i.test(src)
-      && /qx-org|qx-book|qx-irodov|qx-alc-prep|hcv-|qx-figures/i.test(src)
-      && !/proxy-image|restore-image/i.test(src)) {
+    // Local clean book assets — leave alone
+    if (/\/assets\/diagrams\/(hcv|qx-book|qx-org|qx-irodov)/i.test(src) && !/proxy-image|restore-image/i.test(src)) {
       return false;
     }
     // Pool diagrams (incl. already-proxied or data: after partial clean)
@@ -1071,16 +1063,15 @@ window.QxPremiumWM = (() => {
   function redrawFigureBlackInk(img) {
     return new Promise(async resolve => {
       if (!img || !img.isConnected) return resolve(false);
-      // Soft-strip already done — permanent freeze, no brand stamp
+      stripQuantrexBrand(img);
+      // Soft-strip already done — permanent freeze
       if (img.dataset.qxSoftStrip === "2") {
         img.classList.add("qx-fig-ready");
         img.dataset.qxFigFrozen = "1";
-        stripQuantrexBrand(img);
         return resolve(true);
       }
       if (!figureNeedsMarksClean(img)) {
         img.classList.add("qx-fig-ready");
-        stripQuantrexBrand(img);
         return resolve(false);
       }
       // Route raw CDN through clean same-origin proxy first
@@ -1136,7 +1127,8 @@ window.QxPremiumWM = (() => {
   }
 
   /**
-   * Strip MARKS watermark from pool figures. No Quantrex brand stamp (keeps figure clean).
+   * Strip MARKS watermark from pool figures (proxy + client soft-strip).
+   * Never paint Quantrex brand. Never leave residual gray MARKS text.
    */
   function paintMarksHideOnly(img) {
     if (!img || !img.isConnected) return Promise.resolve(false);
@@ -1152,12 +1144,11 @@ window.QxPremiumWM = (() => {
       img.classList.remove("qx-wm-loading", "qx-brand-wm");
       img.dataset.qxHasWm = "0";
       img.dataset.qxWmClean = "1";
-      stripQuantrexBrand(img);
       return !!ok;
     });
   }
 
-  /** Disabled — never cover figures with QUANTREX watermark */
+  /** Disabled — do not cover figures with QUANTREX watermark */
   function paintQuantrexBrand(img) {
     if (img) stripQuantrexBrand(img);
     return Promise.resolve(false);
@@ -1174,13 +1165,13 @@ window.QxPremiumWM = (() => {
   function nukeAllWatermarkDom(root) {
     const scope = root || document;
     try {
-      // Remove MARKS chrome + any Quantrex stamp overlays so figures stay clean
       scope.querySelectorAll(
-        "canvas.qx-marks-scrub-canvas, canvas.qx-premium-wm-canvas, .qx-marks-strip, .qx-marks-scrub, .qx-wm-mask, " +
-        "img.qx-coaching-wm, img.qx-quantrex-wm-overlay, .qx-quantrex-black-wm, .qx-quantrex-black-seal, " +
-        ".qx-premium-wm-sheet, .qx-brand-overlay, .qx-diag-watermark, " +
-        "img[src*='getmarks-brand'], img[alt*='Get Marks App'], img[src*='marks-premium'], " +
-        "img[src*='marks_selected'], .getmarks-brand, .marks-brand"
+        "img.qx-quantrex-wm-overlay, img.qx-coaching-wm, canvas.qx-premium-wm-canvas, canvas.qx-marks-scrub-canvas, " +
+        ".qx-quantrex-black-wm, .qx-quantrex-black-seal, .qx-brand-overlay, .qx-quantrex-wm, .qx-premium-wm-sheet, " +
+        ".qx-diag-watermark, .qx-wm-diagonal, .qx-wm-corner-badge, .qx-marks-strip, .qx-marks-scrub, .qx-wm-mask, " +
+        "img[src*='quantrex-academy-brand'], img[src*='quantrex-watermark'], img[src*='quantrex-diag-watermark'], " +
+        "img[src*='quantrex-fig-stamp'], img[src*='quantrex-fig-seal'], img[src*='quantrex-brand-overlay'], " +
+        "img[src*='watermark-overlay'], img[src*='getmarks-brand'], img[alt*='Get Marks App']"
       ).forEach(el => el.remove());
     } catch (_) { /* */ }
   }
@@ -1188,20 +1179,16 @@ window.QxPremiumWM = (() => {
   function repaintAll(root) {
     const scope = root || document;
     nukeAllWatermarkDom(scope);
-    // Clean MARKS only — no Quantrex brand stamp on figures
+    // Clean every pool figure (including residual MARKS after proxy)
     scope.querySelectorAll(
-      "img.qx-pool-fig, img.qx-fig-img, img.qx-no-wm, img.qx-org-fig, img.qx-sol-fig, " +
-      "img[src*='cdn-question-pool'], img[src*='/pyq/'], img[src*='cdn.quizrr'], " +
-      "img[src*='proxy-image'], img[src*='restore-image'], " +
-      "img[src*='/assets/diagrams/'], img[src*='/assets/qx-figures/'], " +
-      "#qxDiagramSlot img, .qx-diagram-slot img, .qx-opt-diagram-slot img, " +
-      ".mtk-opt-text img, .qx-prac-opt-text img, .mtk-q-text img, " +
-      ".sol-body img, .qx-sol-body img, .qx-sol-card img, .qx-sol-reveal-box img, .mtk-sol img"
+      "img.qx-pool-fig, img[src*='cdn-question-pool'], img[src*='/pyq/'], img[src*='cdn.quizrr'], img[src*='proxy-image'], img[src*='restore-image'], #qxDiagramSlot img, .qx-diagram-slot img, .qx-opt-diagram-slot img"
     ).forEach(img => {
       if (!img) return;
       if (img.classList.contains("qx-marks-icon") || img.classList.contains("qx-exam-logo") || img.classList.contains("fc-img")) return;
       stripQuantrexBrand(img);
-      if (figureNeedsMarksClean(img) && img.dataset.qxSoftStrip !== "2") {
+      // Soft-strip only once; never skip just because of proxy/freeze flags
+      if (img.dataset.qxSoftStrip === "2") return;
+      if (figureNeedsMarksClean(img) || img.classList.contains("qx-pool-fig")) {
         void paintMarksHideOnly(img);
       }
     });
@@ -1224,11 +1211,12 @@ window.QxPremiumWM = (() => {
   startThemeObserver();
 
   function scanAllFigures(root) {
-    // Site-wide: soft-clean MARKS, then apply Quantrex coaching watermark
+    // Site-wide: strip every brand layer + soft-clean MARKS — never re-add
     repaintAll(root || document);
+    nukeAllWatermarkDom(root || document);
   }
 
-  // Light observer: strip MARKS chrome only (never remove Quantrex brand)
+  // Keep nuking overlays if anything re-injects them
   if (typeof MutationObserver !== "undefined") {
     try {
       const killObs = new MutationObserver(() => {

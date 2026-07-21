@@ -843,26 +843,19 @@ window.Mx = (() => {
           QxImgClean.finalizeAll(el, q);
         }
         cleanDom(el);
-        // Always process pool option/stem images (Rank Booster native books need this for WM strip)
-        if (typeof QxImgClean !== "undefined") {
-          const poolSel = "img[src*='cdn-question-pool'], img[src*='cdn.quizrr'], img[src*='/pyq/'], img[src*='proxy-image'], .qx-pool-fig, .qx-sol-fig, .mtk-opt-text img, .qx-marks-native-opt img, #qxDiagramSlot img, .sol-body img, .qx-sol-body img, .qx-sol-card img, .qx-sol-reveal-box img";
-          if (!marksNative && QxImgClean.processAllDiagrams) QxImgClean.processAllDiagrams(el);
+        if (!marksNative && typeof QxImgClean !== "undefined") {
+          if (QxImgClean.processAllDiagrams) QxImgClean.processAllDiagrams(el);
           else if (QxImgClean.processImage) {
-            el.querySelectorAll(poolSel).forEach(img => {
-              // Never scrub Irodov local diagrams
-              const s = img.getAttribute("src") || "";
-              if (/qx-irodov/i.test(s)) return;
-              QxImgClean.processImage(img);
-            });
+            el.querySelectorAll("img[src*='cdn-question-pool'], img[src*='/pyq/'], .qx-pool-fig, #qxDiagramSlot img").forEach(img => QxImgClean.processImage(img));
           }
-          if (QxImgClean.applyWmCover && !marksNative) {
-            el.querySelectorAll("img[src*='cdn-question-pool.getmarks'], img.qx-pool-fig, .sol-body img, .qx-sol-body img").forEach(img => QxImgClean.applyWmCover(img));
+          if (QxImgClean.applyWmCover) {
+            el.querySelectorAll("img[src*='cdn-question-pool.getmarks'], img.qx-pool-fig").forEach(img => QxImgClean.applyWmCover(img));
           }
         }
-        if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.scanAllFigures) {
+        if (!marksNative && typeof QxPremiumWM !== "undefined" && QxPremiumWM.scanAllFigures) {
           QxPremiumWM.scanAllFigures(el);
         } else if (!marksNative && typeof QxImgClean !== "undefined" && QxImgClean.applyQuantrexBrand) {
-          el.querySelectorAll("img.qx-pool-fig, img.qx-sol-fig, #qxDiagramSlot img, .qx-diagram-slot img, .sol-body img, .qx-sol-body img").forEach(img => QxImgClean.applyQuantrexBrand(img));
+          el.querySelectorAll("img.qx-pool-fig, #qxDiagramSlot img, .qx-diagram-slot img").forEach(img => QxImgClean.applyQuantrexBrand(img));
         }
         if (typeof QxPerf !== "undefined") {
           QxPerf.lazyImages(el);

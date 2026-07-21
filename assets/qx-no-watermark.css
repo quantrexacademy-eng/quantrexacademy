@@ -1,17 +1,18 @@
-/* Quantrex — hide MARKS brand chrome only; keep Quantrex coaching watermark */
+/* Quantrex — NO watermarks anywhere (MARKS + Quantrex overlays + assets) */
 
-/* HTML overlay watermarks from imported Marks content — never hide real pool diagrams */
-[class*="watermark"]:not(.qx-pool-fig-wrap):not(:has(img.qx-pool-fig)):not(.qx-coaching-wm):not(.qx-quantrex-wm-overlay),
+/* HTML overlay watermarks from imported content — never hide real pool diagrams */
+[class*="watermark"]:not(.qx-pool-fig-wrap):not(:has(img.qx-pool-fig)),
 [class*="Watermark"]:not(.qx-pool-fig-wrap):not(:has(img.qx-pool-fig)),
 [data-brand="marks"]:not(:has(img.qx-pool-fig)),
-[data-watermark]:not(:has(img.qx-pool-fig)):not(.qx-coaching-wm),
+[data-watermark]:not(:has(img.qx-pool-fig)),
 .marks-brand:not(:has(img.qx-pool-fig)),
 .getmarks-brand:not(:has(img.qx-pool-fig)),
 .watermark-text:not(:has(img.qx-pool-fig)),
 .watermark-overlay:not(:has(img.qx-pool-fig)),
-img[src*="getmarks-brand"]:not(.qx-pool-fig):not(.qx-no-wm),
+img[src*="watermark"]:not(.qx-pool-fig):not(.qx-no-wm):not(.qx-fig-img):not(.qx-brand-logo):not(.qx-marks-icon),
 img[src*="marks-premium"]:not(.qx-pool-fig):not(.qx-no-wm):not(.qx-marks-icon),
 img[src*="marks_selected"]:not(.qx-pool-fig):not(.qx-no-wm):not(.qx-marks-icon),
+img[src*="getmarks-brand"]:not(.qx-pool-fig):not(.qx-no-wm),
 img[src*="web_assets"][alt*="Marks"]:not(.qx-pool-fig):not(.qx-no-wm):not(.qx-marks-icon),
 img[alt*="Get Marks App"]:not(.qx-pool-fig):not(.qx-no-wm) {
   display: none !important;
@@ -22,41 +23,64 @@ img[alt*="Get Marks App"]:not(.qx-pool-fig):not(.qx-no-wm) {
   overflow: hidden !important;
 }
 
-/* Marks scrub canvas (pixel cleanup layer — temporary) can hide; brand overlay must show */
-canvas.qx-marks-scrub-canvas,
-.qx-marks-strip,
-.qx-marks-scrub {
-  display: none !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
-
-/* Never show Quantrex/brand stamp overlays on figures */
-img.qx-coaching-wm,
-img.qx-quantrex-wm-overlay,
-.qx-fig-inner > img.qx-coaching-wm,
-.qx-fig-inner > img.qx-quantrex-wm-overlay,
+/* Quantrex stamp / seal / brand watermark layers — NEVER show */
+.qx-diag-watermark,
+.qx-brand-overlay,
+.qx-quantrex-wm,
 .qx-quantrex-black-wm,
 .qx-quantrex-black-seal,
+.qx-premium-wm,
 .qx-premium-wm-sheet,
-.qx-brand-overlay,
-.qx-diag-watermark,
-canvas.qx-premium-wm-canvas {
+.qx-premium-wm-sheet.qx-wm-diagonal,
+.qx-premium-wm-title,
+.qx-premium-wm-tag,
+.qx-premium-wm-logo,
+.qx-wm-diagonal,
+.qx-wm-active .qx-premium-wm-sheet,
+.qx-wm-active .qx-premium-wm-sheet.qx-wm-diagonal,
+.qx-fig-inner.qx-wm-canvas-active .qx-premium-wm-sheet,
+.qx-fig-inner.qx-wm-active .qx-premium-wm-sheet,
+.qx-brand-covered.qx-wm-active .qx-premium-wm-sheet,
+.qx-premium-wm-active .qx-premium-wm-sheet,
+.qx-coaching-wm,
+.qx-wm-corner-badge,
+.qx-marks-strip,
+.qx-wm-mask,
+.qx-marks-scrub,
+img.qx-quantrex-wm-overlay,
+img.qx-coaching-wm,
+img[src*="quantrex-academy-brand"],
+img[src*="quantrex-academy-watermark"],
+img[src*="quantrex-watermark"],
+img[src*="quantrex-diag-watermark"],
+img[src*="quantrex-fig-stamp"],
+img[src*="quantrex-fig-seal"],
+img[src*="quantrex-brand-overlay"],
+img[src*="quantrex-brand-badge"],
+img[src*="watermark-overlay"],
+canvas.qx-premium-wm-canvas,
+canvas.qx-marks-scrub-canvas {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
+  max-height: 0 !important;
+  max-width: 0 !important;
   width: 0 !important;
   height: 0 !important;
-  max-width: 0 !important;
-  max-height: 0 !important;
   overflow: hidden !important;
   position: absolute !important;
   left: -9999px !important;
   z-index: -1 !important;
 }
 
-/* Real figures ALWAYS visible */
+.qx-diagram-slot .qx-premium-wm-sheet,
+#qxDiagramSlot .qx-premium-wm-sheet,
+.qx-question-body .qx-premium-wm-sheet {
+  display: none !important;
+}
+
+/* Real figures ALWAYS visible (never hide while cleaning / navigating) */
 img.qx-pool-fig,
 img.qx-no-wm.qx-pool-fig,
 img.qx-fig-img,
@@ -64,25 +88,25 @@ img.qx-no-wm,
 img.qx-wm-loading,
 img.qx-wm-clean,
 .qx-pool-fig-wrap,
-.qx-pool-fig-wrap img:not(.qx-coaching-wm):not(.qx-quantrex-wm-overlay),
+.qx-pool-fig-wrap img,
 .qx-fig,
-.qx-fig img:not(.qx-coaching-wm):not(.qx-quantrex-wm-overlay),
+.qx-fig img,
 .qx-opt-fig,
-.qx-opt-fig img:not(.qx-coaching-wm):not(.qx-quantrex-wm-overlay),
+.qx-opt-fig img,
 .qx-fig-inner,
-.qx-fig-inner > img.qx-pool-fig,
-.qx-fig-inner > img.qx-fig-img,
+.qx-fig-inner img,
 #qxDiagramSlot,
-#qxDiagramSlot img:not(.qx-coaching-wm),
+#qxDiagramSlot img,
 .qx-diagram-slot,
-.qx-diagram-slot img:not(.qx-coaching-wm),
-.qx-opt-diagram-slot img:not(.qx-coaching-wm),
-.mtk-opt-text img:not(.qx-coaching-wm),
-.qx-prac-opt-text img:not(.qx-coaching-wm),
+.qx-diagram-slot img,
+.qx-opt-diagram-slot img,
+.mtk-opt-text img,
+.qx-prac-opt-text img,
 .mtk-opt-text img.qx-pool-fig,
 .qx-prac-opt-text img.qx-pool-fig,
 .qx-opt-direct-img img,
-.qx-opt-pair-struct img {
+.qx-opt-pair-struct img,
+.qx-opt-diagram-slot img {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -94,51 +118,51 @@ img.qx-wm-clean,
   max-width: 100% !important;
   width: auto !important;
   height: auto !important;
+  min-height: 48px !important;
+  object-fit: contain !important;
 }
 
-/* Blue A/B/C/D option circles — always visible site-wide */
-.opt-letter,
-.mtk-opt-letter,
-.qx-opt-circle,
-.qx-prac-letter {
-  width: 32px !important;
-  height: 32px !important;
-  min-width: 32px !important;
-  border-radius: 50% !important;
-  background: #2563eb !important;
-  color: #fff !important;
-  font-weight: 800 !important;
-  font-size: 14px !important;
-  line-height: 1 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-shrink: 0 !important;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4) !important;
-  font-family: Inter, system-ui, sans-serif !important;
+/* Option structure figures — never blank empty cards */
+.mtk-opt-text img,
+.qx-prac-opt-text img,
+.mtk-opt .qx-opt-diagram-slot img,
+.qx-prac-opt .qx-opt-diagram-slot img,
+.qx-opt-pair-struct img,
+.qx-opt-direct-img img {
+  min-height: 72px !important;
+  max-height: 220px !important;
+  margin: 6px auto !important;
+  background: #fff !important;
 }
 
-.qa-opt.selected .opt-letter,
-.qx-prac-opt.selected .mtk-opt-letter,
-.qx-prac-opt.selected .qx-opt-circle,
-.qx-prac-opt.selected .qx-prac-letter,
-.mtk-opt.selected .mtk-opt-letter {
-  background: #1d4ed8 !important;
-  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.45) !important;
+/* Kill loading hide states that blank figures */
+.qx-wm-loading,
+.qx-fig.qx-wm-loading,
+.qx-fig-inner.qx-wm-loading,
+.qx-pool-fig-wrap.qx-wm-loading {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
-.qa-opt.correct .opt-letter,
-.qx-prac-opt.correct .mtk-opt-letter,
-.qx-prac-opt.correct .qx-opt-circle,
-.qx-prac-opt.correct .qx-prac-letter {
-  background: #16a34a !important;
-  box-shadow: none !important;
-}
-
-.qa-opt.wrong .opt-letter,
-.qx-prac-opt.wrong .mtk-opt-letter,
-.qx-prac-opt.wrong .qx-opt-circle,
-.qx-prac-opt.wrong .qx-prac-letter {
-  background: #dc2626 !important;
-  box-shadow: none !important;
+/* Keep legitimate UI icons visible — full color */
+img.qx-marks-icon,
+img.fc-img,
+.marks-exam-ic-img,
+.marks-board-subj-ic,
+.exam-pill-logo,
+.subj-mini-ic img,
+.dash-board-logo,
+.dash-tool-logo,
+.qx-exam-logo,
+img[src*="ic_content_exam_"],
+img[src*="cdn-assets.getmarks.app/app_assets/img/exams/"],
+img[src*="cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/"],
+img[src*="ncert_toolbox"] {
+  filter: none !important;
+  -webkit-filter: none !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  object-fit: contain !important;
+  pointer-events: auto !important;
 }

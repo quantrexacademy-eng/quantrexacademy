@@ -5,18 +5,12 @@
     "img.qx-pool-fig",
     "img.qx-fig-img",
     "img.qx-no-wm",
-    "img.qx-sol-fig",
     "#qxDiagramSlot img",
     ".qx-diagram-slot img",
     ".qx-opt-diagram-slot img",
     ".mtk-opt-text img",
     ".qx-prac-opt-text img",
     ".mtk-q-text img",
-    ".sol-body img",
-    ".qx-sol-body img",
-    ".qx-sol-card img",
-    ".qx-sol-reveal-box img",
-    ".mtk-sol img",
     ".qx-content img[src*='cdn-question-pool']",
     ".qx-content img[src*='/pyq/']",
     ".qx-content img[src*='proxy-image']",
@@ -26,28 +20,28 @@
     "img[src*='proxy-image']"
   ].join(", ");
 
-  // Kill MARKS chrome + Quantrex stamp overlays (figures must stay clean/readable)
   const KILL_SEL = [
-    "canvas.qx-marks-scrub-canvas",
-    "canvas.qx-premium-wm-canvas",
-    "img.qx-coaching-wm",
     "img.qx-quantrex-wm-overlay",
+    "img.qx-coaching-wm",
+    "canvas.qx-premium-wm-canvas",
+    "canvas.qx-marks-scrub-canvas",
     ".qx-quantrex-black-wm",
     ".qx-quantrex-black-seal",
-    ".qx-premium-wm-sheet",
     ".qx-brand-overlay",
+    ".qx-quantrex-wm",
+    ".qx-premium-wm-sheet",
     ".qx-diag-watermark",
+    ".qx-wm-diagonal",
+    ".qx-wm-corner-badge",
     ".qx-marks-strip",
     ".qx-marks-scrub",
     ".qx-wm-mask",
-    "img[src*='getmarks-brand']",
-    "img[src*='marks-premium']",
-    "img[src*='marks_selected']",
     "img[src*='quantrex-academy-brand']",
     "img[src*='quantrex-watermark']",
-    "img[alt*='Get Marks App']",
-    ".getmarks-brand",
-    ".marks-brand"
+    "img[src*='quantrex-diag-watermark']",
+    "img[src*='quantrex-fig-stamp']",
+    "img[src*='getmarks-brand']",
+    "img[alt*='Get Marks App']"
   ].join(", ");
 
   // origSrc → cleaned data URL (survives prev/next re-render)
@@ -80,10 +74,10 @@
   function isUiIcon(img) {
     if (!img) return true;
     // Option / question structure figures are NEVER icons
-    if (img.closest && img.closest(".mtk-opt-text, .qx-prac-opt-text, .qx-opt-diagram-slot, .qx-opt-pair-struct, .qx-opt-direct-img, #qxDiagramSlot, .qx-diagram-slot, .qx-fig, .qx-opt-fig, .mtk-q-text, .qx-content, .sol-body, .qx-sol-body, .qx-sol-card, .qx-sol-reveal-box, .mtk-sol")) {
+    if (img.closest && img.closest(".mtk-opt-text, .qx-prac-opt-text, .qx-opt-diagram-slot, .qx-opt-pair-struct, .qx-opt-direct-img, #qxDiagramSlot, .qx-diagram-slot, .qx-fig, .qx-opt-fig, .mtk-q-text, .qx-content")) {
       const src0 = String(img.getAttribute("src") || img.dataset.qxOrigSrc || "");
-      if (/cdn-question-pool|cdn\.quizrr|\/pyq\/|proxy-image|data:image\/png|assets\/diagrams|assets\/qx-figures/i.test(src0)
-        || img.classList.contains("qx-pool-fig") || img.classList.contains("qx-fig-img") || img.classList.contains("qx-no-wm") || img.classList.contains("qx-sol-fig")) {
+      if (/cdn-question-pool|cdn\.quizrr|\/pyq\/|proxy-image|data:image\/png|assets\/diagrams/i.test(src0)
+        || img.classList.contains("qx-pool-fig") || img.classList.contains("qx-fig-img") || img.classList.contains("qx-no-wm")) {
         return false;
       }
     }
@@ -202,9 +196,6 @@
         if (img.dataset.qxSoftStrip !== "2" && img.dataset.qxNowmRetry !== "1") {
           img.dataset.qxNowmRetry = "1";
           setTimeout(() => applyCacheOrClean(img), 500);
-        }
-        if (typeof QxPremiumWM.stripQuantrexBrand === "function") {
-          QxPremiumWM.stripQuantrexBrand(img);
         }
       });
     } else if (typeof QxImgClean !== "undefined" && QxImgClean.rewriteAllPoolImgs) {
