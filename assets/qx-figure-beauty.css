@@ -40,11 +40,19 @@
   max-width: 100% !important;
 }
 
-/* Kill nested twin white cards inside option slots (screen 629) */
+/* Kill nested twin white cards — ONE layer only (stem + options) */
 .qx-opt-diagram-slot .qx-fig,
 .qx-opt-diagram-slot .qx-pool-fig-wrap,
 .qx-opt-diagram-slot .qx-fig-inner,
-.qx-opt-diagram-slot .qx-opt-fig {
+.qx-opt-diagram-slot .qx-opt-fig,
+#qxDiagramSlot .qx-fig,
+#qxDiagramSlot .qx-pool-fig-wrap,
+#qxDiagramSlot .qx-fig-inner,
+.qx-diagram-slot .qx-fig,
+.qx-diagram-slot .qx-pool-fig-wrap,
+.qx-diagram-slot .qx-fig-inner,
+.qx-diagram-seg .qx-fig,
+.qx-diagram-seg .qx-fig-inner {
   margin: 0 !important;
   padding: 0 !important;
   border: none !important;
@@ -52,6 +60,14 @@
   background: transparent !important;
   border-radius: 0 !important;
   max-width: 100% !important;
+}
+
+/* Stem: single outer frame only */
+.qx-diagram-seg,
+#qxDiagramSlot,
+.qx-question-body > .qx-diagram-slot {
+  margin: 10px auto !important;
+  padding: 10px 12px !important;
 }
 
 /* Empty option slot must not paint a hollow white box (screen 630) */

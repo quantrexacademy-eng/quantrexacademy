@@ -108,16 +108,13 @@
   function isPoolFig(img) {
     if (!img || isUiIcon(img)) return false;
     const src = String(img.dataset.qxOrigSrc || img.getAttribute("src") || "");
-    // Organic color figures — never soft-strip (prevents hang + bleach)
-    if (/\/assets\/diagrams\/(qx-org-|org-src\/)/i.test(src)
-      || img.classList.contains("qx-org-fig")
-      || img.classList.contains("qx-organic-fig")) {
-      return false;
-    }
-    if (img.classList.contains("qx-pool-fig") || img.classList.contains("qx-fig-img") || img.classList.contains("qx-no-wm")) {
+    // org-src raw only — skip; qx-org allowed one soft-strip for residual MARKS
+    if (/\/assets\/diagrams\/org-src\//i.test(src)) return false;
+    if (img.classList.contains("qx-pool-fig") || img.classList.contains("qx-fig-img") || img.classList.contains("qx-no-wm")
+      || img.classList.contains("qx-org-fig") || img.classList.contains("qx-organic-fig")
+      || /\/assets\/diagrams\/qx-org-/i.test(src)) {
       if (/cdn-assets\.getmarks|ic_content_exam_/i.test(src) && !/cdn-question-pool|\/pyq\//i.test(src)) return false;
-      // Local clean assets already free of MARKS
-      if (/\/assets\/(diagrams|qx-figures)\//i.test(src) && !/proxy-image/i.test(src)) return false;
+      if (/\/assets\/qx-figures\//i.test(src) && !/proxy-image/i.test(src)) return false;
       return true;
     }
     return /cdn-question-pool|cdn\.quizrr|\/pyq\/|proxy-image|restore-image/i.test(src);
@@ -164,8 +161,8 @@
       img.classList.add("qx-pool-fig", "qx-no-wm", "qx-opt-fig-img");
     }
 
-    // Soft-strip v11 — keep data:URL; do not let src-lock re-apply MARKS
-    const STRIP_VER = "11";
+    // Soft-strip v12 — color-safe MARKS wipe, single layer
+    const STRIP_VER = "12";
     const key = cacheKey(img);
     if (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === STRIP_VER) {
       forceVisible(img);

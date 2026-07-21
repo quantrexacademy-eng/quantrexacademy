@@ -891,14 +891,13 @@ window.QxPremiumWM = (() => {
     // UI icons from Marks CDN — never treat as pool figures
     if (/cdn-assets\.getmarks|app_assets\/img\/(exams|ui|cpyqb)\//i.test(src)) return false;
     if (/ic_content_exam_|formula_cards|ncert_toolbox/i.test(src)) return false;
-    // Organic digital book color figures (local qx-org / org-src) — never soft-strip (hang + color kill)
-    if (/\/assets\/diagrams\/(qx-org-|org-src\/)/i.test(src)) return false;
-    // Local clean book assets — leave alone
-    if (/\/assets\/(diagrams|qx-figures)\//i.test(src)
-      && /hcv-|qx-book|qx-org|qx-irodov|qx-alc-prep|qx-figures/i.test(src)
-      && !/proxy-image|restore-image/i.test(src)) {
-      return false;
+    // Local alc-prep / preprocessed clean only — qx-org still may carry pale MARKS haze
+    if (/\/assets\/qx-figures\//i.test(src) || /qx-alc-prep|hcv-|qx-irodov/i.test(src)) return false;
+    // Color organic figures: allow ONE soft-strip pass (preserves chroma ink in softStripMarksPixels)
+    if (/\/assets\/diagrams\/qx-org-/i.test(src) || img.classList.contains("qx-org-fig") || img.classList.contains("qx-organic-fig")) {
+      return img.dataset.qxSoftVer !== SOFT_STRIP_VER;
     }
+    if (/\/assets\/diagrams\/org-src\//i.test(src)) return false;
     // Pool diagrams (incl. already-proxied or data: after partial clean)
     if (/cdn-question-pool|cdn\.quizrr|\/pyq\/|proxy-image|restore-image/i.test(src)) return true;
     if (img.dataset.qxHasWm === "1") return true;
@@ -911,7 +910,7 @@ window.QxPremiumWM = (() => {
   }
 
   /** Soft-strip algorithm version — bump forces re-clean of previously frozen figures */
-  const SOFT_STRIP_VER = "11";
+  const SOFT_STRIP_VER = "12";
 
   /**
    * PERMANENT MARKS wipe (all exams / options A–D):

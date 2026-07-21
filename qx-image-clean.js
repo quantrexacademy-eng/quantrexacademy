@@ -3531,14 +3531,20 @@ window.QxImgClean = (() => {
       QxPremiumWM.nukeAllWatermarkDom(scope);
     }
     if (isMarksNativeBook(q)) {
-      // Organic / BITSAT / Rank Booster: keep COLOR figures as-authored.
-      // Never soft-strip or proxy-rewrite (was hanging + bleaching color).
+      // Organic etc.: one clean layer only — show figures, strip pale MARKS once, no multi-pass hang
       finalizeMarksNative(root, q);
       dedupeDomFigures(root);
       dedupeOptionFigures(scope);
       if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.nukeAllWatermarkDom) {
         QxPremiumWM.nukeAllWatermarkDom(scope);
       }
+      // One soft-strip pass per figure on this question only (color-safe)
+      scope.querySelectorAll("img.qx-org-fig, img.qx-organic-fig, img[src*='qx-org-'], img[src*='cdn-question-pool'], img[src*='/pyq/']").forEach(img => {
+        if (img.dataset.qxSoftVer === "12") return;
+        if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
+          void QxPremiumWM.paintMarksHideOnly(img);
+        }
+      });
       return;
     }
     if (q) rememberQuestionRaw(q);

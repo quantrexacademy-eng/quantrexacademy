@@ -19,8 +19,8 @@ const BOOK_COVER_PRESETS = {
 const BOOK_COVER_PHOTO = {
   "6a0addba4b032b031e049a36": "assets/book-covers/hc-verma-v2.jpg",
   "69f9cc23681eab6d6021a4d1": "assets/book-covers/hc-verma-v1.jpg",
-  // Photo covers (HC Verma style 3D book photos)
-  "6a4ce383c59a7b462185330f": "assets/book-covers/organic-chemistry.jpg",
+  // Organic: HC Verma V2–style Quantrex digital cover (SVG art, not MARKS stock)
+  "6a4ce383c59a7b462185330f": "assets/book-covers/organic-chemistry.svg",
   "69736c8362b916d85e52cd1b": "assets/book-covers/bitsat-english-lr.jpg",
   "69cfb5366ecf5579037d96a4": "assets/book-covers/irodov.jpg",
   "68f1ce4cc729e5251bd00430": "assets/book-covers/rank-booster.jpg",
@@ -37,7 +37,7 @@ const BOOK_COVER_SVG = {
   "6a0addba4b032b031e049a36": "assets/book-covers/hc-verma-v2.svg",
   "69f9cc23681eab6d6021a4d1": "assets/book-covers/hc-verma-v1.svg",
   "6a4ce383c59a7b462185330f": "assets/book-covers/organic-chemistry.svg",
-  "69736c8362b916d85e52cd1b": "assets/book-covers/bitsat-english-lr.svg",
+  "69736c8362b916d85e52cd1b": "assets/book-covers/bitsat-english-lr.jpg",
   "69cfb5366ecf5579037d96a4": "assets/book-covers/irodov.svg",
   "68f1ce4cc729e5251bd00430": "assets/book-covers/rank-booster.svg",
   "68946f70ebd145663de38728": "assets/book-covers/99-percentile.svg",
@@ -112,7 +112,7 @@ function inferBookCoverStyle(book) {
   return style;
 }
 
-const BOOK_COVER_VER = "qxrestore2pm";
+const BOOK_COVER_VER = "qxhcvorg1";
 
 function withCoverVer(path) {
   if (!path) return null;
