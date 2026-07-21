@@ -1,64 +1,11 @@
-/* Figures stay inside the question — no front lightbox / present overlay */
+/* Quantrex — clean zoom lightbox (shows soft-stripped original, never dirty Marks CDN) */
 
-/* Kill click-to-open chrome from older builds */
 img.qx-fig-clickable,
-img.qx-pool-fig,
-img.qx-fig-img,
-img.qx-no-wm,
-.mtk-main img.qx-pool-fig,
-.mtk-main .qx-diagram-slot img,
-.mtk-main #qxDiagramSlot img,
-.mtk-main .qx-fig img,
-.mtk-opt-text img.qx-pool-fig,
-.qx-prac-opt-text img.qx-pool-fig,
-.sol-body img.qx-pool-fig,
-#qxDiagramSlot img,
-.qx-diagram-slot img,
-.qx-opt-diagram-slot img {
-  cursor: default !important;
-  pointer-events: auto !important;
-  -webkit-user-drag: none;
+.qx-fig-clickable-wrap {
+  cursor: zoom-in !important;
 }
 
-.qx-fig-clickable-wrap,
-#qxDiagramSlot,
-.qx-diagram-slot,
-.qx-opt-diagram-slot,
-.qx-fig,
-.qx-opt-fig,
-.qx-pool-fig-wrap {
-  cursor: default;
-  pointer-events: auto !important;
-}
-
-/* Zoom toolbar permanently off */
-.qx-diag-toolbar,
-.qx-diag-zoom-btns,
-.qx-diag-btn,
-.qx-diag-pct,
-.qx-diag-label,
-.qx-diagram-hint,
-.qx-diagram-badge {
-  display: none !important;
-  visibility: hidden !important;
-  height: 0 !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  pointer-events: none !important;
-}
-
-/* Never let scrub canvases steal taps */
-.qx-fig canvas,
-.qx-fig-inner canvas,
-.qx-diagram-slot canvas,
-#qxDiagramSlot canvas,
-.qx-opt-diagram-slot canvas,
-canvas.qx-premium-wm-canvas,
-canvas.qx-marks-scrub-canvas {
-  pointer-events: none !important;
-}
-
-/* Readable in-question figure size (no need to open front view) */
+/* Readable in-question figure size */
 .mtk-main #qxDiagramSlot img,
 .mtk-main .qx-diagram-slot img,
 .mtk-main .qx-question-body img.qx-pool-fig,
@@ -75,49 +22,76 @@ canvas.qx-marks-scrub-canvas {
   object-fit: contain !important;
   margin: 10px auto !important;
   display: block !important;
+  background: #fff !important;
 }
 
 .mtk-main img.qx-pool-fig[data-qx-display-w] {
-  width: min(var(--qx-fig-w, 320px), 100%) !important;
-  max-height: 360px !important;
+  max-width: min(100%, var(--qx-fig-w, 560px)) !important;
 }
 
-.mtk-opt-text img.qx-pool-fig,
-.qx-prac-opt-text img.qx-pool-fig,
-.mtk-opt-text .qx-opt-diagram-slot img,
-.qx-prac-opt-text .qx-opt-diagram-slot img {
-  max-width: min(100%, 300px) !important;
-  max-height: 200px !important;
-  min-height: 0 !important;
-  margin: 6px auto !important;
-}
-
-.sol-body img,
-.qx-sol-body img,
-.marks-result .sol-body img {
-  max-width: min(100%, 520px) !important;
-  max-height: 320px !important;
-  object-fit: contain !important;
-}
-
-/* Force-hide lightbox from old cached JS — never cover the question */
+/* Lightbox overlay */
 #qxFigLightbox,
-.qx-fig-lightbox,
-.qx-fig-lightbox.open,
-.qx-fig-lb-backdrop,
-.qx-fig-lb-panel,
-.qx-fig-lb-img,
-.qx-fig-lb-close,
-.qx-fig-lb-hint {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  max-width: 0 !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  z-index: -1 !important;
+.qx-fig-lightbox {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 99999 !important;
+  background: rgba(8, 12, 20, 0.72) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 24px !important;
+  box-sizing: border-box !important;
 }
-body.qx-fig-lb-open { overflow: auto !important; }
+
+.qx-fig-lb-stage {
+  max-width: 96vw;
+  max-height: 90vh;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qx-fig-lb-img {
+  max-width: min(96vw, 1100px) !important;
+  max-height: 88vh !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  background: #fff !important;
+  display: block !important;
+  margin: auto !important;
+}
+
+.qx-fig-lb-close {
+  position: fixed !important;
+  top: 14px !important;
+  right: 16px !important;
+  z-index: 100000 !important;
+  width: 42px !important;
+  height: 42px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: #fff !important;
+  color: #111 !important;
+  font-size: 28px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25) !important;
+}
+
+body.qx-fig-lb-open {
+  overflow: hidden;
+}
+
+/* Never show brand/MARKS chrome inside lightbox */
+#qxFigLightbox .qx-premium-wm-canvas,
+#qxFigLightbox .qx-marks-scrub-canvas,
+#qxFigLightbox .qx-quantrex-wm-overlay,
+#qxFigLightbox .qx-brand-overlay {
+  display: none !important;
+}

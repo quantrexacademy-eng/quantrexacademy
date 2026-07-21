@@ -161,8 +161,8 @@
       img.classList.add("qx-pool-fig", "qx-no-wm", "qx-opt-fig-img");
     }
 
-    // Soft-strip v16 — bank CDN repair + nuclear wipe (PYQ Advanced Chem)
-    const STRIP_VER = "16";
+    // Soft-strip v17 — original-quality MARKS wipe (zoom + in-page)
+    const STRIP_VER = "17";
     const key = cacheKey(img);
     if (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === STRIP_VER) {
       forceVisible(img);
@@ -297,7 +297,7 @@
       if (!main) return;
       nukeDom(main);
       let dirty = 0;
-      const STRIP_VER = "16";
+      const STRIP_VER = "17";
       main.querySelectorAll(POOL_SEL).forEach((img) => {
         if (isUiIcon(img)) return;
         forceVisible(img);

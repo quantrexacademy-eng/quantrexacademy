@@ -90,12 +90,12 @@ module.exports = async function handler(req, res) {
           const d = data;
           const channels = info.channels || 4;
           const total = info.width * info.height;
-          // Nuclear v15: ONLY true dark structure + strong colour survive.
-          // Mid/pale gray-blue MARKS (lum ~120–240) → pure white. No dilate
-          // (dilate was protecting watermark pixels adjacent to ink).
-          const ink = new Uint8Array(total);
-          const INK_MAX = 72;
-          const CHROMA_INK = 55;
+          // v17 original-quality: keep structure ink/AA, bleach MARKS mid-gray only
+          const core = new Uint8Array(total);
+          const INK_MAX = 105;
+          const CHROMA_INK = 40;
+          const W = info.width;
+          const H = info.height;
           for (let p = 0, i = 0; p < total; p++, i += channels) {
             const r = d[i];
             const g = d[i + 1];
@@ -108,8 +108,22 @@ module.exports = async function handler(req, res) {
             const bb = Math.round(b * t + 255 * (1 - t));
             const lum = 0.299 * rr + 0.587 * gg + 0.114 * bb;
             const chroma = Math.max(rr, gg, bb) - Math.min(rr, gg, bb);
-            if (lum <= INK_MAX) ink[p] = 1;
-            else if (chroma >= CHROMA_INK && lum < 200) ink[p] = 1;
+            if (lum <= INK_MAX) core[p] = 1;
+            else if (chroma >= CHROMA_INK && lum < 215) core[p] = 1;
+          }
+          const dil = new Uint8Array(core);
+          for (let y = 0; y < H; y++) {
+            for (let x = 0; x < W; x++) {
+              if (!core[y * W + x]) continue;
+              for (let dy = -1; dy <= 1; dy++) {
+                for (let dx = -1; dx <= 1; dx++) {
+                  const nx = x + dx;
+                  const ny = y + dy;
+                  if (nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
+                  dil[ny * W + nx] = 1;
+                }
+              }
+            }
           }
           for (let p = 0, i = 0; p < total; p++, i += channels) {
             const r = d[i];
@@ -120,7 +134,7 @@ module.exports = async function handler(req, res) {
             const rr = Math.round(r * t + 255 * (1 - t));
             const gg = Math.round(g * t + 255 * (1 - t));
             const bb = Math.round(b * t + 255 * (1 - t));
-            if (ink[p]) {
+            if (dil[p]) {
               d[i] = rr;
               d[i + 1] = gg;
               d[i + 2] = bb;
@@ -133,13 +147,12 @@ module.exports = async function handler(req, res) {
               Math.abs(rr - gg) < 48 &&
               Math.abs(gg - bb) < 52 &&
               Math.abs(rr - bb) < 54;
-            // Everything not true ink that is gray/pale → paper white
-            if (lum > INK_MAX && (nearGray || chroma < 50)) {
+            if (nearGray && lum > 118 && lum < 248 && chroma < 55) {
               d[i] = 255;
               d[i + 1] = 255;
               d[i + 2] = 255;
               d[i + 3] = 255;
-            } else if (lum > 95 && chroma < 60) {
+            } else if (lum > 200 && chroma < 35) {
               d[i] = 255;
               d[i + 1] = 255;
               d[i + 2] = 255;
@@ -180,7 +193,7 @@ module.exports = async function handler(req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("X-Qx-Proxy", "1");
     res.setHeader("X-Qx-Clean", cleaned ? "1" : "0");
-    res.setHeader("X-Qx-Clean-Ver", "16");
+    res.setHeader("X-Qx-Clean-Ver", "17");
     return res.status(200).send(buf);
   } catch (err) {
     console.error("proxy-image", err && err.message);
