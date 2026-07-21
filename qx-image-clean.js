@@ -4,7 +4,7 @@ window.QxImgClean = (() => {
   const DB_STORE = "blobs";
   const MANIFEST_URL = "data/qx_clean_manifest.json";
   const REVIEW_URL = "data/qx_image_review.json";
-  const CLEAN_VER = 69;
+  const CLEAN_VER = 70;
   const CENTER_WM_MAX = 0.006;
   const WM_DETECT_MIN = 0.0035;
   const CDN_ONLY = false;
@@ -2965,16 +2965,29 @@ window.QxImgClean = (() => {
     const attrs = imgM[1];
     const origM = attrs.match(/\bdata-qx-orig-src=["']([^"']+)["']/i);
     const srcM = attrs.match(/\bsrc=["']([^"']+)["']/i);
-    const raw = origM ? origM[1] : (srcM ? srcM[1] : "");
+    let raw = origM ? origM[1] : (srcM ? srcM[1] : "");
+    raw = fixUrl(raw);
     if (!raw || isApiFigureSrc(raw)) return null;
     let src = "";
-    if (isLocalCleanAsset(raw)) src = normalizeAssetSrc(raw);
-    else {
-      const cdn = canonicalCdnSrc(raw);
+    if (isLocalCleanAsset(raw) || /\/assets\/(diagrams|qx-figures)\//i.test(raw)) {
+      src = normalizeAssetSrc(raw);
+    } else {
+      const cdn = canonicalCdnSrc(raw) || (POOL_RX.test(raw) ? raw : "");
       if (cdn) src = cdn;
     }
-    if (!src || (!isPoolDiagram(src) && !isLocalCleanAsset(src))) return null;
+    if (!src) return null;
+    if (!isPoolDiagram(src) && !isLocalCleanAsset(src) && !/\/assets\/(diagrams|qx-figures)\//i.test(src)) {
+      // Still accept obvious PYQ figure paths
+      if (!/\/pyq\/|cdn-question-pool|cdn\.quizrr/i.test(src)) return null;
+    }
     return { src, displayW: parseImgDisplayWidth(attrs) };
+  }
+
+  function figureSrcKey(src) {
+    const s = fixUrl(String(src || ""));
+    // Dedupe by basename so proxy URL and CDN URL count as same figure
+    const base = s.split("?")[0].replace(/\/$/, "").split("/").pop() || s;
+    return base.toLowerCase();
   }
 
   function parseQuestionSegments(html, qid, q) {
@@ -2984,22 +2997,34 @@ window.QxImgClean = (() => {
     const raw = compactQuestionHtml(html);
     const figRx = /<figure\b[^>]*>[\s\S]*?<\/figure>|<img\b[^>]*>/gi;
     const segments = [];
+    const seenFig = new Set();
     let last = 0;
     let m;
     while ((m = figRx.exec(raw)) !== null) {
       const text = raw.slice(last, m.index).trim();
       if (text) segments.push({ type: "text", html: text });
       const fig = parseFigureFromTag(m[0]);
-      if (fig) segments.push({ type: "figure", src: fig.src, displayW: fig.displayW });
+      if (fig) {
+        const key = figureSrcKey(fig.src);
+        // Never emit the same figure twice in one question
+        if (!seenFig.has(key)) {
+          seenFig.add(key);
+          segments.push({ type: "figure", src: fig.src, displayW: fig.displayW });
+        }
+      }
       last = m.index + m[0].length;
     }
     const tail = raw.slice(last).trim();
     if (tail) segments.push({ type: "text", html: tail });
-    if (!segments.length && raw) segments.push({ type: "text", html: raw });
+    if (!segments.length && raw) segments.push({ type: "text", html: stripDiagramTags(raw) });
     if (!segments.some(s => s.type === "figure") && qSrc) {
       segments.push({ type: "figure", src: qSrc, displayW: 0 });
     }
-    return segments;
+    // Ensure text segments never still contain img tags
+    return segments.map(seg => {
+      if (seg.type !== "text") return seg;
+      return { type: "text", html: stripDiagramTags(seg.html) };
+    });
   }
 
   function pushPoolSrc(srcs, raw) {
@@ -3322,6 +3347,7 @@ window.QxImgClean = (() => {
   function finalizeAll(root, q) {
     if (isMarksNativeBook(q)) {
       finalizeMarksNative(root, q);
+      dedupeDomFigures(root);
       return;
     }
     if (q) rememberQuestionRaw(q);
@@ -3329,7 +3355,17 @@ window.QxImgClean = (() => {
     finalizeOptionDiagrams(root, q);
     stripInlinePoolImgs(root);
     reinjectPinned(root);
+    dedupeDomFigures(root);
     applyBrandOverlays(root);
+    // Second pass after images start loading (slot must win over body dupes)
+    setTimeout(() => {
+      stripQuestionInlineImgs(root);
+      dedupeDomFigures(root);
+    }, 200);
+    setTimeout(() => {
+      stripQuestionInlineImgs(root);
+      dedupeDomFigures(root);
+    }, 800);
   }
 
   function buildQuestionBodyHtml(qid, rawHtml, renderText, q) {
@@ -3344,13 +3380,14 @@ window.QxImgClean = (() => {
     const textCls = "mtk-q-text qx-content qx-q-text-only";
     const hasFig = segments.some(s => s.type === "figure");
     if (!hasFig) {
-      return `<div class="${textCls}" data-qx-qid="${qid}">${render(rawHtml)}</div>`;
+      // Prefer text without raw imgs (prevents later duplicate injection)
+      return `<div class="${textCls}" data-qx-qid="${qid}">${render(stripDiagramTags(rawHtml))}</div>`;
     }
     const figTotal = segments.filter(s => s.type === "figure").length;
     let figIdx = 0;
     const parts = segments.map(seg => {
       if (seg.type === "text") {
-        return `<div class="${textCls} qx-q-seg-text" data-qx-qid="${qid}">${render(seg.html)}</div>`;
+        return `<div class="${textCls} qx-q-seg-text" data-qx-qid="${qid}">${render(stripDiagramTags(seg.html))}</div>`;
       }
       figIdx += 1;
       const inner = poolFigureHtml(seg.src, seg.displayW);
@@ -3358,6 +3395,43 @@ window.QxImgClean = (() => {
       return `<div class="qx-diagram-seg qx-diagram-slot qx-pool-fig-wrap mathjax_ignore tex2jax_ignore"${idAttr} data-qx-qid="${qid}" data-qx-seg="${figIdx}" data-qx-locked="1">${inner}</div>`;
     });
     return `<div class="qx-question-body qx-question-flow" data-qx-qid="${qid}">${parts.join("")}</div>`;
+  }
+
+  /** Remove duplicate figure imgs in question stem (same file) — keep one */
+  function dedupeDomFigures(root) {
+    const scope = root || document;
+    const main = scope.querySelector(".qx-question-body, .mtk-main, .qx-practice-page") || scope;
+    const stemImgs = Array.from(main.querySelectorAll(
+      "img.qx-pool-fig, img.qx-fig-img, .qx-diagram-slot img, #qxDiagramSlot img, .mtk-q-text img, .qx-q-text-only img, .qx-q-seg-text img"
+    )).filter(img => !img.closest(".mtk-opt-text, .qx-prac-opt-text, .mtk-opt, .qx-prac-opt, .qa-opt, .sol-body, .qx-sol-body"));
+
+    const byKey = new Map();
+    stemImgs.forEach(img => {
+      const key = figureSrcKey(img.dataset.qxOrigSrc || img.getAttribute("src") || "");
+      if (!key) return;
+      if (!byKey.has(key)) byKey.set(key, []);
+      byKey.get(key).push(img);
+    });
+
+    byKey.forEach(list => {
+      if (list.length < 2) return;
+      // Prefer keeping the one inside #qxDiagramSlot / first diagram-slot
+      list.sort((a, b) => {
+        const as = a.closest("#qxDiagramSlot") ? 0 : (a.closest(".qx-diagram-slot") ? 1 : 2);
+        const bs = b.closest("#qxDiagramSlot") ? 0 : (b.closest(".qx-diagram-slot") ? 1 : 2);
+        return as - bs;
+      });
+      const keep = list[0];
+      for (let i = 1; i < list.length; i++) {
+        const img = list[i];
+        const wrap = img.closest(".qx-diagram-seg, figure.qx-fig, .qx-fig");
+        if (wrap && wrap !== keep.closest(".qx-diagram-seg, figure.qx-fig, .qx-fig")) {
+          wrap.remove();
+        } else {
+          img.remove();
+        }
+      }
+    });
   }
 
   function pinQuestionHtml(qid, html) {
@@ -3480,6 +3554,7 @@ window.QxImgClean = (() => {
     buildOptSlotHtml,
     renderOptionContent,
     buildQuestionBodyHtml,
+    dedupeDomFigures,
     isMarksNativeBook,
     mountDiagramSlot,
     rememberQuestionRaw,

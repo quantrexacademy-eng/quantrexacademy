@@ -842,6 +842,11 @@ window.Mx = (() => {
         if (typeof QxImgClean !== "undefined" && QxImgClean.finalizeAll) {
           QxImgClean.finalizeAll(el, q);
         }
+        if (typeof QxImgClean !== "undefined" && QxImgClean.dedupeDomFigures) {
+          QxImgClean.dedupeDomFigures(el);
+          setTimeout(() => QxImgClean.dedupeDomFigures(el), 300);
+          setTimeout(() => QxImgClean.dedupeDomFigures(el), 900);
+        }
         cleanDom(el);
         if (!marksNative && typeof QxImgClean !== "undefined") {
           if (QxImgClean.processAllDiagrams) QxImgClean.processAllDiagrams(el);
