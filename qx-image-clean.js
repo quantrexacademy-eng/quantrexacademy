@@ -1834,8 +1834,8 @@ window.QxImgClean = (() => {
 
   function proxyImageUrl(cdnSrc) {
     const fixed = fixUrl(cdnSrc);
-    // v=20: clear figures in tests/practice (proxy + soft-strip)
-    const q = `url=${encodeURIComponent(fixed)}&clean=1&v=20`;
+    // v=21: nuclear MARKS wipe + no double zoom
+    const q = `url=${encodeURIComponent(fixed)}&clean=1&v=21`;
     try {
       if (typeof location !== "undefined" && location.origin && !/localhost|127\.0\.0\.1/i.test(location.origin)) {
         return `/api/proxy-image?${q}`;
@@ -1862,7 +1862,7 @@ window.QxImgClean = (() => {
 
   /** After proxy load → permanent pixel soft-strip (kills residual MARKS) */
   function queueSoftStrip(img) {
-    const STRIP_VER = "20";
+    const STRIP_VER = "21";
     if (!img || (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === STRIP_VER)) return;
     if (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer !== STRIP_VER) {
       delete img.dataset.qxSoftStrip;
@@ -1889,7 +1889,7 @@ window.QxImgClean = (() => {
     const scope = root || document;
     if (!scope || !scope.querySelectorAll) return 0;
     let n = 0;
-    const STRIP_VER = "20";
+    const STRIP_VER = "21";
     scope.querySelectorAll("img").forEach((img) => {
       // Soft-strip done at current ver → leave frozen
       if (!img || (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === STRIP_VER)) return;
@@ -2802,8 +2802,8 @@ window.QxImgClean = (() => {
   function processImage(img) {
     const cdnSrc = poolCdnSrc(img);
     if (!cdnSrc || !isPoolDiagram(cdnSrc, img)) return;
-    // Never skip soft-strip until current algorithm version is applied (v20)
-    const STRIP_VER = "20";
+    // Never skip soft-strip until current algorithm version is applied (v21)
+    const STRIP_VER = "21";
     const stripDone = img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === STRIP_VER;
     if (img.dataset.qxProcessedVer === String(CLEAN_VER)) {
       const orgPending = isOrganicOrgSrc(cdnSrc) && !isCleanedImg(img);
@@ -3553,7 +3553,7 @@ window.QxImgClean = (() => {
       // Proxy first so canvas soft-strip is not CORS-tainted
       rewriteAllPoolImgs(scope);
       const stripOne = (img) => {
-        if (!img || img.dataset.qxSoftVer === "20") return;
+        if (!img || img.dataset.qxSoftVer === "21") return;
         const run = () => {
           if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
             void QxPremiumWM.paintMarksHideOnly(img);

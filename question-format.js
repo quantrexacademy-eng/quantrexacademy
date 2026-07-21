@@ -21,9 +21,9 @@ const QuantrexQFormat = (() => {
         .replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/")
         .replace(/https?:\/\/cdn-question-pool\.app\//gi, "https://cdn-question-pool.getmarks.app/");
       if (/cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|getmarks\.app/i.test(url)) {
-        const prox = `/api/proxy-image?url=${encodeURIComponent(url)}&clean=1&v=20`;
+        const prox = `/api/proxy-image?url=${encodeURIComponent(url)}&clean=1&v=21`;
         // onerror: re-proxy once, never dump raw MARKS CDN into the page
-        return `src=${q}${prox}${q} data-qx-orig-src=${q}${url}${q} referrerpolicy=${q}no-referrer${q} class="qx-pool-fig qx-no-wm" onerror=${q}if(!this.dataset.qxPe){this.dataset.qxPe=1;this.src='/api/proxy-image?url='+encodeURIComponent(this.getAttribute('data-qx-orig-src')||'')+'&clean=1&v=20';}${q}`;
+        return `src=${q}${prox}${q} data-qx-orig-src=${q}${url}${q} referrerpolicy=${q}no-referrer${q} class="qx-pool-fig qx-no-wm" onerror=${q}if(!this.dataset.qxPe){this.dataset.qxPe=1;this.src='/api/proxy-image?url='+encodeURIComponent(this.getAttribute('data-qx-orig-src')||'')+'&clean=1&v=21';}${q}`;
       }
       return m;
     });
