@@ -2414,8 +2414,12 @@ async function startPyqPaperMock(slug, source, freshStart) {
 }
 
 // ============ DIGITAL BOOKS (MARKS Selected — real book questions) ============
-// No books hidden — restore full catalog (Must Do PYQ collections, etc.)
-const QX_REMOVED_BOOK_IDS = new Set([]);
+// Last 3 PYQ collection cards stay hidden (user removed them on purpose)
+const QX_REMOVED_BOOK_IDS = new Set([
+  "67656ccf18ff438b6c18cc4c", // Must Do Top Qs of JEE Main 2024
+  "67656d13c83ed0673b8b7b68", // Top 250 Single Correct Qs
+  "67656cf0a790fd9b172cf0d2"  // Top 100 Numerical Qs
+]);
 
 const QX_IRODOV_BOOK_ID = "69cfb5366ecf5579037d96a4";
 const QX_IRODOV_UNLOCK_CLICKS = 10;
@@ -2459,11 +2463,7 @@ const QX_BOOKS_CATALOG = {
   medical: [
     { id: "69968cee494a12a5771e3455", title: "Biology 360/360 for NEET 2026", cover: "assets/book-covers/biology-360.jpg", description: "for CBSE", isComingSoon: true, subject: "Biology", badge: "NEET", exam: "NEET", bankSlug: "neet" }
   ],
-  curated: [
-    { id: "67656ccf18ff438b6c18cc4c", title: "Must Do Top Qs of JEE Main 2024", cover: "assets/book-covers/must-do-2024.jpg", tag: "New", subject: "PCM", badge: "PYQ 2024", exam: "PYQ Collection", bankSlug: "jee_main", count: 490, type: "curated" },
-    { id: "67656d13c83ed0673b8b7b68", title: "Top 250 Single Correct Qs of JEE Main 2023-2020", cover: "assets/book-covers/top-250.jpg", tag: "PYQ", subject: "PCM", badge: "Single Correct", exam: "PYQ Collection", bankSlug: "jee_main", count: 750, type: "curated" },
-    { id: "67656cf0a790fd9b172cf0d2", title: "Top 100 Numerical Qs of JEE Main 2023-2020", cover: "assets/book-covers/top-100-numerical.jpg", tag: "Numerical", subject: "Physics + Math", badge: "Numerical PYQ", exam: "PYQ Collection", bankSlug: "jee_main", count: 300, type: "curated" }
-  ]
+  curated: []
 };
 
 function filterActiveBooks(list) {
@@ -2534,8 +2534,13 @@ function openDigitalBook(book) {
   if (book.id === QX_IRODOV_BOOK_ID && !tryIrodovGate()) {
     return; // silent until 10th tap
   }
-  const step = book.type === "curated" ? "subjects" : "modules";
-  go("books", { step, bookId: book.id, moduleId: book.type === "curated" ? book.id : undefined });
+  // Curated → subjects; multi-section books (JEE Advanced Rank Booster 4 sections) → modules first
+  if (book.type === "curated") {
+    go("books", { step: "subjects", bookId: book.id, moduleId: book.id });
+    return;
+  }
+  // Always open modules step first when book has multiple Must-Do sections
+  go("books", { step: "modules", bookId: book.id, moduleId: book.moduleId || undefined });
 }
 
 async function viewBooks(payload) {

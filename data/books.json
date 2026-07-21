@@ -142,42 +142,6 @@
       "bankSlug": "neet"
     }
   ],
-  "curated": [
-    {
-      "id": "67656ccf18ff438b6c18cc4c",
-      "title": "Must Do Top Qs of JEE Main 2024",
-      "cover": "assets/book-covers/must-do-2024.jpg",
-      "tag": "New",
-      "subject": "PCM",
-      "badge": "PYQ 2024",
-      "exam": "PYQ Collection",
-      "bankSlug": "jee_main",
-      "count": 490,
-      "type": "curated"
-    },
-    {
-      "id": "67656d13c83ed0673b8b7b68",
-      "title": "Top 250 Single Correct Qs of JEE Main 2023-2020",
-      "cover": "assets/book-covers/top-250.jpg",
-      "tag": "PYQ",
-      "subject": "PCM",
-      "badge": "Single Correct",
-      "exam": "PYQ Collection",
-      "bankSlug": "jee_main",
-      "count": 750,
-      "type": "curated"
-    },
-    {
-      "id": "67656cf0a790fd9b172cf0d2",
-      "title": "Top 100 Numerical Qs of JEE Main 2023-2020",
-      "cover": "assets/book-covers/top-100-numerical.jpg",
-      "tag": "Numerical",
-      "subject": "Physics + Math",
-      "badge": "Numerical PYQ",
-      "exam": "PYQ Collection",
-      "bankSlug": "jee_main",
-      "count": 300,
-      "type": "curated"
-    }
-  ]
+  "curated": []
 }
+
