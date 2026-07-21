@@ -1,12 +1,11 @@
-/* Neat clean beautiful figures — ExamGoal-style arrangement, NO brand stamp */
+/* ONE white back box + fully visible figures — no nested frames, no brand stamps */
 
-.qx-fig,
-.qx-opt-fig,
-.qx-diagram-slot,
+/* Outer slot = the only card */
 #qxDiagramSlot,
+.qx-diagram-slot,
+.qx-diagram-seg,
 .qx-opt-diagram-slot,
-.qx-pool-fig-wrap,
-.qx-fig-inner {
+.qx-question-body > .qx-diagram-slot {
   position: relative !important;
   display: block !important;
   margin: 12px auto !important;
@@ -21,38 +20,34 @@
   line-height: 0 !important;
 }
 
-.mtk-test-root[data-test-theme="dark"] .qx-fig,
-.mtk-test-root[data-test-theme="dark"] .qx-diagram-slot,
-.mtk-test-root[data-test-theme="dark"] #qxDiagramSlot,
-.mtk-test-root[data-test-theme="dark"] .qx-fig-inner {
-  background: #0f172a !important;
-  border-color: #1e293b !important;
-}
-
-/* Option cards: ONE frame only (slot OR .qx-opt-fig — not nested double borders) */
 .mtk-opt-text .qx-opt-diagram-slot,
 .qx-prac-opt-text .qx-opt-diagram-slot,
-.mtk-options.qx-opts-img .qx-opt-diagram-slot,
-.mtk-opt-text .qx-opt-fig,
-.qx-prac-opt-text .qx-opt-fig {
+.mtk-options.qx-opts-img .qx-opt-diagram-slot {
   margin: 6px auto !important;
   padding: 8px !important;
   max-width: 100% !important;
 }
 
-/* Kill nested twin white cards — ONE layer only (stem + options) */
-.qx-opt-diagram-slot .qx-fig,
-.qx-opt-diagram-slot .qx-pool-fig-wrap,
-.qx-opt-diagram-slot .qx-fig-inner,
-.qx-opt-diagram-slot .qx-opt-fig,
+/* Everything inside the slot is flat — NO second box */
 #qxDiagramSlot .qx-fig,
+#qxDiagramSlot .qx-fig-flat,
 #qxDiagramSlot .qx-pool-fig-wrap,
 #qxDiagramSlot .qx-fig-inner,
+#qxDiagramSlot figure,
 .qx-diagram-slot .qx-fig,
+.qx-diagram-slot .qx-fig-flat,
 .qx-diagram-slot .qx-pool-fig-wrap,
 .qx-diagram-slot .qx-fig-inner,
+.qx-diagram-slot figure,
 .qx-diagram-seg .qx-fig,
-.qx-diagram-seg .qx-fig-inner {
+.qx-diagram-seg .qx-fig-flat,
+.qx-diagram-seg .qx-fig-inner,
+.qx-opt-diagram-slot .qx-fig,
+.qx-opt-diagram-slot .qx-fig-flat,
+.qx-opt-diagram-slot .qx-opt-fig,
+.qx-opt-diagram-slot .qx-pool-fig-wrap,
+.qx-opt-diagram-slot .qx-fig-inner,
+.qx-opt-diagram-slot figure {
   margin: 0 !important;
   padding: 0 !important;
   border: none !important;
@@ -60,59 +55,77 @@
   background: transparent !important;
   border-radius: 0 !important;
   max-width: 100% !important;
+  display: block !important;
+  line-height: 0 !important;
 }
 
-/* Stem: single outer frame only */
-.qx-diagram-seg,
-#qxDiagramSlot,
-.qx-question-body > .qx-diagram-slot {
-  margin: 10px auto !important;
-  padding: 10px 12px !important;
-}
-
-/* Empty option slot must not paint a hollow white box (screen 630) */
-.qx-opt-diagram-slot:empty {
-  display: none !important;
-  min-height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* Always show clean figures */
-.qx-fig img,
-.qx-opt-fig img,
-.qx-fig-inner > img,
+/* Perfect figure visibility */
 #qxDiagramSlot img,
 .qx-diagram-slot img,
+.qx-diagram-seg img,
+.qx-opt-diagram-slot img,
+.qx-fig-flat img,
+.mtk-opt-text img.qx-pool-fig,
+.qx-prac-opt-text img.qx-pool-fig,
 .sol-body img,
 .qx-sol-body img,
 img.qx-pool-fig,
-img.qx-sol-fig,
-img.qx-fig-img {
+img.qx-fig-img,
+img.qx-org-fig,
+img.qx-organic-fig {
   position: relative !important;
-  z-index: 1 !important;
+  z-index: 2 !important;
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
   max-width: 100% !important;
   width: auto !important;
   height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
   margin: 0 auto !important;
   object-fit: contain !important;
   image-rendering: auto !important;
   filter: none !important;
   -webkit-filter: none !important;
   background: transparent !important;
+  pointer-events: auto !important;
 }
 
-/* Never show Quantrex brand on figures */
+/* Organic structures can be larger */
+img.qx-org-fig,
+img.qx-organic-fig,
+img[src*="qx-org-"] {
+  max-height: min(480px, 75vh) !important;
+}
+
+/* Options slightly capped for grid */
+.qx-opt-diagram-slot img {
+  max-height: 240px !important;
+}
+
+/* Dark theme: one dark card only */
+.mtk-test-root[data-test-theme="dark"] #qxDiagramSlot,
+.mtk-test-root[data-test-theme="dark"] .qx-diagram-slot,
+.mtk-test-root[data-test-theme="dark"] .qx-diagram-seg,
+.mtk-test-root[data-test-theme="dark"] .qx-opt-diagram-slot {
+  background: #0f172a !important;
+  border-color: #1e293b !important;
+}
+
+/* Never paint brand / watermark chrome on figures */
 img.qx-coaching-wm,
 img.qx-quantrex-wm-overlay,
 .qx-quantrex-black-wm,
 .qx-quantrex-black-seal,
-canvas.qx-premium-wm-canvas {
+.qx-premium-wm-sheet,
+.qx-brand-overlay,
+.qx-diag-watermark,
+.qx-wm-diagonal,
+.qx-wm-corner-badge,
+.qx-marks-strip,
+canvas.qx-premium-wm-canvas,
+canvas.qx-marks-scrub-canvas {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
@@ -121,22 +134,16 @@ canvas.qx-premium-wm-canvas {
   pointer-events: none !important;
 }
 
-/* Never blank figures during clean */
-img.qx-pool-fig.qx-wm-loading,
-img.qx-pool-fig.qx-wm-pending,
-img.qx-fig-img.qx-wm-loading {
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: block !important;
-  min-height: 64px !important;
-}
-
-/* Broken 1px placeholder — keep space until real src loads */
-#qxDiagramSlot:empty::after,
-.qx-diagram-slot:empty::after {
-  content: "";
-  display: block;
-  min-height: 48px;
+/* Empty slots: no hollow box */
+.qx-opt-diagram-slot:empty,
+#qxDiagramSlot:empty,
+.qx-diagram-slot:empty {
+  display: none !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .sol-body img,
@@ -144,7 +151,6 @@ img.qx-fig-img.qx-wm-loading {
   margin: 12px auto !important;
 }
 
-/* ExamGoal paper meta always visible in practice */
 .mtk-test-root.allen-practice .qx-paper-meta,
 .qx-practice-page .qx-paper-meta {
   display: flex !important;

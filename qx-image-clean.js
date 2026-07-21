@@ -3181,30 +3181,25 @@ window.QxImgClean = (() => {
     let dw = parseInt(displayW, 10) || 0;
     if (organic && dw <= 12) dw = ORGANIC_DEFAULT_FIG_W;
     const orgSrc = isOrganicOrgSrc(src);
-    const localClean = isLocalReadyAsset(src);
+    const localClean = isLocalReadyAsset(src) || isPreprocessedQxOrg(src);
     const pool = !localClean && !orgSrc && isPoolDiagram(src);
-    const overlay = "";
-    // Pool diagrams → CORS proxy (scrub MARKS + Quantrex black WM). Local assets stay direct.
+    // Pool → CORS proxy for soft-strip; local qx-org stay direct (color)
     let displaySrc = u;
     if (pool) displaySrc = escAttr(poolDisplaySrc(src) || src);
-    else if (orgSrc || localClean) displaySrc = u;
-    // Proxy allows canvas CORS; direct CDN has no ACAO
     const corsAttr = pool ? ` crossorigin="anonymous"` : "";
-    const wmAttrs = orgSrc
-      ? ` data-qx-has-wm="1" data-qx-org-src="1" data-qx-wm-zones="center,br"`
+    const wmAttrs = localClean || isPreprocessedQxOrg(src)
+      ? ` data-qx-has-wm="0" data-qx-cleaned="1"`
       : (pool
-        ? ` data-qx-has-wm="1" data-qx-wm-zones="${escAttr(defaultWmZones(src).join(","))}" data-qx-primed="1" data-qx-pending-load="1"`
-        : (localClean ? ` data-qx-has-wm="0" data-qx-cleaned="1"` : ""));
-    const wmClass = (localClean || pool || orgSrc) ? " qx-fig-ready" : " qx-wm-loading";
-    const poolAttr = (pool || orgSrc) ? ` data-qx-pool-wm="1"` : "";
-    const cleanCls = localClean ? " qx-cleaned qx-restored qx-wm-clean qx-fig-ready" : " qx-fig-ready";
-    const figW = dw > 12 ? ` style="--qx-fig-w:${dw}px;max-width:100%;"` : "";
+        ? ` data-qx-has-wm="1" data-qx-wm-zones="${escAttr(defaultWmZones(src).join(","))}" data-qx-primed="1"`
+        : "");
+    const cleanCls = " qx-cleaned qx-wm-clean qx-fig-ready";
     const imgDataW = dw > 12 ? ` data-qx-display-w="${dw}"` : "";
+    // Flat ONE wrap + img only (single white box comes from outer slot CSS)
     const imgStyle = dw > 12
-      ? ` style="--qx-fig-w:${dw}px;width:${dw}px;height:auto;max-width:100%;display:block;margin:0 auto;"`
-      : ` style="max-width:100%;height:auto;max-height:200px;display:block;margin:4px auto;"`;
-    const imgClass = ` class="qx-fig-img qx-no-wm qx-pool-fig${organic ? " qx-organic-fig" : ""}${cleanCls}"`;
-    return `<figure class="qx-fig qx-pool-fig-wrap qx-brand-covered qx-fig-stack mathjax_ignore tex2jax_ignore${wmClass}"${figW}><div class="qx-fig-inner qx-wm-stack${wmClass}"${poolAttr}${figW}><img${imgClass}${imgDataW}${imgStyle} src="${displaySrc}" alt="" loading="eager" decoding="async" fetchpriority="high" referrerpolicy="no-referrer"${corsAttr} data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs}>${overlay}</div></figure>`;
+      ? ` style="--qx-fig-w:${dw}px;width:${dw}px;height:auto;max-width:100%;display:block;margin:0 auto;opacity:1;visibility:visible;"`
+      : ` style="max-width:100%;height:auto;max-height:min(420px,70vh);display:block;margin:0 auto;opacity:1;visibility:visible;"`;
+    const imgClass = ` class="qx-fig-img qx-no-wm qx-pool-fig${organic ? " qx-organic-fig qx-org-fig" : ""}${cleanCls}"`;
+    return `<div class="qx-fig-flat mathjax_ignore tex2jax_ignore"><img${imgClass}${imgDataW}${imgStyle} src="${displaySrc}" alt="" loading="eager" decoding="async" fetchpriority="high" referrerpolicy="no-referrer"${corsAttr} data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs}></div>`;
   }
 
   function buildSlotInnerHtml(rawHtml, qid, q) {
@@ -3236,31 +3231,28 @@ window.QxImgClean = (() => {
     return `<div class="qx-opt-diagram-slot qx-diagram-slot mathjax_ignore tex2jax_ignore" data-qx-qid="${key}" data-qx-locked="1" data-qx-opt-one="1">${inner}</div>`;
   }
 
-  /** Compact option structure — single wrap + img (avoids twin white cards). */
+  /** Compact option structure — single wrap + img (one back box only). */
   function poolOptionFigureHtml(cdn, displayW) {
     const src = normalizeAssetSrc(canonicalCdnSrc(cdn) || cdn);
     const u = escAttr(src);
     const organic = isPreprocessedQxOrg(src) || isOrganicOrgSrc(src);
     let dw = parseInt(displayW, 10) || 0;
     if (organic && dw <= 12) dw = ORGANIC_DEFAULT_FIG_W;
-    const orgSrc = isOrganicOrgSrc(src);
-    const localClean = isLocalReadyAsset(src);
-    const pool = !localClean && !orgSrc && isPoolDiagram(src);
+    const localClean = isLocalReadyAsset(src) || isPreprocessedQxOrg(src);
+    const pool = !localClean && !isOrganicOrgSrc(src) && isPoolDiagram(src);
     let displaySrc = u;
     if (pool) displaySrc = escAttr(poolDisplaySrc(src) || src);
     const corsAttr = pool ? ` crossorigin="anonymous"` : "";
-    const wmAttrs = orgSrc
-      ? ` data-qx-has-wm="1" data-qx-org-src="1" data-qx-wm-zones="center,br"`
-      : (pool
-        ? ` data-qx-has-wm="1" data-qx-wm-zones="${escAttr(defaultWmZones(src).join(","))}" data-qx-primed="1" data-qx-pending-load="1"`
-        : (localClean ? ` data-qx-has-wm="0" data-qx-cleaned="1"` : ""));
-    const cleanCls = localClean ? " qx-cleaned qx-restored qx-wm-clean qx-fig-ready" : " qx-fig-ready";
+    const wmAttrs = localClean
+      ? ` data-qx-has-wm="0" data-qx-cleaned="1"`
+      : (pool ? ` data-qx-has-wm="1" data-qx-primed="1"` : "");
+    const cleanCls = " qx-cleaned qx-wm-clean qx-fig-ready";
     const imgDataW = dw > 12 ? ` data-qx-display-w="${dw}"` : "";
     const imgStyle = dw > 12
-      ? ` style="--qx-fig-w:${dw}px;width:${dw}px;height:auto;max-width:100%;max-height:200px;display:block;margin:0 auto;"`
-      : ` style="max-width:100%;height:auto;max-height:200px;display:block;margin:0 auto;"`;
-    const imgClass = ` class="qx-fig-img qx-no-wm qx-pool-fig qx-opt-fig-img${organic ? " qx-organic-fig" : ""}${cleanCls}"`;
-    return `<div class="qx-opt-fig qx-brand-covered mathjax_ignore tex2jax_ignore"><img${imgClass}${imgDataW}${imgStyle} src="${displaySrc}" alt="" loading="eager" decoding="async" fetchpriority="high" referrerpolicy="no-referrer"${corsAttr} data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs}></div>`;
+      ? ` style="--qx-fig-w:${dw}px;width:${dw}px;height:auto;max-width:100%;max-height:220px;display:block;margin:0 auto;opacity:1;visibility:visible;"`
+      : ` style="max-width:100%;height:auto;max-height:220px;display:block;margin:0 auto;opacity:1;visibility:visible;"`;
+    const imgClass = ` class="qx-fig-img qx-no-wm qx-pool-fig qx-opt-fig-img${organic ? " qx-organic-fig qx-org-fig" : ""}${cleanCls}"`;
+    return `<div class="qx-fig-flat mathjax_ignore tex2jax_ignore"><img${imgClass}${imgDataW}${imgStyle} src="${displaySrc}" alt="" loading="eager" decoding="async" fetchpriority="high" referrerpolicy="no-referrer"${corsAttr} data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs}></div>`;
   }
 
   function optionDirectImgHtml(raw) {
