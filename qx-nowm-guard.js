@@ -157,25 +157,25 @@
       img.classList.add("qx-pool-fig", "qx-no-wm", "qx-opt-fig-img");
     }
 
-    // Soft-strip v9+ — re-clean if old freeze left residual MARKS (screen 632 C/D)
-    const STRIP_VER = "9";
+    // Soft-strip v10 — hard line-art bleach (screen 632 MARKS on C/D)
+    const STRIP_VER = "10";
+    const key = cacheKey(img);
     if (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === STRIP_VER) {
       forceVisible(img);
       restoreIfBlank(img);
       return;
     }
-    // Stale cache / old soft-strip — force re-run
+    // Stale cache / old soft-strip — force re-run (never keep dirty freeze)
     if (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer !== STRIP_VER) {
       delete img.dataset.qxSoftStrip;
       delete img.dataset.qxFigFrozen;
       delete img.dataset.qxSoftVer;
+      if (key) stripCache.delete(key);
     }
-
-    const key = cacheKey(img);
-    // Only reuse cache if it was produced by current algorithm
-    if (key && stripCache.has(key) && img.dataset.qxSoftVer === STRIP_VER) {
+    // Do not reuse in-memory cache unless same strip version
+    if (key && stripCache.has(key) && img.dataset.qxCacheVer === STRIP_VER) {
       const clean = stripCache.get(key);
-      if (img.getAttribute("src") !== clean) {
+      if (clean && clean.startsWith("data:") && img.getAttribute("src") !== clean) {
         img.removeAttribute("crossorigin");
         img.src = clean;
       }

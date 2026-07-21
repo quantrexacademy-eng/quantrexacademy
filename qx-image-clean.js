@@ -1557,33 +1557,21 @@ window.QxImgClean = (() => {
     if (img.naturalWidth <= 0) return;
 
     const cur = String(img.getAttribute("src") || "");
-    if (isGetmarksPool(cdn) && !cur.includes("/api/restore-image")) {
-      const ok = await loadDisplaySrc(img, restoreImageUrl(cdn), cdn);
-      if (ok && img.naturalWidth > 12) {
-        markDisplayClean(img);
-        return;
-      }
+    // Always use clean proxy (server-side MARKS wipe) — never leave raw CDN
+    if (isGetmarksPool(cdn) || /cdn-question-pool|cdn\.quizrr|\/pyq\//i.test(cdn)) {
       await loadDisplaySrc(img, proxyImageUrl(cdn), cdn);
-    }
-
-    if (img.naturalWidth > 12 && String(img.getAttribute("src") || "").includes("/api/restore-image")) {
-      markDisplayClean(img);
-      return;
     }
 
     img.dataset.qxHasWm = "1";
     if (!img.dataset.qxWmZones) img.dataset.qxWmZones = defaultWmZones(cdn).join(",");
     stripBrandOverlay(overlayTargetForImg(img));
+    // Always pixel-strip residual MARKS (even after server clean)
     let scrubbed = false;
     if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
       scrubbed = await QxPremiumWM.paintMarksHideOnly(img);
     }
-    if (!scrubbed && isGetmarksPool(cdn)) {
-      const retry = await loadDisplaySrc(img, restoreImageUrl(cdn), cdn);
-      if (retry && img.naturalWidth > 12) {
-        markDisplayClean(img);
-        return;
-      }
+    if (!scrubbed) {
+      queueSoftStrip(img);
     }
     img.dataset.qxHasWm = "0";
     img.dataset.qxWmClean = "1";
@@ -1846,8 +1834,8 @@ window.QxImgClean = (() => {
 
   function proxyImageUrl(cdnSrc) {
     const fixed = fixUrl(cdnSrc);
-    // v=9: aggressive MARKS bleach (options C/D residual fix)
-    const q = `url=${encodeURIComponent(fixed)}&clean=1&v=9`;
+    // v=10: server-side sharp MARKS wipe + client hard bleach
+    const q = `url=${encodeURIComponent(fixed)}&clean=1&v=10`;
     try {
       if (typeof location !== "undefined" && location.origin && !/localhost|127\.0\.0\.1/i.test(location.origin)) {
         return `/api/proxy-image?${q}`;
@@ -2792,9 +2780,11 @@ window.QxImgClean = (() => {
   function processImage(img) {
     const cdnSrc = poolCdnSrc(img);
     if (!cdnSrc || !isPoolDiagram(cdnSrc, img)) return;
+    // Never skip soft-strip until current algorithm version is applied (screen 632)
+    const stripDone = img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === "10";
     if (img.dataset.qxProcessedVer === String(CLEAN_VER)) {
       const orgPending = isOrganicOrgSrc(cdnSrc) && !isCleanedImg(img);
-      if (!orgPending && (isCleanedImg(img) || img.classList.contains("qx-fig-ready")) && img.naturalWidth > 0) {
+      if (!orgPending && stripDone && (isCleanedImg(img) || img.classList.contains("qx-fig-ready")) && img.naturalWidth > 0) {
         revealFigure(img);
         if (isPreprocessedQxOrg(cdnSrc) || img.dataset.qxDisplayW) {
           finalizeQxOrgDisplay(img);
@@ -2804,6 +2794,10 @@ window.QxImgClean = (() => {
           removeCanvasShield(img);
         }
         return;
+      }
+      // fig-ready without soft-strip → force strip path
+      if (!stripDone && img.naturalWidth > 0 && !isLocalReadyAsset(cdnSrc) && !isPreprocessedQxOrg(cdnSrc)) {
+        queueSoftStrip(img);
       }
       if (img.dataset.qxProcessing === "1") return;
       if (img.classList.contains("qx-wm-loading") && !img.classList.contains("qx-fig-ready") && !img.naturalWidth) {
@@ -2849,13 +2843,14 @@ window.QxImgClean = (() => {
       fig.style.removeProperty("opacity");
     }
 
-    if (isCleanedImg(img)) {
+    if (isCleanedImg(img) && (isLocalReadyAsset(cdnSrc) || isPreprocessedQxOrg(cdnSrc) || img.dataset.qxSoftVer === "10")) {
       if (isPreprocessedQxOrg(cdnSrc) || img.dataset.qxDisplayW) {
         if (img.naturalWidth > 0) finalizeQxOrgDisplay(img);
         else img.addEventListener("load", () => finalizeQxOrgDisplay(img), { once: true });
       }
       revealFigure(img);
       if (!isPreprocessedQxOrg(cdnSrc)) void finalizeCleanDisplay(img);
+      if (!isLocalReadyAsset(cdnSrc) && img.dataset.qxSoftVer !== "10") queueSoftStrip(img);
       return;
     }
 

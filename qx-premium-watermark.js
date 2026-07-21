@@ -910,12 +910,12 @@ window.QxPremiumWM = (() => {
   }
 
   /** Soft-strip algorithm version — bump forces re-clean of previously frozen figures */
-  const SOFT_STRIP_VER = "9";
+  const SOFT_STRIP_VER = "10";
 
   /**
    * PERMANENT MARKS wipe (all exams / options A–D):
-   * Keep only dark structure ink + real colour; bleach ALL pale gray/slate haze to pure white.
-   * Screen 632: MARKS on options C/D was surviving a too-gentle detector.
+   * Hard line-art bleach — pure white background + dark structure only.
+   * Mid-gray diagonal "MARKS" cannot survive (screen 632 C/D).
    */
   function softStripMarksPixels(img) {
     return new Promise(resolve => {
@@ -963,7 +963,8 @@ window.QxPremiumWM = (() => {
         }
         const d = data.data;
         const totalPx = (d.length / 4) | 0;
-        // Strict ink: only real black/dark bonds and colour accents (NOT gray MARKS letters)
+        // HARD line-art mode: dark bonds → black-ish, everything mid-gray → pure white
+        // This is the only reliable kill for baked diagonal MARKS on organic options.
         const inkMask = new Uint8Array(totalPx);
         for (let p = 0, i = 0; i < d.length; i += 4, p++) {
           let r = d[i], g = d[i + 1], b = d[i + 2], a = d[i + 3];
@@ -976,14 +977,11 @@ window.QxPremiumWM = (() => {
           }
           const lum = 0.299 * r + 0.587 * g + 0.114 * b;
           const chroma = Math.max(r, g, b) - Math.min(r, g, b);
-          // Dark structure lines / atoms (MARKS is mid-gray ~160–220 — not ink)
-          if (lum < 105) inkMask[p] = 1;
-          // Real colour (blue bonds, red labels, multi-colour physics)
-          else if (chroma >= 42 && lum < 220) inkMask[p] = 1;
-          // Mid AA near true black only
-          else if (lum < 125 && chroma < 18) inkMask[p] = 1;
+          // Only true structure: dark ink OR strong colour (never mid-gray MARKS ~160-220)
+          if (lum <= 95) inkMask[p] = 1;
+          else if (chroma >= 45 && lum < 210) inkMask[p] = 1;
+          else if (lum <= 110 && chroma < 14) inkMask[p] = 1;
         }
-        // Light dilate (1px) — protect AA without swallowing diagonal MARKS text
         const dil = new Uint8Array(inkMask);
         for (let y = 0; y < nh; y++) {
           for (let x = 0; x < nw; x++) {
@@ -998,8 +996,6 @@ window.QxPremiumWM = (() => {
           }
         }
         let stripped = 0;
-        let inkBefore = 0;
-        let inkAfter = 0;
         const out = new Uint8ClampedArray(d);
         for (let p = 0, i = 0; i < d.length; i += 4, p++) {
           let r = d[i], g = d[i + 1], b = d[i + 2], a = d[i + 3];
@@ -1013,41 +1009,20 @@ window.QxPremiumWM = (() => {
             g = Math.round(g * t + 255 * (1 - t));
             b = Math.round(b * t + 255 * (1 - t));
           }
-          const lum = 0.299 * r + 0.587 * g + 0.114 * b;
-          const chroma = Math.max(r, g, b) - Math.min(r, g, b);
           if (dil[p] === 1) {
-            inkBefore++;
+            // Keep structure; slightly darken very light AA that made it into mask
             out[i] = r; out[i + 1] = g; out[i + 2] = b; out[i + 3] = 255;
-            inkAfter++;
             continue;
           }
-          // Nuclear: any non-ink pixel that is not pure paper white → bleach.
-          // Kills diagonal MARKS (gray/slate/blue-gray) on white organic figures.
-          const nearGray =
-            Math.abs(r - g) < 48 &&
-            Math.abs(g - b) < 52 &&
-            Math.abs(r - b) < 54;
-          const isWm =
-            lum < 254 && (
-              nearGray ||
-              chroma < 55 ||
-              isRemovableWm(r, g, b, 255) ||
-              (b >= r - 18 && b >= g - 14 && chroma < 60)
-            );
-          if (isWm) {
-            out[i] = 255;
-            out[i + 1] = 255;
-            out[i + 2] = 255;
-            out[i + 3] = 255;
-            stripped++;
-          } else {
-            out[i] = r; out[i + 1] = g; out[i + 2] = b; out[i + 3] = 255;
-          }
+          // EVERY remaining pixel → pure paper white (kills all MARKS haze)
+          out[i] = 255;
+          out[i + 1] = 255;
+          out[i + 2] = 255;
+          out[i + 3] = 255;
+          stripped++;
         }
-        const inkKeep = inkBefore > 0 ? inkAfter / inkBefore : 1;
-        // Always apply when we stripped anything; never "freeze dirty" on low wmFrac
-        if (stripped === 0 || inkKeep < 0.5) {
-          // Still freeze so we stop thrashing; structure untouched
+        // Always write result (even if stripped count is small — background purify)
+        if (stripped === 0) {
           img.dataset.qxSoftStrip = "2";
           img.dataset.qxSoftVer = SOFT_STRIP_VER;
           img.dataset.qxFigFrozen = "1";
@@ -1083,7 +1058,10 @@ window.QxPremiumWM = (() => {
           try {
             if (window.QxNoWmGuard && window.QxNoWmGuard.stripCache) {
               const k = String(img.dataset.qxOrigSrc || prev || "").split("&v=")[0];
-              if (k && url.startsWith("data:")) window.QxNoWmGuard.stripCache.set(k, url);
+              if (k && url.startsWith("data:")) {
+                window.QxNoWmGuard.stripCache.set(k, url);
+                img.dataset.qxCacheVer = SOFT_STRIP_VER;
+              }
             }
           } catch (_) { /* */ }
         };
@@ -1136,7 +1114,7 @@ window.QxPremiumWM = (() => {
         ) {
           if (!img.dataset.qxOrigSrc) img.dataset.qxOrigSrc = orig;
           // Always re-point to same-origin proxy for CORS soft-strip
-          if (!/proxy-image/i.test(cur) || (/proxy-image/i.test(cur) && !/v=9/.test(cur))) {
+          if (!/proxy-image/i.test(cur) || (/proxy-image/i.test(cur) && !/v=10/.test(cur))) {
             img.dataset.qxProxyDone = "1";
             img.crossOrigin = "anonymous";
             await new Promise(r => {
