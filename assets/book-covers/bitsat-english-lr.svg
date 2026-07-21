@@ -1,75 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400" role="img" aria-label="BITSAT English and Logical Reasoning">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400" role="img" aria-label="BITSAT English and Logical Reasoning — Quantrex Academy">
   <defs>
-    <linearGradient id="bitsat-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0b1226"/>
-      <stop offset="35%" stop-color="#132048"/>
-      <stop offset="70%" stop-color="#1e3a8a"/>
+    <linearGradient id="bBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="45%" stop-color="#0b1226"/>
+      <stop offset="80%" stop-color="#1e3a8a"/>
       <stop offset="100%" stop-color="#38bdf8"/>
     </linearGradient>
-    <linearGradient id="bitsat-shine" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.32)"/>
+    <linearGradient id="bGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#a5f3fc"/>
+    </linearGradient>
+    <linearGradient id="bGloss" x1="0%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.25)"/>
       <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
     </linearGradient>
-    <linearGradient id="bitsat-gloss" x1="0%" y1="0%" x2="80%" y2="100%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.20)"/>
-      <stop offset="45%" stop-color="rgba(255,255,255,0.04)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-    </linearGradient>
-    <linearGradient id="bitsat-metal" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#f8fafc"/>
-      <stop offset="45%" stop-color="#cbd5e1"/>
-      <stop offset="100%" stop-color="#94a3b8"/>
-    </linearGradient>
-    <filter id="bitsat-glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="1.8" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="bitsat-emboss">
-      <feDropShadow dx="0" dy="1.5" stdDeviation="1" flood-color="rgba(0,0,0,0.45)"/>
+    <filter id="bShadow" x="-10%" y="-5%" width="120%" height="120%">
+      <feDropShadow dx="4" dy="6" stdDeviation="4" flood-color="rgba(0,0,0,0.4)"/>
     </filter>
   </defs>
 
-  <rect width="300" height="400" fill="url(#bitsat-bg)"/>
+  <g filter="url(#bShadow)">
+    <rect x="14" y="12" width="252" height="372" rx="10" fill="url(#bBg)"/>
+    <path d="M14 22 L6 30 L6 366 L14 374 Z" fill="#020617"/>
+    <rect x="14" y="12" width="10" height="372" rx="2" fill="#0f172a" opacity="0.9"/>
+    <path d="M266 20 L280 28 L280 368 L266 376 Z" fill="#7dd3fc"/>
+    <path d="M268 24 L276 30 L276 364 L268 372 Z" fill="#e0f2fe" opacity="0.9"/>
+  </g>
+  <rect x="24" y="20" width="100" height="350" fill="url(#bGloss)" opacity="0.5"/>
 
-  <!-- Soft wave / pattern accents (HCV-like) -->
-  <path d="M-20 320 Q80 260 180 320 T380 320" stroke="#7dd3fc" stroke-opacity="0.16" stroke-width="2.5" fill="none"/>
-  <path d="M-20 350 Q100 290 200 350 T400 350" stroke="#7dd3fc" stroke-opacity="0.11" stroke-width="2" fill="none"/>
-  <path d="M-20 380 Q60 340 160 380 T360 380" stroke="#7dd3fc" stroke-opacity="0.07" stroke-width="1.5" fill="none"/>
-  <path d="M200 40 Q260 100 220 180 Q180 260 250 340" stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none"/>
+  <!-- Quantrex badge -->
+  <rect x="32" y="28" width="150" height="28" rx="8" fill="rgba(0,0,0,0.4)"/>
+  <circle cx="48" cy="42" r="9" fill="#38bdf8"/>
+  <path d="M44 42 L48 37 L52 42 L48 47 Z" fill="#0f172a"/>
+  <text x="64" y="47" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="800" fill="#f8fafc" letter-spacing="0.6">QUANTREX ACADEMY</text>
 
-  <!-- Faint language / logic motifs -->
-  <text x="188" y="68" fill="rgba(255,255,255,0.14)" font-family="Georgia,serif" font-size="14" font-style="italic" filter="url(#bitsat-glow)">A → B → C</text>
-  <text x="210" y="128" fill="rgba(255,255,255,0.14)" font-family="Georgia,serif" font-size="14" font-style="italic" filter="url(#bitsat-glow)">Synonym</text>
-  <text x="175" y="198" fill="rgba(255,255,255,0.14)" font-family="Georgia,serif" font-size="14" font-style="italic" filter="url(#bitsat-glow)">Puzzles</text>
+  <text x="36" y="95" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" fill="#7dd3fc" font-weight="700" letter-spacing="2">BITS PILANI</text>
+  <text x="34" y="140" font-family="Kanit,Inter,Segoe UI,Arial,sans-serif" font-size="42" font-weight="800" fill="#f8fafc">BITSAT</text>
+  <text x="36" y="172" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="700" fill="#bae6fd">English &amp; Logical Reasoning</text>
 
-  <!-- Spine edge -->
-  <rect x="0" y="0" width="22" height="400" fill="rgba(0,0,0,0.34)"/>
-  <rect x="22" y="0" width="3" height="400" fill="rgba(255,255,255,0.08)"/>
-  <rect x="296" y="0" width="4" height="400" fill="rgba(255,255,255,0.12)"/>
-  <rect x="0" y="0" width="300" height="400" fill="url(#bitsat-gloss)"/>
+  <path d="M34 188 L210 188 L222 202 L210 216 L34 216 Z" fill="url(#bGold)"/>
+  <text x="48" y="208" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="800" fill="#0f172a">PREP GUIDE · 1700+ Qs</text>
 
-  <text x="32" y="34" fill="rgba(255,255,255,0.88)" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="800" letter-spacing="2.2">QUANTREX ACADEMY</text>
+  <!-- logic motifs -->
+  <rect x="40" y="240" width="200" height="100" rx="12" fill="rgba(15,23,42,0.55)" stroke="rgba(125,211,252,0.35)"/>
+  <text x="56" y="275" font-family="Inter,Arial,sans-serif" font-size="13" fill="#e0f2fe" font-weight="600">Grammar · Vocab · RC</text>
+  <text x="56" y="300" font-family="Inter,Arial,sans-serif" font-size="13" fill="#e0f2fe" font-weight="600">Series · Puzzles · Coding</text>
+  <text x="56" y="325" font-family="Inter,Arial,sans-serif" font-size="13" fill="#7dd3fc" font-weight="700">BITSAT-pattern practice</text>
 
-  <!-- Title stack (shadow + fill like HCV) -->
-  <text x="34" y="108" fill="rgba(0,0,0,0.35)" font-family="Literata,Georgia,serif" font-size="26" font-weight="700">BITSAT</text>
-  <text x="32" y="106" fill="url(#bitsat-metal)" font-family="Literata,Georgia,serif" font-size="26" font-weight="700">BITSAT</text>
-  <text x="34" y="142" fill="rgba(0,0,0,0.35)" font-family="Literata,Georgia,serif" font-size="22" font-weight="700">English &amp; LR</text>
-  <text x="32" y="140" fill="#ffffff" font-family="Literata,Georgia,serif" font-size="22" font-weight="700">English &amp; LR</text>
-
-  <text x="32" y="176" fill="rgba(255,255,255,0.92)" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" filter="url(#bitsat-emboss)">Prep Guide · MCQ Edition</text>
-
-  <rect x="32" y="190" width="128" height="24" rx="12" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.25)" stroke-width="0.5"/>
-  <text x="44" y="207" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700">1749 Questions</text>
-
-  <text x="32" y="252" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="800">Logical Reasoning</text>
-  <text x="32" y="276" fill="rgba(255,255,255,0.82)" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="600">Vocabulary · Grammar · Puzzles</text>
-  <text x="32" y="296" fill="rgba(255,255,255,0.72)" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="600">BITSAT · Pilani · Goa · Hyderabad</text>
-
-  <!-- Icon medallion -->
-  <circle cx="248" cy="72" r="34" fill="rgba(56,189,248,0.12)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
-  <text x="248" y="82" text-anchor="middle" font-size="28" filter="url(#bitsat-glow)">🧠</text>
-
-  <rect x="0" y="372" width="300" height="28" fill="rgba(0,0,0,0.24)"/>
-  <text x="32" y="390" fill="rgba(255,255,255,0.7)" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="800" letter-spacing="1.8">DIGITAL EDITION</text>
-  <text x="268" y="390" text-anchor="end" fill="rgba(255,255,255,0.55)" font-family="Inter,Arial,sans-serif" font-size="8" font-weight="700">QX</text>
+  <rect x="28" y="350" width="220" height="26" rx="13" fill="rgba(0,0,0,0.45)"/>
+  <text x="138" y="368" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="700" fill="#e0f2fe" letter-spacing="1">2026–27 DIGITAL EDITION</text>
 </svg>

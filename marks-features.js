@@ -2452,13 +2452,13 @@ const QX_BOOKS_CATALOG = {
   engineering: [
     { id: "6a0addba4b032b031e049a36", title: "Concepts Of Physics MCQ Edition [Volume 2]", cover: "assets/book-covers/hc-verma-v2.jpg", subject: "Physics", badge: "HC Verma", exam: "Physics", isComingSoon: false, bankSlug: "jee_main", redirectType: "module", moduleId: null, count: 1854, type: "exam" },
     { id: "69f9cc23681eab6d6021a4d1", title: "Concepts Of Physics MCQ Edition [Volume 1]", cover: "assets/book-covers/hc-verma-v1.jpg", subject: "Physics", badge: "HC Verma", exam: "Physics", isComingSoon: false, bankSlug: "jee_main", redirectType: "module", moduleId: null, count: 778, type: "exam" },
-    { id: "6a4ce383c59a7b462185330f", title: "Fundamentals of Organic Chemistry", cover: "assets/book-covers/organic-chemistry.jpg", subject: "Chemistry", badge: "Organic", exam: "JEE Main", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6a4e21aea2f0a1af5a74e192", count: 1113, type: "exam" },
+    { id: "6a4ce383c59a7b462185330f", title: "Fundamentals of Organic Chemistry", cover: "assets/book-covers/organic-chemistry.svg", subject: "Chemistry", badge: "Organic", exam: "JEE Main", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6a4e21aea2f0a1af5a74e192", count: 1113, type: "exam" },
+    { id: "69736c8362b916d85e52cd1b", title: "BITSAT English and Logical Reasoning Prep Guide", cover: "assets/book-covers/bitsat-english-lr.svg", subject: "English + LR", badge: "BITSAT", exam: "BITSAT", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "69736e5def12da848f4c24f2", count: 1749, type: "exam" },
     { id: "69cfb5366ecf5579037d96a4", title: "Top IE IRODOV Physics Problems", cover: "assets/book-covers/irodov.jpg", subject: "Physics", badge: "Irodov", exam: "Advanced Physics", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "69d34798097639b3bf3ea47a", count: 158, type: "exam" },
     { id: "68f1ce4cc729e5251bd00430", title: "Most Important Selected Qs for JEE Advanced", cover: "assets/book-covers/rank-booster.jpg", subject: "PCM", badge: "Rank Booster", exam: "JEE Advanced", isComingSoon: false, bankSlug: "jee_advanced", redirectType: "module", moduleId: null, count: 2793, type: "exam" },
     { id: "68946f70ebd145663de38728", title: "99 Percentile Qs Bank for JEE Main", cover: "assets/book-covers/99-percentile.jpg", subject: "PCM", badge: "99 Percentile", exam: "High Yield", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "689470b46cc631f0fbe63f08", count: 3139, type: "exam" },
     { id: "6894d29d3156b1f3ca5ad0be", title: "Highly selective Backlog Qs for JEE Main", cover: "assets/book-covers/backlog-booster.jpg", subject: "PCM", badge: "Backlog Booster", exam: "Selective PYQs", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6894d2f5d0af19a8bc64156f", count: 760, type: "exam" },
-    { id: "69048808ef55966cf1d71f1d", title: "Olympiad workbook", cover: "assets/book-covers/olympiad.jpg", subject: "PCM", badge: "Olympiad", exam: "Olympiad", isComingSoon: false, bankSlug: "jee_main", redirectType: "module", moduleId: null, count: 1128, type: "exam" },
-    { id: "69736c8362b916d85e52cd1b", title: "BITSAT English and Logical Reasoning Prep Guide", cover: "assets/book-covers/bitsat-english-lr.jpg", subject: "English + LR", badge: "BITSAT", exam: "BITSAT", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "69736e5def12da848f4c24f2", count: 1749, type: "exam" }
+    { id: "69048808ef55966cf1d71f1d", title: "Olympiad workbook", cover: "assets/book-covers/olympiad.jpg", subject: "PCM", badge: "Olympiad", exam: "Olympiad", isComingSoon: false, bankSlug: "jee_main", redirectType: "module", moduleId: null, count: 1128, type: "exam" }
   ],
   medical: [
     { id: "69968cee494a12a5771e3455", title: "Biology 360/360 for NEET 2026", cover: "assets/book-covers/biology-360.jpg", description: "for CBSE", isComingSoon: true, subject: "Biology", badge: "NEET", exam: "NEET", bankSlug: "neet" }
@@ -2965,7 +2965,8 @@ async function marksDashboardSections() {
       <span class="subj-mini-ic">${subjectIcon(s, null, 24)}</span><strong>${s}</strong>
     </div>`).join("");
   const dashBooks = booksForExam(bookCatalog, STATE.exam);
-  const bookScroll = typeof renderBookScroll === "function" ? renderBookScroll(dashBooks, 7) : "";
+  // Show enough cards so Organic + BITSAT always appear on dashboard
+  const bookScroll = typeof renderBookScroll === "function" ? renderBookScroll(dashBooks, 12) : "";
   const examLabel = EXAMS[STATE.exam].name;
   const board = dashBoardSelected();
   const boards = [

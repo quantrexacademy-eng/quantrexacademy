@@ -5,7 +5,7 @@
 (function (global) {
   "use strict";
 
-  const MASCOT = "assets/jovi-mascot.svg?v=jovi1";
+  const MASCOT = "assets/jovi-mascot.svg?v=jovi2";
   const GAP_KEY = "qx_jovi_gaps_v1";
   const SAVE_KEY = "qx_jovi_saved_v1";
   const HIST_KEY = "qx_jovi_session_v1";
@@ -573,7 +573,7 @@
       const link = document.createElement("link");
       link.id = "joviStyles";
       link.rel = "stylesheet";
-      link.href = "assets/jovi.css?v=jovi1";
+      link.href = "assets/jovi.css?v=jovi2";
       document.head.appendChild(link);
     }
     ensureDom();
