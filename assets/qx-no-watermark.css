@@ -23,10 +23,10 @@ img[alt*="Get Marks App"]:not(.qx-pool-fig):not(.qx-no-wm) {
   overflow: hidden !important;
 }
 
-/* Quantrex stamp / seal / brand watermark layers — NEVER show */
+/* Heavy brand layers never show — light coaching brand allowed (see qx-figure-beauty.css) */
 .qx-diag-watermark,
 .qx-brand-overlay,
-.qx-quantrex-wm,
+.qx-quantrex-wm:not(.qx-coaching-wm),
 .qx-quantrex-black-wm,
 .qx-quantrex-black-seal,
 .qx-premium-wm,
@@ -42,16 +42,11 @@ img[alt*="Get Marks App"]:not(.qx-pool-fig):not(.qx-no-wm) {
 .qx-fig-inner.qx-wm-active .qx-premium-wm-sheet,
 .qx-brand-covered.qx-wm-active .qx-premium-wm-sheet,
 .qx-premium-wm-active .qx-premium-wm-sheet,
-.qx-coaching-wm,
 .qx-wm-corner-badge,
 .qx-marks-strip,
 .qx-wm-mask,
 .qx-marks-scrub,
-img.qx-quantrex-wm-overlay,
-img.qx-coaching-wm,
-img[src*="quantrex-academy-brand"],
-img[src*="quantrex-academy-watermark"],
-img[src*="quantrex-watermark"],
+img[src*="quantrex-academy-watermark"]:not(.qx-coaching-wm),
 img[src*="quantrex-diag-watermark"],
 img[src*="quantrex-fig-stamp"],
 img[src*="quantrex-fig-seal"],

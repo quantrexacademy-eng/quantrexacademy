@@ -20,15 +20,13 @@
     "img[src*='proxy-image']"
   ].join(", ");
 
+  // MARKS chrome only — keep light coaching brand image
   const KILL_SEL = [
-    "img.qx-quantrex-wm-overlay",
-    "img.qx-coaching-wm",
     "canvas.qx-premium-wm-canvas",
     "canvas.qx-marks-scrub-canvas",
     ".qx-quantrex-black-wm",
     ".qx-quantrex-black-seal",
     ".qx-brand-overlay",
-    ".qx-quantrex-wm",
     ".qx-premium-wm-sheet",
     ".qx-diag-watermark",
     ".qx-wm-diagonal",
@@ -36,12 +34,10 @@
     ".qx-marks-strip",
     ".qx-marks-scrub",
     ".qx-wm-mask",
-    "img[src*='quantrex-academy-brand']",
-    "img[src*='quantrex-watermark']",
-    "img[src*='quantrex-diag-watermark']",
-    "img[src*='quantrex-fig-stamp']",
     "img[src*='getmarks-brand']",
-    "img[alt*='Get Marks App']"
+    "img[alt*='Get Marks App']",
+    "img[src*='marks-premium']",
+    "img[src*='marks_selected']"
   ].join(", ");
 
   // origSrc → cleaned data URL (survives prev/next re-render)
@@ -196,6 +192,9 @@
         if (img.dataset.qxSoftStrip !== "2" && img.dataset.qxNowmRetry !== "1") {
           img.dataset.qxNowmRetry = "1";
           setTimeout(() => applyCacheOrClean(img), 500);
+        }
+        if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintCoachingBrandLight) {
+          void QxPremiumWM.paintCoachingBrandLight(img);
         }
       });
     } else if (typeof QxImgClean !== "undefined" && QxImgClean.rewriteAllPoolImgs) {

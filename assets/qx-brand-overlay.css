@@ -41,7 +41,7 @@
   max-height: none !important;
 }
 
-/* Hide ALL watermark canvases / brand overlays (user: no watermark on figures) */
+/* Hide heavy overlays; light coaching brand stays (qx-figure-beauty.css) */
 canvas.qx-marks-scrub-canvas,
 canvas.qx-wm-canvas,
 canvas.qx-premium-wm-canvas,
@@ -49,16 +49,12 @@ canvas.qx-premium-wm-canvas,
 .qx-premium-wm-title,
 .qx-premium-wm-tag,
 .qx-wm-diagonal,
-.qx-quantrex-wm-overlay,
 .qx-brand-overlay,
-.qx-diag-watermark,
-img.qx-quantrex-wm-overlay {
+.qx-diag-watermark {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
-  width: 0 !important;
-  height: 0 !important;
 }
 
 /* No large center pseudo-shield — it was hiding diagram content */
@@ -217,7 +213,6 @@ img.qx-wm-none,
 .qx-diag-watermark,
 .qx-brand-overlay,
 .qx-wm-mask,
-img.qx-quantrex-wm-overlay,
 canvas.qx-premium-wm-canvas {
   display: none !important;
 }
@@ -279,8 +274,7 @@ body.marks-test-active .qx-premium-wm-logo,
 body.marks-test-active .qx-premium-wm-title,
 body.marks-test-active .qx-premium-wm-tag,
 body.marks-test-active .qx-premium-wm-sheet,
-body.allen-practice-active .qx-premium-wm-sheet,
-body.allen-practice-active img.qx-quantrex-wm-overlay {
+body.allen-practice-active .qx-premium-wm-sheet {
   display: none !important;
   opacity: 0 !important;
   visibility: hidden !important;

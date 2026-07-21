@@ -4,9 +4,10 @@ window.QxPremiumWM = (() => {
   const COACHING_WM_SRC = "/assets/quantrex-academy-brand-wm.png";
   const LOGO_FALLBACK = "/assets/quantrex-academy-brand.svg";
   const LOGO_FALLBACK2 = "/assets/quantrex-premium-logo.png";
-  const COACHING_WM_SCALE = 0.68;
-  const COACHING_WM_OPACITY = 0.22;
-  const COACHING_WM_MIN_PX = 88;
+  const COACHING_WM_SCALE = 0.38;
+  const COACHING_WM_OPACITY = 0.055;
+  const COACHING_WM_OPACITY_OPT = 0.04;
+  const COACHING_WM_MIN_PX = 56;
   const PROXY_BASE = (typeof location !== "undefined" && location.origin && !/localhost|127\.0\.0\.1/i.test(location.origin))
     ? location.origin.replace(/\/$/, "")
     : "https://quantrexacademy-live.web.app";
@@ -806,22 +807,70 @@ window.QxPremiumWM = (() => {
   }
 
   async function paintBrandWatermark(img, stack, rw, rh) {
-    // Disabled — no watermarks on figures
-    if (img) stripQuantrexBrand(img);
-    return false;
+    return paintCoachingBrandLight(img);
   }
 
+  /** Subtle coaching brand BEHIND figure — never covers structure */
   function applyCoachingWmOverlay(stack, rw, rh, lw, opacity) {
-    // Disabled — remove coaching brand watermark overlays
-    if (!stack) return null;
-    stack.querySelectorAll("img.qx-quantrex-wm-overlay, img.qx-coaching-wm").forEach(el => el.remove());
-    return null;
+    if (!stack || rw < 48 || rh < 48) return null;
+    const cs = window.getComputedStyle(stack);
+    if (cs.position === "static") stack.style.position = "relative";
+    stack.querySelectorAll("img:not(.qx-coaching-wm):not(.qx-quantrex-wm-overlay)").forEach((im) => {
+      if (!im.style.position || im.style.position === "static") im.style.position = "relative";
+      im.style.zIndex = "2";
+      im.style.opacity = "1";
+      im.style.background = im.style.background || "#fff";
+    });
+    let el = stack.querySelector("img.qx-coaching-wm");
+    if (!el) {
+      el = document.createElement("img");
+      el.className = "qx-coaching-wm qx-quantrex-wm-overlay";
+      el.alt = "";
+      el.setAttribute("aria-hidden", "true");
+      el.draggable = false;
+      el.decoding = "async";
+      stack.insertBefore(el, stack.firstChild);
+    }
+    const side = Math.min(rw, rh);
+    const size = Math.max(COACHING_WM_MIN_PX, Math.min(side * COACHING_WM_SCALE, Math.max(rw, rh) * 0.32));
+    const op = opacity != null ? opacity : COACHING_WM_OPACITY;
+    if (!/quantrex-academy-brand/i.test(el.getAttribute("src") || "")) el.src = COACHING_WM_SRC;
+    el.style.cssText = [
+      "position:absolute", "left:50%", "top:50%",
+      `width:${Math.round(size)}px`, "height:auto",
+      "max-width:55%", "max-height:55%",
+      "transform:translate(-50%,-50%) rotate(-26deg)",
+      `opacity:${op}`,
+      "pointer-events:none", "z-index:0",
+      "mix-blend-mode:multiply", "user-select:none", "display:block"
+    ].join(";");
+    stack.classList.add("qx-coaching-wm-active");
+    return el;
+  }
+
+  function paintCoachingBrandLight(img) {
+    if (!img || !img.isConnected) return Promise.resolve(false);
+    if (img.classList.contains("qx-marks-icon") || img.classList.contains("fc-img")) {
+      return Promise.resolve(false);
+    }
+    const prep = prepareFigureStack(img);
+    if (!prep || prep.rw < 56 || prep.rh < 56) return Promise.resolve(false);
+    const isOpt = !!(img.closest && img.closest(".mtk-opt-text, .qx-prac-opt-text, .qx-opt-fig"));
+    const op = isOpt ? COACHING_WM_OPACITY_OPT : COACHING_WM_OPACITY;
+    return new Promise((resolve) => {
+      ensureCoachingWmLogo(() => {
+        applyCoachingWmOverlay(prep.stack, prep.rw, prep.rh, null, op);
+        img.style.position = "relative";
+        img.style.zIndex = "2";
+        img.style.opacity = "1";
+        img.dataset.qxBrandWm = "1";
+        resolve(true);
+      });
+    });
   }
 
   async function paintOrganicCoachingWatermark(img, stack, rw, rh) {
-    // Disabled — no watermarks
-    if (img) stripQuantrexBrand(img);
-    return false;
+    return paintCoachingBrandLight(img);
   }
 
   async function exportWatermarkedFigure(img) {
@@ -887,7 +936,10 @@ window.QxPremiumWM = (() => {
     if (/ic_content_exam_|formula_cards|ncert_toolbox/i.test(src)) return false;
     // Quizrr organic diagrams ARE pool figures (path may include watermarked_images)
     // Local clean book assets — leave alone
-    if (/\/assets\/diagrams\/(hcv|qx-book|qx-org|qx-irodov)/i.test(src) && !/proxy-image|restore-image/i.test(src)) {
+    // Local gentle-clean assets — already processed, do not re-threshold
+    if (/\/assets\/(diagrams|qx-figures)\//i.test(src)
+      && /hcv-|qx-book|qx-org|qx-irodov|qx-alc-prep|qx-figures/i.test(src)
+      && !/proxy-image|restore-image/i.test(src)) {
       return false;
     }
     // Pool diagrams (incl. already-proxied or data: after partial clean)
@@ -975,13 +1027,13 @@ window.QxPremiumWM = (() => {
           const mx = Math.max(r, g, b);
           const mn = Math.min(r, g, b);
           const chroma = mx - mn;
-          // Structure ink: dark lines + any colored accent (keep!)
+          // Keep dark bonds + anti-aliased edges + color (don't treat mid-gray AA as ink)
           const isInk =
-            lum < 175 ||
-            chroma >= 24 ||
-            (lum < 210 && chroma >= 14);
+            lum < 145 ||
+            chroma >= 28 ||
+            (lum < 165 && chroma >= 16);
           if (isInk) inkBefore++;
-          // MARKS watermark: only pale desaturated gray (not structure)
+          // Only pale MARKS haze — soft lift keeps figures beautiful (not bold/broken)
           const nearGray =
             Math.abs(r - g) < 28 &&
             Math.abs(g - b) < 32 &&
@@ -989,11 +1041,16 @@ window.QxPremiumWM = (() => {
           const isWm =
             !isInk &&
             nearGray &&
-            chroma < 32 &&
-            lum >= 185 &&
-            lum < 246;
+            chroma < 26 &&
+            lum >= 198 &&
+            lum < 248;
           if (isWm) {
-            out[i] = 255; out[i + 1] = 255; out[i + 2] = 255; out[i + 3] = 255;
+            // Soft bleach toward white (preserve nearby AA structure)
+            const lift = Math.min(1, Math.max(0.75, (lum - 185) / 55));
+            out[i] = Math.round(r + (255 - r) * lift);
+            out[i + 1] = Math.round(g + (255 - g) * lift);
+            out[i + 2] = Math.round(b + (255 - b) * lift);
+            out[i + 3] = 255;
             stripped++;
           } else {
             out[i] = r; out[i + 1] = g; out[i + 2] = b; out[i + 3] = 255;
@@ -1002,16 +1059,19 @@ window.QxPremiumWM = (() => {
         }
         const wmFrac = stripped / Math.max(totalPx, 1);
         const inkKeep = inkBefore > 0 ? inkAfter / inkBefore : 1;
-        // Safety: if almost no WM or strip would erase structure → keep original figure
-        if (wmFrac < 0.0015 || inkKeep < 0.55) {
+        // If almost no WM, keep original pixels (beautiful as-is)
+        if (wmFrac < 0.0012 || inkKeep < 0.5) {
           img.dataset.qxSoftStrip = "2";
           img.dataset.qxFigFrozen = "1";
           img.dataset.qxCleanedSrc = "1";
           img.dataset.qxHasWm = "0";
-          img.classList.add("qx-wm-clean", "qx-fig-ready", "qx-nowm");
+          img.classList.add("qx-wm-clean", "qx-fig-ready", "qx-nowm", "qx-hq-color");
+          img.classList.remove("qx-black-redraw", "qx-hcv-ink", "qx-wm-loading");
           img.style.setProperty("opacity", "1", "important");
           img.style.setProperty("visibility", "visible", "important");
+          img.style.setProperty("display", "block", "important");
           stripQuantrexBrand(img);
+          void paintCoachingBrandLight(img);
           return resolve(true);
         }
         for (let i = 0; i < d.length; i++) d[i] = out[i];
@@ -1031,7 +1091,9 @@ window.QxPremiumWM = (() => {
           img.classList.remove("qx-hcv-ink", "qx-black-redraw", "qx-wm-loading");
           img.style.setProperty("opacity", "1", "important");
           img.style.setProperty("visibility", "visible", "important");
+          img.style.setProperty("display", "block", "important");
           stripQuantrexBrand(img);
+          void paintCoachingBrandLight(img);
           try {
             if (window.QxNoWmGuard && window.QxNoWmGuard.stripCache) {
               const k = String(img.dataset.qxOrigSrc || prev || "").split("&v=")[0];
@@ -1127,31 +1189,33 @@ window.QxPremiumWM = (() => {
   }
 
   /**
-   * Strip MARKS watermark from pool figures (proxy + client soft-strip).
-   * Never paint Quantrex brand. Never leave residual gray MARKS text.
+   * Gentle MARKS strip (keep beautiful AA lines), then light coaching brand behind.
    */
   function paintMarksHideOnly(img) {
     if (!img || !img.isConnected) return Promise.resolve(false);
-    stripQuantrexBrand(img);
     if (!figureNeedsMarksClean(img)) {
       img.classList.add("qx-fig-ready", "qx-wm-clean");
       img.dataset.qxHasWm = "0";
       img.dataset.qxWmClean = "1";
-      return Promise.resolve(true);
+      img.style.setProperty("opacity", "1", "important");
+      img.style.setProperty("visibility", "visible", "important");
+      img.style.setProperty("display", "block", "important");
+      return paintCoachingBrandLight(img).then(() => true);
     }
     return redrawFigureBlackInk(img).then(ok => {
-      img.classList.add("qx-fig-ready", "qx-wm-clean");
-      img.classList.remove("qx-wm-loading", "qx-brand-wm");
+      img.classList.add("qx-fig-ready", "qx-wm-clean", "qx-hq-color");
+      img.classList.remove("qx-wm-loading", "qx-black-redraw");
       img.dataset.qxHasWm = "0";
       img.dataset.qxWmClean = "1";
-      return !!ok;
+      img.style.setProperty("opacity", "1", "important");
+      img.style.setProperty("visibility", "visible", "important");
+      img.style.setProperty("display", "block", "important");
+      return paintCoachingBrandLight(img).then(() => !!ok);
     });
   }
 
-  /** Disabled — do not cover figures with QUANTREX watermark */
   function paintQuantrexBrand(img) {
-    if (img) stripQuantrexBrand(img);
-    return Promise.resolve(false);
+    return paintCoachingBrandLight(img);
   }
 
   function paintPremiumDiagonalWm(img) {
@@ -1165,13 +1229,11 @@ window.QxPremiumWM = (() => {
   function nukeAllWatermarkDom(root) {
     const scope = root || document;
     try {
+      // Kill MARKS chrome only — keep light coaching brand (qx-coaching-wm)
       scope.querySelectorAll(
-        "img.qx-quantrex-wm-overlay, img.qx-coaching-wm, canvas.qx-premium-wm-canvas, canvas.qx-marks-scrub-canvas, " +
-        ".qx-quantrex-black-wm, .qx-quantrex-black-seal, .qx-brand-overlay, .qx-quantrex-wm, .qx-premium-wm-sheet, " +
-        ".qx-diag-watermark, .qx-wm-diagonal, .qx-wm-corner-badge, .qx-marks-strip, .qx-marks-scrub, .qx-wm-mask, " +
-        "img[src*='quantrex-academy-brand'], img[src*='quantrex-watermark'], img[src*='quantrex-diag-watermark'], " +
-        "img[src*='quantrex-fig-stamp'], img[src*='quantrex-fig-seal'], img[src*='quantrex-brand-overlay'], " +
-        "img[src*='watermark-overlay'], img[src*='getmarks-brand'], img[alt*='Get Marks App']"
+        "canvas.qx-marks-scrub-canvas, .qx-marks-strip, .qx-marks-scrub, .qx-wm-mask, " +
+        ".qx-premium-wm-sheet, .qx-wm-corner-badge, " +
+        "img[src*='getmarks-brand'], img[alt*='Get Marks App'], img[src*='marks-premium'], img[src*='marks_selected']"
       ).forEach(el => el.remove());
     } catch (_) { /* */ }
   }
@@ -1179,17 +1241,26 @@ window.QxPremiumWM = (() => {
   function repaintAll(root) {
     const scope = root || document;
     nukeAllWatermarkDom(scope);
-    // Clean every pool figure (including residual MARKS after proxy)
     scope.querySelectorAll(
-      "img.qx-pool-fig, img[src*='cdn-question-pool'], img[src*='/pyq/'], img[src*='cdn.quizrr'], img[src*='proxy-image'], img[src*='restore-image'], #qxDiagramSlot img, .qx-diagram-slot img, .qx-opt-diagram-slot img"
+      "img.qx-pool-fig, img.qx-fig-img, img.qx-sol-fig, img.qx-no-wm, " +
+      "img[src*='cdn-question-pool'], img[src*='/pyq/'], img[src*='cdn.quizrr'], " +
+      "img[src*='proxy-image'], img[src*='/assets/qx-figures/'], img[src*='/assets/diagrams/'], " +
+      "#qxDiagramSlot img, .qx-diagram-slot img, .qx-opt-diagram-slot img, " +
+      ".sol-body img, .qx-sol-body img, .mtk-opt-text img, .qx-prac-opt-text img"
     ).forEach(img => {
       if (!img) return;
       if (img.classList.contains("qx-marks-icon") || img.classList.contains("qx-exam-logo") || img.classList.contains("fc-img")) return;
-      stripQuantrexBrand(img);
-      // Soft-strip only once; never skip just because of proxy/freeze flags
-      if (img.dataset.qxSoftStrip === "2") return;
-      if (figureNeedsMarksClean(img) || img.classList.contains("qx-pool-fig")) {
+      img.style.setProperty("opacity", "1", "important");
+      img.style.setProperty("visibility", "visible", "important");
+      img.style.setProperty("display", "block", "important");
+      if (img.dataset.qxSoftStrip === "2") {
+        void paintCoachingBrandLight(img);
+        return;
+      }
+      if (figureNeedsMarksClean(img) || img.classList.contains("qx-pool-fig") || /qx-figures|cdn-question-pool|\/pyq\//i.test(img.getAttribute("src") || "")) {
         void paintMarksHideOnly(img);
+      } else {
+        void paintCoachingBrandLight(img);
       }
     });
   }
@@ -1211,12 +1282,9 @@ window.QxPremiumWM = (() => {
   startThemeObserver();
 
   function scanAllFigures(root) {
-    // Site-wide: strip every brand layer + soft-clean MARKS — never re-add
     repaintAll(root || document);
-    nukeAllWatermarkDom(root || document);
   }
 
-  // Keep nuking overlays if anything re-injects them
   if (typeof MutationObserver !== "undefined") {
     try {
       const killObs = new MutationObserver(() => {
@@ -1240,6 +1308,7 @@ window.QxPremiumWM = (() => {
     stripQuantrexBrand,
     paintBrandWatermark,
     paintOrganicCoachingWatermark,
+    paintCoachingBrandLight,
     exportWatermarkedFigure,
     premiumWatermarkHtml,
     softStripMarksPixels,
