@@ -827,7 +827,7 @@ window.QxPremiumWM = (() => {
   }
 
   /** Soft-strip algorithm version — bump forces re-clean of previously frozen figures */
-  const SOFT_STRIP_VER = "21";
+  const SOFT_STRIP_VER = "22";
 
   /** True only for MARKS/Quizrr pool diagrams that carry baked watermarks */
   function figureNeedsMarksClean(img) {
@@ -844,17 +844,21 @@ window.QxPremiumWM = (() => {
     if (/ic_content_exam_|formula_cards|ncert_toolbox/i.test(src)) return false;
     // Already-soft-stripped data URLs
     if (src.startsWith("data:image") && img.dataset.qxSoftVer === SOFT_STRIP_VER) return false;
-    // Local alc-prep assets only
-    if (/\/assets\/qx-figures\//i.test(src) || /qx-alc-prep|hcv-|qx-irodov/i.test(src)) return false;
-    if (/\/assets\/diagrams\/org-src\//i.test(src)) return false;
-    // EVERY structure figure needs MARKS wipe until softVer matches (organic color + pool + options)
+    // Digital-book multi-color assets — already clean, never re-strip
     if (/\/assets\/diagrams\/qx-org-/i.test(src)
       || img.classList.contains("qx-org-fig")
       || img.classList.contains("qx-organic-fig")
-      || img.classList.contains("qx-pool-fig")
+      || /\/assets\/qx-figures\//i.test(src)
+      || /qx-alc-prep|hcv-|qx-irodov/i.test(src)
+      || /\/assets\/diagrams\/org-src\//i.test(src)
+      || /\/assets\/clean-diagrams\//i.test(src)) {
+      return false;
+    }
+    // Pool / PYQ / exam CDN figures need MARKS wipe
+    if (img.classList.contains("qx-pool-fig")
       || img.classList.contains("qx-fig-img")
       || img.classList.contains("qx-opt-fig-img")
-      || /cdn-question-pool|cdn\.quizrr|\/pyq\/|proxy-image|restore-image|getmarks/i.test(src)
+      || /cdn-question-pool|cdn\.quizrr|\/pyq\/|proxy-image|restore-image/i.test(src)
       || img.dataset.qxHasWm === "1"
       || img.dataset.qxOrigSrc) {
       return true;
@@ -913,11 +917,12 @@ window.QxPremiumWM = (() => {
         }
         const d = data.data;
         const totalPx = (d.length / 4) | 0;
-        // v21: nuclear MARKS wipe (screens 643/644 still had watermark).
-        // Structure ink = dark OR saturated colour only. Everything mid-gray → white.
+        // v22: digital-book style — multi-color safe + MARKS gray wipe + neat line colorize
         let inkBefore = 0;
-        const INK_MAX = 88;
-        const CHROMA_INK = 45;
+        let chromaSum = 0;
+        let chromaN = 0;
+        const INK_MAX = 100;
+        const CHROMA_KEEP = 28; // real colour (organic-style) never bleached
         const core = new Uint8Array(totalPx);
         for (let p = 0, i = 0; i < d.length; i += 4, p++) {
           let r = d[i], g = d[i + 1], b = d[i + 2], a = d[i + 3];
@@ -930,12 +935,16 @@ window.QxPremiumWM = (() => {
           }
           const lum = 0.299 * r + 0.587 * g + 0.114 * b;
           const chroma = Math.max(r, g, b) - Math.min(r, g, b);
-          // True molecule lines / text only — MARKS is never this dark without color
+          if (a > 40 && lum < 250) {
+            chromaSum += chroma;
+            chromaN++;
+          }
+          // Dark structure OR any real colour (like digital book diagrams)
           if (lum <= INK_MAX) { core[p] = 1; inkBefore++; }
-          else if (chroma >= CHROMA_INK && lum < 200) { core[p] = 1; inkBefore++; }
+          else if (chroma >= CHROMA_KEEP && lum < 235) { core[p] = 1; inkBefore++; }
         }
-        // NO dilate — dilate was protecting watermark pixels next to bonds
-        const inkMask = core;
+        const meanChroma = chromaN ? chromaSum / chromaN : 0;
+        const mostlyGray = meanChroma < 22;
         let stripped = 0;
         let inkAfter = 0;
         const out = new Uint8ClampedArray(d);
@@ -951,20 +960,26 @@ window.QxPremiumWM = (() => {
             g = Math.round(g * t + 255 * (1 - t));
             b = Math.round(b * t + 255 * (1 - t));
           }
-          if (inkMask[p] === 1) {
+          const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+          const chroma = Math.max(r, g, b) - Math.min(r, g, b);
+          // Preserve multi-colour pixels always (digital book look)
+          if (chroma >= CHROMA_KEEP && lum < 245) {
             out[i] = r; out[i + 1] = g; out[i + 2] = b; out[i + 3] = 255;
             inkAfter++;
             continue;
           }
-          const lum = 0.299 * r + 0.587 * g + 0.114 * b;
-          const chroma = Math.max(r, g, b) - Math.min(r, g, b);
+          if (core[p] === 1) {
+            out[i] = r; out[i + 1] = g; out[i + 2] = b; out[i + 3] = 255;
+            inkAfter++;
+            continue;
+          }
           const nearGray =
-            Math.abs(r - g) < 58 && Math.abs(g - b) < 62 && Math.abs(r - b) < 64;
-          // Nuclear: any non-ink pale/mid gray-blue = MARKS haze
-          if (lum > 90 && (nearGray || chroma < 50)) {
+            Math.abs(r - g) < 50 && Math.abs(g - b) < 54 && Math.abs(r - b) < 56;
+          // MARKS only: mid pale gray / blue-gray haze
+          if (nearGray && lum > 112 && lum < 245 && chroma < 42) {
             out[i] = 255; out[i + 1] = 255; out[i + 2] = 255; out[i + 3] = 255;
             stripped++;
-          } else if (lum > 150 && chroma < 55) {
+          } else if (lum > 200 && chroma < 30) {
             out[i] = 255; out[i + 1] = 255; out[i + 2] = 255; out[i + 3] = 255;
             stripped++;
           } else {
@@ -972,15 +987,36 @@ window.QxPremiumWM = (() => {
             if (lum < 200) inkAfter++;
           }
         }
-        // If we destroyed structure, still prefer stripped result if some ink remains;
-        // only abort when almost nothing left
+        // Digital-book neat multi-tone for grayscale exam line-art (bonds → blue ink palette)
+        if (mostlyGray && inkAfter > 40) {
+          for (let p = 0, i = 0; i < d.length; i += 4, p++) {
+            const r = out[i], g = out[i + 1], b = out[i + 2];
+            const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+            const chroma = Math.max(r, g, b) - Math.min(r, g, b);
+            if (chroma >= 20) continue; // already color
+            if (lum >= 248) {
+              out[i] = 255; out[i + 1] = 255; out[i + 2] = 255; out[i + 3] = 255;
+              continue;
+            }
+            if (lum < 95) {
+              // deep bond — indigo (book style)
+              out[i] = 22; out[i + 1] = 48; out[i + 2] = 120; out[i + 3] = 255;
+            } else if (lum < 145) {
+              out[i] = 40; out[i + 1] = 82; out[i + 2] = 155; out[i + 3] = 255;
+            } else if (lum < 200) {
+              out[i] = 70; out[i + 1] = 115; out[i + 2] = 185; out[i + 3] = 255;
+            } else {
+              // near-white paper
+              out[i] = 255; out[i + 1] = 255; out[i + 2] = 255; out[i + 3] = 255;
+            }
+          }
+        }
         if (inkBefore > 120 && inkAfter < Math.max(40, inkBefore * 0.12)) {
-          // keep proxy display (already server-cleaned) — do NOT leave raw CDN
           img.dataset.qxSoftStrip = "2";
           img.dataset.qxSoftVer = SOFT_STRIP_VER;
           img.dataset.qxFigFrozen = "1";
           img.dataset.qxHasWm = "0";
-          img.classList.add("qx-fig-ready", "qx-wm-clean", "qx-nowm");
+          img.classList.add("qx-fig-ready", "qx-wm-clean", "qx-nowm", "qx-hq-color");
           img.style.setProperty("opacity", "1", "important");
           img.style.setProperty("visibility", "visible", "important");
           img.style.setProperty("display", "block", "important");
@@ -1068,7 +1104,7 @@ window.QxPremiumWM = (() => {
         ) {
           if (!img.dataset.qxOrigSrc) img.dataset.qxOrigSrc = orig;
           // Always re-point to same-origin proxy for CORS soft-strip
-          if (!/proxy-image/i.test(cur) || (/proxy-image/i.test(cur) && !/v=21/.test(cur))) {
+          if (!/proxy-image/i.test(cur) || (/proxy-image/i.test(cur) && !/v=22/.test(cur))) {
             img.dataset.qxProxyDone = "1";
             img.crossOrigin = "anonymous";
             await new Promise(r => {

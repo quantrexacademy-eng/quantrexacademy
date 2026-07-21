@@ -161,8 +161,8 @@
       img.classList.add("qx-pool-fig", "qx-no-wm", "qx-opt-fig-img");
     }
 
-    // Soft-strip v21 — kill residual MARKS; single zoom btn
-    const STRIP_VER = "21";
+    // Soft-strip v22 — multi-color digital-book style, no boxes
+    const STRIP_VER = "22";
     const key = cacheKey(img);
     if (img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === STRIP_VER) {
       forceVisible(img);
@@ -297,7 +297,7 @@
       if (!main) return;
       nukeDom(main);
       let dirty = 0;
-      const STRIP_VER = "21";
+      const STRIP_VER = "22";
       main.querySelectorAll(POOL_SEL).forEach((img) => {
         if (isUiIcon(img)) return;
         forceVisible(img);

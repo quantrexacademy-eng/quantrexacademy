@@ -2,7 +2,7 @@
 // Soft-strip MARKS on load; no click-to-open chrome.
 (function () {
   const ZOOM_CLS = "qx-fig-zoom-btn";
-  const STRIP_VER = "21";
+  const STRIP_VER = "22";
 
   function close() {
     document.querySelectorAll("#qxFigLightbox, .qx-fig-lightbox").forEach((el) => el.remove());
@@ -86,7 +86,7 @@
         QxImgClean.proxyImageUrl
       ) {
         const want = QxImgClean.proxyImageUrl(orig);
-        if (!/proxy-image/i.test(cur) || !/v=21/.test(cur)) {
+        if (!/proxy-image/i.test(cur) || !/v=22/.test(cur)) {
           img.crossOrigin = "anonymous";
           if (img.getAttribute("src") !== want) img.src = want;
         }

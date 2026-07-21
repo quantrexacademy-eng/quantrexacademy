@@ -90,10 +90,10 @@ module.exports = async function handler(req, res) {
           const d = data;
           const channels = info.channels || 4;
           const total = info.width * info.height;
-          // v21 nuclear: dark structure only; mid-gray MARKS → white (no dilate)
+          // v22 color-safe: keep multi-colour; bleach only gray MARKS haze
           const ink = new Uint8Array(total);
-          const INK_MAX = 88;
-          const CHROMA_INK = 45;
+          const INK_MAX = 100;
+          const CHROMA_KEEP = 28;
           for (let p = 0, i = 0; p < total; p++, i += channels) {
             const r = d[i];
             const g = d[i + 1];
@@ -107,7 +107,7 @@ module.exports = async function handler(req, res) {
             const lum = 0.299 * rr + 0.587 * gg + 0.114 * bb;
             const chroma = Math.max(rr, gg, bb) - Math.min(rr, gg, bb);
             if (lum <= INK_MAX) ink[p] = 1;
-            else if (chroma >= CHROMA_INK && lum < 200) ink[p] = 1;
+            else if (chroma >= CHROMA_KEEP && lum < 235) ink[p] = 1;
           }
           for (let p = 0, i = 0; p < total; p++, i += channels) {
             const r = d[i];
@@ -118,6 +118,15 @@ module.exports = async function handler(req, res) {
             const rr = Math.round(r * t + 255 * (1 - t));
             const gg = Math.round(g * t + 255 * (1 - t));
             const bb = Math.round(b * t + 255 * (1 - t));
+            const lum = 0.299 * rr + 0.587 * gg + 0.114 * bb;
+            const chroma = Math.max(rr, gg, bb) - Math.min(rr, gg, bb);
+            if (chroma >= CHROMA_KEEP && lum < 245) {
+              d[i] = rr;
+              d[i + 1] = gg;
+              d[i + 2] = bb;
+              d[i + 3] = 255;
+              continue;
+            }
             if (ink[p]) {
               d[i] = rr;
               d[i + 1] = gg;
@@ -125,18 +134,16 @@ module.exports = async function handler(req, res) {
               d[i + 3] = 255;
               continue;
             }
-            const lum = 0.299 * rr + 0.587 * gg + 0.114 * bb;
-            const chroma = Math.max(rr, gg, bb) - Math.min(rr, gg, bb);
             const nearGray =
-              Math.abs(rr - gg) < 58 &&
-              Math.abs(gg - bb) < 62 &&
-              Math.abs(rr - bb) < 64;
-            if (lum > 90 && (nearGray || chroma < 50)) {
+              Math.abs(rr - gg) < 50 &&
+              Math.abs(gg - bb) < 54 &&
+              Math.abs(rr - bb) < 56;
+            if (nearGray && lum > 112 && lum < 245 && chroma < 42) {
               d[i] = 255;
               d[i + 1] = 255;
               d[i + 2] = 255;
               d[i + 3] = 255;
-            } else if (lum > 150 && chroma < 55) {
+            } else if (lum > 200 && chroma < 30) {
               d[i] = 255;
               d[i + 1] = 255;
               d[i + 2] = 255;
@@ -177,7 +184,7 @@ module.exports = async function handler(req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("X-Qx-Proxy", "1");
     res.setHeader("X-Qx-Clean", cleaned ? "1" : "0");
-    res.setHeader("X-Qx-Clean-Ver", "21");
+    res.setHeader("X-Qx-Clean-Ver", "22");
     return res.status(200).send(buf);
   } catch (err) {
     console.error("proxy-image", err && err.message);

@@ -68,7 +68,7 @@
   min-height: 0 !important;
 }
 
-/* Perfect figure visibility — always on top, never faded */
+/* Neat multi-color figures (digital-book style) — no box, full color */
 #qxDiagramSlot img,
 .qx-diagram-slot img,
 .qx-diagram-seg img,
@@ -85,6 +85,7 @@ img.qx-fig-img,
 img.qx-org-fig,
 img.qx-organic-fig,
 img.qx-opt-fig-img,
+img.qx-hq-color,
 img[src*="qx-org-"],
 img[src*="cdn-question-pool"],
 img[src*="/pyq/"],
@@ -108,10 +109,8 @@ img[src*="proxy-image"] {
   border: none !important;
   box-shadow: none !important;
   pointer-events: auto !important;
-  /* Same clear structure as zoom view, in the question itself */
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: block !important;
+  /* Keep full multi-color (no grayscale force) */
+  -webkit-font-smoothing: antialiased;
 }
 
 img.qx-org-fig,

@@ -687,7 +687,7 @@ window.Mx = (() => {
         .replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/")
         .replace(/https?:\/\/cdn-question-pool\.app\//gi, "https://cdn-question-pool.getmarks.app/");
       if (/cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|getmarks\.app/i.test(url)) {
-        return `src=${q}/api/proxy-image?url=${encodeURIComponent(url)}&clean=1&v=21${q} data-qx-orig-src=${q}${url}${q}`;
+        return `src=${q}/api/proxy-image?url=${encodeURIComponent(url)}&clean=1&v=22${q} data-qx-orig-src=${q}${url}${q}`;
       }
       return m;
     });
