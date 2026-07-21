@@ -12,6 +12,138 @@ const QuantrexQFormat = (() => {
     return String.fromCharCode(65 + i);
   }
 
+  /** Route Marks/Quizrr CDN images through clean proxy; keep orig for fallback if proxy fails */
+  function cleanPoolImgHtml(html) {
+    return String(html || "").replace(/\bsrc=(["'])(https?:\/\/[^"']+)\1/gi, (m, q, url) => {
+      if (/proxy-image|restore-image|data:|assets\/diagrams/i.test(url)) return m;
+      if (/cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|getmarks\.app/i.test(url)) {
+        const prox = `/api/proxy-image?url=${encodeURIComponent(url)}&clean=1&v=7`;
+        return `src=${q}${prox}${q} data-qx-orig-src=${q}${url}${q} referrerpolicy=${q}no-referrer${q} onerror=${q}this.onerror=null;this.src=this.getAttribute('data-qx-orig-src')||this.src;${q}`;
+      }
+      return m;
+    });
+  }
+
+  function sizeOptionImgs(html) {
+    return String(html || "")
+      .replace(/<img\b([^>]*)>/gi, (full, attrs) => {
+        let a = attrs;
+        // Always tag option figures so clean/visibility pipeline picks them up
+        if (!/\bclass=/i.test(a)) {
+          a += ' class="qx-pool-fig qx-no-wm qx-opt-fig-img"';
+        } else if (!/qx-pool-fig|qx-no-wm/i.test(a)) {
+          a = a.replace(/\bclass=(["'])([^"']*)\1/i, (m, q, c) => `class=${q}${c} qx-pool-fig qx-no-wm qx-opt-fig-img${q}`);
+        }
+        if (!/\bstyle=/i.test(a)) {
+          a += ' style="max-width:100%;max-height:220px;min-height:72px;width:auto;height:auto;display:block;margin:6px auto;opacity:1;visibility:visible;object-fit:contain;background:#fff"';
+        } else {
+          a = a.replace(/\bstyle=(["'])([^"']*)\1/i, (sm, q, st) => {
+            let s = st
+              .replace(/max-height\s*:\s*[^;]+;?/gi, "")
+              .replace(/max-width\s*:\s*[^;]+;?/gi, "")
+              .replace(/opacity\s*:\s*[^;]+;?/gi, "")
+              .replace(/visibility\s*:\s*[^;]+;?/gi, "");
+            s += ";max-width:100%;max-height:220px;min-height:72px;width:auto;height:auto;display:block;opacity:1;visibility:visible;object-fit:contain;background:#fff";
+            return `style=${q}${s}${q}`;
+          });
+        }
+        if (!/\bloading=/i.test(a)) a += ' loading="eager"';
+        if (!/\bdecoding=/i.test(a)) a += ' decoding="async"';
+        return `<img${a}>`;
+      });
+  }
+
+  /**
+   * Marks organic options often ship as: <img…/> : 3-Methylbutanal
+   * or LaTeX formula : Ethyl butanoate — strip colon and stack structure + name.
+   */
+  function formatStructureNameOption(html) {
+    let s = String(html || "").trim();
+    if (!s) return s;
+    if (/class=["'][^"']*qx-opt-pair/.test(s)) return s;
+
+    // Strip accidental leading colon-only garbage after failed image strip
+    s = s.replace(/^(?:&nbsp;|\s|<br\s*\/?>)*[:：]\s*/i, "");
+
+    // Split on last " : " separator between structure and IUPAC-style name
+    // Names often start with a digit: "3-Methylbutanal", "2-Methylbutan-3-ol"
+    const m = s.match(/^(.*?)\s*[:：]\s+([0-9A-Za-z][A-Za-z0-9\s\-',.()/+]*)\s*$/);
+    if (!m) {
+      // Trailing " : Name" after img / self-closing tag
+      const m2 = s.match(/^(.*(?:\/>|<\/(?:img|figure|span|div|p)>)\s*)\s*[:：]\s+([0-9A-Za-z][^:]{1,100})\s*$/i);
+      if (!m2) return s;
+      return wrapOptPair(m2[1], m2[2]);
+    }
+    const left = m[1].trim();
+    const right = m[2].trim();
+    // Name-like right side; left is structure (img / latex / formula)
+    const leftIsStruct = /<img\b|\$|\\mathrm|\\text|CH[₀-₉0-9]|C[₀-₉0-9]|–|—|−/i.test(left)
+      || /[A-Z][a-z]?[₀-₉0-9]/.test(left);
+    const rightIsName = right.length >= 2 && right.length <= 100
+      && !/<img\b/i.test(right)
+      && !/^\$/.test(right)
+      && /[A-Za-z]/.test(right);
+    if (!leftIsStruct || !rightIsName) return s;
+    return wrapOptPair(left, right);
+  }
+
+  function wrapOptPair(structHtml, nameText) {
+    const struct = sizeOptionImgs(cleanPoolImgHtml(String(structHtml || "").trim()));
+    const name = String(nameText || "").replace(/^[:：\s]+/, "").trim();
+    if (!name) return struct;
+    // Escape raw name only when not already HTML
+    const nameHtml = /<[a-z][\s\S]*>/i.test(name)
+      ? name
+      : name.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    return `<div class="qx-opt-pair"><div class="qx-opt-pair-struct">${struct}</div>`
+      + `<div class="qx-opt-pair-name">${nameHtml}</div></div>`;
+  }
+
+  function prepareOptionBody(raw, q, i, htmlFn) {
+    const s = String(raw || "").trim();
+    if (!s) return "";
+    const paired = formatStructureNameOption(s);
+    if (paired !== s && /qx-opt-pair/.test(paired)) {
+      // Structure half may still need QxImgClean for local assets
+      if (q && q.id != null && typeof QxImgClean !== "undefined" && QxImgClean.renderOptionContent
+        && /<img\b/i.test(s)) {
+        // Re-run only on structure segment via renderOptionContent when possible
+        const m = s.match(/^(.*?)\s*[:：]\s+([0-9A-Za-z][\s\S]*)$/);
+        if (m) {
+          const structOnly = m[1].trim();
+          const nameOnly = m[2].trim();
+          const structBody = optionContentCore(q, structOnly, i, htmlFn);
+          return wrapOptPair(structBody, nameOnly);
+        }
+      }
+      return paired;
+    }
+    if (/<img\b/i.test(s)) {
+      return sizeOptionImgs(cleanPoolImgHtml(
+        q && q.id != null ? optionContentCore(q, s, i, htmlFn) : s
+      ));
+    }
+    return optionContentCore(q, s, i, htmlFn);
+  }
+
+  function optionContentCore(q, opt, i, htmlFn) {
+    const render = htmlFn || htmlContent;
+    const raw = String(opt || "");
+    let out = "";
+    if (q && q.id != null && typeof QxImgClean !== "undefined" && QxImgClean.renderOptionContent) {
+      out = QxImgClean.renderOptionContent(q.id, i, opt, render);
+    } else {
+      out = render(opt);
+    }
+    const hasVisible = /<img\b/i.test(out) || String(out || "").replace(/<[^>]+>/g, " ").trim().length > 0;
+    // Image-only options must never collapse to empty white boxes (screen 630)
+    if (!hasVisible && /<img\b/i.test(raw)) {
+      return sizeOptionImgs(cleanPoolImgHtml(raw));
+    }
+    if (!hasVisible && raw.trim()) return render(raw);
+    return out;
+  }
+
   function sanitizeNumVal(raw) {
     let v = String(raw || "").replace(/[^\d.\-]/g, "");
     const neg = v.startsWith("-");
@@ -26,17 +158,21 @@ const QuantrexQFormat = (() => {
     const valEsc = String(val != null ? val : "").replace(/"/g, "&quot;");
     const disabled = o.disabled ? " disabled" : "";
     const readonly = o.readonly === true ? " readonly" : "";
-    const extraCls = o.cbt ? " qx-num-cbt" : "";
+    // Always NTA / JEE Main integer-type style: centered answer box + keypad
     const wrapCls = o.wrapClass || "qx-prac-numerical";
-    const ntaCls = o.cbt ? " qx-num-nta" : "";
-    const panelCls = o.cbt ? " qx-num-panel" : "";
-    return `<div class="${wrapCls} mtk-numerical">
-      <div class="qx-num-entry${extraCls}${ntaCls}${panelCls}">
-        <label class="qx-num-label" for="qxNumInput">Enter your answer</label>
-        <input type="text" class="qx-num-input" id="qxNumInput" inputmode="decimal" autocomplete="off"
-          placeholder="0" value="${valEsc}"${readonly}${disabled} aria-label="Numerical answer">
+    const label = o.label || "Enter integer answer";
+    return `<div class="${wrapCls} mtk-numerical mtk-numerical-wrap">
+      <div class="qx-num-entry qx-num-cbt qx-num-nta qx-num-panel">
+        <div class="qx-num-badge">INTEGER / NUMERICAL</div>
+        <label class="qx-num-label" for="qxNumInput">${label}</label>
+        <div class="qx-num-box-wrap">
+          <input type="text" class="qx-num-input" id="qxNumInput" inputmode="decimal" autocomplete="off"
+            placeholder="" value="${valEsc}"${readonly}${disabled}
+            aria-label="Integer numerical answer" maxlength="12">
+        </div>
+        <p class="qx-num-hint">Type the number or use the keypad below</p>
         <div class="qx-num-keypad" id="qxNumKeypad" role="group" aria-label="Numeric keypad">
-          <button type="button" class="qx-num-key qx-num-key-wide qx-num-key-back" data-num-key="back">backspace</button>
+          <button type="button" class="qx-num-key qx-num-key-wide qx-num-key-back" data-num-key="back">⌫ Backspace</button>
           <button type="button" class="qx-num-key" data-num-key="7">7</button>
           <button type="button" class="qx-num-key" data-num-key="8">8</button>
           <button type="button" class="qx-num-key" data-num-key="9">9</button>
@@ -46,13 +182,10 @@ const QuantrexQFormat = (() => {
           <button type="button" class="qx-num-key" data-num-key="1">1</button>
           <button type="button" class="qx-num-key" data-num-key="2">2</button>
           <button type="button" class="qx-num-key" data-num-key="3">3</button>
-          <button type="button" class="qx-num-key qx-num-key-arrow" data-num-key="left" title="Move left">←</button>
+          <button type="button" class="qx-num-key" data-num-key="-">−</button>
           <button type="button" class="qx-num-key" data-num-key="0">0</button>
           <button type="button" class="qx-num-key" data-num-key=".">.</button>
-          <button type="button" class="qx-num-key" data-num-key="-">-</button>
-          <button type="button" class="qx-num-key qx-num-key-arrow" data-num-key="right" title="Move right">→</button>
-          <span class="qx-num-key-spacer" aria-hidden="true"></span>
-          <button type="button" class="qx-num-key qx-num-key-wide qx-num-key-clear" data-num-key="clear">ClearAll</button>
+          <button type="button" class="qx-num-key qx-num-key-wide qx-num-key-clear" data-num-key="clear">Clear All</button>
         </div>
       </div>
       ${o.correctHtml || ""}
@@ -148,6 +281,11 @@ const QuantrexQFormat = (() => {
     return typeof Mx !== "undefined" ? Mx.html(text) : String(text || "");
   }
 
+  function optionContent(q, opt, i, htmlFn) {
+    // Structure + " : Name" pairs, local diagrams, and clean proxy
+    return prepareOptionBody(opt, q, i, htmlFn);
+  }
+
   function normalizeType(t) {
     const k = String(t || "").trim();
     if (!k || k === "unknown") return "";
@@ -181,21 +319,31 @@ const QuantrexQFormat = (() => {
     if (!q) return false;
     if (q.correctValue != null && String(q.correctValue) !== "") return true;
     const opts = (q.options || []).map(o => String(o).replace(/<[^>]+>/g, "").trim());
-    const lettersOnly = opts.length && opts.every(o => !o || /^[A-D]$/i.test(o));
-    const qtext = String(q.q || "").toLowerCase();
-    if (lettersOnly && /nearest integer|numerical|fill in|_{3,}|_______/i.test(qtext)) return true;
-    if (!opts.length && /numerical|nearest integer|integer\)|fill in/i.test(qtext)) return true;
+    const lettersOnly = !opts.length || opts.every(o => !o || /^[A-D]$/i.test(o));
+    const qtext = String(q.q || "").replace(/<[^>]+>/g, " ").toLowerCase();
+    // JEE integer / fill blank style: ends with blank, "is ______", nearest integer, etc.
+    const blankStyle = /_{3,}|______|nearest\s*integer|integer\s*type|numerical|fill\s*in|the\s+rate\s*.*\s+is\s*_/i.test(qtext)
+      || /\bis\s*_+\s*\.?$/.test(qtext.trim())
+      || /\bis\s*_{2,}/.test(qtext);
+    if (blankStyle && lettersOnly) return true;
+    if (blankStyle && !(opts || []).some(o => /<img\b/i.test(String(o || "")) || (String(o || "").replace(/<[^>]+>/g, "").trim().length > 2 && !/^[A-D]$/i.test(String(o).replace(/<[^>]+>/g, "").trim())))) {
+      // blank-style stem with no real MCQ options
+      if (!opts.length || lettersOnly) return true;
+    }
     return false;
   }
 
   function getType(q) {
     if (!q) return "singleCorrect";
     if (isMatchColumn(q)) return "columnMatch";
+    // Prefer numerical detection before trusting stored singleCorrect/mcq type
     if (looksNumerical(q)) return "numerical";
     const fromField = normalizeType(q.questionType || q.type);
-    if (fromField) return fromField;
+    if (fromField === "numerical" || fromField === "subjective") return fromField;
+    if (fromField && fromField !== "singleCorrect") return fromField;
     if (q.correctValue != null && String(q.correctValue) !== "" && !(q.options || []).length) return "numerical";
     if (Array.isArray(q.answers) && q.answers.length > 1) return "multipleCorrect";
+    if (fromField) return fromField;
     return "singleCorrect";
   }
 
@@ -209,8 +357,9 @@ const QuantrexQFormat = (() => {
     if (!raw) return "";
     if (/<[a-z][\s\S]*>/i.test(raw)) return htmlContent(raw);
     let t = raw.replace(/^\$+|\$+$/g, "");
+    // Only strip \mathrm/\text when NOT \textbf / \textit (word-boundary style)
     t = t.replace(/\\mathrm\s*\{([^}]+)\}/g, "$1");
-    t = t.replace(/\\text\s*\{([^}]+)\}/g, "$1");
+    t = t.replace(/\\text(?!bf|it|rm|sf|tt)\s*\{([^}]+)\}/g, "$1");
     t = t.replace(/\\,/g, ", ").replace(/~/g, " ").replace(/\\quad/g, "  ");
     t = t.replace(/\s+/g, " ").trim();
     const pairs = t.match(/([A-Z])\s*[-–]\s*(\d+)/g);
@@ -262,7 +411,7 @@ const QuantrexQFormat = (() => {
     if (t === "numerical" || t === "subjective") {
       const val = st.selected != null ? String(st.selected) : "";
       const cor = correctNumerical(q);
-      let cls = "qx-prac-numerical";
+      let cls = "qx-prac-numerical mtk-numerical-wrap";
       if (done && val) {
         const ok = checkNumerical(val, cor);
         cls += ok ? " correct" : " wrong";
@@ -270,7 +419,13 @@ const QuantrexQFormat = (() => {
       const correctHtml = done && cor
         ? `<p class="qx-num-correct">Correct answer: <strong>${cor.replace(/</g, "&lt;")}</strong></p>`
         : "";
-      return renderNumericalEntry(val, { wrapClass: cls, disabled: done, correctHtml });
+      return renderNumericalEntry(val, {
+        wrapClass: cls,
+        disabled: done,
+        correctHtml,
+        cbt: true,
+        label: "Enter integer answer"
+      });
     }
 
     const selected = st.selected;
@@ -282,10 +437,20 @@ const QuantrexQFormat = (() => {
     const ctrl = optionControlClass(q);
 
     const match = t === "columnMatch";
-    return (q.options || []).map((o, i) => {
+    const opts = q.options || [];
+    // Empty only — letter A–D options are valid (stem structures / divisions labeled A–D)
+    const plainOpts = opts.map(o => String(o || "").replace(/<[^>]+>/g, "").trim());
+    const hasImgOpt = opts.some(o => /<img\b/i.test(String(o || "")));
+    const isEmpty = !opts.length || (!hasImgOpt && plainOpts.every(t => !t));
+    if (isEmpty) {
+      return `<div class="empty qx-load-opts" style="padding:20px;grid-column:1/-1">Loading options…</div>`;
+    }
+    return opts.map((o, i) => {
       const raw = String(o || "").trim();
+      const plain = raw.replace(/<[^>]+>/g, "").trim();
+      const rawHasImg = /<img\b/i.test(raw);
       if (!raw) return "";
-      let cls = "qx-prac-opt";
+      let cls = "qx-prac-opt" + (rawHasImg ? " qx-prac-opt-img" : "");
       if (multi) cls += " qx-prac-opt-multi";
       if (match) cls += " qx-prac-opt-match";
       if (!done && selectedSet.has(i)) cls += " selected";
@@ -294,13 +459,26 @@ const QuantrexQFormat = (() => {
         else if (selectedSet.has(i)) cls += " wrong";
         else if (!multi && selectedSet.has(i)) cls += " wrong";
       }
-      const optBody = match ? formatMatchCombo(o) : htmlContent(o);
+      // Image / structure+name options: clean proxy, strip " : name" colon, never drop
+      let optBody;
+      if (match) {
+        optBody = formatMatchCombo(o);
+      } else if (/^[ABCD]$/i.test(plain) && !rawHasImg) {
+        // Show letter as the option text (not filter out)
+        optBody = `<span class="qx-letter-opt">${plain.toUpperCase()}</span>`;
+      } else {
+        optBody = optionContent(q, o, i);
+      }
+      if (!String(optBody || "").replace(/<[^>]+>/g, "").trim() && !/<img/i.test(String(optBody || ""))) {
+        if (rawHasImg) optBody = sizeOptionImgs(cleanPoolImgHtml(formatStructureNameOption(raw)));
+        else if (plain) optBody = plain;
+        else return "";
+      }
       return `<button type="button" class="${cls}" data-prac-opt="${i}" ${done ? "disabled" : ""}>
-        <span class="${ctrl}"></span>
-        <span class="qx-prac-letter">${letter(i)}</span>
+        <span class="mtk-opt-letter qx-opt-circle" aria-hidden="true">${letter(i)}</span>
         <span class="qx-prac-opt-text ${match ? "qx-match-opt" : "qx-content"}">${optBody}</span>
       </button>`;
-    }).filter(Boolean).join("");
+    }).filter(Boolean).join("") || `<div class="empty qx-load-opts" style="padding:20px">Options unavailable</div>`;
   }
 
   function renderTestOptions(q, selected, htmlFn) {
@@ -308,26 +486,59 @@ const QuantrexQFormat = (() => {
     const render = htmlFn || htmlContent;
     if (t === "numerical" || t === "subjective") {
       const val = selected != null ? String(selected) : "";
-      return renderNumericalEntry(val, { cbt: true });
+      return renderNumericalEntry(val, { cbt: true, label: "Enter integer answer" });
     }
     const multi = t === "multipleCorrect";
     const match = t === "columnMatch";
     const selectedSet = Array.isArray(selected)
       ? new Set(selected)
       : (selected != null ? new Set([selected]) : new Set());
-    const ctrl = multi ? "qx-prac-check mtk-opt-check" : "mtk-opt-radio";
+    const ctrlHtml = multi ? '<span class="qx-prac-check mtk-opt-check"></span>' : "";
+    const optsList = q.options || [];
+    const plainT = optsList.map(o => String(o || "").replace(/<[^>]+>/g, "").trim());
+    const hasImgT = optsList.some(o => /<img\b/i.test(String(o || "")));
+    if (!optsList.length || (!hasImgT && plainT.every(x => !x))) {
+      return `<div class="empty" style="padding:24px;grid-column:1/-1">Loading options…</div>`;
+    }
 
-    return (q.options || []).map((o, i) => {
+    const buttons = optsList.map((o, i) => {
       const raw = String(o || "").trim();
+      const plain = raw.replace(/<[^>]+>/g, "").trim();
+      const rawHasImg = /<img\b/i.test(raw);
       if (!raw) return "";
       const on = selectedSet.has(i);
-      const optBody = match ? formatMatchCombo(o) : render(o);
-      return `<button type="button" class="mtk-opt ${multi ? "mtk-opt-multi" : ""} ${match ? "mtk-opt-match" : ""} ${on ? "selected" : ""}" data-opt="${i}">
-        <span class="${ctrl}"></span>
-        <span class="mtk-opt-letter">${letter(i)}</span>
+      let optBody;
+      if (match) optBody = formatMatchCombo(o);
+      else if (/^[ABCD]$/i.test(plain) && !rawHasImg) {
+        optBody = `<span class="qx-letter-opt">${plain.toUpperCase()}</span>`;
+      } else optBody = optionContent(q, o, i, render);
+      if (!String(optBody || "").replace(/<[^>]+>/g, "").trim() && !/<img/i.test(String(optBody || ""))) {
+        if (rawHasImg) optBody = sizeOptionImgs(cleanPoolImgHtml(formatStructureNameOption(raw)));
+        else if (plain) optBody = render(raw);
+        else return "";
+      }
+      // Last resort: keep original HTML so options never vanish as "Loading…"
+      if (!String(optBody || "").trim() && raw) optBody = sizeOptionImgs(cleanPoolImgHtml(raw));
+      return `<button type="button" class="mtk-opt ${multi ? "mtk-opt-multi" : ""} ${match ? "mtk-opt-match" : ""} ${rawHasImg ? "mtk-opt-img" : ""} ${on ? "selected" : ""}" data-opt="${i}">
+        ${ctrlHtml}
+        <span class="mtk-opt-letter" aria-hidden="true">${letter(i)}</span>
         <span class="mtk-opt-text ${match ? "qx-match-opt qx-content" : "qx-content"}">${optBody}</span>
       </button>`;
-    }).filter(Boolean).join("");
+    }).filter(Boolean);
+    if (buttons.length) return buttons.join("");
+    // Offline book packs: never stuck on Loading if we have raw option strings
+    if (optsList.length && (q._book || q._bookId || hasImgT)) {
+      return optsList.map((o, i) => {
+        const raw = String(o || "").trim();
+        if (!raw) return "";
+        const on = selectedSet.has(i);
+        const body = sizeOptionImgs(cleanPoolImgHtml(raw));
+        return `<button type="button" class="mtk-opt ${on ? "selected" : ""}" data-opt="${i}">
+          ${ctrlHtml}<span class="mtk-opt-letter" aria-hidden="true">${letter(i)}</span>
+          <span class="mtk-opt-text qx-content">${body}</span></button>`;
+      }).filter(Boolean).join("") || `<div class="empty" style="padding:24px;grid-column:1/-1">Options unavailable</div>`;
+    }
+    return `<div class="empty" style="padding:24px;grid-column:1/-1">Loading options…</div>`;
   }
 
   function testOptsContainerClass(q) {

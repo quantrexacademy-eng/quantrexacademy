@@ -29,12 +29,39 @@
   border-color: #1e293b !important;
 }
 
+/* Option cards: ONE frame only (slot OR .qx-opt-fig — not nested double borders) */
+.mtk-opt-text .qx-opt-diagram-slot,
+.qx-prac-opt-text .qx-opt-diagram-slot,
+.mtk-options.qx-opts-img .qx-opt-diagram-slot,
 .mtk-opt-text .qx-opt-fig,
-.qx-prac-opt-text .qx-opt-fig,
-.mtk-options.qx-opts-img .qx-opt-diagram-slot {
+.qx-prac-opt-text .qx-opt-fig {
   margin: 6px auto !important;
   padding: 8px !important;
   max-width: 100% !important;
+}
+
+/* Kill nested twin white cards inside option slots (screen 629) */
+.qx-opt-diagram-slot .qx-fig,
+.qx-opt-diagram-slot .qx-pool-fig-wrap,
+.qx-opt-diagram-slot .qx-fig-inner,
+.qx-opt-diagram-slot .qx-opt-fig {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  max-width: 100% !important;
+}
+
+/* Empty option slot must not paint a hollow white box (screen 630) */
+.qx-opt-diagram-slot:empty {
+  display: none !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* Always show clean figures */

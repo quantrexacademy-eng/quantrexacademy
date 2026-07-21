@@ -472,19 +472,54 @@ window.QxImgClean = (() => {
       const attrs = m[1];
       const origM = attrs.match(/\bdata-qx-orig-src=["']([^"']+)["']/i);
       const srcM = attrs.match(/\bsrc=["']([^"']+)["']/i);
-      const raw = origM ? origM[1] : (srcM ? srcM[1] : "");
-      if (!raw || isApiFigureSrc(raw)) continue;
+      let raw = origM ? origM[1] : (srcM ? srcM[1] : "");
+      raw = fixUrl(raw);
+      if (!raw || raw.startsWith("data:image/gif")) continue;
+      // Unwrap proxy so we store the real CDN path once
+      if (isApiFigureSrc(raw)) {
+        const unwrapped = canonicalCdnSrc(raw);
+        if (unwrapped) raw = unwrapped;
+        else continue;
+      }
       let src = "";
       if (isLocalCleanAsset(raw)) src = normalizeAssetSrc(raw);
       else {
         const cdn = canonicalCdnSrc(raw);
         if (cdn) src = cdn;
+        else if (POOL_RX.test(raw) || /^https?:\/\//i.test(raw)) src = raw;
       }
-      if (!src || (!isPoolDiagram(src) && !isLocalCleanAsset(src))) continue;
+      if (!src || (!isPoolDiagram(src) && !isLocalCleanAsset(src) && !/^https?:\/\//i.test(src))) continue;
       const displayW = parseImgDisplayWidth(attrs);
-      if (!entries.some(e => e.src === src)) entries.push({ src, displayW });
+      const key = figureSrcKey(src);
+      // Dedupe by basename (proxy + CDN + query variants = one figure)
+      if (key && entries.some(e => figureSrcKey(e.src) === key)) continue;
+      if (entries.some(e => e.src === src)) continue;
+      entries.push({ src, displayW });
     }
     return entries;
+  }
+
+  /** Option A/B/C/D: exactly one structure figure (never stack duplicates). */
+  function resolveOptionEntries(rawHtml, key) {
+    const entries = resolveDiagramEntries(rawHtml, key);
+    const unique = [];
+    const seen = new Set();
+    entries.forEach(e => {
+      const k = figureSrcKey(e.src);
+      if (!k || seen.has(k)) return;
+      seen.add(k);
+      unique.push(e);
+    });
+    if (!unique.length) {
+      extractPoolSrcs(rawHtml).forEach(src => {
+        const k = figureSrcKey(src);
+        if (!k || seen.has(k)) return;
+        seen.add(k);
+        unique.push({ src, displayW: 0 });
+      });
+    }
+    // Hard cap: one figure per option (fixes stacked twin structures)
+    return unique.slice(0, 1);
   }
 
   function resolveDiagramEntries(rawHtml, qid, q) {
@@ -3083,19 +3118,41 @@ window.QxImgClean = (() => {
   function mountDiagramSlot(slot, qid, rawHtml) {
     if (!slot) return;
     pinQuestionHtml(qid, rawHtml);
-    const q = (typeof getQ === "function" && qid != null) ? getQ(qid) : null;
-    const entries = resolveDiagramEntries(rawHtml, qid, q);
-    slot.classList.add("qx-pool-fig-wrap", "mathjax_ignore", "tex2jax_ignore");
+    const isOpt = slot.classList.contains("qx-opt-diagram-slot")
+      || (qid != null && String(qid).includes(":opt:"));
+    const q = (typeof getQ === "function" && qid != null && !isOpt) ? getQ(qid) : null;
+    const entries = isOpt
+      ? resolveOptionEntries(rawHtml, qid)
+      : resolveDiagramEntries(rawHtml, qid, q);
+    slot.classList.add("mathjax_ignore", "tex2jax_ignore");
+    if (!isOpt) slot.classList.add("qx-pool-fig-wrap");
     slot.dataset.qxQid = String(qid);
     slot.dataset.qxLocked = "1";
+    if (isOpt) slot.dataset.qxOptOne = "1";
     slot.style.display = "block";
     slot.style.visibility = "visible";
     slot.style.opacity = "1";
+
+    // Already has a figure painted — never remount (was stacking twin structures)
+    const existingImgs = Array.from(slot.querySelectorAll("img[src]"));
+    if (isOpt && existingImgs.length) {
+      // Collapse to a single img if somehow more than one
+      for (let i = 1; i < existingImgs.length; i++) {
+        const wrap = existingImgs[i].closest(".qx-opt-fig, figure.qx-fig, .qx-fig");
+        if (wrap && wrap !== existingImgs[0].closest(".qx-opt-fig, figure.qx-fig, .qx-fig")) wrap.remove();
+        else existingImgs[i].remove();
+      }
+      existingImgs[0] && processImage(existingImgs[0]);
+      return;
+    }
+
     if (!entries.length) return;
 
     const existing = Array.from(slot.querySelectorAll("img"));
-    const existingSrcs = existing.map(i => canonicalCdnSrc(i.dataset.qxOrigSrc || i.getAttribute("src") || "") || fixUrl(i.dataset.qxOrigSrc || ""));
-    const srcs = entries.map(e => e.src);
+    const existingSrcs = existing.map(i =>
+      figureSrcKey(i.dataset.qxOrigSrc || i.getAttribute("src") || "")
+    );
+    const srcs = entries.map(e => figureSrcKey(e.src));
     if (srcs.length === existingSrcs.length && srcs.every((s, i) => s === existingSrcs[i])) {
       if (existing.some(imgIsLoading)) return;
       existing.forEach(img => processImage(img));
@@ -3103,7 +3160,9 @@ window.QxImgClean = (() => {
     }
     if (existing.some(imgIsLoading) && existingSrcs.length && srcs.length === existingSrcs.length) return;
 
-    slot.innerHTML = entries.map(e => poolFigureHtml(e.src, e.displayW)).join("");
+    slot.innerHTML = isOpt
+      ? entries.map(e => poolOptionFigureHtml(e.src, e.displayW)).join("")
+      : entries.map(e => poolFigureHtml(e.src, e.displayW)).join("");
     slot.querySelectorAll("img").forEach(img => processImage(img));
   }
 
@@ -3165,9 +3224,49 @@ window.QxImgClean = (() => {
     if (qid == null || qid === "") return "";
     const key = String(qid) + ":opt:" + optIndex;
     pinQuestionHtml(key, rawHtml);
-    const inner = buildSlotInnerHtml(rawHtml, key);
-    if (!inner) return "";
-    return `<div class="qx-opt-diagram-slot qx-diagram-slot mathjax_ignore tex2jax_ignore" data-qx-qid="${key}" data-qx-locked="1">${inner}</div>`;
+    const entries = resolveOptionEntries(rawHtml, key);
+    if (!entries.length) return "";
+    // Flat option figure: one card, one img (no nested figure+inner double frames)
+    const e = entries[0];
+    const inner = poolOptionFigureHtml(e.src, e.displayW);
+    return `<div class="qx-opt-diagram-slot qx-diagram-slot mathjax_ignore tex2jax_ignore" data-qx-qid="${key}" data-qx-locked="1" data-qx-opt-one="1">${inner}</div>`;
+  }
+
+  /** Compact option structure — single wrap + img (avoids twin white cards). */
+  function poolOptionFigureHtml(cdn, displayW) {
+    const src = normalizeAssetSrc(canonicalCdnSrc(cdn) || cdn);
+    const u = escAttr(src);
+    const organic = isPreprocessedQxOrg(src) || isOrganicOrgSrc(src);
+    let dw = parseInt(displayW, 10) || 0;
+    if (organic && dw <= 12) dw = ORGANIC_DEFAULT_FIG_W;
+    const orgSrc = isOrganicOrgSrc(src);
+    const localClean = isLocalReadyAsset(src);
+    const pool = !localClean && !orgSrc && isPoolDiagram(src);
+    let displaySrc = u;
+    if (pool) displaySrc = escAttr(poolDisplaySrc(src) || src);
+    const corsAttr = pool ? ` crossorigin="anonymous"` : "";
+    const wmAttrs = orgSrc
+      ? ` data-qx-has-wm="1" data-qx-org-src="1" data-qx-wm-zones="center,br"`
+      : (pool
+        ? ` data-qx-has-wm="1" data-qx-wm-zones="${escAttr(defaultWmZones(src).join(","))}" data-qx-primed="1" data-qx-pending-load="1"`
+        : (localClean ? ` data-qx-has-wm="0" data-qx-cleaned="1"` : ""));
+    const cleanCls = localClean ? " qx-cleaned qx-restored qx-wm-clean qx-fig-ready" : " qx-fig-ready";
+    const imgDataW = dw > 12 ? ` data-qx-display-w="${dw}"` : "";
+    const imgStyle = dw > 12
+      ? ` style="--qx-fig-w:${dw}px;width:${dw}px;height:auto;max-width:100%;max-height:200px;display:block;margin:0 auto;"`
+      : ` style="max-width:100%;height:auto;max-height:200px;display:block;margin:0 auto;"`;
+    const imgClass = ` class="qx-fig-img qx-no-wm qx-pool-fig qx-opt-fig-img${organic ? " qx-organic-fig" : ""}${cleanCls}"`;
+    return `<div class="qx-opt-fig qx-brand-covered mathjax_ignore tex2jax_ignore"><img${imgClass}${imgDataW}${imgStyle} src="${displaySrc}" alt="" loading="eager" decoding="async" fetchpriority="high" referrerpolicy="no-referrer"${corsAttr} data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs}></div>`;
+  }
+
+  function optionDirectImgHtml(raw) {
+    const entries = resolveOptionEntries(raw, null);
+    if (entries.length) return poolOptionFigureHtml(entries[0].src, entries[0].displayW);
+    const m = String(raw || "").match(/\bsrc=["']([^"']+)["']/i);
+    if (!m) return "";
+    const src = fixUrl(m[1]);
+    if (!src || src.startsWith("data:image/gif")) return "";
+    return poolOptionFigureHtml(src, 0);
   }
 
   function renderOptionContent(qid, optIndex, rawOpt, renderText) {
@@ -3186,8 +3285,20 @@ window.QxImgClean = (() => {
       const plain = String(text || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
       const body = plain ? render(text) : "";
       if (slot) return slot + (body ? `<span class="qx-opt-text-only">${body}</span>` : "");
-      // Slot builder failed — render original HTML with fixed CDN urls
-      return `<span class="qx-opt-direct-img qx-content">${render(raw)}</span>`;
+      // Slot builder failed — still emit one cleaned figure (never blank box)
+      const direct = optionDirectImgHtml(raw);
+      if (direct) {
+        return `<div class="qx-opt-diagram-slot qx-diagram-slot mathjax_ignore tex2jax_ignore" data-qx-qid="${key}" data-qx-locked="1" data-qx-opt-one="1">${direct}</div>`
+          + (body ? `<span class="qx-opt-text-only">${body}</span>` : "");
+      }
+      return `<span class="qx-opt-direct-img qx-content">${raw.replace(/src=(["'])(https?:\/\/[^"']+)\1/gi, (mm, qch, url) => {
+        if (/proxy-image|data:/i.test(url)) return mm;
+        if (/cdn-question-pool|cdn\.quizrr|\/pyq\//i.test(url)) {
+          const prox = poolDisplaySrc(url) || url;
+          return `src=${qch}${prox}${qch} data-qx-orig-src=${qch}${url}${qch}`;
+        }
+        return mm;
+      })}</span>`;
     }
     return `<span class="qx-content">${render(raw)}</span>`;
   }
@@ -3232,16 +3343,20 @@ window.QxImgClean = (() => {
   function stripInlinePoolImgs(root) {
     const scope = root || document;
     stripQuestionInlineImgs(scope);
-    scope.querySelectorAll(".mtk-opt-text, .qx-prac-opt-text, .qa-opt .qx-content").forEach(textEl => {
+    scope.querySelectorAll(".mtk-opt-text, .qx-prac-opt-text, .qa-opt .qx-content, .qx-prac-opt-text").forEach(textEl => {
       const slot = textEl.querySelector(".qx-opt-diagram-slot, .qx-diagram-slot");
-      const slotImg = slot && slot.querySelector("img");
-      const slotOk = imgHasRealFigure(slotImg);
+      const slotImg = slot && slot.querySelector("img[src]");
+      // If the slot already owns a figure src, drop every other option figure immediately
+      // (do not wait for full load — waiting left twin structures on screen for 629)
+      const slotHasSrc = !!(slotImg && (slotImg.getAttribute("src") || "").length > 8
+        && slotImg.getAttribute("src") !== FIG_PLACEHOLDER);
       textEl.querySelectorAll("img").forEach(img => {
         if (img.closest(".qx-opt-diagram-slot, .qx-diagram-slot")) return;
         const cdn = fixUrl(img.getAttribute("src") || img.dataset.qxOrigSrc || "");
-        if (!isPoolDiagram(cdn, img) && !isLocalCleanAsset(cdn)) return;
-        // Only remove duplicate when slot already shows a real loaded figure
-        if (slotOk && img !== slotImg) img.remove();
+        const isFig = isPoolDiagram(cdn, img) || isLocalCleanAsset(cdn)
+          || img.classList.contains("qx-pool-fig") || img.classList.contains("qx-fig-img");
+        if (!isFig) return;
+        if (slotHasSrc && img !== slotImg) img.remove();
         else processImage(img);
       });
     });
@@ -3285,38 +3400,93 @@ window.QxImgClean = (() => {
     return null;
   }
 
+  function dedupeOptionFigures(root) {
+    const scope = root || document;
+    scope.querySelectorAll(".mtk-opt, .qa-opt, .qx-prac-opt").forEach(btn => {
+      const textEl = btn.querySelector(".mtk-opt-text, .qx-prac-opt-text, .qx-content") || btn;
+      const imgs = Array.from(textEl.querySelectorAll("img")).filter(img => {
+        const src = img.getAttribute("src") || img.dataset.qxOrigSrc || "";
+        return /cdn-question-pool|\/pyq\/|qx-figures|proxy-image|qx-pool-fig|assets\/diagrams/i.test(src)
+          || img.classList.contains("qx-pool-fig") || img.classList.contains("qx-fig-img");
+      });
+      if (imgs.length <= 1) return;
+      // Keep first img inside a diagram slot if any; drop the rest
+      let keep = imgs.find(i => i.closest(".qx-opt-diagram-slot, .qx-diagram-slot")) || imgs[0];
+      imgs.forEach(img => {
+        if (img === keep) return;
+        const wrap = img.closest(".qx-opt-fig, figure.qx-fig, .qx-fig, .qx-opt-diagram-slot");
+        // Never remove the whole slot if it still holds keep
+        if (wrap && wrap.contains(keep)) {
+          img.remove();
+          return;
+        }
+        if (wrap && wrap !== keep.closest(".qx-opt-fig, figure.qx-fig, .qx-fig, .qx-opt-diagram-slot")) {
+          wrap.remove();
+        } else {
+          img.remove();
+        }
+      });
+      // Extra empty slots
+      textEl.querySelectorAll(".qx-opt-diagram-slot").forEach((slot, idx) => {
+        if (idx === 0) return;
+        if (!slot.querySelector("img")) slot.remove();
+        else if (keep && !slot.contains(keep)) slot.remove();
+      });
+    });
+  }
+
   function finalizeOptionDiagrams(root, q) {
     const scope = root || document;
+    // Only fill empty option slots — never remount over existing figures (629 twins)
     scope.querySelectorAll(".qx-opt-diagram-slot[data-qx-qid]").forEach(slot => {
+      if (slot.querySelector("img[src]")) {
+        slot.querySelectorAll("img").forEach(img => processImage(img));
+        return;
+      }
       const key = slot.dataset.qxQid;
       let raw = window._qxDiagramRaw && window._qxDiagramRaw[key];
-      if (!raw && key && String(q.id) === String(key.split(":opt:")[0])) {
+      if (!raw && q && key && String(q.id) === String(key.split(":opt:")[0])) {
         const idx = parseInt(String(key).split(":opt:")[1], 10);
         if (!isNaN(idx)) raw = (q.options || [])[idx];
       }
       if (raw) mountDiagramSlot(slot, key, raw);
     });
     if (!q || !q.options) {
+      dedupeOptionFigures(scope);
       stripInlinePoolImgs(scope);
       return;
     }
     const optBtns = scope.querySelectorAll(".mtk-opt, .qa-opt, .qx-prac-opt");
     (q.options || []).forEach((opt, i) => {
-      if (!extractPoolSrcs(opt).length) return;
+      const hasFig = /<img\b/i.test(String(opt || "")) || extractPoolSrcs(opt).length;
+      if (!hasFig) return;
       const btn = optBtns[i];
       if (!btn) return;
       const textEl = btn.querySelector(".mtk-opt-text, .qx-prac-opt-text, .qx-content");
       if (!textEl) return;
+      // Already showing a figure anywhere in the option — do not inject another
+      if (textEl.querySelector("img[src]")) {
+        textEl.querySelectorAll("img").forEach(img => processImage(img));
+        return;
+      }
       let slot = textEl.querySelector(".qx-opt-diagram-slot");
       if (!slot) {
         slot = document.createElement("div");
         slot.className = "qx-opt-diagram-slot qx-diagram-slot mathjax_ignore tex2jax_ignore";
         slot.dataset.qxQid = String(q.id) + ":opt:" + i;
         slot.dataset.qxLocked = "1";
+        slot.dataset.qxOptOne = "1";
         textEl.insertBefore(slot, textEl.firstChild);
       }
       mountDiagramSlot(slot, q.id + ":opt:" + i, opt);
+      // If still empty after mount, inject direct figure so boxes are never blank
+      if (!slot.querySelector("img[src]")) {
+        const direct = optionDirectImgHtml(opt);
+        if (direct) slot.innerHTML = direct;
+        slot.querySelectorAll("img").forEach(img => processImage(img));
+      }
     });
+    dedupeOptionFigures(scope);
     stripInlinePoolImgs(scope);
   }
 
@@ -3366,9 +3536,18 @@ window.QxImgClean = (() => {
     // Strip any leftover imgs that escaped into text nodes
     forceStripStemTextImgs(scope);
     dedupeDomFigures(scope);
+    dedupeOptionFigures(scope);
     applyBrandOverlays(scope);
-    setTimeout(() => { forceStripStemTextImgs(scope); dedupeDomFigures(scope); }, 150);
-    setTimeout(() => { forceStripStemTextImgs(scope); dedupeDomFigures(scope); }, 600);
+    setTimeout(() => {
+      forceStripStemTextImgs(scope);
+      dedupeDomFigures(scope);
+      dedupeOptionFigures(scope);
+    }, 150);
+    setTimeout(() => {
+      forceStripStemTextImgs(scope);
+      dedupeDomFigures(scope);
+      dedupeOptionFigures(scope);
+    }, 600);
   }
 
   /** Aggressively remove figure imgs from question TEXT areas (never from diagram slots) */
