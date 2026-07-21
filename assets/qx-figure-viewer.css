@@ -1,50 +1,105 @@
-/* Question open = clean figure (soft-strip). Click = original Marks (with watermark). */
+/* Bare figure + top-right zoom (+) only */
 
-img.qx-fig-clickable,
-.qx-fig-clickable-wrap {
-  cursor: zoom-in !important;
-}
-
-/* Bare figure on question page — no rectangular card */
-.mtk-main #qxDiagramSlot,
-.mtk-main .qx-diagram-slot,
-.mtk-main .qx-diagram-seg,
-.mtk-main .qx-fig-flat,
-.mtk-main .qx-pool-fig-wrap,
-.mtk-main .qx-fig {
+/* Kill every rectangular figure card */
+#qxDiagramSlot,
+.qx-diagram-slot,
+.qx-diagram-seg,
+.qx-opt-diagram-slot,
+.qx-fig-flat,
+.qx-pool-fig-wrap,
+.qx-fig,
+.qx-opt-fig,
+.qx-fig-host,
+.qx-fig-inner,
+.qx-question-body > .qx-diagram-slot {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
   border-radius: 0 !important;
   padding: 0 !important;
+  outline: none !important;
 }
 
+.qx-fig-host,
+#qxDiagramSlot,
+.qx-diagram-slot,
+.qx-fig-flat,
+.qx-pool-fig-wrap {
+  position: relative !important;
+  display: block !important;
+  margin: 10px auto !important;
+  max-width: min(100%, 720px) !important;
+  width: fit-content !important;
+  max-width: min(100%, 720px) !important;
+}
+
+/* Top-right zoom + button */
+button.qx-fig-zoom-btn {
+  position: absolute !important;
+  top: 4px !important;
+  right: 4px !important;
+  z-index: 20 !important;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #0f172a !important;
+  font-size: 22px !important;
+  font-weight: 600 !important;
+  line-height: 28px !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12) !important;
+  opacity: 0.92 !important;
+}
+
+button.qx-fig-zoom-btn:hover {
+  opacity: 1 !important;
+  background: #fff !important;
+  border-color: rgba(15, 23, 42, 0.22) !important;
+}
+
+/* Old multi-button toolbars off */
+.qx-diag-toolbar,
+.qx-diag-zoom-btns,
+.qx-diag-btn:not(.qx-fig-zoom-btn),
+.qx-diag-pct,
+.qx-diagram-hint,
+.qx-diagram-badge {
+  display: none !important;
+}
+
+/* Clean in-question image */
 .mtk-main #qxDiagramSlot img,
 .mtk-main .qx-diagram-slot img,
-.mtk-main .qx-question-body img.qx-pool-fig,
-.mtk-main .mtk-q-text img.qx-pool-fig,
 .mtk-main .qx-content img.qx-pool-fig,
-.qx-practice-page .qx-content img.qx-pool-fig {
+.mtk-main .mtk-q-text img.qx-pool-fig,
+.qx-practice-page .qx-content img.qx-pool-fig,
+.qx-fig-host > img,
+.qx-fig-flat > img {
   max-width: min(100%, 640px) !important;
   max-height: min(420px, 70vh) !important;
   width: auto !important;
   height: auto !important;
-  object-fit: contain !important;
-  margin: 12px auto !important;
+  margin: 8px auto !important;
   display: block !important;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  cursor: zoom-in !important;
+  cursor: default !important;
 }
 
-/* Lightbox for original Marks figure (watermark OK here only) */
+/* Lightbox = original Marks (watermark allowed) */
 #qxFigLightbox,
 .qx-fig-lightbox {
   position: fixed !important;
   inset: 0 !important;
   z-index: 99999 !important;
-  background: rgba(8, 12, 20, 0.75) !important;
+  background: rgba(8, 12, 20, 0.78) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -95,14 +150,4 @@ img.qx-fig-clickable,
 
 body.qx-fig-lb-open {
   overflow: hidden;
-}
-
-/* Hide zoom toolbar chrome (old + button) — use click image only */
-.qx-diag-toolbar,
-.qx-diag-zoom-btns,
-.qx-diag-btn,
-.qx-diag-pct,
-.qx-diagram-hint,
-.qx-diagram-badge {
-  display: none !important;
 }

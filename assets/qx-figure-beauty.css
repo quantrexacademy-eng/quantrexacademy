@@ -1,4 +1,4 @@
-/* Figures = bare image only (no rectangular white card / box) */
+/* Figures = bare image only + room for top-right zoom (+) — no rectangular card */
 
 #qxDiagramSlot,
 .qx-diagram-slot,
@@ -8,7 +8,8 @@
 .qx-fig-flat,
 .qx-pool-fig-wrap,
 .qx-fig,
-.qx-opt-fig {
+.qx-opt-fig,
+.qx-fig-host {
   position: relative !important;
   display: block !important;
   margin: 10px auto !important;
