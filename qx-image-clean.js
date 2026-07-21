@@ -4,7 +4,7 @@ window.QxImgClean = (() => {
   const DB_STORE = "blobs";
   const MANIFEST_URL = "data/qx_clean_manifest.json";
   const REVIEW_URL = "data/qx_image_review.json";
-  const CLEAN_VER = 71;
+  const CLEAN_VER = 72;
   const CENTER_WM_MAX = 0.006;
   const WM_DETECT_MIN = 0.0035;
   const CDN_ONLY = false;
@@ -1846,8 +1846,8 @@ window.QxImgClean = (() => {
 
   function proxyImageUrl(cdnSrc) {
     const fixed = fixUrl(cdnSrc);
-    // v=6: same-origin proxy + client soft-strip (permanent MARKS kill)
-    const q = `url=${encodeURIComponent(fixed)}&clean=1&v=6`;
+    // v=8: same-origin proxy + stronger client soft-strip (permanent MARKS kill, all exams)
+    const q = `url=${encodeURIComponent(fixed)}&clean=1&v=8`;
     try {
       if (typeof location !== "undefined" && location.origin && !/localhost|127\.0\.0\.1/i.test(location.origin)) {
         return `/api/proxy-image?${q}`;

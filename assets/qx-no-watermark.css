@@ -1,4 +1,5 @@
-/* Quantrex — NO watermarks anywhere (MARKS + Quantrex overlays + assets) */
+/* Quantrex — PERMANENT no watermarks (MARKS + Quantrex overlays, ALL exams) */
+/* Build: qxnowm2 — never stamp brand on figures; hide any residual chrome */
 
 /* HTML overlay watermarks from imported content — never hide real pool diagrams */
 [class*="watermark"]:not(.qx-pool-fig-wrap):not(:has(img.qx-pool-fig)),
@@ -23,7 +24,7 @@ img[alt*="Get Marks App"]:not(.qx-pool-fig):not(.qx-no-wm) {
   overflow: hidden !important;
 }
 
-/* All Quantrex/MARKS brand layers hidden — figures plain clean */
+/* All Quantrex/MARKS brand layers hidden permanently — every exam / practice / test */
 .qx-diag-watermark,
 .qx-brand-overlay,
 .qx-quantrex-wm,
@@ -41,6 +42,9 @@ img[alt*="Get Marks App"]:not(.qx-pool-fig):not(.qx-no-wm) {
 .qx-marks-strip,
 .qx-wm-mask,
 .qx-marks-scrub,
+.qx-wm-active > .qx-premium-wm-sheet,
+.qx-fig.qx-wm-active::after,
+.qx-opt-fig.qx-wm-active::after,
 img.qx-coaching-wm,
 img.qx-quantrex-wm-overlay,
 img[src*="quantrex-academy-brand"],
@@ -51,9 +55,17 @@ img[src*="quantrex-fig-stamp"],
 img[src*="quantrex-fig-seal"],
 img[src*="quantrex-brand-overlay"],
 img[src*="quantrex-brand-badge"],
+img[src*="quantrex-brand"],
 img[src*="watermark-overlay"],
 canvas.qx-premium-wm-canvas,
-canvas.qx-marks-scrub-canvas {
+canvas.qx-marks-scrub-canvas,
+/* Pseudo watermark layers (any leftover) */
+.qx-fig-inner.qx-wm-stack::before,
+.qx-fig-inner.qx-wm-stack::after,
+.qx-fig-inner[data-qx-pool-wm]::before,
+.qx-fig-inner[data-qx-pool-wm]::after,
+.qx-pool-fig-wrap::before,
+.qx-pool-fig-wrap::after {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
@@ -66,6 +78,9 @@ canvas.qx-marks-scrub-canvas {
   position: absolute !important;
   left: -9999px !important;
   z-index: -1 !important;
+  content: none !important;
+  background: none !important;
+  box-shadow: none !important;
 }
 
 .qx-diagram-slot .qx-premium-wm-sheet,

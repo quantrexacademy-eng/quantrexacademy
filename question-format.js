@@ -17,7 +17,7 @@ const QuantrexQFormat = (() => {
     return String(html || "").replace(/\bsrc=(["'])(https?:\/\/[^"']+)\1/gi, (m, q, url) => {
       if (/proxy-image|restore-image|data:|assets\/diagrams/i.test(url)) return m;
       if (/cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|getmarks\.app/i.test(url)) {
-        const prox = `/api/proxy-image?url=${encodeURIComponent(url)}&clean=1&v=7`;
+        const prox = `/api/proxy-image?url=${encodeURIComponent(url)}&clean=1&v=8`;
         return `src=${q}${prox}${q} data-qx-orig-src=${q}${url}${q} referrerpolicy=${q}no-referrer${q} onerror=${q}this.onerror=null;this.src=this.getAttribute('data-qx-orig-src')||this.src;${q}`;
       }
       return m;

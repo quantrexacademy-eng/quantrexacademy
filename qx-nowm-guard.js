@@ -20,7 +20,7 @@
     "img[src*='proxy-image']"
   ].join(", ");
 
-  // Kill MARKS chrome + Quantrex brand stamps (figures stay plain clean)
+  // Kill MARKS chrome + Quantrex brand stamps permanently (all exams)
   const KILL_SEL = [
     "canvas.qx-premium-wm-canvas",
     "canvas.qx-marks-scrub-canvas",
@@ -28,8 +28,12 @@
     "img.qx-quantrex-wm-overlay",
     ".qx-quantrex-black-wm",
     ".qx-quantrex-black-seal",
+    ".qx-quantrex-wm",
     ".qx-brand-overlay",
     ".qx-premium-wm-sheet",
+    ".qx-premium-wm-title",
+    ".qx-premium-wm-tag",
+    ".qx-premium-wm-logo",
     ".qx-diag-watermark",
     ".qx-wm-diagonal",
     ".qx-wm-corner-badge",
@@ -41,7 +45,11 @@
     "img[src*='marks-premium']",
     "img[src*='marks_selected']",
     "img[src*='quantrex-academy-brand']",
-    "img[src*='quantrex-watermark']"
+    "img[src*='quantrex-watermark']",
+    "img[src*='quantrex-diag']",
+    "img[src*='quantrex-fig-stamp']",
+    "img[src*='quantrex-fig-seal']",
+    "img[src*='quantrex-brand']"
   ].join(", ");
 
   // origSrc → cleaned data URL (survives prev/next re-render)
@@ -68,6 +76,10 @@
     const scope = root || document;
     try {
       scope.querySelectorAll(KILL_SEL).forEach((el) => el.remove());
+      // Absolute text seals inside figure areas (MARKS / QUANTREX ACADEMY)
+      if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.nukeAllWatermarkDom) {
+        QxPremiumWM.nukeAllWatermarkDom(scope);
+      }
     } catch (_) { /* */ }
   }
 
@@ -266,9 +278,9 @@
     setTimeout(hookAfterRender, 2000);
     setTimeout(hookNav, 2000);
 
-    // Light guardian — only uncleaned figures
+    // Permanent guardian — all exams, every pool figure until soft-strip succeeds
     setInterval(() => {
-      const main = document.getElementById("app-main");
+      const main = document.getElementById("app-main") || document.body;
       if (!main) return;
       nukeDom(main);
       let dirty = 0;
@@ -277,8 +289,15 @@
         forceVisible(img);
         if (img.dataset.qxSoftStrip !== "2") dirty++;
       });
+      // Also cover solution / test body figures
+      document.querySelectorAll(
+        ".sol-body img, .qx-sol-body img, .mtk-main img.qx-pool-fig, .marks-test-active img.qx-pool-fig"
+      ).forEach((img) => {
+        if (isUiIcon(img)) return;
+        if (img.dataset.qxSoftStrip !== "2") dirty++;
+      });
       if (dirty > 0) pass(main);
-    }, 1800);
+    }, 1400);
 
     if (typeof MutationObserver !== "undefined" && document.body) {
       let t = 0;
