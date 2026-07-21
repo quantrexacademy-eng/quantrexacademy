@@ -4,9 +4,11 @@ window.QxPremiumWM = (() => {
   const COACHING_WM_SRC = "/assets/quantrex-academy-brand-wm.png";
   const LOGO_FALLBACK = "/assets/quantrex-academy-brand.svg";
   const LOGO_FALLBACK2 = "/assets/quantrex-premium-logo.png";
-  const COACHING_WM_SCALE = 0.68;
-  const COACHING_WM_OPACITY = 0.22;
-  const COACHING_WM_MIN_PX = 88;
+  const COACHING_WM_SCALE = 0.52;
+  // Behind figure, very light — figure must stay fully readable
+  const COACHING_WM_OPACITY = 0.07;
+  const COACHING_WM_OPACITY_OPT = 0.05;
+  const COACHING_WM_MIN_PX = 64;
   const PROXY_BASE = (typeof location !== "undefined" && location.origin && !/localhost|127\.0\.0\.1/i.test(location.origin))
     ? location.origin.replace(/\/$/, "")
     : "https://quantrexacademy-live.web.app";
@@ -823,6 +825,15 @@ window.QxPremiumWM = (() => {
     const cs = window.getComputedStyle(stack);
     if (cs.position === "static") stack.style.position = "relative";
     if (cs.overflow === "hidden") stack.style.overflow = "visible";
+    // Keep figure above watermark
+    const figImgs = stack.querySelectorAll("img:not(.qx-coaching-wm):not(.qx-quantrex-wm-overlay)");
+    figImgs.forEach((im) => {
+      if (!im.style.position || im.style.position === "static") {
+        im.style.position = "relative";
+      }
+      im.style.zIndex = "2";
+      im.style.background = im.style.background || "#fff";
+    });
     let el = stack.querySelector("img.qx-coaching-wm, img.qx-quantrex-wm-overlay");
     if (!el) {
       el = document.createElement("img");
@@ -831,25 +842,29 @@ window.QxPremiumWM = (() => {
       el.setAttribute("aria-hidden", "true");
       el.draggable = false;
       el.decoding = "async";
-      stack.appendChild(el);
+      // Insert BEHIND figure content (first child = lower paint order)
+      stack.insertBefore(el, stack.firstChild);
+    } else if (el !== stack.firstChild) {
+      stack.insertBefore(el, stack.firstChild);
     }
     const side = Math.min(rw, rh);
-    const size = Math.max(COACHING_WM_MIN_PX, Math.min(side * COACHING_WM_SCALE, Math.max(rw, rh) * 0.55));
+    const size = Math.max(COACHING_WM_MIN_PX, Math.min(side * COACHING_WM_SCALE, Math.max(rw, rh) * 0.42));
     const op = opacity != null ? opacity : COACHING_WM_OPACITY;
-    if (!el.getAttribute("src")) el.src = COACHING_WM_SRC;
-    else if (!/quantrex-academy-brand/i.test(el.getAttribute("src") || "")) el.src = COACHING_WM_SRC;
+    if (!el.getAttribute("src") || !/quantrex-academy-brand/i.test(el.getAttribute("src") || "")) {
+      el.src = COACHING_WM_SRC;
+    }
     el.style.cssText = [
       "position:absolute",
       "left:50%",
       "top:50%",
       `width:${Math.round(size)}px`,
       "height:auto",
-      "max-width:88%",
-      "max-height:88%",
+      "max-width:70%",
+      "max-height:70%",
       "transform:translate(-50%,-50%) rotate(-28deg)",
       `opacity:${op}`,
       "pointer-events:none",
-      "z-index:8",
+      "z-index:0",
       "mix-blend-mode:multiply",
       "user-select:none",
       "display:block"
@@ -873,10 +888,14 @@ window.QxPremiumWM = (() => {
     }
     if (rw < 40 || rh < 40) return false;
     const isOpt = !!(img.closest && img.closest(".mtk-opt-text, .qx-prac-opt-text, .qx-opt-fig, .qx-opt-diagram-slot"));
-    const op = isOpt ? 0.15 : COACHING_WM_OPACITY;
+    const op = isOpt ? COACHING_WM_OPACITY_OPT : COACHING_WM_OPACITY;
     return new Promise(resolve => {
       ensureCoachingWmLogo(() => {
         applyCoachingWmOverlay(stack, rw, rh, null, op);
+        // Figure stays on top and fully opaque
+        img.style.position = img.style.position || "relative";
+        img.style.zIndex = "2";
+        img.style.opacity = "1";
         img.dataset.qxQuantrexWm = "1";
         img.dataset.qxBrandWm = "1";
         img.classList.add("qx-brand-wm");
