@@ -220,10 +220,107 @@
   margin-top: 8px;
 }
 
-[data-theme="dark"] .qx-sol-body { color: #e2e8f0; }
-[data-theme="dark"] .qx-sol-shortcut-text { color: #fcd34d; }
-[data-theme="dark"] .qx-sol-shortcut-panel { background: linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(0, 0, 0, 0.12)); }
-[data-theme="dark"] .qx-sol-shortcut-item { background: rgba(0, 0, 0, 0.2); }
+/* ——— Dark mode: full solution visibility ——— */
+[data-theme="dark"] .qx-sol-card,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-card {
+  background: #1e293b !important;
+  border-color: rgba(45, 212, 191, 0.35) !important;
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .qx-sol-body,
+[data-theme="dark"] .sol-body,
+[data-theme="dark"] .qx-sol-reveal-box,
+[data-theme="dark"] .qx-sol-reveal-box .sol-body,
+[data-theme="dark"] .result-box .sol-body,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-body,
+.mtk-test-root[data-test-theme="dark"] .sol-body,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-reveal-box,
+.mtk-test-root[data-test-theme="dark"] .result-box {
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .result-box.ok,
+.mtk-test-root[data-test-theme="dark"] .result-box.ok {
+  background: rgba(16, 185, 129, 0.12) !important;
+  border-color: #34d399 !important;
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .result-box.no,
+.mtk-test-root[data-test-theme="dark"] .result-box.no {
+  background: rgba(239, 68, 68, 0.12) !important;
+  border-color: #f87171 !important;
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .result-box.partial,
+.mtk-test-root[data-test-theme="dark"] .result-box.partial {
+  background: rgba(245, 158, 11, 0.12) !important;
+  border-color: #fbbf24 !important;
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .result-box strong,
+[data-theme="dark"] .qx-sol-reveal-box strong,
+.mtk-test-root[data-test-theme="dark"] .result-box strong {
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .qx-sol-badge,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-badge {
+  color: #5eead4 !important;
+  background: rgba(13, 148, 136, 0.2) !important;
+  border-color: rgba(45, 212, 191, 0.35) !important;
+}
+[data-theme="dark"] .qx-sol-body strong,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-body strong {
+  color: #5eead4 !important;
+}
+[data-theme="dark"] .qx-sol-step,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-step {
+  background: rgba(15, 23, 42, 0.65) !important;
+  border-color: rgba(45, 212, 191, 0.2) !important;
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .qx-sol-step-label,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-step-label {
+  color: #5eead4 !important;
+  background: rgba(13, 148, 136, 0.22) !important;
+  border-color: rgba(45, 212, 191, 0.35) !important;
+}
+[data-theme="dark"] .qx-sol-step-body,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-step-body {
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .qx-sol-shortcut-text { color: #fcd34d !important; }
+[data-theme="dark"] .qx-sol-shortcut-title { color: #fbbf24 !important; }
+[data-theme="dark"] .qx-sol-shortcut-panel {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(0, 0, 0, 0.2)) !important;
+  border-color: rgba(251, 191, 36, 0.35) !important;
+}
+[data-theme="dark"] .qx-sol-shortcut-item {
+  background: rgba(15, 23, 42, 0.55) !important;
+  border-color: rgba(245, 158, 11, 0.25) !important;
+}
+[data-theme="dark"] .qx-sol-warn,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-warn {
+  color: #fcd34d !important;
+  background: rgba(245, 158, 11, 0.15) !important;
+  border-color: rgba(251, 191, 36, 0.35) !important;
+}
+[data-theme="dark"] .qx-prac-correct-ans,
+.mtk-test-root[data-test-theme="dark"] .qx-prac-correct-ans {
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .qx-no-sol-note,
+.mtk-test-root[data-test-theme="dark"] .qx-no-sol-note {
+  color: #94a3b8 !important;
+}
+
+/* Solution body readable size */
+.qx-sol-body,
+.sol-body,
+.qx-sol-reveal-box .sol-body {
+  font-family: "Roboto", "Inter", "Noto Sans Devanagari", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 400;
+}
 
 @media (max-width: 640px) {
   .qx-sol-shortcut-text { font-size: 13px; }

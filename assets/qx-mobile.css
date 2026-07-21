@@ -302,3 +302,62 @@ body.qx-nav-open::before {
   }
   .mtk-close-btn, .qx-prac-back { min-width: 44px; min-height: 44px; }
 }
+
+/* —— Mobile-first polish 2026 (SEO + phones) —— */
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+
+@media (max-width: 860px) {
+  .main { margin-left: 0 !important; width: 100%; }
+  .content { max-width: 100%; }
+  .marks-split-layout { flex-direction: column; margin: 0; min-height: 0; }
+  .marks-subj-rail {
+    width: 100% !important;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    max-height: none;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+    overflow-x: auto;
+  }
+  .marks-subj-list { flex-direction: row; flex-wrap: wrap; gap: 6px; width: 100%; }
+  .marks-subj-item { width: auto; padding: 8px 12px; font-size: 13px; white-space: nowrap; }
+  .marks-exam-head { width: 100%; margin-bottom: 4px; }
+  .ch-grid, .subj-grid, .exam-grid { grid-template-columns: 1fr !important; }
+  .qx-topic-grid { grid-template-columns: 1fr !important; gap: 10px; }
+  .qx-folder-nav-actions { position: sticky; top: 52px; z-index: 40; background: var(--bg); padding: 6px 0; }
+  .qx-nav-back, .qx-nav-exit { min-height: 44px; flex: 1; }
+  .cpyqb-ch-row, .qx-ch-card-rich { padding: 12px 10px; }
+  .cpyqb-ch-title, .qx-topic-body strong { font-size: 14.5px; line-height: 1.35; word-break: break-word; }
+  .page-head h1 { font-size: 1.35rem !important; line-height: 1.25; }
+  .breadcrumb { font-size: 12px; flex-wrap: wrap; gap: 4px; overflow: hidden; }
+  table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .exam-scroll { -webkit-overflow-scrolling: touch; }
+  .exam-pill-card { min-width: 112px; }
+  .jovi-fab {
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+  }
+  .jovi-panel {
+    right: 8px; left: 8px; width: auto;
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    height: min(72vh, 560px);
+    max-height: calc(100vh - 100px);
+  }
+  input, select, textarea { font-size: 16px !important; } /* prevent iOS zoom on focus */
+  .btn-primary, .btn-soft, .cpyqb-filter-main { min-height: 44px; }
+}
+
+@media (max-width: 400px) {
+  .books-grid, .curated-grid { grid-template-columns: 1fr !important; }
+  .dash-stats { grid-template-columns: 1fr 1fr; }
+  .logo-text { font-size: 16px; }
+}
+
+/* Prefer landscape safe padding for CBT */
+@media (max-width: 900px) and (orientation: landscape) {
+  .mtk-test-root.allen-cbt .mtk-header { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+}

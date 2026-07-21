@@ -3,6 +3,8 @@
 const BOOK_COVER_PRESETS = {
   "6a0addba4b032b031e049a36": { brand: "HC Verma", line: "Concepts of Physics", vol: "Volume 2", subject: "Physics", badge: "HC Verma", colors: ["#0c1e4a", "#1e3a8a", "#2563eb", "#38bdf8"], icon: "⚛️", pattern: "waves" },
   "69f9cc23681eab6d6021a4d1": { brand: "HC Verma", line: "Concepts of Physics", vol: "Volume 1", subject: "Physics", badge: "HC Verma", colors: ["#1e3a5f", "#2563eb", "#60a5fa"], icon: "⚛️", pattern: "waves" },
+  "6a4ce383c59a7b462185330f": { brand: "Organic Chemistry", line: "Fundamentals", vol: "JEE Main & Adv", subject: "Chemistry", badge: "Organic Chemistry", colors: ["#14532d", "#16a34a", "#86efac"], icon: "⚗️", pattern: "hex", tag: "JEE" },
+  "69736c8362b916d85e52cd1b": { brand: "BITSAT", line: "English & Logical Reasoning", vol: "Prep Guide", subject: "English + LR", badge: "BITSAT", colors: ["#0b1226", "#1e3a8a", "#38bdf8"], icon: "🧠", pattern: "waves", tag: "BITSAT" },
   "69cfb5366ecf5579037d96a4": { brand: "I.E. Irodov", line: "General Physics", vol: "Top Problems", subject: "Physics", badge: "Irodov", colors: ["#450a0a", "#b91c1c", "#f87171"], icon: "🔥", pattern: "grid" },
   "68f1ce4cc729e5251bd00430": { brand: "Rank Booster", line: "Most Important Qs", vol: "Advanced Level", subject: "PCM", badge: "Rank Booster", colors: ["#312e81", "#4f46e5", "#818cf8"], icon: "🚀", pattern: "diagonal" },
   "68946f70ebd145663de38728": { brand: "99 Percentile", line: "Question Bank", vol: "High Yield", subject: "PCM", badge: "99 Percentile", colors: ["#78350f", "#d97706", "#fbbf24"], icon: "👑", pattern: "shine" },
@@ -17,6 +19,8 @@ const BOOK_COVER_PRESETS = {
 const BOOK_COVER_PHOTO = {
   "6a0addba4b032b031e049a36": "assets/book-covers/hc-verma-v2.jpg",
   "69f9cc23681eab6d6021a4d1": "assets/book-covers/hc-verma-v1.jpg",
+  "6a4ce383c59a7b462185330f": "assets/book-covers/organic-chemistry.jpg",
+  "69736c8362b916d85e52cd1b": "assets/book-covers/bitsat-english-lr.jpg",
   "69cfb5366ecf5579037d96a4": "assets/book-covers/irodov.jpg",
   "68f1ce4cc729e5251bd00430": "assets/book-covers/rank-booster.jpg",
   "68946f70ebd145663de38728": "assets/book-covers/99-percentile.jpg",
@@ -31,6 +35,8 @@ const BOOK_COVER_PHOTO = {
 const BOOK_COVER_SVG = {
   "6a0addba4b032b031e049a36": "assets/book-covers/hc-verma-v2.svg",
   "69f9cc23681eab6d6021a4d1": "assets/book-covers/hc-verma-v1.svg",
+  "6a4ce383c59a7b462185330f": "assets/book-covers/organic-chemistry-qx.svg",
+  "69736c8362b916d85e52cd1b": "assets/book-covers/bitsat-english-lr.svg",
   "69cfb5366ecf5579037d96a4": "assets/book-covers/irodov.svg",
   "68f1ce4cc729e5251bd00430": "assets/book-covers/rank-booster.svg",
   "68946f70ebd145663de38728": "assets/book-covers/99-percentile.svg",
@@ -50,11 +56,13 @@ function bookDisplayBadge(book) {
   const t = String(book && book.title || "");
   if (/hc verma|concepts of physics/i.test(t)) return "HC Verma";
   if (/irodov/i.test(t)) return "Irodov";
+  if (/rank booster|advanced/i.test(t)) return "Rank Booster";
   if (/99 percentile/i.test(t)) return "99 Percentile";
   if (/backlog/i.test(t)) return "Backlog Booster";
   if (/olympiad/i.test(t)) return "Olympiad";
-  if (/rank booster|advanced/i.test(t)) return "Rank Booster";
   if (/biology 360/i.test(t)) return "NEET Biology";
+  if (/organic chemistry/i.test(t)) return "Organic Chemistry";
+  if (/bitsat/i.test(t)) return "BITSAT";
   return book && book.subject ? book.subject : "Digital Book";
 }
 
@@ -82,9 +90,15 @@ function inferBookCoverStyle(book) {
   else if (t.includes("physics") && t.includes("volume 2")) Object.assign(style, BOOK_COVER_PRESETS["6a0addba4b032b031e049a36"], { badge: bookDisplayBadge(book) });
   else if (t.includes("irodov")) Object.assign(style, BOOK_COVER_PRESETS["69cfb5366ecf5579037d96a4"], { badge: bookDisplayBadge(book) });
   else if (t.includes("99 percentile")) Object.assign(style, BOOK_COVER_PRESETS["68946f70ebd145663de38728"], { badge: bookDisplayBadge(book) });
+  else if (t.includes("advanced") && t.includes("important")) Object.assign(style, BOOK_COVER_PRESETS["68f1ce4cc729e5251bd00430"], { badge: bookDisplayBadge(book) });
   else if (t.includes("backlog")) Object.assign(style, BOOK_COVER_PRESETS["6894d29d3156b1f3ca5ad0be"], { badge: bookDisplayBadge(book) });
   else if (t.includes("olympiad")) Object.assign(style, BOOK_COVER_PRESETS["69048808ef55966cf1d71f1d"], { badge: bookDisplayBadge(book) });
-  else if (t.includes("advanced") && t.includes("important")) Object.assign(style, BOOK_COVER_PRESETS["68f1ce4cc729e5251bd00430"], { badge: bookDisplayBadge(book) });
+  else if (t.includes("organic chemistry") || t.includes("fundamentals of organic")) {
+    Object.assign(style, BOOK_COVER_PRESETS["6a4ce383c59a7b462185330f"], { badge: bookDisplayBadge(book) });
+  }
+  else if (t.includes("bitsat") || t.includes("english and logical") || t.includes("english & logical")) {
+    Object.assign(style, BOOK_COVER_PRESETS["69736c8362b916d85e52cd1b"], { badge: bookDisplayBadge(book) });
+  }
   else if (t.includes("biology") || t.includes("neet")) {
     style.colors = ["#14532d", "#16a34a", "#86efac"];
     style.icon = "🧬";
@@ -97,7 +111,7 @@ function inferBookCoverStyle(book) {
   return style;
 }
 
-const BOOK_COVER_VER = "qxtest484";
+const BOOK_COVER_VER = "qxorg3d1";
 
 function withCoverVer(path) {
   if (!path) return null;
@@ -189,14 +203,22 @@ function renderBookCover(book, size) {
 
 function bookOpenPayload(book) {
   if (!book || book.isComingSoon) return null;
+  if (typeof QX_REMOVED_BOOK_IDS !== "undefined" && QX_REMOVED_BOOK_IDS.has(book.id)) return null;
   if (book.type === "curated") return { step: "subjects", bookId: book.id, moduleId: book.id };
   return { step: "modules", bookId: book.id };
 }
 
 function renderBookCard(book, extraClass) {
+  if (typeof QX_REMOVED_BOOK_IDS !== "undefined" && QX_REMOVED_BOOK_IDS.has(book.id)) return "";
   const soon = book.isComingSoon;
+  const isIrodov = book.id === "69cfb5366ecf5579037d96a4" || /irodov/i.test(book.title || "");
   const payload = bookOpenPayload(book);
-  const click = soon ? "" : `data-mg="books" data-mgp='${JSON.stringify(payload).replace(/'/g, "&#39;")}'`;
+  // Irodov: custom gate (10 taps) — not direct data-mg open
+  const click = soon || !payload
+    ? ""
+    : (isIrodov
+      ? `data-irodov-gate="1" role="button" tabindex="0"`
+      : `data-mg="books" data-mgp='${JSON.stringify(payload).replace(/'/g, "&#39;")}'`);
   const title = book.title || "Digital Book";
   const meta = bookCardMeta(book);
 

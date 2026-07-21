@@ -1,11 +1,12 @@
-/* Quantrex — NTA-style numerical answer (keyboard + mouse, centered) */
+/* Quantrex — NTA / JEE Main integer-type numerical answer (centered box + keypad) */
 
 .mtk-numerical-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
-  padding: 20px 0 28px;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  padding: 24px 12px 32px !important;
+  grid-column: 1 / -1 !important;
 }
 
 .mtk-numerical {
@@ -16,89 +17,124 @@
 
 .qx-num-entry {
   width: 100%;
-  max-width: 300px;
+  max-width: 340px;
   margin: 0 auto;
   padding: 0;
 }
 
+/* Centered panel like JEE Main / NTA CBT integer box */
 .qx-num-entry.qx-num-panel {
-  max-width: 320px;
-  padding: 22px 20px 18px;
-  border: 1px solid #c5d4e8;
-  border-radius: 4px;
+  max-width: 360px;
+  padding: 20px 22px 18px;
+  border: 1px solid #94a3b8;
+  border-radius: 10px;
   background: #f8fafc;
-  box-shadow: 0 1px 3px rgba(0, 45, 120, 0.06);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+}
+
+.qx-num-badge {
+  display: block;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #1e3a8a;
+  background: #dbeafe;
+  border: 1px solid #93c5fd;
+  border-radius: 6px;
+  padding: 5px 10px;
+  margin: 0 auto 12px;
+  max-width: 220px;
 }
 
 .qx-num-label {
   display: block;
-  font-size: 13px;
-  font-weight: 600;
-  color: #334155;
-  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12px;
   text-align: center;
+}
+
+/* Main answer box — large, centered, NTA style */
+.qx-num-box-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 8px;
 }
 
 .qx-num-input {
   display: block;
   width: 100%;
-  min-height: 48px;
-  padding: 12px 14px;
-  border: 2px solid #1a2b4a;
-  border-radius: 2px;
-  font-size: 22px;
-  font-weight: 600;
-  font-family: 'Inter', 'Consolas', monospace;
+  max-width: 280px;
+  min-height: 56px;
+  padding: 14px 16px;
+  border: 3px solid #1e3a8a;
+  border-radius: 8px;
+  font-size: 28px;
+  font-weight: 700;
+  font-family: "Consolas", "Courier New", "Inter", monospace;
   text-align: center;
   background: #fff;
   color: #0f172a;
-  letter-spacing: 0.06em;
-  margin: 0 auto 12px;
+  letter-spacing: 0.12em;
+  margin: 0 auto;
   cursor: text;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.06);
 }
 
 .qx-num-input:focus {
   outline: none;
-  border-color: #003DA5;
-  box-shadow: 0 0 0 3px rgba(0, 61, 165, 0.14);
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.18);
 }
 
 .qx-num-input:disabled {
-  opacity: 0.65;
+  opacity: 0.7;
   cursor: not-allowed;
+  background: #f1f5f9;
+}
+
+.qx-num-hint {
+  text-align: center;
+  font-size: 12px;
+  color: #64748b;
+  margin: 0 0 14px;
+  font-weight: 500;
 }
 
 .qx-num-keypad {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 5px;
+  gap: 6px;
   width: 100%;
   max-width: 280px;
   margin: 0 auto;
 }
 
 .qx-num-key {
-  padding: 9px 6px;
+  padding: 11px 6px;
   border: 1px solid #94a3b8;
-  border-radius: 2px;
+  border-radius: 6px;
   background: #fff;
   color: #0f172a;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: Inter, system-ui, sans-serif;
   cursor: pointer;
-  transition: background 0.1s, border-color 0.1s;
-  min-height: 38px;
+  transition: background 0.1s, border-color 0.1s, transform 0.05s;
+  min-height: 42px;
   user-select: none;
 }
 
 .qx-num-key:hover:not(:disabled) {
-  background: #f1f5f9;
-  border-color: #64748b;
+  background: #eff6ff;
+  border-color: #3b82f6;
 }
 
 .qx-num-key:active:not(:disabled) {
-  background: #e2e8f0;
+  background: #dbeafe;
+  transform: scale(0.98);
 }
 
 .qx-num-key-wide {
@@ -109,18 +145,22 @@
 .qx-num-key-clear {
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
+  background: #f1f5f9;
 }
 
-.qx-num-key-arrow {
-  font-size: 16px;
-  padding: 6px;
+.qx-num-key-clear {
+  background: #fef2f2;
+  border-color: #fca5a5;
+  color: #b91c1c;
 }
 
-.qx-num-key-spacer {
-  display: block;
-  min-height: 0;
-  visibility: hidden;
+.qx-num-correct {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 14px;
+  color: #166534;
+  font-weight: 600;
 }
 
 /* Dark CBT theme */
@@ -130,16 +170,28 @@
   border-color: #3b4254;
 }
 
+.mtk-test-root[data-test-theme="dark"] .qx-num-badge,
+.mtk-test-root:not([data-test-theme="light"]) .qx-num-badge {
+  background: #1e3a5f;
+  border-color: #3b82f6;
+  color: #93c5fd;
+}
+
 .mtk-test-root[data-test-theme="dark"] .qx-num-label,
 .mtk-test-root:not([data-test-theme="light"]) .qx-num-label {
-  color: #cbd5e1;
+  color: #e2e8f0;
 }
 
 .mtk-test-root[data-test-theme="dark"] .qx-num-input,
 .mtk-test-root:not([data-test-theme="light"]) .qx-num-input {
-  background: #12151c;
-  border-color: #4b5563;
-  color: #f1f5f9;
+  background: #0f1219;
+  border-color: #60a5fa;
+  color: #f8fafc;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-num-hint,
+.mtk-test-root:not([data-test-theme="light"]) .qx-num-hint {
+  color: #94a3b8;
 }
 
 .mtk-test-root[data-test-theme="dark"] .qx-num-key,
@@ -157,54 +209,62 @@
 
 .mtk-test-root[data-test-theme="light"] .qx-num-entry.qx-num-panel {
   background: #f8fafc;
-  border-color: #c5d4e8;
-}
-
-.mtk-test-root[data-test-theme="light"] .qx-num-label {
-  color: #334155;
+  border-color: #94a3b8;
 }
 
 .mtk-test-root[data-test-theme="light"] .qx-num-input {
   background: #fff;
-  border-color: #1a2b4a;
+  border-color: #1e3a8a;
   color: #0f172a;
 }
 
-.mtk-test-root[data-test-theme="light"] .qx-num-key {
-  background: #fff;
-  border-color: #94a3b8;
-  color: #0f172a;
-}
-
+/* Allen / practice */
 .mtk-test-root.allen-cbt .qx-num-entry.qx-num-panel {
-  border-color: var(--allen-border, #c5d4e8);
+  border-color: var(--allen-border, #94a3b8);
 }
 
-.mtk-test-root.allen-cbt[data-test-theme="light"] .qx-num-input {
-  border-color: #1a2b4a;
-}
-
-/* Practice mode */
 .qx-prac-numerical {
-  display: flex;
-  justify-content: center;
+  display: flex !important;
+  justify-content: center !important;
+  width: 100%;
+  grid-column: 1 / -1;
 }
 
 .qx-prac-numerical .qx-num-entry {
-  max-width: 320px;
+  max-width: 360px;
 }
 
 .qx-prac-numerical.correct .qx-num-input {
-  border-color: #16a34a;
-  background: #f0fdf4;
+  border-color: #16a34a !important;
+  background: #f0fdf4 !important;
 }
 
 .qx-prac-numerical.wrong .qx-num-input {
-  border-color: #dc2626;
-  background: #fef2f2;
+  border-color: #dc2626 !important;
+  background: #fef2f2 !important;
+}
+
+/* Override app.html weak styles */
+.allen-practice-active .qx-num-input,
+.allen-cbt-active .qx-num-input,
+.mtk-test-root .qx-num-input {
+  max-width: 280px !important;
+  min-height: 56px !important;
+  font-size: 28px !important;
+  text-align: center !important;
+  border-width: 3px !important;
 }
 
 @media (max-width: 640px) {
-  .qx-num-entry.qx-num-panel { max-width: 100%; padding: 16px 12px; }
-  .qx-num-keypad { max-width: 100%; }
+  .qx-num-entry.qx-num-panel {
+    max-width: 100%;
+    padding: 16px 12px;
+  }
+  .qx-num-keypad {
+    max-width: 100%;
+  }
+  .qx-num-input {
+    max-width: 100%;
+    font-size: 24px;
+  }
 }

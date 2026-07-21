@@ -45,11 +45,45 @@ const MarksLive = (() => {
     return _token;
   }
 
+  function marksProxyUrl(questionId) {
+    // Same-origin Firebase Hosting rewrite preferred; fallback to direct cloud function URL
+    const id = encodeURIComponent(String(questionId || "").trim());
+    if (!id) return null;
+    try {
+      const host = (typeof location !== "undefined" && location.hostname) || "";
+      if (host && (host.includes("quantrexacademy") || host.includes("web.app") || host.includes("firebaseapp.com") || host === "localhost")) {
+        return `/api/marks/question?id=${id}`;
+      }
+    } catch (e) { /* */ }
+    return `https://us-central1-quantrexacademy-live.cloudfunctions.net/marksQuestion?id=${id}`;
+  }
+
   async function api(path) {
+    // Prefer server proxy for single-question fetch (avoids CORA/CORS blocks on getmarks.app)
+    const qMatch = String(path || "").match(/\/api\/v1\/questions\/([^/?#]+)/);
+    if (qMatch) {
+      const id = String(qMatch[1] || "").trim();
+      const urls = [];
+      const proxy = marksProxyUrl(id);
+      if (proxy) urls.push(proxy);
+      const cf = `https://us-central1-quantrexacademy-live.cloudfunctions.net/marksQuestion?id=${encodeURIComponent(id)}`;
+      if (!urls.includes(cf)) urls.push(cf);
+      for (let i = 0; i < urls.length; i++) {
+        try {
+          const pres = await fetch(urls[i], { headers: { Accept: "application/json" }, credentials: "omit" });
+          if (pres.ok) return await pres.json();
+          console.warn("marks proxy HTTP", pres.status, urls[i]);
+        } catch (e) {
+          console.warn("marks proxy failed:", urls[i], e && e.message);
+        }
+      }
+    }
     const token = await ensureToken();
     if (!token) throw new Error("MARKS token missing");
     const res = await fetch(API + path, {
-      headers: { Authorization: "Bearer " + token, Accept: "application/json" }
+      headers: { Authorization: "Bearer " + token, Accept: "application/json" },
+      mode: "cors",
+      credentials: "omit"
     });
     if (!res.ok) throw new Error("MARKS API " + res.status);
     return res.json();
@@ -114,22 +148,48 @@ const MarksLive = (() => {
     return body ? block + "<br>" + body : block;
   }
 
+  function hasLocalDiagramHtml(html) {
+    return /\/assets\/(?:diagrams|clean-diagrams)\//i.test(String(html || ""));
+  }
+
+  function hasExternalPoolHtml(html) {
+    return /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\//i.test(String(html || ""));
+  }
+
+  /** Prefer bank-local clean diagrams over Quizrr/Marks CDN (watermarks, proxy failures). */
+  function preferLocalDiagramHtml(local, remote) {
+    const L = String(local || "");
+    const R = String(remote || "");
+    if (!L) return R;
+    if (!R) return L;
+    if (hasLocalDiagramHtml(L) && !hasLocalDiagramHtml(R)) return L;
+    if (hasLocalDiagramHtml(L) && hasExternalPoolHtml(R)) return L;
+    // Local has structure image; remote is text/latex only (or stub)
+    if (/<img\b/i.test(L) && !/<img\b/i.test(R)) return L;
+    return R;
+  }
+
   function mergePreserveImages(prev, next) {
     if (!next) return prev || null;
     if (!prev) return next;
     const out = { ...next };
-    if (!/<img\b/i.test(out.q || "")) {
+    // Stem figure: keep local clean diagram when API omitted it or only has CDN
+    if (hasLocalDiagramHtml(prev.q) && (!hasPoolFigureInHtml(out.q) || hasExternalPoolHtml(out.q))) {
+      if (!hasLocalDiagramHtml(out.q)) {
+        const imgs = extractPoolImgTags(prev.q);
+        if (imgs.length) out.q = prependPoolImgs(out.q, imgs);
+        else if (!hasPoolFigureInHtml(out.q)) out.q = prev.q;
+      }
+    } else if (!/<img\b/i.test(out.q || "")) {
       const imgs = extractPoolImgTags(prev.q);
       if (imgs.length) out.q = prependPoolImgs(out.q, imgs);
     }
     const pOpts = prev.options || [];
     const nOpts = out.options || [];
     if (pOpts.length && nOpts.length) {
-      out.options = nOpts.map((o, i) => {
-        if (/<img\b/i.test(String(o || ""))) return o;
-        const imgs = extractPoolImgTags(pOpts[i]);
-        return imgs.length ? prependPoolImgs(o, imgs) : o;
-      });
+      out.options = nOpts.map((o, i) => preferLocalDiagramHtml(pOpts[i], o));
+    } else if (pOpts.length && !nOpts.length) {
+      out.options = pOpts.slice();
     }
     if (!/<img\b/i.test(out.solution || "")) {
       const imgs = extractPoolImgTags(prev.solution);
@@ -140,16 +200,24 @@ const MarksLive = (() => {
 
   function htmlPart(text, image) {
     let out = String(text || "").trim();
-    if (typeof Mx !== "undefined" && Mx.html) out = Mx.html(out);
+    // Preserve image-only options; don't run MathJax prep that can strip tags
+    const hasImg = /<img\b/i.test(out);
+    if (out && !hasImg && typeof Mx !== "undefined" && Mx.html) {
+      out = Mx.html(out);
+    } else if (out && hasImg) {
+      out = fixImgUrl(out);
+    }
     const imgUrl = image || pickImageFromText(String(text || "")) || null;
     if (imgUrl && !/<img\b/i.test(out)) {
       const cdn = fixImgUrl(typeof imgUrl === "string" ? imgUrl : (imgUrl.url || imgUrl.src || ""));
       if (cdn) {
         out += (out ? "<br>" : "") + (typeof QxImgClean !== "undefined" && QxImgClean.poolFigureHtml
           ? QxImgClean.poolFigureHtml(cdn)
-          : `<img class="qx-no-wm qx-pool-fig" src="${cdn}" alt="" loading="eager" decoding="async">`);
+          : `<img class="qx-no-wm qx-pool-fig" src="${cdn}" alt="" loading="eager" decoding="async" style="max-width:100%;height:auto;display:block">`);
       }
     }
+    // Ensure option images are visible size
+    out = out.replace(/<img\b(?![^>]*style=)/gi, '<img style="max-width:220px;height:auto;display:block" ');
     return out;
   }
 
@@ -181,28 +249,44 @@ const MarksLive = (() => {
     return /numerical|subjective|integer|long|descriptive|fill/i.test(t);
   }
 
+  function isExamgoalQuestion(q) {
+    if (!q) return false;
+    if (q._examgoalId || q._bank === "examgoal_2027") return true;
+    return /examgoal/i.test(String(q.source || ""));
+  }
+
   function optionHasContent(o) {
     const s = String(o || "");
     if (/<img/i.test(s)) return true;
     const t = s.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-    if (!t) return false;
-    const letters = new Set(["A", "B", "C", "D", "a", "b", "c", "d", "1", "2", "3", "4"]);
-    return !letters.has(t);
+    // Single letter A–D is valid when stem labels compounds/divisions A–D
+    if (/^[ABCDabcd]$/.test(t)) return true;
+    return t.length > 0;
   }
 
   function isPlaceholderOptions(options) {
     if (!options || !options.length) return true;
-    return !options.some(optionHasContent);
+    // Any real image option = not placeholder
+    if ((options || []).some(o => /<img\b/i.test(String(o || "")))) return false;
+    const plain = (options || []).map(o => String(o || "").replace(/<[^>]+>/g, "").trim());
+    // All empty / whitespace / empty HTML tags only
+    if (!plain.some(t => t.length > 0)) return true;
+    // Letter-only A–D options are REAL for Rank Booster / "which of A–D" stems.
+    // Never treat them as "still loading" stubs.
+    if (plain.every(t => !t || /^[ABCDabcd]$/.test(t))) return false;
+    return false;
   }
 
   function allOptionsHaveContent(options) {
     const opts = options || [];
     if (!opts.length) return false;
+    if (isPlaceholderOptions(opts)) return false;
     return opts.every(optionHasContent);
   }
 
   function isPartialOptions(options) {
     if (!options || !options.length) return true;
+    if (isPlaceholderOptions(options)) return true;
     const filled = options.filter(optionHasContent).length;
     return filled > 0 && filled < options.length;
   }
@@ -231,11 +315,14 @@ const MarksLive = (() => {
     if (isNumericalQuestion(q)) return isQuestionTextReady(q);
     const opts = q.options || [];
     if (!opts.length) return false;
+    if (isPlaceholderOptions(opts)) return false;
+    // Any option with image counts ready if most options have content/images
+    const withContent = opts.filter(o => optionHasContent(o) || /<img\b/i.test(String(o || ""))).length;
+    if (withContent >= Math.min(2, opts.length) && withContent === opts.length) return true;
+    if (opts.every(o => /<img\b/i.test(String(o || "")))) return true;
     if (isPartialOptions(opts)) return false;
-    if (isImageMcq(q) && !allOptionsHaveContent(opts)) return false;
-    if (q._shardLoaded) return allOptionsHaveContent(opts);
-    if (!q._marksId) return allOptionsHaveContent(opts);
-    return !needsFullQuestion(q) || allOptionsHaveContent(opts);
+    if (!allOptionsHaveContent(opts)) return false;
+    return true;
   }
 
   function isQuestionReady(q) {
@@ -264,6 +351,11 @@ const MarksLive = (() => {
 
   function needsFullQuestion(q) {
     if (!q || !q._marksId) return false;
+    if (isExamgoalQuestion(q)) return false;
+    // Digital books ship complete chapter packs offline — never wipe with live API
+    if (q._book || q._bookId) {
+      if (!isBlankText(q.q) && !isPlaceholderOptions(q.options)) return false;
+    }
     if (questionNeedsFigure(q)) return true;
     const nonMcq = isNonMcqType(q.questionType || q.type);
     if (q._shardLoaded) {
@@ -298,24 +390,53 @@ const MarksLive = (() => {
 
   function hasPoolFigureInHtml(html) {
     const s = String(html || "");
-    if (/\bdata-qx-orig-src=["'][^"']+(?:cdn-question-pool|cdn\.quizrr|\/pyq\/)/i.test(s)) return true;
-    if (/<img\b[^>]*src=["'][^"']+(?:cdn-question-pool|cdn\.quizrr|\/pyq\/|\/cbse\/|ap_eamcet)/i.test(s)) return true;
-    if (/\/api\/(?:restore-image|proxy-image)\?url=[^"']+(?:cdn-question-pool|cdn\.quizrr|%2Fpyq%2F)/i.test(s)) return true;
+    if (/\bdata-qx-orig-src=["'][^"']+(?:cdn-question-pool|cdn\.quizrr|\/pyq\/|assets\/(?:diagrams|clean-diagrams))/i.test(s)) return true;
+    if (/<img\b[^>]*src=["'][^"']+(?:cdn-question-pool|cdn\.quizrr|\/pyq\/|\/cbse\/|ap_eamcet|assets\/(?:diagrams|clean-diagrams))/i.test(s)) return true;
+    if (/\/api\/(?:restore-image|proxy-image)\?url=[^"']+(?:cdn-question-pool|cdn\.quizrr|%2Fpyq%2F|assets%2Fdiagrams)/i.test(s)) return true;
+    if (/\/assets\/(?:diagrams|clean-diagrams)\//i.test(s) && /<img\b/i.test(s)) return true;
     return extractPoolImgTags(s).length > 0;
   }
 
   function questionReferencesFigure(html) {
     const plain = String(html || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-    return /\b(as (?:illustrated|shown)(?:\s+in)?(?:\s+the)?\s+figure|as in (?:the )?figure|see (?:the )?figure|figure (?:below|above|shown)|in the (?:following |given )?figure|from the figure|refer (?:to )?(?:the )?figure)\b/i.test(plain);
+    if (!plain) return false;
+    // Explicit figure wording
+    if (/\b(as (?:illustrated|shown)(?:\s+in)?(?:\s+the)?\s+figure|as in (?:the )?figure|see (?:the )?figure|figure (?:below|above|shown)|in the (?:following |given )?figure|from the figure|refer (?:to )?(?:the )?figure)\b/i.test(plain)) {
+      return true;
+    }
+    // "Given / following compound|structure|molecule" — almost always a stem diagram on MARKS books
+    if (/\b(?:the\s+)?(?:given|following)\s+(?:compound|structure|molecule|species|organic\s+compound|organic\s+molecule)\b/i.test(plain)) {
+      return true;
+    }
+    if (/\b(?:IUPAC\s+)?(?:name|numbering|systematic\s+name)\s+(?:of|for)\s+(?:the\s+)?(?:given|following)\b/i.test(plain)) {
+      return true;
+    }
+    if (/\b(?:correct\s+IUPAC\s+numbering|structure\s+that\s+shows)\b/i.test(plain)
+      && /\b(?:given|following)\b/i.test(plain)) {
+      return true;
+    }
+    // Reaction schemes / conversions that almost always ship as CDN images on MARKS
+    if (/\b(above conversion|following conversion|given conversion|conversion of\s*[XYA-Z]\s*(?:to|into|→|->)\s*[XYA-Z]|correct sequence of reagents for the above|sequence of reagents for the above|in the (?:above|following|given) (?:reaction|conversion|scheme|sequence)|shown (?:above|below)|given reaction|following reaction|reaction scheme|structural formula(?:e)? (?:of|for)|following structural formula)\b/i.test(plain)) {
+      return true;
+    }
+    // "X to Y" / "A → B" style stems with very little text ⇒ image expected
+    if (/\b[XYA-D]\s*(?:to|→|->|into)\s*[XYA-D]\b/i.test(plain) && plain.length < 220) {
+      return true;
+    }
+    return false;
   }
 
   function questionNeedsFigure(q) {
     if (!q || !q._marksId) return false;
-    if (q._figureFetchAttempted) return false;
     if (hasPoolFigureInHtml(q.q)) return false;
-    if (q._questionImage) return true;
-    if (questionReferencesFigure(q.q)) return true;
-    return false;
+    if (q._questionImage && !hasPoolFigureInHtml(q.q)) return true;
+    if (!questionReferencesFigure(q.q)) return false;
+    // Allow one forced API pull even if a previous attempt ran (local stub often lacks img)
+    if (q._figureFetchAttempted && q._fullFetched && !hasPoolFigureInHtml(q.q)) {
+      // Already tried full fetch — stop looping, but first attempt still happens via needsFull
+      return false;
+    }
+    return true;
   }
 
   function fieldsFromApi(d, meta) {
@@ -442,16 +563,24 @@ const MarksLive = (() => {
   }
 
   function mergeIntoActiveMap(q, fields) {
-    if (!q || q.id == null || !window.TS_ACTIVE_QMAP) return q;
-    const preserved = mergePreserveImages(q, fields);
-    const merged = { ...q, ...preserved, id: q.id, _bank: q._bank || "ts_active" };
-    window.TS_ACTIVE_QMAP[q.id] = merged;
-    window.TS_ACTIVE_QMAP[String(q.id)] = merged;
-    return merged;
+    if (!q || q.id == null) return q;
+    // Mutate the same object callers already hold (practice UI uses getQ → QUESTIONS/map refs)
+    if (fields && typeof fields === "object") Object.assign(q, fields, { id: q.id });
+    if (window.TS_ACTIVE_QMAP) {
+      window.TS_ACTIVE_QMAP[q.id] = q;
+      window.TS_ACTIVE_QMAP[String(q.id)] = q;
+    }
+    return q;
   }
 
   async function ensureQuestionFull(q, opts) {
     if (!q || !q._marksId) return q;
+    if (isExamgoalQuestion(q)) {
+      q._shardLoaded = true;
+      q._fullFetched = true;
+      q._needsFull = false;
+      return q;
+    }
     const force = !!(opts && opts.force);
     const needSol = !!(opts && opts.solution);
     if (!force && !needsFullQuestion(q) && !(needSol && !hasRealSolution(q.solution))) return q;
@@ -468,17 +597,66 @@ const MarksLive = (() => {
         examName: q.examName,
         source: q.source
       }, true);
-      const preserved = mergePreserveImages(snap, fetched);
-      Object.assign(fetched, preserved);
-      if (q._bank === "ts_active" || window.TS_ACTIVE_QMAP) {
-        return mergeIntoActiveMap(q, fetched);
+      // Prefer API payload; keep local clean diagrams when API only has CDN/watermarks
+      let merged = mergePreserveImages(snap, fetched);
+      // Never keep stub A/B/C/D or empty options when API returned real ones —
+      // but prefer bank-local /assets/diagrams paths over Quizrr CDN
+      if (!isPlaceholderOptions(fetched.options)) {
+        const snapOpts = snap.options || [];
+        const apiOpts = fetched.options || [];
+        merged = {
+          ...merged,
+          options: apiOpts.map((o, i) => preferLocalDiagramHtml(snapOpts[i], o))
+        };
+      } else if (isPlaceholderOptions(merged.options) && !isPlaceholderOptions(snap.options)) {
+        merged = { ...merged, options: snap.options };
+      }
+      // Prefer API body when it carries the reaction diagram the local stub omitted
+      if (fetched.q && !isBlankText(fetched.q)) {
+        const apiFig = hasPoolFigureInHtml(fetched.q);
+        const localFig = hasPoolFigureInHtml(snap.q);
+        const localClean = hasLocalDiagramHtml(snap.q);
+        const apiOnlyCdn = apiFig && hasExternalPoolHtml(fetched.q) && !hasLocalDiagramHtml(fetched.q);
+        if (localClean && (!apiFig || apiOnlyCdn)) {
+          // Keep local clean stem figure + use API text if richer
+          if (!localFig) merged.q = preferLocalDiagramHtml(snap.q, fetched.q);
+          else merged.q = snap.q;
+        } else if (apiFig || !localFig || String(fetched.q).length >= String(snap.q || "").length) {
+          merged.q = fetched.q;
+        }
+      }
+      if (hasRealSolution(fetched.solution)) merged.solution = fetched.solution;
+      // Stem says "given compound" but API omitted figure: do not loop forever —
+      // only keep needing full when options are still stubs
+      merged._fullFetched = true;
+      merged._figureFetchAttempted = true;
+      const stillNeedFig = questionReferencesFigure(merged.q) && !hasPoolFigureInHtml(merged.q)
+        && !hasPoolFigureInHtml((merged.options || []).join(" "));
+      // If options already show the structures (numbering MCQs), stem figure is optional
+      const optsHaveStructs = (merged.options || []).filter(o => /<img\b/i.test(String(o || ""))).length >= 2;
+      merged._needsFull = isPlaceholderOptions(merged.options) || (stillNeedFig && !optsHaveStructs);
+      merged._optsLoadFailed = isPlaceholderOptions(merged.options);
+      merged.id = q.id;
+      merged._marksId = q._marksId;
+      merged._bank = q._bank;
+
+      // Always write onto the live question object (never replace with a disconnected copy)
+      Object.assign(q, merged);
+      if (window.TS_ACTIVE_QMAP) {
+        window.TS_ACTIVE_QMAP[q.id] = q;
+        window.TS_ACTIVE_QMAP[String(q.id)] = q;
       }
       if (typeof QUESTIONS !== "undefined") {
-        const existing = QUESTIONS.find(x => x._marksId === q._marksId || x.id === q.id);
-        if (existing) Object.assign(existing, preserved);
+        const existing = QUESTIONS.find(x =>
+          x._marksId === q._marksId || x.id === q.id || String(x.id) === String(q.id)
+        );
+        if (existing && existing !== q) Object.assign(existing, q);
       }
-      return fetched;
+      _fullCache[q._marksId] = q;
+      return q;
     } catch (e) {
+      console.warn("ensureQuestionFull failed", q._marksId, e && e.message);
+      q._optsLoadFailed = true;
       return q;
     }
   }
@@ -615,6 +793,7 @@ const MarksLive = (() => {
 
   function needsPrefetch(q) {
     if (!q || !q._marksId) return false;
+    if (isExamgoalQuestion(q)) return false;
     if (needsFullQuestion(q)) return true;
     if (isOptionsIncomplete(q)) return true;
     const opts = q.options || [];
@@ -833,6 +1012,7 @@ const MarksLive = (() => {
     isPartialOptions,
     isImageMcq,
     optionHasContent,
+    isExamgoalQuestion,
     isNumericalQuestion,
     isQuestionTextReady,
     isOptionsReady,

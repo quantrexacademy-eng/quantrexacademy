@@ -2,7 +2,7 @@
 const EXAMS = {
   Engineering: { name: "JEE Main & Advanced", subjects: ["Physics", "Chemistry", "Mathematics"], color: "#0D9488", icon: "⚙️", logo: "https://cdn-assets.getmarks.app/app_assets/img/exams/ic_content_exam_jee_main.png" },
   Medical:     { name: "NEET UG", subjects: ["Physics", "Chemistry", "Biology", "Zoology", "Botany"], color: "#2bc48a", icon: "⚕️", logo: "https://cdn-assets.getmarks.app/app_assets/img/exams/ic_content_exam_neet.png" },
-  Foundation:  { name: "Class 9 & 10", subjects: ["Science", "Mathematics"], color: "#7c5ce7", icon: "📚", logo: "https://cdn-assets.getmarks.app/app_assets/img/exams/ic_content_exam_nda.png" }
+  Foundation:  { name: "Class 9 & 10", subjects: ["Science", "Mathematics"], color: "#7c5ce7", icon: "📚", logo: "https://cdn-assets.getmarks.app/app_assets/img/exams/ic_content_exam_nda.png", isComingSoon: true }
 };
 
 const CHAPTERS = {
@@ -210,9 +210,11 @@ const PRIMARY_BANK = { Engineering: "jee_main", Medical: "neet", Foundation: "nd
 const CPYQB_EXAM_ORDER = {
   Engineering: [
     "jee_main", "jee_advanced", "nta_abhyas_jee_main", "mht_cet", "comedk", "bitsat", "wbjee",
-    "kcet", "ap_eamcet", "ts_eamcet", "viteee", "manipal_met", "iat_iiser", "nest_niser", "kvpy", "nda"
+    "kcet", "ap_eamcet", "ts_eamcet", "viteee", "manipal_met", "iat_iiser", "nest_niser", "kvpy"
   ],
-  Medical: ["neet", "aiims", "nta_abhyas_neet", "jipmer", "mht_cet_medical"]
+  Medical: ["neet", "aiims", "nta_abhyas_neet", "jipmer", "mht_cet_medical"],
+  // Class 9 & 10 / NDA track (screenshot 602: was empty without this)
+  Foundation: ["nda"]
 };
 
 const CPYQB_YEAR_RANGE = {
@@ -252,7 +254,6 @@ const MODULES = [
   { id:"books", icon:"📖", name:"Digital Books", desc:"Expert PYQ books & curated sets", color:"#fce7f3", target:"books" },
   { id:"cpyqb", icon:"🎯", name:"Chapter-wise PYQ Bank", desc:"Previous year questions by exam", color:"#dbeafe", target:"cpyqb" },
   { id:"dpp", icon:"📝", name:"Solve DPPs", desc:"Daily Practice Problems", color:"#e6f9f0", target:"dpp" },
-  { id:"formula", icon:"🧮", name:"Formula Cards", desc:"All formulas in one place", color:"#f3eafe", target:"formula" },
   { id:"tests", icon:"🧪", name:"Assessment Center", desc:"Mocks, chapter tests & custom", color:"#fef9c3", target:"tests" },
   { id:"quickconcepts", icon:"⚡", name:"Quick Concepts", desc:"Fast revision notes", color:"#fff3cd", target:"quickconcepts" },
   { id:"leaderboard", icon:"🏆", name:"Leaderboard", desc:"Live rankings · compete & earn leagues", color:"#fee2e2", target:"leaderboard" },
@@ -453,6 +454,11 @@ async function loadSingleBank(slug) {
 async function loadDppBank() {
   if (_dppLoaded) return QUESTIONS.filter(q => q._bank === "dpp");
   const res = await fetch("data/banks/dpp.json");
+  if (!res.ok) {
+    console.warn("DPP bank unavailable on hosting:", res.status);
+    _dppLoaded = true;
+    return [];
+  }
   const data = await res.json();
   const qs = (data.questions || []).map(q => ({ ...q, _bank: "dpp" }));
   QUESTIONS = QUESTIONS.filter(q => q._bank !== "dpp").concat(qs);
@@ -13868,8 +13874,21 @@ function _syncDb() {
   } catch (e) {}
 }
 const STATE = {
-  get exam() { return localStorage.getItem("quantrex_exam") || "Engineering"; },
-  set exam(v) { localStorage.setItem("quantrex_exam", v); _banksLoaded = {}; _currentBankSlug = null; localStorage.removeItem("quantrex_bank"); QUESTIONS = []; _syncDb(); },
+  get exam() {
+    const e = localStorage.getItem("quantrex_exam") || "Engineering";
+    // Class 9 & 10 locked as Coming Soon
+    if (e === "Foundation") return "Engineering";
+    return e;
+  },
+  set exam(v) {
+    const next = (v === "Foundation") ? "Engineering" : v;
+    localStorage.setItem("quantrex_exam", next);
+    _banksLoaded = {};
+    _currentBankSlug = null;
+    localStorage.removeItem("quantrex_bank");
+    QUESTIONS = [];
+    _syncDb();
+  },
   get bookmarks() {
     if (typeof QuantrexBookmarks !== "undefined") return QuantrexBookmarks.load().items.map(x => x.id);
     return JSON.parse(localStorage.getItem("quantrex_bookmarks") || "[]");
@@ -13890,6 +13909,89 @@ const STATE = {
 };
 let _bookNavCache = {};
 let _bookChaptersLoaded = {};
+const QX_ORGANIC_BOOK_ID = "6a4ce383c59a7b462185330f";
+let _qxOrganicFigMap = null;
+let _qxOrganicFigMapPromise = null;
+
+function qxLoadOrganicFigMap() {
+  if (_qxOrganicFigMap) return Promise.resolve(_qxOrganicFigMap);
+  if (_qxOrganicFigMapPromise) return _qxOrganicFigMapPromise;
+  _qxOrganicFigMapPromise = fetch("data/qx_organic_figure_manifest.json?v=orgfig1", { cache: "force-cache" })
+    .then(r => (r.ok ? r.json() : { map: {} }))
+    .then(j => {
+      const map = new Map();
+      const raw = (j && j.map) || {};
+      Object.keys(raw).forEach(k => {
+        const local = String(raw[k] || "");
+        if (!local) return;
+        const path = local.startsWith("/") ? local : "/" + local;
+        map.set(k, path);
+        map.set(k.split("?")[0], path);
+        const base = k.split("/").pop().split("?")[0];
+        if (base) map.set(base, path);
+      });
+      _qxOrganicFigMap = map;
+      return map;
+    })
+    .catch(() => {
+      _qxOrganicFigMap = new Map();
+      return _qxOrganicFigMap;
+    });
+  return _qxOrganicFigMapPromise;
+}
+
+// Prefetch organic figure map when app loads books
+if (typeof window !== "undefined") {
+  try { qxLoadOrganicFigMap(); } catch (_) { /* ignore */ }
+}
+
+function qxPatchOrganicFigUrl(s) {
+  if (!s || typeof s !== "string") return s;
+  const ver = encodeURIComponent((typeof window !== "undefined" && window.QX_BUILD) || "orgfig1");
+  const qx = `/assets/diagrams/qx-org-$1.png?v=${ver}`;
+  let out = s
+    .replace(/\/assets\/diagrams\/qx-org-([a-f0-9]{16})\.png(\?[^"'\s]*)?/gi, qx)
+    .replace(/\/assets\/diagrams\/org-src\/([a-f0-9]{16})\.[a-z]+(?!\?)/gi, qx);
+
+  // Quizrr watermarked CDN → local clean qx-org (manifest)
+  if (_qxOrganicFigMap && _qxOrganicFigMap.size) {
+    out = out.replace(/\bsrc=(["'])(https?:\/\/[^"']+)\1/gi, (m, q, url) => {
+      if (!/quizrr|watermarked_images|organic_book/i.test(url)) return m;
+      const base = url.split("/").pop().split("?")[0];
+      const local = _qxOrganicFigMap.get(url) || _qxOrganicFigMap.get(url.split("?")[0]) || _qxOrganicFigMap.get(base);
+      if (!local) return m;
+      return `src=${q}${local}?v=${ver}${q} data-qx-orig-src=${q}${url}${q}`;
+    });
+  }
+
+  out = out.replace(/<img\b([^>]*)>/gi, (full, attrs) => {
+    if (!/\/assets\/diagrams\/qx-org-[a-f0-9]+\.png/i.test(full)) return full;
+    let a = attrs;
+    if (!/\bclass=/i.test(a)) a += ' class="qx-pool-fig qx-no-wm qx-org-fig"';
+    else if (!/qx-pool-fig|qx-org-fig/i.test(a)) {
+      a = a.replace(/\bclass=(["'])([^"']*)\1/i, (mm, qq, c) => `class=${qq}${c} qx-pool-fig qx-no-wm qx-org-fig${qq}`);
+    }
+    if (!/\bdata-qx-display-w=/i.test(a)) {
+      const styleM = a.match(/\bstyle=["']([^"']*)["']/i);
+      if (styleM) {
+        const wm = styleM[1].match(/width:\s*(\d+)\s*px/i);
+        if (wm) a += ` data-qx-display-w="${wm[1]}"`;
+      }
+    }
+    if (!/\bloading=/i.test(a)) a += ' loading="eager"';
+    return `<img${a}>`;
+  });
+  return out;
+}
+
+function qxPatchOrganicBookQuestion(q) {
+  const out = { ...q };
+  if (out.q) out.q = qxPatchOrganicFigUrl(out.q);
+  if (out.solution) out.solution = qxPatchOrganicFigUrl(out.solution);
+  if (Array.isArray(out.options)) out.options = out.options.map(qxPatchOrganicFigUrl);
+  return out;
+}
+
 const _qxBookDataVer = (typeof window !== "undefined" && window.QX_BUILD) || "1";
 if (typeof sessionStorage !== "undefined") {
   const prev = sessionStorage.getItem("qxBookDataVer");
@@ -13916,11 +14018,18 @@ async function loadBookChapter(bookId, chapterKey) {
   if (_bookChaptersLoaded[cacheKey]) {
     return QUESTIONS.filter(q => q._book === bookId && q._chapterKey === chapterKey);
   }
+  if (bookId === QX_ORGANIC_BOOK_ID) {
+    try { await qxLoadOrganicFigMap(); } catch (_) { /* offline map may already be in JSON */ }
+  }
   const bust = encodeURIComponent(_qxBookDataVer);
   const res = await fetch(`data/books/chapters/${bookId}/${chapterKey}.json?v=${bust}`, { cache: "no-store" });
   if (!res.ok) return [];
   const data = await res.json();
-  const qs = (data.questions || []).map(q => ({ ...q, _book: bookId, _bookId: bookId, _chapterKey: chapterKey }));
+  const qs = (data.questions || []).map(q => {
+    let o = { ...q, _book: bookId, _bookId: bookId, _chapterKey: chapterKey };
+    if (bookId === QX_ORGANIC_BOOK_ID) o = qxPatchOrganicBookQuestion(o);
+    return o;
+  });
   QUESTIONS = QUESTIONS.filter(q => !(q._book === bookId && q._chapterKey === chapterKey)).concat(qs);
   _bookChaptersLoaded[cacheKey] = true;
   return qs;

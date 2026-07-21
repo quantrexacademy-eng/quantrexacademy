@@ -1,0 +1,339 @@
+/* Quantrex — Practice / CBT theme consistency + figure visibility
+ *
+ * PROMPT (implemented):
+ * 1) App dark mode → practice UI fully dark; light → fully light (no half-white half-navy).
+ * 2) Question figures always sit on a light "paper" plate so black-ink diagrams stay visible in dark mode.
+ * 3) Numerical integer keypad follows the same theme.
+ * 4) No forced white panels bleeding into dark mode except figure paper.
+ */
+
+/* ========== Light practice (explicit) ========== */
+.mtk-test-root.allen-practice[data-test-theme="light"],
+.mtk-test-root.allen-cbt[data-test-theme="light"] {
+  background: #f8fafc !important;
+  color: #0f172a !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="light"] .mtk-header {
+  background: #ffffff !important;
+  border-bottom-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="light"] .mtk-brand-text,
+.mtk-test-root.allen-practice[data-test-theme="light"] .mtk-prac-progress,
+.mtk-test-root.allen-practice[data-test-theme="light"] .mtk-q-num {
+  color: #0f172a !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="light"] .mtk-sec-bar {
+  background: #f1f5f9 !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="light"] .mtk-main {
+  background: #f8fafc !important;
+  color: #0f172a !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="light"] .mtk-palette {
+  background: #ffffff !important;
+  border-left-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="light"] .mtk-body {
+  background: #f8fafc !important;
+}
+
+/* ========== Dark practice (full shell) ========== */
+.mtk-test-root.allen-practice[data-test-theme="dark"],
+.mtk-test-root.allen-cbt[data-test-theme="dark"] {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-header {
+  background: #0b1220 !important;
+  border-bottom-color: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-brand-text,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-prac-progress,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-q-num,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-timer {
+  color: #f1f5f9 !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-close-btn,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-font-btn {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #e2e8f0 !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-sec-bar {
+  background: #111827 !important;
+  border-bottom-color: #1e293b !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-sec-tab {
+  color: #94a3b8 !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-sec-tab.active {
+  color: #f1f5f9 !important;
+  background: rgba(13, 148, 136, 0.15) !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-body {
+  background: #0f172a !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-main {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-q-text,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-q-text .qx-content,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .qx-prac-q,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .qx-content {
+  color: #e2e8f0 !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .allen-prac-chapter {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-palette {
+  background: #111827 !important;
+  border-left-color: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-pal-head {
+  color: #f1f5f9 !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-opt,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .qx-prac-opt {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #e2e8f0 !important;
+  box-shadow: none !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-opt:hover,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .qx-prac-opt:hover:not(:disabled) {
+  border-color: #0d9488 !important;
+  background: #134e4a !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-opt.selected,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .qx-prac-opt.selected {
+  border-color: #14b8a6 !important;
+  background: rgba(13, 148, 136, 0.2) !important;
+}
+
+/* ========== FIGURE PAPER — light ink plate (theme-aware) ========== */
+/* Light mode: pure white paper */
+.mtk-test-root[data-test-theme="light"] .mtk-main .qx-fig,
+.mtk-test-root[data-test-theme="light"] .mtk-main .qx-opt-fig,
+.mtk-test-root[data-test-theme="light"] .mtk-main .qx-diagram-slot,
+.mtk-test-root[data-test-theme="light"] .mtk-main #qxDiagramSlot,
+.mtk-test-root[data-test-theme="light"] .mtk-main .qx-pool-fig-wrap,
+.mtk-test-root[data-test-theme="light"] .mtk-opt-text .qx-opt-fig,
+.mtk-test-root[data-test-theme="light"] .qx-prac-opt-text .qx-opt-fig {
+  background: #ffffff !important;
+  border: 1px solid rgba(148, 163, 184, 0.4) !important;
+  border-radius: 12px !important;
+  padding: 10px 12px !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+/* Dark mode (screenshot 601 style): soft paper — black ink readable, no white flash */
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-fig,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-opt-fig,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-diagram-slot,
+.mtk-test-root[data-test-theme="dark"] .mtk-main #qxDiagramSlot,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-diagram-seg,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-pool-fig-wrap,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-fig-inner,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-fig-stack,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt-text .qx-opt-fig,
+.mtk-test-root[data-test-theme="dark"] .qx-prac-opt-text .qx-opt-fig,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt-text .qx-opt-diagram-slot,
+html[data-theme="dark"] .mtk-test-root .mtk-main .qx-fig,
+html[data-theme="dark"] .mtk-test-root .mtk-main .qx-opt-fig,
+html[data-theme="dark"] .mtk-test-root .mtk-main .qx-diagram-slot,
+html[data-theme="dark"] .mtk-test-root .mtk-main #qxDiagramSlot {
+  background: #e8eef5 !important;
+  border: 1px solid rgba(100, 116, 139, 0.5) !important;
+  border-radius: 12px !important;
+  padding: 10px 12px !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
+  overflow: visible !important;
+}
+
+.mtk-main .qx-fig img,
+.mtk-main .qx-diagram-slot img,
+.mtk-main #qxDiagramSlot img,
+.mtk-main img.qx-pool-fig,
+.mtk-main img.qx-fig-img,
+.mtk-main img.qx-no-wm,
+.mtk-opt-text img.qx-pool-fig,
+.qx-prac-opt-text img.qx-pool-fig {
+  background: transparent !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  max-width: 100% !important;
+  height: auto !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+.mtk-test-root[data-test-theme="light"] .mtk-main img.qx-pool-fig,
+.mtk-test-root[data-test-theme="light"] .mtk-main .qx-fig img {
+  mix-blend-mode: normal !important;
+}
+
+/* Dark: multiply blends white image backgrounds into soft paper cleanly */
+.mtk-test-root[data-test-theme="dark"] .mtk-main img.qx-pool-fig,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-fig img,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-opt-fig img,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt-text img.qx-pool-fig,
+.mtk-test-root[data-test-theme="dark"] .qx-prac-opt-text img.qx-pool-fig,
+html[data-theme="dark"] .mtk-test-root .mtk-main img.qx-pool-fig {
+  mix-blend-mode: multiply !important;
+}
+
+/* Multi-reaction schemes: stack with gap, never collapse */
+.mtk-main .qx-question-body img.qx-pool-fig,
+.mtk-main .mtk-q-text img,
+.mtk-main .qx-content > img,
+.mtk-main .qx-content img[src*="diagrams"],
+.mtk-main .qx-content img[src*="proxy-image"] {
+  background: transparent !important;
+  padding: 6px !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(148, 163, 184, 0.3) !important;
+  margin: 10px auto !important;
+  max-width: min(100%, 520px) !important;
+  max-height: 280px !important;
+  min-height: 0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  object-fit: contain !important;
+}
+
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-question-body img.qx-pool-fig,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .mtk-q-text img,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-content img[src*="proxy-image"],
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-content img[src*="diagrams"] {
+  background: #e8eef5 !important;
+  border-color: rgba(100, 116, 139, 0.45) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3) !important;
+  mix-blend-mode: multiply !important;
+}
+
+/* ========== Numerical keypad — theme aware ========== */
+.mtk-test-root[data-test-theme="dark"] .qx-num-entry.qx-num-panel,
+.mtk-test-root[data-test-theme="dark"] .qx-num-entry {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
+}
+.mtk-test-root[data-test-theme="dark"] .qx-num-badge {
+  background: rgba(37, 99, 235, 0.25) !important;
+  border-color: #3b82f6 !important;
+  color: #93c5fd !important;
+}
+.mtk-test-root[data-test-theme="dark"] .qx-num-label,
+.mtk-test-root[data-test-theme="dark"] .qx-num-hint {
+  color: #cbd5e1 !important;
+}
+.mtk-test-root[data-test-theme="dark"] .qx-num-input {
+  background: #0f172a !important;
+  border-color: #3b82f6 !important;
+  color: #f8fafc !important;
+}
+.mtk-test-root[data-test-theme="dark"] .qx-num-key {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+  color: #e2e8f0 !important;
+}
+.mtk-test-root[data-test-theme="dark"] .qx-num-key:hover {
+  background: #1e293b !important;
+  border-color: #0d9488 !important;
+}
+.mtk-test-root[data-test-theme="dark"] .qx-num-key.qx-num-back,
+.mtk-test-root[data-test-theme="dark"] .qx-num-key.qx-num-clear {
+  background: #334155 !important;
+  color: #f1f5f9 !important;
+}
+
+.mtk-test-root[data-test-theme="light"] .qx-num-entry.qx-num-panel {
+  background: #f8fafc !important;
+  border-color: #94a3b8 !important;
+}
+.mtk-test-root[data-test-theme="light"] .qx-num-input {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* Numerical wrap: no solid navy void under keypad */
+.mtk-test-root[data-test-theme="dark"] .mtk-numerical-wrap,
+.mtk-test-root[data-test-theme="dark"] .mtk-numerical {
+  background: transparent !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-numerical-wrap,
+.mtk-test-root[data-test-theme="light"] .mtk-numerical {
+  background: transparent !important;
+}
+
+/* Community / solution soft areas */
+.mtk-test-root[data-test-theme="dark"] #qaCommunity,
+.mtk-test-root[data-test-theme="dark"] .community-box {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #94a3b8 !important;
+}
+
+/* When app html[data-theme] is set, practice root should match (JS sets data-test-theme) */
+html[data-theme="dark"] body.allen-practice-active #app-main {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+}
+html[data-theme="light"] body.allen-practice-active #app-main {
+  background: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Fallback: if shell missing data-test-theme, inherit app theme fully */
+html[data-theme="dark"] .mtk-test-root.allen-practice:not([data-test-theme]),
+html[data-theme="dark"] .mtk-test-root.allen-cbt:not([data-test-theme]) {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+}
+html[data-theme="dark"] .mtk-test-root.allen-practice:not([data-test-theme]) .mtk-main,
+html[data-theme="dark"] .mtk-test-root.allen-practice:not([data-test-theme]) .mtk-body {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+}
+html[data-theme="dark"] .mtk-test-root.allen-practice:not([data-test-theme]) .mtk-opt,
+html[data-theme="dark"] .mtk-test-root.allen-practice:not([data-test-theme]) .qx-prac-opt {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #e2e8f0 !important;
+}
+
+/* Overview palette grid — match screenshot 601 dark cards */
+.mtk-test-root[data-test-theme="dark"] .mtk-pal-grid button,
+.mtk-test-root[data-test-theme="dark"] .mtk-q-btn,
+.mtk-test-root[data-test-theme="dark"] .qx-palette button {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #e2e8f0 !important;
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-pal-grid button.current,
+.mtk-test-root[data-test-theme="dark"] .mtk-q-btn.current,
+.mtk-test-root[data-test-theme="dark"] .mtk-pal-grid button.active {
+  background: #dc2626 !important;
+  border-color: #ef4444 !important;
+  color: #fff !important;
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-footer,
+.mtk-test-root[data-test-theme="dark"] .mtk-nav-bar {
+  background: #0b1220 !important;
+  border-top-color: #1e293b !important;
+}
+.mtk-test-root[data-test-theme="dark"] .btn-soft,
+.mtk-test-root[data-test-theme="dark"] .mtk-btn-soft {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #e2e8f0 !important;
+}

@@ -1,0 +1,328 @@
+/* Quantrex Academy — Premium coaching-brand UI shell
+   Does NOT alter exam diagrams, logos, or book covers. */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap");
+
+:root {
+  --primary: #0D9488;
+  --primary-dark: #0F766E;
+  --primary-light: #CCFBF1;
+  --accent: #4F46E5;
+  --accent-light: #E0E7FF;
+  --green: #16A34A;
+  --green-light: #DCFCE7;
+  --red: #DC2626;
+  --red-light: #FEE2E2;
+  --orange: #F59E0B;
+  --orange-light: #FEF3C7;
+  --purple: #7C3AED;
+  --purple-light: #EDE9FE;
+  --bg: #F8FAFC;
+  --card: #FFFFFF;
+  --white: #FFFFFF;
+  --border: #E2E8F0;
+  --text: #0F172A;
+  --dark: #0F172A;
+  --gray: #64748B;
+  --shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --radius-card: 12px;
+  --radius-btn: 8px;
+  --radius-pill: 999px;
+  --qx-gradient: linear-gradient(135deg, #0D9488 0%, #4F46E5 100%);
+  --qx-font-display: "Poppins", "Inter", "Noto Sans Devanagari", system-ui, sans-serif;
+  --qx-font-body: "Inter", "Noto Sans Devanagari", system-ui, sans-serif;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+}
+
+[data-theme="dark"] {
+  --bg: #0F172A;
+  --card: #1E293B;
+  --white: #1E293B;
+  --border: #334155;
+  --text: #E2E8F0;
+  --dark: #E2E8F0;
+  --gray: #94A3B8;
+  --primary-light: #134E4A;
+  --accent-light: #312E81;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+html, body {
+  font-family: var(--qx-font-body);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+.page-head h1,
+.sidebar-head .logo-text,
+.mtk-brand-text,
+h1, h2 {
+  font-family: var(--qx-font-display);
+  letter-spacing: -0.02em;
+}
+
+.page-head h1 { font-size: 22px; font-weight: 700; }
+.mtk-q-text,
+.qx-prac-q,
+.qx-content,
+.mtk-opt-text,
+.qx-prac-opt-text {
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+.mtk-opt-text,
+.qx-prac-opt-text {
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* MathJax scale match body */
+mjx-container {
+  font-size: 105% !important;
+  line-height: 1.4;
+  overflow-x: auto;
+  max-width: 100%;
+}
+.mtk-opt-text mjx-container,
+.qx-prac-opt-text mjx-container {
+  font-size: 100% !important;
+}
+
+/* Cards */
+.dash-card, .book-card, .qx-book-card, .subj-card, .ch-card, .exam-card,
+.exam-pill-card, .cpyqb-exam-tile, .dash-tool-card, .dpp-set-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.dash-card:hover, .book-card:hover:not(.soon), .qx-book-card:hover:not(.soon),
+.subj-card:hover, .ch-card:hover, .exam-card:hover, .exam-pill-card:hover,
+.cpyqb-exam-tile:hover, .dash-tool-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Buttons */
+.btn-primary, .btn-primary.big, .mtk-btn-save, .qx-prac-next {
+  background: var(--qx-gradient) !important;
+  border: none !important;
+  border-radius: var(--radius-btn) !important;
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.28);
+  font-weight: 700;
+  transition: transform 0.12s ease, filter 0.12s ease;
+}
+.btn-primary:active, .mtk-btn-save:active {
+  transform: scale(0.97);
+}
+.btn-soft, .btn-secondary {
+  border-radius: var(--radius-btn) !important;
+  border: 1px solid var(--primary) !important;
+  color: var(--primary-dark) !important;
+  background: transparent !important;
+}
+
+/* Nav shell */
+.sidebar {
+  background: var(--card);
+  border-right: 1px solid var(--border);
+}
+.nav-item {
+  border-radius: 10px;
+  color: var(--gray);
+  font-weight: 600;
+  gap: 12px;
+  padding: 11px 14px;
+}
+.nav-item .ic {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.nav-item.active {
+  background: var(--primary-light) !important;
+  color: var(--primary-dark) !important;
+  box-shadow: inset 3px 0 0 var(--primary);
+  font-weight: 700;
+}
+[data-theme="dark"] .nav-item.active {
+  color: var(--primary) !important;
+}
+
+/* Question screen polish — theme-aware (see qx-theme-practice.css for practice shell) */
+.mtk-test-root[data-test-theme="light"] .mtk-main {
+  background: #f8fafc;
+}
+.mtk-options .mtk-opt,
+.qx-prac-opts .qx-prac-opt {
+  border-radius: var(--radius-card);
+  padding: 14px 16px;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+  min-height: 52px;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-opt,
+.mtk-test-root[data-test-theme="light"] .qx-prac-opt {
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.mtk-test-root[data-test-theme="light"] .mtk-opt:hover,
+.mtk-test-root[data-test-theme="light"] .qx-prac-opt:hover:not(:disabled) {
+  border-color: var(--primary);
+  background: #F0FDFA;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-opt.selected,
+.mtk-test-root[data-test-theme="light"] .qx-prac-opt.selected {
+  border-color: var(--primary) !important;
+  background: #CCFBF1 !important;
+  box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.2);
+}
+.mtk-q-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.mtk-q-num {
+  font-family: var(--qx-font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.qx-qtype-badge,
+.allen-prac-chapter {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+}
+.qx-qtype-badge {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+.allen-prac-chapter {
+  background: #F1F5F9;
+  color: var(--gray);
+}
+[data-theme="dark"] .allen-prac-chapter {
+  background: #334155;
+}
+
+/* Palette states (NTA-like) */
+.mtk-pal-cell,
+.qx-pal-cell {
+  border-radius: 8px;
+  font-weight: 700;
+}
+.mtk-pal-cell.current,
+.qx-pal-cell.current {
+  border: 2px solid var(--primary) !important;
+  box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.25);
+}
+
+/* Solution CTA amber */
+.qx-view-sol,
+button[onclick*="Sol"],
+.qx-sol-btn {
+  border-color: #F59E0B !important;
+  color: #B45309 !important;
+}
+
+/* Community soft card */
+.community-box,
+.qx-community-empty {
+  background: var(--card);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  color: var(--gray);
+  font-size: 13px;
+}
+
+/* PYQ exam logo containers — uniform frame, logo art untouched */
+.cpyqb-exam-tile-ic,
+.exam-pill-ic,
+.exam-card-ic {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: #F8FAFC;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+}
+[data-theme="dark"] .cpyqb-exam-tile-ic,
+[data-theme="dark"] .exam-pill-ic {
+  background: #0F172A;
+}
+
+/* Chapter letter badge → soft subject-tinted circle (icon slot) */
+.ch-card .ch-ic,
+.cpyqb-ch-ic-fb,
+.ch-letter {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 14px;
+  background: var(--accent-light);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* REDUCED / REMOVED chips */
+.tag-reduced, .chip-reduced {
+  display: inline-flex;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--orange-light);
+  color: #B45309;
+  font-size: 11px;
+  font-weight: 800;
+}
+.tag-removed, .chip-removed {
+  display: inline-flex;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--red-light);
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+/* Sticky progress strip already present — tone down to brand */
+.mtk-color-strip {
+  height: 4px !important;
+  opacity: 0.95;
+}
+
+/* Subscripts from chem fixer */
+.qx-content sub,
+.mtk-opt-text sub,
+.mtk-q-text sub {
+  font-size: 0.75em;
+  vertical-align: sub;
+  line-height: 0;
+}

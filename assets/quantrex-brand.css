@@ -24,8 +24,8 @@
   --text: #0F172A;
   --shadow: rgba(15, 23, 42, 0.06);
   --qx-glow: rgba(13, 148, 136, 0.22);
-  --qx-gradient: linear-gradient(135deg, #0D9488 0%, #6366F1 100%);
-  --qx-gradient-soft: linear-gradient(135deg, #CCFBF1 0%, #EDE9FE 100%);
+  --qx-gradient: linear-gradient(135deg, #0D9488 0%, #6366F1 55%, #A855F7 100%);
+  --qx-gradient-soft: linear-gradient(135deg, #CCFBF1 0%, #EDE9FE 55%, #F3E8FF 100%);
   --qx-radius: 14px;
   --qx-font-display: 'Kanit', sans-serif;
   --qx-font-body: 'Inter', -apple-system, sans-serif;
@@ -56,8 +56,38 @@
 /* Brand polish — app shell */
 .logo-mark {
   background: var(--qx-gradient) !important;
-  box-shadow: 0 4px 14px var(--qx-glow);
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
   border-radius: 12px !important;
+}
+/* Practice / CBT SVG logo + Marks UI icons — keep full color (never gray) */
+.qx-brand-logo-svg,
+.mtk-brand > svg,
+.allen-brand > svg,
+.allen-instr-brand > svg {
+  display: block;
+  flex-shrink: 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(99, 102, 241, 0.35);
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+img.qx-marks-icon,
+img.qx-exam-logo,
+img.marks-exam-ic-img,
+img.dash-tool-logo,
+img.dash-board-logo,
+img.subj-ic-img,
+.subj-mini-ic img,
+.board-subj-ic img,
+.marks-board-subj-ic,
+.exam-pill-logo,
+.ct-subj-icon,
+.ct-wiz-subj-ic {
+  filter: none !important;
+  -webkit-filter: none !important;
+  opacity: 1 !important;
+  image-rendering: auto;
+  object-fit: contain !important;
 }
 .logo-text {
   letter-spacing: -0.03em;

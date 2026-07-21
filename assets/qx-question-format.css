@@ -10,6 +10,42 @@
   line-height: 1.55;
 }
 
+/* Flow: keep natural order — text → figure → label → figure (GOC multi-fig etc.) */
+.qx-question-body.qx-question-flow {
+  gap: 8px;
+}
+
+.qx-question-body.qx-question-flow .qx-q-seg-text {
+  order: unset !important;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  line-height: 1.55;
+}
+
+.qx-question-body.qx-question-flow .qx-diagram-seg,
+.qx-question-body.qx-question-flow .qx-diagram-slot {
+  order: unset !important;
+  align-self: center;
+  width: 100%;
+  max-width: min(100%, 720px);
+  margin: 4px auto !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.qx-question-body.qx-question-flow .qx-diagram-seg .qx-fig {
+  margin: 2px auto !important;
+}
+
 .qx-question-body .qx-q-before,
 .qx-question-body .qx-q-after,
 .qx-question-body .qx-q-text-only,
@@ -19,13 +55,14 @@
   line-height: 1.55;
 }
 
-.qx-question-body .qx-q-before {
+/* Legacy single-slot before/after (only when not using flow segments) */
+.qx-question-body:not(.qx-question-flow) .qx-q-before {
   order: 1;
   margin-bottom: 4px;
 }
 
-.qx-question-body .qx-diagram-slot,
-.qx-question-body #qxDiagramSlot {
+.qx-question-body:not(.qx-question-flow) .qx-diagram-slot,
+.qx-question-body:not(.qx-question-flow) #qxDiagramSlot {
   order: 2;
   align-self: center;
   width: 100%;
@@ -37,7 +74,7 @@
   box-shadow: none !important;
 }
 
-.qx-question-body .qx-q-after {
+.qx-question-body:not(.qx-question-flow) .qx-q-after {
   order: 3;
   margin-top: 4px;
 }
@@ -67,8 +104,8 @@
   overflow: visible !important;
 }
 
-.mtk-main .qx-question-body img.qx-pool-fig,
-.mtk-main #qxDiagramSlot img {
+.mtk-main .qx-question-body img.qx-pool-fig:not([data-qx-display-w]),
+.mtk-main #qxDiagramSlot img:not([data-qx-display-w]) {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -100,4 +137,152 @@
 .qa-wrap .qx-question-body,
 .qx-prac-q-wrap .qx-question-body {
   gap: 8px;
+}
+
+.qx-irodov-q-text {
+  display: block;
+  width: 100%;
+  margin: 0 0 12px;
+  padding: 0;
+  color: var(--qx-text, #1e293b);
+  font-size: 15px;
+  line-height: 1.55;
+  text-align: left;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* Marks-native digital books (Irodov, Rank Booster) — compact Marks web layout */
+.mtk-main .qx-marks-native,
+.mtk-main .qx-marks-native-q {
+  display: block;
+  width: 100%;
+  margin: 0 0 6px !important;
+  padding: 0 !important;
+  font-size: 14px;
+  line-height: 1.45;
+  text-align: left;
+  color: inherit;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.qx-marks-native p,
+.qx-marks-native-opt p {
+  margin: 0 0 4px;
+  padding: 0;
+}
+
+.qx-marks-native p:last-child,
+.qx-marks-native-opt p:last-child {
+  margin-bottom: 0;
+}
+
+.qx-marks-native br + br {
+  display: none;
+}
+
+.qx-marks-native img,
+.qx-marks-native-opt img,
+.qx-marks-inline-fig {
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  margin: 2px 0 !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+  object-fit: contain;
+}
+
+.qx-marks-native .qx-img-wrap,
+.qx-marks-native-opt .qx-img-wrap,
+.qx-marks-native figure,
+.qx-marks-native-opt figure,
+.qx-marks-native .qx-fig,
+.qx-marks-native-opt .qx-fig {
+  display: inline-block;
+  margin: 2px 0 !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  line-height: 1.45;
+}
+
+.qx-marks-native math,
+.qx-marks-native-opt math {
+  font-size: inherit;
+}
+
+.mtk-main .qx-marks-native img,
+.mtk-main .qx-marks-native-opt img {
+  min-height: 0 !important;
+  max-height: none !important;
+}
+
+.mtk-options.qx-opts-img .mtk-opt-text .qx-marks-native-opt {
+  line-height: 1.45 !important;
+  text-align: left !important;
+}
+
+.mtk-options.qx-opts-img .mtk-opt-text .qx-marks-native-opt img {
+  display: inline-block !important;
+  margin: 2px 0 !important;
+  max-height: none !important;
+}
+
+/* Structure + IUPAC name options (img/latex : Name) — clean stacked layout, no leading colon */
+.qx-opt-pair {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.qx-opt-pair-struct {
+  display: block;
+  width: 100%;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.qx-opt-pair-struct img,
+.qx-opt-pair-struct .qx-fig,
+.qx-opt-pair-struct .qx-opt-diagram-slot {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.qx-opt-pair-name {
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--qx-text, #1e293b);
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.qx-prac-opt .qx-opt-pair-name,
+.mtk-opt .qx-opt-pair-name {
+  margin-top: 2px;
+}
+
+/* Image-only structure options (numbering MCQs): consistent card */
+.qx-prac-opts.qx-opts-img .qx-prac-opt,
+.mtk-options.qx-opts-img .mtk-opt {
+  align-items: flex-start;
+}
+
+.qx-prac-opts.qx-opts-img .qx-prac-opt-text,
+.mtk-options.qx-opts-img .mtk-opt-text {
+  width: 100%;
+  text-align: center;
 }

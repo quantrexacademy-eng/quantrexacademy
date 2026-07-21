@@ -1,0 +1,123 @@
+/* Figures stay inside the question — no front lightbox / present overlay */
+
+/* Kill click-to-open chrome from older builds */
+img.qx-fig-clickable,
+img.qx-pool-fig,
+img.qx-fig-img,
+img.qx-no-wm,
+.mtk-main img.qx-pool-fig,
+.mtk-main .qx-diagram-slot img,
+.mtk-main #qxDiagramSlot img,
+.mtk-main .qx-fig img,
+.mtk-opt-text img.qx-pool-fig,
+.qx-prac-opt-text img.qx-pool-fig,
+.sol-body img.qx-pool-fig,
+#qxDiagramSlot img,
+.qx-diagram-slot img,
+.qx-opt-diagram-slot img {
+  cursor: default !important;
+  pointer-events: auto !important;
+  -webkit-user-drag: none;
+}
+
+.qx-fig-clickable-wrap,
+#qxDiagramSlot,
+.qx-diagram-slot,
+.qx-opt-diagram-slot,
+.qx-fig,
+.qx-opt-fig,
+.qx-pool-fig-wrap {
+  cursor: default;
+  pointer-events: auto !important;
+}
+
+/* Zoom toolbar permanently off */
+.qx-diag-toolbar,
+.qx-diag-zoom-btns,
+.qx-diag-btn,
+.qx-diag-pct,
+.qx-diag-label,
+.qx-diagram-hint,
+.qx-diagram-badge {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Never let scrub canvases steal taps */
+.qx-fig canvas,
+.qx-fig-inner canvas,
+.qx-diagram-slot canvas,
+#qxDiagramSlot canvas,
+.qx-opt-diagram-slot canvas,
+canvas.qx-premium-wm-canvas,
+canvas.qx-marks-scrub-canvas {
+  pointer-events: none !important;
+}
+
+/* Readable in-question figure size (no need to open front view) */
+.mtk-main #qxDiagramSlot img,
+.mtk-main .qx-diagram-slot img,
+.mtk-main .qx-question-body img.qx-pool-fig,
+.mtk-main .mtk-q-text img.qx-pool-fig,
+.mtk-main .qx-content img.qx-pool-fig,
+.mtk-main .qx-fig img.qx-pool-fig,
+.qx-practice-page .qx-content img.qx-pool-fig,
+.qx-practice-page #qxDiagramSlot img {
+  max-width: min(100%, 560px) !important;
+  max-height: 360px !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  object-fit: contain !important;
+  margin: 10px auto !important;
+  display: block !important;
+}
+
+.mtk-main img.qx-pool-fig[data-qx-display-w] {
+  width: min(var(--qx-fig-w, 320px), 100%) !important;
+  max-height: 360px !important;
+}
+
+.mtk-opt-text img.qx-pool-fig,
+.qx-prac-opt-text img.qx-pool-fig,
+.mtk-opt-text .qx-opt-diagram-slot img,
+.qx-prac-opt-text .qx-opt-diagram-slot img {
+  max-width: min(100%, 300px) !important;
+  max-height: 200px !important;
+  min-height: 0 !important;
+  margin: 6px auto !important;
+}
+
+.sol-body img,
+.qx-sol-body img,
+.marks-result .sol-body img {
+  max-width: min(100%, 520px) !important;
+  max-height: 320px !important;
+  object-fit: contain !important;
+}
+
+/* Force-hide lightbox from old cached JS — never cover the question */
+#qxFigLightbox,
+.qx-fig-lightbox,
+.qx-fig-lightbox.open,
+.qx-fig-lb-backdrop,
+.qx-fig-lb-panel,
+.qx-fig-lb-img,
+.qx-fig-lb-close,
+.qx-fig-lb-hint {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  z-index: -1 !important;
+}
+body.qx-fig-lb-open { overflow: auto !important; }

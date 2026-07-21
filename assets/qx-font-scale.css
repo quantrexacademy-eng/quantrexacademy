@@ -1,0 +1,163 @@
+/* Shared question text size — same as Test Series (default = medium)
+   Applies on: CBT, practice, PYQ, Digital Books, solutions, review */
+
+/* Default / medium — match test-series baseline */
+.mtk-test-root .mtk-q-text,
+.mtk-test-root .mtk-q-text .qx-content,
+.mtk-test-root .qx-prac-q,
+.mtk-test-root .qx-content.qx-q-text-only,
+html[data-font-scale="medium"] .mtk-q-text,
+html[data-font-scale="medium"] .mtk-q-text .qx-content,
+html[data-font-scale="medium"] .qx-prac-q,
+html[data-font-scale="medium"] .qx-content.qx-q-text-only,
+[data-font-scale="medium"] .mtk-q-text,
+[data-font-scale="medium"] .qx-prac-q,
+[data-font-scale="medium"] .qx-content.qx-q-text-only,
+.qx-practice-page .qx-prac-q,
+.qx-practice-page .qx-content.qx-q-text-only {
+  font-size: 16px !important;
+  line-height: 1.65 !important;
+}
+
+.mtk-test-root .mtk-opt-text,
+.mtk-test-root .mtk-opt-text .qx-content,
+.mtk-test-root .qx-prac-opt-text,
+html[data-font-scale="medium"] .mtk-opt-text,
+html[data-font-scale="medium"] .qx-prac-opt-text,
+[data-font-scale="medium"] .mtk-opt-text,
+[data-font-scale="medium"] .qx-prac-opt-text,
+.qx-practice-page .qx-prac-opt-text,
+.qx-practice-page #qaOpts .qx-content {
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+}
+
+/* small */
+html[data-font-scale="small"] .mtk-q-text,
+html[data-font-scale="small"] .mtk-q-text .qx-content,
+html[data-font-scale="small"] .qx-prac-q,
+html[data-font-scale="small"] .qx-content.qx-q-text-only,
+[data-font-scale="small"] .mtk-q-text,
+[data-font-scale="small"] .mtk-q-text .qx-content,
+[data-font-scale="small"] .qx-prac-q,
+[data-font-scale="small"] .qx-content.qx-q-text-only,
+.mtk-test-root[data-font-scale="small"] .mtk-q-text,
+.mtk-test-root[data-font-scale="small"] .mtk-q-text .qx-content,
+.mtk-test-root[data-font-scale="small"] .qx-prac-q {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+html[data-font-scale="small"] .mtk-opt-text,
+html[data-font-scale="small"] .mtk-opt-text .qx-content,
+html[data-font-scale="small"] .qx-prac-opt-text,
+[data-font-scale="small"] .mtk-opt-text,
+[data-font-scale="small"] .qx-prac-opt-text,
+.mtk-test-root[data-font-scale="small"] .mtk-opt-text,
+.mtk-test-root[data-font-scale="small"] .mtk-opt-text .qx-content {
+  font-size: 13px !important;
+}
+
+/* large */
+html[data-font-scale="large"] .mtk-q-text,
+html[data-font-scale="large"] .mtk-q-text .qx-content,
+html[data-font-scale="large"] .qx-prac-q,
+html[data-font-scale="large"] .qx-content.qx-q-text-only,
+[data-font-scale="large"] .mtk-q-text,
+[data-font-scale="large"] .mtk-q-text .qx-content,
+[data-font-scale="large"] .qx-prac-q,
+[data-font-scale="large"] .qx-content.qx-q-text-only,
+.mtk-test-root[data-font-scale="large"] .mtk-q-text,
+.mtk-test-root[data-font-scale="large"] .mtk-q-text .qx-content {
+  font-size: 18px !important;
+  line-height: 1.65 !important;
+}
+html[data-font-scale="large"] .mtk-opt-text,
+html[data-font-scale="large"] .mtk-opt-text .qx-content,
+html[data-font-scale="large"] .qx-prac-opt-text,
+[data-font-scale="large"] .mtk-opt-text,
+[data-font-scale="large"] .qx-prac-opt-text,
+.mtk-test-root[data-font-scale="large"] .mtk-opt-text,
+.mtk-test-root[data-font-scale="large"] .mtk-opt-text .qx-content {
+  font-size: 17px !important;
+}
+
+/* xlarge */
+html[data-font-scale="xlarge"] .mtk-q-text,
+html[data-font-scale="xlarge"] .mtk-q-text .qx-content,
+html[data-font-scale="xlarge"] .qx-prac-q,
+html[data-font-scale="xlarge"] .qx-content.qx-q-text-only,
+[data-font-scale="xlarge"] .mtk-q-text,
+[data-font-scale="xlarge"] .mtk-q-text .qx-content,
+[data-font-scale="xlarge"] .qx-prac-q,
+[data-font-scale="xlarge"] .qx-content.qx-q-text-only,
+.mtk-test-root[data-font-scale="xlarge"] .mtk-q-text,
+.mtk-test-root[data-font-scale="xlarge"] .mtk-q-text .qx-content {
+  font-size: 20px !important;
+  line-height: 1.65 !important;
+}
+html[data-font-scale="xlarge"] .mtk-opt-text,
+html[data-font-scale="xlarge"] .mtk-opt-text .qx-content,
+html[data-font-scale="xlarge"] .qx-prac-opt-text,
+[data-font-scale="xlarge"] .mtk-opt-text,
+[data-font-scale="xlarge"] .qx-prac-opt-text,
+.mtk-test-root[data-font-scale="xlarge"] .mtk-opt-text,
+.mtk-test-root[data-font-scale="xlarge"] .mtk-opt-text .qx-content {
+  font-size: 18px !important;
+}
+
+/* Solutions / review — same scale ladder */
+html[data-font-scale="small"] .sol-body,
+html[data-font-scale="small"] .qx-sol-body,
+html[data-font-scale="small"] .marks-result .sol-body,
+[data-font-scale="small"] .sol-body { font-size: 13px !important; line-height: 1.6 !important; }
+
+html[data-font-scale="medium"] .sol-body,
+html[data-font-scale="medium"] .qx-sol-body,
+html[data-font-scale="medium"] .marks-result .sol-body,
+[data-font-scale="medium"] .sol-body,
+.sol-body {
+  font-size: 15px !important;
+  line-height: 1.65 !important;
+}
+
+html[data-font-scale="large"] .sol-body,
+html[data-font-scale="large"] .qx-sol-body,
+[data-font-scale="large"] .sol-body { font-size: 17px !important; }
+
+html[data-font-scale="xlarge"] .sol-body,
+html[data-font-scale="xlarge"] .qx-sol-body,
+[data-font-scale="xlarge"] .sol-body { font-size: 18px !important; }
+
+/* MathJax follows body */
+html[data-font-scale="small"] mjx-container { font-size: 100% !important; }
+html[data-font-scale="medium"] mjx-container { font-size: 105% !important; }
+html[data-font-scale="large"] mjx-container { font-size: 108% !important; }
+html[data-font-scale="xlarge"] mjx-container { font-size: 112% !important; }
+
+/* Font control chrome */
+.mtk-font-lbl,
+.qx-font-lbl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #94a3b8;
+  user-select: none;
+  padding: 0 2px;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-font-lbl,
+.mtk-test-root[data-test-theme="light"] .qx-font-lbl {
+  color: #64748b;
+}
+.qx-practice-page .qx-font-lbl {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--gray, #64748b);
+  align-self: center;
+}
+.qx-practice-page .qx-font-btn {
+  font-weight: 800;
+  font-size: 13px;
+}

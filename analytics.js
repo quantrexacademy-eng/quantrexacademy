@@ -222,7 +222,7 @@ const QuantrexAnalytics = (() => {
 
       <div class="qx-an-actions">
         <button class="btn-primary" onclick="go('tests')">▶ Start New Test</button>
-        <button class="btn-soft" onclick="go('cpyqb')">Practice PYQs</button>
+        <button class="btn-soft" onclick="go('cpyqb', { step: 'exams', forceExamList: true })">Practice PYQs</button>
         <button class="btn-soft danger" onclick="QuantrexAnalytics.clear()">Clear History</button>
       </div>
     </div>`;

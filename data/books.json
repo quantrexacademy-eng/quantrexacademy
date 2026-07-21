@@ -13,7 +13,7 @@
       "bankSlug": "jee_main",
       "redirectType": "module",
       "moduleId": null,
-      "count": 1316,
+      "count": 1854,
       "type": "exam"
     },
     {
@@ -27,7 +27,35 @@
       "bankSlug": "jee_main",
       "redirectType": "module",
       "moduleId": null,
-      "count": 775,
+      "count": 1853,
+      "type": "exam"
+    },
+    {
+      "id": "69736c8362b916d85e52cd1b",
+      "title": "BITSAT English and Logical Reasoning Prep Guide",
+      "cover": "assets/book-covers/bitsat-english-lr.jpg",
+      "subject": "English + LR",
+      "badge": "BITSAT",
+      "exam": "BITSAT",
+      "isComingSoon": false,
+      "bankSlug": "jee_main",
+      "redirectType": "subject",
+      "moduleId": "69736e5def12da848f4c24f2",
+      "count": 1749,
+      "type": "exam"
+    },
+    {
+      "id": "6a4ce383c59a7b462185330f",
+      "title": "Fundamentals of Organic Chemistry",
+      "cover": "assets/book-covers/organic-chemistry.jpg",
+      "subject": "Chemistry",
+      "badge": "Organic",
+      "exam": "JEE Main",
+      "isComingSoon": false,
+      "bankSlug": "jee_main",
+      "redirectType": "subject",
+      "moduleId": "6a4e21aea2f0a1af5a74e192",
+      "count": 1151,
       "type": "exam"
     },
     {
@@ -49,13 +77,13 @@
       "title": "Most Important Selected Qs for JEE Advanced",
       "cover": "assets/book-covers/rank-booster.jpg",
       "subject": "PCM",
-      "badge": "JEE Advanced",
+      "badge": "Rank Booster",
       "exam": "JEE Advanced",
       "isComingSoon": false,
       "bankSlug": "jee_advanced",
       "redirectType": "module",
       "moduleId": null,
-      "count": 277,
+      "count": 2793,
       "type": "exam"
     },
     {
@@ -97,7 +125,7 @@
       "bankSlug": "jee_main",
       "redirectType": "module",
       "moduleId": null,
-      "count": 1128,
+      "count": 1512,
       "type": "exam"
     }
   ],
@@ -114,42 +142,5 @@
       "bankSlug": "neet"
     }
   ],
-  "curated": [
-    {
-      "id": "67656ccf18ff438b6c18cc4c",
-      "title": "Must Do Top Qs of JEE Main 2024",
-      "cover": "assets/book-covers/must-do-2024.jpg",
-      "tag": "New",
-      "subject": "PCM",
-      "badge": "PYQ 2024",
-      "exam": "PYQ Collection",
-      "bankSlug": "jee_main",
-      "count": 490,
-      "type": "curated"
-    },
-    {
-      "id": "67656d13c83ed0673b8b7b68",
-      "title": "Top 250 Single Correct Qs of JEE Main 2023-2020",
-      "cover": "assets/book-covers/top-250.jpg",
-      "tag": "PYQ",
-      "subject": "PCM",
-      "badge": "Single Correct",
-      "exam": "PYQ Collection",
-      "bankSlug": "jee_main",
-      "count": 750,
-      "type": "curated"
-    },
-    {
-      "id": "67656cf0a790fd9b172cf0d2",
-      "title": "Top 100 Numerical Qs of JEE Main 2023-2020",
-      "cover": "assets/book-covers/top-100-numerical.jpg",
-      "tag": "Numerical",
-      "subject": "Physics + Math",
-      "badge": "Numerical PYQ",
-      "exam": "PYQ Collection",
-      "bankSlug": "jee_main",
-      "count": 300,
-      "type": "curated"
-    }
-  ]
+  "curated": []
 }

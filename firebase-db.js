@@ -127,13 +127,26 @@ const QuantrexDB = (() => {
       };
       applyToLocalStorage();
       if (typeof onDataChange === "function") onDataChange(cache);
-    }, err => console.warn("Firestore listener:", err.message));
+    }, err => {
+      if (err && err.code === "permission-denied") {
+        console.warn("Firestore listener: permission denied — sign in again");
+        if (listener) { listener(); listener = null; }
+        return;
+      }
+      console.warn("Firestore listener:", err.message);
+    });
   }
 
   async function syncForUser(user) {
     if (!init() || !user || !user.uid) return false;
+    const live = auth && auth.currentUser;
+    if (!live || live.uid !== user.uid) {
+      console.warn("Firestore sync skipped — auth not ready for", user.uid);
+      return false;
+    }
+    try { await live.getIdToken(true); } catch (e) { /* */ }
     currentUid = user.uid;
-    await ensureUserProfile(user, localStorage.getItem("quantrex_exam") || "Engineering");
+    await ensureUserProfile(live, localStorage.getItem("quantrex_exam") || "Engineering");
     await loadProgress(user.uid);
     startRealtimeSync(user.uid);
     return true;
@@ -220,20 +233,51 @@ const QuantrexDB = (() => {
     currentUid = null;
     if (auth) await auth.signOut();
     localStorage.removeItem("quantrex_user");
+    localStorage.removeItem("quantrex_portal");
+    localStorage.removeItem("quantrex_teacher_profile");
   }
 
-  function authErrorMessage(code) {
+  function authErrorMessage(code, fallback) {
     const map = {
-      "auth/user-not-found": "Account nahi mila. Pehle Sign Up karo.",
-      "auth/wrong-password": "Galat password. Dobara try karo.",
-      "auth/invalid-email": "Email sahi format mein daalo.",
-      "auth/email-already-in-use": "Yeh email pehle se registered hai. Sign In karo.",
-      "auth/weak-password": "Password kam se kam 6 characters ka hona chahiye.",
-      "auth/too-many-requests": "Bahut zyada tries. Thodi der baad try karo.",
-      "auth/popup-closed-by-user": "Google login cancel ho gaya.",
-      "auth/unauthorized-domain": "Domain authorized nahi hai. Firebase Console mein domain add karo."
+      "auth/user-not-found": "Account not found. Please sign up first.",
+      "auth/wrong-password": "Wrong password. Try again.",
+      "auth/invalid-email": "Enter a valid email address.",
+      "auth/email-already-in-use": "This email is already registered. Sign in instead.",
+      "auth/weak-password": "Password must be at least 6 characters.",
+      "auth/too-many-requests": "Too many attempts. Try again later.",
+      "auth/popup-closed-by-user": "Google sign-in was cancelled.",
+      "auth/unauthorized-domain": "This domain is not authorized.",
+      "auth/invalid-phone-number": "Enter a valid 10-digit mobile number.",
+      "auth/invalid-verification-code": "Incorrect OTP. Try again.",
+      "auth/code-expired": "OTP expired. Request a new one.",
+      "auth/missing-verification": "Please send OTP first.",
+      "auth/captcha-check-failed": "Verification failed. Refresh and try again.",
+      "auth/quota-exceeded": "SMS limit reached. Try again later.",
+      "auth/operation-not-allowed": "Phone login is not enabled on the server.",
+      "auth/invalid-app-credential": "Verification failed. Refresh and try again.",
+      "auth/missing-recaptcha-token": "Complete verification and try again.",
+      "auth/billing-not-enabled": "Phone SMS requires Firebase billing.",
+      "auth/not-ready": "App not ready. Refresh the page.",
+      "auth/invalid-otp": "Incorrect OTP. Try again.",
+      "functions/not-ready": "OTP server not ready. Refresh the page.",
+      "functions/internal": "OTP server error. Try again later.",
+      "functions/unavailable": "OTP service unavailable. Try again later.",
+      "functions/failed-precondition": "OTP not configured. Use email password or Google.",
+      "functions/invalid-argument": "Invalid details. Check and try again.",
+      "functions/not-found": "OTP expired or not sent. Request a new one.",
+      "functions/deadline-exceeded": "OTP expired. Request a new one.",
+      "functions/permission-denied": "Too many wrong attempts. Request a new OTP.",
+      "functions/resource-exhausted": "Please wait before resending OTP."
     };
-    return map[code] || "Login failed. Dobara try karo.";
+    if (code && map[code]) return map[code];
+    if (fallback && typeof fallback === "string") {
+      const lower = fallback.toLowerCase();
+      if (lower.includes("incorrect otp")) return "Incorrect OTP. Try again.";
+      if (lower.includes("expired")) return "OTP expired. Request a new one.";
+      if (lower.includes("wait") && lower.includes("resend")) return fallback;
+      if (lower.includes("not configured")) return "OTP not configured. Use email password or Google.";
+    }
+    return fallback || "Login failed. Try again.";
   }
 
   return {

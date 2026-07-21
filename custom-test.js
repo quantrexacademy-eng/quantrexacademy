@@ -2,6 +2,7 @@
 
 const CT_DAILY_LIMIT = 25;
 const CT_STORE = "quantrex_custom_tests_v1";
+const CT_TEACHER_STORE = "quantrex_teacher_custom_tests_v1";
 const CT_DAILY = "quantrex_ct_daily_v1";
 
 const CT_DEFAULT_QS = 25;
@@ -59,13 +60,21 @@ function ctBumpDaily() {
   localStorage.setItem(CT_DAILY, JSON.stringify(raw));
 }
 
-function ctLoadTests() {
-  try { return JSON.parse(localStorage.getItem(CT_STORE) || "[]"); }
+function ctStoreKey(teacher) {
+  return (teacher || ctTeacherMode()) ? CT_TEACHER_STORE : CT_STORE;
+}
+
+function ctLoadTests(teacher) {
+  try { return JSON.parse(localStorage.getItem(ctStoreKey(teacher)) || "[]"); }
   catch (e) { return []; }
 }
 
-function ctSaveTests(list) {
-  localStorage.setItem(CT_STORE, JSON.stringify(list));
+function ctSaveTests(list, teacher) {
+  localStorage.setItem(ctStoreKey(teacher), JSON.stringify(list));
+}
+
+function ctTeacherMode() {
+  return !!(_ctPayload && _ctPayload.teacherMode) || ctIsTeacherAssign();
 }
 
 function ctCpyqbToExam(navEntry) {
@@ -211,6 +220,21 @@ function ctFromTests() {
   return !!(_ctPayload && _ctPayload.fromTests);
 }
 
+function ctIsTeacherAssign() {
+  return !!(_ctDraft && _ctDraft._teacherAssign);
+}
+
+function ctRender(payload) {
+  if (ctTeacherMode() || ctIsTeacherAssign()) {
+    if (payload) _ctPayload = { ..._ctPayload, ...payload, teacherMode: true };
+    if (typeof QuantrexTeacherBuilder !== "undefined") QuantrexTeacherBuilder.refresh();
+    else if (typeof QuantrexAssignments !== "undefined") QuantrexAssignments.setTeacherTab("builder");
+    else go("teacher");
+    return;
+  }
+  render("custom", payload);
+}
+
 function ctSubjectStyle(title) {
   const m = {
     Physics: { bg: "rgba(249,115,22,.15)", border: "#f97316", color: "#fb923c", short: "Phy" },
@@ -243,6 +267,11 @@ function ctExamIcon(ex) {
 
 function ctChapterIcon(ch) {
   if (!ch) return "";
+  if (typeof QxCardIcons !== "undefined") {
+    const name = ch.shortName || ch.title || ch.name || "";
+    const subj = ch.subject || (typeof _ctState !== "undefined" && _ctState.subject) || "";
+    return QxCardIcons.chapterIconHtml(name, subj, ch);
+  }
   return `<span class="ct-wiz-ch-fb">${(ch.shortName || ch.title || "?").slice(0, 1)}</span>`;
 }
 
@@ -533,7 +562,7 @@ function ctYearsStepHtml(draft) {
         ${customSel ? `<em>${draft.customSources.size} selected</em>` : ""}
       </button>
     </section>
-    ${ctWizardPreviewBar(draft, "Generate Test", "ctGenerateTest()", false)}
+    ${ctWizardPreviewBar(draft, ctIsTeacherAssign() ? "Create Assignment" : "Generate Test", "ctGenerateTest()", false)}
   </div>`;
 }
 
@@ -558,54 +587,84 @@ function ctWizardHtml() {
   return "";
 }
 
-function ctFilterTests(tests) {
+function ctFilterTests(tests, teacher) {
+  if (teacher || ctTeacherMode()) {
+    if (_ctFilter === "attempted") return tests.filter(t => t.assigned);
+    if (_ctFilter === "notAttempted") return tests.filter(t => !t.assigned);
+    return tests;
+  }
   if (_ctFilter === "attempted") return tests.filter(t => t.status === "completed");
   if (_ctFilter === "notAttempted") return tests.filter(t => t.status !== "completed");
   if (_ctFilter === "resume") return tests.filter(t => t.status === "inProgress");
   return tests;
 }
 
-function ctLandingHtml(tests) {
-  const filtered = ctFilterTests(tests);
-  const filters = [
-    { id: "all", label: "All" },
-    { id: "attempted", label: "Attempted" },
-    { id: "notAttempted", label: "Not Attempted" },
-    { id: "resume", label: "Resume" }
-  ];
+function ctLandingHtml(tests, forTeacher) {
+  const teacher = forTeacher || ctTeacherMode();
+  const filtered = ctFilterTests(tests, teacher);
+  const filters = teacher
+    ? [
+        { id: "all", label: "All" },
+        { id: "notAttempted", label: "Ready to Assign" },
+        { id: "attempted", label: "Assigned" }
+      ]
+    : [
+        { id: "all", label: "All" },
+        { id: "attempted", label: "Attempted" },
+        { id: "notAttempted", label: "Not Attempted" },
+        { id: "resume", label: "Resume" }
+      ];
   const filterPills = filters.map(f =>
     `<button type="button" class="ct-landing-filter ${ _ctFilter === f.id ? "on" : ""}" onclick="ctSetFilter('${f.id}')">${f.label}</button>`
   ).join("");
 
   const cards = filtered.length ? filtered.slice(0, 40).map(t => {
-    const action = t.status === "completed" ? "View Analysis →" : (t.status === "inProgress" ? "Resume →" : "Attempt Now →");
-    const cls = t.status === "completed" ? "done" : "";
+    let action, cls;
+    if (teacher) {
+      action = t.assigned ? "Assigned ✓" : "Assign to Batch →";
+      cls = t.assigned ? "done" : "";
+    } else {
+      action = t.status === "completed" ? "View Analysis →" : (t.status === "inProgress" ? "Resume →" : "Attempt Now →");
+      cls = t.status === "completed" ? "done" : "";
+    }
     const date = t.createdAt ? new Date(t.createdAt).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" }) : "";
-    return `<div class="ct-landing-row ${cls}" onclick="ctShowPreview('${t.id}')">
+    const extra = !teacher && t.status === "completed" && t.pct != null
+      ? `<small class="ct-landing-score">${t.pct}% correct</small>`
+      : (teacher && t.totalQs ? `<small class="ct-landing-score">${t.totalQs} Qs · ${Math.round((t.durationSec || 3600) / 60)} min</small>` : "");
+    return `<div class="ct-landing-row ${cls}" onclick="ctShowPreview('${t.id}', ${teacher})">
       <div class="ct-landing-row-main">
         <strong>${t.title}</strong>
         <small>${t.examTitle || "JEE Main"} · ${date}</small>
-        ${t.status === "completed" && t.pct != null ? `<small class="ct-landing-score">${t.pct}% correct</small>` : ""}
+        ${extra}
       </div>
       <span class="ct-landing-action">${action}</span>
     </div>`;
   }).join("") : `<div class="ct-landing-empty">No tests in this filter.</div>`;
 
-  const back = ctFromTests()
-    ? `<button type="button" class="marks-ct-back" onclick="go('tests')">←</button>`
-    : "";
+  let back = "";
+  if (teacher) {
+    back = `<button type="button" class="marks-ct-back" onclick="QuantrexAssignments.setTeacherTab('home')">←</button>`;
+  } else if (ctFromTests()) {
+    back = `<button type="button" class="marks-ct-back" onclick="go('tests')">←</button>`;
+  }
+
+  const createFn = teacher ? "ctStartWizardTeacher()" : "ctStartWizard()";
+  const title = teacher ? "Create Own Test" : "Custom Test";
+  const sub = teacher
+    ? `${tests.length} teacher tests · exam · chapters · years · assign to batch`
+    : `${tests.length} Custom tests generated`;
 
   return `<div class="ct-landing-page">
     <div class="ct-landing-head">
       ${back}
       <div>
-        <h1>Custom Test</h1>
-        <p>${tests.length} Custom tests generated</p>
+        <h1>${title}</h1>
+        <p>${sub}</p>
       </div>
     </div>
     <div class="ct-landing-filters">${filterPills}</div>
     <div class="ct-landing-list">${cards}</div>
-    <button type="button" class="ct-create-sticky" onclick="ctStartWizard()">+ Create new custom test</button>
+    <button type="button" class="ct-create-sticky" onclick="${createFn}">+ Create new custom test</button>
   </div>`;
 }
 
@@ -645,7 +704,8 @@ function ctYearModalHtml(draft) {
   </div>`;
 }
 
-function ctPreviewModalHtml(test) {
+function ctPreviewModalHtml(test, forTeacher) {
+  const teacher = forTeacher || ctTeacherMode();
   const mins = test.durationSec ? Math.round(test.durationSec / 60) : CT_DEFAULT_MINS;
   const sub = (test.chapters && test.chapters[0] && test.chapters[0].subjectTitle) || test.subjectTitle || "";
   const sty = ctSubjectStyle(sub);
@@ -653,10 +713,16 @@ function ctPreviewModalHtml(test) {
   const yearLines = (test.yearLabels || []).slice(0, 8).join(", ");
   const yearMeta = test.yearPreset === "all" ? "All Years" : (test.yearPreset === "custom" ? `Custom (${(test.yearLabels || []).length} shifts)` : test.yearPresetLabel || "Selected years");
 
+  const actions = teacher
+    ? `<button type="button" class="marks-preview-attempt" onclick="ctClosePreview();ctAssignTeacherTest('${test.id}')">${test.assigned ? "Assign Again →" : "Assign to Batch →"}</button>
+        <button type="button" class="marks-preview-later" onclick="ctClosePreview()">Close</button>`
+    : `<button type="button" class="marks-preview-attempt" onclick="ctClosePreview();ctAttemptTest('${test.id}')">Attempt test now →</button>
+        <button type="button" class="marks-preview-later" onclick="ctClosePreview()">Attempt Later</button>`;
+
   return `<div class="marks-modal-overlay" id="ctPreviewModal" onclick="if(event.target===this)ctClosePreview()">
     <div class="marks-modal marks-preview-modal">
       <div class="marks-modal-head">
-        <h3>Test preview</h3>
+        <h3>${teacher ? "Assignment preview" : "Test preview"}</h3>
         <button type="button" class="marks-modal-cancel" style="flex:0;padding:6px 12px" onclick="ctClosePreview()">✕</button>
       </div>
       <div class="marks-modal-body">
@@ -671,8 +737,7 @@ function ctPreviewModalHtml(test) {
         </div>
         ${yearLines ? `<p class="ct-preview-years"><strong>Previous year (${yearMeta})</strong><br>${yearLines}</p>` : ""}
         ${sub ? `<p class="ct-preview-subj"><strong>${sub}</strong><br>${chList}</p>` : (chList ? `<p class="marks-preview-chapters">${chList}</p>` : "")}
-        <button type="button" class="marks-preview-attempt" onclick="ctClosePreview();ctAttemptTest('${test.id}')">Attempt test now →</button>
-        <button type="button" class="marks-preview-later" onclick="ctClosePreview()">Attempt Later</button>
+        ${actions}
       </div>
     </div>
   </div>`;
@@ -682,6 +747,8 @@ async function viewCustomTests(payload) {
   const keepFromTests = _ctPayload.fromTests;
   const p = { ..._ctPayload, ...(payload || {}) };
   if (p.fromTests == null && keepFromTests) p.fromTests = keepFromTests;
+  p.teacherMode = false;
+  if (_ctDraft && _ctDraft._teacherAssign) _ctDraft = null;
   _ctPayload = p;
   await fetchCtExams();
 
@@ -697,28 +764,87 @@ async function viewCustomTests(payload) {
   return ctLandingHtml(tests);
 }
 
+async function viewTeacherCustomTests(payload) {
+  const p = { ...(payload || {}), teacherMode: true, step: (payload && payload.step) || "landing" };
+  _ctPayload = { ..._ctPayload, ...p };
+  await fetchCtExams();
+
+  if (p.step === "wizard" || (_ctDraft && _ctDraft._teacherAssign)) {
+    if (!_ctDraft) {
+      _ctDraft = ctNewDraft(ctDefaultExam());
+      _ctDraft.wizardStep = p.sub || "pick";
+      _ctDraft._teacherAssign = true;
+    }
+    if (typeof QuantrexTeacherBuilder !== "undefined") QuantrexTeacherBuilder.setWizardActive();
+    if (_ctDraft.wizardStep === "years" && (!_ctYearShiftsCache || !_ctYearShiftsCache.length)) {
+      await ctBuildYearShifts(true);
+    }
+    return ctWizardHtml();
+  }
+
+  if (typeof QuantrexTeacherBuilder !== "undefined") QuantrexTeacherBuilder.setLanding();
+  const tests = ctLoadTests(true);
+  return ctLandingHtml(tests, true);
+}
+
 function ctStartWizard() {
   _ctDraft = ctNewDraft(ctDefaultExam());
   _ctDraft.wizardStep = "pick";
-  render("custom", { step: "wizard", fromTests: ctFromTests() });
+  ctRender({ step: "wizard", fromTests: ctFromTests() });
+}
+
+function ctStartWizardTeacher() {
+  _ctPayload = { step: "wizard", teacherMode: true };
+  _ctDraft = ctNewDraft(ctDefaultExam());
+  _ctDraft.wizardStep = "pick";
+  _ctDraft._teacherAssign = true;
+  if (typeof QuantrexTeacherBuilder !== "undefined") QuantrexTeacherBuilder.setWizardActive();
+  ctRender({ step: "wizard", teacherMode: true });
 }
 
 function ctCloseWizard() {
+  if (ctTeacherMode() || ctIsTeacherAssign()) {
+    _ctDraft = null;
+    _ctPayload = { step: "landing", teacherMode: true };
+    if (typeof QuantrexTeacherBuilder !== "undefined") QuantrexTeacherBuilder.setLanding();
+    ctRender({ step: "landing", teacherMode: true });
+    return;
+  }
   _ctDraft = null;
-  render("custom", { step: "landing", fromTests: ctFromTests() });
+  ctRender({ step: "landing", fromTests: ctFromTests() });
+}
+
+function ctAssignTeacherTest(id) {
+  const t = ctLoadTests(true).find(x => x.id === id);
+  if (!t) { showToast("Test not found"); return; }
+  if (typeof QuantrexAssignments === "undefined") { showToast("Teacher module loading…"); return; }
+  QuantrexAssignments.applyFromCustomTest(t);
+  const list = ctLoadTests(true);
+  const item = list.find(x => x.id === id);
+  if (item) {
+    item.assigned = true;
+    item.assignedAt = new Date().toISOString();
+    ctSaveTests(list, true);
+  }
 }
 
 function ctWizardBack() {
   if (!_ctDraft) return;
   if (_ctDraft.wizardStep === "years") _ctDraft.wizardStep = "chapters";
   else if (_ctDraft.wizardStep === "chapters") _ctDraft.wizardStep = "pick";
-  else ctCloseWizard();
-  render("custom", { step: "wizard", fromTests: ctFromTests() });
+  else {
+    ctCloseWizard();
+    return;
+  }
+  const payload = (ctTeacherMode() || ctIsTeacherAssign())
+    ? { step: "wizard", teacherMode: true }
+    : { step: "wizard", fromTests: ctFromTests() };
+  ctRender(payload);
 }
 
 function ctSetFilter(f) {
   _ctFilter = f;
-  render("custom", { step: "landing", fromTests: ctFromTests() });
+  ctRender({ step: "landing", fromTests: ctFromTests() });
 }
 
 function ctPickExam(id) {
@@ -734,7 +860,7 @@ function ctPickExam(id) {
   _ctDraft.subjectMeta = sub || null;
   _ctDraft.chapterIds = new Set();
   _ctYearShiftsCache = null;
-  render("custom", { step: "wizard", fromTests: ctFromTests() });
+  ctRender({ step: "wizard", fromTests: ctFromTests() });
 }
 
 function ctPickSubject(id) {
@@ -745,7 +871,7 @@ function ctPickSubject(id) {
   _ctDraft.subjectId = sub._id;
   _ctDraft.subjectMeta = sub;
   _ctDraft.chapterIds = new Set();
-  render("custom", { step: "wizard", fromTests: ctFromTests() });
+  ctRender({ step: "wizard", fromTests: ctFromTests() });
 }
 
 function ctGoChapters() {
@@ -754,7 +880,7 @@ function ctGoChapters() {
   _ctDraft.unitsSubjectId = _ctDraft.subjectId;
   if (!_ctDraft.expandedUnits) _ctDraft.expandedUnits = new Set();
   (ctExamSubjects(_ctDraft).find(s => s._id === _ctDraft.subjectId)?.units || []).forEach(u => _ctDraft.expandedUnits.add(u._id));
-  render("custom", { step: "wizard", fromTests: ctFromTests() });
+  ctRender({ step: "wizard", fromTests: ctFromTests() });
 }
 
 async function ctGoYears() {
@@ -764,16 +890,20 @@ async function ctGoYears() {
   }
   _ctDraft.wizardStep = "years";
   ctSyncDuration(_ctDraft);
-  finishRender(`<div class="ct-wizard-overlay"><div class="ct-wizard-shell"><div class="ct-wiz-generating"><div class="ct-spinner"></div><strong>Loading year papers…</strong></div></div></div>`);
+  if (ctIsTeacherAssign()) {
+    go("teacher");
+  } else {
+    finishRender(`<div class="ct-wizard-overlay"><div class="ct-wizard-shell"><div class="ct-wiz-generating"><div class="ct-spinner"></div><strong>Loading year papers…</strong></div></div></div>`);
+  }
   _ctYearShiftsCache = null;
   await ctBuildYearShifts(true);
-  render("custom", { step: "wizard", fromTests: ctFromTests() });
+  ctRender({ step: "wizard", fromTests: ctFromTests() });
 }
 
 function ctSetSyllabus(hideOut) {
   if (!_ctDraft) return;
   _ctDraft.hideOutOfSyllabus = hideOut;
-  render("custom", { step: "wizard", fromTests: ctFromTests() });
+  ctRender({ step: "wizard", fromTests: ctFromTests() });
 }
 
 function ctShowUnitsFor(subjectId) {
@@ -787,7 +917,7 @@ function ctShowUnitsFor(subjectId) {
       _ctDraft.expandedUnits = new Set((sub.units || []).map(u => u._id));
     }
   }
-  render("custom", { step: "wizard", fromTests: ctFromTests() });
+  ctRender({ step: "wizard", fromTests: ctFromTests() });
 }
 
 function ctToggleUnitExpand(unitId) {
@@ -795,7 +925,7 @@ function ctToggleUnitExpand(unitId) {
   if (!_ctDraft.expandedUnits) _ctDraft.expandedUnits = new Set();
   if (_ctDraft.expandedUnits.has(unitId)) _ctDraft.expandedUnits.delete(unitId);
   else _ctDraft.expandedUnits.add(unitId);
-  render("custom", { step: "wizard", fromTests: ctFromTests() });
+  ctRender({ step: "wizard", fromTests: ctFromTests() });
 }
 
 function ctSetTotalQs(n) {
@@ -803,7 +933,7 @@ function ctSetTotalQs(n) {
   _ctDraft.totalQs = n;
   _ctDraft.durationManual = false;
   ctSyncDuration(_ctDraft);
-  render("custom", { step: "wizard", fromTests: ctFromTests() });
+  ctRender({ step: "wizard", fromTests: ctFromTests() });
 }
 
 function ctSetTimePerQ(sec) {
@@ -811,7 +941,7 @@ function ctSetTimePerQ(sec) {
   _ctDraft.timePerQ = sec;
   _ctDraft.durationManual = false;
   ctSyncDuration(_ctDraft);
-  render("custom", { step: "wizard", fromTests: ctFromTests() });
+  ctRender({ step: "wizard", fromTests: ctFromTests() });
 }
 
 function ctSetDurationMins(mins) {
@@ -819,7 +949,7 @@ function ctSetDurationMins(mins) {
   const m = Math.max(1, Math.min(600, Math.round(Number(mins) || 0)));
   _ctDraft.durationSec = m * 60;
   _ctDraft.durationManual = true;
-  render("custom", { step: "wizard", fromTests: ctFromTests() });
+  ctRender({ step: "wizard", fromTests: ctFromTests() });
 }
 
 function ctBumpDuration(mins) {
@@ -827,14 +957,14 @@ function ctBumpDuration(mins) {
   const add = Math.max(1, Math.round(Number(mins) || 0));
   _ctDraft.durationSec = Math.max(60, (_ctDraft.durationSec || CT_DEFAULT_MINS * 60) + add * 60);
   _ctDraft.durationManual = true;
-  render("custom", { step: "wizard", fromTests: ctFromTests() });
+  ctRender({ step: "wizard", fromTests: ctFromTests() });
 }
 
 function ctToggleChapter(chId, checked) {
   if (!_ctDraft) return;
   if (checked) _ctDraft.chapterIds.add(chId);
   else _ctDraft.chapterIds.delete(chId);
-  render("custom", { step: "wizard", fromTests: ctFromTests() });
+  ctRender({ step: "wizard", fromTests: ctFromTests() });
 }
 
 function ctToggleUnitAll(subjectId, unitId) {
@@ -849,14 +979,14 @@ function ctToggleUnitAll(subjectId, unitId) {
   });
   const allOn = visible.every(ch => _ctDraft.chapterIds.has(ch._id));
   visible.forEach(ch => { if (allOn) _ctDraft.chapterIds.delete(ch._id); else _ctDraft.chapterIds.add(ch._id); });
-  render("custom", { step: "wizard", fromTests: ctFromTests() });
+  ctRender({ step: "wizard", fromTests: ctFromTests() });
 }
 
 function ctSetYearPreset(preset) {
   if (!_ctDraft) return;
   _ctDraft.yearPreset = preset;
   if (preset !== "custom") _ctDraft.customSources = new Set();
-  render("custom", { step: "wizard", fromTests: ctFromTests() });
+  ctRender({ step: "wizard", fromTests: ctFromTests() });
 }
 
 async function ctOpenYearModal() {
@@ -896,7 +1026,7 @@ function ctApplyCustomYears() {
   if (!_ctDraft) return;
   _ctDraft.yearPreset = "custom";
   ctCloseYearModal();
-  render("custom", { step: "wizard", fromTests: ctFromTests() });
+  ctRender({ step: "wizard", fromTests: ctFromTests() });
 }
 
 function ctAutoTitle(draft, chapters) {
@@ -904,7 +1034,7 @@ function ctAutoTitle(draft, chapters) {
   const prefix = subjShort[draft.subjectMeta?.title] || "T";
   const n = chapters.length;
   const chName = n === 1 ? (chapters[0].shortName || chapters[0].title.split(" ")[0]) : `${n} Chapters`;
-  const num = ctLoadTests().length + 1;
+  const num = ctLoadTests(ctTeacherMode() || ctIsTeacherAssign()).length + 1;
   return `${prefix} - ${chName} Test ${num}`;
 }
 
@@ -929,7 +1059,8 @@ function ctYearLabelsForDraft(draft) {
 
 async function ctGenerateTest() {
   if (!_ctDraft) return;
-  if (ctDailyCount() >= CT_DAILY_LIMIT) {
+  const teacherGen = ctTeacherMode() || ctIsTeacherAssign();
+  if (!teacherGen && ctDailyCount() >= CT_DAILY_LIMIT) {
     showToast("⚠️ Daily limit reached (25 tests). Try tomorrow.");
     return;
   }
@@ -937,7 +1068,7 @@ async function ctGenerateTest() {
   if (!chapters.length) return;
 
   _ctDraft.wizardStep = "generating";
-  render("custom", { step: "wizard", fromTests: ctFromTests() });
+  ctRender({ step: "wizard", fromTests: ctFromTests() });
 
   const banks = ctBanksForYears(_ctDraft);
   if (typeof loadMultipleBanks === "function") await loadMultipleBanks(banks);
@@ -957,7 +1088,7 @@ async function ctGenerateTest() {
   if (!pool.length) {
     showToast("⚠️ No questions found. Try more chapters or different years.");
     _ctDraft.wizardStep = "years";
-    render("custom", { step: "wizard", fromTests: ctFromTests() });
+    ctRender({ step: "wizard", fromTests: ctFromTests() });
     return;
   }
 
@@ -975,9 +1106,10 @@ async function ctGenerateTest() {
     id: testId,
     title,
     examTitle: _ctDraft.examTitle,
+    examSlug: _ctDraft.examSlug || "",
     subjectTitle: _ctDraft.subjectMeta?.title,
     chapterCount: chapters.length,
-    chapters: chapters.map(c => ({ title: c.title, shortName: c.shortName, subjectTitle: c.subjectTitle || _ctDraft.subjectMeta?.title })),
+    chapters: chapters.map(c => ({ id: c.id, title: c.title, shortName: c.shortName, subjectTitle: c.subjectTitle || _ctDraft.subjectMeta?.title })),
     timePerQ: _ctDraft.timePerQ,
     totalQs: take,
     status: "notStarted",
@@ -991,6 +1123,18 @@ async function ctGenerateTest() {
     yearLabels
   };
 
+  if (teacherGen) {
+    const tlist = ctLoadTests(true);
+    tlist.unshift(record);
+    ctSaveTests(tlist, true);
+    _ctDraft = null;
+    _ctPayload = { step: "landing", teacherMode: true };
+    if (typeof QuantrexTeacherBuilder !== "undefined") QuantrexTeacherBuilder.setLanding();
+    ctRender({ step: "landing", teacherMode: true });
+    setTimeout(() => ctShowPreview(testId, true), 200);
+    return;
+  }
+
   const list = ctLoadTests();
   list.unshift(record);
   ctSaveTests(list);
@@ -1000,16 +1144,17 @@ async function ctGenerateTest() {
   _ctDraft = null;
   _ctPayload = { step: "landing", fromTests };
 
-  render("custom", { step: "landing", fromTests });
+  ctRender({ step: "landing", fromTests });
   setTimeout(() => ctShowPreview(testId), 150);
 }
 
-function ctShowPreview(testId) {
-  const t = ctLoadTests().find(x => x.id === testId);
+function ctShowPreview(testId, forTeacher) {
+  const teacher = forTeacher || ctTeacherMode();
+  const t = ctLoadTests(teacher).find(x => x.id === testId);
   if (!t) return;
   const existing = document.getElementById("ctPreviewModal");
   if (existing) existing.remove();
-  document.body.insertAdjacentHTML("beforeend", ctPreviewModalHtml(t));
+  document.body.insertAdjacentHTML("beforeend", ctPreviewModalHtml(t, teacher));
 }
 
 function ctClosePreview() {

@@ -25,6 +25,13 @@ const QuantrexTheme = (() => {
     updateButtons(m);
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.content = m === "dark" ? "#0B1120" : "#0D9488";
+    // Keep practice / CBT shell in sync (no light panels inside dark mode)
+    document.querySelectorAll(".mtk-test-root").forEach(el => {
+      el.setAttribute("data-test-theme", m);
+    });
+    if (typeof AllenTestUI !== "undefined" && AllenTestUI.syncPracticeTheme) {
+      AllenTestUI.syncPracticeTheme(document.getElementById("app-main"), m);
+    }
   }
 
   function toggle() {

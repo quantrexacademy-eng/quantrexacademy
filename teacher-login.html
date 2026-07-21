@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teacher Login · Quantrex For Teachers</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Kanit:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/quantrex-brand.css?v=qxbrand1">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{width:100%;max-width:440px;background:var(--white);border:1px solid var(--border);border-radius:18px;padding:32px;box-shadow:0 12px 40px rgba(0,0,0,.06)}
+.card h1{font-family:'Kanit';font-size:28px;margin-bottom:6px}
+.card p.sub{color:var(--gray);font-size:14px;margin-bottom:24px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+input{width:100%;padding:13px 14px;border:2px solid var(--border);border-radius:10px;font-size:15px;font-family:inherit}
+input:focus{outline:none;border-color:var(--primary)}
+.btn{width:100%;padding:14px;border:none;border-radius:10px;background:var(--qx-gradient);color:#fff;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit;margin-top:8px}
+.btn:disabled{opacity:.6}
+.tabs{display:flex;gap:6px;margin-bottom:20px;background:var(--bg);padding:4px;border-radius:10px}
+.tab{flex:1;padding:10px;border:none;border-radius:8px;background:transparent;font-weight:700;cursor:pointer;color:var(--gray)}
+.tab.on{background:var(--white);color:var(--primary)}
+.msg{padding:10px 12px;border-radius:8px;font-size:13px;margin-bottom:14px;display:none;line-height:1.5}
+.msg.show{display:block}
+.msg.err{background:#fee2e2;color:#b91c1c}
+.msg.ok{background:#dcfce7;color:#15803d}
+.msg.info{background:#e0f2fe;color:#0369a1}
+.hint{font-size:12px;color:var(--gray);margin:-8px 0 14px;line-height:1.45}
+.links{margin-top:20px;text-align:center;font-size:13px;color:var(--gray)}
+.links a{color:var(--primary);font-weight:600;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Quantrex For Teachers</h1>
+  <p class="sub">Create assignments, track students, access JEE Main New Question Test Series 2027</p>
+  <p class="hint" style="margin-bottom:16px;background:#e0f2fe;padding:10px 12px;border-radius:8px;color:#0369a1">Use the same email and password as your student account — no separate account needed.</p>
+  <div class="msg" id="msg"></div>
+  <div class="tabs">
+    <button type="button" class="tab on" data-mode="signin">Sign In</button>
+    <button type="button" class="tab" data-mode="signup">Sign Up</button>
+  </div>
+  <p class="hint" id="modeHint">Already have a student account? Same email/password works here — teacher access activate ho jayega.</p>
+  <div class="field" id="nameField" style="display:none">
+    <label>Full Name</label>
+    <input type="text" id="name" placeholder="Your name">
+  </div>
+  <div class="field">
+    <label>Email</label>
+    <input type="email" id="email" placeholder="quantrexacademy@gmail.com" autocomplete="email">
+  </div>
+  <div class="field">
+    <label>Mobile (optional)</label>
+    <input type="tel" id="mobile" placeholder="10-digit mobile" maxlength="10">
+  </div>
+  <div class="field">
+    <label>Password</label>
+    <input type="password" id="password" placeholder="Min 6 characters" autocomplete="current-password">
+  </div>
+  <button type="button" class="btn" id="submitBtn">Sign In →</button>
+  <p class="hint" style="text-align:center;margin-top:14px">or</p>
+  <button type="button" class="btn" id="googleBtn" style="background:var(--white);color:var(--dark);border:2px solid var(--border)">Continue with Google</button>
+  <p class="hint" style="margin-top:10px"><a href="#" id="forgotLink" style="color:var(--primary);font-weight:600;text-decoration:none">Forgot password?</a></p>
+  <div class="links">
+    <a href="login.html">Student login →</a> · <a href="app.html">Back to app</a>
+  </div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="firebase-db.js"></script>
+<script src="classroom-db.js?v=qxschema5"></script>
+<script src="teacher-auth.js?v=qxschema5"></script>
+<script>
+if (!QuantrexDB.init() || !QuantrexDB.auth) {
+  document.getElementById("msg").textContent = "Firebase load failed. Refresh the page.";
+  document.getElementById("msg").className = "msg show err";
+}
+let mode = "signin";
+const msg = document.getElementById("msg");
+function showMsg(text, type) {
+  msg.textContent = text;
+  msg.className = "msg show " + (type || "err");
+}
+function friendlyError(err) {
+  if (!err) return "Failed";
+  if (err.code && QuantrexDB.authErrorMessage) return QuantrexDB.authErrorMessage(err.code);
+  return err.message || String(err);
+}
+function setMode(next) {
+  mode = next;
+  document.querySelectorAll(".tab").forEach(x => x.classList.toggle("on", x.dataset.mode === mode));
+  document.getElementById("nameField").style.display = mode === "signup" ? "block" : "none";
+  document.getElementById("submitBtn").textContent = mode === "signup" ? "Create Teacher Account →" : "Sign In →";
+  document.getElementById("modeHint").textContent = mode === "signup"
+    ? "Already have a student account? Same email and password creates your teacher profile."
+    : "Your student email and password work here too.";
+}
+document.querySelectorAll(".tab").forEach(t => { t.onclick = () => setMode(t.dataset.mode); });
+document.getElementById("forgotLink").onclick = async (e) => {
+  e.preventDefault();
+  const email = document.getElementById("email").value.trim();
+  if (!email) { showMsg("Enter your email", "err"); return; }
+  try {
+    await QuantrexDB.auth.sendPasswordResetEmail(email);
+    showMsg("Password reset link sent to " + email, "ok");
+  } catch (err) {
+    showMsg(friendlyError(err), "err");
+  }
+};
+document.getElementById("googleBtn").onclick = async () => {
+  const btn = document.getElementById("googleBtn");
+  btn.disabled = true;
+  try {
+    const cred = await QuantrexDB.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    const profile = await QuantrexTeacherAuth.activateTeacherFromCurrentUser({ name: cred.user.displayName });
+    showMsg("Welcome, " + (profile.name || "Teacher") + "! Code: " + profile.teacherCode, "ok");
+    try { await cred.user.getIdToken(true); } catch (e) { /* */ }
+    setTimeout(() => { window.location.href = "app.html#teacher/content"; }, 1400);
+  } catch (e) {
+    showMsg(friendlyError(e), "err");
+    btn.disabled = false;
+  }
+};
+document.getElementById("submitBtn").onclick = async () => {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  const name = document.getElementById("name").value.trim();
+  const mobile = document.getElementById("mobile").value.trim();
+  if (!email || !password) { showMsg("Email and password required", "err"); return; }
+  const btn = document.getElementById("submitBtn");
+  btn.disabled = true;
+  btn.textContent = mode === "signup" ? "Setting up…" : "Signing in…";
+  try {
+    let profile;
+    if (mode === "signup") {
+      profile = await QuantrexTeacherAuth.signUpTeacher({ name, email, password, mobile });
+      if (profile._linked) {
+        showMsg("Account pehle se tha — teacher access activate! Code: " + profile.teacherCode, "ok");
+      } else {
+        showMsg("Teacher account ready! Code: " + profile.teacherCode, "ok");
+      }
+    } else {
+      profile = await QuantrexTeacherAuth.signInTeacher(email, password, {
+        provisionIfMissing: true,
+        name,
+        mobile
+      });
+      showMsg("Welcome, " + (profile.name || "Teacher") + "! Code: " + profile.teacherCode, "ok");
+    }
+    if (profile && profile.teacherCode) {
+      try { await QuantrexDB.auth.currentUser.getIdToken(true); } catch (e) { /* */ }
+    }
+    setTimeout(() => { window.location.href = "app.html#teacher/content"; }, 1400);
+  } catch (e) {
+    showMsg(friendlyError(e), "err");
+    btn.disabled = false;
+    btn.textContent = mode === "signup" ? "Create Teacher Account →" : "Sign In →";
+  }
+};
+</script>
+</body>
+</html>

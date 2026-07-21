@@ -1,162 +1,18 @@
-/* Quantrex — inline diagram zoom (replaces tap-to-fullscreen) */
+/* DISABLED — figure zoom controls removed.
+   Use click-to-present (qx-figure-viewer) instead. */
 
-.qx-diagram-hint { display: none !important; }
-
+.qx-diag-toolbar,
+.qx-diag-zoom-btns,
+.qx-diag-btn,
+.qx-diag-pct,
+.qx-diag-label,
+.qx-diagram-hint,
+.qx-diagram-badge,
 .qx-diagram-panel {
-  display: block;
-  max-width: min(100%, 540px);
-  margin: 14px 0;
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  box-shadow: 0 2px 14px rgba(15, 23, 42, 0.07);
-  overflow: hidden;
-  cursor: default;
-}
-
-.qx-diag-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 8px 12px;
-  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.qx-diag-label {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #64748b;
-}
-
-.qx-diag-zoom-btns {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.qx-diag-btn {
-  width: 34px;
-  height: 34px;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  background: #fff;
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1;
-  cursor: pointer;
-  color: #334155;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 0.15s, color 0.15s, background 0.15s;
-  font-family: inherit;
-  padding: 0;
-}
-
-.qx-diag-btn:hover {
-  border-color: #0d9488;
-  color: #0d9488;
-  background: #f0fdfa;
-}
-
-.qx-diag-btn:active { transform: scale(0.96); }
-
-.qx-diag-pct {
-  min-width: 48px;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 800;
-  color: #475569;
-  user-select: none;
-}
-
-.qx-diagram-viewport {
-  overflow: auto;
-  max-height: 400px;
-  padding: 14px;
-  background: #fafafa;
-  -webkit-overflow-scrolling: touch;
-}
-
-.qx-diagram-wrap {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: min(100%, 320px);
-  line-height: 0;
-}
-
-.qx-diagram-wrap img,
-.qx-diagram-panel img.qx-no-wm {
-  display: block;
-  max-width: 100%;
-  max-height: 300px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 6px;
-  background: #fff;
-  transition: transform 0.18s ease;
-  transform-origin: center center;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-}
-
-/* Practice / question bank */
-.qa-q .qx-diagram-panel,
-.qx-prac-q .qx-diagram-panel { max-width: min(100%, 520px); }
-.qa-q .qx-diagram-viewport,
-.qx-prac-q .qx-diagram-viewport { max-height: 380px; }
-
-/* CBT test engine — larger figures */
-.mtk-q-text .qx-diagram-panel { max-width: min(100%, 580px); margin: 12px 0; }
-.mtk-q-text .qx-diagram-viewport { max-height: 440px; }
-.mtk-q-text .qx-diagram-wrap img { max-height: 340px; }
-
-.mtk-opt-text .qx-diagram-panel { max-width: min(100%, 420px); }
-.mtk-opt-text .qx-diagram-viewport { max-height: 260px; }
-.mtk-opt-text .qx-diagram-wrap img { max-height: 200px; }
-
-.qx-prac-opt-text .qx-diagram-viewport { max-height: 260px; }
-.qx-prac-opt-text .qx-diagram-wrap img { max-height: 200px; }
-
-.mtk-test-root[data-test-theme="light"] .qx-diagram-panel {
-  border-color: #e2e8f0;
-  background: #fff;
-}
-.mtk-test-root[data-test-theme="light"] .qx-diag-toolbar {
-  background: linear-gradient(180deg, #f8fafc, #eef2f7);
-}
-.mtk-test-root[data-test-theme="light"] .qx-diagram-viewport { background: #fff; }
-
-[data-theme="dark"] .qx-diagram-panel {
-  background: #1e293b;
-  border-color: rgba(45, 212, 191, 0.22);
-}
-[data-theme="dark"] .qx-diag-toolbar {
-  background: linear-gradient(180deg, #1e293b, #0f172a);
-  border-color: rgba(45, 212, 191, 0.15);
-}
-[data-theme="dark"] .qx-diag-label { color: #94a3b8; }
-[data-theme="dark"] .qx-diag-btn {
-  background: #0f172a;
-  border-color: #334155;
-  color: #e2e8f0;
-}
-[data-theme="dark"] .qx-diag-btn:hover {
-  border-color: #2dd4bf;
-  color: #5eead4;
-  background: #134e4a;
-}
-[data-theme="dark"] .qx-diagram-viewport { background: #0f172a; }
-[data-theme="dark"] .qx-diagram-wrap img { background: #fff; }
-
-@media (max-width: 640px) {
-  .qx-diag-btn { width: 38px; height: 38px; }
-  .qx-diagram-viewport { max-height: 320px; }
-  .mtk-q-text .qx-diagram-viewport { max-height: 360px; }
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
 }

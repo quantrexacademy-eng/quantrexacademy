@@ -1,0 +1,232 @@
+/* Jovi — Quantrex AI study assistant widget */
+.jovi-fab {
+  position: fixed;
+  right: 18px;
+  bottom: 22px;
+  z-index: 9200;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: linear-gradient(145deg, #fb923c, #ea580c);
+  box-shadow: 0 10px 28px rgba(234, 88, 12, .45), 0 0 0 3px rgba(255,255,255,.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .15s, box-shadow .15s;
+}
+.jovi-fab:hover { transform: translateY(-2px) scale(1.04); }
+.jovi-fab img, .jovi-fab svg { width: 42px; height: 42px; display: block; }
+.jovi-fab-pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(249, 115, 22, .55);
+  animation: joviPulse 2s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes joviPulse {
+  0% { transform: scale(.9); opacity: .9; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+.jovi-panel {
+  position: fixed;
+  right: 16px;
+  bottom: 92px;
+  z-index: 9201;
+  width: min(400px, calc(100vw - 24px));
+  height: min(560px, calc(100vh - 110px));
+  background: var(--card, #fff);
+  color: var(--dark, #0f172a);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, .22);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: Inter, system-ui, sans-serif;
+}
+.jovi-panel.open { display: flex; }
+
+.jovi-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: linear-gradient(135deg, #ea580c, #f97316 55%, #fb923c);
+  color: #fff;
+}
+.jovi-head img { width: 40px; height: 40px; border-radius: 12px; background: rgba(255,255,255,.15); }
+.jovi-head-text { flex: 1; min-width: 0; }
+.jovi-head-text strong { display: block; font-size: 15px; font-weight: 800; }
+.jovi-head-text small { display: block; font-size: 11px; opacity: .9; }
+.jovi-head-actions { display: flex; gap: 4px; }
+.jovi-icon-btn {
+  width: 34px; height: 34px; border-radius: 10px; border: none;
+  background: rgba(255,255,255,.18); color: #fff; cursor: pointer;
+  font-size: 14px; font-weight: 700; font-family: inherit;
+}
+.jovi-icon-btn:hover { background: rgba(255,255,255,.3); }
+.jovi-icon-btn.on { background: #fff; color: #ea580c; }
+
+.jovi-msgs {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px 12px;
+  background: var(--bg, #f8fafc);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.jovi-bubble {
+  max-width: 92%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.jovi-bubble.bot {
+  align-self: flex-start;
+  background: var(--card, #fff);
+  border: 1px solid var(--border, #e2e8f0);
+  color: var(--dark, #0f172a);
+  border-bottom-left-radius: 4px;
+}
+.jovi-bubble.user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #ea580c, #f97316);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+.jovi-bubble .jovi-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .03em;
+  padding: 2px 7px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+  background: #ffedd5;
+  color: #c2410c;
+}
+.jovi-bubble .jovi-hit {
+  display: block;
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: var(--bg, #f1f5f9);
+  border: 1px solid var(--border, #e2e8f0);
+  cursor: pointer;
+  font-size: 12.5px;
+}
+.jovi-bubble .jovi-hit:hover { border-color: #f97316; }
+.jovi-bubble .jovi-hit strong { display: block; font-size: 12px; margin-bottom: 2px; }
+.jovi-bubble .jovi-hit small { color: var(--gray, #64748b); }
+.jovi-typing { font-size: 12px; color: var(--gray, #64748b); align-self: flex-start; padding: 0 4px; }
+
+.jovi-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 12px 0;
+  background: var(--card, #fff);
+  border-top: 1px solid var(--border, #e2e8f0);
+}
+.jovi-chip {
+  border: 1px solid var(--border, #e2e8f0);
+  background: var(--bg, #f8fafc);
+  color: var(--dark, #0f172a);
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+.jovi-chip:hover { border-color: #f97316; color: #ea580c; }
+
+.jovi-compose {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 10px 12px 12px;
+  background: var(--card, #fff);
+  border-top: 1px solid var(--border, #e2e8f0);
+}
+.jovi-compose textarea {
+  flex: 1;
+  min-height: 40px;
+  max-height: 110px;
+  resize: none;
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 13.5px;
+  background: var(--bg, #f8fafc);
+  color: var(--dark, #0f172a);
+}
+.jovi-compose textarea:focus { outline: 2px solid rgba(249,115,22,.35); border-color: #f97316; }
+.jovi-send {
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ea580c, #f97316);
+  color: #fff;
+  font-weight: 800;
+  font-size: 13px;
+  font-family: inherit;
+  padding: 10px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.jovi-send:disabled { opacity: .55; cursor: wait; }
+
+.jovi-inline {
+  margin: 16px 0;
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 16px;
+  background: linear-gradient(180deg, #fff7ed, var(--card, #fff) 40%);
+  overflow: hidden;
+}
+.jovi-inline-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  user-select: none;
+}
+.jovi-inline-head img { width: 36px; height: 36px; }
+.jovi-inline-head strong { font-size: 14px; }
+.jovi-inline-head small { display: block; color: var(--gray, #64748b); font-size: 12px; }
+.jovi-inline-body { display: none; padding: 0 12px 12px; }
+.jovi-inline.open .jovi-inline-body { display: block; }
+.jovi-inline-body .jovi-compose { border: none; padding: 0; background: transparent; }
+
+[data-theme="dark"] .jovi-panel,
+[data-theme="dark"] .jovi-bubble.bot,
+[data-theme="dark"] .jovi-compose,
+[data-theme="dark"] .jovi-tools {
+  background: #1e293b;
+  color: #f1f5f9;
+  border-color: #334155;
+}
+[data-theme="dark"] .jovi-msgs { background: #0f172a; }
+[data-theme="dark"] .jovi-bubble .jovi-hit { background: #0f172a; border-color: #334155; }
+[data-theme="dark"] .jovi-compose textarea,
+[data-theme="dark"] .jovi-chip { background: #0f172a; color: #f1f5f9; border-color: #334155; }
+[data-theme="dark"] .jovi-inline { background: linear-gradient(180deg, #431407, #1e293b 45%); border-color: #334155; }
+
+@media (max-width: 640px) {
+  .jovi-panel {
+    right: 8px; left: 8px; width: auto;
+    bottom: 84px;
+    height: min(70vh, 520px);
+  }
+  .jovi-fab { right: 12px; bottom: 16px; width: 54px; height: 54px; }
+}

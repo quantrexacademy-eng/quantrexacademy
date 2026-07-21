@@ -1,13 +1,173 @@
 /* Quantrex — cleaned diagram states */
 
-img.qx-cleaned {
+.qx-fig img,
+.qx-opt-fig img,
+img.qx-fig-img,
+img.qx-no-wm[src*="cdn-question-pool"],
+img.qx-no-wm[src*="/pyq/"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: 100% !important;
+  min-height: 24px !important;
+}
+
+img.qx-cleaned,
+img.qx-restored,
+img.qx-wm-clean,
+img.qx-pool-fig,
+img.qx-pool-fig.qx-cleaned {
   filter: none !important;
   -webkit-filter: none !important;
   image-rendering: auto;
 }
 
-img.qx-img-flagged {
-  display: none !important;
+.qx-pool-fig-wrap,
+.qx-diagram-slot {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: auto !important;
+  margin: 12px auto !important;
+  max-width: 100% !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* Question body — compact: stem → diagram → continuation */
+.qx-question-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 10px;
+}
+
+.mtk-main .qx-question-body .qx-diagram-slot,
+.qa-wrap .qx-question-body .qx-diagram-slot,
+.qx-prac-q-wrap .qx-question-body .qx-diagram-slot {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin: 6px auto 8px !important;
+  padding: 0;
+  max-width: min(100%, 680px);
+  min-height: auto !important;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  text-align: center;
+  box-shadow: none;
+}
+
+.mtk-main .qx-question-body .qx-diagram-slot .qx-fig {
+  margin: 2px auto !important;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.mtk-main .qx-question-body .qx-diagram-slot img:not([data-qx-display-w]),
+.mtk-main #qxDiagramSlot img:not([data-qx-display-w]),
+.mtk-main .qx-fig img:not([data-qx-display-w]),
+.mtk-main .qx-fig-img:not([data-qx-display-w]) {
+  max-height: none !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+  overflow: visible !important;
+}
+
+.qx-question-body .mtk-q-text,
+.qx-question-body .qx-q-text-only {
+  margin-bottom: 4px !important;
+  line-height: 1.45;
+}
+
+.qx-question-body .qx-q-before {
+  margin-bottom: 2px;
+}
+
+.qx-question-body .qx-q-after {
+  margin-top: 2px;
+  margin-bottom: 0;
+}
+
+.qx-question-body .mtk-q-text p,
+.qx-question-body .qx-q-text-only p {
+  margin: 0 0 4px;
+}
+
+.qx-question-body .mtk-q-text p:last-child,
+.qx-question-body .qx-q-after p:last-child {
+  margin-bottom: 0;
+}
+
+.qx-question-body br + br {
+  display: none;
+}
+
+
+
+.mathjax_ignore img:not([data-qx-display-w]),
+.tex2jax_ignore img:not([data-qx-display-w]),
+.qx-diagram-slot img:not([data-qx-display-w]),
+#qxDiagramSlot,
+#qxDiagramSlot img:not([data-qx-display-w]),
+.qx-diagram-slot,
+.qx-opt-diagram-slot,
+.qx-opt-diagram-slot img:not([data-qx-display-w]) {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: 100% !important;
+  min-height: 48px !important;
+  width: auto !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 0 auto !important;
+}
+
+#qxDiagramSlot,
+.qx-diagram-slot,
+.qx-opt-diagram-slot {
+  overflow: visible !important;
+  max-height: none !important;
+}
+
+.qx-question-body .qx-fig,
+.qx-question-body .qx-pool-fig-wrap,
+.mtk-q-text .qx-fig,
+.qx-q-text-only .qx-fig {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.qx-opt-diagram-slot {
+  display: block !important;
+  visibility: visible !important;
+  min-height: 48px !important;
+  margin: 6px auto !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+
+.mtk-opt-text .qx-opt-diagram-slot img,
+.qx-prac-opt-text .qx-opt-diagram-slot img {
+  max-height: 180px !important;
+}
+
+img.qx-img-flagged,
+img.qx-no-wm,
+img.qx-fig-img,
+.qx-fig img,
+.qx-opt-fig img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-height: none;
 }
 
 .qx-img-under-review .qx-img-review-note {
