@@ -3168,10 +3168,15 @@ window.QxImgClean = (() => {
   }
 
   function imgHasRealFigure(img) {
-    if (!img || img.naturalWidth <= 12) return false;
+    if (!img) return false;
+    const nw = img.naturalWidth || 0;
+    const nh = img.naturalHeight || 0;
+    if (nw < 40 || nh < 40) return false;
     const src = fixUrl(img.getAttribute("src") || "");
     if (!src || src === FIG_PLACEHOLDER || src.startsWith("data:image/gif")) return false;
-    return img.offsetHeight > 12;
+    // Fully loaded and painted
+    if (!img.complete) return false;
+    return (img.offsetHeight > 24 || img.clientHeight > 24);
   }
 
   function slotFigureVisible(slot) {
@@ -3180,6 +3185,8 @@ window.QxImgClean = (() => {
   }
 
   function stripQuestionInlineImgs(root) {
+    // Only dedupe when diagram SLOT has a fully loaded real figure.
+    // Never strip the only copy of a figure (was causing missing figures).
     const scope = root || document;
     const slot = scope.querySelector("#qxDiagramSlot, .qx-question-body .qx-diagram-slot");
     if (!slotFigureVisible(slot)) return;
@@ -3187,11 +3194,11 @@ window.QxImgClean = (() => {
       if (textEl.closest(".qx-diagram-slot, #qxDiagramSlot")) return;
       textEl.querySelectorAll("figure").forEach(fig => {
         if (fig.closest(".qx-diagram-slot, #qxDiagramSlot")) return;
-        if (fig.querySelector("img[src*='cdn-question-pool'], img[src*='/pyq/']")) fig.remove();
+        if (fig.querySelector("img[src*='cdn-question-pool'], img[src*='/pyq/'], img[src*='qx-figures']")) fig.remove();
       });
       textEl.querySelectorAll("img").forEach(img => {
         if (img.closest(".qx-diagram-slot, #qxDiagramSlot")) return;
-        const cdn = fixUrl(img.getAttribute("src") || "");
+        const cdn = fixUrl(img.getAttribute("src") || img.dataset.qxOrigSrc || "");
         if (isPoolDiagram(cdn, img) || isLocalCleanAsset(cdn)) img.remove();
       });
     });
@@ -3202,13 +3209,14 @@ window.QxImgClean = (() => {
     stripQuestionInlineImgs(scope);
     scope.querySelectorAll(".mtk-opt-text, .qx-prac-opt-text, .qa-opt .qx-content").forEach(textEl => {
       const slot = textEl.querySelector(".qx-opt-diagram-slot, .qx-diagram-slot");
+      const slotImg = slot && slot.querySelector("img");
+      const slotOk = imgHasRealFigure(slotImg);
       textEl.querySelectorAll("img").forEach(img => {
         if (img.closest(".qx-opt-diagram-slot, .qx-diagram-slot")) return;
-        const cdn = fixUrl(img.getAttribute("src") || "");
-        if (!isPoolDiagram(cdn, img)) return;
-        const slotImg = slot && slot.querySelector("img");
-        const slotOk = slotImg && (imgHasRealFigure(slotImg) || imgIsLoading(slotImg));
-        if (slotOk) img.remove();
+        const cdn = fixUrl(img.getAttribute("src") || img.dataset.qxOrigSrc || "");
+        if (!isPoolDiagram(cdn, img) && !isLocalCleanAsset(cdn)) return;
+        // Only remove duplicate when slot already shows a real loaded figure
+        if (slotOk && img !== slotImg) img.remove();
         else processImage(img);
       });
     });

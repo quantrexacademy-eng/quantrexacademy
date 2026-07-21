@@ -78,6 +78,24 @@ canvas.qx-premium-wm-canvas {
   pointer-events: none !important;
 }
 
+/* Never blank figures during clean */
+img.qx-pool-fig.qx-wm-loading,
+img.qx-pool-fig.qx-wm-pending,
+img.qx-fig-img.qx-wm-loading {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  min-height: 64px !important;
+}
+
+/* Broken 1px placeholder — keep space until real src loads */
+#qxDiagramSlot:empty::after,
+.qx-diagram-slot:empty::after {
+  content: "";
+  display: block;
+  min-height: 48px;
+}
+
 .sol-body img,
 .qx-sol-body img {
   margin: 12px auto !important;

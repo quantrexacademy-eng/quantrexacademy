@@ -106,21 +106,24 @@
 
   function restoreIfBlank(img) {
     if (!img) return;
-    // Soft-strip / bad proxy left a blank or 1px figure — restore original CDN
+    // Soft-strip / bad proxy left a blank or tiny figure — restore original CDN
     const src = String(img.getAttribute("src") || "");
     const orig = String(img.dataset.qxOrigSrc || "");
-    const blank = !img.naturalWidth || img.naturalWidth < 8 || img.naturalHeight < 8
+    const blank = !img.naturalWidth || img.naturalWidth < 24 || img.naturalHeight < 24
       || src === "" || src.startsWith("data:image/gif")
-      || (img.complete && img.naturalWidth > 0 && img.offsetHeight < 4);
+      || (img.complete && img.naturalWidth > 0 && img.offsetHeight < 8);
     if (!blank) return;
-    if (orig && /cdn-question-pool|cdn\.quizrr|\/pyq\//i.test(orig)) {
+    const fallback = orig || src;
+    if (fallback && (/cdn-question-pool|cdn\.quizrr|\/pyq\/|qx-figures|assets\/diagrams/i.test(fallback) || fallback.startsWith("/"))) {
       delete img.dataset.qxSoftStrip;
       delete img.dataset.qxFigFrozen;
+      delete img.dataset.qxProcessedVer;
       img.crossOrigin = "anonymous";
-      if (typeof QxImgClean !== "undefined" && QxImgClean.proxyImageUrl) {
-        img.src = QxImgClean.proxyImageUrl(orig);
+      if (/cdn-question-pool|cdn\.quizrr|\/pyq\//i.test(fallback)
+        && typeof QxImgClean !== "undefined" && QxImgClean.proxyImageUrl) {
+        img.src = QxImgClean.proxyImageUrl(fallback);
       } else {
-        img.src = orig;
+        img.src = fallback;
       }
       forceVisible(img);
     }

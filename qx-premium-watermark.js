@@ -983,26 +983,26 @@ window.QxPremiumWM = (() => {
           const mx = Math.max(r, g, b);
           const mn = Math.min(r, g, b);
           const chroma = mx - mn;
-          // Keep dark bonds + anti-aliased edges + color (don't treat mid-gray AA as ink)
+          // Structure ink: dark bonds/labels + color accents + mid AA near black
           const isInk =
-            lum < 145 ||
-            chroma >= 28 ||
-            (lum < 165 && chroma >= 16);
+            lum < 135 ||
+            chroma >= 30 ||
+            (lum < 155 && chroma >= 18);
           if (isInk) inkBefore++;
-          // Only pale MARKS haze — soft lift keeps figures beautiful (not bold/broken)
+          // MARKS watermark: mid/pale gray haze (covers typical baked "MARKS" text)
           const nearGray =
-            Math.abs(r - g) < 28 &&
-            Math.abs(g - b) < 32 &&
-            Math.abs(r - b) < 34;
+            Math.abs(r - g) < 32 &&
+            Math.abs(g - b) < 36 &&
+            Math.abs(r - b) < 38;
           const isWm =
             !isInk &&
             nearGray &&
-            chroma < 26 &&
-            lum >= 198 &&
-            lum < 248;
+            chroma < 34 &&
+            lum >= 155 &&
+            lum < 250;
           if (isWm) {
-            // Soft bleach toward white (preserve nearby AA structure)
-            const lift = Math.min(1, Math.max(0.75, (lum - 185) / 55));
+            // Soft bleach toward white — keep figure smooth, remove MARKS letters
+            const lift = Math.min(1, Math.max(0.82, (lum - 145) / 90));
             out[i] = Math.round(r + (255 - r) * lift);
             out[i + 1] = Math.round(g + (255 - g) * lift);
             out[i + 2] = Math.round(b + (255 - b) * lift);
@@ -1015,8 +1015,8 @@ window.QxPremiumWM = (() => {
         }
         const wmFrac = stripped / Math.max(totalPx, 1);
         const inkKeep = inkBefore > 0 ? inkAfter / inkBefore : 1;
-        // If almost no WM, keep original pixels (beautiful as-is)
-        if (wmFrac < 0.0012 || inkKeep < 0.5) {
+        // If almost no WM, keep original (still mark clean so we stop retry loops)
+        if (wmFrac < 0.0008) {
           img.dataset.qxSoftStrip = "2";
           img.dataset.qxFigFrozen = "1";
           img.dataset.qxCleanedSrc = "1";
@@ -1026,6 +1026,17 @@ window.QxPremiumWM = (() => {
           img.style.setProperty("opacity", "1", "important");
           img.style.setProperty("visibility", "visible", "important");
           img.style.setProperty("display", "block", "important");
+          stripQuantrexBrand(img);
+          return resolve(true);
+        }
+        // Abort strip only if it would destroy most structure
+        if (inkKeep < 0.4) {
+          img.dataset.qxSoftStrip = "2";
+          img.dataset.qxFigFrozen = "1";
+          img.dataset.qxHasWm = "0";
+          img.classList.add("qx-fig-ready", "qx-wm-clean");
+          img.style.setProperty("opacity", "1", "important");
+          img.style.setProperty("visibility", "visible", "important");
           stripQuantrexBrand(img);
           return resolve(true);
         }
