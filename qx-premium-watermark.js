@@ -844,12 +844,12 @@ window.QxPremiumWM = (() => {
     if (/ic_content_exam_|formula_cards|ncert_toolbox/i.test(src)) return false;
     // Already-soft-stripped data URLs
     if (src.startsWith("data:image") && img.dataset.qxSoftVer === SOFT_STRIP_VER) return false;
-    // Digital-book multi-color assets — already clean, never re-strip
+    // Permanent clean / digital-book assets — never re-strip, never touch CDN
     if (/\/assets\/diagrams\/qx-org-/i.test(src)
       || img.classList.contains("qx-org-fig")
       || img.classList.contains("qx-organic-fig")
       || /\/assets\/qx-figures\//i.test(src)
-      || /qx-alc-prep|hcv-|qx-irodov/i.test(src)
+      || /qx-perm-|qx-alc-prep|hcv-|qx-irodov/i.test(src)
       || /\/assets\/diagrams\/org-src\//i.test(src)
       || /\/assets\/clean-diagrams\//i.test(src)) {
       return false;

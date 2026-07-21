@@ -32,8 +32,11 @@ window.QxImgClean = (() => {
   const BRAND_OVERLAY_IMG = "/assets/quantrex-academy-brand.png";
   const GETMARKS_POOL_RX = /cdn-question-pool\.getmarks\.app/i;
   const FIGURE_OVERRIDES_URL = "data/qx_figure_overrides.json";
+  const PERM_MANIFEST_URL = "data/qx_perm_figure_manifest.json";
   const FIGURE_OVERRIDE_FALLBACK = [];
   const LOCAL_CLEAN_RX = /^\.?\/?assets\/(diagrams|clean-diagrams|qx-figures)\//i;
+  const PERM_FIG_RX = /\/assets\/qx-figures\/perm\/qx-perm-[a-f0-9]+\.png/i;
+  let permFigureMap = null;
   const ORG_SRC_RX = /\/assets\/diagrams\/org-src\//i;
   const QX_ORG_RX = /\/assets\/diagrams\/qx-org-[a-f0-9]+\.png/i;
   // Render like Marks web: preserve native HTML + inline diagrams
@@ -195,6 +198,37 @@ window.QxImgClean = (() => {
       figureOverrides = { version: 1, rules: [] };
     }
     return figureOverrides;
+  }
+
+  /** Permanent clean local figures (no Marks CDN / no watermark forever) */
+  async function loadPermFigureMap() {
+    if (permFigureMap) return permFigureMap;
+    permFigureMap = new Map();
+    try {
+      const bust = (typeof window !== "undefined" && window.QX_BUILD) || "1";
+      const r = await fetch(PERM_MANIFEST_URL + "?v=" + bust, { cache: "no-store" });
+      if (r.ok) {
+        const j = await r.json();
+        (j.figures || []).forEach((f) => {
+          if (f && f.url && f.clean) {
+            permFigureMap.set(fixUrl(f.url), f.clean);
+            // basename key for partial matches
+            const base = String(f.url).split("?")[0].split("/").pop();
+            if (base) permFigureMap.set(base, f.clean);
+          }
+        });
+      }
+    } catch (_) { /* */ }
+    return permFigureMap;
+  }
+
+  function permCleanSrc(cdnSrc) {
+    if (!permFigureMap || !permFigureMap.size) return "";
+    const fixed = fixUrl(cdnSrc || "");
+    if (permFigureMap.has(fixed)) return normalizeAssetSrc(permFigureMap.get(fixed));
+    const base = fixed.split("?")[0].split("/").pop();
+    if (base && permFigureMap.has(base)) return normalizeAssetSrc(permFigureMap.get(base));
+    return "";
   }
 
   function normalizeAssetSrc(src) {
@@ -1834,7 +1868,10 @@ window.QxImgClean = (() => {
 
   function proxyImageUrl(cdnSrc) {
     const fixed = fixUrl(cdnSrc);
-    // v=23: force multi-color book-style figures
+    // Prefer permanent local clean asset (never Marks CDN watermark)
+    const perm = permCleanSrc(fixed);
+    if (perm) return perm;
+    // Fallback: same-origin clean proxy until permanent asset exists
     const q = `url=${encodeURIComponent(fixed)}&clean=1&v=23`;
     try {
       if (typeof location !== "undefined" && location.origin && !/localhost|127\.0\.0\.1/i.test(location.origin)) {
@@ -1949,10 +1986,15 @@ window.QxImgClean = (() => {
   function poolDisplaySrc(cdnSrc) {
     const cdn = canonicalCdnSrc(cdnSrc) || fixUrl(cdnSrc || "");
     if (!cdn) return "";
-    // Always route Marks/Quizrr pool images through clean proxy (strips MARKS WM → pure black)
+    // Permanent clean local figure first (copyright-safe, no Marks watermark ever)
+    const perm = permCleanSrc(cdn);
+    if (perm) return perm;
+    // Else same-origin clean proxy
     if (isGetmarksPool(cdn) || POOL_RX.test(cdn)) {
       const base = proxyImageUrl(cdn);
-      return base.includes("clean=") ? base : `${base}${base.includes("?") ? "&" : "?"}clean=1`;
+      return base.includes("clean=") || base.startsWith("/assets/")
+        ? base
+        : `${base}${base.includes("?") ? "&" : "?"}clean=1`;
     }
     return cdn;
   }
@@ -2077,6 +2119,7 @@ window.QxImgClean = (() => {
     if (!q) return;
     rememberQuestionRaw(q);
     await loadManifest();
+    await loadPermFigureMap();
     const urls = new Set();
     extractPoolSrcs(q.q || "").forEach(u => urls.add(fixUrl(u)));
     (q.options || []).forEach((opt, i) => {
@@ -3809,9 +3852,10 @@ window.QxImgClean = (() => {
     if (!scope) return;
     purgeLegacyDbs();
     void loadFigureOverrides();
+    void loadPermFigureMap();
     startObserver();
     startGuardian();
-    // First force every Marks CDN img onto clean proxy (removes baked MARKS watermark)
+    // Prefer permanent clean local assets; else proxy (never raw Marks watermark)
     rewriteAllPoolImgs(scope);
     if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.scanAllFigures) {
       QxPremiumWM.scanAllFigures(scope);
