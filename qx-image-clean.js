@@ -1,10 +1,10 @@
 // Quantrex — embedded watermark removal (never hides or breaks figures)
 window.QxImgClean = (() => {
-  const DB_NAME = "quantrex_clean_images_v61";
+  const DB_NAME = "quantrex_clean_images_v62";
   const DB_STORE = "blobs";
   const MANIFEST_URL = "data/qx_clean_manifest.json";
   const REVIEW_URL = "data/qx_image_review.json";
-  const CLEAN_VER = 64;
+  const CLEAN_VER = 66;
   const CENTER_WM_MAX = 0.006;
   const WM_DETECT_MIN = 0.0035;
   const CDN_ONLY = false;
@@ -19,22 +19,49 @@ window.QxImgClean = (() => {
   const MANIFEST_MIN_VER = 3;
   const WM_RESIDUE_MAX = 0.048;
   const PYQ_CDN = "https://cdn-question-pool.getmarks.app/";
-  const PROXY_BASE = (typeof QUANTREX_STACK !== "undefined" && QUANTREX_STACK.frontend && QUANTREX_STACK.frontend.url)
-    ? QUANTREX_STACK.frontend.url.replace(/\/$/, "")
-    : "https://quantrexacademy-lemon.vercel.app";
+  const PROXY_BASE = (typeof location !== "undefined" && location.origin && !/localhost|127\.0\.0\.1/i.test(location.origin))
+    ? location.origin.replace(/\/$/, "")
+    : ((typeof QUANTREX_STACK !== "undefined" && QUANTREX_STACK.frontend && QUANTREX_STACK.frontend.url)
+      ? QUANTREX_STACK.frontend.url.replace(/\/$/, "")
+      : "https://quantrexacademy-live.web.app");
   const BROKEN_CDN_RX = /https?:\/\/\.app\//gi;
   const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|\/cbse\/|ap_eamcet/i;
   const OPT_IMG_SEL = ".mtk-opt-text, .qx-prac-opt-text, .mtk-opt, .qa-opt, .qx-prac-opt";
-  const SKIP_RX = /watermark|marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|formula_cards|ic_content_exam_|cpyqb\/subjects\//i;
+  // NOTE: do NOT match "watermarked_images" (Quizrr organic diagram folder)
+  const SKIP_RX = /marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|formula_cards|ic_content_exam_|cpyqb\/subjects\/|(?:^|\/)watermark(?:\.|_|-|$)|watermark(?:\.png|\.svg|overlay)/i;
   const BRAND_OVERLAY_IMG = "/assets/quantrex-academy-brand.png";
   const GETMARKS_POOL_RX = /cdn-question-pool\.getmarks\.app/i;
   const FIGURE_OVERRIDES_URL = "data/qx_figure_overrides.json";
   const FIGURE_OVERRIDE_FALLBACK = [];
-  const LOCAL_CLEAN_RX = /^\.?\/?assets\/(diagrams|clean-diagrams)\//i;
+  const LOCAL_CLEAN_RX = /^\.?\/?assets\/(diagrams|clean-diagrams|qx-figures)\//i;
+  const ORG_SRC_RX = /\/assets\/diagrams\/org-src\//i;
+  const QX_ORG_RX = /\/assets\/diagrams\/qx-org-[a-f0-9]+\.png/i;
+  // Render like Marks web: preserve native HTML + inline diagrams
+  const MARKS_NATIVE_BOOKS = new Set([
+    "68f1ce4cc729e5251bd00430", // Rank Booster
+    "69cfb5366ecf5579037d96a4", // Irodov — local figure PNGs; do NOT pixel-strip (wipes labels)
+    "6a4ce383c59a7b462185330f", // Fundamentals of Organic Chemistry
+    "69736c8362b916d85e52cd1b", // BITSAT English & Logical Reasoning
+  ]);
+  const IRODOV_BOOK_ID = "69cfb5366ecf5579037d96a4";
+  const IRODOV_MANIFEST_URL = "data/qx_irodov_figure_manifest.json";
+
+  function isMarksNativeBook(q) {
+    if (!q) return false;
+    const bid = q._book || q._bookId;
+    return MARKS_NATIVE_BOOKS.has(String(bid));
+  }
+
+  function isIrodovBook(q) {
+    if (!q) return false;
+    return String(q._book || q._bookId || "") === IRODOV_BOOK_ID
+      || /irodov/i.test(String(q.examName || q._bookTitle || ""));
+  }
 
   let manifest = null;
   let reviewSet = null;
   let figureOverrides = null;
+  let irodovFigMap = null;
   let dbPromise = null;
 
   function fixUrl(url) {
@@ -179,6 +206,40 @@ window.QxImgClean = (() => {
     return figureOverrides;
   }
 
+  /** Exact AKCR2 / filename map → local clean qx-irodov diagrams (no MARKS watermark). */
+  async function loadIrodovFigMap() {
+    if (irodovFigMap) return irodovFigMap;
+    irodovFigMap = new Map();
+    try {
+      const r = await fetch(IRODOV_MANIFEST_URL, { cache: "force-cache" });
+      if (!r.ok) return irodovFigMap;
+      const j = await r.json();
+      const map = (j && j.map) || {};
+      Object.keys(map).forEach((k) => {
+        const clean = normalizeAssetSrc(map[k]);
+        if (!clean) return;
+        const base = String(k).split("/").pop().split("?")[0].toLowerCase();
+        if (base) irodovFigMap.set(base, clean);
+        const id = base.match(/^(akcr2_\d+)/i);
+        if (id) irodovFigMap.set(id[1].toLowerCase(), clean);
+      });
+    } catch (_) { /* keep empty map */ }
+    return irodovFigMap;
+  }
+
+  function resolveIrodovCleanSrc(url) {
+    if (!irodovFigMap || !irodovFigMap.size) return null;
+    const s = fixUrl(url || "");
+    if (!s) return null;
+    const base = s.split("/").pop().split("?")[0].toLowerCase();
+    if (base && irodovFigMap.has(base)) return irodovFigMap.get(base);
+    const id = base && base.match(/^(akcr2_\d+)/i);
+    if (id && irodovFigMap.has(id[1].toLowerCase())) return irodovFigMap.get(id[1].toLowerCase());
+    const pathId = s.match(/(AKCR2_\d+)/i);
+    if (pathId && irodovFigMap.has(pathId[1].toLowerCase())) return irodovFigMap.get(pathId[1].toLowerCase());
+    return null;
+  }
+
   function normalizeAssetSrc(src) {
     const s = String(src || "").trim();
     if (!s) return s;
@@ -194,6 +255,202 @@ window.QxImgClean = (() => {
 
   function isLocalCleanAsset(src) {
     return LOCAL_CLEAN_RX.test(String(src || ""));
+  }
+
+  function isPreprocessedQxOrg(src) {
+    return QX_ORG_RX.test(String(src || ""));
+  }
+
+  function isOrganicOrgSrc(src) {
+    return ORG_SRC_RX.test(String(src || "")) && !isPreprocessedQxOrg(src);
+  }
+
+  function isOrganicFigure(src) {
+    return isPreprocessedQxOrg(src) || isOrganicOrgSrc(src);
+  }
+
+  function isLocalReadyAsset(src) {
+    if (isPreprocessedQxOrg(src)) return true;
+    return isLocalCleanAsset(src) && !isOrganicOrgSrc(src);
+  }
+
+  function finalizeQxOrgDisplay(img) {
+    if (!img || !img.isConnected) return;
+    restoreOrganicFigureSize(img);
+    markDisplayClean(img);
+    revealOrganicClean(img);
+  }
+
+  function parseImgDisplayWidth(attrs) {
+    const s = String(attrs || "");
+    const dw = s.match(/\bdata-qx-display-w=["'](\d+)["']/i);
+    if (dw) return parseInt(dw[1], 10) || 0;
+    const style = s.match(/\bstyle=["']([^"']*)["']/i);
+    if (style) {
+      const wm = style[1].match(/width:\s*(\d+)\s*px/i);
+      if (wm) return parseInt(wm[1], 10) || 0;
+    }
+    return 0;
+  }
+
+  function captureOrganicDisplayWidth(img) {
+    if (!img) return 0;
+    const stored = parseInt(img.dataset.qxDisplayW || "", 10);
+    if (stored > 12) return stored;
+    const fromStyle = parseImgDisplayWidth(img.getAttribute("style") || "");
+    if (fromStyle > 12) {
+      img.dataset.qxDisplayW = String(fromStyle);
+      return fromStyle;
+    }
+    return 0;
+  }
+
+  const ORGANIC_DEFAULT_FIG_W = 300;
+
+  function restoreOrganicFigureSize(img) {
+    if (!img) return;
+    img.classList.add("qx-organic-fig");
+    let targetW = captureOrganicDisplayWidth(img);
+    const nw = img.naturalWidth || 0;
+    const nh = img.naturalHeight || 0;
+    if (!targetW && nw > 0) targetW = Math.min(nw, 680);
+    if (!targetW) targetW = ORGANIC_DEFAULT_FIG_W;
+    const px = `${targetW}px`;
+    const stack = img.closest(".qx-fig-inner");
+    const fig = img.closest(".qx-fig, .qx-opt-fig");
+    const slot = img.closest("#qxDiagramSlot, .qx-diagram-slot");
+    img.dataset.qxDisplayW = String(targetW);
+    img.style.setProperty("--qx-fig-w", px);
+    img.style.setProperty("width", px, "important");
+    img.style.setProperty("max-width", "100%", "important");
+    img.style.setProperty("height", "auto", "important");
+    img.style.setProperty("display", "block", "important");
+    img.style.setProperty("visibility", "visible", "important");
+    img.style.setProperty("opacity", "1", "important");
+    if (nw > 0 && nh > 0) {
+      img.style.setProperty("min-height", `${Math.max(48, Math.round(targetW * nh / nw))}px`, "important");
+    }
+    if (stack) {
+      stack.style.setProperty("--qx-fig-w", px);
+      stack.style.setProperty("width", px, "important");
+      stack.style.setProperty("max-width", "100%", "important");
+      stack.style.setProperty("min-width", px, "important");
+      stack.style.removeProperty("height");
+      stack.style.removeProperty("max-height");
+    }
+    if (fig) {
+      fig.style.setProperty("--qx-fig-w", px);
+      fig.style.setProperty("max-width", "100%", "important");
+      fig.style.setProperty("width", px, "important");
+    }
+    if (slot) {
+      slot.style.setProperty("max-width", "100%", "important");
+      slot.style.setProperty("width", "100%", "important");
+    }
+  }
+
+  function hideOrganicPending(img) {
+    if (!img) return;
+    captureOrganicDisplayWidth(img);
+    img.classList.add("qx-wm-loading", "qx-org-pending");
+    img.classList.remove("qx-fig-ready", "qx-cleaned", "qx-restored");
+    const fig = img.closest(".qx-fig, .qx-opt-fig, .qx-fig-inner");
+    if (fig) fig.classList.remove("qx-fig-ready");
+    if (String(img.getAttribute("src") || "").includes("org-src")) {
+      img.setAttribute("src", FIG_PLACEHOLDER);
+    }
+  }
+
+  function revealOrganicClean(img) {
+    if (!img) return;
+    img.classList.remove("qx-wm-loading", "qx-org-pending", "qx-wm-pending");
+    img.classList.add("qx-fig-ready");
+    img.style.removeProperty("visibility");
+    img.style.removeProperty("opacity");
+    const fig = img.closest(".qx-fig, .qx-opt-fig");
+    if (fig) {
+      fig.classList.remove("qx-wm-pending-wrap");
+      fig.classList.add("qx-fig-ready");
+    }
+    revealFigure(img);
+  }
+
+  function cleanOrganicOrgImageData(data, w, h) {
+    const total = w * h;
+    let sumL = 0;
+    for (let i = 0; i < total; i++) {
+      const pi = i * 4;
+      sumL += (data[pi] + data[pi + 1] + data[pi + 2]) / 3;
+    }
+    if (sumL / total < 130) {
+      for (let i = 0; i < total; i++) {
+        const pi = i * 4;
+        data[pi] = 255 - data[pi];
+        data[pi + 1] = 255 - data[pi + 1];
+        data[pi + 2] = 255 - data[pi + 2];
+      }
+    }
+    const beforeInk = countInk(data, w, h);
+    let removed = 0;
+    const lumAt = (x, y) => {
+      const pi = (y * w + x) * 4;
+      return (data[pi] + data[pi + 1] + data[pi + 2]) / 3;
+    };
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        const pi = (y * w + x) * 4;
+        const r = data[pi];
+        const g = data[pi + 1];
+        const b = data[pi + 2];
+        const L = (r + g + b) / 3;
+        const C = Math.max(r, g, b) - Math.min(r, g, b);
+        if (b > r + 18 && b > g + 10 && L > 120 && L < 230) {
+          data[pi] = data[pi + 1] = data[pi + 2] = 255;
+          removed++;
+        } else if (L > 110 && L < 200 && C < 28 && C > 4) {
+          data[pi] = data[pi + 1] = data[pi + 2] = 255;
+          removed++;
+        }
+      }
+    }
+    const rowFrac = new Float32Array(h);
+    for (let y = 0; y < h; y++) {
+      let dark = 0;
+      for (let x = 0; x < w; x++) if (lumAt(x, y) < 38) dark++;
+      rowFrac[y] = dark / w;
+    }
+    const barRows = new Uint8Array(h);
+    let runStart = null;
+    for (let y = 0; y < h; y++) {
+      if (rowFrac[y] >= 0.92) {
+        if (runStart === null) runStart = y;
+      } else if (runStart !== null) {
+        if (y - runStart >= 6) barRows.fill(1, runStart, y);
+        runStart = null;
+      }
+    }
+    if (runStart !== null && h - runStart >= 6) barRows.fill(1, runStart, h);
+    for (let y = 0; y < h; y++) {
+      if (!barRows[y]) continue;
+      for (let x = 0; x < w; x++) {
+        if (lumAt(x, y) < 50) {
+          const pi = (y * w + x) * 4;
+          data[pi] = data[pi + 1] = data[pi + 2] = 255;
+          removed++;
+        }
+      }
+    }
+    const afterInk = countInk(data, w, h);
+    return {
+      removed,
+      removedRatio: removed / Math.max(total, 1),
+      improved: removed > 0,
+      cleanEnough: true,
+      damaged: afterInk < Math.max(30, beforeInk * 0.25),
+      residueRatio: 0,
+      beforeInk,
+      afterInk
+    };
   }
 
   function normalizeMatchText(s) {
@@ -249,21 +506,49 @@ window.QxImgClean = (() => {
     return cdn && isPoolDiagram(cdn) ? normalizeAssetSrc(cdn) : null;
   }
 
-  function resolveDiagramSrcs(rawHtml, qid, q) {
-    const override = getFigureOverrideSrc(rawHtml, qid);
-    if (override) return [override];
-    const srcs = extractPoolSrcs(rawHtml);
-    if (!srcs.length) {
-      const qSrc = questionImageSrc(q);
-      if (qSrc) srcs.push(qSrc);
+  function extractDiagramEntries(html) {
+    const entries = [];
+    const s = String(html || "");
+    const imgRx = /<img\b([^>]*)>/gi;
+    let m;
+    while ((m = imgRx.exec(s)) !== null) {
+      const attrs = m[1];
+      const origM = attrs.match(/\bdata-qx-orig-src=["']([^"']+)["']/i);
+      const srcM = attrs.match(/\bsrc=["']([^"']+)["']/i);
+      const raw = origM ? origM[1] : (srcM ? srcM[1] : "");
+      if (!raw || isApiFigureSrc(raw)) continue;
+      let src = "";
+      if (isLocalCleanAsset(raw)) src = normalizeAssetSrc(raw);
+      else {
+        const cdn = canonicalCdnSrc(raw);
+        if (cdn) src = cdn;
+      }
+      if (!src || (!isPoolDiagram(src) && !isLocalCleanAsset(src))) continue;
+      const displayW = parseImgDisplayWidth(attrs);
+      if (!entries.some(e => e.src === src)) entries.push({ src, displayW });
     }
-    return srcs;
+    return entries;
+  }
+
+  function resolveDiagramEntries(rawHtml, qid, q) {
+    const override = getFigureOverrideSrc(rawHtml, qid);
+    if (override) return [{ src: override, displayW: 0 }];
+    const entries = extractDiagramEntries(rawHtml);
+    if (!entries.length) {
+      const qSrc = questionImageSrc(q);
+      if (qSrc) entries.push({ src: qSrc, displayW: 0 });
+    }
+    return entries;
+  }
+
+  function resolveDiagramSrcs(rawHtml, qid, q) {
+    return resolveDiagramEntries(rawHtml, qid, q).map(e => e.src);
   }
 
   function applyLocalCleanFigure(img, src, qid) {
     if (!img || !src) return false;
     const clean = normalizeAssetSrc(src);
-    if (!isLocalCleanAsset(clean)) return false;
+    if (!isLocalReadyAsset(clean)) return false;
     if (!img.closest(".qx-fig, .qx-opt-fig")) ensureDiagramWrap(img);
     overlayTargetForImg(img);
     img.setAttribute("src", clean);
@@ -288,13 +573,23 @@ window.QxImgClean = (() => {
 
   async function cleanUrl(url) {
     const fixed = fixUrl(url);
+    // Irodov: exact figure map first (avoids AKCR2_1 matching AKCR2_10 via loose urlRx)
+    if (/AKCR2_|jee_advanced_physics|irodov/i.test(fixed) || /AKCR2_|jee_advanced_physics/i.test(String(url || ""))) {
+      await loadIrodovFigMap();
+      const iro = resolveIrodovCleanSrc(fixed) || resolveIrodovCleanSrc(url);
+      if (iro) return iro;
+    }
     await loadFigureOverrides();
     const rules = [...(figureOverrides?.rules || []), ...FIGURE_OVERRIDE_FALLBACK];
     for (const rule of rules) {
       if (rule.url && (rule.url === fixed || rule.url === url)) return normalizeAssetSrc(rule.clean);
       if (rule.urlRx) {
         try {
-          if (new RegExp(rule.urlRx, "i").test(fixed)) return normalizeAssetSrc(rule.clean);
+          // Prefer whole id: AKCR2_12 not as prefix of AKCR2_120
+          const rx = /AKCR2_\d+/i.test(rule.urlRx)
+            ? new RegExp("(?:^|[/_.-])" + rule.urlRx.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "(?:\\.|$|[^0-9])", "i")
+            : new RegExp(rule.urlRx, "i");
+          if (rx.test(fixed)) return normalizeAssetSrc(rule.clean);
         } catch (_) {}
       }
     }
@@ -1092,37 +1387,28 @@ window.QxImgClean = (() => {
   }
 
   function premiumSheetHtml() {
-    if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.premiumWatermarkHtml) {
-      return QxPremiumWM.premiumWatermarkHtml();
-    }
-    const dark = document.documentElement.getAttribute("data-theme") === "dark";
-    const themeCls = dark ? "qx-premium-wm--dark" : "qx-premium-wm--light";
-    return [
-      `<div class="qx-premium-wm-sheet qx-wm-diagonal ${themeCls}" aria-hidden="true">`,
-      `<span class="qx-premium-wm-title">QUANTREX ACADEMY</span>`,
-      `<span class="qx-premium-wm-tag">CONCEPTS CREATE DESTINY</span>`,
-      `</div>`
-    ].join("");
+    // Never inject Quantrex/MARKS text watermarks over figures
+    return "";
   }
 
   function quantrexWmCoverHtml(zones) {
-    return marksHideHtml(zones) + premiumSheetHtml();
+    return "";
   }
 
   function watermarkStripHtml() {
-    return premiumSheetHtml();
+    return "";
   }
 
   function premiumWatermarkHtml() {
-    return premiumSheetHtml();
+    return "";
   }
 
   function diagramWatermarkHtml() {
-    return premiumSheetHtml();
+    return "";
   }
 
   function brandOverlayHtml() {
-    return premiumSheetHtml();
+    return "";
   }
 
   const OVERLAY_CLASS_RX = /^(qx-quantrex-wm|qx-premium-wm|qx-premium-wm-sheet|qx-diag-watermark|qx-brand-overlay|qx-wm-mask|qx-marks-scrub|qx-marks-strip|qx-wm-diagonal)$/;
@@ -1191,23 +1477,15 @@ window.QxImgClean = (() => {
   }
 
   function paintPremiumWatermark(img) {
-    if (!img || !img.isConnected || img.dataset.qxHasWm !== "1") return;
+    // Never paint Quantrex brand on figures — only strip leftovers
+    if (!img) return;
+    removeCanvasShield(img);
     const stack = overlayTargetForImg(img);
-    if (!stack) return;
-    const w = img.offsetWidth || img.clientWidth || 0;
-    const h = img.offsetHeight || img.clientHeight || 0;
-    if (w < 12 || h < 12) {
-      if (img.dataset.qxCanvasBound !== "1") {
-        img.dataset.qxCanvasBound = "1";
-        const repaint = () => paintPremiumWatermark(img);
-        img.addEventListener("load", repaint);
-        if (typeof requestAnimationFrame === "function") requestAnimationFrame(repaint);
-      }
-      return;
-    }
-    if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
-      QxPremiumWM.paintMarksHideOnly(img);
-      bindCanvasResize(img, stack);
+    if (stack) {
+      stripBrandOverlay(stack);
+      stack.querySelectorAll(
+        ".qx-premium-wm-sheet, .qx-quantrex-wm, .qx-quantrex-black-wm, .qx-quantrex-black-seal, img.qx-quantrex-wm-overlay, canvas.qx-premium-wm-canvas, .qx-brand-overlay, .qx-diag-watermark"
+      ).forEach(el => el.remove());
     }
   }
 
@@ -1229,7 +1507,7 @@ window.QxImgClean = (() => {
   }
 
   function applyWmCover(img) {
-    if (!img || !img.isConnected || img.dataset.qxHasWm !== "1") return;
+    if (!img || !img.isConnected) return;
     enhancePoolFigure(img);
     revealFigure(img);
     const target = overlayTargetForImg(img);
@@ -1240,6 +1518,7 @@ window.QxImgClean = (() => {
     }
     const fig = img.closest(".qx-fig, .qx-opt-fig");
     if (fig) fig.classList.remove("qx-premium-wm-active");
+    // Always try MARKS clean for pool figures (server may already have cleaned via proxy)
     if (img.naturalWidth > 0 && typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
       void QxPremiumWM.paintMarksHideOnly(img);
     }
@@ -1269,12 +1548,26 @@ window.QxImgClean = (() => {
       if (img.naturalWidth > 0) markFigureReady(img, false);
       return;
     }
-    if (isLocalCleanAsset(cdn) || img.classList.contains("qx-cleaned")) {
+    if (isPreprocessedQxOrg(cdn)) {
       const busted = normalizeAssetSrc(cdn);
       if (busted && fixUrl(img.getAttribute("src") || "") !== fixUrl(busted)) {
         img.setAttribute("src", busted);
       }
-      markDisplayClean(img);
+      if (img.naturalWidth <= 0) await waitForImageLoad(img, 8000);
+      finalizeQxOrgDisplay(img);
+      return;
+    }
+    if (isOrganicOrgSrc(cdn) && img.classList.contains("qx-cleaned")) {
+      await finalizeOrganicOrgDisplay(img);
+      return;
+    }
+    if (isLocalReadyAsset(cdn) || (img.classList.contains("qx-cleaned") && !isOrganicOrgSrc(cdn))) {
+      const busted = normalizeAssetSrc(cdn);
+      if (busted && fixUrl(img.getAttribute("src") || "") !== fixUrl(busted)) {
+        img.setAttribute("src", busted);
+      }
+      if (img.dataset.qxDisplayW) finalizeQxOrgDisplay(img);
+      else markDisplayClean(img);
       return;
     }
 
@@ -1316,13 +1609,12 @@ window.QxImgClean = (() => {
   }
 
   function shouldBrandOverlay(img) {
-    if (!img) return false;
-    if (img.dataset.qxHasWm !== "1") return false;
-    const src = fixUrl(img.dataset.qxOrigSrc || img.getAttribute("src") || "");
-    return isPoolDiagram(src, img);
+    // Always false — Quantrex watermarks removed from all figures
+    return false;
   }
 
   function applyQuantrexBrand(img) {
+    // Watermarks disabled — they were covering figures. Only strip leftovers.
     if (!img || !img.isConnected) return Promise.resolve(false);
     if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.stripQuantrexBrand) {
       QxPremiumWM.stripQuantrexBrand(img);
@@ -1440,9 +1732,42 @@ window.QxImgClean = (() => {
     return probe.centerRatio != null ? probe.centerRatio : 1;
   }
 
+  async function finalizeOrganicOrgDisplay(img) {
+    if (!img || !img.isConnected) return;
+    restoreOrganicFigureSize(img);
+    await waitForImageLoad(img, 4000);
+    restoreOrganicFigureSize(img);
+    const stack = img.closest(".qx-fig-inner") || img.parentElement;
+    if (!stack || typeof QxPremiumWM === "undefined") return;
+    const dw = captureOrganicDisplayWidth(img);
+    const w = dw > 12 ? dw : (img.offsetWidth || img.clientWidth || img.naturalWidth || 0);
+    const nh = img.naturalHeight || 0;
+    const nw = img.naturalWidth || 0;
+    const h = w > 12 && nw > 0 && nh > 0 ? Math.round(w * nh / nw) : (img.offsetHeight || img.clientHeight || nh || 0);
+    if (w < 12 || h < 12) {
+      if (img.dataset.qxCoachingWmBound !== "1") {
+        img.dataset.qxCoachingWmBound = "1";
+        const repaint = () => { void finalizeOrganicOrgDisplay(img); };
+        img.addEventListener("load", repaint, { once: true });
+        if (typeof requestAnimationFrame === "function") requestAnimationFrame(repaint);
+      }
+      return;
+    }
+    // No watermark overlays (they covered figures) — clean black figure only
+    if (QxPremiumWM.stripQuantrexBrand) QxPremiumWM.stripQuantrexBrand(img);
+    if (QxPremiumWM.paintMarksHideOnly) await QxPremiumWM.paintMarksHideOnly(img);
+    markDisplayClean(img);
+    revealOrganicClean(img);
+  }
+
   async function finalizeCleanDisplay(img, stats) {
     if (!img || !img.isConnected) return;
+    const cdn = poolCdnSrc(img) || fixUrl(img.dataset.qxOrigSrc || "");
     if (img.naturalWidth > 0 && img.dataset.qxOrigSrc) {
+      if (isOrganicOrgSrc(cdn) && (img.classList.contains("qx-cleaned") || String(img.getAttribute("src") || "").startsWith("blob:"))) {
+        await finalizeOrganicOrgDisplay(img);
+        return;
+      }
       await upgradePoolFigure(img, poolCdnSrc(img));
       return;
     }
@@ -1465,36 +1790,37 @@ window.QxImgClean = (() => {
   }
 
   function syncBrandOverlay(container) {
+    // Never inject Quantrex watermark — always strip overlays, keep figure clean
     if (!container) return;
     const img = container.matches && container.matches("img")
       ? container
       : container.querySelector("img.qx-pool-fig, img.qx-fig-img, img.qx-no-wm, img");
-    if (!img) return;
-    const target = overlayTargetForImg(img) || container;
-    const fig = img.closest(".qx-fig, .qx-opt-fig");
-    const cdn = poolCdnSrc(img);
-    const optFig = isOptFigure(img);
-    if (!shouldBrandOverlay(img)) {
-      stripBrandOverlay(target);
-      removeCanvasShield(img);
-      if (fig) fig.classList.remove("qx-wm-active", "qx-premium-wm-active", "qx-brand-covered");
-      return;
-    }
-    if (optFig) {
-      target.classList.add("qx-wm-active", "qx-brand-covered", "qx-fig-stack");
-      stripBrandOverlay(target);
-      paintPremiumWatermark(img);
-      if (fig) fig.classList.add("qx-brand-covered", "qx-fig-stack", "qx-wm-active");
-      return;
-    }
-    target.classList.add("qx-brand-covered", "qx-fig-stack");
+    const target = (img && overlayTargetForImg(img)) || container;
     stripBrandOverlay(target);
-    target.classList.remove("qx-premium-wm-active", "qx-wm-active");
-    if (fig) fig.classList.remove("qx-premium-wm-active", "qx-wm-active");
-    if (img.naturalWidth > 0) void upgradePoolFigure(img, cdn);
+    if (img) removeCanvasShield(img);
+    target.querySelectorAll(
+      ".qx-premium-wm-sheet, .qx-quantrex-wm, .qx-quantrex-black-wm, .qx-quantrex-black-seal, img.qx-quantrex-wm-overlay, canvas.qx-premium-wm-canvas, .qx-brand-overlay, .qx-diag-watermark, .qx-coaching-wm"
+    ).forEach(el => el.remove());
+    target.classList.remove("qx-wm-active", "qx-premium-wm-active", "qx-quantrex-wm-active", "qx-coaching-wm-active");
+    const fig = img && img.closest(".qx-fig, .qx-opt-fig");
+    if (fig) fig.classList.remove("qx-wm-active", "qx-premium-wm-active");
+    // Still upgrade pool figures via clean proxy (no brand paint)
+    if (img && img.naturalWidth > 0) {
+      const cdn = poolCdnSrc(img);
+      if (cdn) void upgradePoolFigure(img, cdn);
+    }
   }
 
   function ensureBrandOverlay(container) {
+    // No brand watermark overlays — only strip leftovers
+    if (!container) return;
+    stripBrandOverlay(container);
+    container.querySelectorAll(
+      ".qx-premium-wm-sheet, .qx-quantrex-wm, .qx-diag-watermark, .qx-brand-overlay, img.qx-quantrex-wm-overlay, canvas.qx-premium-wm-canvas, .qx-quantrex-black-wm, .qx-quantrex-black-seal"
+    ).forEach(el => el.remove());
+  }
+
+  function ensureBrandOverlayLegacy(container) {
     syncBrandOverlay(container);
   }
 
@@ -1538,14 +1864,114 @@ window.QxImgClean = (() => {
 
   function proxyImageUrl(cdnSrc) {
     const fixed = fixUrl(cdnSrc);
-    return `${apiBase()}/api/proxy-image?url=${encodeURIComponent(fixed)}`;
+    // v=6: same-origin proxy + client soft-strip (permanent MARKS kill)
+    const q = `url=${encodeURIComponent(fixed)}&clean=1&v=6`;
+    try {
+      if (typeof location !== "undefined" && location.origin && !/localhost|127\.0\.0\.1/i.test(location.origin)) {
+        return `/api/proxy-image?${q}`;
+      }
+    } catch (_) { /* */ }
+    const base = String(PROXY_BASE || apiBase() || "https://quantrexacademy-live.web.app").replace(/\/$/, "");
+    return `${base}/api/proxy-image?${q}`;
+  }
+
+  /** True only for question-pool diagrams — never exam/subject/UI icons */
+  function isRewritablePoolSrc(src, img) {
+    const s = fixUrl(src || "");
+    if (!s || s.startsWith("data:") || s.startsWith("blob:")) return false;
+    if (SKIP_RX.test(s)) return false;
+    if (/cdn-assets\.getmarks|app_assets\/img\/(exams|ui|cpyqb)\//i.test(s)) return false;
+    if (img && (img.classList.contains("qx-marks-icon") || img.classList.contains("qx-exam-logo")
+      || img.classList.contains("fc-img") || img.classList.contains("subj-ic-img")
+      || img.classList.contains("dash-tool-logo") || img.classList.contains("exam-pill-logo"))) {
+      return false;
+    }
+    // Only actual question figures (pool / quizrr / pyq paths)
+    return /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\//i.test(s);
+  }
+
+  /** After proxy load → permanent pixel soft-strip (kills residual MARKS) */
+  function queueSoftStrip(img) {
+    if (!img || img.dataset.qxSoftStrip === "2") return;
+    const run = () => {
+      if (!img.isConnected || img.dataset.qxSoftStrip === "2") return;
+      if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
+        void QxPremiumWM.paintMarksHideOnly(img);
+      }
+    };
+    if (img.complete && img.naturalWidth > 8) {
+      // next frame so layout is ready
+      if (typeof requestAnimationFrame === "function") requestAnimationFrame(run);
+      else setTimeout(run, 0);
+    } else {
+      img.addEventListener("load", run, { once: true });
+    }
+  }
+
+  /** Force every Marks/Quizrr POOL diagram to clean proxy (never UI icons) */
+  function rewriteAllPoolImgs(root) {
+    const scope = root || document;
+    if (!scope || !scope.querySelectorAll) return 0;
+    let n = 0;
+    scope.querySelectorAll("img").forEach((img) => {
+      // Soft-strip done → leave frozen forever
+      if (!img || img.dataset.qxSoftStrip === "2") return;
+      const cur = fixUrl(img.getAttribute("src") || "");
+      const orig = fixUrl(img.dataset.qxOrigSrc || cur);
+      const src = orig || cur;
+      // Restore UI icons that were wrongly sent through proxy
+      if (/proxy-image|restore-image/i.test(cur)) {
+        try {
+          const m = cur.match(/[?&]url=([^&]+)/);
+          if (m) {
+            const u = decodeURIComponent(m[1]);
+            if (SKIP_RX.test(u) || /cdn-assets\.getmarks|app_assets\/img\/(exams|ui|cpyqb)\//i.test(u)
+              || img.classList.contains("qx-marks-icon") || img.classList.contains("qx-exam-logo")) {
+              img.dataset.qxOrigSrc = u;
+              img.removeAttribute("crossorigin");
+              img.src = u;
+              img.dataset.qxProxied = "1";
+              img.dataset.qxHasWm = "0";
+              n++;
+              return;
+            }
+          }
+        } catch (_) { /* */ }
+        // Already on proxy — still need soft-strip for residual MARKS
+        if (isRewritablePoolSrc(orig, img) || /cdn-question-pool|\/pyq\//i.test(orig) || img.classList.contains("qx-pool-fig")) {
+          queueSoftStrip(img);
+        }
+        return;
+      }
+      if (!src || /data:|assets\/diagrams/i.test(src)) {
+        if (img.classList.contains("qx-pool-fig") || /proxy-image/i.test(cur)) queueSoftStrip(img);
+        return;
+      }
+      if (isRewritablePoolSrc(src, img)) {
+        img.dataset.qxOrigSrc = src;
+        img.crossOrigin = "anonymous";
+        img.setAttribute("crossorigin", "anonymous");
+        img.src = proxyImageUrl(src);
+        img.dataset.qxProxied = "1";
+        // NOT qxCleanedSrc — soft-strip must still run
+        img.dataset.qxHasWm = "0";
+        queueSoftStrip(img);
+        n++;
+      } else if (img.classList.contains("qx-pool-fig") || /proxy-image|cdn-question-pool|\/pyq\//i.test(cur)) {
+        queueSoftStrip(img);
+      }
+    });
+    return n;
   }
 
   function poolDisplaySrc(cdnSrc) {
     const cdn = canonicalCdnSrc(cdnSrc) || fixUrl(cdnSrc || "");
     if (!cdn) return "";
-    if (isGetmarksPool(cdn)) return restoreImageUrl(cdn);
-    if (POOL_RX.test(cdn)) return proxyImageUrl(cdn);
+    // Always route Marks/Quizrr pool images through clean proxy (strips MARKS WM → pure black)
+    if (isGetmarksPool(cdn) || POOL_RX.test(cdn)) {
+      const base = proxyImageUrl(cdn);
+      return base.includes("clean=") ? base : `${base}${base.includes("?") ? "&" : "?"}clean=1`;
+    }
     return cdn;
   }
 
@@ -1700,8 +2126,15 @@ window.QxImgClean = (() => {
 
   function loadDisplaySrc(img, src, cdnSrc) {
     if (!img || !src) return Promise.resolve(false);
-    img.dataset.qxOrigSrc = fixUrl(cdnSrc);
-    stripDisplayCors(img);
+    img.dataset.qxOrigSrc = fixUrl(cdnSrc || src);
+    // CORS only for our same-origin proxy (required for canvas Quantrex WM)
+    if (String(src).includes("/api/proxy-image") || String(src).includes("/api/restore-image")) {
+      img.crossOrigin = "anonymous";
+      img.setAttribute("crossorigin", "anonymous");
+    } else {
+      img.removeAttribute("crossorigin");
+      img.crossOrigin = null;
+    }
     const prevSrc = img.getAttribute("src") || "";
     return new Promise(resolve => {
       let settled = false;
@@ -1711,6 +2144,7 @@ window.QxImgClean = (() => {
         clearTimeout(timer);
         if (ok && img.naturalWidth > 0) {
           markDisplayClean(img);
+          revealFigure(img);
           resolve(true);
           return;
         }
@@ -1719,7 +2153,18 @@ window.QxImgClean = (() => {
       const timer = setTimeout(() => finish(false), 12000);
       img.addEventListener("load", () => finish(img.naturalWidth > 0), { once: true });
       img.addEventListener("error", () => {
-        if (prevSrc && prevSrc !== src && !img.naturalWidth) img.setAttribute("src", prevSrc);
+        // Proxy failed → direct CDN (no CORS scrub, but figure still visible)
+        const cdn = fixUrl(cdnSrc || img.dataset.qxOrigSrc || "");
+        if (cdn && src !== cdn && img.dataset.qxCdnFallback !== "1") {
+          img.dataset.qxCdnFallback = "1";
+          img.removeAttribute("crossorigin");
+          img.crossOrigin = null;
+          img.src = cdn;
+          return;
+        }
+        if (prevSrc && prevSrc !== src && !img.naturalWidth && !prevSrc.includes("data:image/gif")) {
+          img.setAttribute("src", prevSrc);
+        }
         finish(false);
       }, { once: true });
       if (img.getAttribute("src") !== src) img.src = src;
@@ -1730,8 +2175,8 @@ window.QxImgClean = (() => {
   async function loadPoolFigureSrc(img, cdnSrc) {
     if (!img || !cdnSrc) return false;
     const cdn = canonicalCdnSrc(cdnSrc) || fixUrl(cdnSrc);
-    if (isGetmarksPool(cdn) && await loadDisplaySrc(img, restoreImageUrl(cdn), cdn)) return true;
-    if (await loadDisplaySrc(img, proxyImageUrl(cdn), cdn)) return true;
+    // 1) CORS proxy (best — Quantrex WM canvas)  2) direct CDN  3) local clean
+    if (await loadDisplaySrc(img, poolDisplaySrc(cdn), cdn)) return true;
     if (await loadDisplaySrc(img, cdn, cdn)) return true;
     const manifestRel = await cleanUrl(cdn);
     if (isManifestCleanPath(manifestRel, cdn) && await manifestFileExists(manifestRel)) {
@@ -1759,6 +2204,28 @@ window.QxImgClean = (() => {
   async function resolveAndShowClean(img, cdnSrc) {
     if (!img || !cdnSrc) return false;
     if (img.dataset.qxRestoreTried === String(CLEAN_VER) && isCleanedImg(img) && img.naturalWidth > 0) return true;
+
+    if (isOrganicOrgSrc(cdnSrc)) {
+      const cached = await getCachedBlob(cdnSrc);
+      if (cached && await blobLooksValid(cached)) {
+        const ok = await applyOrganicCleanedBlob(img, cached, cdnSrc);
+        if (ok) {
+          img.dataset.qxRestoreTried = String(CLEAN_VER);
+          return true;
+        }
+      }
+      return false;
+    }
+
+    if (isLocalReadyAsset(cdnSrc)) {
+      const busted = normalizeAssetSrc(cdnSrc);
+      if (busted && await loadDisplaySrc(img, busted, cdnSrc)) {
+        img.dataset.qxRestoreTried = String(CLEAN_VER);
+        return true;
+      }
+      img.dataset.qxRestoreTried = String(CLEAN_VER);
+      return false;
+    }
 
     const cached = await getCachedBlob(cdnSrc);
     if (cached && await blobLooksValid(cached)) {
@@ -1816,6 +2283,11 @@ window.QxImgClean = (() => {
   }
 
   async function loadForCanvas(cdnSrc, manifestPath) {
+    if (isOrganicOrgSrc(cdnSrc)) {
+      const localPath = normalizeAssetSrc(cdnSrc);
+      const local = await loadProbe(localPath, false);
+      if (local) return { img: local, source: localPath, canRead: true };
+    }
     if (manifestPath && !manifestPath.startsWith("http")) {
       const local = await loadProbe(manifestPath, false);
       if (local) return { img: local, source: manifestPath, canRead: true };
@@ -1834,6 +2306,27 @@ window.QxImgClean = (() => {
     return new Promise(resolve => {
       canvas.toBlob(b => resolve(b), "image/png", 1.0);
     });
+  }
+
+  async function cleanOrganicFromProbe(probe) {
+    const w = probe.naturalWidth || probe.width;
+    const h = probe.naturalHeight || probe.height;
+    if (!w || !h) return null;
+    const canvas = document.createElement("canvas");
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    try {
+      ctx.drawImage(probe, 0, 0);
+      const imageData = ctx.getImageData(0, 0, w, h);
+      const stats = cleanOrganicOrgImageData(imageData.data, w, h);
+      if (stats.damaged || !hasVisibleInk(imageData.data, w, h)) return { blob: null, stats };
+      ctx.putImageData(imageData, 0, 0);
+      const blob = await canvasToBlob(canvas);
+      return { blob, stats };
+    } catch (_) {
+      return null;
+    }
   }
 
   async function cleanFromProbe(probe) {
@@ -1861,8 +2354,48 @@ window.QxImgClean = (() => {
     }
   }
 
+  async function applyOrganicCleanedBlob(img, blob, src) {
+    if (!blob || !img) return false;
+    const preview = URL.createObjectURL(blob);
+    try {
+      const probe = await loadProbe(preview, false);
+      if (!probe || !(await validateProbeInk(probe))) return false;
+    } finally {
+      URL.revokeObjectURL(preview);
+    }
+    await putCachedBlob(src, blob);
+    const url = URL.createObjectURL(blob);
+    return new Promise(resolve => {
+      const done = async (ok) => {
+        if (!ok || !img.isConnected) {
+          URL.revokeObjectURL(url);
+          hideOrganicPending(img);
+          resolve(false);
+          return;
+        }
+        img.dataset.qxCleaned = "1";
+        img.dataset.qxCleanVer = String(CLEAN_VER);
+        img.classList.add("qx-no-wm", "qx-cleaned", "qx-restored");
+        stripDisplayCors(img);
+        img.src = url;
+        await waitForImageLoad(img, 8000);
+        if (img.naturalWidth > 0) {
+          restoreOrganicFigureSize(img);
+          await finalizeOrganicOrgDisplay(img);
+        }
+        resolve(img.naturalWidth > 0);
+      };
+      img.addEventListener("load", () => { void done(true); }, { once: true });
+      img.addEventListener("error", () => { void done(false); }, { once: true });
+      stripDisplayCors(img);
+      img.src = url;
+      if (img.complete && img.naturalWidth > 0) void done(true);
+    });
+  }
+
   async function applyCleanedBlob(img, blob, src) {
     if (!blob) return false;
+    if (isOrganicOrgSrc(src)) return applyOrganicCleanedBlob(img, blob, src);
     const preview = URL.createObjectURL(blob);
     try {
       const probe = await loadProbe(preview, false);
@@ -2018,8 +2551,9 @@ window.QxImgClean = (() => {
     if (img.dataset.qxErrBound === "1") return;
     img.dataset.qxErrBound = "1";
     img.addEventListener("load", () => {
-      if (String(img.getAttribute("src") || "").includes("/api/proxy-image") && img.naturalWidth > 0) {
+      if (img.naturalWidth > 0) {
         img.dataset.qxProxyOk = "1";
+        revealFigure(img);
       }
     });
     img.addEventListener("error", () => {
@@ -2027,23 +2561,18 @@ window.QxImgClean = (() => {
       if (!cdn) return;
       const cur = String(img.getAttribute("src") || "");
       revealFigure(img);
-      if (cur.includes("/api/restore-image") && img.dataset.qxProxyTried !== "1") {
-        img.dataset.qxProxyTried = "1";
-        setApiImgCors(img);
-        img.setAttribute("src", proxyImageUrl(cdn));
-        return;
-      }
-      if (cur.includes("/api/proxy-image") && cur !== cdn && img.dataset.qxCdnDirectTried !== "1") {
+      // Prefer direct CDN whenever proxy/restore/placeholder fails
+      if (cur !== cdn && img.dataset.qxCdnDirectTried !== "1") {
         img.dataset.qxCdnDirectTried = "1";
         img.removeAttribute("crossorigin");
         img.crossOrigin = null;
         img.setAttribute("src", cdn);
         return;
       }
-      if (!cur.includes("/api/restore-image") && isGetmarksPool(cdn) && img.dataset.qxRestoreTried !== "1") {
-        img.dataset.qxRestoreTried = "1";
-        setApiImgCors(img);
-        img.setAttribute("src", restoreImageUrl(cdn));
+      if (cur.includes("/api/") && img.dataset.qxCdnRetry2 !== "1") {
+        img.dataset.qxCdnRetry2 = "1";
+        img.removeAttribute("crossorigin");
+        img.setAttribute("src", cdn);
       }
     });
   }
@@ -2114,7 +2643,7 @@ window.QxImgClean = (() => {
   function purgeLegacyDbs() {
     if (legacyPurged || !window.indexedDB) return;
     legacyPurged = true;
-    for (let v = 1; v <= 11; v++) {
+    for (let v = 1; v <= 61; v++) {
       try { indexedDB.deleteDatabase(`quantrex_clean_images_v${v}`); } catch (_) {}
     }
   }
@@ -2122,7 +2651,10 @@ window.QxImgClean = (() => {
   function isCleanedImg(img) {
     if (!img) return false;
     const cur = fixUrl(img.getAttribute("src") || "");
-    if (isLocalCleanAsset(cur) && (img.dataset.qxCleaned === "1" || img.classList.contains("qx-cleaned"))) return true;
+    if (isOrganicOrgSrc(cur) && !cur.startsWith("blob:")) {
+      return !!(img.dataset.qxCleaned === "1" && img.dataset.qxCleanVer === String(CLEAN_VER));
+    }
+    if (isLocalReadyAsset(cur) && (img.dataset.qxCleaned === "1" || img.classList.contains("qx-cleaned"))) return true;
     return !!(img.dataset.qxCleaned === "1" || img.classList.contains("qx-cleaned"));
   }
 
@@ -2212,6 +2744,19 @@ window.QxImgClean = (() => {
     try {
       if (await resolveAndShowClean(img, cdnSrc)) return;
 
+      if (isOrganicOrgSrc(cdnSrc)) {
+        hideOrganicPending(img);
+        const loaded = await loadForCanvas(cdnSrc, null);
+        if (loaded && loaded.canRead !== false) {
+          const result = await cleanOrganicFromProbe(loaded.img);
+          if (result && result.blob && await applyOrganicCleanedBlob(img, result.blob, cdnSrc)) {
+            return;
+          }
+        }
+        hideOrganicPending(img);
+        return;
+      }
+
       const cached = await preloadCleanSrc(cdnSrc);
       const manifestPath = cached.clean || null;
       if (manifestPath && await loadDisplaySrc(img, manifestPath, cdnSrc)) return;
@@ -2237,9 +2782,17 @@ window.QxImgClean = (() => {
       await waitForMarksHide(img);
     } finally {
       if (!img || !img.isConnected) return;
+      if (isOrganicOrgSrc(cdnSrc)) {
+        if (isCleanedImg(img) && img.naturalWidth > 0) {
+          if (!img.dataset.qxCoachingWm) void finalizeOrganicOrgDisplay(img);
+          return;
+        }
+        hideOrganicPending(img);
+        return;
+      }
       if (img.naturalWidth > 0) {
         revealFigure(img);
-        removeCanvasShield(img);
+        if (!isCleanedImg(img)) removeCanvasShield(img);
         return;
       }
       primePoolFigure(img, cdnSrc);
@@ -2258,10 +2811,16 @@ window.QxImgClean = (() => {
     const cdnSrc = poolCdnSrc(img);
     if (!cdnSrc || !isPoolDiagram(cdnSrc, img)) return;
     if (img.dataset.qxProcessedVer === String(CLEAN_VER)) {
-      if ((isCleanedImg(img) || img.classList.contains("qx-fig-ready")) && img.naturalWidth > 0) {
+      const orgPending = isOrganicOrgSrc(cdnSrc) && !isCleanedImg(img);
+      if (!orgPending && (isCleanedImg(img) || img.classList.contains("qx-fig-ready")) && img.naturalWidth > 0) {
         revealFigure(img);
-        if (isCleanedImg(img)) void finalizeCleanDisplay(img);
-        else removeCanvasShield(img);
+        if (isPreprocessedQxOrg(cdnSrc) || img.dataset.qxDisplayW) {
+          finalizeQxOrgDisplay(img);
+        } else if (isCleanedImg(img)) {
+          void finalizeCleanDisplay(img);
+        } else {
+          removeCanvasShield(img);
+        }
         return;
       }
       if (img.dataset.qxProcessing === "1") return;
@@ -2270,7 +2829,22 @@ window.QxImgClean = (() => {
       }
     }
 
-    if (isLocalCleanAsset(cdnSrc)) {
+    if (isPreprocessedQxOrg(cdnSrc)) {
+      captureOrganicDisplayWidth(img);
+      const busted = normalizeAssetSrc(cdnSrc);
+      if (busted) img.setAttribute("src", busted);
+      img.dataset.qxHasWm = "0";
+      img.classList.add("qx-cleaned", "qx-restored", "qx-wm-clean");
+      void (async () => {
+        await waitForImageLoad(img, 10000);
+        if (img.isConnected && img.naturalWidth > 0) finalizeQxOrgDisplay(img);
+      })();
+    } else if (isOrganicOrgSrc(cdnSrc)) {
+      img.dataset.qxHasWm = "1";
+      img.classList.remove("qx-cleaned", "qx-restored", "qx-wm-clean");
+      delete img.dataset.qxCleaned;
+      hideOrganicPending(img);
+    } else if (isLocalReadyAsset(cdnSrc)) {
       const busted = normalizeAssetSrc(cdnSrc);
       if (busted && fixUrl(img.getAttribute("src") || "") !== fixUrl(busted)) {
         img.setAttribute("src", busted);
@@ -2294,8 +2868,12 @@ window.QxImgClean = (() => {
     }
 
     if (isCleanedImg(img)) {
+      if (isPreprocessedQxOrg(cdnSrc) || img.dataset.qxDisplayW) {
+        if (img.naturalWidth > 0) finalizeQxOrgDisplay(img);
+        else img.addEventListener("load", () => finalizeQxOrgDisplay(img), { once: true });
+      }
       revealFigure(img);
-      void finalizeCleanDisplay(img);
+      if (!isPreprocessedQxOrg(cdnSrc)) void finalizeCleanDisplay(img);
       return;
     }
 
@@ -2364,7 +2942,7 @@ window.QxImgClean = (() => {
           if (n.nodeType !== 1) return;
           if (n.tagName === "IMG") queueProcessImage(n);
           else if (n.querySelectorAll) {
-            n.querySelectorAll("img[src*='cdn-question-pool'], img[src*='/pyq/'], #qxDiagramSlot img").forEach(queueProcessImage);
+            n.querySelectorAll("img[src*='cdn-question-pool'], img[src*='/pyq/'], img[src*='/assets/diagrams/'], #qxDiagramSlot img").forEach(queueProcessImage);
           }
           if (n.id === "qxDiagramSlot" || n.classList?.contains("qx-diagram-slot")) {
             n.querySelectorAll?.("img").forEach(queueProcessImage);
@@ -2398,7 +2976,7 @@ window.QxImgClean = (() => {
       const src = canonicalCdnSrc(raw) || (isLocalCleanAsset(raw) ? normalizeAssetSrc(raw) : "");
       if (!src || (!isPoolDiagram(src) && !isLocalCleanAsset(src))) continue;
       if (parts.some(p => p.includes(src))) continue;
-      parts.push(poolFigureHtml(src));
+      parts.push(poolFigureHtml(src, parseImgDisplayWidth(tag)));
     }
     return parts.join("");
   }
@@ -2431,6 +3009,50 @@ window.QxImgClean = (() => {
     const after = stripDiagramTags(raw.slice(imgAt));
     const text = [before, after].filter(Boolean).join(" ");
     return { diagrams, text, before, after };
+  }
+
+  function parseFigureFromTag(tag) {
+    const block = String(tag || "");
+    const imgM = block.match(/<img\b([^>]*)>/i);
+    if (!imgM) return null;
+    const attrs = imgM[1];
+    const origM = attrs.match(/\bdata-qx-orig-src=["']([^"']+)["']/i);
+    const srcM = attrs.match(/\bsrc=["']([^"']+)["']/i);
+    const raw = origM ? origM[1] : (srcM ? srcM[1] : "");
+    if (!raw || isApiFigureSrc(raw)) return null;
+    let src = "";
+    if (isLocalCleanAsset(raw)) src = normalizeAssetSrc(raw);
+    else {
+      const cdn = canonicalCdnSrc(raw);
+      if (cdn) src = cdn;
+    }
+    if (!src || (!isPoolDiagram(src) && !isLocalCleanAsset(src))) return null;
+    return { src, displayW: parseImgDisplayWidth(attrs) };
+  }
+
+  function parseQuestionSegments(html, qid, q) {
+    const override = getFigureOverrideSrc(html, qid);
+    if (override) return [{ type: "figure", src: override, displayW: 0 }];
+    const qSrc = questionImageSrc(q);
+    const raw = compactQuestionHtml(html);
+    const figRx = /<figure\b[^>]*>[\s\S]*?<\/figure>|<img\b[^>]*>/gi;
+    const segments = [];
+    let last = 0;
+    let m;
+    while ((m = figRx.exec(raw)) !== null) {
+      const text = raw.slice(last, m.index).trim();
+      if (text) segments.push({ type: "text", html: text });
+      const fig = parseFigureFromTag(m[0]);
+      if (fig) segments.push({ type: "figure", src: fig.src, displayW: fig.displayW });
+      last = m.index + m[0].length;
+    }
+    const tail = raw.slice(last).trim();
+    if (tail) segments.push({ type: "text", html: tail });
+    if (!segments.length && raw) segments.push({ type: "text", html: raw });
+    if (!segments.some(s => s.type === "figure") && qSrc) {
+      segments.push({ type: "figure", src: qSrc, displayW: 0 });
+    }
+    return segments;
   }
 
   function pushPoolSrc(srcs, raw) {
@@ -2490,17 +3112,18 @@ window.QxImgClean = (() => {
     if (!slot) return;
     pinQuestionHtml(qid, rawHtml);
     const q = (typeof getQ === "function" && qid != null) ? getQ(qid) : null;
-    const srcs = resolveDiagramSrcs(rawHtml, qid, q);
+    const entries = resolveDiagramEntries(rawHtml, qid, q);
     slot.classList.add("qx-pool-fig-wrap", "mathjax_ignore", "tex2jax_ignore");
     slot.dataset.qxQid = String(qid);
     slot.dataset.qxLocked = "1";
     slot.style.display = "block";
     slot.style.visibility = "visible";
     slot.style.opacity = "1";
-    if (!srcs.length) return;
+    if (!entries.length) return;
 
     const existing = Array.from(slot.querySelectorAll("img"));
     const existingSrcs = existing.map(i => canonicalCdnSrc(i.dataset.qxOrigSrc || i.getAttribute("src") || "") || fixUrl(i.dataset.qxOrigSrc || ""));
+    const srcs = entries.map(e => e.src);
     if (srcs.length === existingSrcs.length && srcs.every((s, i) => s === existingSrcs[i])) {
       if (existing.some(imgIsLoading)) return;
       existing.forEach(img => processImage(img));
@@ -2508,7 +3131,7 @@ window.QxImgClean = (() => {
     }
     if (existing.some(imgIsLoading) && existingSrcs.length && srcs.length === existingSrcs.length) return;
 
-    slot.innerHTML = srcs.map(cdn => poolFigureHtml(cdn)).join("");
+    slot.innerHTML = entries.map(e => poolFigureHtml(e.src, e.displayW)).join("");
     slot.querySelectorAll("img").forEach(img => processImage(img));
   }
 
@@ -2516,29 +3139,43 @@ window.QxImgClean = (() => {
     return String(s || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
   }
 
-  function poolFigureHtml(cdn) {
+  function poolFigureHtml(cdn, displayW) {
     const src = normalizeAssetSrc(canonicalCdnSrc(cdn) || cdn);
     const u = escAttr(src);
-    const localClean = isLocalCleanAsset(src);
-    const pool = !localClean && isPoolDiagram(src);
+    const organic = isPreprocessedQxOrg(src) || isOrganicOrgSrc(src);
+    let dw = parseInt(displayW, 10) || 0;
+    if (organic && dw <= 12) dw = ORGANIC_DEFAULT_FIG_W;
+    const orgSrc = isOrganicOrgSrc(src);
+    const localClean = isLocalReadyAsset(src);
+    const pool = !localClean && !orgSrc && isPoolDiagram(src);
     const overlay = "";
-    const displaySrc = localClean
-      ? u
-      : (pool ? escAttr(poolDisplaySrc(src)) : escAttr(FIG_PLACEHOLDER));
-    const wmAttrs = pool
-      ? ` data-qx-has-wm="1" data-qx-wm-zones="${escAttr(defaultWmZones(src).join(","))}" data-qx-pending-load="1" data-qx-primed="1"`
-      : (localClean ? ` data-qx-has-wm="0" data-qx-cleaned="1"` : "");
-    const wmClass = (localClean || pool) ? " qx-fig-ready" : " qx-wm-loading";
-    const poolAttr = pool ? ` data-qx-pool-wm="1"` : "";
-    const cleanCls = localClean ? " qx-cleaned qx-restored qx-wm-clean qx-fig-ready" : (pool ? " qx-fig-ready" : "");
+    // Pool diagrams → CORS proxy (scrub MARKS + Quantrex black WM). Local assets stay direct.
+    let displaySrc = u;
+    if (pool) displaySrc = escAttr(poolDisplaySrc(src) || src);
+    else if (orgSrc || localClean) displaySrc = u;
+    // Proxy allows canvas CORS; direct CDN has no ACAO
     const corsAttr = pool ? ` crossorigin="anonymous"` : "";
-    return `<figure class="qx-fig qx-pool-fig-wrap qx-brand-covered qx-fig-stack mathjax_ignore tex2jax_ignore${wmClass}"><div class="qx-fig-inner qx-wm-stack${wmClass}"${poolAttr}><img class="qx-fig-img qx-no-wm qx-pool-fig${cleanCls}" src="${displaySrc}" alt="" loading="eager" decoding="async" fetchpriority="high" referrerpolicy="no-referrer"${corsAttr} data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs}>${overlay}</div></figure>`;
+    const wmAttrs = orgSrc
+      ? ` data-qx-has-wm="1" data-qx-org-src="1" data-qx-wm-zones="center,br"`
+      : (pool
+        ? ` data-qx-has-wm="1" data-qx-wm-zones="${escAttr(defaultWmZones(src).join(","))}" data-qx-primed="1" data-qx-pending-load="1"`
+        : (localClean ? ` data-qx-has-wm="0" data-qx-cleaned="1"` : ""));
+    const wmClass = (localClean || pool || orgSrc) ? " qx-fig-ready" : " qx-wm-loading";
+    const poolAttr = (pool || orgSrc) ? ` data-qx-pool-wm="1"` : "";
+    const cleanCls = localClean ? " qx-cleaned qx-restored qx-wm-clean qx-fig-ready" : " qx-fig-ready";
+    const figW = dw > 12 ? ` style="--qx-fig-w:${dw}px;max-width:100%;"` : "";
+    const imgDataW = dw > 12 ? ` data-qx-display-w="${dw}"` : "";
+    const imgStyle = dw > 12
+      ? ` style="--qx-fig-w:${dw}px;width:${dw}px;height:auto;max-width:100%;display:block;margin:0 auto;"`
+      : ` style="max-width:100%;height:auto;max-height:200px;display:block;margin:4px auto;"`;
+    const imgClass = ` class="qx-fig-img qx-no-wm qx-pool-fig${organic ? " qx-organic-fig" : ""}${cleanCls}"`;
+    return `<figure class="qx-fig qx-pool-fig-wrap qx-brand-covered qx-fig-stack mathjax_ignore tex2jax_ignore${wmClass}"${figW}><div class="qx-fig-inner qx-wm-stack${wmClass}"${poolAttr}${figW}><img${imgClass}${imgDataW}${imgStyle} src="${displaySrc}" alt="" loading="eager" decoding="async" fetchpriority="high" referrerpolicy="no-referrer"${corsAttr} data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs}>${overlay}</div></figure>`;
   }
 
   function buildSlotInnerHtml(rawHtml, qid, q) {
-    const srcs = resolveDiagramSrcs(rawHtml, qid, q);
-    if (srcs.length) {
-      return srcs.map(cdn => poolFigureHtml(cdn)).join("");
+    const entries = resolveDiagramEntries(rawHtml, qid, q);
+    if (entries.length) {
+      return entries.map(e => poolFigureHtml(e.src, e.displayW)).join("");
     }
     const pinned = extractPoolFigureHtml(rawHtml, qid);
     return pinned || "";
@@ -2562,12 +3199,25 @@ window.QxImgClean = (() => {
   }
 
   function renderOptionContent(qid, optIndex, rawOpt, renderText) {
+    const q = (typeof getQ === "function" && qid != null) ? getQ(qid) : null;
+    const render = typeof renderText === "function" ? renderText : (t => t);
+    const raw = fixUrl(String(rawOpt || ""));
+    if (isMarksNativeBook(q)) {
+      return `<span class="qx-marks-native-opt">${render(raw)}</span>`;
+    }
     const key = String(qid) + ":opt:" + optIndex;
-    pinQuestionHtml(key, rawOpt);
-    const slot = buildOptSlotHtml(qid, optIndex, rawOpt);
-    const { text } = splitQuestionHtml(rawOpt, key);
-    const body = text ? (typeof renderText === "function" ? renderText(text) : text) : "";
-    return slot + body;
+    pinQuestionHtml(key, raw);
+    // Image options: always keep a visible img path (never blank A/B/C/D boxes)
+    if (/<img\b/i.test(raw)) {
+      const slot = buildOptSlotHtml(qid, optIndex, raw);
+      const { text } = splitQuestionHtml(raw, key);
+      const plain = String(text || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      const body = plain ? render(text) : "";
+      if (slot) return slot + (body ? `<span class="qx-opt-text-only">${body}</span>` : "");
+      // Slot builder failed — render original HTML with fixed CDN urls
+      return `<span class="qx-opt-direct-img qx-content">${render(raw)}</span>`;
+    }
+    return `<span class="qx-content">${render(raw)}</span>`;
   }
 
   function imgHasRealFigure(img) {
@@ -2595,7 +3245,7 @@ window.QxImgClean = (() => {
       textEl.querySelectorAll("img").forEach(img => {
         if (img.closest(".qx-diagram-slot, #qxDiagramSlot")) return;
         const cdn = fixUrl(img.getAttribute("src") || "");
-        if (isPoolDiagram(cdn, img)) img.remove();
+        if (isPoolDiagram(cdn, img) || isLocalCleanAsset(cdn)) img.remove();
       });
     });
   }
@@ -2619,7 +3269,11 @@ window.QxImgClean = (() => {
 
   function finalizeDiagrams(root, q) {
     const scope = root || document;
+    scope.querySelectorAll(".qx-diagram-seg[data-qx-qid]").forEach(slot => {
+      slot.querySelectorAll("img").forEach(img => processImage(img));
+    });
     scope.querySelectorAll("#qxDiagramSlot, .qx-diagram-slot[data-qx-qid]").forEach(slot => {
+      if (slot.classList.contains("qx-diagram-seg")) return;
       const qid = slot.dataset.qxQid;
       let raw = null;
       if (q && String(q.id) === String(qid)) raw = q.q;
@@ -2637,7 +3291,7 @@ window.QxImgClean = (() => {
       }
     }
     const scope = root || document;
-    const qidEl = scope.querySelector("[data-qx-qid].mtk-q-text, [data-qx-qid].qx-q-text-only, #qxDiagramSlot[data-qx-qid]");
+    const qidEl = scope.querySelector(".qx-question-body[data-qx-qid], [data-qx-qid].mtk-q-text, [data-qx-qid].qx-q-text-only, #qxDiagramSlot[data-qx-qid]");
     if (qidEl && qidEl.dataset.qxQid && typeof getQ === "function") {
       const q = getQ(qidEl.dataset.qxQid);
       if (q) return q;
@@ -2690,14 +3344,108 @@ window.QxImgClean = (() => {
       directOverlayKids(slot).forEach(el => el.remove());
       slot.classList.remove("qx-wm-active");
     });
-    scope.querySelectorAll("img.qx-pool-fig, img[src*='cdn-question-pool'], img[src*='/pyq/']").forEach(img => {
+    scope.querySelectorAll("img.qx-pool-fig, img[src*='cdn-question-pool'], img[src*='/pyq/'], img[src*='/assets/diagrams/']").forEach(img => {
       removeCanvasShield(img);
       const target = overlayTargetForImg(img);
       if (target) syncBrandOverlay(target);
     });
   }
 
+  function finalizeMarksNative(root, q) {
+    const scope = root || document;
+    if (q) rememberQuestionRaw(q);
+    const imgs = scope.querySelectorAll(
+      ".qx-marks-native img, .qx-marks-native-opt img, .mtk-opt-text img, .qx-opt-pair-struct img, .qx-prac-opt-text img"
+    );
+    const irodov = isIrodovBook(q);
+    const rankBooster = q && String(q._book || q._bookId || "") === "68f1ce4cc729e5251bd00430";
+    imgs.forEach(img => {
+      let src = fixUrl(img.getAttribute("src") || img.dataset.qxOrigSrc || "");
+      // Broken /api/proxy-image → fall back to original CDN
+      if (/\/api\/proxy-image/i.test(src)) {
+        try {
+          const u = new URL(src, (typeof location !== "undefined" && location.origin) || "https://www.quantrexacademy.com");
+          const real = u.searchParams.get("url");
+          if (real) {
+            img.dataset.qxOrigSrc = real;
+            // Prefer proxy first; onerror falls back
+            if (!img.getAttribute("onerror")) {
+              img.setAttribute(
+                "onerror",
+                "this.onerror=null;var o=this.getAttribute('data-qx-orig-src');if(o)this.src=o;"
+              );
+            }
+          }
+        } catch (_) { /* keep */ }
+      }
+      // Irodov: local clean diagrams only
+      if (irodov && src && !/\/assets\/diagrams\/qx-irodov/i.test(src)) {
+        const mapped = resolveIrodovCleanSrc(src) || resolveIrodovCleanSrc(img.dataset.qxOrigSrc || "");
+        if (mapped) src = mapped;
+      }
+      if (src && src !== img.getAttribute("src") && !/\/api\/proxy-image/i.test(String(img.getAttribute("src") || ""))) {
+        // don't clobber intentional proxy attempt unless missing
+      }
+      if (src && !img.getAttribute("src")) img.setAttribute("src", src);
+      img.classList.add("qx-marks-inline-fig", "qx-pool-fig", "qx-no-wm");
+      img.classList.remove("qx-wm-loading");
+      img.style.opacity = "1";
+      img.style.visibility = "visible";
+      if (irodov) {
+        img.classList.add("qx-irodov-clean", "qx-wm-clean");
+        img.dataset.qxHasWm = "0";
+        img.dataset.qxCleaned = "1";
+      }
+      img.removeAttribute("crossorigin");
+      img.loading = "eager";
+      img.decoding = "async";
+    });
+    if (irodov) {
+      void loadIrodovFigMap().then(() => {
+        imgs.forEach(img => {
+          if (!img || !img.isConnected) return;
+          const raw = fixUrl(img.getAttribute("src") || "");
+          if (/\/assets\/diagrams\/qx-irodov/i.test(raw)) return;
+          const mapped = resolveIrodovCleanSrc(raw) || resolveIrodovCleanSrc(img.dataset.qxOrigSrc || "");
+          if (mapped) {
+            applyLocalCleanFigure(img, mapped, q && q.id);
+            img.classList.add("qx-marks-inline-fig", "qx-irodov-clean");
+          }
+        });
+      });
+      return;
+    }
+    // Rank Booster / other native books: strip MARKS watermark on pool figures (options + stem)
+    if (rankBooster || (q && (q._book || q._bookId))) {
+      void (async () => {
+        for (const img of imgs) {
+          if (!img || !img.isConnected) continue;
+          const cur = fixUrl(img.getAttribute("src") || "");
+          const orig = fixUrl(img.dataset.qxOrigSrc || "");
+          const cdn = /cdn-question-pool|cdn\.quizrr/i.test(cur) ? cur
+            : (/cdn-question-pool|cdn\.quizrr/i.test(orig) ? orig : "");
+          if (!cdn && !/\/api\/proxy-image/i.test(cur)) continue;
+          img.classList.add("qx-pool-fig", "qx-fig-img");
+          img.classList.remove("qx-wm-loading");
+          try {
+            if (typeof processImage === "function") processImage(img);
+            else if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintMarksHideOnly) {
+              await QxPremiumWM.paintMarksHideOnly(img);
+            }
+          } catch (_) { /* keep figure */ }
+          img.classList.remove("qx-wm-loading");
+          img.style.opacity = "1";
+          img.style.visibility = "visible";
+        }
+      })();
+    }
+  }
+
   function finalizeAll(root, q) {
+    if (isMarksNativeBook(q)) {
+      finalizeMarksNative(root, q);
+      return;
+    }
     if (q) rememberQuestionRaw(q);
     finalizeDiagrams(root, q);
     finalizeOptionDiagrams(root, q);
@@ -2709,15 +3457,29 @@ window.QxImgClean = (() => {
   function buildQuestionBodyHtml(qid, rawHtml, renderText, q) {
     if (qid == null || qid === "") return "";
     const render = typeof renderText === "function" ? renderText : (t => t);
-    const { before, after } = splitQuestionHtml(rawHtml, qid);
-    const slot = buildDiagramSlotHtml(qid, rawHtml, q);
+    if (isMarksNativeBook(q)) {
+      const body = render(fixUrl(String(rawHtml || "")));
+      return `<div class="mtk-q-text qx-content qx-marks-native qx-marks-native-q" data-qx-qid="${qid}">${body}</div>`;
+    }
+    pinQuestionHtml(qid, rawHtml);
+    const segments = parseQuestionSegments(rawHtml, qid, q);
     const textCls = "mtk-q-text qx-content qx-q-text-only";
-    const parts = [];
-    if (before) parts.push(`<div class="${textCls} qx-q-before" data-qx-qid="${qid}">${render(before)}</div>`);
-    if (slot) parts.push(slot);
-    if (after) parts.push(`<div class="${textCls} qx-q-after" data-qx-qid="${qid}">${render(after)}</div>`);
-    if (!parts.length) return `<div class="${textCls}" data-qx-qid="${qid}">${render(rawHtml)}</div>`;
-    return `<div class="qx-question-body" data-qx-qid="${qid}">${parts.join("")}</div>`;
+    const hasFig = segments.some(s => s.type === "figure");
+    if (!hasFig) {
+      return `<div class="${textCls}" data-qx-qid="${qid}">${render(rawHtml)}</div>`;
+    }
+    const figTotal = segments.filter(s => s.type === "figure").length;
+    let figIdx = 0;
+    const parts = segments.map(seg => {
+      if (seg.type === "text") {
+        return `<div class="${textCls} qx-q-seg-text" data-qx-qid="${qid}">${render(seg.html)}</div>`;
+      }
+      figIdx += 1;
+      const inner = poolFigureHtml(seg.src, seg.displayW);
+      const idAttr = figTotal === 1 && figIdx === 1 ? ' id="qxDiagramSlot"' : "";
+      return `<div class="qx-diagram-seg qx-diagram-slot qx-pool-fig-wrap mathjax_ignore tex2jax_ignore"${idAttr} data-qx-qid="${qid}" data-qx-seg="${figIdx}" data-qx-locked="1">${inner}</div>`;
+    });
+    return `<div class="qx-question-body qx-question-flow" data-qx-qid="${qid}">${parts.join("")}</div>`;
   }
 
   function pinQuestionHtml(qid, html) {
@@ -2809,11 +3571,20 @@ window.QxImgClean = (() => {
     void loadFigureOverrides();
     startObserver();
     startGuardian();
+    // First force every Marks CDN img onto clean proxy (removes baked MARKS watermark)
+    rewriteAllPoolImgs(scope);
     if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.scanAllFigures) {
       QxPremiumWM.scanAllFigures(scope);
     }
+    // Strip any leftover overlays
+    scope.querySelectorAll(
+      ".qx-premium-wm-sheet, .qx-quantrex-wm-overlay, .qx-brand-overlay, .qx-diag-watermark, canvas.qx-premium-wm-canvas, canvas.qx-marks-scrub-canvas, .qx-quantrex-black-wm, .qx-quantrex-black-seal"
+    ).forEach(el => el.remove());
     scope.querySelectorAll("img").forEach(img => processImage(img));
     finalizeAll(scope, resolveCurrentQuestion(scope));
+    // second pass after images settle
+    setTimeout(() => rewriteAllPoolImgs(scope), 400);
+    setTimeout(() => rewriteAllPoolImgs(scope), 1200);
   }
 
   return {
@@ -2821,6 +3592,8 @@ window.QxImgClean = (() => {
     isPoolDiagram,
     cleanUrl,
     scan,
+    rewriteAllPoolImgs,
+    proxyImageUrl,
     processImage,
     pinQuestionHtml,
     splitQuestionHtml,
@@ -2829,6 +3602,7 @@ window.QxImgClean = (() => {
     buildOptSlotHtml,
     renderOptionContent,
     buildQuestionBodyHtml,
+    isMarksNativeBook,
     mountDiagramSlot,
     rememberQuestionRaw,
     finalizeDiagrams,
