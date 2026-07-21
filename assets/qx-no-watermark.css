@@ -31,40 +31,29 @@ canvas.qx-marks-scrub-canvas,
   pointer-events: none !important;
 }
 
-/* Quantrex coaching watermark — BEHIND figure, low opacity (figure always readable) */
+/* Never show Quantrex/brand stamp overlays on figures */
 img.qx-coaching-wm,
 img.qx-quantrex-wm-overlay,
 .qx-fig-inner > img.qx-coaching-wm,
-.qx-fig-inner > img.qx-quantrex-wm-overlay {
-  display: block !important;
-  visibility: visible !important;
+.qx-fig-inner > img.qx-quantrex-wm-overlay,
+.qx-quantrex-black-wm,
+.qx-quantrex-black-seal,
+.qx-premium-wm-sheet,
+.qx-brand-overlay,
+.qx-diag-watermark,
+canvas.qx-premium-wm-canvas {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
   pointer-events: none !important;
-  max-height: 70% !important;
-  max-width: 70% !important;
-  width: auto !important;
-  height: auto !important;
+  width: 0 !important;
+  height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
   position: absolute !important;
-  z-index: 0 !important;
-  left: 50% !important;
-  top: 50% !important;
-  transform: translate(-50%, -50%) rotate(-28deg) !important;
-  opacity: 0.07 !important;
-  mix-blend-mode: multiply;
-  user-select: none !important;
-}
-
-/* Real diagram image always above watermark */
-.qx-fig-inner > img.qx-pool-fig,
-.qx-fig-inner > img.qx-fig-img,
-.qx-fig-inner > img.qx-no-wm,
-.qx-fig img.qx-pool-fig,
-.qx-opt-fig img.qx-pool-fig,
-#qxDiagramSlot img.qx-pool-fig,
-.sol-body img.qx-pool-fig,
-.qx-sol-body img.qx-pool-fig {
-  position: relative !important;
-  z-index: 2 !important;
-  opacity: 1 !important;
+  left: -9999px !important;
+  z-index: -1 !important;
 }
 
 /* Real figures ALWAYS visible */

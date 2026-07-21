@@ -26,15 +26,25 @@
     "img[src*='proxy-image']"
   ].join(", ");
 
-  // Only kill MARKS / third-party brand chrome — keep Quantrex coaching watermark
+  // Kill MARKS chrome + Quantrex stamp overlays (figures must stay clean/readable)
   const KILL_SEL = [
     "canvas.qx-marks-scrub-canvas",
+    "canvas.qx-premium-wm-canvas",
+    "img.qx-coaching-wm",
+    "img.qx-quantrex-wm-overlay",
+    ".qx-quantrex-black-wm",
+    ".qx-quantrex-black-seal",
+    ".qx-premium-wm-sheet",
+    ".qx-brand-overlay",
+    ".qx-diag-watermark",
     ".qx-marks-strip",
     ".qx-marks-scrub",
     ".qx-wm-mask",
     "img[src*='getmarks-brand']",
     "img[src*='marks-premium']",
     "img[src*='marks_selected']",
+    "img[src*='quantrex-academy-brand']",
+    "img[src*='quantrex-watermark']",
     "img[alt*='Get Marks App']",
     ".getmarks-brand",
     ".marks-brand"
@@ -193,9 +203,8 @@
           img.dataset.qxNowmRetry = "1";
           setTimeout(() => applyCacheOrClean(img), 500);
         }
-        // Quantrex brand (organic-book style) after MARKS strip
-        if (typeof QxPremiumWM.paintQuantrexBrand === "function") {
-          void QxPremiumWM.paintQuantrexBrand(img);
+        if (typeof QxPremiumWM.stripQuantrexBrand === "function") {
+          QxPremiumWM.stripQuantrexBrand(img);
         }
       });
     } else if (typeof QxImgClean !== "undefined" && QxImgClean.rewriteAllPoolImgs) {
