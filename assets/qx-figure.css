@@ -2,61 +2,107 @@
 
 .qx-diagram-panel,
 .qx-diag-toolbar,
+.qx-diag-zoom-btns,
+.qx-diag-btn,
+.qx-diag-pct,
+.qx-diag-label,
 .qx-diagram-hint,
-.qx-diagram-badge { display: none !important; }
+.qx-diagram-badge {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
 
 /* Question-body figures */
+.qx-diagram-slot .qx-fig,
+.qx-question-body .qx-fig {
+  margin: 2px auto;
+}
+
 .qx-fig {
   display: block;
   position: relative;
-  margin: 14px auto;
+  margin: 8px auto;
   padding: 0;
-  max-width: min(100%, 560px);
+  max-width: min(100%, 680px);
   text-align: center;
   border: none;
   background: transparent;
-  overflow: hidden;
+  overflow: visible;
 }
 
-/* Interim mask — hides third-party watermark until pixel-cleaned PNG loads */
+/* Hide Marks scrub / legacy sheets — keep Quantrex coaching watermark */
+.qx-premium-wm-sheet,
+.qx-premium-wm-title,
+.qx-premium-wm-tag,
+.qx-wm-diagonal,
+canvas.qx-marks-scrub-canvas {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+img.qx-coaching-wm,
+img.qx-quantrex-wm-overlay {
+  display: block !important;
+  visibility: visible !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  z-index: 8 !important;
+}
+
+/* Standard professional figure size — readable, not oversized (see also qx-figure-viewer.css) */
+#qxDiagramSlot img,
+.qx-diagram-slot img,
+.qx-question-body img.qx-pool-fig,
+.mtk-q-text img,
+.qx-prac-q img,
+.qa-q img,
+.qx-fig img.qx-pool-fig {
+  max-width: min(100%, 520px) !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: 280px !important;
+  display: block !important;
+  margin: 10px auto !important;
+  object-fit: contain !important;
+}
+
+.qx-prac-opt-text img,
+.mtk-opt-text img {
+  max-width: min(100%, 280px) !important;
+  max-height: 180px !important;
+  min-height: 0 !important;
+  margin: 6px auto !important;
+}
+/* Clean figures in options */
+.qx-prac-opt-text .qx-fig img.qx-pool-fig,
+.mtk-opt-text .qx-fig img.qx-pool-fig,
+.qx-opt-diagram-slot img.qx-pool-fig {
+  max-height: 180px !important;
+  filter: none !important;
+}
+
+.qx-fig.qx-brand-covered,
+.qx-fig.qx-fig-stack {
+  overflow: visible;
+}
+
+/* Corner-only mask — never cover the figure body */
 .qx-fig.qx-wm-pending-wrap::before,
 .qx-opt-fig.qx-wm-pending-wrap::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2;
-  background:
-    linear-gradient(135deg, transparent 32%, #ffffff 66%) top right / 32% 26% no-repeat,
-    linear-gradient(315deg, transparent 32%, #ffffff 66%) bottom left / 32% 26% no-repeat,
-    linear-gradient(#ffffff, #ffffff) center / 82% 56% no-repeat,
-    radial-gradient(ellipse 90% 72% at 50% 50%, #ffffff 0%, #ffffff 68%, transparent 92%) center / 100% 100% no-repeat;
+  display: none !important;
 }
 
 .qx-fig.qx-wm-pending-wrap::after,
-.qx-opt-fig.qx-wm-pending-wrap::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 22%;
-  height: 16%;
-  pointer-events: none;
-  z-index: 2;
-  background: linear-gradient(135deg, transparent 25%, rgba(255, 255, 255, 0.92) 75%);
-}
-
+.qx-opt-fig.qx-wm-pending-wrap::after,
 .qx-fig:not(:has(img.qx-cleaned)):not(.qx-wm-pending-wrap)::after,
-.qx-opt-fig:not(:has(img.qx-cleaned)):not(.qx-wm-pending-wrap)::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-  z-index: 1;
-  right: 0;
-  bottom: 0;
-  width: 18%;
-  height: 14%;
-  background: linear-gradient(135deg, transparent 30%, rgba(255, 255, 255, 0.85) 80%);
+.qx-opt-fig:not(:has(img.qx-cleaned)):not(.qx-wm-pending-wrap)::after,
+.qx-pool-fig-wrap::after,
+.qx-fig-stack::after {
+  display: none !important;
 }
 
 .qx-fig.qx-cleaned-wrap::after,
@@ -66,21 +112,75 @@
   display: none !important;
 }
 
+/* Organic book — preserve authored figure width (120px, 250px, 350px, etc.) */
+img.qx-organic-fig[data-qx-display-w],
+.mtk-main img.qx-organic-fig[data-qx-display-w],
+#qxDiagramSlot img[data-qx-display-w],
+.mtk-main #qxDiagramSlot img[data-qx-display-w],
+.qx-diagram-slot img[data-qx-display-w],
+.mtk-main .qx-diagram-slot img[data-qx-display-w],
+.qx-fig img[data-qx-display-w] {
+  width: var(--qx-fig-w) !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 48px !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  object-fit: contain !important;
+  overflow: visible !important;
+}
+
+.qx-fig-inner:has(> img[data-qx-display-w]),
+.qx-fig:has(img[data-qx-display-w]) {
+  width: min(100%, var(--qx-fig-w, 320px)) !important;
+  max-width: 100% !important;
+  min-width: min(var(--qx-fig-w, 200px), 100%) !important;
+  overflow: visible !important;
+}
+
+/* Practice / CBT — diagram segments & slots */
+.mtk-main #qxDiagramSlot,
+.mtk-main > .qx-diagram-slot,
+.mtk-main .qx-question-body #qxDiagramSlot,
+.mtk-main .qx-question-body .qx-diagram-slot,
+.mtk-main .qx-question-body .qx-diagram-seg {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 6px !important;
+  overflow: visible !important;
+  max-height: none !important;
+}
+
+.mtk-main #qxDiagramSlot .qx-fig,
+.mtk-main .qx-diagram-slot .qx-fig,
+.mtk-main .qx-diagram-seg .qx-fig {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  max-width: 100% !important;
+  margin: 2px auto !important;
+  overflow: visible !important;
+}
+
 .qx-fig-img,
 .qx-fig img {
   display: block;
   max-width: 100%;
   width: auto;
   height: auto;
-  max-height: 480px;
+  max-height: none;
   margin: 0 auto;
   object-fit: contain;
-  border-radius: 4px;
-  background: #fff;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  filter: none;
   image-rendering: auto;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
+
 
 .mtk-q-text .qx-fig,
 .qa-q .qx-fig,
@@ -90,11 +190,13 @@
 
 .mtk-q-text .qx-fig-img,
 .qa-q .qx-fig-img,
-.qx-prac-q .qx-fig-img {
-  max-height: 420px;
+.qx-prac-q .qx-fig-img,
+#qxDiagramSlot .qx-fig-img,
+#qxDiagramSlot img {
+  max-height: none;
 }
 
-/* Option images — centered inside option card */
+/* Option images — flat, no shadow plate behind figure */
 .qx-opt-fig {
   display: flex;
   align-items: center;
@@ -102,19 +204,18 @@
   position: relative;
   width: 100%;
   margin: 4px 0;
-  padding: 6px;
-  background: #fff;
-  border-radius: 8px;
-  min-height: 80px;
-  overflow: hidden;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  min-height: 0;
+  overflow: visible;
 }
 
+
 .qx-opt-fig::after {
-  right: 0;
-  bottom: 0;
-  width: 20%;
-  height: 16%;
-  background: linear-gradient(135deg, transparent 25%, rgba(255, 255, 255, 0.88) 78%);
+  display: none !important;
 }
 
 .qx-opt-fig img {
@@ -163,35 +264,35 @@
 
 .mtk-options.qx-opts-img .mtk-opt-letter {
   align-self: flex-start;
+  margin-bottom: 6px;
 }
 
 .mtk-options.qx-opts-img .mtk-opt-text {
   width: 100%;
 }
 
-/* Light CBT theme */
-.mtk-test-root[data-test-theme="light"] .qx-opt-fig {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+/* Light / dark CBT — no gray figure cards or shadow plates */
+.mtk-test-root[data-test-theme="light"] .qx-opt-fig,
+.mtk-test-root[data-test-theme="dark"] .qx-opt-fig,
+.mtk-test-root[data-test-theme="light"] .qx-fig,
+.mtk-test-root[data-test-theme="dark"] .qx-fig {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .mtk-test-root[data-test-theme="light"] .qx-fig-img,
-.mtk-test-root[data-test-theme="light"] .qx-fig img {
-  background: #fff;
-}
-
-/* Dark app theme */
+.mtk-test-root[data-test-theme="light"] .qx-fig img,
 [data-theme="dark"] .qx-fig-img,
-[data-theme="dark"] .qx-fig img {
-  background: #fff;
+[data-theme="dark"] .qx-fig img,
+[data-theme="dark"] .qx-opt-fig {
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
-[data-theme="dark"] .qx-opt-fig {
-  background: #fff;
-}
 
 @media (max-width: 640px) {
   .qx-fig-img,
-  .qx-fig img { max-height: 280px; }
+  .qx-fig img, #qxDiagramSlot img { max-height: none; }
   .qx-opt-fig img { max-height: 110px; }
 }

@@ -16,10 +16,25 @@ function bindMarksGo(root) {
       e.stopPropagation();
       try {
         const payload = JSON.parse((el.dataset.mgp || "{}").replace(/&#39;/g, "'"));
+        // Block removed books even if remote payload still references them
+        if (payload && payload.bookId && QX_REMOVED_BOOK_IDS.has(payload.bookId)) {
+          if (typeof showToast === "function") showToast("This book is no longer available.");
+          return;
+        }
         go(el.dataset.mg, payload);
       } catch (err) {
         console.error("nav error", err);
         showToast("⚠️ Navigation error — try again");
+      }
+    };
+  });
+  // Irodov secret: open only after 10 taps
+  (root || document).querySelectorAll("[data-irodov-gate]").forEach(el => {
+    el.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (typeof tryIrodovGate === "function" && tryIrodovGate()) {
+        go("books", { step: "modules", bookId: QX_IRODOV_BOOK_ID });
       }
     };
   });
@@ -56,12 +71,47 @@ function qPreview(text) {
   return plain.length > 140 ? plain.slice(0, 140) + "…" : plain;
 }
 
-function breadcrumb(parts) {
-  return `<div class="breadcrumb">${parts.map((p, i) =>
-    i < parts.length - 1
+/**
+ * Folder nav: Back (one level up) + Exit (module root / home).
+ * Used on every chapter/subject drill-down across banks, books, DPP, etc.
+ */
+function breadcrumb(parts, opts) {
+  opts = opts || {};
+  const list = Array.isArray(parts) ? parts : [];
+  const parent = list.length >= 2 ? list[list.length - 2] : null;
+  const root = list[0] || null;
+
+  let backBtn = "";
+  if (parent && parent.view) {
+    backBtn = `<button type="button" class="qx-nav-back" ${mg(parent.view, parent.payload || {})}>← Back</button>`;
+  } else if (opts.backView) {
+    backBtn = `<button type="button" class="qx-nav-back" ${mg(opts.backView, opts.backPayload || {})}>← Back</button>`;
+  } else {
+    backBtn = `<button type="button" class="qx-nav-back" onclick="go('dashboard')">← Home</button>`;
+  }
+
+  let exitBtn = "";
+  if (opts.exitOnclick) {
+    exitBtn = `<button type="button" class="qx-nav-exit" onclick="${opts.exitOnclick}">${opts.exitLabel || "Exit"}</button>`;
+  } else if (list.length >= 2 && root && root.view) {
+    // Deep folder → exit to module root (first crumb)
+    exitBtn = `<button type="button" class="qx-nav-exit" ${mg(root.view, root.payload || {})}>${opts.exitLabel || "Exit"}</button>`;
+  } else if (opts.exitView) {
+    exitBtn = `<button type="button" class="qx-nav-exit" ${mg(opts.exitView, opts.exitPayload || {})}>${opts.exitLabel || "Exit"}</button>`;
+  } else {
+    exitBtn = `<button type="button" class="qx-nav-exit" onclick="go('dashboard')">${opts.exitLabel || "Exit"}</button>`;
+  }
+
+  const crumbs = list.map((p, i) =>
+    i < list.length - 1
       ? `<a href="#" ${mg(p.view, p.payload)}>${p.label}</a><span>›</span>`
       : `<span class="bc-cur">${p.label}</span>`
-  ).join("")}</div>`;
+  ).join("");
+
+  return `<div class="qx-folder-nav">
+    <div class="qx-folder-nav-actions">${backBtn}${exitBtn}</div>
+    <div class="breadcrumb">${crumbs}</div>
+  </div>`;
 }
 
 function subjectIcon(subj, iconUrl, size) {
@@ -122,10 +172,15 @@ function dashExamIconFor(exam) {
 function renderDashExamScroll(exams) {
   return (exams || []).map(e => {
     const yrs = typeof cpyqbExamYearLabel === "function" ? cpyqbExamYearLabel(e.slug) : "";
+    const prog = typeof QxCardIcons !== "undefined"
+      ? QxCardIcons.examProgressStats(e.slug)
+      : { solved: 0, total: e.count || 0 };
+    const total = prog.total || e.count || 0;
     return `<div class="exam-pill-card" ${mg("cpyqb", { step: "subjects", exam: e.slug })}>
       <div class="exam-pill-ic">${dashExamIconFor(e)}</div>
       <strong>${e.title}</strong>
-      <small>${yrs || (e.count || 0).toLocaleString() + " qs"}</small>
+      <small>${yrs || total.toLocaleString() + " qs"}</small>
+      ${qxProgressBar(prog.solved, total)}
     </div>`;
   }).join("");
 }
@@ -206,9 +261,13 @@ function renderQCard(q) {
     : "";
   const srcText = typeof QuantrexStrip !== "undefined" ? QuantrexStrip.sourceLabel(q) : (q.source || q.paperSource || "");
   const examLogo = typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.forQuestion(q).replace('class="qx-exam-logo"', 'class="qx-exam-logo qx-card-exam-logo"') : "";
+  const paperMeta = !bookLabel && typeof QuantrexStrip !== "undefined" && QuantrexStrip.paperMetaHtml
+    ? QuantrexStrip.paperMetaHtml(q)
+    : "";
   const srcLine = bookLabel
     ? `<span class="qx-book-badge" title="${bookTip}">📕 ${bookLabel}</span>`
-    : `${examLogo}${dateLine ? `📅 ${dateLine} · ` : ""}<span class="qx-src-label">📌 ${srcText}</span>`;
+    : (paperMeta
+      || `${examLogo}${dateLine ? `📅 ${dateLine} · ` : ""}<span class="qx-src-label">📌 ${srcText}</span>`);
   const hasSol = typeof MarksLive !== "undefined" && MarksLive.hasRealSolution
     ? MarksLive.hasRealSolution(q.solution)
     : !!String(q.solution || "").replace(/<[^>]+>/g, "").trim();
@@ -394,10 +453,21 @@ function cpyqbChapterStats(examSlug, subject, chapterName, total) {
   return { solved, total: totalQs, accuracy, lastDate, yearCounts: cpyqbYearCounts(qs), weak, strong, average };
 }
 
-function cpyqbChapterIcon(meta) {
-  if (!meta) return "";
-  const letter = (meta.shortName || "?").slice(0, 1).replace(/'/g, "");
+function cpyqbChapterIcon(meta, subject, chapterName) {
+  if (typeof QxCardIcons !== "undefined") {
+    const name = chapterName || (meta && (meta.shortName || meta.title || meta.name)) || "";
+    return QxCardIcons.chapterIconHtml(name, subject, meta);
+  }
+  const letter = ((meta && meta.shortName) || chapterName || "?").slice(0, 1).replace(/'/g, "");
   return `<span class="cpyqb-ch-ic-fb">${letter}</span>`;
+}
+
+function qxProgressBar(solved, total, opts) {
+  if (typeof QxCardIcons !== "undefined") return QxCardIcons.progressBarHtml(solved, total, opts || {});
+  const t = Math.max(0, Number(total) || 0);
+  const s = t ? Math.min(Math.max(0, Number(solved) || 0), t) : 0;
+  const g = t ? (s / t) * 100 : 0;
+  return `<div class="qx-prog-bar"><span class="qx-prog-g" style="width:${g}%"></span><span class="qx-prog-r" style="width:${100 - g}%"></span></div>`;
 }
 
 function cpyqbSyllabusBadge(cat) {
@@ -492,32 +562,57 @@ function cpyqbFilterDrawerHtml(p, subject, units) {
 }
 
 function cpyqbExamsForCategory(allExams, category) {
+  const list = allExams || [];
   const order = (typeof CPYQB_EXAM_ORDER !== "undefined" && CPYQB_EXAM_ORDER[category]) || [];
-  const bySlug = new Map((allExams || []).map(e => [e.slug, e]));
-  return order.map(s => bySlug.get(s)).filter(Boolean);
+  const bySlug = new Map(list.map(e => [e.slug, e]));
+  if (order.length) {
+    const ordered = order.map(s => bySlug.get(s)).filter(Boolean);
+    // Append any same-category exams not listed in order (future-proof)
+    const seen = new Set(ordered.map(e => e.slug));
+    list.forEach(e => {
+      if (e && e.category === category && e.slug && !seen.has(e.slug)) ordered.push(e);
+    });
+    return ordered;
+  }
+  // Fallback: filter by nav category field
+  return list.filter(e => e && e.category === category);
+}
+
+function resolveCpyqbExam(nav, slug) {
+  if (!slug) return null;
+  return (nav || []).find(e => e.slug === slug) || null;
 }
 
 function renderCpyqbExamBank(allExams) {
   const eng = cpyqbExamsForCategory(allExams, "Engineering");
   const med = cpyqbExamsForCategory(allExams, "Medical");
+  const found = cpyqbExamsForCategory(allExams, "Foundation");
   const tile = e => {
     const yrs = typeof cpyqbExamYearLabel === "function" ? cpyqbExamYearLabel(e.slug) : "";
-    const sub = yrs ? `${e.title} ${yrs}` : `${e.count.toLocaleString()} questions`;
+    const sub = yrs ? `${e.title} ${yrs}` : `${(e.count || 0).toLocaleString()} questions`;
     const logo = typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.html(e.slug, 40, "cpyqb-exam-tile-logo") : "";
+    const prog = typeof QxCardIcons !== "undefined"
+      ? QxCardIcons.examProgressStats(e.slug)
+      : { solved: 0, total: e.count || 0 };
+    const total = prog.total || e.count || 0;
     return `<div class="cpyqb-exam-tile" ${mg("cpyqb", { step: "subjects", exam: e.slug })}>
       <div class="cpyqb-exam-tile-ic">${logo}</div>
       <strong>${e.title}</strong>
       <small>${sub}</small>
+      ${qxProgressBar(prog.solved, total)}
     </div>`;
   };
+  const section = (title, list) => list.length
+    ? `<h2 class="cpyqb-exam-sec-title">${title}</h2><div class="cpyqb-exam-grid">${list.map(tile).join("")}</div>`
+    : "";
   return `<div class="cpyqb-exam-bank-page">
     <div class="cpyqb-exam-bank-head">
       <h1>Chapter wise Previous Year Questions Bank</h1>
     </div>
-    <h2 class="cpyqb-exam-sec-title">Engineering</h2>
-    <div class="cpyqb-exam-grid">${eng.map(tile).join("") || '<div class="empty">No engineering exams.</div>'}</div>
-    <h2 class="cpyqb-exam-sec-title">Medical</h2>
-    <div class="cpyqb-exam-grid">${med.map(tile).join("") || '<div class="empty">No medical exams.</div>'}</div>
+    ${section("Engineering", eng)}
+    ${section("Medical", med)}
+    ${section("Class 9 & 10 / Foundation", found)}
+    ${!eng.length && !med.length && !found.length ? '<div class="empty">No exams loaded.</div>' : ""}
   </div>`;
 }
 
@@ -566,6 +661,73 @@ function filterByMarksIds(qs, ids) {
   if (!ids || !ids.length) return qs;
   const set = new Set(ids);
   return qs.filter(q => q._marksId && set.has(q._marksId));
+}
+
+function marksIdsFromMeta(meta, mode, bucketId, bucketTitle, topicId, topicTitle) {
+  if (!meta) return [];
+  if (mode === "bucket" && (bucketId || bucketTitle)) {
+    const b = findMetaItem(meta.buckets, bucketId, bucketTitle);
+    return b && b.questionIds ? b.questionIds.slice() : [];
+  }
+  if (mode === "topic" && (topicId || topicTitle)) {
+    const t = findMetaItem(meta.topics, topicId, topicTitle);
+    return t && t.questionIds ? t.questionIds.slice() : [];
+  }
+  const ids = [];
+  (meta.buckets || []).forEach(b => { if (b.questionIds) ids.push(...b.questionIds); });
+  if (!ids.length) (meta.topics || []).forEach(t => { if (t.questionIds) ids.push(...t.questionIds); });
+  return ids;
+}
+
+async function ensureCpyqbChapterQuestions(examSlug, subject, chapter, meta, opts) {
+  opts = opts || {};
+  if (!_banksLoaded[examSlug]) await loadSingleBank(examSlug);
+  let qs = QUESTIONS.filter(q => q._bank === examSlug && q.subject === subject && q.chapter === chapter);
+  const needLive = qs.length === 0 || (typeof isBankUnavailable === "function" && isBankUnavailable(examSlug));
+  if (!needLive && qs.length) return qs;
+
+  if (!meta || !meta.examId) meta = await fetchChapterMeta(examSlug, subject, chapter);
+  if (!meta || !meta.examId || typeof MarksLive === "undefined") return qs;
+
+  try {
+    await MarksLive.ensureToken();
+  } catch (e) {
+    showToast("⚠️ Session sync failed — refresh page");
+    return qs;
+  }
+
+  const liveMeta = {
+    subject,
+    chapter,
+    bank: examSlug,
+    examName: (typeof BANK_INDEX !== "undefined" && BANK_INDEX[examSlug] && BANK_INDEX[examSlug].title) || examSlug
+  };
+
+  showToast("📡 Syncing questions…");
+
+  if (opts.mode === "bucket" && opts.bucketId && MarksLive.cpyqbBucketQuestions) {
+    const data = await MarksLive.cpyqbBucketQuestions(
+      meta.examId, meta.subjectId, meta.chapterId, opts.bucketId, liveMeta
+    );
+    qs = data.questions || [];
+  } else if (opts.mode === "topic" && opts.topicId && MarksLive.cpyqbTopicQuestions) {
+    const data = await MarksLive.cpyqbTopicQuestions(
+      meta.examId, meta.subjectId, meta.chapterId, opts.topicId, liveMeta
+    );
+    qs = data.questions || [];
+  } else {
+    const ids = marksIdsFromMeta(meta, opts.mode, opts.bucketId, opts.bucketTitle, opts.topicId, opts.topicTitle);
+    if (ids.length && MarksLive.fetchQuestionsByMarksIds) {
+      qs = await MarksLive.fetchQuestionsByMarksIds(ids, liveMeta);
+    }
+  }
+
+  if (MarksLive.prefetchQuestions && qs.length) {
+    await MarksLive.prefetchQuestions(qs.map(q => q.id));
+    qs = qs.map(q => getQ(q.id) || q);
+  }
+  showToast(qs.length ? `✅ ${qs.length} questions ready` : "⚠️ Could not sync questions");
+  return qs;
 }
 
 function findMetaItem(list, id, title) {
@@ -738,7 +900,7 @@ async function viewCpyqb(payload) {
   if (p.resume && !p.forceExamList && p.step === "subjects" && p.exam && !p.subject) {
     const saved = typeof MarksShell !== "undefined" ? localStorage.getItem(MarksShell.SUBJ_KEY) : null;
     if (saved) {
-      const ex = exams.find(e => e.slug === p.exam);
+      const ex = resolveCpyqbExam(nav, p.exam);
       if (ex && ex.subjects.some(s => s.name === saved)) {
         return viewCpyqb({ ...p, step: "chapters", subject: saved });
       }
@@ -751,8 +913,9 @@ async function viewCpyqb(payload) {
       ${renderCpyqbExamBank(nav)}`;
   }
 
-  const exam = exams.find(e => e.slug === p.exam);
-  if (!exam) return viewCpyqb({ step: "exams" });
+  const exam = resolveCpyqbExam(nav, p.exam);
+  if (!exam) return viewCpyqb({ step: "exams", forceExamList: true });
+  if (typeof MarksShell !== "undefined") MarksShell.saveContext(exam.slug, p.subject || null);
 
   if (p.step === "subjects" || !p.subject) {
     _lastListFn = () => ({ step: "subjects", exam: p.exam });
@@ -837,15 +1000,19 @@ async function viewCpyqb(payload) {
         ? stats.yearCounts.map(([y, n], i) => `<span class="cpyqb-yr"><b>${y}:</b> ${n} Qs ${cpyqbYearArrow(stats.yearCounts, i)}</span>`).join("")
         : "";
       const continueBtn = isContinue ? `<span class="cpyqb-continue-btn">Continue Solving</span>` : "";
+      const syl = ctCh && ctCh.syllabusCategory;
       return `<div class="cpyqb-ch-row${isContinue ? " is-continue" : ""}" ${mg("cpyqb", { step: "chapterHub", exam: p.exam, subject: p.subject, chapter: c.name })}>
-        <div class="cpyqb-ch-left">
-          ${cpyqbChapterIcon(ctCh)}
-          <div class="cpyqb-ch-info">
-            <div class="cpyqb-ch-title">${isContinue ? c.name : displayName} ${cpyqbSyllabusBadge(ctCh && ctCh.syllabusCategory)} ${continueBtn}</div>
-            ${yearHtml ? `<div class="cpyqb-ch-years">${yearHtml}</div>` : ""}
+        <div class="cpyqb-ch-main">
+          <div class="cpyqb-ch-left">
+            ${cpyqbChapterIcon(ctCh, p.subject, c.name)}
+            <div class="cpyqb-ch-info">
+              <div class="cpyqb-ch-title">${isContinue ? c.name : displayName} ${cpyqbSyllabusBadge(syl)} ${continueBtn}</div>
+              ${yearHtml ? `<div class="cpyqb-ch-years">${yearHtml}</div>` : ""}
+            </div>
           </div>
+          <div class="cpyqb-ch-right"><span class="cpyqb-ch-prog">${stats.solved}/${stats.total} Qs</span></div>
         </div>
-        <div class="cpyqb-ch-right"><span class="cpyqb-ch-prog">${stats.solved}/${stats.total} Qs</span></div>
+        ${qxProgressBar(stats.solved, stats.total, { syllabusCategory: syl })}
       </div>`;
     };
 
@@ -901,14 +1068,17 @@ async function viewCpyqb(payload) {
     const bc = breadcrumb(baseBc.slice(0, -1).concat([{ label: p.chapter }]));
     if (!hasBuckets && !hasTopics) {
       if (!_banksLoaded[p.exam]) await loadSingleBank(p.exam);
-      const allQs = QUESTIONS.filter(q => q._bank === p.exam && q.subject === p.subject && q.chapter === p.chapter);
+      const metaHub = await resolveChapterMeta();
+      let allQs = QUESTIONS.filter(q => q._bank === p.exam && q.subject === p.subject && q.chapter === p.chapter);
+      if (!allQs.length) allQs = await ensureCpyqbChapterQuestions(p.exam, p.subject, p.chapter, metaHub, {});
       const testMeta = { title: `${p.chapter} · Chapter Test`, returnTo: "cpyqb", limit: 30 };
       return `${topbar(p.chapter, `${exam.title} · ${p.subject}`)}${bc}
         <p class="result-count">Topic breakdown not available for this chapter yet — showing all ${allQs.length} questions.</p>
         ${renderQList(allQs, _listPage, testMeta)}`;
     }
     if (!_banksLoaded[p.exam]) await loadSingleBank(p.exam);
-    const hubQs = QUESTIONS.filter(q => q._bank === p.exam && q.subject === p.subject && q.chapter === p.chapter);
+    let hubQs = QUESTIONS.filter(q => q._bank === p.exam && q.subject === p.subject && q.chapter === p.chapter);
+    if (!hubQs.length) hubQs = await ensureCpyqbChapterQuestions(p.exam, p.subject, p.chapter, meta, {});
     const hubStats = cpyqbChapterStats(p.exam, p.subject, p.chapter, hubQs.length);
     return `${topbar(p.chapter, "Choose practice mode")}${bc}${renderChapterHubPage(exam, p, meta, hubQs, hubStats)}`;
   }
@@ -920,8 +1090,12 @@ async function viewCpyqb(payload) {
     const buckets = (meta && meta.buckets) || (chMetaNav && chMetaNav.buckets) || [];
     const bc = breadcrumb(baseBc.concat([{ label: "All PYQs" }]));
     const cards = buckets.length ? buckets.map(b => `
-      <div class="ch-card qx-bucket-card ${bucketTone(b)}" ${mg("cpyqb", { step: "questions", mode: "bucket", exam: p.exam, subject: p.subject, chapter: p.chapter, bucketId: b.id, bucketTitle: b.title })}>
-        <strong>${b.title}</strong><small>${(b.count || 0).toLocaleString()} questions</small>
+      <div class="ch-card qx-bucket-card qx-ch-card-rich ${bucketTone(b)}" ${mg("cpyqb", { step: "questions", mode: "bucket", exam: p.exam, subject: p.subject, chapter: p.chapter, bucketId: b.id, bucketTitle: b.title })}>
+        <div class="qx-ch-card-top">
+          ${cpyqbChapterIcon(null, p.subject, b.title || p.chapter)}
+          <div class="qx-ch-body"><strong>${b.title}</strong><small>${(b.count || 0).toLocaleString()} questions</small></div>
+        </div>
+        ${qxProgressBar(0, b.count || 0)}
       </div>`).join("") : `<div class="empty">No PYQ buckets for this chapter yet.</div>`;
     return `${topbar(p.chapter, "All PYQs")}${bc}<div class="ch-grid">${cards}</div>`;
   }
@@ -931,11 +1105,15 @@ async function viewCpyqb(payload) {
     const topics = (meta && meta.topics) || (chMetaNav && chMetaNav.topics) || [];
     const bc = breadcrumb(baseBc.concat([{ label: "Topicwise PYQs" }]));
     const cards = topics.length ? topics.map(t => `
-      <div class="ch-card qx-topic-card" ${mg("cpyqb", { step: "questions", mode: "topic", exam: p.exam, subject: p.subject, chapter: p.chapter, topicId: t.id, topicTitle: t.title })}>
-        <div class="qx-topic-body">
-          <strong>${t.title}</strong>
-          <small>${(t.count || 0).toLocaleString()} questions</small>
+      <div class="ch-card qx-topic-card qx-ch-card-rich" ${mg("cpyqb", { step: "questions", mode: "topic", exam: p.exam, subject: p.subject, chapter: p.chapter, topicId: t.id, topicTitle: t.title })}>
+        <div class="qx-ch-card-top">
+          ${cpyqbChapterIcon(null, p.subject, t.title)}
+          <div class="qx-topic-body qx-ch-body">
+            <strong>${t.title}</strong>
+            <small>${(t.count || 0).toLocaleString()} questions</small>
+          </div>
         </div>
+        ${qxProgressBar(0, t.count || 0)}
       </div>`).join("") : `<div class="empty">No subtopics for this chapter yet.</div>`;
     return `${topbar(p.chapter, "Topicwise PYQs")}${bc}<div class="ch-grid qx-topic-grid">${cards}</div>`;
   }
@@ -943,25 +1121,42 @@ async function viewCpyqb(payload) {
   if (!_banksLoaded[p.exam]) {
     showToast(`📚 Loading ${exam.title} questions…`);
     await loadSingleBank(p.exam);
-    showToast(`✅ ${exam.title} loaded`);
   }
-  let qs = QUESTIONS.filter(q => q._bank === p.exam && q.subject === p.subject && q.chapter === p.chapter);
 
   let filterNote = "";
-  if (meta && p.mode === "bucket" && (p.bucketId || p.bucketTitle)) {
+  let qs = QUESTIONS.filter(q => q._bank === p.exam && q.subject === p.subject && q.chapter === p.chapter);
+
+  if (!qs.length || (typeof isBankUnavailable === "function" && isBankUnavailable(p.exam))) {
+    qs = await ensureCpyqbChapterQuestions(p.exam, p.subject, p.chapter, meta, {
+      mode: p.mode,
+      bucketId: p.bucketId,
+      bucketTitle: p.bucketTitle,
+      topicId: p.topicId,
+      topicTitle: p.topicTitle
+    });
+  } else if (meta && p.mode === "bucket" && (p.bucketId || p.bucketTitle)) {
     const bucket = findMetaItem(meta.buckets, p.bucketId, p.bucketTitle);
     if (bucket && bucket.questionIds && bucket.questionIds.length) {
       const filtered = filterByMarksIds(qs, bucket.questionIds);
       if (filtered.length) qs = filtered;
-      else filterNote = `<p class="result-count">Could not match bucket questions (${bucket.questionIds.length} IDs).</p>`;
+      else {
+        qs = await ensureCpyqbChapterQuestions(p.exam, p.subject, p.chapter, meta, {
+          mode: "bucket", bucketId: p.bucketId, bucketTitle: p.bucketTitle
+        });
+        if (!qs.length) filterNote = `<p class="result-count">Could not sync bucket questions (${bucket.questionIds.length} IDs).</p>`;
+      }
     }
-  }
-  if (meta && p.mode === "topic" && (p.topicId || p.topicTitle)) {
+  } else if (meta && p.mode === "topic" && (p.topicId || p.topicTitle)) {
     const topic = findMetaItem(meta.topics, p.topicId, p.topicTitle);
     if (topic && topic.questionIds && topic.questionIds.length) {
       const filtered = filterByMarksIds(qs, topic.questionIds);
       if (filtered.length) qs = filtered;
-      else filterNote = `<p class="result-count">Could not match subtopic questions (${topic.questionIds.length} IDs).</p>`;
+      else {
+        qs = await ensureCpyqbChapterQuestions(p.exam, p.subject, p.chapter, meta, {
+          mode: "topic", topicId: p.topicId, topicTitle: p.topicTitle
+        });
+        if (!qs.length) filterNote = `<p class="result-count">Could not sync subtopic questions (${topic.questionIds.length} IDs).</p>`;
+      }
     }
   }
 
@@ -1018,9 +1213,16 @@ async function viewNeetModuleBank(payload, moduleId, opts) {
       const tc = c.topicCount || (c.topics && c.topics.length) || 0;
       const parts = [`${(c.count || 0).toLocaleString()} questions`];
       if (tc) parts.push(`${tc} subtopics`);
-      return `<div class="ch-card qx-ch-row" ${mg(viewKey, { step: "chapterHub", subject: p.subject, chapter: c.name, ...(opts.ncertKind ? { ncertKind: opts.ncertKind } : {}) })}>
-        <div class="qx-ch-body"><strong>${c.name}</strong><small>${parts.join(" · ")}</small></div>
-        ${tc ? `<span class="qx-ch-badge topic">Topicwise</span>` : ""}
+      const prog = typeof QxCardIcons !== "undefined"
+        ? QxCardIcons.chapterProgressStats(examSlug, p.subject, c.name, c.count)
+        : { solved: 0, total: c.count || 0 };
+      return `<div class="ch-card qx-ch-row qx-ch-card-rich" ${mg(viewKey, { step: "chapterHub", subject: p.subject, chapter: c.name, ...(opts.ncertKind ? { ncertKind: opts.ncertKind } : {}) })}>
+        <div class="qx-ch-card-top">
+          ${cpyqbChapterIcon(null, p.subject, c.name)}
+          <div class="qx-ch-body"><strong>${c.name}</strong><small>${parts.join(" · ")}</small></div>
+          ${tc ? `<span class="qx-ch-badge topic">Topicwise</span>` : ""}
+        </div>
+        ${qxProgressBar(prog.solved, prog.total || c.count || 0)}
       </div>`;
     }).join("");
     return `${topbar(p.subject, title)}${bc}<div class="ch-grid">${cards}</div>`;
@@ -1054,8 +1256,12 @@ async function viewNeetModuleBank(payload, moduleId, opts) {
     const topics = (meta && meta.topics) || (chNav && chNav.topics) || [];
     const bc = breadcrumb(baseBc.slice(0, -1).concat([{ label: p.chapter }]));
     const cards = topics.map(t => `
-      <div class="ch-card qx-topic-card" ${mg(viewKey, { step: "questions", mode: "topic", subject: p.subject, chapter: p.chapter, topicId: t.id, topicTitle: t.title, ...(opts.ncertKind ? { ncertKind: opts.ncertKind } : {}) })}>
-        <div class="qx-topic-body"><strong>${t.title}</strong><small>${(t.count || 0).toLocaleString()} questions</small></div>
+      <div class="ch-card qx-topic-card qx-ch-card-rich" ${mg(viewKey, { step: "questions", mode: "topic", subject: p.subject, chapter: p.chapter, topicId: t.id, topicTitle: t.title, ...(opts.ncertKind ? { ncertKind: opts.ncertKind } : {}) })}>
+        <div class="qx-ch-card-top">
+          ${cpyqbChapterIcon(null, p.subject, t.title)}
+          <div class="qx-topic-body qx-ch-body"><strong>${t.title}</strong><small>${(t.count || 0).toLocaleString()} questions</small></div>
+        </div>
+        ${qxProgressBar(0, t.count || 0)}
       </div>`).join("");
     return `${topbar(p.chapter, "Topicwise · " + title)}${bc}<div class="ch-grid qx-topic-grid">${cards || '<div class="empty">No subtopics for this chapter yet.</div>'}</div>`;
   }
@@ -1178,8 +1384,12 @@ async function viewBoardMarksBank(payload) {
     _lastListFn = () => ({ step: "chapters", subject: p.subject, subjectId: subj.id, examId, _chapters: chapters });
     const bc = breadcrumb([{ label: examData.title || title, view: "board", payload: { step: "subjects", examId } }, { label: p.subject }]);
     const cards = chapters.map(c => `
-      <div class="ch-card qx-ch-row board-ch-card" ${mg("board", { step: "chapterHub", subject: p.subject, subjectId: subj.id, chapter: c.name, chapterId: c.id, examId, _chapters: chapters })}>
-        <div class="qx-ch-body"><strong>${c.name}</strong><small>${(c.count || 0).toLocaleString()} questions</small></div>
+      <div class="ch-card qx-ch-row board-ch-card qx-ch-card-rich" ${mg("board", { step: "chapterHub", subject: p.subject, subjectId: subj.id, chapter: c.name, chapterId: c.id, examId, _chapters: chapters })}>
+        <div class="qx-ch-card-top">
+          ${cpyqbChapterIcon(null, p.subject, c.name)}
+          <div class="qx-ch-body"><strong>${c.name}</strong><small>${(c.count || 0).toLocaleString()} questions</small></div>
+        </div>
+        ${qxProgressBar(0, c.count || 0)}
       </div>`).join("");
     const pageHtml = `<div class="board-marks-page board-marks-inner">
       <div class="board-marks-head">
@@ -1207,8 +1417,11 @@ async function viewBoardMarksBank(payload) {
     const bc = breadcrumb(baseBc);
     const blocks = sections.map(sec => {
       const cards = (sec.buckets || []).map(b => `
-        <div class="ch-card qx-topic-card" ${mg("board", { step: "questions", subject: p.subject, subjectId: subj.id, chapter: p.chapter, chapterId, bucketId: b.bucketId, bucketTitle: b.title, examId, _chapters: chapters })}>
-          <div class="qx-topic-body"><strong>${b.title}</strong><small>${(b.totalQuestions || 0).toLocaleString()} questions</small></div>
+        <div class="ch-card qx-topic-card qx-ch-card-rich" ${mg("board", { step: "questions", subject: p.subject, subjectId: subj.id, chapter: p.chapter, chapterId, bucketId: b.bucketId, bucketTitle: b.title, examId, _chapters: chapters })}>
+          <div class="qx-ch-card-top">
+            ${cpyqbChapterIcon(null, p.subject, b.title || p.chapter)}
+            <div class="qx-topic-body qx-ch-body"><strong>${b.title}</strong><small>${(b.totalQuestions || 0).toLocaleString()} questions</small></div>
+          </div>
         </div>`).join("");
       return `<h3 class="sec-title">${sec.title}</h3><div class="ch-grid qx-topic-grid">${cards}</div>`;
     }).join("");
@@ -1311,8 +1524,12 @@ async function viewNcert(payload) {
     _lastListFn = () => ({ step: "chapters", subject: p.subject, subjectId: subj.id, ncertKind: kind, _chapters: chapters });
     const bc = breadcrumb([{ label: title, view: "ncert", payload: { step: "subjects", ncertKind: kind } }, { label: p.subject }]);
     const cards = chapters.map(c => `
-      <div class="ch-card qx-ch-row" ${mg("ncert", { step: "sets", subject: p.subject, subjectId: subj.id, chapter: c.name, chapterId: c.id, ncertKind: kind, _chapters: chapters })}>
-        <div class="qx-ch-body"><strong>${c.name}</strong><small>${(c.count || 0).toLocaleString()} questions</small></div>
+      <div class="ch-card qx-ch-row qx-ch-card-rich" ${mg("ncert", { step: "sets", subject: p.subject, subjectId: subj.id, chapter: c.name, chapterId: c.id, ncertKind: kind, _chapters: chapters })}>
+        <div class="qx-ch-card-top">
+          ${cpyqbChapterIcon(null, p.subject, c.name)}
+          <div class="qx-ch-body"><strong>${c.name}</strong><small>${(c.count || 0).toLocaleString()} questions</small></div>
+        </div>
+        ${qxProgressBar(0, c.count || 0)}
       </div>`).join("");
     return `${topbar(p.subject, title)}${bc}<div class="ch-grid">${cards}</div>`;
   }
@@ -1330,8 +1547,11 @@ async function viewNcert(payload) {
     const sets = await MarksLive.ncertChapterSets(subj.id, chapterId, kind);
     const bc = breadcrumb(baseBc);
     const cards = sets.map(s => `
-      <div class="ch-card qx-topic-card" ${mg("ncert", { step: "questions", subject: p.subject, subjectId: subj.id, chapter: p.chapter, chapterId, setId: s.setId, moduleId: s.moduleId, setTitle: s.title, ncertKind: kind, _chapters: chapters })}>
-        <div class="qx-topic-body"><strong>${s.title}</strong><small>${(s.count || 0).toLocaleString()} questions</small></div>
+      <div class="ch-card qx-topic-card qx-ch-card-rich" ${mg("ncert", { step: "questions", subject: p.subject, subjectId: subj.id, chapter: p.chapter, chapterId, setId: s.setId, moduleId: s.moduleId, setTitle: s.title, ncertKind: kind, _chapters: chapters })}>
+        <div class="qx-ch-card-top">
+          ${cpyqbChapterIcon(null, p.subject, s.title || p.chapter)}
+          <div class="qx-topic-body qx-ch-body"><strong>${s.title}</strong><small>${(s.count || 0).toLocaleString()} questions</small></div>
+        </div>
       </div>`).join("");
     return `${topbar(p.chapter, p.subject + " · " + title)}${bc}<div class="ch-grid qx-topic-grid">${cards || '<div class="empty">No question sets for this chapter.</div>'}</div>`;
   }
@@ -1378,10 +1598,18 @@ async function viewSubjectBank(payload, moduleId) {
   if (p.step === "chapters" || !p.chapter) {
     _lastListFn = () => ({ module: moduleId, step: "chapters", subject: p.subject });
     const bc = breadcrumb([{ label: title, view: moduleId, payload: { step: "subjects" } }, { label: p.subject }]);
-    const cards = chapters.map(c => `
-      <div class="ch-card" ${mg(moduleId, { step: "questions", subject: p.subject, chapter: c })}>
-        <strong>${c}</strong>
-      </div>`).join("");
+    const cards = chapters.map(c => {
+      const prog = typeof QxCardIcons !== "undefined"
+        ? QxCardIcons.chapterProgressStats(slug, p.subject, c, 0)
+        : { solved: 0, total: 0 };
+      return `<div class="ch-card qx-ch-card-rich" ${mg(moduleId, { step: "questions", subject: p.subject, chapter: c })}>
+        <div class="qx-ch-card-top">
+          ${cpyqbChapterIcon(null, p.subject, c)}
+          <div class="qx-ch-body"><strong>${c}</strong></div>
+        </div>
+        ${qxProgressBar(prog.solved, prog.total)}
+      </div>`;
+    }).join("");
     return `${topbar(p.subject, title)}${bc}<div class="ch-grid">${cards}</div>`;
   }
 
@@ -1449,8 +1677,12 @@ async function viewDppMarks(payload) {
       { label: p.subject }
     ]);
     const cards = subj.chapters.map(c => `
-      <div class="ch-card" ${mg("dpp", { step: "sets", subject: p.subject, chapter: c.name })}>
-        <strong>${c.name}</strong><small>${c.count} sets</small>
+      <div class="ch-card qx-ch-card-rich" ${mg("dpp", { step: "sets", subject: p.subject, chapter: c.name })}>
+        <div class="qx-ch-card-top">
+          ${cpyqbChapterIcon(null, p.subject, c.name)}
+          <div class="qx-ch-body"><strong>${c.name}</strong><small>${c.count} sets</small></div>
+        </div>
+        ${qxProgressBar(0, c.count || 0)}
       </div>`).join("");
     return `${topbar(p.subject, "Select a chapter")}${bc}<div class="ch-grid">${cards}</div>`;
   }
@@ -1537,8 +1769,11 @@ async function viewFormulaMarks(payload) {
       { label: p.chapter }
     ]);
     const cards = topics.map(t => `
-      <div class="ch-card qx-topic-card" ${mg("formula", { step: "cards", subject: p.subject, chapter: p.chapter, topicTitle: t.title })}>
-        <div class="qx-topic-body"><strong>${t.title}</strong><small>${(t.count || 0).toLocaleString()} formulas</small></div>
+      <div class="ch-card qx-topic-card qx-ch-card-rich" ${mg("formula", { step: "cards", subject: p.subject, chapter: p.chapter, topicTitle: t.title })}>
+        <div class="qx-ch-card-top">
+          ${cpyqbChapterIcon(null, p.subject, t.title)}
+          <div class="qx-topic-body qx-ch-body"><strong>${t.title}</strong><small>${(t.count || 0).toLocaleString()} formulas</small></div>
+        </div>
       </div>`).join("");
     return `${topbar(p.chapter, "Select a topic")}${bc}<div class="ch-grid qx-topic-grid">${cards || '<div class="empty">No topics.</div>'}</div>`;
   }
@@ -1577,11 +1812,12 @@ const TEST_SERIES_META = {
   },
   jeemain: {
     id: "jeemain", tone: "jeemain", logo: "JEE MAIN",
-    title: "JEE Mains 2027 Test Series",
-    tagline: "Focused JEE Main preparation with NTA-style papers",
-    tests: 30, fullMocks: 10, partTests: 20, price: "₹1,499",
-    features: ["Chapter-wise part tests", "Full mock papers", "Shift-wise PYQ style", "Rank predictor", "Weak area analysis"]
+    title: "JEE Main New Question Test Series 2027",
+    tagline: "Quantrex Ultimate Series · New Questions Only · 458 tests",
+    tests: 458, fullMocks: 30, partTests: 10, price: "Included",
+    features: ["100% new questions", "Part & full tests", "Topic & chapter tests", "Scheduled releases", "NTA-style CBT"]
   },
+
   jeeadv: {
     id: "jeeadv", tone: "jeeadv", logo: "JEE ADV",
     title: "JEE Advanced 2027 Test Series",
@@ -1665,56 +1901,34 @@ function viewTestSeriesLegacy(payload) {
 }
 
 function marksTestSeriesCards() {
-  const card = (tone, logo, title) => {
-    const meta = TEST_SERIES_META[tone];
-    const id = meta ? meta.id : tone;
-    const openAttr = id === "jeemain"
-      ? `onclick="window.open('test-series.html','_blank','noopener')" role="button" tabindex="0"`
-      : mg("testseries", { id });
-    return `
-    <div class="mts-card mts-${tone}" ${openAttr}>
-      <div class="mts-logo">${logo}</div>
-      <div class="mts-body">
-        <strong>${title}</strong>
-        <span class="mts-details">View Details →</span>
-      </div>
-    </div>`;
-  };
-  if (STATE.exam === "Medical") {
-    return [
-      card("neet", "NEET", "NEET 2027 Test Series"),
-      card("neet2", "NEET", "NEET Part Test Series"),
-      card("aiims", "AIIMS", "AIIMS Pattern Test Series")
-    ].join("");
-  }
-  if (STATE.exam === "Foundation") {
-    return [
-      card("nda", "NDA", "NDA 2027 Test Series"),
-      card("nda2", "NDA", "NDA Subject Test Series"),
-      card("gk", "GK", "Defence GK Test Series")
-    ].join("");
-  }
-  return [
-    card("jeeboth", "JEE MAIN<br>JEE ADV", "JEE Mains + Advanced 2027 Test Series"),
-    card("jeemain", "JEE MAIN", "JEE Main Test Series 2027"),
-    card("jeeadv", "JEE ADV", "JEE Advanced 2027 Test Series")
-  ].join("");
+  // JEE Main 2027 — new questions only (no PYQ). Opens full series page (proper format).
+  const meta = TEST_SERIES_META.jeemain;
+  return `<a class="mts-card mts-jeemain" href="examgoal-test-series.html" style="text-decoration:none;color:inherit">
+    <div class="mts-logo">${meta.logo}</div>
+    <div class="mts-body">
+      <strong>${meta.title}</strong>
+      <span class="mts-details">Open series →</span>
+      <small class="mts-tagline">${meta.tagline} · No PYQ</small>
+    </div>
+  </a>`;
 }
 
 function viewTests() {
   const hour = new Date().getHours();
-  const ctCount = 589 + (hour * 11) % 120;
   const pyqCount = 600 + (hour * 9) % 110;
   return `<div class="marks-tests-page">
+    <div class="qx-folder-nav-actions" style="margin-bottom:12px">
+      <button type="button" class="qx-nav-back" onclick="go('dashboard')">← Home</button>
+    </div>
     <div class="marks-tests-head">
       <span class="marks-tests-shield">🛡️</span>
       <h1>Tests</h1>
     </div>
     <div class="marks-tests-hero">
-      <div class="mth-card" ${mg("custom", { step: "landing", fromTests: true })}>
+        <div class="mth-card" ${mg("custom", { step: "landing", fromTests: true })}>
         <div class="mth-body">
           <strong>Create Your Own Test</strong>
-          <small>${ctCount}+ students took a Custom Test in last hour!</small>
+          <small>Student — practice &amp; attempt tests</small>
         </div>
         <div class="mth-sq mth-sq-blue"></div>
         <span class="mth-arrow">›</span>
@@ -1729,9 +1943,23 @@ function viewTests() {
       </div>
     </div>
     <div class="marks-ts-section">
-      <h3>India's Most Trusted Test Series</h3>
-      <p class="marks-ts-sub">Brought to you by Quantrex Academy</p>
+      <h3>Test Series</h3>
+      <p class="marks-ts-sub">JEE Main 2027 · 100% new questions · no previous-year papers</p>
       <div class="marks-ts-grid">${marksTestSeriesCards()}</div>
+    </div>
+    <div class="marks-ts-section">
+      <h3>Quantrex For Teachers</h3>
+      <p class="marks-ts-sub">Create Own Test, Content Library, student dashboard — teacher folder</p>
+      <div class="marks-tests-hero" style="margin-bottom:28px">
+        <div class="mth-card" onclick="location.hash='teacher';go('teacher')">
+          <div class="mth-body"><strong>Teacher Folder</strong><small>Create Own Test · PDF/Video · weak topic retest</small></div>
+          <div class="mth-sq mth-sq-pink"></div><span class="mth-arrow">›</span>
+        </div>
+        <div class="mth-card" onclick="location.hash='teacher/builder';go('teacher')">
+          <div class="mth-body"><strong>Create Own Test (Teacher)</strong><small>Same wizard — assign custom test to your batch</small></div>
+          <div class="mth-sq mth-sq-blue"></div><span class="mth-arrow">›</span>
+        </div>
+      </div>
     </div>
   </div>`;
 }
@@ -2186,17 +2414,110 @@ async function startPyqPaperMock(slug, source, freshStart) {
 }
 
 // ============ DIGITAL BOOKS (MARKS Selected — real book questions) ============
+// Permanently removed (last 3 PYQ collection cards + never re-merge from remote)
+const QX_REMOVED_BOOK_IDS = new Set([
+  "67656ccf18ff438b6c18cc4c", // Must Do Top Qs of JEE Main 2024
+  "67656d13c83ed0673b8b7b68", // Top 250 Single Correct Qs
+  "67656cf0a790fd9b172cf0d2"  // Top 100 Numerical Qs
+]);
+
+const QX_IRODOV_BOOK_ID = "69cfb5366ecf5579037d96a4";
+const QX_IRODOV_UNLOCK_CLICKS = 10;
+let _irodovGateClicks = 0;
+
+function isIrodovUnlocked() {
+  try { return sessionStorage.getItem("qx_irodov_unlocked") === "1"; } catch (_) { return false; }
+}
+
+function setIrodovUnlocked() {
+  try { sessionStorage.setItem("qx_irodov_unlocked", "1"); } catch (_) {}
+}
+
+/** Secret gate: Irodov opens only after 10 taps on its card (same session unlock). */
+function tryIrodovGate() {
+  if (isIrodovUnlocked()) return true;
+  _irodovGateClicks += 1;
+  if (_irodovGateClicks >= QX_IRODOV_UNLOCK_CLICKS) {
+    setIrodovUnlocked();
+    _irodovGateClicks = 0;
+    if (typeof showToast === "function") showToast("🔥 Irodov unlocked");
+    return true;
+  }
+  return false;
+}
+
+const QX_BOOKS_CATALOG = {
+  title: "Most Imp Digital Books for IIT-JEE",
+  subtitle: "No need to buy bulky physical books. Get them all in one place!",
+  engineering: [
+    { id: "6a0addba4b032b031e049a36", title: "Concepts Of Physics MCQ Edition [Volume 2]", cover: "assets/book-covers/hc-verma-v2.jpg", subject: "Physics", badge: "HC Verma", exam: "Physics", isComingSoon: false, bankSlug: "jee_main", redirectType: "module", moduleId: null, count: 1854, type: "exam" },
+    { id: "69f9cc23681eab6d6021a4d1", title: "Concepts Of Physics MCQ Edition [Volume 1]", cover: "assets/book-covers/hc-verma-v1.jpg", subject: "Physics", badge: "HC Verma", exam: "Physics", isComingSoon: false, bankSlug: "jee_main", redirectType: "module", moduleId: null, count: 778, type: "exam" },
+    { id: "6a4ce383c59a7b462185330f", title: "Fundamentals of Organic Chemistry", cover: "assets/book-covers/organic-chemistry.jpg", subject: "Chemistry", badge: "Organic", exam: "JEE Main", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6a4e21aea2f0a1af5a74e192", count: 1113, type: "exam" },
+    { id: "69cfb5366ecf5579037d96a4", title: "Top IE IRODOV Physics Problems", cover: "assets/book-covers/irodov.jpg", subject: "Physics", badge: "Irodov", exam: "Advanced Physics", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "69d34798097639b3bf3ea47a", count: 158, type: "exam" },
+    { id: "68f1ce4cc729e5251bd00430", title: "Most Important Selected Qs for JEE Advanced", cover: "assets/book-covers/rank-booster.jpg", subject: "PCM", badge: "Rank Booster", exam: "JEE Advanced", isComingSoon: false, bankSlug: "jee_advanced", redirectType: "module", moduleId: null, count: 2793, type: "exam" },
+    { id: "68946f70ebd145663de38728", title: "99 Percentile Qs Bank for JEE Main", cover: "assets/book-covers/99-percentile.jpg", subject: "PCM", badge: "99 Percentile", exam: "High Yield", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "689470b46cc631f0fbe63f08", count: 3139, type: "exam" },
+    { id: "6894d29d3156b1f3ca5ad0be", title: "Highly selective Backlog Qs for JEE Main", cover: "assets/book-covers/backlog-booster.jpg", subject: "PCM", badge: "Backlog Booster", exam: "Selective PYQs", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6894d2f5d0af19a8bc64156f", count: 760, type: "exam" },
+    { id: "69048808ef55966cf1d71f1d", title: "Olympiad workbook", cover: "assets/book-covers/olympiad.jpg", subject: "PCM", badge: "Olympiad", exam: "Olympiad", isComingSoon: false, bankSlug: "jee_main", redirectType: "module", moduleId: null, count: 1128, type: "exam" },
+    { id: "69736c8362b916d85e52cd1b", title: "BITSAT English and Logical Reasoning Prep Guide", cover: "assets/book-covers/bitsat-english-lr.jpg", subject: "English + LR", badge: "BITSAT", exam: "BITSAT", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "69736e5def12da848f4c24f2", count: 1749, type: "exam" }
+  ],
+  medical: [
+    { id: "69968cee494a12a5771e3455", title: "Biology 360/360 for NEET 2026", cover: "assets/book-covers/biology-360.jpg", description: "for CBSE", isComingSoon: true, subject: "Biology", badge: "NEET", exam: "NEET", bankSlug: "neet" }
+  ],
+  curated: []
+};
+
+function filterActiveBooks(list) {
+  return (list || []).filter(b => b && b.id && !QX_REMOVED_BOOK_IDS.has(b.id));
+}
+
+function mergeBooksCatalog(remote, base) {
+  const b = base || QX_BOOKS_CATALOG;
+  const r = remote || {};
+  const out = {
+    title: r.title || b.title,
+    subtitle: r.subtitle || b.subtitle
+  };
+  ["engineering", "medical", "curated"].forEach(key => {
+    const byId = new Map();
+    filterActiveBooks(b[key]).forEach(book => byId.set(book.id, { ...book }));
+    filterActiveBooks(r[key]).forEach(book => byId.set(book.id, { ...byId.get(book.id), ...book }));
+    out[key] = Array.from(byId.values());
+  });
+  return out;
+}
+
+function booksForExam(catalog, examKey) {
+  const c = catalog || QX_BOOKS_CATALOG;
+  if (examKey === "Medical") {
+    const med = filterActiveBooks(c.medical || []);
+    return med.length ? med : filterActiveBooks(c.engineering || []);
+  }
+  const eng = filterActiveBooks(c.engineering || []);
+  const curated = filterActiveBooks(c.curated || []);
+  return eng.concat(curated);
+}
+
 let _booksCache = null;
 let _booksPayload = { step: "list" };
 
-async function fetchBooks() {
-  if (_booksCache) return _booksCache;
+function resetBooksCache() {
+  _booksCache = null;
+  _booksPayload = { step: "list" };
+}
+
+async function fetchBooks(force) {
+  if (_booksCache && !force) return _booksCache;
+  const bust = typeof QX_BUILD !== "undefined" ? QX_BUILD : Date.now();
   try {
-    const res = await fetch("data/books.json");
-    if (!res.ok) throw new Error(res.status);
-    _booksCache = await res.json();
+    const res = await fetch(`data/books.json?v=${bust}`, { cache: "no-store" });
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || (!data.engineering && !data.medical && !data.curated)) throw new Error("empty catalog");
+    _booksCache = mergeBooksCatalog(data, QX_BOOKS_CATALOG);
   } catch (e) {
-    _booksCache = { title: "Digital Books", subtitle: "", engineering: [], medical: [], curated: [] };
+    console.warn("fetchBooks:", e.message || e);
+    if (_booksCache && booksForExam(_booksCache, "Engineering").length) return _booksCache;
+    _booksCache = mergeBooksCatalog({}, QX_BOOKS_CATALOG);
   }
   return _booksCache;
 }
@@ -2206,29 +2527,48 @@ function openDigitalBook(book) {
     showToast("📚 This book is coming soon!");
     return;
   }
+  if (QX_REMOVED_BOOK_IDS.has(book.id)) {
+    showToast("This book is no longer available.");
+    return;
+  }
+  if (book.id === QX_IRODOV_BOOK_ID && !tryIrodovGate()) {
+    return; // silent until 10th tap
+  }
   const step = book.type === "curated" ? "subjects" : "modules";
   go("books", { step, bookId: book.id, moduleId: book.type === "curated" ? book.id : undefined });
 }
 
 async function viewBooks(payload) {
   const p = { ..._booksPayload, ...(payload || {}) };
+  if (p.bookId && QX_REMOVED_BOOK_IDS.has(p.bookId)) {
+    return viewBooks({ step: "list" });
+  }
+  // Irodov: require 10 cover taps before any deep link / open
+  if (p.bookId === QX_IRODOV_BOOK_ID && p.step !== "list" && !isIrodovUnlocked()) {
+    if (!tryIrodovGate()) {
+      return viewBooks({ step: "list" });
+    }
+  }
   _booksPayload = p;
   const catalog = await fetchBooks();
 
   if (!p.bookId || p.step === "list") {
     const isMed = STATE.exam === "Medical";
-    const books = isMed ? (catalog.medical.length ? catalog.medical : catalog.engineering) : catalog.engineering;
+    const examBooks = booksForExam(catalog, STATE.exam);
     const title = isMed ? "NEET Digital Books" : (catalog.title || "Digital Books");
     const subtitle = catalog.subtitle || "Expert-picked question banks — one tap to practice";
-
-    const renderCard = typeof renderBookCard === "function" ? renderBookCard : (b) => `<div class="book-card">${b.title}</div>`;
-    const bookCards = books.map(b => renderCard(b)).join("");
-    const curated = (catalog.curated || []).map(c => renderCard({ ...c, type: "curated" })).join("");
+    const renderCard = typeof renderBookCard === "function" ? renderBookCard : (b) => `<div class="book-card">${b.title || "Book"}</div>`;
+    const bookCards = examBooks.map(b => {
+      try { return renderCard({ ...b, type: b.type || "exam" }); }
+      catch (e) { return `<div class="book-card"><div class="book-info"><strong>${b.title || "Book"}</strong></div></div>`; }
+    }).join("");
+    const engCount = filterActiveBooks(catalog.engineering || []).length;
+    const curatedCount = filterActiveBooks(catalog.curated || []).length;
+    const countNote = isMed ? "" : `<p class="sec-desc">${engCount} digital books${curatedCount ? ` · ${curatedCount} PYQ collections` : ""} — tap a cover to practice</p>`;
 
     return `${topbar(title, subtitle)}
-      <p class="sec-desc">Tap a cover to open — each book shows its own questions only.</p>
-      <div class="books-grid">${bookCards || '<div class="empty">No digital books for this exam yet.</div>'}</div>
-      ${curated.length && !isMed ? `<h3 class="sec-title">Featured PYQ Collections</h3><div class="curated-grid">${curated}</div>` : ""}`;
+      ${countNote || '<p class="sec-desc">Tap a cover to open — each book shows its own questions only.</p>'}
+      <div class="books-grid">${bookCards || '<div class="empty">No digital books for this exam yet. <button type="button" class="btn-soft" onclick="resetBooksCache();go(\'books\')">Retry</button></div>'}</div>`;
   }
 
   const nav = await fetchBookNav(p.bookId);
@@ -2311,9 +2651,215 @@ async function viewBooks(payload) {
 
 function bindBooksOpen() {}
 
-// ============ QUICK CONCEPTS (MARKS: Subject → Chapter → Topic → Concepts) ============
+// ============ QUICK CONCEPTS (MARKS: Subject → Chapter → Topic → Concepts + MCQ Examples) ============
 let _qcPayload = { step: "subjects" };
 const _qcContentCache = {};
+let _qcExampleSeq = 920000000;
+
+function qcRevisionTitle() {
+  return STATE.exam === "Medical" ? "NEET Revision Notes" : "JEE Main Revision Notes";
+}
+
+function groupQcConcepts(concepts) {
+  const groups = [];
+  const map = new Map();
+  (concepts || []).slice().sort((a, b) => (a.position || 0) - (b.position || 0)).forEach(c => {
+    const title = String(c.title || "").trim() || "Concept";
+    if (!map.has(title)) {
+      const g = { title, blocks: [] };
+      map.set(title, g);
+      groups.push(g);
+    }
+    map.get(title).blocks.push(c);
+  });
+  return groups;
+}
+
+function qcConceptBodyHtml(body, groupTitle) {
+  let html = String(body || "");
+  const m = html.match(/^\s*<h3[^>]*>([\s\S]*?)<\/h3>/i);
+  if (m && groupTitle) {
+    const inner = m[1].replace(/<[^>]+>/g, "").trim().toLowerCase();
+    if (inner === groupTitle.trim().toLowerCase()) html = html.slice(m[0].length);
+  }
+  return typeof Mx !== "undefined" ? Mx.html(html) : html;
+}
+
+function renderQcConceptSections(concepts) {
+  const groups = groupQcConcepts(concepts);
+  if (!groups.length) return '<div class="empty">No concept notes.</div>';
+  return groups.map(g => `
+    <section class="qc-section">
+      <h2 class="qc-section-title">${g.title}</h2>
+      <div class="qc-section-body">
+        ${g.blocks.map(b => `<div class="qc-concept-block qx-content">${qcConceptBodyHtml(b.conceptBody || b.body || "", g.title)}</div>`).join("")}
+      </div>
+    </section>`).join("");
+}
+
+function qcStubExample(ex, meta, idx) {
+  const rec = {
+    id: _qcExampleSeq++,
+    _marksId: ex._id,
+    _bank: "qc_example",
+    _needsFull: true,
+    _live: true,
+    subject: meta.subject || "",
+    chapter: meta.chapter || "",
+    exam: typeof STATE !== "undefined" ? STATE.exam : "Engineering",
+    q: ex.title || ex.q || "",
+    options: ["A", "B", "C", "D"],
+    answer: 0,
+    solution: "",
+    source: "Quick Concepts"
+  };
+  if (typeof QUESTIONS !== "undefined") QUESTIONS.push(rec);
+  return rec;
+}
+
+async function loadQcExampleQuestions(examples, meta) {
+  const stubs = (examples || []).map((ex, i) => qcStubExample(ex, meta, i));
+  if (!stubs.length) return [];
+  if (typeof MarksLive === "undefined") return stubs;
+  try {
+    await MarksLive.ensureToken();
+    const ids = stubs.map(s => s._marksId).filter(Boolean);
+    const fetched = await MarksLive.fetchQuestionsByMarksIds(ids, {
+      subject: meta.subject,
+      chapter: meta.chapter,
+      bank: "qc_example",
+      source: "Quick Concepts"
+    });
+    const byMarks = new Map(fetched.map(q => [q._marksId, q]));
+    return stubs.map(s => byMarks.get(s._marksId) || s);
+  } catch (e) {
+    return stubs;
+  }
+}
+
+function renderQcExampleMcq(q, index) {
+  const qid = q.id;
+  const typeBadge = typeof QuantrexQFormat !== "undefined" ? QuantrexQFormat.typeBadgeHtml(q) : "";
+  const optsClass = typeof QuantrexQFormat !== "undefined"
+    ? QuantrexQFormat.practiceOptsContainerClass(q)
+    : "qx-prac-opts qc-ex-opts";
+  const opts = typeof QuantrexQFormat !== "undefined"
+    ? QuantrexQFormat.renderOptions(q, { selected: null, done: false })
+    : (q.options || []).map((o, i) => `<button type="button" class="qx-prac-opt" data-prac-opt="${i}"><span class="mtk-opt-letter qx-opt-circle qx-prac-letter" aria-hidden="true">${String.fromCharCode(65 + i)}</span><span class="qx-prac-opt-text qx-content">${o}</span></button>`).join("");
+  const qBody = typeof Mx !== "undefined" ? Mx.html(q.q || "") : (q.q || "");
+  return `<article class="qc-example-mcq" data-qid="${qid}">
+    <div class="qc-ex-head">
+      <span class="qc-ex-num">Example ${index + 1}</span>
+      ${typeBadge}
+    </div>
+    <div class="qc-ex-q qx-content">${qBody}</div>
+    <div class="${optsClass} qc-ex-opts">${opts}</div>
+    <div class="qc-ex-actions">
+      <button type="button" class="btn-primary sm qc-ex-submit" id="qxPracSubmit" disabled>Check Answer</button>
+      <button type="button" class="btn-soft sm qc-ex-sol-btn" data-qc-sol="${qid}">View Solution</button>
+    </div>
+    <div class="qc-ex-result"></div>
+    <div class="qc-ex-sol"></div>
+  </article>`;
+}
+
+function renderQcExamplesBlock(questions) {
+  if (!questions || !questions.length) return "";
+  return `<section class="qc-examples-block">
+    <h2 class="qc-examples-title">Examples</h2>
+    <p class="qc-examples-sub">Practice MCQs — same format as MARKS web</p>
+    <div class="qc-examples-mcq">${questions.map(renderQcExampleMcq).join("")}</div>
+  </section>`;
+}
+
+async function answerQcExample(qid, response) {
+  if (response == null) return;
+  const ctx = window._qcExampleCtx || { selected: {}, done: {} };
+  window._qcExampleCtx = ctx;
+  let q = typeof getQ === "function" ? getQ(qid) : null;
+  if (!q) return;
+  if (typeof QuantrexQFormat !== "undefined" && !QuantrexQFormat.isAnswered(q, response)) return;
+  if (q._marksId && typeof MarksLive !== "undefined") {
+    try {
+      q = await MarksLive.ensureQuestionFull(q, { force: false, solution: true });
+    } catch (e) { /* keep stub */ }
+  }
+  const card = document.querySelector(`.qc-example-mcq[data-qid="${qid}"]`);
+  if (!card) return;
+  ctx.done[qid] = true;
+  ctx.selected[qid] = response;
+  if (typeof QuantrexQFormat !== "undefined") {
+    QuantrexQFormat.applyPracticeResult(card, q, response);
+  }
+  const graded = typeof QuantrexQFormat !== "undefined"
+    ? QuantrexQFormat.grade(q, response)
+    : { correct: response === q.answer, partial: false };
+  if (typeof STATE !== "undefined" && STATE.markSolved) STATE.markSolved(qid, graded.correct || graded.partial);
+  const resEl = card.querySelector(".qc-ex-result");
+  if (resEl && typeof qxPracticeResultHtml === "function") {
+    resEl.innerHTML = qxPracticeResultHtml(q, response);
+    if (typeof Mx !== "undefined") Mx.afterRender(resEl);
+  }
+  const submit = card.querySelector(".qc-ex-submit");
+  if (submit) submit.remove();
+}
+
+function bindQcExamples(root) {
+  const scope = root || document.getElementById("app-main");
+  if (!scope || !scope.querySelector(".qc-examples-mcq")) return;
+  window._qcExampleCtx = window._qcExampleCtx || { selected: {}, done: {} };
+  const ctx = window._qcExampleCtx;
+  scope.querySelectorAll(".qc-example-mcq").forEach(card => {
+    const qid = parseInt(card.dataset.qid, 10);
+    if (!qid || card._qcBound) return;
+    card._qcBound = true;
+    if (typeof QuantrexQFormat !== "undefined") {
+      QuantrexQFormat.bindPractice(card, ctx, qid, answerQcExample);
+    }
+    const solBtn = card.querySelector("[data-qc-sol]");
+    if (solBtn) {
+      solBtn.onclick = async () => {
+        let q = typeof getQ === "function" ? getQ(qid) : null;
+        if (!q) return;
+        if (q._marksId && typeof MarksLive !== "undefined") {
+          try { q = await MarksLive.ensureQuestionFull(q, { solution: true }); } catch (e) { /* ignore */ }
+        }
+        const solEl = card.querySelector(".qc-ex-sol");
+        if (!solEl) return;
+        if (typeof qxSolutionBlockHtml === "function" && typeof qxHasSolution === "function" && qxHasSolution(q)) {
+          solEl.innerHTML = qxSolutionBlockHtml(q);
+          if (typeof Mx !== "undefined") Mx.afterRender(solEl);
+        } else {
+          solEl.innerHTML = '<p class="empty">Solution loading… <button type="button" class="btn-soft sm" data-qc-retry-sol="' + qid + '">Retry</button></p>';
+          solEl.querySelector("[data-qc-retry-sol]")?.addEventListener("click", () => solBtn.click());
+        }
+      };
+    }
+  });
+  if (typeof Mx !== "undefined") Mx.afterRender(scope.querySelector(".qc-examples-mcq"));
+  scope.querySelectorAll(".qc-example-mcq").forEach(card => {
+    const qid = parseInt(card.dataset.qid, 10);
+    const q = typeof getQ === "function" ? getQ(qid) : null;
+    if (!q || !q._marksId || typeof MarksLive === "undefined") return;
+    const needs = MarksLive.needsFullQuestion(q)
+      || (MarksLive.isOptionsIncomplete && MarksLive.isOptionsIncomplete(q))
+      || (MarksLive.isQuestionIncomplete && MarksLive.isQuestionIncomplete(q));
+    if (!needs) return;
+    MarksLive.ensureQuestionFull(q).then(hq => {
+      if (!hq || ctx.done[qid]) return;
+      const qEl = card.querySelector(".qc-ex-q");
+      const optsEl = card.querySelector(".qc-ex-opts");
+      if (qEl) qEl.innerHTML = typeof Mx !== "undefined" ? Mx.html(hq.q || "") : (hq.q || "");
+      if (optsEl && typeof QuantrexQFormat !== "undefined") {
+        optsEl.className = QuantrexQFormat.practiceOptsContainerClass(hq) + " qc-ex-opts";
+        optsEl.innerHTML = QuantrexQFormat.renderOptions(hq, { selected: ctx.selected[qid], done: !!ctx.done[qid] });
+        card._qcBound = false;
+        bindQcExamples(scope);
+      }
+      if (typeof Mx !== "undefined") Mx.afterRender(card);
+    }).catch(() => {});
+  });
+}
 
 async function fetchQcContent(subjectId, chapterId, topicId) {
   const key = `${subjectId}::${chapterId}::${topicId}`;
@@ -2332,6 +2878,7 @@ async function viewQuickConcepts(payload) {
   const p = { ..._qcPayload, ...(payload || {}) };
   _qcPayload = p;
   const nav = await fetchNav("quick_concepts");
+  const qcLabel = qcRevisionTitle();
 
   if (p.step === "subjects" || !p.subjectId) {
     const cards = nav.map(s => `
@@ -2339,7 +2886,7 @@ async function viewQuickConcepts(payload) {
         <span class="subj-ic">${subjectIcon(s.name, s.icon)}</span>
         <div><strong>${s.name}</strong><small>${s.chaptersCount || (s.chapters || []).length} chapters · ${s.topicsCount || 0} topics</small></div>
       </div>`).join("");
-    return `${topbar("Quick Concepts", "Fast revision — topicwise notes & examples")}
+    return `${topbar(qcLabel, "Concept-wise notes with MCQ examples")}
       <div class="subj-grid">${cards || '<div class="empty">Quick Concepts syncing…</div>'}</div>`;
   }
 
@@ -2348,7 +2895,7 @@ async function viewQuickConcepts(payload) {
 
   if (p.step === "chapters" || !p.chapterId) {
     const bc = breadcrumb([
-      { label: "Quick Concepts", view: "quickconcepts", payload: { step: "subjects" } },
+      { label: qcLabel, view: "quickconcepts", payload: { step: "subjects" } },
       { label: subj.name }
     ]);
     const cards = (subj.chapters || []).map(c => `
@@ -2363,7 +2910,7 @@ async function viewQuickConcepts(payload) {
 
   if (p.step === "topics" || !p.topicId) {
     const bc = breadcrumb([
-      { label: "Quick Concepts", view: "quickconcepts", payload: { step: "subjects" } },
+      { label: qcLabel, view: "quickconcepts", payload: { step: "subjects" } },
       { label: subj.name, view: "quickconcepts", payload: { step: "chapters", subjectId: p.subjectId, subjectName: subj.name } },
       { label: ch.name }
     ]);
@@ -2376,7 +2923,7 @@ async function viewQuickConcepts(payload) {
 
   const content = await fetchQcContent(p.subjectId, p.chapterId, p.topicId);
   const bc = breadcrumb([
-    { label: "Quick Concepts", view: "quickconcepts", payload: { step: "subjects" } },
+    { label: qcLabel, view: "quickconcepts", payload: { step: "subjects" } },
     { label: subj.name, view: "quickconcepts", payload: { step: "chapters", subjectId: p.subjectId, subjectName: subj.name } },
     { label: ch.name, view: "quickconcepts", payload: { step: "topics", subjectId: p.subjectId, subjectName: subj.name, chapterId: p.chapterId, chapterName: ch.name } },
     { label: p.topicTitle || "Topic" }
@@ -2385,19 +2932,18 @@ async function viewQuickConcepts(payload) {
     return `${topbar(p.topicTitle || "Topic", ch.name)}${bc}
       <div class="empty">Topic content syncing — run extract_qc_content.py</div>`;
   }
-  const concepts = (content.concepts || []).map(c => `
-    <div class="qc-concept-card">
-      <h3>${c.title || p.topicTitle || ""}</h3>
-      <div class="qx-content">${typeof Mx !== "undefined" ? Mx.html(c.conceptBody || c.body || "") : (c.conceptBody || c.body || "")}</div>
-    </div>`).join("");
-  const examples = (content.examples || []).map((ex, i) => `
-    <div class="qc-example-card">
-      <span class="tag">Example ${i + 1}</span>
-      <div class="qx-content">${typeof Mx !== "undefined" ? Mx.html(ex.title || ex.q || "") : (ex.title || ex.q || "")}</div>
-    </div>`).join("");
-  return `${topbar(p.topicTitle || "Topic", `${ch.name} · ${subj.name}`)}${bc}
-    <div class="qc-content">${concepts || '<div class="empty">No concept notes.</div>'}</div>
-    ${examples ? `<h3 class="sec-title">Examples</h3><div class="qc-examples">${examples}</div>` : ""}`;
+  const exampleQs = await loadQcExampleQuestions(content.examples, {
+    subject: subj.name,
+    chapter: ch.name,
+    topic: p.topicTitle || content.title || ""
+  });
+  const conceptHtml = renderQcConceptSections(content.concepts);
+  const examplesHtml = renderQcExamplesBlock(exampleQs);
+  return `<div class="qc-topic-page">
+    ${topbar(p.topicTitle || content.title || "Topic", `${ch.name} · ${subj.name}`)}${bc}
+    <div class="qc-content">${conceptHtml}</div>
+    ${examplesHtml}
+  </div>`;
 }
 
 // ============ MARKS-STYLE DASHBOARD (screens 407 + 408 flow) ============
@@ -2418,9 +2964,7 @@ async function marksDashboardSections() {
     <div class="subj-mini" ${mg("allqs", { step: "chapters", subject: s })}>
       <span class="subj-mini-ic">${subjectIcon(s, null, 24)}</span><strong>${s}</strong>
     </div>`).join("");
-  const dashBooks = STATE.exam === "Medical"
-    ? (bookCatalog.medical || [])
-    : (bookCatalog.engineering || []);
+  const dashBooks = booksForExam(bookCatalog, STATE.exam);
   const bookScroll = typeof renderBookScroll === "function" ? renderBookScroll(dashBooks, 7) : "";
   const examLabel = EXAMS[STATE.exam].name;
   const board = dashBoardSelected();
@@ -2485,9 +3029,9 @@ async function marksDashboardSections() {
   }).join("");
 
   const utilCards = [
+    { icon: "📘", title: "Exam Information", sub: "Pattern · colleges · prep guides", view: "examinfo" },
     { icon: "✏️", title: "My Solutions", sub: "Bookmarks & notes", view: "notebook" },
-    { icon: "📗", title: STATE.exam === "Medical" ? "NEET Revision Notes" : "JEE Main Revision Notes", sub: "Quick Concepts", view: "quickconcepts", payload: { step: "subjects" } },
-    { icon: "📕", title: STATE.exam === "Medical" ? "NEET Formula Sheet" : "JEE Main Formula Sheet", sub: "All formulas", view: "formula", payload: { step: "subjects" } }
+    { icon: "📗", title: STATE.exam === "Medical" ? "NEET Revision Notes" : "JEE Main Revision Notes", sub: "Quick Concepts", view: "quickconcepts", payload: { step: "subjects" } }
   ].map(c => `
     <div class="dash-util-card" ${mg(c.view, c.payload || {})}>
       <span class="dash-util-ic">${c.icon}</span>
@@ -2532,8 +3076,8 @@ async function marksDashboardSections() {
         </div>
         <div class="dash-teach-box">
           <h3>Quantrex For Teachers</h3>
-          <p>Create live assignments &amp; share with your students.</p>
-          <button type="button" class="dash-teach-btn" onclick="go('teacher')">Explore Now →</button>
+          <p>Content Library (PDF, video, lecture links), student dashboard &amp; weak-topic retest.</p>
+          <button type="button" class="dash-teach-btn" onclick="go('teacher')">Open Teacher Portal →</button>
         </div>
       </div>
       <div class="dash-util-row">${utilCards}</div>

@@ -1,44 +1,18 @@
-/* Quantrex — hide MARKS / third-party watermarks site-wide */
+/* Quantrex — hide MARKS brand chrome only; keep Quantrex coaching watermark */
 
-/* Baked-in gray "MARKS" text on CDN question diagrams — boost contrast to whiten watermark */
-img.qx-no-wm:not(.qx-pool-fig),
-.qx-fig-img:not(.qx-pool-fig),
-.qx-fig img:not(.qx-pool-fig),
-.qx-opt-fig img:not(.qx-pool-fig),
-.qx-content img[src*="cdn-question-pool"]:not(.qx-pool-fig),
-.qx-content img[src*="/pyq/jee_main/"],
-.mtk-q-text img[src*="cdn-question-pool"],
-.mtk-q-text img[src*="/pyq/"],
-.mtk-opt-text img[src*="cdn-question-pool"],
-.mtk-opt-text img[src*="/pyq/"],
-.qa-q img[src*="cdn-question-pool"],
-.qx-prac-q img[src*="cdn-question-pool"],
-.qx-prac-opt-text img[src*="cdn-question-pool"],
-.qx-diagram-modal img[src*="cdn-question-pool"],
-.marks-result img[src*="cdn-question-pool"],
-.sol-body img[src*="cdn-question-pool"] {
-  /* Filters removed — handled by corner overlay only; clarity in qx-image-quality.css */
-  filter: none;
-  -webkit-filter: none;
-  image-rendering: auto;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-/* HTML overlay watermarks from imported content — never hide real pool diagrams */
-[class*="watermark"]:not(.qx-pool-fig-wrap):not(:has(img.qx-pool-fig)),
+/* HTML overlay watermarks from imported Marks content — never hide real pool diagrams */
+[class*="watermark"]:not(.qx-pool-fig-wrap):not(:has(img.qx-pool-fig)):not(.qx-coaching-wm):not(.qx-quantrex-wm-overlay),
 [class*="Watermark"]:not(.qx-pool-fig-wrap):not(:has(img.qx-pool-fig)),
 [data-brand="marks"]:not(:has(img.qx-pool-fig)),
-[data-watermark]:not(:has(img.qx-pool-fig)),
+[data-watermark]:not(:has(img.qx-pool-fig)):not(.qx-coaching-wm),
 .marks-brand:not(:has(img.qx-pool-fig)),
 .getmarks-brand:not(:has(img.qx-pool-fig)),
 .watermark-text:not(:has(img.qx-pool-fig)),
 .watermark-overlay:not(:has(img.qx-pool-fig)),
-img[src*="watermark"]:not(.qx-pool-fig):not(.qx-no-wm):not(.qx-fig-img):not(.qx-brand-logo),
-img[src*="marks-premium"]:not(.qx-pool-fig):not(.qx-no-wm),
-img[src*="marks_selected"]:not(.qx-pool-fig):not(.qx-no-wm),
 img[src*="getmarks-brand"]:not(.qx-pool-fig):not(.qx-no-wm),
-img[src*="web_assets"][alt*="Marks"]:not(.qx-pool-fig):not(.qx-no-wm),
+img[src*="marks-premium"]:not(.qx-pool-fig):not(.qx-no-wm):not(.qx-marks-icon),
+img[src*="marks_selected"]:not(.qx-pool-fig):not(.qx-no-wm):not(.qx-marks-icon),
+img[src*="web_assets"][alt*="Marks"]:not(.qx-pool-fig):not(.qx-no-wm):not(.qx-marks-icon),
 img[alt*="Get Marks App"]:not(.qx-pool-fig):not(.qx-no-wm) {
   display: none !important;
   visibility: hidden !important;
@@ -48,79 +22,119 @@ img[alt*="Get Marks App"]:not(.qx-pool-fig):not(.qx-no-wm) {
   overflow: hidden !important;
 }
 
-.qx-diag-watermark {
-  display: none !important;
-}
-
-.qx-brand-overlay,
-img.qx-quantrex-wm-overlay,
-canvas.qx-premium-wm-canvas {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-}
-
-.qx-fig-inner.qx-wm-active .qx-premium-wm-sheet,
-.qx-wm-active .qx-premium-wm-sheet,
-.qx-brand-covered.qx-wm-active .qx-premium-wm-sheet,
-.qx-premium-wm-active .qx-premium-wm-sheet {
-  display: none !important;
-}
-
-.qx-diagram-slot .qx-premium-wm-sheet,
-#qxDiagramSlot .qx-premium-wm-sheet,
-.qx-question-body .qx-premium-wm-sheet {
-  display: none !important;
-}
-
-.qx-wm-corner-badge {
-  display: none !important;
-}
-
-.qx-marks-strip {
-  display: none !important;
-}
-
-.qx-fig-inner.qx-wm-canvas-active .qx-marks-strip {
-  display: none !important;
-}
-
-.qx-wm-mask,
+/* Marks scrub canvas (pixel cleanup layer — temporary) can hide; brand overlay must show */
+canvas.qx-marks-scrub-canvas,
+.qx-marks-strip,
 .qx-marks-scrub {
   display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
+/* Quantrex coaching watermark — visible, non-blocking */
+img.qx-coaching-wm,
+img.qx-quantrex-wm-overlay,
+.qx-fig-inner > img.qx-coaching-wm,
+.qx-fig-inner > img.qx-quantrex-wm-overlay {
+  display: block !important;
+  visibility: visible !important;
+  pointer-events: none !important;
+  max-height: none !important;
+  max-width: 88% !important;
+  width: auto !important;
+  height: auto !important;
+  position: absolute !important;
+  z-index: 8 !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) rotate(-28deg) !important;
+  mix-blend-mode: multiply;
+  user-select: none !important;
+}
+
+/* Real figures ALWAYS visible */
 img.qx-pool-fig,
 img.qx-no-wm.qx-pool-fig,
+img.qx-fig-img,
+img.qx-no-wm,
+img.qx-wm-loading,
+img.qx-wm-clean,
 .qx-pool-fig-wrap,
-.qx-pool-fig-wrap img,
-.qx-fig img.qx-pool-fig,
-.qx-opt-fig img.qx-pool-fig {
+.qx-pool-fig-wrap img:not(.qx-coaching-wm):not(.qx-quantrex-wm-overlay),
+.qx-fig,
+.qx-fig img:not(.qx-coaching-wm):not(.qx-quantrex-wm-overlay),
+.qx-opt-fig,
+.qx-opt-fig img:not(.qx-coaching-wm):not(.qx-quantrex-wm-overlay),
+.qx-fig-inner,
+.qx-fig-inner > img.qx-pool-fig,
+.qx-fig-inner > img.qx-fig-img,
+#qxDiagramSlot,
+#qxDiagramSlot img:not(.qx-coaching-wm),
+.qx-diagram-slot,
+.qx-diagram-slot img:not(.qx-coaching-wm),
+.qx-opt-diagram-slot img:not(.qx-coaching-wm),
+.mtk-opt-text img:not(.qx-coaching-wm),
+.qx-prac-opt-text img:not(.qx-coaching-wm),
+.mtk-opt-text img.qx-pool-fig,
+.qx-prac-opt-text img.qx-pool-fig,
+.qx-opt-direct-img img,
+.qx-opt-pair-struct img {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
-  max-height: none !important;
   pointer-events: auto !important;
   overflow: visible !important;
-}
-
-/* Keep legitimate UI icons visible */
-img.qx-marks-icon,
-img.fc-img,
-.marks-exam-ic-img,
-.marks-board-subj-ic,
-.exam-pill-logo,
-.subj-mini-ic img,
-.dash-board-logo,
-.dash-tool-logo,
-.qx-exam-logo {
   filter: none !important;
   -webkit-filter: none !important;
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
   max-height: none !important;
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+/* Blue A/B/C/D option circles — always visible site-wide */
+.opt-letter,
+.mtk-opt-letter,
+.qx-opt-circle,
+.qx-prac-letter {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  border-radius: 50% !important;
+  background: #2563eb !important;
+  color: #fff !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4) !important;
+  font-family: Inter, system-ui, sans-serif !important;
+}
+
+.qa-opt.selected .opt-letter,
+.qx-prac-opt.selected .mtk-opt-letter,
+.qx-prac-opt.selected .qx-opt-circle,
+.qx-prac-opt.selected .qx-prac-letter,
+.mtk-opt.selected .mtk-opt-letter {
+  background: #1d4ed8 !important;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.45) !important;
+}
+
+.qa-opt.correct .opt-letter,
+.qx-prac-opt.correct .mtk-opt-letter,
+.qx-prac-opt.correct .qx-opt-circle,
+.qx-prac-opt.correct .qx-prac-letter {
+  background: #16a34a !important;
+  box-shadow: none !important;
+}
+
+.qa-opt.wrong .opt-letter,
+.qx-prac-opt.wrong .mtk-opt-letter,
+.qx-prac-opt.wrong .qx-opt-circle,
+.qx-prac-opt.wrong .qx-prac-letter {
+  background: #dc2626 !important;
+  box-shadow: none !important;
 }

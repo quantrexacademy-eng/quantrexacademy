@@ -1609,17 +1609,26 @@ window.QxImgClean = (() => {
   }
 
   function shouldBrandOverlay(img) {
-    // Always false — Quantrex watermarks removed from all figures
-    return false;
+    if (!img || !img.isConnected) return false;
+    if (img.classList.contains("qx-marks-icon") || img.classList.contains("qx-exam-logo")
+      || img.classList.contains("fc-img") || img.classList.contains("subj-ic-img")) {
+      return false;
+    }
+    const src = String(img.dataset.qxOrigSrc || img.getAttribute("src") || "");
+    if (/cdn-assets\.getmarks|ic_content_exam_/i.test(src) && !/cdn-question-pool|\/pyq\//i.test(src)) return false;
+    return !!(
+      img.classList.contains("qx-pool-fig") ||
+      img.classList.contains("qx-fig-img") ||
+      img.classList.contains("qx-org-fig") ||
+      /cdn-question-pool|cdn\.quizrr|\/pyq\/|\/assets\/diagrams\/|\/assets\/qx-figures\//i.test(src)
+    );
   }
 
   function applyQuantrexBrand(img) {
-    // Watermarks disabled — they were covering figures. Only strip leftovers.
     if (!img || !img.isConnected) return Promise.resolve(false);
-    if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.stripQuantrexBrand) {
-      QxPremiumWM.stripQuantrexBrand(img);
-    } else {
-      removeCanvasShield(img);
+    if (!shouldBrandOverlay(img)) return Promise.resolve(false);
+    if (typeof QxPremiumWM !== "undefined" && QxPremiumWM.paintQuantrexBrand) {
+      return QxPremiumWM.paintQuantrexBrand(img);
     }
     return Promise.resolve(false);
   }
