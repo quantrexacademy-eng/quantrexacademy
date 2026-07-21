@@ -1,6 +1,6 @@
-/* ~4 days ago style: bare clear figure + circle + on the RIGHT */
+/* Bare figures only — hide rectangular boxes and ALL zoom + buttons */
 
-/* Kill rectangular figure cards everywhere (tests + practice) */
+/* No figure card / box */
 #qxDiagramSlot,
 .qx-diagram-slot,
 .qx-diagram-seg,
@@ -13,11 +13,10 @@
 .qx-fig-inner,
 .mtk-main .qx-diagram-slot,
 .mtk-main #qxDiagramSlot,
-.mtk-main .qx-fig-flat,
-.mtk-main .qx-pool-fig-wrap,
 .mtk-opt-text .qx-opt-diagram-slot,
 .mtk-opt-text .qx-fig,
-.mtk-opt-text .qx-fig-flat {
+.mtk-opt-text .qx-fig-flat,
+.mtk-opt-text .qx-fig-host {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -26,67 +25,31 @@
   outline: none !important;
 }
 
-/* Host: figure + circle button on right */
-.qx-fig-host {
-  position: relative !important;
-  display: inline-block !important;
-  max-width: min(100%, 720px) !important;
-  margin: 10px auto !important;
-  vertical-align: middle;
-  line-height: 0 !important;
-  padding-right: 44px !important; /* room for circle + on right */
-  box-sizing: border-box !important;
-}
-
-/* Circle + on the RIGHT side of figure (not square top-right clutter) */
-button.qx-fig-zoom-btn {
-  position: absolute !important;
-  top: 50% !important;
-  right: 4px !important;
-  left: auto !important;
-  transform: translateY(-50%) !important;
-  z-index: 25 !important;
-  width: 36px !important;
-  height: 36px !important;
-  min-width: 36px !important;
-  min-height: 36px !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  border: 2px solid #0d9488 !important;
-  border-radius: 50% !important; /* CIRCLE */
-  background: #ffffff !important;
-  color: #0d9488 !important;
-  font-size: 22px !important;
-  font-weight: 700 !important;
-  line-height: 32px !important;
-  text-align: center !important;
-  cursor: pointer !important;
-  box-shadow: 0 2px 10px rgba(13, 148, 136, 0.25) !important;
-  opacity: 0.95 !important;
-}
-
-button.qx-fig-zoom-btn:hover {
-  background: #0d9488 !important;
-  color: #fff !important;
-  opacity: 1 !important;
-}
-
-/* Hide old toolbars */
+/* Hide zoom + button completely */
+button.qx-fig-zoom-btn,
+.qx-fig-zoom-btn,
 .qx-diag-toolbar,
 .qx-diag-zoom-btns,
-.qx-diag-btn:not(.qx-fig-zoom-btn),
+.qx-diag-btn,
 .qx-diag-pct,
 .qx-diagram-hint,
-.qx-diagram-badge {
+.qx-diagram-badge,
+#qxFigLightbox,
+.qx-fig-lightbox {
   display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
 }
 
-/* Clear large figures in question (like good zoom view) */
+/* Clean figure image */
 .mtk-main img.qx-pool-fig,
 .mtk-main #qxDiagramSlot img,
 .mtk-main .qx-diagram-slot img,
 .mtk-main .qx-fig-flat > img,
-.mtk-main .qx-fig-host > img,
 .mtk-opt-text img.qx-pool-fig,
 .qx-prac-opt-text img.qx-pool-fig,
 .mtk-q-text img.qx-pool-fig,
@@ -95,16 +58,15 @@ button.qx-fig-zoom-btn:hover {
   max-height: min(480px, 72vh) !important;
   width: auto !important;
   height: auto !important;
-  min-height: 40px !important;
-  margin: 8px auto !important;
+  margin: 10px auto !important;
   display: block !important;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
+  cursor: default !important;
   opacity: 1 !important;
   visibility: visible !important;
   object-fit: contain !important;
-  cursor: default !important;
 }
 
 .mtk-opt-text img.qx-pool-fig,
@@ -112,59 +74,6 @@ button.qx-fig-zoom-btn:hover {
   max-height: 240px !important;
 }
 
-/* Option cards keep UI border — only kill figure inner boxes */
-.mtk-opt-text .qx-opt-diagram-slot,
-.mtk-opt-text .qx-fig-host {
-  border: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-/* Lightbox = original Marks (watermark OK) */
-#qxFigLightbox,
-.qx-fig-lightbox {
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 99999 !important;
-  background: rgba(8, 12, 20, 0.78) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 20px !important;
-}
-
-.qx-fig-lb-stage {
-  max-width: 96vw;
-  max-height: 92vh;
-  background: #fff;
-  border-radius: 12px;
-  padding: 14px;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
-  overflow: auto;
-}
-
-.qx-fig-lb-img {
-  max-width: min(96vw, 1100px) !important;
-  max-height: 88vh !important;
-  display: block !important;
-  margin: auto !important;
-}
-
-.qx-fig-lb-close {
-  position: fixed !important;
-  top: 12px !important;
-  right: 14px !important;
-  z-index: 100000 !important;
-  width: 42px !important;
-  height: 42px !important;
-  border: 0 !important;
-  border-radius: 50% !important;
-  background: #fff !important;
-  font-size: 26px !important;
-  cursor: pointer !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
-}
-
 body.qx-fig-lb-open {
-  overflow: hidden;
+  overflow: auto !important;
 }
