@@ -2790,7 +2790,7 @@ window.QxImgClean = (() => {
     const cdnSrc = poolCdnSrc(img);
     if (!cdnSrc || !isPoolDiagram(cdnSrc, img)) return;
     // Never skip soft-strip until current algorithm version is applied (screen 632)
-    const stripDone = img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === "10";
+    const stripDone = img.dataset.qxSoftStrip === "2" && img.dataset.qxSoftVer === "11";
     if (img.dataset.qxProcessedVer === String(CLEAN_VER)) {
       const orgPending = isOrganicOrgSrc(cdnSrc) && !isCleanedImg(img);
       if (!orgPending && stripDone && (isCleanedImg(img) || img.classList.contains("qx-fig-ready")) && img.naturalWidth > 0) {
@@ -2852,14 +2852,14 @@ window.QxImgClean = (() => {
       fig.style.removeProperty("opacity");
     }
 
-    if (isCleanedImg(img) && (isLocalReadyAsset(cdnSrc) || isPreprocessedQxOrg(cdnSrc) || img.dataset.qxSoftVer === "10")) {
+    if (isCleanedImg(img) && (isLocalReadyAsset(cdnSrc) || isPreprocessedQxOrg(cdnSrc) || img.dataset.qxSoftVer === "11")) {
       if (isPreprocessedQxOrg(cdnSrc) || img.dataset.qxDisplayW) {
         if (img.naturalWidth > 0) finalizeQxOrgDisplay(img);
         else img.addEventListener("load", () => finalizeQxOrgDisplay(img), { once: true });
       }
       revealFigure(img);
       if (!isPreprocessedQxOrg(cdnSrc)) void finalizeCleanDisplay(img);
-      if (!isLocalReadyAsset(cdnSrc) && img.dataset.qxSoftVer !== "10") queueSoftStrip(img);
+      if (!isLocalReadyAsset(cdnSrc) && img.dataset.qxSoftVer !== "11") queueSoftStrip(img);
       return;
     }
 
