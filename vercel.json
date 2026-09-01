@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "cleanUrls": true,
   "buildCommand": null,
   "outputDirectory": ".",
   "headers": [
@@ -188,7 +187,10 @@
     }
   ],
   "rewrites": [
-    { "source": "/home", "destination": "/" },
+    { "source": "/", "destination": "/login.html" },
+    { "source": "/home", "destination": "/login.html" },
+    { "source": "/index.html", "destination": "/login.html" },
+    { "source": "/login", "destination": "/login.html" },
     { "source": "/app", "destination": "/app.html" },
     { "source": "/app-native", "destination": "/app-native.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
