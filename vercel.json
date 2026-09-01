@@ -187,9 +187,7 @@
     }
   ],
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/home", "destination": "/index.html" },
-    { "source": "/index.html", "destination": "/index.html" },
+    { "source": "/home", "destination": "/" },
     { "source": "/login", "destination": "/login.html" },
     { "source": "/app", "destination": "/app.html" },
     { "source": "/app-native", "destination": "/app-native.html" },
