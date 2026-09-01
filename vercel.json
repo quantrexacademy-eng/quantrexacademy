@@ -1,0 +1,239 @@
+{
+  "version": 2,
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "headers": [
+    {
+      "source": "/sitemap(.*).xml",
+      "headers": [
+        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }
+      ]
+    },
+    {
+      "source": "/data/seo/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/data/qid_marks/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=2592000, immutable" },
+        { "key": "CDN-Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=2592000" }
+      ]
+    },
+    {
+      "source": "/data/nav/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/data/banks/(.*).json",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=2592000" }
+      ]
+    },
+    {
+      "source": "/data/books/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/data/tests/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/data/summary-notes/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/(.*).js",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/(.*).css",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/(.*).woff2",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*).png",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=2592000" }
+      ]
+    },
+    {
+      "source": "/(.*).webp",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=2592000" }
+      ]
+    },
+    {
+      "source": "/api/create-payment",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    },
+    {
+      "source": "/api/verify-payment",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    },
+    {
+      "source": "/api/payment-webhook",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    },
+    {
+      "source": "/api/seo-q",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=86400" }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, s-maxage=120, stale-while-revalidate=600" }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" },
+        { "key": "Service-Worker-Allowed", "value": "/" }
+      ]
+    },
+    {
+      "source": "/version.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/.well-known/(.*)",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json" },
+        { "key": "Cache-Control", "value": "public, max-age=300" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/(.*).html",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/assets/(.*).mp4",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=2592000" }
+      ]
+    },
+    {
+      "source": "/api/proxy-image",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=31536000" },
+        { "key": "CDN-Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=31536000" }
+      ]
+    },
+    {
+      "source": "/api/restore-image",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=31536000" },
+        { "key": "CDN-Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=31536000" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/home", "destination": "/index.html" },
+    { "source": "/index.html", "destination": "/index.html" },
+    { "source": "/login", "destination": "/login.html" },
+    { "source": "/app", "destination": "/app.html" },
+    { "source": "/app-native", "destination": "/app-native.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/manifest.json", "destination": "/manifest.webmanifest" },
+    { "source": "/pay", "destination": "/pay.html" },
+    { "source": "/download", "destination": "/download.html" },
+    { "source": "/get-the-app", "destination": "/download.html" },
+    { "source": "/test", "destination": "/test.html" },
+    { "source": "/try", "destination": "/test.html" },
+    { "source": "/share", "destination": "/test.html" },
+    { "source": "/jee-main-pyq-chapter", "destination": "/jee-main-pyq-chapter.html" },
+    { "source": "/examgoal-test-series", "destination": "/examgoal-test-series.html" },
+    { "source": "/api/create-order", "destination": "/api/create-payment" },
+    { "source": "/api/marks/question", "destination": "/api/marks-question" },
+    { "source": "/api/marks-question", "destination": "/api/marks-question" },
+    { "source": "/api/catalog", "destination": "/api/marks-question" },
+    { "source": "/__/auth/:path*", "destination": "https://quantrexacademy-app.firebaseapp.com/__/auth/:path*" },
+    { "source": "/__/firebase/:path*", "destination": "https://quantrexacademy-app.firebaseapp.com/__/firebase/:path*" },
+    { "source": "/search", "destination": "/api/seo-q?mode=search" },
+    { "source": "/q/:id/:slug", "destination": "/api/seo-q?id=:id" },
+    { "source": "/q/:id", "destination": "/api/seo-q?id=:id" },
+    { "source": "/jee/:subject/:chapter", "destination": "/api/seo-q?hub=jee&subject=:subject&chapter=:chapter" },
+    { "source": "/jee/:subject", "destination": "/api/seo-q?hub=jee&subject=:subject" },
+    { "source": "/jee", "destination": "/api/seo-q?hub=jee" },
+    { "source": "/neet/:subject/:chapter", "destination": "/api/seo-q?hub=neet&subject=:subject&chapter=:chapter" },
+    { "source": "/neet/:subject", "destination": "/api/seo-q?hub=neet&subject=:subject" },
+    { "source": "/neet", "destination": "/api/seo-q?hub=neet" },
+    { "source": "/nda/:subject/:chapter", "destination": "/api/seo-q?hub=nda&subject=:subject&chapter=:chapter" },
+    { "source": "/nda/:subject", "destination": "/api/seo-q?hub=nda&subject=:subject" },
+    { "source": "/nda", "destination": "/api/seo-q?hub=nda" },
+    { "source": "/bitsat/:subject/:chapter", "destination": "/api/seo-q?hub=bitsat&subject=:subject&chapter=:chapter" },
+    { "source": "/bitsat/:subject", "destination": "/api/seo-q?hub=bitsat&subject=:subject" },
+    { "source": "/bitsat", "destination": "/api/seo-q?hub=bitsat" },
+    { "source": "/questions", "destination": "/api/seo-q?hub=questions" },
+    { "source": "/topic/:slug", "destination": "/api/seo-q?topic=:slug" },
+    { "source": "/jee-main-pyq", "destination": "/jee-main-pyq.html" },
+    { "source": "/jee-main-previous-year-questions", "destination": "/jee-main-pyq.html" },
+    { "source": "/jee-advanced-pyq", "destination": "/jee-advanced-pyq.html" },
+    { "source": "/iit-jee-mathematics", "destination": "/iit-jee-mathematics.html" },
+    { "source": "/jee-maths", "destination": "/iit-jee-mathematics.html" },
+    { "source": "/jee-mock-test", "destination": "/jee-mock-test.html" },
+    { "source": "/jee-mock-tests", "destination": "/jee-mock-test.html" },
+    { "source": "/jee-dpp", "destination": "/jee-dpp.html" },
+    { "source": "/jee-main-2027", "destination": "/jee-main-2027.html" }
+  ]
+}
