@@ -47,13 +47,6 @@
     <link rel="stylesheet" href="assets/qx-landing-premium.css">
     
     <script>
-        // Redirect to login page if opened inside a mobile app webview
-        var isWebview = (navigator.userAgent.indexOf('wv') > -1) || 
-                        (navigator.userAgent.indexOf('Android') > -1 && navigator.userAgent.indexOf('Version/') > -1);
-        if (isWebview) {
-            window.location.href = 'login.html';
-        }
-
         // Apply saved theme
         var savedTheme = localStorage.getItem('qx-theme');
         if (savedTheme === 'dark') {
@@ -320,8 +313,8 @@
                 </div>
             </div>
             
-            <div class="app-showcase-3d" style="perspective: 1000px; display: flex; justify-content: center;">
-                <div class="phone-mockup-3d" style="width: 280px; height: 560px; background: #000; border-radius: 40px; border: 12px solid #334155; box-shadow: -20px 20px 40px rgba(0,0,0,0.5), inset 0 0 0 2px #475569; position: relative; overflow: hidden; transform: rotateY(-15deg) rotateX(10deg); transition: transform 0.5s;">
+            <div class="app-showcase-3d" style="display: flex; justify-content: center;">
+                <div class="phone-mockup-3d" style="width: 280px; height: 560px; background: #000; border-radius: 40px; border: 12px solid #334155; box-shadow: 0 20px 40px rgba(0,0,0,0.3), inset 0 0 0 2px #475569; position: relative; overflow: hidden;">
                     <div class="phone-notch" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 25px; background: #334155; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; z-index: 10;"></div>
                     <div class="phone-screen" style="background: white; width: 100%; height: 100%; display: flex; flex-direction: column;">
                         <!-- App UI Mockup -->
