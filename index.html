@@ -97,6 +97,21 @@
         <a href="/login" class="btn btn-primary" style="width: 100%; text-align: center;">Get Started</a>
     </div>
 
+    <!-- Top Exams Ticker (Moved to very top) -->
+    <div style="background: #F8FAFC; border-bottom: 1px solid #E2E8F0; padding: 12px 0;">
+        <div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <span style="font-size: 11px; font-weight: 800; color: var(--c-purple); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Preparing you for the toughest</span>
+            <div class="exam-logo-strip" style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; align-items: center;">
+                <img src="assets/exam-logos/ic_content_exam_jee_main.png" alt="JEE Main" style="height: 32px; object-fit: contain;">
+                <img src="assets/exam-logos/ic_content_exam_jee_advanced.png" alt="JEE Advanced" style="height: 32px; object-fit: contain;">
+                <img src="assets/exam-logos/ic_content_exam_neet.png" alt="NEET" style="height: 32px; object-fit: contain;">
+                <img src="assets/exam-logos/ic_content_exam_nda.png" alt="NDA" style="height: 32px; object-fit: contain;">
+                <img src="assets/exam-logos/ic_content_exam_bitsat.png" alt="BITSAT" style="height: 32px; object-fit: contain;">
+                <img src="assets/exam-logos/ic_content_exam_cbse.png" alt="CBSE" style="height: 32px; object-fit: contain;">
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-grid">
@@ -167,21 +182,6 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Top Exams Ticker -->
-    <section class="exams-ticker" style="padding: 30px 0; background: white; border-top: 1px solid var(--border);">
-        <div class="container text-center">
-            <p style="font-size: 14px; font-weight: 700; color: var(--text-gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">Comprehensive Preparation For Top Exams</p>
-            <div class="exam-logo-strip" style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; align-items: center; opacity: 0.8;">
-                <img src="assets/exam-logos/ic_content_exam_jee_main.png" alt="JEE Main" style="height: 45px; object-fit: contain;">
-                <img src="assets/exam-logos/ic_content_exam_jee_advanced.png" alt="JEE Advanced" style="height: 45px; object-fit: contain;">
-                <img src="assets/exam-logos/ic_content_exam_neet.png" alt="NEET" style="height: 45px; object-fit: contain;">
-                <img src="assets/exam-logos/ic_content_exam_nda.png" alt="NDA" style="height: 45px; object-fit: contain;">
-                <img src="assets/exam-logos/ic_content_exam_bitsat.png" alt="BITSAT" style="height: 45px; object-fit: contain;">
-                <img src="assets/exam-logos/ic_content_exam_cbse.png" alt="CBSE" style="height: 45px; object-fit: contain;">
             </div>
         </div>
     </section>
@@ -318,39 +318,50 @@
                     <div class="phone-notch" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 25px; background: #334155; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; z-index: 10;"></div>
                     <div class="phone-screen" style="background: white; width: 100%; height: 100%; display: flex; flex-direction: column;">
                         <!-- App UI Mockup -->
-                        <div class="app-header" style="background: var(--primary); padding: 40px 20px 20px 20px; color: white; display: flex; justify-content: space-between; align-items: center;">
-                            <div><div style="font-size:16px; font-weight:700;">Hey, Aryan 👋</div><span style="font-size: 11px; opacity:0.8;">JEE Main Target</span></div>
-                            <div style="background: white; width: 36px; height: 36px; border-radius: 50%;"><img src="assets/quantrex-logo-mark.png" style="width:100%; height:100%; object-fit:contain; border-radius:50%;"></div>
+                        <div class="app-header" style="background: linear-gradient(135deg, #4338CA 0%, #312E81 100%); padding: 35px 20px 20px 20px; color: white; display: flex; justify-content: space-between; align-items: center; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <div>
+                                <div style="font-size:18px; font-weight:800; letter-spacing: -0.5px;">Hey, Aryan 👋</div>
+                                <span style="font-size: 11px; font-weight: 500; opacity:0.9; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 10px; margin-top: 4px; display: inline-block;">Target: JEE Main</span>
+                            </div>
+                            <div style="background: white; width: 42px; height: 42px; border-radius: 50%; padding: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);"><img src="assets/quantrex-logo-mark.png" style="width:100%; height:100%; object-fit:contain; border-radius:50%;"></div>
                         </div>
                         
-                        <div style="padding: 20px;">
-                            <div class="app-banner" style="background: #F3F4F6; padding: 16px; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid var(--c-purple);">
-                                <strong style="color:var(--text-dark); font-size:14px;">Daily Challenge</strong>
-                                <p style="font-size: 11px; margin-top: 4px; color:var(--text-gray);">Solve 10 Physics PYQs to earn 50 coins!</p>
+                        <div style="padding: 20px; flex: 1; background: #F8FAFC;">
+                            <!-- Premium Banner -->
+                            <div class="app-banner" style="background: white; padding: 16px; border-radius: 16px; margin-bottom: 24px; border-left: 5px solid #10B981; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <div style="display:flex; justify-content: space-between; align-items: center;">
+                                    <strong style="color:#0F172A; font-size:15px; font-weight:800;">Daily Challenge 🔥</strong>
+                                    <span style="font-size:12px; font-weight:700; color:#10B981;">+50 Coins</span>
+                                </div>
+                                <p style="font-size: 12px; margin-top: 6px; color:#64748B; line-height: 1.4;">Solve 10 Physics PYQs today to maintain your streak!</p>
                             </div>
                             
-                            <div class="app-grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px;">
-                                <div class="app-card" style="background: #EFF6FF; padding: 16px; border-radius: 12px; text-align: center; color: var(--c-blue); font-weight: 700; display:flex; flex-direction:column; gap:8px;">
-                                    <span class="app-icon" style="font-size: 24px;">📚</span>
-                                    <span>Learn</span>
+                            <h4 style="font-size: 14px; font-weight: 800; color: #334155; margin-bottom: 12px;">Quick Access</h4>
+                            <div class="app-grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                                <div class="app-card" style="background: white; padding: 18px 10px; border-radius: 16px; text-align: center; color: #4338CA; font-weight: 800; display:flex; flex-direction:column; gap:10px; box-shadow: 0 4px 10px rgba(67, 56, 202, 0.08); border: 1px solid #EEF2FF;">
+                                    <span class="app-icon" style="font-size: 28px;">📚</span>
+                                    <span style="font-size: 13px;">Learn</span>
                                 </div>
-                                <div class="app-card" style="background: #ECFDF5; padding: 16px; border-radius: 12px; text-align: center; color: var(--c-green); font-weight: 700; display:flex; flex-direction:column; gap:8px;">
-                                    <span class="app-icon" style="font-size: 24px;">📝</span>
-                                    <span>Practice</span>
+                                <div class="app-card" style="background: white; padding: 18px 10px; border-radius: 16px; text-align: center; color: #059669; font-weight: 800; display:flex; flex-direction:column; gap:10px; box-shadow: 0 4px 10px rgba(5, 150, 105, 0.08); border: 1px solid #ECFDF5;">
+                                    <span class="app-icon" style="font-size: 28px;">📝</span>
+                                    <span style="font-size: 13px;">Practice</span>
                                 </div>
-                                <div class="app-card" style="background: #FEF2F2; padding: 16px; border-radius: 12px; text-align: center; color: var(--c-red); font-weight: 700; display:flex; flex-direction:column; gap:8px;">
-                                    <span class="app-icon" style="font-size: 24px;">🎯</span>
-                                    <span>Tests</span>
+                                <div class="app-card" style="background: white; padding: 18px 10px; border-radius: 16px; text-align: center; color: #E11D48; font-weight: 800; display:flex; flex-direction:column; gap:10px; box-shadow: 0 4px 10px rgba(225, 29, 72, 0.08); border: 1px solid #FFF1F2;">
+                                    <span class="app-icon" style="font-size: 28px;">🎯</span>
+                                    <span style="font-size: 13px;">Tests</span>
                                 </div>
-                                <div class="app-card" style="background: #F5F3FF; padding: 16px; border-radius: 12px; text-align: center; color: var(--c-purple); font-weight: 700; display:flex; flex-direction:column; gap:8px;">
-                                    <span class="app-icon" style="font-size: 24px;">📊</span>
-                                    <span>Analysis</span>
+                                <div class="app-card" style="background: white; padding: 18px 10px; border-radius: 16px; text-align: center; color: #7C3AED; font-weight: 800; display:flex; flex-direction:column; gap:10px; box-shadow: 0 4px 10px rgba(124, 58, 237, 0.08); border: 1px solid #F5F3FF;">
+                                    <span class="app-icon" style="font-size: 28px;">📊</span>
+                                    <span style="font-size: 13px;">Analysis</span>
                                 </div>
                             </div>
                             
-                            <div class="app-progress" style="background: white; border: 1px solid #E2E8F0; padding: 16px; border-radius: 12px;">
-                                <div style="font-weight: 600; font-size: 13px; margin-bottom: 8px; color: var(--text-dark);">Physics Syllabus</div>
-                                <div class="app-bar-bg" style="width: 100%; height: 8px; background: #E2E8F0; border-radius: 4px;"><div class="app-bar-fill" style="width: 65%; height: 100%; background: var(--c-green); border-radius: 4px;"></div></div>
+                            <div class="app-progress" style="background: white; padding: 16px; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #F1F5F9;">
+                                <div style="display:flex; justify-content:space-between; margin-bottom: 8px;">
+                                    <div style="font-weight: 800; font-size: 13px; color: #0F172A;">Physics Syllabus</div>
+                                    <div style="font-weight: 800; font-size: 12px; color: #10B981;">65%</div>
+                                </div>
+                                <div class="app-bar-bg" style="width: 100%; height: 8px; background: #E2E8F0; border-radius: 4px; overflow: hidden;"><div class="app-bar-fill" style="width: 65%; height: 100%; background: linear-gradient(90deg, #34D399 0%, #059669 100%); border-radius: 4px;"></div></div>
                             </div>
                         </div>
                     </div>
