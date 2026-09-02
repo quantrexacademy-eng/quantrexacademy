@@ -155,7 +155,13 @@
     if (!raw) return "";
     if (/^data:/i.test(raw)) return raw;
     if (UI_KEEP.test(raw) && !FOREIGN.test(raw) && !isCardArt(raw)) return raw;
-        const irodovDisp = irodovStorageUrl(raw);
+        const baseMatch = raw.match(/(qx-(?:book|org|self|irodov)-[a-f0-9]+)(?:\.(png|webp|jpe?g|gif))?/i);
+    if (baseMatch) {
+      const ext = baseMatch[2] ? baseMatch[2].toLowerCase() : "png";
+      const name = baseMatch[1] + "." + ext;
+      return storageUrlForPath("questions/figs/diagrams/" + name) + "&v=stem2";
+    }
+    const irodovDisp = irodovStorageUrl(raw);
     if (irodovDisp) return irodovDisp;
     if (/\/assets\/(book-covers|folder-icons|qx-figures|exam-logos)\//i.test(raw) && !isForeignHost(raw)) {
       return raw.split("?")[0] || raw;
