@@ -1,5 +1,5 @@
 /* Quantrex PWA — website + Android TWA share this cache. */
-const CACHE = "qx-pwa-v128";
+const CACHE = "qx-pwa-v129";
 const PRECACHE = ["/login.html", "/manifest.webmanifest", "/assets/icon-192.png", "/assets/icon-512.png"];
 const SKIP = /\.(mp4|webm|apk|m4a|mp3)$/i;
 const ASSET_IMG = /\.(png|jpe?g|webp|svg|gif|ico|woff2?)$/i;
