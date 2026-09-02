@@ -155,7 +155,7 @@
     if (!raw) return "";
     if (/^data:/i.test(raw)) return raw;
     if (UI_KEEP.test(raw) && !FOREIGN.test(raw) && !isCardArt(raw)) return raw;
-        const baseMatch = raw.match(/(qx-(?:book|org|self|irodov)-[a-f0-9]+)(?:\.(png|webp|jpe?g|gif))?/i);
+        const baseMatch = raw.match(/(qx-(?:book|self)-[a-f0-9]+)(?:\.(png|webp|jpe?g|gif))?/i);
     if (baseMatch) {
       const ext = baseMatch[2] ? baseMatch[2].toLowerCase() : "png";
       const name = baseMatch[1] + "." + ext;
