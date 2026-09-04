@@ -1,0 +1,284 @@
+/* Quantrex CBT UX — dual format labels + mobile NTA chrome polish + Update bar vs CBT footer */
+/* Additive. Does not replace examgoal/allen/marks engine CSS. */
+
+.qx-format-legend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 0 0 14px;
+}
+.qx-fmt-card {
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+}
+.qx-fmt-card strong { font-size: 12px; letter-spacing: .04em; }
+.qx-fmt-card span { font-size: 12px; line-height: 1.35; color: #64748b; }
+.qx-fmt-qx { border-color: #93c5fd; background: linear-gradient(180deg, #eff6ff, #fff); }
+.qx-fmt-qx strong { color: #1d4ed8; }
+.qx-fmt-nta { border-color: #86efac; background: linear-gradient(180deg, #f0fdf4, #fff); }
+.qx-fmt-nta strong { color: #15803d; }
+
+.qx-mode-pill {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #334155;
+}
+.qx-mode-pill.qx-mode-nta { background: #dcfce7; color: #166534; }
+.qx-mode-pill.qx-mode-flex { background: #dbeafe; color: #1e40af; }
+
+/* Hide Update Quantrex bar whenever a CBT/practice shell is open */
+body.qx-cbt-session .qx-update-bar,
+body.marks-test-active .qx-update-bar,
+body.allen-cbt-active .qx-update-bar,
+body.allen-practice-active .qx-update-bar,
+body.mtk-test-open .qx-update-bar,
+body.qzrr-instr-active .qx-update-bar,
+body.marks-instr-active .qx-update-bar,
+body.ts-fmt-chooser-active .qx-update-bar {
+  display: none !important;
+}
+
+/* Compact font chip — reachable on mobile CBT */
+.qx-cbt-font-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+  padding: 2px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, .06);
+  border: 1px solid rgba(15, 23, 42, .12);
+  z-index: 5;
+}
+.qx-cbt-font-btn {
+  border: 0;
+  background: #fff;
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 12px;
+  width: 32px;
+  height: 28px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.qx-cbt-font-lbl {
+  font-size: 11px;
+  font-weight: 800;
+  min-width: 18px;
+  text-align: center;
+  color: #334155;
+}
+.qzrr-cbt .qx-cbt-font-chip {
+  position: absolute;
+  top: 8px;
+  right: 56px;
+}
+.eg-test-root .qx-cbt-font-chip {
+  position: absolute;
+  top: 8px;
+  right: 48px;
+}
+
+/* Mobile NTA (quizrr) — keep timer + actions above safe area; palette reachable */
+@media (max-width: 900px) {
+  .qx-format-legend { grid-template-columns: 1fr; }
+
+  .qzrr-cbt .qzrr-time-box,
+  .qzrr-cbt #qxTimer {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .qzrr-cbt .qzrr-footer-actions {
+    position: sticky !important;
+    bottom: 0 !important;
+    z-index: 40;
+    background: var(--eg-card, #fff);
+    box-shadow: 0 -6px 18px rgba(15, 23, 42, .08);
+    padding: 8px 10px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .qzrr-cbt .qzrr-act-left,
+  .qzrr-cbt .qzrr-act-right {
+    display: contents;
+  }
+  .qzrr-cbt .qzrr-submit-mobile {
+    grid-column: 1 / -1;
+  }
+
+  /* Palette drawer always available */
+  .qzrr-cbt .qzrr-side-toggle {
+    z-index: 45;
+    bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Standard NTA palette colors reminder (legend strip if present) */
+  .qzrr-pill-ans, .mtk-pal-cell.answered { background: #10b981 !important; color: #fff !important; }
+  .qzrr-pill-na, .mtk-pal-cell.not-answered { background: #ef4444 !important; color: #fff !important; }
+  .qzrr-pill-nv, .mtk-pal-cell.not-visited { background: #e5e7eb !important; color: #111827 !important; }
+  .qzrr-pill-mr, .mtk-pal-cell.review { background: #8b5cf6 !important; color: #fff !important; }
+  .qzrr-pill-amr, .mtk-pal-cell.answered-review {
+    background: linear-gradient(135deg, #10b981 50%, #8b5cf6 50%) !important;
+    color: #fff !important;
+  }
+}
+
+/* Format chooser emphasis */
+.ts-fmt-chooser .ts-fmt-qz.on {
+  outline: 2px solid #16a34a;
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, .15);
+}
+.ts-fmt-chooser .ts-fmt-qx.on {
+  outline: 2px solid #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, .12);
+}
+
+@media (prefers-color-scheme: dark) {
+  .qx-fmt-card { background: #0f172a; border-color: #334155; }
+  .qx-fmt-card span { color: #94a3b8; }
+}
+body.dark .qx-fmt-card,
+html[data-theme="dark"] .qx-fmt-card {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+/* ===== ExamGoal NTA visual parity (examgoal-nta-cbt.webp) =====
+   Reinforces quizrr chrome already in test-series-page.css so in-app
+   Test Series / PYQ Mock NTA mode matches the competitor shell. */
+
+.mtk-test-root.qzrr-cbt .qzrr-topbar,
+.mtk-test-root.qzrr-cbt .qzrr-head,
+.qzrr-cbt > .qzrr-top {
+  background: #1e3a8a !important; /* ExamGoal dark-blue exam header */
+  color: #fff !important;
+}
+.qzrr-cbt .qzrr-exam-title,
+.qzrr-cbt .qzrr-top-title {
+  color: #fff !important;
+  font-weight: 700;
+}
+
+/* Sub-header: Sections + sticky Time Left */
+.qzrr-cbt .qzrr-sec-row,
+.qzrr-cbt .qzrr-sections-bar {
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+}
+.qzrr-cbt .qzrr-time-box,
+.qzrr-cbt .qzrr-time-box strong,
+.qzrr-cbt #qxTimer {
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  color: #0f172a;
+  white-space: nowrap;
+}
+
+/* Active section chip = dark blue like ExamGoal */
+.qzrr-cbt .qzrr-sec-chip.active,
+.qzrr-cbt .mtk-sec-tab.qzrr-sec-chip.active {
+  background: #1e3a8a !important;
+  color: #fff !important;
+  border-color: #1e3a8a !important;
+}
+
+/* Footer actions: Mark for Review & Next | Clear || Previous | Save & Next */
+.qzrr-cbt .qzrr-footer-actions {
+  background: #f1f5f9;
+  border-top: 1px solid #cbd5e1;
+}
+.qzrr-cbt .qzrr-btn-primary,
+.qzrr-cbt #qxSaveBtn {
+  background: #1a73e8 !important;
+  border-color: #1a73e8 !important;
+  color: #fff !important;
+  font-weight: 700;
+}
+.qzrr-cbt .qzrr-btn-outline,
+.qzrr-cbt #qxReviewNextBtn,
+.qzrr-cbt #qxClearBtn,
+.qzrr-cbt #qxPrevBtn {
+  background: #fff !important;
+  border: 1px solid #94a3b8 !important;
+  color: #0f172a !important;
+  font-weight: 600;
+}
+
+/* Sidebar Submit = wide blue like ExamGoal */
+.qzrr-cbt .qzrr-side-foot #qxSubmitBtn,
+.qzrr-cbt #qxSubmitBtn {
+  width: 100%;
+  background: #1a73e8 !important;
+  color: #fff !important;
+  font-weight: 800;
+  min-height: 44px;
+}
+
+/* NTA legend shapes — match ExamGoal (pentagon/shield/square/circle/circle+tick) */
+.qzrr-pill-ans {
+  background: #43a047 !important;
+  clip-path: polygon(0 0, 100% 0, 100% 72%, 50% 100%, 0 72%) !important;
+  border-radius: 0 !important;
+}
+.qzrr-pill-na {
+  background: #e53935 !important;
+  clip-path: polygon(0 0, 100% 0, 100% 72%, 50% 100%, 0 72%) !important;
+  border-radius: 0 !important;
+}
+.qzrr-pill-nv {
+  background: #eceff1 !important;
+  color: #555 !important;
+  border-radius: 3px !important;
+  clip-path: none !important;
+}
+.qzrr-pill-mr {
+  background: #7e57c2 !important;
+  border-radius: 50% !important;
+  clip-path: none !important;
+}
+.qzrr-pill-amr {
+  background: #7e57c2 !important;
+  border-radius: 50% !important;
+  clip-path: none !important;
+  position: relative;
+}
+.qzrr-pill-amr::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #43a047;
+  box-shadow: inset 0 0 0 2px #fff;
+}
+
+/* Format chooser — ExamGoal prepare page parity */
+.ts-fmt-chooser .ts-fmt-qz .ts-fmt-opt-icon {
+  background: linear-gradient(135deg, #f97316, #22c55e) !important; /* NTA orange/green cue */
+}
+.ts-fmt-chooser .ts-fmt-start {
+  background: #16a34a !important;
+  color: #fff !important;
+  font-weight: 800;
+  min-height: 48px;
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+}
