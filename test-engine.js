@@ -723,15 +723,39 @@ const QuantrexTestEngine = (() => {
     return true;
   }
 
+  var PAL_STATUS = {
+    unvisited: 1, visited: 1, skipped: 1, answered: 1, "not-answered": 1, review: 1,
+    "rev-ans": 1, "rev-skip": 1, cur: 1,
+    "eg-correct": 1, "eg-wrong": 1, "eg-att": 1, "eg-seen": 1, "eg-unseen": 1,
+    "eg-attempted": 1, "eg-att-mark": 1, "eg-marked": 1, "eg-seen-test": 1
+  };
+
   function patchPaletteCell(main, idx) {
-    if (!main || !session || idx == null) return;
-    const cell = main.querySelector(`.mtk-pal-cell[data-qidx="${idx}"], .qx-pal-cell[data-qidx="${idx}"], .eg-pal-cell[data-qidx="${idx}"]`);
-    if (!cell) return;
+    if (!session || idx == null) return;
+    const root = (main && main.closest && (main.closest(".eg-test-root, .mtk-test-root, .qzrr-cbt") || main))
+      || document.querySelector(".eg-test-root, .mtk-test-root, .qzrr-cbt")
+      || main;
+    if (!root || !root.querySelectorAll) return;
     const st = paletteStatus(idx);
     const cur = idx === session.idx;
-    const isEg = cell.classList.contains("eg-pal-cell");
-    const base = isEg ? "eg-pal-cell mtk-pal-cell" : (cell.classList.contains("mtk-pal-cell") ? "mtk-pal-cell" : "qx-pal-cell");
-    cell.className = `${base} ${st}${cur ? " cur" : ""}`;
+    const sel = '[data-qidx="' + idx + '"]';
+    root.querySelectorAll(
+      ".mtk-pal-cell" + sel + ", .qx-pal-cell" + sel + ", .eg-pal-cell" + sel +
+      ", .eg-qbar-n" + sel + ", .qzrr-grid-cell" + sel
+    ).forEach(function (cell) {
+      const keep = [];
+      String(cell.className || "").split(/\s+/).forEach(function (c) {
+        if (c && !PAL_STATUS[c]) keep.push(c);
+      });
+      keep.push(st);
+      if (cur) keep.push("cur");
+      cell.className = keep.join(" ");
+    });
+    try {
+      if (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.syncPalette) {
+        ExamgoalTestUI.syncPalette(root, session, { hasAnswerAt: hasAnswerAt });
+      }
+    } catch (_) { /* */ }
   }
 
   function patchAnswerUI(main) {
@@ -6114,10 +6138,12 @@ async function startTest(questionIds, title, returnTo, options) {
         moduleId: (opts.meta && opts.meta.moduleId) || "",
         startTest: true
       };
-      if (!QuantrexAccess.allow("test", gate)) {
-        if (typeof finishRender === "function") finishRender(QuantrexAccess.paywallHtml("test", gate));
-        else if (typeof showToast === "function") showToast("This course is locked — buy it on the payment page");
-        return;
+      if (!QuantrexAccess.ALL_COURSES_FREE && !QuantrexAccess.allow("test", gate)) {
+        const wall = QuantrexAccess.paywallHtml("test", gate);
+        if (wall && typeof finishRender === "function") {
+          finishRender(wall);
+          return;
+        }
       }
     }
   } catch (_) { /* */ }

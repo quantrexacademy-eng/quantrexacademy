@@ -432,3 +432,90 @@ body.qx-q-fullscreen #qxDiagramSlot img {
     padding: 6px 8px;
   }
 }
+
+/* ===== Simple app view: never hide questions / options / solutions ===== */
+.eg-test-root .eg-q-stem,
+.eg-test-root .mtk-q-text,
+.eg-test-root #egQArea,
+.eg-test-root #qxOpts,
+.qzrr-cbt .mtk-q-text,
+.qzrr-cbt #qxOpts,
+.mtk-test-root .mtk-q-text,
+.mtk-test-root #qxOpts {
+  visibility: visible !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  max-height: none !important;
+}
+.eg-sol.eg-sol-open, #egSol.eg-sol-open,
+.qx-review .sol-body, .mk-sol-body, .qx-sol-card {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  max-height: none !important;
+}
+.eg-test-root .mtk-opt,
+.qzrr-cbt .mtk-opt,
+.mtk-test-root .mtk-opt {
+  display: flex !important;
+}
+.eg-test-root[data-test-theme="light"] .eg-sol,
+.eg-test-root[data-test-theme="light"] .sol-body,
+.eg-test-root[data-test-theme="light"] .qx-sol-flow,
+.qzrr-cbt[data-test-theme="light"] .sol-body,
+html[data-theme="light"] .eg-sol,
+html[data-theme="light"] .sol-body {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  background: #fff !important;
+}
+.eg-test-root[data-test-theme="dark"] .eg-sol,
+.eg-test-root[data-test-theme="dark"] .sol-body,
+.eg-test-root[data-test-theme="dark"] .qx-sol-flow,
+.qzrr-cbt[data-test-theme="dark"] .sol-body,
+html[data-theme="dark"] .eg-sol,
+html[data-theme="dark"] .sol-body {
+  color: #e5e7eb !important;
+  -webkit-text-fill-color: #e5e7eb !important;
+  background: #111827 !important;
+}
+.eg-test-root .katex-error,
+.eg-sol .katex-error,
+.eg-q-stem .katex-error,
+.sol-body .katex-error,
+.mtk-q-text .katex-error {
+  display: inline !important;
+  visibility: visible !important;
+  color: inherit !important;
+  background: transparent !important;
+}
+
+/* Side / top question numbers — colour on attempt */
+.eg-qbar-n.eg-att, .eg-pal-cell.eg-att { background: #3b82f6 !important; color: #fff !important; }
+.eg-qbar-n.eg-correct, .eg-pal-cell.eg-correct,
+.eg-qbar-n.eg-attempted, .eg-pal-cell.eg-attempted { background: #22c55e !important; color: #fff !important; }
+.eg-qbar-n.eg-wrong, .eg-pal-cell.eg-wrong { background: #ef4444 !important; color: #fff !important; }
+.eg-qbar-n.eg-seen, .eg-pal-cell.eg-seen { background: #f59e0b !important; color: #fff !important; }
+.eg-qbar-n.eg-seen-test, .eg-pal-cell.eg-seen-test { background: #ef4444 !important; color: #fff !important; }
+.eg-qbar-n.eg-unseen, .eg-pal-cell.eg-unseen { background: #9ca3af !important; color: #fff !important; }
+.eg-qbar-n.eg-marked, .eg-pal-cell.eg-marked,
+.eg-qbar-n.eg-att-mark, .eg-pal-cell.eg-att-mark { background: #a855f7 !important; color: #fff !important; }
+.mtk-pal-cell.answered, .qzrr-grid-cell.answered { background: #43a047 !important; color: #fff !important; }
+.mtk-pal-cell.not-answered, .qzrr-grid-cell.not-answered { background: #e53935 !important; color: #fff !important; }
+.mtk-pal-cell.unvisited, .qzrr-grid-cell.unvisited { background: #eceff1 !important; color: #334155 !important; }
+.mtk-pal-cell.rev-ans, .qzrr-grid-cell.rev-ans,
+.mtk-pal-cell.rev-skip, .qzrr-grid-cell.rev-skip { background: #7e57c2 !important; color: #fff !important; }
+html[data-theme="dark"] .mtk-pal-cell.unvisited,
+html[data-theme="dark"] .qzrr-grid-cell.unvisited,
+.qzrr-cbt[data-test-theme="dark"] .qzrr-grid-cell.unvisited {
+  background: #334155 !important; color: #e2e8f0 !important;
+}
+
+/* NTA mobile: keep toolbar + palette usable, questions fully shown */
+@media (max-width: 900px) {
+  .qzrr-cbt .qzrr-side { max-height: 42vh; overflow: auto; }
+  .qzrr-cbt .mtk-q-text, .eg-test-root .eg-q-stem { padding-bottom: 8px; }
+  .eg-qbar { display: flex !important; flex-wrap: wrap !important; gap: 6px !important; }
+  .eg-qbar-n { display: inline-flex !important; }
+}

@@ -972,6 +972,7 @@ return '<div class="eg-test-root mtk-test-root' + (collapsed ? " eg-side-collaps
     render: render,
     bind: bind,
     paletteStatus: paletteStatus,
+    syncPalette: syncPalette,
     subjectGroups: subjectGroups,
     checkAnswer: checkAnswer,
     syncSolution: syncSolution,

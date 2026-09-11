@@ -506,9 +506,12 @@ function finishRender(html) {
 }
 
 function render(view, payload) {
-  if (typeof QuantrexAccess !== "undefined" && !QuantrexAccess.allow(view, payload)) {
-    finishRender(QuantrexAccess.paywallHtml(view, payload));
-    return;
+  if (typeof QuantrexAccess !== "undefined" && !QuantrexAccess.ALL_COURSES_FREE && !QuantrexAccess.allow(view, payload)) {
+    const wall = QuantrexAccess.paywallHtml(view, payload);
+    if (wall) {
+      finishRender(wall);
+      return;
+    }
   }
   const asyncMap = {
     dashboard: viewDashboard,
@@ -1513,9 +1516,12 @@ function openPracticeQuestion(id) {
       chapter: cpy.chapter || ctx.chapter || "",
       qid: id
     };
-    if (typeof QuantrexAccess !== "undefined" && QuantrexAccess.allow && !QuantrexAccess.allow("question", gate)) {
-      if (typeof finishRender === "function") finishRender(QuantrexAccess.paywallHtml("question", gate));
-      return;
+    if (typeof QuantrexAccess !== "undefined" && !QuantrexAccess.ALL_COURSES_FREE && QuantrexAccess.allow && !QuantrexAccess.allow("question", gate)) {
+      const wall = QuantrexAccess.paywallHtml("question", gate);
+      if (wall && typeof finishRender === "function") {
+        finishRender(wall);
+        return;
+      }
     }
   } catch (_) { /* */ }
   // Chapter-wise PYQ list → ExamGOAL full-window practice (same chrome as mock)
@@ -3181,9 +3187,12 @@ document.addEventListener("DOMContentLoaded", () => {
 const _origGo = go;
 go = function(view, payload) {
   currentView = view;
-  if (typeof QuantrexAccess !== "undefined" && !QuantrexAccess.allow(view, payload)) {
-    finishRender(QuantrexAccess.paywallHtml(view, payload));
-    return;
+  if (typeof QuantrexAccess !== "undefined" && !QuantrexAccess.ALL_COURSES_FREE && !QuantrexAccess.allow(view, payload)) {
+    const wall = QuantrexAccess.paywallHtml(view, payload);
+    if (wall) {
+      finishRender(wall);
+      return;
+    }
   }
   if (view !== "test" && view !== "question" && !qxRequireLogin(view, payload)) return;
   const main = document.getElementById("app-main");

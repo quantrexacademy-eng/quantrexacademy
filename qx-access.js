@@ -481,43 +481,7 @@ const QuantrexAccess = (() => {
   }
 
   function paywallHtml(view, payload) {
-    if (ALL_COURSES_FREE) return "";
-    const feat = neededFeature(view, payload);
-    const logged = isLoggedIn();
-    const course = COURSE_LABEL[feat] || "this course";
-    const year = COURSE_PLAN[feat] || "eng_complete";
-    const trialHref = logged ? payHref("trial_7") : "login.html?next=pay&plan=trial_7";
-    const yearHref = logged ? payHref(year) : "login.html?next=pay&plan=" + year;
-    const yearLbl = year === "med_complete" ? "Medical Complete · ₹299"
-      : year === "jee_ts" ? "JEE Main Test Series · ₹299"
-      : "Engineering Complete · ₹399";
-    const p = payload && typeof payload === "object" ? payload : {};
-    let kindTitle = "Premium chapter";
-    let kindLine = "The first chapter is free in this subject.";
-    if (view === "books" || p.bookId) {
-      kindTitle = "Premium chapter";
-      kindLine = "One chapter is free in this folder.";
-    } else if (view === "pyqmock" || feat === "jee_ts" || view === "testseries") {
-      kindTitle = "Premium test";
-      kindLine = "One paper is free in one year of this exam.";
-    } else if (view === "formula") {
-      kindTitle = "Premium formula chapter";
-      kindLine = "One chapter is free in this subject.";
-    } else if (view === "revision" || view === "flashcards") {
-      kindTitle = "Premium revision";
-      kindLine = "One set is free in this subject.";
-    }
-    return `<div class="qx-paywall">
-      <div class="qx-paywall-ic">🔒</div>
-      <div class="qx-paywall-kicker">QUANTREX ACADEMY</div>
-      <h2>${kindTitle}</h2>
-      <p>${kindLine} Buy <strong>${course}</strong> to unlock the rest.</p>
-      <div class="qx-paywall-btns">
-        <a class="qx-paywall-buy" href="${yearHref}">Unlock ${yearLbl}</a>
-        <a class="qx-paywall-trial" href="${trialHref}">7-Day Pass · ₹9 (all courses)</a>
-        <a class="qx-paywall-all" href="pay.html">See all courses →</a>
-      </div>
-    </div>`;
+    return "";
   }
 
   function featureForExam(exam) {

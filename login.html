@@ -927,7 +927,7 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
 <script src="qx-exams.js?v=qxfix71"></script>
 <script src="qx-profile.js?v=qxfix77"></script>
 <script src="qx-leads.js?v=qxfix72"></script>
-<script>window.QX_BUILD = "qxmd117";</script>
+<script>window.QX_BUILD = "qxmd119";</script>
 <script src="qx-live-feed.js?v=qxfix93"></script>
 <script>
 (function () {
@@ -1195,6 +1195,8 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
   } catch (_) {}
   function afterLoginUrl() {
     try {
+      const free = typeof QuantrexAccess !== "undefined" && QuantrexAccess.ALL_COURSES_FREE;
+      if (free) return "app.html?exam=" + encodeURIComponent(chosenExam || "Engineering");
       const n = new URLSearchParams(location.search).get("next");
       if (n === "pay" || n === "premium") {
         const plan = new URLSearchParams(location.search).get("plan");

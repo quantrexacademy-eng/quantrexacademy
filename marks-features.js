@@ -6126,11 +6126,11 @@ function qxPyqBlocked(slug, source) {
       year: qxPyqYearHint(source),
       step: "take"
     };
-    if (QuantrexAccess.allow("pyqmock", gate)) return false;
+    if (QuantrexAccess.ALL_COURSES_FREE || QuantrexAccess.allow("pyqmock", gate)) return false;
     pyqClosePreview();
     const html = QuantrexAccess.paywallHtml("pyqmock", gate);
+    if (!html) return false;
     if (typeof finishRender === "function") finishRender(html);
-    else if (typeof showToast === "function") showToast("This paper is Premium — buy the matching course to unlock");
     return true;
   } catch (_) {
     return false;

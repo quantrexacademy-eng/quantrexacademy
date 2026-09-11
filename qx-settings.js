@@ -177,22 +177,17 @@
       '<div class="qx-settings-page" id="qxSettingsRoot">' +
       '<button type="button" class="qx-set-back" id="qxSetBack">← Back</button>' +
       "<h1>Settings</h1>" +
-      '<p class="qx-set-sub">Notifications, profile, theme and question text size. Works for guests — no login required.</p>' +
+      '<p class="qx-set-sub">Simple controls. Theme, text size, and your name.</p>' +
 
       '<div class="qx-set-card">' +
-      '<div class="qx-set-row"><div><span class="qx-set-lab">Push Notifications</span><span class="qx-set-hint">Update alerts &amp; reminders (device)</span></div>' +
-      toggleHtml("qxSetPush", getPush()) + "</div>" +
-      '<div class="qx-set-row"><div><span class="qx-set-lab">Email Notifications</span><span class="qx-set-hint">Preference stub — saved on this device</span></div>' +
-      toggleHtml("qxSetEmail", getEmail()) + "</div>" +
-      "</div>" +
-
-      '<div class="qx-set-card">' +
-      '<div class="qx-set-row"><div><span class="qx-set-lab">Theme</span><span class="qx-set-hint">Light or dark app chrome</span></div>' +
+      '<div class="qx-set-row"><div><span class="qx-set-lab">Theme</span><span class="qx-set-hint">Light or dark</span></div>' +
       segHtml("qxSetTheme", theme, [{ v: "light", l: "Light" }, { v: "dark", l: "Dark" }]) +
       "</div>" +
-      '<div class="qx-set-row"><div><span class="qx-set-lab">Question font size</span><span class="qx-set-hint">Applies to CBT / practice text</span></div>' +
+      '<div class="qx-set-row"><div><span class="qx-set-lab">Question size</span><span class="qx-set-hint">Practice and test text</span></div>' +
       segHtml("qxSetFont", font, [{ v: "small", l: "S" }, { v: "medium", l: "M" }, { v: "large", l: "L" }]) +
       "</div>" +
+      '<div class="qx-set-row"><div><span class="qx-set-lab">Notifications</span><span class="qx-set-hint">Reminders on this device</span></div>' +
+      toggleHtml("qxSetPush", getPush()) + "</div>" +
       "</div>" +
 
       '<div class="qx-set-card">' +
@@ -213,22 +208,7 @@
       "</div></div></div>" +
 
       '<div class="qx-set-card">' +
-      '<div class="qx-set-row" style="border-bottom:0;padding-bottom:4px"><span class="qx-set-lab">Study modes</span></div>' +
-      '<button type="button" class="qx-set-link" id="qxSetPractice"><span><span class="qx-set-lab">Practice</span><span class="qx-set-hint">Quantrex-best · flexible · no exam timer</span></span><span class="chev">›</span></button>' +
-      '<button type="button" class="qx-set-link" id="qxSetMock"><span><span class="qx-set-lab">Realistic Mock / Test Series</span><span class="qx-set-hint">NTA-exact CBT · timer · Mark for Review · Submit</span></span><span class="chev">›</span></button>' +
-      '<button type="button" class="qx-set-link" id="qxSetStreak"><span><span class="qx-set-lab">Daily goal &amp; streak</span><span class="qx-set-hint">' +
-      (function () {
-        try {
-          var d = JSON.parse(localStorage.getItem("quantrex_examgoal_streak_v1") || "{}");
-          var n = d.count || 0;
-          return n ? (n + "-day streak") : "Track consistency from Test Series";
-        } catch (_) { return "Track consistency from Test Series"; }
-      })() +
-      '</span></span><span class="chev">›</span></button>' +
-      "</div>" +
-
-      '<div class="qx-set-card">' +
-      '<button type="button" class="qx-set-link" id="qxSetHelp">Help &amp; Inquiry<span class="chev">›</span></button>' +
+      '<button type="button" class="qx-set-link" id="qxSetHelp">Help<span class="chev">›</span></button>' +
       "</div>" +
       "</div>"
     );

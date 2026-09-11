@@ -2331,8 +2331,9 @@ function tsStandaloneLaunchTest(testId, test, meta, seriesId, questionIds, opts,
       startTest: true,
       title: (test && test.title) || ""
     };
-    if (typeof QuantrexAccess !== "undefined" && QuantrexAccess.allow && !QuantrexAccess.allow("test", gate)) {
+    if (typeof QuantrexAccess !== "undefined" && !QuantrexAccess.ALL_COURSES_FREE && QuantrexAccess.allow && !QuantrexAccess.allow("test", gate)) {
       const html = QuantrexAccess.paywallHtml("test", gate);
+      if (!html) return;
       const mount = document.getElementById("app-main") || document.getElementById("ts-root");
       if (mount) mount.innerHTML = html;
       return;
