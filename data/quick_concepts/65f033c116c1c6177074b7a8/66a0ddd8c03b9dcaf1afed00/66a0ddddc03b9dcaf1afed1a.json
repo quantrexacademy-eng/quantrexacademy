@@ -1,0 +1,118 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddd8c03b9dcaf1afed00",
+  "topicId": "66a0ddddc03b9dcaf1afed1a",
+  "title": "Trigonometric Series",
+  "concepts": [
+    {
+      "title": "Arithmetic Series",
+      "conceptBody": "<h3>Sum of series</h3><p><strong>Arithmetic Series&nbsp;</strong></p><p>$\\text{sin}a+\\text{sin}\\left( a+d \\right)+\\text{sin}\\left( a+2d \\right)+\\ldots +\\text{sin}\\left( a+\\left( n-1 \\right)d \\right)=\\frac{\\text{sin}\\frac{nd}{2}}{\\text{sin}\\frac{d}{2}}\\text{sin}\\left( \\frac{2a+\\left( n-1 \\right)d}{2} \\right)$</p><p>$\\text{cos}a+\\text{cos}\\left( a+d \\right)+\\text{cos}\\left( a+2d \\right)+\\ldots +\\text{cos}\\left( a+\\left( n-1 \\right)d \\right)=\\frac{\\text{sin}\\frac{nd}{2}}{\\text{sin}\\frac{d}{2}}\\text{cos}\\left( \\frac{2a+\\left( n-1 \\right)d}{2} \\right)$</p><p>easier rule to remember : $\\frac{\\text{sin}\\left( \\text{n}\\cdot \\frac{\\text{ }\\!\\!~\\!\\!\\text{ difference }\\!\\!~\\!\\!\\text{ }}{2} \\right)}{\\text{sin}\\left( \\frac{\\text{ }\\!\\!~\\!\\!\\text{ difference }\\!\\!~\\!\\!\\text{ }}{2} \\right)}\\left( \\text{sin} \\right)$ or $\\left( \\text{cos} \\right)\\left( \\frac{\\text{ }\\!\\!~\\!\\!\\text{ first }\\!\\!~\\!\\!\\text{ }+\\text{ }\\!\\!~\\!\\!\\text{ last }\\!\\!~\\!\\!\\text{ term }\\!\\!~\\!\\!\\text{ }}{2} \\right)$</p>",
+      "position": 0,
+      "qcConcept": "66a0ddddc03b9dcaf1afed1b"
+    },
+    {
+      "title": "Geometric Series",
+      "conceptBody": "<h3><strong>Geometric Series&nbsp;</strong></h3><p>$\\text{cosAcos}2\\text{ }\\!\\!~\\!\\!\\text{ Acos}4\\text{ }\\!\\!~\\!\\!\\text{ A}\\ldots \\text{cos}{{2}^{\\text{n}-1}}\\text{ }\\!\\!~\\!\\!\\text{ A}=\\frac{\\text{sin}\\left( {{2}^{\\text{n}}}\\text{A} \\right)}{{{2}^{\\text{n}}}\\text{sinA}}$</p><p><strong>Some more (which you can remember, if possible)&nbsp;</strong></p><ul><li>$\\text{ }\\!\\!~\\!\\!\\text{ sin}\\alpha +\\text{sin}\\beta +\\text{sin}\\gamma -\\text{sin}\\left( \\alpha +\\beta +\\gamma \\right)=4\\text{sin}\\frac{\\alpha +\\beta }{2}\\text{sin}\\frac{\\beta +\\gamma }{2}\\text{sin}\\frac{\\gamma +\\alpha }{2}$</li><li>$\\text{ }\\!\\!~\\!\\!\\text{ cos}\\alpha +\\text{cos}\\beta +\\text{cos}\\gamma +\\text{cos}\\left( \\alpha +\\beta +\\gamma \\right)=4\\text{cos}\\frac{\\alpha +\\beta }{2}\\text{cos}\\frac{\\beta +\\gamma }{2}\\text{cos}\\frac{\\gamma +\\alpha }{2}$</li></ul>",
+      "position": 1,
+      "qcConcept": "66a0dddec03b9dcaf1afed1c"
+    },
+    {
+      "title": "Related identities to A+B+C=pi",
+      "conceptBody": "<h3>The angles of triangle and related identities</h3><p>If $\\mathbf{A}+\\mathbf{B}+\\mathbf{C}=\\pi $, then :&nbsp;</p><ul><li>$\\text{ }\\!\\!~\\!\\!\\text{ sin}2\\text{ }\\!\\!~\\!\\!\\text{ A}+\\text{sin}2\\text{ }\\!\\!~\\!\\!\\text{ B}+\\text{sin}2\\text{C}=4\\text{sinAsinBsinC}$</li><li>$\\text{ }\\!\\!~\\!\\!\\text{ cos}2\\text{ }\\!\\!~\\!\\!\\text{ A}+\\text{cos}2\\text{ }\\!\\!~\\!\\!\\text{ B}+\\text{cos}2\\text{C}=-1-4\\text{cosAcosBcosC}$</li><li>$\\text{ }\\!\\!~\\!\\!\\text{ cosA}+\\text{cosB}+\\text{cosC}=1+4\\text{sin}(A/2)\\text{sin}(B/2)\\text{sin}(C/2)$</li><li>$\\text{ }\\!\\!~\\!\\!\\text{ sinA}+\\text{sinB}+\\text{sinC}=4\\text{cos}(A/2)\\text{cos}(B/2)\\text{cos}(C/2)$</li><li>$\\text{tanA}+\\text{tanB}+\\text{tanC}=\\text{tanAtanBtanC}$</li><li>$\\text{ }\\!\\!~\\!\\!\\text{ cotAcotB}+\\text{cotBcotC}+\\text{cotCcotA}=1$</li><li>$\\text{tan}(A/2)\\text{tan}(B/2)+\\text{tan}(B/2)\\text{tan}(C/2)+\\text{tan}(C/2)\\text{tan}(A/2)=1$</li><li>$\\text{cot}(A/2)+\\text{cot}(B/2)+\\text{cot}(C/2)=\\text{cot}(A/2)\\text{cot}(B/2)\\text{cot}(C/2)$</li></ul>",
+      "position": 2,
+      "qcConcept": "66a0dddec03b9dcaf1afed1d"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f6e2d384bfb4a53848c",
+      "title": "$\\sin 12^{\\circ} \\sin 24^{\\circ} \\sin 48^{\\circ} \\sin 84^{\\circ}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a53848d",
+      "title": "If $x=\\cos 10^{\\circ} \\cos 20^{\\circ} \\cos 40^{\\circ}$, then the value of $x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a53848e",
+      "title": "$\\tan 3 A-\\tan 2 A-\\tan A=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a53848f",
+      "title": "$$\n\\cos ^2\\left(\\frac{\\pi}{4}-\\beta\\right)-\\sin ^2\\left(\\alpha-\\frac{\\pi}{4}\\right)=\n$$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538490",
+      "title": "$\\tan 9^{\\circ}-\\tan 27^{\\circ}-\\tan 63^{\\circ}+\\tan 81^{\\circ}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538491",
+      "title": "$\\frac{\\sin 3 \\theta+\\sin 5 \\theta+\\sin 7 \\theta+\\sin 9 \\theta}{\\cos 3 \\theta+\\cos 5 \\theta+\\cos 7 \\theta+\\cos 9 \\theta}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538492",
+      "title": "$\\sin 163^{\\circ} \\cos 347^{\\circ}+\\sin 73^{\\circ} \\sin 167^{\\circ}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538493",
+      "title": "The value of $\\sin 600^{\\circ} \\cos 330^{\\circ}+\\cos 120^{\\circ} \\sin 150^{\\circ}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538494",
+      "title": "$\\cos A+\\cos \\left(240^{\\circ}+A\\right)+\\cos \\left(240^{\\circ}-A\\right)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538495",
+      "title": "$\\cos ^2\\left(\\frac{\\pi}{6}+\\theta\\right)-\\sin ^2\\left(\\frac{\\pi}{6}-\\theta\\right)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538496",
+      "title": "$\\tan 20^{\\circ} \\tan 40^{\\circ} \\tan 60^{\\circ} \\tan 80^{\\circ}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538497",
+      "title": "$\\cos 20^{\\circ} \\cos 40^{\\circ} \\cos 80^{\\circ}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538498",
+      "title": "$\\sin 36^{\\circ} \\sin 72^{\\circ} \\sin 108^{\\circ} \\sin 144^{\\circ}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538499",
+      "title": "The sum $S=\\sin \\theta+\\sin 2 \\theta+\\ldots .+\\sin n \\theta$, equals",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a53849a",
+      "title": "The expression $2 \\cos \\frac{\\pi}{13} \\cdot \\cos \\frac{9 \\pi}{13}+\\cos \\frac{3 \\pi}{13}+\\cos \\frac{5 \\pi}{13}$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

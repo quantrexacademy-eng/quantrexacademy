@@ -473,6 +473,9 @@ function finishRender(html) {
     try {
       if (window.lucide && lucide.createIcons) lucide.createIcons();
     } catch (_) { /* */ }
+    try {
+      if (typeof qxPaintMedBooksMount === "function") qxPaintMedBooksMount(main);
+    } catch (_) { /* */ }
   };
   if (typeof requestAnimationFrame === "function") {
     requestAnimationFrame(() => setTimeout(afterPaint, 0));
@@ -2259,7 +2262,6 @@ function viewQuestion(id) {
     </header>
     <div class="qx-prac-meta">
       ${qTypeBadge}
-      ${typeof qxDifficultyTag === "function" ? qxDifficultyTag(q) : ""}
       ${(() => {
         // Chapter once here; subject already in header elsewhere when using Allen UI
         const ch = (typeof QuantrexStrip !== "undefined" && QuantrexStrip.humanChapter)
@@ -2434,7 +2436,13 @@ function qxRevealSolution(qid) {
   const el = document.getElementById("qaSolReveal");
   if (el) {
     el.innerHTML = qxSolutionBlockHtml(q);
-    if (typeof Mx !== "undefined") Mx.afterRender(el);
+    if (typeof Mx !== "undefined") {
+      try {
+        if (Mx.afterRenderLight) Mx.afterRenderLight(el);
+        else Mx.afterRender(el);
+        if (Mx.typeset) Mx.typeset(el);
+      } catch (_) { /* */ }
+    }
   }
   const btn = document.getElementById("qxViewSolBtn");
   if (btn) btn.remove();
@@ -2967,11 +2975,31 @@ function bindDynamic() {
 let _qxBooted = false;
 let _qxAuthResolved = false;
 
+const QX_LOAD_QUOTES = [
+  "Small steps every day beat talent that rests.",
+  "Consistency is the real rank booster.",
+  "One honest mock is better than ten unread notes.",
+  "Speed comes after accuracy — then both stay.",
+  "Revise the mistake, not just the chapter.",
+  "Quiet work today is the rank you want tomorrow.",
+  "Finish this question. Then the next. That’s the exam."
+];
+function qxLoadQuote() {
+  try {
+    const i = Math.floor(Date.now() / 8000) % QX_LOAD_QUOTES.length;
+    return QX_LOAD_QUOTES[i];
+  } catch (_) {
+    return QX_LOAD_QUOTES[0];
+  }
+}
 function qxLoadLogoHtml(msg) {
   const t = String(msg || "Loading questions…");
+  const q = qxLoadQuote();
   return '<div class="qx-load-logo" role="status" aria-live="polite">' +
-    '<div class="qx-load-orbit"><img src="/assets/quantrex-logo-3d-64.png?v=qxfix110" alt="Quantrex" class="qx-ui-brand-logo" width="64" height="64"></div>' +
+    '<div class="qx-load-orbit"><span class="qx-load-ring" aria-hidden="true"></span><span class="qx-load-ring qx-load-ring-2" aria-hidden="true"></span>' +
+    '<img src="/assets/quantrex-logo-3d-64.png?v=qxfix110" alt="Quantrex" class="qx-ui-brand-logo" width="64" height="64"></div>' +
     "<p>" + t + "</p>" +
+    '<p class="qx-load-quote">“' + q + '”</p>' +
     "</div>";
 }
 
@@ -2989,6 +3017,10 @@ function qxScheduleBoot() {
 }
 
 function bootApp() {
+  try {
+    const pill = document.getElementById("qxBuildPill");
+    if (pill && window.QX_BUILD) pill.textContent = "Build " + window.QX_BUILD;
+  } catch (_) { /* */ }
   qxApplyUrlExam();
   if (typeof QuantrexGuestTrial !== "undefined") QuantrexGuestTrial.ensureStart();
   if (typeof qxForceResetShell === "function") qxForceResetShell({ clearContent: false });
@@ -3166,9 +3198,12 @@ go = function(view, payload) {
   // Deep-link + session so refresh never dumps user on home
   qxPushHistory(view, payload);
 
-  if (view !== "test" && view !== "question" && typeof qxClearBlockingMount === "function") {
-    qxClearBlockingMount();
-    document.body.classList.remove("allen-cbt-active", "allen-practice-active", "marks-instr-active");
+  if (view !== "test" && view !== "question") {
+    try {
+      if (typeof qxForceResetShell === "function") qxForceResetShell({ clearContent: false });
+      else if (typeof qxRestoreAppChrome === "function") qxRestoreAppChrome();
+      else if (typeof qxClearBlockingMount === "function") qxClearBlockingMount();
+    } catch (_) { /* */ }
   }
 
   if (view === "question") {

@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mpczvrto",
+  "title": "Liquid Solution Test - 5 (Topic Test)",
+  "type": "topic",
+  "section": "Liquid Solution",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-07-06T13:00:00.000Z",
+  "status": "ok",
+  "analysisId": "07363810-7cc1-41e5-ba0f-dbff1d66a954",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61mpczvrto",
+    "defaultLanguage": "en",
+    "description": "Henry's Law, Ideal and Non-Ideal Solution, Azeotrops",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-06T13:00:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mr963rxx",
+            "chapter": "solutions",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>As stated by Henry's law, the amount of a gas dissolved in a fixed volume of liquid becomes greater when there is an increase in:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Temperature</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Pressure</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Both (A) and (B)</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>According to Henry’s law, at a constant temperature, the solubility of a gas in a liquid is directly proportional to the pressure of the gas above the liquid.</p>\n<p>Mathematically,</p>\n<p>$$ p = K_H x $$</p>\n<p>where $p$ is the partial pressure of the gas and $x$ is the mole fraction of the gas in solution.</p>\n<p>So, when pressure increases, more gas dissolves in the liquid.</p>\n<p>Increase in temperature usually decreases the solubility of gases in liquids because dissolved gas tends to escape more easily at higher temperature.</p>\n<p>So the correct answer is:</p>\n<p>$$ \\boxed{\\text{Option B: Pressure}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>हेनरी के नियम के अनुसार, द्रव के एक निश्चित आयतन में घुली हुई गैस की मात्रा तब अधिक हो जाती है जब निम्नलिखित में वृद्धि होती है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>तापमान</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>दाब</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>(A) तथा (B) दोनों</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "henrys-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr95qk9y",
+            "chapter": "solutions",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For a gas that dissolves in water, the only wrong statement about Henry's law is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>At the same temperature, $K_{\\mathrm{H}}$ (Henry's constant) has a larger value for $\\mathrm{O}_2$ than for $\\mathrm{H}_2$.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>On raising the temperature, the value of $K_{\\mathrm{H}}$ becomes higher.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Henry's law cannot be applied to $\\mathrm{HCl}(\\mathrm{g})$.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Henry's law is valid when the gas has very small solubility.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The incorrect statement is <strong>Option A</strong>.</p>\n<p>According to Henry’s law,</p>\n<p>$$ p = K_{\\mathrm H} x $$</p>\n<p>where $p$ is the partial pressure of the gas, $x$ is the mole fraction of the gas in solution, and $K_{\\mathrm H}$ is Henry’s constant.</p>\n<p>For a gas, a <strong>higher value of $K_{\\mathrm H}$ means lower solubility</strong> in water.</p>\n<p>At the same temperature, the Henry’s constant values are approximately:</p>\n<p>$$ K_{\\mathrm H}(\\mathrm H_2) > K_{\\mathrm H}(\\mathrm O_2) $$</p>\n<p>For example, at $298 \\, \\mathrm K$:</p>\n<p>$$ K_{\\mathrm H}(\\mathrm H_2) \\approx 69.16 \\, \\mathrm{kbar} $$</p>\n<p>$$ K_{\\mathrm H}(\\mathrm O_2) \\approx 34.86 \\, \\mathrm{kbar} $$</p>\n<p>So, the statement</p>\n<p>$$ K_{\\mathrm H} \\text{ is greater for } \\mathrm O_2 \\text{ than } \\mathrm H_2 $$</p>\n<p>is incorrect.</p>\n<p>The other statements are correct:</p>\n<ul>\n<li><p>$K_{\\mathrm H}$ increases with increase in temperature.</p></li>\n<li><p>Henry’s law is not applicable for $\\mathrm{HCl(g)}$ because it dissolves and ionises strongly in water.</p></li>\n<li><p>Henry’s law is applicable when the solubility of the gas is very low.</p></li>\n</ul>\n<p>So, the answer is:</p>\n<p>$$ \\boxed{\\text{Option A}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>जल में घुलने वाली गैस के लिए, हेनरी के नियम के बारे में एकमात्र गलत कथन है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>समान तापमान पर, $\\mathrm{H}_2$ की तुलना में $\\mathrm{O}_2$ के लिए $K_{\\mathrm{H}}$ (हेनरी स्थिरांक) का मान अधिक होता है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>तापमान बढ़ाने पर, $K_{\\mathrm{H}}$ का मान अधिक हो जाता है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>हेनरी का नियम $\\mathrm{HCl}(\\mathrm{g})$ पर लागू नहीं किया जा सकता है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>हेनरी का नियम तब मान्य होता है जब गैस की विलेयता बहुत कम होती है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "henrys-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr966el6",
+            "chapter": "solutions",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>At a given temperature, water in contact with air dissolves N<sub>2</sub>(g) to the extent of $5.3 \\times 10^{-4}$ M when the partial pressure of nitrogen is 593 mm. What will be the solubility of N<sub>2</sub>(g) at 760 mm at the same temperature?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$4.1 \\times 10^{-4}$ M</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$6.8 \\times 10^{-4}$ M</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1500 M</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>2400 M</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Using Henry's law, solubility is directly proportional to the partial pressure of the gas at constant temperature.</p>\n<p>So we can write</p>\n<p>$$\\frac{S_1}{P_1} = \\frac{S_2}{P_2}$$</p>\n<p>Here $S_1 = 5.3 \\times 10^{-4}$ M at $P_1 = 593$ mm, and we need $S_2$ at $P_2 = 760$ mm.</p>\n<p>$$S_2 = S_1 \\times \\frac{P_2}{P_1} = 5.3 \\times 10^{-4} \\times \\frac{760}{593}$$</p>\n<p>$$S_2 = 5.3 \\times 10^{-4} \\times 1.2816 \\approx 6.8 \\times 10^{-4} \\text{ M}$$</p>\n<p>The correct answer is Option B: $6.8 \\times 10^{-4}$ M.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक दिए गए तापमान पर, वायु के संपर्क में जल N<sub>2</sub>(g) को $5.3 \\times 10^{-4}$ M की सीमा तक घोलता है जब नाइट्रोजन का आंशिक दाब 593 mm होता है। समान तापमान पर 760 mm दाब पर N<sub>2</sub>(g) की विलेयता क्या होगी?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$4.1 \\times 10^{-4}$ M</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$6.8 \\times 10^{-4}$ M</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1500 M</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>2400 M</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "henrys-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr95sxmp",
+            "chapter": "solutions",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For CO<sub>2</sub> dissolved in water, the Henry’s law constant is $1.6 \\times 10^8$ Pa at 298 K. If 500 g of soda water is sealed at 298 K under a pressure of 3.2 bar, the mass of CO<sub>2</sub> present in it is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2.44 g</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>24.4 g</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.244 g</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.61 g</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>According to Henry's law,</p>\n<p>$$p_{CO_2} = K_H \\cdot x_{CO_2}$$</p>\n<p>Here the pressure of CO₂ is given as 3.2 bar, which is $3.2 \\times 10^5$ Pa, and $K_H = 1.6 \\times 10^8$ Pa.</p>\n<p>So the mole fraction of CO₂ in water is</p>\n<p>$$x_{CO_2} = \\frac{p_{CO_2}}{K_H} = \\frac{3.2 \\times 10^5}{1.6 \\times 10^8} = 2 \\times 10^{-3}$$</p>\n<p>Since soda water is mostly water, we can take 500 g of solvent as water. Moles of water:</p>\n<p>$$n_{H_2O} = \\frac{500}{18} = 27.78 \\text{ mol}$$</p>\n<p>For such a small mole fraction, $x_{CO_2} \\approx \\dfrac{n_{CO_2}}{n_{H_2O}}$, so</p>\n<p>$$n_{CO_2} = 2 \\times 10^{-3} \\times 27.78 = 0.0556 \\text{ mol}$$</p>\n<p>Mass of CO₂:</p>\n<p>$$m_{CO_2} = 0.0556 \\times 44 = 2.44 \\text{ g}$$</p>\n<p>So the correct answer is option A, 2.44 g.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>पानी में घुली CO<sub>2</sub> के लिए, 298 K पर हेनरी नियम स्थिरांक $1.6 \\times 10^8$ Pa है। यदि 500 g सोडा वाटर को 298 K तथा 3.2 bar दाब पर सील किया गया है, तो इसमें उपस्थित CO<sub>2</sub> का द्रव्यमान है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2.44 g</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>24.4 g</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.244 g</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.61 g</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "henrys-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr962b7r",
+            "chapter": "solutions",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For a gas dissolved in a liquid, its solubility :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>becomes greater when both pressure and temperature are raised</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>becomes lesser when both pressure and temperature are raised</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>becomes greater when pressure is raised and temperature is lowered</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>becomes lesser when pressure is raised and temperature is raised</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The correct option is <strong>C: Increases with increase in pressure and decrease in temperature</strong>.</p>\n<p>For gases dissolved in liquids, two main factors are important: pressure and temperature.</p>\n<p>According to <strong>Henry’s law</strong>, at a constant temperature, the solubility of a gas in a liquid increases with increase in pressure.</p>\n<p>So, higher pressure means more gas dissolves in the liquid.</p>\n<p>Also, gases are more soluble in liquids at lower temperature. When temperature increases, gas molecules get more kinetic energy and escape more easily from the liquid. So, solubility decreases with increase in temperature.</p>\n<p>Hence, the solubility of gases in liquids:</p>\n<p>$$ \\text{increases with increase in pressure} $$</p>\n<p>and</p>\n<p>$$ \\text{increases with decrease in temperature} $$</p>\n<p>So, the correct answer is <strong>Option C</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक द्रव में घुली हुई गैस के लिए, इसकी विलेयता :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>जब दाब और तापमान दोनों बढ़ाए जाते हैं तो बढ़ जाती है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>जब दाब और तापमान दोनों बढ़ाए जाते हैं तो कम हो जाती है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>जब दाब बढ़ाया जाता है और तापमान कम किया जाता है तो बढ़ जाती है</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>जब दाब बढ़ाया जाता है और तापमान बढ़ाया जाता है तो कम हो जाती है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "henrys-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr9655kc",
+            "chapter": "solutions",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Certain gases listed below dissolve in water because ions are produced:</p>\n<p>I : CO<sub>2</sub> ;<br>II : NH<sub>3</sub> ;<br>III : HCl ;<br>IV : CH<sub>4</sub> ;<br>V : H<sub>2</sub></p>\n<p>The gases that may remain undissolved in water are :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>I, IV, V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>I, V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>I, II, III</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>IV, V</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Water insoluble gases are $CH_4$ and $H_2$.</p>\n<p>So the correct option is:</p>\n<p>$$\\boxed{\\text{Option D: IV, V}}$$</p>\n<p>Reason:</p>\n<p>Gases like $CO_2$, $NH_3$, and $HCl$ dissolve in water because they either react with water or form ions.</p>\n<p>$$CO_2 + H_2O \\rightleftharpoons H_2CO_3$$</p>\n<p>Carbonic acid can give ions in water, so $CO_2$ is soluble to some extent.</p>\n<p>$$NH_3 + H_2O \\rightleftharpoons NH_4^+ + OH^-$$</p>\n<p>So ammonia is highly soluble in water.</p>\n<p>$$HCl \\rightarrow H^+ + Cl^-$$</p>\n<p>Hydrogen chloride is very soluble in water because it ionises completely.</p>\n<p>But $CH_4$ and $H_2$ are non-polar gases and do not form ions in water. So they are practically insoluble in water.</p>\n<p>Hence, water insoluble gases are:</p>\n<p>$$CH_4 \\text{ and } H_2$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>नीचे सूचीबद्ध कुछ गैसें पानी में घुल जाती हैं क्योंकि आयन उत्पन्न होते हैं:</p><p>I : CO<sub>2</sub> ;<br>II : NH<sub>3</sub> ;<br>III : HCl ;<br>IV : CH<sub>4</sub> ;<br>V : H<sub>2</sub></p><p>वे गैसें जो पानी में अघुलनशील रह सकती हैं, वे हैं:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>I, IV, V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>I, V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>I, II, III</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>IV, V</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "henrys-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr95vv8g",
+            "chapter": "solutions",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>H<sub>2</sub>S is a poisonous gas having a smell similar to that of rotten eggs and is used in quantitative analysis. If the solubility of H<sub>2</sub>S in water at STP is 0.2 m, then Henry’s law constant for H<sub>2</sub>S in water at 273 K is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$3.6 \\times 10^{8}\\ \\text{Pa}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$5.0 \\times 10^{8}\\ \\text{Pa}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$5.0 \\times 10^{5}\\ \\text{Pa}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$2.78 \\times 10^{7}\\ \\text{Pa}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Henry’s law is written as</p>\n<p>$$ p = K_H x $$</p>\n<p>where $p$ is the partial pressure of the gas, $x$ is the mole fraction of the gas in solution, and $K_H$ is Henry’s law constant.</p>\n<p>Given solubility of $\\mathrm{H_2S}$ in water at STP is $0.2\\ m$.</p>\n<p>Here $0.2\\ m$ means $0.2$ mol of $\\mathrm{H_2S}$ is dissolved in $1\\ \\text{kg}$ of water.</p>\n<p>Moles of water in $1\\ \\text{kg}$ water:</p>\n<p>$$ n_{\\mathrm{H_2O}} = \\frac{1000}{18} = 55.5\\ \\text{mol} $$</p>\n<p>Moles of $\\mathrm{H_2S}$:</p>\n<p>$$ n_{\\mathrm{H_2S}} = 0.2\\ \\text{mol} $$</p>\n<p>So mole fraction of $\\mathrm{H_2S}$ is</p>\n<p>$$ x_{\\mathrm{H_2S}} = \\frac{0.2}{55.5 + 0.2} $$</p>\n<p>$$ x_{\\mathrm{H_2S}} = \\frac{0.2}{55.7} $$</p>\n<p>$$ x_{\\mathrm{H_2S}} \\approx 3.59 \\times 10^{-3} $$</p>\n<p>At STP, pressure of the gas is approximately</p>\n<p>$$ p = 1\\ \\text{bar} = 10^5\\ \\text{Pa} $$</p>\n<p>Using Henry’s law,</p>\n<p>$$ K_H = \\frac{p}{x} $$</p>\n<p>$$ K_H = \\frac{10^5}{3.59 \\times 10^{-3}} $$</p>\n<p>$$ K_H \\approx 2.78 \\times 10^7\\ \\text{Pa} $$</p>\n<p>So the correct answer is</p>\n<p>$$ \\boxed{2.78 \\times 10^7\\ \\text{Pa}} $$</p>\n<p>Option D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>H<sub>2</sub>S एक विषैली गैस है जिसकी गंध सड़े हुए अंडे के समान होती है और इसका उपयोग मात्रात्मक विश्लेषण में किया जाता है। यदि STP पर जल में H<sub>2</sub>S की विलेयता 0.2 m है, तो 273 K पर जल में H<sub>2</sub>S के लिए हेनरी का नियम स्थिरांक है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$3.6 \times 10^{8}\\ \\text{Pa}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$5.0 \times 10^{8}\\ \\text{Pa}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$5.0 \times 10^{5}\\ \\text{Pa}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$2.78 \times 10^{7}\\ \\text{Pa}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "henrys-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr95zp7r",
+            "chapter": "solutions",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The boiling point of pure water is 373 K, while that of nitric acid is 359 K. A constant-boiling mixture of water and nitric acid has a boiling point of 393.5 K. When this azeotropic mixture is distilled,</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>pure nitric acid will pass into the distillate first.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>pure water will pass into the distillate first.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>either component will distil along with a small quantity of the other.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>the two components will distil in the same proportion as present in the mixture.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The correct option is <strong>D: both of them will distil over in the same composition as they are in the mixture.</strong></p>\n<p>An azeotropic mixture is a liquid mixture which boils at a constant temperature and distils without any change in composition.</p>\n<p>Here, pure water boils at $373\\,\\text{K}$ and nitric acid boils at $359\\,\\text{K}$, but their azeotropic mixture boils at $393.5\\,\\text{K}$.</p>\n<p>Since the boiling point of the azeotrope is higher than both pure components, it is a <strong>maximum boiling azeotrope</strong>. Such mixtures show negative deviation from Raoult’s law.</p>\n<p>For an azeotropic mixture, the vapour has the same composition as the liquid. So during distillation, the mixture comes over unchanged.</p>\n<p>So, on distillation of the azeotropic mixture:</p>\n<p>$$ \\text{both water and nitric acid distil over in the same composition} $$</p>\n<p>Hence, the answer is <strong>Option D</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>शुद्ध जल का क्वथनांक 373 K है, जबकि नाइट्रिक अम्ल का क्वथनांक 359 K है। जल और नाइट्रिक अम्ल के स्थिरक्वाथी (constant-boiling) मिश्रण का क्वथनांक 393.5 K है। जब इस स्थिरक्वाथी (azeotropic) मिश्रण को आसवित किया जाता है, तो</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>आसूत में सबसे पहले शुद्ध नाइट्रिक अम्ल जाएगा।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>आसूत में सबसे पहले शुद्ध जल जाएगा।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>कोई भी एक घटक दूसरे की थोड़ी मात्रा के साथ आसवित होगा।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>दोनों घटक उसी अनुपात में आसवित होंगे जिस अनुपात में वे मिश्रण में उपस्थित हैं।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "henrys-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr95y3yu",
+            "chapter": "solutions",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Liquids forming an azeotropic mixture can be separated only by</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>simple distillation.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>fractional distillation.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>distillation at reduced pressure.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>chemical methods.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The correct answer is <strong>Option D: chemical means.</strong></p>\n<p>An azeotropic mixture is a special kind of liquid mixture that boils at a constant temperature and gives out vapours having the same composition as the liquid mixture itself. Because of this property, the components cannot be separated by any type of distillation.</p>\n<p>In simple distillation, we need the two liquids to have a fair difference in their boiling points. But in an azeotrope, the mixture behaves like a single pure liquid while boiling, so simple distillation fails.</p>\n<p>Fractional distillation also depends on the difference in vapour composition and liquid composition at every stage. Since an azeotrope has the same composition in both phases, fractional distillation cannot separate it either.</p>\n<p>Distillation under reduced pressure only helps in lowering the boiling point of liquids that decompose at higher temperatures. It does not break the azeotropic behaviour.</p>\n<p>The only way is to use chemical means. For example, in the case of rectified spirit (which is an azeotrope of ethanol and water at about $95\\%$ ethanol and $5\\%$ water), we add calcium oxide (quicklime). It reacts with water and removes it, leaving behind pure ethanol (absolute alcohol).</p>\n<p>So, azeotropic mixtures can only be separated by chemical methods.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>ऐज़ियोट्रोपिक (स्थिरक्वाथी) मिश्रण बनाने वाले द्रवों को केवल किसके द्वारा पृथक किया जा सकता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>साधारण आसवन।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>प्रभाजी आसवन।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>कम दाब पर आसवन।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>रासायनिक विधियाँ।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "henrys-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr96drji",
+            "chapter": "solutions",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>An aqueous solution of sulphuric acid shows :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Negative deviation from Raoult's law</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Positive deviation from Raoult's law</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Behaviour of an ideal solution</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Obedience to Henry's law</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>A solution of sulphuric acid in water exhibits <strong>negative deviations from Raoult’s law</strong>.</p>\n<p>So, the correct option is:</p>\n<p><strong>Option A: Negative deviations from Raoult's law</strong></p>\n<p>In a mixture of sulphuric acid and water, the interaction between $H_2SO_4$ molecules and $H_2O$ molecules is very strong. Sulphuric acid has a strong affinity for water and forms strong hydrogen bonding/ion-dipole interactions with water molecules.</p>\n<p>Because of these strong solute-solvent interactions, the escaping tendency of water molecules decreases. So the vapour pressure of the solution becomes lower than what is expected from Raoult’s law.</p>\n<p>Such a lowering of vapour pressure shows <strong>negative deviation from Raoult’s law</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>सल्फ्यूरिक अम्ल का जलीय विलयन दर्शाता है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>राउल्ट के नियम से ऋणात्मक विचलन</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>राउल्ट के नियम से धनात्मक विचलन</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>एक आदर्श विलयन का व्यवहार</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>हेनरी के नियम का पालन</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "henrys-law",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mr96i1k4",
+            "chapter": "solutions",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$8 \\times 10^{-x}$ moles of gas $A$ is dissolved in 36 mL of water when pressure of gaseous mixture above water is 4 atm . Mole percentage of gas $A$ in mixture is 25 . Henry constant for gas $A$ in water is $2.5 \\times 10^3 \\mathrm{~atm}$. Find $x$.</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>The pressure of the gaseous mixture above water is $4 \\text{ atm}$.</p>\n<p>Mole percentage of gas $A$ in the mixture is $25\\%$, so the partial pressure of gas $A$ is</p>\n<p>$$ p_A = \\frac{25}{100} \\times 4 $$</p>\n<p>$$ p_A = 1 \\text{ atm} $$</p>\n<p>According to Henry’s law,</p>\n<p>$$ p_A = K_H x_A $$</p>\n<p>where $x_A$ is the mole fraction of gas $A$ in water.</p>\n<p>So,</p>\n<p>$$ x_A = \\frac{p_A}{K_H} $$</p>\n<p>$$ x_A = \\frac{1}{2.5 \\times 10^3} $$</p>\n<p>$$ x_A = 4 \\times 10^{-4} $$</p>\n<p>Now, $36 \\text{ mL}$ water has mass approximately $36 \\text{ g}$.</p>\n<p>Moles of water:</p>\n<p>$$ n_{\\text{water}} = \\frac{36}{18} = 2 $$</p>\n<p>Given moles of gas $A$ dissolved:</p>\n<p>$$ n_A = 8 \\times 10^{-x} $$</p>\n<p>Since the solution is dilute,</p>\n<p>$$ x_A = \\frac{n_A}{n_{\\text{water}}} $$</p>\n<p>So,</p>\n<p>$$ 4 \\times 10^{-4} = \\frac{8 \\times 10^{-x}}{2} $$</p>\n<p>$$ 4 \\times 10^{-4} = 4 \\times 10^{-x} $$</p>\n<p>Hence,</p>\n<p>$$ x = 4 $$</p>\n<p>So, the value of $x$ is</p>\n<p>$$ \\boxed{4} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>जब जल के ऊपर गैसीय मिश्रण का दाब 4 atm होता है, तो गैस $A$ के $8 \\times 10^{-x}$ मोल 36 mL जल में घोले जाते हैं। मिश्रण में गैस $A$ की मोल प्रतिशतता 25 है। जल में गैस $A$ के लिए हेनरी नियतांक $2.5 \\times 10^3 \\mathrm{~atm}$ है। $x$ ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "henrys-law",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mr96t9pa",
+            "chapter": "solutions",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In air, $\\mathrm{O}_2$ and $\\mathrm{N}_2$ are present in the proportion $1: 4$. At atmospheric pressure and room temperature, Henry's constants for $\\mathrm{O}_2$ and $\\mathrm{N}_2$ are $3.30 \\times 10^7$ tor and $6.60 \\times 10^7$ tor, respectively. If the solubilities, expressed as mole fractions, of $\\mathrm{N}_2$ and $\\mathrm{O}_2$ in water are in the ratio $x: y$, then the value of $x$ is</p>",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>According to Henry’s law,</p>\n<p>$$ p = K_H x $$</p>\n<p>where $p$ is the partial pressure of the gas, $K_H$ is Henry’s constant, and $x$ is the mole fraction of the gas dissolved in water.</p>\n<p>So,</p>\n<p>$$ x = \\frac{p}{K_H} $$</p>\n<p>Air contains $\\mathrm{O}_2$ and $\\mathrm{N}_2$ in the ratio $1:4$.</p>\n<p>So their partial pressures are in the same ratio:</p>\n<p>$$ p_{\\mathrm{O}_2}:p_{\\mathrm{N}_2}=1:4 $$</p>\n<p>Now, the ratio of solubilities in terms of mole fractions of $\\mathrm{N}_2$ and $\\mathrm{O}_2$ is</p>\n<p>$$ \\frac{x_{\\mathrm{N}_2}}{x_{\\mathrm{O}_2}} = \\frac{\\frac{p_{\\mathrm{N}_2}}{K_H(\\mathrm{N}_2)}}{\\frac{p_{\\mathrm{O}_2}}{K_H(\\mathrm{O}_2)}} $$</p>\n<p>Substitute the values:</p>\n<p>$$ \\frac{x_{\\mathrm{N}_2}}{x_{\\mathrm{O}_2}} = \\frac{4}{1}\\times \\frac{3.30\\times 10^7}{6.60\\times 10^7} $$</p>\n<p>$$ =4\\times \\frac{1}{2} $$</p>\n<p>$$ =2 $$</p>\n<p>So,</p>\n<p>$$ x_{\\mathrm{N}_2}:x_{\\mathrm{O}_2}=2:1 $$</p>\n<p>Hence, the ratio is $x:y = 2:1$.</p>\n<p>$$ \\boxed{x=2} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>वायु में $\\mathrm{O}_2$ तथा $\\mathrm{N}_2$ का अनुपात $1: 4$ है। वायुमंडलीय दाब तथा कमरे के तापमान पर, $\\mathrm{O}_2$ तथा $\\mathrm{N}_2$ के लिए हेनरी स्थिरांक क्रमशः $3.30 \\times 10^7$ tor और $6.60 \\times 10^7$ tor हैं। यदि जल में $\\mathrm{N}_2$ तथा $\\mathrm{O}_2$ की विलेयता, मोल अंश के रूप में, $x: y$ के अनुपात में है, तो $x$ का मान है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "henrys-law",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mr97em5o",
+            "chapter": "solutions",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A soft drink is sealed at $25^{\\circ} \\mathrm{C}$ with $\\mathrm{CO}_2$ exerting a partial pressure of 4 atm above the solution. If the dissolved concentration of $\\mathrm{CO}_2$ is x and Henry's law constant for $\\mathrm{CO}_2$ in water at $25^{\\circ} \\mathrm{C}$ is $3.1 \\times 10^{-2} \\mathrm{~mol} /$ litre-atm, determine the value of 1000x.</p>",
+                "options": [],
+                "answer": "124",
+                "explanation": "<p>Using Henry’s law in the given form,</p>\n<p>$$ C = k_H \\times P $$</p>\n<p>where  </p>\n<p>$C$ is the concentration of dissolved $\\mathrm{CO_2}$,  </p>\n<p>$k_H = 3.1 \\times 10^{-2}\\ \\mathrm{mol\\ litre^{-1}\\ atm^{-1}}$,  </p>\n<p>and $P = 4\\ \\mathrm{atm}$.</p>\n<p>So,</p>\n<p>$$ x = 3.1 \\times 10^{-2} \\times 4 $$</p>\n<p>$$ x = 12.4 \\times 10^{-2} $$</p>\n<p>$$ x = 0.124\\ \\mathrm{mol\\ litre^{-1}} $$</p>\n<p>Now,</p>\n<p>$$ 1000x = 1000 \\times 0.124 $$</p>\n<p>$$ 1000x = 124 $$</p>\n<p>So, the value of $1000x$ is</p>\n<p>$$ \\boxed{124} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक सॉफ्ट ड्रिंक को $25^{\\circ} \\mathrm{C}$ पर सील किया जाता है, जहाँ विलयन के ऊपर $\\mathrm{CO}_2$ 4 atm का आंशिक दाब लगाती है। यदि घुली हुई $\\mathrm{CO}_2$ की सांद्रता x है और $25^{\\circ} \\mathrm{C}$ पर जल में $\\mathrm{CO}_2$ के लिए हेनरी नियतांक $3.1 \\times 10^{-2} \\mathrm{~mol} /$ litre-atm है, तो 1000x का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "henrys-law",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mr97v586",
+            "chapter": "solutions",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>At 293 K, $\\mathrm{N}_2$ gas is passed through water. Calculate the number of millimoles of $\\mathrm{N}_2$ that will dissolve in 300 mole of water when the partial pressure of $\\mathrm{N}_2$ is 1 bar. The Henry's law constant for $\\mathrm{N}_2$ at 293 K is given as 75.00 kbar.</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>According to Henry’s law,</p>\n<p>$$ p = K_H x $$</p>\n<p>where $x$ is the mole fraction of $\\mathrm{N}_2$ in water.</p>\n<p>Given,</p>\n<p>$$ p = 1 \\text{ bar} $$</p>\n<p>and</p>\n<p>$$ K_H = 75.00 \\text{ kbar} = 75000 \\text{ bar} $$</p>\n<p>So,</p>\n<p>$$ x_{\\mathrm{N}_2}=\\frac{p}{K_H} $$</p>\n<p>$$ x_{\\mathrm{N}_2}=\\frac{1}{75000} $$</p>\n<p>$$ x_{\\mathrm{N}_2}=1.33 \\times 10^{-5} $$</p>\n<p>Now, mole fraction of $\\mathrm{N}_2$ is</p>\n<p>$$ x_{\\mathrm{N}_2}=\\frac{n_{\\mathrm{N}_2}}{n_{\\mathrm{N}_2}+n_{\\mathrm{H}_2O}} $$</p>\n<p>Given,</p>\n<p>$$ n_{\\mathrm{H}_2O}=300 \\text{ mol} $$</p>\n<p>Since the amount of dissolved $\\mathrm{N}_2$ is very small compared to $300$ mol of water, we can write</p>\n<p>$$ x_{\\mathrm{N}_2}\\approx \\frac{n_{\\mathrm{N}_2}}{300} $$</p>\n<p>So,</p>\n<p>$$ n_{\\mathrm{N}_2}=x_{\\mathrm{N}_2}\\times 300 $$</p>\n<p>$$ n_{\\mathrm{N}_2}=\\frac{1}{75000}\\times 300 $$</p>\n<p>$$ n_{\\mathrm{N}_2}=0.004 \\text{ mol} $$</p>\n<p>Converting into millimoles,</p>\n<p>$$ 0.004 \\text{ mol}=4 \\text{ mmol} $$</p>\n<p>So, the amount of $\\mathrm{N}_2$ gas dissolved is</p>\n<p>$$ \\boxed{4 \\text{ millimoles}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>293 K पर, $\\mathrm{N}_2$ गैस को जल में प्रवाहित किया जाता है। 300 मोल जल में घुलने वाले $\\mathrm{N}_2$ के मिलीमोलों की संख्या की गणना कीजिए, जब $\\mathrm{N}_2$ का आंशिक दाब 1 bar है। 293 K पर $\\mathrm{N}_2$ के लिए हेनरी नियम स्थिरांक 75.00 kbar दिया गया है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "henrys-law",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mr97yut2",
+            "chapter": "solutions",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For a solution in which the amount of ethane is $6.56 \\times 10^{-3} \\mathrm{~g}$, the partial pressure of ethane is 1 bar. If the amount of ethane in the solution is changed to $5.00 \\times 10^{-2} \\mathrm{~g}$, its partial pressure becomes p. Find the value of 100p.</p>",
+                "options": [],
+                "answer": "762",
+                "explanation": "<p>According to Henry’s law, at constant temperature, the partial pressure of a gas is directly proportional to the amount of gas dissolved in the solution.</p>\n<p>So,</p>\n<p>$$ \\frac{p_1}{p_2}=\\frac{m_1}{m_2} $$</p>\n<p>Given,</p>\n<p>$$ p_1=1 \\text{ bar} $$</p>\n<p>$$ m_1=6.56 \\times 10^{-3}\\text{ g} $$</p>\n<p>$$ m_2=5.00 \\times 10^{-2}\\text{ g} $$</p>\n<p>So,</p>\n<p>$$ \\frac{1}{p}=\\frac{6.56 \\times 10^{-3}}{5.00 \\times 10^{-2}} $$</p>\n<p>Hence,</p>\n<p>$$ p=\\frac{5.00 \\times 10^{-2}}{6.56 \\times 10^{-3}} $$</p>\n<p>$$ p=\\frac{0.0500}{0.00656} $$</p>\n<p>$$ p=7.62 \\text{ bar} $$</p>\n<p>Now,</p>\n<p>$$ 100p=100 \\times 7.62 $$</p>\n<p>$$ 100p=762 $$</p>\n<p>So, the value of $100p$ is</p>\n<p>$$ \\boxed{762} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक विलयन में जिसमें एथेन की मात्रा $6.56 \\times 10^{-3} \\mathrm{~g}$ है, एथेन का आंशिक दाब 1 bar है। यदि विलयन में एथेन की मात्रा को बदलकर $5.00 \\times 10^{-2} \\mathrm{~g}$ कर दिया जाए, तो इसका आंशिक दाब p हो जाता है। 100p का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "henrys-law",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Henry's Law, Ideal and Non-Ideal Solution, Azeotrops",
+    "timeAllotted": 2160000,
+    "title": "Liquid Solution Test - 5 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mpczvrto",
+    "defaultLanguage": "en",
+    "description": "Henry's Law, Ideal and Non-Ideal Solution, Azeotrops",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-06T13:00:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Henry's Law, Ideal and Non-Ideal Solution, Azeotrops",
+    "timeAllotted": 2160000,
+    "title": "Liquid Solution Test - 5 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Liquid Solution"
+  }
+}

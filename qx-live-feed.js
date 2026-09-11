@@ -877,7 +877,7 @@
       ".qx-update-actions{display:flex;gap:8px;align-items:center;flex-shrink:0}" +
       "#qxUpdateNow{border:0;background:#38bdf8;color:#0f172a;font-weight:800;border-radius:10px;padding:10px 12px;cursor:pointer}" +
       ".qx-update-dismiss{border:1px solid rgba(248,250,252,.35);background:transparent;color:#e2e8f0;font-weight:700;border-radius:10px;padding:9px 11px;cursor:pointer}" +
-      "body.qx-study .qx-update-bar,body.mtk-test-open .qx-update-bar,body.marks-test-active .qx-update-bar,body.allen-cbt-active .qx-update-bar,body.allen-practice-active .qx-update-bar,body.qx-cbt-session .qx-update-bar,body.qzrr-instr-active .qx-update-bar,body.marks-instr-active .qx-update-bar,body.ts-fmt-chooser-active .qx-update-bar{display:none!important}" +
+      "body.qx-study .qx-update-bar,body.mtk-test-open .qx-update-bar{display:none!important}" +
       "@media (max-width:720px){.qx-update-bar{bottom:calc(70px + env(safe-area-inset-bottom,0px))}}";
     (document.head || document.documentElement).appendChild(s);
   })();

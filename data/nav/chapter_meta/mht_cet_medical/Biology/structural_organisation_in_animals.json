@@ -1,0 +1,30 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a1915fc6f6e9bf164f6d502",
+  "chapterId": "6a1928f6aff54f2bc3ca5625",
+  "subject": "Biology",
+  "chapter": "Structural Organisation in Animals",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec1e1ef1faeb9633e255b",
+      "title": "Connective Tissue",
+      "count": 2,
+      "questionIds": [
+        "6a1ec045ef1faeb9633e1c6a",
+        "6a1ec16aef1faeb9633e239a"
+      ]
+    },
+    {
+      "id": "6a1ec1e1ef1faeb9633e255c",
+      "title": "Epithelial Tissue",
+      "count": 3,
+      "questionIds": [
+        "6a1ec0c9ef1faeb9633e1fa6",
+        "6a1ec0c5ef1faeb9633e1f92",
+        "6a1ec048ef1faeb9633e1c80"
+      ]
+    }
+  ]
+}

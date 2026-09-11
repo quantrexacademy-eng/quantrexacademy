@@ -1,0 +1,995 @@
+{
+  "testId": "tst-19g71mo0e0f29",
+  "title": "Some Basic Concept of Chemistry Test - 5 (Topic Test)",
+  "type": "topic",
+  "section": "Some Basic Concept of Chemistry",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-06-09T00:30:00.000Z",
+  "status": "ok",
+  "analysisId": "3fe16a60-729f-11f1-ad56-ed53a69857da",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g71mo0e0f29",
+    "defaultLanguage": "en",
+    "description": "Significant Figures, Rounding Off and Dimentional Analysis",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-09T00:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mq51qae9",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of significant figures in $6.02 \\times 10^{23}$ is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>23</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>3</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>4</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>26</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>In scientific notation, the significant figures are counted only from the number written before the power of $10$.</p>\n<p>Here, the number is</p>\n<p>$$ 6.02 \\times 10^{23} $$</p>\n<p>The part $6.02$ has digits $6$, $0$, and $2$.</p>\n<p>Since the zero is between two non-zero digits, it is also significant.</p>\n<p>So, the total number of significant figures is $3$.</p>\n<p>The correct option is B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$6.02 \\times 10^{23}$ में सार्थक अंकों की संख्या है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>23</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>3</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>4</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>26</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "significant-figures",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq5792c8",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>Assertion</b>: $\\dfrac{40.40}{2.0} = 20.20$ becomes $20.2$ as per significant figures.</p><p><b>Reason</b>: In the case of measured values to be divided, the quotient will have the number of significant digits equal to the least numbered numerator or denominator.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "If both assertion and reason are true and reason is a correct explanation of the assertion."
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "If both assertion and reason are true but the reason is not a correct explanation of assertion."
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "If assertion is true but reason is false."
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "If assertion is false but reason is true."
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>$\\dfrac{40.40}{2.0}$ gives $$ \\dfrac{40.40}{2.0} = 20.20 $$</p>\n<p>Now apply the rule of significant figures for division.</p>\n<ul>\n<li><p>$40.40$ has $4$ significant figures.</p></li>\n<li><p>$2.0$ has $2$ significant figures.</p></li>\n</ul>\n<p>In division, the result should have the same number of significant figures as the quantity with the least number of significant figures.</p>\n<p>So the answer must have $2$ significant figures.</p>\n<p>$20.20$ rounded to $2$ significant figures becomes $$ 20 $$</p>\n<p>or, to show clearly that it has $2$ significant figures, it may be written as $$ 2.0 \\times 10^1 $$</p>\n<p>So the assertion that it becomes $20.2$ is false.</p>\n<p>The reason is true because in division, the quotient must have the number of significant figures equal to the least number of significant figures in the given numbers.</p>\n<p>Hence, the correct option is:</p>\n<p>$$ \\boxed{\\text{Option D}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>अभिकथन</b>: सार्थक अंकों के अनुसार $\\dfrac{40.40}{2.0} = 20.20$ का मान $20.2$ हो जाता है।</p><p><b>कारण</b>: मापे गए मानों को विभाजित करने की स्थिति में, भागफल में सार्थक अंकों की संख्या अंश या हर में सबसे कम सार्थक अंकों की संख्या के बराबर होती है।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "यदि अभिकथन और कारण दोनों सत्य हैं और कारण, अभिकथन की सही व्याख्या है।"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "यदि अभिकथन और कारण दोनों सत्य हैं लेकिन कारण, अभिकथन की सही व्याख्या नहीं है।"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "यदि अभिकथन सत्य है लेकिन कारण असत्य है।"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "यदि अभिकथन असत्य है लेकिन कारण सत्य है।"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "significant-figures",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq51vfaq",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Express 0.006006 into scientific notation in three significant digits :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$6.01 &times; 10^{-3}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$6.006 &times; 10^{-3}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$6.00 &times; 10^{-3}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$6.0 &times; 10^{-3}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>To write a number in scientific notation, we move the decimal point so that only one non-zero digit stays to the left of it.</p>\n<p>In $0.006006$, the first non-zero digit is $6$. We move the decimal point three places to the right to get $6.006$.</p>\n<p>$$0.006006 = 6.006 \\times 10^{-3}$$</p>\n<p>Now we need only three significant figures. The digits we look at are $6$, $0$, $0$, and the next digit $6$ decides the rounding.</p>\n<p>Since the fourth digit is $6$ (which is $5$ or more), we round the third digit up:</p>\n<p>$$6.006 \\to 6.01$$</p>\n<p>So the answer is</p>\n<p>$$6.01 \\times 10^{-3}$$</p>\n<p>The correct option is <strong>A</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>0.006006 को तीन सार्थक अंकों में वैज्ञानिक संकेतन में व्यक्त कीजिए :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$6.01 &times; 10^{-3}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$6.006 &times; 10^{-3}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$6.00 &times; 10^{-3}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$6.0 &times; 10^{-3}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "significant-figures",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq51xzti",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The proper value of significant figures in $38.0 + 0.0035 + 0.00003$ is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>38</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>38.0035</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>38.00353</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>38.0</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<ul>\n<li><p>$38.0$ has $1$ decimal place</p></li>\n<li><p>$0.0035$ has $4$ decimal places</p></li>\n<li><p>$0.00003$ has $5$ decimal places</p></li>\n</ul>\n<p>Now add them:</p>\n<p>$$ 38.0 + 0.0035 + 0.00003 = 38.00353 $$</p>\n<p>In addition, the answer should be written up to the least number of decimal places among the given numbers.</p>\n<p>The least number of decimal places is $1$, from $38.0$.</p>\n<p>So we round $38.00353$ to $1$ decimal place:</p>\n<p>$$ 38.00353 \\approx 38.0 $$</p>\n<p>So the correct answer is $38.0$.</p>\n<p>Option D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>सार्थक अंकों के अनुसार $38.0 + 0.0035 + 0.00003$ का उचित मान है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>38</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>38.0035</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>38.00353</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>38.0</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "significant-figures",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq5601yh",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Choose the statement which is not correct :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>The number 0.00032 has two significant figures.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>In $3.05 \\times 10^{20}$, there are three significant figures.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1 femto gram is the same as $10^{-18}$ g.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1 zetta gram is equal to $10^{21}$ g.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For option A, the number is $0.00032$. The zeros before the 3 are just placeholders showing the position of the decimal. They don't count as significant figures. So only 3 and 2 are significant, giving us two significant figures. This statement is correct.</p>\n<p>For option B, the number is $3.05 \\times 10^{20}$. Here we look only at the part $3.05$. The digits 3, 0 and 5 are all significant because a zero between two non-zero digits always counts. So there are three significant figures. This statement is correct.</p>\n<p>For option C, the prefix \"femto\" stands for $10^{-15}$, not $10^{-18}$. So one femtogram should be $10^{-15}$ g. The value $10^{-18}$ actually belongs to \"atto\". So this statement is incorrect.</p>\n<p>For option D, the prefix \"zetta\" stands for $10^{21}$. So one zettagram equals $10^{21}$ g. This statement is correct.</p>\n<p>The incorrect statement is <strong>Option C</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>वह कथन चुनें जो सही नहीं है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>संख्या 0.00032 में दो सार्थक अंक हैं।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$3.05 \\times 10^{20}$ में तीन सार्थक अंक हैं।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1 फेम्टो ग्राम (femto gram), $10^{-18}$ g के समान है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1 ज़ेटा ग्राम (zetta gram) $10^{21}$ g के बराबर है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "significant-figures",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq563l64",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Choose the wrong statement :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>When expressed in SI units, 360 miles per hour is 160 ms<sup>-1</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>In SI units, 100 million miles corresponds to $1.6 \\times 10^{11}$ m.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>In SI units, 0.54 Å corresponds to $5.4 \\times 10^{-11}$ m.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>In SI units, 10 pounds corresponds to 3.54 kg</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For option A, we change 360 miles per hour into metres per second. Since 1 mile is about 1609 m,</p>\n<p>$$360 \\text{ miles} = 360 \\times 1609 = 579240 \\text{ m}$$</p>\n<p>This distance is covered in one hour, which is 3600 seconds.</p>\n<p>$$\\frac{579240}{3600} \\approx 160 \\text{ ms}^{-1}$$</p>\n<p>So option A is correct.</p>\n<p>For option B, 100 million miles means $100 \\times 10^{6} = 10^{8}$ miles.</p>\n<p>$$10^{8} \\times 1609 \\approx 1.6 \\times 10^{11} \\text{ m}$$</p>\n<p>So option B is also correct.</p>\n<p>For option C, recall that $1\\ \\text{Å} = 10^{-10}$ m. So</p>\n<p>$$0.54 \\text{ Å} = 0.54 \\times 10^{-10} = 5.4 \\times 10^{-11} \\text{ m}$$</p>\n<p>This matches, so option C is correct.</p>\n<p>Now option D. We know 1 pound is about 0.454 kg. So</p>\n<p>$$10 \\text{ pounds} = 10 \\times 0.454 = 4.54 \\text{ kg}$$</p>\n<p>But the statement says 3.54 kg, which is wrong. The correct value should be 4.54 kg.</p>\n<p>So the incorrect statement is <strong>option D</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>गलत कथन का चयन कीजिए :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>जब SI इकाइयों में व्यक्त किया जाता है, तो 360 मील प्रति घंटा 160 ms<sup>-1</sup> होता है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>SI इकाइयों में, 100 मिलियन मील $1.6 \\times 10^{11}$ m के संगत होता है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>SI इकाइयों में, 0.54 Å $5.4 \\times 10^{-11}$ m के संगत होता है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>SI इकाइयों में, 10 पाउंड 3.54 kg के संगत होता है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "significant-figures",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq56h5wy",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Choose the statement that is correct :</b></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>The value obtained on adding 0.182 and 124.75 is 124.932</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>The value of $\\dfrac{1.12 \\times 0.01223}{1.002}$ comes out to be 0.01367.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>The result of $\\dfrac{\\left(1.12 \\times 10^{-3}\\right) \\times 0.2}{1.2}$ is $0.1866 \\times 10^{-3}$.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>The expression 923 $\\times$ 0.00125 + 201 evaluates to 202.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p><strong>Option A:</strong></p>\n<p>Here we are adding $0.182$ and $124.75$.</p>\n\n<p>$0.182$ has three decimal places, while $124.75$ has two decimal places. So the answer must be rounded to two decimal places.</p>\n<p>$$0.182 + 124.75 = 124.932$$</p>\n<p>Rounded to two decimals, this becomes $124.93$, not $124.932$. So this option is wrong.</p>\n<p><strong>Option B:</strong></p>\n<p>We need $\\dfrac{1.12 \\times 0.01223}{1.002}$.</p>\n<p>For multiplication and division, the answer should have the same number of significant figures as the term with the least significant figures.</p>\n<p>Here $1.12$ has 3 significant figures, $0.01223$ has 4, and $1.002$ has 4. So the answer must have 3 significant figures.</p>\n<p>$$\\frac{1.12 \\times 0.01223}{1.002} = \\frac{0.0136976}{1.002} \\approx 0.013671$$</p>\n<p>Rounded to 3 significant figures, this is $0.0137$, not $0.01367$. So this option is wrong.</p>\n<p><strong>Option C:</strong></p>\n<p>We need $\\dfrac{(1.12 \\times 10^{-3}) \\times 0.2}{1.2}$.</p>\n<p>Counting significant figures: $1.12$ has 3, $0.2$ has 1, and $1.2$ has 2. The least is 1, so the answer should have 1 significant figure.</p>\n<p>$$\\frac{(1.12 \\times 10^{-3}) \\times 0.2}{1.2} = \\frac{0.224 \\times 10^{-3}}{1.2} \\approx 0.18666 \\times 10^{-3}$$</p>\n<p>Rounded to 1 significant figure, this is $0.2 \\times 10^{-3}$, not $0.1866 \\times 10^{-3}$. So this option is wrong.</p>\n<p><strong>Option D:</strong></p>\n<p>We need $923 \\times 0.00125 + 201$.</p>\n\n<p>$$923 \\times 0.00125 = 1.15375$$</p>\n\n<p>$$1.15375 + 201 = 202.15375$$</p>\n<p>The number $201$ has no decimal places, so the answer must also have no decimal places.</p>\n<p>Rounding $202.15375$ to no decimal places gives $202$. This matches the option.</p>\n<p>So the correct answer is <strong>Option D</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>वह कथन चुनें जो सही है :</b></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.182 और 124.75 को जोड़ने पर प्राप्त मान 124.932 है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{1.12 \\times 0.01223}{1.002}$ का मान 0.01367 आता है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{\\left(1.12 \\times 10^{-3}\\right) \\times 0.2}{1.2}$ का परिणाम $0.1866 \\times 10^{-3}$ है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>व्यंजक 923 $\\times$ 0.00125 + 201 का मान 202 प्राप्त होता है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "significant-figures",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq56wr7g",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The length, breadth and thickness of a block are given by $l = 12 \\ \\text{cm}$, $b = 6 \\ \\text{cm}$ and $t = 2.45 \\ \\text{cm}$.</p><p>The volume of the block according to the idea of significant figures should be</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$1 \\times 10^2 \\ \\text{cm}^3$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\times 10^2 \\ \\text{cm}^3$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$1.763 \\times 10^2 \\ \\text{cm}^3$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "\n<p>$$V = l \\times b \\times t = 12 \\times 6 \\times 2.45 = 176.4 \\ \\text{cm}^3$$</p>\n\n<ul>\n<li><p>$l = 12$ cm has 2 significant figures</p></li>\n<li><p>$b = 6$ cm has 1 significant figure</p></li>\n<li><p>$t = 2.45$ cm has 3 significant figures</p></li>\n</ul>\n<p>The smallest here is just 1 significant figure (from $b = 6$).</p>\n<p>So our answer must be rounded off to only 1 significant figure.</p>\n<p>The value $176.4$ rounded to one significant figure becomes $200$, which we write as</p>\n<p>$$V = 2 \\times 10^2 \\ \\text{cm}^3$$</p>\n<p>So the correct choice is <strong>Option B</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक ब्लॉक की लंबाई, चौड़ाई और मोटाई क्रमशः $l = 12 \\ \\text{cm}$, $b = 6 \\ \\text{cm}$ और $t = 2.45 \\ \\text{cm}$ दी गई है।</p><p>सार्थक अंकों की अवधारणा के अनुसार ब्लॉक का आयतन होना चाहिए</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$1 \\times 10^2 \\ \\text{cm}^3$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\times 10^2 \\ \\text{cm}^3$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$1.763 \\times 10^2 \\ \\text{cm}^3$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "significant-figures",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq57gr7l",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>Assertion :</b> The measured and unmeasured values both have the equal role of significant figures.</p><p><b>Reason :</b> In the intermediate steps it is better to have one significant figure more than the minimum number of given significant figure.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "If both assertion and reason are true and reason is a correct explanation of the assertion."
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "If both assertion and reason are true but the reason is not a correct explanation of assertion."
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "If assertion is true but reason is false."
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "If assertion is false but reason is true."
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The assertion is false.</p>\n<p>Measured values and unmeasured values do not have equal role in significant figures.</p>\n<p>Only measured quantities are considered for significant figures because they have some uncertainty in them.  </p>\n<p>Unmeasured values, like counting numbers, defined quantities, or exact numbers, are taken as exact. They do not limit the number of significant figures.</p>\n<p>For example, in $2$ books, the number $2$ is exact. It does not affect significant figures.</p>\n<p>The reason is true.</p>\n<p>In intermediate calculations, it is better to keep one more significant figure than the least number of significant figures in the given data. This helps to reduce rounding error. The final answer is then rounded properly at the end.</p>\n<p>So, assertion is false but reason is true.</p>\n<p>$$\\boxed{\\text{Option D}}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>अभिकथन :</b> मापे गए और बिना मापे गए दोनों मानों की सार्थक अंकों में समान भूमिका होती है।</p><p><b>कारण :</b> मध्यवर्ती चरणों में दिए गए सार्थक अंकों की न्यूनतम संख्या से एक अधिक सार्थक अंक रखना बेहतर होता है।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "यदि अभिकथन और कारण दोनों सही हैं और कारण, अभिकथन की सही व्याख्या है।"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "यदि अभिकथन और कारण दोनों सही हैं, लेकिन कारण, अभिकथन की सही व्याख्या नहीं है।"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "यदि अभिकथन सही है लेकिन कारण गलत है।"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "यदि अभिकथन गलत है लेकिन कारण सही है।"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "significant-figures",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq57yf93",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The volume of a sphere is $2.42~\\text{cm}^3$. The volume of 12 such spheres taking into account the significant figure is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>29.04 $\\text{cm}^3$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>29 $\\text{cm}^3$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>29.0 $\\text{cm}^3$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>29.1 $\\text{cm}^3$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "\n<p>$$2.42 \\times 12 = 29.04~\\text{cm}^3$$</p>\n\n<p>The number $2.42$ has three significant figures. The number $12$ here is a counting number, it tells us exactly how many spheres there are. Such exact counting numbers have infinite significant figures, so they don't limit our answer.</p>\n<p>So the only thing controlling the precision is $2.42$, which has three significant figures. That means our final answer should also be written with three significant figures.</p>\n<p>Taking $29.04$ and rounding it to three significant figures gives:</p>\n<p>$$29.0~\\text{cm}^3$$</p>\n<p>So the correct choice is <strong>Option C</strong>.</p>\n"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक गोले का आयतन $2.42~\\text{cm}^3$ है। सार्थक अंकों को ध्यान में रखते हुए ऐसे 12 गोलों का आयतन होगा:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>29.04 $\\text{cm}^3$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>29 $\\text{cm}^3$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>29.0 $\\text{cm}^3$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>29.1 $\\text{cm}^3$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "significant-figures",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mq52eih8",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A student performs a titration with different burettes and finds titre values of $25.2 \\mathrm{~mL}, 25.25 \\mathrm{~mL}$ and 25.0 mL . The number of significant figures in the average titre value is.</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>The titre values are:</p>\n<p>$$25.2\\ \\text{mL},\\ 25.25\\ \\text{mL},\\ 25.0\\ \\text{mL}$$</p>\n<p>First, find the average:</p>\n<p>$$\\text{Average}=\\frac{25.2+25.25+25.0}{3}$$</p>\n\n\n\n<p>$$\\text{Average}=25.15\\ \\text{mL}$$</p>\n\n\n<ul>\n<li><p>$25.25$ mL is measured up to two decimal places</p></li>\n<li><p>$25.2$ mL and $25.0$ mL are measured only up to one decimal place</p></li>\n</ul>\n<p>The least precise readings are correct only up to one decimal place.  </p>\n<p>So the average should be reported up to one decimal place:</p>\n<p>$$25.15 \\approx 25.2\\ \\text{mL}$$</p>\n<p>Now, $25.2$ has $3$ significant figures.</p>\n<p>So, the number of significant figures in the average titre value is</p>\n<p>$$\\boxed{3}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक छात्र अलग-अलग ब्यूरेट का उपयोग करके अनुमापन करता है और अनुमापांक (titre) के मान $25.2 \\mathrm{~mL}, 25.25 \\mathrm{~mL}$ तथा 25.0 mL प्राप्त करता है। औसत अनुमापांक मान में सार्थक अंकों (significant figures) की संख्या है:</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "significant-figures",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mq52h42n",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of significant figures up to which the result of the following may be expressed is :</p>\n<p>$$ \\frac{(29.4-21.4)\\left(1.86 \\times 10^3\\right)}{1.78} $$</p>",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>First evaluate the subtraction, because in addition or subtraction we look at decimal places.</p>\n<p>$$29.4 - 21.4 = 8.0$$</p>\n<p>Here, $8.0$ has 1 decimal place, so it has $2$ significant figures.</p>\n<p>Now look at the full expression:</p>\n<p>$$\\frac{(8.0)\\left(1.86 \\times 10^3\\right)}{1.78}$$</p>\n<p>For multiplication and division, the result should have the same number of significant figures as the factor with the least number of significant figures.</p>\n\n<ul>\n<li><p>$8.0$ has $2$ significant figures</p></li>\n<li><p>$1.86 \\times 10^3$ has $3$ significant figures</p></li>\n<li><p>$1.78$ has $3$ significant figures</p></li>\n</ul>\n<p>The smallest number is $2$.</p>\n<p>So the result can be expressed up to $2$ significant figures.</p>\n<p>The answer is:</p>\n<p>$$\\boxed{2}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>सार्थक अंकों की संख्या, जिस तक निम्नलिखित के परिणाम को व्यक्त किया जा सकता है, वह है :</p><p>$$ \\frac{(29.4-21.4)\\left(1.86 \\times 10^3\\right)}{1.78} $$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "significant-figures",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mq57kqyl",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The significant digits in 200.40 are :</p>",
+                "options": [],
+                "answer": "5",
+                "explanation": "<p>The number is $200.40$.</p>\n<p>When we count significant digits, all non-zero digits are always counted. So the $2$ and the $4$ are significant.</p>\n<p>Now look at the zeros. The two zeros between $2$ and $4$ are sandwiched between non-zero digits. Zeros that lie between two non-zero digits are always significant. So both these zeros count.</p>\n<p>The last zero, after the decimal point and after the $4$, is a trailing zero in a number that has a decimal point. Such trailing zeros are also significant, because they are written on purpose to show precision.</p>\n<p>So every digit here counts: $2, 0, 0, 4, 0$.</p>\n<p>That gives us $5$ significant digits.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>200.40 में सार्थक अंकों की संख्या है :</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "significant-figures",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mq5707iq",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>After rounding off the number 4621 to 2 significant digits the value becomes</p>",
+                "options": [],
+                "correct_options": [
+                  "A"
+                ],
+                "answer": "4600",
+                "explanation": "<p>To round $4621$ to $2$ significant digits, we keep the first two significant digits.</p>\n<p>In $4621$, the first two significant digits are $4$ and $6$.</p>\n<p>Now look at the next digit, which is $2$.</p>\n<p>Since $2 < 5$, we do not increase $6$.</p>\n<p>So the number becomes:</p>\n<p>$$4600$$</p>\n<p>The correct option is A, $4600$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>संख्या 4621 को 2 सार्थक अंकों तक पूर्णांकित करने पर मान हो जाता है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "significant-figures",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mq51okg1",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Significant figures in $0.00051$ are :</p>",
+                "options": [],
+                "correct_options": [
+                  "C"
+                ],
+                "answer": "2",
+                "explanation": "<p>The number given is $0.00051$.</p>\n<p>When we count significant figures, the zeros that come before the first non-zero digit are not significant. They only act as place holders to show where the decimal point sits.</p>\n<p>So in $0.00051$, all the zeros written before $5$ are not counted. The first significant digit is $5$, and after that we have $1$.</p>\n<p>That gives us two significant figures: $5$ and $1$.</p>\n<p>The correct answer is option C, which is $2$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$0.00051$ में सार्थक अंक हैं:</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "significant-figures",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Significant Figures, Rounding Off and Dimentional Analysis",
+    "timeAllotted": 2160000,
+    "title": "Some Basic Concept of Chemistry Test - 5 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g71mo0e0f29",
+    "defaultLanguage": "en",
+    "description": "Significant Figures, Rounding Off and Dimentional Analysis",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-09T00:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Significant Figures, Rounding Off and Dimentional Analysis",
+    "timeAllotted": 2160000,
+    "title": "Some Basic Concept of Chemistry Test - 5 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Some Basic Concept of Chemistry"
+  }
+}

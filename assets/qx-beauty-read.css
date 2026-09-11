@@ -1,0 +1,324 @@
+/**
+ * Quantrex — Beautiful reading layer (final override)
+ * Balanced text · math same size as words · airy spacing · no cramped / no giant symbols
+ */
+
+:root {
+  --qx-read-stem: 17px;
+  --qx-read-opt: 16px;
+  --qx-read-sol: 16px;
+  --qx-read-lh: 1.78;
+  --qx-read-opt-lh: 1.72;
+  --qx-read-gap: 12px;
+  --qx-read-opt-pad-y: 12px;
+  --qx-read-opt-pad-x: 14px;
+  --qx-math-em: var(--math-inline-size, 1.22em);
+  --qx-read-font: "Source Serif 4", "Literata", "STIX Two Text", Georgia, "Times New Roman", serif;
+}
+
+/* ── Stem / options / solutions: best exam reading fonts ── */
+.mtk-main .mtk-q-text,
+.mtk-main .qx-question-body,
+.mtk-main .qx-q-seg-text,
+.mtk-main .qx-q-text-only,
+.mtk-main .qx-content.qx-q-text-only,
+.mtk-main .qx-marks-native,
+.mtk-main .qx-marks-native-q,
+.allen-practice .mtk-q-text,
+.qx-practice-page .qx-prac-q,
+.qx-practice-page .qx-question-body,
+.qx-practice-page .qx-content.qx-q-text-only,
+.qa-q {
+  font-family: var(--qx-read-font) !important;
+  font-size: var(--qx-read-stem) !important;
+  line-height: var(--qx-read-lh) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  word-spacing: 0.06em !important;
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 18;
+  color: inherit !important;
+}
+
+.mtk-main .mtk-opt-text,
+.mtk-main .qx-prac-opt-text,
+.mtk-main .mtk-opt .qx-content,
+.qx-practice-page .qx-prac-opt-text,
+.qx-practice-page #qaOpts .qx-content,
+.qa-opt .qx-content {
+  font-family: var(--qx-read-font) !important;
+  font-size: var(--qx-read-opt) !important;
+  line-height: var(--qx-read-opt-lh) !important;
+  font-weight: 450 !important;
+  letter-spacing: 0.01em !important;
+  word-spacing: 0.05em !important;
+  font-optical-sizing: auto;
+}
+
+.sol-body,
+.qx-sol-body,
+.mtk-sol .qx-content,
+.result-box .qx-content,
+.qx-sol-reveal-box .qx-sol-body {
+  font-family: var(--qx-read-font) !important;
+  font-size: var(--qx-read-sol) !important;
+  line-height: 1.82 !important;
+  font-weight: 450 !important;
+  letter-spacing: 0.01em !important;
+  word-spacing: 0.05em !important;
+  font-optical-sizing: auto;
+}
+
+/* Paragraph / break rhythm — not cramped */
+.mtk-main .mtk-q-text p,
+.mtk-main .qx-marks-native p,
+.mtk-main .qx-question-body p,
+.sol-body p,
+.qx-sol-body p {
+  margin: 0 0 0.55em !important;
+}
+.mtk-main .mtk-q-text p:last-child,
+.mtk-main .qx-marks-native p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* ── Math: same size as text (fixes “kaafi bade symbols”) ── */
+.mtk-main .katex,
+.mtk-main .mtk-q-text .katex,
+.mtk-main .mtk-opt-text .katex,
+.mtk-main .qx-prac-opt-text .katex,
+.mtk-main .qx-q-seg-text .katex,
+.sol-body .katex,
+.qx-sol-body .katex,
+.qx-practice-page .katex,
+.qa-q .katex,
+.qa-opt .katex,
+#app-main .katex {
+  font-size: var(--qx-math-em) !important;
+  line-height: 1.35 !important;
+}
+
+.mtk-main .katex-display.qx-math-block,
+.sol-body .katex-display.qx-math-block,
+.qx-sol-body .katex-display.qx-math-block {
+  margin: 12px 0 !important;
+}
+.mtk-main .katex-display:not(.qx-math-block),
+.sol-body .katex-display:not(.qx-math-block),
+.qx-sol-body .katex-display:not(.qx-math-block) {
+  margin: 0 0.08em !important;
+}
+
+.mtk-main mjx-container,
+.mtk-main .MathJax,
+.mtk-main math,
+.sol-body mjx-container,
+.qx-sol-body mjx-container,
+#app-main mjx-container {
+  font-size: 1em !important;
+  line-height: 1.4 !important;
+}
+
+/* ── Option cards: balanced grid, elegant ── */
+.mtk-main .mtk-options,
+.mtk-main .qx-prac-opts,
+.qx-practice-page .qx-prac-opts,
+#qaOpts {
+  gap: var(--qx-read-gap) !important;
+  margin-bottom: 16px !important;
+}
+
+.mtk-main .mtk-options-grid,
+.mtk-main .mtk-options-exam-cols,
+.qx-prac-opts.qx-opts-grid {
+  gap: 12px !important;
+}
+
+.mtk-main .mtk-opt,
+.mtk-main .qx-prac-opt,
+.qx-practice-page .qx-prac-opt {
+  min-height: 48px !important;
+  padding: var(--qx-read-opt-pad-y) var(--qx-read-opt-pad-x) !important;
+  gap: 12px !important;
+  align-items: flex-start !important;
+  border-radius: 12px !important;
+  /* Full card is tappable on mobile — not only the radio circle */
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+}
+
+/* Match chips + long math options: never overflow horizontally */
+.qx-prac-opt-text,
+.qx-prac-opt-text .katex,
+.qx-match-pairs,
+.qx-match-combo {
+  max-width: 100% !important;
+  overflow-wrap: break-word !important;
+}
+.qx-prac-opt-text .katex-display.qx-math-block {
+  overflow-x: auto !important;
+}
+.qx-match-pairs {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px 10px !important;
+  align-items: center !important;
+}
+.qx-match-pair {
+  white-space: nowrap !important;
+}
+
+/* Numerical keypad: prevent page zoom on input focus (iOS) */
+.qx-num-input {
+  font-size: 16px !important;
+  max-width: 100% !important;
+}
+
+@media (max-width: 640px) {
+  .mtk-main .mtk-opt,
+  .mtk-main .qx-prac-opt,
+  .qx-practice-page .qx-prac-opt {
+    min-height: 52px !important;
+    padding: 12px 14px !important;
+  }
+  .mtk-main .mtk-options-grid,
+  .mtk-main .mtk-options-exam-cols,
+  .qx-prac-opts {
+    grid-template-columns: 1fr !important;
+  }
+  .mtk-main .mtk-q-text,
+  .qx-practice-page .mtk-q-text,
+  .qx-content {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .mtk-main table,
+  .qx-match-list {
+    display: block !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+  }
+}
+
+.mtk-main .mtk-opt-letter,
+.mtk-main .qx-opt-circle {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  font-size: 13px !important;
+  margin-top: 1px !important;
+}
+
+/* Image options: no huge empty min-height */
+.mtk-main .mtk-opt.mtk-opt-img,
+.mtk-main .qx-prac-opt.qx-prac-opt-img,
+.mtk-options.qx-opts-img .mtk-opt {
+  min-height: 0 !important;
+  align-items: flex-start !important;
+}
+
+/* Question body breathing room */
+.mtk-main .qx-question-body,
+.mtk-main .mtk-q-text {
+  margin-bottom: 14px !important;
+}
+.mtk-main .qx-question-body.qx-question-flow {
+  gap: 10px !important;
+}
+
+/* List cards: readable preview, not giant */
+.q-card .q-text {
+  font-size: 14px !important;
+  line-height: 1.55 !important;
+  font-weight: 500 !important;
+}
+.q-card .q-text .katex {
+  font-size: 1em !important;
+}
+
+/* Font-scale overrides (A−/A+) stay balanced */
+html[data-font-scale="small"] {
+  --qx-read-stem: 14px;
+  --qx-read-opt: 14px;
+  --qx-read-sol: 14px;
+  --qx-read-lh: 1.55;
+  --nta-q: 14px;
+}
+html[data-font-scale="medium"] {
+  --qx-read-stem: 16px;
+  --qx-read-opt: 16px;
+  --qx-read-sol: 16px;
+  --qx-read-lh: 1.65;
+  --nta-q: 16px;
+}
+html[data-font-scale="large"] {
+  --qx-read-stem: 18px;
+  --qx-read-opt: 18px;
+  --qx-read-sol: 18px;
+  --qx-read-lh: 1.7;
+  --nta-q: 18px;
+}
+html[data-font-scale="xlarge"] {
+  --qx-read-stem: 21px;
+  --qx-read-opt: 21px;
+  --qx-read-sol: 21px;
+  --qx-read-lh: 1.72;
+  --nta-q: 21px;
+}
+
+/* Light paper readability */
+.mtk-test-root[data-test-theme="light"] .mtk-main .mtk-q-text,
+.mtk-test-root[data-test-theme="light"] .mtk-main .mtk-opt-text,
+.mtk-test-root[data-test-theme="light"] .mtk-main .qx-prac-opt-text {
+  color: #0f172a !important;
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-main .mtk-q-text,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .mtk-opt-text,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .mtk-q-text *,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .mtk-opt-text *,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .katex,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .katex * {
+  color: #e8eef7 !important;
+  -webkit-text-fill-color: #e8eef7 !important;
+}
+html[data-theme="dark"] body:not(.marks-test-active) .qx-practice-page .qx-prac-q,
+html[data-theme="dark"] body:not(.marks-test-active) .qx-practice-page .qx-prac-opt-text,
+html[data-theme="dark"] body:not(.marks-test-active) .qx-practice-page .qx-content,
+html[data-theme="dark"] body:not(.marks-test-active) .qx-practice-page .katex,
+html[data-theme="dark"] body:not(.marks-test-active) .qx-practice-page .katex * {
+  color: #e8eef7 !important;
+  -webkit-text-fill-color: #e8eef7 !important;
+}
+
+/* Empty / loading states — clear, never blank boxes */
+.empty.qx-load-opts,
+.empty.qx-load-q {
+  font-family: "Source Sans 3", Inter, system-ui, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: #64748b !important;
+  padding: 18px 16px !important;
+  text-align: center;
+  border: 1px dashed rgba(148, 163, 184, 0.45);
+  border-radius: 12px;
+  background: rgba(248, 250, 252, 0.8);
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  :root, html[data-font-scale="medium"] {
+    --qx-read-stem: 15px;
+    --qx-read-opt: 14.5px;
+    --qx-read-sol: 14.5px;
+    --qx-read-lh: 1.68;
+    --qx-read-gap: 10px;
+  }
+  .mtk-main .mtk-options-grid,
+  .mtk-main .mtk-options-exam-cols {
+    grid-template-columns: 1fr !important;
+  }
+}

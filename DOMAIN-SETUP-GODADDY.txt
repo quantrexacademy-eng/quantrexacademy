@@ -1,0 +1,88 @@
+============================================================
+  quantrexacademy.com — FULL SETUP GUIDE
+  Domain: GoDaddy | Hosting: Vercel | Auth+DB: Firebase | Code: GitHub
+============================================================
+
+STATUS (already done on our side)
+---------------------------------
+✓ GitHub repo:  https://github.com/quantrexacademy-eng/quantrexacademy
+✓ Vercel live:  https://quantrexacademy-lemon.vercel.app
+✓ Firebase:     https://quantrexacademy-live.web.app
+✓ Login:        Email primary + Google + Mobile OTP + Guest
+✓ Firebase project: quantrexacademy-live (auth + Firestore)
+
+YOU MUST DO NOW (GoDaddy DNS — only you can log in)
+---------------------------------------------------
+
+A) Point domain to VERCEL (recommended for quantrexacademy.com)
+
+  1. Open: https://dcc.godaddy.com/control/portfolio
+  2. Click: quantrexacademy.com → DNS / Manage DNS
+  3. Remove parking / website builder A and CNAME for @ and www
+  4. Add:
+
+     Type    Name    Value                    TTL
+     ----    ----    -----------------------  ---
+     A       @       76.76.21.21               600
+     CNAME   www     cname.vercel-dns.com      600
+
+  5. Save. Wait 10–60 minutes.
+
+  6. Vercel Domains panel (confirm SSL):
+     https://vercel.com/ajay-kumar-saroj-s-projects/quantrexacademy/settings/domains
+
+     Add if not listed:
+       quantrexacademy.com
+       www.quantrexacademy.com
+
+B) Firebase Auth — allow your domain (required for Email/Google login)
+
+  1. Open:
+     https://console.firebase.google.com/project/quantrexacademy-live/authentication/settings
+
+  2. Authorized domains → Add:
+       quantrexacademy.com
+       www.quantrexacademy.com
+       quantrexacademy-lemon.vercel.app
+
+  3. Sign-in method → Enable:
+       Email/Password  ON
+       Google          ON (optional)
+
+
+VERIFY
+------
+  ping quantrexacademy.com
+  Open https://quantrexacademy.com
+  Open https://quantrexacademy.com/login.html → Email Login / Sign Up
+
+
+ARCHITECTURE
+------------
+  Browser → quantrexacademy.com (GoDaddy DNS)
+         → Vercel (HTML/JS site)
+         → Firebase Auth (email login)
+         → Firestore (students, teachers, assignments)
+  Large question/test data → Firebase Hosting CDN
+         (https://quantrexacademy-live.web.app/data/...)
+
+
+GITHUB AUTO-DEPLOY (optional later)
+-----------------------------------
+  Vercel → Project → Settings → Git
+  Connect: quantrexacademy-eng/quantrexacademy
+  Branch: main
+
+
+BACKUP FULL SITE
+----------------
+  Always available: https://quantrexacademy-live.web.app
+  (Firebase Hosting has full data + diagrams)
+
+
+TROUBLESHOOTING
+---------------
+  • Site not opening → wait for DNS; check A record is 76.76.21.21
+  • Login fails "unauthorized domain" → add domain in Firebase Auth settings
+  • SSL pending → wait after DNS; Vercel auto-issues certificate
+  • GoDaddy "Forwarding" ON → turn OFF; use DNS records only

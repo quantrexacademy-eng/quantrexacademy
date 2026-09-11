@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mpe5i34u",
+  "title": "Periodic Table & Periodicity Test - 2 (Topic Test)",
+  "type": "topic",
+  "section": "Periodic Table & Periodicity",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-07-30T15:30:00.000Z",
+  "status": "ok",
+  "analysisId": "9b173dfb-5ed7-42c5-9bf0-e025149132a1",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g61mpe5i34u",
+    "defaultLanguage": "en",
+    "description": "Effective Nuclear Charge, Atomic and Ionic Radius",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-30T15:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-ms7m40u1",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Select correct statement about radius of an atom :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Values of Vander waal's radii is larger than those of covalent radii because the Vander waal's forces are much weaker than the forces operating between atoms in a covalently bonded molecule.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>The metallic radii is smaller than the Vander waal's radii, since the bonding forces in the metallic crystal lattice are much stronger than the Vander waal's forces.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Both (A) & (B)</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The correct option is:</p>\n<p>$$\\boxed{\\text{Option C: Both (A) and (B)}}$$</p>\n<p>Van der Waals radius is the effective size of an atom when it is not chemically bonded to another atom. It is measured between atoms of different molecules which are only held together by weak Van der Waals forces.</p>\n<p>Covalent radius is measured between two atoms joined by a covalent bond. Since covalent bonds are much stronger than Van der Waals forces, the bonded atoms come closer to each other.</p>\n<p>So,</p>\n<p>$$\\text{Van der Waals radius} > \\text{Covalent radius}$$</p>\n<p>Hence, statement A is correct.</p>\n<p>Metallic radius is half the distance between two adjacent metal atoms in a metallic crystal. Metallic bonding is stronger than Van der Waals forces, so metal atoms are held closer together than atoms held only by Van der Waals forces.</p>\n<p>So,</p>\n<p>$$\\text{Van der Waals radius} > \\text{Metallic radius}$$</p>\n<p>Hence, statement B is also correct.</p>\n<p>So the correct answer is:</p>\n<p>$$\\boxed{\\text{Option C}}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक परमाणु की त्रिज्या के संदर्भ में सही कथन का चयन कीजिए :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>वाण्डर वाल्स त्रिज्याओं का मान सहसंयोजक त्रिज्याओं से अधिक होता है क्योंकि वाण्डर वाल्स बल सहसंयोजक रूप से आबंधित अणु में परमाणुओं के बीच कार्य करने वाले बलों की तुलना में बहुत दुर्बल होते हैं।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>धात्विक त्रिज्या वाण्डर वाल्स त्रिज्या से छोटी होती है, क्योंकि धात्विक क्रिस्टल जालक में आबंधन बल वाण्डर वाल्स बलों की तुलना में बहुत अधिक प्रबल होते हैं।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>(A) और (B) दोनों</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "atomic-and-ionic-radius",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms7mewo2",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Find out True and False statements.</p><p>(I) $Z_{\\text{eff}}$ of $\\text{Li}^+$ &gt; $Z_{\\text{eff}}$ of $\\text{B}^{3+}$</p><p>(II) $\\sigma$ of B &lt; $\\sigma$ of C</p><p>(III) Value of $Z_{\\text{eff}}$ of mono electronic species is equal to number of protons.</p><p>(IV) $Z_{\\text{eff}}$ is fundamental factor of period to explain properties of an element.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>FTFT</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>FTTT</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>FFTT</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>TFFF</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>(I) For $\\text{Li}^+$ and $\\text{B}^{3+}$:</p>\n<p>$\\text{Li}^+$ has atomic number $Z=3$ and 2 electrons.</p>\n<p>$\\text{B}^{3+}$ has atomic number $Z=5$ and 2 electrons.</p>\n<p>Both are isoelectronic species, but $\\text{B}^{3+}$ has more protons in the nucleus. So its effective nuclear charge is greater.</p>\n<p>$$ Z_{\\text{eff}}(\\text{Li}^+) < Z_{\\text{eff}}(\\text{B}^{3+}) $$</p>\n<p>So statement (I) is False.</p>\n<p>(II) From B to C, one electron is added in the same shell.</p>\n<p>B: $1s^2\\,2s^2\\,2p^1$</p>\n<p>C: $1s^2\\,2s^2\\,2p^2$</p>\n<p>Carbon has one extra electron, so shielding constant $\\sigma$ is slightly greater for C than for B.</p>\n<p>$$ \\sigma(\\text{B}) < \\sigma(\\text{C}) $$</p>\n<p>So statement (II) is True.</p>\n<p>(III) For mono-electronic species like $\\text{H}$, $\\text{He}^+$, $\\text{Li}^{2+}$, there is only one electron.</p>\n<p>So there is no other electron to shield it.</p>\n<p>$$ \\sigma = 0 $$</p>\n<p>Hence,</p>\n<p>$$ Z_{\\text{eff}} = Z - \\sigma = Z $$</p>\n<p>So statement (III) is True.</p>\n<p>(IV) Across a period, $Z_{\\text{eff}}$ increases. This explains important periodic properties like atomic size, ionisation enthalpy, electronegativity, etc.</p>\n<p>So statement (IV) is True.</p>\n<p>Hence the correct order is:</p>\n<p>$$ \\boxed{\\text{FTTT}} $$</p>\n<p>Correct option: Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>सही और गलत कथनों का चयन कीजिए।</p><p>(I) $\\text{Li}^+$ का $Z_{\\text{eff}}$ &gt; $\\text{B}^{3+}$ का $Z_{\\text{eff}}$</p><p>(II) B का $\\sigma$ &lt; C का $\\sigma$</p><p>(III) एकल इलेक्ट्रॉन स्पीशीज के $Z_{\\text{eff}}$ का मान प्रोटॉनों की संख्या के बराबर होता है।</p><p>(IV) $Z_{\\text{eff}}$ किसी तत्व के गुणों की व्याख्या करने के लिए आवर्त का मूलभूत कारक है।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>FTFT</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>FTTT</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>FFTT</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>TFFF</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "effective-nuclear-charge",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms7m9fdx",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Among following species which of them have maximum $Z_{\\text{eff}}$.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Sn</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Sn$^{4+}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>In</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>In$^{+}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The species with maximum $Z_{\\text{eff}}$ is:</p>\n<p>$$\\boxed{\\text{Sn}^{4+}}$$</p>\n<p>Here $Z_{\\text{eff}}$ means the effective nuclear charge felt by the outermost electron.</p>\n<p>The electronic configurations are:</p>\n<p>$$ \\text{In} : [\\text{Kr}]\\,4d^{10}5s^2 5p^1 $$</p>\n<p>$$ \\text{In}^+ : [\\text{Kr}]\\,4d^{10}5s^2 $$</p>\n<p>$$ \\text{Sn} : [\\text{Kr}]\\,4d^{10}5s^2 5p^2 $$</p>\n<p>$$ \\text{Sn}^{4+} : [\\text{Kr}]\\,4d^{10} $$</p>\n<p>Now compare the attraction of the nucleus for the outer electrons.</p>\n<p>Tin has nuclear charge $Z = 50$, while indium has $Z = 49$.</p>\n<p>In $\\text{Sn}^{4+}$, four electrons have been removed from neutral tin. So it still has $50$ protons, but only $46$ electrons. Because of fewer electrons, shielding decreases and the remaining electrons feel a much stronger nuclear pull.</p>\n<p>So among the given species, $\\text{Sn}^{4+}$ has the highest effective nuclear charge.</p>\n<p>$$ \\boxed{\\text{Option B: } \\text{Sn}^{4+}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से किस स्पीशीज में अधिकतम $Z_{\\text{eff}}$ है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Sn</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Sn$^{4+}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>In</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>In$^{+}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "effective-nuclear-charge",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms7mhgvf",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The size of the following species increases in the order</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Mg<sup>2+</sup> &lt; Na<sup>+</sup> &lt; F<sup>−</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>F<sup>−</sup> &lt; Na<sup>+</sup> &lt; Mg<sup>2+</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Mg<sup>2+</sup> &lt; F<sup>−</sup> &lt; Na<sup>+</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Na<sup>+</sup> &lt; F<sup>−</sup> &lt; Mg<sup>2+</sup></p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The correct order is</p>\n<p>$$\\text{Mg}^{2+} < \\text{Na}^+ < \\text{F}^-$$</p>\n<p>So, the correct option is <strong>Option A</strong>.</p>\n<p>All three species have the same number of electrons:</p>\n<p>$$\\text{F}^-: 9 + 1 = 10 \\text{ electrons}$$</p>\n<p>$$\\text{Na}^+: 11 - 1 = 10 \\text{ electrons}$$</p>\n<p>$$\\text{Mg}^{2+}: 12 - 2 = 10 \\text{ electrons}$$</p>\n<p>So, they are <strong>isoelectronic species</strong>.</p>\n<p>For isoelectronic species, the size depends on the nuclear charge. More nuclear charge means the nucleus pulls the same number of electrons more strongly, so the size becomes smaller.</p>\n<p>Their nuclear charges are:</p>\n<p>$$\\text{F}^-: Z = 9$$</p>\n<p>$$\\text{Na}^+: Z = 11$$</p>\n<p>$$\\text{Mg}^{2+}: Z = 12$$</p>\n<p>Since $\\text{Mg}^{2+}$ has the highest nuclear charge, it is the smallest.  </p>\n<p>Since $\\text{F}^-$ has the lowest nuclear charge, it is the largest.</p>\n<p>Hence, the increasing order of size is</p>\n<p>$$\\boxed{\\text{Mg}^{2+} < \\text{Na}^+ < \\text{F}^-}$$</p>\n<p>Correct option: <strong>A</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित स्पीशीज़ के आकार का बढ़ता क्रम है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Mg<sup>2+</sup> &lt; Na<sup>+</sup> &lt; F<sup>−</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>F<sup>−</sup> &lt; Na<sup>+</sup> &lt; Mg<sup>2+</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Mg<sup>2+</sup> &lt; F<sup>−</sup> &lt; Na<sup>+</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Na<sup>+</sup> &lt; F<sup>−</sup> &lt; Mg<sup>2+</sup></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "atomic-and-ionic-radius",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms7mjzbr",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In isoelectronic series largest difference between size is observed in $\\mathrm{N^{3-},\\ O^{2-},\\ F^-,\\ Na^+,\\ Mg^{2+}}$</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\mathrm{N^{3-},\\ Mg^{2+}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\mathrm{N^{3-},\\ O^{2-}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\mathrm{Mg^{2+},\\ Na^+}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\mathrm{F^-,\\ Na^+}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>In an isoelectronic series, all species have the same number of electrons.</p>\n<p>Here,</p>\n<p>$$ \\mathrm{N^{3-},\\ O^{2-},\\ F^-,\\ Na^+,\\ Mg^{2+}} $$</p>\n<p>all have $10$ electrons.</p>\n<p>For isoelectronic species, size depends mainly on nuclear charge $Z$.</p>\n<p>As nuclear charge increases, the same number of electrons are pulled more strongly towards the nucleus, so size decreases.</p>\n<p>Their nuclear charges are:</p>\n<p>$$ \\mathrm{N}=7,\\quad \\mathrm{O}=8,\\quad \\mathrm{F}=9,\\quad \\mathrm{Na}=11,\\quad \\mathrm{Mg}=12 $$</p>\n<p>So the size order is:</p>\n<p>$$ \\mathrm{N^{3-} > O^{2-} > F^- > Na^+ > Mg^{2+}} $$</p>\n<p>The largest ion is $\\mathrm{N^{3-}}$ and the smallest ion is $\\mathrm{Mg^{2+}}$.</p>\n<p>So the largest difference in size will be between:</p>\n<p>$$ \\mathrm{N^{3-}} \\text{ and } \\mathrm{Mg^{2+}} $$</p>\n<p>Correct option: A.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>समइलेक्ट्रॉनिक श्रेणी $\\mathrm{N^{3-},\\ O^{2-},\\ F^-,\\ Na^+,\\ Mg^{2+}}$ में आकार के मध्य अधिकतम अंतर किसमें देखा जाता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\mathrm{N^{3-},\\ Mg^{2+}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\mathrm{N^{3-},\\ O^{2-}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\mathrm{Mg^{2+},\\ Na^+}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\mathrm{F^-,\\ Na^+}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "atomic-and-ionic-radius",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms7mmje8",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following order of atomic / ionic radius is not correct?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>F &lt; Cl &lt; Br &lt; I</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Y<sup>3+</sup> &gt; Sr<sup>2+</sup> &gt; Rb<sup>+</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Nb &asymp; Ta</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Li &gt; Be &gt; B</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Option B is not correct.</p>\n<p>In option B, the ions are:</p>\n<p>$$ \\text{Rb}^+, \\quad \\text{Sr}^{2+}, \\quad \\text{Y}^{3+} $$</p>\n<p>All three have the same number of electrons.</p>\n<p>$$ \\text{Rb}^+ : 37 - 1 = 36 $$</p>\n<p>$$ \\text{Sr}^{2+} : 38 - 2 = 36 $$</p>\n<p>$$ \\text{Y}^{3+} : 39 - 3 = 36 $$</p>\n<p>So, they are isoelectronic species.</p>\n<p>For isoelectronic species, the ion with greater nuclear charge has smaller radius because the same number of electrons are pulled more strongly by the nucleus.</p>\n<p>Their nuclear charges are:</p>\n<p>$$ \\text{Rb} = 37,\\quad \\text{Sr} = 38,\\quad \\text{Y} = 39 $$</p>\n<p>So the correct order of ionic radius should be:</p>\n<p>$$ \\text{Rb}^+ > \\text{Sr}^{2+} > \\text{Y}^{3+} $$</p>\n<p>But option B gives:</p>\n<p>$$ \\text{Y}^{3+} > \\text{Sr}^{2+} > \\text{Rb}^+ $$</p>\n<p>This is the reverse order, so it is not correct.</p>\n<p>Hence, the answer is:</p>\n<p>$$ \\boxed{\\text{Option B}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से परमाण्विक / आयनिक त्रिज्या का कौन सा क्रम सही नहीं है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>F &lt; Cl &lt; Br &lt; I</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Y<sup>3+</sup> &gt; Sr<sup>2+</sup> &gt; Rb<sup>+</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Nb &asymp; Ta</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Li &gt; Be &gt; B</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "atomic-and-ionic-radius",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms7n340g",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>When the following five anions are arranged in order of decreasing ionic radius, the correct sequence is:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Se<sup>2−</sup>, I<sup>−</sup>, Br<sup>−</sup>, O<sup>2−</sup>, F<sup>−</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>I<sup>−</sup>, Se<sup>2−</sup>, Br<sup>−</sup>, F<sup>−</sup>, O<sup>2−</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Se<sup>2−</sup>, I<sup>−</sup>, Br<sup>−</sup>, F<sup>−</sup>, O<sup>2−</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>I<sup>−</sup>, Se<sup>2−</sup>, Br<sup>−</sup>, O<sup>2−</sup>, F<sup>−</sup></p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The correct order of decreasing ionic radius is:</p>\n<p>$$\\mathrm{I^- > Se^{2-} > Br^- > O^{2-} > F^-}$$</p>\n<p>So, the correct option is:</p>\n<p>$$\\boxed{\\text{Option D}}$$</p>\n<p>Ionic radius mainly depends on two ideas here:</p>\n<p>Anions with an extra shell are larger.  </p>\n<p>$\\mathrm{I^-}$ has electrons up to the fifth shell, while $\\mathrm{Se^{2-}}$ and $\\mathrm{Br^-}$ have electrons up to the fourth shell. So,</p>\n<p>$$\\mathrm{I^-}$$</p>\n<p>is the largest among them.</p>\n<p>Now compare $\\mathrm{Se^{2-}}$ and $\\mathrm{Br^-}$.</p>\n<p>Both are isoelectronic, meaning both have the same number of electrons:</p>\n<p>$$\\mathrm{Se^{2-}: 34 + 2 = 36}$$</p>\n<p>$$\\mathrm{Br^-: 35 + 1 = 36}$$</p>\n<p>In an isoelectronic series, the ion with smaller nuclear charge has larger radius because the nucleus attracts the same number of electrons less strongly.</p>\n<p>Since selenium has atomic number $34$ and bromine has atomic number $35$,</p>\n<p>$$\\mathrm{Se^{2-} > Br^-}$$</p>\n<p>Now compare $\\mathrm{O^{2-}}$ and $\\mathrm{F^-}$.</p>\n<p>Both are also isoelectronic:</p>\n<p>$$\\mathrm{O^{2-}: 8 + 2 = 10}$$</p>\n<p>$$\\mathrm{F^-: 9 + 1 = 10}$$</p>\n<p>Oxygen has smaller nuclear charge than fluorine, so $\\mathrm{O^{2-}}$ is larger than $\\mathrm{F^-}$.</p>\n<p>Thus the decreasing order is:</p>\n<p>$$\\mathrm{I^- > Se^{2-} > Br^- > O^{2-} > F^-}$$</p>\n<p>Hence, the correct answer is Option D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>जब निम्नलिखित पांच ऋणायनों को घटती हुई आयनिक त्रिज्या के क्रम में व्यवस्थित किया जाता है, तो सही क्रम है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Se<sup>2−</sup>, I<sup>−</sup>, Br<sup>−</sup>, O<sup>2−</sup>, F<sup>−</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>I<sup>−</sup>, Se<sup>2−</sup>, Br<sup>−</sup>, F<sup>−</sup>, O<sup>2−</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Se<sup>2−</sup>, I<sup>−</sup>, Br<sup>−</sup>, F<sup>−</sup>, O<sup>2−</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>I<sup>−</sup>, Se<sup>2−</sup>, Br<sup>−</sup>, O<sup>2−</sup>, F<sup>−</sup></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "atomic-and-ionic-radius",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms7myq84",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Lanthanide contraction is caused due to :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>the appreciable shielding on outer electrons by $4f$ electrons from the nuclear charge</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>the appreciable shielding on outer electrons by $5f$ electrons from the nuclear charge</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>the same effective nuclear charge from Ce to Lu</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>the imperfect shielding on outer electrons by $4f$ electrons from the nuclear charge</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Lanthanide contraction is caused due to the poor or imperfect shielding effect of $4f$ electrons.</p>\n<p>In lanthanides, as we move from Ce to Lu, electrons are added to the $4f$ subshell. The $4f$ electrons do not shield the outer electrons effectively from the nuclear charge. Because of this, the effective nuclear charge felt by the outer electrons increases.</p>\n<p>So, the outer electrons are pulled more strongly towards the nucleus, and the atomic and ionic sizes gradually decrease across the lanthanide series. This gradual decrease in size is called lanthanide contraction.</p>\n<p>Hence, the correct option is:</p>\n<p>$$\\boxed{\\text{Option D: the imperfect shielding on outer electrons by }4f\\text{ electrons from the nuclear charge}}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>लैंथेनॉइड आकुंचन का कारण है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>नाभिकीय आवेश से $4f$ इलेक्ट्रॉनों द्वारा बाह्य इलेक्ट्रॉनों का पर्याप्त परिरक्षण</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>नाभिकीय आवेश से $5f$ इलेक्ट्रॉनों द्वारा बाह्य इलेक्ट्रॉनों का पर्याप्त परिरक्षण</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Ce से Lu तक समान प्रभावी नाभिकीय आवेश</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>नाभिकीय आवेश से $4f$ इलेक्ट्रॉनों द्वारा बाह्य इलेक्ट्रॉनों का अपूर्ण परिरक्षण</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "atomic-and-ionic-radius",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms7n6xzx",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Mg, Mg<sup>2+</sup>, Al and Al<sup>3+</sup> are arranged in decreasing order of size 1 &gt; 2 &gt; 3 &gt; 4. Species which are present at 1 and 4 position respectively are</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Al, Mg<sup>2+</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Mg, Al<sup>3+</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Mg<sup>2+</sup>, Al</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Al<sup>3+</sup>, Mg</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The decreasing order of size is:</p>\n<p>$$ \\text{Mg} > \\text{Al} > \\text{Mg}^{2+} > \\text{Al}^{3+} $$</p>\n<p>So, the species at position $1$ is $\\text{Mg}$ and at position $4$ is $\\text{Al}^{3+}$.</p>\n<p>Hence, the correct option is:</p>\n<p>$$ \\boxed{\\text{Option B: Mg, Al}^{3+}} $$</p>\n<p>Reason:</p>\n<p>Across a period, atomic size decreases from left to right because nuclear charge increases. So,</p>\n<p>$$ \\text{Mg} > \\text{Al} $$</p>\n<p>Also, cations are smaller than their parent atoms because electrons are lost and effective nuclear attraction per electron increases.</p>\n<p>Between $\\text{Mg}^{2+}$ and $\\text{Al}^{3+}$, both have $10$ electrons, so they are isoelectronic. In isoelectronic species, the ion with higher nuclear charge is smaller.</p>\n<p>Aluminium has nuclear charge $13$, while magnesium has nuclear charge $12$.</p>\n<p>So,</p>\n<p>$$ \\text{Mg}^{2+} > \\text{Al}^{3+} $$</p>\n<p>Thus the full order is:</p>\n<p>$$ \\text{Mg} > \\text{Al} > \\text{Mg}^{2+} > \\text{Al}^{3+} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Mg, Mg<sup>2+</sup>, Al और Al<sup>3+</sup> को आकार के घटते क्रम 1 &gt; 2 &gt; 3 &gt; 4 में व्यवस्थित किया गया है। क्रमशः 1 और 4 स्थान पर उपस्थित स्पीशीज हैं</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Al, Mg<sup>2+</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Mg, Al<sup>3+</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Mg<sup>2+</sup>, Al</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Al<sup>3+</sup>, Mg</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "atomic-and-ionic-radius",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms7neday",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the ionic radii of K<sup>+</sup> and F<sup>-</sup> are nearly the same (<i>i.e.</i>, 1.34 &Aring;), then the atomic radii of K and F respectively are :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1.34 &Aring;, 1.34 &Aring;</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.72 &Aring;, 1.96 &Aring;</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.96 &Aring;, 0.72 &Aring;</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1.96 &Aring;, 1.34 &Aring;</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For potassium, $K$ forms $K^+$ by losing one electron:</p>\n<p>$$ K : 2,8,8,1 $$</p>\n<p>$$ K^+ : 2,8,8 $$</p>\n<p>When $K$ loses its outermost electron, the fourth shell is removed. So the size of $K^+$ becomes smaller than the size of neutral $K$.</p>\n<p>Given:</p>\n<p>$$ r(K^+) = 1.34 \\ \\text{&Aring} $$</p>\n<p>So atomic radius of $K$ must be greater than $1.34 \\ \\text{&Aring}$.</p>\n<p>For fluorine, $F$ forms $F^-$ by gaining one electron:</p>\n<p>$$ F : 2,7 $$</p>\n<p>$$ F^- : 2,8 $$</p>\n<p>When fluorine gains an electron, electron-electron repulsion increases. So $F^-$ becomes larger than neutral $F$.</p>\n<p>Given:</p>\n<p>$$ r(F^-) = 1.34 \\ \\text{&Aring} $$</p>\n<p>So atomic radius of $F$ must be less than $1.34 \\ \\text{&Aring}$.</p>\n<p>Among the options, this matches:</p>\n<p>$$ K = 1.96 \\ \\text{&Aring}, \\quad F = 0.72 \\ \\text{&Aring} $$</p>\n<p>So the correct option is:</p>\n<p>$$ \\boxed{\\text{Option C: } 1.96 \\ \\text{&Aring}, \\ 0.72 \\ \\text{&Aring}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि K<sup>+</sup> और F<sup>-</sup> की आयनिक त्रिज्या लगभग समान (<i>अर्थात</i>, 1.34 &Aring;) है, तो क्रमशः K और F की परमाणु त्रिज्याएँ हैं :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1.34 &Aring;, 1.34 &Aring;</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.72 &Aring;, 1.96 &Aring;</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.96 &Aring;, 0.72 &Aring;</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1.96 &Aring;, 1.34 &Aring;</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "atomic-and-ionic-radius",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-ms7nttba",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Find out the total numbers of ions/atoms having radius greater than oxygen atom.</p>\n<p>$\\mathrm{S}^{2-}, \\mathrm{O}^{2-}, \\mathrm{F}^{-}, \\mathrm{Br}^{-}, \\mathrm{I}^{-}, \\mathrm{Ne}, \\mathrm{F}, \\mathrm{C}$</p>",
+                "options": [],
+                "answer": "7",
+                "explanation": "<p>The given species are:</p>\n<p>$$ \\mathrm{S}^{2-},\\ \\mathrm{O}^{2-},\\ \\mathrm{F}^{-},\\ \\mathrm{Br}^{-},\\ \\mathrm{I}^{-},\\ \\mathrm{Ne},\\ \\mathrm{F},\\ \\mathrm{C} $$</p>\n<p>We have to compare their radii with the radius of a neutral oxygen atom, $\\mathrm{O}$.</p>\n<p>Anions are always larger than their corresponding neutral atoms because they gain electron/electrons. Due to extra electrons, electron-electron repulsion increases and the size becomes larger.</p>\n<p>So,</p>\n<p>$$ \\mathrm{S}^{2-},\\ \\mathrm{O}^{2-},\\ \\mathrm{F}^{-},\\ \\mathrm{Br}^{-},\\ \\mathrm{I}^{-} $$</p>\n<p>all have radius greater than oxygen atom.</p>\n<p>Now compare neutral atoms:</p>\n<p>In the same period, atomic size decreases from left to right because nuclear charge increases.</p>\n<p>Carbon and oxygen are in the same period, and carbon is to the left of oxygen.</p>\n<p>$$ \\mathrm{C} > \\mathrm{O} $$</p>\n<p>So, $\\mathrm{C}$ has radius greater than oxygen atom.</p>\n<p>Fluorine is to the right of oxygen in the same period.</p>\n<p>$$ \\mathrm{F} < \\mathrm{O} $$</p>\n<p>So, $\\mathrm{F}$ does not have radius greater than oxygen atom.</p>\n<p>For noble gases like $\\mathrm{Ne}$, the atomic radius is generally taken as van der Waals radius, which is larger than the covalent radius of oxygen. So,</p>\n<p>$$ \\mathrm{Ne} > \\mathrm{O} $$</p>\n<p>Thus, the species having radius greater than oxygen atom are:</p>\n<p>$$ \\mathrm{S}^{2-},\\ \\mathrm{O}^{2-},\\ \\mathrm{F}^{-},\\ \\mathrm{Br}^{-},\\ \\mathrm{I}^{-},\\ \\mathrm{Ne},\\ \\mathrm{C} $$</p>\n<p>Total number:</p>\n<p>$$ \\boxed{7} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>उन आयनों/परमाणुओं की कुल संख्या ज्ञात कीजिए जिनकी त्रिज्या ऑक्सीजन परमाणु से अधिक है।</p>\n<p>$\\mathrm{S}^{2-}, \\mathrm{O}^{2-}, \\mathrm{F}^{-}, \\mathrm{Br}^{-}, \\mathrm{I}^{-}, \\mathrm{Ne}, \\mathrm{F}, \\mathrm{C}$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "atomic-and-ionic-radius",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms7nio9r",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of pairs in which size of first element or ion is higher as compared to second, out of following eight pairs is</p>\n<p>$(\\mathrm{O}, \\mathrm{S}),(\\mathrm{He}, \\mathrm{Ne}),(\\mathrm{Kr}, \\mathrm{Ne}),\\left(\\mathrm{Na}, \\mathrm{Na}^{+}\\right),\\left(\\mathrm{Cl}, \\mathrm{Cl}^{-}\\right),\\left(\\mathrm{I}^{-}, \\mathrm{Cl}^{-}\\right)$, (Li, Na$),\\left(\\mathrm{Li}^{+}, \\mathrm{Na}^{+}\\right)$</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>The pairs in which the size of the first element or ion is greater than the second are checked using atomic and ionic size trends.</p>\n<p>Atomic size increases down a group and decreases from left to right across a period.</p>\n<p>Now compare each pair:</p>\n<p>$(\\mathrm{O}, \\mathrm{S})$</p>\n<p>O and S are in the same group. Size increases down the group, so</p>\n<p>$$ \\mathrm{O} < \\mathrm{S} $$</p>\n<p>First is not larger.</p>\n<p>$(\\mathrm{He}, \\mathrm{Ne})$</p>\n<p>Both are noble gases in the same group. Size increases down the group, so</p>\n<p>$$ \\mathrm{He} < \\mathrm{Ne} $$</p>\n<p>First is not larger.</p>\n<p>$(\\mathrm{Kr}, \\mathrm{Ne})$</p>\n<p>Kr is below Ne in the same group, so</p>\n<p>$$ \\mathrm{Kr} > \\mathrm{Ne} $$</p>\n<p>First is larger.</p>\n<p>$(\\mathrm{Na}, \\mathrm{Na}^{+})$</p>\n<p>A cation is smaller than its neutral atom because it loses an electron shell and nuclear attraction per electron increases.</p>\n<p>$$ \\mathrm{Na} > \\mathrm{Na}^{+} $$</p>\n<p>First is larger.</p>\n<p>$(\\mathrm{Cl}, \\mathrm{Cl}^{-})$</p>\n<p>An anion is larger than its neutral atom because addition of an electron increases repulsion.</p>\n<p>$$ \\mathrm{Cl} < \\mathrm{Cl}^{-} $$</p>\n<p>First is not larger.</p>\n<p>$(\\mathrm{I}^{-}, \\mathrm{Cl}^{-})$</p>\n<p>I and Cl are in the same group. Size increases down the group, so</p>\n<p>$$ \\mathrm{I}^{-} > \\mathrm{Cl}^{-} $$</p>\n<p>First is larger.</p>\n<p>$(\\mathrm{Li}, \\mathrm{Na})$</p>\n<p>Li and Na are in the same group. Size increases down the group, so</p>\n<p>$$ \\mathrm{Li} < \\mathrm{Na} $$</p>\n<p>First is not larger.</p>\n<p>$(\\mathrm{Li}^{+}, \\mathrm{Na}^{+})$</p>\n<p>Again, size increases down the group, so</p>\n<p>$$ \\mathrm{Li}^{+} < \\mathrm{Na}^{+} $$</p>\n<p>First is not larger.</p>\n<p>So the pairs where the first species is larger are:</p>\n<p>$$ (\\mathrm{Kr}, \\mathrm{Ne}),\\quad (\\mathrm{Na}, \\mathrm{Na}^{+}),\\quad (\\mathrm{I}^{-}, \\mathrm{Cl}^{-}) $$</p>\n<p>Hence, the number of such pairs is</p>\n<p>$$ \\boxed{3} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित आठ युग्मों में से उन युग्मों की संख्या जिनमें पहले तत्व या आयन का आकार दूसरे की तुलना में बड़ा है, है:</p><p>$(\\mathrm{O}, \\mathrm{S}),(\\mathrm{He}, \\mathrm{Ne}),(\\mathrm{Kr}, \\mathrm{Ne}),\\left(\\mathrm{Na}, \\mathrm{Na}^{+}\\right),\\left(\\mathrm{Cl}, \\mathrm{Cl}^{-}\\right),\\left(\\mathrm{I}^{-}, \\mathrm{Cl}^{-}\\right)$, (Li, Na$),\\left(\\mathrm{Li}^{+}, \\mathrm{Na}^{+}\\right)$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "atomic-and-ionic-radius",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms7nw3mz",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$$ \\begin{aligned} &\\text { How many of following atoms have greater atomic radius than nitrogen? }\\\\ &\\text { O, Rb, P, C, F, B, Na } \\end{aligned} $$</p>",
+                "options": [],
+                "answer": "5",
+                "explanation": "<p>Atomic radius generally follows two NCERT trends:</p>\n<p>Across a period, atomic radius decreases from left to right because nuclear charge increases and electrons are pulled closer.</p>\n<p>Down a group, atomic radius increases because new shells are added.</p>\n<p>Nitrogen $(N)$ is in the second period.</p>\n<p>Given atoms:</p>\n<p>$$O,\\ Rb,\\ P,\\ C,\\ F,\\ B,\\ Na$$</p>\n<p>Compare them with nitrogen:</p>\n<p>In the second period, the order of atomic radius is:</p>\n<p>$$B > C > N > O > F$$</p>\n<p>So, $B$ and $C$ have greater atomic radius than nitrogen, while $O$ and $F$ have smaller atomic radius.</p>\n<p>Now, $P$ is below nitrogen in the same group, so:</p>\n<p>$$P > N$$</p>\n<p>Also, $Na$ and $Rb$ are much lower/left in the periodic table, so they have greater atomic radius than nitrogen.</p>\n<p>Atoms having greater atomic radius than nitrogen are:</p>\n<p>$$Rb,\\ P,\\ C,\\ B,\\ Na$$</p>\n<p>Number of atoms:</p>\n<p>$$5$$</p>\n<p>So, the answer is:</p>\n<p>$$\\boxed{5}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$$ \\begin{aligned} &\\text { निम्नलिखित में से कितने परमाणुओं की परमाणु त्रिज्या नाइट्रोजन से अधिक है? }\\\\ &\\text { O, Rb, P, C, F, B, Na } \\end{aligned} $$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "atomic-and-ionic-radius",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms7nm8nf",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the following series, represents relations</p>\n<p>between the elements from X to Y.</p>\n<p>$$X \\Rightarrow Y$$</p>\n<p>(i) $_{6}\\mathrm{C} \\Rightarrow {}_{32}\\mathrm{Ge}$, Atomic radius increases.</p>\n<p>(ii) $_{12}\\mathrm{Mg} \\Rightarrow {}_{4}\\mathrm{Be}$, Atomic radius decreases.</p>\n<p>(iii) $_{13}\\mathrm{Al} \\Rightarrow {}_{55}\\mathrm{Cs}$, Atomic radius increases.</p>\n<p>(iv) $_{16}\\mathrm{S} \\Rightarrow {}_{6}\\mathrm{C}$, Atomic radius increases.</p>\n<p>The total number of series which correctly represents</p>\n<p>relations between the elements from X to Y is …….. .</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>The correct number of series is $3$.</p>\n<p>Atomic radius generally follows these NCERT trends:</p>\n<ul>\n<li><p>On moving down a group, atomic radius increases because new shells are added.</p></li>\n<li><p>On moving from left to right in a period, atomic radius decreases because effective nuclear charge increases.</p></li>\n</ul>\n<p>Now check each relation.</p>\n<p>(i) ${}_{6}\\mathrm{C} \\Rightarrow {}_{32}\\mathrm{Ge}$</p>\n<p>Carbon and germanium belong to the same group, Group $14$.</p>\n<p>From $\\mathrm{C}$ to $\\mathrm{Ge}$, we move down the group.</p>\n<p>So atomic radius increases.</p>\n<p>This is correct.</p>\n<p>(ii) ${}_{12}\\mathrm{Mg} \\Rightarrow {}_{4}\\mathrm{Be}$</p>\n<p>Magnesium and beryllium belong to the same group, Group $2$.</p>\n<p>From $\\mathrm{Mg}$ to $\\mathrm{Be}$, we move up the group.</p>\n<p>So atomic radius decreases.</p>\n<p>This is correct.</p>\n<p>(iii) ${}_{13}\\mathrm{Al} \\Rightarrow {}_{55}\\mathrm{Cs}$</p>\n<p>Aluminium is in Period $3$, Group $13$.</p>\n<p>Caesium is in Period $6$, Group $1$.</p>\n<p>From $\\mathrm{Al}$ to $\\mathrm{Cs}$, we move down and towards the left in the periodic table. Both changes favour an increase in atomic radius.</p>\n<p>So atomic radius increases.</p>\n<p>This is correct.</p>\n<p>(iv) ${}_{16}\\mathrm{S} \\Rightarrow {}_{6}\\mathrm{C}$</p>\n<p>Sulphur is in Period $3$, while carbon is in Period $2$.</p>\n<p>Sulphur has a larger atomic radius than carbon. So from $\\mathrm{S}$ to $\\mathrm{C}$, atomic radius decreases, not increases.</p>\n<p>This is incorrect.</p>\n<p>Hence, the total number of correct series is</p>\n<p>$$ \\boxed{3} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित शृंखलाओं पर विचार करें, जो X से Y तक के तत्वों के बीच संबंधों</p>\n<p>को प्रदर्शित करती हैं।</p>\n<p>$$X \\Rightarrow Y$$</p>\n<p>(i) $_{6}\\mathrm{C} \\Rightarrow {}_{32}\\mathrm{Ge}$, परमाणु त्रिज्या बढ़ती है।</p>\n<p>(ii) $_{12}\\mathrm{Mg} \\Rightarrow {}_{4}\\mathrm{Be}$, परमाणु त्रिज्या घटती है।</p>\n<p>(iii) $_{13}\\mathrm{Al} \\Rightarrow {}_{55}\\mathrm{Cs}$, परमाणु त्रिज्या बढ़ती है।</p>\n<p>(iv) $_{16}\\mathrm{S} \\Rightarrow {}_{6}\\mathrm{C}$, परमाणु त्रिज्या बढ़ती है।</p>\n<p>X से Y तक के तत्वों के बीच संबंधों को सही ढंग से प्रदर्शित करने वाली</p>\n<p>शृंखलाओं की कुल संख्या …….. है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "atomic-and-ionic-radius",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms7nokuw",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>How many of following statements are correct.</p>\n<p>(i) Amongst isoelectronic species, smaller the positive charge on the cation, smaller is the ionic radius.</p>\n<p>(ii) Amongst isoelectronic species, greater the negative charge on the anion, larger is the ionic radius.</p>\n<p>(iii) Atomic radius of the elements increases as one moves down the first group of the periodic table.</p>\n<p>(iv) Atomic radius of the elements decreases as one moves across from left to right in the $2^{\\mathrm{nd}}$ period of the periodic table.</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>The correct statements are <strong>(ii), (iii), and (iv)</strong>.</p>\n<p>So, the number of correct statements is</p>\n<p>$$ \\boxed{3} $$</p>\n<p>For isoelectronic species, the number of electrons is the same. So the size mainly depends on the nuclear charge.</p>\n<p>If nuclear charge is more, the same number of electrons are pulled more strongly towards the nucleus. Hence radius becomes smaller.</p>\n<p>For example:</p>\n<p>$$ \\text{O}^{2-},\\ \\text{F}^-,\\ \\text{Na}^+,\\ \\text{Mg}^{2+},\\ \\text{Al}^{3+} $$</p>\n<p>All have $10$ electrons.</p>\n<p>Their nuclear charges are:</p>\n<p>$$ 8,\\ 9,\\ 11,\\ 12,\\ 13 $$</p>\n<p>So the radius order is:</p>\n<p>$$ \\text{O}^{2-} > \\text{F}^- > \\text{Na}^+ > \\text{Mg}^{2+} > \\text{Al}^{3+} $$</p>\n<p>Now check each statement.</p>\n<p>(i) “Amongst isoelectronic species, smaller the positive charge on the cation, smaller is the ionic radius.”</p>\n<p>This is incorrect. Among cations, higher positive charge means smaller radius.</p>\n<p>For example:</p>\n<p>$$ \\text{Na}^+ > \\text{Mg}^{2+} > \\text{Al}^{3+} $$</p>\n<p>So smaller positive charge gives larger radius, not smaller radius.</p>\n<p>(ii) “Amongst isoelectronic species, greater the negative charge on the anion, larger is the ionic radius.”</p>\n<p>This is correct.</p>\n<p>For example:</p>\n<p>$$ \\text{O}^{2-} > \\text{F}^- $$</p>\n<p>Greater negative charge means more electron-electron repulsion and less effective nuclear pull per electron, so radius is larger.</p>\n<p>(iii) “Atomic radius of the elements increases as one moves down the first group of the periodic table.”</p>\n<p>This is correct. Down a group, new shells are added, so atomic radius increases.</p>\n<p>(iv) “Atomic radius of the elements decreases as one moves across from left to right in the $2^{\\mathrm{nd}}$ period.”</p>\n<p>This is correct. Across a period, nuclear charge increases while electrons enter the same shell, so the nucleus pulls electrons more strongly and atomic radius decreases.</p>\n<p>Hence, correct statements are:</p>\n<p>$$ (ii),\\ (iii),\\ (iv) $$</p>\n<p>Number of correct statements:</p>\n<p>$$ \\boxed{3} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से कितने कथन सही हैं?</p><p>(i) समइलेक्ट्रॉनिक प्रजातियों में, धनायन पर धनात्मक आवेश जितना कम होगा, आयनिक त्रिज्या उतनी ही छोटी होगी।</p><p>(ii) समइलेक्ट्रॉनिक प्रजातियों में, ऋणायन पर ऋणात्मक आवेश जितना अधिक होगा, आयनिक त्रिज्या उतनी ही बड़ी होगी।</p><p>(iii) आवर्त सारणी के प्रथम वर्ग में नीचे जाने पर तत्वों की परमाणु त्रिज्या बढ़ती है।</p><p>(iv) आवर्त सारणी के $2^{\\mathrm{nd}}$ आवर्त में बाएँ से दाएँ जाने पर तत्वों की परमाणु त्रिज्या घटती है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "atomic-and-ionic-radius",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Effective Nuclear Charge, Atomic and Ionic Radius",
+    "timeAllotted": 2160000,
+    "title": "Periodic Table & Periodicity Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mpe5i34u",
+    "defaultLanguage": "en",
+    "description": "Effective Nuclear Charge, Atomic and Ionic Radius",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-30T15:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Effective Nuclear Charge, Atomic and Ionic Radius",
+    "timeAllotted": 2160000,
+    "title": "Periodic Table & Periodicity Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Periodic Table & Periodicity"
+  }
+}

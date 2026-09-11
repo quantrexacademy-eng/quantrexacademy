@@ -1,0 +1,72 @@
+[
+  {
+    "questionNumber": 1,
+    "text": "If $a, b, c$ are positive numbers and $a + b + c = 1$, then the maximum value of $(1 - a)(1 - b)(1 - c)$ is:",
+    "options": ["$1$", "$\\frac{2}{3}$", "$\\frac{8}{27}$", "$\\frac{4}{9}$"],
+    "correctOption": 3,
+    "solution": "We know that $a+b+c=1$. Then $1-a = b+c$, $1-b = a+c$, and $1-c = a+b$.\nWe want to maximize $(b+c)(a+c)(a+b)$.\nBy AM-GM inequality:\n$\\frac{b+c}{2} \\ge \\sqrt{bc}$\n$\\frac{a+c}{2} \\ge \\sqrt{ac}$\n$\\frac{a+b}{2} \\ge \\sqrt{ab}$\nMultiplying them gives $(b+c)(a+c)(a+b) \\ge 8abc$.\nAlternatively, using AM-GM on $(1-a), (1-b), (1-c)$:\n$\\frac{(1-a)+(1-b)+(1-c)}{3} \\ge \\sqrt[3]{(1-a)(1-b)(1-c)}$\n$\\frac{3-(a+b+c)}{3} \\ge \\sqrt[3]{(1-a)(1-b)(1-c)}$\n$\\frac{2}{3} \\ge \\sqrt[3]{(1-a)(1-b)(1-c)}$\nTaking the cube on both sides:\n$(1-a)(1-b)(1-c) \\le \\frac{8}{27}$"
+  },
+  {
+    "questionNumber": 2,
+    "text": "If $xyz = (1-x)(1-y)(1-z)$ where $0 \\le x, y, z \\le 1$, then the minimum value of $x(1-z) + y(1-x) + z(1-y)$ is:",
+    "options": ["$\\frac{3}{2}$", "$\\frac{1}{4}$", "$\\frac{3}{4}$", "$\\frac{1}{2}$"],
+    "correctOption": 3,
+    "solution": "Let $E = x(1-z) + y(1-x) + z(1-y) = (x+y+z) - (xy+yz+zx)$.\nWe are given $xyz = 1 - (x+y+z) + (xy+yz+zx) - xyz$.\nThis implies $2xyz = 1 - ((x+y+z) - (xy+yz+zx)) = 1 - E$.\nTherefore, $E = 1 - 2xyz$.\nTo minimize $E$, we must maximize $xyz$.\nBy AM-GM on $(1-x), (1-y), (1-z)$ similar to the previous question, maximum $xyz$ occurs when $x=y=z$.\nIf $x=y=z$, then $x^3 = (1-x)^3 \\implies x = 1-x \\implies x = \\frac{1}{2}$.\nSo maximum $xyz = \\frac{1}{8}$.\nMinimum $E = 1 - 2(\\frac{1}{8}) = 1 - \\frac{1}{4} = \\frac{3}{4}$."
+  },
+  {
+    "questionNumber": 3,
+    "text": "If $\\sec(\\alpha - 2\\beta)$, $\\sec\\alpha$, $\\sec(\\alpha + 2\\beta)$ are in arithmetical progression then $\\cos^2\\alpha = \\lambda \\cos^2\\beta$ ($\\beta \\ne n\\pi, n \\in I$) the value of $\\lambda$ is:",
+    "options": ["$1$", "$2$", "$3$", "$\\frac{1}{2}$"],
+    "correctOption": 2,
+    "solution": "$2\\sec\\alpha = \\sec(\\alpha - 2\\beta) + \\sec(\\alpha + 2\\beta)$\n$\\frac{2}{\\cos\\alpha} = \\frac{\\cos(\\alpha + 2\\beta) + \\cos(\\alpha - 2\\beta)}{\\cos(\\alpha - 2\\beta)\\cos(\\alpha + 2\\beta)}$\n$\\frac{2}{\\cos\\alpha} = \\frac{2\\cos\\alpha\\cos 2\\beta}{\\cos^2\\alpha - \\sin^2 2\\beta}$\nCross-multiplying gives:\n$\\cos^2\\alpha - \\sin^2 2\\beta = \\cos^2\\alpha \\cos 2\\beta$\n$\\cos^2\\alpha (1 - \\cos 2\\beta) = \\sin^2 2\\beta = 1 - \\cos^2 2\\beta = (1 - \\cos 2\\beta)(1 + \\cos 2\\beta)$\nSince $\\beta \\ne n\\pi$, $1 - \\cos 2\\beta \\ne 0$.\n$\\cos^2\\alpha = 1 + \\cos 2\\beta = 2\\cos^2\\beta$\nThus, $\\lambda = 2$."
+  },
+  {
+    "questionNumber": 4,
+    "text": "Let $a, b, c, d, e$ are non-zero and distinct positive real numbers. If $a, b, c$ are in A.P.; $b, c, d$ are in G.P. and $c, d, e$ are in H.P., then $a, c, e$ are in:",
+    "options": ["A.P.", "G.P.", "H.P.", "Nothing can be said"],
+    "correctOption": 2,
+    "solution": "Given $a, b, c$ are in A.P. $\\implies b = \\frac{a+c}{2}$\n$c, d, e$ are in H.P. $\\implies d = \\frac{2ce}{c+e}$\n$b, c, d$ are in G.P. $\\implies c^2 = bd$\nSubstituting $b$ and $d$ in the G.P. condition:\n$c^2 = \\left(\\frac{a+c}{2}\\right)\\left(\\frac{2ce}{c+e}\\right)$\n$c^2 = \\frac{ce(a+c)}{c+e}$\n$c(c+e) = e(a+c)$\n$c^2 + ce = ae + ce$\n$c^2 = ae$\nThis means $a, c, e$ are in G.P."
+  },
+  {
+    "questionNumber": 5,
+    "text": "If $(m+1)^{\\text{th}}$, $(n+1)^{\\text{th}}$, and $(r+1)^{\\text{th}}$ terms of a non-constant A.P. are in G.P. and $m, n, r$ are in H.P., then the ratio of first term of the A.P to its common difference is:",
+    "options": ["$-\\frac{n}{2}$", "$-n$", "$-2n$", "$+n$"],
+    "correctOption": 1,
+    "solution": "Let the A.P. be $A, A+D, A+2D, \\dots$\nThe terms are $T_{m+1} = A + mD$, $T_{n+1} = A + nD$, $T_{r+1} = A + rD$.\nGiven they are in G.P., $(A + nD)^2 = (A + mD)(A + rD)$.\n$A^2 + 2AnD + n^2D^2 = A^2 + A(m+r)D + mrD^2$\n$2AnD - A(m+r)D = mrD^2 - n^2D^2$\n$A(2n - m - r)D = (mr - n^2)D^2$\nSince the A.P. is non-constant, $D \\ne 0$.\n$\\frac{A}{D} = \\frac{mr - n^2}{2n - m - r}$\nSince $m, n, r$ are in H.P., $n = \\frac{2mr}{m+r} \\implies m+r = \\frac{2mr}{n}$.\nSubstitute $m+r$ into the equation:\n$\\frac{A}{D} = \\frac{mr - n^2}{2n - \\frac{2mr}{n}} = \\frac{n(mr - n^2)}{2n^2 - 2mr} = \\frac{n(mr - n^2)}{-2(mr - n^2)} = -\\frac{n}{2}$"
+  },
+  {
+    "questionNumber": 6,
+    "text": "If the equation $x^4 - 4x^3 + ax^2 + bx + 1 = 0$ has four positive roots, then the value of $(a+b)$ is:",
+    "options": ["$-4$", "$2$", "$6$", "can not be determined"],
+    "correctOption": 2,
+    "solution": "Let the four positive roots be $\\alpha, \\beta, \\gamma, \\delta$.\nSum of roots = $\\alpha + \\beta + \\gamma + \\delta = 4$.\nProduct of roots = $\\alpha\\beta\\gamma\\delta = 1$.\nA.M. of roots = $\\frac{4}{4} = 1$.\nG.M. of roots = $\\sqrt[4]{1} = 1$.\nSince A.M. = G.M., all roots must be equal to 1. i.e., $\\alpha = \\beta = \\gamma = \\delta = 1$.\nSo the equation is $(x - 1)^4 = 0$.\nExpanding $(x - 1)^4$ gives $x^4 - 4x^3 + 6x^2 - 4x + 1 = 0$.\nComparing with $x^4 - 4x^3 + ax^2 + bx + 1 = 0$, we get $a = 6$ and $b = -4$.\nTherefore, $a + b = 6 - 4 = 2$."
+  },
+  {
+    "questionNumber": 7,
+    "text": "If $S_1, S_2$ and $S_3$ are the sums of first $n$ natural numbers, their squares and their cubes respectively, then $\\frac{S_1^4 S_2^2 - S_2^2 S_3^2}{S_1^2 + S_3^2} = $",
+    "options": ["$4$", "$2$", "$1$", "$0$"],
+    "correctOption": 4,
+    "solution": "We know the standard formulas:\n$S_1 = \\frac{n(n+1)}{2}$\n$S_2 = \\frac{n(n+1)(2n+1)}{6}$\n$S_3 = \\left(\\frac{n(n+1)}{2}\\right)^2$\nNotice that $S_3 = S_1^2$.\nSubstitute $S_3 = S_1^2$ into the numerator:\n$\\frac{S_1^4 S_2^2 - S_2^2 (S_1^2)^2}{S_1^2 + S_3^2} = \\frac{S_1^4 S_2^2 - S_2^2 S_1^4}{S_1^2 + S_3^2} = \\frac{0}{S_1^2 + S_3^2} = 0$."
+  },
+  {
+    "questionNumber": 8,
+    "text": "If $S_n = \\frac{1 \\cdot 2}{3!} + \\frac{2 \\cdot 2^2}{4!} + \\frac{3 \\cdot 2^3}{5!} + \\dots$ upto $n$ terms then the sum of the infinite terms is:",
+    "options": ["$1$", "$\\frac{2}{3}$", "$e$", "$\\frac{\\pi}{4}$"],
+    "correctOption": 1,
+    "solution": "The $r^{\\text{th}}$ term is $T_r = \\frac{r \\cdot 2^r}{(r+2)!}$.\nWe can rewrite the numerator: $r \\cdot 2^r = (r+2-2)2^r = (r+2)2^r - 2^{r+1}$.\nSo, $T_r = \\frac{(r+2)2^r}{(r+2)!} - \\frac{2^{r+1}}{(r+2)!} = \\frac{2^r}{(r+1)!} - \\frac{2^{r+1}}{(r+2)!}$.\nNow, calculate the sum $S_n = \\sum_{r=1}^n T_r$:\n$T_1 = \\frac{2^1}{2!} - \\frac{2^2}{3!}$\n$T_2 = \\frac{2^2}{3!} - \\frac{2^3}{4!}$\n$T_n = \\frac{2^n}{(n+1)!} - \\frac{2^{n+1}}{(n+2)!}$\nSumming these terms (telescoping series):\n$S_n = \\frac{2^1}{2!} - \\frac{2^{n+1}}{(n+2)!} = 1 - \\frac{2^{n+1}}{(n+2)!}$.\nAs $n \\to \\infty$, the term $\\frac{2^{n+1}}{(n+2)!} \\to 0$.\nThus, $S_\\infty = 1 - 0 = 1$."
+  },
+  {
+    "questionNumber": 9,
+    "text": "If $\\tan\\left(\\frac{\\pi}{12} - x\\right)$, $\\tan\\frac{\\pi}{12}$, $\\tan\\left(\\frac{\\pi}{12} + x\\right)$ in order are three consecutive terms of a G.P. then sum of all the solutions in $[0, 314]$ is $k\\pi$. The value of $k$ is:",
+    "options": ["$4950$", "$5050$", "$2525$", "$5010$"],
+    "correctOption": 1,
+    "solution": "Since they are in G.P., we have:\n$\\tan^2\\frac{\\pi}{12} = \\tan\\left(\\frac{\\pi}{12} - x\\right)\\tan\\left(\\frac{\\pi}{12} + x\\right)$\n$\\tan^2\\frac{\\pi}{12} = \\frac{\\tan^2\\frac{\\pi}{12} - \\tan^2 x}{1 - \\tan^2\\frac{\\pi}{12}\\tan^2 x}$\nLet $t = \\tan^2\\frac{\\pi}{12}$ and $y = \\tan^2 x$.\n$t = \\frac{t - y}{1 - ty} \\implies t - t^2y = t - y \\implies y(1 - t^2) = 0$.\nSo $\\tan^2 x (1 - \\tan^4\\frac{\\pi}{12}) = 0$.\nSince $\\tan\\frac{\\pi}{12} \\ne 1$, we must have $\\tan^2 x = 0 \\implies \\tan x = 0$.\nThe solutions are $x = n\\pi$, where $n \\in \\mathbb{Z}$.\nIn the interval $[0, 314]$, since $\\pi \\approx 3.14159$, $100\\pi \\approx 314.159$, so the solutions are $x = 0, \\pi, 2\\pi, \\dots, 99\\pi$.\nThe sum is $0 + \\pi + 2\\pi + \\dots + 99\\pi = \\frac{99 \\times 100}{2} \\pi = 4950\\pi$.\nHence, $k = 4950$."
+  },
+  {
+    "questionNumber": 10,
+    "text": "Let $S_k = 1 + 2 + 3 + \\dots + k$ and $Q_n = \\frac{S_2}{S_2 - 1} \\cdot \\frac{S_3}{S_3 - 1} \\cdot \\frac{S_4}{S_4 - 1} \\dots \\frac{S_n}{S_n - 1}$, where $k, n \\in N$. $\\lim_{n \\to \\infty} Q_n = $",
+    "options": ["$\\frac{1}{3}$", "$1$", "$3$", "$0$"],
+    "correctOption": 3,
+    "solution": "We know $S_n = \\frac{n(n+1)}{2}$.\n$\\frac{S_n}{S_n - 1} = \\frac{\\frac{n(n+1)}{2}}{\\frac{n(n+1)}{2} - 1} = \\frac{n^2 + n}{n^2 + n - 2} = \\frac{n(n+1)}{(n+2)(n-1)} = \\left(\\frac{n}{n-1}\\right)\\left(\\frac{n+1}{n+2}\\right)$.\nSo $Q_n$ can be written as the product of two terms:\n$Q_n = \\left( \\frac{2}{1} \\times \\frac{3}{2} \\times \\dots \\times \\frac{n}{n-1} \\right) \\times \\left( \\frac{3}{4} \\times \\frac{4}{5} \\times \\dots \\times \\frac{n+1}{n+2} \\right)$.\nIn the first bracket, everything cancels out except $\\frac{n}{1} = n$.\nIn the second bracket, everything cancels out except $\\frac{3}{n+2}$.\nTherefore, $Q_n = n \\times \\frac{3}{n+2} = \\frac{3n}{n+2}$.\nTaking the limit as $n \\to \\infty$:\n$\\lim_{n \\to \\infty} Q_n = \\lim_{n \\to \\infty} \\frac{3}{1 + \\frac{2}{n}} = 3$."
+  }
+]

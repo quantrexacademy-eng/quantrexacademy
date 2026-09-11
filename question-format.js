@@ -22,8 +22,22 @@ const QuantrexQFormat = (() => {
     return `<img class="qx-pool-fig qx-smiles-fig qx-no-wm qx-fig-ready qx-opt-fig-img" src="${pub}" data-qx-smiles="${safe}" data-qx-fallback="${cactus}" alt="Structure" loading="eager" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.qxFallback){const f=this.dataset.qxFallback;delete this.dataset.qxFallback;this.src=f;}else{this.alt='Structure unavailable';this.style.opacity='0.35'}" style="max-width:min(100%,220px);max-height:130px;width:auto;height:auto;display:block;margin:4px auto;padding:2px;background:#fff;border-radius:8px;object-fit:contain">`;
   }
 
-  function expandSmilesHtml(html) {
+  function repairBrokenLatex(html) {
     let s = String(html || "");
+    s = s.replace(/\\text\$\s*\{/g, "\\text{");
+    s = s.replace(/\\mathrm\$\s*\{/g, "\\mathrm{");
+    s = s.replace(/\\mathbf\$\s*\{/g, "\\mathbf{");
+    s = s.replace(/\\left\$\s*\(/g, "\\left(");
+    s = s.replace(/\\right\$\s*\)/g, "\\right)");
+    s = s.replace(/\\left\$\s*\[/g, "\\left[");
+    s = s.replace(/\\right\$\s*\]/g, "\\right]");
+    s = s.replace(/\\left\$\s*\\\{/g, "\\left\\{");
+    s = s.replace(/\\right\$\s*\\\}/g, "\\right\\}");
+    return s;
+  }
+
+  function expandSmilesHtml(html) {
+    let s = repairBrokenLatex(html);
     // Live bank: "< smiles>O=C(...) < /smiles>" and guillemet variants
     s = s.replace(/[‹«＜<\u2039\u3008]\s*\/?\s*smiles\s*[›»＞>\u203a\u3009]/gi, (m) => {
       if (/\//.test(m)) return "</smiles>";
@@ -406,34 +420,15 @@ const QuantrexQFormat = (() => {
     const valEsc = String(val != null ? val : "").replace(/"/g, "&quot;");
     const disabled = o.disabled ? " disabled" : "";
     const readonly = o.readonly === true ? " readonly" : "";
-    // Always NTA / JEE Main integer-type style: centered answer box + keypad
+    // ExamGoal-style empty fill box only — native phone keyboard, no on-screen keypad
     const wrapCls = o.wrapClass || "qx-prac-numerical";
-    const label = o.label || "Enter integer answer";
     return `<div class="${wrapCls} mtk-numerical mtk-numerical-wrap">
-      <div class="qx-num-entry qx-num-cbt qx-num-nta qx-num-panel">
-        
-        
+      <div class="qx-num-entry qx-num-cbt qx-num-nta qx-num-panel qx-num-box-only">
         <div class="qx-num-box-wrap">
-          <input type="text" class="qx-num-input" id="qxNumInput" inputmode="decimal" autocomplete="off"
+          <input type="text" class="qx-num-input" id="qxNumInput" inputmode="decimal" enterkeyhint="done"
+            autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false"
             placeholder="" value="${valEsc}"${readonly}${disabled}
-            aria-label="Integer numerical answer" maxlength="12">
-        </div>
-        
-        <div class="qx-num-keypad" id="qxNumKeypad" role="group" aria-label="Numeric keypad">
-          <button type="button" class="qx-num-key qx-num-key-wide qx-num-key-back" data-num-key="back">⌫ Backspace</button>
-          <button type="button" class="qx-num-key" data-num-key="7">7</button>
-          <button type="button" class="qx-num-key" data-num-key="8">8</button>
-          <button type="button" class="qx-num-key" data-num-key="9">9</button>
-          <button type="button" class="qx-num-key" data-num-key="4">4</button>
-          <button type="button" class="qx-num-key" data-num-key="5">5</button>
-          <button type="button" class="qx-num-key" data-num-key="6">6</button>
-          <button type="button" class="qx-num-key" data-num-key="1">1</button>
-          <button type="button" class="qx-num-key" data-num-key="2">2</button>
-          <button type="button" class="qx-num-key" data-num-key="3">3</button>
-          <button type="button" class="qx-num-key" data-num-key="-">−</button>
-          <button type="button" class="qx-num-key" data-num-key="0">0</button>
-          <button type="button" class="qx-num-key" data-num-key=".">.</button>
-          <button type="button" class="qx-num-key qx-num-key-wide qx-num-key-clear" data-num-key="clear">Clear All</button>
+            aria-label="Numerical answer" maxlength="16">
         </div>
       </div>
       ${o.correctHtml || ""}
@@ -533,8 +528,17 @@ const QuantrexQFormat = (() => {
       input.value = sanitizeNumVal(text);
       emit();
     };
-    if (!input.disabled) {
-      try { input.focus(); input.setSelectionRange(input.value.length, input.value.length); } catch (err) { /* ignore */ }
+    // Mobile: do NOT autofocus — native keypad only when user taps inside the box
+    if (!input.disabled && !input.dataset.qxTapReady) {
+      input.dataset.qxTapReady = "1";
+      input.setAttribute("readonly", "readonly");
+      const unlock = function () {
+        input.removeAttribute("readonly");
+        try { input.focus(); input.setSelectionRange(input.value.length, input.value.length); } catch (err) { /* ignore */ }
+      };
+      input.addEventListener("pointerdown", unlock, { once: true });
+      input.addEventListener("touchstart", unlock, { once: true, passive: true });
+      input.addEventListener("click", unlock, { once: true });
     }
     emit();
   }

@@ -1,0 +1,146 @@
+/* Mobile app chrome — ExamGoal/Marks feel. Hide right palette; native back; header text; tools. */
+
+@media (max-width: 900px) {
+  .qzrr-cbt .qzrr-side,
+  .mtk-test-root .mtk-palette,
+  .eg-test-root.eg-side-collapsed .eg-side,
+  .eg-test-root:not(.eg-side-open) .eg-side {
+    display: none !important;
+  }
+  /* Only show palette arrow when side is collapsed — never cover Save & Next */
+  .qzrr-cbt:not(.qzrr-side-collapsed) .qzrr-side-toggle {
+    display: none !important;
+  }
+  .qzrr-cbt.qzrr-side-collapsed .qzrr-side-toggle {
+    display: inline-flex !important;
+    z-index: 60 !important;
+    pointer-events: auto !important;
+    bottom: calc(110px + env(safe-area-inset-bottom, 0px)) !important;
+    top: auto !important;
+  }
+  .eg-test-root.eg-side-open:not(.eg-side-collapsed) .eg-side {
+    display: flex !important;
+    position: fixed !important;
+    top: 52px; right: 0; bottom: 0;
+    width: min(300px, 92vw);
+    z-index: 70;
+    box-shadow: -8px 0 24px rgba(0,0,0,.25);
+  }
+  .qzrr-pal-close, .mtk-pal-close { font-size: 18px; }
+}
+
+.eg-back {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 44px !important;
+  height: 44px !important;
+  font-size: 0 !important;
+}
+.eg-back svg {
+  width: 22px;
+  height: 22px;
+  stroke: #fff;
+  stroke-width: 2.4;
+}
+
+.qzrr-black-title,
+.eg-top-title,
+.logo-text,
+.qzrr-qtype,
+.qzrr-qno,
+.eg-type {
+  font-family: Inter, system-ui, -apple-system, sans-serif !important;
+  letter-spacing: 0 !important;
+  font-variant-ligatures: none !important;
+  font-feature-settings: "kern" 1 !important;
+  -webkit-font-smoothing: antialiased;
+}
+.qzrr-black-title,
+.eg-top-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.qzrr-black-tools,
+.qzrr-black-tools .qzrr-tool-btn,
+.eg-top-tools,
+.eg-top-tools .eg-ico,
+.qzrr-top-zoom,
+.qzrr-zoom-circle,
+#qzrrZoomFab {
+  pointer-events: auto !important;
+  z-index: 80 !important;
+  position: relative;
+}
+
+.qx-sol-final,
+.qx-sol-step-body {
+  font-family: "Source Serif 4", "Times New Roman", serif;
+  line-height: 1.65;
+}
+.qx-sol-final {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #ecfdf5;
+  border: 1px solid #86efac;
+  font-weight: 700;
+  color: #14532d;
+}
+html[data-theme="dark"] .qx-sol-final,
+.eg-test-root[data-test-theme="dark"] .qx-sol-final {
+  background: #052e16;
+  border-color: #166534;
+  color: #bbf7d0;
+}
+.qx-sol-step {
+  display: flex;
+  gap: 10px;
+  margin: 8px 0;
+  align-items: flex-start;
+}
+.qx-sol-step-label {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.qx-q-fullscreen .sidebar,
+body.qx-q-fullscreen .topbar,
+body.qx-q-fullscreen .qx-top-exams,
+body.qx-q-fullscreen .jovi-fab,
+body.qx-q-fullscreen .qx-update-bar {
+  display: none !important;
+}
+body.qx-q-fullscreen #app-main {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9500 !important;
+  overflow: auto !important;
+  max-width: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#qxNextBtn, #qxPrevBtn, #qxSaveBtn, .eg-btn, .qzrr-btn, .mtk-opt,
+.eg-qbar-n, .search-btn, .theme-btn, .menu-btn {
+  touch-action: manipulation;
+}
+.topbar, .eg-q-meta, .eg-top-title, .sidebar {
+  font-family: Inter, system-ui, sans-serif !important;
+  letter-spacing: 0 !important;
+}
+.search-btn svg, .theme-btn svg, .menu-btn svg, .logout-link svg {
+  display: block;
+}

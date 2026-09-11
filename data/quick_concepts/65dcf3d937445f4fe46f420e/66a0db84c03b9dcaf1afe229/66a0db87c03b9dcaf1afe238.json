@@ -1,0 +1,58 @@
+{
+  "subjectId": "65dcf3d937445f4fe46f420e",
+  "chapterId": "66a0db84c03b9dcaf1afe229",
+  "topicId": "66a0db87c03b9dcaf1afe238",
+  "title": "Uniform Motion",
+  "concepts": [
+    {
+      "title": "Sign Convention",
+      "conceptBody": "<h3>Sign Convention</h3><p>We have found students often confused over the sign of ‘$\\text{g}$’.&nbsp;</p><p>As per our sign convention (positive upwards and negative downwards) it is always negative, whether the particle is moving upwards or downwards.&nbsp;</p><p>Now if $\\text{u}$ is upwards (i.e., $\\text{u}\\uparrow \\downarrow \\text{g}$ ) motion is retarded and if $\\text{u}$ is either zero or downwards (u $\\downarrow \\downarrow $ g) motion is accelerated.</p><p>&nbsp;</p>",
+      "position": 0,
+      "qcConcept": "66a0db88c03b9dcaf1afe239"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "665850f61ebdecde60539b0a",
+      "title": "A body of mass $10 \\mathrm{~kg}$ is moving with a constant velocity of $10 \\mathrm{~m} / \\mathrm{s}$. When a constant force acts for 4 seconds on it, it moves with a velocity $2 \\mathrm{~m} / \\mathrm{sec}$ in the opposite direction. The acceleration produced in it is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f61ebdecde60539b0b",
+      "title": "A boy walks to his school at a distance of $6 \\mathrm{~km}$ with constant speed of 2.5 $\\mathrm{km} /$ hour and walks back with a constant speed of $4 \\mathrm{~km} / \\mathrm{hr}$. His average speed for round trip expressed in $\\mathrm{km} /$ hour, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f61ebdecde60539b0c",
+      "title": "The motion of a particle is described by the equation $u=a t$. The distance travelled by the particle in the first 4 seconds",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f61ebdecde60539b0d",
+      "title": "Speed of two identical cars are $u$ and $4 u$ at a specific instant. The ratio of the respective distances in which the two cars are stopped from that instant is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f61ebdecde60539b0e",
+      "title": "Assertion: The position-time graph of a uniform motion in one dimension of a body can have negative slope.\nReason : If the body is moving in the opposite direction of positive motion, then its speed is negative.",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f61ebdecde60539b0f",
+      "title": "A body $A$ moves with a uniform acceleration a and zero initial velocity. Another body $B$, starts from the same point moves in the same direction with a constant velocity $v$. The two bodies meet after a time $t$. The value of $t$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f61ebdecde60539b10",
+      "title": "A body $A$ starts from rest with an acceleration ${ }^{a_1}$. After 2 seconds, another body $B$ starts from rest with an acceleration ${ }^{a_2}$. If they travel equal distances in the 5 th second, after the start of $A$, then the ratio $a_1: a_2$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

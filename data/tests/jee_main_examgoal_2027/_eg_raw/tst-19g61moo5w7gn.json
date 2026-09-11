@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61moo5w7gn",
+  "title": "Functions Test - 2 (Topic Test)",
+  "type": "topic",
+  "section": "Functions",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Mathematics",
+  "isUpcoming": false,
+  "liveAt": "2026-08-31T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "e1bd3c14-4f0f-413f-804c-b08128448e38",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61moo5w7gn",
+    "defaultLanguage": "en",
+    "description": "Domain, Range",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-31T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mtfatlyu",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let $f : \\mathbb{R} \\to \\mathbb{R}$, $f(x) = \\dfrac{x^2 + bx + 1}{x^2 + 2x + b}$, if the function $f(x)$ and $\\dfrac{1}{f(x)}$ have same bounded set as their range, then value of $b$ is:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2\\sqrt{3} - 2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2\\sqrt{3} + 2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2\\sqrt{2} - 2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$2\\sqrt{2} + 2$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The given function is</p>\n<p>$$f(x) = \\frac{x^2 + bx + 1}{x^2 + 2x + b}$$</p>\n<p>Since $f : \\mathbb{R} \\to \\mathbb{R}$, the function is defined for all real values of $x$. This means the denominator can never be zero.</p>\n<p>$$x^2 + 2x + b \\neq 0 \\quad \\text{for all } x \\in \\mathbb{R}$$</p>\n<p>For a quadratic expression with a positive leading coefficient to remain strictly positive for all real numbers, its discriminant must be negative:</p>\n<p>$$2^2 - 4(1)(b) < 0$$</p>\n<p>$$4 - 4b < 0 \\implies b > 1$$</p>\n<p>Similarly, for $\\dfrac{1}{f(x)}$ to be defined on all real numbers and have a bounded range, the numerator of $f(x)$ must also never be zero:</p>\n<p>$$x^2 + bx + 1 \\neq 0 \\quad \\text{for all } x \\in \\mathbb{R}$$</p>\n<p>This requires its discriminant to be negative as well:</p>\n<p>$$b^2 - 4 < 0 \\implies -2 < b < 2$$</p>\n<p>Combining both conditions gives:</p>\n<p>$$1 < b < 2$$</p>\n<p>Let the bounded range of $f(x)$ be the interval $[m, M]$. Since the range of $\\dfrac{1}{f(x)}$ is the same set, the range of $\\dfrac{1}{f(x)}$ is $\\left[\\dfrac{1}{M}, \\dfrac{1}{m}\\right]$.</p>\n<p>Equating the two ranges:</p>\n<p>$$m = \\frac{1}{M} \\implies mM = 1$$</p>\n<p>To find the range of $f(x)$, let $y = f(x)$:</p>\n<p>$$y = \\frac{x^2 + bx + 1}{x^2 + 2x + b}$$</p>\n<p>$$y(x^2 + 2x + b) = x^2 + bx + 1$$</p>\n<p>$$(y - 1)x^2 + (2y - b)x + (by - 1) = 0$$</p>\n<p>Since $x$ is real, the discriminant of this quadratic equation in $x$ must be greater than or equal to zero:</p>\n<p>$$(2y - b)^2 - 4(y - 1)(by - 1) \\ge 0$$</p>\n<p>$$4y^2 - 4by + b^2 - 4(by^2 - by - y + 1) \\ge 0$$</p>\n<p>$$4(1 - b)y^2 + 4y + (b^2 - 4) \\ge 0$$</p>\n<p>The endpoints $m$ and $M$ of the range are the roots of the corresponding quadratic equation:</p>\n<p>$$4(1 - b)y^2 + 4y + (b^2 - 4) = 0$$</p>\n<p>Using the product of roots formula:</p>\n<p>$$mM = \\frac{b^2 - 4}{4(1 - b)}$$</p>\n<p>Since $mM = 1$:</p>\n<p>$$\\frac{b^2 - 4}{4(1 - b)} = 1$$</p>\n<p>$$b^2 - 4 = 4 - 4b$$</p>\n<p>$$b^2 + 4b - 8 = 0$$</p>\n<p>$$b = \\frac{-4 \\pm \\sqrt{4^2 - 4(1)(-8)}}{2}$$</p>\n<p>$$b = \\frac{-4 \\pm \\sqrt{48}}{2}$$</p>\n<p>$$b = -2 \\pm 2\\sqrt{3}$$</p>\n<p>Since $1 < b < 2$, we choose the positive value:</p>\n<p>$$b = 2\\sqrt{3} - 2$$</p>\n<p>Thus, the correct option is <strong>Option A</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना $f : \\mathbb{R} \\to \\mathbb{R}$, $f(x) = \\dfrac{x^2 + bx + 1}{x^2 + 2x + b}$ है। यदि फलनों $f(x)$ तथा $\\dfrac{1}{f(x)}$ का परिसर समान परिबद्ध समुच्चय है, तो $b$ का मान है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2\\sqrt{3} - 2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2\\sqrt{3} + 2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2\\sqrt{2} - 2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$2\\sqrt{2} + 2$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtfb10gy",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let $f(x) = \\left( \\frac{2\\sin x + \\sin 2x}{2\\cos x + \\sin 2x} \\cdot \\frac{1 - \\cos x}{1 - \\sin x} \\right)^{2/3}; \\; x \\in \\mathbb{R}$.</p><p>Consider the following statements:</p><p>(I) Domain of $f$ is $\\mathbb{R} - \\left\\{(2n+1)\\frac{\\pi}{2}\\right\\}; \\; n \\in \\mathbb{I}$</p><p>(II) Range of $f$ is $\\mathbb{R}^{+}$</p><p>(III) Domain of $f$ is $\\mathbb{R} - \\left\\{(4n+1)\\frac{\\pi}{2}\\right\\}; \\; n \\in \\mathbb{I}$</p><p>(IV) Range of $f$ is $\\mathbb{R} - \\mathbb{R}^{-}$</p><p>Which of the following is correct?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>(I) and (II)</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>(II) and (III)</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>(I) and (IV)</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>(III) and (IV)</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Given:</p>\n<p>$$f(x) = \\left( \\frac{2\\sin x + \\sin 2x}{2\\cos x + \\sin 2x} \\cdot \\frac{1 - \\cos x}{1 - \\sin x} \\right)^{2/3}$$</p>\n<p>Using the identity $\\sin 2x = 2\\sin x \\cos x$, we can factor both the numerator and the denominator:</p>\n<p>$$2\\sin x + \\sin 2x = 2\\sin x (1 + \\cos x)$$</p>\n<p>$$2\\cos x + \\sin 2x = 2\\cos x (1 + \\sin x)$$</p>\n<p>Substituting these back into the expression:</p>\n<p>$$\\frac{2\\sin x(1 + \\cos x)}{2\\cos x(1 + \\sin x)} \\cdot \\frac{1 - \\cos x}{1 - \\sin x} = \\frac{\\sin x}{\\cos x} \\cdot \\frac{(1 + \\cos x)(1 - \\cos x)}{(1 + \\sin x)(1 - \\sin x)}$$</p>\n<p>Using the algebraic identity $(1 + a)(1 - a) = 1 - a^2$:</p>\n<p>$$= \\tan x \\cdot \\frac{1 - \\cos^2 x}{1 - \\sin^2 x}$$</p>\n<p>Using $\\sin^2 x + \\cos^2 x = 1$, this simplifies to:</p>\n<p>$$= \\tan x \\cdot \\frac{\\sin^2 x}{\\cos^2 x} = \\tan x \\cdot \\tan^2 x = \\tan^3 x$$</p>\n<p>Now, the given function becomes:</p>\n<p>$$f(x) = (\\tan^3 x)^{2/3} = \\tan^2 x$$</p>\n\n<h3>Finding the Domain:</h3>\n<p>The function is defined as long as the denominators in the original expression are non-zero:</p>\n<ol>\n<li>$2\\cos x + \\sin 2x \\neq 0 \\implies 2\\cos x(1 + \\sin x) \\neq 0$</li>\n</ol>\n<ul>\n<li><p>$\\cos x \\neq 0 \\implies x \\neq (2n+1)\\frac{\\pi}{2}$</p></li>\n<li><p>$1 + \\sin x \\neq 0 \\implies \\sin x \\neq -1$</p></li>\n</ul>\n<ol>\n<li>$1 - \\sin x \\neq 0 \\implies \\sin x \\neq 1$</li>\n</ol>\n<p>Notice that $\\sin x = 1$ and $\\sin x = -1$ occur precisely when $\\cos x = 0$, which corresponds to odd multiples of $\\frac{\\pi}{2}$. </p>\n<p>Therefore, all restrictions combine into:</p>\n<p>$$x \\neq (2n+1)\\frac{\\pi}{2}, \\quad n \\in \\mathbb{I}$$</p>\n<p>Thus, the domain of $f$ is:</p>\n<p>$$\\text{Domain} = \\mathbb{R} - \\left\\{(2n+1)\\frac{\\pi}{2}\\right\\}, \\quad n \\in \\mathbb{I}$$</p>\n<p>This makes <strong>Statement (I)</strong> correct.</p>\n\n<h3>Finding the Range:</h3>\n<p>For all values of $x$ in the domain:</p>\n<p>$$\\tan x \\in (-\\infty, \\infty)$$</p>\n<p>Squaring this gives:</p>\n<p>$$\\tan^2 x \\in [0, \\infty)$$</p>\n<p>The set of non-negative real numbers $[0, \\infty)$ is represented as $\\mathbb{R} - \\mathbb{R}^{-}$ (all real numbers excluding negative real numbers).</p>\n<p>Thus, the range of $f$ is:</p>\n<p>$$\\text{Range} = \\mathbb{R} - \\mathbb{R}^{-}$$</p>\n<p>This makes <strong>Statement (IV)</strong> correct.</p>\n\n<p>Hence, statements <strong>(I)</strong> and <strong>(IV)</strong> are correct.</p>\n<p><strong>Correct Option: C</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना $f(x) = \\left( \\frac{2\\sin x + \\sin 2x}{2\\cos x + \\sin 2x} \\cdot \\frac{1 - \\cos x}{1 - \\sin x} \\right)^{2/3}; \\; x \\in \\mathbb{R}$ है।</p><p>निम्नलिखित कथनों पर विचार कीजिए:</p><p>(I) $f$ का प्रांत $\\mathbb{R} - \\left\\{(2n+1)\\frac{\\pi}{2}\\right\\}; \\; n \\in \\mathbb{I}$ है</p><p>(II) $f$ का परिसर $\\mathbb{R}^{+}$ है</p><p>(III) $f$ का प्रांत $\\mathbb{R} - \\left\\{(4n+1)\\frac{\\pi}{2}\\right\\}; \\; n \\in \\mathbb{I}$ है</p><p>(IV) $f$ का परिसर $\\mathbb{R} - \\mathbb{R}^{-}$ है</p><p>निम्नलिखित में से कौन-सा सही है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>(I) और (II)</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>(II) और (III)</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>(I) और (IV)</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>(III) और (IV)</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt93r2zp",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let $f(x) = x^2 + 4x + 1$. Then</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$f(x) > 0$ for all $x$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$f(x) > 1$ when $x \\geq 0$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$f(x) \\geq 1$ when $x \\leq -4$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$f(x) = f(-x)$ for all $x$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>$$f(x)=x^2+4x+1$$</p>\n<p>(A) $$D=16-4>0$$ real roots</p>\n<p>(B) $$x^2+4x+1>1$$</p>\n<p>$$x(x+4)>0$$</p>\n<p>$$\\Rightarrow x<-4\\text{ or }x>0$$</p>\n<p>B is wrong</p>\n<p>(C) $$f(x)\\geq 1$$ when correct</p>\n<p>$$x(x+4)\\geq 0 \\Rightarrow x\\leq -4\\text{ or }x\\geq 0$$</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt93q93i/9f43cd65-b414-4409-97e6-9ac7404b22f0/50e25ae0-a0c1-11f1-9eed-d3ac518ae6d8/file-6y3zli1mt93q93j.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt93q93i/9f43cd65-b414-4409-97e6-9ac7404b22f0/50e25ae0-a0c1-11f1-9eed-d3ac518ae6d8/file-6y3zli1mt93q93j.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>For Option D:</p>\n<p>$$ f(-x)=(-x)^2+4(-x)+1=x^2-4x+1 $$</p>\n<p>This is not equal to</p>\n<p>$$ f(x)=x^2+4x+1 $$</p>\n<p>for all $x$. Option D is false.</p>\n<p>So the correct option is</p>\n<p>$$ \\boxed{\\text{Option C}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना $f(x) = x^2 + 4x + 1$ है। तब</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>सभी $x$ के लिए $f(x) > 0$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>जब $x \\geq 0$ तब $f(x) > 1$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>जब $x \\leq -4$ तब $f(x) \\geq 1$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>सभी $x$ के लिए $f(x) = f(-x)$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtfnub0q",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The range of the function $f(x) = \\log_2 \\left( \\sqrt{x-4} + \\sqrt{6-x} \\right)$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\left[ 0, \\frac{1}{2} \\right] $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\left[ \\frac{1}{2}, 1 \\right] $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>[0, 1]</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>(0, 1)</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Given, $$f(x)=\\log_{2}\\left(\\sqrt{x-4}+\\sqrt{6-x}\\right)$$</p>\n<p>Let</p>\n<p>$$y=f(x)=\\log_{2}\\left(\\sqrt{x-4}+\\sqrt{6-x}\\right)$$</p>\n<p>$$\\Rightarrow 2^y=\\sqrt{x-4}+\\sqrt{6-x}$$</p>\n<p>On squaring, we get</p>\n<p>$$2^{2y}=(x-4)+(6-x)+2\\sqrt{x-4}\\sqrt{6-x}$$</p>\n<p>$$\\Rightarrow 2^{2y}-2=2\\sqrt{(x-4)(6-x)}$$</p>\n<p>$$\\Rightarrow 2^{2y-1}-1=\\sqrt{(x-4)(6-x)}\\geq 0$$</p>\n<p>$$\\therefore 2^{2y-1}-1\\geq 0 \\qquad \\ldots (i)$$</p>\n<p>Also,</p>\n<p>$$(2^{2y-1}-1)^2=-x^2+10x-24$$</p>\n<p>$$\\Rightarrow -(2^{2y-1}-1)^2=x^2-10x+24$$</p>\n<p>$$=(x-5)^2-1$$</p>\n<p>$$\\Rightarrow 1-(2^{2y-1}-1)^2=(x-5)^2\\geq 0$$</p>\n<p>$$\\Rightarrow (2^{2y-1}-1)^2\\leq 1$$</p>\n<p>$$\\Rightarrow -1\\leq 2^{2y-1}-1\\leq 1 \\qquad \\ldots (ii)$$</p>\n<p>From Eqs. (i) and (ii),</p>\n<p>$$0\\leq 2^{2y-1}-1\\leq 1$$</p>\n<p>$$\\Rightarrow 1\\leq 2^{2y-1}\\leq 2$$</p>\n<p>$$\\Rightarrow 2^0\\leq 2^{2y-1}\\leq 2^1$$</p>\n<p>$$\\Rightarrow 0\\leq 2y-1\\leq 1$$</p>\n<p>$$\\Rightarrow 1\\leq 2y\\leq 2$$</p>\n<p>$$\\therefore \\frac{1}{2}\\leq y\\leq 1$$</p>\n<p>Hence, range of $f(x)=\\left[\\frac{1}{2},1\\right]$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>फलन $f(x) = \\log_2 \\left( \\sqrt{x-4} + \\sqrt{6-x} \\right)$ का परिसर है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\left[ 0, \\frac{1}{2} \\right] $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\left[ \\frac{1}{2}, 1 \\right] $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>[0, 1]</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>(0, 1)</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtfnor9m",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The range of the function $f(x) = \\ln \\left\\{ \\frac{1}{\\sqrt{[\\cos x ] - [ \\sin x ]}} \\right\\}$, $[ x ] \\leq x$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\left( 0, \\frac{\\pi}{4} \\right)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\left\\{ \\frac{\\pi}{2} \\right\\}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\{ 0 \\}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For this function to make sense, the expression inside the log must be positive, and the quantity under the square root must be positive too. So we need</p>\n<p>$$[\\cos x] - [\\sin x] > 0$$</p>\n<p>Now, since $-1 \\le \\cos x \\le 1$ and $-1 \\le \\sin x \\le 1$, the greatest integer values can only be</p>\n<p>$$[\\cos x] \\in \\{-1, 0, 1\\}, \\qquad [\\sin x] \\in \\{-1, 0, 1\\}$$</p>\n<p>So we just check which combinations actually occur while keeping $[\\cos x] > [\\sin x]$.</p>\n<p><strong>If $[\\cos x] = 1$:</strong> this happens only when $\\cos x = 1$, i.e. $x = 2n\\pi$. But then $\\sin x = 0$, so $[\\sin x] = 0$. Here</p>\n<p>$$[\\cos x] - [\\sin x] = 1 - 0 = 1$$</p>\n<p><strong>If $[\\cos x] = 0$:</strong> then $0 \\le \\cos x < 1$. To satisfy $[\\cos x] > [\\sin x]$ we must have $[\\sin x] = -1$, which means $-1 \\le \\sin x < 0$. Such $x$ do exist (the fourth quadrant, like $x \\in \\left(\\frac{3\\pi}{2}, 2\\pi\\right)$ and also $x = \\frac{3\\pi}{2}$). In this case</p>\n<p>$$[\\cos x] - [\\sin x] = 0 - (-1) = 1$$</p>\n<p><strong>If $[\\cos x] = -1$:</strong> then $\\cos x = -1$, so $\\sin x = 0$ and $[\\sin x] = 0$. That gives $-1 - 0 = -1 < 0$, which is not allowed.</p>\n<p>Also the combination $[\\cos x] = 1$ with $[\\sin x] = -1$ is impossible, because $\\cos x = 1$ forces $\\sin x = 0$.</p>\n<p>So in every case where the function is defined,</p>\n<p>$$[\\cos x] - [\\sin x] = 1$$</p>\n<p>Putting this back,</p>\n<p>$$f(x) = \\ln\\left(\\frac{1}{\\sqrt{1}}\\right) = \\ln 1 = 0$$</p>\n<p>The function takes only the single value $0$, so its range is $\\{0\\}$.</p>\n<p><strong>Option C</strong> is correct.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>फलन $f(x) = \\ln \\left\\{ \\frac{1}{\\sqrt{[\\cos x ] - [ \\sin x ]}} \\right\\}$, $[ x ] \\leq x$ का परिसर है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\left( 0, \\frac{\\pi}{4} \\right)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\left\\{ \\frac{\\pi}{2} \\right\\}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\{ 0 \\}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtfc07og",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $2f(\\sin x) + f(\\cos x) = x$, then range of $f(x)$ is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\left[ -\\frac{2\\pi}{3}, \\frac{\\pi}{3} \\right]$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\left[ \\frac{\\pi}{3}, \\frac{2\\pi}{3} \\right]$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\mathbb{R}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$[0, \\infty)$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>We are given the functional equation:</p>\n<p>$$2f(\\sin x) + f(\\cos x) = x \\quad \\text{--- (1)}$$</p>\n<p>To find $f(x)$, we can replace $x$ with $\\frac{\\pi}{2} - x$ in equation (1):</p>\n<p>$$2f\\left(\\sin\\left(\\frac{\\pi}{2} - x\\right)\\right) + f\\left(\\cos\\left(\\frac{\\pi}{2} - x\\right)\\right) = \\frac{\\pi}{2} - x$$</p>\n<p>Using the trigonometric identities $\\sin\\left(\\frac{\\pi}{2} - x\\right) = \\cos x$ and $\\cos\\left(\\frac{\\pi}{2} - x\\right) = \\sin x$, this becomes:</p>\n<p>$$2f(\\cos x) + f(\\sin x) = \\frac{\\pi}{2} - x$$</p>\n\n<p>$$f(\\sin x) + 2f(\\cos x) = \\frac{\\pi}{2} - x \\quad \\text{--- (2)}$$</p>\n<p>Now, multiply equation (1) by $2$:</p>\n<p>$$4f(\\sin x) + 2f(\\cos x) = 2x \\quad \\text{--- (3)}$$</p>\n<p>Subtract equation (2) from equation (3):</p>\n<p>$$[4f(\\sin x) + 2f(\\cos x)] - [f(\\sin x) + 2f(\\cos x)] = 2x - \\left(\\frac{\\pi}{2} - x\\right)$$</p>\n<p>$$3f(\\sin x) = 3x - \\frac{\\pi}{2}$$</p>\n<p>$$f(\\sin x) = x - \\frac{\\pi}{6}$$</p>\n<p>For $x \\in \\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$, we can write $x = \\sin^{-1} t$ where $t = \\sin x \\in [-1, 1]$. </p>\n<p>Substituting this gives:</p>\n<p>$$f(t) = \\sin^{-1} t - \\frac{\\pi}{6}$$</p>\n\n<p>$$f(x) = \\sin^{-1} x - \\frac{\\pi}{6}, \\quad \\text{where } x \\in [-1, 1]$$</p>\n<p>We know that the principal value range of $\\sin^{-1} x$ is $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$. </p>\n<p>So, we find the minimum and maximum values of $f(x)$:</p>\n<ul>\n<li><p>Minimum value $= -\\frac{\\pi}{2} - \\frac{\\pi}{6} = -\\frac{2\\pi}{3}$</p></li>\n<li><p>Maximum value $= \\frac{\\pi}{2} - \\frac{\\pi}{6} = \\frac{\\pi}{3}$</p></li>\n</ul>\n<p>Thus, the range of $f(x)$ is:</p>\n<p>$$\\left[ -\\frac{2\\pi}{3}, \\frac{\\pi}{3} \\right]$$</p>\n<p>The correct option is <strong>Option A</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $2f(\\sin x) + f(\\cos x) = x$ है, तो $f(x)$ का परिसर (range) है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\left[ -\\frac{2\\pi}{3}, \\frac{\\pi}{3} \\right]$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\left[ \\frac{\\pi}{3}, \\frac{2\\pi}{3} \\right]$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\mathbb{R}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$[0, \\infty)$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtfn3wi5",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The range of the function $f(x) = \\frac{e^x - e^{|x|}}{e^x + e^{|x|}}$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>[0, 1)</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(1, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>(-1, 0]</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(- \\infty, 0)$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The given function is:</p>\n<p>$$f(x) = \\frac{e^x - e^{|x|}}{e^x + e^{|x|}}$$</p>\n<p>To find the range, we can evaluate the function by considering the definition of the absolute value function $|x|$:</p>\n<p>$$|x| = \\begin{cases} x, & \\text{if } x \\ge 0 \\\\ -x, & \\text{if } x < 0 \\end{cases}$$</p>\n<p><strong>Case 1: When $x \\ge 0$</strong></p>\n<p>Here, $|x| = x$. Substituting this into the function gives:</p>\n<p>$$f(x) = \\frac{e^x - e^x}{e^x + e^x} = \\frac{0}{2e^x} = 0$$</p>\n<p>So, for all $x \\ge 0$, the value of $f(x)$ is always $0$.</p>\n<p><strong>Case 2: When $x < 0$</strong></p>\n<p>Here, $|x| = -x$. Substituting this into the function gives:</p>\n<p>$$f(x) = \\frac{e^x - e^{-x}}{e^x + e^{-x}}$$</p>\n\n<p>$$f(x) = \\frac{e^{2x} - 1}{e^{2x} + 1}$$</p>\n<p>Since $x < 0$, we have $2x < 0$, which means:</p>\n<p>$$0 < e^{2x} < 1$$</p>\n<p>Let $t = e^{2x}$, where $t \\in (0, 1)$. Now our expression becomes:</p>\n<p>$$f(x) = \\frac{t - 1}{t + 1}$$</p>\n<p>As $t \\to 0^+$, the value approaches:</p>\n<p>$$\\frac{0 - 1}{0 + 1} = -1$$</p>\n<p>As $t \\to 1^-$, the value approaches:</p>\n<p>$$\\frac{1 - 1}{1 + 1} = 0$$</p>\n<p>Since $\\frac{t - 1}{t + 1}$ is strictly increasing for $t \\in (0, 1)$, the set of values for $x < 0$ is the open interval $(-1, 0)$.</p>\n<p>Combining the results from both cases:</p>\n<p>$$\\text{Range of } f(x) = (-1, 0) \\cup \\{0\\} = (-1, 0]$$</p>\n<p>Thus, the correct option is <strong>Option C</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>फलन $f(x) = \\frac{e^x - e^{|x|}}{e^x + e^{|x|}}$ का परिसर है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>[0, 1)</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(1, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>(-1, 0]</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(- \\infty, 0)$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtfmyv0q",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let $f(x) = \\max\\{ \\sin t : 0 \\le t \\le x \\}$, $g(x) = \\min\\{ \\sin t : 0 \\le t \\le x \\}$ and $h(x) = [f(x) - g(x)]$, where $[.]$ is the greatest integer function, then range of $h(x)$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>{0, 1}</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>{1, 2}</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>{0, 1, 2}</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>{-3, -2, -1, 0, 1, 2, 3}</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Here, $f(x)$ gives the maximum value of $\\sin t$ on the interval $[0, x]$, and $g(x)$ gives the minimum value of $\\sin t$ on the same interval.</p>\n<p>Let us trace their values as $x$ increases from $0$:</p>\n<p>At $x = 0$:</p>\n<p>$$f(0) = \\sin 0 = 0$$</p>\n<p>$$g(0) = \\sin 0 = 0$$</p>\n<p>$$f(0) - g(0) = 0$$</p>\n<p>So, $h(0) = [0] = 0$.</p>\n<p>For $0 < x < \\frac{\\pi}{2}$:</p>\n<p>$\\sin t$ strictly increases from $0$ to $\\sin x$.</p>\n<p>The maximum value is $f(x) = \\sin x$, and the minimum value is $g(x) = 0$.</p>\n<p>$$f(x) - g(x) = \\sin x$$</p>\n<p>Since $0 < \\sin x < 1$, we have:</p>\n<p>$$h(x) = [\\sin x] = 0$$</p>\n<p>For $\\frac{\\pi}{2} \\le x \\le \\pi$:</p>\n<p>The maximum value reached by $\\sin t$ is $1$ (at $t = \\frac{\\pi}{2}$), so $f(x) = 1$.</p>\n<p>The minimum value remains $0$ (at $t = 0$ or $t = \\pi$), so $g(x) = 0$.</p>\n<p>$$f(x) - g(x) = 1 - 0 = 1$$</p>\n<p>$$h(x) = [1] = 1$$</p>\n<p>For $\\pi < x < \\frac{3\\pi}{2}$:</p>\n<p>The maximum value is still $f(x) = 1$.</p>\n<p>$\\sin t$ now enters the negative region, so the minimum value is $g(x) = \\sin x$, where $-1 < \\sin x < 0$.</p>\n<p>$$f(x) - g(x) = 1 - \\sin x$$</p>\n<p>Since $\\sin x \\in (-1, 0)$, the value of $1 - \\sin x$ lies in $(1, 2)$.</p>\n<p>$$h(x) = [1 - \\sin x] = 1$$</p>\n<p>For $x \\ge \\frac{3\\pi}{2}$:</p>\n<p>The maximum value is $f(x) = 1$ and the minimum value reached is $g(x) = -1$ (at $t = \\frac{3\\pi}{2}$).</p>\n<p>$$f(x) - g(x) = 1 - (-1) = 2$$</p>\n<p>$$h(x) = [2] = 2$$</p>\n<p>Looking at all possible intervals, the value of $f(x) - g(x)$ covers the entire continuous interval $[0, 2]$. </p>\n<p>Taking the greatest integer function on this interval gives the values $0, 1,$ and $2$.</p>\n<p>Thus, the range of $h(x)$ is $\\{0, 1, 2\\}$.</p>\n<p>Correct Option: <strong>Option C</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना $f(x) = \\max\\{ \\sin t : 0 \\le t \\le x \\}$, $g(x) = \\min\\{ \\sin t : 0 \\le t \\le x \\}$ और $h(x) = [f(x) - g(x)]$ है, जहाँ $[.]$ महत्तम पूर्णांक फलन है, तो $h(x)$ का परिसर है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>{0, 1}</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>{1, 2}</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>{0, 1, 2}</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>{-3, -2, -1, 0, 1, 2, 3}</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtfbhf0r",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The range of function $f(x) = \\frac{x^4 - \\sqrt{2}x + 2}{x^4 - \\sqrt{2}x + 1}$ is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\left[ \\frac{1}{\\sqrt{5}}, \\sqrt{5} \\right]$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(1, \\sqrt{5}]$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\left[ \\frac{1}{5}, 5 \\right]$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(1, 5]$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The given function is:</p>\n<p>$$f(x) = \\frac{x^4 - \\sqrt{2}x + 2}{x^4 - \\sqrt{2}x + 1}$$</p>\n<p>We can rewrite the numerator in terms of the denominator:</p>\n<p>$$f(x) = \\frac{(x^4 - \\sqrt{2}x + 1) + 1}{x^4 - \\sqrt{2}x + 1} = 1 + \\frac{1}{x^4 - \\sqrt{2}x + 1}$$</p>\n<p>Let $g(x) = x^4 - \\sqrt{2}x + 1$. To find the range of $f(x)$, we first need to find the range of $g(x)$.</p>\n<p>Differentiating $g(x)$ with respect to $x$:</p>\n<p>$$g'(x) = 4x^3 - \\sqrt{2}$$</p>\n<p>To find the critical points, set $g'(x) = 0$:</p>\n<p>$$4x^3 - \\sqrt{2} = 0$$</p>\n<p>$$x^3 = \\frac{\\sqrt{2}}{4} = \\frac{1}{2\\sqrt{2}} = \\left(\\frac{1}{\\sqrt{2}}\\right)^3$$</p>\n<p>$$x = \\frac{1}{\\sqrt{2}}$$</p>\n<p>Now check the second derivative:</p>\n<p>$$g''(x) = 12x^2$$</p>\n<p>At $x = \\frac{1}{\\sqrt{2}}$, $g''(x) > 0$, which means $g(x)$ has a minimum value at this point.</p>\n<p>Substitute $x = \\frac{1}{\\sqrt{2}}$ into $g(x)$:</p>\n<p>$$g\\left(\\frac{1}{\\sqrt{2}}\\right) = \\left(\\frac{1}{\\sqrt{2}}\\right)^4 - \\sqrt{2}\\left(\\frac{1}{\\sqrt{2}}\\right) + 1$$</p>\n<p>$$g\\left(\\frac{1}{\\sqrt{2}}\\right) = \\frac{1}{4} - 1 + 1 = \\frac{1}{4}$$</p>\n<p>As $x \\to \\infty$ or $x \\to -\\infty$, $g(x) \\to \\infty$. </p>\n<p>Thus, the range of $g(x)$ is $\\left[\\frac{1}{4}, \\infty\\right)$.</p>\n<p>Now, since $\\frac{1}{4} \\le g(x) < \\infty$, the reciprocal $\\frac{1}{g(x)}$ will lie in the interval:</p>\n<p>$$0 < \\frac{1}{g(x)} \\le \\frac{1}{1/4}$$</p>\n<p>$$0 < \\frac{1}{g(x)} \\le 4$$</p>\n<p>$$1 < 1 + \\frac{1}{g(x)} \\le 1 + 4$$</p>\n<p>$$1 < f(x) \\le 5$$</p>\n<p>So, the range of $f(x)$ is $(1, 5]$.</p>\n<p>Correct Option: <strong>Option D</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>फलन $f(x) = \\frac{x^4 - \\sqrt{2}x + 2}{x^4 - \\sqrt{2}x + 1}$ का परिसर है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\left[ \\frac{1}{\\sqrt{5}}, \\sqrt{5} \\right]$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(1, \\sqrt{5}]$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\left[ \\frac{1}{5}, 5 \\right]$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(1, 5]$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtfbdnmv",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Range of $f(x) = \\ln((\\cos x)^{\\cos x} + 1), \\; x \\in \\left(0, \\frac{\\pi}{2}\\right)$ is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$[\\ln(e^e + 1), \\ln 2)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(\\ln(1 + e^{1/e}), \\ln 2)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\left[ \\ln \\left(1 + \\left(\\frac{1}{e}\\right)^{1/e} \\right), \\ln 2 \\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(0, \\ln 2)$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Let $t = \\cos x$. </p>\n<p>For $x \\in \\left(0, \\frac{\\pi}{2}\\right)$, the value of $t$ lies in the interval $(0, 1)$.</p>\n<p>Substituting $t = \\cos x$, the function becomes:</p>\n<p>$$f(x) = \\ln(t^t + 1)$$</p>\n<p>To find the range of $f(x)$, we first need to find the range of the function $g(t) = t^t$ on the interval $(0, 1)$.</p>\n<p>We can write $g(t)$ as:</p>\n<p>$$g(t) = e^{t \\ln t}$$</p>\n<p>Differentiating with respect to $t$:</p>\n<p>$$g'(t) = e^{t \\ln t} \\cdot \\frac{d}{dt}(t \\ln t) = t^t (1 + \\ln t)$$</p>\n<p>To find the critical point, set $g'(t) = 0$:</p>\n<p>$$1 + \\ln t = 0$$</p>\n<p>$$\\ln t = -1$$</p>\n<p>$$t = \\frac{1}{e}$$</p>\n<p>Since $\\frac{1}{e} \\in (0, 1)$, we check the value of $g(t)$ at this point:</p>\n<p>$$g\\left(\\frac{1}{e}\\right) = \\left(\\frac{1}{e}\\right)^{1/e}$$</p>\n<p>For $t < \\frac{1}{e}$, $g'(t) < 0$, which means $g(t)$ is decreasing.</p>\n<p>For $t > \\frac{1}{e}$, $g'(t) > 0$, which means $g(t)$ is increasing.</p>\n<p>Thus, $g(t)$ attains its minimum value at $t = \\frac{1}{e}$.</p>\n<p>Now check the behavior of $g(t)$ at the endpoints of the interval $(0, 1)$:</p>\n<p>$$\\lim\\limits_{t \\to 0^+} t^t = \\lim\\limits_{t \\to 0^+} e^{t \\ln t} = e^0 = 1$$</p>\n<p>$$\\lim\\limits_{t \\to 1^-} t^t = 1^1 = 1$$</p>\n<p>So, for $t \\in (0, 1)$, the range of $g(t) = t^t$ is:</p>\n<p>$$\\left[ \\left(\\frac{1}{e}\\right)^{1/e}, 1 \\right)$$</p>\n<p>Adding $1$ to the whole interval:</p>\n<p>$$t^t + 1 \\in \\left[ 1 + \\left(\\frac{1}{e}\\right)^{1/e}, 2 \\right)$$</p>\n<p>Since the natural logarithm function is strictly increasing, applying $\\ln$ preserves the inequalities:</p>\n<p>$$\\ln\\left(1 + \\left(\\frac{1}{e}\\right)^{1/e}\\right) \\le \\ln(t^t + 1) < \\ln 2$$</p>\n<p>Hence, the range of $f(x)$ is:</p>\n<p>$$\\left[ \\ln \\left(1 + \\left(\\frac{1}{e}\\right)^{1/e} \\right), \\ln 2 \\right)$$</p>\n<p>The correct option is Option C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$f(x) = \\ln((\\cos x)^{\\cos x} + 1), \\; x \\in \\left(0, \\frac{\\pi}{2}\\right)$ का परिसर है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$[\\ln(e^e + 1), \\ln 2)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(\\ln(1 + e^{1/e}), \\ln 2)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\left[ \\ln \\left(1 + \\left(\\frac{1}{e}\\right)^{1/e} \\right), \\ln 2 \\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(0, \\ln 2)$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mt93gzj2",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If range of $f(x)=\\frac{2 \\sin ^2 x+2 \\sin x+3}{\\sin ^2 x+\\sin x+1}$ is $[p, q]$ then $6 p-3 q$ equals</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>Let us substitute $\\sin x = t$. </p>\n<p>Since $\\sin x$ lies between $-1$ and $1$, the value of $t$ lies in the interval $[-1, 1]$.</p>\n<p>Now, the given function can be written in terms of $t$ as:</p>\n<p>$$y = \\frac{2t^2 + 2t + 3}{t^2 + t + 1}$$</p>\n\n<p>$$y = \\frac{2(t^2 + t + 1) + 1}{t^2 + t + 1}$$</p>\n<p>$$y = 2 + \\frac{1}{t^2 + t + 1}$$</p>\n<p>To find the range of $y$, let us first find the range of the quadratic expression in the denominator:</p>\n<p>$$g(t) = t^2 + t + 1$$</p>\n\n<p>$$g(t) = \\left(t + \\frac{1}{2}\\right)^2 + \\frac{3}{4}$$</p>\n<p>For $t \\in [-1, 1]$:</p>\n<ul>\n<li>The minimum value of $g(t)$ occurs at $t = -\\frac{1}{2}$:</li>\n</ul>\n<p>$$g\\left(-\\frac{1}{2}\\right) = 0 + \\frac{3}{4} = \\frac{3}{4}$$</p>\n<ul>\n<li>Checking the end points:</li>\n</ul>\n<p>$$g(-1) = (-1)^2 + (-1) + 1 = 1$$</p>\n<p>$$g(1) = (1)^2 + 1 + 1 = 3$$</p>\n<p>So, the maximum value of $g(t)$ occurs at $t = 1$, which is $3$.</p>\n<p>Thus, for $t \\in [-1, 1]$, the range of $g(t)$ is $\\left[\\frac{3}{4}, 3\\right]$.</p>\n<p>Now, we substitute the minimum and maximum values of $g(t)$ into the expression for $y$:</p>\n<ul>\n<li>For the minimum value of $y$, we use the maximum value of the denominator:</li>\n</ul>\n<p>$$p = 2 + \\frac{1}{3} = \\frac{7}{3}$$</p>\n<ul>\n<li>For the maximum value of $y$, we use the minimum value of the denominator:</li>\n</ul>\n<p>$$q = 2 + \\frac{1}{3/4} = 2 + \\frac{4}{3} = \\frac{10}{3}$$</p>\n<p>The range of $f(x)$ is $[p, q] = \\left[\\frac{7}{3}, \\frac{10}{3}\\right]$.</p>\n<p>Finally, we find the value of $6p - 3q$:</p>\n<p>$$6p - 3q = 6\\left(\\frac{7}{3}\\right) - 3\\left(\\frac{10}{3}\\right)$$</p>\n<p>$$= 14 - 10$$</p>\n<p>$$= 4$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $f(x)=\\frac{2 \\sin ^2 x+2 \\sin x+3}{\\sin ^2 x+\\sin x+1}$ का परिसर $[p, q]$ है, तो $6 p-3 q$ का मान बराबर है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtfopf1c",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The range of the function $f(x)=3|\\sin x|-2|\\cos x|$ is $\\left[-b, a\\right]$. Then, value of $a+b$ is $\\_\\_\\_\\_$</p>",
+                "options": [],
+                "answer": "5",
+                "explanation": "<p>For any value of $x$, both $|\\sin x|$ and $|\\cos x|$ are non-negative.</p>\n<p>Also, we know that</p>\n<p>$$ \\sin^2 x+\\cos^2 x=1 $$</p>\n<p>So we can write</p>\n<p>$$ |\\sin x|=\\sin \\theta,\\qquad |\\cos x|=\\cos \\theta $$</p>\n<p>where $\\theta$ lies between $0$ and $\\frac{\\pi}{2}$.</p>\n<p>Then the function becomes</p>\n<p>$$ f(x)=3\\sin\\theta-2\\cos\\theta $$</p>\n<p>Now consider</p>\n<p>$$ g(\\theta)=3\\sin\\theta-2\\cos\\theta $$</p>\n<p>for</p>\n<p>$$ 0\\leq \\theta \\leq \\frac{\\pi}{2} $$</p>\n<p>Differentiate:</p>\n<p>$$ g'(\\theta)=3\\cos\\theta+2\\sin\\theta $$</p>\n<p>Since $\\sin\\theta\\geq 0$ and $\\cos\\theta\\geq 0$ in this interval,</p>\n<p>$$ g'(\\theta)>0 $$</p>\n<p>So $g(\\theta)$ is increasing on $\\left[0,\\frac{\\pi}{2}\\right]$.</p>\n<p>Hence minimum value occurs at $\\theta=0$:</p>\n<p>$$ g(0)=3\\sin 0-2\\cos 0=0-2=-2 $$</p>\n<p>Maximum value occurs at $\\theta=\\frac{\\pi}{2}$:</p>\n<p>$$ g\\left(\\frac{\\pi}{2}\\right)=3\\sin\\frac{\\pi}{2}-2\\cos\\frac{\\pi}{2}=3-0=3 $$</p>\n<p>So the range is</p>\n<p>$$ [-2,3] $$</p>\n<p>Given range is $\\left[-b,a\\right]$, so</p>\n<p>$$ b=2,\\qquad a=3 $$</p>\n<p>Thus,</p>\n<p>$$ a+b=3+2=5 $$</p>\n<p>Answer:</p>\n<p>$$ \\boxed{5} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>फलन $f(x)=3|\\sin x|-2|\\cos x|$ का परिसर $\\left[-b, a\\right]$ है। तब, $a+b$ का मान $\\_\\_\\_\\_$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtfozrlr",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "The range of the function $f(x)=6^x+3^x+6^{-x}+3^{-x}+2$ is $\\left[a, \\infty \\right]$. Then, value of $a$ is $\\_\\_\\_\\_$",
+                "options": [],
+                "answer": "6",
+                "explanation": "<p>We are given the function:</p>\n<p>$$f(x) = 6^x + 3^x + 6^{-x} + 3^{-x} + 2$$</p>\n\n<p>$$f(x) = (6^x + 6^{-x}) + (3^x + 3^{-x}) + 2$$</p>\n<p>Recall that for any positive real number $y$, the sum of the number and its reciprocal is always greater than or equal to $2$ (using the Arithmetic Mean - Geometric Mean inequality):</p>\n<p>$$y + \\frac{1}{y} \\ge 2$$</p>\n<p>The equality holds when $y = 1$.</p>\n<p>Since $6^x > 0$ for all real values of $x$:</p>\n<p>$$6^x + 6^{-x} \\ge 2$$</p>\n<p>The minimum value is $2$, which occurs when $6^x = 1$, meaning $x = 0$.</p>\n<p>Similarly, since $3^x > 0$ for all real values of $x$:</p>\n<p>$$3^x + 3^{-x} \\ge 2$$</p>\n<p>The minimum value is also $2$, which occurs when $3^x = 1$, meaning $x = 0$.</p>\n<p>Since both parts achieve their minimum value at the exact same point $x = 0$, we can find the minimum value of $f(x)$ by substituting $x = 0$:</p>\n<p>$$f(0) = 6^0 + 3^0 + 6^{-0} + 3^{-0} + 2$$</p>\n<p>$$f(0) = 1 + 1 + 1 + 1 + 2 = 6$$</p>\n<p>As $x \\to \\infty$, $f(x) \\to \\infty$. Since $f(x)$ is continuous for all real $x$, the range of $f(x)$ is $[6, \\infty)$.</p>\n<p>Comparing this with the given range $[a, \\infty)$, we get:</p>\n<p>$$a = 6$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "फलन $f(x)=6^x+3^x+6^{-x}+3^{-x}+2$ का परिसर $\\left[a, \\infty \\right]$ है। तब, $a$ का मान $\\_\\_\\_\\_$ है।",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtfp7p4y",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "If $f(x)=3 \\sin \\sqrt{\\left(\\frac{\\pi^2}{16}-x^2\\right)}$, then its range is $\\left[0, \\frac{a}{\\sqrt{b}}\\right]$. Find value of $a+b$ is $\\_\\_\\_\\_$",
+                "options": [],
+                "answer": "5",
+                "explanation": "<p>Let $y=f(x)=3\\\\sin\\sqrt{\\frac{\\pi^2}{16}-x^2}$ …(i)</p>\n<p>$\\therefore$ $$y\\geq 0$$ ......(i)</p>\n<p>and</p>\n<p>$$\\frac{y}{3}=\\sin\\sqrt{\\frac{\\pi^2}{16}-x^2}$$</p>\n<p>$$\\Rightarrow \\left(\\sin^{-1}\\frac{y}{3}\\right)^2=\\frac{\\pi^2}{16}-x^2$$</p>\n<p>$$\\Rightarrow x^2=\\frac{\\pi^2}{16}-\\left(\\sin^{-1}\\frac{y}{3}\\right)^2\\geq 0$$</p>\n<p>$\\therefore$ $$\\left(\\sin^{-1}\\frac{y}{3}\\right)^2\\leq \\frac{\\pi^2}{16}$$</p>\n<p>$$\\Rightarrow -\\frac{\\pi}{4}\\leq \\sin^{-1}\\frac{y}{3}\\leq \\frac{\\pi}{4}$$</p>\n<p>$$\\Rightarrow \\sin\\left(-\\frac{\\pi}{4}\\right)\\leq \\frac{y}{3}\\leq \\sin\\left(\\frac{\\pi}{4}\\right)$$</p>\n<p>$$\\Rightarrow -\\frac{1}{\\sqrt{2}}\\leq \\frac{y}{3}\\leq \\frac{1}{\\sqrt{2}}$$</p>\n<p>$\\therefore$ $$-\\frac{3}{\\sqrt{2}}\\leq y\\leq \\frac{3}{\\sqrt{2}}$$ …(ii)</p>\n<p>From Eqs. (i) and (ii),</p>\n<p>$$0\\leq y\\leq \\frac{3}{\\sqrt{2}}$$</p>\n<p>$\\therefore$ $$y\\in \\left[0,\\frac{3}{\\sqrt{2}}\\right]$$</p>\n<p>Thus, $a=3$ and $b=2$.</p>\n<p>$$ a+b=3+2=\\boxed{5} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "यदि $f(x)=3 \\sin \\sqrt{\\left(\\frac{\\pi^2}{16}-x^2\\right)}$ है, तो इसका परिसर $\\left[0, \\frac{a}{\\sqrt{b}}\\right]$ है। $a+b$ का मान $\\_\\_\\_\\_$ है।",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtfogg8j",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The range of function $f(x)=\\frac{1}{\\sqrt{x^2-4 x+6}}$ is $\\left(0, \\frac{1}{\\sqrt{\\alpha}}\\right]$ then value of $\\alpha^2$ is $\\ldots \\ldots \\ldots$</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>We have,</p>\n<p>$$ \\begin{aligned} & x^2-4 x+6=(x-2)^2+2 \\geq 2 \\\\ \\Rightarrow & x^2-4 x+6 \\geq 2 \\\\ \\Rightarrow & \\sqrt{x^2-4 x+6} \\geq 2 \\\\ \\text { or } & \\frac{1}{\\sqrt{x^2-4 x+6}} \\leq \\frac{1}{\\sqrt{2}} \\end{aligned} $$</p>\n<p>But $f(x)>0$</p>\n<p>$$ \\therefore \\quad 0<\\frac{1}{\\sqrt{x^2-4 x+6}} \\leq \\frac{1}{\\sqrt{2}} $$</p>\n<p>Hence, $R_f=\\left(0, \\frac{1}{\\sqrt{2}}\\right) \\Rightarrow \\alpha^2=4$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि फलन $f(x)=\\frac{1}{\\sqrt{x^2-4 x+6}}$ का परिसर $\\left(0, \\frac{1}{\\sqrt{\\alpha}}\\right]$ है, तो $\\alpha^2$ का मान $\\ldots \\ldots \\ldots$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Domain, Range",
+    "timeAllotted": 2160000,
+    "title": "Functions Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61moo5w7gn",
+    "defaultLanguage": "en",
+    "description": "Domain, Range",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-31T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Domain, Range",
+    "timeAllotted": 2160000,
+    "title": "Functions Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Mathematics",
+    "_section": "Functions"
+  }
+}

@@ -1,0 +1,398 @@
+/**
+ * Quantrex — HD / high-visibility figures everywhere in questions
+ * (practice, test, stem, options · light + dark). Digital books keep their own layout.
+ */
+
+/* —— Paper plate: crisp white in light, soft light plate in dark (ink stays black) —— */
+.mtk-main .qx-fig,
+.mtk-main .qx-opt-fig,
+.mtk-main .qx-diagram-slot,
+.mtk-main #qxDiagramSlot,
+.mtk-main .qx-pool-fig-wrap,
+.mtk-main .qx-fig-inner,
+.mtk-main .qx-opt-diagram-slot,
+.mtk-opt-text .qx-opt-fig,
+.qx-prac-opt-text .qx-opt-fig,
+.qa-wrap .qx-diagram-slot,
+.qx-prac-q-wrap .qx-diagram-slot {
+  background: #ffffff !important;
+  border: 1px solid rgba(148, 163, 184, 0.35) !important;
+  border-radius: 14px !important;
+  padding: 12px 14px !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06) !important;
+  overflow: visible !important;
+  text-align: center !important;
+}
+
+html[data-theme="dark"] .mtk-main .qx-fig,
+html[data-theme="dark"] .mtk-main .qx-opt-fig,
+html[data-theme="dark"] .mtk-main .qx-diagram-slot,
+html[data-theme="dark"] .mtk-main #qxDiagramSlot,
+html[data-theme="dark"] .mtk-main .qx-pool-fig-wrap,
+html[data-theme="dark"] .mtk-main .qx-fig-inner,
+html[data-theme="dark"] .mtk-main .qx-opt-diagram-slot,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-fig,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-opt-fig,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-diagram-slot,
+.mtk-test-root[data-test-theme="dark"] .mtk-main #qxDiagramSlot,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-pool-fig-wrap,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-fig-inner,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-opt-diagram-slot,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt-text .qx-opt-fig,
+.mtk-test-root[data-test-theme="dark"] .qx-prac-opt-text .qx-opt-fig {
+  background: #f1f5f9 !important;
+  border-color: rgba(100, 116, 139, 0.45) !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28) !important;
+}
+
+/* —— Stem / body figures: large HD —— */
+.mtk-main .qx-question-body img.qx-pool-fig,
+.mtk-main .qx-question-body img.qx-fig-img,
+.mtk-main .qx-question-body img.qx-no-wm,
+.mtk-main #qxDiagramSlot img,
+.mtk-main .qx-diagram-slot img,
+.mtk-main .mtk-q-text img,
+.mtk-main .qx-prac-q img,
+.mtk-main .qa-q img,
+.mtk-main .qx-content > img,
+.mtk-main .qx-content img[src*="cdn-question-pool"],
+.mtk-main .qx-content img[src*="/pyq/"],
+.mtk-main .qx-content img[src*="proxy-image"],
+.mtk-main .qx-content img[src*="diagrams"],
+.mtk-main .qx-fig img,
+.qa-wrap .qx-question-body img,
+.qx-prac-q-wrap .qx-question-body img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: min(100%, 720px) !important;
+  max-height: min(78vh, 640px) !important;
+  min-height: 0 !important;
+  margin: 4px auto !important;
+  padding: 2px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: #ffffff !important;
+  border-radius: 8px !important;
+  border: none !important;
+  box-shadow: none !important;
+  /* HD crisp — never blurry downscale */
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: high-quality !important;
+  -ms-interpolation-mode: bicubic !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  mix-blend-mode: normal !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* —— Option structure figures: readable, not tiny —— */
+.mtk-main .qx-prac-opt-text img,
+.mtk-main .mtk-opt-text img,
+.mtk-main .qa-opt .qx-content img,
+.mtk-main .qx-opt-diagram-slot img,
+.mtk-main .qx-prac-opt-img img,
+.mtk-main .mtk-opt-img img,
+.mtk-main img.qx-opt-fig-img,
+.qx-prac-opt-text img.qx-pool-fig,
+.mtk-opt-text img.qx-pool-fig {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: min(100%, 360px) !important;
+  max-height: min(36vh, 280px) !important;
+  min-height: 64px !important;
+  margin: 8px auto !important;
+  padding: 6px !important;
+  object-fit: contain !important;
+  background: #ffffff !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(148, 163, 184, 0.28) !important;
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: high-quality !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Dark: keep figures on light paper so black ink is sharp */
+html[data-theme="dark"] .mtk-main .qx-question-body img.qx-pool-fig,
+html[data-theme="dark"] .mtk-main #qxDiagramSlot img,
+html[data-theme="dark"] .mtk-main .qx-diagram-slot img,
+html[data-theme="dark"] .mtk-main .mtk-q-text img,
+html[data-theme="dark"] .mtk-main .qx-prac-opt-text img,
+html[data-theme="dark"] .mtk-main .mtk-opt-text img,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-question-body img.qx-pool-fig,
+.mtk-test-root[data-test-theme="dark"] .mtk-main #qxDiagramSlot img,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-diagram-slot img,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .mtk-q-text img,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .qx-prac-opt-text img,
+.mtk-test-root[data-test-theme="dark"] .mtk-main .mtk-opt-text img {
+  background: #ffffff !important;
+  mix-blend-mode: normal !important;
+  filter: none !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Option cards with structures need room */
+.mtk-main .qx-prac-opt.qx-prac-opt-img,
+.mtk-main .mtk-opt.mtk-opt-img,
+.mtk-options.qx-opts-img .mtk-opt {
+  min-height: 88px !important;
+  align-items: center !important;
+}
+
+/* Zoom affordance stays clickable but figure stays sharp */
+.mtk-main img.qx-pool-fig,
+.mtk-main img.qx-fig-img,
+.mtk-main img.qx-opt-fig-img {
+  cursor: zoom-in;
+}
+
+/* Mobile: still large enough to read structures */
+@media (max-width: 640px) {
+  .mtk-main .qx-question-body img.qx-pool-fig,
+  .mtk-main #qxDiagramSlot img,
+  .mtk-main .qx-diagram-slot img,
+  .mtk-main .mtk-q-text img {
+    max-width: 100% !important;
+    max-height: min(48vh, 360px) !important;
+  }
+  .mtk-main .qx-prac-opt-text img,
+  .mtk-main .mtk-opt-text img {
+    max-width: 100% !important;
+    max-height: min(32vh, 220px) !important;
+  }
+}
+
+/* —— Global practice / CPYQB / all-qs (not only mtk-main test shell) —— */
+#app-main img.qx-pool-fig,
+#app-main img.qx-fig-img,
+#app-main img.qx-no-wm,
+#app-main img.qx-opt-fig-img,
+#app-main .qx-content img[src*="cdn-question-pool"],
+#app-main .qx-content img[src*="/pyq/"],
+#app-main .qx-content img[src*="proxy-image"],
+#app-main .qx-content img[src*="diagrams"],
+#app-main .qa-q img,
+#app-main .qa-opt img,
+/* Question STEM figures only — NEVER NTA/exam logos (those blew up to 640px in list cards) */
+#app-main .q-card img:not(.exam-pill-logo):not(.logo-mark img):not(.qx-exam-logo):not(.qx-paper-exam-logo):not(.qx-nta-chip):not(.qx-card-exam-logo):not(.qx-marks-icon):not([src*="ic_content_exam"]):not([src*="/exams/"]),
+#app-main .qx-prac-q img:not(.qx-exam-logo):not(.qx-paper-exam-logo):not(.qx-nta-chip):not([src*="ic_content_exam"]):not([src*="/exams/"]),
+#app-main .qx-prac-opt-text img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: min(100%, 640px) !important;
+  max-height: min(52vh, 420px) !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 10px auto !important;
+  object-fit: contain !important;
+  background: #ffffff !important;
+  border-radius: 10px !important;
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: high-quality !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Nuclear: NTA / exam logos in list + practice always 16px chip */
+#app-main .q-card img.qx-exam-logo,
+#app-main .q-card img.qx-paper-exam-logo,
+#app-main .q-card img.qx-nta-chip,
+#app-main .q-card img.qx-card-exam-logo,
+#app-main .q-card img[src*="ic_content_exam"],
+#app-main .q-card img[src*="/exams/ic_content_exam"],
+#app-main .q-footer img,
+#app-main .q-card .qx-paper-meta img,
+#app-main .qx-paper-meta img,
+#app-main .qx-paper-chip img,
+#app-main .allen-practice .qx-paper-meta img,
+#app-main .mtk-main .qx-paper-meta img {
+  display: inline-block !important;
+  width: 16px !important;
+  height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  margin: 0 5px 0 0 !important;
+  padding: 0 !important;
+  vertical-align: -3px !important;
+  object-fit: contain !important;
+  background: transparent !important;
+  border-radius: 3px !important;
+  box-shadow: none !important;
+  float: none !important;
+}
+
+#app-main .qa-opt img,
+#app-main .qx-prac-opt-text img,
+#app-main img.qx-opt-fig-img {
+  max-width: min(100%, 380px) !important;
+  max-height: min(36vh, 280px) !important;
+}
+
+html[data-theme="dark"] #app-main img.qx-pool-fig,
+html[data-theme="dark"] #app-main img.qx-fig-img,
+html[data-theme="dark"] #app-main .qa-q img,
+html[data-theme="dark"] #app-main .qa-opt img,
+html[data-theme="dark"] #app-main .qx-content img[src*="cdn-question-pool"] {
+  background: #ffffff !important;
+  filter: none !important;
+}
+
+/* —— Digital books: tight figures (no 640px plates / empty space) —— */
+body.qx-book-mode .mtk-main .qx-fig,
+body.qx-book-mode .mtk-main .qx-opt-fig,
+body.qx-book-mode .mtk-main .qx-diagram-slot,
+body.qx-book-mode .mtk-main #qxDiagramSlot,
+body.qx-book-mode .mtk-main .qx-pool-fig-wrap,
+body.qx-book-mode .mtk-main .qx-fig-inner,
+body.qx-book-mode .mtk-main .qx-opt-diagram-slot,
+body.qx-book-mode .mtk-opt-text .qx-opt-fig,
+.mtk-test-root.qx-book-q .mtk-main .qx-fig,
+.mtk-test-root.qx-book-q .mtk-main .qx-opt-fig,
+.mtk-test-root.qx-book-q .mtk-main .qx-diagram-slot,
+.mtk-test-root.qx-book-q .mtk-main #qxDiagramSlot,
+.mtk-test-root.qx-book-q .mtk-main .qx-pool-fig-wrap,
+.mtk-test-root.qx-book-q .mtk-main .qx-fig-inner,
+.mtk-test-root.qx-book-q .mtk-main .qx-opt-diagram-slot,
+.mtk-main .qx-marks-native .qx-fig,
+.mtk-main .qx-marks-native .qx-opt-fig,
+.mtk-main .qx-marks-native .qx-pool-fig-wrap,
+.mtk-main .qx-marks-native .qx-fig-inner,
+.mtk-main .qx-marks-native .qx-diagram-slot,
+.mtk-main .qx-marks-native-q .qx-fig,
+.mtk-main .qx-marks-native-q .qx-pool-fig-wrap,
+.mtk-main .qx-marks-native-q .qx-fig-inner {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 2px 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  display: inline-block !important;
+  max-width: 100% !important;
+  width: auto !important;
+  min-height: 0 !important;
+  text-align: left !important;
+}
+
+body.qx-book-mode .mtk-main .qx-question-body img.qx-pool-fig,
+body.qx-book-mode .mtk-main .qx-question-body img.qx-fig-img,
+body.qx-book-mode .mtk-main .qx-question-body img.qx-no-wm,
+body.qx-book-mode .mtk-main #qxDiagramSlot img,
+body.qx-book-mode .mtk-main .qx-diagram-slot img,
+body.qx-book-mode .mtk-main .mtk-q-text img,
+body.qx-book-mode .mtk-main .qx-prac-q img,
+body.qx-book-mode .mtk-main .qx-content img,
+body.qx-book-mode .mtk-main .qx-prac-opt-text img,
+body.qx-book-mode .mtk-main .mtk-opt-text img,
+body.qx-book-mode #app-main img.qx-pool-fig,
+body.qx-book-mode #app-main img.qx-fig-img,
+body.qx-book-mode #app-main .qx-content img,
+body.qx-book-mode #app-main .qx-prac-q img,
+body.qx-book-mode #app-main .qx-prac-opt-text img,
+.mtk-test-root.qx-book-q .mtk-main .qx-question-body img,
+.mtk-test-root.qx-book-q .mtk-main .mtk-q-text img,
+.mtk-test-root.qx-book-q .mtk-main .qx-content img,
+.mtk-test-root.qx-book-q .mtk-main .mtk-opt-text img,
+.mtk-test-root.qx-book-q .mtk-main .qx-prac-opt-text img,
+.mtk-main .qx-marks-native img,
+.mtk-main .qx-marks-native-q img,
+.mtk-main .qx-marks-native-opt img,
+#app-main .qx-marks-native img,
+#app-main .qx-marks-native-q img,
+#app-main .qx-marks-native-opt img,
+#app-main.qx-book-mode .qx-prac-q img,
+#app-main.qx-book-mode .qx-content img,
+#app-main .qx-book-q img {
+  display: inline-block !important;
+  vertical-align: middle !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: min(100%, 380px) !important;
+  max-height: min(36vh, 260px) !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 4px 0 !important;
+  padding: 0 !important;
+  object-fit: contain !important;
+  object-position: left center !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  float: none !important;
+  cursor: zoom-in;
+}
+
+/* Book option structures stay readable but compact */
+body.qx-book-mode .mtk-main .mtk-opt-text img,
+body.qx-book-mode .mtk-main .qx-prac-opt-text img,
+.mtk-test-root.qx-book-q .mtk-opt-text img,
+.mtk-main .qx-marks-native-opt img {
+  max-width: min(100%, 280px) !important;
+  max-height: min(28vh, 200px) !important;
+  margin: 2px 0 !important;
+}
+
+body.qx-book-mode .mtk-main .qx-prac-opt.qx-prac-opt-img,
+body.qx-book-mode .mtk-main .mtk-opt.mtk-opt-img,
+body.qx-book-mode .mtk-options.qx-opts-img .mtk-opt,
+.mtk-test-root.qx-book-q .mtk-options.qx-opts-img .mtk-opt {
+  min-height: 0 !important;
+  align-items: flex-start !important;
+}
+
+/* Collapse empty diagram segment cards in books */
+body.qx-book-mode .qx-question-body.qx-question-flow,
+.mtk-test-root.qx-book-q .qx-question-body.qx-question-flow {
+  gap: 4px !important;
+}
+body.qx-book-mode .qx-question-body.qx-question-flow .qx-diagram-seg,
+body.qx-book-mode .qx-question-body.qx-question-flow .qx-diagram-slot,
+.mtk-test-root.qx-book-q .qx-question-body.qx-question-flow .qx-diagram-seg,
+.mtk-test-root.qx-book-q .qx-question-body.qx-question-flow .qx-diagram-slot {
+  max-width: min(100%, 400px) !important;
+  margin: 2px 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  align-self: flex-start !important;
+}
+
+/* Black Book scanned PDF pages — full readable page (not tiny diagram crop) */
+img.bb-page-img,
+.mtk-main img.bb-page-img,
+#app-main img.bb-page-img,
+body.qx-book-mode .mtk-main .qx-content img.bb-page-img,
+body.qx-book-mode .mtk-main .qx-prac-q img.bb-page-img,
+body.qx-book-mode #app-main .qx-content img.bb-page-img,
+.mtk-test-root.qx-book-q .mtk-main .qx-content img.bb-page-img {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 8px 0 12px !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(148, 163, 184, 0.35) !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08) !important;
+  background: #fff !important;
+  object-fit: contain !important;
+  cursor: zoom-in !important;
+}

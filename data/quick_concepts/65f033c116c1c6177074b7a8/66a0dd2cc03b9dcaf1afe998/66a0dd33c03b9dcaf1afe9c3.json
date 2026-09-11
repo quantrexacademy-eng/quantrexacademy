@@ -1,0 +1,46 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd2cc03b9dcaf1afe998",
+  "topicId": "66a0dd33c03b9dcaf1afe9c3",
+  "title": "Coaxial systems of circles",
+  "concepts": [
+    {
+      "title": "Radical circle ",
+      "conceptBody": "<h3><strong>Radical Centre</strong></h3><p>The point of concurrence of the radical axes of three circles whose centre are non-collinear, taken in pair, is called the radical centre of circles</p><p><strong>Properties of Radical Centre:&nbsp;</strong></p><ol><li>Co-ordinates of radical centre can be found by solving the equations</li></ol><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ${{\\text{S}}_{1}}={{\\text{S}}_{2}}={{\\text{S}}_{3}}=0$</p><ol><li>The radical centre of three circles described on the sides of a triangle as diameters is the orthocentre of the triangle.</li><li>The radical centre of three given circles will be the centre of a fourth circle which cuts all the three circles orthogonally and the radius of the fourth circle is the length of tangent drawn from radical centre of the three given circles to any of these circles.</li></ol>",
+      "position": 0,
+      "qcConcept": "66a0dd33c03b9dcaf1afe9c4"
+    },
+    {
+      "title": "Coaxial Circles",
+      "conceptBody": "<h3><strong>Coaxial circles&nbsp;</strong></h3><p><strong>Definition: </strong>A system of circles is said to be coaxial when they have a common radical axis, i.e., when the radical axis of each pair of circles of the system is the same.</p><p><strong>Some properties&nbsp;</strong></p><ol><li>Circles passing through two fixed points form a coaxial system of circles, because every pair of circles has the same common chord and hence the same radical axis.</li><li>The equation ${{x}^{2}}+{{y}^{2}}+2gx+c$, where $g$ is variable and $c$ is a constant, is the simplest equation of a coaxial system of circles. The common radical axis of this system of circles is y-axis. To find the equation of a system of coaxial circles.</li></ol><p>Since, the radical axis of any pair of the circle is perpendicular to the line joining their centres, it follows that the centres of all the circles of a coaxial system must lie on a straight line which is perpendicular to the radical axis.</p><p>Take the line of centres as the axis of $\\text{x}$ and the radical axis as the axis of $\\text{y}$ so that $\\text{O}$ is the origin. The equation to any circle with its centre on the axis of $\\text{x}$ is</p><p>${{\\text{x}}^{2}}+{{\\text{y}}^{2}}-2\\text{gx}+\\text{c}=0$ … (1)</p><p>Any point on the radical axis is $\\left( 0,{{y}_{1}} \\right)$.</p><p>The square on the tangent from it to the circle (1) is by $y_{1}^{2}+c$.</p><p>Since, this quantity is to be the same for all circles of the system it follows that $\\text{c}$ is the same for all such circles; the different circles are therefore obtained by giving different values to $g$ in the equation (1).</p><p>The intersections of equation (1) with the radical axis are then obtained by putting $\\text{x}=0$ in equation (1), and we have $\\text{y}=\\pm \\sqrt{-\\text{c}}$.</p><p>If c be negative, we have two real points of intersection. In such cases the circles are said to be of the Intersecting Species.</p><p>If c be positive, we have two imaginary points of intersection.</p>",
+      "position": 1,
+      "qcConcept": "66a0dd33c03b9dcaf1afe9c5"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f352d384bfb4a537eec",
+      "title": "The equation of a circle passing through origin and co-axial to circles $x^2+y^2=a^2$ and $x^2+y^2+2 a x=2 a^2$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f352d384bfb4a537eed",
+      "title": "The point $(2,3)$ is a limiting point of a coaxial system of circles of which $x^2+y^2=9$ is a member. The co-ordinates of the other limiting point is given by",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f352d384bfb4a537eee",
+      "title": "One of the limit point of the coaxial system of circles containing $x^2+y^2-6 x-6 y+4=0$, $x^2+y^2-2 x-4 y+3=0$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f352d384bfb4a537eef",
+      "title": "In the co-axial system of circle $x^2+y^2+2 g x+c=0$, where $g$ is a parameter, if $c\\gt0$ then the circles are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,992 @@
+{
+  "testId": "tst-19g61mod5ixtr",
+  "title": "Permutation and Combination Test - 5 (Topic Test)",
+  "type": "topic",
+  "section": "Permutation and Combination",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Mathematics",
+  "isUpcoming": false,
+  "liveAt": "2026-07-22T10:30:00.000Z",
+  "status": "ok",
+  "analysisId": "7bb14d38-f10f-424c-9d69-aaf0dfba78e6",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g61mod5ixtr",
+    "defaultLanguage": "en",
+    "description": "Multinomial Theorem and Dearrangement, Exponent of prime P in N!",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-22T10:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrg054ra",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The greatest of <i>d</i> so that 12 divides in 100! is equal to (<i>a</i> &isin; &naturals;)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>47</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>48</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>49</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>97</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>To find the greatest power of 12 that perfectly divides $100!$, we first need to look at the prime factorization of 12. We can write 12 as:</p>\n<p>$$12 = 2^2 \\times 3$$</p>\n<p>This tells us that to form a 12, we need two 2s and one 3. So, our task is to find out how many 2s and 3s are available in the prime factorization of $100!$. </p>\n<p>To find the exponent or highest power of a prime number $p$ in $n!$, we keep dividing $n$ by successive powers of $p$ and add the greatest integer parts of the quotients.</p>\n<p>Let's find the highest power of 2 in $100!$. We do this by dividing 100 by powers of 2:</p>\n<p>$$=\\left[ \\frac{100}{2} \\right] + \\left[ \\frac{100}{2^2} \\right] + \\left[ \\frac{100}{2^3} \\right] + \\left[ \\frac{100}{2^4} \\right] + \\left[ \\frac{100}{2^5} \\right] + \\left[ \\frac{100}{2^6} \\right]$$</p>\n<p>$$=\\left[ \\frac{100}{2} \\right] + \\left[ \\frac{100}{4} \\right] + \\left[ \\frac{100}{8} \\right] + \\left[ \\frac{100}{16} \\right] + \\left[ \\frac{100}{32} \\right] + \\left[ \\frac{100}{64} \\right]$$</p>\n<p>$$= 50 + 25 + 12 + 6 + 3 + 1 = 97$$</p>\n<p>So, there are 97 twos available in $100!$. </p>\n<p>Since we need two 2s to make a 4 (because $12 = 4 \\times 3$), we group these 97 twos into pairs. The total number of pairs we can form is:</p>\n<p>$$\\left[ \\frac{97}{2} \\right] = 48$$</p>\n<p>This means we have 48 fours available.</p>\n<p>Now, let's find the highest power of 3 in $100!$. We divide 100 by successive powers of 3:</p>\n<p>$$=\\left[ \\frac{100}{3} \\right] + \\left[ \\frac{100}{3^2} \\right] + \\left[ \\frac{100}{3^3} \\right] + \\left[ \\frac{100}{3^4} \\right]$$</p>\n<p>$$=\\left[ \\frac{100}{3} \\right] + \\left[ \\frac{100}{9} \\right] + \\left[ \\frac{100}{27} \\right] + \\left[ \\frac{100}{81} \\right]$$</p>\n<p>$$= 33 + 11 + 3 + 1 = 48$$</p>\n<p>So, there are 48 threes available.</p>\n<p>To form the number 12, we must combine each 4 with a 3. We have exactly 48 fours and 48 threes. The number of 12s we can form depends on whichever number is smaller. By comparing the two, both give us 48. Thus, we can form exactly 48 twelves.</p>\n<p>The greatest value of $d$ such that $12^d$ divides $100!$ is 48.</p>\n<p>Option B is the correct answer.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><i>d</i> का वह अधिकतम मान जिसके लिए $12^d$, $100!$ को पूर्णतः विभाजित करता है, बराबर है (<i>a</i> &isin; &naturals;)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>47</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>48</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>49</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>97</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "exponet-of-prime-p-in-n",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrg0cay6",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Given below are two statements. One is labelled as Assertion (A) and the other is labelled as Reason (R).</p> <p><b>Assertion (A):</b> Number of zeros at the end of $50!$ is 12.</p> <p><b>Reason (R):</b> Exponent of 2 in $50!$ is 47.</p> <p>Choose the correct option :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>(A) is true but (R) is false.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Both (A) and (R) are true and (R) is the true explanation of (A).</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>(A) is false and (R) is true.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Both (A) and (R) are true but (R) is not the true explanation of (A).</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The number of zeros at the end of a factorial depends on how many times 10 divides it. Since $10 = 2 \\times 5$, we need pairs of 2 and 5. There are always more 2s than 5s, so the number of trailing zeros is just the exponent of 5 in $50!$.</p>\n<p>Finding the exponent of 5 in $50!$:</p>\n<p>$$\\left\\lfloor \\frac{50}{5} \\right\\rfloor + \\left\\lfloor \\frac{50}{25} \\right\\rfloor = 10 + 2 = 12$$</p>\n<p>So the number of trailing zeros is $12$. This means Assertion (A) is true.</p>\n<p>Now exponent of 2 in $50!$:</p>\n<p>$$\\left\\lfloor \\frac{50}{2} \\right\\rfloor + \\left\\lfloor \\frac{50}{4} \\right\\rfloor + \\left\\lfloor \\frac{50}{8} \\right\\rfloor + \\left\\lfloor \\frac{50}{16} \\right\\rfloor + \\left\\lfloor \\frac{50}{32} \\right\\rfloor$$</p>\n<p>$$= 25 + 12 + 6 + 3 + 1 = 47$$</p>\n<p>So the exponent of 2 is $47$, which makes Reason (R) true as well.</p>\n<p>But here is the important point. The number of trailing zeros is decided by the exponent of 5, not the exponent of 2. Since 2s are always in surplus, the exponent of 2 does not control how many zeros appear at the end. So even though (R) is a true fact, it is not the correct reason behind (A).</p>\n<p>The correct option is <strong>(D)</strong> — Both (A) and (R) are true but (R) is not the true explanation of (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>नीचे दो कथन दिए गए हैं। एक को अभिकथन (A) और दूसरे को कारण (R) के रूप में अंकित किया गया है।</p> <p><b>अभिकथन (A):</b> $50!$ के अंत में शून्यों की संख्या 12 है।</p> <p><b>कारण (R):</b> $50!$ में 2 की घातांक 47 है।</p> <p>सही विकल्प चुनें :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>(A) सत्य है लेकिन (R) असत्य है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>(A) और (R) दोनों सत्य हैं और (R), (A) की सही व्याख्या है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>(A) असत्य है और (R) सत्य है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>(A) और (R) दोनों सत्य हैं लेकिन (R), (A) की सही व्याख्या नहीं है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "exponet-of-prime-p-in-n",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrvtbopj",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>There are six letters $L_1, L_2, L_3, L_4, L_5, L_6$ and their corresponding six envelopes $E_1, E_2, E_3, E_4, E_5, E_6$. Letters having odd value can be put into odd value envelopes and even value letters can be put into even value envelopes, so that no letter goes into the right envelope, then number of arrangement equals.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>6</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>9</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>44</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>4</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>We have six letters $L_1, L_2, L_3, L_4, L_5, L_6$ and six matchings envelopes $E_1, E_2, E_3, E_4, E_5, E_6$. </p>\n\n<p>The odd group consists of letters $L_1, L_3, L_5$ and envelopes $E_1, E_3, E_5$.</p>\n<p>The even group consists of letters $L_2, L_4, L_6$ and envelopes $E_2, E_4, E_6$.</p>\n\n<p>We have 3 odd letters to put into 3 odd envelopes such that none of them goes into its original envelope. This is a classic case of derangement. </p>\n<p>The number of ways to arrange $n$ objects such that none of them occupies its original position is given by the derangement formula:</p>\n<p>$$D_n = n! \\left(1 - \\frac{1}{1!} + \\frac{1}{2!} - \\frac{1}{3!} + \\dots + \\frac{(-1)^n}{n!} \\right)$$</p>\n<p>For the 3 odd letters, we use $n = 3$:</p>\n<p>$$D_3 = 3! \\left(1 - \\frac{1}{1!} + \\frac{1}{2!} - \\frac{1}{3!} \\right)$$</p>\n<p>$$D_3 = 6 \\left(0 + \\frac{1}{2} - \\frac{1}{6} \\right)$$</p>\n<p>$$D_3 = 6 \\left(\\frac{3 - 1}{6} \\right)$$</p>\n<p>$$D_3 = 2$$</p>\n<p>So, there are 2 ways to wrongly place the odd letters in the odd envelopes.</p>\n<p>We have 3 even letters that need to be placed in 3 even envelopes such that no letter goes into its matching envelope. Using the same derangement concept for $n = 3$, the number of ways is again 2.</p>\n<p>$$D_3 = 2$$</p>\n<p>The placement of the odd letters and the placement of the even letters are completely independent events. By the fundamental principle of counting, we multiply the number of ways for both tasks to find the total arrangements.</p>\n<p>$$\\text{Total ways} = (\\text{Ways for odd letters}) \\times (\\text{Ways for even letters})$$</p>\n<p>$$\\text{Total ways} = 2 \\times 2 = 4$$</p>\n<p>There are 4 possible arrangements where all the conditions are met.</p>\n<p>Option D is the correct answer.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>छह पत्र $L_1, L_2, L_3, L_4, L_5, L_6$ और उनके संगत छह लिफाफे $E_1, E_2, E_3, E_4, E_5, E_6$ हैं। विषम मान वाले पत्रों को विषम मान वाले लिफाफों में और सम मान वाले पत्रों को सम मान वाले लिफाफों में इस प्रकार रखा जा सकता है कि कोई भी पत्र सही लिफाफे में न जाए, तब व्यवस्थाओं की संख्या बराबर है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>6</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>9</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>44</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>4</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "dearrangement",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrqcla5b",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>Number of cyphers at the end of $^{2002}C_{1001}$ is</b></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>200</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The number of zeroes at the end depends on the number of factors of $10$ in the number.</p>\n<p>Since</p>\n<p>$$ 10 = 2 \\times 5 $$</p>\n<p>we need to count the powers of $2$ and $5$ in</p>\n<p>$$ {}^{2002}C_{1001}=\\frac{2002!}{1001!\\,1001!} $$</p>\n<p>The number of zeroes will be the smaller of the powers of $2$ and $5$.</p>\n<p>First count the power of $5$.</p>\n<p>Using the formula for power of a prime $p$ in $n!$:</p>\n<p>$$ \\left[\\frac{n}{p}\\right]+\\left[\\frac{n}{p^2}\\right]+\\left[\\frac{n}{p^3}\\right]+\\cdots $$</p>\n<p>For $2002!$:</p>\n<p>$$ \\left[\\frac{2002}{5}\\right]+\\left[\\frac{2002}{25}\\right]+\\left[\\frac{2002}{125}\\right]+\\left[\\frac{2002}{625}\\right] $$</p>\n<p>$$ =400+80+16+3=499 $$</p>\n<p>For $1001!$:</p>\n<p>$$ \\left[\\frac{1001}{5}\\right]+\\left[\\frac{1001}{25}\\right]+\\left[\\frac{1001}{125}\\right]+\\left[\\frac{1001}{625}\\right] $$</p>\n<p>$$ =200+40+8+1=249 $$</p>\n<p>Since there are two $1001!$ in the denominator,</p>\n<p>$$ \\text{power of }5=499-2(249)=499-498=1 $$</p>\n<p>So there is only one factor of $5$.</p>\n<p>Now, the power of $2$ will be more than $1$, so the number of factors of $10$ is limited by the number of factors of $5$.</p>\n<p>Hence, the number of cyphers at the end of ${}^{2002}C_{1001}$ is</p>\n<p>$$ \\boxed{1} $$</p>\n<p>Correct option: <strong>B</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>$^{2002}C_{1001}$ के अंत में शून्यों (cyphers) की संख्या है</b></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>200</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "exponet-of-prime-p-in-n",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrvttz25",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of ways in which 10 identical apples can be distributed among 6 children so that each child receives at least one apple is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>126</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>252</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>378</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Let the number of apples received by the 6 children be $x_1, x_2, x_3, x_4, x_5,$ and $x_6$. </p>\n<p>Since the total number of apples is 10, we can write:</p>\n<p>$$x_1 + x_2 + x_3 + x_4 + x_5 + x_6 = 10$$</p>\n<p>The condition given is that each child gets at least one apple. This means $x_1 \\geq 1, x_2 \\geq 1, \\dots, x_6 \\geq 1$. </p>\n<p>To make this problem easier to solve, we can first give one apple to each of the 6 children. Since there are 6 children, this will take up 6 apples. </p>\n<p>The number of apples left to distribute is:</p>\n<p>$$10 - 6 = 4$$</p>\n<p>Now, we need to distribute these remaining 4 apples among the 6 children. This time, there is no restriction, meaning a child might not get any of these leftover apples or might get more than one. </p>\n<p>Let $y_1, y_2, \\dots, y_6$ represent the number of additional apples given to the children. We now need to find the number of non-negative integer solutions to:</p>\n<p>$$y_1 + y_2 + y_3 + y_4 + y_5 + y_6 = 4$$</p>\n<p>The total number of ways to distribute $n$ identical items among $r$ distinct groups (or find non-negative integer solutions) is given by the formula:</p>\n<p>$$^{n+r-1}C_{r-1}$$</p>\n<p>Here, the number of leftover apples to distribute is $n = 4$, and the number of children is $r = 6$. Putting these values into the formula, we get:</p>\n<p>$$^{4+6-1}C_{6-1} = {}^9C_5$$</p>\n\n<p>$$^9C_5 = \\frac{9!}{5! \\times (9 - 5)!} = \\frac{9!}{5! \\times 4!}$$</p>\n<p>$$^9C_5 = \\frac{9 \\times 8 \\times 7 \\times 6 \\times 5!}{5! \\times (4 \\times 3 \\times 2 \\times 1)}$$</p>\n\n<p>$$^9C_5 = \\frac{9 \\times 8 \\times 7 \\times 6}{4 \\times 3 \\times 2 \\times 1}$$</p>\n\n<p>$$^9C_5 = 3 \\times 7 \\times 6 = 126$$</p>\n<p>The number of ways to distribute the apples is 126.</p>\n<p>Option A is the correct answer.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>10 एक समान सेबों को 6 बच्चों के बीच इस प्रकार बाँटने के तरीकों की संख्या ज्ञात कीजिए कि प्रत्येक बच्चे को कम से कम एक सेब अवश्य मिले:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>126</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>252</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>378</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "distribution-of-identical-objects",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrvtxgku",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>There are 5 different coloured balls and 5 boxes of colours same as those of the balls. The number of ways in which one can put the balls in the boxes, one in each box, so that no ball goes to a box of its own colour is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>40</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>44</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>45</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>60</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>We have 5 different coloured balls and 5 matching coloured boxes. We need to place one ball in each box so that no ball goes into its matching colour box. </p>\n<p>When we want to find the number of ways to arrange objects such that none of them occupy their original or matching positions, we use the mathematical concept called derangements.</p>\n<p>The formula for the number of derangements of $n$ distinct objects is:</p>\n<p>$$D_n = n! \\left( 1 - \\frac{1}{1!} + \\frac{1}{2!} - \\frac{1}{3!} + \\dots + (-1)^n \\frac{1}{n!} \\right)$$</p>\n\n<p>$$D_5 = 5! \\left( 1 - \\frac{1}{1!} + \\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!} - \\frac{1}{5!} \\right)$$</p>\n\n<p>$$D_5 = 120 \\left( \\frac{1}{2} - \\frac{1}{6} + \\frac{1}{24} - \\frac{1}{120} \\right)$$</p>\n\n<p>$$D_5 = \\frac{120}{2} - \\frac{120}{6} + \\frac{120}{24} - \\frac{120}{120}$$</p>\n\n<p>$$D_5 = 60 - 20 + 5 - 1$$</p>\n\n<p>$$D_5 = 40 + 5 - 1 = 44$$</p>\n<p>There are 44 ways to put the balls in the boxes so that no ball goes to a box of its own colour. </p>\n<p>Option B is the correct answer.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>5 अलग-अलग रंगों की गेंदें हैं और उन्हीं रंगों के 5 डिब्बे हैं। उन तरीकों की संख्या, जिनमें गेंदों को डिब्बों में (प्रत्येक डिब्बे में एक) इस प्रकार रखा जा सके कि कोई भी गेंद अपने समान रंग के डिब्बे में न जाए, है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>40</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>44</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>45</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>60</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "dearrangement",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrvu3063",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of positive integral solutions of $x + y + z = n$, $n \\in \\mathbb{N}$, $n \\geq 3$, is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$^{n-1}C_2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$^{n-1}P_2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$n(n-1)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Since $x, y, z$ are positive integers, each of them must be at least $1$.</p>\n<p>So first give $1$ to each variable:</p>\n<p>$$ x = a+1,\\quad y = b+1,\\quad z = c+1 $$</p>\n<p>where $a, b, c$ are non-negative integers.</p>\n<p>Substitute in the equation:</p>\n<p>$$ (a+1)+(b+1)+(c+1)=n $$</p>\n<p>$$ a+b+c=n-3 $$</p>\n<p>Now we need the number of non-negative integral solutions of</p>\n<p>$$ a+b+c=n-3 $$</p>\n<p>Using the standard result, the number of non-negative integral solutions of</p>\n<p>$$ a+b+c=m $$</p>\n<p>is</p>\n<p>$$ {}^{m+3-1}C_{3-1} = {}^{m+2}C_2 $$</p>\n<p>Here, $m=n-3$, so the number of solutions is</p>\n<p>$$ {}^{n-1}C_2 $$</p>\n<p>Hence, the correct option is</p>\n<p>$$ \\boxed{{}^{n-1}C_2} $$</p>\n<p>Option A.</p>\n<p><b>Alternate Method :</b></p>\n<p>The number of positive integral solutions</p>\n<p>$$ \\begin{aligned} & =\\text { coefficient of } x^n \\text { in }\\left(x+x^2+x^3+\\ldots\\right)^3 \\\\ & =\\text { coefficient of } x^{n-3} \\text { in }\\left(1+x+x^2+\\ldots\\right)^3 \\\\ & =\\text { coefficient of } x^{n-3} \\text { in }(1-x)^{-3} \\\\ & =\\text { coefficient of } x^{n-3} \\text { in }\\left\\{{ }^2 C_0+{ }^3 C_1 x+{ }^4 C_2 x^2+\\ldots\\right\\} \\\\ & ={ }^{n-1} C_{n-3}=\\frac{(n-1)!}{(n-3)!2!}=\\frac{(n-1)(n-2)}{2} . \\end{aligned} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$x + y + z = n$, $n \\in \\mathbb{N}$, $n \\geq 3$ के धनात्मक पूर्णांक हलों की संख्या है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$^{n-1}C_2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$^{n-1}P_2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$n(n-1)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "distribution-of-identical-objects",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrvua50b",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If chocolates of a particular brand are all identical then the number of ways in which we can choose 6 chocolates out of 8 different brands available in the market, is:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$^{13}C_6$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$^{13}C_8$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$8^6$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Since chocolates of the same brand are identical, only the number of chocolates chosen from each brand matters.</p>\n<p>Suppose the numbers of chocolates chosen from the 8 brands are</p>\n<p>$$x_1, x_2, x_3, \\ldots, x_8$$</p>\n<p>We have to choose 6 chocolates in total, so</p>\n<p>$$x_1+x_2+x_3+\\cdots+x_8=6$$</p>\n<p>Here each $x_i$ can be $0$ or more, because we may choose no chocolate from a brand also.</p>\n<p>So we need the number of non-negative integral solutions of</p>\n<p>$$x_1+x_2+\\cdots+x_8=6$$</p>\n<p>Using the standard NCERT result, the number of non-negative solutions of</p>\n<p>$$x_1+x_2+\\cdots+x_r=n$$</p>\n<p>is</p>\n<p>$$^{n+r-1}C_{r-1}$$</p>\n<p>Here $n=6$ and $r=8$, so the number of ways is</p>\n<p>$$^{6+8-1}C_{8-1}=^{13}C_7$$</p>\n<p>Now,</p>\n<p>$$^{13}C_7=^{13}C_6$$</p>\n<p>So the correct answer is</p>\n<p>$$\\boxed{^{13}C_6}$$</p>\n<p>Option A is correct.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि किसी विशेष ब्रांड की सभी चॉकलेट एक समान हैं, तो बाज़ार में उपलब्ध 8 विभिन्न ब्रांडों में से कुल 6 चॉकलेट चुनने के तरीकों की संख्या है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$^{13}C_6$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$^{13}C_8$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$8^6$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "distribution-of-identical-objects",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrvuzsux",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of zeros at the end of $100!$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>54</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>58</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>24</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>47</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>To find how many zeros are at the end of $100!$, we need to think about what actually creates a zero at the end of a number.</p>\n<p>A zero at the end comes from a factor of $10$. And $10$ is made by multiplying $2 \\times 5$. So every time we can pair one $2$ with one $5$ in the prime factors of $100!$, we get one trailing zero.</p>\n<p>This means we should count how many times $2$ appears and how many times $5$ appears in the factorisation of $100!$. Whichever is smaller decides the number of zeros, because zeros only form in pairs of $2$ and $5$.</p>\n<p><b>Counting the number of 2's:</b></p>\n<p>We find the power of $2$ in $100!$ by dividing $100$ by increasing powers of $2$ and taking only the whole number part each time.</p>\n<p>$\\begin{aligned} E_2(100!)=\\left[\\frac{100}{2}\\right]+\\left[\\frac{100}{2^2}\\right]+\\left[\\frac{100}{2^3}\\right]  +\\left[\\frac{100}{2^4}\\right]+\\left[\\frac{100}{2^5}\\right]+\\left[\\frac{100}{2^6}\\right]\\end{aligned}$</p>\n<p>$=50+25+12+6+3+1=97$</p>\n<p>So the factor $2$ appears $97$ times.</p>\n<p><b>Counting the number of 5's:</b></p>\n<p>We do the same thing with powers of $5$.</p>\n<p>$\\begin{aligned} E_5(100!) & =\\left[\\frac{100}{5}\\right]+\\left[\\frac{100}{5^2}\\right] \\\\ & =20+4=24 \\end{aligned}$</p>\n<p>So the factor $5$ appears $24$ times.</p>\n<p><b>Deciding the number of zeros:</b></p>\n<p>Since each zero needs one $2$ and one $5$, the number of zeros is limited by whichever factor is fewer. Here we have $97$ twos but only $24$ fives, so only $24$ pairs can be formed.</p>\n<p>$\\begin{aligned} E_{10}(100!) & =\\min (97,24) \\\\ & =24\\end{aligned}$</p>\n<p>So $100!$ ends with $24$ zeros.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$100!$ के अंत में शून्यों की संख्या है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>54</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>58</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>24</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>47</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "exponet-of-prime-p-in-n",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrvuvned",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $33!$ is divisible by $2^n$, then the maximum value of $n$ is equal to</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>33</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>32</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>31</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>30</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>In $33!$, we need to find the highest power of $2$ which divides it.</p>\n<p>That means we need the number of factors of $2$ present in</p>\n<p>$$ 33! = 1 \\times 2 \\times 3 \\times \\cdots \\times 33 $$</p>\n<p>The number of factors of $2$ in $33!$ is</p>\n<p>$$ \\left\\lfloor \\frac{33}{2} \\right\\rfloor + \\left\\lfloor \\frac{33}{4} \\right\\rfloor + \\left\\lfloor \\frac{33}{8} \\right\\rfloor + \\left\\lfloor \\frac{33}{16} \\right\\rfloor + \\left\\lfloor \\frac{33}{32} \\right\\rfloor $$</p>\n<p>Now,</p>\n<p>$$ \\left\\lfloor \\frac{33}{2} \\right\\rfloor = 16 $$</p>\n<p>$$ \\left\\lfloor \\frac{33}{4} \\right\\rfloor = 8 $$</p>\n<p>$$ \\left\\lfloor \\frac{33}{8} \\right\\rfloor = 4 $$</p>\n<p>$$ \\left\\lfloor \\frac{33}{16} \\right\\rfloor = 2 $$</p>\n<p>$$ \\left\\lfloor \\frac{33}{32} \\right\\rfloor = 1 $$</p>\n<p>So,</p>\n<p>$$ n = 16 + 8 + 4 + 2 + 1 = 31 $$</p>\n<p>Hence, the maximum value of $n$ is</p>\n<p>$$ \\boxed{31} $$</p>\n<p>So the correct option is C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $33!$, $2^n$ से विभाज्य है, तो $n$ का अधिकतम मान बराबर है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>33</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>32</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>31</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>30</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "exponet-of-prime-p-in-n",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrvuldvv",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Seven cards and seven envelopes are numbered $1,2,3,4,5,6,7$ and cards are to be placed in envelopes so that each envelope contains exactly one card and no card is placed in the envelope bearing the same number and moreover the card number 1 is always placed in envelope number 2 and 2 is always placed in envelope numbered 3, then the number of ways it can be done is</p>",
+                "options": [],
+                "correct_options": [
+                  "C"
+                ],
+                "answer": "53",
+                "explanation": "\n<p>Let's break down the information given:</p>\n<ul>\n<li><p>Card 1 is placed in Envelope 2.</p></li>\n<li><p>Card 2 is placed in Envelope 3.</p></li>\n</ul>\n<p>Because these two cards are already placed, we are left with 5 cards to arrange: </p>\n<p>Cards $3, 4, 5, 6,$ and $7$.</p>\n<p>The envelopes that are still empty are: </p>\n<p>Envelopes $1, 4, 5, 6,$ and $7$.</p>\n<p>Now, let's observe the restrictions on these remaining cards:</p>\n<ul>\n<li><p>Card 4 cannot go into Envelope 4.</p></li>\n<li><p>Card 5 cannot go into Envelope 5.</p></li>\n<li><p>Card 6 cannot go into Envelope 6.</p></li>\n<li><p>Card 7 cannot go into Envelope 7.</p></li>\n<li><p>Card 3, however, cannot go into Envelope 3. But since Envelope 3 is already occupied by Card 2, Card 3 has no restrictions among the currently available envelopes.</p></li>\n</ul>\n<p><strong>Case 1: Card 3 is placed in Envelope 1</strong></p>\n<p>If we put Card 3 into Envelope 1, we perfectly match the remaining cards and envelopes. We are left with cards $4, 5, 6, 7$ and envelopes $4, 5, 6, 7$. </p>\n<p>Each of these 4 cards must go into an envelope that does not bear its own number. This is a complete derangement of $4$ objects ($D_4$).</p>\n<p>The formula for the derangement of $n$ objects is:</p>\n<p>$$D_n = n! \\left( 1 - \\frac{1}{1!} + \\frac{1}{2!} - \\frac{1}{3!} + \\dots + \\frac{(-1)^n}{n!} \\right)$$</p>\n<p>Using this for $4$ objects:</p>\n<p>$$D_4 = 4! \\left( \\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!} \\right)$$</p>\n<p>$$D_4 = 24 \\left( \\frac{1}{2} - \\frac{1}{6} + \\frac{1}{24} \\right)$$</p>\n<p>$$D_4 = 12 - 4 + 1 = 9$$</p>\n<p>So, there are $9$ ways in this case.</p>\n<p><strong>Case 2: Card 3 is NOT placed in Envelope 1</strong></p>\n<p>In this scenario, Card 3 goes to one of the other available envelopes ($4, 5, 6,$ or $7$). This means Card 3 is restricted from entering Envelope 1. </p>\n<p>Notice what happens now: </p>\n<ul>\n<li><p>Card 3 cannot enter Envelope 1.</p></li>\n<li><p>Card 4 cannot enter Envelope 4.</p></li>\n<li><p>Card 5 cannot enter Envelope 5.</p></li>\n<li><p>Card 6 cannot enter Envelope 6.</p></li>\n<li><p>Card 7 cannot enter Envelope 7.</p></li>\n</ul>\n<p>We have exactly $5$ cards and $5$ envelopes, and every single card has exactly one specific envelope it is forbidden from entering. Mathematically, this is identical to a standard derangement of $5$ objects ($D_5$).</p>\n<p>Let's calculate $D_5$ using the formula:</p>\n<p>$$D_5 = 5! \\left( \\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!} - \\frac{1}{5!} \\right)$$</p>\n<p>$$D_5 = 120 \\left( \\frac{1}{2} - \\frac{1}{6} + \\frac{1}{24} - \\frac{1}{120} \\right)$$</p>\n<p>$$D_5 = 60 - 20 + 5 - 1 = 44$$</p>\n<p>So, there are $44$ ways in this case.</p>\n<p>$$\\text{Total ways} = D_4 + D_5$$</p>\n<p>$$\\text{Total ways} = 9 + 44 = 53$$</p>\n<p>The cards can be placed in exactly $53$ different ways.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>सात कार्ड और सात लिफाफों पर $1,2,3,4,5,6,7$ क्रमांक अंकित हैं। कार्डों को लिफाफों में इस प्रकार रखा जाना है कि प्रत्येक लिफाफे में ठीक एक कार्ड हो और कोई भी कार्ड उस लिफ़ाफ़े में न रखा जाए जिस पर उस कार्ड के समान क्रमांक अंकित हो। इसके अतिरिक्त, कार्ड क्रमांक 1 हमेशा लिफाफा क्रमांक 2 में रखा जाता है और कार्ड क्रमांक 2 हमेशा लिफाफा क्रमांक 3 में रखा जाता है। तो इसे कितने तरीकों से किया जा सकता है?</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "dearrangement",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrvvbcao",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "The exponent of 7 in ${ }^{100} C_{50}$ is",
+                "options": [],
+                "answer": "0",
+                "explanation": "<p>$$ {}^{100} C_{50} = \\frac{100!}{50! \\times 50!} $$</p>\n\n<p>$$ E_7(100!) = \\left\\lfloor \\frac{100}{7} \\right\\rfloor + \\left\\lfloor \\frac{100}{7^2} \\right\\rfloor $$</p>\n<p>We can stop at $7^2$ because $7^3$ is 343, which is larger than 100, so any further terms will simply be zero.</p>\n<p>$$ E_7(100!) = \\left\\lfloor \\frac{100}{7} \\right\\rfloor + \\left\\lfloor \\frac{100}{49} \\right\\rfloor $$</p>\n<p>$$ E_7(100!) = 14 + 2 = 16 $$</p>\n<p>This tells us that the exponent of 7 in $100!$ is 16.</p>\n<p>Next, we calculate the exponent of 7 in $50!$.</p>\n<p>$$ E_7(50!) = \\left\\lfloor \\frac{50}{7} \\right\\rfloor + \\left\\lfloor \\frac{50}{7^2} \\right\\rfloor $$</p>\n<p>$$ E_7(50!) = \\left\\lfloor \\frac{50}{7} \\right\\rfloor + \\left\\lfloor \\frac{50}{49} \\right\\rfloor $$</p>\n<p>$$ E_7(50!) = 7 + 1 = 8 $$</p>\n<p>The exponent of 7 in $50!$ is 8.</p>\n<p>Now we go back to our factorial expression for ${}^{100} C_{50}$. The power of 7 in this fraction will be the power of 7 in the numerator minus the powers of 7 in the denominator. </p>\n<p>$$ \\text{Exponent of } 7 \\text{ in } {}^{100} C_{50} = E_7(100!) - [E_7(50!) + E_7(50!)] $$</p>\n<p>$$ \\text{Exponent of } 7 \\text{ in } {}^{100} C_{50} = 16 - (8 + 8) $$</p>\n<p>$$ \\text{Exponent of } 7 \\text{ in } {}^{100} C_{50} = 16 - 16 = 0 $$</p>\n<p>The exponent of 7 in ${}^{100} C_{50}$ is 0. This means the number ${}^{100} C_{50}$ does not have 7 as a prime factor at all.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "${ }^{100} C_{50}$ में 7 का घातांक है",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "exponet-of-prime-p-in-n",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrvundzd",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let $D_n$ represents derangement of ' $n$ ' objects. If $D_{n+2}=a D_{n+1}+b D_n \\forall n \\in N$ (Where $a, b$ are functions of $n$ ), then find $\\frac{b}{a}$.</p>",
+                "options": [],
+                "answer": "1",
+                "explanation": "<p>For derangements, the standard recurrence is</p>\n<p>$$ D_m=(m-1)(D_{m-1}+D_{m-2}) $$</p>\n<p>Here we need $D_{n+2}$, so put $m=n+2$.</p>\n<p>$$ D_{n+2}=(n+2-1)(D_{n+1}+D_n) $$</p>\n<p>$$ D_{n+2}=(n+1)(D_{n+1}+D_n) $$</p>\n<p>Expanding,</p>\n<p>$$ D_{n+2}=(n+1)D_{n+1}+(n+1)D_n $$</p>\n<p>Given,</p>\n<p>$$ D_{n+2}=aD_{n+1}+bD_n $$</p>\n<p>Comparing the coefficients,</p>\n<p>$$ a=n+1,\\qquad b=n+1 $$</p>\n<p>So,</p>\n<p>$$ \\frac{b}{a}=\\frac{n+1}{n+1}=1 $$</p>\n<p>Hence,</p>\n<p>$$ \\boxed{1} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना $D_n$, ' $n$ ' वस्तुओं के अपविन्यास (derangement) को निरूपित करता है। यदि $D_{n+2}=a D_{n+1}+b D_n \\forall n \\in N$ (जहाँ $a, b$, $n$ के फलन हैं), तो $\\frac{b}{a}$ ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "dearrangement",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrvvkziz",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of zeros at the end of 108 ! is</p>",
+                "options": [],
+                "answer": "25",
+                "explanation": "<p>To find how many zeros come at the end of $108!$, we need to see how many times $10$ divides into it. Since $10 = 2 \\times 5$, every zero at the end is made by pairing one $2$ with one $5$.</p>\n<p>So the real question is: how many pairs of $2$ and $5$ can we form from the prime factors of $108!$? For that, we count how many times $2$ appears and how many times $5$ appears.</p>\n<p>Let's first count the number of $2$s. We keep dividing $108$ by powers of $2$ and take only the whole number part each time:</p>\n<p>$$E_2(108!)=\\left[\\frac{108}{2}\\right]+\\left[\\frac{108}{2^2}\\right]+\\left[\\frac{108}{2^3}\\right]+\\left[\\frac{108}{2^4}\\right]+\\left[\\frac{108}{2^5}\\right]+\\left[\\frac{108}{2^6}\\right]$$</p>\n<p>Adding these up:</p>\n<p>$$\\begin{aligned} & =54+27+13+6+3+1 \\\\ & =104\\end{aligned}$$</p>\n<p>So the factor $2$ appears $104$ times in $108!$.</p>\n<p>Now let's count the number of $5$s in the same way, dividing $108$ by powers of $5$:</p>\n<p>$$ \\begin{aligned} E_5(108!) & =\\left[\\frac{108}{5}\\right]+\\left[\\frac{108}{5^2}\\right] \\\\ & =21+4=25 \\end{aligned} $$</p>\n<p>So the factor $5$ appears $25$ times.</p>\n<p>To make one $10$, we need a $2$ and a $5$ together. We have plenty of $2$s ($104$ of them), but only $25$ fives. So we can only make as many $10$s as the smaller count allows.</p>\n<p>That means the number of zeros at the end is the smaller of the two values:</p>\n<p>$$\\min \\{104,25\\} = 25$$</p>\n<p>So $108!$ ends with $25$ zeros.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>108 ! के अंत में शून्यों की संख्या है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "exponet-of-prime-p-in-n",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrvvq7w3",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The last non zero digit in 20! must be equal to</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>To find the last non-zero digit of $20!$, we first need to write $20!$ as a product of its prime factors. The idea is that the zeros at the end of $20!$ come from factors of $10$, which means pairs of $2$ and $5$. So once we know how many times each prime appears, we can pull out the zeros and look at what digit is left.</p>\n<p>Let us find the power of $2$ in $20!$. We do this by dividing $20$ by increasing powers of $2$ and adding up the whole-number parts.</p>\n<p>$$E_2(20!) = \\left[\\frac{20}{2}\\right] + \\left[\\frac{20}{4}\\right] + \\left[\\frac{20}{8}\\right] + \\left[\\frac{20}{16}\\right]$$</p>\n<p>$$= 10 + 5 + 2 + 1 = 18$$</p>\n<p>Now we do the same for the prime $3$.</p>\n<p>$$E_3(20!) = \\left[\\frac{20}{3}\\right] + \\left[\\frac{20}{9}\\right] = 6 + 2 = 8$$</p>\n<p>Next, the power of $5$ in $20!$.</p>\n<p>$$E_5(20!) = \\left[\\frac{20}{5}\\right] = 4$$</p>\n<p>Now the power of $7$.</p>\n<p>$$E_7(20!) = \\left[\\frac{20}{7}\\right] = 2$$</p>\n<p>For the larger primes, each one only fits into $20$ once, so each appears just a single time.</p>\n<p>$$E_{11}(20!) = \\left[\\frac{20}{11}\\right] = 1$$</p>\n<p>$$E_{13}(20!) = \\left[\\frac{20}{13}\\right] = 1$$</p>\n<p>$$E_{17}(20!) = \\left[\\frac{20}{17}\\right] = 1$$</p>\n<p>$$E_{19}(20!) = \\left[\\frac{20}{19}\\right] = 1$$</p>\n<p>Putting all of these together, we can write $20!$ in terms of its prime factors.</p>\n<p>$$20! = 2^{18} \\cdot 3^8 \\cdot 5^4 \\cdot 7^2 \\cdot 11^1 \\cdot 13^1 \\cdot 17^1 \\cdot 19^1$$</p>\n<p>Each $10$ is made from one $2$ and one $5$. Since we have four $5$s, we can pair them with four $2$s to form $10^4$. This gives us the four zeros at the end.</p>\n<p>$$= 10^4 \\cdot 2^{14} \\cdot 3^8 \\cdot 7^2 \\cdot 11 \\cdot 13 \\cdot 17 \\cdot 19$$</p>\n<p>The $10^4$ part is just the zeros. To find the last non-zero digit, we only need the last digit of everything else multiplied together.</p>\n<p>Let us check the last digit of each remaining piece. $3^8$ ends in $1$, $2^{14}$ ends in $4$, and $7^2$ ends in $9$. Multiplying the last digits of $11 \\times 13 \\times 17 \\times 19$ also gives a number ending in $9$.</p>\n<p>When we multiply all these ending digits, $1 \\times 4 \\times 9 \\times 9$, and keep only the last digit at each stage, the final digit works out to $4$.</p>\n<p>So $20!$ has a $4$ sitting just before its ending zeros. The last non-zero digit is $\\boxed{4}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>20! में अंतिम गैर-शून्य अंक किसके बराबर होना चाहिए</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "exponet-of-prime-p-in-n",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Multinomial Theorem and Dearrangement, Exponent of prime P in N!",
+    "timeAllotted": 2160000,
+    "title": "Permutation and Combination Test - 5 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mod5ixtr",
+    "defaultLanguage": "en",
+    "description": "Multinomial Theorem and Dearrangement, Exponent of prime P in N!",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-22T10:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Multinomial Theorem and Dearrangement, Exponent of prime P in N!",
+    "timeAllotted": 2160000,
+    "title": "Permutation and Combination Test - 5 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Mathematics",
+    "_section": "Permutation and Combination"
+  }
+}

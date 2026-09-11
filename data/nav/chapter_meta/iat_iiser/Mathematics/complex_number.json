@@ -1,0 +1,45 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa607a4468eb1307ceb0af",
+  "chapterId": "67fdff4c378e1624ea7b69d4",
+  "subject": "Mathematics",
+  "chapter": "Complex Number",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff86378e1624ea7b6c92",
+      "title": "Algebra of complex numbers",
+      "count": 1,
+      "questionIds": [
+        "67fdff74378e1624ea7b6baf"
+      ]
+    },
+    {
+      "id": "67fdff86378e1624ea7b6c8f",
+      "title": "Conjugate, modulus and argument",
+      "count": 2,
+      "questionIds": [
+        "68e7a67fce75e72648a45e74",
+        "67fdff4c378e1624ea7b69d2"
+      ]
+    },
+    {
+      "id": "67fdff86378e1624ea7b6c91",
+      "title": "Cube Root of Unity",
+      "count": 1,
+      "questionIds": [
+        "67fdff69378e1624ea7b6b25"
+      ]
+    },
+    {
+      "id": "67fdff86378e1624ea7b6c90",
+      "title": "nth roots of unity",
+      "count": 2,
+      "questionIds": [
+        "6a4521848c20d3b91d64f972",
+        "67fdff54378e1624ea7b6a42"
+      ]
+    }
+  ]
+}

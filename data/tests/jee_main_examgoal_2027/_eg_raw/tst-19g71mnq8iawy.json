@@ -1,0 +1,992 @@
+{
+  "testId": "tst-19g71mnq8iawy",
+  "title": "Laws of Motion Test - 5 (Topic Test)",
+  "type": "topic",
+  "section": "Laws of Motion",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-07-09T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "e8e21cff-308a-4a1f-b255-b48e97552533",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g71mnq8iawy",
+    "defaultLanguage": "en",
+    "description": "Motion of Connected Bodies, Spring Force",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-09T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mr3baiv4",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In the given figure, what is the reading of the spring balance?</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr3b7bua%2F9c0110a5-6d94-4e37-ae00-11df334b1872%2F69024920-75f9-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3b7bub.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr3b7bua%2F9c0110a5-6d94-4e37-ae00-11df334b1872%2F69024920-75f9-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3b7bub.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>10 N</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>20 N</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>5 N</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>zero</b></p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr3b8ef0%2Fea3a2194-ccd8-463f-ad1f-54561ba15851%2F86cec3c0-75f9-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3b8ef1.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr3b8ef0%2Fea3a2194-ccd8-463f-ad1f-54561ba15851%2F86cec3c0-75f9-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3b8ef1.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>For the left 1 kg mass:</p>\n<p>Downward gravitational force: $\\mathrm{W}=\\mathrm{mg}=1 \\times 10 \\mathrm{~N}=10 \\mathrm{~N}$.</p>\n<p>Upward pulling force from the string is the tension T .</p>\n<p>For the right 1 kg mass:</p>\n<p>Downward gravitational force: $\\mathrm{W}=\\mathrm{mg}=110 \\mathrm{~N}=10 \\mathrm{~N}$.</p>\n<p>Upward pulling force from the string is the tension T.</p>\n<p>Since the masses on both sides are identical ($1kg = 1kg$), the system is balanced and remains at rest (acceleration $a = 0$).</p>\n<p>Applying Newton's first law ($\\Sigma F = 0$) for either of the stationary masses:</p>\n<p>$$T - mg = 0$$</p>\n<p>$$T = mg$$</p>\n<p>$$T = 1 \\times 10\\text{ N} = 10\\text{ N}$$</p>\n<p>Since the string is continuous and massless, this tension force of $10\\text{ N}$ pulls symmetrically on both ends of the spring balance. Therefore, the internal restoring force of spring reads $10\\text{ N}$. \n<br/><br/>Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दिए गए चित्र में, स्प्रिंग बैलेंस (कमानीदार तुला) का पाठ्यांक क्या है?</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr3b7bua%2F9c0110a5-6d94-4e37-ae00-11df334b1872%2F69024920-75f9-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3b7bub.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr3b7bua%2F9c0110a5-6d94-4e37-ae00-11df334b1872%2F69024920-75f9-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3b7bub.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>10 N</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>20 N</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>5 N</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>शून्य</b></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-force",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr3bgt5c",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two blocks of masses <b>M<sub>1</sub></b> and <b>M<sub>2</sub></b> are connected to each other through a light spring as shown in figure. If we push mass <b>M<sub>1</sub></b> with force <b>F</b> and cause acceleration <b>a<sub>1</sub></b> in right direction. What will be the magnitude of acceleration in <b>M<sub>2</sub></b>?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr3bbz1f%2F7a9d4390-abd3-4267-a75e-2bee329b710e%2Fea2a6730-75f9-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3bbz1g.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr3bbz1f%2F7a9d4390-abd3-4267-a75e-2bee329b710e%2Fea2a6730-75f9-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3bbz1g.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{F}{M_2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{F}{M_1 + M_2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$a_1$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{(F - M_1 a_1)}{M_2}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>When mass $M_1$ is pushed to the right by an external force $F$, it compresses the spring.</p>\n<p>Let the compression in the spring at this particular instant be x , and the spring constant be k .</p>\n<p>According to Hooke's Law, a compressed spring exerts an internal restoring force $\\mathrm{F}_{\\mathrm{s}}$ that pushes both ends outward:</p>\n<p>$$ \\mathrm{F}_{\\mathrm{s}}=\\mathrm{kx} $$</p>\n<p>The horizontal forces acting on mass $\\mathrm{M}_1$ are external push force F acting to the right ( + direction) and spring restoring force $\\mathrm{F}_{\\mathrm{s}}$ acting to the left (- direction).</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr3bdavd%2F8ed1a0fa-4a9e-4539-840c-6a77679f3219%2F0f1d5390-75fa-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3bdave.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr3bdavd%2F8ed1a0fa-4a9e-4539-840c-6a77679f3219%2F0f1d5390-75fa-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3bdave.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Applying Newton's second law for mass $M_1$ in the rightward direction:</p>\n<p>$$F - F_s = M_1 a_1$$</p>\n<p>$$F_s = F - M_1 a_1 \t... (i)$$</p>\n<p>The only horizontal force acting on mass $M_2$ is exerted by the compressed spring ($F_s$) acting to the right.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr3beufc%2F50950dbc-3e98-43fa-aa26-eac335aac82c%2F3a078080-75fa-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3beufd.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr3beufc%2F50950dbc-3e98-43fa-aa26-eac335aac82c%2F3a078080-75fa-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3beufd.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Let $a_2$ be the resulting acceleration of mass $M_2$ to the right.</p>\n<p>Applying Newton's second law for mass $M_2$:</p>\n<p>$$F_s = M_2 a_2 \t ... (ii)$$</p>\n<p>From both the equations,</p>\n<p>$$F - M_1 a_1 = M_2 a_2$$</p>\n<p>$$a_2 = \\frac{F - M_1 a_1}{M_2}$$</p>\n<p>Therefore, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>M<sub>1</sub></b> और <b>M<sub>2</sub></b> द्रव्यमान के दो गुटके चित्र में दर्शाए अनुसार एक हल्की स्प्रिंग के माध्यम से एक-दूसरे से जुड़े हुए हैं। यदि हम द्रव्यमान <b>M<sub>1</sub></b> को <b>F</b> बल से धकेलते हैं जिससे दायीं दिशा में <b>a<sub>1</sub></b> त्वरण उत्पन्न होता है, तो <b>M<sub>2</sub></b> में त्वरण का परिमाण क्या होगा?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr3bbz1f%2F7a9d4390-abd3-4267-a75e-2bee329b710e%2Fea2a6730-75f9-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3bbz1g.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr3bbz1f%2F7a9d4390-abd3-4267-a75e-2bee329b710e%2Fea2a6730-75f9-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3bbz1g.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{F}{M_2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{F}{M_1 + M_2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$a_1$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{(F - M_1 a_1)}{M_2}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-force",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr3bl5vx",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A massless spring balance is attached to 2 kg trolley and is used to pull the trolley along a flat surface as shown in the fig. The reading on the spring balance remains at 10 kg during the motion. The acceleration of the trolley is (<b>Use $g = 9.8\\ \\mathrm{ms}^{-2}$</b>)</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr3bhszt%2Fac0f82b1-70b9-452e-bbc9-e96fe1373c8c%2F8c59df90-75fa-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3bhszu.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr3bhszt%2Fac0f82b1-70b9-452e-bbc9-e96fe1373c8c%2F8c59df90-75fa-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3bhszu.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>4.9 ms$^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>9.8 ms$^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>49 ms$^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>98 ms$^{-2}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>A spring balance is to measure force, but it displays measurement in gravitational mass units (\"kg\").</p>\n<p>When a spring balance shows a reading in kilograms ( $\\mathrm{m}_{\\text {reading }}$ ), it means the pulling force ( $\\mathrm{F}_{\\text {pull }}$ ) is equivalent to the weight of that mass.</p>\n<p>$$ \\mathrm{F}_{\\text {pull }}=\\mathrm{m}_{\\text {reading }} \\times \\mathrm{g} $$</p>\n<p>Reading on the spring balance is $\\mathrm{m}_{\\text {reading }}=10 \\mathrm{~kg}$</p>\n<p>Acceleration due to gravity is $\\mathrm{g}=9.8 \\mathrm{~ms}^{-2}$</p>\n<p>$$ F_{\\text {pull }}=10 \\times 9.8 \\mathrm{~N}=98 \\mathrm{~N} $$</p>\n<p>Mass of the trolley is $\\mathrm{M}=2 \\mathrm{~kg}$</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr3bjgea%2Fa833a05b-5dfc-4cbc-8bba-bba770d4dc83%2Fba3cda20-75fa-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3bjgeb.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr3bjgea%2Fa833a05b-5dfc-4cbc-8bba-bba770d4dc83%2Fba3cda20-75fa-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3bjgeb.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The forward horizontal force pulling the trolley is the tension from the spring balance is $F_{\\text{pull}} = 98\\ \\text{N}$.</p>\n<p>Using Newton's second law along the horizontal direction of motion:</p>\n<p>$$\\Sigma F = M \\cdot a$$</p>\n<p>$$F_{\\text{pull}} = M \\cdot a$$</p>\n<p>$$98 = 2 \\times a$$</p>\n<p>$$a = \\frac{98}{2} = 49\\ \\text{ms}^{-2}$$</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक द्रव्यमान रहित कमानीदार तुला 2 kg की ट्रॉली से जुड़ी है और इसका उपयोग ट्रॉली को समतल सतह पर खींचने के लिए किया जाता है जैसा कि चित्र में दिखाया गया है। गति के दौरान कमानीदार तुला का पाठ्यांक 10 kg रहता है। ट्रॉली का त्वरण है (<b>$g = 9.8\\ \\mathrm{ms}^{-2}$ का उपयोग करें</b>)</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr3bhszt%2Fac0f82b1-70b9-452e-bbc9-e96fe1373c8c%2F8c59df90-75fa-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3bhszu.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr3bhszt%2Fac0f82b1-70b9-452e-bbc9-e96fe1373c8c%2F8c59df90-75fa-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3bhszu.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>4.9 ms$^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>9.8 ms$^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>49 ms$^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>98 ms$^{-2}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-force",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr3bx0f7",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A body of mass 32 kg is suspended by a spring balance from the roof of a vertically operating lift and going downward from rest. At the instants the lift has covered 20 m and 50 m, the spring balance showed 30 kg & 36 kg respectively. The velocity of the lift is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>Decreasing at 20 m & increasing at 50 m</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>Increasing at 20 m & decreasing at 50 m</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>Continuously decreasing at a constant rate throughout the journey</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>Continuously increasing at constant rate throughout the journey</b></p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The mass of the suspended body is $\\mathrm{m}=32 \\mathrm{~kg}$. The lift is moving downward.</p>\n<p>Let the downward direction as positive $(+)$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr3btxk7%2Ff12ef198-e579-4fcf-9878-83905373bea7%2Fdd969370-75fb-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3btxk8.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr3btxk7%2Ff12ef198-e579-4fcf-9878-83905373bea7%2Fdd969370-75fb-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3btxk8.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Downward gravity force acting on the body is $W = mg$.</p>\n<p>Upward pulling force from the spring balance is the apparent weight</p>\n<p>$$W_{\\mathrm{app}} = m_{\\mathrm{balance}} \\cdot g$$</p>\n<p>Applying Newton's second law along the downward direction:</p>\n<p>$$mg - W_{\\mathrm{app}} = m \\cdot a$$</p>\n<p>$$mg - m_{\\mathrm{balance}} g = m \\cdot a$$</p>\n<p>$$a = \\left(\\frac{m - m_{\\mathrm{balance}}}{m}\\right) g$$</p>\n<p>If $m_{\\mathrm{balance}} < m$, then $a$ is positive $(+)$, which means the acceleration vector is downward.</p>\n<p>If $m_{\\mathrm{balance}} > m$, then $a$ is negative $(-)$, which means the acceleration vector is upward.</p>\n<p>At distance $d_1 = 20\\,\\mathrm{m}$, the true mass of body is $m = 32\\,\\mathrm{kg}$ and spring balance reading is $m_{\\mathrm{balance}} = 30\\,\\mathrm{kg}$</p>\n<p>So, the true mass is greater than the balanced mass ( $\\mathrm{m}_{\\text {balance }}<\\mathrm{m}$ ). This means the acceleration a is positive, acting in the downward direction. Because the lift is moving downward and accelerating downward, its velocity must be increasing.</p>\n<p>At distance $\\mathrm{d}_2=50 \\mathrm{~m}$, the true mass of the body is $\\mathrm{m}=32 \\mathrm{~kg}$ and the spring balance reading is $\\mathrm{m}_{\\text {balance }}=$ 36 kg</p>\n<p>So, the balance reading is greater than the true mass ( $\\mathrm{m}_{\\text {balance }}>\\mathrm{m}$ ). This means the acceleration a is negative, acting in the upward direction. Because the acceleration is opposite to the downward direction of motion, it acts as a deceleration. Therefore, its velocity must be decreasing.</p>\n<p>Hence, at 20 m , the velocity of the lift is increasing and at 50 m , the velocity of the lift is decreasing.</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>32 kg द्रव्यमान के एक पिंड को विरामावस्था से नीचे की ओर गति कर रही ऊर्ध्वाधर लिफ्ट की छत से कमानीदार तुला (spring balance) द्वारा लटकाया गया है। जिस क्षण लिफ्ट 20 m और 50 m की दूरी तय करती है, कमानीदार तुला क्रमशः 30 kg और 36 kg का पाठ्यांक दर्शाती है। लिफ्ट का वेग है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>20 m पर घट रहा है तथा 50 m पर बढ़ रहा है</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>20 m पर बढ़ रहा है तथा 50 m पर घट रहा है</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>पूरी यात्रा के दौरान एक नियत दर पर लगातार घट रहा है</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>पूरी यात्रा के दौरान एक नियत दर पर लगातार बढ़ रहा है</b></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-force",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr3c2pe4",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two masses of 10 kg and 20 kg respectively are connected by a massless spring as shown in figure. A force of 200 N acts on the 20 kg mass at the instant when the 10 kg mass has an acceleration of $12 \\, \\mathrm{ms}^{-2}$ towards right, the acceleration of the 20 kg mass is :</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr3byvnh%2Fe79bf898-a6e2-4de7-9fdb-efb63601088a%2F6728c6d0-75fc-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3byvni.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr3byvnh%2Fe79bf898-a6e2-4de7-9fdb-efb63601088a%2F6728c6d0-75fc-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3byvni.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2 \\, \\mathrm{ms}^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$4 \\, \\mathrm{ms}^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$10 \\, \\mathrm{ms}^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$20 \\, \\mathrm{ms}^{-2}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The given horizontal force of 200 N is applied to the 20 kg mass, pulling it to the right.</p>\n<p>As the 20 kg mass moves to the right, it elongates the spring.</p>\n<p>An elongated spring exerts an internal restoring spring force ( $\\mathrm{F}_{\\mathrm{s}}$ ) pulling inward at both ends. Therefore, it pulls the 10 kg mass to the right and pulling the 20 kg mass back to the left.</p>\n<p>For the 10 kg mass, the only horizontal force acting on it is the internal spring force $\\mathrm{F}_{\\mathrm{s}}$ pulling it towards the right.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr3c0ft6%2F6cfb7b28-a8db-4120-ae90-95a707817fd3%2F928a46a0-75fc-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3c0ft7.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr3c0ft6%2F6cfb7b28-a8db-4120-ae90-95a707817fd3%2F928a46a0-75fc-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3c0ft7.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Applying Newton's second law for the 10 kg mass :</p>\n<p>$$ \\mathrm{F}_{\\mathrm{s}}=\\mathrm{m}_1 \\cdot \\mathrm{a}_1 $$</p>\n<p>The acceleration is given as $\\mathrm{a}_1=12 \\mathrm{~ms}^{-2}$ towards the right</p>\n<p>$$ \\mathrm{F}_{\\mathrm{s}}=10 \\times 12 \\mathrm{~N}=120 \\mathrm{~N} $$</p>\n<p>On 20 kg mass the external pulling force $\\mathrm{F}=200 \\mathrm{~N}$ acting towards the right and the internal spring force $\\mathrm{F}_{\\mathrm{s}}=$ 120 N acting towards the left.</p>\n<p>Let $\\mathrm{a}_2$ be the acceleration of the 20 kg mass.</p>\n<p>Applying Newton's second law for this block:</p>\n<p>$$\\sum F = m_2 \\cdot a_2$$</p>\n<p>$$F - F_s = m_2 \\cdot a_2$$</p>\n<p>$$200 - 120 = 20 \\times a_2$$</p>\n<p>$$80 = 20 \\times a_2$$</p>\n<p>$$a_2 = \\frac{80}{20} = 4\\,\\mathrm{ms}^{-2}$$</p>\n<p>So, the acceleration of the $20\\,\\mathrm{kg}$ mass is $4\\,\\mathrm{ms}^{-2}$ directed towards the right. \n<br/><br/>Thus, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>क्रमशः 10 kg और 20 kg के दो द्रव्यमान चित्र में दर्शाए अनुसार एक द्रव्यमान रहित स्प्रिंग से जुड़े हुए हैं। 20 kg के द्रव्यमान पर 200 N का एक बल कार्य करता है, जिस क्षण 10 kg के द्रव्यमान का दाईं ओर त्वरण $12 \\, \\mathrm{ms}^{-2}$ है, उस क्षण 20 kg के द्रव्यमान का त्वरण है :</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr3byvnh%2Fe79bf898-a6e2-4de7-9fdb-efb63601088a%2F6728c6d0-75fc-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3byvni.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr3byvnh%2Fe79bf898-a6e2-4de7-9fdb-efb63601088a%2F6728c6d0-75fc-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3byvni.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2 \\, \\mathrm{ms}^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$4 \\, \\mathrm{ms}^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$10 \\, \\mathrm{ms}^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$20 \\, \\mathrm{ms}^{-2}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-force",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mra2bpaq",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two blocks A and B with masses 4 kg and 6 kg respectively are connected by a stretched spring of negligible mass as in figure. When the two blocks are released simultaneously, the initial acceleration of B is $1.5 \\, \\text{m/s}^2$ westward. The acceleration of A is</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra265nm%2Fb07792af-54c7-4409-a2ae-9dff46fe7b38%2F92ce3020-79af-11f1-9eb6-139adce7efb6%2Ffile-6y3zli1mra265nn.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra265nm%2Fb07792af-54c7-4409-a2ae-9dff46fe7b38%2F92ce3020-79af-11f1-9eb6-139adce7efb6%2Ffile-6y3zli1mra265nn.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$1 \\, \\text{m/s}^2$, westward</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2.25 \\, \\text{m/s}^2$ eastward</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$1 \\, \\text{m/s}^2$, eastward</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$2.75 \\, \\text{m/s}^2$, westward</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>A stretched spring exerts an attractive restoring force pulling inward from both of its ends. According to Newton's third law of motion, action and reaction are equal in magnitude and opposite in direction.</p>\n<p>Therefore, the force exerted by the spring on block $\\mathrm{A}\\left(\\mathrm{F}_{\\mathrm{A}}\\right)$ must be equal in magnitude to the force exerted by the spring on block $\\mathrm{B}\\left(\\mathrm{F}_{\\mathrm{B}}\\right)$ :</p>\n<p>$$ \\mathrm{F}_{\\mathrm{A}}=\\mathrm{F}_{\\mathrm{B}}=\\mathrm{F}_{\\mathrm{s}} $$</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra27qu2%2Fa245a76a-9778-4113-917a-975d927e6246%2Fbef98fa0-79af-11f1-9eb6-139adce7efb6%2Ffile-6y3zli1mra27qu3.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra27qu2%2Fa245a76a-9778-4113-917a-975d927e6246%2Fbef98fa0-79af-11f1-9eb6-139adce7efb6%2Ffile-6y3zli1mra27qu3.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Since the spring is stretched, it pulls both blocks toward its centre. The spring pulls block B toward the left (westward) and block A toward the right (eastward).</p>\n<p>It is given that block B has a mass $m_B = 6\tkg$ and experiences an initial westward acceleration $a_B = 1.5\tm/s^2$.</p>\n<p>Applying Newton's second law ($F = ma$) to block B:</p>\n<p>$$F_s = m_B a_B$$</p>\n<p>$$F_s = 6 \t\\times 1.5\tN = 9\tN$$</p>\n<p>Thus, the spring force acting on the blocks has a magnitude of $9\tN$.</p>\n<p>So, block A experiences the same force magnitude of $9\tN$, directed towards the right (eastward).</p>\n<p>The mass of block A is $m_A = 4kg$.</p>\n<p>Applying Newton's second law to block A :</p>\n<p>$$F_s = m_A a_A$$</p>\n<p>$$9 = 4a_A \\Rightarrow a_A = \\frac{9}{4}\\ \\mathrm{m/s^2}$$</p>\n<p>$$a_A = 2.25\\ \\mathrm{m/s^2}$$</p>\n<p>Therefore, the block A has an acceleration $2.25\\ \\mathrm{m/s^2}$ eastward. Thus, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "\n<p>क्रमशः 4 kg और 6 kg द्रव्यमान वाले दो गुटके A और B चित्र में दर्शाए अनुसार नगण्य द्रव्यमान वाली एक खिंची हुई स्प्रिंग से जुड़े हैं। जब दोनों गुटकों को एक साथ छोड़ा जाता है, तो B का प्रारंभिक त्वरण पश्चिम की ओर $1.5 \\, \\text{m/s}^2$ है। A का त्वरण है:</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra265nm%2Fb07792af-54c7-4409-a2ae-9dff46fe7b38%2F92ce3020-79af-11f1-9eb6-139adce7efb6%2Ffile-6y3zli1mra265nn.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra265nm%2Fb07792af-54c7-4409-a2ae-9dff46fe7b38%2F92ce3020-79af-11f1-9eb6-139adce7efb6%2Ffile-6y3zli1mra265nn.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$1 \\, \\text{m/s}^2$, पश्चिम की ओर</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2.25 \\, \\text{m/s}^2$ पूर्व की ओर</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$1 \\, \\text{m/s}^2$, पूर्व की ओर</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$2.75 \\, \\text{m/s}^2$, पश्चिम की ओर</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-force",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mra4smuy",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The block shown in the figure is equilibrium. Find acceleration of the block just after the string burns.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra4n1pp%2Fb9a9d850-6a06-43d2-8ef1-1c8b57b517c1%2F3ac621d0-79b9-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra4n1pq.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra4n1pp%2Fb9a9d850-6a06-43d2-8ef1-1c8b57b517c1%2F3ac621d0-79b9-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra4n1pq.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{3g}{5} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{4g}{5} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{4g}{3} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Initially, the block of mass m is at rest, which means vector sum of all forces acting on it equals zero.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra4ovzd%2Fdc483c0c-6357-4e25-a392-0a1616b2a51e%2F6df6fd90-79b9-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra4ovze.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra4ovzd%2Fdc483c0c-6357-4e25-a392-0a1616b2a51e%2F6df6fd90-79b9-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra4ovze.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The downward gravitational force (weight) is $\\mathrm{W}=\\mathrm{mg}$.</p>\n<p>The horizontal tension force T from the string pulling to the left.</p>\n<p>The pulling force $\\mathrm{F}_{\\mathrm{s}}$ from the extended spring acting up and to the right at an angle of $53^{\\circ}$ relative to the vertical dashed line.</p>\n<p>Vertical upward component is $\\mathrm{F}_{\\mathrm{s}} \\cos 53^{\\circ}$</p>\n<p>Horizontal rightward component is $\\mathrm{F}_{\\mathrm{s}} \\sin 53^{\\circ}$</p>\n<p>Balancing vertical forces $\\left(\\Sigma \\mathrm{F}_{\\mathrm{y}}=0\\right)$ :</p>\n<p>$$ \\mathrm{F}_{\\mathrm{s}} \\cos 53^{\\circ}=\\mathrm{mg} \\Rightarrow \\mathrm{~F}_{\\mathrm{s}}=\\frac{\\mathrm{mg}}{\\cos 53^{\\circ}} $$</p>\n<p>Balancing horizontal forces ( $\\Sigma \\mathrm{F}_{\\mathrm{x}}=0$ ):</p>\n<p>$$ \\mathrm{T}=\\mathrm{F}_{\\mathrm{s}} \\sin 53^{\\circ} $$</p>\n\n<p>$$T = \\left(\\frac{mg}{\\frac{3}{5}}\\right)\\frac{4}{5}$$</p>\n<p>$$T = \\frac{4mg}{3}$$</p>\n<p>When the string burns, the tension force becomes zero instantaneously ($T = 0$).</p>\n<p>A mechanical spring cannot change its length instantaneously because the mass attached to it requires time to move.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra4r9q0%2F63d50c27-1bd9-4cb4-b9f5-22e1b3fc6db3%2Fb0326780-79b9-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra4r9q1.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra4r9q0%2F63d50c27-1bd9-4cb4-b9f5-22e1b3fc6db3%2Fb0326780-79b9-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra4r9q1.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Since the spring's extension remains same as initial at that particular instant, the spring force $F_s$ remains original magnitude $$\\left(\\frac{5mg}{3}\\right)$$ and direction (53° to the vertical).</p>\n<p>The upward vertical component of the spring force is still $F_s \\cos 53^\\circ = mg$, balances the downward weight $mg$.</p>\n<p>Therefore, the vertical acceleration is zero ($a_y = 0$).</p>\n<p>The only horizontal force is component of the spring force:</p>\n<p>$$F_{\\text{net},x} = F_s \\sin 53^\\circ = \\frac{4mg}{3}$$</p>\n<p>Applying Newton's second law along the horizontal axis:</p>\n<p>$$F_{\\text{net},x} = ma_x$$</p>\n<p>$$\\frac{4mg}{3} = ma_x$$</p>\n<p>$$a_x = \\frac{4g}{3}$$</p>\n<p>Therefore, the net acceleration of the block immediately after the string burns is $$\\frac{4g}{3}$$. Thus, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दिखाया गया गुटका साम्यावस्था में है। डोरी के जलने के ठीक बाद गुटके का त्वरण ज्ञात कीजिए।</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra4n1pp%2Fb9a9d850-6a06-43d2-8ef1-1c8b57b517c1%2F3ac621d0-79b9-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra4n1pq.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra4n1pp%2Fb9a9d850-6a06-43d2-8ef1-1c8b57b517c1%2F3ac621d0-79b9-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra4n1pq.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{3g}{5} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{4g}{5} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{4g}{3} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-force",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mra53tep",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Find the reading of the spring balance as shown in figure. The elevator is going up with an acceleration of $\\frac{g}{10}$, the pulley and the string are light and the pulley is smooth.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra50cpq%2F8f7666ea-f8d1-4bdd-98aa-6f3b9ab5d08c%2Facca67e0-79ba-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra50cpr.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra50cpq%2F8f7666ea-f8d1-4bdd-98aa-6f3b9ab5d08c%2Facca67e0-79ba-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra50cpr.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>4 kg</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>4.3 kg</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>4.4 kg</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>4.5 kg</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>When a frame of reference accelerates upward with an acceleration $a_0$, every object inside that frame experiences a downward pseudo force equal to $ma_0$, where $m$ is the mass of object.</p>\n<p>$$g_{\\mathrm{eff}} = g + a_0 = g + \\frac{g}{10} = \\frac{11g}{10}$$</p>\n<p>$$g_{\\mathrm{eff}} = 10 + \\frac{10}{10} = 11\\ \\mathrm{m/s^2}$$</p>\n<p>The two masses connected through an inextensible and massless string are $m_1 = 1.5\\ \\mathrm{kg}$ and $m_2 = 3.0\\ \\mathrm{kg}$. </p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra526x8%2F668ffa4b-495e-4fe9-8e39-fdb390db9899%2Fdfef5cc0-79ba-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra526x9.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra526x8%2F668ffa4b-495e-4fe9-8e39-fdb390db9899%2Fdfef5cc0-79ba-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra526x9.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Let T be the tension in the string.</p>\n<p>Because $m_2$ is heavier, it accelerates downward relative to the pulley with an acceleration $a$, while $m_1$ moves upward with the same acceleration $a$.</p>\n<p>Applying Newton's second law ($F_{\\text{net}} = ma$) for the heavier mass $m_2$ moving downward:</p>\n<p>$$m_2 g_{\\text{eff}} - T = m_2 a \\rightarrow a = g_{\\text{eff}} - \\frac{T}{m_2}$$</p>\n<p>For the lighter mass $m_1$ moving upward:</p>\n<p>$$T - m_1 g_{\\text{eff}} = m_1 a$$</p>\n<p>$$T - m_1 g_{\\text{eff}} = m_1 \\left(g_{\\text{eff}} - \\frac{T}{m_2}\\right)$$</p>\n<p>$$T - m_1 g_{\\text{eff}} = m_1 g_{\\text{eff}} - \\frac{m_1}{m_2} T$$</p>\n<p>$$T + \\frac{m_1}{m_2} T = 2m_1 g_{\\text{eff}}$$</p>\n<p>$$T \\left(1 + \\frac{m_1}{m_2}\\right) = 2m_1 g_{\\text{eff}}$$</p>\n<p>$$T \\left(\\frac{m_1 + m_2}{m_2}\\right) = 2m_1 g_{\\text{eff}}$$</p>\n<p>$$T = \\left(\\frac{2m_1 m_2}{m_1 + m_2}\\right) g_{\\text{eff}}$$</p>\n<p>Putting the values,</p>\n<p>$$T = \\left(\\frac{2 \\times 1.5 \\times 3.0}{1.5 + 3.0}\\right) \\times 11 = \\frac{9.0}{4.5} \\times 11 = 2 \\times 11 = 22\\,\\text{N}$$</p>\n<p>The spring balance holds the pulley from above. Since the pulley is massless, the upward pull from the spring balance ($T_{\\text{spring}}$) must balance the two downward tension in the string segments.</p>\n<p>$$T_{\\text{spring}} = 2T = 2 \\times 22\\,\\text{N} = 44\\,\\text{N}$$</p>\n<p>Reading $= \\frac{T_{\\text{spring}}}{g} = \\frac{44}{10}\\,\\text{kg} = 4.4\\,\\text{kg}$. Thus, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दिखाए गए स्प्रिंग बैलेंस (कमानीदार तुला) का पाठ्यांक ज्ञात कीजिए। लिफ्ट $\\frac{g}{10}$ के त्वरण से ऊपर जा रही है, घिरनी और डोरी हल्की हैं तथा घिरनी चिकनी है।</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra50cpq%2F8f7666ea-f8d1-4bdd-98aa-6f3b9ab5d08c%2Facca67e0-79ba-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra50cpr.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra50cpq%2F8f7666ea-f8d1-4bdd-98aa-6f3b9ab5d08c%2Facca67e0-79ba-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra50cpr.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>4 kg</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>4.3 kg</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>4.4 kg</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>4.5 kg</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-force",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mra5cgx7",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A block tied between two springs is in equilibrium. If upper spring is cut, then the acceleration of the block just after cut is $6 \\text{m/s}^2$ downwards. Now, if instead of upper spring, lower spring is cut, then the magnitude of acceleration of the block just after the cut will be (take, $g = 10 \\text{m/s}^2$)</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra55biu%2F062dca1b-cec8-4938-8243-46181b7d6a99%2F36ea8360-79bb-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra55biv.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra55biu%2F062dca1b-cec8-4938-8243-46181b7d6a99%2F36ea8360-79bb-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra55biv.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>16m/s<sup>2</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>4m/s<sup>2</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Cannot be determined</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of the above</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let the mass of the block be m.</p>\n<p>Initially, the block is suspended vertically between two springs and is completely at rest.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra56ekh%2F4ba0866f-d098-4822-a855-fab1f11e746c%2F5513eb10-79bb-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra56eki.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra56ekh%2F4ba0866f-d098-4822-a855-fab1f11e746c%2F5513eb10-79bb-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra56eki.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The downward force of gravity (weight) $W = mg$</p>\n<p>The force from the upper spring $F_{\\text{upper}}$</p>\n<p>The force from the lower spring $F_{\\text{lower}}$</p>\n<p>The net force equation for equilibrium along vertical direction:</p>\n<p>$$\\Sigma F_y = F_{\\text{upper}} - F_{\\text{lower}} - mg = 0$$</p>\n<p>$$F_{\\text{upper}} - F_{\\text{lower}} = mg \\ldots (i)$$</p>\n<p>The instant the upper spring is cut, its force becomes zero immediately $F_{\\text{upper}} = 0$. However, a spring cannot change its length or force instantaneously because it requires its attached mass to shift positions first. Therefore, the force in the lower spring ($F_{\\text{lower}}$) remains unchanged.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra57vvr%2Fd0798e63-7876-42b2-b986-5b573b0b53cc%2F7e42d370-79bb-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra57vvs.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra57vvr%2Fd0798e63-7876-42b2-b986-5b573b0b53cc%2F7e42d370-79bb-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra57vvs.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The new net force causing the block to accelerate is:</p>\n<p>$$F_{\\text{net}} = -F_{\\text{lower}} - mg$$</p>\n<p>It is given that the acceleration just after the cut is $6\\ \\text{m/s}^2$ directed downwards.</p>\n<p>Applying Newton's second law ($F_{\\text{net}} = ma$) with a downward (negative) acceleration:</p>\n<p>$$-F_{\\text{lower}} - mg = m(-6)$$</p>\n<p>$$F_{\\text{lower}} + mg = 6m$$</p>\n<p>$$F_{\\text{lower}} + 10m = 6m$$</p>\n<p>$$F_{\\text{lower}} = 6m - 10m = -4m$$</p>\n<p>The negative value shows that $F_{\\text{lower}}$ actually acts in the upward direction, meaning the lower spring was initially compressed, pushing upwards on the block with a force magnitude of $4m$.</p>\n<p>Substituting $F_{\\text{lower}} = -4m$ into our initial equilibrium equation (i) gives the force of the upper spring:</p>\n<p>$$F_{\\text{upper}} - (-4m) = 10m$$</p>\n<p>$$F_{\\text{upper}} + 4m = 10m \\Rightarrow F_{\\text{upper}} = 6m$$</p>\n<p>If instead the lower spring is cut, its force becomes zero instantaneously ($F_{\\text{lower}} = 0$). The upper spring momentarily retains its tension force of $F_{\\text{upper}} = 6m$ acting upwards.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra5adlz%2Fd48d39a1-76c8-44f1-9b24-5353385a8f90%2Fc392f770-79bb-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra5adm0.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra5adlz%2Fd48d39a1-76c8-44f1-9b24-5353385a8f90%2Fc392f770-79bb-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra5adm0.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The new net force on the block is :</p>\n\n<p>$$F_{\\text{net}} = F_{\\text{upper}} - mg$$</p>\n<p>$$F_{\\text{net}} = 6m - 10m = -4m$$</p>\n<p>The net force has a magnitude of $4m$ and acts downwards.</p>\n<p>Using Newton's second law</p>\n<p>$$|F_{\\text{net}}| = m \\cdot a_{\\text{new}}$$</p>\n<p>$$4m = m \\cdot a_{\\text{new}} \\rightarrow a_{\\text{new}} = 4\\ \\text{m/s}^2$$</p>\n<p>Therefore, the magnitude of the acceleration of the block just after the cut is $4\\ \\text{m/s}^2$. Thus, the correct option (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो स्प्रिंग्स के बीच बंधा एक गुटका संतुलन में है। यदि ऊपरी स्प्रिंग को काट दिया जाता है, तो कटने के ठीक बाद गुटके का त्वरण $6 \\text{m/s}^2$ नीचे की ओर होता है। अब, यदि ऊपरी स्प्रिंग के बजाय निचली स्प्रिंग को काट दिया जाए, तो कटने के ठीक बाद गुटके के त्वरण का परिमाण होगा ($g = 10 \\text{m/s}^2$ लें)</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra55biu%2F062dca1b-cec8-4938-8243-46181b7d6a99%2F36ea8360-79bb-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra55biv.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra55biu%2F062dca1b-cec8-4938-8243-46181b7d6a99%2F36ea8360-79bb-11f1-8645-c5d4ba3db629%2Ffile-6y3zli1mra55biv.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>16m/s<sup>2</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>4m/s<sup>2</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>निर्धारित नहीं किया जा सकता</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>उपरोक्त में से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-force",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrbg6gb2",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>All surfaces shown in figure are smooth. System is released with the spring unstretched. In equilibrium, compression in the spring will be</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrbg0bof%2F3fb0f8b6-8832-4271-ae64-ee7400f7bc41%2F790f6af0-7a72-11f1-8a11-958f8c23c7c6%2Ffile-6y3zli1mrbg0bog.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrbg0bof%2F3fb0f8b6-8832-4271-ae64-ee7400f7bc41%2F790f6af0-7a72-11f1-8a11-958f8c23c7c6%2Ffile-6y3zli1mrbg0bog.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{mg}{\\sqrt{2}k} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{2mg}{k} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{(M + m)g}{\\sqrt{2}k} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{mg}{k} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The block of mass $m$ is in contact with a vertical wall on the left and the inclined surface of the wedge on the right.</p>\n<p>The weight of the block is $W = mg$</p>\n<p>$N_w$ = Normal reaction from the vertical wall</p>\n<p>$N$ = Normal reaction from the wedge, acting perpendicular to the inclined surface</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrbg3zvh%2F46250a01-030a-4fa2-a847-125352b10855%2Fdf2db0d0-7a72-11f1-8a11-958f8c23c7c6%2Ffile-6y3zli1mrbg3zvi.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrbg3zvh%2F46250a01-030a-4fa2-a847-125352b10855%2Fdf2db0d0-7a72-11f1-8a11-958f8c23c7c6%2Ffile-6y3zli1mrbg3zvi.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>In equilibrium, the vertical forces on block $m$ must balance:</p>\n<p>$$N \\cos 45^{\\circ} = mg$$</p>\n<p>$$N\\left(\\frac{1}{\\sqrt{2}}\\right) = mg$$</p>\n<p>$$N = \\sqrt{2}mg \\ldots (i)$$</p>\n<p>The wedge is in contact with the block $m$, the horizontal floor, and the spring.</p>\n<p>From the block $m$, the normal force $N$ is acting perpendicular to the incline</p>\n<p>If the spring is compressed by a distance $x$, the force is $F_s = kx,$</p>\n<p>Normal reaction from floor ($N_f$) acts vertically upwards.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrbg4zd1%2F9809f169-3821-4410-937e-dd1346e1f853%2Ffa978350-7a72-11f1-8a11-958f8c23c7c6%2Ffile-6y3zli1mrbg4zd2.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrbg4zd1%2F9809f169-3821-4410-937e-dd1346e1f853%2Ffa978350-7a72-11f1-8a11-958f8c23c7c6%2Ffile-6y3zli1mrbg4zd2.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The horizontal component of N is:</p>\n<p>$$N_x = N \\sin 45^\\circ \\ldots (ii)$$</p>\n<p>From equations (i) and (ii)</p>\n<p>$$N_x = (\\sqrt{2}mg) \\cdot \\sin 45^\\circ$$</p>\n<p>$$N_x = \\sqrt{2}mg \\times \\frac{1}{\\sqrt{2}} = mg$$</p>\n<p>$$N_x = mg$$</p>\n<p>At equilibrium for the wedge:</p>\n<p>Spring Force = Horizontal Force from Block</p>\n<p>$$kx = mg$$</p>\n<p>$$x = \\frac{mg}{k}$$</p>\n<p>Therefore, the compression in the spring at equilibrium is $\\frac{mg}{k}$. Hence, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दर्शाए गए सभी पृष्ठ चिकने हैं। निकाय को स्प्रिंग की अतानित (unstretched) अवस्था में छोड़ा जाता है। साम्यावस्था में, स्प्रिंग में संपीड़न होगा</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrbg0bof%2F3fb0f8b6-8832-4271-ae64-ee7400f7bc41%2F790f6af0-7a72-11f1-8a11-958f8c23c7c6%2Ffile-6y3zli1mrbg0bog.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrbg0bof%2F3fb0f8b6-8832-4271-ae64-ee7400f7bc41%2F790f6af0-7a72-11f1-8a11-958f8c23c7c6%2Ffile-6y3zli1mrbg0bog.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{mg}{\\sqrt{2}k} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{2mg}{k} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{(M + m)g}{\\sqrt{2}k} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{mg}{k} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-force",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mr3dzkhl",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>According to figure what is the reading of the spring balance (in $N) ?\\left[g=10 \\mathrm{~m} / \\mathrm{s}^2\\right]$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr3duruq%2F39eb84af-21b0-43d3-8398-04a2449b8112%2Fc73f2620-7603-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3durur.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr3duruq%2F39eb84af-21b0-43d3-8398-04a2449b8112%2Fc73f2620-7603-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3durur.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "60",
+                "explanation": "<p>The entire setup inclined plane, pulley, and hanging masses is inside a lift that is accelerating vertically upward at a constant rate $a_0 = 2\text{ m/s}^2$.</p>\n<p>On observing the motions of both the blocks from left (non-inertial reference frame) a downward pseudo-force to both bodies is exerted.</p>\n<p>$$F_{\\text{pseudo}} = m \\cdot a_0$$</p>\n<p>This downward pseudo-force effectively increases the acceleration due to gravity acting on each mass.</p>\n<p>$$g_{\\text{eff}} = g + a_0 = 10\\text{ m/s}^2 + 2\\text{ m/s}^2 = 12\\text{ m/s}^2$$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr3dwqx8%2F36f0d6b2-65a1-461f-a6be-e735f772e9b3%2Ffe2568c0-7603-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3dwqx9.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr3dwqx8%2F36f0d6b2-65a1-461f-a6be-e735f772e9b3%2Ffe2568c0-7603-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3dwqx9.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>For the hanging mass ($m_1 = 5\\text{ kg}$):</p>\n<p>The actual mass is $5\\text{ kg}$. The effective gravitational force pulling it straight down is</p>\n<p>$$m_1 g_{\\text{eff}} = 5 \\times 12 = 60\\text{ N}.$$</p>\n<p>The tension pulling it upward is $T$.</p>\n<p>Assuming the heavier mass on the incline slides down, the $5\\text{ kg}$ block will move upward with acceleration $a$:</p>\n<p>$$T - m_1 g_{\\text{eff}} = m_1 a$$</p>\n<p>$$T - 60 = 5a \\ldots (i)$$</p>\n<p>For the block on the inclined plane ($m_2 = 10\\text{ kg}$):</p>\n<p>The actual mass is $10\\text{ kg}$. The angle of inclination is $\\theta = 30^\\circ$.</p>\n<p>The effective gravitational force components perpendicular to the incline is $m_2 g_{\\text{eff}} \\cos 30^\\circ$</p>\n<p>The effective gravitational force components parallel to the incline to the incline is $\\mathrm{m}_2 \\mathrm{~g}_{\\mathrm{eff}} \\sin 30^{\\circ}$</p>\n<p>Net force down the incline is $F_{\\text{net}\\parallel} = 10 \\times 12 \\times \\sin 30^\f - T = 120 \\times 0.5 - T = 60 - T$</p>\n<p>Applying Newton's second law parallel to the incline,</p>\n<p>$$60 - T = m_2 a \\ldots (ii)$$</p>\n<p>From both the equations,</p>\n<p>$$2(T - 60) = 2(5a)$$</p>\n<p>$$2T - 120 = 10a \\ldots (i)$$</p>\n<p>On equating equation (ii) and equation (iii),</p>\n<p>$$60 - T = 2T - 120$$</p>\n<p>$$60 + 120 = 2T + T$$</p>\n<p>$$180 = 3T$$</p>\n<p>$$T = \\frac{180}{3} = 60\\,\\text{N}$$</p>\n<p>Since the spring balance is connected with this string, it experiences this uniform tension force of $60\\,\\text{N}$.</p>\n<p>Therefore, the reading of spring balance is $60\\,(\\text{N})$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र के अनुसार स्प्रिंग बैलेंस का पाठ्यांक ($N$ में) क्या है? $\\left[g=10 \\mathrm{~m} / \\mathrm{s}^2\\right]$</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr3duruq%2F39eb84af-21b0-43d3-8398-04a2449b8112%2Fc73f2620-7603-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3durur.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr3duruq%2F39eb84af-21b0-43d3-8398-04a2449b8112%2Fc73f2620-7603-11f1-bfda-ab45182f57fb%2Ffile-6y3zli1mr3durur.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-force",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrauocbt",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The system of two weights with masses $\\mathbf{m}_1$ and $\\mathbf{m}_2$ are connected with weightless spring as shown. The system is resting on the support $S$. The support $S$ is quickly removed. Find the acceleration (in $m / \\mathbf{s}^2$ ) of 5 kg right after the support $S$ is removed.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mraugo26%2F6e9897c0-c725-4333-8998-ce4b6da3ca35%2F36badee0-7a1e-11f1-9f3a-053fcad99487%2Ffile-6y3zli1mraugo27.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mraugo26%2F6e9897c0-c725-4333-8998-ce4b6da3ca35%2F36badee0-7a1e-11f1-9f3a-053fcad99487%2Ffile-6y3zli1mraugo27.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "16",
+                "explanation": "<p>Initially, the entire system rests on platform S .</p>\n<p>For the top block is resting on the spring,</p>\n<p>The downward force of gravity is $\\mathrm{m}_1 \\mathrm{~g}=3 \\times 10 \\mathrm{~N}=30 \\mathrm{~N}$</p>\n<p>The upward restoring force of the compressed spring is $\\mathrm{F}_{\\mathrm{s}}$</p>\n<p>Since the top block is at rest,</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrauirvv%2Ff05da1b4-2a28-4cd5-8fd1-c8fd442230f5%2F714d87b0-7a1e-11f1-9f3a-053fcad99487%2Ffile-6y3zli1mrauirvw.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrauirvv%2Ff05da1b4-2a28-4cd5-8fd1-c8fd442230f5%2F714d87b0-7a1e-11f1-9f3a-053fcad99487%2Ffile-6y3zli1mrauirvw.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$ \\mathrm{F}_{\\mathrm{s}}=\\mathrm{m}_1 \\mathrm{~g}=30 \\mathrm{~N} $$</p>\n<p>Thus, the spring is initially compressed and exerts an outward force of 30 N at both of its ends.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mraukwtv%2Feda842ab-d023-4d32-8c0c-1d99911c6039%2Facbd9830-7a1e-11f1-9f3a-053fcad99487%2Ffile-6y3zli1mraukwtw.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mraukwtv%2Feda842ab-d023-4d32-8c0c-1d99911c6039%2Facbd9830-7a1e-11f1-9f3a-053fcad99487%2Ffile-6y3zli1mraukwtw.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>When the support platform S is quickly removed, the upward contact force ( $\\mathrm{N}_{\\mathrm{s}}$ ) it exerted on the bottom 5 kg block becomes zero.</p>\n<p>A spring cannot change its length or its internal tension force instantaneously because changing its shape requires its attached masses to move through a distance. Therefore, at the instant the platform vanishes, the spring force $\\mathrm{F}_{\\mathrm{s}}$ remains 30 N .</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mraum5le%2Feee414a0-89eb-4b58-88a2-89036e78f63f%2Fcf522230-7a1e-11f1-9f3a-053fcad99487%2Ffile-6y3zli1mraum5lf.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mraum5le%2Feee414a0-89eb-4b58-88a2-89036e78f63f%2Fcf522230-7a1e-11f1-9f3a-053fcad99487%2Ffile-6y3zli1mraum5lf.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>The forces acting on the lower $5\text{ kg}$ block at this instant:</p>\n<p>The downward force of gravity is $m_2 g = 5 \t\\times 10\tN = 50N$</p>\n<p>The downward force from the compressed spring attached to it is $F_s = 30\text{ N}$</p>\n<p>So, the net force on $5\tkg$ block is;</p>\n<p>$$F_{\\text{net}} = m_2 g + F_s$$</p>\n<p>$$F_{\\text{net}} = 50\\text{ N} + 30\\text{ N} = 80\\text{ N}\\text{ (downwards)}$$</p>\n<p>Using Newton's second law ($F_{\\text{net}} = m_2 a$) for the lower block:</p>\n<p>$$80 = 5a$$</p>\n<p>$$a = \\frac{80}{5}\\text{ m/s}^2 = 16\\text{ m/s}^2$$</p>\n<p>Therefore, the acceleration of the $5\\text{ kg}$ block right after the support is removed is $16\\text{ m/s}^2$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान $\\mathbf{m}_1$ और $\\mathbf{m}_2$ वाले दो भारों का निकाय चित्र में दिखाए अनुसार एक भारहीन स्प्रिंग से जुड़ा हुआ है। यह निकाय आधार $S$ पर रखा हुआ है। आधार $S$ को तेजी से हटा दिया जाता है। आधार $S$ के हटने के ठीक बाद 5 kg वाले भार का त्वरण ($m / \\mathbf{s}^2$ में) ज्ञात कीजिए।</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mraugo26%2F6e9897c0-c725-4333-8998-ce4b6da3ca35%2F36badee0-7a1e-11f1-9f3a-053fcad99487%2Ffile-6y3zli1mraugo27.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mraugo26%2F6e9897c0-c725-4333-8998-ce4b6da3ca35%2F36badee0-7a1e-11f1-9f3a-053fcad99487%2Ffile-6y3zli1mraugo27.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-force",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mr7ctna5",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the shown arrangement where the blocks $A$ and $B$ connected by means of a uniform string is being moved vertically up by the force $F$. Each block weighs 2 kg while the mass of string is 1000 gm . The tension ( in N ) at bottom of the string equals.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr6ifz4a%2F421a40c8-06c6-4303-8ce8-c56f0bd8c9a2%2F1350dea0-77bc-11f1-b778-856c7b75f5bf%2Ffile-6y3zli1mr6ifz4b.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr6ifz4a%2F421a40c8-06c6-4303-8ce8-c56f0bd8c9a2%2F1350dea0-77bc-11f1-b778-856c7b75f5bf%2Ffile-6y3zli1mr6ifz4b.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "40",
+                "explanation": "<p>The mass of block $A$ is $m_A=2 \\mathrm{~kg}$, and the mass of block $B$ is $m_B=2 \\mathrm{~kg}$.</p>\n<p>The mass of the uniform string is given as 1000 gm , which converts to $\\mathrm{m}_{\\text {string }}=\\frac{1000}{1000}=1 \\mathrm{~kg}$.</p>\n<p>The upward pulling force is $\\mathrm{F}=100 \\mathrm{~N}$, and the acceleration due to gravity as $\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^2$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr6j1714%2Fb9f9e0a9-abfc-48ff-8053-38c030b73005%2F616b7580-77be-11f1-b778-856c7b75f5bf%2Ffile-6y3zli1mr6j1715.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr6j1714%2Fb9f9e0a9-abfc-48ff-8053-38c030b73005%2F616b7580-77be-11f1-b778-856c7b75f5bf%2Ffile-6y3zli1mr6j1715.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$M_{\\text{total}} = m_A + m_{\\text{string}} + m_B$$</p>\n<p>$$M_{\\text{total}} = 2\\ \\text{kg} + 1\\ \\text{kg} + 2\\ \\text{kg} = 5\\ \\text{kg}$$</p>\n<p>Using Newton's second law of motion,</p>\n<p>$$\\Sigma\\ F_{\\text{net}} = M_{\\text{total}} \\cdot a$$</p>\n<p>$$F - M_{\\text{total}} \\cdot g = M_{\\text{total}} \\cdot a$$</p>\n<p>$$100 - 5 \\times 10 = 5 \\cdot a$$</p>\n<p>$$100 - 50 = 5 \\cdot a$$</p>\n<p>$$50 = 5 \\cdot a$$</p>\n<p>$$a = \\frac{50}{5} = 10\\ \\text{m}/\\text{s}^2$$</p>\n<p>So, the entire system accelerates vertically upward at a rate of $10\\ \\text{m}/\\text{s}^2$.</p>\n<p>For block B the forces acting are the upward tension T and the downward gravitational force equal to its own weight $\\mathrm{m}_{\\mathrm{B}} \\cdot \\mathrm{g}$.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr7cqvnw%2Fe9936816-a441-4fd8-9dfe-30bc93d299d3%2F946c00c0-7832-11f1-9d09-a14152a8f54e%2Ffile-6y3zli1mr7cqvnx.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr7cqvnw%2Fe9936816-a441-4fd8-9dfe-30bc93d299d3%2F946c00c0-7832-11f1-9d09-a14152a8f54e%2Ffile-6y3zli1mr7cqvnx.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Since block B moves upward with the system acceleration $a$, on applying Newton's second law,</p>\n<p>$$\\Sigma F_y = m_B \\cdot a$$</p>\n<p>$$T - m_B \\cdot g = m_B \\cdot a$$</p>\n<p>$$T = m_B \\cdot g + m_B \\cdot a$$</p>\n<p>$$T = m_B(g + a)$$</p>\n<p>$$T = 2 \\times (10 + 10)\\mathrm{N}$$</p>\n<p>$$T = 2 \\times 20 = 40\\,\\mathrm{N}$$</p>\n<p>Therefore, the tension at bottom of the string equals $40\\mathrm{N}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दर्शाई गई व्यवस्था पर विचार करें जहाँ एक समान डोरी के माध्यम से जुड़े ब्लॉक $A$ और $B$ को बल $F$ द्वारा ऊर्ध्वाधर रूप से ऊपर ले जाया जा रहा है। प्रत्येक ब्लॉक का वजन 2 kg है जबकि डोरी का द्रव्यमान 1000 gm है। डोरी के निचले सिरे पर तनाव (N में) किसके बराबर है?</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr6ifz4a%2F421a40c8-06c6-4303-8ce8-c56f0bd8c9a2%2F1350dea0-77bc-11f1-b778-856c7b75f5bf%2Ffile-6y3zli1mr6ifz4b.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr6ifz4a%2F421a40c8-06c6-4303-8ce8-c56f0bd8c9a2%2F1350dea0-77bc-11f1-b778-856c7b75f5bf%2Ffile-6y3zli1mr6ifz4b.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "motion-of-connected-bodies",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mra244h6",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A man uses two pulleys to raise himself with an acceleration $2\\, \\text{m}/\\text{s}^2$, as in figure. Man stands on a light weighing machine fitted in horizontal platform. Determine the reading of weighing machine. (Mass of man = $75 \\text{ kg}$, mass of platform = $25 \\text{ kg}$).</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra1wc8o%2F6e4df6ce-e7f1-4c53-a425-3e3b088b9e5e%2F81ccf780-79ae-11f1-9eb6-139adce7efb6%2Ffile-6y3zli1mra1wc8p.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra1wc8o%2F6e4df6ce-e7f1-4c53-a425-3e3b088b9e5e%2F81ccf780-79ae-11f1-9eb6-139adce7efb6%2Ffile-6y3zli1mra1wc8p.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "correct_options": [
+                  "B"
+                ],
+                "answer": "30",
+                "explanation": "<p>The reading of the weighing machine is equal to upward normal contact force exerted between the man and the weighing machine platform.</p>\n<p>Assuming the man, the platform, and the light weighing machine together as a system.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra1xuk9%2F5eabf9d4-a0e3-4011-b26b-86da0da5b4ef%2Fabc34e90-79ae-11f1-9eb6-139adce7efb6%2Ffile-6y3zli1mra1xuka.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra1xuk9%2F5eabf9d4-a0e3-4011-b26b-86da0da5b4ef%2Fabc34e90-79ae-11f1-9eb6-139adce7efb6%2Ffile-6y3zli1mra1xuka.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Mass of the man $=75 \\mathrm{~kg}$</p>\n<p>Mass of the platform $=25 \\mathrm{~kg}$</p>\n<p>The total mass M of the system is:</p>\n<p>$$ M_{\\text {total }}=75 \\mathrm{~kg}+25 \\mathrm{~kg}=100 \\mathrm{~kg} $$</p>\n<p>The total downward force of gravity acting on this system is:</p>\n<p>$$ \\mathrm{W}=\\mathrm{Mg}=100 \\times 10 \\mathrm{~m} / \\mathrm{s}^2=1000 \\mathrm{~N} $$</p>\n<p>The system accelerates vertically upwards with a given acceleration of $2 \\mathrm{~m} / \\mathrm{s}^2$.</p>\n<p>Let T be the tension in each of the two vertical ropes hanging down from the ceiling pulleys.</p>\n<p>The man holds one rope segment in each hand, meaning he pulls downward on two rope segments. By Newton's third law, these two segments pull upward on the man with a force of 2T. The other ends of these ropes are attached directly to the platform, pulling upward on the platform with a force of 2T.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra1zyn5%2F37cef49f-c9c9-4fde-b648-86533b8cd6ea%2Fe6887910-79ae-11f1-9eb6-139adce7efb6%2Ffile-6y3zli1mra1zyn6.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra1zyn5%2F37cef49f-c9c9-4fde-b648-86533b8cd6ea%2Fe6887910-79ae-11f1-9eb6-139adce7efb6%2Ffile-6y3zli1mra1zyn6.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Thus, the total upward vertical force supporting the combined system is:</p>\n<p>$$F_{\\text{upward}} = 2T + 2T = 4T$$</p>\n<p>Applying Newton's second law ($F_{\\text{net}} = M \\cdot a$) to the system:</p>\n<p>$$4T - Mg = Ma$$</p>\n<p>$$4T - 1000 = 100 \\times 2$$</p>\n<p>$$4T - 1000 = 200$$</p>\n<p>$$4T = 1200 \\Rightarrow T = 300\\ \\text{N}$$</p>\n<p>Now, for the man to find the normal force $N$ acting on his feet from the weighing machine.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra21vgu%2Fa5240f05-9e53-40ee-a75b-50d9e58461c6%2F1bb2dae0-79af-11f1-9eb6-139adce7efb6%2Ffile-6y3zli1mra21vgv.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra21vgu%2Fa5240f05-9e53-40ee-a75b-50d9e58461c6%2F1bb2dae0-79af-11f1-9eb6-139adce7efb6%2Ffile-6y3zli1mra21vgv.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The downward force of gravity is $m_{\\mathrm{man}}g = 75 \\times 10\\,\\mathrm{N} = 750\\,\\mathrm{N}$.</p>\n<p>The upward force from the two ropes held in his hands is $2T = 2 \\times 300\\,\\mathrm{N} = 600\\,\\mathrm{N}$.</p>\n<p>The upward normal force $N$ from the weighing machine floor.</p>\n<p>Since the man is accelerating upwards at $2\\,\\mathrm{m/s^2}$,</p>\n<p>$$N + 2T - m_{\\mathrm{man}}g = m_{\\mathrm{man}}a$$</p>\n<p>$$N + 600 - 750 = 75 \\times 2$$</p>\n<p>$$N - 150 = 150$$</p>\n<p>$$N = 300\\,\\mathrm{N}$$</p>\n<p>A weighing machine measures the normal force $N$ and shows it as a mass value.</p>\n<p>$$\\text{Reading} = \\frac{N}{g} = \\frac{300}{10}\\,\\mathrm{kg} = 30\\,\\mathrm{kg}$$</p>\n<p>Therefore, the reading of the weighing machine is $30\\,\\mathrm{kg}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक आदमी चित्र के अनुसार $2\\, \\text{m}/\\text{s}^2$ के त्वरण के साथ खुद को ऊपर उठाने के लिए दो घिरनियों का उपयोग करता है। आदमी क्षैतिज प्लेटफॉर्म में लगी एक हल्की वजन मापने वाली मशीन पर खड़ा है। वजन मापने वाली मशीन का पाठ्यांक ज्ञात कीजिए। (आदमी का द्रव्यमान = $75 \\text{ kg}$, प्लेटफॉर्म का द्रव्यमान = $25 \\text{ kg}$)।</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mra1wc8o%2F6e4df6ce-e7f1-4c53-a425-3e3b088b9e5e%2F81ccf780-79ae-11f1-9eb6-139adce7efb6%2Ffile-6y3zli1mra1wc8p.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mra1wc8o%2F6e4df6ce-e7f1-4c53-a425-3e3b088b9e5e%2F81ccf780-79ae-11f1-9eb6-139adce7efb6%2Ffile-6y3zli1mra1wc8p.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "motion-of-connected-bodies",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrccqlve",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>On a frictionless surface, two rubber bands stretched to the standard length give an object an acceleration of $2 \\mathrm{~m} / \\mathrm{s}^2$. If a second object of twice the mass is pulled using four rubber bands, each stretched to the same standard length, its acceleration is :</p>",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>For the same standard stretch, each rubber band applies the same force.</p>\n<p>Suppose the mass of the first object is $m$.</p>\n<p>Two rubber bands produce a force that gives acceleration $2 \\ \\mathrm{m/s^2}$.</p>\n<p>Using Newton’s second law,</p>\n<p>$$ F = ma $$</p>\n<p>So, the force due to two rubber bands is</p>\n<p>$$ F = m \\times 2 = 2m $$</p>\n<p>Now the second object has twice the mass, so its mass is</p>\n<p>$$ 2m $$</p>\n<p>It is pulled by four rubber bands. Since four rubber bands give twice the force of two rubber bands, the force becomes</p>\n<p>$$ 2F = 2 \\times 2m = 4m $$</p>\n<p>So the acceleration of the second object is</p>\n<p>$$ a = \\frac{F}{m} = \\frac{4m}{2m} = 2 \\ \\mathrm{m/s^2} $$</p>\n<p>So, the acceleration of the second object is</p>\n<p>$$ \\boxed{2 \\ \\mathrm{m/s^2}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक घर्षण रहित सतह पर, मानक लंबाई तक खींचे गए दो रबर बैंड एक वस्तु को $2 \\mathrm{~m} / \\mathrm{s}^2$ का त्वरण प्रदान करते हैं। यदि दोगुने द्रव्यमान वाली दूसरी वस्तु को चार रबर बैंडों का उपयोग करके खींचा जाता है, जिनमें से प्रत्येक को समान मानक लंबाई तक खींचा गया है, तो इसका त्वरण होगा :</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-force",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Motion of Connected Bodies, Spring Force",
+    "timeAllotted": 2160000,
+    "title": "Laws of Motion Test - 5 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g71mnq8iawy",
+    "defaultLanguage": "en",
+    "description": "Motion of Connected Bodies, Spring Force",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-09T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Motion of Connected Bodies, Spring Force",
+    "timeAllotted": 2160000,
+    "title": "Laws of Motion Test - 5 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Laws of Motion"
+  }
+}

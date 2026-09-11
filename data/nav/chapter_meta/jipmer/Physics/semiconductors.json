@@ -1,0 +1,65 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b34d4b564dfab4f94cc",
+  "chapterId": "66d58536a75f05ee8564f542",
+  "subject": "Physics",
+  "chapter": "Semiconductors",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d58697a75f05ee85650290",
+      "title": "Energy Bands in Solids",
+      "count": 2,
+      "questionIds": [
+        "66d5857da75f05ee8564f7ef",
+        "66d5857ca75f05ee8564f7ea"
+      ]
+    },
+    {
+      "id": "66d58697a75f05ee8565028d",
+      "title": "Semiconductors",
+      "count": 1,
+      "questionIds": [
+        "66d58536a75f05ee8564f540"
+      ]
+    },
+    {
+      "id": "66d58697a75f05ee8565028f",
+      "title": "Diodes",
+      "count": 4,
+      "questionIds": [
+        "66d585f9a75f05ee8564fc68",
+        "66d585f9a75f05ee8564fc66",
+        "66d5857ba75f05ee8564f7e1",
+        "66d5856aa75f05ee8564f73e"
+      ]
+    },
+    {
+      "id": "66d58697a75f05ee8565028e",
+      "title": "Junction Transistors",
+      "count": 5,
+      "questionIds": [
+        "66d5865da75f05ee8565000b",
+        "66d58623a75f05ee8564fdf2",
+        "66d5860ea75f05ee8564fd2f",
+        "66d585c6a75f05ee8564fa91",
+        "66d58538a75f05ee8564f559"
+      ]
+    },
+    {
+      "id": "66d58697a75f05ee85650291",
+      "title": "Logic gates",
+      "count": 7,
+      "questionIds": [
+        "66d5865ea75f05ee8565000f",
+        "66d58659a75f05ee8564ffe0",
+        "66d58635a75f05ee8564fe98",
+        "66d58622a75f05ee8564fde4",
+        "66d585eba75f05ee8564fbe4",
+        "66d585d9a75f05ee8564fb3d",
+        "66d585b7a75f05ee8564fa08"
+      ]
+    }
+  ]
+}

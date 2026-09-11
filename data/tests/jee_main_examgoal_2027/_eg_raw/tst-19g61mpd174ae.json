@@ -1,0 +1,1004 @@
+{
+  "testId": "tst-19g61mpd174ae",
+  "title": "Chemical Kinetics Test - 1 (Topic Test)",
+  "type": "topic",
+  "section": "Chemical Kinetics",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-07-12T08:30:00.000Z",
+  "status": "ok",
+  "analysisId": "309e2545-7fef-4b19-919f-a71413fd9ee6",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61mpd174ae",
+    "defaultLanguage": "en",
+    "description": "Rate Expression, Rate of Appearance and Disappearance, Instantaneous and Average Rate of Reaction",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-12T08:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrhh0avm",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en",
+              "hi"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In the formation of sulphur trioxide by the contact process, $2 \\mathrm{SO}_2(\\mathrm{~g})+\\mathrm{O}_2(\\mathrm{~g}) \\longrightarrow 2 \\mathrm{SO}_3(\\mathrm{~g})$; the rate of reaction is expressed as</p>\n<p>$$ -\\frac{d\\left[\\mathrm{O}_2\\right]}{d t}=2.5 \\times 10^{-4} \\mathrm{~mol} \\mathrm{~L}^{-1} \\mathrm{~s}^{-1} . $$</p>\n<p>The rate of disappearance of ( $\\mathrm{SO}_2$ ) will be</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "$5 \\times 10^{-4} \\mathrm{molL}^{-1} \\mathrm{~s}^{-1}$"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "$-2.25 \\times 10^{-4} \\mathrm{~mol} \\mathrm{~L}^{-1} \\mathrm{~s}^{-1}$"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "$3.75 \\times 10^{-4} \\mathrm{molL}^{-1} \\mathrm{~s}^{-1}$"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "$50.0 \\times 10^{-4} \\mathrm{~mol} \\mathrm{~L}^{-1} \\mathrm{~s}^{-1}$"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For the reaction</p>\n<p>$$ 2\\mathrm{SO}_2(g)+\\mathrm{O}_2(g)\\longrightarrow 2\\mathrm{SO}_3(g), $$</p>\n<p>the rate relation based on stoichiometric coefficients is</p>\n<p>$$ -\\frac{1}{2}\\frac{d[\\mathrm{SO}_2]}{dt} = -\\frac{d[\\mathrm{O}_2]}{dt}. $$</p>\n<p>Given,</p>\n<p>$$ -\\frac{d[\\mathrm{O}_2]}{dt} =2.5\\times10^{-4}\\ \\mathrm{mol\\,L^{-1}\\,s^{-1}}. $$</p>\n<p>Since $2$ moles of $\\mathrm{SO}_2$ disappear for every $1$ mole of $\\mathrm{O}_2$,</p>\n<p>$$ -\\frac{d[\\mathrm{SO}_2]}{dt} =2\\left(2.5\\times10^{-4}\\right) =5.0\\times10^{-4}\\ \\mathrm{mol\\,L^{-1}\\,s^{-1}}. $$</p>\n<p>Hence, the correct answer is <strong>Option A</strong>:</p>\n<p>$$ \\boxed{5\\times10^{-4}\\ \\mathrm{mol\\,L^{-1}\\,s^{-1}}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>संपर्क विधि द्वारा सल्फर ट्राइऑक्साइड के निर्माण में, $2 \\mathrm{SO}_2(\\mathrm{~g})+\\mathrm{O}_2(\\mathrm{~g}) \\longrightarrow 2 \\mathrm{SO}_3(\\mathrm{~g})$; अभिक्रिया की दर को इस प्रकार व्यक्त किया जाता है:</p> <p>$$ -\\frac{d\\left[\\mathrm{O}_2\\right]}{d t}=2.5 \\times 10^{-4} \\mathrm{~mol} \\mathrm{~L}^{-1} \\mathrm{~s}^{-1} . $$</p> <p>( $\\mathrm{SO}_2$ ) के विलुप्त होने की दर होगी</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "$5 \\times 10^{-4} \\mathrm{molL}^{-1} \\mathrm{~s}^{-1}$"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "$-2.25 \\times 10^{-4} \\mathrm{~mol} \\mathrm{~L}^{-1} \\mathrm{~s}^{-1}$"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "$3.75 \\times 10^{-4} \\mathrm{molL}^{-1} \\mathrm{~s}^{-1}$"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "$50.0 \\times 10^{-4} \\mathrm{~mol} \\mathrm{~L}^{-1} \\mathrm{~s}^{-1}$"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "rate-of-reaction",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrhh37xi",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en",
+              "hi"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the reaction,</p> <p>$\\mathrm{C_2H_4} + 3\\mathrm{O_2} \\rightarrow 2\\mathrm{CO_2} + 2\\mathrm{H_2O}$</p> <p>The rate of disappearance of $\\mathrm{C_2H_4}$ is $2.5 \\times 10^{-3}$ mol L<sup>-1</sup> s<sup>-1</sup>.</p> <p>Find the rate of disappearance of $\\mathrm{O_2}$ (in mol L<sup>-1</sup> s<sup>-1</sup>).</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$5.0 \\times 10^{-3}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$7.5 \\times 10^{-3}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2.5 \\times 10^{-3}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$1.5 \\times 10^{-3}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "\n<p>$$ \\mathrm{C_2H_4} + 3\\mathrm{O_2} \\rightarrow 2\\mathrm{CO_2} + 2\\mathrm{H_2O} $$</p>\n\n<p>Based on the balanced equation, we can write the relationship between the rates of the different substances as:</p>\n<p>$$ -\\frac{d[\\mathrm{C_2H_4}]}{dt} = -\\frac{1}{3} \\frac{d[\\mathrm{O_2}]}{dt} = \\frac{1}{2} \\frac{d[\\mathrm{CO_2}]}{dt} = \\frac{1}{2} \\frac{d[\\mathrm{H_2O}]}{dt} $$</p>\n<p>We are given the rate of disappearance of $\\mathrm{C_2H_4}$, which is:</p>\n<p>$$ -\\frac{d[\\mathrm{C_2H_4}]}{dt} = 2.5 \\times 10^{-3} \\text{ mol L}^{-1} \\text{s}^{-1} $$</p>\n<p>We need to find the rate of disappearance of $\\mathrm{O_2}$, which is represented by $-\\frac{d[\\mathrm{O_2}]}{dt}$. Using the relationship between $\\mathrm{C_2H_4}$ and $\\mathrm{O_2}$ from our rate expression, we have:</p>\n<p>$$ -\\frac{d[\\mathrm{C_2H_4}]}{dt} = -\\frac{1}{3} \\frac{d[\\mathrm{O_2}]}{dt} $$</p>\n\n<p>$$ -\\frac{d[\\mathrm{O_2}]}{dt} = 3 \\times \\left( -\\frac{d[\\mathrm{C_2H_4}]}{dt} \\right) $$</p>\n\n<p>$$ -\\frac{d[\\mathrm{O_2}]}{dt} = 3 \\times (2.5 \\times 10^{-3}) $$</p>\n<p>$$ -\\frac{d[\\mathrm{O_2}]}{dt} = 7.5 \\times 10^{-3} \\text{ mol L}^{-1} \\text{s}^{-1} $$</p>\n<p>The rate of disappearance of $\\mathrm{O_2}$ is $7.5 \\times 10^{-3}$ mol L$^{-1}$ s$^{-1}$.</p>\n<p>Option B is the correct answer.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अभिक्रिया के लिए,</p> <p>$\\mathrm{C_2H_4} + 3\\mathrm{O_2} \\rightarrow 2\\mathrm{CO_2} + 2\\mathrm{H_2O}$</p> <p>$\\mathrm{C_2H_4}$ के विलुप्त होने की दर $2.5 \\times 10^{-3}$ mol L<sup>-1</sup> s<sup>-1</sup> है।</p> <p>$\\mathrm{O_2}$ के विलुप्त होने की दर (mol L<sup>-1</sup> s<sup>-1</sup> में) ज्ञात कीजिए।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$5.0 \\times 10^{-3}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$7.5 \\times 10^{-3}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2.5 \\times 10^{-3}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$1.5 \\times 10^{-3}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "rate-of-reaction",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrhh5ez4",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en",
+              "hi"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In a closed vessel,</p><p>$2N_2O_5(g) \\longrightarrow 4NO_2(g) + O_2(g)$</p><p>the initial pressure of $N_2O_5$ is 2 atm. After some time, pressure increases by 1 atm.<br>Find the rate of appearance of $NO_2$ if the rate of disappearance of $N_2O_5$ is $2.5 \\times 10^{-4}$ mol L$^{-1}$ s$^{-1}$.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$5.0 \\times 10^{-4}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2.5 \\times 10^{-4}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.25 $\\times$ 10$^{-4}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1.0 $\\times$ 10$^{-4}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For the reaction</p>\n<p>$$ 2N_2O_5(g)\\longrightarrow 4NO_2(g)+O_2(g) $$</p>\n<p>the stoichiometric rate relation is</p>\n<p>$$ -\\frac{1}{2}\\frac{\\Delta[N_2O_5]}{\\Delta t} = \\frac{1}{4}\\frac{\\Delta[NO_2]}{\\Delta t} $$</p>\n<p>Thus, the rate of appearance of $NO_2$ is twice the rate of disappearance of $N_2O_5$:</p>\n<p>$$ \\frac{\\Delta[NO_2]}{\\Delta t} = 2\\left(2.5\\times10^{-4}\\right) $$</p>\n<p>$$ \\frac{\\Delta[NO_2]}{\\Delta t} = 5.0\\times10^{-4}\\ \\text{mol L}^{-1}\\text{s}^{-1} $$</p>\n<p>The pressure information is not needed because the required rates are directly related by the stoichiometric coefficients.</p>\n<p>$$ \\boxed{5.0\\times10^{-4}\\ \\text{mol L}^{-1}\\text{s}^{-1}} $$</p>\n<p><strong>Option A</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक बंद बर्तन में,</p><p>$2N_2O_5(g) \\longrightarrow 4NO_2(g) + O_2(g)$</p><p>$N_2O_5$ का प्रारंभिक दाब 2 atm है। कुछ समय बाद, दाब 1 atm बढ़ जाता है।<br>यदि $N_2O_5$ के विलुप्त होने की दर $2.5 \\times 10^{-4}$ mol L$^{-1}$ s$^{-1}$ है, तो $NO_2$ के प्रकट होने की दर ज्ञात कीजिए।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$5.0 \\times 10^{-4}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2.5 \\times 10^{-4}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.25 $\\times$ 10$^{-4}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1.0 $\\times$ 10$^{-4}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "rate-of-reaction",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrhh91qo",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en",
+              "hi"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the reaction given below, identify the correct statement.</p>\n<p>$X + 2Y \\rightarrow \\text{Product (p)}$</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>The rate at which X is consumed = two times the rate at which Y is consumed.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>The rate at which X is consumed = $\\frac{1}{2}$ the rate at which product (p) is formed</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>The rate at which product (p) is formed = $\\frac{1}{2}$ the rate at which Y is consumed</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>The rate at which product (p) is formed = $\\frac{1}{2}$ the rate at which X is consumed</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For the reaction</p>\n<p>$$X+2Y\\rightarrow P$$</p>\n<p>the rate of reaction is related to the stoichiometric coefficients as</p>\n<p>$$-\\frac{d[X]}{dt}=-\\frac{1}{2}\\frac{d[Y]}{dt}=\\frac{d[P]}{dt}$$</p>\n<p>Thus, two moles of $Y$ disappear when one mole of product $P$ appears. Hence,</p>\n<p>$$\\text{Rate of appearance of }P=\\frac{1}{2}\\left(\\text{Rate of disappearance of }Y\\right)$$</p>\n<p>So, <strong>Option C is correct</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>नीचे दी गई अभिक्रिया के लिए सही कथन की पहचान कीजिए।</p><p>$X + 2Y \\rightarrow \\text{उत्पाद (p)}$</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>X के खपत होने की दर = Y के खपत होने की दर का दोगुना।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>X के खपत होने की दर = उत्पाद (p) के बनने की दर का $\\frac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>उत्पाद (p) के बनने की दर = Y के खपत होने की दर का $\\frac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>उत्पाद (p) के बनने की दर = X के खपत होने की दर का $\\frac{1}{2}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "rate-of-reaction",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrhhd7mt",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en",
+              "hi"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the reaction, $N_2O_5 \\rightarrow 2NO_2 + \\frac{1}{2}O_2$</p>\n<p>It is given that,</p>\n<p>$-\\frac{d[N_2O_5]}{dt} = k_1[N_2O_5]$</p>\n<p>$\\frac{d[NO_2]}{dt} = k_2[N_2O_5]$</p>\n<p>$\\frac{d[O_2]}{dt} = k_3[N_2O_5]$</p>\n<p>Which of the following gives the correct relation among $k_1$, $k_2$ and $k_3$?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2k_1 = k_2 = 4k_3$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$k_1 = k_2 = k_3$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2k_1 = 4k_2 = k_3$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For the given reaction:</p>\n<p>$$N_2O_5 \\rightarrow 2NO_2 + \\frac{1}{2}O_2$$</p>\n\n<p>$$\\text{Rate} = -\\frac{1}{1}\\frac{d[N_2O_5]}{dt} = \\frac{1}{2}\\frac{d[NO_2]}{dt} = \\frac{1}{\\frac{1}{2}}\\frac{d[O_2]}{dt}$$</p>\n<p>This simplifies to:</p>\n<p>$$-\\frac{d[N_2O_5]}{dt} = \\frac{1}{2} \\frac{d[NO_2]}{dt} = 2 \\frac{d[O_2]}{dt}$$</p>\n<p>We are already provided with the rate expressions for each individual substance:</p>\n<p>$$-\\frac{d[N_2O_5]}{dt} = k_1[N_2O_5]$$</p>\n<p>$$\\frac{d[NO_2]}{dt} = k_2[N_2O_5]$$</p>\n<p>$$\\frac{d[O_2]}{dt} = k_3[N_2O_5]$$</p>\n<p>Now, we simply substitute these expressions into our rate relation:</p>\n<p>$$k_1[N_2O_5] = \\frac{1}{2} k_2[N_2O_5] = 2 k_3[N_2O_5]$$</p>\n\n<p>$$k_1 = \\frac{k_2}{2} = 2k_3$$</p>\n\n<p>$$2k_1 = k_2 = 4k_3$$</p>\n<p>This corresponds to Option A.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित अभिक्रिया पर विचार करें, $N_2O_5 \\rightarrow 2NO_2 + \\frac{1}{2}O_2$</p><p>यह दिया गया है कि,</p><p>$-\\frac{d[N_2O_5]}{dt} = k_1[N_2O_5]$</p><p>$\\frac{d[NO_2]}{dt} = k_2[N_2O_5]$</p><p>$\\frac{d[O_2]}{dt} = k_3[N_2O_5]$</p><p>निम्नलिखित में से कौन सा $k_1$, $k_2$ और $k_3$ के बीच सही संबंध देता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2k_1 = k_2 = 4k_3$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$k_1 = k_2 = k_3$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2k_1 = 4k_2 = k_3$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "rate-of-reaction",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrhhh6d3",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en",
+              "hi"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the reaction $4A + B \\rightarrow 2C + 2D$, identify the single wrong statement.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>the rate at which B is used up is one-fourth of the rate at which A is used up.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>the rate at which C is produced is half of the rate at which B is used up.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>the rate of production of D is half of the rate of consumption of A.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>C and D are produced at the same rate.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For the reaction</p>\n<p>$$4A+B\\rightarrow 2C+2D$$</p>\n<p>the rate relation is</p>\n<p>$$-\\frac{1}{4}\\frac{d[A]}{dt} =-\\frac{d[B]}{dt} =\\frac{1}{2}\\frac{d[C]}{dt} =\\frac{1}{2}\\frac{d[D]}{dt}$$</p>\n<p>If the rate of disappearance of $B$ is $r$, then:</p>\n<ul>\n<li><p>Rate of disappearance of $A=4r$</p></li>\n<li><p>Rate of appearance of $C=2r$</p></li>\n<li><p>Rate of appearance of $D=2r$</p></li>\n</ul>\n<p>Thus, the rate of appearance of $C$ is <strong>twice</strong>, not half, the rate of disappearance of $B$.</p>\n<p>Hence, the only incorrect statement is:</p>\n<p>$$\\boxed{\\text{Option B}}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अभिक्रिया $4A + B \\rightarrow 2C + 2D$ के लिए, एकमात्र गलत कथन की पहचान कीजिए।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>B के उपभोग की दर, A के उपभोग की दर की एक-चौथाई है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>C के उत्पादन की दर, B के उपभोग की दर की आधी है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>D के उत्पादन की दर, A के उपभोग की दर की आधी है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>C और D समान दर से उत्पन्न होते हैं।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "rate-of-reaction",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrhhmwiq",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en",
+              "hi"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the reaction $2N_2O_5(g) \\rightarrow 4NO_2(g) + O_2(g)$, the concentration of $NO_2$ increases by $2.4 \\times 10^{-2}$ M in 6 s. What will be the average rate of appearance of $NO_2$ and the average rate of disappearance of $N_2O_5$?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2 \\times 10^{-3}$ Ms$^{-1}$, $4 \\times 10^{-3}$ Ms$^{-1}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\times 10^{-3}$ Ms$^{-1}$, $1 \\times 10^{-3}$ Ms$^{-1}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2 \\times 10$ Ms$^{-1}$, $2 \\times 10^{-3}$ Ms$^{-1}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$4 \\times 10^{-3}$ Ms$^{-1}$, $2 \\times 10^{-3}$ Ms$^{-1}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For the reaction</p>\n<p>$$2N_2O_5(g) \\rightarrow 4NO_2(g)+O_2(g)$$</p>\n<p>The average rate of appearance of $NO_2$ is</p>\n<p>$$\\frac{\\Delta[NO_2]}{\\Delta t} =\\frac{2.4\\times10^{-2}}{6} =4\\times10^{-3}\\ \\text{M s}^{-1}$$</p>\n<p>For our reaction, the relation is:</p>\n<p>$$\\text{Rate} = -\\frac{1}{2} \\frac{\\Delta[N_2O_5]}{\\Delta t} = \\frac{1}{4} \\frac{\\Delta[NO_2]}{\\Delta t}$$</p>\n<p>The expression $-\\frac{\\Delta[N_2O_5]}{\\Delta t}$ represents the rate of disappearance of $N_2O_5$. We can rearrange the equation above to find it:</p>\n<p>$$-\\frac{\\Delta[N_2O_5]}{\\Delta t} = \\frac{2}{4} \\frac{\\Delta[NO_2]}{\\Delta t}$$</p>\n<p>$$-\\frac{\\Delta[N_2O_5]}{\\Delta t} = \\frac{1}{2} \\left[ \\frac{\\Delta[NO_2]}{\\Delta t} \\right]$$</p>\n<p>Now, substitute the value we found earlier for the rate of appearance of $NO_2$:</p>\n<p>$$-\\frac{\\Delta[N_2O_5]}{\\Delta t} = \\frac{1}{2} \\times 4 \\times 10^{-3} \\text{ M s}^{-1}$$</p>\n<p>$$-\\frac{\\Delta[N_2O_5]}{\\Delta t} = 2 \\times 10^{-3} \\text{ M s}^{-1}$$</p>\n<p>Thus, the rates are:</p>\n<p>$$4\\times10^{-3}\\ \\text{M s}^{-1},\\quad 2\\times10^{-3}\\ \\text{M s}^{-1}$$</p>\n<p><strong>Option D</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अभिक्रिया $2N_2O_5(g) \rightarrow 4NO_2(g) + O_2(g)$ के लिए, $NO_2$ की सांद्रता 6 s में $2.4 \times 10^{-2}$ M बढ़ जाती है। $NO_2$ के प्रकट होने की औसत दर और $N_2O_5$ के विलुप्त होने की औसत दर क्या होगी?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2 \times 10^{-3}$ Ms$^{-1}$, $4 \times 10^{-3}$ Ms$^{-1}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \times 10^{-3}$ Ms$^{-1}$, $1 \times 10^{-3}$ Ms$^{-1}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2 \times 10$ Ms$^{-1}$, $2 \times 10^{-3}$ Ms$^{-1}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$4 \times 10^{-3}$ Ms$^{-1}$, $2 \times 10^{-3}$ Ms$^{-1}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "rate-of-reaction",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrhhu4u5",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en",
+              "hi"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following statements is incorrect regarding the rate of a reaction?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>The rate of a reaction cannot have a negative value.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>The rate of a reaction is expressed as the change in concentration of a reactant per unit time divided by its stoichiometric coefficient.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>The average rate and the instantaneous rate are never the same.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>The rate can be affected by the surface area of the reactants.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The wrong statement is Option C.</p>\n\n<p>The rate of a reaction tells us how fast reactants are getting used up or products are being formed. We always express it as a positive quantity. Since the concentration of a reactant decreases with time, its change comes out negative, so we put a negative sign to make the rate positive. That is why Option A is correct, the rate is never taken as negative.</p>\n<p>Option B is also correct. When we write the rate for any reaction, we divide the change in concentration by the stoichiometric coefficient of that species. For example, in</p>\n<p>$$aA + bB \\rightarrow cC + dD$$</p>\n<p>the rate is written as</p>\n<p>$$\\text{Rate} = -\\frac{1}{a}\\frac{d[A]}{dt} = -\\frac{1}{b}\\frac{d[B]}{dt} = \\frac{1}{c}\\frac{d[C]}{dt} = \\frac{1}{d}\\frac{d[D]}{dt}$$</p>\n<p>This keeps the rate the same no matter which species we choose.</p>\n<p>Option D is correct too. In reactions involving solids, a larger surface area gives more space for the reaction to happen, so the rate increases. Powdered substances react faster than lumps for this reason.</p>\n<p>Now coming to Option C. The average rate is measured over a period of time, while the instantaneous rate is measured at one particular moment. These two are not always different. When the time interval becomes very small, the average rate actually approaches the instantaneous rate. Also, at a specific instant they can even match. So saying they are \"always different\" is not true, which makes Option C the wrong statement.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अभिक्रिया की दर के संबंध में निम्नलिखित में से कौन सा कथन गलत है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>अभिक्रिया की दर का मान ऋणात्मक नहीं हो सकता है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>अभिक्रिया की दर को प्रति इकाई समय में किसी अभिकारक की सांद्रता में परिवर्तन को उसके रससमीकरणमितीय गुणांक से विभाजित करके व्यक्त किया जाता है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>औसत दर और तात्क्षणिक दर कभी भी समान नहीं होते हैं।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>अभिक्रिया की दर अभिकारकों के पृष्ठीय क्षेत्रफल से प्रभावित हो सकती है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "rate-of-reaction",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrhi468c",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en",
+              "hi"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Rate of formation of SO<sub>3</sub> according to the reaction,</p><p>2SO<sub>2</sub> + O<sub>2</sub> &rarr; 2SO<sub>3</sub> is $1.6 \\times 10^{-3}$ kg L<sup>-1</sup> min<sup>-1</sup>.</p><p>Hence rate of decomposition of SO<sub>2</sub> is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$1.6 \\times 10^{-3}$ kg L<sup>-1</sup> min<sup>-1</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$8.0 \\times 10^{-4}$ kg L<sup>-1</sup> min<sup>-1</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$3.2 \\times 10^{-3}$ kg L<sup>-1</sup> min<sup>-1</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$1.28 \\times 10^{-3}$ kg L<sup>-1</sup> min<sup>-1</sup></p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Look at the balanced equation:</p>\n<p>$$2SO_2 + O_2 \\rightarrow 2SO_3$$</p>\n\n<p>Rate of Reaction $$=-\\frac{1}{2} \\frac{d[\\text{SO}_2]}{dt} = \\frac{1}{2} \\frac{d[\\text{SO}_3]}{dt}$$</p>\n\n<p>Rate of Reaction$$=-\\frac{d[\\text{SO}_2]}{dt} = \\frac{d[\\text{SO}_3]}{dt}$$</p>\n<p>Now here comes the important point. The rate is given in mass units (kg L$^{-1}$ min$^{-1}$), not in moles. So we can't directly say the mass rates are equal, because $SO_2$ and $SO_3$ have different molar masses.</p>\n<p>Molar mass of $SO_3 = 80$ g/mol</p>\n<p>Molar mass of $SO_2 = 64$ g/mol</p>\n<p>The moles of $SO_3$ forming per litre per minute:</p>\n<p>$$\\frac{1.6 \\times 10^{-3} \\text{ kg}}{80 \\text{ g/mol}} = \\frac{1.6}{80} \\text{ mol} = 2 \\times 10^{-2} \\text{ mol}$$</p>\n<p>(keeping the $\\times 10^{-3}$ kg as $1.6$ g gives $1.6/80 = 0.02$ mol)</p>\n<p>Since the moles of $SO_2$ reacting are the same, moles of $SO_2$ used $= 2 \\times 10^{-2}$ mol L$^{-1}$ min$^{-1}$.</p>\n<p>Now convert this back to mass using the molar mass of $SO_2$:</p>\n<p>$$2 \\times 10^{-2} \\times 64 = 1.28 \\text{ g} = 1.28 \\times 10^{-3} \\text{ kg}$$</p>\n<p>So the rate of decomposition of $SO_2$ is</p>\n<p>$$1.28 \\times 10^{-3} \\text{ kg L}^{-1} \\text{ min}^{-1}$$</p>\n<p>The answer is <strong>Option D</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित अभिक्रिया के अनुसार SO<sub>3</sub> के निर्माण की दर,</p><p>2SO<sub>2</sub> + O<sub>2</sub> &rarr; 2SO<sub>3</sub>, $1.6 \\times 10^{-3}$ kg L<sup>-1</sup> min<sup>-1</sup> है।</p><p>अतः SO<sub>2</sub> के विघटन की दर है-</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$1.6 \\times 10^{-3}$ kg L<sup>-1</sup> min<sup>-1</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$8.0 \\times 10^{-4}$ kg L<sup>-1</sup> min<sup>-1</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$3.2 \\times 10^{-3}$ kg L<sup>-1</sup> min<sup>-1</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$1.28 \\times 10^{-3}$ kg L<sup>-1</sup> min<sup>-1</sup></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "rate-of-reaction",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrhi75xz",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en",
+              "hi"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For a general chemical change; $2A + 3B \\rightarrow$ products, the rate of disappearance of A is $r_1$ and of B is $r_2$. The rates $r_1$ and $r_2$ are related to</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$3r_1 = 2r_2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$r_1 = r_2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2r_1 = 3r_2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>${r_1}^2 = 2{r_2}^2$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For the reaction $2A + 3B \\rightarrow$ products</p>\n<p>The rate of disappearance of A is $r_1 = -\\dfrac{d[A]}{dt}$, and the rate of disappearance of B is $r_2 = -\\dfrac{d[B]}{dt}$.</p>\n<p>The single rate of reaction is</p>\n<p>$$-\\frac{1}{2}\\frac{d[A]}{dt} = -\\frac{1}{3}\\frac{d[B]}{dt}$$</p>\n<p>So in terms of $r_1$ and $r_2$,</p>\n<p>$$\\frac{r_1}{2} = \\frac{r_2}{3}$$</p>\n\n<p>$$3r_1 = 2r_2$$</p>\n\n<p>So the correct answer is <strong>Option A: $3r_1 = 2r_2$</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक सामान्य रासायनिक परिवर्तन; $2A + 3B \\rightarrow$ उत्पाद के लिए, A के विलुप्त होने की दर $r_1$ और B के विलुप्त होने की दर $r_2$ है। दर $r_1$ और $r_2$ किस प्रकार संबंधित हैं?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$3r_1 = 2r_2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$r_1 = r_2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2r_1 = 3r_2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>${r_1}^2 = 2{r_2}^2$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "rate-of-reaction",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrhihwmt",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en",
+              "hi"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For a reaction, $2 X \\rightarrow Y$, the concentration of $X$ decreases from 3 M to 1.5 M in 4 min . The rate of reaction is $\\_\\_\\_\\_$ $\\times 10^{-3} \\mathrm{M} \\mathrm{min}^{-1}$.(In nearest Integer)</p>",
+                "options": [],
+                "answer": "188",
+                "explanation": "<p>For the reaction</p>\n<p>$$2X \\rightarrow Y$$</p>\n<p>the rate of reaction is related to the disappearance of $X$ by</p>\n<p>$$\\text{Rate}=-\\frac{1}{2}\\frac{\\Delta [X]}{\\Delta t}$$</p>\n<p>Here,</p>\n<p>$$\\Delta [X]=1.5-3=-1.5\\ \\mathrm{M}$$</p>\n<p>and</p>\n<p>$$\\Delta t=4\\ \\mathrm{min}$$</p>\n<p>So,</p>\n<p>$$\\text{Rate}=-\\frac{1}{2}\\left(\\frac{-1.5}{4}\\right) =0.1875\\ \\mathrm{M\\,min^{-1}}$$</p>\n<p>Writing it in the required form,</p>\n<p>$$0.1875\\ \\mathrm{M\\,min^{-1}} =187.5\\times10^{-3}\\ \\mathrm{M\\,min^{-1}}$$</p>\n<p>The nearest integer is</p>\n<p>$$\\boxed{188}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक अभिक्रिया, $2 X \\rightarrow Y$ के लिए, $X$ की सांद्रता 4 min में 3 M से घटकर 1.5 M हो जाती है। अभिक्रिया की दर $\\_\\_\\_\\_$ $\\times 10^{-3} \\mathrm{M} \\mathrm{min}^{-1}$ है। (निकटतम पूर्णांक में)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "rate-of-reaction",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrhidv29",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en",
+              "hi"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>On mixing $1 \\mathrm{dm}^3$ of $3 \\mathrm{M} \\mathrm{C}_2 \\mathrm{H}_5 \\mathrm{OH}$ with $1 \\mathrm{dm}^3$ of 2 M ethanoic acid, an ester is formed. If each solution is diluted with an equal volume of water, the initial rate would be $\\_\\_\\_\\_$ times of final rate.</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>For the given reaction,</p>\n<p>$$ \\mathrm{C_2H_5OH + CH_3COOH \\longrightarrow CH_3COOC_2H_5 + H_2O} $$</p>\n<p>$$ r = k[\\mathrm{CH_3COOH}][\\mathrm{C_2H_5OH}] $$</p>\n<p>$$ r = k\\left[\\frac{2}{V}\\right]\\left[\\frac{3}{V}\\right] $$</p>\n<p>$$ [V = 1\\ \\mathrm{dm^3}] $$</p>\n<p>Increasing volume $(V)$ by twice (due to dilution) will reduce</p>\n<p>the rate by $1/4$ times.</p>\n<p>$$ r' = 0.25\\,K[\\mathrm{CH_3COOH}][\\mathrm{C_2H_5OH}] $$</p>\n<p>$$ r' = k\\left[\\frac{2}{2V}\\right]\\left[\\frac{3}{2V}\\right] $$</p>\n<p>$$ r' = \\frac{r}{4} \\Rightarrow r = 4r' $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$3 \\mathrm{M} \\mathrm{C}_2 \\mathrm{H}_5 \\mathrm{OH}$ के $1 \\mathrm{dm}^3$ को 2 M एथेनोइक अम्ल के $1 \\mathrm{dm}^3$ के साथ मिलाने पर एक एस्टर बनता है। यदि प्रत्येक विलयन को समान आयतन वाले जल के साथ तनु किया जाता है, तो प्रारंभिक दर, अंतिम दर की $\\_\\_\\_\\_$ गुना होगी।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "rate-of-reaction",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrhil2ns",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en",
+              "hi"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For a chemical reaction, $A \\longrightarrow B$, it was found that concentration of $B$ is increased by $0.4 \\mathrm{~mol} \\mathrm{~L}^{-1}$ in $60 . \\mathrm{min}$. The average rate of the reaction is $\\_\\_\\_\\_$ $\\times 10^{-1} \\mathrm{~mol} \\mathrm{~L}^{-1} \\mathrm{~h}^{-1}$. (nearest integer).</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>For the reaction</p>\n<p>$$A \\longrightarrow B$$</p>\n<p>the average rate is</p>\n<p>$$\\text{Average rate}=\\frac{\\Delta[B]}{\\Delta t}$$</p>\n<p>Given,</p>\n<p>$$\\Delta[B]=0.4\\ \\mathrm{mol\\,L^{-1}}, \\qquad \\Delta t=60\\ \\mathrm{min}=1\\ \\mathrm{h}$$</p>\n<p>So,</p>\n<p>$$\\text{Average rate}=\\frac{0.4}{1} =0.4\\ \\mathrm{mol\\,L^{-1}\\,h^{-1}} =4\\times10^{-1}\\ \\mathrm{mol\\,L^{-1}\\,h^{-1}}$$</p>\n<p>Hence, the nearest integer is</p>\n<p>$$\\boxed{4}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक रासायनिक अभिक्रिया, $A \\longrightarrow B$ के लिए, यह पाया गया कि $60 . \\mathrm{min}$ में $B$ की सांद्रता $0.4 \\mathrm{~mol} \\mathrm{~L}^{-1}$ बढ़ जाती है। अभिक्रिया की औसत दर \\_\\_\\_\\_ $\\times 10^{-1} \\mathrm{~mol} \\mathrm{~L}^{-1} \\mathrm{~h}^{-1}$ है। (निकटतम पूर्णांक)।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "rate-of-reaction",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrhimtlp",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en",
+              "hi"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In a catalyst experiment involving the Haber process $\\mathrm{N}_2+3 \\mathrm{H}_2 \\longrightarrow 2 \\mathrm{NH}_3$, the rate of reaction was measured.</p>\n<p>$$ \\text { Rate }=\\frac{\\Delta\\left[\\mathrm{NH}_3\\right]}{\\Delta t}=2.0 \\times 10^{-4} \\mathrm{~mol} \\mathrm{~L}^{-1} \\mathrm{~S}^{-1} . $$</p>\n<p>The rate of reaction of $\\mathrm{N}_2$ is $\\mathrm{p} \\times 10^{-4}$. Then find the value of p .</p>",
+                "options": [],
+                "answer": "1",
+                "explanation": "<p>For the Haber process,</p>\n<p>$$ \\mathrm{N_2+3H_2 \\longrightarrow 2NH_3} $$</p>\n<p>From the stoichiometric coefficients, $1$ mole of $\\mathrm{N_2}$ is consumed when $2$ moles of $\\mathrm{NH_3}$ are formed. Hence,</p>\n<p>$$ -\\frac{\\Delta[\\mathrm{N_2}]}{\\Delta t} =\\frac{1}{2}\\frac{\\Delta[\\mathrm{NH_3}]}{\\Delta t} $$</p>\n<p>Given,</p>\n<p>$$ \\frac{\\Delta[\\mathrm{NH_3}]}{\\Delta t} =2.0\\times10^{-4}\\ \\mathrm{mol\\,L^{-1}\\,s^{-1}} $$</p>\n<p>So,</p>\n<p>$$ -\\frac{\\Delta[\\mathrm{N_2}]}{\\Delta t} =\\frac{1}{2}\\times2.0\\times10^{-4} =1.0\\times10^{-4}\\ \\mathrm{mol\\,L^{-1}\\,s^{-1}} $$</p>\n<p>Thus, the rate of disappearance of $\\mathrm{N_2}$ is $1.0\\times10^{-4}$, so</p>\n<p>$$ \\boxed{p=1} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>हैबर प्रक्रम $\\mathrm{N}_2+3 \\mathrm{H}_2 \\longrightarrow 2 \\mathrm{NH}_3$ से जुड़े एक उत्प्रेरक प्रयोग में, अभिक्रिया की दर मापी गई थी।</p><p>$$ \\text { Rate }=\\frac{\\Delta\\left[\\mathrm{NH}_3\\right]}{\\Delta t}=2.0 \\times 10^{-4} \\mathrm{~mol} \\mathrm{~L}^{-1} \\mathrm{~S}^{-1} . $$</p><p>$\\mathrm{N}_2$ की अभिक्रिया की दर $\\mathrm{p} \\times 10^{-4}$ है। तो p का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "rate-of-reaction",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrhizcj9",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en",
+              "hi"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the gaseous reaction, $\\mathrm{A}_2(\\mathrm{~g}) \\rightarrow \\mathrm{B}(\\mathrm{g})+(1 / 2) \\mathrm{C}(\\mathrm{g})$, the pressure is found to rise from 100 mm to 120 mm in 5 minutes. The rate of disappearance of $A_2$ in $\\mathrm{mm\\,min^{-1}}$ is $\\_\\_\\_\\_$ .</p>",
+                "options": [],
+                "answer": "8",
+                "explanation": "<p>For the reaction</p>\n<p>$$ \\mathrm{A_2(g)\\rightarrow B(g)+\\frac{1}{2}C(g)} $$</p>\n<p>Suppose the pressure of $\\mathrm{A_2}$ decreases by $x$ mm. Then:</p>\n<ul>\n<li><p>Pressure of $\\mathrm{B}$ increases by $x$ mm.</p></li>\n<li><p>Pressure of $\\mathrm{C}$ increases by $\\dfrac{x}{2}$ mm.</p></li>\n</ul>\n<p>Hence, the increase in total pressure is</p>\n<p>$$ -x+x+\\frac{x}{2}=\\frac{x}{2} $$</p>\n<p>Given that the total pressure increases from $100$ mm to $120$ mm,</p>\n<p>$$ \\frac{x}{2}=120-100=20 $$</p>\n<p>So,</p>\n<p>$$ x=40\\ \\mathrm{mm} $$</p>\n<p>This disappearance occurs in $5$ minutes. Thus, the rate of disappearance of $\\mathrm{A_2}$ is</p>\n<p>$$ \\frac{40}{5}=\\boxed{8\\ \\mathrm{mm\\,min^{-1}}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>गैसीय अभिक्रिया, $\\mathrm{A}_2(\\mathrm{~g}) \\rightarrow \\mathrm{B}(\\mathrm{g})+(1 / 2) \\mathrm{C}(\\mathrm{g})$ के लिए, दाब 5 मिनट में 100 mm से 120 mm तक बढ़ जाता है। $\\mathrm{mm\\,min^{-1}}$ में $A_2$ के विलुप्त होने की दर $\\_\\_\\_\\_$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "rate-of-reaction",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Rate Expression, Rate of Appearance and Disappearance, Instantaneous and Average Rate of Reaction",
+    "timeAllotted": 2160000,
+    "title": "Chemical Kinetics Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mpd174ae",
+    "defaultLanguage": "en",
+    "description": "Rate Expression, Rate of Appearance and Disappearance, Instantaneous and Average Rate of Reaction",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-12T08:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Rate Expression, Rate of Appearance and Disappearance, Instantaneous and Average Rate of Reaction",
+    "timeAllotted": 2160000,
+    "title": "Chemical Kinetics Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Chemical Kinetics"
+  }
+}

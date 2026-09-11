@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mpcxgyoo",
+  "title": "Ionic Equilibrium Test - 3 (Topic Test)",
+  "type": "topic",
+  "section": "Ionic Equilibrium",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-06-29T12:30:00.000Z",
+  "status": "ok",
+  "analysisId": "b2951270-7702-11f1-b4bc-fb8eca56d5c4",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g61mpcxgyoo",
+    "defaultLanguage": "en",
+    "description": "Salt Hydrolysis",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-29T12:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mqz4ku1r",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The degree of hydrolysis of a salt of weak monobasic acid and weak monoacidic base in its 0.1 M solution is found to be 50%. If the molarity of the solution is 0.2 M, the percentage hydrolysis of the salt should be :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>100 %</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>50 %</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>25 %</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For a salt of a weak monobasic acid and a weak monoacidic base, the degree of hydrolysis does not depend on the concentration of the solution.</p>\n<p>Suppose the salt is formed from weak acid $HA$ and weak base $BOH$.</p>\n<p>In water, the salt gives ions:</p>\n<p>$$ B^+ + A^- $$</p>\n<p>These ions undergo hydrolysis:</p>\n<p>$$ B^+ + A^- + H_2O \\rightleftharpoons BOH + HA $$</p>\n<p>If the initial concentration of the salt is $C$ and the degree of hydrolysis is $h$, then at equilibrium:</p>\n<p>$$ [B^+] = [A^-] = C(1-h) $$</p>\n<p>and</p>\n<p>$$ [BOH] = [HA] = Ch $$</p>\n<p>So the hydrolysis constant is</p>\n<p>$$ K_h = \\frac{[BOH][HA]}{[B^+][A^-]} $$</p>\n\n<p>$$ K_h = \\frac{(Ch)(Ch)}{C(1-h)\\cdot C(1-h)} $$</p>\n<p>$$ K_h = \\frac{h^2}{(1-h)^2} $$</p>\n<p>Here, $C$ cancels out. So $h$ is independent of molarity.</p>\n<p>Given that at $0.1\\,M$, hydrolysis is $50\\%$, then at $0.2\\,M$ also hydrolysis remains:</p>\n<p>$$ 50\\% $$</p>\n<p>So the correct option is:</p>\n<p>$$ \\boxed{50\\%} $$</p>\n<p>Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक दुर्बल एकक्षारकीय अम्ल और दुर्बल एकअम्लीय क्षार के लवण की इसके 0.1 M विलयन में जल-अपघटन की मात्रा 50% पाई जाती है। यदि विलयन की मोलरता 0.2 M है, तो लवण का प्रतिशत जल-अपघटन होना चाहिए :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>100 %</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>50 %</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>25 %</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "salt-hydrolysis",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqz4zn8v",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A pair of salts are given in a solution each in 0.1 M concentration. Which solution has a higher pH?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>NaCN and NaOBr</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>NaF and NaOCl</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>NaF and NaOBr</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>NaCN and NaOCl</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For salts like NaCN, NaOBr, NaF and NaOCl, the cation $\\text{Na}^+$ comes from strong base NaOH, so it does not affect pH much.</p>\n<p>The basic nature mainly comes from the anions:</p>\n<p>$$ \\text{CN}^-,\\ \\text{OBr}^-,\\ \\text{F}^-,\\ \\text{OCl}^- $$</p>\n<p>These are conjugate bases of weak acids:</p>\n<p>$$ \\text{HCN},\\ \\text{HOBr},\\ \\text{HF},\\ \\text{HOCl} $$</p>\n<p>A weaker acid gives a stronger conjugate base, and a stronger conjugate base produces more $\\text{OH}^-$ in water, giving a higher pH.</p>\n<p>Approximate acid strengths are:</p>\n<p>$$ K_a(\\text{HF}) \\approx 6.8 \\times 10^{-4} $$</p>\n<p>$$ K_a(\\text{HOCl}) \\approx 3 \\times 10^{-8} $$</p>\n<p>$$ K_a(\\text{HOBr}) \\approx 2.5 \\times 10^{-9} $$</p>\n<p>$$ K_a(\\text{HCN}) \\approx 6 \\times 10^{-10} $$</p>\n<p>Smaller $K_a$ means weaker acid and stronger conjugate base.</p>\n<p>So the basic strength order of anions is:</p>\n<p>$$ \\text{CN}^- > \\text{OBr}^- > \\text{OCl}^- > \\text{F}^- $$</p>\n<p>The pair that contains the two strongest basic anions is:</p>\n<p>$$ \\text{NaCN and NaOBr} $$</p>\n<p>So the solution with the highest pH is:</p>\n<p>$$ \\boxed{\\text{Option A: NaCN and NaOBr}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक विलयन में लवणों का एक युग्म दिया गया है जिसमें प्रत्येक की सांद्रता 0.1 M है। किस विलयन का pH अधिक होगा?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>NaCN और NaOBr</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>NaF और NaOCl</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>NaF और NaOBr</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>NaCN और NaOCl</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "salt-hydrolysis",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqz5ftul",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A 0.001 M solution of potassium propionate has pH = 8.0. The dissociation constant (K<sub>a</sub>) of propionic acid is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>10<sup>−3</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>10<sup>−2</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>10<sup>−2.5</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>10<sup>−5</sup></p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Potassium propionate is a salt of a weak acid (propionic acid) and a strong base (KOH). So when it dissolves in water, the propionate ion undergoes hydrolysis and the solution becomes basic. That fits with the given pH of 8.</p>\n<p>For such a salt, the pH is related to the dissociation constant of the acid by this formula:</p>\n<p>$$\\text{pH} = 7 + \\frac{1}{2}\\,\\text{p}K_a + \\frac{1}{2}\\log C$$</p>\n<p>Here $C$ is the concentration of the salt, which is $0.001$ M, so $\\log C = \\log(10^{-3}) = -3$.</p>\n<p>Putting the values in:</p>\n<p>$$8 = 7 + \\frac{1}{2}\\,\\text{p}K_a + \\frac{1}{2}(-3)$$</p>\n<p>$$8 = 7 + \\frac{1}{2}\\,\\text{p}K_a - 1.5$$</p>\n<p>$$8 = 5.5 + \\frac{1}{2}\\,\\text{p}K_a$$</p>\n<p>$$\\frac{1}{2}\\,\\text{p}K_a = 2.5$$</p>\n<p>$$\\text{p}K_a = 5$$</p>\n<p>Since $\\text{p}K_a = -\\log K_a$, we get</p>\n<p>$$K_a = 10^{-5}$$</p>\n<p>So the correct answer is <strong>Option D</strong>, $10^{-5}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>पोटेशियम प्रोपियोनेट के 0.001 M विलयन का pH = 8.0 है। प्रोपियोनिक अम्ल का वियोजन स्थिरांक (K<sub>a</sub>) है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>10<sup>−3</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>10<sup>−2</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>10<sup>−2.5</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>10<sup>−5</sup></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "salt-hydrolysis",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqz525cp",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following salts undergoes anionic hydrolysis?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>CuSO$_4$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>NH$_4$Cl</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>AlCl$_3$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>K$_2$CO$_3$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>$K_2CO_3$ undergoes anionic hydrolysis.</p>\n<p>Anionic hydrolysis occurs when the anion of the salt reacts with water. This usually happens in salts formed from a strong base and a weak acid.</p>\n<p>$K_2CO_3$ is formed from:</p>\n<ul>\n<li><p>$KOH$ — strong base</p></li>\n<li><p>$H_2CO_3$ — weak acid</p></li>\n</ul>\n<p>So, the carbonate ion $CO_3^{2-}$ undergoes hydrolysis:</p>\n<p>$$ CO_3^{2-} + H_2O \\rightleftharpoons HCO_3^- + OH^- $$</p>\n<p>Since $OH^-$ ions are produced, the solution becomes basic.</p>\n<p>The other salts mainly undergo cationic hydrolysis:</p>\n<ul>\n<li><p>$CuSO_4$: $Cu^{2+}$ hydrolyses</p></li>\n<li><p>$NH_4Cl$: $NH_4^+$ hydrolyses</p></li>\n<li><p>$AlCl_3$: $Al^{3+}$ hydrolyses</p></li>\n</ul>\n<p>So, the correct option is:</p>\n<p>$$ \\boxed{\\text{Option D } K_2CO_3} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से किस लवण का ऋणायनिक जल-अपघटन होता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>CuSO$_4$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>NH$_4$Cl</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>AlCl$_3$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>K$_2$CO$_3$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "salt-hydrolysis",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqz5ul9c",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Hydrolysis constants of two salts $K_a$ and $K_b$ of weak acids HA and HB are $10^{-8}$ and $10^{-6}$. If the dissociation constant of third acid HC is $10^{-2}$. The order of acidic strengths of three acids will be :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>HA &gt; HB &gt; HC</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>HB &gt; HA &gt; HC</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>HC &gt; HA &gt; HB</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>HA = HB = HC</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For the salt of a weak acid and strong base, the hydrolysis constant is related to the dissociation constant of the acid as</p>\n<p>$$ K_h=\\frac{K_w}{K_a} $$</p>\n<p>At room temperature,</p>\n<p>$$ K_w=10^{-14} $$</p>\n<p>For acid $HA$, given</p>\n<p>$$ K_h=10^{-8} $$</p>\n<p>So,</p>\n<p>$$ K_a(HA)=\\frac{K_w}{K_h} =\\frac{10^{-14}}{10^{-8}} =10^{-6} $$</p>\n<p>For acid $HB$, given</p>\n<p>$$ K_h=10^{-6} $$</p>\n<p>So,</p>\n<p>$$ K_a(HB)=\\frac{10^{-14}}{10^{-6}} =10^{-8} $$</p>\n<p>For acid $HC$, given</p>\n<p>$$ K_a(HC)=10^{-2} $$</p>\n<p>Acidic strength increases with increase in dissociation constant $K_a$.</p>\n<p>Now compare:</p>\n<p>$$ K_a(HC)=10^{-2} $$</p>\n<p>$$ K_a(HA)=10^{-6} $$</p>\n<p>$$ K_a(HB)=10^{-8} $$</p>\n<p>Since</p>\n<p>$$ 10^{-2} > 10^{-6} > 10^{-8} $$</p>\n<p>the order of acidic strength is</p>\n<p>$$ HC > HA > HB $$</p>\n<p>So the correct option is:</p>\n<p>$$ \\boxed{\\text{Option C: } HC > HA > HB} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दुर्बल अम्लों HA तथा HB के दो लवणों $K_a$ तथा $K_b$ के जल-अपघटन नियतांक $10^{-8}$ तथा $10^{-6}$ हैं। यदि तीसरे अम्ल HC का वियोजन नियतांक $10^{-2}$ है, तो तीनों अम्लों की अम्लीय प्रबलता का क्रम होगा :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>HA &gt; HB &gt; HC</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>HB &gt; HA &gt; HC</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>HC &gt; HA &gt; HB</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>HA = HB = HC</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "salt-hydrolysis",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqz53lei",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The sodium salt of a certain weak monobasic organic acid is hydrolysed to an extent of 3% in its 0.1 M solution at 25°C. Given that the ionic product of water is $10^{-14}$ at this temperature, what is the dissociation constant of the acid?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>≈ $1 \\times 10^{-10}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>≈ $1 \\times 10^{-9}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$3.33 \\times 10^{-12}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$3.33 \\times 10^{-10}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For the sodium salt of a weak monobasic acid, the anion of the salt undergoes hydrolysis.</p>\n<p>If the acid is $HA$, its sodium salt is $NaA$.</p>\n<p>In water:</p>\n<p>$$ A^- + H_2O \\rightleftharpoons HA + OH^- $$</p>\n<p>Given:</p>\n<p>$$ C = 0.1 \\, M $$</p>\n<p>Degree of hydrolysis:</p>\n<p>$$ h = 3\\% = 0.03 $$</p>\n<p>For a salt of a weak acid and strong base:</p>\n<p>$$ K_h = \\frac{C h^2}{1-h} $$</p>\n<p>Also,</p>\n<p>$$ K_h = \\frac{K_w}{K_a} $$</p>\n<p>So,</p>\n<p>$$ K_a = \\frac{K_w}{K_h} $$</p>\n<p>First find $K_h$:</p>\n<p>$$ K_h = \\frac{0.1 \\times (0.03)^2}{1-0.03} $$</p>\n<p>$$ K_h = \\frac{0.1 \\times 0.0009}{0.97} $$</p>\n<p>$$ K_h = \\frac{9 \\times 10^{-5}}{0.97} $$</p>\n<p>$$ K_h \\approx 9.28 \\times 10^{-5} $$</p>\n<p>Now,</p>\n<p>$$ K_a = \\frac{10^{-14}}{9.28 \\times 10^{-5}} $$</p>\n<p>$$ K_a \\approx 1.08 \\times 10^{-10} $$</p>\n<p>So the dissociation constant of the acid is approximately</p>\n<p>$$ \\boxed{1 \\times 10^{-10}} $$</p>\n<p>Correct option: A.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>25°C पर किसी दुर्बल एकक्षारकीय (monobasic) कार्बनिक अम्ल का सोडियम लवण अपने 0.1 M विलयन में 3% तक जल-अपघटित होता है। यदि इस तापमान पर जल का आयनिक गुणनफल $10^{-14}$ दिया गया है, तो अम्ल का वियोजन स्थिरांक क्या होगा?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>≈ $1 \times 10^{-10}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>≈ $1 \times 10^{-9}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$3.33 \times 10^{-12}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$3.33 \times 10^{-10}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "salt-hydrolysis",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqz58h1n",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>pH of 0.1 M Na<sub>2</sub>HPO<sub>4</sub> and 0.2 M NaH<sub>2</sub>PO<sub>4</sub> are respectively : <br> $pK_a$ for H<sub>3</sub>PO<sub>4</sub> are 2.2, 7.2 and 12.0.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>4.7, 9.6</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>9.6, 4.7</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>4.7, 5.6</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>5.6, 4.7</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Phosphoric acid loses protons in three stages:</p>\n<p>$$H_3PO_4 \\xrightarrow{pK_{a1}=2.2} H_2PO_4^- \\xrightarrow{pK_{a2}=7.2} HPO_4^{2-} \\xrightarrow{pK_{a3}=12.0} PO_4^{3-}$$</p>\n<p>For an amphiprotic ion, the pH is the average of the two $pK_a$ values on either side of it.</p>\n<p><strong>For $NaH_2PO_4$:</strong></p>\n<p>The active ion is $H_2PO_4^-$. It sits between $pK_{a1}$ and $pK_{a2}$.</p>\n<p>$$pH = \\frac{pK_{a1} + pK_{a2}}{2} = \\frac{2.2 + 7.2}{2} = \\frac{9.4}{2} = 4.7$$</p>\n<p><strong>For $Na_2HPO_4$:</strong></p>\n<p>The active ion is $HPO_4^{2-}$. It sits between $pK_{a2}$ and $pK_{a3}$.</p>\n<p>$$pH = \\frac{pK_{a2} + pK_{a3}}{2} = \\frac{7.2 + 12.0}{2} = \\frac{19.2}{2} = 9.6$$</p>\n<p>The question asks for $Na_2HPO_4$ first, then $NaH_2PO_4$. So the answer is $9.6,\\ 4.7$.</p>\n<p>The correct choice is <strong>Option B</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>0.1 M Na<sub>2</sub>HPO<sub>4</sub> और 0.2 M NaH<sub>2</sub>PO<sub>4</sub> के pH क्रमशः हैं : <br> H<sub>3</sub>PO<sub>4</sub> के लिए $pK_a$ 2.2, 7.2 और 12.0 हैं।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>4.7, 9.6</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>9.6, 4.7</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>4.7, 5.6</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>5.6, 4.7</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "salt-hydrolysis",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqz59itm",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The pH of 0.1 M solution of the following salts increases in the order:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>NaCl &lt; NH<sub>4</sub>Cl &lt; NaCN &lt; HCl</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>HCl &lt; NH<sub>4</sub>Cl &lt; NaCl &lt; NaCN</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>NaCN &lt; NH<sub>4</sub>Cl &lt; NaCl &lt; HCl</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>HCl &lt; NaCl &lt; NaCN &lt; NH<sub>4</sub>Cl</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The pH increases from the most acidic solution to the most basic solution.</p>\n<p>For $0.1\\,M$ solutions:</p>\n<p>$HCl$ is a strong acid, so it completely ionises in water.</p>\n<p>$$ HCl \\rightarrow H^+ + Cl^- $$</p>\n<p>So it has the lowest pH.</p>\n<p>$NH_4Cl$ is a salt of a weak base $NH_4OH$ and a strong acid $HCl$. Its aqueous solution is acidic because $NH_4^+$ undergoes hydrolysis.</p>\n<p>$$ NH_4^+ + H_2O \\rightleftharpoons NH_4OH + H^+ $$</p>\n<p>So its pH is less than $7$, but greater than that of $HCl$.</p>\n<p>$NaCl$ is a salt of a strong acid $HCl$ and a strong base $NaOH$. It does not undergo hydrolysis, so its solution is neutral.</p>\n<p>$$ \\text{pH of } NaCl = 7 $$</p>\n<p>$NaCN$ is a salt of a weak acid $HCN$ and a strong base $NaOH$. Its aqueous solution is basic because $CN^-$ undergoes hydrolysis.</p>\n<p>$$ CN^- + H_2O \\rightleftharpoons HCN + OH^- $$</p>\n<p>So its pH is greater than $7$.</p>\n<p>Hence, the increasing order of pH is:</p>\n<p>$$ HCl < NH_4Cl < NaCl < NaCN $$</p>\n<p>So the correct option is:</p>\n<p>$$ \\boxed{\\text{Option B}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित लवणों के 0.1 M विलयन का pH इस क्रम में बढ़ता है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>NaCl &lt; NH<sub>4</sub>Cl &lt; NaCN &lt; HCl</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>HCl &lt; NH<sub>4</sub>Cl &lt; NaCl &lt; NaCN</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>NaCN &lt; NH<sub>4</sub>Cl &lt; NaCl &lt; HCl</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>HCl &lt; NaCl &lt; NaCN &lt; NH<sub>4</sub>Cl</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "salt-hydrolysis",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqz5ckat",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>At 25\u0000C, 0.1 M aqueous solutions of NaW, NaX, NaY and NaZ are prepared separately. Their pH values are found to be 7.0, 9.0, 10.0 and 11.0, respectively. Among the corresponding acids, the strongest acid is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>HW</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>HX</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>HY</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>HZ</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For salts of the type $\\text{NaW}, \\text{NaX}, \\text{NaY}, \\text{NaZ}$, the sodium ion $\\text{Na}^+$ comes from a strong base, $\\text{NaOH}$.</p>\n<p>So the pH of each salt solution mainly depends on the anion:</p>\n<p>$$ \\text{W}^-, \\text{X}^-, \\text{Y}^-, \\text{Z}^- $$</p>\n<p>These anions are conjugate bases of the acids:</p>\n<p>$$ \\text{HW}, \\text{HX}, \\text{HY}, \\text{HZ} $$</p>\n<p>If the salt solution is more basic, it means the anion is a stronger base.  </p>\n<p>A stronger conjugate base comes from a weaker acid.</p>\n<p>Given pH values:</p>\n<p>$$ \\text{NaW}: 7.0 $$</p>\n<p>$$ \\text{NaX}: 9.0 $$</p>\n<p>$$ \\text{NaY}: 10.0 $$</p>\n<p>$$ \\text{NaZ}: 11.0 $$</p>\n<p>$\\text{NaZ}$ has the highest pH, so $\\text{Z}^-$ is the strongest base, and $\\text{HZ}$ is the weakest acid.</p>\n<p>$\\text{NaW}$ has pH $7.0$, so $\\text{W}^-$ is the weakest base among these. Hence its conjugate acid $\\text{HW}$ is the strongest acid.</p>\n<p>So the strongest acid is:</p>\n<p>$$ \\boxed{\\text{HW}} $$</p>\n<p>Correct option: A.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>25°C पर, NaW, NaX, NaY और NaZ के 0.1 M जलीय विलयन अलग-अलग तैयार किए जाते हैं। इनके pH मान क्रमशः 7.0, 9.0, 10.0 और 11.0 पाए जाते हैं। संगत अम्लों में, सबसे प्रबल अम्ल है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>HW</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>HX</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>HY</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>HZ</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "salt-hydrolysis",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqz5o4jv",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>During the titration of a weak dibasic acid H<sub>2</sub>A with a strong base, given that (<i>p</i><sup>K<sub>a(2)</sub></sup> − <i>p</i><sup>K<sub>a(1)</sub></sup> ≥ 2), the pH–volume curve obtained is shown in the figure. The values of <i>p</i><sup>K<sub>a(1)</sub></sup> and <i>p</i><sup>K<sub>a(2)</sub></sup> can be taken equal to the pH values at which labeled points?</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqz5jzzf%2F3f409a0b-cfee-4779-9aa1-fb5b47ba06f3%2F2ffeebb0-73b0-11f1-9c29-e9cebd9a7418%2Ffile-6y3zli1mqz5jzzg.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqz5jzzf%2F3f409a0b-cfee-4779-9aa1-fb5b47ba06f3%2F2ffeebb0-73b0-11f1-9c29-e9cebd9a7418%2Ffile-6y3zli1mqz5jzzg.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>B and D, respectively</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>A and B, respectively</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>C and D, respectively</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>A and C, respectively</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Point A lies in the first buffer region. Here the solution contains $\\mathrm{H_2A}$ and $\\mathrm{HA^-}$.</p>\n<p>For this buffer, we use</p>\n<p>Point A: Buffer $\\mathrm{H_2A + HA^-}$; $\\mathrm{P^H = P^{K_a} + \\log \\dfrac{[HA^-]_0}{[H_2A]_0}}$</p>\n<p>At the half-neutralisation point, $\\mathrm{[HA^-]_0 = [H_2A]_0}$. So the logarithm term becomes zero. Hence, the pH at point A is equal to $\\mathrm{p}K_{a(1)}$.</p>\n<p>Point B is the $1^{\\mathrm{st}}$ equivalent point. At this point, the main species present is $\\mathrm{HA^-}$.</p>\n<p>Point B: $1^{\\mathrm{st}}$ equivalent point $\\mathrm{HA^-}$;</p>\n<p>$$\\mathrm{P^H = \\frac{1}{2}(P^{K_{a1}} + P^{K_{a2}})}$$</p>\n<p>Point C lies in the second buffer region. Here the solution contains $\\mathrm{HA^-}$ and $\\mathrm{A^{2-}}$.</p>\n<p>Point C: Buffer $\\mathrm{HA^- + A^{2-}}$; $\\mathrm{P^H = P^{K_{a2}} + \\log \\dfrac{[A^{2-}]_0}{[HA^-]_0}}$</p>\n<p>At the half-neutralisation point of the second stage, $\\mathrm{[A^{2-}]_0 = [HA^-]_0}$. So the logarithm term becomes zero. Hence, the pH at point C is equal to $\\mathrm{p}K_{a(2)}$.</p>\n<p>Point D is the $2^{\\mathrm{nd}}$ equivalent point. At this point, the main species present is $\\mathrm{A^{2-}}$.</p>\n<p>Point D: $2^{\\mathrm{nd}}$ equivalent point, $\\mathrm{A^{2-}}$;</p>\n<p>$$\\mathrm{P^H = 7 + \\frac{1}{2}(P^{K_{a1}} + \\log C)}$$</p>\n<p>So, $\\mathrm{p}K_{a(1)}$ is equal to the pH at point A, and $\\mathrm{p}K_{a(2)}$ is equal to the pH at point C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक प्रबल क्षार के साथ एक दुर्बल द्विभास्मिक अम्ल H<sub>2</sub>A के अनुमापन के दौरान, यह देखते हुए कि (<i>p</i><sup>K<sub>a(2)</sub></sup> − <i>p</i><sup>K<sub>a(1)</sub></sup> ≥ 2), प्राप्त pH-आयतन वक्र चित्र में दर्शाया गया है। <i>p</i><sup>K<sub>a(1)</sub></sup> और <i>p</i><sup>K<sub>a(2)</sub></sup> के मान किन नामांकित बिंदुओं पर pH मानों के बराबर लिए जा सकते हैं?</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqz5jzzf%2F3f409a0b-cfee-4779-9aa1-fb5b47ba06f3%2F2ffeebb0-73b0-11f1-9c29-e9cebd9a7418%2Ffile-6y3zli1mqz5jzzg.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqz5jzzf%2F3f409a0b-cfee-4779-9aa1-fb5b47ba06f3%2F2ffeebb0-73b0-11f1-9c29-e9cebd9a7418%2Ffile-6y3zli1mqz5jzzg.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>क्रमशः B और D</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>क्रमशः A और B</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>क्रमशः C और D</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>क्रमशः A और C</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "salt-hydrolysis",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mqz64jl9",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "Aniline behaves as a weak base. When $0.1 \\mathrm{M}, 50 \\mathrm{~mL}$ solution of aniline was mixed with $0.1 \\mathrm{M}, 25 \\mathrm{~mL}$ solution of HCl , the pH of resulting solution was 8 . Then the pH of 0.01 M solution of anilinium chloride will be ( $K_w=10^{-14}$ ).",
+                "options": [],
+                "answer": "5",
+                "explanation": "\n<p>For aniline:</p>\n<p>$$\\text{Amount of aniline} = 0.1 \\text{ M} \\times 50 \\text{ mL} = 5 \\text{ mmol}$$</p>\n<p>For HCl:</p>\n<p>$$\\text{Amount of HCl} = 0.1 \\text{ M} \\times 25 \\text{ mL} = 2.5 \\text{ mmol}$$</p>\n<p>When they are mixed, the strong acid HCl will completely react with the aniline. Since there is less HCl, it acts as the limiting reagent. It will consume exactly $2.5 \\text{ mmol}$ of aniline to form $2.5 \\text{ mmol}$ of the salt, anilinium chloride. </p>\n\n<p>Amount of aniline remaining = $5 - 2.5 = 2.5 \\text{ mmol}$</p>\n<p>Amount of anilinium chloride formed = $2.5 \\text{ mmol}$</p>\n\n<p>$$pOH = pK_b + \\log \\left( \\frac{[\\text{Salt}]}{[\\text{Base}]} \\right)$$</p>\n<p>$$pOH = pK_b + \\log \\left( \\frac{2.5}{2.5} \\right)$$</p>\n<p>$$pOH = pK_b + \\log(1)$$</p>\n\n<p>$$pOH = pK_b$$</p>\n<p>The problem states that the pH of this resulting solution is $8$. Using the relationship $pH + pOH = 14$, we can find the $pOH$:</p>\n<p>$$pOH = 14 - 8 = 6$$</p>\n\n<p>$$pH = 7 - \\frac{1}{2}(pK_b + \\log C)$$</p>\n\n<p>$$pH = 7 - \\frac{1}{2}(6 + \\log 10^{-2})$$</p>\n\n<p>$$pH = 7 - \\frac{1}{2}(6 - 2)$$</p>\n<p>$$pH = 7 - \\frac{1}{2}(4)$$</p>\n<p>$$pH = 7 - 2$$</p>\n<p>$$pH = 5$$</p>\n<p>The pH of the $0.01 \\text{ M}$ anilinium chloride solution is $5$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "एनिलीन एक दुर्बल क्षार की तरह व्यवहार करता है। जब एनिलीन के $0.1 \\mathrm{M}, 50 \\mathrm{~mL}$ विलयन को HCl के $0.1 \\mathrm{M}, 25 \\mathrm{~mL}$ विलयन के साथ मिलाया गया, तो परिणामी विलयन का pH 8 था। तब एनिलीनियम क्लोराइड के 0.01 M विलयन का pH होगा ( $K_w=10^{-14}$ )।",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "salt-hydrolysis",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqz67ncu",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "The acid ionization (hydrolysis) constant of $\\mathrm{Zn}^{2+}$ is $1.0 \\times 10^{-9}$. Hence, pH of 0.001 M solution of $\\mathrm{ZnCl}_2$ is. $\\_\\_\\_\\_$",
+                "options": [],
+                "answer": "6",
+                "explanation": "<p>$$\\mathrm{Zn}^{2+} + \\mathrm{H_2O} \\rightleftharpoons \\mathrm{Zn(OH)}^{+} + \\mathrm{H}^{+}$$</p>\n<p>$$K_h = 1 \\times 10^{-9}$$</p>\n<p>$$K_h = \\frac{K_w}{K_b\\,(\\mathrm{Zn(OH)_2})}$$</p>\n<p>$$\\therefore\\; K_b = \\frac{K_w}{K_h} = 1 \\times 10^{-5}$$</p>\n<p>$$pK_b = 5$$</p>\n<p>$$\\therefore\\; \\mathrm{pH} = 7 - \\left(\\frac{pK_b + \\log C}{2}\\right) = 7 - \\frac{(5-3)}{2} = 6$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "$\\mathrm{Zn}^{2+}$ का अम्ल आयनन (जल-अपघटन) स्थिरांक $1.0 \\times 10^{-9}$ है। अतः $\\mathrm{ZnCl}_2$ के 0.001 M विलयन का pH $\\_\\_\\_\\_$ है।",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "salt-hydrolysis",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqz6a5m4",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the equilibrium constant of the reaction of weak acid HA with strong base is $10^9$, then pH of 0.1 M NaA is :</p>",
+                "options": [],
+                "answer": "9",
+                "explanation": "<p>For the neutralisation reaction,</p>\n<p>$$ HA + OH^- \\rightleftharpoons A^- + H_2O $$</p>\n<p>its equilibrium constant is related to the acid dissociation constant of $HA$ as</p>\n<p>$$ K=\\frac{K_a}{K_w} $$</p>\n<p>Given,</p>\n<p>$$ K=10^9 $$</p>\n<p>and at $25^\\circ C$,</p>\n<p>$$ K_w=10^{-14} $$</p>\n<p>So,</p>\n<p>$$ K_a=K \\times K_w $$</p>\n<p>$$ K_a=10^9 \\times 10^{-14}=10^{-5} $$</p>\n<p>Now sodium salt $NaA$ gives $A^-$ in water. Since $A^-$ is the conjugate base of weak acid $HA$, it undergoes hydrolysis:</p>\n<p>$$ A^- + H_2O \\rightleftharpoons HA + OH^- $$</p>\n<p>For this conjugate base,</p>\n<p>$$ K_b=\\frac{K_w}{K_a} $$</p>\n<p>$$ K_b=\\frac{10^{-14}}{10^{-5}}=10^{-9} $$</p>\n<p>For $0.1\\,M$ $NaA$,</p>\n<p>$$ [A^-]=0.1=10^{-1} $$</p>\n<p>For a weak base,</p>\n<p>$$ [OH^-]=\\sqrt{K_b C} $$</p>\n<p>$$ [OH^-]=\\sqrt{10^{-9}\\times 10^{-1}} $$</p>\n<p>$$ [OH^-]=\\sqrt{10^{-10}}=10^{-5} $$</p>\n<p>So,</p>\n<p>$$ pOH=5 $$</p>\n<p>Hence,</p>\n<p>$$ pH=14-pOH=14-5=9 $$</p>\n<p>$$ \\boxed{pH=9} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि दुर्बल अम्ल HA की प्रबल क्षार के साथ अभिक्रिया का साम्य स्थिरांक $10^9$ है, तो 0.1 M NaA का pH है:</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "salt-hydrolysis",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqz6okbx",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For a $0.05\\,M\\left(\\mathrm{NH}_4\\right)_2 \\mathrm{SO}_4$ solution at 298 K, the degree of hydrolysis is $10^{-x}$. Determine the value of $x$.</p>\n<p>[Given : $p K_a\\left(\\mathrm{NH}_4^{+}\\right)=9$ ]</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>For $0.05\\,M\\left(\\mathrm{NH}_4\\right)_2\\mathrm{SO}_4$, the salt dissociates as</p>\n<p>$$ \\left(\\mathrm{NH}_4\\right)_2\\mathrm{SO}_4 \\rightarrow 2\\mathrm{NH}_4^+ + \\mathrm{SO}_4^{2-} $$</p>\n<p>So the concentration of $\\mathrm{NH}_4^+$ ions is</p>\n<p>$$ 2 \\times 0.05 = 0.10\\,M $$</p>\n<p>The hydrolysis is due to $\\mathrm{NH}_4^+$:</p>\n<p>$$ \\mathrm{NH}_4^+ + \\mathrm{H_2O} \\rightleftharpoons \\mathrm{NH_3} + \\mathrm{H_3O}^+ $$</p>\n<p>Given,</p>\n<p>$$ pK_a(\\mathrm{NH}_4^+) = 9 $$</p>\n<p>So,</p>\n<p>$$ K_a = 10^{-9} $$</p>\n<p>For a weak acid like $\\mathrm{NH}_4^+$,</p>\n<p>$$ h = \\sqrt{\\frac{K_a}{C}} $$</p>\n<p>Here $C = 0.10\\,M$.</p>\n<p>$$ h = \\sqrt{\\frac{10^{-9}}{0.10}} $$</p>\n<p>$$ h = \\sqrt{10^{-8}} $$</p>\n<p>$$ h = 10^{-4} $$</p>\n<p>Given degree of hydrolysis is $10^{-x}$,</p>\n<p>$$ 10^{-x} = 10^{-4} $$</p>\n<p>So,</p>\n<p>$$ x = 4 $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>298 K पर $0.05\\,M\\left(\\mathrm{NH}_4\\right)_2 \\mathrm{SO}_4$ विलयन के लिए, जल-अपघटन की मात्रा $10^{-x}$ है। $x$ का मान ज्ञात कीजिए।</p> <p>[दिया गया है : $p K_a\\left(\\mathrm{NH}_4^{+}\\right)=9$ ]</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "salt-hydrolysis",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqz6sf1l",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Calculate the percentage degree of hydrolysis for a solution prepared by mixing 0.02 M aniline and 0.02 M acetic acid. <br/><br/>[Given: At $298 \\mathrm{~K}, K_b\\left(\\mathrm{C}_6 \\mathrm{H}_5 \\mathrm{NH}_2\\right)=5 \\times 10^{-10}, K_a\\left(\\mathrm{CH}_3 \\mathrm{COOH}\\right)=2 \\times 10^{-5}$ ]</p>",
+                "options": [],
+                "answer": "50",
+                "explanation": "<p>Aniline is a weak base and acetic acid is a weak acid. When they are mixed in equal molar amounts, they form the salt anilinium acetate:</p>\n<p>$$ \\mathrm{C_6H_5NH_2 + CH_3COOH \\rightleftharpoons C_6H_5NH_3^+ + CH_3COO^-} $$</p>\n<p>This salt is formed from a weak acid and a weak base, so it undergoes hydrolysis.</p>\n<p>For a salt of weak acid and weak base,</p>\n<p>$$ K_h=\\frac{K_w}{K_aK_b} $$</p>\n<p>Given:</p>\n<p>$$ K_a=2\\times 10^{-5} $$</p>\n<p>$$ K_b=5\\times 10^{-10} $$</p>\n<p>$$ K_w=1\\times 10^{-14} $$</p>\n<p>So,</p>\n<p>$$ K_aK_b=(2\\times 10^{-5})(5\\times 10^{-10}) $$</p>\n<p>$$ K_aK_b=10\\times 10^{-15}=1\\times 10^{-14} $$</p>\n<p>Thus,</p>\n<p>$$ K_h=\\frac{1\\times 10^{-14}}{1\\times 10^{-14}}=1 $$</p>\n<p>For a salt of weak acid and weak base, degree of hydrolysis is</p>\n<p>$$ h=\\frac{\\sqrt{K_h}}{1+\\sqrt{K_h}} $$</p>\n<p>Since $K_h=1$,</p>\n<p>$$ h=\\frac{\\sqrt{1}}{1+\\sqrt{1}} $$</p>\n<p>$$ h=\\frac{1}{2} $$</p>\n<p>$$ h=0.5 $$</p>\n<p>Percentage degree of hydrolysis:</p>\n<p>$$ 0.5\\times 100=50\\% $$</p>\n<p>So, the percentage degree of hydrolysis is</p>\n<p>$$ \\boxed{50\\%} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>0.02 M एनिलीन और 0.02 M एसिटिक अम्ल को मिलाकर तैयार किए गए विलयन के लिए प्रतिशत जल-अपघटन की मात्रा की गणना कीजिए। <br/><br/>[दिया गया है: $298 \\mathrm{~K}$ पर, $K_b\\left(\\mathrm{C}_6 \\mathrm{H}_5 \\mathrm{NH}_2\\right)=5 \\times 10^{-10}, K_a\\left(\\mathrm{CH}_3 \\mathrm{COOH}\\right)=2 \\times 10^{-5}$ ]</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "salt-hydrolysis",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Salt Hydrolysis",
+    "timeAllotted": 2160000,
+    "title": "Ionic Equilibrium Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mpcxgyoo",
+    "defaultLanguage": "en",
+    "description": "Salt Hydrolysis",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-29T12:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Salt Hydrolysis",
+    "timeAllotted": 2160000,
+    "title": "Ionic Equilibrium Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Ionic Equilibrium"
+  }
+}

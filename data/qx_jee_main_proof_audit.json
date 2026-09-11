@@ -1,0 +1,31 @@
+{
+  "first_paper": "JEE Main 2026 (21 January Shift 1)",
+  "audit_2026": {
+    "label": "jee_main_2026",
+    "n": 1425,
+    "empty_stem": 0,
+    "empty_opts": 0,
+    "broken_imgs": 0,
+    "wm_imgs": 256,
+    "match_like": 24
+  },
+  "audit_all": {
+    "label": "jee_main_all",
+    "n": 17925,
+    "empty_stem": 0,
+    "empty_opts": 0,
+    "broken_imgs": 0,
+    "wm_imgs": 264,
+    "match_like": 286
+  },
+  "issues_2026_sample": [
+    {
+      "i": 165,
+      "id": 28469,
+      "kind": "match_no_table",
+      "subject": "Chemistry",
+      "source": "JEE Main 2026 (28 January Shift 2)"
+    }
+  ],
+  "shard_low_chem": []
+}

@@ -1,0 +1,74 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d2ad647479b8e8696479",
+  "chapterId": "6809202a3a10446a207fded1",
+  "subject": "Physics",
+  "chapter": "Mechanical Properties of Fluids",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "680920703a10446a207fe247",
+      "title": "Pressure and thrust",
+      "count": 5,
+      "questionIds": [
+        "680920393a10446a207fdf8b",
+        "680920383a10446a207fdf80",
+        "680920353a10446a207fdf63",
+        "6809202d3a10446a207fdef8",
+        "6809202a3a10446a207fdecf"
+      ]
+    },
+    {
+      "id": "6a45fe625aa758e832e06ef0",
+      "title": "Density",
+      "count": 1,
+      "questionIds": [
+        "6a45fe555aa758e832e06ed3"
+      ]
+    },
+    {
+      "id": "680920703a10446a207fe24b",
+      "title": "Pascal's Law",
+      "count": 1,
+      "questionIds": [
+        "680920403a10446a207fdfde"
+      ]
+    },
+    {
+      "id": "680920703a10446a207fe24a",
+      "title": "Archmidies Principle",
+      "count": 3,
+      "questionIds": [
+        "6a45fe555aa758e832e06ed7",
+        "680920463a10446a207fe025",
+        "6809203f3a10446a207fdfd0"
+      ]
+    },
+    {
+      "id": "680920703a10446a207fe249",
+      "title": "Hydrodynamics",
+      "count": 1,
+      "questionIds": [
+        "680920343a10446a207fdf53"
+      ]
+    },
+    {
+      "id": "680920703a10446a207fe248",
+      "title": "Surface tension",
+      "count": 2,
+      "questionIds": [
+        "680920413a10446a207fdfe8",
+        "680920303a10446a207fdf21"
+      ]
+    },
+    {
+      "id": "680920703a10446a207fe24c",
+      "title": "Viscosity",
+      "count": 1,
+      "questionIds": [
+        "680920413a10446a207fdfea"
+      ]
+    }
+  ]
+}

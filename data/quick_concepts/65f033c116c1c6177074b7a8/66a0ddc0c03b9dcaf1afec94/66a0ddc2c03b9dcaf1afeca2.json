@@ -1,0 +1,106 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddc0c03b9dcaf1afec94",
+  "topicId": "66a0ddc2c03b9dcaf1afeca2",
+  "title": "Measures of Dispersion",
+  "concepts": [
+    {
+      "title": "Range",
+      "conceptBody": "<h3><strong>Range</strong></h3><p>It is the difference between the values of extreme items in a series. Range = <i>X </i>max – <i>X </i>min&nbsp;</p>",
+      "position": 0,
+      "qcConcept": "66a0ddc3c03b9dcaf1afeca3"
+    },
+    {
+      "title": "Mean Deviation",
+      "conceptBody": "<h3><strong>Mean Deviation</strong></h3><p>The arithmetic average of the deviations (all taking positive) from the mean, median or mode is known as mean deviation.</p><p>(i) <strong>Mean deviation from ungrouped data (or individual series)&nbsp;</strong></p><p>Mean deviation $=\\frac{\\sum |x-M|}{n}$,</p><p>where | <i>x </i>– <i>M </i>| means the modulus of the deviation of the variate from the mean (mean, median or mode) and <i>n </i>is the number of terms.</p><p>(ii) <strong>Mean deviation from continuous series :&nbsp;</strong></p><p>Here first of all we find the mean from which deviation is to be taken. Then we find the deviation $dM=\\ |x-M|$ of each variate from the mean <i>M </i>so obtained.</p><p>Next we multiply these deviations by the corresponding frequency and find the product <i>f.dM </i>and then the sum $\\sum \\,f\\,dM$ of these products.</p><p>Lastly we use the formula, mean deviation $=\\frac{\\sum f|x-M|}{n}$ $=\\frac{\\sum f\\,dM}{n}$, where <i>n </i>= Σ <i>f </i>.</p>",
+      "position": 1,
+      "qcConcept": "66a0ddc3c03b9dcaf1afeca4"
+    },
+    {
+      "title": "Standard Deviation",
+      "conceptBody": "<h3><strong>Standard Deviation</strong></h3><p>Standard deviation (or S.D.) is the square root of the arithmetic mean of the square of deviations of various values from their arithmetic mean and is generally denoted by <i>σ </i>read as sigma.</p><p>(i) <strong>Standard deviation from individual series&nbsp;</strong></p><p>$\\sigma =\\sqrt{\\frac{\\sum {{(x-\\bar{x})}^{2}}}{N}}$</p><p>where, $\\bar{x}$= The arithmetic mean of series</p><p><i>N </i>= The total frequency.</p><p>(ii) <strong>Standard deviation from continuous series&nbsp;</strong></p><p>$\\sigma =\\sqrt{\\frac{\\sum {{f}_{i}}{{({{x}_{i}}-\\bar{x})}^{2}}}{N}}$</p><p>where, $\\bar{x}$= Arithmetic mean of series</p><p>${{x}_{i}}$= Mid value of the class</p><p>${{f}_{i}}$= Frequency of the corresponding ${{x}_{i}}$</p><p><i>N </i>= Σ <i>f </i>= The total frequency</p>",
+      "position": 2,
+      "qcConcept": "66a0ddc3c03b9dcaf1afeca5"
+    },
+    {
+      "title": "Variance",
+      "conceptBody": "<h3><strong>Variance</strong></h3><p>The square of standard deviation is called the variance.</p><p>Variance of the combined series :</p><p>If ${{n}_{1}},\\,{{n}_{2}}$ are the sizes, ${{\\bar{x}}_{1}},\\,{{\\bar{x}}_{2}}$ the means and ${{\\sigma }_{1}},\\,{{\\sigma }_{2}}$ the standard deviation of two series, then</p><p>${{\\sigma }^{2}}=\\frac{1}{{{n}_{1}}+{{n}_{2}}}[{{n}_{1}}(\\sigma _{1}^{2}+d_{1}^{2})+{{n}_{2}}(\\sigma _{2}^{2}+d_{2}^{2})]$,</p><p>where ${{d}_{1}}={{\\bar{x}}_{1}}-\\bar{x}$, ${{d}_{2}}={{\\bar{x}}_{2}}-\\bar{x}$ and $\\bar{x}=\\frac{{{n}_{1}}{{{\\bar{x}}}_{1}}+{{n}_{2}}{{{\\bar{x}}}_{2}}}{{{n}_{1}}+{{n}_{2}}}$.</p>",
+      "position": 3,
+      "qcConcept": "66a0ddc3c03b9dcaf1afeca6"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66891f341010aab82c8aa695",
+      "title": "The measure of dispersion is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa696",
+      "title": "The variance of the data $2,4,6,8,10$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa697",
+      "title": "If the standard deviation of $0,1,2,3$, wes 9 is $K$, then the standard deviation of $10,11,12,13 \\ldots . .19$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa698",
+      "title": "The variance of the first $n$ natural numbers is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa699",
+      "title": "If M.D. is 12, the value of S.D. will be (where M.D. is mean deviation and S.D. is standard deviation)",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa69a",
+      "title": "For a given distribution of marks mean is 35.16 and its standard deviation is $19.76$. The co-efficient of variation is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa69b",
+      "title": "If the variance of observations $x_1, x_2, \\ldots \\ldots . x_n$ is $\\sigma^2$, then the variance of $a x_1, a x_2 \\ldots \\ldots ., a x_n, \\alpha \\neq 0$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa69c",
+      "title": "The S.D of 15 items is 6 and if each item is decreased or increased by 1 , then standard deviation will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa69d",
+      "title": "The sum of squares of deviations for $10$ observations taken from mean $50$ is $250$ . The co-efficient of variation is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa69e",
+      "title": "For (2n+1) observations $x_1,-x_1, x_2,-x_2, \\ldots \\ldots x_n,-x_n$ and 0 where $x$ 's are all distinct. Let S.D. and M.D. denote the standard deviation and median respectively. Then which of the following is always true",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f341010aab82c8aa69f",
+      "title": "What is the standard deviation of the following series\n\\(\\begin{array}{|l|c|c|c|c|} \\hline \\text { Measurements } & 0-10 & 10-20 & 20-30 & 30-40 \\\\ \\hline \\text { Frequency } & 1 & 3 & 4 & 2 \\\\ \\hline \\end{array}\\)",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6a0",
+      "title": "In an experiment with 15 observations on $x$, the following results were available $\\sum x^2=2830, \\quad \\sum x=170$. On observation that was 20 was found to be wrong and was replaced by the correct value 30 . Then the corrected variance is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

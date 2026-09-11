@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400" role="img" aria-label="BITSAT English and Logical Reasoning — Quantrex Academy">
+  <defs>
+    <linearGradient id="bBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="45%" stop-color="#0b1226"/>
+      <stop offset="80%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="bGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#a5f3fc"/>
+    </linearGradient>
+    <linearGradient id="bGloss" x1="0%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.25)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <filter id="bShadow" x="-10%" y="-5%" width="120%" height="120%">
+      <feDropShadow dx="4" dy="6" stdDeviation="4" flood-color="rgba(0,0,0,0.4)"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#bShadow)">
+    <rect x="14" y="12" width="252" height="372" rx="10" fill="url(#bBg)"/>
+    <path d="M14 22 L6 30 L6 366 L14 374 Z" fill="#020617"/>
+    <rect x="14" y="12" width="10" height="372" rx="2" fill="#0f172a" opacity="0.9"/>
+    <path d="M266 20 L280 28 L280 368 L266 376 Z" fill="#7dd3fc"/>
+    <path d="M268 24 L276 30 L276 364 L268 372 Z" fill="#e0f2fe" opacity="0.9"/>
+  </g>
+  <rect x="24" y="20" width="100" height="350" fill="url(#bGloss)" opacity="0.5"/>
+
+  <!-- Quantrex badge -->
+  <rect x="32" y="28" width="150" height="28" rx="8" fill="rgba(0,0,0,0.4)"/>
+  <circle cx="48" cy="42" r="9" fill="#38bdf8"/>
+  <path d="M44 42 L48 37 L52 42 L48 47 Z" fill="#0f172a"/>
+  <text x="64" y="47" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="800" fill="#f8fafc" letter-spacing="0.6">QUANTREX ACADEMY</text>
+
+  <text x="36" y="95" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" fill="#7dd3fc" font-weight="700" letter-spacing="2">BITS PILANI</text>
+  <text x="34" y="140" font-family="Kanit,Inter,Segoe UI,Arial,sans-serif" font-size="42" font-weight="800" fill="#f8fafc">BITSAT</text>
+  <text x="36" y="172" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="700" fill="#bae6fd">English &amp; Logical Reasoning</text>
+
+  <path d="M34 188 L210 188 L222 202 L210 216 L34 216 Z" fill="url(#bGold)"/>
+  <text x="48" y="208" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="800" fill="#0f172a">PREP GUIDE · 1700+ Qs</text>
+
+  <!-- logic motifs -->
+  <rect x="40" y="240" width="200" height="100" rx="12" fill="rgba(15,23,42,0.55)" stroke="rgba(125,211,252,0.35)"/>
+  <text x="56" y="275" font-family="Inter,Arial,sans-serif" font-size="13" fill="#e0f2fe" font-weight="600">Grammar · Vocab · RC</text>
+  <text x="56" y="300" font-family="Inter,Arial,sans-serif" font-size="13" fill="#e0f2fe" font-weight="600">Series · Puzzles · Coding</text>
+  <text x="56" y="325" font-family="Inter,Arial,sans-serif" font-size="13" fill="#7dd3fc" font-weight="700">BITSAT-pattern practice</text>
+
+  <rect x="28" y="350" width="220" height="26" rx="13" fill="rgba(0,0,0,0.45)"/>
+  <text x="138" y="368" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="700" fill="#e0f2fe" letter-spacing="1">2026–27 DIGITAL EDITION</text>
+</svg>

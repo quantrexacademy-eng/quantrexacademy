@@ -1,0 +1,75 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19157088eaed7250738f35",
+  "chapterId": "6a192bbb49662a7489133192",
+  "subject": "Chemistry",
+  "chapter": "Chemical Bonding and Molecular Structure",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec187ef1faeb9633e2416",
+      "title": "Molecular Orbital Theory",
+      "count": 4,
+      "questionIds": [
+        "6a1ec075ef1faeb9633e1d98",
+        "6a1ec134ef1faeb9633e2248",
+        "6a1ec153ef1faeb9633e2310",
+        "6a1ec016ef1faeb9633e1b40"
+      ]
+    },
+    {
+      "id": "6a1ec187ef1faeb9633e2417",
+      "title": "Hybridisation and VSEPR Theory",
+      "count": 3,
+      "questionIds": [
+        "6a1ec0f5ef1faeb9633e20b8",
+        "6a1ec036ef1faeb9633e1c08",
+        "6a1ec114ef1faeb9633e2180"
+      ]
+    },
+    {
+      "id": "6a1ec187ef1faeb9633e2418",
+      "title": "Dipole moment",
+      "count": 3,
+      "questionIds": [
+        "6a1ec0d5ef1faeb9633e1ff6",
+        "6a1ec0d4ef1faeb9633e1ff0",
+        "6a1ec036ef1faeb9633e1c0b"
+      ]
+    },
+    {
+      "id": "6a1ec187ef1faeb9633e2419",
+      "title": "Covalent and Co-ordinate Bonding",
+      "count": 2,
+      "questionIds": [
+        "6a1ec0b5ef1faeb9633e1f28",
+        "6a1ec055ef1faeb9633e1cd0"
+      ]
+    },
+    {
+      "id": "6a1ec188ef1faeb9633e241a",
+      "title": "Ionic bond",
+      "count": 1,
+      "questionIds": [
+        "6a1ec095ef1faeb9633e1e60"
+      ]
+    },
+    {
+      "id": "6a1ec188ef1faeb9633e241b",
+      "title": "Van Der Waals Forces, Hydrogen Bonding and Metallic Bonding",
+      "count": 1,
+      "questionIds": [
+        "6a1ec118ef1faeb9633e219b"
+      ]
+    },
+    {
+      "id": "6a1ec188ef1faeb9633e241c",
+      "title": "Polarization",
+      "count": 1,
+      "questionIds": [
+        "6a1ec154ef1faeb9633e2312"
+      ]
+    }
+  ]
+}

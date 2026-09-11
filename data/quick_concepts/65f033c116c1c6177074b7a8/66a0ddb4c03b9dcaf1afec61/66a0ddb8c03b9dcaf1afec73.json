@@ -1,0 +1,76 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddb4c03b9dcaf1afec61",
+  "topicId": "66a0ddb8c03b9dcaf1afec73",
+  "title": "Mixed Question on AP and GP",
+  "concepts": [
+    {
+      "title": "Some Solved Problem on Arithmetic and Geometric Mean",
+      "conceptBody": "<h3><strong>Solved examples&nbsp;</strong></h3><p><strong>Q) Consider the following function : $f\\left( x,y,z \\right)=\\frac{x}{y}+\\sqrt{\\frac{y}{z}}+\\sqrt[3]{\\frac{z}{x}}$ &nbsp;for $x,y$ and $z$ all positive real numbers. Suppose we wish to find the minimum value of this function. Rewriting a bit, and applying the AM-GM inequality, we have :&nbsp;</strong></p><p>$\\begin{array}{l} f\\left( x,y,z \\right) &amp; ~=6\\cdot \\frac{\\frac{x}{y}+\\frac{1}{2}\\sqrt{\\frac{y}{z}}+\\frac{1}{2}\\sqrt{\\frac{y}{z}}+\\frac{1}{3}\\sqrt[3]{\\frac{z}{x}}+\\frac{1}{3}\\sqrt[3]{\\frac{z}{x}}+\\frac{1}{3}\\sqrt[3]{\\frac{z}{x}}}{6} \\\\ {} &amp; ~\\ge 6\\sqrt[6]{\\frac{x}{y}\\cdot \\frac{1}{2}\\sqrt{\\frac{y}{z}}\\cdot +\\frac{1}{2}\\sqrt{\\frac{y}{z}}\\cdot \\frac{1}{3}\\sqrt[3]{\\frac{z}{x}}\\cdot \\frac{1}{3}\\sqrt[3]{\\frac{z}{x}}\\cdot \\frac{1}{3}\\sqrt[3]{\\frac{z}{x}}} \\\\ {} &amp; ~=6\\sqrt[6]{\\frac{1}{2.2.3.3.3}\\frac{\\text{xyz}}{\\text{yz}}} \\\\ {} &amp; ~={{2}^{2/3}}\\cdot {{3}^{1/2}} \\\\ \\end{array}$</p><p>Further, we know that the two sides are equal exactly when all the terms of the mean are equal :</p><p>$\\text{f}\\left( \\text{x},\\text{y},\\text{z} \\right)={{2}^{2/3}}\\cdot {{3}^{1/2}}\\text{ }\\!\\!~\\!\\!\\text{ when }\\!\\!~\\!\\!\\text{ }\\frac{\\text{x}}{\\text{y}}=\\frac{1}{2}\\sqrt{\\frac{\\text{y}}{\\text{z}}}=\\frac{1}{3}\\sqrt[3]{\\frac{\\text{z}}{\\text{x}}}$</p><p><strong>Q) If $A$ and $G$ are arithmetic mean (AM) and geometric mean (GM) between two numbers a and $b$ find the roots of the equation : ${{x}^{2}}-2Ax+{{G}^{2}}$&nbsp;</strong></p><p><strong>Solution :&nbsp;</strong></p><p>Let $\\alpha $ and $\\beta $ be the roots of the equation, then</p><p>$\\alpha +\\beta =2\\text{ A}~\\And~ \\alpha \\beta ={{\\text{G}}^{2}}$</p><p>Also, $\\text{A}$ is the AM between a &amp; b and G is GM between a &amp; b</p><p>$\\begin{array}{*{35}{l}} \\Rightarrow &amp; \\text{A}=\\frac{\\text{a}+\\text{b}}{2}\\And \\text{G}=\\sqrt{\\text{a}b} \\\\ \\Rightarrow &amp; \\alpha +\\beta =\\text{a}+\\text{b }\\text{ and }\\alpha \\beta =\\text{ab} \\\\ \\end{array}$</p><p>$\\Rightarrow$ The roots are a $\\And$ b.</p><p><strong>Q) If $a,b,c$ are in A.P., $x$ is the GM of $a,b$ and $y$ is GM of $b,c$, show that ${{b}^{2}}$ is the AM of ${{x}^{2}}$ and ${{\\text{y}}^{2}}$.&nbsp;</strong></p><p><strong>Solution :&nbsp;</strong></p><p>a, b, c are in AP $\\Rightarrow 2b=a+c$ (i)</p><p>$\\text{x}$ is G.M. of $\\text{a},\\text{b} \\Rightarrow \\text{ x}=\\sqrt{\\text{ab}}$ (ii)</p><p>$\\text{y}$ is G.M. of b, c $\\Rightarrow \\text{ y}=\\sqrt{\\text{bc}}$ (iii)</p><p>Squaring (ii) &amp; (iii) and adding, we get</p><p>$\\Rightarrow {{\\text{x}}^{2}}+{{\\text{y}}^{2}}=\\text{ab}+\\text{bc}=\\text{b}\\left( \\text{a}+\\text{c} \\right)$</p><p>From (i) $a+c=2b$</p><p>$\\Rightarrow {{\\text{x}}^{2}}+{{\\text{y}}^{2}}=2{{\\text{b}}^{2}}$</p><p>$\\Rightarrow {{\\text{b}}^{2}}=\\frac{{{\\text{x}}^{2}}+{{\\text{y}}^{2}}}{2}$</p><p>Hence ${{b}^{2}}$ is arithmetic mean (AM) of ${{x}^{2}}$ and ${{y}^{2}}$.</p><p><strong>Q) If $0&lt;r&lt;1$ and $m$ is a positive integer, show that $\\left( 2m+1 \\right){{r}^{2m}}\\left( 1-r \\right)&lt;1-{{r}^{2m+1}}$&nbsp;</strong></p><p><strong>Solution :&nbsp;</strong></p><p>Using AM &gt; GM, we have</p><p>$\\begin{array}{*{35}{l}} &amp; \\frac{1+\\text{r}+{{\\text{r}}^{2}}+\\ldots .+{{\\text{r}}^{2\\text{ m}}}}{2\\text{ m}+1}&gt;{{\\left( 1.r.{{r}^{2}}\\ldots ..{{\\text{r}}^{2\\text{ m}}} \\right)}^{\\frac{1}{2\\text{ m}-1}}} \\\\ {} &amp; \\text{ or }\\frac{1-\\text{r}{{2}^{\\text{m}+1}}}{\\left( 1-\\text{r} \\right)\\left( 2\\text{ m}+1 \\right)}&gt;{{\\left( 1.r.{{\\text{r}}^{2}} \\right)}^{\\frac{1}{2\\text{ m}+1}}} \\\\ {} &amp; \\text{ or }\\frac{1-{{\\text{r}}^{2\\text{ m}+1}}}{\\left( 1-\\text{r} \\right)\\left( 2\\text{ m}+1 \\right)}&gt;{{\\text{r}}^{\\frac{2\\text{ m}\\left( 2\\text{ m}+1 \\right)}{2\\text{ m}+1}}}\\text{ or }1-{{\\text{r}}^{2\\text{ m}+1}}&gt;\\left( 1-\\text{r} \\right)\\left( 2\\text{ m}+1 \\right){{\\text{r}}^{2\\text{ m}}} \\\\ \\end{array}$</p>",
+      "position": 0,
+      "qcConcept": "66a0ddb9c03b9dcaf1afec74"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f6c2d384bfb4a5383a8",
+      "title": "If three numbers be in G.P., then their logarithms will be in",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a5383a9",
+      "title": "If $a, b, c$ are in G.P. and $x, y$ are the arithmetic means between $a, b$ and $b, c$ respectively, then $\\frac{a}{x}+\\frac{c}{y}$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a5383aa",
+      "title": "If $a, b, c$ are in A.P., then $\\frac{a}{b c}, \\frac{1}{c}, \\frac{2}{b}$ are in",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a5383ab",
+      "title": "If $a^{1 / x}=b^{1 / y}=c^{1 / z}$ and ${ }^{a, b, c}$ are in G.P., then $x, y, z$ will be in",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a5383ac",
+      "title": "If $\\frac{1}{b-a}+\\frac{1}{b-c}=\\frac{1}{a}+\\frac{1}{c}$, then $a, b, c$ are in",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a5383ad",
+      "title": "If $b^2, a^2, c^2$ are in A.P., then $a+b, b+c, c+a$ will be in",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a5383ae",
+      "title": "If $a, b, c$ are in G.P., $a-b, c-a, b-c$ are in H.P., then $a+4 b+c$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a5383af",
+      "title": "In the four numbers first three are in G.P. and last three are in A.P. whose common difference is 6 . If the first and last numbers are same, then first will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6d2d384bfb4a5383b0",
+      "title": "If the product of three terms of G.P. is 512 . If 8 added to first and 6 added to second term, so that number may be in A.P., then the numbers are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6d2d384bfb4a5383b1",
+      "title": "If the arithmetic and geometric means of $a$ and $b$ be $A$ and $G$ respectively, then the value of $A-G$ will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

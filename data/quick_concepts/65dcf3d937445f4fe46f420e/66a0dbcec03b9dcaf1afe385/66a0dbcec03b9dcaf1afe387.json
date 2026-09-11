@@ -1,0 +1,100 @@
+{
+  "subjectId": "65dcf3d937445f4fe46f420e",
+  "chapterId": "66a0dbcec03b9dcaf1afe385",
+  "topicId": "66a0dbcec03b9dcaf1afe387",
+  "title": "Units",
+  "concepts": [
+    {
+      "title": "Fundmental Quantities",
+      "conceptBody": "<h3>Physical Quantity</h3><p>A quantity which can be measured and by which various physical happenings can be explained and expressed in the form of laws is called a physical quantity. For example length, mass, time, force <i>etc </i>.</p><p>(1) <strong>Ratio (numerical value only) : </strong>When a physical quantity is the ratio of two similar quantities, it has no unit.</p><p><i>e.g </i>. Relative density = Density of object/Density of water at 4 o <i>C&nbsp;</i></p><p>Refractive index = Velocity of light in air/Velocity of light in medium</p><p>Strain = Change in dimension/Original dimension</p><p>(2) <strong>Scalar (magnitude only) : </strong>These quantities do not have any direction <i>e.g </i>. Length, time, work, energy <i>etc </i>.</p><p>Magnitude of a physical quantity can be negative. In that case negative sign indicates that the numerical value of the quantity under consideration is negative. It does not specify the direction.</p><p>Scalar quantities can be added or subtracted with the help of ordinary laws of addition or subtraction.</p><p>(3) <strong>Vector (magnitude and direction) : </strong>These quantities have magnitude and direction both and can be added or subtracted with the help of laws of vector algebra <i>e.g. </i>displacement, velocity, acceleration, force <i>etc </i>.</p>",
+      "position": 0,
+      "qcConcept": "66a0dbcfc03b9dcaf1afe388"
+    },
+    {
+      "title": "Fundmental Quantities",
+      "conceptBody": "<h3>Fundamental and Derived Quantities</h3><p>(1) <strong>Fundamental quantities : </strong>Out of large number of physical quantities which exist in nature, there are only few quantities which are independent of all other quantities and do not require the help of any other physical quantity for their definition, therefore these are called absolute quantities. These quantities are also called fundamental or basic quantities, as all other quantities are based upon and can be expressed in terms of these quantities.</p><p>(2) <strong>Derived quantities : </strong>All other physical quantities can be derived by suitable multiplication or division of different powers of fundamental quantities. These are therefore called derived quantities.</p><p>If length is defined as a fundamental quantity then area and volume are derived from length and are expressed in term of length with power 2 and 3 over the term of length.</p>",
+      "position": 1,
+      "qcConcept": "66a0dbcfc03b9dcaf1afe389"
+    },
+    {
+      "title": "SI Units",
+      "conceptBody": "<h3>System of units</h3><p>A complete set of units, both fundamental and derived for all kinds of physical quantities is called system of units. The common systems are given below</p><p>(1) <strong>CGS system : </strong>This system is also called Gaussian system of units. In this length, mass and time have been chosen as the fundamental quantities and corresponding fundamental units are centimetre ( <i>cm </i>), gram ( <i>g </i>) and second ( <i>s </i>) respectively.</p><p>(2) <strong>MKS system : </strong>This system is also called Giorgi system. In this system also length, mass and time have been taken as fundamental quantities, and the corresponding fundamental units are <i>metre </i>, kilogram and second.</p><p>(3) <strong>FPS system : </strong>In this system foot, pound and second are used respectively for measurements of length, mass and time. In this system force is a derived quantity with unit poundal.</p><p>(4) <strong>S. I. system : </strong>It is known as International system of units, and is extended system of units applied to whole physics. There are seven fundamental quantities in this system. These quantities and their units are given in the following table</p><p><strong>Table 1.1 : Unit and symbol of quantities&nbsp;</strong></p><figure class=\"table\"><table><thead><tr><th><strong>Quantity&nbsp;</strong></th><th><strong>Unit&nbsp;</strong></th><th><strong>Symbol&nbsp;</strong></th></tr></thead><tbody><tr><td>Length</td><td>metre</td><td><i>m&nbsp;</i></td></tr><tr><td>Mass</td><td>kilogram</td><td><i>kg&nbsp;</i></td></tr><tr><td>Time</td><td>second</td><td><i>s&nbsp;</i></td></tr><tr><td>Electric Current</td><td>ampere</td><td><i>A&nbsp;</i></td></tr><tr><td>Temperature</td><td>Kelvin</td><td><i>K&nbsp;</i></td></tr><tr><td>Amount of Substance</td><td>mole</td><td><i>mol&nbsp;</i></td></tr><tr><td>Luminous Intensity</td><td>candela</td><td><i>cd&nbsp;</i></td></tr></tbody></table></figure><p>Besides the above seven fundamental units two supplementary units are also defined –</p><p>Radian ( <i>rad </i>) for plane angle and Steradian ( <i>sr </i>) for solid angle.</p>",
+      "position": 2,
+      "qcConcept": "66a0dbcfc03b9dcaf1afe38a"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66891f351010aab82c8aa6eb",
+      "title": "Light year is a unit of",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6ec",
+      "title": "Which of the following is not equal to watt",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6ed",
+      "title": "In $S=a+b t+c t^2$. $S$ is measured in metres and $t$ in seconds. The unit of $c$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6ee",
+      "title": "If the unit of length and force be increased four times, then the unit of energy is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6ef",
+      "title": "If $x=a t+b t^2$, where $x$ is the distance travelled by the body in kilometres while $t$ is the time in seconds, then the units of 6 are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6f0",
+      "title": "The equation $\\left(P+\\frac{a}{V^2}\\right)(V-b)$ constant. The units of a are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6f1",
+      "title": "In C.G.S. system the magnitutde of the force is 100 dynes. In another system where the fundamental physical quantities are kilogram, metre and minute, the magnitude of the force is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6f2",
+      "title": "Length cannot be measured by",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6f3",
+      "title": "A physical quantity is measured and its value is found to be $nu$ where $n =$ numerical unit and $u =$ unit. Then which of the following relations is true",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6f4",
+      "title": "Which of the following system of units is not based on units of mass, length and time alone",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6f5",
+      "title": "Candela is the unit of",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6f6",
+      "title": "SI unit of permittivity is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

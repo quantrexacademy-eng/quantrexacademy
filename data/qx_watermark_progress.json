@@ -1,0 +1,16 @@
+{
+  "updated": 1783726712,
+  "build": "qxtest483",
+  "total_scanned": 51366,
+  "cleaned": 6454,
+  "flagged": 47,
+  "remaining": 44866,
+  "pct_complete": 12.65,
+  "manifest_version": 3,
+  "resume_command": "python scripts/clean_parallel.py --workers 100 --per-worker 50 --wave 25 --loop",
+  "merge_command": "python scripts/clean_parallel.py --merge-only",
+  "batch_urls": 5000,
+  "workers": 50,
+  "wave_size": 8,
+  "status": "running"
+}

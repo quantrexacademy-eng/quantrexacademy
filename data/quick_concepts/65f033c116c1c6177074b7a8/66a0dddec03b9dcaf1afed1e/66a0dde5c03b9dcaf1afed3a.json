@@ -1,0 +1,94 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dddec03b9dcaf1afed1e",
+  "topicId": "66a0dde5c03b9dcaf1afed3a",
+  "title": "Vector Triple Product",
+  "concepts": [
+    {
+      "title": "Vector Triple Product",
+      "conceptBody": "<h3>Vector Triple Product</h3><p>If $\\overrightarrow{\\text{a}},\\overrightarrow{\\text{b}}$ and $\\overrightarrow{\\text{c}}$ are three vectors then $(\\overrightarrow{\\text{a}}\\times \\overrightarrow{\\text{b}})\\times \\overrightarrow{\\text{c}}$ and $\\overrightarrow{\\text{a}}\\times (\\overrightarrow{\\text{b}}\\times \\overrightarrow{\\text{c}})$ are called vector triple products.</p><p>In general $\\overrightarrow{\\text{a}}\\times (\\overrightarrow{\\text{b}}\\times \\overrightarrow{\\text{c}})\\ne (\\overrightarrow{\\text{a}}\\times \\overrightarrow{\\text{b}})\\times \\overrightarrow{\\text{c}}$.</p><p>$\\overrightarrow{\\text{b}}\\times \\overrightarrow{\\text{c}}$ is perpendicular to $\\overrightarrow{\\text{b}}$ and $\\overrightarrow{\\text{c}}$ and $\\overrightarrow{\\text{a}}\\times (\\overrightarrow{\\text{b}}\\times \\overrightarrow{\\text{c}})$ is perpendicular to $\\overrightarrow{\\text{a}}$ and $\\overrightarrow{\\text{b}}\\times \\overrightarrow{\\text{c}}$, therefore $\\overrightarrow{\\text{a}}\\times (\\overrightarrow{\\text{b}}\\times \\overrightarrow{\\text{c}})$ is perpendicular to $\\vec{a}$ and is parallel to $\\vec{b}$ and $\\vec{c}$. Whereas $(\\vec{a}\\times \\vec{b})\\times \\vec{c}$ is parallel to $\\vec{a}$ and $\\vec{b}$ and is perpendicular to $\\overrightarrow{\\text{c}}$, thus $\\overrightarrow{\\text{a}}\\times (\\overrightarrow{\\text{b}}\\times \\overrightarrow{\\text{c}})\\ne (\\overrightarrow{\\text{a}}\\times \\overrightarrow{\\text{b}})\\times \\overrightarrow{\\text{c}}$.</p><p>For any three vectors $\\vec{a},\\vec{b}$ and $\\vec{c}$</p><p>(i) $\\overrightarrow{\\text{a}}\\times (\\overrightarrow{\\text{b}}\\times \\overrightarrow{\\text{c}})=(\\overrightarrow{\\text{a}}\\cdot \\overrightarrow{\\text{c}})\\overrightarrow{\\text{b}}-(\\overrightarrow{\\text{a}}\\cdot \\overrightarrow{\\text{b}})\\overrightarrow{\\text{c}}$</p><p>(ii) $(\\vec{a}\\times \\vec{b})\\cdot \\vec{c}=(\\vec{a}\\cdot \\vec{c})\\vec{b}-(\\vec{b}\\cdot \\vec{c})\\vec{a}$</p><p><strong>AID To Memory</strong></p><p>$\\overrightarrow{\\text{a}}\\times (\\overrightarrow{\\text{b}}\\times \\overrightarrow{\\text{c}})=(\\overrightarrow{\\text{a}}\\cdot \\overrightarrow{\\text{c}})\\overrightarrow{\\text{b}}-(\\overrightarrow{\\text{a}}\\cdot \\overrightarrow{\\text{b}})\\overrightarrow{\\text{c}}$ can also be wrotten as $\\text{I}\\times (\\text{II}\\times \\text{III})=(\\text{I}.\\text{III})\\text{II}-(\\text{I}.\\text{II})\\text{III}$.</p><p><strong>Note 1. </strong>The vector triple product $\\vec{a}\\times (\\vec{b}\\times \\vec{c})$ is a linear combination of those two vectors which are within brackets.</p><p><strong>Note 2. </strong>The vector $\\overrightarrow{\\text{r}}=\\overrightarrow{\\text{a}}\\times (\\overrightarrow{\\text{b}}\\times \\overrightarrow{\\text{c}})$ is perpendicular to $\\overrightarrow{\\text{a}}$ and lies in the plane of $\\overrightarrow{\\text{b}}$ and $\\overrightarrow{\\text{c}}$.</p><p><strong>Note 3. </strong>The formula $\\vec{a}\\times (\\vec{b}\\times \\vec{c})=(\\vec{a}\\cdot \\vec{c})\\vec{b}-(\\vec{a}\\cdot \\vec{b})\\vec{c}$ is true only when the vector outside the bracket is on the left-most side. If it is not we first shift on left by using the properties of cross-product and then apply the same formula. For example,</p><p>$(\\vec{b}\\times \\vec{c})\\times \\vec{a}=-(\\vec{a}\\times (\\vec{b}\\times \\vec{c}))$</p><p>$=-\\{(\\vec{a}\\cdot \\vec{c})\\vec{b}-(\\vec{a}\\cdot \\vec{b})\\cdot \\vec{c}\\}=-(\\vec{a}\\cdot \\vec{c})\\vec{b}+(\\vec{a}\\cdot \\vec{b})\\vec{c}$</p><p>&nbsp;</p>",
+      "position": 0,
+      "qcConcept": "66a0dde5c03b9dcaf1afed3b"
+    },
+    {
+      "title": "Reciprocal of Vectors",
+      "conceptBody": "<h3>Reciprocal system of vectors</h3><p>Let $\\vec{a},\\vec{b},\\vec{c}$ be three non-coplanar vectors, and let</p><p>${{\\vec{a}}^{\\prime }}=\\frac{\\vec{b}\\times \\vec{c}}{[\\vec{a}\\vec{b}\\vec{c}]},{{\\vec{b}}^{\\prime }}=\\frac{\\vec{c}\\times \\vec{a}}{[\\vec{a}\\vec{b}\\vec{c}]},{{\\vec{c}}^{\\prime }}=\\frac{\\vec{a}\\times \\vec{b}}{[\\vec{a}\\vec{b}\\vec{c}]}$</p><p>$\\vec{a},\\vec{b},\\vec{c}$ are said to form a reciprocal system of vectors for the vectors $\\vec{a},\\vec{b},\\vec{c}$.</p><p><strong>Properties of Reciprocal System of Vectors</strong></p><p>if $\\vec{a},\\vec{b},\\vec{c}$ and $\\vec{a},\\vec{b},\\vec{c}$ form a reciprocal system of vectors, then show that</p><p>(i) $\\vec{a}\\cdot \\vec{a}=\\vec{b}\\cdot \\vec{b}=\\vec{c}\\cdot \\vec{c}=1$</p><p>(ii)$\\overrightarrow{\\text{a}}\\cdot \\overrightarrow{\\text{b}}=\\overrightarrow{\\text{a}}\\cdot {{\\overrightarrow{\\text{c}}}^{\\prime }}=0;\\overrightarrow{\\text{b}}\\cdot {{\\overrightarrow{\\text{c}}}^{\\prime }}=\\overrightarrow{\\text{b}}\\cdot \\overrightarrow{\\text{a}}=0;\\overrightarrow{\\text{c}}\\cdot {{\\overrightarrow{\\text{a}}}^{\\prime }}=\\overrightarrow{\\text{c}}\\cdot \\overrightarrow{\\text{b}}=0$</p><p>(iii) $\\left[ {{\\overrightarrow{\\text{a}}}^{\\prime }}{{\\overrightarrow{\\text{b}}}^{\\prime }}{{\\overrightarrow{\\text{c}}}^{\\prime }} \\right]=\\frac{1}{[\\overrightarrow{\\text{a}}\\overrightarrow{\\text{b}}\\overrightarrow{\\text{c}}]}$</p><p>(iv) $\\overrightarrow{\\text{a}},\\overrightarrow{\\text{b}},\\overrightarrow{\\text{c}}$ are non-coplanar iff so are ${{\\overrightarrow{\\text{a}}}^{\\prime }},{{\\overrightarrow{\\text{b}}}^{\\prime }},{{\\overrightarrow{\\text{c}}}^{\\prime }}$.</p><p>&nbsp;</p>",
+      "position": 1,
+      "qcConcept": "66a0dde5c03b9dcaf1afed3c"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f702d384bfb4a5384da",
+      "title": "$\\mathbf{a} \\times(\\mathbf{b} \\times \\mathbf{c})$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f702d384bfb4a5384db",
+      "title": "$\\mathbf{i} \\times(\\mathbf{j} \\times \\mathbf{k})=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f702d384bfb4a5384dc",
+      "title": "If $\\mathbf{a}=\\mathbf{i}+2 \\mathbf{j}-2 \\mathbf{k}, \\mathbf{b}=2 \\mathbf{i}-\\mathbf{j}+\\mathbf{k}$ and $\\mathbf{c}=\\mathbf{i}+3 \\mathbf{j}-\\mathbf{k}$, then $\\mathbf{a} \\times(\\mathbf{b} \\times \\mathbf{c})$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f702d384bfb4a5384dd",
+      "title": "If $\\mathbf{a}=2 \\mathbf{i}+3 \\mathbf{j}-\\mathbf{k}, \\boldsymbol{\\beta}=-\\mathbf{i}+2 \\mathbf{j}-4 \\mathbf{k}$ and $\\mathbf{Y}=\\mathbf{i}+\\mathbf{j}+\\mathbf{k}$, then $(\\boldsymbol{\\alpha} \\times \\boldsymbol{\\beta}) \\cdot(\\boldsymbol{a} \\times \\mathbf{Y})$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f702d384bfb4a5384de",
+      "title": "If $\\mathbf{a} \\times(\\mathbf{b} \\times \\mathbf{c})=\\mathbf{0}$, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f702d384bfb4a5384df",
+      "title": "If $\\mathbf{a}=\\mathbf{i}+\\mathbf{j}-\\mathbf{k}, \\mathbf{b}=\\mathbf{i}-\\mathbf{j}+\\mathbf{k}, \\mathbf{c}=\\mathbf{i}-\\mathbf{j}-\\mathbf{k}$, then $\\mathbf{a} \\times(\\mathbf{b} \\times \\mathbf{c})$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f702d384bfb4a5384e0",
+      "title": "$[\\mathbf{b} \\times \\mathbf{c}, \\mathbf{c}  \\times \\mathbf{a}, \\mathbf{a} \\times \\mathbf{b}]$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f702d384bfb4a5384e1",
+      "title": "Given three unit vector $\\mathbf{a}, \\mathbf{b}, \\mathbf{c}$ such that $\\mathbf{a} \\perp \\mathbf{b}$ and $\\mathbf{a} \\| \\mathbf{c}$, then $\\mathbf{a} \\times(\\mathbf{b} \\times \\mathbf{c})$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f702d384bfb4a5384e2",
+      "title": "If $\\mathbf{a}=\\mathbf{i}+\\mathbf{j}+\\mathbf{k}, \\mathbf{b}=\\mathbf{i}+\\mathbf{j}, \\mathbf{c}=\\mathbf{i}$ and $(\\mathbf{a} \\times \\mathbf{b}) \\times \\mathbf{c}=\\lambda \\mathbf{a}+\\mu \\mathbf{b}$, then $\\lambda+\\mu=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f702d384bfb4a5384e3",
+      "title": "If the vectors $\\mathbf{a}$ and $\\mathbf{b}$ are mutually perpendicular, then $\\mathbf{a} \\times\\{\\mathbf{a} \\times\\{\\mathbf{a} \\times(\\mathbf{a} \\times \\mathbf{b})\\}\\}$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f702d384bfb4a5384e4",
+      "title": "If $\\mathbf{a}, \\mathbf{b}, \\mathbf{c}, \\mathbf{d}$ are coplanar vectors, then $(\\mathbf{a} \\times \\mathbf{b}) \\times(\\mathbf{c} \\times \\mathbf{d})=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f702d384bfb4a5384e5",
+      "title": "$\\mathbf{a} \\times[\\mathbf{a} \\times(\\mathbf{a} \\times \\mathbf{b})]$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+"use strict";
+const fs = require("fs");
+const p = "data/tests/jee_main_examgoal_2027/questions/tst-19g61mnpzm42d.json";
+const qs = JSON.parse(fs.readFileSync(p, "utf8"));
+const q = qs.find((x) => x.id === 3530653911) || qs.find((x) => /<img/i.test(JSON.stringify(x)));
+const blob = JSON.stringify(q, null, 2);
+const imgs = [...blob.matchAll(/<img[^>]+>/gi)].map((m) => m[0]);
+console.log("id", q && q.id);
+console.log("imgs", imgs.slice(0, 4));
+const keys = q && Object.keys(q);
+console.log("keys", keys);
+console.log("image", q && q.image);
+console.log("has orig", /data-qx-orig|getmarks|quizrr|examgoal/i.test(blob));

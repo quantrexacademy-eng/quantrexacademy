@@ -1,0 +1,48 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d2ad647479b8e8696479",
+  "chapterId": "6809202c3a10446a207fdef1",
+  "subject": "Physics",
+  "chapter": "Atomic Physics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "680920723a10446a207fe26b",
+      "title": "Atomic Models",
+      "count": 1,
+      "questionIds": [
+        "680920453a10446a207fe01b"
+      ]
+    },
+    {
+      "id": "680920723a10446a207fe269",
+      "title": "Bohr's Atomic Model",
+      "count": 14,
+      "questionIds": [
+        "6a45fe555aa758e832e06ed9",
+        "680920483a10446a207fe035",
+        "680920473a10446a207fe031",
+        "680920463a10446a207fe020",
+        "680920453a10446a207fe019",
+        "680920443a10446a207fe00c",
+        "680920423a10446a207fdff5",
+        "6809203f3a10446a207fdfd2",
+        "6809203c3a10446a207fdfb7",
+        "6809203a3a10446a207fdf96",
+        "680920383a10446a207fdf84",
+        "680920373a10446a207fdf77",
+        "6809202d3a10446a207fdef9",
+        "6809202c3a10446a207fdeef"
+      ]
+    },
+    {
+      "id": "680920723a10446a207fe26a",
+      "title": "Atomic Spectrum",
+      "count": 1,
+      "questionIds": [
+        "680920393a10446a207fdf93"
+      ]
+    }
+  ]
+}

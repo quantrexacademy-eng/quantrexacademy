@@ -1,0 +1,50 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a1915fc6f6e9bf164f6d502",
+  "chapterId": "6a1928f5aff54f2bc3ca560f",
+  "subject": "Biology",
+  "chapter": "Anatomy of Flowering Plants",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec1a5ef1faeb9633e2497",
+      "title": "Anatomy of Plant Parts",
+      "count": 2,
+      "questionIds": [
+        "6a1ec105ef1faeb9633e211f",
+        "6a1ec01fef1faeb9633e1b7b"
+      ]
+    },
+    {
+      "id": "6a1ec1a6ef1faeb9633e2498",
+      "title": "Permanent Tissues",
+      "count": 3,
+      "questionIds": [
+        "6a1ec089ef1faeb9633e1e16",
+        "6a1ec041ef1faeb9633e1c51",
+        "6a1ec063ef1faeb9633e1d23"
+      ]
+    },
+    {
+      "id": "6a1ec1a6ef1faeb9633e2499",
+      "title": "Anatomy of Leaf",
+      "count": 5,
+      "questionIds": [
+        "6a1ec100ef1faeb9633e20ff",
+        "6a1ec0ddef1faeb9633e202a",
+        "6a1ec042ef1faeb9633e1c55",
+        "6a1ec140ef1faeb9633e2295",
+        "6a1ec160ef1faeb9633e235d"
+      ]
+    },
+    {
+      "id": "6a1ec1a6ef1faeb9633e249a",
+      "title": "Secondary Growth",
+      "count": 1,
+      "questionIds": [
+        "6a1ec083ef1faeb9633e1def"
+      ]
+    }
+  ]
+}

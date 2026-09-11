@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61moeftq8w",
+  "title": "Vector Algebra Test - 2 (Topic Test)",
+  "type": "topic",
+  "section": "Vector Algebra",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Mathematics",
+  "isUpcoming": false,
+  "liveAt": "2026-08-08T12:30:00.000Z",
+  "status": "ok",
+  "analysisId": "14d68572-068b-40ea-a518-3eeb75a0e4d1",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61moeftq8w",
+    "defaultLanguage": "en",
+    "description": "Product of Vectors",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-08T12:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mshi3p3p",
+            "chapter": "vector-algebra",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let ABCD be a parallelogram such that $\\overrightarrow{AB} = \\overrightarrow{q}$, $\\overrightarrow{AD} = \\overrightarrow{p}$ and $\\angle BAD$ be an acute angle. If $\\vec{r}$ is the vector that coincides with the altitude directed from the vertex B to the side AD, then $\\vec{r}$ is given by</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\vec{r} = -3\\overrightarrow{q} + \\frac{3(\\overrightarrow{p}\\cdot \\overrightarrow{q})}{(\\overrightarrow{p}\\cdot \\overrightarrow{p})}\\overrightarrow{p}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\vec{r} = 3\\overrightarrow{q} - \\frac{3(\\overrightarrow{p}\\cdot \\overrightarrow{q})}{(\\overrightarrow{p}\\cdot \\overrightarrow{p})}\\overrightarrow{p}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\vec{r} = -\\overrightarrow{q} + \\left(\\frac{\\overrightarrow{p}\\cdot \\overrightarrow{q}}{\\overrightarrow{p}\\cdot \\overrightarrow{p}}\\right)\\overrightarrow{p}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\vec{r} = \\overrightarrow{q} - \\left(\\frac{\\overrightarrow{p}\\cdot \\overrightarrow{q}}{\\overrightarrow{p}\\cdot \\overrightarrow{p}}\\right)\\overrightarrow{p}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mshi12ok%2Fb5cdae55-b68c-4150-a3a7-72d23e09d0ff%2F4b742940-9193-11f1-b5a5-3368893eac5e%2Ffile-6y3zli1mshi12ol.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mshi12ok%2Fb5cdae55-b68c-4150-a3a7-72d23e09d0ff%2F4b742940-9193-11f1-b5a5-3368893eac5e%2Ffile-6y3zli1mshi12ol.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"><p>Let $E$ be the foot of the perpendicular (altitude) drawn from vertex $B$ to the side $AD$.</p>\n<p>We are given:</p>\n<ul>\n<li><p>$\\overrightarrow{AB} = \\vec{q}$</p></li>\n<li><p>$\\overrightarrow{AD} = \\vec{p}$</p></li>\n<li><p>Altitude directed from $B$ to $AD$, so $\\overrightarrow{BE} = \\vec{r}$</p></li>\n</ul>\n\n<p>The vector $\\overrightarrow{AE}$ lies along $AD$ and represents the vector projection of $\\overrightarrow{AB}$ onto $\\overrightarrow{AD}$. According to NCERT concepts, the vector projection of a vector $\\vec{a}$ on $\\vec{b}$ is given by $\\left( \\frac{\\vec{a} \\cdot \\vec{b}}{\\vert{}\\vec{b}\\vert{}^2} \\right)\\vec{b}$.</p>\n<p>Applying this here:</p>\n<p>$$\\overrightarrow{AE} = \\left( \\frac{\\overrightarrow{AB} \\cdot \\overrightarrow{AD}}{\\vert{}\\overrightarrow{AD}\\vert{}^2} \\right)\\overrightarrow{AD}$$</p>\n<p>$$\\overrightarrow{AE} = \\left( \\frac{\\vec{q} \\cdot \\vec{p}}{\\vert{}\\vec{p}\\vert{}^2} \\right)\\vec{p}$$</p>\n<p>Since $\\vert{}\\vec{p}\\vert{}^2 = \\vec{p} \\cdot \\vec{p}$, we can rewrite this as:</p>\n<p>$$\\overrightarrow{AE} = \\left( \\frac{\\vec{p} \\cdot \\vec{q}}{\\vec{p} \\cdot \\vec{p}} \\right)\\vec{p}$$</p>\n\n<p>In the right-angled triangle $\\triangle ABE$, using the triangle law of vector addition:</p>\n<p>$$\\overrightarrow{AB} + \\overrightarrow{BE} = \\overrightarrow{AE}$$</p>\n<p>Substitute the known vectors into the equation:</p>\n<p>$$\\vec{q} + \\vec{r} = \\left( \\frac{\\vec{p} \\cdot \\vec{q}}{\\vec{p} \\cdot \\vec{p}} \\right)\\vec{p}$$</p>\n<p>$$\\vec{r} = -\\vec{q} + \\left( \\frac{\\vec{p} \\cdot \\vec{q}}{\\vec{p} \\cdot \\vec{p}} \\right)\\vec{p}$$</p>\n<p>This perfectly matches Option C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना ABCD एक समांतर चतुर्भुज है जहाँ $\\overrightarrow{AB} = \\overrightarrow{q}$, $\\overrightarrow{AD} = \\overrightarrow{p}$ तथा $\\angle BAD$ एक न्यून कोण है। यदि $\\vec{r}$ वह सदिश है जो शीर्ष B से भुजा AD पर डाले गए शीर्षलंब के संपाती है, तो $\\vec{r}$ का मान है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\vec{r} = -3\\overrightarrow{q} + \\frac{3(\\overrightarrow{p}\\cdot \\overrightarrow{q})}{(\\overrightarrow{p}\\cdot \\overrightarrow{p})}\\overrightarrow{p}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\vec{r} = 3\\overrightarrow{q} - \\frac{3(\\overrightarrow{p}\\cdot \\overrightarrow{q})}{(\\overrightarrow{p}\\cdot \\overrightarrow{p})}\\overrightarrow{p}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\vec{r} = -\\overrightarrow{q} + \\left(\\frac{\\overrightarrow{p}\\cdot \\overrightarrow{q}}{\\overrightarrow{p}\\cdot \\overrightarrow{p}}\\right)\\overrightarrow{p}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\vec{r} = \\overrightarrow{q} - \\left(\\frac{\\overrightarrow{p}\\cdot \\overrightarrow{q}}{\\overrightarrow{p}\\cdot \\overrightarrow{p}}\\right)\\overrightarrow{p}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "scalar-or-dot-product-of-two-vectors-and-its-applications",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msj74za5",
+            "chapter": "vector-algebra",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let O be the origin, and $\\overrightarrow{OX}, \\overrightarrow{OY}, \\overrightarrow{OZ}$ be three unit vectors in the directions of the sides $\\overrightarrow{QR}, \\overrightarrow{RP}, \\overrightarrow{PQ}$, respectively, of a triangle PQR.</p><p>$\\left| \\overrightarrow{OX} \\times \\overrightarrow{OY} \\right| =$</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>sin(P + R)</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>sin2R</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>sin(P + Q)</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>sin(Q + R)</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "\n<p>Given that $\\overrightarrow{OX}$ and $\\overrightarrow{OY}$ are unit vectors along the directions of the sides $\\overrightarrow{QR}$ and $\\overrightarrow{RP}$, respectively, we can write:</p>\n<p>$$\\overrightarrow{OX} = \\frac{\\overrightarrow{QR}}{\\vert{}\\overrightarrow{QR}\\vert{}}$$</p>\n<p>$$\\overrightarrow{OY} = \\frac{\\overrightarrow{RP}}{\\vert{}\\overrightarrow{RP}\\vert{}}$$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msj749c8%2Fd1a21647-1c64-4631-bbee-bc15f83e0529%2F30e6ec80-9282-11f1-8cec-d95c2fc8fd1b%2Ffile-6y3zli1msj749c9.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msj749c8%2Fd1a21647-1c64-4631-bbee-bc15f83e0529%2F30e6ec80-9282-11f1-8cec-d95c2fc8fd1b%2Ffile-6y3zli1msj749c9.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>To find the angle between the vectors $\\overrightarrow{QR}$ (which terminates at vertex R) and $\\overrightarrow{RP}$ (which originates at vertex R), we must place them tail-to-tail.</p>\n<p>By extending the line QR past R, we can see that the angle between these two direction vectors is the exterior angle at vertex R, which is equal to $(\\pi - R)$.</p>\n<p>The magnitude of the cross product of two vectors is given by the product of their magnitudes and the sine of the angle between them.</p>\n<p>$$\\left\\vert{} \\overrightarrow{OX} \\times \\overrightarrow{OY} \\right\\vert{} = \\vert{}\\overrightarrow{OX}\\vert{} \\vert{}\\overrightarrow{OY}\\vert{} \\sin(\\pi - R)$$</p>\n<p>Since $\\overrightarrow{OX}$ and $\\overrightarrow{OY}$ are unit vectors, their magnitudes are 1:</p>\n<p>$$\\left\\vert{} \\overrightarrow{OX} \\times \\overrightarrow{OY} \\right\\vert{} = (1)(1)\\sin(\\pi - R)$$</p>\n<p>$$\\left\\vert{} \\overrightarrow{OX} \\times \\overrightarrow{OY} \\right\\vert{} = \\sin R$$</p>\n\n<p>We know that the sum of the interior angles of a triangle is $\\pi$:</p>\n<p>$$P + Q + R = \\pi$$</p>\n<p>$$R = \\pi - (P + Q)$$</p>\n<p>Substitute this back into our sine expression:</p>\n<p>$$\\sin R = \\sin(\\pi - (P + Q))$$</p>\n<p>Since $\\sin(\\pi - \\theta) = \\sin \\theta$, we get:</p>\n<p>$$\\sin R = \\sin(P + Q)$$</p>\n<p>Therefore, $\\left\\vert{} \\overrightarrow{OX} \\times \\overrightarrow{OY} \\right\\vert{} = \\sin(P + Q)$, which corresponds to Option C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना O मूलबिंदु है, तथा $\\overrightarrow{OX}, \\overrightarrow{OY}, \\overrightarrow{OZ}$ एक त्रिभुज PQR की भुजाओं क्रमशः $\\overrightarrow{QR}, \\overrightarrow{RP}, \\overrightarrow{PQ}$ की दिशाओं में तीन इकाई सदिश हैं।</p><p>$\\left| \\overrightarrow{OX} \\times \\overrightarrow{OY} \\right| =$</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>sin(P + R)</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>sin2R</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>sin(P + Q)</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>sin(Q + R)</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "vector-or-cross-product-of-two-vectors-and-its-applications",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msjebi6l",
+            "chapter": "vector-algebra",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let $\\vec{u} = \\hat{i} + \\hat{j}$, $\\vec{v} = \\hat{i} - \\hat{j}$ and $\\vec{w} = \\hat{i} + 2\\hat{j} + 3\\hat{k}$. If $\\hat{n}$ is a unit vector such that $\\vec{u} \\cdot \\hat{n} = 0$ and $\\vec{v} \\cdot \\hat{n} = 0$, then $|\\vec{w} \\cdot \\hat{n}|$ is equal to</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Let the unit vector be $\\hat{n} = a\\hat{i} + b\\hat{j} + c\\hat{k}$.</p>\n\n<p>We are given that $\\hat{n}$ is perpendicular to $\\vec{u} = \\hat{i} + \\hat{j}$:</p>\n<p>$$\\vec{u} \\cdot \\hat{n} = 0 \\implies (1)(a) + (1)(b) + (0)(c) = 0 \\implies a + b = 0$$</p>\n<p>We are also given that $\\hat{n}$ is perpendicular to $\\vec{v} = \\hat{i} - \\hat{j}$:</p>\n<p>$$\\vec{v} \\cdot \\hat{n} = 0 \\implies (1)(a) + (-1)(b) + (0)(c) = 0 \\implies a - b = 0$$</p>\n\n<p>Solving the equations $a + b = 0$ and $a - b = 0$ simultaneously yields $a = 0$ and $b = 0$.</p>\n<p>Because $\\hat{n}$ is a unit vector, its magnitude must be 1:</p>\n<p>$$\\sqrt{a^2 + b^2 + c^2} = 1$$</p>\n<p>$$\\sqrt{0^2 + 0^2 + c^2} = 1 \\implies c = \\pm 1$$</p>\n<p>Thus, the unit vector is $\\hat{n} = \\pm \\hat{k}$.</p>\n\n<p>Now, substitute $\\hat{n}$ and the given $\\vec{w} = \\hat{i} + 2\\hat{j} + 3\\hat{k}$ into the required expression:</p>\n<p>$$\\vec{w} \\cdot \\hat{n} = (\\hat{i} + 2\\hat{j} + 3\\hat{k}) \\cdot (\\pm \\hat{k}) = \\pm 3$$</p>\n<p>$$\\vert{}\\vec{w} \\cdot \\hat{n}\\vert{} = \\vert{}\\pm 3\\vert{} = 3$$</p>\n<p>Therefore, Option C is the correct choice.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना $\\vec{u} = \\hat{i} + \\hat{j}$, $\\vec{v} = \\hat{i} - \\hat{j}$ और $\\vec{w} = \\hat{i} + 2\\hat{j} + 3\\hat{k}$ हैं। यदि $\\hat{n}$ एक ऐसा इकाई सदिश है कि $\\vec{u} \\cdot \\hat{n} = 0$ और $\\vec{v} \\cdot \\hat{n} = 0$ है, तो $|\\vec{w} \\cdot \\hat{n}|$ का मान बराबर है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "vector-or-cross-product-of-two-vectors-and-its-applications",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msjej5d4",
+            "chapter": "vector-algebra",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider $\\triangle ABC$ with $A \\equiv (\\vec{a})$, $B \\equiv (\\vec{b})$ and $C = (\\vec{c})$. If $\\vec{b} \\cdot (\\vec{a} + \\vec{c}) = \\vec{b} \\cdot \\vec{b} + \\vec{a} \\cdot \\vec{c}$; $|\\vec{b} - \\vec{a}| = 3$; $|\\vec{c} - \\vec{b}| = 4$, then the angle between the medians $\\overrightarrow{AM}$ and $\\overrightarrow{BD}$ is –</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p> $\\pi - \\cos^{-1}\\left(\\frac{1}{5\\sqrt{13}}\\right)$ </p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p> $\\pi - \\cos^{-1}\\left(\\frac{1}{13\\sqrt{5}}\\right)$ </p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p> $\\cos^{-1}\\left(\\frac{1}{5\\sqrt{13}}\\right)$ </p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p> $\\cos^{-1}\\left(\\frac{1}{13\\sqrt{5}}\\right)$ </p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msjehdfq%2Fca8f4845-d109-4d5a-875a-197962edb07c%2Ffd7d6e60-929e-11f1-9f04-e1abd627818c%2Ffile-6y3zli1msjehdfr.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msjehdfq%2Fca8f4845-d109-4d5a-875a-197962edb07c%2Ffd7d6e60-929e-11f1-9f04-e1abd627818c%2Ffile-6y3zli1msjehdfr.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>We are given the condition:</p>\n<p>$$\\vec{b} \\cdot (\\vec{a} + \\vec{c}) = \\vec{b} \\cdot \\vec{b} + \\vec{a} \\cdot \\vec{c}$$</p>\n<p>To make the calculations easier, let's shift the origin to vertex B, which means we set the position vector $\\vec{b} = \\vec{0}$.</p>\n<p>Substituting $\\vec{b} = \\vec{0}$ into the condition gives:</p>\n<p>$$0 \\cdot (\\vec{a} + \\vec{c}) = 0 + \\vec{a} \\cdot \\vec{c} \\implies \\vec{a} \\cdot \\vec{c} = 0$$</p>\n<p>This indicates that the sides $BA$ and $BC$ are perpendicular ($\\angle B = 90^\\circ$).</p>\n\n<p>With the origin at B ($\\vec{b} = \\vec{0}$), the given magnitude conditions simplify to:</p>\n<ul>\n<li><p>$\\vert{}\\vec{b} - \\vec{a}\\vert{} = 3 \\implies \\vert{}-\\vec{a}\\vert{} = 3 \\implies \\vert{}\\vec{a}\\vert{} = 3$</p></li>\n<li><p>$\\vert{}\\vec{c} - \\vec{b}\\vert{} = 4 \\implies \\vert{}\\vec{c}\\vert{} = 4$</p></li>\n</ul>\n<p>The position vectors of the vertices relative to B are now $A(\\vec{a})$, $B(\\vec{0})$, and $C(\\vec{c})$.</p>\n<ul>\n<li><strong>Median $\\overrightarrow{AM}$:</strong> Since M is the midpoint of BC, its position vector is $\\frac{\\vec{c}}{2}$.</li>\n</ul>\n<p>$$\\overrightarrow{AM} = \\frac{\\vec{c}}{2} - \\vec{a}$$</p>\n<ul>\n<li><strong>Median $\\overrightarrow{BD}$:</strong> Since D is the midpoint of AC, its position vector is $\\frac{\\vec{a} + \\vec{c}}{2}$.</li>\n</ul>\n<p>$$\\overrightarrow{BD} = \\frac{\\vec{a} + \\vec{c}}{2} - \\vec{0} = \\frac{\\vec{a} + \\vec{c}}{2}$$</p>\n\n<p>$$\\overrightarrow{AM} \\cdot \\overrightarrow{BD} = \\left(\\frac{\\vec{c}}{2} - \\vec{a}\\right) \\cdot \\left(\\frac{\\vec{a} + \\vec{c}}{2}\\right)$$</p>\n<p>$$\\overrightarrow{AM} \\cdot \\overrightarrow{BD} = \\frac{1}{4} (\\vec{c} - 2\\vec{a}) \\cdot (\\vec{a} + \\vec{c})$$</p>\n<p>$$\\overrightarrow{AM} \\cdot \\overrightarrow{BD} = \\frac{1}{4} (\\vec{c} \\cdot \\vec{a} + \\vert{}\\vec{c}\\vert{}^2 - 2\\vert{}\\vec{a}\\vert{}^2 - 2\\vec{a} \\cdot \\vec{c})$$</p>\n<p>Since $\\vec{a} \\cdot \\vec{c} = 0$:</p>\n<p>$$\\overrightarrow{AM} \\cdot \\overrightarrow{BD} = \\frac{1}{4} (0 + 16 - 2(9) - 0)$$</p>\n<p>$$\\overrightarrow{AM} \\cdot \\overrightarrow{BD} = \\frac{1}{4} (16 - 18) = -\\frac{2}{4} = -\\frac{1}{2}$$</p>\n\n<p>$$\\vert{}\\overrightarrow{AM}\\vert{}^2 = \\left\\vert{}\\frac{\\vec{c}}{2} - \\vec{a}\\right\\vert{}^2 = \\frac{1}{4}(\\vert{}\\vec{c}\\vert{}^2 + 4\\vert{}\\vec{a}\\vert{}^2 - 4\\vec{a} \\cdot \\vec{c})$$</p>\n<p>$$\\vert{}\\overrightarrow{AM}\\vert{}^2 = \\frac{1}{4}(16 + 4(9) - 0) = \\frac{52}{4} = 13 \\implies \\vert{}\\overrightarrow{AM}\\vert{} = \\sqrt{13}$$</p>\n<p>$$\\vert{}\\overrightarrow{BD}\\vert{}^2 = \\left\\vert{}\\frac{\\vec{a} + \\vec{c}}{2}\\right\\vert{}^2 = \\frac{1}{4}(\\vert{}\\vec{a}\\vert{}^2 + \\vert{}\\vec{c}\\vert{}^2 + 2\\vec{a} \\cdot \\vec{c})$$</p>\n<p>$$\\vert{}\\overrightarrow{BD}\\vert{}^2 = \\frac{1}{4}(9 + 16 + 0) = \\frac{25}{4} \\implies \\vert{}\\overrightarrow{BD}\\vert{} = \\frac{5}{2}$$</p>\n<p>$$\\cos\\theta = \\frac{\\overrightarrow{AM} \\cdot \\overrightarrow{BD}}{\\vert{}\\overrightarrow{AM}\\vert{}\\vert{}\\overrightarrow{BD}\\vert{}}$$</p>\n<p>$$\\cos\\theta = \\frac{-1/2}{\\sqrt{13} \\times (5/2)} = \\frac{-1/2}{5\\sqrt{13}/2} = -\\frac{1}{5\\sqrt{13}}$$</p>\n<p>Since the cosine value is negative, the angle between the vectors is obtuse:</p>\n<p>$$\\theta = \\pi - \\cos^{-1}\\left(\\frac{1}{5\\sqrt{13}}\\right)$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\triangle ABC$ पर विचार करें, जिसमें $A \\equiv (\\vec{a})$, $B \\equiv (\\vec{b})$ और $C = (\\vec{c})$ हैं। यदि $\\vec{b} \\cdot (\\vec{a} + \\vec{c}) = \\vec{b} \\cdot \\vec{b} + \\vec{a} \\cdot \\vec{c}$; $|\\vec{b} - \\vec{a}| = 3$; $|\\vec{c} - \\vec{b}| = 4$ है, तो माध्यिकाओं $\\overrightarrow{AM}$ और $\\overrightarrow{BD}$ के बीच का कोण है –</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p> $\\pi - \\cos^{-1}\\left(\\frac{1}{5\\sqrt{13}}\\right)$ </p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p> $\\pi - \\cos^{-1}\\left(\\frac{1}{13\\sqrt{5}}\\right)$ </p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p> $\\cos^{-1}\\left(\\frac{1}{5\\sqrt{13}}\\right)$ </p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p> $\\cos^{-1}\\left(\\frac{1}{13\\sqrt{5}}\\right)$ </p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "scalar-or-dot-product-of-two-vectors-and-its-applications",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msjex9m1",
+            "chapter": "vector-algebra",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The vector $\\vec{b} = 3\\hat{i} + 4\\hat{k}$ is to be written as sum of a vector $\\vec{\\alpha}$ which is parallel to $\\vec{a} = \\hat{i} + \\hat{j}$ and a vector $\\vec{\\beta}$</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{3}{2} (\\hat{i} + \\hat{j})$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{2}{3} (\\hat{i} + \\hat{j})$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{1}{2} (\\hat{i} + \\hat{j})$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{1}{3} (\\hat{i} + \\hat{j})$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msjeud3m%2F32645586-b029-4927-9a1f-94e757bbd978%2F66bfbb20-92a0-11f1-9f04-e1abd627818c%2Ffile-6y3zli1msjeud3n.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msjeud3m%2F32645586-b029-4927-9a1f-94e757bbd978%2F66bfbb20-92a0-11f1-9f04-e1abd627818c%2Ffile-6y3zli1msjeud3n.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The vector projection of $\\vec{b}$ on $\\vec{a}$ is given by the formula:</p>\n<p>$$\\vec{\\alpha} = \\left( \\frac{\\vec{b} \\cdot \\vec{a}}{\\vert{}\\vec{a}\\vert{}^2} \\right) \\vec{a}$$</p>\n\n<p>Given vectors:</p>\n<p>$\\vec{b} = 3\\hat{i} + 0\\hat{j} + 4\\hat{k}$</p>\n<p>$\\vec{a} = \\hat{i} + \\hat{j} + 0\\hat{k}$</p>\n<p>$$\\vec{b} \\cdot \\vec{a} = (3)(1) + (0)(1) + (4)(0)$$</p>\n<p>$$\\vec{b} \\cdot \\vec{a} = 3$$</p>\n\n<p>$$\\vert{}\\vec{a}\\vert{}^2 = (1)^2 + (1)^2 = 1 + 1 = 2$$</p>\n<p>$$\\vec{\\alpha} = \\frac{3}{2}(\\hat{i} + \\hat{j})$$</p>\n<p>This matches the vector in <strong>Option A</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>सदिश $\\vec{b} = 3\\hat{i} + 4\\hat{k}$ को एक सदिश $\\vec{\\alpha}$ जो $\\vec{a} = \\hat{i} + \\hat{j}$ के समांतर है, तथा एक सदिश $\\vec{\\beta}$ के योग के रूप में लिखा जाना है।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{3}{2} (\\hat{i} + \\hat{j})$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{2}{3} (\\hat{i} + \\hat{j})$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{1}{2} (\\hat{i} + \\hat{j})$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{1}{3} (\\hat{i} + \\hat{j})$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "scalar-or-dot-product-of-two-vectors-and-its-applications",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msjf6224",
+            "chapter": "vector-algebra",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let P (1, 0, −1); Q (1, 1, 1) and R (2, 1, 3) are three points.</p><p>Find the area of the triangle having P, Q and R as its vertices.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{3}{2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{5}{2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{7}{2}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Given the vertices $P(1, 0, -1)$, $Q(1, 1, 1)$, and $R(2, 1, 3)$, we can determine the vectors $\\overrightarrow{PQ}$ and $\\overrightarrow{PR}$:</p>\n<ul>\n<li>$\\overrightarrow{PQ} = (1 - 1)\\hat{i} + (1 - 0)\\hat{j} + (1 - (-1))\\hat{k}$</li>\n</ul>\n<p>$\\overrightarrow{PQ} = 0\\hat{i} + \\hat{j} + 2\\hat{k}$</p>\n<ul>\n<li>$\\overrightarrow{PR} = (2 - 1)\\hat{i} + (1 - 0)\\hat{j} + (3 - (-1))\\hat{k}$</li>\n</ul>\n<p>$\\overrightarrow{PR} = \\hat{i} + \\hat{j} + 4\\hat{k}$</p>\n\n<p>The area of a triangle formed by vectors $\\vec{a}$ and $\\vec{b}$ is given by $\\frac{1}{2}\\vert{}\\vec{a} \\times \\vec{b}\\vert{}$. First, we find the cross product:</p>\n<p>$$\\overrightarrow{PQ} \\times \\overrightarrow{PR} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 0 & 1 & 2 \\\\ 1 & 1 & 4 \\end{vmatrix}$$</p>\n<p>$$\\overrightarrow{PQ} \\times \\overrightarrow{PR} = \\hat{i}(4 - 2) - \\hat{j}(0 - 2) + \\hat{k}(0 - 1)$$</p>\n<p>$$\\overrightarrow{PQ} \\times \\overrightarrow{PR} = 2\\hat{i} + 2\\hat{j} - \\hat{k}$$</p>\n\n<p>$$\\vert{}\\overrightarrow{PQ} \\times \\overrightarrow{PR}\\vert{} = \\sqrt{(2)^2 + (2)^2 + (-1)^2}$$</p>\n<p>$$\\vert{}\\overrightarrow{PQ} \\times \\overrightarrow{PR}\\vert{} = \\sqrt{4 + 4 + 1}$$</p>\n<p>$$\\vert{}\\overrightarrow{PQ} \\times \\overrightarrow{PR}\\vert{} = \\sqrt{9} = 3$$</p>\n\n<p>$$\\text{Area} = \\frac{1}{2} \\vert{}\\overrightarrow{PQ} \\times \\overrightarrow{PR}\\vert{}$$</p>\n<p>$$\\text{Area} = \\frac{3}{2}$$</p>\n<p>Therefore, the area of the triangle is <strong>$\\frac{3}{2}$</strong>, which corresponds to Option A.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना P (1, 0, −1); Q (1, 1, 1) और R (2, 1, 3) तीन बिंदु हैं।</p><p>उस त्रिभुज का क्षेत्रफल ज्ञात कीजिए जिसके शीर्ष P, Q और R हैं।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{3}{2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{5}{2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{7}{2}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "vector-or-cross-product-of-two-vectors-and-its-applications",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msjfbnft",
+            "chapter": "vector-algebra",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let $\\vec{a}$, $\\vec{b}$, $\\vec{c}$ be vectors in the xy plane such that $\\vec{a} \\cdot \\vec{c} = \\vec{b} \\cdot \\vec{c} = -\\sqrt{3} \\vec{a} \\cdot \\vec{b}$ and $|\\vec{a}| = |\\vec{b}| = |\\vec{c}| = 1$. Then $\\vec{a} \\cdot \\vec{b}$ can be equal to</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{1}{2} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ -\\frac{1}{2} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{1}{3} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{1}{4} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "\n<p>Since all three vectors $\\vec{a}$, $\\vec{b}$, and $\\vec{c}$ are unit vectors ($\\vert{}\\vec{a}\\vert{} = \\vert{}\\vec{b}\\vert{} = \\vert{}\\vec{c}\\vert{} = 1$) lying in the $xy$-plane, their dot products depend entirely on the angles between them.</p>\n<p>For simplicity, let's align vector $\\vec{c}$ with the positive x-axis. Thus, its angle is $0^\\circ$.</p>\n<p>Let vector $\\vec{a}$ make an angle $\\alpha$ with $\\vec{c}$.</p>\n<p>Let vector $\\vec{b}$ make an angle $\\beta$ with $\\vec{c}$.</p>\n<p>The dot products with $\\vec{c}$ can be written as:</p>\n<p>$$\\vec{a} \\cdot \\vec{c} = (1)(1)\\cos\\alpha = \\cos\\alpha$$</p>\n<p>$$\\vec{b} \\cdot \\vec{c} = (1)(1)\\cos\\beta = \\cos\\beta$$</p>\n\n<p>We are given that $\\vec{a} \\cdot \\vec{c} = \\vec{b} \\cdot \\vec{c}$.</p>\n<p>$$\\cos\\alpha = \\cos\\beta$$</p>\n<p>This implies that either $\\beta = \\alpha$ or $\\beta = -\\alpha$.</p>\n<ul>\n<li><p>If $\\beta = \\alpha$, then $\\vec{a}$ and $\\vec{b}$ are the same vector, meaning $\\vec{a} \\cdot \\vec{b} = 1$. Substituting this into the second condition gives $\\cos\\alpha = -\\sqrt{3}(1)$, which is impossible since the cosine of an angle must lie between -1 and 1.</p></li>\n<li><p>Therefore, we must use <strong>$\\beta = -\\alpha$</strong>.</p></li>\n</ul>\n\n<p>The angle between $\\vec{a}$ and $\\vec{b}$ is $\\alpha - \\beta = \\alpha - (-\\alpha) = 2\\alpha$.</p>\n<p>The dot product is:</p>\n<p>$$\\vec{a} \\cdot \\vec{b} = (1)(1)\\cos(2\\alpha) = \\cos(2\\alpha)$$</p>\n<p>Using the double angle identity from trigonometry:</p>\n<p>$$\\vec{a} \\cdot \\vec{b} = 2\\cos^2\\alpha - 1$$</p>\n\n<p>We are given the relation:</p>\n<p>$$\\vec{a} \\cdot \\vec{c} = -\\sqrt{3} (\\vec{a} \\cdot \\vec{b})$$</p>\n<p>Substitute our expressions for these dot products:</p>\n<p>$$\\cos\\alpha = -\\sqrt{3}(2\\cos^2\\alpha - 1)$$</p>\n<p>$$2\\sqrt{3}\\cos^2\\alpha + \\cos\\alpha - \\sqrt{3} = 0$$</p>\n\n<p>Let $x = \\cos\\alpha$. The equation becomes a standard quadratic equation:</p>\n<p>$$2\\sqrt{3}x^2 + x - \\sqrt{3} = 0$$</p>\n<p>Using the quadratic formula to find $x$:</p>\n<p>$$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$</p>\n<p>$$x = \\frac{-1 \\pm \\sqrt{1^2 - 4(2\\sqrt{3})(-\\sqrt{3})}}{2(2\\sqrt{3})}$$</p>\n<p>$$x = \\frac{-1 \\pm \\sqrt{1 + 24}}{4\\sqrt{3}} = \\frac{-1 \\pm 5}{4\\sqrt{3}}$$</p>\n<p>This gives two possible values for $\\cos\\alpha$:</p>\n<ol>\n<li><p>$x = \\frac{4}{4\\sqrt{3}} = \\frac{1}{\\sqrt{3}}$</p></li>\n<li><p>$x = \\frac{-6}{4\\sqrt{3}} = -\\frac{\\sqrt{3}}{2}$</p></li>\n</ol>\n<p>Recall that $\\vec{a} \\cdot \\vec{b} = 2x^2 - 1$.</p>\n<ul>\n<li><strong>Case 1:</strong> If $x = \\frac{1}{\\sqrt{3}}$</li>\n</ul>\n<p>$$\\vec{a} \\cdot \\vec{b} = 2\\left(\\frac{1}{\\sqrt{3}}\\right)^2 - 1 = \\frac{2}{3} - 1 = -\\frac{1}{3}$$</p>\n<p>(This value is not in the given options).</p>\n<ul>\n<li><strong>Case 2:</strong> If $x = -\\frac{\\sqrt{3}}{2}$</li>\n</ul>\n<p>$$\\vec{a} \\cdot \\vec{b} = 2\\left(-\\frac{\\sqrt{3}}{2}\\right)^2 - 1 = 2\\left(\\frac{3}{4}\\right) - 1 = \\frac{3}{2} - 1 = \\frac{1}{2}$$</p>\n<p>Since $\\frac{1}{2}$ matches one of the choices provided in the question, $\\vec{a} \\cdot \\vec{b}$ can be equal to <strong>$\\frac{1}{2}$</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना $\\vec{a}$, $\\vec{b}$, $\\vec{c}$, $xy$ तल में ऐसे सदिश हैं कि $\\vec{a} \\cdot \\vec{c} = \\vec{b} \\cdot \\vec{c} = -\\sqrt{3} \\vec{a} \\cdot \\vec{b}$ तथा $|\\vec{a}| = |\\vec{b}| = |\\vec{c}| = 1$ है। तब $\\vec{a} \\cdot \\vec{b}$ किसके बराबर हो सकता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{1}{2} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ -\\frac{1}{2} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{1}{3} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{1}{4} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "scalar-or-dot-product-of-two-vectors-and-its-applications",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msjfey5o",
+            "chapter": "vector-algebra",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If <b>$a, b &gt; 0$</b> and $\\vec{\\alpha} = \\dfrac{\\hat{i}}{a} + \\dfrac{4\\hat{j}}{b} + b\\hat{k}$ and $\\vec{\\beta} = b\\hat{i} + a\\hat{j} + \\dfrac{1}{b}\\hat{k}$,</p><p>then the maximum value of $\\dfrac{10}{5 + \\vec{\\alpha} \\cdot \\vec{\\beta}}$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>4</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>8</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Given vectors:</p>\n<p>$$\\vec{\\alpha} = \\frac{1}{a}\\hat{i} + \\frac{4}{b}\\hat{j} + b\\hat{k}$$</p>\n<p>$$\\vec{\\beta} = b\\hat{i} + a\\hat{j} + \\frac{1}{b}\\hat{k}$$</p>\n<p>The dot product $\\vec{\\alpha} \\cdot \\vec{\\beta}$ is calculated by multiplying their corresponding components:</p>\n<p>$$\\vec{\\alpha} \\cdot \\vec{\\beta} = \\left(\\frac{1}{a} \\times b\\right) + \\left(\\frac{4}{b} \\times a\\right) + \\left(b \\times \\frac{1}{b}\\right)$$</p>\n<p>$$\\vec{\\alpha} \\cdot \\vec{\\beta} = \\frac{b}{a} + \\frac{4a}{b} + 1$$</p>\n\n<p>We are asked to find the maximum value of the expression:</p>\n<p>$$E = \\frac{10}{5 + \\vec{\\alpha} \\cdot \\vec{\\beta}}$$</p>\n<p>To maximize this fraction, its denominator must be as small as possible. Therefore, we need to find the <strong>minimum value</strong> of $\\vec{\\alpha} \\cdot \\vec{\\beta}$.</p>\n\n<p>We need to minimize the expression $\\frac{b}{a} + \\frac{4a}{b}$.</p>\n<p>Since it is given that $a, b > 0$, both terms $\\frac{b}{a}$ and $\\frac{4a}{b}$ are positive real numbers. We can use the Arithmetic Mean - Geometric Mean (AM-GM) inequality, which states that for positive numbers $x$ and $y$:</p>\n<p>$$\\frac{x + y}{2} \\ge \\sqrt{xy}$$</p>\n<p>Let $x = \\frac{b}{a}$ and $y = \\frac{4a}{b}$:</p>\n<p>$$\\frac{\\frac{b}{a} + \\frac{4a}{b}}{2} \\ge \\sqrt{\\left(\\frac{b}{a}\\right) \\times \\left(\\frac{4a}{b}\\right)}$$</p>\n<p>$$\\frac{\\frac{b}{a} + \\frac{4a}{b}}{2} \\ge \\sqrt{4}$$</p>\n<p>$$\\frac{\\frac{b}{a} + \\frac{4a}{b}}{2} \\ge 2$$</p>\n<p>$$\\frac{b}{a} + \\frac{4a}{b} \\ge 4$$</p>\n<p>The minimum value of $\\frac{b}{a} + \\frac{4a}{b}$ is $4$.</p>\n<p>Now substitute this minimum value back into our dot product expression:</p>\n<p>$$\\text{Minimum value of } (\\vec{\\alpha} \\cdot \\vec{\\beta}) = 4 + 1 = 5$$</p>\n<p>Substitute this into the expression $E$:</p>\n<p>$$\\text{Maximum value of } E = \\frac{10}{5 + 5} = \\frac{10}{10} = 1$$</p>\n<p>Therefore, the maximum value of the expression is <strong>1</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि <b>$a, b &gt; 0$</b> और $\\vec{\\alpha} = \\dfrac{\\hat{i}}{a} + \\dfrac{4\\hat{j}}{b} + b\\hat{k}$ तथा $\\vec{\\beta} = b\\hat{i} + a\\hat{j} + \\dfrac{1}{b}\\hat{k}$ हैं,</p><p>तो $\\dfrac{10}{5 + \\vec{\\alpha} \\cdot \\vec{\\beta}}$ का अधिकतम मान है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>4</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>8</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "scalar-or-dot-product-of-two-vectors-and-its-applications",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msjfjvzm",
+            "chapter": "vector-algebra",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If a vector $\\vec{r}$ is equally inclined with the vectors $\\vec{a} = \\cos \\theta \\hat{i} + \\sin \\theta \\hat{j}$, $\\vec{b} = -\\sin \\theta \\hat{i} + \\cos \\theta \\hat{j}$ and $\\vec{c} = \\hat{k}$, then the angle between $\\vec{r}$ and $\\vec{a}$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$$\\cos^{-1}\\left(\\frac{1}{\\sqrt{2}}\\right)$$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$$\\cos^{-1}\\left(\\frac{1}{\\sqrt{3}}\\right)$$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$$\\cos^{-1}\\left(\\frac{1}{3}\\right)$$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$$\\cos^{-1}\\left(\\frac{1}{2}\\right)$$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>We are given three vectors:</p>\n<p>$$\\vec{a} = \\cos \\theta \\hat{i} + \\sin \\theta \\hat{j} + 0\\hat{k}$$</p>\n<p>$$\\vec{b} = -\\sin \\theta \\hat{i} + \\cos \\theta \\hat{j} + 0\\hat{k}$$</p>\n<p>$$\\vec{c} = 0\\hat{i} + 0\\hat{j} + \\hat{k}$$</p>\n<p>$$\\vert{}\\vec{a}\\vert{} = \\sqrt{\\cos^2\\theta + \\sin^2\\theta} = 1$$</p>\n<p>$$\\vert{}\\vec{b}\\vert{} = \\sqrt{(-\\sin\\theta)^2 + \\cos^2\\theta} = 1$$</p>\n<p>$$\\vert{}\\vec{c}\\vert{} = \\sqrt{1^2} = 1$$</p>\n<p>All three are unit vectors.</p>\n<p>Now, let's check the angle between them by calculating their dot products:</p>\n<p>$$\\vec{a} \\cdot \\vec{b} = (\\cos\\theta)(-\\sin\\theta) + (\\sin\\theta)(\\cos\\theta) = 0$$</p>\n<p>$$\\vec{b} \\cdot \\vec{c} = 0 + 0 + 0 = 0$$</p>\n<p>$$\\vec{c} \\cdot \\vec{a} = 0 + 0 + 0 = 0$$</p>\n<p>Since their dot products are all zero, $\\vec{a}$, $\\vec{b}$, and $\\vec{c}$ are mutually perpendicular unit vectors. They form an orthogonal system similar to $\\hat{i}$, $\\hat{j}$, and $\\hat{k}$.</p>\n\n<p>Let the vector $\\vec{r}$ be equally inclined to $\\vec{a}$, $\\vec{b}$, and $\\vec{c}$ at an angle $\\alpha$.</p>\n<p>Using the dot product formula ($\\vec{r} \\cdot \\vec{a} = \\vert{}\\vec{r}\\vert{}\\vert{}\\vec{a}\\vert{}\\cos\\alpha$):</p>\n<p>$$\\vec{r} \\cdot \\vec{a} = \\vert{}\\vec{r}\\vert{}(1)\\cos\\alpha = \\vert{}\\vec{r}\\vert{}\\cos\\alpha$$</p>\n<p>$$\\vec{r} \\cdot \\vec{b} = \\vert{}\\vec{r}\\vert{}(1)\\cos\\alpha = \\vert{}\\vec{r}\\vert{}\\cos\\alpha$$</p>\n<p>$$\\vec{r} \\cdot \\vec{c} = \\vert{}\\vec{r}\\vert{}(1)\\cos\\alpha = \\vert{}\\vec{r}\\vert{}\\cos\\alpha$$</p>\n\n<p>Since $\\vec{a}$, $\\vec{b}$, and $\\vec{c}$ are mutually perpendicular unit vectors, any vector $\\vec{r}$ can be resolved along them:</p>\n<p>$$\\vec{r} = (\\vec{r} \\cdot \\vec{a})\\vec{a} + (\\vec{r} \\cdot \\vec{b})\\vec{b} + (\\vec{r} \\cdot \\vec{c})\\vec{c}$$</p>\n\n<p>$$\\vec{r} = (\\vert{}\\vec{r}\\vert{}\\cos\\alpha)\\vec{a} + (\\vert{}\\vec{r}\\vert{}\\cos\\alpha)\\vec{b} + (\\vert{}\\vec{r}\\vert{}\\cos\\alpha)\\vec{c}$$</p>\n\n<p>To find $\\cos\\alpha$, we take the square of the magnitude of $\\vec{r}$:</p>\n<p>$$\\vert{}\\vec{r}\\vert{}^2 = \\vec{r} \\cdot \\vec{r}$$</p>\n<p>Since $\\vec{a}$, $\\vec{b}$, and $\\vec{c}$ are mutually perpendicular unit vectors, the cross terms (like $\\vec{a}\\cdot\\vec{b}$) become zero, and we get:</p>\n<p>$$\\vert{}\\vec{r}\\vert{}^2 = (\\vert{}\\vec{r}\\vert{}\\cos\\alpha)^2 + (\\vert{}\\vec{r}\\vert{}\\cos\\alpha)^2 + (\\vert{}\\vec{r}\\vert{}\\cos\\alpha)^2$$</p>\n<p>$$\\vert{}\\vec{r}\\vert{}^2 = 3\\vert{}\\vec{r}\\vert{}^2\\cos^2\\alpha$$</p>\n<p>$$1 = 3\\cos^2\\alpha$$</p>\n<p>$$\\cos^2\\alpha = \\frac{1}{3}$$</p>\n<p>$$\\cos\\alpha = \\frac{1}{\\sqrt{3}}$$</p>\n<p>Therefore, the angle between $\\vec{r}$ and $\\vec{a}$ is:</p>\n<p>$$\\alpha = \\cos^{-1}\\left(\\frac{1}{\\sqrt{3}}\\right)$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि एक सदिश $\\vec{r}$, सदिशों $\\vec{a} = \\cos \\theta \\hat{i} + \\sin \\theta \\hat{j}$, $\\vec{b} = -\\sin \\theta \\hat{i} + \\cos \\theta \\hat{j}$ और $\\vec{c} = \\hat{k}$ के साथ समान रूप से झुका हुआ है, तो $\\vec{r}$ और $\\vec{a}$ के बीच का कोण है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$$\\cos^{-1}\\left(\\frac{1}{\\sqrt{2}}\\right)$$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$$\\cos^{-1}\\left(\\frac{1}{\\sqrt{3}}\\right)$$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$$\\cos^{-1}\\left(\\frac{1}{3}\\right)$$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$$\\cos^{-1}\\left(\\frac{1}{2}\\right)$$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "scalar-or-dot-product-of-two-vectors-and-its-applications",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msjg2ei2",
+            "chapter": "vector-algebra",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let <b>$ \\vec{a} $</b> and <b>$ \\vec{b} $</b> be two vectors such that $ |\\vec{a}| = 1, |\\vec{b}| = 4 $ and $ \\vec{a} \\cdot \\vec{b} = 2 $. If $ \\vec{c} = (2\\vec{a} \\times \\vec{b}) - 3\\vec{b} $, then find the angle between <b>$ \\vec{b} $</b> and <b>$ \\vec{c} $</b>.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{\\pi}{3} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{\\pi}{6} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{3\\pi}{4} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{5\\pi}{6} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>We are given the vector equation:</p>\n<p>$$\\vec{c} = 2(\\vec{a} \\times \\vec{b}) - 3\\vec{b}$$</p>\n<p>To find the angle between $\\vec{b}$ and $\\vec{c}$, we first need their dot product:</p>\n<p>$$\\vec{b} \\cdot \\vec{c} = \\vec{b} \\cdot (2(\\vec{a} \\times \\vec{b}) - 3\\vec{b})$$</p>\n<p>$$\\vec{b} \\cdot \\vec{c} = 2(\\vec{b} \\cdot (\\vec{a} \\times \\vec{b})) - 3(\\vec{b} \\cdot \\vec{b})$$</p>\n<p>Since the cross product $(\\vec{a} \\times \\vec{b})$ produces a vector perpendicular to both $\\vec{a}$ and $\\vec{b}$, the dot product $\\vec{b} \\cdot (\\vec{a} \\times \\vec{b})$ is exactly $0$.</p>\n<p>Also, $\\vec{b} \\cdot \\vec{b} = \\vert{}\\vec{b}\\vert{}^2$.</p>\n<p>$$\\vec{b} \\cdot \\vec{c} = 2(0) - 3\\vert{}\\vec{b}\\vert{}^2$$</p>\n<p>Given $\\vert{}\\vec{b}\\vert{} = 4$:</p>\n<p>$$\\vec{b} \\cdot \\vec{c} = -3(4)^2 = -3(16) = -48$$</p>\n\n<p>Using Lagrange's Identity:</p>\n<p>$$\\vert{}\\vec{a} \\times \\vec{b}\\vert{}^2 = \\vert{}\\vec{a}\\vert{}^2\\vert{}\\vec{b}\\vert{}^2 - (\\vec{a} \\cdot \\vec{b})^2$$</p>\n<p>Substitute the given values ($\\vert{}\\vec{a}\\vert{} = 1, \\vert{}\\vec{b}\\vert{} = 4, \\vec{a} \\cdot \\vec{b} = 2$):</p>\n<p>$$\\vert{}\\vec{a} \\times \\vec{b}\\vert{}^2 = (1)^2(4)^2 - (2)^2$$</p>\n<p>$$\\vert{}\\vec{a} \\times \\vec{b}\\vert{}^2 = 16 - 4 = 12$$</p>\n\n<p>Take the square of the magnitude of $\\vec{c}$:</p>\n<p>$$\\vert{}\\vec{c}\\vert{}^2 = \\vec{c} \\cdot \\vec{c} = (2(\\vec{a} \\times \\vec{b}) - 3\\vec{b}) \\cdot (2(\\vec{a} \\times \\vec{b}) - 3\\vec{b})$$</p>\n<p>$$\\vert{}\\vec{c}\\vert{}^2 = 4\\vert{}\\vec{a} \\times \\vec{b}\\vert{}^2 - 12((\\vec{a} \\times \\vec{b}) \\cdot \\vec{b}) + 9\\vert{}\\vec{b}\\vert{}^2$$</p>\n<p>Since $(\\vec{a} \\times \\vec{b}) \\cdot \\vec{b} = 0$:</p>\n<p>$$\\vert{}\\vec{c}\\vert{}^2 = 4\\vert{}\\vec{a} \\times \\vec{b}\\vert{}^2 + 9\\vert{}\\vec{b}\\vert{}^2$$</p>\n\n<p>$$\\vert{}\\vec{c}\\vert{}^2 = 4(12) + 9(16)$$</p>\n<p>$$\\vert{}\\vec{c}\\vert{}^2 = 48 + 144 = 192$$</p>\n<p>$$\\vert{}\\vec{c}\\vert{} = \\sqrt{192} = 8\\sqrt{3}$$</p>\n<p>Using the dot product formula $\\cos\\theta = \\frac{\\vec{b} \\cdot \\vec{c}}{\\vert{}\\vec{b}\\vert{}\\vert{}\\vec{c}\\vert{}}$:</p>\n<p>$$\\cos\\theta = \\frac{-48}{(4)(8\\sqrt{3})}$$</p>\n<p>$$\\cos\\theta = \\frac{-48}{32\\sqrt{3}} = \\frac{-3}{2\\sqrt{3}} = -\\frac{\\sqrt{3}}{2}$$</p>\n<p>Since $\\cos\\theta = -\\frac{\\sqrt{3}}{2}$, the angle lies in the second quadrant:</p>\n<p>$$\\theta = \\pi - \\frac{\\pi}{6} = \\frac{5\\pi}{6}$$</p>\n<p>Therefore, the angle between $\\vec{b}$ and $\\vec{c}$ is $\\frac{5\\pi}{6}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना <b>$ \\vec{a} $</b> और <b>$ \\vec{b} $</b> दो ऐसे सदिश हैं कि $ |\\vec{a}| = 1, |\\vec{b}| = 4 $ और $ \\vec{a} \\cdot \\vec{b} = 2 $ है। यदि $ \\vec{c} = (2\\vec{a} \\times \\vec{b}) - 3\\vec{b} $ है, तो <b>$ \\vec{b} $</b> और <b>$ \\vec{c} $</b> के बीच का कोण ज्ञात कीजिए।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{\\pi}{3} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{\\pi}{6} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{3\\pi}{4} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{5\\pi}{6} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "vector-or-cross-product-of-two-vectors-and-its-applications",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msje41jn",
+            "chapter": "vector-algebra",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $\\vec{a}$ and $\\vec{b}$ are unit vectors, then the greatest value of $\\sqrt{3}|\\vec{a}+\\vec{b}|+|\\vec{a}-\\vec{b}|$ is ..</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "\n<p>Let $\\theta$ be the angle between the unit vectors $\\vec{a}$ and $\\vec{b}$.</p>\n<p>Given that they are unit vectors, $\\vert{}\\vec{a}\\vert{} = 1$ and $\\vert{}\\vec{b}\\vert{} = 1$.</p>\n\n<p>$$\\vert{}\\vec{a} + \\vec{b}\\vert{}^2 = \\vert{}\\vec{a}\\vert{}^2 + \\vert{}\\vec{b}\\vert{}^2 + 2\\vert{}\\vec{a}\\vert{}\\vert{}\\vec{b}\\vert{}\\cos\\theta$$</p>\n<p>$$\\vert{}\\vec{a} + \\vec{b}\\vert{}^2 = 1 + 1 + 2(1)(1)\\cos\\theta$$</p>\n<p>$$\\vert{}\\vec{a} + \\vec{b}\\vert{}^2 = 2 + 2\\cos\\theta = 2(1 + \\cos\\theta)$$</p>\n<p>Using the trigonometric identity $1 + \\cos\\theta = 2\\cos^2\\left(\\frac{\\theta}{2}\\right)$:</p>\n<p>$$\\vert{}\\vec{a} + \\vec{b}\\vert{}^2 = 4\\cos^2\\left(\\frac{\\theta}{2}\\right)$$</p>\n<p>$$\\vert{}\\vec{a} + \\vec{b}\\vert{} = 2\\cos\\left(\\frac{\\theta}{2}\\right)$$</p>\n\n<p>$$\\vert{}\\vec{a} - \\vec{b}\\vert{}^2 = \\vert{}\\vec{a}\\vert{}^2 + \\vert{}\\vec{b}\\vert{}^2 - 2\\vert{}\\vec{a}\\vert{}\\vert{}\\vec{b}\\vert{}\\cos\\theta$$</p>\n<p>$$\\vert{}\\vec{a} - \\vec{b}\\vert{}^2 = 1 + 1 - 2(1)(1)\\cos\\theta$$</p>\n<p>$$\\vert{}\\vec{a} - \\vec{b}\\vert{}^2 = 2 - 2\\cos\\theta = 2(1 - \\cos\\theta)$$</p>\n<p>Using the trigonometric identity $1 - \\cos\\theta = 2\\sin^2\\left(\\frac{\\theta}{2}\\right)$:</p>\n<p>$$\\vert{}\\vec{a} - \\vec{b}\\vert{}^2 = 4\\sin^2\\left(\\frac{\\theta}{2}\\right)$$</p>\n<p>$$\\vert{}\\vec{a} - \\vec{b}\\vert{} = 2\\sin\\left(\\frac{\\theta}{2}\\right)$$</p>\n\n<p>Substitute the simplified terms back into the original expression:</p>\n<p>$$E = \\sqrt{3}\\vert{}\\vec{a} + \\vec{b}\\vert{} + \\vert{}\\vec{a} - \\vec{b}\\vert{}$$</p>\n<p>$$E = \\sqrt{3}\\left(2\\cos\\left(\\frac{\\theta}{2}\\right)\\right) + 2\\sin\\left(\\frac{\\theta}{2}\\right)$$</p>\n<p>$$E = 2\\sqrt{3}\\cos\\left(\\frac{\\theta}{2}\\right) + 2\\sin\\left(\\frac{\\theta}{2}\\right)$$</p>\n<p>Recall that the maximum value of an expression in the form $A\\cos x + B\\sin x$ is $\\sqrt{A^2 + B^2}$.</p>\n<p>Here, $A = 2\\sqrt{3}$ and $B = 2$.</p>\n<p>$$\\text{Maximum value} = \\sqrt{(2\\sqrt{3})^2 + (2)^2}$$</p>\n<p>$$\\text{Maximum value} = \\sqrt{12 + 4}$$</p>\n<p>$$\\text{Maximum value} = \\sqrt{16} = 4$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $\\vec{a}$ और $\\vec{b}$ मात्रक सदिश हैं, तो $\\sqrt{3}|\\vec{a}+\\vec{b}|+|\\vec{a}-\\vec{b}|$ का अधिकतम मान है ..</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "scalar-or-dot-product-of-two-vectors-and-its-applications",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msjfqnko",
+            "chapter": "vector-algebra",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let $\\vec{a}, \\vec{b}, \\vec{c}$ be three vectors such that, $|\\vec{a}|=\\sqrt{31}, 4|\\vec{b}|=|\\vec{c}|=2$ and $2(\\vec{a} \\times b)=3(\\vec{c} \\times \\vec{a})$. If the angle between $\\vec{b}$ and $\\vec{c}$ is $\\frac{2 \\pi}{3}$, then $\\left(\\frac{\\vec{a} \\times \\vec{c}}{\\vec{a} \\cdot \\vec{b}}\\right)^2$ is equal to $\\_\\_\\_\\_$.</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "\n<p>We are given the relationship:</p>\n<p>$$2(\\vec{a} \\times \\vec{b}) = 3(\\vec{c} \\times \\vec{a})$$</p>\n<p>Using the anti-commutative property of cross products ($\\vec{c} \\times \\vec{a} = -\\vec{a} \\times \\vec{c}$), we can rewrite this as:</p>\n<p>$$2(\\vec{a} \\times \\vec{b}) = -3(\\vec{a} \\times \\vec{c})$$</p>\n<p>$$2(\\vec{a} \\times \\vec{b}) + 3(\\vec{a} \\times \\vec{c}) = \\vec{0}$$</p>\n<p>Factor out $\\vec{a}$ using the distributive property of cross products:</p>\n<p>$$\\vec{a} \\times (2\\vec{b} + 3\\vec{c}) = \\vec{0}$$</p>\n<p>If the cross product of two vectors is zero, they are collinear (parallel). Therefore, we can write $\\vec{a}$ as a scalar multiple of $(2\\vec{b} + 3\\vec{c})$:</p>\n<p>$$\\vec{a} = \\lambda(2\\vec{b} + 3\\vec{c})$$</p>\n\n<p>Let's find the magnitude of the vector $(2\\vec{b} + 3\\vec{c})$.</p>\n<p>We are given:</p>\n<ul>\n<li><p>$\\vert{}\\vec{a}\\vert{} = \\sqrt{31}$</p></li>\n<li><p>$4\\vert{}\\vec{b}\\vert{} = 2 \\implies \\vert{}\\vec{b}\\vert{} = \\frac{1}{2}$</p></li>\n<li><p>$\\vert{}\\vec{c}\\vert{} = 2$</p></li>\n<li><p>The angle between $\\vec{b}$ and $\\vec{c}$ is $\\theta = \\frac{2\\pi}{3}$</p></li>\n</ul>\n<p>First, find the dot product $\\vec{b} \\cdot \\vec{c}$:</p>\n<p>$$\\vec{b} \\cdot \\vec{c} = \\vert{}\\vec{b}\\vert{}\\vert{}\\vec{c}\\vert{}\\cos\\left(\\frac{2\\pi}{3}\\right) = \\left(\\frac{1}{2}\\right)(2)\\left(-\\frac{1}{2}\\right) = -\\frac{1}{2}$$</p>\n<p>Now, calculate the square of the magnitude of $(2\\vec{b} + 3\\vec{c})$:</p>\n<p>$$\\vert{}2\\vec{b} + 3\\vec{c}\\vert{}^2 = 4\\vert{}\\vec{b}\\vert{}^2 + 9\\vert{}\\vec{c}\\vert{}^2 + 12(\\vec{b} \\cdot \\vec{c})$$</p>\n<p>$$\\vert{}2\\vec{b} + 3\\vec{c}\\vert{}^2 = 4\\left(\\frac{1}{4}\\right) + 9(4) + 12\\left(-\\frac{1}{2}\\right)$$</p>\n<p>$$\\vert{}2\\vec{b} + 3\\vec{c}\\vert{}^2 = 1 + 36 - 6 = 31$$</p>\n<p>Taking the square of the magnitude equation $\\vert{}\\vec{a}\\vert{} = \\vert{}\\lambda\\vert{}\\vert{}2\\vec{b} + 3\\vec{c}\\vert{}$:</p>\n<p>$$\\vert{}\\vec{a}\\vert{}^2 = \\lambda^2 \\vert{}2\\vec{b} + 3\\vec{c}\\vert{}^2$$</p>\n<p>$$31 = \\lambda^2 (31) \\implies \\lambda^2 = 1 \\implies \\lambda = \\pm 1$$</p>\n<p>Thus, $\\vec{a} = \\pm (2\\vec{b} + 3\\vec{c})$.</p>\n\n<p>We need to find the value of $\\left(\\frac{\\vec{a} \\times \\vec{c}}{\\vec{a} \\cdot \\vec{b}}\\right)^2$, which is equivalent to $\\frac{\\vert{}\\vec{a} \\times \\vec{c}\\vert{}^2}{(\\vec{a} \\cdot \\vec{b})^2}$.</p>\n<p><strong>Numerator ($\\vert{}\\vec{a} \\times \\vec{c}\\vert{}^2$):</strong></p>\n<p>Substitute $\\vec{a}$:</p>\n<p>$$\\vec{a} \\times \\vec{c} = \\pm (2\\vec{b} + 3\\vec{c}) \\times \\vec{c}$$</p>\n<p>$$\\vec{a} \\times \\vec{c} = \\pm (2(\\vec{b} \\times \\vec{c}) + 3(\\vec{c} \\times \\vec{c}))$$</p>\n<p>Since $\\vec{c} \\times \\vec{c} = 0$:</p>\n<p>$$\\vec{a} \\times \\vec{c} = \\pm 2(\\vec{b} \\times \\vec{c})$$</p>\n<p>Squaring the magnitude:</p>\n<p>$$\\vert{}\\vec{a} \\times \\vec{c}\\vert{}^2 = 4 \\vert{}\\vec{b} \\times \\vec{c}\\vert{}^2$$</p>\n<p>$$\\vert{}\\vec{a} \\times \\vec{c}\\vert{}^2 = 4 (\\vert{}\\vec{b}\\vert{}^2 \\vert{}\\vec{c}\\vert{}^2 \\sin^2\\theta)$$</p>\n<p>$$\\vert{}\\vec{a} \\times \\vec{c}\\vert{}^2 = 4 \\left( \\frac{1}{4} \\right) (4) \\sin^2\\left(\\frac{2\\pi}{3}\\right)$$</p>\n<p>$$\\vert{}\\vec{a} \\times \\vec{c}\\vert{}^2 = 4 \\left( \\frac{\\sqrt{3}}{2} \\right)^2 = 4 \\left( \\frac{3}{4} \\right) = 3$$</p>\n<p><strong>Denominator ($(\\vec{a} \\cdot \\vec{b})^2$):</strong></p>\n<p>Substitute $\\vec{a}$:</p>\n<p>$$\\vec{a} \\cdot \\vec{b} = \\pm (2\\vec{b} + 3\\vec{c}) \\cdot \\vec{b}$$</p>\n<p>$$\\vec{a} \\cdot \\vec{b} = \\pm (2\\vert{}\\vec{b}\\vert{}^2 + 3(\\vec{b} \\cdot \\vec{c}))$$</p>\n<p>$$\\vec{a} \\cdot \\vec{b} = \\pm \\left(2\\left(\\frac{1}{4}\\right) + 3\\left(-\\frac{1}{2}\\right)\\right)$$</p>\n<p>$$\\vec{a} \\cdot \\vec{b} = \\pm \\left(\\frac{1}{2} - \\frac{3}{2}\\right) = \\pm (-1) = \\mp 1$$</p>\n<p>Squaring this value:</p>\n<p>$$(\\vec{a} \\cdot \\vec{b})^2 = (\\mp 1)^2 = 1$$</p>\n\n<p>$$\\frac{\\vert{}\\vec{a} \\times \\vec{c}\\vert{}^2}{(\\vec{a} \\cdot \\vec{b})^2} = \\frac{3}{1} = 3$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना $\\vec{a}, \\vec{b}, \\vec{c}$ तीन सदिश इस प्रकार हैं कि $|\\vec{a}|=\\sqrt{31}, 4|\\vec{b}|=|\\vec{c}|=2$ तथा $2(\\vec{a} \\times b)=3(\\vec{c} \\times \\vec{a})$ हैं। यदि $\\vec{b}$ और $\\vec{c}$ के बीच का कोण $\\frac{2 \\pi}{3}$ है, तो $\\left(\\frac{\\vec{a} \\times \\vec{c}}{\\vec{a} \\cdot \\vec{b}}\\right)^2$ बराबर है $\\_\\_\\_\\_$।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "vector-or-cross-product-of-two-vectors-and-its-applications",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msjglost",
+            "chapter": "vector-algebra",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "Let $G$ be the centroid of $\\triangle A B C$ whose sides are $a, b$ and $c$. If $P$ is a point in the plane of $\\triangle A B C$ such that $P A=1, P B$ $=3, P C=4$, and $P G=2$, then the value of $a^2+b^2+c^2$ is",
+                "options": [],
+                "answer": "42",
+                "explanation": "<p>Let the point $P$ be the origin of our vector system ($\\vec{0}$).</p>\n<p>Let the position vectors of the vertices $A$, $B$, and $C$ with respect to $P$ be $\\vec{a}$, $\\vec{b}$, and $\\vec{c}$ respectively.</p>\n<p>(Note: we are using $\\vec{a}, \\vec{b}, \\vec{c}$ for the position vectors of the vertices, which is different from the side lengths $a, b, c$ given in the problem).</p>\n<p>We are given the distances from $P$ to the vertices:</p>\n<p>$$\\vert{}\\vec{a}\\vert{} = PA = 1$$</p>\n<p>$$\\vert{}\\vec{b}\\vert{} = PB = 3$$</p>\n<p>$$\\vert{}\\vec{c}\\vert{} = PC = 4$$</p>\n\n<p>The position vector of the centroid $G$ of $\\triangle ABC$ is given by:</p>\n<p>$$\\vec{g} = \\frac{\\vec{a} + \\vec{b} + \\vec{c}}{3}$$</p>\n<p>We are given that the distance $PG = 2$, which means the magnitude of $\\vec{g}$ is 2:</p>\n<p>$$\\vert{}\\vec{g}\\vert{} = \\left\\vert{} \\frac{\\vec{a} + \\vec{b} + \\vec{c}}{3} \\right\\vert{} = 2$$</p>\n<p>$$\\vert{}\\vec{a} + \\vec{b} + \\vec{c}\\vert{} = 6$$</p>\n\n<p>$$\\vert{}\\vec{a} + \\vec{b} + \\vec{c}\\vert{}^2 = 36$$</p>\n<p>$$\\vert{}\\vec{a}\\vert{}^2 + \\vert{}\\vec{b}\\vert{}^2 + \\vert{}\\vec{c}\\vert{}^2 + 2(\\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{c} + \\vec{c} \\cdot \\vec{a}) = 36$$</p>\n\n<p>$$1^2 + 3^2 + 4^2 + 2(\\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{c} + \\vec{c} \\cdot \\vec{a}) = 36$$</p>\n<p>$$1 + 9 + 16 + 2(\\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{c} + \\vec{c} \\cdot \\vec{a}) = 36$$</p>\n<p>$$26 + 2(\\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{c} + \\vec{c} \\cdot \\vec{a}) = 36$$</p>\n<p>$$2(\\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{c} + \\vec{c} \\cdot \\vec{a}) = 10$$</p>\n\n<p>The sides of the triangle are $a, b,$ and $c$, representing the lengths $BC, AC,$ and $AB$.</p>\n<p>Using vectors, we can write the squares of the side lengths as:</p>\n<ul>\n<li><p>$a^2 = BC^2 = \\vert{}\\vec{c} - \\vec{b}\\vert{}^2 = \\vert{}\\vec{c}\\vert{}^2 + \\vert{}\\vec{b}\\vert{}^2 - 2(\\vec{b} \\cdot \\vec{c})$</p></li>\n<li><p>$b^2 = AC^2 = \\vert{}\\vec{c} - \\vec{a}\\vert{}^2 = \\vert{}\\vec{c}\\vert{}^2 + \\vert{}\\vec{a}\\vert{}^2 - 2(\\vec{c} \\cdot \\vec{a})$</p></li>\n<li><p>$c^2 = AB^2 = \\vert{}\\vec{b} - \\vec{a}\\vert{}^2 = \\vert{}\\vec{b}\\vert{}^2 + \\vert{}\\vec{a}\\vert{}^2 - 2(\\vec{a} \\cdot \\vec{b})$</p></li>\n</ul>\n\n<p>$$a^2 + b^2 + c^2 = 2(\\vert{}\\vec{a}\\vert{}^2 + \\vert{}\\vec{b}\\vert{}^2 + \\vert{}\\vec{c}\\vert{}^2) - 2(\\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{c} + \\vec{c} \\cdot \\vec{a})$$</p>\n\n<p>$$a^2 + b^2 + c^2 = 2(1^2 + 3^2 + 4^2) - 10$$</p>\n<p>$$a^2 + b^2 + c^2 = 2(1 + 9 + 16) - 10$$</p>\n<p>$$a^2 + b^2 + c^2 = 2(26) - 10$$</p>\n<p>$$a^2 + b^2 + c^2 = 52 - 10$$</p>\n<p>$$a^2 + b^2 + c^2 = 42$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "\nमाना $G$, $\\triangle A B C$ का केंद्रक है जिसकी भुजाएँ $a, b$ और $c$ हैं। यदि $P$, $\\triangle A B C$ के तल में एक ऐसा बिंदु है कि $P A=1, P B=3, P C=4$, और $P G=2$, तो $a^2+b^2+c^2$ का मान है\n",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "scalar-or-dot-product-of-two-vectors-and-its-applications",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msjgwlqw",
+            "chapter": "vector-algebra",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In a tetrahedron $O A B C,|O A|=|B C|=a,|O B|=|A C|=b$ and $|O C|=|A B|=c$. Let $G_1$ and $G_2$ be the centroids of the triangles $A B C$ and $A O C$ such that $O G_1 \\perp B G_2$. The value of $\\frac{a^2+c^2}{b^2}$ is $\\_\\_\\_\\_$.</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msjgsidk%2F1af32a19-7fb3-4b87-aff9-9545211c3746%2F0576f880-92a8-11f1-a8c9-752da7642691%2Ffile-6y3zli1msjgsidl.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msjgsidk%2F1af32a19-7fb3-4b87-aff9-9545211c3746%2F0576f880-92a8-11f1-a8c9-752da7642691%2Ffile-6y3zli1msjgsidl.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Let vertices of tetrahedron be $O(\\overrightarrow{0}), A(\\vec{a}), B(\\vec{b}), C(\\vec{c})$.</p>\n<p>$$\\overrightarrow{OG_1}\\cdot\\overrightarrow{BG_2}=0$$</p>\n<p>$$\\Rightarrow \\frac{\\bar{a}+\\bar{b}+\\bar{c}}{3}\\cdot\\frac{\\bar{a}+\\bar{c}-3\\bar{b}}{3}=0$$</p>\n<p>$$\\Rightarrow a^2+c^2-3b^2+2\\vec{a}\\cdot\\vec{c}-2\\vec{b}\\cdot\\vec{c}-2\\vec{a}\\cdot\\vec{b}=0 \\qquad ...(1)$$</p>\n<p>Now, $|\\vec{c}-\\vec{a}|^2=b^2$, $|\\vec{c}-\\vec{b}|=a^2$ and $|\\vec{a}-\\vec{b}|=c^2$</p>\n<p>$$\\therefore 2\\vec{a}\\cdot\\vec{c}=a^2+c^2-b^2, \\quad 2\\vec{b}\\cdot\\vec{c}=b^2+c^2-a^2$$</p>\n<p>and $2\\vec{a}\\cdot\\vec{b}=a^2+b^2-c^2$</p>\n<p>Putting in (1), we get $2 a^2+2 c^2-6 b^2=0$</p>\n<p>$$ \\Rightarrow \\frac{a^2+c^2}{b^2}=3 . $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक चतुष्फलक $O A B C$ में, $|O A|=|B C|=a,|O B|=|A C|=b$ तथा $|O C|=|A B|=c$ है। माना $G_1$ तथा $G_2$ क्रमशः त्रिभुजों $A B C$ तथा $A O C$ के केंद्रक हैं, जो इस प्रकार हैं कि $O G_1 \\perp B G_2$ है। $\\frac{a^2+c^2}{b^2}$ का मान $\\_\\_\\_\\_$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "scalar-or-dot-product-of-two-vectors-and-its-applications",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msjh2idg",
+            "chapter": "vector-algebra",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $\\vec{a}$ and $\\vec{b}$ are two vectors perpendicular to each other such that $|\\vec{a}|=2,|\\vec{b}|=3$ and $\\vec{c} \\times \\vec{a}=\\vec{b}$, then the least value of $2|\\vec{c}-\\vec{a}|$ is $\\_\\_\\_\\_$.</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>We are given the condition:</p>\n<p>$$\\vec{c} \\times \\vec{a} = \\vec{b}$$</p>\n\n<p>$$\\Rightarrow $$ $$\\vert{}\\vec{c} \\times \\vec{a}\\vert{} = \\vert{}\\vec{b}\\vert{}$$</p>\n<p>$$\\Rightarrow $$ $$\\vert{}\\vec{c}\\vert{}\\vert{}\\vec{a}\\vert{}\\sin\\theta = \\vert{}\\vec{b}\\vert{}$$</p>\n<p>where $\\theta$ is the angle between vectors $\\vec{c}$ and $\\vec{a}$.</p>\n<p>Substitute the known values ($\\vert{}\\vec{a}\\vert{} = 2$, $\\vert{}\\vec{b}\\vert{} = 3$):</p>\n<p>$$\\vert{}\\vec{c}\\vert{}(2)\\sin\\theta = 3$$</p>\n<p>$$\\vert{}\\vec{c}\\vert{}\\sin\\theta = \\frac{3}{2}$$</p>\n\n<p>$$\\vert{}\\vec{c}\\vert{}^2 \\sin^2\\theta = \\frac{9}{4}$$</p>\n<p>$$\\vert{}\\vec{c}\\vert{}^2 (1 - \\cos^2\\theta) = \\frac{9}{4}$$</p>\n<p>$$\\vert{}\\vec{c}\\vert{}^2 - (\\vert{}\\vec{c}\\vert{}\\cos\\theta)^2 = \\frac{9}{4}$$</p>\n\n<p>We need to find the least value of $E = 2\\vert{}\\vec{c} - \\vec{a}\\vert{}$. Let's first look at $E^2$:</p>\n<p>$$E^2 = (2\\vert{}\\vec{c} - \\vec{a}\\vert{})^2 = 4\\vert{}\\vec{c} - \\vec{a}\\vert{}^2$$</p>\n<p>$$E^2 = 4(\\vert{}\\vec{c}\\vert{}^2 + \\vert{}\\vec{a}\\vert{}^2 - 2\\vec{c} \\cdot \\vec{a})$$</p>\n<p>We know that $\\vec{c} \\cdot \\vec{a} = \\vert{}\\vec{c}\\vert{}\\vert{}\\vec{a}\\vert{}\\cos\\theta = 2\\vert{}\\vec{c}\\vert{}\\cos\\theta$. Let $x = \\vert{}\\vec{c}\\vert{}\\cos\\theta$.</p>\n<p>Then, $\\vec{c} \\cdot \\vec{a} = 2x$.</p>\n<p>We also know $\\vert{}\\vec{c}\\vert{}^2 - x^2 = \\frac{9}{4} \\implies \\vert{}\\vec{c}\\vert{}^2 = \\frac{9}{4} + x^2$.</p>\n<p>Substitute these into the equation for $E^2$:</p>\n<p>$$E^2 = 4\\left(\\left(\\frac{9}{4} + x^2\\right) + (2)^2 - 2(2x)\\right)$$</p>\n<p>$$E^2 = 4\\left(\\frac{9}{4} + x^2 + 4 - 4x\\right)$$</p>\n<p>$$E^2 = 9 + 4x^2 + 16 - 16x$$</p>\n<p>$$E^2 = 4x^2 - 16x + 25$$</p>\n\n\n<p>$$E^2 = 4(x^2 - 4x) + 25$$</p>\n<p>$$E^2 = 4(x^2 - 4x + 4 - 4) + 25$$</p>\n<p>$$E^2 = 4((x - 2)^2 - 4) + 25$$</p>\n<p>$$E^2 = 4(x - 2)^2 - 16 + 25$$</p>\n<p>$$E^2 = 4(x - 2)^2 + 9$$</p>\n<p>For $E^2$ to be minimum, the squared term $(x - 2)^2$ must be $0$ (which happens when $x = 2$).</p>\n<p>Therefore, the minimum value of $E^2$ is $9$.</p>\n<p>$$E_{\\text{min}}^2 = 9 \\implies E_{\\text{min}} = \\sqrt{9} = 3$$</p>\n<p>Thus, the least value of $2\\vert{}\\vec{c} - \\vec{a}\\vert{}$ is <strong>3</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $\\vec{a}$ और $\\vec{b}$ एक दूसरे के लंबवत दो ऐसे सदिश हैं कि $|\\vec{a}|=2,|\\vec{b}|=3$ और $\\vec{c} \\times \\vec{a}=\\vec{b}$ है, तो $2|\\vec{c}-\\vec{a}|$ का न्यूनतम मान $\\____$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "vector-or-cross-product-of-two-vectors-and-its-applications",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Product of Vectors",
+    "timeAllotted": 2160000,
+    "title": "Vector Algebra Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61moeftq8w",
+    "defaultLanguage": "en",
+    "description": "Product of Vectors",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-08T12:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Product of Vectors",
+    "timeAllotted": 2160000,
+    "title": "Vector Algebra Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Mathematics",
+    "_section": "Vector Algebra"
+  }
+}

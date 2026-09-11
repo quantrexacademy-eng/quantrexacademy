@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mpd3goea",
+  "title": "Electrochemistry Test - 1 (Topic Test)",
+  "type": "topic",
+  "section": "Electrochemistry",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-07-25T15:30:00.000Z",
+  "status": "ok",
+  "analysisId": "8382dad4-d538-4742-9c18-2c55d07883d7",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g61mpd3goea",
+    "defaultLanguage": "en",
+    "description": "Galvanic Cell and Its Representation, Salt bridge, Electrical Conductance, Kohlrausch Law and Its Application",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-25T15:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-ms0gctet",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following is/are function(s) of salt-bridge?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>It completes the electrical circuit with electrons flowing from one electrode to the other through external wires and a flow of ions between the two compartments through salt-bridge</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>It minimises the liquid-liquid junction potential</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Both correct</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The correct option is <strong>C: Both correct</strong>.</p>\n<p>A salt bridge has two important functions in a galvanic cell:</p>\n<p>It completes the electrical circuit. Electrons flow through the external wire from the anode to the cathode, but inside the cell charge is balanced by the movement of ions through the salt bridge. Without this movement of ions, the circuit would not remain complete.</p>\n<p>It also maintains electrical neutrality in both half-cells. For example, if oxidation occurs at the anode, positive ions may build up there. The anions from the salt bridge move towards the anode to balance the charge. Similarly, cations from the salt bridge move towards the cathode.</p>\n<p>A salt bridge also minimises the liquid-liquid junction potential. This potential can develop at the boundary between two different solutions, and the salt bridge reduces it by allowing ions to move smoothly between the two compartments.</p>\n<p>So, both statements A and B are correct.</p>\n<p>$$\\boxed{\\text{Option C}}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से कौन सा/से लवण-सेतु के कार्य है/हैं?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>यह विद्युत परिपथ को पूर्ण करता है जिसमें इलेक्ट्रॉन बाहरी तारों के माध्यम से एक इलेक्ट्रोड से दूसरे इलेक्ट्रोड तक प्रवाहित होते हैं और लवण-सेतु के माध्यम से दोनों कक्षों के बीच आयनों का प्रवाह होता है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>यह द्रव-द्रव संधि विभव को कम करता है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>दोनों सही हैं</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "galvanic-cell-and-its-representation-salt-bridge",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms0gefx7",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In salt bridge, normally KCl is used because</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>it is a strong electrolyte.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>it is good conductor of electricity.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>K<sup>+</sup> and Cl<sup>−</sup> ions have nearly same ionic mobility.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>it is an ionic compound.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The correct option is <strong>Option C: $K^+$ and $Cl^-$ ions have nearly same ionic mobility.</strong></p>\n<p>In a salt bridge, the electrolyte should allow ions to move in such a way that charge balance is maintained in both half-cells.</p>\n<p>$KCl$ is commonly used because the ions $K^+$ and $Cl^-$ move with nearly the same speed, or we say they have nearly the same ionic mobility. Due to this, positive and negative ions diffuse almost equally, so no extra potential difference develops at the junction.</p>\n<p>This helps in reducing the <strong>liquid junction potential</strong>.</p>\n<p>Options A, B, and D are true properties of $KCl$, but they are not the main reason for using $KCl$ in a salt bridge.</p>\n<p>So, the answer is:</p>\n<p>$$\\boxed{\\text{Option C}}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>लवण सेतु में सामान्यतः KCl का उपयोग किया जाता है क्योंकि</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>यह एक प्रबल विद्युत अपघट्य है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>यह विद्युत का सुचालक है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>K<sup>+</sup> और Cl<sup>−</sup> आयनों की आयनिक गतिशीलता लगभग समान होती है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>यह एक आयनिक यौगिक है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "galvanic-cell-and-its-representation-salt-bridge",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms0gazuv",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In a galvanic cell</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Chemical reaction produces electrical energy</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Electrical energy produces chemical reaction</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Reduction occurs at anode</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Oxidation occurs at cathode</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>In a galvanic cell, a spontaneous chemical reaction takes place and this reaction produces electrical energy.</p>\n<p>So the correct option is:</p>\n<p>Option A: Chemical reaction produces electrical energy</p>\n<p>In a galvanic cell:</p>\n<ul>\n<li><p>Oxidation occurs at the anode.</p></li>\n<li><p>Reduction occurs at the cathode.</p></li>\n<li><p>The chemical energy of the redox reaction is converted into electrical energy.</p></li>\n</ul>\n<p>So options C and D are incorrect because they interchange the electrode reactions.</p>\n<p>Option B is for an electrolytic cell, where electrical energy is used to bring about a chemical reaction.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक गैल्वेनिक सेल में</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>रासायनिक अभिक्रिया से विद्युत ऊर्जा उत्पन्न होती है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>विद्युत ऊर्जा से रासायनिक अभिक्रिया उत्पन्न होती है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>एनोड पर अपचयन होता है</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>कैथोड पर ऑक्सीकरण होता है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "galvanic-cell-and-its-representation-salt-bridge",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms0ghiyu",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The emf of the cell, Ni | Ni$^{2+}$ (1.0 M) || Ag$^+$ (1.0 M) | Ag [E$^\t{o}$ for Ni$^{2+}$/Ni = -0.25 volt, E$^\t{o}$ for Ag$^+$/Ag = 0.80 volt] is given by -</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>-0.25 + 0.80 = 0.55 volt</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>-0.25 - (+0.80) = -1.05 volt</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0 + 0.80 - (-0.25) = +1.05 volt</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>-0.80 - (-0.25) = -0.55 volt</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For the cell</p>\n<p>$$ \\text{Ni} \\mid \\text{Ni}^{2+}(1.0\\,M) \\parallel \\text{Ag}^+(1.0\\,M) \\mid \\text{Ag} $$</p>\n<p>the left electrode is the anode and the right electrode is the cathode.</p>\n<p>So,</p>\n<p>$$ E^\\circ_{\\text{cell}} = E^\\circ_{\\text{cathode}} - E^\\circ_{\\text{anode}} $$</p>\n<p>Here,</p>\n<p>$$ E^\\circ_{\\text{Ag}^+/\\text{Ag}} = +0.80\\,V $$</p>\n<p>and</p>\n<p>$$ E^\\circ_{\\text{Ni}^{2+}/\\text{Ni}} = -0.25\\,V $$</p>\n<p>Since silver electrode is the cathode and nickel electrode is the anode,</p>\n<p>$$ E^\\circ_{\\text{cell}} = 0.80 - (-0.25) $$</p>\n<p>$$ E^\\circ_{\\text{cell}} = 0.80 + 0.25 = 1.05\\,V $$</p>\n<p>Since both ion concentrations are $1.0\\,M$, the cell is under standard conditions, so</p>\n<p>$$ E_{\\text{cell}} = E^\\circ_{\\text{cell}} = 1.05\\,V $$</p>\n<p>So the correct option is:</p>\n<p>$$ \\boxed{\\text{Option C: } 0 + 0.80 - (-0.25) = +1.05\\text{ volt}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>सेल, Ni | Ni$^{2+}$ (1.0 M) || Ag$^+$ (1.0 M) | Ag [Ni$^{2+}$/Ni के लिए E$^ {o}$ = -0.25 वोल्ट, Ag$^+$/Ag के लिए E$^ {o}$ = 0.80 वोल्ट] का emf है -</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>-0.25 + 0.80 = 0.55 वोल्ट</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>-0.25 - (+0.80) = -1.05 वोल्ट</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0 + 0.80 - (-0.25) = +1.05 वोल्ट</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>-0.80 - (-0.25) = -0.55 वोल्ट</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "galvanic-cell-and-its-representation-salt-bridge",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms0h2209",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which has maximum conductivity?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$[\\mathrm{Cr(NH_3)_3Cl_3}]$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$[\\mathrm{Cr(NH_3)_4Cl_2}]\\mathrm{Cl}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$[\\mathrm{Cr(NH_3)_5Cl}]\\mathrm{Cl}_2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$[\\mathrm{Cr(NH_3)_6}]\\mathrm{Cl}_3$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Conductivity in aqueous solution depends mainly on the number of ions produced by the compound.</p>\n<p>Here, $\\mathrm{NH_3}$ is neutral and $\\mathrm{Cl^-}$ inside the square bracket is part of the coordination sphere, so it does not ionise separately in solution. Only the $\\mathrm{Cl^-}$ ions outside the bracket are ionisable.</p>\n<p>Check each option:</p>\n<p>Option A:</p>\n<p>$$ [\\mathrm{Cr(NH_3)_3Cl_3}] $$</p>\n<p>This is a neutral complex. It gives no ions in solution.</p>\n<p>Option B:</p>\n<p>$$ [\\mathrm{Cr(NH_3)_4Cl_2}]\\mathrm{Cl} $$</p>\n<p>It ionises as:</p>\n<p>$$ [\\mathrm{Cr(NH_3)_4Cl_2}]^+ + \\mathrm{Cl^-} $$</p>\n<p>Total ions $= 2$</p>\n<p>Option C:</p>\n<p>$$ [\\mathrm{Cr(NH_3)_5Cl}]\\mathrm{Cl}_2 $$</p>\n<p>It ionises as:</p>\n<p>$$ [\\mathrm{Cr(NH_3)_5Cl}]^{2+} + 2\\mathrm{Cl^-} $$</p>\n<p>Total ions $= 3$</p>\n<p>Option D:</p>\n<p>$$ [\\mathrm{Cr(NH_3)_6}]\\mathrm{Cl}_3 $$</p>\n<p>It ionises as:</p>\n<p>$$ [\\mathrm{Cr(NH_3)_6}]^{3+} + 3\\mathrm{Cl^-} $$</p>\n<p>Total ions $= 4$</p>\n<p>Since option D gives the maximum number of ions, it has maximum conductivity.</p>\n<p>So, the correct answer is:</p>\n<p>$$ \\boxed{[\\mathrm{Cr(NH_3)_6}]\\mathrm{Cl}_3} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>किसकी चालकता अधिकतम है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$[\\mathrm{Cr(NH_3)_3Cl_3}]$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$[\\mathrm{Cr(NH_3)_4Cl_2}]\\mathrm{Cl}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$[\\mathrm{Cr(NH_3)_5Cl}]\\mathrm{Cl}_2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$[\\mathrm{Cr(NH_3)_6}]\\mathrm{Cl}_3$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electrical-conductance",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms0hcn2x",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The conductivity of a saturated solution of BaSO<sub>4</sub> is $3.06 \\times 10^{-6}$ ohm<sup>-1</sup> cm<sup>-1</sup> and its equivalent conductance is $1.53$ ohm<sup>-1</sup> cm<sup>2</sup> equiv<sup>-1</sup>. The $K_{sp}$ for BaSO<sub>4</sub> will be</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$4 \\times 10^{-12}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2.5 \\times 10^{-13}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$25 \\times 10^{-9}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$10^{-6}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For a solution, equivalent conductance is related to conductivity by</p>\n<p>$$ \\Lambda_{\\text{eq}}=\\frac{\\kappa \\times 1000}{N} $$</p>\n<p>where $N$ is the normality of the solution.</p>\n<p>Given,</p>\n<p>$$ \\kappa = 3.06 \\times 10^{-6}\\ \\Omega^{-1}\\text{cm}^{-1} $$</p>\n<p>and</p>\n<p>$$ \\Lambda_{\\text{eq}} = 1.53\\ \\Omega^{-1}\\text{cm}^2\\text{equiv}^{-1} $$</p>\n<p>So,</p>\n<p>$$ N=\\frac{\\kappa \\times 1000}{\\Lambda_{\\text{eq}}} $$</p>\n<p>$$ N=\\frac{3.06 \\times 10^{-6} \\times 1000}{1.53} $$</p>\n<p>$$ N=\\frac{3.06 \\times 10^{-3}}{1.53} $$</p>\n<p>$$ N=2 \\times 10^{-3} $$</p>\n<p>So the normality of saturated $\\text{BaSO}_4$ solution is</p>\n<p>$$ 2 \\times 10^{-3}\\ N $$</p>\n<p>Now, $\\text{BaSO}_4$ dissociates as</p>\n<p>$$ \\text{BaSO}_4 \\rightleftharpoons \\text{Ba}^{2+} + \\text{SO}_4^{2-} $$</p>\n<p>For $\\text{BaSO}_4$, normality is twice the molarity because the charge involved is $2$.</p>\n<p>$$ N = 2M $$</p>\n<p>So,</p>\n<p>$$ M=\\frac{N}{2} $$</p>\n<p>$$ M=\\frac{2 \\times 10^{-3}}{2} $$</p>\n<p>$$ M=1 \\times 10^{-3} $$</p>\n<p>Thus, the molar solubility of $\\text{BaSO}_4$ is</p>\n<p>$$ s = 1 \\times 10^{-3}\\ \\text{mol L}^{-1} $$</p>\n<p>For $\\text{BaSO}_4$,</p>\n<p>$$ K_{sp}=[\\text{Ba}^{2+}][\\text{SO}_4^{2-}] $$</p>\n<p>Since both ions are produced in equal concentration,</p>\n<p>$$ [\\text{Ba}^{2+}] = s $$</p>\n<p>and</p>\n<p>$$ [\\text{SO}_4^{2-}] = s $$</p>\n<p>So,</p>\n<p>$$ K_{sp}=s^2 $$</p>\n<p>$$ K_{sp}=(1 \\times 10^{-3})^2 $$</p>\n<p>$$ K_{sp}=1 \\times 10^{-6} $$</p>\n<p>Hence, the correct option is</p>\n<p>$$ \\boxed{10^{-6}} $$</p>\n<p>Option D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>BaSO<sub>4</sub> के एक संतृप्त विलयन की चालकता $3.06 \\times 10^{-6}$ ohm<sup>-1</sup> cm<sup>-1</sup> और इसकी तुल्यांकी चालकता $1.53$ ohm<sup>-1</sup> cm<sup>2</sup> equiv<sup>-1</sup> है। BaSO<sub>4</sub> के लिए $K_{sp}$ होगा</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$4 \\times 10^{-12}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2.5 \\times 10^{-13}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$25 \\times 10^{-9}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$10^{-6}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "kohlrausch-law-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms0han27",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The ionization constant of a weak electrolyte (HA) is $25 \\times 10^{-6}$ while the equivalent conductance of its 0.01 M solution is 19.6 S cm<sup>2</sup> eq<sup>−1</sup>. The equivalent conductance of the electrolyte at infinite dilution (in S cm<sup>2</sup> eq<sup>−1</sup>) will be</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>250</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>196</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>392</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>384</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For a weak electrolyte $HA$, the degree of ionization is related to equivalent conductance by</p>\n<p>$$ \\alpha = \\frac{\\Lambda_c}{\\Lambda^\\circ} $$</p>\n<p>Here,</p>\n<p>$$ K_a = 25 \\times 10^{-6} = 2.5 \\times 10^{-5} $$</p>\n<p>$$ C = 0.01 \\text{ M} = 10^{-2} \\text{ M} $$</p>\n<p>For a weak electrolyte, using Ostwald’s dilution law,</p>\n<p>$$ K_a = C\\alpha^2 $$</p>\n<p>since $\\alpha$ is small, we take $1-\\alpha \\approx 1$.</p>\n<p>So,</p>\n<p>$$ \\alpha = \\sqrt{\\frac{K_a}{C}} $$</p>\n<p>Substitute the values:</p>\n<p>$$ \\alpha = \\sqrt{\\frac{2.5 \\times 10^{-5}}{10^{-2}}} $$</p>\n<p>$$ \\alpha = \\sqrt{2.5 \\times 10^{-3}} $$</p>\n<p>$$ \\alpha = 0.05 $$</p>\n<p>Now,</p>\n<p>$$ \\alpha = \\frac{\\Lambda_c}{\\Lambda^\\circ} $$</p>\n<p>Given,</p>\n<p>$$ \\Lambda_c = 19.6 \\text{ S cm}^2 \\text{ eq}^{-1} $$</p>\n<p>So,</p>\n<p>$$ 0.05 = \\frac{19.6}{\\Lambda^\\circ} $$</p>\n<p>$$ \\Lambda^\\circ = \\frac{19.6}{0.05} $$</p>\n<p>$$ \\Lambda^\\circ = 392 \\text{ S cm}^2 \\text{ eq}^{-1} $$</p>\n<p>So, the correct option is:</p>\n<p>$$ \\boxed{392} $$</p>\n<p>Option C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक दुर्बल वैद्युतअपघट्य (HA) का आयनन नियतांक $25 \\times 10^{-6}$ है जबकि इसके 0.01 M विलयन की तुल्यांकी चालकता 19.6 S cm<sup>2</sup> eq<sup>−1</sup> है। अनंत तनुता पर वैद्युतअपघट्य की तुल्यांकी चालकता (S cm<sup>2</sup> eq<sup>−1</sup> में) होगी</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>250</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>196</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>392</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>384</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "kohlrausch-law-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms0h64mi",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The equivalent conductances of sodium butyrate, sodium chloride and hydrogen chloride are as 83, 127, 246  <b>mho cm<sup>2</sup></b> at 25<sup>o</sup>C respectively. The equivalent conductance (in <b>mho cm<sup>2</sup></b>) of butyric acid at infinite solution is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>202</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>360</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>290</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>456</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For a weak acid like butyric acid, we use Kohlrausch’s law of independent migration of ions.</p>\n<p>Butyric acid is $\\mathrm{C_3H_7COOH}$, and its ions at infinite dilution are:</p>\n<p>$$ \\mathrm{H^+} \\quad \\text{and} \\quad \\mathrm{C_3H_7COO^-} $$</p>\n<p>We are given:</p>\n<p>$$ \\Lambda^\\circ(\\text{sodium butyrate}) = \\Lambda^\\circ(\\mathrm{Na^+}) + \\Lambda^\\circ(\\mathrm{C_3H_7COO^-}) = 83 $$</p>\n<p>$$ \\Lambda^\\circ(\\mathrm{NaCl}) = \\Lambda^\\circ(\\mathrm{Na^+}) + \\Lambda^\\circ(\\mathrm{Cl^-}) = 127 $$</p>\n<p>$$ \\Lambda^\\circ(\\mathrm{HCl}) = \\Lambda^\\circ(\\mathrm{H^+}) + \\Lambda^\\circ(\\mathrm{Cl^-}) = 246 $$</p>\n<p>For butyric acid:</p>\n<p>$$ \\Lambda^\\circ(\\mathrm{C_3H_7COOH}) = \\Lambda^\\circ(\\mathrm{H^+}) + \\Lambda^\\circ(\\mathrm{C_3H_7COO^-}) $$</p>\n<p>To get this combination, we add sodium butyrate and HCl, then subtract NaCl:</p>\n<p>$$ \\Lambda^\\circ(\\text{butyric acid}) = \\Lambda^\\circ(\\text{sodium butyrate}) + \\Lambda^\\circ(\\mathrm{HCl}) - \\Lambda^\\circ(\\mathrm{NaCl}) $$</p>\n<p>Substituting the values:</p>\n<p>$$ \\Lambda^\\circ = 83 + 246 - 127 $$</p>\n<p>$$ \\Lambda^\\circ = 202 \\ \\text{mho cm}^2 $$</p>\n<p>So, the equivalent conductance of butyric acid at infinite dilution is:</p>\n<p>$$ \\boxed{202 \\ \\text{mho cm}^2} $$</p>\n<p>Correct option: A.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>25<sup>o</sup>C पर सोडियम ब्यूटाइरेट, सोडियम क्लोराइड और हाइड्रोजन क्लोराइड की तुल्यांकी चालकता क्रमशः 83, 127, 246 <b>mho cm<sup>2</sup></b> है। अनंत तनुता पर ब्यूटाइरिक अम्ल की तुल्यांकी चालकता (<b>mho cm<sup>2</sup></b> में) है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>202</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>360</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>290</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>456</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "kohlrausch-law-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms0hg0dd",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A conductance cell when filled with 0.5 M KCl solution (conductivity = $6.67 \\times 10^{-3}\\ \\Omega^{-1}\\ \\mathrm{cm}^{-1}$) registers a resistance of 243 $\\Omega$. Its cell constant is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1.62 cm</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1.62 cm<sup>-1</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.62 dm<sup>-1</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1.62 m<sup>-1</sup></p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For a conductance cell,</p>\n<p>$$ \\kappa = G \\times \\text{cell constant} $$</p>\n<p>where $\\kappa$ is conductivity and $G$ is conductance.</p>\n<p>Also,</p>\n<p>$$ G = \\frac{1}{R} $$</p>\n<p>So,</p>\n<p>$$ \\text{cell constant} = \\kappa \\times R $$</p>\n<p>Given,</p>\n<p>$$ \\kappa = 6.67 \\times 10^{-3}\\ \\Omega^{-1}\\ \\text{cm}^{-1} $$</p>\n<p>and</p>\n<p>$$ R = 243\\ \\Omega $$</p>\n<p>Now,</p>\n<p>$$ \\text{cell constant} = 6.67 \\times 10^{-3} \\times 243 $$</p>\n<p>$$ = 1.62\\ \\text{cm}^{-1} $$</p>\n<p>The cell constant is</p>\n<p>$$ \\boxed{1.62\\ \\text{cm}^{-1}} $$</p>\n<p>Correct option: B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक चालकता सेल को 0.5 M KCl विलयन (चालकता = $6.67 \\times 10^{-3}\\ \\Omega^{-1}\\ \\mathrm{cm}^{-1}$) से भरने पर यह 243 $\\Omega$ का प्रतिरोध दर्शाता है। इसका सेल स्थिरांक है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1.62 cm</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1.62 cm<sup>-1</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.62 dm<sup>-1</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1.62 m<sup>-1</sup></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electrical-conductance",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms0hkueh",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The equilibrium constant of acetic acid in an aqueous solution of concentration <i>c</i> is given by</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$K = \\dfrac{c \\Lambda_c^2}{\\Lambda^{\\infty} - \\Lambda_c}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$K = \\dfrac{c \\Lambda_c^2}{\\Lambda^{\\infty} (\\Lambda^{\\infty} - \\Lambda_c)}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$K = \\dfrac{c \\Lambda_c^2}{\\Lambda^{\\infty} + \\Lambda_c}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$K = \\dfrac{c \\Lambda_c}{\\Lambda^{\\infty} (\\Lambda^{\\infty} - \\Lambda_c)}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "\n<p>$$CH_3COOH \\rightleftharpoons CH_3COO^- + H^+$$</p>\n<p>If the initial concentration of the acid is $c$ and its degree of dissociation is $\\alpha$, we can determine the concentration of each species at equilibrium. </p>\n<p>The concentration of the remaining undissociated acid will be $c(1 - \\alpha)$, while the concentrations of the formed ions will be $c\\alpha$. </p>\n<p>Let's write this down:</p>\n<p>$[CH_3COOH] = c(1 - \\alpha)$</p>\n<p>$[CH_3COO^-] = c\\alpha$</p>\n<p>$[H^+] = c\\alpha$</p>\n<p>The equilibrium constant, $K$, for this dissociation is the product of the concentration of the products divided by the concentration of the reactant:</p>\n<p>$$K = \\frac{[CH_3COO^-][H^+]}{[CH_3COOH]}$$</p>\n\n<p>$$K = \\frac{(c\\alpha)(c\\alpha)}{c(1 - \\alpha)}$$</p>\n\n<p>$$K = \\frac{c\\alpha^2}{1 - \\alpha}$$</p>\n<p>From the concepts of electrochemistry, we know a relationship between the degree of dissociation and molar conductivity. For a weak electrolyte, the degree of dissociation $\\alpha$ is defined as the ratio of its molar conductivity at a given concentration ($\\Lambda_c$) to its limiting molar conductivity at infinite dilution ($\\Lambda^{\\infty}$). </p>\n<p>$$\\alpha = \\frac{\\Lambda_c}{\\Lambda^{\\infty}}$$</p>\n<p>Now, we just need to substitute this expression for $\\alpha$ back into our equilibrium constant equation:</p>\n<p>$$K = \\frac{c \\left( \\frac{\\Lambda_c}{\\Lambda^{\\infty}} \\right)^2}{1 - \\frac{\\Lambda_c}{\\Lambda^{\\infty}}}$$</p>\n\n<p>$$K = \\frac{c \\left( \\frac{\\Lambda_c^2}{(\\Lambda^{\\infty})^2} \\right)}{\\frac{\\Lambda^{\\infty} - \\Lambda_c}{\\Lambda^{\\infty}}}$$</p>\n<p>$$K = \\frac{c \\Lambda_c^2}{(\\Lambda^{\\infty})^2} \\times \\frac{\\Lambda^{\\infty}}{\\Lambda^{\\infty} - \\Lambda_c}$$</p>\n<p>$$K = \\frac{c \\Lambda_c^2}{\\Lambda^{\\infty} (\\Lambda^{\\infty} - \\Lambda_c)}$$</p>\n<p>Looking at our choices, this result matches Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>सांद्रता <i>c</i> के जलीय विलयन में एसिटिक अम्ल का साम्यावस्था स्थिरांक निम्नलिखित द्वारा दिया जाता है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$K = \\dfrac{c \\Lambda_c^2}{\\Lambda^{\\infty} - \\Lambda_c}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$K = \\dfrac{c \\Lambda_c^2}{\\Lambda^{\\infty} (\\Lambda^{\\infty} - \\Lambda_c)}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$K = \\dfrac{c \\Lambda_c^2}{\\Lambda^{\\infty} + \\Lambda_c}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$K = \\dfrac{c \\Lambda_c}{\\Lambda^{\\infty} (\\Lambda^{\\infty} - \\Lambda_c)}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "kohlrausch-law-and-its-application",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-ms0hrd3m",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$V_1$ Litre of solution A (Resistance = 50 ohm) is mixed with $V_2$ Litre of solution B (Resistance = 100 ohm). Resistance of final solution is 80 ohm then $\\frac{V_2}{V_1}$ will be (using same cell)</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>We know that the resistance $R$ of a solution is related to its conductivity $\\kappa$ and the cell constant $G^*$ by the formula:</p>\n<p>$$R = \\frac{G^*}{\\kappa}$$</p>\n<p>This can be rearranged to express conductivity as:</p>\n<p>$$\\kappa = \\frac{G^*}{R}$$</p>\n<p>Since the same conductivity cell is used for all measurements, the cell constant $G^*$ remains exactly the same for solution A, solution B, and the final mixture. </p>\n\n<p>For solution A, the resistance is $50\\ \\Omega$, so its conductivity is:</p>\n<p>$$\\kappa_1 = \\frac{G^*}{50}$$</p>\n<p>For solution B, the resistance is $100\\ \\Omega$, giving it a conductivity of:</p>\n<p>$$\\kappa_2 = \\frac{G^*}{100}$$</p>\n<p>For the final mixed solution, the resistance is $80\\ \\Omega$, so the final conductivity is:</p>\n<p>$$\\kappa_f = \\frac{G^*}{80}$$</p>\n<p>When we mix two solutions, the conductivity of the final mixture is the volume-weighted average of the original conductivities. We can write this concept directly as an equation:</p>\n<p>$$\\kappa_f = \\frac{\\kappa_1 V_1 + \\kappa_2 V_2}{V_1 + V_2}$$</p>\n\n<p>$$\\frac{G^*}{80} = \\frac{\\frac{G^*}{50} V_1 + \\frac{G^*}{100} V_2}{V_1 + V_2}$$</p>\n\n<p>$$\\frac{1}{80} = \\frac{\\frac{V_1}{50} + \\frac{V_2}{100}}{V_1 + V_2}$$</p>\n\n<p>$$\\frac{1}{80} = \\frac{\\frac{2V_1 + V_2}{100}}{V_1 + V_2}$$</p>\n\n<p>$$\\frac{1}{80} = \\frac{2V_1 + V_2}{100(V_1 + V_2)}$$</p>\n\n<p>$$100(V_1 + V_2) = 80(2V_1 + V_2)$$</p>\n\n<p>$$100V_1 + 100V_2 = 160V_1 + 80V_2$$</p>\n\n<p>$$100V_2 - 80V_2 = 160V_1 - 100V_1$$</p>\n<p>$$20V_2 = 60V_1$$</p>\n\n<p>$$\\frac{V_2}{V_1} = \\frac{60}{20}$$</p>\n<p>$$\\frac{V_2}{V_1} = 3$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>विलयन A (प्रतिरोध = 50 ओम) के $V_1$ लीटर को विलयन B (प्रतिरोध = 100 ओम) के $V_2$ लीटर के साथ मिलाया जाता है। यदि अंतिम विलयन का प्रतिरोध 80 ओम है, तो $\\frac{V_2}{V_1}$ होगा (समान सेल का उपयोग करने पर)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electrical-conductance",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms0hzsyq",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The resistance of conductivity cell containing 0.01 M KCl solution at 298 K is $1530 \\Omega$. If the conductivity of 0.01 M NaCl solution at $25^{\\circ} \\mathrm{C}$ is $0.321 \\times 10^{-5} \\mathrm{~S} \\mathrm{~cm}^{-1}$, then the cell constant of the conductivity cell is $\\_\\_\\_\\_$ $\\times 10^{-5} \\mathrm{~cm}^{-1}$ (nearest integer)</p>",
+                "options": [],
+                "answer": "491",
+                "explanation": "<p>For a conductivity cell, the relation between conductivity $\\kappa$, resistance $R$, and cell constant is</p>\n<p>$$ \\kappa = \\frac{\\text{cell constant}}{R} $$</p>\n<p>So,</p>\n<p>$$ \\text{cell constant} = \\kappa R $$</p>\n<p>Given,</p>\n<p>$$ R = 1530 \\ \\Omega $$</p>\n<p>and</p>\n<p>$$ \\kappa = 0.321 \\times 10^{-5} \\ \\text{S cm}^{-1} $$</p>\n<p>Now,</p>\n<p>$$ \\text{cell constant} = 0.321 \\times 10^{-5} \\times 1530 $$</p>\n<p>$$ = 491.13 \\times 10^{-5} \\ \\text{cm}^{-1} $$</p>\n<p>Nearest integer:</p>\n<p>$$ 491.13 \\approx 491 $$</p>\n<p>So, the cell constant is</p>\n<p>$$ \\boxed{491 \\times 10^{-5} \\ \\text{cm}^{-1}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>298 K पर 0.01 M KCl विलयन युक्त चालकता सेल का प्रतिरोध $1530 \\Omega$ है। यदि $25^{\\circ} \\mathrm{C}$ पर 0.01 M NaCl विलयन की चालकता $0.321 \\times 10^{-5} \\mathrm{~S} \\mathrm{~cm}^{-1}$ है, तो चालकता सेल का सेल स्थिरांक $\\text{\\_\\_\\_\\_}$ $\\times 10^{-5} \\mathrm{~cm}^{-1}$ है (निकटतम पूर्णांक)।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electrical-conductance",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms0i9zhm",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>We have taken a saturated solution of $\\mathrm{AgBr} . \\mathrm{K}_{\\mathrm{sp}}$ of $16 \\times 10^{-14}$. If $10^{-7} \\mathrm{M}$ of $\\mathrm{AgNO}_3$ are added to 1 L this solution, then the conductivity of this solution in terms of $10^{-13} \\mathrm{~S} \\mathrm{~m}^{-1}$ units will be $\\_\\_\\_\\_$ .</p>\n<p>Given,</p>\n<p>$$ \\begin{aligned} \\lambda_{\\left(\\mathrm{Ag}^{+}\\right)}^{\\circ} & =4 \\times 10^{-3} \\mathrm{Sm}^2 \\mathrm{~mol}^{-1}, \\\\ \\lambda_{\\mathrm{Br}^{-}} & =6 \\times 10^{-3} \\mathrm{Sm}^2 \\mathrm{~mol}^{-1}, \\\\ \\lambda_{\\left(\\mathrm{NO}_3^{-}\\right)}^{\\circ} & =5 \\times 10^{-3} \\mathrm{Sm}^2 \\mathrm{~mol}^{-1} \\end{aligned} $$</p>",
+                "options": [],
+                "answer": "44",
+                "explanation": "<p>For saturated $\\mathrm{AgBr}$ solution,</p>\n<p>$$ \\mathrm{AgBr}(s) \\rightleftharpoons \\mathrm{Ag}^+ + \\mathrm{Br}^- $$</p>\n<p>Given,</p>\n<p>$$ K_{sp}=16\\times 10^{-14} $$</p>\n<p>If solubility of $\\mathrm{AgBr}$ is $s$ mol L$^{-1}$, then</p>\n<p>$$ K_{sp}=s^2 $$</p>\n<p>So,</p>\n<p>$$ s=\\sqrt{16\\times 10^{-14}}=4\\times 10^{-7}\\ \\mathrm{M} $$</p>\n<p>On addition of $10^{-7} \\mathrm{M}$ of $\\mathrm{AgNO}_3$.</p>\n<p>$$ \\begin{aligned} {\\left[\\mathrm{Ag}^{+}\\right] } & =4 \\times 10^{-7}+10^{-7} \\\\ & =5 \\times 10^{-7} \\mathrm{M} \\end{aligned} $$</p>\n<p>Again, $K_{\\mathrm{sp}}=5 \\times 10^{-7} \\times\\left[\\mathrm{Br}^{-}\\right]$</p>\n<p>$$ \\begin{aligned} 16 \\times 10^{-14} & =5 \\times 10^{-7}\\left[\\mathrm{Br}^{-}\\right] \\\\ {\\left[\\mathrm{Br}^{-}\\right] } & =3.2 \\times 10^{-7} \\mathrm{M} \\\\ {\\left[\\mathrm{NO}_3^{-}\\right] } & =10^{-7} \\mathrm{M} \\end{aligned} $$</p>\n\n$\\begin{aligned} & \\text { Conductivity }=5 \\times 10^{-10} \\times \\lambda_{\\mathrm{Ag}^{+}}^0+3.2 \\times 10^{-10} \\lambda_{\\mathrm{Br}}^0+10^{-10} \\lambda_{\\mathrm{NO}_3^{-}}^0 \\\\ & \\begin{array}{l}=5 \\times 10^{-10} \\times 4 \\times 10^{-3}+3.2 \\times 10^{-10} \\times 6 \\times 10^{-3} +5 \\times 10^{-3} \\times 10^{-10}\\end{array} \\\\ & \\Rightarrow 20 \\times 10^{-13}+19.2 \\times 10^{-13}+5 \\times 10^{-13} \\\\ & \\Rightarrow 44.2 \\times 10^{-13} \\\\ & \\simeq 44 \\times 10^{-13}\\end{aligned}$"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>हमने $16 \\times 10^{-14}$ के $\\mathrm{K}_{\\mathrm{sp}}$ वाले $\\mathrm{AgBr}$ का एक संतृप्त विलयन लिया है। यदि इस विलयन के 1 L में $10^{-7} \\mathrm{M}$ $\\mathrm{AgNO}_3$ मिलाया जाता है, तो $10^{-13} \\mathrm{~S} \\mathrm{~m}^{-1}$ इकाई के पदों में इस विलयन की चालकता $\\_\\_\\_\\_$ होगी।</p><p>दिया गया है,</p><p>$$ \\begin{aligned} \\lambda_{\\left(\\mathrm{Ag}^{+}\\right)}^{\\circ} & =4 \\times 10^{-3} \\mathrm{Sm}^2 \\mathrm{~mol}^{-1}, \\\\ \\lambda_{\\mathrm{Br}^{-}} & =6 \\times 10^{-3} \\mathrm{Sm}^2 \\mathrm{~mol}^{-1}, \\\\ \\lambda_{\\left(\\mathrm{NO}_3^{-}\\right)}^{\\circ} & =5 \\times 10^{-3} \\mathrm{Sm}^2 \\mathrm{~mol}^{-1} \\end{aligned} $$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "kohlrausch-law-and-its-application",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms0id7yb",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The solubility product of a sparingly soluble salt $M_2 X_3$ is $1.1 \\times 10^{-23}$. If specific conductance of the solution is $6 \\times 10^{-5} \\mathrm{~S} \\mathrm{~m}^{-1}$, the limiting molar conductivity of the solutions is $\\_\\_\\_\\_$ $\\mathrm{Sm}^2 \\mathrm{~mol}^{-1}$.</p>",
+                "options": [],
+                "answer": "6",
+                "explanation": "<p>For the sparingly soluble salt $M_2X_3$, suppose its molar solubility is $s$ mol L$^{-1}$.</p>\n<p>It dissociates as:</p>\n<p>$$ M_2X_3 \\rightleftharpoons 2M^{3+} + 3X^{2-} $$</p>\n<p>So,</p>\n<p>$$ [M^{3+}] = 2s $$</p>\n<p>and</p>\n<p>$$ [X^{2-}] = 3s $$</p>\n<p>The solubility product is:</p>\n<p>$$ K_{sp} = [M^{3+}]^2[X^{2-}]^3 $$</p>\n<p>Substituting the concentrations:</p>\n<p>$$ K_{sp} = (2s)^2(3s)^3 $$</p>\n<p>$$ K_{sp} = 4s^2 \\times 27s^3 $$</p>\n<p>$$ K_{sp} = 108s^5 $$</p>\n<p>Given:</p>\n<p>$$ K_{sp} = 1.1 \\times 10^{-23} $$</p>\n<p>So,</p>\n<p>$$ 108s^5 = 1.1 \\times 10^{-23} $$</p>\n<p>$$ s^5 = \\frac{1.1 \\times 10^{-23}}{108} $$</p>\n<p>$$ s \\approx 1.0 \\times 10^{-5} \\text{ mol L}^{-1} $$</p>\n<p>Now convert this into mol m$^{-3}$:</p>\n<p>$$ 1.0 \\times 10^{-5} \\text{ mol L}^{-1} = 1.0 \\times 10^{-2} \\text{ mol m}^{-3} $$</p>\n<p>Specific conductance is:</p>\n<p>$$ \\kappa = 6 \\times 10^{-5} \\text{ S m}^{-1} $$</p>\n<p>Molar conductivity is given by:</p>\n<p>$$ \\Lambda_m = \\frac{\\kappa}{c} $$</p>\n<p>Here,</p>\n<p>$$ c = 1.0 \\times 10^{-2} \\text{ mol m}^{-3} $$</p>\n<p>So,</p>\n<p>$$ \\Lambda_m = \\frac{6 \\times 10^{-5}}{1.0 \\times 10^{-2}} $$</p>\n<p>$$ \\Lambda_m = 6 \\times 10^{-3} \\text{ S m}^2 \\text{ mol}^{-1} $$</p>\n<p>Since the solution is very dilute, this is approximately the limiting molar conductivity.</p>\n<p>$$ \\boxed{6 \\times 10^{-3} \\text{ S m}^2 \\text{ mol}^{-1}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक अल्प विलेय लवण $M_2 X_3$ का विलेयता गुणनफल $1.1 \\times 10^{-23}$ है। यदि विलयन की विशिष्ट चालकता $6 \\times 10^{-5} \\mathrm{~S} \\mathrm{~m}^{-1}$ है, तो विलयन की सीमान्त मोलर चालकता $\\_\\_\\_\\_\\_$ $\\mathrm{Sm}^2 \\mathrm{~mol}^{-1}$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "kohlrausch-law-and-its-application",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms0ifq4t",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The specific conductance of a saturated solution of AgCl is $3.40 \\times 10^{-6} \\mathrm{ohm}^{-1} \\mathrm{~cm}^{-1}$ at $25^{\\circ} \\mathrm{C}$. If $\\lambda_{\\mathrm{Ag}^{+}}=62.3$ $\\mathrm{ohm}^{-1} \\mathrm{~cm}^2 \\mathrm{~mol}^{-1}$ and $\\lambda_{\\mathrm{Cl}^{-}}=67.7 \\mathrm{ohm}^{-1}$ $\\mathrm{cm}^2 \\mathrm{~mol}^{-1}$, the solubility AgCl at $25^{\\circ} \\mathrm{C}$ is $\\_\\_\\_\\_$ $10^{-5} \\mathrm{M}$ (In nearest integer)</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>For saturated AgCl solution,</p>\n<p>$$ \\text{AgCl} \\rightleftharpoons \\text{Ag}^+ + \\text{Cl}^- $$</p>\n<p>The molar conductivity at infinite dilution is the sum of ionic conductivities:</p>\n<p>$$ \\Lambda_m^\\circ = \\lambda_{\\text{Ag}^+}^\\circ + \\lambda_{\\text{Cl}^-}^\\circ $$</p>\n<p>$$ \\Lambda_m^\\circ = 62.3 + 67.7 = 130 \\ \\text{ohm}^{-1}\\text{cm}^2\\text{mol}^{-1} $$</p>\n<p>For a saturated solution of sparingly soluble salt,</p>\n<p>$$ \\Lambda_m = \\frac{\\kappa \\times 1000}{C} $$</p>\n<p>So,</p>\n<p>$$ C = \\frac{\\kappa \\times 1000}{\\Lambda_m^\\circ} $$</p>\n<p>Substituting the values:</p>\n<p>$$ C = \\frac{3.40 \\times 10^{-6} \\times 1000}{130} $$</p>\n<p>$$ C = \\frac{3.40 \\times 10^{-3}}{130} $$</p>\n<p>$$ C = 2.615 \\times 10^{-5} \\ \\text{M} $$</p>\n<p>Nearest integer value of $2.615$ is $3$.</p>\n<p>So, the solubility of AgCl is</p>\n<p>$$ \\boxed{3 \\times 10^{-5} \\ \\text{M}} $$</p>\n<p>Hence, the blank is</p>\n<p>$$ \\boxed{3} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$25^{\\circ} \\mathrm{C}$ पर AgCl के संतृप्त विलयन की विशिष्ट चालकता $3.40 \\times 10^{-6} \\mathrm{ohm}^{-1} \\mathrm{~cm}^{-1}$ है। यदि $\\lambda_{\\mathrm{Ag}^{+}}=62.3$ $\\mathrm{ohm}^{-1} \\mathrm{~cm}^2 \\mathrm{~mol}^{-1}$ और $\\lambda_{\\mathrm{Cl}^{-}}=67.7 \\mathrm{ohm}^{-1}$ $\\mathrm{cm}^2 \\mathrm{~mol}^{-1}$ है, तो $25^{\\circ} \\mathrm{C}$ पर AgCl की विलेयता $\\_\\_\\_\\_$ $10^{-5} \\mathrm{M}$ है (निकटतम पूर्णांक में)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "kohlrausch-law-and-its-application",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Galvanic Cell and Its Representation, Salt bridge, Electrical Conductance, Kohlrausch Law and Its Application",
+    "timeAllotted": 2160000,
+    "title": "Electrochemistry Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mpd3goea",
+    "defaultLanguage": "en",
+    "description": "Galvanic Cell and Its Representation, Salt bridge, Electrical Conductance, Kohlrausch Law and Its Application",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-25T15:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Galvanic Cell and Its Representation, Salt bridge, Electrical Conductance, Kohlrausch Law and Its Application",
+    "timeAllotted": 2160000,
+    "title": "Electrochemistry Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Electrochemistry"
+  }
+}

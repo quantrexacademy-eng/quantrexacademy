@@ -1,0 +1,83 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "68c3e1d783711f15b32dcf9f",
+  "chapterId": "66d58547a75f05ee8564f5f2",
+  "subject": "Zoology",
+  "chapter": "Organisms and Populations",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d586aea75f05ee85650388",
+      "title": "Introduction",
+      "count": 1,
+      "questionIds": [
+        "66d58551a75f05ee8564f651"
+      ]
+    },
+    {
+      "id": "66d586aea75f05ee8565038c",
+      "title": "Organisms and its Environment",
+      "count": 1,
+      "questionIds": [
+        "66d58607a75f05ee8564fce7"
+      ]
+    },
+    {
+      "id": "66d586aea75f05ee8565038d",
+      "title": "Abiotic Factors",
+      "count": 1,
+      "questionIds": [
+        "66d58607a75f05ee8564fced"
+      ]
+    },
+    {
+      "id": "66d586aea75f05ee8565038b",
+      "title": "Response to Abiotic Factors",
+      "count": 2,
+      "questionIds": [
+        "66d585ada75f05ee8564f9a8",
+        "66d585aca75f05ee8564f99a"
+      ]
+    },
+    {
+      "id": "66d586aea75f05ee85650389",
+      "title": "Ecological Adaptations",
+      "count": 7,
+      "questionIds": [
+        "66d585f5a75f05ee8564fc3f",
+        "66d585e4a75f05ee8564fba7",
+        "66d585e4a75f05ee8564fba4",
+        "66d585c3a75f05ee8564fa77",
+        "66d585a0a75f05ee8564f931",
+        "66d5859ca75f05ee8564f909",
+        "66d58573a75f05ee8564f795"
+      ]
+    },
+    {
+      "id": "66d586aea75f05ee85650387",
+      "title": "Populations",
+      "count": 10,
+      "questionIds": [
+        "66d58665a75f05ee85650051",
+        "66d58606a75f05ee8564fce1",
+        "66d58605a75f05ee8564fcd7",
+        "66d58601a75f05ee8564fcb7",
+        "66d585f3a75f05ee8564fc32",
+        "66d585bea75f05ee8564fa48",
+        "66d585aea75f05ee8564f9b0",
+        "66d58584a75f05ee8564f834",
+        "66d58550a75f05ee8564f649",
+        "66d58547a75f05ee8564f5f0"
+      ]
+    },
+    {
+      "id": "66d586aea75f05ee8565038a",
+      "title": "Biotic Community",
+      "count": 1,
+      "questionIds": [
+        "66d58575a75f05ee8564f7a5"
+      ]
+    }
+  ]
+}

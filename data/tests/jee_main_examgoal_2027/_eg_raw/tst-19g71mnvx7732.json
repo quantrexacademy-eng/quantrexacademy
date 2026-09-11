@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g71mnvx7732",
+  "title": "Center of Mass and Collision Test - 3 (Topic Test)",
+  "type": "topic",
+  "section": "Center of Mass and Collision",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-07-28T12:30:00.000Z",
+  "status": "ok",
+  "analysisId": "77790e2d-895f-424b-820c-034c55e29048",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g71mnvx7732",
+    "defaultLanguage": "en",
+    "description": "Impulse-Momentum Theorem, Spring-Mass System",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-28T12:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-ms4fbgp4",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Block A is hanging from a vertical spring and is at rest. Block B strikes the block A with velocity v and sticks to it. Then, the value of v for which the spring just attains natural length is</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4f82r4%2F006898d8-3b8b-4661-b520-6068ddee1dc1%2F2257bf00-8a62-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4f82r5.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4f82r4%2F006898d8-3b8b-4661-b520-6068ddee1dc1%2F2257bf00-8a62-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4f82r5.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>4 m/s</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>5 m/s</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>6 m/s</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>8 m/s</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The mass of block A, $m_A = 6\\,\\mathrm{kg}$</p>\n<p>The mass of block B, $m_B = 6\\,\\mathrm{kg}$</p>\n<p>The spring constant, $k = 100\\,\\mathrm{N/m}$</p>\n<p>The acceleration due to gravity, $g = 10\\,\\mathrm{m/s^2}$</p>\n<p>Initially, block A is hanging in equilibrium under gravity.</p>\n<p>Let $x_0$ be the initial elongation of the spring.</p>\n<p>At equilibrium, the upward spring force balances the downward gravitational force acting on block A:</p>\n<p>$$F_{\\mathrm{spring}} = F_{\\mathrm{gravity}}$$</p>\n<p>$$k x_0 = m_A g$$</p>\n<p>$$x_0 = \\frac{m_A g}{k} = \\frac{6 \\times 10}{100} = \\frac{60}{100} = 0.6\\,\\mathrm{m}$$</p>\n<p>Block B moves vertically upward with speed $v$ and collides inelastically with block A, sticking to it.</p>\n<p>Let $V$ be the common velocity of the combined mass $(m_A + m_B)$ immediately after the collision.</p>\n<p>Since the collision happens instantaneously, external forces (gravity and spring force) do not have significant impulse during the short impact time. Thus, momentum is conserved during the collision along the vertical direction.</p>\n<p>Using the law of conservation of linear momentum:</p>\n<p>Initial momentum = Final momentum</p>\n<p>$$m_B v = (m_A + m_B)V$$</p>\n<p>$$6v = (6 + 6)V$$</p>\n<p>$$6v = 12V \\Rightarrow V = \\frac{v}{2}$$</p>\n<p>After the collision, the combined system of total mass $M = m_A + m_B = 6 + 6 = 12\\ \\text{kg}$ moves upward.</p>\n<p>Immediately after collision spring extension is $x_1 = x_0 = 0.6\\ \\text{m}$</p>\n<p>Speed of combined mass is $V = \\frac{v}{2}$</p>\n<p>When spring just attains its natural length, spring extension is $x_2 = 0\\ \\text{m}$.</p>\n<p>Since the combined system of blocks just attains natural length, so speed of combined mass is $v_{\\text{final}} = 0\\ \\text{m/s}$</p>\n<p>The total distance moved vertically upward by the combined mass is $h = x_0 = 0.6\\ \\text{m}$.</p>\n<p>Since only conservative forces (gravitational force and spring force) are doing work after the collision, total mechanical energy is conserved between initial and final position.</p>\n<p>Total energy at initial position = Total energy at final position</p>\n<p>Taking initial position as the reference height level $(h = 0)$:</p>\n<p>Initial kinetic energy, $K_1 = \\frac{1}{2} M V^2$</p>\n<p>Potential energy due to gravity, $U_{g,1} = 0$</p>\n<p>The spring potential energy, $U_{s,1} = \\frac{1}{2} k x_0^2$</p>\n<p>Final kinetic energy, $K_2 = 0$</p>\n<p>The potential energy due to gravity, $U_{g,2} = M g x_0$</p>\n<p>The spring potential energy at natural length is, $U_{s,2} = 0$</p>\n<p>Using conservation of mechanical energy,</p>\n<p>$$K_1 + U_{g,1} + U_{s,1} = K_2 + U_{g,2} + U_{s,2}$$</p>\n<p>$$\\frac{1}{2} M V^2 + 0 + \\frac{1}{2} k x_0^2 = 0 + M g x_0 + 0$$</p>\n<p>$$\\frac{1}{2} M V^2 + \\frac{1}{2} k x_0^2 = M g x_0$$</p>\n<p>Substituting $M = 12\\ \\text{kg}$, $k = 100\\ \\text{N/m}$, $x_0 = 0.6\\ \\text{m}$, $g = 10\\ \\text{m/s}^2$, and $V = \\frac{v}{2}$:</p>\n<p>$$\\frac{1}{2} (12) \\left(\\frac{v}{2}\\right)^2 + \\frac{1}{2} (100) (0.6)^2 = (12)(10)(0.6)$$</p>\n<p>$$6\\left(\\frac{v^2}{4}\\right) + 50(0.36) = 120(0.6)$$</p>\n<p>$$\\frac{3}{2} v^2 + 18 = 72$$</p>\n<p>$$\\frac{3}{2} v^2 = 72 - 18$$</p>\n<p>$$\\frac{3}{2} v^2 = 54$$</p>\n<p>$$v^2 = 54 \\times \\frac{2}{3}$$</p>\n<p>$$v^2 = 18 \\times 2 = 36$$</p>\n<p>$$v = \\sqrt{36} = 6\\ \\text{m/s}$$</p>\n<p>Therefore, the required value of $v$ is $6\\ \\text{m/s}$. Thus, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>गुटका A एक ऊर्ध्वाधर स्प्रिंग से लटका हुआ है और विरामावस्था में है। गुटका B, गुटके A से v वेग से टकराता है और इससे चिपक जाता है। तो, v का वह मान जिसके लिए स्प्रिंग ठीक अपनी स्वाभाविक लंबाई (natural length) प्राप्त कर लेता है, है</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4f82r4%2F006898d8-3b8b-4661-b520-6068ddee1dc1%2F2257bf00-8a62-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4f82r5.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4f82r4%2F006898d8-3b8b-4661-b520-6068ddee1dc1%2F2257bf00-8a62-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4f82r5.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>4 m/s</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>5 m/s</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>6 m/s</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>8 m/s</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-mass-system",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4fxpas",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two blocks of masses $m_1$ and $m_2$ connected by a light spring of stiffness $k$ rest on a smooth horizontal plane, such that the block $m_1$ touches a vertical wall as shown in the figure. The block $m_2$ is shifted through a small distance $x$ towards the wall and then released. The velocity of the centre of mass of the system after block $m_1$ breaks off the wall is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4fex12%2Ff4620ddf-0681-47c3-87f2-55b4d85f85b0%2Fe095d560-8a62-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4fex13.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4fex12%2Ff4620ddf-0681-47c3-87f2-55b4d85f85b0%2Fe095d560-8a62-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4fex13.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{\\sqrt{km_2} \\, x}{m_1 + m_2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{\\sqrt{km_1} \\, x}{m_1 + m_2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{\\sqrt{km_2} \\, x}{m_1 - m_2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{\\sqrt{km_1} \\, x}{m_1 - m_2}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Initially, both blocks are at rest, and block $\\mathrm{m}_1$ rests against a vertical wall. Block $\\mathrm{m}_2$ is pushed towards the towards the wall by a distance x .</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4fsuhw%2Fe1f7c54d-3e9c-45ce-a164-78b6662ca907%2F63f52950-8a64-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4fsuhx.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4fsuhw%2Fe1f7c54d-3e9c-45ce-a164-78b6662ca907%2F63f52950-8a64-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4fsuhx.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>So, at this initial state spring compression $=\\mathrm{x}$</p>\n<p>Initial potential energy stored in spring, $\\mathrm{U}_{\\mathrm{i}}=\\frac{1}{2} \\mathrm{kx}^2$</p>\n<p>Initial kinetic energy of the system, $\\mathrm{K}_{\\mathrm{i}}=0$</p>\n<p>When block $\\mathrm{m}_2$ is released, the compressed spring exerts a force pushing block $\\mathrm{m}_2$ to the right and block $\\mathrm{m}_1$ to the left.</p>\n\n<p>Since the wall prevents $m_1$ from moving to the left, block $m_1$ remains stationary at rest ($v_1 = 0$) as long as the spring force is compressive or zero.</p>\n<p>As $m_2$ moves to the right, the spring expands. When the spring reaches its natural length (zero compression or elongation), the force exerted by the spring on block $m_1$ becomes zero.</p>\n<p>Beyond this point, as $m_2$ continues moving further right, the spring starts stretching, creating a pulling force that pulls $m_1$ away from the wall to the right.</p>\n<p>Therefore, block $m_1$ loose the contact with the wall at this instant when the spring reaches its natural length.</p>\n<p>Let $v_2$ be the velocity of block $m_2$ at the instant $m_1$ breaks off from the wall when spring is at natural length.</p>\n<p>Since block $m_1$ has remained at rest during this interval ($v_1 = 0$), mechanical energy is conserved for block $m_2$ and the spring system, $E_i = E_f$</p>\n<p>$$ \\frac{1}{2} k x^2 = \\frac{1}{2} m_2 v_2^2 + 0 $$</p>\n<p>$$ \\Rightarrow k x^2 = m_2 v_2^2 \\Rightarrow v_2^2 = \\frac{k x^2}{m_2} $$</p>\n<p>$$ v_2 = \\sqrt{\\frac{k}{m_2}}\\, x = \\frac{\\sqrt{k}\\, x}{\\sqrt{m_2}} $$</p>\n<p>At the instant block $m_1$ breaks off from the wall, the velocities of the two individual masses are:</p>\n<p>Velocity of mass $m_1$, is $v_1 = 0$</p>\n<p>Velocity of mass $m_2$, is $v_2 = \\frac{\\sqrt{kx}}{\\sqrt{m_2}}$</p>\n<p>Using the velocity of the centre of mass ($v_{cm}$) of a system of two particles is,</p>\n<p>$$ v_{cm} = \\frac{m_1 v_1 + m_2 v_2}{m_1 + m_2} $$</p>\n<p>Substituting the values of $v_1$ and $v_2$:</p>\n<p>$$ v_{cm} = \\frac{m_1 (0) + m_2 \\left(\\frac{\\sqrt{k}\\, x}{\\sqrt{m_2}}\\right)}{m_1 + m_2} = \\frac{\\sqrt{m_2}\\sqrt{k}\\, x}{(m_1 + m_2)} $$</p>\n<p>$$ v_{cm} = \\frac{\\sqrt{k\\, m_2}\\, x}{m_1 + m_2} $$</p>\n<p>Therefore, the velocity of centre of mass at this instant is $\\frac{\\sqrt{k\\, m_2}\\, x}{m_1 + m_2}$. Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान $m_1$ तथा $m_2$ के दो गुटके $k$ दृढ़ता वाली एक हल्की स्प्रिंग से जुड़े हुए हैं और एक चिकने क्षैतिज तल पर इस प्रकार रखे हैं कि गुटका $m_1$ चित्र में दर्शाए अनुसार एक ऊर्ध्वाधर दीवार को स्पर्श करता है। गुटके $m_2$ को दीवार की ओर एक छोटी दूरी $x$ तक खिसकाया जाता है और फिर छोड़ दिया जाता है। गुटके $m_1$ का दीवार से संपर्क टूटने के बाद निकाय के द्रव्यमान केंद्र का वेग है:</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4fex12%2Ff4620ddf-0681-47c3-87f2-55b4d85f85b0%2Fe095d560-8a62-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4fex13.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4fex12%2Ff4620ddf-0681-47c3-87f2-55b4d85f85b0%2Fe095d560-8a62-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4fex13.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{\\sqrt{km_2} \\, x}{m_1 + m_2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{\\sqrt{km_1} \\, x}{m_1 + m_2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{\\sqrt{km_2} \\, x}{m_1 - m_2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{\\sqrt{km_1} \\, x}{m_1 - m_2}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-mass-system",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4gafc0",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For shown situation find the maximum elongation in the spring. Neglect friction everywhere. Initially, the blocks are at rest and spring is unstretched.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4g58ns%2F6a88f83f-936e-4217-b672-344617318a7a%2Fbc9b9980-8a65-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4g58nt.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4g58ns%2F6a88f83f-936e-4217-b672-344617318a7a%2Fbc9b9980-8a65-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4g58nt.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{4F}{3k} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{3F}{4k} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{4F}{k} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{2F}{k} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The masses of the blocks are, $\\mathrm{m}_1=3 \\mathrm{~m}, \\mathrm{~m}_2=6 \\mathrm{~m}$</p>\n<p>The spring constant is k</p>\n<p>External force applied on left mass, $\\mathrm{F}_1=\\mathrm{F}$ (acting towards left)</p>\n<p>External force applied on right mass, $\\mathrm{F}_2=\\frac{\\mathrm{F}}{2}$ (acting towards right)</p>\n<p>Initial state both blocks are at rest $\\left(\\mathrm{v}_1=\\mathrm{v}_2=0\\right)$ and spring is unstretched ( $\\mathrm{x}=0$ ).</p>\n<p>The acceleration of the centre of mass $\\left(\\mathrm{a}_{\\mathrm{cm}}\\right)$ of the two-block system is:</p>\n<p>$$ a_{c m}=\\frac{F_{e x t, n e t}}{M_{t o t a l}}=\\frac{F-\\frac{F}{2}}{3 m+6 m}=\\frac{F}{18 m} $$</p>\n<p>Since the COM frame accelerates rightwards with $\\mathrm{a}_{\\mathrm{cm}}=\\frac{\\mathrm{F}}{18 \\mathrm{~m}}$, a pseudo force acts on each mass towards the left if we observe the motion from the centre of mass frame of reference;</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4g8doi%2F8f2095d9-6f34-4f48-ad4b-4ccc52c57c3d%2F13e9c220-8a66-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4g8doj.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4g8doi%2F8f2095d9-6f34-4f48-ad4b-4ccc52c57c3d%2F13e9c220-8a66-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4g8doj.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>$$F_{P1} = 3m \\times a_{\\mathrm{cm}} = 3m\\left(\\frac{F}{18m}\\right) = \\frac{F}{6} \\text{ (towards left)}$$</p>\n<p>$$F_{P2} = 6m \\times a_{\\mathrm{cm}} = 6m\\left(\\frac{F}{18m}\\right) = \\frac{F}{3} \\text{ (towards left)}$$</p>\n<p>On mass $m_1 = 3\\ \\mathrm{kg}$, Pseudo force acting is $\\frac{F}{6}$ towards left, the external force force applied is $F_1 = \\frac{F}{2}$ to the left.</p>\n<p>Net force pulling $m_1$ leftward relative to COM is</p>\n<p>$$F_{1,\\mathrm{eff}} = \\frac{F}{6} + \\frac{F}{2} = \\frac{F+3F}{6} = \\frac{4F}{6} = \\frac{2F}{3} \\text{ (towards left)}$$</p>\n<p>On mass $m_2 = 6\\ \\mathrm{kg}$, the applied external force is $F_2 = F$ towards right, Pseudo force $F_{P2} = \\frac{F}{3}$ towards left.</p>\n<p>Net force pulling $m_2$ rightward relative to COM is</p>\n<p>$$F_{2,\\mathrm{eff}} = F - \\frac{F}{3} = \\frac{2F}{3} \\text{ (towards right)}$$</p>\n<p>In the COM frame, both blocks move apart until the spring reaches maximum extension $x_{\\max}$, at which both blocks come to rest relative to the COM frame $(\\Delta K_{\\mathrm{COM}} = 0)$.</p>\n<p>Total work done by the effective forces in stretching the spring by $x_{\\max}$ equals the potential energy stored in the spring:</p>\n<p>$$W_{\\mathrm{eff}} = \\Delta U_s$$</p>\n<p>Let $x_1$ be the displacement of $m_1$ to the left and $x_2$ be the displacement of $m_2$ to the right relative to COM. Then total spring elongation is:</p>\n<p>$$x_{\\max} = x_1 + x_2$$</p>\n<p>Work done by effective forces:</p>\n<p>$$W_{\\mathrm{eff}} = F_{1,\\mathrm{eff}} \\cdot x_1 + F_{2,\\mathrm{eff}} \\cdot x_2$$</p>\n<p>Since $F_{1,\\mathrm{eff}} = F_{2,\\mathrm{eff}} = \\frac{2F}{3}$:</p>\n<p>$$W_{\\mathrm{eff}} = \\frac{2F}{3}x_1 + \\frac{2F}{3}x_2 = \\frac{2F}{3}(x_1 + x_2) = \\frac{2F}{3}x_{\\max}$$</p>\n<p>$$\\Rightarrow \\frac{2F}{3}x_{\\max} = \\frac{1}{2}k x_{\\max}^2$$</p>\n<p>Since $x_{\\max} \\ne 0$, $\\frac{2F}{3} = \\frac{1}{2}k x_{\\max}$</p>\n<p>$$x_{\\max} = \\frac{2 \\times 2F}{3k} = \\frac{4F}{3k}$$</p>\n<p>Therefore, the maximum elongation in the spring is $\\frac{4F}{3k}$. Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दर्शाई गई स्थिति के लिए स्प्रिंग में अधिकतम खिंचाव ज्ञात कीजिए। सभी जगह घर्षण को नगण्य मानें। प्रारंभ में, गुटके विरामावस्था में हैं और स्प्रिंग बिना खिंची हुई अवस्था में है।</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4g58ns%2F6a88f83f-936e-4217-b672-344617318a7a%2Fbc9b9980-8a65-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4g58nt.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4g58ns%2F6a88f83f-936e-4217-b672-344617318a7a%2Fbc9b9980-8a65-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4g58nt.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{4F}{3k} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{3F}{4k} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{4F}{k} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{2F}{k} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-mass-system",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4g3xfc",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two blocks of mass 3 kg and 6 kg respectively, are placed on a smooth horizontal surface. They are connected by a light spring of force constant $k = 200\\ \\text{N/m}$. Initially the spring is unstretched. The indicated velocities are imparted to the blocks. What will be the maximum extension of the spring?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4fzkp3%2F7fc144a0-cc18-48f3-8e3e-344bb23aea4e%2F1f0cf970-8a65-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4fzkp4.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4fzkp3%2F7fc144a0-cc18-48f3-8e3e-344bb23aea4e%2F1f0cf970-8a65-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4fzkp4.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>10 cm</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>20 cm</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>30 cm</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>40 cm</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The mass of blocks are $\\mathrm{m}_1=3 \\mathrm{~kg}, \\mathrm{~m}_2=6 \\mathrm{~kg}$</p>\n<p>The force constant of the spring, $\\mathrm{k}=200 \\mathrm{~N} / \\mathrm{m}$</p>\n<p>Initial velocity of $\\mathrm{m}_1$ is $\\mathrm{u}_1=-1.0 \\mathrm{~m} / \\mathrm{s}$ (moving towards left)</p>\n<p>Initial velocity of $\\mathrm{m}_2$, is $\\mathrm{u}_2=+2.0 \\mathrm{~m} / \\mathrm{s}$ (moving towards right)</p>\n<p>When two masses connected by a spring are moving on a smooth horizontal surface, maximum extension occurs when both blocks move with the same velocity equal to the velocity of the centre of mass $\\left(\\mathrm{v}_{\\mathrm{cm}}\\right)$.</p>\n<p>At the moment of maximum extension, the kinetic energy of relative motion is converted into spring potential energy.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4g1ped%2Ff2a68851-dacc-460c-a9c3-edf8961980bd%2F5a4d2050-8a65-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4g1pee.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4g1ped%2Ff2a68851-dacc-460c-a9c3-edf8961980bd%2F5a4d2050-8a65-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4g1pee.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The reduced mass ( $\\mu$ ) of a two-body system is, $\\mu=\\frac{\\mathrm{m}_1 \\mathrm{~m}_2}{\\mathrm{~m}_1+\\mathrm{m}_2}$</p>\n<p>$$ \\mu=\\frac{3 \\times 6}{3+6}=\\frac{18}{9}=2 \\mathrm{~kg} $$</p>\n<p>From centre-of-mass frame of reference relative velocity before stretched, $\\mathrm{v}_{\\text {rel }}=\\left|\\mathrm{u}_2-\\mathrm{u}_1\\right|$</p>\n<p>$$ \\mathrm{v}_{\\mathrm{rel}}=\\mathrm{u}_2-\\mathrm{u}_1=2.0-(-1.0)=3.0 \\mathrm{~m} / \\mathrm{s} $$</p>\n<p>Kinetic energy in centre-of-mass frame $\\mathrm{K}_{\\text {rel }}=\\frac{1}{2} \\mu \\mathrm{v}_{\\text {rel }}^2$</p>\n<p>At maximum extension $\\mathrm{x}_{\\max }$, relative velocity becomes zero, so all $\\mathrm{K}_{\\mathrm{rel}}$ gets converted into spring potential energy $\\mathrm{U}_{\\mathrm{s}}$ :</p>\n<p>$$ \\frac{1}{2} \\mathrm{kx}_{\\max }^2=\\frac{1}{2} \\mu \\mathrm{v}_{\\mathrm{rel}}^2 $$</p>\n\n<p>$$k x_{\\max}^{2} = \\mu v_{\\mathrm{rel}}^{2}$$</p>\n<p>$$200 \\times x_{\\max}^{2} = 2 \\times (3.0)^{2}$$</p>\n<p>$$200 \\times x_{\\max}^{2} = 2 \\times 9$$</p>\n<p>$$200 \\times x_{\\max}^{2} = 18$$</p>\n<p>$$x_{\\max}^{2} = \\frac{18}{200} = \\frac{9}{100}\\ \\mathrm{m}^{2}$$</p>\n<p>$$x_{\\max} = \\sqrt{\\frac{9}{100}} = \\frac{3}{10}\\ \\mathrm{m} = 0.3\\ \\mathrm{m}$$</p>\n<p>$$x_{\\max} = 0.3 \\times 100\\ \\mathrm{cm} = 30\\ \\mathrm{cm}$$</p>\n<p>Therefore, the maximum extension of the spring is 30 cm. Thus, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>क्रमशः 3 kg और 6 kg द्रव्यमान के दो गुटके एक चिकने क्षैतिज पृष्ठ पर रखे गए हैं। वे बल नियतांक $k = 200\\ \\text{N/m}$ वाले एक हल्के स्प्रिंग द्वारा जुड़े हुए हैं। प्रारंभ में स्प्रिंग बिना खिंची हुई अवस्था में है। गुटकों को चित्र में दर्शाए गए वेग प्रदान किए जाते हैं। स्प्रिंग का अधिकतम प्रसार (खिंचाव) कितना होगा?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4fzkp3%2F7fc144a0-cc18-48f3-8e3e-344bb23aea4e%2F1f0cf970-8a65-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4fzkp4.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4fzkp3%2F7fc144a0-cc18-48f3-8e3e-344bb23aea4e%2F1f0cf970-8a65-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4fzkp4.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>10 cm</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>20 cm</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>30 cm</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>40 cm</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-mass-system",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4gitcw",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle of mass $m$ is projected at an angle of $60^\\circ$ with a velocity of $20\\ \\mathrm{m/s}$ relative to the ground from a plank of same mass $m$ which is placed on smooth surface. Initially plank was at rest. The minimum length of the plank for which the ball will fall on the plank itself is $(g = 10\\ \\mathrm{m/s^2})$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4gbvqy%2F9bd572ea-df68-41c9-bb1e-f049de160143%2F754c2da0-8a66-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4gbvqz.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4gbvqy%2F9bd572ea-df68-41c9-bb1e-f049de160143%2F754c2da0-8a66-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4gbvqz.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$40\\sqrt{3}\\ \\mathrm{m}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$20\\sqrt{3}\\ \\mathrm{m}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$10\\sqrt{3}\\ \\mathrm{m}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$60\\sqrt{3}\\ \\mathrm{m}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The mass of the particle is $\\mathrm{m}_1=\\mathrm{m}$</p>\n<p>The mass of the plank is $\\mathrm{m}_2=\\mathrm{m}$</p>\n<p>The initial speed of projection for the particle relative to ground is $\\mathrm{u}=20 \\mathrm{~m} / \\mathrm{s}$</p>\n<p>The angle of projection with horizontal relative to ground is $\\theta=60^{\\circ}$</p>\n<p>The acceleration due to gravity is $\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^2$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4ge1dg%2F5597615f-105f-4657-978b-dd6371a925df%2Fb142d340-8a66-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4ge1dh.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4ge1dg%2F5597615f-105f-4657-978b-dd6371a925df%2Fb142d340-8a66-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4ge1dh.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The vertical component of initial velocity of the particle is:</p>\n<p>$$ u_y=u \\sin 60^{\\circ}=20 \\times \\frac{\\sqrt{3}}{2}=10 \\sqrt{3} \\mathrm{~m} / \\mathrm{s} $$</p>\n<p>The vertical motion is under gravity. The time of flight T during which the particle remains in air is,</p>\n<p>$$ \\mathrm{T}=\\frac{2 \\mathrm{u}_{\\mathrm{y}}}{\\mathrm{~g}}=2 \\times \\frac{10 \\sqrt{3}}{10}=2 \\sqrt{3} \\text { seconds } $$</p>\n<p>Horizontal component of particle's velocity relative to ground is,</p>\n\n\n<p>$$u_x = u \\, \\cos 60^\\circ = 20 \\times \\frac{1}{2} = 10\\ \\text{m/s}$$</p>\n<p>Since no horizontal force acts on the particle while in air, $u_x$ remains constant throughout time $T$.</p>\n<p>Horizontal distance moved by the particle relative to ground in time $T$:</p>\n<p>$$x_1 = u_x \\times T = 10 \\times 2\\sqrt{3} = 20\\sqrt{3}\\ \\text{m}$$</p>\n<p>As the surface under the plank is smooth $(\\mu = 0)$, when the particle is projected, momentum in the horizontal direction must be conserved for the (particle + plank) system since no external horizontal force acts on it.</p>\n<p>By conservation of horizontal momentum at the instant of projection:</p>\n<p>Initial horizontal momentum = Final horizontal momentum</p>\n<p>$$m_1 u_{1x} + m_2 u_{2x} = m_1 \\cdot v_{x1} + m \\cdot v_{x2}$$</p>\n<p>As the system (particle + Plank) is at rest initially, $u_{x1} = u_{x2} = 0$ and the final velocity of particle along horizontal is $v_{x1} = u_x$</p>\n<p>$$m \\times 0 + m \\times 0 = m u_x + m v_{x2}$$</p>\n<p>$$0 = m \\times 10 + m \\times v_{x2} \\Rightarrow v_{x2} = -10\\ \\text{m/s}$$</p>\n<p>The negative sign indicates that the plank moves in the opposite direction (to the left) with speed $10\\ \\text{m/s}$.</p>\n<p>Horizontal distance moved by the plank in time $T$:</p>\n<p>$$x_2 = |v_{x2}| \\times T = 10 \\times 2\\sqrt{3} = 20\\sqrt{3}\\ \\text{m}$$</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4ghbqj%2F3d8747ab-7e0a-4b24-baa2-e441a5f98e37%2F0cb1a7b0-8a67-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4ghbqk.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4ghbqj%2F3d8747ab-7e0a-4b24-baa2-e441a5f98e37%2F0cb1a7b0-8a67-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4ghbqk.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>For the ball to fall on the plank itself, the length of the plank $L$ must be at least equal to the relative horizontal displacement between the particle and the plank during time $T$:</p>\n<p>$$L_{\\min} = x_1 + x_2$$</p>\n<p>$$L_{\\min} = 20\\sqrt{3} + 20\\sqrt{3} = 40\\sqrt{3}\\ \\text{m}$$</p>\n<p>Therefore, the correct option is (A)</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान $m$ के एक कण को एक चिकनी सतह पर रखे समान द्रव्यमान $m$ के एक तख्ते (plank) से जमीन के सापेक्ष $20\\ \\mathrm{m/s}$ के वेग से $60^\\circ$ के कोण पर प्रक्षेपित किया जाता है। प्रारंभ में तख्ता विरामावस्था में था। तख्ते की न्यूनतम लंबाई क्या होनी चाहिए जिससे कि गेंद वापस तख्ते पर ही गिरे? $(g = 10\\ \\mathrm{m/s^2})$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4gbvqy%2F9bd572ea-df68-41c9-bb1e-f049de160143%2F754c2da0-8a66-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4gbvqz.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4gbvqy%2F9bd572ea-df68-41c9-bb1e-f049de160143%2F754c2da0-8a66-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4gbvqz.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$40\\sqrt{3}\\ \\mathrm{m}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$20\\sqrt{3}\\ \\mathrm{m}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$10\\sqrt{3}\\ \\mathrm{m}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$60\\sqrt{3}\\ \\mathrm{m}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "impulse-momentum-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4gx2oi",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The system shown is released from rest. Mass of ball is m kg and that of wedge is M kg. When ball reaches at highest point on other side of the wedge, velocity of ball and wedge, is (initially wedge is kept at rest against a wall)</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4gqgr4%2Ffb9d2b95-9451-44eb-910b-59eb03672f10%2F0ad9e500-8a68-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4gqgr5.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4gqgr4%2Ffb9d2b95-9451-44eb-910b-59eb03672f10%2F0ad9e500-8a68-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4gqgr5.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{M \\sqrt{2gR}}{m+M}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{m \\sqrt{2gR}}{M}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{M}{m} \\sqrt{2gR}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{m \\sqrt{2gR}}{m+M}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Initial state the ball of mass $m$ is at height $R$ on the left side of the semicircular track of mass $M$.</p>\n<p>The wedge is kept against a vertical wall on its left.</p>\n<p>As the ball rolls down from height $R$ to the bottom of the track the ball exerts a normal force on the wedge towards the left (against the wall).</p>\n<p>The vertical wall prevents the wedge from moving to the left, so the wedge remains at rest ($V_{\\text{wedge}} = 0$) during this initial fall.</p>\n<p>Since all surfaces are smooth, using the law of conservation of mechanical energy for the ball from top to bottom</p>\n<p>Loss in Potential Energy = Gain in Kinetic Energy</p>\n<p>$$mgR = \\frac{1}{2}mv_0^2$$</p>\n<p>$$v_0^2 = 2gR \\Rightarrow v_0 = \\sqrt{2gR}$$</p>\n<p>At the bottommost point, the ball moves horizontally to the right with velocity $v_0 = \\sqrt{2gR}$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4gvonl%2F4bd8adda-1866-4046-add5-59bc4fa53239%2F9c004010-8a68-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4gvonm.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4gvonl%2F4bd8adda-1866-4046-add5-59bc4fa53239%2F9c004010-8a68-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4gvonm.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>As soon as the ball moves past the bottom point and begins to rise up the the right side of the track the ball pushes the wedge to the right. Since the wall is on the left, it no longer restricts the motion of the wedge to the right. Therefore, the wedge breaks off from the wall and begins accelerating to the right.</p>\n<p>No external force acts on the system (ball + wedge) in the horizontal direction once the wedge leaves the wall.</p>\n<p>Therefore, linear momentum in the horizontal direction is conserved from the moment the ball is at the bottom until it reaches the highest point on the right side.</p>\n<p>At the bottom the velocity of ball is $v_0 = \\sqrt{2gR}$ (towards right)</p>\n<p>The velocity of wedge is $0$</p>\n<p>Total initial horizontal momentum, $P_i = m\\,v_0 = m\\sqrt{2gR}$</p>\n<p>At the highest point on the right side of the track relative vertical velocity between ball and wedge becomes zero. Both the ball and the wedge move horizontally with the same common velocity $V$.</p>\n<p>Using conservation of horizontal momentum:</p>\n<p>$$P_i = P_f$$</p>\n<p>$$m\\sqrt{2gR} = (m + M)V$$</p>\n<p>$$V = \\frac{m\\sqrt{2gR}}{m + M}$$</p>\n<p>Therefore, the velocity of ball and wedge is $\\frac{m\\sqrt{2gR}}{m + M}$. Thus, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दर्शाए गए निकाय को विरामावस्था से छोड़ा जाता है। गेंद का द्रव्यमान m kg तथा वेज का द्रव्यमान M kg है। जब गेंद वेज के दूसरी ओर उच्चतम बिंदु पर पहुंचती है, तब गेंद और वेज का वेग होगा (प्रारंभ में वेज को एक दीवार के सहारे विरामावस्था में रखा गया है)</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4gqgr4%2Ffb9d2b95-9451-44eb-910b-59eb03672f10%2F0ad9e500-8a68-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4gqgr5.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4gqgr4%2Ffb9d2b95-9451-44eb-910b-59eb03672f10%2F0ad9e500-8a68-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4gqgr5.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{M \\sqrt{2gR}}{m+M}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{m \\sqrt{2gR}}{M}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{M}{m} \\sqrt{2gR}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{m \\sqrt{2gR}}{m+M}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "impulse-momentum-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4gopoq",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A block of mass $M = 2\\ \\text{kg}$ with a semicircular track of radius $R = 1.1\\ \\text{m}$ rests on a horizontal frictionless surface. A uniform cylinder of radius $r = 10\\ \\text{cm}$ and mass $m = 1.0\\ \\text{kg}$ is released from rest from the top point A. The cylinder slips on the semicircular frictionless track. The speed of the block when the cylinder reaches the bottom of the track at B is $(g = 10\\ \\text{m/s}^2)$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4gkaj9%2Fa56e6589-7172-4b5c-a006-a953818f66a7%2F5f315850-8a67-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4gkaja.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4gkaj9%2Fa56e6589-7172-4b5c-a006-a953818f66a7%2F5f315850-8a67-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4gkaja.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\sqrt{\\dfrac{10}{3}}$ m/s</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\sqrt{\\dfrac{4}{3}}$ m/s</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{\\dfrac{5}{2}}$ m/s</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{10}$ m/s</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The mass of the block with track, $\\mathrm{M}=2 \\mathrm{~kg}$</p>\n<p>The radius of the semi-circular track is $\\mathrm{R}=1.1 \\mathrm{~m}$</p>\n<p>The mass of the cylinder is $\\mathrm{m}=1.0 \\mathrm{~kg}$</p>\n<p>The radius of the cylinder is $\\mathrm{r}=10 \\mathrm{~cm}=0.1 \\mathrm{~m}$</p>\n<p>The acceleration due to gravity is $\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^2$</p>\n<p>When the cylinder moves from the top position A to the bottom position B , the vertical distance moved by its centre of mass is $\\mathrm{h}=\\mathrm{R}-\\mathrm{r}=1.1 \\mathrm{~m}-0.1 \\mathrm{~m}=1.0 \\mathrm{~m}$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4gmxnz%2F8857dce2-c4cb-447f-800c-babf4d81329d%2Fa8ade7f0-8a67-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4gmxo0.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4gmxnz%2F8857dce2-c4cb-447f-800c-babf4d81329d%2Fa8ade7f0-8a67-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4gmxo0.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Let $V$ be the speed of the block $M$ (moving to the left) and $v_B$ be the speed of the cylinder relative to ground (moving to the right) when it reaches the bottom point B .</p>\n<p>Since there are no external horizontal forces acting on the system, horizontal momentum is conserved throughout,</p>\n<p>Initial horizontal momentum = Final horizontal momentum</p>\n\n<p>$$0 = m v_B - M V$$</p>\n<p>$$m v_B = M V \\Rightarrow v_B = \\left(\\frac{M}{m}\\right)V$$</p>\n<p>Substituting the values $M = 2\\ \\mathrm{kg}$ and $m = 1\\ \\mathrm{kg}$:</p>\n<p>$$v_B = \\left(\\frac{2}{1}\\right)V = 2V$$</p>\n<p>Since all surfaces are frictionless and the cylinder slips (no rolling friction/rotational energy), the loss in gravitational potential energy of the cylinder is converted into kinetic energy of both the cylinder and the block.</p>\n<p>Loss in potential energy = gain in kinetic energy</p>\n<p>$$mgh = \\frac{1}{2}MV^2 + \\frac{1}{2}m v_B^2$$</p>\n<p>Substituting $v = 2V$, $m = 1\\ \\mathrm{kg}$, $M = 2\\ \\mathrm{kg}$, $g = 10\\ \\mathrm{m/s^2}$, and $h = 1.0\\ \\mathrm{m}$ into the energy conservation equation,</p>\n<p>$$\\Rightarrow (1) \\times (10) \\times (1.0) = \\frac{1}{2}(2)V^2 + \\frac{1}{2}(1)(2V)^2$$</p>\n<p>$$\\Rightarrow 10 = V^2 + \\frac{1}{2}(4V^2)$$</p>\n<p>$$\\Rightarrow 10 = V^2 + 2V^2$$</p>\n<p>$$\\Rightarrow 10 = 3V^2$$</p>\n<p>$$\\Rightarrow V^2 = \\frac{10}{3} \\Rightarrow V = \\sqrt{\\frac{10}{3}}\\ \\mathrm{m/s}$$</p>\n<p>Therefore, the speed of the block when the cylinder reaches the bottom of the track is $\\sqrt{\\frac{10}{3}}\\ \\mathrm{m/s}$. Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान $M = 2\n \\text{kg}$ का एक ब्लॉक, जिसमें त्रिज्या $R = 1.1\n \\text{m}$ का एक अर्धवृत्ताकार पथ है, एक क्षैतिज घर्षण रहित सतह पर रखा है। त्रिज्या $r = 10\n \\text{cm}$ और द्रव्यमान $m = 1.0\n \\text{kg}$ का एक एकसमान बेलन शीर्ष बिंदु A से विरामावस्था से छोड़ा जाता है। बेलन अर्धवृत्ताकार घर्षण रहित पथ पर फिसलता है। जब बेलन पथ के निचले बिंदु B पर पहुँचता है, तो ब्लॉक की चाल होगी $(g = 10\n \\text{m/s}^2)$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4gkaj9%2Fa56e6589-7172-4b5c-a006-a953818f66a7%2F5f315850-8a67-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4gkaja.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4gkaj9%2Fa56e6589-7172-4b5c-a006-a953818f66a7%2F5f315850-8a67-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4gkaja.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\sqrt{\\dfrac{10}{3}}$ m/s</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\sqrt{\\dfrac{4}{3}}$ m/s</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{\\dfrac{5}{2}}$ m/s</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{10}$ m/s</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "impulse-momentum-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4h8auq",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two blocks of masses $m$ and $M$ are moving with speeds $v_1$ and $v_2$ ($v_1 > v_2$) in the same direction on the frictionless surface respectively, $M$ being ahead of $m$. An ideal spring of force constant $k$ is attached to the backside of $M$ (as shown). The maximum compression of the spring when the block collides is :</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4h4stm%2F85a6513c-9bc1-4f7c-8bef-5ee08030aa47%2F9980a4a0-8a69-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4h4stn.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4h4stm%2F85a6513c-9bc1-4f7c-8bef-5ee08030aa47%2F9980a4a0-8a69-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4h4stn.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$v_1 \\sqrt{\\dfrac{m}{k}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$v_2 \\sqrt{\\dfrac{M}{k}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(v_1 - v_2) \\sqrt{\\dfrac{mM}{(M+m)k}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of above is correct.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The mass of first block is $\\mathrm{m}_1=\\mathrm{m}$, moving with initial speed $\\mathrm{v}_1$</p>\n<p>The mass of second block is $\\mathrm{m}_2=\\mathrm{M}$, moving with initial speed $\\mathrm{v}_2, \\mathrm{v}_1>\\mathrm{v}_2$</p>\n<p>The spring constant is K</p>\n<p>Maximum compression $\\mathrm{x}_{\\text {max }}$ occurs when both blocks move with the same velocity, which is the velocity of the centre of mass $\\left(\\mathrm{v}_{\\mathrm{cm}}\\right)$.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4h6ffv%2F0f60bb55-1741-464b-a1fd-b9c8a8f61d9b%2Fc6c897b0-8a69-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4h6ffw.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4h6ffv%2F0f60bb55-1741-464b-a1fd-b9c8a8f61d9b%2Fc6c897b0-8a69-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4h6ffw.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Using formula for velocity of centre of mass, $$\\vec{v}_{\\mathrm{cm}}=\\frac{\\sum m_i \\vec{v}_i}{\\sum m_i}$$</p>\n<p>$$v_{\\mathrm{cm}}=\\frac{m_1 v_1 + m_2 v_2}{m_1 + m_2}=\\frac{m v_1 + M v_2}{m + M}$$</p>\n<p>In the centre of mass frame of reference, the kinetic energy of relative motion is converted into spring potential energy at maximum compression $x_{\\max}$.</p>\n<p>The reduced mass $\\mu$ of the system is, $$\\mu=\\frac{m M}{m + M}$$</p>\n<p>The relative velocity before collision is $v_{\\mathrm{rel}}=v_1-v_2$</p>\n<p>The kinetic energy in the centre of mass frame is,</p>\n<p>$$K_{\\mathrm{cm}}=\\frac{1}{2}\\mu v_{\\mathrm{rel}}^2=\\frac{1}{2}\\left(\\frac{m M}{m + M}\\right)(v_1-v_2)^2$$</p>\n<p>At maximum compression, kinetic energy in the COM frame equal to potential energy stored in the spring at maximum compression:</p>\n<p>$$\\frac{1}{2}Kx_{\\max}^2=\\frac{1}{2}\\left(\\frac{m M}{m + M}\\right)(v_1-v_2)^2$$</p>\n<p>$$Kx_{\\max}^2=\\left(\\frac{m M}{m + M}\\right)(v_1-v_2)^2$$</p>\n<p>$$x_{\\max}^2=\\frac{(v_1-v_2)^2\\, m M}{(m + M)K}$$</p>\n<p>$$x_{\\max}=(v_1-v_2)\\sqrt{\\frac{m M}{(m + M)K}}$$</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$m$ और $M$ द्रव्यमान के दो गुटके एक घर्षण रहित सतह पर एक ही दिशा में क्रमशः $v_1$ और $v_2$ ($v_1 > v_2$) की चाल से गति कर रहे हैं, जहाँ $M$, $m$ के आगे है। $k$ बल नियतांक वाला एक आदर्श स्प्रिंग $M$ के पीछे के हिस्से से जुड़ा हुआ है (जैसा कि चित्र में दिखाया गया है)। जब गुटके टकराते हैं तो स्प्रिंग का अधिकतम संपीडन होगा :</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4h4stm%2F85a6513c-9bc1-4f7c-8bef-5ee08030aa47%2F9980a4a0-8a69-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4h4stn.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4h4stm%2F85a6513c-9bc1-4f7c-8bef-5ee08030aa47%2F9980a4a0-8a69-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4h4stn.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$v_1 \\sqrt{\\dfrac{m}{k}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$v_2 \\sqrt{\\dfrac{M}{k}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(v_1 - v_2) \\sqrt{\\dfrac{mM}{(M+m)k}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>उपर्युक्त में से कोई भी सही नहीं है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-mass-system",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4hgk1j",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Mass A hits B inelastically (e = 0) while moving horizontally with some velocity along the common line of centres of the three equal masses each of same mass. Initially mass B and C are stationary and the spring is unstretched. Then which is incorrect.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4h9cro%2Fe487425e-a02f-4c1d-8841-0f5f3e93fdc2%2F18259a40-8a6a-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4h9crp.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4h9cro%2Fe487425e-a02f-4c1d-8841-0f5f3e93fdc2%2F18259a40-8a6a-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4h9crp.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>compression will be maximum when blocks have same velocity</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>velocity of C is maximum when (A + B) is at rest</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>velocity of C is maximum when spring is undeformed.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>velocity of C is minimum when spring is undeformed.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The masses of blocks $A, B$, and $C$ are all equal, $m_A=m_B=m_C=m$ \n<br/><br/>Initial velocity of A is $\\mathrm{u}_{\\mathrm{Ai}}=\\mathrm{v}$, while B and C are initially at rest, $\\mathrm{u}_{\\mathrm{Bi}}=\\mathrm{u}_{\\mathrm{Ci}}=0$.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4has8e%2F3596ee6a-106b-43c7-9650-7d0dd958f60b%2F3fe6e8e0-8a6a-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4has8f.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4has8e%2F3596ee6a-106b-43c7-9650-7d0dd958f60b%2F3fe6e8e0-8a6a-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4has8f.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>It is given that collision between A and B is inelastic ($e = 0$).</p>\n<p>Applying conservation of linear momentum for blocks A and B during collision:</p>\n<p>$$m_A u_{Ai} + m_B u_{Bi} = m_A v_{Af} + m_B v_{Bf}$$</p>\n<p>$$mv + 0 = (m + m) v_0$$</p>\n<p>$$mv = 2m v_0 \\Rightarrow v_0 = \\frac{v}{2}$$</p>\n<p>Immediately after impact, blocks A and B stick together forming a combined mass $m_{AB} = 2m$ moving right with initial velocity $v_0 = \\frac{v}{2}$, while block C ($m_C = m$) is at rest.</p>\n<p>The spring connects (A + B) of mass $2m$ to C of mass $m$.</p>\n<p>In a spring-mass system, the spring extension or compression reaches its extreme value (maximum compression) when the relative velocity between the two connected masses becomes zero.</p>\n<p>$$v_{\\mathrm{rel}} = v_{AB} - v_C = 0 \\Rightarrow v_{AB} = v_C$$</p>\n<p>Thus, compression is maximum when both blocks move with the same velocity. Thus, statement (A) is correct.</p>\n<p>The first block(s) is of mass $m_{AB} = 2m$, moving with initial speed $v_0 = \\frac{v}{2}$</p>\n<p>The mass of second block is $m_C = m$, initially at rest, $u_{Ci} = 0$</p>\n<p>Maximum compression $x_{\\max}$ occurs when both blocks (AB and C) move with the same velocity, which is the velocity of the centre of mass ($v_{cm}$).</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4hd5ch%2F0a0cc7ed-4eda-4996-ba05-1de3e09dd5b1%2F81a66c10-8a6a-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4hd5ci.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4hd5ch%2F0a0cc7ed-4eda-4996-ba05-1de3e09dd5b1%2F81a66c10-8a6a-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4hd5ci.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Using formula for velocity of centre of mass, $$\\vec{v}_{\\mathrm{cm}} = \\frac{\\sum m_i \\vec{v}_i}{\\sum m_i}$$</p>\n<p>$$v_{\\mathrm{cm}} = \\frac{m_1 v_1 + m_2 v_2}{m_1 + m_2} = \\frac{2m\\,v_0 + m\\times 0}{2m + m} = \\frac{2v_0}{3}$$</p>\n<p>In the centre of mass frame of reference, the kinetic energy of relative motion is converted into spring potential energy at maximum compression $x_{\\max}$.</p>\n<p>The reduced mass $\\mu$ of the system is,</p>\n<p>$$\\mu = \\frac{(m_{AB})(m_C)}{(m_{AB})+(m_C)} = \\frac{(2m)(m)}{2m + m} = \\frac{2m}{3}$$</p>\n<p>The relative velocity before collision is $$v_{\\mathrm{rel}} = v_{AB} - u_{Ci} = \\frac{v_0}{2} - 0 = \\frac{v_0}{2}$$</p>\n<p>The kinetic energy in the centre of mass frame is,</p>\n<p>$$K_{\\mathrm{cm}} = \\frac{1}{2}\\,\\mu\\,v_{\\mathrm{rel}}^2 = \\frac{1}{2}\\left(\\frac{2m}{3}\\right)\\left(\\frac{v_0}{2}\\right)^2 = \\frac{mv_0^2}{12}$$</p>\n<p>At maximum compression, kinetic energy in the COM frame equal to potential energy stored in the spring at maximum compression:</p>\n<p>$$\\frac{1}{2}\\,K\\,x_{\\max}^2 = \\frac{mv_0^2}{12}$$</p>\n<p>$$K\\,x_{\\max}^2 = \\frac{mv_0^2}{12}$$</p>\n<p>$$x_{\\max} = \\frac{v_0}{2}\\sqrt{\\frac{2m}{3K}}$$</p>\n<p>After the collision, the system consisting of combined mass (A + B) and mass C undergoes simple harmonic motion (SHM) about its centre of mass frame.</p>\n<p>When combined mass A and B is moving to the right, it cause compression in the spring connecting the blocks. So, the spring force is outward at both the end, i.e., retardation of blocks (A+B) and acceleration of C,</p>\n<p>$$a_C = \\frac{F_s}{m_C}$$</p>\n<p>When the spring is compressed or stretched ($F_s \\ne 0$), an acceleration acts on C, changing its velocity.</p>\n<p>When the spring passes through its natural length (undeformed state), $F_s = 0$, so acceleration $a_C = 0$.</p>\n<p>The maximum or minimum value of velocity occurs when acceleration is zero ($\\frac{dv_C}{dt} = 0$).</p>\n<p>At the undeformed position during the forward motion cycle, $v_C$ reaches its maximum value.</p>\n<p>At the undeformed position during the return cycle, $v_C$ reaches its minimum value (or zero).</p>\n\n<p>Thus, statements (C) and (D) are correct.</p>\n<p>Therefore, $v_C$ is maximum when the spring is undeformed, and minimum when the spring is undeformed at other instants in cycle.</p>\n<p>Total momentum of the system is conserved</p>\n<p>$$P_{\\text{total}} = mv = 2m\\,v_{AB} + m\\,v_C$$</p>\n<p>$$\\Rightarrow v_{AB} = \\frac{v - v_C}{2} \\ldots (i)$$</p>\n<p>When spring is undeformed, using conservation of energy,</p>\n<p>$$\\frac{1}{2}(2m)v_{AB}^2 + \\frac{1}{2}m v_C^2 = \\frac{1}{2}(2m)\\left(\\frac{v}{2}\\right)^2$$</p>\n<p>$$v_{AB}^2 + \\frac{1}{2}v_C^2 = \\frac{v^2}{4} \\ldots (ii)$$</p>\n<p>Solving the system of equations (i) and (ii),</p>\n<p>$$4\\left(\\frac{v-v_C}{2}\\right)^2 + 2v_C^2 = v^2$$</p>\n<p>$$v^2 - 2vv_C + v_C^2 + 2v_C^2 = v^2$$</p>\n<p>$$v_C(-2v + 3v_C) = 0$$</p>\n<p>$$\\Rightarrow v_C = 0 \\text{ or } \\frac{2v}{3}$$</p>\n<p>When $v_C$ is maximum $\\left(v_C = \\frac{2v}{3}\\right)$, velocity of $(A+B)$ is $v_{AB} = \\frac{v}{6} \\ne 0$. So, block $(A+B)$ is not at rest when velocity of $C$ is maximum. Therefore, statement (B) is incorrect.</p>\n<p>As the question has asked to select the incorrect statement, which is in option (B). Thus, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "\n<p>द्रव्यमान A, तीन समान द्रव्यमानों (प्रत्येक का द्रव्यमान समान है) के केंद्रों की उभयनिष्ठ रेखा के अनुदिश क्षैतिज रूप से कुछ वेग से गति करते हुए B से अप्रत्यास्थ रूप से (e = 0) टकराता है। प्रारंभ में द्रव्यमान B और C स्थिर हैं और स्प्रिंग अविकृत (बिना खिंची हुई) अवस्था में है। तो कौन सा कथन असत्य है।</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4h9cro%2Fe487425e-a02f-4c1d-8841-0f5f3e93fdc2%2F18259a40-8a6a-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4h9crp.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4h9cro%2Fe487425e-a02f-4c1d-8841-0f5f3e93fdc2%2F18259a40-8a6a-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4h9crp.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>जब ब्लॉकों का वेग समान होगा तब संपीड़न अधिकतम होगा</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>जब (A + B) विरामावस्था में होता है तब C का वेग अधिकतम होता है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>जब स्प्रिंग अविकृत होती है तब C का वेग अधिकतम होता है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>जब स्प्रिंग अविकृत होती है तब C का वेग न्यूनतम होता है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-mass-system",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4hmci3",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The area of F &minus; t curve is A, where 'F' is the force acting on one mass due to the other. If one of the colliding bodies of mass M is at rest initially, its speed just after the collision is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>A/M</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{M}{A} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>AM</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\sqrt{\\frac{2A}{M}} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Using Newton's second law of motion, the net force acting on an object is the rate of change of linear momentum, $\\mathrm{F}(\\mathrm{t})=\\frac{\\mathrm{dP}}{\\mathrm{dt}} \\Rightarrow \\mathrm{dP}=\\mathrm{F}(\\mathrm{t}) \\mathrm{dt}$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4hj07z%2F565ff1f4-da87-43a5-ba4e-ba91b78a1e3a%2F248bc6f0-8a6b-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4hj080.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4hj07z%2F565ff1f4-da87-43a5-ba4e-ba91b78a1e3a%2F248bc6f0-8a6b-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4hj080.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>So, an impulse $(J)$ imparted by a force $F(t)$ over a time interval from $t_1$ to $t_2$ is</p>\n<p>$$J = \\int\\limits_{t_1}^{t_2} F(t)\\,dt$$</p>\n<p>In a Force-time $(F - t)$ graph, the value of this integral represents the area under the $F - t$ curve.</p>\n<p>The area under $F - t$ curve $= A$</p>\n<p>Therefore, the impulse delivered to the mass $M$ is $J = A$</p>\n<p>According to the impulse-momentum theorem, the total impulse applied to a body equals the change in its linear momentum:</p>\n<p>$$J = \\Delta P \\Rightarrow J = P_{\\text{final}} - P_{\\text{initial}}$$</p>\n<p>The mass of the body is $M$ which is initially at rest $(v_i = 0)$</p>\n<p>So, the initial momentum, $P_{\\text{initial}} = M \\times 0 = 0$</p>\n<p>Let $v$ be the speed of mass $M$ just after collision.</p>\n<p>So, the final momentum, $P_{\\text{final}} = Mv$</p>\n<p>Substituting $J = A$ into the impulse-momentum relation:</p>\n<p>$$A = Mv - 0$$</p>\n<p>$$\\Rightarrow A = Mv \\Rightarrow v = AM$$</p>\n<p>Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>F &minus; t वक्र का क्षेत्रफल A है, जहाँ 'F' एक द्रव्यमान पर दूसरे के कारण कार्यरत बल है। यदि M द्रव्यमान वाले टकराने वाले पिंडों में से एक प्रारंभ में विरामावस्था में है, तो टक्कर के ठीक बाद इसकी चाल है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>A/M</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{M}{A} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>AM</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\sqrt{\\frac{2A}{M}} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "impulse-momentum-theorem",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mroxfof3",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In the figure shown, a block of mass $M$ is resting against a vertical wall. A particle of mass $m\\left(=\\frac{M}{2}\\right)$ is released from rest from the position shown. The maximum height reached (from bottom of the groove) by the particle on the circular groove is $\\frac{2 \\mathrm{R}}{\\alpha}$. Find the value of $\\alpha$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrox8yza%2Fc780f1f0-f310-48e3-a50e-7035f5def10c%2F152bdb60-81dc-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mrox8yzb.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrox8yza%2Fc780f1f0-f310-48e3-a50e-7035f5def10c%2F152bdb60-81dc-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mrox8yzb.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p><b>Interval 1 :</b> Particle moves from top to bottom</p>\n<p>As the particle m slides down the left side of the groove, it pushes against the block M. Since the block is against a vertical wall, it cannot move to the left. The wall provides a normal force that keeps the block M stationary.</p>\n<p>Initial position when it is at the top of the groove, $h_i = R$, velocity $v_i = 0$</p>\n<p>So, total initial energy of the particle is $E_i = K_i + U_i = \\frac{1}{2}mv_i^2 + mgh_i = \\frac{1}{2}m \\times (0)^2 + mgR = mgR$</p>\n<p>Final position when it is at the bottom of the groove, $h_f = 0$, velocity $v_f = v_1$</p>\n<p>So, total final energy of the particle is $E_f = K_f + U_f = \\frac{1}{2}mv_f^2 + mgh_f = \\frac{1}{2}m \\times v_1^2 + mg \\times 0 = \\frac{1}{2}mv_1^2$</p>\n<p>Using conservation of mechanical energy for the particle m:</p>\n<p>$$E_f = E_i$$</p>\n<p>$$\\frac{1}{2}mv_1^2 = mgR \\Rightarrow v_1 = \\sqrt{2gR}$$</p>\n<p>At the bottom, the particle has a horizontal velocity $v_1$ directed to the right.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mroxb0xv%2Fd65a66b3-064b-4428-8fc2-91887a5bf3df%2F4e4ddd30-81dc-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroxb0xw.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mroxb0xv%2Fd65a66b3-064b-4428-8fc2-91887a5bf3df%2F4e4ddd30-81dc-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroxb0xw.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p><b>Interval 2 :</b> Particle moves from bottom to maximum height</p>\n<p>Once the particle passes the bottom and starts moving up the right side of the groove, it exerts a force on the block M toward the right. Since there is no wall on the right to stop it and the floor is smooth, the block M begins to move to the right.</p>\n<p>In this interval, horizontal momentum and mechanical energy are conserved for the system ( $m+M$ ).</p>\n<p>Using conservation of horizontal Momentum:</p>\n<p>At the bottom, the initial horizontal momentum is $\\mathrm{m}_1$.</p>\n<p>At the maximum height $\\mathrm{h}_{\\max }$, the particle m stops moving relative to the block M . Therefore, both m and M move together with a common horizontal velocity V .</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mroxcydq%2F8ca22b29-f44d-4166-a6f9-ea6eb1767a40%2F83f202e0-81dc-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroxcydr.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mroxcydq%2F8ca22b29-f44d-4166-a6f9-ea6eb1767a40%2F83f202e0-81dc-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroxcydr.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>$$m v_1 = (m + M)V$$</p>\n<p>Substitute $m = M/2$ :</p>\n<p>$$\\frac{M}{2}v_1 = \\left(\\frac{M}{2} + M\\right)V$$</p>\n<p>$$\\frac{M}{2}v_1 = \\frac{3M}{2}V$$</p>\n<p>$$V = \\frac{v_1}{3}$$</p>\n<p>The kinetic energy at the bottom is converted into the kinetic energy of the combined system and the gravitational potential energy of the particle at its new height $h_{\\max}$.</p>\n<p>$$\\frac{1}{2} m v_1^2 = \\frac{1}{2}(m + M)V^2 + mgh_{\\max}$$</p>\n\n<p>Since $\\frac{M}{m}=2$, then $\\frac{m+M}{m}=3$.</p>\n<p>$$\\frac{1}{2}v_1^2=\\frac{1}{2}\\left(\\frac{m+M}{m}\\right)V^2+gh_{\\max}$$</p>\n<p>$$\\frac{1}{2}v_1^2=\\frac{1}{2}(3)\\left(\\frac{v_1}{3}\\right)^2+gh_{\\max}$$</p>\n<p>$$\\frac{1}{2}v_1^2=\\frac{3v_1^2}{2\\,9}+gh_{\\max}$$</p>\n<p>$$\\frac{1}{2}v_1^2=\\frac{1}{6}v_1^2+gh_{\\max}$$</p>\n<p>$$gh_{\\max}=\\frac{1}{2}v_1^2-\\frac{1}{6}v_1^2=\\frac{1}{3}v_1^2$$</p>\n<p>Substituting $v_1^2=2gR$,</p>\n<p>$$gh_{\\max}=\\frac{1}{3}(2gR)$$</p>\n<p>$$h_{\\max}=\\frac{2R}{3}=\\frac{2R}{\\alpha}\\Rightarrow \\alpha=3$$</p>\n<p>Therefore, the value of $\\alpha$ is 3.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दर्शाए गए चित्र में, द्रव्यमान $M$ का एक गुटका एक ऊर्ध्वाधर दीवार के सहारे रखा है। द्रव्यमान $m\\left(=\\frac{M}{2}\\right)$ के एक कण को दर्शाई गई स्थिति से विरामावस्था से छोड़ा जाता है। वृत्ताकार खांचे (groove) पर कण द्वारा (खांचे के सबसे निचले बिंदु से) प्राप्त की गई अधिकतम ऊंचाई $\\frac{2 \\mathrm{R}}{\\alpha}$ है। $\\alpha$ का मान ज्ञात कीजिए।</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrox8yza%2Fc780f1f0-f310-48e3-a50e-7035f5def10c%2F152bdb60-81dc-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mrox8yzb.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrox8yza%2Fc780f1f0-f310-48e3-a50e-7035f5def10c%2F152bdb60-81dc-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mrox8yzb.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "impulse-momentum-theorem",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms0jnd19",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two masses each of $m=6 \\mathrm{~kg}$ are connected by a spring as shown in the figure. One of the masses was given velocity $\\mathbf{v}=\\mathbf{2 k}$, as shown in figure where ' $\\mathbf{k}$ ' is the spring constant. Then maximum extension in the spring is $\\sqrt{N \\times k}$. Find the value of $N$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms0j8vp9%2Fe9f80f66-6237-4a50-ba24-3dc2cc8c9113%2Fba9fa2d0-883e-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0j8vpa.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms0j8vp9%2Fe9f80f66-6237-4a50-ba24-3dc2cc8c9113%2Fba9fa2d0-883e-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0j8vpa.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "12",
+                "explanation": "<p>The mass of left block is $\\mathrm{m}_1=\\mathrm{m}=6 \\mathrm{~kg}$</p>\n<p>The mass of right block is $\\mathrm{m}_2=\\mathrm{m}=6 \\mathrm{~kg}$</p>\n<p>The initial velocity of left block is $\\mathrm{u}_1=0$</p>\n<p>The initial velocity of right block is $\\mathrm{u}_2=\\mathrm{v}=2 \\mathrm{k}$</p>\n<p>The system of blocks is on horizontal surface which is smooth. So, there is no friction on the system.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms0jjdzg%2F6220c985-199b-465f-9f02-f647f26deb10%2Fded69cc0-883f-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0jjdzh.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms0jjdzg%2F6220c985-199b-465f-9f02-f647f26deb10%2Fded69cc0-883f-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0jjdzh.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Since no horizontal external forces act on the system, linear momentum is conserved.</p>\n<p>Using the formula for the velocity of centre of mass $v_{\\mathrm{cm}} = \\frac{m_1u_1 + m_2u_2}{m_1 + m_2}$</p>\n<p>$$v_{\\mathrm{cm}} = \\frac{m(0) + m(v)}{m + m} = \\frac{mv}{2m} = \\frac{v}{2}$$</p>\n<p>At the instant of maximum spring extension ($x_{\\max}$), both masses move with the same common velocity equal to $v_{\\mathrm{cm}}$.</p>\n<p>Using energy conservation relative to the ground frame:</p>\n<p>Initial Kinetic Energy is $K_i = \\frac{1}{2}m_1u_1^2 + \\frac{1}{2}m_2u_2^2 = 0 + \\frac{1}{2}mv^2 = \\frac{1}{2}mv^2$</p>\n<p>Final Kinetic Energy is $K_f = \\frac{1}{2}(m_1 + m_2)v_{\\mathrm{cm}}^2 = \\frac{1}{2}(2m)\\left(\\frac{v}{2}\\right)^2 = \\frac{mv^2}{4} = \\frac{1}{4}mv^2$</p>\n<p>At maximum elongation, the maximum spring potential energy is $U_s = \\frac{1}{2}kx_{\\max}^2$</p>\n<p>By conservation of energy :</p>\n<p>$$K_i = K_f + U_s$$</p>\n\n<p>$$\\frac{1}{2}mv^2 = \\frac{1}{4}mv^2 + \\frac{1}{2}kx_{\\max}^2$$</p>\n<p>$$\\frac{1}{4}mv^2 = \\frac{1}{2}kx_{\\max}^2$$</p>\n<p>$$x_{\\max}^2 = \\frac{mv^2}{2k}$$</p>\n<p>$$x_{\\max} = \\sqrt{\\frac{m}{2k}} \\times v$$</p>\n<p>Given the mass of blocks is $m = 6\\ \\mathrm{kg}$ and $v = 2k$</p>\n<p>$$x_{\\max} = \\sqrt{\\frac{6}{2k}} \\times (2k)$$</p>\n<p>$$x_{\\max} = \\sqrt{\\frac{3}{k}} \\times 4k^2 = \\sqrt{12k}$$</p>\n<p>$$\\Rightarrow \\sqrt{N} = \\sqrt{12} \\Rightarrow N = 12$$</p>\n<p>Therefore, the value of $N$ is $12$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो द्रव्यमान जिनमें प्रत्येक का मान $m=6 \text{ kg}$ है, चित्र में दर्शाए अनुसार एक स्प्रिंग से जुड़े हुए हैं। इनमें से एक द्रव्यमान को $\\mathbf{v}=\\mathbf{2 k}$ का वेग दिया गया है, जैसा कि चित्र में दर्शाया गया है, जहाँ '$\\mathbf{k}$' स्प्रिंग नियतांक है। तब स्प्रिंग में अधिकतम खिंचाव $\\sqrt{N \\times k}$ है। $N$ का मान ज्ञात कीजिए।</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms0j8vp9%2Fe9f80f66-6237-4a50-ba24-3dc2cc8c9113%2Fba9fa2d0-883e-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0j8vpa.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms0j8vp9%2Fe9f80f66-6237-4a50-ba24-3dc2cc8c9113%2Fba9fa2d0-883e-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0j8vpa.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "spring-mass-system",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms0jrxjf",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A ball of mass 50 gm is dropped from a height $\\mathbf{h}=\\mathbf{2 0 ~ m}$. It rebounds losing $\\mathbf{7 5}$ percent of its kinetic energy. If it remains in contact with the ground for $\\boldsymbol{\\Delta} \\mathbf{t}=\\mathbf{0 . 0 1} \\mathbf{~ s e c}$., the impulse of the impact force is $5 \\mathrm{~K} \\times 10^{-2} \\mathrm{Ns}$. Find the value of $\\mathrm{K} .\\left(\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^2\\right)$</p>",
+                "options": [],
+                "answer": "30",
+                "explanation": "<p>The mass of ball is $\\mathrm{m}=50 \\mathrm{~g}=0.05 \\mathrm{~kg}$</p>\n<p>The initial height of the ball is $\\mathrm{h}=20 \\mathrm{~m}$</p>\n<p>The time of contact between the ball with surface is $\\Delta \\mathrm{t}=0.01 \\mathrm{~s}$</p>\n<p>The acceleration due to gravity is $\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^2$</p>\n<p>The ball is dropped from rest $(\\mathrm{u}=0)$. Using third equation of motion $\\left(\\mathrm{v}^2=\\mathrm{u}^2+2 \\mathrm{gh}\\right)$ the speed just before the impact after vertical displacement equal to height $h$ is,</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms0jptb7%2F1cf0a5e5-2e4f-4af7-8473-0f612f2b8152%2F91884f30-8840-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0jptb8.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms0jptb7%2F1cf0a5e5-2e4f-4af7-8473-0f612f2b8152%2F91884f30-8840-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0jptb8.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>$$v_1 = \\sqrt{2gh} = \\sqrt{2 \\times 10 \\times 20} = \\sqrt{400} = 20\\ \\text{m/s}$$</p>\n<p>So, the velocity of the ball just before impact is $20\\ \\text{m/s}$ vertically downward, $v_1 = -20\\ \\text{m/s}$</p>\n<p>The kinetic energy just before impact is, $K_1 = \\frac{1}{2} m v_1^2$</p>\n<p>The ball loses 75% of its kinetic energy during impact, so the remaining kinetic energy after impact is:</p>\n<p>$$K_2 = K_1 - 0.75\\,K_1 = 0.25\\,K_1 = \\frac{1}{4}K_1$$</p>\n<p>If the speed of ball just after impact is $v$, then</p>\n<p>$$\\frac{1}{2} m v_2^2 = \\frac{1}{4}\\left(\\frac{1}{2} m v_1^2\\right)$$</p>\n<p>$$v_2^2 = \\frac{v_1^2}{4} \\Rightarrow v_2 = \\frac{v_1}{2} = \\frac{20}{2} = 10\\ \\text{m/s}$$</p>\n<p>Let upward direction be $+\\hat{\\jmath}$ and downward direction be $-\\hat{\\jmath}$.</p>\n<p>Initial velocity vector is $\\vec{v}_1 = -20\\hat{\\jmath}\\ \\text{m/s}$</p>\n<p>Final velocity vector is $\\vec{v}_2 = +10\\hat{\\jmath}\\ \\text{m/s}$</p>\n<p>The impulse is the change in linear momentum,</p>\n<p>$$\\vec{I} = \\Delta \\vec{p} = m\\vec{v}_2 - m\\vec{v}_1 = m(\\vec{v}_2 - \\vec{v}_1)$$</p>\n<p>Substituting the values:</p>\n<p>$$\\vec{I} = 0.05\\,(10\\hat{\\jmath} - (-20\\hat{\\jmath}))$$</p>\n<p>$$\\vec{I} = 0.05 \\times 30\\hat{\\jmath} = 1.5\\hat{\\jmath}\\ \\text{Ns}$$</p>\n<p>So, the magnitude of impulse is $I = 1.5\\ \\text{Ns}$</p>\n<p>$$\\Rightarrow 5K \\times 10^{-2} = 1.5$$</p>\n<p>$$\\Rightarrow 5K = 1.5 \\times 10^2 = 150$$</p>\n<p>$$\\Rightarrow K = 30$$</p>\n<p>Therefore, the value of K is 30.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>50 gm द्रव्यमान की एक गेंद को $\\mathbf{h}=\\mathbf{2 0 ~ m}$ की ऊँचाई से गिराया जाता है। यह अपनी गतिज ऊर्जा का $\\mathbf{7 5}$ प्रतिशत खोकर वापस उछलती है। यदि यह जमीन के साथ $\\boldsymbol{\\Delta} \\mathbf{t}=\\mathbf{0 . 0 1} \\mathbf{~ sec}.$ तक संपर्क में रहती है, तो संघट्ट बल (impact force) का आवेग $5 \\mathrm{~K} \\times 10^{-2} \\mathrm{Ns}$ है। $\\mathrm{K}$ का मान ज्ञात कीजिए। $\\left(\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^2\\right)$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "impulse-momentum-theorem",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms0j7b7y",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the KE of a body becomes four times of its initial value, then the new momentum will be more than its initial momentum by $2 \\times N \\%$ Find the value of $N$.</p>",
+                "options": [],
+                "answer": "50",
+                "explanation": "<p>Let a body have mass $m$ and velocity $v$.</p>\n<p>The linear momentum is the product of mass and the velocity is $p = mv \\Rightarrow v = \\frac{p}{m}$</p>\n<p>The kinetic energy of body is $K = \\frac{1}{2}mv^2$</p>\n<p>Substituting $v = \\frac{p}{m}$ into kinetic energy equation:</p>\n<p>$$K = \\frac{1}{2}m\\left(\\frac{p}{m}\\right)^2 = \\frac{p^2}{2m}$$</p>\n<p>$$\\Rightarrow p = \\sqrt{2mK}$$</p>\n<p>Let initial kinetic energy be $K_i = K$ and initial momentum be $p_i = \\sqrt{2mK}$.</p>\n<p>Given that final kinetic energy is four times the initial kinetic energy.</p>\n<p>$$K_f = 4K_i = 4K$$</p>\n<p>So, the final linear momentum is,</p>\n<p>$$p_f = \\sqrt{2mK_f} = \\sqrt{2m(4K)} = 2\\sqrt{2mK} = 2\\,p_i$$</p>\n<p>Percentage increase in momentum is,</p>\n<p>$$\\Delta p\\% = \\left(\\frac{p_f - p_i}{p_i}\\right) \\times 100\\% = \\left(\\frac{2p_i - p_i}{p_i}\\right) \\times 100\\% = 1 \\times 100\\% = 100\\%$$</p>\n<p>It is given that the new momentum is more than its initial momentum by $2 \\times N\\%$:</p>\n<p>$$2 \\times N\\% = 100\\%$$</p>\n<p>$$\\Rightarrow 2N = 100$$</p>\n<p>$$\\Rightarrow N = 50$$</p>\n<p>Therefore, the value of $N$ is 50.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि किसी पिंड की गतिज ऊर्जा (KE) उसके प्रारंभिक मान की चार गुना हो जाती है, तो नया संवेग उसके प्रारंभिक संवेग से $2 \\times N \\%$ अधिक होगा। $N$ का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "impulse-momentum-theorem",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms4i6ufh",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The given figure shows a plot of the time dependent force $\\mathrm{F}_{\\mathrm{x}}$ acting on a particle in motion along the x-axis. The total impulse delivered by this force to the particle from time $\\mathrm{t}=0$ to $\\mathrm{t}=2 \\mathrm{sec}$. is $\\frac{\\mathrm{N}}{10} \\mathrm{Kg}-\\mathrm{m} / \\mathrm{s}$. Find the value of N .</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4i2wky%2F1cc0d7b0-1ae3-4ca6-879d-f539561040d4%2F4dead520-8a6d-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4i2wkz.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4i2wky%2F1cc0d7b0-1ae3-4ca6-879d-f539561040d4%2F4dead520-8a6d-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4i2wkz.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "20",
+                "explanation": "<p>The impulse (J) delivered by a time-varying force $\\mathrm{F}_{\\mathrm{x}}(\\mathrm{t})$ during a time interval from $\\mathrm{t}_1$ to $\\mathrm{t}_2$ is,</p>\n<p>$$ J=\\int\\limits_{t_1}^{t_2} F_x(t) d t $$</p>\n<p>In a force versus time $\\left(\\mathrm{F}_{\\mathrm{x}}-\\mathrm{t}\\right)$ graph, this integral is equal to the area under the curve bounded by the time axis between $\\mathrm{t}_1$ and $\\mathrm{t}_2$.</p>\n<p>From $\\mathrm{t}=0$ to $\\mathrm{t}=1 \\mathrm{~s}$, the force increases linearly from 0 N to 2 N .</p>\n<p>From $\\mathrm{t}=1 \\mathrm{~s}$ to $\\mathrm{t}=2 \\mathrm{~s}$, the force decreases linearly from 2 N back to 0 N .</p>\n<p>This region forms a triangle with base, $\\mathrm{b}=2 \\mathrm{~s}-0 \\mathrm{~s}=2 \\mathrm{~s}$ and height, $\\mathrm{h}=2 \\mathrm{~N}$</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4i5djk%2F2c20b32b-cfeb-4a28-8d9e-1c48655fa565%2F92a34d00-8a6d-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4i5djl.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4i5djk%2F2c20b32b-cfeb-4a28-8d9e-1c48655fa565%2F92a34d00-8a6d-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4i5djl.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Using the formula for the area of a triangle:</p>\n<p>$$\\text{Area} = \\frac{1}{2} \\times \\text{base} \\times \\text{height}$$</p>\n<p>$$J = \\frac{1}{2} \\times 2 \\times 2 = 2\\ \\text{kgm/s}$$</p>\n<p>$$J = \\frac{N}{10} = 2 \\Rightarrow N = 20$$</p>\n<p>Therefore, the value of N is 20.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दिया गया चित्र x-अक्ष के अनुदिश गतिमान एक कण पर लगने वाले समय पर निर्भर बल $\\mathrm{F}_{\\mathrm{x}}$ का ग्राफ दर्शाता है। समय $\\mathrm{t}=0$ से $\\mathrm{t}=2 \\mathrm{sec}$ तक इस बल द्वारा कण पर लगाया गया कुल आवेग $\\frac{\\mathrm{N}}{10} \\mathrm{Kg}-\\mathrm{m} / \\mathrm{s}$ है। N का मान ज्ञात कीजिए।</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4i2wky%2F1cc0d7b0-1ae3-4ca6-879d-f539561040d4%2F4dead520-8a6d-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4i2wkz.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4i2wky%2F1cc0d7b0-1ae3-4ca6-879d-f539561040d4%2F4dead520-8a6d-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4i2wkz.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "impulse-momentum-theorem",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Impulse-Momentum Theorem, Spring-Mass System",
+    "timeAllotted": 2160000,
+    "title": "Center of Mass and Collision Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g71mnvx7732",
+    "defaultLanguage": "en",
+    "description": "Impulse-Momentum Theorem, Spring-Mass System",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-28T12:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Impulse-Momentum Theorem, Spring-Mass System",
+    "timeAllotted": 2160000,
+    "title": "Center of Mass and Collision Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Center of Mass and Collision"
+  }
+}

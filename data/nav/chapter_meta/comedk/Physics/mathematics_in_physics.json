@@ -1,0 +1,57 @@
+{
+  "examSlug": "comedk",
+  "examId": "629105adee9e3ae00d63352e",
+  "subjectId": "629105adee9e3ae00d63352b",
+  "chapterId": "629109eee350a2a3f2ae46d2",
+  "subject": "Physics",
+  "chapter": "Mathematics in Physics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64c57c3020fc93db0c28bea9",
+      "title": "Addition and Subtraction of Vectors",
+      "count": 9,
+      "questionIds": [
+        "6a0c7b4d72354c537d084ef4",
+        "6a0c7b3c72354c537d084e3e",
+        "6881bd0f2781fbe80ff8d269",
+        "677d328f8b409a1009ac22a4",
+        "64c57ba120fc93db0c28b8fb",
+        "64c57b6a20fc93db0c28b70b",
+        "64c57b5420fc93db0c28b646",
+        "64c57b4020fc93db0c28b591",
+        "64c57b2c20fc93db0c28b4e0"
+      ]
+    },
+    {
+      "id": "64c57c3020fc93db0c28bea8",
+      "title": "Multiplication of Vectors",
+      "count": 4,
+      "questionIds": [
+        "681377c22d288c475c04cc43",
+        "681377b02d288c475c04cbb0",
+        "654244d1242a07fec9fa75f2",
+        "64c57b2b20fc93db0c28b4d4"
+      ]
+    },
+    {
+      "id": "64c57c3020fc93db0c28beaa",
+      "title": "Errors of Measurement",
+      "count": 4,
+      "questionIds": [
+        "6881bd002781fbe80ff8d1d4",
+        "677d328e8b409a1009ac2296",
+        "64c57bce20fc93db0c28ba91",
+        "64c57bb720fc93db0c28b9c5"
+      ]
+    },
+    {
+      "id": "681378ae2d288c475c04cea6",
+      "title": "Fundamentals of Vectors",
+      "count": 1,
+      "questionIds": [
+        "681377942d288c475c04cadd"
+      ]
+    }
+  ]
+}

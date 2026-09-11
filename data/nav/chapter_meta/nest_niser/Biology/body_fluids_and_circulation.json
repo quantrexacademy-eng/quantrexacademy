@@ -1,0 +1,36 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d392647479b8e869647c",
+  "chapterId": "68091fd43a10446a207fdb56",
+  "subject": "Biology",
+  "chapter": "Body Fluids and Circulation",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6809205f3a10446a207fe166",
+      "title": "Blood",
+      "count": 1,
+      "questionIds": [
+        "68091fdb3a10446a207fdb98"
+      ]
+    },
+    {
+      "id": "6809205f3a10446a207fe165",
+      "title": "Blood Group",
+      "count": 1,
+      "questionIds": [
+        "68091fd93a10446a207fdb89"
+      ]
+    },
+    {
+      "id": "6809205f3a10446a207fe164",
+      "title": "Circulatory Pathways",
+      "count": 2,
+      "questionIds": [
+        "68091fde3a10446a207fdbbb",
+        "68091fd43a10446a207fdb54"
+      ]
+    }
+  ]
+}

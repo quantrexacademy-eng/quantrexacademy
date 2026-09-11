@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g71mnq8i8g3",
+  "title": "Laws of Motion Test - 1 (Topic Test)",
+  "type": "topic",
+  "section": "Laws of Motion",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-06-20T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "d5d46580-729b-11f1-984b-3b829048875b",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g71mnq8i8g3",
+    "defaultLanguage": "en",
+    "description": "Newton's Laws of Motion",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-20T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-kzfcvwh8",
+            "languages": [
+              "en"
+            ],
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "Statement - 1 : A reference frame attached to the earth is an inertial frame of reference. and<br/><br/>Statement - 2 : In Theory, Newton's laws can be applied in Earth frame of reference.",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "Statement - 1 is True, Statement - 2 is True; Statement - 2 is a correct explanation for Statement - 1."
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "Statement - 1 is True, Statement - 2 is True; Statement - 2 is not a correct explanation for Statement - 1."
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "Statement - 1 is True, Statement - 2 is False."
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "Statement - 1 is False, Statement - 2 is False."
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "(1) Non rotating and non accelerating frame of reference is called inertial frame. As we know, earth is rotating as well as it has acceleration, so it is non-inertial reference frame.<br/><br/>(2) Newton's law is applicable only on inertial frame of reference. As earth is not an inertial frame of reference so we can't apply Newton's law on earth. But for our convenience in practical cases we assume earth as inertial frame of reference and apply Newton's law on earth."
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "कथन - 1 : पृथ्वी से जुड़ा निर्देश तंत्र एक जड़त्वीय निर्देश तंत्र होता है। और<br/><br/>कथन - 2 : सैद्धांतिक रूप से, पृथ्वी के निर्देश तंत्र में न्यूटन के नियम लागू किए जा सकते हैं।",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "कथन - 1 सत्य है, कथन - 2 सत्य है; कथन - 2, कथन - 1 की सही व्याख्या है।"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "कथन - 1 सत्य है, कथन - 2 सत्य है; कथन - 2, कथन - 1 की सही व्याख्या नहीं है।"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "कथन - 1 सत्य है, कथन - 2 असत्य है।"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "कथन - 1 असत्य है, कथन - 2 असत्य है।"
+                  }
+                ]
+              }
+            },
+            "type": "mcq",
+            "country": "in",
+            "examGroup": "jee",
+            "exam": "jee-main",
+            "subject": "physics",
+            "chapterGroup": "mechanics",
+            "chapter": "laws-of-motion",
+            "topic": null,
+            "difficulty": "medium",
+            "marks": 4,
+            "negMarks": 1,
+            "timeAllotted": 120000,
+            "subTopic": null
+          },
+          {
+            "questionId": "tq-mqleqnwa",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which figure represents the correct F.B.D. of rod of mass 𝐦 as shown in figure:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqleen7s%2Fd17fbeab-16c5-46eb-baad-dc8e6f166416%2Fd4286880-6c1f-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqleen7t.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqleen7s%2Fd17fbeab-16c5-46eb-baad-dc8e6f166416%2Fd4286880-6c1f-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqleen7t.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlefuns%2F032adf1a-1282-4f86-ab5e-e1206cf6728a%2Ff5b7b780-6c1f-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqlefunt.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlefuns%2F032adf1a-1282-4f86-ab5e-e1206cf6728a%2Ff5b7b780-6c1f-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqlefunt.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqleh8fp%2F46748668-7b89-492a-9d6f-328b7e555a3e%2F1c2b0250-6c20-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqleh8fq.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqleh8fp%2F46748668-7b89-492a-9d6f-328b7e555a3e%2F1c2b0250-6c20-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqleh8fq.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "None of these"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Gravity always acts vertically downwards, toward the centre of the Earth.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlejfis%2Feab84711-9085-413d-8ed7-8aabe1ac0b88%2F59428140-6c20-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqlejfit.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlejfis%2Feab84711-9085-413d-8ed7-8aabe1ac0b88%2F59428140-6c20-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqlejfit.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$\\overrightarrow{\\mathrm{F}}_{\\mathrm{g}}=\\mathrm{mg}$ (downwards).</p>\n<p>The string attached to the upper end of the rod pulls the rod. Tension always pulls away from the object along the length of the string. Since the string vertical, the tension force T must act vertically upwards at the top tip of the rod.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlel407%2F65a2a166-2233-4271-af8a-de693ab00574%2F87fb6970-6c20-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqlel408.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlel407%2F65a2a166-2233-4271-af8a-de693ab00574%2F87fb6970-6c20-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqlel408.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$\\overrightarrow{\\mathrm{T}}$ is vertically upwards.</p>\n<p>The lower end of the rod rests against a smooth surface.</p>\n<p>A normal reaction force (R) acts perpendicular to the surface of contact.</p>\n<p>If the surface is a horizontal floor, the normal reaction must be perpendicular to the floor, which means it points vertically upwards.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqleocqy%2F454c4949-5190-4a37-a9e9-e506259a24f6%2Fe229cea0-6c20-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqleocqz.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqleocqy%2F454c4949-5190-4a37-a9e9-e506259a24f6%2Fe229cea0-6c20-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqleocqz.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Thus, R must act vertically upwards from the point of contact on the smooth floor, mg acts vertically downwards from the middle, and T acts vertically upwards from the top right tip.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqleh8fp%2F46748668-7b89-492a-9d6f-328b7e555a3e%2F1c2b0250-6c20-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqleh8fq.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqleh8fp%2F46748668-7b89-492a-9d6f-328b7e555a3e%2F1c2b0250-6c20-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqleh8fq.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दर्शाए गए 𝐦 द्रव्यमान की छड़ के सही F.B.D. को कौन सा चित्र दर्शाता है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqleen7s%2Fd17fbeab-16c5-46eb-baad-dc8e6f166416%2Fd4286880-6c1f-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqleen7t.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqleen7s%2Fd17fbeab-16c5-46eb-baad-dc8e6f166416%2Fd4286880-6c1f-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqleen7t.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlefuns%2F032adf1a-1282-4f86-ab5e-e1206cf6728a%2Ff5b7b780-6c1f-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqlefunt.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlefuns%2F032adf1a-1282-4f86-ab5e-e1206cf6728a%2Ff5b7b780-6c1f-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqlefunt.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqleh8fp%2F46748668-7b89-492a-9d6f-328b7e555a3e%2F1c2b0250-6c20-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqleh8fq.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqleh8fp%2F46748668-7b89-492a-9d6f-328b7e555a3e%2F1c2b0250-6c20-11f1-9699-d33b59b46c6b%2Ffile-6y3zli1mqleh8fq.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "इनमें से कोई नहीं"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "newtons-laws-of-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqlex8ry",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>When a horse pulls a cart, the force needed to move the horse in forward direction is the force exerted by</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>the cart on the horse</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>the ground on the horse</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>the ground on the cart</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>the horse on the ground</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Newton's Second Law states that the acceleration of an object depends on the net external force acting on it:</p>\n<p>$$ \\Sigma \\overrightarrow{\\mathrm{F}}_{\\mathrm{external}}=\\mathrm{m} \\overrightarrow{\\mathrm{a}} $$</p>\n<p>For the horse to accelerate or move forward, there must be a net external force acting on the horse in the forward direction.</p>\n<p>The forces acting on the horse :</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqleuk9z%2F3363dbc2-d1a7-457e-aec2-e415546bfb60%2F8ed57370-6c21-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqleuka0.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqleuk9z%2F3363dbc2-d1a7-457e-aec2-e415546bfb60%2F8ed57370-6c21-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqleuka0.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The force of gravity ( $\\mathrm{m}_{\\mathrm{h}} \\mathrm{g}$ ) acting vertically downwards.</p>\n<p>Normal reaction from the ground ( N ) acting vertically upwards.</p>\n<p>The cart pulls back on the horse by tension in wooden log which acts in the backward direction.</p>\n<p>When the horse walks, it pushes the ground backwards and downwards.</p>\n<p>According to Newton's Third Law, every action has an equal and opposite reaction:</p>\n<p>The horse exerts a force on the ground by pushing it backwards $\\left(\\overrightarrow{\\mathrm{F}}_{\\mathrm{h} \\rightarrow \\mathrm{g}}\\right)$.</p>\n<p>In response, the ground exerts an equal and opposite force forward on the horse $\\left(\\overrightarrow{\\mathrm{F}}_{\\mathrm{g} \\rightarrow \\mathrm{h}}\\right)$.</p>\n<p>The force exerted by the cart on the horse pulls it backward, which opposes forward motion.</p>\n<p>The force exerted by the horse on the ground acts on the ground, not on the horse, so it cannot accelerate the horse.</p>\n<p>The only external horizontal force acting in the forward direction on the horse is the reaction force exerted by the ground. If this forward force exceeds the backward pull of the cart, the horse accelerates forward.</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>जब एक घोड़ा किसी गाड़ी को खींचता है, तो घोड़े को आगे की दिशा में ले जाने के लिए आवश्यक बल किसके द्वारा लगाया गया बल होता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>गाड़ी द्वारा घोड़े पर</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>जमीन द्वारा घोड़े पर</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>जमीन द्वारा गाड़ी पर</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>घोड़े द्वारा जमीन पर</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "newtons-laws-of-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqlfk1j3",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two blocks are in contact on a frictionless table. One has mass <b>m</b> and the other <b>2m</b>. A force <b>F</b> is applied on <b>2m</b> as shown in the figure. Now the same force <b>F</b> is applied from the right on <b>m</b>. In the two cases respectively, the ratio of force of contact between the two blocks will be :</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlf5hns%2Ff48a9f00-4968-4eea-8ccd-4f076a64341c%2Fbeb69280-6c22-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlf5hnt.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlf5hns%2Ff48a9f00-4968-4eea-8ccd-4f076a64341c%2Fbeb69280-6c22-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlf5hnt.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>same</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1 : 2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2 : 1</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1 : 3</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Case I when force F is applied from the left on mass $2 m$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlf72ud%2F0f419753-0b2b-40ca-a07c-fcfe25620de7%2Feae2b550-6c22-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlf72ue.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlf72ud%2F0f419753-0b2b-40ca-a07c-fcfe25620de7%2Feae2b550-6c22-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlf72ue.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Let the contact force exerted between the two blocks in this case be $\\mathrm{N}_1$.</p>\n<p>Since both blocks move together along the horizontal, frictionless table, let the combination ( $2 m+m$ ) as a single system.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlf9qo2%2F03b5ea55-3716-4bc5-ae76-4eb6031323a1%2F34e87220-6c23-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlf9qo3.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlf9qo2%2F03b5ea55-3716-4bc5-ae76-4eb6031323a1%2F34e87220-6c23-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlf9qo3.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The only external horizontal force acting on this composite system is F.</p>\n<p>According to Newton's Second Law ($\\Sigma \\, F = M_{\\text{total}} \\cdot a$):</p>\n<p>$$F = (2m + m)a_1$$</p>\n<p>$$F = 3ma_1$$</p>\n<p>$$a_1 = \\frac{F}{3m}$$</p>\n<p>Using Free Body Diagram (FBD) of the smaller block of mass m.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlfbl9n%2Fe920b121-bdbc-4fcb-81af-2401dc9a1ff5%2F685ac3b0-6c23-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlfbl9o.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlfbl9n%2Fe920b121-bdbc-4fcb-81af-2401dc9a1ff5%2F685ac3b0-6c23-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlfbl9o.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The only horizontal force pushing mass $m$ forward is the normal contact force $\\left(N_1\\right)$ from the block $2 m$.</p>\n<p>Applying Newton's Second Law to mass m :</p>\n<p>$$N_1 = m  a_1$$</p>\n<p>$$N_1 = m\\left(\\frac{F}{3m}\\right) = \\frac{F}{3} \\ldots (i)$$</p>\n<p>Case II when force F is applied from the right on mass m</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlff2q8%2Fb55cee06-ebf6-4c70-850b-cb9ed0ae1d9a%2Fc9451900-6c23-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlff2q9.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlff2q8%2Fb55cee06-ebf6-4c70-850b-cb9ed0ae1d9a%2Fc9451900-6c23-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlff2q9.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Let the contact force exerted between the two blocks in this case be $N_2$.</p>\n<p>Treating both blocks as a single combined system moving to the left, the net external horizontal force is still $F$.</p>\n<p>$$F = (m + 2m)a_2$$</p>\n<p>$$F = 3ma_2$$</p>\n<p>$$a_2 = \\frac{F}{3m}$$</p>\n<p>The magnitude of acceleration remains same as case I, $a_1 = a_2 = a$</p>\n<p>Using free body diagram (FBD) of the larger block of mass $2m$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlfhcfh%2Fde364ef9-4f27-4c7c-ace2-1422fd867523%2F0861ddd0-6c24-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlfhcfi.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlfhcfh%2Fde364ef9-4f27-4c7c-ace2-1422fd867523%2F0861ddd0-6c24-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlfhcfi.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The only horizontal force causing mass $2m$ to accelerate to the left is the normal contact force $(N_2)$ from block $m$.</p>\n<p>Applying Newton's Second Law to mass $2m$:</p>\n<p>$$N_2 = 2m \\, \\cdot \\, a_2$$</p>\n<p>$$N_2 = 2m\\left(\\frac{F}{3m}\\right) = \\frac{2F}{3} \\ldots (ii)$$</p>\n<p>The ratio of the contact forces in two cases is,</p>\n<p>$$\\text{Ratio} = \\frac{N_1}{N_2} = \\frac{F/3}{2F/3} = \\frac{1}{2}$$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो गुटके एक घर्षण रहित मेज पर एक दूसरे के संपर्क में रखे हैं। एक का द्रव्यमान <b>m</b> और दूसरे का द्रव्यमान <b>2m</b> है। चित्र में दर्शाए अनुसार <b>2m</b> पर एक बल <b>F</b> लगाया जाता है। अब <b>m</b> पर दाईं ओर से वही बल <b>F</b> लगाया जाता है। क्रमशः दोनों स्थितियों में, गुटकों के बीच संपर्क बल का अनुपात क्या होगा :</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlf5hns%2Ff48a9f00-4968-4eea-8ccd-4f076a64341c%2Fbeb69280-6c22-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlf5hnt.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlf5hns%2Ff48a9f00-4968-4eea-8ccd-4f076a64341c%2Fbeb69280-6c22-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlf5hnt.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>समान</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1 : 2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2 : 1</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1 : 3</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "newtons-laws-of-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqlg5pnx",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two forces of 6N and 3N are acting on the two blocks of 2kg and 1kg kept on frictionless floor. What is the force exerted on 2kg block by 1kg block?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlflldb%2Feb1aafea-bde4-453f-824e-e6b8d7029bde%2F7e864ff0-6c24-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlflldc.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlflldb%2Feb1aafea-bde4-453f-824e-e6b8d7029bde%2F7e864ff0-6c24-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlflldc.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1N</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2N</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>4N</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>5N</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Since the 6 N force acting from the left is larger than the 3 N force acting from the right, the entire system will accelerate toward the right.</p>\n<p>Let the rightward direction as positive ( + ).</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlfsjwg%2Fa7b25f2a-684c-4ca1-a0c1-3b58174c306a%2F400dec00-6c25-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlfsjwh.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlfsjwg%2Fa7b25f2a-684c-4ca1-a0c1-3b58174c306a%2F400dec00-6c25-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlfsjwh.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$M_{\\text{total}} = 2\\,\\mathrm{kg} + 1\\,\\mathrm{kg} = 3\\,\\mathrm{kg}$$</p>\n<p>The net external horizontal force ($\\vec{F}_{\\text{net}}$) acting on this system is:</p>\n<p>$$F_{\\text{net}} = 6\\,\\mathrm{N} - 3\\,\\mathrm{N} = 3\\,\\mathrm{N}$$</p>\n<p>towards the right.</p>\n<p>Using Newton's Second Law for the combined system:</p>\n<p>$$F_{\\text{net}} = M_{\\text{total}} \\cdot a$$</p>\n<p>$$3\\,\\mathrm{N} = (3\\,\\mathrm{kg}) \\cdot a$$</p>\n<p>$$a = \\frac{3}{3} = 1\\,\\mathrm{m/s^2}$$</p>\n<p>(towards the right)</p>\n<p>Let $N$ be the magnitude of the normal contact force exchanged between the $2\\,\\mathrm{kg}$ block and the $1\\,\\mathrm{kg}$ block.</p>\n<p>By Newton's Third Law, the $2\\,\\mathrm{kg}$ block pushes the $1\\,\\mathrm{kg}$ block to the right with force $N_c$.</p>\n<p>Conversely, the $1\\,\\mathrm{kg}$ block pushes the $2\\,\\mathrm{kg}$ block to the left with an equal force $N_c$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlg2zqn%2F121c9eb1-45f5-4a58-a8ac-357901cc3b3c%2F62617ff0-6c26-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlg2zqo.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlg2zqn%2F121c9eb1-45f5-4a58-a8ac-357901cc3b3c%2F62617ff0-6c26-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlg2zqo.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>For the $2{ kg}$ block and write its horizontal equation of motion:</p>\n<p>External force pushing right $+6{ N}$</p>\n<p>Contact force from the $1{ kg}$ block pushing left $-N_c$</p>\n<p>Acceleration is $a = 1{ m/s}^2$ towards right</p>\n<p>Applying $$ \\sum F = m \\cdot a $$</p>\n<p>$$ \\Rightarrow 6 - N_c = 2 \\cdot a $$</p>\n\n<p>$$\\Rightarrow 6 - N_c = 2 \\cdot (1)$$</p>\n<p>$$\\Rightarrow 6 - N_c = 2$$</p>\n<p>$$\\Rightarrow N_c = 6 - 2 = 4\\,\\mathrm{N}$$</p>\n<p>Therefore, the force exerted on $2\\,\\mathrm{kg}$ block by $1\\,\\mathrm{kg}$ block is $4\\,\\mathrm{N}$. Thus, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>घर्षण रहित फर्श पर रखे 2kg तथा 1kg के दो गुटकों पर 6N तथा 3N के दो बल कार्य कर रहे हैं। 1kg के गुटके द्वारा 2kg के गुटके पर लगाया गया बल कितना है?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlflldb%2Feb1aafea-bde4-453f-824e-e6b8d7029bde%2F7e864ff0-6c24-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlflldc.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlflldb%2Feb1aafea-bde4-453f-824e-e6b8d7029bde%2F7e864ff0-6c24-11f1-950e-c12a034ebedd%2Ffile-6y3zli1mqlflldc.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1N</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2N</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>4N</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>5N</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "newtons-laws-of-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqlhcmrx",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle is moving with a constant speed along a straight line path. A force is not required to :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>increase its speed</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>decrease its momentum</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>change the direction</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>keep it moving with uniform velocity</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The particle is moving with a constant speed along a straight line path.</p>\n<p>Constant speed means the magnitude of the velocity vector is constant over the time.</p>\n<p>A straight line path means the direction of the velocity vector is constant over the time.</p>\n<p>Because both magnitude and direction are constant, the velocity vector $\\vec{v}$ is uniform. Therefore, the acceleration</p>\n<p>$$\\left(\\vec{a} = \\frac{d\\vec{v}}{dt}\\right)$$</p>\n<p>of the particle is zero ($\\vec{a} = 0$).</p>\n<p>Newton's First Law (The Law of Inertia) states that an object will maintain its state of rest or of uniform motion in a straight line unless acted upon by a net external force.</p>\n<p>This means that to keep an object moving at a constant velocity (uniform velocity), no net external force is required.</p>\n<p>Changing the speed means changing the magnitude of velocity, which requires acceleration and thus a net external force ($\\vec{F} = m\\vec{a}$). So, option (A) is incorrect.</p>\n<p>Linear momentum is given by $\\vec{p} = m\\vec{v}$. By Newton's Second Law</p>\n<p>$$\\left(\\vec{F} = \\frac{d\\vec{p}}{dt}\\right),$$</p>\n<p>changing the momentum requires a force. Thus, option (B) is incorrect.</p>\n<p>Changing the direction of motion means there is a centripetal acceleration component, which requires a force to change the path/direction. So, option (C) is also incorrect.</p>\n<p>Using the concept of inertia, a body maintains uniform velocity on its own; hence, an external force is not required to sustain this state. Thus, option (D) is correct.</p>\n<p>Therefore, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक कण एक सीधी रेखा के पथ पर नियत चाल से गति कर रहा है। बल की आवश्यकता नहीं होती है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>इसकी चाल बढ़ाने के लिए</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>इसके संवेग को कम करने के लिए</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>दिशा बदलने के लिए</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इसे एकसमान वेग से गतिमान रखने के लिए</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "newtons-laws-of-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqll0s16",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A block of weight 9.8 N is placed on a table. The table surface exerts an upward force of 10 N on the block. Assume $g=9.8 \\mathrm{~m} / \\mathrm{s}^2$.</p>\n<p>(a) The block exerts a force of $\\mathbf{1 0 ~ N}$ on the table</p>\n<p>(b) The block exerts a force of $\\mathbf{1 9 . 8 ~ N}$ on the table</p>\n<p>(c) The block exerts a force of 9.8 N on the table</p>\n<p>(d) The block has an upward acceleration.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "a Only"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "d Only"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "Both a and d"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "c Only"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The table surface exerts an upward normal force $(\\mathrm{N})$ of 10 N on the block.</p>\n<p>According to Newton's Third Law of Motion (Action-Reaction), if Object A exerts a force on Object B, then Object B simultaneously exerts an equal and opposite force on Object A.</p>\n<p>The table exerts an upward normal force on the block $\\mathrm{N}_{\\mathrm{t} \\rightarrow \\mathrm{b}}=10 \\mathrm{~N}$ upward.</p>\n<p>So, the block must exert an equal and opposite downward normal force on the table surface $\\mathrm{N}_{\\mathrm{b} \\rightarrow \\mathrm{t}}=10 \\mathrm{~N}$ downward</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlkype1%2Fad28b80e-dcc2-47fc-a77b-00c2c6cc0d52%2F78cb6f90-6c39-11f1-83ed-2ba785bd296d%2Ffile-6y3zli1mqlkype2.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlkype1%2Fad28b80e-dcc2-47fc-a77b-00c2c6cc0d52%2F78cb6f90-6c39-11f1-83ed-2ba785bd296d%2Ffile-6y3zli1mqlkype2.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Thus, option (a) is correct.</p>\n<p>The table pushes the block upward with a normal force $N = 10\\ \\mathrm{N}$.</p>\n<p>The earth pulls the block downward with its gravitational weight $W = 9.8\\ \\mathrm{N}$.</p>\n<p>Applying Newton's Second Law ($\\sum F_y = m \\cdot a_y$) with the upward direction as positive (+):</p>\n<p>$$\\sum F_y = N - W$$</p>\n<p>$$\\sum F_y = 10\\ \\mathrm{N} - 9.8\\ \\mathrm{N} = +0.2\\ \\mathrm{N}$$</p>\n<p>Because the net external force is not zero ($\\sum F_y = 0.2\\ \\mathrm{N}$ upward), the block is not in equilibrium. It experiences an upward net force, which means it must have an upward acceleration according to $\\vec{F} = m\\vec{a}$.</p>\n<p>Thus, option (d) is correct.</p>\n<p>Therefore, options (a) and (d) are both correct.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>9.8 N भार का एक ब्लॉक एक मेज पर रखा गया है। मेज की सतह ब्लॉक पर 10 N का ऊपर की ओर बल लगाती है। मान लें कि $g=9.8 \\mathrm{~m} / \\mathrm{s}^2$ है।</p>\n<p>(a) ब्लॉक मेज पर $\\mathbf{1 0 ~ N}$ का बल लगाता है।</p>\n<p>(b) ब्लॉक मेज पर $\\mathbf{1 9 . 8 ~ N}$ का बल लगाता है।</p>\n<p>(c) ब्लॉक मेज पर 9.8 N का बल लगाता है।</p>\n<p>(d) ब्लॉक में ऊपर की ओर त्वरण है।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "केवल a"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "केवल d"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "a और d दोनों"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "केवल c"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "newtons-laws-of-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqlheo8r",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>An object will continue accelerating until :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>resultant force on it begins to decrease</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>its velocity changes direction</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>the resultant force on it is zero</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>the resultant force is at right angles to its direction of motion</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Newton's Second Law states that the acceleration ($\\vec{a}$) of an object is directly proportional to the net (resultant) external force ($\\vec{F}_{\\text{net}}$) acting on it and inversely proportional to its mass ($m$):</p>\n<p>$$\\vec{F}_{\\text{net}} = m\\vec{a} \\Rightarrow \\vec{a} = \\frac{\\vec{F}_{\\text{net}}}{m}$$</p>\n<p>Also, the acceleration is the time rate of change of velocity:</p>\n<p>$$\\vec{a} = \\frac{d\\vec{v}}{dt}$$</p>\n<p>As long as $\\vec{a} \\ne 0$, the velocity of the object is changing (either in magnitude, direction, or both).</p>\n<p>The only way for acceleration to become zero ($\\vec{a} = 0$) is if the net horizontal or vertical resultant force becomes zero:</p>\n<p>$$\\vec{F}_{\\text{net}} = 0 \\Rightarrow \\vec{a} = 0$$</p>\n<p>If the force decreases but is still greater than zero, the acceleration decreases in magnitude, but the object continues to accelerate at a slower rate. So, option (A) is incorrect.</p>\n<p>An object can change direction while still accelerating, so option (B) is also incorrect.</p>\n<p>The moment $\\vec{F}_{\\text{net}} = 0$, acceleration becomes zero. At this point, the object stops accelerating and maintains a constant velocity. Therefore, it will continue accelerating until this condition is met. Hence, the option (C) is correct.</p>\n<p>When force is perpendicular to velocity, it changes the direction of motion but not the speed (like centripetal force). The object is still accelerating. Hence, option (D) is incorrect.</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक वस्तु तब तक त्वरित होती रहेगी जब तक कि :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>इस पर परिणामी बल कम होना शुरू हो जाए</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>इसके वेग की दिशा बदल जाए</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>इस पर परिणामी बल शून्य हो जाए</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>परिणामी बल इसकी गति की दिशा के लंबवत हो जाए</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "newtons-laws-of-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqligbf4",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A force $ \\vec{F} = 6 \\hat{i} - 8 \\hat{j} + 10 \\hat{k} $ newton produces acceleration 1 m/s<sup>2</sup> in a body. The mass of the body is (in kg)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(6 \\hat{i} - 8 \\hat{j} + 10 \\hat{k}) \\text{ kg}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$10\\sqrt{2} \\text{ kg}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$100 \\text{ kg}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$10 \\text{ kg}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The given force is $\\vec{F} = 6\\hat{i} - 8\\hat{j} + 10\\hat{k}\\ \\mathrm{N}$</p>\n<p>The magnitude $(F = |\\vec{F}|)$ of the applied force is,</p>\n<p>$$F = \\sqrt{(F_x)^2 + (F_y)^2 + (F_z)^2}$$</p>\n<p>Substituting the given component values:</p>\n<p>$$F = \\sqrt{(6)^2 + (-8)^2 + (10)^2}$$</p>\n<p>$$F = \\sqrt{36 + 64 + 100}$$</p>\n<p>$$F = \\sqrt{200}$$</p>\n<p>$$F = \\sqrt{100 \\times 2} = 10\\sqrt{2}\\ \\mathrm{N}$$</p>\n<p>Using Newton's Second Law motion:</p>\n<p>$$F = m \\cdot a$$</p>\n<p>The resulting acceleration magnitude $a$ is $1\\ \\mathrm{m/s^2}$.</p>\n<p>$$10\\sqrt{2} = m \\cdot (1)$$</p>\n<p>$$m = 10\\sqrt{2}\\ \\mathrm{kg}$$</p>\n<p>Therefore, the mass of the object is $10\\sqrt{2}\\ \\mathrm{kg}$. Thus, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक बल $ \\vec{F} = 6 \\hat{i} - 8 \\hat{j} + 10 \\hat{k} $ न्यूटन एक पिंड में 1 m/s<sup>2</sup> का त्वरण उत्पन्न करता है। पिंड का द्रव्यमान (kg में) है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(6 \\hat{i} - 8 \\hat{j} + 10 \\hat{k}) \\text{ kg}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$10\\sqrt{2} \\text{ kg}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$100 \\text{ kg}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$10 \\text{ kg}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "newtons-laws-of-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqll5tap",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A frame of reference A is moving rectilinearly and uniformly with a velocity $\\vec{u}$ with respect to an inertial frame 'B. A body is moving with velocity $\\vec{v}$ and acceleration $\\vec{a}$ in an inertial system B.</p>\n<p><b>Statement-1 :</b> When we use Newton's second Law in frame B we write $\\sum \\vec{F}_{\\text{net}} = m\\vec{a}$. Now when we use the same in frame A we will write exactly same $\\vec{F}_{\\text{net}}$ and $\\vec{a}$.</p>\n<p><b>Statement-II :</b> All inertial system are equally suitable for the description of physical phenomenon.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Statement-1 is true, statement-2 is true, statement-2 is a correct explanation for statement-1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Statement-1 is true, statement-2 is true, statement-2 is NOT a correct explanation for statement-1</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Statement-1 is true, statement-2 is false</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Statement-1 is false, statement-2 is true</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>We are given two frames of references. Frame B is an inertial frame of reference whereas frame A is moving rectilinearly and uniformly (i.e., constant velocity $\\vec{u}$, so acceleration $\\vec{a}_{\\text{frame}} = 0$) relative to the inertial frame B.</p>\n<p>Any reference frame moving at a constant velocity relative to an inertial frame is also an inertial reference frame.</p>\n<p>The velocity of the body observed from frame A ($\\vec{v}_A$) is,</p>\n<p>$$\\vec{v}_A = \\vec{v}_B - \\vec{u}$$</p>\n<p>Differentiating this relative velocity equation with respect to time (t):</p>\n<p>$$\\frac{d\\vec{v}_A}{dt} = \\frac{d\\vec{v}_B}{dt} - \\frac{d\\vec{u}}{dt}$$</p>\n<p>Since Frame A moves uniformly, its velocity $\\vec{u}$ is constant, so $\\frac{d\\vec{u}}{dt} = 0$:</p>\n<p>$$\\vec{a}_A' = \\vec{a} - 0 \\Rightarrow \\vec{a}_A' = \\vec{a}$$</p>\n<p>Because the acceleration is same in both frames ($\\vec{a}' = \\vec{a}$), the net force vector $\\vec{F}_{\\text{net}}$ remains unchanged. Therefore, Newton's Second Law equation in both inertial frames:</p>\n<p>$$\\sum\\limits \\vec{F}_{\\text{net}} = m\\vec{a}$$</p>\n<p>Thus, Statement-1 is true.</p>\n<p>This is a called Galilean Principle of Relativity, which establishes that the fundamental laws of mechanics are identical in all inertial frames of reference.</p>\n<p>Thus, Statement-II is true.</p>\n<p>The measured acceleration $\\vec{a}$ and the equation of Newton's second law area identical in frame A and frame B because both frames are inertial systems, that means the laws of physics are unchanged between them. Therefore, Statement-II is correct explanation for Statement-1.</p>\n<p>So, Statement-1 is true, statement-2 is true, statement-2 is a correct explanation for statement-1. Thus, the correct option is (a).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक जड़त्वीय तंत्र B के सापेक्ष एक निर्देश तंत्र A, वेग $\\vec{u}$ से सरल रेखीय और एकसमान रूप से गति कर रहा है। एक पिंड जड़त्वीय तंत्र B में वेग $\\vec{v}$ और त्वरण $\\vec{a}$ से गति कर रहा है।</p>\n<p><b>कथन-1 :</b> जब हम तंत्र B में न्यूटन के द्वितीय नियम का उपयोग करते हैं तो हम $\\sum \\vec{F}_{\\text{net}} = m\\vec{a}$ लिखते हैं। अब जब हम तंत्र A में इसका उपयोग करेंगे, तो हम बिल्कुल समान $\\vec{F}_{\\text{net}}$ और $\\vec{a}$ लिखेंगे।</p>\n<p><b>कथन-II :</b> भौतिक परिघटनाओं के वर्णन के लिए सभी जड़त्वीय तंत्र समान रूप से उपयुक्त हैं।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 सत्य है, कथन-2, कथन-1 की सही व्याख्या है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 सत्य है, कथन-2, कथन-1 की सही व्याख्या नहीं है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 असत्य है</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>कथन-1 असत्य है, कथन-2 सत्य है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "newtons-laws-of-motion",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mqliqfeh",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A force vector applied on a mass is represented as $\\vec{F}=6 \\hat{\\mathbf{i}}-8 \\hat{\\mathbf{j}}+10 \\hat{\\mathbf{k}}$ and accelerates with $1 \\mathrm{~m} / \\mathrm{s}^2$. If the mass (in kg .) of the body is $X \\sqrt{2}$ then find the value of $X$.</p>",
+                "options": [],
+                "answer": "10",
+                "explanation": "<p>The given force is $\\vec{F} = 6\\hat{i} - 8\\hat{j} + 10\\hat{k}\\,\\mathrm{N}$</p>\n<p>The magnitude $(F = |\\vec{F}|)$ of the applied force is:</p>\n<p>$$F = \\sqrt{(F_x)^2 + (F_y)^2 + (F_z)^2}$$</p>\n<p>Substituting the given component values from the vector equation:</p>\n<p>$$F = \\sqrt{(6)^2 + (-8)^2 + (10)^2}$$</p>\n<p>$$F = \\sqrt{36 + 64 + 100}$$</p>\n<p>$$F = \\sqrt{200}$$</p>\n<p>$$F = \\sqrt{100 \\times 2} = 10\\sqrt{2}\\,\\mathrm{N}$$</p>\n<p>Using Newton's Second Law</p>\n<p>$$F = m \\cdot a$$</p>\n<p>The resulting acceleration magnitude $a$ is $1\\,\\mathrm{m/s^2}$.</p>\n\n<p>$$10\\sqrt{2} = m \\times 1$$</p>\n<p>$$m = 10\\sqrt{2}\\ \\mathrm{kg} = X\\sqrt{2}$$</p>\n<p>$$X = 10$$</p>\n<p>Therefore, the value of X is 10.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक द्रव्यमान पर लगाया गया बल सदिश $\\vec{F}=6 \\hat{\\mathbf{i}}-8 \\hat{\\mathbf{j}}+10 \\hat{\\mathbf{k}}$ द्वारा निरूपित किया जाता है और यह $1 \\mathrm{~m} / \\mathrm{s}^2$ से त्वरित होता है। यदि पिंड का द्रव्यमान (kg में) $X \\sqrt{2}$ है, तो $X$ का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "newtons-laws-of-motion",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqlj1y25",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "A body of mass 40 gm is moving with a constant velocity of $2 \\mathrm{~cm} / \\mathrm{sec}$ on a horizontal frictionless table. If the force on the table is $P \\times 10^3$ Dyne then find the value of $10P$.",
+                "options": [],
+                "answer": "392OR400",
+                "explanation": "<p>The body is moving horizontally at a constant velocity. So, along the vertical axis it has no motion, and therefore zero acceleration, ($a_y = 0$).</p>\n<p>Using Free Body Diagram (FBD)</p>\n<p>The gravitational force (Weight, W) acts vertically downwards on the body.</p>\n<p>The normal reaction force (N) exerted by the table surface upwards on the body.</p>\n<p>Applying Newton's Second Law for the vertical direction</p>\n<p>$$\\sum\\limits F_y = m \\cdot a_y = 0$$</p>\n<p>$$N - W = 0 \\Rightarrow N = W = mg$$</p>\n<p>By Newton's Third Law (Action-Reaction), if the table surface exerts an upward normal force N on the body, the body exerts an equal and opposite downward normal force N on the table surface.</p>\n<p>So, force on the table = $N = mg$ … (i)</p>\n<p>The mass of the body, $m = 40\\ \\text{gm}$</p>\n<p>In the CGS system, the acceleration due to gravity is $g = 1000\\ \\text{cm}/\\text{s}^2$.</p>\n<p>Substituting these values, the normal contact force is:</p>\n<p>Force on the table = $40\\ \\text{gm} \\times 1000\\ \\text{cm}/\\text{s}^2$</p>\n<p>Force on the table = 34,000 Dyne</p>\n<p>The horizontal velocity of $2\\ \\text{cm}/\\text{sec}$ is given as a constant value, which means no horizontal force is acting to accelerate or decelerate it horizontally.</p>\n<p>So, the force on the table is 34,00 Dyne</p>\n<p>$$P \\times 10^3 = 40{,}000$$</p>\n<p>$$P \\times 1000 = 40{,}000$$</p>\n<p>$$P = \\frac{40000}{1000} = 40$$</p>\n<p>Therefore, the value of 10P is 400.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "40 gm द्रव्यमान का एक पिंड एक क्षैतिज घर्षण रहित मेज पर $2 \\mathrm{~cm} / \\mathrm{sec}$ के नियत वेग से गति कर रहा है। यदि मेज पर लगने वाला बल $P \\times 10^3$ डाइन (Dyne) है, तो $10P$ का मान ज्ञात कीजिए।",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "newtons-laws-of-motion",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqlk89u2",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A ball weighing 10 gm hits a hard surface vertically with a speed of $5 \\mathrm{~m} / \\mathrm{s}$ and rebounds with the same speed. The ball remains in contact with the surface for 0.01 sec . What is the average force exerted by the surface on the ball? (in N)</p>",
+                "options": [],
+                "answer": "10",
+                "explanation": "<p>The mass (m) of the ball is given as m = $10 \\mathrm{gm}=\\frac{10}{1000} \\mathrm{~kg}=0.01 \\mathrm{~kg}$</p>\n<p>Let the downward direction as negative ( - ) and the upward direction as positive ( + ).</p>\n<p>The ball hits the surface downwards at $5 \\mathrm{~m} / \\mathrm{s}$, so the initial velocity vector is $u=-5 \\mathrm{~m} / \\mathrm{s}$</p>\n<p>The ball rebounds vertically upwards with the same speed, so the final velocity is,v $=+5 \\mathrm{~m} / \\mathrm{s}$</p>\n<p>Time of contact is $\\Delta \\mathrm{t}=0.01 \\mathrm{sec}$</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlk51be%2F7c85a8f7-a9ff-4e61-ac8c-7072c1b19805%2F3fbbc4a0-6c36-11f1-83ed-2ba785bd296d%2Ffile-6y3zli1mqlk51bf.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlk51be%2F7c85a8f7-a9ff-4e61-ac8c-7072c1b19805%2F3fbbc4a0-6c36-11f1-83ed-2ba785bd296d%2Ffile-6y3zli1mqlk51bf.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Newton's Second Law states that the average force ($F_{\\mathrm{avg}}$) is equal to the time rate of change of linear momentum ($\\Delta p$):</p>\n<p>$$F_{\\mathrm{avg}} = \\frac{\\Delta p}{\\Delta t} = \\frac{p_{\\mathrm{final}} - p_{\\mathrm{initial}}}{\\Delta t}$$</p>\n<p>$$F_{\\mathrm{avg}} = \\frac{m \\cdot v - m \\cdot u}{\\Delta t} = \\frac{m(v-u)}{\\Delta t}$$</p>\n\n<p>$$F_{\\mathrm{avg}} = \\frac{0.01 \\times [5 - (-5)]}{0.01}\\,\\mathrm{N}$$</p>\n<p>$$F_{\\mathrm{avg}} = \\frac{0.1}{0.01}\\,\\mathrm{N}$$</p>\n<p>$$F_{\\mathrm{avg}} = 10\\,\\mathrm{N}$$</p>\n<p>The positive sign shows that the average normal force acts vertically upwards, pushing against gravity.</p>\n<p>Therefore, the average force exerted by the surface on the ball is $10\\,\\mathrm{N}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>10 gm द्रव्यमान की एक गेंद एक कठोर सतह से ऊर्ध्वाधर रूप से $5 \\mathrm{~m} / \\mathrm{s}$ की चाल से टकराती है और उसी चाल से वापस उछलती है। गेंद 0.01 sec तक सतह के संपर्क में रहती है। सतह द्वारा गेंद पर लगाया गया औसत बल क्या है? (N में)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "newtons-laws-of-motion",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqlki3v0",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A 10 kg wagon is pushed with a force of 7 N for 1.5 second, then with a force of 5 N for 1.7 seconds, and then with a force of $\\mathbf{1 0 ~ N}$ for $\\mathbf{3}$ second in the same direction. The change in velocity brought about is v? Then find 10v. (in m/s)</p>",
+                "options": [],
+                "answer": "49",
+                "explanation": "<p>Newton's Second Law states that the net force acting on an object is equal to its rate of change of linear momentum:</p>\n<p>$$F = \\frac{\\mathrm{d}p}{\\mathrm{d}t}$$</p>\n<p>For a constant force acting over a time interval $\\Delta t$,</p>\n<p>$$F = \\frac{\\Delta p}{\\Delta t} \\Rightarrow \\Delta p = F \\cdot \\Delta t$$</p>\n<p>Since linear momentum is defined as $p = mv$, the change in momentum for a constant mass $m$ is:</p>\n<p>$$\\Delta p = m \\cdot \\Delta v$$</p>\n<p>$$\\Rightarrow m \\cdot \\Delta v = F \\cdot \\Delta t \\Rightarrow \\Delta v = \\frac{F \\cdot \\Delta t}{m}$$</p>\n<p>When multiple successive forces act in the same direction, the total change in momentum is the sum of the individual impulses applied during each distinct time interval:</p>\n<p>$$\\Delta p_{\\text{total}} = \\Delta p_1 + \\Delta p_2 + \\Delta p_3$$</p>\n<p>$$m \\cdot \\Delta v_{\\text{total}} = F_1\\,\\Delta t_1 + F_2\\,\\Delta t_2 + F_3\\,\\Delta t_3$$</p>\n<p>$$\\Delta v_{\\text{total}} = \\frac{F_1\\Delta t_1 + F_2\\Delta t_2 + F_3\\Delta t_3}{m}$$</p>\n<p>The mass of the wagon $m = 10\\,\\mathrm{kg}$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlkfqqf%2F7404cb5d-86c4-487a-bbb4-e45cb1b928aa%2F69759270-6c37-11f1-83ed-2ba785bd296d%2Ffile-6y3zli1mqlkfqqg.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlkfqqf%2F7404cb5d-86c4-487a-bbb4-e45cb1b928aa%2F69759270-6c37-11f1-83ed-2ba785bd296d%2Ffile-6y3zli1mqlkfqqg.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>In first interval $\\Delta t_1 = 1.5\\ \\mathrm{s}$ the applied force is $F_1 = 7\\ \\mathrm{N}$</p>\n<p>$$\\mathrm{Impulse}_1 = 7 \\times 1.5 = 10.5\\ \\mathrm{N\\cdot s}$$</p>\n<p>In second interval $\\Delta t_2 = 1.7\\ \\mathrm{s}$ the applied force is $F_2 = 5\\ \\mathrm{N}$</p>\n<p>$$\\mathrm{Impulse}_2 = 5 \\times 1.7 = 8.5\\ \\mathrm{N\\cdot s}$$</p>\n<p>In third interval $\\Delta t_3 = 3.0\\ \\mathrm{s}$ the applied force is $F_3 = 10\\ \\mathrm{N}$</p>\n<p>$$\\mathrm{Impulse}_3 = 10 \\times 3 = 30.0\\ \\mathrm{N\\cdot s}$$</p>\n<p>$$\\mathrm{Total\\ Impulse} = 10.5 + 8.5 + 30.0 = 49.0\\ \\mathrm{N\\cdot s}$$</p>\n<p>So, total change in velocity is</p>\n<p>$$\\Delta v_{\\mathrm{total}} = \\frac{49.0}{10} = 4.9\\ \\mathrm{m/s}$$</p>\n<p>Therefore, the change in velocity brought about is $4.9\\ \\mathrm{m/s}$.</p>\n<p>$$\\therefore $$ 10v = 49</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>10 kg के एक वैगन को 1.5 सेकंड के लिए 7 N के बल से, फिर 1.7 सेकंड के लिए 5 N के बल से, और फिर समान दिशा में $\\mathbf{3}$ सेकंड के लिए $\\mathbf{1 0 ~ N}$ के बल से धकेला जाता है। उत्पन्न वेग में परिवर्तन v है? तो 10v ज्ञात कीजिए। (m/s में)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "newtons-laws-of-motion",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqlkre27",
+            "chapter": "laws-of-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Man 'A' of mass 60 kg pushes the other man 'B' of mass 75 kg due to which man 'B' starts moving with acceleration $3 \\mathrm{~m} / \\mathrm{s}^2$. The acceleration of man ' $\\mathrm{A}^{\\prime}$ at that instant a. Then find $100a$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlklp3d%2Fde8d0a16-8254-4c0d-8c12-1b018351b5b6%2F0f0c0390-6c38-11f1-83ed-2ba785bd296d%2Ffile-6y3zli1mqlklp3e.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlklp3d%2Fde8d0a16-8254-4c0d-8c12-1b018351b5b6%2F0f0c0390-6c38-11f1-83ed-2ba785bd296d%2Ffile-6y3zli1mqlklp3e.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "375",
+                "explanation": "<p>When Man ' A ' pushes Man ' B ', he exerts a contact force on ' B '. Let this force vector be $\\overrightarrow{\\mathrm{F}}_{\\mathrm{AB}}$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlknrs1%2Fc8cdaa49-3a15-40ec-a81a-7c9e0006a88e%2F48bd4d10-6c38-11f1-83ed-2ba785bd296d%2Ffile-6y3zli1mqlknrs2.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlknrs1%2Fc8cdaa49-3a15-40ec-a81a-7c9e0006a88e%2F48bd4d10-6c38-11f1-83ed-2ba785bd296d%2Ffile-6y3zli1mqlknrs2.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>According to Newton's Third Law (Action-Reaction), Man 'B' applies an equal and opposite contact force on Man 'A' ($\\vec{F}_{BA}$):</p>\n<p>$$\\vec{F}_{BA} = -\\vec{F}_{AB}$$</p>\n<p>So, both the forces are in opposite direction but of equal magnitude.</p>\n<p>$$F_{AB} = F_{BA} = F$$</p>\n<p>The only horizontal external force acting on 'B' on the smooth horizontal surface is the push from 'A'.</p>\n<p>The mass of man 'B' is $m_B = 75\\,\\mathrm{kg}$</p>\n<p>The horizontal acceleration of man 'B' is $a_B = 3\\,\\mathrm{m/s^2}$</p>\n<p>Using Newton's Second Law ($\\sum F = m \\cdot a$) to Man 'B':</p>\n<p>$$F = m_B \\cdot a_B$$</p>\n<p>$$F = 75 \\times 3\\,\\mathrm{N} = 225\\,\\mathrm{N}$$</p>\n<p>By Newton's Third Law, the reaction force acting horizontally on 'A' has an equal magnitude of $225\\,\\mathrm{N}$ but points in the opposite direction.</p>\n<p>The mass of man 'A' is $m_A = 60\\,\\mathrm{kg}$</p>\n<p>The force acting on 'A' is $F = 225\\,\\mathrm{N}$</p>\n<p>Applying Newton's Second Law to Man 'A':</p>\n<p>$$F = m_A \\cdot a_A$$</p>\n<p>$$a_A = \\frac{F}{m_A}$$</p>\n<p>$$a_A = \\frac{225}{60}\\,\\mathrm{m/s^2}$$</p>\n<p>$$a_A = \\frac{15}{4} = 3.75\\,\\mathrm{m/s^2}$$</p>\n<p>Therefore, the acceleration of man 'A' at that instant is $3.75\\,\\mathrm{m/s^2}$.</p>\n<p>$$\\therefore $$ $100a$ = 375</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>60 kg द्रव्यमान वाला एक व्यक्ति 'A', 75 kg द्रव्यमान वाले दूसरे व्यक्ति 'B' को धक्का देता है जिसके कारण व्यक्ति 'B' $3 \text{ m/s}^2$ के त्वरण के साथ गति करना शुरू कर देता है। उस क्षण व्यक्ति ' $\\mathrm{A}^{\\prime}$ का त्वरण $a$ है। तो $100a$ का मान ज्ञात कीजिए।</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqlklp3d%2Fde8d0a16-8254-4c0d-8c12-1b018351b5b6%2F0f0c0390-6c38-11f1-83ed-2ba785bd296d%2Ffile-6y3zli1mqlklp3e.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqlklp3d%2Fde8d0a16-8254-4c0d-8c12-1b018351b5b6%2F0f0c0390-6c38-11f1-83ed-2ba785bd296d%2Ffile-6y3zli1mqlklp3e.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "newtons-laws-of-motion",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Newton's Laws of Motion",
+    "timeAllotted": 2160000,
+    "title": "Laws of Motion Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g71mnq8i8g3",
+    "defaultLanguage": "en",
+    "description": "Newton's Laws of Motion",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-20T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Newton's Laws of Motion",
+    "timeAllotted": 2160000,
+    "title": "Laws of Motion Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Laws of Motion"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddb4c03b9dcaf1afec61",
+  "topicId": "66a0ddb7c03b9dcaf1afec6c",
+  "title": "Geometric Progression",
+  "concepts": [
+    {
+      "title": "Geometric Progression and its expression",
+      "conceptBody": "<h3><strong>Geometric Progression&nbsp;</strong></h3><p>A <strong>geometric progression </strong>is a sequence of numbers where each term after the first is found by multiplying the previous term by a fixed number called the <strong>common ratio. </strong>The sequence $1,3,9,27$, .... is a geometric progression with first term 1 and common ratio 3 . The common ratio could be a fraction and it might be negative. In general we can write a geometric progression as follows :</p><p>geometric progression : a, ar, $\\text{a}{{\\text{r}}^{2}},\\text{a}{{\\text{r}}^{3}}$</p><p>where the first term is a and the common ratio is $r$.</p><p>Some important results concerning geometric progressions (G.P.) now follows :</p><p><strong>The ${{\\text{n}}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ term of a g.p. is given by $\\text{a}{{\\text{r}}^{\\text{n}-1}}$.&nbsp;</strong></p><p><strong>${{\\text{n}}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ term from the end&nbsp;</strong></p><p>The ${{\\text{n}}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ term from the end of a finite G.P. consisting of $\\text{m}$ terms is a ${{\\text{r}}^{\\text{m}-\\text{n}}}$, where a is the first term and $r$ is the common ratio.</p><p><strong>Note : </strong>If we are given the last term of G.P, say l, then the ${{n}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ term from end is given by $l{{\\left( \\frac{1}{r} \\right)}^{n-1}}$</p>",
+      "position": 0,
+      "qcConcept": "66a0ddb7c03b9dcaf1afec6d"
+    },
+    {
+      "title": "Solved problems based on the definition of Geometric Progression",
+      "conceptBody": "<h3><strong>Solved problems based on the definition of Geometric Progression</strong></h3><p><strong>If $a,b,c$ are in GP, then prove $\\frac{{{a}^{2}}+ab+{{b}^{2}}}{bc+ca+ab}=\\frac{b+a}{c+b}$&nbsp;</strong></p><p><strong>Solution :&nbsp;</strong></p><p>If $a,b,c$ are in GP, then</p><p>$\\mathrm{b}=\\mathrm{ar}$</p><p>and $\\mathrm{c}=\\mathrm{ar}^2$</p><p>Now, putting these values in LHS</p><p><strong>L.H.S&nbsp;</strong></p><p>$\\begin{array}{*{35}{r}} {} &amp; ~=\\frac{{{a}^{2}}+a\\left( ar \\right)+{{(ar)}^{2}}}{\\left( ar \\right)\\left( a{{r}^{2}} \\right)+\\left( a{{r}^{2}} \\right)\\left( a \\right)+a\\left( ar \\right)} \\\\ {} &amp; ~=\\frac{{{a}^{2}}+{{a}^{2}}r+{{a}^{2}}{{r}^{2}}}{{{a}^{2}}{{r}^{3}}+{{a}^{2}}{{r}^{2}}+{{a}^{2}}r} \\\\ {} &amp; ~=\\frac{{{a}^{2}}\\left( 1+r+{{r}^{2}} \\right)}{{{a}^{2}}r\\left( {{r}^{2}}+r+1 \\right)}=\\frac{1}{r} \\\\ \\end{array}$</p><p><strong>R.H.S.&nbsp;</strong></p><p>$\\begin{array}{*{35}{r}} {} &amp; ~=\\frac{\\text{b}+\\text{a}}{\\text{c}+\\text{b}}=\\frac{\\text{ar}+\\text{a}}{\\text{a}{{\\text{r}}^{2}}+\\text{ar}}=\\frac{\\text{a}\\left( \\text{r}+1 \\right)}{\\text{ar}\\left( \\text{r}+1 \\right)} \\\\ {} &amp; ~=\\frac{1}{\\text{r}} \\\\ \\end{array}$</p><p>L.H.S. = R.H.S. Hence proved</p><p><strong>Illustration</strong></p><p><strong>In a finite GP the product of terms equidistant from the beginning and the end is always same and equal to the product of first and last term.&nbsp;</strong></p><p><strong>Solution :&nbsp;</strong></p><p>Let ${{a}_{1}},{{a}_{2}}\\ldots {{a}_{n-1}},{{a}_{n}}$ be a finite GP with common ratio $r$.</p><p>$\\mathrm{k}^{\\text {th }}$ term from beginning $=\\mathrm{a}_1 \\mathrm{r}^{\\mathrm{k}-1}$</p><p>$\\mathrm{k}^{\\text {th }}$ term from end $=\\mathrm{a}_{\\mathrm{n}-\\mathrm{k}+1}$</p><p>$=a_n\\left(\\frac{1}{r}\\right)^{\\mathrm{k}-1}$</p><p>multiplying both the terms</p><p>${{a}_{k}}\\cdot {{a}_{n-k+1}}={{a}_{1}}{{a}_{n}}\\left( {{r}^{k+1}} \\right){{\\left( \\frac{1}{r} \\right)}^{k-1}}={{a}_{1}}{{a}_{n}}$</p><p>Hence proved.</p><p><strong>Note : This can be taken as a standard result.&nbsp;</strong></p><p><strong>Illustration&nbsp;</strong></p><p><strong>If ${{\\text{a}}^{\\text{x}}}={{\\text{b}}^{\\text{y}}}={{\\text{c}}^{\\text{z}}}$ and $\\text{x},\\text{y},\\text{z}$ are in GP prove that $\\text{lo}{{\\text{g}}_{\\text{b}}}\\text{a}=\\text{lo}{{\\text{g}}_{\\text{c}}}\\text{b}$.&nbsp;</strong></p><p><strong>Solution :&nbsp;</strong></p><p>Given that ${{\\text{a}}^{\\text{x}}}={{\\text{b}}^{\\text{y}}}={{\\text{c}}^{2}}$</p><p>Taking $\\text{log}x\\text{log}a=y\\text{log}b=2\\text{log}c$ (1)</p><p>also $\\text{x},\\text{y},\\text{z}$ are in GP</p><p>then $\\text{y}=\\text{xr}\\And \\text{z}=\\text{x}{{\\text{r}}^{2}}$ (where ' $\\text{r}$ ' is the common ratio)</p><p>from (i) $y \\log b=2 \\log c$</p><p>$x \\log a=y \\log b$ $\\Rightarrow$ $\\mathrm{xr} \\log \\mathrm{b}=\\mathrm{xr}^2 \\log \\mathrm{c}$</p><p>$\\Rightarrow$ $\\mathrm{r}=\\frac{\\log \\mathrm{a}}{\\log \\mathrm{b}}$ (2) $\\Rightarrow$ $r=\\frac{\\log b}{\\log c}$ (3)</p><p>from (ii) &amp; (iii) $\\Rightarrow$ $\\log _b \\quad a=\\log _c b$</p><p>$\\frac{\\text{log}a}{\\text{log}b}=\\frac{\\text{log}b}{\\text{log}c}$ $\\left\\{\\because \\frac{\\log a}{\\log b}=\\log _b a\\right\\}$</p>",
+      "position": 1,
+      "qcConcept": "66a0ddb8c03b9dcaf1afec6e"
+    },
+    {
+      "title": "Sum of a Geometric Progression (Geometric Series)",
+      "conceptBody": "<h3><strong>Sum of geometric series&nbsp;</strong></h3><p>The sum of first $n$ terms of a GP :</p><p>${{S}_{n}}=\\left\\{ \\begin{array}{*{35}{l}} \\frac{a\\left( {{r}^{n}}-1 \\right)}{r-1} &amp; \\text{ }\\!\\!~\\!\\!\\text{ if }\\!\\!~\\!\\!\\text{ }r\\neq 1 \\\\ \\text{ }\\!\\!~\\!\\!\\text{ na }\\!\\!~\\!\\!\\text{ } &amp; \\text{ }\\!\\!~\\!\\!\\text{ if }\\!\\!~\\!\\!\\text{ }r=1 \\\\ \\end{array} \\right.$</p><p><strong>Case 1 : </strong>Suppose $\\text{ }\\!\\!~\\!\\!\\text{ }r=1$</p><p>${{\\text{S}}_{\\text{n}}}=\\text{a}+\\text{a}+\\text{a}+\\ldots \\ldots +\\text{a}=\\text{na}$</p><p><strong>Case $2:$ </strong>If $\\mathrm{r} \\neq 1$</p><p>$\\mathrm{S}_{\\mathrm{n}}=\\mathrm{a}+\\mathrm{ar}+\\mathrm{ar}^2+\\mathrm{ar}^3+\\ldots \\ldots \\ldots \\ldots \\mathrm{ar}^{\\mathrm{n}-2}+\\mathrm{ar}^{\\mathrm{n}-1}+\\mathrm{ar}^{\\mathrm{n}}$ (1)</p><p>$\\mathrm{rS}_{\\mathrm{n}}=\\mathrm{ar}+\\mathrm{ar}^2+\\ldots \\ldots \\ldots+\\mathrm{ar}^{\\mathrm{n}-2}+\\mathrm{ar}^{\\mathrm{n}-1}+\\mathrm{ar}^{\\mathrm{n}}$ (2)</p><p>So, now (1) - (2) gives</p><p>$\\mathrm{S}_{\\mathrm{n}}-\\mathrm{rS}_{\\mathrm{n}}=\\mathrm{ar}^{\\mathrm{n}}$</p><p>$\\mathrm{S}_{\\mathrm{n}}(1-\\mathrm{r})=\\mathrm{a}\\left(1-\\mathrm{r}^{\\mathrm{n}}\\right)$</p><p>$\\Rightarrow$ $\\mathrm{S}_{\\mathrm{n}}=\\frac{\\mathrm{a}\\left(\\mathrm{r}^{\\mathrm{n}}-1\\right)}{(\\mathrm{r}-1)}$</p><p><strong>Special case when $n\\to \\infty $ </strong>(i.e. infinite number of terms)</p><p>If $\\left| r \\right|&lt;1$ and $n\\to \\infty $ then $\\left( \\text{li}{{\\text{m}}_{n\\to \\infty }}{{S}_{n}} \\right)=\\frac{a}{1-r}$</p><p>${{S}_{n}}=\\frac{a\\left( 1-{{r}^{n}} \\right)}{1-r}$</p><p>Now $\\text{ }\\!\\!~\\!\\!\\text{ li}{{\\text{m}}_{n\\to \\infty }}{{S}_{n}}=\\text{li}{{\\text{m}}_{n\\to \\infty }}\\frac{a}{1-r}-\\text{li}{{\\text{m}}_{n\\to \\infty }}\\frac{\\text{a}{{\\text{r}}^{n}}}{1-r}$</p><p>$=\\frac{a}{1-r}-0\\left( \\text{ }\\!\\!~\\!\\!\\text{ as }\\!\\!~\\!\\!\\text{ }\\underset{n\\to \\infty }{\\mathop{\\text{lim}}}\\,{{r}^{n}}=0 \\right)=\\frac{a}{1-r}$</p>",
+      "position": 2,
+      "qcConcept": "66a0ddb8c03b9dcaf1afec6f"
+    },
+    {
+      "title": "Properties on Geometric Progression",
+      "conceptBody": "<h3><strong>Properties of G.P.&nbsp;</strong></h3><p>(1) If each term of a G.P. is multiplied (or divided) by some non-zero quantity the resulting progression is G.P. with some common ratio.</p><p>Suppose the G.P. is with ${{t}_{n}}=a{{r}^{n-1}}$</p><p>Now this GP is multiplied by some $\\text{k}\\left( \\ne 0 \\right)$</p><p>So G.P. will be</p><p>${{\\text{t}}_{\\text{n}}}=\\left( \\text{ak} \\right){{\\text{r}}^{\\text{n}-1}}$</p><p>So, only the first term of G.P. has changed and the common ratio remains unaffected.</p><p>(2) If ${{\\text{a}}_{1}},{{\\text{a}}_{2}},\\ldots $ and ${{\\text{b}}_{1}},\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}_{2}},\\ldots $. be two G.P's of common ratio ${{\\text{r}}_{1}}$ and ${{\\text{r}}_{2}}$ respectively, then ${{\\text{a}}_{1}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}_{1}},{{\\text{a}}_{2}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}_{2}}$, $\\ldots $ and $\\frac{{{a}_{1}}}{{{b}_{1}}}\\cdot \\frac{{{a}_{2}}}{{{b}_{2}}}\\ldots $. will also form G.P. common ratio will be ${{r}_{1}}{{r}_{2}}$ and $\\frac{{{r}_{1}}}{{{r}_{2}}}$ respectively.</p><p>Let the series ${{a}_{1}},{{a}_{2}}\\ldots \\ldots \\ldots ..$. have the ${{n}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ term as ${{a}_{1}}{{r}_{1}}{{~}^{n-1}}$ and the series ${{b}_{1}},{{b}_{2}}\\ldots \\ldots .$. have nth term as ${{b}_{1}}{{r}_{2}}{{~}^{n-1}}$</p><p>So the series ${{a}_{1}}{{b}_{1}},{{a}_{2}}{{b}_{2}}\\ldots \\ldots .$. will have ${{n}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ term as $\\left( {{\\text{a}}_{1}}{{\\text{r}}_{1}}{{~}^{\\text{n}-1}} \\right)\\left( {{\\text{b}}_{1}}{{\\text{r}}_{2}}{{~}^{\\text{n}-1}} \\right)$</p><p>$=\\left( {{\\text{a}}_{1}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}_{1}} \\right){{\\left( {{\\text{r}}_{1}}{{\\text{r}}_{2}} \\right)}^{\\text{n}-1}}$</p><p>So the common ratio now becomes ${{r}_{1}}{{r}_{2}}$.</p><p>(3) If we have to take three terms in G.P. we take them as $\\frac{\\text{a}}{\\text{r}}$, a, ar with common ratio $\\text{r}$ and four terms as $\\frac{\\text{a}}{{{\\text{r}}^{3}}},\\frac{\\text{a}}{\\text{r}},\\text{ar},\\text{a}{{\\text{r}}^{3}}$ with common ratio ${{\\text{r}}^{2}}$.</p><p>(4) If $a,b,c$ are in G.P then ${{b}^{2}}=ac$</p><p>(5) If ${{\\text{a}}_{1}},{{\\text{a}}_{2}},{{\\text{a}}_{3}}\\ldots \\ldots ..{{\\text{a}}_{\\text{n}}}$ is a G.P. then $\\text{log}{{\\text{a}}_{1}},\\text{log}{{\\text{a}}_{2}}\\ldots \\ldots .\\text{log}{{\\text{a}}_{\\text{n}}}$ is an AP (provided that all terms are non-zero &amp; non-negative).</p><p><strong>Why?</strong></p><p>Now ${{a}_{1}},{{a}_{2}},{{a}_{3}}\\ldots ..{{a}_{n}}$ form a G.P.</p><p>So $\\mathrm{a}_1=\\mathrm{a}_1 \\mathrm{r}^{\\mathrm{i}-1}$ (Let)</p><p>$\\Rightarrow$ $\\log a_i=\\log a_1+(i-1) \\log r$</p><p>This is clearly term of an AP</p><p><strong>Q. How does $\\text{log}{{a}_{1}}+\\left( i-1 \\right)\\text{log}r$ represents an AP?</strong></p><p><strong>Ans. </strong>Let $\\text{log}{{a}_{1}}=A$</p><p>And $\\text{ }\\!\\!~\\!\\!\\text{ logr}=\\text{D}$ So, $\\text{log}{{a}_{1}}+\\left( i-1 \\right)\\text{log}r=A+\\left( i-1 \\right)D$</p><p>So, $\\text{A}+\\left( \\text{i}-1 \\right)\\text{D}$ is term of an AP with first term as $\\text{A}$ and common difference as $\\text{D}$.</p><p>In a finite GP the product of the terms equidistant from the beginning and the end is always same and is equal to product of first &amp; last terms.</p><p>i.e. $\\text{ }\\!\\!~\\!\\!\\text{ }{{a}_{k}}{{a}_{n-k+1}}={{a}_{1}}{{a}_{n}}$ for $k=1,2,3\\ldots n-1$</p><p>The reciprocals of the terms of a given GP, form a GP with common ratio $1/\\text{r}$.</p><p>i.e. if ${{a}_{1}},{{a}_{2}},{{a}_{3}}\\ldots $ an are in GP with common ratio $r$ then $\\frac{1}{{{a}_{1}}},\\frac{1}{{{a}_{2}}},\\ldots \\frac{1}{{{a}_{n}}}$ are in GP with common ratio $\\frac{1}{\\text{r}}$.</p>",
+      "position": 3,
+      "qcConcept": "66a0ddb8c03b9dcaf1afec70"
+    },
+    {
+      "title": "Solved Problems based on the Sum of Geometric Progression",
+      "conceptBody": "<h3><strong>Solved Problems based on the Sum of Geometric Progression</strong></h3><p><strong>Q) Find the sum of the following series :&nbsp;</strong></p><p>$5+55+555+\\ldots .n$ terms</p><p><strong>Solution :&nbsp;</strong></p><p>These kind of questions can be solved with a little trick after which we get the result through GP.</p><p>We have $5+55+555+\\ldots \\ldots .\\text{n}$ terms</p><p>$=5[1+11+111+\\ldots \\ldots . . \\mathrm{n}$ terms</p><p>$=\\frac{5}{9}[9+99+999+\\ldots] \\mathrm{n}$ terms</p><p>$=\\frac{5}{9}[(10-1)+(100-1)+(1000-1) \\ldots$.</p><p>$=\\frac{5}{9}[(\\underbrace{10+100+1000\\ldots \\text{n terms }}_{\\begin{array}{*{35}{l}} \\text{ This is in GP now } &amp; {} \\\\ \\text{ with a}=10 &amp; {} \\\\ \\end{array}})-\\underbrace{\\text{n}}_{\\text{n times }}1]$</p><p>&amp; $\\mathrm{r}=10$</p><p>.$\\therefore \\text{ }\\!\\!~\\!\\!\\text{ }$ sum of series</p><p>$\\begin{array}{*{35}{r}} {} &amp; ~=\\frac{5}{9}\\left[ \\frac{10\\left( {{10}^{\\text{n}}}-1 \\right)}{\\left( 10-1 \\right)}-\\text{n} \\right] \\\\ {} &amp; ~=\\frac{5}{9}\\left[ \\frac{10}{9}\\left( {{10}^{\\text{n}}}-1 \\right)-\\text{n} \\right] \\\\ {} &amp; ~=\\frac{5}{81}\\left[ {{10}^{\\text{n}+1}}-9\\text{n}-10 \\right] \\\\ \\end{array}$</p><p><strong>Q) If ${{S}_{n}}$ is the sum of first $n$ terms of a G.P. : $\\left( {{a}_{n}} \\right)$ and ${{S}_{n}}$ is the sum of another G.P.: $\\left( 1/{{a}_{n}} \\right)$, then show that : ${{\\mathbf{S}}_{\\text{n}}}=\\mathbf{S}_{\\text{n}}^{\\text{ }\\!\\!'\\!\\!\\text{ }}{{\\text{a}}_{1}}{{\\text{a}}_{\\text{n}}}$.&nbsp;</strong></p><p><strong>Solution :&nbsp;</strong></p><p>$\\begin{array}{*{35}{r}} {} &amp; {{\\text{S}}_{\\text{n}}}={{\\text{a}}_{1}}+{{\\text{a}}_{2}}+{{\\text{a}}_{3}}+\\ldots \\ldots \\ldots +{{\\text{a}}_{\\text{n}}} \\\\ {} &amp; \\text{S}_{\\text{n}}^{\\text{ }\\!\\!'\\!\\!\\text{ }}=\\frac{1}{{{\\text{a}}_{1}}}+\\frac{1}{{{\\text{a}}_{2}}}+\\ldots \\ldots \\ldots +\\frac{1}{{{\\text{a}}_{\\text{n}}}} \\\\ \\end{array}$</p><p>For the first GP ${{a}_{n}}={{a}_{1}}{{r}^{n-1}}$</p><p>${{S}_{n}}=\\frac{{{a}_{1}}\\left( 1-{{r}^{n}} \\right)}{1-r}$</p><p>where $\\text{r}$ is the common ratio.</p><p>For the second GP $\\left( \\frac{1}{{{a}_{n}}} \\right)$, common ratio $=\\frac{1}{r}$</p><p>$\\begin{array}{*{35}{l}} {} &amp; S_{n}^{\\text{ }\\!\\!'\\!\\!\\text{ }}=\\frac{1}{{{a}_{1}}}\\frac{\\left( 1-\\frac{1}{{{r}^{n}}} \\right)}{\\left( 1-\\frac{1}{r} \\right)}=\\frac{\\left( {{r}^{n}}-1 \\right)}{{{a}_{1}}\\left( r-1 \\right){{r}^{n-1}}}=\\frac{{{r}^{n}}-1}{{{a}_{n}}\\left( r-1 \\right)} \\\\ \\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ } &amp; S_{n}^{\\text{ }\\!\\!'\\!\\!\\text{ }}=\\frac{1}{{{a}_{1}}{{a}_{n}}}\\frac{{{a}_{1}}\\left( {{r}^{n}}-1 \\right)}{r-1} \\\\ \\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }S_{n}^{\\text{ }\\!\\!'\\!\\!\\text{ }} &amp; =\\frac{1}{{{a}_{1}}{{a}_{n}}}{{S}_{n}} \\\\ \\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ } &amp; S_{n}^{\\text{ }\\!\\!'\\!\\!\\text{ }}=\\frac{1}{{{a}_{1}}{{a}_{n}}}{{S}_{n}} \\\\ \\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ } &amp; {{S}_{n}}=S_{n}^{\\text{ }\\!\\!'\\!\\!\\text{ }}{{a}_{1}}{{a}_{n}} \\\\ \\end{array}$</p><p><strong>Q) If ${{S}_{1}},{{S}_{2}}\\ldots \\ldots {{S}_{n}}$ are the sums of infinite geometric series whose first terms are $1,2,3,\\ldots n$ and common ratios are $\\frac{1}{2},\\frac{1}{3},\\frac{1}{4}\\ldots \\frac{1}{n+1}$ resp., then prove ${{S}_{1}}+{{S}_{2}}+\\ldots {{S}_{n}}=\\frac{1}{2}n\\left( n+3 \\right)$.&nbsp;</strong></p><p><strong>Solution :&nbsp;</strong></p><p>We know the formula for an infinite series ${{S}_{\\infty }}=\\left( \\frac{a}{1-r} \\right)$ where a is the first term &amp; $\\text{r}$ is common ratio.</p><p>Here let ${{\\text{S}}_{\\text{k}}}=$ Sum of infinite series with first term</p><p>$\\text{a}=\\text{k }\\!\\!~\\!\\!\\text{ and }\\!\\!~\\!\\!\\text{ CR}=\\frac{1}{\\text{k}+1}$</p><p>$\\therefore $ ${{\\text{S}}_{\\text{k}}}=\\frac{\\text{k}}{1-\\frac{1}{\\text{k}+1}}=\\frac{\\text{k}}{\\frac{\\left( \\text{k}+1 \\right)-1}{\\text{k}+1}}$</p><p>$\\Rightarrow $ ${{\\text{S}}_{\\text{k}}}=\\text{k}+1$</p><p>$\\therefore $ Putting $\\text{k}=1,2,\\ldots ..\\text{n}$</p><p>$\\sum \\mathrm{S}=\\mathrm{S}_1+\\mathrm{S}_2+\\mathrm{S}_3 \\ldots \\ldots \\mathrm{S}_{\\mathrm{n}}$</p><p>$=(1+1)+(2+1)+(3+1) \\ldots(n+1)$</p><p>$=(1+2+3 \\ldots \\ldots n)+n \\quad 1$</p><p>$=\\frac{\\mathrm{n}(\\mathrm{n}+1)}{2}+\\mathrm{n}$ $\\{\\because 1+2+3 \\ldots \\ldots \\mathrm{n}$ is in AP with diff. $=1\\}$</p><p>$=\\frac{\\mathrm{n}(\\mathrm{n}+3)}{2}$</p><p>You can also learn this, sum of first $n$ natural nos. $=\\frac{n\\left( n+1 \\right)}{2}$</p>",
+      "position": 4,
+      "qcConcept": "66a0ddb8c03b9dcaf1afec71"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f6c2d384bfb4a538374",
+      "title": "$7^{\\text {th }}$ term of the sequence $\\sqrt{2}, \\sqrt{10}, 5 \\sqrt{2}, \\ldots \\ldots$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538375",
+      "title": "If the $4^{\\text {th }}, 7^{\\text {th }}$ and $10^{\\text {th }}$ terms of a G.P. be ${ }^{a, b, c}$ respectively, then the relation between $a, b, c$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538376",
+      "title": "If the first term of a G.P. be 5 and common ratio be -5 , then which term is 3125",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538377",
+      "title": "The number which should be added to the numbers $2,14,62$ so that the resulting numbers may be in G.P., is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538378",
+      "title": "If $(p+q)^{\\text {th }}$ term of a G.P. be $m$ and $(p-q)^{t h}$ term be $n$, then the $p^{\\text {th }}$ term will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538379",
+      "title": "If $x, 2 x+2,3 x+3$, are in G.P., then the fourth term is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53837a",
+      "title": "If the third term of a G.P. is 4 then the product of its first 5 terms is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53837b",
+      "title": "If the $5^{\\text {th }}$ term of a G.P. is $\\frac{1}{3}$ and $9^{\\text {th }}$ term is $\\frac{16}{243}$, then the $4^{\\text {th }}$ term will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53837c",
+      "title": "If the $10^{\\text {th }}$ term of a geometric progression is 9 and $4^{\\text {th }}$ term is 4 , then its $7^{\\text {th }}$ term is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53837d",
+      "title": "Fifth term of a G.P. is 2 , then the product of its 9 terms is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53837e",
+      "title": "If the sum of three terms of G.P. is 19 and product is 216 , then the common ratio of the series is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53837f",
+      "title": "The first term of a G.P. is 7 , the last term is 448 and sum of all terms is 889 , then the common ratio is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538380",
+      "title": "The sum of infinity of a geometric progression is $\\frac{4}{3}$ and the first term is $\\frac{3}{4}$. The common ratio is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538381",
+      "title": "The sum of 3 numbers in geometric progression is 38 and their product is 1728 . The middle number is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538382",
+      "title": "The first term of a G.P. whose second term is 2 and sum to infinity is 8 , will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

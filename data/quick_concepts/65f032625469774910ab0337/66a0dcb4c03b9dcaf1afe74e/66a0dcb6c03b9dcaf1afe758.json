@@ -1,0 +1,118 @@
+{
+  "subjectId": "65f032625469774910ab0337",
+  "chapterId": "66a0dcb4c03b9dcaf1afe74e",
+  "topicId": "66a0dcb6c03b9dcaf1afe758",
+  "title": "Ionic Product of Water",
+  "concepts": [
+    {
+      "title": "Ionization in electrolytes",
+      "conceptBody": "<p>\n Ionization in electrolytes\n</p>\n<p>\n Strong electrolytes are almost completely dissociated/ionized into the constituent ions in aqueous solution. Even at higher concentrations, very small amount of any strong electrolyte is present in the unionized form. Weak electrolytes are however, partially ionized and a dynamic equilibrium exist between the inonized and unionized forms.\n</p>\n<p>\n In 1887’s. Arrhenius postulated the first theory of electrolytic ionization. The basic postulates of his theory are.\n</p>\n<ul>\n <li>\n  When an electrolyte is dissolved in water, it ionizes to produce ions in the solution. These ions are free to move throughout the bulk of the solution.\n </li>\n <li>\n  The total number of positive charges is equal to the total number of negative charges in any solution of any electrolyte. The ions tend to recombine to form the unionized electrolyte. Hence, a dynamic equilibrium exists between the ionized and unionized form of the electrolyte. For example, an electrolyte $\\text{AB}$ ionizes in the solution to form ${{\\text{A}}^{+}}$and ${{\\text{B}}^{-}}$. The equilibrium established in the solution is:\n </li>\n</ul>\n<p>\n $\\text{AB}\\rightleftharpoons {{\\text{A}}^{+}}+{{\\text{B}}^{-}}$\n</p>\n<p>\n The ionization constant $(K)$ is then given by,\n</p>\n<p>\n $\\text{K}=\\frac{\\left[ {{\\text{A}}^{+}} \\right]\\left[ {{\\text{B}}^{-}} \\right]}{[\\text{AB}]}$\n</p>\n<ul>\n <li>\n  The properties of an electrolyte in the solution are due to the ions it gives in the solution. For example, a solution of copper sulphate is blue due to the presence of $\\text{C}{{\\text{u}}^{2+}}(\\text{aq})$ ions in it.\n </li>\n <li>\n  The fraction of the total number of molecule present as free ions in the solution is known as the degree of ionization $(\\alpha )$. This is defined as,\n </li>\n</ul>\n<p>\n $\\alpha =\\frac{\\text{ Number of molecules split into ions }}{\\text{ Total number of molecules dissolved }}$\n</p>\n<p>\n The degree of ionization at any concentration $(\\text{C})$ of $\\text{AB}$ in moles per litre is denoted as $(\\alpha \\text{C})$.\n</p>",
+      "position": 0,
+      "qcConcept": "66a0dcb6c03b9dcaf1afe759"
+    },
+    {
+      "title": "Ostwald's Dilution law",
+      "conceptBody": "<p>\n OSTWALD'S DILUTION LAW\n</p>\n<p>\n This law deals with the law of mass action to the equilibrium between the ions and unionized molecules in aqueous solutions of weak binary electrolytes such as acetic acid, propionic acid, $\\text{HCN},\\text{N}{{\\text{H}}_{4}}\\text{OH}$ etc.\n</p>\n<p>\n Consider a dilute solution of weak binary electrolyte $\\text{AB}$ containing $\\text{C}$ moles in 1 litre. At any given temperature, there will be equilibrium between the unionized molecules of $\\text{AB}$ and the ions ${{\\text{A}}^{+}}$and ${{\\text{B}}^{-}}$. Let $(\\alpha )$ be the degree of dissociation of $\\text{AB}$ at equilibrium.\n</p>\n<p>\n $\\begin{matrix}\n</p>\n<p>\n \\text{ Initial Conc}\\text{. } &amp; \\text{AB} &amp; \\rightleftharpoons  &amp; {{\\text{A}}^{+}} &amp; + &amp; {{\\text{B}}^{-}}  \\\\\n</p>\n<p>\n {} &amp; \\text{C} &amp; {} &amp; \\text{O} &amp; {} &amp; \\text{O}  \\\\\n</p>\n<p>\n \\text{ Conc}\\text{. at equilibrium } &amp; \\text{C}(1-\\alpha ) &amp; {} &amp; \\text{C}\\alpha  &amp; {} &amp; \\text{C}\\alpha   \\\\\n</p>\n<p>\n \\end{matrix}$\n</p>\n<p>\n Then according to law of mass action,\n</p>\n<p>\n $\\text{K}=\\frac{\\left[ {{\\text{A}}^{+}} \\right]\\left[ {{\\text{B}}^{-}} \\right]}{[\\text{AB}]}=\\frac{(\\text{C}\\alpha )(\\text{C}\\alpha )}{\\text{C}(1-\\alpha )}=\\frac{\\text{C}}{(1-\\alpha )}$\n</p>\n<p>\n As ' $\\alpha $ ' is generally small, the term $1-\\alpha \\approx 1$.\n</p>\n<p>\n Hence, $\\quad \\text{K}={{\\text{C}}^{2}}$\n</p>\n<p>\n $\\text{or}\\,\\,\\,\\,\\,\\text{ }\\quad \\alpha =\\sqrt{\\text{K}/\\text{C}}=\\sqrt{\\text{K}.\\text{V}}$\n</p>\n<p>\n where ' $\\text{V}$ ' is the volume of the solution in litres containing one mole of the solute. From the above equation it follows that if the concentration decreases, the degree of ionization $(\\alpha )$ must increase. Thus, at constant temperature, an electrolyte in solution gets ionized to a larger extent with increasing dilution. This is called Ostwald dilution law. This law is not applicable to solutions of strong electrolytes as they are completely dissociated and there is no equilibrium between the dissociated and undissociated molecules.\n</p>",
+      "position": 1,
+      "qcConcept": "66a0dcb7c03b9dcaf1afe75a"
+    },
+    {
+      "title": "Ionization of weak acid and weak base",
+      "conceptBody": "<p>\n Ionization of an acid (weak)\n</p>\n<p>\n An acid of the type HA can undergo ionization when dissolved in water as.\n</p>\n<p>\n $\\text{HA}+{{\\text{H}}_{2}}\\text{O}\\rightleftharpoons {{\\text{H}}_{3}}{{\\text{O}}^{+}}+{{\\text{A}}^{-}}$\n</p>\n<p>\n If ' $\\text{n}$ ' moles of the acid are dissolved in ' $\\text{V}$ ' units of volume (litres $L$) and ($\\alpha $) is the degree of ionization, then the equilibrium amounts of various species and the concentration in moles per litre in the solution are,\n</p>\n<p>\n Number of moles of [HA] $\\quad =\\text{n}(1-\\alpha )=\\text{C}(1-\\alpha )\\text{mol}{{\\text{L}}^{-1}}$\n</p>\n<p>\n Number of moles of $\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]=\\text{n}\\alpha =\\text{C}\\alpha \\text{mol}{{\\text{L}}^{-1}}$\n</p>\n<p>\n Number of moles of $\\left[ {{\\text{A}}^{-}} \\right]\\quad =\\text{n}\\alpha =\\text{C}\\alpha \\text{molL}{{\\text{L}}^{-1}}$\n</p>\n<p>\n Where ' $\\text{C}$ ' is the molar concentration of the acid. The ionization constant for the above reaction is given by,\n</p>\n<p>\n ${{\\text{K}}_{\\text{a}}}=\\frac{\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]\\left[ {{\\text{A}}^{-}} \\right]}{[\\text{HA}]}=\\frac{(\\text{C}\\alpha )(\\text{C}\\alpha )}{\\text{C}(1-\\alpha )}=\\frac{{{\\text{C}}^{2}}}{(1-\\alpha )}$\n</p>\n<p>\n If ' $\\alpha $ ' is a mall then $1-\\alpha \\approx 1$\n</p>\n<p>\n Hence, $\\quad {{\\text{K}}_{\\text{a}}}={{\\text{C}}^{2}}$\n</p>\n<p>\n or $\\quad \\alpha =\\sqrt{{{\\text{K}}_{\\text{a}}}/\\text{C}}+\\sqrt{{{\\text{K}}_{\\text{a}}}\\text{V}}$\n</p>\n<p>\n where ‘$\\text{V}$’ is the volume of the solution in litres containing one mole of the acid $\\text{HA}$. As the degree of ionization increases with-dilution the, the hydronium ion or hydrogen ion concentration is given by.\n</p>\n<p>\n $$\n</p>\n<p>\n Ionization of a base (weak)\n</p>\n<p>\n The ionization of a weak base is characterized by the equilibrium,\n</p>\n<p>\n $\\text{MOH}+{{\\text{H}}_{2}}\\text{O (excess) }\\rightleftharpoons {{\\text{M}}^{+}}(\\text{aq})+\\text{O}{{\\text{H}}^{-}}(\\text{aq})$\n</p>\n<p>\n If ‘$\\text{n}$’ moles of the base are dissolved in ‘$V$’ units of volume (litres $L$) and $\\alpha $ is the degree of ionization, then the equilibrium amounts of various species and the concentration in moles per litre in the solution are,\n</p>\n<p>\n Number of moles of $[\\text{MOH}]=\\text{n}(1-\\alpha )=\\text{C}(1-\\alpha )\\text{mol}{{\\text{L}}^{-1}}$\n</p>\n<p>\n $\\begin{array}{*{35}{l}}\n</p>\n<p>\n \\text{Number of moles of }\\left[ \\text{O}{{\\text{H}}^{-}} \\right] &amp; =\\text{n}\\alpha =\\text{C}\\alpha \\text{molL}  \\\\\n</p>\n<p>\n \\text{Number of moles of }\\left[ {{\\text{M}}^{+}} \\right] &amp; =\\text{n}\\alpha =\\text{C}\\alpha \\text{molL}  \\\\\n</p>\n<p>\n \\end{array}$\n</p>\n<p>\n where ‘$\\text{C}$’ is the molar concentration of the base. The ionization constant for the above reaction is given by,\n</p>\n<p>\n ${{\\text{K}}_{\\text{b}}}=\\frac{\\left[ {{\\text{M}}^{+}} \\right]\\left[ \\text{O}{{\\text{H}}^{-}} \\right]}{[\\text{MOH}]}=\\frac{(\\text{C}\\alpha )(\\text{C}\\alpha )}{\\text{C}(1-\\alpha )}=\\frac{{{\\text{C}}^{2}}}{(1-\\alpha )}$\n</p>\n<p>\n If $'\\alpha '$is small then\\[1-\\alpha \\approx 1\\]\n</p>\n<p>\n Hence, \t${{\\text{K}}_{\\text{b}}}=\\text{C}{{\\alpha }^{2}}$\n</p>\n<p>\n or \t\t$\\alpha =\\sqrt{{{\\text{K}}_{\\text{b}}}/\\text{C}}=\\sqrt{{{\\text{K}}_{\\text{b}}}\\text{V}}$\n</p>\n<p>\n where ‘$\\text{V}$’ is the volume of the solution in litres containing one mole of the base $\\text{MOH}$. As the degree of ionization increase with dilution then, the hydroxide concentration is given by.\n</p>\n<p>\n $$\n</p>",
+      "position": 2,
+      "qcConcept": "66a0dcb7c03b9dcaf1afe75b"
+    },
+    {
+      "title": "Types of Protic acids",
+      "conceptBody": "<p>\n Protic acids\n</p>\n<p>\n Acids which contain ionizable hydrogen are called protic acids. These are classified as.\n</p>\n<p>\n Types of protic acids\n</p>\n<p>\n Monoprotic acids\n</p>\n<p>\n These acids contains only one ionizable hydrogen in its molecule. It is denoted by HA.\n</p>\n<p>\n Example: $\\text{HCl},\\text{C}{{\\text{H}}_{3}}\\text{COOH},\\text{HN}{{\\text{O}}_{3}}$ etc.\n</p>\n<p>\n Diprotic acids\n</p>\n<p>\n The diprotic acids contain two ionizable hydrogen in its molecule. They are denoted by ${{\\text{H}}_{2}}~\\text{A}$.\n</p>\n<p>\n Example: ${{\\text{H}}_{2}}\\text{S}{{\\text{O}}_{4}},{{(\\text{COOH})}_{2}},{{\\text{H}}_{2}}\\text{C}{{\\text{O}}_{3}}$ etc.\n</p>\n<p>\n Triprotic acids\n</p>\n<p>\n These acids contain three ionizable hydrogen in its molecule. It is denoted by ${{\\text{H}}_{3}}~\\text{A}$.\n</p>\n<p>\n Example: ${{\\text{H}}_{3}}\\text{P}{{\\text{O}}_{4}}$ etc.\n</p>\n<p>\n In all these acids, the primary ionization constant $\\left( {{K}_{1}} \\right)$ is stronger than the secondary $\\left( {{K}_{2}} \\right)$, which is much stronger than the tertiary $\\left( {{\\text{K}}_{3}} \\right)$ ionization constant. This is because a proton $\\left( {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right)$would be released more readily from an uncharged molecule than from a mono-negative ion, and more readily from a mono-negative ion than from a bi-negative ion. Also the hydronium concentration from the first ionization will suppress the subsequent ionizations due to common ion effect (this will be discussed a little later in the chapter)\n</p>\n<p>\n Some general observations on the behaviour of protic acids in aqueous solution are:\n</p>\n<ul>\n <li>\n  The protic acids which have very high value of the acid dissociation or ionization constant, ionize/dissociate almost completely in aqueous solution at ordinary dilutions. They are called strong acids.\n </li>\n</ul>\n<p>\n Example: $\\text{HCl},{{\\text{H}}_{2}}\\text{S}{{\\text{O}}_{4}}\\text{, and HN}{{\\text{O}}_{3}}\\text{. }$\n</p>\n<ul>\n <li>\n  Acids, which dissociate in aqueous solution to a smaller extent at ordinary dilution, to give low concentration of ${{\\text{H}}^{+}}$ions in solution, are called weak acids.\n </li>\n</ul>\n<p>\n Example: $\\text{C}{{\\text{H}}_{3}}\\text{COOH},{{(\\text{COOH})}_{2}},{{\\text{H}}_{3}}\\text{P}{{\\text{O}}_{4}},\\text{HCN},\\text{HF}$, etc. The ${{\\text{K}}_{\\text{a}}}$ or ${{\\text{K}}_{1}}$ values of such acids are much smaller than one.\n</p>\n<ul>\n <li>\n  On dilution, the ionization of an acids increase. So, concentration of ${{\\text{H}}^{+}}$ions also increase on dilution. Therefore, strength of the acid increases with dilution. It is for this reason that the acid strengths are compared at equal concentrations.\n </li>\n <li>\n  For di-and tri- protic acids, first dissociation is stronger than the second, which in turn is much stronger than the third dissociation i.e., ${{\\text{K}}_{1}}\\gg {{\\text{K}}_{2}}\\gg {{\\text{K}}_{3}}$. This is because the removal of a proton from a negatively charged species is more difficult than from a neutral molecule.\n </li>\n</ul>",
+      "position": 3,
+      "qcConcept": "66a0dcb7c03b9dcaf1afe75c"
+    },
+    {
+      "title": "Ionic product of Water",
+      "conceptBody": "<p>\n Ionic Product of Water\n</p>\n<p>\n The dissociation constant $\\text{K}$ of ${{\\text{H}}_{2}}\\text{O}$, dissociating very slightly into ${{\\text{H}}^{+}}$and $\\text{O}{{\\text{H}}^{-}}\\left( {{\\text{H}}_{2}}\\text{O}\\rightleftharpoons {{\\text{H}}^{+}}+ \\right.$ $\\text{O}{{\\text{H}}^{-}}$) is given by\n</p>\n<p>\n $\\text{K}=\\frac{\\left[ {{\\text{H}}^{+}} \\right]\\left[ \\text{O}{{\\text{H}}^{-}} \\right]}{\\left[ {{\\text{H}}_{2}}\\text{O} \\right]}$\n</p>\n<p>\n The concentration of an undissociated molecule of ${{\\text{H}}_{2}}\\text{O}$ (i.e., $\\left[ {{\\text{H}}_{2}}\\text{O} \\right]$) is practically equal to the initial molar concentration of water as water dissociated feebly. $\\left[ {{\\text{H}}_{2}}\\text{O} \\right]$ may thus be taken as constant, the value of which is equal to $100/18$, i.e., 55.54 moles per litre supposing the density of water as $1~\\text{g}$ per $\\text{mL}$.\n</p>\n<p>\n $\\text{K}\\quad \\left[ {{\\text{H}}_{2}}\\text{O} \\right]=\\left[ {{\\text{H}}^{+}} \\right]\\left[ \\text{O}{{\\text{H}}^{-}} \\right]$\n</p>\n<p>\n or\t${{\\text{K}}_{\\text{w}}}=\\left[ {{\\text{H}}^{+}} \\right]\\left[ \\text{O}{{\\text{H}}^{-}} \\right]$\n</p>\n<p>\n ${{\\text{K}}_{\\text{w}}}$ is known as ionic product of water which increases with the increase in temperature.\n</p>\n<p>\n <strong>\n  At $\\mathbf{25C,}\\quad {{\\mathbf{K}}_{\\mathbf{w}}}\\mathbf{=1}\\quad {{\\mathbf{1}}^{\\mathbf{14}}}{{\\mathbf{(~mole/L)}}^{\\mathbf{2}}}$.\n </strong>\n</p>\n<p>\n <strong>\n  At the body temperature $\\mathbf{(37C),}{{\\mathbf{K}}_{\\mathbf{w}}}\\mathbf{=2}\\mathbf{.5}\\quad \\mathbf{1}{{\\mathbf{0}}^{\\mathbf{14}}}{{\\mathbf{(~mole/L)}}^{\\mathbf{2}}}$\n </strong>\n</p>\n<p>\n For pure water (neutral) $\\left[ {{\\text{H}}^{+}} \\right]=\\left[ \\text{O}{{\\text{H}}^{-}} \\right]$\n</p>\n<p>\n $\\therefore \\quad \\left[ \\text{O}{{\\text{H}}^{+}} \\right]=\\left[ \\text{O}{{\\text{H}}^{-}} \\right]=\\sqrt{{{\\text{K}}_{\\text{W}}}}=\\sqrt{{{10}^{-14}}}={{10}^{-7}}~\\text{mole}/\\text{L}$\n</p>\n<p>\n <strong>\n  For any acidic solution,\n </strong>\n $\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]&gt;\\left[ \\text{O}{{\\text{H}}^{-}} \\right]$\n</p>\n<p>\n or\t$\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]&gt;{{10}^{-7}}\\text{M}$\n</p>\n<p>\n <strong>\n  For any alkaline solution, $\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]&lt;\\left[ \\text{O}{{\\text{H}}^{-}} \\right]$\n </strong>\n</p>\n<p>\n or\t$\\left[ \\text{O}{{\\text{H}}^{-}} \\right]&gt;{{10}^{-7}}\\text{M}$\n</p>\n<p>\n $$\n</p>",
+      "position": 4,
+      "qcConcept": "66a0dcb7c03b9dcaf1afe75d"
+    },
+    {
+      "title": "Effect of Temperature on K",
+      "conceptBody": "<p>\n Effect of temperature on $\\text{K}$\n</p>\n<p>\n The value of ${{\\text{K}}_{\\text{w}}}$ varies with the change in temperature. The values of $\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]$and $[\\text{OH}]$ are always equal to each other at all temperatures but the values of ${{\\text{K}}_{\\text{w}}}$ are different at different temperatures. The value of ${{\\text{K}}_{\\text{w}}}$ increases with the rise in temperature. This is because increase in temperature will shift the equilibrium in the forward direction producing large concentrations of $\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]$and $[\\text{OH}]$ ions (Le Chateller’s principle).\n</p>\n<p>\n Hence, ${{\\text{K}}_{\\text{w}}}$ increases with rise in temperature.\n</p>\n<p>\n In acidic solution\n</p>\n<p>\n When an acidic solution of $\\text{HCl}$ is added to a pure neutral solution of water, the concentration of $\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]$becomes larger than $1.0\\quad {{10}^{-7}}~\\text{mol}~{{\\text{L}}^{-1}}$. The dissociation equilibrium of water shifts in the reverse direction (Le Chatelier’s principle). The excess ${{[\\text{OH}]}^{-}}$ions combine with hydronium ions to form undissociated water molecules so that he value of ${{\\text{K}}_{\\text{w}}}$ remains constant in the solution. The concentration of $[\\text{OH}]$ ions will then be equal to\n</p>\n<p>\n $\\left[ \\text{O}{{\\text{H}}^{-}} \\right]=\\frac{{{\\text{K}}_{\\text{W}}}}{\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]}$\n</p>\n<p>\n The concentration of $\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]$is more than the concentration of the $\\left[ \\text{O}{{\\text{H}}^{-}} \\right]$ions in acidic solution. When a few drops of a base like $\\text{NaOH}$ is added to pure water, the concentration of $\\left[ \\text{O}{{\\text{H}}^{-}} \\right]$ increases and that of hydrogen ions decreases. The concentration of $\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]$can be calculated as:\n</p>\n<p>\n $\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]=\\frac{{{\\text{K}}_{\\text{W}}}}{\\left[ \\text{O}{{\\text{H}}^{-}} \\right]}$\n</p>\n<p>\n Thus in basic solution the concentration of $[\\text{OH}]$ will be greater than of $\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]$\n</p>\n<p>\n It can be concluded that the hydronium and hydroxyl ions are always present in solution whether they are acidic or basic. However their concentrations differ.\n</p>\n<p>\n In acidic solution \t\t:\t$\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]&gt;\\left[ \\text{O}{{\\text{H}}^{-}} \\right]$\n</p>\n<p>\n In basic solution \t\t:\t$\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]&lt;\\left[ \\text{O}{{\\text{H}}^{-}} \\right]$\n</p>\n<p>\n In neutral solution \t:\t$\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]=\\left[ \\text{O}{{\\text{H}}^{-}} \\right]$\n</p>",
+      "position": 5,
+      "qcConcept": "66a0dcb7c03b9dcaf1afe75e"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66584e521814fc7e94209c5e",
+      "title": "The degree of ionization of a compound depends on",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c5f",
+      "title": "In weak electrolytic solution, degree of ionization",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c60",
+      "title": "Ionic product of water increases, if",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c61",
+      "title": "At infinite dilution, the percentage ionization for both strong and weak electrolytes is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c62",
+      "title": "The unit of ionic product of water $K_w$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c63",
+      "title": "For a weak acid $H A$, Ostwald's dilution law is represented by the equation",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c64",
+      "title": "The degree of dissociation of $0.1 \\mathrm{M} \\mathrm{HCN}$ solution is $0.01 \\%$. Its ionisation constant would be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c65",
+      "title": "0.2 molar solution of formic acid is ionized $3.2 \\%$. Its ionization constant is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c66",
+      "title": "The values of dissociation constants of some acids (at $25^{\\circ} \\mathrm{C}$ ) are as follows. Indicate which is the strongest acid in water",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c67",
+      "title": "If $\\alpha$ is the degree of ionization, $C$ the concentration of a weak electrolyte and $K_a$ the acid ionization constant, then the correct relationship between $\\alpha, C$ and $K_{\\mathrm{s}}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c68",
+      "title": "The hydrogen ion concentration in weak acid of dissociation constant $K_{\\mathrm{a}}$ and concentration $c$ is nearly equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c69",
+      "title": "A monoprotic acid in $1.00 \\mathrm{M}$ solution is $0.01 \\%$ ionised. The dissociation constant of this acid is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

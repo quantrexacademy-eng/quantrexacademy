@@ -1,0 +1,330 @@
+/* Quantrex — NTA / JEE Main integer-type numerical answer (centered box + keypad) */
+
+.mtk-numerical-wrap {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  padding: 8px 8px 12px !important;
+  grid-column: 1 / -1 !important;
+}
+
+.mtk-numerical {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.qx-num-entry {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* ExamGoal: empty fill box only — no extra panel chrome */
+.qx-num-entry.qx-num-panel,
+.qx-num-entry.qx-num-box-only {
+  max-width: 280px !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.mtk-test-root[data-test-theme="light"] .qx-num-entry.qx-num-panel {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+.qx-num-badge {
+  display: block;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #1e3a8a;
+  background: #dbeafe;
+  border: 1px solid #93c5fd;
+  border-radius: 6px;
+  padding: 5px 10px;
+  margin: 0 auto 12px;
+  max-width: 220px;
+}
+
+.qx-num-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/* Main answer box — large, centered, NTA style */
+.qx-num-box-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 8px;
+}
+
+.qx-num-input, .mtk-num-input, .eg-num-input {
+  display: block;
+  width: 240px;
+  max-width: calc(100% - 8px);
+  min-height: 48px;
+  height: 48px;
+  padding: 8px 14px;
+  border: 2px solid #2563eb;
+  border-radius: 8px;
+  font-size: 22px;
+  font-weight: 800;
+  font-family: "Consolas", "Courier New", "Inter", monospace;
+  text-align: center;
+  background: #fff;
+  color: #0f172a;
+  -webkit-text-fill-color: #0f172a;
+  caret-color: #2563eb;
+  letter-spacing: 0.08em;
+  margin: 0 auto;
+  cursor: text;
+  color-scheme: light;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
+.qx-num-input:focus, .mtk-num-input:focus, .eg-num-input:focus, .mtk-num-input:focus, .eg-num-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.18);
+}
+
+.qx-num-input:disabled, .mtk-num-input:disabled, .eg-num-input:disabled, .mtk-num-input:disabled, .eg-num-input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  background: #f1f5f9;
+}
+
+.qx-num-hint {
+  text-align: center;
+  font-size: 12px;
+  color: #64748b;
+  margin: 0 0 14px;
+  font-weight: 500;
+}
+
+.qx-num-keypad,
+#qxNumKeypad,
+.qx-num-key,
+.qx-num-badge,
+.qx-num-label,
+.qx-num-hint {
+  display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+}
+
+.qx-num-key {
+  padding: 5px 4px;
+  border: 1px solid #94a3b8;
+  border-radius: 5px;
+  background: #fff;
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: Inter, system-ui, sans-serif;
+  cursor: pointer;
+  transition: background 0.1s, border-color 0.1s, transform 0.05s;
+  min-height: 32px;
+  user-select: none;
+}
+
+.qx-num-key:hover:not(:disabled) {
+  background: #eff6ff;
+  border-color: #3b82f6;
+}
+
+.qx-num-key:active:not(:disabled) {
+  background: #dbeafe;
+  transform: scale(0.98);
+}
+
+.qx-num-key-wide {
+  grid-column: 1 / -1;
+}
+
+.qx-num-key-back,
+.qx-num-key-clear {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: #f1f5f9;
+}
+
+.qx-num-key-clear {
+  background: #fef2f2;
+  border-color: #fca5a5;
+  color: #b91c1c;
+}
+
+.qx-num-correct {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 14px;
+  color: #166534;
+  font-weight: 600;
+}
+
+/* Dark CBT theme */
+
+.mtk-test-root[data-test-theme="dark"] .qx-num-entry.qx-num-panel,
+.eg-test-root[data-test-theme="dark"] .qx-num-entry.qx-num-panel {
+  background: transparent !important;
+  border: none !important;
+}
+
+html[data-theme="dark"] .qx-num-input,
+html[data-theme="dark"] .mtk-num-input,
+html[data-theme="dark"] .eg-num-input,
+.mtk-test-root[data-test-theme="dark"] .qx-num-input,
+.eg-test-root[data-test-theme="dark"] .qx-num-input,
+.mtk-test-root[data-test-theme="dark"] .mtk-num-input,
+.eg-test-root[data-test-theme="dark"] .eg-num-input,
+.mtk-test-root[data-test-theme="dark"] input.qx-num-input,
+.eg-test-root[data-test-theme="dark"] input.qx-num-input {
+  background: #0b1220 !important;
+  border-color: #60a5fa !important;
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  caret-color: #93c5fd !important;
+  color-scheme: dark;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-num-key,
+.eg-test-root[data-test-theme="dark"] .qx-num-key {
+  background: #2a2f3d !important;
+  border-color: #4b5563 !important;
+  color: #e2e8f0 !important;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-num-key:hover:not(:disabled),
+.eg-test-root[data-test-theme="dark"] .qx-num-key:hover:not(:disabled) {
+  background: #374151 !important;
+  border-color: #60a5fa !important;
+}
+
+.mtk-test-root[data-test-theme="light"] .qx-num-entry.qx-num-panel,
+.eg-test-root[data-test-theme="light"] .qx-num-entry.qx-num-panel,
+.mtk-test-root[data-test-theme="dark"] .qx-num-entry.qx-num-panel,
+.eg-test-root[data-test-theme="dark"] .qx-num-entry.qx-num-panel {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="light"] .qx-num-input,
+html[data-theme="light"] .mtk-num-input,
+html[data-theme="light"] .eg-num-input,
+.mtk-test-root[data-test-theme="light"] .qx-num-input,
+.eg-test-root[data-test-theme="light"] .qx-num-input,
+.mtk-test-root[data-test-theme="light"] .mtk-num-input,
+.eg-test-root[data-test-theme="light"] .eg-num-input,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .qx-num-input,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .qx-num-input,
+.mtk-test-root[data-test-theme="light"] input.qx-num-input,
+.eg-test-root[data-test-theme="light"] input.qx-num-input {
+  background: #fff !important;
+  border-color: #2563eb !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  caret-color: #2563eb !important;
+  color-scheme: light;
+}
+
+.mtk-test-root[data-test-theme="light"] .qx-num-key,
+.eg-test-root[data-test-theme="light"] .qx-num-key {
+  background: #fff !important;
+  border-color: #94a3b8 !important;
+  color: #0f172a !important;
+}
+
+/* Allen / practice */
+.mtk-test-root.allen-cbt .qx-num-entry.qx-num-panel {
+  border-color: var(--allen-border, #94a3b8);
+}
+
+.qx-prac-numerical {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+.qx-prac-numerical .qx-num-entry {
+  max-width: 280px !important;
+}
+
+.qx-prac-numerical.correct .qx-num-input {
+  border-color: #16a34a !important;
+  background: #f0fdf4 !important;
+  color: #14532d !important;
+  -webkit-text-fill-color: #14532d !important;
+}
+
+.qx-prac-numerical.wrong .qx-num-input {
+  border-color: #dc2626 !important;
+  background: #fef2f2 !important;
+  color: #991b1b !important;
+  -webkit-text-fill-color: #991b1b !important;
+}
+
+.allen-practice-active .qx-num-input,
+.allen-cbt-active .qx-num-input,
+.mtk-test-root .qx-num-input,
+.eg-test-root .qx-num-input,
+.qx-prac-numerical .qx-num-input,
+input.qx-num-input {
+  width: 240px !important;
+  max-width: min(240px, calc(100% - 8px)) !important;
+  min-height: 48px !important;
+  height: 48px !important;
+  font-size: 22px !important;
+  padding: 8px 14px !important;
+  text-align: center !important;
+  border-width: 2px !important;
+}
+
+.mtk-test-root .qx-num-entry.qx-num-panel,
+.eg-test-root .qx-num-entry.qx-num-panel,
+.qx-prac-numerical .qx-num-entry.qx-num-panel {
+  max-width: 280px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.mtk-test-root .qx-num-key,
+.qx-prac-numerical .qx-num-key,
+.eg-test-root .qx-num-key {
+  display: none !important;
+}
+
+@media (max-width: 640px) {
+  .qx-num-entry.qx-num-panel,
+  .qx-num-entry.qx-num-box-only {
+    max-width: 280px !important;
+    padding: 0 !important;
+  }
+  .qx-num-keypad,
+  #qxNumKeypad,
+  .qx-num-key {
+    display: none !important;
+  }
+  .qx-num-input, .mtk-num-input, .eg-num-input {
+    width: 240px !important;
+    max-width: min(240px, calc(100vw - 40px)) !important;
+    min-height: 48px !important;
+    height: 48px !important;
+    font-size: 22px !important;
+  }
+}

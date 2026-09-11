@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Flat light-grey Quantrex watermark (visible at ~18% CSS opacity) -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <g fill="#9CA3AF" fill-opacity="1">
+    <!-- Orbit -->
+    <ellipse cx="600" cy="420" rx="220" ry="78" fill="none" stroke="#9CA3AF" stroke-width="18" transform="rotate(-28 600 420)"/>
+    <!-- Q -->
+    <text x="600" y="520" text-anchor="middle"
+      font-family="Arial, Helvetica, sans-serif" font-size="280" font-weight="800">Q</text>
+    <!-- Wordmark -->
+    <text x="600" y="700" text-anchor="middle"
+      font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700" letter-spacing="8">QUANTREX</text>
+    <text x="600" y="780" text-anchor="middle"
+      font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="600" letter-spacing="14">ACADEMY</text>
+    <text x="600" y="870" text-anchor="middle"
+      font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="600" letter-spacing="6">CONCEPT CREATE DESTINY</text>
+  </g>
+</svg>

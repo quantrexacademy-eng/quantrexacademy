@@ -1,0 +1,46 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd52c03b9dcaf1afea5f",
+  "topicId": "66a0dd57c03b9dcaf1afea80",
+  "title": "Conormal Points",
+  "concepts": [
+    {
+      "title": "Conormal Points of ellipse",
+      "conceptBody": "<h3><strong>Co-normal points</strong></h3><p>Let $\\text{P}\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}} \\right),\\text{Q}\\left( {{\\text{x}}_{2}},{{\\text{y}}_{2}} \\right),\\text{R}\\left( {{\\text{x}}_{3}},{{\\text{y}}_{3}} \\right)$ and $\\text{S}\\left( {{\\text{x}}_{4}},{{\\text{y}}_{4}} \\right)$ be the conormal points. Let normals at $\\text{P},\\text{Q}$, $\\text{R},\\text{S}$ meet in $\\text{T}\\left( \\text{h},\\text{k} \\right)$.</p><p>Then equation of normal at $\\text{P}\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}} \\right)$ is</p><p>$\\frac{{{a}^{2}}x}{{{x}_{1}}}-\\frac{{{b}^{2}}y}{{{y}_{1}}}={{a}^{2}}-{{b}^{2}}$</p><p>The point $\\text{T}\\left( \\text{h},\\text{k} \\right)$ lies on it</p><p>$\\left( {{a}^{2}}-{{b}^{2}} \\right){{x}_{1}}{{y}_{1}}+{{b}^{2}}k{{x}_{1}}-{{a}^{2}}h{{y}_{1}}=0$</p><p>Similarly, for points $\\text{Q},\\text{R}$ and $\\text{S}$ in equation (i), ${{\\text{x}}_{1}},{{\\text{y}}_{1}}$ are just replaced by $\\left( {{\\text{x}}_{2}},{{\\text{y}}_{2}} \\right),\\left( {{\\text{x}}_{3}},{{\\text{y}}_{3}} \\right)$, $\\left( {{\\text{x}}_{4}},{{\\text{y}}_{4}} \\right)$ respectively.</p><p>∴ $\\text{P},\\text{Q},\\text{R},\\text{S}$ all lie on the curve</p><p>$\\left( {{\\text{a}}^{2}}-{{\\text{b}}^{2}} \\right)\\text{xy}+{{\\text{b}}^{2}}\\text{kx}-{{\\text{a}}^{2}}\\text{hy}=0$, which is called Apollonius a rectangular hyperbola.</p>",
+      "position": 0,
+      "qcConcept": "66a0dd58c03b9dcaf1afea81"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f492d384bfb4a538083",
+      "title": "Let the normals at the four points $\\left(x_1, y_1\\right),\\left(x_2, y_2\\right),\\left(x_3, y_3\\right)$ and $\\left(x_4, y_4\\right)$ on the ellipse $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ be concurrent at some point (called as conormal point). Then $\\left(x_1+x_2+x_3+x_4\\right)\\left(\\frac{1}{x_1}+\\frac{1}{x_2}+\\frac{1}{x_3}+\\frac{1}{x_4}\\right)$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f492d384bfb4a538084",
+      "title": "which of the following is properties of co normal of ellipse",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f492d384bfb4a538085",
+      "title": "Sum of eccentric angles $(\\alpha, \\beta, \\gamma, \\delta)$ of co-normal points of ellipse equals to an odd multiple of $\\pi$.",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f492d384bfb4a538086",
+      "title": "how many normals are required to form co normal points",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f492d384bfb4a538087",
+      "title": "sum of ordinate points of co normal",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

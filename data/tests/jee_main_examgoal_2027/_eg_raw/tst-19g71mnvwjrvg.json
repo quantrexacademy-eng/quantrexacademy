@@ -1,0 +1,1699 @@
+{
+  "testId": "tst-19g71mnvwjrvg",
+  "title": "Work, Energy and Power - Chapter Test",
+  "type": "chapter",
+  "section": "Work, Energy and Power",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-07-19T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "fe7e31c9-0f76-401f-8be1-259d1b63f455",
+  "questions_count": 25,
+  "solutions_count": 25,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g71mnvwjrvg",
+    "defaultLanguage": "en",
+    "description": "Questions from all topics of the chapter",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-19T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 100,
+    "maxNegMarks": 25,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 80,
+        "maxNegMarks": 20,
+        "timeAllotted": 2880000,
+        "totalQuestions": 20,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrlridee",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A rigid body is acted upon by a horizontal force which is inversely proportional to the distance covered $s$. The work done by this force will be proportional to</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$s$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\sqrt{s}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$s^2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>It is given that the force is inversely proportional to the distance covered $s$,</p>\n<p>$$F \\propto \\frac{1}{s} \\Rightarrow F = \\frac{k}{s}$$</p>\n<p>where $k$ is a positive constant of proportionality.</p>\n<p>When a force $F$ varies as a function of displacement or distance covered $s$, the total work done $W$ is calculated by integrating the force over the path interval:</p>\n<p>$$W = \\int F\\, ds$$</p>\n<p>$$W = \\int \\left(\\frac{k}{s}\\right) ds$$</p>\n<p>$$W = k \\int \\frac{1}{s} ds$$</p>\n<p>$$W = k \\ln s$$</p>\n<p>$$\\Rightarrow W \\propto \\ln(s)$$</p>\n<p>Because the work done is a logarithmic function of the distance covered ($\\ln(s)$), none of the options (a), (b), or (c) are correct. Thus, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक दृढ़ पिंड पर एक क्षैतिज बल कार्यरत है जो तय की गई दूरी $s$ के व्युत्क्रमानुपाती है। इस बल द्वारा किया गया कार्य अनुक्रमानुपाती होगा:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$s$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\sqrt{s}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$s^2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrjbr42a",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the unit of force and length each be increased by four times, then the unit of work is increased by</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>16 times</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>8 times</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2 times</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>4 times</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Work (W) is the product of force (F) acting on an object and the displacement or length (L) along the applied force along the direction of motion:</p>\n<p>Work = Force × Length</p>\n<p>Let the original unit of force be $F_1$ and the original unit of length be $L_1$.</p>\n<p>The original unit of work is:</p>\n<p>$$W_1 = F_1 \\times L_1$$</p>\n<p>It is given that in new system of units the unit of force is four times the old unit, $F_2 = 4F_1$</p>\n<p>The new unit of length is four times the old unit, $L_2 = 4L_1$</p>\n<p>The new unit of work ($W_2$) in this new system will be:</p>\n<p>$$W_2 = F_2 \\times L_2$$</p>\n<p>Substituting values of $F_2$ and $L_2$ in terms of the original units:</p>\n<p>$$W_2 = (4F_1) \\times (4L_1)$$</p>\n<p>$$W_2 = 16 \\times (F_1 \\times L_1)$$</p>\n<p>Since $W_1 = F_1 \\times L_1$:</p>\n<p>$$W_2 = 16W_1$$</p>\n<p>So, the unit of work is increased by a factor of 16. Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि बल और लम्बाई प्रत्येक के मात्रक को चार गुना बढ़ा दिया जाए, तो कार्य का मात्रक बढ़ जाता है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>16 गुना</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>8 गुना</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2 गुना</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>4 गुना</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrm56awg",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The work done by the frictional force on a surface in drawing a circle of radius $r$ on the surface by a pencil of negligible mass with a normal pressing force $N$ (coefficient of friction $\\mu_k$) is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$4 \\pi r^2 \\mu_k N$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$-2 \\pi r^2 \\mu_k N$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$-2 \\pi r \\mu_k N$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>zero</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The pencil point is pressed against the surface with a constant normal force N .</p>\n<p>The contact surface is rough with a coefficient of kinetic friction $\\mu_{\\mathrm{k}}$.</p>\n<p>The magnitude of the kinetic friction force $\\mathrm{f}_{\\mathrm{k}}$ opposing the sliding tip of the pencil is constant,</p>\n<p>$$ \\mathrm{f}_{\\mathrm{k}}=\\mu_{\\mathrm{k}} \\mathrm{~N} $$</p>\n<p>As the pencil moves along the surface to draw a circle, the instantaneous displacement vector $\\mathrm{d} \\overrightarrow{\\mathrm{r}}$ at any moment is along the tangent to the circular path.</p>\n<p>Kinetic friction always opposes the relative sliding motion between the surfaces in contact. Therefore, the friction force vector $\\overrightarrow{\\mathrm{F}}_{\\mathrm{k}}$ points opposite direction of the instantaneous displacement tangent vector at every point on its path.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrm548ky%2Fac7ec5a7-d1b7-463d-92c6-6942d0dc8347%2F80a0b520-8054-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm548kz.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrm548ky%2Fac7ec5a7-d1b7-463d-92c6-6942d0dc8347%2F80a0b520-8054-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm548kz.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>The angle $\\theta$ between the force vector $\\vec{F}_k$ and the infinitesimal displacement vector $d\\vec{r}$ is $180^\\circ$ throughout its path</p>\n<p>$\\cos(180^\\circ) = -1$</p>\n<p>The small work done $dW$ over a small path length element $ds$ is:</p>\n<p>$$dW = \\vec{F}_k \\cdot d\\vec{r} = f_k \\cdot ds \\cdot \\cos(180^\\circ) = -f_k\\,ds$$</p>\n<p>Substituting $f_k = \\mu_k N$:</p>\n<p>$$dW = -\\mu_k N\\,ds$$</p>\n<p>So, the total work done $W$ in drawing a full circle of radius $r$,</p>\n<p>$$W = \\int\\limits{} dW = \\int\\limits{} -\\mu_k N\\,ds$$</p>\n<p>Since $\\mu_k$ and $N$ are constant values,</p>\n<p>$$W = -\\mu_k N \\int\\limits{} ds$$</p>\n<p>The integral $\\int\\limits{} ds$ represents the total path length (perimeter) covered in completing one full circle, which is equal to its circumference:</p>\n<p>$$\\int\\limits{} ds = 2\\pi r$$</p>\n<p>Substituting this value into the work equation:</p>\n<p>$$W = -\\mu_k N (2\\pi r) = -2\\pi r\\mu_k N$$</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>नगण्य द्रव्यमान वाली एक पेंसिल द्वारा अभिलंब बल $N$ (घर्षण गुणांक $\\mu_k$) से दबाते हुए किसी पृष्ठ पर $r$ त्रिज्या का एक वृत्त खींचने में पृष्ठ पर घर्षण बल द्वारा किया गया कार्य है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$4 \\pi r^2 \\mu_k N$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$-2 \\pi r^2 \\mu_k N$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$-2 \\pi r \\mu_k N$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>शून्य</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mpy0hi63",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle moves in a straight line with a retardation proportional to its displacement. Its loss of kinetic energy for any displacement $x$ is proportional to</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$x$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$x^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\ln x$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$e^x$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Acceleration ($a$) is the rate of change of velocity ($v$) with respect to time ($t$).</p>\n<p>Retardation is negative acceleration.</p>\n<p>It is given that the retardation is directly proportional to the displacement ($x$).</p>\n<p>$$-a \\propto x \\rightarrow a = -kx$$</p>\n<p>where $k$ is a positive constant of proportionality.</p>\n<p>$$a = \\frac{dv}{dt} = -kx$$</p>\n<p>$$a = \\frac{dv}{dx} \\cdot \\frac{dx}{dt} = -kx$$</p>\n<p>Since the rate of change of displacement with respect to time is velocity ($\\frac{dx}{dt} = v$),</p>\n<p>$$a = v\\frac{dv}{dx} = -kx$$</p>\n<p>$$v\\,dv = -kx\\,dx$$</p>\n<p>Let the initial velocity of the particle at displacement $x = 0$ be $u$, and its final velocity at a general displacement $x$ be $v$.</p>\n<p>$$\\int\\limits_{u}^{v} v\\,dv = \\int\\limits_{0}^{x} -kx\\,dx$$</p>\n\n<p>$$\\left[\\frac{v^2}{2}\\right]_u^v = -k\\left[\\frac{x^2}{2}\\right]_0^x$$</p>\n<p>$$\\frac{v^2}{2} - \\frac{u^2}{2} = -k\\left(\\frac{x^2}{2} - 0\\right)$$</p>\n<p>$$\\frac{1}{2}mv^2 - \\frac{1}{2}mu^2 = -\\frac{1}{2}mkx^2$$</p>\n<p>Initial kinetic energy is $K_i = \\frac{1}{2}mu^2$ and final kinetic energy is $K_f = \\frac{1}{2}mv^2$.</p>\n<p>So, the change in kinetic energy is:</p>\n<p>$$\\Delta K = K_f - K_i = -\\frac{1}{2}mkx^2$$</p>\n<p>The loss of kinetic energy is Loss $= K_i - K_f = -\\Delta K$,</p>\n<p>Loss of K.E. $= \\frac{1}{2}mkx^2$</p>\n<p>Since the mass $m$ and the proportionality factor $k$ are constant, the term $\\frac{1}{2}mk$ is a constant. Therefore:</p>\n<p>Loss of K.E. $\\propto x^2$</p>\n<p>Therefore, the loss of kinetic energy for any displacement $x$ is proportional to $x^2$. Thus, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक कण एक सीधी रेखा में गति कर रहा है जिसका मंदन उसके विस्थापन के समानुपाती है। किसी भी विस्थापन $x$ के लिए इसकी गतिज ऊर्जा में हानि किसके समानुपाती है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$x$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$x^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\ln x$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$e^x$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "kinetic-energy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrke16i9",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle moves on a rough horizontal ground with some initial velocity say $v_0$. If the $\\frac{3}{4}$th of its kinetic energy is lost in friction in time $t_0$, then coefficient of friction between the particle and the ground is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{v_0}{2gt_0}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{v_0}{4gt_0}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{3v_0}{4gt_0}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{v_0}{gt_0}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Let a particle of mass $m$ be moving horizontally across a rough floor with an initial velocity $v_0$ at $t = 0$.</p>\n<p>So, initial kinetic energy of particle is, $K_i = \\frac{1}{2}mv_0^2$</p>\n<p>It is given that $\\frac{3}{4}$-th of its initial kinetic energy is lost due to friction during a time interval $t_0$.</p>\n<p>The remaining final kinetic energy ($K_f$) at time $t = t_0$ is:</p>\n<p>$$K_f = K_i - \\text{Loss}$$</p>\n<p>$$K_f = K_i - \\frac{3}{4}K_i = \\frac{1}{4}K_i$$</p>\n<p>Let the velocity of the particle at time $t_0$ be $v_f$.</p>\n<p>$$\\frac{1}{2}mv_f^2 = \\frac{1}{4}\\left(\\frac{1}{2}mv_0^2\\right)$$</p>\n<p>$$v_f^2 = \\frac{1}{4}v_0^2$$</p>\n<p>$$v_f = \\frac{v_0}{2}$$</p>\n<p>Since the particle moves horizontally on a flat surface, so along vertical direction there will be equilibrium;</p>\n<p>$$N = mg$$</p>\n<p>The horizontal kinetic friction force ($f_k$) opposing the motion is,</p>\n<p>$$f_k = \\mu N = \\mu mg$$</p>\n<p>According to Newton's second law, this net resistive force produces a uniform deceleration $(a)$:</p>\n<p>$$F_{\\text{net}} = -f_k \\Rightarrow ma = -\\mu mg \\Rightarrow a = -\\mu g$$</p>\n<p>Using the kinematic equation for a constant accelerated motion,</p>\n<p>$$v_f = v_0 + at_0$$</p>\n<p>Substituting the expression for deceleration $(a = -\\mu g)$:</p>\n<p>$$v_f = v_0 - \\mu g t_0$$</p>\n<p>Substituting the value of final velocity $\\left(v_f = \\frac{v_0}{2}\\right)$ into the kinematic equation:</p>\n<p>$$\\frac{v_0}{2} = v_0 - \\mu g t_0$$</p>\n<p>$$\\mu g t_0 = v_0 - \\frac{v_0}{2} = \\frac{v_0}{2}$$</p>\n<p>$$\\mu g t_0 = \\frac{v_0}{2}$$</p>\n<p>$$\\mu = \\frac{v_0}{2gt_0}$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक कण किसी खुरदरे क्षैतिज धरातल पर कुछ प्रारंभिक वेग, मान लीजिए $v_0$, के साथ गति करता है। यदि $t_0$ समय में इसकी गतिज ऊर्जा का $\\frac{3}{4}$ भाग घर्षण में नष्ट हो जाता है, तो कण और धरातल के बीच घर्षण गुणांक है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{v_0}{2gt_0}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{v_0}{4gt_0}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{3v_0}{4gt_0}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{v_0}{gt_0}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "kinetic-energy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr4i712a",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The earth's gravity provides the centripetal force on an orbiting satellite to keep it moving in circle at constant speed. Which statements best explains why the speed of the satellite does not change even though there is a net force exerted on it?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>The satellite is in equilibrium with respect to ground</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>The acceleration of the satellite is zero with respect to ground</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>The centripetal force has magnitude $\\frac{mv^2}{r}$ and it is balanced by a centrifugal force as seen from the earth</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>The centripetal force is always perpendicular to the velocity</b></p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Using work-energy theorem the net work done ($W$) by all forces acting on a particle equals the change in its kinetic energy ($\\Delta K$):</p>\n<p>$$W = \\Delta K$$</p>\n<p>Kinetic energy is defined as $K = \\frac{1}{2}mv^2$.</p>\n<p>If the net work done on the object over a period of time is zero ($W = 0$), then the change in kinetic energy is zero ($\\Delta K = 0$), which means the final speed equals the initial speed ($v_f = v_i$). Therefore, the speed remains constant.</p>\n<p>The infinitesimal work done ($dW$) by a force $\\vec{F}$ during a small displacement $d\\vec{r}$ is defined by the vector dot product:</p>\n<p>$$dW = \\vec{F} \\cdot d\\vec{r}$$</p>\n<p>The displacement vector for particle with the instantaneous velocity vector $\\vec{v}$ and a small time interval $dt$ is,</p>\n<p>$$d\\vec{r} = \\vec{v}\\,dt$$</p>\n<p>$$dW = (\\vec{F} \\cdot \\vec{v})\\,dt$$</p>\n<p>For a satellite orbiting in a circular path, the net force acting on it is the Earth's gravitational force, which is a centripetal force ($\\vec{F}_c$).</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr4i4iix%2F9a58a585-9117-4dd2-beb9-97caf3636c33%2F434c6b90-76a1-11f1-9414-a9ba7968e4f3%2Ffile-6y3zli1mr4i4iiy.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr4i4iix%2F9a58a585-9117-4dd2-beb9-97caf3636c33%2F434c6b90-76a1-11f1-9414-a9ba7968e4f3%2Ffile-6y3zli1mr4i4iiy.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The centripetal force vector $\\vec{F}_c$ points radially inward toward the centre of the circular orbit at all times.</p>\n<p>So, the velocity vector $\\vec{v}$ points along the tangent to the circular path at all times.</p>\n<p>So, the radial direction and the tangential direction are perpendicular to each other at every single point on a circle. The angle $\\theta$ between $\\vec{F}_c$ and $\\vec{v}$ is $90^{\\circ}$.</p>\n<p>$$\\vec{F}_c \\cdot \\vec{v} = F_c\\, v\\cos(90^{\\circ})$$</p>\n<p>$$\\vec{F}_c \\cdot \\vec{v} = 0 \\Rightarrow dW = 0$$</p>\n<p>Because the power $(\\vec{F}_c \\cdot \\vec{v})$ is zero at every instant, the total work done on the satellite along its circular path is zero. So, there is no change in kinetic energy, and the linear speed remains constant.</p>\n<p>The satellite is accelerating toward the centre, so it is not in mechanical equilibrium with respect to the ground. Hence, option (a) is incorrect.</p>\n<p>The satellite has a non-zero centripetal acceleration $\\left(a_c = \\frac{v^2}{r}\\right)$ pointing toward the centre. So, option (b) is incorrect.</p>\n<p>Centrifugal force is a pseudo-force observed only from a rotating non-inertial frame. From the inertial frame of the Earth, there is only an unbalanced inward centripetal force. So, option (c) is incorrect.</p>\n<p>Because the centripetal force is always perpendicular to the velocity vector, it does zero work. So, the magnitude of velocity (speed) is constant. So, option (d) is correct.</p>\n<p>Therefore, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>पृथ्वी का गुरुत्वाकर्षण, कक्षा में परिक्रमा कर रहे उपग्रह को नियत चाल से वृत्ताकार पथ में गतिमान रखने के लिए अभिकेंद्र बल प्रदान करता है। कौन सा कथन सबसे अच्छी तरह स्पष्ट करता है कि उपग्रह पर कुल बल लगने के बावजूद उसकी चाल क्यों नहीं बदलती है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>उपग्रह जमीन के सापेक्ष साम्यावस्था में है</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>जमीन के सापेक्ष उपग्रह का त्वरण शून्य है</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>अभिकेंद्र बल का परिमाण $\\frac{mv^2}{r}$ है और पृथ्वी से देखने पर यह एक अपकेंद्र बल (centrifugal force) द्वारा संतुलित होता है</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>अभिकेंद्र बल हमेशा वेग के लंबवत होता है</b></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr4iwql2",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>Statement-1 :</b> In case of uniform circular motion, magnitude of linear momentum is constant but direction of momentum changes at every instant.</p><p><b>Statement-2 :</b> Net force $\\vec{F}$ on system is always perpendicular to the momentum in case of uniform circular motion.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Statement-1 is true, statement-2 is true and statement-2 is correct explanation for statement-1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Statement-1 is true, statement-2 is true and statement-2 is not the correct explanation for statement-1</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Statement-1 is true, statement-2 is false</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Statement-1 is false, statement-2 is true</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Linear momentum ( $\\overrightarrow{\\mathrm{p}}$ ) is defined as the product of an object's mass ( m ) and its velocity vector ( $\\overrightarrow{\\mathrm{v}}$ ):</p>\n<p>$$ \\overrightarrow{\\mathrm{p}}=\\mathrm{m} \\overrightarrow{\\mathrm{v}} $$</p>\n<p>The magnitude of linear momentum is given by:</p>\n<p>$$ |\\overrightarrow{\\mathrm{p}}|=\\mathrm{m}|\\overrightarrow{\\mathrm{v}}|=\\mathrm{mv} $$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mr4iu6r1%2Fd9ca234c-8272-47b8-beec-dd4b4a3d1d8f%2F0d3d95d0-76a4-11f1-9414-a9ba7968e4f3%2Ffile-6y3zli1mr4iu6r2.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mr4iu6r1%2Fd9ca234c-8272-47b8-beec-dd4b4a3d1d8f%2F0d3d95d0-76a4-11f1-9414-a9ba7968e4f3%2Ffile-6y3zli1mr4iu6r2.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>In uniform circular motion, the linear speed ($v$) of the object is constant. Since the mass $m$ and speed $v$ do not change, the magnitude of linear momentum ($mv$) remains constant throughout the motion.</p>\n<p>However, because the object moves along a circular path, its velocity vector $\\vec{v}$ continuously changes its direction at every instant to remain tangential to the path.</p>\n<p>Since the momentum vector $\\vec{p}$ points in the same direction as the velocity vector $\\vec{v}$, the direction of the momentum vector also changes at every instant. Therefore, Statement-1 is true.</p>\n<p>According to Newton's Second Law of Motion in terms of momentum, the net force $\\vec{F}$ acting on an object is equal to the time rate of change of its linear momentum:</p>\n<p>$$\\vec{F} = \\frac{d\\vec{p}}{dt}$$</p>\n<p>The dot product between the net force and the momentum when the magnitude of the momentum is constant</p>\n<p>$$\\vec{p} \\cdot \\vec{p} = p^2$$</p>\n<p>$$\\frac{d}{dt}(\\vec{p} \\cdot \\vec{p}) = \\frac{d}{dt}(p^2)$$</p>\n<p>$$\\vec{p} \\cdot \\frac{d\\vec{p}}{dt} + \\frac{d\\vec{p}}{dt} \\cdot \\vec{p} = 2p\\frac{dp}{dt}$$</p>\n<p>$$2\\left(\\vec{p} \\cdot \\frac{d\\vec{p}}{dt}\\right) = 2p\\frac{dp}{dt}$$</p>\n<p>Substituting $\\frac{d\\vec{p}}{dt} = \\vec{F}$</p>\n<p>$$\\vec{p} \\cdot \\vec{F} = p\\frac{dp}{dt}$$</p>\n<p>In uniform circular motion, the magnitude of momentum $p$ is constant, $\\frac{dp}{dt} = 0$.</p>\n<p>$$\\vec{p} \\cdot \\vec{F} = 0$$</p>\n<p>A dot product of zero proves that the net force vector $\\vec{F}$ and the momentum vector $\\vec{p}$ are perpendicular.</p>\n<p>Therefore, Statement-2 is true.</p>\n<p>A force that is perpendicular to the momentum vector and thus perpendicular to the velocity vector, can do no work on the system</p>\n<p>$$W = \\int\\limits \\vec{F} \\cdot d\\vec{r} = \\int\\limits (\\vec{F} \\cdot \\vec{v})dt = 0$$</p>\n<p>According to the Work-Energy Theorem, because no work is done, the kinetic energy $\\left(K = \\frac{p^2}{2m}\\right)$ cannot change, which keeps the magnitude of momentum constant. Also, because a non-zero net force still acts on the object, it forces the direction of the momentum vector to change continuously.</p>\n<p>Thus, the perpendicular nature of the force explained in Statement-2 is the correct reason why the magnitude of momentum stays constant while only its direction changes.</p>\n<p>Therefore, Statement-2 is the correct explanation for Statement-1. Thus, the correct option is (A)</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>कथन-1 :</b> एकसमान वृत्तीय गति की स्थिति में, रैखिक संवेग का परिमाण नियत रहता है लेकिन संवेग की दिशा प्रत्येक क्षण बदलती है।</p><p><b>कथन-2 :</b> एकसमान वृत्तीय गति की स्थिति में निकाय पर कुल बल $\\vec{F}$ हमेशा संवेग के लंबवत होता है।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 सत्य है और कथन-2, कथन-1 का सही स्पष्टीकरण है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 सत्य है और कथन-2, कथन-1 का सही स्पष्टीकरण नहीं है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 असत्य है</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>कथन-1 असत्य है, कथन-2 सत्य है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrkazmob",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>An object travelling with a speed of 2 m/s is brought to rest in a distance $x$. If its kinetic energy becomes twice as much, what distance will it cover before stopping, when the opposing force is kept the same?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>x</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>2x</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>4x</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>8x</b></p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>According to work-energy theorem, the net work done by all forces acting on a body is equal to the change in its kinetic energy $W_{\\text{net}} = \\Delta K$</p>\n<p>Let a body have an initial kinetic energy $E_i$ and come to rest, which means its final kinetic energy $E_f = 0$.</p>\n<p>So, the change in kinetic energy is:</p>\n<p>$$\\Delta K = E_f - E_i = 0 - E_i = -E_i$$</p>\n<p>$$\\Rightarrow W = -E_i \\ldots (i)$$</p>\n<p>The only horizontal force acting on the body to stop it is a constant retarding force $F_r$ which opposes the motion.</p>\n<p>The angle between the force vector and the displacement vector is $180^\\circ$.</p>\n<p>The work done by this retarding force over a stopping distance $d$ is:</p>\n<p>$$W = F_r \\cdot d \\cdot \\cos(180^\\circ)$$</p>\n<p>$$W = -F_r \\cdot d \\ldots (ii)$$</p>\n<p>From equations (i) and (ii),</p>\n<p>$$-F_r d = -E_i \\rightarrow F_r d = E_i$$</p>\n<p>$$d = \\frac{E_i}{F_r}$$</p>\n<p>So, if the retarding force $F_r$ remains unchanged, the stopping distance is directly proportional to the initial kinetic energy $d \\propto E_i$</p>\n<p>Let the initial kinetic energy in the first case be $E_1 = E$, and the stopping distance be $d_1 = x$.</p>\n<p>$$x = \\frac{E}{F_r} \\ldots (iii)$$</p>\n<p>In the second case, the kinetic energy is doubled $E_2 = 2E$. So, the retarding force remains unchanged ($F_r$).</p>\n<p>Let the new stopping distance be $d_2$ :</p>\n<p>$$d_2 = \\frac{E_2}{F_r} \\Rightarrow d_2 = \\frac{2E}{F_r}$$</p>\n<p>Substituting $x = \\frac{E}{F_r}$ into the equation :</p>\n<p>$$d_2 = 2x$$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>2 m/s की चाल से गतिमान एक वस्तु को $x$ दूरी में विराम अवस्था में लाया जाता है। यदि इसकी गतिज ऊर्जा दोगुनी हो जाती है, तो रुकने से पहले यह कितनी दूरी तय करेगी, जबकि विरोधी बल समान रखा जाता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>x</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>2x</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>4x</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>8x</b></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrkdwwnu",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle of mass m is projected with velocity u at an angle with horizontal. During the period when the particle descends, from highest point to the position, where its velocity vector makes an angle $\\frac{\\theta}{2}$ with horizontal, work done by the gravity is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{1}{2} mu^2 \\tan^2\\left(\\frac{\\theta}{2}\\right)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{1}{2} mu^2 \\tan^2 \\theta$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{1}{2} mu^2 \\cos^2 \\theta \\tan^2\\left(\\frac{\\theta}{2}\\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{1}{2} mu^2 \\cos^2\\left(\\frac{\\theta}{2}\\right) \\sin^2 \\theta$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>According to the work-energy theorem the net work done by all the forces acting on a body is equal to the change in its kinetic energy $\\mathrm{W}_{\\text {net }}=\\Delta \\mathrm{K}=\\mathrm{K}_{\\mathrm{f}}-\\mathrm{K}_{\\mathrm{i}}$</p>\n<p>Since air resistance is neglected, gravity is the only force doing work on the particle. Therefore, the work done by gravity $\\left(\\mathrm{W}_{\\mathrm{g}}\\right)$ is,</p>\n<p>$$ \\mathrm{W}_{\\mathrm{g}}=\\frac{1}{2} m v_{\\mathrm{f}}^2-\\frac{1}{2} m v_{\\mathrm{i}}^2 $$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkdur7d%2Ff0c9db59-3ad0-4bcb-bb3e-ab3b07c28a99%2F19c91290-7f5d-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkdur7e.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkdur7d%2Ff0c9db59-3ad0-4bcb-bb3e-ab3b07c28a99%2F19c91290-7f5d-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkdur7e.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>At the highest point (Initial position for this interval):</p>\n<p>At the highest point of a projectile's path, the vertical component of velocity becomes zero ($v_y = 0$).</p>\n<p>The horizontal component of velocity remains constant throughout the motion because there is no horizontal acceleration:</p>\n<p>$$v_x = u \\cos \\theta$$</p>\n<p>Thus, the initial velocity vector at the highest point has a magnitude $v_i$:</p>\n<p>$$v_i = u \\cos \\theta$$</p>\n<p>The initial kinetic energy for this interval is:</p>\n<p>$$K_i = \\frac{1}{2} m (u \\cos \\theta)^2 = \\frac{1}{2} m u^2 \\cos^2 \\theta$$</p>\n<p>At the lower point let its net velocity magnitude be $v_f$.</p>\n<p>At this point, the velocity vector makes an angle of $\\frac{\\theta}{2}$ below the horizontal.</p>\n<p>The horizontal component of its velocity is still equal to the original horizontal projection velocity:</p>\n<p>$$v_{f,x} = v_f \\cos\\left(\\frac{\\theta}{2}\\right)$$</p>\n<p>$$\\Rightarrow v_f \\cos\\left(\\frac{\\theta}{2}\\right) = u \\cos \\theta$$</p>\n<p>$$\\Rightarrow v_f = \\frac{u \\cos \\theta}{\\cos\\left(\\frac{\\theta}{2}\\right)}$$</p>\n<p>So, the final kinetic energy is:</p>\n<p>$$K_f = \\frac{1}{2} m v_f^2 = \\frac{1}{2} m \\left[\\frac{u \\cos \\theta}{\\cos\\left(\\frac{\\theta}{2}\\right)}\\right]^2 = \\frac{1}{2} m u^2 \\frac{\\cos^2 \\theta}{\\cos^2\\left(\\frac{\\theta}{2}\\right)}$$</p>\n<p>Substituting the expressions for $K_f$ and $K_i$ into the work-energy theorem :</p>\n<p>$$W_g = \\frac{1}{2} m u^2 \\frac{\\cos^2 \\theta}{\\cos^2\\left(\\frac{\\theta}{2}\\right)} - \\frac{1}{2} m u^2 \\cos^2 \\theta$$</p>\n<p>$$W_g = \\frac{1}{2}mu^2 \\cos^2 \\theta \\left[\\frac{1}{\\cos^2\\left(\\frac{\\theta}{2}\\right)} - 1\\right]$$</p>\n<p>$$W_g = \\frac{1}{2}mu^2 \\cos^2 \\theta \\left[\\frac{1 - \\cos^2\\left(\\frac{\\theta}{2}\\right)}{\\cos^2\\left(\\frac{\\theta}{2}\\right)}\\right]$$</p>\n<p>Using trigonometric identity $1 - \\cos^2 \\phi = \\sin^2 \\phi$:</p>\n<p>$$W_g = \\frac{1}{2}mu^2 \\cos^2 \\theta \\left[\\frac{\\sin^2\\left(\\frac{\\theta}{2}\\right)}{\\cos^2\\left(\\frac{\\theta}{2}\\right)}\\right]$$</p>\n<p>$$W_g = \\frac{1}{2}mu^2 \\cos^2 \\theta \\, \\tan^2\\left(\\frac{\\theta}{2}\\right)$$</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>m द्रव्यमान के एक कण को क्षैतिज से $\theta$ कोण पर $u$ वेग से प्रक्षेपित किया जाता है। उस अवधि के दौरान जब कण अपने उच्चतम बिंदु से उस स्थिति तक नीचे आता है, जहाँ इसका वेग सदिश क्षैतिज के साथ $\frac{\theta}{2}$ का कोण बनाता है, गुरुत्वाकर्षण द्वारा किया गया कार्य है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{1}{2} mu^2 \\tan^2\\left(\\frac{\\theta}{2}\\right)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{1}{2} mu^2 \\tan^2 \\theta$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{1}{2} mu^2 \\cos^2 \\theta \\tan^2\\left(\\frac{\\theta}{2}\\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{1}{2} mu^2 \\cos^2\\left(\\frac{\\theta}{2}\\right) \\sin^2 \\theta$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrm7zwtl",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In the arrangement shown in the figure, the table is horizontal and smooth, the spring and strings are massless, and the pulley is frictionless. The blocks A and B are of mass $m$ each. The spring is of natural length $x_0$ and spring constant $k = \\frac{5mg}{x_0}$. The arrangement is at rest when the string AP is cut. The speed of block A when it starts breaking off (lift off) the table is,</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrm7tab5%2Fa939e2be-4590-4b5c-abf3-5d26b04b979f%2F0b732520-805f-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm7tab6.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrm7tab5%2Fa939e2be-4590-4b5c-abf3-5d26b04b979f%2F0b732520-805f-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm7tab6.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\sqrt{\\frac{19 g x_0}{32}} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\sqrt{\\frac{5 g x_0}{7}} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\sqrt{\\frac{32 g x_0}{19}} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\sqrt{\\frac{7 g x_0}{5}} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Both block A and block B have mass m . The system is initially at rest by the horizontal string tied to wall P , block $B$ hangs vertically at rest.</p>\n<p>Tension in the vertical string supporting block B is $\\mathrm{T}=\\mathrm{mg}$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrm7vnht%2F6f415d52-3948-4f2a-bedb-61201c5debf8%2F4d40b210-805f-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm7vnhu.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrm7vnht%2F6f415d52-3948-4f2a-bedb-61201c5debf8%2F4d40b210-805f-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm7vnhu.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>For block A to remain horizontally at rest before the cut, the wall string AP must balance this tension, which means the tension in AP is also mg.</p>\n<p>The vertical spring is at its natural length $\\mathrm{x}_0$. So, initial spring extension is $\\mathrm{y}_{\\mathrm{i}}=0$</p>\n<p>Initial kinetic energy of system is $\\mathrm{K}_{\\mathrm{i}}=0$</p>\n<p>The initial spring potential energy is $U_{\\text{spring},i} = 0$</p>\n<p>Let the horizontal table surface be reference height level $(h = 0)$. Then height of block A is $h_{Ai} = 0$ and let height of block B is $h_{Bi} = -h_0$</p>\n<p>So, the total initial energy is $E_i = k_i + U_{si} + U_{gi} = 0 + 0 + (-mgh_0)$.</p>\n<p>Once string AP is cut, block B falls down, pulling block A horizontally to the right along the smooth table.</p>\n<p>As block A moves a horizontal distance $x$ to the right, the top of the vertical spring remains pinned at ceiling point O. So, the spring tilts at an angle and stretches.</p>\n<p>Let $x$ be the horizontal displacement of block A. The length of the stretched spring becomes $\\sqrt{x_0^2 + x^2}$.</p>\n<p>The extension of the spring at this point is:</p>\n<p>$$\\Delta y = \\sqrt{x_0^2 + x^2} - x_0$$</p>\n<p>The spring force is $F_s = k\\,\\Delta y$.</p>\n<p>Let $\\phi$ be the angle the spring makes with the vertical. Then $\\cos \\phi = \\frac{x_0}{\\sqrt{x_0^2 + x^2}}$.</p>\n<p>The upward vertical component of this spring force is:</p>\n<p>$$F_{sy} = F_s \\cos \\phi = k\\left(\\sqrt{x_0^2 + x^2} - x_0\\right)\\frac{x_0}{\\sqrt{x_0^2 + x^2}}$$</p>\n<p>$$= kx_0\\left(1 - \\frac{x_0}{\\sqrt{x_0^2 + x^2}}\\right)$$</p>\n<p>Block A will start to lift off the table when this upward vertical force component balances its downward weight $mg$:</p>\n<p>$$kx_0\\left(1 - \\frac{x_0}{\\sqrt{x_0^2 + x^2}}\\right) = mg$$</p>\n<p>Substituting the given value of $k = \\frac{5mg}{x_0}$:</p>\n<p>$$\\left(\\frac{5mg}{x_0}\\right)x_0\\left(1 - \\frac{x_0}{\\sqrt{x_0^2 + x^2}}\\right) = mg$$</p>\n<p>$$5\\left(1 - \\frac{x_0}{\\sqrt{x_0^2 + x^2}}\\right) = 1 \\Rightarrow 1 - \\frac{x_0}{\\sqrt{x_0^2 + x^2}} = \\frac{1}{5}$$</p>\n<p>$$\\frac{x_0}{\\sqrt{x_0^2 + x^2}} = \\frac{4}{5} \\Rightarrow \\sqrt{x_0^2 + x^2} = \\frac{5}{4}x_0$$</p>\n<p>Squaring both sides:</p>\n<p>$$x_0^2 + x^2 = \\frac{25}{16}x_0^2 \\Rightarrow x^2 = \\frac{9}{16}x_0^2 \\rightarrow x = \\frac{3}{4}x_0$$</p>\n<p>At this lift-off position, the horizontal displacement of block A is $x = \\frac{3}{4}x_0$.</p>\n<p>Because blocks A and B are connected by an inextensible string over a fixed pulley, the downward vertical displacement of block B is equal to the horizontal displacement of block A:</p>\n\n<p>$$\\Delta h_B = x = \\frac{3}{4}x_0$$</p>\n<p>So, the final height of block B from the table surface is, $h_{Bf} = h_{Bi} + \\Delta h_b = -h_0 - \\frac{3}{4}x_0$</p>\n<p>So, the change in length of spring at lift-off is:</p>\n<p>$$\\Delta y_f = \\frac{5}{4}x_0 - x_0 = \\frac{1}{4}x_0$$</p>\n<p>Since the surface is smooth and the pulley is frictionless, total mechanical energy is conserved ($E_i = E_f$).</p>\n<p>Decrease in gravitational potential energy of block B $\\Delta U_g = -mg\\left(h_0 + \\frac{3}{4}x_0\\right)$</p>\n<p>Increase in spring potential energy is</p>\n<p>$$U_{sf} = \\frac{1}{2}k(\\Delta y_f)^2 = \\frac{1}{2}\\left(\\frac{5mg}{x_0}\\right)\\left(\\frac{x_0}{4}\\right)^2 = \\frac{1}{2} \\times \\frac{5mg}{x_0} \\times \\frac{x_0^2}{16} = \\frac{5}{32}mgx_0$$</p>\n<p>At the instant of lift-off, both blocks move with the same instantaneous speed $v$.</p>\n<p>$$K_f = \\frac{1}{2}mv^2 + \\frac{1}{2}mv^2 = mv^2$$</p>\n<p>Using conservation of mechanical energy,</p>\n<p>$$-mgh_0 = mv^2 + \\frac{5}{32}mgx_0 - mgh_0 - \\frac{3}{4}mgx_0$$</p>\n<p>$$mv^2 = \\frac{3}{4}mgx_0 - \\frac{5}{32}mgx_0 = \\frac{24-5}{32}mgx_0 = \\frac{19}{32}mgx_0$$</p>\n<p>$$v^2 = \\frac{19}{32}gx_0 \\Rightarrow v = \\sqrt{\\frac{19gx_0}{32}}$$</p>\n<p>Therefore, the speed of block A is $\\sqrt{\\frac{19gx_0}{32}}$. Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दिखाई गई व्यवस्था में, मेज क्षैतिज और चिकनी है, स्प्रिंग और डोरियां द्रव्यमान रहित हैं, और घिरनी घर्षण रहित है। ब्लॉक A और B प्रत्येक का द्रव्यमान $m$ है। स्प्रिंग की स्वाभाविक लंबाई $x_0$ और स्प्रिंग नियतांक $k = \\frac{5mg}{x_0}$ है। जब डोरी AP को काटा जाता है तब व्यवस्था विरामावस्था में होती है। जब ब्लॉक A मेज से उठना (lift off) शुरू करता है तब ब्लॉक A की चाल है,</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrm7tab5%2Fa939e2be-4590-4b5c-abf3-5d26b04b979f%2F0b732520-805f-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm7tab6.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrm7tab5%2Fa939e2be-4590-4b5c-abf3-5d26b04b979f%2F0b732520-805f-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm7tab6.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\sqrt{\\frac{19 g x_0}{32}} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\sqrt{\\frac{5 g x_0}{7}} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\sqrt{\\frac{32 g x_0}{19}} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\sqrt{\\frac{7 g x_0}{5}} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "mechanical-energy-conservation",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrgm99j1",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Work done by the conservative forces on a system is equal to</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>the change in kinetic energy of the system</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>the change in potential energy of the system</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>the change in total mechanical energy of the system</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of the above</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>A force (like gravity or spring force) where the work done depends only on the starting and ending points, not the path taken is called conservative force.</p>\n<p>Energy stored in a system due to its configuration or position in this conservative force field is defined as potential energy $(U)$.</p>\n<p>The infinitesimal work $dW$ done by a force $\\vec{F}$ during an infinitesimal displacement $d\\vec{r}$ is defined as</p>\n<p>$$dW = \\vec{F} \\cdot d\\vec{r}$$</p>\n<p>The total work done when the particle moves from position (A) to position (B) is</p>\n<p>$$W_{A\\rightarrow B} = \\int\\limits_{A}^{B} \\vec{F} \\cdot d\\vec{r}$$</p>\n<p>A force is conservative if the work done by it depends only on the initial and final positions, not on the path followed.</p>\n<p>Because of this property, we can define a scalar function called potential energy $U(\\vec{r})$.</p>\n<p>For a conservative force, the change in potential energy between two points is defined as</p>\n<p>$$U(B) - U(A) = -\\int\\limits_{A}^{B} \\vec{F} \\cdot d\\vec{r}$$</p>\n<p>Comparing the two expressions,</p>\n<p>$$W_{A\\rightarrow B} = -[U(B) - U(A)]$$</p>\n<p>According to the Work-Energy Theorem, the net work done by all forces (conservative and non-conservative) is equal to the change in kinetic energy</p>\n<p>$$ W_{\\text {net }}=\\Delta K $$</p>\n<p>Since the its about conservative forces, this is not strictly correct unless no other forces are present. So, option (a) is incorrect.</p>\n<p>As stated in the definition for conservative force, work done by conservative forces is the negative of the change in potential energy. But option (b) says its equal to the change in potential energy. So, option (b) is incorrect because only magnitude is equal not the nature.</p>\n<p>In conservative field, the total mechanical energy of the system is conserved, i.e., the change in mechanical energy is zero but the work done by conservative force may not be zero. Hence, option (d) is incorrect.</p>\n<p>Hence, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>किसी निकाय पर संरक्षी बलों द्वारा किया गया कार्य बराबर होता है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>निकाय की गतिज ऊर्जा में परिवर्तन के</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>निकाय की स्थितिज ऊर्जा में परिवर्तन के</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>निकाय की कुल यांत्रिक ऊर्जा में परिवर्तन के</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>उपरोक्त में से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "potential-energy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrgmrcjw",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A bead of mass m is constrained to move on a vertical hoop of radius <i>a</i>. The bead starts at rest at the top. When the bead is at an angle $\\theta$ below the horizontal, the normal force applied by the hoop on the bead is,</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrgmikhb%2Ff373608e-7490-4bdc-8b00-6f5490f9202b%2Fd6724bf0-7d4b-11f1-9a30-1faf6be081f6%2Ffile-6y3zli1mrgmikhc.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrgmikhb%2Ff373608e-7490-4bdc-8b00-6f5490f9202b%2Fd6724bf0-7d4b-11f1-9a30-1faf6be081f6%2Ffile-6y3zli1mrgmikhc.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$mg \\left( 2 - 3 \\sin \\theta \\right)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$mg \\left( 3 + 2 \\sin \\theta \\right)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$mg \\left( 3 - 2 \\sin \\theta \\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$mg \\left( 2 + 3 \\sin \\theta \\right)$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Mass of the bead $=\\mathrm{m}$.</p>\n<p>Radius of the hoop $=a$</p>\n<p>The bead starts at rest at the top of the hoop.</p>\n<p>The bead is at an angle $\\theta$ below the horizontal.</p>\n<p>Let's define the vertical height relative to the centre of the hoop.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrgmkra5%2F7e657020-d9f0-4795-844d-2c47aa61d739%2F13517cd0-7d4c-11f1-9a30-1faf6be081f6%2Ffile-6y3zli1mrgmkra6.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrgmkra5%2F7e657020-d9f0-4795-844d-2c47aa61d739%2F13517cd0-7d4c-11f1-9a30-1faf6be081f6%2Ffile-6y3zli1mrgmkra6.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Initial height is $h_i = a$</p>\n<p>Final height $h_f = -a \\, \\sin \\theta$</p>\n<p>The distance fallen is $a - (-a \\sin \\theta) = a(1 + \\sin \\theta)$.</p>\n<p>Assuming no friction, the loss in potential energy equals the gain in kinetic energy:</p>\n<p>$$mgH = \\frac{1}{2}mv^2$$</p>\n<p>$$mg[a(1 + \\sin \\theta)] = \\frac{1}{2}mv^2$$</p>\n<p>$$v^2 = 2ga(1 + \\sin \\theta)$$</p>\n<p>At the position $\\theta$ below the horizontal, two forces have components along the radius of the hoop:</p>\n<p>• Normal Force $(N)$ acts radially inward toward the centre.</p>\n<p>• Component of weight $(mg)$ acting radially outward is $mg \\sin \\theta$.</p>\n<p>$$F_c = N - mg \\sin \\theta$$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrgmodg4%2Fe273621b-4193-4053-9395-4a5cd32ef975%2F77de4d40-7d4c-11f1-9a30-1faf6be081f6%2Ffile-6y3zli1mrgmodg5.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrgmodg4%2Fe273621b-4193-4053-9395-4a5cd32ef975%2F77de4d40-7d4c-11f1-9a30-1faf6be081f6%2Ffile-6y3zli1mrgmodg5.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>According to the centripetal force formula $F_c = \\frac{mv^2}{a}$:</p>\n<p>$$N - mg\\sin\\theta = \\frac{mv^2}{a}$$</p>\n<p>Substituting the expression for $v^2$,</p>\n<p>$$\\Rightarrow N - mg\\sin\\theta = \\frac{m[2ga(1 + \\sin\\theta)]}{a}$$</p>\n<p>$$\\Rightarrow N - mg\\sin\\theta = 2mg(1 + \\sin\\theta)$$</p>\n<p>$$\\Rightarrow N - mg\\sin\\theta = 2mg + 2mg\\sin\\theta$$</p>\n<p>$$\\Rightarrow N = 2mg + 3mg\\sin\\theta$$</p>\n<p>$$\\Rightarrow N = mg(2 + 3\\sin\\theta)$$</p>\n<p>The normal force applied by the hoop on the bead is $m g(2+3 \\sin \\theta)$. </p>\n<p>Hence, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान m का एक मनका <i>a</i> त्रिज्या के एक ऊर्ध्वाधर घेरे (hoop) पर गति करने के लिए बाध्य है। मनका शीर्ष पर विरामावस्था से गति शुरू करता है। जब मनका क्षैतिज से $\\theta$ कोण नीचे होता है, तो घेरे द्वारा मनके पर लगाया गया अभिलंब बल है,</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrgmikhb%2Ff373608e-7490-4bdc-8b00-6f5490f9202b%2Fd6724bf0-7d4b-11f1-9a30-1faf6be081f6%2Ffile-6y3zli1mrgmikhc.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrgmikhb%2Ff373608e-7490-4bdc-8b00-6f5490f9202b%2Fd6724bf0-7d4b-11f1-9a30-1faf6be081f6%2Ffile-6y3zli1mrgmikhc.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$mg \\left( 2 - 3 \\sin \\theta \\right)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$mg \\left( 3 + 2 \\sin \\theta \\right)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$mg \\left( 3 - 2 \\sin \\theta \\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$mg \\left( 2 + 3 \\sin \\theta \\right)$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "potential-energy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrlrfzb7",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle moving along X-axis has potential energy $U = 2 + 20x - 5x^2$ J. The particle is released from $x = -3$. The maximum value of $x$ will be [x is in metre and U is in joules]</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>5 m</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>3 m</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>7 m</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>8 m</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>According to law of conservation of mechanical energy in a conservative force field, the total energy of the system is constant.</p>\n<p>$$E_{\\text{total}} = K + U = \\text{constant}$$</p>\n<p>When a particle is released from a position, its initial velocity is zero, which means its initial kinetic energy is zero ($K_i = 0$).</p>\n<p>Therefore, the total mechanical energy is equal to its initial potential energy at the release point:</p>\n<p>$$E_{\\text{total}} = U(x_{\\text{initial}})$$</p>\n<p>The potential energy function is $U(x) = 2 + 20x - 5x^2$</p>\n<p>The particle is released at $x = -3$:</p>\n<p>$$E_{\\text{total}} = U(-3) = 2 + 20(-3) - 5(-3)^2$$</p>\n<p>$$E_{\\text{total}} = 2 - 60 - 5(9)$$</p>\n<p>$$E_{\\text{total}} = 2 - 60 - 45 = -103\\ \\text{Joules}$$</p>\n<p>As the particle travels along the path, there is conversion of potential energy into kinetic energy and vice versa.</p>\n<p>It will continue moving in a given direction until its kinetic energy becomes zero ($K_f = 0$).</p>\n<p>At the position where it stops and reverses direction,</p>\n<p>$$E_{\\text{total}} = U(x_{\\text{maximum}})$$</p>\n<p>At any position where the particle momentarily stops, $K = 0 \\rightarrow U(x) = E_{\\text{total}}$:</p>\n<p>$$\\Rightarrow 2 + 20x - 5x^2 = -103$$</p>\n<p>$$\\Rightarrow -5x^2 + 20x + 2 + 103 = 0$$</p>\n<p>$$\\Rightarrow -5x^2 + 20x + 105 = 0$$</p>\n<p>$$\\Rightarrow 5x^2 - 20x - 105 = 0$$</p>\n<p>$$\\Rightarrow x^2 - 4x - 21 = 0$$</p>\n<p>$$\\Rightarrow x^2 - 7x + 3x - 21 = 0$$</p>\n<p>$$\\Rightarrow x(x - 7) + 3(x - 7) = 0$$</p>\n<p>$$ \\Rightarrow(x+3)(x-7)=0 $$</p>\n<p>$$ \\Rightarrow x=-3 m \\text { and } x=7 m $$</p>\n<p>As $\\mathrm{x}=-3 \\mathrm{~m}$ is starting release position. $\\mathrm{x}=7 \\mathrm{~m}$ is the farthest point reached on the positive x -axis.</p>\n<p>Therefore, the maximum value of coordinate x that the particle can reach before turning back is 7 m . Thus, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>X-अक्ष के अनुदिश गति कर रहे एक कण की स्थितिज ऊर्जा $U = 2 + 20x - 5x^2$ J है। कण को $x = -3$ से मुक्त किया जाता है। $x$ का अधिकतम मान होगा [$x$ मीटर में और $U$ जूल में है]</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>5 m</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>3 m</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>7 m</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>8 m</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "potential-energy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrm6jc58",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A portion of a chain hangs from a rough horizontal table (see figure). The mass of the chain is m and its length is l. The chain begins to slip when the length of the hanging portion is 1/3. The speed of the chain when its last link leaves the table is given by,</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrm6ae83%2F1c227b23-954a-4257-82ea-f6d39e633b88%2F14f87d30-8059-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm6ae84.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrm6ae83%2F1c227b23-954a-4257-82ea-f6d39e633b88%2F14f87d30-8059-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm6ae84.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\sqrt{\\frac{2gl}{3}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\sqrt{\\frac{3gl}{2}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{\\frac{3gl}{4}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{\\frac{4gl}{5}}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Let the total mass per unit length of the chain be $\\lambda=\\frac{\\mathrm{m}}{\\mathrm{l}}$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrm6c33q%2F2aee5848-280b-4a77-afd5-21802ca821fe%2F43ff8560-8059-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm6c33r.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrm6c33q%2F2aee5848-280b-4a77-afd5-21802ca821fe%2F43ff8560-8059-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm6c33r.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>When the hanging portion is $\\mathrm{l} / 3$, the mass of the hanging portion is $\\mathrm{m}_{\\mathrm{h}}=\\lambda\\left(\\frac{1}{3}\\right)=\\frac{\\mathrm{m}}{3}$</p>\n<p>Mass of the portion remaining on the table is $m_t=m-\\frac{m}{3}=\\frac{2 m}{3}$</p>\n<p>The downward pulling force due to gravity on the hanging part is:</p>\n<p>$$ \\mathrm{F}_{\\mathrm{pull}}=\\mathrm{m}_{\\mathrm{h}} \\mathrm{~g}=\\frac{\\mathrm{mg}}{3} $$</p>\n<p>The maximum limiting static friction holding the chain on the rough table is:</p>\n<p>$$ f_{\\max }=\\mu N=\\mu\\left(m_t g\\right)=\\mu\\left(\\frac{2 m}{3}\\right) g $$</p>\n<p>Since the chain begins to slip, the pulling force equals the maximum static friction:</p>\n<p>$$ \\frac{\\mathrm{mg}}{3}=\\mu\\left(\\frac{2 \\mathrm{mg}}{3}\\right) \\Rightarrow \\mu=\\frac{1}{2} $$</p>\n<p>Let the table surface as reference level for gravitational potential energy ( $\\mathrm{U}=0$ ).</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrm6di3x%2Ffd78d59f-a227-46a0-8b57-fe78d72d4f5d%2F6b6609d0-8059-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm6di3y.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrm6di3x%2Ffd78d59f-a227-46a0-8b57-fe78d72d4f5d%2F6b6609d0-8059-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm6di3y.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Initially the portion of the chain on the table $\\left(\\frac{2 m}{3}\\right)$ is at height 0 .</p>\n<p>The hanging portion $\\left(\\frac{\\mathrm{m}}{3}\\right)$ has its centre of mass located at a distance of $\\frac{1}{2}\\left(\\frac{1}{3}\\right)=\\frac{1}{6}$ below the table.</p>\n<p>So, the initial gravitational potential energy of the system is</p>\n<p>$$ \\mathrm{U}_{\\mathrm{i}}=\\mathrm{m}_{\\mathrm{t}} \\mathrm{~g}(0)+\\mathrm{m}_{\\mathrm{h}} \\mathrm{~g}\\left(-\\frac{\\mathrm{l}}{6}\\right)=\\left(\\frac{\\mathrm{m}}{3}\\right) \\mathrm{g}\\left(-\\frac{\\mathrm{l}}{6}\\right)=-\\frac{\\mathrm{mgl}}{18} $$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrm6fbb1%2F013fd4e9-165e-4d12-8395-dfda4a0f4989%2F9dc31ad0-8059-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm6fbb2.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrm6fbb1%2F013fd4e9-165e-4d12-8395-dfda4a0f4989%2F9dc31ad0-8059-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm6fbb2.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Finally the entire chain of length l and mass m is vertical. Its centre of mass is now $\\frac{1}{2}$ below the table level.</p>\n<p>So, the final potential energy of the system is $\\mathrm{U}_{\\mathrm{f}}=\\mathrm{mg}\\left(-\\frac{1}{2}\\right)=-\\frac{\\mathrm{mgl}}{2}$</p>\n<p>Therefore, the work done by gravity is :</p>\n<p>$$ \\mathrm{W}_{\\mathrm{g}}=-\\Delta \\mathrm{U}=\\mathrm{U}_{\\mathrm{i}}-\\mathrm{U}_{\\mathrm{f}}=-\\frac{\\mathrm{mgl}}{18}-\\left(-\\frac{\\mathrm{mgl}}{2}\\right)=\\frac{\\mathrm{mgl}}{2}-\\frac{\\mathrm{mgl}}{18}=\\frac{9 \\mathrm{mg}}{\\mathrm{l}}-\\frac{\\mathrm{mgl}}{18}=\\frac{8 \\mathrm{mgl}}{18}=\\frac{4 \\mathrm{mgl}}{9} $$</p>\n<p>Let x be the length of the chain hanging at any intermediate moment while it is still sliding off the table.</p>\n<p>The length of the chain left on the table is $(l-x)$.</p>\n<p>The normal force on the table at this instant is $\\mathrm{N}(\\mathrm{x})=\\lambda(\\mathrm{l}-\\mathrm{x}) \\mathrm{g}$.</p>\n<p>The kinetic friction force is :</p>\n<p>$$ \\mathrm{f}_{\\mathrm{k}}=\\mu \\mathrm{N}(\\mathrm{x})=\\frac{1}{2}\\left(\\frac{\\mathrm{~m}}{\\mathrm{l}}\\right)(\\mathrm{l}-\\mathrm{x}) \\mathrm{g} $$</p>\n<p>As the hanging length increases by a small displacement dx , the portion on the table moves forward by dx . The work done by friction is negative because the friction force opposes the displacement:</p>\n<p>$$ d W_f=-f_k d x=-\\frac{m g}{2 l}(l-x) d x $$</p>\n\n<p>From the initial hanging length $x = \\frac{1}{3}$ to the point where the chain completely leaves the table $x = l$:</p>\n<p>$$W_f = \\int\\limits_{\\frac{1}{3}}^{l} -\\frac{mg}{2l}(l - x)\\,dx = -\\frac{mg}{2l}\\left[lx - \\frac{x^2}{2}\\right]_{\\frac{1}{3}}^{l}$$</p>\n<p>$$W_f = -\\frac{mg}{2l}\\left[\\left(l^2 - \\frac{l^2}{2}\\right) - \\left(l\\left(\\frac{1}{3}\\right) - \\frac{\\left(\\frac{1}{3}\\right)^2}{2}\\right)\\right]$$</p>\n<p>$$W_f = -\\frac{mg}{2l}\\left[\\frac{l^2}{2} - \\left(\\frac{l^2}{3} - \\frac{l^2}{18}\\right)\\right] = -\\frac{mg}{2l}\\left[\\frac{l^2}{2} - \\frac{5l^2}{18}\\right]$$</p>\n<p>$$W_f = -\\frac{mg}{2l}\\left[\\frac{9l^2 - 5l^2}{18}\\right] = -\\frac{mg}{2l}\\left[\\frac{4l^2}{18}\\right] = -\\frac{4mgl}{36} = -\\frac{mgl}{9}$$</p>\n<p>According to the Work-Energy Theorem:</p>\n<p>$$W_{\\text{net}} = \\Delta K$$</p>\n<p>$$W_g + W_f = K_f - K_i$$</p>\n<p>Since the chain starts from rest ($K_i = 0$):</p>\n<p>$$\\frac{4mgl}{9} + \\left(-\\frac{mgl}{9}\\right) = \\frac{1}{2}mv^2$$</p>\n<p>$$\\frac{3mgl}{9} = \\frac{1}{2}mv^2$$</p>\n<p>$$\\frac{mgl}{3} = \\frac{1}{2}mv^2$$</p>\n<p>$$\\frac{2gl}{3} = v^2 \\Rightarrow v = \\sqrt{\\frac{2gl}{3}}$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक जंजीर का कुछ भाग एक खुरदरी क्षैतिज मेज से लटका हुआ है (चित्र देखें)। जंजीर का द्रव्यमान m है और इसकी लंबाई l है। जब लटके हुए भाग की लंबाई 1/3 होती है, तो जंजीर फिसलने लगती है। जब जंजीर की अंतिम कड़ी मेज को छोड़ती है तो उसकी चाल होगी,</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrm6ae83%2F1c227b23-954a-4257-82ea-f6d39e633b88%2F14f87d30-8059-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm6ae84.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrm6ae83%2F1c227b23-954a-4257-82ea-f6d39e633b88%2F14f87d30-8059-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm6ae84.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\sqrt{\\frac{2gl}{3}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\sqrt{\\frac{3gl}{2}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{\\frac{3gl}{4}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{\\frac{4gl}{5}}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrlo8hm8",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The potential energy of a particle in a field is $U = \\frac{a}{r^2} - \\frac{b}{r}$ where a and b are constant. The value of r in terms of a and b where force on the particle is zero will be :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{a}{b}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{b}{a}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{2a}{b}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{2b}{a}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>In a conservative force field, the force $\\vec{F}$ acting on a particle is related to the gradient of its potential energy function U.</p>\n<p>$$F=-\\frac{\\mathrm{d}U}{\\mathrm{d}r}$$</p>\n<p>The potential energy of particle in a field is given as $U(r)=\\frac{a}{r^2}-\\frac{b}{r}=ar^{-2}-br^{-1}$</p>\n<p>$$\\frac{\\mathrm{d}U}{\\mathrm{d}r}=\\frac{\\mathrm{d}}{\\mathrm{d}r}(ar^{-2}-br^{-1})$$</p>\n<p>$$\\frac{\\mathrm{d}U}{\\mathrm{d}r}=a(-2r^{-3})-b(-1r^{-2})$$</p>\n<p>$$\\frac{\\mathrm{d}U}{\\mathrm{d}r}=-2ar^{-3}+br^{-2}$$</p>\n<p>$$\\frac{\\mathrm{d}U}{\\mathrm{d}r}=-\\frac{2a}{r^3}+\\frac{b}{r^2}$$</p>\n<p>So, the conservative force is $F=-\\frac{\\mathrm{d}U}{\\mathrm{d}r}=-\\left(-\\frac{2a}{r^3}+\\frac{b}{r^2}\\right)$</p>\n<p>$$F=\\frac{2a}{r^3}-\\frac{b}{r^2}$$</p>\n<p>For the net force on the particle to be zero $(F=0)$ :</p>\n<p>$$\\frac{2a}{r^3}-\\frac{b}{r^2}=0$$</p>\n<p>$$\\Rightarrow \\frac{2a}{r^3}=\\frac{b}{r^2} \\Rightarrow 2a=\\frac{br^3}{r^2}=br$$</p>\n<p>$$\\Rightarrow r=\\frac{2a}{b}$$</p>\n<p>Thus, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक क्षेत्र में किसी कण की स्थितिज ऊर्जा $U = \\frac{a}{r^2} - \\frac{b}{r}$ है, जहाँ a और b नियतांक हैं। a और b के पदों में r का वह मान क्या होगा जिसके लिए कण पर कार्य करने वाला बल शून्य हो :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{a}{b}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{b}{a}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{2a}{b}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{2b}{a}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "potential-energy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrlrnwmf",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A man pulls a bucket of water from a depth of $h$ from a well. If the mass of the rope and that bucket of water is $m$ and $M$ respectively, the work done by the man is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(M + m)gh$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\left(\\frac{M + m}{2}\\right)gh$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\left(M + \\frac{m}{2}\\right)gh$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\left(\\frac{M}{2} + m\\right)gh$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The man is pulling the rope and bucket at a slow, constant speed, so the kinetic energy is constant. Hence, the work done by the man must equal the total increase in gravitational potential energy ( $\\Delta \\mathrm{U}$ ) of the rope and bucket :</p>\n<p>$$ \\mathrm{W}_{\\operatorname{man}}=\\Delta \\mathrm{U}_{\\text {bucket }}+\\Delta \\mathrm{U}_{\\text {rope }} $$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrlrl90m%2F7d740311-3dc1-4485-8487-770b83ade02c%2F99e94860-801f-11f1-9f93-6b7393966c45%2Ffile-6y3zli1mrlrl90n.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrlrl90m%2F7d740311-3dc1-4485-8487-770b83ade02c%2F99e94860-801f-11f1-9f93-6b7393966c45%2Ffile-6y3zli1mrlrl90n.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>The bucket behaves as a point mass $M$. To raise it through a uniform vertical distance $h$, the work needed is:</p>\n<p>$$\\Delta U_{\\text{bucket}} = Mgh$$</p>\n<p>The rope has a mass $m$ that is uniformly distributed along its total length $h$. As it is pulled up, the amount of hanging rope decreases linearly.</p>\n<p>For a uniform rope suspended vertically, its center of mass lies halfway down its length:</p>\n<p>$$h_{\\text{COM}} = \\frac{h}{2}$$</p>\n<p>Lifting the complete rope out of the well means raising its center of mass by a height of $\\frac{h}{2}$.</p>\n<p>$$\\Delta U_{\\text{rope}} = mgh_{\\text{COM}} = mg\\left(\\frac{h}{2}\\right) = \\frac{mgh}{2}$$</p>\n<p>So, total work done by man is,</p>\n<p>$$W_{\\text{man}} = Mgh + \\frac{mgh}{2}$$</p>\n<p>$$W_{\\text{man}} = \\left(M + \\frac{m}{2}\\right)gh$$</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक आदमी कुएं से $h$ गहराई से पानी की एक बाल्टी खींचता है। यदि रस्सी और पानी की उस बाल्टी का द्रव्यमान क्रमशः $m$ और $M$ है, तो आदमी द्वारा किया गया कार्य है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(M + m)gh$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\left(\\frac{M + m}{2}\\right)gh$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\left(M + \\frac{m}{2}\\right)gh$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\left(\\frac{M}{2} + m\\right)gh$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "potential-energy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrqg9kal",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The graph between $\\sqrt{E}$ and $\\frac{1}{p}$ is (K = kinetic energy and p = momentum)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqg4plo%2F6763061b-e6a7-4943-9e80-0f77dd61203d%2Fb4cb2dc0-82b2-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqg4plp.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqg4plo%2F6763061b-e6a7-4943-9e80-0f77dd61203d%2Fb4cb2dc0-82b2-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqg4plp.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqg5bwm%2F66b7a3e7-fa28-4740-9875-c67488948aa6%2Fc605e260-82b2-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqg5bwn.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqg5bwm%2F66b7a3e7-fa28-4740-9875-c67488948aa6%2Fc605e260-82b2-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqg5bwn.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqg6e8v%2Fb63ddaa9-a0e8-4ac0-84f5-d7705aad4865%2Fe3a3d2f0-82b2-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqg6e8w.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqg6e8v%2Fb63ddaa9-a0e8-4ac0-84f5-d7705aad4865%2Fe3a3d2f0-82b2-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqg6e8w.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqg74hy%2F5a61b68d-1122-4233-85fe-a37ec4c4977e%2Ff7eb5260-82b2-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqg74hz.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqg74hy%2F5a61b68d-1122-4233-85fe-a37ec4c4977e%2Ff7eb5260-82b2-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqg74hz.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For a particle of mass $m$ moving with velocity $v$, the kinetic energy is $E = \\frac{1}{2}mv^2$</p>\n<p>The linear momentum of particle is</p>\n<p>$$p = mv \\Rightarrow v = \\frac{p}{m}$$</p>\n<p>Substituting the expression for $v$ into the equation for kinetic energy:</p>\n<p>$$E = \\frac{1}{2}m\\left(\\frac{p}{m}\\right)^2 = \\frac{p^2}{2m}$$</p>\n<p>$$\\sqrt{E} = \\frac{p}{\\sqrt{2m}}$$</p>\n<p>The graph plots $y = \\sqrt{E}$ on the vertical axis against $x = \\frac{1}{p}$ on the horizontal axis.</p>\n<p>$$y = \\sqrt{E}$$</p>\n<p>$$x = \\frac{1}{p} \\Rightarrow p = \\frac{1}{x}$$</p>\n<p>Substituting $p = \\frac{1}{x}$ into the equation $\\sqrt{E} = \\frac{p}{\\sqrt{2m}}$:</p>\n<p>$$y = \\frac{1}{x\\sqrt{2m}}$$</p>\n<p>$$y = \\frac{\\left(\\frac{1}{\\sqrt{2m}}\\right)1}{x}$$</p>\n<p>Since mass $m$ is a constant positive value, $\\frac{1}{\\sqrt{2m}}$ is a positive constant $C$.</p>\n<p>$$y = \\frac{C}{x} \\Rightarrow xy = C$$</p>\n<p>An equation of the form $xy = \\text{constant}$ represents a rectangular hyperbola.</p>\n<p>As $x = \\frac{1}{p}$ increases towards infinity, $y = \\sqrt{E}$ decreases towards zero asymptoting along the axis.</p>\n<p>Therefore, the correct graph showing the relation between $\\sqrt{\\mathrm{E}}$ and $\\frac{1}{\\mathrm{p}}$ is option (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\sqrt{E}$ और $\\frac{1}{p}$ के बीच का ग्राफ है (K = गतिज ऊर्जा और p = संवेग)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqg4plo%2F6763061b-e6a7-4943-9e80-0f77dd61203d%2Fb4cb2dc0-82b2-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqg4plp.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqg4plo%2F6763061b-e6a7-4943-9e80-0f77dd61203d%2Fb4cb2dc0-82b2-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqg4plp.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqg5bwm%2F66b7a3e7-fa28-4740-9875-c67488948aa6%2Fc605e260-82b2-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqg5bwn.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqg5bwm%2F66b7a3e7-fa28-4740-9875-c67488948aa6%2Fc605e260-82b2-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqg5bwn.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqg6e8v%2Fb63ddaa9-a0e8-4ac0-84f5-d7705aad4865%2Fe3a3d2f0-82b2-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqg6e8w.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqg6e8v%2Fb63ddaa9-a0e8-4ac0-84f5-d7705aad4865%2Fe3a3d2f0-82b2-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqg6e8w.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqg74hy%2F5a61b68d-1122-4233-85fe-a37ec4c4977e%2Ff7eb5260-82b2-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqg74hz.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqg74hy%2F5a61b68d-1122-4233-85fe-a37ec4c4977e%2Ff7eb5260-82b2-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqg74hz.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "kinetic-energy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrqgp5st",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The spring block system lies on a smooth horizontal surface. The free end of the spring is being pulled towards right with constant speed $v_0 = 2 \\text{ m/s}$. At $t = 0$ sec, the spring of constant $k = 100 \\text{ N/cm}$ is unstretched and the block has a speed 1 m/s to left. The maximum extension of the spring is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqgjyms%2F1a084fa0-a72e-4f0b-a7c1-95e499f00929%2F5ce82d40-82b4-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqgjymt.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqgjyms%2F1a084fa0-a72e-4f0b-a7c1-95e499f00929%2F5ce82d40-82b4-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqgjymt.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2 cm</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>4 cm</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>6 cm</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>8 cm</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The free end moves at a constant velocity $\\vec{v}_0 = 2\\ \\mathrm{m/s}$ to the right. Because it moves at a constant speed along</p>\n<p>a straight line, it is an inertial reference frame.</p>\n<p>In this frame, the free end of the spring is fixed at the origin. The block moves away from it, slows down as the</p>\n<p>spring pulls back, and momentarily comes to a complete rest relative to the free end before returning. Thus, at</p>\n<p>maximum extension ($x_{\\max}$), the relative velocity of the block is exactly zero:</p>\n<p>$$v_{\\mathrm{rel,f}} = 0$$</p>\n<p>Since the surface is smooth and reference frame is inertial, mechanical energy is conserved;</p>\n<p>$$E_{\\mathrm{initial}} = E_{\\mathrm{final}}$$</p>\n<p>$$K_{\\mathrm{rel,initial}} + U_{\\mathrm{initial}} = K_{\\mathrm{rel,final}} + U_{\\mathrm{final}}$$</p>\n<p>The mass of the block is $m = 4\\ \\mathrm{kg}$</p>\n<p>Spring constant is $k = 100\\ \\mathrm{N/cm} = 100\\ \\frac{\\mathrm{N}}{\\mathrm{cm}} \\times \\frac{100\\mathrm{cm}}{1\\mathrm{m}} = 10{,}000\\ \\mathrm{N/m}$</p>\n<p>Let the rightward direction be positive ($+x$) and the leftward direction be negative ($-x$).</p>\n<p>Velocity of the free end is $\\vec{v}_{\\mathrm{end}} = +2\\ \\mathrm{m/s}$</p>\n<p>Velocity of the block is $\\vec{v}_{\\mathrm{block}} = -1\\ \\mathrm{m/s}$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqgljgf%2F91d3c23b-add9-49c4-ad58-d6aa7784d752%2F88cd34f0-82b4-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqgljgg.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqgljgf%2F91d3c23b-add9-49c4-ad58-d6aa7784d752%2F88cd34f0-82b4-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqgljgg.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>So, the initial relative velocity of the block with respect to the moving free end is:</p>\n<p>$$\\vec{v}_{\\mathrm{rel,initial}} = \\vec{v}_{\\mathrm{block}} - \\vec{v}_{\\mathrm{end}}$$</p>\n<p>$$\\vec{v}_{\\mathrm{rel,initial}} = -1\\ \\mathrm{m/s} - 2\\ \\mathrm{m/s} = -3\\ \\mathrm{m/s}$$</p>\n<p>The initial relative speed is the magnitude: $v_{\\mathrm{rel,initial}} = 3\\ \\mathrm{m/s}$.</p>\n<p>Initially the spring is unstretched $(U_{\\mathrm{initial}} = 0)$.</p>\n<p>So, the total initial mechanical energy is</p>\n<p>$$E_{\\mathrm{initial}} = \\frac{1}{2} m\\left(v_{\\mathrm{rel,initial}}\\right)^2 + 0$$</p>\n<p>Finally, at maximum extension the relative velocity is zero ($K_{\\mathrm{rel},\\mathrm{final}} = 0$).</p>\n<p>So, the total final mechanical energy is;</p>\n<p>$$E_{\\mathrm{final}} = 0 + \\frac{1}{2}k(x_{\\max})^2$$</p>\n<p>Using conservation of mechanical energy;</p>\n<p>$$\\frac{1}{2}m(v_{\\mathrm{rel},\\mathrm{initial}})^2 = \\frac{1}{2}k(x_{\\max})^2$$</p>\n<p>$$m(v_{\\mathrm{rel},\\mathrm{initial}})^2 = k(x_{\\max})^2$$</p>\n<p>$$4 \\times (3)^2 = 10{,}000 \\times (x_{\\max})^2$$</p>\n<p>$$4 \\times 9 = 10{,}000 \\times (x_{\\max})^2$$</p>\n<p>$$36 = 10{,}000 \\times (x_{\\max})^2$$</p>\n<p>$$(x_{\\max})^2 = \\frac{36}{10{,}000}$$</p>\n<p>$$x_{\\max} = \\sqrt{\\frac{36}{10{,}000}} = \\frac{6}{100}\\ \\mathrm{m} = 0.06\\ \\mathrm{meters}$$</p>\n<p>$$x_{\\max} = 0.06\\ \\mathrm{m} \\times \\frac{100\\ \\mathrm{cm}}{\\mathrm{m}} = 6\\ \\mathrm{cm}$$</p>\n<p>Therefore, the maximum extension achieved by the spring during this motion is $6\\ \\mathrm{cm}$. Thus, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>स्प्रिंग ब्लॉक निकाय एक चिकने क्षैतिज पृष्ठ पर स्थित है। स्प्रिंग के मुक्त सिरे को एक नियत चाल $v_0 = 2 \\text{ m/s}$ से दाईं ओर खींचा जा रहा है। $t = 0$ sec पर, $k = 100 \\text{ N/cm}$ नियतांक वाला स्प्रिंग अविस्तारित (unstretched) स्थिति में है तथा ब्लॉक की बाईं ओर चाल 1 m/s है। स्प्रिंग का अधिकतम विस्तार है:</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqgjyms%2F1a084fa0-a72e-4f0b-a7c1-95e499f00929%2F5ce82d40-82b4-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqgjymt.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqgjyms%2F1a084fa0-a72e-4f0b-a7c1-95e499f00929%2F5ce82d40-82b4-11f1-884b-914f90ee966b%2Ffile-6y3zli1mrqgjymt.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2 cm</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>4 cm</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>6 cm</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>8 cm</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "mechanical-energy-conservation",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrqjh43s",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Force acting on a particle moving in a straight line varies with the velocity <b>v</b> of the particle as $F = \\dfrac{K}{v}$ where K is a constant. The work done by this force in time t is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{k}{v^2} t$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2Kt$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$Kt$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{2Kt}{v^2}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Power (P) is defined as the rate at which work is done by a force with respect to time $t$, $P = \\frac{dW}{dt}$</p>\n<p>Power delivered by a force $F$ to a particle moving with a velocity $v$ along a straight line is,</p>\n<p>$$P = F \\cdot v$$</p>\n<p>We are given that the force varies with velocity as $F = \\frac{K}{v}$.</p>\n<p>$$\\Rightarrow P = \\left(\\frac{K}{v}\\right) \\times v$$</p>\n<p>$$\\Rightarrow P = K$$</p>\n<p>Since $K$ is a constant, the power delivered by the force remains uniform and independent of velocity or displacement at all times.</p>\n<p>$$P = \\frac{dW}{dt} = K$$</p>\n<p>$$dW = K\\,dt$$</p>\n<p>The total work done $W$ during the first $t$ seconds after starting from the beginning of motion (at $t = 0$, $W = 0$),</p>\n<p>$$\\int\\limits_{0}^{W} dW = \\int\\limits_{0}^{t} K\\,dt$$</p>\n<p>$$W = K[t]_{0}^{t}$$</p>\n<p>$$W = Kt$$</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक सीधी रेखा में गतिमान एक कण पर कार्य करने वाला बल कण के वेग <b>v</b> के साथ $F = \\dfrac{K}{v}$ के रूप में परिवर्तित होता है, जहाँ K एक नियतांक है। समय t में इस बल द्वारा किया गया कार्य है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{k}{v^2} t$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2Kt$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$Kt$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{2Kt}{v^2}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "power",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrqjr2fg",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In the figure shown below masses of blocks A and B are 3 kg and 6 kg respectively. The force constants of springs $S_1$ and $S_2$ are 160 N/m and 40 N/m respectively. Length of the light string connecting the blocks is 8 m. The system is released from rest with the springs at their natural lengths. The maximum elongation of spring $S_1$ will be :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqjn4oe%2F3f86b510-2ba6-4753-9a3a-7cbee54faf35%2F706428e0-82c0-11f1-88f3-a104de72fd0f%2Ffile-6y3zli1mrqjn4of.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqjn4oe%2F3f86b510-2ba6-4753-9a3a-7cbee54faf35%2F706428e0-82c0-11f1-88f3-a104de72fd0f%2Ffile-6y3zli1mrqjn4of.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.294 m</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.490 m</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.588 m</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.882 m</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Let x be the upward displacement of block A . Since block A and block B are connected by an inextensible, light string over a fixed pulley system, any upward movement of block A by a distance x results in an equal downward movement of block B by the same distance x.</p>\n<p>As block $A$ moves upward, spring $S_1$ (attached below it to the ground) stretches by an elongation equal to $x$.</p>\n<p>As block B moves downward, spring $\\mathrm{S}_2$ (attached below it to the ground) also stretches by an elongation equal to x .</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqjoizg%2F807b0fe7-3ead-42d6-9d7e-2be83c756ea6%2F974095c0-82c0-11f1-88f3-a104de72fd0f%2Ffile-6y3zli1mrqjoizh.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqjoizg%2F807b0fe7-3ead-42d6-9d7e-2be83c756ea6%2F974095c0-82c0-11f1-88f3-a104de72fd0f%2Ffile-6y3zli1mrqjoizh.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Therefore, at any moment, the extensions in both springs are identical:</p>\n<p>$$x_1 = x_2 = x$$</p>\n<p>The system is released from rest ($K_i = 0$)</p>\n<p>At the point of maximum elongation, the blocks come to rest again before reversing direction, which means the final kinetic energy is also zero ($K_f = 0$).</p>\n<p>Block A of mass $m_A = 3\\,\\mathrm{kg}$ goes up by $x$, gaining potential energy.</p>\n<p>Block B of mass $m_B = 6\\,\\mathrm{kg}$ goes down by $x$, losing potential energy.</p>\n<p>$$\\Delta U_{\\mathrm{gravity}} = m_A g x - m_B g x = (3)(9.8)x - (6)(9.8)x = -3(9.8)x = -29.4x$$</p>\n<p>Both springs start from their natural lengths and stretch by $x$.</p>\n<p>The spring constants are given as $k_1 = 160\\,\\mathrm{N/m}$ and $k_2 = 40\\,\\mathrm{N/m}$:</p>\n<p>$$\\Delta U_{\\mathrm{spring}} = \\frac{1}{2}k_1 x^2 + \\frac{1}{2}k_2 x^2 = \\frac{1}{2}(160)x^2 + \\frac{1}{2}(40)x^2 = 80x^2 + 20x^2 = 100x^2$$</p>\n<p>By the conservation of mechanical energy, the change in total potential energy must equal zero:</p>\n<p>$$\\Delta U_{\\mathrm{gravity}} + \\Delta U_{\\mathrm{spring}} = 0$$</p>\n<p>$$-29.4x_{\\max} + 100x_{\\max}^2 = 0$$</p>\n<p>$$100x_{\\max}^2 = 29.4x_{\\max}$$</p>\n<p>Since $x_{\\max} \\ne 0$,</p>\n<p>$$x_{\\max} = \\frac{29.4}{100} = 0.294\\,\\mathrm{m}$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>नीचे दिए गए चित्र में गुटके A और B के द्रव्यमान क्रमशः 3 kg और 6 kg हैं। स्प्रिंग $S_1$ और $S_2$ के बल नियतांक क्रमशः 160 N/m और 40 N/m हैं। गुटकों को जोड़ने वाली हल्की डोरी की लंबाई 8 m है। निकाय को विराम अवस्था से तब छोड़ा जाता है जब स्प्रिंग अपनी स्वाभाविक लंबाई में होते हैं। स्प्रिंग $S_1$ का अधिकतम प्रसार होगा :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqjn4oe%2F3f86b510-2ba6-4753-9a3a-7cbee54faf35%2F706428e0-82c0-11f1-88f3-a104de72fd0f%2Ffile-6y3zli1mrqjn4of.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqjn4oe%2F3f86b510-2ba6-4753-9a3a-7cbee54faf35%2F706428e0-82c0-11f1-88f3-a104de72fd0f%2Ffile-6y3zli1mrqjn4of.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.294 m</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.490 m</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.588 m</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.882 m</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "mechanical-energy-conservation",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrkcxj5g",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A 4 kg cart starts up an incline of $45^{\\circ}$ with a speed of $8 \\mathrm{~m} / \\mathrm{s}$ and comes to rest after moving up 2 m along the incline. The total work done by all forces on the cart is equal to $32x$ Joule. Find value of x .</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>According to the work-energy theorem the total work done by all forces acting on an object during a displacement is equal to its change in kinetic energy:</p>\n<p>$$W_{\\text{total}} = \\Delta K = K_f - K_i$$</p>\n<p>The kinetic energy for a body of mass m moving with velocity v is $K = \\frac{1}{2}mv^2$</p>\n<p>$$W_{\\text{total}} = \\frac{1}{2}mv_f^2 - \\frac{1}{2}mv_i^2$$</p>\n<p>The mass of the cart is $m = 4\\ \\text{kg}$</p>\n<p>The initial speed is $v_i = 8\\ \\text{m/s}$</p>\n<p>The cart comes to rest at the end, so its final speed is $v_f = 0\\ \\text{m/s}$</p>\n<p>Substitute these values,</p>\n<p>$$W_{\\text{total}} = \\frac{1}{2} \\times 4 \\times (0)^2 - \\frac{1}{2} \\times 4 \\times (8)^2$$</p>\n<p>$$W_{\\text{total}} = 0 - 2 \\times 64$$</p>\n<p>$$W_{\\text{total}} = -128\\ \\text{J}$$</p>\n<p>So, the magnitude of work done by net force is $128\\ \\text{J}$</p>\n<p>$$\\Rightarrow 32x = 128$$</p>\n<p>$$x = \\frac{128}{32}$$</p>\n<p>$$x = 4$$</p>\n<p>Therefore, the value of x is 4. Thus, the correct answer is 4.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>4 kg की एक गाड़ी $45^{\\circ}$ के आनत तल पर $8 \\mathrm{~m} / \\mathrm{s}$ की चाल से ऊपर की ओर चलना शुरू करती है और आनत तल पर 2 m ऊपर जाने के बाद विरामावस्था में आ जाती है। गाड़ी पर सभी बलों द्वारा किया गया कुल कार्य $32x$ जूल के बराबर है। x का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrqkvy41",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A body with mass 2 kg moves in one direction in the presence of a force which is described by the potential energy graph. If the body is released from rest at $x=2 \\mathrm{~m}$, then its speed when it crosses is $x=$ 5 m</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqkpi4l%2Fb295b966-c70e-414d-8419-f91de3c5a16c%2F9b874350-82c4-11f1-88f3-a104de72fd0f%2Ffile-6y3zli1mrqkpi4m.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqkpi4l%2Fb295b966-c70e-414d-8419-f91de3c5a16c%2F9b874350-82c4-11f1-88f3-a104de72fd0f%2Ffile-6y3zli1mrqkpi4m.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>The mass of the body is given as $\\mathrm{m}=2 \\mathrm{~kg}$. The body is released from rest at position $\\mathrm{x}=2 \\mathrm{~m}$, meaning its initial velocity is zero, and its initial kinetic energy is $\\mathrm{K}_{\\mathrm{i}}=0$</p>\n<p>The initial potential energy $U_i$ at $x=2 m$ from the provided $U-x$ graph.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqkssri%2F725de5b4-a42a-4249-98e1-eb5550f24142%2Ff72c1be0-82c4-11f1-88f3-a104de72fd0f%2Ffile-6y3zli1mrqkssrj.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqkssri%2F725de5b4-a42a-4249-98e1-eb5550f24142%2Ff72c1be0-82c4-11f1-88f3-a104de72fd0f%2Ffile-6y3zli1mrqkssrj.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The graph is a straight line from $x = 1\text{ m}$ (where $U = 10\text{ J}$) down to $x = 3.5\text{ m}$ (where $U = 0\text{ J}$)</p>\n<p>The slope of the line is</p>\n<p>$$m = \\frac{0 - 10}{3.5 - 1} = -\\frac{10}{2.5} = -4\\text{ J/m}$$</p>\n<p>Using the point-slope form at $(1,10)$:</p>\n<p>$$U(x) - 10 = -4(x - 1) \\Rightarrow U(x) = 14 - 4x$$</p>\n<p>At the release point $x = 2\\text{ m}$:</p>\n<p>$$U_i = 14 - 4(2) = 6\\text{ J}$$</p>\n<p>The total mechanical energy $E$ of the system is conserved throughout the motion:</p>\n<p>$$E = K_i + U_i = 0 + 6\\text{ J} = 6\\text{ J}$$</p>\n<p>The graph becomes horizontal line at a value of $2\\text{ J}$ for all positions $x \\geq 4.5\\text{ m}$.</p>\n<p>Therefore, the value of the potential energy $U_f$ when the particle crosses $x = 5\\text{ m}$.</p>\n<p>$$U_f = 2\\text{ J}$$</p>\n<p>Using the conservation of total mechanical energy:</p>\n<p>$$E = K_f + U_f$$</p>\n<p>$$6\\text{ J} = K_f + 2\\text{ J} \\Rightarrow K_f = 4\\text{ J}$$</p>\n<p>The kinetic energy of a body of mass $m$ and speed $v$ is</p>\n<p>$$K_f = \\frac{1}{2}mv_f^2$$</p>\n<p>The kinetic energy is $K_f = 4\\text{ J}$ and mass of the body is $m = 2\\text{ kg}$ into the expression:</p>\n<p>$$4 = \\frac{1}{2}(2)v_f^2$$</p>\n<p>$$4 = v_f^2 \\Rightarrow v_f = \\sqrt{4} = 2\\text{ m/s}$$</p>\n<p>Therefore, the speed of body at given point is $2\\text{ m/s}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक 2 kg द्रव्यमान का पिंड किसी बल की उपस्थिति में एक विमा में गति करता है, जिसे स्थितिज ऊर्जा ग्राफ द्वारा दर्शाया गया है। यदि पिंड को $x=2 \\mathrm{~m}$ पर विरामावस्था से छोड़ा जाता है, तो जब यह $x= 5 \\mathrm{~m}$ को पार करता है तब इसकी चाल होगी</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqkpi4l%2Fb295b966-c70e-414d-8419-f91de3c5a16c%2F9b874350-82c4-11f1-88f3-a104de72fd0f%2Ffile-6y3zli1mrqkpi4m.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqkpi4l%2Fb295b966-c70e-414d-8419-f91de3c5a16c%2F9b874350-82c4-11f1-88f3-a104de72fd0f%2Ffile-6y3zli1mrqkpi4m.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "mechanical-energy-conservation",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrqmaasq",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle of mass 2 kg starts to move at position $x=0$ and time $t=0$ under the action of force $F= (\\mathbf{1 0}+\\mathbf{4} \\boldsymbol{x}) \\mathbf{N}$ along the $\\mathbf{X}$-axis on a frictionless horizontal track. Find the power (in $\\mathbf{W}$ ) delivered by the force in watts at the instant when the particle has moved by the distance 5 m..</p>",
+                "options": [],
+                "answer": "300",
+                "explanation": "<p>The mass of the particle is $m = 2\text{ kg}$ and the position-dependent force is $F = 10 + 4x$.</p>\n<p>According to Newton's second law:</p>\n<p>$$F = ma \\Rightarrow 10 + 4x = 2a$$</p>\n<p>$$a = 5 + 2x$$</p>\n<p>Acceleration can be expressed in terms of velocity $v$ and position $x$ using the kinematic identity $a = v \\frac{dv}{dx}$:</p>\n<p>$$v \\frac{dv}{dx} = 5 + 2x$$</p>\n<p>$$v\\,dv = (5 + 2x)dx$$</p>\n<p>The particle starts from rest ($v = 0$) at position $x = 0$.</p>\n<p>Integrating both sides from the initial state to an a displacement $x$ where the velocity is $v$:</p>\n<p>$$\\int\\limits_{0}^{v} v\\,dv = \\int\\limits_{0}^{x} (5 + 2x)dx$$</p>\n<p>$$\\left[\\frac{v^2}{2}\\right]_{0}^{v} = \\left[5x + x^2\\right]_{0}^{x}$$</p>\n<p>$$\\frac{v^2}{2} = 5x + x^2 \\rightarrow v^2 = 10x + 2x^2$$</p>\n<p>At $x = 5\\text{ m}$,</p>\n<p>$$v^2 = 10(5) + 2(5)^2 = 50 + 2(25) = 50 + 50 = 100\\text{ m}^2/\\text{s}^2$$</p>\n<p>$$v = \\sqrt{100} = 10\\text{ m/s}$$</p>\n\n<p>Force at $x = 5\\ \\mathrm{m}$ is,</p>\n<p>$$F = 10 + 4(5) = 10 + 20 = 30\\ \\mathrm{N}$$</p>\n<p>Instantaneous power $P$ delivered by a force directed along the path of motion is the product of the force and the velocity:</p>\n<p>$$P = F \\cdot v$$</p>\n<p>$$P = 30 \\times 10\\ \\mathrm{W} = 300\\ \\mathrm{W}$$</p>\n<p>Therefore, the power delivered at the instant the particle has moved $5\\ \\mathrm{m}$ is $300\\ \\mathrm{W}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>2 kg द्रव्यमान का एक कण घर्षण रहित क्षैतिज पथ पर $\\mathbf{X}$-अक्ष के अनुदिश बल $F= (\\mathbf{1 0}+\\mathbf{4} \\boldsymbol{x}) \\mathbf{N}$ के प्रभाव में स्थिति $x=0$ और समय $t=0$ पर चलना प्रारंभ करता है। उस क्षण पर बल द्वारा प्रदान की गई शक्ति (वॉट या $\\mathbf{W}$ में) ज्ञात कीजिए जब कण 5 m की दूरी तय कर चुका हो।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "power",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrqm709m",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A spring gun has spring constant 100 N/m. A small ball of mass 0.1 kg is put in its barrel by compressing the spring through 0.05 m as shown in the figure. Find $d$ (in $m$ ) if the ball leaves the gun horizontally at height of 2 m above the ground. $\\left(g=10 \\mathrm{~m} / \\mathrm{s}^2\\right)$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqm4tha%2F7615bc6b-1152-41a0-93e6-0999b7b98286%2F2e909cf0-82ca-11f1-84d2-d91f178152a5%2Ffile-6y3zli1mrqm4thb.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqm4tha%2F7615bc6b-1152-41a0-93e6-0999b7b98286%2F2e909cf0-82ca-11f1-84d2-d91f178152a5%2Ffile-6y3zli1mrqm4thb.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "1",
+                "explanation": "<p>The spring inside the gun has a spring constant $k = 100\text{ N/m}$ and is initially compressed by a distance $x = 0.05\text{ m}$.</p>\n<p>By the law of conservation of mechanical energy, the elastic potential energy stored in the compressed spring is converted into the kinetic energy of the ball as it expands back to its natural position :</p>\n<p>$$U_{\\text{spring}} = K_{\\text{ball}}$$</p>\n<p>$$\\frac{1}{2}kx^2 = \\frac{1}{2}mv^2$$</p>\n<p>$$kx^2 = mv^2 \\Rightarrow v^2 = \\frac{k}{m}x^2$$</p>\n<p>The mass of the ball is $m = 0.1\\text{ kg}$.</p>\n<p>Putting the values,</p>\n<p>$$v^2 = \\frac{100}{0.1} \\times (0.05)^2 = 1000 \\times 0.0025 = 2.5\\text{ m}^2/\\text{s}^2$$</p>\n<p>$$v = \\sqrt{2.5}\\text{ m/s}$$</p>\n<p>The ball leaves the barrel horizontally from a vertical height $h = 2\\text{ m}$ above the ground.</p>\n<p>Let the time $t$ it takes to reach the ground. Using equation of motion along vertical direction,</p>\n<p>$$h = u_y t + \\frac{1}{2}gt^2$$</p>\n<p>Since it is launched horizontally, the initial vertical velocity component is zero ($u_y = 0$):</p>\n<p>$$2 = 0 + \\frac{1}{2}(10)t^2$$</p>\n<p>$$2 = 5t^2 \\Rightarrow t^2 = \\frac{2}{5} = 0.4$$</p>\n<p>$$t = \\sqrt{0.4}\\ \\text{seconds}$$</p>\n<p>The horizontal component of velocity remains constant throughout the flight because there are no horizontal forces acting on the projectile.</p>\n<p>The horizontal distance $d$ covered before hitting the ground is:</p>\n<p>$$d = vt$$</p>\n<p>$$d = \\sqrt{2.5} \\times \\sqrt{0.4} = \\sqrt{2.5 \\times 0.4} = \\sqrt{1} = 1\\ \\text{m}$$</p>\n<p>Therefore, the value for the horizontal distance $d$ is 1 m.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक स्प्रिंग गन का स्प्रिंग नियतांक 100 N/m है। 0.1 kg द्रव्यमान की एक छोटी गेंद को चित्रानुसार स्प्रिंग को 0.05 m संपीड़ित करके इसकी नली (barrel) में रखा जाता है। यदि गेंद गन से जमीन से 2 m की ऊंचाई पर क्षैतिज रूप से बाहर निकलती है, तो $d$ ($m$ में) ज्ञात कीजिए। $\\left(g=10 \\mathrm{~m} / \\mathrm{s}^2\\right)$</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrqm4tha%2F7615bc6b-1152-41a0-93e6-0999b7b98286%2F2e909cf0-82ca-11f1-84d2-d91f178152a5%2Ffile-6y3zli1mrqm4thb.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrqm4tha%2F7615bc6b-1152-41a0-93e6-0999b7b98286%2F2e909cf0-82ca-11f1-84d2-d91f178152a5%2Ffile-6y3zli1mrqm4thb.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "mechanical-energy-conservation",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrqmiasn",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The total mass a cyclist and her bicycle is 120 kg . While pedalling, she generates power of 640 W . Her motion is opposed by road resistance of magnitude 16 N and air resistance of magnitude 8 v N , where $v$ is her speed in $\\mathbf{m} / \\mathbf{s}$. Find the greatest speed( in $\\mathbf{m} / \\mathbf{s}$ ), that she can maintain on a horizontal road.</p>",
+                "options": [],
+                "answer": "8",
+                "explanation": "<p>A cyclist can maintain a maximum steady speed when the net acceleration becomes zero.</p>\n<p>For the acceleration to be zero, the forward driving force $F_d$ generated by the cyclist pedalling must balance the total opposing resistive forces $F_r$ :</p>\n<p>$$F_d = F_r$$</p>\n<p>Power (P) generated by a driving agent moving at a constant speed $v$ is</p>\n<p>$$P = F_d v \\Rightarrow F_d = \\frac{P}{v}$$</p>\n<p>The generated power is constant at $P = 640\\ \\mathrm{W} \\Rightarrow F_d = \\frac{640}{v}$</p>\n<p>The total resistance opposing the forward motion is,</p>\n<p>$$F_r = F_f + F_{af}$$</p>\n<p>Where, $F_k =$ Road resistance $= 16\\ \\mathrm{N}$ and $F_{af} =$ Air resistance $= \\frac{8}{v}\\ \\mathrm{N}$</p>\n<p>$$\\Rightarrow \\frac{640}{v} = 16 + \\frac{8}{v}$$</p>\n<p>$$\\Rightarrow 640 = 16v + 8v^2$$</p>\n<p>$$\\Rightarrow 8v^2 + 16v - 640 = 0$$</p>\n<p>$$\\Rightarrow v^2 + 2v - 80 = 0$$</p>\n<p>$$\\Rightarrow v^2 + 10v - 8v - 80 = 0$$</p>\n<p>$$\\Rightarrow v(v + 10) - 8(v + 10) = 0$$</p>\n<p>$$\\Rightarrow (v - 8)(v + 10) = 0$$</p>\n<p>$$\\Rightarrow v = 8\\ \\mathrm{m/s};\\ v = -10\\ \\mathrm{m/s}$$</p>\n<p>Since speed must be a positive value in the direction of motion, $v = 8\\ \\mathrm{m/s}$</p>\n<p>Therefore, the greatest speed that she can maintain on the horizontal road is $8\\ \\mathrm{m/s}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक साइकिल चालक और उसकी साइकिल का कुल द्रव्यमान 120 kg है। पैडल मारते समय, वह 640 W की शक्ति उत्पन्न करती है। उसकी गति का 16 N परिमाण के सड़क प्रतिरोध और 8 v N परिमाण के वायु प्रतिरोध द्वारा विरोध किया जाता है, जहाँ $v$, $\\mathbf{m} / \\mathbf{s}$ में उसकी चाल है। वह अधिकतम चाल ($\\mathbf{m} / \\mathbf{s}$ में) ज्ञात कीजिए, जिसे वह क्षैतिज सड़क पर बनाए रख सकती है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "power",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Questions from all topics of the chapter",
+    "timeAllotted": 3600000,
+    "title": "Work, Energy and Power - Chapter Test",
+    "totalQuestions": 25,
+    "type": "chapter",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g71mnvwjrvg",
+    "defaultLanguage": "en",
+    "description": "Questions from all topics of the chapter",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-19T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 100,
+    "maxNegMarks": 25,
+    "policy": "jee-main",
+    "syllabus": "Questions from all topics of the chapter",
+    "timeAllotted": 3600000,
+    "title": "Work, Energy and Power - Chapter Test",
+    "totalQuestions": 25,
+    "type": "chapter",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Work, Energy and Power"
+  }
+}

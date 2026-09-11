@@ -1,0 +1,222 @@
+/* EXAMGOAL EXACT CLONE STYLES */
+
+/* Clean top purple bar for mobile */
+@media (max-width: 768px) {
+  /* Hide the old dot grid styles and replace with plain numbers */
+  .eg-test-root {
+    background: #f0f2f5 !important; /* light grey body */
+  }
+  .eg-top {
+    background: #512da8 !important; /* Deep Purple */
+    color: #ffffff !important;
+    padding: 12px 16px !important;
+    border-bottom: none !important;
+  }
+  .eg-top .eg-sub-n {
+    color: #ffffff !important;
+    font-size: 20px !important;
+  }
+  .eg-top-act svg {
+    fill: #ffffff !important;
+  }
+  
+  /* The question bar directly under the purple header */
+  .eg-test-root .eg-qbar {
+    background: #512da8 !important;
+    padding: 0 16px 0 !important;
+    display: flex !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    flex-wrap: nowrap !important;
+    border: none !important;
+  }
+  .eg-test-root .eg-qbar-n {
+    background: transparent !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 12px 16px !important;
+    margin: 0 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    box-shadow: none !important;
+    opacity: 0.7 !important;
+    min-width: auto !important;
+    height: auto !important;
+  }
+  .eg-test-root .eg-qbar-n.on {
+    opacity: 1 !important;
+    border-bottom: 3px solid #ffffff !important;
+    background: transparent !important;
+    color: #ffffff !important;
+  }
+  .eg-test-root .eg-qbar-n.done, .eg-test-root .eg-qbar-n.marked {
+    background: transparent !important; 
+    /* Remove the green/orange backgrounds from examgoal dot grid, just use opacity/underline */
+  }
+
+  /* Question box */
+  .eg-main {
+    padding: 12px !important;
+    background: #f0f2f5 !important;
+    padding-bottom: 80px !important;
+  }
+  .eg-q-meta {
+    background: #e3f2fd !important;
+    border: 1px solid #bbdefb !important;
+    border-radius: 4px 4px 0 0 !important;
+    padding: 12px !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+  .eg-q-meta .q-num {
+    border: 1px solid #1976d2 !important;
+    color: #1976d2 !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+    font-weight: 600 !important;
+  }
+  .qx-q-html {
+    font-size: 16px !important;
+    background: #ffffff !important;
+    border: 1px solid #e0e0e0 !important;
+    border-top: none !important;
+    border-radius: 0 0 4px 4px !important;
+    padding: 16px !important;
+    margin-bottom: 12px !important;
+    box-shadow: none !important;
+  }
+
+  /* Options */
+  .eg-opt {
+    display: flex !important;
+    background: #ffffff !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 4px !important;
+    padding: 16px !important;
+    margin-bottom: 8px !important;
+    align-items: center !important;
+  }
+  .eg-opt-l {
+    border: 1.5px solid #2196f3 !important;
+    color: #2196f3 !important;
+    background: transparent !important;
+    border-radius: 50% !important;
+    width: 28px !important;
+    height: 28px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 16px !important;
+    font-weight: normal !important;
+  }
+  .eg-opt.on {
+    background: #e3f2fd !important;
+    border-color: #2196f3 !important;
+  }
+  .eg-opt.on .eg-opt-l {
+    background: #2196f3 !important;
+    color: #ffffff !important;
+  }
+
+  /* Sticky bottom */
+  .eg-foot {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: #ffffff !important;
+    border-top: 1px solid #e0e0e0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 !important;
+    z-index: 100 !important;
+  }
+  .eg-check-wrap {
+    padding: 12px !important;
+    background: #f0f2f5 !important;
+  }
+  .eg-check {
+    background: #2196f3 !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+    padding: 14px !important;
+    border: none !important;
+    font-weight: 600 !important;
+    width: 100% !important;
+  }
+  .eg-foot-left, .eg-foot-right {
+    display: flex !important;
+    justify-content: space-between !important;
+    padding: 8px 16px !important;
+    background: #fff !important;
+  }
+  .eg-btn {
+    background: transparent !important;
+    border: none !important;
+    color: #9e9e9e !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    font-size: 14px !important;
+  }
+  .eg-btn-next {
+    color: #4caf50 !important;
+  }
+}
+
+/* Dark mode overrides for EXACT clone */
+html[data-theme="dark"] .eg-test-root {
+  background: #121212 !important;
+}
+html[data-theme="dark"] .eg-main {
+  background: #121212 !important;
+}
+html[data-theme="dark"] .eg-top, html[data-theme="dark"] .eg-test-root .eg-qbar {
+  background: #311b92 !important; /* Darker purple */
+}
+html[data-theme="dark"] .qx-q-html, html[data-theme="dark"] .eg-opt, html[data-theme="dark"] .eg-foot {
+  background: #1e1e1e !important;
+  border-color: #333 !important;
+  color: #fff !important;
+}
+html[data-theme="dark"] .eg-q-meta {
+  background: #1e2a38 !important;
+  border-color: #2c3e50 !important;
+}
+/* SOLUTION BLOCK (Neat and Clean like ExamGOAL) */
+.eg-sol, .qx-sol-card, .qc-ex-sol {
+  background: #f1f8e9 !important; /* Light green tint like ExamGOAL success */
+  border: 1px solid #c5e1a5 !important;
+  border-radius: 4px !important;
+  padding: 16px !important;
+  margin-top: 16px !important;
+  font-size: 16px !important;
+  color: #333 !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="dark"] .eg-sol, html[data-theme="dark"] .qx-sol-card, html[data-theme="dark"] .qc-ex-sol {
+  background: #1b2e20 !important;
+  border: 1px solid #2e4c34 !important;
+  color: #e0e0e0 !important;
+}
+
+/* Remove any glassmorphism or floating from the main layout on desktop too to match website clone */
+@media (min-width: 769px) {
+  .eg-test-root { background: #f0f2f5 !important; }
+  .eg-top { background: #512da8 !important; color: #fff !important; border: none !important; }
+  .eg-top .eg-sub-n { color: #fff !important; }
+  .eg-top-act svg { fill: #fff !important; }
+  .eg-qbar { background: #512da8 !important; border: none !important; }
+  .eg-qbar-n { opacity: 0.7 !important; border-radius: 0 !important; color: #fff !important; border: none !important; }
+  .eg-qbar-n.on { opacity: 1 !important; border-bottom: 3px solid #fff !important; }
+  .eg-qbar-n.done, .eg-qbar-n.marked { background: transparent !important; }
+  .eg-main { background: #f0f2f5 !important; }
+  .qx-q-html { background: #fff !important; border: 1px solid #e0e0e0 !important; border-radius: 4px !important; box-shadow: none !important; }
+  .eg-opt { background: #fff !important; border: 1px solid #e0e0e0 !important; border-radius: 4px !important; }
+  html[data-theme="dark"] .eg-test-root, html[data-theme="dark"] .eg-main { background: #121212 !important; }
+  html[data-theme="dark"] .eg-top, html[data-theme="dark"] .eg-qbar { background: #311b92 !important; }
+  html[data-theme="dark"] .qx-q-html, html[data-theme="dark"] .eg-opt { background: #1e1e1e !important; border-color: #333 !important; color: #fff !important; }
+}

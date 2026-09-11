@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mobg1hl5",
+  "title": "Matrices Test - 3 (Topic Test)",
+  "type": "topic",
+  "section": "Matrices",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Mathematics",
+  "isUpcoming": false,
+  "liveAt": "2026-06-19T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "65461f17-089f-45e1-8fbd-db7bf947563e",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g61mobg1hl5",
+    "defaultLanguage": "en",
+    "description": "Types of Matrices, Transpose of a Matrix, Symmetric & Skew Symmetric Matrices, Trace of a Matrix",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-19T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mqjvfs34",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let three matrices $A = \\begin{bmatrix} 2 & 1 \\\\ 4 & 1 \\end{bmatrix};\\ B = \\begin{bmatrix} 3 & 4 \\\\ 2 & 3 \\end{bmatrix}$ and $C = \\begin{bmatrix} 3 & -4 \\\\ -2 & 3 \\end{bmatrix}$ then</p>\n<p>$\\operatorname{tr}(A) + \\operatorname{tr}\\left(\\frac{ABC}{2}\\right) + \\operatorname{tr}\\left(\\frac{A(BC)^2}{4}\\right) + \\operatorname{tr}\\left(\\frac{A(BC)^3}{8}\\right) + \\ldots + \\infty = $</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>6</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>9</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>12</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>First find $BC$.</p>\n<p>Given</p>\n<p>$$ B=\\begin{bmatrix}3&4\\\\2&3\\end{bmatrix}, \\qquad C=\\begin{bmatrix}3&-4\\\\-2&3\\end{bmatrix} $$</p>\n<p>So,</p>\n<p>$$ BC= \\begin{bmatrix}3&4\\\\2&3\\end{bmatrix} \\begin{bmatrix}3&-4\\\\-2&3\\end{bmatrix} $$</p>\n\n<p>$$ BC= \\begin{bmatrix} 3\\cdot 3+4\\cdot(-2) & 3\\cdot(-4)+4\\cdot 3\\\\ 2\\cdot 3+3\\cdot(-2) & 2\\cdot(-4)+3\\cdot 3 \\end{bmatrix} = \\begin{bmatrix} 9-8 & -12+12\\\\ 6-6 & -8+9 \\end{bmatrix} = \\begin{bmatrix} 1&0\\\\ 0&1 \\end{bmatrix} =I $$</p>\n<p>So $BC=I$.</p>\n<p>Now look at the given series:</p>\n<p>$$ \\operatorname{tr}(A)+\\operatorname{tr}\\left(\\frac{ABC}{2}\\right)+\\operatorname{tr}\\left(\\frac{A(BC)^2}{4}\\right)+\\operatorname{tr}\\left(\\frac{A(BC)^3}{8}\\right)+\\cdots $$</p>\n<p>Since $BC=I$, we have</p>\n<p>$$ ABC=A(BC)=AI=A $$</p>\n<p>and also</p>\n<p>$$ A(BC)^2=A,\\qquad A(BC)^3=A,\\qquad \\ldots $$</p>\n<p>So the series becomes</p>\n<p>$$ \\operatorname{tr}(A)+\\frac{1}{2}\\operatorname{tr}(A)+\\frac{1}{4}\\operatorname{tr}(A)+\\frac{1}{8}\\operatorname{tr}(A)+\\cdots $$</p>\n<p>Now,</p>\n<p>$$ A=\\begin{bmatrix}2&1\\\\4&1\\end{bmatrix} \\Rightarrow \\operatorname{tr}(A)=2+1=3 $$</p>\n<p>Hence the sum is</p>\n<p>$$ 3\\left(1+\\frac12+\\frac14+\\frac18+\\cdots\\right) $$</p>\n\n<p>$$= 3(\\frac{1}{1-\\frac12}) $$</p>\n<p>$$= 3\\times 2=6 $$</p>\n<p>The correct option is $\\boxed{6}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना तीन आव्यूह $A = \\begin{bmatrix} 2 & 1 \\\\ 4 & 1 \\end{bmatrix};\\ B = \\begin{bmatrix} 3 & 4 \\\\ 2 & 3 \\end{bmatrix}$ और $C = \\begin{bmatrix} 3 & -4 \\\\ -2 & 3 \\end{bmatrix}$ हैं, तब</p>\n<p>$\\operatorname{tr}(A) + \\operatorname{tr}\\left(\\frac{ABC}{2}\\right) + \\operatorname{tr}\\left(\\frac{A(BC)^2}{4}\\right) + \\operatorname{tr}\\left(\\frac{A(BC)^3}{8}\\right) + \\ldots + \\infty = $</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>6</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>9</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>12</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "trace-of-a-matrix",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqg1kxtz",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $A$ is symmetric as well as skew symmetric matrix, then</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$A$ is a diagonal matrix</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$A$ is a null matrix</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$A$ is a unit matrix</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$A$ is a triangular matrix</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let $A=[a_{ij}]$. Since $A$ is skew-symmetric, we have</p>\n<p>$$a_{ii}=0 \\text{ and } a_{ij}=-a_{ji} \\ (i\\ne j)$$</p>\n<p>$A$ is symmetric as well, so $a_{ij}=a_{ji}$ for all $i$ and $j$.</p>\n<p>$$\\therefore a_{ij}=0 \\text{ for all } i\\ne j$$</p>\n<p>Hence, $a_{ij}=0$ for all $i$ and $j$, i.e., $A$ is a null matrix.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $A$ एक सममित तथा विषम-सममित आव्यूह है, तो</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$A$ एक विकर्ण आव्यूह है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$A$ एक शून्य आव्यूह है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$A$ एक इकाई आव्यूह है</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$A$ एक त्रिभुजाकार आव्यूह है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "symmetric-and-skew-symmetric-matrices",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqjwb5ih",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $A$ is a skew symmetric matrix such that $A^T A = I$, then $A^{4n-1}$ ($n \\in \\mathbb{N}$) is equal to -</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>− $A^T$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$I$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>− $I$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$A^T$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Since $A$ is skew-symmetric, we have</p>\n<p>$$ A^T = -A $$</p>\n\n<p>$$ A^T A = I $$</p>\n<p>Now put $A^T = -A$ in this relation:</p>\n<p>$$ (-A)A = I $$</p>\n\n<p>$$ -A^2 = I $$</p>\n\n<p>$$ A^2 = -I $$</p>\n\n<p>$$ A^{4n-1} = (A^4)^n \\cdot A^{-1} $$</p>\n<p>Since</p>\n<p>$$ A^2 = -I $$</p>\n\n<p>$$ A^4 = (A^2)^2 = (-I)^2 = I $$</p>\n<p>So,</p>\n<p>$$ A^{4n-1} = A^{-1} $$</p>\n<p>Now from $A^T A = I$, we know for an orthogonal matrix,</p>\n<p>$$ A^{-1} = A^T $$</p>\n<p>Hence,</p>\n<p>$$ A^{4n-1} = A^T $$</p>\n<p>So the correct option is:</p>\n<p>$$ \\boxed{A^T} $$</p>\n<p>Option D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $A$ एक विषम सममित आव्यूह है जिसके लिए $A^T A = I$ है, तो $A^{4n-1}$ ($n \\in \\mathbb{N}$) बराबर है -</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>− $A^T$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$I$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>− $I$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$A^T$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "symmetric-and-skew-symmetric-matrices",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqjwlkjv",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $A$ and $B$ are symmetric matrices of the same order and $P = AB + BA$ and $Q = AB - BA$, then $(PQ)^{T}$ is equal to</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>PQ</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>QP</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>-PQ</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>-QP</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Since $A$ and $B$ are symmetric matrices, we have</p>\n<p>$$ A^T = A \\quad \\text{and} \\quad B^T = B $$</p>\n<p>Now,</p>\n<p>$$ P = AB + BA $$</p>\n<p>Taking transpose,</p>\n<p>$$ P^T = (AB + BA)^T $$</p>\n<p>Using $(X+Y)^T = X^T + Y^T$ and $(XY)^T = Y^T X^T$,</p>\n<p>$$ P^T = (AB)^T + (BA)^T = B^T A^T + A^T B^T $$</p>\n<p>Since $A^T=A$ and $B^T=B$,</p>\n<p>$$ P^T = BA + AB = AB + BA = P $$</p>\n<p>So, $P$ is symmetric.</p>\n<p>Now for</p>\n<p>$$ Q = AB - BA $$</p>\n<p>Taking transpose,</p>\n<p>$$ Q^T = (AB - BA)^T $$</p>\n<p>$$ Q^T = (AB)^T - (BA)^T = B^T A^T - A^T B^T $$</p>\n<p>$$ Q^T = BA - AB = -(AB - BA) $$</p>\n<p>$$ Q^T = -Q $$</p>\n<p>So, $Q$ is skew-symmetric.</p>\n<p>Now take transpose of $PQ$:</p>\n<p>$$ (PQ)^T = Q^T P^T $$</p>\n<p>Substitute $Q^T=-Q$ and $P^T=P$:</p>\n<p>$$ (PQ)^T = (-Q)(P) = -QP $$</p>\n<p>So the correct answer is</p>\n<p>$$ \\boxed{-QP} $$</p>\n<p>Option D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $A$ और $B$ समान कोटि के सममित आव्यूह हैं तथा $P = AB + BA$ और $Q = AB - BA$ है, तो $(PQ)^{T}$ किसके बराबर है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>PQ</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>QP</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>-PQ</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>-QP</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "symmetric-and-skew-symmetric-matrices",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqjyfm5l",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let M and N be two $3 \\times 3$ non-singular symmetric matrices such that $MN = NM$. If $P^T$ denotes the transpose of a matrix $P$, then $M^2 N^2 (M^T N)^{-1} (MN^{-1})^T$ is equal to</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$M^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$-M^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$MN$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$NM$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Since $M$ and $N$ are symmetric matrices, we have</p>\n<p>$$ M^T = M \\quad \\text{and} \\quad N^T = N $$</p>\n<p>Also, it is given that</p>\n<p>$$ MN = NM $$</p>\n\n<p>$$ M^2 N^2 (M^T N)^{-1} (MN^{-1})^T $$</p>\n<p>Using symmetry, $M^T = M$, so</p>\n<p>$$ (M^T N)^{-1} = (MN)^{-1} $$</p>\n<p>Also,</p>\n<p>$$ (MN^{-1})^T = (N^{-1})^T M^T $$</p>\n<p>Since $N$ is symmetric and non-singular, $N^{-1}$ is also symmetric. So</p>\n<p>$$ (N^{-1})^T = N^{-1} $$</p>\n<p>and $M^T = M$, hence</p>\n<p>$$ (MN^{-1})^T = N^{-1}M $$</p>\n<p>So the given expression becomes</p>\n<p>$$ M^2 N^2 (MN)^{-1} N^{-1}M $$</p>\n<p>Now, because $M$ and $N$ commute, their inverses also commute with them, and</p>\n<p>$$ (MN)^{-1} = N^{-1}M^{-1} $$</p>\n<p>Thus,</p>\n<p>$$ M^2 N^2 (MN)^{-1} N^{-1}M = M^2 N^2 N^{-1} M^{-1} N^{-1} M $$</p>\n<p>Now simplify:</p>\n<p>$$ N^2 N^{-1} = N $$</p>\n<p>so</p>\n<p>$$ = M^2 N M^{-1} N^{-1} M $$</p>\n<p>Since all these matrices commute,</p>\n<p>$$ N M^{-1} N^{-1} = M^{-1} $$</p>\n<p>Hence,</p>\n<p>$$ = M^2 M^{-1} M = M^2 $$</p>\n<p>So the correct answer is</p>\n<p>$$ \\boxed{M^2} $$</p>\n<p>Option A.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना M और N दो $3 \\times 3$ व्युत्क्रमणीय सममित आव्यूह हैं, जहाँ $MN = NM$ है। यदि $P^T$ आव्यूह $P$ के परिवर्त को दर्शाता है, तो $M^2 N^2 (M^T N)^{-1} (MN^{-1})^T$ बराबर है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$M^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$-M^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$MN$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$NM$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "symmetric-and-skew-symmetric-matrices",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqjyia11",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If A, B are symmetric matrices of the same order then $AB - BA$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>skew symmetric</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Symmetric</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Orthogonal</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Null matrix</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For symmetric matrices, we know</p>\n<p>$$ A^T = A \\quad \\text{and} \\quad B^T = B $$</p>\n<p>Now take the transpose of $AB - BA$:</p>\n<p>$$ (AB - BA)^T = (AB)^T - (BA)^T $$</p>\n<p>Using the property $(XY)^T = Y^T X^T$,</p>\n<p>$$ (AB - BA)^T = B^T A^T - A^T B^T $$</p>\n<p>Since $A$ and $B$ are symmetric,</p>\n<p>$$ (AB - BA)^T = BA - AB $$</p>\n<p>This can be written as</p>\n<p>$$ (AB - BA)^T = -(AB - BA) $$</p>\n<p>So $AB - BA$ is skew symmetric.</p>\n<p>Option A: skew symmetric</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि A, B समान कोटि के सममित आव्यूह हैं, तो $AB - BA$ है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>विषम सममित</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>सममित</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>लांबिक</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>शून्य आव्यूह</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "symmetric-and-skew-symmetric-matrices",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqjyrpge",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $A$ is a diagonal matrix of order $3 \\times 3$ is commutative with every square matrix of order $3 \\times 3$ and $\\text{trace}(A) = 18$, then $|A|$ is equal to</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>6</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>36</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>216</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>27</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Since $A$ is a diagonal matrix that commutes with every $3 \\times 3$ square matrix, this is only possible when $A$ is a scalar matrix. That means all the diagonal entries must be equal.</p>\n<p>So let</p>\n<p>$$A = \\begin{bmatrix} k & 0 & 0 \\\\ 0 & k & 0 \\\\ 0 & 0 & k \\end{bmatrix}$$</p>\n<p>The trace is the sum of the diagonal entries, so</p>\n<p>$$k + k + k = 18$$</p>\n<p>which gives $k = 6$.</p>\n<p>Now the determinant of a diagonal matrix is just the product of its diagonal entries:</p>\n<p>$$|A| = 6 \\times 6 \\times 6 = 216$$</p>\n<p>So the correct option is <strong>C, 216</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि कोटि $3 \\times 3$ का एक विकर्ण आव्यूह $A$, कोटि $3 \\times 3$ के प्रत्येक वर्ग आव्यूह के साथ क्रमविनिमेय है और $\\text{trace}(A) = 18$ है, तो $|A|$ बराबर है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>6</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>36</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>216</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>27</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "trace-of-a-matrix",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqjz35js",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $A^T B A = 0$, where $A$ is $3 \\times 1$ column matrix, then the value of $|B|$ is equal to:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>-1</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>We are given the matrix equation $A^T B A = 0$. </p>\n<p>Here, $A$ is a $3 \\times 1$ column matrix, which means $A^T$ is a $1 \\times 3$ row matrix. For the matrix multiplication $A^T B A$ to be possible, $B$ must be a $3 \\times 3$ square matrix. </p>\n<p>When we multiply a $1 \\times 3$, a $3 \\times 3$, and a $3 \\times 1$ matrix, the result is a $1 \\times 1$ matrix. A $1 \\times 1$ matrix is essentially just a single number (a scalar).</p>\n\n<p>$$ (A^T B A)^T = 0^T $$</p>\n<p>$$ (A^T B A)^T = 0 $$</p>\n<p>As $(XYZ)^T = Z^T Y^T X^T$, </p>\n<p>$$ A^T B^T (A^T)^T = 0 $$</p>\n\n<p>$$ A^T B^T A = 0 $$</p>\n\n<p>$$ A^T B A + A^T B^T A = 0 + 0 $$</p>\n\n<p>$$ A^T (B + B^T) A = 0 $$</p>\n<p>For this equation to hold true for any arbitrary column matrix $A$, the middle matrix part must be a zero matrix. That gives us:</p>\n<p>$$ B + B^T = 0 $$</p>\n<p>$$ B^T = -B $$</p>\n<p>This condition tells us that $B$ is a skew-symmetric matrix. </p>\n<p>$$ |B^T| = |-B| $$</p>\n\n<ol>\n<li><p>The determinant of a transpose is equal to the determinant of the original matrix, so $|B^T| = |B|$.</p></li>\n<li><p>If we pull a constant $k$ out of the determinant of an $n \\times n$ matrix, it comes out as $k^n$. So, $|kB| = k^n|B|$. </p></li>\n</ol>\n<p>Since $B$ is a $3 \\times 3$ matrix, $n = 3$. Using these properties, the equation becomes:</p>\n<p>$$ |B| = (-1)^3 |B| $$</p>\n<p>$$ |B| = -|B| $$</p>\n\n<p>$$ |B| + |B| = 0 $$</p>\n<p>$$ 2|B| = 0 $$</p>\n<p>$$ |B| = 0 $$</p>\n<p>The value of the determinant $|B|$ is 0.</p>\n<p>Option D is the correct answer.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $A^T B A = 0$ है, जहाँ $A$ एक $3 \times 1$ स्तंभ आव्यूह है, तो $|B|$ का मान बराबर है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>-1</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "transpose-of-a-matrix",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqjzm9uc",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If <b>M</b> is a square matrix of order 2, then $-\\mathrm{tr} \\cdot (M^2) + (\\mathrm{tr} \\cdot (M))^2$ is equal to :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{\\det(M)}{2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\det(M)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$3 \\det(M)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$4 \\det(M)$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Take a general $2 \\times 2$ matrix</p>\n<p>$$ M=\\begin{pmatrix} a & b\\\\ c & d \\end{pmatrix} $$</p>\n<p>Then,</p>\n<p>$$ \\mathrm{tr}(M)=a+d $$</p>\n<p>and</p>\n<p>$$ \\det(M)=ad-bc $$</p>\n<p>Now find $M^2$:</p>\n<p>$$ M^2= \\begin{pmatrix} a & b\\\\ c & d \\end{pmatrix} \\begin{pmatrix} a & b\\\\ c & d \\end{pmatrix} = \\begin{pmatrix} a^2+bc & ab+bd\\\\ ac+cd & bc+d^2 \\end{pmatrix} $$</p>\n<p>So,</p>\n<p>$$ \\mathrm{tr}(M^2)=(a^2+bc)+(bc+d^2)=a^2+d^2+2bc $$</p>\n<p>Now calculate</p>\n<p>$$ -\\mathrm{tr}(M^2)+(\\mathrm{tr}(M))^2 $$</p>\n<p>$$ =-(a^2+d^2+2bc)+(a+d)^2 $$</p>\n<p>$$ =-(a^2+d^2+2bc)+(a^2+d^2+2ad) $$</p>\n<p>$$ =2ad-2bc $$</p>\n<p>$$ =2(ad-bc) $$</p>\n<p>$$ =2\\det(M) $$</p>\n<p>So the correct answer is</p>\n<p>$$ \\boxed{2\\det(M)} $$</p>\n<p>Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि <b>M</b> कोटि 2 का एक वर्ग आव्यूह (square matrix) है, तो $-\\mathrm{tr} \\cdot (M^2) + (\\mathrm{tr} \\cdot (M))^2$ बराबर है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{\\det(M)}{2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\det(M)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$3 \\det(M)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$4 \\det(M)$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "trace-of-a-matrix",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqk3hwqe",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $P = \\begin{bmatrix} \\frac{\\sqrt{3}}{2} & \\frac{1}{2} \\\\ -\\frac{1}{2} & \\frac{\\sqrt{3}}{2} \\end{bmatrix}$, $A = \\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}$ and $Q = PAP^\\top$ and $x = P^\\top Q^{2005} P$, then $x$ is equal to</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\begin{bmatrix} 1 & 2005 \\\\ 0 & 1 \\end{bmatrix}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\begin{bmatrix} 4 + 2005\\sqrt{3} & 6015 \\\\ 2005 & 4 - 2005\\sqrt{3} \\end{bmatrix}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{1}{4} \\begin{bmatrix} 2 + \\sqrt{3} & 1 \\\\ -1 & 2 - \\sqrt{3} \\end{bmatrix}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{1}{4} \\begin{bmatrix} 2005 & 2 - \\sqrt{3} \\\\ 2 + \\sqrt{3} & 2005 \\end{bmatrix}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>$$ A=\\left[\\begin{array}{ll} 1 & 1 \\\\ 0 & 1 \\end{array}\\right] \\text { and } Q=P A P^{\\top} \\text { and } X=P^{\\top} Q^{2005} P $$</p>\n<p>We observe that $\\mathrm{Q}=\\mathrm{PA} \\mathrm{P}^{\\top}$</p>\n<p>$$ Q^2=\\left(P A P^{\\top}\\right)\\left(P A P^{\\top}\\right)=P A\\left(P^{\\top} P\\right) A P^{\\top}=P A(I A) P^{\\top}=P A^2 P^{\\top} $$</p>\n<p>Proceeding in the same way, we get</p>\n<p>$$ \\mathrm{Q}^{2005}=\\mathrm{P} \\mathrm{~A}^{2005} \\mathrm{P}^{\\top} $$</p>\n<p>$$ \\text { Also } A=\\left[\\begin{array}{ll} 1 & 1 \\\\ 0 & 1 \\end{array}\\right] \\quad A^2=\\left[\\begin{array}{ll} 1 & 2 \\\\ 0 & 1 \\end{array}\\right] $$</p>\n<p>And proceeding in the same way</p>\n<p>$$ \\begin{aligned} & A^{2005}=\\left[\\begin{array}{cc} 1 & 2005 \\\\ 0 & 1 \\end{array}\\right] \\\\ & P^{\\top} P=\\left[\\begin{array}{ll} \\frac{\\sqrt{3}}{2} & -\\frac{1}{2} \\\\ \\frac{1}{2} & \\frac{\\sqrt{3}}{2} \\end{array}\\right]\\left[\\begin{array}{cc} \\frac{\\sqrt{3}}{2} & \\frac{1}{2} \\\\ -\\frac{1}{2} & \\frac{\\sqrt{3}}{2} \\end{array}\\right]=\\left[\\begin{array}{ll} 1 & 0 \\\\ 0 & 1 \\end{array}\\right] \\end{aligned} $$</p>\n<p>$X=P^{\\top} Q^{2005} P=P^{\\top}\\left(P A^{2005} P^{\\top}\\right) P=\\left(P^{\\top} P\\right) A^{2005}\\left(P^{\\top} P\\right)=I A^{2005} I=A^{2005}=\\left[\\begin{array}{cc}1 & 2005 \\\\ 0 & 1\\end{array}\\right]$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $P = \\begin{bmatrix} \\frac{\\sqrt{3}}{2} & \\frac{1}{2} \\\\\\\\ -\\frac{1}{2} & \\frac{\\sqrt{3}}{2} \\end{bmatrix}$, $A = \\begin{bmatrix} 1 & 1 \\\\\\\\ 0 & 1 \\end{bmatrix}$ और $Q = PAP^\\top$ तथा $x = P^\\top Q^{2005} P$ है, तो $x$ बराबर है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\begin{bmatrix} 1 & 2005 \\\\\\\\ 0 & 1 \\end{bmatrix}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\begin{bmatrix} 4 + 2005\\sqrt{3} & 6015 \\\\\\\\ 2005 & 4 - 2005\\sqrt{3} \\end{bmatrix}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{1}{4} \\begin{bmatrix} 2 + \\sqrt{3} & 1 \\\\\\\\ -1 & 2 - \\sqrt{3} \\end{bmatrix}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{1}{4} \\begin{bmatrix} 2005 & 2 - \\sqrt{3} \\\\\\\\ 2 + \\sqrt{3} & 2005 \\end{bmatrix}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "transpose-of-a-matrix",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mqk52pot",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$A=\\left[\\begin{array}{cc}4 & x+2 \\\\ 2 x-3 & x+1\\end{array}\\right]$ is symmetric, then $x$ is equal to</p>",
+                "options": [],
+                "answer": "5",
+                "explanation": "<p>For a matrix to be symmetric, the element above the main diagonal must be equal to the element below the main diagonal.</p>\n<p>So, in</p>\n<p>$$ A=\\begin{bmatrix} 4 & x+2 \\\\ 2x-3 & x+1 \\end{bmatrix}, $$</p>\n<p>we must have</p>\n<p>$$ x+2=2x-3. $$</p>\n\n<p>$$ x+2=2x-3 $$</p>\n\n<p>$$ 2=x-3 $$</p>\n\n<p>$$ x=5 $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $A=\\left[\\begin{array}{cc}4 & x+2 \\\\ 2 x-3 & x+1\\end{array}\\right]$ सममित है, तो $x$ बराबर है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "symmetric-and-skew-symmetric-matrices",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqk294tu",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "Let $\\mathrm{S}=\\left[\\mathrm{a}_{\\mathrm{ij}}\\right], \\mathrm{a}_{\\mathrm{ij}} \\in\\{-1,0,1\\}$ is a $3 \\times 3$ symmetric matrix, such that $\\operatorname{Tr}(\\mathrm{S})=0$, then number of matrices $S$ is equal to : $(\\operatorname{Tr}(S)$ denotes the trace of matrix $S)$",
+                "options": [],
+                "answer": "189",
+                "explanation": "<p>Since $S$ is a $3\\times 3$ symmetric matrix, it has the form</p>\n<p>$$ S=\\begin{pmatrix} a_{11} & a_{12} & a_{13}\\\\ a_{12} & a_{22} & a_{23}\\\\ a_{13} & a_{23} & a_{33} \\end{pmatrix} $$</p>\n<p>Each entry belongs to the set $\\{-1,0,1\\}$.</p>\n<p>Now trace of $S$ is</p>\n<p>$$ \\operatorname{Tr}(S)=a_{11}+a_{22}+a_{33} $$</p>\n<p>and it is given that</p>\n<p>$$ a_{11}+a_{22}+a_{33}=0 $$</p>\n\n<p>Each of $a_{11},a_{22},a_{33}$ can be $-1,0,1$, and their sum must be $0$.</p>\n<p>Possible cases:</p>\n<ol>\n<li>All three are $0$:</li>\n</ol>\n<p>$$ (0,0,0) $$</p>\n<p>This gives $1$ way.</p>\n<ol start=\"2\">\n<li>One is $1$, one is $-1$, and one is $0$.</li>\n</ol>\n<p>Number of arrangements of $(1,-1,0)$ is</p>\n<p>$$ 3! = 6 $$</p>\n<p>So total number of diagonal choices is</p>\n<p>$$ 1+6=7 $$</p>\n\n<p>Since the matrix is symmetric, the entries $a_{12}, a_{13}, a_{23}$ can be chosen independently, and then the lower triangular part is fixed.</p>\n<p>Each of these $3$ entries can be chosen in $3$ ways from $\\{-1,0,1\\}$.</p>\n<p>So number of choices for off-diagonal entries is</p>\n<p>$$ 3^3=27 $$</p>\n<p>Hence total number of such matrices is</p>\n<p>$$ 7 \\times 27 = 189 $$</p>\n<p>So the number of matrices $S$ is</p>\n<p>$$ \\boxed{189} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "माना $\\mathrm{S}=\\left[\\mathrm{a}_{\\mathrm{ij}}\\right], \\mathrm{a}_{\\mathrm{ij}} \\in\\{-1,0,1\\}$ एक $3 \\times 3$ सममित आव्यूह है, इस प्रकार कि $\\operatorname{Tr}(\\mathrm{S})=0$ है, तब ऐसे आव्यूहों $S$ की संख्या बराबर है : (जहाँ $\\operatorname{Tr}(S)$ आव्यूह $S$ के ट्रेस को दर्शाता है)",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "trace-of-a-matrix",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqk4f9fu",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let $A$ and $B$ are square matrices both of order 3 satisfying $A^2+B^4=\\left(A^T\\right)^2$, then $|B|$ is equal to</p>\n<p>(where $\\mathrm{A}^{\\mathrm{T}}$ is transpose of matrix A )</p>",
+                "options": [],
+                "answer": "0",
+                "explanation": "<p>$$A^2 + B^4 = (A^T)^2$$</p>\n\n<p>$$B^4 = (A^T)^2 - A^2$$</p>\n\n<p>$$(B^4)^T = ((A^T)^2)^T - (A^2)^T$$</p>\n\n<p>$$(B^T)^4 = ((A^T)^T)^2 - (A^T)^2$$</p>\n<p>$$(B^T)^4 = A^2 - (A^T)^2$$</p>\n\n<p>$$(B^T)^4 = - ((A^T)^2 - A^2)$$</p>\n<p>$$(B^T)^4 = -B^4$$</p>\n\n<p>$$|(B^T)^4| = |-B^4|$$</p>\n<p>Here, we use a couple of important properties of determinants. First, for any square matrix $M$ of order $n$, multiplying the matrix by a scalar $k$ changes its determinant by a factor of $k^n$. This gives us $|kM| = k^n|M|$. Since $B$ is a matrix of order 3, we have $n=3$ and our constant is $k=-1$:</p>\n<p>$$|-B^4| = (-1)^3 |B^4| = -|B|^4$$</p>\n<p>Second, the determinant of a matrix is exactly the same as the determinant of its transpose, meaning $|B^T| = |B|$. Using this, the left side simplifies to:</p>\n<p>$$|(B^T)^4| = |B^T|^4 = |B|^4$$</p>\n<p>Now we just equate both simplified sides:</p>\n<p>$$|B|^4 = -|B|^4$$</p>\n\n<p>$$2|B|^4 = 0$$</p>\n<p>$$|B|^4 = 0$$</p>\n\n<p>$$|B| = 0$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना $A$ और $B$ दोनों कोटि 3 के ऐसे वर्ग आव्यूह हैं जो $A^2+B^4=\\left(A^T\\right)^2$ को संतुष्ट करते हैं, तो $|B|$ बराबर है</p>\n<p>(जहाँ $\\mathrm{A}^{\\mathrm{T}}$ आव्यूह A का परिवर्त है)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "transpose-of-a-matrix",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqk2u2a7",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Number of $3 \\times 3$ non-symmetric matrix $A$ such that $A^T = A^2 - I$ and $|A| \\neq 0$, equals to</p>",
+                "options": [],
+                "answer": "0",
+                "explanation": "\n<p>$$A^T=A^2-I$$</p>\n\n<p>$$A=(A^T)^2-I=(A^2-I)^2-I$$</p>\n\n<p>$$A=A^4-2A^2$$</p>\n\n<p>$$A^4-2A^2-A=O$$</p>\n<p>Since $|A|\\ne 0$, the matrix $A$ is invertible.</p>\n<p>$$A^3-2A-I=O$$</p>\n\n\n<p>$$\\Rightarrow (A+I)(A^2-A-I)=O$$</p>\n<p>Using the given relation $A^T=A^2-I$, we get</p>\n\n<p>$$\\Rightarrow (A+I)(A^T-A)=O$$</p>\n<p>Now we need to see why $A+I$ is invertible. If $A+I$ were not invertible, then $-1$ would be an eigenvalue of $A$. Then $A^2-I$ would have eigenvalue $0$.</p>\n<p>But $A^2-I=A^T$, so $A^T$ would be singular. This would mean $A$ is singular, which contradicts $|A|\\ne 0$.</p>\n<p>So,</p>\n<p>$$|A+I|\\ne 0$$</p>\n<p>Since $A+I$ is invertible, from</p>\n<p>$$ (A+I)(A^T-A)=O $$</p>\n<p>we get</p>\n<p>$$A^T-A=O$$</p>\n<p>So,</p>\n<p>$$A^T=A$$</p>\n<p>This means $A$ is symmetric, but the question asks for non-symmetric matrices.</p>\n<p>$$\\Rightarrow \\text{no such matrix possible}$$</p>\n<p>Hence, the number of such matrices is $0$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>ऐसे $3 \\times 3$ असममित आव्यूहों $A$ की संख्या, जिनके लिए $A^T = A^2 - I$ तथा $|A| \\neq 0$ है, किसके बराबर है?</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "symmetric-and-skew-symmetric-matrices",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqk4uve9",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let $A$ and $B$ be two square matrices of order 3 satisfying $A^2+B^{100}=\\left(A^T\\right)^2$. Then $\\operatorname{det} (B)$ is equal to $\\_\\_\\_\\_$ .</p>",
+                "options": [],
+                "answer": "0",
+                "explanation": "\n<p>$$A^2 + B^{100} = \\left(A^T\\right)^2$$</p>\n\n<p>$$B^{100} = \\left(A^T\\right)^2 - A^2$$</p>\n\n<p>$$B^{100} = \\left(A^2\\right)^T - A^2$$</p>\n\n<p>$$\\left(B^{100}\\right)^T = \\left( \\left(A^2\\right)^T - A^2 \\right)^T$$</p>\n<p>$$\\left(B^{100}\\right)^T = \\left(\\left(A^2\\right)^T\\right)^T - \\left(A^2\\right)^T$$</p>\n\n<p>$$\\left(B^{100}\\right)^T = A^2 - \\left(A^2\\right)^T$$</p>\n\n<p>$$\\left(B^{100}\\right)^T = -\\left( \\left(A^2\\right)^T - A^2 \\right)$$</p>\n<p>$$\\left(B^{100}\\right)^T = -B^{100}$$</p>\n<p>This shows that $B^{100}$ is a skew-symmetric matrix. </p>\n<p>We know that both $A$ and $B$ are square matrices of order 3. This means $B^{100}$ is also a square matrix of order 3. Let us denote $B^{100}$ as $M$. Since $M$ is a skew-symmetric matrix, we have:</p>\n<p>$$M^T = -M$$</p>\n\n<p>$$\\operatorname{det}(M^T) = \\operatorname{det}(-M)$$</p>\n\n<p>$$\\operatorname{det}(M) = (-1)^3 \\operatorname{det}(M)$$</p>\n<p>$$\\operatorname{det}(M) = -\\operatorname{det}(M)$$</p>\n<p>$$2 \\operatorname{det}(M) = 0 \\implies \\operatorname{det}(M) = 0$$</p>\n\n\n<p>$$\\operatorname{det}(B^{100}) = 0$$</p>\n\n<p>$$(\\operatorname{det}(B))^{100} = 0$$</p>\n\n<p>$$\\operatorname{det}(B) = 0$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना $A$ तथा $B$, कोटि 3 के दो वर्ग आव्यूह हैं जो $A^2+B^{100}=\\left(A^T\\right)^2$ को संतुष्ट करते हैं। तब $\\operatorname{det} (B)$ ____ के बराबर है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "transpose-of-a-matrix",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Types of Matrices, Transpose of a Matrix, Symmetric & Skew Symmetric Matrices, Trace of a Matrix",
+    "timeAllotted": 2160000,
+    "title": "Matrices Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mobg1hl5",
+    "defaultLanguage": "en",
+    "description": "Types of Matrices, Transpose of a Matrix, Symmetric & Skew Symmetric Matrices, Trace of a Matrix",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-19T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Types of Matrices, Transpose of a Matrix, Symmetric & Skew Symmetric Matrices, Trace of a Matrix",
+    "timeAllotted": 2160000,
+    "title": "Matrices Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Mathematics",
+    "_section": "Matrices"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddd8c03b9dcaf1afed00",
+  "topicId": "66a0dddbc03b9dcaf1afed11",
+  "title": "T-Ratios of Multiple & sub multiple angles",
+  "concepts": [
+    {
+      "title": "Trigonometric ratios of multiple angles",
+      "conceptBody": "<h3><strong>Trigonometric Ratio of multiple angles&nbsp;</strong></h3><p>$\\sin 2A=2\\sin A\\cos A$</p><p>$\\begin{align} &amp; \\cos 2A={{\\cos }^{2}}A-{{\\sin }^{2}}A \\\\ &amp; \\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,=2{{\\cos }^{2}}A-1 \\\\ &amp; \\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,=1-2{{\\sin }^{2}}A \\\\ \\end{align}$</p><p>$\\tan \\,2A=\\frac{2\\tan A}{1-{{\\tan }^{2}}A}$</p><p>$\\sin \\,3A=2\\sin A-4{{\\sin }^{3}}A$</p><p>$\\cos 3A=4{{\\cos }^{3}}A-3\\cos A$</p><p>$\\text{tan}\\,\\text{3A}=\\frac{3\\text{tanA}\\,\\text{-}\\,\\text{ta}{{\\text{n}}^{3}}A}{1-3\\text{ta}{{\\text{n}}^{2}}\\text{A}}$</p>",
+      "position": 0,
+      "qcConcept": "66a0dddbc03b9dcaf1afed12"
+    },
+    {
+      "title": "Formulas related to half angles",
+      "conceptBody": "<h3><strong>Some formulas related to half angles&nbsp;</strong></h3><ul><li>$\\frac{1-\\cos \\theta }{\\sin \\theta }=\\tan \\frac{\\theta }{2}$</li><li>$\\frac{1+\\cos \\theta }{\\sin \\theta }=\\cot \\frac{\\theta }{2}$</li><li>$\\frac{1-\\cos \\theta }{1+\\cos \\theta }={{\\tan }^{2}}\\frac{\\theta }{2}$</li><li>$\\frac{1+\\cos \\theta }{1-\\cos \\theta }={{\\cot }^{2}}\\frac{\\theta }{2}$ $\\cdot $</li></ul>",
+      "position": 1,
+      "qcConcept": "66a0dddcc03b9dcaf1afed13"
+    },
+    {
+      "title": "mixed properties",
+      "conceptBody": "<h3><strong>Important deductions and formulas</strong></h3><p>Sometimes even after remembering all these above formulas we are not able to recognize</p><p>them in questions. So look into these formulas also</p><p>Conversion of squares &amp; cubes into multiple angles :</p><ul><li>$\\text{si}{{\\text{n}}^{2}}\\text{ }\\!\\!~\\!\\!\\text{ A}=\\frac{1}{2}\\left( 1-\\text{cos}2\\text{ }\\!\\!~\\!\\!\\text{ A} \\right)$</li><li>${{\\cos }^{2}}\\text{A}=\\frac{1}{2}\\left( 1+\\text{cos}2\\text{A} \\right)$</li><li>$\\text{si}{{\\text{n}}^{3}}\\text{A}=\\frac{1}{4}\\left( 3\\sin A-\\sin 3\\text{A} \\right)$</li><li>${{\\cos }^{3}}\\text{A}=\\frac{1}{4}\\left( \\cos 3A-3\\text{cosA} \\right)$</li></ul><p><strong>Other formulas&nbsp;</strong></p><p>$\\begin{array}{*{35}{r}} {} &amp; \\text{sin}A=\\frac{2\\text{tan}A/2}{1+\\text{ta}{{\\text{n}}^{2}}A/2} \\\\ {} &amp; \\text{cos}A=\\frac{1-\\text{ta}{{\\text{n}}^{2}}A/2}{1+\\text{ta}{{\\text{n}}^{2}}A/2} \\\\ \\end{array}$</p>",
+      "position": 2,
+      "qcConcept": "66a0dddcc03b9dcaf1afed14"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f6e2d384bfb4a53847b",
+      "title": "If $\\cos 3 \\theta=\\alpha \\cos \\theta+\\beta \\cos ^3 \\theta$, then $(\\alpha, \\beta)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a53847c",
+      "title": "$(\\sec 2 A+1) \\sec ^2 A=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a53847d",
+      "title": "If $\\tan A=\\frac{1}{2}$, then $\\tan 3 A=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a53847e",
+      "title": "$1-2 \\sin ^2\\left(\\frac{\\pi}{4}+\\theta\\right)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a53847f",
+      "title": "If $\\cos A=\\frac{\\sqrt{3}}{2}$, then $\\tan 3 A=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538480",
+      "title": "If $\\cos 2 B=\\frac{\\cos (A+C)}{\\cos (A-C)}$, then $\\tan A, \\tan B, \\tan C$ are in",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538481",
+      "title": "$\\frac{\\sin 2 A}{1+\\cos 2 A} \\cdot \\frac{\\cos A}{1+\\cos A}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538482",
+      "title": "$\\sqrt{2+\\sqrt{2+2 \\cos 4 \\theta}}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538483",
+      "title": "If $\\sec \\theta=1 \\frac{1}{4}$, then $\\tan \\frac{\\theta}{2}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538484",
+      "title": "$\\frac{1}{\\tan 3 A-\\tan A}-\\frac{1}{\\cot 3 A-\\cot A}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538485",
+      "title": "The value of $\\tan 7 \\frac{1}{2}^{\\circ}$. is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd97c03b9dcaf1afebc2",
+  "topicId": "66a0dd9ec03b9dcaf1afebe6",
+  "title": "Locus",
+  "concepts": [
+    {
+      "title": "Properties of pole and polar",
+      "conceptBody": "<h3><strong>Pole and polar</strong></h3><p>If through a point $\\text{P}$ (within or outside a Parabola) there be drawn any straight line to meet the parabola in $Q\\And R$, then the locus of point of intersection of the tangents at $Q$ &amp; $R$ is called the Polar of P; also P is called the Pole of the Polar.</p><p>The polar of a point $\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}} \\right)$ with respect to the parabola ${{\\text{y}}^{2}}=4\\text{ax}$ is</p><p>$\\text{y}{{\\text{y}}_{1}}=2\\text{a}\\left( \\text{x}+{{\\text{x}}_{1}} \\right)$</p><p><strong>Note :&nbsp;</strong></p><ul><li>When the point $\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}} \\right)$ lies outside the parabola the equation to its polar is the same as the equation to the chord of contact of tangents drawn at $\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}} \\right)$.</li><li>When $\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}} \\right)$ is on the parabola the polar is the same as the tangent at the point.</li></ul><p><strong>If the polar of a point $\\text{P}$ passes through the point $\\text{T}$, then the polar of $\\text{T}$ goes through P.&nbsp;</strong></p><p>Let $\\text{P}$ be the point $\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}} \\right)$ and $\\text{T}$ the point $\\left( \\text{h},\\text{k} \\right)$.</p><p>The polar of $\\text{P}$ is $\\text{y}{{\\text{y}}_{1}}=2\\text{a}\\left( \\text{x}+{{\\text{x}}_{1}} \\right)\\text{. }\\!\\!~\\!\\!\\text{ }$</p><p>Since, it passes, through $\\text{T}$, we have</p><p>${{\\text{y}}_{1}}\\text{k}=2\\text{a}\\left( {{\\text{x}}_{1}}+\\text{h} \\right)$</p><p>The polar of $\\text{T}$ is, $\\text{yk}=2\\text{a}\\left( \\text{x}+\\text{h} \\right)\\text{. }\\!\\!~\\!\\!\\text{ }$</p><p>Since, (1) is true, this equation is satisfied by the coordinates ${{x}_{1}}$ and ${{y}_{1}}$.</p><p>Hence, the proposition.</p><p><strong>Cor. : </strong>The point of intersection, $\\text{T}$, of the polars of two points, $\\text{P}$ and $\\text{Q}$, is the pole of the line $\\text{PQ}$.</p><p><strong>To find the pole of a given straight line with respect to the parabola.&nbsp;</strong></p><p>Let the given straight line be</p><p>$\\text{Ax}+\\text{By}+\\text{C}=0$</p><p>If its pole be the point $\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}} \\right)$, it must be the same straight line as,</p><p>$\\text{y}{{\\text{y}}_{1}}=2\\text{a}\\left( \\text{x}+{{\\text{x}}_{1}} \\right)$</p><p>i.e., $2ax-y{{y}_{1}}+2a{{x}_{1}}=0$</p><p>Since, these straight lines are the same, we have</p><p>$\\frac{2\\text{a}}{\\text{A}}=\\frac{-{{\\text{y}}_{1}}}{\\text{ }\\!\\!~\\!\\!\\text{ B}}=\\frac{2\\text{a}{{\\text{x}}_{1}}}{\\text{C}}$</p><p>i.e., ${{\\text{x}}_{1}}=\\frac{\\text{C}}{\\text{A}}\\text{ }\\!\\!~\\!\\!\\text{ and }\\!\\!~\\!\\!\\text{ }{{\\text{y}}_{1}}=-\\frac{2\\text{Ba}}{\\text{A}}$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd9ec03b9dcaf1afebe7"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f662d384bfb4a53829d",
+      "title": "$P Q$ is a double ordinate of the parabola $y^2=4 a x$. The locus of the points of trisection of $P Q$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f672d384bfb4a53829e",
+      "title": "Locus of the poles of focal chords of a parabola is of parabola",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f672d384bfb4a53829f",
+      "title": "The locus of a foot of perpendicular drawn to the tangent of parabola $y^2=4 a x$ from focus, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f672d384bfb4a5382a0",
+      "title": "The locus of the point of intersection of the perpendicular tangents to the parabola $x^2=4 a y$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f672d384bfb4a5382a1",
+      "title": "The locus of the middle points of the chords of the parabola $y^2=4 a x$ which passes through the origin",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

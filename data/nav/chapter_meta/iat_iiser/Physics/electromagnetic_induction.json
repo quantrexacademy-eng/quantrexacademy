@@ -1,0 +1,30 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff47378e1624ea7b6991",
+  "subject": "Physics",
+  "chapter": "Electromagnetic Induction",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff83378e1624ea7b6c6b",
+      "title": "Magnetic Flux, Faraday's and Lenz law",
+      "count": 4,
+      "questionIds": [
+        "6a4521868c20d3b91d64f98b",
+        "67fdff70378e1624ea7b6b7d",
+        "67fdff5e378e1624ea7b6abb",
+        "67fdff47378e1624ea7b698f"
+      ]
+    },
+    {
+      "id": "68e7a694ce75e72648a45eaf",
+      "title": "Induced Electric Field",
+      "count": 1,
+      "questionIds": [
+        "68e7a681ce75e72648a45e8a"
+      ]
+    }
+  ]
+}

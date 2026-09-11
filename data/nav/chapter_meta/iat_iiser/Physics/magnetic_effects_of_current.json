@@ -1,0 +1,44 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff4f378e1624ea7b6a03",
+  "subject": "Physics",
+  "chapter": "Magnetic Effects of Current",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff87378e1624ea7b6ca9",
+      "title": "Magnetic Field",
+      "count": 1,
+      "questionIds": [
+        "67fdff4f378e1624ea7b6a01"
+      ]
+    },
+    {
+      "id": "67fdff88378e1624ea7b6cab",
+      "title": "Motion of Charged Particle in Magnetic Field",
+      "count": 2,
+      "questionIds": [
+        "68e7a681ce75e72648a45e89",
+        "67fdff65378e1624ea7b6af6"
+      ]
+    },
+    {
+      "id": "67fdff88378e1624ea7b6caa",
+      "title": "Force and Torque on Current Carrying Conductor",
+      "count": 1,
+      "questionIds": [
+        "67fdff56378e1624ea7b6a63"
+      ]
+    },
+    {
+      "id": "67fdff88378e1624ea7b6cac",
+      "title": "Magnetic Moment",
+      "count": 1,
+      "questionIds": [
+        "67fdff75378e1624ea7b6bbd"
+      ]
+    }
+  ]
+}

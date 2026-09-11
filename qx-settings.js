@@ -6,6 +6,7 @@
 (function (global) {
   "use strict";
 
+  var PARITY = "qxeg1";
   var PREF = {
     push: "qx_pref_push_notif",
     email: "qx_pref_email_notif",
@@ -117,7 +118,7 @@
     var css = document.createElement("style");
     css.id = "qxSettingsCss";
     css.textContent = [
-      ".qx-settings-page{max-width:560px;margin:0 auto;padding:12px 14px 96px}",
+      ".qx-settings-page{max-width:560px;margin:0 auto;padding:12px 14px 96px;background:var(--eg-bg,#f1f5f9)}",".qx-settings-page .qx-set-hero{background:linear-gradient(135deg,#1e40af,#2563eb 70%,#f97316);color:#fff;border-radius:16px;padding:14px 16px;margin:0 0 14px}",".qx-settings-page .qx-set-hero strong{display:block;font-size:16px}",".qx-settings-page .qx-set-hero span{font-size:12px;opacity:.9}",
       ".qx-settings-page h1{font-family:Kanit,sans-serif;font-size:24px;margin:4px 0 6px}",
       ".qx-settings-page .qx-set-sub{color:var(--gray,#64748b);font-size:13px;margin:0 0 16px;line-height:1.45}",
       ".qx-set-card{background:var(--card,#fff);border:1px solid var(--border,#e2e8f0);border-radius:14px;overflow:hidden;margin-bottom:14px}",

@@ -1,0 +1,41 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b34d4b564dfab4f94cc",
+  "chapterId": "66d5857ca75f05ee8564f7e5",
+  "subject": "Physics",
+  "chapter": "Magnetic Properties of Matter",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d586c5a75f05ee85650485",
+      "title": "Magnetism and Properties of Magnet",
+      "count": 3,
+      "questionIds": [
+        "66d58631a75f05ee8564fe6f",
+        "66d58622a75f05ee8564fde8",
+        "66d58610a75f05ee8564fd3f"
+      ]
+    },
+    {
+      "id": "66d586c5a75f05ee85650484",
+      "title": "Earths magnetic field",
+      "count": 1,
+      "questionIds": [
+        "66d585fba75f05ee8564fc7f"
+      ]
+    },
+    {
+      "id": "66d586c5a75f05ee85650483",
+      "title": "Magnetic Materials and their Properties",
+      "count": 5,
+      "questionIds": [
+        "66d5865da75f05ee8565000e",
+        "66d5865ca75f05ee85650001",
+        "66d585b6a75f05ee8564f9fd",
+        "66d58590a75f05ee8564f89e",
+        "66d5857ca75f05ee8564f7e3"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+﻿============================================================
+  quantrexacademy.com — Firebase Hosting DNS (GoDaddy)
+  Updated: 2026-09-09 — Vercel free limit exhausted; move to Firebase
+============================================================
+
+Firebase project: quantrexacademy-app
+Live (already deployed, same website UI):
+  https://quantrexacademy-app.web.app
+Preview:
+  https://quantrexacademy-app--preview-kcq9trpr.web.app
+
+Custom domains ADDED in Firebase (waiting on DNS):
+  quantrexacademy.com
+  www.quantrexacademy.com
+
+GO DADDY DNS — do this now
+--------------------------
+1. Open: https://dcc.godaddy.com/control/portfolio
+2. Click: quantrexacademy.com → DNS / Manage DNS
+3. Turn OFF Website Builder / Forwarding if ON
+4. Change records:
+
+REMOVE (Vercel):
+  Type    Name    Value
+  ----    ----    -----
+  A       @       216.198.79.1   (and any other Vercel A for @)
+  CNAME   www     fdee2abfb33bf86b.vercel-dns-017.com
+                  (or cname.vercel-dns.com)
+
+ADD (Firebase):
+  Type    Name    Value
+  ----    ----    -----
+  A       @       199.36.158.100
+  TXT     @       hosting-site=quantrexacademy-app
+  CNAME   www     quantrexacademy-app.web.app
+
+Keep existing TXT for Google site verification if present.
+You may keep the existing Vercel verify TXT if still listed; Firebase asked to keep:
+  vc-domain-verify=www.quantrexacademy.com,d499a180e87f670af5a3
+(only if it already exists — do not invent)
+
+5. Save. Wait 10–60 minutes (sometimes up to a few hours).
+6. SSL will auto-issue in Firebase once ownership verifies.
+
+Firebase Auth authorized domains
+--------------------------------
+In console also ensure these are listed:
+  quantrexacademy.com
+  www.quantrexacademy.com
+  quantrexacademy-app.web.app
+
+Rollback
+--------
+Keep Vercel project ~7 days. Do not delete yet.
+Until DNS flips, site still reachable at:
+  https://quantrexacademy-app.web.app
+

@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mpe5i734",
+  "title": "Periodic Table & Periodicity Test - 5 (Topic Test)",
+  "type": "topic",
+  "section": "Periodic Table & Periodicity",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-08-09T13:30:00.000Z",
+  "status": "ok",
+  "analysisId": "65af6edd-2da4-4094-a0ca-b0e7077d558b",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61mpe5i734",
+    "defaultLanguage": "en",
+    "description": "Electronegativity, Nature of Oxide",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-09T13:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msj5whi6",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The acidic, basic and amphoteric oxides, respectively, are</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Na<sub>2</sub>O, SO<sub>3</sub>, Al<sub>2</sub>O<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Cl<sub>2</sub>O, CaO, P<sub>4</sub>O<sub>10</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>MgO, Cl<sub>2</sub>O, Al<sub>2</sub>O<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>N<sub>2</sub>O<sub>3</sub>, Li<sub>2</sub>O, Al<sub>2</sub>O<sub>3</sub></p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<ol>\n<li><p><strong>Non-metal oxides</strong> are generally <strong>acidic</strong> in nature.</p></li>\n<li><p><strong>Metal oxides</strong> (especially of s-block elements like alkali and alkaline earth metals) are generally <strong>basic</strong> in nature.</p></li>\n<li><p>Some metal oxides (like those of Al, Zn, Pb, Sn) show both acidic and basic characteristics and are called <strong>amphoteric</strong> oxides.</p></li>\n</ol>\n<ul>\n<li><p><strong>Option A ($Na_2O$, $SO_3$, $Al_2O_3$):</strong> Basic, Acidic, Amphoteric. (Incorrect order)</p></li>\n<li><p><strong>Option B ($Cl_2O$, $CaO$, $P_4O_{10}$):</strong> Acidic, Basic, Acidic. (Incorrect order)</p></li>\n<li><p><strong>Option C ($MgO$, $Cl_2O$, $Al_2O_3$):</strong> Basic, Acidic, Amphoteric. (Incorrect order)</p></li>\n<li><p><strong>Option D ($N_2O_3$, $Li_2O$, $Al_2O_3$):</strong></p></li>\n<li><p><strong>$N_2O_3$ (Dinitrogen trioxide):</strong> It is a non-metal oxide and dissolves in water to give nitrous acid ($HNO_2$). Thus, it is <strong>acidic</strong>.</p></li>\n<li><p><strong>$Li_2O$ (Lithium oxide):</strong> It is an alkali metal oxide and dissolves in water to give a strong base, lithium hydroxide ($LiOH$). Thus, it is <strong>basic</strong>.</p></li>\n<li><p><strong>$Al_2O_3$ (Aluminium oxide):</strong> It reacts with both acids and bases. Thus, it is <strong>amphoteric</strong>.</p></li>\n</ul>\n<p>Therefore, Option D provides the correct sequence of acidic, basic, and amphoteric oxides respectively.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>क्रमशः अम्लीय, क्षारीय और उभयधर्मी ऑक्साइड हैं:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Na<sub>2</sub>O, SO<sub>3</sub>, Al<sub>2</sub>O<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Cl<sub>2</sub>O, CaO, P<sub>4</sub>O<sub>10</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>MgO, Cl<sub>2</sub>O, Al<sub>2</sub>O<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>N<sub>2</sub>O<sub>3</sub>, Li<sub>2</sub>O, Al<sub>2</sub>O<sub>3</sub></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nature-of-oxide",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mslqklbn",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Amongst the following statements, which is correct?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Electronegativity of sulphur is greater than that of oxygen.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Electron affinity of oxygen is smaller than that of sulphur.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Electron gain enthalpy of fluorine is most negative.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Electron gain enthalpy of chlorine is most positive.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<ul>\n<li><p><strong>Option A is Incorrect:</strong> Electronegativity decreases as we move down a group. Oxygen (Group 16, Period 2) is smaller and has a higher effective nuclear charge relative to its size compared to Sulphur (Period 3), making Oxygen more electronegative than Sulphur.</p></li>\n<li><p><strong>Option B is Correct:</strong> This is a classic exception in periodic trends. The electron affinity (or electron gain enthalpy) of oxygen is less negative (smaller in magnitude) than that of sulphur. This happens because the oxygen atom is very small, and adding an electron to the already crowded 2p orbital causes significant electron-electron repulsion. Sulphur, being larger with 3p orbitals, can accommodate the incoming electron more easily with less repulsion.</p></li>\n<li><p><strong>Option C is Incorrect:</strong> Similar to the Oxygen vs. Sulphur trend, Fluorine has a less negative electron gain enthalpy compared to Chlorine due to the extremely small size of the fluorine atom and high inter-electronic repulsions in its compact 2p subshell.</p></li>\n<li><p><strong>Option D is Incorrect:</strong> Chlorine actually has the <strong>most negative</strong> electron gain enthalpy in the entire periodic table, not the most positive.</p></li>\n</ul>\n<p>Therefore, the correct choice is:</p>\n<p><strong>Option B: Electron affinity of oxygen is smaller than that of sulphur.</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित कथनों में से कौन सा सही है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>सल्फर की विद्युतऋणात्मकता ऑक्सीजन की तुलना में अधिक होती है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>ऑक्सीजन की इलेक्ट्रॉन बंधुता सल्फर की तुलना में कम होती है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>फ्लोरीन की इलेक्ट्रॉन लब्धि एन्थैल्पी सर्वाधिक ऋणात्मक होती है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>क्लोरीन की इलेक्ट्रॉन लब्धि एन्थैल्पी सर्वाधिक धनात्मक होती है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electronegativity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mslqpllq",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which given order is wrong according to given property :-</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\mathrm{K_2O} > \\mathrm{CaO}$ basic nature</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\mathrm{NH_3} > \\mathrm{H_2O}$ basic nature</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\mathrm{BH_3} > \\mathrm{NH_3}$ basic nature</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\mathrm{KH} > \\mathrm{NaH}$ basic nature</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<ul>\n<li><p><strong>Option A ($K_2O > CaO$ basic nature):</strong> This order is <strong>correct</strong>. Potassium (K) is an alkali metal (Group 1) and Calcium (Ca) is an alkaline earth metal (Group 2). Alkali metals are more electropositive than alkaline earth metals, making their oxides more strongly basic.</p></li>\n<li><p><strong>Option B ($NH_3 > H_2O$ basic nature):</strong> This order is <strong>correct</strong>. Nitrogen is less electronegative than Oxygen. Because of this, the lone pair of electrons on the Nitrogen atom in Ammonia ($NH_3$) is more easily donated than the lone pairs on Oxygen in water ($H_2O$). This makes Ammonia a stronger Lewis base.</p></li>\n<li><p><strong>Option C ($BH_3 > NH_3$ basic nature):</strong> This order is <strong>wrong</strong>. Borane ($BH_3$) is an electron-deficient molecule (the central boron atom has an incomplete octet) and therefore acts as a Lewis acid (electron pair acceptor). In contrast, Ammonia ($NH_3$) has a lone pair of electrons and acts as a Lewis base (electron pair donor). Therefore, $NH_3$ is much more basic than $BH_3$.</p></li>\n<li><p><strong>Option D ($KH > NaH$ basic nature):</strong> This order is <strong>correct</strong>. As you move down Group 1 from Sodium (Na) to Potassium (K), electropositivity and atomic size increase. The larger size of the $K^+$ ion makes the ionic bond weaker, allowing the hydride ion ($H^-$) to be more readily available to act as a base.</p></li>\n</ul>\n<p>Therefore, the wrong order is <strong>Option C</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दिए गए गुण के अनुसार कौन सा क्रम गलत है :-</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\mathrm{K_2O} > \\mathrm{CaO}$ क्षारीय प्रकृति</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\mathrm{NH_3} > \\mathrm{H_2O}$ क्षारीय प्रकृति</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\mathrm{BH_3} > \\mathrm{NH_3}$ क्षारीय प्रकृति</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\mathrm{KH} > \\mathrm{NaH}$ क्षारीय प्रकृति</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electronegativity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mslqviwx",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The pair of amphoteric hydroxide is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Al(OH)<sub>3</sub>, LiOH</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Be(OH)<sub>2</sub>, Mg(OH)<sub>2</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>B(OH)<sub>3</sub>, Be(OH)<sub>2</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Be(OH)<sub>2</sub>, Zn(OH)<sub>2</sub></p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<ul>\n\n<li><p><strong>Option A [Al(OH)<sub>3</sub>, LiOH]:</strong> Incorrect. While Aluminum hydroxide [Al(OH)3] is amphoteric, Lithium hydroxide (LiOH) is a strong base (alkali metal hydroxide).</p></li>\n\n<li><p><strong>Option B [Be(OH)<sub>2</sub>, Mg(OH)<sub>2</sub>]:</strong> Incorrect. Beryllium hydroxide [Be(OH)2] is amphoteric, but Magnesium hydroxide [Mg(OH)2] is basic. Moving down the alkaline earth metals (Group 2), the basic character of hydroxides increases.</p></li>\n\n<li><p><strong>Option C [B(OH)<sub>3</sub>, Be(OH)<sub>2</sub>]:</strong> Incorrect. B(OH)3 is actually orthoboric acid (a weak monobasic Lewis acid), not amphoteric. Be(OH)2 is amphoteric.</p></li>\n\n<li><p><strong>Option D [Be(OH)<sub>2</sub>, Zn(OH)<sub>2</sub>]:</strong> <strong>Correct.</strong> Both Beryllium (Be) and Zinc (Zn) form amphoteric hydroxides, meaning they can react with both acids and bases to form salts.</p></li>\n\n</ul>\n<p>Therefore, the correct choice is:</p>\n<p><strong>Option D: Be(OH)<sub>2</sub>, Zn(OH)<sub>2</sub></strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>उभयधर्मी हाइड्रॉक्साइड का युग्म है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Al(OH)<sub>3</sub>, LiOH</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Be(OH)<sub>2</sub>, Mg(OH)<sub>2</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>B(OH)<sub>3</sub>, Be(OH)<sub>2</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Be(OH)<sub>2</sub>, Zn(OH)<sub>2</sub></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nature-of-oxide",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mslr6y6h",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In the compound <b>M — O — H</b>, the <b>M — O</b> bond will be broken if :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>&#x394; (E.N.) of <b>M</b> and <b>O</b> &lt; &#x394; (E.N.) of <b>O</b> and <b>H</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>&#x394; (E.N.) of <b>M</b> and <b>O</b> = &#x394; (E.N.) of <b>O</b> and <b>H</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>&#x394; (E.N.) of <b>M</b> and <b>O</b> &gt; &#x394; (E.N.) of <b>O</b> and <b>H</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Cannot be predicated according &#x394; (E.N.) data</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "\n<p>In a compound with the general formula $M - O - H$, the cleavage of bonds depends on the polarity of the $M - O$ and $O - H$ bonds. The polarity is determined by the electronegativity difference, $\\Delta (E.N.)$, between the bonded atoms. The bond with the larger electronegativity difference is more polar (has more ionic character) and will break more easily.</p>\n<ul>\n<li><p><strong>For the $M - O$ bond to break:</strong> The compound must act as a base, dissociating into $M^+$ and $OH^-$. This happens when the $M - O$ bond is more polar than the $O - H$ bond. Therefore, the electronegativity difference between $M$ and $O$ must be greater than the electronegativity difference between $O$ and $H$.</p></li>\n<li><p>Condition: $\\Delta (E.N.)$ of $M$ and $O$ &gt; $\\Delta (E.N.)$ of $O$ and $H$</p></li>\n<li><p><strong>For the $O - H$ bond to break:</strong> The compound must act as an acid, dissociating into $MO^-$ and $H^+$. This occurs when the $O - H$ bond is more polar than the $M - O$ bond (e.g., when $M$ is a highly electronegative non-metal like Chlorine in $Cl - O - H$).</p></li>\n<li><p>Condition: $\\Delta (E.N.)$ of $M$ and $O$ &lt; $\\Delta (E.N.)$ of $O$ and $H$</p></li>\n</ul>\n<p>Since the question asks for the condition where the <strong>$M - O$ bond</strong> will be broken, the correct choice is:</p>\n<p><strong>Option C: $\\Delta (E.N.)$ of $M$ and $O$ > $\\Delta (E.N.)$ of $O$ and $H$</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यौगिक <b>M — O — H</b> में, <b>M — O</b> बंध टूट जाएगा यदि :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>M</b> और <b>O</b> का &#x394; (E.N.) &lt; <b>O</b> और <b>H</b> का &#x394; (E.N.)</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>M</b> और <b>O</b> का &#x394; (E.N.) = <b>O</b> और <b>H</b> का &#x394; (E.N.)</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>M</b> और <b>O</b> का &#x394; (E.N.) &gt; <b>O</b> और <b>H</b> का &#x394; (E.N.)</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>&#x394; (E.N.) डेटा के आधार पर भविष्यवाणी नहीं की जा सकती है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electronegativity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mslrzvrg",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The electronegativity of the following elements increases in the order :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>C &lt; N &lt; Si &lt; P</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Si &lt; P &lt; C &lt; N</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>N &lt; C &lt; P &lt; Si</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>C &lt; Si &lt; N &lt; P</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p><strong>General Trends in Electronegativity:</strong></p>\n<ol>\n<li><strong>Across a period (left to right):</strong> Electronegativity increases as the effective nuclear charge increases and atomic radius decreases.</li>\n</ol>\n<ul>\n<li><p>Therefore, in Period 2: <strong>C < N</strong></p></li>\n<li><p>Therefore, in Period 3: <strong>Si < P</strong></p></li>\n</ul>\n<ol>\n<li><strong>Down a group (top to bottom):</strong> Electronegativity decreases as the atomic size increases and shielding effect increases.</li>\n</ol>\n<ul>\n<li><p>Therefore, in Group 14: <strong>C > Si</strong></p></li>\n<li><p>Therefore, in Group 15: <strong>N > P</strong></p></li>\n</ul>\n<p>To accurately arrange all four elements (C, N, Si, P) in increasing order, we can refer to their approximate Pauling electronegativity values given in the NCERT textbook:</p>\n<ul>\n<li><p><strong>Silicon (Si):</strong> ~1.8 (Lowest)</p></li>\n<li><p><strong>Phosphorus (P):</strong> ~2.1</p></li>\n<li><p><strong>Carbon (C):</strong> ~2.5</p></li>\n<li><p><strong>Nitrogen (N):</strong> ~3.0 (Highest)</p></li>\n</ul>\n<p>Arranging these values in increasing order gives:</p>\n<p><strong>Si (1.8) < P (2.1) < C (2.5) < N (3.0)</strong></p>\n<p>Therefore, the correct choice is:</p>\n<p><strong>Option B: Si < P < C < N</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित तत्वों की विद्युत ऋणात्मकता इस क्रम में बढ़ती है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>C &lt; N &lt; Si &lt; P</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Si &lt; P &lt; C &lt; N</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>N &lt; C &lt; P &lt; Si</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>C &lt; Si &lt; N &lt; P</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electronegativity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mslrlh2j",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the ionization enthalpy and electron gain enthalpy of an element are 275 and 86 kcal mol<sup>-1</sup> respectively, then the electronegativity of the element on the Pauling scale is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2.8</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.0</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>4.0</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>2.6</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The electronegativity of an element can be calculated using the <strong>Mulliken scale</strong>, which relates it to Ionization Enthalpy (IE) and Electron Affinity (EA).</p>\n<p>The Mulliken electronegativity ($X_M$) when values are in <strong>eV/atom</strong> is given by:</p>\n<p>$$X_M = \\frac{IE + EA}{2}$$</p>\n<p>The relationship between the Pauling scale ($X_P$) and the Mulliken scale ($X_M$) is approximately:</p>\n<p>$$X_P = \\frac{X_M}{2.8} = \\frac{IE + EA}{5.6} \\quad (\\text{where IE and EA are in eV/atom})$$</p>\n<ul>\n<li><p>$1 \\text{ eV/atom} \\approx 23.06 \\text{ kcal/mol}$</p></li>\n<li><p>$\\text{IE} = 275 \\text{ kcal/mol} = \\frac{275}{23.06} \\approx 11.925 \\text{ eV/atom}$</p></li>\n<li><p>$\\text{EA} = 86 \\text{ kcal/mol} = \\frac{86}{23.06} \\approx 3.73 \\text{ eV/atom}$</p></li>\n</ul>\n\n<ul>\n<li><p>$X_P = \\frac{11.925 + 3.73}{5.6}$</p></li>\n<li><p>$X_P = \\frac{15.655}{5.6}$</p></li>\n<li><p>$X_P \\approx 2.795$</p></li>\n</ul>\n<p>Rounding to one decimal place, the electronegativity on the Pauling scale is <strong>2.8</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि किसी तत्व की आयनन एन्थैल्पी और इलेक्ट्रॉन लब्धि एन्थैल्पी क्रमशः 275 और 86 kcal mol<sup>-1</sup> हैं, तो पॉलिंग पैमाने पर तत्व की विद्युत् ऋणात्मकता है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2.8</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.0</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>4.0</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>2.6</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electronegativity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mslscbkv",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>Among the following least and most polar bonds are respectively :–</b></p><p>(a) C – I &nbsp;&nbsp;&nbsp;&nbsp;(b) N – O &nbsp;&nbsp;&nbsp;&nbsp; (c) C – F &nbsp;&nbsp;&nbsp;&nbsp; (d) P – F</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>d and c</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>a and d</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>b and d</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>b and c</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The polarity of a covalent bond is directly proportional to the electronegativity difference ($\\Delta EN$) between the two bonded atoms. The greater the difference, the more polar the bond.</p>\n<p>Let's look at the approximate Pauling electronegativity values for these elements according to NCERT:</p>\n<ul>\n<li><p>Fluorine (F) $\\approx$ 4.0</p></li>\n<li><p>Oxygen (O) $\\approx$ 3.5</p></li>\n<li><p>Nitrogen (N) $\\approx$ 3.0</p></li>\n<li><p>Carbon (C) $\\approx$ 2.5</p></li>\n<li><p>Iodine (I) $\\approx$ 2.5</p></li>\n<li><p>Phosphorus (P) $\\approx$ 2.1</p></li>\n</ul>\n<p>Now, let's calculate the electronegativity difference ($\\Delta EN$) for each given bond:</p>\n<ul>\n<li><p><strong>(a) C – I:</strong> $\\Delta EN \\approx \\vert{}2.5 - 2.5\\vert{} = 0$ (Nearly non-polar)</p></li>\n<li><p><strong>(b) N – O:</strong> $\\Delta EN \\approx \\vert{}3.0 - 3.5\\vert{} = 0.5$</p></li>\n<li><p><strong>(c) C – F:</strong> $\\Delta EN \\approx \\vert{}2.5 - 4.0\\vert{} = 1.5$</p></li>\n<li><p><strong>(d) P – F:</strong> $\\Delta EN \\approx \\vert{}2.1 - 4.0\\vert{} = 1.9$ (Highly polar)</p></li>\n</ul>\n<p><strong>Conclusion:</strong></p>\n<ul>\n<li><p>The <strong>least polar</strong> bond is <strong>C – I</strong> (a) because it has the smallest electronegativity difference.</p></li>\n<li><p>The <strong>most polar</strong> bond is <strong>P – F</strong> (d) because it has the largest electronegativity difference.</p></li>\n</ul>\n<p>Therefore, the least and most polar bonds are respectively (a) and (d).</p>\n<p><strong>Correct Choice:</strong></p>\n<p><strong>Option B: a and d</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>निम्नलिखित में से क्रमशः सबसे कम और सबसे अधिक ध्रुवीय बंध हैं :–</b></p><p>(a) C – I &nbsp;&nbsp;&nbsp;&nbsp;(b) N – O &nbsp;&nbsp;&nbsp;&nbsp; (c) C – F &nbsp;&nbsp;&nbsp;&nbsp; (d) P – F</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>d और c</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>a और d</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>b और d</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>b और c</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electronegativity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mslsfji2",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Among the following oxides, which is least acidic?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Al<sub>2</sub>O<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>B<sub>2</sub>O<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>CO<sub>2</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>NO<sub>2</sub></p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The acidic character of oxides generally increases from left to right across a period as the non-metallic character of the elements increases.</p>\n<ul>\n<li><p><strong>$NO_2$ (Nitrogen dioxide):</strong> Nitrogen is a highly electronegative non-metal (Group 15), making its oxide strongly acidic (it forms nitric and nitrous acids in water).</p></li>\n<li><p><strong>$CO_2$ (Carbon dioxide):</strong> Carbon is a non-metal (Group 14), and its oxide is purely acidic (forming carbonic acid in water).</p></li>\n<li><p><strong>$B_2O_3$ (Boron trioxide):</strong> Boron is a metalloid/non-metal (Group 13), and its oxide is mildly acidic (forming boric acid).</p></li>\n<li><p><strong>$Al_2O_3$ (Aluminum oxide):</strong> Aluminum is a metal in Group 13. While oxides of metals are typically basic, $Al_2O_3$ is uniquely <strong>amphoteric</strong>, meaning it can react with both acids and bases.</p></li>\n</ul>\n<p>Because $Al_2O_3$ exhibits both basic and acidic properties—unlike the purely acidic oxides of Boron, Carbon, and Nitrogen—it possesses the weakest acidic character of the group.</p>\n<p>Therefore, the correct choice is:</p>\n<p><strong>Option A: $Al_2O_3$</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से कौन सा ऑक्साइड सबसे कम अम्लीय है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Al<sub>2</sub>O<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>B<sub>2</sub>O<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>CO<sub>2</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>NO<sub>2</sub></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nature-of-oxide",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mslsnjeg",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Nature of bond can be predicted on the basis of electronegativity of bonded atoms, greater difference in electronegativity $(X)$, more will be the polarity of bond, and polar bond are easily broken in polar solvent like water. For hydroxy acids $\\mathrm{X}_{\\mathrm{O}}$ - $\\mathrm{X}_{\\mathrm{A}}$ difference predict the nature of oxide formed by the element A .</p>\n<p>$\\left|\\mathrm{X}_{\\mathrm{O}}-\\mathrm{X}_{\\mathrm{A}}\\right|>\\left|\\mathrm{X}_{\\mathrm{O}}-\\mathrm{X}_{\\mathrm{H}}\\right|$ then A-O-H show basic nature $(\\mathrm{NaOH})$</p>\n<p>$\\left|\\mathrm{X}_{\\mathrm{O}}-\\mathrm{X}_{\\mathrm{A}}\\right|<\\left|\\mathrm{X}_{\\mathrm{O}}-\\mathrm{X}_{\\mathrm{H}}\\right|$ then A-O-H show acidic nature $(\\mathrm{H}-\\mathrm{O}-\\mathrm{Cl})$</p>\n<p>With the help of EN values $\\left[\\mathrm{EN}_{\\mathrm{A}}=1.8, \\mathrm{EN}_{\\mathrm{B}}=2.6, \\mathrm{EN}_{\\mathrm{C}}=1.6, \\mathrm{EN}_{\\mathrm{D}}=2.8\\right]$ answer the following questions for the compounds $\\mathrm{HAO}, \\mathrm{HBO}, \\mathrm{HCO}, \\mathrm{HDO}$.</p>\n<p>Compounds whose aqueous solution is acidic and order of their acidic strength</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>AOH, COH ; AOH &lt; COH</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>HDO, HBO ; HDO &gt; HBO</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>AOH, COH ; AOH &gt; COH</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>HDO, HBO ; HDO &lt; HBO</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For a hydroxy compound $X - O - H$, its acidic or basic nature depends on which bond breaks easier in an aqueous solution:</p>\n<ul>\n<li><p><strong>Basic Nature:</strong> If the $X - O$ bond is more polar than the $O - H$ bond, it breaks to release $OH^-$ ions. This happens when $\\vert{}EN_O - EN_X\\vert{} > \\vert{}EN_O - EN_H\\vert{}$.</p></li>\n<li><p><strong>Acidic Nature:</strong> If the $O - H$ bond is more polar than the $X - O$ bond, it breaks to release $H^+$ ions. This happens when $\\vert{}EN_O - EN_X\\vert{} < \\vert{}EN_O - EN_H\\vert{}$.</p></li>\n</ul>\n<p>To calculate these, we need the standard Pauling electronegativity values for Oxygen ($EN_O \\approx 3.5$) and Hydrogen ($EN_H \\approx 2.1$).</p>\n<ul>\n<li>Difference for $O - H$ bond = $\\vert{}3.5 - 2.1\\vert{} = \\mathbf{1.4}$</li>\n</ul>\n\n<p>Let's find the difference $\\vert{}EN_O - EN_X\\vert{}$ for each given element and compare it to 1.4:</p>\n<ul>\n<li><p><strong>For A ($EN_A = 1.8$):</strong> $\\vert{}3.5 - 1.8\\vert{} = \\mathbf{1.7}$. Since $1.7 > 1.4$, AOH is <strong>basic</strong>.</p></li>\n<li><p><strong>For B ($EN_B = 2.6$):</strong> $\\vert{}3.5 - 2.6\\vert{} = \\mathbf{0.9}$. Since $0.9 < 1.4$, HBO is <strong>acidic</strong>.</p></li>\n<li><p><strong>For C ($EN_C = 1.6$):</strong> $\\vert{}3.5 - 1.6\\vert{} = \\mathbf{1.9}$. Since $1.9 > 1.4$, HCO is <strong>basic</strong>.</p></li>\n<li><p><strong>For D ($EN_D = 2.8$):</strong> $\\vert{}3.5 - 2.8\\vert{} = \\mathbf{0.7}$. Since $0.7 < 1.4$, HDO is <strong>acidic</strong>.</p></li>\n</ul>\n<p>Therefore, the aqueous solutions of <strong>HBO</strong> and <strong>HDO</strong> are acidic.</p>\n\n<p>For oxyacids of elements in the same oxidation state, acidic strength increases with an increase in the electronegativity of the central atom. A more electronegative central atom pulls electron density away from the $O - H$ bond, weakening it and making it easier to release an $H^+$ ion.</p>\n<ul>\n<li><p>Since the electronegativity of $D$ (2.8) is greater than that of $B$ (2.6), <strong>HDO is a stronger acid than HBO</strong>.</p></li>\n<li><p>Order of acidic strength: <strong>HDO > HBO</strong></p></li>\n</ul>\n<p>Therefore, the correct choice is:</p>\n<p><strong>Option B: HDO, HBO ; HDO > HBO</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>बंध की प्रकृति का अनुमान बंधित परमाणुओं की विद्युत् ऋणात्मकता (electronegativity) के आधार पर लगाया जा सकता है, विद्युत् ऋणात्मकता $(X)$ में अंतर जितना अधिक होगा, बंध की ध्रुवीयता (polarity) उतनी ही अधिक होगी, और ध्रुवीय बंध जल जैसे ध्रुवीय विलायक में आसानी से टूट जाते हैं। हाइड्रॉक्सी अम्लों के लिए $\\mathrm{X}_{\\mathrm{O}}$ - $\\mathrm{X}_{\\mathrm{A}}$ का अंतर तत्व A द्वारा निर्मित ऑक्साइड की प्रकृति का अनुमान लगाता है।</p>\n<p>यदि $\\left|\\mathrm{X}_{\\mathrm{O}}-\\mathrm{X}_{\\mathrm{A}}\\right|>\\left|\\mathrm{X}_{\\mathrm{O}}-\\mathrm{X}_{\\mathrm{H}}\\right|$ तो A-O-H क्षारीय प्रकृति $(\\mathrm{NaOH})$ दर्शाता है</p>\n<p>यदि $\\left|\\mathrm{X}_{\\mathrm{O}}-\\mathrm{X}_{\\mathrm{A}}\\right|<\\left|\\mathrm{X}_{\\mathrm{O}}-\\mathrm{X}_{\\mathrm{H}}\\right|$ तो A-O-H अम्लीय प्रकृति $(\\mathrm{H}-\\mathrm{O}-\\mathrm{Cl})$ दर्शाता है</p>\n<p>EN मानों $\\left[\\mathrm{EN}_{\\mathrm{A}}=1.8, \\mathrm{EN}_{\\mathrm{B}}=2.6, \\mathrm{EN}_{\\mathrm{C}}=1.6, \\mathrm{EN}_{\\mathrm{D}}=2.8\\right]$ की सहायता से यौगिकों $\\mathrm{HAO}, \\mathrm{HBO}, \\mathrm{HCO}, \\mathrm{HDO}$ के लिए निम्नलिखित प्रश्नों के उत्तर दीजिए।</p>\n<p>वे यौगिक जिनका जलीय विलयन अम्लीय है और उनकी अम्लीय सामर्थ्य (acidic strength) का क्रम है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>AOH, COH ; AOH &lt; COH</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>HDO, HBO ; HDO &gt; HBO</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>AOH, COH ; AOH &gt; COH</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>HDO, HBO ; HDO &lt; HBO</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electronegativity",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msj2kptl",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "Total number of acidic oxides among $\\mathrm{N}_2 \\mathrm{O}_3, \\mathrm{NO}_2, \\mathrm{~N}_2 \\mathrm{O}, \\mathrm{Cl}_2 \\mathrm{O}_7, \\mathrm{SO}_2, \\mathrm{CO}, \\mathrm{CaO}, \\mathrm{Na}_2 \\mathrm{O}$ and NO is $\\_\\_\\_\\_$.",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>Oxides can be classified into acidic, basic, neutral, and amphoteric based on their nature. Generally, non-metal oxides are acidic (especially in higher oxidation states) or neutral, while metal oxides are basic.</p>\n<ul>\n<li><p><strong>$N_2O_3$</strong>: Non-metal oxide. It is <strong>acidic</strong>. (It is the anhydride of nitrous acid, $HNO_2$).</p></li>\n<li><p><strong>$NO_2$</strong>: Non-metal oxide. It is <strong>acidic</strong>. (It dissolves in water to give a mixture of nitric and nitrous acids).</p></li>\n<li><p><strong>$N_2O$</strong>: Non-metal oxide. According to NCERT, it is a <strong>neutral</strong> oxide.</p></li>\n<li><p><strong>$Cl_2O_7$</strong>: Non-metal oxide with a very high oxidation state (+7). It is highly <strong>acidic</strong>.</p></li>\n<li><p><strong>$SO_2$</strong>: Non-metal oxide. It is <strong>acidic</strong>. (It dissolves in water to form sulfurous acid, $H_2SO_3$).</p></li>\n<li><p><strong>$CO$</strong>: Non-metal oxide. According to NCERT, it is a <strong>neutral</strong> oxide.</p></li>\n<li><p><strong>$CaO$</strong>: Metal oxide (alkaline earth metal). It is <strong>basic</strong>.</p></li>\n<li><p><strong>$Na_2O$</strong>: Metal oxide (alkali metal). It is <strong>basic</strong>.</p></li>\n<li><p><strong>$NO$</strong>: Non-metal oxide. According to NCERT, it is a <strong>neutral</strong> oxide.</p></li>\n</ul>\n<p><strong>Summary:</strong></p>\n<ul>\n<li><p>Acidic oxides: $N_2O_3$, $NO_2$, $Cl_2O_7$, $SO_2$ (Total = 4)</p></li>\n<li><p>Neutral oxides: $N_2O$, $CO$, $NO$</p></li>\n<li><p>Basic oxides: $CaO$, $Na_2O$</p></li>\n</ul>\n<p>Therefore, the total number of acidic oxides is <strong>4</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "$\\mathrm{N}_2 \\mathrm{O}_3, \\mathrm{NO}_2, \\mathrm{~N}_2 \\mathrm{O}, \\mathrm{Cl}_2 \\mathrm{O}_7, \\mathrm{SO}_2, \\mathrm{CO}, \\mathrm{CaO}, \\mathrm{Na}_2 \\mathrm{O}$ और NO में से अम्लीय ऑक्साइडों की कुल संख्या $\\_\\_\\_\\_$ है।",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nature-of-oxide",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mslrxa3n",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of elements from the following having lower electronegativity than N are: $\\mathrm{Li}, \\mathrm{O}, \\mathrm{Na}, \\mathrm{Al}, \\mathrm{Si}, \\mathrm{F}, \\mathrm{S}, \\mathrm{H}, \\mathrm{Br}$</p>",
+                "options": [],
+                "answer": "7",
+                "explanation": "<p>The electronegativity of Nitrogen (N) on the Pauling scale is approximately <strong>3.0</strong>.</p>\n<p>Let's evaluate the approximate Pauling electronegativity values for the given elements to see which ones are lower than 3.0:</p>\n<ul>\n<li><p><strong>Li (Lithium):</strong> ~1.0 (Lower)</p></li>\n<li><p><strong>O (Oxygen):</strong> ~3.5 (Higher)</p></li>\n<li><p><strong>Na (Sodium):</strong> ~0.9 (Lower)</p></li>\n<li><p><strong>Al (Aluminum):</strong> ~1.5 (Lower)</p></li>\n<li><p><strong>Si (Silicon):</strong> ~1.8 (Lower)</p></li>\n<li><p><strong>F (Fluorine):</strong> ~4.0 (Higher)</p></li>\n<li><p><strong>S (Sulphur):</strong> ~2.5 (Lower)</p></li>\n<li><p><strong>H (Hydrogen):</strong> ~2.1 (Lower)</p></li>\n<li><p><strong>Br (Bromine):</strong> ~2.8 (Lower)</p></li>\n</ul>\n<p>The elements that have a lower electronegativity than Nitrogen are: <strong>Li, Na, Al, Si, S, H, and Br</strong>.</p>\n<p>Counting these up, there are exactly 7 elements.</p>\n<p><strong>Final Answer:</strong></p>\n<p><strong>7</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से उन तत्वों की संख्या जिनकी विद्युत ऋणात्मकता N से कम है, है: $\\mathrm{Li}, \\mathrm{O}, \\mathrm{Na}, \\mathrm{Al}, \\mathrm{Si}, \\mathrm{F}, \\mathrm{S}, \\mathrm{H}, \\mathrm{Br}$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electronegativity",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msls5rg2",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If in long form of Periodic table :</p>\n<p>(i) Number of electrons in outermost $p$-subshell of most electronegative element is '$x$'.</p>\n<p>(ii) Group number of element having maximum electron affinity is '$y$'.</p>\n<p>(iii) Number of electrons in outermost $p$-subshell of element having highest ionization energy is '$z$'.</p>\n<p>(iv) Number of electrons in outermost $s$-subshell of element strongest reducing agent is '$w$'.</p>\n<p>then determine value of $(y-x-z-3 w)$.</p>",
+                "options": [],
+                "answer": "9",
+                "explanation": "<ul>\n<li><strong>(i) Value of $x$:</strong></li>\n</ul>\n<p>The most electronegative element in the periodic table is <strong>Fluorine (F)</strong>.</p>\n<p>Its electronic configuration is $1s^2 2s^2 2p^5$.</p>\n<p>The number of electrons in its outermost $p$-subshell ($2p$) is 5.</p>\n<p>Therefore, <strong>$x = 5$</strong>.</p>\n<ul>\n<li><strong>(ii) Value of $y$:</strong></li>\n</ul>\n<p>The element with the maximum electron affinity (highest negative electron gain enthalpy) is <strong>Chlorine (Cl)</strong>.</p>\n<p>Chlorine belongs to the halogens, which are in Group 17 of the long form of the periodic table.</p>\n<p>Therefore, <strong>$y = 17$</strong>.</p>\n<ul>\n<li><strong>(iii) Value of $z$:</strong></li>\n</ul>\n<p>The element with the highest ionization energy in the entire periodic table is <strong>Helium (He)</strong>.</p>\n<p>Its electronic configuration is $1s^2$.</p>\n<p>Because Helium only has an $s$-subshell and lacks a $p$-subshell entirely, the number of electrons in its outermost $p$-subshell is 0.</p>\n<p>Therefore, <strong>$z = 0$</strong>.</p>\n<ul>\n<li><strong>(iv) Value of $w$:</strong></li>\n</ul>\n<p>The strongest reducing agent (particularly in an aqueous medium due to high hydration enthalpy) is <strong>Lithium (Li)</strong>. Even if considered in the gaseous state, the strongest reducing agent is <strong>Cesium (Cs)</strong>. Both are Group 1 alkali metals.</p>\n<p>Their outermost electronic configuration is $ns^1$ (e.g., $2s^1$ for Li, $6s^1$ for Cs).</p>\n<p>The number of electrons in their outermost $s$-subshell is 1.</p>\n<p>Therefore, <strong>$w = 1$</strong>.</p>\n<p><strong>Calculation:</strong></p>\n<p>Now, substitute these values into the given expression $(y - x - z - 3w)$:</p>\n<p>$$= 17 - 5 - 0 - 3(1)$$</p>\n<p>$$= 17 - 5 - 3$$</p>\n<p>$$= 9$$</p>\n<p><strong>Final Answer:</strong></p>\n<p>The value of $(y - x - z - 3w)$ is <strong>9</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि आवर्त सारणी के दीर्घ रूप में :</p><p>(i) सर्वाधिक विद्युत ऋणात्मक तत्व के बाह्यतम $p$-उपकोश में इलेक्ट्रॉनों की संख्या '$x$' है।</p><p>(ii) अधिकतम इलेक्ट्रॉन बंधुता वाले तत्व की वर्ग संख्या '$y$' है।</p><p>(iii) उच्चतम आयनन ऊर्जा वाले तत्व के बाह्यतम $p$-उपकोश में इलेक्ट्रॉनों की संख्या '$z$' है।</p><p>(iv) प्रबलतम अपचायक तत्व के बाह्यतम $s$-उपकोश में इलेक्ट्रॉनों की संख्या '$w$' है।</p><p>तो $(y-x-z-3 w)$ का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electronegativity",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msls90ky",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>How many of following are more electronegative than Be ?</p>\n<p>F, I, CI, S, H $\\&amp;$ Cs</p>",
+                "options": [],
+                "answer": "5",
+                "explanation": "<p>The electronegativity of <strong>Beryllium (Be)</strong> on the Pauling scale is approximately <strong>1.5</strong>.</p>\n<p>Let's evaluate the approximate Pauling electronegativity values for the given elements to see which ones are higher than 1.5:</p>\n<ul>\n<li><p><strong>F (Fluorine):</strong> ~4.0 (Higher)</p></li>\n<li><p><strong>I (Iodine):</strong> ~2.5 (Higher)</p></li>\n<li><p><strong>Cl (Chlorine):</strong> ~3.0 (Higher)</p></li>\n<li><p><strong>S (Sulphur):</strong> ~2.5 (Higher)</p></li>\n<li><p><strong>H (Hydrogen):</strong> ~2.1 (Higher)</p></li>\n<li><p><strong>Cs (Cesium):</strong> ~0.7 (Lower)</p></li>\n</ul>\n<p>The elements that have a higher electronegativity than Beryllium are: <strong>F, I, Cl, S, and H</strong>.</p>\n<p>Counting these up, there are exactly 5 elements.</p>\n<p><strong>Final Answer:</strong></p>\n<p><strong>5</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से कितने Be की तुलना में अधिक विद्युतऋणात्मक हैं?</p> <p>F, I, CI, S, H $\\&amp;$ Cs</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electronegativity",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mslsswxf",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Select total number of acidic compounds out of given below.</p>\n<p>$\\mathrm{CsOH}, \\mathrm{OC}(\\mathrm{OH})_2, \\mathrm{SO}_2(\\mathrm{OH})_2, \\mathrm{Sr}(\\mathrm{OH})_2, \\mathrm{Ca}(\\mathrm{OH})_2, \\mathrm{Ba}(\\mathrm{OH})_2, \\mathrm{BrOH}, \\mathrm{NaOH}, \\mathrm{O}_2 \\mathrm{NOH}$</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>The nature of a hydroxide depends on the electronegativity of the central atom. Generally, hydroxides of non-metals are acidic (oxyacids), while hydroxides of metals are basic.</p>\n\n<p><strong>Acidic Compounds (Non-metal hydroxides / Oxyacids):</strong></p>\n<ul>\n<li><p><strong>$OC(OH)_2$:</strong> This can be rewritten as <strong>$H_2CO_3$</strong> (Carbonic acid).</p></li>\n<li><p><strong>$SO_2(OH)_2$:</strong> This can be rewritten as <strong>$H_2SO_4$</strong> (Sulfuric acid).</p></li>\n<li><p><strong>$BrOH$:</strong> This is <strong>$HOBr$</strong> (Hypobromous acid).</p></li>\n<li><p><strong>$O_2NOH$:</strong> This can be rewritten as <strong>$HNO_3$</strong> (Nitric acid).</p></li>\n</ul>\n<p><strong>Basic Compounds (Metal hydroxides):</strong></p>\n<ul>\n<li><p><strong>$CsOH$</strong> (Cesium Hydroxide)</p></li>\n<li><p><strong>$Sr(OH)_2$</strong> (Strontium Hydroxide)</p></li>\n<li><p><strong>$Ca(OH)_2$</strong> (Calcium Hydroxide)</p></li>\n<li><p><strong>$Ba(OH)_2$</strong> (Barium Hydroxide)</p></li>\n<li><p><strong>$NaOH$</strong> (Sodium Hydroxide)</p></li>\n</ul>\n<p>There are <strong>4</strong> acidic compounds in the given list.</p>\n<p><strong>Final Answer:</strong></p>\n<p><strong>4</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>नीचे दिए गए यौगिकों में से अम्लीय यौगिकों की कुल संख्या का चयन कीजिए।</p><p>$\\mathrm{CsOH}, \\mathrm{OC}(\\mathrm{OH})_2, \\mathrm{SO}_2(\\mathrm{OH})_2, \\mathrm{Sr}(\\mathrm{OH})_2, \\mathrm{Ca}(\\mathrm{OH})_2, \\mathrm{Ba}(\\mathrm{OH})_2, \\mathrm{BrOH}, \\mathrm{NaOH}, \\mathrm{O}_2 \\mathrm{NOH}$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electronegativity",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Electronegativity, Nature of Oxide",
+    "timeAllotted": 2160000,
+    "title": "Periodic Table & Periodicity Test - 5 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mpe5i734",
+    "defaultLanguage": "en",
+    "description": "Electronegativity, Nature of Oxide",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-09T13:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Electronegativity, Nature of Oxide",
+    "timeAllotted": 2160000,
+    "title": "Periodic Table & Periodicity Test - 5 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Periodic Table & Periodicity"
+  }
+}

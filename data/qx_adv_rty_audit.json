@@ -1,0 +1,1325 @@
+{
+  "generatedAt": "2026-08-14T13:54:39.834Z",
+  "bank": "jee_advanced",
+  "totalQuestions": 2418,
+  "valid": 2415,
+  "warnings": 2,
+  "errors": 1,
+  "typeDistribution": {
+    "singleCorrect": 928,
+    "multipleCorrect": 638,
+    "numerical": 639,
+    "columnMatch": 213
+  },
+  "subjectDistribution": {
+    "Chemistry": 806,
+    "Mathematics": 806,
+    "Physics": 806
+  },
+  "figures": {
+    "totalImgRefs": 2666,
+    "proxyImgs": 0,
+    "marksImgs": 2628
+  },
+  "issueCounts": {
+    "emptyMatchTables": 0,
+    "multiTypeMismatch": 2,
+    "missingOptions": 0,
+    "shortStem": 1,
+    "duplicates": 200
+  },
+  "emptyMatchSampleIds": [],
+  "multiMismatchSampleIds": [
+    24767,
+    24856
+  ],
+  "duplicateSamples": [
+    {
+      "id": 24400,
+      "match": 24399
+    },
+    {
+      "id": 24407,
+      "match": 24405
+    },
+    {
+      "id": 24421,
+      "match": 24420
+    },
+    {
+      "id": 24422,
+      "match": 24420
+    },
+    {
+      "id": 24430,
+      "match": 24429
+    },
+    {
+      "id": 24431,
+      "match": 24429
+    },
+    {
+      "id": 24435,
+      "match": 24434
+    },
+    {
+      "id": 24436,
+      "match": 24434
+    },
+    {
+      "id": 24450,
+      "match": 24449
+    },
+    {
+      "id": 24455,
+      "match": 24419
+    },
+    {
+      "id": 24462,
+      "match": 24461
+    },
+    {
+      "id": 24466,
+      "match": 24427
+    },
+    {
+      "id": 24467,
+      "match": 24427
+    },
+    {
+      "id": 24476,
+      "match": 24393
+    },
+    {
+      "id": 24486,
+      "match": 24419
+    },
+    {
+      "id": 24497,
+      "match": 24419
+    },
+    {
+      "id": 24499,
+      "match": 24498
+    },
+    {
+      "id": 24500,
+      "match": 24498
+    },
+    {
+      "id": 24506,
+      "match": 24505
+    },
+    {
+      "id": 24507,
+      "match": 24505
+    }
+  ],
+  "errorSamples": [
+    {
+      "id": 25263,
+      "subject": "Mathematics",
+      "chapter": "Application of Derivatives",
+      "score": 60,
+      "issues": [
+        "EMPTY_OR_SHORT_STEM"
+      ]
+    }
+  ],
+  "chapterStats": [
+    {
+      "chapter": "Physics::Ray Optics",
+      "total": 71,
+      "valid": 71,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 27,
+        "multipleCorrect": 21,
+        "numerical": 17,
+        "columnMatch": 6
+      }
+    },
+    {
+      "chapter": "Mathematics::Application of Derivatives",
+      "total": 68,
+      "valid": 67,
+      "error": 1,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 26,
+        "columnMatch": 3,
+        "multipleCorrect": 22,
+        "numerical": 17
+      }
+    },
+    {
+      "chapter": "Physics::Electrostatics",
+      "total": 62,
+      "valid": 62,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 25,
+        "columnMatch": 6,
+        "singleCorrect": 21,
+        "numerical": 10
+      }
+    },
+    {
+      "chapter": "Chemistry::General Organic Chemistry",
+      "total": 57,
+      "valid": 56,
+      "error": 0,
+      "warning": 1,
+      "types": {
+        "singleCorrect": 22,
+        "numerical": 17,
+        "multipleCorrect": 17,
+        "columnMatch": 1
+      }
+    },
+    {
+      "chapter": "Chemistry::p Block Elements (Group 15, 16, 17 & 18)",
+      "total": 55,
+      "valid": 55,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 16,
+        "singleCorrect": 29,
+        "numerical": 9,
+        "columnMatch": 1
+      }
+    },
+    {
+      "chapter": "Mathematics::Probability",
+      "total": 55,
+      "valid": 55,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 9,
+        "singleCorrect": 33,
+        "numerical": 12,
+        "columnMatch": 1
+      }
+    },
+    {
+      "chapter": "Chemistry::Coordination Compounds",
+      "total": 53,
+      "valid": 53,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 9,
+        "numerical": 16,
+        "singleCorrect": 23,
+        "columnMatch": 5
+      }
+    },
+    {
+      "chapter": "Mathematics::Definite Integration",
+      "total": 52,
+      "valid": 52,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 12,
+        "numerical": 21,
+        "multipleCorrect": 14,
+        "columnMatch": 5
+      }
+    },
+    {
+      "chapter": "Physics::Rotational Motion",
+      "total": 52,
+      "valid": 52,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 19,
+        "columnMatch": 7,
+        "numerical": 13,
+        "multipleCorrect": 13
+      }
+    },
+    {
+      "chapter": "Physics::Thermodynamics",
+      "total": 49,
+      "valid": 49,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 12,
+        "numerical": 11,
+        "columnMatch": 10,
+        "singleCorrect": 16
+      }
+    },
+    {
+      "chapter": "Chemistry::Alcohols Phenols and Ethers",
+      "total": 48,
+      "valid": 48,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 25,
+        "multipleCorrect": 12,
+        "numerical": 8,
+        "columnMatch": 3
+      }
+    },
+    {
+      "chapter": "Physics::Magnetic Effects of Current",
+      "total": 47,
+      "valid": 47,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 10,
+        "multipleCorrect": 17,
+        "singleCorrect": 18,
+        "columnMatch": 2
+      }
+    },
+    {
+      "chapter": "Chemistry::Thermodynamics (C)",
+      "total": 46,
+      "valid": 46,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 15,
+        "columnMatch": 4,
+        "numerical": 15,
+        "multipleCorrect": 12
+      }
+    },
+    {
+      "chapter": "Mathematics::Vector Algebra",
+      "total": 46,
+      "valid": 46,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 17,
+        "numerical": 16,
+        "columnMatch": 5,
+        "multipleCorrect": 8
+      }
+    },
+    {
+      "chapter": "Physics::Waves and Sound",
+      "total": 43,
+      "valid": 43,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "columnMatch": 8,
+        "multipleCorrect": 12,
+        "numerical": 7,
+        "singleCorrect": 16
+      }
+    },
+    {
+      "chapter": "Mathematics::Matrices",
+      "total": 41,
+      "valid": 41,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 14,
+        "multipleCorrect": 17,
+        "columnMatch": 5,
+        "numerical": 5
+      }
+    },
+    {
+      "chapter": "Physics::Mechanical Properties of Fluids",
+      "total": 41,
+      "valid": 41,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 11,
+        "multipleCorrect": 10,
+        "columnMatch": 4,
+        "singleCorrect": 16
+      }
+    },
+    {
+      "chapter": "Mathematics::Complex Number",
+      "total": 39,
+      "valid": 39,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 11,
+        "numerical": 11,
+        "columnMatch": 2,
+        "singleCorrect": 15
+      }
+    },
+    {
+      "chapter": "Mathematics::Three Dimensional Geometry",
+      "total": 39,
+      "valid": 39,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 19,
+        "columnMatch": 3,
+        "singleCorrect": 14,
+        "numerical": 3
+      }
+    },
+    {
+      "chapter": "Chemistry::Amines",
+      "total": 37,
+      "valid": 37,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "columnMatch": 6,
+        "multipleCorrect": 11,
+        "numerical": 4,
+        "singleCorrect": 16
+      }
+    },
+    {
+      "chapter": "Chemistry::Chemical Kinetics",
+      "total": 36,
+      "valid": 36,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 12,
+        "multipleCorrect": 10,
+        "numerical": 10,
+        "columnMatch": 4
+      }
+    },
+    {
+      "chapter": "Physics::Nuclear Physics",
+      "total": 36,
+      "valid": 36,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 16,
+        "numerical": 11,
+        "columnMatch": 5,
+        "multipleCorrect": 4
+      }
+    },
+    {
+      "chapter": "Chemistry::Electrochemistry",
+      "total": 35,
+      "valid": 35,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 15,
+        "numerical": 13,
+        "multipleCorrect": 4,
+        "columnMatch": 3
+      }
+    },
+    {
+      "chapter": "Mathematics::Parabola",
+      "total": 35,
+      "valid": 35,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 16,
+        "multipleCorrect": 11,
+        "numerical": 7,
+        "columnMatch": 1
+      }
+    },
+    {
+      "chapter": "Chemistry::Chemical Bonding and Molecular Structure",
+      "total": 34,
+      "valid": 34,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 10,
+        "columnMatch": 4,
+        "multipleCorrect": 11,
+        "numerical": 9
+      }
+    },
+    {
+      "chapter": "Mathematics::Sequences and Series",
+      "total": 32,
+      "valid": 32,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 16,
+        "multipleCorrect": 2,
+        "singleCorrect": 11,
+        "columnMatch": 3
+      }
+    },
+    {
+      "chapter": "Chemistry::Aldehydes and Ketones",
+      "total": 31,
+      "valid": 31,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 6,
+        "multipleCorrect": 7,
+        "columnMatch": 4,
+        "singleCorrect": 14
+      }
+    },
+    {
+      "chapter": "Chemistry::Structure of Atom",
+      "total": 31,
+      "valid": 31,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 3,
+        "numerical": 9,
+        "singleCorrect": 15,
+        "columnMatch": 4
+      }
+    },
+    {
+      "chapter": "Mathematics::Limits",
+      "total": 31,
+      "valid": 31,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 11,
+        "singleCorrect": 13,
+        "multipleCorrect": 7
+      }
+    },
+    {
+      "chapter": "Mathematics::Permutation and Combination",
+      "total": 30,
+      "valid": 30,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 15,
+        "singleCorrect": 12,
+        "multipleCorrect": 1,
+        "columnMatch": 2
+      }
+    },
+    {
+      "chapter": "Physics::Current Electricity",
+      "total": 30,
+      "valid": 30,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 15,
+        "numerical": 6,
+        "multipleCorrect": 9
+      }
+    },
+    {
+      "chapter": "Physics::Laws of Motion",
+      "total": 30,
+      "valid": 30,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 7,
+        "multipleCorrect": 7,
+        "columnMatch": 4,
+        "singleCorrect": 12
+      }
+    },
+    {
+      "chapter": "Physics::Oscillations",
+      "total": 30,
+      "valid": 30,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 4,
+        "singleCorrect": 17,
+        "columnMatch": 4,
+        "multipleCorrect": 5
+      }
+    },
+    {
+      "chapter": "Mathematics::Circle",
+      "total": 29,
+      "valid": 29,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "columnMatch": 5,
+        "numerical": 5,
+        "multipleCorrect": 6,
+        "singleCorrect": 13
+      }
+    },
+    {
+      "chapter": "Mathematics::Differential Equations",
+      "total": 29,
+      "valid": 29,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 9,
+        "multipleCorrect": 13,
+        "numerical": 7
+      }
+    },
+    {
+      "chapter": "Chemistry::Redox Reactions",
+      "total": 28,
+      "valid": 28,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 10,
+        "numerical": 13,
+        "multipleCorrect": 4,
+        "columnMatch": 1
+      }
+    },
+    {
+      "chapter": "Physics::Thermal Properties of Matter",
+      "total": 28,
+      "valid": 28,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 13,
+        "columnMatch": 3,
+        "multipleCorrect": 6,
+        "singleCorrect": 6
+      }
+    },
+    {
+      "chapter": "Chemistry::Solutions",
+      "total": 27,
+      "valid": 27,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 16,
+        "singleCorrect": 8,
+        "multipleCorrect": 3
+      }
+    },
+    {
+      "chapter": "Physics::Electromagnetic Induction",
+      "total": 27,
+      "valid": 27,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "columnMatch": 4,
+        "singleCorrect": 11,
+        "multipleCorrect": 9,
+        "numerical": 3
+      }
+    },
+    {
+      "chapter": "Chemistry::Biomolecules",
+      "total": 25,
+      "valid": 25,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 8,
+        "multipleCorrect": 7,
+        "numerical": 10
+      }
+    },
+    {
+      "chapter": "Chemistry::Hydrocarbons",
+      "total": 25,
+      "valid": 24,
+      "error": 0,
+      "warning": 1,
+      "types": {
+        "multipleCorrect": 8,
+        "numerical": 4,
+        "columnMatch": 3,
+        "singleCorrect": 10
+      }
+    },
+    {
+      "chapter": "Mathematics::Properties of Triangles",
+      "total": 25,
+      "valid": 25,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 6,
+        "multipleCorrect": 9,
+        "singleCorrect": 9,
+        "columnMatch": 1
+      }
+    },
+    {
+      "chapter": "Mathematics::Trigonometric Equations",
+      "total": 25,
+      "valid": 25,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "columnMatch": 4,
+        "numerical": 7,
+        "singleCorrect": 9,
+        "multipleCorrect": 5
+      }
+    },
+    {
+      "chapter": "Physics::Alternating Current",
+      "total": 25,
+      "valid": 25,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 7,
+        "columnMatch": 5,
+        "multipleCorrect": 8,
+        "numerical": 5
+      }
+    },
+    {
+      "chapter": "Physics::Atomic Physics",
+      "total": 25,
+      "valid": 25,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 7,
+        "numerical": 6,
+        "columnMatch": 1,
+        "singleCorrect": 11
+      }
+    },
+    {
+      "chapter": "Chemistry::General Principles and Processes of Isolation of Metals",
+      "total": 23,
+      "valid": 23,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 11,
+        "singleCorrect": 9,
+        "columnMatch": 3
+      }
+    },
+    {
+      "chapter": "Mathematics::Functions",
+      "total": 23,
+      "valid": 23,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 5,
+        "singleCorrect": 9,
+        "multipleCorrect": 5,
+        "columnMatch": 4
+      }
+    },
+    {
+      "chapter": "Mathematics::Continuity and Differentiability",
+      "total": 22,
+      "valid": 22,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 14,
+        "numerical": 4,
+        "columnMatch": 2,
+        "singleCorrect": 2
+      }
+    },
+    {
+      "chapter": "Mathematics::Determinants",
+      "total": 22,
+      "valid": 22,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 8,
+        "columnMatch": 4,
+        "multipleCorrect": 5,
+        "singleCorrect": 5
+      }
+    },
+    {
+      "chapter": "Mathematics::Ellipse",
+      "total": 22,
+      "valid": 22,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 4,
+        "multipleCorrect": 7,
+        "singleCorrect": 10,
+        "columnMatch": 1
+      }
+    },
+    {
+      "chapter": "Mathematics::Straight Lines",
+      "total": 22,
+      "valid": 22,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 3,
+        "singleCorrect": 12,
+        "numerical": 6,
+        "columnMatch": 1
+      }
+    },
+    {
+      "chapter": "Physics::Gravitation",
+      "total": 22,
+      "valid": 22,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 10,
+        "numerical": 7,
+        "columnMatch": 3,
+        "multipleCorrect": 2
+      }
+    },
+    {
+      "chapter": "Chemistry::Some Basic Concepts of Chemistry",
+      "total": 21,
+      "valid": 21,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 16,
+        "multipleCorrect": 2,
+        "singleCorrect": 3
+      }
+    },
+    {
+      "chapter": "Chemistry::States of Matter",
+      "total": 21,
+      "valid": 21,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 8,
+        "singleCorrect": 6,
+        "multipleCorrect": 6,
+        "columnMatch": 1
+      }
+    },
+    {
+      "chapter": "Chemistry::Ionic Equilibrium",
+      "total": 20,
+      "valid": 20,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 12,
+        "singleCorrect": 3,
+        "columnMatch": 1,
+        "multipleCorrect": 4
+      }
+    },
+    {
+      "chapter": "Chemistry::Solid State",
+      "total": 20,
+      "valid": 20,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 6,
+        "multipleCorrect": 5,
+        "singleCorrect": 8,
+        "columnMatch": 1
+      }
+    },
+    {
+      "chapter": "Mathematics::Area Under Curves",
+      "total": 20,
+      "valid": 20,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 5,
+        "singleCorrect": 11,
+        "multipleCorrect": 4
+      }
+    },
+    {
+      "chapter": "Physics::Center of Mass, Momentum and Collision",
+      "total": 20,
+      "valid": 20,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 10,
+        "numerical": 4,
+        "multipleCorrect": 6
+      }
+    },
+    {
+      "chapter": "Physics::Dual Nature of Matter",
+      "total": 20,
+      "valid": 20,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 10,
+        "singleCorrect": 6,
+        "multipleCorrect": 3,
+        "columnMatch": 1
+      }
+    },
+    {
+      "chapter": "Physics::Motion in Two Dimensions",
+      "total": 20,
+      "valid": 20,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 3,
+        "numerical": 8,
+        "singleCorrect": 6,
+        "columnMatch": 3
+      }
+    },
+    {
+      "chapter": "Physics::Work, Power and Energy",
+      "total": 20,
+      "valid": 20,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "columnMatch": 7,
+        "multipleCorrect": 3,
+        "numerical": 4,
+        "singleCorrect": 6
+      }
+    },
+    {
+      "chapter": "Chemistry::d and f Block Elements",
+      "total": 19,
+      "valid": 19,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 7,
+        "numerical": 5,
+        "singleCorrect": 7
+      }
+    },
+    {
+      "chapter": "Chemistry::Haloalkanes and Haloarenes",
+      "total": 19,
+      "valid": 19,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 7,
+        "numerical": 4,
+        "columnMatch": 3,
+        "singleCorrect": 5
+      }
+    },
+    {
+      "chapter": "Mathematics::Quadratic Equation",
+      "total": 19,
+      "valid": 19,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "columnMatch": 2,
+        "multipleCorrect": 3,
+        "numerical": 5,
+        "singleCorrect": 9
+      }
+    },
+    {
+      "chapter": "Physics::Wave Optics",
+      "total": 19,
+      "valid": 19,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "columnMatch": 1,
+        "numerical": 8,
+        "multipleCorrect": 6,
+        "singleCorrect": 4
+      }
+    },
+    {
+      "chapter": "Chemistry::Carboxylic Acid Derivatives",
+      "total": 18,
+      "valid": 18,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 2,
+        "singleCorrect": 9,
+        "multipleCorrect": 5,
+        "columnMatch": 2
+      }
+    },
+    {
+      "chapter": "Chemistry::Practical Chemistry",
+      "total": 18,
+      "valid": 18,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 1,
+        "columnMatch": 1,
+        "multipleCorrect": 7,
+        "singleCorrect": 9
+      }
+    },
+    {
+      "chapter": "Physics::Capacitance",
+      "total": 18,
+      "valid": 18,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 6,
+        "columnMatch": 1,
+        "singleCorrect": 7,
+        "multipleCorrect": 4
+      }
+    },
+    {
+      "chapter": "Physics::Units and Dimensions",
+      "total": 18,
+      "valid": 18,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 3,
+        "singleCorrect": 7,
+        "multipleCorrect": 6,
+        "columnMatch": 2
+      }
+    },
+    {
+      "chapter": "Chemistry::p Block Elements (Group 13 & 14)",
+      "total": 16,
+      "valid": 16,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 3,
+        "multipleCorrect": 8,
+        "columnMatch": 2,
+        "singleCorrect": 3
+      }
+    },
+    {
+      "chapter": "Chemistry::Surface Chemistry",
+      "total": 16,
+      "valid": 16,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 2,
+        "singleCorrect": 7,
+        "multipleCorrect": 7
+      }
+    },
+    {
+      "chapter": "Physics::Mathematics in Physics",
+      "total": 15,
+      "valid": 15,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 4,
+        "numerical": 3,
+        "singleCorrect": 6,
+        "columnMatch": 2
+      }
+    },
+    {
+      "chapter": "Mathematics::Inverse Trigonometric Functions",
+      "total": 14,
+      "valid": 14,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 5,
+        "numerical": 3,
+        "multipleCorrect": 3,
+        "columnMatch": 3
+      }
+    },
+    {
+      "chapter": "Physics::Experimental Physics",
+      "total": 14,
+      "valid": 14,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 3,
+        "singleCorrect": 9,
+        "multipleCorrect": 1,
+        "columnMatch": 1
+      }
+    },
+    {
+      "chapter": "Mathematics::Hyperbola",
+      "total": 13,
+      "valid": 13,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 2,
+        "multipleCorrect": 6,
+        "columnMatch": 2,
+        "singleCorrect": 3
+      }
+    },
+    {
+      "chapter": "Mathematics::Binomial Theorem",
+      "total": 10,
+      "valid": 10,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 7,
+        "multipleCorrect": 1,
+        "singleCorrect": 2
+      }
+    },
+    {
+      "chapter": "Mathematics::Differentiation",
+      "total": 10,
+      "valid": 10,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 3,
+        "numerical": 2,
+        "singleCorrect": 5
+      }
+    },
+    {
+      "chapter": "Mathematics::Trigonometric Ratios & Identities",
+      "total": 9,
+      "valid": 9,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 5,
+        "multipleCorrect": 3,
+        "singleCorrect": 1
+      }
+    },
+    {
+      "chapter": "Physics::Electromagnetic Waves",
+      "total": 9,
+      "valid": 9,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 4,
+        "numerical": 1,
+        "singleCorrect": 4
+      }
+    },
+    {
+      "chapter": "Mathematics::Sets and Relations",
+      "total": 7,
+      "valid": 7,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 5,
+        "singleCorrect": 2
+      }
+    },
+    {
+      "chapter": "Chemistry::Chemical Equilibrium",
+      "total": 6,
+      "valid": 6,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 1,
+        "singleCorrect": 3,
+        "multipleCorrect": 2
+      }
+    },
+    {
+      "chapter": "Chemistry::Classification of Elements and Periodicity in Properties",
+      "total": 6,
+      "valid": 6,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 3,
+        "numerical": 2,
+        "singleCorrect": 1
+      }
+    },
+    {
+      "chapter": "Chemistry::Polymers",
+      "total": 6,
+      "valid": 6,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 3,
+        "singleCorrect": 2,
+        "columnMatch": 1
+      }
+    },
+    {
+      "chapter": "Mathematics::Basics of Mathematics",
+      "total": 6,
+      "valid": 6,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 3,
+        "multipleCorrect": 1,
+        "singleCorrect": 1,
+        "columnMatch": 1
+      }
+    },
+    {
+      "chapter": "Physics::Kinetic Theory of Gases",
+      "total": 6,
+      "valid": 6,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "multipleCorrect": 2,
+        "singleCorrect": 4
+      }
+    },
+    {
+      "chapter": "Mathematics::Indefinite Integration",
+      "total": 5,
+      "valid": 5,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 5
+      }
+    },
+    {
+      "chapter": "Physics::Mechanical Properties of Solids",
+      "total": 5,
+      "valid": 5,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "columnMatch": 2,
+        "multipleCorrect": 1,
+        "singleCorrect": 1,
+        "numerical": 1
+      }
+    },
+    {
+      "chapter": "Chemistry::Hydrogen",
+      "total": 4,
+      "valid": 4,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "columnMatch": 1,
+        "singleCorrect": 2,
+        "multipleCorrect": 1
+      }
+    },
+    {
+      "chapter": "Chemistry::s Block Elements",
+      "total": 4,
+      "valid": 4,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 2,
+        "multipleCorrect": 2
+      }
+    },
+    {
+      "chapter": "Mathematics::Statistics",
+      "total": 4,
+      "valid": 4,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 2,
+        "columnMatch": 2
+      }
+    },
+    {
+      "chapter": "Physics::Motion in One Dimension",
+      "total": 4,
+      "valid": 4,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "numerical": 1,
+        "multipleCorrect": 2,
+        "singleCorrect": 1
+      }
+    },
+    {
+      "chapter": "Mathematics::Pair of Lines",
+      "total": 2,
+      "valid": 2,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 2
+      }
+    },
+    {
+      "chapter": "Chemistry::Chemistry in Everyday Life",
+      "total": 1,
+      "valid": 1,
+      "error": 0,
+      "warning": 0,
+      "types": {
+        "singleCorrect": 1
+      }
+    }
+  ],
+  "firstQuestionKeys": [
+    "id",
+    "subject",
+    "chapter",
+    "exam",
+    "examName",
+    "q",
+    "options",
+    "answer",
+    "solution",
+    "difficulty",
+    "source",
+    "_marksId",
+    "_advSection",
+    "questionType",
+    "type"
+  ],
+  "topLevelKeys": [
+    "title",
+    "category",
+    "questions"
+  ]
+}

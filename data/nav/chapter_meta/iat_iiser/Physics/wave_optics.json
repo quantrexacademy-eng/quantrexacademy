@@ -1,0 +1,35 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff58378e1624ea7b6a74",
+  "subject": "Physics",
+  "chapter": "Wave Optics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff8b378e1624ea7b6ce0",
+      "title": "Interference of Light",
+      "count": 1,
+      "questionIds": [
+        "67fdff65378e1624ea7b6afc"
+      ]
+    },
+    {
+      "id": "68e7a694ce75e72648a45eb0",
+      "title": "Polarization of Light",
+      "count": 1,
+      "questionIds": [
+        "68e7a681ce75e72648a45e8c"
+      ]
+    },
+    {
+      "id": "67fdff8b378e1624ea7b6cdf",
+      "title": "Diffraction of Light",
+      "count": 1,
+      "questionIds": [
+        "67fdff58378e1624ea7b6a72"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,373 @@
+/* qxmd109 — last-linked Quizrr/NTA mobile visibility + layout hammer
+   Load AFTER every other CBT CSS. Brutal specificity on .qzrr-cbt / #qzrrQArea. */
+
+html body .qzrr-cbt #qzrrQArea,
+html body .qzrr-cbt #qzrrQArea.qzrr-q-area,
+html body .mtk-test-root.qzrr-cbt #qzrrQArea {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  flex: 1 1 auto !important;
+  min-height: 160px !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding: 10px 12px 18px !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+html body .qzrr-cbt:not(.qzrr-dark) #qzrrQArea,
+html body .qzrr-cbt:not(.qzrr-dark) #qzrrQArea .mtk-q-text,
+html body .qzrr-cbt:not(.qzrr-dark) #qzrrQArea .mtk-q-text *,
+html body .qzrr-cbt:not(.qzrr-dark) #qzrrQArea .qx-content,
+html body .qzrr-cbt:not(.qzrr-dark) #qzrrQArea .qx-content *,
+html body .qzrr-cbt:not(.qzrr-dark) #qzrrQArea .qx-question-body,
+html body .qzrr-cbt:not(.qzrr-dark) #qzrrQArea .qx-question-body *,
+html body .qzrr-cbt:not(.qzrr-dark) #qzrrQArea .qzrr-q-stem,
+html body .qzrr-cbt:not(.qzrr-dark) #qzrrQArea .qzrr-q-stem *,
+html body .qzrr-cbt[data-test-theme="light"] #qzrrQArea,
+html body .qzrr-cbt[data-test-theme="light"] #qzrrQArea .mtk-q-text,
+html body .qzrr-cbt[data-test-theme="light"] #qzrrQArea .mtk-q-text *,
+html body .qzrr-cbt:not(.qzrr-dark) #qzrrQArea .katex,
+html body .qzrr-cbt:not(.qzrr-dark) #qzrrQArea .katex * {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html body .qzrr-cbt.qzrr-dark #qzrrQArea,
+html body .qzrr-cbt.qzrr-dark #qzrrQArea .mtk-q-text,
+html body .qzrr-cbt.qzrr-dark #qzrrQArea .mtk-q-text *,
+html body .qzrr-cbt.qzrr-dark #qzrrQArea .qx-content,
+html body .qzrr-cbt.qzrr-dark #qzrrQArea .qx-content *,
+html body .qzrr-cbt.qzrr-dark #qzrrQArea .qzrr-q-stem,
+html body .qzrr-cbt.qzrr-dark #qzrrQArea .qzrr-q-stem *,
+html body .qzrr-cbt[data-test-theme="dark"] #qzrrQArea .mtk-q-text,
+html body .qzrr-cbt[data-test-theme="dark"] #qzrrQArea .mtk-q-text * {
+  color: #f1f5f9 !important;
+  -webkit-text-fill-color: #f1f5f9 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html body .qzrr-cbt #qzrrQArea #qxOpts,
+html body .qzrr-cbt #qzrrQArea .qzrr-opts,
+html body .qzrr-cbt #qxOpts.qzrr-opts,
+html body .qzrr-cbt #qxOpts.mtk-options {
+  display: grid !important;
+  gap: 10px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 48px !important;
+  margin-top: 12px !important;
+}
+html body .qzrr-cbt #qzrrQArea #qxOpts.mtk-numerical-wrap {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+html body .qzrr-cbt .mtk-opt,
+html body .qzrr-cbt #qxOpts .mtk-opt,
+html body .qzrr-cbt.qzrr-dark .mtk-opt,
+html body .qzrr-cbt #qzrrQArea .mtk-opt {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  border: 1.5px solid #94a3b8 !important;
+  border-radius: 10px !important;
+  padding: 12px 14px !important;
+  min-height: 48px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+html body .qzrr-cbt .mtk-opt .mtk-opt-text,
+html body .qzrr-cbt .mtk-opt .mtk-opt-text *,
+html body .qzrr-cbt .mtk-opt .qx-content,
+html body .qzrr-cbt .mtk-opt .qx-content *,
+html body .qzrr-cbt .mtk-opt .katex,
+html body .qzrr-cbt .mtk-opt .katex * {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-meta-row,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-qtype,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-qno,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-marks-line,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-marks-line *,
+html body .qzrr-cbt[data-test-theme="light"] .qzrr-qtype,
+html body .qzrr-cbt[data-test-theme="light"] .qzrr-qno,
+html body .qzrr-cbt[data-test-theme="light"] .qzrr-marks-line,
+html body .qzrr-cbt[data-test-theme="light"] .qzrr-marks-line * {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  font-weight: 700 !important;
+}
+html body .qzrr-cbt.qzrr-dark .qzrr-q-meta-row,
+html body .qzrr-cbt.qzrr-dark .qzrr-qtype,
+html body .qzrr-cbt.qzrr-dark .qzrr-qno,
+html body .qzrr-cbt.qzrr-dark .qzrr-marks-line,
+html body .qzrr-cbt.qzrr-dark .qzrr-marks-line * {
+  color: #f1f5f9 !important;
+  -webkit-text-fill-color: #f1f5f9 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html body .qzrr-cbt .qzrr-time-box,
+html body .qzrr-cbt .qzrr-sec-row-right .qzrr-time-box {
+  background: #78350f !important;
+  border: 1px solid #fbbf24 !important;
+  color: #fef3c7 !important;
+  -webkit-text-fill-color: #fef3c7 !important;
+  font-weight: 800 !important;
+  font-variant-numeric: tabular-nums !important;
+  border-radius: 8px !important;
+  padding: 6px 10px !important;
+  font-size: 13px !important;
+  white-space: nowrap !important;
+  flex: 0 0 auto !important;
+}
+html body .qzrr-cbt .qzrr-time-box strong,
+html body .qzrr-cbt .qzrr-time-box #qxTimer,
+html body .qzrr-cbt #qxTimer {
+  color: #fde047 !important;
+  -webkit-text-fill-color: #fde047 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  font-weight: 900 !important;
+}
+
+html body .qzrr-cbt .qzrr-footer-actions,
+html body .qzrr-cbt .qzrr-foot,
+html body .qzrr-cbt .qzrr-btn {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  z-index: 40 !important;
+}
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-btn-outline,
+html body .qzrr-cbt:not(.qzrr-dark) #qxReviewNextBtn,
+html body .qzrr-cbt:not(.qzrr-dark) #qxClearBtn,
+html body .qzrr-cbt:not(.qzrr-dark) #qxPrevBtn {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  border: 1.5px solid #475569 !important;
+}
+html body .qzrr-cbt.qzrr-dark .qzrr-btn-outline,
+html body .qzrr-cbt.qzrr-dark #qxReviewNextBtn,
+html body .qzrr-cbt.qzrr-dark #qxClearBtn,
+html body .qzrr-cbt.qzrr-dark #qxPrevBtn {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  border: 1px solid #94a3b8 !important;
+}
+html body .qzrr-cbt #qxSaveBtn {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+html body .qzrr-cbt #qxSubmitBtn,
+html body .qzrr-cbt #qxSubmitTop,
+html body .qzrr-cbt .qzrr-submit-mobile {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #dc2626 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 1px solid #ef4444 !important;
+  min-height: 44px !important;
+  width: 100% !important;
+  font-weight: 800 !important;
+  pointer-events: auto !important;
+  z-index: 60 !important;
+  position: relative !important;
+}
+
+html body .qzrr-cbt .qzrr-sec-strip { flex: 0 0 auto !important; padding: 4px 10px !important; }
+html body .qzrr-cbt .qzrr-paper-chip {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  border-radius: 999px !important;
+  padding: 6px 12px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  background: #dbeafe !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  border: 1px solid #93c5fd !important;
+  white-space: nowrap !important;
+  max-width: 92vw !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+html body .qzrr-cbt .qzrr-sec-row {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 4px 8px !important;
+  overflow: hidden !important;
+}
+html body .qzrr-cbt .qzrr-sec-tabs-wrap {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 6px !important;
+  min-width: 0 !important;
+  flex: 1 1 auto !important;
+  overflow: hidden !important;
+}
+html body .qzrr-cbt .qzrr-sec-lbl {
+  flex: 0 0 auto !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  color: #64748b !important;
+}
+html body .qzrr-cbt .qzrr-sec-nav { flex: 0 0 auto !important; min-width: 28px !important; min-height: 28px !important; }
+html body .qzrr-cbt .qzrr-sec-tabs {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 6px !important;
+  min-width: 0 !important;
+  flex: 1 1 auto !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: none !important;
+  overscroll-behavior-x: contain !important;
+}
+html body .qzrr-cbt .qzrr-sec-tabs::-webkit-scrollbar { display: none !important; height: 0 !important; }
+html body .qzrr-cbt .qzrr-sec-chip,
+html body .qzrr-cbt .mtk-sec-tab.qzrr-sec-chip {
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
+  width: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  border-radius: 999px !important;
+  padding: 6px 12px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+html body .qzrr-cbt .qzrr-sec-chip.active,
+html body .qzrr-cbt .mtk-sec-tab.qzrr-sec-chip.active {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-color: #1d4ed8 !important;
+}
+html body .qzrr-cbt .qzrr-sec-row-right { flex: 0 0 auto !important; }
+
+html body .qzrr-cbt .qzrr-section-info { margin: 0 8px 4px !important; padding: 4px 8px !important; }
+html body .qzrr-cbt .qzrr-section-info.collapsed .qzrr-section-info-ul { display: none !important; }
+
+html body .qzrr-cbt[data-ui="quizrr"] .qzrr-top-zoom,
+html body .qzrr-cbt[data-ui="quizrr"] #qzrrTopZoom,
+html body .qzrr-cbt[data-ui="quizrr"] #qzrrZoomFab,
+html body .qzrr-cbt[data-ui="quizrr"] .qzrr-side-zoom,
+html body .qzrr-cbt .qzrr-side-toggle {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+html body .qzrr-cbt .eg-topic-strip,
+html[data-qx-cbt-format="nta"] .eg-topic-strip,
+body.marks-test-active:not(.allen-practice-active) .eg-topic-strip,
+.eg-test-root[data-eg-mode="test"] .eg-topic-strip,
+.eg-test-root:not([data-eg-mode="practice"]) .eg-topic-strip {
+  display: none !important;
+}
+.eg-test-root[data-eg-mode="practice"] .eg-topic-strip,
+.eg-test-root[data-eg-mode="practice"] .eg-topic-strip-multi {
+  display: block !important;
+}
+
+html body #qzrrModalHost,
+html body .qzrr-modal,
+html body #qzrrA11yPopover,
+html body #qzrrA11yBackdrop,
+html body #mtkSubmitModal {
+  z-index: 60000 !important;
+  pointer-events: auto !important;
+}
+html body .qzrr-cbt .qzrr-black-bar,
+html body .qzrr-cbt .qzrr-black-tools,
+html body .qzrr-cbt .qzrr-tool-btn {
+  pointer-events: auto !important;
+  z-index: 50 !important;
+  position: relative !important;
+}
+html body .qzrr-cbt .qzrr-tool-btn {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+@media (max-width: 900px) {
+  html body .qzrr-cbt .qzrr-main-col {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+  html body .qzrr-cbt .qzrr-sec-strip,
+  html body .qzrr-cbt .qzrr-sec-row,
+  html body .qzrr-cbt .qzrr-q-meta-row { flex: 0 0 auto !important; }
+  html body .qzrr-cbt .qzrr-section-info:not(.collapsed) .qzrr-section-info-ul {
+    display: none !important;
+  }
+  html body .qzrr-cbt .qzrr-section-info { padding: 2px 8px !important; margin: 0 8px 2px !important; }
+  html body .qzrr-cbt #qzrrQArea { flex: 1 1 auto !important; min-height: 40vh !important; }
+  html body .qzrr-cbt .qzrr-footer-actions {
+    flex: 0 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  html body .qzrr-cbt .qzrr-act-left,
+  html body .qzrr-cbt .qzrr-act-right {
+    width: 100% !important;
+    display: grid !important;
+    gap: 6px !important;
+    margin: 0 !important;
+  }
+  html body .qzrr-cbt .qzrr-act-left { grid-template-columns: 1.35fr 1fr !important; }
+  html body .qzrr-cbt .qzrr-act-right { grid-template-columns: 1fr 1.35fr !important; }
+  html body .qzrr-cbt .qzrr-submit-mobile,
+  html body .qzrr-cbt #qxSubmitTop { display: flex !important; }
+  html body .qzrr-cbt.qzrr-side-collapsed .qzrr-side-toggle { display: none !important; }
+  html body .qzrr-cbt .qzrr-black-tools {
+    overflow-x: auto !important;
+    max-width: 68vw !important;
+    flex-wrap: nowrap !important;
+  }
+  html body .qzrr-cbt .qzrr-tool-btn {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    font-size: 11px !important;
+    padding: 5px 8px !important;
+  }
+}

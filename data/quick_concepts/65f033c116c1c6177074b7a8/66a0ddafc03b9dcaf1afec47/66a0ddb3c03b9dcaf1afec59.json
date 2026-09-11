@@ -1,0 +1,58 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddafc03b9dcaf1afec47",
+  "topicId": "66a0ddb3c03b9dcaf1afec59",
+  "title": "Location of Roots",
+  "concepts": [
+    {
+      "title": "Solving inequalities using Location of Roots",
+      "conceptBody": "<h3><strong>Wavy Curve Method</strong></h3><p>Let $f(x)={{(x-{{a}_{1}})}^{{{k}_{1}}}}{{(x-{{a}_{2}})}^{{{k}_{2}}}}{{(x-{{a}_{3}})}^{{{k}_{3}}}}......$${{(x-{{a}_{n-1}})}^{{{k}_{n-1}}}}{{(x-{{a}_{n}})}^{{{k}_{n}}}}$ …..(i)</p><p>where ${{k}_{1}},\\,{{k}_{2}},\\,{{k}_{3}}...,\\,{{k}_{n}}\\in N$ and ${{a}_{1}},\\,{{a}_{2}},\\,{{a}_{3}},\\,......,\\,{{a}_{n}}$ are fixed natural numbers satisfying the condition</p><p>${{a}_{1}}&lt;{{a}_{2}}&lt;{{a}_{3}}.....&lt;{{a}_{n-1}}&lt;{{a}_{n}}$</p><p>First we mark the numbers ${{a}_{1}},\\,{{a}_{2}},\\,{{a}_{3}},\\,......,\\,{{a}_{n}}$ on the real axis and the plus sign in the interval of the right of the largest of these numbers, <i>i.e. </i>on the right of ${{a}_{n}}$. If ${{k}_{n}}$ is even then we put plus sign on the left of ${{a}_{n}}$ and if ${{k}_{n}}$ is odd then we put minus sign on the left of ${{a}_{n}}$. In the next interval we put a sign according to the following rule :</p><p>When passing through the point ${{a}_{n-1}}$ the polynomial <i>f </i>( <i>x </i>) changes sign if ${{k}_{n-1}}$ is an odd number and the polynomial <i>f </i>( <i>x </i>) has same sign if ${{k}_{n-1}}$ is an even number. Then, we consider the next interval and put a sign in it using the same rule. Thus, we consider all the intervals. The solution of $f(x)&gt;0$ is the union of all intervals in which we have put the plus sign and the solution of $f(x)&lt;0$ is the union of all intervals in which we have put the minus sign.</p>",
+      "position": 0,
+      "qcConcept": "66a0ddb3c03b9dcaf1afec5a"
+    },
+    {
+      "title": "Question on various cases of Location of Roots",
+      "conceptBody": "<h3><strong>Location of Roots</strong></h3><p>(1) If $f(x)=0$ is an equation and $a,b$ are two real numbers such that $f(a).f(b)&lt;0$ has at least one real root or an odd number of real roots between $a$ and $b$. In case $f(a)$ and $f(b)$ are of the same sign, then either no real root or an even number of real roots of $f(x)=0$lie between <i>a </i>and <i>b </i>.</p><p>(2) Every equation of an odd degree has at least one real root, whose sign is opposite to that of its last term, provided the coefficient of the first term is + <i>ve e.g., ${{x}^{3}}-3x+2=0$ </i>has one real negative root.</p><p>(3) Every equation of an even degree whose last term is – <i>ve </i>and the coefficient of first term + <i>ve </i>has at least two real roots, one + <i>ve </i>and one – <i>ve e.g., </i>${{x}^{4}}+4{{x}^{3}}+3{{x}^{2}}+5x-2=0$ has at least two real roots, one + <i>ve </i>and one – <i>ve </i>.</p><p>(4) If an equation has only one change of sign, it has one + <i>ve </i>root and no more.</p><p>(5) If all the terms of an equation are + <i>ve </i>and the equation involves no odd power of <i>x </i>, then all its roots are complex.</p>",
+      "position": 1,
+      "qcConcept": "66a0ddb3c03b9dcaf1afec5b"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66891f2e1010aab82c8aa614",
+      "title": "If the roots of $x^2+x+a=0$ exceed $a$, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa615",
+      "title": "If the roots of the equation $x^2-2 a x+a^2+a-3=0$ are real and less than 3 , then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa616",
+      "title": "If $a, b, c$ are real numbers such that $a+b+c=0$, then the quadratic equation $3 a x^2+2 b x+c=0$ has",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa617",
+      "title": "If $\\alpha, \\beta$ be the roots of the quadratic equation $a x^2+b x+c=0$ and $k$ be a real number, then the condition so that $\\alpha \\lt k \\lt \\beta$ is given by",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa618",
+      "title": "The value of $p$ for which both the roots of the equation $4 x^2-20 p x+\\left(25 p^2+15 p-66\\right)=0$ are less than 2 , lies in",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa619",
+      "title": "If $b \\gt a$, then the equation $(x-a)(x-b)=1$ has",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,988 @@
+{
+  "testId": "tst-19g71mnq7q58s",
+  "title": "Circular Motion Test - 1 (Topic Test)",
+  "type": "topic",
+  "section": "Circular Motion",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-06-11T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "7b9a6f1d-2cd9-4751-9545-585c69fb8208",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g71mnq7q58s",
+    "defaultLanguage": "en",
+    "description": "Displacement, Velocity, Acceleration and Angular Velocity",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-11T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mq8hrxcz",
+            "chapter": "circular-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A bird is flying close to the sea surface at a speed of 40 m/s. It decided to ascend and fly in a vertical circle. The speed of the bird varies with height <i>h</i> as </p><p>$v^2 = 1600 - 2gh$.</p><p>Its speed at the topmost point of the circle is 20 m/s. The acceleration of the bird in $\\text{m/s}^2$ when its velocity is vertically up is [Take $g = 10~\\text{m/s}^2$]</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$100/3$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>10</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(50/3)\\sqrt{109}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(10/3)\\sqrt{109}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Let the bird fly in a vertical circle of radius $r$ centered at the point O . The height of the topmost point B is $h=2 r$ and the speed at this point is $v_B=20 \\mathrm{~m} / \\mathrm{s}$. Substitute values in $v^2=1600-2 g h$ to get</p>\n<p>$$ r=\\frac{1600-v_B^2}{2(2 g)}=\\frac{1600-(20)^2}{4(10)}=30 \\mathrm{~m} $$</p>\n<p>The velocity of the bird is vertically up at the point $\\mathbf{C}$. The height of the point C is $h=r=30 \\mathrm{~m}$ and speed at this point is given by</p>\n<p>$$ v=\\sqrt{1600-2 g h}=10 \\sqrt{10} \\mathrm{~m} / \\mathrm{s} $$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mq8hoxni%2Fa36f4346-12f7-4fc7-aa9a-da933ba7c7fa%2F7d41cef0-6506-11f1-a89a-fd0eabea0f90%2Ffile-6y3zli1mq8hoxnj.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mq8hoxni%2Fa36f4346-12f7-4fc7-aa9a-da933ba7c7fa%2F7d41cef0-6506-11f1-a89a-fd0eabea0f90%2Ffile-6y3zli1mq8hoxnj.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The centripetal acceleration of the bird at point $C$ is given by</p>\n<p>$$ a_c=\\frac{v^2}{r}=\\frac{1000}{30}=\\frac{100}{3} \\mathrm{~m} / \\mathrm{s}^2 $$</p>\n<p>At point C , the radial component of velocity is zero and tangential component is vertically up with magnitude $v$. The tangential component of velocity is given by $v=\\mathrm{d} h / \\mathrm{d} t$. Differentiate $v^2=1600-2 g h$ with time to get</p>\n<p>$$ 2 v \\mathrm{~d} v / \\mathrm{d} t=-2 g \\mathrm{~d} h / \\mathrm{d} t . $$</p>\n<p>Substitute $\\mathrm{d} v / \\mathrm{d} t=a_t$ (tangential acceleration) and $\\mathrm{d} h / \\mathrm{d} t=v$ to get the tangential acceleration at the point C as</p>\n<p>$$ a_t=-g . $$</p>\n<p>Thus, the resultant acceleration of the bird at C is</p>\n<p>$$ a=\\sqrt{a_c^2+a_t^2}=(10 / 3) \\sqrt{109} \\mathrm{~m} / \\mathrm{s}^2 $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक पक्षी समुद्र की सतह के करीब 40 m/s की चाल से उड़ रहा है। यह ऊपर की ओर चढ़ने और एक ऊर्ध्वाधर वृत्त में उड़ने का निर्णय लेता है। ऊंचाई <i>h</i> के साथ पक्षी की चाल इस प्रकार परिवर्तित होती है: </p><p>$v^2 = 1600 - 2gh$</p><p>वृत्त के उच्चतम बिंदु पर इसकी चाल 20 m/s है। जब पक्षी का वेग ऊर्ध्वाधर रूप से ऊपर की ओर होता है, तब पक्षी का त्वरण $\\text{m/s}^2$ में क्या होगा? [$g = 10~\\text{m/s}^2$ लें]</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$100/3$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>10</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(50/3)\\sqrt{109}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(10/3)\\sqrt{109}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "uniform-circular-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mc2ahmem",
+            "languages": [
+              "en"
+            ],
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "During the circular motion with constant speed :",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "Both velocity and acceleration are constant."
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "Velocity is constant but the acceleration changes."
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "Acceleration is constant but the velocity changes."
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "Velocity and acceleration both change."
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>During circular motion with constant speed, the speed remains the same but the direction of motion keeps changing at every point.</p>\n<p>Since velocity depends on both magnitude and direction, the velocity changes continuously.</p>\n<p>The acceleration in this motion is centripetal acceleration. Its magnitude is</p>\n<p>$$ a = \\frac{v^2}{r} $$</p>\n<p>If $v$ and $r$ are constant, its magnitude stays constant. But its direction always points towards the centre, and that direction keeps changing as the particle moves around the circle.</p>\n<p>So acceleration also changes.</p>\n<p>The correct option is:</p>\n<p>$$ \\text{Option D: Velocity and acceleration both change.} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "नियत चाल से वृत्तीय गति के दौरान :",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "वेग और त्वरण दोनों नियत रहते हैं।"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "वेग नियत रहता है लेकिन त्वरण बदलता है।"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "त्वरण नियत रहता है लेकिन वेग बदलता है।"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "वेग और त्वरण दोनों बदलते हैं।"
+                  }
+                ]
+              }
+            },
+            "type": "mcq",
+            "country": "in",
+            "examGroup": "jee",
+            "exam": "jee-main",
+            "subject": "physics",
+            "chapterGroup": "mechanics",
+            "chapter": "circular-motion",
+            "topic": "uniform-circular-motion",
+            "marks": 4,
+            "negMarks": 1,
+            "timeAllotted": 144000,
+            "difficulty": "easy",
+            "subTopic": null
+          },
+          {
+            "questionId": "tq-mq8i6tvn",
+            "chapter": "circular-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two racing cars of masses $m_1$ and $m_2$ are moving in circles of radii $r$ and $2r$ respectively and their angular speeds are equal. The ratio of the time taken by cars to complete one revolution is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$m_1 : m_2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$1 : 2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$1 : 1$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$m_1 : 2m_2$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>If the angular speeds of both cars are equal, say $\\omega$, then the time period of circular motion is</p>\n<p>$$ T=\\frac{2\\pi}{\\omega} $$</p>\n<p>This depends only on angular speed, not on mass or radius.</p>\n<p>Since both cars have the same angular speed,</p>\n<p>$$ T_1=\\frac{2\\pi}{\\omega}, \\qquad T_2=\\frac{2\\pi}{\\omega} $$</p>\n<p>So,</p>\n<p>$$ T_1:T_2=1:1 $$</p>\n<p>The correct option is C, $1:1$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान $m_1$ और $m_2$ की दो रेसिंग कारें क्रमशः $r$ और $2r$ त्रिज्या वाले वृत्तों में गति कर रही हैं और उनकी कोणीय चाल समान हैं। कारों द्वारा एक चक्कर पूरा करने में लिए गए समय का अनुपात है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$m_1 : m_2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$1 : 2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$1 : 1$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$m_1 : 2m_2$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "uniform-circular-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq8j7jzf",
+            "chapter": "circular-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle <b>P</b> is moving in a circle of radius <b>'a'</b> with a uniform speed <b>v</b>. <b>C</b> is the centre of the circle and <b>AB</b> is a diameter. When passing through <b>B</b> the angular velocity of <b>P</b> about <b>A</b> and <b>C</b> are in the ratio</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 : 1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1 : 2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2 : 1</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>4 : 1</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mq8j5lmc%2F82d380f4-3279-4cd6-a2b6-0e57708795cf%2F35d8ce50-650c-11f1-a6e7-934f9709d966%2Ffile-6y3zli1mq8j5lmd.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mq8j5lmc%2F82d380f4-3279-4cd6-a2b6-0e57708795cf%2F35d8ce50-650c-11f1-a6e7-934f9709d966%2Ffile-6y3zli1mq8j5lmd.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Angular velocity of particle $P$ about point $A$,</p>\n<p>$$ \\omega_A=\\frac{v}{r_{A B}}=\\frac{v}{2 r} $$</p>\n<p>Angular velocity of particle $P$ about point $C$,</p>\n<p>$$ \\omega_C=\\frac{v}{r_{B C}}=\\frac{v}{r} $$</p>\n<p>Ratio $\\frac{\\omega_A}{\\omega_C}=\\frac{v / 2 r}{v / r}=\\frac{1}{2}$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक कण <b>P</b> त्रिज्या <b>'a'</b> के एक वृत्त में एकसमान चाल <b>v</b> से गति कर रहा है। <b>C</b> वृत्त का केंद्र है और <b>AB</b> एक व्यास है। जब यह <b>B</b> से होकर गुजरता है, तो <b>A</b> और <b>C</b> के परितः <b>P</b> के कोणीय वेगों का अनुपात है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 : 1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1 : 2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2 : 1</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>4 : 1</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "uniform-circular-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq8jdbvo",
+            "chapter": "circular-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle is performing circular motion of radius 1 m. Its speed is $v = (2t^2)$ ms$^{-1}$. What will be the magnitude of its acceleration at time $t = 1$ s?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2\\sqrt{2}$ ms$^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$4\\sqrt{2}$ ms$^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2$ ms$^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$8$ ms$^{-2}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For circular motion, acceleration has two parts:</p>\n<ul>\n<li><p>tangential acceleration: $a_t = \\dfrac{dv}{dt}$</p></li>\n<li><p>centripetal acceleration: $a_c = \\dfrac{v^2}{r}$</p></li>\n</ul>\n<p>Given,</p>\n<p>$$ v = 2t^2 $$</p>\n<p>At $t = 1\\,\\text{s}$,</p>\n<p>$$ v = 2(1)^2 = 2\\,\\text{m s}^{-1} $$</p>\n<p>Now tangential acceleration:</p>\n<p>$$ a_t = \\frac{dv}{dt} = \\frac{d}{dt}(2t^2) = 4t $$</p>\n<p>So at $t=1$,</p>\n<p>$$ a_t = 4\\,\\text{m s}^{-2} $$</p>\n<p>Centripetal acceleration:</p>\n<p>$$ a_c = \\frac{v^2}{r} = \\frac{(2)^2}{1} = 4\\,\\text{m s}^{-2} $$</p>\n<p>These two accelerations are perpendicular to each other, so total acceleration is</p>\n<p>$$ a = \\sqrt{a_t^2 + a_c^2} $$</p>\n<p>$$ a = \\sqrt{4^2 + 4^2} = \\sqrt{16+16} = \\sqrt{32} = 4\\sqrt{2}\\,\\text{m s}^{-2} $$</p>\n<p>So the correct option is $\\boxed{4\\sqrt{2}\\,\\text{m s}^{-2}}$.</p>\n<p>Option B</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक कण 1 m त्रिज्या वाले वृत्तीय पथ पर गति कर रहा है। इसकी चाल $v = (2t^2)$ ms$^{-1}$ है। समय $t = 1$ s पर इसके त्वरण का परिमाण क्या होगा?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2\\sqrt{2}$ ms$^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$4\\sqrt{2}$ ms$^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2$ ms$^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$8$ ms$^{-2}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "uniform-circular-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq8juqgl",
+            "chapter": "circular-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "A particle moves in a circle of radius 1 m . The particle moves with a constant angular speed of $1 \\mathrm{rad} / \\mathrm{s}$ about a fixed point lying on the circle's periphery. The velocity $v$ and the acceleration $a$ of the particle are",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "$1 \\mathrm{~m} / \\mathrm{s}$ and $1 \\mathrm{~m} / \\mathrm{s}^2$"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "$2 \\mathrm{~m} / \\mathrm{s}$ and $4 \\mathrm{~m} / \\mathrm{s}^2$"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "$2 \\mathrm{~m} / \\mathrm{s}$ and $1 \\mathrm{~m} / \\mathrm{s}^2$"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "$1 \\mathrm{~m} / \\mathrm{s}$ and $4 \\mathrm{~m} / \\mathrm{s}^2$"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let the centre of the circle be $O$, the fixed point on the circle be $Q$, and the particle’s position at any instant be $P$. The particle moves such that the line $QP$ rotates around $Q$ with a steady angular speed $\\omega_Q = 1\\, \\mathrm{rad/s}$. This means that the angle $\\theta$ made by $QP$ with a fixed line changes at a constant rate, i.e. $\\dfrac{d\\theta}{dt} = 1\\, \\mathrm{rad/s}$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mq8jskei%2Fd7ea4aa5-583a-49ce-854b-5a4da9cb9497%2Fb4841aa0-650e-11f1-b114-21097c116aab%2Ffile-6y3zli1mq8jskej.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mq8jskei%2Fd7ea4aa5-583a-49ce-854b-5a4da9cb9497%2Fb4841aa0-650e-11f1-b114-21097c116aab%2Ffile-6y3zli1mq8jskej.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>From the geometry of the figure, the angle between $OP$ and the fixed line is $2\\theta$. So, as $\\theta$ changes, $OP$ rotates twice as fast. The angular speed of $P$ around the centre $O$ is</p>\n<p>$$\\omega = \\dfrac{d(2\\theta)}{dt} = 2\\dfrac{d\\theta}{dt} = 2\\omega_Q = 2\\, \\mathrm{rad/s}.$$</p>\n<p>This shows that the particle moves with uniform circular motion around point $O$ with an angular speed of $2\\, \\mathrm{rad/s}$.</p>\n<p>The linear speed of the particle is given by</p>\n<p>$$v = \\omega r = 2 \\times 1 = 2\\, \\mathrm{m/s}.$$</p>\n<p>Its centripetal acceleration (directed towards the centre $O$) is</p>\n<p>$$a_c = \\omega^2 r = 2^2 \\times 1 = 4\\, \\mathrm{m/s^2}.$$</p>\n<p>Since the angular speed is constant, there is no tangential acceleration.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "एक कण 1 m त्रिज्या के एक वृत्त में गति करता है। यह कण वृत्त की परिधि पर स्थित एक निश्चित बिंदु के परितः $1 \\mathrm{rad} / \\mathrm{s}$ की नियत कोणीय चाल से गति करता है। कण का वेग $v$ और त्वरण $a$ हैं",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "$1 \\mathrm{~m} / \\mathrm{s}$ और $1 \\mathrm{~m} / \\mathrm{s}^2$"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "$2 \\mathrm{~m} / \\mathrm{s}$ और $4 \\mathrm{~m} / \\mathrm{s}^2$"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "$2 \\mathrm{~m} / \\mathrm{s}$ और $1 \\mathrm{~m} / \\mathrm{s}^2$"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "$1 \\mathrm{~m} / \\mathrm{s}$ और $4 \\mathrm{~m} / \\mathrm{s}^2$"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "uniform-circular-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq8jlj8d",
+            "chapter": "circular-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The velocity and acceleration vectors of a particle undergoing circular motion are $\\vec{v} = 2\\hat{i} \\ \\text{m/s}$ and $\\vec{a} = 2\\hat{i} + 4\\hat{j} \\ \\text{m/s}^2$ respectively at an instant of time. The radius of the circle is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 m</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2 m</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3 m</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>4 m</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For motion in a circle, acceleration has two components:</p>\n<ul>\n<li><p>tangential acceleration along the direction of velocity</p></li>\n<li><p>normal (centripetal) acceleration perpendicular to velocity</p></li>\n</ul>\n<p>Given,</p>\n<p>$$ \\vec{v} = 2\\hat{i}\\ \\text{m/s} $$</p>\n<p>So the speed is</p>\n<p>$$ v = 2\\ \\text{m/s} $$</p>\n<p>Also,</p>\n<p>$$ \\vec{a} = 2\\hat{i} + 4\\hat{j}\\ \\text{m/s}^2 $$</p>\n<p>Since velocity is along $\\hat{i}$ direction, the acceleration component along $\\hat{i}$ is tangential acceleration, and the component along $\\hat{j}$ is normal acceleration.</p>\n<p>So,</p>\n<p>$$ a_n = 4\\ \\text{m/s}^2 $$</p>\n<p>For circular motion,</p>\n<p>$$ a_n = \\frac{v^2}{r} $$</p>\n<p>Putting the values,</p>\n<p>$$ 4 = \\frac{(2)^2}{r} $$</p>\n<p>$$ 4 = \\frac{4}{r} $$</p>\n<p>$$ r = 1\\ \\text{m} $$</p>\n<p>So the radius of the circle is</p>\n<p>$$ \\boxed{1\\ \\text{m}} $$</p>\n<p>Option A.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>वृत्तीय गति कर रहे एक कण के वेग और त्वरण सदिश किसी क्षण क्रमशः $\\vec{v} = 2\\hat{i} \\ \\text{m/s}$ और $\\vec{a} = 2\\hat{i} + 4\\hat{j} \\ \\text{m/s}^2$ हैं। वृत्त की त्रिज्या है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 m</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2 m</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3 m</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>4 m</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "uniform-circular-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq8k7mek",
+            "chapter": "circular-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A disc of radius 1 m rotates about a fixed axis passing through its centre (axis is perpendicular to the plane of the disc). Its rotation angle varies as $\\theta = \\sqrt{2} t^2$, where $t$ is in second and $\\theta$ is in radian. The magnitude of acceleration of a point on its periphery at time $t = 1$ s is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>zero</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2\\sqrt{2}$ m/s$^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>8 m/s$^2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$6\\sqrt{2}$ m/s$^2$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Let O be the centre of the disc of radius $r=1 \\mathrm{~m}$ and P be the point on its periphery.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mq8jy6hh%2F609afcd7-fe41-43fe-9eb4-e8ed8c1b9a9b%2F509eb850-650f-11f1-b114-21097c116aab%2Ffile-6y3zli1mq8jy6hi.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mq8jy6hh%2F609afcd7-fe41-43fe-9eb4-e8ed8c1b9a9b%2F509eb850-650f-11f1-b114-21097c116aab%2Ffile-6y3zli1mq8jy6hi.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The angle made by the line OP with a fixed line OQ varies with time as $\\theta=\\sqrt{2} t^2$. Differentiate $\\theta$ with time to get the angular velocity of the line OP (this is same as angular velocity of the disc because line OP is fixed on the disc) as</p>\n<p>$$ \\omega=\\mathrm{d} \\theta / \\mathrm{d} t=2 \\sqrt{2} t . $$</p>\n<p>The rotation is about a 'fixed' axis passing through $O$. Thus, velocity of the point $O$ is zero. Hence, the velocity of the point P is given by</p>\n<p>$$ v=\\omega r=2 \\sqrt{2} r t $$</p>\n<p>Differentiate velocity with time to get the tangential acceleration of the point P as</p>\n<p>$$ a_t=\\mathrm{d} v / \\mathrm{d} t=2 \\sqrt{2} r $$</p>\n<p>The radial acceleration (centripetal acceleration) of the point $P$ is given by</p>\n<p>$$ a_c=v^2 / r=8 r t^2 $$</p>\n<p>The magnitude of the acceleration of the point P is</p>\n<p>$$ a=\\sqrt{a_t^2+a_c^2}=\\sqrt{8 r^2+64 r^2 t^4}=6 \\sqrt{2} \\mathrm{~m} / \\mathrm{s}^2 $$</p>\n<p>where we substituted $r=1 \\mathrm{~m}$ and $t=1 \\mathrm{~s}$. Note that tangential acceleration for a fixed axis rotation can be written as $r \\mathrm{~d}^2 \\theta / \\mathrm{d} t^2$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>1 m त्रिज्या की एक चकती अपने केंद्र से गुजरने वाले एक स्थिर अक्ष (अक्ष चकती के तल के लंबवत है) के परितः घूर्णन करती है। इसका घूर्णन कोण $\\theta = \\sqrt{2} t^2$ के अनुसार परिवर्तित होता है, जहाँ $t$ सेकंड में और $\\theta$ रेडियन में है। समय $t = 1$ s पर इसकी परिधि पर स्थित एक बिंदु के त्वरण का परिमाण है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>शून्य</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2\\sqrt{2}$ m/s$^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>8 m/s$^2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$6\\sqrt{2}$ m/s$^2$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "uniform-circular-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq8l0tmh",
+            "chapter": "circular-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In a watch, the seconds hand is 1 cm long. The magnitude of the change in velocity of its tip in 15 seconds is:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{\\pi \\sqrt{2}}{30} $ cm/s</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{\\pi}{30} $ cm/s</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{\\pi \\sqrt{2}}{30} $ cm/s</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mq8kzt7r%2F150f27e0-edf1-4071-9ad5-0f1c7646a003%2F671ddb70-6513-11f1-b524-8de595d7b657%2Ffile-6y3zli1mq8kzt7s.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mq8kzt7r%2F150f27e0-edf1-4071-9ad5-0f1c7646a003%2F671ddb70-6513-11f1-b524-8de595d7b657%2Ffile-6y3zli1mq8kzt7s.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>The second hand of a watch completes one full rotation in 60 seconds. Its angular speed is given by</p>\n<p>$$\\omega = \\frac{2\\pi}{60}\\ \\text{radians per second}$$</p>\n<p>The length of the second hand is $ r = 1\\,\\text{cm} $. So, the speed of the tip is</p>\n<p>$$v = \\omega r = \\frac{2\\pi}{60} \\times 1 = \\frac{\\pi}{30}\\ \\text{cm/s}$$</p>\n<p>In 15 seconds, the hand covers one-fourth of a full circle (because $ \\frac{15}{60} = \\frac{1}{4} $). This means the direction of the velocity changes by $90^\\circ$.</p>\n<p>At the start, let the velocity be $ \\overrightarrow{v}_1 = v \\hat{i} $.  \n\nAfter 15 seconds, the velocity will be $ \\overrightarrow{v}_2 = -v \\hat{j} $.</p>\n<p>The change in velocity is</p>\n<p>$$\\overrightarrow{v}_2 - \\overrightarrow{v}_1 = -v(\\hat{i} + \\hat{j})$$</p>\n<p>The magnitude of this change is</p>\n<p>$$|\\overrightarrow{v}_2 - \\overrightarrow{v}_1| = v\\sqrt{2} = \\sqrt{2} \\times \\omega r$$</p>\n<p>$$|\\overrightarrow{v}_2 - \\overrightarrow{v}_1| = \\sqrt{2} \\times \\frac{2\\pi}{60} \\times 1 = \\frac{\\pi \\sqrt{2}}{30}\\ \\text{cm/s}$$</p>\n<p>Hence, the magnitude of change in velocity of the tip in 15 seconds is $ \\frac{\\pi \\sqrt{2}}{30}\\ \\text{cm/s} $.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक घड़ी में, सेकंड की सुई 1 cm लंबी है। 15 सेकंड में इसके सिरे के वेग में परिवर्तन का परिमाण है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{\\pi \\sqrt{2}}{30} $ cm/s</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{\\pi}{30} $ cm/s</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{\\pi \\sqrt{2}}{30} $ cm/s</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "uniform-circular-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq8l8br5",
+            "chapter": "circular-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two particles begin to move on the same circular path of radius 2 m from the same point <b>P</b> at <b>t = 0</b>. They have constant tangential accelerations $2 \\text{ m/s}^2$ (clockwise) and $6 \\text{ m/s}^2$ (anticlockwise), respectively. Let the point of their first meeting be <b>Q</b>. The smaller angle made by the chord <b>PQ</b> at the centre of the circle is:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>120&deg;</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>60&deg;</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>135&deg;</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>90&deg;</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mq8l6y5l%2F6bb46f3d-e842-49b6-9bd9-ff8f8d043a21%2F2d98b590-6514-11f1-b524-8de595d7b657%2Ffile-6y3zli1mq8l6y5m.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mq8l6y5l%2F6bb46f3d-e842-49b6-9bd9-ff8f8d043a21%2F2d98b590-6514-11f1-b524-8de595d7b657%2Ffile-6y3zli1mq8l6y5m.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>For motion on a circle, tangential acceleration and angular acceleration are related by</p>\n<p>$$a_t = r\\alpha$$</p>\n<p>Since the radius is $r = 2\\ \\text{m}$,</p>\n<p>for the first particle,</p>\n<p>$$\\alpha_1 = \\frac{2}{2} = 1\\ \\text{rad/s}^2$$</p>\n<p>and for the second particle,</p>\n<p>$$\\alpha_2 = \\frac{6}{2} = 3\\ \\text{rad/s}^2$$</p>\n<p>They start from the same point and from rest, so angular displacement after time $t$ is</p>\n<p>$$\\theta = \\frac{1}{2}\\alpha t^2$$</p>\n<p>Take clockwise as positive for the first particle.</p>\n<p>Then its angular displacement is</p>\n<p>$$\\theta_1 = \\frac{1}{2}(1)t^2 = \\frac{t^2}{2}$$</p>\n<p>The second particle moves anticlockwise, so its angular displacement is</p>\n<p>$$\\theta_2 = -\\frac{1}{2}(3)t^2 = -\\frac{3t^2}{2}$$</p>\n<p>They meet again when their angular positions differ by $2\\pi$:</p>\n<p>$$\\theta_1 - \\theta_2 = 2\\pi$$</p>\n<p>So,</p>\n<p>$$\\frac{t^2}{2} - \\left(-\\frac{3t^2}{2}\\right) = 2\\pi$$</p>\n<p>$$2t^2 = 2\\pi$$</p>\n<p>$$t^2 = \\pi$$</p>\n<p>Now angular displacement of the first particle at that time is</p>\n<p>$$\\theta_1 = \\frac{\\pi}{2}$$</p>\n<p>So the meeting point $Q$ is at an angular distance of</p>\n<p>$$\\frac{\\pi}{2} = 90^\\circ$$</p>\n<p>from $P$ along one side.  </p>\n<p>The other side would be $360^\\circ - 90^\\circ = 270^\\circ$.</p>\n<p>So the smaller angle subtended by $PQ$ at the center is</p>\n<p>$$90^\\circ$$</p>\n<p>Option D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो कण <b>t = 0</b> पर एक ही बिंदु <b>P</b> से 2 m त्रिज्या वाले समान वृत्ताकार पथ पर गति करना प्रारंभ करते हैं। उनके पास नियत स्पर्शरेखीय त्वरण क्रमशः $2 \\text{ m/s}^2$ (दक्षिणावर्त) और $6 \\text{ m/s}^2$ (वामावर्त) हैं। माना उनके पहली बार मिलने का बिंदु <b>Q</b> है। वृत्त के केंद्र पर जीवा <b>PQ</b> द्वारा बनाया गया छोटा कोण है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>120&deg;</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>60&deg;</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>135&deg;</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>90&deg;</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "uniform-circular-motion",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mnmvf98h",
+            "chapter": "circular-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle is moving along a circular path of radius 40 cm. At an instant of time, when the acceleration vector makes an angle of $60^{\\circ}$ with the radius vector, the speed of the particle is $2 \\mathrm{~m} \\mathrm{~s}^{-1}$ and the magnitude of acceleration $\\mathrm{a}=10 \\mathrm{n} \\,\\,\\mathrm{m} \\mathrm{s}^{-2}$. What is the value of n?</p>",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>In circular motion, a particle has two components of acceleration :</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mnmvb833%2Fe5c7a4cb-10f9-4510-b798-d19ab1111203%2F12c05b00-318a-11f1-9a4a-477d11fe53ac%2Ffile-6y3zli1mnmvb834.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mnmvb833%2Fe5c7a4cb-10f9-4510-b798-d19ab1111203%2F12c05b00-318a-11f1-9a4a-477d11fe53ac%2Ffile-6y3zli1mnmvb834.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$\\mathrm{a}_{\\mathrm{c}}=$ centripetal acceleration acting towards the centre, along the radius and $\\mathrm{a}_{\\mathrm{t}}=$ tangential acceleration acting along the tangent to the path.</p>\n<p>The formula for centripetal acceleration is:</p>\n<p>$$ \\mathrm{a}_{\\mathrm{c}}=\\frac{\\mathrm{v}^2}{\\mathrm{R}} $$</p>\n<p>The speed of particle is given as $\\mathrm{v}=2 \\mathrm{~m} / \\mathrm{s}$ and the radius of path is $\\mathrm{R}=40 \\mathrm{~cm}=0.4 \\mathrm{~m}$</p>\n<p>So, the magnitude of centripetal acceleration is $\\mathrm{a}_{\\mathrm{c}}=\\frac{2^2}{0.4}=\\frac{4}{0.4}=10 \\mathrm{~m} / \\mathrm{s}^2$</p>\n<p>The net acceleration vector $(\\overrightarrow{\\mathrm{a}})$ is the resultant of $\\mathrm{a}_{\\mathrm{c}}$ and $\\mathrm{a}_{\\mathrm{t}}$.</p>\n<p>$$ \\mathrm{a}_{\\mathrm{c}}=\\mathrm{a} \\cos 60^{\\circ} $$</p>\n<p>$$\\Rightarrow $$ $10=a \\times 0.5$</p>\n<p>$$\\Rightarrow $$ $\\mathrm{a}=\\frac{10}{0.5}=20 \\mathrm{~m} / \\mathrm{s}^2$</p>\n<p>$\\Rightarrow 20=10 n$</p>\n<p>$$ \\Rightarrow \\mathrm{n}=2 $$</p>\n<p>Therefore, the value of $\\mathbf{n}$ is $\\mathbf{2}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक कण 40 cm त्रिज्या के एक वृत्ताकार पथ पर गति कर रहा है। समय के एक क्षण पर, जब त्वरण सदिश त्रिज्या सदिश के साथ $60^{\\circ}$ का कोण बनाता है, तो कण की चाल $2 \\mathrm{~m} \\mathrm{~s}^{-1}$ और त्वरण का परिमाण $\\mathrm{a}=10 \\mathrm{n} \\,\\,\\mathrm{m} \\mathrm{s}^{-2}$ है। n का मान क्या है?</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "uniform-circular-motion",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mc3iniso",
+            "languages": [
+              "en"
+            ],
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "A particle is moving on circular path and it's angular velocity $\\vec{\\omega}=3 \\hat{i}+4 \\hat{j}+3 \\hat{k}$ and position of particle with respect to center is $\\vec{r}=\\mathrm{x} \\hat{i}-6 \\hat{j}+3 \\hat{k}$. Find the value of x.",
+                "options": [],
+                "answer": "5",
+                "explanation": "<p>For a particle moving in a circular path, the angular velocity vector ($\\vec{\\omega}$) and the position vector ($\\vec{r}$) of the particle relative to the center of the circle are always perpendicular to each other.</p>\n<p>When two vectors are perpendicular, their dot product is zero. So, we can use the condition:</p>\n<p>$$\\vec{\\omega} \\cdot \\vec{r} = 0$$</p>\n<p>You've given us:</p>\n<p>$$\\vec{\\omega} = 3 \\hat{i} + 4 \\hat{j} + 3 \\hat{k}$$</p>\n<p>$$\\vec{r} = x \\hat{i} - 6 \\hat{j} + 3 \\hat{k}$$</p>\n<p>Let's calculate the dot product of these two vectors:</p>\n<p>$$\\vec{\\omega} \\cdot \\vec{r} = (3)(x) + (4)(-6) + (3)(3)$$</p>\n<p>Now, let's simplify this expression:</p>\n<p>$$3x - 24 + 9$$</p>\n<p>$$3x - 15$$</p>\n<p>Since the dot product must be zero for circular motion, we set the expression equal to 0:</p>\n<p>$$3x - 15 = 0$$</p>\n<p>Finally, we solve for x:</p>\n<p>$$3x = 15$$</p>\n<p>$$x = \\frac{15}{3}$$</p>\n<p>$$x = 5$$</p>\n<p>So, the value of x is 5.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "एक कण वृत्ताकार पथ पर गति कर रहा है और इसका कोणीय वेग $\\vec{\\omega}=3 \\hat{i}+4 \\hat{j}+3 \\hat{k}$ तथा केंद्र के सापेक्ष कण की स्थिति $\\vec{r}=\\mathrm{x} \\hat{i}-6 \\hat{j}+3 \\hat{k}$ है। x का मान ज्ञात कीजिए।",
+                "options": []
+              }
+            },
+            "type": "integer",
+            "country": "in",
+            "examGroup": "jee",
+            "exam": "jee-main",
+            "subject": "physics",
+            "chapterGroup": "mechanics",
+            "chapter": "circular-motion",
+            "topic": "uniform-circular-motion",
+            "marks": 4,
+            "negMarks": 1,
+            "timeAllotted": 144000,
+            "difficulty": "easy"
+          },
+          {
+            "questionId": "tq-mq8ksvkp",
+            "chapter": "circular-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A wheel is of diameter 1 m . If it makes 30 revolutions $/ \\mathrm{sec}$., the linear speed of a point on its circumference will be equal to $N \\pi$ (in $\\mathrm{m} / \\mathrm{s}$ ). Find the value of $N$.</p>",
+                "options": [],
+                "answer": "30",
+                "explanation": "<p>The distance covered in one revolution is the circumference of the wheel.</p>\n<p>Since diameter $= 1\\ \\text{m}$, circumference is</p>\n<p>$$ \\pi d = \\pi \\times 1 = \\pi\\ \\text{m} $$</p>\n<p>The wheel makes $30$ revolutions in $1$ second.</p>\n<p>So, linear speed of a point on the circumference is</p>\n<p>$$ 30 \\times \\pi = 30\\pi\\ \\text{m/s} $$</p>\n<p>It is given as $N\\pi$.</p>\n<p>So,</p>\n<p>$$ N\\pi = 30\\pi $$</p>\n<p>Hence,</p>\n<p>$$ N = 30 $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक पहिये का व्यास 1 m है। यदि यह 30 चक्कर $/ \\mathrm{sec}.$ लगाता है, तो इसकी परिधि पर स्थित किसी बिंदु की रैखिक चाल $N \\pi$ ($\\mathrm{m} / \\mathrm{s}$ में) के बराबर होगी। $N$ का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "uniform-circular-motion",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mq8kw3eu",
+            "chapter": "circular-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>An aeroplane revolves in a circle above the surface of the earth at a fixed height with speed $100 \\mathrm{~km} / \\mathrm{hr}$. The magnitude of change in velocity after completing $1 / 2$ revolution is equal to 8 N (in $\\mathrm{km} / \\mathrm{hr}$ ). Find the value of N .</p>",
+                "options": [],
+                "answer": "25",
+                "explanation": "<p>When the aeroplane completes half a revolution in a circular path, its direction becomes exactly opposite to the initial direction, while the speed remains the same.</p>\n<p>So,</p>\n<ul>\n<li><p>initial velocity $= \\vec{v}$</p></li>\n<li><p>final velocity after half revolution $= -\\vec{v}$</p></li>\n</ul>\n<p>The change in velocity is</p>\n<p>$$ \\Delta \\vec{v} = \\vec{v}_f - \\vec{v}_i = (-\\vec{v}) - (\\vec{v}) = -2\\vec{v} $$</p>\n<p>Its magnitude is</p>\n<p>$$ |\\Delta \\vec{v}| = 2v $$</p>\n<p>Given speed,</p>\n<p>$$ v = 100 \\ \\text{km/hr} $$</p>\n<p>So,</p>\n<p>$$ |\\Delta \\vec{v}| = 2 \\times 100 = 200 \\ \\text{km/hr} $$</p>\n<p>It is given that this change is equal to $8N$ km/hr.</p>\n<p>So,</p>\n<p>$$ 8N = 200 $$</p>\n<p>$$ N = \\frac{200}{8} = 25 $$</p>\n<p>So, the value of $N$ is</p>\n<p>$$ \\boxed{25} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक हवाई जहाज पृथ्वी की सतह के ऊपर एक निश्चित ऊंचाई पर $100 \\mathrm{~km} / \\mathrm{hr}$ की चाल से एक वृत्त में चक्कर लगाता है। $1 / 2$ चक्कर पूरा करने के बाद वेग में परिवर्तन का परिमाण 8 N ( $\\mathrm{km} / \\mathrm{hr}$ में) के बराबर है। N का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "uniform-circular-motion",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mq8m6xwn",
+            "chapter": "circular-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "Angular position $\\theta$ of a particle moving on a curvilinear path varies according to $\\theta=t^3-3 t^2+4 t-2$, where $\\theta$ is in radians and time $t$ is in seconds. What is its average angular acceleration in the time interval $t=2 s$ to $t=4 s$ ?",
+                "options": [],
+                "answer": "12",
+                "explanation": "<p>Average angular acceleration is just like average linear acceleration. It tells us how much the angular velocity changes during a given time interval.</p>\n<p>So we can write it as</p>\n<p>$$\\alpha_{av} = \\frac{\\Delta \\omega}{\\Delta t} = \\frac{\\omega_{final} - \\omega_{initial}}{t_{final} - t_{initial}} \\ldots (i)$$</p>\n<p>To use this formula, we first need the angular velocity at $t = 2\\,s$ and $t = 4\\,s$. Since angular velocity is the rate of change of angular position, we get it by differentiating $\\theta$ with respect to $t$.</p>\n<p>$$\\omega = \\frac{d\\theta}{dt}$$</p>\n<p>Differentiating the given expression $\\theta = t^3 - 3t^2 + 4t - 2$, we get</p>\n<p>$$\\omega = 3t^2 - 6t + 4 \\ldots (ii)$$</p>\n<p>Now putting $t = 2\\,s$ and $t = 4\\,s$ in equation (ii):</p>\n<p>$$\\omega_2 = 3(2)^2 - 6(2) + 4 = 4\\ \\text{rad/s}$$</p>\n<p>$$\\omega_4 = 3(4)^2 - 6(4) + 4 = 28\\ \\text{rad/s}$$</p>\n<p>Putting these values back into equation (i):</p>\n<p>$$\\alpha_{av} = \\frac{28 - 4}{4 - 2} = 12\\ \\text{rad/s}^2$$</p>\n<p>So the average angular acceleration during this interval is $12\\ \\text{rad/s}^2$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "एक वक्र पथ पर गतिमान एक कण की कोणीय स्थिति $\\theta$ समय के साथ $\\theta=t^3-3 t^2+4 t-2$ के अनुसार परिवर्तित होती है, जहाँ $\\theta$ रेडियन में और समय $t$ सेकंड में है। समयांतराल $t=2 s$ से $t=4 s$ में इसका औसत कोणीय त्वरण क्या है?",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "uniform-circular-motion",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Displacement, Velocity, Acceleration and Angular Velocity",
+    "timeAllotted": 2160000,
+    "title": "Circular Motion Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g71mnq7q58s",
+    "defaultLanguage": "en",
+    "description": "Displacement, Velocity, Acceleration and Angular Velocity",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-11T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Displacement, Velocity, Acceleration and Angular Velocity",
+    "timeAllotted": 2160000,
+    "title": "Circular Motion Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Circular Motion"
+  }
+}

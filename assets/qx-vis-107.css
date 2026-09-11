@@ -1,0 +1,613 @@
+/* qxmd107 — universal CBT/practice/book visibility + Quizrr/NTA shell
+   Fixes white-on-white / ink-on-dark for stems, options, solutions, meta.
+   Loaded last so it wins over gemini/text-visible/opt conflicts. */
+
+/* ========== 1) LIGHT SURFACES → dark ink ========== */
+html[data-theme="light"] .mtk-q-text,
+html[data-theme="light"] .mtk-q-text .qx-content,
+html[data-theme="light"] .mtk-q-text *:not(img):not(svg):not(path):not(.mtk-opt-letter):not(.qx-opt-circle),
+html[data-theme="light"] .eg-q-stem,
+html[data-theme="light"] .eg-q-stem *:not(img):not(svg):not(path):not(.mtk-opt-letter),
+html[data-theme="light"] .qx-prac-q,
+html[data-theme="light"] .qx-prac-q *:not(img):not(svg):not(path):not(.mtk-opt-letter),
+html[data-theme="light"] .qx-question-body,
+html[data-theme="light"] .qx-question-body *:not(img):not(svg):not(path),
+html[data-theme="light"] .sol-body,
+html[data-theme="light"] .qx-sol-flow,
+html[data-theme="light"] .qx-sol-flow p,
+html[data-theme="light"] .eg-sol,
+html[data-theme="light"] .eg-sol *:not(img):not(svg):not(path),
+html[data-theme="light"] .qx-content,
+html[data-theme="light"] .mtk-opt-text,
+html[data-theme="light"] .qx-prac-opt-text,
+html[data-theme="light"] .katex,
+html[data-theme="light"] .katex *,
+html[data-theme="light"] mjx-container,
+html[data-theme="light"] mjx-container *,
+.mtk-test-root[data-test-theme="light"] .mtk-q-text,
+.mtk-test-root[data-test-theme="light"] .mtk-q-text *:not(img):not(svg):not(path):not(.mtk-opt-letter):not(.qx-opt-circle),
+.mtk-test-root[data-test-theme="light"] .mtk-opt-text,
+.mtk-test-root[data-test-theme="light"] .mtk-opt-text *:not(img):not(svg):not(path):not(.mtk-opt-letter),
+.mtk-test-root[data-test-theme="light"] .qx-question-body,
+.mtk-test-root[data-test-theme="light"] .qx-question-body *:not(img):not(svg):not(path),
+.mtk-test-root[data-test-theme="light"] .sol-body,
+.mtk-test-root[data-test-theme="light"] .qx-sol-flow,
+.mtk-test-root[data-test-theme="light"] .katex,
+.mtk-test-root[data-test-theme="light"] .katex *,
+.eg-test-root[data-test-theme="light"] .eg-q-stem,
+.eg-test-root[data-test-theme="light"] .eg-q-stem *:not(img):not(svg):not(path):not(.mtk-opt-letter),
+.eg-test-root[data-test-theme="light"] .mtk-q-text,
+.eg-test-root[data-test-theme="light"] .mtk-opt-text,
+.eg-test-root[data-test-theme="light"] .eg-sol,
+.eg-test-root[data-test-theme="light"] .qx-sol-flow,
+.eg-test-root[data-test-theme="light"] .katex,
+.eg-test-root[data-test-theme="light"] .katex *,
+.qzrr-cbt:not(.qzrr-dark) .qzrr-q-area,
+.qzrr-cbt:not(.qzrr-dark) .qzrr-q-area .mtk-q-text,
+.qzrr-cbt:not(.qzrr-dark) .qzrr-q-area .mtk-q-text *:not(img):not(svg):not(path):not(.mtk-opt-letter),
+.qzrr-cbt:not(.qzrr-dark) .qzrr-q-area .qx-content,
+.qzrr-cbt:not(.qzrr-dark) .qzrr-qtype,
+.qzrr-cbt:not(.qzrr-dark) .qzrr-qno,
+.qzrr-cbt:not(.qzrr-dark) .qzrr-marks-line,
+.qzrr-cbt:not(.qzrr-dark) .qzrr-section-info,
+.qzrr-cbt:not(.qzrr-dark) .qzrr-section-info *,
+.qzrr-cbt:not(.qzrr-dark) .qx-sec-instr,
+.qzrr-cbt:not(.qzrr-dark) .qx-sec-instr *,
+.qzrr-cbt[data-test-theme="light"] .qzrr-q-area,
+.qzrr-cbt[data-test-theme="light"] .mtk-q-text,
+.qzrr-cbt[data-test-theme="light"] .mtk-q-text *:not(img):not(svg):not(path):not(.mtk-opt-letter),
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-q-text,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-q-text *:not(img):not(svg):not(path):not(.mtk-opt-letter),
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-opt-text,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .eg-q-stem,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .mtk-q-text,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .eg-sol,
+html[data-theme="dark"] .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area .mtk-q-text,
+html[data-theme="dark"] .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area .mtk-q-text *,
+html[data-theme="dark"] .qzrr-cbt[data-test-theme="light"] .mtk-q-text,
+html[data-theme="dark"] .qx-practice-page .qx-prac-q,
+html[data-theme="dark"] .qx-practice-page .qx-prac-q *:not(img):not(svg):not(path):not(.mtk-opt-letter),
+body.qx-book-mode .qx-prac-q,
+body.qx-book-mode .mtk-q-text,
+body.qx-book-mode .qx-prac-opt-text,
+.qx-practice-page .qx-prac-q,
+.qx-practice-page .mtk-q-text {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Light q-area / cards stay white so dark ink reads */
+.mtk-test-root[data-test-theme="light"] .qzrr-q-area,
+.mtk-test-root[data-test-theme="light"] .qzrr-main-col,
+.qzrr-cbt:not(.qzrr-dark) .qzrr-q-area,
+.qzrr-cbt:not(.qzrr-dark) .qzrr-main-col,
+.eg-test-root[data-test-theme="light"] .eg-q-card,
+.qx-practice-page .qx-prac-body,
+body.qx-book-mode .qx-prac-body {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* ========== 2) DARK SURFACES → pale ink ========== */
+.mtk-test-root[data-test-theme="dark"] .mtk-q-text,
+.mtk-test-root[data-test-theme="dark"] .mtk-q-text *:not(img):not(svg):not(path):not(.mtk-opt-letter):not(.qx-opt-circle),
+.mtk-test-root[data-test-theme="dark"] .qx-question-body,
+.mtk-test-root[data-test-theme="dark"] .qx-question-body *:not(img):not(svg):not(path),
+.mtk-test-root[data-test-theme="dark"] .sol-body,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-flow,
+.mtk-test-root[data-test-theme="dark"] .katex,
+.mtk-test-root[data-test-theme="dark"] .katex *,
+.eg-test-root[data-test-theme="dark"] .eg-q-stem,
+.eg-test-root[data-test-theme="dark"] .eg-q-stem *:not(img):not(svg):not(path):not(.mtk-opt-letter),
+.eg-test-root[data-test-theme="dark"] .mtk-q-text,
+.eg-test-root[data-test-theme="dark"] .eg-sol,
+.eg-test-root[data-test-theme="dark"] .qx-sol-flow,
+.eg-test-root[data-test-theme="dark"] .katex,
+.eg-test-root[data-test-theme="dark"] .katex *,
+.qzrr-cbt.qzrr-dark .qzrr-q-area,
+.qzrr-cbt.qzrr-dark .qzrr-q-area .mtk-q-text,
+.qzrr-cbt.qzrr-dark .qzrr-q-area .mtk-q-text *:not(img):not(svg):not(path):not(.mtk-opt-letter),
+.qzrr-cbt.qzrr-dark .qzrr-q-area .qx-content,
+.qzrr-cbt.qzrr-dark .qzrr-qtype,
+.qzrr-cbt.qzrr-dark .qzrr-qno,
+.qzrr-cbt.qzrr-dark .qzrr-marks-line,
+.qzrr-cbt.qzrr-dark .qzrr-section-info,
+.qzrr-cbt.qzrr-dark .qzrr-section-info *,
+.qzrr-cbt.qzrr-dark .qx-sec-instr,
+.qzrr-cbt.qzrr-dark .qx-sec-instr *,
+.qzrr-cbt[data-test-theme="dark"] .mtk-q-text,
+html[data-theme="dark"] body:not(.marks-test-active) .mtk-q-text:not(.mtk-opt-text),
+html[data-theme="dark"] body:not(.marks-test-active) .qx-prac-q,
+html[data-theme="dark"] body:not(.marks-test-active) .eg-q-stem,
+html[data-theme="dark"] body:not(.marks-test-active) .sol-body,
+html[data-theme="dark"] body:not(.marks-test-active) .qx-sol-flow {
+  color: #e8eef7 !important;
+  -webkit-text-fill-color: #e8eef7 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qzrr-q-area,
+.mtk-test-root[data-test-theme="dark"] .qzrr-main-col,
+.qzrr-cbt.qzrr-dark .qzrr-q-area,
+.qzrr-cbt.qzrr-dark .qzrr-main-col,
+.eg-test-root[data-test-theme="dark"] .eg-q-card {
+  background: #1e2128 !important;
+  color: #e8eef7 !important;
+}
+
+/* ========== 3) OPTION CARDS: always white plate + dark ink (never pale-on-white) ========== */
+.mtk-opt,
+.eg-opt,
+.qx-prac-opt,
+.qa-opt,
+.mtk-test-root .mtk-opt,
+.eg-test-root .mtk-opt,
+.qzrr-cbt .mtk-opt,
+.qzrr-cbt.qzrr-dark .mtk-opt,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt,
+.eg-test-root[data-test-theme="dark"] .mtk-opt,
+html[data-theme="dark"] .mtk-opt,
+html[data-theme="dark"] .qx-prac-opt,
+html[data-theme="dark"] .qa-opt,
+body.qx-book-mode .mtk-opt,
+body.qx-book-mode .qx-prac-opt {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  border: 1.5px solid #c5cae9 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.mtk-opt .mtk-opt-text,
+.mtk-opt .mtk-opt-text *,
+.mtk-opt .qx-content,
+.mtk-opt .qx-content *,
+.mtk-opt .katex,
+.mtk-opt .katex *,
+.qx-prac-opt .qx-prac-opt-text,
+.qx-prac-opt .qx-prac-opt-text *,
+.qx-prac-opt .katex,
+.qx-prac-opt .katex *,
+.qa-opt,
+.qa-opt *,
+.qzrr-cbt.qzrr-dark .mtk-opt .mtk-opt-text,
+.qzrr-cbt.qzrr-dark .mtk-opt .mtk-opt-text *,
+.qzrr-cbt.qzrr-dark .mtk-opt .katex,
+.qzrr-cbt.qzrr-dark .mtk-opt .katex *,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt .mtk-opt-text,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt .mtk-opt-text *,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt .katex,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt .katex *,
+html[data-theme="dark"] .mtk-opt .mtk-opt-text,
+html[data-theme="dark"] .mtk-opt .mtk-opt-text *,
+html[data-theme="dark"] .mtk-opt .katex,
+html[data-theme="dark"] .mtk-opt .katex * {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Selected / correct / wrong badges stay readable (soft, not solid paint-over) */
+.mtk-opt.selected:not(.correct):not(.wrong):not(.eg-opt-right):not(.eg-opt-wrong),
+.qx-prac-opt.selected:not(.correct):not(.wrong) {
+  background: #e8eaf6 !important;
+  border-color: #3f51b5 !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+.mtk-opt.eg-opt-right,
+.mtk-opt.correct,
+.qx-prac-opt.correct {
+  background: #e8f5e9 !important;
+  border-color: #43a047 !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+.mtk-opt.eg-opt-wrong,
+.mtk-opt.wrong,
+.qx-prac-opt.wrong {
+  background: #ffebee !important;
+  border-color: #e53935 !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+.mtk-opt.eg-opt-right .mtk-opt-text,
+.mtk-opt.eg-opt-right .mtk-opt-text *,
+.mtk-opt.correct .mtk-opt-text,
+.mtk-opt.correct .mtk-opt-text *,
+.mtk-opt.eg-opt-wrong .mtk-opt-text,
+.mtk-opt.eg-opt-wrong .mtk-opt-text *,
+.mtk-opt.wrong .mtk-opt-text,
+.mtk-opt.wrong .mtk-opt-text *,
+.mtk-opt.selected .mtk-opt-text,
+.mtk-opt.selected .mtk-opt-text * {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+
+/* ========== 4) Numerical answer box always visible ========== */
+.mtk-numerical-wrap,
+.qx-prac-numerical,
+.qx-num-entry,
+.qx-num-box-wrap,
+#qxOpts.mtk-numerical-wrap {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 52px !important;
+}
+input.qx-num-input,
+.qx-num-input,
+.mtk-num-input,
+.eg-num-input {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: min(280px, 90%) !important;
+  min-height: 48px !important;
+  height: 48px !important;
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  border: 2px solid #2563eb !important;
+  border-radius: 10px !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  caret-color: #2563eb !important;
+  pointer-events: auto !important;
+}
+.mtk-test-root[data-test-theme="dark"] input.qx-num-input,
+.eg-test-root[data-test-theme="dark"] input.qx-num-input,
+.qzrr-cbt.qzrr-dark input.qx-num-input {
+  background: #0b1220 !important;
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  caret-color: #93c5fd !important;
+  border-color: #60a5fa !important;
+}
+
+/* ========== 5) Submit modal above CBT shell ========== */
+#mtkSubmitModal,
+.marks-modal-overlay#mtkSubmitModal,
+.marks-modal-overlay {
+  z-index: 50000 !important;
+  position: fixed !important;
+  inset: 0 !important;
+  pointer-events: auto !important;
+  display: flex !important;
+}
+.marks-resume-modal,
+.marks-stop-modal {
+  pointer-events: auto !important;
+  z-index: 50001 !important;
+}
+
+/* ========== 6) Quizrr / NTA CBT shell (base layout was incomplete) ========== */
+.mtk-test-root.qzrr-cbt,
+.qzrr-cbt {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 4000 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  max-width: none !important;
+  margin: 0 !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  font-family: Inter, system-ui, sans-serif !important;
+  overflow: hidden !important;
+}
+.qzrr-cbt.qzrr-dark {
+  background: #1e2128 !important;
+  color: #e8eef7 !important;
+}
+.qzrr-black-bar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 42px;
+  padding: 6px 10px;
+  background: #111827 !important;
+  color: #f8fafc !important;
+  z-index: 20;
+}
+.qzrr-black-title {
+  font-weight: 800;
+  font-size: 14px;
+  color: #f8fafc !important;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.qzrr-black-tools {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.qzrr-tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #f8fafc !important;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+.qzrr-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  position: relative;
+}
+.qzrr-cbt.qzrr-side-collapsed .qzrr-body {
+  grid-template-columns: 1fr;
+}
+.qzrr-main-col {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+}
+.qzrr-cbt.qzrr-dark .qzrr-main-col { background: #1e2128; }
+.qzrr-sec-strip,
+.qzrr-sec-row,
+.qzrr-q-meta-row {
+  flex: 0 0 auto;
+  padding: 6px 12px;
+}
+.qzrr-sec-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #e2e8f0;
+}
+.qzrr-cbt.qzrr-dark .qzrr-sec-row { border-bottom-color: #334155; }
+.qzrr-sec-tabs-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.qzrr-sec-lbl { font-size: 12px; font-weight: 800; color: #64748b; }
+.qzrr-sec-chip,
+.mtk-sec-tab.qzrr-sec-chip {
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #0f172a;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+.qzrr-sec-chip.active,
+.mtk-sec-tab.qzrr-sec-chip.active {
+  background: #2563eb !important;
+  color: #fff !important;
+  border-color: #1d4ed8 !important;
+}
+.qzrr-time-box {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: #0f172a;
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+.qzrr-cbt.qzrr-dark .qzrr-time-box {
+  background: #422006;
+  color: #fde68a;
+  border-color: #d97706;
+}
+.qzrr-q-meta-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  font-weight: 700;
+}
+.qzrr-section-info {
+  margin: 0 12px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #f8fafc;
+  padding: 8px 12px;
+  color: #0f172a;
+}
+.qzrr-cbt.qzrr-dark .qzrr-section-info {
+  background: #0f172a;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+.qzrr-section-info.collapsed .qzrr-section-info-ul { display: none; }
+.qzrr-section-info-head {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+.qzrr-q-area {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  padding: 10px 14px 16px;
+  -webkit-overflow-scrolling: touch;
+}
+.qzrr-q-area .mtk-q-text {
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+.qzrr-opts,
+.qzrr-q-area #qxOpts {
+  display: grid;
+  gap: 10px;
+}
+.qzrr-q-area #qxOpts.mtk-numerical-wrap {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+.qzrr-footer-actions {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid #e2e8f0;
+  background: #fff;
+  z-index: 30;
+}
+.qzrr-cbt.qzrr-dark .qzrr-footer-actions {
+  background: #0f172a;
+  border-top-color: #1e293b;
+}
+.qzrr-act-left,
+.qzrr-act-right {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.qzrr-act-right { margin-left: auto; }
+.qzrr-btn {
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: inherit;
+  min-height: 42px;
+}
+.qzrr-btn-outline {
+  background: #fff;
+  border: 1px solid #94a3b8;
+  color: #0f172a;
+}
+.qzrr-btn-primary {
+  background: #2563eb !important;
+  border: 1px solid #1d4ed8 !important;
+  color: #fff !important;
+}
+.qzrr-side {
+  border-left: 1px solid #e2e8f0;
+  background: #fff;
+  overflow: auto;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.qzrr-cbt.qzrr-dark .qzrr-side {
+  background: #0b1220;
+  border-left-color: #1e293b;
+  color: #e2e8f0;
+}
+.qzrr-cbt.qzrr-side-collapsed .qzrr-side { display: none !important; }
+.qzrr-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+.qzrr-grid-cell,
+.qzrr-side .mtk-pal-cell {
+  min-height: 34px;
+  border-radius: 6px;
+  border: 0;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: inherit;
+}
+.qzrr-side-foot {
+  margin-top: auto;
+  position: sticky;
+  bottom: 0;
+  padding-top: 10px;
+  background: inherit;
+}
+.qzrr-side-foot #qxSubmitBtn,
+.qzrr-submit-mobile,
+#qxSubmitBtn,
+#qxSubmitTop {
+  background: #dc2626 !important;
+  color: #fff !important;
+  border: 1px solid #ef4444 !important;
+  width: 100%;
+  min-height: 44px;
+  font-weight: 800;
+  pointer-events: auto !important;
+  z-index: 40 !important;
+}
+
+/* NTA mock: hide non-NTA clutter (zoom FAB / side zoom / A±). Keep Instructions + Question Paper. */
+.qzrr-cbt[data-ui="quizrr"] .qzrr-top-zoom,
+.qzrr-cbt[data-ui="quizrr"] .qzrr-side-zoom,
+.qzrr-cbt[data-ui="quizrr"] #mtkFontDown,
+.qzrr-cbt[data-ui="quizrr"] #mtkFontUp {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .qzrr-body { grid-template-columns: 1fr !important; }
+  .qzrr-side {
+    position: fixed;
+    top: 42px; right: 0; bottom: 0;
+    width: min(300px, 92vw);
+    z-index: 70;
+    box-shadow: -8px 0 24px rgba(0,0,0,.25);
+  }
+  .qzrr-cbt.qzrr-side-collapsed .qzrr-side { display: none !important; }
+  .qzrr-footer-actions { flex-direction: column; align-items: stretch; }
+  .qzrr-act-left, .qzrr-act-right {
+    width: 100%;
+    display: grid;
+    gap: 6px;
+    margin: 0;
+  }
+  .qzrr-act-left { grid-template-columns: 1.35fr 1fr; }
+  .qzrr-act-right { grid-template-columns: 1fr 1.35fr; }
+  .qzrr-submit-mobile { display: flex !important; }
+}
+
+/* Keep Advanced / section instruction panels visible */
+.qzrr-section-info,
+.qx-sec-instr,
+.qx-sec-instr-multi,
+.qx-sec-instr-num,
+.qx-sec-instr-sc {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}

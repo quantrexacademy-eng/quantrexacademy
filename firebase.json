@@ -1,0 +1,228 @@
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "functions": {
+    "source": ".",
+    "runtime": "nodejs20",
+    "ignore": [
+      "node_modules",
+      ".git",
+      ".github",
+      ".vercel",
+      ".firebase",
+      "data",
+      "assets",
+      "scripts",
+      "tools",
+      "docs",
+      "hosting-fast",
+      "marks_data",
+      "pdf_pages",
+      "*.html",
+      "*.css",
+      "*.md",
+      "*.bat",
+      "*.ps1",
+      "*.py",
+      "*.apk",
+      "sw.js"
+    ]
+  },
+  "auth": {
+    "providers": {
+      "emailPassword": true,
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "Quantrex Academy",
+        "supportEmail": "quantrexacademy@gmail.com",
+        "authorizedRedirectUris": [
+          "https://www.quantrexacademy.com/__/auth/handler",
+          "https://quantrexacademy.com/__/auth/handler"
+        ]
+      }
+    }
+  },
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "firebase.hosting-*.json",
+      ".git/**",
+      ".github/**",
+      ".vercel/**",
+      ".firebase/**",
+      ".env",
+      ".env.*",
+      "**/node_modules/**",
+      "functions/node_modules/**",
+      ".git/**",
+      ".github/**",
+      ".vercel/**",
+      ".firebase/**",
+      "api/marks/**",
+      "tools/**",
+      "scripts/**",
+      "docs/**",
+      "marks_data/**",
+      "pdf_pages/**",
+      "_tmp/**",
+      "tmp/**",
+      "temp/**",
+      "output/**",
+      "demo-output/**",
+      "logs/**",
+      "hosting-fast/**",
+      "assets/diagrams/**",
+      "assets/qx-figures/perm/**",
+      "assets/clean-diagrams/**",
+      "assets/black-book-pages/**",
+      "data/_marks_probe/**",
+      "data/_examgoal_ui_probe/**",
+      "data/_migration/**",
+      "data/clean_shards/**",
+      "data/qid_marks/**",
+      "data/qid_quizrr/**",
+      "data/quizrr/**",
+      "data/books/_bb_ocr_cache/**",
+      "node_modules/**",
+      "*.apk",
+      "*.pyc",
+      "*.log",
+      "*.tgz",
+      "*.md",
+      "*.bat",
+      "*.ps1",
+      "*.py",
+      "serviceAccount*.json",
+      "data/marks_config.json",
+      "tools/marks_credentials.json",
+      "tools/marks_token.json"],
+    "headers": [
+      {
+        "source": "/version.json",
+        "headers": [
+          { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate" }
+        ]
+      },
+      {
+        "source": "/app.html",
+        "headers": [
+          { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate" }
+        ]
+      },
+      {
+        "source": "/login.html",
+        "headers": [
+          { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate" }
+        ]
+      },
+      {
+        "source": "/sw.js",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" },
+          { "key": "Service-Worker-Allowed", "value": "/" }
+        ]
+      },
+      {
+        "source": "/pwa-register.js",
+        "headers": [
+          { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate" }
+        ]
+      },
+      {
+        "source": "/.well-known/**",
+        "headers": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Cache-Control", "value": "public, max-age=300" }
+        ]
+      },
+      {
+        "source": "/data/banks/chapters/**",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=2592000" }
+        ]
+      },
+      {
+        "source": "/data/**/*.json",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+        ]
+      },
+      {
+        "source": "**/*.@(js|css)",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+        ]
+      },
+      {
+        "source": "**/*.@(png|jpg|jpeg|webp|svg|woff2|ico)",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=2592000" }
+        ]
+      },
+      {
+        "source": "**",
+        "headers": [
+          { "key": "X-Content-Type-Options", "value": "nosniff" },
+          { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        ]
+      }
+    ],
+    "rewrites": [
+      { "source": "/api/create-order", "function": { "functionId": "createPayment", "region": "us-central1" } },
+      { "source": "/api/create-payment", "function": { "functionId": "createPayment", "region": "us-central1" } },
+      { "source": "/api/verify-payment", "function": { "functionId": "verifyPayment", "region": "us-central1" } },
+      { "source": "/api/payment-webhook", "function": { "functionId": "paymentWebhook", "region": "us-central1" } },
+      { "source": "/api/proxy-image", "function": { "functionId": "proxyImage", "region": "us-central1" } },
+      { "source": "/api/restore-image", "function": { "functionId": "restoreImage", "region": "us-central1" } },
+      { "source": "/api/jovi", "function": { "functionId": "jovi", "region": "us-central1" } },
+      { "source": "/api/admin-login", "function": { "functionId": "adminLogin", "region": "us-central1" } },
+      { "source": "/api/marks/question", "function": { "functionId": "marksQuestion", "region": "us-central1" } },
+      { "source": "/api/marks-question", "function": { "functionId": "marksQuestion", "region": "us-central1" } },
+      { "source": "/api/catalog", "function": { "functionId": "marksQuestion", "region": "us-central1" } },
+      { "source": "/api/marks-nav", "function": { "functionId": "marksNav", "region": "us-central1" } },
+      { "source": "/api/seo-q", "function": { "functionId": "seoQ", "region": "us-central1" } },
+      { "source": "/search", "function": { "functionId": "seoQ", "region": "us-central1" } },
+      { "source": "/q/**", "function": { "functionId": "seoQ", "region": "us-central1" } },
+      { "source": "/jee", "function": { "functionId": "seoQ", "region": "us-central1" } },
+      { "source": "/jee/**", "function": { "functionId": "seoQ", "region": "us-central1" } },
+      { "source": "/neet", "function": { "functionId": "seoQ", "region": "us-central1" } },
+      { "source": "/neet/**", "function": { "functionId": "seoQ", "region": "us-central1" } },
+      { "source": "/nda", "function": { "functionId": "seoQ", "region": "us-central1" } },
+      { "source": "/nda/**", "function": { "functionId": "seoQ", "region": "us-central1" } },
+      { "source": "/bitsat", "function": { "functionId": "seoQ", "region": "us-central1" } },
+      { "source": "/bitsat/**", "function": { "functionId": "seoQ", "region": "us-central1" } },
+      { "source": "/questions", "function": { "functionId": "seoQ", "region": "us-central1" } },
+      { "source": "/topic/**", "function": { "functionId": "seoQ", "region": "us-central1" } },
+      { "source": "/", "destination": "/login.html" },
+      { "source": "/home", "destination": "/login.html" },
+      { "source": "/index.html", "destination": "/login.html" },
+      { "source": "/login", "destination": "/login.html" },
+      { "source": "/app", "destination": "/app.html" },
+      { "source": "/app-native", "destination": "/app-native.html" },
+      { "source": "/privacy", "destination": "/privacy.html" },
+      { "source": "/manifest.json", "destination": "/manifest.webmanifest" },
+      { "source": "/pay", "destination": "/pay.html" },
+      { "source": "/download", "destination": "/download.html" },
+      { "source": "/get-the-app", "destination": "/download.html" },
+      { "source": "/test", "destination": "/test.html" },
+      { "source": "/try", "destination": "/test.html" },
+      { "source": "/share", "destination": "/test.html" },
+      { "source": "/jee-main-pyq-chapter", "destination": "/jee-main-pyq-chapter.html" },
+      { "source": "/examgoal-test-series", "destination": "/examgoal-test-series.html" },
+      { "source": "/jee-main-pyq", "destination": "/jee-main-pyq.html" },
+      { "source": "/jee-main-previous-year-questions", "destination": "/jee-main-pyq.html" },
+      { "source": "/jee-advanced-pyq", "destination": "/jee-advanced-pyq.html" },
+      { "source": "/iit-jee-mathematics", "destination": "/iit-jee-mathematics.html" },
+      { "source": "/jee-maths", "destination": "/iit-jee-mathematics.html" },
+      { "source": "/jee-mock-test", "destination": "/jee-mock-test.html" },
+      { "source": "/jee-mock-tests", "destination": "/jee-mock-test.html" },
+      { "source": "/jee-dpp", "destination": "/jee-dpp.html" },
+      { "source": "/jee-main-2027", "destination": "/jee-main-2027.html" }
+    ]
+  }
+}

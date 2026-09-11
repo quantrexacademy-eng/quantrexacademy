@@ -1,0 +1,30 @@
+Jovi AI setup (Quantrex Academy)
+================================
+
+1) Floating orange robot on app.html = Jovi widget (jovi.js + assets/jovi.css).
+
+2) Server AI (required for full professor mode):
+   Firebase Functions secrets (same origin /api/jovi for website + Android app):
+     firebase functions:secrets:set XAI_API_KEY
+     firebase functions:secrets:set XAI_MODEL
+   Values: xAI / SpaceXAI key from https://console.x.ai
+   Optional model: grok-4.5
+
+3) Redeploy functions after setting the key:
+     firebase deploy --only functions:jovi --project quantrexacademy-app
+
+4) Without XAI_API_KEY:
+   - Widget still searches local PYQ bank (QUESTIONS) when loaded
+   - AI solve / image / generate return a setup message
+
+5) Gap reports (owner):
+   Browser console:  Jovi.getGaps()
+   Saved items:      Jovi.getSaved()
+
+6) Features live:
+   - Homepage floating chat
+   - Ask Jovi under solutions (inline)
+   - Auto-solve when practice wrong + no official solution
+   - Voice (browser SpeechRecognition + speechSynthesis)
+   - Photo upload for question solving
+   - Bank-first search + AI fallback tagged [Jovi-generated]

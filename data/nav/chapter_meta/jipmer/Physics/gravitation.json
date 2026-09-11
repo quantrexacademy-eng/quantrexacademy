@@ -1,0 +1,74 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b34d4b564dfab4f94cc",
+  "chapterId": "66d58553a75f05ee8564f662",
+  "subject": "Physics",
+  "chapter": "Gravitation",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d586bba75f05ee85650419",
+      "title": "Newton’s Law of Gravitation",
+      "count": 2,
+      "questionIds": [
+        "66d5864aa75f05ee8564ff5a",
+        "66d585b3a75f05ee8564f9e1"
+      ]
+    },
+    {
+      "id": "66d586bba75f05ee8565041a",
+      "title": "Gravitational field",
+      "count": 2,
+      "questionIds": [
+        "66d58632a75f05ee8564fe7d",
+        "66d5860ba75f05ee8564fd0e"
+      ]
+    },
+    {
+      "id": "66d586bba75f05ee85650418",
+      "title": "Acceleration Due to Gravity",
+      "count": 4,
+      "questionIds": [
+        "66d5864aa75f05ee8564ff5c",
+        "66d585faa75f05ee8564fc70",
+        "66d5858ea75f05ee8564f88d",
+        "66d58579a75f05ee8564f7cf"
+      ]
+    },
+    {
+      "id": "66d586bba75f05ee85650417",
+      "title": "Gravitational potential and Potential Energy",
+      "count": 6,
+      "questionIds": [
+        "66d5865aa75f05ee8564ffef",
+        "66d58631a75f05ee8564fe6e",
+        "66d58623a75f05ee8564fdee",
+        "66d585e7a75f05ee8564fbc4",
+        "66d585d7a75f05ee8564fb32",
+        "66d58569a75f05ee8564f736"
+      ]
+    },
+    {
+      "id": "66d586bba75f05ee85650415",
+      "title": "Motion of satellite",
+      "count": 4,
+      "questionIds": [
+        "66d585b3a75f05ee8564f9e3",
+        "66d5858ca75f05ee8564f879",
+        "66d58568a75f05ee8564f72d",
+        "66d58552a75f05ee8564f660"
+      ]
+    },
+    {
+      "id": "66d586bba75f05ee85650416",
+      "title": "Kepler laws",
+      "count": 3,
+      "questionIds": [
+        "66d5865ca75f05ee8564fffd",
+        "66d585a4a75f05ee8564f952",
+        "66d58569a75f05ee8564f734"
+      ]
+    }
+  ]
+}

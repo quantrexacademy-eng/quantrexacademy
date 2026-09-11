@@ -1,0 +1,106 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd4ec03b9dcaf1afea4c",
+  "topicId": "66a0dd4ec03b9dcaf1afea4e",
+  "title": "Derivative of function and its inverse",
+  "concepts": [
+    {
+      "title": "Differentiation of Inverse Functions",
+      "conceptBody": "<h3><strong>Differentiation of Inverse functions&nbsp;</strong></h3><p>Before going to differentiation let us revise some important results related to inverse functions</p><ul><li>$\\text{ta}{{\\text{n}}^{-1}}x+\\text{ta}{{\\text{n}}^{-1}}y=\\text{ta}{{\\text{n}}^{-1}}\\left( \\frac{x+y}{1-xy} \\right)x&gt;0,y&gt;0,xy&lt;1$</li><li>$\\text{ta}{{\\text{n}}^{-1}}x+\\text{ta}{{\\text{n}}^{-1}}y=\\pi +\\text{ta}{{\\text{n}}^{-1}}\\left( \\frac{x+y}{1-xy} \\right)\\text{ }\\!\\!~\\!\\!\\text{ }{{x}_{1}}&gt;0,y&gt;0,xy&gt;1$</li><li>$\\text{ta}{{\\text{n}}^{-1}}x-\\text{ta}{{\\text{n}}^{-1}}y=\\text{ta}{{\\text{n}}^{-1}}\\left( \\frac{x-y}{1+xy} \\right)$ if $x&gt;0,y&gt;0$</li><li>$\\text{se}{{\\text{c}}^{-1}}\\left( \\frac{1}{x} \\right)=\\text{co}{{\\text{s}}^{-1}}x$</li><li>$\\operatorname{cosec}^{-1}\\left(\\frac{1}{x}\\right)=\\sin ^{-1}(x)$</li><li>$\\text{co}{{\\text{t}}^{-1}}\\left( \\frac{1}{x} \\right)=\\text{ta}{{\\text{n}}^{-1}}x$</li></ul><p>We advise to change $\\text{se}{{\\text{c}}^{-1}}\\And \\text{cose}{{\\text{c}}^{-1}}$ by using above rules to ease out differentiation/</p><p><strong>Some substitutions:&nbsp;</strong></p><ul><li>$\\text{si}{{\\text{n}}^{-1}}\\left( \\frac{2\\text{x}}{1+{{\\text{x}}^{2}}} \\right)=2\\text{ta}{{\\text{n}}^{-1}}\\text{x }\\!\\!~\\!\\!\\text{ }$ (put $\\text{x}=\\text{tan}\\theta )$</li><li>$\\text{co}{{\\text{s}}^{-1}}\\left( \\frac{1-{{x}^{2}}}{1+{{x}^{2}}} \\right)=2\\text{ta}{{\\text{n}}^{-1}}x\\text{ }\\!\\!~\\!\\!\\text{ }$ (put $x=\\text{tan}\\theta )$</li></ul><p>put the following substitutions for the expression</p><p>$\\frac{1-\\text{x}}{1+\\text{x}}\\overset{\\text{ substitute }}{\\mathop{\\to }}\\,\\text{x}=\\cos \\theta $</p><p>${{\\text{a}}^{2}}-{{\\text{x}}^{2}},\\sqrt{{{\\text{a}}^{2}}-{{\\text{x}}^{2}}}\\overset{\\text{ substitute }}{\\mathop{\\to }}\\,\\text{x}=\\frac{\\text{a}\\cos \\theta }{\\text{a}\\sin \\theta }$</p><p>${{\\text{x}}^{2}}-{{\\text{a}}^{2}},\\sqrt{{{\\text{x}}^{2}}-{{\\text{a}}^{2}}}\\overset{\\text{ substitute }}{\\mathop{\\to }}\\,\\text{x}=\\text{a}\\sec \\theta /\\text{a}\\operatorname{cosec}\\theta $</p><p>${{\\text{x}}^{2}}+{{\\text{a}}^{2}},\\sqrt{{{\\text{x}}^{2}}+{{\\text{a}}^{2}}}\\overset{\\text{ substitute }}{\\mathop{\\to }}\\,\\text{x}=\\text{a}\\tan \\theta /\\text{a}\\cot \\theta $</p>",
+      "position": 0,
+      "qcConcept": "66a0dd4fc03b9dcaf1afea4f"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f462d384bfb4a53803d",
+      "title": "$\\frac{d}{d x}\\left(\\sqrt{x}+\\frac{1}{\\sqrt{x}}\\right)^2=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f462d384bfb4a53803e",
+      "title": "If $y=x+\\frac{1}{x}$, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f462d384bfb4a53803f",
+      "title": "$\\frac{d}{d x}\\left(\\frac{1}{x^4 \\sec x}\\right)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f462d384bfb4a538040",
+      "title": "If $y=x \\sin x$, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f462d384bfb4a538041",
+      "title": "$\\frac{d}{d x}\\left(x^2 e^x \\sin x\\right)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f462d384bfb4a538042",
+      "title": "If $f(x)=x \\tan ^{-1} x$, then $f(1)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f462d384bfb4a538043",
+      "title": "$\\frac{d}{d x}\\left(\\tan ^{-1} \\frac{\\cos x}{1+\\sin x}\\right)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f462d384bfb4a538044",
+      "title": "$y=\\sin ^{-1}\\left(x \\sqrt{1-x}+\\sqrt{x} \\sqrt{1-x^2}\\right)$, then $\\frac{d y}{d x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f462d384bfb4a538045",
+      "title": "$\\frac{d}{d x}\\left(\\tan ^{-1} \\sqrt{\\frac{1+\\cos \\frac{x}{2}}{1-\\cos \\frac{x}{2}}}\\right)$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f462d384bfb4a538046",
+      "title": "$\\frac{d}{d x} \\tan ^{-1}\\left(\\frac{a x-b}{b x+a}\\right)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f462d384bfb4a538047",
+      "title": "$y=\\tan ^{-1} \\frac{4 x}{1+5 x^2}+\\tan ^{-1} \\frac{2+3 x}{3-2 x}$, then $\\frac{d y}{d x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f462d384bfb4a538048",
+      "title": "$\\frac{d}{d x} \\sin ^{-1}\\left(3 x-4 x^3\\right)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f462d384bfb4a538049",
+      "title": "$\\frac{d}{d x}\\left[\\tan ^{-1} \\sqrt{\\frac{1-\\cos x}{1+\\cos x}}\\right]=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f462d384bfb4a53804a",
+      "title": "If $f(x)=\\tan ^{-1}\\left(\\frac{\\sin x}{1+\\cos x}\\right)$, then $f^{\\prime}\\left(\\frac{\\pi}{3}\\right)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f462d384bfb4a53804b",
+      "title": "If $y=\\sec ^{-1}\\left(\\frac{x+1}{x-1}\\right)+\\sin ^{-1}\\left(\\frac{x-1}{x+1}\\right)$, then $\\frac{d y}{d x}=$",
+      "isAttempted": true,
+      "evalStatus": "correct"
+    }
+  ]
+}

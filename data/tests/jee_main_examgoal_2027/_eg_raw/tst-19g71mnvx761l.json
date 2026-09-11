@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g71mnvx761l",
+  "title": "Center of Mass and Collision Test - 1 (Topic Test)",
+  "type": "topic",
+  "section": "Center of Mass and Collision",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-07-21T15:00:00.000Z",
+  "status": "ok",
+  "analysisId": "dcb7f089-c772-473d-a9b7-6c6075dcf484",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g71mnvx761l",
+    "defaultLanguage": "en",
+    "description": "Calculation of Center of Mass of Discrete Particles, Center of Mass of Continuous Mass Distribution",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-21T15:00:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mroy1xo8",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>What is the x coordinate of the centre of mass of a non-uniform rod, whose mass per unit length $\\rho$ varies as $\\rho = \\frac{\\rho_0 x^2}{L}$, where $\\rho_0$ is a constant and $L$ is the length of the rod and $x$ is the distance of any point $P$ on the rod measured from one end. The rod is making an angle $\\theta = 60^\\circ$ with the x-axis.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mroxypei%2F2d27d42e-e226-45d2-9a8d-27f1da70579d%2Fe0cf97a0-81de-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroxypej.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mroxypei%2F2d27d42e-e226-45d2-9a8d-27f1da70579d%2Fe0cf97a0-81de-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroxypej.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{3}{8} L$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{3}{4} L$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{3}{5} L$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{3}{7} L$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For a non-uniform rod of length $L$, the position of the centre of mass measured from the origin (one end) is given by :</p>\n<p>$$ \\mathrm{r}_{\\mathrm{cm}}=\\frac{\\int \\mathrm{rdm}}{\\int \\mathrm{dm}} $$</p>\n<p>where r is the distance from the origin along the rod.</p>\n<p>The mass of a small element dr at distance r is $\\mathrm{dm}=\\rho \\mathrm{dr}$. Given $\\rho=\\frac{\\rho_0 \\mathrm{r}^2}{\\mathrm{~L}}$ :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mroy0f4q%2Ff0911171-6d40-467b-8c62-df5b6b1c95f4%2F107e9fa0-81df-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroy0f4r.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mroy0f4q%2Ff0911171-6d40-467b-8c62-df5b6b1c95f4%2F107e9fa0-81df-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroy0f4r.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>$$dm = \\left(\\frac{\\rho_0\\, r^2}{L}\\right)dr$$</p>\n<p>The total mass $M$ is,</p>\n<p>$$M = \\int\\limits_{0}^{M} dm = \\int\\limits_{0}^{L} \\frac{\\rho_0\\, r^2}{L}\\,dr = \\frac{\\rho_0}{L}\\left[\\frac{r^3}{3}\\right]_{0}^{L} = \\frac{\\rho_0 L^2}{3}$$</p>\n<p>So, the position of centre of mass is,</p>\n<p>$$r_{\\mathrm{cm}} = \\frac{\\int r\\,dm}{\\int dm} = \\frac{\\int\\limits_{0}^{L} r\\left(\\frac{\\rho_0\\, r^2}{L}\\right)dr}{\\frac{\\rho_0 L^2}{3}} = \\frac{3\\int\\limits_{0}^{L} r^3\\,dr}{L^3}$$</p>\n<p>$$r_{\\mathrm{CM}} = \\frac{3\\left[\\frac{r^4}{4}\\right]_{0}^{L}}{L^3} = \\frac{3L^4}{4L^3} = \\frac{3L}{4}$$</p>\n<p>The rod is inclined at an angle $\\theta = 60^\\circ$ with the x-axis. The distance $r_{\\mathrm{cm}}$ is the distance from the origin along the rod.</p>\n<p>$$x_{\\mathrm{cm}} = r_{\\mathrm{cm}}\\cos\\theta = \\frac{3}{4}L \\times \\cos 60^\\circ = \\frac{3}{4}L \\times \\frac{1}{2} = \\frac{3L}{8}$$</p>\n<p>Therefore, the x coordinate of the centre of mass of rod is $\\frac{3L}{8}$. Hence, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक असमान छड़ के द्रव्यमान केंद्र का x-निर्देशांक क्या है, जिसका प्रति इकाई लंबाई द्रव्यमान $\\rho$, $\\rho = \\frac{\\rho_0 x^2}{L}$ के रूप में परिवर्तित होता है, जहाँ $\\rho_0$ एक नियतांक है और $L$ छड़ की लंबाई है तथा $x$ एक सिरे से मापी गई छड़ पर किसी बिंदु $P$ की दूरी है। छड़ x-अक्ष के साथ $\\theta = 60^\\circ$ का कोण बना रही है।</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mroxypei%2F2d27d42e-e226-45d2-9a8d-27f1da70579d%2Fe0cf97a0-81de-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroxypej.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mroxypei%2F2d27d42e-e226-45d2-9a8d-27f1da70579d%2Fe0cf97a0-81de-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroxypej.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{3}{8} L$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{3}{4} L$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{3}{5} L$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{3}{7} L$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-continuous-mass-distribution",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrulkbft",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Seven particles, each of mass m are placed at the seven corners of a cube of side a but one corner is vacant, as shown in figure. The coordinates of the centre of mass of the system is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrui1kft%2Fbb1c707b-1b9a-438e-983c-72b5adb89b45%2F523bea90-84ed-11f1-9a3a-29404bd55133%2Ffile-6y3zli1mrui1kfu.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrui1kft%2Fbb1c707b-1b9a-438e-983c-72b5adb89b45%2F523bea90-84ed-11f1-9a3a-29404bd55133%2Ffile-6y3zli1mrui1kfu.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\left( \\frac{2a}{7}, \\frac{2a}{7}, \\frac{2a}{7} \\right)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\left( \\frac{3a}{7}, \\frac{3a}{7}, \\frac{3a}{7} \\right)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\left( \\frac{a}{3}, \\frac{a}{3}, \\frac{a}{3} \\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\left( \\frac{5a}{11}, \\frac{5a}{11}, \\frac{5a}{11} \\right)$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For a collection of discrete point masses, the coordinates of the centre of mass $(\\overline{x}, \\overline{y}, \\overline{z})$ are defined as :</p>\n<p>$$\\overline{x} = \\frac{\\sum m_i x_i}{\\sum m_i}, \\overline{y} = \\frac{\\sum m_i y_i}{\\sum m_i}, \\overline{z} = \\frac{\\sum m_i z_i}{\\sum m_i}$$</p>\n<p>Instead of summing all 7 vertices individually, we can treat this system as a complete 8-particle cube of total mass $8m$, and one particle of mass $-m$ at the missing corner.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrulgb5k%2F6558ffd7-1e3c-457b-9f65-02457d03b9e4%2Fa7961f80-84fa-11f1-b423-5977891c9402%2Ffile-6y3zli1mrulgb5l.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrulgb5k%2F6558ffd7-1e3c-457b-9f65-02457d03b9e4%2Fa7961f80-84fa-11f1-b423-5977891c9402%2Ffile-6y3zli1mrulgb5l.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Let the complete cube have a centre of mass $\\overrightarrow{\\mathrm{R}}$.</p>\n<p>By symmetry, the centre of mass of 8 identical particles at the corners of a cube of side a is at the geometric centre:</p>\n<p>$$ \\overrightarrow{\\mathrm{R}}=\\left(\\frac{\\mathrm{a}}{2}, \\frac{\\mathrm{a}}{2}, \\frac{\\mathrm{a}}{2}\\right) $$</p>\n<p>So, 8 m mass is at $\\overrightarrow{\\mathrm{R}}=\\left(\\frac{\\mathrm{a}}{2}, \\frac{\\mathrm{a}}{2}, \\frac{\\mathrm{a}}{2}\\right)$ and other mass -m is at $(\\mathrm{a}, \\mathrm{a}, \\mathrm{a})$</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruli7z1%2F6d822ea1-5249-4677-8324-218cec0ff757%2Fdcbf48d0-84fa-11f1-b423-5977891c9402%2Ffile-6y3zli1mruli7z2.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruli7z1%2F6d822ea1-5249-4677-8324-218cec0ff757%2Fdcbf48d0-84fa-11f1-b423-5977891c9402%2Ffile-6y3zli1mruli7z2.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Using the formula for the coordinates of centre of mass,</p>\n<p>$$\\bar{x} = \\frac{8m\\left(\\dfrac{a}{2}\\right) + (-m)(a)}{8m + (-m)}$$</p>\n<p>$$\\bar{x} = \\frac{4ma - ma}{7m} = \\frac{3ma}{7m} = \\frac{3a}{7}$$</p>\n<p>By symmetry $\\bar{y} = \\frac{3a}{7}, \\bar{z} = \\frac{3a}{7}$</p>\n<p>Thus, the coordinates of the centre of mass are $\\left(\\frac{3a}{7}, \\frac{3a}{7}, \\frac{3a}{7}\\right)$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>सात कण, जिनमें से प्रत्येक का द्रव्यमान m है, एक a भुजा वाले घन के सात कोनों पर रखे गए हैं, लेकिन एक कोना रिक्त है, जैसा कि चित्र में दर्शाया गया है। निकाय के द्रव्यमान केंद्र के निर्देशांक हैं</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrui1kft%2Fbb1c707b-1b9a-438e-983c-72b5adb89b45%2F523bea90-84ed-11f1-9a3a-29404bd55133%2Ffile-6y3zli1mrui1kfu.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrui1kft%2Fbb1c707b-1b9a-438e-983c-72b5adb89b45%2F523bea90-84ed-11f1-9a3a-29404bd55133%2Ffile-6y3zli1mrui1kfu.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\left( \\frac{2a}{7}, \\frac{2a}{7}, \\frac{2a}{7} \\right)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\left( \\frac{3a}{7}, \\frac{3a}{7}, \\frac{3a}{7} \\right)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\left( \\frac{a}{3}, \\frac{a}{3}, \\frac{a}{3} \\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\left( \\frac{5a}{11}, \\frac{5a}{11}, \\frac{5a}{11} \\right)$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-discrete-particles",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mruhsgk8",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform metallic spherical shell is suspended from ceiling. It has two holes A and B at top and bottom respectively. Which of the followings is/are true?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruhg3sc%2F72d4542e-a606-4743-b056-ab2a7c6850c1%2Ffd60f6c0-84ea-11f1-9a3a-29404bd55133%2Ffile-6y3zli1mruhg3sd.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruhg3sc%2F72d4542e-a606-4743-b056-ab2a7c6850c1%2Ffd60f6c0-84ea-11f1-9a3a-29404bd55133%2Ffile-6y3zli1mruhg3sd.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>If B is closed and sand is poured from A, centre of mass first rises and then falls.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>If shell is completely filled with sand and B is opened then centre of mass falls initially.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>If shell is slightly filled with sand and B is opened, then centre of mass falls.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of the above.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let the radius of the spherical shell be R and its mass be $\\mathrm{M}_0$. Since the shell is uniform, its geometric centre is its centre of mass.</p>\n<p>Let the coordinate origin $(0,0)$ be at the geometric centre of the shell.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruhi881%2F9d9bbf88-1040-49ab-a3be-a45d45cc10b1%2F386c7910-84eb-11f1-9a3a-29404bd55133%2Ffile-6y3zli1mruhi882.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruhi881%2F9d9bbf88-1040-49ab-a3be-a45d45cc10b1%2F386c7910-84eb-11f1-9a3a-29404bd55133%2Ffile-6y3zli1mruhi882.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$ \\mathrm{y}_{\\text {shell }}=0 $$</p>\n<p>Now, when sand is poured into the shell the mass of the sand inside the shell at any instant be $\\mathrm{m}(\\mathrm{t})$.</p>\n\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruhq5k3%2F6c4f648a-9707-4054-99ed-e7ac55c74d70%2F14d68f30-84ec-11f1-9a3a-29404bd55133%2Ffile-6y3zli1mruhq5k4.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruhq5k3%2F6c4f648a-9707-4054-99ed-e7ac55c74d70%2F14d68f30-84ec-11f1-9a3a-29404bd55133%2Ffile-6y3zli1mruhq5k4.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Let the y-coordinate of the centre of mass of this sand be $y_{\\text{sand}}$.</p>\n<p>The position of the centre of mass of the combined system (shell + sand) is,</p>\n<p>$$y_{\\text{cm}} = \\frac{M_0\\, y_{\\text{shell}} + m(t)\\, y_{\\text{sand}}}{M_0 + m(t)} = \\frac{m(t)\\, y_{\\text{sand}}}{M_0 + m(t)}$$</p>\n<p>Initially the shell is empty, so $m = 0$ and $y_{\\text{cm}} = 0$.</p>\n<p>As the sand starts filling the shell from the point A $(y = R)$. At this stage, the sand gets accumulated below the geometric centre, so $y_{\\text{sand}} < 0$.</p>\n<p>$$y_{\\text{cm}} < 0$$</p>\n<p>This means the centre of mass falls below the centre of the shell.</p>\n<p>As more sand is poured and the shell becomes completely full, the sand forms a uniform solid sphere whose centre of mass is at the geometric centre $(y_{\\text{sand}} = 0)$. At this stage, $y_{\\text{cm}} = 0$.</p>\n<p>The centre of mass goes from $0 \\rightarrow$ negative value $\\rightarrow 0$. Therefore, it first falls and then rises. Thus, option (a) is incorrect.</p>\n<p>When hole B is opened then sand leaks out from the bottom. The bottom half remains filled with sand and the upper half starts getting emptied first. The remaining sand is heavier in the lower half, shifting its centre of mass downward $(y_{\\text{sand}} < 0)$.</p>\n<p>Substituting $y_{\\text{sand}} < 0$ into formula for centre of mass, $y_{\\text{cm}} < 0$.</p>\n<p>So, the centre of mass drops below the centre of the shell initially. Thus, option (b) is correct.</p>\n<p>When hole B is opened and as the sand leaves the bottom, the total mass of sand inside the container decreases towards zero $(m \\rightarrow 0)$. As the container becomes completely empty, the system returns to being just the empty shell, meaning $y_{\\text{cm}} \\rightarrow 0$.</p>\n<p>The centre of mass shifts from a negative value to zero, meaning it rises. Thus, option (c) is incorrect.</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक समान धात्विक गोलीय कोश छत से लटका हुआ है। इसके शीर्ष और तल पर क्रमशः दो छिद्र A और B हैं। निम्नलिखित में से कौन सा/से कथन सत्य है/हैं?</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruhg3sc%2F72d4542e-a606-4743-b056-ab2a7c6850c1%2Ffd60f6c0-84ea-11f1-9a3a-29404bd55133%2Ffile-6y3zli1mruhg3sd.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruhg3sc%2F72d4542e-a606-4743-b056-ab2a7c6850c1%2Ffd60f6c0-84ea-11f1-9a3a-29404bd55133%2Ffile-6y3zli1mruhg3sd.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>यदि B बंद है और A से रेत डाली जाती है, तो द्रव्यमान केंद्र पहले ऊपर उठता है और फिर नीचे गिरता है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>यदि कोश पूरी तरह से रेत से भरा है और B को खोला जाता है, तो द्रव्यमान केंद्र शुरू में नीचे गिरता है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>यदि कोश आंशिक रूप से रेत से भरा है और B को खोला जाता है, तो द्रव्यमान केंद्र नीचे गिरता है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>उपर्युक्त में से कोई नहीं।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-continuous-mass-distribution",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrulsj3r",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Five uniform circular plates, each of diameter $b$ and mass $m$ are laid out in a pattern shown. Using the origin shown, find the y-coordinate of the centre of mass of the five-plate system.</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruln0tr%2F47360307-28c0-4f73-8de4-ee0e5923eb05%2F6245df00-84fb-11f1-b423-5977891c9402%2Ffile-6y3zli1mruln0ts.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruln0tr%2F47360307-28c0-4f73-8de4-ee0e5923eb05%2F6245df00-84fb-11f1-b423-5977891c9402%2Ffile-6y3zli1mruln0ts.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{b}{5}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{b}{3}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{4b}{5}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{2b}{5}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>A uniform circular plate acts as a point mass concentrated at its geometric centre due to its circular symmetry. For a system of N uniform plates, the overall y-coordinate of the centre of mass is,</p>\n<p>$$ \\mathrm{y}_{\\mathrm{cm}}=\\frac{\\sum \\mathrm{m}_{\\mathrm{i}} \\mathrm{y}_{\\mathrm{i}}}{\\sum \\mathrm{~m}_{\\mathrm{i}}}=\\frac{\\mathrm{m}\\left(\\mathrm{y}_1+\\mathrm{y}_2+\\mathrm{y}_3+\\mathrm{y}_4+\\mathrm{y}_5\\right)}{5 \\mathrm{~m}}=\\frac{\\mathrm{y}_1+\\mathrm{y}_2+\\mathrm{y}_3+\\mathrm{y}_4+\\mathrm{y}_5}{5} $$</p>\n<p>Let the diameter of each plate be b . The radius of each plate is $\\mathrm{R}=\\frac{\\mathrm{b}}{2}$.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrulonjf%2F689e8013-daa3-40b9-9a53-76341fd7ce3b%2F8fa06fb0-84fb-11f1-b423-5977891c9402%2Ffile-6y3zli1mrulonjg.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrulonjf%2F689e8013-daa3-40b9-9a53-76341fd7ce3b%2F8fa06fb0-84fb-11f1-b423-5977891c9402%2Ffile-6y3zli1mrulonjg.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>The centre of masses are $m_1(0,0)$, $m_2(0,b)$, $m_3(0,2b)$, $m_4(b,0)$, $m_5(b,b)$,</p>\n<p>So, the $y$-coordinate of centre of mass of system of discs is;</p>\n<p>$$y_{cm} = \\frac{0 + b + 2b + 0 + b}{5} = \\frac{4b}{5}$$</p>\n<p>$$y_{cm} = \\frac{4b}{5}$$</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>पाँच एकसमान वृत्ताकार प्लेटें, जिनमें से प्रत्येक का व्यास $b$ और द्रव्यमान $m$ है, दर्शाए गए पैटर्न में रखी गई हैं। दर्शाए गए मूल बिंदु का उपयोग करते हुए, पाँच-प्लेट निकाय के द्रव्यमान केंद्र का y-निर्देशांक ज्ञात कीजिए।</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruln0tr%2F47360307-28c0-4f73-8de4-ee0e5923eb05%2F6245df00-84fb-11f1-b423-5977891c9402%2Ffile-6y3zli1mruln0ts.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruln0tr%2F47360307-28c0-4f73-8de4-ee0e5923eb05%2F6245df00-84fb-11f1-b423-5977891c9402%2Ffile-6y3zli1mruln0ts.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{b}{5}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{b}{3}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{4b}{5}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{2b}{5}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-continuous-mass-distribution",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrum4qh2",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A thin uniform wire is bent to form the two equal sides AB and AC of triangle ABC, where AB = AC = 5 cm. The third side BC of length 6 cm is made from uniform wire of twice the density of the first. The distance of centre of mass from A is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{34}{11}$ cm</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{11}{34}$ cm</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{34}{9}$ cm</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{11}{45}$ cm</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Each uniform segment can be represented by a discrete point mass located at its individual centre of mass.</p>\n<p>The overall centre of mass along a single reference axis (y-axis) is</p>\n<p>$$ \\mathrm{y}_{\\mathrm{cm}}=\\frac{\\mathrm{m}_1 \\mathrm{y}_1+\\mathrm{m}_2 \\mathrm{y}_2+\\mathrm{m}_3 \\mathrm{y}_3}{\\mathrm{~m}_1+\\mathrm{m}_2+\\mathrm{m}_3} $$</p>\n<p>Let the vertex A be the origin $(0,0)$.</p>\n<p>Let the linear mass density of the wire forming sides AB and AC be $\\lambda$. The third side BC has twice the density, so its linear density is $2 \\lambda$.</p>\n<p>Length $\\mathrm{L}_{\\mathrm{AB}}=5 \\mathrm{~cm}$, so its mass is $\\mathrm{m}_1=\\lambda \\times 5=5 \\lambda$.</p>\n<p>Since it is a uniform straight wire its individual centre of mass is at its midpoint.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruluotj%2Fc0d64ee3-aae0-4b33-9f07-5f137854c499%2F37789370-84fc-11f1-b423-5977891c9402%2Ffile-6y3zli1mruluotk.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruluotj%2Fc0d64ee3-aae0-4b33-9f07-5f137854c499%2F37789370-84fc-11f1-b423-5977891c9402%2Ffile-6y3zli1mruluotk.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Side AC is of length $\\mathrm{L}_{\\mathrm{AC}}=5 \\mathrm{~cm}$ so its mass is $\\mathrm{m}_2=\\lambda \\times 5=5 \\lambda$.</p>\n<p>By symmetry, its individual centre of mass has the same vertical depth as the midpoint of AB.</p>\n<p>Side BC is of length $\\mathrm{L}_{\\mathrm{BC}}=6 \\mathrm{~cm}$, so it mass is $\\mathrm{m}_3=(2 \\lambda) \\times 6=12 \\lambda$.</p>\n<p>This horizontal segment is located at the depth of AR, and its midpoint is on vertical axis of symmetry.</p>\n<p>Let the total height of the isosceles triangle ABC is $AR=h$</p>\n<p>The altitude bisects the base BC into two segments of $3 cm$ each.</p>\n<p>Using the Pythagorean theorem on the right-angled half-triangle:</p>\n<p>$$h=\\sqrt{AB^2-\\left(\\frac{BC}{2}\\right)^2}=\\sqrt{5^2-3^2}=\\sqrt{25-9}=\\sqrt{16}=4\\text{ cm}$$</p>\n<p>The base BC is at a distance of $4\\text{ cm}$ from A. Therefore, the centre of mass of the base wire is $y_3=-4\\text{ cm}$.</p>\n<p>In right angled half triangle, $\\tan\\theta=\\frac{AR}{RB}=\\frac{4}{3}\\Rightarrow \\sin\\theta=\\frac{4}{5};\\cos\\theta=\\frac{3}{5}$.</p>\n<p>As the centre of mass of uniform line segment is at its midpoint, $AP=AQ=\\frac{5}{2}\\text{ cm}$.</p>\n<p>Using trigonometric ratio, $\\cos\\theta=\\frac{x_1}{AP}=\\frac{x_2}{AQ}\\Rightarrow x_1=x_2=\\frac{5}{2}\\cos\\theta=\\frac{5}{2}\\times\\frac{3}{5}=\\frac{3}{2}\\text{ cm}$</p>\n<p>Similarly, $\\sin\\theta=\\frac{y_1}{AP}=\\frac{y_2}{AQ}\\Rightarrow y_1=y_2=\\frac{5}{2}\\sin\\theta=\\frac{5}{2}\\times\\frac{4}{5}=2\\text{ cm}$</p>\n<p>So, the midpoints of sides AB and AC are vertically halfway down the altitude, $y_1=y_2=42=2\\text{ cm}$.</p>\n<p>So, the masses and their coordinates are;</p>\n<p>$m_1\\left(-\\frac{3}{2},-2\\right), m_2\\left(\\frac{3}{2},-2\\right), m_3(0,-4)$</p>\n<p>Substituting the masses and coordinates into the centre of mass formula:</p>\n<p>$$y_{\\mathrm{cm}}=\\frac{(5\\lambda)(-2)+(5\\lambda)(-2)+(12\\lambda)(-4)}{5\\lambda+5\\lambda+12\\lambda}$$</p>\n<p>$$y_{\\mathrm{cm}}=\\frac{-10\\lambda-10\\lambda-48\\lambda}{22\\lambda}=-\\frac{68\\lambda}{22\\lambda}$$</p>\n<p>$$y_{\\mathrm{cm}}=-\\frac{68}{22}=-\\frac{34}{11}\\ \\mathrm{cm}$$</p>\n<p>The negative sign represents the relative position of centre of mass with respect to vertex A. So, the distance of centre of mass from vertex A is $\\frac{34}{11}\\,\\mathrm{cm}$</p>\n<p>Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक पतले एकसमान तार को मोड़कर त्रिभुज ABC की दो समान भुजाएँ AB और AC बनाई जाती हैं, जहाँ AB = AC = 5 cm है। 6 cm लम्बाई वाली तीसरी भुजा BC पहले तार से दोगुने घनत्व वाले एकसमान तार से बनी है। A से द्रव्यमान केंद्र की दूरी है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{34}{11}$ cm</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{11}{34}$ cm</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{34}{9}$ cm</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{11}{45}$ cm</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-continuous-mass-distribution",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrunlabk",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A thin uniform sheet of metal of uniform thickness is cut into the shape bounded by the line $x = a$ and $y = \\pm kx^2$, as shown. Find the coordinates of the centre of mass.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrumzktn%2Ff81c2a9e-06f1-4047-9eee-a011aeddac7d%2Fa88eefb0-8500-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mrumzkto.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrumzktn%2Ff81c2a9e-06f1-4047-9eee-a011aeddac7d%2Fa88eefb0-8500-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mrumzkto.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{2}{3}a$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{3}{4}a$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{4}{5}a$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{5}{6}a$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For a continuous planar sheet with a uniform mass per unit area $\\sigma$, the coordinates of the centre of mass $(\\overline{x}, \\overline{y})$</p>\n<p>are determined as,</p>\n<p>$$\\overline{x} = \\frac{\\int\\limits x\\,dm}{\\int\\limits dm} = \\frac{\\int\\limits x\\,\\sigma\\,dA}{\\int\\limits \\sigma\\,dA} = \\frac{\\int\\limits x\\,dA}{\\int\\limits dA}$$</p>\n<p>$$\\overline{y} = \\frac{\\int\\limits y\\,dA}{\\int\\limits dA}$$</p>\n<p>Due to the symmetry of the boundaries $y = kx^2$ and $y = -kx^2$ about the $x$-axis, the upper half of the sheet</p>\n<p>mirrors the lower half. Therefore, the vertical centre of mass coordinate is $\\overline{y} = 0$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrunepmx%2F986d94a0-46a0-4534-9ab6-c63b47191bbf%2F4d69e390-8502-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mrunepmy.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrunepmx%2F986d94a0-46a0-4534-9ab6-c63b47191bbf%2F4d69e390-8502-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mrunepmy.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>To find $\\bar{x}$, we divide the region into thin vertical strips of width $dx$ at a distance $x$ from the origin.</p>\n<p>The height of a strip from the lower curve to the upper curve is,</p>\n<p>$$h(x)=y_{\\text{upper}}-y_{\\text{lower}}=kx^2-(-kx^2)=2kx^2$$</p>\n<p>The area element $dA$ of this strip is $dA=h(x)\\,dx=2kx^2\\,dx$</p>\n<p>The total area $A=\\int dA$ is the integration from $x=0$ to $x=a$:</p>\n<p>$$A=\\int\\limits_{0}^{x} 2kx^2\\,dx=2k\\left[\\frac{x^3}{3}\\right]_{0}^{a}=\\frac{2}{3}ka^3$$</p>\n<p>$$\\int x\\,dA=\\int\\limits_{0}^{x} x(2kx^2\\,dx)=\\int\\limits_{0}^{x} 2kx^3\\,dx=2k\\left[\\frac{x^4}{4}\\right]_{0}^{a}=\\frac{2}{4}ka^4=\\frac{1}{2}ka^4$$</p>\n<p>The x-coordinate of centre of mass is,</p>\n<p>$$\\bar{x}=\\frac{\\int x\\,dA}{\\int dA}=\\frac{\\int\\limits_{0}^{x} x(2kx^2\\,dx)}{\\int\\limits_{0}^{x} 2kx^2\\,dx}=\\frac{2k\\left[\\frac{x^3}{3}\\right]_{0}^{a}}{2k\\left[\\frac{x^4}{4}\\right]_{0}^{0}}=\\frac{\\left(\\frac{1}{2}ka^4\\right)}{\\left(\\frac{2}{3}ka^3\\right)}$$</p>\n<p>$$\\bar{x}=\\frac{3}{4}a$$</p>\n<p>Thus, the coordinates of the centre of mass are $\\left(\\frac{3}{4}a,0\\right)$. Hence, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>धातु की एकसमान मोटाई वाली एक पतली, एकसमान शीट को चित्रानुसार रेखा $x = a$ और वक्र $y = \\pm kx^2$ द्वारा परिबद्ध आकार में काटा गया है। इसके द्रव्यमान केंद्र के निर्देशांक ज्ञात कीजिए।</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrumzktn%2Ff81c2a9e-06f1-4047-9eee-a011aeddac7d%2Fa88eefb0-8500-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mrumzkto.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrumzktn%2Ff81c2a9e-06f1-4047-9eee-a011aeddac7d%2Fa88eefb0-8500-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mrumzkto.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{2}{3}a$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{3}{4}a$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{4}{5}a$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{5}{6}a$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-continuous-mass-distribution",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mruntk0c",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider a two particles system with particles having mass $m_1$ and $m_2$. If the first particle is pushed towards the centre of mass through a distance $d$, by what distance should the second particle be moved, so as to keep the centre of mass at the same position?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$d$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{m_2}{m_1} d$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{m_1}{m_1 + m_2} d$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{m_1}{m_2} d$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For a discrete system of two particles at coordinates $x_1$ and $x_2$, the location of the centre of mass $x_{c m}$ is,</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrunopac%2Fd8087555-b9d0-47fc-8864-497c387c7ce1%2F633c2c40-8503-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mrunopad.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrunopac%2Fd8087555-b9d0-47fc-8864-497c387c7ce1%2F633c2c40-8503-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mrunopad.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$x_{\\mathrm{cm}} = \\frac{m_1 x_1 + m_2 x_2}{m_1 + m_2}$$</p>\n<p>Suppose both particles undergo small displacements $\\Delta x_1$ and $\\Delta x_2$. The resulting shift in the centre of mass position $\\Delta x_{\\mathrm{cm}}$ is</p>\n<p>$$\\Delta x_{\\mathrm{cm}} = \\frac{m_1\\,\\Delta x_1 + m_2\\,\\Delta x_2}{m_1 + m_2}$$</p>\n<p>The centre of mass must remain at the same position, which means its displacement is zero:</p>\n<p>$$\\Delta x_{\\mathrm{cm}} = 0$$</p>\n<p>The first particle is pushed towards the centre of mass by a distance d.</p>\n<p>$$\\Delta x_1 = +\\mathrm{d}$$</p>\n<p>Substituting these conditions into the shift of centre of mass equation:</p>\n<p>$$0 = \\frac{m_1(\\mathrm{d}) + m_2\\,\\Delta x_2}{m_1 + m_2}$$</p>\n<p>$$0 = m_1\\,\\mathrm{d} + m_2\\,\\Delta x_2$$</p>\n<p>$$m_2\\,\\Delta x_2 = -m_1\\,\\mathrm{d}$$</p>\n<p>$$ \\Delta \\mathrm{x}_2=-\\left(\\frac{\\mathrm{m}_1}{\\mathrm{~m}_2}\\right) \\mathrm{d} $$</p>\n<p>The negative sign indicates that the second particle must be shifted in the opposite direction (also towards the centre of mass) so that the centre of mass doesn't shift. The magnitude of the distance it needs to be moved is $\\frac{\\mathrm{m}_1}{\\mathrm{~m}_2} \\mathrm{~d}$.</p>\n<p>Thus, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$m_1$ और $m_2$ द्रव्यमान वाले दो कणों के एक निकाय पर विचार कीजिए। यदि पहले कण को द्रव्यमान केंद्र की ओर $d$ दूरी तक धकेला जाता है, तो दूसरे कण को कितनी दूरी तक विस्थापित किया जाना चाहिए ताकि द्रव्यमान केंद्र उसी स्थिति में रहे?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$d$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{m_2}{m_1} d$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{m_1}{m_1 + m_2} d$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{m_1}{m_2} d$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-discrete-particles",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mruo2s53",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>One end of a thin uniform rod of length L and mass M is riveted to the centre of a uniform circular disc of radius r and mass 2M so that the rod is normal to the disc. The centre of mass of the combination from the centre of the disc is at distance of :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>zero</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{L}{2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{L}{3}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{L}{6}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For a composite system built from uniform shapes, each individual component can be replaced by an equivalent concentrated particle sitting at that component's centre of mass.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruo00gm%2F4a340911-cc9e-4e6d-be40-9d949e707739%2F9dc47f60-8504-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruo00gn.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruo00gm%2F4a340911-cc9e-4e6d-be40-9d949e707739%2F9dc47f60-8504-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruo00gn.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>The net centre of mass position coordinate $y_{\\mathrm{cm}}$ is,</p>\n<p>$$y_{\\mathrm{cm}}=\\frac{m_1 y_1 + m_2 y_2}{m_1 + m_2}$$</p>\n<p>The mass of circular disc is $m_d = 2M$.</p>\n<p>Due to its uniform thickness and circular symmetry, its centre of mass is at its own geometric centre, $m_d(0,0)$</p>\n<p>The mass of uniform rod is $m_r = M$, and its length is $L$.</p>\n<p>The rod is extending negative $y$-axis from $y=0$ to $y=-L$.</p>\n<p>For a straight uniform rod, the centre of mass is at its geometric midpoint $y_2=-\\frac{L}{2}$.</p>\n<p>So, the centre of mass of the rod is $m_r\\left(0,-\\frac{L}{2}\\right)$</p>\n<p>Substituting these masses and coordinates into the coordinate of centre of mass formula:</p>\n<p>$$y_{\\mathrm{cm}}=\\frac{(2M \\times 0)+\\left(M \\times \\left(-\\frac{L}{2}\\right)\\right)}{2M+M}$$</p>\n<p>$$y_{\\mathrm{cm}}=\\frac{0-\\frac{ML}{2}}{3M}$$</p>\n<p>$$y_{\\mathrm{cm}}=\\frac{L}{6}$$</p>\n<p>Thus, the net centre of mass of the combination is at a distance of $\\frac{L}{6}$ away from the centre of the disc.</p>\n<p>Thus, the correct option is (D)</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>लंबाई L और द्रव्यमान M की एक पतली एकसमान छड़ का एक सिरा, त्रिज्या r और द्रव्यमान 2M वाले एक एकसमान वृत्ताकार डिस्क के केंद्र पर इस प्रकार कीलकित (riveted) किया गया है कि छड़ डिस्क के लंबवत है। डिस्क के केंद्र से इस संयोजन के द्रव्यमान केंद्र की दूरी है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>शून्य</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{L}{2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{L}{3}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{L}{6}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-continuous-mass-distribution",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mruocx13",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Eight solid uniform cubes of edge $l$ are stacked together to form a single cube with centre $O$. One cube is removed from this system. Distance of the centre of mass of remaining 7 cubes from $O$ is :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruo7892%2F7d66b659-b0d7-4cd6-a2dd-7f742a504f41%2F66732970-8505-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruo7893.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruo7892%2F7d66b659-b0d7-4cd6-a2dd-7f742a504f41%2F66732970-8505-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruo7893.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{7\\sqrt{3}l}{16}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{\\sqrt{3}l}{16}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{\\sqrt{3}l}{14}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>zero</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For a larger uniform symmetric system with its centre of mass initially at the origin $0(0,0,0)$, removing a portion of shifts the centre of mass of the remaining system to a new position.</p>\n<p>Using negative mass concept, let the mass density of larger cube is $\\rho$ and the mass density of removed cube is $-\\rho$.</p>\n<p>The centre of mass of uniform cube is at its geometric centre, i.e., at a distance $\\frac{\\mathrm{a}}{2}$ from each surface.</p>\n<p>Eight small identical cubes of edge 1 and density $\\rho$ form a single larger cube.</p>\n<p>So, the mass of larger cube is $\\mathrm{m}_1=8 \\times\\left(\\rho \\mathrm{l}^3\\right)=8 \\rho \\mathrm{l}^3$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruo98bn%2F59fb7293-2908-4dd9-b794-ecf5327cdee2%2F9e1f7b30-8505-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruo98bo.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruo98bn%2F59fb7293-2908-4dd9-b794-ecf5327cdee2%2F9e1f7b30-8505-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruo98bo.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>So, the centre of mass of larger cube is $\\mathrm{m}_1(0,0,0)$</p>\n<p>The system is divided into eight quadrants corresponding to the eight smaller cubes.</p>\n<p>So, the mass of removed cube of length l and density $-\\rho$ is $\\mathrm{m}_2=-\\rho\\left(\\mathrm{l}^2\\right)=-\\rho \\mathrm{l}^2$.</p>\n<p>The centre of mass of any one of these smaller cubes is located at a distance of $\\frac{1}{2}$ from the origin along all three coordinate axes.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruoaxjs%2Fa1e2d56e-463f-47ed-975c-4a67a86cb9a2%2Fcd6b2d80-8505-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruoaxjt.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruoaxjs%2Fa1e2d56e-463f-47ed-975c-4a67a86cb9a2%2Fcd6b2d80-8505-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruoaxjt.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>So, the centre of mass of removed cube is $m_2\\left(\\frac{L}{2}, \\frac{L}{2}, -\\frac{L}{2}\\right)$</p>\n<p>Let the mass of one small cube be $m_2=-\\rho l^3=-m$.</p>\n<p>So, the total initial larger cube is $m=8m$.</p>\n<p>Substituting these values into the centre of mass formula :</p>\n<p>$$\\vec{r}_{\\mathrm{cm}}=\\frac{\\sum m_i \\vec{r}_i}{\\sum m_i}=\\frac{m_1\\vec{r}_1+m_1\\vec{r}_2}{m_1+m_2}$$</p>\n<p>$$\\vec{r}_{\\mathrm{cm}}=\\frac{8m(0\\hat{i}+0\\hat{j}+0\\hat{k})+(-m)\\left(\\frac{L}{2}\\hat{i}+\\frac{L}{2}\\hat{j}-\\frac{L}{2}\\hat{k}\\right)}{8m+(-m)}$$</p>\n<p>$$\\vec{r}_{\\mathrm{cm}}=-\\frac{1}{7}\\left(\\frac{L}{2}\\hat{i}+\\frac{L}{2}\\hat{j}-\\frac{L}{2}\\hat{k}\\right)=-\\frac{L}{14}(\\hat{i}+\\hat{j}-\\hat{k})$$</p>\n<p>So, the distance of centre of mass remaining mass is \n<br/><br/>$d=|\\vec{r}_{\\mathrm{cm}}|=\\sqrt{\\left(-\\frac{L}{14}\\right)^2+\\left(-\\frac{L}{14}\\right)^2+\\left(-\\frac{L}{14}\\right)^2}=\\frac{\\sqrt{3}L}{14}$.</p>\n<p>Thus, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$l$ किनारे वाले आठ ठोस एकसमान घनों को एक साथ रखकर $O$ केंद्र वाला एक एकल घन बनाया जाता है। इस निकाय से एक घन को हटा दिया जाता है। शेष 7 घनों के द्रव्यमान केंद्र की $O$ से दूरी है :</p> <img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruo7892%2F7d66b659-b0d7-4cd6-a2dd-7f742a504f41%2F66732970-8505-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruo7893.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruo7892%2F7d66b659-b0d7-4cd6-a2dd-7f742a504f41%2F66732970-8505-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruo7893.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{7\\sqrt{3}l}{16}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{\\sqrt{3}l}{16}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{\\sqrt{3}l}{14}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>शून्य</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-continuous-mass-distribution",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mruok9qj",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Three identical uniform rods of the same mass $M$ and length $L$ are arranged in xy-plane as shown in the figure. A fourth uniform rod of mass $3M$ has been placed as shown in the xy-plane. What should be the value of the length of the fourth rod such that the centre of mass of all the four rods lie at the origin?</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruofqia%2F669b4855-3a5b-4a2e-be74-42b68c2317f3%2F53065d20-8506-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruofqib.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruofqia%2F669b4855-3a5b-4a2e-be74-42b68c2317f3%2F53065d20-8506-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruofqib.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{L (2\\sqrt{2}+1)}{2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2L$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{L (\\sqrt{2}+1)}{3}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$3L$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For a collection of 4 extended rigid objects, the position vector of the centre of mass $\\overrightarrow{\\mathrm{r}}_{\\mathrm{cm}}$ is,</p>\n<p>$$ \\overrightarrow{\\mathrm{r}}_{\\mathrm{cm}}=\\frac{\\mathrm{m}_1 \\overrightarrow{\\mathrm{r}}_1+\\mathrm{m}_2 \\overrightarrow{\\mathrm{r}}_2+\\mathrm{m}_3 \\overrightarrow{\\mathrm{r}}_3+\\mathrm{m}_4 \\overrightarrow{\\mathrm{r}}_4}{\\mathrm{~m}_1+\\mathrm{m}_2+\\mathrm{m}_3+\\mathrm{m}_4} $$</p>\n<p>It is given that the centre of mass must lie at the origin, so $\\overrightarrow{\\mathrm{r}}_{\\mathrm{cm}}=0$ :</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruohoez%2F8f774d3d-c6ba-42fe-b042-638e189a04a1%2F8906fab0-8506-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruohof0.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruohoez%2F8f774d3d-c6ba-42fe-b042-638e189a04a1%2F8906fab0-8506-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruohof0.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$\\mathrm{m}_1 \\overrightarrow{\\mathrm{r}}_1+\\mathrm{m}_2 \\overrightarrow{\\mathrm{r}}_2+\\mathrm{m}_3 \\overrightarrow{\\mathrm{r}}_3+\\mathrm{m}_4 \\overrightarrow{\\mathrm{r}}_4=0$</p>\n\n<p>Rod 1 is along +x axis from x = 0 to x = L. Its midpoint centre of mass is:</p>\n<p>$$\\vec{r}_1 = \\left(\\frac{L}{2}\\hat{i} + 0\\hat{j}\\right)$$</p>\n<p>Rod 2 is along +y axis from y = 0 to y = L. Its midpoint centre of mass is:</p>\n<p>$$\\vec{r}_2 = \\left(0\\hat{i} + \\frac{L}{2}\\hat{j}\\right)$$</p>\n<p>Rod 3 is in the first quadrant at 45° from the origin (0,0) outward to length L. Its midpoint centre of mass is at a distance $\\frac{L}{2}$ along the 45° line:</p>\n<p>$$\\vec{r}_3 = \\left(\\frac{L}{2}\\cos(45^\\circ)\\hat{i} + \\frac{L}{2}\\sin(45^\\circ)\\hat{j}\\right) = \\left(\\frac{L}{2\\sqrt{2}}\\hat{i} + \\frac{L}{2\\sqrt{2}}\\hat{j}\\right)$$</p>\n<p>From the equation of centre of mass of combined system,</p>\n<p>$$m_1\\vec{r}_1 + m_2\\vec{r}_2 + m_3\\vec{r}_3 + m_4\\vec{r}_4 = 0$$</p>\n<p>$$\\Rightarrow m_4\\vec{r}_4 = -(m_1\\vec{r}_1 + m_2\\vec{r}_2 + m_3\\vec{r}_3)$$</p>\n<p>$$\\Rightarrow \\vec{r}_4 = -\\frac{1}{m_4}(m_1\\vec{r}_1 + m_2\\vec{r}_2 + m_3\\vec{r}_3)$$</p>\n<p>$$\\Rightarrow \\vec{r}_4 = -\\frac{1}{3M}\\left[M\\left(\\frac{L}{2}\\hat{i} + 0\\hat{j}\\right) + M\\left(0\\hat{i} + \\frac{L}{2}\\hat{j}\\right) + M\\left(\\frac{L}{2\\sqrt{2}}\\hat{i} + \\frac{L}{2\\sqrt{2}}\\hat{j}\\right)\\right]$$</p>\n<p>$$\\Rightarrow \\vec{r}_4 = \\frac{L}{6}\\hat{i} + 0\\hat{j} + 0\\hat{i} + \\frac{L}{6}\\hat{j} + \\frac{L}{6\\sqrt{2}}\\hat{i} + \\frac{L}{6\\sqrt{2}}\\hat{j}$$</p>\n<p>$$\\Rightarrow \\vec{r}_4 = \\left(\\frac{L}{6} + \\frac{L}{6\\sqrt{2}}\\right)\\hat{i} + \\left(\\frac{L}{6} + \\frac{L}{6\\sqrt{2}}\\right)\\hat{j}$$</p>\n<p>So, the centre of mass of $4^{\\mathrm{th}}$ rod is at</p>\n<p>$$\\left[\\left(\\frac{L}{6} + \\frac{L}{6\\sqrt{2}}\\right), \\left(\\frac{L}{6} + \\frac{L}{6\\sqrt{2}}\\right)\\right]$$</p>\n<p>The distance of centre of mass from the origin is, half of the length of $4^{\\mathrm{th}}$ rod.</p>\n<p>$$\\frac{L_4}{2} = |\\vec{r}_4| = \\sqrt{\\left(\\frac{L}{6} + \\frac{L}{6\\sqrt{2}}\\right)^2 + \\left(\\frac{L}{6} + \\frac{L}{6\\sqrt{2}}\\right)^2} = \\left(\\frac{L}{6} + \\frac{L}{6\\sqrt{2}}\\right)\\sqrt{2}$$</p>\n<p>$$\\Rightarrow L_4 = 2\\left[\\left(\\frac{L}{6} + \\frac{L}{6\\sqrt{2}}\\right)\\sqrt{2}\\right] = 2\\sqrt{2} \\times \\frac{L}{6} \\left[1 + \\frac{1}{\\sqrt{2}}\\right]$$</p>\n<p>$$\\Rightarrow L_4 = \\frac{L}{6}\\left[1 \\times 2\\sqrt{2} + \\frac{1}{\\sqrt{2}} \\times 2\\sqrt{2}\\right]$$</p>\n<p>$$\\Rightarrow L_4 = \\frac{L}{6}(2\\sqrt{2} + 2) = \\frac{L}{3}(\\sqrt{2} + 1)$$</p>\n<p>Therefore, the length of fourth rod is $\\frac{L(\\sqrt{2}+1)}{3}$. Thus, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>समान द्रव्यमान $M$ और लंबाई $L$ की तीन एकसमान छड़ों को चित्र में दिखाए अनुसार xy-तल में व्यवस्थित किया गया है। द्रव्यमान $3M$ की एक चौथी एकसमान छड़ को चित्र में दिखाए अनुसार xy-तल में रखा गया है। चौथी छड़ की लंबाई का मान क्या होना चाहिए ताकि चारों छड़ों का द्रव्यमान केंद्र मूल बिंदु पर हो?</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruofqia%2F669b4855-3a5b-4a2e-be74-42b68c2317f3%2F53065d20-8506-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruofqib.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruofqia%2F669b4855-3a5b-4a2e-be74-42b68c2317f3%2F53065d20-8506-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruofqib.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{L (2\\sqrt{2}+1)}{2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2L$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{L (\\sqrt{2}+1)}{3}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$3L$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-continuous-mass-distribution",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mruhy04h",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Masses of 1 g, 2 g, 3 g,… 100 g are suspended from the 1 cm, 2cm, 3cm…… 100cm marks of a light metre scale. Find the position of their centre of mass.</p>",
+                "options": [],
+                "answer": "67",
+                "explanation": "<p>For a discrete distribution of masses $m_1, m_2, \n......, m_n$ located along a straight lines at positions $x_1, x_2, \n........, x_n$, the</p>\n<p>centre of mass coordinate $x_{cm}$ is,</p>\n<p>$$x_{cm} = \\frac{\\sum\\limits_{i=1}^{n} m_i x_i}{\\sum\\limits_{i=0}^{n} m_i}$$</p>\n<p>The masses are $m_i = i$ grams for $i = 1, 2, 3, \n........, 100$</p>\n<p>Positions of masses are at $x_i = i$ cm for $i = 1, 2, 3, \n.........., 100$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruhvs42%2Fa33363f6-9434-4737-a6bb-b43640215d4c%2Fb14e8f20-84ec-11f1-9a3a-29404bd55133%2Ffile-6y3zli1mruhvs43.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruhvs42%2Fa33363f6-9434-4737-a6bb-b43640215d4c%2Fb14e8f20-84ec-11f1-9a3a-29404bd55133%2Ffile-6y3zli1mruhvs43.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Substituting these values into the formula:</p>\n<p>$$x_{\\mathrm{cm}} = \\frac{\\sum\\limits_{i=1}^{n} i \\times i}{\\sum\\limits_{i=0}^{n} i} = \\frac{\\sum\\limits_{i=1}^{n} i^2}{\\sum\\limits_{i=0}^{n} i}$$</p>\n<p>The denominator $\\sum\\limits_{i=1}^{n} i$ is the sum of the first $n$ natural numbers is an arithmetic progression:</p>\n<p>$$S_1 = \\sum\\limits_{i=1}^{n} i = 1 + 2 + 3 + \\cdots + n = \\frac{n(n+1)}{2}$$</p>\n<p>The numerator $\\sum\\limits_{i=1}^{n} i^2$ is the sum of the squares of the first $n$ natural numbers is:</p>\n<p>$$S_2 = \\sum\\limits_{i=1}^{n} i^2 = 1^2 + 2^2 + 3^2 + \\cdots + n^2 = \\frac{n(n+1)(2n+1)}{6}$$</p>\n<p>Substituting these algebraic expressions into the $x_{\\mathrm{cm}}$ expression:</p>\n<p>$$x_{\\mathrm{cm}} = \\frac{\\frac{n(n+1)(2n+1)}{6}}{\\frac{n(n+1)}{2}} = \\frac{2n+1}{3}$$</p>\n<p>The value of $n$ is $n = 100$,</p>\n<p>$$x_{\\mathrm{cm}} = \\frac{2(100) + 1}{3}$$</p>\n\n<p>$$x_{cm} = \\frac{200 + 1}{3} = \\frac{201}{3}$$</p>\n<p>$$x_{cm} = 67\\ \\text{cm}$$</p>\n<p>So, the centre of mass is at 67 cm mark of metre scale.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>1 g, 2 g, 3 g,… 100 g के द्रव्यमानों को एक हल्के मीटर स्केल के 1 cm, 2cm, 3cm…… 100cm के चिह्नों पर लटकाया गया है। उनके द्रव्यमान केंद्र की स्थिति ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-discrete-particles",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mruozp6v",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The centre of mass of an object which is formed by rotating a parabola $\\mathrm{x}=\\mathrm{ky}^2$ about X-axis having height of object as 6 m is given by $(\\alpha, \\beta) \\mathrm{m}$. Find $(\\alpha+\\beta)$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruorvbd%2F552b5102-4551-4b0e-acd5-65917dd38ed2%2Fa472d390-8507-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruorvbe.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruorvbd%2F552b5102-4551-4b0e-acd5-65917dd38ed2%2Fa472d390-8507-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruorvbe.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>For a solid object symmetric about the x -axis formed by rotating a curve about that axis, the centre of mass lies on the axis of symmetry due to the uniform distribution of mass in the circular cross-sections.</p>\n<p>Therefore, the y -coordinate and z -coordinate of the centre of mass is $\\mathrm{y}_{\\mathrm{cm}}=0, \\mathrm{z}_{\\mathrm{cm}}=0$</p>\n<p>$$ \\Rightarrow \\beta=0 $$</p>\n<p>To find x -coordinate, we divide the region into thin vertical strips of width dx at a distance x from the origin.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruoxeum%2F2b11e32e-69c0-436e-ac53-1ab6f823eacc%2F3e9598e0-8508-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruoxeun.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruoxeum%2F2b11e32e-69c0-436e-ac53-1ab6f823eacc%2F3e9598e0-8508-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruoxeun.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>The height of a strip from the lower curve to the upper curve is,</p>\n<p>$$h(x)=y_{\\text{upper}}-y_{\\text{lower}}=kx^2-(-kx^2)=2kx^2$$</p>\n<p>To find the x-coordinate, we divide the solid into thin circular elemental disks of radius $r(x)$ and thickness $dx$ located at a distance $x$ from the origin.</p>\n<p>The volume $dV$ of this elemental disk is:</p>\n<p>$$dV=\\pi r^2\\,dx$$</p>\n<p>From the given curve equation $x=ky^2 \\rightarrow y^2=\\frac{x}{k}$</p>\n<p>Substituting this into the volume element equation,</p>\n<p>$$dV=\\pi\\left(\\frac{x}{k}\\right)dx=\\frac{\\pi}{k}x\\,dx$$</p>\n<p>The formula for the centre of mass x-coordinate for a continuous uniform volume is defined as:</p>\n<p>$$x_{\\text{cm}}=\\frac{\\int x\\,dm}{\\int dm}=\\frac{\\int x(\\rho\\,dV)}{\\int (\\rho\\,dV)}=\\frac{\\int x\\left(\\frac{\\pi}{k}x\\,dx\\right)}{\\int \\left(\\frac{\\pi}{k}x\\,dx\\right)}=\\frac{\\int x^2\\,dx}{\\int x\\,dx}$$</p>\n<p>The object extends from $x=0$ at the vertex to its flat bounding height plane at $x=6\\ \\text{m}$.</p>\n<p>$$x_{\\text{cm}}=\\frac{\\int\\limits_{0}^{6} x^2\\,dx}{\\int\\limits_{0}^{6} x\\,dx}=\\frac{\\left[\\frac{x^3}{3}\\right]_{0}^{6}}{\\left[\\frac{x^2}{2}\\right]_{0}^{6}}=\\frac{\\left(\\frac{216}{3}\\right)}{\\left(\\frac{36}{2}\\right)}=\\frac{72}{18}=4$$</p>\n<p>$$\\Rightarrow \\alpha=4$$</p>\n<p>$$\\Rightarrow \\alpha+\\beta=4+0=4$$</p>\n<p>Therefore, the correct answer is 4.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>परवलय $\\mathrm{x}=\\mathrm{ky}^2$ को X-अक्ष के परितः घुमाकर बनाए गए एक पिण्ड (जिसकी ऊंचाई 6 m है) का द्रव्यमान केंद्र $(\\alpha, \\beta) \\mathrm{m}$ द्वारा दिया गया है। $(\\alpha+\\beta)$ ज्ञात कीजिए।</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruorvbd%2F552b5102-4551-4b0e-acd5-65917dd38ed2%2Fa472d390-8507-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruorvbe.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruorvbd%2F552b5102-4551-4b0e-acd5-65917dd38ed2%2Fa472d390-8507-11f1-8c67-417ca12b34fb%2Ffile-6y3zli1mruorvbe.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-continuous-mass-distribution",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mruq4xl2",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Seven homogeneous bricks, each of length $L$, are arranged as shown in figure. Each brick is displaced with respect to the one in contact by $L / 10$. The $x$-coordinate of the centre of mass relative to the origin is $\\frac{a L}{b}$. Find $a + b$</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrupzj9c%2F1325f842-cb70-4f9f-a89e-69cea7b915b5%2F62bcd400-850c-11f1-99b1-e732bf292a7e%2Ffile-6y3zli1mrupzj9d.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrupzj9c%2F1325f842-cb70-4f9f-a89e-69cea7b915b5%2F62bcd400-850c-11f1-99b1-e732bf292a7e%2Ffile-6y3zli1mrupzj9d.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "57",
+                "explanation": "<p>Let us find the centre of mass of the seven bricks. Since all bricks are identical, each has the same mass $m$. To find the $x$-coordinate of the centre of mass, we use</p>\n<p>$$x_{CM} = \\frac{\\Sigma m_i x_i}{\\Sigma m_i}$$</p>\n<p>The key idea is to locate the centre of each brick along the $x$-axis. The centre of a single brick of length $L$ lies at a distance $\\frac{L}{2}$ from its left edge. So we just need to track how far each brick is shifted from the origin.</p>\n<p>Looking at the figure, the bricks are stacked so that they shift out to one side and then come back. Each shift is by $\\frac{L}{10}$. So the horizontal positions of the centres of the bricks move outward in steps and then return.</p>\n<p>The centres of the seven bricks are located at these $x$-positions:</p>\n<p>$$\\frac{L}{2}, \\quad \\frac{L}{2}+\\frac{L}{10}, \\quad \\frac{L}{2}+2\\left(\\frac{L}{10}\\right), \\quad \\frac{L}{2}+3\\left(\\frac{L}{10}\\right), \\quad \\frac{L}{2}+2\\left(\\frac{L}{10}\\right), \\quad \\frac{L}{2}+\\frac{L}{10}, \\quad \\frac{L}{2}$$</p>\n<p>Notice how the shifts go up as $0, 1, 2, 3$ and then come back down as $2, 1, 0$. This matches the way the bricks in the figure move out and then return.</p>\n<p>Now we add all these positions together and divide by the total number of bricks, which is $7$:</p>\n<p>$$x_{CM}=\\frac{\\begin{array}{r}m\\left(\\frac{L}{2}\\right)+m\\left(\\frac{L}{2}+\\frac{L}{10}\\right)+m\\left[\\frac{L}{2}+2\\left(\\frac{L}{10}\\right)\\right]+m\\left[\\frac{L}{2}+3\\left(\\frac{L}{10}\\right)\\right] \\\\ +m\\left[\\frac{L}{2}+2\\left(\\frac{L}{10}\\right)\\right]+m\\left(\\frac{L}{2}+\\frac{L}{10}\\right)+m\\left(\\frac{L}{2}\\right)\\end{array}}{7 m}$$</p>\n<p>The mass $m$ cancels out from every term. Each brick contributes $\\frac{L}{2}$, so we get $7 \\times \\frac{L}{2}$ from those parts. Then we add up the extra shifts: $0+1+2+3+2+1+0 = 9$ units of $\\frac{L}{10}$, giving $9 \\times \\frac{L}{10}$.</p>\n<p>So the total becomes $\\frac{7L}{2} + \\frac{9L}{10}$. Dividing this by $7$ gives</p>\n<p>$$x_{CM}=\\frac{22 L}{35}$$</p>\n<p>Comparing with the given form $\\frac{aL}{b}$, we get $a = 22$ and $b = 35$.</p>\n<p>So the required value is</p>\n<p>$$a + b = 22 + 35 = 57$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>समांगी (homogeneous) सात ईंटें, जिनमें प्रत्येक की लम्बाई $L$ है, चित्र में दर्शाए गए अनुसार व्यवस्थित हैं। प्रत्येक ईंट अपने संपर्क वाली ईंट के सापेक्ष $L / 10$ विस्थापित है। मूल बिन्दु के सापेक्ष द्रव्यमान केन्द्र का $x$-निर्देशांक $\\frac{a L}{b}$ है। $a + b$ ज्ञात कीजिए।</p> <img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrupzj9c%2F1325f842-cb70-4f9f-a89e-69cea7b915b5%2F62bcd400-850c-11f1-99b1-e732bf292a7e%2Ffile-6y3zli1mrupzj9d.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrupzj9c%2F1325f842-cb70-4f9f-a89e-69cea7b915b5%2F62bcd400-850c-11f1-99b1-e732bf292a7e%2Ffile-6y3zli1mrupzj9d.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-discrete-particles",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mruqf7em",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two particles of mass 1 kg and 2 kg are located at $x=0$ and $x=3 \\mathrm{~m}$. Find the position of their centre of mass.</p>",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>Since, both the particles lie on $x$-axis, the cm will also lie on $x$-axis. Let the cm is located at $x=x$, then</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruqd6p4%2F8461a069-e06c-4785-b2a4-6ad2859cb7ec%2Fde5caa80-850d-11f1-99b1-e732bf292a7e%2Ffile-6y3zli1mruqd6p5.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruqd6p4%2F8461a069-e06c-4785-b2a4-6ad2859cb7ec%2Fde5caa80-850d-11f1-99b1-e732bf292a7e%2Ffile-6y3zli1mruqd6p5.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$r_1=$ distance of cm from the particle of mass 1 kg</p>\n<p>$$ \\Rightarrow r_1=x $$</p>\n<p>and $r_2=$ distance of cm from the particle of mass 2 kg</p>\n<p>$$ \\Rightarrow r_2=(3-x) $$</p>\n<p>Using $\\frac{r_1}{r_2}=\\frac{m_2}{m_1}$</p>\n<p>$$ \\begin{aligned} & \\Rightarrow \\frac{x}{3-x}=\\frac{2}{1} \\\\\\\\ & \\Rightarrow x=2 \\mathrm{~m} \\end{aligned} $$</p>\n<p>Thus, the cm of the two particles is located at $x=2 \\mathrm{~m}$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>1 kg और 2 kg द्रव्यमान के दो कण $x=0$ और $x=3 \\mathrm{~m}$ पर स्थित हैं। उनके द्रव्यमान केंद्र की स्थिति ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-discrete-particles",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mruqv7jt",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A man has constructed a toy as shown in figure. If density of the material of the sphere is 12 times of the cone, then distance of the centre of mass from O is nR. Then find the value of n.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruqrnun%2F58b66db6-e98a-42aa-8ff7-57174104280b%2F70f0d0f0-850f-11f1-99b1-e732bf292a7e%2Ffile-6y3zli1mruqrnuo.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruqrnun%2F58b66db6-e98a-42aa-8ff7-57174104280b%2F70f0d0f0-850f-11f1-99b1-e732bf292a7e%2Ffile-6y3zli1mruqrnuo.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>The cone has a base radius of $2R$ and a height of $4R$. Using the volume of a cone, its mass becomes</p>\n<p>$$\\text{Mass of cone} = \\rho\\left[\\frac{1}{3}\\pi (2R)^2(4R)\\right] = \\frac{16}{3}\\rho\\pi R^3$$</p>\n<p>The sphere has radius $R$, but its material is 12 times denser than the cone's material. So its mass is</p>\n<p>$$\\text{Mass of sphere} = 12\\rho\\left(\\frac{4}{3}\\pi R^3\\right) = 16\\rho\\pi R^3$$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruqur78%2Ff9af2d18-975a-4d83-b774-090978477b44%2Fc6f49f40-850f-11f1-99b1-e732bf292a7e%2Ffile-6y3zli1mruqur79.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruqur78%2Ff9af2d18-975a-4d83-b774-090978477b44%2Fc6f49f40-850f-11f1-99b1-e732bf292a7e%2Ffile-6y3zli1mruqur79.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Now we need the position of the centre of mass of each part, measured from the point $O$ at the bottom.</p>\n<p>For a solid cone, the centre of mass lies at a height of $\\frac{H}{4}$ from its base. Here the height is $4R$, so this distance is</p>\n<p>$$\\frac{H}{4} = \\frac{4R}{4} = R$$</p>\n<p>This means the cone's centre of mass is at $y_1 = R$ above $O$.</p>\n<p>The sphere sits on top of the cone. Its centre is at the middle of the sphere, which comes out to be $y_2 = 5R$ above $O$ (the top of the cone is at height $4R$, and the centre of the sphere is one radius $R$ higher).</p>\n<p>Now we combine both parts using the centre of mass formula:</p>\n<p>$$y_{CM}=\\frac{m_1 y_1 + m_2 y_2}{m_1 + m_2}$$</p>\n<p>$$=\\frac{\\frac{16}{3}\\rho\\pi R^3 (R) + 16\\rho\\pi R^3 (5R)}{\\frac{16}{3}\\rho\\pi R^3 + 16\\rho\\pi R^3}=4R$$</p>\n<p>So the centre of mass is at a distance of $4R$ from $O$. Since this distance is written as $nR$, comparing both gives $n = 4$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक व्यक्ति ने चित्र में दर्शाए अनुसार एक खिलौना बनाया है। यदि गोले के पदार्थ का घनत्व शंकु के घनत्व का 12 गुना है, तो O से द्रव्यमान केंद्र की दूरी nR है। तब n का मान ज्ञात कीजिए।</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mruqrnun%2F58b66db6-e98a-42aa-8ff7-57174104280b%2F70f0d0f0-850f-11f1-99b1-e732bf292a7e%2Ffile-6y3zli1mruqrnuo.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mruqrnun%2F58b66db6-e98a-42aa-8ff7-57174104280b%2F70f0d0f0-850f-11f1-99b1-e732bf292a7e%2Ffile-6y3zli1mruqrnuo.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-continuous-mass-distribution",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Calculation of Center of Mass of Discrete Particles, Center of Mass of Continuous Mass Distribution",
+    "timeAllotted": 2160000,
+    "title": "Center of Mass and Collision Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g71mnvx761l",
+    "defaultLanguage": "en",
+    "description": "Calculation of Center of Mass of Discrete Particles, Center of Mass of Continuous Mass Distribution",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-21T15:00:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Calculation of Center of Mass of Discrete Particles, Center of Mass of Continuous Mass Distribution",
+    "timeAllotted": 2160000,
+    "title": "Center of Mass and Collision Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Center of Mass and Collision"
+  }
+}

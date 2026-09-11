@@ -1,0 +1,285 @@
+/**
+ * Quantrex — World-class touch + scroll + interaction layer
+ * First-tap reliability · 48px targets · 60fps scroll · no hard-press
+ * Safe for vanilla SPA (not React/Next rewrite)
+ */
+
+/* ── Viewport touch: kill 300ms lag legacy, improve input ── */
+html {
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Faster paint: avoid scroll-linked work */
+  scroll-padding-top: 0;
+}
+
+/* GPU compositing only where it helps scroll FPS */
+.sidebar,
+.topbar,
+.dpp-banner,
+.mtk-palette {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Reduce layout thrash on long question lists */
+.q-list,
+#marksQList,
+.marks-q-list {
+  contain: content;
+}
+.q-card,
+.marks-q-card,
+.qx-q-row {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 92px;
+}
+.mtk-options,
+.qx-prac-opts {
+  contain: layout style;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.mtk-main,
+.qx-practice-page,
+.qx-question-body {
+  max-width: 100%;
+  overflow-x: visible;
+}
+
+body {
+  -webkit-tap-highlight-color: rgba(13, 148, 136, 0.18);
+  overscroll-behavior-y: auto;
+  scroll-behavior: auto;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html { scroll-behavior: smooth; }
+}
+
+/* ── Scroll containers: GPU-friendly, no rubber-band fight ── */
+.mtk-main,
+.mtk-palette,
+.sidebar,
+.marks-modal-overlay,
+.mtk-body {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* ── Minimum 48×48 touch targets (Material / Apple HIG) ── */
+button,
+.btn-primary,
+.btn-soft,
+.btn-outline,
+.btn-primary.sm,
+.btn-soft.sm,
+.nav-item,
+.chip,
+.qx-top-exam,
+.qx-diff-chip,
+.qx-class-chip,
+.qx-bm-btn,
+.qx-report-fab,
+.qx-prac-icon,
+.mtk-btn,
+.mtk-font-btn,
+.mtk-theme-btn,
+.mtk-exit-btn,
+.mtk-submit-top,
+.mtk-sec-tab,
+.mtk-pal-cell,
+.qx-pal-cell,
+.mtk-opt,
+.qx-prac-opt,
+.q-card,
+.subj-card,
+.ch-card,
+.exam-card,
+.bank-card,
+.book-card,
+.qx-module-card,
+.cpyqb-exam-tile,
+.dash-card,
+a.back-link,
+.menu-btn,
+.search-btn,
+.theme-btn,
+.logout-link,
+.sidebar-theme,
+#navToggle,
+#searchBtn,
+#themeToggle,
+#logoutBtn {
+  min-height: 48px;
+  min-width: 48px;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: auto !important;
+}
+
+/* Compact chips still need height; pad hit area via padding */
+.chip,
+.tag,
+.qx-diff-chip,
+.qx-paper-chip {
+  min-height: 36px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  touch-action: manipulation;
+  pointer-events: auto !important;
+}
+
+/* Options: large hit zone */
+.mtk-opt,
+.qx-prac-opt {
+  min-height: 52px !important;
+  padding: 12px 14px !important;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(45, 212, 191, 0.2);
+}
+
+/* Full-width mobile actions already 48px — reinforce */
+.qx-prac-foot .btn-primary,
+.qx-prac-foot .btn-soft,
+.mtk-controls .mtk-btn {
+  min-height: 48px !important;
+}
+
+/* ── Pressed / active / focus (instant feedback = no “hard press” feel) ── */
+button:active,
+.btn-primary:active,
+.btn-soft:active,
+.nav-item:active,
+.chip:active,
+.q-card:active,
+.subj-card:active,
+.ch-card:active,
+.mtk-opt:active,
+.qx-prac-opt:active,
+.mtk-btn:active,
+.qx-bm-btn:active,
+.mtk-exit-btn:active,
+.mtk-pal-cell:active {
+  transform: scale(0.97);
+  opacity: 0.92;
+  transition: transform 0.08s ease-out, opacity 0.08s ease-out;
+}
+
+button:focus-visible,
+.btn-primary:focus-visible,
+.nav-item:focus-visible,
+.q-card:focus-visible,
+.mtk-opt:focus-visible,
+.qx-prac-opt:focus-visible {
+  outline: 2px solid #0d9488;
+  outline-offset: 2px;
+}
+
+/* Hover only on fine pointers (no sticky hover on mobile) */
+@media (hover: hover) and (pointer: fine) {
+  .q-card:hover,
+  .subj-card:hover,
+  .ch-card:hover {
+    transform: translateY(-1px);
+  }
+  button:active,
+  .q-card:active {
+    transform: scale(0.98);
+  }
+}
+
+/* ── Overlay / z-index: never block taps after modal close ── */
+.marks-modal-overlay,
+.mtk-qview-overlay,
+.qx-report-overlay,
+#mtkStopModal,
+#mtkSubmitModal,
+#tsResumeModal,
+#pyqResumeModal,
+#pyqPreviewModal {
+  pointer-events: auto;
+  z-index: 9600;
+}
+
+/* When overlay removed, ensure body scroll unlock helpers */
+body.qx-nav-open::before {
+  pointer-events: auto;
+  z-index: 99;
+}
+
+/* Sidebar above overlay, content below when closed */
+.sidebar {
+  z-index: 200;
+  pointer-events: auto;
+}
+
+/* Test engine header always tappable */
+.mtk-header,
+.mtk-header * {
+  pointer-events: auto;
+}
+.mtk-header {
+  z-index: 30;
+  position: relative;
+}
+
+/* ── List virtualization-lite: only paint near viewport ── */
+.q-list .q-card,
+.qx-topic-grid > *,
+.ch-grid > *,
+.subj-grid > *,
+.books-grid > *,
+.marks-ts-grid > * {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 100px;
+  contain: layout style paint;
+}
+
+/* ── Reduce paint cost ── */
+.q-card,
+.mtk-opt,
+.qx-prac-opt,
+.subj-card,
+.ch-card {
+  will-change: auto;
+  backface-visibility: hidden;
+}
+
+/* Prefer transform/opacity only for feedback (already above) */
+* {
+  /* avoid expensive filters on mobile scroll */
+}
+
+@media (max-width: 860px) {
+  /* No backdrop-filter blur on mobile — kills FPS */
+  body.qx-nav-open::before {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(15, 23, 42, 0.55) !important;
+  }
+  .marks-modal-overlay {
+    backdrop-filter: none !important;
+  }
+}
+
+/* ── Images: never block layout, lazy by default ── */
+img {
+  max-width: 100%;
+  height: auto;
+  content-visibility: auto;
+}
+
+img[loading="lazy"] {
+  decoding: async;
+}
+
+/* ── Prevent accidental text selection during swipe ── */
+.mtk-pal-cell,
+.qx-pal-cell,
+.nav-item,
+.chip {
+  -webkit-touch-callout: none;
+}

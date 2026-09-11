@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mp5u8hqa",
+  "title": "Elasticity Test - 3 (Topic Test)",
+  "type": "topic",
+  "section": "Elasticity",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-08-30T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "afe1de72-9201-4bf9-8433-5bf6acd1e00d",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61mp5u8hqa",
+    "defaultLanguage": "en",
+    "description": "Elastic Energy Stored by Wire, Volume Stress and Strain and Bulk Modulus, Shear Stress and Strain and Modulus of Rigidity",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-30T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mtbybq84",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Each of three blocks shown in figure has a mass 3 kg. The wire connecting blocks A and B has area of cross-section 0.005 cm<sup>2</sup> and Young's modulus of elasticity $Y = 2 \\times 10^{11} \\ \\mathrm{N/m^2}$. Neglect friction. Find the elastic potential energy stored per unit volume in wire connecting blocks A and B in steady state (in J/m<sup>3</sup>) ($g = 10 \\ \\mathrm{m/s^2}$)</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtby6nui/31f9658a-7d81-41cd-8b64-90f5f4a0d2c7/fc65d9a0-a251-11f1-b9db-ab431e96d529/file-6y3zli1mtby6nuj.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtby6nui/31f9658a-7d81-41cd-8b64-90f5f4a0d2c7/fc65d9a0-a251-11f1-b9db-ab431e96d529/file-6y3zli1mtby6nuj.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>500</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1000</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2000</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>3000</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>When a wire is stretched by a force T, work is done against internal restoring forces.</p>\n<p>For an elongation x, the restoring force is $F(x)=\\left(\\frac{YA}{L}\\right)x$.</p>\n<p>The infinitesimal work done in stretching the wire by dx is:</p>\n<p>$$dW = F(x)\\,dx = \\left(\\frac{YA}{L}x\\right)dx$$</p>\n<p>Total work done which is stored as elastic potential energy (U) in extending the wire by total elongation $\\Delta L$:</p>\n<p>$$U = \\int\\limits_{0}^{\\Delta L} \\frac{YA}{L}x\\,dx = \\frac{1}{2}\\left(\\frac{YA}{L}\\right)(\\Delta L)^2$$</p>\n<p>As mechanical stress ($\\sigma$) is defined as the tensile/compressive force per unit cross-sectional area,</p>\n<p>$$\\sigma = \\frac{T}{A}$$</p>\n<p>The strain in wire is equivalent to fractional change in length of wire, $\\varepsilon = \\frac{\\Delta L}{L}$</p>\n<p>$$U = \\frac{1}{2}(AL)Y\\left(\\frac{\\Delta L}{L}\\right)^2 = \\frac{1}{2} \\times (\\mathrm{Volume}) \\times Y \\times \\varepsilon^2$$</p>\n<p>Since stress = $Y \\times$ Strain $\\Rightarrow \\varepsilon = \\frac{\\sigma}{Y}$, the energy stored per unit volume (u) is,</p>\n<p>$$u = \\frac{U}{\\mathrm{Volume}} = \\frac{1}{2}Y\\left(\\frac{\\sigma}{Y}\\right)^2 = \\frac{\\sigma^2}{2Y} = \\frac{(T/A)^2}{2Y} = \\frac{T^2}{2A^2Y}$$</p>\n<p>Let the masses of blocks A, B, and C be $m_A = m_B = m_C = m = 3\\,\\mathrm{kg}$.</p>\n<p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtby9st4/3d2a4347-d3b1-4f11-8c46-7be57e717231/53a86980-a252-11f1-b9db-ab431e96d529/file-6y3zli1mtby9st5.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtby9st4/3d2a4347-d3b1-4f11-8c46-7be57e717231/53a86980-a252-11f1-b9db-ab431e96d529/file-6y3zli1mtby9st5.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Let $T_1$ be the tension in the wire connecting block A and block B, and $T_2$ be the tension in the wire connecting block B and block C.</p>\n<p>Let $a$ be the common acceleration of the system upon release.</p>\n<p>Applying Newton's second law to block A (moving horizontally):</p>\n<p>$$T_1 = m_A \\, a = m \\, a \\ldots (i)$$</p>\n<p>Applying Newton's second law to block B (moving horizontally),</p>\n<p>$$T_2 - T_1 = m_B \\, a = m \\, a \\ldots (ii)$$</p>\n<p>Applying Newton's second law to hanging block C (moving vertically downward),</p>\n<p>$$m_C g - T_2 = m_C \\, a \\Rightarrow mg - T_2 = ma \\ldots (iii)$$</p>\n<p>Adding equations (i), (ii) and (iii),</p>\n<p>$$mg = (m_A + m_B + m_C)a = 3ma$$</p>\n<p>$$a = \\frac{g}{3} = \\frac{10}{3}\\ \\mathrm{m/s^2}$$</p>\n<p>Substituting $a$ into equation (i) we get $T_1$,</p>\n<p>$$T_1 = ma = 3 \\times \\frac{10}{3}\\ \\mathrm{m/s^2} = 10\\ \\mathrm{N}$$</p>\n<p>The cross-sectional area of wire AB is</p>\n<p>$$A = 0.005\\ \\mathrm{cm^2} = 0.005 \\times 10^{-4}\\ \\mathrm{m^2} = 5 \\times 10^{-7}\\ \\mathrm{m^2}$$</p>\n<p>The tensile stress developed in wire AB,</p>\n<p>$$\\sigma = \\frac{T_1}{A} = \\frac{10}{5 \\times 10^{-7}} = 2 \\times 10^7\\ \\mathrm{N/m^2}$$</p>\n<p>Elastic potential energy per unit volume:</p>\n<p>$$u = \\frac{\\sigma^2}{2Y} = \\frac{(2 \\times 10^7)^2}{2 \\times (2 \\times 10^{11})}$$</p>\n<p>$$u = \\frac{4 \\times 10^{14}}{4 \\times 10^{11}} = 10^3 = 1000\\ \\mathrm{J/m^3}$$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दर्शाए गए तीन गुटकों में से प्रत्येक का द्रव्यमान 3 kg है। गुटकों A और B को जोड़ने वाले तार का अनुप्रस्थ-काट क्षेत्रफल 0.005 cm<sup>2</sup> तथा यंग प्रत्यास्थता गुणांक $Y = 2 \\times 10^{11} \\ \\mathrm{N/m^2}$ है। घर्षण को नगण्य मानिए। स्थायी अवस्था में गुटकों A और B को जोड़ने वाले तार में प्रति एकांक आयतन संचित प्रत्यास्थ स्थितिज ऊर्जा (J/m<sup>3</sup> में) ज्ञात कीजिए ($g = 10 \\ \\mathrm{m/s^2}$)</p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtby6nui/31f9658a-7d81-41cd-8b64-90f5f4a0d2c7/fc65d9a0-a251-11f1-b9db-ab431e96d529/file-6y3zli1mtby6nuj.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtby6nui/31f9658a-7d81-41cd-8b64-90f5f4a0d2c7/fc65d9a0-a251-11f1-b9db-ab431e96d529/file-6y3zli1mtby6nuj.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>500</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1000</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2000</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>3000</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "elastic-energy-stored-by-wire-volume-stress-and-strain-and-bulk-modulus-shear-stress-and-strain-and-modulus-of-rigidity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtc0axg0",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Estimate the pressure deep inside the sea at a depth h below the surface. Assume that the density of water is $\\rho_0$ at sea level and its bulk modulus is B. $p_0$ is the atmosphere pressure at sea level, p is the pressure at depth h;</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>p = p<sub>0</sub> - B ln <bigg>( 1 - $\\frac{\\rho_0 g h}{B}$ <bigg>)</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>p = p<sub>0</sub> + B ln <bigg>( 1 - $\\frac{\\rho_0 g h}{B}$ <bigg>)</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>p = p<sub>0</sub> - B ln <bigg>( 1 + $\\frac{\\rho_0 g h}{B}$ <bigg>)</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>p = p<sub>0</sub> + B ln <bigg>( 1 + $\\frac{\\rho_0 g h}{B}$ <bigg>)</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Consider a horizontal fluid element of cross-sectional area A and vertical thickness dy at a depth y below the surface $(\\mathrm{y}=0)$.</p>\n<p>Using Pascal's law of hydrostatic pressure, the pressure increases with depth is $\\mathrm{dp}=\\rho_{\\mathrm{y}} \\mathrm{gdy} \\ldots$ (i), where $\\rho_{\\mathrm{y}}$ is the density of water at depth y.</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc035o8/4e48f4e4-b2ea-43f8-9bd2-6397cadc31e0/6d307f80-a259-11f1-b9db-ab431e96d529/file-6y3zli1mtc035o9.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc035o8/4e48f4e4-b2ea-43f8-9bd2-6397cadc31e0/6d307f80-a259-11f1-b9db-ab431e96d529/file-6y3zli1mtc035o9.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>The bulk modulus (B) is the ratio of change in pressure (dp) to the volumetric strain $\\left(-\\frac{\\mathrm{dV}}{\\mathrm{V}}\\right)$</p>\n<p>$$ \\mathrm{B}=-\\frac{\\mathrm{dp}}{\\mathrm{dV} / \\mathrm{V}} $$</p>\n<p>For a fixed mass of fluid $\\mathrm{m}=\\rho \\cdot \\mathrm{V}=$ constant:</p>\n<p>$$ \\mathrm{d}(\\mathrm{~m})=\\mathrm{d}(\\rho \\mathrm{~V})=\\rho \\mathrm{dV}+\\mathrm{Vd} \\rho=0 \\Rightarrow \\frac{\\mathrm{dV}}{\\mathrm{~V}}=-\\frac{\\mathrm{d} \\rho}{\\rho} $$</p>\n<p>Substituting this into the expression for Bulk-modulus,</p>\n<p>$$B=\\frac{dp}{d\\rho/\\rho}=\\frac{\\rho\\,dp}{d\\rho}$$</p>\n<p>$$\\frac{dp}{B}=\\frac{d\\rho}{\\rho} \\Rightarrow dp=B\\frac{d\\rho}{\\rho}... (ii)$$</p>\n<p>From both the equations,</p>\n<p>$$B\\frac{d\\rho}{\\rho}=\\rho gdy \\Rightarrow \\frac{d\\rho}{\\rho^2}=\\frac{g}{B}\\,dy$$</p>\n<p>Integrating from sea level $(y=0$, where $ ho=\\rho_0)$ to depth $y=h$ where density is $ \\rho)$:</p>\n<p>$$\\int\\limits_{\\rho_0}^{\\rho} \\frac{1}{\\rho^2}\\,d\\rho=\\frac{g}{B}\\int\\limits_{0}^{h} dy$$</p>\n\n<p>$\\left[-\\frac{1}{\\rho}\\right]_{\\rho_0}^\\rho=\\frac{\\mathrm{gh}}{\\mathrm{B}}$</p>\n<p>$-\\frac{1}{\\rho}+\\frac{1}{\\rho_0}=\\frac{g h}{B}$</p>\n<p>$\\frac{1}{\\rho}=\\frac{1}{\\rho_0}-\\frac{g h}{B}=\\frac{B-\\rho_0 g h}{\\rho_0 B}$</p>\n<p>$\\rho=\\frac{\\rho_0 \\mathrm{~B}}{\\mathrm{~B}-\\rho_0 \\mathrm{gh}}=\\frac{\\rho_0}{1-\\frac{\\rho_0 \\mathrm{gh}}{\\mathrm{B}}}$</p>\n<p>From equation (ii), integrating $\\mathrm{dp}=\\mathrm{B} \\frac{\\mathrm{d} \\rho}{\\rho}$ from the surface where pressure is $\\mathrm{p}_0$ and density is $\\rho_0$ to depth h where pressure is p and density is $\\rho$ :</p>\n\n\n\n\n\n\n\n\n<p>$$\\int\\limits_{p_0}^{p} dp = B \\int\\limits_{\\rho_0}^{\\rho} \\frac{d\\rho}{\\rho}$$</p>\n<p>$$p-p_0=B[\\ln \\rho]_{\\rho_0}^{\\rho}=B\\ln\\left(\\frac{\\rho}{\\rho_0}\\right)$$</p>\n<p>Substitute the expression for $\\frac{\\rho}{\\rho_0}=\\frac{1}{1-\\frac{\\rho_0gh}{B}}=\\left(1-\\frac{\\rho_0gh}{B}\\right)^{-1}$</p>\n<p>$$p-p_0=B\\ln\\left[\\left(1-\\frac{\\rho_0gh}{B}\\right)^{-1}\\right]$$</p>\n<p>$$p-p_0=-B\\ln\\left(1-\\frac{\\rho_0gh}{B}\\right)$$</p>\n<p>$$p=p_0-B\\ln\\left(1-\\frac{\\rho_0gh}{B}\\right)$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>समुद्र की सतह से h गहराई पर समुद्र के अंदर दाब का आकलन कीजिए। मान लीजिए कि समुद्र तल पर जल का घनत्व $\\rho_0$ है तथा इसका आयतन प्रत्यास्थता गुणांक (bulk modulus) B है। $p_0$ समुद्र तल पर वायुमंडलीय दाब है, p गहराई h पर दाब है;</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>p = p<sub>0</sub> - B ln <bigg>( 1 - $\\frac{\\rho_0 g h}{B}$ <bigg>)</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>p = p<sub>0</sub> + B ln <bigg>( 1 - $\\frac{\\rho_0 g h}{B}$ <bigg>)</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>p = p<sub>0</sub> - B ln <bigg>( 1 + $\\frac{\\rho_0 g h}{B}$ <bigg>)</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>p = p<sub>0</sub> + B ln <bigg>( 1 + $\\frac{\\rho_0 g h}{B}$ <bigg>)</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "elastic-energy-stored-by-wire-volume-stress-and-strain-and-bulk-modulus-shear-stress-and-strain-and-modulus-of-rigidity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtc0n39m",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two wires of the same material (Young's modulus Y) and same length L but radii R and 2R respectively, are joined end to end and a weight w is suspended from the combination as shown in the figure. The elastic potential energy in the system is</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc0kb9m/20f65864-d17d-499a-8fb1-015c62d10bd3/4a4426a0-a25b-11f1-b9db-ab431e96d529/file-6y3zli1mtc0kb9n.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc0kb9m/20f65864-d17d-499a-8fb1-015c62d10bd3/4a4426a0-a25b-11f1-b9db-ab431e96d529/file-6y3zli1mtc0kb9n.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{3w^2L}{4 \\pi R^2 Y} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{3w^2L}{8 \\pi R^2 Y} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{5w^2L}{8 \\pi R^2 Y} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{w^2L}{\\pi R^2 Y} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>When a tensile force $F$ is applied to a wire of length $L$, cross-sectional area $A$, and Young's modulus $Y$, the elongation produced is $\\Delta L = \\frac{FL}{AY}$</p>\n<p>The elastic potential energy $U$ stored in the wire equals the work done by the stretching force</p>\n<p>$$U = \\frac{1}{2}F\\,\\Delta L$$</p>\n<p>Substituting $\\Delta L = \\frac{FL}{AY}$ into the energy expression,</p>\n<p>$$U = \\frac{1}{2}F \\times \\left(\\frac{FL}{AY}\\right) = \\frac{F^2L}{2AY}$$</p>\n<p>A weight $w$ is suspended at the bottom, so the tensile force transmitted through each wire connected in series is equal to $w$.</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc0lhp5/adf1f8d4-236c-40b6-851d-51232229ee51/6b0b1c90-a25b-11f1-b9db-ab431e96d529/file-6y3zli1mtc0lhp6.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc0lhp5/adf1f8d4-236c-40b6-851d-51232229ee51/6b0b1c90-a25b-11f1-b9db-ab431e96d529/file-6y3zli1mtc0lhp6.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>For upper wire, length is $L_1 = L$, radius is $r_1 = 2R$, cross-sectional area is $A_1 = \tau (r_1)^2 = \tau (2R)^2 = 4\tau R^2$</p>\n<p>So, elastic potential energy stored in upper wire is;</p>\n<p>$$U_1 = \\frac{w^2 L_1}{2 A_1 Y} = \\frac{w^2 L}{2 (4\\pi R^2) Y} = \\frac{w^2 L}{8\\pi R^2 Y}$$</p>\n<p>For lower wire, length is $L_2 = L$, radius is $r_2 = R$, cross-sectional area is $A_2 = \tau (r_2)^2 = \tau (R)^2 = \tau R^2$</p>\n<p>So, elastic potential energy stored in lower wire is;</p>\n<p>$$U_2 = \\frac{w^2 L_2}{2 A_2 Y} = \\frac{w^2 L}{2 (\\pi R^2) Y} = \\frac{w^2 L}{2\\pi R^2 Y}$$</p>\n<p>Hence, the total elastic potential energy $U_{\\text{total}}$ stored in the system is the sum of the energies stored in both wires:</p>\n<p>$$U_{\\text{total}} = U_1 + U_2$$</p>\n<p>$$U_{\\text{total}} = \\frac{w^2 L}{8\\pi R^2 Y} + \\frac{w^2 L}{2\\pi R^2 Y}$$</p>\n<p>$$U_{\\text{total}} = \\frac{w^2 L + 4w^2 L}{8\\pi R^2 Y} = \\frac{5w^2 L}{8\\pi R^2 Y}$$</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>समान पदार्थ (यंग प्रत्यास्थता गुणांक $Y$) और समान लम्बाई $L$ परन्तु क्रमशः $R$ तथा $2R$ त्रिज्याओं वाले दो तारों को सिरे से सिरा जोड़कर एक संयोजन बनाया गया है और चित्र में दिखाए अनुसार इस संयोजन से एक भार $w$ लटकाया गया है। निकाय में प्रत्यास्थ स्थितिज ऊर्जा है:</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc0kb9m/20f65864-d17d-499a-8fb1-015c62d10bd3/4a4426a0-a25b-11f1-b9db-ab431e96d529/file-6y3zli1mtc0kb9n.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc0kb9m/20f65864-d17d-499a-8fb1-015c62d10bd3/4a4426a0-a25b-11f1-b9db-ab431e96d529/file-6y3zli1mtc0kb9n.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{3w^2L}{4 \\pi R^2 Y} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{3w^2L}{8 \\pi R^2 Y} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{5w^2L}{8 \\pi R^2 Y} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{w^2L}{\\pi R^2 Y} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "elastic-energy-stored-by-wire-volume-stress-and-strain-and-bulk-modulus-shear-stress-and-strain-and-modulus-of-rigidity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtc0tmup",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A rubber of volume 2000 cc is alternately subjected to tension and released. The stress figure shows the stress-strain curve of rubber. Each curve is a quadrant of an ellipse. The amount of energy lost as heat per cycle per unit volume will be</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc0oqd8/3b819246-68be-4297-95f6-e041c602dd1a/c52adbc0-a25b-11f1-b9db-ab431e96d529/file-6y3zli1mtc0oqd9.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc0oqd8/3b819246-68be-4297-95f6-e041c602dd1a/c52adbc0-a25b-11f1-b9db-ab431e96d529/file-6y3zli1mtc0oqd9.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\left( \\frac{\\pi}{2} - 1 \\right) \\times 16 \\times 10^2 \\ \\text{J} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\left( \\frac{\\pi}{4} - 1 \\right) \\times 8 \\times 10^2 \\ \\text{J} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\left( \\frac{\\pi}{4} - 1 \\right) \\times 32 \\times 10^2 \\ \\text{J} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\left( \\frac{\\pi}{2} - 1 \\right) \\times 32 \\times 10^2 \\ \\text{J} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>When a material is stretched, work is done on the material per unit volume. The work done during loading is represented by the area under the loading curve on a stress-strain graph.</p>\n<p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc0qjyd/e6a46e2d-4ff1-4b46-b477-d1a56753ce4c/f7d4fb50-a25b-11f1-b9db-ab431e96d529/file-6y3zli1mtc0qjye.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc0qjyd/e6a46e2d-4ff1-4b46-b477-d1a56753ce4c/f7d4fb50-a25b-11f1-b9db-ab431e96d529/file-6y3zli1mtc0qjye.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$ \\mathrm{w}_{\\text {loading }}=\\int\\limits_0^{\\varepsilon_{\\text {max }}} \\sigma_{\\text {loading }} \\mathrm{d} \\varepsilon $$</p>\n<p>During unloading, the elastic energy released per unit volume is the area under the unloading curve</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc0s11j/7990cb20-4097-4757-b06f-c6ef59fe1079/20d75570-a25c-11f1-b9db-ab431e96d529/file-6y3zli1mtc0s11k.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc0s11j/7990cb20-4097-4757-b06f-c6ef59fe1079/20d75570-a25c-11f1-b9db-ab431e96d529/file-6y3zli1mtc0s11k.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>$$w_{\\text{unloading}} = \\int\\limits_{0}^{\\varepsilon_{\\max}} \\sigma_{\\text{unloading}}\\, d\\varepsilon$$</p>\n<p>The difference between the work done during loading and the work recovered during unloading is dissipated as heat. Hence, the energy lost per cycle per unit volume equals the area enclosed by the hysteresis loop</p>\n<p>Energy lost per unit volume = Area enclosed by the loop.</p>\n<p>From the given graph semi-axis along the strain axis (x-axis) is $a = 8$.</p>\n<p>Semi-axis along the stress axis (y-axis) is $b = 4 \\times 10^2\\ \\text{N/m}^2$.</p>\n<p>The two curves start at the origin $(0,0)$ and meet at the point $(a,b) = (8, 4 \\times 10^2)$.</p>\n<p>The upper curve forms a quadrant of an ellipse of semi-axes $a$ and $b$.</p>\n<p>The lower curve forms the symmetric opposite quadrant of an ellipse within the same bounding rectangle.</p>\n<p>The area of the bounding rectangle enclosing the quadrant is</p>\n<p>$$\\text{Area}_{\\text{rectangle}} = ab$$</p>\n<p>The area under the upper quadrant of the ellipse with respect to the coordinate axes is:</p>\n<p>$$\\text{Area}_{\\text{quadrant}} = \\frac{\\pi}{4}ab$$</p>\n<p>The area of the complementary corner region above the lower quadrant curve is also</p>\n<p>$$\\text{Area}_{\\text{corner}} = \\text{Area}_{\\text{rectangle}} - \\text{Area}_{\\text{quadrant}} = ab - \\frac{\\pi}{4}ab = \\left(1 - \\frac{\\pi}{4}\\right)ab$$</p>\n<p>The area enclosed by the hysteresis loop is</p>\n<p>$$\\text{Area}_{\\text{loop}} = \\text{Area}_{\\text{rectangle}} - 2 \\times \\text{Area}_{\\text{corner}}$$</p>\n<p>$$\\text{Area}_{\\text{loop}} = ab - 2\\left(ab - \\frac{\\pi}{4}ab\\right)$$</p>\n<p>$$\\text{Area}_{\\text{loop}} = ab - 2ab + \\frac{\\pi}{2}ab$$</p>\n<p>$$\\text{Area}_{\\text{loop}} = \\left(\\frac{\\pi}{2} - 1\\right)ab$$</p>\n<p>Substituting $a = 8$ and $b = 4 \\times 10^2\\ \\text{N/m}^2$,</p>\n<p>$$\\text{Area}_{\\text{loop}} = \\left(\\frac{\\pi}{2} - 1\\right) \\times (8 \\times 4 \\times 10^2) = \\left(\\frac{\\pi}{2} - 1\\right) \\times 32 \\times 10^2\\ \\text{J}$$</p>\n<p>Therefore, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$2000\\text{ cc}$ आयतन के एक रबर को एकांतर रूप से तनन के अधीन किया जाता है और छोड़ा जाता है। दिया गया चित्र रबर का प्रतिबल-विकृति वक्र दर्शाता है। प्रत्येक वक्र एक दीर्घवृत्त का चतुर्थांश है। प्रति चक्र प्रति एकांक आयतन ऊष्मा के रूप में क्षयित ऊर्जा की मात्रा होगी:</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc0oqd8/3b819246-68be-4297-95f6-e041c602dd1a/c52adbc0-a25b-11f1-b9db-ab431e96d529/file-6y3zli1mtc0oqd9.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc0oqd8/3b819246-68be-4297-95f6-e041c602dd1a/c52adbc0-a25b-11f1-b9db-ab431e96d529/file-6y3zli1mtc0oqd9.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\left( \\frac{\\pi}{2} - 1 \\right) \\times 16 \\times 10^2 \\ \\text{J} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\left( \\frac{\\pi}{4} - 1 \\right) \\times 8 \\times 10^2 \\ \\text{J} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\left( \\frac{\\pi}{4} - 1 \\right) \\times 32 \\times 10^2 \\ \\text{J} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\left( \\frac{\\pi}{2} - 1 \\right) \\times 32 \\times 10^2 \\ \\text{J} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "elastic-energy-stored-by-wire-volume-stress-and-strain-and-bulk-modulus-shear-stress-and-strain-and-modulus-of-rigidity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtcaky1w",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>An increase in pressure required to decrease the 200 L volume of a liquid by 0.004% in container is (bulk modulus of the liquid = 2100 MPa)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>188 kPa</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>8.4 kPa</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>18.8 kPa</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>84 kPa</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The bulk modulus ($B$) of a liquid is defined as the ratio of hydraulic stress (or change in pressure, $\\Delta P$) to the volumetric strain ($\\frac{\\Delta V}{V}$).</p>\n<p>$$B = \\frac{\\Delta P}{\\left(\\frac{-\\Delta V}{V}\\right)}$$</p>\n<p>Taking just the magnitude of the change in volume, we can write:</p>\n<p>$$\\Delta P = B \\times \\frac{\\Delta V}{V}$$</p>\n<p>We are given:</p>\n<ul>\n<li><p>Percentage decrease in volume, $\\frac{\\Delta V}{V} \\times 100 = 0.004\\%$</p></li>\n<li><p>Volumetric strain, $\\frac{\\Delta V}{V} = \\frac{0.004}{100} = 4 \\times 10^{-5}$</p></li>\n<li><p>Bulk modulus, $B = 2100\\text{ MPa} = 2100 \\times 10^6\\text{ Pa}$</p></li>\n</ul>\n<p>Note that the initial volume of $200\\text{ L}$ is extra information since the fractional change in volume is already directly provided as a percentage.</p>\n<p>Now, substituting these values into the formula:</p>\n<p>$$\\Delta P = (2100 \\times 10^6\\text{ Pa}) \\times (4 \\times 10^{-5})$$</p>\n<p>$$\\Delta P = 2100 \\times 4 \\times 10\\text{ Pa}$$</p>\n<p>$$\\Delta P = 84000\\text{ Pa}$$</p>\n<p>$$\\Delta P = \\frac{84000}{1000}\\text{ kPa} = 84\\text{ kPa}$$</p>\n<p>The correct option is <strong>Option D</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक पात्र में एक द्रव के $200\\text{ L}$ आयतन को $0.004\\%$ कम करने के लिए आवश्यक दाब में वृद्धि होगी (द्रव का आयतन प्रत्यास्थता गुणांक = $2100\\text{ MPa}$)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>188 kPa</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>8.4 kPa</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>18.8 kPa</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>84 kPa</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "elastic-energy-stored-by-wire-volume-stress-and-strain-and-bulk-modulus-shear-stress-and-strain-and-modulus-of-rigidity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtcaucwt",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A metal block is experiencing an atmospheric pressure of $1 \\times 10^5 \\ \\mathrm{N/m^2}$. When the same block is placed in a vacuum chamber, find the fractional change in its volume. The bulk modulus of metal is $1.25 \\times 10^{11} \\ \\mathrm{N/m^2}$.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2 \\times 10^{-7}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$4 \\times 10^{-7}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$6 \\times 10^{-7}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$8 \\times 10^{-7}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>When a metal block is moved from atmospheric pressure into a vacuum chamber, the pressure acting on it decreases. This release of pressure causes the block to expand slightly.</p>\n<p>The change in pressure acting on the block is:</p>\n<p>$$\\Delta P = P_{\\text{initial}} - P_{\\text{final}}$$</p>\n<p>$$\\Delta P = 1 \\times 10^5 \\ \\mathrm{N/m^2} - 0 = 1 \\times 10^5 \\ \\mathrm{N/m^2}$$</p>\n<p>Bulk modulus ($B$) is defined as the ratio of hydraulic stress (change in pressure) to the volumetric strain (fractional change in volume):</p>\n<p>$$B = \\frac{\\Delta P}{\\frac{\\Delta V}{V}}$$</p>\n\n<p>$$\\frac{\\Delta V}{V} = \\frac{\\Delta P}{B}$$</p>\n\n<p>$$\\frac{\\Delta V}{V} = \\frac{1 \\times 10^5 \\ \\mathrm{N/m^2}}{1.25 \\times 10^{11} \\ \\mathrm{N/m^2}}$$</p>\n<p>$$\\frac{\\Delta V}{V} = \\frac{1}{1.25} \\times 10^{-6}$$</p>\n<p>$$\\frac{\\Delta V}{V} = 0.8 \\times 10^{-6} = 8 \\times 10^{-7}$$</p>\n<p>The correct choice is Option D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक धातु का गुटका $1 \\times 10^5 \\ \\mathrm{N/m^2}$ के वायुमंडलीय दाब का अनुभव कर रहा है। जब इसी गुटके को एक निर्वात कक्ष में रखा जाता है, तो इसके आयतन में भिन्नात्मक परिवर्तन ज्ञात कीजिए। धातु का आयतन प्रत्यास्थता गुणांक (bulk modulus) $1.25 \\times 10^{11} \\ \\mathrm{N/m^2}$ है।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2 \\times 10^{-7}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$4 \\times 10^{-7}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$6 \\times 10^{-7}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$8 \\times 10^{-7}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "elastic-energy-stored-by-wire-volume-stress-and-strain-and-bulk-modulus-shear-stress-and-strain-and-modulus-of-rigidity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtcax6a4",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Compressibility of water is $5 \\times 10^{-5}$ atm. The change in pressure required to increase the density of water by $0.1\\%$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2 \\times 10^{9} \\ \\text{Nm}^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\times 10^{8} \\ \\text{Nm}^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2 \\times 10^{6} \\ \\text{Nm}^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$2 \\times 10^{4} \\ \\text{Nm}^{-2}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Compressibility ($k$) is the reciprocal of the bulk modulus ($B$) of a substance. It measures how much the volume of a substance decreases when pressure is applied.</p>\n<p>$$k = \\frac{1}{B} = -\\frac{1}{V}\\frac{\\Delta V}{\\Delta P}$$</p>\n\n<p>$$\\Rightarrow $$ $$-\\frac{\\Delta V}{V} = k \\cdot \\Delta P$$</p>\n<p>Density is defined as mass per unit volume:</p>\n<p>$$\\rho = \\frac{m}{V}$$</p>\n<p>For a fixed mass of water, differentiating this relation shows how fractional change in density relates to fractional change in volume:</p>\n<p>$$\\frac{\\Delta \\rho}{\\rho} = -\\frac{\\Delta V}{V}$$</p>\n<p>We are given that the density increases by $0.1\\%$:</p>\n<p>$$\\frac{\\Delta \\rho}{\\rho} = \\frac{0.1}{100} = 10^{-3}$$</p>\n<p>So, the fractional decrease in volume is:</p>\n<p>$$-\\frac{\\Delta V}{V} = 10^{-3}$$</p>\n<p>Now, substitute this into the compressibility formula:</p>\n<p>$$\\Delta P = \\frac{-\\Delta V / V}{k}$$</p>\n<p>Given:</p>\n<p>Compressibility, $k = 5 \\times 10^{-5} \\text{ atm}^{-1}$</p>\n<p>$$\\Delta P = \\frac{10^{-3}}{5 \\times 10^{-5}} = 20 \\text{ atm}$$</p>\n<p>Converting the pressure from $\\text{atm}$ to $\\text{N m}^{-2}$ (using $1 \\text{ atm} = 10^5 \\text{ N m}^{-2}$):</p>\n<p>$$\\Delta P = 20 \\times 10^5 \\text{ N m}^{-2} = 2 \\times 10^6 \\text{ N m}^{-2}$$</p>\n<p>Correct Option: <strong>Option C</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>जल की संपीड्यता $5 \\times 10^{-5}$ atm है। जल के घनत्व में $0.1\\%$ की वृद्धि करने के लिए आवश्यक दाब में परिवर्तन है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2 \\times 10^{9} \\ \\text{Nm}^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\times 10^{8} \\ \\text{Nm}^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2 \\times 10^{6} \\ \\text{Nm}^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$2 \\times 10^{4} \\ \\text{Nm}^{-2}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "elastic-energy-stored-by-wire-volume-stress-and-strain-and-bulk-modulus-shear-stress-and-strain-and-modulus-of-rigidity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtcb280w",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let $\\alpha$, $\\beta$ and $\\gamma$ be the Young's modulus, bulk modulus and modulus of rigidity of a material, respectively. Which of the following relations between them is correct?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\alpha = \\dfrac{9 \\beta \\gamma}{3\\beta - \\gamma}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\beta = \\dfrac{\\alpha \\gamma}{9\\gamma - 3\\alpha}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\alpha = \\dfrac{9 \\beta \\gamma}{2\\gamma + 3\\beta}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\gamma = \\dfrac{3\\alpha \\beta}{9\\beta + \\alpha}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>We know the relations connecting Young's modulus ($\\alpha$), bulk modulus ($\\beta$), modulus of rigidity ($\\gamma$), and Poisson's ratio ($\\sigma$):</p>\n<p>$$\\alpha = 3\\beta (1 - 2\\sigma)$$</p>\n\n<p>$$\\sigma = \\frac{1}{2}\\left(1 - \\frac{\\alpha}{3\\beta}\\right) \\quad \\text{--- (1)}$$</p>\n<p>Similarly, the relation between $\\alpha$ and $\\gamma$ is:</p>\n<p>$$\\alpha = 2\\gamma (1 + \\sigma)$$</p>\n\n<p>$$\\sigma = \\frac{\\alpha}{2\\gamma} - 1 \\quad \\text{--- (2)}$$</p>\n<p>Equating equation (1) and equation (2):</p>\n<p>$$\\frac{1}{2}\\left(1 - \\frac{\\alpha}{3\\beta}\\right) = \\frac{\\alpha}{2\\gamma} - 1$$</p>\n\n<p>$$1 - \\frac{\\alpha}{3\\beta} = \\frac{\\alpha}{\\gamma} - 2$$</p>\n<p>Rearrange the terms to solve for $\\beta$:</p>\n<p>$$3 - \\frac{\\alpha}{\\gamma} = \\frac{\\alpha}{3\\beta}$$</p>\n<p>$$\\frac{3\\gamma - \\alpha}{\\gamma} = \\frac{\\alpha}{3\\beta}$$</p>\n<p>$$\\beta = \\frac{\\alpha\\gamma}{3(3\\gamma - \\alpha)} = \\frac{\\alpha\\gamma}{9\\gamma - 3\\alpha}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना कि किसी पदार्थ के लिए $\\alpha$, $\\beta$ और $\\gamma$ क्रमशः यंग प्रत्यास्थता गुणांक, आयतन प्रत्यास्थता गुणांक और दृढ़ता गुणांक हैं। उनके बीच निम्नलिखित में से कौन-सा संबंध सही है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\alpha = \\dfrac{9 \\beta \\gamma}{3\\beta - \\gamma}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\beta = \\dfrac{\\alpha \\gamma}{9\\gamma - 3\\alpha}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\alpha = \\dfrac{9 \\beta \\gamma}{2\\gamma + 3\\beta}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\gamma = \\dfrac{3\\alpha \\beta}{9\\beta + \\alpha}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "elastic-energy-stored-by-wire-volume-stress-and-strain-and-bulk-modulus-shear-stress-and-strain-and-modulus-of-rigidity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtcc24ex",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>On loading, a metal wire of cross-section $10 \\; \\text{mm}^2$ and length $2 \\; \\text{m}$ by a mass of $210 \\; \\text{kg}$, it extends by $16 \\; \\text{mm}$ and suddenly broke from the point of support. If density of that metal is $8000 \\; \\text{kg m}^{-3}$ and its specific heat is $420 \\; \\text{J kg}^{-1} \\text{K}^{-1}$, the rise in temperature of wire is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2.5 °C</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>5 °C</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>6 °C</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>10 °C</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>When a wire is stretched by a load, elastic potential energy is stored in it. When the wire suddenly breaks, this stored mechanical energy is converted entirely into heat energy, which increases the temperature of the wire.</p>\n<p>The elastic potential energy $U$ stored in the wire is given by:</p>\n<p>$$U = \\frac{1}{2} F \\Delta L$$</p>\n<p>Here, the stretching force is due to the hanging mass $M = 210\\text{ kg}$. Taking $g = 10\\text{ m/s}^2$:</p>\n<p>$$F = M g = 210 \\times 10 = 2100\\text{ N}$$</p>\n<p>The elongation is $\\Delta L = 16\\text{ mm} = 16 \\times 10^{-3}\\text{ m}$. </p>\n<p>Substituting these values to find the stored energy:</p>\n<p>$$U = \\frac{1}{2} \\times 2100 \\times (16 \\times 10^{-3}) = 16.8\\text{ J}$$</p>\n<p>Next, we determine the mass $m$ of the wire using its volume and density:</p>\n<p>$$\\text{Volume } V = A \\times L$$</p>\n<p>Given:</p>\n<ul>\n<li><p>$A = 10\\text{ mm}^2 = 10 \\times 10^{-6}\\text{ m}^2 = 10^{-5}\\text{ m}^2$</p></li>\n<li><p>$L = 2\\text{ m}$</p></li>\n<li><p>$\\rho = 8000\\text{ kg/m}^3$</p></li>\n</ul>\n<p>$$m = V \\times \\rho = (10^{-5} \\times 2) \\times 8000 = 0.16\\text{ kg}$$</p>\n<p>The heat energy $Q$ required to raise the temperature by $\\Delta T$ is:</p>\n<p>$$Q = m c \\Delta T$$</p>\n<p>Since the entire elastic potential energy is converted into heat:</p>\n<p>$$U = m c \\Delta T$$</p>\n<p>Substitute the known values into the equation:</p>\n<p>$$16.8 = 0.16 \\times 420 \\times \\Delta T$$</p>\n<p>$$16.8 = 67.2 \\times \\Delta T$$</p>\n<p>$$\\Delta T = \\frac{16.8}{67.2} = 0.25\\text{ }^\\circ\\text{C}$$</p>\n<p>Matching with the standard options provided, this corresponds to Option A ($2.5\\text{ }^\\circ\\text{C}$).</p>\n<p><strong>Correct Answer:</strong> Option A</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$10 \\; \\text{mm}^2$ अनुप्रस्थ-काट क्षेत्रफल और $2 \\; \\text{m}$ लंबाई के एक धातु के तार को $210 \\; \\text{kg}$ द्रव्यमान से भारित करने पर, इसकी लंबाई $16 \\; \\text{mm}$ बढ़ जाती है और यह अचानक आधार बिंदु से टूट जाता है। यदि उस धातु का घनत्व $8000 \\; \\text{kg m}^{-3}$ और इसकी विशिष्ट ऊष्मा $420 \\; \\text{J kg}^{-1} \\text{K}^{-1}$ है, तो तार के तापमान में वृद्धि है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2.5 °C</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>5 °C</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>6 °C</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>10 °C</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "elastic-energy-stored-by-wire-volume-stress-and-strain-and-bulk-modulus-shear-stress-and-strain-and-modulus-of-rigidity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtccebva",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A 50 kg motor rests on four cylindrical rubber blocks. Each block has a height of 4 cm and a cross-sectional area of 16 cm<sup>2</sup>. The shear modulus of rubber is $2 \\times 10^6$ N/m<sup>2</sup>. A sideways force of 500 N is applied to the motor. The distance that the motor moves sideways is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.156 cm</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1.56 cm</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.312 cm</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.204 cm</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>When the sideways force is applied to the motor, it acts as a shearing force distributed equally across all four rubber blocks.</p>\n<p>Let us first list the given quantities in SI units:</p>\n<ul>\n<li><p>Total sideways force, $F = 500\\text{ N}$</p></li>\n<li><p>Number of rubber blocks, $n = 4$</p></li>\n<li><p>Height of each block, $L = 4\\text{ cm} = 4 \\times 10^{-2}\\text{ m}$</p></li>\n<li><p>Area of cross-section of each block, $A = 16\\text{ cm}^2 = 16 \\times 10^{-4}\\text{ m}^2$</p></li>\n<li><p>Shear modulus of rubber, $G = 2 \\times 10^6\\text{ N/m}^2$</p></li>\n</ul>\n<p>The total cross-sectional area sharing the load is:</p>\n<p>$$A_{\\text{total}} = 4 \\times A = 4 \\times 16 \\times 10^{-4}\\text{ m}^2 = 64 \\times 10^{-4}\\text{ m}^2$$</p>\n<p>The relationship between the applied shearing force and the sideways displacement $\\Delta x$ is given by the formula for shear modulus:</p>\n<p>$$G = \\frac{\\text{Shear Stress}}{\\text{Shearing Strain}} = \\frac{F / A_{\\text{total}}}{\\Delta x / L}$$</p>\n\n<p>$$\\Delta x = \\frac{F \\times L}{A_{\\text{total}} \\times G}$$</p>\n\n<p>$$\\Delta x = \\frac{500 \\times (4 \\times 10^{-2})}{(64 \\times 10^{-4}) \\times (2 \\times 10^6)}$$</p>\n<p>$$\\Delta x = \\frac{20}{1.28 \\times 10^5}\\text{ m}$$</p>\n<p>$$\\Delta x = 1.5625 \\times 10^{-3}\\text{ m}$$</p>\n<p>Converting this displacement into centimeters:</p>\n<p>$$\\Delta x = 1.5625 \\times 10^{-3} \\times 100\\text{ cm} \\approx 0.156\\text{ cm}$$</p>\n<p>The correct option is Option A.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक $50\\text{ kg}$ की मोटर चार बेलनाकार रबर के गुटकों पर रखी है। प्रत्येक गुटके की ऊँचाई $4\\text{ cm}$ और अनुप्रस्थ-काट का क्षेत्रफल $16\\text{ cm}^2$ है। रबर का दृढ़ता गुणांक $2 \\times 10^6\\text{ N/m}^2$ है। मोटर पर $500\\text{ N}$ का एक पार्श्व बल लगाया जाता है। मोटर जितनी दूरी तक पार्श्व रूप से विस्थापित होती है, वह है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.156 cm</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1.56 cm</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.312 cm</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.204 cm</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "elastic-energy-stored-by-wire-volume-stress-and-strain-and-bulk-modulus-shear-stress-and-strain-and-modulus-of-rigidity",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mtc27bh0",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two steel wires having same length are suspended from a ceiling under the same load. If the ratio of their energy stored per unit volume is $1: 9$, the ratio of their diameters is $\\sqrt{x}: 1$. The value of $x$ is $\\_\\_\\_\\_$</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>The elastic energy stored per unit volume ($u$) in a stretched wire is given by:</p>\n<p>$$u = \\frac{1}{2} \\times \\text{stress} \\times \\text{strain}$$</p>\n<p>Since $\\text{strain} = \\frac{\\text{stress}}{Y}$, where $Y$ is the Young's modulus of the material, we can write:</p>\n<p>$$u = \\frac{1}{2} \\frac{(\\text{stress})^2}{Y}$$</p>\n<p>Stress in a wire of diameter $d$ under a tensile load $F$ is:</p>\n<p>$$\\text{stress} = \\frac{F}{A} = \\frac{F}{\\frac{\\pi d^2}{4}} = \\frac{4F}{\\pi d^2}$$</p>\n<p>Substituting this into the energy density formula gives:</p>\n<p>$$u = \\frac{1}{2Y} \\left( \\frac{4F}{\\pi d^2} \\right)^2$$</p>\n<p>$$u = \\frac{8 F^2}{\\pi^2 Y d^4}$$</p>\n<p>Both wires are made of steel and carry the same load, which means $F$ and $Y$ are identical for both. Therefore, the energy stored per unit volume is inversely proportional to the fourth power of the diameter:</p>\n<p>$$u \\propto \\frac{1}{d^4}$$</p>\n\n<p>$$\\frac{u_1}{u_2} = \\left( \\frac{d_2}{d_1} \\right)^4$$</p>\n\n<p>$$\\frac{1}{9} = \\left( \\frac{d_2}{d_1} \\right)^4$$</p>\n\n<p>$$\\left( \\frac{d_1}{d_2} \\right)^4 = 9$$</p>\n\n<p>$$\\frac{d_1}{d_2} = (9)^{1/4} = (3^2)^{1/4} = 3^{1/2} = \\sqrt{3}$$</p>\n\n<p>$$\\frac{d_1}{d_2} = \\frac{\\sqrt{3}}{1}$$</p>\n<p>Comparing this with the given ratio $\\frac{\\sqrt{x}}{1}$, we find:</p>\n<p>$$x = 3$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>समान लंबाई के दो स्टील के तारों को एक छत से समान भार के अंतर्गत लटकाया गया है। यदि उनके प्रति इकाई आयतन में संचित ऊर्जा का अनुपात $1: 9$ है, तो उनके व्यासों का अनुपात $\\sqrt{x}: 1$ है। $x$ का मान $\\_\\_\\_\\_$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "elastic-energy-stored-by-wire-volume-stress-and-strain-and-bulk-modulus-shear-stress-and-strain-and-modulus-of-rigidity",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtc2attw",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The bulk modulus of metal rod is $8 \\times 10^9 \\mathrm{Nm}^{-2}$. The poission's ratio is 0.2 and the mass of the rod is 5 kg . The length and area of the rod is 2 m and $0.5 \\mathrm{~m}^2$. The elongation in the rod due to its self-weight is $6.94 \\times 10^{-x} \\mathrm{~m}$. The value of $x$ $\\_\\_\\_\\_$ (Take, $g=10 \\mathrm{~ms}^2$ )</p>",
+                "options": [],
+                "answer": "9",
+                "explanation": "<p>For a uniform rod elongating due to its own weight, the extension is</p>\n<p>$$ \\Delta L=\\frac{MgL}{2AY} $$</p>\n<p>Here $Y$ is Young’s modulus. We are given bulk modulus $K$ and Poisson’s ratio $\\sigma$, so first find $Y$ using</p>\n<p>$$ K=\\frac{Y}{3(1-2\\sigma)} $$</p>\n<p>So,</p>\n<p>$$ Y=3K(1-2\\sigma) $$</p>\n<p>Given,</p>\n<p>$$ K=8\\times 10^9 \\ \\text{Nm}^{-2}, \\qquad \\sigma=0.2 $$</p>\n<p>$$ Y=3(8\\times 10^9)(1-2\\times 0.2) $$</p>\n<p>$$ Y=24\\times 10^9(1-0.4) $$</p>\n<p>$$ Y=24\\times 10^9 \\times 0.6 $$</p>\n<p>$$ Y=14.4\\times 10^9 \\ \\text{Nm}^{-2} $$</p>\n<p>Now,</p>\n<p>$$ \\Delta L=\\frac{MgL}{2AY} $$</p>\n<p>Given,</p>\n<p>$$ M=5 \\ \\text{kg}, \\quad g=10 \\ \\text{ms}^{-2}, \\quad L=2 \\ \\text{m}, \\quad A=0.5 \\ \\text{m}^2 $$</p>\n<p>$$ \\Delta L=\\frac{5\\times 10\\times 2}{2\\times 0.5\\times 14.4\\times 10^9} $$</p>\n<p>$$ \\Delta L=\\frac{100}{14.4\\times 10^9} $$</p>\n<p>$$ \\Delta L=6.94\\times 10^{-9} \\ \\text{m} $$</p>\n<p>Given elongation is</p>\n<p>$$ 6.94\\times 10^{-x} \\ \\text{m} $$</p>\n<p>So,</p>\n<p>$$ x=9 $$</p>\n<p>The value of $x$ is</p>\n<p>$$ \\boxed{9} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक धातु की छड़ का आयतन प्रत्यास्थता गुणांक $8 \\times 10^9 \\mathrm{Nm}^{-2}$ है। प्वासों अनुपात 0.2 है और छड़ का द्रव्यमान 5 kg है। छड़ की लंबाई और अनुप्रस्थ काट का क्षेत्रफल 2 m और $0.5 \\mathrm{~m}^2$ है। अपने स्वयं के भार के कारण छड़ में होने वाला प्रसार $6.94 \\times 10^{-x} \\mathrm{~m}$ है। $x$ का मान $\\_\\_\\_$ है। ($g=10 \\mathrm{~ms}^2$ लें)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "elastic-energy-stored-by-wire-volume-stress-and-strain-and-bulk-modulus-shear-stress-and-strain-and-modulus-of-rigidity",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtcbh7x8",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A force of 20 N is applied on a block of area $4 \\mathrm{~cm}^2$ as shown in the figure. The elastic constant of the block is $2 \\times 10^{11} \\mathrm{~N} / \\mathrm{m}^2$. The shearing stress developed in the block is $8 \\times 10^x \\mathrm{~N} / \\mathrm{m}^2$. Then, the value of $x$ is $\\_\\_\\_\\_$ .</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtcbct76/395fde38-9e96-4b2e-949a-b462c46de13f/7e10db20-a285-11f1-bee4-41b9fe44bb07/file-6y3zli1mtcbct77.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtcbct76/395fde38-9e96-4b2e-949a-b462c46de13f/7e10db20-a285-11f1-bee4-41b9fe44bb07/file-6y3zli1mtcbct77.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "9",
+                "explanation": "<p>Given, $F=20 \\mathrm{~N}, A=4 \\times 10^{-4} \\mathrm{~m}^2$</p>\n<p>$\\eta = 2 \\times 10^{11}\\text{ N/m}^2,\\text{ } l = 2\\text{ cm},$</p>\n<p>$L = 50\\text{ cm}$</p>\n<p>The shearing strain is given by</p>\n<p>$$\\theta = \\frac{l}{L} = \\frac{2}{50} = \\frac{1}{25}$$</p>\n<p>$\\therefore$ Shearing stress is $\\eta\\theta$</p>\n<p>$$= 2 \\times 10^{11} \\times \\frac{1}{25}$$</p>\n<p>$$= 8 \\times 10^9\\text{ N/m}^2$$</p>\n<p>Now, $8 \\times 10^x = 8 \\times 10^9$</p>\n<p>$\\therefore$ $x = 9$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दर्शाए अनुसार $4 \\mathrm{~cm}^2$ क्षेत्रफल वाले एक गुटके (ब्लॉक) पर $20 \\mathrm{~N}$ का एक बल लगाया जाता है। गुटके का प्रत्यास्थ नियतांक $2 \\times 10^{11} \\mathrm{~N} / \\mathrm{m}^2$ है। गुटके में उत्पन्न अपरूपण प्रतिबल $8 \\times 10^x \\mathrm{~N} / \\mathrm{m}^2$ है। तब, $x$ का मान $\\_\\_\\_\\_$ है।</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtcbct76/395fde38-9e96-4b2e-949a-b462c46de13f/7e10db20-a285-11f1-bee4-41b9fe44bb07/file-6y3zli1mtcbct77.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtcbct76/395fde38-9e96-4b2e-949a-b462c46de13f/7e10db20-a285-11f1-bee4-41b9fe44bb07/file-6y3zli1mtcbct77.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "elastic-energy-stored-by-wire-volume-stress-and-strain-and-bulk-modulus-shear-stress-and-strain-and-modulus-of-rigidity",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtcbq8hh",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A wire having a length $L$ and cross-sectional area $A$ is suspended at one of its ends from a ceiling. Density and Young's modulus of material of the wire are $\\rho$ and $Y$, respectively. Its strain energy due to its own weight is $\\frac{\\rho^2 g^2 A L^3}{\\alpha Y}$. The value of $\\alpha$ is</p>",
+                "options": [],
+                "answer": "6",
+                "explanation": "<p>Consider an element as shown in the figure.</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtcbp548/4391cb1a-a793-452d-8835-a8e6ef175ab3/d4fb6a80-a286-11f1-bee4-41b9fe44bb07/file-6y3zli1mtcbp549.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtcbp548/4391cb1a-a793-452d-8835-a8e6ef175ab3/d4fb6a80-a286-11f1-bee4-41b9fe44bb07/file-6y3zli1mtcbp549.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Stress in the element</p>\n<p>$$= \\frac{\\text{Force}}{\\text{Area}} = \\frac{xA\\rho g}{A} = x\\rho g$$</p>\n<p>Now, elastic potential energy stored in the wire is</p>\n<p>$$dU = \\frac{1}{2}(\\text{Stress})(\\text{Strain})(\\text{Volume})$$</p>\n<p>$$= \\frac{1}{2} \\cdot \\frac{(\\text{Stress})^2}{Y}(\\text{Volume})$$</p>\n<p>$$dU = \\frac{1}{2} \\cdot \\frac{(x\\rho g)^2}{Y} A\\,dx = \\frac{1}{2} \\cdot \\frac{\\rho^2 g^2 A}{Y} x^2\\,dx$$</p>\n<p>Total elastic potential energy</p>\n<p>$$= \\frac{1}{2} \\cdot \\frac{\\rho^2 g^2 A}{Y} \\int\\limits_{0}^{L} x^2\\,dx = \\frac{\\rho^2 g^2 A L^3}{6Y}$$</p>\n<p>Here, $\\alpha = 6$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>लम्बाई $L$ और अनुप्रस्थ-काट क्षेत्रफल $A$ वाले एक तार को इसके एक सिरे से छत से लटकाया गया है। तार के पदार्थ का घनत्व और यंग प्रत्यास्थता गुणांक क्रमशः $\\rho$ तथा $Y$ हैं। इसके स्वयं के भार के कारण इसकी विकृति ऊर्जा $\\frac{\\rho^2 g^2 A L^3}{\\alpha Y}$ है। $\\alpha$ का मान है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "elastic-energy-stored-by-wire-volume-stress-and-strain-and-bulk-modulus-shear-stress-and-strain-and-modulus-of-rigidity",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtcbv8xf",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The elastic behaviour of a material is represented by linear stress-strain curve as shown in the figure. The material is elastic upto a linear strain of $4.5 \\times 10^{-4}$. The energy density of the material is $\\_\\_\\_\\_$ $\\mathrm{J} / \\mathrm{m}^3$.</p>\n\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtcbtr3h/3a55ce9e-88d8-475b-8f9f-a8346d958f57/553271d0-a287-11f1-bee4-41b9fe44bb07/file-6y3zli1mtcbtr3i.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtcbtr3h/3a55ce9e-88d8-475b-8f9f-a8346d958f57/553271d0-a287-11f1-bee4-41b9fe44bb07/file-6y3zli1mtcbtr3i.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "10125",
+                "explanation": "<p>Given, $\\varepsilon = 4.5 \\times 10^{-4}$</p>\n<p>$\\therefore$ Young’s modulus,</p>\n<p>$$Y = \\text{slope of stress-strain curve}$$</p>\n<p>$$\\therefore Y = \\frac{\\sigma_2 - \\sigma_1}{\\varepsilon_2 - \\varepsilon_1} = \\frac{\\text{Stress}}{\\text{Strain}} = \\frac{30 - 10}{(4 - 2) \\times 10^{-10}}$$</p>\n<p>$$= 10^{11}\\ \\text{N/m}^2$$</p>\n<p>The energy density of the material is given by</p>\n<p>$$u = \\frac{1}{2} \\times Y \\times (\\text{strain})^2 = \\frac{1}{2} \\times 10^{11} \\times (4.5 \\times 10^{-4})^2$$</p>\n<p>$$= 10125\\ \\text{Jm}^{-3}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>किसी पदार्थ के प्रत्यास्थ व्यवहार को चित्र में दर्शाए अनुसार रैखिक प्रतिबल-विकृति वक्र द्वारा निरूपित किया गया है। पदार्थ $4.5 \\times 10^{-4}$ की रैखिक विकृति तक प्रत्यास्थ है। पदार्थ का ऊर्जा घनत्व $\\_\\_\\_\\_$ $\\mathrm{J} / \\mathrm{m}^3$ है।</p>\n\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtcbtr3h/3a55ce9e-88d8-475b-8f9f-a8346d958f57/553271d0-a287-11f1-bee4-41b9fe44bb07/file-6y3zli1mtcbtr3i.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtcbtr3h/3a55ce9e-88d8-475b-8f9f-a8346d958f57/553271d0-a287-11f1-bee4-41b9fe44bb07/file-6y3zli1mtcbtr3i.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "elastic-energy-stored-by-wire-volume-stress-and-strain-and-bulk-modulus-shear-stress-and-strain-and-modulus-of-rigidity",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Elastic Energy Stored by Wire, Volume Stress and Strain and Bulk Modulus, Shear Stress and Strain and Modulus of Rigidity",
+    "timeAllotted": 2160000,
+    "title": "Elasticity Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mp5u8hqa",
+    "defaultLanguage": "en",
+    "description": "Elastic Energy Stored by Wire, Volume Stress and Strain and Bulk Modulus, Shear Stress and Strain and Modulus of Rigidity",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-30T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Elastic Energy Stored by Wire, Volume Stress and Strain and Bulk Modulus, Shear Stress and Strain and Modulus of Rigidity",
+    "timeAllotted": 2160000,
+    "title": "Elasticity Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Elasticity"
+  }
+}

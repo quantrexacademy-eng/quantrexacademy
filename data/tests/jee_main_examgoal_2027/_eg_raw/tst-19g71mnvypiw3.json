@@ -1,0 +1,988 @@
+{
+  "testId": "tst-19g71mnvypiw3",
+  "title": "Gravitation Test - 2 (Topic Test)",
+  "type": "topic",
+  "section": "Gravitation",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-08-23T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "7968e03a-166b-4a57-ad36-f8e99621cb2e",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g71mnvypiw3",
+    "defaultLanguage": "en",
+    "description": "Gravitational Potential Energy and Self Energy, Acceleration due to Gravity and its Variation",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-23T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mstl4w0m",
+            "chapter": "gravitation",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Find the gravitational potential energy of a point mass $m_0$ and a thin uniform rod of mass $m_0$ and length $l$, if they are located along a straight line at a distance $d$ measured from the centre of the rod.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$-\\frac{G m_0^2}{l} \\log_e\\left(\\frac{d+r}{d-r}\\right)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$-\\frac{G m_0^2}{l} \\log_e\\left(\\frac{d+2l}{d-2l}\\right)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$-\\frac{G m_0^2}{l} \\log_e\\left(\\frac{2d+l}{2d-l}\\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$-\\frac{G m_0^2}{l} \\log_e\\left(\\frac{d+l}{d-l}\\right)$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Mass of the uniform $\\mathrm{rod}=\\mathrm{m}_0$, length of the $\\mathrm{rod}=1$.</p>\n<p>Linear mass density of the rod is $\\lambda=\\frac{\\mathrm{m}_0}{1}$.</p>\n<p>Point mass $=\\mathrm{m}_0$.</p>\n<p>Distance from the centre of the rod to the point mass $\\mathrm{m}_0$ along the line containing the $\\mathrm{rod}=\\mathrm{d}$.</p>\n<p>Let the centre of the rod be the origin $\\mathrm{x}=0$.</p>\n<p>The rod extends from $\\mathrm{x}=-\\frac{1}{2}$ to $\\mathrm{x}=+\\frac{1}{2}$.</p>\n\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mstl295t/ab1c6663-89da-4c79-b11f-cf14088fbd23/8f72c510-9838-11f1-bbfa-d9efebc90f39/file-6y3zli1mstl295u.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mstl295t/ab1c6663-89da-4c79-b11f-cf14088fbd23/8f72c510-9838-11f1-bbfa-d9efebc90f39/file-6y3zli1mstl295u.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>So, the point mass $m_0$ is located on the x-axis at position $x = d$ (where $d > \\frac{1}{2}$).</p>\n<p>Consider a small mass element $dm$ on the rod located between $x$ and $x + dx$.</p>\n<p>Mass of the element is $dm = \\lambda\\,dx = \\left(\\frac{m_0}{l}\\right)dx$</p>\n<p>The distance from this elemental mass $dm$ at position $x$ to the point mass $m_0$ at position $d$ is:</p>\n<p>$$r = d - x$$</p>\n<p>The gravitational potential energy $dU$ between the point mass $m_0$ and the element $dm$ is,</p>\n<p>$$dU = -\\frac{G\\,m_0\\,dm}{r} = -\\frac{G\\,m_0\\left(\\frac{m_0}{l}\\right)dx}{d-x} = -\\frac{Gm_0^2}{l}\\frac{dx}{d-x}$$</p>\n<p>The total gravitational potential energy $U$ is the integrated value of $dU$ over the rod from $x = -\\frac{1}{2}$ to $x = +\\frac{1}{2}$:</p>\n<p>$$U = \\int\\limits_{-\\frac{1}{2}}^{+\\frac{1}{2}} -\\frac{Gm_0^2}{l}\\frac{dx}{d-x}$$</p>\n<p>$$U = -\\frac{Gm_0^2}{l}\\int\\limits_{-\\frac{1}{2}}^{+\\frac{1}{2}} \\frac{dx}{d-x}$$</p>\n\n<p>Let $u=d-x \\Rightarrow du=-dx \\Rightarrow dx=-du$.</p>\n<p>When $x=-\\frac{1}{2}$, upper limit of integration for $u$ is $d-\\left(-\\frac{1}{2}\\right)=d+\\frac{1}{2}$.</p>\n<p>When $x=+\\frac{1}{2}$, lower limit of integration for $u$ is $d-\\frac{1}{2}$.</p>\n<p>$$ U=-\\frac{Gm_0^2}{l}\\int\\limits_{-\\frac{1}{2}}^{+\\frac{1}{2}} \\frac{dx}{d-x} =-\\frac{Gm_0^2}{l}\\int\\limits_{d-\\frac{1}{2}}^{d+\\frac{1}{2}} \\frac{du}{u} =-\\frac{Gm_0^2}{l}[\\ln u]_{d-\\frac{1}{2}}^{d+\\frac{1}{2}} $$</p>\n<p>$$ U=-\\frac{Gm_0^2}{l}\\left[\\ln\\left(d+\\frac{1}{2}\\right)-\\ln\\left(d-\\frac{1}{2}\\right)\\right] =\\ln\\left(\\frac{d+\\frac{1}{2}}{d-\\frac{1}{2}}\\right) $$</p>\n<p>$$ U=\\ln\\left(\\frac{2d+1}{2d-1}\\right) $$</p>\n<p>$$ U=-\\frac{Gm_0^2}{l}\\ln\\left(\\frac{2d+1}{2d-1}\\right) =-\\frac{Gm_0^2}{l}\\log_e\\left(\\frac{2d+1}{2d-1}\\right) $$</p>\n<p>Therefore, the gravitational potential energy is $-\\frac{Gm_0^2}{l}\\log_e\\left(\\frac{2d+1}{2d-1}\\right)$. Thus, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक बिंदु द्रव्यमान $m_0$ और $m_0$ द्रव्यमान तथा $l$ लंबाई की एक पतली एकसमान छड़ की गुरुत्वीय स्थितिज ऊर्जा ज्ञात कीजिए, यदि वे एक सीधी रेखा के अनुदिश छड़ के केंद्र से मापी गई दूरी $d$ पर स्थित हैं।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$-\\frac{G m_0^2}{l} \\log_e\\left(\\frac{d+r}{d-r}\\right)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$-\\frac{G m_0^2}{l} \\log_e\\left(\\frac{d+2l}{d-2l}\\right)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$-\\frac{G m_0^2}{l} \\log_e\\left(\\frac{2d+l}{2d-l}\\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$-\\frac{G m_0^2}{l} \\log_e\\left(\\frac{d+l}{d-l}\\right)$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "gravitational-potential-and-gravitational-potential-energy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mstk2eqf",
+            "chapter": "gravitation",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A small ball of mass <b>m</b> is released at a height <b>R</b> above the Earth surface, as shown in the figure. The <b>maximum depth of the ball to which it goes is $\\frac{R}{2}$ inside the Earth</b> through a narrow groove before coming to rest momentarily. If the groove contains an ideal spring of spring constant K and natural length R, the value of K is (R is radius of Earth and M mass of Earth)</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mstjvvr1/79b2c729-a7f7-4eee-9c71-a11f52ae8182/f51ae2d0-9833-11f1-bbfa-d9efebc90f39/file-6y3zli1mstjvvr2.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mstjvvr1/79b2c729-a7f7-4eee-9c71-a11f52ae8182/f51ae2d0-9833-11f1-bbfa-d9efebc90f39/file-6y3zli1mstjvvr2.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{3GMm}{R^3}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{6GMm}{R^3}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{9GMm}{R^3}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{7GMm}{R^3}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Initial position of ball is at height $\\mathrm{h}=\\mathrm{R}$ above the Earth's surface. So, the initial distance from Earth's centre,</p>\n<p>$$ \\mathrm{r}_{\\mathrm{i}}=\\mathrm{R}+\\mathrm{R}=2 \\mathrm{R} $$</p>\n<p>As ball is released from rest, its initial speed of ball is $\\mathrm{v}_{\\mathrm{i}}=0$</p>\n<p>The spring is not compressed or elongated initially. So, the natural length of the spring is $\\mathrm{L}_0=\\mathrm{R}$</p>\n<p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mstjxqnm/45ce9886-71c8-4e02-ab1f-3c0423b3c24a/28c9a120-9834-11f1-bbfa-d9efebc90f39/file-6y3zli1mstjxqnn.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mstjxqnm/45ce9886-71c8-4e02-ab1f-3c0423b3c24a/28c9a120-9834-11f1-bbfa-d9efebc90f39/file-6y3zli1mstjxqnn.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Final position of ball is at depth $d=\\frac{R}{2}$ below the Earth's surface. So, the final distance from Earth's centre,</p>\n<p>$$ r_f=R-\\frac{R}{2}=\\frac{R}{2} $$</p>\n<p>As ball comes to rest instantaneously, its final speed of ball is $\\mathrm{v}_{\\mathrm{f}}=0$</p>\n<p>The spring is not compressed or elongated initially, $\\mathrm{x}_{\\mathrm{i}}=0$</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mstjz8qw/61c44272-0e6c-4762-b232-830ece51671c/52925880-9834-11f1-bbfa-d9efebc90f39/file-6y3zli1mstjz8qx.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mstjz8qw/61c44272-0e6c-4762-b232-830ece51671c/52925880-9834-11f1-bbfa-d9efebc90f39/file-6y3zli1mstjz8qx.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The spring is compressed to depth $d = \\frac{R}{2}$, which means compression in spring is,</p>\n<p>$$x = R - \\frac{R}{2} = \\frac{R}{2}$$</p>\n<p>Since point A is outside the solid Earth of mass M and radius R, the potential is</p>\n<p>$$V_A = -\\frac{GM}{r_i} = -\\frac{GM}{2R}$$</p>\n<p>The gravitational field inside a solid sphere at radius $r \\leq R$ is $E(r) = \\frac{GM\\,r}{R^3}$</p>\n<p>Potential difference $\\Delta V = V(r) - V(R) = -\\int\\limits_{r}^{R} E(r)\\,dr = \\int\\limits_{R}^{r} \\frac{GM\\,r}{R^3}\\,dr$</p>\n<p>$$V(r) - \\left(-\\frac{GM}{R}\\right) = \\frac{GM}{R^3} \\left[\\frac{r^2}{2}\\right]_{R}^{r} = \\frac{GM}{2R^3}(r^2 - R^2)$$</p>\n<p>$$V(r) = -\\frac{GM}{R} + \\frac{GM}{2R^3}(r^2 - R^2) = -\\frac{GM}{2R^3}(3R^2 - r^2)$$</p>\n<p>So, the gravitational potential at B $\\left(r_f = \\frac{R}{2}\\right)$ is,</p>\n<p>$$V_B = -\\frac{GM}{2R^3}\\left[3R^2 - \\left(\\frac{R}{2}\\right)^2\\right] = -\\frac{GM}{2R^3}\\left[3R^2 - \\frac{R^2}{4}\\right] = -\\frac{GM}{2R^3}\\left(\\frac{11R^2}{4}\\right) = -\\frac{11GM}{8R}$$</p>\n<p>Since gravity and spring force are conservative forces, the total mechanical energy must be conserved,</p>\n<p>$$E_{initial} = E_{final}$$</p>\n<p>$$K_i + U_{g,i} + U_{s,i} = K_f + U_{g,f} + U_{s,f}$$</p>\n<p>$$\\frac{1}{2}mv_i^2 + mV_A + \\frac{1}{2}k(x_i)^2 = \\frac{1}{2}mv_f^2 + mV_B + \\frac{1}{2}k(x_f)^2$$</p>\n<p>$$\\frac{1}{2}m(0)^2 + \\left(-\\frac{GMm}{2R}\\right) + \\frac{1}{2}k(0)^2 = \\frac{1}{2}m(0)^2 + \\left(-\\frac{11GMm}{8R}\\right) + \\frac{1}{2}k\\left(\\frac{R}{2}\\right)^2$$</p>\n<p>$$-\\frac{GMm}{2R} = -\\frac{11GMm}{8R} + \\frac{1}{8}KR^2$$</p>\n<p>$$\\frac{1}{8}KR^2 = \\frac{11GMm}{8R} - \\frac{GMm}{2R}$$</p>\n<p>$$\\frac{1}{8}KR^2 = \\frac{11GMm - 4GMm}{8R}$$</p>\n\n<p>$$\\frac{1}{8} K R^2 = \\frac{7GMm}{8R}$$</p>\n<p>$$K R^2 = \\frac{7GMm}{R} \\Rightarrow K = \\frac{7GMm}{R^3}$$</p>\n<p>Therefore, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दर्शाए अनुसार, द्रव्यमान <b>m</b> की एक छोटी गेंद को पृथ्वी की सतह से <b>R</b> ऊँचाई से छोड़ा जाता है। यह गेंद एक संकरे खांचे (groove) से होते हुए पृथ्वी के अंदर <b>$\\frac{R}{2}$ की अधिकतम गहराई तक जाती है</b> और फिर क्षण भर के लिए रुक जाती है। यदि खांचे में K स्प्रिंग नियतांक और R स्वाभाविक लंबाई (natural length) वाली एक आदर्श स्प्रिंग हो, तो K का मान है (R पृथ्वी की त्रिज्या है और M पृथ्वी का द्रव्यमान है)</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mstjvvr1/79b2c729-a7f7-4eee-9c71-a11f52ae8182/f51ae2d0-9833-11f1-bbfa-d9efebc90f39/file-6y3zli1mstjvvr2.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mstjvvr1/79b2c729-a7f7-4eee-9c71-a11f52ae8182/f51ae2d0-9833-11f1-bbfa-d9efebc90f39/file-6y3zli1mstjvvr2.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{3GMm}{R^3}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{6GMm}{R^3}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{9GMm}{R^3}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{7GMm}{R^3}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "gravitational-potential-and-gravitational-potential-energy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt0il7oa",
+            "chapter": "gravitation",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A tunnel is dug along a diameter of the earth. The force on a particle of mass $m$ placed in the tunnel at a distance $r$ from the surface of earth</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{GM_e m r}{R_e^2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{GM_e m (R_e - r)}{R_e^3}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{GM_e m r^2}{R_e^2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{GM_e m r}{R_e^3}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let Earth be a uniform solid sphere of mass $M_e$ and radius $R_e$.</p>\n<p>The particle of mass $m$ be placed inside the tunnel at a distance $r$ from the surface of the Earth.</p>\n<p>The radial distance of the particle from the center of the Earth is:</p>\n<p>$$x = R_e - r$$</p>\n<p>By Newton's shell theorem, for a point inside a uniform spherical mass distribution, the gravitational force is contributed only by the mass enclosed within the concentric sphere of radius $x$. The outer spherical shell exerts zero net gravitational force.</p>\n<p>Assuming uniform mass density $\\rho = \\frac{M_e}{\\frac{4}{3}\\pi R_e^3}$, the enclosed mass $M_{\\text{enclosed}}$ within radius $x$ is,</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt0icf7d/6cf4dcbf-be99-407d-b1c9-960be6784b96/6b5dce90-9c07-11f1-bd96-97d88f6fccdf/file-6y3zli1mt0icf7e.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt0icf7d/6cf4dcbf-be99-407d-b1c9-960be6784b96/6b5dce90-9c07-11f1-bd96-97d88f6fccdf/file-6y3zli1mt0icf7e.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>$$M_{\\text{enclosed}} = \\rho \\left(\\frac{4}{3}\\pi x^3\\right) = \\left(\\frac{M_e}{\\frac{4}{3}\\pi R_e^3}\\right)\\left(\\frac{4}{3}\\pi x^3\\right) = \\frac{M_e x^3}{R_e^3}$$</p>\n<p>The gravitational attraction on the mass $m$ located at distance $r$ from the center is,</p>\n<p>$$F = \\frac{G M_{\\text{enclosed}} m}{x^2} = \\frac{G\\left(\\frac{M_e x^3}{R_e^3}\\right)m}{(x)^2}$$</p>\n<p>$$F = $$$\\dfrac{GM_e m (R_e - r)}{R_e^3}$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>पृथ्वी के एक व्यास के अनुदिश एक सुरंग खोदी जाती है। पृथ्वी की सतह से $r$ दूरी पर सुरंग में रखे गए $m$ द्रव्यमान के एक कण पर लगने वाला बल है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{GM_e m r}{R_e^2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{GM_e m (R_e - r)}{R_e^3}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{GM_e m r^2}{R_e^2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{GM_e m r}{R_e^3}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "acceleration-due-to-gravity-and-its-variation",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt0j4qju",
+            "chapter": "gravitation",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Weight of a body of mass m decreases by 1% when it is raised to height h above the Earth's surface. If the body is taken to a depth h in a mine, then its weight will</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>decrease by 0.5%</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>decrease by 2%</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>increase by 0.5%</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>increase by 1%</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Let M and R be the mass and radius of the Earth, and let g be the acceleration due to gravity at the Earth's surface.</p>\n<p>$$ \\mathrm{g}=\\frac{\\mathrm{GM}}{\\mathrm{R}^2} $$</p>\n<p>At a height $h$ above the Earth's surface, the acceleration due to gravity $g_h$ is,</p>\n<p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt0iyrrk/fb575356-fc1a-4de2-82e2-6016200fde9f/d8dee100-9c09-11f1-bd96-97d88f6fccdf/file-6y3zli1mt0iyrrl.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt0iyrrk/fb575356-fc1a-4de2-82e2-6016200fde9f/d8dee100-9c09-11f1-bd96-97d88f6fccdf/file-6y3zli1mt0iyrrl.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$ \\mathrm{g}_{\\mathrm{h}}=\\frac{\\mathrm{GM}}{(\\mathrm{R}+\\mathrm{h})^2}=\\frac{\\mathrm{GM}}{\\mathrm{R}^2\\left(1+\\frac{\\mathrm{h}}{\\mathrm{R}}\\right)^2}=\\mathrm{g}\\left(1+\\frac{\\mathrm{h}}{\\mathrm{R}}\\right)^{-2} $$</p>\n<p>Using the binomial approximation for $\\mathrm{h} \\ll \\mathrm{R}$ (since the change is only 1\\%),</p>\n<p>$$ \\mathrm{g}_{\\mathrm{h}} \\approx \\mathrm{~g}\\left(1-\\frac{2 \\mathrm{~h}}{\\mathrm{R}}\\right) $$</p>\n<p>The fractional decrease in gravity and hence weight $\\mathrm{W}=\\mathrm{mg}$ at height h is:</p>\n<p>$$ \\frac{\\Delta \\mathrm{W}_{\\mathrm{h}}}{\\mathrm{~W}}=\\frac{\\mathrm{g}-\\mathrm{g}_{\\mathrm{h}}}{\\mathrm{~g}}=\\frac{2 \\mathrm{~h}}{\\mathrm{R}} $$</p>\n<p>Given that the weight decreases by $1 \\%$ at height h ,</p>\n<p>$$ \\frac{2 \\mathrm{~h}}{\\mathrm{R}} \\times 100 \\%=1 \\% \\Rightarrow \\frac{\\mathrm{~h}}{\\mathrm{R}} \\times 100 \\%=0.5 \\% $$</p>\n<p>At a depth $\\mathrm{d}=\\mathrm{h}$ inside the Earth, assuming uniform mass density, the acceleration due to gravity $\\mathrm{g}_{\\mathrm{d}}$ is contributed only by the mass enclosed within a sphere of radius $(\\mathrm{R}-\\mathrm{h})$,</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt0j2hy5/0a31f637-e1e9-41fa-a94f-fd8904bdd590/408610d0-9c0a-11f1-bd96-97d88f6fccdf/file-6y3zli1mt0j2hy6.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt0j2hy5/0a31f637-e1e9-41fa-a94f-fd8904bdd590/408610d0-9c0a-11f1-bd96-97d88f6fccdf/file-6y3zli1mt0j2hy6.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>$$g_d = \\frac{GM_{\\text{enclosed}}}{(R-h)^2} = \\frac{G\\left(\\frac{Mx^3}{R^3}\\right)}{(R-h)^2} = \\frac{GM}{R^3}\\left(\\frac{(R-h)^3}{(R-h)^2}\\right)$$</p>\n<p>$$g_d = \\frac{GM}{R^2}\\frac{(R-h)}{R} = g\\left(1-\\frac{h}{R}\\right)$$</p>\n<p>The fractional decrease in weight at depth h is,</p>\n<p>$$\\frac{\\Delta W_d}{W} = \\frac{g-g_d}{g} = \\frac{h}{R}$$</p>\n<p>$$\\frac{\\Delta W_d}{W} \\times 100\\% = \\frac{h}{R} \\times 100\\% = 0.5\\%$$</p>\n<p>Since $g_d < g$, the weight will decrease by $0.5\\%$. therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान m वाले एक पिंड का भार 1% कम हो जाता है जब इसे पृथ्वी की सतह से h ऊँचाई तक ले जाया जाता है। यदि पिंड को किसी खदान में h गहराई तक ले जाया जाता है, तो इसके भार में</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.5% की कमी होगी</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2% की कमी होगी</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.5% की वृद्धि होगी</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1% की वृद्धि होगी</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "acceleration-due-to-gravity-and-its-variation",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt0lja18",
+            "chapter": "gravitation",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>At what altitude will the acceleration due to gravity be 25% of that at the earth's surface (given radius of earth is R)?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>R/4</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>R</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3R/8</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>R/2</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The acceleration due to gravity g at the surface of the Earth is $\\mathrm{g}=\\frac{\\mathrm{GM}}{\\mathrm{R}^2}$</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt0lhoi9/1e804034-6eb9-4a1a-8bbd-952e0d477888/b8fc4c10-9c13-11f1-b4ff-5f2eb76f5c3c/file-6y3zli1mt0lhoia.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt0lhoi9/1e804034-6eb9-4a1a-8bbd-952e0d477888/b8fc4c10-9c13-11f1-b4ff-5f2eb76f5c3c/file-6y3zli1mt0lhoia.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>At an altitude $h$ above the Earth's surface, the distance of the point from the center of the Earth is $r = R + h$.</p>\n<p>The acceleration due to gravity $g_h$ at this altitude is</p>\n<p>$$g_h = \\frac{GM}{(R + h)^2}$$</p>\n<p>So, the ratio of $g_h$ to $g$,</p>\n<p>$$\\frac{g_h}{g} = \\frac{\\dfrac{GM}{(R + h)^2}}{\\dfrac{GM}{R^2}} = \\left(\\frac{R}{R + h}\\right)^2$$</p>\n<p>It is given that the acceleration due to gravity at altitude $h$ is 25% of its surface value,</p>\n<p>$$\\frac{g_h}{g} = 25\\% = \\frac{25}{100} = \\frac{1}{4} \\Rightarrow \\left(\\frac{R}{R + h}\\right)^2 = \\frac{1}{4}$$</p>\n<p>$$\\frac{R}{R + h} = \\frac{1}{2}$$</p>\n<p>$$2R = R + h$$</p>\n<p>$$h = 2R - R = R$$</p>\n<p>Thus, the required altitude is equal to the radius of the Earth $R$. Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>किस ऊँचाई पर गुरुत्वीय त्वरण पृथ्वी की सतह पर इसके मान का 25% हो जाएगा (दिया गया है, पृथ्वी की त्रिज्या R है)?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>R/4</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>R</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3R/8</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>R/2</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "acceleration-due-to-gravity-and-its-variation",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt0ls12y",
+            "chapter": "gravitation",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Suppose, if a tunnel is dug along the diameter of the earth and a body of mass $m$ is released from a point A at a distance $2R$ above earth along the line of tunnel. If $M$ is the mass of the earth and $R$ is the radius of the earth. The velocity of the body during its fall when it crosses the point B at a distance $\\frac{R}{2}$ below the earth centre as shown.</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt0ln1ca/e1a214bf-54fe-4694-bd34-25709b17299f/4df1fea0-9c14-11f1-b4ff-5f2eb76f5c3c/file-6y3zli1mt0ln1cb.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt0ln1ca/e1a214bf-54fe-4694-bd34-25709b17299f/4df1fea0-9c14-11f1-b4ff-5f2eb76f5c3c/file-6y3zli1mt0ln1cb.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{5}{2} \\sqrt{\\frac{GM}{3R}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\sqrt{\\frac{GM}{3R}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2 \\sqrt{\\frac{GM}{3R}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{3}{2} \\sqrt{\\frac{GM}{3R}}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>If a point $A$ is located at a height $2 R$ above the surface of the Earth. The radial distance of point $A$ from the center of the Earth is, $\\mathrm{r}_{\\mathrm{A}}=\\mathrm{R}+2 \\mathrm{R}=3 \\mathrm{R}$</p>\n<p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt0lp3em/79cbb0b3-037f-42a8-bf28-c964e952d841/872899e0-9c14-11f1-b4ff-5f2eb76f5c3c/file-6y3zli1mt0lp3en.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt0lp3em/79cbb0b3-037f-42a8-bf28-c964e952d841/872899e0-9c14-11f1-b4ff-5f2eb76f5c3c/file-6y3zli1mt0lp3en.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The gravitational potential at a distance $\\mathrm{r} \\geq \\mathrm{R}$ outside a spherical mass distribution is,</p>\n<p>$$ \\mathrm{V}(\\mathrm{r})=-\\frac{\\mathrm{GM}}{\\mathrm{r}} $$</p>\n<p>Therefore, the gravitational potential energy of mass m at point A is $\\mathrm{U}_{\\mathrm{A}}=\\mathrm{m} \\mathrm{V}_{\\mathrm{A}}=-\\frac{\\mathrm{GMm}}{3 \\mathrm{R}}$</p>\n<p>Since the body is released from rest at point A, its initial kinetic energy is $K_A = 0$</p>\n<p>The total mechanical energy at point A is $E_A = K_A + U_A = -\\frac{GMm}{3R}$</p>\n<p>When point B is inside the Earth at a radial distance $r = \\frac{R}{2}$ from the center of the Earth.</p>\n<p>The gravitational potential $V(r)$ at an internal point $(r \\leq R)$ of a uniform solid sphere is,</p>\n<p>Using $dV = -g\\,dr$, the change in gravitational potential from infinity to point $r$ is,</p>\n<p>$$ V(r) - V(\\infty) = -\\int\\limits_{\\infty}^{r} g(r')\\,dr' = -\\left[ \\int\\limits_{\\infty}^{R} g(r')\\,dr' + \\int\\limits_{R}^{r} g(r')\\,dr' \\right] $$</p>\n<p>Assuming the gravitational potential at infinity to be zero, $V(\\infty) = 0$</p>\n<p>$$ V(r) = -\\left[ \\int\\limits_{\\infty}^{R} g(r')\\,dr' + \\int\\limits_{R}^{r} g(r')\\,dr' \\right] $$</p>\n<p>$$ V(r) = -\\left[ \\int\\limits_{\\infty}^{R} \\frac{GM}{r'^2}\\,dr' + \\int\\limits_{R}^{r} \\frac{GMr'}{R^3}\\,dr' \\right] $$</p>\n<p>$$ V(r) = -\\left[ -\\frac{GM}{R} + \\frac{GM}{2R^3}(r^2 - R^2) \\right] = -\\frac{GM}{2R^3}(3R^2 - r^2) $$</p>\n<p>For point B, where $r = \\frac{R}{2}$,</p>\n<p>$$ V_B = -\\frac{GM}{2R^3} \\left( 3R^2 - \\left( \\frac{R}{2} \\right)^2 \\right) = -\\frac{GM}{2R^3} \\left( 3R^2 - \\frac{R^2}{4} \\right) = -\\frac{GM}{2R^3} \\left( \\frac{11R^2}{4} \\right) = -\\frac{11GM}{8R} $$</p>\n<p>Therefore, the gravitational potential energy at point B is $U_B = mV_B = -\\frac{11GMm}{8R}$</p>\n<p>Let $v$ be the velocity of the body at point B. The kinetic energy at point B is $K_B = \\frac{1}{2}mv^2$</p>\n<p>So, the total mechanical energy at point B is,</p>\n<p>$$ E_B = \\frac{1}{2}mv^2 - \\frac{11GMm}{8R} $$</p>\n<p>Since only conservative gravitational forces act on the body, total mechanical energy is conserved $(E_A = E_B)$:</p>\n<p>$$ -\\frac{GMm}{3R} = \\frac{1}{2}mv^2 - \\frac{11GMm}{8R} $$</p>\n<p>$$ \\frac{1}{2}mv^2 = \\frac{11GMm}{8R} - \\frac{GMm}{3R} = \\frac{GMm}{R} \\left( \\frac{11}{8} - \\frac{1}{3} \\right) = \\frac{GMm}{R} \\left( \\frac{33 - 8}{24} \\right) = \\frac{25GMm}{24R} $$</p>\n<p>$$ \\frac{1}{2}v^2 = \\frac{25GM}{24R} $$</p>\n<p>$$ v^2 = \\frac{25GM}{12R} = \\frac{25}{4} \\times \\frac{GM}{3R} $$</p>\n<p>$$ \\Rightarrow v = \\frac{5}{2} \\sqrt{\\frac{GM}{3R}} $$</p>\n<p>Therefore, the speed of body when it crosses the point B is $\\frac{5}{2} \\sqrt{\\frac{GM}{3R}}$. Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>मान लीजिए, यदि पृथ्वी के व्यास के अनुदिश एक सुरंग खोदी जाती है और $m$ द्रव्यमान के एक पिंड को पृथ्वी के ऊपर $2R$ की दूरी पर स्थित एक बिंदु A से सुरंग की रेखा के अनुदिश छोड़ा जाता है। यदि $M$ पृथ्वी का द्रव्यमान है और $R$ पृथ्वी की त्रिज्या है। गिरते समय पिंड का वेग क्या होगा जब यह चित्र में दर्शाए अनुसार पृथ्वी के केंद्र से $\\frac{R}{2}$ नीचे स्थित बिंदु B को पार करता है।</p> <img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt0ln1ca/e1a214bf-54fe-4694-bd34-25709b17299f/4df1fea0-9c14-11f1-b4ff-5f2eb76f5c3c/file-6y3zli1mt0ln1cb.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt0ln1ca/e1a214bf-54fe-4694-bd34-25709b17299f/4df1fea0-9c14-11f1-b4ff-5f2eb76f5c3c/file-6y3zli1mt0ln1cb.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{5}{2} \\sqrt{\\frac{GM}{3R}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\sqrt{\\frac{GM}{3R}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2 \\sqrt{\\frac{GM}{3R}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{3}{2} \\sqrt{\\frac{GM}{3R}}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "gravitational-potential-and-gravitational-potential-energy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt3hlnmm",
+            "chapter": "gravitation",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Assuming that a tunnel is dug across the earth passing through its centre. Find the time, a particle takes to reach the centre of the earth, if it is projected into the tunnel from the surface of earth with speed needed for it to escape the gravitational field of earth.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\left[ \\sin^{-1} \\left( \\frac{1}{\\sqrt{3}} \\right) \\right] \\sqrt{\\frac{R}{2g}} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\left[ \\sin^{-1} \\left( \\frac{1}{\\sqrt{3}} \\right) \\right] \\sqrt{\\frac{2R}{g}} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\left[ \\sin^{-1} \\left( \\frac{1}{\\sqrt{3}} \\right) \\right] \\sqrt{\\frac{R}{g}} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt4yn2os/190762e4-9cc6-4315-91a0-190bf2c1dbd2/484339c0-9e7a-11f1-b665-8f7c1c522360/file-6y3zli1mt4yn2ot.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt4yn2os/190762e4-9cc6-4315-91a0-190bf2c1dbd2/484339c0-9e7a-11f1-b665-8f7c1c522360/file-6y3zli1mt4yn2ot.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Let the initial speed required to escape the gravitational field from the surface of Earth $(\\mathrm{r}=\\mathrm{R})$ is $\\mathrm{v}_0$. Using the conservation of mechanical energy between the two points, one at the surface of Earth and another at infinite.</p>\n<p>$$ \\mathrm{K}_{\\mathrm{i}}+\\mathrm{U}_{\\mathrm{i}}=0 \\Rightarrow \\frac{1}{2} \\mathrm{~m} \\mathrm{v}_0^2-\\frac{\\mathrm{GMm}}{\\mathrm{R}}=0 $$</p>\n<p>The acceleration due to gravity at the surface of Earth is $\\mathrm{g}=\\frac{\\mathrm{GM}}{\\mathrm{R}^2} \\Rightarrow \\mathrm{GM}=\\mathrm{gR}^2$.</p>\n<p>$$ \\Rightarrow \\mathrm{v}_0=\\sqrt{\\frac{2 \\mathrm{GM}}{\\mathrm{R}}}=\\sqrt{2 \\mathrm{gR}} $$</p>\n<p>At a distance x from the center inside the Earth $(\\mathrm{x} \\leq \\mathrm{R})$, the gravitational acceleration is given by</p>\n<p>$$ \\mathrm{a}=-\\frac{\\mathrm{GM}_{\\mathrm{x}}}{\\mathrm{x}^2}=-\\frac{\\mathrm{G}\\left(\\frac{\\mathrm{Mx}^3}{\\mathrm{R}^3}\\right)}{\\mathrm{x}^2}=-\\frac{\\mathrm{GM}}{\\mathrm{R}^3} \\mathrm{x}=-\\omega^2 \\mathrm{x} $$</p>\n<p>where $\\omega=\\sqrt{\\frac{\\mathrm{GM}}{\\mathrm{R}^3}}=\\sqrt{\\frac{\\mathrm{g}}{\\mathrm{R}}}$.</p>\n<p>Using the kinematic relation $a = v\\frac{dv}{dx}$:</p>\n<p>$$v\\frac{dv}{dx} = -\\omega^2 x$$</p>\n<p>$$v\\,dv = -\\omega^2 x\\,dx$$</p>\n<p>On integrating from the surface $(x = R, v = v_0 = \\sqrt{2gR})$ to an arbitrary position $x$ inside the tunnel:</p>\n<p>$$\\int\\limits_{v_0}^{v} v\\,dv = -\\omega^2 \\int\\limits_{R}^{x} x\\,dx$$</p>\n<p>$$\\frac{v^2-v_0^2}{2}=-\\frac{\\omega^2}{2}(x^2-R^2)$$</p>\n<p>$$v^2-2gR=-\\omega^2(x^2-R^2)$$</p>\n<p>Since $\\omega^2 R^2=\\left(\\frac{g}{R}\\right)R^2=gR$:</p>\n<p>$$v^2=2gR-\\omega^2 x^2+\\omega^2 R^2=2gR-\\omega^2 x^2+gR=3gR-\\omega^2 x^2$$</p>\n<p>$$v^2=\\omega^2(3R^2-x^2)\\Rightarrow \\omega\\sqrt{3R^2-x^2}$$</p>\n<p>Taking the inward velocity $v=-\\frac{dx}{dt}$ because $x$ decreases with time as the particle moves towards the center:</p>\n<p>$$-\\frac{dx}{dt}=\\omega\\sqrt{3R^2-x^2}$$</p>\n<p>From $x=R$ (at $t=0$) to $x=0$ (at time $t$):</p>\n<p>$$\\int\\limits_{R}^{0}-\\frac{dx}{\\sqrt{3R^2-x^2}}=\\omega\\int\\limits_{0}^{t}dt$$</p>\n<p>$$\\int\\limits_{0}^{R}\\frac{dx}{\\sqrt{(\\sqrt{3}R)^2-x^2}}=\\omega t$$</p>\n<p>$$\\left[\\sin^{-1}\\left(\\frac{x}{\\sqrt{3}R}\\right)\\right]_{0}^{R}=\\omega t$$</p>\n<p>$$\\sin^{-1}\\left(\\frac{R}{\\sqrt{3}R}\\right)-\\sin^{-1}(0)=\\omega t$$</p>\n<p>$$\\sin^{-1}\\left(\\frac{1}{\\sqrt{3}}\\right)=\\omega t$$</p>\n<p>Substituting $\\omega=\\sqrt{\\frac{g}{R}}$:</p>\n<p>$$t=\\frac{1}{\\omega}\\sin^{-1}\\left(\\frac{1}{\\sqrt{3}}\\right)=\\left[\\sin^{-1}\\left(\\frac{1}{\\sqrt{3}}\\right)\\right]\\sqrt{\\frac{R}{g}}$$</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "\n<p>यह मानते हुए कि पृथ्वी के आर-पार उसके केंद्र से होकर एक सुरंग खोदी गई है। यदि किसी कण को पृथ्वी की सतह से उस चाल से सुरंग में प्रक्षेपित किया जाता है जो उसे पृथ्वी के गुरुत्वाकर्षण क्षेत्र से पलायन करने के लिए आवश्यक है, तो उस कण को पृथ्वी के केंद्र तक पहुँचने में लगने वाला समय ज्ञात कीजिए।</p>\n",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\left[ \\sin^{-1} \\left( \\frac{1}{\\sqrt{3}} \\right) \\right] \\sqrt{\\frac{R}{2g}} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\left[ \\sin^{-1} \\left( \\frac{1}{\\sqrt{3}} \\right) \\right] \\sqrt{\\frac{2R}{g}} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\left[ \\sin^{-1} \\left( \\frac{1}{\\sqrt{3}} \\right) \\right] \\sqrt{\\frac{R}{g}} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "acceleration-due-to-gravity-and-its-variation",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt4zdmar",
+            "chapter": "gravitation",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform spherical planet (Radius R) has acceleration due to gravity at its surface as <b>g</b>. Points P and Q located inside and outside the planet have acceleration due to gravity <b>g/4</b>. Maximum possible separation between P and Q is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{7R}{4}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{3R}{2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{9R}{4}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Let M be the total mass and R be the radius of the planet.</p>\n<p>The acceleration due to gravity at the surface is given by $\\mathrm{g}=\\frac{\\mathrm{GM}}{\\mathrm{R}^2}$</p>\n<p>For an internal point at a distance $\\mathrm{r}_{\\mathrm{in}}$ from the center ( $\\mathrm{r}_{\\mathrm{in}} \\leq \\mathrm{R}$ ), only the mass enclosed inside a sphere of radius $\\mathrm{r}_{\\text {in }}$ exerts a net gravitational force,</p>\n<p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt4z5pzo/393cc946-ec7d-4c03-8d5f-a30c5be6ee25/4ed3e940-9e7c-11f1-b665-8f7c1c522360/file-6y3zli1mt4z5pzp.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt4z5pzo/393cc946-ec7d-4c03-8d5f-a30c5be6ee25/4ed3e940-9e7c-11f1-b665-8f7c1c522360/file-6y3zli1mt4z5pzp.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$M_{r_{\\text{in}}} = \\rho V_{\\text{in}} = \\frac{M}{\\frac{4}{3}\\pi R^3} \\times \\frac{4}{3}\\pi (r_{\\text{in}})^3 = M\\left(\\frac{r_{\\text{in}}}{R}\\right)^3$$</p>\n<p>The acceleration due to gravity at distance $r_{\\text{in}}$ is:</p>\n<p>$$g(r_{\\text{in}}) = \\frac{G\\,M_{r_{\\text{in}}}}{r_{\\text{in}}^2} = \\frac{G\\,M\\left(\\frac{r_{\\text{in}}}{R}\\right)^3}{r_{\\text{in}}^2} = \\frac{GMr_{\\text{in}}^3}{r_{\\text{in}}^2 \\times R^3} = \\left(\\frac{GM}{R^2}\\right)\\left(\\frac{r_{\\text{in}}}{R}\\right) = g\\left(\\frac{r_{\\text{in}}}{R}\\right)$$</p>\n<p>Given that the acceleration due to gravity at point P is $g_P = \\frac{g}{4}$,</p>\n<p>$$g\\left(\\frac{r_P}{R}\\right) = \\frac{g}{4} \\Rightarrow r_P = \\frac{R}{4}$$</p>\n<p>Thus, point P lies at a distance of $\\frac{R}{4}$ from the center of the planet.</p>\n<p>For an external point at a distance $r_{\\text{out}}$ from the center $(r_{\\text{out}} \\geq R)$, the entire mass of the planet acts as if it were concentrated at the center:</p>\n\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt4z8w3v/a7f28568-5a79-4d8e-addc-9b5528c6a56e/a6fae5b0-9e7c-11f1-b665-8f7c1c522360/file-6y3zli1mt4z8w3w.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt4z8w3v/a7f28568-5a79-4d8e-addc-9b5528c6a56e/a6fae5b0-9e7c-11f1-b665-8f7c1c522360/file-6y3zli1mt4z8w3w.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>$$g_{\\text{out}} = \\frac{GM}{r_{\\text{out}}^2} = \\frac{gR^2}{r_{\\text{out}}^2}$$</p>\n<p>Given that the acceleration due to gravity at point Q is $g_Q = \\frac{g}{4}$,</p>\n<p>$$\\frac{gR^2}{r_Q^2} = \\frac{g}{4} \\Rightarrow r_Q^2 = 4R^2 \\Rightarrow r_Q = 2R$$</p>\n<p>Thus, point Q lies at a distance of $2R$ from the center of the planet.</p>\n<p>The distance between point P and point Q is maximum when they lie on opposite sides of the center along the same straight line :</p>\n\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt4zavsb/2d9cf732-a5bf-42e0-8b45-3f0417cee4eb/de59b3b0-9e7c-11f1-b665-8f7c1c522360/file-6y3zli1mt4zavsc.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt4zavsb/2d9cf732-a5bf-42e0-8b45-3f0417cee4eb/de59b3b0-9e7c-11f1-b665-8f7c1c522360/file-6y3zli1mt4zavsc.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>$$d_{\\max} = r_P + r_Q$$</p>\n<p>$$d_{\\max} = \\frac{R}{4} + 2R = \\frac{R + 8R}{4} = \\frac{9R}{4}$$</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक एकसमान गोलाकार ग्रह (त्रिज्या R) की सतह पर गुरुत्वीय त्वरण <b>g</b> है। ग्रह के अंदर और बाहर स्थित बिंदुओं P और Q पर गुरुत्वीय त्वरण <b>g/4</b> है। P और Q के बीच अधिकतम संभव दूरी है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{7R}{4}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{3R}{2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{9R}{4}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "acceleration-due-to-gravity-and-its-variation",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt4zk1o0",
+            "chapter": "gravitation",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle is dropped on Earth from height $R$ (radius of Earth) and it bounces back to a height $\\frac{R}{2}$; the coefficient of restitution for collision is (ignore air resistance and rotation of Earth)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{2}{3}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\sqrt{\\frac{2}{3}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{\\frac{1}{3}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{\\frac{1}{2}}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The coefficient of restitution e for a collision between a particle and a stationary surface (Earth) is e $=\\frac{\\mathrm{v}_2}{\\mathrm{v}_1}$</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt4zhn5m/61302277-e669-4202-909e-6c11680e7323/9a58fda0-9e7d-11f1-b665-8f7c1c522360/file-6y3zli1mt4zhn5n.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt4zhn5m/61302277-e669-4202-909e-6c11680e7323/9a58fda0-9e7d-11f1-b665-8f7c1c522360/file-6y3zli1mt4zhn5n.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Where $v_1$ is the speed of the particle just before impact on the surface of the Earth.</p>\n<p>$v_2$ is the speed of the particle just after rebounding from the surface of the Earth.</p>\n<p>The particle is dropped from rest from a height $h_1 = R$ above the Earth's surface (initial distance from the center is $r_1 = R + R = 2R$).</p>\n<p>By conservation of mechanical energy between the drop point and the surface of the Earth ($r = R$):</p>\n<p>$$E_{\\text{initial}} = E_{\\text{surface}}$$</p>\n<p>$$0 - \\frac{G M m}{2R} = \\frac{1}{2} m v_1^2 - \\frac{G M m}{R}$$</p>\n<p>$$\\frac{1}{2} v_1^2 = \\frac{G M}{R} - \\frac{G M}{2R} = \\frac{G M}{2R}$$</p>\n<p>$$v_1^2 = \\frac{G M}{R}$$</p>\n<p>The particle rebounds from the surface of the Earth ($r = R$) with speed $v_2$ and rises to a maximum height</p>\n<p>$h_2 = \\frac{R}{2}$.</p>\n<p>So, final distance from the center is $r_2 = R + \\frac{R}{2} = \\frac{3R}{2}$, where its speed becomes zero.</p>\n<p>By conservation of mechanical energy between the surface and the peak height:</p>\n<p>$$E_{\\text{surface}} = E_{\\text{peak}}$$</p>\n<p>$$\\frac{1}{2} m v_2^2 - \\frac{G M m}{R} = 0 - \\frac{G M m}{3R/2}$$</p>\n<p>$$\\frac{1}{2} m v_2^2 - \\frac{G M m}{R} = -\\frac{2 G M m}{3R}$$</p>\n<p>$$\\frac{1}{2} v_2^2 = \\frac{G M}{R} - \\frac{2 G M}{3R} = \\frac{G M}{3R}$$</p>\n<p>$$v_2^2 = \\frac{2 G M}{3R}$$</p>\n<p>Using the coefficient of restitution $e = \\sqrt{\\frac{v_2^2}{v_1^2}} = \\sqrt{\\frac{\\frac{2GM}{3R}}{\\frac{GM}{R}}} = \\sqrt{\\frac{2}{3}}$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक कण को पृथ्वी पर $R$ (पृथ्वी की त्रिज्या) ऊँचाई से गिराया जाता है और यह टकराकर $\\frac{R}{2}$ ऊँचाई तक वापस उछलता है; टक्कर के लिए प्रत्यावस्थान गुणांक (coefficient of restitution) है (वायु प्रतिरोध और पृथ्वी के घूर्णन को नगण्य मानें)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{2}{3}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\sqrt{\\frac{2}{3}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{\\frac{1}{3}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{\\frac{1}{2}}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "gravitational-potential-and-gravitational-potential-energy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt51yjav",
+            "chapter": "gravitation",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A body starts from rest at a point, distance $R_0$ from the centre of the earth of mass $M$, radius $R$. The velocity acquired by the body when it reaches the surface of the earth will be</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\sqrt{GM\\left(\\frac{1}{R} - \\frac{1}{R_0}\\right)}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\sqrt{3GM\\left(\\frac{1}{R} - \\frac{1}{R_0}\\right)}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{2GM\\left(\\frac{1}{R} - \\frac{1}{R_0}\\right)}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$2\\sqrt{GM\\left(\\frac{1}{R} - \\frac{1}{R_0}\\right)}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Since gravity is a conservative force and there is no non-conservative resistance, the total mechanical energy of the body remains constant during its motion from the initial distance $\\mathrm{R}_0$ to the surface of the Earth at distance R .</p>\n<p>$$ \\mathrm{E}_{\\text {initial }}=\\mathrm{E}_{\\text {final }} $$</p>\n<p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt51wleu/ac1a9f33-e122-4c7e-a356-2f4056ca4d9f/0c656060-9e87-11f1-b665-8f7c1c522360/file-6y3zli1mt51wlev.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt51wleu/ac1a9f33-e122-4c7e-a356-2f4056ca4d9f/0c656060-9e87-11f1-b665-8f7c1c522360/file-6y3zli1mt51wlev.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>At the initial release point the distance from the center of Earth is $r_i = R_0$, the body is released from rest $v_i = 0$.</p>\n<p>So, the initial kinetic energy is $K_i = 0$ and initial gravitational potential energy is $U_i = -\\frac{G M m}{R_0}$</p>\n<p>Thus, total initial mechanical energy of body is;</p>\n<p>$$E_{\\text{initial}} = K_i + U_i = 0 - \\frac{G M m}{R_0} = -\\frac{G M m}{R_0} \\ldots (i)$$</p>\n<p>When the body reaches the Earth's surface, the distance from center of Earth is $r = R$ with speed $v$.</p>\n<p>So, the final kinetic energy is $K_f = \\frac{1}{2} m v^2$ and the gravitational potential energy is $U_f = -\\frac{G M m}{R}$</p>\n<p>Thus, the total final energy is;</p>\n<p>$$E_{\\text{final}} = K_f + U_f = \\frac{1}{2} m v^2 - \\frac{G M m}{R} \\ldots (ii)$$</p>\n<p>Using conservation of mechanical energy,</p>\n<p>$$-\\frac{G M m}{R_0} = \\frac{1}{2} m v^2 - \\frac{G M m}{R}$$</p>\n<p>$$-\\frac{G M}{R_0} = \\frac{1}{2} v^2 - \\frac{G M}{R}$$</p>\n<p>$$\\frac{1}{2} v^2 = \\frac{G M}{R} - \\frac{G M}{R_0} = G M \\left(\\frac{1}{R} - \\frac{1}{R_0}\\right)$$</p>\n<p>$$v^2 = 2 G M \\left(\\frac{1}{R} - \\frac{1}{R_0}\\right)$$</p>\n<p>$$ v=\\sqrt{2 G M\\left(\\frac{1}{R}-\\frac{1}{R_0}\\right)} $$</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक पिंड, द्रव्यमान $M$ और त्रिज्या $R$ वाली पृथ्वी के केंद्र से $R_0$ दूरी पर स्थित एक बिंदु से विरामावस्था से चलना शुरू करता है। जब पिंड पृथ्वी की सतह पर पहुँचता है, तो इसके द्वारा प्राप्त वेग होगा</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\sqrt{GM\\left(\\frac{1}{R} - \\frac{1}{R_0}\\right)}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\sqrt{3GM\\left(\\frac{1}{R} - \\frac{1}{R_0}\\right)}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{2GM\\left(\\frac{1}{R} - \\frac{1}{R_0}\\right)}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$2\\sqrt{GM\\left(\\frac{1}{R} - \\frac{1}{R_0}\\right)}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "gravitational-potential-and-gravitational-potential-energy",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msz02ujh",
+            "chapter": "gravitation",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A spaceship is sent to investigate a planet of mass $M$ and radius $R$. While hanging motionless in space at a distance $5 R$ from the centre of the planet, the spaceship fires an instrument package with speed $v_0$ as shown in the figure. The package has mass $m$, which is much smaller than the mass of the spaceship. The package just grazes the surface of the planet and at that moment it's speed is $v$.</p>\n<p>$$ \\mathbf{v}_{\\mathbf{0}}=\\sqrt{\\frac{\\mathrm{xGM}}{75 \\mathrm{R}}} \\text {. Find } \\mathbf{x} \\text {. } $$</p>\n\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1msyzzzye/42f26d43-cb27-4b42-a108-cbcc4aef14ef/e4e72660-9b32-11f1-8cf5-e132622dba82/file-6y3zli1msyzzzyf.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1msyzzzye/42f26d43-cb27-4b42-a108-cbcc4aef14ef/e4e72660-9b32-11f1-8cf5-e132622dba82/file-6y3zli1msyzzzyf.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "8",
+                "explanation": "<p>The gravitational force on the package is a central force directed towards the centre of the planet, which means the net torque about the planet's centre is zero $(\\tau=0)$.</p>\n<p>Using Second law of rotational motion $\\tau=\\frac{\\mathrm{dL}}{\\mathrm{dt}} \\Rightarrow \\mathrm{L}=$ constant</p>\n<p>Therefore, the angular momentum L of the package about the centre of the planet is conserved throughout its trajectory.</p>\n\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1msz01dmc/c2438d34-bfae-418f-b240-d771bdac6456/0b449f40-9b33-11f1-8cf5-e132622dba82/file-6y3zli1msz01dmd.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1msz01dmc/c2438d34-bfae-418f-b240-d771bdac6456/0b449f40-9b33-11f1-8cf5-e132622dba82/file-6y3zli1msz01dmd.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>At the launch point, distance from centre, $r_1 = 5R$ moving with velocity $v_0$</p>\n<p>The angle between the position vector and velocity vector, $\\theta = 53^\\circ$ (where $\\sin 53^\\circ = \\frac{4}{5}$)</p>\n<p>So, the initial angular momentum about centre of planet is,</p>\n<p>$$L_1 = m v_0 r_1 \\sin 53^\\circ = m v_0 (5R) \\left(\\frac{4}{5}\\right) = 4 m v_0 R$$</p>\n<p>At the grazing point (point of closest approach), distance from centre, $r_2 = R$, moving with velocity = $v$</p>\n<p>Since this is the point of closest approach, the velocity vector is perpendicular to the radial direction ($\\theta = 90^\\circ$).</p>\n<p>So, the final angular momentum about centre of planet is,</p>\n<p>$$L_2 = m v R \\sin 90^\\circ = m v R$$</p>\n<p>Using conservation of angular momentum;</p>\n\n<p>$$4mv_0R = mvR \\Rightarrow v = 4v_0$$</p>\n<p>Since gravity is a conservative force, the total mechanical energy of the package is conserved;</p>\n<p>$$E_{\\text{initial}} = E_{\\text{final}}$$</p>\n<p>$$E_1 = E_2 \\Rightarrow K_1 + U_1 = K_2 + U_2$$</p>\n<p>$$\\Rightarrow \\frac{1}{2}mv_0^2 - \\frac{GMm}{5R} = \\frac{1}{2}mv^2 - \\frac{GMm}{R}$$</p>\n<p>Substituting $v = 4v_0$:</p>\n<p>$$\\frac{1}{2}mv_0^2 - \\frac{GMm}{5R} = \\frac{1}{2}m(4v_0)^2 - \\frac{GMm}{R}$$</p>\n<p>$$\\frac{1}{2}mv_0^2 - \\frac{GMm}{5R} = 8mv_0^2 - \\frac{GMm}{R}$$</p>\n<p>$$\\frac{GMm}{R} - \\frac{GMm}{5R} = 8mv_0^2 - \\frac{1}{2}mv_0^2$$</p>\n<p>$$\\frac{4GMm}{5R} = \\frac{15}{2}mv_0^2 \\Rightarrow \\frac{4GM}{5R} = \\frac{15}{2}v_0^2$$</p>\n<p>$$\\Rightarrow v_0^2 = \\frac{8GM}{75R} \\Rightarrow v_0 = \\sqrt{\\frac{8GM}{75R}} = \\sqrt{\\frac{xGM}{75R}} \\Rightarrow x = 8$$</p>\n<p>Therefore, the value of x is 8.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान $M$ और त्रिज्या $R$ वाले एक ग्रह की जांच करने के लिए एक अंतरिक्ष यान भेजा जाता है। ग्रह के केंद्र से $5 R$ की दूरी पर अंतरिक्ष में स्थिर रहते हुए, अंतरिक्ष यान चित्र में दर्शाए अनुसार $v_0$ चाल से एक उपकरण पैकेज को दागता है। पैकेज का द्रव्यमान $m$ है, जो अंतरिक्ष यान के द्रव्यमान से बहुत कम है। पैकेज ग्रह की सतह को ठीक स्पर्श करते हुए गुजरता है और उस क्षण इसकी चाल $v$ होती है।</p> <p>$$ \\mathbf{v}_{\\mathbf{0}}=\\sqrt{\\frac{\\mathrm{xGM}}{75 \\mathrm{R}}} \\text {. } \\mathbf{x} \\text{ ज्ञात कीजिए। } $$</p> <img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1msyzzzye/42f26d43-cb27-4b42-a108-cbcc4aef14ef/e4e72660-9b32-11f1-8cf5-e132622dba82/file-6y3zli1msyzzzyf.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1msyzzzye/42f26d43-cb27-4b42-a108-cbcc4aef14ef/e4e72660-9b32-11f1-8cf5-e132622dba82/file-6y3zli1msyzzzyf.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "gravitational-potential-and-gravitational-potential-energy",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mt0hbxvp",
+            "chapter": "gravitation",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the angular speed of earth is $\\mathrm{n} \\times 10^{-3} \\mathrm{rad} / \\mathrm{sec}$, then bodies lying on equator may appear weightless, calculate the value of $4n .\\left(g=10 \\mathrm{~m} / \\mathrm{s}^2\\right.$ and radius of earth $\\left.=6400 \\mathrm{~km}\\right)$</p>",
+                "options": [],
+                "explanation": "<p>Due to the rotation of the Earth, the effective acceleration due to gravity at a place with latitude $\\lambda$ is given by:</p>\n<p>$$g' = g - R\\omega^2 \\cos^2\\lambda$$</p>\n<p>Here, $R$ is the radius of the Earth, and $\\omega$ is its angular speed.</p>\n<p>At the equator, the latitude is $\\lambda = 0^\\circ$. Since $\\cos 0^\\circ = 1$, the equation becomes:</p>\n<p>$$g' = g - R\\omega^2$$</p>\n<p>For a body to appear weightless at the equator, the apparent acceleration due to gravity $g'$ must be zero. </p>\n<p>$$g - R\\omega^2 = 0$$</p>\n<p>$$R\\omega^2 = g$$</p>\n<p>$$\\omega = \\sqrt{\\frac{g}{R}}$$</p>\n<p>Now, let us put the given values:</p>\n<ul>\n<li><p>$g = 10\\text{ m/s}^2$</p></li>\n<li><p>$R = 6400\\text{ km} = 6.4 \\times 10^6\\text{ m}$</p></li>\n</ul>\n<p>$$\\omega = \\sqrt{\\frac{10}{6.4 \\times 10^6}}$$</p>\n<p>$$\\omega = \\sqrt{\\frac{1}{64 \\times 10^4}}$$</p>\n<p>$$\\omega = \\frac{1}{8 \\times 10^2}$$</p>\n<p>$$\\omega = \\frac{1}{800}\\text{ rad/s} = 1.25 \\times 10^{-3}\\text{ rad/s}$$</p>\n<p>Comparing this with the given angular speed $\\omega = n \\times 10^{-3}\\text{ rad/s}$:</p>\n<p>$$n = 1.25$$</p>\n<p>To find the value of $4n$:</p>\n<p>$$4n = 4 \\times 1.25 = 5$$</p>\n<p>The value of $4n$ is $5$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि पृथ्वी की कोणीय चाल $\\mathrm{n} \\times 10^{-3} \\mathrm{rad} / \\mathrm{sec}$ है, तो भूमध्य रेखा पर स्थित पिंड भारहीन प्रतीत हो सकते हैं, $4n$ के मान की गणना कीजिए। $\\left(g=10 \\mathrm{~m} / \\mathrm{s}^2\\right.$ और पृथ्वी की त्रिज्या $\\left.=6400 \\mathrm{~km}\\right)$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "acceleration-due-to-gravity-and-its-variation",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mt0mm67k",
+            "chapter": "gravitation",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The difference between the time periods (in $\\mathbf{s}$ ) of a seconds pendulum at a depth of $\\mathbf{6 4} \\mathbf{~ k m}$ from Earth's surface and on earth surface is $\\boldsymbol{\\Delta} \\mathbf{T}$ ? Find the value of $\\mathbf{1 0 0} \\boldsymbol{\\Delta} \\mathbf{T}$.</p>",
+                "options": [],
+                "answer": "1",
+                "explanation": "<p>Consider a simple pendulum of mass $m$ and length $L$ suspended in a gravitational field of acceleration $g$.</p>\n<p>When displaced by a small angular displacement $\\theta$ from the vertical :</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt0mjhgp/304fb5f1-015a-4dde-bda1-046747ed9b24/d44ad190-9c17-11f1-b4ff-5f2eb76f5c3c/file-6y3zli1mt0mjhgq.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt0mjhgp/304fb5f1-015a-4dde-bda1-046747ed9b24/d44ad190-9c17-11f1-b4ff-5f2eb76f5c3c/file-6y3zli1mt0mjhgq.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Restoring torque acting about the point of suspension:</p>\n<p>$$\\tau = -(mg\\sin\\theta)L$$</p>\n<p>For small angular displacements ($\\sin\\theta \\approx \\theta$),</p>\n<p>$$\\tau = -mgL\\theta$$</p>\n<p>The moment of inertia about the suspension point is $I = mL^2$.</p>\n<p>Using Newton's rotational law $\\tau = I\\alpha = I\\dfrac{d^2\\theta}{dt^2}$:</p>\n<p>$$mL^2\\dfrac{d^2\\theta}{dt^2} = -mgL\\theta \\Rightarrow \\dfrac{d^2\\theta}{dt^2} = -(gL)\\theta$$</p>\n<p>This represents simple harmonic motion with angular frequency $\\omega = \\sqrt{gL}$.</p>\n<p>The time period $T$ is,</p>\n<p>$$T = \\dfrac{2\\pi}{\\omega} = 2\\pi\\sqrt{\\dfrac{L}{g}}$$</p>\n<p>For a seconds pendulum on the surface of the Earth, the time period is; $T = 2\\,\\text{s}$</p>\n<p>Assuming the Earth is a sphere of uniform mass density $\\rho$, mass $M$, and radius $R$, at a depth $d$ below the Earth's surface, the distance from the centre of the Earth is $r = R - d$.</p>\n<p>By Newton's shell theorem, the mass enclosed inside radius $r$ is,</p>\n\n<p>$$M_{\\text{enclosed}} = \\frac{M(R-d)^3}{R^3}$$</p>\n<p>The acceleration due to gravity at depth $d$ is:</p>\n<p>$$g_d = \\frac{GM_{\\text{enclosed}}}{(R-d)^2} = \\frac{GM(R-d)}{R^3} = \\frac{GM}{R^2}\\left(1-\\frac{d}{R}\\right) = g\\left(1-\\frac{d}{R}\\right)$$</p>\n<p>The time period of the pendulum at depth $d$ is:</p>\n<p>$$T_d = 2\\pi\\sqrt{\\frac{L}{g_d}} = 2\\pi\\sqrt{\\frac{L}{g\\left(1-\\frac{d}{R}\\right)}} = T\\left(1-\\frac{d}{R}\\right)^{-1/2}$$</p>\n<p>Using the binomial approximation since $d \\ll R$:</p>\n<p>$$\\left(1-\\frac{d}{R}\\right)^{-1/2} \\approx 1 + \\frac{1}{2}\\frac{d}{R}$$</p>\n<p>$$T_d \\approx T\\left(1+\\frac{d}{2R}\\right) = T + T\\left(\\frac{d}{2R}\\right)$$</p>\n<p>The difference between the time periods is,</p>\n<p>$$\\Delta T = T_d - T = T\\left(\\frac{d}{2R}\\right)$$</p>\n<p>The Earth radius $R = 6400\\ \\text{km}$, with given depth $d = 64\\ \\text{km}$ and $T = 2\\ \\text{s}$,</p>\n<p>$$\\Delta T = 2 \\times \\left(\\frac{64}{2\\times 6400}\\right) = \\frac{64}{6400} = \\frac{1}{100} = 0.01\\ \\text{s}$$</p>\n<p>So, the value of $100\\Delta T$:</p>\n<p>$$100\\Delta T = 100 \\times 0.01 = 1$$</p>\n<p>Therefore, the value of $100\\Delta T$ is $1$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>पृथ्वी की सतह से $\\mathbf{64} \\mathbf{~ k m}$ की गहराई पर और पृथ्वी की सतह पर एक सेकंड लोलक के आवर्तकालों ( $\\mathbf{s}$ में) के बीच का अंतर $\\boldsymbol{\\Delta} \\mathbf{T}$ है। $\\mathbf{100} \\boldsymbol{\\Delta} \\mathbf{T}$ का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "acceleration-due-to-gravity-and-its-variation",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mt500xse",
+            "chapter": "gravitation",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The density of the core of a planet is $\\rho_1$ and that of the outer shell is $\\rho_2$, the radii of the core and that of the planet are $R$ and $2 R$ respectively. The acceleration due to gravity at the surface of the planet is same as at a depth $R$. the ratio of $\\frac{\\rho_1}{\\rho_2}$ is $\\frac{a}{3}$, find $a$.</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt4zx15s/93361179-fc01-4232-86e2-9e035d5a394b/464d9200-9e7f-11f1-b665-8f7c1c522360/file-6y3zli1mt4zx15t.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt4zx15s/93361179-fc01-4232-86e2-9e035d5a394b/464d9200-9e7f-11f1-b665-8f7c1c522360/file-6y3zli1mt4zx15t.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "7",
+                "explanation": "<p>The core is of radius $\\mathrm{R}_1=\\mathrm{R}$, and its uniform density is $\\rho_1$.</p>\n<p>The outer shell is with inner radius $R$, outer radius $R_2=2 R$, uniform density $\\rho_2$.</p>\n<p>A depth of $R$ from the outer surface ( $r=2 R$ ) corresponds to a distance from the center of $r=2 R-R=R$</p>\n<p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt4zz330/2349d391-cd98-4c98-9f65-0023fc7d3a64/7f6819c0-9e7f-11f1-b665-8f7c1c522360/file-6y3zli1mt4zz331.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt4zz330/2349d391-cd98-4c98-9f65-0023fc7d3a64/7f6819c0-9e7f-11f1-b665-8f7c1c522360/file-6y3zli1mt4zz331.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>According to Newton's shell theorem, the outer spherical shell between radius $R$ and $2R$ exerts zero net gravitational force on any point at distance $r \\leq R$.</p>\n<p>Thus, only the mass of the inner core $M_{\\text{core}}$ contributes to the gravitational field at this distance,</p>\n<p>$$M_{\\text{core}} = \\rho_1 \\times \\left(\\frac{4}{3}\\pi R^3\\right)$$</p>\n<p>The acceleration due to gravity at this point is:</p>\n<p>$$g_{\\text{depth}} = \\frac{G\\,M_{\\text{core}}}{R^2} = \\frac{G\\left(\\frac{4}{3}\\pi\\rho_1 R^3\\right)}{R^2} = \\frac{4}{3}\\pi G\\rho_1 R$$</p>\n<p>The surface of the planet is at a radial distance $r = 2R$ from the center. At this point, the total mass of the planet $M_{\\text{total}}$ consists of:</p>\n<p>The mass of the core is $M_{\\text{core}} = \\frac{4}{3}\\pi R^3\\rho_1$</p>\n<p>The mass of the outer shell is,</p>\n<p>$$M_{\\text{shell}} = \\rho_2\\left[\\frac{4}{3}\\pi(2R)^3 - \\frac{4}{3}\\pi R^3\\right] = \\rho_2 \\times \\frac{4}{3}\\pi(8R^3 - R^3) = \\frac{4}{3}\\pi(7R^3)\\rho_2$$</p>\n<p>The total mass of the planet is,</p>\n<p>$$M_{\\text{total}} = M_{\\text{core}} + M_{\\text{shell}} = \\frac{4}{3}\\pi R^3(\\rho_1 + 7\\rho_2)$$</p>\n<p>The acceleration due to gravity at the surface ($r = 2R$) is,</p>\n<p>$$g_{\\text{surface}} = \\frac{G\\,M_{\\text{total}}}{(2R)^2} = \\frac{G\\left[\\frac{4}{3}\\pi R^3(\\rho_1 + 7\\rho_2)\\right]}{4R^2} = \\frac{4}{3}\\pi G R\\left(\\frac{\\rho_1 + 7\\rho_2}{4}\\right)$$</p>\n<p>Given that $g_{\\text{surface}} = g_{\\text{depth}}$,</p>\n<p>$$\\frac{4}{3}\\pi G R\\left(\\frac{\\rho_1 + 7\\rho_2}{4}\\right) = \\frac{4}{3}\\pi G\\rho_1 R$$</p>\n<p>$$\\frac{\\rho_1 + 7\\rho_2}{4} = \\rho_1$$</p>\n<p>$$\\rho_1 + 7\\rho_2 = 4\\rho_1$$</p>\n<p>$$7\\rho_2 = 3\\rho_1$$</p>\n<p>$$\\frac{\\rho_1}{\\rho_2} = \\frac{7}{3} = \\frac{a}{3} \\Rightarrow a = 7$$</p>\n<p>Therefore, the value of a is 7.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक ग्रह के क्रोड (core) का घनत्व $\\rho_1$ है और बाहरी कोश (outer shell) का घनत्व $\\rho_2$ है, क्रोड और ग्रह की त्रिज्याएँ क्रमशः $R$ और $2 R$ हैं। ग्रह की सतह पर गुरुत्वीय त्वरण $R$ गहराई पर गुरुत्वीय त्वरण के समान है। $\\frac{\\rho_1}{\\rho_2}$ का अनुपात $\\frac{a}{3}$ है, $a$ का मान ज्ञात कीजिए।</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt4zx15s/93361179-fc01-4232-86e2-9e035d5a394b/464d9200-9e7f-11f1-b665-8f7c1c522360/file-6y3zli1mt4zx15t.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt4zx15s/93361179-fc01-4232-86e2-9e035d5a394b/464d9200-9e7f-11f1-b665-8f7c1c522360/file-6y3zli1mt4zx15t.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "acceleration-due-to-gravity-and-its-variation",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mt52nb8f",
+            "chapter": "gravitation",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The gravitational field in a region is given by $\\vec{E}=5 \\mathrm{~N} / \\mathrm{kg} \\hat{i}+12 \\mathrm{~N} / \\mathrm{kg} \\hat{j}$. If the origin is taken as zero potential energy, then the potential energy at $(0,5)$ is $-n$ Joule, then find the value of $n$. (for 1 kg mass)</p>",
+                "options": [],
+                "answer": "60",
+                "explanation": "<p>The relationship between the gravitational field $\\vec{E}$ and the gravitational potential $V$ is given by:</p>\n<p>$$dV = -\\vec{E} \\cdot d\\vec{r}$$</p>\n<p>Integrating this relation from the origin $(0,0)$ to the point $(0,5)$:</p>\n<p>$$V(0,5) - V(0,0) = -\\int\\limits_{(0,0)}^{(0,5)} \\vec{E} \\cdot d\\vec{r}$$</p>\n<p>Here, the gravitational field is uniform:</p>\n<p>$$\\vec{E} = 5\\hat{i} + 12\\hat{j}$$</p>\n<p>The position vector of the point $(0,5)$ relative to the origin is:</p>\n<p>$$\\vec{r} = 0\\hat{i} + 5\\hat{j}$$</p>\n<p>Taking the origin as the reference with zero potential energy, we have $V(0,0) = 0$. </p>\n<p>Now, substitute the values:</p>\n<p>$$V(0,5) - 0 = -\\left(5\\hat{i} + 12\\hat{j}\\right) \\cdot \\left(0\\hat{i} + 5\\hat{j}\\right)$$</p>\n<p>$$V(0,5) = -(5 \\times 0 + 12 \\times 5)$$</p>\n<p>$$V(0,5) = -60\\text{ J/kg}$$</p>\n<p>The gravitational potential energy $U$ for a mass of $m = 1\\text{ kg}$ at this point is:</p>\n<p>$$U = m \\times V(0,5)$$</p>\n<p>$$U = 1 \\times (-60) = -60\\text{ J}$$</p>\n<p>Comparing this with the given potential energy of $-n\\text{ Joule}$:</p>\n<p>$$-n = -60$$</p>\n<p>$$n = 60$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक क्षेत्र में गुरुत्वाकर्षण क्षेत्र $\\vec{E}=5 \\mathrm{~N} / \\mathrm{kg} \\hat{i}+12 \\mathrm{~N} / \\mathrm{kg} \\hat{j}$ द्वारा दिया गया है। यदि मूल बिंदु पर स्थितिज ऊर्जा शून्य मानी जाती है, तो $(0,5)$ पर स्थितिज ऊर्जा $-n$ जूल है, तो $n$ का मान ज्ञात कीजिए। (1 kg द्रव्यमान के लिए)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "gravitational-potential-and-gravitational-potential-energy",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Gravitational Potential Energy and Self Energy, Acceleration due to Gravity and its Variation",
+    "timeAllotted": 2160000,
+    "title": "Gravitation Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g71mnvypiw3",
+    "defaultLanguage": "en",
+    "description": "Gravitational Potential Energy and Self Energy, Acceleration due to Gravity and its Variation",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-23T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Gravitational Potential Energy and Self Energy, Acceleration due to Gravity and its Variation",
+    "timeAllotted": 2160000,
+    "title": "Gravitation Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Gravitation"
+  }
+}

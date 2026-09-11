@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Quantrex Academy — App</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="assets/favicon-32x32.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1565C0">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;background:#07091a;color:#e2e8f0;font-family:Inter,system-ui,sans-serif}
+    .bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 14px;background:#0b1024;border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;z-index:5}
+    .brand{display:flex;align-items:center;gap:8px;margin-right:auto;font-weight:800;font-size:14px}
+    .brand small{display:block;font-weight:600;color:#94a3b8;font-size:11px}
+    .seg{display:flex;flex-wrap:wrap;background:#111827;border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:3px}
+    .seg button{padding:7px 11px;border:0;border-radius:999px;background:none;color:#cbd5e1;font-weight:700;font-size:12px;cursor:pointer;font-family:inherit}
+    .seg button.on{background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff}
+    .note{font-size:11px;color:#94a3b8}
+    a.full{color:#93c5fd;font-size:12px;font-weight:700;margin-left:6px}
+    .chips{display:flex;flex-wrap:wrap;gap:6px;padding:8px 14px;background:#080d1c;border-bottom:1px solid rgba(255,255,255,.06)}
+    .chips span{font-size:10px;font-weight:700;letter-spacing:.02em;color:#cbd5e1;background:#111827;border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:4px 8px}
+    .stage{min-height:calc(100% - 92px);display:flex;align-items:center;justify-content:center;padding:18px 12px 28px;
+      background:radial-gradient(800px 360px at 20% -10%,rgba(124,58,237,.3),transparent 50%),#07091a}
+    .device{transition:width .2s ease,height .2s ease}
+    .device.phone{width:min(390px,100%);height:min(844px,calc(100vh - 128px))}
+    .device.tablet{width:min(820px,96vw);height:min(640px,calc(100vh - 128px))}
+    .device.desk{width:min(1180px,96vw);height:min(760px,calc(100vh - 128px))}
+    .bezel{height:100%;border-radius:36px;padding:10px;background:linear-gradient(180deg,#1f2937,#030712);box-shadow:0 30px 70px rgba(0,0,0,.45)}
+    .device.desk .bezel{border-radius:14px;padding:0}
+    iframe{width:100%;height:100%;border:0;border-radius:26px;background:#fff}
+    .device.desk iframe{border-radius:14px}
+    @media (max-width:720px){
+      .stage{padding:0}
+      .chips{display:none}
+      .device,.device.phone,.device.tablet,.device.desk{width:100%;height:calc(100vh - 54px)}
+      .bezel{border-radius:0;padding:0;box-shadow:none;background:transparent}
+      iframe{border-radius:0}
+    }
+  </style>
+</head>
+<body>
+  <header class="bar">
+    <div class="brand">Quantrex app
+      <small>Live website in iPhone · Android · iPad · Windows · Mac</small>
+    </div>
+    <div class="seg" id="plat">
+      <button data-v="phone" class="on" type="button">iPhone</button>
+      <button data-v="phone" type="button">Android</button>
+      <button data-v="tablet" type="button">iPad</button>
+      <button data-v="desk" type="button">Windows / Mac</button>
+    </div>
+    <span class="note">Same login, PYQ, DPP, books, tests — as quantrexacademy.com. All courses free.</span>
+    <a class="full" href="app.html" target="_top">Open full site</a>
+  </header>
+  <div class="chips" aria-hidden="true">
+    <span>Login OTP + Google</span>
+    <span>PYQ Bank</span>
+    <span>All Qs</span>
+    <span>DPP</span>
+    <span>Formula</span>
+    <span>NCERT</span>
+    <span>Digital books</span>
+    <span>Test series</span>
+    <span>PYQ mocks</span>
+    <span>Revision</span>
+    <span>Flash cards</span>
+    <span>Bookmarks</span>
+    <span>All courses free</span>
+  </div>
+  <main class="stage">
+    <div class="device phone" id="device">
+      <div class="bezel">
+        <iframe id="view" title="Quantrex Academy" allow="otp-credentials; clipboard-read; clipboard-write; fullscreen"></iframe>
+      </div>
+    </div>
+  </main>
+  <script>
+    (function () {
+      var logged = false;
+      try {
+        var u = JSON.parse(localStorage.getItem("quantrex_user") || "null");
+        logged = !!(u && u.uid && String(u.uid).indexOf("guest_") !== 0);
+      } catch (_) {}
+      var bust = (typeof window.QX_BUILD === "string" && window.QX_BUILD) || String(Date.now());
+      document.getElementById("view").src = (logged ? "app.html" : "login.html") + "?app=1&v=" + encodeURIComponent(bust);
+      var device = document.getElementById("device");
+      document.getElementById("plat").addEventListener("click", function (e) {
+        var b = e.target.closest("button");
+        if (!b) return;
+        document.querySelectorAll("#plat button").forEach(function (x) { x.classList.toggle("on", x === b); });
+        device.className = "device " + b.getAttribute("data-v");
+      });
+    })();
+  </script>
+</body>
+</html>

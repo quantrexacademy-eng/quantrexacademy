@@ -1,0 +1,75 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b89d4b564dfab4f94d0",
+  "chapterId": "66d5855ba75f05ee8564f6b1",
+  "subject": "Chemistry",
+  "chapter": "Thermodynamics (C)",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d586c0a75f05ee8565044f",
+      "title": "System and surrounding",
+      "count": 1,
+      "questionIds": [
+        "66d585cca75f05ee8564facc"
+      ]
+    },
+    {
+      "id": "66d586c0a75f05ee8565044c",
+      "title": "First Law and Basic Fundamentals of Thermodynamics",
+      "count": 7,
+      "questionIds": [
+        "66d5865fa75f05ee85650018",
+        "66d5864fa75f05ee8564ff87",
+        "66d58624a75f05ee8564fdfe",
+        "66d58611a75f05ee8564fd4a",
+        "66d585fea75f05ee8564fc9c",
+        "66d585efa75f05ee8564fc0a",
+        "66d5855ba75f05ee8564f6b5"
+      ]
+    },
+    {
+      "id": "66d586c0a75f05ee8565044b",
+      "title": "Laws of Thermochemistry and Enthalpy Change",
+      "count": 10,
+      "questionIds": [
+        "66d5864aa75f05ee8564ff5e",
+        "66d5863aa75f05ee8564fec7",
+        "66d58629a75f05ee8564fe2b",
+        "66d585caa75f05ee8564fab9",
+        "66d585bba75f05ee8564fa29",
+        "66d58580a75f05ee8564f80b",
+        "66d58570a75f05ee8564f774",
+        "66d58570a75f05ee8564f773",
+        "66d5855ba75f05ee8564f6b2",
+        "66d5855ba75f05ee8564f6af"
+      ]
+    },
+    {
+      "id": "66d586c0a75f05ee8565044e",
+      "title": "Entropy and Second law of thermodynamics",
+      "count": 4,
+      "questionIds": [
+        "66d58612a75f05ee8564fd52",
+        "66d58600a75f05ee8564fcab",
+        "66d585a7a75f05ee8564f96f",
+        "66d58591a75f05ee8564f8aa"
+      ]
+    },
+    {
+      "id": "66d586c0a75f05ee8565044d",
+      "title": "Third law of thermodynamics",
+      "count": 7,
+      "questionIds": [
+        "66d58660a75f05ee85650027",
+        "66d5864da75f05ee8564ff73",
+        "66d5864ba75f05ee8564ff61",
+        "66d58639a75f05ee8564febd",
+        "66d585efa75f05ee8564fc0b",
+        "66d5857fa75f05ee8564f806",
+        "66d5857fa75f05ee8564f802"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,415 @@
+/* Quantrex — Gemini light + Claude/Gemini soft dark
+   Light: Gemini canvas #f0f4f9, white cards, #0b57d0
+   Dark: warm charcoal (not OLED / not #0f172a) — easy on eyes */
+
+:root {
+  --primary: #0b57d0;
+  --primary-dark: #0842a0;
+  --primary-light: #d3e3fd;
+  --accent: #0b57d0;
+  --accent-light: #d3e3fd;
+  --bg: #f0f4f9;
+  --card: #ffffff;
+  --white: #ffffff;
+  --text: #1f1f1f;
+  --dark: #1f1f1f;
+  --gray: #444746;
+  --border: #c4c7c5;
+  --shadow: rgba(31, 31, 31, 0.06);
+  --qx-glow: rgba(11, 87, 208, 0.18);
+  --qx-surface: #e9eef6;
+  --qx-surface-2: #e1e6ee;
+}
+
+html[data-theme="light"] {
+  --primary: #1565c0;
+  --primary-dark: #0d47a1;
+  --primary-light: #e3f2fd;
+  --accent: #1565c0;
+  --accent-light: #e3f2fd;
+  --bg: #ffffff;
+  --card: #ffffff;
+  --white: #ffffff;
+  --text: #212121;
+  --dark: #212121;
+  --gray: #546e7a;
+  --border: #cfd8dc;
+  --shadow: rgba(31, 31, 31, 0.06);
+  --qx-glow: rgba(11, 87, 208, 0.18);
+  --qx-surface: #e9eef6;
+  --qx-surface-2: #e1e6ee;
+}
+
+html[data-theme="dark"] {
+  --primary: #8ab4f8;
+  --primary-dark: #a8c7fa;
+  --primary-light: #3d4f66;
+  --accent: #8ab4f8;
+  --accent-light: #3d4f66;
+  --bg: #2a2a2c;
+  --card: #333336;
+  --white: #333336;
+  --text: #eceae4;
+  --dark: #eceae4;
+  --gray: #c4c3bd;
+  --border: #454548;
+  --shadow: rgba(0, 0, 0, 0.28);
+  --qx-glow: rgba(138, 180, 248, 0.16);
+  --qx-surface: #333336;
+  --qx-surface-2: #3a3a3d;
+}
+
+html[data-theme="light"] body {
+  background: #ffffff !important;
+  color: #212121 !important;
+}
+html[data-theme="dark"] body {
+  background: #2a2a2c !important;
+  color: #eceae4 !important;
+}
+
+html[data-theme="dark"] .sidebar,
+html[data-theme="dark"] .topbar,
+html[data-theme="dark"] .qa-wrap,
+html[data-theme="dark"] .q-card,
+html[data-theme="dark"] .ds,
+html[data-theme="dark"] .dash-card,
+html[data-theme="dark"] .fc-card,
+html[data-theme="dark"] .builder,
+html[data-theme="dark"] .test-card,
+html[data-theme="dark"] .book-card,
+html[data-theme="dark"] .note-card,
+html[data-theme="dark"] .profile-card,
+html[data-theme="dark"] .lb-list-app,
+html[data-theme="dark"] .qx-palette,
+html[data-theme="dark"] .qx-hist-row,
+html[data-theme="dark"] .qx-topic-card,
+html[data-theme="dark"] .ch-card,
+html[data-theme="dark"] .pyqmock-paper-card,
+html[data-theme="dark"] .pyqmock-year-card {
+  background: #333336 !important;
+  color: #eceae4 !important;
+  border-color: #454548 !important;
+}
+
+/* ===== LIGHT practice / CBT (NTA uniform white) ===== */
+.mtk-test-root[data-test-theme="light"],
+.mtk-test-root.allen-practice[data-test-theme="light"],
+.mtk-test-root.allen-cbt[data-test-theme="light"],
+.mtk-test-root.qzrr-cbt[data-test-theme="light"] {
+  background: #ffffff !important;
+  color: #212121 !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-main,
+.mtk-test-root[data-test-theme="light"] .mtk-body,
+.mtk-test-root[data-test-theme="light"] .qzrr-q-area,
+.mtk-test-root[data-test-theme="light"] .qzrr-main-col {
+  background: #ffffff !important;
+  color: #212121 !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-q-text,
+.mtk-test-root[data-test-theme="light"] .mtk-q-text .qx-content,
+.mtk-test-root[data-test-theme="light"] .qx-question-body,
+.mtk-test-root[data-test-theme="light"] .mtk-opt-text,
+.mtk-test-root[data-test-theme="light"] .qx-prac-opt-text,
+.mtk-test-root[data-test-theme="light"] .qx-content,
+.mtk-test-root[data-test-theme="light"] .sol-body,
+.mtk-test-root[data-test-theme="light"] .qx-sol-body {
+  color: #1f1f1f !important;
+  -webkit-text-fill-color: #1f1f1f !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-opt,
+.mtk-test-root[data-test-theme="light"] .qx-prac-opt {
+  background: #ffffff !important;
+  border: 1px solid #cfd8dc !important;
+  color: #212121 !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-opt:hover,
+.mtk-test-root[data-test-theme="light"] .qx-prac-opt:hover:not(:disabled) {
+  background: #f5f5f5 !important;
+  border-color: #1565c0 !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-opt.selected,
+.mtk-test-root[data-test-theme="light"] .qx-prac-opt.selected {
+  background: #e3f2fd !important;
+  border-color: #1565c0 !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-palette,
+.mtk-test-root[data-test-theme="light"] .mtk-side,
+.mtk-test-root[data-test-theme="light"] .qzrr-side {
+  background: #ffffff !important;
+  border-color: #d3e3fd !important;
+  color: #1f1f1f !important;
+}
+.mtk-test-root[data-test-theme="light"] table th {
+  background: #e9eef6 !important;
+  color: #1f1f1f !important;
+}
+.mtk-test-root[data-test-theme="light"] table td {
+  background: #ffffff !important;
+  color: #1f1f1f !important;
+}
+
+/* ===== DARK — Claude/Gemini soft charcoal ===== */
+.mtk-test-root[data-test-theme="dark"],
+.mtk-test-root.allen-practice[data-test-theme="dark"],
+.mtk-test-root.allen-cbt[data-test-theme="dark"],
+.mtk-test-root.qzrr-cbt[data-test-theme="dark"],
+.mtk-test-root.qzrr-cbt.qzrr-dark {
+  background: #2a2a2c !important;
+  color: #eceae4 !important;
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-main,
+.mtk-test-root[data-test-theme="dark"] .mtk-body,
+.mtk-test-root[data-test-theme="dark"] .qzrr-main-col,
+.mtk-test-root[data-test-theme="dark"] .qzrr-q-area,
+.mtk-test-root[data-test-theme="dark"] .qzrr-footer-actions,
+.qzrr-cbt.qzrr-dark .qzrr-main-col,
+.qzrr-cbt.qzrr-dark .qzrr-q-area,
+.qzrr-cbt.qzrr-dark .qzrr-footer-actions {
+  background: #2a2a2c !important;
+  color: #eceae4 !important;
+}
+html[data-theme="dark"] .qx-prac-q,
+html[data-theme="dark"] .qx-prac-q .qx-content,
+html[data-theme="dark"] .qx-prac-opt-text,
+html[data-theme="dark"] .mtk-q-text,
+html[data-theme="dark"] .mtk-q-text .qx-content,
+html[data-theme="dark"] .mtk-opt-text,
+html[data-theme="dark"] .qx-question-body,
+html[data-theme="dark"] .qx-content,
+html[data-theme="dark"] .qa-q,
+html[data-theme="dark"] .qa-opt,
+html[data-theme="dark"] .sol-body,
+html[data-theme="dark"] .result-box,
+.mtk-test-root[data-test-theme="dark"] .mtk-q-text,
+.mtk-test-root[data-test-theme="dark"] .mtk-q-text *,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt-text,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt-text *,
+.mtk-test-root[data-test-theme="dark"] .qx-question-body,
+.mtk-test-root[data-test-theme="dark"] .qx-question-body *,
+.qzrr-cbt.qzrr-dark .qzrr-q-area .qx-content,
+.qzrr-cbt.qzrr-dark .qzrr-opts .mtk-opt-text {
+  color: #eceae4 !important;
+  -webkit-text-fill-color: #eceae4 !important;
+}
+html[data-theme="dark"] body:not(.marks-test-active) .katex,
+html[data-theme="dark"] body:not(.marks-test-active) .katex *,
+html[data-theme="dark"] body:not(.marks-test-active) mjx-container,
+html[data-theme="dark"] body:not(.marks-test-active) mjx-container *,
+.mtk-test-root[data-test-theme="dark"] .katex,
+.mtk-test-root[data-test-theme="dark"] .katex *,
+.mtk-test-root[data-test-theme="dark"] mjx-container,
+.mtk-test-root[data-test-theme="dark"] mjx-container * {
+  color: #eceae4 !important;
+  -webkit-text-fill-color: #eceae4 !important;
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-opt,
+.mtk-test-root[data-test-theme="dark"] .qx-prac-opt,
+html[data-theme="dark"] body:not(.marks-test-active) .qx-prac-opt,
+html[data-theme="dark"] body:not(.marks-test-active) .mtk-opt {
+  background: #333336 !important;
+  border: 1px solid #454548 !important;
+  color: #eceae4 !important;
+  border-radius: 16px !important;
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-opt:hover,
+.mtk-test-root[data-test-theme="dark"] .qx-prac-opt:hover:not(:disabled) {
+  background: #3a3a3d !important;
+  border-color: #8ab4f8 !important;
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-opt.selected,
+.mtk-test-root[data-test-theme="dark"] .qx-prac-opt.selected,
+html[data-theme="dark"] .qx-prac-opt.selected,
+html[data-theme="dark"] .mtk-opt.selected {
+  background: #3d4f66 !important;
+  border-color: #8ab4f8 !important;
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-palette,
+.mtk-test-root[data-test-theme="dark"] .mtk-side,
+.mtk-test-root[data-test-theme="dark"] .qzrr-side {
+  background: #303033 !important;
+  border-color: #454548 !important;
+  color: #eceae4 !important;
+}
+
+/* Tables / column match — always readable */
+html[data-theme="dark"] table th,
+.mtk-test-root[data-test-theme="dark"] table th,
+html[data-theme="dark"] .qx-match-col-h {
+  background: #3a3a3d !important;
+  color: #f4f3ee !important;
+  border-color: #454548 !important;
+}
+html[data-theme="dark"] table td,
+.mtk-test-root[data-test-theme="dark"] table td,
+html[data-theme="dark"] .qx-match-col,
+html[data-theme="dark"] .qx-match-item {
+  background: #333336 !important;
+  color: #eceae4 !important;
+  border-color: #454548 !important;
+}
+html[data-theme="dark"] .sol-body,
+html[data-theme="dark"] .qx-sol-card,
+html[data-theme="dark"] .qx-sol-body,
+.mtk-test-root[data-test-theme="dark"] .sol-body,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-card {
+  background: #333336 !important;
+  color: #eceae4 !important;
+  border-color: #454548 !important;
+}
+
+/* Figure paper matches theme (NTA white / dark warm paper) */
+html[data-theme="light"] img.qx-pool-fig,
+html[data-theme="light"] .mtk-q-text img,
+html[data-theme="light"] .qx-prac-q img,
+.mtk-test-root[data-test-theme="light"] img.qx-pool-fig,
+.mtk-test-root[data-test-theme="light"] .qx-org-fig-host,
+.mtk-test-root[data-test-theme="light"] .qx-org-fig-host img,
+.mtk-test-root[data-test-theme="light"] .qx-fig,
+.mtk-test-root[data-test-theme="light"] .qx-diagram-slot,
+.mtk-test-root[data-test-theme="light"] .qx-opt-diagram-slot {
+  background: #ffffff !important;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="dark"] img.qx-pool-fig,
+html[data-theme="dark"] .mtk-q-text img,
+html[data-theme="dark"] .qx-prac-q img,
+.mtk-test-root[data-test-theme="dark"] img.qx-pool-fig,
+.mtk-test-root[data-test-theme="dark"] .qx-org-fig-host img {
+  background: #eceae4 !important;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="dark"] .qx-org-fig-host,
+.mtk-test-root[data-test-theme="dark"] .qx-org-fig-host,
+html[data-theme="dark"] .qx-fig,
+html[data-theme="dark"] .qx-diagram-slot,
+html[data-theme="dark"] .qx-opt-diagram-slot,
+.mtk-test-root[data-test-theme="dark"] .qx-fig,
+.mtk-test-root[data-test-theme="dark"] .qx-diagram-slot {
+  background: #333336 !important;
+}
+
+/* Quizrr View Settings dark — same soft charcoal */
+.qzrr-cbt.qzrr-dark .qzrr-sec-strip {
+  background: #333336 !important;
+  border-color: #454548 !important;
+}
+.qzrr-cbt.qzrr-dark .qzrr-section-info,
+.qzrr-cbt.qzrr-dark .qzrr-section-info-head {
+  background: #333336 !important;
+  color: #eceae4 !important;
+  border-color: #454548 !important;
+}
+
+.qx-fig-loading[data-qx-fig-wait] {
+  display: block;
+  min-height: 88px;
+  min-width: 120px;
+  margin: 6px auto;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #e9eef6 25%, #f8fafc 50%, #e9eef6 75%);
+  background-size: 200% 100%;
+  animation: qxFigShimmer 1.1s ease infinite;
+}
+html[data-theme="dark"] .qx-fig-loading[data-qx-fig-wait],
+.mtk-test-root[data-test-theme="dark"] .qx-fig-loading[data-qx-fig-wait] {
+  background: linear-gradient(90deg, #333336 25%, #3a3a3d 50%, #333336 75%);
+  background-size: 200% 100%;
+}
+@keyframes qxFigShimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+/* NTA official question-palette distribution */
+.mtk-test-root[data-test-theme="light"] .mtk-pal-cell.answered,
+.mtk-test-root[data-test-theme="light"] .qzrr-grid-cell.answered {
+  background: #43a047 !important;
+  border-color: #2e7d32 !important;
+  color: #fff !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-pal-cell.not-answered,
+.mtk-test-root[data-test-theme="light"] .mtk-pal-cell.skipped,
+.mtk-test-root[data-test-theme="light"] .qzrr-grid-cell.not-answered {
+  background: #e53935 !important;
+  border-color: #c62828 !important;
+  color: #fff !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-pal-cell.unvisited,
+.mtk-test-root[data-test-theme="light"] .qzrr-grid-cell.unvisited {
+  background: #eceff1 !important;
+  border-color: #90a4ae !important;
+  color: #455a64 !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-pal-cell.rev-skip,
+.mtk-test-root[data-test-theme="light"] .qzrr-grid-cell.rev-skip {
+  background: #7e57c2 !important;
+  border-color: #5e35b1 !important;
+  color: #fff !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-pal-cell.rev-ans,
+.mtk-test-root[data-test-theme="light"] .qzrr-grid-cell.rev-ans {
+  background: #7e57c2 !important;
+  border-color: #5e35b1 !important;
+  color: #fff !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-palette,
+.mtk-test-root[data-test-theme="light"] .mtk-side,
+.mtk-test-root[data-test-theme="light"] .qzrr-side {
+  background: #ffffff !important;
+  border-color: #cfd8dc !important;
+  color: #212121 !important;
+}
+
+.mtk-test-root[data-test-theme="dark"] .mtk-pal-cell.answered,
+.qzrr-cbt.qzrr-dark .qzrr-grid-cell.answered {
+  background: #388e3c !important;
+  border-color: #2e7d32 !important;
+  color: #fff !important;
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-pal-cell.not-answered,
+.qzrr-cbt.qzrr-dark .qzrr-grid-cell.not-answered {
+  background: #d32f2f !important;
+  border-color: #c62828 !important;
+  color: #fff !important;
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-pal-cell.unvisited,
+.qzrr-cbt.qzrr-dark .qzrr-grid-cell.unvisited {
+  background: #3a3a3d !important;
+  border-color: #5a5a5e !important;
+  color: #eceae4 !important;
+}
+
+
+/* qxmd107: never force pale ink on white practice/book plates */
+html[data-theme="dark"] .qx-practice-page .qx-prac-q,
+html[data-theme="dark"] .qx-practice-page .qx-prac-q .qx-content,
+html[data-theme="dark"] .qx-practice-page .mtk-q-text,
+html[data-theme="dark"] body.qx-book-mode .qx-prac-q,
+html[data-theme="dark"] body.qx-book-mode .mtk-q-text,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-q-text,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-q-text *,
+html[data-theme="dark"] .qzrr-cbt:not(.qzrr-dark) .mtk-q-text,
+html[data-theme="dark"] .qzrr-cbt:not(.qzrr-dark) .mtk-q-text * {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+html[data-theme="dark"] .mtk-opt .mtk-opt-text,
+html[data-theme="dark"] .mtk-opt .mtk-opt-text *,
+html[data-theme="dark"] .mtk-opt .katex,
+html[data-theme="dark"] .mtk-opt .katex *,
+.qzrr-cbt.qzrr-dark .mtk-opt .mtk-opt-text,
+.qzrr-cbt.qzrr-dark .mtk-opt .katex,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt .mtk-opt-text,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt .katex {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}

@@ -1,0 +1,36 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa607a4468eb1307ceb0af",
+  "chapterId": "67fdff55378e1624ea7b6a4a",
+  "subject": "Mathematics",
+  "chapter": "Circle",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff8a378e1624ea7b6cce",
+      "title": "Equation of Circle & its intercept",
+      "count": 1,
+      "questionIds": [
+        "67fdff5c378e1624ea7b6aa9"
+      ]
+    },
+    {
+      "id": "67fdff8a378e1624ea7b6ccd",
+      "title": "Tangent to circle",
+      "count": 2,
+      "questionIds": [
+        "67fdff6a378e1624ea7b6b2f",
+        "67fdff55378e1624ea7b6a48"
+      ]
+    },
+    {
+      "id": "67fdff8a378e1624ea7b6ccf",
+      "title": "Locus",
+      "count": 1,
+      "questionIds": [
+        "67fdff6e378e1624ea7b6b68"
+      ]
+    }
+  ]
+}

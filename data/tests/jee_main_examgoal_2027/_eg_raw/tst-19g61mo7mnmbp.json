@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mo7mnmbp",
+  "title": "Chemical Equilibrium Test - 1 (Topic Test)",
+  "type": "topic",
+  "section": "Chemical Equilibrium",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-06-15T07:30:00.000Z",
+  "status": "ok",
+  "analysisId": "178451b7-6c6c-40c2-8d19-0db241601fb1",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g61mo7mnmbp",
+    "defaultLanguage": "en",
+    "description": "Types of Equilibrium, Law of Mass Action, Equilibrium Constant (Kc and Kp)",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-15T07:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mqerz62x",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The concentration (active mass) of a pure solid or a pure liquid is not written in the equilibrium constant expression because</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>the concentration of pure solids and pure liquids remains constant and does not depend on the amount taken.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>solids and liquids participate in reactions only at a very slow rate.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>at equilibrium, solids and liquids do not have any interaction with the gaseous phase.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>particles of solids and liquids are unable to pass into the gaseous phase.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For a pure solid or a pure liquid, the concentration is simply the amount present in a given volume. We can write this as moles divided by volume.</p>\n<p>[Solid] or [Pure liquid] = $\\frac{n}{V}$</p>\n<p>Now, the number of moles $n$ is the mass divided by molar mass, so $n = \\frac{w}{M}$. Also, the volume $V$ can be written using density, since density $d = \\frac{w}{V}$, which gives $V = \\frac{w}{d}$.</p>\n<p>Putting these into the expression, we get:</p>\n<p>$\\frac{n}{V} = \\frac{w/M}{w/d} = \\frac{d}{M}$</p>\n<p>So the concentration becomes:</p>\n<p>$\\frac{\\text{Density}}{\\text{Molar mass}}$</p>\n<p>For any pure solid or pure liquid, both density and molar mass are fixed values. This means their concentration stays constant no matter how much of the substance is taken.</p>\n<p>Since this value never changes, it does not affect the equilibrium. That is why the concentration of a pure solid or pure liquid is not written in the equilibrium constant expression.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>साम्यावस्था स्थिरांक व्यंजक में किसी शुद्ध ठोस या शुद्ध द्रव की सांद्रता (सक्रिय द्रव्यमान) को नहीं लिखा जाता है क्योंकि</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>शुद्ध ठोस और शुद्ध द्रवों की सांद्रता स्थिर रहती है और ली गई मात्रा पर निर्भर नहीं करती है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>ठोस और द्रव अभिक्रियाओं में केवल बहुत धीमी दर से भाग लेते हैं।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>साम्यावस्था पर, ठोस और द्रवों की गैसीय प्रावस्था के साथ कोई अंतःक्रिया नहीं होती है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>ठोस और द्रवों के कण गैसीय प्रावस्था में जाने में असमर्थ होते हैं।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqesjq75",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For an ideal-gas reaction $2A + B \\rightleftharpoons C + D$, the value of $K_p^o$ will be:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$K_p^o = \\frac{n_C n_D}{n_A^2 n_B} \\frac{V_P^o}{RT^2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$K_p^o = \\frac{n_C n_D}{n_A^2 n_B} \\frac{P^o}{RT}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$K_p^o = \\frac{n_C n_D}{n_A^2 n_B} \\frac{RT^2}{V_P^o}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$K_p^o = \\frac{n_C n_D}{n_A^2 n_B} \\frac{V_P^o}{RT}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For the reaction</p>\n<p>$$2A + B \\rightleftharpoons C + D$$</p>\n<p>for ideal gases,</p>\n<p>$$K_p^\\circ=\\frac{\\left(\\dfrac{p_C}{P^\\circ}\\right)\\left(\\dfrac{p_D}{P^\\circ}\\right)}{\\left(\\dfrac{p_A}{P^\\circ}\\right)^2\\left(\\dfrac{p_B}{P^\\circ}\\right)}$$</p>\n\n<p>$$K_p^\\circ=\\frac{p_Cp_D}{p_A^2p_B}\\,(P^\\circ)$$</p>\n\n<p>For an ideal gas mixture,</p>\n<p>$$p_i=\\frac{n_iRT}{V}$$</p>\n<p>So,</p>\n<p>$$p_C=\\frac{n_CRT}{V},\\quad p_D=\\frac{n_DRT}{V},\\quad p_A=\\frac{n_ART}{V},\\quad p_B=\\frac{n_BRT}{V}$$</p>\n<p>Substitute into the expression:</p>\n<p>$$\\frac{p_Cp_D}{p_A^2p_B} =\\frac{\\left(\\dfrac{n_CRT}{V}\\right)\\left(\\dfrac{n_DRT}{V}\\right)}{\\left(\\dfrac{n_ART}{V}\\right)^2\\left(\\dfrac{n_BRT}{V}\\right)}$$</p>\n<p>$$=\\frac{n_Cn_D}{n_A^2n_B}\\cdot \\frac{V}{RT}$$</p>\n\n<p>$$K_p^\\circ=\\frac{n_Cn_D}{n_A^2n_B}\\cdot \\frac{VP^\\circ}{RT}$$</p>\n\n<p>$$K_p^\\circ=\\frac{n_C n_D}{n_A^2 n_B}\\frac{V P^\\circ}{RT}$$</p>\n<p>This matches Option D if $V_P^\\circ$ means $V \\cdot P^\\circ$.</p>\n<p>So, the correct answer is:</p>\n<p>$$\\boxed{\\text{Option D}}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक आदर्श गैस अभिक्रिया $2A + B \rightleftharpoons C + D$ के लिए, $K_p^o$ का मान होगा:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$K_p^o = \\frac{n_C n_D}{n_A^2 n_B} \\frac{V_P^o}{RT^2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$K_p^o = \\frac{n_C n_D}{n_A^2 n_B} \\frac{P^o}{RT}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$K_p^o = \\frac{n_C n_D}{n_A^2 n_B} \\frac{RT^2}{V_P^o}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$K_p^o = \\frac{n_C n_D}{n_A^2 n_B} \\frac{V_P^o}{RT}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqesmocf",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A chemical reaction is said to be in equilibrium when</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Observable properties remain unchanged with time</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>The forward reaction rate equals the reverse reaction rate</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>The overall (net) rate of reaction becomes zero</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>All are correct</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The correct answer is <strong>Option D</strong>.</p>\n<p>At equilibrium, all these statements are true:</p>\n<ul>\n<li><p><strong>Measurable properties become constant</strong>  </p>\n<p>Properties like concentration, pressure, colour, etc. do not change with time.</p></li>\n<li><p><strong>The rates of forward and backward reactions are equal</strong>  </p>\n<p>The reaction still continues in both directions, but both happen at the same rate.</p></li>\n<li><p><strong>Net rate of reaction is zero</strong>  </p>\n<p>Since the forward and backward rates are equal, there is no overall change in the amount of reactants and products.</p></li>\n</ul>\n<p>So all three statements describe <strong>chemical equilibrium</strong> correctly.</p>\n<p>$$\\boxed{\\text{Option D: All are correct}}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक रासायनिक अभिक्रिया को साम्यावस्था में कहा जाता है जब</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>प्रेक्षणीय गुण समय के साथ अपरिवर्तित रहते हैं</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>अग्र अभिक्रिया की दर पश्च अभिक्रिया की दर के बराबर होती है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>अभिक्रिया की कुल (नेट) दर शून्य हो जाती है</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>सभी सही हैं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqest3h7",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two reactants A and B are taken together to form products C and D. During the beginning of the reaction, the reaction quotient <i>Q</i></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>has the value zero.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>becomes smaller as time passes.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>does not change with time.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>keeps increasing with time.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For a reaction</p>\n<p>$$A + B \\rightleftharpoons C + D$$</p>\n<p>the reaction quotient is written as</p>\n<p>$$Q = \\frac{[C][D]}{[A][B]}$$</p>\n<p>We have just mixed A and B, so only the reactants are present. The products C and D have not formed yet, which means their concentrations are zero (or very close to zero) at the start.</p>\n<p>Since the numerator $[C][D]$ is zero in the initial stages, $Q$ starts out very small.</p>\n<p>As the reaction moves forward with time, more and more of C and D are produced, so the numerator keeps growing. At the same time A and B are getting used up, so the denominator keeps shrinking. Both of these effects push the value of $Q$ higher.</p>\n<p>So as time passes, $Q$ steadily rises until the reaction reaches equilibrium, where $Q$ becomes equal to the equilibrium constant $K$.</p>\n<p>This tells us that in the initial stages, the reaction quotient increases with time.</p>\n<p>The correct answer is <strong>Option D</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो अभिकारकों A और B को एक साथ लेकर उत्पाद C और D बनाए जाते हैं। अभिक्रिया के प्रारंभ में, अभिक्रिया भागफल <i>Q</i></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>का मान शून्य होता है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>समय बीतने के साथ कम होता जाता है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>समय के साथ परिवर्तित नहीं होता है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>समय के साथ बढ़ता रहता है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqesym1e",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the reaction $\\mathrm{N_2O_4} \\rightleftharpoons 2\\mathrm{NO_2}$ at a fixed temperature, the equilibrium constant in terms of pressure ($K_p$)</p>\n<p>is given by $K_p = \\frac{4x^2 P}{1 - x^2}$, where $P$ is the total pressure at equilibrium and $x$ denotes the degree of decomposition.</p>\n<p>Which of the following statements is correct?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$K_p$ increases when $P$ is increased.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$K_p$ increases when $x$ is increased.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$K_p$ increases when $x$ is decreased.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$K_p$ does not change with variation in $P$ and $x$.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>At a fixed temperature, the equilibrium constant is a fixed number. It does not change when we alter the pressure or the amount of decomposition. So even though the expression</p>\n<p>$$K_p = \\frac{4x^2 P}{1 - x^2}$$</p>\n<p>contains both $P$ and $x$, the value of $K_p$ itself stays the same.</p>\n<p>if you change $P$, then $x$ adjusts on its own so that the whole expression still gives the same $K_p$. The two quantities shift together in a way that keeps the ratio constant. That is the meaning of equilibrium constant being constant at constant temperature.</p>\n<p>$K_p$ would only change if the temperature changed.</p>\n<p>So the correct choice is <strong>Option D</strong> — $K_p$ remains constant with change in $P$ and $x$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक निश्चित तापमान पर अभिक्रिया $\\mathrm{N_2O_4} \\rightleftharpoons 2\\mathrm{NO_2}$ के लिए, दाब के पदों में साम्य स्थिरांक ($K_p$)</p><p>व्यंजक $K_p = \\frac{4x^2 P}{1 - x^2}$ द्वारा दिया जाता है, जहाँ $P$ साम्यावस्था पर कुल दाब है तथा $x$ वियोजन की मात्रा को दर्शाता है।</p><p>निम्नलिखित में से कौन सा कथन सही है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$P$ के बढ़ने पर $K_p$ बढ़ता है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$x$ के बढ़ने पर $K_p$ बढ़ता है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$x$ के घटने पर $K_p$ बढ़ता है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$P$ तथा $x$ में होने वाले परिवर्तन के साथ $K_p$ अपरिवर्तित रहता है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqet8ntq",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In a reversible reaction $A \\underset{k_2}{\\stackrel{k_1}{\\rightleftharpoons}} B$, the initial concentration of A and B are <b>a</b> and <b>b</b> in moles per litre and the equilibrium concentrations are (<b>a - x</b>) and (<b>b + x</b>) respectively. Express <b>x</b> in terms of <b>k<sub>1</sub></b>, <b>k<sub>2</sub></b>, <b>a</b> and <b>b</b>.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{k_1 a - k_2 b}{k_1 + k_2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{k_1 a - k_2 b}{k_1 - k_2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{k_1 a - k_2 b}{k_1 k_2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{k_1 a + k_2 b}{k_1 + k_2}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>At equilibrium, the rate of forward reaction becomes equal to the rate of backward reaction.</p>\n<p>So,</p>\n<p>$$ k_1[A] = k_2[B] $$</p>\n<p>Given equilibrium concentrations are:</p>\n<p>$$ [A] = a - x,\\qquad [B] = b + x $$</p>\n<p>Substitute these into the equilibrium condition:</p>\n<p>$$ k_1(a-x) = k_2(b+x) $$</p>\n\n<p>$$ k_1a - k_1x = k_2b + k_2x $$</p>\n\n<p>$$ k_1a - k_2b = k_1x + k_2x $$</p>\n<p>$$ k_1a - k_2b = x(k_1+k_2) $$</p>\n<p>So,</p>\n<p>$$ x = \\frac{k_1a-k_2b}{k_1+k_2} $$</p>\n<p>So the correct option is:</p>\n<p>$$ \\boxed{\\text{Option A}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक उत्क्रमणीय अभिक्रिया $A \\underset{k_2}{\\stackrel{k_1}{\\rightleftharpoons}} B$ में, A और B की प्रारंभिक सांद्रता मोल प्रति लीटर में <b>a</b> और <b>b</b> हैं तथा साम्यावस्था सांद्रता क्रमशः (<b>a - x</b>) और (<b>b + x</b>) हैं। <b>x</b> को <b>k<sub>1</sub></b>, <b>k<sub>2</sub></b>, <b>a</b> और <b>b</b> के पदों में व्यक्त कीजिए।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{k_1 a - k_2 b}{k_1 + k_2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{k_1 a - k_2 b}{k_1 - k_2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{k_1 a - k_2 b}{k_1 k_2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{k_1 a + k_2 b}{k_1 + k_2}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqetbrv9",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The reaction A(g) + B(g) <span style=\"font-family: 'Times New Roman', Times, serif;\">&#8652;</span> C(g) + D(g) is studied in a one litre vessel at 250&deg;C. The initial concentration of A was 3n and that of B was n. When equilibrium was attained, equilibrium concentration of C was found to be equal to the equilibrium concentration of B. What is the concentration of D at equilibrium?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>n/2</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>(3n &minus; 1/2)</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>n &minus; n/3</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>n</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Take the reaction:</p>\n<p>$$A(g) + B(g) \\rightleftharpoons C(g) + D(g)$$</p>\n<p>Initial concentrations in a $1$ litre vessel are:</p>\n<p>$$[A]_0 = 3n,\\quad [B]_0 = n,\\quad [C]_0 = 0,\\quad [D]_0 = 0$$</p>\n<p>Suppose $x$ concentration of $A$ and $B$ reacts to form products.</p>\n<p>Then at equilibrium:</p>\n<p>$$[A] = 3n - x$$</p>\n<p>$$[B] = n - x$$</p>\n<p>$$[C] = x$$</p>\n<p>$$[D] = x$$</p>\n<p>It is given that equilibrium concentration of $C$ is equal to equilibrium concentration of $B$.</p>\n<p>So,</p>\n<p>$$[C] = [B]$$</p>\n<p>That means,</p>\n<p>$$x = n - x$$</p>\n<p>$$2x = n$$</p>\n<p>$$x = \\frac{n}{2}$$</p>\n<p>Since equilibrium concentration of $D$ is also $x$,</p>\n<p>$$[D] = \\frac{n}{2}$$</p>\n<p>So the correct answer is:</p>\n<p>$$\\boxed{\\frac{n}{2}}$$</p>\n<p>Option A.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अभिक्रिया A(g) + B(g) <span style=\"font-family: 'Times New Roman', Times, serif;\">&#8652;</span> C(g) + D(g) का अध्ययन 250&deg;C पर एक लीटर के पात्र में किया गया। A की प्रारंभिक सांद्रता 3n और B की n थी। जब साम्यावस्था स्थापित हुई, तो पाया गया कि C की साम्य सांद्रता B की साम्य सांद्रता के बराबर है। साम्यावस्था पर D की सांद्रता क्या होगी?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>n/2</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>(3n &minus; 1/2)</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>n &minus; n/3</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>n</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqetic9l",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>N<sub>2</sub> and H<sub>2</sub> are taken in 1 : 3 molar ratio in a closed vessel to attain the following equilibrium :</p><p>N<sub>2</sub>(g) + 3H<sub>2</sub>(g) $\\rightleftharpoons$ 2NH<sub>3</sub>(g)</p><p>Find $K_p$ for reaction at total pressure of $2P$ if $P_{N_2}$ at equilibrium is $\\frac{P}{3}$.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{1}{3P^2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{4}{3P^2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{4P^2}{3}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>$$N_2(g) + 3H_2(g) \\rightleftharpoons 2NH_3(g)$$</p>\n<p>We are given that nitrogen and hydrogen are mixed in a $1 : 3$ molar ratio initially. Let the initial moles of $N_2$ be $a$ and the initial moles of $H_2$ be $3a$. </p>\n<p>As the reaction reaches equilibrium, let $x$ moles of $N_2$ react. According to the stoichiometry of the reaction, $3x$ moles of $H_2$ will also react, and $2x$ moles of $NH_3$ will be formed. </p>\n<p>Moles at equilibrium as:</p>\n<p>Moles of $N_2 = a - x$</p>\n<p>Moles of $H_2 = 3a - 3x = 3(a - x)$</p>\n<p>Moles of $NH_3 = 2x$</p>\n\n<p>Partial pressure of $N_2$ at equilibrium is $P_{N_2} = \\frac{P}{3}$. </p>\n\n<p>$$P_{H_2} = 3 \\times \\frac{P}{3} = P$$</p>\n\n<p>$$P_{Total} = P_{N_2} + P_{H_2} + P_{NH_3}$$</p>\n<p>$$2P = \\frac{P}{3} + P + P_{NH_3}$$</p>\n<p>$$2P = \\frac{4P}{3} + P_{NH_3}$$</p>\n<p>$$P_{NH_3} = 2P - \\frac{4P}{3} = \\frac{2P}{3}$$</p>\n\n<p>$$K_p = \\frac{(P_{NH_3})^2}{(P_{N_2})(P_{H_2})^3}$$</p>\n\n<p>$$K_p = \\frac{\\left(\\frac{2P}{3}\\right)^2}{\\left(\\frac{P}{3}\\right)(P)^3}$$</p>\n<p>$$K_p = \\frac{\\frac{4P^2}{9}}{\\frac{P^4}{3}}$$</p>\n<p>$$K_p = \\left(\\frac{4P^2}{9}\\right) \\times \\left(\\frac{3}{P^4}\\right)$$</p>\n<p>$$K_p = \\frac{12 P^2}{9 P^4}$$</p>\n<p>$$K_p = \\frac{4}{3P^2}$$</p>\n<p>Option B is the correct choice.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक बंद बर्तन में N<sub>2</sub> और H<sub>2</sub> को 1 : 3 के मोलर अनुपात में लिया जाता है ताकि निम्नलिखित साम्यावस्था प्राप्त की जा सके :</p><p>N<sub>2</sub>(g) + 3H<sub>2</sub>(g) $\\rightleftharpoons$ 2NH<sub>3</sub>(g)</p><p>यदि कुल दाब $2P$ पर साम्यावस्था में $P_{N_2}$, $\\frac{P}{3}$ है, तो अभिक्रिया के लिए $K_p$ ज्ञात कीजिए।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{1}{3P^2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{4}{3P^2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{4P^2}{3}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqetqiju",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the equilibrium reaction N<sub>2</sub>(g) + O<sub>2</sub>(g) $$ \\text { ⇌ } $$ 2NO(g), the equilibrium constant is $K_1$. For the equilibrium reaction NO(g) $$ \\text { ⇌ } $$ $\\frac{1}{2}$N<sub>2</sub>(g) + $\\frac{1}{2}$O<sub>2</sub>(g), the equilibrium constant is $K_2$. Both equilibria are considered at the same temperature. The relation between $K_1$ and $K_2$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$K_1 = \\left( \\frac{1}{K_2} \\right)^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$K_1 = K_2^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$K_2 = \\left( \\frac{1}{K_1} \\right)^2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$K_2 = K_1^2$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>$$ \\text{N}_2(\\text{g}) + \\text{O}_2(\\text{g}) \\rightleftharpoons 2\\text{NO}(\\text{g}) $$</p>\n\n<p>$$ K_1 = \\frac{[\\text{NO}]^2}{[\\text{N}_2][\\text{O}_2]} $$</p>\n<p>For the second reaction:</p>\n<p>$$ \\text{NO}(\\text{g}) \\rightleftharpoons \\frac{1}{2}\\text{N}_2(\\text{g}) + \\frac{1}{2}\\text{O}_2(\\text{g}) $$</p>\n\n<p>$$ K_2 = \\frac{[\\text{N}_2]^{1/2}[\\text{O}_2]^{1/2}}{[\\text{NO}]} $$</p>\n\n<p>$$ (K_2)^2 = \\left( \\frac{[\\text{N}_2]^{1/2}[\\text{O}_2]^{1/2}}{[\\text{NO}]} \\right)^2 $$</p>\n<p>$$ K_2^2 = \\frac{[\\text{N}_2][\\text{O}_2]}{[\\text{NO}]^2} $$</p>\n<p>The right side of the equation is exactly the reciprocal of $K_1$. </p>\n\n<p>$$\\therefore $$ $$ K_2^2 = \\frac{1}{K_1} $$</p>\n\n<p>$$ K_1 = \\frac{1}{K_2^2} $$</p>\n\n<p>$$ K_1 = \\left( \\frac{1}{K_2} \\right)^2 $$</p>\n<p>Option A is the correct choice.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>साम्यावस्था अभिक्रिया N<sub>2</sub>(g) + O<sub>2</sub>(g) $$ \\text { ⇌ } $$ 2NO(g) के लिए, साम्य स्थिरांक $K_1$ है। साम्यावस्था अभिक्रिया NO(g) $$ \\text { ⇌ } $$ $\\frac{1}{2}$N<sub>2</sub>(g) + $\\frac{1}{2}$O<sub>2</sub>(g) के लिए, साम्य स्थिरांक $K_2$ है। दोनों साम्यावस्थाओं को समान तापमान पर लिया गया है। $K_1$ और $K_2$ के बीच संबंध है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$K_1 = \\left( \\frac{1}{K_2} \\right)^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$K_1 = K_2^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$K_2 = \\left( \\frac{1}{K_1} \\right)^2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$K_2 = K_1^2$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqetu6vm",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For a reversible reaction, the equilibrium constants are $K_1$ at temperature $T_1$ K and $K_2$ at temperature $T_2$ K, where ($T_1 &lt; T_2$). If the reaction occurs without any heat being released or absorbed, then</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$K_1 &gt; K_2$ at higher temperature.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$K_1 &lt; K_2$ at higher temperature.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$K_1 = K_2$ only at higher temperature.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$K_1 = K_2$ at all temperatures.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>If the reaction takes place with neither heat evolution nor heat absorption, then the reaction is neither exothermic nor endothermic.</p>\n<p>So, for the reaction,</p>\n<p>$$ \\Delta H = 0 $$</p>\n<p>Now from the van’t Hoff equation,</p>\n<p>$$ \\frac{d(\\ln K)}{dT} = \\frac{\\Delta H}{RT^2} $$</p>\n<p>Since $\\Delta H = 0$,</p>\n<p>$$ \\frac{d(\\ln K)}{dT} = 0 $$</p>\n<p>This means $K$ does not change with temperature.</p>\n<p>So at temperature $T_1$ and $T_2$,</p>\n<p>$$ K_1 = K_2 $$</p>\n<p>and this will be true at any temperature.</p>\n<p>So the correct option is:</p>\n<p>$$ \\boxed{\\text{Option D } \\; K_1 = K_2 \\text{ at any temperature}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक उत्क्रमणीय अभिक्रिया के लिए, तापमान $T_1$ K पर साम्य नियतांक $K_1$ और तापमान $T_2$ K पर साम्य नियतांक $K_2$ हैं, जहाँ ($T_1 &lt; T_2$) है। यदि अभिक्रिया बिना किसी ऊष्मा के मुक्त या अवशोषित हुए होती है, तो</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>उच्च तापमान पर $K_1 &gt; K_2$।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>उच्च तापमान पर $K_1 &lt; K_2$।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>केवल उच्च तापमान पर $K_1 = K_2$।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>सभी तापमानों पर $K_1 = K_2$।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mqeu09zz",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the reaction equilibrium, $\\mathrm{N}_2 \\mathrm{O}_4(\\mathrm{~g}) \\rightleftharpoons 2 \\mathrm{NO}_2(\\mathrm{~g})$ the concentrations of $\\mathrm{N}_2 \\mathrm{O}_4$ and $\\mathrm{NO}_2$ at equibrium are $4.8 \\times 10^{-2}$ and $1.2 \\times 10^{-2} \\mathrm{~mol} \\mathrm{~L}^{-1}$ respectively. The value of $\\mathrm{K}_c$ for the reaction is $\\mathrm{x} \\times 10^{-3} \\mathrm{~mol} \\mathrm{~L}^{-1}$, then the value of $x$ is :</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>For the reaction</p>\n<p>$$ \\mathrm{N_2O_4(g)} \\rightleftharpoons 2\\mathrm{NO_2(g)} $$</p>\n<p>the equilibrium constant in terms of concentration is</p>\n<p>$$ K_c = \\frac{[\\mathrm{NO_2}]^2}{[\\mathrm{N_2O_4}]} $$</p>\n<p>Given,</p>\n<p>$$ [\\mathrm{N_2O_4}] = 4.8 \\times 10^{-2}\\ \\mathrm{mol\\,L^{-1}} $$</p>\n<p>and</p>\n<p>$$ [\\mathrm{NO_2}] = 1.2 \\times 10^{-2}\\ \\mathrm{mol\\,L^{-1}} $$</p>\n<p>Now put these values in the expression:</p>\n<p>$$ K_c = \\frac{(1.2 \\times 10^{-2})^2}{4.8 \\times 10^{-2}} $$</p>\n<p>$$ K_c = \\frac{1.44 \\times 10^{-4}}{4.8 \\times 10^{-2}} $$</p>\n<p>$$ K_c = 0.3 \\times 10^{-2} = 3 \\times 10^{-3}\\ \\mathrm{mol\\,L^{-1}} $$</p>\n<p>Since $K_c = x \\times 10^{-3}\\ \\mathrm{mol\\,L^{-1}}$,</p>\n<p>$$ x = 3 $$</p>\n<p>So, the value of $x$ is $3$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अभिक्रिया साम्य, $\\mathrm{N}_2 \\mathrm{O}_4(\\mathrm{~g}) \\rightleftharpoons 2 \\mathrm{NO}_2(\\mathrm{~g})$ के लिए, साम्यावस्था पर $\\mathrm{N}_2 \\mathrm{O}_4$ और $\\mathrm{NO}_2$ की सांद्रताएँ क्रमशः $4.8 \\times 10^{-2}$ और $1.2 \\times 10^{-2} \\mathrm{~mol} \\mathrm{~L}^{-1}$ हैं। अभिक्रिया के लिए $\\mathrm{K}_c$ का मान $\\mathrm{x} \\times 10^{-3} \\mathrm{~mol} \\mathrm{~L}^{-1}$ है, तो $x$ का मान है:</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqeu6dsw",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two moles of each reactant $A$ and $B$ are taken in a reaction flask. They react in the following manner,</p>\n<p>$$ \\mathrm{A}(\\mathrm{~g})+\\mathrm{B}(\\mathrm{~g}) \\rightleftharpoons \\mathrm{C}(\\mathrm{~g})+\\mathrm{D}(\\mathrm{~g}) $$</p>\n<p>At equilibrium, it was found that the concentration of C is triple to that B . The equilibrium constant for the reaction is :</p>",
+                "options": [],
+                "answer": "9",
+                "explanation": "<p>$$ \\mathrm{A}(\\mathrm{g}) + \\mathrm{B}(\\mathrm{g}) \\rightleftharpoons \\mathrm{C}(\\mathrm{g}) + \\mathrm{D}(\\mathrm{g}) $$</p>\n<p>Initially, we have $2$ moles of $\\mathrm{A}$ and $2$ moles of $\\mathrm{B}$. Since the reaction has just started, the amounts of the products $\\mathrm{C}$ and $\\mathrm{D}$ are $0$. </p>\n\n<p>At equilibrium,</p>\n<p>Moles of $\\mathrm{A} = 2 - x$</p>\n<p>Moles of $\\mathrm{B} = 2 - x$</p>\n<p>Moles of $\\mathrm{C} = x$</p>\n<p>Moles of $\\mathrm{D} = x$</p>\n<p>If we assume the volume of the reaction flask is $V$ liters, we can write the equilibrium concentration of each gas by dividing its moles by $V$:</p>\n<p>$ [\\mathrm{A}] = \\frac{2-x}{V} $</p>\n<p>$ [\\mathrm{B}] = \\frac{2-x}{V} $</p>\n<p>$ [\\mathrm{C}] = \\frac{x}{V} $</p>\n<p>$ [\\mathrm{D}] = \\frac{x}{V} $</p>\n<p>Given,</p>\n<p>$$ [\\mathrm{C}] = 3 \\times [\\mathrm{B}] $$</p>\n\n<p>$$ \\frac{x}{V} = 3 \\left( \\frac{2-x}{V} \\right) $$</p>\n\n<p>$$ x = 3(2 - x) $$</p>\n\n<p>$$ x = 6 - 3x $$</p>\n<p>$$ 4x = 6 $$</p>\n<p>$$ x = \\frac{6}{4} = 1.5 $$</p>\n\n<p>$$ K_c = \\frac{[\\mathrm{C}][\\mathrm{D}]}{[\\mathrm{A}][\\mathrm{B}]} $$</p>\n\n<p>$$ K_c = \\frac{\\left(\\frac{x}{V}\\right) \\left(\\frac{x}{V}\\right)}{\\left(\\frac{2-x}{V}\\right) \\left(\\frac{2-x}{V}\\right)} $$</p>\n\n<p>$$ K_c = \\frac{x \\times x}{(2-x)(2-x)} $$</p>\n\n<p>$$ K_c = \\frac{1.5 \\times 1.5}{(2 - 1.5) \\times (2 - 1.5)} $$</p>\n<p>$$ K_c = \\frac{1.5 \\times 1.5}{0.5 \\times 0.5} $$</p>\n\n<p>$$ K_c = \\left( \\frac{1.5}{0.5} \\right) \\times \\left( \\frac{1.5}{0.5} \\right) $$</p>\n<p>$$ K_c = 3 \\times 3 $$</p>\n<p>$$ K_c = 9 $$</p>\n<p>The equilibrium constant for the reaction is $9$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक अभिक्रिया फ्लास्क में प्रत्येक अभिकारक $A$ और $B$ के दो मोल लिए जाते हैं। वे निम्नलिखित प्रकार से अभिक्रिया करते हैं,</p><p>$$ \\mathrm{A}(\\mathrm{~g})+\\mathrm{B}(\\mathrm{~g}) \\rightleftharpoons \\mathrm{C}(\\mathrm{~g})+\\mathrm{D}(\\mathrm{~g}) $$</p><p>साम्यावस्था पर, यह पाया गया कि C की सांद्रता B की सांद्रता की तीन गुनी है। अभिक्रिया के लिए साम्य स्थिरांक है :</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqeu9ih5",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the gaseous equilibrium $2 \\mathrm{~A}(\\mathrm{~g}) \\rightleftharpoons 2 \\mathrm{~B}(\\mathrm{~g})+\\mathrm{C}(\\mathrm{g})$, the value of $K_{\\mathrm{P}}$ is 1.8 at 700 K. At the same temperature, the approximate value of $K_{\\mathrm{C}}$ for the reverse equilibrium $2 \\mathrm{~B}(\\mathrm{~g})+\\mathrm{C}(\\mathrm{g}) \\rightleftharpoons 2 \\mathrm{~A}(\\mathrm{~g})$ is</p>",
+                "options": [],
+                "answer": "32",
+                "explanation": "<p>$$K_P = K_C (RT)^{\\Delta n}$$</p>\n<p>For the reaction $2A(g) \\rightleftharpoons 2B(g) + C(g)$, let's find $\\Delta n$, which is the change in number of gas moles.</p>\n<p>$$\\Delta n = (2 + 1) - 2 = 1$$</p>\n<p>So for this reaction:</p>\n<p>$$K_P = K_C (RT)^1$$</p>\n<p>This gives us $K_C$ for the forward reaction:</p>\n<p>$$K_C = \\frac{K_P}{RT}$$</p>\n\n<p>$$K_C = \\frac{1.8}{0.0821 \\times 700} = \\frac{1.8}{57.47} \\approx 0.0313$$</p>\n\n<p>$$2B(g) + C(g) \\rightleftharpoons 2A(g)$$</p>\n\n<p>$$K_C(\\text{reverse}) = \\frac{1}{0.0313} \\approx 32$$</p>\n<p>So the value of $K_C$ for the given equilibrium is about $32$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>गैसीय साम्य $2 \\mathrm{~A}(\\mathrm{~g}) \\rightleftharpoons 2 \\mathrm{~B}(\\mathrm{~g})+\\mathrm{C}(\\mathrm{g})$ के लिए, 700 K पर $K_{\\mathrm{P}}$ का मान 1.8 है। समान ताप पर, विपरीत साम्य $2 \\mathrm{~B}(\\mathrm{~g})+\\mathrm{C}(\\mathrm{g}) \\rightleftharpoons 2 \\mathrm{~A}(\\mathrm{~g})$ के लिए $K_{\\mathrm{C}}$ का लगभग मान है:</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqeud98w",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the equilibrium reaction $\\mathrm{I}_2(\\mathrm{~g}) \\rightleftharpoons 2 \\mathrm{I}(\\mathrm{g})$ with $K_{\\mathrm{C}}=1.0 \\times 10^{-2} \\mathrm{~mol} \\mathrm{lit}{ }^{-1}$. Find the volume (in L) of the container such that, at equilibrium, 1 mole of $\\mathrm{I}_2$ and 0.5 mole of $\\mathrm{I}$ are present.</p>",
+                "options": [],
+                "answer": "25",
+                "explanation": "<p>For the reaction</p>\n<p>$$ \\mathrm{I_2(g)} \\rightleftharpoons 2\\mathrm{I(g)} $$</p>\n<p>we have</p>\n<p>$$ K_c = 1.0 \\times 10^{-2}\\ \\text{mol L}^{-1} $$</p>\n<p>At equilibrium, the amounts present are:</p>\n<ul>\n<li><p>$\\mathrm{I_2} = 1$ mol</p></li>\n<li><p>$\\mathrm{I} = 0.5$ mol</p></li>\n</ul>\n<p>Now write the expression for $K_c$:</p>\n<p>$$ K_c = \\frac{[\\mathrm{I}]^2}{[\\mathrm{I_2}]} $$</p>\n<p>If the volume of the vessel is $V$ L, then</p>\n<p>$$ [\\mathrm{I_2}] = \\frac{1}{V} \\quad \\text{and} \\quad [\\mathrm{I}] = \\frac{0.5}{V} $$</p>\n\n<p>$$ 1.0 \\times 10^{-2} = \\frac{\\left(\\frac{0.5}{V}\\right)^2}{\\frac{1}{V}} $$</p>\n<p>$$ 1.0 \\times 10^{-2} = \\frac{0.25}{V} $$</p>\n\n<p>$$ V = \\frac{0.25}{1.0 \\times 10^{-2}} = 25 $$</p>\n<p>Hence, the required volume of the vessel is</p>\n<p>$$ \\boxed{25\\ \\text{L}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>साम्य अभिक्रिया $\\mathrm{I}_2(\\mathrm{~g}) \\rightleftharpoons 2 \\mathrm{I}(\\mathrm{g})$ पर विचार करें, जिसके लिए $K_{\\mathrm{C}}=1.0 \\times 10^{-2} \\mathrm{~mol} \\mathrm{lit}{ }^{-1}$ है। पात्र का आयतन (L में) ज्ञात कीजिए ताकि, साम्यावस्था पर, $\\mathrm{I}_2$ का 1 मोल और $\\mathrm{I}$ का 0.5 मोल उपस्थित हो।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqeum8nr",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In the equilibrium given below, suppose $50 \\%$ of $\\mathrm{CO}_2$ is converted into CO:</p>\n<p>$$ \\frac{1}{2} \\mathrm{C}(s)+\\frac{1}{2} \\mathrm{CO}_2(g) \\rightleftharpoons \\mathrm{CO}(g) $$</p>\n<p>If the total pressure at equilibrium is 12 atm, find the value of $K_p$.</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>Take 1 mole of $\\mathrm{CO_2}$ initially.</p>\n<p>Since $50\\%$ of $\\mathrm{CO_2}$ is converted to $\\mathrm{CO}$, the amount of $\\mathrm{CO_2}$ reacted is $0.5$ mole.</p>\n<p>From</p>\n<p>$$ \\frac{1}{2}\\mathrm{C}(s)+\\frac{1}{2}\\mathrm{CO_2}(g)\\rightleftharpoons \\mathrm{CO}(g) $$</p>\n<p>we can see that $\\frac{1}{2}$ mole of $\\mathrm{CO_2}$ gives $1$ mole of $\\mathrm{CO}$.</p>\n<p>So, if $0.5$ mole of $\\mathrm{CO_2}$ reacts, moles of $\\mathrm{CO}$ formed will be</p>\n<p>$$ 1 \\text{ mole} $$</p>\n<p>Now at equilibrium:</p>\n<ul>\n<li><p>$\\mathrm{CO_2} = 1 - 0.5 = 0.5$ mole</p></li>\n<li><p>$\\mathrm{CO} = 1$ mole</p></li>\n</ul>\n<p>Total moles at equilibrium:</p>\n<p>$$ 0.5+1=1.5 $$</p>\n<p>Given total equilibrium pressure $=12$ atm.</p>\n<p>So partial pressures are</p>\n<p>$$ P_{\\mathrm{CO_2}}=\\frac{0.5}{1.5}\\times 12=4\\ \\text{atm} $$</p>\n<p>$$ P_{\\mathrm{CO}}=\\frac{1}{1.5}\\times 12=8\\ \\text{atm} $$</p>\n<p>Now for the reaction,</p>\n<p>$$ \\frac{1}{2}\\mathrm{C}(s)+\\frac{1}{2}\\mathrm{CO_2}(g)\\rightleftharpoons \\mathrm{CO}(g) $$</p>\n<p>solid carbon is not included in $K_p$.</p>\n<p>So,</p>\n<p>$$ K_p=\\frac{P_{\\mathrm{CO}}}{\\left(P_{\\mathrm{CO_2}}\\right)^{1/2}} $$</p>\n<p>Putting the values,</p>\n<p>$$ K_p=\\frac{8}{\\sqrt{4}}=\\frac{8}{2}=4 $$</p>\n<p>So,</p>\n<p>$$ K_p=4 $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>नीचे दिए गए साम्य में, मान लीजिए कि $50 \\%$ $\\mathrm{CO}_2$, CO में परिवर्तित हो जाती है:</p>\n<p>$$ \\frac{1}{2} \\mathrm{C}(s)+\\frac{1}{2} \\mathrm{CO}_2(g) \\rightleftharpoons \\mathrm{CO}(g) $$</p>\n<p>यदि साम्यावस्था पर कुल दाब 12 atm है, तो $K_p$ का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Types of Equilibrium, Law of Mass Action, Equilibrium Constant (Kc and Kp)",
+    "timeAllotted": 2160000,
+    "title": "Chemical Equilibrium Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g61mo7mnmbp",
+    "defaultLanguage": "en",
+    "description": "Types of Equilibrium, Law of Mass Action, Equilibrium Constant (Kc and Kp)",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-15T07:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Types of Equilibrium, Law of Mass Action, Equilibrium Constant (Kc and Kp)",
+    "timeAllotted": 2160000,
+    "title": "Chemical Equilibrium Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Chemical Equilibrium"
+  }
+}

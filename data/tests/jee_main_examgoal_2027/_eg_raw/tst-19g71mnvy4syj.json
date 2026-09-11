@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g71mnvy4syj",
+  "title": "Rotational Motion Test - 2 (Topic Test)",
+  "type": "topic",
+  "section": "Rotational Motion",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-08-06T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "e1fd5fe5-7741-4013-b40f-cafbdeb430a2",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g71mnvy4syj",
+    "defaultLanguage": "en",
+    "description": "Torque, Rotational Equilibrium",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-06T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msg1o327",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Rods AB and CD, each of length 2 m, are joined together to form a cross. Four forces act on the ends A, B, C and D as shown in the figure. The torque about the origin O due to these forces is equal to</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg1goig%2Fdec01827-a5df-449d-aa2b-78471d5995be%2Fb99bf980-90c5-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg1goih.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg1goig%2Fdec01827-a5df-449d-aa2b-78471d5995be%2Fb99bf980-90c5-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg1goih.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>6 Nm $\\hat{k}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>-6 Nm $\\hat{k}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>4 Nm $\\hat{k}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>-$6\\sqrt{2}$ Nm $\\hat{k}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The position vector $\\vec{r}$ of a point $(x,y,z)$ relative to the origin $(0,0,0)$ is given by $\\vec{r} = x\\hat{i} + y\\hat{j} + z\\hat{k}$</p>\n<p>The torque $\\vec{\\tau}$ about the origin produced by a force $\\vec{F}$ acting at a point located by position vector $\\vec{r}$ is defined by the cross product:</p>\n<p>$$\\vec{\\tau} = \\vec{r} \\times \\vec{F}$$</p>\n<p>Using component form, if $\\vec{r} = x\\hat{i} + y\\hat{j}$ and $\\vec{F} = F_x\\hat{i} + F_y\\hat{j}$, the cross product is</p>\n<p>$$\\vec{\\tau} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ r_x & r_y & 0 \\\\ F_x & F_y & 0 \\end{vmatrix}$$</p>\n<p>$$\\vec{\\tau} = \\hat{i}(0-0) - \\hat{j}(0-0) + \\hat{k}(r_xF_y - F_xr_y)$$</p>\n<p>$$\\vec{\\tau} = (x\\,F_y - y\\,F_x)\\hat{k}$$</p>\n<p>The total torque due to multiple forces is the vector sum of individual torques:</p>\n<p>$$\\vec{\\tau}_{\\text{net}} = \\vec{\\tau}_A + \\vec{\\tau}_B + \\vec{\\tau}_C + \\vec{\\tau}_D$$</p>\n<p>Centre of the cross is at $(2,2)$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg1j4vu%2Fff13637c-ef7c-4ad2-b62c-a8b28e7b2a87%2Ffddfdda0-90c5-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg1j4vv.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg1j4vu%2Fff13637c-ef7c-4ad2-b62c-a8b28e7b2a87%2Ffddfdda0-90c5-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg1j4vv.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The position vector of point A is $\\vec{r}_A = 1\\hat{i} + 2\\hat{j}$</p>\n<p>At point A the applied force is $\\vec{F}_A = 2\\hat{j}\\ \\mathrm{N}$</p>\n<p>Torque due to force at A:</p>\n<p>$$\\vec{\\tau}_A = \\vec{r}_A \\times \\vec{F}_A = (1\\hat{i} + 2\\hat{j}) \\times (2\\hat{j})$$</p>\n<p>$$\\vec{\\tau}_A = 2(\\hat{i} \\times \\hat{j}) + 4(\\hat{j} \\times \\hat{j}) = 2\\hat{k}\\ \\mathrm{N\\cdot m}$$</p>\n<p>The position vector of point B is $\\vec{r}_B = 3\\hat{i} + 2\\hat{j}$</p>\n<p>At point B the applied force is $\\vec{F}_B = -2\\hat{j}\\ \\mathrm{N}$</p>\n<p>Torque due to force at B:</p>\n<p>$$\\vec{\\tau}_B = \\vec{r}_B \\times \\vec{F}_B = (3\\hat{i} + 2\\hat{j}) \\times (-2\\hat{j})$$</p>\n<p>$$\\vec{\\tau}_B = 3 \\times (-2)(\\hat{i} \\times \\hat{j}) + 2 \\times (-2)(\\hat{j} \\times \\hat{j}) = -6\\hat{k}\\ \\mathrm{N\\cdot m}$$</p>\n<p>The position vector of point C is $\\vec{r}_C = 2\\hat{i} + 3\\hat{j}$</p>\n<p>At point C the applied force is $\\vec{F}_C = 1\\hat{i}\\ \\mathrm{N}$</p>\n<p>Torque due to force at C:</p>\n<p>$$\\vec{\\tau}_C = \\vec{r}_C \\times \\vec{F}_C = (2\\hat{i} + 3\\hat{j}) \\times (1\\hat{i})$$</p>\n<p>$$\\vec{\\tau}_C = 2(\\hat{i} \\times \\hat{i}) + 3(\\hat{j} \\times \\hat{i}) = -3\\hat{k}\\ \\mathrm{N\\cdot m}$$</p>\n<p>The position vector of point D is $\\vec{r}_D = 2\\hat{i} + 1\\hat{j}$</p>\n<p>At point D the applied force is $\\vec{F}_D = -1\\hat{i}\\ \\mathrm{N}$</p>\n<p>Torque due to force at D:</p>\n<p>$$\\vec{\\tau}_D = \\vec{r}_D \\times \\vec{F}_D = (2\\hat{i} + 1\\hat{j}) \\times (-1\\hat{i})$$</p>\n<p>$$\\vec{\\tau}_D = -2(\\hat{i} \\times \\hat{i}) + (-1)(\\hat{j} \\times \\hat{i}) = 1\\hat{k}\\ \\mathrm{N\\cdot m}$$</p>\n<p>Total torque about origin is O,</p>\n<p>$$\\vec{\\tau}_{\\mathrm{net}} = \\vec{\\tau}_A + \\vec{\\tau}_B + \\vec{\\tau}_C + \\vec{\\tau}_D$$</p>\n\n<p>$$\\vec{\\tau}_{\\text{net}} = (2\\hat{k}) + (-6\\hat{k}) + (-3\\hat{k}) + (1\\hat{k})$$</p>\n<p>$$\\vec{\\tau}_{\\text{net}} = (2 - 6 - 3 + 1)\\hat{k} = -6\\hat{k}\\,\\mathrm{N\\cdot m}$$</p>\n<p>Therefore, the net torque acting about the origin is $-6\\hat{k}\\,\\mathrm{N\\cdot m}$. Thus, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>2 m लंबाई की दो छड़ें AB और CD एक क्रॉस बनाने के लिए एक साथ जुड़ी हुई हैं। चित्र में दिखाए अनुसार सिरे A, B, C और D पर चार बल कार्य करते हैं। इन बलों के कारण मूल बिंदु O के परितः बलाघूर्ण किसके बराबर है?</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg1goig%2Fdec01827-a5df-449d-aa2b-78471d5995be%2Fb99bf980-90c5-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg1goih.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg1goig%2Fdec01827-a5df-449d-aa2b-78471d5995be%2Fb99bf980-90c5-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg1goih.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>6 Nm $\\hat{k}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>-6 Nm $\\hat{k}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>4 Nm $\\hat{k}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>-$6\\sqrt{2}$ Nm $\\hat{k}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "torque",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msg1ya68",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A square plate of side a is translating and rotating under the influence of three forces as shown in the figure. The force that can bring the plate in equilibrium is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg1purp%2F68b90d67-9fed-4066-b6da-61d1ff2078a7%2Fb8b99350-90c6-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg1purq.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg1purp%2F68b90d67-9fed-4066-b6da-61d1ff2078a7%2Fb8b99350-90c6-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg1purq.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$-2F \\hat{i}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2F \\hat{i}$ on line $y = -\\frac{a}{2\\sqrt{2}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$-2F \\hat{i}$ on line $x = \\frac{a}{2\\sqrt{2}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$-2F \\hat{i}$ on line $y = \\frac{a}{2\\sqrt{2}}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For a rigid body to be in translational equilibrium under the action of forces, the net force acting on the body must be zero.</p>\n<p>$$ \\overrightarrow{\\mathrm{F}}_{\\mathrm{net}}=\\overrightarrow{\\mathrm{F}}_1+\\overrightarrow{\\mathrm{F}}_2+\\overrightarrow{\\mathrm{F}}_3+\\overrightarrow{\\mathrm{F}}_{\\mathrm{eq}}=\\overrightarrow{0} \\Rightarrow \\overrightarrow{\\mathrm{~F}}_{\\mathrm{eq}}=-\\left(\\overrightarrow{\\mathrm{F}}_1+\\overrightarrow{\\mathrm{F}}_2+\\overrightarrow{\\mathrm{F}}_3\\right) $$</p>\n<p>For the body to be in rotational equilibrium, the net torque about any point (such as the origin O ) must be zero.</p>\n<p>$$ \\vec{\\tau}_{\\mathrm{net}}=\\vec{\\tau}_{\\text {given }}+\\vec{\\tau}_{\\mathrm{eq}}=\\overrightarrow{0} \\Rightarrow \\vec{\\tau}_{\\mathrm{eq}}=-\\vec{\\tau}_{\\text {given }} $$</p>\n<p>The side length of square is a</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg1tj8l%2F4bd5b5d7-7bde-4310-a477-8f4aa17f1ebc%2F1f0ddd50-90c7-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg1tj8m.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg1tj8l%2F4bd5b5d7-7bde-4310-a477-8f4aa17f1ebc%2F1f0ddd50-90c7-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg1tj8m.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>So, the diagonal length of square $d =  \\sqrt{a^2 + a^2} = a\\sqrt{2}$</p>\n<p>Distance from the Centre $O(0,0)$ to each vertex A, B, C, D:</p>\n<p>$$ r = \\frac{d}{2} = \\frac{a\\sqrt{2}}{2} = \\frac{a}{\\sqrt{2}} $$</p>\n<p>Thus, the coordinates of vertices are:</p>\n<p>$$ A = \\left(-\\frac{a}{\\sqrt{2}}, 0\\right), B = \\left(0, \\frac{a}{\\sqrt{2}}\\right), C = \\left(\\frac{a}{\\sqrt{2}}, 0\\right), D = \\left(0, -\\frac{a}{\\sqrt{2}}\\right) $$</p>\n<p>Force at A is of magnitude F acting vertically upwards (+y-direction), $\\vec{F}_A = F\\hat{\\jmath}$</p>\n<p>Force at B is of magnitude F acting horizontally to the right (+x-direction), $\\vec{F}_B = F\\hat{\\imath}$</p>\n<p>Force at D is of magnitude $\\sqrt{2}F$ acting along the direction $(1, -1)$. Angle made with +x-axis is $-45^{\\circ}$.</p>\n<p>$$ \\vec{F}_D = \\sqrt{2}F\\left(\\cos(-45^{\\circ})\\,\\hat{\\imath} + \\sin(-45^{\\circ})\\,\\hat{\\jmath}\\right) = \\sqrt{2}F\\left(\\frac{1}{\\sqrt{2}}\\hat{\\imath} - \\frac{1}{\\sqrt{2}}\\hat{\\jmath}\\right) = F\\hat{\\imath} - F\\hat{\\jmath} $$</p>\n<p>The net force of given system is,</p>\n<p>$$ \\vec{F}_{\\text{given}} = \\vec{F}_A + \\vec{F}_B + \\vec{F}_D $$</p>\n<p>$$ \\vec{F}_{\\text{given}} = (F\\hat{\\jmath}) + (F\\hat{\\imath}) + (F\\hat{\\imath} - F\\hat{\\jmath}) = 2F\\hat{\\imath} $$</p>\n<p>For translational equilibrium, the required force $(\\vec{F}_{\\text{eq}})$, $\\vec{F}_{\\text{given}} + \\vec{F}_{\\text{eq}} = \\vec{0}$</p>\n<p>$$ \\vec{F}_{\\text{eq}} = -2F\\hat{\\imath} $$</p>\n<p>The net torque of given system about origin O is $\\vec{\\tau}_{\\text{given}} = \\vec{\\tau}_A + \\vec{\\tau}_B + \\vec{\\tau}_D$</p>\n<p>The position vector of point A is $\\vec{r}_A = -\\frac{a}{\\sqrt{2}}\\hat{\\imath}$</p>\n<p>Torque due to $\\vec{F}_A$ is,</p>\n<p>$$ \\vec{\\tau}_A = \\vec{r}_A \\times \\vec{F}_A = \\left(-\\frac{a}{\\sqrt{2}}\\hat{\\imath}\\right) \\times (F\\hat{\\jmath}) = -\\frac{Fa}{\\sqrt{2}}\\hat{k} $$</p>\n<p>The position vector of point B is $\\vec{r}_A = \\frac{a}{\\sqrt{2}}\\hat{\\jmath}$</p>\n<p>Torque due to $\\vec{F}_B$ is,</p>\n<p>$$ \\vec{\\tau}_B = \\vec{r}_B \\times \\vec{F}_B = \\left(\\frac{a}{\\sqrt{2}}\\hat{\\jmath}\\right) \\times (F\\hat{\\imath}) = -\\frac{Fa}{\\sqrt{2}}\\hat{k} $$</p>\n\n<p>The position vector of point D is $$\\vec{r}_D = -\\frac{a}{\\sqrt{2}}\\hat{j}$$</p>\n<p>Torque due to $\\vec{F}_D$ is, $$\\vec{\\tau}_D = \\vec{r}_D \\times \\vec{F}_D = \\left(-\\frac{a}{\\sqrt{2}}\\hat{j}\\right) \\times (F\\hat{i} - F\\hat{j}) = -\\frac{Fa}{\\sqrt{2}}\\hat{k}$$</p>\n<p>So, the net torque acting on the system about origin O is,</p>\n<p>$$\\vec{\\tau}_{\\text{given}} = -\\frac{Fa}{\\sqrt{2}}\\hat{k} - \\frac{Fa}{\\sqrt{2}}\\hat{k} + \\frac{Fa}{\\sqrt{2}}\\hat{k} = -\\frac{Fa}{\\sqrt{2}}\\hat{k}$$</p>\n<p>Let the force $\\vec{F}_{\\text{eq}} = -2F\\hat{i}$ be applied at a point $\\vec{r} = x\\hat{i} + y\\hat{j}$.</p>\n<p>The torque produced by $\\vec{F}_{\\text{eq}}$ about origin O must balance $\\vec{\\tau}_{\\text{given}}$:</p>\n<p>$$\\vec{\\tau}_{\\text{eq}} + \\vec{\\tau}_{\\text{given}} = \\vec{0}$$</p>\n<p>$$\\vec{r} \\times \\vec{F}_{\\text{eq}} = -\\vec{\\tau}_{\\text{given}}$$</p>\n<p>$$ (x\\hat{i} + y\\hat{j}) \\times (-2F\\hat{i}) = \\frac{Fa}{\\sqrt{2}}\\hat{k} $$</p>\n<p>$$ 2Fy(\\hat{i} \\times \\hat{j}) = \\frac{Fa}{\\sqrt{2}}\\hat{k} $$</p>\n<p>$$ 2Fy\\hat{k} = \\frac{Fa}{\\sqrt{2}}\\hat{k} $$</p>\n<p>$$ \\Rightarrow 2Fy = \\frac{Fa}{\\sqrt{2}} $$</p>\n<p>$$ y = \\frac{a}{2\\sqrt{2}} $$</p>\n<p>Therefore, the required force to keep the system in equilibrium is $-2F\\hat{i}$ acting along the line $y = \\frac{a}{2\\sqrt{2}}$. Thus, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>भुजा a वाली एक वर्गाकार प्लेट चित्र में दर्शाए गए अनुसार तीन बलों के प्रभाव में स्थानांतरित और घूर्णन कर रही है। वह बल जो प्लेट को साम्यावस्था में ला सकता है, है</p> <img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg1purp%2F68b90d67-9fed-4066-b6da-61d1ff2078a7%2Fb8b99350-90c6-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg1purq.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg1purp%2F68b90d67-9fed-4066-b6da-61d1ff2078a7%2Fb8b99350-90c6-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg1purq.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$-2F \\hat{i}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>रेखा $y = -\\frac{a}{2\\sqrt{2}}$ पर $2F \\hat{i}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>रेखा $x = \\frac{a}{2\\sqrt{2}}$ पर $-2F \\hat{i}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>रेखा $y = \\frac{a}{2\\sqrt{2}}$ पर $-2F \\hat{i}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msg2898p",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A ladder of length l and mass m is leaning against a frictionless wall. It makes an angle &theta; with the horizontal surface. The coefficient of static friction between the ladder and the horizontal surface is &mu;<sub>s</sub>. How high (from the horizontal surface) can a person of mass M climb before the ladder slips?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$l$ sin &theta; $ \\mu_s \\left( 1 + \\frac{M}{m} \\right) \\tan \\theta - \\frac{M}{2m} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$l$ cos &theta; $ \\mu_s \\left( 1 + \\frac{m}{M} \\right) \\cot \\theta - \\frac{m}{2M} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$l$ sin &theta; $ \\mu_s \\left( 1 + \\frac{m}{M} \\right) \\tan \\theta + \\frac{m}{2M} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$l$ sin &theta; $ \\mu_s \\left( 1 + \\frac{m}{M} \\right) \\tan \\theta - \\frac{m}{2M} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The limiting static friction force $f_{s,\\max}$ between a surface and an object with normal force $N_1$ is</p>\n<p>$$f_{s,\\max} = \\mu_s N_1$$</p>\n<p>Let $l$ be the length of the ladder.</p>\n<p>$N_1$ be the normal reaction force from the horizontal ground.</p>\n<p>$f_s$ be the static friction force from the ground acting horizontally towards the wall.</p>\n<p>$N_2$ be the normal reaction force from the smooth vertical wall acting horizontally away from the wall.</p>\n<p>$x$ be the distance climbed by the person of mass $M$ along the ladder.</p>\n<p>$h$ be the height of the person from the horizontal surface, where $h = x \\sin \\theta$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg220ye%2F5148d12e-68ed-4787-918e-ee8937771625%2F0b36b670-90c8-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg220yf.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg220ye%2F5148d12e-68ed-4787-918e-ee8937771625%2F0b36b670-90c8-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg220yf.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>For a body in equilibrium, the sum of horizontal forces and vertical forces must be zero:</p>\n<p>$$\\sum F_x = 0 \\Rightarrow f_s - N_2 = 0 \\Rightarrow f_s = N_2$$</p>\n<p>$$\\sum F_y = 0 \\Rightarrow N_1 - mg - Mg = 0 \\Rightarrow N_1 = (M + m)g$$</p>\n<p>At the verge of slipping, the friction force reaches its maximum static limit:</p>\n<p>$$f_s = \\mu_s N_1 = \\mu_s (M + m)g$$</p>\n<p>Therefore $N_2 = \\mu_s (M + m)g$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg23z9a%2F57468e28-4e61-429d-b655-9474e4942144%2F418525e0-90c8-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg23z9b.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg23z9a%2F57468e28-4e61-429d-b655-9474e4942144%2F418525e0-90c8-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg23z9b.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Torque due to weight of ladder mg (acting at Centre of mass, distance $1 / 2$ along ladder) about point A ,</p>\n<p>$$ \\tau_{\\mathrm{mg}}=-\\mathrm{mg}\\left(\\frac{1}{2} \\cos \\theta\\right) $$</p>\n<p>Torque due to weight of person Mg acting at distance x along ladder about point A ,</p>\n<p>$$ \\tau_{\\mathrm{Mg}}=-\\mathrm{Mg}(\\mathrm{x} \\cos \\theta) $$</p>\n<p>Torque due to normal force $\\mathrm{N}_2$ from the wall about point A is, $\\tau_{\\mathrm{N}_2}=\\mathrm{N}_2(\\mathrm{l} \\sin \\theta)$</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg25icc%2F6c182bc3-9cc4-4b4f-8a37-0faf3afe90f0%2F6c1265c0-90c8-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg25icd.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg25icc%2F6c182bc3-9cc4-4b4f-8a37-0faf3afe90f0%2F6c1265c0-90c8-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg25icd.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>As the frictional force and normal force ($N_1$) is passing through point A, so the torque due to frictional force and normal force about point A is zero.</p>\n<p>$$\\tau_{N_1} = \\tau_{f_s} = 0$$</p>\n<p>For rotational equilibrium, the sum of torques about any pivot point must be zero:</p>\n<p>$$\\sum \\tau = 0$$</p>\n<p>$$N_2 (l \\sin \\theta) - mg\\left(\\frac{l}{2} \\cos \\theta\\right) - Mg(x \\cos \\theta) = 0$$</p>\n<p>Substituting $N_2 = \\mu_s (M + m)g$,</p>\n<p>$$\\mu_s (M + m)g\\, l \\sin \\theta = mg\\left(\\frac{l}{2} \\cos \\theta\\right) + Mg\\, x \\cos \\theta$$</p>\n<p>$$\\mu_s (M + m)\\, l \\tan \\theta = \\frac{ml}{2} + Mx$$</p>\n<p>$$Mx = \\mu_s (M + m)\\, l \\tan \\theta - \\frac{ml}{2}$$</p>\n<p>$$x = l\\left[\\mu_s\\left(1 + \\frac{m}{M}\\right) \\tan \\theta - \\frac{m}{2M}\\right]$$</p>\n<p>The vertical height $h$ reached by the person is:</p>\n<p>$$h = x \\sin \\theta = l \\sin \\theta \\left[\\mu_s\\left(1 + \\frac{m}{M}\\right) \\tan \\theta - \\frac{m}{2M}\\right]$$</p>\n<p>Therefore, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>l लंबाई और m द्रव्यमान की एक सीढ़ी एक घर्षण रहित दीवार के सहारे झुकी हुई है। यह क्षैतिज सतह के साथ &theta; कोण बनाती है। सीढ़ी और क्षैतिज सतह के बीच स्थैतिक घर्षण गुणांक &mu;<sub>s</sub> है। सीढ़ी के फिसलने से पहले M द्रव्यमान का एक व्यक्ति (क्षैतिज सतह से) कितनी ऊँचाई तक चढ़ सकता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$l$ sin &theta; $ \\mu_s \\left( 1 + \\frac{M}{m} \\right) \\tan \\theta - \\frac{M}{2m} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$l$ cos &theta; $ \\mu_s \\left( 1 + \\frac{m}{M} \\right) \\cot \\theta - \\frac{m}{2M} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$l$ sin &theta; $ \\mu_s \\left( 1 + \\frac{m}{M} \\right) \\tan \\theta + \\frac{m}{2M} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$l$ sin &theta; $ \\mu_s \\left( 1 + \\frac{m}{M} \\right) \\tan \\theta - \\frac{m}{2M} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msg2ma0i",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A rectangular block of mass m, width w, and height h is placed on a rough horizontal surface. The coefficient of friction between the block and the surface is $ \\mu $. A horizontal force F is applied at a height y above the surface (see figure). Which of the following statements is <b>false</b>?</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg2ista%2Fc13316c9-4e3e-42ee-ad97-df6988c28ecf%2Fddadd7e0-90c9-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg2istb.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg2ista%2Fc13316c9-4e3e-42ee-ad97-df6988c28ecf%2Fddadd7e0-90c9-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg2istb.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>The block will topple if $ yF > \\frac{mgw}{2} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>The block will slide if $ F < \\frac{mgw}{2y} $ and $ F > \\mu mg $.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>The block will topple before sliding if $ F > \\frac{mgw}{2y} $ and $ \\mu < \\frac{w}{2y} $.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>The block will topple before sliding if $ F > \\frac{mgw}{2y} $ and $ \\mu > \\frac{w}{2y} $.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Sliding occurs when the applied force F exceeds the maximum static friction force $\\mathrm{f}_{\\max }$ :</p>\n<p>$$ \\mathrm{f}_{\\max }=\\mu \\mathrm{N}=\\mu \\mathrm{mg} $$</p>\n<p>So, for the sliding condition $\\mathrm{F}>\\mu \\mathrm{mg}$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg2kqpu%2F0eab6c53-59c1-4ca9-a3fd-67ec6da3c4f0%2F13add930-90ca-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg2kqpv.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg2kqpu%2F0eab6c53-59c1-4ca9-a3fd-67ec6da3c4f0%2F13add930-90ca-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg2kqpv.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Toppling occurs when the normal force shifts to the edge.</p>\n<p>Torque of applied force F about the point A is, $\\tau_F = F \\cdot y$ (clockwise)</p>\n<p>Torque of weight $mg$ about the point A is,</p>\n<p>$$\\tau_{mg} = mg \\cdot \\frac{w}{2}$$</p>\n<p>(counter$-$clockwise)</p>\n<p>For the block not to topple, the restoring torque due to weight must balance the applied torque:</p>\n<p>$$F \\cdot y \\leq mg \\cdot \\frac{w}{2} \\Rightarrow F \\leq mg \\left(\\frac{w}{2y}\\right)$$</p>\n<p>Therefore, the block will topple if $F > \\frac{mgw}{2y}$ or $yF > \\frac{mgw}{2}$. Thus, statement (A) is true.</p>\n<p>Thus, the condition for no toppling is $F < \\frac{mgw}{2y}$ and the condition for sliding to occur is $F > \\mu mg$ ensures.</p>\n<p>Hence, statement (B) is true.</p>\n<p>For the block to topple before sliding, the threshold force required for toppling must be less than the threshold force required for sliding:</p>\n<p>$$F_{\\text{topple}} < F_{\\text{slide}}$$</p>\n<p>$$\\frac{mgw}{2y} < \\mu mg \\Rightarrow \\mu > \\frac{w}{2y}$$</p>\n<p>So, if $\\mu < \\frac{w}{2y}$, the block will slide before it can topple. Thus, statement (C) is false and statement (D) is true.</p>\n<p>As we need to identify the false statement, statement (C) is the required answer. Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान m, चौड़ाई w और ऊंचाई h का एक आयताकार गुटका एक खुरदरी क्षैतिज सतह पर रखा गया है। गुटके और सतह के बीच घर्षण गुणांक $ \\mu $ है। सतह से y ऊंचाई पर एक क्षैतिज बल F लगाया जाता है (चित्र देखें)। निम्नलिखित में से कौन सा कथन <b>गलत</b> है?</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg2ista%2Fc13316c9-4e3e-42ee-ad97-df6988c28ecf%2Fddadd7e0-90c9-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg2istb.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg2ista%2Fc13316c9-4e3e-42ee-ad97-df6988c28ecf%2Fddadd7e0-90c9-11f1-87bc-5bfd83472b4b%2Ffile-6y3zli1msg2istb.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>यदि $ yF > \\frac{mgw}{2} $ है तो गुटका पलट जाएगा।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>यदि $ F < \\frac{mgw}{2y} $ और $ F > \\mu mg $ है तो गुटका फिसलेगा।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>यदि $ F > \\frac{mgw}{2y} $ और $ \\mu < \\frac{w}{2y} $ है तो गुटका फिसलने से पहले पलट जाएगा।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>यदि $ F > \\frac{mgw}{2y} $ और $ \\mu > \\frac{w}{2y} $ है तो गुटका फिसलने से पहले पलट जाएगा।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msg99me0",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A cylinder of radius r and mass m rests on a plane inclined at angle θ. The coefficient of kinetic friction between the cylinder and the plane is μ. Where should a force F, parallel to the plane, be applied if the cylinder slides up the plane without rotation?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg94zzl%2Ff9c1d2b0-cded-4f2f-81c1-0ec493773423%2Fbdcc3a10-90e3-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msg94zzm.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg94zzl%2Ff9c1d2b0-cded-4f2f-81c1-0ec493773423%2Fbdcc3a10-90e3-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msg94zzm.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$d = r \\left( 1 - \\frac{\\mu m g \\cos \\theta}{F} \\right)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$d = r \\left( 1 + \\frac{\\mu m g \\cos \\theta}{F} \\right)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$d = r \\left( 1 - \\frac{\\mu m g \\cos \\theta}{2F} \\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$d = r \\left( 1 + \\frac{\\mu m g \\cos \\theta}{2F} \\right)$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For the cylinder to slide without rotation, the net torque acting about its Centre of mass C must be equal to zero:</p>\n<p>$$\\sum \\tau_C = 0$$</p>\n<p>Resolving forces perpendicular to the inclined plane,</p>\n<p>$$N - mg\\cos\\theta = 0 \\Rightarrow N = mg\\cos\\theta$$</p>\n<p>Since the cylinder moves up the inclined plane, kinetic friction $f_k$ opposes the motion and acts downwards along the inclined plane:</p>\n<p>$$f_k = \\mu N = \\mu mg\\cos\\theta$$</p>\n<p>Force F is applied parallel to the inclined plane at a distance d from the contact surface.</p>\n<p>The distance from the Centre of mass C to the line of action of F is $(r - d)$ upwards from the Centre.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg97hjr%2Faeccd8d0-be95-413c-9a74-a678e1226b91%2F02fb4180-90e4-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msg97hjs.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg97hjr%2Faeccd8d0-be95-413c-9a74-a678e1226b91%2F02fb4180-90e4-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msg97hjs.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Friction force $f_k$ acts along the inclined plane at the contact point (at distance $r$ from the Centre of mass $C$),</p>\n<p>directed downwards along the incline.</p>\n<p>Gravitational force $mg$ acts at the Centre of mass $C$, so its torque about $C$ is zero.</p>\n<p>Normal force $N$ also passes through the Centre of mass $C$, so its torque about $C$ is zero.</p>\n<p>Taking counter-clockwise torque as positive and clockwise torque as negative.</p>\n<p>Torque due to force $F$ about $C$ is,</p>\n<p>$$\\tau_F = F \\cdot (r-d)$$</p>\n<p>Torque due to friction force $f_k$ about $C$ is,</p>\n<p>$$\\tau_{f_k} = -f_k \\cdot r = (\\mu mg \\cos \\theta) \\cdot r$$</p>\n<p>For pure sliding without rotation ($\\sum \\tau_C = 0$):</p>\n<p>$$F(r-d) - (\\mu mg \\cos \\theta)r = 0$$</p>\n<p>$$F(r-d) = \\mu mgr \\cos \\theta$$</p>\n<p>$$r-d = \\frac{\\mu mgr \\cos \\theta}{F}$$</p>\n<p>$$d = r - \\frac{\\mu mgr \\cos \\theta}{F}$$</p>\n<p>$$d = r\\left(1 - \\frac{\\mu mg \\cos \\theta}{F}\\right)$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>त्रिज्या r और द्रव्यमान m का एक बेलन θ कोण पर झुके हुए एक आनत तल पर विराम में है। बेलन और तल के बीच गतिज घर्षण गुणांक μ है। तल के समानांतर एक बल F कहाँ लगाया जाना चाहिए ताकि बेलन बिना घूर्णन के तल पर ऊपर की ओर फिसले?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg94zzl%2Ff9c1d2b0-cded-4f2f-81c1-0ec493773423%2Fbdcc3a10-90e3-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msg94zzm.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg94zzl%2Ff9c1d2b0-cded-4f2f-81c1-0ec493773423%2Fbdcc3a10-90e3-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msg94zzm.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$d = r \\left( 1 - \\frac{\\mu m g \\cos \\theta}{F} \\right)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$d = r \\left( 1 + \\frac{\\mu m g \\cos \\theta}{F} \\right)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$d = r \\left( 1 - \\frac{\\mu m g \\cos \\theta}{2F} \\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$d = r \\left( 1 + \\frac{\\mu m g \\cos \\theta}{2F} \\right)$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msg9mc0j",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A homogeneous block of mass M = 100kg, width w = 3 m and height h = 4 m rests on a car which can move along a horizontal plane. Another block of mass m = 20 kg is connected to the block by means of a string and a frictionless pulley (see figure). The coefficient of static friction between the block and the car is &mu; = 0.25. The car is given an acceleration to the right which starts from zero and gradually increased. Which of the following event will occur first?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg9au55%2F59ff1f24-7f63-4301-b39b-35da2e22274b%2F60231090-90e4-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msg9au56.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg9au55%2F59ff1f24-7f63-4301-b39b-35da2e22274b%2F60231090-90e4-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msg9au56.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>The block will slip at an acceleration $g/24$.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>The block will slip at an acceleration $g/4$.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>The block will tip at an acceleration $g/24$.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>The block will tip at an acceleration $g/4$.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>When the state of motion of block is observed from the non-inertial frame of reference of the car accelerating to the right with acceleration a, a pseudo force M a acts on the block of mass M towards the left through its Centre of mass.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg9fzsh%2Fa53e2855-5d1d-43cc-9622-2832a6dbec24%2Fef8bb610-90e4-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msg9fzsi.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg9fzsh%2Fa53e2855-5d1d-43cc-9622-2832a6dbec24%2Fef8bb610-90e4-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msg9fzsi.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>At equilibrium condition, the tension in the string connected to hanging mass m balances its weight.</p>\n<p>$$ \\mathrm{T}=\\mathrm{mg} $$</p>\n<p>The horizontal forces which tend to slide the block to the left are the tension T and the pseudo force M a .</p>\n<p>Max static friction opposing this motion is $\\mathrm{f}_{\\max }=\\mu \\mathrm{N}=\\mu \\mathrm{Mg}$</p>\n<p>At the point of slipping:</p>\n<p>$$ \\mathrm{T}+\\mathrm{Ma}=\\mu \\mathrm{Mg} $$</p>\n\n<p>$\\mathrm{mg}+\\mathrm{Ma}=\\mu \\mathrm{Mg}$</p>\n<p>$$a_{\\text{slip}} = \\frac{(\\mu M - m)g}{M}$$</p>\n<p>Assuming the clockwise direction of rotation as negative and anti-clockwise direction of rotation as positive.</p>\n<p>Torque of pseudo force $Ma$ about point $A$</p>\n<p>$$\\tau_{\\text{pseudo}} = Ma \\cdot \\left(\\frac{h}{2}\\right)$$</p>\n<p>Torque of tension $T$ about point $A$ is,</p>\n<p>$$\\tau_T = T \\cdot h = mgh$$</p>\n<p>Restoring torque of weight $Mg$ about point $A$ is,</p>\n<p>$$\\tau_{\\text{weight}} = -Mg \\cdot \\left(\\frac{w}{2}\\right)$$</p>\n<p>At the verge of tipping:</p>\n<p>$$\\tau_{\\text{pseudo}} + \\tau_T = \\tau_{\\text{weight}}$$</p>\n<p>$$Ma\\left(\\frac{h}{2}\\right) + mgh = Mg\\left(\\frac{w}{2}\\right)$$</p>\n<p>$$a_{\\text{tip}} = \\frac{Mg\\left(\\frac{w}{2}\\right) - mgh}{M\\left(\\frac{h}{2}\\right)} = g\\left(\\frac{Mw - 2mh}{Mh}\\right)$$</p>\n<p>The mass of block on car is $M = 100\\,\\text{kg}$. The mass of hanging block is $m = 20\\,\\text{kg}$</p>\n<p>The width of block is $w = 3\\,\\text{m}$ and its height is $h = 4\\,\\text{m}$</p>\n<p>The coefficient of friction between the surfaces in contact (car and the block) is $\\mu = 0.25$</p>\n<p>So, the acceleration required for slipping is,</p>\n<p>$$a_{\\text{slip}} \\geq \\frac{(\\mu M - m)g}{M}$$</p>\n<p>$$a_{\\text{slip}} \\geq \\frac{(0.25 \\times 100 - 20)g}{100}$$</p>\n<p>$$a_{\\text{slip}} \\geq \\frac{(25 - 20)g}{100} = \\frac{5g}{100} = \\frac{g}{20}$$</p>\n<p>And the acceleration required for tipping is,</p>\n<p>$$a_{\\text{tip}} \\geq g\\left(\\frac{Mw - 2mh}{Mh}\\right)$$</p>\n<p>$$a_{\\text{tip}} \\geq g\\left(\\frac{100 \\times 3 - 2 \\times 20 \\times 4}{100 \\times 4}\\right)$$</p>\n<p>$$a_{\\text{tip}} \\geq g\\left(\\frac{300 - 160}{400}\\right) = g\\left(\\frac{140}{400}\\right) = \\frac{7g}{20}$$</p>\n<p>Since $a_{\\text{slip}} = \\frac{g}{20}$ and $a_{\\text{tip}} = \\frac{7g}{20}$, as acceleration $a$ increases gradually from zero, the block reaches $a_{\\text{slip}} = \\frac{g}{20}$ first before reaching $a_{\\text{tip}}$.</p>\n<p>Therefore, the block will slip first at $a = \\frac{g}{20}$. Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान M = 100 kg, चौड़ाई w = 3 m और ऊँचाई h = 4 m का एक समांगी गुटका एक कार पर रखा है जो एक क्षैतिज तल के अनुदिश गति कर सकती है। द्रव्यमान m = 20 kg का एक अन्य गुटका एक डोरी और घर्षण रहित घिरनी के माध्यम से इस गुटके से जुड़ा है (चित्र देखें)। गुटके और कार के बीच स्थैतिक घर्षण गुणांक &mu; = 0.25 है। कार को दाईं ओर एक त्वरण दिया जाता है जो शून्य से शुरू होता है और धीरे-धीरे बढ़ाया जाता है। निम्नलिखित में से कौन सी घटना पहले घटेगी?</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg9au55%2F59ff1f24-7f63-4301-b39b-35da2e22274b%2F60231090-90e4-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msg9au56.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg9au55%2F59ff1f24-7f63-4301-b39b-35da2e22274b%2F60231090-90e4-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msg9au56.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>गुटका $g/24$ त्वरण पर फिसलेगा।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>गुटका $g/4$ त्वरण पर फिसलेगा।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>गुटका $g/24$ त्वरण पर पलटेगा।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>गुटका $g/4$ त्वरण पर पलटेगा।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msg9y364",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A person of mass m is standing on an open truck, which is rounding an unbanked turn of radius r at a speed v. His centre of mass is at a height h above the truck surface midway between his feet, which are separated by a distance of d. When speed of the truck is increased monotonically then his</p>\n",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>outer foot lose contact at a speed $\\sqrt{2gdr/h}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>outer foot lose contact at a speed $\\sqrt{gdr/2h}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>inner foot lose contact at a speed $\\sqrt{2gdr/h}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>inner foot lose contact at a speed $\\sqrt{gdr/2h}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>In the non-inertial rotating frame of reference of the truck moving along a circular path of radius r at speed v , an outward centrifugal pseudo force acts on the person at his Centre of mass (height h above the truck bed):</p>\n<p>$$ \\mathrm{F}_{\\mathrm{c}}=\\mathrm{m} \\frac{\\mathrm{v}^2}{\\mathrm{r}} $$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msg9sg8t%2Fe9f65f09-db6e-4409-82ca-26bc09a615ce%2F49f72ed0-90e6-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msg9sg8u.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msg9sg8t%2Fe9f65f09-db6e-4409-82ca-26bc09a615ce%2F49f72ed0-90e6-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msg9sg8u.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$\\mathrm{N}_1$ be the normal reaction on the inner foot $\\mathrm{N}_2$ be the normal reaction on the outer foot.</p>\n<p>The distance between the feet is d , so each foot is at a distance of $\\frac{\\mathrm{d}}{2}$ from the vertical line passing through the Centre of mass.</p>\n<p>For vertical equilibrium, the net force along vertical direction should be equal to zero.</p>\n<p>$$ \\sum \\mathrm{F}_{\\mathrm{y}}=0 \\Rightarrow \\mathrm{~N}_1+\\mathrm{N}_2-\\mathrm{mg}=0 \\Rightarrow \\mathrm{~N}_1+\\mathrm{N}_2=\\mathrm{mg} \\ldots \\text { (i) } $$</p>\n<p>Taking the clockwise torque as negative, the torque due to normal force $\\mathrm{N}_1$ is $\\tau_{\\mathrm{N}_1}=-\\mathrm{N}_1\\left(\\frac{\\mathrm{~d}}{2}\\right)$</p>\n<p>Torque due to normal force $\\mathrm{N}_2$ is, $\\tau_{\\mathrm{N}_2}=+\\mathrm{N}_2 \\cdot\\left(\\frac{\\mathrm{~d}}{2}\\right)$</p>\n<p>Torque due to static friction which is balancing centrifugal force at feet acting at distance h below COM is,</p>\n<p>$$ \\tau_{\\mathrm{f}}=-\\mathrm{F}_{\\mathrm{c}} \\cdot \\mathrm{~h}=-\\left(\\mathrm{m} \\frac{\\mathrm{v}^2}{\\mathrm{r}}\\right) \\mathrm{h} $$</p>\n<p>For rotational equilibrium torque about Centre of mass must be zero.</p>\n<p>$$N_1\\left(\\frac{d}{2}\\right) - N_2\\left(\\frac{d}{2}\\right) + \\frac{m v^2 h}{r} = 0$$</p>\n<p>$$\\frac{d}{2}(N_2 - N_1) = \\frac{m v^2 h}{r}$$</p>\n<p>$$N_2 - N_1 = \\frac{2 m v^2 h}{r d} \\ldots (\\mathrm{ii})$$</p>\n<p>Adding the two equations:</p>\n<p>$$(N_1 + N_2) + (N_2 - N_1) = m g + \\frac{2 m v^2 h}{r d}$$</p>\n<p>$$2N_2 = m g + \\frac{2 m v^2 h}{r d} \\Rightarrow N_2 = \\frac{m g}{2} + \\frac{m v^2 h}{r d}$$</p>\n<p>Subtracting the two equations:</p>\n<p>$$2N_1 = m g - \\frac{2 m v^2 h}{r d} \\Rightarrow N_1 = \\frac{m g}{2} - \\frac{m v^2 h}{r d}$$</p>\n<p>As speed $v$ increases monotonically $N_2$ increases and $N_1$ decreases.</p>\n<p>The foot that loses contact first is the inner foot, which occurs when $N_1 = 0$:</p>\n<p>$$\\frac{m g}{2} - \\frac{m v^2 h}{r d} = 0$$</p>\n<p>$$\\frac{m g}{2} = \\frac{m v^2 h}{r d}$$</p>\n<p>$$\\frac{g}{2} = \\frac{v^2 h}{r d}$$</p>\n<p>$$v^2 = \\frac{g d r}{2 h}$$</p>\n<p>$$v = \\sqrt{\\frac{g d r}{2 h}}$$</p>\n<p>Thus, the inner foot loses contact at a speed of $\\sqrt{gdr/2h}$. Therefore, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "\n<p>m द्रव्यमान का एक व्यक्ति एक खुले ट्रक पर खड़ा है, जो त्रिज्या r के एक बिना झुकाव (unbanked) वाले मोड़ पर v चाल से मुड़ रहा है। उसका द्रव्यमान केंद्र ट्रक की सतह से h ऊंचाई पर है जो उसके पैरों के ठीक बीच में स्थित है, और उसके पैरों के बीच की दूरी d है। जब ट्रक की चाल को एकसमान रूप से बढ़ाया जाता है तो उसका</p>\n",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>बाहरी पैर $\\sqrt{2gdr/h}$ चाल पर संपर्क खो देगा</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>बाहरी पैर $\\sqrt{gdr/2h}$ चाल पर संपर्क खो देगा</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>आंतरिक पैर $\\sqrt{2gdr/h}$ चाल पर संपर्क खो देगा</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>आंतरिक पैर $\\sqrt{gdr/2h}$ चाल पर संपर्क खो देगा</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msgaw0at",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Four equal and parallel forces are acting on a rod (as shown in figure) in horizontal plane at distances of 20 cm, 40 cm, 60 cm and 80 cm respectively from one end of the rod. Under the influence of these forces the rod :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msgaqgwv%2F099e6f71-4c66-4a3c-9ac7-7529bd5d6c30%2Ffbfe1af0-90e9-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgaqgww.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msgaqgwv%2F099e6f71-4c66-4a3c-9ac7-7529bd5d6c30%2Ffbfe1af0-90e9-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgaqgww.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>is at rest</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>experiences a torque</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>experiences a linear motion</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>experiences a torque and also a linear motion</b></p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The net force acting on a rigid body determines its linear translational acceleration according to Newton's</p>\n<p>second law:</p>\n<p>$$\\vec{F}_{\\text{net}} = \\sum \\vec{F}_i$$</p>\n<p>If $\\vec{F}_{\\text{net}} = \\vec{0}$, there is no linear acceleration.</p>\n<p>If $\\vec{F}_{\\text{net}} \\ne \\vec{0}$, the body experiences linear motion.</p>\n<p>The net torque about any chosen reference point (such as the origin at $x = 0$) determines rotational motion:</p>\n<p>$$\\tau_{\\text{net}} = \\sum (x_i \\cdot F_i)$$</p>\n<p>If $\\tau_{\\text{net}} = 0$, there is no angular acceleration.</p>\n<p>If $\\tau_{\\text{net}} \\ne 0$, the body experiences a torque.</p>\n<p>At $x_1 = 20\\ \\text{cm}$, the force $F$ acts downward $\\vec{F}_1 = -F\\hat{\\jmath}$</p>\n<p>At $x_2 = 40\\ \\text{cm}$, the force $F$ acts upward, $\\vec{F}_2 = F\\hat{\\jmath}$</p>\n<p>At $x_3 = 60\\ \\text{cm}$, the force $F$ acts downward $\\vec{F}_3 = -F\\hat{\\jmath}$</p>\n<p>At $x_2 = 80\\ \\text{cm}$, the force $F$ acts upward, $\\vec{F}_4 = F\\hat{\\jmath}$</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msgasklq%2F8c1bc7c5-6034-4107-b904-367f5d92300e%2F367636e0-90ea-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgasklr.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msgasklq%2F8c1bc7c5-6034-4107-b904-367f5d92300e%2F367636e0-90ea-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgasklr.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>So, the net external force is,</p>\n<p>$$\\vec{F}_{\\text{net}} = \\vec{F}_1 + \\vec{F}_2 + \\vec{F}_3 + \\vec{F}_4$$</p>\n<p>$$\\vec{F}_{\\text{net}} = (-F\\hat{j}) + (F\\hat{j}) + (-F\\hat{j}) + (F\\hat{j})$$</p>\n<p>$$\\vec{F}_{\\text{net}} = \\vec{0}$$</p>\n<p>Since $\\vec{F}_{\\text{net}} = \\vec{0}$, the rod does not undergo linear translation.</p>\n<p>Taking counter-clockwise torque as positive and clockwise torque as negative.</p>\n<p>$$\\tau_{\\text{net}} = (x_1 \\cdot F_1) + (x_2 \\cdot F_2) + (x_3 \\cdot F_3) + (x_4 \\cdot F_4)$$</p>\n<p>$$\\tau_{\\text{net}} = (20 \\cdot (-F)) + (40 \\cdot (+F)) + (60 \\cdot (-F)) + (80 \\cdot F)$$</p>\n<p>$$\\tau_{\\text{net}} = (-20 + 40 - 60 + 80)F = 40F \\ne 0$$</p>\n<p>Since $\\tau_{\\text{net}} \\ne 0$, the rod experiences a torque. Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक छड़ पर चार समान और समानांतर बल (जैसा कि चित्र में दिखाया गया है) क्षैतिज तल में छड़ के एक सिरे से क्रमशः 20 cm, 40 cm, 60 cm और 80 cm की दूरी पर लग रहे हैं। इन बलों के प्रभाव में छड़ :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msgaqgwv%2F099e6f71-4c66-4a3c-9ac7-7529bd5d6c30%2Ffbfe1af0-90e9-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgaqgww.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msgaqgwv%2F099e6f71-4c66-4a3c-9ac7-7529bd5d6c30%2Ffbfe1af0-90e9-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgaqgww.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>विरामावस्था में रहेगी</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>एक बल आघूर्ण का अनुभव करेगी</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>एक रेखीय गति का अनुभव करेगी</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>एक बल आघूर्ण और साथ ही एक रेखीय गति का अनुभव करेगी</b></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msgbkd9x",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform ladder of length 5m is placed against the wall in vertical plane as shown in the figure. If coefficient of friction is the same for both the wall and the floor then minimum value of for it not to slip is :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msgaxoxt%2F8d9b9521-10f8-4447-b5e2-0a8c66458c02%2Fc4db4f10-90ea-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgaxoxu.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msgaxoxt%2F8d9b9521-10f8-4447-b5e2-0a8c66458c02%2Fc4db4f10-90ea-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgaxoxu.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\mu = \\frac{1}{2} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\mu = \\frac{1}{4} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\mu = \\frac{1}{3} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\mu = \\frac{1}{5} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The length of ladder is $\\mathrm{L}=5 \\mathrm{~m}$</p>\n<p>Base distance along floor is $\\mathrm{b}=3 \\mathrm{~m}$</p>\n<p>Height along vertical wall is $\\mathrm{h}=4 \\mathrm{~m}$</p>\n<p>Angle with floor is $\\theta$,</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msgb18c7%2F1f7e77ac-8fca-45af-bea7-a955219a331a%2F27451870-90eb-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgb18c8.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msgb18c7%2F1f7e77ac-8fca-45af-bea7-a955219a331a%2F27451870-90eb-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgb18c8.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$ \\cos \\theta=\\frac{3}{5}, \\sin \\theta=\\frac{4}{5}, \\tan \\theta=\\frac{4}{3} $$</p>\n<p>The weight $\\mathrm{W}=\\mathrm{mg}$ acting vertically downward at the Centre of mass.</p>\n<p>At floor contact normal force $\\mathrm{N}_1$ acting vertically upward and friction force $\\mathrm{f}_1=\\mu \\mathrm{N}_1$ acting horizontally towards the wall.</p>\n<p>At wall contact normal force $\\mathrm{N}_2$ acting horizontally away from the wall and friction force $\\mathrm{f}_2=\\mu \\mathrm{N}_2$ acting vertically upward to prevent slipping down.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msgb3cq9%2F108343c5-c4e7-4489-a4f8-1fae9cac6911%2F62479a10-90eb-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgb3cqa.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msgb3cq9%2F108343c5-c4e7-4489-a4f8-1fae9cac6911%2F62479a10-90eb-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgb3cqa.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>For horizontal force equilibrium,</p>\n<p>$$\\sum F_x = 0 \\Rightarrow f_1 - N_2 = 0 \\Rightarrow \\mu N_1 = N_2$$</p>\n<p>For vertical force equilibrium</p>\n<p>$$\\sum F_y = 0 \\Rightarrow N_1 + f_2 - W = 0 \\Rightarrow N_1 + \\mu N_2 = W$$</p>\n<p>Substituting $N_2 = \\mu N_1$,</p>\n<p>$$N_1 + \\mu(\\mu N_1) = W$$</p>\n<p>$$N_1(1 + \\mu^2) = W \\Rightarrow N_1 = \\frac{W}{1 + \\mu^2}$$</p>\n<p>Then $N_2$ becomes</p>\n<p>$$N_2 = \\frac{\\mu W}{1 + \\mu^2}.$$ </p>\n<p>Taking torque about the point A assuming counter-clockwise as positive and clockwise as negative.</p>\n<p>Torque due to weight</p>\n<p>$$\\tau_W = -W \\times \\left(\\frac{3}{2}\\right)$$</p>\n<p>Torque due to wall normal force $N_2$ is</p>\n<p>$$\\tau_{N_2} = N_2 \\times (4)$$</p>\n<p>Torque due to wall friction force $f_2$ is</p>\n<p>$$\\tau_{f_2} = f_2 \\times (3) = (\\mu N_2) \\times (3)$$</p>\n\n<p>For rotational equilibrium, $$\\sum \\tau = 0$$</p>\n<p>$$N_2(4) + \\mu N_2(3) - W\\left(\\frac{3}{2}\\right) = 0$$</p>\n<p>$$N_2(4 + 3\\mu) = \\frac{3}{2}W$$</p>\n<p>Substituting $$N_2 = \\frac{\\mu W}{1 + \\mu^2}$$</p>\n<p>$$\\left(\\frac{\\mu W}{1 + \\mu^2}\\right)(4 + 3\\mu) = \\frac{3}{2}W$$</p>\n<p>$$\\frac{\\mu(4 + 3\\mu)}{1 + \\mu^2} = \\frac{3}{2}$$</p>\n<p>$$2\\mu(4 + 3\\mu) = 3(1 + \\mu^2)$$</p>\n<p>$$8\\mu + 6\\mu^2 = 3 + 3\\mu^2$$</p>\n<p>$$3\\mu^2 + 8\\mu - 3 = 0$$</p>\n<p>$$3\\mu^2 + 9\\mu - \\mu - 3 = 0$$</p>\n<p>$$3\\mu(\\mu + 3) - 1(\\mu + 3) = 0$$</p>\n<p>$$ (3\\mu - 1)(\\mu + 3) = 0 $$</p>\n<p>Since friction coefficient $\\mu > 0$:</p>\n<p>$$3\\mu - 1 = 0 \\Rightarrow \\mu = \\frac{1}{3}$$</p>\n<p>Therefore, the coefficient of friction is $\\frac{1}{3}$. Thus, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>5m लंबी एक एकसमान सीढ़ी को चित्र में दर्शाए अनुसार ऊर्ध्वाधर तल में दीवार के सहारे रखा गया है। यदि दीवार और फर्श दोनों के लिए घर्षण गुणांक समान है, तो इसके न फिसलने के लिए न्यूनतम मान है :</p> <img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msgaxoxt%2F8d9b9521-10f8-4447-b5e2-0a8c66458c02%2Fc4db4f10-90ea-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgaxoxu.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msgaxoxt%2F8d9b9521-10f8-4447-b5e2-0a8c66458c02%2Fc4db4f10-90ea-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgaxoxu.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\mu = \\frac{1}{2} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\mu = \\frac{1}{4} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\mu = \\frac{1}{3} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\mu = \\frac{1}{5} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msgbpm7r",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A rod of weight $w$ is supported by two parallel knife edges A &amp; B and is in equilibrium in a horizontal position. The knives are at a distance $d$ from each other. The centre of mass of the rod is at a distance $x$ from A. The normal reactions at A and B will be:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$N_A = 2w \\left(1-\\frac{x}{d}\\right), \\; N_B = \\frac{w x}{d}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$N_A = w \\left(1-\\frac{x}{d}\\right), \\; N_B = \\frac{w x}{d}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$N_A = 2w \\left(1-\\frac{x}{d}\\right), \\; N_B = \\frac{2w x}{d}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$N_A = w \\left(2-\\frac{x}{d}\\right), \\; N_B = \\frac{w x}{d}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let knife edge A is at position $\\mathrm{x}_{\\mathrm{A}}=0$, then knife edge B is at position $\\mathrm{x}_{\\mathrm{B}}=\\mathrm{d}$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msgbng4h%2F3b715f36-3f94-4c3a-87be-7290d09d2c60%2F9115cd10-90ed-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgbng4i.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msgbng4h%2F3b715f36-3f94-4c3a-87be-7290d09d2c60%2F9115cd10-90ed-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgbng4i.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>The Centre of mass is located at position $x_{com}=x$ from knife edge A.</p>\n<p>Upward normal reaction force $N_A$ exerted by knife edge A at $x=0$.</p>\n<p>Upward normal reaction force $N_B$ exerted by knife edge B at $x=d$.</p>\n<p>Downward gravitational force equal to the total weight $w$ acting at the Centre of mass $(x=x)$.</p>\n<p>For the rod to remain horizontally stationary, the net vertical force acting on it must be zero:</p>\n<p>$$\\sum F_y=0$$</p>\n<p>$$N_A+N_B-w=0 \\Rightarrow N_A+N_B=w \\; ...\\text{(i)}$$</p>\n<p>Let the clockwise torque is negative and anti-clockwise torque is positive.</p>\n<p>Torque due to $N_A$ about point A is zero because distance from A is 0, so $\\tau_A=0$.</p>\n<p>Torque due to weight $w$ about point A is $\\tau_w=-w\\cdot x$</p>\n<p>Torque due to $N_B$ about point A is $\\tau_B=+N_Bd$</p>\n<p>For rotational equilibrium, the net torque about any pivot point must equal zero $$\\sum \\vec{\\tau}=0$$</p>\n<p>$$N_Bd-wx=0$$</p>\n<p>$$N_Bd=wx \\Rightarrow N_B=\\frac{wx}{d}$$</p>\n<p>Substituting $N_B$ into equation (i):</p>\n<p>$$N_A+\\frac{wx}{d}=w \\Rightarrow N_A=w-\\frac{wx}{d}$$</p>\n<p>$$\\Rightarrow N_A=w\\left(1-\\frac{x}{d}\\right)$$</p>\n<p>Therefore, the normal reactions at A and B are $N_A=w\\left(1-\\frac{x}{d}\\right)$, $N_B=\\frac{wx}{d}$</p>\n<p>Thus, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$w$ भार वाली एक छड़ दो समानांतर क्षुर-धारों (knife edges) A तथा B पर टिकी है और क्षैतिज स्थिति में संतुलन में है। दोनों क्षुर-धारों के बीच की दूरी $d$ है। छड़ का द्रव्यमान केंद्र A से $x$ दूरी पर है। A तथा B पर अभिलंब प्रतिक्रियाएँ होंगी:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$N_A = 2w \\left(1-\\frac{x}{d}\\right), \\; N_B = \\frac{w x}{d}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$N_A = w \\left(1-\\frac{x}{d}\\right), \\; N_B = \\frac{w x}{d}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$N_A = 2w \\left(1-\\frac{x}{d}\\right), \\; N_B = \\frac{2w x}{d}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$N_A = w \\left(2-\\frac{x}{d}\\right), \\; N_B = \\frac{w x}{d}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msgcgfi7",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A force $\\overrightarrow{\\mathrm{F}}=2 \\hat{\\imath}+3 \\hat{\\jmath}-\\widehat{\\mathrm{k}}$ acts at a point (2,-3,1). Then magnitude of torque about point (0,0,2) is $\\mathrm{p} \\sqrt{5}$ (in $\\mathrm{N}-\\mathrm{m}$ ), then find value of p :</p>",
+                "options": [],
+                "answer": "6",
+                "explanation": "<p>The torque $\\vec{\\tau}$ of a force $\\vec{F}$ acting at a position vector $\\vec{r}_A$ about a point with position vector $\\vec{r}_O$ is given by the vector cross product :</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msgccj4k%2F9eaeafc6-eea1-4909-8977-36395f2f08be%2F4aa20940-90f0-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgccj4l.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msgccj4k%2F9eaeafc6-eea1-4909-8977-36395f2f08be%2F4aa20940-90f0-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgccj4l.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$ \\vec{\\tau}=\\overrightarrow{\\mathrm{r}} \\times \\overrightarrow{\\mathrm{F}} $$</p>\n<p>where $\\overrightarrow{\\mathrm{r}}$ is the position vector of the point of application of the force relative to the reference point about which the torque is being calculated:</p>\n<p>$$ \\vec{r}=\\vec{r}_A-\\vec{r}_O $$</p>\n<p>The given force vector is, $\\overrightarrow{\\mathrm{F}}=2 \\hat{\\imath}+3 \\hat{\\jmath}-1 \\hat{k}$ (in N)</p>\n<p>Position vector of point where force acts $\\overrightarrow{\\mathrm{r}}_{\\mathrm{A}}=2 \\hat{\\imath}-3 \\hat{\\jmath}+1 \\hat{k}$</p>\n<p>Position vector of reference point is $\\overrightarrow{\\mathrm{r}}_{\\mathrm{O}}=0 \\hat{\\mathrm{i}}+0 \\hat{\\mathrm{\\jmath}}+2 \\hat{\\mathrm{k}}$</p>\n<p>The relative position vector $\\overrightarrow{\\mathrm{r}}$</p>\n<p>$$ \\vec{r}=\\vec{r}_A-\\vec{r}_O $$</p>\n\n<p>$$\\vec{r}=(2-0)\\hat{i}+(-3-0)\\hat{j}+(1-2)\\hat{k}$$</p>\n<p>$$\\vec{r}=2\\hat{i}-3\\hat{j}-1\\hat{k}$$</p>\n<p>$$\\vec{\\tau}=\\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ r_x & r_y & r_z \\\\ F_x & F_y & F_z \\end{vmatrix}$$</p>\n<p>$$\\vec{\\tau}=\\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & -3 & -1 \\\\ 2 & 3 & -1 \\end{vmatrix}$$</p>\n<p>$$\\vec{\\tau}=\\hat{i}[(-3)(-1)-(-1)(3)]-\\hat{j}[(2)(-1)-(-1)(2)]+\\hat{k}[(2)(3)-(-3)(2)]$$</p>\n<p>$$\\vec{\\tau}=\\hat{i}[3+3]-\\hat{j}[-2+2]+\\hat{k}[6+6]$$</p>\n<p>$$\\vec{\\tau}=6\\hat{i}-0\\hat{j}+12\\hat{k}=6\\hat{i}+12\\hat{k}$$</p>\n<p>For any vector $\\vec{A}=A_x\\hat{i}+A_y\\hat{j}+A_z\\hat{k}$, its magnitude $|\\vec{A}|$ is</p>\n<p>$$|\\vec{A}|=\\sqrt{A_x^2+A_y^2+A_z^2}$$</p>\n<p>So, the magnitude of torque,</p>\n<p>$$|\\vec{\\tau}|=\\sqrt{(6)^2+(0)^2+(12)^2}$$</p>\n<p>$$|\\vec{\\tau}|=\\sqrt{36+0+144}$$</p>\n<p>$$|\\vec{\\tau}|=\\sqrt{180}$$</p>\n<p>$$|\\vec{\\tau}|=6\\sqrt{5}\\ \\mathrm{N-m}$$</p>\n<p>$$p\\sqrt{5}=6\\sqrt{5}\\Rightarrow p=6$$</p>\n<p>Therefore, the value of p is 6.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक बल $\\overrightarrow{\\mathrm{F}}=2 \\hat{\\imath}+3 \\hat{\\jmath}-\\widehat{\\mathrm{k}}$ बिंदु (2,-3,1) पर कार्य करता है। बिंदु (0,0,2) के परितः बल आघूर्ण का परिमाण $\\mathrm{p} \\sqrt{5}$ ($\\mathrm{N}-\\mathrm{m}$ में) है, तो p का मान ज्ञात कीजिए:</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "torque",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msga5l3d",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform rod $\\mathbf{A B}$ of mass $\\mathbf{m}=\\mathbf{1} \\mathbf{~ k g}$ and length $\\mathbf{l}$ undergoes pure translation with acceleration $\\mathbf{a}=$ $2 \\mathrm{~m} / \\mathrm{s}^2$ under the action of two antiparallel forces $F_1$ and $F_2=5 \\mathrm{~N}$, as shown in the figure. Force $F_1$ acts at the end $A$, and the perpendicular distance between the lines of action of the two forces is $\\mathbf{d}=\\mathbf{0 . 2 0 ~ m}$. Calculate the length 1 of the rod.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msga01uw%2F89879d3d-e2e9-4ce6-abdb-3b2297082eab%2F1d534e80-90e7-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msga01ux.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msga01uw%2F89879d3d-e2e9-4ce6-abdb-3b2297082eab%2F1d534e80-90e7-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msga01ux.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "1",
+                "explanation": "<p>For pure translation of a rigid body, the net external force produces linear acceleration according to Newton's second law:</p>\n<p>$$ \\overrightarrow{\\mathrm{F}}_{\\mathrm{net}}=\\mathrm{m} \\overrightarrow{\\mathrm{a}} $$</p>\n<p>For pure translation without rotation, the net torque about the Centre of mass C of the rod must be equal to zero:</p>\n<p>$$ \\sum \\tau_{\\mathrm{C}}=0 $$</p>\n<p>For a uniform rod of length $l$ and mass $m$ the Centre of mass $C$ is located at a distance of $\\frac{1}{2}$ from either end.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msga2mir%2F636ef52f-c2ad-40c9-9586-4e9291e20c59%2F64e7bd30-90e7-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msga2mis.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msga2mir%2F636ef52f-c2ad-40c9-9586-4e9291e20c59%2F64e7bd30-90e7-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msga2mis.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The mass of the rod, $m = 1kg$</p>\n<p>Acceleration of the rod, $a = 2\tm/s^2$</p>\n<p>Force $F_2 = 5\tN$</p>\n<p>Perpendicular distance between forces $F_1$ and $F_2$, is $d = 0.20\tm$</p>\n<p>Let the direction of force $F_1$ be along $-x$ and force $F_2$ along $+x$.</p>\n<p>$$\\vec{F}_{\\text{net}} = F_1 - F_2$$</p>\n<p>$$ma = F_1 - F_2$$</p>\n<p>$$1 \\times 2 = F_1 - 5$$</p>\n\n<p>$$2 = F_1 - 5 \\Rightarrow F_1 = 7\\ \\mathrm{N}$$</p>\n<p>Let origin be at end A along the rod ($y = 0$):</p>\n<p>Position of A relative to C is $r_1 = \\frac{l}{2}$ (upward along rod)</p>\n<p>Position of force $F_2$ relative to C is $r_2 = \\frac{l}{2} - d = \\frac{l}{2} - 0.20$ (upward along rod)</p>\n<p>Let the clockwise torque as negative and anti-clockwise torque as positive.</p>\n<p>Torque due to force $F_1$ about C is,</p>\n<p>$$\\tau_{F_1} = F_1 \\times \\left(\\frac{l}{2}\\right)$$</p>\n<p>Torque due to force $F_2$ about C is,</p>\n<p>$$\\tau_{F_2} = -F_2 \\times \\left(\\frac{l}{2} - d\\right)$$</p>\n<p>For zero net torque about Centre of mass C:</p>\n<p>$$\\sum \\tau_C = F_1\\left(\\frac{l}{2}\\right) - F_2\\left(\\frac{l}{2} - d\\right) = 0$$</p>\n<p>Substituting $F_1 = 7\\ \\mathrm{N}$, $F_2 = 5\\ \\mathrm{N}$, and $d = 0.20\\ \\mathrm{m}$:</p>\n<p>$$7\\left(\\frac{l}{2}\\right) - 5\\left(\\frac{l}{2} - 0.20\\right) = 0$$</p>\n<p>$$\\frac{7l}{2} - \\frac{5l}{2} + 5(0.20) = 0$$</p>\n<p>$$\\frac{2l}{2} + 1.0 = 0 \\Rightarrow l = 1.0\\ \\mathrm{m}$$</p>\n<p>Therefore, the required length of the rod is $l = 1\\ \\mathrm{m}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान $\\mathbf{m}=\\mathbf{1} \\mathbf{~ k g}$ और लंबाई $\\mathbf{l}$ की एक एकसमान छड़ $\\mathbf{A B}$, चित्र में दर्शाए अनुसार दो प्रतिसमानांतर (antiparallel) बलों $F_1$ और $F_2=5 \\mathrm{~N}$ के प्रभाव में त्वरण $\\mathbf{a}=$ $2 \\mathrm{~m} / \\mathrm{s}^2$ के साथ शुद्ध स्थानांतरीय (pure translation) गति कर रही है। बल $F_1$ सिरे $A$ पर कार्य करता है, और दोनों बलों की क्रिया रेखाओं (lines of action) के बीच की लंबवत दूरी $\\mathbf{d}=\\mathbf{0 . 2 0 ~ m}$ है। छड़ की लंबाई l की गणना कीजिए।</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msga01uw%2F89879d3d-e2e9-4ce6-abdb-3b2297082eab%2F1d534e80-90e7-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msga01ux.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msga01uw%2F89879d3d-e2e9-4ce6-abdb-3b2297082eab%2F1d534e80-90e7-11f1-a4fb-7b0f50e0bee7%2Ffile-6y3zli1msga01ux.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msgcj933",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Torque (in $\\mathbf{N}-\\mathbf{m}$ ) of a force $\\overrightarrow{\\mathbf{F}}=2 \\hat{\\mathbf{\\imath}}+3 \\hat{\\mathbf{\\jmath}}$ acting at a point $(\\mathbf{1 m}, \\mathbf{0}, 3 \\mathbf{m})$ about $\\mathbf{Z}$ axis is</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>The torque vector $\\vec{\\tau}$ of a force $\\vec{F}$ acting at a position vector $\\vec{r}$ relative to the origin is given by $\\vec{\\tau} = \\vec{r} \\times \\vec{F}$</p>\n<p>The torque about a given axis is the scalar component of the total torque vector along that axis.</p>\n<p>So, the torque of given force about $z$-axis is equal to the $\\hat{k}$-component:</p>\n<p>$$\\tau_z = \\vec{\\tau} \\cdot \\hat{k}$$</p>\n<p>The given force vector is, $\\vec{F} = 2\\hat{i} + 3\\hat{j} + 0\\hat{k}$ (in N)</p>\n<p>The position vector is $\\vec{r} = 1\\hat{i} + 0\\hat{j} + 3\\hat{k}$ (in m)</p>\n<p>So, the torque is</p>\n<p>$$\\vec{\\tau} = (\\vec{r} \\times \\vec{F}) = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ r_x & r_y & r_z \\\\ F_x & F_y & F_z \\end{vmatrix}$$</p>\n<p>$$\\vec{\\tau} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & 0 & 3 \\\\ 2 & 3 & 0 \\end{vmatrix}$$</p>\n<p>$$\\vec{\\tau} = \\hat{i}\\,[(0)(0) - (3)(3)] - \\hat{j}\\,[(1)(0) - (3)(2)] + \\hat{k}\\,[(1)(3) - (0)(2)]$$</p>\n<p>$$\\vec{\\tau} = -9\\hat{i} + 6\\hat{j} + 3\\hat{k}\\ \\mathrm{N-m}$$</p>\n<p>So, the torque about the Z-axis is the coefficient of the $\\hat{k}$ unit vector, $\\tau_z = 3\\ \\mathrm{N-m}$</p>\n<p>Therefore, the torque about the Z-axis is $3\\ \\mathrm{N-m}$. </p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>बिंदु $(\\mathbf{1 m}, \\mathbf{0}, 3 \\mathbf{m})$ पर कार्य करने वाले एक बल $\\overrightarrow{\\mathbf{F}}=2 \\hat{\\mathbf{\\imath}}+3 \\hat{\\mathbf{\\jmath}}$ का $\\mathbf{Z}$ अक्ष के परितः बल आघूर्ण ($\\mathbf{N}-\\mathbf{m}$ में) है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "torque",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msgcvzzr",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A long uniform wooden beam of length l is carried on the heads of two persons having equal height. They are positioned at distances $\\frac{l}{4}$ and $\\frac{l}{6}$ from the respective nearest ends of the rod. The ratio of normal reactions at their heads $$\\times $$ 9 is :</p>",
+                "options": [],
+                "answer": "12",
+                "explanation": "<p>Let the uniform wooden beam be along the x -axis from end $\\mathrm{A}(\\mathrm{x}=0)$ to end $\\mathrm{B}(\\mathrm{x}=1)$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msgcp92s%2F2b14f543-fd7c-484e-a492-a72cbce9b898%2Fac638f40-90f1-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgcp92t.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msgcp92s%2F2b14f543-fd7c-484e-a492-a72cbce9b898%2Fac638f40-90f1-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgcp92t.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Since the beam is uniform, its weight $\\mathrm{W}=\\mathrm{mg}$ acts downward at its geometric Centre $\\mathrm{x}_{\\text {com }}=\\frac{1}{2}$</p>\n<p>The first person located at a distance of $\\frac{1}{4}$ from end $\\mathrm{A} \\mathrm{d}_1=\\frac{1}{4}$</p>\n<p>Position of second person is located at a distance of $\\frac{1}{6}$ from end B :</p>\n<p>$$ \\mathrm{d}_2=1-\\frac{1}{6}=\\frac{51}{6} $$</p>\n<p>Let $\\mathrm{N}_1$ and $\\mathrm{N}_2$ be the upward normal reactions exerted by the two persons on the beam.</p>\n<p>For static equilibrium, the total upward vertical force must balance the downward gravitational force:</p>\n<p>$$\\sum \\mathrm{F}_{\\mathrm{y}}=0 \\Rightarrow \\mathrm{~N}_1+\\mathrm{N}_2=\\mathrm{W} .........(i) $$</p>\n<p>For rotational equilibrium, the net torque about any point must equal zero.</p>\n<p>Taking the pivot point at the location of $\\mathrm{P}_1\\left(\\mathrm{x}_1=\\frac{1}{4}\\right)$ distance from $\\mathrm{P}_1$ to C.O.M. is</p>\n<p>$$ \\mathrm{d}_1=\\mathrm{x}_{\\mathrm{com}}-\\mathrm{x}_1=\\frac{1}{2}-\\frac{1}{4}=\\frac{1}{4} $$</p>\n<p>Distance from $\\mathrm{P}_1$ to $\\mathrm{P}_2$ is $\\mathrm{d}_2=\\mathrm{x}_2-\\mathrm{x}_1=\\frac{51}{6}-\\frac{1}{4}=\\frac{101-31}{12}=\\frac{71}{12}$</p>\n\n<p>For rotational equilibrium total torque about P$_1$ must be equal to zero ($\\sum \\tau_{P_1} = 0$):</p>\n<p>$$N_2 \\times \\left(\\frac{7l}{12}\\right) - W \\times \\left(\\frac{l}{4}\\right) = 0$$</p>\n<p>$$N_2 \\times \\left(\\frac{7l}{12}\\right) = W \\times \\left(\\frac{l}{4}\\right)$$</p>\n<p>$$N_2 = W \\times \\left(\\frac{l}{4}\\right) \\times \\left(\\frac{12}{7l}\\right)$$</p>\n<p>$$N_2 = \\frac{3}{7}W\\ldots (ii)$$</p>\n<p>Substituting $N_2$ into the translational equilibrium equation (i),</p>\n<p>$$N_1 = W - N_2 = W - \\frac{3}{7}W = \\frac{4}{7}W$$</p>\n<p>So, the ratio is $N_1 : N_2$ is,</p>\n<p>$$\\frac{N_1}{N_2} = \\frac{4/7W}{3/7W} = \\frac{4}{3}$$</p>\n<p>$$\\therefore $$ 9$$\\times $$$$\\frac{N_1}{N_2}$$ = 9 $$\\times $$  $$\\frac{4}{3}$$ = 12.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>समान ऊँचाई वाले दो व्यक्तियों के सिर पर $l$ लंबाई की एक लंबी एकसमान लकड़ी की बीम ले जाई जाती है। वे छड़ के अपने-अपने निकटतम सिरों से क्रमशः $\\frac{l}{4}$ और $\\frac{l}{6}$ की दूरी पर स्थित हैं। उनके सिरों पर अभिलंब प्रतिक्रियाओं का अनुपात $$\\times $$ 9 है :</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msgdbnz8",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform rod of length 4 L and mass $M$ is suspended from a horizontal roof by two light strings of length</p>\n<p>$L$ and $2 L$ as shown. Then the tension (in newton) in the left string of length $L$ is $\\left(M=5 \\mathrm{~kg}, \\mathrm{~g}=10 \\mathrm{~m} / \\mathrm{s}^2\\right)$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msgcz42l%2Ff6cd53c7-12a8-4a0c-86a9-114000b6bf4f%2Fbe9d20d0-90f2-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgcz42m.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msgcz42l%2Ff6cd53c7-12a8-4a0c-86a9-114000b6bf4f%2Fbe9d20d0-90f2-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgcz42m.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "25",
+                "explanation": "<p>Let the uniform rod of length 4 L be along the x -axis from $\\mathrm{x}=0$ to $\\mathrm{x}=4 \\mathrm{~L}$ :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msgd2sv5%2Fe4649792-f83a-4e10-a746-5a8404fe0e3c%2F25318110-90f3-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgd2sv6.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msgd2sv5%2Fe4649792-f83a-4e10-a746-5a8404fe0e3c%2F25318110-90f3-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgd2sv6.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Left end of the rod $(x = 0)$ is attached to the string of length $L$ exert tension $T_1$ upwards.</p>\n<p>Right end of the rod $(x = 4L)$ is attached to the string of length $2L$ exert tension $T_2$ upwards.</p>\n<p>Since the rod is uniform, its Centre of mass lies at its geometric midpoint $x_{com} = \\frac{4L}{2} = 2L$</p>\n<p>The gravitational force $Mg$ acts downwards at this midpoint.</p>\n<p>For the rod to remain in static equilibrium, the sum of all vertical forces must equal zero:</p>\n<p>$$\\sum F_y = 0$$</p>\n<p>$$T_1 + T_2 - Mg = 0 \\Rightarrow T_1 + T_2 = Mg \\ldots (i)$$</p>\n<p>Using Pythagoras theorem, the separation between the strings is $x_1 + x_2 = d = \\sqrt{(4L)^2 - (L)^2} = \\sqrt{7L^2} = \\sqrt{7}L$</p>\n<p>$$x_1 + x_2 = \\sqrt{7}L \\ldots (ii)$$</p>\n\n<p>Using similar triangles, $\\frac{x_1}{2L} = \\frac{\\sqrt{7}L}{4L} \\Rightarrow x_1 = \\frac{\\sqrt{7}L}{2}$ … (iii)</p>\n<p>From both the equations (ii) and (iii),</p>\n<p>$$\\frac{\\sqrt{7}L}{2} + x_2 = \\sqrt{7}L \\Rightarrow x_2 = \\frac{\\sqrt{7}L}{2}$$ … (iv)</p>\n<p>Torque due to $T_1$ about Centre of mass of rod, $\\tau_1 = -T_1 \\times (x_1)$</p>\n<p>Torque due to weight Mg about Centre of mass is zero as it is passing through the Centre of mass, $\\tau_{mg} = 0$</p>\n<p>Torque due to $T_2$ about the Centre of mass is $\\tau_2 = T_2 \\times x_2$</p>\n<p>For rotational equilibrium, the sum of torques about any pivot point must equal zero $\\sum \\vec{\\tau} = 0$</p>\n<p>$$T_1 x_1 = T_2 x_2 \\Rightarrow \\frac{T_1}{T_2} = \\frac{x_2}{x_1} = \\frac{\\frac{\\sqrt{7}L}{2}}{\\frac{\\sqrt{7}L}{2}} = 1 \\Rightarrow T_1 = T_2$$</p>\n<p>So, the tensions in both the strings are equal; $T_1 = T_1$ … (v)</p>\n<p>From equations (i) and (v), $T_1 = T_2 = \\frac{Mg}{2}$</p>\n<p>The mass of the rod is 5 kg</p>\n<p>Acceleration due to gravity $g = 10\\ \\mathrm{m/s^2}$</p>\n<p>$$T_1 = T_2 = \\frac{5 \\times 10}{2} = 25\\ \\mathrm{N}$$</p>\n<p>Therefore, the tension in the left string of length L is 25 N.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>4 L लंबाई और $M$ द्रव्यमान की एक एकसमान छड़ को एक क्षैतिज छत से दो हल्की डोरियों द्वारा लटकाया गया है जिनकी लंबाई</p> <p>चित्रानुसार $L$ और $2 L$ है। तब $L$ लंबाई वाली बाईं डोरी में तनाव (न्यूटन में) है $\\left(M=5 \\mathrm{~kg}, \\mathrm{~g}=10 \\mathrm{~m} / \\mathrm{s}^2\\right)$</p> <img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msgcz42l%2Ff6cd53c7-12a8-4a0c-86a9-114000b6bf4f%2Fbe9d20d0-90f2-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgcz42m.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msgcz42l%2Ff6cd53c7-12a8-4a0c-86a9-114000b6bf4f%2Fbe9d20d0-90f2-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgcz42m.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Torque, Rotational Equilibrium",
+    "timeAllotted": 2160000,
+    "title": "Rotational Motion Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g71mnvy4syj",
+    "defaultLanguage": "en",
+    "description": "Torque, Rotational Equilibrium",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-06T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Torque, Rotational Equilibrium",
+    "timeAllotted": 2160000,
+    "title": "Rotational Motion Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Rotational Motion"
+  }
+}

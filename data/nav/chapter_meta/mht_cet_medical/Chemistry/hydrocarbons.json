@@ -1,0 +1,72 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19157088eaed7250738f35",
+  "chapterId": "6a192bbb49662a7489133197",
+  "subject": "Chemistry",
+  "chapter": "Hydrocarbons",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec18bef1faeb9633e2428",
+      "title": "Reactions of alkynes",
+      "count": 2,
+      "questionIds": [
+        "6a1ec0bbef1faeb9633e1f50",
+        "6a1ec017ef1faeb9633e1b45"
+      ]
+    },
+    {
+      "id": "6a1ec18bef1faeb9633e2429",
+      "title": "Reactions of alkanes",
+      "count": 2,
+      "questionIds": [
+        "6a1ec0d5ef1faeb9633e1ff5",
+        "6a1ec036ef1faeb9633e1c0d"
+      ]
+    },
+    {
+      "id": "6a1ec18bef1faeb9633e242a",
+      "title": "Reactions of aromatic compounds",
+      "count": 5,
+      "questionIds": [
+        "6a1ec09aef1faeb9633e1e82",
+        "6a1ec09aef1faeb9633e1e81",
+        "6a1ec03bef1faeb9633e1c28",
+        "6a1ec134ef1faeb9633e224d",
+        "6a1ec154ef1faeb9633e2315"
+      ]
+    },
+    {
+      "id": "6a1ec18bef1faeb9633e242b",
+      "title": "Reactions of alkenes",
+      "count": 7,
+      "questionIds": [
+        "6a1ec07aef1faeb9633e1dba",
+        "6a1ec07aef1faeb9633e1db9",
+        "6a1ec076ef1faeb9633e1d9d",
+        "6a1ec0bcef1faeb9633e1f57",
+        "6a1ec0b5ef1faeb9633e1f2d",
+        "6a1ec03cef1faeb9633e1c30",
+        "6a1ec115ef1faeb9633e2185"
+      ]
+    },
+    {
+      "id": "6a1ec18cef1faeb9633e242c",
+      "title": "Properties and Preparation of Alkenes",
+      "count": 2,
+      "questionIds": [
+        "6a1ec0f6ef1faeb9633e20bd",
+        "6a1ec095ef1faeb9633e1e65"
+      ]
+    },
+    {
+      "id": "6a1ec18cef1faeb9633e242d",
+      "title": "Properties and Preparation of Alkanes",
+      "count": 1,
+      "questionIds": [
+        "6a1ec0fbef1faeb9633e20e0"
+      ]
+    }
+  ]
+}

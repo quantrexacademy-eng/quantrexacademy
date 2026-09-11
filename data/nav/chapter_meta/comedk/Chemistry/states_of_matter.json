@@ -1,0 +1,71 @@
+{
+  "examSlug": "comedk",
+  "examId": "629105adee9e3ae00d63352e",
+  "subjectId": "629105adee9e3ae00d63352c",
+  "chapterId": "629109e102abc39b2016a5f1",
+  "subject": "Chemistry",
+  "chapter": "States of Matter",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64c57c2020fc93db0c28bdeb",
+      "title": "Gas laws and Ideal Gas Equation",
+      "count": 6,
+      "questionIds": [
+        "681377852d288c475c04ca6a",
+        "681377832d288c475c04ca56",
+        "64c57be820fc93db0c28bb7a",
+        "64c57b9320fc93db0c28b882",
+        "64c57b8020fc93db0c28b7d4",
+        "64c57b6c20fc93db0c28b721"
+      ]
+    },
+    {
+      "id": "64c57c1f20fc93db0c28bdea",
+      "title": "Mixture of gases",
+      "count": 9,
+      "questionIds": [
+        "6a0c7b4372354c537d084e82",
+        "64c57be720fc93db0c28bb71",
+        "64c57bd320fc93db0c28bac1",
+        "64c57bd120fc93db0c28baae",
+        "64c57bbc20fc93db0c28b9f3",
+        "64c57b7020fc93db0c28b747",
+        "64c57b4320fc93db0c28b5b0",
+        "64c57b3420fc93db0c28b526",
+        "64c57b3020fc93db0c28b504"
+      ]
+    },
+    {
+      "id": "64c57c1f20fc93db0c28bde9",
+      "title": "Kinetic theory of gases",
+      "count": 7,
+      "questionIds": [
+        "6813779b2d288c475c04cb14",
+        "654244d8242a07fec9fa763d",
+        "64c57bd320fc93db0c28bac5",
+        "64c57bbd20fc93db0c28b9f8",
+        "64c57b8020fc93db0c28b7d1",
+        "64c57b3520fc93db0c28b52b",
+        "64c57b1c20fc93db0c28b458"
+      ]
+    },
+    {
+      "id": "65424543242a07fec9fa76b3",
+      "title": "Real Gases and Van der Waal's Equation",
+      "count": 2,
+      "questionIds": [
+        "6813779d2d288c475c04cb1f",
+        "654244d7242a07fec9fa762d"
+      ]
+    },
+    {
+      "id": "64c57c2020fc93db0c28bdec",
+      "title": "Critical phenomena and liquefaction",
+      "count": 1,
+      "questionIds": [
+        "64c57b7120fc93db0c28b749"
+      ]
+    }
+  ]
+}

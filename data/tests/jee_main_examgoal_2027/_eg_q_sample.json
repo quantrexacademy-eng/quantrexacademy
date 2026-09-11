@@ -1,0 +1,895 @@
+{
+  "statusCode": 0,
+  "data": {
+    "testId": "tst-19g71mnvwjq23",
+    "defaultLanguage": "en",
+    "description": "Potential Energy, Mechanical Energy Conservation",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-15T10:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrkeezgw",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A stone is projected vertically up with a velocity u, reaches upto a maximum height h. When it is at a height of $\\frac{3h}{4}$ from the ground, the ratio of KE and PE at that point is :</p><p>(consider PE = 0 at the point of projection)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 : 1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1 : 2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1 : 3</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>3 : 1</p>"
+                  }
+                ]
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक पत्थर को ऊर्ध्वाधर ऊपर की ओर u वेग से प्रक्षेपित किया जाता है, जो अधिकतम ऊंचाई h तक पहुँचता है। जब यह जमीन से $\\frac{3h}{4}$ की ऊंचाई पर होता है, तो उस बिंदु पर इसकी गतिज ऊर्जा (KE) और स्थितिज ऊर्जा (PE) का अनुपात है :</p><p>(प्रक्षेपण बिंदु पर PE = 0 मान लें)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 : 1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1 : 2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1 : 3</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>3 : 1</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "mechanical-energy-conservation",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrkeslqo",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A block of mass m is attached to two unstretched springs of spring constants $k_1$ and $k_2$ as shown in figure. The block is displaced towards right through a distance $x$ and is released. Find the speed of the block as it passes through the mean position shown.</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mrkemxs3/cbc13a02-3f9b-4025-bac5-f244ee7aa717/29855d30-7f60-11f1-92fa-31956cdeded5/file-6y3zli1mrkemxs4.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mrkemxs3/cbc13a02-3f9b-4025-bac5-f244ee7aa717/29855d30-7f60-11f1-92fa-31956cdeded5/file-6y3zli1mrkemxs4.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\sqrt{\\frac{k_1 + k_2}{m}}x$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\sqrt{\\frac{k_1 k_2}{m(k_1 + k_2)}}x$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{\\frac{k_1^2 k_2^2}{m(k_1^2 + k_2^2)}}x$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{\\frac{k_1^3 k_2^3}{m(k_1^3 + k_2^3)}}x$</p>"
+                  }
+                ]
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्रानुसार द्रव्यमान m का एक गुटका स्प्रिंग नियतांक $k_1$ तथा $k_2$ वाले दो बिना खिंचे स्प्रिंगों से जुड़ा है। गुटके को दायीं ओर $x$ दूरी तक विस्थापित करके छोड़ दिया जाता है। जब यह प्रदर्शित माध्य स्थिति से गुजरता है, तो गुटके की चाल ज्ञात कीजिए।</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mrkemxs3/cbc13a02-3f9b-4025-bac5-f244ee7aa717/29855d30-7f60-11f1-92fa-31956cdeded5/file-6y3zli1mrkemxs4.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mrkemxs3/cbc13a02-3f9b-4025-bac5-f244ee7aa717/29855d30-7f60-11f1-92fa-31956cdeded5/file-6y3zli1mrkemxs4.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\sqrt{\\frac{k_1 + k_2}{m}}x$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\sqrt{\\frac{k_1 k_2}{m(k_1 + k_2)}}x$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{\\frac{k_1^2 k_2^2}{m(k_1^2 + k_2^2)}}x$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{\\frac{k_1^3 k_2^3}{m(k_1^3 + k_2^3)}}x$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "mechanical-energy-conservation",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrlp028f",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following graphs is correct for kinetic energy (E) and potential energy (U) (with height (h) measured from the ground) for a particle thrown vertically upward from a horizontal ground (h &lt;&lt; R<sub>E</sub> and U = 0 at h = 0)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mrlotpau/e5f50773-6c0c-45e2-b527-8158fca993e0/c9936f60-8014-11f1-9f93-6b7393966c45/file-6y3zli1mrlotpav.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mrlotpau/e5f50773-6c0c-45e2-b527-8158fca993e0/c9936f60-8014-11f1-9f93-6b7393966c45/file-6y3zli1mrlotpav.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mrlotho6/8d093433-1e82-4a2c-8b3b-95223814afa3/c3aea560-8014-11f1-9f93-6b7393966c45/file-6y3zli1mrlotho7.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mrlotho6/8d093433-1e82-4a2c-8b3b-95223814afa3/c3aea560-8014-11f1-9f93-6b7393966c45/file-6y3zli1mrlotho7.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mrlot9c0/d5c765f2-ff22-4ee5-9177-0ed48dfa4e5d/bd3dc800-8014-11f1-9f93-6b7393966c45/file-6y3zli1mrlot9c1.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mrlot9c0/d5c765f2-ff22-4ee5-9177-0ed48dfa4e5d/bd3dc800-8014-11f1-9f93-6b7393966c45/file-6y3zli1mrlot9c1.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mrlot1e7/135900e0-fbde-4efe-a08b-84c60b6614e5/b71bcdf0-8014-11f1-9f93-6b7393966c45/file-6y3zli1mrlot1e8.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mrlot1e7/135900e0-fbde-4efe-a08b-84c60b6614e5/b71bcdf0-8014-11f1-9f93-6b7393966c45/file-6y3zli1mrlot1e8.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  }
+                ]
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>क्षैतिज धरातल से ऊर्ध्वाधर ऊपर की ओर फेंके गए एक कण के लिए गतिज ऊर्जा (E) और स्थितिज ऊर्जा (U) (धरातल से मापी गई ऊँचाई (h) के साथ) का निम्नलिखित में से कौन सा आरेख सही है (h &lt;&lt; R<sub>E</sub> और h = 0 पर U = 0 है)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mrlotpau/e5f50773-6c0c-45e2-b527-8158fca993e0/c9936f60-8014-11f1-9f93-6b7393966c45/file-6y3zli1mrlotpav.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mrlotpau/e5f50773-6c0c-45e2-b527-8158fca993e0/c9936f60-8014-11f1-9f93-6b7393966c45/file-6y3zli1mrlotpav.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mrlotho6/8d093433-1e82-4a2c-8b3b-95223814afa3/c3aea560-8014-11f1-9f93-6b7393966c45/file-6y3zli1mrlotho7.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mrlotho6/8d093433-1e82-4a2c-8b3b-95223814afa3/c3aea560-8014-11f1-9f93-6b7393966c45/file-6y3zli1mrlotho7.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mrlot9c0/d5c765f2-ff22-4ee5-9177-0ed48dfa4e5d/bd3dc800-8014-11f1-9f93-6b7393966c45/file-6y3zli1mrlot9c1.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mrlot9c0/d5c765f2-ff22-4ee5-9177-0ed48dfa4e5d/bd3dc800-8014-11f1-9f93-6b7393966c45/file-6y3zli1mrlot9c1.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mrlot1e7/135900e0-fbde-4efe-a08b-84c60b6614e5/b71bcdf0-8014-11f1-9f93-6b7393966c45/file-6y3zli1mrlot1e8.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mrlot1e7/135900e0-fbde-4efe-a08b-84c60b6614e5/b71bcdf0-8014-11f1-9f93-6b7393966c45/file-6y3zli1mrlot1e8.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "potential-energy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrkfgm8k",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A rod of length 1 m and mass 0.5 kg hinged at one end, is initially hanging vertical. The other end is now raised slowly until it makes an angle 60° with the vertical. The required work is :</p><p>(Use g = 10 m/s<sup>2</sup>)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{5}{2}$ J</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{5}{4}$ J</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{17}{8}$ J</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{5\\sqrt{3}}{4}$ J</p>"
+                  }
+                ]
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>1 m लंबी और 0.5 kg द्रव्यमान की एक छड़ एक सिरे पर कीलकित (hinged) है और आरंभ में ऊर्ध्वाधर रूप से लटकी हुई है। अब इसके दूसरे सिरे को धीरे-धीरे तब तक ऊपर उठाया जाता है जब तक कि यह ऊर्ध्वाधर के साथ 60° का कोण न बना ले। किया गया आवश्यक कार्य है :</p><p>(g = 10 m/s<sup>2</sup> लें)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{5}{2}$ J</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{5}{4}$ J</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{17}{8}$ J</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{5\\sqrt{3}}{4}$ J</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "mechanical-energy-conservation",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrkf2u85",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A running man has half the kinetic energy of that of a boy of half of his mass. The man speeds up by 1 m/s so as to have same kinetic energy as that of the boy. The original speed of the man will be</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\sqrt{2}$ m/s</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(\\sqrt{2} - 1)$ m/s</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{1}{\\sqrt{2}-1}$ m/s</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{1}{\\sqrt{2}}$ m/s</p>"
+                  }
+                ]
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक दौड़ते हुए आदमी की गतिज ऊर्जा उस लड़के की गतिज ऊर्जा की आधी है, जिसका द्रव्यमान आदमी के द्रव्यमान का आधा है। वह आदमी अपनी चाल में 1 m/s की वृद्धि कर देता है ताकि उसकी गतिज ऊर्जा लड़के की गतिज ऊर्जा के समान हो जाए। आदमी की मूल चाल होगी</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\sqrt{2}$ m/s</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(\\sqrt{2} - 1)$ m/s</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{1}{\\sqrt{2}-1}$ m/s</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{1}{\\sqrt{2}}$ m/s</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "mechanical-energy-conservation",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrlpixsx",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The force acting on a body moving along x-axis varies with the position of the particle as shown in the figure.</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mrlp6u80/fd18e905-bdfe-478e-a013-5f6bc8dcca63/36e57800-8016-11f1-9f93-6b7393966c45/file-6y3zli1mrlp6u81.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mrlp6u80/fd18e905-bdfe-478e-a013-5f6bc8dcca63/36e57800-8016-11f1-9f93-6b7393966c45/file-6y3zli1mrlp6u81.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$x = x_1$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$x = x_2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>both $x_1$ and $x_2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>neither $x_1$ nor $x_2$</p>"
+                  }
+                ]
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>x-अक्ष के अनुदिश गतिमान किसी पिंड पर लगने वाला बल, चित्र में दर्शाए गए अनुसार कण की स्थिति के साथ परिवर्तित होता है।</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mrlp6u80/fd18e905-bdfe-478e-a013-5f6bc8dcca63/36e57800-8016-11f1-9f93-6b7393966c45/file-6y3zli1mrlp6u81.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mrlp6u80/fd18e905-bdfe-478e-a013-5f6bc8dcca63/36e57800-8016-11f1-9f93-6b7393966c45/file-6y3zli1mrlp6u81.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$x = x_1$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$x = x_2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$x_1$ और $x_2$ दोनों</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>न तो $x_1$ और न ही $x_2$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "potential-energy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrloepv4",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Potential energy v/s displacement curve for one dimensional conservative field is shown. Force at A, B and C is respectively.</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mrlo9ytb/5f55fed7-59e5-4ae5-b147-43fcbec88fa9/a4bde0f0-8012-11f1-9f93-6b7393966c45/file-6y3zli1mrlo9ytc.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mrlo9ytb/5f55fed7-59e5-4ae5-b147-43fcbec88fa9/a4bde0f0-8012-11f1-9f93-6b7393966c45/file-6y3zli1mrlo9ytc.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Zero, Positive, Positive</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Positive, Zero, Negative</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Negative, Zero, Positive</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Negative, Zero, Negative</p>"
+                  }
+                ]
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एकविमीय संरक्षी क्षेत्र के लिए स्थितिज ऊर्जा बनाम विस्थापन वक्र दर्शाया गया है। A, B और C पर बल क्रमशः हैं।</p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mrlo9ytb/5f55fed7-59e5-4ae5-b147-43fcbec88fa9/a4bde0f0-8012-11f1-9f93-6b7393966c45/file-6y3zli1mrlo9ytc.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mrlo9ytb/5f55fed7-59e5-4ae5-b147-43fcbec88fa9/a4bde0f0-8012-11f1-9f93-6b7393966c45/file-6y3zli1mrlo9ytc.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>शून्य, धनात्मक, धनात्मक</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>धनात्मक, शून्य, ऋणात्मक</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>ऋणात्मक, शून्य, धनात्मक</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>ऋणात्मक, शून्य, ऋणात्मक</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "potential-energy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrgmx7ak",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A bead of mass <i>m</i> slides on a frictionless vertical hoop of radius <i>a</i>. The bead is attached to a spring of spring constant <i>k</i> and relaxed length zero. The other end of the spring is attached to the bottom of the hoop. The bead is released at the top of the hoop with negligible speed. The speed of the bead at the bottom of the hoop is,</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mrgmtqf0/3fd7e6fe-a273-4a82-aa7a-60ce79c94960/0ceeb3c0-7d4d-11f1-9a30-1faf6be081f6/file-6y3zli1mrgmtqf1.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mrgmtqf0/3fd7e6fe-a273-4a82-aa7a-60ce79c94960/0ceeb3c0-7d4d-11f1-9a30-1faf6be081f6/file-6y3zli1mrgmtqf1.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\sqrt{ga + \\frac{ka^2}{m}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2\\sqrt{ga + \\frac{ka^2}{m}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{2ga + \\frac{ka^2}{m}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{2ga + 2\\frac{ka^2}{m}}$</p>"
+                  }
+                ]
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान <i>m</i> का एक मनका त्रिज्या <i>a</i> के एक घर्षण रहित ऊर्ध्वाधर छल्ले (hoop) पर फिसलता है। मनका स्प्रिंग नियतांक <i>k</i> और शून्य शिथिल लंबाई (relaxed length) वाले एक स्प्रिंग से जुड़ा है। स्प्रिंग का दूसरा सिरा छल्ले के निचले हिस्से से जुड़ा है। मनके को छल्ले के शीर्ष से नगण्य चाल के साथ छोड़ा जाता है। छल्ले के निचले स्तर पर मनके की चाल होगी,</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mrgmtqf0/3fd7e6fe-a273-4a82-aa7a-60ce79c94960/0ceeb3c0-7d4d-11f1-9a30-1faf6be081f6/file-6y3zli1mrgmtqf1.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mrgmtqf0/3fd7e6fe-a273-4a82-aa7a-60ce79c94960/0ceeb3c0-7d4d-11f1-9a30-1faf6be081f6/file-6y3zli1mrgmtqf1.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\sqrt{ga + \\frac{ka^2}{m}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2\\sqrt{ga + \\frac{ka^2}{m}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{2ga + \\frac{ka^2}{m}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{2ga + 2\\frac{ka^2}{m}}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "potential-energy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrlonaf7",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle is taken from point A to point B under the influence of a force. Now it is taken back from B to A and it is observed that the work done in taking the particle from A to B is not equal to the work done in taking it from B to A. If $W_{nc}$ and $W_c$ is the work done by non-conservative forces and conservative forces present in the system respectively, $\\Delta U$ is the change in potential energy, $\\Delta k$ is the change in kinetic energy, then choose the incorrect option.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$W_{nc} - \\Delta U = \\Delta k$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$W_c = -\\Delta U$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$W_{nc} + W_c = \\Delta k$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$W_{nc} - \\Delta U = -\\Delta k$</p>"
+                  }
+                ]
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक कण को एक बल के प्रभाव में बिंदु A से बिंदु B तक ले जाया जाता है। अब इसे B से वापस A पर लाया जाता है और यह देखा जाता है कि कण को A से B तक ले जाने में किया गया कार्य, इसे B से A तक ले जाने में किए गए कार्य के बराबर नहीं है। यदि $W_{nc}$ और $W_c$ क्रमशः निकाय में उपस्थित असंरक्षी और संरक्षी बलों द्वारा किया गया कार्य है, $\\Delta U$ स्थितिज ऊर्जा में परिवर्तन है, $\\Delta k$ गतिज ऊर्जा में परिवर्तन है, तो गलत विकल्प चुनें।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$W_{nc} - \\Delta U = \\Delta k$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$W_c = -\\Delta U$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$W_{nc} + W_c = \\Delta k$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$W_{nc} - \\Delta U = -\\Delta k$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "potential-energy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrloqo0r",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The potential energy of a system of two particles is given by $U(x) = \\frac{a}{x^2} - \\frac{b}{x}$. Find the minimum potential energy of the system, where $x$ is the distance of separation and $a, b$ are positive constants.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$-\\frac{b^2}{4a}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{b^2}{4a}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{2a}{b}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$-\\frac{2a}{b}$</p>"
+                  }
+                ]
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो कणों के एक निकाय की स्थितिज ऊर्जा $U(x) = \\frac{a}{x^2} - \\frac{b}{x}$ द्वारा दी गई है। निकाय की न्यूनतम स्थितिज ऊर्जा ज्ञात कीजिए, जहाँ $x$ दोनों के बीच की दूरी है और $a, b$ धनात्मक नियतांक हैं।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$-\\frac{b^2}{4a}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{b^2}{4a}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{2a}{b}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$-\\frac{2a}{b}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "potential-energy",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrkdcly1",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A stone projected vertically up with a velocity $u$ reaches a maximum height $h$. When it is at a height of $\\frac{3 h}{4}$ from the ground, the ratio of $K E$ and $P E$ at that point is equal to $1 / x$. Find value of $x$ : (consider $P E=$ 0 at the point of trajectory).</p>",
+                "options": []
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>ऊर्ध्वाधर रूप से ऊपर की ओर $u$ वेग से प्रक्षेपित एक पत्थर अधिकतम ऊंचाई $h$ तक पहुंचता है। जब यह जमीन से $\\frac{3 h}{4}$ की ऊंचाई पर होता है, तो उस बिंदु पर $K E$ और $P E$ का अनुपात $1 / x$ के बराबर होता है। $x$ का मान ज्ञात कीजिए: (मान लीजिए कि प्रक्षेपण बिंदु पर $P E= 0$ है)।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "mechanical-energy-conservation",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrkdhzo0",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "When a spring is stretched by 2 cm , it stores 100 J of energy. If it is stretched further by 2 cm , the stored energy will be increased by $\\mathbf{1 0 0} \\boldsymbol{x}$ Joule. Find value of $\\mathbf{x}$.",
+                "options": []
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "जब एक स्प्रिंग को 2 cm खींचा जाता है, तो उसमें 100 J ऊर्जा संचित होती है। यदि इसे 2 cm और खींचा जाता है, तो संचित ऊर्जा में $\\mathbf{1 0 0} \\boldsymbol{x}$ जूल की वृद्धि होगी। $\\mathbf{x}$ का मान ज्ञात कीजिए।",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "mechanical-energy-conservation",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrlpvnrp",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the path PQR in a conservative force field (fig.), the amount of work done in carrying a body from $P$ to $Q$ $\\&amp;$ from $Q$ to $R$ are $5 J \\& 2 J$ respectively. Find the work done in carrying the body from $P$ to R in Joule.</p>",
+                "options": []
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक संरक्षी बल क्षेत्र (चित्र) में पथ PQR के लिए, एक पिंड को $P$ से $Q$ $\\&amp;$ $Q$ से $R$ तक ले जाने में किया गया कार्य क्रमशः $5 J \\& 2 J$ है। पिंड को $P$ से R तक ले जाने में किया गया कार्य जूल में ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "potential-energy",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mpy5zfor",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The speed of a projectile at its greatest height is $\\sqrt{6/7}$ of its speed when it is at half of its greatest height. The angle of projection is:</p>",
+                "options": []
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अपनी अधिकतम ऊंचाई पर एक प्रक्षेप्य की चाल, अपनी अधिकतम ऊंचाई की आधी ऊंचाई पर इसकी चाल की $\\sqrt{6/7}$ है। प्रक्षेपण कोण है:</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "mechanical-energy-conservation",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrlr8n3d",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The potential energy $U$ of a particle of mass $m=1 \\mathrm{~kg}$ moving in the $x y$-plane is given by $U=2 x+ 5 y-x y$. If the particle is at rest at $(2,-2)$, its acceleration (in $\\mathrm{m} / \\mathrm{s}^2$ ) at this position is given by</p>",
+                "options": []
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$x y$-तल में गति कर रहे $m=1 \\mathrm{~kg}$ द्रव्यमान के एक कण की स्थितिज ऊर्जा $U=2 x+ 5 y-x y$ है। यदि यह कण $(2,-2)$ पर विरामावस्था में है, तो इस स्थिति पर इसका त्वरण ($\\mathrm{m} / \\mathrm{s}^2$ में) होगा:</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "potential-energy",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Potential Energy, Mechanical Energy Conservation",
+    "timeAllotted": 2160000,
+    "title": "Work, Energy and Power Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  }
+}

@@ -1,0 +1,158 @@
+/* Permanent math/solution format lock.
+   Never zero KaTeX rules (frac / sqrt / overline). Load LAST. */
+
+.eg-test-root .katex,
+.eg-q-stem .katex,
+.eg-sol .katex,
+.mtk-q-text .katex,
+.mtk-opt-text .katex,
+.qx-sol-flow .katex,
+.sol-body .katex,
+.qx-content .katex {
+  overflow: visible !important;
+}
+
+.eg-test-root .katex-display,
+.eg-q-stem .katex-display,
+.eg-sol .katex-display,
+.mtk-q-text .katex-display,
+.sol-body .katex-display,
+.qx-sol-flow .katex-display {
+  overflow: visible !important;
+}
+
+.katex-display.qx-math-block {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+}
+
+/* Division bar, root bar, overline — restore even if a parent used border:0 */
+.katex .frac-line,
+.katex .sqrt-line,
+.katex .overline-line,
+.katex .underline-line,
+.katex .hline,
+.katex .hdashline,
+.katex .rule,
+.eg-test-root .katex .frac-line,
+.eg-test-root .eg-sol .katex .frac-line,
+.eg-test-root .eg-q-stem .katex .frac-line,
+.eg-sol .katex .frac-line,
+.eg-sol .katex .sqrt-line,
+.eg-sol .katex .overline-line,
+.eg-sol .katex .underline-line,
+.eg-sol .katex .hline,
+.eg-sol .katex .rule,
+.eg-q-stem .katex .frac-line,
+.eg-q-stem .katex .sqrt-line,
+.mtk-opt-text .katex .frac-line,
+.qx-sol-flow .katex .frac-line,
+.sol-body .katex .frac-line {
+  border-bottom-style: solid !important;
+  border-bottom-width: 0.06em !important;
+  border-bottom-color: currentColor !important;
+  background-color: transparent !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  display: inline-block !important;
+  width: 100% !important;
+}
+
+.katex .sqrt-line,
+.eg-test-root .katex .sqrt-line,
+.eg-sol .katex .sqrt-line {
+  width: 100% !important;
+}
+
+/* Never paint fill-color / transparent bg onto KaTeX internals */
+.eg-test-root .katex .frac-line,
+.eg-test-root .katex .sqrt-line,
+.eg-test-root .katex .overline-line,
+.eg-test-root .katex .underline-line,
+.eg-test-root .katex .hline,
+.eg-test-root .katex .rule {
+  -webkit-text-fill-color: currentColor !important;
+  background-image: none !important;
+}
+
+.eg-test-root .eg-q-card {
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+}
+
+.eg-test-root .eg-q-stem,
+.eg-test-root .mtk-q-text,
+.eg-test-root .eg-sol,
+.eg-test-root .qx-sol-flow,
+.eg-test-root .sol-body,
+.eg-test-root .mtk-opt-text {
+  overflow: visible !important;
+}
+
+/* Solution: no extra boxes, but NEVER border:0 on .katex * */
+.eg-test-root .eg-sol,
+.eg-test-root .eg-sol.eg-sol-open,
+.eg-test-root #egSol,
+.eg-test-root .qx-sol-card,
+.eg-test-root .qx-sol-flow,
+.eg-test-root .sol-body,
+.eg-test-root .qx-sol-p,
+.eg-test-root .qx-sol-step,
+.eg-test-root .qx-sol-step-plain,
+.eg-test-root .qx-sol-step-line {
+  box-shadow: none !important;
+}
+
+.eg-test-root .qx-sol-p,
+.eg-test-root .qx-sol-step,
+.eg-test-root .qx-sol-step-plain {
+  border: 0 !important;
+  background: transparent !important;
+}
+
+.eg-test-root .katex-error,
+.eg-test-root [class*="katex-error"] {
+  display: none !important;
+}
+
+.eg-test-root .qx-math-fallback {
+  display: inline !important;
+  font-family: KaTeX_Main, Times New Roman, serif;
+  white-space: nowrap;
+}
+
+.eg-test-root #qxOpts .mtk-opt-text,
+.eg-test-root #qxOpts .mtk-opt .qx-content {
+  display: block !important;
+  overflow: visible !important;
+  min-width: 0 !important;
+}
+.eg-test-root #qxOpts.qx-opts-stack {
+  display: flex !important;
+  flex-direction: column !important;
+  grid-template-columns: 1fr !important;
+}
+.eg-test-root #qxOpts.mtk-numerical-wrap {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  grid-template-columns: none !important;
+}
+.eg-test-root .qx-sol-flow p,
+.eg-test-root .qx-sol-p,
+.eg-sol .qx-sol-flow p {
+  max-width: none !important;
+}
+
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .eg-sol,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .qx-sol-card,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .katex {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+html[data-theme="dark"] .eg-test-root[data-test-theme="dark"] .eg-sol,
+html[data-theme="dark"] .eg-test-root[data-test-theme="dark"] .qx-sol-card,
+html[data-theme="dark"] .eg-test-root[data-test-theme="dark"] .katex {
+  color: #e5e7eb !important;
+  -webkit-text-fill-color: #e5e7eb !important;
+}

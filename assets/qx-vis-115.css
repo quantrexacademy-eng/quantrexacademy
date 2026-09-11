@@ -1,0 +1,244 @@
+/**
+ * qxmd115 — Solution analysis / View Solution visibility + clean layout
+ * PYQ mock Report Card + Test series analysis · light + dark · no lining mess · no $ litter CSS support
+ */
+
+/* ——— Plate + ink: solution cards / flows ——— */
+.mk-sol-view .qx-sol-card,
+.mk-sol-row .qx-sol-card,
+.mtk-sol,
+.mtk-sol .qx-content,
+.qaSolReveal,
+#qaSolReveal,
+.qx-sol-reveal-box,
+.qx-prac-result-wrap .qx-sol-card {
+  --qx-sol-ink: #0f172a;
+  --qx-sol-plate: #ffffff;
+  --qx-sol-muted: #334155;
+  --qx-sol-border: #cbd5e1;
+}
+
+html[data-theme="dark"] .mk-sol-view .qx-sol-card,
+html[data-theme="dark"] .mk-sol-row .qx-sol-card,
+html[data-theme="dark"] .mtk-sol,
+html[data-theme="dark"] .mtk-sol .qx-content,
+html[data-theme="dark"] #qaSolReveal,
+html[data-theme="dark"] .qx-sol-reveal-box,
+html[data-theme="dark"] .qx-prac-result-wrap .qx-sol-card,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-card,
+.mtk-test-root[data-test-theme="dark"] .mk-sol-row,
+.eg-test-root[data-test-theme="dark"] .qx-sol-card {
+  --qx-sol-ink: #f8fafc;
+  --qx-sol-plate: #0f172a;
+  --qx-sol-muted: #cbd5e1;
+  --qx-sol-border: #334155;
+}
+
+.mk-sol-view .qx-sol-card,
+.mk-sol-row .qx-sol-card,
+.mtk-sol,
+#qaSolReveal .qx-sol-card,
+.qx-sol-reveal-box .qx-sol-card {
+  background: var(--qx-sol-plate) !important;
+  color: var(--qx-sol-ink) !important;
+  border: 1px solid var(--qx-sol-border) !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+}
+
+/* CBT light theme wins even if app chrome is dark */
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .qx-sol-card,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .qx-sol-card,
+.mtk-test-root[data-test-theme="light"] .qx-sol-card,
+.eg-test-root[data-test-theme="light"] .qx-sol-card {
+  --qx-sol-ink: #0f172a;
+  --qx-sol-plate: #ffffff;
+  --qx-sol-muted: #334155;
+  --qx-sol-border: #cbd5e1;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Stem + option + solution text ink */
+.mk-sol-stem,
+.mk-sol-stem .qx-content,
+.mk-sol-opt-text,
+.mk-sol-row .sol-body,
+.mk-sol-row .qx-sol-flow,
+.mk-sol-row .qx-sol-flow p,
+.mk-sol-row .qx-sol-flow .qx-sol-p,
+.mk-sol-row .qx-sol-body,
+.mtk-sol .qx-content,
+.mtk-sol .sol-body,
+.mtk-sol .qx-sol-flow,
+#qaSolReveal .sol-body,
+#qaSolReveal .qx-sol-flow,
+#qaSolReveal .qx-sol-flow p,
+#qaSolReveal .qx-sol-p {
+  color: var(--qx-sol-ink, #0f172a) !important;
+  -webkit-text-fill-color: var(--qx-sol-ink, #0f172a) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html[data-theme="dark"] .mk-sol-stem,
+html[data-theme="dark"] .mk-sol-opt-text,
+html[data-theme="dark"] .mk-sol-row .sol-body,
+html[data-theme="dark"] .mk-sol-row .qx-sol-flow,
+html[data-theme="dark"] .mk-sol-row .qx-sol-flow p,
+html[data-theme="dark"] .mtk-sol .qx-content,
+html[data-theme="dark"] #qaSolReveal .sol-body,
+html[data-theme="dark"] #qaSolReveal .qx-sol-flow,
+.mtk-test-root[data-test-theme="dark"] .mk-sol-stem,
+.mtk-test-root[data-test-theme="dark"] .mk-sol-row .sol-body,
+.mtk-test-root[data-test-theme="dark"] .mk-sol-row .qx-sol-flow {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+.mtk-test-root[data-test-theme="light"] .mk-sol-stem,
+.mtk-test-root[data-test-theme="light"] .mk-sol-row .sol-body,
+.mtk-test-root[data-test-theme="light"] .mk-sol-row .qx-sol-flow,
+.eg-test-root[data-test-theme="light"] .sol-body,
+.eg-test-root[data-test-theme="light"] .qx-sol-flow {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+
+/* KaTeX inherits ink */
+.mk-sol-row .katex,
+.mk-sol-row .katex *,
+.mtk-sol .katex,
+.mtk-sol .katex *,
+#qaSolReveal .katex,
+#qaSolReveal .katex *,
+.qx-sol-card .katex,
+.qx-sol-card .katex * {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+html[data-theme="dark"] .mk-sol-row .katex,
+html[data-theme="dark"] .mk-sol-row .katex *,
+html[data-theme="dark"] .mtk-sol .katex,
+html[data-theme="dark"] .mtk-sol .katex *,
+html[data-theme="dark"] #qaSolReveal .katex,
+html[data-theme="dark"] #qaSolReveal .katex *,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-card .katex,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-card .katex * {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+.mtk-test-root[data-test-theme="light"] .qx-sol-card .katex,
+.mtk-test-root[data-test-theme="light"] .qx-sol-card .katex *,
+html[data-theme="light"] .qx-sol-card .katex,
+html[data-theme="light"] .qx-sol-card .katex * {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+
+/* ——— No lining mess: borders / underlines / HR clutter ——— */
+.mk-sol-row .sol-body hr,
+.mk-sol-row .qx-sol-flow hr,
+.qx-sol-card hr,
+.mtk-sol hr,
+#qaSolReveal hr,
+.qx-sol-flow hr,
+.sol-body hr {
+  display: none !important;
+}
+
+.mk-sol-row .sol-body p,
+.mk-sol-row .qx-sol-p,
+.qx-sol-flow p,
+.qx-sol-flow .qx-sol-p,
+.mtk-sol p,
+.sol-body p {
+  border: none !important;
+  border-bottom: none !important;
+  border-top: none !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.qx-sol-flow u,
+.sol-body u,
+.mtk-sol u,
+.mk-sol-row .sol-body u {
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+/* Nested flow already inside sol-body — avoid double chrome */
+.sol-body > .qx-sol-flow,
+.qx-content.sol-body > .qx-sol-flow {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Clean paragraph rhythm */
+.mk-sol-row .qx-sol-flow .qx-sol-p,
+.mk-sol-row .sol-body p,
+.qx-sol-card .qx-sol-p {
+  margin: 0 0 12px !important;
+  line-height: 1.75 !important;
+  max-width: 72ch;
+}
+.mk-sol-row .qx-sol-flow .qx-sol-p:last-child,
+.mk-sol-row .sol-body p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Analysis stem / options — neat plates */
+.mk-sol-stem {
+  display: block;
+  margin: 8px 0 14px;
+  line-height: 1.7;
+  font-size: 17px;
+}
+.mk-sol-opts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+.mk-sol-opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1.5px solid #94a3b8;
+  background: #fff;
+  color: #0f172a;
+}
+html[data-theme="dark"] .mk-sol-opt,
+.mtk-test-root[data-test-theme="dark"] .mk-sol-opt {
+  background: #1e293b !important;
+  border-color: #64748b !important;
+  color: #f8fafc !important;
+}
+.mtk-test-root[data-test-theme="light"] .mk-sol-opt {
+  background: #fff !important;
+  border-color: #94a3b8 !important;
+  color: #0f172a !important;
+}
+
+/* Solution figures stay readable on dark */
+html[data-theme="dark"] .mk-sol-row .qx-sol-card img,
+html[data-theme="dark"] .mk-sol-fig,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-card img {
+  background: #ffffff !important;
+  border-radius: 8px;
+  padding: 6px;
+}
+
+/* Hide leftover raw TeX dollar markers if any slip through as lone chars */
+.qx-sol-dollar-gone {
+  display: none !important;
+}

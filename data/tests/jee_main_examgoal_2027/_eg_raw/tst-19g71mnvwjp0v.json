@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g71mnvwjp0v",
+  "title": "Work, Energy and Power Test - 2 (Topic Test)",
+  "type": "topic",
+  "section": "Work, Energy and Power",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-07-14T08:30:00.000Z",
+  "status": "ok",
+  "analysisId": "a09f8929-296d-4f21-b5e7-d32cf8798a3d",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g71mnvwjp0v",
+    "defaultLanguage": "en",
+    "description": "Kinetic Energy, Work Energy Theorem",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-14T08:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrjdh17c",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A block connected to a spring is placed on a smooth horizontal surface and is acted upon by a constant horizontal force, as shown in the figure. At the start, the spring is at its natural length. The maximum positive work done by the force F is: [Given that spring does not break]</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrjde57l%2Fa2e9f686-b4dd-47c8-a423-30d94cc767bd%2F83333510-7ece-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjde57m.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrjde57l%2Fa2e9f686-b4dd-47c8-a423-30d94cc767bd%2F83333510-7ece-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjde57m.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{F^2}{K} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{2F^2}{K} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\infty $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{F^2}{2K} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The block rests on a smooth horizontal surface ($\\mu = 0$) and is attached to a spring of spring constant $k$.</p>\n<p>Initially, the spring is at its natural length ($x = 0$), so the initial velocity and kinetic energy are zero</p>\n<p>($u = 0, K_i = 0$).</p>\n<p>A constant horizontal force $F$ starts pulling the block to the right. As the block moves, it accelerates because $F$ is initially greater than the spring's restoring force ($kx$).</p>\n<p>As the displacement $x$ increases, the spring stretches and exerts an increasing backward force $kx$.</p>\n<p>The block continues to move forward to the right as long as it has a forward velocity ($v > 0$). It will eventually come to an instantaneous stop ($v = 0$) at its maximum elongation point, $x = x_{\\max}$, before being pulled back by the spring.</p>\n<p>According to the work-energy theorem, the net work done by all forces equals the change in kinetic energy of the block :</p>\n<p>$$W_{\\text{net}} = \\Delta K$$</p>\n<p>$$W_F + W_{\\text{spring}} = K_f - K_i$$</p>\n<p>At the point of maximum displacement ($x_{\\max}$), the block momentarily comes to rest, so $K_f = 0$.</p>\n<p>Since it started from rest, $K_i = 0$.</p>\n<p>Thus: $$W_F + W_{\\text{spring}} = 0$$</p>\n<p>Since the force is constant and acts in the direction of displacement :</p>\n<p>$$W_F = F \\cdot x_{\\max}$$</p>\n<p>The spring force opposes the displacement, doing negative work :</p>\n<p>$$W_{\\text{spring}} = -\\frac{1}{2}kx_{\\max}^2$$</p>\n<p>$$\\Rightarrow F \\cdot x_{\\max} - \\frac{1}{2}kx_{\\max}^2 = 0$$</p>\n<p>$$F = \\frac{1}{2}k x_{\\max} \\Rightarrow x_{\\max} = \\frac{2F}{k}$$</p>\n<p>The force F does positive work throughout the extension because the force vector and displacement vector point</p>\n<p>in the same direction.</p>\n<p>$$W_{\\mathrm{F}}(\\max)=F\\cdot x_{\\max}=F\\cdot\\left(\\frac{2F}{k}\\right)=\\frac{2F^2}{k}$$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक स्प्रिंग से जुड़ा एक ब्लॉक एक चिकनी क्षैतिज सतह पर रखा गया है और चित्र में दर्शाए अनुसार उस पर एक नियत क्षैतिज बल कार्य कर रहा है। शुरुआत में, स्प्रिंग अपनी स्वाभाविक लंबाई में है। बल F द्वारा किया गया अधिकतम धनात्मक कार्य है: [दिया गया है कि स्प्रिंग टूटती नहीं है]</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrjde57l%2Fa2e9f686-b4dd-47c8-a423-30d94cc767bd%2F83333510-7ece-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjde57m.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrjde57l%2Fa2e9f686-b4dd-47c8-a423-30d94cc767bd%2F83333510-7ece-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjde57m.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{F^2}{K} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{2F^2}{K} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\infty $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{F^2}{2K} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrkajiri",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A body of mass m is initially at rest. If the only force acting on it is F for a duration t, then its kinetic energy at the end of this duration is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{F^2 t^2}{m} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{F^2 t^2}{2m} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{F^2 t^2}{3m} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{Ft}{2m} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>According Newton's second law of motion, the net force acting on an object is equal to the rate of change of its</p>\n<p>momentum:</p>\n<p>$$F = \\frac{\\mathrm{d}p}{\\mathrm{d}t}$$</p>\n<p>For a constant mass $m$, this can be written in terms of acceleration $a$:</p>\n<p>$$F = \\frac{\\mathrm{d}(mv)}{\\mathrm{d}t} = m \\cdot \\frac{\\mathrm{d}v}{\\mathrm{d}t} = m \\cdot a$$</p>\n<p>$$\\Rightarrow a = \\frac{F}{m}$$</p>\n<p>Acceleration is the rate of change of velocity over time:</p>\n<p>$$a = \\frac{\\mathrm{d}v}{\\mathrm{d}t} \\Rightarrow \\mathrm{d}v = a\\mathrm{d}t$$</p>\n<p>Since the force $F$ and mass $m$ are constant, the acceleration $a$ is uniform. As the particle started from rest, $v = 0$</p>\n<p>at $t = 0$.</p>\n<p>Let the velocity of particle at any time $t$ is $v$.</p>\n<p>$$\\mathrm{d}v = \\int\\limits_{0}^{v} a\\,\\mathrm{d}t$$</p>\n<p>$$v - 0 = a \\cdot t$$</p>\n<p>$$v = a \\cdot t$$</p>\n<p>Substituting the expression for acceleration $a = \\frac{F}{m}$ into the velocity equation,</p>\n<p>$$v = \\left(\\frac{F}{m}\\right)t$$</p>\n<p>The kinetic energy $(K)$ of a moving body is the work done to accelerate it from rest to velocity $v$:</p>\n<p>$$\\Rightarrow K = \\frac{1}{2}mv^2$$</p>\n<p>$$\\Rightarrow K = \\frac{1}{2}m\\left(\\frac{Ft}{m}\\right)^2$$</p>\n<p>$$\\Rightarrow K = \\frac{1}{2}m\\left(\\frac{F^2 t^2}{m^2}\\right)$$</p>\n<p>$$\\Rightarrow K = \\frac{F^2 t^2}{2m}$$</p>\n<p>Therefore, the kinetic energy after time t is $\\frac{\\mathrm{F}^2 \\mathrm{t}^2}{2 \\mathrm{~m}}$. Thus, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान m का एक पिंड प्रारंभ में विरामावस्था में है। यदि t समय अवधि के लिए इस पर कार्य करने वाला एकमात्र बल F है, तो इस अवधि के अंत में इसकी गतिज ऊर्जा होगी :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{F^2 t^2}{m} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{F^2 t^2}{2m} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{F^2 t^2}{3m} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{Ft}{2m} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrjd443g",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A body of mass 1 kg is moved slowly from A to D over the inclined planes shown in the figure. The applied force acts parallel to the inclined plane at every stage, and the body stays in contact with the plane surfaces throughout. Ignoring the jerks at points B and C, the total work done by the applied force is :</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrjd0ot2%2F4b1eefb8-146a-42f6-8e74-1ecb09bb8c73%2F0d028360-7ecd-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjd0ot3.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrjd0ot2%2F4b1eefb8-146a-42f6-8e74-1ecb09bb8c73%2F0d028360-7ecd-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjd0ot3.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>90 J</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>56 J</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>180 J</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>0 J</b></p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>When the body is shifted slowly then it is moved with an infinitesimally small velocity at every point, so its kinetic energy remains zero throughout the journey ($\\Delta K = 0$).</p>\n<p>By the Work-Energy Theorem, the total net work done by all forces must equal the change in kinetic energy,</p>\n<p>$$W_{\\text{net}} = \\Delta K = 0$$</p>\n<p>$$W_{\\text{force}} + W_{\\text{gravity}} + W_{\\text{friction}} = 0$$</p>\n<p>$$W_{\\text{force}} = -W_{\\text{gravity}} - W_{\\text{friction}}$$</p>\n<p>Gravity is a conservative force, so the work it does depends only on the initial and final vertical heights.</p>\n<p>The total vertical height ($h$) climbed from point A to point D is the sum of the vertical heights of all segments shown in the diagram:</p>\n<p>$$h = 2\\ \\text{m} + 3\\ \\text{m} + 3\\ \\text{m} = 8\\ \\text{m}$$</p>\n<p>Since the block moves upward against gravity, gravity does negative work:</p>\n<p>$$W_{\\text{gravity}} = -mgh = -1 \\times 10 \\times 8 = -80\\ \\text{J}$$</p>\n<p>For any inclined plane segment of inclination angle $\\theta$ and horizontal base length $b$, the length of the incline is</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrjd2iuc%2Fa9a115e6-7d3e-4ec1-ae12-1b69781d0b97%2F40054a40-7ecd-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjd2iud.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrjd2iuc%2Fa9a115e6-7d3e-4ec1-ae12-1b69781d0b97%2F40054a40-7ecd-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjd2iud.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>$$L = b\\cos\\theta$$</p>\n<p>The normal force is $N = mg\\cos\\theta$, so the kinetic friction force is $f_k = \\mu N = \\mu mg\\cos\\theta$.</p>\n<p>The work done by friction along incline segment as the block moves up the length $L$ is:</p>\n<p>$$W_f = -f_k \\cdot L = -(\\mu mg\\cos\\theta) \\cdot (b\\cos\\theta) = -\\mu mgb$$</p>\n<p>So, the work done by friction on an incline in this case depends on its horizontal base length $(b)$ rather than the length of the slope itself.</p>\n<p>For segment AB, the length of base is $b_3 = 2\\ \\text{m}$, coefficient of friction is $\\mu_3 = 0.1$</p>\n<p>$$W_{f,1} = -0.1 \\times (1 \\times 10) \\times 2 = -2\\ \\text{J}$$</p>\n<p>For segment BC the length of base is $b_2 = 2\\ \\text{m}$, coefficient of friction is $\\mu_2 = 0.2$</p>\n<p>$$W_{f,2} = -0.2 \\times (1 \\times 10) \\times 2 = -4\\ \\text{J}$$</p>\n<p>For segment CD, the length of base is $b_1 = 1\\ \\text{m}$, coefficient of friction is $\\mu_1 = 0.4$</p>\n<p>$$W_{f,3} = -0.4 \\times (1 \\times 10) \\times 1 = -4\\ \\text{J}$$</p>\n<p>So, the total work done by friction is,</p>\n<p>$$W_{\\text{friction}} = -2\\ \\text{J} - 4\\ \\text{J} - 4\\ \\text{J} = -10\\ \\text{J}$$</p>\n<p>Substituting the work values into work-energy relation:</p>\n<p>$$W_{\\text{force}} = -(-80\\ \\text{J}) - (-10\\ \\text{J}) = 80\\ \\text{J} + 10\\ \\text{J} = 90\\ \\text{Joules}$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दर्शाए गए नत तलों पर 1 kg द्रव्यमान के एक पिण्ड को A से D तक धीरे-धीरे ले जाया जाता है। अनुप्रयुक्त बल प्रत्येक अवस्था में नत तल के समानांतर कार्य करता है, और पिण्ड पूरे समय समतल तलों के संपर्क में रहता है। बिंदु B और C पर लगने वाले झटकों की उपेक्षा करते हुए, अनुप्रयुक्त बल द्वारा किया गया कुल कार्य है :</p><p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrjd0ot2%2F4b1eefb8-146a-42f6-8e74-1ecb09bb8c73%2F0d028360-7ecd-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjd0ot3.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrjd0ot2%2F4b1eefb8-146a-42f6-8e74-1ecb09bb8c73%2F0d028360-7ecd-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjd0ot3.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>90 J</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>56 J</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>180 J</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>0 J</b></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrkari9g",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle is thrown horizontally from a height h. If g is assumed to remain constant at all points, the variation of kinetic energy E of the particle with time t is correctly represented by (Neglect air resistance)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkal0tk%2Fcbd56c26-1778-42e6-8e4d-852936067f23%2F4fbc2e80-7f50-11f1-8567-6554329c6c69%2Ffile-6y3zli1mrkal0tl.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkal0tk%2Fcbd56c26-1778-42e6-8e4d-852936067f23%2F4fbc2e80-7f50-11f1-8567-6554329c6c69%2Ffile-6y3zli1mrkal0tl.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkaof6g%2F12ed359b-677e-4058-b377-b43701d48a24%2Fae40f580-7f50-11f1-8567-6554329c6c69%2Ffile-6y3zli1mrkaof6h.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkaof6g%2F12ed359b-677e-4058-b377-b43701d48a24%2Fae40f580-7f50-11f1-8567-6554329c6c69%2Ffile-6y3zli1mrkaof6h.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkao6mg%2F6323450e-5cbd-4949-b3d8-1840eb78c714%2Fa7a51080-7f50-11f1-8567-6554329c6c69%2Ffile-6y3zli1mrkao6mh.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkao6mg%2F6323450e-5cbd-4949-b3d8-1840eb78c714%2Fa7a51080-7f50-11f1-8567-6554329c6c69%2Ffile-6y3zli1mrkao6mh.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkanya6%2F8177d923-f43c-4500-a234-2ad1acdf69cf%2Fa13396e0-7f50-11f1-8567-6554329c6c69%2Ffile-6y3zli1mrkanya7.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkanya6%2F8177d923-f43c-4500-a234-2ad1acdf69cf%2Fa13396e0-7f50-11f1-8567-6554329c6c69%2Ffile-6y3zli1mrkanya7.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Let a particle be projected horizontally with an initial horizontal velocity $u_x=u$ from a height $h$.</p>\n<p>Since air resistance is neglected, no force acts on the particle in the horizontal direction:</p>\n<p>$$F_x=0 \\Rightarrow a_x=0$$</p>\n<p>The velocity in the horizontal direction remains constant at any time $t$:</p>\n<p>$$v_x(t)=u$$</p>\n<p>The only force acting on the particle is the gravitational force acting vertically downward. Taking downward as positive:</p>\n<p>$$F_y=mg \\Rightarrow a_y=g$$</p>\n<p>Since acceleration due to gravity $g$ is constant everywhere, using kinematics equation;</p>\n<p>$$v_y(t)=u_y+a_y t=0+gt$$</p>\n<p>The magnitude of the net velocity vector $\\vec{v}$ at any time $t$ is,</p>\n<p>$$v^2=v_x^2+v_y^2$$</p>\n<p>$$v^2=u^2+(gt)^2$$</p>\n<p>$$v^2=u^2+g^2 t^2$$</p>\n<p>The kinetic energy E at time t is:</p>\n<p>$$E = \\frac{1}{2}mv^2$$</p>\n<p>$$E = \\frac{1}{2}m(u^2 + g^2 t^2)$$</p>\n<p>$$E = \\frac{1}{2}mu^2 + \\left(\\frac{1}{2}mg^2\\right)t^2$$</p>\n<p>$$\\Rightarrow E(t) = \\left(\\frac{1}{2}mu^2\\right) + \\left(\\frac{1}{2}mg^2\\right)t^2$$</p>\n<p>This equation resembles quadratic equation form:</p>\n<p>$$y = c + kx^2$$</p>\n<p>Where $y = E$, kinetic energy plotted on the vertical axis; $x = t$, time plotted on the horizontal axis; $c = \\frac{1}{2}mu^2$ is a positive constant representing the initial kinetic energy at $t = 0$. Thus, the graph does not start from the origin $(0,0)$.</p>\n<p>$k = \\frac{1}{2}mg^2$ is a positive constant coefficient of $t^2$.</p>\n<p>Because the coefficient of $t^2$ is positive, the graph relating E and t must be a parabola that opens upwards, starting from a non-zero value on the vertical energy axis.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkal0tk%2Fcbd56c26-1778-42e6-8e4d-852936067f23%2F4fbc2e80-7f50-11f1-8567-6554329c6c69%2Ffile-6y3zli1mrkal0tl.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkal0tk%2Fcbd56c26-1778-42e6-8e4d-852936067f23%2F4fbc2e80-7f50-11f1-8567-6554329c6c69%2Ffile-6y3zli1mrkal0tl.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक कण को h ऊँचाई से क्षैतिज रूप से फेंका जाता है। यदि सभी बिंदुओं पर g को नियत माना जाए, तो कण की गतिज ऊर्जा E का समय t के साथ परिवर्तन किस ग्राफ द्वारा सही रूप से दर्शाया गया है? (वायु के प्रतिरोध को नगण्य मानें)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkal0tk%2Fcbd56c26-1778-42e6-8e4d-852936067f23%2F4fbc2e80-7f50-11f1-8567-6554329c6c69%2Ffile-6y3zli1mrkal0tl.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkal0tk%2Fcbd56c26-1778-42e6-8e4d-852936067f23%2F4fbc2e80-7f50-11f1-8567-6554329c6c69%2Ffile-6y3zli1mrkal0tl.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkaof6g%2F12ed359b-677e-4058-b377-b43701d48a24%2Fae40f580-7f50-11f1-8567-6554329c6c69%2Ffile-6y3zli1mrkaof6h.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkaof6g%2F12ed359b-677e-4058-b377-b43701d48a24%2Fae40f580-7f50-11f1-8567-6554329c6c69%2Ffile-6y3zli1mrkaof6h.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkao6mg%2F6323450e-5cbd-4949-b3d8-1840eb78c714%2Fa7a51080-7f50-11f1-8567-6554329c6c69%2Ffile-6y3zli1mrkao6mh.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkao6mg%2F6323450e-5cbd-4949-b3d8-1840eb78c714%2Fa7a51080-7f50-11f1-8567-6554329c6c69%2Ffile-6y3zli1mrkao6mh.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkanya6%2F8177d923-f43c-4500-a234-2ad1acdf69cf%2Fa13396e0-7f50-11f1-8567-6554329c6c69%2Ffile-6y3zli1mrkanya7.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkanya6%2F8177d923-f43c-4500-a234-2ad1acdf69cf%2Fa13396e0-7f50-11f1-8567-6554329c6c69%2Ffile-6y3zli1mrkanya7.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrkaug0u",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If v, p and E represent the magnitudes of velocity, momentum and kinetic energy of a particle respectively, then :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\mathbf{p = \\frac{dE}{dv}} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\mathbf{p = \\frac{dE}{dt}} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\mathbf{p = \\frac{dv}{dt}} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>None of these</b></p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For a particle of mass $m$ moving with a velocity magnitude $v$, the magnitude of momentum (p) is,</p>\n<p>$$ \\mathrm{p}=\\mathrm{m} \\cdot \\mathrm{v} $$</p>\n<p>The kinetic energy (E) of the particle is E $=\\frac{1}{2} \\mathrm{mv}^2$</p>\n<p>On differentiating the kinetic energy equation with respect to v :</p>\n<p>$$ \\frac{\\mathrm{dE}}{\\mathrm{dv}}=\\frac{\\mathrm{d}}{\\mathrm{dv}}\\left(\\frac{1}{2} m v^2\\right) $$</p>\n<p>Since mass $m$ is a constant property of the particle,</p>\n<p>$$\\frac{\\mathrm{d}E}{\\mathrm{d}v} = \\frac{1}{2} m \\cdot \\frac{\\mathrm{d}}{\\mathrm{d}v}(v^2)$$</p>\n<p>$$\\frac{\\mathrm{d}E}{\\mathrm{d}v} = \\frac{1}{2} m \\times (2v)$$</p>\n<p>$$\\frac{\\mathrm{d}E}{\\mathrm{d}v} = mv$$</p>\n<p>Substituting the expression of momentum $(p = mv)$ into this equation,</p>\n<p>$$\\frac{\\mathrm{d}E}{\\mathrm{d}v} = p \\Rightarrow p = \\frac{\\mathrm{d}E}{\\mathrm{d}v}$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि v, p और E क्रमशः किसी कण के वेग, संवेग और गतिज ऊर्जा के परिमाणों को दर्शाते हैं, तो :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\mathbf{p = \\frac{dE}{dv}} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\mathbf{p = \\frac{dE}{dt}} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\mathbf{p = \\frac{dv}{dt}} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>इनमें से कोई नहीं</b></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrkbezjw",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A block of weight 10 N moves down a smooth curved path AB which is connected to a rough horizontal surface, as shown in the figure. The coefficient of friction between the block and the rough surface is 0.20. If the block begins to slide from a point 1.0 m above the horizontal surface, the distance covered by it on the rough surface is :</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkbahzh%2Ffff838e2-f07d-46c2-8c82-db18d1d26728%2F143903d0-7f53-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkbahzi.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkbahzh%2Ffff838e2-f07d-46c2-8c82-db18d1d26728%2F143903d0-7f53-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkbahzi.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>5.0 m</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>10.0 m</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>15.0 m</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>20.0 m</b></p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>According to the work-energy theorem the net work done by all the forces acting on a body equals the change in its kinetic energy :</p>\n<p>$$ \\mathrm{W}_{\\text {net }}=\\Delta \\mathrm{K}=\\mathrm{K}_{\\mathrm{f}}-\\mathrm{K}_{\\mathrm{i}} $$</p>\n<p>Let the block start from rest at the top of the curved track (point A ) at a height h above the horizontal surface.</p>\n<p>Initial kinetic energy ( $\\mathrm{K}_{\\mathrm{i}}$ ) at point $\\mathrm{A}=0$</p>\n<p>Let the block come to rest on the rough horizontal surface after travelling a distance d past point B .</p>\n<p>Final kinetic energy ( $\\mathrm{K}_{\\mathrm{f}}$ ) at the stopping point $=0$</p>\n<p>Therefore, the total change in kinetic energy is:</p>\n<p>$$ \\Delta K=0-0=0 $$</p>\n<p>The force of gravity ( $\\mathrm{F}_{\\mathrm{g}}=\\mathrm{W}=\\mathrm{mg}$ ) acts vertically downwards with a constant magnitude.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkbccy5%2F7344ab76-6519-41a9-8847-493667146e21%2F47f333d0-7f53-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkbccy6.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkbccy5%2F7344ab76-6519-41a9-8847-493667146e21%2F47f333d0-7f53-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkbccy6.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>The vertical displacement of the block from start to finish is h downwards.</p>\n<p>Since the force and the vertical displacement are in the same direction, the work done by gravity is positive:</p>\n<p>$$W_g = mgh = w \\cdot h$$</p>\n<p>Along the curved track and the horizontal surface, the normal force exerted by the surface is always perpendicular to the instantaneous direction of displacement.</p>\n<p>The angle between the normal force vector and the velocity vector is always $90^{\\circ}$:</p>\n<p>$$W_N = \\int\\limits N\\, ds\\cos 90^{\\circ} = 0$$</p>\n<p>On the curved track AB the coefficient of friction is zero. Thus, no friction force acts on the track is,</p>\n<p>$$W_{f,\\mathrm{track}} = 0$$</p>\n<p>On the horizontal surface: The surface is rough with a friction coefficient $\\mu$. The normal force acting on the block on a flat horizontal plane balances its weight:</p>\n<p>$$N = w$$</p>\n<p>The kinetic friction force ($f_k$) opposing the motion is:</p>\n<p>$$f_k = \\mu \\cdot N = \\mu \\cdot w$$</p>\n<p>Since the friction force opposes the displacement over the horizontal distance $d$, the angle between them is $180^{\\circ}$.</p>\n<p>The work done by friction is:</p>\n<p>$$W_f = f_k d \\cos(180^{\\circ}) = -f_k d = -\\mu wd$$</p>\n<p>Substituting these work components into the work-energy theorem:</p>\n<p>$$W_g + W_N + W_f = \\Delta K$$</p>\n<p>$$(wh) + 0 + (-\\mu wd) = 0$$</p>\n<p>$$\\Rightarrow wh = \\mu wd$$</p>\n<p>$$\\Rightarrow h = \\mu d \\Rightarrow d = \\frac{h}{\\mu}$$</p>\n<p>The weight of the block is $w = 10\\ \\mathrm{N}$</p>\n<p>Initial height above the horizontal surface, $h = 1.0\\ \\mathrm{m}$</p>\n\n<p>The coefficient of friction on the horizontal surface is $\\mu = 0.20$</p>\n<p>$$d = \\frac{1.0}{0.20}$$</p>\n<p>$$d = 5.0\\ \\text{m}$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>10 N भार का एक गुटका एक चिकने वक्रीय पथ AB पर नीचे की ओर गति करता है, जो चित्र में दर्शाए अनुसार एक खुरदरे क्षैतिज पृष्ठ से जुड़ा है। गुटके और खुरदरे पृष्ठ के बीच घर्षण गुणांक 0.20 है। यदि गुटका क्षैतिज पृष्ठ से 1.0 m ऊपर एक बिंदु से फिसलना आरंभ करता है, तो खुरदरे पृष्ठ पर इसके द्वारा तय की गई दूरी है :</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkbahzh%2Ffff838e2-f07d-46c2-8c82-db18d1d26728%2F143903d0-7f53-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkbahzi.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkbahzh%2Ffff838e2-f07d-46c2-8c82-db18d1d26728%2F143903d0-7f53-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkbahzi.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>5.0 m</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>10.0 m</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>15.0 m</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>20.0 m</b></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrkb8kvr",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle is moving along a straight line. Its retardation is directly proportional to its displacement. For any displacement $x$, the decrease in its kinetic energy is proportional to</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$x^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$e^x$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$x$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\ln x$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Retardation ($a_r$) is the magnitude of negative acceleration.</p>\n<p>It is given that retardation is directly proportional to the displacement $x$:</p>\n<p>$$a_r \\propto x \\Rightarrow a_r = C \\cdot x$$</p>\n<p>where $C$ is a positive constant of proportionality.</p>\n<p>For retardation, acceleration $a$ is negative:</p>\n<p>$$a = -C \\cdot x$$</p>\n<p>$$v\\frac{dv}{dx} = -C \\cdot x$$</p>\n<p>$$v\\,dv = -Cx\\,dx$$</p>\n<p>Let the particle start at a displacement $x = 0$ with an initial velocity $v = u$, and reach a displacement $x$ with a final velocity $v$.</p>\n<p>On integrating both sides within these limits:</p>\n<p>$$\\int\\limits_{u}^{v} v\\,dv = \\int\\limits_{0}^{x} -Cx\\,dx$$</p>\n<p>$$\\left[\\frac{v^2}{2}\\right]_{u}^{v} = -C\\left[\\frac{x^2}{2}\\right]_{0}^{x}$$</p>\n<p>$$\\frac{v^2}{2} - \\frac{u^2}{2} = -\\frac{Cx^2}{2} \\Rightarrow \\frac{1}{2}mv^2 - \\frac{1}{2}mu^2 = -\\frac{mCx^2}{2}$$</p>\n\n<p>$$\\Rightarrow K_f - K_i = -\\left(\\frac{mC}{2}\\right)x^2$$</p>\n<p>The loss of kinetic energy ($\\Delta K_{\\text{loss}}$) is,</p>\n<p>$$\\Delta K_{\\text{loss}} = K_i - K_f = \\left(\\frac{mC}{2}\\right)x^2$$</p>\n<p>Since $m$ and $C$ are constants, the term $\\left(\\frac{mC}{2}\\right)$ is also a constant. Therefore, the loss of kinetic energy is directly proportional to the square of the displacement:</p>\n<p>$$\\Delta K_{\\text{loss}} \\propto x^2$$</p>\n<p>Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक कण एक सीधी रेखा के अनुदिश गति कर रहा है। इसका मंदन इसके विस्थापन के अनुक्रमानुपाती है। किसी भी विस्थापन $x$ के लिए, इसकी गतिज ऊर्जा में कमी किसके अनुक्रमानुपाती होगी?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$x^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$e^x$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$x$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\ln x$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrkb4sap",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A constant opposing force is used to bring a train to rest. It comes to rest after covering 80 m. If its speed is made twice the earlier value, the distance covered before stopping under the same opposing force will be</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Unchanged</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Twice</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>One-half</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Four times</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>According to Newton's second law of motion, where the net force acting on a body is $F = m \\, . \\, a$, where the mass of object is $m$ and its acceleration is $a$.</p>\n<p>When a retarding force $F_r$ is applied, it acts opposite to the direction of motion, producing a constant acceleration $a = -\\frac{F_r}{m}$.</p>\n<p>As the acceleration is rate of change of velocity with respect to time, $a = \\frac{dv}{dt}$</p>\n<p>$$a = \\frac{dv}{dx} \\, \\frac{dx}{dt} \\Rightarrow a = v\\frac{dv}{dx}$$</p>\n<p>$$\\Rightarrow -\\frac{F_r}{m} = v\\frac{dv}{dx}$$</p>\n<p>$$\\Rightarrow -\\frac{F_r}{m} \\, dx = v \\, dv$$</p>\n<p>At $x = 0$, the initial velocity is $v = u$; at the stopping distance $x = d$, the final velocity is $v = 0$:</p>\n<p>$$\\int\\limits_{0}^{d} \\left(-\\frac{F_r}{m}\\right) \\, dx = \\int\\limits_{u}^{0} v \\, dv$$</p>\n<p>$$-\\frac{F_r}{m}[x]_{0}^{d} = \\left[\\frac{v^2}{2}\\right]_{u}^{0}$$</p>\n<p>$$-\\frac{F_r \\, . \\, d}{m} = 0 - \\frac{u^2}{2}$$</p>\n<p>$$\\frac{F_r d}{m} = \\frac{u^2}{2}$$</p>\n<p>$$d = \\frac{mu^2}{2F_r}$$</p>\n<p>Since the mass $m$ of the train and the retarding force $F_r$ remain unchanged, the stopping distance is directly proportional to the square of the initial speed:</p>\n<p>$$d \\propto u^2$$</p>\n<p>Let the initial speed in the first case be $u_1 = u$, and the stopping distance be $d_1 = 80 \\, m$.</p>\n\n<p>$$80 = ku^2,$$ where $$k = \\frac{m}{2F_r}$$ is a constant.</p>\n<p>In the second case, the speed is doubled ($u_2 = 2u$).</p>\n<p>Let the new stopping distance be $d_2$:</p>\n<p>$$d_2 = k(2u)^2$$</p>\n<p>$$d_2 = k4u^2$$</p>\n<p>$$d_2 = 4(ku^2)$$</p>\n<p>Substituting the value from the first case ($80 = ku^2$):</p>\n<p>$$d_2 = 4 \\times 80 = 320\\ \\text{m}$$</p>\n<p>$$\\Rightarrow \\frac{d_2}{d_1} = \\frac{320}{80} = 4 \\Rightarrow d_2 = 4d_1$$</p>\n<p>So, the stopping distance becomes four times if the speed is doubled. Thus, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक ट्रेन को विरामावस्था में लाने के लिए एक नियत विरोधी बल का उपयोग किया जाता है। यह 80 m की दूरी तय करने के बाद रुक जाती है। यदि इसकी चाल पहले के मान की दोगुनी कर दी जाए, तो समान विरोधी बल के अधीन रुकने से पहले तय की गई दूरी होगी</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>अपरिवर्तित</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>दोगुनी</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>आधी</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>चार गुना</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrkbkssj",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A small mass slides down an inclined plane of inclination $\\theta$ with the horizontal. The co-efficient of friction is $\\mu = \\mu_0 x$ where $x$ is the distance through which the mass slides down and $\\mu_0$ is a constant. Then the distance covered by the mass before it stops is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{2}{\\mu_0} \\tan \\theta$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{4}{\\mu_0} \\tan \\theta$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{1}{2 \\mu_0} \\tan \\theta$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{1}{\\mu_0} \\tan \\theta$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Let a mass m slide down an inclined plane that makes an angle $\\theta$ with the horizontal plane.</p>\n<p>Let x represent the distance traveled down along the surface of the incline.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkbgnqk%2Fbacc0017-a097-4767-8ed5-1c37a563b280%2Fbf8566c0-7f53-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkbgnql.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkbgnqk%2Fbacc0017-a097-4767-8ed5-1c37a563b280%2Fbf8566c0-7f53-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkbgnql.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Perpendicular to the incline there is no acceleration. So, the normal force $N$ balances the perpendicular component of the gravitational force:</p>\n<p>$$N = mg\\cos\\theta$$</p>\n<p>The component of gravity pulling the mass down the incline is $mg\\sin\\theta$.</p>\n<p>The friction force $f$ opposes this downward motion and acts up the incline.</p>\n<p>Since the coefficient of friction varies with distance $\\mu = \\mu_0 x$, the kinetic friction force is a function of position $x$:</p>\n<p>$$f(x) = \\mu(x)\\cdot N = (\\mu_0 x)(mg\\cos\\theta) = \\mu_0 mg\\cos\\theta \\cdot x$$</p>\n<p>The net force acting on the mass parallel to the incline in the direction of motion is:</p>\n<p>$$F_{\\text{net}}(x) = mg\\sin\\theta - f(x)$$</p>\n<p>$$F_{\\text{net}}(x) = mg\\sin\\theta - \\mu_0 mg\\cos\\theta x$$</p>\n<p>According to the work-energy theorem, the net work done on the particle equals its change in kinetic energy:</p>\n<p>$$W_{\\text{net}} = \\Delta K$$</p>\n<p>The mass starts from rest at the top of the incline ($x = 0$), so its initial kinetic energy $K_i = 0$.</p>\n<p>It travels a total distance $x = d$ along the incline before coming to a stop, so its final kinetic energy $K_f = 0$.</p>\n<p>$$\\Delta K = K_f - K_i = 0 - 0 = 0$$</p>\n<p>Since the force varies with position, the total net work done is,</p>\n<p>$$W_{\\text{net}} = \\int\\limits_{0}^{d} F_{\\text{net}}(x)\\,dx = 0$$</p>\n<p>$$\\int\\limits_{0}^{d} \\left(mg\\sin\\theta - \\mu_0 mg\\cos\\theta\\,x\\right) dx = 0$$</p>\n<p>$$mg\\int\\limits_{0}^{d} \\left(\\sin\\theta - \\mu_0 \\cos\\theta\\,x\\right) dx = 0$$</p>\n<p>Since $m \\ne 0$ and $g \\ne 0$,</p>\n<p>$$\\int\\limits_{0}^{d} \\left(\\sin\\theta - \\mu_0 \\cos\\theta\\,x\\right) dx = 0$$</p>\n<p>$$\\left[\\sin\\theta \\cdot x\\right]_{0}^{d} - \\left[\\mu_0 \\cos\\theta \\cdot \\frac{x^2}{2}\\right]_{0}^{d} = 0$$</p>\n<p>$$\\left(d\\sin\\theta\\right) - \\left(\\frac{\\mu_0 \\cos\\theta\\,d^2}{2}\\right) = 0$$</p>\n<p>$$d\\left(\\sin\\theta - \\frac{\\mu_0 d\\cos\\theta}{2}\\right) = 0$$</p>\n<p>$$\\Rightarrow \\sin\\theta - \\frac{\\mu_0 d\\cos\\theta}{2} = 0$$</p>\n<p>$$\\Rightarrow d = \\frac{2\\sin\\theta}{\\mu_0\\cos\\theta} \\Rightarrow d = \\frac{2}{\\mu_0}\\tan\\theta$$</p>\n<p>Therefore, the distance covered by the mass before it stops is $\\frac{2}{\\mu_0}\\tan\\theta$. Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A small mass slides down an inclined plane of inclination $\\theta$ with the horizontal. The co-efficient of friction is $\\mu = \\mu_0 x$ where $x$ is the distance through which the mass slides down and $\\mu_0$ is a constant. Then the distance covered by the mass before it stops is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{2}{\\mu_0} \\tan \\theta$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{4}{\\mu_0} \\tan \\theta$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{1}{2 \\mu_0} \\tan \\theta$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{1}{\\mu_0} \\tan \\theta$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrkds9ep",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Velocity-time graph of a particle of mass 2 kg moving in a straight line is as shown in figure. Work done by all the forces on the particle is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkdjcjt%2Fb9e193ce-9d0e-403f-a5a8-61e8a06b9b68%2Fdc909390-7f5b-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkdjcju.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkdjcjt%2Fb9e193ce-9d0e-403f-a5a8-61e8a06b9b68%2Fdc909390-7f5b-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkdjcju.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>400 J</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>-400 J</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>200 J</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>200 J</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>According to the work-energy theorem, net work done by all the forces acting on a particle is equal to the change in its kinetic energy :</p>\n<p>$$W_{\\text{net}} = \\Delta K = K_f - K_i$$</p>\n<p>The kinetic energy (K) of a moving body of mass m at any given instant is, $K = \\frac{1}{2}mv^2$</p>\n<p>For the initial velocity ($v_i$) and the final velocity ($v_f$),</p>\n<p>$$W_{\\text{net}} = \\frac{1}{2}mv_f^2 - \\frac{1}{2}mv_i^2$$</p>\n<p>$$W_{\\text{net}} = \\frac{1}{2}m\\left(v_f^2 - v_i^2\\right)$$</p>\n<p>The mass of the particle, $m = 2\\,\\text{kg}$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkdpcp0%2Ff139460f-1a59-49d9-836d-04d4d8dcc9d7%2F83881b50-7f5c-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkdpcp1.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkdpcp0%2Ff139460f-1a59-49d9-836d-04d4d8dcc9d7%2F83881b50-7f5c-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkdpcp1.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>At time $t = 0\text{ s}$, the initial velocity is given by the vertical intercept on the graph $v_i = 20\t\\,m/s$</p>\n<p>At time $t = 2\text{ s}$, the final velocity is given by the horizontal intercept on the graph where the line meets the axis</p>\n<p>$v_f = 0 \\,m/s$</p>\n<p>Substitute these values,</p>\n<p>$$W_{\\text{net}} = \\frac{1}{2} \\times 2 \\times (0^2 - 20^2)$$</p>\n<p>$$W_{\\text{net}} = 1 \\times (0 - 400)$$</p>\n<p>$$W_{\\text{net}} = -400\\text{ J}$$</p>\n<p>The negative sign indicates that the net force acting on the particle opposes its direction of motion, acting as a retarding force that removes kinetic energy from the system.</p>\n<p>Therefore, the work done by all the force on the particle is $-400\\text{ J}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक सीधी रेखा में गति कर रहे 2 kg द्रव्यमान के एक कण का वेग-समय ग्राफ चित्र में दर्शाया गया है। कण पर सभी बलों द्वारा किया गया कार्य है:</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkdjcjt%2Fb9e193ce-9d0e-403f-a5a8-61e8a06b9b68%2Fdc909390-7f5b-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkdjcju.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkdjcjt%2Fb9e193ce-9d0e-403f-a5a8-61e8a06b9b68%2Fdc909390-7f5b-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkdjcju.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>400 J</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>-400 J</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>200 J</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>200 J</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrkc8ld0",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A toy car of mass 5 kg is initially at rest and climbs a ramp due to a force $F$ ( $F$ acts along the direction of velocity) whose variation with displacement $\\mathbf{x}$ is shown. The greatest height reached by the car is $\\left(\\mathbf{g}=\\mathbf{1 0 m} / \\mathbf{s}^{\\mathbf{2}}\\right)$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkbnbvh%2F2a7da5d0-e559-4761-b7d7-7abbab99c97c%2F790558d0-7f54-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkbnbvi.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkbnbvh%2F2a7da5d0-e559-4761-b7d7-7abbab99c97c%2F790558d0-7f54-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkbnbvi.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>",
+                "options": [],
+                "answer": "11",
+                "explanation": "<p>According to work-energy theorem the total work done by all the forces acting on a system is equal to the change in its kinetic energy:</p>\n<p>$$W_{\\text{net}} = \\Delta K = K_f - K_i$$</p>\n<p>Let the toy car start from rest at the position $x = 0$.</p>\n<p>The initial kinetic energy $K_i = 0$</p>\n<p>Let the car reach a maximum height $y_{\\max}$, where its velocity becomes zero before it begins sliding back down.</p>\n<p>The final kinetic energy ($K_f$) at the peak $= 0$</p>\n<p>Thus, the total change in kinetic energy is:</p>\n<p>$$\\Delta K = 0 - 0 = 0$$</p>\n<p>The applied force $F$ acts in the direction of the velocity vector along the track. The work done by a variable force along a displacement axis $x$ is given by the integral of the force function:</p>\n<p>$$W_F = \\int F\\,dx$$</p>\n<p>This integral represents the area under the Force-displacement ($F - x$) curve.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkc3qk2%2F78d37ec6-ece4-44db-8b2e-7ac16ab63e58%2F414f3120-7f56-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkc3qk3.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkc3qk2%2F78d37ec6-ece4-44db-8b2e-7ac16ab63e58%2F414f3120-7f56-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkc3qk3.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The shape formed under the curve is a right-angled triangle with a base of 11 m and a height of 100 N.</p>\n<p>$$W_F = \\frac{1}{2} \\times \\text{base} \\times \\text{height} = \\frac{1}{2} \\times 11 \\times 100 = 550\\ \\mathrm{J}$$</p>\n<p>The force of gravity acts vertically downwards with a constant magnitude equal to $mg$.</p>\n<p>The vertical displacement of the car upwards is $y_{\\max}$.</p>\n<p>Since the downward force of gravity opposes the upward displacement, the angle between them is $180^\\circ$:</p>\n<p>$$W_g = mg \\cdot y_{\\max} \\cdot \\cos(180^\\circ) = -mg \\cdot y_{\\max}$$</p>\n<p>The normal force exerted by the ramp is always perpendicular to the direction of motion at any instant.</p>\n<p>Therefore, the angle between the normal force vector and the instantaneous displacement vector is $90^\\circ$:</p>\n<p>$$W_N = \\int\\limits N \\cdot ds \\cdot \\cos(90^\\circ) = 0$$</p>\n<p>Substituting these components into the work-energy theorem:</p>\n<p>$$W_F + W_g + W_N = \\Delta K$$</p>\n<p>$$550 + (-mg \\cdot y_{\\max}) + 0 = 0$$</p>\n<p>$$550 = mg \\cdot y_{\\max}$$</p>\n<p>$$y_{\\max} = \\frac{550}{mg}$$</p>\n<p>The mass of the toy car is $m = 5\\ \\mathrm{kg}$</p>\n<p>The acceleration due to gravity is $g = 10\\ \\mathrm{m/s^2}$</p>\n<p>Substitute these values,</p>\n<p>$$y_{\\max} = \\frac{550}{5 \\times 10}$$</p>\n<p>$$y_{\\max} = \\frac{550}{50} = 11\\ \\mathrm{m}$$</p>\n<p>Therefore, the maximum height attained by the toy car is $11\\mathrm{m}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>5 kg द्रव्यमान की एक खिलौना कार प्रारम्भ में विरामावस्था में है और एक बल $F$ ( $F$ वेग की दिशा के अनुदिश कार्य करता है) जिसका विस्थापन $\\mathbf{x}$ के साथ परिवर्तन दर्शाया गया है, के कारण एक ढलान (रैंप) पर चढ़ती है। कार द्वारा प्राप्त की गई अधिकतम ऊँचाई है $\\left(\\mathbf{g}=\\mathbf{1 0 m} / \\mathbf{s}^{\\mathbf{2}}\\right)$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkbnbvh%2F2a7da5d0-e559-4761-b7d7-7abbab99c97c%2F790558d0-7f54-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkbnbvi.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkbnbvh%2F2a7da5d0-e559-4761-b7d7-7abbab99c97c%2F790558d0-7f54-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkbnbvi.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrkckhoo",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle having mass $m=2 \\mathrm{~kg}$ is initially at rest. A force $F=2 \\mathrm{~N}$ acts on it for a duration $t=4 \\mathrm{sec}$. The kinetic energy (in Joule) of the particle at the end of this time interval $t$ is :</p>",
+                "options": [],
+                "answer": "16",
+                "explanation": "<p>According to Newton's second law of motion for a particle of constant mass $m$ acted upon by a net constant force $F$,</p>\n<p>$$F = m \\, a \\Rightarrow a = Fm$$</p>\n<p>Acceleration is the time rate of change of velocity $a = \\frac{dv}{dt}$</p>\n<p>Since the applied force $F$ and the mass $m$ are uniform constants, the acceleration $a$ is constant.</p>\n<p>$$\\int\\limits_{v_0}^{v} dv = \\int\\limits_{0}^{t} a \\, dt$$</p>\n<p>$$v - v_0 = at$$</p>\n<p>The particle starts from rest, which means its initial velocity is zero ($v_0 = 0$):</p>\n<p>$$v = at$$</p>\n<p>Substituting expression for acceleration $\\left(a = \\frac{F}{m}\\right)$ into this velocity equation:</p>\n<p>$$v = \\left(\\frac{F}{m}\\right)t$$</p>\n<p>The kinetic energy $(K)$ of the particle is $K = \\frac{1}{2}mv^2$</p>\n<p>$$K = \\frac{1}{2}m\\left(\\frac{Ft}{m}\\right)^2$$</p>\n<p>$$K = \\frac{1}{2}m\\left(\\frac{F^2 t^2}{m^2}\\right)$$</p>\n<p>$$K = \\frac{F^2 t^2}{2m}$$</p>\n<p>The mass of the particle is $m = 2\\ \\mathrm{kg}$</p>\n<p>The magnitude of the force is $F = 2\\ \\mathrm{N}$</p>\n<p>Time duration is $t = 4\\ \\mathrm{s}$</p>\n<p>$$K = \\frac{(2)^2 \\times (4)^2}{2 \\times 2}$$</p>\n<p>$$K = 4 \\times \\frac{16}{4}\\ \\mathrm{J} = 16\\ \\mathrm{J}$$</p>\n<p>Therefore, the kinetic energy after this time interval is $16\\ \\mathrm{J}.$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान $m=2 \\mathrm{~kg}$ का एक कण प्रारंभ में विरामावस्था में है। इस पर अवधि $t=4 \\mathrm{sec}$ के लिए एक बल $F=2 \\mathrm{~N}$ कार्य करता है। इस समयांतराल $t$ के अंत में कण की गतिज ऊर्जा (जूल में) है :</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrkcqxej",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The figure shows how the resistive force $F$ on a body changes with the distance travelled by the body. The mass of the body is 25 kg and its initial speed is $2 \\mathrm{~m} / \\mathrm{s}$. When the body has travelled a distance of $\\mathbf{4 m}$, its kinetic energy, in joule, will be</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkclqjh%2F4ca3e00b-8f37-4895-aeea-30ad0e46c4df%2F35dc84d0-7f58-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkclqji.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkclqjh%2F4ca3e00b-8f37-4895-aeea-30ad0e46c4df%2F35dc84d0-7f58-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkclqji.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>",
+                "options": [],
+                "answer": "10",
+                "explanation": "<p>According to work-energy theorem, the net work done by all forces acting on a system is equal to the change in its kinetic energy:</p>\n<p>$$W_{\\text{net}} = \\Delta K = K_f - K_i$$</p>\n<p>$$K_f = K_i + W_{\\text{net}}$$</p>\n<p>For a body of mass $m$ moving with an initial velocity $v_i$, the initial kinetic energy is:</p>\n<p>$$K_i = \\frac{1}{2}mv_i^2$$</p>\n<p>The body is acted upon by a position-dependent resistive force $F$.</p>\n<p>A resistive force acts opposite to the direction of displacement, making the work done negative.</p>\n<p>The magnitude of work done by a variable force is equal to the area under its Force-displacement (F-x) curve:</p>\n<p>$$W_{\\text{net}} = -\\int\\limits_{0}^{4} F(x)\\,dx = -(\\text{Area under } F-x \\text{ graph from } x=0 \\text{ to } x=4)$$</p>\n<p>The base of the triangle from $x=0$ to $x=4\\ \\text{m}$.</p>\n<p>The height of the triangle is a force value of $20\\ \\text{N}$ at $x=2\\ \\text{m}$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkcoumv%2F9af8e829-d102-48ef-b018-8e7f8dc2b12b%2F8c739270-7f58-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkcoumw.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkcoumv%2F9af8e829-d102-48ef-b018-8e7f8dc2b12b%2F8c739270-7f58-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkcoumw.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Using the formula for the area of a triangle ($\\text{Area} = \\frac{1}{2} \\times \\text{base} \\times \\text{height}$) :</p>\n<p>$$\\text{Area} = \\frac{1}{2} \\times 4 \\times 20 = 40\\ \\text{J}$$</p>\n<p>Since the force is resistive, the work done by this force is negative $W_{\\text{net}} = -40\\ \\text{J}$</p>\n<p>The mass of the body is $m = 25\\ \\text{kg}$</p>\n<p>The initial velocity is $v_i = 2\\ \\text{m/s}$</p>\n<p>$$K_i = \\frac{1}{2} \\times 25 \\times (2)^2$$</p>\n<p>$$K_i = \\frac{1}{2} \\times 25 \\times 4 = 50\\ \\text{J}$$</p>\n<p>So, the final kinetic energy is,</p>\n<p>$$K_f = 50 + (-40) \\Rightarrow K_f = 10\\ \\text{J}$$</p>\n<p>Therefore, the final kinetic energy of body is $10\\ \\text{J}$. Thus, the correct answer is 10.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दर्शाया गया है कि एक पिंड पर लगने वाला प्रतिरोधी बल $F$ पिंड द्वारा तय की गई दूरी के साथ किस प्रकार परिवर्तित होता है। पिंड का द्रव्यमान 25 kg है तथा इसकी प्रारंभिक चाल $2 \text{ m/s}$ है। जब पिंड $\\mathbf{4 m}$ की दूरी तय कर लेगा, तब इसकी गतिज ऊर्जा, जूल में, होगी</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrkclqjh%2F4ca3e00b-8f37-4895-aeea-30ad0e46c4df%2F35dc84d0-7f58-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkclqji.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrkclqjh%2F4ca3e00b-8f37-4895-aeea-30ad0e46c4df%2F35dc84d0-7f58-11f1-92fa-31956cdeded5%2Ffile-6y3zli1mrkclqji.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrkcvop3",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle of mass 10 kg moves along the $x$-axis such that its position at time $t$ is given by $x=2+t^2(x$ is measured in meter and $t$ in second). The work done by the net force from $t=0$ up to the instant when the particle reaches a velocity of $10 \\mathrm{~m} / \\mathrm{s}$ is 40 x Joule. Determine the value of 2x .</p>",
+                "options": [],
+                "answer": "25",
+                "explanation": "<p>The velocity $v(t)$ of a particle is the time rate of change of its position $x(t)$ :</p>\n<p>$$v(t)=\\frac{\\mathrm{d}x}{\\mathrm{d}t}$$</p>\n<p>Given the position function $x(t)=2+t^2$</p>\n<p>$$v(t)=\\frac{\\mathrm{d}}{\\mathrm{d}t}(2)+\\frac{\\mathrm{d}}{\\mathrm{d}t}(t^2)$$</p>\n<p>$$v(t)=0+2t=2t$$</p>\n<p>According to work-energy theorem, the net work done by all external forces acting on a body is equal to the change in its kinetic energy :</p>\n<p>$$W_{\\mathrm{net}}=\\Delta K=K_f-K_i$$</p>\n<p>The kinetic energy $(K)$ of a particle of mass $m$ at any instant is $K=\\frac{1}{2}mv^2$</p>\n<p>$$W_{\\mathrm{net}}=\\frac{1}{2}mv_f^2-\\frac{1}{2}mv_i^2$$</p>\n<p>The mass of the particle, $m=10\\ \\mathrm{kg}$</p>\n<p>The starting time is given as $t=0\\ \\mathrm{s}$.</p>\n<p>Using velocity relation $v_i=v(0)=2(0)=0\\ \\mathrm{m/s}$</p>\n<p>The final state is the instant when the body reaches a velocity of $10\\ \\mathrm{m/s}$ :</p>\n<p>$$v_f=10\\ \\mathrm{m/s}$$</p>\n<p>Substitute these values into the work-energy equation :</p>\n\n<p>$$W_{\\text{net}} = \\frac{1}{2} \\times 10 \\times (10)^2 - \\frac{1}{2} \\times 10 \\times (0)^2$$</p>\n<p>$$W_{\\text{net}} = 5 \\times 100 - 0 = 500\\ \\text{J}$$</p>\n<p>$$40x = 500$$</p>\n<p>$$x = \\frac{500}{40}$$</p>\n<p>$$\\Rightarrow x  = 12.5$$</p>\n<p>Therefore, the value of $2x$ is 25.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>10 kg द्रव्यमान का एक कण $x$-अक्ष के अनुदिश इस प्रकार गति करता है कि समय $t$ पर इसकी स्थिति $x=2+t^2(x$ मीटर में और $t$ सेकंड में मापा जाता है) द्वारा दी जाती है। $t=0$ से उस क्षण तक जब कण का वेग $10 \\mathrm{~m} / \\mathrm{s}$ हो जाता है, परिणामी बल द्वारा किया गया कार्य 40 x जूल है। 2x का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrkczbk3",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>An object of mass 6 kg moves under the action of a force. Its displacement is represented as $x=\\frac{\\mathbf{t}^{\\mathbf{2}}}{\\mathbf{4}}$ metre, where $t$ is the time in second. The work done (in Joule) by the force in 2 seconds is :</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>The instantaneous velocity $v(t)$ is the time derivative of the position function $x(t)$:</p>\n<p>$$v(t) = \\frac{dx}{dt}$$</p>\n<p>The displacement function is $x(t) = \\frac{t^2}{4}$</p>\n<p>$$v(t) = \\frac{d}{dt}\\left(\\frac{1}{4}t^2\\right) = \\frac{1}{4} \\times (2t) = \\frac{t}{2}$$</p>\n<p>The mass of the body is $m = 6\\ \\mathrm{kg}$</p>\n<p>Initial time is $t_i = 0\\ \\mathrm{s}$</p>\n<p>Final time is $t_f = 2\\ \\mathrm{s}$</p>\n<p>The initial velocity $v_i$ at $t = 0\\ \\mathrm{s}$:</p>\n<p>$$v_i = v(0) = \\frac{0}{2} = 0\\ \\mathrm{m/s}$$</p>\n<p>The final velocity $v_f$ at $t = 2\\ \\mathrm{s}$:</p>\n<p>$$v_f = v(2) = \\frac{2}{2} = 1\\ \\mathrm{m/s}$$</p>\n<p>According to work-energy theorem, the net work done by all forces acting on a particle is equal to the change in its kinetic energy $W = \\Delta K = K_f - K_i$</p>\n<p>The kinetic energy $(K)$ of a body of mass $m$ at any time is $K = \\frac{1}{2}mv^2$</p>\n<p>$$W = \\frac{1}{2}mv_f^2 - \\frac{1}{2}mv_i^2$$</p>\n<p>Putting the values,</p>\n<p>$$W = \\frac{1}{2} \\times 6 \\times (1)^2 - \\frac{1}{2} \\times 6 \\times (0)^2$$</p>\n<p>$$W = 3 \\times 1 - 0 = 3\\ \\mathrm{J}$$</p>\n<p>Therefore, the work done by the force in $2$ seconds is $3\\ \\mathrm{J}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>6 kg द्रव्यमान की एक वस्तु एक बल के प्रभाव में गति करती है। इसका विस्थापन $x=\\frac{\\mathbf{t}^{\\mathbf{2}}}{\\mathbf{4}}$ मीटर के रूप में दर्शाया गया है, जहाँ $t$ सेकंड में समय है। 2 सेकंड में बल द्वारा किया गया कार्य (जूल में) है:</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work-energy-theorem",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Kinetic Energy, Work Energy Theorem",
+    "timeAllotted": 2160000,
+    "title": "Work, Energy and Power Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g71mnvwjp0v",
+    "defaultLanguage": "en",
+    "description": "Kinetic Energy, Work Energy Theorem",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-14T08:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Kinetic Energy, Work Energy Theorem",
+    "timeAllotted": 2160000,
+    "title": "Work, Energy and Power Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Work, Energy and Power"
+  }
+}

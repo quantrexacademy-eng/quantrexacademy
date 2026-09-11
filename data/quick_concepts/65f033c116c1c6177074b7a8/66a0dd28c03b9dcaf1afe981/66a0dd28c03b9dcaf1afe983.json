@@ -1,0 +1,112 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd28c03b9dcaf1afe981",
+  "topicId": "66a0dd28c03b9dcaf1afe983",
+  "title": "Terms of Binomial Expansion",
+  "concepts": [
+    {
+      "title": "Binomial Expression",
+      "conceptBody": "<h3>Binomial Expression</h3><p>An algebraic expression consisting of two terms with a positive or negative sign between them is called a binomial expression.</p><p>Example : $\\left( \\text{a}+\\text{b} \\right),\\left( \\text{P}/{{\\text{x}}^{2}} \\right)-\\left( \\text{Q}/{{\\text{x}}^{4}} \\right)$ etc.</p><p><strong>Binomial Theorem:&nbsp;</strong></p><p>When a binomial expression is raised to a power ' $n$ ' we would like to be able to expand it. The binomial theorem assists us in doing this. It converts such an expression into a series.</p><p>Binomial Theorem for positive integral index: ${{(\\text{x}+\\text{y})}^{\\text{n}}}={{\\text{x}}^{\\text{n}}}+{{~}^{\\text{n}}}{{\\text{C}}_{1}}{{\\text{x}}^{\\text{n}-1}}\\text{y}+{{~}^{\\text{n}}}{{\\text{C}}_{2}}{{\\text{x}}^{\\text{n}-2}}{{\\text{y}}^{2}}+\\ldots \\ldots \\ldots \\cdot {{~}^{\\text{n}}}{{\\text{C}}_{\\text{r}}}{{\\text{x}}^{\\text{n}-\\text{r}}}{{\\text{y}}^{\\text{r}}}+\\ldots \\ldots \\ldots +\\ldots \\ldots \\ldots +{{~}^{\\text{n}}}{{\\text{C}}_{\\text{n}-1}}\\text{x}{{\\text{y}}^{\\text{n}-1}}+{{~}^{\\text{n}}}{{\\text{c}}_{\\text{n}}}{{\\text{y}}^{\\text{n}}}.$</p><p><strong>Proof of Binomial Theorem:&nbsp;</strong></p><p>The Binomial theorem can be proved by mathematical induction</p><p>Let $\\text{P}\\left( \\text{n} \\right)$ stands for the mathematical statement</p><p>${{(\\text{x}+\\text{a})}^{\\text{n}}}={{\\text{x}}^{\\text{n}}}+{{~}^{\\text{n}}}{{\\text{C}}_{1}}{{\\text{x}}^{\\text{n}-1}}\\text{a}+{{~}^{\\text{n}}}{{\\text{C}}_{2}}{{\\text{x}}^{\\text{n}-2}}{{\\text{a}}^{2}}+\\ldots \\text{n}{{\\text{C}}_{\\text{r}}}{{\\text{x}}^{\\text{n}-\\text{r}}}{{\\text{a}}^{\\text{r}}}+\\ldots +{{\\text{a}}^{\\text{r}}}\\ldots \\ldots $ (i)</p><p>Note that there are $\\left( n+1 \\right)$ terms in R.H.S. and all the terms are of the same degree in $x$ and a together</p><p>$\\therefore \\text{ }\\!\\!~\\!\\!\\text{ P}\\left( 1 \\right)$ is verified to be true</p><p>Assume $\\text{P}\\left( \\text{m} \\right)$ to be true</p><p>i.e., ${{(x+a)}^{m}}={{x}^{m}}+{{~}^{m}}{{C}_{1}}{{x}^{m-1}}a+{{~}^{m}}{{C}_{2}}{{x}^{m-2}}{{a}^{2}}+\\ldots {{~}^{m}}{{C}_{r}}{{x}^{m-r}}{{a}^{r}}+\\ldots +{{a}^{m}}\\ldots \\ldots $.</p><p>Multiplying equation (ii) by $\\left( x+a \\right)$, we have</p><p>${{(\\text{x}+\\text{a})}^{\\text{m}}}\\left( \\text{x}+\\text{a} \\right)=\\left( \\text{x}+\\text{a} \\right)\\left\\{ {{\\text{x}}^{\\text{m}}}+\\text{m}{{\\text{C}}_{1}}{{\\text{x}}^{\\text{m}-1}}\\text{a}+{{~}^{\\text{m}}}{{\\text{C}}_{2}}{{\\text{x}}^{\\text{m}-2}}{{\\text{a}}^{2}}+\\ldots +{{~}^{\\text{m}}}{{\\text{C}}_{\\text{r}}}{{\\text{x}}^{\\text{m}-\\text{r}}}{{\\text{a}}^{\\text{r}}}+\\ldots +{{\\text{a}}^{\\text{m}}} \\right\\}$</p><p>i.e. ${{(x+a)}^{m+1}}={{x}^{m+1}}+\\left( {{~}^{m}}{{C}_{1}}+1 \\right){{x}^{m}}a+\\left( {{~}^{m}}{{C}_{2}}+{{~}^{m}}{{C}_{1}} \\right){{x}^{m-1}}{{a}^{2}}+\\ldots +\\left( {{~}^{m}}{{C}_{r}}+{{~}^{m}}{{C}_{r-1}} \\right){{x}^{m-r}}+1{{a}^{r}}+\\ldots {{a}^{m+1}}$ $={{\\text{x}}^{\\text{m}+1}}+{{~}^{\\left( \\text{m}+1 \\right)}}{{\\text{C}}_{1}}{{\\text{x}}^{\\text{m}}}\\text{a}+{{~}^{\\left( \\text{m}+1 \\right)}}{{\\text{C}}_{2}}{{\\text{x}}^{\\text{m}-1}}{{\\text{a}}^{2}}+\\ldots $</p><p>${{~}^{\\text{m}+1}}{{\\text{C}}_{\\text{r}}}{{\\text{x}}^{\\text{m}+1-\\text{r}}}{{\\text{a}}^{\\text{r}}}+{{\\text{a}}^{\\text{m}+1}}\\ldots \\ldots \\ldots \\ldots $ (iii)</p><p>(using the formula ${{~}^{\\text{n}}}{{\\text{C}}_{\\text{r}}}+{{~}^{\\text{n}}}{{\\text{C}}_{\\text{r}-1}}={{~}^{\\left( \\text{n}+1 \\right)}}{{\\text{C}}_{\\text{r}}}$ )</p><p>Equation (iii) implies that $\\text{P}\\left( \\text{m}+1 \\right)$ is true and hence by induction $\\text{P}\\left( \\text{n} \\right)$ is true.</p><p><strong>Particular - Cases:&nbsp;</strong></p><p>(i) Replacing ' $y$ ' by ' $-\\text{y}$ ', we have :</p><p>${{(\\text{x}-\\text{y})}^{\\text{n}}}={{~}^{\\text{n}}}{{\\text{C}}_{0}}\\text{xy}{{~}^{0}}-{{~}^{\\text{n}}}{{\\text{C}}_{1}}{{\\text{x}}^{\\text{n}-1}}\\text{y}+{{~}^{\\text{n}}}{{\\text{C}}_{2}}{{\\text{x}}^{\\text{n}-2}}{{\\text{y}}^{2}}\\ldots \\ldots +\\left( -1 \\right){{~}^{\\text{rn}}}{{\\text{C}}_{\\text{r}}}{{\\text{x}}^{\\text{n}-\\text{r}}}{{\\text{y}}^{\\text{r}}}+\\ldots \\ldots \\ldots {{(-1)}^{\\text{n}}}{{~}^{\\text{n}}}{{\\text{C}}_{\\text{n}}}{{\\text{x}}^{0}}{{\\text{y}}^{\\text{n}}}.$</p><p>It can be represented as:</p><p>\\((x-y)^n=\\sum^n{ }_{r=0}(-1)^r{ }^n C_r x^{n-r} y^r\\)</p><p>(ii) Replacing ' $\\text{x}$ ' by ' 1 ' and ' $y$ ' by ' $\\text{x}$ ', we have :</p><p>${{(1+\\text{x})}^{\\text{n}}}={{~}^{\\text{n}}}{{\\text{C}}_{0}}{{\\text{x}}^{0}}+{{~}^{\\text{n}}}{{\\text{C}}_{1}}\\text{x}+\\text{n}{{\\text{C}}_{2}}{{\\text{x}}^{2}}+\\ldots \\ldots \\ldots +{{~}^{\\text{n}}}{{\\text{C}}_{\\text{r}}}{{\\text{x}}^{\\text{r}}}+\\ldots \\ldots \\ldots \\ldots +{{~}^{\\text{n}}}{{\\text{C}}_{\\text{n}-1}}{{\\text{x}}^{\\text{n}-1}}+{{~}^{\\text{n}}}{{\\text{C}}_{\\text{n}}}{{\\text{x}}^{\\text{n}}}$.</p><p>or ${{(1+x)}^{n}}=\\sum _{r=0}^{n}{{~}^{n}}{{C}_{r}}{{x}^{r}}$</p><p>(ii) Replacing ' $\\text{x}$ ' by ' $-\\text{x}$ ', we have :</p><p>${{(1-\\text{x})}^{\\text{n}}}={{~}^{\\text{n}}}{{\\text{C}}_{0}}{{\\text{x}}^{0}}-{{~}^{\\text{n}}}{{\\text{C}}_{1}}{{\\text{x}}^{1}}+{{~}^{\\text{n}}}{{\\text{C}}_{2}}{{\\text{x}}^{2}}-\\ldots \\ldots \\ldots \\ldots +{{(-1)}^{\\text{r}}}{{~}^{\\text{n}}}{{\\text{C}}_{\\text{r}}}{{\\text{x}}^{\\text{r}}}+\\ldots \\ldots \\ldots ..{{~}^{\\text{n}}}{{\\text{C}}_{\\text{n}-1}}{{(-1)}^{\\text{n}-1}}+{{(-1)}^{\\text{n}}}{{~}^{\\text{n}}}{{\\text{C}}_{\\text{n}}}{{\\text{x}}^{\\text{n}}}$</p><p>or ${{(1-x)}^{n}}=\\sum _{r=0}^{n}{{(-1)}^{r}}{{~}^{n}}{{C}_{r}}{{x}^{r}}$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd29c03b9dcaf1afe984"
+    },
+    {
+      "title": "General term",
+      "conceptBody": "<h3><strong>General terms</strong></h3><p>$\\left( \\text{r}+1 \\right)$ th term from beginning in ${{(\\text{x}+\\text{y})}^{\\text{n}}}$ is called general - term, and it is denoted by ${{\\text{T}}_{\\text{r}+1}}={{~}^{\\text{n}}}{{\\text{C}}_{\\text{r}}}{{\\text{x}}^{\\text{n}-\\text{r}}}{{\\text{y}}^{\\text{r}}}$</p><p>Explanation: We know</p><p>(x $y{{)}^{\\text{n}}}={{~}^{\\text{n}}}{{\\text{C}}_{0}}{{\\text{x}}^{\\text{n}}}{{\\text{y}}^{0}}+{{~}^{\\text{n}}}{{\\text{C}}_{1}}{{\\text{x}}^{\\text{n}-1}}{{\\text{y}}^{1}}+{{~}^{\\text{n}}}{{\\text{C}}_{2}}{{\\text{x}}^{\\text{n}-2}}{{\\text{y}}^{2}}+$ ${{~}^{\\text{n}}}{{\\text{C}}_{\\text{n}}}{{\\text{x}}^{0}}{{\\text{y}}^{0}}$</p><p>Here:</p><p>First term $\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{T}}_{1}}={{~}^{\\text{n}}}{{\\text{C}}_{0}}{{\\text{x}}^{\\text{n}}}{{\\text{y}}^{0}}$</p><p>${{\\text{T}}_{2}}={{~}^{\\text{n}}}{{\\text{C}}_{1}}{{\\text{x}}^{\\text{n}-1}}{{\\text{y}}^{1}}$</p><p>${{\\text{T}}_{3}}={{~}^{\\text{n}}}{{\\text{C}}_{2}}{{\\text{x}}^{\\text{n}-2}}{{\\text{y}}^{2}}$</p><p>...................................</p><p>....................................</p><p>${{\\text{T}}_{r}}={{~}^{\\text{n}}}{{\\text{C}}_{r-1}}\\text{ }{{\\text{x}}^{n\\text{ }\\!\\!\\_\\!\\!\\text{ }(r-1)}}{{\\text{y}}^{r-1}}$</p><p>Putting $r=r+1$ in this expression, we get;</p><p>General term : ${{\\text{T}}_{\\text{r}+1}}={{~}^{\\text{n}}}{{\\text{C}}_{\\text{r}}}{{\\text{x}}^{\\text{n}-\\text{r}}}{{\\text{y}}^{\\text{r}}}$</p><p>Note : ' ${{\\text{T}}_{\\text{r}}}$ ' can be used as general terms also.</p><p><strong>Problems based on general terms&nbsp;</strong></p><p><strong>Type 1) &nbsp;</strong>Find the ${{7}^{th~}}$ term in expansion of ${{[4x-\\left( 1/2\\sqrt{x} \\right)]}^{13}}$&nbsp;</p><p>Solution :<strong> </strong>We know the general term is ${{\\text{T}}_{\\text{r}+1}}\\And $ we want to find the ${{7}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ term. $\\therefore \\text{r}+1=7\\Rightarrow \\text{r}=6$</p><p>${{\\text{T}}_{7}}$$~={{\\text{T}}_{6+1}}={{~}^{13}}{{\\text{C}}_{6}}{{(4\\text{x})}^{13-6}}-{{(1/2\\sqrt{\\text{x}})}^{6}}$</p><p>$~={{~}^{13}}{{\\text{C}}_{6}}\\cdot {{4}^{7}}{{\\text{x}}^{7}}\\cdot 1/\\left( {{2}^{6}}\\cdot {{\\text{x}}^{3}} \\right)$</p><p>$~={{~}^{13}}{{\\text{C}}_{6}}\\cdot {{2}^{8}}\\cdot {{\\text{x}}^{4}}$</p><p>$~=13!/\\left( 6!\\text{ }\\!\\!~\\!\\!\\text{ }7! \\right)\\cdot {{2}^{8}}\\cdot {{\\text{x}}^{4}}$</p><p>$~={{\\text{T}}_{7}}=439296{{\\text{x}}^{4}}$</p><p><strong>Type 2) </strong>Find the coefficient of ${{X}^{-7}}$ in the expansion of ${{\\left( ax-1/b{{x}^{2}} \\right)}^{11}}$&nbsp;</p><p>Solution<strong>&nbsp;</strong></p><p>General term, ${{\\text{T}}_{\\text{r}+1}}={{~}^{11}}{{\\text{C}}_{\\text{r}}}{{(\\text{ax})}^{11-\\text{r}}}-{{\\left( \\frac{-1}{\\text{b}{{\\text{x}}^{2}}} \\right)}^{\\text{r}}}$</p><p>$\\begin{array}{*{35}{r}} {} &amp; {{\\text{T}}_{\\text{r}+1}}={{(-1)}^{\\text{r}}}{{~}^{11}}{{\\text{C}}_{\\text{r}}}\\left( \\frac{{{\\text{a}}^{11-\\text{r}}}}{{{\\text{b}}^{\\text{r}}}} \\right)\\frac{{{\\text{x}}^{11-\\text{r}}}}{{{\\text{x}}^{2\\text{r}}}} \\\\ {} &amp; ~\\Rightarrow {{\\text{T}}_{\\text{r}+1}}={{~}^{11}}{{\\text{C}}_{\\text{r}}}\\left( \\frac{{{\\text{a}}^{11-\\text{r}}}}{{{\\text{b}}^{\\text{r}}}} \\right){{\\text{x}}^{11-3\\text{r}}}\\ldots ...(i) \\\\ \\end{array}$</p><p>Since we want to find the coefficient of ${{\\text{x}}^{-7}}$</p><p>Putting $11-3\\text{r}=-7$</p><p>$\\Rightarrow \\text{r}=6$</p><p>From (i) to ${{\\text{T}}_{7}}={{(-1)}^{6}}{{~}^{11}}{{\\text{C}}_{6}}\\cdot \\left( {{\\text{a}}^{5}}/{{\\text{b}}^{6}} \\right){{\\text{x}}^{-7}}$…………. (i)</p><p>Hence, the coefficient of ${{\\text{x}}^{-7}}$ is ${{~}^{11}}{{\\text{C}}_{6}}{{\\text{a}}^{5}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}^{-6}}$.</p><p><strong>Type 3)</strong> Find the term independent of ' x ' in ${{\\left[ \\left( 3{{x}^{2}}/2 \\right)-\\left( 1/3x \\right) \\right]}^{9}}$&nbsp;</p><p>Solution <strong>: </strong>General term, ${{\\text{T}}_{\\text{r}+1}}={{~}^{9}}{{\\text{C}}_{\\text{r}}}{{\\left( 3{{\\text{x}}^{2}}/2 \\right)}^{9-\\text{r}}}-{{(1/3\\text{x})}^{\\text{r}}}$</p><p>$={{(-1)}^{\\text{r}}}{{~}^{9}}{{\\text{C}}_{\\text{r}}}\\left( 3/2 \\right){{~}^{9-\\text{r}}}{{\\text{x}}^{18-2\\text{r}}}\\left( 1/{{3}^{\\text{r}}}\\cdot {{\\text{x}}^{\\text{r}}} \\right)$</p><p>${{\\text{T}}_{\\text{r}+1}}={{(-1)}^{\\text{r}9}}{{\\text{C}}_{\\text{r}}}\\left( {{3}^{9-2\\text{r}}}/{{2}^{9-\\text{r}}} \\right)\\cdot {{\\text{x}}^{18-3\\text{r}}}$</p><p>Putting $18-3\\text{r}=0$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ r}=6$</p><p>So, from (i), ${{7}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ term is independent of ' $x$ ' and its value is :</p><p>${{\\text{T}}_{7}}={{(-1)}^{6}}\\cdot {{~}^{9}}{{\\text{C}}_{6}}\\cdot \\left( {{3}^{-3}}/{{2}^{3}} \\right){{\\text{x}}^{0}}$</p><p>$=9!/\\left( 6!3! \\right)\\cdot 1/\\left( \\begin{array}{*{35}{l}} {{3}^{3}} &amp; {{2}^{3}} \\\\ \\end{array} \\right)$</p><p>$={{\\text{T}}_{7}}=\\left( 7/18 \\right)$</p><p>$\\text{p}$ th term form end:&nbsp;</p><p>' $p$ 'th term from end in the expansion of ${{(x+y)}^{n}}$ is ${{(n-p+2)}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ term from beginning.</p><p><strong>Type 4) </strong>Find the ${{4}^{th~}}$ term from the end in the expansion of \\({{\\left[ \\left( {{x}^{3}}/2 \\right)-\\left( 2/{{x}^{2}} \\right) \\right]}^{7}}\\)&nbsp;</p><p>Solution:&nbsp;</p><p>${{4}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ term from end $={{(7-4+2)}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ or ${{5}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ term from beginning.</p><p>${{\\text{T}}_{5}}={{\\text{T}}_{4+1}}={{~}^{7}}{{\\text{C}}_{4}}{{\\left( {{\\text{x}}^{3}}/2 \\right)}^{7-4}}\\cdot {{\\left( -2/{{\\text{x}}^{4}} \\right)}^{4}}$</p><p>$={{~}^{7}}{{\\text{C}}_{4}}{{\\left( {{\\text{x}}^{3}}/2 \\right)}^{3}}{{\\left( -2/{{\\text{x}}^{2}} \\right)}^{4}}$</p><p>$=7!/\\left( 4!3! \\right)\\cdot \\left( {{x}^{9}}/8 \\right)\\cdot \\left( 16/{{x}^{8}} \\right)$</p><p>$=\\left( 7.6.5/3.2.1 \\right).2\\text{x}$</p><p>${{\\text{T}}_{5}}=70\\text{x}$</p><p>Hence ' 4 ' term, from the end $=70\\text{x}$.</p>",
+      "position": 1,
+      "qcConcept": "66a0dd29c03b9dcaf1afe985"
+    },
+    {
+      "title": "Middle term",
+      "conceptBody": "<h3><strong>Middle terms</strong></h3><p>It depends upon the value of ' $n$ '</p><p><strong>Case 1 : </strong>When ' $n$ ' is even, then total number of terms in $\\left( x+y \\right)n$ is odd. so there is only one middle term i.e. $\\left[ \\left( \\text{n}/2 \\right)+1 \\right]$ th them in the middle term.</p><p>So we find $\\left( {{T}_{n+1/2}} \\right)$. th term is this case, if ' $n$ ' is even.</p><p><strong>Case II : </strong>When ' $n$ ' is odd, then the total number of terms in ${{(x+y)}^{n}}$ is even. So there are two middle terms i.e. $\\left( \\text{n}+1 \\right)1/2$ th and $\\left( \\frac{\\text{n}+3}{2} \\right)$ th are true middle terms.</p><p>So we find ${{\\text{T}}_{\\left( \\text{n}+1 \\right)/2}}$ th and ${{\\text{T}}_{\\left( \\text{n}+3 \\right)/2}}$ th in this case if ' $\\text{n}$ ' is odd.</p><p><strong>Find the middle term in the expansion of ${{\\left[ 3x-\\left( {{x}^{3}}/6 \\right) \\right]}^{9}}$&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>Here total no. of terms are 10 (even). So there re true middle terms.</p><p>i.e. $\\left( 9+1 \\right)/2$ th and $\\left( 9+3 \\right)/2$ th. So we have to find out ' ${{\\text{T}}_{5}}$ ' and ' ${{\\text{T}}_{6}}$ '.</p><p>${{\\text{T}}_{5}}={{\\text{T}}_{4+1}}={{~}^{9}}{{\\text{C}}_{4}}{{(3\\text{x})}^{9-4}}{{\\left( -{{\\text{x}}^{3}}/6 \\right)}^{4}}$</p><p>$=9!/\\left( 4!5! \\right)\\cdot {{3}^{5}}{{x}^{5}}\\left( {{x}^{12}}/{{6}^{4}} \\right)$</p><p>$=\\left( 9.8.7.6/4.3.2.1 \\right).35\\left( {{2}^{4}}\\text{ }\\!\\!~\\!\\!\\text{ }{{3}^{4}} \\right){{\\text{x}}^{17}}$</p><p>${{\\text{T}}_{5}}=\\left( 189/8 \\right){{\\text{x}}^{17}}$</p><p>${{\\text{T}}_{6}}={{\\text{T}}_{5+1}}={{~}^{9}}{{\\text{C}}_{5}}{{(3\\text{x})}^{9-5}}{{\\left( -{{\\text{x}}^{3}}/6 \\right)}^{5}}$</p><p>$=9!/\\left( 5!\\text{ }\\!\\!~\\!\\!\\text{ }4! \\right)\\cdot {{3}^{4}}{{\\text{x}}^{4}}\\left( {{\\text{x}}^{15}}/{{6}^{5}} \\right)$</p><p>$=-\\left( 9.8.7.6/4.3.2.1 \\right){{3}^{4}}\\left( {{2}^{5}}\\text{ }\\!\\!~\\!\\!\\text{ }{{3}^{5}} \\right){{\\text{x}}^{19}}$</p><p>${{\\text{T}}_{6}}=-\\left( 21/16 \\right){{\\text{x}}^{19}}$</p>",
+      "position": 2,
+      "qcConcept": "66a0dd29c03b9dcaf1afe986"
+    },
+    {
+      "title": "Greatest Term",
+      "conceptBody": "<h3><strong>Greatest term in ${{(1+x)}^{n}}$&nbsp;</strong></h3><p>If ' ${{T}_{r}}$ ' and ' ${{T}_{r+1}}$ ' be the ' $r$ ' th and $\\left( r+1 \\right)$ the terms in the expansion of ${{(1+x)}^{n}}$, then :</p><p>${{\\text{T}}_{\\text{r}+1}}\\text{ }\\!\\!~\\!\\!\\text{ }={{~}^{\\text{n}}}{{\\text{C}}_{\\text{r}}}{{(1)}^{\\text{n}-\\text{r}}}{{\\text{x}}^{\\text{r}}}={{~}^{\\text{n}}}{{\\text{C}}_{\\text{r}}}{{\\text{x}}^{\\text{r}}}$</p><p>And ${{\\text{T}}_{\\text{r}}}={{~}^{\\text{n}}}{{\\text{C}}_{\\text{r}-1}}\\cdot {{\\text{x}}^{\\text{r}-1}}$</p><p>So ${{\\text{T}}_{\\text{r}+1}}/{{\\text{T}}_{\\text{r}}}=\\left( \\text{n}{{\\text{C}}_{\\text{r}}}{{\\text{x}}^{\\text{r}}}/{{~}^{\\text{n}}}{{\\text{C}}_{\\text{r}-1}}{{\\text{x}}^{\\text{r}-1}} \\right)=\\left( \\text{n}-\\text{r}+1 \\right)/\\text{r}\\left| \\text{x} \\right|$</p><p>If ' ${{\\text{T}}_{\\text{r}+1}}$ be the greatest term, then ${{\\text{T}}_{\\text{r}+1}}/{{\\text{T}}_{\\text{r}}}$</p><p>Or $\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{T}}_{\\text{r}+1}}/{{\\text{T}}_{\\text{r}}}=1$</p><p>Since $\\left( n-r+1 \\right)/r\\cdot \\left| x \\right|&gt;1$, where ' $r$ ' is a ' + ' ve integer.</p><p>This inequality, changes either to the form $r&lt;m+f$ pr $r&lt;m$, where ' $m$ ' is a ' + ' ve integer and ' $\\text{f}$ ' is a fraction. So we get :</p><p>$\\text{r}&lt;\\text{m}+\\text{f}$……….. (i)</p><p>or $r&lt;m$………… (ii)</p><p>In case (i), ' $\\text{T}{{~}_{\\text{m}+1}}$ is the greatest term, and in case (i) ' $\\text{T}{{~}_{\\text{m}}}$ and ' $\\text{T}{{~}_{\\text{m}+1}}$ are the greatest terms, and both re equal.</p><p>Short-cut : First calculate $\\text{m}=\\left| \\text{x}\\left( \\text{n}+1 \\right)/\\left( \\text{x}+1 \\right) \\right|$</p><p>Case (1) if ' $\\text{m}$ ' is an integer, then ' $\\text{T}$ ' ${{~}_{\\text{m}}}$ and ' $\\text{T}{{~}_{\\text{m}+1}}$ are the greatest terms and both are equal.</p><p>Case (2) if ' $\\text{m}$ ' is not an integer, then ${{\\text{T}}_{\\left[ \\text{m} \\right]+1}}$ will be the greatest term, where [.] denotes greatest integer function.</p><p><strong>Find numerically the greatest term in the expansion of (2 + 3x), when x = (3 / 2)&nbsp;</strong></p><p><strong>Solution: &nbsp;Method I :-</strong></p><p>${{(2+3x)}^{9}}={{2}^{9}}{{[1+3x/2]}^{9}}$</p><p>In the expansion of ${{[\\left( 1+3x \\right)/2]}^{9}}$, we have :</p><p>$\\mathrm{T}_{\\mathrm{r}+1} / \\mathrm{T}_{\\mathrm{r}}=[(9-\\mathrm{r}+1) / \\mathrm{r}] \\mid 3 \\mathrm{x} / 2$</p><p>$=((10-r) / r)|(3 / 2) \\times(3 / 2)|^3$</p><p>$=(10-\\mathrm{r}) / \\mathrm{r} \\times 9 / 4$</p><p>$\\mathrm{~T}_{\\mathrm{r}+1} / \\mathrm{T}_{\\mathrm{r}}=(90-9 \\mathrm{r}) / 4 \\mathrm{r}$</p><p>$\\text { Putting } \\mathrm{T}_{\\mathrm{r}+1} / \\mathrm{T}_{\\mathrm{r}}&gt;1$</p><p>$\\Rightarrow(90-9 \\mathrm{r}) / 4 \\mathrm{r}&gt;1$</p><p>$\\text { or } 90 \\geq 13 \\mathrm{r}$</p><p>$\\text { or } \\mathrm{r} \\leq 90 / 13$</p><p>$\\text { or } \\mathrm{r} \\leq 6+12 / 13$</p><p>$\\Rightarrow \\mathrm{T}_{6+1} \\text { or }{ }^{\\prime} \\mathrm{T}_7{ }^{\\prime} \\text { is the greatest term. }$</p><p>${ }^{\\prime} \\mathrm{T}_7{ }^{\\prime} \\text { in }[1+(3 \\mathrm{x} / 2)]^9$</p><p>$\\mathrm{~T}_7=\\mathrm{T}^{6+1}={ }^9 \\mathrm{C}_6(3 \\times / 6)^6$</p><p>$=9 ! /(3 ! 6 !) \\cdot[(3 / 2) \\times(3 / 2)]^6$</p><p>$=(9.8 .7 / 3.2 .1) \\times\\left(9^6 / 4^6\\right)$</p><p>$=\\left(3 \\times 7 \\times 9^6\\right) / 45=\\left(3 \\times 7 \\times 3^{12}\\right) / 2^{10}$</p><p>$=7 \\cdot\\left(3^{13} / 2^{10}\\right)$</p><p>So greatest term in ${{(2+3\\text{x})}^{9}}$ is :</p><p>$~={{2}^{9}}\\cdot 7\\cdot \\left( {{3}^{13}}/{{2}^{10}} \\right)$</p><p>$~=\\left( 7\\times {{3}^{13}} \\right)/2$</p><p><strong>Method II :-&nbsp;</strong></p><p>${{(2+3\\text{x})}^{9}}$$~={{2}^{9}}{{[\\left( 1+3\\text{x} \\right)/2]}^{9}}$</p><p>$~={{2}^{9}}{{[1+9/4]}^{9}}$</p><p>Since x $~=3/2$</p><p>Here m $~=\\left| \\text{x}\\left( \\text{n}+1 \\right)/\\left( \\text{x}+1 \\right) \\right|=(9/4\\left( 9+1 \\right)/9/4+1\\mid $</p><p>$~=90/13$</p><p>So greatest term in the expansion is ${{\\text{T}}_{\\left[ \\text{m} \\right]+1}}={{\\text{T}}_{3+1}}={{\\text{T}}_{7}}$</p><p>Now the method is same as in method (1)</p><p>Greatest Coefficient: In any binomial expansion middle-term has the greatest Coefficient. So</p><p>(i) If ' $n$ ' is even, then greatest coefficient $={{~}^{n}}{{C}_{n/2}}$</p><p>(ii) If ' $\\text{n}$ ' is odd, then greatest coefficients are ${{~}^{\\text{n}}}{{\\text{C}}_{\\left( \\text{n}+1 \\right)/2}}$ and ${{~}^{\\text{n}}}\\text{C}\\left( \\text{n}-1 \\right)/2$</p>",
+      "position": 3,
+      "qcConcept": "66a0dd29c03b9dcaf1afe987"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f352d384bfb4a537ed9",
+      "title": "$6^{\\text {th }}$ term in expansion of $\\left(2 x^2-\\frac{1}{3 x^2}\\right)^{10}$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f352d384bfb4a537eda",
+      "title": "The coefficient of $x^{32}$ in the expansion of $\\left(x^4-\\frac{1}{x^3}\\right)^{15}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f352d384bfb4a537edb",
+      "title": "In the expansion of $\\left(x-\\frac{1}{x}\\right)^6$, the constant term is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f352d384bfb4a537edc",
+      "title": "If the third term in the binomial expansion of $(1+x)^m$ is $-\\frac{1}{8} x^2$, then the rational value of $m$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f352d384bfb4a537edd",
+      "title": "The coefficient of middle term in the expansion of $(1+x)^{10}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f352d384bfb4a537ede",
+      "title": "If the middle term in the expansion of $\\left(x^2+\\frac{1}{x}\\right)^n$ is $924 x^6$, then $n=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f352d384bfb4a537edf",
+      "title": "The greatest term in the expansion of $\\sqrt{3}\\left(1+\\frac{1}{\\sqrt{3}}\\right)^{20}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f352d384bfb4a537ee0",
+      "title": "The coefficient of $x^5$ in the expansion of $(x+3)^6$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f352d384bfb4a537ee1",
+      "title": "The greatest coefficient in the expansion of $(1+x)^{2 n+2}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f352d384bfb4a537ee2",
+      "title": "If in the expansion of $(1+x)^{21}$, the coefficients of $x^r$ and $x^{r+1}$ be equal, then $r$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f352d384bfb4a537ee3",
+      "title": "Coefficient of $x$ in the expansion of $\\left(x^2+\\frac{a}{x}\\right)^5$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f352d384bfb4a537ee4",
+      "title": "In the expansion of $\\left(x+\\frac{2}{x^2}\\right)^{15}$ the term independent of $x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f352d384bfb4a537ee5",
+      "title": "If the third term in the binomial expansion of $(1+x)^m$ is $-\\frac{1}{8} x^2$ then the rational value of $m$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

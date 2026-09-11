@@ -1,0 +1,35 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d392647479b8e869647c",
+  "chapterId": "68091fbd3a10446a207fda62",
+  "subject": "Biology",
+  "chapter": "Chemical Coordination and Integration",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6809205a3a10446a207fe128",
+      "title": "Introduction",
+      "count": 1,
+      "questionIds": [
+        "68091fc43a10446a207fdab4"
+      ]
+    },
+    {
+      "id": "6809205a3a10446a207fe126",
+      "title": "Pituitary Gland",
+      "count": 1,
+      "questionIds": [
+        "68091fbd3a10446a207fda60"
+      ]
+    },
+    {
+      "id": "6809205a3a10446a207fe127",
+      "title": "Pancreas",
+      "count": 1,
+      "questionIds": [
+        "68091fbe3a10446a207fda6d"
+      ]
+    }
+  ]
+}

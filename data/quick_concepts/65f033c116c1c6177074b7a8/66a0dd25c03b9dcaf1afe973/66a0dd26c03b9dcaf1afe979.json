@@ -1,0 +1,118 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd25c03b9dcaf1afe973",
+  "topicId": "66a0dd26c03b9dcaf1afe979",
+  "title": "Area bounded by two curves",
+  "concepts": [
+    {
+      "title": "Area between point of intersections",
+      "conceptBody": "<h3><strong>Area bounded by two curves</strong></h3><p>&nbsp;Here area will be&nbsp;</p><p>$\\begin{aligned} \\text { Area } &amp; \\left.=\\int_a^b \\text { (right }- \\text { left }\\right) d y \\\\ &amp; =\\int_a^b[f(y)-g(y)] d y \\end{aligned}$ <img src=\"https://cdn.mathpix.com/snip/images/hlqWehNxKiB7xI_mLIKV7mNlLfQvdPpxKaeZ-i5chj0.original.fullsize.png\"></p><p>see you can use any set of formula, but choose such a one which makes your calculation easier.</p><p>let us discuss some cases.</p><p><img src=\"https://cdn.mathpix.com/snip/images/YS76sDx1iydB6a11_ocHSKhmxlT03Z7EHYGwtLeNKEE.original.fullsize.png\" width=\"647\" height=\"330\"></p><p>$\\text { for such case both sets can be used i.e. }$ \\begin{aligned} &amp; \\int (f(x)-g(x)) d x \\\\ &amp; \\int(f(y)-g(y)) d y \\end{aligned}</p>",
+      "position": 0,
+      "qcConcept": "66a0dd26c03b9dcaf1afe97a"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f2f2d384bfb4a537ea3",
+      "title": "If area bounded by the curves $y^2=4 a x$ and $y=m x$ is $\\frac{a^2}{3}$, then the value of $m$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f2f2d384bfb4a537ea4",
+      "title": "Area bounded by parabola $y^2=x$ and straight line $2 y=x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f2f2d384bfb4a537ea5",
+      "title": "Area bounded by lines $y=2+x, y=2-x$ and $x=2$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f2f2d384bfb4a537ea6",
+      "title": "For $0 \\leq x \\leq \\pi$, the area bounded by $y=x$ and $y=x+\\sin x$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f2f2d384bfb4a537ea7",
+      "title": "The area of the region (in the square unit) bounded by the curve $x^2=4 y$, line $x=2$ and $x$-axis is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f302d384bfb4a537ea8",
+      "title": "Area under the curve $y=x^2-4 x$ within the $x$-axis and the line $x=2$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f302d384bfb4a537ea9",
+      "title": "The area of smaller part between the circle $x^2+y^2=4$ and the line $x=1$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f302d384bfb4a537eaa",
+      "title": "The area enclosed between the curves $y=x^3$ and $y=\\sqrt{x}$ is, (in square units)",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f302d384bfb4a537eab",
+      "title": "The area between the parabola $y=x^2$ and the line $y=x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f312d384bfb4a537eac",
+      "title": "The area enclosed by the parabolas $y=x^2-1$ and $y=1-x^2$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f312d384bfb4a537ead",
+      "title": "The area enclosed between the parabolas $y^2=4 x$ and $x^2=4 y$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f312d384bfb4a537eae",
+      "title": "The area bounded by the curves $y^2=8 x$ and $y=x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f312d384bfb4a537eaf",
+      "title": "The area bounded by the curves $y=\\log _e x$ and $y=\\left(\\log _e x\\right)^2$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f312d384bfb4a537eb0",
+      "title": "The area between the parabola $y^2=4 a x$ and $x^2=8 a y$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f322d384bfb4a537eb1",
+      "title": "The area of the region bounded by the curves $y=x^2$ and $y=|x|$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f322d384bfb4a537eb2",
+      "title": "The area bounded by the curves $y^2-x=0$ and $y-x^2=0$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f322d384bfb4a537eb3",
+      "title": "The area in the first quadrant between $x^2+y^2=\\pi^2$ and $y=\\sin x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

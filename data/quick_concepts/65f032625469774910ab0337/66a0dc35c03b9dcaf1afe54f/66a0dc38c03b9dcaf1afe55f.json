@@ -1,0 +1,148 @@
+{
+  "subjectId": "65f032625469774910ab0337",
+  "chapterId": "66a0dc35c03b9dcaf1afe54f",
+  "topicId": "66a0dc38c03b9dcaf1afe55f",
+  "title": "Le chatelier's principle",
+  "concepts": [
+    {
+      "title": "Effect of temperature",
+      "conceptBody": "<h3><strong>Le Chatelier's Principal and Equilibrium Constant</strong></h3><p>Le Chatelier's principle states that if a chemical reaction at equilibrium is subjected to a change in temperature, pressure or concentration, the equilibrium shifts to that direction by which the effect of the change is minimised.</p><p>One should note that the change in either pressure or concentration at equilibrium may shift the equilibrium or more clearly, change the state of equilibrium, but it cannot change the equilibrium constant ${{K}_{p}}$ or ${{K}_{c}}$ which depends only on temperature.</p><p>However, when a reaction (except those for which $\\Delta H=0$) is subjected to a change in temperature, the equilibrium shifts to another equilibrium position at the new temperature and the equilibrium constant also changes.</p><p>In general, for an exothermic reaction ($\\Delta \\text{H}$ is negative), increase in temperature results in shifting the equilibrium from right to left, thereby decreasing the value of the equilibrium constant. For an endothermic reaction ( $\\Delta \\text{H}$ is positive), the value of equilibrium constant increases as the temperature increases.</p><p><strong>Effect of Temperature on Equilibrium Constant</strong></p><p>The quantitative effect of temperature on the equilibrium constant can be determined by the following thermodynamically derived equation, known as Van't Hoff equation,</p><p>$\\log {{\\text{K}}_{{{\\text{p}}_{2}}}}-\\log {{\\text{K}}_{{{\\text{p}}_{1}}}}=\\frac{\\Delta {{\\text{H}}^{{}^\\circ }}}{2.303\\text{R}}\\left[ \\frac{{{\\text{T}}_{2}}-{{\\text{T}}_{1}}}{~{{\\text{T}}_{1}}\\cdot {{\\text{T}}_{2}}} \\right]$</p><p>where ${{K}_{{{p}_{1}}}}$ and ${{K}_{{{p}_{2}}}}$ are the equilibrium constants at temperatures ${{T}_{1}}$ and ${{T}_{2}}$ respectively, $\\Delta H$ is standard heat of the reaction at constant pressure.</p><p>Here, it has been assumed that $\\Delta \\text{H}$ is constant in the temperature range between ${{\\text{T}}_{2}}$ and ${{\\text{T}}_{1}}$</p><p>$\\left( {{\\text{T}}_{2}}&gt;{{\\text{T}}_{1}} \\right.$ ). We readily see that ${{\\text{K}}_{{{\\text{p}}_{2}}}}&gt;{{\\text{K}}_{{{\\text{p}}_{1}}}}$, if $\\Delta \\text{H}$ is positive, (endothermic) and ${{\\text{K}}_{{{\\text{p}}_{2}}}}&lt;{{\\text{K}}_{{{\\text{p}}_{1}}}}$, if $\\Delta \\text{H}$ is negative (exothermic).</p><p>Factors Influencing the Equilibrium State</p><p>The effects of various factors on the equilibrium state for the different types of reactions may be clearly understood by using the following expressions of ${{K}_{p}}$.</p><p><strong>Type I reaction&nbsp;</strong></p><p>\\[\\Delta \\text{n}=0:\\text{A}(\\text{g})+\\text{B}(\\text{g})=\\text{C}(\\text{g})+\\text{D}(\\text{g});\\]</p><p>\\[{{\\text{K}}_{\\text{p}}}=\\frac{\\text{ moles of C}\\times \\text{ moles of D}}{\\text{ moles of A}\\times \\text{ moles of B}}\\]</p><p><strong>Type II reaction&nbsp;</strong></p><p>$\\Delta \\text{n}$ is positive: $\\text{A}(\\text{g})=\\text{C}(\\text{g})+\\text{D}(\\text{g})$;</p><p>${{K}_{p}}=\\frac{\\text{ moles of C}\\times \\text{ moles of D}}{\\text{ moles of A}}\\times \\frac{\\text{ total pressure }}{\\text{ total moles }}$</p><p>$\\Delta \\text{n}$ is negative: $\\text{A}(\\text{g})+\\text{B}(\\text{g})=\\text{D}(\\text{g})$;</p><p>${{K}_{p}}=\\frac{\\text{ moles of D }}{\\text{ moles of A}\\times \\text{ moles of B}}\\times \\frac{\\text{ total moles }}{\\text{ total pressure }}$</p>",
+      "position": 0,
+      "qcConcept": "66a0dc39c03b9dcaf1afe560"
+    },
+    {
+      "title": "Effect of pressure",
+      "conceptBody": "<h3><strong>1. Effect of Pressure (or volume)</strong></h3><figure class=\"table\"><table><tbody><tr><td><strong>Type of reaction&nbsp;</strong></td><td><strong>Effect of Pressure (or volume)&nbsp;</strong></td></tr><tr><td>Type I : \\[\\Delta n=0\\]</td><td>Eqb. is not affected</td></tr><tr><td>Type II: \\[\\Delta n=+ve\\]</td><td>Increase in p (or decrease in V) shifts the eqb. to the left</td></tr><tr><td>\\[\\Delta n=-ve\\]</td><td>Increase in p (or decrease in V) shifts the eqb. to the right.</td></tr></tbody></table></figure>",
+      "position": 1,
+      "qcConcept": "66a0dc39c03b9dcaf1afe561"
+    },
+    {
+      "title": "Effect of Addition of Inert Gases",
+      "conceptBody": "<h3><strong>2. Effect of Addition of Inert Gas</strong></h3><figure class=\"table\"><table><tbody><tr><td><strong>Type of reaction&nbsp;</strong></td><td><strong>Effect of Pressure (or volume)&nbsp;</strong></td></tr><tr><td>Type I : \\[\\Delta n=0\\]</td><td>Eqb. is not affected either at constant pressure or at constant volume</td></tr><tr><td>Type II: \\[\\Delta n=+ve\\]</td><td><p>At constant volume : eqb. is not affected</p><p>At constant pressure : eqb. shifts to the right</p></td></tr><tr><td>\\[\\Delta n=-ve\\]</td><td><p>At constant volume : eqb. is not affected</p><p>At constant pressure : eqb. shifts to the left</p></td></tr></tbody></table></figure>",
+      "position": 2,
+      "qcConcept": "66a0dc39c03b9dcaf1afe562"
+    },
+    {
+      "title": "Effect of Addition of Catalyst",
+      "conceptBody": "<h3><strong>3. Effect of Addition of Catalyst</strong></h3><p>Adding a catalyst to a reaction changes its rate but this cannot shift the equilibrium in favour of either products or reactants. Because a catalyst affects the activation energy of both forward and backward reactions equally, it changes both rate constants by the same factor, so their ratio ${{K}_{c}}$, does not change. Thus, adding a catalyst to a reaction at equilibrium has no effect; it changes neither the reaction quotient, $\\text{Q}$, nor the equilibrium constant $\\text{K}$, but only the time required to established equilibrium is altered.</p>",
+      "position": 3,
+      "qcConcept": "66a0dc3ac03b9dcaf1afe563"
+    },
+    {
+      "title": "Effect of Reactant or Product",
+      "conceptBody": "<h3><strong>4. Effect of Addition or Removal of any of the Reactants or Products</strong></h3><p>If any of the reactants or products is added or removed from a system at equilibrium the equilibrium shifts in the direction that consumes or produces the added or removed substance respectively. This is only true if the volume of the system is kept constant. But under the constant pressure condition, shifting of equilibrium may be in the reverse direction depending upon the value and sign of $\\Delta \\text{n}$ and number of molecules of the added or removed substance involved in the reaction.</p>",
+      "position": 4,
+      "qcConcept": "66a0dc3ac03b9dcaf1afe564"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66584e4e1814fc7e94209c00",
+      "title": "Le-chatelier principle is applicable",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e4e1814fc7e94209c01",
+      "title": "A reversible reaction is in equilibrium. If a factor is changed which affect it, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e4e1814fc7e94209c02",
+      "title": "In the following reversible reaction\n$2 \\mathrm{SO}_2+\\mathrm{O}_2 \\rightleftharpoons 2 \\mathrm{SO}_3+Q_{\\mathrm{Cal}}$\nMost suitable condition for the higher production of $\\mathrm{SO}_3$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e4e1814fc7e94209c03",
+      "title": "The reaction $A+B \\rightleftharpoons C+D+$ heat has reached equilibrium. The reaction may be made to proceed forward by",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e4e1814fc7e94209c04",
+      "title": "According to Le-chatelier principle, if heat is given to solid-liquid system, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e4e1814fc7e94209c05",
+      "title": "Which of the following will favour the reverse reaction in a chemical equilibrium",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e4e1814fc7e94209c06",
+      "title": "Following gaseous reaction is undergoing in a vessel $\\mathrm{C}_2 \\mathrm{H}_4+\\mathrm{H}_2 \\Rightarrow \\mathrm{C}_2 \\mathrm{H}_6 . \\Delta \\mathrm{H}=-32.7 \\mathrm{Kcal}$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e4e1814fc7e94209c07",
+      "title": "What would happen to a reversible reaction at equilibrium when an inert gas is added while the pressure remains unchanged",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e4e1814fc7e94209c08",
+      "title": "Raising the temperature of an equilibrium system",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e4e1814fc7e94209c09",
+      "title": "According to Le-chatelier's principle, an increase in the temperature of the following reaction will $\\mathrm{N}_2+\\mathrm{O}_2 \\rightleftharpoons 2 \\mathrm{NO}-43,200 \\mathrm{kcal}$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e4e1814fc7e94209c0a",
+      "title": "The equilibrium which remains uneffected by change in pressure of the reactants is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e4e1814fc7e94209c0b",
+      "title": "For the reaction $\\mathrm{PCl}_5(\\mathrm{~g}) \\rightleftharpoons \\mathrm{PCl}_3(\\mathrm{~g})+\\mathrm{Cl}_2(\\mathrm{~g})$, the forward reaction at constant temperature is faxoured by",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e4e1814fc7e94209c0c",
+      "title": "$H_{2}(g)+I_{2}(g) \\rightleftharpoons 2 H I (g) ~\\Delta H=+q$ cal, then formation of $H I$ :",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e4e1814fc7e94209c0d",
+      "title": "The formation of nitric oxide by contact process $N_2+\\mathrm{O}_2 \\rightleftharpoons 2 \\mathrm{NO}$. $\\Delta \\mathrm{H}=43.200 \\mathrm{kcal}$ is favoured by",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e4e1814fc7e94209c0e",
+      "title": "For a reaction if $K_p \\gt K_c$, the forward reaction is favoured by",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e4e1814fc7e94209c0f",
+      "title": "$A_{2(g)}+B_{2(g)} \\rightleftharpoons 2 A B_{(g)} ; \\Delta H=+v e$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e4e1814fc7e94209c10",
+      "title": "In a vessel containing $\\mathrm{SO}_3, \\mathrm{SO}_2$ and $\\mathrm{O}_2$ at equilibrium, some helium gas is introduced so that the total pressure increases while temperature and volume remain constant. According to Le-Chatelier.principle the dissociation of $\\mathrm{SO}_3$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e4e1814fc7e94209c11",
+      "title": "For the reaction $\\mathrm{CO}(g)+\\mathrm{H}_2 \\mathrm{O}(\\mathrm{g}) \\rightleftharpoons \\mathrm{CO}_2(g)+\\mathrm{H}_2(g)$ at a given temperature, the equilibrium amount of $\\mathrm{CO}_2(g)$ can be increased by",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

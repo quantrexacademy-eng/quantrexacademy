@@ -1,0 +1,37 @@
+{
+  "examSlug": "kcet",
+  "examId": "62962075e7f8e9ac4daeafda",
+  "subjectId": "62962075e7f8e9ac4daeafd9",
+  "chapterId": "64cc99bb08d12fed62b18082",
+  "subject": "Mathematics",
+  "chapter": "Pair of Lines",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64cc9b3508d12fed62b18e95",
+      "title": "homogeneous equation of second degree",
+      "count": 2,
+      "questionIds": [
+        "64cc99e908d12fed62b18214",
+        "64cc99bb08d12fed62b18080"
+      ]
+    },
+    {
+      "id": "64cc9b3508d12fed62b18e97",
+      "title": "Pair of lines through origin",
+      "count": 1,
+      "questionIds": [
+        "64cc9a0d08d12fed62b1835a"
+      ]
+    },
+    {
+      "id": "64cc9b3508d12fed62b18e96",
+      "title": "Angle between lines",
+      "count": 2,
+      "questionIds": [
+        "64cc9a2308d12fed62b1841c",
+        "64cc99d208d12fed62b18149"
+      ]
+    }
+  ]
+}

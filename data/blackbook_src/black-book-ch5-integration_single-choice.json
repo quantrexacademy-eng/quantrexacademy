@@ -1,0 +1,3591 @@
+[
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$a^x \\ln \\left( \\frac{e}{x} \\right)^{2x} + C$",
+      "$a^x \\ln \\left( \\frac{x}{e} \\right)^x + C$",
+      "$a^x + \\ln \\left( \\frac{x}{e} \\right)^x + C$",
+      "None of these"
+    ],
+    "questionNumber": 1,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int a^x \\left( \\ln x + \\ln a \\cdot \\ln \\left( \\frac{x}{e} \\right)^x \\right) dx =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\sqrt{2} - 1$",
+      "$2(\\sqrt{2} - 1)$",
+      "$\\sqrt{2} + 1$",
+      "$2(\\sqrt{2} + 1)$"
+    ],
+    "questionNumber": 2,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of :\n$\\lim_{n \\to \\infty} \\left( \\frac{1}{\\sqrt{n}\\sqrt{n+1}} + \\frac{1}{\\sqrt{n}\\sqrt{n+2}} + \\frac{1}{\\sqrt{n}\\sqrt{n+3}} + \\dots + \\frac{1}{\\sqrt{n}\\sqrt{2n}} \\right)$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$(\\sin \\alpha, \\cos \\alpha)$",
+      "$(\\cos \\alpha, \\sin \\alpha)$",
+      "$(-\\sin \\alpha, \\cos \\alpha)$",
+      "$(-\\cos \\alpha, \\sin \\alpha)$"
+    ],
+    "questionNumber": 3,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $\\int \\frac{\\sin x}{\\sin (x - \\alpha)} dx = Ax + B \\log \\sin (x - \\alpha) + C$, then value of $(A, B)$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{\\sqrt{2}}{3} \\tan^{-1} \\sqrt{2} + \\frac{5}{12} \\log 2 - \\frac{1}{4} \\log 3$",
+      "$\\frac{\\sqrt{2}}{3} \\tan^{-1} \\sqrt{2} - \\frac{5}{12} \\log 2 - \\frac{1}{12} \\log 3$",
+      "$\\frac{\\sqrt{2}}{3} \\tan^{-1} \\sqrt{2} + \\frac{5}{12} \\log 2 + \\frac{1}{12} \\log 3$",
+      "$\\frac{\\sqrt{2}}{3} \\tan^{-1} \\sqrt{2} - \\frac{5}{12} \\log 2 + \\frac{1}{12} \\log 3$"
+    ],
+    "questionNumber": 4,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of the integral $\\int_0^2 \\frac{\\log(x^2 + 2)}{(x + 2)^2} dx$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$I_1 > 1, I_2 < 1$",
+      "$I_1 < 1, I_2 > 1$",
+      "$1 < I_1 < I_2$",
+      "$I_2 < I_1 < 1$"
+    ],
+    "questionNumber": 5,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $I_1 = \\int_0^1 \\frac{1 + x^8}{1 + x^4} dx$ and $I_2 = \\int_0^1 \\frac{1 + x^9}{1 + x^3} dx$, then :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\left\\{ \\frac{\\sqrt{7}}{4}, \\frac{\\sqrt{15}}{4} \\right\\}$",
+      "$\\left\\{ \\frac{\\sqrt{7}}{3}, \\frac{\\sqrt{15}}{3} \\right\\}$",
+      "$\\left\\{ \\frac{\\sqrt{7}}{2}, \\frac{\\sqrt{15}}{2} \\right\\}$",
+      "$\\left\\{ \\sqrt{7}, \\sqrt{15} \\right\\}$"
+    ],
+    "questionNumber": 6,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f:(0, 1) \\rightarrow (0, 1)$ be a differentiable function such that $f'(x) \\neq 0$ for all $x \\in (0, 1)$ and $f\\left(\\frac{1}{2}\\right) = \\frac{\\sqrt{3}}{2}$. Suppose for all $x$, \n$\\lim_{t \\to x} \\frac{\\int_0^t \\sqrt{1 - (f(s))^2} ds - \\int_0^x \\sqrt{1 - (f(s))^2} ds}{f(t) - f(x)} = f(x)$. \nThen the value of $f\\left(\\frac{1}{4}\\right)$ belongs to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1 - \\cos 1}{2}$",
+      "$1 - \\cos 2$",
+      "$\\frac{\\sin 2}{2}$",
+      "$\\frac{1 - \\cos 2}{2}$"
+    ],
+    "questionNumber": 7,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(\\theta) = \\frac{4}{3} (1 - \\cos^6 \\theta - \\sin^6 \\theta)$, then\n$\\lim_{n \\to \\infty} \\frac{1}{n} \\left[ \\sqrt{f\\left(\\frac{1}{n}\\right)} + \\sqrt{f\\left(\\frac{2}{n}\\right)} + \\sqrt{f\\left(\\frac{3}{n}\\right)} + \\dots + \\sqrt{f\\left(\\frac{n}{n}\\right)} \\right] =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$-\\frac{1}{6}$",
+      "$-\\frac{1}{12}$",
+      "$-\\frac{1}{18}$",
+      "$-\\frac{1}{36}$"
+    ],
+    "questionNumber": 8,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\int_0^1 \\frac{(x^6 - x^3)}{(2x^3 + 1)^3} dx$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{\\pi}{8} \\ln 2$",
+      "$\\frac{\\pi}{4} \\ln 2$",
+      "$\\frac{\\pi}{2\\sqrt{2}} \\ln 2$",
+      "$\\frac{\\pi}{2} \\ln 2$"
+    ],
+    "questionNumber": 9,
+    "questionType": "SINGLE CORRECT",
+    "text": "$2 \\int_0^{\\frac{1}{\\sqrt{2}}} \\frac{\\sin^{-1} x}{x} dx - \\int_0^1 \\frac{\\tan^{-1} x}{x} dx =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{3}$",
+      "$\\frac{1}{4}$",
+      "$\\frac{7}{12}$",
+      "$\\frac{5}{12}$"
+    ],
+    "questionNumber": 10,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x)$ be a differentiable function such that $f(x) = x^2 + \\int_0^x e^{-t} f(x - t) dt$, then $\\int_0^1 f(x) dx =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{2}{3-e}e^x + \\left(\\frac{3-e}{1-e}\\right)x + C$",
+      "$\\frac{2}{3-e}e^x + \\left(\\frac{1-e}{3-e}\\right)x + C$",
+      "$\\frac{3}{2-e}e^x + \\left(\\frac{1+e}{3+e}\\right)x + C$",
+      "$\\frac{2}{2-e}e^x + \\left(\\frac{1-e}{3+e}\\right)x + C$"
+    ],
+    "questionNumber": 11,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f'(x) = f(x) + \\int_0^1 f(x)dx$ and given $f(0) = 1$, then $\\int f(x)dx$ is equal to:\n\n*(where $C$ is an arbitrary constant.)*",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$I_2$",
+      "$\\frac{1}{2}I_2$",
+      "$2I_2$",
+      "$3I_2$"
+    ],
+    "questionNumber": 12,
+    "questionType": "SINGLE CORRECT",
+    "text": "For any $x \\in R$, and $f$ be a continuous function. Let $I_1 = \\int_{\\sin^2 x}^{1+\\cos^2 x} t f(t(2-t))dt$, $I_2 = \\int_{\\sin^2 x}^{1+\\cos^2 x} f(t(2-t))dt$, then $I_1 =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "1",
+      "2",
+      "-1",
+      "-2"
+    ],
+    "questionNumber": 13,
+    "questionType": "SINGLE CORRECT",
+    "text": "If the integral $\\int \\frac{5 \\tan x}{\\tan x - 2} dx = x + a \\ln |\\sin x - 2 \\cos x| + C$, then '$a$' is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{x}{x + \\sqrt{x} + 1} + C$",
+      "$\\frac{2x}{x + \\sqrt{x} + 1} + C$",
+      "$\\frac{-2x}{x + \\sqrt{x} + 1} + C$",
+      "$\\frac{-x}{x + \\sqrt{x} + 1} + C$"
+    ],
+    "questionNumber": 14,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int \\frac{(2 + \\sqrt{x}) dx}{(x + 1 + \\sqrt{x})^2}$ is equal to :\n\n*(where $C$ is an arbitrary constant.)*",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$2^{1/6} x + C$",
+      "$2^{1/12} x + C$",
+      "$2^{1/3} x + C$",
+      "None of these"
+    ],
+    "questionNumber": 15,
+    "questionType": "SINGLE CORRECT",
+    "text": "Evaluate $\\int \\frac{\\sqrt{x + \\sqrt{2 - x^2}} \\sqrt{1 - x\\sqrt{2 - x^2}}}{\\sqrt{1 - x^2}} dx$; $x \\in (0, 1)$:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\sqrt{2}$",
+      "$\\sqrt{3}$",
+      "2",
+      "$\\sqrt{5}$"
+    ],
+    "questionNumber": 16,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int \\frac{dx}{\\sqrt{1 - \\tan^2 x}} = \\frac{1}{\\lambda} \\sin^{-1}(\\lambda \\sin x) + C$, then $\\lambda =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$-\\left(\\frac{x+1}{x}\\right)^{1/6} + C$",
+      "$6\\left(\\frac{x+1}{x}\\right)^{-1/6} + C$",
+      "$\\left(\\frac{x}{x+1}\\right)^{5/6} + C$",
+      "$-\\left(\\frac{x}{x+1}\\right)^{5/6} + C$"
+    ],
+    "questionNumber": 17,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int \\frac{dx}{\\sqrt{x^{5/2} (x + 1)^{7/2}}}$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\sin x \\cdot (\\cos x)^5 + C$",
+      "$\\sin 2x \\cos 2x + C$",
+      "$\\frac{\\sin 2x}{8} [1 + \\cos^2 2x - 2\\cos 2x] + C$",
+      "$\\frac{\\sin 2x}{8} [1 + \\cos^2 2x + 2\\cos 2x] + C$"
+    ],
+    "questionNumber": 18,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $I_n = \\int (\\sin x)^n dx; n \\in N$, then $5I_4 - 6I_6$ is equal to:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{b^3} \\left( a + bx - a \\ln |a + bx| - \\frac{a^2}{a + bx} \\right) + C$",
+      "$\\frac{1}{b^3} \\left( a + bx - 2a \\ln |a + bx| - \\frac{a^2}{a + bx} \\right) + C$",
+      "$\\frac{1}{b^3} \\left( a + bx + 2a \\ln |a + bx| - \\frac{a^2}{a + bx} \\right) + C$",
+      "$\\frac{1}{b^3} \\left( a - bx - 2a \\ln |a + bx| - \\frac{a^2}{a + bx} \\right) + C$"
+    ],
+    "questionNumber": 19,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int \\frac{x^2}{(a + bx)^2} dx$ equals to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{x^{39}}{3(x^{13} + x^5 + 1)^3} + C$",
+      "$\\frac{x^{39}}{(x^{13} + x^5 + 1)^3} + C$",
+      "$\\frac{x^{39}}{5(x^{13} + x^5 + 1)^5} + C$",
+      "None of these"
+    ],
+    "questionNumber": 20,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int \\frac{8x^{43} + 13x^{38}}{(x^{13} + x^5 + 1)^4} dx =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "20",
+      "10",
+      "$2\\sin 10$",
+      "$2\\cos 10$"
+    ],
+    "questionNumber": 21,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int \\left( \\frac{\\cos 6x + 6\\cos 4x + 15\\cos 2x + 10}{10\\cos^2 x + 5\\cos x \\cos 3x + \\cos x \\cos 5x} \\right) dx = f(x) + C$, then $f(10)$ is equal to:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$(x + 1) e^{x + x^{-1}} + C$",
+      "$(x - 1) e^{x + x^{-1}} + C$",
+      "$-x e^{x + x^{-1}} + C$",
+      "$x e^{x + x^{-1}} + C$"
+    ],
+    "questionNumber": 22,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int (1 + x - x^{-1}) e^{x + x^{-1}} dx =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "-1",
+      "2"
+    ],
+    "questionNumber": 23,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $\\int e^x \\left( \\frac{2\\tan x}{1 + \\tan x} + \\text{cosec}^2 \\left( x + \\frac{\\pi}{4} \\right) \\right) dx = e^x \\cdot g(x) + K$, then $g\\left(\\frac{5\\pi}{4}\\right) =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$e^{x\\sin x + \\cos x} \\left( x - \\frac{1}{\\cos x} \\right) + C$",
+      "$e^{x\\sin x + \\cos x} \\left( x - \\frac{1}{x\\cos x} \\right) + C$",
+      "$e^{x\\sin x + \\cos x} \\left( 1 - \\frac{1}{x\\cos x} \\right) + C$",
+      "$e^{x\\sin x + \\cos x} \\left( 1 - \\frac{1}{\\cos x} \\right) + C$"
+    ],
+    "questionNumber": 24,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int e^{x\\sin x + \\cos x} \\left( \\frac{x^4 \\cos^3 x - x\\sin x + \\cos x}{x^2 \\cos^2 x} \\right) dx =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{3} (2^{1/2} - 1)$",
+      "$\\frac{2}{3} (2^{1/2} - 1)$",
+      "$\\frac{2}{3} (2^{3/2} - 1)$",
+      "$\\frac{1}{3} (2^{3/2} - 1)$"
+    ],
+    "questionNumber": 25,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of the definite integral $\\int_0^1 \\frac{1 + x + \\sqrt{x+x^2}}{\\sqrt{x} + \\sqrt{1 + x}} dx$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$x^{2x} + C$",
+      "$x^2 \\ln x + C$",
+      "$x^{(x^x)} + C$",
+      "$(x^x)^x + C$"
+    ],
+    "questionNumber": 26,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int x^{x^2+1} (2\\ln x + 1) dx$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "questionNumber": 27,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $\\int \\frac{\\text{cosec}^2 x - 2010}{\\cos^{2010} x} dx = -\\frac{f(x)}{(g(x))^{2010}} + C$; where $f\\left(\\frac{\\pi}{4}\\right) = 1$; then the number of solutions of the equation $\\frac{f(x)}{g(x)} = \\{x\\}$ in $[0, 2\\pi]$ is/are : *(where $\\{ \\cdot \\}$ represents fractional part function)*",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$x^x \\left( (\\ln x)^2 - \\frac{1}{x} \\right) + C$",
+      "$x^x (\\ln x - x) + C$",
+      "$x^x \\frac{(\\ln x)^2}{2} + C$",
+      "$x^x \\ln x + C$"
+    ],
+    "questionNumber": 28,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int x^x \\left( (\\ln x)^2 + \\ln x + \\frac{1}{x} \\right) dx$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{\\sqrt{2x^4 - 2x^2 + 1}}{x^2} + C$",
+      "$\\frac{\\sqrt{2x^4 - 2x^2 + 1}}{x} + C$",
+      "$\\frac{\\sqrt{2x^4 - 2x^2 + 1}}{x^3} + C$",
+      "$\\frac{\\sqrt{2x^4 - 2x^2 + 1}}{2x^2} + C$"
+    ],
+    "questionNumber": 29,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $I = \\int \\frac{x^2 - 1}{x^3 \\sqrt{2x^4 - 2x^2 + 1}} dx$ is equal to:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{x}{x^2 + 1} + C$",
+      "$\\frac{\\ln x}{(\\ln x)^2 + 1} + C$",
+      "$\\frac{x}{1+(\\ln x)^2} + C$",
+      "$e^x \\left( \\frac{x}{x^2 + 1} \\right) + C$"
+    ],
+    "questionNumber": 30,
+    "questionType": "SINGLE CORRECT",
+    "text": "$I = \\int \\left( \\frac{\\ln x - 1}{(\\ln x)^2 + 1} \\right)^2 dx$ is equal to:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{3}$",
+      "$\\frac{2}{3}$",
+      "$\\frac{3}{4}$",
+      "$\\frac{4}{3}$"
+    ],
+    "questionNumber": 31,
+    "questionType": "SINGLE CORRECT",
+    "text": "$I = \\int \\frac{dx}{\\sqrt{(x-1)^3(x+2)^5}} = k \\sqrt{\\frac{x-1}{x+2}} + C$, then '$k$' is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$2P - 7Q = 0$",
+      "$2P + 7Q = 0$",
+      "$7P + 2Q = 0$",
+      "$7P - 2Q = 1$"
+    ],
+    "questionNumber": 32,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int \\frac{1-x^7}{x(1+x^7)} dx = P \\log|x| + Q \\log|x^7 + 1| + C$, then :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\sin 2x + C$",
+      "$\\frac{\\sin 2x}{2} + C$",
+      "$\\frac{-\\sin 2x}{2} + C$",
+      "$-2\\sin 2x + C$"
+    ],
+    "questionNumber": 33,
+    "questionType": "SINGLE CORRECT",
+    "text": "$I = \\int \\frac{\\sin^8 x - \\cos^8 x}{1 - 2\\sin^2 x \\cos^2 x} dx$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{2^{2/3}} \\ln(1 + \\tan^{1/3} x) + C$",
+      "$\\ln(1 + \\tan^{2/3} x) + C$",
+      "$2^{1/3} \\ln(1 + \\tan^{2/3} x) + C$",
+      "$\\frac{1}{2^{2/3}} \\ln(1 + \\tan^{2/3} x) + C$"
+    ],
+    "questionNumber": 34,
+    "questionType": "SINGLE CORRECT",
+    "text": "$I = \\int \\frac{(\\sin 2x)^{1/3} d(\\tan^{1/3} x)}{\\sin^{2/3} x + \\cos^{2/3} x} =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$(\\log_{2012} e)^2 (2012)^{\\sin^{-1}(2012)^x} + C$",
+      "$(\\log_{2012} e)^2 (2012)^{x+\\sin^{-1}(2012)^x} + C$",
+      "$(\\log_{2012} e)^2 (2012)^{\\sin^{-1}(2012)^x} + C$",
+      "$\\frac{(2012)^{\\sin^{-1}(2012)^x}}{(\\log_{2012} e)^2} + C$\n*(Note: Options 'a' and 'c' are printed identically in the source material .)*"
+    ],
+    "questionNumber": 35,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int \\frac{(2012)^{2x}}{\\sqrt{1 - (2012)^{2x}}} (2012)^{\\sin^{-1}(2012)^x} dx =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{2}{\\sqrt{3}} \\tan^{-1} \\left( \\frac{x}{\\sqrt{3(x+1)}} \\right) + C$",
+      "$\\frac{2}{\\sqrt{3}} \\tan^{-1} \\left( \\frac{\\sqrt{x}}{\\sqrt{3(x+1)}} \\right) + C$",
+      "$\\frac{1}{\\sqrt{3}} \\tan^{-1} \\left( \\frac{\\sqrt{x}}{3(x+1)} \\right) + C$",
+      "$\\frac{2}{\\sqrt{3}} \\tan^{-1} \\left( \\frac{x}{\\sqrt{3}(x+1)} \\right) + C$"
+    ],
+    "questionNumber": 36,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int \\frac{(x + 2) dx}{(x^2 + 3x + 3)\\sqrt{x + 1}}$ is equal to :\n\n*(where C is arbitrary constant.)*",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\log \\left( \\frac{g(x)}{f(x)} \\right) + C$",
+      "$\\frac{1}{2} \\left( \\log \\left( \\frac{g(x)}{f(x)} \\right) \\right)^2 + C$",
+      "$\\frac{1}{2} \\log \\left( \\frac{g(x)}{f(x)} \\right)^2 + C$",
+      "$\\log \\left( \\frac{g(x)}{f(x)} \\right)^2 + C$"
+    ],
+    "questionNumber": 37,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int \\left( \\frac{f(x)g'(x) - f'(x)g(x)}{f(x)g(x)} \\right) (\\log(g(x)) - \\log(f(x))) dx$ is equal to:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$e^x \\ln x + C_1 x + C_2$",
+      "$e^x \\ln x + \\frac{1}{x} + C_1 x + C_2$",
+      "$\\frac{\\ln x}{x} + C_1 x + C_2$",
+      "None of these"
+    ],
+    "questionNumber": 38,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int \\left[ e^x \\left( \\ln x + \\frac{2}{x} - \\frac{1}{x^2} \\right) \\right] dx =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\sqrt{\\pi^2 + 1}$",
+      "$\\sqrt{\\pi^2 + 2}$",
+      "$\\sqrt{\\pi^2 + 3}$",
+      "$\\sqrt{\\pi^2 + 4}$"
+    ],
+    "questionNumber": 39,
+    "questionType": "SINGLE CORRECT",
+    "text": "Maximum value of the function $f(x) = \\pi^2 \\int_0^1 t \\sin(x + \\pi t) dt$ over all real number $x$ :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\sqrt{5}$",
+      "$\\frac{\\sqrt{5}}{2} + 2\\ln 2$",
+      "$2 + \\ln\\left(\\frac{\\sqrt{5}}{2}\\right)$",
+      "$2 + 2\\ln\\left(\\frac{\\sqrt{5}}{2}\\right)$"
+    ],
+    "questionNumber": 40,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let '$f$' is a function, continuous on $$ such that $f(x) \\leq \\sqrt{5} \\; \\forall x \\in$ and $f(x) \\leq \\frac{2}{x} \\; \\forall x \\in [\\frac{1}{2}, 1]$ then the smallest '$a$' for which $\\int_0^1 f(x) dx \\leq a$ holds for all '$f$' is:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0",
+      "$2e^2$",
+      "$e^2$",
+      "1"
+    ],
+    "questionNumber": 41,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $I_n = \\int_1^e (\\ln x)^n d(x^2)$, then the value of $2I_n + nI_{n-1}$ equals to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$2\\pi^2$",
+      "$2\\pi^2 - 2$",
+      "$2\\pi^2 + 2$",
+      "$\\pi^2$"
+    ],
+    "questionNumber": 42,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let a function $f: R \\rightarrow R$ be defined as $f(x) = x + \\sin x$. The value of $\\int_0^{2\\pi} f^{-1}(x) dx$ will be :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$4e$",
+      "$\\frac{4}{e}$",
+      "$2e$",
+      "$\\frac{2}{e}$"
+    ],
+    "questionNumber": 43,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of the definite integral $\\int_{-1}^1 e^{-x^4} (2 + \\ln(x + \\sqrt{x^2+1}) + 5x^3 - 8x^4) dx$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{28}{3}$",
+      "$\\frac{1}{3}$",
+      "$0$",
+      "None of these"
+    ],
+    "questionNumber": 44,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int_{-10}^0 \\frac{2[x]}{3x - [x]} dx$ is equal to (where $[*]$ denotes greatest integer function.)",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{e^2 - 1}{2}$",
+      "$\\frac{e^2 + 1}{2}$",
+      "$\\frac{e^2 - 2e}{2}$",
+      "None of these"
+    ],
+    "questionNumber": 45,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\frac{x}{1 + (\\ln x)(\\ln x)\\dots \\infty} \\; \\forall x \\in [1, \\infty)$ then $\\int_1^{2e} f(x) dx$ is:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0",
+      "2",
+      "-2",
+      "None of these"
+    ],
+    "questionNumber": 46,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int_0^2 \\frac{(y^2 - 4y + 5) \\sin(y - 2)}{(2y^2 - 8y + 11)} dy$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "15",
+      "16",
+      "63",
+      "64"
+    ],
+    "questionNumber": 47,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $\\frac{d}{dx} F(x) = \\left( \\frac{e^{\\sin x}}{x} \\right), x > 0$. If $\\int_1^4 \\frac{3}{x} e^{\\sin x^3} dx = F(k) - F(1)$, then one of the possible values of $k$, is:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\pi(1 - \\pi^2)e^{-\\pi^2}$",
+      "$2\\pi(1 - \\pi^2)e^{-\\pi^2}$",
+      "$\\pi(1 - \\pi)e^{-\\pi}$",
+      "$\\pi^2 e^{-\\pi^2}$"
+    ],
+    "questionNumber": 48,
+    "questionType": "SINGLE CORRECT",
+    "text": "Value of $\\lim_{h \\to 0} \\frac{\\int_0^{\\pi+h} x^2 e^{-x^2} dx - \\int_0^\\pi x^2 e^{-x^2} dx}{h}$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "3",
+      "4",
+      "1",
+      "None of these"
+    ],
+    "questionNumber": 49,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f: R^+ \\rightarrow R$ be a differentiable function with $f(1) = 3$ and satisfying :\n$\\int_1^{xy} f(t) dt = y \\int_1^x f(t) dt + x \\int_1^y f(t) dt \\;\\forall x, y \\in R^+$, then $f(e) =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "questionNumber": 50,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $[ \\cdot ]$ denotes the greatest integer function, then the integral $\\int_0^{\\pi/2} e^{\\sin x - [\\sin x]} d(\\sin^2 x - [\\sin^2 x])$ is $\\lambda$, then $[\\lambda - 1]$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "questionNumber": 51,
+    "questionType": "SINGLE CORRECT",
+    "text": "Calculate the reciprocal of the limit $\\lim_{x \\to \\infty} \\int_0^x e^{t^2 - x^2} dt$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "2",
+      "3",
+      "4",
+      "$\\frac{3}{2}$"
+    ],
+    "questionNumber": 52,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $L = \\lim_{n \\to \\infty} \\left( \\frac{(2 \\cdot 1+n)}{1^2+n \\cdot 1+n^2} + \\frac{(2 \\cdot 2+n)}{2^2+n \\cdot 2+n^2} + \\frac{(2 \\cdot 3+n)}{3^2+n \\cdot 3+n^2} + \\dots + \\frac{(2 \\cdot n+n)}{3n^2} \\right)$ then value of $e^L$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "questionNumber": 53,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of the definite integral $\\int_0^2 (\\sqrt{1+x^3} + \\sqrt{x^2+2x}) dx$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{\\pi \\ln 3}{2}$",
+      "$\\frac{\\pi \\ln 2}{3}$",
+      "$\\frac{\\pi \\ln 2}{4}$",
+      "$\\frac{\\pi \\ln 4}{3}$"
+    ],
+    "questionNumber": 54,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of the definite integral $\\int_0^\\infty \\frac{\\ln x}{x^2+4} dx$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{125}{3}$",
+      "$\\frac{250}{3}$",
+      "$\\frac{125}{6}$",
+      "$\\frac{250}{4}$"
+    ],
+    "questionNumber": 55,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of the definite integral $\\int_0^{10} ((x-5) + (x-5)^2 + (x-5)^3) dx$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{\\pi}{16}$",
+      "$\\frac{\\pi}{8}$",
+      "$\\frac{\\pi}{4}$",
+      "$\\frac{\\pi}{2}$"
+    ],
+    "questionNumber": 56,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of definite integral $\\int_0^\\infty \\frac{dx}{(1+x^9)(1+x^2)}$ equals to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{\\pi}{2}$",
+      "1",
+      "$\\frac{1}{2}$",
+      "$\\frac{\\pi}{4}$"
+    ],
+    "questionNumber": 57,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of the definite integral $\\int_0^{\\pi/2} \\left( \\frac{1 + \\sin 3x}{1 + 2\\sin x} \\right) dx$ equals to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{\\pi^2}{16}$",
+      "$\\frac{\\pi^2}{4}$",
+      "$\\frac{\\pi^2}{2}$",
+      "None of these"
+    ],
+    "questionNumber": 58,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\lim_{x \\to \\infty} \\frac{\\int_0^x (\\tan^{-1} x)^2 dx}{\\sqrt{x^2+1}} =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "2013",
+      "2013!",
+      "$2013^2$",
+      "$2013^{2013}$"
+    ],
+    "questionNumber": 59,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $\\int_0^1 \\left( \\sum_{r=1}^{2013} \\frac{x}{x^2+r^2} \\right) \\left( \\prod_{r=1}^{2013} (x^2+r^2) \\right) dx = \\frac{1}{2} \\left[ \\prod_{r=1}^{2013} (1+r^2) - k^2 \\right]$ then $k = $",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "strictly increases $\\forall x \\in R$",
+      "strictly increases only in $(0, \\infty)$",
+      "strictly decreases $\\forall x \\in R$",
+      "strictly decreases in $(0, \\infty)$ and strictly increases in $(-\\infty, 0)$"
+    ],
+    "questionNumber": 60,
+    "questionType": "SINGLE CORRECT",
+    "text": "$f(x) = 2x - \\tan^{-1} x - \\ln(x + \\sqrt{1+x^2})$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$1 - \\frac{\\pi}{4}$",
+      "$\\frac{\\pi}{4} + 1$",
+      "$\\pi + \\frac{1}{4}$",
+      "None of these"
+    ],
+    "questionNumber": 61,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of the definite integral $\\int_0^{\\pi/2} \\frac{dx}{\\tan x + \\cot x + \\text{cosec } x + \\sec x}$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "2",
+      "1",
+      "$\\frac{1}{2}$",
+      "None of these"
+    ],
+    "questionNumber": 62,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of the definite integral $\\int_3^7 \\frac{\\cos x^2}{\\cos x^2 + \\cos(10-x)^2} dx$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{3}{2}$",
+      "$\\frac{5}{2}$",
+      "3",
+      "5"
+    ],
+    "questionNumber": 63,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of the integral $\\int_{e^{-1}}^{e^2} \\left| \\frac{\\ln x}{x} \\right| dx$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{2}{\\pi} g(2)$",
+      "$-\\frac{4}{\\pi} g(2)$",
+      "$\\frac{16}{\\pi} g(2)$",
+      "$-4g(2)$"
+    ],
+    "questionNumber": 64,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\lim_{x \\to \\frac{\\pi}{4}} \\frac{\\int_2^{\\text{cosec}^2 x} t g(t) dt}{x^2 - \\frac{\\pi^2}{16}}$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{4} \\sin 4 + \\frac{1}{16} \\cos 4 - \\frac{1}{16}$",
+      "$\\frac{1}{4} \\sin 4 - \\frac{1}{16} \\cos 4 + \\frac{1}{16}$",
+      "$\\frac{1}{16}(1 - \\sin 4)$",
+      "$\\frac{1}{16}(1 - \\cos 4)$"
+    ],
+    "questionNumber": 65,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\lim_{n \\to \\infty} \\sum_{k=1}^n \\frac{n-k}{n^2} \\cos \\frac{4k}{n}$ equals :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\pi$",
+      "$\\frac{\\pi}{2}$",
+      "$\\frac{1}{\\pi}$",
+      "$\\frac{2}{\\pi}$"
+    ],
+    "questionNumber": 66,
+    "questionType": "SINGLE CORRECT",
+    "text": "For each positive integer $n$, define a function $f_n$ on $$ as follows :\n$f_n(x) = \\begin{cases} \n0 & \\text{if } x = 0 \\\\ \n\\sin \\frac{\\pi}{2n} & \\text{if } 0 < x \\le \\frac{1}{n} \\\\ \n\\sin \\frac{2\\pi}{2n} & \\text{if } \\frac{1}{n} < x \\le \\frac{2}{n} \\\\ \n\\sin \\frac{3\\pi}{2n} & \\text{if } \\frac{2}{n} < x \\le \\frac{3}{n} \\\\ \n\\vdots & \\vdots \\\\ \n\\sin \\frac{n\\pi}{2n} & \\text{if } \\frac{n-1}{n} < x \\le 1 \n\\end{cases}$\nThen the value of $\\lim_{n \\to \\infty} \\int_0^1 f_n(x) dx$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{(n+1)}{4}$",
+      "$\\frac{(n+2)}{4}$",
+      "$\\frac{(n+3)}{4}$",
+      "$\\frac{(n+4)}{4}$"
+    ],
+    "questionNumber": 67,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $n$ be a positive integer, then $\\int_0^{n+1} \\min \\{ |x-1|, |x-2|, |x-3|, \\dots , |x-n| \\} dx$ equals",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{2}{\\pi^2}$",
+      "$\\frac{4}{\\pi^2}$",
+      "$\\frac{8}{\\pi^2}$",
+      "$\\frac{1}{2\\pi^2}$"
+    ],
+    "questionNumber": 68,
+    "questionType": "SINGLE CORRECT",
+    "text": "For positive integers $k = 1, 2, 3 \\dots , n$, let $S_k$ denotes the area of $\\Delta AOB_k$ (where 'O' is origin) such that $\\angle AOB_k = \\frac{k\\pi}{2n}$, $OA = 1$ and $OB_k = k$. The value of the $\\lim_{n \\to \\infty} \\frac{1}{n^2} \\sum_{k=1}^n S_k$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$A = 2B$",
+      "$2A = B$",
+      "$A + B = 0$",
+      "$A = B$"
+    ],
+    "questionNumber": 69,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $A = \\int_0^1 \\prod_{r=1}^{2014} (r-x) dx$ and $B = \\int_0^1 \\prod_{r=0}^{2013} (r+x) dx$, then :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "2",
+      "4"
+    ],
+    "questionNumber": 70,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\left[ \\frac{x}{120} + \\frac{x^3}{30} \\right]$ defined in $$, then $\\int_0^1 (f(x) + 2) dx =$ (where $[\\cdot]$ denotes greatest integer function)",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "1",
+      "-1",
+      "0",
+      "$\\frac{1}{2}$"
+    ],
+    "questionNumber": 71,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\int_0^{g(x)} \\frac{dt}{\\sqrt{1+t^3}}, g(x) = \\int_0^{\\cos x} (1+\\sin t)^2 dt$, then the value of $f'\\left(\\frac{\\pi}{2}\\right)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "16",
+      "4",
+      "8",
+      "32"
+    ],
+    "questionNumber": 72,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\frac{1}{x^2} \\int_0^x (4t^2 - 2f'(t)) dt$, find $9f'(4)$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{3} \\ln 3$",
+      "$\\frac{\\ln 9}{3}$",
+      "$\\frac{\\ln 4}{3}$",
+      "$\\frac{\\ln 6}{3}$"
+    ],
+    "questionNumber": 73,
+    "questionType": "SINGLE CORRECT",
+    "text": "Evaluate $\\lim_{n \\to \\infty} \\left( \\frac{1^2}{n^3+1^3} + \\frac{2^2}{n^3+2^3} + \\frac{3^2}{n^3+3^3} + \\dots \\dots + \\frac{4}{9n} \\right)$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\pi^2$",
+      "$\\frac{\\pi^2}{2}$",
+      "$2\\pi^2$",
+      "$\\pi^3$"
+    ],
+    "questionNumber": 74,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\int_0^{2\\pi} \\cos^{-1} \\left( \\frac{1 - \\tan^2 \\frac{x}{2}}{1 + \\tan^2 \\frac{x}{2}} \\right) dx$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "questionNumber": 75,
+    "questionType": "SINGLE CORRECT",
+    "text": "Given a function '$g$' continuous everywhere such that $\\int_0^1 g(t) dt = 2$ and $g(1) = 5$.\nIf $f(x) = \\frac{1}{2} \\int_0^x (x-t)^2 g(t) dt$, then the value of $f'''(1) - f''(1)$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{\\pi}{12}$",
+      "$\\frac{\\pi}{8}$",
+      "$\\frac{\\pi}{4}$",
+      "$\\frac{\\pi}{3}$"
+    ],
+    "questionNumber": 76,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $\\int_0^\\pi \\frac{x^3 \\cos^4 x \\sin^2 x}{\\pi^2 - 3\\pi x + 3x^2} dx = \\lambda \\int_0^{\\pi/2} \\sin^2 x dx$, then the value of $\\lambda$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{\\pi}{3}$",
+      "$-\\frac{\\pi}{6}$",
+      "$\\frac{\\pi}{2}$",
+      "None of these"
+    ],
+    "questionNumber": 77,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int_0^{\\sqrt{3}} \\left( \\frac{1}{2} \\frac{d}{dx} \\left( \\tan^{-1} \\frac{2x}{1-x^2} \\right) \\right) dx$ equals to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "1",
+      "$\\frac{11}{6}$",
+      "3",
+      "$\\frac{5}{6}$"
+    ],
+    "questionNumber": 78,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $y = \\{x\\}^{[x]}$ then the value of $\\int_0^3 y dx$ equals to :\n*(where $\\{\\cdot\\}$ and $[\\cdot]$ denote fractional part and greatest integer function respectively.)*",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\int_0^{\\pi/4} \\frac{\\sin x}{x} dx$",
+      "$\\int_0^{\\pi/2} \\frac{x}{\\sin x} dx$",
+      "$\\int_0^{\\pi/2} \\frac{x}{2\\sin x} dx$",
+      "$\\int_0^{\\pi/4} \\frac{x}{2\\sin x} dx$"
+    ],
+    "questionNumber": 79,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int_0^{\\pi/4} \\frac{\\tan^{-1} x}{x} dx =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{8\\sqrt{2}}{\\pi^3}$",
+      "$\\frac{24\\sqrt{2}}{\\pi^3}$",
+      "$\\frac{32\\sqrt{2}}{\\pi^3}$",
+      "None of these"
+    ],
+    "questionNumber": 80,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\int_0^{4/\\pi} \\left( 3x^2 \\sin \\frac{1}{x} - x \\cos \\frac{1}{x} \\right) dx$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "questionNumber": 81,
+    "questionType": "SINGLE CORRECT",
+    "text": "The number of values of $x$ satisfying the equation :\n$\\int_{-1}^x \\left( 8t^2 + \\frac{28t}{3} + 4 \\right) dt = \\frac{\\frac{3}{2}x + 1}{\\log_{(x+1)} \\sqrt{x+1}}$, is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{30}$",
+      "zero",
+      "$\\frac{1}{4}$",
+      "$\\frac{1}{5}$"
+    ],
+    "questionNumber": 82,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{n \\to \\infty} \\frac{1+2^4+3^4+\\dots+n^4}{n^5} - \\lim_{n \\to \\infty} \\frac{1+2^3+3^3+\\dots+n^3}{n^5}$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0",
+      "-1",
+      "$\\frac{2}{3}$",
+      "$\\frac{1}{4}$"
+    ],
+    "questionNumber": 83,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\lim_{x \\to 0^+} \\frac{\\int_1^{\\cos x} (\\cos^{-1} t) dt}{2x - \\sin 2x}$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{2}{\\pi}$",
+      "$\\frac{4}{\\pi}$",
+      "$\\frac{8}{\\pi}$",
+      "None of these"
+    ],
+    "questionNumber": 84,
+    "questionType": "SINGLE CORRECT",
+    "text": "Consider a parabola $y = \\frac{x^2}{4}$ and the point $F (0, 1)$. Let $A_1(x_1, y_1), A_2(x_2, y_2), A_3(x_3, y_3), \\dots , A_n(x_n, y_n)$ are '$n$' points on the parabola such $x_k > 0$ and $\\angle OFA_k = \\frac{k\\pi}{2n} (k = 1, 2, 3, \\dots , n)$. Then the value of $\\lim_{n \\to \\infty} \\frac{1}{n} \\sum_{k=1}^n FA_k$, is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$2e^2 - 1$",
+      "$e^4 - 1$",
+      "$2(e^2 - 1)$",
+      "$e^2 - 1$"
+    ],
+    "questionNumber": 85,
+    "questionType": "SINGLE CORRECT",
+    "text": "The minimum value of $f(x) = \\int_0^3 e^{|x-t|} dt$ where $x \\in $ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{\\pi}{2}$",
+      "$\\frac{\\pi}{4}$",
+      "$\\pi$",
+      "$\\frac{3\\pi}{2}$"
+    ],
+    "questionNumber": 86,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $\\int_0^\\infty \\frac{\\sin x}{x} dx = \\frac{\\pi}{2}$, then $\\int_0^\\infty \\frac{\\sin^3 x}{x} dx$ is equals to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1+\\sin x}{2} + C$",
+      "$(1+\\sin x)^2 + C$",
+      "$\\frac{1}{\\sqrt{1+\\sin x}} + C$",
+      "$\\sin x + C$"
+    ],
+    "questionNumber": 87,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int \\sqrt{1+\\sin x} \\left( \\cos \\frac{x}{2} - \\sin \\frac{x}{2} \\right) dx =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{n\\pi}{2}$",
+      "$\\pi$",
+      "$\\frac{\\pi}{2}$",
+      "0"
+    ],
+    "questionNumber": 88,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $I_n = \\int_0^\\pi \\frac{\\sin(2nx)}{\\sin 2x} dx$, then the value of $I_{n+\\frac{1}{2}}$ is equal to $(n \\in I)$ :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{e}$",
+      "0",
+      "$\\frac{2}{e}$",
+      "$1 + \\frac{2}{e}$"
+    ],
+    "questionNumber": 89,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of function $f(x) = 1 + x + \\int_1^x (\\ln^2 t + 2\\ln t) dt$ where $f'(x)$ vanishes is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{3}$",
+      "$\\frac{1}{4}$",
+      "$\\frac{7}{12}$",
+      "$\\frac{5}{12}$"
+    ],
+    "questionNumber": 90,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f$ be a differentiable function on $R$ and satisfies $f(x) = x^2 + \\int_0^x e^{-t} f(x-t) dt$; then $\\int_0^1 f(x) dx$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{3\\pi}{4}$",
+      "$\\pi$",
+      "$\\frac{\\pi}{2}$",
+      "$\\frac{\\pi}{4}$"
+    ],
+    "questionNumber": 91,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of the definite integral $\\int_{-\\pi/2}^{\\pi/2} \\frac{\\cos^2 x}{1 + 5^x} dx$ equals to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$-x$",
+      "$\\sqrt{1-x}$",
+      "$x$",
+      "$\\sqrt{1+x}$"
+    ],
+    "questionNumber": 92,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int \\left( \\frac{x^2 - x + 1}{x^2 + 1} \\right) e^{\\cot^{-1}(x)} dx = f(x) \\cdot e^{\\cot^{-1}(x)} + C$\nwhere $C$ is constant of integration. Then $f(x)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{3\\sqrt{2}-1}{2}$",
+      "$\\frac{2\\sqrt{2}-1}{3}$",
+      "$\\frac{3\\sqrt{3}-1}{3}$",
+      "$\\frac{4\\sqrt{2}-1}{2}$"
+    ],
+    "questionNumber": 93,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{n \\to \\infty} \\frac{1}{n^3} \\left( \\sqrt{n^2+1} + 2\\sqrt{n^2+2^2} + \\dots + n\\sqrt{n^2+n^2} \\right) =$ :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{4} \\ln(1+x^4) + \\frac{1}{3} \\ln(1+x^3) + c$",
+      "$\\frac{1}{4} \\ln(1+x^4) - \\frac{1}{3} \\ln(1+x^3) + c$",
+      "$\\frac{1}{4} \\ln(1+x^4) - \\ln(1+x) + c$",
+      "$\\frac{1}{4} \\ln(1+x^4) + \\ln(1+x) + c$"
+    ],
+    "questionNumber": 94,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int \\frac{(x^3 - 1)}{(x^4 + 1)(x + 1)} dx$, is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0",
+      "-1",
+      "$\\frac{2}{3}$",
+      "$-\\frac{1}{4}$"
+    ],
+    "questionNumber": 95,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\lim_{x \\to 0^+} \\frac{\\int_1^{\\cos x} (\\cos^{-1} t) dt}{2x - \\sin 2x}$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\tan(\\sin 1)$",
+      "$\\sin(\\tan 1)$",
+      "0",
+      "$\\sin\\left(\\frac{\\tan 1}{2}\\right)$"
+    ],
+    "questionNumber": 96,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\lim_{n \\to \\infty} \\frac{\\cos x}{1 + (\\tan^{-1} x)^n}$, then $\\int_0^\\infty f(x) dx =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{4}$",
+      "$\\frac{1}{3}$",
+      "$\\frac{1}{2}$",
+      "1"
+    ],
+    "questionNumber": 97,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\lim_{n \\to \\infty} \\sum_{k=1}^n \\left( \\frac{k}{n^2 + n + 2k} \\right) =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "2",
+      "does not exist"
+    ],
+    "questionNumber": 98,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\lim_{y \\to 1^+} \\frac{\\int_1^y |t - 1| dt}{\\tan(y - 1)}$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{11}{48} + \\frac{5\\pi}{64}$",
+      "$\\frac{11}{48} + \\frac{5\\pi}{32}$",
+      "$\\frac{1}{24} + \\frac{5\\pi}{64}$",
+      "$\\frac{1}{96} + \\frac{5\\pi}{32}$"
+    ],
+    "questionNumber": 99,
+    "questionType": "SINGLE CORRECT",
+    "text": "Given that $\\int \\frac{dx}{(1 + x^2)^n} = \\frac{x}{2(n - 1)(1 + x^2)^{n-1}} + \\frac{(2n - 3)}{2(n - 1)} \\int \\frac{dx}{(1 + x^2)^{n-1}}$. Find the value of $\\int_0^1 \\frac{dx}{(1 + x^2)^4}$ : (you may or may not use reduction formula given)",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{3\\pi}{16}$",
+      "$\\frac{3\\pi}{32} - \\frac{1}{4}$",
+      "$\\frac{3\\pi}{32} - \\frac{3}{4}$",
+      "$\\frac{3\\pi}{16} - \\frac{7}{8}$"
+    ],
+    "questionNumber": 100,
+    "questionType": "SINGLE CORRECT",
+    "text": "Find the value of $\\int_0^{\\pi/4} (\\sin x)^4 dx$ :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{2}$",
+      "$\\frac{3}{4}$",
+      "2",
+      "$\\frac{5}{4}$"
+    ],
+    "questionNumber": 101,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int \\frac{\\cos 9x + \\cos 6x}{2\\cos 5x - 1} dx = A\\sin 4x + B\\sin x + C$, then $A + B$ is equal to :\n(Where $C$ is constant of integration)",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "6039",
+      "6048",
+      "6047",
+      "6021"
+    ],
+    "questionNumber": 102,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int \\frac{dx}{x^{2014} + x} = \\frac{1}{p} \\ln \\left( \\frac{x^q}{1 + x^r} \\right) + C$ where $p, q, r \\in N$ then the value of $(p + q + r)$ equals\n(Where $C$ is constant of integration)",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{2e} (ea - 1)$",
+      "$\\frac{1}{2e} (ea + 1)$",
+      "$\\frac{1}{e} (ea - 1)$",
+      "$\\frac{1}{e} (ea + 1)$"
+    ],
+    "questionNumber": 103,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $\\int_0^1 e^{-x^2} dx = a$, then $\\int_0^1 x^2 e^{-x^2} dx$ is equal to",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{19}{2}$",
+      "$\\frac{35}{2}$",
+      "$\\frac{17}{2}$",
+      "$\\frac{37}{2}$"
+    ],
+    "questionNumber": 104,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x)$ is a continuous function for all real values of $x$ and satisfies $\\int_0^n f(x) dx = \\frac{n^2}{2} \\; \\forall n \\in I$, then $\\int_{-3}^5 f(|x|) dx$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$a = \\frac{1}{3}, b = \\frac{1}{3}, c = \\frac{1}{3}$",
+      "$a = \\frac{2}{3}, b = -\\frac{1}{3}, c = \\frac{1}{3}$",
+      "$a = \\frac{2}{3}, b = -\\frac{1}{3}, c = -\\frac{1}{3}$",
+      "$a = \\frac{2}{3}, b = \\frac{1}{3}, c = \\frac{1}{3}$"
+    ],
+    "questionNumber": 105,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $\\int \\frac{dx}{x^4 (1 + x^3)^2} = a \\ln \\left| \\frac{1 + x^3}{x^3} \\right| + \\frac{b}{x^3} + \\frac{c}{1 + x^3} + d$, then\n(where $d$ is arbitrary constant)",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "2",
+      "4",
+      "$2(\\sqrt{2} - 1)$",
+      "$2\\sqrt{2} - 1$"
+    ],
+    "questionNumber": 106,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{n \\to \\infty} \\left( \\frac{1}{\\sqrt{n}\\sqrt{n+1}} + \\frac{1}{\\sqrt{n}\\sqrt{n+2}} + \\dots + \\frac{1}{\\sqrt{n}\\sqrt{4n}} \\right)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "1",
+      "$\\frac{1}{3}$",
+      "$\\frac{4}{3}$",
+      "$\\frac{2}{3}$"
+    ],
+    "questionNumber": 107,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\int_0^x \\frac{dy}{\\sqrt{1 + y^3}}$. The value of the integral $\\int_0^2 x f(x) dx$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{\\pi}{3} \\ln 2$",
+      "$\\frac{\\pi}{3} \\ln 3$",
+      "$\\frac{\\pi^2}{6} \\ln 2$",
+      "$\\frac{\\pi}{2} \\ln 2$"
+    ],
+    "questionNumber": 108,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of the definite integral $\\int_0^{\\pi/3} \\ln(1 + \\sqrt{3} \\tan x) dx$ equals",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$100a$",
+      "$a$",
+      "0",
+      "$10a$"
+    ],
+    "questionNumber": 109,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $\\int_0^{100} f(x) dx = a$, then $\\sum_{r=1}^{100} \\int_0^1 f(r - 1 + x) dx =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$e^2 - 1$",
+      "2",
+      "$\\frac{e^2 - 1}{2}$",
+      "$\\frac{e^2 - 1}{4}$"
+    ],
+    "questionNumber": 110,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\int_0^1 \\left( \\lim_{n \\to \\infty} \\sum_{k=0}^n \\frac{x^{k+2} 2^k}{k!} \\right) dx$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{15}(1 + x^3)^{5/2} - \\frac{1}{9}(1 + x^3)^{3/2} + c$",
+      "$\\frac{2}{15}(1 + x^3)^{5/2} - \\frac{1}{9}(1 + x^3)^{3/2} + c$",
+      "$\\frac{2}{15}(1 + x^3)^{5/2} - \\frac{2}{9}(1 + x^3)^{3/2} + c$",
+      "$\\frac{1}{15}(1 + x^3)^{5/2} - \\frac{2}{9}(1 + x^3)^{3/2} + c$"
+    ],
+    "questionNumber": 111,
+    "questionType": "SINGLE CORRECT",
+    "text": "Evaluate : $\\int x^5 \\sqrt{1 + x^3} dx$.",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$f(0) > f(1.1)$",
+      "$f(0) < f(1.1) < f(2.1)$",
+      "$f(0) < f(1.1) < f(2.1) > f(3.1)$",
+      "$f(0) < f(1.1) < f(2.1) < f(3.1) > f(4.1)$"
+    ],
+    "questionNumber": 112,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\int_0^x \\frac{\\sin t}{t} dt$, which of the following is true ?",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\ln |x^2 + 3| + 3 \\tan^{-1} x + c$",
+      "$\\frac{1}{2} \\ln |x^2 + 3| + \\tan^{-1} x + c$",
+      "$\\frac{1}{2} \\ln |x^2 + 3| + 3 \\tan^{-1} x + c$",
+      "$\\ln |x^2 + 3| - \\tan^{-1} x + c$"
+    ],
+    "questionNumber": 113,
+    "questionType": "SINGLE CORRECT",
+    "text": "Evaluate : $\\int \\frac{x^3 + 3x^2 + x + 9}{(x^2 + 1)(x^2 + 3)} dx$.",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$(\\tan x)^{3/2} - \\sqrt{\\tan x} + C$",
+      "$2 \\left( \\frac{1}{3} (\\tan x)^{3/2} - \\frac{1}{\\sqrt{\\tan x}} \\right) + C$",
+      "$\\frac{1}{3} (\\tan x)^{3/2} - \\sqrt{\\tan x} + C$",
+      "$\\sqrt{\\sin x + \\cos x} + C$"
+    ],
+    "questionNumber": 114,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\int \\frac{\\sqrt{\\sec^5 x}}{\\sqrt{\\sin^3 x}} dx$ equals to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "1",
+      "2",
+      "$e$",
+      "Does not exist"
+    ],
+    "questionNumber": 115,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{x \\to 0} \\frac{\\int_0^x e^{\\sin(tx)} dt}{x}$ equals to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$1 - A$",
+      "$\\frac{3}{2} - A$",
+      "$A - 1$",
+      "$1 + A$"
+    ],
+    "questionNumber": 116,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $A = \\int_0^\\pi \\frac{\\sin x}{x} dx$, then $\\int_0^{\\pi/2} \\frac{\\cos 2x}{x} dx$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "answerKeyStr": "(b, c)",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "correctOptionsArray": [
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Correct",
+    "has_graph": false,
+    "options": [
+      "$k_1 = 5$",
+      "$k_1 = 6$",
+      "$k_2 = 7$",
+      "$k_2 = 8$"
+    ],
+    "questionNumber": 1,
+    "questionType": "ONE OR MORE THAN ONE CORRECT",
+    "text": "$\\int \\frac{dx}{(1 + \\sqrt{x})^8} = -\\frac{1}{3(1 + \\sqrt{x})^{k_1}} + \\frac{2}{7(1 + \\sqrt{x})^{k_2}} + C$, then :",
+    "typeLabel": "[ONE OR MORE THAN ONE CORRECT]"
+  },
+  {
+    "answerKeyStr": "(a, b, c, d)",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Correct",
+    "has_graph": false,
+    "options": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$"
+    ],
+    "questionNumber": 2,
+    "questionType": "ONE OR MORE THAN ONE CORRECT",
+    "text": "If $\\int_{-\\alpha}^{\\alpha} \\left( e^x + \\cos x \\ln(x + \\sqrt{1 + x^2}) \\right) dx > \\frac{3}{2}$, then possible value of $\\alpha$ can be :",
+    "typeLabel": "[ONE OR MORE THAN ONE CORRECT]"
+  },
+  {
+    "answerKeyStr": "(a, b)",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Correct",
+    "has_graph": false,
+    "options": [
+      "$A = \\frac{2}{3}$",
+      "$B = a^{3/2}$",
+      "$A = \\frac{1}{3}$",
+      "$B = a^{1/2}$"
+    ],
+    "questionNumber": 3,
+    "questionType": "ONE OR MORE THAN ONE CORRECT",
+    "text": "For $a > 0$, if $I = \\int \\sqrt{\\frac{x}{a^3 - x^3}} dx = A \\sin^{-1} \\left( \\frac{x^{3/2}}{B} \\right) + C$, where $C$ is any arbitrary constant, then :",
+    "typeLabel": "[ONE OR MORE THAN ONE CORRECT]"
+  },
+  {
+    "answerKeyStr": "(a, c, d)",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Correct",
+    "has_graph": false,
+    "options": [
+      "$f(x) \\notin (-1, 1)$",
+      "$g(x) = \\sin x$ has 6 solution for $x \\in [-\\pi, 2\\pi]$",
+      "$g'(x) = f(x), \\forall x \\in R$",
+      "$f(x) = g(x)$ has no solution"
+    ],
+    "questionNumber": 4,
+    "questionType": "ONE OR MORE THAN ONE CORRECT",
+    "text": "Let $\\int x \\sin x \\cdot \\sec^3 x dx = \\frac{1}{2}(x \\cdot f(x) - g(x)) + k$, then :",
+    "typeLabel": "[ONE OR MORE THAN ONE CORRECT]"
+  },
+  {
+    "answerKeyStr": "(a, b, c)",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Correct",
+    "has_graph": false,
+    "options": [
+      "$A = -4$",
+      "$B = -12$",
+      "$C = -20$",
+      "None of these"
+    ],
+    "questionNumber": 5,
+    "questionType": "ONE OR MORE THAN ONE CORRECT",
+    "text": "If $\\int (\\sin 3\\theta + \\sin \\theta) \\cos \\theta e^{\\sin \\theta} d\\theta = (A \\sin^3 \\theta + B \\cos^2 \\theta + C \\sin \\theta + D \\cos \\theta + E) e^{\\sin \\theta} + F$, then :",
+    "typeLabel": "[ONE OR MORE THAN ONE CORRECT]"
+  },
+  {
+    "answerKeyStr": "(a, b)",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Correct",
+    "has_graph": false,
+    "options": [
+      "$A = \\frac{2}{3}$",
+      "$B = a^{3/2}$",
+      "$A = \\frac{1}{3}$",
+      "$B = a^{1/2}$"
+    ],
+    "questionNumber": 6,
+    "questionType": "ONE OR MORE THAN ONE CORRECT",
+    "text": "For $a > 0$, if $I = \\int \\sqrt{\\frac{x}{a^3 - x^3}} dx = A \\sin^{-1} \\left( \\frac{x^{3/2}}{B} \\right) + C$, where $C$ is any arbitrary constant, then :",
+    "typeLabel": "[ONE OR MORE THAN ONE CORRECT]"
+  },
+  {
+    "answerKeyStr": "(a, b, d)",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Correct",
+    "has_graph": false,
+    "options": [
+      "$f(1) = \\frac{\\pi}{6}$",
+      "$f(\\theta) = \\int_0^\\theta \\frac{dx}{\\sqrt{\\theta^2 - \\left( x - \\frac{\\theta}{2} \\right)^2}}$",
+      "$f(\\theta)$ is a constant function",
+      "$y = f(\\theta)$ is invertible"
+    ],
+    "questionNumber": 7,
+    "questionType": "ONE OR MORE THAN ONE CORRECT",
+    "text": "If $f(\\theta) = \\lim_{n \\to \\infty} \\sum_{r=0}^{n\\theta} \\frac{2r}{n\\sqrt{(3\\theta n - 2r)(n\\theta + 2r)}}$ then :",
+    "typeLabel": "[ONE OR MORE THAN ONE CORRECT]"
+  },
+  {
+    "answerKeyStr": "(b, d)",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "correctOptionsArray": [
+      1,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Correct",
+    "has_graph": false,
+    "options": [
+      "$\\int_{-2010}^{2011} F(x) dx = \\int_0^{2011} F(x) dx$",
+      "$\\int_{-2010}^{2011} F(x) dx - \\int_0^{2010} F(x) dx = \\int_0^{2011} F(x) dx$",
+      "$\\int_{-2010}^{2011} F(x) dx = 0$",
+      "$\\int_{-2010}^{2010} (2F(-x) - F(x)) dx = 2\\int_0^{2010} F(x) dx$"
+    ],
+    "questionNumber": 8,
+    "questionType": "ONE OR MORE THAN ONE CORRECT",
+    "text": "If $f(x+y) = f(x)f(y)$ for all $x, y$ and $f(0) \\neq 0$, and $F(x) = \\frac{f(x)}{1 + (f(x))^2}$ then :",
+    "typeLabel": "[ONE OR MORE THAN ONE CORRECT]"
+  },
+  {
+    "answerKeyStr": "(a, b)",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Correct",
+    "has_graph": false,
+    "options": [
+      "$2J + 3K = 8\\pi$",
+      "$4J^2 + K^2 = 26\\pi^2$",
+      "$2J - K = 3\\pi$",
+      "$\\frac{J}{K} = \\frac{2}{5}$"
+    ],
+    "questionNumber": 9,
+    "questionType": "ONE OR MORE THAN ONE CORRECT",
+    "text": "Let $J = \\int_{-1}^2 \\left( \\cot^{-1} \\frac{1}{x} + \\cot^{-1} x \\right) dx, \\quad K = \\int_{-2\\pi}^{7\\pi} \\frac{\\sin x}{|\\sin x|} dx$. Then which of the following alternative(s) is/are correct ?",
+    "typeLabel": "[ONE OR MORE THAN ONE CORRECT]"
+  },
+  {
+    "answerKeyStr": "(a, b, c, d)",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Correct",
+    "has_graph": false,
+    "options": [
+      "$f(x) = \\int_0^x \\ln(t + \\sqrt{1 + t^2}) dt$",
+      "$g(x) = \\int_0^x \\frac{(2^t + 1)t}{2^t - 1} dt$",
+      "$h(x) = \\int_0^x (\\sqrt{1 + t + t^2} - \\sqrt{1 - t + t^2}) dt$",
+      "$l(x) = \\int_0^x \\ln \\left( \\frac{1 - t}{1 + t} \\right) dt$"
+    ],
+    "questionNumber": 10,
+    "questionType": "ONE OR MORE THAN ONE CORRECT",
+    "text": "Which of the following function(s) is/are even ?",
+    "typeLabel": "[ONE OR MORE THAN ONE CORRECT]"
+  },
+  {
+    "answerKeyStr": "(a, b, c, d)",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Correct",
+    "has_graph": false,
+    "options": [
+      "Both $l_1$ and $l_2$ are less than 22/7",
+      "One of the two limits is rational and other irrational",
+      "$l_2 > l_1$",
+      "$l_2$ is greater than 3 times of $l_1$"
+    ],
+    "questionNumber": 11,
+    "questionType": "ONE OR MORE THAN ONE CORRECT",
+    "text": "Let $l_1 = \\lim_{x \\to \\infty} \\frac{x - \\cos^2 x}{x + \\sin x}$ and $l_2 = \\lim_{h \\to 0^+} \\int_{-1}^1 \\frac{h dx}{h^2 + x^2}$. Then :",
+    "typeLabel": "[ONE OR MORE THAN ONE CORRECT]"
+  },
+  {
+    "answerKeyStr": "(a, b)",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Correct",
+    "has_graph": false,
+    "options": [
+      "$A = \\frac{2}{3}$",
+      "$B = a^{3/2}$",
+      "$A = \\frac{1}{3}$",
+      "$B = a^{1/2}$"
+    ],
+    "questionNumber": 12,
+    "questionType": "ONE OR MORE THAN ONE CORRECT",
+    "text": "For $a > 0$, if $I = \\int \\sqrt{\\frac{x}{a^3 - x^3}} dx = A \\sin^{-1} \\left( \\frac{x^{3/2}}{B} \\right) + C$, where $C$ is any arbitrary constant, then :",
+    "typeLabel": "[ONE OR MORE THAN ONE CORRECT]"
+  },
+  {
+    "answerKeyStr": "(a, c)",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      2
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Correct",
+    "has_graph": false,
+    "options": [
+      "$a = \\frac{1}{2}$",
+      "$b = \\sqrt{2}$",
+      "$c = \\sqrt{2}$",
+      "$b = \\frac{1}{2\\sqrt{2}}$"
+    ],
+    "questionNumber": 13,
+    "questionType": "ONE OR MORE THAN ONE CORRECT",
+    "text": "If $\\int \\frac{dx}{1 - \\sin^4 x} = a \\tan x + b \\tan^{-1}(c \\tan x) + D$, then :",
+    "typeLabel": "[ONE OR MORE THAN ONE CORRECT]"
+  },
+  {
+    "answerKeyStr": "(b)",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "correctOptionsArray": [
+      1
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Correct",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$2014$",
+      "$(2014)^2$",
+      "$4028$"
+    ],
+    "questionNumber": 14,
+    "questionType": "ONE OR MORE THAN ONE CORRECT",
+    "text": "The value of definite integral : $\\int_{-2014}^{2014} \\frac{dx}{1 + \\sin^{2015}(x) + \\sqrt{1 + \\sin^{4030}(x)}}$ equals :",
+    "typeLabel": "[ONE OR MORE THAN ONE CORRECT]"
+  },
+  {
+    "answerKeyStr": "(a, b, c)",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Correct",
+    "has_graph": false,
+    "options": [
+      "$\\pi$",
+      "$\\frac{\\pi}{2}$",
+      "$0$",
+      "$\\frac{\\pi}{3}$"
+    ],
+    "questionNumber": 15,
+    "questionType": "ONE OR MORE THAN ONE CORRECT",
+    "text": "Let $L = \\lim_{n \\to \\infty} \\int_a^\\infty \\frac{n dx}{1 + n^2 x^2}$ where $a \\in R$ then $L$ can be :",
+    "typeLabel": "[ONE OR MORE THAN ONE CORRECT]"
+  },
+  {
+    "answerKeyStr": "(b, c)",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "correctOptionsArray": [
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Correct",
+    "has_graph": false,
+    "options": [
+      "$I + J = 2$",
+      "$I - J = \\pi$",
+      "$I = \\frac{2 + \\pi}{2}$",
+      "$J = \\frac{4 - \\pi}{2}$\n\n***"
+    ],
+    "questionNumber": 16,
+    "questionType": "ONE OR MORE THAN ONE CORRECT",
+    "text": "Let $I = \\int_0^1 \\sqrt{\\frac{1 + \\sqrt{x}}{1 - \\sqrt{x}}} dx$ and $J = \\int_0^1 \\sqrt{\\frac{1 - \\sqrt{x}}{1 + \\sqrt{x}}} dx$ then correct statement(s) is/are :",
+    "typeLabel": "[ONE OR MORE THAN ONE CORRECT]"
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "even function",
+      "odd function",
+      "neither even nor odd",
+      "even as well as odd both"
+    ],
+    "questionNumber": 1,
+    "questionType": "COMPREHENSION TYPE",
+    "text": "**Paragraph for Question Nos. 1 to 2**\n\nLet $f(x) = \\int x^2 \\cos^2 x (2x + 6\\tan x - 2x\\tan^2 x) dx$ and $f(x)$ passes through the point $(\\pi, 0)$\n\nIf $f : R - (2n + 1)\\frac{\\pi}{2} \\rightarrow R$ then $f(x)$ be a :",
+    "typeLabel": "[COMPREHENSION TYPE]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "0",
+      "3",
+      "2",
+      "None of these"
+    ],
+    "questionNumber": 2,
+    "questionType": "COMPREHENSION TYPE",
+    "text": "**Paragraph for Question Nos. 1 to 2**\n\nLet $f(x) = \\int x^2 \\cos^2 x (2x + 6\\tan x - 2x\\tan^2 x) dx$ and $f(x)$ passes through the point $(\\pi, 0)$\n\nThe number of solution(s) of the equation $f(x) = x^3$ in $[0, 2\\pi]$ be :",
+    "typeLabel": "[COMPREHENSION TYPE]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "questionNumber": 3,
+    "questionType": "COMPREHENSION TYPE",
+    "text": "**Paragraph for Question Nos. 3 to 4**\n\nLet $f(x)$ be a twice differentiable function defined on $(-\\infty, \\infty)$ such that $f(x) = f(2 - x)$ and $f'\\left(\\frac{1}{2}\\right) = f'\\left(\\frac{1}{4}\\right) = 0$. Then\n\nThe minimum number of values where $f''(x)$ vanishes on $$ is :",
+    "typeLabel": "[COMPREHENSION TYPE]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "1",
+      "$\\pi$",
+      "2",
+      "0"
+    ],
+    "questionNumber": 4,
+    "questionType": "COMPREHENSION TYPE",
+    "text": "**Paragraph for Question Nos. 3 to 4**\n\nLet $f(x)$ be a twice differentiable function defined on $(-\\infty, \\infty)$ such that $f(x) = f(2 - x)$ and $f'\\left(\\frac{1}{2}\\right) = f'\\left(\\frac{1}{4}\\right) = 0$. Then\n\n$\\int_{-1}^1 f'(1 + x) x^2 e^{x^2} dx$ is equal to :",
+    "typeLabel": "[COMPREHENSION TYPE]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$\\int_0^2 f'(t) e^{\\cos \\pi t} dt$",
+      "1",
+      "2",
+      "$\\pi$"
+    ],
+    "questionNumber": 5,
+    "questionType": "COMPREHENSION TYPE",
+    "text": "**Paragraph for Question Nos. 3 to 4**\n\nLet $f(x)$ be a twice differentiable function defined on $(-\\infty, \\infty)$ such that $f(x) = f(2 - x)$ and $f'\\left(\\frac{1}{2}\\right) = f'\\left(\\frac{1}{4}\\right) = 0$. Then\n\n$\\int_0^2 f(1 - t) e^{\\cos \\pi t} dt - \\int_0^2 f(2 - t) e^{\\cos \\pi t} dt$ is equal to :",
+    "typeLabel": "[COMPREHENSION TYPE]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "$\\frac{3}{2}$",
+      "Does not exist"
+    ],
+    "questionNumber": 6,
+    "questionType": "COMPREHENSION TYPE",
+    "text": "**Paragraph for Question Nos. 6 to 8**\n\nConsider the function $f(x)$ and $g(x)$, both defined from $R \\rightarrow R$\n$f(x) = \\frac{x^3}{2} + 1 - x \\int_0^x g(t) dt$ and $g(x) = x - \\int_0^1 f(t) dt$, then\n\nMinimum value of $f(x)$ is :",
+    "typeLabel": "[COMPREHENSION TYPE]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "questionNumber": 7,
+    "questionType": "COMPREHENSION TYPE",
+    "text": "**Paragraph for Question Nos. 6 to 8**\n\nConsider the function $f(x)$ and $g(x)$, both defined from $R \\rightarrow R$\n$f(x) = \\frac{x^3}{2} + 1 - x \\int_0^x g(t) dt$ and $g(x) = x - \\int_0^1 f(t) dt$, then\n\nThe number of points of intersection of $f(x)$ and $g(x)$ is/are :",
+    "typeLabel": "[COMPREHENSION TYPE]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{9}{4}$",
+      "$\\frac{9}{2}$",
+      "$\\frac{9}{8}$",
+      "None of these"
+    ],
+    "questionNumber": 8,
+    "questionType": "COMPREHENSION TYPE",
+    "text": "**Paragraph for Question Nos. 6 to 8**\n\nConsider the function $f(x)$ and $g(x)$, both defined from $R \\rightarrow R$\n$f(x) = \\frac{x^3}{2} + 1 - x \\int_0^x g(t) dt$ and $g(x) = x - \\int_0^1 f(t) dt$, then\n\nThe area bounded by $g(x)$ with co-ordinate axes is (in square units) :",
+    "typeLabel": "[COMPREHENSION TYPE]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{3}{2e} - 3$",
+      "$\\frac{3}{2e} - \\frac{3}{2}$",
+      "$\\frac{3}{2e} + 3$",
+      "$\\frac{3}{2e} + \\frac{3}{2}$"
+    ],
+    "questionNumber": 9,
+    "questionType": "COMPREHENSION TYPE",
+    "text": "**Paragraph for Question Nos. 9 to 11**\n\nLet $f(x)$ be function defined on $$ such that $f(1) = 0$ and for any $a \\in (0, 1]$, \n$\\int_0^a f(x) dx - \\int_a^1 f(x) dx = 2f(a) + 3a + b$ where $b$ is constant.\n\n$b =$",
+    "typeLabel": "[COMPREHENSION TYPE]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 0,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$\\sqrt{e} - 1$",
+      "$\\frac{\\sqrt{e} - 1}{2}$",
+      "$\\sqrt{e} + 1$",
+      "$\\frac{\\sqrt{e} + 1}{2}$"
+    ],
+    "questionNumber": 10,
+    "questionType": "COMPREHENSION TYPE",
+    "text": "**Paragraph for Question Nos. 9 to 11**\n\nLet $f(x)$ be function defined on $$ such that $f(1) = 0$ and for any $a \\in (0, 1]$, \n$\\int_0^a f(x) dx - \\int_a^1 f(x) dx = 2f(a) + 3a + b$ where $b$ is constant.\n\nThe length of the subtangent of the curve $y = f(x)$ at $x = 1/2$ is :",
+    "typeLabel": "[COMPREHENSION TYPE]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{e}$",
+      "$\\frac{1}{2e}$",
+      "$\\frac{3}{2e}$",
+      "$\\frac{2}{e}$"
+    ],
+    "questionNumber": 11,
+    "questionType": "COMPREHENSION TYPE",
+    "text": "**Paragraph for Question Nos. 9 to 11**\n\nLet $f(x)$ be function defined on $$ such that $f(1) = 0$ and for any $a \\in (0, 1]$, \n$\\int_0^a f(x) dx - \\int_a^1 f(x) dx = 2f(a) + 3a + b$ where $b$ is constant.\n\n$\\int_0^1 f(x) dx =$",
+    "typeLabel": "[COMPREHENSION TYPE]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{x^3}{3} \\left( \\ln x - \\frac{5}{6} \\right)$",
+      "$\\frac{x^3}{3} \\left( \\ln x - \\frac{11}{6} \\right)$",
+      "$\\frac{x^3}{6} \\left( \\ln x - \\frac{11}{6} \\right)$",
+      "$\\frac{x^3}{6} \\left( \\ln x - \\frac{5}{6} \\right)$"
+    ],
+    "questionNumber": 12,
+    "questionType": "COMPREHENSION TYPE",
+    "text": "**Paragraph for Question Nos. 12 to 13**\n\nLet $f_0(x) = \\ln x$ and for $n \\ge 0$ and $x > 0$\nLet $f_{n+1}(x) = \\int_0^x f_n(t) dt$ then :\n\n$f_3(x)$ equals :",
+    "typeLabel": "[COMPREHENSION TYPE]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "-1",
+      "$-e$"
+    ],
+    "questionNumber": 13,
+    "questionType": "COMPREHENSION TYPE",
+    "text": "**Paragraph for Question Nos. 12 to 13**\n\nLet $f_0(x) = \\ln x$ and for $n \\ge 0$ and $x > 0$\nLet $f_{n+1}(x) = \\int_0^x f_n(t) dt$ then :\n\nValue of $\\lim_{n \\to \\infty} \\frac{(n!) f_n(1)}{\\ln(n)}$",
+    "typeLabel": "[COMPREHENSION TYPE]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 1,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$\\sec^{-1}(e^{-x}) + C$",
+      "$\\sec^{-1}(e^x) + C$",
+      "$\\sin^{-1}(e^{-x}) + C$",
+      "$\\sin^{-1}(e^x) + C$"
+    ],
+    "questionNumber": 14,
+    "questionType": "COMPREHENSION TYPE",
+    "text": "**Paragraph for Question Nos. 14 to 15**\n\nLet $f : R \\rightarrow \\left[-\\frac{3}{4}, \\infty\\right)$ be a surjective quadratic function with line of symmetry $2x - 1 = 0$ and $f(1) = 1$\n\nIf $g(x) = \\frac{f(x) + f(-x)}{2}$ then $\\int \\frac{dx}{\\sqrt{g(e^x) - 2}}$ is equal to :\n\n*(Where $C$ is constant of integration)*",
+    "typeLabel": "[COMPREHENSION TYPE]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$\\cot^{-1}\\left(\\frac{2e^x - 1}{\\sqrt{3}}\\right) + C$",
+      "$\\frac{2}{\\sqrt{3}} \\cot^{-1}\\left(\\frac{2e^x + 1}{\\sqrt{3}}\\right) + C$",
+      "$\\tan^{-1}\\left(\\frac{2e^x + 1}{\\sqrt{3}}\\right) + C$",
+      "$\\frac{2}{\\sqrt{3}} \\tan^{-1}\\left(\\frac{2e^x - 1}{\\sqrt{3}}\\right) + C$"
+    ],
+    "questionNumber": 15,
+    "questionType": "COMPREHENSION TYPE",
+    "text": "**Paragraph for Question Nos. 14 to 15**\n\nLet $f : R \\rightarrow \\left[-\\frac{3}{4}, \\infty\\right)$ be a surjective quadratic function with line of symmetry $2x - 1 = 0$ and $f(1) = 1$\n\n$\\int \\frac{e^x}{f(e^x)} dx$",
+    "typeLabel": "[COMPREHENSION TYPE]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "7",
+      "$\\frac{3}{2}$",
+      "2",
+      "3"
+    ],
+    "questionNumber": 16,
+    "questionType": "COMPREHENSION TYPE",
+    "text": "**Paragraph for Question Nos. 16 to 17**\n\nLet $g(x) = x^c e^{cx}$ and $f(x) = \\int_0^x t e^{2t} (1 + 3t^2)^{1/2} dt$. If $L = \\lim_{x \\to \\infty} \\frac{f'(x)}{g'(x)}$ is non-zero finite number then :\n\nThe value of $C$ is :",
+    "typeLabel": "[COMPREHENSION TYPE]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctOption": 3,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{2}{7}$",
+      "$\\frac{1}{2}$",
+      "$\\frac{\\sqrt{3}}{4}$",
+      "$\\frac{\\sqrt{3}}{2}$\n\n***"
+    ],
+    "questionNumber": 17,
+    "questionType": "COMPREHENSION TYPE",
+    "text": "**Paragraph for Question Nos. 16 to 17**\n\nLet $g(x) = x^c e^{cx}$ and $f(x) = \\int_0^x t e^{2t} (1 + 3t^2)^{1/2} dt$. If $L = \\lim_{x \\to \\infty} \\frac{f'(x)}{g'(x)}$ is non-zero finite number then :\n\nThe value of $L$ is :",
+    "typeLabel": "[COMPREHENSION TYPE]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "answerKeyStr": "A \\rightarrow S ; B \\rightarrow P ; C \\rightarrow P ; D \\rightarrow S",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "A $\\rightarrow$ S ; B $\\rightarrow$ P ; C $\\rightarrow$ P ; D $\\rightarrow$ S",
+    "exerciseName": "Exercise-4 : Matching Type Problems",
+    "has_graph": false,
+    "questionNumber": 1,
+    "questionType": "MATCH THE COLUMN",
+    "text": "Match the following columns:\n\n$$\n\\begin{array}{|l|l|}\n\\hline\n\\text{\\textbf{Column-I}} & \\text{\\textbf{Column-II}} \\\\\n\\hline\n\\text{(A) } \\displaystyle \\lim_{n \\to \\infty} 4 \\left[ \\frac{1}{n^2} e^{\\frac{1}{n}} + \\frac{2}{n^2} e^{\\frac{2}{n}} + \\frac{3}{n^2} e^{\\frac{3}{n}} + \\dots + \\frac{1}{n} e^{\\frac{n}{n}} \\right] =  & \\text{(P) } \\displaystyle 0  \\\\\n\\text{(B) } \\displaystyle \\int_0^1 \\ln \\left( \\frac{1}{x} - 1 \\right) dx =  & \\text{(Q) } \\displaystyle 1  \\\\\n\\text{(C) } \\displaystyle \\int_0^{10\\pi} \\left( \\lim_{x \\to y} \\left( \\frac{\\sin x - \\sin y}{x - y} \\right) \\right) dy =  & \\text{(R) } \\displaystyle 2  \\\\\n\\text{(D) } \\displaystyle \\int_0^\\infty \\frac{\\ln(x + \\frac{1}{x}) dx}{(1 + x^2)} = \\frac{\\pi}{2} \\ln a \\text{, then } \\displaystyle a =  & \\text{(S) } \\displaystyle 4  \\\\\n & \\text{(T) } \\displaystyle 5  \\\\\n\\hline\n\\end{array}\n$$\n",
+    "typeLabel": "[MATCHING TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "A \\rightarrow S ; B \\rightarrow Q ; C \\rightarrow P ; D \\rightarrow R",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "A $\\rightarrow$ S ; B $\\rightarrow$ Q ; C $\\rightarrow$ P ; D $\\rightarrow$ R",
+    "exerciseName": "Exercise-4 : Matching Type Problems",
+    "has_graph": false,
+    "questionNumber": 2,
+    "questionType": "MATCH THE COLUMN",
+    "text": "Match the following $\\int f(x) dx$ is equal to, if\n\n$$\n\\begin{array}{|l|l|}\n\\hline\n\\text{\\textbf{Column-I}} & \\text{\\textbf{Column-II}} \\\\\n\\hline\n\\text{(A) } \\displaystyle f(x) = \\frac{1}{(x^2 + 1)\\sqrt{x^2 + 2}}  & \\text{(P) } \\displaystyle \\frac{x^5}{5(1 - x^4)^{5/2}} + C  \\\\\n\\text{(B) } \\displaystyle f(x) = \\frac{1}{(x + 2)\\sqrt{x^2 + 6x + 7}}  & \\text{(Q) } \\displaystyle \\sin^{-1} \\left( \\frac{x + 1}{(x + 2)\\sqrt{2}} \\right) + C  \\\\\n\\text{(C) } \\displaystyle f(x) = \\frac{x^4 + x^8}{(1 - x^4)^{7/2}}  & \\text{(R) } \\displaystyle (\\sqrt{x} - 2)\\sqrt{1 - x} + \\cos^{-1}\\sqrt{x} + C  \\\\\n\\text{(D) } \\displaystyle f(x) = \\sqrt{\\frac{1 - \\sqrt{x}}{1 + \\sqrt{x}}}  & \\text{(S) } \\displaystyle -\\tan^{-1} \\sqrt{1 + \\frac{2}{x^2}} + C  \\\\\n & \\text{(T) } \\displaystyle \\frac{x^6}{6(1 - x^4)^{5/2}} + C  \\\\\n\\hline\n\\end{array}\n$$\n",
+    "typeLabel": "[MATCHING TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "A \\rightarrow R ; B \\rightarrow Q ; C \\rightarrow S ; D \\rightarrow P",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "A $\\rightarrow$ R ; B $\\rightarrow$ Q ; C $\\rightarrow$ S ; D $\\rightarrow$ P",
+    "exerciseName": "Exercise-4 : Matching Type Problems",
+    "has_graph": false,
+    "questionNumber": 3,
+    "questionType": "MATCH THE COLUMN",
+    "text": "Match the following columns:\n\n$$\n\\begin{array}{|l|l|}\n\\hline\n\\text{\\textbf{Column-I}} & \\text{\\textbf{Column-II}} \\\\\n\\hline\n\\text{(A) } \\displaystyle \\int_0^{\\pi/2} \\frac{\\cos x}{(1 + \\sin x)(2 + \\sin x)} dx =  & \\text{(P) } \\displaystyle \\frac{\\pi}{6}  \\\\\n\\text{(B) } \\displaystyle \\int_0^{41\\pi/4} |\\cos x| dx =  & \\text{(Q) } \\displaystyle 20 + \\frac{1}{\\sqrt{2}}  \\\\\n\\text{(C) } \\displaystyle \\int_{-1/2}^{1/2} \\left[ [x] + \\ln \\left( \\frac{1 + x}{1 - x} \\right) \\right] dx = \\text{ (where } \\displaystyle [\\cdot] \\text{ represents greatest integer function)} & \\text{(R) } \\displaystyle \\ln 4 - \\ln 3  \\\\\n\\text{(D) } \\displaystyle \\int_0^{\\pi/2} \\frac{2\\sqrt{\\cos \\theta}}{3(\\sqrt{\\sin \\theta} + \\sqrt{\\cos \\theta})} d\\theta =  & \\text{(S) } \\displaystyle -\\frac{1}{2}  \\\\\n\\hline\n\\end{array}\n$$\n",
+    "typeLabel": "[MATCHING TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "A \\rightarrow Q ; B \\rightarrow R ; C \\rightarrow S ; D \\rightarrow P",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "A $\\rightarrow$ Q ; B $\\rightarrow$ R ; C $\\rightarrow$ S ; D $\\rightarrow$ P",
+    "exerciseName": "Exercise-4 : Matching Type Problems",
+    "has_graph": false,
+    "questionNumber": 4,
+    "questionType": "MATCH THE COLUMN",
+    "text": "Match the following columns:\n\n$$\n\\begin{array}{|l|l|}\n\\hline\n\\text{\\textbf{Column-I}} & \\text{\\textbf{Column-II}} \\\\\n\\hline\n\\text{(A) If quadratic equation } \\displaystyle 3x^2 + ax + 1 = 0 \\text{ and } \\displaystyle 2x^2 + bx + 1 = 0 \\text{ have a common root then value of } \\displaystyle 5ab - 2a^2 - 3b^2 =  & \\text{(P) } \\displaystyle 6  \\\\\n\\text{(B) Number of solution of } \\displaystyle x^4 - 2x^2 \\sin^2 \\frac{\\pi x}{2} + 1 = 0 \\text{ is/are} & \\text{(Q) } \\displaystyle 1  \\\\\n\\text{(C) Number of points of discontinuity } \\displaystyle y = \\frac{1}{u^2 + u - 2} \\text{ where } \\displaystyle u = \\frac{1}{x - 1} \\text{ is/are} & \\text{(R) } \\displaystyle 2  \\\\\n\\text{(D) } \\displaystyle \\int \\frac{dx}{x^{5/2} (1 + x)^{7/2}} = A \\left( \\frac{x + 1}{x} \\right)^{-1/A} + C \\text{ (Where } \\displaystyle C \\text{ is integration constant), then } \\displaystyle A =  & \\text{(S) } \\displaystyle 3  \\\\\n\\hline\n\\end{array}\n$$\n",
+    "typeLabel": "[MATCHING TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "A \\rightarrow S ; B \\rightarrow R ; C \\rightarrow P ; D \\rightarrow Q",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "A $\\rightarrow$ S ; B $\\rightarrow$ R ; C $\\rightarrow$ P ; D $\\rightarrow$ Q",
+    "exerciseName": "Exercise-4 : Matching Type Problems",
+    "has_graph": false,
+    "questionNumber": 5,
+    "questionType": "MATCH THE COLUMN",
+    "text": "Match the following columns:\n\n$$\n\\begin{array}{|l|l|}\n\\hline\n\\text{\\textbf{Column-I}} & \\text{\\textbf{Column-II}} \\\\\n\\hline\n\\text{(A) } \\displaystyle \\int_0^{1.5} [x^2] dx  & \\text{(P) } \\displaystyle -\\pi  \\\\\n\\text{(B) } \\displaystyle \\int_0^4 \\{\\sqrt{x}\\} dx \\text{ (where } \\displaystyle \\{x\\} \\text{ denotes the fractional part of } \\displaystyle x \\text{)} & \\text{(Q) } \\displaystyle 4(\\sqrt{2} - 1)  \\\\\n\\text{(C) } \\displaystyle \\int_0^{2\\pi} [\\sin x + \\cos x] dx  & \\text{(R) } \\displaystyle \\frac{7}{3}  \\\\\n\\text{(D) } \\displaystyle \\int_0^\\pi ||\\sin x| - |\\cos x|| dx  & \\text{(S) } \\displaystyle 2 - \\sqrt{2} \\text{  } \\\\\n\\hline\n\\end{array}\n$$\n",
+    "typeLabel": "[MATCHING TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "90",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "90",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 1,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "$\\int \\frac{x + (\\arccos 3x)^2}{\\sqrt{1 - 9x^2}} dx = \\frac{1}{k_1} \\left( \\sqrt{1 - 9x^2} + (\\cos^{-1} 3x)^{k_2} \\right) + C$, then $k_1^2 + k_2^2 =$ \n*(where $C$ is an arbitrary constant.)*",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "3",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "3",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 2,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $\\int_0^\\infty \\frac{x^3}{(a^2 + x^2)^5} dx = \\frac{1}{k a^6}$, then find the value of $\\frac{k}{8}$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "3",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "3",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 3,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(x) = x \\cos x ; x \\in \\left[ \\frac{3\\pi}{2}, 2\\pi \\right]$ and $g(x)$ be its inverse. If $\\int_0^{2\\pi} g(x) dx = \\alpha \\pi^2 + \\beta \\pi + \\gamma$, where $\\alpha, \\beta$ and $\\gamma \\in R$, then find the value of $2(\\alpha + \\beta + \\gamma)$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "7",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "7",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 4,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $\\int (x^6 + x^4 + x^2) \\sqrt{2x^4 + 3x^2 + 6} dx = \\frac{(\\alpha x^6 + \\beta x^4 + \\gamma x^2)^{3/2}}{18} + C$ where $C$ is constant, then find the value of $(\\beta + \\gamma - \\alpha)$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "7",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "7",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 5,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If the value of the definite integral $\\int_{-1}^1 \\cot^{-1} \\left( \\frac{1}{\\sqrt{1 - x^2}} \\right) \\left( \\cot^{-1} \\frac{x}{\\sqrt{1 - x^2}} \\right) |x| dx = \\frac{\\pi^2(\\sqrt{a} - \\sqrt{b})}{\\sqrt{c}}$ where $a, b, c \\in N$ in their lowest form, then find the value of $(a + b + c)$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "3",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "3",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 6,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "The value of $\\int \\frac{\\tan x}{\\tan^2 x + \\tan x + 1} dx = x - \\frac{2}{\\sqrt{A}} \\tan^{-1} \\left( \\frac{2\\tan x + 1}{\\sqrt{A}} \\right) + C$\nThen the value of $A$ is:",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "1",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "1",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 7,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $\\int_0^1 \\frac{4x^3(1 + (x^4)^{2010})}{(1 + x^4)^{2012}} dx = \\frac{\\lambda}{\\mu}$ where $\\lambda$ and $\\mu$ are relatively prime positive integers. Find unit digit of $\\mu$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "7",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "7",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 8,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $\\int_1^{\\sqrt{3}} \\left( x^{2x^2 + 1} + \\ln(x^{x^{2x^2 + 1}}) \\right) dx = N$. Find the value of $(N - 6)$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "8",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "8",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 9,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $\\int \\frac{dx}{\\cos^3 x - \\sin^3 x} = A \\tan^{-1}(f(x)) + B \\ln \\left| \\frac{\\sqrt{2} + f(x)}{\\sqrt{2} - f(x)} \\right| + C$ where $f(x) = \\sin x + \\cos x$ find the value of $(12A + 9\\sqrt{2}B) - 3$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "1",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "1",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 10,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Find the value of $|a|$ for which the area of triangle included between the coordinate axes and any tangent to the curve $x^a y = \\lambda^a$ is constant (where $\\lambda$ is constant.)",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "9",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "9",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 11,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $I = \\int_0^\\pi x^6 (\\pi - x)^8 dx$, then $\\frac{\\pi^{15}}{{15 \\choose 9} I} =$",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "5",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "5",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 12,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If maximum value of $\\int_0^1 (f(x))^3 dx$ under the condition $-1 \\le f(x) \\le 1 ; \\int_0^1 f(x) dx = 0$ is $\\frac{p}{q}$ (where $p$ and $q$ are relatively prime positive integers.). Find $p + q$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "2",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "2",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 13,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let a differentiable function $f(x)$ satisfies $f(x) \\cdot f'(-x) = f(-x) \\cdot f'(x)$ and $f(0) = 1$. Find the value of $\\int_{-2}^2 \\frac{dx}{1 + f(x)}$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "3",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "3",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 14,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $\\{x\\}$ denotes the fractional part of $x$, then $I = \\int_0^{100} \\{\\sqrt{x}\\} dx$, then the value of $\\frac{9I}{155}$ is:",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "5",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "5",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 15,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $I_n = \\int_0^\\pi \\frac{\\sin\\left(\\left(n + \\frac{1}{2}\\right)x\\right)}{\\sin\\left(\\frac{x}{2}\\right)} dx$ where $n \\in W$. If $I_1^2 + I_2^2 + I_3^2 + \\dots + I_{20}^2 = m\\pi^2$, then find the largest prime factor of $m$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "4",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "4",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 16,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $M$ be the maximum value of $72 \\int_0^y \\sqrt{x^4 + (y - y^2)^2} dx$ for $y \\in$, then find $\\frac{M}{6}$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "3",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "3",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 17,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Find the number of points where $f(\\theta) = \\int_{-1}^1 \\frac{\\sin \\theta dx}{1 - 2x\\cos \\theta + x^2}$ is discontinuous where $\\theta \\in [0, 2\\pi]$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "2",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "2",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 18,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Find the value of $\\lim_{n \\to \\infty} \\frac{1}{\\sqrt{n}} \\left( 1 + \\frac{1}{\\sqrt{2}} + \\frac{1}{\\sqrt{3}} + \\dots + \\frac{1}{\\sqrt{n}} \\right)$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "2",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "2",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 19,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "The maximum value of $\\int_{-\\pi/2}^{3\\pi/2} \\sin x \\cdot f(x) dx$, subject to the condition $|f(x)| \\le 5$ is $M$, then $\\frac{M}{10}$ is equal to:",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "7",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "7",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 20,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Given a function $g$, continuous everywhere such that $g(1) = 5$ and $\\int_0^1 g(t) dt = 2$. If $f(x) = \\frac{1}{2} \\int_0^x (x - t)^2 g(t) dt$, then find the value of $f'''(1) + f''(1)$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "9",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "9",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 21,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $f(n) = \\frac{1}{\\pi} \\int_0^{\\pi/2} \\frac{\\sin^2(n\\theta) d\\theta}{\\sin^2 \\theta}, n \\in N$, then evaluate $\\frac{f(15) + f(3)}{f(12) - f(10)}$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "8",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "8",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 22,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(2 - x) = f(2 + x)$ and $f(4 - x) = f(4 + x)$. Function $f(x)$ satisfies $\\int_0^2 f(x) dx = 5$. If $\\int_0^{50} f(x) dx = I$. Find $[\\sqrt{I} - 3]$. *(where $[\\cdot]$ denotes greatest integer function.)*",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "3",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "3",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 23,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $I_n = \\int_{-1}^1 |x| \\left( 1 + x + \\frac{x^2}{2} + \\frac{x^3}{3} + \\dots + \\frac{x^{2n}}{2n} \\right) dx$. If $\\lim_{n \\to \\infty} I_n$ can be expressed as rational $\\frac{p}{q}$ in its lowest form, then find the value of $\\frac{pq(p+q)}{10}$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "5",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "5",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 24,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $\\lim_{n \\to \\infty} n^{-\\frac{1}{2}\\left(1 + \\frac{1}{n}\\right)} \\cdot (1^1 \\cdot 2^2 \\cdot 3^3 \\dots n^n)^{\\frac{1}{n^2}} = e^{\\frac{-p}{q}}$ where $p$ and $q$ are relative prime positive integers. Find the value of $|p + q|$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "2",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "2",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 25,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $\\int_a^b |\\sin x| dx = 8$ and $\\int_0^{a+b} |\\cos x| dx = 9$ then the value of $\\frac{1}{\\sqrt{2}\\pi} \\int_a^b x \\sin x dx$ is:",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "4",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "4",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 26,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $f(x), g(x), h(x)$ and $\\phi(x)$ are polynomial in $x$, \n$\\left( \\int_1^x f(x) h(x) dx \\right) \\left( \\int_1^x g(x) \\phi(x) dx \\right) - \\left( \\int_1^x f(x) \\phi(x) dx \\right) \\left( \\int_1^x g(x) h(x) dx \\right)$ is divisible by $(x - 1)^\\lambda$. Find maximum value of $\\lambda$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "2",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "2",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 27,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $\\int_0^1 (3x^2 - 3x + 1) \\cos(x^3 - 3x^2 + 4x - 2) dx = a \\sin(b)$, where $a$ and $b$ are positive integers. Find the value of $(a + b)$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "1",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "1",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 28,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(x) = \\int_0^x e^{x-y} f'(y) dy - (x^2 - x + 1)e^x$. Find the number of roots of the equation $f(x) = 0$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "4",
+    "chapter": "Indefinite and Definite Integration",
+    "chapterId": "black-book-ch5-integration",
+    "correctAnswer": "4",
+    "correctOption": -1,
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 29,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "For a positive integer $n$, let $I_n = \\int_{-\\pi}^\\pi \\left( \\frac{\\pi}{2} - |x| \\right) \\cos nx dx$. Find the value of $[I_1 + I_2 + I_3 + I_4]$ where $[\\cdot]$ denotes greatest integer function.\n\n***",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  }
+]

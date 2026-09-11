@@ -1,0 +1,1125 @@
+/* =========================================================
+   Concise Summary Notes — JEE Main only (multicolor)
+   ========================================================= */
+.qx-sum-page {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 4px 40px;
+}
+.qx-sum-hero {
+  border-radius: 20px;
+  padding: 22px 22px 20px;
+  margin-bottom: 18px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
+}
+.qx-sum-hero::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+}
+.qx-sum-hero.phy { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 55%, #db2777 100%); }
+.qx-sum-hero.chem { background: linear-gradient(135deg, #059669 0%, #0d9488 45%, #0284c7 100%); }
+.qx-sum-hero.math { background: linear-gradient(135deg, #ea580c 0%, #db2777 50%, #7c3aed 100%); }
+.qx-sum-hero-badge {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  margin-bottom: 10px;
+}
+.qx-sum-hero h1 {
+  margin: 0 0 6px;
+  font-family: Kanit, Inter, sans-serif;
+  font-size: clamp(22px, 4vw, 30px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 1;
+}
+.qx-sum-hero p {
+  margin: 0;
+  opacity: 0.95;
+  font-size: 13px;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+.qx-sum-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 0;
+  position: relative;
+  z-index: 1;
+}
+.qx-sum-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  font-size: 11px;
+  font-weight: 700;
+  backdrop-filter: blur(6px);
+}
+
+.qx-sum-section {
+  background: var(--card, #fff);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 16px;
+  padding: 16px 16px 14px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+.qx-sum-section h2 {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.01em;
+}
+.qx-sum-section h2 .ic {
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.qx-sum-section.core h2 .ic { background: #dbeafe; }
+.qx-sum-section.formulas h2 .ic { background: #fce7f3; }
+.qx-sum-section.examples h2 .ic { background: #d1fae5; }
+.qx-sum-section.traps h2 .ic { background: #ffedd5; }
+.qx-sum-section.memory h2 .ic { background: #e0e7ff; }
+
+.qx-sum-points {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.qx-sum-points li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.04), rgba(124, 58, 237, 0.04));
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text, #0f172a);
+}
+.qx-sum-points li .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #2563eb, #a855f7);
+}
+
+.qx-sum-formula-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+.qx-sum-formula {
+  border-radius: 14px;
+  padding: 12px 14px;
+  border: 1px solid transparent;
+  min-height: 72px;
+}
+.qx-sum-formula .label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-bottom: 6px;
+}
+.qx-sum-formula .eq {
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.55;
+  word-break: break-word;
+  overflow-x: auto;
+}
+/* KaTeX polish inside summary notes */
+.qx-sum-page .katex { font-size: 1.12em; }
+.qx-sum-formula .eq .katex { font-size: 1.2em; }
+.qx-sum-formula .eq .katex-display {
+  margin: 0.25em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.qx-sum-para .katex,
+.qx-sum-def .katex,
+.qx-sum-points .katex,
+.qx-sum-ex-q .katex,
+.qx-sum-ex-a .katex {
+  font-size: 1.05em;
+}
+.qx-sum-table .katex { font-size: 1em; }
+.qx-sum-compare-eq .katex,
+.qx-sum-set-eq .katex,
+.qx-sum-annotate-eq .katex {
+  font-size: 1.15em;
+}
+.qx-sum-formula.f1 { background: linear-gradient(145deg, #eff6ff, #e0e7ff); border-color: #bfdbfe; color: #1e3a8a; }
+.qx-sum-formula.f2 { background: linear-gradient(145deg, #ecfdf5, #ccfbf1); border-color: #99f6e4; color: #065f46; }
+.qx-sum-formula.f3 { background: linear-gradient(145deg, #fff7ed, #ffedd5); border-color: #fdba74; color: #9a3412; }
+.qx-sum-formula.f4 { background: linear-gradient(145deg, #fdf2f8, #fae8ff); border-color: #f0abfc; color: #9d174d; }
+.qx-sum-formula.f5 { background: linear-gradient(145deg, #f5f3ff, #ede9fe); border-color: #c4b5fd; color: #5b21b6; }
+.qx-sum-formula.f6 { background: linear-gradient(145deg, #fefce8, #fef9c3); border-color: #fde047; color: #854d0e; }
+
+.qx-sum-example {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  margin-bottom: 10px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.06);
+}
+.qx-sum-example:last-child { margin-bottom: 0; }
+.qx-sum-example.is-open {
+  border-color: rgba(124, 58, 237, 0.35);
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.1);
+}
+button.qx-sum-ex-q {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #064e3b;
+  border: none;
+  border-bottom: 1px dashed transparent;
+  cursor: pointer;
+  font-family: inherit;
+}
+.qx-sum-example.is-open button.qx-sum-ex-q {
+  border-bottom-color: rgba(16, 185, 129, 0.3);
+  background: linear-gradient(135deg, #d1fae5, #ecfdf5);
+}
+button.qx-sum-ex-q:hover {
+  background: linear-gradient(135deg, #d1fae5, #e0e7ff);
+}
+.qx-sum-ex-q .badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #059669;
+  color: #fff;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.qx-sum-ex-q-text {
+  flex: 1;
+  min-width: 140px;
+}
+.qx-sum-ex-chev {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 800;
+  color: #6d28d9;
+  background: #ede9fe;
+  border: 1px solid #c4b5fd;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  margin-left: auto;
+}
+.qx-sum-ex-a {
+  padding: 12px 14px 14px;
+  background: #fff;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text, #0f172a);
+  animation: qxSumExIn 0.18s ease;
+}
+.qx-sum-ex-a[hidden] { display: none !important; }
+.qx-sum-ex-a-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6d28d9;
+  margin-bottom: 10px;
+}
+.qx-sum-ex-a strong { color: #7c3aed; }
+@keyframes qxSumExIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
+html[data-theme="dark"] button.qx-sum-ex-q {
+  background: rgba(16, 185, 129, 0.12);
+  color: #a7f3d0;
+}
+html[data-theme="dark"] .qx-sum-ex-a { background: rgba(15, 23, 42, 0.5); }
+
+.qx-sum-traps {
+  display: grid;
+  gap: 8px;
+}
+.qx-sum-trap {
+  display: flex;
+  gap: 10px;
+  padding: 11px 12px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #fff7ed, #fef2f2);
+  border: 1px solid #fed7aa;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #7c2d12;
+}
+.qx-sum-trap .warn { font-size: 16px; flex-shrink: 0; }
+
+.qx-sum-memory {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.qx-sum-mem {
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #eef2ff, #fae8ff);
+  border: 1px solid #c7d2fe;
+  color: #3730a3;
+}
+
+.qx-sum-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+.qx-sum-cta .btn-primary,
+.qx-sum-cta .btn-soft {
+  border-radius: 12px !important;
+}
+
+html[data-theme="dark"] .qx-sum-section {
+  background: var(--card);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+html[data-theme="dark"] .qx-sum-points li {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+}
+html[data-theme="dark"] .qx-sum-ex-a {
+  background: rgba(15, 23, 42, 0.5);
+  color: var(--text);
+}
+html[data-theme="dark"] .qx-sum-ex-q {
+  color: #a7f3d0;
+}
+
+/* Module card accent for summary notes */
+.qx-module-card.qx-sum-card {
+  border: 1px solid rgba(124, 58, 237, 0.25) !important;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.06), rgba(168, 85, 247, 0.08)) !important;
+}
+.qx-module-card.qx-sum-card .qx-module-ic {
+  background: linear-gradient(135deg, #2563eb, #a855f7);
+  color: #fff;
+  border-radius: 12px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+}
+
+/* —— IITian-style full study notes —— */
+.qx-sum-syllabus {
+  margin: 0 0 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f8fafc, #eef2ff);
+  border: 1px solid #c7d2fe;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #312e81;
+}
+.qx-sum-syllabus strong { color: #4c1d95; }
+
+.qx-sum-section.keys h2 .ic { background: #fce7f3; }
+.qx-sum-keygrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.qx-sum-key {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.qx-sum-key:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+}
+.qx-sum-key.k1 { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
+.qx-sum-key.k2 { background: #ecfdf5; border-color: #a7f3d0; color: #065f46; }
+.qx-sum-key.k3 { background: #fff7ed; border-color: #fdba74; color: #9a3412; }
+.qx-sum-key.k4 { background: #fdf2f8; border-color: #fbcfe8; color: #9d174d; }
+.qx-sum-key.k5 { background: #f5f3ff; border-color: #ddd6fe; color: #5b21b6; }
+.qx-sum-key.k6 { background: #fefce8; border-color: #fde68a; color: #854d0e; }
+
+.qx-sum-section.topic {
+  border-left: 4px solid #7c3aed;
+}
+.qx-sum-section.topic.t1 { border-left-color: #2563eb; }
+.qx-sum-section.topic.t2 { border-left-color: #059669; }
+.qx-sum-section.topic.t3 { border-left-color: #ea580c; }
+.qx-sum-section.topic.t4 { border-left-color: #db2777; }
+.qx-sum-section.topic.t5 { border-left-color: #7c3aed; }
+.qx-sum-section.topic.t6 { border-left-color: #ca8a04; }
+.qx-sum-section.topic h2 .ic {
+  background: linear-gradient(135deg, #2563eb, #a855f7);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.qx-sum-para {
+  margin: 0 0 10px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text, #0f172a);
+}
+.qx-sum-para:last-child { margin-bottom: 12px; }
+
+.qx-sum-bullets {
+  margin: 0 0 12px;
+  padding-left: 1.2em;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text, #0f172a);
+}
+.qx-sum-bullets li { margin-bottom: 6px; }
+
+.qx-sum-table-wrap {
+  overflow-x: auto;
+  margin: 10px 0 14px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+.qx-sum-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  min-width: 420px;
+}
+.qx-sum-table thead th {
+  text-align: left;
+  padding: 10px 12px;
+  background: linear-gradient(135deg, #1e3a8a, #6d28d9);
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+.qx-sum-table td {
+  padding: 9px 12px;
+  border-top: 1px solid #e2e8f0;
+  vertical-align: top;
+  line-height: 1.45;
+  color: var(--text, #0f172a);
+}
+.qx-sum-table tr.r1 td { background: #f8fafc; }
+.qx-sum-table tr.r2 td { background: #faf5ff; }
+.qx-sum-table tr.r3 td { background: #ecfdf5; }
+
+.qx-sum-sec-examples { margin-top: 8px; }
+
+.qx-sum-steps {
+  margin: 0 0 10px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+.qx-sum-steps li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(37, 99, 235, 0.05));
+  border: 1px solid rgba(16, 185, 129, 0.18);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.qx-sum-steps .step-n {
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #047857;
+  background: #d1fae5;
+  padding: 3px 8px;
+  border-radius: 999px;
+  margin-top: 1px;
+}
+.qx-sum-ans {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #eef2ff, #faf5ff);
+  border: 1px solid #c7d2fe;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #1e1b4b;
+}
+.qx-sum-ans strong { color: #6d28d9; }
+
+html[data-theme="dark"] .qx-sum-syllabus {
+  background: rgba(99, 102, 241, 0.12);
+  border-color: rgba(165, 180, 252, 0.25);
+  color: #e0e7ff;
+}
+html[data-theme="dark"] .qx-sum-table thead th {
+  background: linear-gradient(135deg, #312e81, #5b21b6);
+}
+html[data-theme="dark"] .qx-sum-table td {
+  border-top-color: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+}
+html[data-theme="dark"] .qx-sum-table tr.r1 td,
+html[data-theme="dark"] .qx-sum-table tr.r2 td,
+html[data-theme="dark"] .qx-sum-table tr.r3 td {
+  background: rgba(255, 255, 255, 0.03);
+}
+html[data-theme="dark"] .qx-sum-ans {
+  background: rgba(99, 102, 241, 0.12);
+  border-color: rgba(165, 180, 252, 0.25);
+  color: var(--text);
+}
+html[data-theme="dark"] .qx-sum-para,
+html[data-theme="dark"] .qx-sum-bullets {
+  color: var(--text);
+}
+
+/* IITian official reference links (no content scrape) */
+.qx-sum-section.refs h2 .ic { background: #dbeafe; }
+.qx-sum-ref-note {
+  margin: 0 0 12px;
+  padding: 11px 13px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #fff7ed, #fef3c7);
+  border: 1px solid #fcd34d;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #78350f;
+  font-weight: 600;
+}
+.qx-sum-ref-list {
+  display: grid;
+  gap: 8px;
+}
+.qx-sum-ref-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 12px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #eff6ff, #eef2ff);
+  border: 1px solid #bfdbfe;
+  text-decoration: none;
+  color: #1e3a8a;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.qx-sum-ref-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.12);
+}
+.qx-sum-ref-n {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+}
+.qx-sum-ref-t {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #1e3a8a;
+}
+.qx-sum-ref-go {
+  font-size: 11px;
+  font-weight: 800;
+  color: #4f46e5;
+  white-space: nowrap;
+}
+html[data-theme="dark"] .qx-sum-ref-note {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(251, 191, 36, 0.3);
+  color: #fde68a;
+}
+html[data-theme="dark"] .qx-sum-ref-link {
+  background: rgba(37, 99, 235, 0.12);
+  border-color: rgba(147, 197, 253, 0.25);
+}
+html[data-theme="dark"] .qx-sum-ref-t { color: #e0e7ff; }
+
+/* Definition callout */
+.qx-sum-def {
+  margin: 0 0 14px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+  border: 1px solid #c4b5fd;
+  border-left: 5px solid #7c3aed;
+}
+.qx-sum-def-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, #7c3aed, #2563eb);
+  padding: 3px 9px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+.qx-sum-def p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  font-weight: 600;
+  color: #1e1b4b;
+}
+
+/* —— Maths unit index (chapter-wise topics, click to open) —— */
+.qx-mu-page { max-width: 720px; }
+.qx-sr-only-card { max-width: 720px; margin: 0 auto 16px; }
+.qx-sr-topic {
+  align-items: center !important;
+  border: 1px solid #e2e8f0 !important;
+  background: #fff !important;
+  margin-bottom: 6px;
+  padding: 12px 12px !important;
+}
+.qx-sr-topic:hover {
+  border-color: #a5b4fc !important;
+  background: linear-gradient(135deg, #eff6ff, #eef2ff) !important;
+}
+.qx-sr-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+}
+.qx-sr-topic .qx-mu-open { opacity: 1; color: #4f46e5; font-size: 12px; }
+.qx-mu-banner {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #eef2ff, #faf5ff);
+  border: 1px solid #c7d2fe;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #312e81;
+  font-weight: 600;
+}
+.qx-mu-banner .qx-mu-focus {
+  display: block;
+  margin-top: 6px;
+  color: #6d28d9;
+  font-size: 12.5px;
+}
+.qx-mu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+@media (max-width: 960px) {
+  .qx-mu-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .qx-mu-grid { grid-template-columns: 1fr; }
+}
+.qx-mu-card {
+  background: var(--card, #fff);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 14px 14px 12px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.qx-mu-card:hover {
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.1);
+}
+.qx-mu-card.is-hot {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2), 0 10px 28px rgba(124, 58, 237, 0.12);
+}
+.qx-mu-card-h {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.qx-mu-num {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  padding: 3px 8px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+}
+.qx-mu-card-h h3 {
+  margin: 0;
+  font-size: 14.5px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+.qx-mu-card.u1 .qx-mu-num { background: linear-gradient(135deg, #2563eb, #4f46e5); }
+.qx-mu-card.u2 .qx-mu-num { background: linear-gradient(135deg, #059669, #0d9488); }
+.qx-mu-card.u3 .qx-mu-num { background: linear-gradient(135deg, #ea580c, #db2777); }
+.qx-mu-card.u4 .qx-mu-num { background: linear-gradient(135deg, #7c3aed, #a855f7); }
+.qx-mu-card.u5 .qx-mu-num { background: linear-gradient(135deg, #0284c7, #2563eb); }
+.qx-mu-card.u6 .qx-mu-num { background: linear-gradient(135deg, #ca8a04, #ea580c); }
+
+.qx-mu-topics {
+  display: grid;
+  gap: 4px;
+}
+.qx-mu-topic {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 7px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  font: inherit;
+  color: #1d4ed8;
+  transition: background 0.12s ease;
+}
+.qx-mu-topic:hover {
+  background: linear-gradient(135deg, #eff6ff, #eef2ff);
+}
+.qx-mu-topic:hover .qx-mu-open { opacity: 1; }
+.qx-mu-dot {
+  color: #6366f1;
+  font-weight: 800;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+.qx-mu-topic-t {
+  flex: 1;
+  font-size: 12.5px;
+  font-weight: 650;
+  line-height: 1.4;
+  color: #1e40af;
+}
+.qx-mu-open {
+  font-size: 10px;
+  font-weight: 800;
+  color: #7c3aed;
+  opacity: 0;
+  white-space: nowrap;
+  margin-top: 2px;
+  transition: opacity 0.12s ease;
+}
+html[data-theme="dark"] .qx-mu-card {
+  background: var(--card);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+html[data-theme="dark"] .qx-mu-card-h h3 { color: var(--text); }
+html[data-theme="dark"] .qx-mu-card-h { border-bottom-color: rgba(255, 255, 255, 0.08); }
+html[data-theme="dark"] .qx-mu-topic-t { color: #93c5fd; }
+html[data-theme="dark"] .qx-mu-banner {
+  background: rgba(99, 102, 241, 0.12);
+  border-color: rgba(165, 180, 252, 0.25);
+  color: #e0e7ff;
+}
+
+/* Original Quantrex SVG diagrams */
+.qx-sum-diagram {
+  margin: 0 0 16px;
+  padding: 14px 12px 10px;
+  border-radius: 16px;
+  background: linear-gradient(160deg, #ffffff, #f8fafc);
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  position: relative;
+}
+.qx-sum-svg {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.qx-sum-diagram-cap {
+  margin-top: 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #334155;
+  line-height: 1.4;
+}
+.qx-sum-diagram-brand {
+  margin-top: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7c3aed;
+  opacity: 0.85;
+}
+html[data-theme="dark"] .qx-sum-diagram {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+html[data-theme="dark"] .qx-sum-diagram-cap { color: var(--text); }
+
+/* Visual set demo (fruits / elements) */
+.qx-sum-visual {
+  margin: 0 0 16px;
+  padding: 18px 16px;
+  border-radius: 16px;
+  background: linear-gradient(160deg, #f8fafc, #f1f5f9 40%, #eef2ff);
+  border: 1px solid #cbd5e1;
+  text-align: center;
+}
+.qx-sum-visual-title {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+.qx-sum-set-brace {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.qx-sum-set-brace .brace {
+  font-size: 48px;
+  font-weight: 300;
+  color: #6366f1;
+  line-height: 1;
+  font-family: Georgia, "Times New Roman", serif;
+}
+.qx-sum-fruit-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+.qx-sum-fruit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 56px;
+}
+.qx-sum-fruit-n {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+}
+.qx-sum-fruit-ic {
+  font-size: 32px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.12));
+}
+.qx-sum-set-eq {
+  margin-top: 12px;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+.qx-sum-set-cap {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #059669;
+}
+
+/* Methods list */
+.qx-sum-methods {
+  margin: 0 0 14px;
+  display: grid;
+  gap: 10px;
+}
+.qx-sum-methods-h {
+  font-size: 13px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 2px;
+}
+.qx-sum-method {
+  display: flex;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+.qx-sum-method-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 14px;
+  color: #fff;
+  background: linear-gradient(135deg, #ea580c, #db2777);
+}
+.qx-sum-method-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+.qx-sum-method-body p {
+  margin: 0 0 8px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #334155;
+}
+.qx-sum-method-ex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #eff6ff, #f5f3ff);
+  border: 1px solid #c7d2fe;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+.qx-sum-method-ex span {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #4f46e5;
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+
+/* Side-by-side compare cards (Roster vs Set-builder) */
+.qx-sum-compare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 0 0 14px;
+}
+.qx-sum-compare-card {
+  border-radius: 14px;
+  padding: 14px 14px 12px;
+  border: 1px solid transparent;
+  min-height: 96px;
+}
+.qx-sum-compare-card.c1 {
+  background: linear-gradient(145deg, #dbeafe, #e0e7ff);
+  border-color: #93c5fd;
+}
+.qx-sum-compare-card.c2 {
+  background: linear-gradient(145deg, #d1fae5, #ccfbf1);
+  border-color: #6ee7b7;
+}
+.qx-sum-compare-card.c3 {
+  background: linear-gradient(145deg, #ffedd5, #fef3c7);
+  border-color: #fdba74;
+}
+.qx-sum-compare-card.c4 {
+  background: linear-gradient(145deg, #fce7f3, #fae8ff);
+  border-color: #f0abfc;
+}
+.qx-sum-compare-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-bottom: 8px;
+}
+.qx-sum-compare-eq {
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #0f172a;
+  word-break: break-word;
+}
+.qx-sum-compare-note {
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+}
+
+/* Annotated set-builder */
+.qx-sum-annotate {
+  margin: 0 0 14px;
+  padding: 16px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  border: 1px solid #fcd34d;
+}
+.qx-sum-annotate-h {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #92400e;
+  margin-bottom: 10px;
+}
+.qx-sum-annotate-eq {
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #78350f;
+  text-align: center;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.qx-sum-annotate-labs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.qx-sum-ann-lab {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px dashed #d97706;
+  color: #92400e;
+}
+.qx-sum-annotate-res {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #065f46;
+  padding: 8px;
+  border-radius: 10px;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+}
+
+html[data-theme="dark"] .qx-sum-def {
+  background: rgba(124, 58, 237, 0.15);
+  border-color: rgba(167, 139, 250, 0.35);
+}
+html[data-theme="dark"] .qx-sum-def p { color: var(--text); }
+html[data-theme="dark"] .qx-sum-visual {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+html[data-theme="dark"] .qx-sum-set-eq { color: #c7d2fe; }
+html[data-theme="dark"] .qx-sum-method {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+html[data-theme="dark"] .qx-sum-method-title { color: var(--text); }
+html[data-theme="dark"] .qx-sum-method-body p { color: var(--text); }
+html[data-theme="dark"] .qx-sum-compare-eq { color: #0f172a; }
+html[data-theme="dark"] .qx-sum-methods-h { color: var(--text); }
+html[data-theme="dark"] .qx-sum-annotate {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(251, 191, 36, 0.35);
+}
+html[data-theme="dark"] .qx-sum-annotate-eq {
+  color: #fde68a;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+  .qx-sum-set-brace .brace { font-size: 36px; }
+  .qx-sum-fruit-ic { font-size: 26px; }
+  .qx-sum-method { flex-direction: row; }
+}

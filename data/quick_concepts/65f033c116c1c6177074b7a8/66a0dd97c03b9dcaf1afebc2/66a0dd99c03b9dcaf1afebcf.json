@@ -1,0 +1,64 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd97c03b9dcaf1afebc2",
+  "topicId": "66a0dd99c03b9dcaf1afebcf",
+  "title": "Chord of parabola",
+  "concepts": [
+    {
+      "title": "Parametric equation of parabola",
+      "conceptBody": "<h3><strong>Parametric Equation</strong></h3><p>The parametric form of the parabola ${{y}^{2}}=4ax$ is ( $\\left. a{{t}^{2}},2at \\right)$. i.e. $x=a{{t}^{2}},y=2at$.</p><p>You can see this by just putting the values in the equation.</p><p><strong>Equation of the chord joining any two points on the parabola&nbsp;</strong></p><p>Let $\\text{P}\\left( at_{1}^{2},2a{{t}_{1}} \\right),Q\\left( at_{2}^{2},2a{{t}_{2}} \\right)$ be any two points on the parabola ${{y}^{2}}=4ax$. Then, the</p><p>equation of the chord joining these points is</p><p>$\\text{y}-2\\text{at}{{\\text{t}}_{1}}=\\frac{2\\text{at}{{\\text{t}}_{2}}-2\\text{at}}{\\text{at}t_{2}^{2}-at_{1}^{2}}\\left( \\text{x}-\\text{att}_{1}^{2} \\right)$</p><p>or $\\text{y}-2\\text{at}{{\\text{t}}_{1}}=\\frac{2}{{{\\text{t}}_{1}}+{{\\text{t}}_{2}}}\\left( \\text{x}-\\text{att}_{1}^{2} \\right)$</p><p>or $y\\left( {{t}_{1}}+{{t}_{2}} \\right)=2x+2a{{t}_{1}}{{t}_{2}}$</p><p><strong>Condition for the chord joining points having parameters ${{t}_{1}}$ AND ${{t}_{2}}$ to be a focal chord&nbsp;</strong></p><p>If the chord joining points $\\left( at_{1}^{2},2a{{t}_{1}} \\right)$ and $\\left( at_{2}^{2},2a{{t}_{2}} \\right)$ on the parabola passes</p><p>through its focus, then $\\left( \\text{a},0 \\right)$ satisfies the equation</p><p>$\\begin{align} &amp; \\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,y({{t}_{1}}+{{t}_{2}})=2x+2a{{t}_{1}}{{t}_{2}} \\\\ &amp; \\Rightarrow \\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,0=\\,2a+2a{{t}_{1}}{{t}_{2}} \\\\ &amp; \\Rightarrow \\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,{{t}_{1}}\\,{{t}_{2}}=-1 \\\\ \\end{align}$</p><p><strong>Length of a focal chord</strong></p><p>Let $\\text{P}\\left( at_{1}^{2},2a{{t}_{1}} \\right)$ and $\\text{Q}\\left( at_{2}^{2},2a{{t}_{2}} \\right)$ be the end point of a focal chord. Then, ${{t}_{1}}{{t}_{2}}=-1$.</p><p>Now</p><p>$\\begin{array}{*{35}{r}} PQ &amp; ~=\\sqrt{{{\\left( at_{2}^{2}-at_{1}^{2} \\right)}^{2}}+{{\\left( 2a{{t}_{2}}-2a{{t}_{1}} \\right)}^{2}}} \\\\ {} &amp; ~=a\\left( {{t}_{2}}-{{t}_{1}} \\right)\\sqrt{{{\\left( {{t}_{2}}+{{t}_{1}} \\right)}^{2}}+4} \\\\ {} &amp; ~=a\\left( {{t}_{2}}-{{t}_{1}} \\right)\\sqrt{{{\\left( {{t}_{2}}+{{t}_{1}} \\right)}^{2}}-4{{t}_{1}}{{t}_{2}}}\\text{ }\\!\\!~\\!\\!\\text{ }\\!\\!~\\!\\!\\text{ }\\left[ \\cdot {{t}_{1}}{{t}_{2}}=-1 \\right] \\\\ {} &amp; ~=a\\left( {{t}_{2}}-{{t}_{1}} \\right)\\sqrt{{{\\left( {{t}_{2}}-{{t}_{1}} \\right)}^{2}}} \\\\ {} &amp; ~=a{{\\left( {{t}_{2}}-{{t}_{1}} \\right)}^{2}} \\\\ \\end{array}$</p><p>Thus, the length of a focal chord having parameters ${{t}_{1}}$ and ${{t}_{2}}$ for its end points is $\\text{a}{{\\left( {{\\text{t}}_{2}}-{{\\text{t}}_{1}} \\right)}^{2}}$.</p>",
+      "position": 0,
+      "qcConcept": "66a0dd9ac03b9dcaf1afebd0"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f662d384bfb4a538285",
+      "title": "The locus of the middle points of the chords of the parabola $y^2=4 a x$ which passes through the origin",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538286",
+      "title": "In the parabola $y^2=6 x$, the equation of the chord through vertex and negative end of latus rectum, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538287",
+      "title": "The length of chord of contact of the tangents drawn from the point $(2,5)$ to the parabola $y^2=8 x$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538288",
+      "title": "If ' $a$ ' and ' $c$ ' are the segments of a focal chord of a parabola and $b$ the semi-latus rectum, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538289",
+      "title": "A set of parallel chords of the parabola $y^2=4 a x$ have their mid-point on",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53828a",
+      "title": "If $P S Q$ is the focal chord of the parabola $y^2=8 x$ such that $S P=6$. Then the length $S Q$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53828b",
+      "title": "The length of the normal chord to the parabola $y^2=4 x$, which subtends right angle at the vertex is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53828c",
+      "title": "From the point $(-1,2)$ tangent lines are drawn to the parabola $y^2=4 x$, then the equation of chord of contact is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

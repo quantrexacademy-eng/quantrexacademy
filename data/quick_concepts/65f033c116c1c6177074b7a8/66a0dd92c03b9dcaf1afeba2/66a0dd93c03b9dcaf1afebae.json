@@ -1,0 +1,76 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd92c03b9dcaf1afeba2",
+  "topicId": "66a0dd93c03b9dcaf1afebae",
+  "title": "Product of Matrices",
+  "concepts": [
+    {
+      "title": "Multiplication operation on a matrix",
+      "conceptBody": "<h3><strong>Matrix Multiplication</strong></h3><p>If $\\text{A }={{\\left[ {{\\text{a}}_{\\text{ij}}} \\right]}_{\\text{mp}}}\\quad $</p><p>$\\text{B }={{\\left[ {{\\text{b}}_{\\text{ij}}} \\right]}_{\\text{p n }}}\\text{ and then C}=\\text{AB}={{\\left[ {{\\text{C}}_{\\text{ik}}} \\right]}_{\\text{mn}}}$</p><p>where ${{\\mathbf{C}}_{\\text{ik}}}=\\sum\\limits_{j=1}^{\\text{p}}{{{\\text{a}}_{\\text{ij}}}}{{\\text{b}}_{\\text{jk}}}$</p><p>i.e. ${{\\text{C}}_{\\text{ik}}}={{\\text{a}}_{\\text{ij}}}{{\\text{b}}_{\\text{ik}}}+{{\\text{a}}_{12}}~{{\\text{b}}_{2\\text{k}}}+\\ldots {{\\text{a}}_{\\text{ip}}}{{\\text{b}}_{\\text{pk}}}$</p><p>In other words ${{\\text{C}}_{\\text{ik}}}=$ Sum of the products of nth row of A (having $\\text{p}$ elements) with kth column of $\\text{B}$ (having $\\text{p}$ elements). This is known as row by column multiplication of matrices.</p><p>It may be noted that in determinants we have row by row or column by column multiplication.</p><p><strong>Illustration 8</strong></p><p>If $A={{\\left[ \\begin{matrix} 1 &amp; -2 &amp; 3 \\\\ -4 &amp; 2 &amp; 5 \\\\ \\end{matrix} \\right]}_{2\\times 3}}$ and $B={{\\left[ \\begin{array}{*{35}{l}} 2 &amp; 3 \\\\ 4 &amp; 5 \\\\ 2 &amp; 1 \\\\ \\end{array} \\right]}_{3\\times 2}}$ compute AB and show that $AB\\neq BA$.</p><p><strong>Solution:&nbsp;</strong></p><p>A is $2\\quad 3$ type and B is $3\\quad 2$ type and hence both A Band BA are defined because the number of columns in pre-factor is equal to the number of rows in post-factor.</p><p>$\\text{AB}=\\left[ \\begin{matrix} 1.2-2.4+3.2 &amp; 1.3-2.5+3.1 \\\\ -4.2+2.4+5.2 &amp; -4.3+2.5+5.1 \\\\ \\end{matrix} \\right]$</p><p>$={{\\left[ \\begin{matrix} 0 &amp; -4 \\\\ 10 &amp; 3 \\\\ \\end{matrix} \\right]}_{2\\times 2}}$</p><p>$\\text{BA}={{\\left[ \\begin{array}{*{35}{l}} 2 &amp; 3 \\\\ 4 &amp; 5 \\\\ 2 &amp; 1 \\\\ \\end{array} \\right]}_{3\\times 2}}{{\\left[ \\begin{matrix} 1 &amp; -2 &amp; 3 \\\\ -4 &amp; 2 &amp; 5 \\\\ \\end{matrix} \\right]}_{2\\times 3}}$</p><p>$={{\\left[ \\begin{matrix} -10 &amp; 2 &amp; 21 \\\\ -16 &amp; 2 &amp; 37 \\\\ -2 &amp; -2 &amp; 11 \\\\ \\end{matrix} \\right]}_{3\\times 3}}$</p><p>Hence AB $\\ne \\text{BA}$</p><p>If $\\text{A}$ and $\\text{B}$ be two matrices then their product is defined or in other words $\\text{A}$ is <strong>conformable </strong>to $\\text{B}$ for multiplication if <strong>the number of columns of $\\mathbf{A}$ is the same as the number of rows in B. i.e., If be $\\mathbf{m}\\quad \\mathbf{p}$ and $\\mathbf{p}\\quad \\mathbf{n}$, the matrix A B will be of the type $\\mathbf{mn}$.&nbsp;</strong></p><p>Properties of matrix multiplication</p><p>(a) Multiplication of matrices is distributive with respect to addition of matrices.</p><p>i.e. $\\mathbf{A}(\\mathbf{B}+\\mathbf{C})=\\mathbf{AB}+\\mathbf{AC}$.</p><p>(b) Matrix multiplication is associative if conformability is assured.</p><p>i.e. $\\mathbf{A}(\\mathbf{BC})=(\\mathbf{AB})\\mathbf{C}$.</p><p>(c) The multiplication of matrices is not always commutative i.e. AB is not always equal to BA.</p><p>(d) Multiplication of a matrix A by a null matrix conformable with A for multiplication is a null matrix i.e. AO = O.</p><p>In particular if $A$ be a square matrix and $O$ be square null matrix of the same order, then $\\text{AO}=\\text{OA}=\\text{O}$.</p><p>(e) If $\\text{AB}=\\text{O}$ then it does not necessarily mean that $\\text{A}=\\text{O}$ or $\\text{B}=\\text{O}$ or both are $\\text{O}$ as shown below.</p><p>$\\left[ \\begin{array}{*{35}{l}} 0 &amp; 1 \\\\ 0 &amp; 0 \\\\ \\end{array} \\right]\\left[ \\begin{array}{*{35}{l}} 1 &amp; 0 \\\\ 0 &amp; 0 \\\\ \\end{array} \\right]=\\left[ \\begin{array}{*{35}{l}} 0 &amp; 0 \\\\ 0 &amp; 0 \\\\ \\end{array} \\right]$</p><p>None of the matrices on the left is a null matrix whereas their product is a null matrix.</p><p>(f) Multiplication of matrix A by a unit matrix I: Let $\\text{A}$ be a $\\text{m}$ n matrix and I be a square unit matrix of order $\\text{n}$, so that $A$ and I are conformable for multiplication, then</p><p>$\\text{A}{{\\text{I}}_{\\text{n}}}=\\text{A}\\text{. }$</p><p>Similarly for IA to exist $I$ should be square unit matrix of order $m$ and in that case ${{I}_{m}}A=A$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd93c03b9dcaf1afebaf"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f662d384bfb4a538262",
+      "title": "If $A=\\left[\\begin{array}{ccc}0 & 2 & 0 \\\\ 0 & 0 & 3 \\\\ -2 & 2 & 0\\end{array}\\right] \\text {and } B=\\left[\\begin{array}{ccc}1 & 2 & 3 \\\\ 3 & 4 & 5 \\\\ 5 & -4 & 0\\end{array}\\right]$, then the element of $3^{\\text {rd }}$ row and third column in $A B$ will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538263",
+      "title": "The order of $\\left[\\begin{array}{lll}x y z \\right]\\end{array}\\left[\\begin{array}{lll}a & h & g \\\\ h & b & f \\\\ g & f & c\\end{array}\\right]\\left[\\begin{array}{l}x \\\\ y \\\\ z\\end{array}\\right]$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538264",
+      "title": "If $A=\\left[\\begin{array}{cc}\\cos \\alpha & -\\sin \\alpha \\\\ \\sin \\alpha & \\cos \\alpha\\end{array}\\right]$ and $B=\\left[\\begin{array}{cc}\\cos \\beta & -\\sin \\beta \\\\ \\sin \\beta & \\cos \\beta\\end{array}\\right]$ then the correct relation is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538265",
+      "title": "If $M=\\left[\\begin{array}{ll}1 & 2 \\\\ 2 & 3\\end{array}\\right]$ and $M^2-\\lambda M-I_2=0$, then $\\lambda=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538266",
+      "title": "If $A=\\left[\\begin{array}{cc}3 & -5 \\\\ -4 & 2\\end{array}\\right]$ then $A^2-5 A=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538267",
+      "title": "If $A=\\left[\\begin{array}{cc}i & 0 \\\\ 0 & -i\\end{array}\\right]$, $B=\\left[\\begin{array}{ll}0 & i \\\\ i & 0\\end{array}\\right]$\nwhere $i=\\sqrt{-1}$, then the correct relation is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538268",
+      "title": "If $A=\\left[\\begin{array}{lll}2 & 0 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 2\\end{array}\\right]$ then $A^5=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538269",
+      "title": "If $A=\\left[\\begin{array}{ll}0 & 1 \\\\ 1 & 0\\end{array}\\right],B=\\left[\\begin{array}{cc}0 & -i \\\\ i & 0\\end{array}\\right]$\nthen $(A+B)^2$ equals",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53826a",
+      "title": "If $A=\\left[\\begin{array}{ll}1 & 1 \\\\ 1 & 1\\end{array}\\right]$ then $A^{100}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53826b",
+      "title": "If $A=\\left(\\begin{array}{lll}1 & 2 & 3 \\\\ 3 & 1 & 2 \\\\ 2 & 3 & 1\\end{array}\\right)$ and $B=\\left(\\begin{array}{ccc}-5 & 7 & 1 \\\\ 1 & -5 & 7 \\\\ 7 & 1 & -5\\end{array}\\right)$ then $A B$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

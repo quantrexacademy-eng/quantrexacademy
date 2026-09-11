@@ -1,0 +1,12 @@
+"use strict";
+const fs = require("fs");
+const p = "data/tests/jee_main_quizrr_pyq_chapter/_raw_papers/69de21e87e39d99b57bc5a88.json";
+const j = JSON.parse(fs.readFileSync(p, "utf8"));
+const s = JSON.stringify(j);
+console.log("keys", Object.keys(j));
+console.log("has img", /<img/i.test(s));
+console.log("has quizrr", /quizrr/i.test(s));
+console.log("has firebase", /firebasestorage/i.test(s));
+const imgs = [...s.matchAll(/src=\\?"([^\\"]+)/g)].map((m) => m[1]).slice(0, 8);
+console.log("srcs", imgs);
+console.log("id samples", (s.match(/69de4f1f2ee0e063d923dc97/g) || []).length);

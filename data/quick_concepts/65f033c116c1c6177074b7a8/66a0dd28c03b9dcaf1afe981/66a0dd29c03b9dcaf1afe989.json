@@ -1,0 +1,40 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd28c03b9dcaf1afe981",
+  "topicId": "66a0dd29c03b9dcaf1afe989",
+  "title": "Properties of Binomial Coefficients",
+  "concepts": [
+    {
+      "title": "Properties of binomial expansion",
+      "conceptBody": "<h3><strong>Properties of binomial expansion</strong></h3><p>(i) There are $\\left( n+1 \\right)$ terms in the expansion.</p><p>(ii) In each term, sum of the indices of ' $x$ ' and ' $y$ ' is equal to ' $n$ '.</p><p>(iii) In any term, the lower suffix of ' $C$ ' is equal to the index of ' $y$ ', and the index of $x=n-$ (lower suffix of C).</p><p>(iv) Because ${{~}^{\\text{n}}}{{\\text{C}}_{\\text{r}}}={{~}^{\\text{n}}}{{\\text{C}}_{\\text{n}-\\text{r, }\\!\\!~\\!\\!\\text{ }}}$</p><p>so we have:</p><p>${{~}^{\\text{n}}}{{\\text{C}}_{0}}={{~}^{\\text{n}}}{{\\text{C}}_{\\text{n}}}$</p><p>${{~}^{\\text{n}}}{{\\text{C}}_{1}}={{~}^{\\text{n}}}{{\\text{C}}_{\\text{n}-1}}$</p><p>${{~}^{\\text{n}}}{{\\text{C}}_{2}}={{~}^{\\text{n}}}{{\\text{C}}_{\\text{n}-2}}$ etc.</p><p>It follows that the coefficients of terms equidistant from the beginning and the ends are equal.</p><p><strong>Examples 1&nbsp;</strong></p><p><strong>(1) Simplify ${{\\left( x+\\sqrt{{{x}^{2}}-1} \\right)}^{6}}+{{\\left( x-\\sqrt{{{x}^{2}}-1} \\right)}^{6}}$&nbsp;</strong></p><p><strong>Solution : </strong>Let $\\sqrt{\\left( {{x}^{2}}-1 \\right)}=a$, so we have :</p><p>$(\\mathrm{x}+\\mathrm{a})^6+(\\mathrm{x}-\\mathrm{a})^6$</p><p>$=\\left[\\mathrm{x}^6+{ }^6 \\mathrm{C}_1 \\mathrm{x}^5 \\cdot \\mathrm{a}+{ }^6 \\mathrm{C}_2 \\cdot \\mathrm{x}^4 \\cdot \\mathrm{a}^2+{ }^6 \\mathrm{C}_3 \\mathrm{x}^3 \\mathrm{a}^3+{ }^6 \\mathrm{C}_4 \\mathrm{x}^2 \\mathrm{a}^4+{ }^6 \\mathrm{C}_5 \\mathrm{x}^2 \\mathrm{a}^4+{ }^6 \\mathrm{C}_5 \\mathrm{xaa}^5+{ }^6 \\mathrm{C}_6 \\mathrm{a}^6\\right]$</p><p>$=\\left[\\mathrm{x}^6-{ }^6 \\mathrm{C}_1 \\mathrm{x}^5 \\mathrm{a}+{ }^6 \\mathrm{C}_2 \\cdot \\mathrm{x}^4 \\cdot \\mathrm{a}^2-{ }^6 \\mathrm{C}_3 \\mathrm{x}^3 \\mathrm{a}^3+{ }^6 \\mathrm{C}_4 \\mathrm{x}^2 \\mathrm{a}^4-{ }^6 \\mathrm{C}_5 \\mathrm{xa}^5+{ }^6 \\mathrm{C}_5 \\mathrm{xa}^5+{ }^6 \\mathrm{C}_6 \\mathrm{a}^6\\right]$</p><p>$=2\\left[\\mathrm{x}^6+{ }^6 \\mathrm{C}_2 \\mathrm{x}^4 \\mathrm{a}^2+{ }^6 \\mathrm{C}_4 \\mathrm{x}^2 \\mathrm{a}^4+{ }^6 \\mathrm{Ca}^6\\right]$</p><p>$= 2\\left[\\mathrm{x}^6+15 \\mathrm{x}^4\\left(\\mathrm{x}^2-1\\right)+15 \\mathrm{x}^2\\left(\\mathrm{x}^2-1\\right)+\\left(\\mathrm{x}^2-1\\right)^3\\right]$</p><p>$=2\\left[\\mathrm{x}^6+15 \\mathrm{x}^6-15 \\mathrm{x}^4\\left(\\mathrm{x}^2-1\\right)+15 \\mathrm{x}^2\\left(\\mathrm{x}^2-1\\right)+\\left(\\mathrm{x}^2-1\\right)^3\\right]$</p><p>$=2\\left[\\mathrm{x}^6+15 \\mathrm{x}^6-15 \\mathrm{x} 4+15 \\mathrm{x}^6+15 \\mathrm{x}^2-30 \\mathrm{x}^4+\\mathrm{x}^6-1-3 \\mathrm{x}^4+3 \\mathrm{x}^3\\right]$</p><p>$=2\\left[32 \\mathrm{x}^6-48 \\mathrm{x}^4+18 \\mathrm{x}^2-1\\right]$</p><p><strong>Example 2&nbsp;</strong></p><p><strong>In this expansion of ${{(x+a)}^{n}}$, if the sum of odd-terms be ' P ' and sum of even be ' Q ' Prove that:&nbsp;</strong></p><p><strong>(i) ${{P}^{2}}-{{Q}^{2}}={{\\left( {{x}^{2}}-{{a}^{2}} \\right)}^{n}}$&nbsp;</strong></p><p><strong>(ii) $4PQ={{(x+a)}^{2n}}-{{(x-a)}^{2n}}$&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>$(\\mathrm{x}+\\mathrm{a})^{\\mathrm{n}}=\\mathrm{x}^{\\mathrm{n}}+{ }^{\\mathrm{n}} \\mathrm{C}_1 \\mathrm{x}^{\\mathrm{n}-1} \\mathrm{a}+{ }^{\\mathrm{n}} \\mathrm{C}_2 \\mathrm{x}^{\\mathrm{n}-2} \\mathrm{a}^2+{ }^{\\mathrm{n}} \\mathrm{C}_3{ }^{\\mathrm{n}-3} \\mathrm{a}^3+\\cdots \\ldots \\ldots+\\mathrm{nC}_{\\mathrm{n}} \\mathrm{a}^{\\mathrm{n}}$</p><p>$=\\left(\\mathrm{x}^{\\mathrm{n}}+{ }^{\\mathrm{n}} \\mathrm{C}_2 \\mathrm{x}^{\\mathrm{n}-2} \\mathrm{a}^2+\\cdots \\cdots \\cdots\\right)+\\left({ }^{\\mathrm{n}} \\mathrm{C}_1 \\mathrm{x}^{\\mathrm{n}-1} \\mathrm{a}+\\mathrm{nC}_3 \\mathrm{x}^{\\mathrm{n}-3} \\mathrm{a}^3+\\cdots \\ldots \\ldots \\ldots\\right)$</p><p>$(\\mathrm{x}+\\mathrm{a})^{\\mathrm{n}}=\\mathrm{P}+\\mathrm{Q}$………………… (1)</p><p>$\\text { and }(\\mathrm{x}-\\mathrm{a})^{\\mathrm{n}}=\\mathrm{x}^{\\mathrm{n}}-{ }^{\\mathrm{n}} \\mathrm{C}_1 \\mathrm{x}^{\\mathrm{n}-1} \\mathrm{a}+{ }^{\\mathrm{n}} \\mathrm{C}_2 \\mathrm{x}^{\\mathrm{n}-2} \\mathrm{a}^2-{ }^{\\mathrm{n}} \\mathrm{C}_3 \\mathrm{x}^{\\mathrm{n}-3} \\mathrm{a}^3+\\cdots \\ldots+(-1)^{\\mathrm{n} n} \\mathrm{C}_{\\mathrm{n}} \\mathrm{a}^{\\mathrm{n}}$</p><p>$=\\left(\\mathrm{x}^{\\mathrm{n}}+{ }^{\\mathrm{n}} \\mathrm{C}_2 \\mathrm{x}^{\\mathrm{n}-2} \\mathrm{a}^2+\\cdots \\cdots \\cdots\\right)-\\left({ }^{\\mathrm{n}} \\mathrm{C}_1 \\mathrm{x}^{\\mathrm{n}-1} \\mathrm{a}+{ }^{\\mathrm{n}} \\mathrm{C}_3 \\mathrm{x}^{\\mathrm{n}-3} \\mathrm{a}^3+\\right.$……)</p><p>$(\\mathrm{x}-\\mathrm{a})^{\\mathrm{n}}=\\mathrm{P}-\\mathrm{Q}$………………… (2)</p><p>Now we have:</p><p>(1) ${{\\text{P}}^{2}}-{{\\text{Q}}^{2}}$ $~=\\left( \\text{P}+\\text{Q} \\right)\\left( \\text{P}-\\text{Q} \\right)$</p><p>$~={{(\\text{x}+\\text{a})}^{\\text{n}}}{{(\\text{x}-\\text{a})}^{\\text{n}}}$</p><p>$~={{\\text{P}}^{2}}-{{\\text{Q}}^{2}}={{\\left( {{\\text{x}}^{2}}-{{\\text{a}}^{2}} \\right)}^{\\text{n}}}$</p><p>(2) $4\\text{PQ}$ $~={{(\\text{P}+\\text{Q})}^{2}}-{{(\\text{P}-\\text{Q})}^{2}}$</p><p>$~={{(\\text{x}+\\text{a})}^{2\\text{n}}}-{{(\\text{x}-\\text{a})}^{2\\text{n}}}$</p><p><strong>Example 3&nbsp;</strong></p><p><strong>Prove that ${{(101)}^{50}}&gt;{{(100)}^{50}}+{{(99)}^{50}}$&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>${{(101)}^{50}}$ $~={{(100+1)}^{50}}$</p><p>$~={{(100)}^{50}}+{{~}^{50}}{{\\text{C}}_{1}}{{(100)}^{49}}+{{~}^{50}}{{\\text{C}}_{2}}{{(100)}^{48}}+\\ldots \\ldots \\ldots \\ldots +1$…….. (i)</p><p>${{(99)}^{50}}$ $~={{(100-1)}^{50}}$</p><p>$~={{(100)}^{50}}-{{~}^{50}}{{\\text{c}}_{1}}{{(100)}^{49}}+{{~}^{50}}{{\\text{c}}_{2}}{{(100)}^{48}}-\\ldots \\ldots \\ldots \\ldots +1$……….. (ii)</p><p>eq. (i) - eq. (ii):</p><p>${{(101)}^{50}}-$ $~{{(99)}^{50}}=2\\left[ {{~}^{50}}{{\\text{C}}_{1}}{{(100)}^{49}}+{{~}^{50}}{{\\text{C}}_{3}}{{(100)}^{47}}+\\ldots \\ldots \\ldots ... \\right.$]</p><p>$~=2\\text{ }\\!\\!~\\!\\!\\text{ }\\left( 50!/1!\\text{ }\\!\\!~\\!\\!\\text{ }49! \\right){{(100)}^{49}}+2.{{~}^{50}}{{\\text{C}}_{3}}{{(100)}^{47}}+$…………</p><p>$~=100\\text{ }\\!\\!~\\!\\!\\text{ }{{(100)}^{49}}+\\left( \\text{ }\\!\\!~\\!\\!\\text{ A }\\!\\!~\\!\\!\\text{ positive }\\!\\!~\\!\\!\\text{ number }\\!\\!~\\!\\!\\text{ } \\right)$</p><p>$~={{(100)}^{50}}+\\left( \\text{ }\\!\\!~\\!\\!\\text{ A }\\!\\!~\\!\\!\\text{ positive }\\!\\!~\\!\\!\\text{ number }\\!\\!~\\!\\!\\text{ } \\right)$</p><p>$~{{(101)}^{50}}-{{(99)}^{50}}&gt;{{(100)}^{50}}$</p><p>Or $~{{(101)}^{50}}&gt;{{(101)}^{50}}+{{(99)}^{50}}$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd29c03b9dcaf1afe98a"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f342d384bfb4a537ec7",
+      "title": "The sum of the last eight coefficients in the expansion of $(1+x)^{15}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f342d384bfb4a537ec8",
+      "title": "${ }^{10} C_1+{ }^{10} C_3+{ }^{10} C_5+{ }^{10} C_7+{ }^{10} C_9=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f342d384bfb4a537ec9",
+      "title": "In the expansion of $(x+a)^n$, the sum of odd terms is $P$ and sum of even terms is $Q$, then the value of $\\left(P^2-Q^2\\right)$ will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f342d384bfb4a537eca",
+      "title": "Sum of odd terms is $\\mathrm{A}$ and sum of even terms is $\\mathrm{B}$ in the expansion $(x+a)^n$, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

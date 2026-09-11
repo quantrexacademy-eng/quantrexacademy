@@ -1,0 +1,58 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd6cc03b9dcaf1afeadd",
+  "topicId": "66a0dd71c03b9dcaf1afeafb",
+  "title": "Normal to hyperbola",
+  "concepts": [
+    {
+      "title": "Coordinate of the point of contact",
+      "conceptBody": "<h3>Point of contact</h3><p>The coordinate of the point of contact are $\\left( \\pm \\frac{{{a}^{2}}m}{\\sqrt{{{a}^{2}}-{{b}^{2}}{{m}^{2}}}},\\mp \\frac{m{{b}^{2}}}{\\sqrt{{{a}^{2}}-{{b}^{2}}{{m}^{2}}}} \\right)$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd71c03b9dcaf1afeafc"
+    },
+    {
+      "title": "Equation of Normals",
+      "conceptBody": "<h3><strong>Equation of normal</strong></h3><p>a)<strong> </strong>Point Form: The equation of the normal to the hyperbola $\\frac{{{x}^{2}}}{{{a}^{2}}}-\\frac{{{y}^{2}}}{{{b}^{2}}}=1$ at the point</p><p>$\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}} \\right)\\text{ }\\!\\!~\\!\\!\\text{ is }\\!\\!~\\!\\!\\text{ }\\frac{{{\\text{x}}^{2}}}{{{\\text{a}}^{2}}}-\\frac{{{\\text{y}}^{2}}}{\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}^{2}}}=1\\text{ }\\!\\!~\\!\\!\\text{ is }\\!\\!~\\!\\!\\text{ }\\frac{{{\\text{a}}^{2}}\\text{x}}{{{\\text{x}}_{1}}}+\\frac{{{\\text{b}}^{2}}\\text{y}}{{{\\text{y}}_{1}}}={{\\text{a}}^{2}}+{{\\text{b}}^{2}}$</p><p>(b) Parametric Form: The equation of the normal to the hyperbola $\\frac{{{x}^{2}}}{{{a}^{2}}}-\\frac{{{y}^{2}}}{{{b}^{2}}}=1$ at the point $\\left( \\text{asec}\\theta ,\\text{btan}\\theta \\right)$ is $\\frac{\\text{ax}}{\\text{sec}\\theta }+\\frac{\\text{by}}{\\text{tan}\\theta }={{\\text{a}}^{2}}+{{\\text{b}}^{2}}$</p><p>(c) Slope Form: The equation of normal to the hyperbola $\\frac{{{x}^{2}}}{{{a}^{2}}}-\\frac{{{y}^{2}}}{{{b}^{2}}}=1$ in terms of slope ' $m$ ' is $y=mx\\pm \\frac{m\\left( {{a}^{2}}+{{b}^{2}} \\right)}{\\sqrt{{{a}^{2}}-{{b}^{2}}{{m}^{2}}}}$</p>",
+      "position": 1,
+      "qcConcept": "66a0dd72c03b9dcaf1afeafd"
+    },
+    {
+      "title": "Number of Normals",
+      "conceptBody": "<h3><strong>Number of normals</strong></h3><p>In general, four normal can be drawn to a hyperbola from a point in its plane i.e., there are four points on the hyperbola, the normal at which will pass through a given point. These four points are called the co-normal points.</p><p>Tangent drawn at any point bisects the angle between the lines joining the point to the foci, whereas normal bisects the supplementary angle between the lines.</p>",
+      "position": 2,
+      "qcConcept": "66a0dd72c03b9dcaf1afeafe"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f612d384bfb4a538166",
+      "title": "The equation of the normal at the point $(a \\sec \\theta, b \\tan \\theta)$ of the curve $b^2 x^2-a^2 y^2=a^2 b^2$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f612d384bfb4a538167",
+      "title": "The equation of the normal to the hyperbola $\\frac{x^2}{16}-\\frac{y^2}{9}=1$ at the point $(8,3 \\sqrt{3})$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f612d384bfb4a538168",
+      "title": "The equation of the normal at the point $(6,4)$ on the hyperbola $\\frac{x^2}{9}-\\frac{y^2}{16}=3$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f612d384bfb4a538169",
+      "title": "The value of $m$, for which the line ${ }^{y=m x+\\frac{25 \\sqrt{3}}{3}}$, is a normal to the conic $\\frac{x^2}{16}-\\frac{y^2}{9}=1$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f612d384bfb4a53816a",
+      "title": "The equation of the normal to the hyperbola $\\frac{x^2}{16}-\\frac{y^2}{9}=1$ at $(-4,0)$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

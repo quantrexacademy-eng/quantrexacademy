@@ -1,0 +1,294 @@
+/* Bare figure only — no rectangular card (tests + practice) */
+
+#qxDiagramSlot,
+.qx-diagram-slot,
+.qx-diagram-seg,
+.qx-opt-diagram-slot,
+.qx-question-body > .qx-diagram-slot,
+.qx-fig-flat,
+.qx-pool-fig-wrap,
+.qx-fig,
+.qx-opt-fig,
+.qx-fig-host,
+.mtk-main .qx-diagram-slot,
+.mtk-main #qxDiagramSlot,
+.mtk-opt-text .qx-opt-diagram-slot {
+  position: relative !important;
+  display: block !important;
+  margin: 10px auto !important;
+  padding: 0 !important;
+  max-width: min(100%, 720px) !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  overflow: visible !important;
+  text-align: center !important;
+  line-height: 0 !important;
+}
+
+.mtk-opt-text .qx-opt-diagram-slot,
+.qx-prac-opt-text .qx-opt-diagram-slot,
+.mtk-options.qx-opts-img .qx-opt-diagram-slot {
+  margin: 6px auto !important;
+  padding: 0 !important;
+  max-width: 100% !important;
+}
+
+/* Inside slot: NO second box */
+#qxDiagramSlot .qx-fig,
+#qxDiagramSlot .qx-fig-flat,
+#qxDiagramSlot .qx-pool-fig-wrap,
+#qxDiagramSlot .qx-fig-inner,
+#qxDiagramSlot figure,
+.qx-diagram-slot .qx-fig,
+.qx-diagram-slot .qx-fig-flat,
+.qx-diagram-slot .qx-pool-fig-wrap,
+.qx-diagram-slot .qx-fig-inner,
+.qx-diagram-slot figure,
+.qx-diagram-seg .qx-fig,
+.qx-diagram-seg .qx-fig-flat,
+.qx-diagram-seg .qx-fig-inner,
+.qx-opt-diagram-slot .qx-fig,
+.qx-opt-diagram-slot .qx-fig-flat,
+.qx-opt-diagram-slot .qx-opt-fig,
+.qx-opt-diagram-slot .qx-pool-fig-wrap,
+.qx-opt-diagram-slot .qx-fig-inner,
+.qx-opt-diagram-slot figure {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  max-width: 100% !important;
+  display: block !important;
+  line-height: 0 !important;
+  min-height: 0 !important;
+}
+
+/* Neat multi-color figures (digital-book style) — no box, full color */
+#qxDiagramSlot img,
+.qx-diagram-slot img,
+.qx-diagram-seg img,
+.qx-opt-diagram-slot img,
+.qx-fig-flat img,
+.mtk-opt-text img,
+.qx-prac-opt-text img,
+.mtk-q-text img,
+.qx-content img.qx-pool-fig,
+.sol-body img,
+.qx-sol-body img,
+img.qx-pool-fig,
+img.qx-fig-img,
+img.qx-org-fig,
+img.qx-organic-fig,
+img.qx-opt-fig-img,
+img.qx-hq-color,
+img[src*="qx-org-"],
+img[src*="cdn-question-pool"],
+img[src*="/pyq/"],
+img[src*="proxy-image"] {
+  position: relative !important;
+  z-index: 2 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: min(100%, 720px) !important;
+  width: auto !important;
+  height: auto !important;
+  max-height: min(520px, 75vh) !important;
+  min-height: 48px !important;
+  margin: 14px auto !important;
+  object-fit: contain !important;
+  image-rendering: auto !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  pointer-events: auto !important;
+  /* Keep full multi-color (no grayscale force) */
+  -webkit-font-smoothing: antialiased;
+}
+
+img.qx-org-fig,
+img.qx-organic-fig,
+img[src*="qx-org-"] {
+  max-width: min(100%, 420px) !important;
+  max-height: min(360px, 62vh) !important;
+  margin: 8px auto !important;
+}
+
+/* Colorful organic + Quantrex seal (not MARKS) */
+.qx-org-fig-host {
+  position: relative;
+  display: inline-block;
+  max-width: min(100%, 720px);
+  vertical-align: middle;
+  margin: 8px 0;
+}
+.qx-org-fig-host img {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  background: #fff !important;
+}
+.qx-org-qx-wm {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 0.82 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: url("quantrex-fig-wm-organic.png") center / 50% no-repeat !important;
+  transform: none !important;
+  mix-blend-mode: multiply !important;
+  z-index: 3;
+}
+.qx-org-fig-host-scan .qx-org-qx-wm {
+  background-size: 26% !important;
+  opacity: 0.26 !important;
+}
+
+.qx-opt-diagram-slot img,
+.mtk-opt-text img.qx-pool-fig,
+.qx-prac-opt-text img.qx-pool-fig {
+  max-height: 260px !important;
+}
+
+.mtk-test-root[data-test-theme="dark"] #qxDiagramSlot,
+.mtk-test-root[data-test-theme="dark"] .qx-diagram-slot,
+.mtk-test-root[data-test-theme="dark"] .qx-diagram-seg,
+.mtk-test-root[data-test-theme="dark"] .qx-opt-diagram-slot {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Kill ALL watermark / brand chrome on figures */
+img.qx-coaching-wm,
+img.qx-quantrex-wm-overlay,
+.qx-quantrex-black-wm,
+.qx-quantrex-black-seal,
+.qx-premium-wm-sheet,
+.qx-premium-wm-title,
+.qx-premium-wm-tag,
+.qx-premium-wm-logo,
+.qx-brand-overlay,
+.qx-diag-watermark,
+.qx-wm-diagonal,
+.qx-wm-corner-badge,
+.qx-marks-strip,
+.qx-wm-mask,
+.qx-marks-scrub,
+canvas.qx-premium-wm-canvas,
+canvas.qx-marks-scrub-canvas,
+img[src*="quantrex-academy-brand"],
+img[src*="quantrex-watermark"],
+img[src*="getmarks-brand"],
+img[src*="marks-premium"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+.qx-opt-diagram-slot:empty,
+#qxDiagramSlot:empty,
+.qx-diagram-slot:empty {
+  display: none !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.sol-body img,
+.qx-sol-body img {
+  margin: 12px auto !important;
+}
+
+/* SMILES-rendered structures — clean white plate, no watermark chrome */
+img.qx-smiles-fig,
+.qx-prac-opt-text img.qx-smiles-fig,
+.mtk-opt-text img.qx-smiles-fig {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.06) !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06) !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+  filter: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  max-height: 280px !important;
+  object-fit: contain !important;
+}
+
+/* Option structure cards — bright paper, crisp figures */
+.qx-prac-opt.qx-prac-opt-img,
+.mtk-opt.mtk-opt-img {
+  background: #fff !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  border-radius: 14px !important;
+  min-height: 120px;
+}
+.qx-prac-opt-img img.qx-pool-fig,
+.mtk-opt-img img.qx-pool-fig,
+.qx-prac-opt-text img.qx-pool-fig,
+.mtk-opt-text img.qx-pool-fig,
+#qxDiagramSlot img.qx-pool-fig,
+.qx-diagram-slot img.qx-pool-fig,
+.mtk-q-text img.qx-pool-fig,
+.qx-content img.qx-pool-fig {
+  opacity: 1 !important;
+  visibility: visible !important;
+  /* Clear continuous lines — no harsh filter that makes bonds look broken */
+  filter: none !important;
+  -webkit-filter: none !important;
+  image-rendering: auto !important;
+  background: #fff !important;
+  max-height: min(340px, 52vh) !important;
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  margin: 10px auto !important;
+  display: block !important;
+  padding: 8px !important;
+  border-radius: 10px !important;
+}
+
+/* Option letter alone should still be readable (not empty-looking) */
+.qx-letter-opt {
+  display: inline-block !important;
+  font-weight: 700 !important;
+  font-size: 1.05em !important;
+  color: #0f172a !important;
+  letter-spacing: 0.02em;
+}
+
+/* Clean paper look for option structure cards */
+.qx-prac-opts.qx-opts-img .qx-prac-opt,
+.mtk-options.qx-opts-img .mtk-opt {
+  background: #fff !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+}
+
+.mtk-test-root.allen-practice .qx-paper-meta,
+.qx-practice-page .qx-paper-meta {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  margin: 0 0 14px !important;
+}

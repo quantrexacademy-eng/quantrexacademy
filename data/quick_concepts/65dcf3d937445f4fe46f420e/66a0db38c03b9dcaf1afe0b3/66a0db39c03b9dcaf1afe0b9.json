@@ -1,0 +1,76 @@
+{
+  "subjectId": "65dcf3d937445f4fe46f420e",
+  "chapterId": "66a0db38c03b9dcaf1afe0b3",
+  "topicId": "66a0db39c03b9dcaf1afe0b9",
+  "title": "Matter Waves",
+  "concepts": [
+    {
+      "title": "De broglie waves",
+      "conceptBody": "<h3>Matter Waves</h3><p>According to de-Broglie a moving material particle sometimes acts as a wave and sometimes as a particle.</p><p>The wave associated with moving particle is called matter wave or de-Broglie wave and it propagates in the form of wave packets with group velocity.</p>",
+      "position": 0,
+      "qcConcept": "66a0db39c03b9dcaf1afe0ba"
+    },
+    {
+      "title": "De broglie waves",
+      "conceptBody": "<h3>De-Broglie Wavelength</h3><p>According to de-Broglie theory, the wavelength of de-Broglie wave is given by</p><p>$\\lambda =\\frac{h}{p}=\\frac{h}{mv}=\\frac{h}{\\sqrt{2mE}}$$\\Rightarrow \\lambda \\propto \\frac{1}{p}\\propto \\frac{1}{v}\\propto \\frac{1}{\\sqrt{E}}$</p><p>Where <i>h </i>= Plank's constant, <i>m </i>= Mass of the particle, <i>v </i>= Speed of the particle, <i>E = </i>Energy of the particle.</p><p>The wavelength of matter waves associated with the microscopic particles like electron, proton, neutron, <i>α </i>-particle <i>etc </i>. is of the order of ${{10}^{-10}}$ <i>m.&nbsp;</i></p>",
+      "position": 1,
+      "qcConcept": "66a0db39c03b9dcaf1afe0bb"
+    },
+    {
+      "title": "De broglie waves",
+      "conceptBody": "<h3>De-Broglie Wavelength For Charged Particles</h3><p>The energy of a charged particle accelerated through potential difference <i>V </i>is $E=\\frac{1}{2}m{{v}^{2}}=qV$</p><p>Hence de-Broglie wavelength $\\lambda =\\frac{h}{p}=\\frac{h}{\\sqrt{2mE}}=\\frac{h}{\\sqrt{2mqV}}$</p><p><i>${{\\lambda }_{Electron}}=\\frac{12.27}{\\sqrt{V}}$Å </i>, ${{\\lambda }_{\\Pr oton}}=\\frac{0.286}{\\sqrt{V}}$ <i>Å </i>,</p><p><i>${{\\lambda }_{Deutron}}=\\frac{0.202}{\\sqrt{V}}$Å </i>, ${{\\lambda }_{\\alpha -particle}}=\\frac{0.101}{\\sqrt{V}}$ <i>Å&nbsp;</i></p>",
+      "position": 2,
+      "qcConcept": "66a0db3ac03b9dcaf1afe0bc"
+    },
+    {
+      "title": "De broglie waves",
+      "conceptBody": "<h3>De-Broglie Wavelength For Uncharged Particles</h3><p>For <i>Neutron d </i>e-Broglie wavelength is given as</p><p><i>${{\\lambda }_{Neutron}}=\\frac{0.286\\times {{10}^{-10}}}{\\sqrt{E\\,(\\text{in}\\,eV)}}m=\\frac{0.286}{\\sqrt{E\\,(\\text{in}\\,eV})}{}$ </i>Å</p><p>Energy of thermal neutrons at ordinary temperature</p><p>$E=kT\\Rightarrow \\lambda =\\frac{h}{\\sqrt{2mkT}}$;</p><p>where <i>T </i>= Absolute temperature, <i>k </i>= Boltzman's constant =$1.38\\times {{10}^{-23}}$ <i>Joule/kelvin&nbsp;</i></p><p>${{\\lambda }_{Thermal\\ neutron}}=\\frac{6.62\\times {{10}^{-34}}}{\\sqrt{2\\times 1.67\\times {{10}^{-27}}\\times 1.38\\times {{10}^{-23}}T}}=\\frac{30.83}{\\sqrt{T}}{}$Å</p>",
+      "position": 3,
+      "qcConcept": "66a0db3ac03b9dcaf1afe0bd"
+    },
+    {
+      "title": "Properies of Matter Waves",
+      "conceptBody": "<h3>Characteristics of Matter Waves</h3><p>(1) Matter wave represents the probability of finding a particle in space.</p><p>(2) Matter waves are not electromagnetic in nature.</p><p>(3) de-Brogile or matter wave is independent of the charge on the material particle. It means, matter wave of de-Broglie wave is associated with every moving particle (whether charged or uncharged).</p><p>(4) Practical observation of matter waves is possible only when the de-Broglie wavelength is of the order of the size of the particles.&nbsp;</p><p>(5) Electron microscope works on the basis of de-Broglie waves.</p><p>(6) The phase velocity of the matter waves can be greater than the speed of the light.</p><p>(7) Matter waves can propagate in vacuum, hence they are not mechanical waves.</p><p>(8) The number of de-Broglie waves associated with <i>n </i>th orbital electron is <i>n.&nbsp;</i></p><p>(9) Only those circular orbits around the nucleus are stable whose circumference is integral multiple of de-Broglie wavelength associated with the orbital electron.</p>",
+      "position": 4,
+      "qcConcept": "66a0db3ac03b9dcaf1afe0be"
+    },
+    {
+      "title": "Heisenberg Uncertainity Principle",
+      "conceptBody": "<h3>Heisenberg Uncertainty Principle</h3><p>According to Heisenberg's uncertainty principle, it is impossible to measure simultaneously both the position and the momentum of the particle.</p><p>Let Δ <i>x </i>and Δ <i>p </i>be the uncertainty in the simultaneous measurement of the position and momentum of the particle, then $\\Delta x\\Delta p=\\hbar $; where $\\hbar =\\frac{h}{2\\pi }$ and <i>h </i>= 6.63 × 10 –34 <i>J-s </i>is the Planck's constant. $(\\frac{h}{2\\pi }=1.05\\times {{10}^{-34}}J\\text{-}sec\\text{)}$</p><p>A more rigorous treatment gives $\\Delta x..\\Delta p\\ge \\frac{\\hbar }{2}\\,\\,\\left( \\text{or}\\,\\frac{\\text{h}}{\\text{4}\\pi } \\right)$.</p><p>If Δ <i>x </i>= 0 then Δ <i>p </i>= ∞ and if Δ <i>p </i>= 0 then Δ <i>x </i>= ∞ <i>i.e., </i>if we are able to measure the exact position of the particle (say an electron) then the uncertainty in the measurement of the linear momentum of the particle is infinite. Similarly, if we are able to measure the exact linear momentum of the particle <i>i.e. </i>, Δ <i>p </i>= 0, then we can not measure the exact position of the particle at that time. An electron cannot be observed without changing it's momentum.</p><p>(1) Uncertainty principle successfully explains</p><p>(i) Non-existence of electrons in the nucleus</p><p>(ii) Finite size of spectral lines.</p><p>(2) The Heisenberg uncertainty principle is also applicable to energy and time, angular momentum and angular displacement. Hence $\\Delta E.\\,\\Delta t\\ge \\frac{h}{2\\pi }$ and $\\Delta L.\\,\\Delta \\theta \\ge \\frac{h}{2\\pi }$</p><p>(3) If the radius of the nucleus is <i>r </i>then the probability of finding the electron inside the nucleus is Δ <i>x </i>= 2 <i>r </i>and uncertainty in momentum is $\\Delta p=\\frac{h}{4\\pi r}$</p>",
+      "position": 5,
+      "qcConcept": "66a0db3ac03b9dcaf1afe0bf"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66891f2b1010aab82c8aa553",
+      "title": "De-Broglie equation states the",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2b1010aab82c8aa554",
+      "title": "Polarization of light is a phenomenon that supports",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2b1010aab82c8aa555",
+      "title": "The de-Broglie wavelength associated with the particle of mass $m$ moving with velocity $v$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2b1010aab82c8aa556",
+      "title": "The de-Broglie wavelength associated with a particle of mass $1 \\mathrm{~kg}$ moving with a velocity of $10 \\mathrm{~m} \\mathrm{~s}^{-1}$ is:",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2b1010aab82c8aa557",
+      "title": "The de-Broglie wavelength of a particle of mass $6.63 \\mathrm{~g}$ moving with a velocity of $100 \\mathrm{~ms}^{-1}$ is:",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

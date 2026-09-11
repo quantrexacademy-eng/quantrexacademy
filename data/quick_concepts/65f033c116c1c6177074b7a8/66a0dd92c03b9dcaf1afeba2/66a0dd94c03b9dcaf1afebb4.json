@@ -1,0 +1,64 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd92c03b9dcaf1afeba2",
+  "topicId": "66a0dd94c03b9dcaf1afebb4",
+  "title": "Inverse of a Matrix",
+  "concepts": [
+    {
+      "title": "Theorem on inverse of a matrix",
+      "conceptBody": "<h3><strong>Inverse or reciprocal of a square matrix</strong></h3><p>Let $A$ be a square matrix of order $n$. Then a matrix $B$ (if such a matrix exists) is called the inverse of $A$ if $AB=BA={{I}_{n}}$ Inverse of the square matrix $\\text{A}$ is denoted by ${{\\mathbf{A}}^{-1}}$</p><p><strong>Existence of the inverse:</strong></p><p>The inverse of a square matrix $\\text{A}$ exists if and only if $\\text{A}$ is a non-singular matrix.</p><p>If part: Let $\\text{A}$ be non-singular square matrix of order $\\text{n}$. Then $|\\text{A}|\\neq 0$</p><p>Let $B=\\frac{\\operatorname{adj}.A}{|A|}$</p><p>Then $AB=\\frac{A(\\operatorname{adj}A)}{|A|}=\\frac{|A|{{I}_{n}}}{|A|}={{I}_{n}}\\left[ \\because A\\cdot (\\operatorname{adj}A)=|A|{{I}_{n}} \\right]\\ldots (1)$</p><p>Hence B i.e. $\\frac{\\operatorname{adj}.\\mathbf{A}}{|\\mathbf{A}|}$ is the inverse of matrix $\\mathbf{A}$ (by definition of inverse)</p><p>Only if part: Let $A$ be a square matrix of order $n$. Let inverse of $A$ exist. Let $B$ be the inverse of $A$. Then by definition of inverse</p><p>$\\begin{array}{*{35}{l}} {} &amp; \\text{AB}={{\\text{I}}_{\\text{n}}}\\Rightarrow |\\text{AB}|=|\\text{In}|=1 \\\\ \\text{ or }\\quad &amp; |\\text{A}||\\text{B}|=1[\\therefore |\\text{AB}|=|\\text{A}||\\text{B}|] \\\\ \\therefore &amp; |\\text{A}|\\ne 0,\\text{ because product }|\\text{A}||\\text{B}|\\text{ is non-zero}\\text{. } \\\\ \\end{array}$</p><p>Hence $\\text{A}$ is non singular.</p><p><strong>Note: </strong>(i) ${{\\text{A}}^{-1}}=\\frac{\\operatorname{adj}\\cdot \\text{A}}{|\\text{A}|}$ (ii) $\\text{A}{{\\text{A}}^{-1}}={{\\text{I}}_{\\text{n}}}[$ From (1)]</p><p><strong>Theorems:&nbsp;</strong></p><p>(i) If $\\text{A}$ and $\\text{B}$ be any two non-singular matrices, then $\\text{AB}$ is also a non-singular matrix and ${{(AB)}^{-1}}={{B}^{-1}}{{A}^{-1}}$.</p><p>$\\therefore \\quad \\text{A},\\text{B}$ are non-singular $\\therefore |\\text{A}|\\ne 0,|~\\text{B}|\\ne 0$</p><p>$\\therefore \\quad |\\text{AB}|=|\\text{A}|\\text{B}\\mid \\ne 0$ Hence $\\text{AB}$ is non-singular.</p><p>Now $AB\\left( {{B}^{-1}}{{A}^{-1}} \\right)$</p><p>$\\left. =A\\left\\{ B\\left( {{B}^{-1}}{{A}^{-1}} \\right) \\right\\}=A\\{{{B}^{-1}}){{A}^{-1}} \\right\\}[\\text{ by associative law }]$</p><p>$=A\\left\\{ {{\\text{I}}_{n}}{{A}^{-1}} \\right\\}\\{\\therefore \\text{B}{{\\text{B}}^{-1}}={{I}_{n}}]$</p><p>$=\\text{A}{{\\text{A}}^{-1}}\\left[ \\therefore {{\\text{I}}_{n}}~{{\\text{A}}^{-1}}={{\\text{A}}^{-1}} \\right]$</p><p>$={{\\text{I}}_{\\text{n}}}$</p><p>Hence ${{B}^{-1}}{{A}^{-1}}$ is the inverse of A B</p><p>$\\therefore \\quad {{(\\text{AB})}^{-1}}={{\\text{B}}^{-1}}~{{\\text{A}}^{-1}}$</p><p>(ii) If$\\text{A}$ is a non singular matrix, then ${{\\left( {{\\text{A}}^{-1}} \\right)}^{-1}}=\\text{A}$</p><p>Let $A$ be a square matrix of order $n$,</p><p>Then ${{\\text{A}}^{-1}}~\\text{A}=\\text{In}$ $\\therefore \\quad $ inverse of ${{\\text{A}}^{-1}}=\\text{A}\\quad \\therefore {{\\left( {{\\text{A}}^{-1}} \\right)}^{-1}}=\\text{A}$</p><p>(iii) $\\text{I}_{\\text{n}}^{-1}={{\\text{I}}_{\\text{n}}}$ as $\\text{I}_{\\text{n}}^{-1}{{\\text{I}}_{\\text{n}}}={{\\text{I}}_{\\text{n}}}$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd95c03b9dcaf1afebb5"
+    },
+    {
+      "title": "Finding inverse from row transformation",
+      "conceptBody": "<h3>Elementary operations of a matrix</h3><p>Any of the following operations is called an elementary transformation.</p><p>(i) Interchanging any two rows of the given matrix. This transformation is indicated by${{\\text{R}}_{\\text{ij}}}$, if the ith</p><p>row are interchanged.</p><p>or denoted by ${{\\text{R}}_{\\text{i}}}\\xrightarrow{{}}{{\\text{R}}_{\\text{j}}}$</p><p>(ii) The multiplying every element of any row of the given matrix by a non-zero number. This transformation is indicated by ${{R}_{i}}(k)$, if the multiplication of the ith row by a constant $k(k\\ne 0)$</p><p>or $\\text{denoted by }{{\\text{R}}_{\\text{i}}}\\xrightarrow{{}}\\text{k}\\cdot {{\\text{R}}_{\\text{j}}}$</p><p>(iii) Addition of a constant multiple of the elements of any row to the corresponding elements of any other row. This transformation is indicated by${{R}_{ij}}(k)$, if the addition of the ith row to the elements of the $j$ th row multiplied by constant $k(k\\ne 0)$.</p><p>or $\\quad $ denoted by ${{\\text{R}}_{\\text{i}}}\\xrightarrow{{}}{{\\text{R}}_{\\text{i}}}+\\text{k}{{\\text{R}}_{\\text{j}}}$</p><p><strong>Note: </strong>Similarly, we can deline the three column operations. ${{\\text{C}}_{\\text{ij}}}\\left( {{\\text{C}}_{\\text{i}}}\\leftarrow {{\\text{C}}_{\\text{j}}} \\right)\\cdot {{\\text{C}}_{\\text{i}}}(\\text{k})\\left( {{\\text{C}}_{\\text{i}}}\\to \\text{k}{{\\text{C}}_{\\text{i}}} \\right)$ and ${{\\text{C}}_{\\text{ij}}}(\\text{k})\\left( {{\\text{C}}_{\\text{i}}}\\to {{\\text{C}}_{\\text{i}}}+\\text{k}{{\\text{C}}_{\\text{j}}} \\right)$.</p><p>To compute the Inverse of a Matrix from elementary Row Transformation:</p><p>If $\\text{A}$ is reduced to I by elementary row (L.H.S.) transformation, then suppose I is reduced to $\\text{P}$ (R.H.S.) and not change $\\text{A}$ in R.H.S.</p><p>i.e., $\\text{A }=\\text{IA}$</p><p>After transformation I = PA</p><p>then $\\text{P}$ is the inverse of $\\text{A}$</p><p>$\\therefore \\quad $ $\\text{P}={{\\text{A}}^{-1}}$</p>",
+      "position": 1,
+      "qcConcept": "66a0dd95c03b9dcaf1afebb6"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f662d384bfb4a53825b",
+      "title": "The inverse of $\\left[\\begin{array}{cc}2 & -3 \\\\ -4 & 2\\end{array}\\right]$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53825c",
+      "title": "The inverse matrix of $\\left[\\begin{array}{lll}0 & 1 & 2 \\\\ 1 & 2 & 3 \\\\ 3 & 1 & 1\\end{array}\\right]$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53825d",
+      "title": "If a matrix $A$ is such that $3 A^3+2 A^2+5 A+I=0$, then its inverse is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53825e",
+      "title": "If $A=\\left[\\begin{array}{lll}3 & -3 & 4 \\\\ 2 & -3 & 4 \\\\ 0 & -1 & 1\\end{array}\\right]$ then $A^{-1}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53825f",
+      "title": "For two invertible matrices $A$ and $B$ of suitable orders, the value of $(A B)^{-1}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538260",
+      "title": "If $A^2-A+I=0$, then $A^{-1}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538261",
+      "title": "Inverse of the matrix $\\left[\\begin{array}{cc}\\cos 2 \\theta & -\\sin 2 \\theta \\\\ \\sin 2 \\theta & \\cos 2 \\theta\\end{array}\\right]$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

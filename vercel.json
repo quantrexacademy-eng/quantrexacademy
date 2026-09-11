@@ -1,5 +1,8 @@
 {
   "version": 2,
+  "git": {
+    "deploymentEnabled": false
+  },
   "buildCommand": null,
   "outputDirectory": ".",
   "headers": [
@@ -40,6 +43,13 @@
       "source": "/data/banks/(.*).json",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/data/banks/chapters/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=2592000" },
+        { "key": "CDN-Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=2592000" }
       ]
     },
     {
@@ -157,6 +167,24 @@
       "source": "/",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/app.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/login.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/pwa-register.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate" }
       ]
     },
     {

@@ -1,0 +1,1702 @@
+{
+  "testId": "tst-19g61mod5iz1g",
+  "title": "Permutation and Combination - Chapter Test",
+  "type": "chapter",
+  "section": "Permutation and Combination",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Mathematics",
+  "isUpcoming": false,
+  "liveAt": "2026-08-01T13:30:00.000Z",
+  "status": "ok",
+  "analysisId": "8cada764-18f3-40f3-b3f3-8683066019fb",
+  "questions_count": 25,
+  "solutions_count": 25,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g61mod5iz1g",
+    "defaultLanguage": "en",
+    "description": "Questions From All Topics of The Chapter",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-01T13:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 100,
+    "maxNegMarks": 25,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 80,
+        "maxNegMarks": 20,
+        "timeAllotted": 2880000,
+        "totalQuestions": 20,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msa2x2cm",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of natural numbers which are less than $2 \\cdot 10^8$ and which can be written by means of the digits 1 and 2 is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>772</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>870</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>900</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>766</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>We need to count natural numbers that are less than $2 \\cdot 10^8$ and use only the digits 1 and 2. So numbers like 1, 2, 11, 12, 21, 22, and so on up to 122222222.</p>\n<p>Let us count these based on how many digits they have.</p>\n<p><b>One-digit numbers:</b> We can use either 1 or 2. That gives us $2$ numbers.</p>\n<p><b>Two-digit numbers:</b> Each of the two places can be filled with 1 or 2. So there are $2 \\times 2 = 2^2$ such numbers.</p>\n<p>Following the same idea, three-digit numbers give $2^3$, and this pattern continues. Eight-digit numbers made using only 1 and 2 give $2^8$ numbers.</p>\n<p>Now think about nine-digit numbers. The value $2 \\cdot 10^8$ is a nine-digit number starting with 2. Any nine-digit number that starts with 1 will surely be smaller than $2 \\cdot 10^8$. Since the first digit is fixed as 1, the remaining eight places can each be 1 or 2. That gives another $2^8$ numbers.</p>\n<p>Nine-digit numbers starting with 2 would be equal to or greater than $2 \\cdot 10^8$, so we do not include those.</p>\n<p>Adding up all these counts:</p>\n<p>$$ 2+2^2+2^3+\\ldots +2^8+2^8=\\frac{2\\left(2^8-1\\right)}{2-1}+2^8=2^9-2+2^8=766 $$</p>\n<p>Here the first part uses the sum of a geometric series, and the extra $2^8$ comes from the nine-digit numbers starting with 1.</p>\n<p>Hence (D) is the correct answer.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$2 \\cdot 10^8$ से छोटी उन प्राकृत संख्याओं की संख्या, जिन्हें अंक 1 और 2 की सहायता से लिखा जा सकता है, है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>772</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>870</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>900</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>766</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "counting-principle",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msa31lid",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of ways in which a mixed double game can be arranged amongst 9 married couples if no husband and wife play in the same game is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>756</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1512</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3024</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>In a mixed double game, we need $2$ men and $2$ women.</p>\n<p>There are $9$ married couples, so there are $9$ husbands and $9$ wives.</p>\n<p>First choose $2$ husbands from $9$ husbands:</p>\n<p>$$ {}^9C_2 = 36 $$</p>\n<p>Now, the wives of these $2$ husbands cannot be chosen, because no husband and wife should play in the same game.</p>\n<p>So from the $9$ wives, we cannot choose $2$ wives. That leaves:</p>\n<p>$$ 9 - 2 = 7 $$</p>\n<p>women available.</p>\n<p>Choose $2$ women from these $7$ women:</p>\n<p>$$ {}^7C_2 = 21 $$</p>\n<p>Now we have $2$ men and $2$ women. They can be paired into two mixed doubles teams in $2$ ways.</p>\n<p>So the total number of ways is:</p>\n<p>$$ {}^9C_2 \\times {}^7C_2 \\times 2 $$</p>\n<p>$$ = 36 \\times 21 \\times 2 $$</p>\n<p>$$ = 1512 $$</p>\n<p>So the correct option is:</p>\n<p>$$ \\boxed{1512} $$</p>\n<p>Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>9 विवाहित जोड़ों के बीच एक मिश्रित युगल (mixed double) खेल को व्यवस्थित करने के तरीकों की संख्या, यदि कोई भी पति और पत्नी एक ही खेल में नहीं खेलते हैं, है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>756</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1512</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3024</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "conditional-combinations",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msa35z7s",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>There are 20 persons among whom two are brothers. The number of ways in which we can arrange them around a circle so that there is exactly one person between the brothers is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>19!</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\times 18!$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2! \\times 17!$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "\n<p>When we arrange things in a circle, the number of ways to arrange $n$ people is $(n-1)!$. This is because in a circle there is no fixed starting point, so one position is treated as reference. So the $18$ persons can be arranged in $(18-1)! = 17!$ ways.</p>\n<p>Now once these $18$ persons are seated in a circle, they create gaps between them. Since it is a circle, $18$ persons create exactly $18$ gaps between neighbouring persons.</p>\n<p>Here is the important part. We want exactly one person to sit between the two brothers. So the two brothers must sit on either side of one already-seated person. Each of the $18$ seated persons has one person on their left and one on their right. So there are $18$ such spots where the brothers can sit on both sides of a person, keeping exactly one person between them.</p>\n<p>The two brothers can also switch places between themselves. This can be done in $2!$ ways.</p>\n<p>Putting all of this together, the total number of arrangements is</p>\n<p>$$(17!)(18)(2!) = 2(18!)$$</p>\n<p>Hence (B) is the correct answer.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>20 व्यक्ति हैं जिनमें से दो भाई हैं। उन तरीकों की संख्या, जिनमें हम उन्हें एक वृत्त के चारों ओर इस प्रकार व्यवस्थित कर सकते हैं कि भाइयों के बीच ठीक एक व्यक्ति हो, है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>19!</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\times 18!$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2! \\times 17!$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "circular-permutations",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msa3hplf",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of ways of selecting 10 balls out of an unlimited number of white, red, blue and green balls is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>270</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>84</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>286</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>86</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>We have unlimited balls of 4 colours: white, red, blue and green.</p>\n<p>Suppose we select:</p>\n<ul>\n<li><p>$w$ white balls</p></li>\n<li><p>$r$ red balls</p></li>\n<li><p>$b$ blue balls</p></li>\n<li><p>$g$ green balls</p></li>\n</ul>\n<p>Since we have to select 10 balls in total,</p>\n<p>$$ w+r+b+g=10 $$</p>\n<p>Here $w,r,b,g$ are non-negative integers because we may select zero balls of any colour also.</p>\n<p>So the problem becomes:</p>\n<p>Find the number of non-negative integral solutions of</p>\n<p>$$ w+r+b+g=10 $$</p>\n<p>Using the NCERT result, the number of non-negative solutions of</p>\n<p>$$ x_1+x_2+\\cdots+x_r=n $$</p>\n<p>is</p>\n<p>$$ {}^{n+r-1}C_{r-1} $$</p>\n<p>Here, $n=10$ and $r=4$.</p>\n<p>So the number of ways is</p>\n<p>$$ {}^{10+4-1}C_{4-1} = {}^{13}C_3 $$</p>\n<p>Now,</p>\n<p>$$ {}^{13}C_3=\\frac{13 \\times 12 \\times 11}{3 \\times 2 \\times 1}=286 $$</p>\n<p>So the correct answer is</p>\n<p>$$ \\boxed{286} $$</p>\n<p>Option C is correct.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>सफेद, लाल, नीली और हरी गेंदों की असीमित संख्या में से 10 गेंदों को चुनने के तरीकों की संख्या है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>270</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>84</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>286</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>86</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "distribution-of-identical-objects",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msa3n3sf",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of proper divisors of 1800 which are also divisible by 10, is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>18</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>34</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>27</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>$1800$ can be written in prime factor form as</p>\n<p>$$ 1800 = 18 \\times 100 = 2 \\times 3^2 \\times 2^2 \\times 5^2 $$</p>\n<p>So,</p>\n<p>$$ 1800 = 2^3 \\times 3^2 \\times 5^2 $$</p>\n<p>A divisor of $1800$ will be of the form</p>\n<p>$$ 2^a \\times 3^b \\times 5^c $$</p>\n<p>where</p>\n<p>$$ a = 0,1,2,3 $$</p>\n<p>$$ b = 0,1,2 $$</p>\n<p>$$ c = 0,1,2 $$</p>\n<p>Now, the divisor must also be divisible by $10$.</p>\n<p>Since</p>\n<p>$$ 10 = 2 \\times 5 $$</p>\n<p>the divisor must contain at least one factor $2$ and one factor $5$.</p>\n<p>So,</p>\n<p>$$ a = 1,2,3 $$</p>\n<p>and</p>\n<p>$$ c = 1,2 $$</p>\n<p>while</p>\n<p>$$ b = 0,1,2 $$</p>\n<p>Number of such divisors:</p>\n<p>$$ 3 \\times 3 \\times 2 = 18 $$</p>\n<p>But these $18$ divisors include $1800$ itself.</p>\n<p>Since the question asks for proper divisors, we exclude $1800$.</p>\n<p>So the number of proper divisors divisible by $10$ is</p>\n<p>$$ 18 - 1 = 17 $$</p>\n<p>Hence the correct option is:</p>\n<p>$$ \\boxed{\\text{Option D: none of these}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>1800 के ऐसे उचित भाजकों (proper divisors) की संख्या जो 10 से भी विभाज्य हैं, है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>18</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>34</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>27</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "divisibility-of-numbers",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msa3shm5",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let $A = \\{ x \\mid x$ be a prime number and $x &lt; 30\\}$. The number of different rational numbers whose numerator and denominator belong to $A$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>90</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>180</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>91</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>First, let us list out all the elements of set $A$. We need all prime numbers that are less than 30.</p>\n<p>These primes are: $A=\\{2,3,5,7,11,13,17,19,23,29\\}$. So set $A$ has 10 elements.</p>\n<p>Now, we want to form rational numbers of the form $\\dfrac{\\text{numerator}}{\\text{denominator}}$, where both the numerator and the denominator are picked from set $A$.</p>\n<p>When the numerator and denominator are two <b>different</b> primes, we are choosing 2 numbers from the 10 primes, and the order matters. This is because $\\dfrac{2}{3}$ and $\\dfrac{3}{2}$ are two different rational numbers.</p>\n<p>Since order matters here, we use permutations. The number of such fractions is $^{10}P_2$.</p>\n<p>Let us find this value:</p>\n<p>$$^{10}P_2 = 10 \\times 9 = 90$$</p>\n<p>Now think about the case when the numerator and denominator are the <b>same</b> prime. For example, $\\dfrac{2}{2}, \\dfrac{3}{3}, \\dfrac{5}{5}$, and so on. Every one of these equals $1$.</p>\n<p>So no matter which prime we pick, we always get the same rational number, which is $1$. That gives us just <b>one</b> extra rational number.</p>\n<p>Adding this single number to our earlier count:</p>\n<p>$$^{10}P_2 + 1 = 90 + 1 = 91$$</p>\n<p>So the total number of different rational numbers is $91$. Hence, option (C) is the correct answer.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना $A = \\{ x \\mid x$ एक अभाज्य संख्या है और $x &lt; 30\\}$। उन विभिन्न परिमेय संख्याओं की संख्या जिनके अंश और हर $A$ से संबंधित हैं, है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>90</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>180</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>91</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "number-of-permutations",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msa41b52",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A teacher takes 3 children from her class to the zoo at a time as often as she can, but she does not take the same three children to the zoo more than once. She finds that she goes to the zoo 84 times more than a particular child goes to the zoo. The number of children in her class is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>12</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>10</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>60</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Suppose there are $n$ children in the class.</p>\n<p>The teacher takes $3$ children at a time, and she never repeats the same group of $3$ children.</p>\n<p>So, the total number of zoo trips is the number of ways of choosing $3$ children from $n$ children:</p>\n<p>$$ {}^nC_3 $$</p>\n<p>Now take one particular child.</p>\n<p>For this child to go to the zoo, the teacher must choose $2$ more children from the remaining $n-1$ children.</p>\n<p>So, the number of times this particular child goes to the zoo is:</p>\n<p>$$ {}^{n-1}C_2 $$</p>\n<p>It is given that the teacher goes to the zoo $84$ times more than that particular child.</p>\n<p>So,</p>\n<p>$$ {}^nC_3 - {}^{n-1}C_2 = 84 $$</p>\n\n<p>$$ \\frac{n(n-1)(n-2)}{6}-\\frac{(n-1)(n-2)}{2}=84 $$</p>\n\n<p>$$ \\frac{(n-1)(n-2)}{6}(n-3)=84 $$</p>\n\n<p>$$ \\frac{(n-1)(n-2)(n-3)}{6}=84 $$</p>\n<p>This means:</p>\n<p>$$ {}^{n-1}C_3=84 $$</p>\n<p>Now,</p>\n<p>$$ {}^9C_3=\\frac{9 \\times 8 \\times 7}{6}=84 $$</p>\n<p>So,</p>\n<p>$$ n-1=9 $$</p>\n<p>Hence,</p>\n<p>$$ n=10 $$</p>\n<p>The number of children in the class is $\\boxed{10}$.</p>\n<p>Correct option: B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक शिक्षिका अपनी कक्षा से एक बार में 3 बच्चों को जितनी बार संभव हो चिड़ियाघर ले जाती है, लेकिन वह उन्हीं तीन बच्चों के समूह को एक से अधिक बार चिड़ियाघर नहीं ले जाती है। वह पाती है कि वह किसी एक विशेष बच्चे के चिड़ियाघर जाने की तुलना में 84 बार अधिक चिड़ियाघर जाती है। उसकी कक्षा में बच्चों की संख्या है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>12</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>10</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>60</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "conditional-combinations",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msa4b4mf",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A test paper has four sections A, B, C, D. Section A, B, C, D have 7, 4, 5, 7 questions respectively. Each question in section C has alternate number of ways in which student can attempt the question paper, taking at least two questions from each section is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2^{22}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(2^7 - 1)^2 (2^4 - 1)(2^5 - 1)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(2^7 - 8)^2 (2^4 - 5)(3^5 - 1)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(2^7 - 8)^2 (2^4 - 5)(3^5 - 11)$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For sections A, B and D, each question can either be attempted or not attempted.</p>\n<p>If a section has $n$ questions, then total ways of choosing questions from that section is $2^n$.</p>\n<p>But the student must attempt at least two questions from each section.</p>\n<p>So we subtract the cases where the student attempts $0$ questions or exactly $1$ question.</p>\n<p>For a section with $n$ questions:</p>\n<p>$$ \\text{Ways} = 2^n - \\binom{n}{0} - \\binom{n}{1} $$</p>\n<p>$$ = 2^n - 1 - n $$</p>\n<p>For section A, there are $7$ questions:</p>\n<p>$$ 2^7 - 1 - 7 = 2^7 - 8 $$</p>\n<p>For section B, there are $4$ questions:</p>\n<p>$$ 2^4 - 1 - 4 = 2^4 - 5 $$</p>\n<p>For section D, there are $7$ questions:</p>\n<p>$$ 2^7 - 8 $$</p>\n<p>Now, section C has $5$ questions, and each question has an alternate.</p>\n<p>So for each question in section C, the student has $3$ choices:</p>\n<ol>\n<li><p>Not attempt the question  </p></li>\n<li><p>Attempt the main question  </p></li>\n<li><p>Attempt the alternate question  </p></li>\n</ol>\n<p>So total ways for section C are:</p>\n<p>$$ 3^5 $$</p>\n<p>Again, the student must attempt at least two questions from section C.</p>\n<p>Cases to subtract:</p>\n<p>No question attempted:</p>\n<p>$$ 1 $$</p>\n<p>Exactly one question attempted:</p>\n<p>Choose $1$ question out of $5$, and for that question choose either main or alternate:</p>\n<p>$$ \\binom{5}{1} \\times 2 = 10 $$</p>\n<p>So valid ways for section C are:</p>\n<p>$$ 3^5 - 1 - 10 = 3^5 - 11 $$</p>\n<p>Hence total number of ways is:</p>\n<p>$$ (2^7 - 8)(2^4 - 5)(3^5 - 11)(2^7 - 8) $$</p>\n<p>$$ = (2^7 - 8)^2(2^4 - 5)(3^5 - 11) $$</p>\n<p>So the correct option is:</p>\n<p>$$ \\boxed{\\text{Option D}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक प्रश्न पत्र में चार खंड A, B, C, D हैं। खंड A, B, C, D में क्रमशः 7, 4, 5, 7 प्रश्न हैं। खंड C के प्रत्येक प्रश्न का एक विकल्प (alternate) है। छात्र द्वारा प्रश्न पत्र को हल करने के कुल तरीकों की संख्या, जबकि उसे प्रत्येक खंड से कम से कम दो प्रश्न हल करने हैं, है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2^{22}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(2^7 - 1)^2 (2^4 - 1)(2^5 - 1)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(2^7 - 8)^2 (2^4 - 5)(3^5 - 1)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(2^7 - 8)^2 (2^4 - 5)(3^5 - 11)$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "conditional-combinations",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msa4rruj",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of ways in which 3 children can distribute 10 tickets out of 15 consecutively numbered tickets among themselves such that they get consecutive blocks of 5, 3 and 2 tickets is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ {}^{8}C_{5} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ {}^{8}C_{5} \\; 3! $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ {}^{8}C_{5} \\; (3!)^2 $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Treat each consecutive block as one unit.</p>\n<p>Suppose the three blocks of lengths $5, 3, 2$ are placed in a fixed order, say</p>\n<p>$$ (5\\text{-block}),\\ (3\\text{-block}),\\ (2\\text{-block}) $$</p>\n<p>Since only $10$ tickets are used out of $15$, there are $5$ tickets left unused.</p>\n<p>These $5$ unused tickets can be placed in the gaps:</p>\n<ul>\n<li><p>before the first block,</p></li>\n<li><p>between the first and second block,</p></li>\n<li><p>between the second and third block,</p></li>\n<li><p>after the third block.</p></li>\n</ul>\n<p>So we have to distribute $5$ identical unused tickets into $4$ gaps.</p>\n<p>The number of ways is</p>\n<p>$$ {}^{5+4-1}C_{4-1} = {}^{8}C_3 = {}^{8}C_5 $$</p>\n<p>Now, the blocks of sizes $5, 3, 2$ can be arranged among themselves in</p>\n<p>$$ 3! $$</p>\n<p>ways.</p>\n<p>Also, the three children are distinct, and the three blocks can be assigned to them in</p>\n<p>$$ 3! $$</p>\n<p>ways.</p>\n<p>Hence the total number of ways is</p>\n<p>$$ {}^{8}C_{5} \\times 3! \\times 3! $$</p>\n<p>$$ = {}^{8}C_{5}(3!)^2 $$</p>\n<p>So the correct option is</p>\n<p>$$ \\boxed{{}^{8}C_{5}(3!)^2} $$</p>\n<p>Option C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>उन तरीकों की संख्या जिनमें 3 बच्चे 15 लगातार संख्या वाले टिकटों में से 10 टिकटों को आपस में इस प्रकार बाँट सकते हैं कि उन्हें 5, 3 और 2 टिकटों के लगातार ब्लॉक प्राप्त हों, है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ {}^{8}C_{5} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ {}^{8}C_{5} \\; 3! $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ {}^{8}C_{5} \\; (3!)^2 $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "conditional-combinations",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msa50d5k",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The total number of eight-digit numbers, the sum of whose digits is odd, is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$9 \\times 10^7$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$5 \\times 10^7$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$45 \\times 10^6$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$55 \\times 10^6$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>An eight-digit number has 8 places to fill. Let's fill them one by one, starting from the leftmost digit.</p>\n<p>The first digit (the leftmost one) cannot be zero, otherwise, it would no longer be an eight-digit number. This gives us 9 possible choices for the first digit (from 1 to 9).</p>\n<p>For the next six digits, there are no restrictions. We can choose any digit from 0 to 9 for each of these places. Since there are 10 possible digits (0, 1, 2, 3, 4, 5, 6, 7, 8, 9), each of these six places can be filled in 10 different ways. </p>\n<p>Now, let's think about the very last digit. Before we fill it, the sum of the first seven digits will be either an even number or an odd number. We want the total sum of all eight digits to be odd. </p>\n<p>We can split this into two simple cases based on the first seven digits:</p>\n<ul>\n<li><p>If the sum of the first seven digits is even, we need to add an odd digit to make the final sum odd. The available odd digits are 1, 3, 5, 7, and 9. This gives us exactly 5 choices for the last digit.</p></li>\n<li><p>If the sum of the first seven digits is odd, we need to add an even digit to keep the final sum odd. The available even digits are 0, 2, 4, 6, and 8. Again, this gives us exactly 5 choices for the last digit.</p></li>\n</ul>\n<p>Notice how, in either situation, we are left with exactly 5 valid choices for the eighth digit. </p>\n<p>Now, we just multiply the number of choices for each of the eight places together. </p>\n<p>Total number of such numbers = (Choices for 1st digit) $\\times$ (Choices for the next 6 digits) $\\times$ (Choices for the last digit)</p>\n<p>$$9 \\times (10 \\times 10 \\times 10 \\times 10 \\times 10 \\times 10) \\times 5$$</p>\n\n<p>$$=9 \\times 10^6 \\times 5$$</p>\n\n<p>$$45 \\times 10^6$$</p>\n<p>This means there are $45 \\times 10^6$ eight-digit numbers whose digits add up to an odd sum. </p>\n<p>Option C is the correct answer.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>आठ अंकों की उन कुल संख्याओं की संख्या, जिनके अंकों का योग विषम है, है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$9 \\times 10^7$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$5 \\times 10^7$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$45 \\times 10^6$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$55 \\times 10^6$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "sum-of-numbers",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msa52zl4",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Nine hundred distinct N-digit numbers are to be formed by using 6, 8 and 9 only. The smallest value of N for which this is possible, is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>6</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>7</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>8</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>9</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For an $N$-digit number, each digit can be chosen from only $6, 8,$ and $9$.</p>\n<p>So, for each digit, there are $3$ choices.</p>\n<p>Hence, the total number of distinct $N$-digit numbers possible is</p>\n<p>$$ 3^N $$</p>\n<p>We need at least $900$ distinct numbers.</p>\n<p>Now check powers of $3$:</p>\n<p>$$ 3^6 = 729 $$</p>\n<p>This is less than $900$, so $N=6$ is not enough.</p>\n<p>Next,</p>\n<p>$$ 3^7 = 2187 $$</p>\n<p>This is more than $900$, so $N=7$ is enough.</p>\n<p>Hence, the smallest possible value of $N$ is</p>\n<p>$$ \\boxed{7} $$</p>\n<p>So, the correct option is <strong>Option B</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>केवल 6, 8 और 9 का उपयोग करके नौ सौ भिन्न N-अंकीय संख्याएँ बनाई जानी हैं। N का सबसे छोटा मान जिसके लिए यह संभव है, है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>6</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>7</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>8</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>9</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "counting-principle",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msa593f9",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let $y$ be an element of the set $A = \\{1, 2, 3, 5, 6, 10, 15, 30\\}$ and $x_1, x_2, x_3$ be positive integers such that $x_1 x_2 x_3 = y$, then the number of positive integral solutions of $x_1 x_2 x_3 = y$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>64</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>27</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>81</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>To find the total number of positive integral solutions for the equation $x_1 x_2 x_3 = y$, where $y$ is an element of the set $A = \\{1, 2, 3, 5, 6, 10, 15, 30\\}$, we can start by looking closely at the set $A$.</p>\n<p>Notice that the numbers in set $A$ are exactly all the factors (divisors) of $30$. </p>\n<p>The prime factorization of $30$ is:</p>\n<p>$$30 = 2^1 \\times 3^1 \\times 5^1$$</p>\n<p>Since $y$ belongs to the set $A$, $y$ must be a factor of $30$. And because $x_1 x_2 x_3 = y$, the product $x_1 x_2 x_3$ must also be a factor of $30$. </p>\n<p>This means the positive integers $x_1, x_2,$ and $x_3$ can only be made up of the prime factors $2, 3,$ and $5$. Let's express them as:</p>\n<p>$x_1 = 2^{a_1} \\times 3^{b_1} \\times 5^{c_1}$</p>\n<p>$x_2 = 2^{a_2} \\times 3^{b_2} \\times 5^{c_2}$</p>\n<p>$x_3 = 2^{a_3} \\times 3^{b_3} \\times 5^{c_3}$</p>\n<p>When we multiply them, the powers add up:</p>\n<p>$$x_1 x_2 x_3 = 2^{a_1 + a_2 + a_3} \\times 3^{b_1 + b_2 + b_3} \\times 5^{c_1 + c_2 + c_3}$$</p>\n<p>For this product to divide $30$, the highest power of $2, 3,$ or $5$ cannot exceed $1$. This gives us a simple condition for the exponents:</p>\n<p>$a_1 + a_2 + a_3 \\leq 1$</p>\n<p>$b_1 + b_2 + b_3 \\leq 1$</p>\n<p>$c_1 + c_2 + c_3 \\leq 1$</p>\n<p>Let's look at the first condition for the prime factor $2$, which is $a_1 + a_2 + a_3 \\leq 1$. Since $a_1, a_2,$ and $a_3$ are non-negative integers, their sum can only be $0$ or $1$.</p>\n<ul>\n<li><p><strong>If the sum is 0:</strong> The only way to get this is $(0, 0, 0)$. This gives <strong>1 solution</strong>.</p></li>\n<li><p><strong>If the sum is 1:</strong> The possible ways are $(1, 0, 0)$, $(0, 1, 0)$, and $(0, 0, 1)$. This gives <strong>3 solutions</strong>.</p></li>\n</ul>\n<p>So, there are $1 + 3 = 4$ ways to distribute the powers of $2$ among $x_1, x_2,$ and $x_3$.</p>\n<p>By the exact same reasoning:</p>\n<ul>\n<li><p>The condition $b_1 + b_2 + b_3 \\leq 1$ gives <strong>4 ways</strong> to distribute the powers of $3$.</p></li>\n<li><p>The condition $c_1 + c_2 + c_3 \\leq 1$ gives <strong>4 ways</strong> to distribute the powers of $5$.</p></li>\n</ul>\n<p>Since the choices for the powers of $2, 3,$ and $5$ are completely independent of each other, we can use the fundamental principle of counting and multiply the possibilities together:</p>\n<p>$$\\text{Total number of solutions} = 4 \\times 4 \\times 4 = 64$$</p>\n<p>There are $64$ positive integral solutions that satisfy the given condition.</p>\n<p><strong>Correct Option: Option A</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना $y$ समुच्चय $A = \\{1, 2, 3, 5, 6, 10, 15, 30\\}$ का एक अवयव है और $x_1, x_2, x_3$ ऐसे धनात्मक पूर्णांक हैं कि $x_1 x_2 x_3 = y$ है, तब $x_1 x_2 x_3 = y$ के धनात्मक पूर्णांक हलों की संख्या है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>64</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>27</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>81</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "division-and-distribution-of-distinct-objects",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msa5tr0o",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of four-digit natural numbers in which odd digits occur at even places and even digits occur at odd places and digits are in increasing order from left to right,</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>is less than 36</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>is greater than 100</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>lies between 60 and 100</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Let the four-digit number be $\\overline{abcd}$.</p>\n<p>Odd places are $1^{\\text{st}}$ and $3^{\\text{rd}}$, so $a$ and $c$ must be even digits.</p>\n<p>Even places are $2^{\\text{nd}}$ and $4^{\\text{th}}$, so $b$ and $d$ must be odd digits.</p>\n<p>Also, digits are in increasing order from left to right, so</p>\n<p>$$ a < b < c < d $$</p>\n<p>Since it is a four-digit number, $a\\neq 0$.</p>\n<p>Now count possible values of $c$, the third digit. It must be even.</p>\n<p>For $c=4$:</p>\n<p>$b$ can be $3$, and then $a=2$.</p>\n<p>$d$ can be $5,7,9$.</p>\n<p>So, $3$ numbers.</p>\n<p>For $c=6$:</p>\n<p>$b$ can be $3$ or $5$.</p>\n<p>If $b=3$, then $a=2$.</p>\n<p>If $b=5$, then $a=2,4$.</p>\n<p>So, $3$ choices for $(a,b)$.</p>\n<p>$d$ can be $7,9$, so total:</p>\n<p>$$ 3\\times 2=6 $$</p>\n<p>For $c=8$:</p>\n<p>$b$ can be $3,5,7$.</p>\n<p>If $b=3$, then $a=2$.</p>\n<p>If $b=5$, then $a=2,4$.</p>\n<p>If $b=7$, then $a=2,4,6$.</p>\n<p>So, $1+2+3=6$ choices for $(a,b)$.</p>\n<p>$d$ can only be $9$, so total:</p>\n<p>$$ 6\\times 1=6 $$</p>\n<p>Total number of such numbers is</p>\n<p>$$ 3+6+6=15 $$</p>\n<p>Since $15$ is less than $36$, the correct option is:</p>\n<p>$$ \\boxed{\\text{Option A}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चार अंकों की उन प्राकृतिक संख्याओं की संख्या, जिनमें विषम अंक सम स्थानों पर और सम अंक विषम स्थानों पर आते हैं, तथा अंक बाएँ से दाएँ बढ़ते क्रम में होते हैं,</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>36 से कम है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>100 से अधिक है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>60 और 100 के बीच है</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "counting-principle",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msaalofq",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of ordered pairs (m, n) (m, n &isin; {1, 2, ..., 20}) such that $3^m + 7^n$ is a multiple of 10, is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>100</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>200</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$4! \\times 4!$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>To find when the expression $3^m + 7^n$ is a multiple of $10$, we need its unit digit to be $0$. This means the sum of the unit digits of $3^m$ and $7^n$ must be exactly $10$. </p>\n<p>Let us look at the pattern of the unit digits for the powers of $3$:</p>\n<p>$3^1 = 3 \\Rightarrow$ unit digit is $3$</p>\n<p>$3^2 = 9 \\Rightarrow$ unit digit is $9$</p>\n<p>$3^3 = 27 \\Rightarrow$ unit digit is $7$</p>\n<p>$3^4 = 81 \\Rightarrow$ unit digit is $1$</p>\n<p>$3^5 = 243 \\Rightarrow$ unit digit is $3$ again.</p>\n<p>The unit digits of powers of $3$ follow a repeating cycle of four numbers: $3, 9, 7, 1$. Since $m$ takes values from $1$ to $20$, and there are $20$ numbers in total, each of these unit digits will appear exactly $\\frac{20}{4} = 5$ times.</p>\n<p>Now let us check the pattern of the unit digits for the powers of $7$:</p>\n<p>$7^1 = 7 \\Rightarrow$ unit digit is $7$</p>\n<p>$7^2 = 49 \\Rightarrow$ unit digit is $9$</p>\n<p>$7^3 = 343 \\Rightarrow$ unit digit is $3$</p>\n<p>$7^4 = 2401 \\Rightarrow$ unit digit is $1$</p>\n<p>$7^5 = 16807 \\Rightarrow$ unit digit is $7$ again.</p>\n<p>The unit digits for powers of $7$ also follow a repeating cycle of four numbers: $7, 9, 3, 1$. Just like before, since $n$ takes values from $1$ to $20$, each of these unit digits will appear exactly $5$ times.</p>\n<p>We are looking for combinations where the sum of the unit digits of $3^m$ and $7^n$ equals $10$. By matching the unit digits from our lists, we get four possible cases:</p>\n<ol>\n<li>The unit digit of $3^m$ is $3$ and the unit digit of $7^n$ is $7$.</li>\n</ol>\n<p>There are $5$ values of $m$ that give a unit digit of $3$, and $5$ values of $n$ that give a unit digit of $7$. The number of possible pairs is $5 \\times 5 = 25$.</p>\n<ol start=\"2\">\n<li>The unit digit of $3^m$ is $9$ and the unit digit of $7^n$ is $1$.</li>\n</ol>\n<p>There are $5$ values of $m$ giving $9$, and $5$ values of $n$ giving $1$. The number of possible pairs is $5 \\times 5 = 25$.</p>\n<ol start=\"3\">\n<li>The unit digit of $3^m$ is $7$ and the unit digit of $7^n$ is $3$.</li>\n</ol>\n<p>There are $5$ values of $m$ giving $7$, and $5$ values of $n$ giving $3$. The number of possible pairs is $5 \\times 5 = 25$.</p>\n<ol start=\"4\">\n<li>The unit digit of $3^m$ is $1$ and the unit digit of $7^n$ is $9$.</li>\n</ol>\n<p>There are $5$ values of $m$ giving $1$, and $5$ values of $n$ giving $9$. The number of possible pairs is $5 \\times 5 = 25$.</p>\n<p>Adding all these possibilities together gives the total number of valid ordered pairs $(m, n)$:</p>\n<p>$$25 + 25 + 25 + 25 = 100$$</p>\n<p>Option A is the correct choice.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>क्रमित युग्मों (m, n) (m, n &isin; {1, 2, ..., 20}) की संख्या, जिसके लिए $3^m + 7^n$, 10 का गुणज है, है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>100</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>200</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$4! \\times 4!$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "counting-principle",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msaaq76k",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Number of positive integers $n$ less than 15, for which $n! + (n+1)! + (n+2)!$ is an integral multiple of 49, is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>3</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>4</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>5</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>6</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>$$E = n! + (n+1)! + (n+2)!$$</p>\n\n<p>$$E = n! + n!(n+1) + n!(n+1)(n+2)$$</p>\n\n<p>$$E = n! [1 + (n+1) + (n+1)(n+2)]$$</p>\n<p>$$E = n! [n + 2 + n^2 + 3n + 2]$$</p>\n<p>$$E = n! [n^2 + 4n + 4]$$</p>\n\n<p>$$E = n!(n+2)^2$$</p>\n<p>We want this expression to be an integral multiple of $49$. Since $49 = 7^2$, we need the expression $n!(n+2)^2$ to contain at least two factors of 7.</p>\n<p>Let's check the possible values of $n$. We are given that $n$ is a positive integer less than 15, which means $n$ can take values from $1$ to $14$. We can divide these values into three simple cases based on the number of 7s in $n!$:</p>\n<p><strong>Case 1: For $1 \\le n \\le 6$</strong></p>\n<p>In this range, $n!$ does not contain any multiple of 7. </p>\n<p>For $n!(n+2)^2$ to have two factors of 7, the term $(n+2)^2$ must provide them. This means $(n+2)$ itself must be a multiple of 7.</p>\n<p>The possible values for $n+2$ in this range are $3, 4, 5, 6, 7,$ and $8$.</p>\n<p>The only multiple of 7 here is 7 itself, which happens when:</p>\n<p>$$n + 2 = 7 \\implies n = 5$$</p>\n<p>So, $n = 5$ is one valid solution.</p>\n<p><strong>Case 2: For $7 \\le n \\le 13$</strong></p>\n<p>In this range, $n!$ contains exactly one factor of 7 (which comes from the number 7). </p>\n<p>For the total expression to be a multiple of $7^2$, the remaining part $(n+2)^2$ must provide at least one more factor of 7. Again, this means $(n+2)$ must be a multiple of 7.</p>\n<p>The possible values for $n+2$ in this range are $9, 10, 11, 12, 13, 14,$ and $15$.</p>\n<p>The only multiple of 7 here is 14, which happens when:</p>\n<p>$$n + 2 = 14 \\implies n = 12$$</p>\n<p>For $n=12$, $12!$ gives one 7, and $(12+2)^2 = 14^2 = 196$ gives two more 7s. This is more than enough. So, $n = 12$ is our second valid solution.</p>\n<p><strong>Case 3: For $n = 14$</strong></p>\n<p>For $n=14$, $n! = 14!$. </p>\n<p>If we write out $14!$, we can see it contains both the numbers $7$ and $14$ as factors.</p>\n<p>Since $7 \\times 14 = 98$, and $98$ is $49 \\times 2$, $14!$ itself is already a multiple of 49. </p>\n<p>Thus, for $n = 14$, the whole expression naturally becomes a multiple of 49 regardless of the $(n+2)^2$ part.</p>\n<p>So, $n = 14$ is our third valid solution.</p>\n<p>The valid values for $n$ are $5, 12,$ and $14$. </p>\n<p>There are exactly 3 such integers.</p>\n<p><strong>Correct Answer:</strong></p>\n<p>Option A</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>15 से छोटे धनात्मक पूर्णांकों $n$ की संख्या, जिनके लिए $n! + (n+1)! + (n+2)!$, 49 का एक पूर्णांकीय गुणज है, है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>3</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>4</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>5</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>6</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "factorial",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msaatrba",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the series 21, 22, 23, ..., $k-1$, $k$; the A.M. and G.M. of the first and last number exist in the given series. If '$k$' is a three digit number, then '$k$' can attain</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>5 values</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>6 values</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2 values</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>4 values</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The first number is $21$ and the last number is $k$.</p>\n<p>Their A.M. is</p>\n<p>$$ \\frac{21+k}{2} $$</p>\n<p>Since the given series contains consecutive integers, the A.M. must be an integer.  </p>\n<p>So $21+k$ must be even.</p>\n<p>Since $21$ is odd, $k$ must also be odd.</p>\n<p>Now the G.M. of $21$ and $k$ is</p>\n<p>$$ \\sqrt{21k} $$</p>\n<p>This must also be a term of the series, so it must be an integer.</p>\n<p>That means $21k$ must be a perfect square.</p>\n<p>Now,</p>\n<p>$$ 21=3 \\times 7 $$</p>\n<p>For $21k$ to be a perfect square, $k$ must be of the form</p>\n<p>$$ k=21n^2 $$</p>\n<p>Since $k$ is a three-digit number,</p>\n<p>$$ 100 \\leq 21n^2 \\leq 999 $$</p>\n<p>$$ \\frac{100}{21} \\leq n^2 \\leq \\frac{999}{21} $$</p>\n<p>$$ 4.76 \\leq n^2 \\leq 47.57 $$</p>\n<p>So possible values of $n$ are</p>\n<p>$$ n=3,4,5,6 $$</p>\n<p>This gives</p>\n<p>$$ k=21(3^2)=189 $$</p>\n<p>$$ k=21(4^2)=336 $$</p>\n<p>$$ k=21(5^2)=525 $$</p>\n<p>$$ k=21(6^2)=756 $$</p>\n<p>But $k$ must be odd for the A.M. to be an integer.</p>\n<p>So valid values of $k$ are</p>\n<p>$$ 189,\\ 525 $$</p>\n<p>Hence, $k$ can attain $2$ values.</p>\n<p>The correct option is C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>श्रेणी 21, 22, 23, ..., $k-1$, $k$ के लिए; पहली और अंतिम संख्या का समांतर माध्य (A.M.) और गुणोत्तर माध्य (G.M.) दी गई श्रेणी में विद्यमान हैं। यदि '$k$' तीन अंकों की एक संख्या है, तो '$k$' प्राप्त कर सकता है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>5 मान</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>6 मान</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2 मान</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>4 मान</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "counting-principle",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msab21v7",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of numbers that can be formed by using digits 1, 2, 3, 4, 3, 2, 1 so that odd digits always occupy odd places is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>3!4!</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>34</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>18</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>12</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>There are $7$ digits:</p>\n<p>$$1, 2, 3, 4, 3, 2, 1$$</p>\n<p>The odd digits are:</p>\n<p>$$1, 1, 3, 3$$</p>\n<p>The even digits are:</p>\n<p>$$2, 2, 4$$</p>\n<p>In a $7$-digit number, the odd places are:</p>\n<p>$$1, 3, 5, 7$$</p>\n<p>So there are exactly $4$ odd places. Since we have exactly $4$ odd digits, the digits $1,1,3,3$ must be arranged in these $4$ odd places.</p>\n<p>Number of ways to arrange $1,1,3,3$ is:</p>\n<p>$$\\frac{4!}{2!2!}=6$$</p>\n<p>Now the remaining even places are:</p>\n<p>$$2, 4, 6$$</p>\n<p>The digits $2,2,4$ must be arranged there.</p>\n<p>Number of ways to arrange $2,2,4$ is:</p>\n<p>$$\\frac{3!}{2!}=3$$</p>\n<p>So the total number of numbers is:</p>\n<p>$$6 \\times 3 = 18$$</p>\n<p>Hence, the correct option is:</p>\n<p>$$\\boxed{18}$$</p>\n<p>Option C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अंकों 1, 2, 3, 4, 3, 2, 1 का उपयोग करके बनाई जा सकने वाली उन संख्याओं की संख्या, जिनमें विषम अंक हमेशा विषम स्थानों पर आते हैं, है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>3!4!</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>34</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>18</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>12</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "conditional-permutations",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msab8gwq",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>How many numbers between 5000 and 10,000 can be formed using the digits 1, 2, 3, 4, 5, 6, 7, 8, 9 when each digit is appearing not more than once in each number?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$5 \\times {}^8P_3$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$5 \\times {}^8C_3$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$5! \\times {}^8P_3$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$5! \\times {}^8C_3$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>A number between $5000$ and $10000$ must be a $4$-digit number.</p>\n<p>Since it has to be greater than $5000$, the thousands digit can be:</p>\n<p>$$ 5, 6, 7, 8, 9 $$</p>\n<p>So, there are $5$ choices for the thousands place.</p>\n<p>After choosing the thousands digit, we have $8$ digits left. We need to fill the remaining $3$ places: hundreds, tens, and ones.</p>\n<p>Since repetition is not allowed and the order of digits matters, the number of ways is:</p>\n<p>$$ {}^8P_3 $$</p>\n<p>So, the total number of numbers is:</p>\n<p>$$ 5 \\times {}^8P_3 $$</p>\n<p>Hence, the correct option is:</p>\n<p>$$ \\boxed{5 \\times {}^8P_3} $$</p>\n<p>Option A.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अंकों 1, 2, 3, 4, 5, 6, 7, 8, 9 का उपयोग करके 5000 और 10,000 के बीच कितनी संख्याएँ बनाई जा सकती हैं, यदि प्रत्येक संख्या में कोई भी अंक एक से अधिक बार नहीं आता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$5 \\times {}^8P_3$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$5 \\times {}^8C_3$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$5! \\times {}^8P_3$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$5! \\times {}^8C_3$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "conditional-permutations",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msabj037",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>60 words can be made using all the letters of the word BHBJO, with or without meaning. If these words are written as in a dictionary, then the 49<sup>th</sup> word is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>OBBHJ</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>HBBJO</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>OBBJH</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>JBBOH</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The total number of random permutations of the letters of the word BHBJO results in $\\frac{5!}{2!}=60$ 5-letter words with or without meaning. </p>\n<p>When arranged in alphabetical order after all possible random permutations are complete, the total of 60 words can be logically partitioned in in 4 distinct sets of words $\\boldsymbol{S}_1, \\boldsymbol{S}_2, \\boldsymbol{S}_3$ and $\\boldsymbol{S}_4$ starting with alphabets $\\mathbf{B}, \\mathbf{H}, \\mathbf{J}, \\mathbf{O}$ respectively as per dictionary rule in a chart below :</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msabhelt%2F9605f0c6-79fa-41b9-9072-ba1e175142cf%2F35292a10-8da0-11f1-bcdf-79876cce5ee4%2Ffile-6y3zli1msabhelu.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msabhelt%2F9605f0c6-79fa-41b9-9072-ba1e175142cf%2F35292a10-8da0-11f1-bcdf-79876cce5ee4%2Ffile-6y3zli1msabhelu.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>From Chart 1 above we can clearly visualize the $49^{\\text {th }}$ word in dictionary to the first word in set 4 starting with $\\boldsymbol{O}$ and placing the remaining alphabets $\\mathbf{B}, \\mathbf{B}, \\mathbf{H}, \\mathbf{J}$ in that order alphabetically in position 2, 3, 4 and 5 respectively :</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>शब्द BHBJO के सभी अक्षरों का उपयोग करके 60 शब्द बनाए जा सकते हैं, जिनका कोई अर्थ हो या न हो। यदि इन शब्दों को शब्दकोश के रूप में लिखा जाता है, तो 49<sup>th</sup> शब्द है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>OBBHJ</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>HBBJO</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>OBBJH</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>JBBOH</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "number-of-permutations",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msabsi81",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A basket ball team consists of 12 pairs of twin brothers. On the first day of training, all 24 players stand in a circle in such a way that all pairs of twin brothers are neighbours. Number of ways this can be done is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(12)! \\; 2^{11}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(11)! \\; 2^{12}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(12)! \\; 2^{12}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(11)! \\; 2^{11}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>We have 12 pairs of twin brothers, which makes 24 players in total. They all stand in a circle, and the condition is that each pair of twins must stand together as neighbours.</p>\n<p>Since the twins in each pair must always stay together, it makes sense to think of each pair as a single unit or block. So instead of arranging 24 separate people, we are really arranging 12 blocks in a circle.</p>\n<p><b>Arranging the 12 pairs in a circle</b></p>\n<p>When we arrange things in a circle, the number of ways is $(n-1)!$ instead of $n!$. This is because in a circle there is no fixed starting point, so rotations of the same arrangement are counted as one.</p>\n<p>So for our 12 pairs treated as 12 units, the number of circular arrangements is</p>\n<p>$$n_1 = (12-1)! = 11!$$</p>\n<p><b>Arranging the two brothers within each pair</b></p>\n<p>Inside each pair, the two twin brothers can switch places with each other. Two people can be arranged in $2!$ ways. This freedom of swapping exists for every one of the 12 pairs.</p>\n<p>Since each pair independently has $2!$ arrangements, we multiply this for all 12 pairs:</p>\n<p>$$n_2 = \\underbrace{(2!)(2!)(2!)\\cdots(2!)}_{12 \\text{ times}} = 2^{12}$$</p>\n<p><b>Combining both counts</b></p>\n<p>To get the total number of ways, we multiply the number of circular arrangements of the pairs by the number of internal arrangements within the pairs.</p>\n<p>$$n = (11!) \\cdot 2^{12}$$</p>\n<p>So the total number of ways the players can stand in the circle with each pair of twins together is $(11!)\\,2^{12}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक बास्केटबॉल टीम में जुड़वां भाइयों के 12 जोड़े हैं। प्रशिक्षण के पहले दिन, सभी 24 खिलाड़ी एक वृत्त में इस प्रकार खड़े होते हैं कि जुड़वां भाइयों के सभी जोड़े एक-दूसरे के पड़ोसी हों। इसे करने के तरीकों की संख्या है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(12)! \\; 2^{11}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(11)! \\; 2^{12}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(12)! \\; 2^{12}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(11)! \\; 2^{11}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "circular-permutations",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrvrp9ph",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Find the number of positive integers that are divisors of atleast one of the numbers $10^{10} ; 15^7 ; 18^{11}$.</p>",
+                "options": [],
+                "answer": "435",
+                "explanation": "<p>First, let's write down the prime factorization for each of the given numbers:</p>\n<p>$$10^{10} = (2 \\cdot 5)^{10} = 2^{10} \\cdot 5^{10}$$</p>\n<p>$$15^7 = (3 \\cdot 5)^7 = 3^7 \\cdot 5^7$$</p>\n<p>$$18^{11} = (2 \\cdot 3^2)^{11} = 2^{11} \\cdot 3^{22}$$</p>\n<p>Let the sets of positive divisors of $10^{10}$, $15^7$, and $18^{11}$ be $S_1$, $S_2$, and $S_3$ respectively. </p>\n<p>To find the number of positive divisors for a number written in its prime factorization as $p^a \\cdot q^b \\cdot r^c \\dots$, we use the formula $(a+1)(b+1)(c+1)\\dots$. </p>\n\n<p>$$n(S_1) = (10+1)(10+1) = 11 \\cdot 11 = 121$$</p>\n<p>$$n(S_2) = (7+1)(7+1) = 8 \\cdot 8 = 64$$</p>\n<p>$$n(S_3) = (11+1)(22+1) = 12 \\cdot 23 = 276$$</p>\n<p>The common divisors of any two numbers are simply the divisors of their Highest Common Factor (HCF or GCD).</p>\n<ol>\n<li>Common divisors of $10^{10}$ and $15^7$:</li>\n</ol>\n<p>The HCF of $2^{10} \\cdot 5^{10}$ and $3^7 \\cdot 5^7$ is $5^7$. </p>\n<p>The number of common divisors is $n(S_1 \\cap S_2) = 7 + 1 = 8$.</p>\n<ol start=\"2\">\n<li>Common divisors of $15^7$ and $18^{11}$:</li>\n</ol>\n<p>The HCF of $3^7 \\cdot 5^7$ and $2^{11} \\cdot 3^{22}$ is $3^7$. </p>\n<p>The number of common divisors is $n(S_2 \\cap S_3) = 7 + 1 = 8$.</p>\n<ol start=\"3\">\n<li>Common divisors of $18^{11}$ and $10^{10}$:</li>\n</ol>\n<p>The HCF of $2^{11} \\cdot 3^{22}$ and $2^{10} \\cdot 5^{10}$ is $2^{10}$. </p>\n<p>The number of common divisors is $n(S_3 \\cap S_1) = 10 + 1 = 11$.</p>\n<ol start=\"4\">\n<li>Common divisors of all three numbers:</li>\n</ol>\n<p>The HCF of $2^{10} \\cdot 5^{10}$, $3^7 \\cdot 5^7$, and $2^{11} \\cdot 3^{22}$ is $1$ (since they share no common prime factor across all three). </p>\n<p>The number of common divisors of all three is $n(S_1 \\cap S_2 \\cap S_3) = 1$.</p>\n<p>Now, applying the Principle of Inclusion-Exclusion formula:</p>\n<p>$$n(S_1 \\cup S_2 \\cup S_3) = n(S_1) + n(S_2) + n(S_3) - n(S_1 \\cap S_2) - n(S_2 \\cap S_3) - n(S_3 \\cap S_1) + n(S_1 \\cap S_2 \\cap S_3)$$</p>\n<p>$$n(S_1 \\cup S_2 \\cup S_3) = 121 + 64 + 276 - 8 - 8 - 11 + 1$$</p>\n<p>$$n(S_1 \\cup S_2 \\cup S_3) = 461 - 27 + 1$$</p>\n<p>$$n(S_1 \\cup S_2 \\cup S_3) = 435$$</p>\n<p>There are exactly $435$ positive integers that divide at least one of the given numbers.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>उन धनात्मक पूर्णांकों की संख्या ज्ञात कीजिए जो संख्याओं $10^{10} ; 15^7 ; 18^{11}$ में से कम से कम एक के भाजक हैं।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "divisibility-of-numbers",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msa4jyz3",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of integers in $2 \\leq x \\leq 500$ such that the highest common factor of $n$ and $350$ is $1$ is</p>",
+                "options": [],
+                "correct_options": [
+                  "D"
+                ],
+                "answer": "170",
+                "explanation": "<p>We need to count integers from $2$ to $500$ which are relatively prime to $350$.</p>\n<p>First factorise $350$:</p>\n<p>$$ 350 = 2 \\times 5^2 \\times 7 $$</p>\n<p>So, a number will have HCF $1$ with $350$ only if it is not divisible by $2$, $5$, or $7$.</p>\n<p>It is easier to first count such numbers from $1$ to $500$, then remove $1$ because the given range starts from $2$.</p>\n<p>Total numbers from $1$ to $500$:</p>\n<p>$$ 500 $$</p>\n<p>Numbers divisible by $2$, $5$, or $7$:</p>\n<p>$$ \\left\\lfloor \\frac{500}{2} \\right\\rfloor = 250 $$</p>\n<p>$$ \\left\\lfloor \\frac{500}{5} \\right\\rfloor = 100 $$</p>\n<p>$$ \\left\\lfloor \\frac{500}{7} \\right\\rfloor = 71 $$</p>\n<p>Now add back the numbers counted twice:</p>\n<p>$$ \\left\\lfloor \\frac{500}{10} \\right\\rfloor = 50 $$</p>\n<p>$$ \\left\\lfloor \\frac{500}{14} \\right\\rfloor = 35 $$</p>\n<p>$$ \\left\\lfloor \\frac{500}{35} \\right\\rfloor = 14 $$</p>\n<p>Subtract the numbers counted three times:</p>\n<p>$$ \\left\\lfloor \\frac{500}{70} \\right\\rfloor = 7 $$</p>\n<p>So, numbers from $1$ to $500$ which are divisible by at least one of $2$, $5$, or $7$ are:</p>\n<p>$$ 250 + 100 + 71 - 50 - 35 - 14 + 7 = 329 $$</p>\n<p>Hence, numbers relatively prime to $350$ from $1$ to $500$ are:</p>\n<p>$$ 500 - 329 = 171 $$</p>\n<p>But the range is from $2$ to $500$, and $1$ is included in these $171$ numbers. So subtract $1$:</p>\n<p>$$ 171 - 1 = 170 $$</p>\n<p>So, the correct answer is:</p>\n<p>$$ \\boxed{170} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$2 \\leq x \\leq 500$ में ऐसे पूर्णांकों की संख्या, जिनके लिए $n$ और $350$ का महत्तम समापवर्तक $1$ है, है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "exponet-of-prime-p-in-n",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msabym0i",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A mechanic removed five spark plugs from an engine for cleaning. The number obtained by taking $\\frac{1}{31}$ of the total ways in which he can refit at least two spark plugs in the same positions from which they were removed is $\\_\\_\\_\\_$</p>",
+                "options": [],
+                "answer": "1",
+                "explanation": "<p>We have 5 distinct parts that belong to 5 corresponding positions in the engine. We need to figure out the number of ways to place at least two of these parts back into their exact original positions.</p>\n<p>The total number of ways to arrange the 5 parts in the 5 positions without any restrictions is $5! = 120$.</p>\n<p>To find the number of ways where at least two parts are in their correct positions, it is often simpler to take the total number of ways and subtract the unwanted cases. The unwanted cases here are when exactly zero parts are in their correct positions, and when exactly one part is in its correct position.</p>\n<p>Let's find the number of ways where none of the parts are placed in their original positions. This concept is called derangement. The number of derangements of $n$ objects is given by the formula:</p>\n<p>$$D_n = n! \\left( 1 - \\frac{1}{1!} + \\frac{1}{2!} - \\frac{1}{3!} + \\dots + \\frac{(-1)^n}{n!} \\right)$$</p>\n<p>For $n = 5$ parts, the number of derangements is:</p>\n<p>$$D_5 = 5! \\left( \\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!} - \\frac{1}{5!} \\right)$$</p>\n<p>$$D_5 = 120 \\left( \\frac{1}{2} - \\frac{1}{6} + \\frac{1}{24} - \\frac{1}{120} \\right)$$</p>\n<p>$$D_5 = 60 - 20 + 5 - 1 = 44$$</p>\n<p>So, there are 44 ways to place all the parts completely wrong.</p>\n<p>Next, we calculate the number of ways where exactly one part goes to its correct place. We can choose this one correct part out of the 5 in $\\binom{5}{1} = 5$ ways. The other 4 parts must all be placed in the wrong positions, which is a derangement of 4 objects.</p>\n<p>For $n = 4$:</p>\n<p>$$D_4 = 4! \\left( \\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!} \\right)$$</p>\n<p>$$D_4 = 24 \\left( \\frac{1}{2} - \\frac{1}{6} + \\frac{1}{24} \\right)$$</p>\n<p>$$D_4 = 12 - 4 + 1 = 9$$</p>\n<p>The total number of ways to have exactly one part correct is $5 \\times 9 = 45$.</p>\n<p>Now we subtract the ways we don't want from the total possible arrangements to find our required condition:</p>\n<p>$$\\text{Ways (at least two correct)} = \\text{Total ways} - (\\text{Zero correct} + \\text{Exactly one correct})$$</p>\n<p>$$\\text{Ways (at least two correct)} = 120 - (44 + 45)$$</p>\n<p>$$\\text{Ways (at least two correct)} = 120 - 89 = 31$$</p>\n<p>There are 31 ways to place at least two parts in their original places. The question asks for $\\frac{1}{31}$ times this value. We simply multiply our result by $\\frac{1}{31}$:</p>\n<p>$$\\frac{1}{31} \\times 31 = 1$$</p>\n<p>The final value is 1.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक मैकेनिक ने सफाई के लिए एक इंजन से पाँच स्पार्क प्लग निकाले। उन कुल तरीकों की संख्या, जिनमें वह कम से कम दो स्पार्क प्लग्स को उसी स्थान पर फिर से लगा सकता है जहाँ से उन्हें निकाला गया था, का $\\frac{1}{31}$ लेने पर प्राप्त संख्या $\\_\\_\\_\\_$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "dearrangement",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msac4cam",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The total number of proper divisors are 38808 is $m$, then the value of $\\frac{2 m}{70}$ is $\\_\\_\\_\\_$</p>",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>$$38808 = 2 \\times 19404$$</p>\n<p>$$= 2^2 \\times 9702$$</p>\n<p>$$= 2^3 \\times 4851$$</p>\n\n<p>$$= 2^3 \\times 3 \\times 1617$$</p>\n<p>$$= 2^3 \\times 3^2 \\times 539$$</p>\n\n<p>$$= 2^3 \\times 3^2 \\times 7 \\times 77$$</p>\n<p>$$= 2^3 \\times 3^2 \\times 7^2 \\times 11^1$$</p>\n<p>For any number expressed as $p^a \\times q^b \\times r^c \\dots$ (where $p, q, r$ are prime numbers), the total number of divisors is found by adding $1$ to each power and multiplying them together:</p>\n<p>$$\\text{Total Divisors} = (a + 1)(b + 1)(c + 1) \\dots$$</p>\n<p>Applying this to our number:</p>\n<p>$$\\text{Total Divisors} = (3 + 1)(2 + 1)(2 + 1)(1 + 1)$$</p>\n<p>$$\\text{Total Divisors} = 4 \\times 3 \\times 3 \\times 2 = 72$$</p>\n<p>The question asks for the number of \"proper divisors\" ($m$). In the context of such problems, proper divisors refer to all divisors except $1$ and the number itself. </p>\n<p>So, we subtract $2$ from the total number of divisors.</p>\n<p>$$m = 72 - 2 = 70$$</p>\n<p>We need to find the value of the expression $\\frac{2m}{70}$. Substituting the value of $m$:</p>\n<p>$$\\frac{2m}{70} = \\frac{2 \\times 70}{70}$$</p>\n<p>$$= 2$$</p>\n<p>The value of $\\frac{2m}{70}$ is $2$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>38808 के उचित भाजकों की कुल संख्या $m$ है, तो $\\frac{2 m}{70}$ का मान $\\_\\_\\_\\_$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "divisibility-of-numbers",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msac8p6u",
+            "chapter": "permutations-and-combinations",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Ten different letters of an alphabet are given. Words with five letters are formed from these given letters. Then the number of words which have at least one letter repeated is</p>",
+                "options": [],
+                "answer": "69760",
+                "explanation": "<p>Total number of five-letter words that can be formed using the $10$ given letters is</p>\n<p>$$ 10^5 $$</p>\n<p>because each of the $5$ places can be filled in $10$ ways.</p>\n<p>So,</p>\n<p>$$ 10^5 = 100000 $$</p>\n<p>Now, count the words in which no letter is repeated.</p>\n<p>For such words, the first place can be filled in $10$ ways, the second in $9$ ways, the third in $8$ ways, the fourth in $7$ ways, and the fifth in $6$ ways.</p>\n<p>So the number of words with all letters different is</p>\n<p>$$ 10 \\times 9 \\times 8 \\times 7 \\times 6 $$</p>\n<p>$$ = 30240 $$</p>\n<p>The words which have at least one letter repeated are all the words except those in which all letters are different.</p>\n<p>So,</p>\n<p>$$ 100000 - 30240 = 69760 $$</p>\n<p>Hence, the required number of words is</p>\n<p>$$ \\boxed{69760} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक वर्णमाला के दस अलग-अलग अक्षर दिए गए हैं। इन दिए गए अक्षरों से पाँच अक्षरों वाले शब्द बनाए जाते हैं। तो कम से कम एक अक्षर की पुनरावृत्ति वाले शब्दों की संख्या है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "counting-principle",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Questions From All Topics of The Chapter",
+    "timeAllotted": 3600000,
+    "title": "Permutation and Combination - Chapter Test",
+    "totalQuestions": 25,
+    "type": "chapter",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mod5iz1g",
+    "defaultLanguage": "en",
+    "description": "Questions From All Topics of The Chapter",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-01T13:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 100,
+    "maxNegMarks": 25,
+    "policy": "jee-main",
+    "syllabus": "Questions From All Topics of The Chapter",
+    "timeAllotted": 3600000,
+    "title": "Permutation and Combination - Chapter Test",
+    "totalQuestions": 25,
+    "type": "chapter",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Mathematics",
+    "_section": "Permutation and Combination"
+  }
+}

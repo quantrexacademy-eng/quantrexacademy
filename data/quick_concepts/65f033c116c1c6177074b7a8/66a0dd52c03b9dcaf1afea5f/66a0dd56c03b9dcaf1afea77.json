@@ -1,0 +1,46 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd52c03b9dcaf1afea5f",
+  "topicId": "66a0dd56c03b9dcaf1afea77",
+  "title": "Director Circle",
+  "concepts": [
+    {
+      "title": "Director Circle ",
+      "conceptBody": "<h3><strong>Number of tangents drawn from a point to an ellipse&nbsp;</strong></h3><p>Two tangents can be drawn from a point to an ellipse. The two tangents are real and distinct or coincident or imaginary according as the given point lies outside, on or inside the ellipse.</p><p><strong>Proof : </strong>Let the ellipse be $\\frac{{{\\text{x}}^{2}}}{{{\\text{a}}^{2}}}+\\frac{{{\\text{y}}^{2}}}{\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}^{2}}}=1$, and let $\\text{P}\\left( \\text{h},\\text{k} \\right)$ be a point. The equation of any tangent to the given ellipse is</p><p>$y=mx\\pm \\sqrt{{{a}^{2}}{{m}^{2}}+{{b}^{2}}}$</p><p>If it passes through $\\left( \\text{h},\\text{k} \\right)$, then</p><p>$\\text{k}=\\text{mh}\\pm \\sqrt{{{\\text{a}}^{2}}~{{\\text{m}}^{2}}+{{\\text{b}}^{2}}}\\,\\,\\,\\Rightarrow \\,\\,\\,{{(\\text{k}-\\text{mh})}^{2}}={{\\text{a}}^{2}}~{{\\text{m}}^{2}}+{{\\text{b}}^{2}}$</p><p>$\\Rightarrow \\,\\,\\,{{\\text{m}}^{2}}\\left( ~{{\\text{h}}^{2}}-{{\\text{a}}^{2}} \\right)-2\\text{mkh}+\\left( {{\\text{k}}^{2}}-{{\\text{b}}^{2}} \\right)=0$</p><p>This equation, being quadratic in $\\text{m}$, gives two values of $\\text{m}$. Corresponding to each value of $\\text{m}$ there is a tangent to the ellipse.</p><p>Thus, two tangents can be drawn from a point $\\text{P}\\left( \\text{h},\\text{k} \\right)$ to an ellipse.</p><p>The tangents are real and distinct, coincident or imaginary according as the roots of quadratic in $\\text{m}$ are real and distinct, equal or imaginary</p><p>i.e., $4{{k}^{2}}{{h}^{2}}-4\\left( {{h}^{2}}-{{a}^{2}} \\right)\\left( {{k}^{2}}-{{b}^{2}} \\right)&gt;\\,\\,or\\,\\,&lt;0$</p><p>⇒ ${{a}^{2}}{{k}^{2}}+{{h}^{2}}{{b}^{2}}-{{a}^{2}}{{b}^{2}}&gt;\\,\\,or\\,\\,=\\,\\,or\\,\\,&lt;\\,\\,0$</p><p>⇒ $\\frac{{{\\text{h}}^{2}}}{{{\\text{a}}^{2}}}+\\frac{{{\\text{k}}^{2}}}{~{{\\text{b}}^{2}}}-1&gt;or=or&lt;0$</p><p>⇒ $\\left( h,k \\right)$ lies outside or on or inside the ellipse $\\frac{{{h}^{2}}}{{{a}^{2}}}+\\frac{{{k}^{2}}}{{{b}^{2}}}=1$.</p><p><strong>Director Circle&nbsp;</strong></p><p>The director circle is the locus of points from which perpendicular tangents are drawn to the ellipse.</p><p><strong>Equation of the Director Circle : </strong>Let the ellipse be $\\frac{{{x}^{2}}}{{{a}^{2}}}+\\frac{{{y}^{2}}}{{{b}^{2}}}=1$. The equation of any tangent to the ellipse is</p><p>$\\text{y}=\\text{mx}\\pm \\sqrt{{{\\text{a}}^{2}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{m}}^{2}}+{{\\text{b}}^{2}}}$ ...(i)</p><p>Let $\\left( h,k \\right)$ be a point on the director circle if (i) passes through $\\left( h,k \\right)$, then</p><p>$k=mh\\pm \\sqrt{{{a}^{2}}{{m}^{2}}+{{b}^{2}}}\\,\\,\\Rightarrow \\,\\,\\,{{(k-mh)}^{2}}={{a}^{2}}{{m}^{2}}+{{b}^{2}}$</p><p>$\\Rightarrow {{\\text{m}}^{2}}\\left( ~{{\\text{h}}^{2}}-{{\\text{a}}^{2}} \\right)-2\\text{mhk}+\\left( {{\\text{k}}^{2}}-{{\\text{b}}^{2}} \\right)=0$</p><p>This gives two values of $\\text{m}$, say, ${{\\text{m}}_{1}}$ and ${{\\text{m}}_{2}}$. Corresponding to each of these values there is tangent passing through $\\left( \\text{h},\\text{k} \\right)$ to the ellipse.</p><p>If the two tangents are perpendicular. Then,</p><p>${{\\text{m}}_{1}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{m}}_{2}}=-1\\Rightarrow \\frac{{{\\text{k}}^{2}}-{{\\text{b}}^{2}}}{\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{h}}^{2}}-{{\\text{a}}^{2}}}=-1\\Rightarrow {{\\text{h}}^{2}}+{{\\text{k}}^{2}}={{\\text{a}}^{2}}+{{\\text{b}}^{2}}$</p><p>So, the locus of $\\left( h,k \\right)$ i.e. the equation of the director circle is \\(x^2+y^2=a^2+b^2\\)</p><p>Clearly, it is a circle whose centre coincides with the centre of the ellipse and radius equal to $\\sqrt{{{\\text{a}}^{2}}+{{\\text{b}}^{2}}}$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd56c03b9dcaf1afea78"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f4a2d384bfb4a53808d",
+      "title": "The locus of the point of intersection of mutually perpendicular tangent to the ellipse $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f4a2d384bfb4a53808e",
+      "title": "The equation of the director circle of the ellipse $4 x^2+9 y^2=36$, is given by",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f4a2d384bfb4a53808f",
+      "title": "The area of the director circle of the ellipse $\\frac{x^2}{5}+\\frac{y^2}{4}=1$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f4a2d384bfb4a538090",
+      "title": "If radius of the director circle of the ellipse $\\frac{(3 x+4 y-2)^2}{100}+\\frac{(4 x-3 y+5)^2}{625}=1$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f4a2d384bfb4a538091",
+      "title": "Statement I The equation of the director circle to the ellipse $4 x^2+9 y^2=36$ is $x^2+y^2=13$\nStatement II The locus of the point of intersection of perpendicular tangents to an ellipse is called the director circle.",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

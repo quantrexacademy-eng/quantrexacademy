@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mprafd6j",
+  "title": "Vector Algebra Test - 1 (Topic Test)",
+  "type": "topic",
+  "section": "Vector Algebra",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-06-08T00:30:00.000Z",
+  "status": "ok",
+  "analysisId": "3f25b850-729b-11f1-9fd7-cf7310e8728c",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g61mprafd6j",
+    "defaultLanguage": "en",
+    "description": "Fundamentals of Vectors, Addition and Subtraction of Vectors",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": false,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-08T00:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mpznchtr",
+            "chapter": "vector-algebra",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>Statement-1 :</b> A vector is a quantity that has both magnitude and direction and obeys the triangle law of addition.</p><p><b>Statement-2 :</b> The magnitude of the resultant vector of two given vectors can never be less than the magnitude of any of the given vector.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Statement-1 is True, Statement-2 is True; Statement-2 is a correct explanation for Statement-1.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Statement-1 is True, Statement-2 is True; Statement-2 is NOT a correct explanation for Statement-1</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Statement-1 is True, Statement-2 is False</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Statement-1 is False, Statement-2 is True</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For a physical quantity to be classified as a vector, having both a magnitude and a specific direction is a necessary condition, but it is not sufficient.</p>\n<p>The quantity must also obey the laws of vector addition, the Triangle Law of Vector Addition (or the Parallelogram Law).</p>\n<p>For example, electric current possesses a definite magnitude and direction (from higher potential to lower potential), but it adds algebraically like a scalar rather than vectors, so it is a scalar quantity.</p>\n<p>Therefore, Statement-1 is True.</p>\n<p>Let two vectors be $\\overrightarrow{\\mathrm{A}}$ and $\\overrightarrow{\\mathrm{B}}$, with an angle $\\theta$ between them. The magnitude of their resultant vector given by the law of cosines is,</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mpznay7g%2Fab0493f8-361e-435b-a987-16e102d3995b%2F614985d0-6029-11f1-bbc0-4d2a58fb3e5e%2Ffile-6y3zli1mpznay7h.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mpznay7g%2Fab0493f8-361e-435b-a987-16e102d3995b%2F614985d0-6029-11f1-bbc0-4d2a58fb3e5e%2Ffile-6y3zli1mpznay7h.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n\n<p>$$|\\vec{R}| = |\\vec{A} + \\vec{B}|$$</p>\n<p>$$R = \\sqrt{A^2 + B^2 + 2AB\\cos\\theta}$$</p>\n<p>The maximum value occurs when $\\cos\\theta = 1 \\rightarrow \\theta = 0^\\circ$:</p>\n<p>$$R_{\\max} = \\sqrt{A^2 + B^2 + 2AB} = A + B$$</p>\n<p>The minimum value occurs when $\\cos\\theta = -1 \\rightarrow \\theta = 180^\\circ$:</p>\n<p>$$R_{\\min} = \\sqrt{A^2 + B^2 - 2AB} = |A - B|$$</p>\n<p>Suppose we have two vectors $|\\vec{A}| = 5$ units and $|\\vec{B}| = 5$ units</p>\n<p>If both the vectors are anti-parallel to each other then $\\theta = 180^\\circ$.</p>\n<p>Using minimum value of resultant’s magnitude equation:</p>\n<p>$$R_{\\min} = |5 - 5| = 0 \\text{ units}$$</p>\n<p>Here, the magnitude of the resultant (0 units) is less than the magnitude of either vector A or B (5 units).</p>\n<p>If the vectors are unequal $|\\vec{A}| = 10$ units and $B = 8$ units are opposite to each other, the resultant is $R = 10 - 8 = 2$ units, which is less than both 10 and 8.</p>\n<p>Therefore, the statement that the resultant can never be less than the individual components is incorrect, so, statement-2 is False.</p>\n<p>Since Statement-1 is True and Statement-2 is False, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>कथन-1 :</b> सदिश वह राशि है जिसमें परिमाण और दिशा दोनों होते हैं और यह योग के त्रिभुज नियम का पालन करती है।</p><p><b>कथन-2 :</b> किन्हीं दो दिए गए सदिशों के परिणामी सदिश का परिमाण, दिए गए किसी भी सदिश के परिमाण से कभी कम नहीं हो सकता है।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 सत्य है; कथन-2, कथन-1 की सही व्याख्या है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 सत्य है; कथन-2, कथन-1 की सही व्याख्या नहीं है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 असत्य है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>कथन-1 असत्य है, कथन-2 सत्य है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "vector-arithmetic",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq3vb1i2",
+            "chapter": "vector-algebra",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A vector <b>$ \\vec{A} $</b> is directed along $30^{\\circ}$ west of north direction and another vector <b>$\\vec{B}$</b> along $15^{\\circ}$ south of east. Their resultant cannot be in the</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>north direction.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>east direction.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>north-east direction.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>south direction.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Depending on the magnitudes of $\\vec{a}$ and $\\vec{b}$, the resultant can have a direction anywhere between $\\vec{a}$ and $\\vec{b}$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mq3v9mrc%2F4c2de723-8414-48a3-b9d1-e2d3f52c042f%2Fa843ef80-627b-11f1-ab00-1197a6cca8d4%2Ffile-6y3zli1mq3v9mrd.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mq3v9mrc%2F4c2de723-8414-48a3-b9d1-e2d3f52c042f%2Fa843ef80-627b-11f1-ab00-1197a6cca8d4%2Ffile-6y3zli1mq3v9mrd.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>But it cannot have a direction like due south.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक सदिश <b>$ \\vec{A} $</b> उत्तर से $30^{\\circ}$ पश्चिम दिशा की ओर है तथा दूसरा सदिश <b>$\\vec{B}$</b> पूर्व से $15^{\\circ}$ दक्षिण दिशा की ओर है। इनका परिणामी इनमें से किस दिशा में नहीं हो सकता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>उत्तर दिशा।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>पूर्व दिशा।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>उत्तर-पूर्व दिशा।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>दक्षिण दिशा।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "vector-arithmetic",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mpznpngf",
+            "chapter": "vector-algebra",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>Statement-1:</b> The minimum number of non-zero vectors of unequal magnitude required to produce zero resultant is three.</p><p><b>Statement-2:</b> Three vectors of unequal magnitude which can be represented by the three sides of a triangle taken in order, produce zero resultant.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Statement-1 is True, Statement-2 is True; Statement-2 is a correct explanation for Statement-1.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Statement-1 is True, Statement-2 is True; Statement-2 is NOT a correct explanation for Statement-1.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Statement-1 is True, Statement-2 is False.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Statement-1 is False, Statement-2 is True.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>A single non-zero vector $\\vec{A}$ can never have a magnitude of zero ($|\\vec{A}| \\ne 0$).</p>\n<p>For two vectors $\\vec{A}$ and $\\vec{B}$ to cancel each other out:</p>\n<p>$$\\vec{A} + \\vec{B} = \\vec{0} \\Rightarrow \\vec{A} = -\\vec{B}$$</p>\n<p>Taking the magnitude on both sides:</p>\n<p>$$|\\vec{A}| = |-\\vec{B}| \\Rightarrow A = B$$</p>\n<p>This proves that two non-zero vectors can only produce a zero resultant if they are exactly equal in magnitude and opposite in direction. Therefore, it is impossible for two unequal non-zero vectors to produce a zero resultant.</p>\n<p>If we have three vectors of unequal magnitudes, say $\\vec{A}$, $\\vec{B}$, and $\\vec{C}$, we can arrange two of them ($\\vec{A}$ and $\\vec{B}$) such that their resultant $\\vec{R}_{AB} = \\vec{A} + \\vec{B}$ has a magnitude exactly equal to the third vector $\\vec{C}$, but points in the opposite direction ($\\vec{R}_{AB} = -\\vec{C}$). Thus, $\\vec{A} + \\vec{B} + \\vec{C} = \\vec{0}$ is possible.</p>\n<p>Hence, the minimum number of non-zero coplanar vectors of unequal magnitude required to yield a zero resultant is indeed three.</p>\n<p>Therefore, Statement-1 is True.</p>\n<p>If three vectors $\\vec{A}$, $\\vec{B}$, and $\\vec{C}$ are represented in both magnitude and direction by the three sides of a triangle taken in sequential order (head-to-tail arrangement):</p>\n<p>Using closed polygon rule, the total vector sum is zero:</p>\n<p>$$\\vec{A} + \\vec{B} + \\vec{C} = \\vec{0}$$</p>\n<p>Since a triangle can have sides of three unequal lengths (a scalene triangle), these three vectors can possess unequal magnitudes while satisfying this property.</p>\n<p>Therefore, Statement-2 is True.</p>\n<p>Statement-1 says that three is the minimum number of unequal vectors needed to form a zero resultant. Because geometrically, the simplest closed polygon that can be formed with unequal straight segments is a triangle, which consists of three sides.</p>\n<p>Since a closed loop of vectors gives a zero resultant, Statement-2 provides explanation for Statement-1.</p>\n<p>Both statements are true and Statement-2 is the correct explanation for Statement-1. Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>कथन-1:</b> शून्य परिणामी उत्पन्न करने के लिए आवश्यक असमान परिमाण वाले शून्येतर सदिशों की न्यूनतम संख्या तीन होती है।</p><p><b>कथन-2:</b> असमान परिमाण वाले तीन सदिश जिन्हें एक ही क्रम में लिए गए त्रिभुज की तीन भुजाओं द्वारा निरूपित किया जा सकता है, शून्य परिणामी उत्पन्न करते हैं।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 सत्य है; कथन-2, कथन-1 का सही स्पष्टीकरण है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 सत्य है; कथन-2, कथन-1 का सही स्पष्टीकरण नहीं है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 असत्य है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>कथन-1 असत्य है, कथन-2 सत्य है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "vector-arithmetic",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq3vdnlh",
+            "chapter": "vector-algebra",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The angle between $\\vec{a}$ and $\\vec{b}$ is $0^{\\circ}$. Thus the angle between $2\\vec{a}$ and $-3\\vec{b}$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\pi / 3$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\pi$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\pi / 6$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The angle between $ \\vec{a} $ and $ \\vec{b} $ is $ 0^{\\circ} $, which means both vectors point in the same direction.</p>\n<p>The vector $ 2\\vec{a} $ is in the same direction as $ \\vec{a} $ because multiplying by a positive number does not change its direction.</p>\n<p>The vector $ -3\\vec{b} $ points in the opposite direction to $ \\vec{b} $ because of the negative sign.</p>\n<p>Since $ \\vec{a} $ and $ \\vec{b} $ are in the same direction, $ 2\\vec{a} $ and $ -3\\vec{b} $ must be in opposite directions.</p>\n<p>So, the angle between $ 2\\vec{a} $ and $ -3\\vec{b} $ is $ 180^{\\circ} $.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\vec{a}$ और $\\vec{b}$ के बीच का कोण $0^{\\circ}$ है। इस प्रकार $2\\vec{a}$ और $-3\\vec{b}$ के बीच का कोण है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\pi / 3$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\pi$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\pi / 6$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "vector-arithmetic",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mpznuz2s",
+            "chapter": "vector-algebra",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>Statement-1:</b> Distance is a scalar quantity.</p><p><b>Statement-2:</b> Distance is the length of path transversed.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Statement-1 is True, Statement-2 is True; Statement-2 is a correct explanation for Statement-1.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Statement-1 is True, Statement-2 is True; Statement-2 is NOT a correct explanation for Statement-1.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Statement-1 is True, Statement-2 is False.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Statement-1 is False, Statement-2 is True.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Quantities which are defined completely by their numerical magnitude alone, independent of direction are called scalar quantities.</p>\n<p>Quantities which requires both a numerical magnitude and a specific direction to be fully defined are called vector quantity.</p>\n<p>Distance represents the total path travelled as an object moves. It increases with any movement, regardless of the direction changes of the moving body. Because it depends purely on ground covered and ignores the net direction of travel, it is a scalar quantity.</p>\n<p>Therefore, Statement-1 is True.</p>\n<p>Distance is defined fundamentally as the actual total length of the continuous path traversed by a moving particle between an initial point and a final point over a given time interval.</p>\n<p>For example, if a particle travels 3 meters East and then 4 meters North, the total path length traversed is:</p>\n<p>Path Length $=3 \\mathrm{~m}+4 \\mathrm{~m}=7 \\mathrm{~m}$</p>\n<p>Therefore, Statement-2 is True.</p>\n<p>Statement-1 says the distance is a scalar quantity because its core definition is the total actual path length traversed which depends on scalar lengths and not on the direction from start to finish.</p>\n<p>Because the length of a path does not have direction in space, it naturally makes the quantity a scalar. Thus, Statement-2 is the correct explanation for Statement-1.</p>\n<p>Both statements are true and Statement-2 is the correct explanation for Statement-1. Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>कथन-1:</b> दूरी एक अदिश राशि है।</p><p><b>कथन-2:</b> दूरी तय किए गए पथ की लंबाई है।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 सत्य है; कथन-2, कथन-1 की सही व्याख्या है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 सत्य है; कथन-2, कथन-1 की सही व्याख्या नहीं है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 असत्य है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>कथन-1 असत्य है, कथन-2 सत्य है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "vector-arithmetic",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq3vj3jr",
+            "chapter": "vector-algebra",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $|\\vec{V}_1 + \\vec{V}_2| = |\\vec{V}_1 - \\vec{V}_2|$ and $\\vec{V}_2$ is not equal to zero, then which statement is correct?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\vec{V}_1$ and $\\vec{V}_2$ are parallel</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\vec{V}_1$ and $\\vec{V}_2$ are equal in magnitude</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\vec{V}_1$ and $\\vec{V}_2$ are perpendicular to each other</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of the above</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Given,</p>\n<p>$$ |\\vec{V}_1 + \\vec{V}_2| = |\\vec{V}_1 - \\vec{V}_2| $$</p>\n\n<p>$$\\Rightarrow $$ $$ |\\vec{V}_1 + \\vec{V}_2|^2 = |\\vec{V}_1 - \\vec{V}_2|^2 $$</p>\n\n<p>$$\\Rightarrow $$ $$ |\\vec{V}_1 + \\vec{V}_2|^2 = |\\vec{V}_1|^2 + |\\vec{V}_2|^2 + 2\\vec{V}_1 \\cdot \\vec{V}_2 $$</p>\n<p>and</p>\n<p>$$ |\\vec{V}_1 - \\vec{V}_2|^2 = |\\vec{V}_1|^2 + |\\vec{V}_2|^2 - 2\\vec{V}_1 \\cdot \\vec{V}_2 $$</p>\n<p>Since these are equal,</p>\n<p>$$ |\\vec{V}_1|^2 + |\\vec{V}_2|^2 + 2\\vec{V}_1 \\cdot \\vec{V}_2 = |\\vec{V}_1|^2 + |\\vec{V}_2|^2 - 2\\vec{V}_1 \\cdot \\vec{V}_2 $$</p>\n<p>So,</p>\n<p>$$ 4\\vec{V}_1 \\cdot \\vec{V}_2 = 0 $$</p>\n<p>$$ \\vec{V}_1 \\cdot \\vec{V}_2 = 0 $$</p>\n<p>This means the angle between $\\vec{V}_1$ and $\\vec{V}_2$ is $90^\\circ$.</p>\n<p>So, $\\vec{V}_1$ and $\\vec{V}_2$ are perpendicular to each other.</p>\n<p>Correct option: C</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $|\\vec{V}_1 + \\vec{V}_2| = |\\vec{V}_1 - \\vec{V}_2|$ और $\\vec{V}_2$ शून्य के बराबर नहीं है, तो कौन सा कथन सही है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\vec{V}_1$ और $\\vec{V}_2$ समानांतर हैं</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\vec{V}_1$ और $\\vec{V}_2$ परिमाण में समान हैं</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\vec{V}_1$ और $\\vec{V}_2$ एक दूसरे के लंबवत हैं</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>उपर्युक्त में से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "vector-arithmetic",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq3w87r2",
+            "chapter": "vector-algebra",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the resultant of two forces of magnitudes <i>P</i> and <i>2P</i> is perpendicular to <i>P</i>, then the angle between the forces is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{2\\pi}{3} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{3\\pi}{4} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{4\\pi}{5} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{5\\pi}{6} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Angle the resultant makes with P is given by</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mq3w6mqn%2F3f84c28b-3e44-4cc1-9a9a-57dbd73ff0a3%2F3df3c2f0-627f-11f1-ab00-1197a6cca8d4%2Ffile-6y3zli1mq3w6mqo.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mq3w6mqn%2F3f84c28b-3e44-4cc1-9a9a-57dbd73ff0a3%2F3df3c2f0-627f-11f1-ab00-1197a6cca8d4%2Ffile-6y3zli1mq3w6mqo.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$\\begin{aligned} & \\tan \\alpha=\\frac{2 P \\sin \\theta}{P+2 P \\cos \\theta} \\\\ & \\text { given } \\quad \\alpha=\\frac{\\pi}{2} \\Rightarrow \\tan \\alpha=\\infty \\\\ & \\therefore \\quad P+2 P \\cos \\theta=0 \\Rightarrow \\cos \\theta=-\\frac{1}{2} \\\\ & \\Rightarrow \\quad \\theta=\\frac{2 \\pi}{3}\\end{aligned}$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि <i>P</i> और <i>2P</i> परिमाण वाले दो बलों का परिणामी <i>P</i> के लंबवत है, तो बलों के बीच का कोण है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{2\\pi}{3} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{3\\pi}{4} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{4\\pi}{5} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{5\\pi}{6} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "vector-arithmetic",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq3wcf8r",
+            "chapter": "vector-algebra",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The resultant of two vectors $\\vec{A}$ and $\\vec{B}$ is perpendicular to the vector $\\vec{A}$ and its magnitude is equal to half of the magnitude of vector $\\vec{B}$. The angle between $\\vec{A}$ and $\\vec{B}$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>120&deg;</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>30&deg;</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>135&deg;</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>150&deg;</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>According to the question,</p>\n<p>$$ \\begin{aligned} O C & =\\frac{O B}{2} \\\\ \\Rightarrow \\quad \\frac{O C}{O B} & =\\frac{1}{2} \\end{aligned} $$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mq3wbjq4%2F90b7406c-126a-48ec-a9a2-10c8eb77fbf6%2Fc6ab4dc0-627f-11f1-ab00-1197a6cca8d4%2Ffile-6y3zli1mq3wbjq5.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mq3wbjq4%2F90b7406c-126a-48ec-a9a2-10c8eb77fbf6%2Fc6ab4dc0-627f-11f1-ab00-1197a6cca8d4%2Ffile-6y3zli1mq3wbjq5.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$ \\Rightarrow \\quad \\cos \\theta=\\frac{1}{2} \\Rightarrow \\quad \\theta=60^{\\circ} . $$</p>\n<p>$\\therefore \\quad$ angle between $\\vec{A}$ and $\\vec{B}$ is $150^{\\circ}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो सदिशों $\\vec{A}$ और $\\vec{B}$ का परिणामी, सदिश $\\vec{A}$ के लंबवत है और इसका परिमाण सदिश $\\vec{B}$ के परिमाण के आधे के बराबर है। $\\vec{A}$ और $\\vec{B}$ के बीच का कोण है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>120&deg;</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>30&deg;</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>135&deg;</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>150&deg;</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "vector-arithmetic",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq3wr7js",
+            "chapter": "vector-algebra",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let the angle between two non-zero vectors <b>$ \\vec{A} $</b> and <b>$ \\vec{B} $</b> be 120° and its resultant be <b>$ \\vec{C} $</b>. Then:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ |\\vec{C}| $ must be equal $ ||\\vec{A}| - |\\vec{B}|| $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ |\\vec{C}| $ must be less than $ ||\\vec{A}| - |\\vec{B}|| $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ |\\vec{C}| $ must be greater than $ ||\\vec{A}| - |\\vec{B}|| $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ |\\vec{C}| $ may be equal to $ ||\\vec{A}| - |\\vec{B}|| $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Since $\\vec{C}$ is the resultant of $\\vec{A}$ and $\\vec{B}$, we have</p>\n<p>$$ \\vec{C}=\\vec{A}+\\vec{B} $$</p>\n<p>Now use the formula for the magnitude of the resultant:</p>\n<p>$$ |\\vec{C}|^2=|\\vec{A}|^2+|\\vec{B}|^2+2|\\vec{A}||\\vec{B}|\\cos\\theta $$</p>\n<p>Here $\\theta=120^\\circ$ and</p>\n<p>$$ \\cos 120^\\circ=-\\frac{1}{2} $$</p>\n<p>So,</p>\n<p>$$ |\\vec{C}|^2=|\\vec{A}|^2+|\\vec{B}|^2+2|\\vec{A}||\\vec{B}|\\left(-\\frac{1}{2}\\right) $$</p>\n<p>$$ |\\vec{C}|^2=|\\vec{A}|^2+|\\vec{B}|^2-|\\vec{A}||\\vec{B}| $$</p>\n<p>Now compare this with</p>\n<p>$$ \\left(||\\vec{A}|-|\\vec{B}||\\right)^2=(|\\vec{A}|-|\\vec{B}|)^2 $$</p>\n<p>$$ =(|\\vec{A}|)^2+(|\\vec{B}|)^2-2|\\vec{A}||\\vec{B}| $$</p>\n<p>Clearly,</p>\n<p>$$ |\\vec{A}|^2+|\\vec{B}|^2-|\\vec{A}||\\vec{B}| > |\\vec{A}|^2+|\\vec{B}|^2-2|\\vec{A}||\\vec{B}| $$</p>\n<p>So,</p>\n<p>$$ |\\vec{C}|^2 > \\left(||\\vec{A}|-|\\vec{B}||\\right)^2 $$</p>\n<p>Since magnitudes are non-negative,</p>\n<p>$$ |\\vec{C}| > ||\\vec{A}|-|\\vec{B}|| $$</p>\n<p>So the correct option is:</p>\n<p>$$ \\boxed{\\text{Option C}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना दो अशून्य सदिशों <b>$ \\vec{A} $</b> और <b>$ \\vec{B} $</b> के बीच का कोण 120° है तथा इनका परिणामी <b>$ \\vec{C} $</b> है। तब:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ |\\vec{C}| $ आवश्यक रूप से $ ||\\vec{A}| - |\\vec{B}|| $ के बराबर होगा</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ |\\vec{C}| $ आवश्यक रूप से $ ||\\vec{A}| - |\\vec{B}|| $ से कम होगा</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ |\\vec{C}| $ आवश्यक रूप से $ ||\\vec{A}| - |\\vec{B}|| $ से अधिक होगा</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ |\\vec{C}| $, $ ||\\vec{A}| - |\\vec{B}|| $ के बराबर हो सकता है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "vector-arithmetic",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mq3wzbad",
+            "chapter": "vector-algebra",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Vector <b>$ \\vec{a} $</b> is increased by <b>$ \\Delta \\vec{a} $</b>. If increment in magnitude of <b>$ \\vec{a} $</b> is greater than magnitude of increment vector then angle between <b>$ \\vec{a} $</b> and <b>$ \\Delta \\vec{a} $</b> is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>greater than $ \\pi / 6 $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>exactly $ \\pi / 6 $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>exactly $ \\pi / 2 $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\phi $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>We have an initial vector $\\vec{a}$. </p>\n<p>The increment vector added to it is $\\Delta \\vec{a}$. </p>\n<p>So, the new vector becomes $\\vec{a} + \\Delta \\vec{a}$.</p>\n\n<ol>\n<li><strong>Increment in the magnitude of $\\vec{a}$</strong></li>\n</ol>\n<p>This is the difference between the final magnitude and the initial magnitude. We can write it as:</p>\n<p>$$ |\\vec{a} + \\Delta \\vec{a}| - |\\vec{a}| $$</p>\n<ol start=\"2\">\n<li><strong>Magnitude of the increment vector</strong></li>\n</ol>\n<p>This is simply the magnitude of the added vector, which is:</p>\n<p>$$ |\\Delta \\vec{a}| $$</p>\n<p>According to the given condition, the increment in the magnitude of $\\vec{a}$ is greater than the magnitude of the increment vector.</p>\n<p>$$ |\\vec{a} + \\Delta \\vec{a}| - |\\vec{a}| > |\\Delta \\vec{a}| $$</p>\n\n<p>$$ |\\vec{a} + \\Delta \\vec{a}| > |\\vec{a}| + |\\Delta \\vec{a}| $$</p>\n\n<p>$$ |\\vec{a} + \\Delta \\vec{a}|^2 > (|\\vec{a}| + |\\Delta \\vec{a}|)^2 $$</p>\n\n<p>$$ |\\vec{a}|^2 + |\\Delta \\vec{a}|^2 + 2|\\vec{a}||\\Delta \\vec{a}|\\cos\\theta > |\\vec{a}|^2 + |\\Delta \\vec{a}|^2 + 2|\\vec{a}||\\Delta \\vec{a}| $$</p>\n\n<p>$$ 2|\\vec{a}||\\Delta \\vec{a}|\\cos\\theta > 2|\\vec{a}||\\Delta \\vec{a}| $$</p>\n\n<p>$$ \\cos\\theta > 1 $$</p>\n<p>From trigonometry, we know that the maximum value of $\\cos\\theta$ is exactly $1$. It can never be strictly greater than $1$. </p>\n<p>Because this condition is mathematically impossible to satisfy, there is no such angle $\\theta$ that exists. The set of possible values for the angle is an empty set, which is represented by the symbol $\\phi$.</p>\n<p>Option D is correct.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>सदिश <b>$ \\vec{a} $</b> को <b>$ \\Delta \\vec{a} $</b> से बढ़ाया जाता है। यदि <b>$ \\vec{a} $</b> के परिमाण में वृद्धि, वृद्धि सदिश के परिमाण से अधिक है, तो <b>$ \\vec{a} $</b> और <b>$ \\Delta \\vec{a} $</b> के बीच का कोण है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\pi / 6 $ से अधिक</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>ठीक $ \\pi / 6 $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>ठीक $ \\pi / 2 $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\phi $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "vector-arithmetic",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mq3xj0d3",
+            "chapter": "vector-algebra",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "A vector $\\vec{A}$ of length 10 units makes an angle of $60^{\\circ}$ with a vector $\\vec{B}$ of length 6 units. If the angle which $\\vec{A}-\\vec{B}$ makes with $\\vec{A}$ is $\\tan ^{-1}\\left(\\frac{3 \\sqrt{a}}{b}\\right)$, then the value of $\\left(\\frac{a+b}{2}\\right)$ is",
+                "options": [],
+                "answer": "5",
+                "explanation": "<p>Take $\\vec{A}$ along the $x$-axis.</p>\n<p>So,</p>\n<p>$$ |\\vec{A}|=10,\\qquad |\\vec{B}|=6 $$</p>\n<p>and the angle between them is $60^\\circ$.</p>\n<p>Then we can write</p>\n<p>$$ \\vec{A}=(10,0) $$</p>\n<p>and</p>\n<p>$$ \\vec{B}=(6\\cos 60^\\circ,\\;6\\sin 60^\\circ)=(3,\\;3\\sqrt{3}) $$</p>\n<p>Now,</p>\n<p>$$ \\vec{A}-\\vec{B}=(10-3,\\;0-3\\sqrt{3})=(7,\\;-3\\sqrt{3}) $$</p>\n<p>We need the angle made by $\\vec{A}-\\vec{B}$ with $\\vec{A}$.</p>\n<p>Since $\\vec{A}$ is along the $x$-axis, for this angle $\\theta$,</p>\n<p>$$ \\tan \\theta=\\left|\\frac{-3\\sqrt{3}}{7}\\right|=\\frac{3\\sqrt{3}}{7} $$</p>\n<p>Given</p>\n<p>$$ \\theta=\\tan^{-1}\\left(\\frac{3\\sqrt{a}}{b}\\right) $$</p>\n<p>So,</p>\n<p>$$ \\frac{3\\sqrt{a}}{b}=\\frac{3\\sqrt{3}}{7} $$</p>\n<p>Comparing,</p>\n<p>$$ a=3,\\qquad b=7 $$</p>\n<p>Now,</p>\n<p>$$ \\frac{a+b}{2}=\\frac{3+7}{2}=5 $$</p>\n<p>So the required value is</p>\n<p>$$ 5 $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "10 इकाई लम्बाई का एक सदिश $\\vec{A}$, 6 इकाई लम्बाई के एक सदिश $\\vec{B}$ के साथ $60^{\\circ}$ का कोण बनाता है। यदि $\\vec{A}-\\vec{B}$ द्वारा $\\vec{A}$ के साथ बनाया गया कोण $\\tan ^{-1}\\left(\\frac{3 \\sqrt{a}}{b}\\right)$ है, तो $\\left(\\frac{a+b}{2}\\right)$ का मान है",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "vector-arithmetic",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mq3xv0z8",
+            "chapter": "vector-algebra",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>At what angle, in degree, two forces of magnitude $A+B$ and $A-B(A>B)$ act, so that their resultant is $\\sqrt{3 A^2+B^2}$ ?</p>",
+                "options": [],
+                "answer": "60",
+                "explanation": "<p>$\\begin{aligned} & \\text { Since } R^2=F_1^2+F_2^2+2 F_1 F \\cos \\theta \\\\\\\\ & \\Rightarrow  3 A^2+B^2=(A+B)^2+(A-B)^2+2\\left(A^2-B^2\\right) \\cos \\theta\\end{aligned}$</p>\n<p>$$ \\begin{aligned} & \\Rightarrow \\quad 3 A^2+B^2=2 A^2+2 B^2+2\\left(A^2-B^2\\right) \\cos \\theta \\\\ & \\Rightarrow \\quad A^2-B^2=2\\left(A^2-B^2\\right) \\cos \\theta \\end{aligned} $$</p>\n<p>Since $A>B$, so we can cancel the common factor $A^2-B^2$ from both the sides</p>\n<p>$$ \\begin{aligned} & \\Rightarrow \\quad \\cos \\theta=\\frac{1}{2} \\\\ & \\Rightarrow \\quad \\theta=60^{\\circ} \\end{aligned} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>परिमाण $A+B$ और $A-B(A>B)$ के दो बल किस कोण (डिग्री में) पर कार्य करें ताकि उनका परिणामी $\\sqrt{3 A^2+B^2}$ हो जाए?</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "vector-arithmetic",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mq3xygr4",
+            "chapter": "vector-algebra",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two vectors $\\vec{A}$ and $\\vec{B}$ are such that $\\vec{A}+\\vec{B}=\\vec{C}$. Also $A^2+B^2=C^2$. Find the angle between $\\vec{A}$ and $\\vec{B}$, in degree.</p>",
+                "options": [],
+                "answer": "90",
+                "explanation": "<p>Given that</p>\n<p>$$ \\vec{A}+\\vec{B}=\\vec{C} $$</p>\n<p>we use the magnitude formula for the sum of two vectors:</p>\n<p>$$ C^2 = A^2 + B^2 + 2AB\\cos\\theta $$</p>\n<p>where $\\theta$ is the angle between $\\vec{A}$ and $\\vec{B}$.</p>\n<p>It is also given that</p>\n<p>$$ A^2 + B^2 = C^2 $$</p>\n<p>Now compare both expressions for $C^2$:</p>\n<p>$$ A^2 + B^2 + 2AB\\cos\\theta = A^2 + B^2 $$</p>\n<p>So,</p>\n<p>$$ 2AB\\cos\\theta = 0 $$</p>\n<p>Since $A$ and $B$ are vectors, their magnitudes are not zero. Hence,</p>\n<p>$$ \\cos\\theta = 0 $$</p>\n<p>This gives</p>\n<p>$$ \\theta = 90^\\circ $$</p>\n<p>So, the angle between $\\vec{A}$ and $\\vec{B}$ is</p>\n<p>$$ 90^\\circ $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो सदिश $\\vec{A}$ तथा $\\vec{B}$ इस प्रकार हैं कि $\\vec{A}+\\vec{B}=\\vec{C}$ है। साथ ही $A^2+B^2=C^2$ है। $\\vec{A}$ तथा $\\vec{B}$ के बीच का कोण, डिग्री में ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "vector-arithmetic",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mq3y2082",
+            "chapter": "vector-algebra",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The resultant of two forces $\\vec{F}_1$ and $\\vec{F}_2$ is $P$. If $\\vec{F}_2$ is reversed, then the new resultant is $Q$. Find the value of $\\frac{P^2+Q^2}{F_1^2+F_2^2}$.</p>",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>Let $\\theta$ be angle between $\\vec{F}_1$ and $\\vec{F}_2$, then</p>\n<p>$$P^2 = F_1^2 + F_2^2 + 2F_1F_2 \\cos\\theta$$......(1)</p>\n<p>Now, when $\\vec{F}_2$ is reversed, angle between $\\vec{F}_1$ and $-\\vec{F}_2$</p>\n<p>becomes $(180-\\theta)$. So,</p>\n<p>$$Q^2 = F_1^2 + F_2^2 + 2F_1F_2 \\cos(180-\\theta)$$</p>\n<p>$$\\Rightarrow Q^2 = F_1^2 + F_2^2 - 2F_1F_2 \\cos\\theta$$.........(2)</p>\n<p>Adding (1) and (2), we get</p>\n<p>$$ \\begin{aligned} & P^2+Q^2=2\\left(F_1^2+F_2^2\\right) \\\\ \\Rightarrow \\quad & \\frac{P^2+Q^2}{F_1^2+F_2^2}=2 \\end{aligned} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो बलों $\\vec{F}_1$ और $\\vec{F}_2$ का परिणामी $P$ है। यदि $\\vec{F}_2$ को विपरीत कर दिया जाता है, तो नया परिणामी $Q$ हो जाता है। $\\frac{P^2+Q^2}{F_1^2+F_2^2}$ का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "vector-arithmetic",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mq3y5xqv",
+            "chapter": "vector-algebra",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "If $\\hat{A}$ is a unit vector. The value $\\hat{A} \\cdot \\frac{d \\hat{A}}{d t}=$",
+                "options": [],
+                "answer": "0",
+                "explanation": "<p>We know $\\hat{A} \\cdot \\hat{A} = 1$, where $\\hat{A}$ is any unit vector.</p>\n<p>$\\Rightarrow$ $$\\frac{d}{dt}(\\hat{A} \\cdot \\hat{A}) = 0$$</p>\n<p>$\\Rightarrow$ $$\\hat{A} \\cdot \\frac{d\\hat{A}}{dt} + \\hat{A} \\cdot \\frac{d\\hat{A}}{dt} = 0$$</p>\n<p>$\\Rightarrow$ $$2\\left(\\hat{A} \\cdot \\frac{d\\hat{A}}{dt}\\right) = 0$$</p>\n<p>$\\Rightarrow$ $$\\hat{A} \\cdot \\frac{d\\hat{A}}{dt} = 0$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "यदि $\\hat{A}$ एक इकाई सदिश है, तो $\\hat{A} \\cdot \\frac{d \\hat{A}}{d t}=$ का मान है:",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "vector-arithmetic",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Fundamentals of Vectors, Addition and Subtraction of Vectors",
+    "timeAllotted": 2160000,
+    "title": "Vector Algebra Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mprafd6j",
+    "defaultLanguage": "en",
+    "description": "Fundamentals of Vectors, Addition and Subtraction of Vectors",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": false,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-08T00:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Fundamentals of Vectors, Addition and Subtraction of Vectors",
+    "timeAllotted": 2160000,
+    "title": "Vector Algebra Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Vector Algebra"
+  }
+}

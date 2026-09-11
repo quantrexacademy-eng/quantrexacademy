@@ -1,0 +1,46 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddafc03b9dcaf1afec47",
+  "topicId": "66a0ddb2c03b9dcaf1afec56",
+  "title": "Common Roots",
+  "concepts": [
+    {
+      "title": "Condition for one common root",
+      "conceptBody": "<h3><strong>Common Roots</strong></h3><p>(1) Only one root is common</p><p>Let <i>α </i>be the common root of quadratic equations ${{a}_{1}}{{x}^{2}}+{{b}_{1}}x+{{c}_{1}}=0$ and ${{a}_{2}}{{x}^{2}}+{{b}_{2}}x+{{c}_{2}}=0$.</p><p>∴ ${{a}_{1}}{{\\alpha }^{2}}+{{b}_{1}}\\alpha +{{c}_{1}}=0$, ${{a}_{2}}{{\\alpha }^{2}}+{{b}_{2}}\\alpha +{{c}_{2}}=0$</p><p>By Crammer’s rule : $\\frac{{{\\alpha }^{2}}}{\\left| \\,\\begin{matrix} -{{c}_{1}} &amp; {{b}_{1}} \\\\ -{{c}_{2}} &amp; {{b}_{2}} \\\\ \\end{matrix}\\, \\right|}=\\frac{\\alpha }{\\left| \\,\\begin{matrix} {{a}_{1}} &amp; -{{c}_{1}} \\\\ {{a}_{2}} &amp; -{{c}_{2}} \\\\ \\end{matrix}\\, \\right|}=\\frac{1}{\\left| \\,\\begin{matrix} {{a}_{1}} &amp; {{b}_{1}} \\\\ {{a}_{2}} &amp; {{b}_{2}} \\\\ \\end{matrix}\\, \\right|}$ or $\\frac{{{\\alpha }^{2}}}{{{b}_{1}}{{c}_{2}}-{{b}_{2}}{{c}_{1}}}=\\frac{\\alpha }{{{a}_{2}}{{c}_{1}}-{{a}_{1}}{{c}_{2}}}=\\frac{1}{{{a}_{1}}{{b}_{2}}-{{a}_{2}}{{b}_{1}}}$</p><p>∴ $\\alpha =\\frac{{{a}_{2}}{{c}_{1}}-{{a}_{1}}{{c}_{2}}}{{{a}_{1}}{{b}_{2}}-{{a}_{2}}{{b}_{1}}}=\\frac{{{b}_{1}}{{c}_{2}}-{{b}_{2}}{{c}_{1}}}{{{a}_{2}}{{c}_{1}}-{{a}_{1}}{{c}_{2}}}$, $\\alpha \\ne 0$</p><p>∴ The condition for only one root common is</p><p>${{({{c}_{1}}{{a}_{2}}-{{c}_{2}}{{a}_{1}})}^{2}}=({{b}_{1}}{{c}_{2}}-{{b}_{2}}{{c}_{1}})({{a}_{1}}{{b}_{2}}-{{a}_{2}}{{b}_{1}})$</p><p>(2) Both roots are common:</p><p>Then required condition is</p><p>$\\frac{{{a}_{1}}}{{{a}_{2}}}=\\frac{{{b}_{1}}}{{{b}_{2}}}=\\frac{{{c}_{1}}}{{{c}_{2}}}$</p>",
+      "position": 0,
+      "qcConcept": "66a0ddb3c03b9dcaf1afec57"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66891f2e1010aab82c8aa608",
+      "title": "If both the roots of $k\\left(6 x^2+3\\right)+r x+2 x^2-1=0$ and $6 k\\left(2 x^2+1\\right)+p x+4 x^2-2=0$ are common, then $2 r-p$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa609",
+      "title": "If the two equations $x^2-c x+d=0$ and $x^2-a x+b=0$ have one common root and the second has equal roots, then $2(b+d)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa60a",
+      "title": "If every pair of the equations\n$x^2+p x+q r=0, x^2+q x+r p=0, x^2+r x+p q=0$\nhave a common root, then the sum of three common roots is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa60b",
+      "title": "If $x^2+a x+10=0$ and $x^2+b x-10=0$ have a common root, then $a^2-b^2$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa60c",
+      "title": "$x^2-11 x+a$ and $x^2-14 x+2 a$ will have a common factor, if $a=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa60d64468eb1307ceb0b0",
+  "chapterId": "67fdff51378e1624ea7b6a22",
+  "subject": "Biology",
+  "chapter": "Sexual Reproduction in Flowering Plants",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff89378e1624ea7b6cbc",
+      "title": "Asexual Reproduction",
+      "count": 1,
+      "questionIds": [
+        "67fdff51378e1624ea7b6a20"
+      ]
+    },
+    {
+      "id": "67fdff89378e1624ea7b6cbd",
+      "title": "Sexual Reproduction",
+      "count": 1,
+      "questionIds": [
+        "67fdff71378e1624ea7b6b8e"
+      ]
+    }
+  ]
+}

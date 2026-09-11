@@ -1,0 +1,979 @@
+{
+  "files_scanned": 2700,
+  "total_questions": 231483,
+  "flagged_questions": 49809,
+  "issue_counts": {
+    "marks_cdn_figure": 22559,
+    "partial_blank_options": 22,
+    "empty_options": 962,
+    "stub_ABCD": 29290,
+    "bad_answer_index": 550
+  },
+  "samples": [
+    {
+      "id": 6,
+      "marksId": "66bb653c08a93761696e3230",
+      "source": "banks\\aiims.json",
+      "chapter": "Anatomy of Flowering Plants",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 34,
+      "marksId": "66bb65d208a93761696e3670",
+      "source": "banks\\aiims.json",
+      "chapter": "Animal Kingdom",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": true
+    },
+    {
+      "id": 36,
+      "marksId": "66bb65d208a93761696e366e",
+      "source": "banks\\aiims.json",
+      "chapter": "Animal Kingdom",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": true
+    },
+    {
+      "id": 45,
+      "marksId": "66bb656d08a93761696e3398",
+      "source": "banks\\aiims.json",
+      "chapter": "Animal Kingdom",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": true
+    },
+    {
+      "id": 70,
+      "marksId": "66bb64c008a93761696e2eb2",
+      "source": "banks\\aiims.json",
+      "chapter": "Animal Kingdom",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 78,
+      "marksId": "66bb656e08a93761696e339d",
+      "source": "banks\\aiims.json",
+      "chapter": "Biodiversity and its Conservation",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 82,
+      "marksId": "66bb663408a93761696e3938",
+      "source": "banks\\aiims.json",
+      "chapter": "Biodiversity and its Conservation",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 91,
+      "marksId": "66bb647608a93761696e2c93",
+      "source": "banks\\aiims.json",
+      "chapter": "Biodiversity and its Conservation",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 100,
+      "marksId": "66bb663508a93761696e393f",
+      "source": "banks\\aiims.json",
+      "chapter": "Biological Classification",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 107,
+      "marksId": "66bb663508a93761696e3940",
+      "source": "banks\\aiims.json",
+      "chapter": "Biological Classification",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 119,
+      "marksId": "66bb663508a93761696e393e",
+      "source": "banks\\aiims.json",
+      "chapter": "Biological Classification",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 129,
+      "marksId": "66bb65ba08a93761696e35c1",
+      "source": "banks\\aiims.json",
+      "chapter": "Biological Classification",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 138,
+      "marksId": "66bb65ce08a93761696e3655",
+      "source": "banks\\aiims.json",
+      "chapter": "Biomolecules (B)",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 139,
+      "marksId": "66bb659c08a93761696e34ea",
+      "source": "banks\\aiims.json",
+      "chapter": "Biomolecules (B)",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 155,
+      "marksId": "66bb64bd08a93761696e2e98",
+      "source": "banks\\aiims.json",
+      "chapter": "Biomolecules (B)",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 161,
+      "marksId": "66bb663308a93761696e392d",
+      "source": "banks\\aiims.json",
+      "chapter": "Cell - The Unit of Life",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 225,
+      "marksId": "66bb64ac08a93761696e2e1d",
+      "source": "banks\\aiims.json",
+      "chapter": "Ecosystem",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 236,
+      "marksId": "66bb660208a93761696e37cd",
+      "source": "banks\\aiims.json",
+      "chapter": "Morphology of Flowering Plants",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 237,
+      "marksId": "66bb663308a93761696e392e",
+      "source": "banks\\aiims.json",
+      "chapter": "Morphology of Flowering Plants",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 238,
+      "marksId": "66bb660208a93761696e37cc",
+      "source": "banks\\aiims.json",
+      "chapter": "Morphology of Flowering Plants",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 241,
+      "marksId": "66bb661b08a93761696e3881",
+      "source": "banks\\aiims.json",
+      "chapter": "Morphology of Flowering Plants",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 243,
+      "marksId": "66bb659e08a93761696e34f8",
+      "source": "banks\\aiims.json",
+      "chapter": "Morphology of Flowering Plants",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": true
+    },
+    {
+      "id": 248,
+      "marksId": "66bb658508a93761696e3445",
+      "source": "banks\\aiims.json",
+      "chapter": "Morphology of Flowering Plants",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 249,
+      "marksId": "66bb656c08a93761696e3390",
+      "source": "banks\\aiims.json",
+      "chapter": "Morphology of Flowering Plants",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": true
+    },
+    {
+      "id": 250,
+      "marksId": "66bb655508a93761696e32e4",
+      "source": "banks\\aiims.json",
+      "chapter": "Morphology of Flowering Plants",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 251,
+      "marksId": "66bb653c08a93761696e322c",
+      "source": "banks\\aiims.json",
+      "chapter": "Morphology of Flowering Plants",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 260,
+      "marksId": "66bb660208a93761696e37cb",
+      "source": "banks\\aiims.json",
+      "chapter": "Morphology of Flowering Plants",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 261,
+      "marksId": "66bb65e908a93761696e371b",
+      "source": "banks\\aiims.json",
+      "chapter": "Morphology of Flowering Plants",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 262,
+      "marksId": "66bb663308a93761696e392f",
+      "source": "banks\\aiims.json",
+      "chapter": "Morphology of Flowering Plants",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 274,
+      "marksId": "66bb652208a93761696e3177",
+      "source": "banks\\aiims.json",
+      "chapter": "Morphology of Flowering Plants",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 290,
+      "marksId": "66bb653d08a93761696e3236",
+      "source": "banks\\aiims.json",
+      "chapter": "Plant - Growth and Development",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 294,
+      "marksId": "66bb64a808a93761696e2e01",
+      "source": "banks\\aiims.json",
+      "chapter": "Plant - Growth and Development",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 309,
+      "marksId": "66bb652408a93761696e3181",
+      "source": "banks\\aiims.json",
+      "chapter": "Plant - Growth and Development",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 314,
+      "marksId": "66bb662008a93761696e38a5",
+      "source": "banks\\aiims.json",
+      "chapter": "Plant Kingdom",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 321,
+      "marksId": "66bb65a308a93761696e351f",
+      "source": "banks\\aiims.json",
+      "chapter": "Plant Kingdom",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 327,
+      "marksId": "66bb657108a93761696e33b6",
+      "source": "banks\\aiims.json",
+      "chapter": "Plant Kingdom",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 349,
+      "marksId": "66bb652808a93761696e319f",
+      "source": "banks\\aiims.json",
+      "chapter": "The Living World",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 365,
+      "marksId": "66bb663208a93761696e392b",
+      "source": "banks\\aiims.json",
+      "chapter": "Transport in Plants",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 368,
+      "marksId": "66bb652208a93761696e3172",
+      "source": "banks\\aiims.json",
+      "chapter": "Transport in Plants",
+      "subject": "Botany",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 400,
+      "marksId": "66bb65c708a93761696e3622",
+      "source": "banks\\aiims.json",
+      "chapter": "Chemical Bonding and Molecular Structure",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": true
+    },
+    {
+      "id": 405,
+      "marksId": "66bb65ae08a93761696e356f",
+      "source": "banks\\aiims.json",
+      "chapter": "Chemical Bonding and Molecular Structure",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 451,
+      "marksId": "66bb645208a93761696e2b8f",
+      "source": "banks\\aiims.json",
+      "chapter": "Chemical Bonding and Molecular Structure",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": true
+    },
+    {
+      "id": 496,
+      "marksId": "66bb64a108a93761696e2dcc",
+      "source": "banks\\aiims.json",
+      "chapter": "Chemical Equilibrium",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": true
+    },
+    {
+      "id": 518,
+      "marksId": "66bb650608a93761696e30a8",
+      "source": "banks\\aiims.json",
+      "chapter": "Chemical Kinetics",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": true
+    },
+    {
+      "id": 522,
+      "marksId": "66bb65cd08a93761696e364b",
+      "source": "banks\\aiims.json",
+      "chapter": "Chemical Kinetics",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 528,
+      "marksId": "66bb64a208a93761696e2dd3",
+      "source": "banks\\aiims.json",
+      "chapter": "Chemical Kinetics",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": true
+    },
+    {
+      "id": 543,
+      "marksId": "66bb64ed08a93761696e2ff3",
+      "source": "banks\\aiims.json",
+      "chapter": "Chemistry in Everyday Life",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": true
+    },
+    {
+      "id": 546,
+      "marksId": "66bb647108a93761696e2c71",
+      "source": "banks\\aiims.json",
+      "chapter": "Chemistry in Everyday Life",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": true
+    },
+    {
+      "id": 553,
+      "marksId": "66bb64ed08a93761696e2ff4",
+      "source": "banks\\aiims.json",
+      "chapter": "Chemistry in Everyday Life",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": true
+    },
+    {
+      "id": 591,
+      "marksId": "66bb651b08a93761696e3144",
+      "source": "banks\\aiims.json",
+      "chapter": "Coordination Compounds",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 593,
+      "marksId": "66bb651c08a93761696e3146",
+      "source": "banks\\aiims.json",
+      "chapter": "Coordination Compounds",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 671,
+      "marksId": "66bb65ca08a93761696e363a",
+      "source": "banks\\aiims.json",
+      "chapter": "Electrochemistry",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 684,
+      "marksId": "66bb651d08a93761696e314c",
+      "source": "banks\\aiims.json",
+      "chapter": "Electrochemistry",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 727,
+      "marksId": "66bb661708a93761696e3865",
+      "source": "banks\\aiims.json",
+      "chapter": "General Principles and Processes of Isolation of Metals",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 775,
+      "marksId": "66bb64cf08a93761696e2f1b",
+      "source": "banks\\aiims.json",
+      "chapter": "Ionic Equilibrium",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 867,
+      "marksId": "66bb661708a93761696e3863",
+      "source": "banks\\aiims.json",
+      "chapter": "Polymers",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 879,
+      "marksId": "66bb65e508a93761696e36fd",
+      "source": "banks\\aiims.json",
+      "chapter": "Polymers",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 989,
+      "marksId": "66bb662e08a93761696e390b",
+      "source": "banks\\aiims.json",
+      "chapter": "Some Basic Concepts of Chemistry",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1072,
+      "marksId": "66bb645308a93761696e2b97",
+      "source": "banks\\aiims.json",
+      "chapter": "Structure of Atom",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": true
+    },
+    {
+      "id": 1080,
+      "marksId": "66bb643c08a93761696e2ae9",
+      "source": "banks\\aiims.json",
+      "chapter": "Structure of Atom",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1148,
+      "marksId": "66bb651a08a93761696e313d",
+      "source": "banks\\aiims.json",
+      "chapter": "Thermodynamics (C)",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1165,
+      "marksId": "66bb646d08a93761696e2c56",
+      "source": "banks\\aiims.json",
+      "chapter": "Thermodynamics (C)",
+      "subject": "Chemistry",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1186,
+      "marksId": "66bb65c308a93761696e3605",
+      "source": "banks\\aiims.json",
+      "chapter": "Alternating Current",
+      "subject": "Physics",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1187,
+      "marksId": "66bb65db08a93761696e36b5",
+      "source": "banks\\aiims.json",
+      "chapter": "Alternating Current",
+      "subject": "Physics",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": true
+    },
+    {
+      "id": 1203,
+      "marksId": "66bb64b108a93761696e2e47",
+      "source": "banks\\aiims.json",
+      "chapter": "Alternating Current",
+      "subject": "Physics",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1205,
+      "marksId": "66bb649808a93761696e2d8c",
+      "source": "banks\\aiims.json",
+      "chapter": "Alternating Current",
+      "subject": "Physics",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1209,
+      "marksId": "66bb649808a93761696e2d8d",
+      "source": "banks\\aiims.json",
+      "chapter": "Alternating Current",
+      "subject": "Physics",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1217,
+      "marksId": "66bb65f208a93761696e375b",
+      "source": "banks\\aiims.json",
+      "chapter": "Capacitance",
+      "subject": "Physics",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1219,
+      "marksId": "66bb65c208a93761696e35fb",
+      "source": "banks\\aiims.json",
+      "chapter": "Capacitance",
+      "subject": "Physics",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1220,
+      "marksId": "66bb662408a93761696e38c6",
+      "source": "banks\\aiims.json",
+      "chapter": "Capacitance",
+      "subject": "Physics",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1225,
+      "marksId": "66bb651308a93761696e3107",
+      "source": "banks\\aiims.json",
+      "chapter": "Capacitance",
+      "subject": "Physics",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1227,
+      "marksId": "66bb64fb08a93761696e305a",
+      "source": "banks\\aiims.json",
+      "chapter": "Capacitance",
+      "subject": "Physics",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1229,
+      "marksId": "66bb64b008a93761696e2e3b",
+      "source": "banks\\aiims.json",
+      "chapter": "Capacitance",
+      "subject": "Physics",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1230,
+      "marksId": "66bb643708a93761696e2ac7",
+      "source": "banks\\aiims.json",
+      "chapter": "Capacitance",
+      "subject": "Physics",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1231,
+      "marksId": "66bb65f208a93761696e375a",
+      "source": "banks\\aiims.json",
+      "chapter": "Capacitance",
+      "subject": "Physics",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1232,
+      "marksId": "66bb662408a93761696e38c7",
+      "source": "banks\\aiims.json",
+      "chapter": "Capacitance",
+      "subject": "Physics",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1236,
+      "marksId": "66bb644e08a93761696e2b6f",
+      "source": "banks\\aiims.json",
+      "chapter": "Capacitance",
+      "subject": "Physics",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1244,
+      "marksId": "66bb65f108a93761696e3754",
+      "source": "banks\\aiims.json",
+      "chapter": "Center of Mass, Momentum and Collision",
+      "subject": "Physics",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1259,
+      "marksId": "66bb649608a93761696e2d81",
+      "source": "banks\\aiims.json",
+      "chapter": "Center of Mass, Momentum and Collision",
+      "subject": "Physics",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": false
+    },
+    {
+      "id": 1260,
+      "marksId": "66bb649608a93761696e2d82",
+      "source": "banks\\aiims.json",
+      "chapter": "Center of Mass, Momentum and Collision",
+      "subject": "Physics",
+      "issues": [
+        "marks_cdn_figure"
+      ],
+      "n_opts": 4,
+      "has_img_opt": true
+    }
+  ],
+  "empty_or_stub": 30252,
+  "marks_cdn_figures": 22559,
+  "latex_junk": 0,
+  "broken_html": 0,
+  "bad_answers": 550
+}

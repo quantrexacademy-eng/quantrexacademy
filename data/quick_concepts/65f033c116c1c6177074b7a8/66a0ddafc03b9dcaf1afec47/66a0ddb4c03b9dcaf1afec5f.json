@@ -1,0 +1,58 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddafc03b9dcaf1afec47",
+  "topicId": "66a0ddb4c03b9dcaf1afec5f",
+  "title": "N degree equation",
+  "concepts": [
+    {
+      "title": "equations reducible to quadratic equation by substitution",
+      "conceptBody": "<h3><strong>Higher Degree Equations</strong></h3><p>The equation \\( p(x) = a_{0} x^{n} + a_{1} x^{n-1} + \\ldots + a_{n-1} x + a_{n} = 0 \\) …(i)</p><p>Where the coefficients \\( a_{0}, a_{1}, \\ldots, a_{n} \\in \\mathbb{R} \\) (or <i>\\(\\mathbb{C}\\) </i>) and \\( a_{0} \\ne 0 \\) is called an equation of <i>n</i>-th degree, which has exactly <i>n</i> roots \\( \\alpha_{1}, \\alpha_{2}, \\ldots, \\alpha_{n} \\in \\mathbb{C} \\), then we can write</p><p>\\( p(x) = a_{0} (x - \\alpha_{1}) (x - \\alpha_{2}) \\ldots (x - \\alpha_{n}) \\)</p><p>\\( = a_{0} \\left\\{ x^{n} - (\\Sigma \\alpha_{1}) x^{n-1} + (\\Sigma \\alpha_{1} \\alpha_{2}) x^{n-2} - \\ldots + (-1)^{n} \\alpha_{1} \\alpha_{2} \\ldots \\alpha_{n} \\right\\} \\) …(ii)</p><p>Comparing (i) and (ii), \\( \\Sigma \\alpha_{1} = \\alpha_{1} + \\alpha_{2} + \\ldots + \\alpha_{n} = -\\frac{a_{1}}{a_{0}} \\)</p><p>\\( \\Sigma \\alpha_{1} \\alpha_{2} = \\alpha_{1} \\alpha_{2} + \\ldots + \\alpha_{n-1} \\alpha_{n} = \\frac{a_{2}}{a_{0}} \\)</p><p>and so on and \\( \\alpha_{1} \\alpha_{2} \\ldots \\alpha_{n} = (-1)^{n} \\frac{a_{n}}{a_{0}} \\)</p><p><strong>Cubic equation:</strong> When \\( n = 3 \\), the equation is a cubic of the form \\( ax^{3} + bx^{2} + cx + d = 0 \\), and we have in this case</p><p>\\( \\alpha + \\beta + \\gamma = -\\frac{b}{a}; \\quad \\alpha \\beta + \\beta \\gamma + \\gamma \\alpha = \\frac{c}{a}; \\quad \\alpha \\beta \\gamma = -\\frac{d}{a} \\)</p><p><strong>Biquadratic equation:</strong> If \\( \\alpha, \\beta, \\gamma, \\delta \\) are roots of the biquadratic equation \\( ax^{4} + bx^{3} + cx^{2} + dx + e = 0 \\), then</p><p><strong>\\( \\sigma_{1} = \\alpha + \\beta + \\gamma + \\delta = -\\frac{b}{a} \\)</strong></p><p><strong>\\( \\sigma_{2} = \\alpha \\beta + \\alpha \\gamma + \\alpha \\delta + \\beta \\gamma + \\beta \\delta + \\gamma \\delta = \\frac{c}{a} \\)</strong></p><p><strong>\\( \\sigma_{3} = \\alpha \\beta \\gamma + \\alpha \\beta \\delta + \\alpha \\gamma \\delta + \\beta \\gamma \\delta = -\\frac{d}{a} \\)</strong></p><p><strong>\\( \\sigma_{4} = \\alpha \\beta \\gamma \\delta = \\frac{e}{a} \\)</strong></p><p><strong>Formation of a polynomial equation from given roots:</strong> If \\( \\alpha_{1}, \\alpha_{2}, \\alpha_{3}, \\ldots, \\alpha_{n} \\) are the roots of a polynomial equation of degree <i>n</i>, then the equation is</p><p>\\( x^{n} - \\sigma_{1} x^{n-1} + \\sigma_{2} x^{n-2} - \\sigma_{3} x^{n-3} + \\ldots + (-1)^{n} \\sigma_{n} = 0 \\)</p><p>where \\( \\sigma_{r} = \\sum \\alpha_{1} \\alpha_{2} \\ldots \\alpha_{r} \\).</p><p><strong>Cubic equation:</strong> If \\( \\alpha, \\beta, \\gamma \\) are the roots of a cubic equation, then the equation is \\( x^{3} - \\sigma_{1} x^{2} + \\sigma_{2} x - \\sigma_{3} = 0 \\) or <strong>\\( x^{3} - (\\alpha + \\beta + \\gamma) x^{2} + (\\alpha \\beta + \\alpha \\gamma + \\beta \\gamma) x - \\alpha \\beta \\gamma = 0 \\)</strong></p><p><strong>Biquadratic Equation:</strong> If <strong>\\( \\alpha, \\beta, \\gamma, \\delta \\)</strong> are the roots of a biquadratic equation, then the equation is</p><p>\\( x^{4} - \\sigma_{1} x^{3} + \\sigma_{2} x^{2} - \\sigma_{3} x + \\sigma_{4} = 0 \\)</p><p>or \\( x^{4} - (\\alpha + \\beta + \\gamma + \\delta) x^{3} + (\\alpha \\beta + \\alpha \\gamma + \\alpha \\delta + \\beta \\gamma + \\beta \\delta + \\gamma \\delta) x^{2} - (\\alpha \\beta \\gamma + \\alpha \\beta \\delta + \\alpha \\gamma \\delta + \\beta \\gamma \\delta) x + \\alpha \\beta \\gamma \\delta = 0 \\)</p>",
+      "position": 0,
+      "qcConcept": "66a0ddb4c03b9dcaf1afec60"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66891f2e1010aab82c8aa61a",
+      "title": "The maximum possible number of real roots of equation $x^5-6 x^2-4 x+5=0$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa61b",
+      "title": "If the equation $a_n x^n+a_{n-1} x^{n-1}+\\ldots .+a_1 x=0, \\quad a_1 \\neq 0$,$n \\geq 2$, has a positive root $x=\\alpha$, then the equation $n a_n x^{n-1}+(n-1) a_{n-1} x^{n-2}+\\ldots .+a_1=0$ has a positive root, which is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa61c",
+      "title": "The roots of the equation $x^4-4 x^3+6 x^2-4 x+1=0$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa61d",
+      "title": "Let $\\mathrm{a}, \\mathrm{b}$ be the solutions of $\\mathrm{x}^2+\\mathrm{px}+1=0$ and $\\mathrm{c}$, $\\mathrm{d}$ be the solution of $\\mathrm{x}^2+\\mathrm{qx}+1=0$. If $(\\mathrm{a}-\\mathrm{c})(\\mathrm{b}-\\mathrm{c})$ and $(\\mathrm{a}+\\mathrm{d})(\\mathrm{b}+\\mathrm{d})$ are the solution of $\\mathrm{x}^2+\\mathrm{ax}+\\beta=0$, then $\\beta$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa61e",
+      "title": "What is the number of solutions to the equation $x^n-5 x^{n-1}+6 x^{n-2}=0$ ?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa61f",
+      "title": "Consider the equation $x^n-5 x^{n-1}+6 x^{n-2}=0$, where $n$ is a positive integer. What is the sum of all possible real roots of this equation?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa620",
+      "title": "What is the sum of the roots of the equation $x^3-6 x^2+11 x-6=0$ ?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

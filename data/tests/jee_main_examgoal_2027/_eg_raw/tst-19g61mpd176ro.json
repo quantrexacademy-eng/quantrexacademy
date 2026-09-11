@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mpd176ro",
+  "title": "Chemical Kinetics Test - 3 (Topic Test)",
+  "type": "topic",
+  "section": "Chemical Kinetics",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-07-15T14:30:00.000Z",
+  "status": "ok",
+  "analysisId": "f25c3375-d0df-4d77-88d6-503629b4c051",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g61mpd176ro",
+    "defaultLanguage": "en",
+    "description": "Integrated Rate Law Equations",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-15T14:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrm2b845",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>One drop of a solution has a volume of 0.05 mL and contains $3.0 \\times 10^{-6}$ moles of $H^+$. The rate constant for the loss of $H^+$ is $1.0 \\times 10^7$ mole litre$^{-1}$ sec$^{-1}$. Find the time needed for all the $H^+$ present in the drop to be used up :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$6 \\times 10^{-8}$ sec</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$6 \\times 10^{-7}$ sec</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$6 \\times 10^{-9}$ sec</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$6 \\times 10^{-10}$ sec</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>We are given:</p>\n<p>Volume of the drop, $V = 0.05 \\text{ mL}$</p>\n<p>Since concentration is typically expressed in liters, let's convert this volume into liters:</p>\n<p>$$V = 0.05 \\times 10^{-3} \\text{ L} = 5 \\times 10^{-5} \\text{ L}$$</p>\n<p>The number of moles of $H^+$ present in the drop, $n = 3.0 \\times 10^{-6} \\text{ moles}$.</p>\n<p>Now, the initial concentration of $H^+$ is simply the moles divided by the volume in liters:</p>\n<p>$$[H^+]_0 = \\frac{n}{V}$$</p>\n<p>$$[H^+]_0 = \\frac{3.0 \\times 10^{-6}}{5 \\times 10^{-5}} \\text{ mol L}^{-1}$$</p>\n<p>$$[H^+]_0 = 0.6 \\times 10^{-1} = 6 \\times 10^{-2} \\text{ mol L}^{-1}$$</p>\n<p>Next, we look at the rate constant given in the problem:</p>\n<p>$k = 1.0 \\times 10^7 \\text{ mole litre}^{-1} \\text{ sec}^{-1}$</p>\n<p>By observing the unit of the rate constant ($\\text{mol L}^{-1} \\text{ s}^{-1}$), we can identify that the disappearance of $H^+$ follows zero-order kinetics. </p>\n<p>For a zero-order reaction, the relationship between concentration and time is given by:</p>\n<p>$$[A] = [A]_0 - kt$$</p>\n<p>For complete disappearance, the final concentration $[A]$ will be zero. Substituting this into the equation, the time taken $t$ for the reactant to completely disappear becomes:</p>\n<p>$$t = \\frac{[A]_0}{k}$$</p>\n\n<p>$$t = \\frac{6 \\times 10^{-2} \\text{ mol L}^{-1}}{1.0 \\times 10^7 \\text{ mol L}^{-1} \\text{ s}^{-1}}$$</p>\n<p>$$t = 6 \\times 10^{-2} \\times 10^{-7} \\text{ sec}$$</p>\n<p>$$t = 6 \\times 10^{-9} \\text{ sec}$$</p>\n<p>The $H^+$ ions in the drop will take $6 \\times 10^{-9} \\text{ sec}$ to completely disappear.</p>\n<p>Option C is the correct choice.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक विलयन की एक बूंद का आयतन 0.05 mL है और इसमें $H^+$ के $3.0 \\times 10^{-6}$ मोल हैं। $H^+$ के क्षय के लिए दर नियतांक $1.0 \\times 10^7$ मोल लीटर$^{-1}$ सेकंड$^{-1}$ है। बूंद में उपस्थित सभी $H^+$ के पूर्ण रूप से समाप्त होने में लगने वाला समय ज्ञात कीजिए:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$6 \\times 10^{-8}$ सेकंड</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$6 \\times 10^{-7}$ सेकंड</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$6 \\times 10^{-9}$ सेकंड</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$6 \\times 10^{-10}$ सेकंड</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "integrated-rate-law-equations",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrm282mf",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the reaction A → 2B, the rate constant is $1.0 \\times 10^{-3}$ mol lit<sup>−1</sup> min<sup>−1</sup>. Starting with 1.0 mole lit<sup>−1</sup> of A, find the concentration of B after 100 minutes.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.1 mol lit<sup>−1</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.2 mol lit<sup>−1</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.9 mol lit<sup>−1</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1.8 mol lit<sup>−1</sup></p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The unit of the rate constant is given as</p>\n<p>$$ \\text{mol L}^{-1}\\text{ min}^{-1} $$</p>\n<p>This is the unit of rate, so the reaction is a zero order reaction.</p>\n<p>For a zero order reaction,</p>\n<p>$$ [A] = [A]_0 - kt $$</p>\n<p>Given,</p>\n<p>$$ [A]_0 = 1.0 \\text{ mol L}^{-1} $$</p>\n<p>$$ k = 1.0 \\times 10^{-3} \\text{ mol L}^{-1}\\text{ min}^{-1} $$</p>\n<p>$$ t = 100 \\text{ min} $$</p>\n<p>So,</p>\n<p>$$ [A] = 1.0 - (1.0 \\times 10^{-3})(100) $$</p>\n<p>$$ [A] = 1.0 - 0.1 $$</p>\n<p>$$ [A] = 0.9 \\text{ mol L}^{-1} $$</p>\n<p>So, concentration of $A$ used up is</p>\n<p>$$ 1.0 - 0.9 = 0.1 \\text{ mol L}^{-1} $$</p>\n<p>The reaction is</p>\n<p>$$ A \\rightarrow 2B $$</p>\n<p>This means 1 mole of $A$ gives 2 moles of $B$.</p>\n<p>So, concentration of $B$ formed is</p>\n<p>$$ 2 \\times 0.1 = 0.2 \\text{ mol L}^{-1} $$</p>\n<p>Hence, the concentration of $B$ after 100 minutes is</p>\n<p>$$ \\boxed{0.2 \\text{ mol L}^{-1}} $$</p>\n<p>Correct option: <strong>B</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अभिक्रिया A → 2B के लिए, दर नियतांक $1.0 \\times 10^{-3}$ mol lit<sup>−1</sup> min<sup>−1</sup> है। A के 1.0 mole lit<sup>−1</sup> से प्रारंभ करके, 100 मिनट पश्चात् B की सांद्रता ज्ञात कीजिए।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.1 mol lit<sup>−1</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.2 mol lit<sup>−1</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.9 mol lit<sup>−1</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1.8 mol lit<sup>−1</sup></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "integrated-rate-law-equations",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrm2q29k",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In the case of a zero-order reaction,</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>doubling the initial concentration makes the rate of reaction twice.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>the half-change time is one-half of the time required for the reaction to finish.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>the half-change time does not depend on the initial concentration.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>the time required for the reaction to finish does not depend on the initial concentration.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For a zero-order reaction, the rate is independent of the concentration of the reactant.</p>\n<p>For a zero-order reaction,</p>\n<p>$$ \\text{Rate} = k $$</p>\n<p>and its integrated rate equation is</p>\n<p>$$ [A] = [A]_0 - kt $$</p>\n<p>For half change, the concentration becomes</p>\n<p>$$ [A] = \\frac{[A]_0}{2} $$</p>\n<p>So,</p>\n<p>$$ \\frac{[A]_0}{2} = [A]_0 - kt_{1/2} $$</p>\n<p>$$ kt_{1/2} = \\frac{[A]_0}{2} $$</p>\n<p>$$ t_{1/2} = \\frac{[A]_0}{2k} $$</p>\n<p>For completion of the reaction, the concentration becomes zero:</p>\n<p>$$ [A] = 0 $$</p>\n<p>So,</p>\n<p>$$ 0 = [A]_0 - kt $$</p>\n<p>$$ t = \\frac{[A]_0}{k} $$</p>\n<p>Now compare:</p>\n<p>$$ t_{1/2} = \\frac{[A]_0}{2k} $$</p>\n<p>and</p>\n<p>$$ t_{\\text{completion}} = \\frac{[A]_0}{k} $$</p>\n<p>So,</p>\n<p>$$ t_{1/2} = \\frac{1}{2}t_{\\text{completion}} $$</p>\n<p>Hence, the correct option is:</p>\n<p>$$ \\boxed{\\text{Option B}} $$</p>\n<p>The time for half change is half the time taken for completion of the reaction.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>शून्य-कोटि की अभिक्रिया के मामले में,</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>प्रारंभिक सांद्रता को दोगुना करने पर अभिक्रिया की दर दोगुनी हो जाती है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>अर्ध-परिवर्तन का समय अभिक्रिया को पूर्ण होने में लगने वाले समय का आधा होता है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>अर्ध-परिवर्तन का समय प्रारंभिक सांद्रता पर निर्भर नहीं करता है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>अभिक्रिया को पूर्ण होने में लगने वाला समय प्रारंभिक सांद्रता पर निर्भर नहीं करता है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "integrated-rate-law-equations",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrm2htp1",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the reaction $2A + B \\rightarrow$ product, the rate expression is given as $-\\frac{d[A]}{dt} = k[A]$. When the time is $t = \\frac{1}{k}$, the concentration of the reactant will be : ($C_0$ = initial concentration)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{C_0}{e}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$C_0 e$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{C_0}{e^2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{1}{C_0}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>We are given the reaction $2A + B \\rightarrow \\text{product}$ and its rate law is expressed as:</p>\n<p>$$-\\frac{d[A]}{dt} = k[A]$$</p>\n<p>This tells us it is a first-order reaction with respect to reactant A. To find the concentration of A at any given time, we need to integrate this differential rate equation. </p>\n<p>Let's rearrange the equation by keeping the concentration terms on one side and the time term on the other side:</p>\n<p>$$\\frac{d[A]}{[A]} = -k \\, dt$$</p>\n<p>Now, we will integrate both sides. At the start of the reaction when time $t = 0$, the initial concentration of A is given as $C_0$. Let the concentration of A at time $t$ be $C$.</p>\n<p>$$\\int_{C_0}^{C} \\frac{d[A]}{[A]} = -k \\int_{0}^{t} dt$$</p>\n\n<p>$$\\ln[A] \\Big|_{C_0}^{C} = -k [t]_0^t$$</p>\n<p>$$\\ln C - \\ln C_0 = -kt$$</p>\n\n<p>$$\\ln \\left( \\frac{C}{C_0} \\right) = -kt$$</p>\n\n<p>$$\\frac{C}{C_0} = e^{-kt}$$</p>\n<p>$$C = C_0 e^{-kt}$$</p>\n<p>The question asks for the concentration $C$ at the specific time $t = \\frac{1}{k}$.</p>\n<p>$$C = C_0 e^{-k \\left(\\frac{1}{k}\\right)}$$</p>\n<p>$$C = C_0 e^{-1}$$</p>\n<p>$$C = \\frac{C_0}{e}$$</p>\n<p>The concentration of the reactant at $t = \\frac{1}{k}$ is $\\frac{C_0}{e}$.</p>\n<p>Option A is the correct answer.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अभिक्रिया $2A + B \\rightarrow$ उत्पाद के लिए, दर व्यंजक $-\\frac{d[A]}{dt} = k[A]$ दिया गया है। जब समय $t = \\frac{1}{k}$ है, तो अभिकारक की सांद्रता होगी : ($C_0$ = प्रारंभिक सांद्रता)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{C_0}{e}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$C_0 e$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{C_0}{e^2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{1}{C_0}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "integrated-rate-law-equations",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrm2looa",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For a first order reaction, the half-life of the reactant is ten minutes. After the reaction proceeds for one hour, what fraction of the reactant will remain?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1/6 of initial concentration</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1/64 of initial concentration</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1/12 of initial concentration</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1/32 of initial concentration</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For a first order reaction, the half-life is the time in which the concentration becomes half of its initial value.</p>\n<p>Given,</p>\n<p>$$t_{1/2}=10\\ \\text{minutes}$$</p>\n<p>Total time is one hour:</p>\n<p>$$1\\ \\text{hour}=60\\ \\text{minutes}$$</p>\n<p>Number of half-lives in 60 minutes:</p>\n<p>$$\\frac{60}{10}=6$$</p>\n<p>After each half-life, the amount becomes half.</p>\n<p>So after 6 half-lives, the fraction left will be</p>\n<p>$$\\left(\\frac{1}{2}\\right)^6=\\frac{1}{64}$$</p>\n<p>So, the fraction of substance left after one hour is</p>\n<p>$$\\boxed{\\frac{1}{64}}$$</p>\n<p>Correct option: Option B, $\\frac{1}{64}$ of initial concentration.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>प्रथम कोटि की अभिक्रिया के लिए, अभिकारक की अर्ध-आयु दस मिनट है। अभिक्रिया को एक घंटे तक चलने देने के बाद, अभिकारक का कितना अंश शेष बचेगा?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>प्रारंभिक सांद्रता का 1/6</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>प्रारंभिक सांद्रता का 1/64</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>प्रारंभिक सांद्रता का 1/12</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>प्रारंभिक सांद्रता का 1/32</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "integrated-rate-law-equations",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrm2sdqh",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For a zero-order reaction A &rarr; B, 75% of A gets converted in 1 h. What percentage of A will remain unreacted after 2 h?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>12.5%</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>6.25%</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3.12%</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0%</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For a zero-order reaction, the concentration of reactant decreases linearly with time:</p>\n<p>$$ [A] = [A]_0 - kt $$</p>\n<p>Suppose the initial amount of $A$ is $100\\%$.</p>\n<p>At the end of $1$ h, $A$ is $75\\%$ reacted.</p>\n<p>So, amount of $A$ left after $1$ h is</p>\n<p>$$ 100\\% - 75\\% = 25\\% $$</p>\n<p>This means in $1$ h, $75\\%$ of $A$ is consumed.</p>\n<p>For a zero-order reaction, the same amount is consumed in equal intervals of time, as long as reactant is available.</p>\n<p>So in the next $1$ h, another $75\\%$ would be required to react. But only $25\\%$ is left.</p>\n<p>Hence, all the remaining $A$ will be consumed before $2$ h.</p>\n<p>So, at the end of $2$ h, the amount of $A$ left unreacted is</p>\n<p>$$ 0\\% $$</p>\n<p>Correct option: D, $0\\%$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>शून्य-कोटि की अभिक्रिया A &rarr; B के लिए, 1 h में A का 75% परिवर्तित हो जाता है। 2 h के बाद A का कितना प्रतिशत बिना अभिक्रिया किये शेष रहेगा?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>12.5%</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>6.25%</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3.12%</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0%</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "integrated-rate-law-equations",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrm2jv0r",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Substances A ($t_{1/2} = 5$ min) and B ($t_{1/2} = 15$ min) are chosen so that at the start $[A] = 4[B]$.</p>\n<p>After what time will their concentrations become equal? (Consider both reactions to be first order)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>5 min</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>15 min</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>20 min</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>the concentrations will never become equal</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For a first order reaction,</p>\n<p>$$ t_{1/2}=\\frac{0.693}{k} $$</p>\n<p>So the substance with smaller half-life decays faster.  </p>\n<p>Here, A has half-life $5$ min and B has half-life $15$ min.</p>\n<p>Initially,</p>\n<p>$$ [A]_0 = 4[B]_0 $$</p>\n<p>Now check what happens after $15$ min.</p>\n<p>For A, half-life is $5$ min, so in $15$ min it completes:</p>\n<p>$$ \\frac{15}{5}=3 $$</p>\n<p>half-lives.</p>\n<p>So concentration of A becomes:</p>\n<p>$$ [A]=\\frac{[A]_0}{2^3} =\\frac{4[B]_0}{8} =\\frac{[B]_0}{2} $$</p>\n<p>For B, half-life is $15$ min, so in $15$ min it completes $1$ half-life.</p>\n<p>So concentration of B becomes:</p>\n<p>$$ [B]=\\frac{[B]_0}{2} $$</p>\n<p>Thus after $15$ min,</p>\n<p>$$ [A]=[B] $$</p>\n<p>So the time after which both concentrations become equal is</p>\n<p>$$ \\boxed{15\\text{ min}} $$</p>\n<p>Correct option: Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>पदार्थ A ($t_{1/2} = 5$ min) और B ($t_{1/2} = 15$ min) को इस प्रकार लिया जाता है कि प्रारंभ में $[A] = 4[B]$ हो।</p><p>कितने समय पश्चात उनकी सांद्रताएँ समान हो जाएंगी? (दोनो अभिक्रियाओं को प्रथम कोटि का मानें)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>5 min</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>15 min</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>20 min</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>सांद्रताएँ कभी समान नहीं होंगी</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "integrated-rate-law-equations",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrm2yhp8",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the zero-order reaction A(g) &rarr; 2B(g), the starting rate is 0.01 M min<sup>−1</sup>. Given that the initial concentration of 'A' is 0.1 M, what will be the concentration of 'B' after 60 s?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.09 M</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.01 M</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.02 M</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1.2 M</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For the zero-order reaction,</p>\n<p>$$ A(g) \\rightarrow 2B(g) $$</p>\n<p>The initial rate is given as</p>\n<p>$$ 0.01 \\ \\text{M min}^{-1} $$</p>\n<p>For a zero-order reaction, the rate remains constant as long as the reactant is present.</p>\n<p>Time given:</p>\n<p>$$ 60 \\ \\text{s} = 1 \\ \\text{min} $$</p>\n<p>So, concentration of $A$ used in $1$ minute is</p>\n<p>$$ 0.01 \\times 1 = 0.01 \\ \\text{M} $$</p>\n<p>Now, from the reaction,</p>\n<p>$$ 1 \\text{ mole of } A \\text{ gives } 2 \\text{ moles of } B $$</p>\n<p>So, if $0.01 \\ \\text{M}$ of $A$ is consumed, then concentration of $B$ formed is</p>\n<p>$$ 2 \\times 0.01 = 0.02 \\ \\text{M} $$</p>\n<p>Hence, the concentration of $B$ after $60$ seconds is</p>\n<p>$$ \\boxed{0.02 \\ \\text{M}} $$</p>\n<p>Correct option: C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>शून्य-कोटि की अभिक्रिया A(g) &rarr; 2B(g) के लिए, प्रारंभिक दर 0.01 M min<sup>−1</sup> है। यदि 'A' की प्रारंभिक सांद्रता 0.1 M दी गई है, तो 60 s के बाद 'B' की सांद्रता क्या होगी?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.09 M</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.01 M</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.02 M</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1.2 M</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "integrated-rate-law-equations",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrm31the",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A gaseous first-order reaction A(g) &rarr; nB(g) is carried out by taking only &lsquo;A&rsquo; initially. The temperature and volume are kept unchanged during the reaction. If the pressure at the start is $P_0$ and the reaction rate constant is &lsquo;K&rsquo;, then the total pressure of the reacting system after time $t$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$P_0[n + (1 - n) e^{-kt}]$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$P_0(1 - n) e^{-kt}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$P_0 n e^{-kt}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$P_0 [n - (1 - n) e^{-kt}]$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>To find the total pressure of the reaction system at any given time, we first need to look at the given chemical equation and how the pressure changes as the reaction proceeds. </p>\n<p>The given reaction is:</p>\n<p>$$A(g) \\rightarrow nB(g)$$</p>\n<p>Let the initial pressure of the reactant A be $P_0$. At the start of the reaction ($t = 0$), no product B is formed, so its pressure is $0$.</p>\n<p>As time $t$ passes, some of gas A reacts to form gas B. Let the decrease in pressure of A be $p$. </p>\n<p>From the stoichiometry of the reaction, 1 mole of A produces $n$ moles of B. So, when the pressure of A decreases by $p$, the pressure of B will increase by $np$.</p>\n<p>We can write the partial pressures at time $t$ as:</p>\n<p>Pressure of A, $P_A = P_0 - p$</p>\n<p>Pressure of B, $P_B = np$</p>\n<p>Since this is a first-order reaction, the partial pressure of the reactant at any time $t$ follows the integrated rate law:</p>\n<p>$$P_A = P_0 e^{-Kt}$$</p>\n<p>We already established that $P_A = P_0 - p$. Equating both expressions for $P_A$ gives:</p>\n<p>$$P_0 - p = P_0 e^{-Kt}$$</p>\n\n<p>$$p = P_0 - P_0 e^{-Kt}$$</p>\n<p>$$p = P_0 (1 - e^{-Kt})$$</p>\n<p>Now, we need to find the total pressure of the system at time $t$, which is the sum of the partial pressures of all the gases present in the container:</p>\n<p>$$P_{total} = P_A + P_B$$</p>\n\n<p>$$P_{total} = (P_0 - p) + np$$</p>\n<p>$$P_{total} = P_0 + p(n - 1)$$</p>\n\n<p>$$P_{total} = P_0 + (n - 1) \\left[ P_0 (1 - e^{-Kt}) \\right]$$</p>\n\n<p>$$P_{total} = P_0 \\left[ 1 + (n - 1)(1 - e^{-Kt}) \\right]$$</p>\n\n<p>$$P_{total} = P_0 \\left[ 1 + n - 1 - (n - 1)e^{-Kt} \\right]$$</p>\n<p>$$P_{total} = P_0 \\left[ n - (n - 1)e^{-Kt} \\right]$$</p>\n<p>$$P_{total} = P_0 \\left[ n + (1 - n)e^{-Kt} \\right]$$</p>\n<p>Looking at the given choices, this matches Option A perfectly. </p>\n<p>Option A is the correct choice.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक गैसीय प्रथम-कोटि अभिक्रिया A(g) &rarr; nB(g) प्रारंभ में केवल &lsquo;A&rsquo; को लेकर संपन्न की जाती है। अभिक्रिया के दौरान तापमान और आयतन अपरिवर्तित रखे जाते हैं। यदि प्रारंभ में दाब $P_0$ है और अभिक्रिया दर स्थिरांक &lsquo;K&rsquo; है, तो समय $t$ के बाद अभिकारी निकाय का कुल दाब है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$P_0[n + (1 - n) e^{-kt}]$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$P_0(1 - n) e^{-kt}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$P_0 n e^{-kt}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$P_0 [n - (1 - n) e^{-kt}]$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "integrated-rate-law-equations",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrm2vu2c",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which statement given below is not correct for a first-order reaction?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>The time required for 93.75% of the reaction to occur is twice the time required for 75% of the reaction to occur.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>The half-life is one-half of the time needed for the reaction to be completed.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Nearly 63% of the reaction is completed in a time equal to $1/K$.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>The time needed for 90% completion of the reaction is $2.303/K$, independent of the initial concentration of the reactant.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For a first-order reaction,</p>\n<p>$$ t=\\frac{2.303}{k}\\log \\frac{[R]_0}{[R]} $$</p>\n<p>This means the time depends on the fraction of reactant left, not on the initial concentration.</p>\n<p>For 75% completion, 25% reactant is left.</p>\n<p>$$ t_{75}=\\frac{2.303}{k}\\log \\frac{100}{25} =\\frac{2.303}{k}\\log 4 $$</p>\n<p>For 93.75% completion, 6.25% reactant is left.</p>\n<p>$$ t_{93.75}=\\frac{2.303}{k}\\log \\frac{100}{6.25} =\\frac{2.303}{k}\\log 16 $$</p>\n<p>Since $16=4^2$,</p>\n<p>$$ \\log 16=2\\log 4 $$</p>\n<p>So,</p>\n<p>$$ t_{93.75}=2t_{75} $$</p>\n<p>So option A is correct.</p>\n<p>For a first-order reaction, half-life is</p>\n<p>$$ t_{1/2}=\\frac{0.693}{k} $$</p>\n<p>But the time for complete reaction is not finite. A first-order reaction theoretically takes infinite time for complete completion. So half-life cannot be half of the time of complete reaction.</p>\n<p>So option B is incorrect.</p>\n<p>Also, when $t=\\frac{1}{k}$,</p>\n<p>$$ [R]=[R]_0e^{-1} $$</p>\n<p>So about $36.8\\%$ reactant remains, and about $63.2\\%$ reaction is complete. Option C is correct.</p>\n<p>For 90% completion, 10% reactant remains.</p>\n<p>$$ t_{90}=\\frac{2.303}{k}\\log \\frac{100}{10} =\\frac{2.303}{k}\\log 10 =\\frac{2.303}{k} $$</p>\n<p>So option D is also correct.</p>\n<p>Hence, the incorrect statement is:</p>\n<p>$$ \\boxed{\\text{Option B}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>प्रथम कोटि की अभिक्रिया के लिए नीचे दिया गया कौन सा कथन सही नहीं है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>93.75% अभिक्रिया पूर्ण होने में लगने वाला समय, 75% अभिक्रिया पूर्ण होने में लगने वाले समय का दोगुना होता है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>अर्ध-आयु, अभिक्रिया को पूर्ण होने में लगने वाले समय की आधी होती है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$1/K$ के बराबर समय में लगभग 63% अभिक्रिया पूर्ण हो जाती है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>अभिक्रिया के 90% पूर्ण होने के लिए आवश्यक समय $2.303/K$ है, जो अभिकारक की प्रारंभिक सांद्रता से स्वतंत्र होता है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "integrated-rate-law-equations",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrm3c5gx",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For a first-order reaction, the rate is 0.04 mol litre $\\mathrm{s}^{-1} \\mathrm{~s}^{-1}$ after 10 minutes of starting the reaction and becomes 0.03 mol litre $\\mathrm{s}^{-1} \\mathrm{~s}^{-1}$ after 22 minutes. The half-life of the reaction (in seconds) is ( $\\ln 2=0.7, \\ln 3=1.1$ )</p>",
+                "options": [],
+                "answer": "1680",
+                "explanation": "<p>For a first-order reaction, the rate at any time is proportional to the concentration at that time:</p>\n<p>$$ \\text{Rate} = k[A] $$</p>\n<p>Since $k$ is constant, the ratio of rates at two different times is the same as the ratio of concentrations at those times.</p>\n<p>For a first-order reaction,</p>\n<p>$$ k=\\frac{2.303}{t_2-t_1}\\log \\frac{R_1}{R_2} $$</p>\n<p>or using natural log,</p>\n<p>$$ k=\\frac{1}{t_2-t_1}\\ln \\frac{R_1}{R_2} $$</p>\n<p>Here,</p>\n<p>$$ R_1=0.04,\\quad R_2=0.03 $$</p>\n<p>and</p>\n<p>$$ t_2-t_1=22-10=12 \\text{ min} $$</p>\n<p>So,</p>\n<p>$$ k=\\frac{1}{12}\\ln \\frac{0.04}{0.03} $$</p>\n<p>$$ k=\\frac{1}{12}\\ln \\frac{4}{3} $$</p>\n<p>Now,</p>\n<p>$$ \\ln \\frac{4}{3}=\\ln 4-\\ln 3 $$</p>\n<p>$$ \\ln 4=2\\ln 2=2(0.7)=1.4 $$</p>\n<p>So,</p>\n<p>$$ \\ln \\frac{4}{3}=1.4-1.1=0.3 $$</p>\n<p>Hence,</p>\n<p>$$ k=\\frac{0.3}{12}=0.025\\ \\text{min}^{-1} $$</p>\n<p>For a first-order reaction,</p>\n<p>$$ t_{1/2}=\\frac{0.693}{k} $$</p>\n<p>Using $\\ln 2=0.7$,</p>\n<p>$$ t_{1/2}=\\frac{0.7}{0.025} $$</p>\n<p>$$ t_{1/2}=28\\ \\text{min} $$</p>\n<p>Converting into seconds:</p>\n<p>$$ 28 \\times 60=1680\\ \\text{s} $$</p>\n<p>So, the half-life of the reaction is</p>\n<p>$$ \\boxed{1680\\ \\text{s}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक प्रथम कोटि की अभिक्रिया के लिए, अभिक्रिया शुरू होने के 10 मिनट बाद दर 0.04 mol litre $\\mathrm{s}^{-1} \\mathrm{~s}^{-1}$ है और 22 मिनट बाद 0.03 mol litre $\\mathrm{s}^{-1} \\mathrm{~s}^{-1}$ हो जाती है। अभिक्रिया की अर्ध-आयु (सेकंड में) है ( $\\ln 2=0.7, \\ln 3=1.1$ )</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "integrated-rate-law-equations",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrm3o6xb",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the decomposition of $\\mathrm{NH}_3(g)$ on a platinum surface at 10 atm, the reaction is of zero order. If the rate constant for the reaction $2 \\mathrm{NH}_{3(\\mathrm{~g})} \\rightarrow \\mathrm{N}_2(\\mathrm{~g})+3 \\mathrm{H}_2(\\mathrm{~g})$ is $2.0 \\mathrm{M} \\mathrm{min}^{-1}$, what will be the rate of formation of $\\mathrm{H}_2(\\mathrm{~g})$ in $M$ min $^{-1}$?</p>",
+                "options": [],
+                "answer": "6",
+                "explanation": "<p>For the reaction</p>\n<p>$$ 2\\mathrm{NH}_3(g) \\rightarrow \\mathrm{N}_2(g)+3\\mathrm{H}_2(g) $$</p>\n<p>the rate expression using stoichiometric coefficients is</p>\n<p>$$ \\text{Rate of reaction} = -\\frac{1}{2}\\frac{d[\\mathrm{NH}_3]}{dt} = \\frac{1}{3}\\frac{d[\\mathrm{H}_2]}{dt} $$</p>\n<p>Since the reaction is zero order,</p>\n<p>$$ \\text{Rate of reaction} = k $$</p>\n<p>Given,</p>\n<p>$$ k = 2.0\\ \\mathrm{M\\ min^{-1}} $$</p>\n<p>So,</p>\n<p>$$ \\frac{1}{3}\\frac{d[\\mathrm{H}_2]}{dt} = 2.0 $$</p>\n<p>Hence,</p>\n<p>$$ \\frac{d[\\mathrm{H}_2]}{dt} = 3 \\times 2.0 $$</p>\n<p>$$ \\frac{d[\\mathrm{H}_2]}{dt} = 6.0\\ \\mathrm{M\\ min^{-1}} $$</p>\n<p>So, the rate of formation of $\\mathrm{H}_2(g)$ is</p>\n<p>$$ \\boxed{6.0\\ \\mathrm{M\\ min^{-1}}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>10 atm पर प्लेटिनम की सतह पर $\\mathrm{NH}_3(g)$ के अपघटन के लिए, अभिक्रिया शून्य कोटि की है। यदि अभिक्रिया $2 \\mathrm{NH}_{3(\\mathrm{~g})} \\rightarrow \\mathrm{N}_2(\\mathrm{~g})+3 \\mathrm{H}_2(\\mathrm{~g})$ के लिए दर नियतांक $2.0 \\mathrm{M} \\mathrm{min}^{-1}$ है, तो $M$ min $^{-1}$ में $\\mathrm{H}_2(\\mathrm{~g})$ के निर्माण की दर क्या होगी?</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "integrated-rate-law-equations",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrm3ln2n",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A 12 g mixture of two gases $C_2(\\mathrm{~mol} . \\mathrm{wt}=24)$ and $D_2 (\\mathrm{mol} . \\mathrm{wt}=36)$, decomposing by first-order kinetics, was taken in a vessel.</p>\n<p>Half-life of $\\mathrm{C}_2=3$ hours, and half-life of $D_2=4$ hours.</p>\n<p>After 6 hours, the total mass of the mixture becomes 3 g .</p>\n<p>Find the initial weight (in g ) of $\\mathrm{C}_2$ in the mixture. (Answer in integers).</p>",
+                "options": [],
+                "answer": "12",
+                "explanation": "<p>For a first-order decomposition, the amount left after time $t$ depends on the number of half-lives passed.</p>\n<p>Let the initial mass of $C_2$ be $x$ g.</p>\n<p>So, the initial mass of $D_2$ is</p>\n<p>$$ 12-x $$</p>\n<p>For $C_2$:</p>\n<p>Half-life $=3$ hours.</p>\n<p>In $6$ hours, number of half-lives is</p>\n<p>$$ \\frac{6}{3}=2 $$</p>\n<p>So the fraction of $C_2$ left is</p>\n<p>$$ \\left(\\frac{1}{2}\\right)^2=\\frac{1}{4} $$</p>\n<p>Mass of $C_2$ left after 6 hours:</p>\n<p>$$ \\frac{x}{4} $$</p>\n<p>For $D_2$:</p>\n<p>Half-life $=4$ hours.</p>\n<p>In $6$ hours, number of half-lives is</p>\n<p>$$ \\frac{6}{4}=\\frac{3}{2} $$</p>\n<p>So the fraction of $D_2$ left is</p>\n<p>$$ \\left(\\frac{1}{2}\\right)^{3/2}=\\frac{1}{2\\sqrt{2}} $$</p>\n<p>Mass of $D_2$ left after 6 hours:</p>\n<p>$$ \\frac{12-x}{2\\sqrt{2}} $$</p>\n<p>Given total mass left after 6 hours is $3$ g:</p>\n<p>$$ \\frac{x}{4}+\\frac{12-x}{2\\sqrt{2}}=3 $$</p>\n\n<p>$$ x+\\sqrt{2}(12-x)=12 $$</p>\n<p>$$ x+12\\sqrt{2}-x\\sqrt{2}=12 $$</p>\n<p>$$ x(1-\\sqrt{2})=12(1-\\sqrt{2}) $$</p>\n<p>So,</p>\n<p>$$ x=12 $$</p>\n<p>Hence, the initial weight of $C_2$ is</p>\n<p>$$ \\boxed{12\\text{ g}} $$</p>\n<p>This also means the given data are consistent only when the whole initial mass is $C_2$. If both gases must be present initially, then the data would be inconsistent.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो गैसों $C_2(\\mathrm{~mol} . \\mathrm{wt}=24)$ और $D_2 (\\mathrm{mol} . \\mathrm{wt}=36)$ का 12 g मिश्रण एक बर्तन में लिया गया, जो प्रथम-कोटि गतिकी के अनुसार विघटित होती हैं।</p><p>$\\mathrm{C}_2$ की अर्ध-आयु $=3$ घंटे, और $D_2$ की अर्ध-आयु $=4$ घंटे है।</p><p>6 घंटे के बाद, मिश्रण का कुल द्रव्यमान 3 g हो जाता है।</p><p>मिश्रण में $\\mathrm{C}_2$ का प्रारंभिक भार (g में) ज्ञात कीजिए। (उत्तर पूर्णांक में दें)।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "integrated-rate-law-equations",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrm3jigo",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\mathrm{SO}_2 \\mathrm{Cl}_2 \\longrightarrow \\mathrm{SO}_2+\\mathrm{Cl}_2$ is a first-order gas-phase reaction with $k=2.2 \\times 10^{-5} \\mathrm{sec}^{-1}$ at $320^{\\circ} \\mathrm{C}$. Find the $\\%$(In nearest integer) of $\\mathrm{SO}_2 \\mathrm{Cl}_2$ decomposed after heating for 90 minutes. (Use $10^{0.1188}=1.126$ if needed.)</p>",
+                "options": [],
+                "answer": "11",
+                "explanation": "<p>For a first-order reaction,</p>\n<p>$$ k=\\frac{1}{t}\\ln\\frac{a}{a-x} $$</p>\n<p>where $a$ is the initial amount of $\\mathrm{SO_2Cl_2}$ and $x$ is the amount decomposed after time $t$.</p>\n<p>Given,</p>\n<p>$$ k=2.2\\times 10^{-5}\\ \\mathrm{s^{-1}} $$</p>\n<p>and</p>\n<p>$$ t=90\\ \\text{min}=90\\times 60=5400\\ \\text{s} $$</p>\n<p>So,</p>\n<p>$$ kt=(2.2\\times 10^{-5})(5400) $$</p>\n<p>$$ kt=0.1188 $$</p>\n<p>Now,</p>\n<p>$$ \\ln\\frac{a}{a-x}=0.1188 $$</p>\n<p>So,</p>\n<p>$$ \\frac{a}{a-x}=e^{0.1188} $$</p>\n<p>Using the given value effectively as</p>\n<p>$$ e^{0.1188}=1.126 $$</p>\n<p>we get</p>\n<p>$$ \\frac{a}{a-x}=1.126 $$</p>\n<p>So,</p>\n<p>$$ a-x=\\frac{a}{1.126} $$</p>\n<p>Fraction left undecomposed:</p>\n<p>$$ \\frac{a-x}{a}=\\frac{1}{1.126}=0.888 $$</p>\n<p>Fraction decomposed:</p>\n<p>$$ 1-0.888=0.112 $$</p>\n<p>Percentage decomposed:</p>\n<p>$$ 0.112\\times 100=11.2\\% $$</p>\n<p>Nearest integer:</p>\n<p>$$ \\boxed{11\\%} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\mathrm{SO}_2 \\mathrm{Cl}_2 \\longrightarrow \\mathrm{SO}_2+\\mathrm{Cl}_2$ $320^{\\circ} \\mathrm{C}$ पर $k=2.2 \\times 10^{-5} \\mathrm{sec}^{-1}$ के साथ एक प्रथम-कोटि की गैसीय प्रावस्था अभिक्रिया है। 90 मिनट तक गर्म करने के बाद वियोजित होने वाले $\\mathrm{SO}_2 \\mathrm{Cl}_2$ का $\\%$ (निकटतम पूर्णांक में) ज्ञात कीजिए। (यदि आवश्यक हो तो $10^{0.1188}=1.126$ का उपयोग करें।)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "integrated-rate-law-equations",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrm3g6ip",
+            "chapter": "chemical-kinetics-and-nuclear-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In a first-order reaction, the concentration of the reactant decreases from 1.0 M to 0.25 M in 20 minutes. The rate constant $k$ (in $\\mathrm{min}^{-1}$ ) is $x \\times 10^{-4}$. The value of $x$ is $\\_\\_\\_\\_$</p>",
+                "options": [],
+                "answer": "693",
+                "explanation": "<p>For a first-order reaction,</p>\n<p>$$ k=\\frac{2.303}{t}\\log \\frac{[R]_0}{[R]} $$</p>\n<p>Here,</p>\n<p>$$ [R]_0=1.0\\,\\text{M}, \\quad [R]=0.25\\,\\text{M}, \\quad t=20\\,\\text{min} $$</p>\n<p>So,</p>\n<p>$$ k=\\frac{2.303}{20}\\log \\frac{1.0}{0.25} $$</p>\n<p>Since,</p>\n<p>$$ \\frac{1.0}{0.25}=4 $$</p>\n<p>we get</p>\n<p>$$ k=\\frac{2.303}{20}\\log 4 $$</p>\n<p>Using $\\log 4=0.6021$,</p>\n<p>$$ k=\\frac{2.303 \\times 0.6021}{20} $$</p>\n<p>$$ k=\\frac{1.386}{20} $$</p>\n<p>$$ k=0.0693\\,\\text{min}^{-1} $$</p>\n<p>Now write it as $x \\times 10^{-4}$:</p>\n<p>$$ 0.0693 = 693 \\times 10^{-4} $$</p>\n<p>So,</p>\n<p>$$ x=693 $$</p>\n<p>The value of $x$ is</p>\n<p>$$ \\boxed{693} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक प्रथम कोटि की अभिक्रिया में, अभिकारक की सांद्रता 20 मिनट में 1.0 M से घटकर 0.25 M हो जाती है। दर नियतांक $k$ ($\\mathrm{min}^{-1}$ में) $x \\times 10^{-4}$ है। $x$ का मान $\\_\\_\\_\\_$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "integrated-rate-law-equations",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Integrated Rate Law Equations",
+    "timeAllotted": 2160000,
+    "title": "Chemical Kinetics Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mpd176ro",
+    "defaultLanguage": "en",
+    "description": "Integrated Rate Law Equations",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-15T14:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Integrated Rate Law Equations",
+    "timeAllotted": 2160000,
+    "title": "Chemical Kinetics Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Chemical Kinetics"
+  }
+}

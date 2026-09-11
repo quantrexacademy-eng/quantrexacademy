@@ -1,0 +1,549 @@
+{
+  "qfiles": 157,
+  "qs": 2825,
+  "hasSol": 2825,
+  "noSol": 0,
+  "emptyStem": 0,
+  "badOpts": 1,
+  "needFig": 19,
+  "hasFig": 368,
+  "cats": {
+    "chapter_chemistry": {
+      "listed": 12,
+      "upcoming": 6,
+      "available": 6,
+      "withFile": 6,
+      "liveButNoFile": 1
+    },
+    "chapter_mathematics": {
+      "listed": 6,
+      "upcoming": 2,
+      "available": 4,
+      "withFile": 4,
+      "liveButNoFile": 0
+    },
+    "chapter_physics": {
+      "listed": 69,
+      "upcoming": 50,
+      "available": 19,
+      "withFile": 19,
+      "liveButNoFile": 15
+    },
+    "chemistry": {
+      "listed": 131,
+      "upcoming": 80,
+      "available": 51,
+      "withFile": 51,
+      "liveButNoFile": 17
+    },
+    "eft": {
+      "listed": 30,
+      "upcoming": 30,
+      "available": 0,
+      "withFile": 0,
+      "liveButNoFile": 0
+    },
+    "ept": {
+      "listed": 16,
+      "upcoming": 7,
+      "available": 9,
+      "withFile": 9,
+      "liveButNoFile": 1
+    },
+    "mathematics": {
+      "listed": 131,
+      "upcoming": 81,
+      "available": 50,
+      "withFile": 50,
+      "liveButNoFile": 17
+    },
+    "physics": {
+      "listed": 150,
+      "upcoming": 103,
+      "available": 47,
+      "withFile": 47,
+      "liveButNoFile": 23
+    },
+    "pyq_chemistry": {
+      "listed": 123,
+      "upcoming": 0,
+      "available": 123,
+      "withFile": 0,
+      "liveButNoFile": 0
+    },
+    "pyq_mathematics": {
+      "listed": 113,
+      "upcoming": 0,
+      "available": 113,
+      "withFile": 0,
+      "liveButNoFile": 0
+    },
+    "pyq_physics": {
+      "listed": 134,
+      "upcoming": 0,
+      "available": 134,
+      "withFile": 0,
+      "liveButNoFile": 0
+    },
+    "topic_chemistry": {
+      "listed": 44,
+      "upcoming": 17,
+      "available": 27,
+      "withFile": 27,
+      "liveButNoFile": 2
+    },
+    "topic_mathematics": {
+      "listed": 23,
+      "upcoming": 7,
+      "available": 16,
+      "withFile": 16,
+      "liveButNoFile": 4
+    },
+    "topic_physics": {
+      "listed": 264,
+      "upcoming": 182,
+      "available": 82,
+      "withFile": 82,
+      "liveButNoFile": 57
+    }
+  },
+  "newlyLiveCount": 137,
+  "stillUpcomingCount": 428,
+  "newlyLive": [
+    {
+      "cat": "chapter_chemistry",
+      "id": "tst-19g61mpe6d0p8",
+      "title": "Chemical Bonding & Molecular Structure Test - Chapter Test",
+      "liveAt": "2026-08-05T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g71mnvypkki",
+      "title": "Gravitation - Chapter Test",
+      "liveAt": "2026-07-30T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g61mp5u9lao",
+      "title": "Elasticity - Chapter Test",
+      "liveAt": "2026-08-03T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g61mp5vewts",
+      "title": "Fluid Mechanics - Chapter Test",
+      "liveAt": "2026-08-08T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g61mp5wrlrv",
+      "title": "Thermal Properties of Matter - Chapter Test",
+      "liveAt": "2026-08-14T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g61mp5xqsiq",
+      "title": "Kinetic Theory of Gases - Chapter Test",
+      "liveAt": "2026-08-19T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g61moeg7v0d",
+      "title": "3D Geometry - Chapter Test",
+      "liveAt": "2026-07-28T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g61moeri8q8",
+      "title": "Complex Number - Chapter Test",
+      "liveAt": "2026-08-03T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g61moerqidp",
+      "title": "Statistics - Chapter Test",
+      "liveAt": "2026-08-07T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g61moo5wekc",
+      "title": "Functions - Chapter Test",
+      "liveAt": "2026-07-30T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g61moo6lhb6",
+      "title": "Limits - Chapter Test",
+      "liveAt": "2026-08-03T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g71mp1dqw8s",
+      "title": "Continuity and Differentiability - Chapter Test",
+      "liveAt": "2026-08-07T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g71mp1g0kzl",
+      "title": "Differentiation - Chapter Test",
+      "liveAt": "2026-08-11T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g71mp1gljao",
+      "title": "Application of Derivatives - Chapter Test",
+      "liveAt": "2026-08-15T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g61mpe6uew9",
+      "title": "p-Block Elements Test - Chapter Test",
+      "liveAt": "2026-08-12T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g61mpgx4m5o",
+      "title": "d and f Block Elements Test - Chapter Test",
+      "liveAt": "2026-08-16T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chemistry",
+      "id": "tst-19g61mpe6u6pt",
+      "title": "p-Block Elements Test - 1 (Topic Test)",
+      "liveAt": "2026-08-06T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chemistry",
+      "id": "tst-19g61mpe6u7qm",
+      "title": "p-Block Elements Test - 2 (Topic Test)",
+      "liveAt": "2026-08-07T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chemistry",
+      "id": "tst-19g61mpe6u8nw",
+      "title": "p-Block Elements Test - 3 (Topic Test)",
+      "liveAt": "2026-08-08T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chemistry",
+      "id": "tst-19g61mpe6cyb1",
+      "title": "Chemical Bonding & Molecular Structure Test - 4 (Topic Test)",
+      "liveAt": "2026-08-09T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chemistry",
+      "id": "tst-19g61mpe6u9ju",
+      "title": "p-Block Elements Test - 4 (Topic Test)",
+      "liveAt": "2026-08-09T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chemistry",
+      "id": "tst-19g61mpe6czsw",
+      "title": "Chemical Bonding & Molecular Structure Test - 5 (Topic Test)",
+      "liveAt": "2026-08-10T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chemistry",
+      "id": "tst-19g61mpe6ubey",
+      "title": "p-Block Elements Test - 5 (Topic Test)",
+      "liveAt": "2026-08-10T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chemistry",
+      "id": "tst-19g61mpe6d0p8",
+      "title": "Chemical Bonding & Molecular Structure Test - Chapter Test",
+      "liveAt": "2026-08-11T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chemistry",
+      "id": "tst-19g61mpe6ud78",
+      "title": "p-Block Elements Test - 6 (Topic Test)",
+      "liveAt": "2026-08-11T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chemistry",
+      "id": "tst-19g61mpe6uew9",
+      "title": "p-Block Elements Test - Chapter Test",
+      "liveAt": "2026-08-12T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chemistry",
+      "id": "tst-19g61mpgx4hqd",
+      "title": "d and f Block Elements Test - 1 (Topic Test)",
+      "liveAt": "2026-08-13T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chemistry",
+      "id": "tst-19g61mpgx4jgy",
+      "title": "d and f Block Elements Test - 2 (Topic Test)",
+      "liveAt": "2026-08-14T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chemistry",
+      "id": "tst-19g61mpgx4kfz",
+      "title": "d and f Block Elements Test - 3 (Topic Test)",
+      "liveAt": "2026-08-15T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chemistry",
+      "id": "tst-19g61mpgx4m5o",
+      "title": "d and f Block Elements Test - Chapter Test",
+      "liveAt": "2026-08-16T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chemistry",
+      "id": "tst-19g61mpgym92n",
+      "title": "Coordination Compounds Test - 1 (Topic Test)",
+      "liveAt": "2026-08-17T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chemistry",
+      "id": "tst-19g61mpgyma4b",
+      "title": "Coordination Compounds Test - 2 (Topic Test)",
+      "liveAt": "2026-08-18T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "chemistry",
+      "id": "tst-19g61mpgymax4",
+      "title": "Coordination Compounds Test - 3 (Topic Test)",
+      "liveAt": "2026-08-19T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "ept",
+      "id": "tst-19g61mpiy6dm0",
+      "title": "ExamGOAL Part Test (EPT) - 4",
+      "liveAt": "2026-08-15T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "mathematics",
+      "id": "tst-19g61moeri4hh",
+      "title": "Complex Number Test - 1 (Topic Test)",
+      "liveAt": "2026-08-06T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "mathematics",
+      "id": "tst-19g61moeri55s",
+      "title": "Complex Number Test - 2 (Topic Test)",
+      "liveAt": "2026-08-07T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "mathematics",
+      "id": "tst-19g61moeri5w7",
+      "title": "Complex Number Test - 3 (Topic Test)",
+      "liveAt": "2026-08-08T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "mathematics",
+      "id": "tst-19g71mp1g0hxg",
+      "title": "Differentiation Test - 1 (Topic Test)",
+      "liveAt": "2026-08-08T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "mathematics",
+      "id": "tst-19g61moeg7v0d",
+      "title": "3D Geometry - Chapter Test",
+      "liveAt": "2026-08-09T03:30:00.000Z",
+      "hasQ": false
+    },
+    {
+      "cat": "mathematics",
+      "id": "tst-19g71mp1g0iye",
+      "title": "Differentiation Test - 2 (Topic Test)",
+      "liveAt": "2026-08-09T03:30:00.000Z",
+      "hasQ": false
+    }
+  ],
+  "stillUpcomingSample": [
+    {
+      "cat": "chapter_chemistry",
+      "id": "tst-19g61mpcpotn7",
+      "title": "Atoms - Chapter Test",
+      "liveAt": "2026-10-29T03:30:00.000Z"
+    },
+    {
+      "cat": "chapter_chemistry",
+      "id": "tst-19g61mphb0zcb",
+      "title": "General Organic Chemistry - Chapter Test",
+      "liveAt": "2026-09-13T03:30:00.000Z"
+    },
+    {
+      "cat": "chapter_chemistry",
+      "id": "tst-19g61mpieeyhv",
+      "title": "Hydrocarbon - Chapter Test",
+      "liveAt": "2026-09-23T03:30:00.000Z"
+    },
+    {
+      "cat": "chapter_chemistry",
+      "id": "tst-19g61mpilexpl",
+      "title": "Purification of Organic Compounds - Chapter Test",
+      "liveAt": "2026-10-18T03:30:00.000Z"
+    },
+    {
+      "cat": "chapter_chemistry",
+      "id": "tst-19g61mpimlhqh",
+      "title": "Practical Organic Chemistry - Chapter Test",
+      "liveAt": "2026-10-21T03:30:00.000Z"
+    },
+    {
+      "cat": "chapter_mathematics",
+      "id": "tst-19g71mp1h4xjy",
+      "title": "Indefinite Integration - Chapter Test",
+      "liveAt": "2026-08-20T03:30:00.000Z"
+    },
+    {
+      "cat": "chapter_mathematics",
+      "id": "tst-19g71mp2aabxg",
+      "title": "Definite Integration - Chapter Test",
+      "liveAt": "2026-08-24T03:30:00.000Z"
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g61mp5yo0v8",
+      "title": "Thermodynamics - Chapter Test",
+      "liveAt": "2026-08-23T03:30:00.000Z"
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g71mnzy3qp3",
+      "title": "Simple Harmonic Motion - Chapter Test",
+      "liveAt": "2026-08-27T03:30:00.000Z"
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g71mnzz45cb",
+      "title": "Waves - Chapter Test",
+      "liveAt": "2026-08-30T03:30:00.000Z"
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g61mp735mj9",
+      "title": "Electrostatics - Chapter Test",
+      "liveAt": "2026-09-05T03:30:00.000Z"
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g61mp74ma4d",
+      "title": "Current Electricity - Chapter Test",
+      "liveAt": "2026-09-12T03:30:00.000Z"
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g61mp7d4ese",
+      "title": "Capacitor - Chapter Test",
+      "liveAt": "2026-09-17T03:30:00.000Z"
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g61mp7ef5i4",
+      "title": "Magnetic Effect of Current - Chapter Test",
+      "liveAt": "2026-09-22T03:30:00.000Z"
+    },
+    {
+      "cat": "chapter_physics",
+      "id": "tst-19g61mp9jrh2o",
+      "title": "Magnetic Properties of Matter - Chapter Test",
+      "liveAt": "2026-09-25T03:30:00.000Z"
+    }
+  ],
+  "noSolSample": [],
+  "needFigSample": [
+    {
+      "file": "tst-19g61mo67xffr.json",
+      "eg": "tq-mq89fydv",
+      "stem": "Which of the following reaction is redox?"
+    },
+    {
+      "file": "tst-19g61mo67xgdx.json",
+      "eg": "tq-mqbktk3t",
+      "stem": "Find the valency factor $(n)$ for $\\mathrm{NH}_2 \\mathrm{OH}$ in given"
+    },
+    {
+      "file": "tst-19g61mo67xi5r.json",
+      "eg": "tq-mrexz0xn",
+      "stem": "Consider the following reactions I. $\\mathrm{MnO}_4^{2-}+4 \\mathrm{H}^"
+    },
+    {
+      "file": "tst-19g61mo67xi5r.json",
+      "eg": "tq-mrey1cip",
+      "stem": "Consider the following reaction \\begin{aligned} & $\\mathrm{H}_2 \\mathr"
+    },
+    {
+      "file": "tst-19g61mo7mnome.json",
+      "eg": "tq-mqhf37vj",
+      "stem": "Given the following reaction at equilibrium N 2 (g) + 3H 2 (g) $$ \\tex"
+    },
+    {
+      "file": "tst-19g61mo7n5hri.json",
+      "eg": "tq-mqro2vzh",
+      "stem": "In which of the following reactions, law of mass conservation is not v"
+    },
+    {
+      "file": "tst-19g61mpcxh1gn.json",
+      "eg": "tq-mr248hek",
+      "stem": "The pH of 0.1 M solution of the following compounds increases in the o"
+    },
+    {
+      "file": "tst-19g61mpcyd05j.json",
+      "eg": "tq-mr520eix",
+      "stem": "How many of the following reactions has a positive entropy change? I. "
+    },
+    {
+      "file": "tst-19g61mpcyd112.json",
+      "eg": "tq-mr5nuzcd",
+      "stem": "The following reaction is at equilibrium at 298 K 2NO (g, 0.00001 bar)"
+    },
+    {
+      "file": "tst-19g61mpcyd1qt.json",
+      "eg": "tq-mr8t7jyt",
+      "stem": "Determine the lattice energy for the following reaction Li + (g) + Cl "
+    },
+    {
+      "file": "tst-19g61mpcyd3su.json",
+      "eg": "tq-mrbvx0rk",
+      "stem": "Heat of neutralisation of oxalic acid is $-53.35 \\mathrm{~kJ} / \\mathr"
+    },
+    {
+      "file": "tst-19g61mpd1759y.json",
+      "eg": "tq-mrkmbd0w",
+      "stem": "Select the rate law that corresponds to the data shown for the followi"
+    }
+  ]
+}

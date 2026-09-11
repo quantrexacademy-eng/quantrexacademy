@@ -1,0 +1,115 @@
+/* qxfix76 — figures visible, no Marks WM, portrait diagrams landscape, option images 2-col */
+
+.qx-fig-land-host {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  margin: 8px auto !important;
+  max-width: 100% !important;
+  background: #fff !important;
+  border-radius: 10px !important;
+}
+.qx-fig-land-host > img.qx-fig-landscape {
+  transform: rotate(90deg);
+  transform-origin: center center;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  object-fit: contain !important;
+}
+
+/* Stem / slot figures — readable, never a 130px thumbnail */
+.qx-question-body img.qx-pool-fig,
+.qx-question-body #qxDiagramSlot img,
+.qx-question-body .qx-diagram-slot img,
+.qx-question-body .qx-diagram-seg img,
+.mtk-q-text img.qx-pool-fig,
+.qx-prac-q img.qx-pool-fig,
+#qxDiagramSlot img,
+.qx-diagram-slot img:not(.qx-opt-fig-img) {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: min(100%, 640px) !important;
+  max-height: min(72vh, 560px) !important;
+  min-height: 72px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  background: #fff !important;
+  margin: 8px auto !important;
+}
+.qx-fig-land-host > img {
+  max-width: none !important;
+  max-height: none !important;
+  min-height: 0 !important;
+}
+
+/* Image options: always 2-across (horizontal), not a long vertical stack */
+.mtk-options.qx-opts-img,
+.mtk-options.mtk-options-grid.qx-opts-img,
+.qx-prac-opts.qx-opts-img {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+}
+@media (max-width: 380px) {
+  .mtk-options.qx-opts-img,
+  .mtk-options.mtk-options-grid.qx-opts-img,
+  .qx-prac-opts.qx-opts-img {
+    grid-template-columns: 1fr !important;
+  }
+}
+.mtk-options.qx-opts-img .mtk-opt,
+.qx-prac-opts.qx-opts-img .qx-prac-opt {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+}
+.mtk-options.qx-opts-img img,
+.qx-prac-opts.qx-opts-img img,
+.mtk-opt-text img.qx-opt-fig-img,
+.qx-prac-opt-text img.qx-opt-fig-img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: min(100%, 280px) !important;
+  max-height: min(38vh, 260px) !important;
+  min-height: 64px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  background: #fff !important;
+  margin: 4px auto !important;
+}
+
+/* Structure + name: side by side (horizontal), wrap on very narrow screens */
+.qx-opt-pair {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px 14px !important;
+  width: 100% !important;
+}
+.qx-opt-pair-struct {
+  flex: 1 1 140px;
+  min-width: 0;
+  text-align: center !important;
+}
+.qx-opt-pair-name {
+  flex: 1 1 120px;
+  text-align: left !important;
+}
+
+img.qx-pool-fig,
+img.qx-match-fig,
+img.qx-no-wm,
+img.qx-opt-fig-img {
+  content-visibility: visible !important;
+  contain: none !important;
+}

@@ -1,0 +1,74 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19156220c83fbf1e0bce11",
+  "chapterId": "6a192b9fe4cc9575516b5669",
+  "subject": "Physics",
+  "chapter": "Wave Optics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec17def1faeb9633e23ec",
+      "title": "Youngs Double Slit Experiment",
+      "count": 9,
+      "questionIds": [
+        "6a1ec0f4ef1faeb9633e20b1",
+        "6a1ec0b1ef1faeb9633e1f10",
+        "6a1ec093ef1faeb9633e1e56",
+        "6a1ec090ef1faeb9633e1e42",
+        "6a1ec032ef1faeb9633e1bf1",
+        "6a1ec032ef1faeb9633e1bef",
+        "6a1ec012ef1faeb9633e1b27",
+        "6a1ec10def1faeb9633e2153",
+        "6a1ec10def1faeb9633e2152"
+      ]
+    },
+    {
+      "id": "6a1ec17def1faeb9633e23ed",
+      "title": "Wave Theory and Wavefronts",
+      "count": 2,
+      "questionIds": [
+        "6a1ec012ef1faeb9633e1b29",
+        "6a1ec012ef1faeb9633e1b28"
+      ]
+    },
+    {
+      "id": "6a1ec17eef1faeb9633e23ee",
+      "title": "Diffraction of Light",
+      "count": 6,
+      "questionIds": [
+        "6a1ec070ef1faeb9633e1d76",
+        "6a1ec0cfef1faeb9633e1fcf",
+        "6a1ec032ef1faeb9633e1bf0",
+        "6a1ec14eef1faeb9633e22ee",
+        "6a1ec112ef1faeb9633e2175",
+        "6a1ec04def1faeb9633e1c9f"
+      ]
+    },
+    {
+      "id": "6a1ec17eef1faeb9633e23ef",
+      "title": "Interference of Light",
+      "count": 5,
+      "questionIds": [
+        "6a1ec06fef1faeb9633e1d74",
+        "6a1ec0cfef1faeb9633e1fcd",
+        "6a1ec0b0ef1faeb9633e1f0f",
+        "6a1ec130ef1faeb9633e2230",
+        "6a1ec04eef1faeb9633e1ca0"
+      ]
+    },
+    {
+      "id": "6a1ec17eef1faeb9633e23f0",
+      "title": "Polarization of Light",
+      "count": 6,
+      "questionIds": [
+        "6a1ec070ef1faeb9633e1d77",
+        "6a1ec0cfef1faeb9633e1fce",
+        "6a1ec0b3ef1faeb9633e1f1b",
+        "6a1ec130ef1faeb9633e2231",
+        "6a1ec14eef1faeb9633e22ef",
+        "6a1ec04eef1faeb9633e1ca1"
+      ]
+    }
+  ]
+}

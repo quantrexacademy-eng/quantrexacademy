@@ -1,0 +1,51 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b34d4b564dfab4f94cc",
+  "chapterId": "66d5856ba75f05ee8564f74b",
+  "subject": "Physics",
+  "chapter": "Atomic Physics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d586c3a75f05ee85650471",
+      "title": "Thomson Atomic Model",
+      "count": 1,
+      "questionIds": [
+        "66d585b7a75f05ee8564fa04"
+      ]
+    },
+    {
+      "id": "66d586c3a75f05ee85650472",
+      "title": "Atomic Structure",
+      "count": 1,
+      "questionIds": [
+        "66d585c5a75f05ee8564fa83"
+      ]
+    },
+    {
+      "id": "66d586c3a75f05ee8565046f",
+      "title": "Bohr's Atomic Model",
+      "count": 6,
+      "questionIds": [
+        "66d58637a75f05ee8564fea6",
+        "66d58621a75f05ee8564fddf",
+        "66d5860ea75f05ee8564fd2b",
+        "66d585fba75f05ee8564fc7d",
+        "66d5857da75f05ee8564f7f2",
+        "66d5856ba75f05ee8564f749"
+      ]
+    },
+    {
+      "id": "66d586c3a75f05ee85650470",
+      "title": "Atomic Spectrum",
+      "count": 4,
+      "questionIds": [
+        "66d585e9a75f05ee8564fbd3",
+        "66d585c5a75f05ee8564fa84",
+        "66d585b7a75f05ee8564fa05",
+        "66d585b7a75f05ee8564fa03"
+      ]
+    }
+  ]
+}

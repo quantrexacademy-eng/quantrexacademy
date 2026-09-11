@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mpe6cu5g",
+  "title": "Chemical Bonding & Molecular Structure Test - 1 (Topic Test)",
+  "type": "topic",
+  "section": "Chemical Bonding & Molecular Structure",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-08-13T13:00:00.000Z",
+  "status": "ok",
+  "analysisId": "45851335-3c71-45fd-a0c1-a28310582491",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61mpe6cu5g",
+    "defaultLanguage": "en",
+    "description": "Ionic Bond,\nCovalent and Co-ordinate Bond,\nLewis Theory,\nCalculation of Lattice Energy",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-13T13:00:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msqm1ojz",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The following two Lewis dot structures are drawn for period-3 elements. Identify the elements $E_1$ and $E_2$ respectively.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msql4wu1%2F1d9ad09f-03b4-4f4a-a79f-1dfca8232e75%2F7f67b290-9692-11f1-be31-b5143adf7633%2Ffile-6y3zli1msql4wu2.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msql4wu1%2F1d9ad09f-03b4-4f4a-a79f-1dfca8232e75%2F7f67b290-9692-11f1-be31-b5143adf7633%2Ffile-6y3zli1msql4wu2.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Phosphorus, Chlorine</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Chlorine, Sulphur</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Phosphorus, Sulphur</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Arsenic, sulphur</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>We have to understand the structures from the given diagrams.</p>\n<p>Structure (I): $E_1$</p>\n<p>$E_1$ is bonded to:</p>\n<ul>\n\n<li><p>1 oxygen by a double bond, i.e., 2 bonds</p></li>\n\n<li><p>3 chlorine atoms by single bonds, i.e., 3 bonds</p></li>\n\n</ul>\n<p>Total = 5 bonding pairs around $E_1$</p>\n<p>A period-3 element that can form this structure is phosphorus (P). Therefore, $E_1 = \text{P}$.</p>\n<p>Structure (II): $E_2$</p>\n<p>$E_2$ is bonded to:</p>\n<ul>\n\n<li>2 oxygens by double bonds, i.e., 4 bonds</li>\n\n</ul>\n<ul>\n<li>2 chlorine atoms by single bonds, i.e., 2 bonds</li>\n</ul>\n<p>This corresponds to sulphur (S), another period-3 element capable of an expanded octet. Therefore, $\\mathrm{E}_2=\\mathrm{S}$.</p>\n<p>Hence:</p>\n<p>$$ \\begin{aligned} & E_1=P \\\\ & E_2=S \\end{aligned} $$</p>\n<p>Therefore, our answer is: C. Phosphorus, Sulphur</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>आवर्त-3 के तत्वों के लिए निम्नलिखित दो लुईस बिंदु संरचनाएँ बनाई गई हैं। क्रमशः $E_1$ और $E_2$ तत्वों की पहचान कीजिए।</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msql4wu1%2F1d9ad09f-03b4-4f4a-a79f-1dfca8232e75%2F7f67b290-9692-11f1-be31-b5143adf7633%2Ffile-6y3zli1msql4wu2.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msql4wu1%2F1d9ad09f-03b4-4f4a-a79f-1dfca8232e75%2F7f67b290-9692-11f1-be31-b5143adf7633%2Ffile-6y3zli1msql4wu2.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>फॉस्फोरस, क्लोरीन</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>क्लोरीन, सल्फर</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>फॉस्फोरस, सल्फर</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>आर्सेनिक, सल्फर</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "lewis-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msrg4l70",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>N<sub>2</sub>O has a linear, unsymmetrical structure that may be thought of as a hybrid of two resonance forms. If a resonance form must have a satisfactory Lewis structure, which two of the four structures shown below are resonance forms of N<sub>2</sub>O?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrg123c%2Ffb90b733-e705-43a5-83ee-40dd4a0dc1ee%2F4f3bf580-970b-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg123d.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrg123c%2Ffb90b733-e705-43a5-83ee-40dd4a0dc1ee%2F4f3bf580-970b-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg123d.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrg0vq1%2Fd3fa2ec5-184c-43db-b20c-417c36c79794%2F4a505890-970b-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg0vq2.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrg0vq1%2Fd3fa2ec5-184c-43db-b20c-417c36c79794%2F4a505890-970b-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg0vq2.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrg0o5q%2F01cb02dd-5238-4a4c-b7b1-21efd97f23d4%2F447886e0-970b-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg0o5r.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrg0o5q%2F01cb02dd-5238-4a4c-b7b1-21efd97f23d4%2F447886e0-970b-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg0o5r.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrg0ity%2F78dae8d1-be10-40ff-bd9f-e22792b95b46%2F405b0f60-970b-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg0itz.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrg0ity%2F78dae8d1-be10-40ff-bd9f-e22792b95b46%2F405b0f60-970b-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg0itz.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Below are the resonating structures of $\\mathrm{N}_2 \\mathrm{O}$ :</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrg3405%2F79ef7956-b4ab-45a4-8b2d-ae73177f535d%2F88543350-970b-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg3406.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrg3405%2F79ef7956-b4ab-45a4-8b2d-ae73177f535d%2F88543350-970b-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg3406.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Option A, C, and D do not match any of them. Therefore, our answer is B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>N<sub>2</sub>O की एक रैखिक, असममित संरचना होती है जिसे दो अनुनादी रूपों के संकर के रूप में माना जा सकता है। यदि एक अनुनादी रूप की एक संतोषजनक लुईस संरचना होनी चाहिए, तो नीचे दर्शाई गई चार संरचनाओं में से कौन सी दो N<sub>2</sub>O के अनुनादी रूप हैं?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrg123c%2Ffb90b733-e705-43a5-83ee-40dd4a0dc1ee%2F4f3bf580-970b-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg123d.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrg123c%2Ffb90b733-e705-43a5-83ee-40dd4a0dc1ee%2F4f3bf580-970b-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg123d.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrg0vq1%2Fd3fa2ec5-184c-43db-b20c-417c36c79794%2F4a505890-970b-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg0vq2.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrg0vq1%2Fd3fa2ec5-184c-43db-b20c-417c36c79794%2F4a505890-970b-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg0vq2.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrg0o5q%2F01cb02dd-5238-4a4c-b7b1-21efd97f23d4%2F447886e0-970b-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg0o5r.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrg0o5q%2F01cb02dd-5238-4a4c-b7b1-21efd97f23d4%2F447886e0-970b-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg0o5r.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrg0ity%2F78dae8d1-be10-40ff-bd9f-e22792b95b46%2F405b0f60-970b-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg0itz.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrg0ity%2F78dae8d1-be10-40ff-bd9f-e22792b95b46%2F405b0f60-970b-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg0itz.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "lewis-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msrgder9",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following molecular species/compounds is not hypovalent?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>CH$_3^+$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>B$_2$H$_6$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>NH$_2^+$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>AlF$_3$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p><b>Hypovalent species :</b> A hypovalent compound or species is one in which the central atom has fewer than 8 electrons (an incomplete octet) in its outermost valence shell.</p>\n<p>Drawing and analyzing the structures of the given species:</p>\n<p>A. $\\mathrm{CH}_3{ }^{+}$: Carbon has 4 valence electrons. Losing 1 electron (+ve charge) and forming 3 covalent bonds leaves the central carbon atom with only 6 valence electrons.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrg7rzm%2Fee07fbea-3367-4766-86df-9e59f3ced736%2F0a17f520-970c-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg7rzn.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrg7rzm%2Fee07fbea-3367-4766-86df-9e59f3ced736%2F0a17f520-970c-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg7rzn.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Yes, it's hypovalent.</p>\n<p>B. $\\mathrm{B}_2 \\mathrm{H}_6$ : Diborane is a classic electron-deficient molecule with 3-center-2-electron $(3 \\mathrm{c}-2 \\mathrm{e})$ banana bonds where the boron atoms fail to fulfill a complete octet.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrg97ap%2F870ee592-a404-4eb6-a6e3-b282e12b8cc9%2F31ba4a10-970c-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg97aq.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrg97ap%2F870ee592-a404-4eb6-a6e3-b282e12b8cc9%2F31ba4a10-970c-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrg97aq.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The number of electrons present in the valence shell of a boron atom is 3 . Now, 4 bonds are formed on each boron atom. Hence, the total number of electrons in the valence shell of boron is 7 . Hence, the given compound is hypovalent.</p>\n<p>C. $\\mathrm{NH}_2{ }^{+}$: Nitrogen has 5 valence electrons. It loses 1 electron (+ve charge), and form 2 covalent bonds, and keeps 1 lone pair, leaving the nitrogen atom with only 6 valence electrons. Therefore, it's Hypovalent.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrgakow%2F3d89d1ab-34aa-4f4a-8dff-a3e611ec5ba2%2F57e23400-970c-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrgakox.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrgakow%2F3d89d1ab-34aa-4f4a-8dff-a3e611ec5ba2%2F57e23400-970c-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrgakox.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>D. $\\mathrm{AIF}_3$ : If we look at the gaseous $\\mathrm{AIF}_3, \\mathrm{Al}$ makes 3 covalent bonds, which make 6 electrons to AI, which makes it hypovalent.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrgbtj8%2F47738b5e-b9c2-4cfc-b779-1f5256306f86%2F7a860040-970c-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrgbtj9.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrgbtj8%2F47738b5e-b9c2-4cfc-b779-1f5256306f86%2F7a860040-970c-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrgbtj9.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>But in ground's solid state, Aluminum fluoride acts as an ionic lattice with $\\mathrm{Al}^{3+}$ and $\\mathrm{F}^{-}$. The $\\mathrm{Al}^{3+}$ archives a fully state configuration, thus it's not hypovalent.</p>\n<p>Therefore, our answer is D.</p>\n<p>Answer: D</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से कौन सी आणविक स्पीशीज़/यौगिक हाइपोवैलेंट नहीं है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>CH$_3^+$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>B$_2$H$_6$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>NH$_2^+$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>AlF$_3$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "lewis-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msrgl0xr",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>N<sub>2</sub>CO has three possible structures :</p><p>ONCN (nitrosyl cyanide), ONNC (nitrosyl isocyanide), and NOCN (isonitrocy1 cyanide). \n<br/><br/>Which of the following structure have lowest potential energy?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>ONCN</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>ONNC</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>NOCN</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>All have the same energy</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Here, the principle we follow is that the structure with the lowest potential energy is always the most stable structure. So we have to find out which structure is the most stable among them.</p>\n<p>But how do we do it?</p>\n<p>We do it by understanding their Lewis structure and formal charges. Molecules that can satisfy the octet rule for all atoms while minimizing formal charges (ideally zero) are the most stable.</p>\n<p>Analyzing the options:</p>\n<p>A. ONCN :</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrggh6d%2F82420722-3e10-4cdd-88b6-3e3585f97df5%2Ffc060250-970c-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrggh6e.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrggh6d%2F82420722-3e10-4cdd-88b6-3e3585f97df5%2Ffc060250-970c-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrggh6e.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>In this isomer, every single atom has a formal charge of 0; it perfectly matches the bonding preference of each atom.</p>\n<p>B. ONNC:</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrghsbv%2Fb14bf2ab-c488-42d1-8210-def362927c8d%2F2072a7b0-970d-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrghsbw.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrghsbv%2Fb14bf2ab-c488-42d1-8210-def362927c8d%2F2072a7b0-970d-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrghsbw.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>This structure has a formal charge of +1 on N and -1 on C . Because of this charge separation, it is less stable than ONCN.</p>\n<p>C. NOCN :</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrgj9sm%2Fdeb97874-20c5-4d6e-96ba-9331fae757e3%2F49bf9f60-970d-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrgj9sn.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrgj9sm%2Fdeb97874-20c5-4d6e-96ba-9331fae757e3%2F49bf9f60-970d-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrgj9sn.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Placing a highly electronegative element, O , at the center is highly unfavorable; to satisfy the octet, it should have a + ve charge on the O atom, which makes it the most unstable and has the highest potential energy among all 3 options.</p>\n<p>Hence, our answer is A. ONCN, which is the most stable and has the lowest potential energy.</p>\n<p>Answer: A</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>N<sub>2</sub>CO की तीन संभावित संरचनाएँ हैं :</p><p>ONCN (नाइट्रोसिल साइनाइड), ONNC (नाइट्रोसिल आइसोसाइनाइड), और NOCN (आइसोनाइट्रोसिल साइनाइड)। <br/><br/>निम्नलिखित में से किस संरचना की स्थितिज ऊर्जा सबसे कम है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>ONCN</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>ONNC</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>NOCN</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>सभी की ऊर्जा समान है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "lewis-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msrgwlkx",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following species is neither hypervalent nor hypovalent?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>ClO$_4^-$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>BF$_3$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>SO$_4^{2-}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>CO$_3^{2-}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>To check if the species is neither hypervalent nor hypovalent, check the number of electrons on the central atom.</p>\n<p>For a hypervalent species, the number of electrons is more than 8 , and for a hypovalent species, the number is less than 8 .</p>\n<p>A. $\\mathrm{ClO}_4{ }^{-}$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrgq5k5%2Fc5532fe8-99e8-4e4c-ad29-fdf09f5b579d%2F09240d50-970e-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrgq5k6.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrgq5k5%2Fc5532fe8-99e8-4e4c-ad29-fdf09f5b579d%2F09240d50-970e-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrgq5k6.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$ \\begin{aligned} &14 \\mathrm{e}^{-}=\\text {Hypervalent }\\\\ &\\text { B. } \\mathrm{BF}_3 \\end{aligned} $$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrgro17%2F3478b153-ec16-48fc-aa7c-c960c525a674%2F333873b0-970e-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrgro18.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrgro17%2F3478b153-ec16-48fc-aa7c-c960c525a674%2F333873b0-970e-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrgro18.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$6 \\mathrm{e}^{-}=$Hypovalent</p>\n<p>C. $\\mathrm{SO}_4{ }^{2-}$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrgt8wj%2F36f9fd63-06a4-4f81-9300-94470923accc%2F5f26ca30-970e-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrgt8wk.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrgt8wj%2F36f9fd63-06a4-4f81-9300-94470923accc%2F5f26ca30-970e-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrgt8wk.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$ \\begin{aligned} &12 \\mathrm{e}^{-}=\\text {Hypervalent }\\\\ &\\text { D. } \\mathrm{CO}_3{ }^{2-} \\end{aligned} $$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrgv59g%2Fb0ab27b7-ec8a-443f-bfcb-6d264d057050%2F93f50240-970e-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrgv59h.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrgv59g%2Fb0ab27b7-ec8a-443f-bfcb-6d264d057050%2F93f50240-970e-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrgv59h.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$8 e^{-}=$neither hypervalent nor hypovalent</p>\n<p>Answer: D</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से कौन सी स्पीशीज न तो अतिसंयोजी (hypervalent) है और न ही अल्पसंयोजी (hypovalent) है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>ClO$_4^-$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>BF$_3$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>SO$_4^{2-}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>CO$_3^{2-}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "covalent-and-co-ordinate-bond",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msrh99x8",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In which of the following species central atom is NOT surrounded by exactly 8 valence electrons?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>BF$_4^-$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>NCl$_3$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>PCl$_4^+$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>SF$_4$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>To solve this question, we have to look for the structure and then check if the central atom is surrounded by 8 valence electrons or not:</p>\n<p>A. $\\mathrm{BF}_4{ }^{-}$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrgyx2g%2F9fe452fd-7671-48dd-9f8f-a99078b730cc%2Ffcdd1680-970e-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrgyx2h.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrgyx2g%2F9fe452fd-7671-48dd-9f8f-a99078b730cc%2Ffcdd1680-970e-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrgyx2h.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$ \\begin{aligned} &\\text { B is surrounded by } 8 \\text { valence electrons }=\\text { Yes }\\\\ &\\text { B. } \\mathrm{NCl}_3 \\end{aligned} $$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrh0b2i%2F2a96dcaf-1650-47d5-ad5c-401774527560%2F237d16a0-970f-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrh0b2j.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrh0b2i%2F2a96dcaf-1650-47d5-ad5c-401774527560%2F237d16a0-970f-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrh0b2j.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$ \\begin{aligned} &N \\text { is surrounded by } 8 \\text { valence electrons }=\\text { Yes ( } 3 \\text { bond pairs and } 1 \\text { lone pair) }\\\\ &\\text { C. } \\mathrm{PCl}_4{ }^{+} \\end{aligned} $$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrh32r8%2F04c63267-2b74-403a-8304-fb7e7fa3fee7%2F707e8740-970f-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrh32r9.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrh32r8%2F04c63267-2b74-403a-8304-fb7e7fa3fee7%2F707e8740-970f-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrh32r9.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$ \\begin{aligned} &P \\text { is surrounded by } 8 \\text { valence electrons }=\\text { Yes }\\\\ &\\text { D. } \\mathrm{SF}_4 \\end{aligned} $$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrh72wa%2F556ac45a-4d65-4206-b4f2-2d8e71550abe%2Fdfd6dca0-970f-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrh72wb.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrh72wa%2F556ac45a-4d65-4206-b4f2-2d8e71550abe%2Fdfd6dca0-970f-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrh72wb.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>S is surrounded by 10 valence electrons = No</p>\n<p>Answer: D</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से किस स्पीशीज में केंद्रीय परमाणु ठीक 8 संयोजी इलेक्ट्रॉनों से घिरा नहीं होता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>BF$_4^-$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>NCl$_3$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>PCl$_4^+$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>SF$_4$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "covalent-and-co-ordinate-bond",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msrhfxvq",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following does not contain any coordinate bond?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>NH<sub>4</sub>Cl</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Na<sup>+</sup> [BF<sub>4</sub>]<sup>–</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>H<sub>3</sub>O<sup>+</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>CO<sub>3</sub><sup>2–</sup></p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrhbgjr%2F7e9d3491-669c-4ec4-a72a-1545027207ae%2F599f2970-9710-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrhbgjs.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrhbgjr%2F7e9d3491-669c-4ec4-a72a-1545027207ae%2F599f2970-9710-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrhbgjs.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$\\mathrm{NH}_4 \\mathrm{Cl}$ exists as $\\mathrm{NH}_4{ }^{+}$and $\\mathrm{Cl}^{-}$, there is an ionic bond between them. We can clearly see a coordinate bond between $\\mathrm{N}-\\mathrm{H}$.</p>\n<p>Yes, a coordinate bond is present.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrhcoa4%2F876a48ad-f1a9-4850-94eb-9123dad7e4f2%2F7b6762c0-9710-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrhcoa5.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrhcoa4%2F876a48ad-f1a9-4850-94eb-9123dad7e4f2%2F7b6762c0-9710-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrhcoa5.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Yes, a coordinate bond is present.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrhdv6y%2Ff9d84428-2d22-4970-8cb1-771dbee98913%2F9c8d68a0-9710-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrhdv6z.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrhdv6y%2Ff9d84428-2d22-4970-8cb1-771dbee98913%2F9c8d68a0-9710-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrhdv6z.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Yes, a coordinate bond is present.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrhf3sm%2F3c94ee42-5190-497f-92c1-7ed71b3bd5c7%2Fbf019960-9710-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrhf3sn.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrhf3sm%2F3c94ee42-5190-497f-92c1-7ed71b3bd5c7%2Fbf019960-9710-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrhf3sn.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Only covalent bonds are present.</p>\n<p>No coordinate bond</p>\n<p>Answer: D</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से किसमें कोई उपसहसंयोजक आबंध नहीं है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>NH<sub>4</sub>Cl</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Na<sup>+</sup> [BF<sub>4</sub>]<sup>–</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>H<sub>3</sub>O<sup>+</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>CO<sub>3</sub><sup>2–</sup></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "covalent-and-co-ordinate-bond",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mslr152t",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Given below is a table of elements and their electronegative values:</p>\n<style>\n  table {\n      width: 100%;\n      border-collapse: collapse;\n      margin: 20px 0;\n  }\n  th {\n      background-color: blue;\n      color: white;\n      border: 1px solid lightgrey;\n      padding: 10px;\n  }\n  td {\n      border: 1px solid lightgrey;\n      padding: 10px;\n      text-align: left;\n  }\n</style>\n<table>\n  <tr>\n    <th>Element</th>\n    <th>Electronegative value</th>\n  </tr>\n  <tr>\n    <td>W</td>\n    <td>2.7</td>\n  </tr>\n  <tr>\n    <td>X</td>\n    <td>2.1</td>\n  </tr>\n  <tr>\n    <td>Y</td>\n    <td>0.8</td>\n  </tr>\n  <tr>\n    <td>Z</td>\n    <td>3.4</td>\n  </tr>\n</table>\n<p>The incorrect statement regarding the given information is:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>WZ does not conduct electricity in solid and fused state</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>YZ conducts electricity in fused as well as solution state</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>XZ conducts electricity only in solution state</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>WX conducts electricity only in fused state</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>We can determine the nature of the bonds formed between these elements by looking at their electronegativity differences ($\\Delta EN$).</p>\n<p>Generally:</p>\n<ul>\n<li><p>A large difference ($\\Delta EN > 1.7$) indicates an <strong>ionic bond</strong>. Ionic compounds conduct electricity in fused (molten) and aqueous states, but not in the solid state.</p></li>\n<li><p>A small difference ($\\Delta EN < 1.7$) indicates a <strong>covalent bond</strong>. Covalent compounds typically do not conduct electricity in solid or fused states (with a few exceptions like graphite). Polar covalent compounds may conduct in an aqueous solution if they ionize.</p></li>\n</ul>\n<p>Let's evaluate the options based on the given electronegativity (EN) values:</p>\n<ul>\n<li><p><strong>Option A (WZ):</strong> EN difference = $\\vert{}3.4 - 2.7\\vert{} = 0.7$. This is a <strong>covalent bond</strong>. Covalent compounds generally do not conduct electricity in solid and fused states. Therefore, this statement is <strong>correct</strong>.</p></li>\n<li><p><strong>Option B (YZ):</strong> EN difference = $\\vert{}3.4 - 0.8\\vert{} = 2.6$. This is a strong <strong>ionic bond</strong>. Ionic compounds conduct electricity in both fused and solution states due to the presence of free mobile ions. Therefore, this statement is <strong>correct</strong>.</p></li>\n<li><p><strong>Option C (XZ):</strong> EN difference = $\\vert{}3.4 - 2.1\\vert{} = 1.3$. This is a <strong>polar covalent bond</strong>. Many polar covalent compounds (like HCl) ionize when dissolved in water, thus conducting electricity in the solution state, but they do not conduct in the solid or pure fused state. Therefore, this statement is generally <strong>correct</strong>.</p></li>\n<li><p><strong>Option D (WX):</strong> EN difference = $\\vert{}2.7 - 2.1\\vert{} = 0.6$. This is a <strong>covalent bond</strong>. Covalent compounds do not have free ions or electrons to conduct electricity in the fused (molten) state. Stating that it conducts electricity in the fused state is false. Therefore, this statement is <strong>incorrect</strong>.</p></li>\n</ul>\n<p>The question asks for the incorrect statement.</p>\n<p><strong>Correct Choice:</strong></p>\n<p><strong>Option D: WX conducts electricity only in fused state</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>नीचे तत्वों और उनके विद्युत ऋणात्मकता मानों की एक तालिका दी गई है:</p> <style> table { width: 100%; border-collapse: collapse; margin: 20px 0; } th { background-color: blue; color: white; border: 1px solid lightgrey; padding: 10px; } td { border: 1px solid lightgrey; padding: 10px; text-align: left; } </style> <table> <tr> <th>तत्व</th> <th>विद्युत ऋणात्मकता मान</th> </tr> <tr> <td>W</td> <td>2.7</td> </tr> <tr> <td>X</td> <td>2.1</td> </tr> <tr> <td>Y</td> <td>0.8</td> </tr> <tr> <td>Z</td> <td>3.4</td> </tr> </table> <p>दी गई जानकारी के संबंध में गलत कथन है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>WZ ठोस और संगलित अवस्था में विद्युत का चालन नहीं करता है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>YZ संगलित के साथ-साथ विलयन अवस्था में भी विद्युत का चालन करता है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>XZ केवल विलयन अवस्था में विद्युत का चालन करता है</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>WX केवल संगलित अवस्था में विद्युत का चालन करता है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ionic-bond",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msribmfs",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The ionic bonds $\\text{X}^{+} \\text{Y}^{-}$ are formed when:</p><p>I. electron gain enthalpy of Y is high.</p><p>II. ionisation energy of X is low.</p><p>III. lattice energy of XY is high.</p><p>IV. lattice energy of XY is low.</p><p>Choose the correct answer from the option given below.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>I and II</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>I and III</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>I, II and III</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>I, II, III and IV</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<h3><strong>Answer</strong></h3>\n<p><strong>Option C (I, II and III)</strong></p>\n\n<p>The formation of an ionic compound $X^+Y^-$ depends on the ease of formation of the constituent ions from neutral atoms and the stability of the resulting crystal lattice. The favorable conditions are:</p>\n<ol>\n<li><p><strong>Low Ionization Energy of X (Statement II):</strong> For the cation $X^+$ to form easily, atom $X$ must readily lose an electron. This process requires energy, so a <strong>low ionization energy</strong> favors cation formation.</p></li>\n<li><p><strong>High Electron Gain Enthalpy of Y (Statement I):</strong> For the anion $Y^-$ to form easily, atom $Y$ must readily accept an electron. This process releases energy, so a <strong>high (highly negative) electron gain enthalpy</strong> favors anion formation.</p></li>\n<li><p><strong>High Lattice Energy of XY (Statement III):</strong> The primary driving force for the formation of an ionic bond is the energy released when gaseous ions ($X^+$ and $Y^-$) pack together to form a stable, 3D solid lattice. A <strong>high lattice energy</strong> ensures that the energy released more than compensates for the energy absorbed during ion formation, resulting in a stable compound.</p></li>\n</ol>\n<p>Therefore, statements I, II, and III represent the correct conditions for forming an ionic bond. Statement IV is incorrect because a low lattice energy would not provide enough stabilization.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>आयनिक बंध $\\text{X}^{+} \\text{Y}^{-}$ तब बनते हैं जब:</p><p>I. Y की इलेक्ट्रॉन लब्धि एन्थैल्पी उच्च होती है।</p><p>II. X की आयनन ऊर्जा निम्न होती है।</p><p>III. XY की जालक ऊर्जा उच्च होती है।</p><p>IV. XY की जालक ऊर्जा निम्न होती है।</p><p>नीचे दिए गए विकल्पों में से सही उत्तर चुनें।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>I और II</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>I और III</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>I, II और III</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>I, II, III और IV</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ionic-bond",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msrif6tg",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In the Born-Haber cycle for the formation of solid common salt (NaCl), the largest contribution comes from</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>the low ionisation potential of Na</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>the high electron affinity of Cl</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>the low $\\Delta H_{\\text{vap}}$ of Na(s)</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>the lattice energy</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<h3><strong>Answer</strong></h3>\n<p><strong>Option D</strong></p>\n<p>The formation of an ionic compound like $NaCl$ involves several energy changes, which can be represented by the Born-Haber cycle. These steps include:</p>\n<ol>\n<li><p><strong>Sublimation of Na(s):</strong> Requires energy ($\\Delta_{sub} H^\\ominus$).</p></li>\n<li><p><strong>Ionization of Na(g):</strong> Requires energy (Ionization Enthalpy, $\\Delta_i H^\\ominus$).</p></li>\n<li><p><strong>Dissociation of $Cl_2$(g):</strong> Requires energy ($\\frac{1}{2} \\Delta_{bond} H^\\ominus$).</p></li>\n<li><p><strong>Electron gain by Cl(g):</strong> Releases energy (Electron Gain Enthalpy, $\\Delta_{eg} H^\\ominus$).</p></li>\n<li><p><strong>Formation of the crystal lattice:</strong> Releases a large amount of energy when gaseous $Na^+$ and $Cl^-$ ions pack together to form solid $NaCl$. This is the <strong>Lattice Enthalpy</strong> ($\\Delta_{lattice} H^\\ominus$).</p></li>\n</ol>\n<p>While a low ionization potential (Option A) and a high electron affinity (Option B) are favorable conditions, the sum of the electron gain enthalpy and ionization enthalpy is actually positive for $NaCl$ formation. This means the gas-phase ion formation alone is an endothermic process.</p>\n<p>The primary driving force that makes the overall process highly exothermic and stabilizes the solid ionic compound is the <strong>Lattice Energy</strong>. The highly negative lattice enthalpy (approximately $-788 \\text{ kJ mol}^{-1}$ for $NaCl$) more than compensates for the energy absorbed in the other steps, making it by far the largest contribution to the stability of solid common salt.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>ठोस साधारण नमक (NaCl) के निर्माण के लिए बॉर्न-हैबर चक्र (Born-Haber cycle) में, सबसे बड़ा योगदान किसका होता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Na के निम्न आयनन विभव का</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Cl की उच्च इलेक्ट्रॉन बंधुता का</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Na(s) की निम्न $\\Delta H_{\\text{vap}}$ का</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>जालक ऊर्जा का</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ionic-bond",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msrfdi4z",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Difference between total number of lone pairs and total number of bonds in Lewis dot structure of $\\mathrm{NO}_3{ }^{-}$is :</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>If we closely examine the Lewis dot structure of $\\mathrm{NO}_3{ }^{-}$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrfbsd1%2F4e8c4595-de6e-40bd-83f5-e2c5d27bfd56%2F907d2850-9708-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrfbsd2.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrfbsd1%2F4e8c4595-de6e-40bd-83f5-e2c5d27bfd56%2F907d2850-9708-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrfbsd2.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>We see that the total lone pairs $=8$</p>\n<p>Total bonds = 4</p>\n<p>The difference $=8-4=4$</p>\n<p>Answer: 4</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\mathrm{NO}_3{ }^{-}$ की लुईस डॉट संरचना में एकाकी युग्मों की कुल संख्या और आबंधों की कुल संख्या के बीच का अंतर है :</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "lewis-theory",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msrfnqxk",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>X = The average formal charge on an oxygen atom in carbonate ion.</p>\n<p>Y = The sum of the formal charge on carbon in carbon monoxide and carbon dioxide, respectively.</p>\n<p>The value of $(\\mathrm{X}+\\mathrm{Y}+8) / 2$ is…. [Upto nearest integer]</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>We're given:</p>\n<p>$\\mathrm{X}=$ Average formal charge on an oxygen atom in $\\mathrm{CO}_3{ }^{2-}$</p>\n<p>Y = Sum of formal charges on carbon in CO and $\\mathrm{CO}_2$</p>\n<p>So, we have to find the value of X first,</p>\n<p>Carbonate ion, $\\mathrm{CO}_3{ }^{2-}$, has 3 resonance structures.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrfho3e%2F23be4cac-6464-4ec2-8fe9-9c821ba1bc05%2F340c30b0-9709-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrfho3f.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrfho3e%2F23be4cac-6464-4ec2-8fe9-9c821ba1bc05%2F340c30b0-9709-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrfho3f.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>In each resonance structure:</p>\n<ul>\n\n<li><p>One O has a formal charge = 0</p></li>\n\n<li><p>Two O atoms have a formal charge = $-1$</p></li>\n\n</ul>\n<p>Total formal charge on all O atoms = $-2$</p>\n<p>Average formal charge on one O atom: $X = -\\frac{2}{3}$</p>\n<p>Now, we have to find the value of Y:</p>\n<p>For CO:</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrfkpcx%2F5ea7e3fd-e780-4ed5-8ced-df4a259224d5%2F88738d10-9709-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrfkpcy.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrfkpcx%2F5ea7e3fd-e780-4ed5-8ced-df4a259224d5%2F88738d10-9709-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrfkpcy.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Formal charge on $\\mathrm{C}=-1$</p>\n<p>For $\\mathrm{CO}_2$ :</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msrfmv28%2F143b5a9c-6ede-4587-bda1-48c41200d17e%2Fc4799c00-9709-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrfmv29.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msrfmv28%2F143b5a9c-6ede-4587-bda1-48c41200d17e%2Fc4799c00-9709-11f1-90a9-65bea79d0d8a%2Ffile-6y3zli1msrfmv29.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Formal charge on $\\mathrm{C}=0$</p>\n<p>Therefore: $\\mathrm{Y}=-1+0=-1$</p>\n<p>Now we have to find the value that is asked: $(\\mathrm{X}+\\mathrm{Y}+8) / 2$</p>\n<p>$$ \\begin{aligned} & =(-2 / 3-1+8) / 2 \\\\ & =(-2 / 3+7) / 2 \\\\ & =(19 / 3) / 2 \\\\ & =19 / 6 \\\\ & =3.17 \\end{aligned} $$</p>\n<p>To the nearest integer: 3</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>X = कार्बोनेट आयन में एक ऑक्सीजन परमाणु पर औसत औपचारिक आवेश (formal charge)।</p>\n<p>Y = क्रमशः कार्बन मोनोऑक्साइड और कार्बन डाइऑक्साइड में कार्बन पर औपचारिक आवेश का योग।</p>\n<p>$(\\mathrm{X}+\\mathrm{Y}+8) / 2$ का मान .... है। [निकटतम पूर्णांक तक]</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "lewis-theory",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msrhsfu2",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Among the given species.</p>\n<p>$\\mathrm{CO}_2, \\mathrm{H}_2 \\mathrm{O}, \\mathrm{O}_2, \\mathrm{CO}, \\mathrm{PCl}_3, \\mathrm{ICl}$ and $\\mathrm{ClF}_3$</p>\n<p>the total number of species which do not follow the octet rule are $\\_\\_\\_\\_$</p>",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>Among the given species only two i.e., CO and $\\mathrm{ClF}_3$ do not follow the octet rule.</p>\n<p>In CO molecule, after forming the bonds, C has only six $e^{-} \\mathrm{s}$ in its valence shell and in $\\mathrm{ClF}_3$ the central atom Cl has $10 e^{-}$s while other follow the octet rule.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दी गई स्पीशीज़ में से,</p> <p>$\\mathrm{CO}_2, \\mathrm{H}_2 \\mathrm{O}, \\mathrm{O}_2, \\mathrm{CO}, \\mathrm{PCl}_3, \\mathrm{ICl}$ और $\\mathrm{ClF}_3$</p> <p>अष्टक नियम का पालन नहीं करने वाली स्पीशीज़ की कुल संख्या $\\_\\_\\_\\_$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "lewis-theory",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msrhz92o",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The lattice energy of aluminium oxide, $Al_2O_3$ from</p>\n<p>the following data (all in kJ mol$^{-1}$) is ……….</p>\n<p>(excluding minus sign).</p>\n<p>Enthalpy of formation of $Al_2O_3$ = $-1676$</p>\n<p>Enthalpy of sublimation of Al = $324$</p>\n<p>Ionisation energies of Al $(I_1) = 578$</p>\n<p>$(I_2) = 1817$</p>\n<p>$(I_3) = 2745$</p>\n<p>Dissociation energy of $O_2 = 500$</p>\n<p>Electron gain enthalpy of $O_2$; $E_1 = -141$</p>\n<p>$E_2 = 791$</p>\n<p>The equation for the enthalpy of formation is</p>\n<p>$$2Al(s) + \\frac{3}{2}O_2(g) \\rightarrow Al_2O_3(s);\\ \\Delta H_f = -1676$$</p>",
+                "options": [],
+                "answer": "15304",
+                "explanation": "<p>The overall reaction is:</p>\n<p>$$2Al(s) + \\frac{3}{2}O_2(g) \\rightarrow Al_2O_3(s) \\quad \\Delta H_f = -1676 \\text{ kJ/mol}$$</p>\n<p>This can be broken down into the following steps:</p>\n<ol>\n<li><strong>Sublimation of 2 moles of Al(s) to Al(g):</strong></li>\n</ol>\n<p>$$2 \\times \\Delta H_{\\text{sub}} = 2 \\times 324 = 648 \\text{ kJ}$$</p>\n<ol start=\"2\">\n<li><strong>Ionisation of 2 moles of Al(g) to $Al^{3+}(g)$:</strong></li>\n</ol>\n<p>$$2 \\times (IE_1 + IE_2 + IE_3) = 2 \\times (578 + 1817 + 2745) = 2 \\times 5140 = 10280 \\text{ kJ}$$</p>\n<ol start=\"3\">\n<li><strong>Dissociation of $\\frac{3}{2}$ moles of $O_2(g)$ to 3 moles of O(g):</strong></li>\n</ol>\n<p>$$\\frac{3}{2} \\times \\Delta H_{\\text{diss}} = \\frac{3}{2} \\times 500 = 750 \\text{ kJ}$$</p>\n<ol start=\"4\">\n<li><strong>Electron gain enthalpy for 3 moles of O(g) to $O^{2-}(g)$:</strong></li>\n</ol>\n<p>$$3 \\times (E_1 + E_2) = 3 \\times (-141 + 791) = 3 \\times 650 = 1950 \\text{ kJ}$$</p>\n<ol start=\"5\">\n<li><strong>Lattice Energy ($U$) of forming $Al_2O_3(s)$ from gaseous ions:</strong></li>\n</ol>\n<p>$$2Al^{3+}(g) + 3O^{2-}(g) \\rightarrow Al_2O_3(s) \\quad \\Delta H = U$$</p>\n\n<p>Now, equate the sum of these steps to the enthalpy of formation:</p>\n<p>$$\\Delta H_f = [2 \\times \\Delta H_{\\text{sub}}] + [2 \\times IE_{\\text{total}}] + \\left[\\frac{3}{2} \\times \\Delta H_{\\text{diss}}\\right] + [3 \\times E_{\\text{total}}] + U$$</p>\n<p>$$-1676 = 648 + 10280 + 750 + 1950 + U$$</p>\n<p>$$-1676 = 13628 + U$$</p>\n<p>$$U = -1676 - 13628$$</p>\n<p>$$U = -15304 \\text{ kJ/mol}$$</p>\n<p>The question asks for the lattice energy excluding the minus sign.</p>\n<p><strong>Answer:</strong></p>\n<p><strong>15304</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित आँकड़ों (सभी kJ mol$^{-1}$ में) से ऐलुमिनियम ऑक्साइड, $Al_2O_3$ की जालक ऊर्जा</p>\n<p>……… है।</p>\n<p>(ऋणात्मक चिह्न को छोड़कर)।</p>\n<p>$Al_2O_3$ की विरचन एन्थैल्पी = $-1676$</p>\n<p>Al की ऊर्ध्वपातन एन्थैल्पी = $324$</p>\n<p>Al की आयनन ऊर्जाएँ $(I_1) = 578$</p>\n<p>$(I_2) = 1817$</p>\n<p>$(I_3) = 2745$</p>\n<p>$O_2$ की वियोजन ऊर्जा = $500$</p>\n<p>$O_2$ की इलेक्ट्रॉन लब्धि एन्थैल्पी; $E_1 = -141$</p>\n<p>$E_2 = 791$</p>\n<p>विरचन एन्थैल्पी के लिए समीकरण है</p>\n<p>$$2Al(s) + \\frac{3}{2}O_2(g) \\rightarrow Al_2O_3(s);\\ \\Delta H_f = -1676$$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ionic-bond",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msri7g2h",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the formula of compound is $X_2 Y_5$, then the total number of electrons are present in the valence shells of $X$ and $Y$ is $\\_\\_\\_\\_$.</p>",
+                "options": [],
+                "answer": "11",
+                "explanation": "\n<ol>\n<li><strong>Determine the Valencies (Criss-Cross Rule):</strong></li>\n</ol>\n<p>In the binary compound $X_2Y_5$, the subscripts indicate the valencies (or oxidation states) of the combining elements. By cross-multiplying:</p>\n<ul>\n<li><p>Valency of $X = 5$</p></li>\n<li><p>Valency of $Y = 2$</p></li>\n</ul>\n<ol>\n<li><strong>Determine the Valence Electrons:</strong></li>\n</ol>\n<ul>\n<li><p><strong>For Element X:</strong> To exhibit a valency (or oxidation state) of 5, the atom typically possesses <strong>5 electrons</strong> in its outermost valence shell (e.g., Group 15 elements like Nitrogen or Phosphorus, which can form $+5$ states, or transition metals like Vanadium in $V_2O_5$).</p></li>\n<li><p><strong>For Element Y:</strong> To exhibit a valency of 2 (typically forming a $-2$ anion), the atom needs 2 electrons to complete its octet. Therefore, it must have $8 - 2 =$ <strong>6 valence electrons</strong> (e.g., Group 16 elements like Oxygen or Sulfur).</p></li>\n</ul>\n<ol>\n<li><strong>Calculate the Total:</strong></li>\n</ol>\n<p>The question asks for the total number of valence electrons present in one atom of $X$ and one atom of $Y$:</p>\n<p>$$5 \\text{ (from } X) + 6 \\text{ (from } Y) = 11$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि किसी यौगिक का सूत्र $X_2 Y_5$ है, तो $X$ और $Y$ के संयोजी कोशों में उपस्थित इलेक्ट्रॉनों की कुल संख्या $\\_\\_\\_\\_$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "lewis-theory",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Ionic Bond,\nCovalent and Co-ordinate Bond,\nLewis Theory,\nCalculation of Lattice Energy",
+    "timeAllotted": 2160000,
+    "title": "Chemical Bonding & Molecular Structure Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mpe6cu5g",
+    "defaultLanguage": "en",
+    "description": "Ionic Bond,\nCovalent and Co-ordinate Bond,\nLewis Theory,\nCalculation of Lattice Energy",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-13T13:00:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Ionic Bond,\nCovalent and Co-ordinate Bond,\nLewis Theory,\nCalculation of Lattice Energy",
+    "timeAllotted": 2160000,
+    "title": "Chemical Bonding & Molecular Structure Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Chemical Bonding & Molecular Structure"
+  }
+}

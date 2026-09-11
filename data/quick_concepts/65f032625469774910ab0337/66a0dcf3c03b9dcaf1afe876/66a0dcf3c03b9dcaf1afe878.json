@@ -1,0 +1,70 @@
+{
+  "subjectId": "65f032625469774910ab0337",
+  "chapterId": "66a0dcf3c03b9dcaf1afe876",
+  "topicId": "66a0dcf3c03b9dcaf1afe878",
+  "title": "Solubility and Concentration of Solutions",
+  "concepts": [
+    {
+      "title": "Types of Solutions",
+      "conceptBody": "<h3><strong>Solutions</strong></h3><p><strong>Introduction</strong></p><p>A “solution” is defined as a homogeneous mixture of two or more substances (called as components), the relative proportion or composition of which may vary between certain limits.</p><p><strong>Types of Solutions</strong></p><p>Following types of solutions are generally considered</p><p>(a) gas in gas (b) liquid in liquid</p><p>(c) gas in liquid (d) solid in liquid</p><p>The component of a particular type of solution which is present in the greater quantity is called <strong>solvent </strong>while the other component(s) is called the <strong>solute </strong>. However, in the case of a solution formed from a solid and a liquid, the liquid is always referred to as the solvent even though there may be the cases when the solid is present in the larger quantity.</p><p>A solution is <strong>unsaturated </strong>if it can still dissolve more solute at the same temperature; when it can dissolve no more of the solute at the same temperature it is said to be <strong>saturated </strong>.</p><p>It is possible to obtain <strong>supersaturated solution </strong>, i.e., solutions which contain more dissolved solute than they should at a particular temperature, by cooling a hot concentrated solution of a solid in a liquid in the absence of traces of solids (even dust). In order to ensure that a particular solution is saturated but not supersaturated there must be a small amount of excess solute present.</p><ul><li>Supersaturated solutions are not in equilibrium with the solid substance. Thus, if a small crystal of solute (say sodium thiosulphate) is added to its supersaturated solution, the excess immediately crystallises out, which is usually quite fast.</li></ul><figure class=\"table\"><table><tbody><tr><td><strong>Kind of solution&nbsp;</strong></td><td><strong>Example&nbsp;</strong></td></tr><tr><td><p>1. Gas in gas</p><p>2. Gas in liquid</p><p>3. Gas in solid</p><p>4. Liquid in liquid</p><p>5. Liquid in solid</p><p>6. Solid in liquid</p><p>7. Solid in solid</p></td><td><p>Air (${{O}_{2}}, {{N}_{2}},$ Ar and other gases)</p><p>Carbonated water</p><p>H 2 in platinum metal (adsorption)</p><p>Mixture of hydrocarbons (gasoline)</p><p>Dental amalgam (Hg in Ag)</p><p>Sea water (NaCl and other salts in water)</p><p>Metal alloys such as 14-carat gold (Au and Ag)</p></td></tr></tbody></table></figure><p><strong>Note: </strong>Closely related to weight percent and particularly useful for dilute solutions are the concentration units parts per million (ppm) and parts per billion (ppb).</p><p>$\\text{Parts per million }(\\text{ppm})=\\frac{\\text{ mass of solute component }}{\\text{ total mass of solution }}\\times {{10}^{6}}$</p><p>$\\text{Parts per billion }(\\text{ppb})=\\frac{\\text{ mass of solute component }}{\\text{ total mass of solution }}\\times {{10}^{9}}$</p>",
+      "position": 0,
+      "qcConcept": "66a0dcf3c03b9dcaf1afe879"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66584e571814fc7e94209dfd",
+      "title": "The molarity of pure water is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e571814fc7e94209dfe",
+      "title": "Which of the following has maximum number of molecules",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e571814fc7e94209dff",
+      "title": "Increasing the temperature of an aqueous solution will cause",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e571814fc7e94209e00",
+      "title": "The solubility of a gas in water depends on",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e571814fc7e94209e01",
+      "title": "$1 \\mathrm{M}$ and 2.5 litre $\\mathrm{NaOH}$ solution is mixed with another $0.5 \\mathrm{M}$ and 3 litre $\\mathrm{NaOH}$ solution, then molarity of the resultant solution will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e571814fc7e94209e02",
+      "title": "If $5.85 \\mathrm{gms}$ of $\\mathrm{NaCl}$ are dissolved in $90 \\mathrm{gms}$ of water, the mole fraction of $\\mathrm{NaCl}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e571814fc7e94209e03",
+      "title": "$0.5 \\mathrm{M}$ of $\\mathrm{H}_2 \\mathrm{SO}_4$ is diluted from 1 litre to 10 litre, normality of resulting solution is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e571814fc7e94209e04",
+      "title": "$200 \\mathrm{ml}$ of a solution contains $5.85 \\mathrm{~g}$ dissolved sodium chloride. The concentration of the solution will be $(\\mathrm{Na}=23 ; \\mathrm{Cl}=35.5)$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e571814fc7e94209e05",
+      "title": "The number of moles present in 2 litre of $0.5 \\mathrm{M} \\mathrm{NaOH}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

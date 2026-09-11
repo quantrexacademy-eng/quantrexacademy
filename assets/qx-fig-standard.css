@@ -1,0 +1,305 @@
+/* Global figure standard = Organic Chemistry digital book
+   (multi-color, aspect-ratio, Quantrex Academy seal via .qx-org-fig-host) */
+
+.qx-org-fig-host,
+.qx-org-fig-host-opt,
+.qx-org-fig-host-cell {
+  position: relative !important;
+  display: inline-block !important;
+  max-width: 100% !important;
+  vertical-align: middle !important;
+  margin: 8px auto !important;
+  overflow: visible !important;
+  line-height: 0 !important;
+  text-align: center !important;
+}
+
+.qx-org-fig-host {
+  max-width: min(100%, 720px) !important;
+}
+
+.qx-org-fig-host-opt {
+  max-width: min(100%, 340px) !important;
+  margin: 4px auto !important;
+}
+
+.qx-org-fig-host-cell {
+  max-width: min(100%, 280px) !important;
+  margin: 4px auto !important;
+}
+
+.qx-org-fig-host img,
+.qx-org-fig-host-opt img,
+.qx-org-fig-host-cell img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: #fff !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  overflow: visible !important;
+}
+
+.qx-org-fig-host img {
+  max-height: min(78vh, 640px) !important;
+}
+
+/* Irodov / Rank Booster — question text is the figure */
+.qx-marks-native img,
+.qx-marks-native-q img,
+img[src*="2026_modules"],
+img[src*="modules/ms/"],
+img[src*="AKCR2_"],
+img[src*="original.fullsize"],
+img.qx-irodov-stem {
+  content-visibility: visible !important;
+  contain: none !important;
+  max-width: min(100%, 720px) !important;
+  max-height: min(88vh, 920px) !important;
+  min-height: 0 !important;
+  height: auto !important;
+  width: auto !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  object-fit: contain !important;
+  background: #fff !important;
+  margin: 8px auto !important;
+}
+
+.qx-org-fig-host-opt img {
+  max-height: min(46vh, 280px) !important;
+  min-height: 64px !important;
+}
+
+.qx-org-fig-host-cell img {
+  max-height: min(42vh, 240px) !important;
+}
+
+/* Organic + all diagram figures use the pale Quantrex seal */
+
+/* Organic-book seal (pale diagonal art) — ONLY on diagram images, never on text */
+.qx-org-qx-wm {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 0.82 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+  left: 0 !important;
+  background: url("quantrex-fig-wm-organic.png") center / 50% no-repeat !important;
+  transform: none !important;
+  mix-blend-mode: multiply !important;
+  z-index: 3 !important;
+}
+
+.qx-org-fig-host-opt .qx-org-qx-wm,
+.qx-org-fig-host-cell .qx-org-qx-wm {
+  background-size: 42% !important;
+  opacity: 0.7 !important;
+}
+
+/* Irodov / text-scan: smaller lighter seal so printed text stays readable */
+.qx-org-fig-host-scan .qx-org-qx-wm {
+  background-size: 30% !important;
+  opacity: 0.32 !important;
+}
+.qx-org-fig-host.qx-org-no-wm .qx-org-qx-wm {
+  display: none !important;
+  opacity: 0 !important;
+  background: none !important;
+}
+
+html[data-theme="dark"] .qx-org-qx-wm,
+.mtk-test-root[data-test-theme="dark"] .qx-org-qx-wm {
+  opacity: 0.55 !important;
+  mix-blend-mode: multiply !important;
+}
+html[data-theme="dark"] .qx-org-fig-host-opt .qx-org-qx-wm,
+html[data-theme="dark"] .qx-org-fig-host-cell .qx-org-qx-wm,
+.mtk-test-root[data-test-theme="dark"] .qx-org-fig-host-opt .qx-org-qx-wm {
+  opacity: 0.45 !important;
+}
+
+/* Never clip question figures */
+#qxDiagramSlot,
+.qx-diagram-slot,
+.qx-diagram-seg,
+.qx-opt-diagram-slot,
+.qx-fig,
+.qx-fig-flat,
+.qx-pool-fig-wrap,
+.qx-question-body,
+.mtk-q-text,
+.qx-content,
+.sol-body,
+.qx-sol-body,
+.qx-match-q-body,
+.qx-inline-table-figs,
+.mtk-main .qx-diagram-slot,
+.mtk-main #qxDiagramSlot,
+.mtk-main .qx-pool-fig-wrap {
+  overflow: visible !important;
+  max-height: none !important;
+}
+
+.mtk-main .qx-diagram-slot,
+.mtk-main #qxDiagramSlot,
+.mtk-main .qx-diagram-seg,
+.mtk-main .qx-pool-fig-wrap {
+  overflow: visible !important;
+}
+
+/* Stem / solution / book figures — full color, no crop */
+.mtk-q-text img.qx-pool-fig,
+.qx-content img.qx-pool-fig,
+.sol-body img,
+.qx-sol-body img,
+.qx-diagram-slot img,
+#qxDiagramSlot img,
+.qx-marks-native img,
+.qx-book-q img {
+  visibility: visible !important;
+  opacity: 1 !important;
+  filter: none !important;
+  object-fit: contain !important;
+  height: auto !important;
+}
+
+/* Column-match / tables: never invisible in dark or light */
+.mtk-test-root[data-test-theme="dark"] table,
+.mtk-test-root[data-test-theme="dark"] table td,
+.mtk-test-root[data-test-theme="dark"] table th,
+.mtk-test-root[data-test-theme="dark"] .qx-match-pair,
+.mtk-test-root[data-test-theme="dark"] .qx-match-lab,
+.mtk-test-root[data-test-theme="dark"] .qx-match-val,
+html[data-theme="dark"] table td,
+html[data-theme="dark"] table th,
+html[data-theme="dark"] .qx-match-pair,
+html[data-theme="dark"] .qx-match-lab {
+  color: #e2e8f0 !important;
+}
+.mtk-test-root[data-test-theme="dark"] table th,
+html[data-theme="dark"] table th {
+  background: #334155 !important;
+  color: #f8fafc !important;
+}
+.mtk-test-root[data-test-theme="dark"] table td,
+html[data-theme="dark"] table td {
+  background: #1e293b !important;
+}
+.mtk-test-root[data-test-theme="light"] table,
+.mtk-test-root[data-test-theme="light"] table td,
+.mtk-test-root[data-test-theme="light"] table th,
+.mtk-test-root[data-test-theme="light"] .qx-match-pair {
+  color: #0f172a !important;
+}
+.mtk-test-root[data-test-theme="light"] table th {
+  background: #f1f5f9 !important;
+}
+.mtk-test-root[data-test-theme="light"] table td {
+  background: #ffffff !important;
+}
+
+/* Dark / light: question + solution text always readable */
+html[data-theme="dark"] .sol-body,
+html[data-theme="dark"] .qx-sol-body,
+html[data-theme="dark"] .qx-sol-card,
+.mtk-test-root[data-test-theme="dark"] .sol-body,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-body,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-card {
+  background: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+html[data-theme="dark"] .sol-body,
+html[data-theme="dark"] .qx-sol-body,
+html[data-theme="dark"] .qx-sol-body p,
+.mtk-test-root[data-test-theme="dark"] .sol-body,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-body,
+.mtk-test-root[data-test-theme="dark"] .mtk-q-text,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt-text,
+.mtk-test-root[data-test-theme="dark"] .qx-content {
+  color: #e2e8f0 !important;
+}
+html[data-theme="dark"] .sol-body .katex,
+html[data-theme="dark"] .qx-sol-body .katex,
+.mtk-test-root[data-test-theme="dark"] .katex,
+.mtk-test-root[data-test-theme="dark"] .katex * {
+  color: #e2e8f0 !important;
+}
+html[data-theme="light"] .sol-body,
+html[data-theme="light"] .qx-sol-body,
+.mtk-test-root[data-test-theme="light"] .sol-body,
+.mtk-test-root[data-test-theme="light"] .qx-sol-body {
+  color: #0f172a !important;
+}
+
+/* Light: figure paper = NTA white. Dark: warm paper matching charcoal UI */
+html[data-theme="light"] .qx-org-fig-host img,
+.mtk-test-root[data-test-theme="light"] .qx-org-fig-host img,
+html[data-theme="light"] img.qx-pool-fig,
+.mtk-test-root[data-test-theme="light"] img.qx-pool-fig {
+  background: #ffffff !important;
+}
+html[data-theme="dark"] .qx-org-fig-host img,
+.mtk-test-root[data-test-theme="dark"] .qx-org-fig-host img,
+html[data-theme="dark"] img.qx-pool-fig,
+.mtk-test-root[data-test-theme="dark"] img.qx-pool-fig {
+  background: #eceae4 !important;
+}
+
+/* Compact, attractive column-match tables */
+.mtk-q-text table,
+.qx-content table,
+.qx-match-q-body table,
+.mtk-main table {
+  width: auto !important;
+  max-width: 100% !important;
+  margin: 10px 0 12px !important;
+  border-collapse: collapse !important;
+}
+
+.mtk-q-text table th,
+.mtk-q-text table td,
+.qx-content table th,
+.qx-content table td,
+.qx-match-q-body table th,
+.qx-match-q-body table td {
+  padding: 6px 10px !important;
+  vertical-align: middle !important;
+}
+
+/* Letter-only first cells stay slim. Never shrink List-I (ss931 hid A/B/C/D). */
+.mtk-q-text table:not(.qx-match-list):not(.qx-match-q-body) td:first-child:not(:has(img)),
+.qx-content table:not(.qx-match-list) td:first-child:not(:has(img)) {
+  width: auto;
+  white-space: nowrap;
+}
+
+.mtk-q-text img,
+.qx-question-body img,
+.qx-marks-native-q img,
+.mtk-main .qx-org-fig-host {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@media (max-width: 720px) {
+  .qx-org-fig-host img {
+    max-height: min(70vh, 480px) !important;
+  }
+  .qx-org-fig-host-opt img {
+    max-height: min(40vh, 220px) !important;
+  }
+}

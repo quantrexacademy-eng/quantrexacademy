@@ -1,0 +1,64 @@
+{
+  "subjectId": "65f032625469774910ab0337",
+  "chapterId": "66a0dcd3c03b9dcaf1afe7e0",
+  "topicId": "66a0dcd4c03b9dcaf1afe7e2",
+  "title": "Oxidation and Reduction Reactions",
+  "concepts": [
+    {
+      "title": "Formal charge",
+      "conceptBody": "<h3>&nbsp;<strong>Formal Charge</strong></h3><p>The formal charge of an atom in a molecule is the hypothetical charge the atom would have if we could redistribute the electrons in the bonds evenly between the atoms in the bond. Formal charge $(\\text{F})$ is determined using</p><p>where v = valence electrons</p><p>s = shared electrons (forming bonds)</p><p>u = unshared electrons</p><p><img src=\"data:image/png;base64,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\"></p><ul><li>In $BrC{{l}_{3}}$</li></ul><figure class=\"table\"><table><tbody><tr><td>&nbsp;</td><td><strong>v&nbsp;</strong></td><td><strong>s&nbsp;</strong></td><td><strong>u&nbsp;</strong></td><td><strong>Formal charge&nbsp;</strong></td></tr><tr><td>Br</td><td>7</td><td>6</td><td>4</td><td>0</td></tr><tr><td>Cl</td><td>7</td><td>2</td><td>6</td><td>0</td></tr></tbody></table></figure><ul><li>In $ICl_{4}^{-}$</li></ul><figure class=\"table\"><table><tbody><tr><td>&nbsp;</td><td><strong>v&nbsp;</strong></td><td><strong>s&nbsp;</strong></td><td><strong>u&nbsp;</strong></td><td><strong>Formal charge&nbsp;</strong></td></tr><tr><td>I</td><td>7</td><td>8</td><td>4 (one extra)</td><td>–1</td></tr><tr><td>Cl</td><td>7</td><td>2</td><td>6</td><td>0</td></tr></tbody></table></figure><ul><li>In $NH_{4}^{+}$</li></ul><figure class=\"table\"><table><tbody><tr><td>&nbsp;</td><td><strong>v&nbsp;</strong></td><td><strong>s&nbsp;</strong></td><td><strong>u&nbsp;</strong></td><td><strong>Formal charge&nbsp;</strong></td></tr><tr><td>N</td><td>5</td><td>8</td><td>0</td><td>+1</td></tr><tr><td>H</td><td>1</td><td>2</td><td>0</td><td>0</td></tr></tbody></table></figure>",
+      "position": 0,
+      "qcConcept": "66a0dcd4c03b9dcaf1afe7e3"
+    },
+    {
+      "title": "Oxidation number",
+      "conceptBody": "<h3>&nbsp;<strong>The Oxidation State Of An Element</strong></h3><p>To describe the changes that occur in oxidation-reduction reactions and to write the correctly balanced equations for such reactions, it is helpful to know the concept of the oxidation state (or oxidation number) of an atom).</p><p>For monoatomic ions, the oxidation state is simply the charge on the ion. For example, oxidation states of$\\text{N}{{\\text{a}}^{+}},\\text{M}{{\\text{g}}^{2+}},\\text{C}{{\\text{l}}^{-}}$and ${{\\text{N}}^{3-}}$ are $+1,+2,-1$ and -3 respectively. For covalently bonded substances, the charge on an atom would be so small that it is impossible to calculate the exact charge on each atom in the molecule. Thus, oxidation state for covalently bonded molecule is defined as \"the charge an atom would possess if all the bonds associated with that atom are broken heterolytically considering them to be completely ionic\". For example, in $\\text{N}{{\\text{H}}_{3}}$ there are three $\\text{N}-\\text{H}$ bonds. If we consider all three $\\text{N}-\\text{H}$ bonds to be ionic, then each $\\text{H}$ will possess a charge of +1 while $\\text{N}$ has the charge -3 (because $\\text{N}$ is more electronegative than $\\text{H}$ ). In ${{\\text{H}}_{2}}{{\\text{O}}_{2}}$, there are two $\\text{O}-\\text{H}$ bonds and one $\\text{O}-\\text{O}$ bond as evident from the structural formula $\\text{H}-\\text{O}-\\text{O}-\\text{H}$. Assuming each $\\text{O}-\\text{H}$ bond to be ionic, each $\\text{H}$ atom would possess +1 charge while each $\\text{O}$ possess –1 charge. The $\\text{O}-\\text{O}$ bond is not ionic as the bond is between atoms of similar electronegativity.</p><p>It is not necessary to know the structure of a molecule in order to calculate the oxidation state of an atom in a molecule. The following set of rules are used to assign oxidation states to atoms in ions or molecules.</p><p>1. Each pure element has an oxidation state of zero. This is true whether the element is a monoatomic gas, a metallic solid or a polyatomic molecule. Thus, $\\text{Fe}(\\text{s}),{{\\text{N}}_{2}}(~\\text{g}),{{\\text{P}}_{4}}(~\\text{s})$ and ${{\\text{S}}_{8}}(~\\text{s})$ are all in the zero oxidation state.</p><p>2. In monoatomic ions, the oxidation state of the element is equal to the charge of the ion. Thus, oxidation state of all alkali metals is +1 and that of alkaline earth metals is +2 in all their compounds. In ionic solid ${{\\text{K}}_{2}}~\\text{S}$, the oxidation state’s of potassium and sulfur are +1 and –2 respectively. In $\\text{AgCl}$, the oxidation state of silver and chlorine are +1 and –1 respectively.</p><p>3. The oxidation state of hydrogen in any molecule in which it is combined with another element is +1, except in the metallic hydrides such as $\\text{LiH}$ or $\\text{Ca}{{\\text{H}}_{2}}$, where the oxidation state of hydrogen is –1.</p><p>4. The oxidation state of oxygen in any molecule or ion in which it is combined with another element is –2, except in the peroxides, the superoxides and in $\\text{O}{{\\text{F}}_{2}}$. The peroxides $\\left( {{\\text{H}}_{2}}{{\\text{O}}_{2}} \\right.$, $\\text{N}{{\\text{a}}_{2}}{{\\text{O}}_{2}},\\text{Ba}{{\\text{O}}_{2}}$ etc.) are compounds in which there is an $\\text{O}-\\text{O}$ covalent bond and the peroxide ion is $\\text{O}_{2}^{2-}$. The oxidation state of oxygen in peroxides is –1 . The superoxides (like $\\text{K}{{\\text{O}}_{2}}$, $\\text{Cs}{{\\text{O}}_{2}}$ etc.) are ionic compounds involving the superoxide ion, $\\text{O}_{2}^{-}$. The oxidation state of oxygen is $-1/\\text{an}$ superoxide in $\\text{O}{{\\text{F}}_{2}}$, the oxidation state of oxygen is +2 since fluorine is more electronegative than oxygen.</p><p>5. The oxidation state of all the halogens is –1 in all their compounds except where they are combined with an element of higher electronegativity or in interhalogn compounds. Oxidation state of fluorine is always - 1 , since it is the most electronegative element.</p><p>6. In covalent compounds not involving hydrogen or oxygen, the more electronegative element is assigned negative oxidation state while less electronegative element is assigned positive oxidation state.</p><p>7. The algebraic sum of the oxidation numbers of all the atoms combined in a molecular or complex ion must equal the net charge on the molecule or ion.</p><p>Until the form of radical changes, the O.N of an element in a compound remains same.</p>",
+      "position": 1,
+      "qcConcept": "66a0dcd4c03b9dcaf1afe7e4"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66584e551814fc7e94209d61",
+      "title": "The oxidation number of $A s$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e551814fc7e94209d62",
+      "title": "Oxidation number of iodine varies from",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e551814fc7e94209d63",
+      "title": "$\\mathrm{Sn}^{++}$loses two electrons in a reaction. What will be the oxidation number of tin after the reaction",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e551814fc7e94209d64",
+      "title": "Which of the following elements never show positive oxidation number",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e551814fc7e94209d65",
+      "title": "An element which never has a positive oxidation number in any of its compounds",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e551814fc7e94209d66",
+      "title": "In an oxidation process, oxidation number",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e551814fc7e94209d67",
+      "title": "The process in which oxidation number increases is known as",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

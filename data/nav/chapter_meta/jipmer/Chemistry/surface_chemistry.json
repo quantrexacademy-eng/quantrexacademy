@@ -1,0 +1,79 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b89d4b564dfab4f94d0",
+  "chapterId": "66d58542a75f05ee8564f5ba",
+  "subject": "Chemistry",
+  "chapter": "Surface Chemistry",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d586a6a75f05ee85650334",
+      "title": "Adsorption",
+      "count": 4,
+      "questionIds": [
+        "66d5863ba75f05ee8564fecc",
+        "66d58615a75f05ee8564fd70",
+        "66d585fea75f05ee8564fc97",
+        "66d58542a75f05ee8564f5b8"
+      ]
+    },
+    {
+      "id": "66d586a7a75f05ee85650339",
+      "title": "Adsorption isotherms",
+      "count": 2,
+      "questionIds": [
+        "66d58627a75f05ee8564fe18",
+        "66d585eea75f05ee8564fbff"
+      ]
+    },
+    {
+      "id": "66d586a7a75f05ee8565033a",
+      "title": "Catalysis and Theories of Catalysis",
+      "count": 2,
+      "questionIds": [
+        "66d58600a75f05ee8564fcae",
+        "66d585eea75f05ee8564fc04"
+      ]
+    },
+    {
+      "id": "66d586a6a75f05ee85650335",
+      "title": "Colloids",
+      "count": 6,
+      "questionIds": [
+        "66d58662a75f05ee85650035",
+        "66d58651a75f05ee8564ff95",
+        "66d5864ea75f05ee8564ff80",
+        "66d585dba75f05ee8564fb52",
+        "66d585baa75f05ee8564fa24",
+        "66d58544a75f05ee8564f5ce"
+      ]
+    },
+    {
+      "id": "66d586a7a75f05ee85650336",
+      "title": "Preparation and Purification of colloids",
+      "count": 1,
+      "questionIds": [
+        "66d58580a75f05ee8564f80c"
+      ]
+    },
+    {
+      "id": "66d586a7a75f05ee85650337",
+      "title": "Properties of colloidal solution",
+      "count": 3,
+      "questionIds": [
+        "66d5864fa75f05ee8564ff83",
+        "66d58615a75f05ee8564fd72",
+        "66d58592a75f05ee8564f8b2"
+      ]
+    },
+    {
+      "id": "66d586a7a75f05ee85650338",
+      "title": "Emulsions and Gels",
+      "count": 1,
+      "questionIds": [
+        "66d585a6a75f05ee8564f96c"
+      ]
+    }
+  ]
+}

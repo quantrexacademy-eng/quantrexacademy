@@ -1,0 +1,100 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd6cc03b9dcaf1afeadd",
+  "topicId": "66a0dd6fc03b9dcaf1afeaef",
+  "title": "Tangent to hyperbola",
+  "concepts": [
+    {
+      "title": "Condition for tangency and points of contact",
+      "conceptBody": "<h3><strong>Tangent to the Hyperbola</strong></h3><p><strong>Condition for tangency and points of contact : </strong>The condition for the line $y=mx+c$ to be a tangent to the hyperbola $\\frac{{{x}^{2}}}{{{a}^{2}}}-\\frac{{{y}^{2}}}{{{b}^{2}}}=1$ is that ${{c}^{2}}={{a}^{2}}{{m}^{2}}-{{b}^{2}}$ and the</p><p>coordinates of the points of contact are $\\left( \\pm \\frac{{{a}^{2}}m}{\\sqrt{{{a}^{2}}{{m}^{2}}-{{b}^{2}}}},\\pm \\frac{{{b}^{2}}}{\\sqrt{{{a}^{2}}{{m}^{2}}-{{b}^{2}}}} \\right)$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd70c03b9dcaf1afeaf0"
+    },
+    {
+      "title": "Equation of tangent",
+      "conceptBody": "<h3><strong>&nbsp;Equation of tangent&nbsp;</strong></h3><p><strong>a) Point form: </strong>The equation of the tangent to the hyperbola $\\frac{{{x}^{2}}}{{{a}^{2}}}-\\frac{{{y}^{2}}}{{{b}^{2}}}=1$ at the point $\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}} \\right)$ is $ $</p><p>The equation of tangent at $\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}} \\right)$ can also be obtained by replacing ${{\\text{x}}^{2}}$ by $\\text{x}{{\\text{x}}_{1}},{{\\text{y}}^{2}}\\text{y}{{\\text{y}}_{1}},\\text{x}$ by $\\frac{\\text{x}+{{\\text{x}}_{1}}}{2}\\text{y}$ by $\\frac{\\text{y}+{{\\text{y}}_{1}}}{2}$ and $\\text{xy}$ by $\\frac{\\text{x}{{\\text{y}}_{1}}+{{\\text{x}}_{1}}\\text{y}}{2}$. This method is used only when the equation of hyperbola is a polynomial of second degree in $\\text{x}$ and $\\text{y}$.</p><p><strong>(b) Parametric Form </strong>: The eqn. of the tangent to the hyperbola $\\frac{{{x}^{2}}}{{{a}^{2}}}-\\frac{{{y}^{2}}}{{{b}^{2}}}=1$ at the point $\\left( \\text{asec}\\theta ,\\text{b}\\text{tan}\\theta \\right)$ is $ $</p><p><strong>(c) Slope Form </strong>: The equation of tangent to the hyperbola $\\frac{{{x}^{2}}}{{{a}^{2}}}-\\frac{{{y}^{2}}}{{{b}^{2}}}=-1$ in terms of slope ' $m$ ' is $y=mx\\pm \\sqrt{{{a}^{2}}{{m}^{2}}-{{b}^{2}}}$ The coordinates of the points of contact are</p><p>$\\left( \\pm \\frac{{{a}^{2}}m}{\\sqrt{{{a}^{2}}{{m}^{2}}-{{b}^{2}}}},\\pm \\frac{{{b}^{2}}}{\\sqrt{{{a}^{2}}{{m}^{2}}-{{b}^{2}}}} \\right)$</p>",
+      "position": 1,
+      "qcConcept": "66a0dd70c03b9dcaf1afeaf1"
+    },
+    {
+      "title": "Number of Tangents From a Point",
+      "conceptBody": "<h3><strong>Number of tangents from a point</strong></h3><p>Two tangents can be drawn from a point to a hyperbola. The two tangents are real and distinct or coincident of imaginary according as the given point lies outside, on or inside the hyperbola.</p>",
+      "position": 2,
+      "qcConcept": "66a0dd70c03b9dcaf1afeaf2"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f612d384bfb4a538178",
+      "title": "The point of contact of the tangent $y=x+2$ to the hyperbola $5 x^2-9 y^2=45$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f612d384bfb4a538179",
+      "title": "The line $x+m y+n=0$ will be a tangent to the hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$, if",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f612d384bfb4a53817a",
+      "title": "If the line $y=2 x+\\lambda$ be a tangent to the hyperbola $36 x^2-25 y^2=3600$, then $\\lambda=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f612d384bfb4a53817b",
+      "title": "The line $3 x-4 y=5$ is a tangent to the hyperbola $x^2-4 y^2=5$. The point of contact is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f612d384bfb4a53817c",
+      "title": "The equation of the tangent at the point $(a \\sec \\theta, b \\tan \\theta)$ of the conic $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f612d384bfb4a53817d",
+      "title": "The equation of the tangent to the hyperbola $2 x^2-3 y^2=6$ which is parallel to the line $y=3 x+4$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f612d384bfb4a53817e",
+      "title": "The equation of the tangent to the hyperbola $4 y^2=x^2-1$ at the point $(1,0)$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f612d384bfb4a53817f",
+      "title": "The value of $m$ for which $y=m x+6$ is a tangent to the hyperbola $\\frac{x^2}{100}-\\frac{y^2}{49}=1$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f612d384bfb4a538180",
+      "title": "The point of contact of the line $y=x-1$ with $3 x^2-4 y^2=12$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f612d384bfb4a538181",
+      "title": "If the straight line $x \\cos \\alpha+y \\sin \\alpha=p$ be a tangent to the hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f612d384bfb4a538182",
+      "title": "What is the slope of the tangent line drawn to the hyperbola $x y=a(a \\neq 0)$ at the point $(a, 1)$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f612d384bfb4a538183",
+      "title": "The line $y=m x+c$ touches the curve $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$, if",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

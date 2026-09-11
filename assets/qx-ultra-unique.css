@@ -1,0 +1,373 @@
+/* =========================================================
+   QUANTREX ACADEMY - ULTRA UNIQUE TEST & PRACTICE UI
+   ========================================================= */
+
+/* --- GLOBAL TEST ROOT (Glassmorphism & Gradients) --- */
+.eg-test-root, .mtk-test-root, .qx-test-layout {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Light Theme Enhancements */
+.eg-test-root[data-test-theme="light"], .mtk-test-root[data-test-theme="light"],
+html[data-theme="light"] .qx-test-layout {
+  background: #f8fafc !important;
+  color: #0f172a !important;
+}
+.eg-test-root[data-test-theme="light"] .eg-top, 
+.mtk-test-root[data-test-theme="light"] .mtk-header,
+html[data-theme="light"] .qx-test-bar {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02) !important;
+}
+.eg-test-root[data-test-theme="light"] .eg-side, 
+.mtk-test-root[data-test-theme="light"] .mtk-palette {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(16px) !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.05) !important;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.02) !important;
+}
+
+/* Dark Theme Enhancements (Neon & Deep Slate) */
+.eg-test-root[data-test-theme="dark"], .mtk-test-root[data-test-theme="dark"],
+html[data-theme="dark"] .qx-test-layout, html[data-theme="dark"] body.marks-test-active {
+  background: #040814 !important;
+  color: #f8fafc !important;
+}
+.eg-test-root[data-test-theme="dark"] .eg-top, 
+.mtk-test-root[data-test-theme="dark"] .mtk-header,
+html[data-theme="dark"] .qx-test-bar {
+  background: rgba(4, 8, 20, 0.75) !important;
+  backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4) !important;
+}
+.eg-test-root[data-test-theme="dark"] .eg-side, 
+.mtk-test-root[data-test-theme="dark"] .mtk-palette,
+html[data-theme="dark"] .qzrr-side {
+  background: rgba(4, 8, 20, 0.6) !important;
+  backdrop-filter: blur(20px) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* --- OPTIONS & SELECTION BUTTONS (Floating Cards) --- */
+.eg-opt, .mtk-opt {
+  border-radius: 14px !important;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  border: 1px solid transparent !important;
+}
+/* Light */
+.eg-test-root[data-test-theme="light"] .eg-opt, .mtk-test-root[data-test-theme="light"] .mtk-opt {
+  background: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03) !important;
+  border-color: #e2e8f0 !important;
+}
+.eg-test-root[data-test-theme="light"] .eg-opt:hover, .mtk-test-root[data-test-theme="light"] .mtk-opt:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06) !important;
+  border-color: #cbd5e1 !important;
+}
+.eg-test-root[data-test-theme="light"] .eg-opt.selected, .mtk-test-root[data-test-theme="light"] .mtk-opt.selected {
+  background: #eff6ff !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.15) !important;
+}
+
+/* Dark */
+.eg-test-root[data-test-theme="dark"] .eg-opt, .mtk-test-root[data-test-theme="dark"] .mtk-opt,
+html[data-theme="dark"] .eg-opt {
+  background: #0f172a !important;
+  border-color: #1e293b !important;
+}
+.eg-test-root[data-test-theme="dark"] .eg-opt:hover, .mtk-test-root[data-test-theme="dark"] .mtk-opt:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+  border-color: #334155 !important;
+  background: #1e293b !important;
+}
+.eg-test-root[data-test-theme="dark"] .eg-opt.selected, .mtk-test-root[data-test-theme="dark"] .mtk-opt.selected {
+  background: rgba(59, 130, 246, 0.15) !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.25), inset 0 0 10px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* --- QUESTION PALETTE DOTS (Premium 3D look) --- */
+.eg-pal-cell, .mtk-pal-cell, .eg-qbar-n {
+  border-radius: 50% !important;
+  font-weight: 800 !important;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s !important;
+  border: none !important;
+}
+.eg-pal-cell:hover, .mtk-pal-cell:hover {
+  transform: scale(1.15) !important;
+}
+.eg-pal-cell.cur, .mtk-pal-cell.cur {
+  transform: scale(1.25) !important;
+  outline: 2px solid #3b82f6 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
+}
+
+/* Beautiful Status Colors */
+.eg-pal-cell.eg-correct, .mtk-pal-cell.answered {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3) !important;
+}
+.eg-pal-cell.eg-wrong {
+  background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3) !important;
+}
+.eg-pal-cell.eg-unseen, .mtk-pal-cell.unvisited {
+  background: linear-gradient(135deg, #cbd5e1, #94a3b8) !important;
+  color: #fff !important;
+}
+html[data-theme="dark"] .eg-pal-cell.eg-unseen, html[data-theme="dark"] .mtk-pal-cell.unvisited {
+  background: linear-gradient(135deg, #334155, #1e293b) !important;
+  color: #94a3b8 !important;
+}
+.eg-pal-cell.eg-seen, .mtk-pal-cell.not-answered {
+  background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3) !important;
+}
+
+/* --- SOLUTION PANEL (Glowing & Readable) --- */
+.qx-sol-card, .eg-sol, .qc-ex-sol {
+  border-radius: 16px !important;
+  padding: 24px !important;
+  margin-top: 24px !important;
+  transition: all 0.3s ease !important;
+}
+html[data-theme="light"] .qx-sol-card, html[data-theme="light"] .eg-sol {
+  background: #ffffff !important;
+  border: 1px solid #10b981 !important;
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.1), inset 0 0 20px rgba(16, 185, 129, 0.05) !important;
+}
+html[data-theme="dark"] .qx-sol-card, html[data-theme="dark"] .eg-sol {
+  background: rgba(16, 185, 129, 0.05) !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+  box-shadow: 0 8px 32px rgba(16, 185, 129, 0.15), inset 0 0 20px rgba(16, 185, 129, 0.05) !important;
+  color: #f8fafc !important;
+}
+/* Solution figures stay paper-white; never screen-blend (hides black ink on dark UI) */
+html[data-theme="dark"] .qx-sol-card img,
+html[data-theme="dark"] .eg-sol img,
+html[data-theme="dark"] .qx-sol-flow img,
+html[data-theme="dark"] .sol-body img,
+html[data-theme="light"] .qx-sol-card img,
+html[data-theme="light"] .eg-sol img,
+html[data-theme="light"] .qx-sol-flow img,
+html[data-theme="light"] .sol-body img {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: #ffffff !important;
+}
+
+
+/* --- SETTINGS MENU ENHANCEMENT --- */
+.qx-settings-modal {
+  border-radius: 24px !important;
+  overflow: hidden !important;
+}
+.qx-settings-modal .modal-content {
+  background: rgba(255,255,255,0.8) !important;
+  backdrop-filter: blur(20px) !important;
+}
+html[data-theme="dark"] .qx-settings-modal .modal-content {
+  background: rgba(15,23,42,0.8) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+}
+/* Theme switch buttons */
+.qx-theme-switch-btn {
+  border-radius: 12px !important;
+  transition: all 0.2s ease !important;
+}
+.qx-theme-switch-btn.active {
+  box-shadow: 0 0 0 2px #3b82f6 !important;
+  background: rgba(59, 130, 246, 0.1) !important;
+}
+
+/* --- NUMERICAL INPUT OVERHAUL --- */
+.qx-num-entry.qx-num-panel {
+  border: none !important;
+  background: transparent !important;
+}
+.qx-num-input {
+  background: transparent !important;
+  border: 2px solid #3b82f6 !important;
+  color: inherit !important;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.15) !important;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease !important;
+}
+.qx-num-input:focus {
+  outline: none !important;
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25), 0 4px 20px rgba(59, 130, 246, 0.3) !important;
+}
+.qx-num-keypad button {
+  border-radius: 12px !important;
+  border: 1px solid transparent !important;
+  transition: all 0.15s ease !important;
+}
+html[data-theme="light"] .qx-num-keypad button {
+  background: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+  color: #0f172a !important;
+}
+html[data-theme="light"] .qx-num-keypad button:active {
+  background: #f1f5f9 !important;
+  transform: scale(0.95) !important;
+}
+html[data-theme="dark"] .qx-num-keypad button {
+  background: #1e293b !important;
+  border-color: rgba(255,255,255,0.05) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .qx-num-keypad button:active {
+  background: #334155 !important;
+  transform: scale(0.95) !important;
+}
+/* --- ANIMATIONS & GRADIENTS (Ultra Premium Vibe) --- */
+@keyframes qxFadeInScale {
+  from { opacity: 0; transform: scale(0.98) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.eg-test-root .eg-main, .mtk-test-root .mtk-main {
+  animation: qxFadeInScale 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.eg-test-root[data-test-theme="light"] {
+  background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 50%),
+              radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.08), transparent 50%),
+              #f8fafc !important;
+}
+
+.eg-test-root[data-test-theme="dark"], html[data-theme="dark"] body.marks-test-active {
+  background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.12), transparent 50%),
+              radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.12), transparent 50%),
+              #040814 !important;
+}
+
+/* Make headers look like Apple Vision Pro / iOS 18 */
+.eg-top .eg-sub-n, .mtk-header-left {
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.eg-test-root[data-test-theme="dark"] .eg-top .eg-sub-n, html[data-theme="dark"] .mtk-header-left {
+  background: linear-gradient(135deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* --- MOBILE SPECIFIC UX (Ultimate Readability & Ergonomics) --- */
+@media (max-width: 768px) {
+  /* Increase base font size for readability */
+  .eg-test-root, .mtk-test-root {
+    font-size: 16px !important;
+  }
+  
+  /* Question text visibility */
+  .eg-main .qx-q-text, .mtk-main .qx-q-text, .qx-q-html {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    padding: 0 4px !important; /* Maximise horizontal space */
+  }
+
+  /* Full-width block options for easy tapping */
+  .eg-opt, .mtk-opt {
+    display: flex !important;
+    width: 100% !important;
+    margin-bottom: 12px !important;
+    padding: 16px !important;
+    border-radius: 12px !important;
+    align-items: center !important;
+  }
+  
+  /* Make option letters (A, B, C, D) prominent */
+  .eg-opt-l, .mtk-opt-l {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+    flex-shrink: 0 !important;
+    margin-right: 12px !important;
+  }
+
+  /* Sticky bottom action bar for Practice/Test */
+  .eg-submit-bar, .mtk-submit-bar, .qzrr-foot, .qx-test-foot, .eg-body > .eg-side-foot {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: rgba(15, 23, 42, 0.85) !important;
+    backdrop-filter: blur(20px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 12px 16px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    z-index: 100 !important;
+  }
+  
+  html[data-theme="light"] .eg-submit-bar, html[data-theme="light"] .mtk-submit-bar,
+  html[data-theme="light"] .qzrr-foot, html[data-theme="light"] .qx-test-foot, html[data-theme="light"] .eg-body > .eg-side-foot {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  /* Ensure bottom padding so content isn't hidden by sticky bar */
+  .eg-main, .mtk-main {
+    padding-bottom: 80px !important;
+  }
+}
+/* Fix .eg-foot to bottom on mobile */
+@media (max-width: 768px) {
+  .eg-foot {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: rgba(15, 23, 42, 0.85) !important;
+    backdrop-filter: blur(20px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 12px 16px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    z-index: 100 !important;
+  }
+  
+  html[data-theme="light"] .eg-foot {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.04) !important;
+  }
+  
+  .eg-foot-left, .eg-foot-right {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .eg-check-wrap {
+    text-align: center;
+    margin: 16px 0;
+  }
+  .eg-check {
+    width: 100% !important;
+    max-width: 300px !important;
+    padding: 14px !important;
+    border-radius: 12px !important;
+    font-size: 16px !important;
+  }
+}

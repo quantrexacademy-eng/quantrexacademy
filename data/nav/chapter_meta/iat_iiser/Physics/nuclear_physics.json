@@ -1,0 +1,38 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff45378e1624ea7b697d",
+  "subject": "Physics",
+  "chapter": "Nuclear Physics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff82378e1624ea7b6c58",
+      "title": "Nuclear energy",
+      "count": 2,
+      "questionIds": [
+        "67fdff76378e1624ea7b6bbf",
+        "67fdff6b378e1624ea7b6b41"
+      ]
+    },
+    {
+      "id": "6a45218f8c20d3b91d64f9a0",
+      "title": "Nuclear structure",
+      "count": 1,
+      "questionIds": [
+        "6a4521878c20d3b91d64f98f"
+      ]
+    },
+    {
+      "id": "67fdff82378e1624ea7b6c57",
+      "title": "Radioactivity",
+      "count": 3,
+      "questionIds": [
+        "67fdff65378e1624ea7b6af8",
+        "67fdff4e378e1624ea7b69f5",
+        "67fdff45378e1624ea7b697b"
+      ]
+    }
+  ]
+}

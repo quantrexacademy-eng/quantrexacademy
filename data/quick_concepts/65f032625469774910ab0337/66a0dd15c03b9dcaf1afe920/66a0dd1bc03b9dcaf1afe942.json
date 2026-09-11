@@ -1,0 +1,106 @@
+{
+  "subjectId": "65f032625469774910ab0337",
+  "chapterId": "66a0dd15c03b9dcaf1afe920",
+  "topicId": "66a0dd1bc03b9dcaf1afe942",
+  "title": "Third law of thermodynamics",
+  "concepts": [
+    {
+      "title": "Gibbs free energy",
+      "conceptBody": "<h3><strong>Free Energies</strong></h3><p>Gibbs free energy $\\text{G}$, is defined as $\\text{G}=\\text{H}-\\text{TS}$</p><p>where $\\text{H}$ is the enthalpy, $\\text{T}$ is the temperature in Kelvin scale, $\\text{S}$ is the entropy. TS is the part of system’s energy that is already disordered and H $-\\text{TS}(=\\text{G})$ is the part of the system’s energy and that is still ordered hence, free (available) to cause spontaneous change by becoming disordered.</p><ul><li>$\\text{G}$ is also a state function hence, change in free energy $(\\Delta \\text{G})$ for a process is independent of path</li><li>$\\Delta \\text{G }=\\Delta \\text{H}-\\text{T}\\Delta \\text{S}$</li></ul><p>Also $\\Delta {{\\text{S}}_{\\text{total }}}\\text{ }=\\Delta {{\\text{S}}_{\\text{system }}}+\\Delta {{\\text{S}}_{\\text{surroundings }}}$</p><p>$=\\Delta \\text{S}-\\frac{\\Delta \\text{H}}{\\text{T}}$</p><p>Since, $\\Delta {{S}_{\\text{surroundings }}}=-\\frac{\\Delta H}{T}$</p><p>(we write \\(\\Delta {{S}_{(sustem)}}\\) simply as \\(\\Delta S\\))</p><p>$\\text{T}\\Delta {{\\text{S}}_{\\text{total }}}\\text{ }=\\text{T}\\Delta \\text{S}-\\Delta \\text{H }$</p><p>or \\(-\\text{T}\\Delta {{\\text{S}}_{\\text{total }}}\\text{ }=\\Delta \\text{H}-\\text{T}\\Delta \\text{S}\\)</p><p>\\(-\\text{T}\\Delta {{\\text{S}}_{\\text{total }}}\\text{ }=\\Delta \\text{G}\\)</p><p>Thus, $\\Delta \\mathbf{G}$ and $\\Delta {{\\mathbf{S}}_{\\text{total }}}$ have opposite signs ($\\text{T}$ is always positive); hence sign of $\\Delta \\text{G}$ can also be used to predict feasibility of a reaction at constant temperature and pressure. For a reaction to be spontaneous if $\\Delta \\text{S}&gt;0$ then $\\Delta \\text{G}&lt;0$ non spontaneous if $\\Delta \\text{S}&lt;0$ then $\\Delta \\text{G}&gt;0$ in equilibrium if $\\Delta \\text{S}=0$ then $\\Delta \\text{G}=0$</p><p>$\\Delta \\text{G}=\\Delta \\text{H}-\\text{T}\\Delta \\text{S}$</p><p>$\\begin{array}{*{35}{l}} =\\Delta \\text{E}+\\text{P}\\Delta \\text{V}-\\text{T}\\Delta \\text{S} &amp; \\left( \\because \\Delta \\text{S}=\\frac{\\text{q}}{\\text{T}} \\right) \\\\ =\\Delta \\text{E}-\\text{q}+\\text{P}\\Delta \\text{V}\\quad \\Delta \\text{E}=\\text{q}-\\text{W by first law } &amp; {} \\\\ \\end{array}$</p><p>$\\Delta \\text{G }=-\\text{W}+\\text{P}\\Delta \\text{V}$</p><p>$-\\Delta \\text{G }=\\text{W}-\\text{P}\\Delta \\text{V}={{\\text{W}}_{\\text{net }}}$</p><p>$-\\Delta \\text{G }={{\\text{W}}_{\\text{net }}}=2.303\\text{nRT}\\log \\frac{{{\\text{V}}_{2}}}{~{{\\text{V}}_{1}}}$</p><p>Thus, decrease in $\\text{G},(-\\Delta \\text{G})$, is equal to net work done = (total work - mechanical work)</p><p><strong>Table : Signs of Enthalpy, Entropy and Free Energy Changes and Reaction Spontaneity at Constant Temperature and Pressure&nbsp;</strong></p><figure class=\"table\"><table><tbody><tr><td>\\(\\Delta H\\)</td><td>\\(\\Delta S\\)</td><td>\\(\\Delta G=\\Delta H-T\\Delta S\\)</td><td><strong>Reaction Spontaneity&nbsp;</strong></td></tr><tr><td><p>Exothermic</p><p>Endothermic</p><p>+</p><p>\\(T\\Delta S=\\Delta H\\)</p></td><td><p>+</p><p>–</p><p>+</p><p>–</p><p>–</p></td><td><p>–</p><p>–</p><p>+</p><p>+</p><p>+</p></td><td><p>Spontaneous at all temperatures</p><p>Spontaneous at low temperatures</p><p>Non-spontaneous at high temperatures</p><p>Non-spontaneous at low temperatures</p><p>Spontaneous at high temperatures</p><p>Non-spontaneous at all temperatures</p><p>Equilibrium</p></td></tr></tbody></table></figure><p>For a reaction in which a compound in its standard state is formed from its elements in their standard states, the free energy change is the standard free energy of formation, $\\Delta {{\\mathbf{G}}_{f}}$</p><p>$\\Delta {{\\text{G}}_{\\text{f}}}=0$ for the elements,</p><p>$\\Delta {{\\text{G}}_{\\text{f}}}\\text{ }=\\left( \\Delta {{\\text{G}}_{\\text{products }}}-\\Delta {{\\text{G}}_{\\text{reactants }}} \\right)$</p><p>$=\\Delta \\text{H}-\\text{T}\\Delta \\text{S}$</p><ul><li>$\\Delta \\text{G}$is an extensive property,</li><li>$\\Delta \\mathbf{G}$changes sign when a process is reversed.</li></ul>",
+      "position": 0,
+      "qcConcept": "66a0dd1cc03b9dcaf1afe943"
+    },
+    {
+      "title": "Energy and EMF of cell",
+      "conceptBody": "<h3><strong>Energy and Electromotive Force (EMF) of a cell</strong></h3><p>$\\text{Using}$ $\\Delta \\text{G }=\\Delta \\text{G}+2.303\\text{RT}\\log \\text{Q}$</p><p>$\\Delta \\text{G }=-\\text{nF}{{\\text{E}}_{\\text{cell }}}$</p><p>$\\Delta \\text{G}=-\\text{nF}{{\\text{E}}_{\\text{cell }}}$</p><p>We have $-\\text{nF}{{\\text{E}}_{\\text{cell }}}=-\\text{nF}{{\\text{E}}_{\\text{cell }}}+2.303\\text{RT}\\log \\text{Q}$</p><p>${{\\text{E}}_{\\text{cell }}}={{\\text{E}}_{\\text{cell }}}-\\frac{2.303\\text{RT}}{\\text{nF}}\\log \\text{Q}$</p><p>This is called <strong>Nernst equation </strong>for emf of a cell.</p><p>${{\\text{E}}_{\\text{cell}}}$ is the emf of a cell in a given state, $\\text{E}$ cell is the standard emf, $\\text{n}$ the number of electrons exchanged, $\\text{F}$ the faraday of electricity, $\\text{R}$ gas constant and $\\text{T}$ the temperature. At $298~\\text{K}$</p><p>$\\frac{2.303\\text{RT}}{\\text{F}}\\text{ }=\\frac{2.303\\times 8.314\\times 298}{96500}$</p><p>$=0.0591~\\text{V}$</p><p>$\\therefore \\quad {{\\text{E}}_{\\text{cell }}}={{\\text{E}}_{\\text{cell }}}-\\frac{0.0591}{\\text{n}}\\log \\text{Q}$</p><p>When equilibrium is attained, $\\quad {{\\text{E}}_{\\text{cell }}}=0$ and $\\text{Q}=\\text{K}$</p><p>$\\therefore \\quad {{\\text{E}}_{\\text{cell }}}=\\frac{00591}{\\text{n}}\\log \\text{K}$</p>",
+      "position": 1,
+      "qcConcept": "66a0dd1cc03b9dcaf1afe944"
+    },
+    {
+      "title": "Heat of reaction",
+      "conceptBody": "<h3><strong>Heat of Reaction</strong></h3><p>It is defined as the “amount of heat evolved or absorbed when the reacting species, as represented by a balanced chemical equation have completely reacted.”</p><p>$\\text{A}+\\text{B}\\xrightarrow{{}}\\text{C}+\\text{D},\\Delta \\text{H}=\\text{q}$</p><p>$\\Delta \\text{H }={{\\text{H}}_{\\text{Products }}}-{{\\text{H}}_{\\text{Reactants }}}$</p><p>$=\\left( {{\\text{H}}_{\\text{C}}}+{{\\text{H}}_{\\text{D}}} \\right)-\\left( {{\\text{H}}_{\\text{A}}}+{{\\text{H}}_{\\text{B}}} \\right)$</p><ul><li>&nbsp;<ul><li>If ${{\\text{H}}_{\\text{Products }}}={{\\text{H}}_{\\text{Reactants }}},\\Delta \\text{H}=0$</li><li>If ${{\\text{H}}_{\\text{Products }}}&gt;{{\\text{H}}_{\\text{Reactants }}},\\Delta \\text{H}=+\\text{ ve,}$ reaction is said to be endothermic.</li><li>If ${{\\text{H}}_{\\text{Products }}}&lt;{{\\text{H}}_{\\text{Reactants }}},\\Delta \\text{H}=-\\text{ve}$, reaction is said to be exothermic.</li><li>Enthalpy of every element in any state = Zero.</li></ul></li></ul>",
+      "position": 2,
+      "qcConcept": "66a0dd1cc03b9dcaf1afe945"
+    },
+    {
+      "title": "Gibb's free energy and Spontaneity",
+      "conceptBody": "<h3>Spontaneity</h3><p>A <strong>spontaneous </strong>or natural process is a process that occurs in a system left to itself once started; no action from outside the system (external action) is necessary to make the process continue. On the other hand, a <strong>nonspontaneous </strong>process will not occur unless some external action is continuously applied. We say that the rusting of iron is spontaneous.</p><p>$2\\text{F}{{\\text{e}}_{(\\text{s})}}+3{{\\text{O}}_{2(~\\text{g})}}\\to \\text{F}{{\\text{e}}_{2}}{{\\text{O}}_{3(~\\text{s})}}$</p><p>Reverse reaction is not impossible, but it is certainly non spontaneous.</p><p>Gibbs Free Energy* Change and Spontaneity:</p><p>The Gibbs free energy 'G ' for system is defined as</p><p>$\\text{G}=\\text{H}-\\text{TS}$</p><p>and, for a change at constant $\\text{T}$,</p><p>$\\Delta \\text{G}=\\Delta \\text{H}-\\text{T}\\Delta \\text{S}$</p><p>Where $\\Delta \\text{G}=$ change in Gibbs free energy $\\text{G}$</p><p>$\\Delta \\text{H}=$ change in enthalpy $\\text{H}$</p><p>$\\Delta \\text{S}=$ change in entropy $\\text{S}$</p><p>Sign of $\\Delta G$ is taken as the true <strong>criterion </strong>for spontaneity.</p><p>For a process occurring at constant $\\text{T}$ and $\\text{P}$, if</p><p>(i) $\\Delta \\text{G}&lt;0$ (negative) the process is spontaneous</p><p>(ii) $\\Delta \\text{G}&gt;0$ (positive) the process is nonspontaneous</p><p>(iii) $\\Delta \\text{G}=0$ (zero) the process is at equilibrium</p><p>Sign of $\\Delta \\text{G}$, based on eqn. $(\\Delta \\text{G}=\\Delta \\text{H}-\\text{T}\\Delta \\text{S})$ can be decided depending on sign of $\\Delta \\text{H}$ and $\\Delta \\text{S}$, and magnitude of $\\text{T}$, and is explained in Table below.</p><figure class=\"table\"><table><tbody><tr><td>Case</td><td>\\[\\Delta H\\]</td><td>\\[\\Delta S\\]</td><td>\\[\\Delta G\\]</td><td>Result</td><td>Example</td></tr><tr><td>1</td><td>–</td><td>+</td><td>–</td><td>spontaneous at all temp.</td><td>\\[2{{N}_{2}}{{O}_{(g)}}\\to 2{{N}_{2(g)}}+{{O}_{2(g)}}\\]</td></tr><tr><td>2</td><td>–</td><td>–</td><td>–</td><td>spontaneous at low temp.</td><td>\\[{{H}_{2}}O(l)\\to {{H}_{2}}{{O}_{(g)}}\\]</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>+</td><td>nonspontaneous at high temp.</td><td>&nbsp;</td></tr><tr><td>3</td><td>+</td><td>+</td><td>+</td><td>nonspontaneous at low temp.</td><td>\\[2N{{H}_{3(g)}}\\to {{N}_{2(g)}}+3{{H}_{2(g)}}\\]</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>–</td><td>spontaneous at high temp</td><td>&nbsp;</td></tr><tr><td>4</td><td>+</td><td>–</td><td>+</td><td>nonspontaneous at all temp</td><td>\\[3{{O}_{2(g)}}\\to 2{{O}_{3(g)}}\\]</td></tr><tr><td>5</td><td colspan=\"2\">\\[T\\Delta S=\\Delta H\\]</td><td>0</td><td>Equilibrium</td><td>\\[A\\rightleftarrows B\\]</td></tr></tbody></table></figure>",
+      "position": 3,
+      "qcConcept": "66a0dd1cc03b9dcaf1afe946"
+    },
+    {
+      "title": "Relationship of G to Equlibrium constant K",
+      "conceptBody": "<h3><strong>Relationship of $\\mathbf{\\Delta G}$ to the Equilibrium Constant K:</strong></h3><p>$\\Delta \\text{G}$ for a reaction under any set of conditions is related to its value for standard conditions, that is $\\Delta \\text{G}$ by eqn.</p><p>$\\Delta G=\\Delta G+2.303RT\\log Q$</p><p>under equilibrium condition $\\text{Q}={{\\text{K}}_{\\text{p}}}\\text{ }={{\\text{K}}_{\\text{c}}}=\\text{K}$</p><p>$\\Delta \\text{G }=0$</p><p>$\\Delta \\text{G }=-2.303\\text{RT}\\log \\text{K}$</p><p>We have replaced ${{K}_{p}}$ or ${{K}_{c}}$ by $K$ called thermodynamic equilibrium constant. For a general reaction</p><p>$\\text{aA}+\\text{bB}\\rightleftharpoons \\text{cC}+\\text{dD}$</p><p>$\\text{K}=\\frac{{{(\\text{aC})}^{\\text{c}}}{{(\\text{aD})}^{4}}}{{{(\\text{aA})}^{\\text{a}}}{{(\\text{aB})}^{\\text{b}}}}$</p><p>the symbol a represents the activity of the reactants and products. It is actually a ratio of the equilibrium activity of a substance to its activity in its standard state. Thus thermodynamic equilibrium constant is unitless quantity, a being also unitless.</p><p>- For pure solids and liquids:$\\quad $ a $=1$</p><p>- For gases: ideal behaviour is considered and the activity of a gas is equal to its pressure in atm.</p><p>- For components in solution: $\\quad \\text{a}=$ molar concentration</p>",
+      "position": 4,
+      "qcConcept": "66a0dd1cc03b9dcaf1afe947"
+    },
+    {
+      "title": "Effect of temprature on enthalpy",
+      "conceptBody": "<h3><strong>Effect of temprature on enthalpy</strong></h3><p>Enthalpy of reaction also depends on temperature at which the reaction is carried out. This is due to variation in the heat capacity of the system with temperature.</p><p>Relation between $\\Delta \\text{H}$ or $\\Delta \\text{E}$ and temperature are given by Kirchoff’s equation.</p><p>$\\left( \\Delta {{\\text{H}}_{2}}-\\Delta {{\\text{H}}_{1}} \\right)=\\Delta {{\\text{C}}_{\\text{P}}}\\left( {{\\text{T}}_{2}}-{{\\text{T}}_{1}} \\right)$</p><p>$\\left( \\Delta {{\\text{E}}_{2}}-\\Delta {{\\text{E}}_{1}} \\right)=\\Delta {{\\text{C}}_{\\text{V}}}\\left( {{\\text{T}}_{2}}-{{\\text{T}}_{1}} \\right)$</p><p>The above relations may be derived as follows:</p><p>For a reaction at constant pressure, $\\Delta \\text{H}={{\\text{H}}_{\\text{P}}}-{{\\text{H}}_{\\text{R}}}$</p><p>Differentiating it w.r.t. $\\text{T}$ at constant $\\text{P}$, we get</p><p>${{\\left( \\frac{\\text{d}\\Delta \\text{H}}{\\text{dT}} \\right)}_{\\text{P}}}={{\\left( \\frac{\\text{d}{{\\text{H}}_{\\text{P}}}}{\\text{dT}} \\right)}_{\\text{P}}}-{{\\left( \\frac{\\text{d}{{\\text{H}}_{\\text{R}}}}{\\text{dT}} \\right)}_{\\text{P}}}={{\\left( {{\\text{C}}_{\\text{P}}} \\right)}_{\\text{P}}}-{{\\left( {{\\text{C}}_{\\text{P}}} \\right)}_{\\text{R}}}=\\Delta {{\\text{C}}_{\\text{P}}}$</p><p>or $d(\\Delta H)=\\Delta {{C}_{P}}dT$</p><p>Integrating this equation within appropriate limits, we get</p><p>$\\int_{{{T}_{1}}}^{{{T}_{2}}}{~d}(\\Delta H)=\\Delta {{C}_{P}}\\int_{{{T}_{1}}}^{{{T}_{2}}}{~d}T$</p><p>$\\Delta {{\\text{H}}_{{{\\text{T}}_{2}}}}-\\Delta {{\\text{H}}_{{{\\text{T}}_{1}}}}=\\Delta {{\\text{C}}_{\\text{P}}}\\left( {{\\text{T}}_{2}}-{{\\text{T}}_{1}} \\right)$</p><p>$\\frac{\\Delta {{\\text{H}}_{{{\\text{T}}_{2}}}}-\\Delta {{\\text{H}}_{{{\\text{T}}_{1}}}}}{\\left( ~{{\\text{T}}_{2}}-{{\\text{T}}_{1}} \\right)}=\\Delta {{\\text{C}}_{\\text{P}}}$ … (1)</p><p>This equation is used to find heat of reaction at a temperature when it is known at another temperature.</p><p>Similarly, $\\frac{\\Delta {{\\text{E}}_{{{\\text{T}}_{2}}}}-\\Delta {{\\text{E}}_{{{\\text{T}}_{1}}}}}{\\left( ~{{\\text{T}}_{2}}-{{\\text{T}}_{1}} \\right)}=\\Delta {{\\text{C}}_{\\text{v}}}$ … (2)</p><p>In the limits as $\\left( {{\\text{T}}_{2}}-{{\\text{T}}_{1}} \\right)\\xrightarrow{{}}0$, equation (1) yields the differential form $\\frac{\\text{d}(\\Delta \\text{H})}{\\text{dT}}=\\Delta {{\\text{C}}_{\\text{P}}}$</p><p>This shows that the rate of change of the enthalpy of a reaction is equal to the difference in heat capacities of products and reactants.</p><p>Since actually the heat capacities themselves vary with temperature, it is sufficiently accurate to use the average value of the heat capacity over the range of temperature considered.</p>",
+      "position": 5,
+      "qcConcept": "66a0dd1cc03b9dcaf1afe948"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66584e591814fc7e94209edf",
+      "title": "The free energy change for a reversible reaction at equilibrium is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209ee0",
+      "title": "For a spontaneous change, free energy change $\\Delta G$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209ee1",
+      "title": "When a liquid boils, there is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209ee2",
+      "title": "The molar neutralization heat for $\\mathrm{KOH}$ and $\\mathrm{HNO}_3$ as compared to molar neutralization heat of $\\mathrm{NaOH}$ and $\\mathrm{HCl}$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209ee3",
+      "title": "For spontaneity of a cell, which is correct",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209ee4",
+      "title": "For the equilibrium $\\mathrm{H}_2 \\mathrm{O}(\\mathrm{l})=\\mathrm{H}_2 \\mathrm{O}(\\mathrm{g})$ at $1 \\mathrm{~atm}$ and $298 \\mathrm{~K}$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209ee5",
+      "title": "The correct relationship between free energy change in a reaction and the corresponding equilibrium constant $K_c$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209ee6",
+      "title": "When a liquid boils, there is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209ee7",
+      "title": "Gibb's free enrgy $(G)$ is defined as",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209ee8",
+      "title": "The standard Gibbs free energy change $\\Delta G^{\\prime}$ is related to equilibrium constant $K_p$ as",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 /* Quantrex PWA — website + Android TWA share this cache. */
-const CACHE = "qx-pwa-v130";
+const CACHE = "qx-pwa-v172";
 const PRECACHE = ["/login.html", "/manifest.webmanifest", "/assets/icon-192.png", "/assets/icon-512.png"];
 const SKIP = /\.(mp4|webm|apk|m4a|mp3)$/i;
 const ASSET_IMG = /\.(png|jpe?g|webp|svg|gif|ico|woff2?)$/i;
@@ -39,6 +39,7 @@ self.addEventListener("fetch", (event) => {
   if (url.pathname === "/version.json") return;
   if (SKIP.test(url.pathname)) return;
 
+  const isChapterBank = /\/data\/banks\/chapters\//.test(url.pathname);
   const isImg = ASSET_IMG.test(url.pathname) || (url.pathname.startsWith("/assets/") && !SKIP.test(url.pathname) && !ASSET_CODE.test(url.pathname));
   const isCode = ASSET_CODE.test(url.pathname);
 
@@ -52,7 +53,16 @@ self.addEventListener("fetch", (event) => {
 
   if (isCode) {
     event.respondWith(
-      fetch(req).then(putCache).catch(() => caches.match(req))
+      fetch(req, { cache: "no-store" }).catch(() => caches.match(req))
+    );
+    return;
+  }
+  if (isChapterBank) {
+    event.respondWith(
+      caches.match(req).then((hit) => {
+        const net = fetch(req).then(putCache).catch(() => hit);
+        return hit || net;
+      })
     );
     return;
   }

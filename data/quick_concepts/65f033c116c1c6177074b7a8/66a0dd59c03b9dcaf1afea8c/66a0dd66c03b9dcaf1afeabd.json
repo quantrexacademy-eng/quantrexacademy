@@ -1,0 +1,46 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd59c03b9dcaf1afea8c",
+  "topicId": "66a0dd66c03b9dcaf1afeabd",
+  "title": "Identical Functions",
+  "concepts": [
+    {
+      "title": "Conditions for two functions to be identical ",
+      "conceptBody": "<h3><strong>Identical function&nbsp;</strong></h3><p>Two functions $f$ and $g$ are identical if</p><p>(i) domain $\\text{f}=$ domain $\\text{g}$</p><p>(ii) $\\text{f}\\left( \\text{n} \\right)=\\text{g}\\left( \\text{n} \\right)\\text{ }\\!\\!~\\!\\!\\text{ }\\forall \\text{n}\\in $ domain $\\text{f}$ or domain $\\text{g}$.</p><p><strong>Q) Find for what values of $\\text{x}$ the following functions are identical&nbsp;</strong></p><p><strong>(i) $\\text{ }\\!\\!~\\!\\!\\text{ f}\\left( \\text{x} \\right)=\\text{x}$ and $\\text{g}\\left( \\text{x} \\right)=\\sqrt{{{\\text{x}}^{2}}}$&nbsp;</strong></p><p><strong>(ii) $\\text{ }\\!\\!~\\!\\!\\text{ f}\\left( \\text{x} \\right)=\\frac{{{\\text{x}}^{2}}}{\\text{x}},\\text{g}\\left( \\text{x} \\right)=\\text{x}$&nbsp;</strong></p><p><strong>Solution :&nbsp;</strong></p><p>(i) Domain of $\\text{g}=\\left] -\\infty ,\\infty \\right[$ ]</p><p>Domain of $\\text{f}=\\left] -\\infty ,\\infty \\right[$ ]</p><p>$g\\left( x \\right)=\\sqrt{{{x}^{2}}}=$ positive square root of ${{x}^{2}}=\\left| x \\right|=x$, if $x\\ge 0$</p><p>and $\\text{f}\\left( \\text{x} \\right)=\\text{x}$</p><p>$\\therefore \\text{ }\\!\\!~\\!\\!\\text{ f}\\left( \\text{x} \\right)$ and $\\text{g}\\left( \\text{x} \\right)$ are identical $\\forall \\text{x}\\in \\left[ 0,\\infty \\right[$ ]</p><p>(ii) Domain of $\\text{f}=\\text{R}-\\left\\{ 0 \\right\\}=\\left] -\\infty ,0\\left[ \\cup \\right]0,\\infty \\right[$ ]</p><p>Domain of $\\text{g}=\\left] -\\infty ,\\infty \\right[=\\text{R}$</p><p>$f\\left( x \\right)=\\frac{{{x}^{2}}}{x}=x$, when $x\\ne 0$</p><p>$\\therefore \\text{ }\\!\\!~\\!\\!\\text{ f}\\left( \\text{x} \\right)$ and $\\text{g}\\left( \\text{x} \\right)$ are identical $\\forall \\text{x}\\ne 0$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd66c03b9dcaf1afeabe"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f5c2d384bfb4a5380fc",
+      "title": "Find the values of $x$ for which the following functions are identical.\n$f(x)=x$ and $g(x)=\\frac{1}{1 / x}$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f5c2d384bfb4a5380fd",
+      "title": "Find the values of $x$ for which the following functions are identical.\n$f(x)=\\frac{\\sqrt{9-x^2}}{\\sqrt{x-2}}$ and $g(x)=\\sqrt{\\frac{9-x^2}{x-2}}$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f5d2d384bfb4a5380fe",
+      "title": "Which of the following functions is/are identical to $|x-2|$ ?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f5d2d384bfb4a5380ff",
+      "title": "Find the values of $x$ for which the following functions are identical.\n$f(x)=\\cos x \\text { and } g(x)=\\frac{1}{\\sqrt{1+\\tan ^2 x}}$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f5d2d384bfb4a538100",
+      "title": "Identify the pair of functions which are not identical",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

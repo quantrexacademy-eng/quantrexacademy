@@ -20,12 +20,20 @@ function setTestTheme(mode) {
   const m = mode === "dark" ? "dark" : "light";
   try { localStorage.setItem("quantrex_test_theme", m); } catch (_) { /* */ }
   document.documentElement.setAttribute("data-test-theme", m);
-  document.querySelectorAll(".mtk-test-root, .eg-test-root").forEach(root => {
+  document.querySelectorAll(".mtk-test-root, .eg-test-root, .qzrr-cbt").forEach(root => {
     root.setAttribute("data-test-theme", m);
     root.classList.toggle("qzrr-dark", m === "dark");
   });
   document.body.classList.toggle("qx-test-light", m === "light");
   document.body.classList.toggle("qx-test-dark", m === "dark");
+  document.body.classList.toggle("qzrr-dark-body", m === "dark");
+  // qxmd110: sync session._qzrrDark so View Settings + re-render stay coherent
+  try {
+    if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.getSession) {
+      const sess = QuantrexTestEngine.getSession();
+      if (sess) sess._qzrrDark = m === "dark";
+    }
+  } catch (_) { /* */ }
   document.querySelectorAll(".mtk-theme-lbl").forEach(el => {
     el.textContent = m === "light" ? "Light" : "Dark";
   });
@@ -235,7 +243,7 @@ if (!window._qxEgHdrBound) {
   window._qxEgHdrBound = true;
   document.addEventListener("click", function (e) {
     const t = e.target && e.target.closest
-      ? e.target.closest("#egFullBtn, #egStarBtn, #egQStar, #egFmtBtn, #egMenuBtn, #mtkThemeBtn, #egPlusBtn")
+      ? e.target.closest("#egFullBtn, #egStarBtn, #egQStar, #egFmtBtn, #egMenuBtn, #egRailBtn, #egSideClose, #mtkThemeBtn, #egPlusBtn")
       : null;
     if (!t) return;
     const root = t.closest(".eg-test-root") || t.closest(".mtk-test-root") || document;
@@ -279,13 +287,32 @@ if (!window._qxEgHdrBound) {
       if (qid != null && typeof toggleBmWithGroup === "function") toggleBmWithGroup(qid);
       return;
     }
-    if (id === "egMenuBtn") {
-      if (root.classList) {
-        const collapsed = !root.classList.contains("eg-side-collapsed");
-        root.classList.toggle("eg-side-collapsed", collapsed);
-        root.classList.toggle("eg-side-open", !collapsed);
-        t.classList.toggle("on", collapsed);
-      }
+    if (id === "egMenuBtn" || id === "egRailBtn" || id === "egSideClose") {
+      try {
+        const sess = typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.getSession
+          ? QuantrexTestEngine.getSession() : null;
+        if (sess) {
+          if (window._qxEgPalLock && Date.now() - window._qxEgPalLock < 90) return;
+          window._qxEgPalLock = Date.now();
+          if (id === "egMenuBtn") {
+            sess._egQbarOpen = !sess._egQbarOpen;
+            if (sess._egQbarOpen) {
+              sess._egSideCollapsed = true;
+              sess._qxUserOpenedPal = false;
+            }
+          } else if (id === "egSideClose") {
+            sess._egSideCollapsed = true;
+            sess._qxUserOpenedPal = false;
+          } else {
+            sess._egSideCollapsed = !sess._egSideCollapsed;
+            sess._qxUserOpenedPal = !sess._egSideCollapsed;
+            if (!sess._egSideCollapsed) sess._egQbarOpen = false;
+          }
+          if (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.applyNav) {
+            ExamgoalTestUI.applyNav(root, sess);
+          }
+        }
+      } catch (_) { /* */ }
       return;
     }
     if (id === "egFmtBtn") {
@@ -351,6 +378,40 @@ const QuantrexTestEngine = (() => {
       [a[i], a[j]] = [a[j], a[i]];
     }
     return a;
+  }
+
+  function uniqueQuestionIds(ids) {
+    const out = [];
+    const seen = new Set();
+    (ids || []).forEach(function (id) {
+      const k = String(id == null ? "" : id);
+      if (!k || k === "undefined" || k === "null" || seen.has(k)) return;
+      seen.add(k);
+      out.push(id);
+    });
+    return out;
+  }
+
+  function uniqueQuestionRecords(qs) {
+    const out = [];
+    const seen = new Set();
+    (qs || []).forEach(function (q) {
+      if (!q) return;
+      const id = q.id != null ? String(q.id) : "";
+      const mid = q._marksId != null ? String(q._marksId) : "";
+      if (id && seen.has("id:" + id)) return;
+      if (mid && seen.has("mid:" + mid)) return;
+      let stem = String(q.q || q.question || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().toLowerCase();
+      if (stem.length > 100) {
+        const sk = "st:" + stem.slice(0, 180);
+        if (seen.has(sk)) return;
+        seen.add(sk);
+      }
+      if (id) seen.add("id:" + id);
+      if (mid) seen.add("mid:" + mid);
+      out.push(q);
+    });
+    return out;
   }
 
   function formatTime(sec) {
@@ -520,6 +581,39 @@ const QuantrexTestEngine = (() => {
     return htmlContent;
   }
 
+  function tightenFillBlanks(html) {
+    return String(html || "")
+      .replace(/&(?:yellow|red|green|blue|orange|pink|purple|cyan|magenta|lime|white|black|gray|grey)\b;?/gi, " ")
+      .replace(/[_\u2017]{8,}/g, "______")
+      .replace(/(?:&lowbar;){6,}/gi, "______")
+      .replace(/(-{8,}|\u2013{6,}|\u2014{4,})/g, "——");
+  }
+
+  function stripStrayStemFromOpts(optsEl) {
+    if (!optsEl) return;
+    optsEl.querySelectorAll(":scope > .mtk-q-text, :scope > .qx-question-body, :scope > .eg-q-stem, :scope > .qx-paper-meta, :scope > .qx-q-seg-text").forEach(function (n) {
+      n.remove();
+    });
+  }
+
+  function dedupeStemCopies(stemEl) {
+    if (!stemEl) return;
+    const nodes = stemEl.querySelectorAll(".mtk-q-text, .qx-q-seg-text");
+    if (nodes.length < 2) return;
+    let best = nodes[0];
+    let bestN = (best.textContent || "").replace(/\s+/g, " ").trim().length;
+    for (let i = 1; i < nodes.length; i++) {
+      const n = (nodes[i].textContent || "").replace(/\s+/g, " ").trim().length;
+      if (n > bestN) { best = nodes[i]; bestN = n; }
+    }
+    const bestText = (best.textContent || "").replace(/\s+/g, " ").trim();
+    nodes.forEach(function (el) {
+      if (el === best) return;
+      const t = (el.textContent || "").replace(/\s+/g, " ").trim();
+      if (!t || t === bestText || (t.length > 24 && bestText.indexOf(t.slice(0, 24)) >= 0)) el.remove();
+    });
+  }
+
   function renderQuestionText(q, textReady) {
     const stem = String((q && q.q) || "");
     const stemPlain = stem.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
@@ -534,9 +628,9 @@ const QuantrexTestEngine = (() => {
     if (typeof QxImgClean !== "undefined" && QxImgClean.buildQuestionBodyHtml) {
       try { if (QxImgClean.pinOriginalQuestion) QxImgClean.pinOriginalQuestion(q); } catch (_) { /* */ }
       const stemSrc = QxImgClean.bestStemHtml ? QxImgClean.bestStemHtml(q, q.q) : (q._qxOrigStem || q._qxBankQ || q.q);
-      return QxImgClean.buildQuestionBodyHtml(q.id, stemSrc, renderFn, q);
+      return tightenFillBlanks(QxImgClean.buildQuestionBodyHtml(q.id, stemSrc, renderFn, q));
     }
-    return `<div class="mtk-q-text qx-content" data-qx-qid="${q.id}">${renderFn(q.q)}</div>`;
+    return `<div class="mtk-q-text qx-content" data-qx-qid="${q.id}">${tightenFillBlanks(renderFn(q.q))}</div>`;
   }
 
   /** True when this Q must show integer keypad (type OR current NUM section) */
@@ -551,6 +645,16 @@ const QuantrexTestEngine = (() => {
     if (typeof isNumericalQuestion === "function" && isNumericalQuestion(q)) return true;
     if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.getType
       && QuantrexQFormat.getType(q) === "numerical") return true;
+    // Stub A–D options + NAT-ish stem → numerical box (JEE Main integer type)
+    try {
+      const opts = q.options || [];
+      const stubs = opts.length >= 2 && opts.every(function (o) {
+        const t = String(o || "").replace(/<[^>]+>/g, "").trim();
+        return !t || /^[A-D]$/i.test(t);
+      });
+      const qt = String(q.questionType || q.type || q.qType || "").toLowerCase();
+      if (stubs && (/num|nat|integer|subjective|fill/.test(qt))) return true;
+    } catch (_) { /* */ }
     return false;
   }
 
@@ -560,25 +664,12 @@ const QuantrexTestEngine = (() => {
       return QuantrexQFormat.renderNumericalEntry(val, { cbt: true, label: "Enter integer answer" });
     }
     const esc = val.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
-    return `<div class="mtk-numerical mtk-numerical-wrap" style="display:flex!important;justify-content:center;padding:12px;width:100%">
-      <div class="qx-num-entry qx-num-panel" style="max-width:220px;width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;background:#fff">
-        <input type="text" class="qx-num-input" id="qxNumInput" inputmode="decimal" autocomplete="off"
-          value="${esc}" style="display:block;width:100%;max-width:132px;min-height:40px;margin:0 auto;padding:8px;border:2px solid #1e3a8a;border-radius:8px;font-size:18px;font-weight:700;text-align:center">
-        <div class="qx-num-keypad" id="qxNumKeypad" style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px;max-width:196px;margin:0 auto">
-          <button type="button" class="qx-num-key" data-num-key="7" style="padding:12px;border:1px solid #94a3b8;border-radius:6px;background:#fff;font-weight:700">7</button>
-          <button type="button" class="qx-num-key" data-num-key="8" style="padding:12px;border:1px solid #94a3b8;border-radius:6px;background:#fff;font-weight:700">8</button>
-          <button type="button" class="qx-num-key" data-num-key="9" style="padding:12px;border:1px solid #94a3b8;border-radius:6px;background:#fff;font-weight:700">9</button>
-          <button type="button" class="qx-num-key" data-num-key="4" style="padding:12px;border:1px solid #94a3b8;border-radius:6px;background:#fff;font-weight:700">4</button>
-          <button type="button" class="qx-num-key" data-num-key="5" style="padding:12px;border:1px solid #94a3b8;border-radius:6px;background:#fff;font-weight:700">5</button>
-          <button type="button" class="qx-num-key" data-num-key="6" style="padding:12px;border:1px solid #94a3b8;border-radius:6px;background:#fff;font-weight:700">6</button>
-          <button type="button" class="qx-num-key" data-num-key="1" style="padding:12px;border:1px solid #94a3b8;border-radius:6px;background:#fff;font-weight:700">1</button>
-          <button type="button" class="qx-num-key" data-num-key="2" style="padding:12px;border:1px solid #94a3b8;border-radius:6px;background:#fff;font-weight:700">2</button>
-          <button type="button" class="qx-num-key" data-num-key="3" style="padding:12px;border:1px solid #94a3b8;border-radius:6px;background:#fff;font-weight:700">3</button>
-          <button type="button" class="qx-num-key" data-num-key="-" style="padding:12px;border:1px solid #94a3b8;border-radius:6px;background:#fff;font-weight:700">−</button>
-          <button type="button" class="qx-num-key" data-num-key="0" style="padding:12px;border:1px solid #94a3b8;border-radius:6px;background:#fff;font-weight:700">0</button>
-          <button type="button" class="qx-num-key" data-num-key="." style="padding:12px;border:1px solid #94a3b8;border-radius:6px;background:#fff;font-weight:700">.</button>
-          <button type="button" class="qx-num-key" data-num-key="back" style="grid-column:1/-1;padding:10px;border:1px solid #94a3b8;border-radius:6px;background:#f1f5f9;font-weight:700">⌫ Backspace</button>
-          <button type="button" class="qx-num-key" data-num-key="clear" style="grid-column:1/-1;padding:10px;border:1px solid #fecaca;border-radius:6px;background:#fef2f2;color:#dc2626;font-weight:700">Clear All</button>
+    return `<div class="mtk-numerical mtk-numerical-wrap">
+      <div class="qx-num-entry qx-num-panel qx-num-box-only">
+        <div class="qx-num-box-wrap">
+          <input type="text" class="qx-num-input" id="qxNumInput" inputmode="decimal" enterkeyhint="done"
+            autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false"
+            value="${esc}" placeholder="" aria-label="Numerical answer" maxlength="16">
         </div>
       </div>
     </div>`;
@@ -706,16 +797,19 @@ const QuantrexTestEngine = (() => {
   }
 
   function isSideCollapsed() {
-    if (!session) return (typeof window !== "undefined" && window.innerWidth <= 768);
+    const mobile = typeof window !== "undefined" && window.innerWidth <= 900;
+    if (mobile) return !(session && session._qxUserOpenedPal);
+    if (!session) return false;
     if (session._sideCollapsed != null) return !!session._sideCollapsed;
     if (session._qzrrSideCollapsed != null) return !!session._qzrrSideCollapsed;
-    return (typeof window !== "undefined" && window.innerWidth <= 768);
+    return false;
   }
 
   function setSideCollapsed(on) {
     if (!session) return;
     session._sideCollapsed = !!on;
     session._qzrrSideCollapsed = !!on;
+    session._qxUserOpenedPal = !on;
     const mount = getTestMountEl();
     const host = (mount && (
       mount.querySelector(".mtk-test-root")
@@ -874,9 +968,9 @@ const QuantrexTestEngine = (() => {
       <button type="button" class="mtk-pal-close" id="mtkPalClose" title="Hide question panel">✕</button>
     </div>
     <div class="mtk-font-tools">
-      <button type="button" class="mtk-font-btn" id="mtkFontDown" title="Decrease text size">A−</button>
+      <button type="button" class="mtk-font-btn" id="mtkFontDown" title="Decrease text size" onclick="try{event.preventDefault();event.stopPropagation();if(window.bumpTestFont)window.bumpTestFont(-1);if(window.applyTestZoomToDom&&window.getTestZoom)window.applyTestZoomToDom(window.getTestZoom());}catch(_){}return false;">A−</button>
       <span class="mtk-pal-scale" id="mtkPalFontLbl">${labels[scale] || "M"}</span>
-      <button type="button" class="mtk-font-btn" id="mtkFontUp" title="Increase text size">A+</button>
+      <button type="button" class="mtk-font-btn" id="mtkFontUp" title="Increase text size" onclick="try{event.preventDefault();event.stopPropagation();if(window.bumpTestFont)window.bumpTestFont(1);if(window.applyTestZoomToDom&&window.getTestZoom)window.applyTestZoomToDom(window.getTestZoom());}catch(_){}return false;">A+</button>
       <button type="button" class="mtk-font-gear" id="mtkQviewGear" title="Question view settings">⚙</button>
     </div>`;
   }
@@ -1209,6 +1303,8 @@ const QuantrexTestEngine = (() => {
       const maxSecMarks = secCount * (posMark > 0 ? posMark : 4);
       const magOn = !!(session && session._qzrrMag);
       const sideCollapsed = isSideCollapsed();
+      // qxmd109: start collapsed — Instructions toolbar opens the modal; don't eat Q viewport
+      if (session && session._qzrrSecInfoClosed == null) session._qzrrSecInfoClosed = true;
       const secInfoOpen = !(session && session._qzrrSecInfoClosed);
       if (session && session._qzrrDark == null) session._qzrrDark = getTestTheme() === "dark";
       const qzrrDark = !!(session && session._qzrrDark);
@@ -1216,20 +1312,23 @@ const QuantrexTestEngine = (() => {
         <header class="qzrr-black-bar">
           <div class="qzrr-black-title">${titleEsc}</div>
           <div class="qzrr-black-tools">
-            <button type="button" class="qzrr-tool-btn qzrr-tool-a11y" id="qzrrA11yBtn" title="View Settings">
+            <button type="button" class="qzrr-tool-btn qzrr-tool-a11y" id="qzrrA11yBtn" title="View Settings"
+              onclick="try{event.preventDefault();event.stopPropagation();if(window.qxOpenQzrrA11y)window.qxOpenQzrrA11y(event);}catch(_){}return false;">
               <span class="qzrr-ico qzrr-ico-green" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#4caf50" stroke-width="2"/><path d="M12 2.5v2.2M12 19.3V21.5M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6" stroke="#4caf50" stroke-width="1.8" stroke-linecap="round"/></svg></span>
               View Settings
             </button>
-            <button type="button" class="qzrr-tool-btn qzrr-tool-instr" id="qzrrInstrBtn" title="Instructions">
+            <button type="button" class="qzrr-tool-btn qzrr-tool-instr" id="qzrrInstrBtn" title="Instructions"
+              onclick="try{event.preventDefault();event.stopPropagation();if(window.qxOpenQzrrInstr)window.qxOpenQzrrInstr(event);}catch(_){}return false;">
               <span class="qzrr-ico qzrr-ico-blue" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#42a5f5" stroke-width="2"/><path d="M12 10.5v6" stroke="#42a5f5" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7.2" r="1.2" fill="#42a5f5"/></svg></span>
               Instructions
             </button>
-            <button type="button" class="qzrr-tool-btn qzrr-tool-paper" id="qzrrPaperBtn" title="Question Paper">
+            <button type="button" class="qzrr-tool-btn qzrr-tool-paper" id="qzrrPaperBtn" title="Question Paper"
+              onclick="try{event.preventDefault();event.stopPropagation();if(window.qxOpenQzrrPaper)window.qxOpenQzrrPaper(event);}catch(_){}return false;">
               <span class="qzrr-ico qzrr-ico-blue" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 3.5h7.2L19 8.3V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z" stroke="#42a5f5" stroke-width="1.7"/><path d="M14 3.5V9h5.2" stroke="#42a5f5" stroke-width="1.7"/><path d="M9 12h6M9 15.5h6" stroke="#42a5f5" stroke-width="1.5" stroke-linecap="round"/></svg></span>
               Question Paper
             </button>
-            <button type="button" class="qzrr-tool-btn mtk-font-btn" id="mtkFontDown" title="Decrease text size">A−</button>
-            <button type="button" class="qzrr-tool-btn mtk-font-btn" id="mtkFontUp" title="Increase text size">A+</button>
+            <button type="button" class="qzrr-tool-btn mtk-font-btn" id="mtkFontDown" title="Decrease text size" onclick="try{event.preventDefault();event.stopPropagation();if(window.bumpTestFont)window.bumpTestFont(-1);if(window.applyTestZoomToDom&&window.getTestZoom)window.applyTestZoomToDom(window.getTestZoom());}catch(_){}return false;">A−</button>
+            <button type="button" class="qzrr-tool-btn mtk-font-btn" id="mtkFontUp" title="Increase text size" onclick="try{event.preventDefault();event.stopPropagation();if(window.bumpTestFont)window.bumpTestFont(1);if(window.applyTestZoomToDom&&window.getTestZoom)window.applyTestZoomToDom(window.getTestZoom());}catch(_){}return false;">A+</button>
             <button type="button" class="qzrr-tool-btn qzrr-exit" id="mtkExitBtn" data-qx-exit="1"
               title="Exit test"
               onclick="event.preventDefault();event.stopPropagation();if(window.qxExitTest){window.qxExitTest();}return false;">Exit</button>
@@ -1453,7 +1552,6 @@ const QuantrexTestEngine = (() => {
           <div class="qa-head">
             <div>
               <span class="tag tag-${subjTag}">${q.subject}</span>
-              ${typeof qxDifficultyTag === "function" ? qxDifficultyTag(q) : ""}
               ${q.chapter ? `<span class="tag">📖 ${q.chapter}</span>` : ""}
             </div>
             <button type="button" class="bm-btn ${isReview ? "on" : ""}" id="qxReviewBtn">${isReview ? "🔖 Marked" : "🏷️ Mark for Review"}</button>
@@ -1517,30 +1615,50 @@ const QuantrexTestEngine = (() => {
     }
     root.querySelectorAll("[data-opt]").forEach(btn => {
       const pick = () => selectAnswer(parseInt(btn.dataset.opt, 10));
-      btn.onclick = pick;
+      btn.onclick = (e) => {
+        if (btn._qxTouchPicked && Date.now() - btn._qxTouchPicked < 500) {
+          if (e) { e.preventDefault(); e.stopPropagation(); }
+          return;
+        }
+        pick();
+      };
       btn.onpointerdown = (e) => {
         if (e && e.button != null && e.button !== 0) return;
-        btn.classList.add("selected");
-        if (e && e.pointerType === "touch") {
-          e.preventDefault();
+        if (e && (e.pointerType === "touch" || e.pointerType === "pen")) {
+          btn._qxTouchPicked = Date.now();
+          if (e.cancelable) e.preventDefault();
           pick();
+          return;
         }
+        btn.classList.add("selected");
       };
     });
     root.querySelectorAll("[data-prac-opt]").forEach(btn => {
       const pick = () => selectAnswer(parseInt(btn.dataset.pracOpt, 10));
-      btn.onclick = pick;
+      btn.onclick = (e) => {
+        if (btn._qxTouchPicked && Date.now() - btn._qxTouchPicked < 500) {
+          if (e) { e.preventDefault(); e.stopPropagation(); }
+          return;
+        }
+        pick();
+      };
       btn.onpointerdown = (e) => {
         if (e && e.button != null && e.button !== 0) return;
+        if (e && (e.pointerType === "touch" || e.pointerType === "pen")) {
+          btn._qxTouchPicked = Date.now();
+          if (e.cancelable) e.preventDefault();
+          pick();
+          return;
+        }
         btn.classList.add("selected");
       };
     });
     const reviewBtn = root.querySelector("#qxReviewBtn");
     if (reviewBtn) reviewBtn.onclick = toggleReview;
     const prev = root.querySelector("#qxPrevBtn");
-    if (prev) prev.onclick = () => goTo(session.idx - 1);
+    if (prev) { prev.onclick = (e) => { if (e) { e.preventDefault(); e.stopPropagation(); } if (window._qxEgNavLock && Date.now() - window._qxEgNavLock < 320) return; window._qxEgNavLock = Date.now(); goTo(session.idx - 1); }; prev.onpointerdown = null; }
     const next = root.querySelector("#qxNextBtn");
-    if (next) next.onclick = () => goTo(session.idx + 1);
+    if (next) { next.onclick = (e) => { if (e) { e.preventDefault(); e.stopPropagation(); } if (window._qxEgNavLock && Date.now() - window._qxEgNavLock < 320) return; window._qxEgNavLock = Date.now(); goTo(session.idx + 1); }; next.onpointerdown = null; }
     const skip = root.querySelector("#qxSkipBtn");
     if (skip) skip.onclick = skipQuestion;
     const save = root.querySelector("#qxSaveBtn");
@@ -1677,6 +1795,7 @@ const QuantrexTestEngine = (() => {
         session,
         getQ,
         goTo,
+        saveAndNext,
         refresh,
         toggleReview: typeof toggleReview === "function" ? toggleReview : null,
         hasAnswerAt
@@ -1837,8 +1956,7 @@ const QuantrexTestEngine = (() => {
     if (!root || !session) return;
 
     const a11yBtn = root.querySelector("#qzrrA11yBtn");
-    if (a11yBtn) {
-      a11yBtn.onclick = (e) => {
+    const __qxOpenA11y = (e) => {
         if (e) { e.preventDefault(); e.stopPropagation(); }
         // Fixed on body with clean backdrop so it works flawlessly on mobile & desktop
         let pop = document.getElementById("qzrrA11yPopover");
@@ -1858,27 +1976,45 @@ const QuantrexTestEngine = (() => {
         document.body.appendChild(pop);
 
         const isMobile = window.innerWidth <= 640;
+        // qxmd112: beat test-series-page.css left:2vw!important - never clip off-screen
+        const setImp = (el, prop, val) => { try { el.style.setProperty(prop, val, "important"); } catch (_) { el.style[prop] = val; } };
+        setImp(pop, "position", "fixed");
+        setImp(pop, "z-index", "60050");
+        setImp(pop, "box-sizing", "border-box");
+        setImp(pop, "margin", "0");
+        setImp(pop, "overflow-x", "hidden");
+        setImp(pop, "overflow-y", "auto");
+        setImp(pop, "max-height", "85vh");
+        setImp(pop, "visibility", "visible");
+        setImp(pop, "opacity", "1");
         if (isMobile) {
-          pop.style.position = "fixed";
-          pop.style.top = "50%";
-          pop.style.left = "50%";
-          pop.style.transform = "translate(-50%, -50%)";
-          pop.style.width = "min(360px, 92vw)";
-          pop.style.maxHeight = "85vh";
-          pop.style.overflowY = "auto";
-          pop.style.borderRadius = "16px";
-          pop.style.boxShadow = "0 20px 45px rgba(0,0,0,0.35)";
-          pop.style.zIndex = "20100";
+          // Full-width bottom sheet on phone - all labels readable, no horizontal translate
+          setImp(pop, "left", "0");
+          setImp(pop, "right", "0");
+          setImp(pop, "bottom", "0");
+          setImp(pop, "top", "auto");
+          setImp(pop, "transform", "none");
+          setImp(pop, "width", "100%");
+          setImp(pop, "max-width", "100%");
+          setImp(pop, "border-radius", "16px 16px 0 0");
+          setImp(pop, "box-shadow", "0 -12px 40px rgba(0,0,0,0.28)");
+          pop.classList.add("qzrr-a11y-sheet");
         } else {
-          const rect = a11yBtn.getBoundingClientRect();
-          const popW = Math.min(400, window.innerWidth - 16);
-          let left = Math.min(rect.left, window.innerWidth - popW - 8);
-          left = Math.max(8, left);
-          pop.style.position = "fixed";
-          pop.style.top = Math.min(window.innerHeight - 20, rect.bottom + 8) + "px";
-          pop.style.left = left + "px";
-          pop.style.right = "auto";
-          pop.style.zIndex = "20100";
+          const _a11yEl = a11yBtn || document.getElementById("qzrrA11yBtn");
+          const rect = (_a11yEl || { getBoundingClientRect: () => ({ left: 8, bottom: 48, right: 8, top: 8 }) }).getBoundingClientRect();
+          const popW = Math.min(400, window.innerWidth - 24);
+          let left = Math.min(rect.left, window.innerWidth - popW - 12);
+          left = Math.max(12, left);
+          setImp(pop, "top", Math.min(window.innerHeight - 24, rect.bottom + 8) + "px");
+          setImp(pop, "left", left + "px");
+          setImp(pop, "right", "auto");
+          setImp(pop, "bottom", "auto");
+          setImp(pop, "transform", "none");
+          setImp(pop, "width", popW + "px");
+          setImp(pop, "max-width", "calc(100vw - 24px)");
+          setImp(pop, "border-radius", "16px");
+          setImp(pop, "box-shadow", "0 20px 45px rgba(0,0,0,0.35)");
+          pop.classList.remove("qzrr-a11y-sheet");
         }
 
         const applyA11yClasses = () => {
@@ -1944,7 +2080,9 @@ const QuantrexTestEngine = (() => {
             syncZoomLbl();
           };
         };
-        bindToggle("#qzrrDarkToggle", "_qzrrDark");
+        bindToggle("#qzrrDarkToggle", "_qzrrDark", (on) => {
+          try { if (typeof setTestTheme === "function") setTestTheme(on ? "dark" : "light"); } catch (_) { /* */ }
+        });
         bindToggle("#qzrrContrastToggle", "_qzrrContrast");
         bindToggle("#qzrrSpacingToggle", "_qzrrSpacing");
         const resetAll = pop.querySelector("#qzrrA11yResetAll");
@@ -1960,7 +2098,9 @@ const QuantrexTestEngine = (() => {
             applyTestZoomToDom(1);
             applyA11yClasses();
             closeA11y();
-            a11yBtn.click();
+            window.__qxQzrrToolLock = 0;
+            window.__qxQzrrToolName = "";
+            setTimeout(() => { try { __qxOpenA11y(); } catch (_) {} }, 0);
             if (typeof showToast === "function") showToast("View settings reset");
           };
         }
@@ -1971,15 +2111,22 @@ const QuantrexTestEngine = (() => {
               document.removeEventListener("click", closer, true);
               return;
             }
-            if (!pop.contains(ev.target) && ev.target !== a11yBtn && !a11yBtn.contains(ev.target)) {
+            const _btn = a11yBtn || document.getElementById("qzrrA11yBtn");
+            if (!pop.contains(ev.target) && ev.target !== _btn && !(_btn && _btn.contains && _btn.contains(ev.target))) {
               closeA11y();
               document.removeEventListener("click", closer, true);
             }
           };
           document.addEventListener("click", closer, true);
         }, 80);
-      };
-    }
+    };
+    window.qxOpenQzrrA11y = function (ev) {
+      if (window.__qxQzrrToolLock && Date.now() - window.__qxQzrrToolLock < 400 && window.__qxQzrrToolName === "a11y") return;
+      window.__qxQzrrToolLock = Date.now();
+      window.__qxQzrrToolName = "a11y";
+      try { __qxOpenA11y(ev); } catch (err) { try { console.error("qxOpenQzrrA11y", err); } catch (_) {} }
+    };
+    if (a11yBtn) a11yBtn.onclick = window.qxOpenQzrrA11y;
 
     // Top-right magnifier FAB still opens zoom +/−
     const zoomFab = root.querySelector("#qzrrZoomFab");
@@ -2001,11 +2148,15 @@ const QuantrexTestEngine = (() => {
     }
 
     const instrBtn = root.querySelector("#qzrrInstrBtn");
-    if (instrBtn) {
-      instrBtn.onclick = () => {
-        openQzrrModal(root, "Instructions", quizrrInstructionsViewHtml());
-      };
-    }
+    window.qxOpenQzrrInstr = function (ev) {
+      if (ev && ev.preventDefault) { try { ev.preventDefault(); ev.stopPropagation(); } catch (_) {} }
+      if (window.__qxQzrrToolLock && Date.now() - window.__qxQzrrToolLock < 400 && window.__qxQzrrToolName === "instr") return;
+      window.__qxQzrrToolLock = Date.now();
+      window.__qxQzrrToolName = "instr";
+      const r = document.querySelector(".qzrr-cbt") || root;
+      openQzrrModal(r, "Instructions", quizrrInstructionsViewHtml());
+    };
+    if (instrBtn) instrBtn.onclick = window.qxOpenQzrrInstr;
 
     const paperBtn = root.querySelector("#qzrrPaperBtn");
     const paperChip = root.querySelector("#qzrrPaperChipBtn");
@@ -2020,8 +2171,15 @@ const QuantrexTestEngine = (() => {
         };
       });
     };
-    if (paperBtn) paperBtn.onclick = openPaper;
-    if (paperChip) paperChip.onclick = openPaper;
+    window.qxOpenQzrrPaper = function (ev) {
+      if (ev && ev.preventDefault) { try { ev.preventDefault(); ev.stopPropagation(); } catch (_) {} }
+      if (window.__qxQzrrToolLock && Date.now() - window.__qxQzrrToolLock < 400 && window.__qxQzrrToolName === "paper") return;
+      window.__qxQzrrToolLock = Date.now();
+      window.__qxQzrrToolName = "paper";
+      openPaper();
+    };
+    if (paperBtn) paperBtn.onclick = window.qxOpenQzrrPaper;
+    if (paperChip) paperChip.onclick = window.qxOpenQzrrPaper;
 
     const secInfoToggle = root.querySelector("#qzrrSecInfoToggle");
     if (secInfoToggle) {
@@ -2057,7 +2215,9 @@ const QuantrexTestEngine = (() => {
     root.classList.toggle("qzrr-spacing", !!session._qzrrSpacing);
     root.classList.toggle("qzrr-dark", !!session._qzrrDark);
     root.classList.remove("qzrr-mag-on", "qzrr-dyslexia", "qzrr-focus");
-    if (session._qzrrDark) root.setAttribute("data-test-theme", "dark");
+    root.setAttribute("data-test-theme", session._qzrrDark ? "dark" : "light");
+    // qxmd110: keep body + storage aligned with session theme
+    try { if (typeof setTestTheme === "function") setTestTheme(session._qzrrDark ? "dark" : "light"); } catch (_) { /* */ }
 
     const syncTopZoomLbl = () => {
       const pct = Math.round(getTestZoom() * 100) + "%";
@@ -2106,8 +2266,195 @@ const QuantrexTestEngine = (() => {
       : false;
   }
 
+  function tryPatchQuestion(main, q) {
+    if (!main || !session || !q) return false;
+    if (!main.querySelector(".eg-test-root, .qzrr-cbt")) return false;
+    const stemEl = main.querySelector("#egQArea, #qzrrQArea");
+    let optsEl = main.querySelector("#qxOpts");
+    if (!stemEl) return false;
+    try {
+    try {
+      if (typeof qxRestoreQuestionContent === "function") qxRestoreQuestionContent(q);
+    } catch (_) { /* */ }
+    const isNumQ = isCurrentNumericalUI(q);
+    const isMultiQ = typeof isMultiSelectQuestion === "function" && isMultiSelectQuestion(q);
+    const eg = !!main.querySelector(".eg-test-root");
+    const isQzrrArea = !!(stemEl.id === "qzrrQArea" || (optsEl && stemEl.contains(optsEl)));
+    const stemHtml = tightenFillBlanks(renderQuestionText(q, true));
+    const optsClass = isNumQ
+      ? "mtk-options mtk-numerical-wrap"
+      : (typeof QuantrexQFormat !== "undefined"
+        ? QuantrexQFormat.testOptsContainerClass(q)
+        : "mtk-options mtk-options-grid");
+    // CRITICAL (qxmd109): #qzrrQArea owns stem AND #qxOpts — never wipe via stemEl.innerHTML
+    if (isQzrrArea) {
+      if (!optsEl || !stemEl.contains(optsEl)) {
+        optsEl = document.createElement("div");
+        optsEl.id = "qxOpts";
+        stemEl.appendChild(optsEl);
+      }
+      Array.from(stemEl.childNodes).forEach(function (n) {
+        if (n === optsEl) return;
+        if (n.nodeType === 1 && n.classList && (
+          n.classList.contains("qx-sec-instr") ||
+          n.classList.contains("qx-sec-instr-multi") ||
+          n.classList.contains("qx-sec-instr-num") ||
+          n.classList.contains("qx-sec-instr-sc")
+        )) return;
+        stemEl.removeChild(n);
+      });
+      const wrap = document.createElement("div");
+      wrap.innerHTML = stemHtml;
+      while (wrap.firstChild) stemEl.insertBefore(wrap.firstChild, optsEl);
+      optsEl.className = optsClass + " qzrr-opts";
+      optsEl.innerHTML = renderOptsHtml(q, session.answers[session.idx]);
+    } else {
+      if (!optsEl) return false;
+      stemEl.innerHTML = stemHtml;
+      optsEl.className = optsClass + (eg ? " eg-opts" : " qzrr-opts");
+      optsEl.innerHTML = renderOptsHtml(q, session.answers[session.idx]);
+    }
+    stripStrayStemFromOpts(optsEl);
+    dedupeStemCopies(stemEl);
+    const optsSnap = optsEl.innerHTML;
+    const qno = main.querySelector(".eg-q-num");
+    if (qno) {
+      let n = session.idx + 1;
+      try {
+        if (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.subjectGroups) {
+          const gs = ExamgoalTestUI.subjectGroups(session, getQ);
+          const g = gs.find(function (x) { return x.indices.indexOf(session.idx) >= 0; });
+          if (g) n = g.indices.indexOf(session.idx) + 1;
+        }
+      } catch (_) { /* */ }
+      qno.textContent = String(n);
+    }
+    const typeEl = main.querySelector(".eg-type");
+    if (typeEl) {
+      typeEl.textContent = isNumQ ? "Numerical Answer" : (isMultiQ ? "MCQ Multiple Correct" : "MCQ Single Answer");
+    }
+    const qzNo = main.querySelector(".qzrr-qno");
+    if (qzNo) {
+      let localN = session.idx + 1;
+      try {
+        const sec = session.sections && session.sections[currentSectionIdx()];
+        if (sec) localN = session.idx - (sec.start || 0) + 1;
+      } catch (_) { /* */ }
+      qzNo.textContent = "Question No. " + localN;
+    }
+    try {
+      const metaHtml = (typeof qxPaperMetaBlock === "function")
+        ? qxPaperMetaBlock(q)
+        : (typeof QuantrexStrip !== "undefined" && QuantrexStrip.paperMetaHtml
+          ? QuantrexStrip.paperMetaHtml(q, { includeChapter: false, includeSubject: false })
+          : "");
+      const card = main.querySelector(".eg-q-card");
+      let metaEl = main.querySelector(".eg-q-card > .qx-paper-meta");
+      if (metaHtml) {
+        const wrap = document.createElement("div");
+        wrap.innerHTML = metaHtml;
+        const fresh = wrap.firstElementChild;
+        if (fresh && card) {
+          if (metaEl) card.replaceChild(fresh, metaEl);
+          else {
+            const stem = main.querySelector("#egQArea");
+            if (stem && stem.parentNode) stem.parentNode.insertBefore(fresh, stem);
+            else card.insertBefore(fresh, card.firstChild);
+          }
+        }
+      } else if (metaEl) {
+        metaEl.remove();
+      }
+    } catch (_) { /* */ }
+    main.querySelectorAll(".eg-qbar-n[data-qidx], .eg-pal-cell[data-qidx], .mtk-pal-cell[data-qidx], .qzrr-grid-cell[data-qidx]").forEach(function (cell) {
+      const i = parseInt(cell.getAttribute("data-qidx"), 10);
+      cell.classList.toggle("cur", i === session.idx);
+      cell.onclick = function (e) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        if (!Number.isNaN(i) && typeof goTo === "function") goTo(i);
+      };
+    });
+    const prev = main.querySelector("#qxPrevBtn");
+    if (prev) prev.disabled = session.idx <= 0;
+    const next = main.querySelector("#qxNextBtn");
+    if (next) next.disabled = session.idx >= session.ids.length - 1;
+    main.querySelectorAll("[data-opt]").forEach(function (btn) {
+      const pick = function () { selectAnswer(parseInt(btn.dataset.opt, 10)); };
+      btn.onclick = function (e) {
+        if (btn._qxTouchPicked && Date.now() - btn._qxTouchPicked < 500) {
+          if (e) { e.preventDefault(); e.stopPropagation(); }
+          return;
+        }
+        pick();
+      };
+      btn.onpointerdown = function (e) {
+        if (e && e.button != null && e.button !== 0) return;
+        if (e && (e.pointerType === "touch" || e.pointerType === "pen")) {
+          btn._qxTouchPicked = Date.now();
+          if (e.cancelable) e.preventDefault();
+          pick();
+          return;
+        }
+        btn.classList.add("selected");
+      };
+    });
+    if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.bindNumericalKeypad) {
+      QuantrexQFormat.bindNumericalKeypad(main, function (v) {
+        if (v) session.answers[session.idx] = v;
+        else delete session.answers[session.idx];
+        session.visited.add(session.idx);
+      });
+    }
+    if (eg && typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.syncSolution) {
+      try {
+        ExamgoalTestUI.syncSolution(main, session, q, {
+          hasAnswerAt: typeof hasAnswerAt === "function" ? hasAnswerAt : null
+        });
+      } catch (_) { /* */ }
+    }
+    const hasImg = /<img\b/i.test(stemEl.innerHTML + optsEl.innerHTML);
+    requestAnimationFrame(function () {
+      try {
+        if (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.paintEgMath) {
+          ExamgoalTestUI.paintEgMath(stemEl);
+          ExamgoalTestUI.paintEgMath(optsEl);
+          ExamgoalTestUI.paintEgMath(main.querySelector("#egSol"));
+          if (ExamgoalTestUI.keepOptsVisible) ExamgoalTestUI.keepOptsVisible(main, optsSnap, session, q);
+        } else if (typeof Mx !== "undefined") {
+          if (Mx.stripKatexErrorDom) {
+            Mx.stripKatexErrorDom(stemEl);
+            Mx.stripKatexErrorDom(optsEl);
+          }
+          if (Mx.fixMathFlowInDom) {
+            Mx.fixMathFlowInDom(stemEl);
+            Mx.fixMathFlowInDom(optsEl);
+          }
+        }
+      } catch (_) { /* */ }
+      if (hasImg) {
+        try { finalizeDiagrams(main); } catch (_) { /* */ }
+      }
+      try {
+        if (typeof QxTestEnginePerf !== "undefined") {
+          QxTestEnginePerf.afterQuestionPaint(main, { ids: session.ids, idx: session.idx, getQ: getQ });
+        }
+      } catch (_) { /* */ }
+    });
+    if (!window._qxPersistT) window._qxPersistT = 0;
+    if (Date.now() - window._qxPersistT > 1500) {
+      window._qxPersistT = Date.now();
+      try { marksPersistSession(); } catch (_) { /* */ }
+    }
+    return true;
+    } catch (err) {
+      try { console.warn("tryPatchQuestion", err); } catch (_) { /* */ }
+      return false;
+    }
+  }
+
   /** Fast paint first; figures rewrite local/proxy then finalize (Marks-smooth) */
   function paintQuestionNow(main, q) {
+    if (tryPatchQuestion(main, q)) return;
     if (main && main.getAttribute("data-qx-painting") === "1") return;
     if (main) main.setAttribute("data-qx-painting", "1");
     try {
@@ -2143,12 +2490,17 @@ const QuantrexTestEngine = (() => {
         if (QxImgClean.finalizeAll) QxImgClean.finalizeAll(main, q);
       }
     } catch (_) { /* */ }
-    // Light math path only in CBT — never block Next on watermark/img scrub
     try {
-      if (typeof Mx !== "undefined") {
-        if (Mx.afterRenderLight) Mx.afterRenderLight(main);
-        else Mx.afterRender(main);
-        if (Mx.recoverHollowStemInDom) Mx.recoverHollowStemInDom(main);
+      const stem = main.querySelector("#egQArea, #qzrrQArea");
+      const opts = main.querySelector("#qxOpts");
+      if (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.paintEgMath) {
+        ExamgoalTestUI.paintEgMath(stem);
+        ExamgoalTestUI.paintEgMath(opts);
+      } else if (typeof Mx !== "undefined") {
+        if (Mx.fixMathFlowInDom) {
+          if (stem) Mx.fixMathFlowInDom(stem);
+          if (opts) Mx.fixMathFlowInDom(opts);
+        }
       }
     } catch (_) { /* */ }
     marksPersistSession();
@@ -2219,7 +2571,9 @@ const QuantrexTestEngine = (() => {
           return (t && !/^[A-D]$/i.test(t)) || /<img\b/i.test(String(o || ""));
         });
         if (!optsOk || /^Loading question/i.test(String(q.q || ""))) {
-          await QuantrexCatalog.fillQuestion(q);
+          QuantrexCatalog.fillQuestion(q).then(function () {
+            if (session && getQ(session.ids[session.idx]) === q) tryPatchQuestion(main, q);
+          }).catch(function () {});
         }
       }
     } catch (_) { /* */ }
@@ -2255,21 +2609,12 @@ const QuantrexTestEngine = (() => {
 
     if ((textNeed || figNeed || fullNeed) && q && typeof QuantrexCatalog !== "undefined" && QuantrexCatalog.fillQuestion) {
       paintQuestionNow(main, q);
-      try {
-        await QuantrexCatalog.fillQuestion(q);
+      QuantrexCatalog.fillQuestion(q).then(function () {
         if (typeof tsSyncQMap === "function") tsSyncQMap([session.ids[session.idx]]);
-      } catch (e) {
+        if (session && getQ(session.ids[session.idx]) === q) tryPatchQuestion(main, q);
+      }).catch(function () {
         q._optsFetchFailed = true;
-      }
-      // If still no real options after hydrate, stop infinite Loading
-      const stillBad = !(q.options || []).some(o => {
-        const s = String(o || "");
-        if (/<img\b|smiles/i.test(s)) return true;
-        const t = s.replace(/<[^>]+>/g, "").trim();
-        return t.length > 0 && !/^[A-D]$/i.test(t);
       });
-      if (stillBad && !isCurrentNumericalUI(q)) q._optsFetchFailed = true;
-      if (session && getQ(session.ids[session.idx]) === q) paintQuestionNow(main, q);
     } else if (optsNeed && q && typeof MarksLive !== "undefined" && MarksLive.isExamgoalQuestion && MarksLive.isExamgoalQuestion(q) && (q.options || []).length) {
       if (patchOptionsOnly(main)) { /* ok */ }
       else paintQuestionNow(main, q);
@@ -2359,7 +2704,13 @@ const QuantrexTestEngine = (() => {
   function isMultiSelectQuestion(q) {
     if (!q) return false;
     if (isCodedSingleCorrect(q)) return false;
-    // Official JEE Advanced multi section only — not JEE Main / NDA chapter practice
+    try {
+      const meta = (session && session.meta) || {};
+      if (meta.multiSelect) return true;
+      const ck = String(meta.chapterKey || q._chapterKey || q._bbExercise || "");
+      if (/multiple-choice|multiple_choice|multiplecorrect|multi-correct/i.test(ck)) return true;
+    } catch (_) { /* */ }
+    // Official JEE Advanced multi section
     try {
       if (isOfficialAdvPaper() && session && session.sections && session.sections.length) {
         const sec = session.sections[currentSectionIdx()];
@@ -2468,12 +2819,17 @@ const QuantrexTestEngine = (() => {
     session.idx = idx;
     session.visited.add(idx);
     session._qEnterAt = Date.now();
-    // BNH: warm next figure while paint starts
     try {
       if (typeof QxTestEnginePerf !== "undefined" && session.ids) {
         QxTestEnginePerf.prefetchWindow(session.ids, idx, getQ);
       }
     } catch (_) { /* */ }
+    const main = getTestMountEl();
+    const qNow = getQ(session.ids[idx]);
+    if (main && qNow && tryPatchQuestion(main, qNow)) {
+      _refreshBusy = false;
+      return;
+    }
     refresh();
   }
 
@@ -2603,127 +2959,182 @@ const QuantrexTestEngine = (() => {
     }
   }
 
-  function computeResults() {
-    // Flush dwell on current question before scoring
-    try { recordQTime(session.idx); } catch (_) { /* */ }
+  /** Score one question index into accumulators (qxmd114 chunk-safe). */
+  function scoreOneQuestion(i, acc) {
+    const id = session.ids[i];
+    const q = getQ(id);
+    const chosen = session.answers[i];
+    let isCorrect = false;
+    let isWrong = false;
+    let isPartial = false;
+    const isSkip = chosen === undefined || (typeof QuantrexQFormat !== "undefined" && q && !QuantrexQFormat.isAnswered(q, chosen));
+    const visited = session.visited && session.visited.has(i);
+    const qSec = (session.qTimes && session.qTimes[i]) || 0;
     const scoring = session.scoring;
-    let correct = 0, wrong = 0, skipped = 0, notVisited = 0, score = 0;
-    const breakdown = { subject: {}, difficulty: {} };
-    let timeCorrect = 0, timeWrong = 0, timeSkip = 0;
-    const rows = session.ids.map((id, i) => {
-      const q = getQ(id);
-      const chosen = session.answers[i];
-      let isCorrect = false;
-      let isWrong = false;
-      let isPartial = false;
-      const isSkip = chosen === undefined || (typeof QuantrexQFormat !== "undefined" && q && !QuantrexQFormat.isAnswered(q, chosen));
-      const visited = session.visited && session.visited.has(i);
-      const qSec = (session.qTimes && session.qTimes[i]) || 0;
-      if (!isSkip && q) {
-        const graded = typeof QuantrexQFormat !== "undefined"
-          ? QuantrexQFormat.grade(q, chosen)
-          : { correct: chosen === q.answer, partial: false };
-        isCorrect = graded.correct;
-        isPartial = graded.partial;
-        isWrong = !isCorrect && !isPartial;
-      }
-      // JEE Advanced type-aware marks (SC +3/−1, MC +4/−2 partial, NUM +4/0)
-      const secType = (q && typeof questionSectionType === "function") ? questionSectionType(q) : "SC";
-      const isMulti = secType === "MC" || (q && String(q.questionType || "").toLowerCase().includes("multiple"));
-      const isNumQ = secType === "NUM" || (q && (typeof isNumericalQuestion === "function" ? isNumericalQuestion(q) : false));
-      if (isCorrect) {
-        correct++;
-        let add = scoring.correct;
-        if (isMulti && scoring.multiCorrect != null) add = scoring.multiCorrect;
-        else if (isNumQ && scoring.numericalCorrect != null) add = scoring.numericalCorrect;
-        score += add;
-        timeCorrect += qSec;
-      } else if (isPartial) {
-        // Official Adv multi partial: +3/+2/+1 from grade.partialLevel when present
-        wrong++;
-        let pAdd = scoring.partial != null ? scoring.partial : Math.round(scoring.correct / 2);
-        try {
-          const g2 = typeof QuantrexQFormat !== "undefined" ? QuantrexQFormat.grade(q, chosen) : null;
-          if (g2 && g2.partialLevel === 3) pAdd = 3;
-          else if (g2 && g2.partialLevel === 2) pAdd = 2;
-          else if (g2 && g2.partialLevel === 1) pAdd = 1;
-        } catch (_) { /* */ }
-        score += pAdd;
-        timeWrong += qSec;
-      } else if (isWrong) {
-        wrong++;
-        let wrongPts = scoring.wrong;
-        if (isNumQ && scoring.numericalWrong != null) wrongPts = scoring.numericalWrong;
-        else if (isMulti && scoring.multiWrong != null) wrongPts = scoring.multiWrong;
-        score += (wrongPts != null ? wrongPts : -1);
-        timeWrong += qSec;
-      }
-      else {
-        skipped++;
-        score += scoring.unattempted;
-        timeSkip += qSec;
-        if (!visited) notVisited++;
-      }
-      if (q) {
-        const sub = q.subject || "Other";
-        const diff = q.difficulty || "Medium";
-        if (!breakdown.subject[sub]) {
-          breakdown.subject[sub] = {
-            correct: 0, wrong: 0, total: 0, skipped: 0, notVisited: 0,
-            timeSec: 0, timeCorrect: 0, timeWrong: 0, timeSkip: 0, score: 0
-          };
-        }
-        if (!breakdown.difficulty[diff]) breakdown.difficulty[diff] = { correct: 0, wrong: 0, total: 0 };
-        breakdown.subject[sub].total++;
-        breakdown.subject[sub].timeSec += qSec;
-        breakdown.difficulty[diff].total++;
-        if (isCorrect) {
-          breakdown.subject[sub].correct++;
-          breakdown.subject[sub].timeCorrect += qSec;
-          breakdown.subject[sub].score += scoring.correct;
-          breakdown.difficulty[diff].correct++;
-        }
-        if (isWrong || isPartial) {
-          breakdown.subject[sub].wrong++;
-          breakdown.subject[sub].timeWrong += qSec;
-          const isNum = q && (typeof isNumericalQuestion === "function" ? isNumericalQuestion(q) : false);
-          const wrongPts = (isNum && scoring.numericalWrong != null) ? scoring.numericalWrong : scoring.wrong;
-          breakdown.subject[sub].score += (isPartial
-            ? (scoring.partial != null ? scoring.partial : Math.round(scoring.correct / 2))
-            : (wrongPts != null ? wrongPts : -1));
-          breakdown.difficulty[diff].wrong++;
-        }
-        if (isSkip) {
-          breakdown.subject[sub].skipped = (breakdown.subject[sub].skipped || 0) + 1;
-          breakdown.subject[sub].timeSkip += qSec;
-          if (!visited) breakdown.subject[sub].notVisited = (breakdown.subject[sub].notVisited || 0) + 1;
-        }
-      }
-      if (chosen !== undefined && q && typeof STATE !== "undefined" && STATE.markSolved) STATE.markSolved(id, isCorrect);
-      return { q, chosen, isCorrect, isWrong, isSkip, idx: i, timeSec: qSec };
-    });
-    const total = session.ids.length;
-    const pct = total ? Math.round(correct / total * 100) : 0;
-    const timeUsed = Math.max(0, Math.round((Date.now() - session.startedAt) / 1000));
-    // Not attempted = skipped that were visited; notVisited separate
-    const notAttempted = Math.max(0, skipped - notVisited);
-    // If dwell sum is tiny (instant submit), fall back to wall-clock on skip bucket
-    const dwellSum = timeCorrect + timeWrong + timeSkip;
-    if (dwellSum < 1 && timeUsed > 0) {
-      timeSkip = timeUsed;
+    if (!isSkip && q) {
+      const graded = typeof QuantrexQFormat !== "undefined"
+        ? QuantrexQFormat.grade(q, chosen)
+        : { correct: chosen === q.answer, partial: false };
+      isCorrect = graded.correct;
+      isPartial = graded.partial;
+      isWrong = !isCorrect && !isPartial;
     }
+    let secType = "SC";
+    let isMulti = false;
+    let isNumQ = false;
+    if (!isSkip && q) {
+      secType = (typeof questionSectionType === "function") ? questionSectionType(q) : "SC";
+      isMulti = secType === "MC" || String(q.questionType || "").toLowerCase().includes("multiple");
+      isNumQ = secType === "NUM" || (typeof isNumericalQuestion === "function" ? isNumericalQuestion(q) : false);
+    }
+    if (isCorrect) {
+      acc.correct++;
+      let add = scoring.correct;
+      if (isMulti && scoring.multiCorrect != null) add = scoring.multiCorrect;
+      else if (isNumQ && scoring.numericalCorrect != null) add = scoring.numericalCorrect;
+      acc.score += add;
+      acc.timeCorrect += qSec;
+    } else if (isPartial) {
+      acc.wrong++;
+      let pAdd = scoring.partial != null ? scoring.partial : Math.round(scoring.correct / 2);
+      try {
+        const g2 = typeof QuantrexQFormat !== "undefined" ? QuantrexQFormat.grade(q, chosen) : null;
+        if (g2 && g2.partialLevel === 3) pAdd = 3;
+        else if (g2 && g2.partialLevel === 2) pAdd = 2;
+        else if (g2 && g2.partialLevel === 1) pAdd = 1;
+      } catch (_) { /* */ }
+      acc.score += pAdd;
+      acc.timeWrong += qSec;
+    } else if (isWrong) {
+      acc.wrong++;
+      let wrongPts = scoring.wrong;
+      if (isNumQ && scoring.numericalWrong != null) wrongPts = scoring.numericalWrong;
+      else if (isMulti && scoring.multiWrong != null) wrongPts = scoring.multiWrong;
+      acc.score += (wrongPts != null ? wrongPts : -1);
+      acc.timeWrong += qSec;
+    } else {
+      acc.skipped++;
+      acc.score += scoring.unattempted;
+      acc.timeSkip += qSec;
+      if (!visited) acc.notVisited++;
+    }
+    if (q) {
+      const sub = q.subject || "Other";
+      const diff = q.difficulty || "Medium";
+      if (!acc.breakdown.subject[sub]) {
+        acc.breakdown.subject[sub] = {
+          correct: 0, wrong: 0, total: 0, skipped: 0, notVisited: 0,
+          timeSec: 0, timeCorrect: 0, timeWrong: 0, timeSkip: 0, score: 0
+        };
+      }
+      if (!acc.breakdown.difficulty[diff]) acc.breakdown.difficulty[diff] = { correct: 0, wrong: 0, total: 0 };
+      acc.breakdown.subject[sub].total++;
+      acc.breakdown.subject[sub].timeSec += qSec;
+      acc.breakdown.difficulty[diff].total++;
+      if (isCorrect) {
+        acc.breakdown.subject[sub].correct++;
+        acc.breakdown.subject[sub].timeCorrect += qSec;
+        acc.breakdown.subject[sub].score += scoring.correct;
+        acc.breakdown.difficulty[diff].correct++;
+      }
+      if (isWrong || isPartial) {
+        acc.breakdown.subject[sub].wrong++;
+        acc.breakdown.subject[sub].timeWrong += qSec;
+        const isNum = typeof isNumericalQuestion === "function" ? isNumericalQuestion(q) : false;
+        const wrongPts = (isNum && scoring.numericalWrong != null) ? scoring.numericalWrong : scoring.wrong;
+        acc.breakdown.subject[sub].score += (isPartial
+          ? (scoring.partial != null ? scoring.partial : Math.round(scoring.correct / 2))
+          : (wrongPts != null ? wrongPts : -1));
+        acc.breakdown.difficulty[diff].wrong++;
+      }
+      if (isSkip) {
+        acc.breakdown.subject[sub].skipped = (acc.breakdown.subject[sub].skipped || 0) + 1;
+        acc.breakdown.subject[sub].timeSkip += qSec;
+        if (!visited) acc.breakdown.subject[sub].notVisited = (acc.breakdown.subject[sub].notVisited || 0) + 1;
+      }
+    }
+    if (chosen !== undefined && q) acc.solvedBatch.push({ id: id, correct: isCorrect });
+    // Slim row: keep id + flags; q resolved lazily on View Solution
+    acc.rows.push({ q: q || null, chosen, isCorrect, isWrong, isSkip, idx: i, timeSec: qSec, id: id });
+  }
+
+  function finalizeResultsAcc(acc) {
+    const scoring = session.scoring;
+    const total = session.ids.length;
+    const pct = total ? Math.round(acc.correct / total * 100) : 0;
+    const timeUsed = Math.max(0, Math.round((Date.now() - session.startedAt) / 1000));
+    const notAttempted = Math.max(0, acc.skipped - acc.notVisited);
+    let timeSkip = acc.timeSkip;
+    const dwellSum = acc.timeCorrect + acc.timeWrong + timeSkip;
+    if (dwellSum < 1 && timeUsed > 0) timeSkip = timeUsed;
     const maxScore = (session.totalMarks != null && session.totalMarks > 0)
       ? session.totalMarks
       : (total * (scoring.correct != null ? scoring.correct : 4));
     const durationMin = session.catalogDurationMin
       || (session.durationSec != null ? Math.round(session.durationSec / 60) : 180);
+    if (acc.solvedBatch.length && typeof STATE !== "undefined" && STATE.markSolved) {
+      const batch = acc.solvedBatch.slice();
+      setTimeout(function () {
+        try {
+          if (typeof STATE.markSolvedBatch === "function") STATE.markSolvedBatch(batch);
+          else batch.forEach(function (it) { try { STATE.markSolved(it.id, it.correct); } catch (_) {} });
+        } catch (_) { /* */ }
+      }, 0);
+    }
     return {
-      correct, wrong, skipped, notVisited, notAttempted, score, pct, total, rows, breakdown,
+      correct: acc.correct, wrong: acc.wrong, skipped: acc.skipped, notVisited: acc.notVisited,
+      notAttempted, score: acc.score, pct, total, rows: acc.rows, breakdown: acc.breakdown,
       timeUsed, maxScore, durationMin,
-      timeCorrect, timeWrong, timeSkip,
+      timeCorrect: acc.timeCorrect, timeWrong: acc.timeWrong, timeSkip,
       sections: session.sections || null,
       qTimes: session.qTimes ? { ...session.qTimes } : {}
     };
+  }
+
+  function computeResults() {
+    // Sync path (legacy callers). Prefer computeResultsChunked on submit.
+    try { recordQTime(session.idx); } catch (_) { /* */ }
+    const acc = {
+      correct: 0, wrong: 0, skipped: 0, notVisited: 0, score: 0,
+      breakdown: { subject: {}, difficulty: {} },
+      timeCorrect: 0, timeWrong: 0, timeSkip: 0,
+      solvedBatch: [], rows: []
+    };
+    for (let i = 0; i < session.ids.length; i++) scoreOneQuestion(i, acc);
+    return finalizeResultsAcc(acc);
+  }
+
+  /** qxmd114: score in chunks so Submitting… stays alive; never block main thread. */
+  function computeResultsChunked(onProgress) {
+    return new Promise(function (resolve, reject) {
+      try { recordQTime(session.idx); } catch (_) { /* */ }
+      const total = session.ids.length;
+      const CHUNK = total > 40 ? 8 : 10;
+      const acc = {
+        correct: 0, wrong: 0, skipped: 0, notVisited: 0, score: 0,
+        breakdown: { subject: {}, difficulty: {} },
+        timeCorrect: 0, timeWrong: 0, timeSkip: 0,
+        solvedBatch: [], rows: []
+      };
+      let i = 0;
+      function tick() {
+        try {
+          const end = Math.min(i + CHUNK, total);
+          for (; i < end; i++) scoreOneQuestion(i, acc);
+          if (typeof onProgress === "function") {
+            try { onProgress(i, total); } catch (_) { /* */ }
+          }
+          if (i >= total) {
+            resolve(finalizeResultsAcc(acc));
+            return;
+          }
+          setTimeout(tick, 0);
+        } catch (err) {
+          reject(err);
+        }
+      }
+      setTimeout(tick, 0);
+    });
   }
 
   /** Format seconds as Marks "0.15 min" style */
@@ -2885,9 +3296,10 @@ const QuantrexTestEngine = (() => {
 
     const solRaw = q.solution || q.sol || q.explanation || "";
     const isNum = typeof isNumericalQuestion === "function" && isNumericalQuestion(q);
-    const corIdx = typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.correctIndices
-      ? (QuantrexQFormat.correctIndices(q)[0])
-      : q.answer;
+    const corIdxList = typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.correctIndices
+      ? QuantrexQFormat.correctIndices(q)
+      : (Array.isArray(q.answer) ? q.answer : (q.answer != null ? [q.answer] : []));
+    const corIdx = Array.isArray(corIdxList) && corIdxList.length ? corIdxList : [];
     const corNum = typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.correctNumerical
       ? QuantrexQFormat.correctNumerical(q)
       : (q.correctValue != null ? String(q.correctValue) : "");
@@ -2904,7 +3316,7 @@ const QuantrexTestEngine = (() => {
       const optsArr = q.options || [];
       optsHtml = `<div class="mk-sol-opts">${optsArr.map((o, oi) => {
         const letter = String.fromCharCode(65 + oi);
-        const isCor = oi === corIdx || (Array.isArray(corIdx) && corIdx.includes(oi));
+        const isCor = (Array.isArray(corIdx) ? corIdx : [corIdx]).map(Number).includes(Number(oi));
         const isCh = !r.isSkip && (r.chosen === oi || (Array.isArray(r.chosen) && r.chosen.includes(oi)));
         let cls = "mk-sol-opt";
         if (isCor) cls += " correct";
@@ -3126,8 +3538,10 @@ const QuantrexTestEngine = (() => {
         // Math only on active row (smooth)
         try {
           if (row && typeof Mx !== "undefined") {
+            /* qxmd115-sol-heal */
             if (Mx.afterRenderLight) Mx.afterRenderLight(row);
             else if (Mx.afterRender) Mx.afterRender(row);
+            try { if (Mx.scrubLeftoverDollarsInDom) Mx.scrubLeftoverDollarsInDom(row); } catch (_s) { /* */ }
           }
         } catch (_) { /* */ }
         // Second pass for late-loading figures
@@ -3344,7 +3758,8 @@ const QuantrexTestEngine = (() => {
       return `<button type="button" class="mk-rc-tab" data-mk-scope="${String(sub).replace(/"/g, "")}"><span class="mk-rc-tab-ic">${subjectIcon(sub)}</span> ${sub}</button>`;
     })).join("");
 
-    const reviewRows = data.rows.map((r, i) => renderReviewRow(r, i)).join("");
+    // qxmd114: do NOT build 75 solution shells on submit — lazy on View Solution
+    const reviewRows = "";
     const reviewRail = renderMarksReviewRail(data);
 
     // Section tabs for solution view (global Q numbers)
@@ -3463,6 +3878,23 @@ const QuantrexTestEngine = (() => {
       }
       // Bind on full solution shell (section tabs live outside #qxReviewSplit)
       const shell = sol || root.querySelector("#qxReviewSplit") || root;
+      // qxmd114: build lightweight solution shells only when user opens View Solution
+      try {
+        const listEl = (sol || root).querySelector(".marks-review-list, .review-list");
+        if (listEl && data && data.rows && !listEl.dataset.qxSolBuilt) {
+          listEl.dataset.qxSolBuilt = "1";
+          const CHUNK = 12;
+          let ri = 0;
+          const paintChunk = function () {
+            const end = Math.min(ri + CHUNK, data.rows.length);
+            let html = "";
+            for (; ri < end; ri++) html += renderReviewRow(data.rows[ri], ri);
+            listEl.insertAdjacentHTML("beforeend", html);
+            if (ri < data.rows.length) setTimeout(paintChunk, 0);
+          };
+          paintChunk();
+        }
+      } catch (_) { /* */ }
       bindReviewSplit(shell, data);
       if (data && data.rows && typeof MarksLive !== "undefined" && MarksLive.ensureQuestionFull) {
         const start = parseInt(shell.dataset.curRv, 10) || 0;
@@ -3594,16 +4026,22 @@ const QuantrexTestEngine = (() => {
     }
     try { window._qxLastAnalysis = data; } catch (_) { /* */ }
 
+    // qxmd114: defer analytics — never stringify heavy rows on submit path
     if (typeof QuantrexAnalytics !== "undefined") {
-      try {
-        QuantrexAnalytics.recordAttempt({
-          title, mode, ...data,
-          exam: (typeof STATE !== "undefined" && STATE.exam) || "",
-          date: Date.now(),
-          slug: session.meta && session.meta.slug,
-          source: session.meta && session.meta.source
-        });
-      } catch (e) { console.warn("analytics record", e); }
+      const _anPayload = {
+        title, mode,
+        correct: data.correct, wrong: data.wrong, skipped: data.skipped,
+        score: data.score, maxScore: data.maxScore, pct: data.pct, total: data.total,
+        timeUsed: data.timeUsed, breakdown: data.breakdown,
+        exam: (typeof STATE !== "undefined" && STATE.exam) || "",
+        date: Date.now(),
+        slug: session.meta && session.meta.slug,
+        source: session.meta && session.meta.source
+      };
+      setTimeout(function () {
+        try { QuantrexAnalytics.recordAttempt(_anPayload); }
+        catch (e) { try { console.warn("analytics record", e); } catch (_) {} }
+      }, 0);
     }
 
     const analysisMeta = {
@@ -3700,44 +4138,103 @@ const QuantrexTestEngine = (() => {
   }
 
   function submit(auto) {
+    // qxmd114: paint Submitting immediately; score in chunks; lightweight Report Card first
     if (!session || session.submitted) return;
+    if (window._qxSubmitting) return;
+    window._qxSubmitting = true;
+    window._qxConfirmSubmitLock = Date.now();
     session.submitted = true;
     stopTimer();
-    const data = computeResults();
-    // Full snapshot for "View Analysis" later (resume after submit)
-    let snapshot = null;
-    try {
-      snapshot = buildAttemptSnapshot(data, session);
-      window._qxLastAnalysis = data;
-      window._qxLastAttemptSnapshot = snapshot;
-    } catch (_) {
-      try { window._qxLastAnalysis = data; } catch (e2) { /* */ }
-    }
-    if (typeof session.onComplete === "function") {
-      try { session.onComplete(data, snapshot); } catch (e) { console.error(e); }
-    }
-    const main = getTestMountEl();
-    if (main) {
-      // Instant Report Card paint — NO full-page MathJax on 75 solutions (was freezing UI)
-      main.innerHTML = renderResults(data);
-      const an = main.querySelector("#qzAnPage");
-      if (an) {
-        bindQuizrrAnalysis(an);
-      } else {
-        bindReviewSplit(main.querySelector("#qxReviewSplit"), data);
+    try { if (typeof mtkCloseSubmitModal === "function") mtkCloseSubmitModal(); } catch (_) { /* */ }
+
+    const main0 = getTestMountEl();
+    const setSubmitProgress = function (msg, detail) {
+      if (!main0) return;
+      main0.innerHTML = `<div class="qx-submitting ts-test-loading" style="min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#f4f7fb;color:#1a2b4a;font-family:Inter,system-ui,sans-serif">
+        <div style="width:36px;height:36px;border:3px solid #c5d0e0;border-top-color:#3f51b5;border-radius:50%;animation:qxSpin .7s linear infinite"></div>
+        <div style="font-size:17px;font-weight:600">${msg || "Submitting…"}</div>
+        <div id="qxScoreProg" style="font-size:13px;opacity:.7">${detail || "Scoring your paper"}</div>
+      </div>
+      <style>@keyframes qxSpin{to{transform:rotate(360deg)}}</style>`;
+    };
+    setSubmitProgress("Submitting…", "Scoring your paper");
+
+    const sessRef = session;
+    const onCompleteRef = sessRef && sessRef.onComplete;
+    const totalQs = (sessRef && sessRef.ids && sessRef.ids.length) || 0;
+
+    const paintReport = function (data) {
+      let snapshot = null;
+      try {
+        snapshot = buildAttemptSnapshot(data, sessRef);
+        window._qxLastAnalysis = data;
+        window._qxLastAttemptSnapshot = snapshot;
+      } catch (_) {
+        try { window._qxLastAnalysis = data; } catch (e2) { /* */ }
       }
-      // Soft-prefetch first few solutions in idle time so View Solution is instant
-      if (data.rows && data.rows.length && typeof requestIdleCallback === "function") {
-        requestIdleCallback(() => {
-          data.rows.slice(0, 5).forEach(r => { try { hydrateRowSolution(r); } catch (_) { /* */ } });
-        }, { timeout: 2500 });
-      } else {
-        setTimeout(() => {
-          data.rows.slice(0, 5).forEach(r => { try { hydrateRowSolution(r); } catch (_) { /* */ } });
-        }, 400);
+      const main = getTestMountEl();
+      if (main) {
+        // Lightweight Report Card — no solution HTML yet
+        main.innerHTML = renderResults(data);
+        const an = main.querySelector("#qzAnPage");
+        if (an) bindQuizrrAnalysis(an);
+        else bindReviewSplit(main.querySelector("#qxReviewSplit"), data);
       }
+      if (!auto && typeof showToast === "function") {
+        showToast("Submitted! Report Card ready — open View Solution anytime.");
+      }
+      // Persist AFTER UI shows (slim snapshot — ids/answers/grades only)
+      if (typeof onCompleteRef === "function") {
+        setTimeout(function () {
+          try { onCompleteRef(data, snapshot); } catch (e) { console.error(e); }
+        }, 0);
+      }
+    };
+
+    const run = function () {
+      const updateProg = function (done, tot) {
+        try {
+          const el = document.getElementById("qxScoreProg");
+          if (el) el.textContent = "Scoring… " + done + "/" + tot;
+        } catch (_) { /* */ }
+      };
+      const scorer = typeof computeResultsChunked === "function"
+        ? computeResultsChunked(updateProg)
+        : Promise.resolve().then(function () { return computeResults(); });
+      scorer.then(function (data) {
+        try {
+          updateProg(totalQs, totalQs);
+          // Yield once more so last progress frame paints before Report Card HTML
+          setTimeout(function () {
+            try { paintReport(data); }
+            catch (err) {
+              console.error("submit paint", err);
+              if (typeof showToast === "function") showToast("Submit failed — try again");
+              try { if (sessRef) sessRef.submitted = false; } catch (_) {}
+            } finally {
+              window._qxSubmitting = false;
+            }
+          }, 0);
+        } catch (err) {
+          console.error("submit finish", err);
+          if (typeof showToast === "function") showToast("Submit failed — try again");
+          try { if (sessRef) sessRef.submitted = false; } catch (_) {}
+          window._qxSubmitting = false;
+        }
+      }).catch(function (err) {
+        console.error("submit score", err);
+        if (typeof showToast === "function") showToast("Submit failed — try again");
+        try { if (sessRef) sessRef.submitted = false; } catch (_) {}
+        window._qxSubmitting = false;
+      });
+    };
+
+    // Yield so Submitting… paints before first score chunk
+    if (typeof requestAnimationFrame === "function") {
+      requestAnimationFrame(function () { setTimeout(run, 0); });
+    } else {
+      setTimeout(run, 0);
     }
-    if (!auto) showToast("✅ Submitted! Report Card ready — open View Solution anytime.");
   }
 
   function repairSessionSections(ids, sections) {
@@ -3759,6 +4256,7 @@ const QuantrexTestEngine = (() => {
   function begin(config) {
     const resume = config.resumeData || null;
     let ids = resume ? [...resume.ids] : (config.shuffle !== false ? shuffle(config.questionIds) : [...config.questionIds]);
+    ids = uniqueQuestionIds(ids);
     if (!ids.length) {
       showToast("⚠️ No questions available for this test.");
       return false;
@@ -3786,7 +4284,7 @@ const QuantrexTestEngine = (() => {
         organized = organizeExamPaper(ids, orgOpts);
       }
       if (organized && organized.sections && organized.sections.length) {
-        ids = organized.orderedIds;
+        ids = uniqueQuestionIds(organized.orderedIds);
         sections = organized.sections;
       }
     }
@@ -3840,7 +4338,9 @@ const QuantrexTestEngine = (() => {
       _egChecked: (resume && resume._egChecked) ? { ...resume._egChecked } : {},
       _egCorrect: (resume && resume._egCorrect) ? { ...resume._egCorrect } : {},
       _egShowAnswer: !!(resume && resume._egShowAnswer),
-      _egSideCollapsed: !!(resume && resume._egSideCollapsed),
+      _egSideCollapsed: resume && resume._qxUserOpenedPal ? false : true,
+      _egQbarOpen: false,
+      _qxUserOpenedPal: !!(resume && resume._qxUserOpenedPal),
       // Per-question dwell seconds for Marks Report Card time charts
       qTimes: (resume && resume.qTimes) ? { ...resume.qTimes } : {},
       _qEnterAt: Date.now(),
@@ -4033,10 +4533,14 @@ const QuantrexTestEngine = (() => {
   }
 
   return {
+    uniqueQuestionIds,
+    uniqueQuestionRecords,
     begin,
     render,
     bindEvents,
     refresh,
+    goTo,
+    saveAndNext,
     submit,
     quit,
     stopAndSave,
@@ -5142,14 +5646,56 @@ function qxClearMountInlineStyles(main) {
 }
 
 function qxClearBlockingMount() {
-  if (document.body.classList.contains("marks-test-active") || document.body.classList.contains("allen-practice-active")) return;
-  qxClearMountInlineStyles(document.getElementById("app-main"));
+  if (document.querySelector(".eg-test-root, .qzrr-cbt, .mtk-test-root.allen-cbt")
+    && document.body.classList.contains("marks-test-active")) return;
+  qxForceResetShell({ clearContent: false });
+}
+
+function qxRestoreAppChrome() {
+  try {
+    document.documentElement.classList.remove("qx-cbt-on", "qx-q-fullscreen");
+    document.body.classList.remove(
+      "qx-q-fullscreen", "qx-cbt-session", "marks-test-active", "marks-instr-active",
+      "allen-cbt-active", "allen-practice-active", "qzrr-instr-active", "ts-fmt-chooser-active",
+      "mtk-test-open", "marks-results-active", "qzrr-analysis-active"
+    );
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  } catch (_) { /* */ }
+  document.querySelectorAll("[data-qx-fs-prev]").forEach(function (el) {
+    const prev = el.getAttribute("data-qx-fs-prev");
+    el.style.display = prev || "";
+    el.removeAttribute("data-qx-fs-prev");
+    el.removeAttribute("hidden");
+  });
+  ["#sidebar", ".sidebar", ".topbar", ".qx-top-exams", ".main"].forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (el) {
+      if (!el) return;
+      el.removeAttribute("hidden");
+      if (el.style && (el.style.display === "none" || el.style.visibility === "hidden")) {
+        el.style.display = "";
+        el.style.visibility = "";
+        el.style.pointerEvents = "";
+      }
+    });
+  });
+  const mainEl = document.querySelector(".main");
+  if (mainEl) {
+    mainEl.style.marginLeft = "";
+    mainEl.style.width = "";
+    mainEl.style.maxWidth = "";
+    mainEl.style.padding = "";
+  }
+  const content = document.querySelector(".content");
+  if (content) {
+    content.style.padding = "";
+    content.style.maxWidth = "";
+  }
 }
 
 function qxForceResetShell(opts) {
   const o = opts || {};
-  document.body.classList.remove("marks-test-active", "marks-instr-active", "allen-cbt-active", "allen-practice-active", "qzrr-instr-active", "ts-fmt-chooser-active");
-  document.body.style.overflow = "";
+  qxRestoreAppChrome();
   ["marksInstrOverlay", "marksCountdownOverlay", "mtkStopModal", "mtkSubmitModal", "tsResumeModal", "pyqResumeModal", "pyqPreviewModal", "tsFormatChooser"].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.remove();
@@ -5159,15 +5705,10 @@ function qxForceResetShell(opts) {
     if (o.clearContent) appMain.innerHTML = "";
     qxClearMountInlineStyles(appMain);
   }
-  const sidebar = document.getElementById("sidebar");
-  const topbar = document.querySelector(".topbar");
-  const mainEl = document.querySelector(".main");
-  if (sidebar) sidebar.style.display = "";
-  if (topbar) topbar.style.display = "";
-  if (mainEl) mainEl.style.marginLeft = "";
   if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(() => {});
 }
 window.qxForceResetShell = qxForceResetShell;
+window.qxRestoreAppChrome = qxRestoreAppChrome;
 window.qxClearBlockingMount = qxClearBlockingMount;
 window.qxClearMountInlineStyles = qxClearMountInlineStyles;
 window.qxShowTestMount = qxShowTestMount;
@@ -5296,7 +5837,8 @@ function marksPersistSession() {
     _egShowAnswer: !!s._egShowAnswer,
     startedAt: s.startedAt,
     qTimes: s.qTimes || {},
-    _egSideCollapsed: !!s._egSideCollapsed,
+    _egSideCollapsed: s._qxUserOpenedPal ? false : true,
+    _qxUserOpenedPal: !!s._qxUserOpenedPal,
     _sideCollapsed: !!s._sideCollapsed,
     _qzrrSideCollapsed: !!(s._sideCollapsed || s._qzrrSideCollapsed),
     savedAt: Date.now()
@@ -5312,9 +5854,12 @@ function marksLoadSession(key) {
   const all = marksLoadAllSessions();
   const data = all[key];
   if (!data || data.persistKey !== key) return null;
-  // Allow resume if time left OR answered something (don't drop mid-test save)
+  // Allow resume if time left, practice (null timer), answered, or any in-progress save with ids
   const hasAnswers = data.answers && Object.keys(data.answers).length > 0;
-  if ((data.remainingSec != null && data.remainingSec > 0) || hasAnswers) return data;
+  const hasIds = Array.isArray(data.ids) && data.ids.length > 0;
+  const timedLeft = data.remainingSec != null && data.remainingSec > 0;
+  const practiceSave = data.practiceMode || data.remainingSec == null;
+  if (timedLeft || hasAnswers || (practiceSave && hasIds) || (hasIds && data.savedAt)) return data;
   return null;
 }
 
@@ -5507,6 +6052,7 @@ function launchTestSession(main) {
   }
   try {
     enterMarksTestMode();
+    try { document.documentElement.classList.add("qx-cbt-on"); } catch (_) { /* */ }
     document.body.classList.remove("marks-instr-active");
     if (main.id === "app-main") qxShowTestMount(main);
     if (typeof currentView !== "undefined") currentView = "test";
@@ -5515,20 +6061,32 @@ function launchTestSession(main) {
       throw new Error("Test render returned empty HTML");
     }
     main.innerHTML = html;
+    try { document.documentElement.classList.add("qx-cbt-on"); } catch (_) { /* */ }
     setTestTheme(getTestTheme());
     setTestFontScale(getTestFontScale());
     QuantrexTestEngine.bindEvents(main);
     QuantrexTestEngine.launchTimer();
     document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
-    if (typeof Mx !== "undefined") {
-      if (Mx.afterRenderLight) Mx.afterRenderLight(main);
-      else Mx.afterRender(main);
+    try {
+      const stem = main.querySelector("#egQArea, #qzrrQArea");
+      const opts = main.querySelector("#qxOpts");
+      if (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.paintEgMath) {
+        ExamgoalTestUI.paintEgMath(stem);
+        ExamgoalTestUI.paintEgMath(opts);
+      }
+    } catch (mathErr) {
+      try { console.warn("Quantrex math after test paint", mathErr); } catch (_) { /* */ }
     }
   } catch (err) {
     console.error("Quantrex launchTestSession failed:", err);
+    if (main && main.querySelector && main.querySelector(".eg-test-root, .qzrr-cbt, .mtk-test-root")) {
+      try { console.warn("Test chrome painted; not wiping after", err && err.message); } catch (_) { /* */ }
+      return;
+    }
     showToast("⚠️ Test UI failed to load. Refresh and try again.");
     exitMarksTestMode();
-    main.innerHTML = "";
+    try { document.documentElement.classList.remove("qx-cbt-on"); } catch (_) { /* */ }
+    if (main) main.innerHTML = "";
     if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") tsRenderStandalone();
   }
 }
@@ -5564,19 +6122,17 @@ async function startTest(questionIds, title, returnTo, options) {
     }
   } catch (_) { /* */ }
   const isTs = opts.testType === "testseries";
+  const isPyqMock = opts.testType === "pyqmock";
   const marksMode = opts.marksMode !== false;
-  // Practice / non-TS: Quantrex-best (examgoal chrome). Test Series: NTA-exact (quizrr) by default.
+  // Chapter practice + PYQ Mock → ExamGoal. Test Series → NTA quizrr only (qxmd116).
   let uiMode = opts.uiMode || (opts.resumeData && opts.resumeData.uiMode) || null;
-  if (isTs) {
-    if (!uiMode) {
-      try { uiMode = localStorage.getItem("ts_last_ui_mode") || "quizrr"; } catch (_) { uiMode = "quizrr"; }
-    }
-    if (uiMode !== "examgoal" && uiMode !== "quantrex" && uiMode !== "quizrr") uiMode = "quizrr";
-  } else {
-    // Practice / PYQ / custom: Quantrex-best shell
-    uiMode = opts.practiceMode ? "examgoal" : (uiMode || "examgoal");
-    if (!opts.practiceMode && opts.testType === "pyqmock") uiMode = uiMode || "examgoal";
+  if (opts.practiceMode || isPyqMock) {
     uiMode = "examgoal";
+  } else if (isTs) {
+    uiMode = "quizrr";
+  } else {
+    uiMode = uiMode || "examgoal";
+    if (uiMode !== "quizrr") uiMode = "examgoal";
   }
   if (uiMode === "quantrex") uiMode = "examgoal";
   const practiceMode = !!opts.practiceMode;
@@ -5624,39 +6180,35 @@ async function startTest(questionIds, title, returnTo, options) {
   } catch (_) { /* */ }
   const run = async () => {
     try {
+      const firstQ = (typeof getQ === "function" && questionIds && questionIds[opts.startIdx || 0])
+        ? getQ(questionIds[opts.startIdx || 0]) : null;
+      const firstText = firstQ ? String(firstQ.q || "").replace(/<[^>]+>/g, " ").trim() : "";
+      const firstReady = !!(firstText.length > 12 && !/^Loading question/i.test(firstText));
       const bookReady = opts.testType === "book"
         || !!(opts.meta && opts.meta.bookId)
+        || firstReady
         || (typeof qxBookQsAlreadyLoaded === "function" && qxBookQsAlreadyLoaded(questionIds));
-      if (!bookReady && typeof QuantrexCatalog !== "undefined" && QuantrexCatalog.questionsByIds) {
+      const marksOff = typeof MarksLive !== "undefined" && MarksLive.STUDENT_MARKS_RUNTIME === false;
+      if (!firstReady && !bookReady && !marksOff && typeof QuantrexCatalog !== "undefined" && QuantrexCatalog.questionsByIds) {
         try {
-          showToast("📚 Loading question options…");
-          for (let i = 0; i < questionIds.length; i += 20) {
-            const chunk = questionIds.slice(i, i + 20);
-            const data = await QuantrexCatalog.questionsByIds(chunk);
-            ((data && data.questions) || []).forEach((rec) => {
-              if (!rec) return;
-              let q = null;
-              if (typeof getQ === "function") {
-                q = getQ(rec.id) || getQ(rec._marksId) || getQ("m_" + rec.id);
-                if (!q && rec._marksId) q = getQ("m_" + rec._marksId);
-              }
-              if (!q && typeof QUESTIONS !== "undefined") {
-                q = QUESTIONS.find(function (x) {
-                  return x && (String(x.id) === String(rec.id) || String(x._marksId) === String(rec.id)
-                    || String(x._marksId) === String(rec._marksId) || String(x.id) === String(rec._marksId));
-                });
-              }
-              if (q && QuantrexCatalog.applyCatalogRec) QuantrexCatalog.applyCatalogRec(q, rec);
-              else if (!q && typeof QUESTIONS !== "undefined") {
-                const nq = Object.assign({ _listStub: false, _catalogTried: true }, rec);
-                QUESTIONS.push(nq);
-                if (typeof _qxIndexQuestion === "function") _qxIndexQuestion(nq);
-              }
-            });
-          }
-        } catch (_) { /* continue into test */ }
+          const near = questionIds.slice(opts.startIdx || 0, (opts.startIdx || 0) + 4);
+          await Promise.race([
+            QuantrexCatalog.questionsByIds(near).then(function (data) {
+              ((data && data.questions) || []).forEach(function (rec) {
+                if (!rec) return;
+                let q = typeof getQ === "function" ? (getQ(rec.id) || getQ(rec._marksId)) : null;
+                if (q && QuantrexCatalog.applyCatalogRec) QuantrexCatalog.applyCatalogRec(q, rec);
+              });
+            }),
+            new Promise(function (r) { setTimeout(r, 40); })
+          ]);
+        } catch (_) { /* open with local stem */ }
       }
       const ok = QuantrexTestEngine.begin(config);
+      if (ok && typeof QuantrexCatalog !== "undefined" && QuantrexCatalog.hydrateIds) {
+        const i0 = opts.startIdx || 0;
+        QuantrexCatalog.hydrateIds(questionIds.slice(i0, i0 + 8)).catch(function () {});
+      }
       if (!ok) {
         exitMarksTestMode();
         if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") tsRenderStandalone();
@@ -5698,7 +6250,10 @@ function renderTest() {
 }
 
 async function startChapterTest(questionIds, meta) {
-  if (!questionIds.length) { showToast("⚠️ No questions in this chapter."); return; }
+  if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.uniqueQuestionIds) {
+    questionIds = QuantrexTestEngine.uniqueQuestionIds(questionIds);
+  }
+  if (!questionIds.length) { showToast("Coming soon"); return; }
   const limit = meta.limit || Math.min(30, questionIds.length);
   const pool = questionIds.slice();
   for (let i = pool.length - 1; i > 0; i--) {
@@ -5758,8 +6313,9 @@ async function startMockTest(examSlug, options) {
 
 function mtkQviewSettingsHtml() {
   const scale = getTestFontScale();
+  const theme = typeof getTestTheme === "function" ? getTestTheme() : "light";
   const presets = TEST_FONT_ORDER.map(s =>
-    `<button type="button" class="mtk-font-preset ${scale === s ? "on" : ""}" data-scale="${s}" onclick="setTestFontScale('${s}');toggleMtkQviewSettings(false)">${TEST_FONT_LABELS[s]}</button>`
+    `<button type="button" class="mtk-font-preset ${scale === s ? "on" : ""}" data-scale="${s}" onclick="setTestFontScale('${s}')">${TEST_FONT_LABELS[s]}</button>`
   ).join("");
   return `<div class="mtk-qview-overlay" id="mtkQviewOverlay" onclick="if(event.target===this)toggleMtkQviewSettings(false)">
     <aside class="mtk-qview-panel" onclick="event.stopPropagation()">
@@ -5768,10 +6324,21 @@ function mtkQviewSettingsHtml() {
         <button type="button" class="mtk-qview-close" onclick="toggleMtkQviewSettings(false)">✕</button>
       </div>
       <section class="mtk-qview-sec">
-        <h4>PRACTICE EXPERIENCE</h4>
-        <label class="mtk-qview-label">Text Size</label>
+        <h4>TEXT SIZE</h4>
         <div class="mtk-font-presets">${presets}</div>
-        <p class="mtk-qview-hint">Use A− / A+ on the right panel for quick changes during the test.</p>
+      </section>
+      <section class="mtk-qview-sec">
+        <h4>THEME</h4>
+        <div class="mtk-font-presets">
+          <button type="button" class="mtk-font-preset ${theme === "light" ? "on" : ""}" onclick="if(typeof setTestTheme==='function')setTestTheme('light')">Light</button>
+          <button type="button" class="mtk-font-preset ${theme === "dark" ? "on" : ""}" onclick="if(typeof setTestTheme==='function')setTestTheme('dark')">Dark</button>
+        </div>
+      </section>
+      <section class="mtk-qview-sec">
+        <h4>LANGUAGE</h4>
+        <div class="mtk-font-presets">
+          <button type="button" class="mtk-font-preset on">English</button>
+        </div>
       </section>
     </aside>
   </div>`;
@@ -5864,18 +6431,21 @@ window.qxSubmitTest = function qxSubmitTest() {
   try {
     const eng = typeof QuantrexTestEngine !== "undefined" ? QuantrexTestEngine : null;
     if (!eng || !eng.getSession || !eng.getSession()) {
-      if (typeof showToast === "function") showToast("⚠️ No active test to submit");
+      if (typeof showToast === "function") showToast("No active test to submit");
       return;
     }
-    // Prefer modal; if it fails or is hidden behind UI, fall back to confirm()
     try {
       if (typeof mtkShowSubmitModal === "function") {
         mtkShowSubmitModal();
-        // Ensure modal is on top of #app-main (z-index 9500)
         const ov = document.getElementById("mtkSubmitModal");
         if (ov) {
-          ov.style.zIndex = "20100";
+          ov.style.zIndex = "50000";
           ov.style.position = "fixed";
+          ov.style.inset = "0";
+          ov.style.display = "flex";
+          ov.style.pointerEvents = "auto";
+          // Move to body end so fixed CBT stacking cannot cover it
+          try { document.body.appendChild(ov); } catch (_) { /* */ }
           return;
         }
       }
@@ -5966,6 +6536,10 @@ function mtkCloseSubmitModal() {
 }
 
 function mtkConfirmSubmit() {
+  // qxmd113: double-submit guard + immediate close before heavy work
+  if (window._qxSubmitting) return;
+  if (window._qxConfirmSubmitLock && Date.now() - window._qxConfirmSubmitLock < 1500) return;
+  window._qxConfirmSubmitLock = Date.now();
   mtkCloseSubmitModal();
   if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.submit) {
     QuantrexTestEngine.submit(false);
@@ -5984,11 +6558,11 @@ document.addEventListener("click", function qxSubmitBtnDelegate(ev) {
   try {
     const btn = ev.target && ev.target.closest && ev.target.closest("#qxSubmitBtn, #qxSubmitTop");
     if (!btn) return;
-    if (window._qxSubmitLock && Date.now() - window._qxSubmitLock < 400) return;
-    // Prefer explicit handlers; if they didn't stop, still ensure submit opens
-    if (btn.getAttribute("onclick")) return; // inline handles it
+    if (window._qxSubmitLock && Date.now() - window._qxSubmitLock < 500) return;
     window._qxSubmitLock = Date.now();
+    // Always open submit — inline onclick may fail under re-render / stacking
     ev.preventDefault();
+    ev.stopPropagation();
     if (typeof window.qxSubmitTest === "function") window.qxSubmitTest();
   } catch (_) { /* */ }
 }, true);
@@ -6002,7 +6576,7 @@ document.addEventListener("pointerup", function qxNavBtnDelegate(ev) {
     const eng = typeof QuantrexTestEngine !== "undefined" ? QuantrexTestEngine : null;
     if (!eng || !eng.isActive || !eng.isActive()) return;
     // If handler already fired this tick, skip
-    if (window._qxNavLock && Date.now() - window._qxNavLock < 70) return;
+    if ((window._qxNavLock && Date.now() - window._qxNavLock < 320) || (window._qxEgNavLock && Date.now() - window._qxEgNavLock < 320)) return; /* qxmd105 */
     // Prefer element handler if still attached and recent bind — only backup if no onclick and no recent paint
     const id = btn.id || "";
     window._qxNavLock = Date.now();

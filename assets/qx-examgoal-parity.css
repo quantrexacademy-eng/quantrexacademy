@@ -1,0 +1,222 @@
+/* Quantrex × ExamGoal visual parity (additive)
+   Keep Quantrex branding (logo/name). Reference: competitor-ux examgoal-store-*.png
+   v=qxeg1 */
+
+:root {
+  --eg-blue: #2563eb;
+  --eg-blue-deep: #1e40af;
+  --eg-card: #ffffff;
+  --eg-muted: #64748b;
+  --eg-line: #e2e8f0;
+  --eg-bg: #f1f5f9;
+  --eg-radius: 14px;
+}
+
+/* ---- Settings (ExamGoal/Marks-like cards) ---- */
+.qx-settings-page {
+  background: var(--eg-bg);
+  min-height: 100%;
+}
+.qx-settings-page h1 {
+  color: var(--eg-blue-deep) !important;
+}
+.qx-settings-page .qx-set-card,
+.qx-settings-page .qx-set-group {
+  background: var(--eg-card);
+  border: 1px solid var(--eg-line);
+  border-radius: var(--eg-radius);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, .06);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.qx-settings-page .qx-set-row,
+.qx-settings-page .qx-set-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--eg-line);
+  background: #fff;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+.qx-settings-page .qx-set-row:last-child,
+.qx-settings-page .qx-set-link:last-child {
+  border-bottom: 0;
+}
+.qx-settings-page .qx-set-lab {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 14px;
+}
+.qx-settings-page .qx-set-hint {
+  display: block;
+  font-size: 12px;
+  color: var(--eg-muted);
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+/* ---- Home Study cards (ExamGoal store-0) ---- */
+.dash-marks-wrap.qx-home .dash-greet-bar,
+.qx-home .dash-greet-bar {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 55%, #f97316 140%);
+  color: #fff;
+  border-radius: 18px;
+  padding: 16px 18px;
+  box-shadow: 0 10px 28px rgba(37, 99, 235, .28);
+}
+.qx-home .dash-greet-bar h1,
+.qx-home .dash-greet-bar p { color: #fff !important; }
+.marks-home-card,
+.mth-card,
+.dash-marks-wrap .mth-card,
+.qx-study-card {
+  background: #fff;
+  border: 1px solid var(--eg-line);
+  border-radius: var(--eg-radius);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, .06);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.marks-home-card:active,
+.mth-card:active {
+  transform: scale(0.985);
+}
+
+/* ---- PYQ topic tabs (ExamGoal store-2) ---- */
+.cpyqb-tabs,
+.qx-topic-tabs,
+.eg-subj-tabs,
+.marks-cpyqb-tabs {
+  display: flex;
+  gap: 0;
+  background: var(--eg-blue-deep);
+  color: #fff;
+  padding: 0 8px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.cpyqb-tabs button,
+.qx-topic-tabs button,
+.eg-subj-tabs button,
+.marks-cpyqb-tabs button,
+.cpyqb-tabs .tab,
+.qx-topic-tabs .tab {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  color: rgba(255,255,255,.72);
+  font-weight: 700;
+  padding: 12px 8px;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+}
+.cpyqb-tabs button.on,
+.cpyqb-tabs button.active,
+.qx-topic-tabs button.on,
+.qx-topic-tabs .tab.on,
+.marks-cpyqb-tabs button.on,
+.eg-subj-tabs button.on {
+  color: #fff !important;
+  border-bottom-color: #fff !important;
+}
+
+/* Subject cards */
+.cpyqb-subject-card,
+.qx-subj-card,
+.marks-subject-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border-radius: var(--eg-radius);
+  border: 1px solid var(--eg-line);
+  padding: 14px 16px;
+  margin: 10px 12px;
+  box-shadow: 0 2px 10px rgba(15,23,42,.05);
+}
+
+/* ---- Bookmarks (ExamGoal store-7) ---- */
+.qx-bm-page .qx-bm-card,
+.bookmarks-page .bm-card,
+.qx-bm-list-card {
+  background: #fff;
+  border-radius: var(--eg-radius);
+  border: 1px solid var(--eg-line);
+  padding: 14px;
+  margin: 10px 12px;
+  box-shadow: 0 2px 10px rgba(15,23,42,.05);
+}
+.qx-bm-view-btn,
+.bm-view-btn {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #ea580c;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ---- Analysis (ExamGoal store-4) ---- */
+.qzrr-analysis-active .qz-an-score,
+.marks-results-active .qx-an-score-ring {
+  /* soft pink header area cue */
+}
+.marks-results-active .qx-metric-grid,
+.qzrr-analysis-active .qx-metric-grid,
+.qz-an-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 12px 0;
+}
+.qz-an-metric,
+.qx-metric-card {
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-weight: 700;
+  border-left: 4px solid var(--eg-blue);
+  background: #eff6ff;
+}
+.qx-metric-card.time { background: #eff6ff; border-left-color: #2563eb; }
+.qx-metric-card.accuracy { background: #f5f3ff; border-left-color: #7c3aed; }
+.qx-metric-card.attempted { background: #ecfdf5; border-left-color: #059669; }
+.qx-metric-card.negative { background: #fef2f2; border-left-color: #dc2626; }
+
+/* ---- Daily goals (ExamGoal store-6) ---- */
+.qx-daily-goals,
+.ts-daily-goals,
+.eg-daily-goals {
+  background: var(--eg-bg);
+}
+.qx-goal-progress-card {
+  background: linear-gradient(90deg, #1e40af, #2563eb 60%, #fb923c);
+  color: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 12px;
+}
+.qx-goal-card {
+  background: #fff;
+  border-radius: var(--eg-radius);
+  border: 1px solid var(--eg-line);
+  padding: 14px;
+  margin: 10px 12px;
+}
+
+/* Quantrex brand chip — keep name visible even in immersive chrome */
+.qx-q-fullscreen .qzrr-brand-mini,
+.qx-q-fullscreen .eg-brand-mini {
+  font-weight: 800;
+  letter-spacing: .02em;
+}

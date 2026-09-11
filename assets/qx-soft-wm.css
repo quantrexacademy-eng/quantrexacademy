@@ -1,0 +1,104 @@
+/* No overlay watermarks — students must never see brand stamps. */
+
+.qx-fig-wm-seal,
+.qx-fig-wm-bar,
+.qx-wm-layer,
+.qx-wm-layer__img,
+.qx-wm-layer__text,
+.qx-soft-wm-logo,
+.qx-soft-wm-cover,
+.qx-soft-wm-text,
+.qx-soft-wm-card,
+img.qx-quantrex-wm-overlay,
+img.qx-coaching-wm,
+.qx-premium-wm-logo,
+.qx-premium-wm-sheet,
+.qx-premium-wm,
+.qx-diag-watermark,
+.qx-brand-overlay,
+.qx-quantrex-wm,
+.qx-quantrex-black-wm,
+.qx-quantrex-black-seal,
+canvas.qx-premium-wm-canvas,
+canvas.qx-marks-scrub-canvas,
+img[src*="ic_marks"],
+img[src*="marks-premium"],
+img[src*="getmarks-brand"],
+img[src*="marks_selected"],
+img[src*="quantrex-fig-wm"],
+img[src*="quantrex-academy-brand"]:not(.qx-ui-brand-logo),
+img[src*="quantrex-watermark"]:not(.qx-ui-brand-logo) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+/* Never hide real pool figures */
+img.qx-pool-fig,
+img.qx-opt-fig-img,
+img.qx-fig-img,
+.qx-diagram-slot img,
+#qxDiagramSlot img,
+.mtk-opt-text img,
+.qx-prac-opt-text img,
+.mtk-q-text img,
+.qx-q-text-only img,
+.qx-question-body img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.mtk-options.qx-opts-img .mtk-opt {
+  align-items: flex-start !important;
+  min-width: 0 !important;
+}
+.mtk-options.qx-opts-img .mtk-opt-text img.qx-pool-fig,
+.mtk-options.qx-opts-img .mtk-opt-text img {
+  max-width: min(100%, 220px) !important;
+  max-height: 130px !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+  background: #fff !important;
+}
+
+.qx-soft-wm-card,
+.qx-fig-wm-host {
+  display: contents;
+}
+
+/* Organic-style Quantrex seal — never hide */
+.qx-org-fig-host,
+.qx-org-fig-host-opt,
+.qx-org-fig-host-cell {
+  position: relative !important;
+  display: inline-block !important;
+  overflow: visible !important;
+  visibility: visible !important;
+}
+.qx-org-qx-wm {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 0.20 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: url("quantrex-fig-wm-organic.png") center / 42% no-repeat !important;
+  transform: none !important;
+  mix-blend-mode: multiply !important;
+  z-index: 3 !important;
+}
+.qx-org-fig-host-scan .qx-org-qx-wm {
+  background-size: 34% !important;
+  opacity: 0.16 !important;
+}

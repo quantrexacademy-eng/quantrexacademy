@@ -1,0 +1,244 @@
+/* Right palette: stay on current subject + hide/show (✕ / arrow) */
+.mtk-test-root,
+.qx-test-layout,
+.qzrr-cbt .qzrr-body {
+  position: relative;
+}
+.mtk-body { position: relative; }
+.mtk-palette,
+.mtk-pal-groups,
+.qzrr-side,
+.qx-palette {
+  overflow-anchor: none;
+}
+
+.mtk-pal-close,
+.qzrr-pal-close {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid #3b4254;
+  background: #12151c;
+  color: #e2e8f0;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: inherit;
+  padding: 0;
+}
+.mtk-pal-close:hover,
+.qzrr-pal-close:hover {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #fff;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-pal-close {
+  background: #fff;
+  border-color: #d1d5db;
+  color: #334155;
+}
+
+.mtk-pal-head-row .mtk-pal-close {
+  margin-left: auto;
+  width: 32px;
+  height: 32px;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  font-size: 18px;
+  font-weight: 700;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-pal-head-row .mtk-pal-close {
+  background: #fee2e2;
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+.mtk-pal-close:hover,
+.qzrr-pal-close:hover,
+.mtk-pal-head-row .mtk-pal-close:hover {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #fff;
+}
+
+.mtk-pal-open {
+  display: inline-flex !important;
+  position: absolute;
+  right: 300px;
+  top: 46%;
+  z-index: 60;
+  width: 22px;
+  height: 58px;
+  border: 1px solid #b8c4d0;
+  border-right: none;
+  background: #eef5fa;
+  color: #1a73e8;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  transform: translateY(-50%);
+  box-shadow: -2px 0 10px rgba(15, 23, 42, 0.12);
+  align-items: center;
+  justify-content: center;
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-pal-open,
+.qzrr-cbt.qzrr-dark .mtk-pal-open {
+  background: #2a2f3d;
+  border-color: #3b4254;
+  color: #93c5fd;
+}
+.mtk-test-root.mtk-side-collapsed .mtk-pal-open,
+.qx-test-layout.mtk-side-collapsed .mtk-pal-open {
+  display: inline-flex !important;
+  right: 0;
+  border-right: 1px solid #b8c4d0;
+}
+
+.mtk-test-root.mtk-side-collapsed .mtk-body {
+  grid-template-columns: 1fr !important;
+}
+.mtk-test-root.mtk-side-collapsed .mtk-palette,
+.qx-test-layout.mtk-side-collapsed .qx-palette {
+  display: none !important;
+}
+
+.qzrr-side-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: -2px 0 8px;
+}
+.qzrr-side-head strong {
+  font-size: 13px;
+  font-weight: 800;
+  color: #1a2b3c;
+}
+.qzrr-cbt.qzrr-dark .qzrr-side-head strong { color: #eceae4; }
+.qzrr-cbt.qzrr-dark .qzrr-pal-close {
+  background: #2a2f3d;
+  border-color: #3b4254;
+  color: #e2e8f0;
+}
+
+/* Open: hide edge arrow — close with ✕ only */
+.qzrr-cbt:not(.qzrr-side-collapsed) .qzrr-side-toggle {
+  display: none !important;
+}
+/* Allen CBT: same rule — ▶ was covering Save & Next (screenshot 926) */
+.mtk-test-root:not(.mtk-side-collapsed) .mtk-pal-open {
+  display: none !important;
+}
+/* Closed: arrow on the right edge to bring palette back */
+.qzrr-cbt.qzrr-side-collapsed .qzrr-side-toggle {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  border-right: 1px solid #b8c4d0;
+  border-left: 1px solid #b8c4d0;
+  border-radius: 8px 0 0 8px;
+  width: 22px;
+  height: 58px;
+  background: #eef5fa;
+  color: #1a73e8;
+  z-index: 40;
+}
+.qzrr-cbt.qzrr-dark.qzrr-side-collapsed .qzrr-side-toggle {
+  background: #2a2f3d;
+  border-color: #3b4254;
+  color: #93c5fd;
+}
+
+@media (max-width: 900px) {
+  .qzrr-side-toggle { display: none; }
+  .qzrr-cbt:not(.qzrr-side-collapsed) .qzrr-side-toggle { display: none !important; }
+  .qzrr-cbt.qzrr-side-collapsed .qzrr-side-toggle,
+  .mtk-test-root.mtk-side-collapsed .mtk-pal-open,
+  .qx-test-layout.mtk-side-collapsed .mtk-pal-open {
+    display: inline-flex !important;
+    top: auto;
+    bottom: 86px;
+    right: 10px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid #b8c4d0;
+    transform: none;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.2);
+  }
+  .qzrr-cbt.qzrr-side-collapsed .qzrr-side {
+    display: none !important;
+  }
+  .mtk-test-root.mtk-side-collapsed .mtk-palette {
+    display: none !important;
+    max-height: 0 !important;
+  }
+  .mtk-test-root:not(.mtk-side-collapsed) .mtk-pal-open {
+    right: 10px;
+    top: auto;
+    bottom: 140px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transform: none;
+  }
+}
+
+/* Option choose = unmistakable highlight */
+.mtk-test-root .mtk-opt,
+.mtk-test-root .qx-prac-opt {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+.mtk-test-root:not(.eg-test-root) .mtk-opt-letter,
+.mtk-test-root:not(.eg-test-root) .qx-opt-circle {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  background: #fff !important;
+  border: 2px solid #64748b !important;
+  box-shadow: none !important;
+  font-weight: 800 !important;
+}
+.mtk-test-root:not(.eg-test-root)[data-test-theme="dark"] .mtk-opt-letter,
+.mtk-test-root:not(.eg-test-root)[data-test-theme="dark"] .qx-opt-circle {
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+  background: #1e293b !important;
+  border-color: #94a3b8 !important;
+}
+.mtk-test-root .mtk-opt.selected,
+.mtk-test-root .qx-prac-opt.selected {
+  background: #dbeafe !important;
+  border: 2px solid #2563eb !important;
+  box-shadow: inset 5px 0 0 #2563eb, 0 0 0 1px rgba(37, 99, 235, 0.2) !important;
+}
+.mtk-test-root .mtk-opt.selected .mtk-opt-letter,
+.mtk-test-root .mtk-opt.selected .qx-opt-circle,
+.mtk-test-root .qx-prac-opt.selected .mtk-opt-letter {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-opt.selected,
+.mtk-test-root[data-test-theme="dark"] .qx-prac-opt.selected {
+  background: rgba(37, 99, 235, 0.28) !important;
+  border-color: #60a5fa !important;
+}
+.mtk-test-root .mtk-opt.selected .mtk-opt-radio {
+  display: inline-block !important;
+  border-color: #2563eb !important;
+}
+.mtk-test-root .mtk-opt.selected .mtk-opt-radio::after {
+  content: "" !important;
+  position: absolute;
+  inset: 3px;
+  background: #2563eb !important;
+  border-radius: 50%;
+}

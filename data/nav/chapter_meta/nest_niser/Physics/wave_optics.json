@@ -1,0 +1,63 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d2ad647479b8e8696479",
+  "chapterId": "6809202d3a10446a207fdef7",
+  "subject": "Physics",
+  "chapter": "Wave Optics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "680920723a10446a207fe270",
+      "title": "Wave Theory and Wavefronts",
+      "count": 1,
+      "questionIds": [
+        "680920393a10446a207fdf8f"
+      ]
+    },
+    {
+      "id": "680920723a10446a207fe26f",
+      "title": "Interference of Light",
+      "count": 6,
+      "questionIds": [
+        "6a45fe565aa758e832e06ede",
+        "680920443a10446a207fe00d",
+        "680920433a10446a207fe004",
+        "6809203e3a10446a207fdfcb",
+        "680920373a10446a207fdf75",
+        "680920313a10446a207fdf30"
+      ]
+    },
+    {
+      "id": "680920723a10446a207fe26d",
+      "title": "Youngs Double Slit Experiment",
+      "count": 5,
+      "questionIds": [
+        "680920473a10446a207fe02b",
+        "680920353a10446a207fdf5c",
+        "680920323a10446a207fdf39",
+        "6809202f3a10446a207fdf1a",
+        "6809202d3a10446a207fdef5"
+      ]
+    },
+    {
+      "id": "680920723a10446a207fe271",
+      "title": "Diffraction of Light",
+      "count": 1,
+      "questionIds": [
+        "6809203e3a10446a207fdfc2"
+      ]
+    },
+    {
+      "id": "680920723a10446a207fe26e",
+      "title": "Polarization of Light",
+      "count": 4,
+      "questionIds": [
+        "6809203c3a10446a207fdfb6",
+        "6809203b3a10446a207fdfa3",
+        "680920353a10446a207fdf5d",
+        "6809202e3a10446a207fdf04"
+      ]
+    }
+  ]
+}

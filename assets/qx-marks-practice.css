@@ -1,0 +1,395 @@
+/**
+ * Marks-like practice/test: figure arrangement + light/dark themes
+ */
+
+/* ===== FIGURE ARRANGEMENT (stem) ===== */
+.mtk-main .qx-diagram-slot,
+.mtk-main #qxDiagramSlot,
+.mtk-main .qx-diagram-seg,
+.mtk-main .qx-pool-fig-wrap {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 10px 0 16px !important;
+  padding: 12px 14px !important;
+  background: #fff !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  border-radius: 12px !important;
+  box-sizing: border-box !important;
+  line-height: 0 !important;
+  overflow: visible !important;
+}
+
+.mtk-main .qx-diagram-slot img,
+.mtk-main #qxDiagramSlot img,
+.mtk-main .qx-diagram-seg img,
+.mtk-main .mtk-q-text img.qx-pool-fig,
+.mtk-main .mtk-q-text img,
+.mtk-main .qx-question-body img.qx-pool-fig {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: min(100%, 640px) !important;
+  width: auto !important;
+  height: auto !important;
+  max-height: min(52vh, 420px) !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+  background: #fff !important;
+}
+
+.mtk-main .qx-org-fig-host-scan img,
+.mtk-main .mtk-q-text img[src*="2026_modules"],
+.mtk-main .mtk-q-text img[src*="AKCR2_"],
+.mtk-main .mtk-q-text img[src*="modules/ms/"],
+.mtk-main .mtk-q-text img[src*="original.fullsize"] {
+  max-width: min(100%, 720px) !important;
+  max-height: min(88vh, 920px) !important;
+}
+
+/* Option image grid — even 2×2 like Marks */
+.mtk-options.qx-opts-img,
+.mtk-options.mtk-options-grid.qx-opts-img {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 12px !important;
+}
+
+.mtk-options.qx-opts-img .mtk-opt {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  padding: 12px !important;
+  gap: 10px !important;
+  border-radius: 12px !important;
+}
+
+.mtk-options.qx-opts-img .mtk-opt-text {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  text-align: center !important;
+  line-height: 0 !important;
+}
+
+.mtk-options.qx-opts-img .mtk-opt-text img,
+.mtk-options.qx-opts-img .mtk-opt-text .qx-opt-diagram-slot,
+.mtk-options.qx-opts-img .mtk-opt-text .qx-fig-flat {
+  display: block !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+}
+
+.mtk-options.qx-opts-img .mtk-opt-text img,
+.qx-prac-opts.qx-opts-img .qx-prac-opt-text img,
+.mtk-options .mtk-opt-img .mtk-opt-text img,
+.qx-prac-opts .qx-prac-opt-text img.qx-opt-fig-img,
+.qx-prac-opts .qx-prac-opt-text img.qx-pool-fig {
+  max-width: min(100%, 280px) !important;
+  max-height: min(32vh, 220px) !important;
+  min-height: 72px !important;
+  width: auto !important;
+  height: auto !important;
+  display: block !important;
+  margin: 4px auto !important;
+  object-fit: contain !important;
+  background: #fff !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  border-radius: 8px !important;
+}
+
+.mtk-options.qx-opts-img .mtk-opt,
+.qx-prac-opts.qx-opts-img .qx-prac-opt {
+  align-items: center !important;
+}
+
+.mtk-options.qx-opts-img .mtk-opt-text,
+.qx-prac-opts.qx-opts-img .qx-prac-opt-text {
+  line-height: 1.25 !important;
+  text-align: center !important;
+}
+
+@media (max-width: 720px) {
+  .mtk-options.qx-opts-img {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ===== LIGHT THEME — pure white like Marks website (no yellow/beige) ===== */
+.mtk-test-root[data-test-theme="light"] {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+/* ExamGoal blue strip — light AND dark (body theme is separate) */
+.mtk-test-root.allen-practice .mtk-header,
+.mtk-test-root.allen-cbt .mtk-header,
+.mtk-test-root.allen-practice[data-test-theme="light"] .mtk-header,
+.mtk-test-root.allen-cbt[data-test-theme="light"] .mtk-header,
+.mtk-test-root[data-test-theme="light"] .mtk-header,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-header,
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-header,
+.mtk-test-root[data-test-theme="dark"] .mtk-header {
+  background: #1565C0 !important;
+  border-bottom: none !important;
+  color: #fff !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="light"] .mtk-brand-text,
+.mtk-test-root.allen-practice[data-test-theme="light"] .mtk-prac-progress,
+.mtk-test-root.allen-cbt[data-test-theme="light"] .mtk-brand-text,
+.mtk-test-root[data-test-theme="light"] .mtk-brand-text,
+.mtk-test-root[data-test-theme="light"] .mtk-prac-progress {
+  color: #fff !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-q-num {
+  color: #0f172a !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-sec-bar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-main {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-body {
+  background: #ffffff !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-q-text,
+.mtk-test-root[data-test-theme="light"] .mtk-q-text .qx-content,
+.mtk-test-root[data-test-theme="light"] .qx-question-body {
+  color: #0f172a !important;
+  background: transparent !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-opt {
+  background: #ffffff !important;
+  border: 1px solid #d1d5db !important;
+  color: #0f172a !important;
+  box-shadow: none !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-opt:hover {
+  border-color: #93c5fd !important;
+  background: #f8fafc !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-opt.selected {
+  border-color: #2563eb !important;
+  background: #eff6ff !important;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.2) !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-palette {
+  background: #ffffff !important;
+  border-left: 1px solid #e5e7eb !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-pal-head,
+.mtk-test-root[data-test-theme="light"] .mtk-pal-stats,
+.mtk-test-root[data-test-theme="light"] .mtk-pal-legend {
+  color: #334155 !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-btn-ghost {
+  background: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+  color: #334155 !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-btn-save {
+  background: #2563eb !important;
+  color: #fff !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-btn-review {
+  background: #7c3aed !important;
+  color: #fff !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-btn-prev {
+  background: #ffffff !important;
+  border: 1px solid #d1d5db !important;
+  color: #334155 !important;
+}
+.mtk-test-root[data-test-theme="light"] .qx-diagram-slot,
+.mtk-test-root[data-test-theme="light"] #qxDiagramSlot {
+  background: #ffffff !important;
+  border-color: #e5e7eb !important;
+}
+/* Numerical keypad card — white (not cream) */
+.mtk-test-root[data-test-theme="light"] .mtk-numerical,
+.mtk-test-root[data-test-theme="light"] .mtk-numerical-wrap,
+.mtk-test-root[data-test-theme="light"] .qx-num-panel,
+.mtk-test-root[data-test-theme="light"] .qx-num-card {
+  background: #ffffff !important;
+  border-color: #e5e7eb !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="light"] .mtk-close-btn,
+.mtk-test-root.allen-cbt[data-test-theme="light"] .mtk-close-btn {
+  border-color: rgba(255,255,255,.45) !important;
+  color: #fff !important;
+  background: rgba(255,255,255,.12) !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-close-btn {
+  border-color: #d1d5db !important;
+  color: #64748b !important;
+}
+.mtk-test-root.allen-practice .mtk-header-tools,
+.mtk-test-root.allen-cbt .mtk-header-tools.qx-prac-tools {
+  background: rgba(255, 255, 255, 0.14) !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  gap: 6px;
+  position: relative;
+  z-index: 20;
+  flex-wrap: wrap;
+  max-width: min(100%, 560px);
+  justify-content: flex-end;
+}
+.mtk-test-root.allen-practice .mtk-header-tools .mtk-font-btn,
+.mtk-test-root.allen-practice .mtk-header-tools .mtk-font-lbl,
+.mtk-test-root.allen-practice .mtk-header-tools .qx-zoom-lbl,
+.mtk-test-root.allen-cbt .mtk-header-tools .mtk-font-btn,
+.mtk-test-root.allen-cbt .mtk-header-tools .mtk-theme-lbl {
+  color: #fff !important;
+  border-color: rgba(255,255,255,.4) !important;
+  background: rgba(255,255,255,.1) !important;
+}
+.mtk-test-root.allen-practice .mtk-header-tools .mtk-font-btn:hover {
+  background: rgba(255,255,255,.22) !important;
+}
+
+/* View menu (text size + zoom) */
+.qx-prac-view-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+.qx-prac-view-btn {
+  min-width: 44px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.02em;
+}
+.qx-prac-view-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: min(300px, 92vw);
+  background: #0f172a;
+  color: #e2e8f0;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  padding: 14px;
+  z-index: 100;
+}
+.qx-prac-view-panel[hidden] { display: none !important; }
+.qx-prac-view-sec + .qx-prac-view-sec { margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(148,163,184,.2); }
+.qx-prac-view-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 10px;
+}
+.qx-prac-size-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.qx-prac-size-btn {
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: center;
+}
+.qx-prac-size-btn:hover { border-color: #60a5fa; }
+.qx-prac-size-btn.on {
+  border-color: #3b82f6;
+  background: rgba(37, 99, 235, 0.28);
+  color: #bfdbfe;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.35);
+}
+.qx-prac-zoom-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.qx-prac-zoom-row .mtk-font-btn {
+  width: 34px !important;
+  height: 34px !important;
+  font-size: 18px !important;
+  color: #0f172a !important;
+  background: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
+}
+.qx-zoom-lbl {
+  min-width: 52px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 14px;
+  color: #f8fafc !important;
+}
+.qx-prac-zoom-reset {
+  margin-left: auto;
+  border: 1px solid #475569;
+  background: transparent;
+  color: #cbd5e1;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+.qx-prac-zoom-reset:hover { border-color: #93c5fd; color: #fff; }
+.qx-prac-view-hint {
+  margin: 10px 0 0;
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+/* Ensure zoom host doesn't clip tools */
+.mtk-test-root.allen-practice .mtk-main {
+  transform-origin: top left;
+}
+
+/* ===== DARK THEME (Marks-like deep UI) ===== */
+.mtk-test-root[data-test-theme="dark"] {
+  background: #12151c !important;
+  color: #e8eaed !important;
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-brand-text,
+.mtk-test-root[data-test-theme="dark"] .mtk-prac-progress {
+  color: #fff !important;
+}
+/* Size menu always visible/usable in both themes */
+.mtk-test-root .qx-prac-view-wrap { display: inline-block !important; visibility: visible !important; }
+.mtk-test-root .qx-prac-view-btn { display: inline-flex !important; visibility: visible !important; min-width: 52px; font-weight: 800; }
+.mtk-test-root .qx-prac-theme-btn { min-width: 52px; font-size: 12px !important; font-weight: 800 !important; }
+.mtk-test-root[data-test-theme="dark"] .mtk-main {
+  background: #12151c !important;
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-opt {
+  background: #1e2128 !important;
+  border-color: #3d4455 !important;
+  color: #f1f5f9 !important;
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-opt.selected {
+  border-color: #3b82f6 !important;
+  background: rgba(37, 99, 235, 0.14) !important;
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-palette {
+  background: #161922 !important;
+  border-left-color: #2a2f3d !important;
+}
+.mtk-test-root[data-test-theme="dark"] .qx-diagram-slot,
+.mtk-test-root[data-test-theme="dark"] #qxDiagramSlot {
+  background: #fff !important;
+  border-color: #2a2f3d !important;
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-q-text,
+.mtk-test-root[data-test-theme="dark"] .mtk-q-text .qx-content {
+  color: #e8eaed !important;
+}

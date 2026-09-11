@@ -1,0 +1,37 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff57378e1624ea7b6a6e",
+  "subject": "Physics",
+  "chapter": "Capacitance",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff8b378e1624ea7b6cdd",
+      "title": "Capacitance",
+      "count": 1,
+      "questionIds": [
+        "67fdff65378e1624ea7b6af4"
+      ]
+    },
+    {
+      "id": "67fdff8b378e1624ea7b6cde",
+      "title": "Grouping of capacitors",
+      "count": 3,
+      "questionIds": [
+        "68e7a681ce75e72648a45e88",
+        "67fdff76378e1624ea7b6bbe",
+        "67fdff65378e1624ea7b6af5"
+      ]
+    },
+    {
+      "id": "67fdff8b378e1624ea7b6cdc",
+      "title": "Charging and Discarging of capacitors",
+      "count": 1,
+      "questionIds": [
+        "67fdff57378e1624ea7b6a6c"
+      ]
+    }
+  ]
+}

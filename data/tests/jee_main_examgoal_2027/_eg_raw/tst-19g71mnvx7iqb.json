@@ -1,0 +1,1699 @@
+{
+  "testId": "tst-19g71mnvx7iqb",
+  "title": "Center of Mass and Collision - Chapter Test",
+  "type": "chapter",
+  "section": "Center of Mass and Collision",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-08-03T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "ff62971a-7d93-4101-a7e7-d004ca8c114d",
+  "questions_count": 25,
+  "solutions_count": 25,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g71mnvx7iqb",
+    "defaultLanguage": "en",
+    "description": "Questions from all topics of the chapter",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-03T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 100,
+    "maxNegMarks": 25,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 80,
+        "maxNegMarks": 20,
+        "timeAllotted": 2880000,
+        "totalQuestions": 20,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrxuouln",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>Statement-1:</b> If the centre of mass of a system is at the origin then the total mass to the right of origin is same as total mass to left of origin.</p><p><b>Statement-2:</b> $x_{\\mathrm{cm}} = \\frac{\\sum m_i x_i}{\\sum m_i}$</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Statement-1 is true, statement-2 is true and statement-2 is correct explanation for statement-1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Statement-1 is true, statement-2 is true and statement-2 is not a correct explanation for statement-1</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Statement-1 is true, statement-2 is false</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Statement-1 is false, statement-2 is true</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>When the centre of mass of a system lies at the origin along the x-axis ($x_{cm}=0$)</p>\n<p>$$ \\frac{\\sum m_i\\,x_i}{\\sum m_i}=0 $$</p>\n<p>Let the system of particles are distributed on the right side of the origin ($x_i>0$) and particles on the left side of the origin ($x_i<0$):</p>\n<p>$$ \\sum\\limits_{x_i<0} m_i x_i + \\sum\\limits_{x_i>0} m_i x_i = 0 $$</p>\n<p>$$ \\sum\\limits_{x_i<0} m_i |x_i| + \\sum\\limits_{x_i>0} m_i |x_i| = 0 $$</p>\n<p>It shows that the total mass moment ($\\sum m_i x_i$) to the right equals the total mass moment to the left. It does not mean that the total mass itself $\\sum m_i$ must be equal on both sides.</p>\n<p>For example, a single mass of $1\\,\\mathrm{kg}$ placed at $x=+10$ balances a mass of $10\\,\\mathrm{kg}$ placed at $x=-1$.</p>\n<p>The position of centre of mass is $x_{cm}=\\frac{m_1x_1+m_2x_2}{m_1+m_2}=\\frac{1\\times(10)+10\\times(-1)}{1+10}=0$</p>\n<p>In this case, the mass to the right is $1\\,\\mathrm{kg}$ while the mass to the left is $10\\,\\mathrm{kg}$, which are unequal, yet the centre of mass is at the origin. Therefore, statement-1 is false.</p>\n<p>By definition, the position of the centre of mass for a discrete system of point masses distributed along x-axis is,</p>\n<p>$$ x_{cm}=\\frac{\\sum m_i x_i}{\\sum m_i} $$</p>\n<p>This equation is correct and explains the position of the centre of mass. Therefore, statement-2 is true.</p>\n<p>Hence, statement-1 is false, statement-2 is true. Thus, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>कथन-1:</b> यदि किसी निकाय का द्रव्यमान केंद्र मूल बिंदु पर है, तो मूल बिंदु के दाईं ओर का कुल द्रव्यमान मूल बिंदु के बाईं ओर के कुल द्रव्यमान के समान होता है।</p><p><b>कथन-2:</b> $x_{\\mathrm{cm}} = \\frac{\\sum m_i x_i}{\\sum m_i}$</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 सत्य है और कथन-2, कथन-1 की सही व्याख्या है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 सत्य है और कथन-2, कथन-1 की सही व्याख्या नहीं है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 असत्य है</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>कथन-1 असत्य है, कथन-2 सत्य है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-discrete-particles",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrxa1v87",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A wire is bent into the structure as shown in the figure, and placed on a table. It consists of two half-rings of radius $R$ and two straight parts of length $\\pi R$. The height of COM from the table is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrx9q85j%2F081985dc-13a0-47e6-aefd-c0cf79ad4edf%2F27c1f660-8673-11f1-b608-dbf7e025956c%2Ffile-6y3zli1mrx9q85k.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrx9q85j%2F081985dc-13a0-47e6-aefd-c0cf79ad4edf%2F27c1f660-8673-11f1-b608-dbf7e025956c%2Ffile-6y3zli1mrx9q85k.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{2R}{\\pi}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{R}{\\pi}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{R}{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>zero</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let the surface of the flat table be $y = 0$, where the height above the table corresponds to the vertical coordinate $y$.</p>\n<p>The wire forms a continuous loop lying on the table symmetrically relative to a central line.</p>\n<p>The two parallel straight horizontal lines each have a length of $\\pi R$.</p>\n<p>If the mass per unit length of wire is $\\lambda$, then mass of each segments are;</p>\n<p>$$m_{\\mathrm{I}} = \\lambda \\times \\pi R; m_{\\mathrm{II}} = \\lambda \\times \\pi R; m_{\\mathrm{III}} = \\lambda \\times \\pi R; m_{\\mathrm{IV}} = \\lambda \\times \\pi R$$</p>\n<p>$$\\Rightarrow m_{\\mathrm{I}} = m_{\\mathrm{II}} = m_{\\mathrm{III}} = m_{\\mathrm{IV}} = m$$</p>\n<p>They are connected to a semi-circular arc of radius $R$ on the left and another semi-circular arc of radius $R$ on the right.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrx9w6fb%2F195d8c1c-6db5-4deb-8e55-4ea27498a1b4%2Fcd472970-8673-11f1-b608-dbf7e025956c%2Ffile-6y3zli1mrx9w6fc.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrx9w6fb%2F195d8c1c-6db5-4deb-8e55-4ea27498a1b4%2Fcd472970-8673-11f1-b608-dbf7e025956c%2Ffile-6y3zli1mrx9w6fc.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The straight wire-II is located at a distance R from the x -axis along -z -axis, and the straight wire-III is located at an equal distance R but along z -axis. Their combined centre of mass will be along the x -direction is :</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrx9xr52%2Faba2b48e-61ca-4821-ab57-732ae1c5e757%2Ff916d460-8673-11f1-b608-dbf7e025956c%2Ffile-6y3zli1mrx9xr53.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrx9xr52%2Faba2b48e-61ca-4821-ab57-732ae1c5e757%2Ff916d460-8673-11f1-b608-dbf7e025956c%2Ffile-6y3zli1mrx9xr53.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$ y_{\\text {straight }}=\\frac{m_{I I} y_{I I}+m_{I I I} y_{I I I}}{m_{I I}+m_{I I I}}=\\frac{m(+R)+m(-R)}{2 m}=0 $$</p>\n<p>The x -coordinate their combined centre of mass is,</p>\n<p>$$ \\mathrm{x}_{\\text {straight }}=\\frac{\\mathrm{m}_{\\mathrm{II}} \\mathrm{x}_{\\mathrm{II}}+\\mathrm{m}_{\\mathrm{III}} \\mathrm{x}_{\\mathrm{III}}}{\\mathrm{~m}_{\\mathrm{II}}+\\mathrm{m}_{\\mathrm{III}}}=\\frac{\\mathrm{m} \\times\\left(\\frac{\\pi \\mathrm{R}}{2}\\right)+\\mathrm{m} \\times\\left(\\frac{\\pi \\mathrm{R}}{2}\\right)}{\\mathrm{m}+\\mathrm{m}}=\\frac{\\pi \\mathrm{R}}{2} $$</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrx9zdur%2Fdfdbad50-0782-4a42-a466-434c076e5bdf%2F2671b330-8674-11f1-b608-dbf7e025956c%2Ffile-6y3zli1mrx9zdus.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrx9zdur%2Fdfdbad50-0782-4a42-a466-434c076e5bdf%2F2671b330-8674-11f1-b608-dbf7e025956c%2Ffile-6y3zli1mrx9zdus.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The semi-circular arc-I is symmetric about $y$-axis, so its centre of mass will be on $y$-axis.</p>\n<p>The centre of mass of semi-circular arc is at distance of $\\frac{2R}{\\pi}$ from the base of ring, where $R$ is the radius of the ring, $y_{\\mathrm{I}} = \\frac{2R}{\\pi}$</p>\n<p>So, the coordinates of centre of mass of semi-circular arc-I is $x_{\\mathrm{I}} = 0, y_{\\mathrm{I}} = \\frac{\\pi R}{2}, z_{\\mathrm{I}} = 0$</p>\n<p>The semi-circular arc-IV is also symmetrically about vertical line at $x = \\pi R$,</p>\n<p>The centre of mass of semi-circular arc is at distance of $\\frac{2R}{\\pi}$ from the base of ring, where $R$ is the radius of the ring, $y_{\\mathrm{IV}} = \\frac{2R}{\\pi}$</p>\n<p>So, the coordinates of semi-circular arc-IV is $x_{\\mathrm{IV}} = \\pi R, y_{\\mathrm{IV}} = \\frac{\\pi R}{2}, z_{\\mathrm{IV}} = 0$</p>\n<p>Using the formula of coordinates of centre of mass, the height of centre of mass from the table will be its $y$-coordinate, $d_{\\mathrm{cm}} = y_{\\mathrm{cm}}$</p>\n<p>$$d_{\\mathrm{cm}} = y_{\\mathrm{cm}} = \\frac{m_{\\mathrm{straight}} y_{\\mathrm{straight}} + m_{\\mathrm{I}} y_{\\mathrm{I}} + m_{\\mathrm{IV}} y_{\\mathrm{IV}}}{m_{\\mathrm{straight}} + m_{\\mathrm{I}} + m_{\\mathrm{IV}}} = \\frac{2m(0) + m\\left(\\frac{2R}{\\pi}\\right) + m\\left(\\frac{2R}{\\pi}\\right)}{2m + m + m}$$</p>\n<p>$$d_{\\mathrm{cm}} = \\frac{\\frac{4mR}{\\pi}}{4m} = \\frac{R}{\\pi}$$</p>\n<p>Therefore, the height of centre of mass from the table is $\\frac{R}{\\pi}$. Thus, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "\n<p>एक तार को चित्र में दर्शाए गए संरचना में मोड़ा जाता है, और एक मेज पर रखा जाता है। इसमें त्रिज्या $R$ के दो अर्ध-वलय और लंबाई $\\\text{pi} R$ के दो सीधे भाग शामिल हैं। मेज से द्रव्यमान केंद्र (COM) की ऊंचाई है</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrx9q85j%2F081985dc-13a0-47e6-aefd-c0cf79ad4edf%2F27c1f660-8673-11f1-b608-dbf7e025956c%2Ffile-6y3zli1mrx9q85k.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrx9q85j%2F081985dc-13a0-47e6-aefd-c0cf79ad4edf%2F27c1f660-8673-11f1-b608-dbf7e025956c%2Ffile-6y3zli1mrx9q85k.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{2R}{\\pi}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{R}{\\pi}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{R}{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>शून्य</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-continuous-mass-distribution",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrxumrps",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>Statement-1:</b> The centre of mass of a uniform hollow right circular cone is located at a point one-third up the altitude of the cone above the base.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrxu902r%2F03fc4694-2cb5-4b6c-935f-3802314e654c%2F6879bf30-86c3-11f1-a97f-8f9204706230%2Ffile-6y3zli1mrxu902s.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrxu902r%2F03fc4694-2cb5-4b6c-935f-3802314e654c%2F6879bf30-86c3-11f1-a97f-8f9204706230%2Ffile-6y3zli1mrxu902s.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p><b>Statement-2:</b> The centre of mass of an isosceles triangular wire frame made of uniform wires is located at a point one-third up the altitude above the base.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Statement-1 is true, statement-2 is true and statement-2 is correct explanation for statement-1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Statement-1 is true, statement-2 is true and statement-2 is not the correct explanation for statement-1</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Statement-1 is true, statement-2 is false</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Statement-1 is false, statement-2 is true</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For a uniform hollow right circular cone of height H and base radius R .</p>\n<p>A hollow cone is formed by its slanted surface area. We can divide this surface into thin rings of radius $r$, slanted width dl, and vertical thickness dy at a height y above the base.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrxudp2f%2Fa0329c4b-a484-4e18-92e7-6a3b461137c0%2Feb045370-86c3-11f1-a97f-8f9204706230%2Ffile-6y3zli1mrxudp2g.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrxudp2f%2Fa0329c4b-a484-4e18-92e7-6a3b461137c0%2Feb045370-86c3-11f1-a97f-8f9204706230%2Ffile-6y3zli1mrxudp2g.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>By similarity of triangles, the radius r at a height y is given by:</p>\n<p>$$ r=R\\left(1-\\frac{y}{H}\\right) $$</p>\n<p>Using the trigonometric ratio, the slanted width element is related to the vertical height by $\\mathrm{dl}=\\frac{\\mathrm{dy}}{\\cos \\theta}$, where $\\theta$ is the semi-vertical angle of the cone $\\cos \\theta=\\frac{\\mathrm{H}}{\\mathrm{L}}$, and L is the slant height).</p>\n<p>The area element dA of the ring is:</p>\n<p>$$ d A=2 \\pi r d l=2 \\pi R\\left(1-\\frac{y}{H}\\right) \\frac{d y}{\\cos \\theta} $$</p>\n<p>If the surface mass density is $\\sigma$, then the mass of area element dA will be $\\mathrm{dm}=\\sigma \\mathrm{dA}=2 \\pi \\sigma \\mathrm{R}\\left(1-\\frac{\\mathrm{y}}{\\mathrm{H}}\\right) \\frac{\\mathrm{dy}}{\\cos \\theta}$</p>\n\n<p>The y-coordinate of the centre of mass for a continuous area is:</p>\n<p>$$ y_{\\mathrm{cm}}=\\frac{\\int y\\,dm}{\\int dm}=\\frac{\\int\\limits_{0}^{H}(y)2\\pi\\sigma R\\left(1-\\frac{y}{H}\\right)\\frac{dy}{\\cos\\theta}}{\\int\\limits_{0}^{H}2\\pi\\sigma R\\left(1-\\frac{y}{H}\\right)\\frac{dy}{\\cos\\theta}} $$</p>\n<p>$$ =\\frac{\\int\\limits_{0}^{H}(y)\\left(1-\\frac{y}{H}\\right)dy\\times\\frac{L}{H}}{\\int\\limits_{0}^{H}\\left(1-\\frac{y}{H}\\right)dy\\times\\frac{L}{H}} $$</p>\n<p>$$ =\\left[\\frac{y^{2}}{2}-\\frac{y^{3}}{3H}\\right]_{0}^{H}=\\frac{H^{2}}{2}-\\frac{H^{2}}{3}=\\frac{H^{2}}{6} $$</p>\n<p>$$ y_{\\mathrm{cm}}=\\frac{\\left[\\frac{y^{2}}{2}-\\frac{y^{3}}{3H}\\right]_{0}^{H}}{\\left[y-\\frac{y^{2}}{2H}\\right]_{0}^{H}}=\\frac{\\frac{H^{2}}{2}-\\frac{H^{2}}{3}}{H-\\frac{H}{2}}=\\frac{\\frac{H^{2}}{6}}{\\frac{H}{2}}=\\frac{1}{3}H $$</p>\n<p>So, the centre of mass is located one-third of the altitude above the base. Therefore, Statement-1 is true.</p>\n<p>For an isosceles triangular wireframe of total altitude H and base width $2b$.</p>\n<p>The frame consists of three distinct thin uniform segments: a horizontal base wire of length $2b$ and mass $m_{\\mathrm{base}}$, and two equal slanted side wires each of length $L=\\sqrt{H^{2}+b^{2}}$ and mass $m_{\\mathrm{side}}$.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrxuhnyk%2F46d09650-eca8-426c-9136-dee2a04c5d4b%2F5965ecc0-86c4-11f1-a97f-8f9204706230%2Ffile-6y3zli1mrxuhnyl.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrxuhnyk%2F46d09650-eca8-426c-9136-dee2a04c5d4b%2F5965ecc0-86c4-11f1-a97f-8f9204706230%2Ffile-6y3zli1mrxuhnyl.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>The centre of mass of the horizontal base wire lies at its midpoint $y_{\\text{base}} = 0$.</p>\n<p>The two slanted wires extend vertically from $y = 0$ to $y = H$.</p>\n<p>Being uniform rods, the centre of mass of each side wire lies at its vertical midpoint</p>\n<p>$$y_{\\text{side}} = \\frac{H}{2}$$</p>\n<p>The combined vertical centre of mass coordinate $y_{\\text{frame}}$ is:</p>\n<p>$$y_{\\text{frame}} = \\frac{m_{\\text{base}}(0) + 2m_{\\text{side}}\\left(\\frac{H}{2}\\right)}{m_{\\text{base}} + 2m_{\\text{side}}} = \\frac{m_{\\text{side}}H}{m_{\\text{base}} + 2m_{\\text{side}}}$$</p>\n<p>Let the linear mass density of the wire be $\\lambda$. Then $m_{\\text{base}} = \\lambda(2b)$ and $m_{\\text{side}} = \\lambda L$.</p>\n<p>$$y_{\\text{frame}} = \\frac{(\\lambda L)H}{2\\lambda b + 2\\lambda L} = \\left(\\frac{L}{2(b + L)}\\right)H$$</p>\n<p>As the ratio $\\left(\\frac{L}{2(b + L)}\\right)$ depends on the dimensions $b$ and $L$, and it only equals $\\frac{H}{3}$ for very specific proportions, not generally. Therefore, statement-2 is false.</p>\n<p>Hence, the statement-1 is true, sStatement-2 is false. Thus, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "\n<p><b>कथन-1:</b> एक समान खोखले लंब वृत्तीय शंकु का द्रव्यमान केंद्र आधार से शंकु की ऊंचाई के एक-तिहाई बिंदु पर स्थित होता है।</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrxu902r%2F03fc4694-2cb5-4b6c-935f-3802314e654c%2F6879bf30-86c3-11f1-a97f-8f9204706230%2Ffile-6y3zli1mrxu902s.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrxu902r%2F03fc4694-2cb5-4b6c-935f-3802314e654c%2F6879bf30-86c3-11f1-a97f-8f9204706230%2Ffile-6y3zli1mrxu902s.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p><b>कथन-2:</b> एक समान तारों से बने समद्विबाहु त्रिभुजाकार तार फ्रेम का द्रव्यमान केंद्र आधार से ऊंचाई के एक-तिहाई बिंदु पर स्थित होता है।</p>\n",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 सत्य है और कथन-2, कथन-1 का सही स्पष्टीकरण है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 सत्य है और कथन-2, कथन-1 का सही स्पष्टीकरण नहीं है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 असत्य है</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>कथन-1 असत्य है, कथन-2 सत्य है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-continuous-mass-distribution",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms0kf35o",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A piece of paper (shown in figure 1) is in form of a square. Two corners of this square are folded to make it appear like figure 2. Both corners are put together at centre of square O. If O is taken to be (0, 0), the centre of mass of new system will be at</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms0k8fub%2F449a9d77-04a2-4e81-b005-4487dfc654f2%2F97806830-8842-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0k8fuc.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms0k8fub%2F449a9d77-04a2-4e81-b005-4487dfc654f2%2F97806830-8842-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0k8fuc.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\left(-\\frac{a}{8}, 0\\right)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\left(-\\frac{a}{6}, 0\\right)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\left(\\frac{a}{12}, 0\\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\left(-\\frac{a}{12}, 0\\right)$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Let the square paper have a side length of 2a and total mass M.</p>\n<p>The original square lies from $\\mathrm{x}=-\\mathrm{a}$ to $\\mathrm{x}=+\\mathrm{a}$, and $\\mathrm{y}=-\\mathrm{a}$ to $\\mathrm{y}=+\\mathrm{a}$, with its origin at $\\mathrm{O}(0,0)$.</p>\n<p>The area of the square is $\\mathrm{A}_{\\text {total }}=(2 \\mathrm{a}) \\times(2 \\mathrm{a})=4 \\mathrm{a}^2$</p>\n<p>Two right-hand corners are folded inwards so their vertices meet at $0(0,0)$.</p>\n<p>Combined area of these two folded triangular corners = Area of a square of side a is $\\mathrm{a}^2$.</p>\n<p>Mass of the folded portion $\\mathrm{m}_{\\text {folded }}=\\frac{\\mathrm{M}}{4 \\mathrm{a}^2} \\times \\mathrm{a}^2=\\frac{\\mathrm{M}}{4}$</p>\n<p>The centre of mass of isosceles triangle is at distance $\\frac{\\mathrm{h}}{3}$ from the base along the altitude, where h is the height.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms0kan5x%2F7fca9d6d-7b10-4eb6-b0ff-6e0c062d9d57%2Fd4c6bf50-8842-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0kan5y.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms0kan5x%2F7fca9d6d-7b10-4eb6-b0ff-6e0c062d9d57%2Fd4c6bf50-8842-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0kan5y.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The centre of mass of rectangular plate is at its centre, $\\mathrm{x}_2=\\frac{\\mathrm{a}}{2}$. The mass of the rectangular plate is $\\frac{\\mathrm{M}}{2}$.</p>\n<p>The centre of mass of triangular part plate is at, $\\mathrm{x}_1=\\frac{\\mathrm{a}}{3}$. The mass of the triangular plate is $\\frac{\\mathrm{M}}{2}$.</p>\n<p>Due to symmetry along the y -axis is, $\\mathrm{y}_{\\mathrm{cm}}=0$.</p>\n<p>Using the formula of centre of mass,</p>\n<p>$$ \\mathrm{x}_{\\mathrm{cm}}=\\frac{\\mathrm{m}_1 \\mathrm{x}_1+\\mathrm{m}_2 \\mathrm{x}_2}{\\mathrm{~m}_1+\\mathrm{m}_2} $$</p>\n<p>$$ \\mathrm{x}_{\\mathrm{cm}}=\\frac{\\frac{\\mathrm{M}}{2} \\times \\frac{\\mathrm{a}}{3}+\\frac{\\mathrm{M}}{2}\\left(-\\frac{\\mathrm{a}}{2}\\right)}{\\frac{\\mathrm{M}}{2}+\\frac{\\mathrm{M}}{2}}=\\frac{1}{2}\\left(\\frac{\\mathrm{a}}{3}-\\frac{\\mathrm{a}}{2}\\right)=\\frac{1}{2}\\left(\\frac{-\\mathrm{a}}{6}\\right)=-\\frac{\\mathrm{a}}{12} $$</p>\n<p>Since $\\mathrm{x}_{\\mathrm{cm}, \\text { initial }}=0$, the new x-coordinate of the centre of mass is $\\mathrm{x}_{\\mathrm{cm}, \\text { new }}=-\\frac{\\mathrm{a}}{12}$</p>\n<p>Thus, the position coordinates of the new centre of mass are $\\left(-\\frac{\\mathrm{a}}{12}, 0\\right)$. </p>\n<p>Thus, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>कागज का एक टुकड़ा (चित्र 1 में दर्शाया गया है) एक वर्ग के रूप में है। इस वर्ग के दो कोनों को मोड़कर इसे चित्र 2 जैसा बनाया जाता है। दोनों कोनों को वर्ग के केंद्र O पर एक साथ रखा जाता है। यदि O को (0, 0) माना जाए, तो नए निकाय का द्रव्यमान केंद्र कहाँ होगा?</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms0k8fub%2F449a9d77-04a2-4e81-b005-4487dfc654f2%2F97806830-8842-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0k8fuc.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms0k8fub%2F449a9d77-04a2-4e81-b005-4487dfc654f2%2F97806830-8842-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0k8fuc.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\left(-\\frac{a}{8}, 0\\right)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\left(-\\frac{a}{6}, 0\\right)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\left(\\frac{a}{12}, 0\\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\left(-\\frac{a}{12}, 0\\right)$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "cavity-problems",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms05ovyq",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A rigid triangular frame ABC of mass m is hanging from a rigid horizontal rod PQ. The frame is constrained to move along horizontal without friction. A bead of mass m is released from B that moves along BC. Magnitude of displacement of frame when bead reaches C is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms05gbnb%2F6f24e6f8-fe00-41d9-8c21-19192136865f%2Fc9cc2070-8808-11f1-b617-2d120e2a8261%2Ffile-6y3zli1ms05gbnc.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms05gbnb%2F6f24e6f8-fe00-41d9-8c21-19192136865f%2Fc9cc2070-8808-11f1-b617-2d120e2a8261%2Ffile-6y3zli1ms05gbnc.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{l}{2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{l}{4}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{3l}{\\sqrt{2}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{\\sqrt{3}l}{4}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Frame ABC has mass m and forms an equilateral triangle of side length l . Which can move only along the horizontal direction without friction.</p>\n<p>Bead has mass m.</p>\n<p>Since no external force acts on the system (frame + bead) in the horizontal direction, the horizontal position of the centre of mass of the system remains unchanged:</p>\n<p>$$ \\Delta \\mathrm{x}_{\\mathrm{cm}}=0 $$</p>\n<p>Let the displacement of the frame to the left be x .</p>\n<p>Side length of the equilateral triangular frame $=1$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms05m3dc%2F12ef09f5-b655-49b2-8d12-09d8c8b83269%2F6a422900-8809-11f1-b617-2d120e2a8261%2Ffile-6y3zli1ms05m3dd.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms05m3dc%2F12ef09f5-b655-49b2-8d12-09d8c8b83269%2F6a422900-8809-11f1-b617-2d120e2a8261%2Ffile-6y3zli1ms05m3dd.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Angle of side BC with the horizontal line AB is $60^{\\circ}$.</p>\n<p>Horizontal component of side $\\mathrm{BC}=1 \\cos 60^{\\circ}=1 \\times \\frac{1}{2}=\\frac{1}{2}$.</p>\n<p>Relative to the frame, when the bead moves from B to C, its horizontal displacement to the right is $\\Delta x_{b/f} = \\frac{l}{2}$</p>\n<p>Therefore, relative to the ground, the horizontal displacement of the bead to the right is $\\Delta x_b = \\frac{l}{2} - x$</p>\n<p>The displacement of the frame relative to the ground to the left is $-x$, $\\Delta x_f = -x$</p>\n<p>Using the conservation of horizontal position of the centre of mass:</p>\n<p>$$m_1 \\, \\Delta x_1 + m_2 \\, \\Delta x_2 = 0$$</p>\n<p>Substituting the mass of frame $m_f = m$ and the mass of bead $m_b = m$,</p>\n<p>$$m(-x) + m\\left(\\frac{l}{2} - x\\right) = 0$$</p>\n<p>$$\\Rightarrow -x + \\frac{l}{2} - x = 0$$</p>\n<p>$$\\Rightarrow \\frac{l}{2} = 2x \\Rightarrow x = \\frac{l}{4}$$</p>\n<p>Therefore, the magnitude of displacement of the frame $\\frac{l}{4}$. Hence, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>m द्रव्यमान का एक दृढ़ त्रिभुजाकार फ्रेम ABC एक दृढ़ क्षैतिज छड़ PQ से लटका हुआ है। फ्रेम बिना घर्षण के क्षैतिज दिशा में गति करने के लिए बाध्य है। m द्रव्यमान का एक मनका (bead) B से छोड़ा जाता है जो BC के अनुदिश गति करता है। जब मनका C पर पहुँचता है, तो फ्रेम के विस्थापन का परिमाण है:</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms05gbnb%2F6f24e6f8-fe00-41d9-8c21-19192136865f%2Fc9cc2070-8808-11f1-b617-2d120e2a8261%2Ffile-6y3zli1ms05gbnc.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms05gbnb%2F6f24e6f8-fe00-41d9-8c21-19192136865f%2Fc9cc2070-8808-11f1-b617-2d120e2a8261%2Ffile-6y3zli1ms05gbnc.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{l}{2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{l}{4}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{3l}{\\sqrt{2}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{\\sqrt{3}l}{4}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "motion-of-center-of-mass",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms05skrp",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two particles of equal mass have initial velocities $2\\hat{i} \\ \\mathrm{ms}^{-1}$ and $2\\hat{j} \\ \\mathrm{ms}^{-1}$. First particle has a constant acceleration $(\\hat{i} + \\hat{j}) \\ \\mathrm{ms}^{-2}$ while the acceleration of the second particle is always zero. The centre of mass of the two particles moves in</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Circle</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Parabola</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Ellipse</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Straight line</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Let the mass of particle 1 is m and the mass of particle 2 is m</p>\n<p>Initial velocity of particle 1 is $\\vec{u}_1 = 2\\hat{i}\\,\\mathrm{ms}^{-1}$</p>\n<p>Initial velocity of particle 2 is $\\vec{u}_2 = 2\\hat{j}\\,\\mathrm{ms}^{-1}$</p>\n<p>Acceleration of particle 1 is $\\vec{a}_1 = (\\hat{i} + \\hat{j})\\,\\mathrm{ms}^{-2}$</p>\n<p>Acceleration of particle 2 is $\\vec{a}_2 = 0\\hat{i} + 0\\hat{j}\\,\\mathrm{ms}^{-2}$</p>\n<p>So, the initial velocity of centre of mass is</p>\n<p>$$\\vec{u}_{\\mathrm{cm}} = \\frac{m\\vec{u}_1 + m\\vec{u}_2}{m + m} = \\frac{\\vec{u}_1 + \\vec{u}_2}{2}$$</p>\n<p>$$\\vec{u}_{\\mathrm{cm}} = \\frac{2\\hat{i} + 2\\hat{j}}{2} = \\hat{i} + \\hat{j}\\,\\mathrm{ms}^{-1}$$</p>\n<p>The acceleration of centre of mass is</p>\n<p>$$\\vec{a}_{\\mathrm{cm}} = \\frac{m\\vec{a}_1 + m\\vec{a}_2}{m + m} = \\frac{\\vec{a}_1 + \\vec{a}_2}{2}$$</p>\n<p>$$\\vec{a}_{\\mathrm{cm}} = \\frac{(\\hat{i} + \\hat{j}) + 0}{2} = \\frac{1}{2}(\\hat{i} + \\hat{j})\\,\\mathrm{ms}^{-2}$$</p>\n<p>So, the initial velocity of centre of mass is $\\overrightarrow{\\mathrm{u}}_{\\mathrm{cm}}=\\hat{\\mathrm{i}}+\\hat{\\jmath}$ and the acceleration is $\\overrightarrow{\\mathrm{a}}_{\\mathrm{cm}}=\\frac{1}{2}(\\hat{\\imath}+\\hat{\\jmath})=\\frac{1}{2} \\overrightarrow{\\mathrm{u}}_{\\mathrm{cm}}$</p>\n<p>Since the acceleration vector of the centre of mass $\\overrightarrow{\\mathrm{a}}_{\\mathrm{cm}}$ is parallel to its initial velocity vector $\\overrightarrow{\\mathrm{u}}_{\\mathrm{cm}}$, the direction of motion never changes.</p>\n<p>When acceleration is parallel to initial velocity, the trajectory of a particle or centre of mass is always a straight line.</p>\n<p>Thus, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>समान द्रव्यमान वाले दो कणों के प्रारंभिक वेग $2\\hat{i} \\ \\mathrm{ms}^{-1}$ तथा $2\\hat{j} \\ \\mathrm{ms}^{-1}$ हैं। पहले कण का त्वरण $(\\hat{i} + \\hat{j}) \\ \\mathrm{ms}^{-2}$ नियत है, जबकि दूसरे कण का त्वरण सदैव शून्य रहता है। दोनों कणों का द्रव्यमान केंद्र किस पथ पर गति करता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>वृत्त</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>परवलय</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>दीर्घवृत्त</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>सरल रेखा</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "motion-of-center-of-mass",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms05w2q2",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A bomb travelling in a parabolic path under the effect of gravity, explodes in mid-air. The centre of mass of fragments will :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Move vertically upwards and then downwards</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Move vertically downwards</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Move in irregular path</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Move in the parabolic path which the unexploded bomb would have travelled.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Before explosion, the bomb moves under the influence of gravity alone.</p>\n<p>The external force acting on the bomb of mass M is $\\overrightarrow{\\mathrm{F}}_{\\text {ext }}=\\mathrm{M} \\overrightarrow{\\mathrm{g}}$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms05umj1%2F61b17079-ab1b-41f0-ac18-ef72fd6a2323%2F5787e3d0-880a-11f1-b617-2d120e2a8261%2Ffile-6y3zli1ms05umj2.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms05umj1%2F61b17079-ab1b-41f0-ac18-ef72fd6a2323%2F5787e3d0-880a-11f1-b617-2d120e2a8261%2Ffile-6y3zli1ms05umj2.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The explosion is caused by internal forces and internal forces do not change the total momentum of the system</p>\n<p>nor do they affect the acceleration of the centre of mass of the system.</p>\n<p>Using Newton's second law for a system of particles:</p>\n<p>$$\\vec{F}_{\\mathrm{ext}} = M\\,\\vec{a}_{\\mathrm{cm}}$$</p>\n<p>$$M\\vec{g} = M\\vec{a}_{\\mathrm{cm}} \\rightarrow \\vec{a}_{\\mathrm{cm}} = \\vec{g}$$</p>\n<p>Since the acceleration of the centre of mass remains equal to gravity $\\vec{g}$ both before and after the explosion, the</p>\n<p>trajectory of the centre of mass of the fragments continues along the original parabolic path.</p>\n<p>Thus, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>गुरुत्वाकर्षण के प्रभाव में परवलयाकार पथ पर गतिमान एक बम हवा में फट जाता है। इसके टुकड़ों का द्रव्यमान केंद्र :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>ऊर्ध्वाधर रूप से ऊपर की ओर और फिर नीचे की ओर गति करेगा</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>ऊर्ध्वाधर रूप से नीचे की ओर गति करेगा</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>अनियमित पथ में गति करेगा</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>उसी परवलयाकार पथ पर गति करेगा जिस पर बिना फटा हुआ बम गति करता।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "motion-of-center-of-mass",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms061vuo",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If a ball is thrown upwards from the surface of earth then initially (assuming that there is no external force on the system) :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>The earth remains stationary while the ball moves upwards</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>The ball remains stationary while the earth moves downwards</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>The ball and earth both move towards each other</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>The ball and earth both move away from each other</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Let the system be composed of ball and Earth.</p>\n<p>Total external force on the system $=0$</p>\n<p>Initially, before throwing, both the ball and Earth are at rest relative to their common Centre of mass, so initial linear momentum of the system is zero:</p>\n<p>$$ \\overrightarrow{\\mathrm{P}}_{\\text {initial }}=0 $$</p>\n<p>Since $\\overrightarrow{\\mathrm{F}}_{\\mathrm{ext}}=0$, total linear momentum of the system must be conserved:</p>\n<p>$$ \\overrightarrow{\\mathrm{P}}_{\\text {final }}=\\overrightarrow{\\mathrm{P}}_{\\text {initial }}=0 $$</p>\n<p>Let $m$ be mass of ball, $M$ be mass of Earth, $\\vec{v}_b$ be initial velocity of ball, and $\\vec{v}_e$ be initial velocity of Earth.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms060iy9%2F224f61ba-b935-4c57-99e1-52c370c433f3%2Ffb9f5610-880a-11f1-b617-2d120e2a8261%2Ffile-6y3zli1ms060iya.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms060iy9%2F224f61ba-b935-4c57-99e1-52c370c433f3%2Ffb9f5610-880a-11f1-b617-2d120e2a8261%2Ffile-6y3zli1ms060iya.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>$$m\\vec{v}_b + M\\vec{v}_e = 0$$</p>\n<p>$$\\vec{v}_e = -\\left(\\frac{m}{M}\\right) \\vec{v}_b$$</p>\n<p>When the ball is thrown upwards ($+\\hat{j}$ direction, $\\vec{v}_b > 0$), the negative sign indicates that Earth must move in the opposite direction (downwards, $-\\hat{j}$ direction).</p>\n<p>Therefore, as the ball moves upwards away from Earth, Earth moves downwards away from the ball. Both bodies move away from each other.</p>\n<p>Thus, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि एक गेंद को पृथ्वी की सतह से ऊपर की ओर फेंका जाता है, तो प्रारंभ में (यह मानते हुए कि निकाय पर कोई बाह्य बल नहीं है) :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>पृथ्वी स्थिर रहती है जबकि गेंद ऊपर की ओर जाती है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>गेंद स्थिर रहती है जबकि पृथ्वी नीचे की ओर जाती है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>गेंद और पृथ्वी दोनों एक दूसरे की ओर जाते हैं</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>गेंद और पृथ्वी दोनों एक दूसरे से दूर जाते हैं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "motion-of-center-of-mass",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4l1lhg",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle of mass m is made to move with uniform speed $v_0$ along the perimeter of a regular hexagon, inscribed in a circle of radius R. The magnitude of impulse applied at each corner of the hexagon is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2mv_0 \\sin \\frac{\\pi}{6}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$mv_0 \\sin \\frac{\\pi}{6}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$mv_0 \\sin \\frac{\\pi}{3}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$2mv_0 \\sin \\frac{\\pi}{3}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>A regular hexagon has 6 equal sides. The interior angle of a regular hexagon is given by :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4kzabw%2F9be0a088-5a05-4e37-8ccc-71f6d704fbab%2Fa4b044c0-8a78-11f1-9e3b-93541029ea8f%2Ffile-6y3zli1ms4kzabx.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4kzabw%2F9be0a088-5a05-4e37-8ccc-71f6d704fbab%2Fa4b044c0-8a78-11f1-9e3b-93541029ea8f%2Ffile-6y3zli1ms4kzabx.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>$$\\alpha = \\frac{(6-2)\\times 180^\\circ}{6} = \\frac{4\\times 180^\\circ}{6} = 120^\\circ$$</p>\n<p>The angle of deviation is $\\theta$, the angle through which the velocity vector changes direction at each corner.</p>\n<p>$$\\theta = 180^\\circ - 120^\\circ = 60^\\circ = \\frac{\\pi}{3}\\text{ radians}$$</p>\n<p>Let the particle approach a corner with velocity vector $\\vec{v}_1$ of magnitude $v_0$ and leave the corner with velocity vector $\\vec{v}_2$ of magnitude $v_0$.</p>\n<p>The magnitude of change in velocity $|\\Delta \\vec{v}|$ when a vector of constant magnitude $v_0$ changes direction by an angle $\\theta$ is,</p>\n<p>$$|\\Delta \\vec{v}| = |\\vec{v}_2 - \\vec{v}_1| = \\sqrt{v_1^2 + v_2^2 - 2v_1v_2\\cos\\theta}$$</p>\n<p>$$|\\Delta \\vec{v}| = \\sqrt{v_0^2 + v_0^2 - 2v_0^2\\cos\\theta} = \\sqrt{2v_0^2(1-\\cos\\theta)}$$</p>\n<p>Using trigonometric identity $1 - \\cos\\theta = 2\\sin^2\\left(\\frac{\\theta}{2}\\right)$:</p>\n\n<p>$$|\\Delta \\vec{v}| = \\sqrt{2v_0^2\\left(2\\sin^2\\left(\\frac{\\theta}{2}\\right)\\right)} = \\sqrt{4v_0^2\\sin^2\\left(\\frac{\\theta}{2}\\right)} = 2v_0\\sin\\left(\\frac{\\theta}{2}\\right)$$</p>\n<p>Impulse (J) is equal to the magnitude of change in momentum:</p>\n<p>$$J = |\\Delta \\vec{p}| = m|\\Delta \\vec{v}| = 2mv_0\\sin\\left(\\frac{\\theta}{2}\\right)$$</p>\n<p>$$J = 2mv_0\\sin\\left(\\frac{\\pi/3}{2}\\right) = 2mv_0\\sin\\left(\\frac{\\pi}{6}\\right)$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>m द्रव्यमान के एक कण को R त्रिज्या के वृत्त के अंतर्गत बने एक सम षट्भुज के परिमाप के अनुदिश एकसमान चाल $v_0$ से गति करायी जाती है। षट्भुज के प्रत्येक कोने पर आरोपित आवेग का परिमाण है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2mv_0 \\sin \\frac{\\pi}{6}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$mv_0 \\sin \\frac{\\pi}{6}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$mv_0 \\sin \\frac{\\pi}{3}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$2mv_0 \\sin \\frac{\\pi}{3}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "impulse-momentum-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms8igwbt",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>An inclined plane makes an angle $\\alpha$ with the horizontal. A ball falls from a height $h$ onto this inclined plane. The collision between the ball and the plane is completely elastic. The ratio of the distances between the points at which the ball strikes the inclined plane is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 : 3 : 5: ...</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1 : 2 : 3 : ...</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{1} : \\sqrt{3} : \\sqrt{5}: ....$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{1} : \\sqrt{2} : \\sqrt{3} : ....$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Using the second equation of motion for vertical free fall, when a ball is dropped from a height $h$ under gravity $g$.</p>\n<p>$$v^2 = u^2 + 2gh$$</p>\n<p>Since initial velocity $u = 0$:</p>\n<p>$$v = \\sqrt{2gh}$$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms8i69ub%2F238294d8-454a-43d5-98f5-f419226dc3d1%2Fce2f7a30-8ca0-11f1-8526-d164870bfd2e%2Ffile-6y3zli1ms8i69uc.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms8i69ub%2F238294d8-454a-43d5-98f5-f419226dc3d1%2Fce2f7a30-8ca0-11f1-8526-d164870bfd2e%2Ffile-6y3zli1ms8i69uc.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The ball hits the inclined plane at an angle $\\alpha$ with the horizontal.</p>\n<p>The acceleration components along these axes are, $\\mathrm{a}_{\\mathrm{x}}=\\mathrm{g} \\sin \\alpha, \\mathrm{a}_{\\mathrm{y}}=-\\mathrm{g} \\cos \\alpha$</p>\n<p>Just before the elastic collision, the ball strikes the plane at an angle $\\alpha$ relative to the normal of the plane (y-axis).</p>\n<p>Velocity component parallel to the incline is $\\mathrm{u}_{\\mathrm{x}}=\\mathrm{v} \\sin \\alpha$</p>\n<p>Velocity component perpendicular to the incline is $\\mathrm{u}_{\\mathrm{y}}=\\mathrm{v} \\cos \\alpha$</p>\n<p>Since the collision with the plane is elastic, coefficient of restitution is $\\mathrm{e}=1$.</p>\n<p>The component of velocity parallel to the surface remains unchanged $\\mathrm{v}_{\\mathrm{x} 0}=\\mathrm{u}_{\\mathrm{x}}=\\mathrm{v} \\sin \\alpha$</p>\n<p>The component of velocity perpendicular to the surface reverses its direction and the magnitude remains same as the inclined surface is massive with relative to ball, $\\mathrm{v}_{\\mathrm{y} 0}=\\mathrm{u}_{\\mathrm{y}}=\\mathrm{v} \\cos \\alpha$</p>\n<p>For any projectile motion on the inclined plane, the time of flight T is determined by the motion perpendicular to the plane (y-axis). Using the equation of motion along the y -axis :</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms8iakyd%2F758793cd-ca32-4a2c-900c-7ede0c024be7%2F46019c50-8ca1-11f1-8526-d164870bfd2e%2Ffile-6y3zli1ms8iakye.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms8iakyd%2F758793cd-ca32-4a2c-900c-7ede0c024be7%2F46019c50-8ca1-11f1-8526-d164870bfd2e%2Ffile-6y3zli1ms8iakye.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$\\mathrm{y}(\\mathrm{t})=\\mathrm{v}_{\\mathrm{y} 0} \\mathrm{t}+\\frac{1}{2} \\mathrm{a}_{\\mathrm{y}} \\mathrm{t}^2$</p>\n<p>At the end of a bounce, $y(T)=0$:</p>\n<p>$0=\\mathrm{v}_{\\mathrm{y} 0} \\mathrm{~T}-\\frac{1}{2}(\\mathrm{~g} \\cos \\alpha) \\mathrm{T}^2$</p>\n<p>$$T=\\frac{2v_{y0}}{g\\cos\\alpha}=\\frac{2(v\\cos\\alpha)}{g\\cos\\alpha}=\\frac{2v}{g}$$</p>\n<p>Since the collision is perfectly elastic, the perpendicular velocity component $v_{y0}=v\\cos\\alpha$ remains constant for every bounce.</p>\n<p>Therefore, the time interval between every consecutive bounce is same $T_1=T_2=T_3=\\cdots=T=\\frac{2v}{g}$</p>\n<p>$$T=\\frac{2v}{g} \\Rightarrow v=\\frac{gT}{2} \\ldots (i)$$</p>\n<p>Let $d_n$ be the distance travelled along the inclined plane during the $n^{\\text{th}}$ bounce.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms8idsaw%2F19a47e84-e464-49ac-a4d8-a8f1ac91e1ad%2F9f1c4790-8ca1-11f1-8526-d164870bfd2e%2Ffile-6y3zli1ms8idsax.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms8idsaw%2F19a47e84-e464-49ac-a4d8-a8f1ac91e1ad%2F9f1c4790-8ca1-11f1-8526-d164870bfd2e%2Ffile-6y3zli1ms8idsax.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>For 1st distance along the incline $\\left(\\mathrm{d}_1\\right)$ :</p>\n<p>The initial velocity along the incline at the start of the first bounce is $\\mathrm{v}_{\\mathrm{x} 0}=\\mathrm{v} \\sin \\alpha$.</p>\n<p>Using $\\mathrm{x}(\\mathrm{t})=\\mathrm{v}_{\\mathrm{x} 0} \\mathrm{t}+\\frac{1}{2} \\mathrm{a}_{\\mathrm{x}} \\mathrm{t}^2$ :</p>\n<p>$$ \\mathrm{d}_1=(\\mathrm{v} \\sin \\alpha) \\mathrm{T}+\\frac{1}{2}(\\mathrm{~g} \\sin \\alpha) \\mathrm{T}^2 $$</p>\n\n<p>Substituting $v = \\frac{gT}{2}$ from equation (i):</p>\n<p>$$d_1 = \\left[\\left(\\frac{gT}{2}\\right) \\sin \\alpha\\right] T + \\frac{1}{2} (g \\sin \\alpha) T^2$$</p>\n<p>$$d_1 = \\left(\\frac{1}{2} g T \\sin \\alpha\\right) T + \\frac{1}{2} g T^2 \\sin \\alpha = g T^2 \\sin \\alpha$$</p>\n<p>For 2nd distance along the incline ($d_2$):</p>\n<p>At the end of the 1st bounce, the velocity component along the incline becomes:</p>\n<p>$$v_{x1} = v_{x0} + a_x T = \\left(\\frac{1}{2} g T \\sin \\alpha\\right) + (g \\sin \\alpha) T = \\frac{3}{2} g T \\sin \\alpha$$</p>\n<p>So, the distance travelled along the inclined plane in the 2nd bounce is;</p>\n<p>$$d_2 = v_{x1} T + \\frac{1}{2} a_x T^2 = \\left(\\frac{3}{2} g T \\sin \\alpha\\right) T + \\frac{1}{2} (g \\sin \\alpha) T^2 = 2 g T^2 \\sin \\alpha$$</p>\n<p>For 3rd distance along the incline ($d_3$):</p>\n<p>At the end of the 2nd bounce $v_{x2} = v_{x1} + a_x T = \\frac{3}{2} g T \\sin \\alpha + g T \\sin \\alpha = \\frac{5}{2} g T \\sin \\alpha$</p>\n<p>So, the distance travelled along the inclined plane in the 3rd bounce is;</p>\n<p>$$d_3 = v_{x2} T + \\frac{1}{2} a_x T^2 = \\left(\\frac{5}{2} g T \\sin \\alpha\\right) T + \\frac{1}{2} (g \\sin \\alpha) T^2 = 3 g T^2 \\sin \\alpha$$</p>\n<p>Hence, the ratio of the consecutive distances travelled along the inclined plane is,</p>\n<p>$$d_1 : d_2 : d_3 : \\ldots = (g T^2 \\sin \\alpha) : (2 g T^2 \\sin \\alpha) : (3 g T^2 \\sin \\alpha) : \\ldots$$</p>\n<p>$$d_1 : d_2 : d_3 : \\ldots = 1 : 2 : 3 : \\ldots$$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक नत समतल क्षैतिज के साथ $\\alpha$ कोण बनाता है। एक गेंद $h$ ऊँचाई से इस नत समतल पर गिरती है। गेंद और समतल के बीच टक्कर पूर्णतः प्रत्यास्थ है। उन बिंदुओं के बीच की दूरियों का अनुपात, जिन पर गेंद नत समतल से टकराती है, होगा</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 : 3 : 5: ...</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1 : 2 : 3 : ...</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{1} : \\sqrt{3} : \\sqrt{5}: ....$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{1} : \\sqrt{2} : \\sqrt{3} : ....$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4lvye4",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A body of mass 1 kg strikes elastically with another body at rest and continues to move in the same direction with one-fourth of its initial velocity. The mass of the other body is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.6 kg</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2.4 kg</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3 kg</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>4 kg</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The mass of the first body is $\\mathrm{m}_1=1 \\mathrm{~kg}$ and it is moving with initial velocity $\\mathrm{u}_1$ </p>\n<p>Let mass of the second body $=\\mathrm{m}_2$ which is initially at rest, $\\mathrm{u}_2=0$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4lqotu%2F4e6b7c13-c6af-4ad7-89a8-30b8e16b19f2%2F9ebc3120-8a7b-11f1-9e3b-93541029ea8f%2Ffile-6y3zli1ms4lqotv.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4lqotu%2F4e6b7c13-c6af-4ad7-89a8-30b8e16b19f2%2F9ebc3120-8a7b-11f1-9e3b-93541029ea8f%2Ffile-6y3zli1ms4lqotv.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>After collision, the first body moves in the same direction with one-fourth of its initial velocity:</p>\n<p>$$v_1 = \\frac{1}{4}u_1 = \\frac{u_1}{4}$$</p>\n<p>For one dimensional elastic collision ($e = 1$)</p>\n<p>Using conservation of linear momentum during collision,</p>\n<p>$$m_1u_1 + m_2u_2 = m_1v_1 + m_2v_2$$</p>\n<p>$$m_1u_1 = m_1v_1 + m_2v_2 \\Rightarrow m_2v_2 = m_1(u_1 - v_1)\\ldots (i)$$</p>\n<p>Collision is elastic, so the coefficient of restitution is 1, $e = 1$</p>\n<p>$$e = \\frac{v_2 - v_1}{u_1 - u_2} = 1$$</p>\n<p>$$v_2 - v_1 = u_1 \\Rightarrow v_2 = u_1 + v_1\\ldots (ii)$$</p>\n<p>Substituting equation (ii) into equation (i):</p>\n\n<p>$$m_2 (u_1 + v_1) = m_1 (u_1 - v_1)$$</p>\n<p>$$m_2u_1 + m_2v_1 = m_1u_1 - m_1v_1$$</p>\n<p>$$ (m_1 + m_2)v_1 = (m_1 - m_2)u_1 $$</p>\n<p>Substituting $m_1 = 1\text{ kg}$ and $v_1 = \\frac{u_1}{4}$:</p>\n<p>$$ (1 + m_2)\\frac{u_1}{4} = (1 - m_2)u_1 $$</p>\n<p>$$1 + m_2 = 4 - 4m_2$$</p>\n<p>$$m_2 + 4m_2 = 4 - 1$$</p>\n<p>$$5m_2 = 3$$</p>\n<p>$$m_2 = \\frac{3}{5} = 0.6\\text{ kg}$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>1 kg द्रव्यमान का एक पिंड विरामावस्था में स्थित एक अन्य पिंड से प्रत्यास्थ रूप से टकराता है और अपने प्रारंभिक वेग के एक-चौथाई वेग से उसी दिशा में गति करना जारी रखता है। दूसरे पिंड का द्रव्यमान है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.6 kg</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2.4 kg</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3 kg</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>4 kg</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4lzcvz",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A solid iron ball A of radius <b>r</b> collides head on with another stationary solid iron ball B of radius <b>2r</b>. The ratio of their speeds just after the collision (<b>e = 0.5</b>) is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>3</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>4</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Both balls are made of the same material (solid iron), so they have the same density $\\rho$.</p>\n<p>The volume of a sphere of radius $R$ is</p>\n<p>$$V = \\frac{4}{3}\\pi R^3$$</p>\n<p>Therefore, mass $m = \\rho V = \\rho\\left(\\frac{4}{3}\\pi R^3\\right) \\propto R^3$.</p>\n<p>Radius of ball A, $r_A = r \\Rightarrow m_A = m$</p>\n<p>Radius of ball B, $r_B = 2r \\Rightarrow m_B = \\rho\\left(\\frac{4}{3}\\pi (2r)^3\\right) = 8\\left[\\rho\\left(\\frac{4}{3}\\pi r^3\\right)\\right] = 8m$</p>\n<p>Let initial velocity of ball A is $u_1 = u$ and initial velocity of ball B is $u_2 = 0$ (stationary)</p>\n<p>Coefficient of restitution, $e = 0.5 = \\frac{1}{2}$</p>\n<p>Let $v_1$ and $v_2$ be the velocities of ball A and ball B after collision, respectively.</p>\n<p>Using conservation of linear momentum:</p>\n<p>$$m_Au_1 + m_Bu_2 = m_Av_1 + m_Bv_2$$</p>\n<p>$$mu + 0 = mv_1 + 8mv_2 \\Rightarrow u = v_1 + 8v_2 \\ldots (i)$$</p>\n<p>For the collision coefficient of restitution is $e = \\frac{1}{2}$,</p>\n<p>$$e = \\frac{v_2 - v_1}{u_1 - u_2}$$</p>\n<p>$$\\frac{1}{2} = \\frac{v_2 - v_1}{u - 0} \\Rightarrow v_2 - v_1 = \\frac{u}{2} \\Rightarrow u = 2(v_2 - v_1) \\ldots (ii)$$</p>\n<p>From both the equations,</p>\n<p>$$v_1 + 8v_2 = 2v_2 - 2v_1$$</p>\n<p>$$v_1 + 2v_1 = 2v_2 - 8v_2$$</p>\n<p>$$3v_1 = -6v_2$$</p>\n<p>$$v_1 = -2v_2$$</p>\n<p>The negative sign shows that ball A rebounds in the opposite direction after collision.</p>\n<p>Speed of ball A, $|v_1| = 2v_2$</p>\n<p>Speed of ball B, $|v_2| = v_2$</p>\n<p>The ratio of their speeds just after the collision is:</p>\n<p>$$\\frac{|v_1|}{|v_2|} = \\frac{2v_2}{v_2} = 2$$</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>त्रिज्या <b>r</b> वाली एक ठोस लोहे की गेंद A, त्रिज्या <b>2r</b> वाली एक अन्य स्थिर ठोस लोहे की गेंद B से सम्मुख (head-on) टकराती है। टक्कर के ठीक बाद उनकी चालों का अनुपात (<b>e = 0.5</b>) है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>3</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>4</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms0k7470",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Find distance of centre of mass of section of a circular plate of uniform density as shown in the figure from O.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms0jx0fc%2Fe72a4a3e-3576-4aa8-bd54-1950881c6c9d%2F59b14e80-8841-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0jx0fd.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms0jx0fc%2Fe72a4a3e-3576-4aa8-bd54-1950881c6c9d%2F59b14e80-8841-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0jx0fd.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{14R}{3\\pi} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{14R}{5\\pi} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{6R}{\\pi} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{8R}{3\\pi} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For a uniform circular sector of radius r subtending a total angle $2 \\alpha$ symmetric about the x -axis, the position of its centre of mass from the origin O along the line of symmetry is given by :</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms0jz4yc%2F7d62f75d-b841-41b4-8bb6-e2871837d3eb%2F94cef940-8841-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0jz4yd.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms0jz4yc%2F7d62f75d-b841-41b4-8bb6-e2871837d3eb%2F94cef940-8841-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0jz4yd.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$r_{cm} = \\frac{2r \\sin \\alpha}{3\\alpha}$$</p>\n<p>Here subtended angle $2\\alpha = 60^\\circ = \\frac{\\pi}{3}\\ \\text{rad} \\Rightarrow \\alpha = 30^\\circ = \\frac{\\pi}{6}\\ \\text{rad}$</p>\n<p>Substituting the values,</p>\n<p>$$r_{cm}(r) = \\frac{2r \\sin\\left(\\frac{\\pi}{6}\\right)}{3\\left(\\frac{\\pi}{6}\\right)} = \\frac{2r\\left(\\frac{1}{2}\\right)}{\\pi/2} = \\frac{2r}{\\pi}$$</p>\n<p>Thus, for any circular sector of angle $60^\\circ$:</p>\n<p>A sector of radius $2R$ has its centre of mass at $x_1 = \\frac{2(2R)}{\\pi} = \\frac{4R}{\\pi}$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms0k0z39%2F456a5fc2-b43f-4877-aa92-b05517f5bd1a%2Fc7e5bd50-8841-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0k0z3a.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms0k0z39%2F456a5fc2-b43f-4877-aa92-b05517f5bd1a%2Fc7e5bd50-8841-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0k0z3a.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>A sector of radius $R$ has its centre of mass at $x_2=\\frac{2 R}{\\pi}$.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms0k3o83%2Ff2a015ca-07c2-44fa-8920-7b73b4da000c%2F12ee6b30-8842-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0k3o84.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms0k3o83%2Ff2a015ca-07c2-44fa-8920-7b73b4da000c%2F12ee6b30-8842-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0k3o84.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Area of sector of radius $2R$ is $A_1 = \\frac{1}{2}(2R)^2(2\\alpha) = \\frac{1}{2}(4R^2)\\left(\\frac{\\pi}{3}\\right) = \\frac{2\\pi R^2}{3}$</p>\n<p>Let the surface mass density of the uniform plate be $\\sigma$.</p>\n<p>Then the mass of large sector is $m_1 = \\sigma A_1 = \\frac{2\\pi \\sigma R^2}{3}$</p>\n<p>Area of removed sector of radius $R$ is $A_2 = \\frac{1}{2}(R)^2(2\\alpha) = \\frac{1}{2}(R^2)\\left(\\frac{\\pi}{3}\\right) = \\frac{\\pi R^2}{6}$</p>\n<p>Let the surface mass density of removed uniform plate be $-\\sigma$.</p>\n<p>Then the mass of removed sector is $m_2 = -\\sigma A_2 = -\\frac{\\pi \\sigma R^2}{6}$</p>\n<p>Using the Centre of mass formula,</p>\n<p>$$x_{\\mathrm{cm}} = \\frac{m_1 x_1 + m_2 x_2}{m_1 + m_2}$$</p>\n<p>$$x_{\\mathrm{cm}} = \\frac{\\left(\\frac{2\\pi \\sigma R^2}{3}\\right)\\left(\\frac{4R}{\\pi}\\right) + \\left(-\\frac{\\pi \\sigma R^2}{6}\\right)\\left(\\frac{2R}{\\pi}\\right)}{\\left(\\frac{2\\pi \\sigma R^2}{3}\\right) + \\left(-\\frac{\\pi \\sigma R^2}{6}\\right)}$$</p>\n<p>$$x_{\\mathrm{cm}} = \\frac{\\left(\\frac{2}{3}\\right)\\left(\\frac{4R}{\\pi}\\right) - \\frac{1}{6}\\left(\\frac{2R}{\\pi}\\right)}{\\left(\\frac{2}{3}\\right) - \\frac{1}{6}} = \\frac{\\left(\\frac{7R}{3\\pi}\\right)}{\\frac{1}{2}}$$</p>\n<p>$$x_{\\mathrm{cm}} = \\frac{14R}{3\\pi}$$</p>\n<p>Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दर्शाए गए एकसमान घनत्व वाली वृत्ताकार प्लेट के भाग के द्रव्यमान केंद्र की O से दूरी ज्ञात कीजिए।</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms0jx0fc%2Fe72a4a3e-3576-4aa8-bd54-1950881c6c9d%2F59b14e80-8841-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0jx0fd.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms0jx0fc%2Fe72a4a3e-3576-4aa8-bd54-1950881c6c9d%2F59b14e80-8841-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0jx0fd.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{14R}{3\\pi} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{14R}{5\\pi} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{6R}{\\pi} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{8R}{3\\pi} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "cavity-problems",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms064zm1",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Internal forces in a system can change</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>Linear momentum only</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>Kinetic energy only</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>Both kinetic energy and linear momentum</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>Neither the linear momentum nor the kinetic energy of the system.</b></p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Using Newton's third law, internal forces always occur in equal and opposite pairs $\\overrightarrow{\\mathrm{F}}_{12}=-\\overrightarrow{\\mathrm{F}}_{21}$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms063uc1%2Fd665f5e1-10b5-4280-a894-a56ceed00773%2F57d7bc10-880b-11f1-b617-2d120e2a8261%2Ffile-6y3zli1ms063uc2.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms063uc1%2Fd665f5e1-10b5-4280-a894-a56ceed00773%2F57d7bc10-880b-11f1-b617-2d120e2a8261%2Ffile-6y3zli1ms063uc2.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The rate of change of total linear momentum ($\\vec{P}$) of a system depends only on the net external force,</p>\n<p>$$\\frac{d\\vec{P}}{dt} = \\vec{F}_{\\text{ext}}$$</p>\n<p>Since net internal force is zero ($\\sum \\vec{F}_{\\text{internal}} = 0$), they cannot change the total linear momentum of a system.</p>\n<p>The total work done by internal forces is $W_{\\text{internal}} = \\sum \\vec{F}_{\\text{internal}} \\cdot d\\vec{r}$</p>\n<p>Although internal forces are equal and opposite, the relative displacement of the points of application of these forces is not zero ($d\\vec{r}_1 \\neq d\\vec{r}_2$).</p>\n<p>Using the work-energy theorem, the work done by net force on a system is equal to change in kinetic energy;</p>\n<p>$$W_{\\text{external}} + W_{\\text{internal}} = \\Delta K$$</p>\n<p>Even when $W_{\\text{external}} = 0$, $W_{\\text{internal}}$ can be non-zero. For example, during explosions, collisions, or deformation.</p>\n<p>Therefore, internal forces can change kinetic energy only, but cannot change linear momentum. Thus, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>किसी निकाय में आंतरिक बल परिवर्तित कर सकते हैं</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>केवल रैखिक संवेग</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>केवल गतिज ऊर्जा</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>गतिज ऊर्जा और रैखिक संवेग दोनों</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>निकाय का न तो रैखिक संवेग और न ही गतिज ऊर्जा।</b></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "motion-of-center-of-mass",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms0677r6",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two balls of different masses are thrown in air with different velocities. While they are in air acceleration of centre of mass of the system. (Neglect air resistance)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>Depends on the direction of the motion of two balls</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>Depends on the masses of the two balls</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>Depends on the magnitude of velocities of the two balls</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>Is equal to g</b></p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Let the two balls have masses $m_1$ and $m_2$.</p>\n<p>When both balls are in air under gravity (neglecting air resistance) the acceleration of mass $m_1$ is</p>\n<p>$\\vec{a}_1 = \\vec{g}$ (downwards) and acceleration of mass $m_2$ is $\\vec{a}_2 = \\vec{g}$ (downwards)</p>\n<p>So, the acceleration of the centre of mass of a two-body system is:</p>\n<p>$$\\vec{a}_{\\mathrm{cm}} = \\frac{m_1\\,\\vec{a}_1 + m_2\\,\\vec{a}_2}{m_1 + m_2}$$</p>\n<p>$$\\vec{a}_{\\mathrm{cm}} = \\frac{m_1\\,\\vec{g} + m_2\\,\\vec{g}}{m_1 + m_2}$$</p>\n<p>$$\\vec{a}_{\\mathrm{cm}} = \\frac{(m_1 + m_2)\\vec{g}}{m_1 + m_2}$$</p>\n<p>$$\\vec{a}_{\\mathrm{cm}} = \\vec{g}$$</p>\n<p>The magnitude of the acceleration of the centre of mass is $g$, vertically downwards. It is independent of initial velocities of the balls, direction of motion of the balls, individual values of masses $m_1$ and $m_2$. Thus, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>भिन्न द्रव्यमानों की दो गेंदों को भिन्न वेगों के साथ हवा में फेंका जाता है। जब वे हवा में होती हैं, तो निकाय के द्रव्यमान केंद्र का त्वरण क्या होगा? (वायु प्रतिरोध को नगण्य मानें)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>दोनों गेंदों की गति की दिशा पर निर्भर करता है</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>दोनों गेंदों के द्रव्यमानों पर निर्भर करता है</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>दोनों गेंदों के वेगों के परिमाण पर निर्भर करता है</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>g के बराबर होता है</b></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "motion-of-center-of-mass",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrxutp6y",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Pull down in the middle a heavy chain, fixed at both ends, in such a way that it forms a triangle. Does the centre of mass takes up a higher or lower position?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrxuq4l9%2F619066f5-2542-4a3d-8c19-3248557cc563%2F44b7c6d0-86c5-11f1-a97f-8f9204706230%2Ffile-6y3zli1mrxuq4la.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrxuq4l9%2F619066f5-2542-4a3d-8c19-3248557cc563%2F44b7c6d0-86c5-11f1-a97f-8f9204706230%2Ffile-6y3zli1mrxuq4la.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>Centre of mass comes down</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>Centre of mass goes up</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>Centre of mass remains stationary</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>Cannot be predicted</b></p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>A system in stable equilibrium under gravity naturally minimizes its total potential energy. The total gravitational potential energy $U$ of a continuous uniform mass distribution is given by $U=M g y_{\\mathrm{cm}}$, where $M$ is the total mass, g is the acceleration due to gravity, and $\\mathrm{y}_{\\mathrm{cm}}$ is the vertical position of the centre of mass.</p>\n<p>For $U$ to be at a minimum, the height $\\mathrm{y}_{\\mathrm{cm}}$ of the centre of mass must be at its lowest possible level.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrxusih1%2F032b3776-5506-499b-80b7-3dab1963bad0%2F870f6b50-86c5-11f1-a97f-8f9204706230%2Ffile-6y3zli1mrxusih2.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrxusih1%2F032b3776-5506-499b-80b7-3dab1963bad0%2F870f6b50-86c5-11f1-a97f-8f9204706230%2Ffile-6y3zli1mrxusih2.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>When an external force pulls down on the middle of the chain to deform it into a rigid triangle, the chain is forced out of its equilibrium shape.</p>\n<p>Because the initial state is the unique configuration by gravitational pull that minimizes the height of the centre of mass for a given chain length and suspension points, any deviation from this shape must result in a state with higher total potential energy.</p>\n<p>Since any configuration other than the equilibrium possesses a higher potential energy, forcing the chain into a triangular configuration raises its potential energy. Therefore, the vertical position of the centre of mass must increase:</p>\n<p>$$ \\mathrm{U}_{\\text {triangle }}>\\mathrm{U}_{\\text {initial }} \\Rightarrow \\mathrm{y}_{\\text {cm,triangle }}>\\mathrm{y}_{\\text {cm,initial }} $$</p>\n<p>Thus, the centre of mass goes up. Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दोनों सिरों पर बंधी हुई एक भारी जंजीर को मध्य से नीचे की ओर इस प्रकार खींचें कि यह एक त्रिभुज का आकार ले ले। क्या द्रव्यमान केंद्र उच्च या निम्न स्थिति ग्रहण करता है?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrxuq4l9%2F619066f5-2542-4a3d-8c19-3248557cc563%2F44b7c6d0-86c5-11f1-a97f-8f9204706230%2Ffile-6y3zli1mrxuq4la.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrxuq4l9%2F619066f5-2542-4a3d-8c19-3248557cc563%2F44b7c6d0-86c5-11f1-a97f-8f9204706230%2Ffile-6y3zli1mrxuq4la.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>द्रव्यमान केंद्र नीचे आता है</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>द्रव्यमान केंद्र ऊपर जाता है</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>द्रव्यमान केंद्र स्थिर रहता है</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>पूर्वानुमान नहीं लगाया जा सकता</b></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-continuous-mass-distribution",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4hx8wo",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A bullet of mass $m$ moving vertically upwards instantaneously with a velocity '$u$' hits the hanging block of mass '$m$' and gets embedded in it, as shown in the figure. The height through which the block rises after the collision. (Assume sufficient space above block) is :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4hqrxh%2Fa4fffd02-21e4-46c3-9b39-6d3949d53143%2Ffc9d3150-8a6b-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4hqrxi.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4hqrxh%2Fa4fffd02-21e4-46c3-9b39-6d3949d53143%2Ffc9d3150-8a6b-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4hqrxi.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{u^2}{2g}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{u^2}{8g}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{u^2}{4g}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{u^2}{8g}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The mass of the bullet is $\\mathrm{m}_1=\\mathrm{m}$</p>\n<p>Initial velocity of bullet, $\\mathrm{u}_1=\\mathrm{u}$ (moving vertically upwards)</p>\n<p>The mass of the hanging block, $\\mathrm{m}_2=\\mathrm{m}$</p>\n<p>Initial velocity of block, $\\mathrm{u}_2=0$ (initially at rest)</p>\n<p>When the bullet hits the block and gets embedded in it, the collision is completely inelastic $(\\mathrm{e}=0)$.</p>\n<p>Since the impact occurs over an infinitesimally small time interval, external forces like gravity exert negligible impulse during the collision. Thus, linear momentum in the vertical direction is conserved immediately before and after the collision.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4huxbb%2Fdd93af3c-15ec-471b-b46d-2818e5433a2f%2F70028370-8a6c-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4huxbc.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4huxbb%2Fdd93af3c-15ec-471b-b46d-2818e5433a2f%2F70028370-8a6c-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4huxbc.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Let V be the common velocity of the combined system (bullet + block) immediately after the impact.</p>\n<p>Initial vertical momentum = Final vertical momentum</p>\n<p>$$ \\mathrm{m}_1 \\mathrm{u}_1+\\mathrm{m}_2 \\mathrm{u}_2=\\left(\\mathrm{m}_1+\\mathrm{m}_2\\right) \\mathrm{V} $$</p>\n\n<p>$$\\Rightarrow mu + m(0) = (m + m)V$$</p>\n<p>$$\\Rightarrow mu = 2mV \\Rightarrow V = \\frac{u}{2}$$</p>\n<p>After the collision, the combined mass $M = 2m$ moves upwards under gravity.</p>\n<p>Taking the collision point as the reference level $(h = 0)$:</p>\n<p>Initial kinetic energy $(K_i)$ just after collision is,</p>\n<p>$$K_i = \\frac{1}{2}MV^2 = \\frac{1}{2}(2m)\\left(\\frac{u}{2}\\right)^2 = m\\left(\\frac{u^2}{4}\\right)$$</p>\n<p>Final potential energy $(U_f)$ at the maximum height $h$ is,</p>\n<p>$$U_f = Mgh = (2m)gh$$</p>\n<p>At the highest point, kinetic energy becomes zero $(K_f = 0)$.</p>\n<p>By the law of conservation of mechanical energy:</p>\n<p>$$K_i = U_f$$</p>\n<p>$$m\\left(\\frac{u^2}{4}\\right) = 2mgh $$</p>\n<p>$$\\Rightarrow \\frac{u^2}{4} = 2gh$$</p>\n<p>$$\\Rightarrow h = \\frac{u^2}{8g}$$</p>\n<p>Therefore, after collision the block will rise to a height of $\\frac{u^2}{8g}$. Thus, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान $m$ की एक गोली जो वेग '$u$' से ऊर्ध्वाधर ऊपर की ओर गति कर रही है, चित्र में दर्शाए अनुसार द्रव्यमान '$m$' के एक लटके हुए ब्लॉक से टकराती है और उसमें धंस जाती है। संघट्ट के बाद ब्लॉक जिस ऊँचाई तक ऊपर उठता है, वह है (मान लीजिए कि ब्लॉक के ऊपर पर्याप्त स्थान है) :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4hqrxh%2Fa4fffd02-21e4-46c3-9b39-6d3949d53143%2Ffc9d3150-8a6b-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4hqrxi.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4hqrxh%2Fa4fffd02-21e4-46c3-9b39-6d3949d53143%2Ffc9d3150-8a6b-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4hqrxi.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{u^2}{2g}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{u^2}{8g}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{u^2}{4g}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{u^2}{8g}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "impulse-momentum-theorem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msc2jve0",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A small ball falling vertically downward with constant velocity 4 m/s strikes elastically a massive inclined cart moving with velocity 4 m/s horizontally as shown. The speed of the rebound of the ball is :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msc2g97n%2F4807bb3b-3906-45e3-a93d-5e0c7f9e7295%2F74525f30-8e96-11f1-87f9-e3a6b0c1b134%2Ffile-6y3zli1msc2g97o.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msc2g97n%2F4807bb3b-3906-45e3-a93d-5e0c7f9e7295%2F74525f30-8e96-11f1-87f9-e3a6b0c1b134%2Ffile-6y3zli1msc2g97o.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$4\\sqrt{2}$ m/s</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$4\\sqrt{3}$ m/s</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>4 m/s</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$4\\sqrt{5}$ m/s</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Initial velocity of the ball is $\\overrightarrow{\\mathrm{V}}_{\\mathrm{b}}=-4 \\hat{\\mathrm{\\jmath}} \\mathrm{~m} / \\mathrm{s}$ and the velocity of the cart is $\\overrightarrow{\\mathrm{V}}_{\\mathrm{c}}=4 \\hat{\\mathrm{l}} \\mathrm{m} / \\mathrm{s}$</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msc2ibzn%2Fbe667dd0-f055-4dc2-8537-e8bb29528a29%2Fae15f830-8e96-11f1-87f9-e3a6b0c1b134%2Ffile-6y3zli1msc2ibzo.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msc2ibzn%2Fbe667dd0-f055-4dc2-8537-e8bb29528a29%2Fae15f830-8e96-11f1-87f9-e3a6b0c1b134%2Ffile-6y3zli1msc2ibzo.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>In the frame of the moving cart, the cart is stationary. The relative velocity of the ball ($\\vec{u}_{\\mathrm{rel}}$) is:</p>\n<p>$$\\vec{u}_{\\mathrm{rel}} = \\vec{v}_b - \\vec{v}_c = -4\\hat{\\jmath} - 4\\hat{\\imath} = (-4\\hat{\\imath} - 4\\hat{\\jmath})\\ \\mathrm{m/s}$$</p>\n<p>The magnitude of this relative velocity is $u_{\\mathrm{rel}} = \\sqrt{(-4)^2 + (-4)^2} = 4\\sqrt{2}\\ \\mathrm{m/s}$.</p>\n<p>The direction of initial velocity vector is at an angle of $45^{\\circ}$ below the negative x-axis.</p>\n<p>The inclined surface of the cart makes an angle of $45^{\\circ}$ with the horizontal.</p>\n<p>So, the slope of the face being struck is $-1$ and the velocity vector $\\vec{u}_{\\mathrm{rel}}$ has a slope of $1$.</p>\n<p>Since the slopes are negative reciprocals ($1 \\times -1 = -1$), the ball strikes the surface normally.</p>\n<p>Because the collision is elastic and the cart is massive ($M \\gg m$), the ball simply rebounds with the same relative speed in the opposite direction:</p>\n<p>$$\\vec{v}_{\\mathrm{rel}}' = -\\vec{u}_{\\mathrm{rel}} = -(-4\\hat{\\imath} - 4\\hat{\\jmath}) = (4\\hat{\\imath} + 4\\hat{\\jmath})\\ \\mathrm{m/s}$$</p>\n<p>To find the actual rebound speed, we need to analyse the motion in ground frame:</p>\n<p>$$\\vec{v}_b' = \\vec{v}_{\\mathrm{rel}}' + \\vec{v}_c$$</p>\n<p>$$\\vec{v}_b' = (4\\hat{\\imath} + 4\\hat{\\jmath}) + 4\\hat{\\imath} = (8\\hat{\\imath} + 4\\hat{\\jmath})\\ \\mathrm{m/s}$$</p>\n<p>So, the speed is, $v' = \\sqrt{8^2 + 4^2} = \\sqrt{64 + 16} = \\sqrt{80} = 4\\sqrt{5}\\ \\mathrm{m/s}$</p>\n<p>Therefore, the speed of the rebound of the ball is $4\\sqrt{5}\\ \\mathrm{m/s}$. Hence, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "\n<p>4 m/s के नियत वेग से ऊर्ध्वाधर नीचे की ओर गिरती हुई एक छोटी गेंद, चित्रानुसार क्षैतिज दिशा में 4 m/s के वेग से गतिमान एक भारी आनत गाड़ी (cart) से प्रत्यास्थ रूप से टकराती है। गेंद के वापस उछलने (rebound) की चाल है :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msc2g97n%2F4807bb3b-3906-45e3-a93d-5e0c7f9e7295%2F74525f30-8e96-11f1-87f9-e3a6b0c1b134%2Ffile-6y3zli1msc2g97o.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msc2g97n%2F4807bb3b-3906-45e3-a93d-5e0c7f9e7295%2F74525f30-8e96-11f1-87f9-e3a6b0c1b134%2Ffile-6y3zli1msc2g97o.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$4\\sqrt{2}$ m/s</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$4\\sqrt{3}$ m/s</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>4 m/s</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$4\\sqrt{5}$ m/s</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms069mn3",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>There are two particles of same mass. If one of the particles is at rest always and the other has an acceleration $\\vec{a}$. Acceleration of centre of mass is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>zero</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{1}{2} \\vec{a}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\vec{a}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>centre of mass for such a system can not be defined.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let the mass of particle 1 is $m_1 = m$ and the mass of particle 2 is $m_2 = m$</p>\n<p>The acceleration of particle 1 (at rest always) is $\\vec{a}_1 = 0$</p>\n<p>The acceleration of particle 2 is $\\vec{a}_2 = \\vec{a}$</p>\n<p>The acceleration of the centre of mass for a two-particle system is,</p>\n<p>$$\\vec{a}_{\\mathrm{cm}} = \\frac{m_1\\vec{a}_1 + m_2\\vec{a}_2}{m_1 + m_2}$$</p>\n<p>Substituting the given values:</p>\n<p>$$\\vec{a}_{\\mathrm{cm}} = \\frac{m(0) + m(\\vec{a})}{m + m}$$</p>\n<p>$$\\vec{a}_{\\mathrm{cm}} = \\frac{m\\vec{a}}{2m}$$</p>\n<p>$$\\vec{a}_{\\mathrm{cm}} = \\frac{1}{2}\\vec{a}$$</p>\n<p>Therefore, the acceleration of Centre of mass is $\\frac{1}{2}\\vec{a}$. Thus, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>समान द्रव्यमान के दो कण हैं। यदि इनमें से एक कण हमेशा विरामावस्था में रहता है और दूसरे का त्वरण $\\vec{a}$ है। द्रव्यमान केंद्र का त्वरण है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>शून्य</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{1}{2} \\vec{a}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\vec{a}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>ऐसे निकाय के लिए द्रव्यमान केंद्र को परिभाषित नहीं किया जा सकता है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "motion-of-center-of-mass",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4p20xy",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A sphere of mass m moving with a constant velocity hits another stationary sphere of the same mass. If $e$ is the coefficient of restitution, then ratio of speed of the first sphere to the speed of the second sphere after collision will be</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\left(\\frac{1-e}{1+e}\\right)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\left(\\frac{1+e}{1-e}\\right)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\left(\\frac{e+1}{e-1}\\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\left(\\frac{e-1}{e+1}\\right)$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The mass of the spheres $m_1 = m$ and moving with initial velocity $u_1 = u$</p>\n<p>The mass of the second sphere is $m_2 = m$ and moving with initial velocity $u_2 = 0$</p>\n<p>Let $v_1$ and $v_2$ be the velocities of the first and second spheres after the collision, respectively.</p>\n<p>Since no external horizontal forces act on the system during collision:</p>\n<p>Initial momentum = Final momentum</p>\n<p>$$m_1u_1 + m_2u_2 = m_1v_1 + m_2v_2$$</p>\n<p>$$mu + 0 = mv_1 + mv_2$$</p>\n<p>$$u = v_1 + v_2 \text{ ... (i)}$$</p>\n<p>The coefficient of restitution is $e$.</p>\n<p>$$e = \\frac{\\text{Relative velocity of separation}}{\\text{Relative velocity of approach}} = \\frac{v_2 - v_1}{u_1 - u_2}$$</p>\n<p>Substituting $u_1 = u$ and $u_2 = 0$:</p>\n<p>$$e = \\frac{v_2 - v_1}{u - 0}$$</p>\n<p>$$v_2 - v_1 = eu \\text{ ... (ii)}$$</p>\n<p>On subtracting equation (ii) from equation (i):</p>\n<p>$$(v_1 + v_2) - (v_2 - v_1) = u - eu$$</p>\n<p>$$2v_1 = u(1 - e) \\Rightarrow v_1 = \\frac{u(1 - e)}{2} \\text{ ... (iii)}$$</p>\n<p>On adding equation (i) and equation (ii):</p>\n<p>$$(v_1 + v_2) + (v_2 - v_1) = u + eu$$</p>\n<p>$$2v_2 = u(1 + e) \\Rightarrow v_2 = \\frac{u(1 + e)}{2} \\ldots (iv)$$</p>\n<p>The ratio of the speed of the first sphere ($v_1$) to the speed of the second sphere ($v_2$) after collision is:</p>\n<p>$$\\frac{v_1}{v_2} = \\frac{u(1 - e)/2}{u(1 + e)/2} = \\frac{1 - e}{1 + e}$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक नियत वेग से गतिमान $m$ द्रव्यमान का एक गोला, समान द्रव्यमान के एक अन्य स्थिर गोले से टकराता है। यदि प्रत्यावस्थान गुणांक $e$ है, तो टक्कर के बाद पहले गोले की चाल और दूसरे गोले की चाल का अनुपात होगा:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\left(\\frac{1-e}{1+e}\\right)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\left(\\frac{1+e}{1-e}\\right)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\left(\\frac{e+1}{e-1}\\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\left(\\frac{e-1}{e+1}\\right)$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-ms0isxox",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform solid cone of height 40 cm is shown in figure. The distance of centre of mass of the cone from point $B$ (centre of the base) is $N \\mathrm{~cm}$. Find the value of $N$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms0ip2jx%2F415d68cb-72ed-4959-9519-f91c7e7017f4%2F93bbcdd0-883c-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0ip2jy.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms0ip2jx%2F415d68cb-72ed-4959-9519-f91c7e7017f4%2F93bbcdd0-883c-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0ip2jy.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "10",
+                "explanation": "<p>Consider a uniform solid cone of total height $\\mathrm{h}=40 \\mathrm{~cm}$ and base radius R .</p>\n<p>Let the origin ( $0,0,0$ ) be at point B (the centre of the base), with the central axis of symmetry along the positive y-axis pointing towards A.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms0iqjy9%2Fefd815da-63ae-4ee0-bb98-e4a376ebd539%2Fbcfb7f10-883c-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0iqjya.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms0iqjy9%2Fefd815da-63ae-4ee0-bb98-e4a376ebd539%2Fbcfb7f10-883c-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0iqjya.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Let a thin circular disc element of thickness dy at a distance y from base B. Radius of the element at height y is,</p>\n<p>$$r(y)=R\\left(1-\\frac{y}{h}\\right)$$</p>\n<p>Volume of this elementary disc:</p>\n<p>$$dV=\\pi[r(y)]^2\\,dy=\\pi R^2\\left(1-\\frac{y}{h}\\right)^2dy$$</p>\n<p>Mass of the elementary disc (dm) with uniform density $\\rho$ is,</p>\n<p>$$dm=\\rho\\,dV=\\rho\\pi R^2\\left(1-\\frac{y}{h}\\right)^2dy$$</p>\n<p>So, the total mass (M) of the solid cone is,</p>\n<p>$$M=\\int dm=\\rho\\pi R^2\\int\\limits_{0}^{h}\\left(1-\\frac{y}{h}\\right)^2dy$$</p>\n<p>Let $u=1-\\frac{y}{h}$, then $du=-\\frac{dy}{h} \\Rightarrow dy=-h\\,du$:</p>\n<p>$$M=\\rho\\pi R^2h\\int\\limits_{0}^{1}u^2\\,du=\\rho\\pi R^2h\\left[\\frac{u^3}{3}\\right]_{0}^{1}=\\frac{1}{3}\\rho\\pi R^2h$$</p>\n<p>Using the centre of mass formula, the position of centre of mass from the base B is,</p>\n<p>$$y_{cm}=\\frac{1}{M}\\int\\limits_{0}^{h}y\\,dm$$</p>\n\n<p>$$y_{cm} = \\frac{1}{M} \\int\\limits_{0}^{h} y \\left( \\rho \\pi R^2 \\int\\limits_{0}^{h} \\left(1 - \\frac{y}{h}\\right)^2 dy \\right)$$</p>\n<p>$$y_{cm} = \\frac{1}{\\frac{1}{3}\\rho \\pi R^2 h} \\int\\limits_{0}^{h} y \\left( \\rho \\pi R^2 \\int\\limits_{0}^{h} \\left(1 - \\frac{y}{h}\\right)^2 dy \\right)$$</p>\n<p>$$y_{cm} = \\frac{3}{h} \\int\\limits_{0}^{h} y \\left(1 - \\frac{2y}{h} + \\frac{y^2}{h^2}\\right) dy$$</p>\n<p>$$y_{cm} = \\frac{3}{h} \\int\\limits_{0}^{h} \\left(y - \\frac{2y^2}{h} + \\frac{y^3}{h^2}\\right) dy$$</p>\n<p>$$y_{cm} = \\frac{3}{h} \\left[\\frac{y^2}{2} - \\frac{2y^3}{3h} + \\frac{y^4}{4h^2}\\right]_{0}^{h}$$</p>\n<p>$$y_{cm} = \\frac{3}{h} \\left(\\frac{h^2}{2} - \\frac{2h^2}{3} + \\frac{h^2}{4}\\right) = \\frac{3}{h} \\left(\\frac{6 - 8 + 3}{12}\\right) = \\frac{3h}{12} = \\frac{h}{4}$$</p>\n<p>The height of cone is $h = 40\\ \\text{cm}$.</p>\n<p>So, the distance of centre of mass from base B is $N = y_{cm} = \\frac{40}{4} = 10\\ \\text{cm}$</p>\n<p>Thus, the value of $N$ is $10$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में 40 cm ऊँचाई का एक एकसमान ठोस शंकु दिखाया गया है। बिंदु $B$ (आधार का केंद्र) से शंकु के द्रव्यमान केंद्र की दूरी $N \text{ cm}$ है। $N$ का मान ज्ञात कीजिए।</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms0ip2jx%2F415d68cb-72ed-4959-9519-f91c7e7017f4%2F93bbcdd0-883c-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0ip2jy.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms0ip2jx%2F415d68cb-72ed-4959-9519-f91c7e7017f4%2F93bbcdd0-883c-11f1-ba0e-bd17c95a30df%2Ffile-6y3zli1ms0ip2jy.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "center-of-mass-of-continuous-mass-distribution",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms59rmg2",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A man of mass 56 kg having a bag of mass 2 kg slips from the roof of a tall building of height 50 m and starts falling vertically (figure). When at a height 32 m from the ground, he notices that the ground below him is pretty hard, but there is a pond at a horizontal distance 1 m from the line of fall. In order to save himself he throws the bag horizontally (with respect to himself) in the direction opposite to the pond so that the man lands in the water. Find the minimum horizontal velocity (in $\\mathbf{m} \\boldsymbol{/} \\mathbf{s}$ ) imparted to the bag. $\\left(\\mathbf{g}=\\mathbf{\\pi}^{\\mathbf{2}}\\right)$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms59nhc5%2F39c16a75-7ae0-490b-a5cb-bf624e39ab6e%2F209ecb50-8ad9-11f1-b5cf-497c46b32082%2Ffile-6y3zli1ms59nhc6.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms59nhc5%2F39c16a75-7ae0-490b-a5cb-bf624e39ab6e%2F209ecb50-8ad9-11f1-b5cf-497c46b32082%2Ffile-6y3zli1ms59nhc6.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "22",
+                "explanation": "<p>The mass of the man is $\\mathrm{M}=56 \\mathrm{~kg}$</p>\n<p>The mass of the bag is $\\mathrm{m}=2 \\mathrm{~kg}$</p>\n<p>Initial height of the building $=50 \\mathrm{~m}$</p>\n<p>Height at which bag is thrown, $\\mathrm{h}=32 \\mathrm{~m}$</p>\n<p>Required horizontal displacement of the man, $\\mathrm{x}_{\\mathrm{M}}=1 \\mathrm{~m}$ (towards the pond)</p>\n<p>Acceleration due to gravity is $\\mathrm{g}=\\pi^2 \\mathrm{~m} / \\mathrm{s}^2$</p>\n<p>From the height $\\mathrm{h}=50 \\mathrm{~m}$, the vertical motion is under constant gravitational acceleration g starting from rest vertically.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms59pauh%2F05339f52-7dd6-4014-a8f2-15458d1d0e1c%2F53398190-8ad9-11f1-b5cf-497c46b32082%2Ffile-6y3zli1ms59paui.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms59pauh%2F05339f52-7dd6-4014-a8f2-15458d1d0e1c%2F53398190-8ad9-11f1-b5cf-497c46b32082%2Ffile-6y3zli1ms59paui.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Let at $t=0$ the man slipped from the roof of building. The vertical displacement of (bag + man) before throwing the bag is $h_1 = -(50-32)\text{m} = -18\text{m}$.</p>\n<p>Using the kinematic equation for vertical displacement, $y = u_y t + \\frac{1}{2} a_y t^2$</p>\n<p>$$h_1 = 0 \\times t_1 - \\frac{1}{2} g t^2$$</p>\n<p>Substituting $h = -18\\ \\text{m}$ and $g = \\pi^2\\ \\text{m/s}^2$:</p>\n<p>$$-18 = -\\frac{1}{2}\\pi^2 t_1^2$$</p>\n<p>$$36 = \\pi^2 t_1^2 \\Rightarrow t = \\sqrt{\\frac{36}{\\pi^2}} = \\frac{6}{\\pi}\\ \\text{seconds}$$</p>\n<p>When both the man and the bag lands in pond and on hard ground respectively, the vertical displacement from initial point is $h = -50\\ \\text{m}$.</p>\n<p>If total time taken to land on the horizontal surface is $t_2$, using kinematic equation for vertical displacement from initial to final position;</p>\n<p>$$-h = 0 \\times t_2^2 - \\frac{1}{2} g t_2^2 \\Rightarrow 50 = \\frac{1}{2}\\pi^2 t^2 \\Rightarrow t_2 = \\sqrt{\\frac{100}{\\pi^2}} = \\frac{10}{\\pi}$$</p>\n<p>So, the time for both the man and the bag to move horizontally before landing is $\\Delta t = t_2 - t_1$</p>\n<p>$$\\Delta t = t_2 - t_1 = \\left(\\frac{10}{\\pi} - \\frac{6}{\\pi}\\right)\\text{s} = \\frac{4}{\\pi}\\ \\text{s}$$</p>\n<p>To land in the pond, the man must cover a horizontal distance $x_M = 1\\ \\text{m}$ in time $\\Delta t$:</p>\n<p>$$v_M = \\frac{x_M}{\\Delta t} = \\frac{1}{4/\\pi} = \\frac{\\pi}{4}\\ \\text{m/s}$$</p>\n<p>When the man throws the bag horizontally, no external horizontal force acts on the (man + bag) system.</p>\n<p>Therefore, horizontal momentum is conserved at the moment of throwing.</p>\n<p>Initial horizontal momentum = Final horizontal momentum</p>\n\n<p>$$0 = Mv_M + mv_b$$</p>\n<p>Where $v_M = \\frac{\\pi}{4}\\ \\text{m/s}$ is the velocity of man relative to ground towards the pond, $v_b =$ velocity of bag relative to ground (opposite to the pond)</p>\n<p>$$Mv_M + mv_b = 0 \\Rightarrow 56\\left(\\frac{\\pi}{4}\\right) + 2v_b = 0$$</p>\n<p>$$7\\pi + 2v_b = 0 \\Rightarrow v_b = -\\frac{14\\pi}{2} = -7\\pi\\ \\text{m/s}$$</p>\n<p>The magnitude of the bag's velocity relative to the ground is $|v_b| = 7\\pi\\ \\text{m/s}$.</p>\n<p>The horizontal velocity imparted to the bag relative to the man ($v_{\\text{rel}}$) is:</p>\n<p>$$v_{\\text{rel}} = v_b - v_M = -7\\pi - \\frac{\\pi}{4}$$</p>\n<p>$$|v_{\\text{rel}}| = \\frac{28\\pi + \\pi}{4} = \\frac{29\\pi}{4}\\ \\text{m/s}$$</p>\n<p>$$|v_{\\text{rel}}| = \\frac{29\\pi}{4}\\ \\text{m/s} \\approx 22\\ \\text{m/s}$$</p>\n<p>Therefore, the minimum horizontal velocity imparted to the bag is $22\\ \\text{m/s}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>56 kg द्रव्यमान का एक व्यक्ति, जिसके पास 2 kg द्रव्यमान का एक थैला है, 50 m ऊँची एक इमारत की छत से फिसल जाता है और ऊर्ध्वाधर रूप से नीचे गिरने लगता है (चित्र)। जब वह जमीन से 32 m की ऊँचाई पर होता है, तो वह देखता है कि उसके नीचे की जमीन काफी कठोर है, लेकिन गिरने की रेखा से 1 m की क्षैतिज दूरी पर एक तालाब है। खुद को बचाने के लिए वह थैले को तालाब की विपरीत दिशा में क्षैतिज रूप से (स्वयं के सापेक्ष) फेंकता है ताकि वह (व्यक्ति) पानी में गिरे। थैले को प्रदान किया गया न्यूनतम क्षैतिज वेग ($\\mathbf{m} \\boldsymbol{/} \\mathbf{s}$ में) ज्ञात कीजिए। $\\left(\\mathbf{g}=\\mathbf{\\pi}^{\\mathbf{2}}\\right)$।</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms59nhc5%2F39c16a75-7ae0-490b-a5cb-bf624e39ab6e%2F209ecb50-8ad9-11f1-b5cf-497c46b32082%2Ffile-6y3zli1ms59nhc6.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms59nhc5%2F39c16a75-7ae0-490b-a5cb-bf624e39ab6e%2F209ecb50-8ad9-11f1-b5cf-497c46b32082%2Ffile-6y3zli1ms59nhc6.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "impulse-momentum-theorem",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms59itb7",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two boats both having a mass of 150 kg including passengers in it are at rest. A sack of mass 50 kg makes first boat having total mass of 200 kg. It is thrown to the second boat with a velocity whose horizontal component is $\\mathbf{6 ~ m} / \\mathbf{s}$, relative to water. Calculate the distance (in m) between the boat 8.5 s after the throw if the sack spent 0.5 s in air. Neglect resistance of air and water.</p>",
+                "options": [],
+                "answer": "32",
+                "explanation": "<p>The masses of boats without sack are $\\mathrm{m}_1=150 \\mathrm{~kg}, \\mathrm{~m}_2=150 \\mathrm{~kg}$</p>\n<p>The mass of sack is $\\mathrm{m}_{\\mathrm{s}}=50 \\mathrm{~kg}$</p>\n<p>Initial total mass of boat 1 with sack is $\\mathrm{m}_{1 \\mathrm{i}}=150+50=200 \\mathrm{~kg}$</p>\n<p>Horizontal velocity of sack relative to water is $\\mathrm{u}_{\\mathrm{s}}=6 \\mathrm{~m} / \\mathrm{s}$</p>\n<p>Time spent by sack in air, $\\mathrm{t}_1=0.5 \\mathrm{~s}$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms59fw9l%2F89c1aa57-2780-4aef-9ed9-e030251ee8d8%2F4dadf090-8ad8-11f1-b5cf-497c46b32082%2Ffile-6y3zli1ms59fw9m.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms59fw9l%2F89c1aa57-2780-4aef-9ed9-e030251ee8d8%2F4dadf090-8ad8-11f1-b5cf-497c46b32082%2Ffile-6y3zli1ms59fw9m.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Applying conservation of linear momentum to boat 1 and the sack in the horizontal direction,</p>\n<p>Initial momentum = Final momentum</p>\n<p>$$0 = m_1 v_1 + m_s u_s$$</p>\n<p>$$150 b7 v_1 + 50 b7 (6) = 0$$</p>\n<p>$$150 b7 v_1 = -300$$</p>\n<p>$$v_1 = -2\\,\\text{m/s}$$</p>\n<p>The magnitude of velocity of boat 1 is $v_1 = 2\\,\\text{m/s}$, moving away from boat 2. Since no horizontal external forces act on Boat 1, it moves at a constant speed of $2\\,\\text{m/s}$ for the entire duration $t = 8.5\\,\\text{s}$.</p>\n<p>During time interval $t_1 = 0.5\\,\\text{s}$, the sack is in the air, and boat 2 remains at rest ($v_2 = 0$).</p>\n<p>The sack takes $0.5$ second to land on second boat, i.e. if the initial separation between the boats is $d_0$ then,</p>\n<p>$$d_0 = u_s t_1 = 6 \\times 0.5 = 3\\text{m}$$</p>\n<p>When boat 2 catches the sack, linear momentum is conserved during the inelastic collision between boat 2 and the sack,</p>\n<p>Momentum of sack + Momentum of boat 2 = Combined Momentum</p>\n<p>$$m_s u_s + 0 = (m_2 + m_s)v_2$$</p>\n<p>$$50 \\times 6 = (150 + 50)v_2$$</p>\n<p>$$300 = 200\\,v_2$$</p>\n<p>$$v_2 = \\frac{300}{200} = 1.5\\,\\text{m/s}$$</p>\n<p>So, boat 2 moves at a constant speed $v_2 = 1.5\\,\\text{m/s}$ in the same direction as the thrown sack, away from boat 1. The time duration during which boat 2 moves is:</p>\n<p>$$t_2 = t - t_1 = 8.5\\,\\text{s} - 0.5\\,\\text{s} = 8.0\\,\\text{s}$$</p>\n<p>Displacement of boat 1 in $8.5\\,\\text{s}$:</p>\n<p>$$d_1 = v_1 \\times t = 2 \\times 8.5\\,\\text{m} = 17\\,\\text{m}$$</p>\n<p>Boat 2 stays stationary for $0.5\\,\\text{s}$ and moves for the remaining $8.0\\,\\text{s}$. So, the displacement of boat 2 in $8.0\\,\\text{s}$ is,</p>\n<p>$$d_2 = v_2 \\times t_2 = 1.5 \\times 8.0\\,\\text{m} = 12\\,\\text{m}$$</p>\n<p>Since boat 1 and boat 2 move in opposite directions away from each other, the total distance $D$ between them after $8.5\\,\\text{s}$ is:</p>\n<p>$$D = d_1 + d_2$$</p>\n<p>$$D = 17\\,\\text{m} + 12\\,\\text{m} = 29\\,\\text{m}$$</p>\n<p>As the initial separation between the boats is $d_0 = 3\\text{m}$, thus the final distance between the boats after $8.5\\,\\text{s}$ is,</p>\n<p>$$d = D + d_0 = 29\\,\\text{m} + 3\\,\\text{m} = 32\\,\\text{m}$$</p>\n<p>Therefore, the distance between the boats is $32\\,\\text{m}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "\n<p>दो नावें, जिनमें से प्रत्येक का द्रव्यमान (यात्रियों सहित) 150 kg है, विरामावस्था में हैं। 50 kg द्रव्यमान का एक बोरा पहली नाव का कुल द्रव्यमान 200 kg कर देता है। इसे दूसरी नाव की ओर ऐसे वेग से फेंका जाता है जिसका जल के सापेक्ष क्षैतिज घटक $\\mathbf{6 ~ m} / \\mathbf{s}$ है। फेंकने के 8.5 s बाद दोनों नावों के बीच की दूरी (m में) की गणना करें, यदि बोरा हवा में 0.5 s तक रहता है। हवा और पानी के प्रतिरोध को नगण्य मानें।</p>\n",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "impulse-momentum-theorem",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms8j1abs",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle of mass $m_1$ moving with velocity $v_1$ undergoes a perfectly elastic collision with a particle of mass $m_2$ moving in the opposite direction. After the collision, $m_1$ is observed moving with speed $\\frac{v_1}{2}$ in a direction perpendicular to its incident path. If the particle $\\mathbf{m}_{\\mathbf{2}}$ scatters at an angle of $\\mathbf{4 5}^{\\boldsymbol{\\circ}}$ with respect to the initial direction of $m_1$, find the mass ratio $\\frac{m_1}{m_2}$.</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>Let the initial motion of particle $\\mathrm{m}_1$ be along the +x -axis with velocity before collision $\\overrightarrow{\\mathrm{u}}_1=\\mathrm{v}_1 \\hat{\\imath}$</p>\n<p>The velocity of $\\mathrm{m}_2$ before collision which is moving in opposite direction $\\overrightarrow{\\mathrm{u}}_2=-\\mathrm{u}_2 \\hat{\\mathrm{i}}$</p>\n<p>After the elastic collision particle $\\mathrm{m}_1$ moves perpendicular to its incident path with speed $\\frac{\\mathrm{v}_1}{2}$ be along +y -axis</p>\n<p>$$ \\vec{v}_1=\\frac{v_1}{2} \\hat{\\jmath} $$</p>\n<p>Particle $m_2$ scatters at an angle of $45^{\\circ}$ with respect to the initial direction ( +x -axis).</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms8ivyzu%2Fa45ed46c-0e8c-4a1b-94e7-faddf66d7e18%2F98d834a0-8ca3-11f1-8526-d164870bfd2e%2Ffile-6y3zli1ms8ivyzv.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms8ivyzu%2Fa45ed46c-0e8c-4a1b-94e7-faddf66d7e18%2F98d834a0-8ca3-11f1-8526-d164870bfd2e%2Ffile-6y3zli1ms8ivyzv.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Since $m_1$ gains momentum in the $+y$ direction, $m_2$ must move in the $-y$ direction to conserve momentum.</p>\n<p>$$\\vec{v}_2 = (v_2 \\cos 45^\\circ)\\,\\hat{i} - (v_2 \\sin 45^\\circ)\\,\\hat{j} = \\frac{v_2}{\\sqrt{2}}\\,\\hat{i} - \\frac{v_2}{\\sqrt{2}}\\,\\hat{j}$$</p>\n<p>Initial linear momentum along y-axis $p_{yi} = 0$</p>\n<p>Final linear momentum along y-axis:</p>\n<p>$$P_{y,f} = m_1\\left(\\frac{v_1}{2}\\right) - m_2\\left(\\frac{v_2}{\\sqrt{2}}\\right)$$</p>\n<p>Using conservation of linear momentum along the y-axis,</p>\n<p>$$0 = m_1\\left(\\frac{v_1}{2}\\right) - m_2\\left(\\frac{v_2}{\\sqrt{2}}\\right)$$</p>\n<p>$$v_2 = \\frac{m_1\\,v_1}{m_2\\sqrt{2}} \\ldots (i)$$</p>\n\n<p>Initial linear momentum along x-axis, $P_{x,i} = m_1 v_1 - m_2 u_2$</p>\n<p>Final linear momentum along x-axis:</p>\n<p>$\\mathrm{P}_{\\mathrm{x}, \\mathrm{f}}=0+\\mathrm{m}_2\\left(\\frac{\\mathrm{v}_2}{\\sqrt{2}}\\right)$</p>\n<p>Using conservation of linear momentum along the x-axis,</p>\n<p>$$m_1 v_1 - m_2 u_2 = \\frac{m_2 v_2}{\\sqrt{2}}$$</p>\n<p>Substituting $\\frac{m_2 v_2}{\\sqrt{2}} = \\frac{m_1 v_1}{2}$</p>\n<p>$$m_1 v_1 - m_2 u_2 = \\frac{m_1 v_1}{2}$$</p>\n<p>$$m_2 u_2 = m_1 v_1 - \\frac{m_1 v_1}{2}$$</p>\n<p>$$m_2\\, u_2 = \\frac{1}{2}\\, m_1 v_1$$</p>\n<p>$$u_2 = \\frac{m_1}{m_2}\\,\\frac{v_1}{2} \\ldots (ii)$$</p>\n<p>Since the collision is perfectly elastic, kinetic energy is conserved:</p>\n<p>$$K_i = K_f$$</p>\n<p>$$\\frac{1}{2} m_1 v_1^2 + \\frac{1}{2} m_2 u_2^2 = \\frac{1}{2} m_1 \\left(\\frac{v_1}{2}\\right)^2 + \\frac{1}{2} m_2 v_2^2$$</p>\n<p>$$m_1 v_1^2 + m_2 u_2^2 = \\frac{1}{4} m_1 v_1^2 + m_2 v_2^2$$</p>\n<p>$$\\frac{3}{4} m_1 v_1^2 + m_2 u_2^2 = m_2 v_2^2 \\ldots (iii)$$</p>\n<p>Substituting $u_2$ from equation (ii) and $v_2$ from equation (i) into equation (iii):</p>\n<p>$$\\frac{3}{4} m_1 v_1^2 + m_2 \\left[\\frac{m_1}{m_2}\\,\\frac{v_1}{2}\\right]^2 = m_2 \\left[\\frac{m_1}{m_2}\\,\\frac{v_1}{\\sqrt{2}}\\right]^2$$</p>\n<p>$$\\frac{3}{4} m_1 v_1^2 + m_2 \\left[\\frac{m_1^2 v_1^2}{m_2^2\\,4}\\right] = m_2 \\left[\\frac{m_1^2 v_1^2}{m_2^2\\,2}\\right]$$</p>\n<p>$$\\frac{3}{4} m_1 v_1^2 + \\frac{m_1^2 v_1^2}{4m_2} = \\frac{m_1^2 v_1^2}{2m_2}$$</p>\n<p>$$\\frac{3}{4} + \\frac{m_1}{4m_2} = \\frac{m_1}{2m_2}$$</p>\n<p>$$\\Rightarrow \\frac{3}{4} = \\frac{m_1}{2m_2} - \\frac{m_1}{4m_2} \\Rightarrow \\frac{3}{4} = \\frac{m_1}{4m_2}$$</p>\n<p>$$\\Rightarrow \\frac{m_2}{m_1} = 3$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$v_1$ वेग से गतिमान $m_1$ द्रव्यमान का एक कण विपरीत दिशा में गतिमान $m_2$ द्रव्यमान के एक कण के साथ पूर्णतया प्रत्यास्थ संघट्ट करता है। संघट्ट के बाद, $m_1$ अपने आपतित पथ के लम्बवत् दिशा में $\frac{v_1}{2}$ चाल से गतिमान प्रेक्षित होता है। यदि कण $\\mathbf{m}_{\\mathbf{2}}$, $m_1$ की प्रारम्भिक दिशा के सापेक्ष $\\mathbf{4 5}^{\\boldsymbol{\\circ}}$ के कोण पर प्रकीर्णित होता है, तो द्रव्यमान अनुपात $\\frac{m_1}{m_2}$ ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms8iteqx",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A proton makes a head-on elastic collision with an unknown particle at rest. The proton rebounds with $4 / 9$ of its initial kinetic energy. Find the ratio of the mass of the unknown particle to the mass of the proton.</p>",
+                "options": [],
+                "answer": "5",
+                "explanation": "<p>Let the mass of the proton is $\\mathrm{m}_1$ and the mass of the unknown particle is $\\mathrm{m}_2$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms8iwvh4%2Ffd6bc745-915b-482c-8efe-408c034cd7ff%2Fb1ef3d80-8ca3-11f1-8526-d164870bfd2e%2Ffile-6y3zli1ms8iwvh5.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms8iwvh4%2Ffd6bc745-915b-482c-8efe-408c034cd7ff%2Fb1ef3d80-8ca3-11f1-8526-d164870bfd2e%2Ffile-6y3zli1ms8iwvh5.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n\n<p>Initial velocity of the proton is $u_1 = u$</p>\n<p>Initial velocity of the unknown particle is $u_2 = 0$ because it is at rest.</p>\n<p>Final velocity of the proton after collision is $v_1$</p>\n<p>Final velocity of the unknown particle after collision = $v_2$</p>\n<p>Using the law of conservation of linear momentum:</p>\n<p>$$m_1u_1 + m_2u_2 = m_1v_1 + m_2v_2$$</p>\n<p>Since $u_2 = 0$:</p>\n<p>$$m_1u = m_1v_1 + m_2v_2$$</p>\n<p>$$m_1(u - v_1) = m_2v_2 ... (i)$$</p>\n<p>Since the collision is elastic, using the law of conservation of kinetic energy</p>\n<p>$$\\frac{1}{2} m_1u^2 + 0 = \\frac{1}{2} m_1v_1^2 + \\frac{1}{2} m_2v_2^2$$</p>\n<p>$$m_1(u^2 - v_1^2) = m_2v_2^2$$</p>\n<p>$$m_1(u - v_1)(u + v_1) = m_2v_2^2 ... (ii)$$</p>\n<p>Dividing equation (ii) by equation (i):</p>\n\n<p>$$\\frac{m_1 (u-v_1)(u+v_1)}{m_1 (u-v_1)}=\\frac{m_2 v_2^2}{m_2 v_2}$$</p>\n<p>$$u+v_1=v_2\\ldots (iii)$$</p>\n<p>Substituting equation (iii) into equation (i):</p>\n<p>$$m_1 (u-v_1)=m_2 (u+v_1)$$</p>\n<p>$$m_1u-m_1v_1=m_2u+m_2v_1$$</p>\n<p>$$\\left(m_1-m_2\\right)u=\\left(m_1+m_2\\right)v_1$$</p>\n<p>$$v_1=\\left(\\frac{m_1-m_2}{m_1+m_2}\\right)u\\ldots (iv)$$</p>\n<p>The initial kinetic energy of the proton is $K_i=\\frac{1}{2}m_1u^2$</p>\n<p>The final kinetic energy of the proton is given as $\\frac{4}{9}$ of its initial kinetic energy:</p>\n<p>$$K_f=\\frac{4}{9}K_i$$</p>\n<p>$$\\frac{1}{2}m_1v_1^2=\\frac{4}{9}\\left(\\frac{1}{2}m_1u^2\\right)$$</p>\n<p>$$v_1^2=\\frac{4}{9}u^2$$</p>\n<p>$$|v_1|=\\frac{2}{3}u$$</p>\n<p>Since the proton rebounds, moves backward in the opposite direction of initial motion, $v_1$ is negative:</p>\n<p>$$v_1=-\\frac{2}{3}u$$</p>\n<p>Substituting $v_1=-\\frac{2}{3}u$ into equation (iv),</p>\n<p>$$\\Rightarrow -\\frac{2}{3}u=\\left(\\frac{m_1-m_2}{m_1+m_2}\\right)u$$</p>\n<p>$$\\Rightarrow -\\frac{2}{3}=\\left(\\frac{m_1-m_2}{m_1+m_2}\\right)$$</p>\n<p>$$\\Rightarrow -2(m_1+m_2)=3(m_1-m_2)$$</p>\n<p>$$\\Rightarrow -2m_1-2m_2=3m_1-3m_2$$</p>\n<p>$$\\Rightarrow 3m_2-2m_2=3m_1+2m_1$$</p>\n<p>$$\\Rightarrow m_2=5m_1 \\Rightarrow \\frac{m_2}{m_1}=5$$</p>\n<p>Therefore, the ratio of the mass of the unknown particle to the mass of the proton $\\frac{m_2}{m_1}$ is 5</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक प्रोटॉन विरामावस्था में स्थित एक अज्ञात कण के साथ सम्मुख प्रत्यास्थ टक्कर करता है। प्रोटॉन अपनी प्रारंभिक गतिज ऊर्जा के $4 / 9$ भाग के साथ प्रतिक्षिप्त होता है। अज्ञात कण के द्रव्यमान और प्रोटॉन के द्रव्यमान का अनुपात ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Questions from all topics of the chapter",
+    "timeAllotted": 3600000,
+    "title": "Center of Mass and Collision - Chapter Test",
+    "totalQuestions": 25,
+    "type": "chapter",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g71mnvx7iqb",
+    "defaultLanguage": "en",
+    "description": "Questions from all topics of the chapter",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-03T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 100,
+    "maxNegMarks": 25,
+    "policy": "jee-main",
+    "syllabus": "Questions from all topics of the chapter",
+    "timeAllotted": 3600000,
+    "title": "Center of Mass and Collision - Chapter Test",
+    "totalQuestions": 25,
+    "type": "chapter",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Center of Mass and Collision"
+  }
+}

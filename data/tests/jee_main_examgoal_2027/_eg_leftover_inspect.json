@@ -1,0 +1,513 @@
+{
+  "nosol": [
+    {
+      "file": "tst-19g61mo679g17.json",
+      "eg": "tq-mqb8ixdq",
+      "stem": "The number of unpaired electron in G. S., first E.S. and second E.S. of S ($Z = ",
+      "answer": 1
+    },
+    {
+      "file": "tst-19g61mpe6cuzb.json",
+      "eg": "tq-msvviki1",
+      "stem": "The maximum number of atoms having sp 2 hybridization in the following molecule ",
+      "answer": 2
+    },
+    {
+      "file": "tst-19g61mpe6cuzb.json",
+      "eg": "tq-msvua336",
+      "stem": "According to VBT, which of the following overlapping results in &pi;-type covale",
+      "answer": 2
+    },
+    {
+      "file": "tst-19g61mpe6cuzb.json",
+      "eg": "tq-msvvs63s",
+      "stem": "Highest number of p π– d π bonds are present in",
+      "answer": 3
+    },
+    {
+      "file": "tst-19g61mpe6cwmv.json",
+      "eg": "tq-msxqh4yv",
+      "stem": "The correct order of bond angle is",
+      "answer": 0
+    },
+    {
+      "file": "tst-19g61mpe6cwmv.json",
+      "eg": "tq-msxqch0f",
+      "stem": "The shapes of $\\mathrm{CF_3^-}$, $\\mathrm{PCl_4^-}$ and $\\mathrm{BrF_5}$ respect",
+      "answer": 3
+    },
+    {
+      "file": "tst-19g61mpe6cwmv.json",
+      "eg": "tq-msxquylp",
+      "stem": "Select pair of compounds in which both have different hybridisation but have the",
+      "answer": 1
+    },
+    {
+      "file": "tst-19g61mpe6cwmv.json",
+      "eg": "tq-msxzztw9",
+      "stem": "Find the species which is not perfectly planar",
+      "answer": 1
+    },
+    {
+      "file": "tst-19g61mpe6cwmv.json",
+      "eg": "tq-msy0hbuu",
+      "stem": "Which species is planar?",
+      "answer": 0
+    }
+  ],
+  "badopts": [
+    {
+      "file": "tst-19g61mpczvtet.json",
+      "eg": "tq-mrdgfgws",
+      "stem": "What is the normal boiling point of the solution represented by the phase diagra",
+      "opts": [
+        "<p>A</p>",
+        "<p>B</p>",
+        "<p>C</p>",
+        "<p>D</p>"
+      ]
+    }
+  ],
+  "needfig": [
+    {
+      "file": "tst-19g61mo67xffr.json",
+      "eg": "tq-mq89fydv",
+      "stem": "Which of the following reaction is redox?"
+    },
+    {
+      "file": "tst-19g61mo67xgdx.json",
+      "eg": "tq-mqbktk3t",
+      "stem": "Find the valency factor $(n)$ for $\\mathrm{NH}_2 \\mathrm{OH}$ in given reaction : $\\mathrm"
+    },
+    {
+      "file": "tst-19g61mo67xi5r.json",
+      "eg": "tq-mrexz0xn",
+      "stem": "Consider the following reactions I. $\\mathrm{MnO}_4^{2-}+4 \\mathrm{H}^{+} \\longrightarrow "
+    },
+    {
+      "file": "tst-19g61mo67xi5r.json",
+      "eg": "tq-mrey1cip",
+      "stem": "Consider the following reaction \\begin{aligned} & $\\mathrm{H}_2 \\mathrm{O}$ + $\\mathrm{SO}"
+    },
+    {
+      "file": "tst-19g61mo7mnome.json",
+      "eg": "tq-mqhf37vj",
+      "stem": "Given the following reaction at equilibrium N 2 (g) + 3H 2 (g) $$ \\text { ⇌ } $$ 2NH 3 (g)"
+    },
+    {
+      "file": "tst-19g61mo7n5hri.json",
+      "eg": "tq-mqro2vzh",
+      "stem": "In which of the following reactions, law of mass conservation is not valid?"
+    },
+    {
+      "file": "tst-19g61mpcxh1gn.json",
+      "eg": "tq-mr248hek",
+      "stem": "The pH of 0.1 M solution of the following compounds increases in the order"
+    },
+    {
+      "file": "tst-19g61mpcyd05j.json",
+      "eg": "tq-mr520eix",
+      "stem": "How many of the following reactions has a positive entropy change? I. $\\quad \\mathrm{Ag}^{"
+    },
+    {
+      "file": "tst-19g61mpcyd112.json",
+      "eg": "tq-mr5nuzcd",
+      "stem": "The following reaction is at equilibrium at 298 K 2NO (g, 0.00001 bar) + Cl 2 (g, 0.01 bar"
+    },
+    {
+      "file": "tst-19g61mpcyd1qt.json",
+      "eg": "tq-mr8t7jyt",
+      "stem": "Determine the lattice energy for the following reaction Li + (g) + Cl − (g) &rarr; LiCl(s)"
+    },
+    {
+      "file": "tst-19g61mpcyd3su.json",
+      "eg": "tq-mrbvx0rk",
+      "stem": "Heat of neutralisation of oxalic acid is $-53.35 \\mathrm{~kJ} / \\mathrm{g}$.eq. using NaOH"
+    },
+    {
+      "file": "tst-19g61mpd1759y.json",
+      "eg": "tq-mrkmbd0w",
+      "stem": "Select the rate law that corresponds to the data shown for the following reaction $A + B \\"
+    },
+    {
+      "file": "tst-19g61mpd1791g.json",
+      "eg": "tq-mrq0zrx8",
+      "stem": "The kinetic data for the given reaction $A(g)+2 B(g) \\xrightarrow{k} C(g)$ is provided in "
+    },
+    {
+      "file": "tst-19g61mpd1791g.json",
+      "eg": "tq-mrq0hd7s",
+      "stem": "Propanone reacts with iodine in acid solution as shown in this equation. $$ \\mathrm{CH}_3 "
+    },
+    {
+      "file": "tst-19g61mpd1791g.json",
+      "eg": "tq-mrq2ohff",
+      "stem": "The following rate data were obtained at 303 K for the following reaction : $$ 2 A+B \\righ"
+    },
+    {
+      "file": "tst-19g61mpd17cxm.json",
+      "eg": "tq-mrw75q9m",
+      "stem": "In the following reaction, how is the rate of appearance of the underlined product related"
+    },
+    {
+      "file": "tst-19g61mpe5i6f9.json",
+      "eg": "tq-mshbxbyt",
+      "stem": "The formation of the oxide ion $\\mathrm{O}^{2-}$ (g) requires first an exothermic and then"
+    },
+    {
+      "file": "tst-19g61mpe6cu5g.json",
+      "eg": "tq-msrgl0xr",
+      "stem": "N 2 CO has three possible structures : ONCN (nitrosyl cyanide), ONNC (nitrosyl isocyanide)"
+    },
+    {
+      "file": "tst-19g71mo0e09m3.json",
+      "eg": "tq-mpzs31in",
+      "stem": "When 20.0 g of CaCO 3 is reacted with 20.0 g of HCl, what mass of CO 2 can be formed as pe"
+    }
+  ],
+  "official": {
+    "tq-mqb8ixdq": {
+      "file": "tst-19g61mo679g17.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 0,
+      "correct": [
+        "B"
+      ],
+      "head": "The number of unpaired electron in G. S., first E.S. and second E.S. of S ($Z = "
+    },
+    "tq-mq89fydv": {
+      "file": "tst-19g61mo67xffr.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 1521,
+      "correct": [
+        "C"
+      ],
+      "head": "Which of the following reaction is redox?"
+    },
+    "tq-mqbktk3t": {
+      "file": "tst-19g61mo67xgdx.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 0,
+      "optImg": false,
+      "explLen": 724,
+      "correct": null,
+      "answer": "2",
+      "head": "Find the valency factor $(n)$ for $\\mathrm{NH}_2 \\mathrm{OH}$ in given reaction "
+    },
+    "tq-mrexz0xn": {
+      "file": "tst-19g61mo67xi5r.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 0,
+      "optImg": false,
+      "explLen": 1992,
+      "correct": null,
+      "answer": "2",
+      "head": "Consider the following reactions I. $\\mathrm{MnO}_4^{2-}+4 \\mathrm{H}^{+} \\longr"
+    },
+    "tq-mrey1cip": {
+      "file": "tst-19g61mo67xi5r.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 0,
+      "optImg": false,
+      "explLen": 846,
+      "correct": null,
+      "answer": "5",
+      "head": "Consider the following reaction $$ \\begin{aligned} & \\mathrm{H}_2 \\mathrm{O}+\\ma"
+    },
+    "tq-mqhf37vj": {
+      "file": "tst-19g61mo7mnome.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 775,
+      "correct": [
+        "B"
+      ],
+      "head": "Given the following reaction at equilibrium N 2 (g) + 3H 2 (g) $$ \\text { ⇌ } $$"
+    },
+    "tq-mqro2vzh": {
+      "file": "tst-19g61mo7n5hri.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 891,
+      "correct": [
+        "A"
+      ],
+      "head": "In which of the following reactions, law of mass conservation is not valid?"
+    },
+    "tq-mr248hek": {
+      "file": "tst-19g61mpcxh1gn.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 896,
+      "correct": [
+        "B"
+      ],
+      "head": "The pH of 0.1 M solution of the following compounds increases in the order"
+    },
+    "tq-mr520eix": {
+      "file": "tst-19g61mpcyd05j.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 0,
+      "optImg": false,
+      "explLen": 1239,
+      "correct": null,
+      "answer": "3",
+      "head": "How many of the following reactions has a positive entropy change? I. $\\quad \\ma"
+    },
+    "tq-mr5nuzcd": {
+      "file": "tst-19g61mpcyd112.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 1034,
+      "correct": [
+        "A"
+      ],
+      "head": "The following reaction is at equilibrium at 298 K 2NO (g, 0.00001 bar) + Cl 2 (g"
+    },
+    "tq-mr8t7jyt": {
+      "file": "tst-19g61mpcyd1qt.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 1170,
+      "correct": [
+        "A"
+      ],
+      "head": "Determine the lattice energy for the following reaction Li + (g) + Cl − (g) &rar"
+    },
+    "tq-mrbvx0rk": {
+      "file": "tst-19g61mpcyd3su.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 0,
+      "optImg": false,
+      "explLen": 996,
+      "correct": null,
+      "answer": "8",
+      "head": "Heat of neutralisation of oxalic acid is $-53.35 \\mathrm{~kJ} / \\mathrm{g}$.eq. "
+    },
+    "tq-mrdgfgws": {
+      "file": "tst-19g61mpczvtet.json",
+      "hasContent": true,
+      "contentImg": true,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 446,
+      "correct": [
+        "D"
+      ],
+      "head": "What is the normal boiling point of the solution represented by the phase diagra"
+    },
+    "tq-mrkmbd0w": {
+      "file": "tst-19g61mpd1759y.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 523,
+      "correct": [
+        "C"
+      ],
+      "head": "Select the rate law that corresponds to the data shown for the following reactio"
+    },
+    "tq-mrq0zrx8": {
+      "file": "tst-19g61mpd1791g.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 1852,
+      "correct": [
+        "C"
+      ],
+      "head": "The kinetic data for the given reaction $A(g)+2 B(g) \\xrightarrow{k} C(g)$ is pr"
+    },
+    "tq-mrq0hd7s": {
+      "file": "tst-19g61mpd1791g.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 1391,
+      "correct": [
+        "D"
+      ],
+      "head": "Propanone reacts with iodine in acid solution as shown in this equation. $$ \\mat"
+    },
+    "tq-mrq2ohff": {
+      "file": "tst-19g61mpd1791g.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 0,
+      "optImg": false,
+      "explLen": 2452,
+      "correct": null,
+      "answer": "6",
+      "head": "The following rate data were obtained at 303 K for the following reaction : $$ 2"
+    },
+    "tq-mrw75q9m": {
+      "file": "tst-19g61mpd17cxm.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 595,
+      "correct": [
+        "D"
+      ],
+      "head": "In the following reaction, how is the rate of appearance of the underlined produ"
+    },
+    "tq-mshbxbyt": {
+      "file": "tst-19g61mpe5i6f9.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 890,
+      "correct": [
+        "C"
+      ],
+      "head": "The formation of the oxide ion $\\mathrm{O}^{2-}$ (g) requires first an exothermi"
+    },
+    "tq-msrgl0xr": {
+      "file": "tst-19g61mpe6cu5g.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 1040,
+      "correct": [
+        "A"
+      ],
+      "head": "N 2 CO has three possible structures : ONCN (nitrosyl cyanide), ONNC (nitrosyl i"
+    },
+    "tq-msvviki1": {
+      "file": "tst-19g61mpe6cuzb.json",
+      "hasContent": true,
+      "contentImg": true,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 0,
+      "correct": [
+        "C"
+      ],
+      "head": "The maximum number of atoms having sp 2 hybridization in the following molecule "
+    },
+    "tq-msvua336": {
+      "file": "tst-19g61mpe6cuzb.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 0,
+      "correct": [
+        "C"
+      ],
+      "head": "According to VBT, which of the following overlapping results in &pi;-type covale"
+    },
+    "tq-msvvs63s": {
+      "file": "tst-19g61mpe6cuzb.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 0,
+      "correct": [
+        "D"
+      ],
+      "head": "Highest number of p π– d π bonds are present in"
+    },
+    "tq-msxqh4yv": {
+      "file": "tst-19g61mpe6cwmv.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 0,
+      "correct": [
+        "A"
+      ],
+      "head": "The correct order of bond angle is"
+    },
+    "tq-msxqch0f": {
+      "file": "tst-19g61mpe6cwmv.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 0,
+      "correct": [
+        "D"
+      ],
+      "head": "The shapes of $\\mathrm{CF_3^-}$, $\\mathrm{PCl_4^-}$ and $\\mathrm{BrF_5}$ respect"
+    },
+    "tq-msxquylp": {
+      "file": "tst-19g61mpe6cwmv.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 0,
+      "correct": [
+        "B"
+      ],
+      "head": "Select pair of compounds in which both have different hybridisation but have the"
+    },
+    "tq-msxzztw9": {
+      "file": "tst-19g61mpe6cwmv.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 0,
+      "correct": [
+        "B"
+      ],
+      "head": "Find the species which is not perfectly planar"
+    },
+    "tq-msy0hbuu": {
+      "file": "tst-19g61mpe6cwmv.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 0,
+      "correct": [
+        "A"
+      ],
+      "head": "Which species is planar?"
+    },
+    "tq-mpzs31in": {
+      "file": "tst-19g71mo0e09m3.json",
+      "hasContent": true,
+      "contentImg": false,
+      "nOpts": 4,
+      "optImg": false,
+      "explLen": 1032,
+      "correct": [
+        "A"
+      ],
+      "head": "When 20.0 g of CaCO 3 is reacted with 20.0 g of HCl, what mass of CO 2 can be fo"
+    }
+  },
+  "missingInRaw": []
+}

@@ -1,0 +1,1182 @@
+/**
+ * Quantrex Academy — Visual Redesign v2
+ * Tokens: light + dark (Knowly-inspired dark; warm cream light)
+ * Gradients: exam/subject signature duotones
+ * Content labels/counts are NOT defined here — UI chrome only.
+ */
+
+/* ─── Light mode (default) ─── */
+:root,
+html[data-theme="light"] {
+  --bg: #FAF9F6;
+  --card: #EDE7DA;
+  --card-elevated: #FFFFFF;
+  --border: #C9C0AE;
+  --text: #2E2B28;
+  --gray: #6B6259;
+  --white: #FFFFFF;
+  --dark: #2E2B28;
+  --primary: #EAB901;
+  --primary-dark: #C99700;
+  --primary-light: #FFF6D1;
+  --accent: #8450CB;
+  --accent-light: #F0E8FF;
+  --green: #90A994;
+  --green-light: #E4EFE7;
+  --gold: #EAB901;
+  --shadow: rgba(46, 43, 40, 0.08);
+  --qx-glow: rgba(234, 185, 1, 0.28);
+  --qx-gradient: linear-gradient(135deg, #EAB901 0%, #8450CB 100%);
+  --qx-gradient-soft: linear-gradient(135deg, #FFF6D1 0%, #F0E8FF 100%);
+  --qx-surface-glass: rgba(255, 255, 255, 0.62);
+  --qx-surface-glass-border: rgba(201, 192, 174, 0.55);
+  --qx-radius: 16px;
+  --qx-radius-sm: 12px;
+  --qx-radius-lg: 22px;
+  --qx-space-1: 4px;
+  --qx-space-2: 8px;
+  --qx-space-3: 12px;
+  --qx-space-4: 16px;
+  --qx-space-5: 24px;
+  --qx-space-6: 32px;
+  --sidebar-w: 260px;
+  color-scheme: light;
+}
+
+/* ─── Dark mode (fixed palette) ─── */
+html[data-theme="dark"],
+[data-theme="dark"] {
+  --bg: #0b1220;
+  --card: #1e293b;
+  --card-elevated: #243044;
+  --border: #64748b;
+  --text: #f8fafc;
+  --gray: #cbd5e1;
+  --white: #f8fafc;
+  --dark: #F7E8CF;
+  --primary: #8450CB;         /* Fuchsia Blue */
+  --primary-dark: #6B3AAF;
+  --primary-light: #3D2A52;
+  --accent: #EAB901;          /* Philippine Golden Yellow */
+  --accent-light: #4A3F14;
+  --green: #90A994;
+  --green-light: #243028;
+  --gold: #EAB901;
+  --shadow: rgba(0, 0, 0, 0.45);
+  --qx-glow: rgba(132, 80, 203, 0.35);
+  --qx-gradient: linear-gradient(135deg, #8450CB 0%, #EAB901 100%);
+  --qx-gradient-soft: linear-gradient(135deg, #3D2A52 0%, #30292F 100%);
+  --qx-surface-glass: rgba(48, 41, 47, 0.72);
+  --qx-surface-glass-border: rgba(132, 80, 203, 0.28);
+  color-scheme: dark;
+}
+
+/* Signature exam gradients (fixed per category) */
+:root {
+  --grad-jee: linear-gradient(135deg, #00C0FF 0%, #4218B8 100%);
+  --grad-neet: linear-gradient(135deg, #00FFA9 0%, #0D4FFF 100%);
+  --grad-olympiad: linear-gradient(135deg, #FFE53B 0%, #FF2525 100%);
+  --grad-foundation: linear-gradient(135deg, #A32CDF 0%, #106AD2 100%);
+  --grad-academy: linear-gradient(135deg, #1FC9FD 0%, #FC0061 100%);
+  --grad-defence: linear-gradient(135deg, #FEC194 0%, #FF0061 100%);
+  --grad-bitsat: linear-gradient(135deg, #00FFFF 0%, #93278F 100%);
+  --grad-premium: linear-gradient(135deg, #FF0A6C 0%, #4A3CDB 100%);
+  /* Subject colors (consistent across exams) */
+  --subj-physics: linear-gradient(135deg, #FFE53B 0%, #FF2525 100%);
+  --subj-chemistry: linear-gradient(135deg, #00FFA9 0%, #0D4FFF 100%);
+  --subj-math: linear-gradient(135deg, #00C0FF 0%, #4218B8 100%);
+  --subj-bio: linear-gradient(135deg, #00FFA9 0%, #90A994 100%);
+  --subj-english: linear-gradient(135deg, #A32CDF 0%, #106AD2 100%);
+  --subj-default: linear-gradient(135deg, #8450CB 0%, #1FC9FD 100%);
+}
+
+/* ─── Base surfaces ─── */
+body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: "Inter", "Plus Jakarta Sans", -apple-system, sans-serif;
+}
+.app {
+  background: var(--bg);
+  min-height: 100vh;
+}
+.sidebar {
+  background: var(--card) !important;
+  border-right: 1px solid var(--border) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.sidebar-head {
+  border-bottom: 1px solid var(--border) !important;
+  padding: 18px 20px !important;
+  gap: 12px !important;
+}
+.logo-mark {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 11px !important;
+  background: #05070d !important;
+  box-shadow: 0 4px 14px rgba(0, 175, 255, 0.28) !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+  padding: 3px !important;
+  box-sizing: border-box !important;
+}
+.logo-mark img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+.logo-text {
+  font-family: "Kanit", sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 18px !important;
+  background: none !important;
+  -webkit-text-fill-color: var(--text) !important;
+  color: var(--text) !important;
+  letter-spacing: -0.02em;
+}
+.nav-item {
+  border-radius: 12px !important;
+  margin: 2px 10px !important;
+  color: var(--text) !important;
+  transition: background 0.15s, color 0.15s, transform 0.12s;
+}
+.nav-item:hover {
+  background: var(--primary-light) !important;
+}
+.nav-item.active {
+  background: var(--primary-light) !important;
+  color: var(--primary-dark) !important;
+  box-shadow: inset 3px 0 0 var(--primary) !important;
+  font-weight: 700 !important;
+}
+html[data-theme="dark"] .nav-item.active {
+  color: var(--text) !important;
+  background: rgba(132, 80, 203, 0.22) !important;
+  box-shadow: inset 3px 0 0 var(--primary) !important;
+}
+.sidebar-theme {
+  border-radius: 12px !important;
+  border: 1px solid var(--border) !important;
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+.exam-pill, .exam-tag {
+  border-radius: 999px !important;
+  background: var(--primary-light) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  font-weight: 700 !important;
+}
+.main, .content, #app-main {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+.topbar {
+  background: var(--qx-surface-glass) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--qx-surface-glass-border) !important;
+}
+
+/* Glass cards */
+.q-card, .subj-card, .ch-card, .exam-card, .book-card, .ds, .dash-card,
+.fc-card, .builder, .test-card, .note-card, .profile-card, .lb-list-app,
+.dash-tool-card, .dash-util-card, .cpyqb-exam-tile, .exam-pill-card,
+.mth-card, .qx-ch-card-rich, .ch-hub-panel {
+  background: var(--card) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--qx-radius) !important;
+  box-shadow: 0 8px 28px var(--shadow) !important;
+}
+html[data-theme="light"] .q-card,
+html[data-theme="light"] .subj-card,
+html[data-theme="light"] .ch-card,
+html[data-theme="light"] .book-card,
+html[data-theme="light"] .exam-card {
+  background: var(--card-elevated) !important;
+}
+
+.btn-primary, .btn-primary.sm, button.btn-primary {
+  background: var(--qx-gradient) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 6px 18px var(--qx-glow) !important;
+}
+.btn-soft, .btn-soft.sm {
+  background: var(--card) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 12px !important;
+}
+.chip, .tag {
+  border-radius: 999px !important;
+}
+.empty {
+  background: var(--card) !important;
+  border: 1px dashed var(--border) !important;
+  color: var(--gray) !important;
+  border-radius: var(--qx-radius) !important;
+}
+
+/* ─── Folder cards (Class / Exam / Subject / Chapter) ─── */
+.qx-folder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  padding: 4px 0 24px;
+}
+.qx-folder-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 18px 16px 16px;
+  min-height: 132px;
+  border-radius: var(--qx-radius-lg);
+  border: 1px solid var(--border);
+  background: var(--card-elevated);
+  cursor: pointer;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+  overflow: hidden;
+  text-align: left;
+  color: var(--text);
+  box-shadow: 0 10px 30px var(--shadow);
+}
+html[data-theme="dark"] .qx-folder-card,
+html[data-theme="dark"] .exam-pill-card,
+html[data-theme="dark"] .dash-tool-card,
+html[data-theme="dark"] .dash-util-card,
+html[data-theme="dark"] .mth-card,
+html[data-theme="dark"] .exam-card,
+html[data-theme="dark"] .subj-card {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid #64748b !important;
+}
+html[data-theme="dark"] .qx-folder-title,
+html[data-theme="dark"] .exam-pill-card strong,
+html[data-theme="dark"] .dash-tool-card strong,
+html[data-theme="dark"] .dash-util-card strong,
+html[data-theme="dark"] .mth-card strong,
+html[data-theme="dark"] .exam-card strong,
+html[data-theme="dark"] .subj-card strong {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="dark"] .qx-folder-sub,
+html[data-theme="dark"] .exam-pill-card small,
+html[data-theme="dark"] .dash-tool-card small,
+html[data-theme="dark"] .dash-util-card small,
+html[data-theme="dark"] .mth-card small,
+html[data-theme="dark"] .exam-card small,
+html[data-theme="dark"] .subj-card small {
+  color: #cbd5e1 !important;
+  -webkit-text-fill-color: #cbd5e1 !important;
+  opacity: 1 !important;
+}
+.qx-folder-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px var(--shadow);
+}
+.qx-folder-card:active {
+  transform: translateY(-1px);
+}
+.qx-folder-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+  background: var(--folder-grad, var(--qx-gradient));
+}
+.qx-folder-ic {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--folder-grad, var(--qx-gradient));
+  color: #fff;
+  font-size: 22px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  flex-shrink: 0;
+}
+.qx-folder-ic img {
+  width: 28px !important;
+  height: 28px !important;
+  max-width: 28px !important;
+  max-height: 28px !important;
+  object-fit: contain !important;
+}
+.qx-folder-title {
+  font-family: "Kanit", "Plus Jakarta Sans", sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.qx-folder-sub {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray);
+  line-height: 1.35;
+}
+.qx-folder-card.soon {
+  opacity: 0.72;
+  cursor: default;
+}
+.qx-folder-card.soon:hover {
+  transform: none;
+}
+
+/* Exam signature gradients */
+.qx-folder-card[data-exam="jee"],
+.qx-folder-card[data-exam="jee_main"],
+.qx-folder-card[data-exam="Engineering"] { --folder-grad: var(--grad-jee); }
+.qx-folder-card[data-exam="neet"],
+.qx-folder-card[data-exam="Medical"] { --folder-grad: var(--grad-neet); }
+.qx-folder-card[data-exam="olympiad"] { --folder-grad: var(--grad-olympiad); }
+.qx-folder-card[data-exam="foundation"],
+.qx-folder-card[data-exam="iit_foundation"] { --folder-grad: var(--grad-foundation); }
+.qx-folder-card[data-exam="academy"],
+.qx-folder-card[data-exam="Academic"] { --folder-grad: var(--grad-academy); }
+.qx-folder-card[data-exam="defence"],
+.qx-folder-card[data-exam="Defence"],
+.qx-folder-card[data-exam="nda"] { --folder-grad: var(--grad-defence); }
+
+.qx-folder-card[data-subj="Physics"] { --folder-grad: var(--subj-physics); }
+.qx-folder-card[data-subj="Chemistry"] { --folder-grad: var(--subj-chemistry); }
+.qx-folder-card[data-subj="Mathematics"] { --folder-grad: var(--subj-math); }
+.qx-folder-card[data-subj="Biology"],
+.qx-folder-card[data-subj="Botany"],
+.qx-folder-card[data-subj="Zoology"] { --folder-grad: var(--subj-bio); }
+.qx-folder-card[data-subj="English"] { --folder-grad: var(--subj-english); }
+
+/* Class row chips */
+.qx-class-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 18px;
+}
+.qx-class-chip {
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.qx-class-chip.on {
+  background: var(--qx-gradient);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 6px 16px var(--qx-glow);
+}
+
+/* ─── Chapter module grid ─── */
+.qx-ch-hub {
+  padding-bottom: 40px;
+}
+.qx-ch-hub-hero {
+  position: relative;
+  border-radius: var(--qx-radius-lg);
+  padding: 22px 22px 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  color: #fff;
+  background: var(--folder-grad, var(--grad-jee));
+  box-shadow: 0 14px 36px var(--shadow);
+}
+.qx-ch-hub-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(0,0,0,.18), transparent 55%);
+  pointer-events: none;
+}
+.qx-ch-hub-hero h1 {
+  position: relative;
+  z-index: 1;
+  font-family: "Kanit", sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0 0 6px;
+  color: #fff;
+}
+.qx-ch-hub-hero p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  opacity: 0.92;
+  font-size: 14px;
+  font-weight: 600;
+}
+.qx-module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+.qx-module-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 16px 16px 14px;
+  border-radius: var(--qx-radius);
+  border: 1px solid var(--border);
+  background: var(--card);
+  cursor: pointer;
+  transition: transform 0.14s, box-shadow 0.14s;
+  text-align: left;
+  color: var(--text);
+  box-shadow: 0 6px 20px var(--shadow);
+}
+html[data-theme="light"] .qx-module-card {
+  background: var(--card-elevated);
+}
+.qx-module-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px var(--shadow);
+}
+.qx-module-ic {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--folder-grad, var(--qx-gradient));
+  color: #fff;
+  font-size: 20px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
+}
+.qx-module-body {
+  flex: 1;
+  min-width: 0;
+}
+.qx-module-body strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 3px;
+}
+.qx-module-body small {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray);
+}
+.qx-module-chev {
+  color: var(--gray);
+  font-size: 18px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.qx-module-card.soon {
+  opacity: 0.65;
+  cursor: default;
+}
+.qx-module-card.soon:hover {
+  transform: none;
+}
+
+/* Page hero banners */
+.qx-page-banner {
+  border-radius: var(--qx-radius-lg);
+  padding: 20px 22px;
+  margin-bottom: 18px;
+  background: var(--qx-gradient);
+  color: #fff;
+  box-shadow: 0 12px 32px var(--qx-glow);
+}
+.qx-page-banner h1,
+.qx-page-banner h2 {
+  margin: 0 0 4px;
+  font-family: "Kanit", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+.qx-page-banner p {
+  margin: 0;
+  opacity: 0.92;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* Dashboard / lists polish */
+.marks-sec-head h3,
+.sec-desc,
+.topbar-title,
+.breadcrumb {
+  color: var(--text) !important;
+}
+.sec-desc {
+  color: var(--gray) !important;
+}
+.subj-grid, .ch-grid, .exam-grid, .books-grid, .cpyqb-exam-grid {
+  gap: 14px !important;
+}
+.cpyqb-exam-tile, .subj-card, .ch-card {
+  transition: transform 0.14s, box-shadow 0.14s;
+}
+.cpyqb-exam-tile:hover, .subj-card:hover, .ch-card:hover {
+  transform: translateY(-2px);
+}
+
+/* NTA / exam logos on question — tiny chip (16px) inline with paper text */
+img.qx-paper-exam-logo,
+img.qx-nta-chip,
+img.qx-card-exam-logo,
+.qx-paper-meta img,
+.qx-paper-meta img.qx-exam-logo,
+.qx-paper-chip img,
+.q-footer img.qx-exam-logo,
+.tag img.qx-exam-logo,
+.qx-src-tag img {
+  width: 16px !important;
+  height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  object-fit: contain !important;
+  border-radius: 3px !important;
+  display: inline-block !important;
+  vertical-align: -3px !important;
+  margin: 0 5px 0 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Kill oversized NTA/exam branding images inside question text/cards */
+.q-card .q-text img[src*="nta" i],
+.q-card .q-text img[src*="ic_content_exam" i],
+.q-card .qx-content > img:only-child,
+.qx-prac-q img[src*="nta" i],
+.mtk-q-text img[src*="nta" i],
+.qx-content img[src*="ic_content_exam" i],
+.allen-practice img[src*="ic_content_exam" i],
+.mtk-main img[src*="ic_content_exam" i] {
+  max-width: 16px !important;
+  max-height: 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+/* Hide decorative full-bleed NTA circle logos (orange/green seal) in list/practice */
+.q-card img[width][height]:not(.qx-pool-fig):not(.qx-exam-logo):not(.qx-opt-fig-img) {
+  max-width: min(100%, 280px);
+}
+
+/* ─── Chapter / topic grid (achieve.ai-inspired + 8 signature gradients) ─── */
+.qx-all-topics-label {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
+  margin: 8px 0 14px;
+  letter-spacing: -0.02em;
+}
+.qx-topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.qx-topic-grid-rich {
+  /* Same square grid as base — all chapters visible on one page */
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap: 14px;
+}
+.qx-topic-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+  gap: 8px;
+  padding: 14px 12px 12px;
+  aspect-ratio: 1 / 1;
+  min-height: 0;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  color: var(--text);
+  font-family: inherit;
+  box-shadow: 0 8px 22px var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.qx-topic-card.qx-topic-rich {
+  align-items: stretch;
+  text-align: left;
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+  padding: 14px 12px 12px;
+  background:
+    linear-gradient(165deg, rgba(255, 255, 255, 0.06), transparent 42%),
+    var(--card);
+  border: 1px solid color-mix(in srgb, var(--topic-grad, #8450cb) 22%, var(--border));
+}
+.qx-topic-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.qx-topic-rich .qx-topic-ic {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  font-size: 20px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+}
+.qx-topic-rich .qx-topic-name {
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.28;
+  letter-spacing: -0.025em;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: left;
+  margin: 4px 0 8px;
+  color: var(--text, #0f172a) !important;
+  -webkit-text-fill-color: var(--text, #0f172a) !important;
+  flex-shrink: 0 !important;
+  min-height: 2.5em;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.qx-topic-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 4px 0 6px;
+}
+.qx-ch-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(132, 80, 203, 0.12);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.qx-ch-pill.weight {
+  background: linear-gradient(135deg, rgba(234, 185, 1, 0.22), rgba(132, 80, 203, 0.18));
+  border-color: rgba(234, 185, 1, 0.45);
+  color: var(--text);
+}
+.qx-ch-pill.y26 {
+  background: linear-gradient(135deg, rgba(0, 192, 255, 0.25), rgba(66, 24, 184, 0.2));
+  border-color: rgba(0, 192, 255, 0.4);
+}
+.qx-ch-pill.qs {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+html[data-theme="dark"] .qx-ch-pill {
+  color: #f7e8cf;
+}
+.qx-ch-years-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.qx-ch-yr {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--gray);
+}
+.qx-ch-yr.y2026 {
+  background: rgba(0, 192, 255, 0.15);
+  border-color: rgba(0, 192, 255, 0.45);
+  color: var(--text);
+  font-weight: 800;
+}
+.qx-ch-priority {
+  font-size: 10px;
+  font-weight: 900;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #8450cb;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+.qx-ch-priority.p1 { background: linear-gradient(135deg, #ff0a6c, #4a3cdb); }
+.qx-ch-priority.p2 { background: linear-gradient(135deg, #00c0ff, #4218b8); }
+.qx-ch-priority.p3 { background: linear-gradient(135deg, #00ffa9, #0d4fff); }
+.qx-ch-priority.p4,
+.qx-ch-priority.p5 { background: linear-gradient(135deg, #a32cdf, #106ad2); }
+.qx-ch-priority.high { background: linear-gradient(135deg, #eab901, #ff6b00); color: #1a1a1a; }
+html[data-theme="light"] .qx-topic-card {
+  background: #fff;
+}
+.qx-topic-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px var(--shadow);
+}
+.qx-topic-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: var(--topic-grad, var(--qx-gradient));
+}
+.qx-topic-ic {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--topic-grad, var(--qx-gradient));
+  color: #fff;
+  font-size: 22px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+.qx-topic-ic img,
+.qx-topic-ic .cpyqb-ch-ic,
+.qx-topic-ic .cpyqb-ch-ic-fb {
+  width: 28px !important;
+  height: 28px !important;
+  max-width: 28px !important;
+  max-height: 28px !important;
+  object-fit: contain !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.qx-topic-ic .qx-ch-plate,
+.qx-topic-ic .qx-ch-icon.qx-ch-3d,
+.qx-topic-ic img.qx-ch-3d-img {
+  width: 80px !important;
+  height: 80px !important;
+  max-width: 80px !important;
+  max-height: 80px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.qx-topic-name {
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+html[data-theme="light"] .qx-topic-card.qx-topic-rich {
+  background:
+    linear-gradient(165deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.98)),
+    #fff;
+  box-shadow: 0 10px 28px rgba(66, 24, 184, 0.08);
+}
+.qx-topic-rich .qx-ch-pill {
+  font-size: 11px;
+  padding: 4px 9px;
+}
+.qx-topic-meta {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gray);
+}
+.qx-topic-continue {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 10px;
+}
+.qx-topic-card .qx-progress,
+.qx-topic-card .qx-prog,
+.qx-topic-card [class*="progress"] {
+  width: 100%;
+  margin-top: 4px;
+}
+
+/* 8 best gradient combos (701/702 practice polish + vivid duotones) */
+.qx-topic-g0 { --topic-grad: linear-gradient(135deg, #00C0FF, #4218B8); }
+.qx-topic-g1 { --topic-grad: linear-gradient(135deg, #00FFA9, #0D4FFF); }
+.qx-topic-g2 { --topic-grad: linear-gradient(135deg, #FFE53B, #FF2525); }
+.qx-topic-g3 { --topic-grad: linear-gradient(135deg, #A32CDF, #106AD2); }
+.qx-topic-g4 { --topic-grad: linear-gradient(135deg, #1FC9FD, #FC0061); }
+.qx-topic-g5 { --topic-grad: linear-gradient(135deg, #FEC194, #FF0061); }
+.qx-topic-g6 { --topic-grad: linear-gradient(135deg, #00FFFF, #93278F); }
+.qx-topic-g7 { --topic-grad: linear-gradient(135deg, #FF0A6C, #4A3CDB); }
+
+/* Subject hero (Chemistry / Math style header) */
+.qx-subject-hero {
+  border-radius: 20px;
+  padding: 22px 22px 18px;
+  margin-bottom: 16px;
+  color: #fff;
+  background: linear-gradient(135deg, #00C0FF 0%, #4218B8 55%, #8450CB 100%);
+  box-shadow: 0 14px 36px var(--qx-glow);
+}
+.qx-subject-hero.qx-subj-chemistry {
+  background: linear-gradient(135deg, #00FFA9 0%, #0D4FFF 100%);
+}
+.qx-subject-hero.qx-subj-physics {
+  background: linear-gradient(135deg, #FFE53B 0%, #FF2525 100%);
+  color: #1a1a1a;
+}
+.qx-subject-hero.qx-subj-mathematics,
+.qx-subject-hero.qx-subj-maths {
+  background: linear-gradient(135deg, #00C0FF 0%, #4218B8 100%);
+}
+.qx-subject-hero.qx-subj-biology,
+.qx-subject-hero.qx-subj-botany,
+.qx-subject-hero.qx-subj-zoology {
+  background: linear-gradient(135deg, #00FFA9 0%, #90A994 50%, #0D4FFF 100%);
+}
+.qx-subject-hero h1 {
+  margin: 0 0 6px;
+  font-family: "Kanit", sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: inherit;
+}
+.qx-subject-hero p {
+  margin: 0;
+  opacity: 0.95;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (max-width: 720px) {
+  .qx-topic-grid,
+  .qx-topic-grid-rich,
+  .ch-grid,
+  .board-ch-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .qx-topic-card {
+    min-height: 0;
+    aspect-ratio: 1 / 1;
+    padding: 12px 10px 10px;
+  }
+  .qx-subject-hero h1 {
+    font-size: 22px;
+  }
+}
+
+/* ─── Submit Answer feedback: full box green / red ─── */
+/* Correct option → entire card green; wrong selected → entire card red */
+.qx-prac-opt.correct,
+.mtk-opt.correct,
+.qa-opt.correct,
+.qx-prac-numerical.correct,
+.mtk-opt.correct.selected,
+.qx-prac-opt.correct.selected {
+  background: #16a34a !important;
+  background-color: #16a34a !important;
+  border-color: #15803d !important;
+  border-width: 2px !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.45), 0 8px 20px rgba(22, 163, 74, 0.28) !important;
+}
+.qx-prac-opt.wrong,
+.mtk-opt.wrong,
+.qa-opt.wrong,
+.qx-prac-numerical.wrong,
+.qx-prac-opt.wrong.selected,
+.mtk-opt.wrong.selected {
+  background: #dc2626 !important;
+  background-color: #dc2626 !important;
+  border-color: #b91c1c !important;
+  border-width: 2px !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.45), 0 8px 20px rgba(220, 38, 38, 0.28) !important;
+}
+
+/* Text + math inside filled boxes stay readable */
+.qx-prac-opt.correct .qx-prac-opt-text,
+.qx-prac-opt.wrong .qx-prac-opt-text,
+.mtk-opt.correct .mtk-opt-text,
+.mtk-opt.wrong .mtk-opt-text,
+.qa-opt.correct,
+.qa-opt.wrong,
+.qx-prac-opt.correct .qx-content,
+.qx-prac-opt.wrong .qx-content {
+  color: #ffffff !important;
+}
+.qx-prac-opt.correct .mtk-opt-letter,
+.qx-prac-opt.correct .qx-opt-circle,
+.mtk-opt.correct .mtk-opt-letter,
+.qa-opt.correct .opt-letter {
+  background: #ffffff !important;
+  color: #15803d !important;
+  box-shadow: none !important;
+}
+.qx-prac-opt.wrong .mtk-opt-letter,
+.qx-prac-opt.wrong .qx-opt-circle,
+.mtk-opt.wrong .mtk-opt-letter,
+.qa-opt.wrong .opt-letter {
+  background: #ffffff !important;
+  color: #b91c1c !important;
+  box-shadow: none !important;
+}
+
+/* Keep figure plates readable on solid red/green */
+.qx-prac-opt.correct img,
+.qx-prac-opt.wrong img,
+.mtk-opt.correct img,
+.mtk-opt.wrong img {
+  background: #ffffff !important;
+  border-radius: 8px !important;
+}
+
+/* Light/dark both use solid fills (user: complete box color) */
+html[data-theme="dark"] .qx-prac-opt.correct,
+html[data-theme="dark"] .mtk-opt.correct,
+html[data-theme="dark"] .qa-opt.correct {
+  background: #16a34a !important;
+  border-color: #4ade80 !important;
+  color: #ffffff !important;
+}
+html[data-theme="dark"] .qx-prac-opt.wrong,
+html[data-theme="dark"] .mtk-opt.wrong,
+html[data-theme="dark"] .qa-opt.wrong {
+  background: #dc2626 !important;
+  border-color: #f87171 !important;
+  color: #ffffff !important;
+}
+
+/* ─── Difficulty (real Marks Easy / Medium / Hard) ─── */
+.tag.tag-diff,
+.tag.diff-easy,
+.tag.diff-medium,
+.tag.diff-hard {
+  font-weight: 800 !important;
+  letter-spacing: 0.02em;
+  border: 1px solid transparent;
+}
+.tag.diff-easy,
+.tag-diff.diff-easy {
+  background: rgba(16, 185, 129, 0.16) !important;
+  color: #059669 !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+}
+.tag.diff-medium,
+.tag-diff.diff-medium {
+  background: rgba(245, 158, 11, 0.16) !important;
+  color: #d97706 !important;
+  border-color: rgba(245, 158, 11, 0.45) !important;
+}
+.tag.diff-hard,
+.tag-diff.diff-hard {
+  background: rgba(239, 68, 68, 0.16) !important;
+  color: #dc2626 !important;
+  border-color: rgba(239, 68, 68, 0.45) !important;
+}
+html[data-theme="dark"] .tag.diff-easy { color: #6ee7b7 !important; }
+html[data-theme="dark"] .tag.diff-medium { color: #fcd34d !important; }
+html[data-theme="dark"] .tag.diff-hard { color: #fca5a5 !important; }
+
+.qx-diff-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 12px;
+  align-items: center;
+}
+.qx-diff-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border, #e2e8f0);
+  background: var(--card, #fff);
+  color: var(--text, #0f172a);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.12s, border-color 0.12s, background 0.12s;
+}
+.qx-diff-chip b {
+  font-weight: 900;
+  opacity: 0.85;
+}
+.qx-diff-chip:hover {
+  transform: translateY(-1px);
+  border-color: #8450cb;
+}
+.qx-diff-chip.on {
+  border-color: #8450cb;
+  background: linear-gradient(135deg, rgba(132, 80, 203, 0.18), rgba(0, 192, 255, 0.12));
+  color: var(--text);
+  box-shadow: 0 4px 14px rgba(132, 80, 203, 0.15);
+}
+.qx-diff-chip.diff-easy.on {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.16);
+}
+.qx-diff-chip.diff-medium.on {
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.16);
+}
+.qx-diff-chip.diff-hard.on {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.16);
+}
+.qx-diff-active {
+  color: #8450cb;
+  font-weight: 800;
+}
+.qx-qlist-wrap {
+  width: 100%;
+}
+
+/* Class → exam track tiles */
+.qx-class-exam-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+}
+.qx-class-exam-grid-1 { grid-template-columns: minmax(0, 360px) !important; }
+.qx-class-exam-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+.qx-class-exam-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+@media (max-width: 720px) {
+  .qx-class-exam-grid,
+  .qx-class-exam-grid-2,
+  .qx-class-exam-grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+}
+.qx-class-exam-tile .cpyqb-exam-tile-ic {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.qx-class-exam-tile .cpyqb-exam-tile-logo {
+  width: 48px !important;
+  height: 48px !important;
+  max-width: 48px !important;
+  max-height: 48px !important;
+}
+
+/* Class 7–12 folder grid — 3×2 on desktop */
+.qx-class-folder-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+}
+@media (max-width: 900px) {
+  .qx-class-folder-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 520px) {
+  .qx-class-folder-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+.qx-class-folder-tile {
+  min-height: 148px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.qx-class-folder-meta {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gray, #64748b);
+  margin-top: auto;
+}
+.qx-class-row {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 8px !important;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.qx-class-chip {
+  flex: 0 0 auto;
+  min-width: 72px;
+  text-align: center;
+  padding: 10px 14px !important;
+}
+.qx-explore-block .qx-folder-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+}
+@media (max-width: 640px) {
+  .qx-explore-block .qx-folder-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+.qx-class-empty {
+  max-width: 520px;
+  margin: 24px auto;
+  text-align: left;
+  padding: 22px !important;
+}
+.qx-class-empty-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+.qx-academic-page .cpyqb-exam-bank-head h1 {
+  font-size: 26px;
+  letter-spacing: -0.02em;
+}
+.subj-card .subj-ic img.marks-subj-ic-img {
+  width: 36px !important;
+  height: 36px !important;
+  max-width: 36px !important;
+  max-height: 36px !important;
+  object-fit: contain;
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .qx-folder-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .qx-module-grid {
+    grid-template-columns: 1fr;
+  }
+  .qx-ch-hub-hero h1 {
+    font-size: 20px;
+  }
+  .logo-text {
+    font-size: 15px !important;
+  }
+}

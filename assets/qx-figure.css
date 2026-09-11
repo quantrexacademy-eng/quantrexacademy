@@ -1,0 +1,308 @@
+/* Quantrex — clean question & option figures (zoom via qx-figure-viewer) */
+
+.qx-diagram-panel,
+.qx-diag-toolbar,
+.qx-diag-zoom-btns,
+.qx-diag-btn,
+.qx-diag-pct,
+.qx-diag-label,
+.qx-diagram-hint,
+.qx-diagram-badge {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+
+/* Question-body figures */
+.qx-diagram-slot .qx-fig,
+.qx-question-body .qx-fig {
+  margin: 2px auto;
+}
+
+.qx-fig {
+  display: block;
+  position: relative;
+  margin: 8px auto;
+  padding: 0;
+  max-width: min(100%, 680px);
+  text-align: center;
+  border: none;
+  background: transparent;
+  overflow: visible;
+}
+
+/* NEVER show watermark overlays on figures */
+.qx-quantrex-wm-overlay,
+.qx-quantrex-black-wm,
+.qx-quantrex-black-seal,
+.qx-premium-wm-canvas,
+.qx-brand-overlay,
+.qx-diag-watermark,
+.qx-premium-wm-sheet,
+.qx-premium-wm-title,
+.qx-premium-wm-tag,
+.qx-wm-diagonal,
+img.qx-quantrex-wm-overlay,
+canvas.qx-premium-wm-canvas,
+canvas.qx-marks-scrub-canvas {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Compact figure size — stem + options (BNH: less scroll, keep aspect) */
+#qxDiagramSlot img,
+.qx-diagram-slot img,
+.qx-question-body img.qx-pool-fig,
+.mtk-q-text img,
+.qx-prac-q img,
+.qa-q img,
+.qx-fig img.qx-pool-fig {
+  max-width: min(100%, 720px) !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: min(78vh, 640px) !important;
+  display: block !important;
+  margin: 4px auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  image-rendering: high-quality !important;
+  background: #fff !important;
+}
+
+.qx-prac-opt-text img,
+.mtk-opt-text img {
+  max-width: min(100%, 320px) !important;
+  max-height: min(36vh, 280px) !important;
+  min-height: 64px !important;
+  image-rendering: high-quality !important;
+  background: #fff !important;
+  margin: 6px auto !important;
+}
+/* Clean figures in options — HD readable structures */
+.qx-prac-opt-text .qx-fig img.qx-pool-fig,
+.mtk-opt-text .qx-fig img.qx-pool-fig,
+.qx-opt-diagram-slot img.qx-pool-fig {
+  max-height: min(36vh, 280px) !important;
+  filter: none !important;
+  image-rendering: high-quality !important;
+  background: #fff !important;
+}
+
+.qx-fig.qx-brand-covered,
+.qx-fig.qx-fig-stack {
+  overflow: visible;
+}
+
+/* Corner-only mask — never cover the figure body */
+.qx-fig.qx-wm-pending-wrap::before,
+.qx-opt-fig.qx-wm-pending-wrap::before {
+  display: none !important;
+}
+
+.qx-fig.qx-wm-pending-wrap::after,
+.qx-opt-fig.qx-wm-pending-wrap::after,
+.qx-fig:not(:has(img.qx-cleaned)):not(.qx-wm-pending-wrap)::after,
+.qx-opt-fig:not(:has(img.qx-cleaned)):not(.qx-wm-pending-wrap)::after,
+.qx-pool-fig-wrap::after,
+.qx-fig-stack::after {
+  display: none !important;
+}
+
+.qx-fig.qx-cleaned-wrap::after,
+.qx-opt-fig.qx-cleaned-wrap::after,
+.qx-fig:has(img.qx-cleaned)::after,
+.qx-opt-fig:has(img.qx-cleaned)::after {
+  display: none !important;
+}
+
+/* Organic book — preserve authored figure width (120px, 250px, 350px, etc.) */
+img.qx-organic-fig[data-qx-display-w],
+.mtk-main img.qx-organic-fig[data-qx-display-w],
+#qxDiagramSlot img[data-qx-display-w],
+.mtk-main #qxDiagramSlot img[data-qx-display-w],
+.qx-diagram-slot img[data-qx-display-w],
+.mtk-main .qx-diagram-slot img[data-qx-display-w],
+.qx-fig img[data-qx-display-w] {
+  width: var(--qx-fig-w) !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 48px !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  object-fit: contain !important;
+  overflow: visible !important;
+}
+
+.qx-fig-inner:has(> img[data-qx-display-w]),
+.qx-fig:has(img[data-qx-display-w]) {
+  width: min(100%, var(--qx-fig-w, 320px)) !important;
+  max-width: 100% !important;
+  min-width: min(var(--qx-fig-w, 200px), 100%) !important;
+  overflow: visible !important;
+}
+
+/* Practice / CBT — diagram segments & slots */
+.mtk-main #qxDiagramSlot,
+.mtk-main > .qx-diagram-slot,
+.mtk-main .qx-question-body #qxDiagramSlot,
+.mtk-main .qx-question-body .qx-diagram-slot,
+.mtk-main .qx-question-body .qx-diagram-seg {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 6px !important;
+  overflow: visible !important;
+  max-height: none !important;
+}
+
+.mtk-main #qxDiagramSlot .qx-fig,
+.mtk-main .qx-diagram-slot .qx-fig,
+.mtk-main .qx-diagram-seg .qx-fig {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  max-width: 100% !important;
+  margin: 2px auto !important;
+  overflow: visible !important;
+}
+
+.qx-fig-img,
+.qx-fig img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: none;
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  filter: none;
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+
+.mtk-q-text .qx-fig,
+.qa-q .qx-fig,
+.qx-prac-q .qx-fig {
+  margin: 16px 0;
+}
+
+.mtk-q-text .qx-fig-img,
+.qa-q .qx-fig-img,
+.qx-prac-q .qx-fig-img,
+#qxDiagramSlot .qx-fig-img,
+#qxDiagramSlot img {
+  max-height: none;
+}
+
+/* Option images — flat, no shadow plate behind figure */
+.qx-opt-fig {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  margin: 4px 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  min-height: 0;
+  overflow: visible;
+}
+
+
+.qx-opt-fig::after {
+  display: none !important;
+}
+
+.qx-opt-fig img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 180px;
+  object-fit: contain;
+  margin: 0 auto;
+  image-rendering: auto;
+}
+
+.mtk-opt-text .qx-fig,
+.mtk-opt-text .qx-opt-fig,
+.qx-prac-opt-text .qx-fig,
+.qx-prac-opt-text .qx-opt-fig {
+  margin: 6px 0 0;
+}
+
+.mtk-opt-text .qx-fig-img,
+.mtk-opt-text .qx-opt-fig img,
+.qx-prac-opt-text .qx-fig-img,
+.qx-prac-opt-text .qx-opt-fig img {
+  max-height: 130px;
+}
+
+.mtk-opt {
+  align-items: flex-start;
+}
+
+.mtk-opt-text {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  min-width: 0;
+}
+
+.mtk-options.qx-opts-img .mtk-opt {
+  flex-direction: row;
+  align-items: flex-start;
+  text-align: left;
+  padding: 10px 12px;
+}
+
+.mtk-options.qx-opts-img .mtk-opt-letter {
+  align-self: flex-start;
+  margin-bottom: 0;
+}
+
+.mtk-options.qx-opts-img .mtk-opt-text {
+  width: 100%;
+}
+
+/* Light / dark CBT — no gray figure cards or shadow plates */
+.mtk-test-root[data-test-theme="light"] .qx-opt-fig,
+.mtk-test-root[data-test-theme="dark"] .qx-opt-fig,
+.mtk-test-root[data-test-theme="light"] .qx-fig,
+.mtk-test-root[data-test-theme="dark"] .qx-fig {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.mtk-test-root[data-test-theme="light"] .qx-fig-img,
+.mtk-test-root[data-test-theme="light"] .qx-fig img,
+[data-theme="dark"] .qx-fig-img,
+[data-theme="dark"] .qx-fig img,
+[data-theme="dark"] .qx-opt-fig {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+
+@media (max-width: 640px) {
+  .qx-fig-img,
+  .qx-fig img, #qxDiagramSlot img { max-height: none; }
+  .qx-opt-fig img { max-height: 110px; }
+}

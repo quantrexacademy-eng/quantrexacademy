@@ -1,0 +1,45 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff47378e1624ea7b6998",
+  "subject": "Physics",
+  "chapter": "Waves and Sound",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff83378e1624ea7b6c6d",
+      "title": "Travelling Waves",
+      "count": 1,
+      "questionIds": [
+        "67fdff47378e1624ea7b6996"
+      ]
+    },
+    {
+      "id": "67fdff84378e1624ea7b6c6f",
+      "title": "Vibration of String",
+      "count": 2,
+      "questionIds": [
+        "68e7a681ce75e72648a45e85",
+        "67fdff6a378e1624ea7b6b39"
+      ]
+    },
+    {
+      "id": "68e7a693ce75e72648a45eae",
+      "title": "Interference and Superposition of Waves",
+      "count": 1,
+      "questionIds": [
+        "68e7a681ce75e72648a45e86"
+      ]
+    },
+    {
+      "id": "67fdff83378e1624ea7b6c6e",
+      "title": "Doppler's Effect",
+      "count": 2,
+      "questionIds": [
+        "67fdff70378e1624ea7b6b7a",
+        "67fdff65378e1624ea7b6afb"
+      ]
+    }
+  ]
+}

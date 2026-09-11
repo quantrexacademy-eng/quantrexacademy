@@ -1,0 +1,76 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dda6c03b9dcaf1afec15",
+  "topicId": "66a0dda7c03b9dcaf1afec17",
+  "title": "Conditional Probability and Multiplication Theorem",
+  "concepts": [
+    {
+      "title": "Conditional Probability ",
+      "conceptBody": "<h3>Conditional probability</h3><p>If A &amp; B are 2 events related to an experiment then the probability of occurrence of A under the condition that B has already occurred etc. i.e. relative to B, is known as conditional probability.&nbsp;</p><p>It is denoted by $\\text{P}\\left( \\text{A}/\\text{B} \\right)$ or $\\text{P}(\\text{A}$ given $\\text{B})$.</p><p>Note here $\\text{P}\\left( \\text{B} \\right)\\ne 0$ is must.</p><p>What do we mean by this?</p><p>Let us take an experiment to consider it. Two dices are thrown and 2 events A &amp; B are recorded.</p><p>A: The sum of dices is 8 .</p><p>B: There is an odd number on first die.</p><p>So now if we need to find the probability of occurence of event A such that B has already occurred will be called conditional probability. \"A given B\".</p><p>i.e. $\\text{P}\\left( \\text{A}/\\text{B} \\right)$</p><p>Now we can imagine from the above written lines that the sample space for $\\text{P}\\left( \\text{A}/\\text{B} \\right)$ will become the possible outcomes of event B.</p><p>And the favourable events become the intersection of $\\text{A}$ and $\\text{B}$, as $\\text{B}$ has to be taken in consideration as result of $\\text{A}$ is based on $\\text{B}$.</p><p>Hence the formula becomes</p><p>$\\text{P}\\left( \\text{A}/\\text{B} \\right)=\\frac{\\text{P}\\left( \\text{A}\\cap \\text{B} \\right)}{\\text{P}\\left( \\text{B} \\right)}$</p><p>Let us complete the example we have taken</p><p>B = $\\text{ Occurence }\\text{ of }\\text{ odd }\\text{ on }\\text{ first }\\text{ die }$</p><p>= $\\{\\left( 1,1 \\right)\\left( 1,2 \\right)\\left( 1,3 \\right)\\ldots \\left( 1,6 \\right)$</p><p>$\\left( 3,1 \\right)\\left( 3,2 \\right)\\left( 3,3 \\right)\\ldots \\left( 3,6 \\right)$</p><p>$\\left( 5,1 \\right)\\left( 5,2 \\right)\\left( 5,3 \\right)\\ldots \\left( 5,6 \\right)\\}$</p><p>= $18\\text{ cases }$</p><p>A = $\\text{ occurence }\\text{ of }\\text{ sum }8$</p><p>= $\\left\\{ \\left( 2,6 \\right)\\left( 3,5 \\right)\\left( 4,4 \\right)\\left( 5,3 \\right)\\left( 6,2 \\right) \\right\\}$</p><p><strong>Note : </strong>Here $\\left( 2,6 \\right)$ and $\\left( 6,2 \\right)$ are 2 different cases and first represents 2 on dice 1 and 6 on dice 2. Next represents 6 on dice 1 and 2 on dice 2.</p><p>$\\text{P}\\left( \\text{A} \\right)=\\frac{5}{36}\\text{ and }\\text{ P}\\left( \\text{B} \\right)=\\frac{18}{36}=$$\\frac{1}{2}$</p><p>$\\text{n}\\left( \\text{A}\\cap \\text{B} \\right)=2$ {$\\text{ as }\\text{ sample }\\text{ space }=36,\\text{ when }2\\text{ dices }\\text{ are }\\text{ rolled }\\}$</p><p>$\\{\\text{ possible }\\text{ cases }\\text{ are }\\left( 3,5 \\right)\\And \\left( 5,3 \\right)$</p><p>$\\text{P}\\left( \\text{A}\\cap \\text{B} \\right)=\\frac{2}{36}=\\frac{1}{8}$</p><p>Hence $\\text{P}\\left( \\text{A}/\\text{B} \\right)=\\frac{\\text{n}\\left( \\text{A}\\cap \\text{B} \\right)}{\\text{n}\\left( \\text{B} \\right)}=\\frac{2}{18}=\\frac{1}{9}$</p><p>$\\text{ Or }=\\frac{\\text{P}\\left( \\text{A}\\cap \\text{B} \\right)}{\\text{P}\\left( \\text{B} \\right)}=\\frac{1}{18\\times \\frac{1}{2}}=\\frac{1}{9}$</p><p><strong>For independent events : </strong>If $\\text{A}$ and $\\text{B}$ are two independent events then</p><p>$\\text{P}\\left( \\text{A}/\\text{B} \\right)=\\frac{\\text{P}\\left( \\text{A}\\cap \\text{B} \\right)}{\\text{P}\\left( \\text{B} \\right)}=\\frac{\\text{P}\\left( \\text{A} \\right)\\text{P}\\left( \\text{B} \\right)}{\\text{P}\\left( \\text{B} \\right)}=\\text{P}\\left( \\text{A} \\right)$</p><p>As $\\mathbf{P}\\left( \\mathbf{A}\\cap \\mathbf{B} \\right)=\\mathbf{P}\\left( \\mathbf{A} \\right).\\mathbf{P}\\left( \\mathbf{B} \\right)$</p><p>Similarly, for $\\text{P}\\left( \\text{B}/\\text{A} \\right)=\\text{P}\\left( \\text{B} \\right)$</p>",
+      "position": 0,
+      "qcConcept": "66a0dda7c03b9dcaf1afec18"
+    },
+    {
+      "title": "Multiplication Theorem",
+      "conceptBody": "<h3><strong>Multiplication Theorem&nbsp;</strong></h3><p>If $\\text{A}$ and $\\text{B}$ are two events associated with a random experiment, then</p><p>$\\text{P}\\left( \\text{A}\\cap \\text{B} \\right)=\\text{P}\\left( \\text{A} \\right).\\text{P}\\left( \\text{B}/\\text{A} \\right)$</p><p>Or $\\text{P}\\left( \\text{B}\\cap \\text{A} \\right)=\\text{P}\\left( \\text{B} \\right).\\text{P}\\left( \\text{A}/\\text{B} \\right)$</p><p>This can be just derived from conditional probability.</p><p><strong>Note: </strong>This theorem is used in cases where the events occur in different stages and not simultaneously.</p><p><strong>EXTENSION OF THE THEOREM&nbsp;</strong></p><p>$\\text{P}\\left( {{\\text{A}}_{1}}\\cap {{\\text{A}}_{2}}\\cap {{\\text{A}}_{3}} \\right)=\\text{P}\\left( {{\\text{A}}_{1}} \\right).\\text{P}\\left( {{\\text{A}}_{2}}/{{\\text{A}}_{1}} \\right).\\text{P}\\left( {{\\text{A}}_{3}}/\\left( {{\\text{A}}_{1}}\\cap {{\\text{A}}_{2}} \\right) \\right.$ and this can be generalized for $\\text{n}$ such events</p><p><strong>Illustration&nbsp;</strong></p><p><strong>If A and B are two events such that $P\\left( A \\right)=0.5,P\\left( B \\right)=0.6$ and $P\\left( A\\cup B \\right)=0.8$, find P( A / B ) and $\\mathbf{P}\\left( \\mathbf{B}/\\mathbf{A} \\right)$.&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>We have, $\\text{P}\\left( \\text{A}\\cup \\text{B} \\right)=\\text{P}\\left( \\text{A} \\right)+\\text{P}\\left( \\text{B} \\right)-\\text{P}\\left( \\text{A}\\cap \\text{B} \\right)$</p><p>$\\therefore \\text{ }\\!\\!~\\!\\!\\text{ P}\\left( \\text{A}\\cap \\text{B} \\right)=\\text{P}\\left( \\text{A} \\right)+\\text{P}\\left( \\text{B} \\right)-\\text{P}\\left( \\text{A}\\cup \\text{B} \\right)=0.5+0.6-0.8=0.3$</p><p>Now, $\\text{P}\\left( \\text{A}/\\text{B} \\right)=\\frac{\\text{P}\\left( \\text{A}\\cap \\text{B} \\right)}{\\text{P}\\left( \\text{B} \\right)}\\Rightarrow \\text{P}\\left( \\text{A}/\\text{B} \\right)=\\frac{0.3}{0.6}=\\frac{1}{2}$</p><p>And $\\text{P}\\left( \\text{B}/\\text{A} \\right)=\\frac{\\text{P}\\left( \\text{A}\\cap \\text{B} \\right)}{\\text{P}\\left( \\text{A} \\right)}\\Rightarrow \\text{P}\\left( \\text{B}/\\text{A} \\right)=\\frac{0.3}{0.5}=\\frac{3}{5}$</p><p><strong>Illustration</strong></p><p><strong>A die is rolled twice and the sum of the numbers appearing on them is observed to be 7. What is the conditional probability that the number 2 has appeared at least once?&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>Consider the following events:</p><p>$\\text{A}=$ getting number 2 at least once; $\\text{B}=$ getting 7 as the sum of the numbers on two dice. We have</p><p>$\\text{A}=\\left\\{ \\left( 2,1 \\right),\\left( 2,2 \\right),\\left( 2,3 \\right),\\left( 2,4 \\right),\\left( 2,5 \\right),\\left( 2,6 \\right),\\left( 1,2 \\right),\\left( 3,2 \\right),\\left( 4,2 \\right),\\left( 5,2 \\right),\\left( 6,2 \\right) \\right\\}$</p><p>and $\\text{B}=\\left\\{ \\left( 2,5 \\right),\\left( 5,2 \\right),\\left( 6,1 \\right),\\left( 1,6 \\right),\\left( 3,4 \\right),\\left( 4,3 \\right) \\right\\}$</p><p>$\\therefore \\text{ P}\\left( \\text{A} \\right)=\\frac{11}{36},\\text{P}\\left( \\text{B} \\right)=\\frac{6}{36}\\text{ and }\\text{ P}\\left( \\text{A}\\cap \\text{B} \\right)=\\frac{2}{36}$</p><p>Now, required probability</p><p>$=\\text{P}\\left( \\text{A}/\\text{B} \\right)=\\frac{\\text{P}\\left( \\text{A}\\cap \\text{B} \\right)}{\\text{P}\\left( \\text{B} \\right)}=\\frac{2/36}{6/36}=\\frac{1}{3}$</p>",
+      "position": 1,
+      "qcConcept": "66a0dda9c03b9dcaf1afec23"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f6b2d384bfb4a538332",
+      "title": "$P(A)=\\frac{3}{8}, \\quad P(B)=\\frac{5}{8}$ and $P(A \\cup B)=\\frac{3}{4}$, then $P\\left(\\frac{A}{B}\\right)=$\nIf $A$ and $B$ are two events such that",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6b2d384bfb4a538333",
+      "title": "$A$ and $B$ are two events such that $P(A)=0.8, P(B)=0.6$ and $P(A \\cap B)=0.5$, then the value of $P(A / B)$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6b2d384bfb4a538334",
+      "title": "A pair has two children. If one of them is boy, then the probability that other is also a boy, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6b2d384bfb4a538335",
+      "title": "Three coins are tossed. If one of them shows tail, then the probability that all three coins show tail, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6b2d384bfb4a538336",
+      "title": "A man is known to speak the truth 3 out of 4 times. He throws a die and reports that it is a six. The probability that it is actually a six, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6b2d384bfb4a538337",
+      "title": "A coin is tossed three times in succession. If $E$ is the event that there are at least two heads and $F$ is the event in which first throw is a head, then $P\\left(\\frac{E}{F}\\right)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6b2d384bfb4a538338",
+      "title": "A letter is known to have come either from LONDON or CLIFTON; on the postmark only the two consecutive letters $\\mathrm{ON}$ are legible. The probability that it came from LONDON is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6b2d384bfb4a538339",
+      "title": "There are 3 bags which are known to contain 2 white and 3 black balls; 4 white and 1 black balls and 3 white and 7 black balls respectively. A ball is drawn at random from one of the bags and found to be a black ball. Then the probability that it was drawn from the bag containing most black balls is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6b2d384bfb4a53833a",
+      "title": "In an entrance test there are multiple choice questions. There are four possible answers to each question of which one is correct. The probability that a student knows the answer to a question is $90 \\%$. If he gets the correct answer to a question, then the probability that he was guessing, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

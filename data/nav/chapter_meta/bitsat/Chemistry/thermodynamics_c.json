@@ -1,0 +1,80 @@
+{
+  "examSlug": "bitsat",
+  "examId": "61a8a124e8ce0dc8a5c62d2c",
+  "subjectId": "61a8a2cce8ce0dc8a5c62d2e",
+  "chapterId": "61e7bd71f94bf85046d85338",
+  "subject": "Chemistry",
+  "chapter": "Thermodynamics (C)",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64c0e85f6f5bfc7ab78aed6a",
+      "title": "System and surrounding",
+      "count": 1,
+      "questionIds": [
+        "64c0e8326f5bfc7ab78aeb6d"
+      ]
+    },
+    {
+      "id": "64c0e85f6f5bfc7ab78aed66",
+      "title": "First Law and Basic Fundamentals of Thermodynamics",
+      "count": 8,
+      "questionIds": [
+        "67726d14c49e8ef28ee2b415",
+        "67726cfcc49e8ef28ee2b35a",
+        "64c0e8266f5bfc7ab78aeb03",
+        "64c0e8156f5bfc7ab78aea72",
+        "64c0e8146f5bfc7ab78aea69",
+        "64c0e7846f5bfc7ab78ae589",
+        "64c0e7766f5bfc7ab78ae509",
+        "64c0e7766f5bfc7ab78ae508"
+      ]
+    },
+    {
+      "id": "64c0e85f6f5bfc7ab78aed67",
+      "title": "Laws of Thermochemistry and Enthalpy Change",
+      "count": 14,
+      "questionIds": [
+        "67726d15c49e8ef28ee2b419",
+        "67726d07c49e8ef28ee2b3b1",
+        "67726cfbc49e8ef28ee2b356",
+        "65b7b87d97ae24e9e2db8cdd",
+        "65b7b87397ae24e9e2db8c7a",
+        "64c0e8146f5bfc7ab78aea68",
+        "64c0e8066f5bfc7ab78ae9eb",
+        "64c0e7f86f5bfc7ab78ae974",
+        "64c0e7de6f5bfc7ab78ae88d",
+        "64c0e7be6f5bfc7ab78ae77d",
+        "64c0e7be6f5bfc7ab78ae779",
+        "64c0e7b06f5bfc7ab78ae701",
+        "64c0e7b06f5bfc7ab78ae700",
+        "64c0e7766f5bfc7ab78ae50a"
+      ]
+    },
+    {
+      "id": "64c0e85f6f5bfc7ab78aed69",
+      "title": "Entropy and Second law of thermodynamics",
+      "count": 5,
+      "questionIds": [
+        "64c0e8316f5bfc7ab78aeb68",
+        "64c0e7fa6f5bfc7ab78ae987",
+        "64c0e7ec6f5bfc7ab78ae908",
+        "64c0e7ea6f5bfc7ab78ae8f4",
+        "64c0e7be6f5bfc7ab78ae77c"
+      ]
+    },
+    {
+      "id": "64c0e85f6f5bfc7ab78aed68",
+      "title": "Third law of thermodynamics",
+      "count": 6,
+      "questionIds": [
+        "67726d09c49e8ef28ee2b3be",
+        "64c0e7de6f5bfc7ab78ae88c",
+        "64c0e7cf6f5bfc7ab78ae813",
+        "64c0e7cc6f5bfc7ab78ae7f6",
+        "64c0e7a06f5bfc7ab78ae681",
+        "64c0e7926f5bfc7ab78ae606"
+      ]
+    }
+  ]
+}

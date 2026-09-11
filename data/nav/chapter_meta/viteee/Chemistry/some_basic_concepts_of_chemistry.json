@@ -1,0 +1,42 @@
+{
+  "examSlug": "viteee",
+  "examId": "61bb57e81213731910ea0b6f",
+  "subjectId": "61bb58281213731910ea0b71",
+  "chapterId": "61bb822bbd5191abb4dd2326",
+  "subject": "Chemistry",
+  "chapter": "Some Basic Concepts of Chemistry",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64e459abec226f2f4360af20",
+      "title": "Quantitative measures in chemical equations",
+      "count": 2,
+      "questionIds": [
+        "64e45912ec226f2f4360a8a8",
+        "64e458d5ec226f2f4360a652"
+      ]
+    },
+    {
+      "id": "64e459abec226f2f4360af1e",
+      "title": "Mole concept",
+      "count": 4,
+      "questionIds": [
+        "64e4591fec226f2f4360a924",
+        "64e4591eec226f2f4360a91c",
+        "64e458faec226f2f4360a7be",
+        "64e458c7ec226f2f4360a5c8"
+      ]
+    },
+    {
+      "id": "64e459abec226f2f4360af1f",
+      "title": "Concentration terms",
+      "count": 4,
+      "questionIds": [
+        "64e4591dec226f2f4360a916",
+        "64e4591dec226f2f4360a912",
+        "64e45911ec226f2f4360a89b",
+        "64e458d4ec226f2f4360a648"
+      ]
+    }
+  ]
+}

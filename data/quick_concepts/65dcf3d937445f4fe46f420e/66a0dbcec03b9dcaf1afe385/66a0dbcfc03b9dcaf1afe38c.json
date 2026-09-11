@@ -1,0 +1,88 @@
+{
+  "subjectId": "65dcf3d937445f4fe46f420e",
+  "chapterId": "66a0dbcec03b9dcaf1afe385",
+  "topicId": "66a0dbcfc03b9dcaf1afe38c",
+  "title": "Dimensions",
+  "concepts": [
+    {
+      "title": "Dimensions of a physical quantity",
+      "conceptBody": "<p>Dimensions</p><p>When a derived quantity is expressed in terms of fundamental quantities, it is written as a product of different powers of the fundamental quantities. The powers to which fundamental quantities must be raised in order to express the given physical quantity are called its dimensions.</p><p>To make it more clear, consider the physical quantity force</p><p>Force = mass × acceleration</p><p>\\begin{align*} &amp;= \\frac{\\text{mass} \\times \\text{velocity}}{\\text{time}} \\\\ &amp;= \\frac{\\text{mass} \\times \\frac{\\text{length}}{\\text{time}}}{\\text{time}} \\\\ &amp;= \\text{mass} \\times \\text{length} \\times \\text{(time)}^{-2} \\end{align*}</p><p>Thus, the dimensions of force are 1 in mass, 1 in length and – 2 in time.</p><p>Here the physical quantity that is expressed in terms of the basic quantities is enclosed in square brackets to indicate that the equation is among the dimensions and not among the magnitudes.</p><p>Thus equation (i) can be written as [force] = [ $MLT^{-2}$ ].</p><p>Such an expression for a physical quantity in terms of the fundamental quantities is called the dimensional equation. If we consider only the R.H.S. of the equation, the expression is termed as dimensional formula.</p><p>Thus, dimensional formula for force is, [ $MLT^{-2}$ ].</p>",
+      "position": 0,
+      "qcConcept": "66a0dbd0c03b9dcaf1afe38d"
+    },
+    {
+      "title": "Dimensional formulae",
+      "conceptBody": "<h3>Application of Dimensional Analysis</h3><p>(1) <strong>To find the unit of a physical quantity in a given system of units </strong>: To write the definition or formula for the physical quantity we find its dimensions. Now in the dimensional formula replacing <i>M </i>, <i>L </i>and <i>T </i>by the fundamental units of the required system we get the unit of physical quantity. However, sometimes to this unit we further assign a specific name,</p><p><i>e.g. </i>, Work = Force × Displacement</p><p>So [ <i>W </i>] = [ <i>MLT </i>–2 ] × [ <i>L </i>] = [ <i>ML </i>2 <i>T </i>–2 ]</p><p>So its unit in C.G.S. system will be <i>g cm </i>2 <i>/s </i>2 which is called <i>erg </i>while in M.K.S. system will be <i>kg-m </i>2 / <i>s </i>2 which is called <i>joule </i>.</p><p>(2) <strong>To find dimensions of physical constant or coefficients </strong>: As dimensions of a physical quantity are unique, we write any formula or equation incorporating the given constant and then by substituting the dimensional formulae of all other quantities, we can find the dimensions of the required constant or coefficient.</p><p><strong>Gravitational constant </strong>: According to Newton’s law of gravitation</p><p>$F=G\\frac{{{m}_{1}}{{m}_{2}}}{{{r}^{2}}}$ or $G=\\frac{F{{r}^{2}}}{{{m}_{1}}{{m}_{2}}}$</p><p>Substituting the dimensions of all physical quantities</p><p>$[G]=\\frac{[ML{{T}^{-2}}][{{L}^{2}}]}{[M][M]}=[{{M}^{-1}}{{L}^{3}}{{T}^{-2}}]$</p><p>(3) <strong>To convert a physical quantity from one system to the other </strong>: The measure of a physical quantity is <i>nu </i>= constant. If a physical quantity <i>X </i>has dimensional formula [ <i>M a L b T c </i>] and if (derived) units of that physical quantity in two systems are $[M_{1}^{a}L_{1}^{b}T_{1}^{c}]$ and $[M_{2}^{a}L_{2}^{b}T_{2}^{c}]$ respectively and <i>n </i>1 and <i>n </i>2 be the numerical values in the two systems respectively, then ${{n}_{1}}[{{u}_{1}}]={{n}_{2}}[{{u}_{2}}]$</p><p>⇒ ${{n}_{1}}[M_{1}^{a}L_{1}^{b}T_{1}^{c}]={{n}_{2}}[M_{2}^{a}L_{2}^{b}T_{2}^{c}]$</p><p>⇒ ${{n}_{2}}={{n}_{1}}{{\\left[ \\frac{{{M}_{1}}}{{{M}_{2}}} \\right]}^{a}}{{\\left[ \\frac{{{L}_{1}}}{{{L}_{2}}} \\right]}^{b}}{{\\left[ \\frac{{{T}_{1}}}{{{T}_{2}}} \\right]}^{c}}$</p><p>where <i>M </i>1 , <i>L </i>1 and <i>T </i>1 are fundamental units of mass, length and time in the first (known) system and <i>M </i>2 , <i>L </i>2 and <i>T </i>2 are fundamental units of mass, length and time in the second (unknown) system. Thus knowing the values of fundamental units in two systems and numerical value in one system, the numerical value in other system may be evaluated.</p><p><i><strong>Example </strong></i><strong>: conversion of </strong><i><strong>Newton </strong></i><strong>into </strong><i><strong>Dyne </strong></i><strong>.&nbsp;</strong></p><p>Newton is the S.I. unit of force and has dimensional formula [ <i>MLT </i>–2 ].</p><p>So 1 <i>N </i>= 1 <i>kg-m/ sec </i>2&nbsp;</p><p>By using ${{n}_{2}}={{n}_{1}}{{\\left[ \\frac{{{M}_{1}}}{{{M}_{2}}} \\right]}^{a}}{{\\left[ \\frac{{{L}_{1}}}{{{L}_{2}}} \\right]}^{b}}{{\\left[ \\frac{{{T}_{1}}}{{{T}_{2}}} \\right]}^{c}}$</p><p>$=1\\,{{\\left[ \\frac{kg}{gm} \\right]}^{1}}\\,{{\\left[ \\frac{m}{cm} \\right]}^{1}}{{\\left[ \\frac{sec}{sec} \\right]}^{-2}}$</p><p>$=1\\,{{\\left[ \\frac{{{10}^{3}}gm}{gm} \\right]}^{1}}\\,{{\\left[ \\frac{{{10}^{2}}cm}{cm} \\right]}^{1}}{{\\left[ \\frac{sec}{sec} \\right]}^{-2}}$$={{10}^{5}}$</p><p>∴ 1 <i>N </i>= 10 5 <i>Dyne&nbsp;</i></p><p>(4) <strong>To check the dimensional correctness of a given physical relation : </strong>This is based on the ‘ <i>principle of homogeneity </i>’. According to this principle the dimensions of each term on both sides of an equation must be the same.</p><p>If $X=A\\pm {{(BC)}^{2}}\\pm \\sqrt{DEF}$,</p><p>then according to principle of homogeneity</p><p>[ <i>X </i>] = [ <i>A </i>] = [( <i>BC </i>) 2 ] $=[\\sqrt{DEF}]$</p><p>If the dimensions of each term on both sides are same, the equation is dimensionally correct, otherwise not. A dimensionally correct equation may or may not be physically correct.</p><p><i><strong>Example </strong></i><strong>: $F=m{{v}^{2}}/{{r}^{2}}$&nbsp;</strong></p><p>By substituting dimension of the physical quantities in the above relation, $[ML{{T}^{-2}}]=[M]{{[L{{T}^{-1}}]}^{2}}/{{[L]}^{2}}$</p><p><i>i.e. $[ML{{T}^{-2}}]=[M{{T}^{-2}}]$&nbsp;</i></p><p>As in the above equation dimensions of both sides are not same; this formula is not correct dimensionally, so can never be physically.</p><p>(5) <strong>As a research tool to derive new relations : </strong>If one knows the dependency of a physical quantity on other quantities and if the dependency is of the product type, then using the method of dimensional analysis, relation between the quantities can be derived.</p><p><i><strong>Example </strong></i><strong>: Time period of a simple pendulum.&nbsp;</strong></p><p>Let time period of a simple pendulum is a function of mass of the bob ( <i>m </i>), effective length ( <i>l </i>), acceleration due to gravity ( <i>g </i>) then assuming the function to be product of power function of <i>m </i>, <i>l </i>and <i>g&nbsp;</i></p><p><i>i.e. </i>, $T=K{{m}^{x}}{{l}^{y}}{{g}^{z}}$; where <i>K </i>= dimensionless constant</p><p>If the above relation is dimensionally correct then by substituting the dimensions of quantities –</p><p>[ <i>T </i>] = [ <i>M </i>] <i>x </i>[ <i>L </i>] <i>y </i>[ <i>LT </i>–2 ] <i>z </i>or [ <i>M </i>0 <i>L </i>0 <i>T </i>1 ] = <i>[M </i>x <i>L y+z T </i>–2 <i>z </i>]</p><p>Equating the exponents of similar quantities <i>x </i>= 0, <i>y </i>= 1/2 and <i>z </i>= – 1/2</p><p>So the required physical relation becomes $T=K\\sqrt{\\frac{l}{g}}$</p><p>The value of dimensionless constant is found (2 <i>π </i>) through experiments so $T=2\\pi \\sqrt{\\frac{l}{g}}$</p>",
+      "position": 1,
+      "qcConcept": "66a0dbd0c03b9dcaf1afe38e"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66891f351010aab82c8aa6e0",
+      "title": "If $L$ and $R$ are respectively the inductance and resistance, then the dimensions of $\\frac{L}{R}$ will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6e1",
+      "title": "The dimensions of universal gravitational constant are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6e2",
+      "title": "Dimensional formula for angular momentum is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6e3",
+      "title": "The equation of state of some gases can be expressed as $\\left(P+\\frac{a}{V^2}\\right)(V-b)=R T$. Here $P$ is the pressure, $V$ is the volume, $T$ is the absolute temperature and $a, b, R$ are constants. The dimensions of ' $a$ ' are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6e4",
+      "title": "If $L$ denotes the inductance of an inductor through which a current $i$ is flowing, the dimensions of $L i^2$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6e5",
+      "title": "A spherical body of mass and radius is allowed to fall in a medium of viscosity. The time in which the velocity of the body increases from zero to $0.63$ times the terminal velocity is called time constant. Dimensionally can be represented by",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6e6",
+      "title": "The frequency of vibration r of a mass m suspended from a spring of spring constant k is given by a relation of this type $\\mathrm{f}=\\mathrm{Cm}^{\\mathrm{x}} \\mathrm{K}^{\\mathrm{y}}$; where c is a dimensionless quantity. The value of x and y are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6e7",
+      "title": "The velocity of water waves $v$ may depend upon their wavelength $\\lambda$, the density of water $\\rho$ and the acceleration due to gravity $g$. The method of dimensions gives the relation between these quantities as",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6e8",
+      "title": "The equation of a wave is given by $Y=A \\sin \\omega\\left(\\frac{x}{v}-k\\right)$ where $\\omega$ is the angular velocity and $v$ is the linear velocity. The dimension of $k$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6e9",
+      "title": "A small steel ball of radius $r$ is allowed to fall under gravity through a column of a viscous liquid of coefficient of viscosity $\\eta$. After some time the velocity of the ball attains a constant value known as terminal velocity $v_T$. The terminal velocity depends on (i) the mass of the ball $m$, (ii) $\\eta$, (iii) $r$ and (iv) acceleration due to gravity $g$. Which of the following relations is dimensionally correct?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6ea",
+      "title": "The Quantity $X=\\frac{\\varepsilon_0 L V}{t}$ is the permittivity of free space, is length, is potential difference and is time. The dimensions of are same as that of",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

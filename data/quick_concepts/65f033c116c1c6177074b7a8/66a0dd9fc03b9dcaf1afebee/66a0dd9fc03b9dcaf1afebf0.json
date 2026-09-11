@@ -1,0 +1,40 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd9fc03b9dcaf1afebee",
+  "topicId": "66a0dd9fc03b9dcaf1afebf0",
+  "title": "Factorial",
+  "concepts": [
+    {
+      "title": "Finding Factorial of a number",
+      "conceptBody": "<h3>Factorial</h3><p>In mathematics, the factorial of a non-negative integer $n$, denoted by $n$ !, is the product of all positive integers less than or equal to $\\text{n}$.</p><p>For example:</p><p>$6 !=6*<i>5</i>*4*3*2*1</p><p>also $(\\mathrm{n}+1) !=(\\mathrm{n}+1) \\quad \\mathrm{n} !$</p><p><strong>Special case:&nbsp;</strong></p><p>Zero factorial</p><p>This is a special case whose value is 1.</p><p>$\\therefore \\text{ }\\!\\!~\\!\\!\\text{ }0!=1$</p>",
+      "position": 0,
+      "qcConcept": "66a0dda0c03b9dcaf1afebf1"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f692d384bfb4a5382fd",
+      "title": "Assuming that no two consecutive digits are same, the number of $n$ digit numbers, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f692d384bfb4a5382fe",
+      "title": "How many words can be formed from the letters of the word COURTESY, whose first letter is $C$ and the last letter is $Y$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f692d384bfb4a5382ff",
+      "title": "How many words can be formed with the letters of the word MATHEMATICS by rearranging them",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f692d384bfb4a538300",
+      "title": "In how many ways can 5 boys and 5 girls stand in a row so that no two girls may be together 97]",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19157088eaed7250738f35",
+  "chapterId": "6a192bbc49662a74891331a0",
+  "subject": "Chemistry",
+  "chapter": "Classification of Elements and Periodicity in Properties",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec195ef1faeb9633e2452",
+      "title": "Periodic properties",
+      "count": 4,
+      "questionIds": [
+        "6a1ec0d8ef1faeb9633e200a",
+        "6a1ec095ef1faeb9633e1e62",
+        "6a1ec01aef1faeb9633e1b5a",
+        "6a1ec059ef1faeb9633e1cea"
+      ]
+    },
+    {
+      "id": "6a1ec195ef1faeb9633e2453",
+      "title": "Modern periodic table",
+      "count": 2,
+      "questionIds": [
+        "6a1ec158ef1faeb9633e232a",
+        "6a1ec01aef1faeb9633e1b5d"
+      ]
+    }
+  ]
+}

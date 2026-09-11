@@ -1,0 +1,37 @@
+{
+  "examSlug": "jee_advanced",
+  "examId": "616059150283de43c87e3e21",
+  "subjectId": "616056cd0283de43c87e3e15",
+  "chapterId": "616023d70225de67661db498",
+  "subject": "Physics",
+  "chapter": "Mechanical Properties of Solids",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64b16aeef23ac7d519f9b9a6",
+      "title": "Elasticity",
+      "count": 1,
+      "questionIds": [
+        "64b16a25f23ac7d519f9b1be"
+      ]
+    },
+    {
+      "id": "64b16aedf23ac7d519f9b9a5",
+      "title": "Young's Modulus and Breaking Stres",
+      "count": 3,
+      "questionIds": [
+        "64b16a6bf23ac7d519f9b43e",
+        "64b16a47f23ac7d519f9b2f8",
+        "64b169fdf23ac7d519f9b050"
+      ]
+    },
+    {
+      "id": "64b16aeef23ac7d519f9b9a7",
+      "title": "Bulk Modulus",
+      "count": 1,
+      "questionIds": [
+        "64b16a83f23ac7d519f9b51b"
+      ]
+    }
+  ]
+}

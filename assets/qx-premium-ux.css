@@ -1,0 +1,492 @@
+/**
+ * Quantrex Academy — Master Premium UI/UX Layer
+ * Visual only. 8px spacing system. Inter typography.
+ * Does not change app logic or data.
+ */
+
+:root {
+  /* Spacing (8px grid) */
+  --qx-sp-1: 8px;
+  --qx-sp-2: 16px;
+  --qx-sp-3: 24px;
+  --qx-sp-4: 32px;
+  --qx-sp-5: 40px;
+  --qx-gap-cards: 20px;
+  --qx-pad-card: 24px;
+  --qx-pad-section: 32px;
+  --qx-pad-container: 40px;
+  --qx-btn-py: 16px;
+  --qx-btn-px: 24px;
+  --qx-radius: 16px;
+  --qx-radius-sm: 12px;
+  --qx-radius-fig: 14px;
+  --qx-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+  --qx-shadow-hover: 0 8px 28px rgba(15, 23, 42, 0.09);
+
+  /* Typography */
+  --qx-font-display: "Inter", "Poppins", "Segoe UI", system-ui, sans-serif;
+  --qx-font-body: "Inter", "Poppins", "Segoe UI", system-ui, sans-serif;
+  --qx-font-math: "STIX Two Math", "STIX Two Text", "Cambria Math", "Times New Roman", serif;
+  --qx-fw-regular: 400;
+  --qx-fw-medium: 500;
+  --qx-fw-semibold: 600;
+  --qx-fw-bold: 700;
+  --qx-fs-caption: 12px;
+  --qx-fs-sm: 14px;
+  --qx-fs-body: 16px;
+  --qx-fs-card: 18px;
+  --qx-fs-section: 20px;
+  --qx-fs-sub: 24px;
+  --qx-fs-h1: 32px;
+  --qx-lh: 1.6;
+
+  /* Premium accents (not childish) */
+  --qx-grad-blue: linear-gradient(135deg, #2563eb, #4f46e5);
+  --qx-grad-cyan: linear-gradient(135deg, #0891b2, #0d9488);
+  --qx-grad-violet: linear-gradient(135deg, #7c3aed, #6366f1);
+  --qx-grad-amber: linear-gradient(135deg, #d97706, #ea580c);
+  --qx-grad-rose: linear-gradient(135deg, #e11d48, #db2777);
+  --qx-grad-emerald: linear-gradient(135deg, #059669, #0d9488);
+  --qx-muted: #64748b;
+  --qx-border-soft: rgba(148, 163, 184, 0.28);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+body,
+.main,
+.content,
+#app-main {
+  font-family: var(--qx-font-body) !important;
+  font-size: var(--qx-fs-body);
+  font-weight: var(--qx-fw-regular);
+  line-height: var(--qx-lh);
+  letter-spacing: -0.011em;
+}
+
+/* ── Type scale ── */
+h1, .page-head h1, .dash-greet-left h1, .qx-subject-hero h1, .cpyqb-exam-bank-head h1 {
+  font-family: var(--qx-font-display) !important;
+  font-size: var(--qx-fs-h1) !important;
+  font-weight: var(--qx-fw-bold) !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.03em !important;
+}
+
+h2, .sec-title, .marks-tests-head h1, .cpyqb-marks-head h1 {
+  font-family: var(--qx-font-display) !important;
+  font-size: var(--qx-fs-sub) !important;
+  font-weight: var(--qx-fw-bold) !important;
+  letter-spacing: -0.025em !important;
+}
+
+h3, .cpyqb-exam-sec-title, .qx-all-topics-label, .ch-hub-panel h4 {
+  font-family: var(--qx-font-display) !important;
+  font-size: var(--qx-fs-section) !important;
+  font-weight: var(--qx-fw-semibold) !important;
+  letter-spacing: -0.02em !important;
+}
+
+.subj-card strong,
+.ch-card strong,
+.qx-topic-name,
+.qx-folder-title,
+.qx-module-body strong,
+.book-card strong,
+.exam-opt strong {
+  font-family: var(--qx-font-display) !important;
+  font-size: var(--qx-fs-card) !important;
+  font-weight: var(--qx-fw-semibold) !important;
+  letter-spacing: -0.02em !important;
+}
+
+p, .sec-desc, .page-head p, small, .result-count, .empty {
+  font-family: var(--qx-font-body) !important;
+  line-height: var(--qx-lh) !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+.q-text, .eg-q-stem, .mtk-q-text, .qx-content, .qx-prac-q {
+  font-family: var(--qx-font-body) !important;
+  line-height: var(--qx-lh) !important;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
+}
+
+.page-head p, .sec-desc, .qx-folder-sub, .subj-card small, .ch-card small {
+  font-size: var(--qx-fs-sm) !important;
+  color: var(--qx-muted, var(--gray));
+  font-weight: var(--qx-fw-medium);
+}
+
+/* ── Buttons ── */
+.btn-primary,
+.btn-soft,
+.mtk-btn,
+.qx-top-exam,
+.qx-diff-chip,
+.qx-bm-btn,
+.cpyqb-filter-main,
+button.btn-primary {
+  font-family: var(--qx-font-display) !important;
+  font-weight: var(--qx-fw-semibold) !important;
+  border-radius: var(--qx-radius-sm) !important;
+  letter-spacing: -0.015em;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.btn-primary,
+.mtk-btn-save,
+.qx-prac-submit {
+  padding: 12px var(--qx-btn-px) !important;
+  min-height: 44px;
+  box-shadow: var(--qx-shadow) !important;
+}
+
+.btn-primary:hover,
+.btn-soft:hover,
+.qx-top-exam:hover {
+  transform: scale(1.02);
+}
+
+.btn-primary:active {
+  transform: scale(0.99);
+}
+
+/* ── Cards / grids ── */
+.subj-card,
+.ch-card,
+.qx-topic-card,
+.qx-folder-card,
+.qx-module-card,
+.book-card,
+.qx-book-card,
+.q-card,
+.cpyqb-exam-tile,
+.dash-card,
+.exam-opt,
+.nb-q-card {
+  border-radius: var(--qx-radius) !important;
+  box-shadow: var(--qx-shadow) !important;
+  border: 1px solid var(--qx-border-soft, var(--border)) !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.subj-card,
+.ch-card,
+.cpyqb-exam-tile,
+.qx-folder-card,
+.qx-module-card {
+  padding: var(--qx-pad-card) !important;
+}
+.qx-topic-card.qx-topic-rich,
+.qx-topic-card.qx-ch-card-rich,
+.ch-card.qx-topic-card {
+  padding: 10px 10px 8px !important;
+}
+
+.subj-grid,
+.ch-grid,
+.qx-topic-grid,
+.qx-folder-grid,
+.qx-module-grid,
+.cpyqb-exam-grid,
+.q-list {
+  gap: var(--qx-gap-cards) !important;
+}
+
+.subj-card:hover,
+.ch-card:hover,
+.qx-topic-card:hover,
+.qx-folder-card:hover:not(.soon),
+.qx-module-card:hover:not(.soon),
+.cpyqb-exam-tile:hover:not(.soon),
+.q-card:hover,
+.book-card:hover:not(.soon) {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: var(--qx-shadow-hover) !important;
+}
+
+/* ── Content container ── */
+.content,
+#app-main {
+  padding-left: max(16px, min(var(--qx-pad-container), 4vw));
+  padding-right: max(16px, min(var(--qx-pad-container), 4vw));
+}
+
+.page-head {
+  margin-bottom: var(--qx-pad-section) !important;
+}
+
+.page-head h1 {
+  margin-bottom: 8px !important;
+}
+
+/* ── Question / options readability ── */
+.mtk-q-text,
+.qx-prac-q,
+.qx-content.qx-q-text-only,
+.qx-question-body,
+.q-text {
+  font-size: var(--qx-fs-body) !important;
+  font-weight: var(--qx-fw-medium) !important;
+  line-height: 1.65 !important;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.mtk-opt-text,
+.qx-prac-opt-text,
+.qa-opt,
+#qaOpts .qx-content {
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.qa-opt,
+.qx-prac-opt,
+.mtk-opt {
+  border-radius: var(--qx-radius-sm) !important;
+  padding: 14px 16px !important;
+  gap: 12px !important;
+}
+
+/* ── Figures (70% max, centered, soft) ── */
+.qx-fig,
+.qx-pool-fig-wrap,
+.qx-diagram-slot,
+.qx-question-body .qx-diagram-slot,
+.mtk-main .qx-fig,
+.mtk-main #qxDiagramSlot,
+.qa-wrap .qx-diagram-slot {
+  max-width: 70% !important;
+  width: 70% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 24px !important;
+  margin-bottom: 24px !important;
+  border-radius: var(--qx-radius-fig) !important;
+  box-shadow: var(--qx-shadow) !important;
+  overflow: hidden;
+  background: #fff;
+  text-align: center;
+}
+
+.qx-fig img,
+.qx-pool-fig-wrap img,
+.qx-diagram-slot img,
+#qxDiagramSlot img,
+.qx-fig-img,
+img.qx-pool-fig {
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  max-height: min(52vh, 420px) !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+  border-radius: calc(var(--qx-radius-fig) - 2px) !important;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Option figures stay smaller, still centered */
+.mtk-opt .qx-fig,
+.qx-prac-opt .qx-fig,
+.qx-opt-fig,
+.qx-opt-pair-struct {
+  max-width: min(100%, 360px) !important;
+  width: auto !important;
+  margin: 12px auto !important;
+  box-shadow: none !important;
+}
+
+.qx-fig-caption,
+.qx-diagram-caption,
+figcaption {
+  display: block;
+  font-size: var(--qx-fs-sm) !important;
+  font-weight: var(--qx-fw-medium);
+  color: var(--qx-muted) !important;
+  text-align: center !important;
+  margin-top: 8px !important;
+  letter-spacing: 0.01em;
+}
+
+/* ── Math (KaTeX + MathJax + STIX) ── */
+.katex,
+.MathJax,
+mjx-container,
+math {
+  -webkit-font-smoothing: antialiased;
+}
+
+.katex {
+  font-size: var(--math-inline-size, 1.22em) !important;
+}
+
+.katex-display {
+  margin: 0.75em 0 !important;
+  overflow-x: auto;
+  text-align: left !important;
+}
+
+math {
+  font-size: 1.06em;
+}
+
+/* Chemistry unicode helper class */
+.qx-chem {
+  font-family: var(--qx-font-body);
+  font-feature-settings: "subs" 1, "sups" 1;
+  letter-spacing: 0.01em;
+}
+
+/* ── Tables ── */
+table,
+.qx-table,
+.sol-body table,
+.mtk-q-text table,
+.qx-content table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--qx-radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--qx-border-soft, var(--border));
+  font-size: var(--qx-fs-sm);
+  margin: var(--qx-sp-3) 0;
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table thead th,
+.qx-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, #f8fafc, #f1f5f9);
+  font-weight: var(--qx-fw-semibold);
+  font-family: var(--qx-font-display) !important;
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+html[data-theme="dark"] table thead th {
+  background: linear-gradient(180deg, #1e293b, #0f172a);
+}
+
+table tbody tr:nth-child(even) {
+  background: rgba(148, 163, 184, 0.08);
+}
+
+table tbody tr:hover {
+  background: rgba(99, 102, 241, 0.08);
+}
+
+table td, table th {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--qx-border-soft, var(--border));
+  vertical-align: middle;
+}
+
+/* ── Premium gradients (subtle accents) ── */
+.qx-topic-card::before,
+.qx-folder-card::before {
+  border-radius: var(--qx-radius) var(--qx-radius) 0 0;
+}
+
+.qx-subject-hero,
+.dash-board-hero,
+.qx-ch-hub-hero {
+  border-radius: var(--qx-radius) !important;
+  box-shadow: var(--qx-shadow) !important;
+}
+
+/* ── Progress soft ── */
+.qx-prog-bar {
+  height: 6px !important;
+  border-radius: 999px !important;
+  overflow: hidden;
+  background: rgba(148, 163, 184, 0.2);
+}
+
+/* ── Stats chips on cards (visual polish for existing data) ── */
+.qx-topic-details,
+.q-meta {
+  gap: 8px !important;
+}
+
+.qx-ch-pill,
+.tag {
+  border-radius: 999px !important;
+  font-family: var(--qx-font-display) !important;
+  font-weight: var(--qx-fw-semibold) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.02em;
+}
+
+/* ── Top exam bar ── */
+.qx-top-exam {
+  border-radius: 999px !important;
+  font-family: var(--qx-font-display) !important;
+}
+
+/* ── Skeleton / loading polish ── */
+.qx-load-opts,
+.qx-load-q,
+.empty {
+  border-radius: var(--qx-radius-sm);
+  padding: var(--qx-sp-3) !important;
+  line-height: var(--qx-lh);
+}
+
+/* ── Mobile ── */
+@media (max-width: 720px) {
+  :root {
+    --qx-fs-h1: 26px;
+    --qx-fs-sub: 20px;
+    --qx-pad-card: 16px;
+    --qx-pad-container: 16px;
+    --qx-gap-cards: 12px;
+  }
+
+  .qx-fig,
+  .qx-pool-fig-wrap,
+  .qx-diagram-slot,
+  .mtk-main .qx-fig,
+  .mtk-main #qxDiagramSlot {
+    max-width: 92% !important;
+    width: 92% !important;
+    margin-top: 16px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .content, #app-main {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+/* Accessibility focus */
+button:focus-visible,
+a:focus-visible,
+.subj-card:focus-visible,
+.qx-topic-card:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+/* Folder / chapter motion stays on — Windows "reduce animation" was hiding them. */

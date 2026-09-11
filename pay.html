@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plans — Quantrex Academy</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1565C0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="assets/qx-live-purchases.css?v=qxfix91">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Kanit:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root { --navy:#06101f; --gold:#f5c518; --ink:#e8eef8; --muted:#93a4c4; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; color: var(--ink); font-family: Inter, system-ui, sans-serif; min-height: 100%; }
+    body {
+      background:
+        radial-gradient(900px 480px at 12% -10%, rgba(37,99,235,.35), transparent 55%),
+        radial-gradient(800px 420px at 110% 8%, rgba(245,197,24,.18), transparent 50%),
+        radial-gradient(700px 380px at 50% 110%, rgba(124,58,237,.2), transparent 55%),
+        linear-gradient(180deg, #081428 0%, #040914 100%);
+      animation: bgShift 14s ease-in-out infinite alternate;
+    }
+    @keyframes bgShift {
+      from { filter: hue-rotate(0deg); }
+      to { filter: hue-rotate(12deg); }
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(22px) scale(.98); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes pulseGold {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(245,197,24,.45); }
+      50% { box-shadow: 0 0 0 10px rgba(245,197,24,0); }
+    }
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    a { color: inherit; }
+    .top { display: flex; align-items: center; gap: 12px; padding: 12px 18px; position: sticky; top: 0; z-index: 8; background: rgba(6,16,31,.88); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,.08); }
+    .top a { font-size: 20px; text-decoration: none; }
+    .brand-lock { display: flex; align-items: center; gap: 10px; font-weight: 900; letter-spacing: .04em; }
+    .brand-lock img { width: 36px; height: 36px; object-fit: contain; }
+    .brand-lock small { display: block; font-size: 9px; letter-spacing: .18em; color: var(--gold); font-weight: 800; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 22px 16px 64px; }
+    .hero { max-width: 720px; margin: 0 auto 28px; text-align: center; animation: rise .7s ease both; }
+    .kicker { display: inline-block; background: #2563eb; color: #fff; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 6px; letter-spacing: .06em; }
+    h1 { font-family: Kanit, sans-serif; font-size: clamp(28px, 4vw, 46px); line-height: 1.05; margin: 10px 0 8px; }
+    h1 span { color: var(--gold); }
+    .sub { color: var(--muted); font-size: 14px; line-height: 1.5; margin: 0 0 14px; }
+    .offer {
+      border: 1px solid rgba(245,197,24,.45); border-radius: 18px; padding: 18px 18px 16px; margin: 16px auto 0;
+      background: linear-gradient(180deg, rgba(12,28,54,.9), rgba(8,18,36,.95));
+      animation: floaty 4.5s ease-in-out infinite;
+      max-width: 520px;
+    }
+    .offer .lim { color: #fb7185; font-size: 11px; font-weight: 800; letter-spacing: .08em; }
+    .offer .row { display: flex; align-items: baseline; justify-content: center; gap: 14px; flex-wrap: wrap; margin: 6px 0; }
+    .offer .old { text-decoration: line-through; color: #94a3b8; font-size: 22px; font-weight: 800; }
+    .offer .now { font-size: 52px; font-weight: 900; color: var(--gold); line-height: 1; }
+    .offer .days { font-weight: 800; font-size: 18px; text-align: left; }
+    .cta { display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 52px; border: 0; border-radius: 12px; background: var(--gold); color: #111; font-weight: 900; font-size: 16px; cursor: pointer; animation: pulseGold 2.2s ease-in-out infinite; }
+    .cta:hover { filter: brightness(1.06); transform: translateY(-1px); }
+    .cta:disabled { opacity: .6; animation: none; }
+    .guest { display: block; text-align: center; margin-top: 10px; color: #7dd3fc; font-size: 13px; font-weight: 700; }
+    .stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 8px 0 26px; }
+    .stat { background: #102445; border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 12px 10px; text-align: center; animation: rise .6s ease both; }
+    .stat:nth-child(2) { animation-delay: .06s; }
+    .stat:nth-child(3) { animation-delay: .12s; }
+    .stat:nth-child(4) { animation-delay: .18s; }
+    .stat:nth-child(5) { animation-delay: .24s; }
+    .stat b { display: block; color: var(--gold); font-size: 18px; }
+    .stat span { font-size: 11px; color: var(--muted); font-weight: 700; }
+    h2.sec { text-align: center; font-size: 18px; margin: 8px 0 16px; letter-spacing: .04em; }
+    .gets { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 24px; }
+    .get { background: #fff; color: #0f172a; border-radius: 16px; padding: 14px 12px; text-align: center; min-height: 150px; animation: rise .55s ease both; transition: transform .22s ease, box-shadow .22s ease; }
+    .get:hover { transform: translateY(-6px); box-shadow: 0 16px 28px rgba(0,0,0,.28); }
+    .get i { display: grid; place-items: center; width: 42px; height: 42px; margin: 0 auto 8px; border-radius: 50%; color: #fff; font-style: normal; font-weight: 900; }
+    .get strong { display: block; font-size: 13px; margin-bottom: 4px; }
+    .get p { margin: 0; font-size: 11px; color: #64748b; line-height: 1.35; }
+    .exams { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 24px; }
+    .ex { border-radius: 16px; padding: 16px; color: #fff; min-height: 180px; animation: rise .6s ease both; transition: transform .22s ease; }
+    .ex:hover { transform: translateY(-5px) scale(1.01); }
+    .ex h3 { margin: 0 0 8px; font-size: 14px; }
+    .ex ul { margin: 0; padding-left: 16px; font-size: 13px; line-height: 1.55; }
+    .ex .pill { display: inline-block; margin-top: 12px; background: rgba(255,255,255,.18); padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+    .e-eng { background: linear-gradient(180deg, #1d4ed8, #1e3a8a); }
+    .e-med { background: linear-gradient(180deg, #059669, #065f46); }
+    .e-def { background: linear-gradient(180deg, #b91c1c, #7f1d1d); }
+    .e-ac { background: linear-gradient(180deg, #7c3aed, #4c1d95); }
+    .plans { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 22px; }
+    .plan { background: #fff; color: #0f172a; border-radius: 18px; padding: 16px 14px 14px; border: 2px solid #e2e8f0; cursor: pointer; position: relative; min-height: 280px; display: flex; flex-direction: column; animation: rise .55s ease both; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .plan:nth-child(1) { animation-delay: .04s; }
+    .plan:nth-child(2) { animation-delay: .08s; }
+    .plan:nth-child(3) { animation-delay: .12s; }
+    .plan:nth-child(4) { animation-delay: .16s; }
+    .plan:nth-child(5) { animation-delay: .2s; }
+    .plan:hover { transform: translateY(-8px); box-shadow: 0 18px 32px rgba(0,0,0,.28); }
+    .plan.on { box-shadow: 0 0 0 3px rgba(37,99,235,.28); border-color: #2563eb; }
+    .plan.hot { border-color: #2563eb; }
+    .plan.pop { border-color: #f59e0b; background: linear-gradient(180deg, #fff7ed, #fff); }
+    .badge { position: absolute; top: -10px; left: 12px; background: #16a34a; color: #fff; font-size: 10px; font-weight: 900; padding: 3px 8px; border-radius: 999px; }
+    .badge.pop { background: #f59e0b; color: #111; }
+    .plan h3 { margin: 8px 0 6px; font-size: 13px; }
+    .price { font-size: 28px; font-weight: 900; color: #0f172a; }
+    .price s { color: #94a3b8; font-size: 14px; margin-right: 6px; }
+    .plan ul { margin: 8px 0 12px; padding-left: 16px; font-size: 12px; color: #334155; line-height: 1.5; flex: 1; }
+    .pbtn { display: block; text-align: center; border-radius: 10px; padding: 9px 8px; font-weight: 800; font-size: 13px; border: 2px solid #2563eb; background: #2563eb; color: #fff; }
+    .plan.pop .pbtn { background: #f59e0b; border-color: #f59e0b; color: #111; }
+    .plan[data-plan="jee_ts"] .pbtn { background: #fff; color: #e11d48; border-color: #e11d48; }
+    .plan[data-plan="eng_complete"] .pbtn { background: #fff; color: #16a34a; border-color: #16a34a; }
+    .plan[data-plan="med_complete"] .pbtn { background: #fff; color: #7c3aed; border-color: #7c3aed; }
+    .trust { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; color: var(--muted); font-size: 12px; font-weight: 700; margin: 8px 0 18px; }
+    .pay-status { text-align: center; min-height: 22px; font-weight: 700; color: #93c5fd; }
+    .pay-status.err { color: #f87171; }
+    .modal { position: fixed; inset: 0; background: rgba(7,17,31,.7); display: none; align-items: flex-end; justify-content: center; z-index: 20; }
+    .modal.on { display: flex; }
+    .sheet { background: #fff; color: #0f172a; width: min(100%, 460px); border-radius: 22px 22px 0 0; padding: 28px 22px 32px; text-align: center; animation: rise .35s ease; }
+    .sheet.fail h2 { color: #b91c1c; }
+    .mark { width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 36px; }
+    .mark.ok { background: #d1fae5; }
+    .mark.bad { background: #fee2e2; }
+    .receipt { text-align: left; background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 12px; padding: 12px 14px; margin: 14px 0; font-size: 13px; }
+    .receipt div { display: flex; justify-content: space-between; gap: 10px; padding: 4px 0; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .btn { width: 100%; height: 50px; border: 0; border-radius: 12px; background: var(--gold); color: #111; font-weight: 900; font-size: 16px; cursor: pointer; margin-top: 10px; }
+    .btn.wa { background: #128c7e; color: #fff; }
+    .btn.mail { background: #0b57d0; color: #fff; }
+    .btn.dark { background: #111827; color: #fff; }
+    @media (max-width: 980px) {
+      .gets, .exams, .plans, .stats { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .gets, .exams, .plans, .stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <script>location.replace("app.html");</script>
+  <div class="top">
+    <a href="app.html">←</a>
+    <div class="brand-lock">
+      <img src="assets/quantrex-logo-3d-64.png" alt="">
+      <div>QUANTREX ACADEMY<small>CONCEPTS CREATE DESTINY</small></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="hero">
+      <span class="kicker">ALL COURSES FREE</span>
+      <h1>COMPLETE EXAM<br><span>PREPARATION</span></h1>
+      <p class="sub">JEE · NEET · NDA · Engineering · Medical · Test Series<br>PYQs | Mock Tests | Digital Books | Flash Cards | DPPs | And More</p>
+      <div class="offer">
+        <div class="lim">NO SUBSCRIPTION</div>
+        <div class="row"><span class="now">FREE</span><span class="days">ALL COURSES<br>FULL ACCESS</span></div>
+        <div class="sub" style="margin:0 0 10px">All Exams · All Subjects · All Resources</div>
+        <a class="cta" href="app.html" style="text-decoration:none">Start practising →</a>
+        <a class="guest" href="app.html">Continue without login →</a>
+        <a class="guest" href="help.html">Help &amp; inquiry · WhatsApp / Call 8700508344</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>50,000+</b><span>Questions</span></div>
+      <div class="stat"><b>530+</b><span>Tests</span></div>
+      <div class="stat"><b>17+</b><span>Exams Covered</span></div>
+      <div class="stat"><b>12+</b><span>Subjects</span></div>
+      <div class="stat"><b>Analytics</b><span>Performance</span></div>
+    </div>
+
+    <h2 class="sec">WHAT YOU GET — everything you need, all in one place</h2>
+    <div class="gets">
+      <div class="get"><i style="background:#2563eb">Q</i><strong>Chapter-wise PYQ Bank</strong><p>Previous year questions of all major exams</p></div>
+      <div class="get"><i style="background:#16a34a">T</i><strong>530+ Tests</strong><p>Topic, chapter, part &amp; full length tests</p></div>
+      <div class="get"><i style="background:#7c3aed">B</i><strong>Digital Books</strong><p>NCERT, reference books, handwritten notes</p></div>
+      <div class="get"><i style="background:#f59e0b">D</i><strong>Daily Practice &amp; DPPs</strong><p>Daily practice problems &amp; drill packs</p></div>
+      <div class="get"><i style="background:#ec4899">M</i><strong>Mock Tests</strong><p>Exam pattern based mocks with detailed solutions</p></div>
+      <div class="get"><i style="background:#0d9488">A</i><strong>Performance Analytics</strong><p>Track your progress and improve</p></div>
+    </div>
+
+    <h2 class="sec">EXAMS WE COVER</h2>
+    <div class="exams">
+      <div class="ex e-eng"><h3>ENGINEERING</h3><ul><li>JEE Main</li><li>JEE Advanced</li><li>MHT CET</li><li>BITSAT</li><li>WBJEE &amp; more</li></ul><span class="pill">10+ Exams</span></div>
+      <div class="ex e-med"><h3>MEDICAL</h3><ul><li>NEET (UG)</li><li>AIIMS</li><li>JIPMER</li><li>MHT CET Medical</li><li>&amp; more</li></ul><span class="pill">5+ Exams</span></div>
+      <div class="ex e-def"><h3>DEFENCE</h3><ul><li>NDA</li></ul><span class="pill">1+ Exam</span></div>
+      <div class="ex e-ac"><h3>ACADEMIC</h3><ul><li>CBSE / ICSE</li><li>State Boards</li><li>Olympiad</li><li>Foundations (6–10)</li></ul><span class="pill">All Classes</span></div>
+    </div>
+
+    <h2 class="sec">COURSES — all unlocked</h2>
+    <p class="sub" style="text-align:center">Subscription is off. Razorpay stays connected for later. You do not need to pay to study.</p>
+    <div class="plans" id="planGrid" style="display:none"></div>
+    <div class="trust">Razorpay remains linked · Payments paused while all courses are free</div>
+    <div class="pay-status" id="msg"></div>
+  </div>
+  <div class="modal" id="okModal">
+    <div class="sheet">
+      <div class="mark ok">✓</div>
+      <h2>Congratulations</h2>
+      <p>Your Quantrex Academy subscription is active on this device only.</p>
+      <div class="receipt" id="okReceipt"></div>
+      <div class="row2">
+        <button class="btn wa" type="button" id="waBtn">WhatsApp receipt</button>
+        <button class="btn mail" type="button" id="mailBtn">Email receipt</button>
+      </div>
+      <button class="btn dark" type="button" onclick="location.href='app.html'">Start practice</button>
+    </div>
+  </div>
+  <div class="modal" id="failModal">
+    <div class="sheet fail">
+      <div class="mark bad">✕</div>
+      <h2>Payment could not go through</h2>
+      <p id="failText">No money was taken. You can try again, or WhatsApp / call Quantrex help 8700508344.</p>
+      <a class="btn wa" href="https://wa.me/918700508344?text=Hi%20Quantrex%2C%20my%20payment%20failed.%20Please%20help." target="_blank" rel="noopener">WhatsApp help 8700508344</a>
+      <a class="btn dark" href="tel:+918700508344">Call 8700508344</a>
+      <button class="btn dark" type="button" id="failClose">Try again</button>
+    </div>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="firebase-config.js?v=qxfba1"></script>
+  <script src="firebase-db.js?v=qxfix113"></script>
+  <script src="stack-config.js?v=qxpay2"></script>
+  <script src="qx-session.js?v=qxpay3"></script>
+  <script src="qx-access.js?v=qxfix113"></script>
+  <script src="qx-student-auth.js?v=qxfix64"></script>
+  <script src="qx-india-geo.js?v=qxfix68"></script>
+  <script src="qx-exams.js?v=qxfix68"></script>
+  <script src="qx-profile.js?v=qxfix68"></script>
+  <script src="qx-leads.js?v=qxfix68"></script>
+  <script src="payments.js?v=qxfix93"></script>
+    <script>window.QX_BUILD = "qxfix94";</script>
+  <script src="qx-live-feed.js?v=qxfix93"></script>
+  <script>
+    (function () {
+      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+      if (typeof QuantrexDB !== "undefined") QuantrexDB.init();
+      if (typeof QuantrexAccess !== "undefined" && QuantrexAccess.ALL_COURSES_FREE) {
+        return;
+      }
+      const order = ["trial_7", "jee_ts", "eng_complete", "eng_combo", "med_complete"];
+      const bullets = {
+        trial_7: ["Full access for 7 days", "All exams & subjects", "PYQ Bank", "Tests & Digital Resources"],
+        jee_ts: ["JEE Main PYQs", "Chapter-wise Tests", "Mock Tests", "Performance Analytics"],
+        eng_complete: ["All Engineering Exams", "PYQs + Mock Tests", "DPPs & Practice", "Digital Books"],
+        eng_combo: ["Complete Engineering (All Exams)", "JEE Main Test Series", "PYQs + Mock Tests", "DPPs, Books & More", "Priority Support"],
+        med_complete: ["NEET, AIIMS, JIPMER", "Medical PYQs", "Mock Tests", "Digital Books"]
+      };
+      const btns = {
+        trial_7: "Pay ₹9 now",
+        jee_ts: "Pay ₹299 now",
+        eng_complete: "Pay ₹399 now",
+        eng_combo: "Pay ₹499 now",
+        med_complete: "Pay ₹299 now"
+      };
+      const fallback = {
+        trial_7: { label: "7-Day Pass", amount: 99, offerAmount: 9, liveAmount: 9, isOffer: true, days: 7, tracks: "All tracks" },
+        jee_ts: { label: "JEE Main Test Series", amount: 1199, offerAmount: 299, liveAmount: 299, isOffer: true, days: 365, tracks: "Engineering" },
+        eng_complete: { label: "Engineering Complete", amount: 1599, offerAmount: 399, liveAmount: 399, isOffer: true, days: 365, tracks: "Engineering" },
+        eng_combo: { label: "Engineering Combo", amount: 1999, offerAmount: 499, liveAmount: 499, isOffer: true, days: 365, tracks: "Engineering" },
+        med_complete: { label: "Medical Complete", amount: 1199, offerAmount: 299, liveAmount: 299, isOffer: true, days: 365, tracks: "Medical" }
+      };
+      let plans = fallback;
+      let selected = new URLSearchParams(location.search).get("plan") || "trial_7";
+      if (selected === "complete") selected = "eng_combo";
+      let paying = false;
+      const grid = document.getElementById("planGrid");
+      const msg = document.getElementById("msg");
+      function liveOf(p) { return p.liveAmount != null ? p.liveAmount : p.amount; }
+      function userFromStorage() {
+        try { return JSON.parse(localStorage.getItem("quantrex_user") || "null"); } catch (_) { return null; }
+      }
+      function currentUser() {
+        const live = firebase.auth().currentUser;
+        const stored = userFromStorage() || {};
+        if (live) {
+          return {
+            uid: live.uid,
+            email: live.email || stored.email || "",
+            phone: live.phoneNumber || stored.phone || "",
+            name: live.displayName || stored.name || ""
+          };
+        }
+        if (stored.uid && String(stored.uid).indexOf("guest_") !== 0) return stored;
+        let gid = "";
+        try {
+          gid = localStorage.getItem("quantrex_guest_id") || "";
+          if (!gid) {
+            gid = "guest_pay_" + Date.now();
+            localStorage.setItem("quantrex_guest_id", gid);
+          }
+        } catch (_) { gid = "guest_pay_" + Date.now(); }
+        return { uid: gid, email: stored.email || "", phone: stored.phone || "", name: stored.name || "Student" };
+      }
+      function planOwned(key) {
+        try {
+          if (typeof QuantrexAccess !== "undefined" && QuantrexAccess.hasActivePlan) return QuantrexAccess.hasActivePlan(key);
+        } catch (_) {}
+        return false;
+      }
+      function paint() {
+        if (typeof QuantrexAccess !== "undefined" && QuantrexAccess.grantIfOwner) QuantrexAccess.grantIfOwner();
+        grid.innerHTML = order.map((key) => {
+          const p = plans[key] || fallback[key];
+          const live = liveOf(p);
+          const offer = p.isOffer && p.amount && p.amount !== live;
+          const hot = key === "trial_7";
+          const pop = key === "eng_combo";
+          const owned = planOwned(key);
+          const lis = (bullets[key] || []).map((x) => "<li>" + x + "</li>").join("");
+          const label = owned ? "ACCESS COURSE →" : ("Pay ₹" + live + " now");
+          return '<div class="plan' + (key === selected ? " on" : "") + (hot ? " hot" : "") + (pop ? " pop" : "") + (owned ? " owned" : "") + '" data-plan="' + key + '">' +
+            (owned ? '<span class="badge">COURSE ACTIVE</span>' : (hot ? '<span class="badge">BEST START</span>' : "")) +
+            (!owned && pop ? '<span class="badge pop">MOST POPULAR</span>' : "") +
+            "<h3>" + p.label + "</h3>" +
+            '<div class="price">' + (owned ? "Active" : ((offer ? "<s>₹" + p.amount + "</s>" : "") + "₹" + live)) + "</div>" +
+            "<ul>" + lis + "</ul>" +
+            '<span class="pbtn">' + label + "</span></div>";
+        }).join("");
+        grid.querySelectorAll(".plan").forEach((el) => {
+          el.onclick = function (ev) {
+            ev.preventDefault();
+            selected = el.getAttribute("data-plan");
+            grid.querySelectorAll(".plan").forEach((x) => x.classList.toggle("on", x === el));
+            if (planOwned(selected)) { location.href = "app.html"; return; }
+            payNow(selected);
+          };
+        });
+      }
+      function ensureRzp() {
+        return new Promise(function (resolve, reject) {
+          if (window.Razorpay) return resolve(window.Razorpay);
+          const t = setTimeout(function () {
+            reject(new Error("Razorpay script blocked. Allow checkout.razorpay.com and retry."));
+          }, 8000);
+          const s = document.createElement("script");
+          s.src = "https://checkout.razorpay.com/v1/checkout.js";
+          s.onload = function () { clearTimeout(t); window.Razorpay ? resolve(window.Razorpay) : reject(new Error("Razorpay failed to load")); };
+          s.onerror = function () { clearTimeout(t); reject(new Error("Could not load Razorpay. Disable adblock.")); };
+          document.head.appendChild(s);
+        });
+      }
+      async function payNow(planKey) {
+        if (paying) return;
+        selected = planKey || selected;
+        const plan = plans[selected] || fallback[selected];
+        const amt = liveOf(plan);
+        paying = true;
+        msg.className = "pay-status";
+        msg.textContent = "Opening Razorpay · ₹" + amt + "…";
+        const user = currentUser();
+        let result;
+        try {
+          if (typeof QuantrexPayments === "undefined" || !QuantrexPayments.buyPlan) {
+            throw new Error("Payment script missing — hard refresh");
+          }
+          await ensureRzp();
+          result = await QuantrexPayments.buyPlan(selected, user);
+        } catch (err) {
+          result = { ok: false, error: (err && err.message) || "Could not open Razorpay" };
+        }
+        paying = false;
+        if (result && result.ok) {
+          const start = new Date(result.startedAt || Date.now());
+          const end = new Date(result.expiresAt || (Date.now() + 7 * 86400000));
+          const fmt = (d) => d.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
+          const payId = result.paymentId || result.orderId || "—";
+          const amtTxt = "₹" + (result.amount || amt);
+          document.getElementById("okReceipt").innerHTML =
+            "<div><span>Plan</span><b>" + (plan.label || selected) + "</b></div>" +
+            "<div><span>Amount</span><b>" + amtTxt + "</b></div>" +
+            "<div><span>Payment ID</span><b>" + payId + "</b></div>" +
+            "<div><span>Starts</span><b>" + fmt(start) + "</b></div>" +
+            "<div><span>Ends</span><b>" + fmt(end) + "</b></div>" +
+            "<div><span>Account</span><b>This Quantrex ID</b></div>";
+          const extra = {
+            plan: plan.label || selected,
+            amount: amtTxt,
+            paymentId: payId
+          };
+          if (typeof QxLeads !== "undefined") {
+            QxLeads.submit("purchase", extra).catch(function () {});
+            const text = QxLeads.formatLead("purchase", extra);
+            document.getElementById("waBtn").onclick = function () {
+              window.open(QxLeads.waUrl(QxLeads.ADMIN_WA, text), "_blank", "noopener");
+            };
+            document.getElementById("mailBtn").onclick = function () {
+              const u = currentUser();
+              const to = (u && u.email) ? u.email + "," + QxLeads.ADMIN_EMAIL : QxLeads.ADMIN_EMAIL;
+              location.href = QxLeads.mailUrl(to, "Quantrex Academy payment receipt", text);
+            };
+          } else {
+            const text = "Quantrex Academy receipt\nPlan: " + (plan.label || selected) + "\nAmount: " + amtTxt + "\nPayment ID: " + payId;
+            document.getElementById("waBtn").onclick = function () {
+              window.open("https://wa.me/917750858874?text=" + encodeURIComponent(text), "_blank", "noopener");
+            };
+            document.getElementById("mailBtn").onclick = function () {
+              location.href = "mailto:quantrexacademy@gmail.com?subject=" + encodeURIComponent("Quantrex Academy payment receipt") + "&body=" + encodeURIComponent(text);
+            };
+          }
+          document.getElementById("okModal").classList.add("on");
+          msg.textContent = "";
+          return;
+        }
+        if (result && result.cancelled) { msg.textContent = ""; return; }
+        document.getElementById("failText").textContent =
+          ((result && result.error) || "Payment could not be completed.") +
+          " No money was taken. WhatsApp or call 8700508344 if you need help.";
+        if (typeof QxLeads !== "undefined") {
+          QxLeads.submit("payment_fail", { plan: (plan && plan.label) || selected, error: (result && result.error) || "" }, { help: true }).catch(function () {});
+        }
+        document.getElementById("failModal").classList.add("on");
+        msg.className = "pay-status err";
+        msg.textContent = (result && result.error) || "Payment failed.";
+      }
+      paint();
+      try {
+        firebase.auth().onAuthStateChanged(function (u) {
+          if (u && typeof QuantrexDB !== "undefined" && QuantrexDB.getSubscription) {
+            QuantrexDB.getSubscription(u.uid).then(function () { paint(); }).catch(function () { paint(); });
+          } else paint();
+        });
+      } catch (_) {}
+      document.getElementById("startOffer").onclick = function () { payNow("trial_7"); };
+      document.getElementById("failClose").onclick = function () {
+        document.getElementById("failModal").classList.remove("on");
+      };
+      QuantrexPayments.loadPublicConfig().then((cfg) => {
+        if (cfg && cfg.plans) plans = Object.assign({}, fallback, cfg.plans);
+        paint();
+      });
+    })();
+  </script>
+  <script src="pwa-register.js?v=qxfix91"></script>
+</body>
+</html>

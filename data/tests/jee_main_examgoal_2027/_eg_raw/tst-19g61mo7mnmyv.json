@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mo7mnmyv",
+  "title": "Chemical Equilibrium Test - 2 (Topic Test)",
+  "type": "topic",
+  "section": "Chemical Equilibrium",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-06-16T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "2b682002-1a47-46ab-b256-f940068d0959",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g61mo7mnmyv",
+    "defaultLanguage": "en",
+    "description": "Application of Equilibrium Constant (K)",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-16T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mqfxvvz1",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>At $527^{\\circ} \\mathrm{C}$, the reaction given below has $K_c = 4$</p><p>NH$_3$ (g) $\\rightleftharpoons \\frac{1}{2}$ N$_2$(g) + $\\frac{3}{2}$ H$_2$(g)</p><p>What is the $K_P$ for the reaction?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$16 \\times (800\\ R)^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\left( \\frac{800R}{4} \\right)^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$4 \\times 800\\ R$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For a gaseous reaction, the relation between $K_P$ and $K_c$ is</p>\n<p>$$ K_P = K_c (RT)^{\\Delta n} $$</p>\n<p>Here,</p>\n<p>$$ \\text{NH}_3(g) \\rightleftharpoons \\frac{1}{2}\\text{N}_2(g) + \\frac{3}{2}\\text{H}_2(g) $$</p>\n<p>Now find $\\Delta n$.</p>\n<p>$\\Delta n =$ moles of gaseous products $-$ moles of gaseous reactants</p>\n<p>$$ \\Delta n = \\left(\\frac{1}{2} + \\frac{3}{2}\\right) - 1 = 2 - 1 = 1 $$</p>\n<p>Given,</p>\n<p>$$ K_c = 4 $$</p>\n<p>Temperature:</p>\n<p>$$ 527^\\circ \\text{C} = 527 + 273 = 800\\ \\text{K} $$</p>\n<p>So,</p>\n<p>$$ K_P = 4(RT)^1 = 4R \\times 800 $$</p>\n<p>$$ K_P = 4 \\times 800R $$</p>\n<p>So the correct option is:</p>\n<p>$$ \\boxed{\\text{Option C}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$527^{\\circ} \\mathrm{C}$ पर, नीचे दी गई अभिक्रिया के लिए $K_c = 4$ है</p><p>NH$_3$ (g) $\\rightleftharpoons \\frac{1}{2}$ N$_2$(g) + $\\frac{3}{2}$ H$_2$(g)</p><p>अभिक्रिया के लिए $K_P$ क्या है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$16 \\times (800\\ R)^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\left( \\frac{800R}{4} \\right)^{-2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$4 \\times 800\\ R$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqfxz4cc",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>log $\\dfrac{K_p}{K_c}$ + log RT = 0 is a relationship for the reaction :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>PCl$_5$ $\\rightleftharpoons$ PCl$_3$ + Cl$_2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2SO$_2$ + O$_2$ $\\rightleftharpoons$ 2SO$_3$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>H$_2$ + I$_2$ $\\rightleftharpoons$ 2HI</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>N$_2$ + 3H$_2$ $\\rightleftharpoons$ 2NH$_3$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>We use the relation between $K_p$ and $K_c$:</p>\n<p>$$ K_p = K_c (RT)^{\\Delta n} $$</p>\n\n<p>$$ \\log K_p = \\log K_c + \\Delta n \\log RT $$</p>\n\n<p>$$ \\log \\frac{K_p}{K_c} = \\Delta n \\log RT $$</p>\n\n<p>$$ \\log \\frac{K_p}{K_c} + \\log RT = 0 $$</p>\n\n<p>$$ \\log \\frac{K_p}{K_c} = -\\log RT $$</p>\n<p>Comparing with</p>\n<p>$$ \\log \\frac{K_p}{K_c} = \\Delta n \\log RT $$</p>\n<p>we get</p>\n<p>$$ \\Delta n = -1 $$</p>\n<p>Now check each reaction. Here $\\Delta n =$ moles of gaseous products $-$ moles of gaseous reactants.</p>\n<p>For A:</p>\n<p>$$ \\text{PCl}_5 \\rightleftharpoons \\text{PCl}_3 + \\text{Cl}_2 $$</p>\n<p>$$ \\Delta n = (1+1) - 1 = 1 $$</p>\n<p>For B:</p>\n<p>$$ 2\\text{SO}_2 + \\text{O}_2 \\rightleftharpoons 2\\text{SO}_3 $$</p>\n<p>$$ \\Delta n = 2 - (2+1) = -1 $$</p>\n<p>For C:</p>\n<p>$$ \\text{H}_2 + \\text{I}_2 \\rightleftharpoons 2\\text{HI} $$</p>\n<p>$$ \\Delta n = 2 - 2 = 0 $$</p>\n<p>For D:</p>\n<p>$$ \\text{N}_2 + 3\\text{H}_2 \\rightleftharpoons 2\\text{NH}_3 $$</p>\n<p>$$ \\Delta n = 2 - 4 = -2 $$</p>\n<p>Only option B has $\\Delta n = -1$.</p>\n<p>$$ \\boxed{2\\text{SO}_2 + \\text{O}_2 \\rightleftharpoons 2\\text{SO}_3} $$</p>\n<p>So, the correct answer is Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>log $\\dfrac{K_p}{K_c}$ + log RT = 0 निम्न में से किस अभिक्रिया के लिए एक संबंध है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>PCl$_5$ $\\rightleftharpoons$ PCl$_3$ + Cl$_2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2SO$_2$ + O$_2$ $\\rightleftharpoons$ 2SO$_3$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>H$_2$ + I$_2$ $\\rightleftharpoons$ 2HI</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>N$_2$ + 3H$_2$ $\\rightleftharpoons$ 2NH$_3$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqfy55qn",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In a 1 litre container, 2 moles each of SO<sub>3</sub>, CO, SO<sub>2</sub> and CO<sub>2</sub> are introduced. For the equilibrium</p>\n<p>SO<sub>3</sub>(g) + CO(g) $\\rightleftharpoons$ SO<sub>2</sub>(g) + CO<sub>2</sub>(g), if K<sub>c</sub> is 1/9, then</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>the total number of moles at equilibrium is less than 8</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>n(SO<sub>3</sub>) + n(CO<sub>2</sub>) = 4</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>[n(SO<sub>2</sub>)/n(CO)] &lt; 1</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>both (B) and (C).</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For the reaction</p>\n<p>$$ \\text{SO}_3(g) + \\text{CO}(g) \\rightleftharpoons \\text{SO}_2(g) + \\text{CO}_2(g) $$</p>\n<p>we are given:</p>\n<ul>\n<li><p>initial moles of each gas $= 2$</p></li>\n<li><p>volume $= 1 \\, \\text{L}$</p></li>\n</ul>\n<p>So initial concentrations are also:</p>\n<p>$$ [\\text{SO}_3] = [\\text{CO}] = [\\text{SO}_2] = [\\text{CO}_2] = 2 $$</p>\n<p>Now first check the initial reaction quotient:</p>\n<p>$$ Q_c = \\frac{[\\text{SO}_2][\\text{CO}_2]}{[\\text{SO}_3][\\text{CO}]} = \\frac{2 \\times 2}{2 \\times 2} = 1 $$</p>\n<p>But</p>\n<p>$$ K_c = \\frac{1}{9} $$</p>\n<p>Since $Q_c > K_c$, the reaction will shift in the backward direction.</p>\n<p>Take the change as $x$ in backward direction.</p>\n<p>Then at equilibrium:</p>\n<p>$$ [\\text{SO}_3] = 2 + x $$</p>\n<p>$$ [\\text{CO}] = 2 + x $$</p>\n<p>$$ [\\text{SO}_2] = 2 - x $$</p>\n<p>$$ [\\text{CO}_2] = 2 - x $$</p>\n<p>Now apply $K_c$:</p>\n<p>$$ K_c = \\frac{[\\text{SO}_2][\\text{CO}_2]}{[\\text{SO}_3][\\text{CO}]} $$</p>\n<p>$$ \\frac{(2-x)(2-x)}{(2+x)(2+x)} = \\frac{1}{9} $$</p>\n<p>$$ \\frac{2-x}{2+x} = \\frac{1}{3} $$</p>\n<p>$$ 3(2-x) = 2+x $$</p>\n<p>$$ 6 - 3x = 2 + x $$</p>\n<p>$$ 4 = 4x $$</p>\n<p>$$ x = 1 $$</p>\n<p>So equilibrium moles are:</p>\n<p>$$ n(\\text{SO}_3) = 3,\\quad n(\\text{CO}) = 3,\\quad n(\\text{SO}_2) = 1,\\quad n(\\text{CO}_2) = 1 $$</p>\n<p>Now check the options.</p>\n<p>Option A:</p>\n<p>Total moles at equilibrium:</p>\n<p>$$ 3+3+1+1 = 8 $$</p>\n<p>So total moles are not less than $8$.</p>\n<p>A is false.</p>\n<p>Option B:</p>\n<p>$$ n(\\text{SO}_3) + n(\\text{CO}_2) = 3 + 1 = 4 $$</p>\n<p>B is true.</p>\n<p>Option C:</p>\n<p>$$ \\frac{n(\\text{SO}_2)}{n(\\text{CO})} = \\frac{1}{3} < 1 $$</p>\n<p>C is true.</p>\n<p>So both B and C are correct.</p>\n<p>$$ \\boxed{\\text{Option D}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>1 लीटर के एक पात्र में, SO<sub>3</sub>, CO, SO<sub>2</sub> और CO<sub>2</sub> प्रत्येक के 2 मोल मिलाए जाते हैं। साम्य</p> <p>SO<sub>3</sub>(g) + CO(g) $\\rightleftharpoons$ SO<sub>2</sub>(g) + CO<sub>2</sub>(g) के लिए, यदि K<sub>c</sub> 1/9 है, तो</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>साम्यावस्था पर मोलो की कुल संख्या 8 से कम है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>n(SO<sub>3</sub>) + n(CO<sub>2</sub>) = 4</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>[n(SO<sub>2</sub>)/n(CO)] &lt; 1</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>(B) और (C) दोनों।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqfybtww",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>When alcohol (C<sub>2</sub>H<sub>5</sub>OH (l)) and acetic acid (CH<sub>3</sub>COOH (l)) are mixed together in equimolar ratio at 27°C, 33% of each is converted into ester. Then the $K_c$ for the equilibrium</p>\n<p>C<sub>2</sub>H<sub>5</sub>OH (l) + CH<sub>3</sub>COOH (l) $\\rightleftharpoons$ CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> (l) + H<sub>2</sub>O (l)</p>\n<p>is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>4</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1/4</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>9</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1/9</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Take $1$ mole each of alcohol and acetic acid initially, since they are mixed in equimolar ratio.</p>\n<p>So initially,</p>\n<p>$$ \\text{C}_2\\text{H}_5\\text{OH} = 1,\\quad \\text{CH}_3\\text{COOH} = 1 $$</p>\n<p>and</p>\n<p>$$ \\text{ester} = 0,\\quad \\text{H}_2\\text{O} = 0 $$</p>\n<p>Given that $33\\%$ of each reactant is converted into ester.</p>\n<p>That means about $\\dfrac{1}{3}$ mole of each reactant reacts.</p>\n<p>At equilibrium,</p>\n<p>$$ \\text{C}_2\\text{H}_5\\text{OH} = 1 - \\frac{1}{3} = \\frac{2}{3} $$</p>\n<p>$$ \\text{CH}_3\\text{COOH} = 1 - \\frac{1}{3} = \\frac{2}{3} $$</p>\n<p>Since ester and water are formed in the same amount,</p>\n<p>$$ \\text{CH}_3\\text{COOC}_2\\text{H}_5 = \\frac{1}{3},\\quad \\text{H}_2\\text{O} = \\frac{1}{3} $$</p>\n<p>Now,</p>\n<p>$$ K_c = \\frac{[\\text{CH}_3\\text{COOC}_2\\text{H}_5][\\text{H}_2\\text{O}]}{[\\text{C}_2\\text{H}_5\\text{OH}][\\text{CH}_3\\text{COOH}]} $$</p>\n<p>$$ K_c = \\frac{\\left(\\frac{1}{3}\\right)\\left(\\frac{1}{3}\\right)}{\\left(\\frac{2}{3}\\right)\\left(\\frac{2}{3}\\right)} = \\frac{1/9}{4/9} = \\frac{1}{4} $$</p>\n<p>So the correct answer is:</p>\n<p>$$ \\boxed{\\frac{1}{4}} $$</p>\n<p>Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>जब 27°C पर एल्कोहॉल (C<sub>2</sub>H<sub>5</sub>OH (l)) और एसिटिक अम्ल (CH<sub>3</sub>COOH (l)) को सममोलर अनुपात में मिलाया जाता है, तो प्रत्येक का 33% एस्टर में परिवर्तित हो जाता है। तब निम्न साम्यावस्था के लिए $K_c$ है:</p>\n<p>C<sub>2</sub>H<sub>5</sub>OH (l) + CH<sub>3</sub>COOH (l) $\\rightleftharpoons$ CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> (l) + H<sub>2</sub>O (l)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>4</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1/4</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>9</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1/9</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqfyl58p",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the gaseous equilibrium PCl<sub>5</sub>(g) $\\rightleftharpoons$ PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g).<br>Let the initial amount of PCl<sub>5</sub> be ‘$x$’ moles. If $\\alpha$ denotes the degree of dissociation and $P$ is the total pressure at equilibrium, then the value of $P_{\\mathrm{PCl}_3} \\cdot P^{-1}$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{x}{1+x}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{\\alpha x}{\\alpha + x}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{\\alpha}{1+\\alpha}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{\\alpha}{x+\\alpha x}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqfyk6bu%2Fb3073c7d-ed1a-487b-8a33-a313dba83ebb%2Ff0a776a0-6921-11f1-ad65-191bd535efe0%2Ffile-6y3zli1mqfyk6bv.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqfyk6bu%2Fb3073c7d-ed1a-487b-8a33-a313dba83ebb%2Ff0a776a0-6921-11f1-ad65-191bd535efe0%2Ffile-6y3zli1mqfyk6bv.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Now partial pressure of $\\mathrm{PCl_3}$ is</p>\n<p>$$ P_{\\mathrm{PCl_3}} = \\frac{\\text{moles of } \\mathrm{PCl_3}}{\\text{total moles}} \\cdot P = \\frac{x\\alpha}{x(1+\\alpha)} \\cdot P $$</p>\n<p>$$ P_{\\mathrm{PCl_3}} = \\frac{\\alpha}{1+\\alpha}P $$</p>\n<p>So,</p>\n<p>$$ P_{\\mathrm{PCl_3}} \\cdot P^{-1} = \\frac{P_{\\mathrm{PCl_3}}}{P} = \\frac{\\alpha}{1+\\alpha} $$</p>\n<p>The correct option is</p>\n<p>$$ \\boxed{\\frac{\\alpha}{1+\\alpha}} $$</p>\n<p>So, Option C is correct.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>गैसीय साम्य PCl<sub>5</sub>(g) $\\rightleftharpoons$ PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g) पर विचार कीजिए।<br>मान लीजिए PCl<sub>5</sub> की प्रारंभिक मात्रा ‘$x$’ मोल है। यदि $\\alpha$ वियोजन की मात्रा को दर्शाता है और साम्यावस्था पर कुल दाब $P$ है, तो $P_{\\mathrm{PCl}_3} \\cdot P^{-1}$ का मान है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{x}{1+x}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{\\alpha x}{\\alpha + x}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{\\alpha}{1+\\alpha}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{\\alpha}{x+\\alpha x}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqfz7r2j",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>At temperature <i>T</i> K, the gaseous compound AB<sub>2</sub> undergoes dissociation as per: 2AB<sub>2</sub>(g)  $\\rightleftharpoons$ 2AB(g) + B<sub>2</sub>(g). If the degree of dissociation is &lsquo;<i>x</i>&rsquo; and <i>x</i> is much smaller than 1, then the value of &lsquo;<i>x</i>&rsquo; in terms of the equilibrium constant <i>K<sub>P</sub></i> and the total pressure <i>P</i> is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{K_P}{P} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ (K_P)^{1/3} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\left( \\frac{2K_P}{P} \\right)^{1/3} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\left( \\frac{K_P}{P} \\right)^{1/3} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqfz3v5a%2F9ba04b8d-c732-4d92-bc55-c26fcd54243a%2F1432f8e0-6924-11f1-ad65-191bd535efe0%2Ffile-6y3zli1mqfz3v5b.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqfz3v5a%2F9ba04b8d-c732-4d92-bc55-c26fcd54243a%2F1432f8e0-6924-11f1-ad65-191bd535efe0%2Ffile-6y3zli1mqfz3v5b.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$K_p=\\frac{\\left(\\frac{x}{1+\\frac{x}{2}} \\times P\\right)^2 \\cdot\\left(\\frac{x / 2}{1+x / 2} \\cdot P\\right)}{\\left(\\frac{1-x}{1+x / 2} \\cdot P\\right)^2}$</p>\n<p>$=\\frac{x^3 \\cdot P}{2(1-x)^2\\left(1+\\frac{x}{2}\\right)}$</p>\n<p>As $x \\ll 1, K_p=\\frac{x^3 \\cdot P}{2} \\Rightarrow x=\\left(\\frac{2 K p}{P}\\right)^{1 / 3}$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>तापमान <i>T</i> K पर, गैसीय यौगिक AB<sub>2</sub> का वियोजन निम्न प्रकार से होता है: 2AB<sub>2</sub>(g)  $\\rightleftharpoons$ 2AB(g) + B<sub>2</sub>(g)। यदि वियोजन की मात्रा &lsquo;<i>x</i>&rsquo; है और <i>x</i> का मान 1 से बहुत छोटा है, तो साम्य स्थिरांक <i>K<sub>P</sub></i> तथा कुल दाब <i>P</i> के पदों में &lsquo;<i>x</i>&rsquo; का मान है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{K_P}{P} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ (K_P)^{1/3} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\left( \\frac{2K_P}{P} \\right)^{1/3} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\left( \\frac{K_P}{P} \\right)^{1/3} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqfzlaef",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the decomposition of solid NH<sub>4</sub>HS in a flask containing NH<sub>3</sub>(g) at a pressure of 2 atm. What will be the partial pressure of NH<sub>3</sub>(g) and H<sub>2</sub>S(g) after the equilibrium has been attained? K<sub>P</sub> for the reaction is 3.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>P<sub>NH<sub>3</sub></sub> = 6 atm, P<sub>H<sub>2</sub>S</sub> = $\\frac{1}{2}$ atm</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>P<sub>NH<sub>3</sub></sub> = 1.732 atm, P<sub>H<sub>2</sub>S</sub> = 1.732 atm</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>P<sub>NH<sub>3</sub></sub> = 3 atm, P<sub>H<sub>2</sub>S</sub> = 1 atm</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>P<sub>NH<sub>3</sub></sub> = 1 atm, P<sub>H<sub>2</sub>S</sub> = 3 atm</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The reaction here is</p>\n<p>$$\\text{NH}_4\\text{HS}(s) \\rightleftharpoons \\text{NH}_3(g) + \\text{H}_2\\text{S}(g)$$</p>\n<p>Since the solid doesn't appear in the equilibrium expression, only the gases matter. So</p>\n<p>$$K_P = P_{\\text{NH}_3} \\cdot P_{\\text{H}_2\\text{S}}$$</p>\n<p>The flask already contains $\\text{NH}_3$ at a pressure of 2 atm before the decomposition starts. So $\\text{NH}_3$ is not starting from zero.</p>\n<p>Let the pressure due to decomposition be $x$. When the solid breaks down, it produces equal amounts of $\\text{NH}_3$ and $\\text{H}_2\\text{S}$. So each rises by $x$.</p>\n<p>At equilibrium:</p>\n<p>$$P_{\\text{NH}_3} = 2 + x \\qquad P_{\\text{H}_2\\text{S}} = x$$</p>\n<p>Putting these into the expression for $K_P$:</p>\n<p>$$(2 + x)(x) = 3$$</p>\n\n<p>$$x^2 + 2x - 3 = 0$$</p>\n\n<p>$$(x + 3)(x - 1) = 0$$</p>\n<p>So $x = 1$ (we reject $x = -3$ since pressure can't be negative).</p>\n\n<p>$$P_{\\text{NH}_3} = 2 + 1 = 3 \\text{ atm}$$</p>\n<p>$$P_{\\text{H}_2\\text{S}} = 1 \\text{ atm}$$</p>\n<p>So the answer is <strong>Option C</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>2 atm के दाब पर NH<sub>3</sub>(g) युक्त एक फ्लास्क में ठोस NH<sub>4</sub>HS के वियोजन पर विचार कीजिए। साम्यावस्था स्थापित होने के बाद NH<sub>3</sub>(g) और H<sub>2</sub>S(g) का आंशिक दाब क्या होगा? अभिक्रिया के लिए K<sub>P</sub> का मान 3 है।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>P<sub>NH<sub>3</sub></sub> = 6 atm, P<sub>H<sub>2</sub>S</sub> = $\\frac{1}{2}$ atm</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>P<sub>NH<sub>3</sub></sub> = 1.732 atm, P<sub>H<sub>2</sub>S</sub> = 1.732 atm</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>P<sub>NH<sub>3</sub></sub> = 3 atm, P<sub>H<sub>2</sub>S</sub> = 1 atm</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>P<sub>NH<sub>3</sub></sub> = 1 atm, P<sub>H<sub>2</sub>S</sub> = 3 atm</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqfzr13s",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the reaction $\\mathrm{N_2O_4(g) \\rightleftharpoons 2NO_2(g)}$, if percentage dissociation of $\\mathrm{N_2O_4}$ are 20%, 45%, 65% & 80%, then the sequence of observed vapour densities will be:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$d_{20} > d_{45} > d_{65} > d_{80}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$d_{80} > d_{65} > d_{45} > d_{20}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$d_{20} = d_{45} = d_{65} = d_{80}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(d_{20} = d_{45}) &gt; (d_{65} = d_{80})$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For $\\mathrm{N_2O_4(g) \\rightleftharpoons 2NO_2(g)}$, dissociation increases the number of gaseous molecules.</p>\n<p>We know that vapour density is proportional to molar mass.  </p>\n<p>When $\\mathrm{N_2O_4}$ dissociates, the average molar mass of the gas mixture decreases, so vapour density also decreases.</p>\n<p>Take $1$ mole of $\\mathrm{N_2O_4}$ initially.</p>\n<p>If degree of dissociation is $\\alpha$, then:</p>\n<ul>\n<li><p>moles of $\\mathrm{N_2O_4}$ left $= 1-\\alpha$</p></li>\n<li><p>moles of $\\mathrm{NO_2}$ formed $= 2\\alpha$</p></li>\n</ul>\n<p>So total moles at equilibrium:</p>\n<p>$$ (1-\\alpha) + 2\\alpha = 1+\\alpha $$</p>\n<p>Initial molar mass of $\\mathrm{N_2O_4}$ is:</p>\n<p>$$ M = 92 $$</p>\n<p>Observed molar mass after dissociation becomes:</p>\n<p>$$ M_{\\text{obs}} = \\frac{92}{1+\\alpha} $$</p>\n<p>Observed vapour density is:</p>\n<p>$$ d = \\frac{M_{\\text{obs}}}{2} = \\frac{92}{2(1+\\alpha)} = \\frac{46}{1+\\alpha} $$</p>\n<p>Now as $\\alpha$ increases, denominator increases, so $d$ decreases.</p>\n<p>Given dissociation percentages:</p>\n<ul>\n<li><p>$20\\% \\Rightarrow \\alpha = 0.20$</p></li>\n<li><p>$45\\% \\Rightarrow \\alpha = 0.45$</p></li>\n<li><p>$65\\% \\Rightarrow \\alpha = 0.65$</p></li>\n<li><p>$80\\% \\Rightarrow \\alpha = 0.80$</p></li>\n</ul>\n<p>So the order of vapour density will be:</p>\n<p>$$ d_{20} > d_{45} > d_{65} > d_{80} $$</p>\n<p>Option A is correct.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अभिक्रिया $\\mathrm{N_2O_4(g) \\rightleftharpoons 2NO_2(g)}$ के लिए, यदि $\\mathrm{N_2O_4}$ का प्रतिशत वियोजन 20%, 45%, 65% और 80% है, तो प्रेक्षित वाष्प घनत्वों का क्रम होगा:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$d_{20} > d_{45} > d_{65} > d_{80}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$d_{80} > d_{65} > d_{45} > d_{20}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$d_{20} = d_{45} = d_{65} = d_{80}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(d_{20} = d_{45}) &gt; (d_{65} = d_{80})$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqfzxgto",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A 34 g sample of BaO<sub>2</sub> is kept in a closed, rigid, evacuated container of volume 8.21 L and heated to 1000 K. Calculate the percentage of peroxide that changes into oxide. (Ba = 138)</p>\n<p>2BaO<sub>2</sub> (s)  $\\rightleftharpoons$ 2BaO(s) + O<sub>2</sub> (g); <i>K</i><sub>p</sub> = 0.5 atm</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>20%</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>50%</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>75%</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>80%</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqfzwkvs%2F11892da9-1cd1-4304-ac8d-bd6b6695724a%2F32bc5380-6927-11f1-bd8c-a73e31ca4274%2Ffile-6y3zli1mqfzwkvt.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqfzwkvs%2F11892da9-1cd1-4304-ac8d-bd6b6695724a%2F32bc5380-6927-11f1-bd8c-a73e31ca4274%2Ffile-6y3zli1mqfzwkvt.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Since both reactant and product are solids, $K_p$ depends only on the pressure of oxygen gas:</p>\n<p>$$K_p = P_{\\text{O}_2}$$</p>\n<p>We can find this pressure using the ideal gas equation $PV = nRT$. Here the number of moles of oxygen is $\\frac{x}{2}$, the volume is 8.21 L, and the temperature is 1000 K. Putting these in:</p>\n<p>$$0.5 = \\frac{\\frac{x}{2} \\times 0.0821 \\times 1000}{8.21}$$</p>\n\n<p>$$x = 0.1$$</p>\n<p>So 0.1 mol of $\\text{BaO}_2$ has decomposed out of the original 0.2 mol. The percentage converted is:</p>\n<p>$$\\% \\text{ of BaO}_2 \\text{ decomposed} = \\frac{0.1}{0.2} \\times 100 = 50\\%$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>BaO<sub>2</sub> के 34 g नमूने को 8.21 L आयतन के एक बंद, दृढ़ और निर्वातित पात्र में रखा जाता है और 1000 K तक गर्म किया जाता है। ऑक्साइड में परिवर्तित होने वाले पेरोक्साइड के प्रतिशत की गणना कीजिए। (Ba = 138)</p><p>2BaO<sub>2</sub> (s)  $\\rightleftharpoons$ 2BaO(s) + O<sub>2</sub> (g); <i>K</i><sub>p</sub> = 0.5 atm</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>20%</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>50%</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>75%</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>80%</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqg062vz",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the equilibrium reaction ZnO(s) + CO(g) $\\rightleftharpoons$ Zn(g) + CO<sub>2</sub>(g), the value of the equilibrium constant at 1500 K is 1 atm.</p>\n<p>If a mixture containing equal moles of CO and CO<sub>2</sub> is allowed to react with solid ZnO at 1500 K, and equilibrium is established when the total pressure is 1 atm, then the equilibrium partial pressure of zinc vapour in the vessel is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.68 atm</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.76 atm</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.24 atm</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.5 atm</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For the reaction</p>\n<p>$$ \\text{ZnO}(s) + \\text{CO}(g) \\rightleftharpoons \\text{Zn}(g) + \\text{CO}_2(g) $$</p>\n<p>we are given that the equilibrium constant is $1\\ \\text{atm}$ at $1500\\ \\text{K}$.</p>\n<p>Since $\\text{ZnO}$ is a solid, it does not appear in the equilibrium expression.</p>\n<p>So,</p>\n<p>$$ K_p = \\frac{P_{\\text{Zn}} \\cdot P_{\\text{CO}_2}}{P_{\\text{CO}}} $$</p>\n<p>Given $K_p = 1\\ \\text{atm}$,</p>\n<p>$$ \\frac{P_{\\text{Zn}} \\cdot P_{\\text{CO}_2}}{P_{\\text{CO}}} = 1 $$</p>\n<p>Now initially, CO and $\\text{CO}_2$ are taken in equimolar amounts.</p>\n<p>Let initial moles be:</p>\n<p>$$ \\text{CO} = 1,\\qquad \\text{CO}_2 = 1 $$</p>\n<p>Initially, zinc vapour is absent.</p>\n<p>If $x$ moles of CO react, then at equilibrium:</p>\n<p>$$ \\text{CO} = 1-x $$</p>\n<p>$$ \\text{Zn} = x $$</p>\n<p>$$ \\text{CO}_2 = 1+x $$</p>\n<p>Total moles at equilibrium:</p>\n<p>$$ (1-x) + x + (1+x) = 2+x $$</p>\n<p>Total pressure is $1\\ \\text{atm}$, so partial pressures are:</p>\n<p>$$ P_{\\text{CO}} = \\frac{1-x}{2+x} $$</p>\n<p>$$ P_{\\text{Zn}} = \\frac{x}{2+x} $$</p>\n<p>$$ P_{\\text{CO}_2} = \\frac{1+x}{2+x} $$</p>\n<p>Substitute into the equilibrium expression:</p>\n<p>$$ \\frac{\\left(\\frac{x}{2+x}\\right)\\left(\\frac{1+x}{2+x}\\right)}{\\left(\\frac{1-x}{2+x}\\right)} = 1 $$</p>\n\n<p>$$ \\frac{x(1+x)}{(2+x)(1-x)} = 1 $$</p>\n\n<p>$$ x(1+x) = (2+x)(1-x) $$</p>\n<p>$$ x + x^2 = 2 - x - x^2 $$</p>\n<p>$$ 2x^2 + 2x - 2 = 0 $$</p>\n<p>$$ x^2 + x - 1 = 0 $$</p>\n\n<p>$$ x = \\frac{-1 + \\sqrt{1+4}}{2} = \\frac{-1+\\sqrt{5}}{2} $$</p>\n<p>$$ x \\approx \\frac{-1+2.236}{2} = 0.618 $$</p>\n<p>Now the equilibrium partial pressure of Zn is</p>\n<p>$$ P_{\\text{Zn}} = \\frac{x}{2+x} = \\frac{0.618}{2.618} $$</p>\n<p>$$ P_{\\text{Zn}} \\approx 0.236 \\approx 0.24\\ \\text{atm} $$</p>\n<p>So the correct answer is:</p>\n<p>$$ \\boxed{0.24\\ \\text{atm}} $$</p>\n<p>Option C</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>साम्यावस्था अभिक्रिया ZnO(s) + CO(g) $\\rightleftharpoons$ Zn(g) + CO<sub>2</sub>(g) के लिए, 1500 K पर साम्य स्थिरांक का मान 1 atm है।</p>\n<p>यदि CO और CO<sub>2</sub> के समान मोलों वाले एक मिश्रण को 1500 K पर ठोस ZnO के साथ अभिक्रिया करने दिया जाता है, और 1 atm कुल दाब पर साम्यावस्था स्थापित हो जाती है, तो पात्र में जिंक वाष्प का साम्यावस्था आंशिक दाब है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.68 atm</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.76 atm</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.24 atm</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.5 atm</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mqfyvowm",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The progress of the reaction $\\mathrm{A} \\rightleftharpoons n \\mathrm{~B}$ with time is represented by the graph given below.</p>\n<p>The value of $n$ is</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqfyqgqq%2Fcfbb2af1-87f3-457e-af51-055c08e5b61b%2F9f8da220-6922-11f1-ad65-191bd535efe0%2Ffile-6y3zli1mqfyqgqr.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqfyqgqq%2Fcfbb2af1-87f3-457e-af51-055c08e5b61b%2F9f8da220-6922-11f1-ad65-191bd535efe0%2Ffile-6y3zli1mqfyqgqr.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>In this reaction, one molecule of A breaks into $n$ molecules of B. As time passes, the amount of A keeps decreasing while the amount of B keeps increasing, until both reach a steady value at equilibrium.</p>\n<p>Let us say that $x$ moles of A have reacted by the time equilibrium is reached. Since the reaction is $\\mathrm{A} \\rightleftharpoons n\\mathrm{B}$, each mole of A that reacts produces $n$ moles of B. So the amount of B formed will be $nx$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqfysozw%2F479b0d33-5eac-430e-b99b-b6dbb5b63e2f%2Fdd8c4cc0-6922-11f1-ad65-191bd535efe0%2Ffile-6y3zli1mqfysozx.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqfysozw%2F479b0d33-5eac-430e-b99b-b6dbb5b63e2f%2Fdd8c4cc0-6922-11f1-ad65-191bd535efe0%2Ffile-6y3zli1mqfysozx.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>From the graph, A starts at $0.6$ and falls to $0.3$ at equilibrium. So the amount of A left is the starting value minus what reacted:</p>\n<p>$$0.6 - x = 0.3$$</p>\n<p>This gives us $x = 0.3$. So $0.3$ moles of A have reacted.</p>\n<p>Now look at B. The graph shows B rising up to $0.6$ at equilibrium. Since the amount of B formed equals $nx$, we can write:</p>\n<p>$$nx = 0.6$$</p>\n<p>Putting in $x = 0.3$:</p>\n<p>$$n \\times 0.3 = 0.6$$</p>\n<p>$$\\Rightarrow n = 2$$</p>\n<p>So one molecule of A gives two molecules of B, which means the value of $n$ is $2$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>समय के साथ अभिक्रिया $\\mathrm{A} \\rightleftharpoons n \\mathrm{~B}$ की प्रगति को नीचे दिए गए ग्राफ द्वारा दर्शाया गया है।</p>\n<p>$n$ का मान है</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mqfyqgqq%2Fcfbb2af1-87f3-457e-af51-055c08e5b61b%2F9f8da220-6922-11f1-ad65-191bd535efe0%2Ffile-6y3zli1mqfyqgqr.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mqfyqgqq%2Fcfbb2af1-87f3-457e-af51-055c08e5b61b%2F9f8da220-6922-11f1-ad65-191bd535efe0%2Ffile-6y3zli1mqfyqgqr.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqg0c4vx",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In a heterogeneous equilibrium, $2 \\mathrm{~A}(\\mathrm{~s}) \\rightleftharpoons \\mathrm{B}(\\mathrm{g})+\\frac{\\mathrm{n}}{2} \\mathrm{C}(\\mathrm{g})$. If $\\log \\frac{\\mathrm{K}_{\\mathrm{p}}}{\\mathrm{K}_{\\mathrm{c}}}-3 \\log \\mathrm{RT}=0$. Find n .</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>For the equilibrium</p>\n<p>$$ 2A(s) \\rightleftharpoons B(g) + \\frac{n}{2}C(g) $$</p>\n\n<p>$$ K_p = K_c (RT)^{\\Delta n_g} $$</p>\n<p>Here, $\\Delta n_g$ means the change in moles of gaseous substances only.</p>\n<p>Since $A$ is a solid, it is not counted in $\\Delta n_g$.</p>\n\n<p>$$ \\Delta n_g = 1 + \\frac{n}{2} $$</p>\n<p>Now,</p>\n<p>$$ K_p = K_c (RT)^{1+\\frac{n}{2}} $$</p>\n\n<p>$$ \\log K_p = \\log K_c + \\left(1+\\frac{n}{2}\\right)\\log RT $$</p>\n\n<p>$$ \\log \\frac{K_p}{K_c} = \\left(1+\\frac{n}{2}\\right)\\log RT $$</p>\n\n<p>$$ \\log \\frac{K_p}{K_c} - 3\\log RT = 0 $$</p>\n\n<p>$$ \\log \\frac{K_p}{K_c} = 3\\log RT $$</p>\n\n<p>$$ \\log \\frac{K_p}{K_c} = \\left(1+\\frac{n}{2}\\right)\\log RT $$</p>\n\n<p>$$\\therefore $$ $$ 1+\\frac{n}{2} = 3 $$</p>\n<p>$$ \\frac{n}{2} = 2 $$</p>\n<p>$$ n = 4 $$</p>\n<p>So, the value of $n$ is</p>\n<p>$$ \\boxed{4} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक विषमांगी साम्य, $2 \text{ A}(\text{s}) \rightleftharpoons \text{B}(\text{g})+\frac{\text{n}}{2} \text{C}(\text{g})$ में, यदि $\\log \\frac{\\text{K}_\\text{p}}{\\text{K}_\\text{c}}-3 \\log \\text{RT}=0$ है, तो n का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqg0esaw",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>At 600 K a reaction $\\mathrm{S}_8(\\mathrm{~g}) \\rightleftharpoons 4 \\mathrm{~S}_2(\\mathrm{~g})$ is carried out by taking 2 moles of $\\mathrm{S}_8(\\mathrm{~g})$ and 0.2 mole of $\\mathrm{S}_2(\\mathrm{~g})$ in a vessel of 1 L . For this reaction the value of reaction quotient is $x \\times 10^{-4}$, then the value of $x$ is :</p>\n<p>(Given : $\\mathrm{Kc}=6.3 \\times 10^{-6} \\mathrm{M}^3$ at this temperature) $\\left(\\mathrm{R}=\\frac{1}{12} \\frac{\\mathrm{atmL}}{\\mathrm{molK}}\\right)$</p>",
+                "options": [],
+                "answer": "8",
+                "explanation": "<p>For the reaction $\\mathrm{S}_8(\\mathrm{g}) \\rightleftharpoons 4\\mathrm{S}_2(\\mathrm{g})$, the reaction quotient is written as</p>\n<p>$$Q_c = \\frac{[\\mathrm{S}_2]^4}{[\\mathrm{S}_8]}$$</p>\n<p>Since the volume is 1 L, the concentrations are equal to the number of moles.</p>\n<p>$$[\\mathrm{S}_8] = \\frac{2}{1} = 2\\ \\text{M}, \\qquad [\\mathrm{S}_2] = \\frac{0.2}{1} = 0.2\\ \\text{M}$$</p>\n\n<p>$$Q_c = \\frac{(0.2)^4}{2}$$</p>\n\n<p>So,</p>\n<p>$$Q_c = \\frac{16 \\times 10^{-4}}{2} = 8 \\times 10^{-4}$$</p>\n<p>This matches the form $x \\times 10^{-4}$, so</p>\n<p>$$x = 8$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>600 K पर 1 L के एक पात्र में 2 मोल $\\mathrm{S}_8(\\mathrm{~g})$ और 0.2 मोल $\\mathrm{S}_2(\\mathrm{~g})$ लेकर एक अभिक्रिया $\\mathrm{S}_8(\\mathrm{~g}) \\rightleftharpoons 4 \\mathrm{~S}_2(\\mathrm{~g})$ संपन्न की जाती है। इस अभिक्रिया के लिए अभिक्रिया भागफल (reaction quotient) का मान $x \\times 10^{-4}$ है, तो $x$ का मान है :</p><p>(दिया गया है : इस तापमान पर $\\mathrm{Kc}=6.3 \\times 10^{-6} \\mathrm{M}^3$) $\\left(\\mathrm{R}=\\frac{1}{12} \\frac{\\mathrm{atmL}}{\\mathrm{molK}}\\right)$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqg0iuz1",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The equilibrium constant for the reaction, $\\mathrm{N}_2(\\mathrm{~g})+\\mathrm{O}_2(\\mathrm{~g}) \\rightleftharpoons 2 \\mathrm{NO}(\\mathrm{g})$ at temperature T is $4 \\times 10^{-4}$. \n<br/><br/>The value of $\\mathrm{K}_{\\mathrm{c}}$ for the reaction, $\\mathrm{NO}(\\mathrm{g}) \\rightleftharpoons \\frac{1}{2} \\mathrm{~N}_2(\\mathrm{~g})+\\frac{1}{2} \\mathrm{O}_2(\\mathrm{~g})$ at the same temperature is :</p>",
+                "options": [],
+                "answer": "50",
+                "explanation": "<p>For the reaction</p>\n<p>$$ \\mathrm{N}_2(g)+\\mathrm{O}_2(g)\\rightleftharpoons 2\\mathrm{NO}(g) $$</p>\n<p>given,</p>\n<p>$$ K_c = 4\\times 10^{-4} $$</p>\n<p>Now we need $K_c$ for</p>\n<p>$$ \\mathrm{NO}(g)\\rightleftharpoons \\frac{1}{2}\\mathrm{N}_2(g)+\\frac{1}{2}\\mathrm{O}_2(g) $$</p>\n<p>First, reverse the given reaction:</p>\n<p>$$ 2\\mathrm{NO}(g)\\rightleftharpoons \\mathrm{N}_2(g)+\\mathrm{O}_2(g) $$</p>\n<p>So,</p>\n<p>$$ K_c'=\\frac{1}{4\\times 10^{-4}}=2.5\\times 10^3 $$</p>\n\n<p>$$ \\mathrm{NO}(g)\\rightleftharpoons \\frac{1}{2}\\mathrm{N}_2(g)+\\frac{1}{2}\\mathrm{O}_2(g) $$</p>\n<p>$$ K_c''=(2.5\\times 10^3)^{1/2} $$</p>\n<p>$$ K_c''=50 $$</p>\n<p>So, the required value is</p>\n<p>$$ \\boxed{50} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>तापमान T पर अभिक्रिया $\\mathrm{N}_2(\\mathrm{~g})+\\mathrm{O}_2(\\mathrm{~g}) \\rightleftharpoons 2 \\mathrm{NO}(\\mathrm{g})$ के लिए साम्य स्थिरांक $4 \\times 10^{-4}$ है। <br/><br/>उसी तापमान पर, अभिक्रिया $\\mathrm{NO}(\\mathrm{g}) \\rightleftharpoons \\frac{1}{2} \\mathrm{~N}_2(\\mathrm{~g})+\\frac{1}{2} \\mathrm{O}_2(\\mathrm{~g})$ के लिए $\\mathrm{K}_{\\mathrm{c}}$ का मान है:</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqg0odk5",
+            "chapter": "chemical-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>One mole of ethyl alcohol was treated with one mole of acetic acid at $25^{\\circ} \\mathrm{C}$. Two-third of the acid changes into ester at equilibrium. \n<br/><br/>The equilibrium constant for the reaction will be :</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>For the reaction,</p>\n<p>$$ \\mathrm{CH_3COOH + C_2H_5OH \\rightleftharpoons CH_3COOC_2H_5 + H_2O} $$</p>\n<p>Initially, we have:</p>\n<ul>\n<li><p>$1$ mole of acetic acid</p></li>\n<li><p>$1$ mole of ethyl alcohol</p></li>\n<li><p>$0$ mole of ester</p></li>\n<li><p>$0$ mole of water</p></li>\n</ul>\n<p>It is given that at equilibrium, $\\dfrac{2}{3}$ of the acid is converted into ester.</p>\n<p>So, moles reacted of acetic acid $= \\dfrac{2}{3}$</p>\n<p>From the reaction, alcohol also reacts by the same amount, and ester and water are formed in the same amount.</p>\n<p>At equilibrium:</p>\n<ul>\n<li><p>Acetic acid $= 1 - \\dfrac{2}{3} = \\dfrac{1}{3}$</p></li>\n<li><p>Ethyl alcohol $= 1 - \\dfrac{2}{3} = \\dfrac{1}{3}$</p></li>\n<li><p>Ester $= \\dfrac{2}{3}$</p></li>\n<li><p>Water $= \\dfrac{2}{3}$</p></li>\n</ul>\n<p>Now,</p>\n<p>$$ K = \\frac{[\\text{ester}][\\text{water}]}{[\\text{acid}][\\text{alcohol}]} $$</p>\n<p>Since all are in the same volume, we can use moles directly:</p>\n<p>$$ K = \\frac{\\left(\\dfrac{2}{3}\\right)\\left(\\dfrac{2}{3}\\right)}{\\left(\\dfrac{1}{3}\\right)\\left(\\dfrac{1}{3}\\right)} \\;=\\; \\frac{4/9}{1/9} \\;=\\; 4 $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एथिल एल्कोहॉल के एक मोल को $25^{\\circ} \\mathrm{C}$ पर एसिटिक अम्ल के एक मोल के साथ उपचारित किया गया। साम्यावस्था पर दो-तिहाई अम्ल एस्टर में परिवर्तित हो जाता है। <br/><br/>अभिक्रिया के लिए साम्य स्थिरांक होगा :</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "chemical-equilibrium-law-of-mass-action-and-equilibrium-constant",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Application of Equilibrium Constant (K)",
+    "timeAllotted": 2160000,
+    "title": "Chemical Equilibrium Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g61mo7mnmyv",
+    "defaultLanguage": "en",
+    "description": "Application of Equilibrium Constant (K)",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-16T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Application of Equilibrium Constant (K)",
+    "timeAllotted": 2160000,
+    "title": "Chemical Equilibrium Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Chemical Equilibrium"
+  }
+}

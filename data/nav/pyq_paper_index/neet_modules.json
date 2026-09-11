@@ -1,0 +1,30 @@
+{
+  "exam": "neet",
+  "title": "PYQ Mock Tests",
+  "modules": [
+    {
+      "id": "re-neet-2026",
+      "title": "Re-NEET 2026 Special Mocks",
+      "yearRange": [
+        2026,
+        2026
+      ],
+      "group": "reneet",
+      "count": 8,
+      "qs": 1440,
+      "durationMin": 180,
+      "totalMarks": 720
+    },
+    {
+      "id": "neet",
+      "title": "NEET",
+      "yearRange": [
+        2002,
+        2025
+      ],
+      "group": "neet",
+      "count": 37,
+      "qs": 6880
+    }
+  ]
+}

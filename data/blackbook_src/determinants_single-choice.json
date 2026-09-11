@@ -1,0 +1,946 @@
+[
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "1",
+      "3/2",
+      "3/8",
+      "9/4"
+    ],
+    "questionNumber": 1,
+    "questionType": "SINGLE CORRECT",
+    "text": "If<br/><br/> $ \\begin{vmatrix} 1 & cos α & cos β \\\\ cos α & 1 & cos γ \\\\ cos β & cos γ & 1 \\end{vmatrix} $  =  $ \\begin{vmatrix} 0 & cos α & cos β \\\\ cos α & 0 & cos γ \\\\ cos β & cos γ & 0 \\end{vmatrix} $ <br/><br/><br/>then the value of $\\cos^2 \\alpha + \\cos^2 \\beta + \\cos^2 \\gamma is:$ ",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "questionNumber": 2,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let the following system of equations $kx + y + z = 1$ x + ky + z = k x + y + kz = k^2 has no solution. Find |k|.",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "2",
+      "-1",
+      "1",
+      "0"
+    ],
+    "questionNumber": 3,
+    "questionType": "SINGLE CORRECT",
+    "text": "If<br/><br/> $ \\begin{vmatrix} a & a^2 & 1+a^3 \\\\ b & b^2 & 1+b^3 \\\\ c & c^2 & 1+c^3 \\end{vmatrix} $  = 0 <br/><br/><br/>and vectors (1, a, a^2), (1, b, b^2) and (1, c, c^2) are non-coplanar, then the product abc equals:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "are in A.P.",
+      "are in G.P.",
+      "are in H.P.",
+      "satisfy a + 2b + 3c = 0"
+    ],
+    "questionNumber": 4,
+    "questionType": "SINGLE CORRECT",
+    "text": "If the system of linear equations $x + 2ay + az = 0$ $x + 3by + bz = 0$ $x + 4cy + cz = 0$ has a non-zero solution, then a, b, c:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "2002",
+      "2001",
+      "2003",
+      "2004"
+    ],
+    "questionNumber": 5,
+    "questionType": "SINGLE CORRECT",
+    "text": "If the number of quadratic polynomials ax^2 + 2bx + c which satisfy the following conditions: (i) a, b, c are distinct (ii) a, b, c $\\in \\{1, 2, 3, \\dots, 2001, 2002\\} (iii$ ) x + 1 divides ax^2 + 2bx + c is equal to 1000$\\lambda,$  then find the value of $\\lambda.$ ",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "questionNumber": 6,
+    "questionType": "SINGLE CORRECT",
+    "text": "If the system of equations $2x + ay + 6z = 8,$ $x + 2y + z = 5,$ $2x + ay + 3z = 4$ has a unique solution then 'a' cannot be equal to:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "-2",
+      "0",
+      "2$\\sqrt{5}$ ",
+      "$\\sqrt{15}$ "
+    ],
+    "questionNumber": 7,
+    "questionType": "SINGLE CORRECT",
+    "text": "If one of the roots of the equation<br/><br/> $ \\begin{vmatrix} 7 & 6 & x^2 - 13 \\\\ 2 & x^2 - 13 & 2 \\\\ x^2 - 13 & 3 & 7 \\end{vmatrix} $  = 0 <br/><br/><br/>is x = 2, then sum of all other five roots is:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "Exactly three real values of k.",
+      "Exactly two real values of k.",
+      "Exactly one real value of k.",
+      "Infinite number of values of k."
+    ],
+    "questionNumber": 8,
+    "questionType": "SINGLE CORRECT",
+    "text": "The system of equations kx + (k+1)y + (k-1)z = 0 (k+1)$x + ky + (k+2)z = 0$ (k-1)x + (k+2)$y + kz = 0$ has a nontrivial solution for:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0",
+      "$\\log \\left( \\sum_{i=1}^{n^2+n} a_i \\right$ )",
+      "1",
+      "2"
+    ],
+    "questionNumber": 9,
+    "questionType": "SINGLE CORRECT",
+    "text": "If a_1, a_2, a_3, \\dots, a_n are in G.P. and a_i > 0 for each i, then the determinant $\\Delta =<br/><br/> $ \\begin{vmatrix} log a_n & log a_{n+2} & log a_{n+4} \\\\ log a_{n+6} & log a_{n+8} & log a_{n+10} \\\\ log a_{n+12} & log a_{n+14} & log a_{n+16} \\end{vmatrix} $ <br/><br/><br/>is$  equal to:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "10",
+      "-10",
+      "20",
+      "-20"
+    ],
+    "questionNumber": 10,
+    "questionType": "SINGLE CORRECT",
+    "text": "If D_1 =<br/><br/> $ \\begin{vmatrix} a_1 & b_1 & c_1 \\\\ a_2 & b_2 & c_2 \\\\ a_3 & b_3 & c_3 \\end{vmatrix} $ <br/><br/><br/>and D_2 =<br/><br/> $ \\begin{vmatrix} a_1 + 2a_2 + 3a_3 & 2a_3 & 5a_2 \\\\ b_1 + 2b_2 + 3b_3 & 2b_3 & 5b_2 \\\\ c_1 + 2c_2 + 3c_3 & 2c_3 & 5c_2 \\end{vmatrix} $ <br/><br/><br/>then D_2 / D_1 is equal to:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\Delta_1 = \\Delta_2$ ",
+      "$\\Delta_1 = 2\\Delta_2$ ",
+      "$\\Delta_1 + \\Delta_2 = 0$ ",
+      "$\\Delta_1 + 2\\Delta_2 = 0$ "
+    ],
+    "questionNumber": 11,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $\\Delta_1 =<br/><br/> $ \\begin{vmatrix} 1 & 1 & 1 \\\\ a & b & c \\\\ a^2 & b^2 & c^2 \\end{vmatrix} $ <br/><br/><br/>and \\Delta_2 =<br/><br/> $ \\begin{vmatrix} 1 & bc & a \\\\ 1 & ac & b \\\\ 1 & ab & c \\end{vmatrix} $ <br/><br/><br/>then:$ ",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "only a",
+      "only b",
+      "neither a nor b",
+      "both a and b"
+    ],
+    "questionNumber": 12,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of the determinant<br/><br/> $ \\begin{vmatrix} 1 & 0 & -1 \\\\ a & 1 & 1 - a \\\\ b & a & 1 + a - b \\end{vmatrix} $ <br/><br/><br/>depends on:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "1",
+      "-1",
+      "2",
+      "4"
+    ],
+    "questionNumber": 13,
+    "questionType": "SINGLE CORRECT",
+    "text": "Sum of solutions of the equation<br/><br/> $ \\begin{vmatrix} 1 & 2 & x \\\\ 2 & 3 & x^2 \\\\ 3 & 5 & 2 \\end{vmatrix} $  = 10 is:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "a",
+      "e",
+      "d",
+      "x"
+    ],
+    "questionNumber": 14,
+    "questionType": "SINGLE CORRECT",
+    "text": "If D =<br/><br/> $ \\begin{vmatrix} x + d & x + e & x + f \\\\ x + d + 1 & x + e + 1 & x + f + 1 \\\\ x + a & x + b & x + c \\end{vmatrix} $ <br/><br/><br/>then D does not depend on:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "xyz(x+y+z)^2",
+      "(x+y-z)(x+y+z)^2",
+      "(x+y+z)^3",
+      "(x+y+z)^2"
+    ],
+    "questionNumber": 15,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of the determinant<br/><br/> $ \\begin{vmatrix} x - y - z & 2x & 2x \\\\ 2y & y - z - x & 2y \\\\ 2z & 2z & z - x - y \\end{vmatrix} $  =",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\sqrt{3} / \\pi$ ",
+      "$\\sqrt{3} / 2\\pi$ ",
+      "3 / \\pi",
+      "$\\sqrt{3} / 9\\pi$ "
+    ],
+    "questionNumber": 16,
+    "questionType": "SINGLE CORRECT",
+    "text": "A rectangle ABCD is inscribed in a circle. Let PQ be the diameter of the circle parallel to the side AB. If \\angle BPC = 30^\\circ, then the ratio of the area of rectangle to the area of circle is:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "3",
+      "9",
+      "27",
+      "81"
+    ],
+    "questionNumber": 17,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let ab = 1, $\\Delta =<br/><br/> $ \\begin{vmatrix} 1 + a^2 - b^2 & 2ab & -2b \\\\ 2ab & 1 - a^2 + b^2 & 2a \\\\ 2b & -2a & 1 - a^2 - b^2 \\end{vmatrix} $ <br/><br/><br/>then$  the minimum value of $\\Delta is:$ ",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "a + b + c + d = 0",
+      "ab + cd = 0",
+      "ab(c+d) + cd(a+b) = 0",
+      "any a, b, c, d"
+    ],
+    "questionNumber": 18,
+    "questionType": "SINGLE CORRECT",
+    "text": "The determinant<br/><br/> $ \\begin{vmatrix} 2 & a+b+c+d & ab+cd \\\\ a+b+c+d & 2(a+b)(c+d) & ab(c+d) + cd(a+b) \\\\ ab+cd & ab(c+d)+cd(a+b) & 2abcd \\end{vmatrix} $  = 0 for",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "36",
+      "100",
+      "144",
+      "169"
+    ],
+    "questionNumber": 19,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let \\det A =<br/><br/> $ \\begin{vmatrix} l & m & n \\\\ p & q & r \\\\ 1 & 1 & 1 \\end{vmatrix} $ <br/><br/><br/>and if (l-m)^2 + (p-q)^2 = 9, (m-n)^2 + (q-r)^2 = 16, (n-l)^2 + (r-p)^2 = 25, then the value of (\\det A)^2 equals:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0",
+      "4",
+      "2",
+      "3"
+    ],
+    "questionNumber": 20,
+    "questionType": "SINGLE CORRECT",
+    "text": "The number of distinct real values of K such that the system of equations $x + 2y + z = 1,$ x + 3y + 4z = K, x + 5y + 10z = K^2 has infinitely many solutions is:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0",
+      "2",
+      "12",
+      "16"
+    ],
+    "questionNumber": 21,
+    "questionType": "SINGLE CORRECT",
+    "text": "If<br/><br/> $ \\begin{vmatrix} (x+1) & (x+1)^2 & (x+1)^3 \\\\ (x+2) & (x+2)^2 & (x+2)^3 \\\\ (x+3) & (x+3)^2 & (x+3)^3 \\end{vmatrix} $ <br/><br/><br/>is expressed as a polynomial in x, then the term independent of x is:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0",
+      "-1",
+      "1",
+      "-2"
+    ],
+    "questionNumber": 22,
+    "questionType": "SINGLE CORRECT",
+    "text": "If A, B, C are the angles of triangle ABC, then the minimum value of<br/><br/> $ \\begin{vmatrix} -2 & cos C & cos B \\\\ cos C & -1 & cos A \\\\ cos B & cos A & -1 \\end{vmatrix} $ <br/><br/><br/>is equal to:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "A.P.",
+      "G.P.",
+      "H.P.",
+      "None of these"
+    ],
+    "questionNumber": 23,
+    "questionType": "SINGLE CORRECT",
+    "text": "If the system of linear equations $x + 2ay + az = 0$ $x + 3by + bz = 0$ $x + 4cy + cz = 0$ has a non-zero solution then a, b, c are in",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "8",
+      "-8",
+      "0",
+      "2"
+    ],
+    "questionNumber": 24,
+    "questionType": "SINGLE CORRECT",
+    "text": "If a, b and c are the roots of the equation x^3 + 2x^2 + 1 = 0, find<br/><br/> $ \\begin{vmatrix} a & b & x \\\\ b & c & a \\\\ c & a & b \\end{vmatrix} $",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "exactly three real values of \\lambda",
+      "exactly two real values of \\lambda",
+      "exactly three real value of \\lambda",
+      "infinitely many real value of \\lambda"
+    ],
+    "questionNumber": 25,
+    "questionType": "SINGLE CORRECT",
+    "text": "The system of homogeneous equation $\\lambda x + (\\lambda + 1$ )y + ($\\lambda - 1$ )z = 0, ($\\lambda + 1$ )x + $\\lambda y + (\\lambda + 2$ )z = 0, ($\\lambda - 1$ )x + ($\\lambda + 2$ )y + $\\lambda z = 0$  has non-trivial solution for:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "-2",
+      "0",
+      "2$\\sqrt{5}$ ",
+      "$\\sqrt{15}$ "
+    ],
+    "questionNumber": 26,
+    "questionType": "SINGLE CORRECT",
+    "text": "If one of the roots of the equation<br/><br/> $ \\begin{vmatrix} 7 & 6 & x^2 - 13 \\\\ 2 & x^2 - 13 & 2 \\\\ x^2 - 13 & 3 & 7 \\end{vmatrix} $  = 0 <br/><br/><br/>is x = 2, then sum of all other five roots is:",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 0,
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "(2a + b) is a factor of f(a, b)",
+      "(a + 2b) is a factor of f(a, b)",
+      "(a + b) is a factor of f(a, b)",
+      "a is a factor of f(a, b)<br/><br/>Correct Options: b, c, d"
+    ],
+    "questionNumber": 27,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let f(a, b) =<br/><br/> $ \\begin{vmatrix} a & a^2 & 0 \\\\ 1 & (2a + b) & (a + b)^2 \\\\ 0 & 1 & (2a + 3b) \\end{vmatrix} $ <br/><br/><br/>then",
+    "typeLabel": "[MULTIPLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 0,
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$\\pi / 6$ ",
+      "5$\\pi / 6$ ",
+      "7$\\pi / 6$ ",
+      "11$\\pi / 6<br/><br/>Correct Options: b, d$ "
+    ],
+    "questionNumber": 28,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If<br/><br/> $ \\begin{vmatrix} 1 + cos^2 θ & sin^2 θ & 2√3 tan θ \\\\ cos^2 θ & 1 + sin^2 θ & 2√3 tan θ \\\\ cos^2 θ & sin^2 θ & 1 + 2√3 tan θ \\end{vmatrix} $  = 0 <br/><br/><br/>then $\\theta may be:$ ",
+    "typeLabel": "[MULTIPLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 0,
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$\\Delta depends$  on a",
+      "$\\Delta depends$  on d",
+      "$\\Delta is$  independent of a, d",
+      "$\\Delta = 0<br/><br/>Correct Options: a, b$ "
+    ],
+    "questionNumber": 29,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $\\Delta =<br/><br/> $ \\begin{vmatrix} a & a + d & a + 3d \\\\ a + d & a + 2d & a \\\\ a + 2d & a & a + d \\end{vmatrix} $ <br/><br/><br/>then:$ ",
+    "typeLabel": "[MULTIPLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 0,
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "-1",
+      "0",
+      "1",
+      "2<br/><br/>Correct Options: a, b"
+    ],
+    "questionNumber": 30,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "The value(s) of $\\lambda for$  which the system of equations (1 - $\\lambda)$x + 3y - 4z = 0$ x - (3 + \\lambda$ )$y + 5z = 0$ $3x + y - $\\lambda z = 0$$  possesses non-trivial solutions.",
+    "typeLabel": "[MULTIPLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 0,
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$\\alpha + \\beta = 0$ ",
+      "$\\beta + \\gamma = 0$ ",
+      "$\\alpha + \\beta + \\gamma + \\delta = 0$ ",
+      "$\\alpha + \\beta + \\gamma = 0<br/><br/>Correct Options: a, b, d$ "
+    ],
+    "questionNumber": 31,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let D(x) =<br/><br/> $ \\begin{vmatrix} x^2 + 4x - 3 & 2x + 4 & 13 \\\\ 2x^2 + 5x - 9 & 4x + 5 & 26 \\\\ 8x^2 - 6x + 1 & 16x - 6 & 104 \\end{vmatrix} $  = αx^3 + βx^2 + γx + δ <br/><br/><br/>then:",
+    "typeLabel": "[MULTIPLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 0,
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$\\alpha + \\beta = 0$ ",
+      "$\\beta + \\gamma = 0$ ",
+      "$\\alpha + \\beta + \\gamma + \\delta = 0$ ",
+      "$\\alpha + \\beta + \\gamma = 0<br/><br/>Correct Options: a, b, d$ "
+    ],
+    "questionNumber": 32,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "(Note: Question 6 is identical to Question 5 in source material) Let D(x) =<br/><br/> $ \\begin{vmatrix} x^2 + 4x - 3 & 2x + 4 & 13 \\\\ 2x^2 + 5x - 9 & 4x + 5 & 26 \\\\ 8x^2 - 6x + 1 & 16x - 6 & 104 \\end{vmatrix} $  = αx^3 + βx^2 + γx + δ <br/><br/><br/>then:",
+    "typeLabel": "[MULTIPLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 0,
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "-1",
+      "2",
+      "3",
+      "4<br/><br/>Correct Options: b, c, d"
+    ],
+    "questionNumber": 33,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If the system of equations $ax + y + 2z = 0$ $x + 2y + z = b 2x + y + az = 0$ has no solution then (a + b) can be equal to:",
+    "typeLabel": "[MULTIPLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 0,
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "-1",
+      "2",
+      "3",
+      "4"
+    ],
+    "questionNumber": 34,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If the system of equations $ax + y + 2z = 0$ $x + 2y + z = b 2x + y + az = 0$ has no solution then (a + b) can be equal to",
+    "typeLabel": "[MULTIPLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 1,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "$\\lambda = 2, \\mu = 3$ ",
+      "$\\lambda \\neq 2, \\mu = 3$ ",
+      "$\\lambda \\neq 2, \\mu \\neq 3$ ",
+      "$\\lambda = 2, \\mu \\in \\mathbb{R}$ "
+    ],
+    "questionNumber": 35,
+    "questionType": "COMPREHENSION",
+    "text": "<div class=\"mb-4 p-4 bg-gray-50 border-l-4 border-blue-500 text-gray-800 rounded\"><strong>Paragraph:</strong><br/>Consider the system of equations $2x + \\lambda y + 6z = 8$<br/>$x + 2y + \\mu z = 5$<br/>$x + y + 3z = 4$ The system of equations has:</div>No solution if:",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 0,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "$\\lambda \\neq 2, \\mu \\neq 3$ ",
+      "$\\lambda = 2, \\mu = 3$ ",
+      "$\\lambda \\neq 2, \\mu = 3$ ",
+      "$\\lambda = 2, \\mu \\in \\mathbb{R}$ "
+    ],
+    "questionNumber": 36,
+    "questionType": "COMPREHENSION",
+    "text": "<div class=\"mb-4 p-4 bg-gray-50 border-l-4 border-blue-500 text-gray-800 rounded\"><strong>Paragraph:</strong><br/>Consider the system of equations $2x + \\lambda y + 6z = 8$<br/>$x + 2y + \\mu z = 5$<br/>$x + y + 3z = 4$ The system of equations has:</div>Exactly one solution if:",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctOption": 3,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "$\\lambda \\neq 2, \\mu \\neq 3$ ",
+      "$\\lambda = 2, \\mu \\neq 3$ ",
+      "$\\lambda \\neq 2, \\mu = 3$ ",
+      "$\\lambda = 2, \\mu \\in \\mathbb{R}$ "
+    ],
+    "questionNumber": 37,
+    "questionType": "COMPREHENSION",
+    "text": "<div class=\"mb-4 p-4 bg-gray-50 border-l-4 border-blue-500 text-gray-800 rounded\"><strong>Paragraph:</strong><br/>Consider the system of equations $2x + \\lambda y + 6z = 8$<br/>$x + 2y + \\mu z = 5$<br/>$x + y + 3z = 4$ The system of equations has:</div>Infinitely many solutions if:",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctAnswer": "3",
+    "correctOption": 0,
+    "exerciseName": "Exercise 4",
+    "has_graph": false,
+    "questionNumber": 38,
+    "questionType": "SUBJECTIVE",
+    "text": "If 3^n is a factor of the determinant<br/><br/> $ \\begin{vmatrix} 1 & 1 & 1 \\\\ ^nC_1 & ^{n+3}C_1 & ^{n+6}C_1 \\\\ ^nC_2 & ^{n+3}C_2 & ^{n+6}C_2 \\end{vmatrix} $ <br/><br/><br/>then the maximum value of n is .........",
+    "typeLabel": "[SUBJECTIVE]",
+    "correctOptionsArray": [
+      0
+    ],
+    "options": [],
+    "answerKeyStr": "3"
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctAnswer": "9",
+    "correctOption": 0,
+    "exerciseName": "Exercise 4",
+    "has_graph": false,
+    "questionNumber": 39,
+    "questionType": "SUBJECTIVE",
+    "text": "Find the value of $\\lambda for which<br/><br/> $ \\begin{vmatrix} 2a_1+b_1 & 2a_2+b_2 & 2a_3+b_3 \\\\ 2b_1+c_1 & 2b_2+c_2 & 2b_3+c_3 \\\\ 2c_1+a_1 & 2c_2+a_2 & 2c_3+a_3 \\end{vmatrix} $  = λ  $ \\begin{vmatrix} a_1 & a_2 & a_3 \\\\ b_1 & b_2 & b_3 \\\\ c_1 & c_2 & c_3 \\end{vmatrix} $$ ",
+    "typeLabel": "[SUBJECTIVE]",
+    "correctOptionsArray": [
+      0
+    ],
+    "options": [],
+    "answerKeyStr": "9"
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctAnswer": "0",
+    "correctOption": 0,
+    "exerciseName": "Exercise 4",
+    "has_graph": false,
+    "questionNumber": 40,
+    "questionType": "SUBJECTIVE",
+    "text": "Find the co-efficient of x in the expansion of the determinant<br/><br/> $ \\begin{vmatrix} (1+x)^2 & (1+x)^4 & (1+x)^6 \\\\ (1+x)^3 & (1+x)^6 & (1+x)^9 \\\\ (1+x)^4 & (1+x)^8 & (1+x)^12 \\end{vmatrix} $",
+    "typeLabel": "[SUBJECTIVE]",
+    "correctOptionsArray": [
+      0
+    ],
+    "options": [],
+    "answerKeyStr": "0"
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctAnswer": "4",
+    "correctOption": 0,
+    "exerciseName": "Exercise 4",
+    "has_graph": false,
+    "questionNumber": 41,
+    "questionType": "SUBJECTIVE",
+    "text": "If x, y, z $\\in \\mathbb{R} and<br/><br/> $ \\begin{vmatrix} x & y^2 & z^3 \\\\ x^4 & y^5 & z^6 \\\\ x^7 & y^8 & z^9 \\end{vmatrix} $  = 2 <br/><br/><br/>then$  find the value of<br/><br/> $ \\begin{vmatrix} y^5 z^6 (z^3 - y^3) & x^4 z^6 (x^3 - z^3) & x^4 y^5 (y^3 - x^3) \\\\ y^2 z^3 (y^6 - z^6) & x z^3 (z^6 - x^6) & x y^2 (x^6 - y^6) \\\\ y^2 z^3 (z^3 - y^3) & x z^3 (x^3 - z^3) & x y^2 (y^3 - x^3) \\end{vmatrix} $",
+    "typeLabel": "[SUBJECTIVE]",
+    "correctOptionsArray": [
+      0
+    ],
+    "options": [],
+    "answerKeyStr": "4"
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctAnswer": "5",
+    "correctOption": 0,
+    "exerciseName": "Exercise 4",
+    "has_graph": false,
+    "questionNumber": 42,
+    "questionType": "SUBJECTIVE",
+    "text": "If the system of equations: $2x + 3y - z = 0$ $3x + 2y + kz = 0$ $4x + y + z = 0$ have a set of non-zero integral solutions then, find the smallest positive value of z.",
+    "typeLabel": "[SUBJECTIVE]",
+    "correctOptionsArray": [
+      0
+    ],
+    "options": [],
+    "answerKeyStr": "5"
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctAnswer": "2",
+    "correctOption": 0,
+    "exerciseName": "Exercise 4",
+    "has_graph": false,
+    "questionNumber": 43,
+    "questionType": "SUBJECTIVE",
+    "text": "Find a $\\in \\mathbb{R}$  for which the system of equations $2ax - 2y + 3z = 0;$ $x + ay + 2z = 0$ and $2x + az = 0$ also have a non-trivial solution.",
+    "typeLabel": "[SUBJECTIVE]",
+    "correctOptionsArray": [
+      0
+    ],
+    "options": [],
+    "answerKeyStr": "2"
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctAnswer": "6",
+    "correctOption": 0,
+    "exerciseName": "Exercise 4",
+    "has_graph": false,
+    "questionNumber": 44,
+    "questionType": "SUBJECTIVE",
+    "text": "If three non-zero distinct real numbers form an arithmetic progression and the squares of these numbers taken in the same order constitute a geometric progression. Find the sum of all possible common ratios of the geometric progression.",
+    "typeLabel": "[SUBJECTIVE]",
+    "correctOptionsArray": [
+      0
+    ],
+    "options": [],
+    "answerKeyStr": "6"
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctAnswer": "3",
+    "correctOption": 0,
+    "exerciseName": "Exercise 4",
+    "has_graph": false,
+    "questionNumber": 45,
+    "questionType": "SUBJECTIVE",
+    "text": "Let $\\Delta_1 =<br/><br/> $ \\begin{vmatrix} a_1 & a_2 & a_3 \\\\ b_1 & b_2 & b_3 \\\\ c_1 & c_2 & c_3 \\end{vmatrix} $ <br/><br/><br/>\\Delta_2 =<br/><br/> $ \\begin{vmatrix} 6a_1 & 2a_2 & 2a_3 \\\\ 3b_1 & b_2 & b_3 \\\\ 12c_1 & 4c_2 & 4c_3 \\end{vmatrix} $ <br/><br/><br/>and \\Delta_3 =<br/><br/> $ \\begin{vmatrix} 3a_1+b_1 & 3a_2+b_2 & 3a_3+b_3 \\\\ 3b_1 & 3b_2 & 3b_3 \\\\ 3c_1 & 3c_2 & 3c_3 \\end{vmatrix} $ <br/><br/><br/>then \\Delta_3 - \\Delta_2 = k \\Delta_1,$  find k.",
+    "typeLabel": "[SUBJECTIVE]",
+    "correctOptionsArray": [
+      0
+    ],
+    "options": [],
+    "answerKeyStr": "3"
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctAnswer": "3",
+    "correctOption": 0,
+    "exerciseName": "Exercise 4",
+    "has_graph": false,
+    "questionNumber": 46,
+    "questionType": "SUBJECTIVE",
+    "text": "The minimum value of determinant $\\Delta =<br/><br/> $ \\begin{vmatrix} 1 & cos θ & 1 \\\\ -cos θ & 1 & cos θ \\\\ -1 & -cos θ & 2 \\end{vmatrix} $$   for all θ ∈ R is:",
+    "typeLabel": "[SUBJECTIVE]",
+    "correctOptionsArray": [
+      0
+    ],
+    "options": [],
+    "answerKeyStr": "3"
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctAnswer": "7",
+    "correctOption": 0,
+    "exerciseName": "Exercise 4",
+    "has_graph": false,
+    "questionNumber": 47,
+    "questionType": "SUBJECTIVE",
+    "text": "For a unique value of $\\mu and \\lambda,$  the system of equations given by $x + y + z = 6$ $x + 2y + 3z = 14$ $2x + 5y + $\\lambda z = \\$mu$  has infinitely many solutions, then ($\\mu - \\lambda$ ) / 4 is equal to",
+    "typeLabel": "[SUBJECTIVE]",
+    "correctOptionsArray": [
+      0
+    ],
+    "options": [],
+    "answerKeyStr": "7"
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctAnswer": "2",
+    "correctOption": 0,
+    "exerciseName": "Exercise 4",
+    "has_graph": false,
+    "questionNumber": 48,
+    "questionType": "SUBJECTIVE",
+    "text": "Let $\\lim_{n \\to \\infty} n \\sin (2\\pi e [n!]$ ) = k$\\pi,$  where n $\\in \\mathbb{N}.$  Find k:",
+    "typeLabel": "[SUBJECTIVE]",
+    "correctOptionsArray": [
+      0
+    ],
+    "options": [],
+    "answerKeyStr": "2"
+  },
+  {
+    "chapter": "Determinants",
+    "chapterId": "determinants",
+    "correctAnswer": "2",
+    "correctOption": 0,
+    "exerciseName": "Exercise 4",
+    "has_graph": false,
+    "questionNumber": 49,
+    "questionType": "SUBJECTIVE",
+    "text": "If the system of linear equations ($\\cos \\theta$ )x + ($\\sin \\theta$ )y + $\\cos \\theta = 0 (\\sin \\theta$ )x + ($\\cos \\theta$ )y + $\\sin \\theta = 0 (\\cos \\theta$ )x + ($\\sin \\theta$ )y - $\\cos \\theta = 0$  is consistent, then the number of possible values of $\\theta, \\theta \\in [0, 2\\pi] is:$ ",
+    "typeLabel": "[SUBJECTIVE]",
+    "correctOptionsArray": [
+      0
+    ],
+    "options": [],
+    "answerKeyStr": "2"
+  }
+]

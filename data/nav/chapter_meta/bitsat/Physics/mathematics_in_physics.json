@@ -1,0 +1,38 @@
+{
+  "examSlug": "bitsat",
+  "examId": "61a8a124e8ce0dc8a5c62d2c",
+  "subjectId": "61a8a2c2e8ce0dc8a5c62d2d",
+  "chapterId": "61e7bd79c8ca5ec1f00e8ceb",
+  "subject": "Physics",
+  "chapter": "Mathematics in Physics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64c0e8516f5bfc7ab78aecc9",
+      "title": "Fundamentals of Vectors",
+      "count": 1,
+      "questionIds": [
+        "64c0e7e86f5bfc7ab78ae8e4"
+      ]
+    },
+    {
+      "id": "64c0e8516f5bfc7ab78aecc8",
+      "title": "Addition and Subtraction of Vectors",
+      "count": 2,
+      "questionIds": [
+        "64c0e78d6f5bfc7ab78ae5d9",
+        "64c0e7706f5bfc7ab78ae4db"
+      ]
+    },
+    {
+      "id": "64c0e8516f5bfc7ab78aecca",
+      "title": "Errors of Measurement",
+      "count": 3,
+      "questionIds": [
+        "67726d13c49e8ef28ee2b40b",
+        "65b7b87a97ae24e9e2db8cc0",
+        "64c0e8106f5bfc7ab78aea41"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddafc03b9dcaf1afec47",
+  "topicId": "66a0ddb0c03b9dcaf1afec49",
+  "title": "Nature of roots",
+  "concepts": [
+    {
+      "title": "Nature of roots",
+      "conceptBody": "<h3><strong>Nature of roots</strong></h3><p>In a quadratic equation $a{{x}^{2}}+bx+c=0$, let us suppose that $a,b,c$ are real and $a\\ne 0$. The following is true about the nature of its roots.</p><p>(1) The equation has real and distinct roots if and only if $D\\equiv {{b}^{2}}-4ac&gt;0$.</p><p>(2) The equation has real and coincident (equal) roots if and only if $D\\equiv {{b}^{2}}-4ac=0$.</p><p>(3) The equation has complex roots of the form $\\alpha \\pm i\\beta ,\\,\\alpha \\ne 0,$ $\\beta \\ne 0\\in R$ if and only if $D\\equiv {{b}^{2}}-4ac&lt;0.$</p><p>(4) The equation has rational roots if and only if $a,b,c\\in Q$ (the set of rational numbers) and $D\\equiv {{b}^{2}}-4ac$ is a perfect square (of a rational number).</p><p>(5) The equation has (unequal) irrational (surd form) roots if and only if $D\\equiv {{b}^{2}}-4ac&gt;0$ and not a perfect square even if <i>a, b </i>and <i>c </i>are rational. In this case if $p+\\sqrt{q}$, $p,q$ rational is an irrational root, then $p-\\sqrt{q}$ is also a root ( <i>a, b, c </i>being rational).</p><p>(6) $\\alpha +i\\beta $ ($\\beta \\ne 0$ and $\\alpha ,\\beta \\in R$) is a root if and only if its conjugate $\\alpha -i\\beta $ is a root, that is complex roots occur in pairs in a quadratic equation. In case the equation is satisfied by more than two complex numbers, then it reduces to an identity. $0.{{x}^{2}}+0.x+0=0$, <i>i.e., </i>$a=0=b=c$.</p>",
+      "position": 0,
+      "qcConcept": "66a0ddb0c03b9dcaf1afec4a"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66891f2e1010aab82c8aa621",
+      "title": "If $x^2+2 x+2 x y+m y-3$ has two rational factors, then the value of $m$ will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa622",
+      "title": "If $P(x)=a x^2+b x+c$ and $Q(x)=-a x^2+d x+c$ where $a c \\neq 0$, then $P(x) \\cdot Q(x)=0$ has at least",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa623",
+      "title": "Both the roots of the given equation\n$(x-a)(x-b)+(x-b)(x-c)+(x-c)(x-a)=0$ are always",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa624",
+      "title": "If the roots of the given equation $2 x^2+3(\\lambda-2) x+\\lambda+4=0$ be equal in magnitude but opposite in sign, then $\\lambda=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa625",
+      "title": "If the roots of the equation $\\left(p^2+q^2\\right) x^2-2 q(p+r) x+\\left(q^2+r^2\\right)=0$ be real and equal, then $p, q, r$ will be in",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa626",
+      "title": "If $a+b+c=0$, then the roots of the equation $4 a x^2+3 b x+2 c=0$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa627",
+      "title": "The value of $k$ for which $2 x^2-k x+x+8=0$ has equal and real roots are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa628",
+      "title": "If $I, m, n$ are real and $I \\neq m$, then the roots of the equation $(I-m) x^2-5(I+m) x-2(I-m)=0$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa629",
+      "title": "The expression $x^2+2 b x+c$ has the positive value if",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f2e1010aab82c8aa62a",
+      "title": "The roots of the equation $\\left(a^2+b^2\\right) t^2-2(a c+b d) t+\\left(c^2+d^2\\right)=0$ are equal, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

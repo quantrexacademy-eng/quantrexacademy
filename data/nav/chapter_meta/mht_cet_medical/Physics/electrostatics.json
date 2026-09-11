@@ -1,0 +1,76 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19156220c83fbf1e0bce11",
+  "chapterId": "6a192b9fe4cc9575516b5662",
+  "subject": "Physics",
+  "chapter": "Electrostatics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec175ef1faeb9633e23ca",
+      "title": "Electric Charge and Coulomb's law",
+      "count": 5,
+      "questionIds": [
+        "6a1ec0efef1faeb9633e2094",
+        "6a1ec08eef1faeb9633e1e37",
+        "6a1ec153ef1faeb9633e230c",
+        "6a1ec00fef1faeb9633e1b14",
+        "6a1ec054ef1faeb9633e1cc8"
+      ]
+    },
+    {
+      "id": "6a1ec175ef1faeb9633e23cb",
+      "title": "Electric Dipole",
+      "count": 4,
+      "questionIds": [
+        "6a1ec0b1ef1faeb9633e1f13",
+        "6a1ec032ef1faeb9633e1bf4",
+        "6a1ec012ef1faeb9633e1b2a",
+        "6a1ec051ef1faeb9633e1cb5"
+      ]
+    },
+    {
+      "id": "6a1ec176ef1faeb9633e23cc",
+      "title": "Electric Potential and Potential Energy",
+      "count": 12,
+      "questionIds": [
+        "6a1ec0f1ef1faeb9633e209f",
+        "6a1ec0edef1faeb9633e2088",
+        "6a1ec0cfef1faeb9633e1fd0",
+        "6a1ec0b1ef1faeb9633e1f12",
+        "6a1ec093ef1faeb9633e1e53",
+        "6a1ec131ef1faeb9633e2234",
+        "6a1ec130ef1faeb9633e2233",
+        "6a1ec14fef1faeb9633e22f2",
+        "6a1ec14fef1faeb9633e22f1",
+        "6a1ec012ef1faeb9633e1b2c",
+        "6a1ec10cef1faeb9633e214c",
+        "6a1ec04eef1faeb9633e1ca2"
+      ]
+    },
+    {
+      "id": "6a1ec176ef1faeb9633e23cd",
+      "title": "Electric Field and Electric Field Lines",
+      "count": 4,
+      "questionIds": [
+        "6a1ec0adef1faeb9633e1efc",
+        "6a1ec02fef1faeb9633e1bdc",
+        "6a1ec12def1faeb9633e221c",
+        "6a1ec113ef1faeb9633e217b"
+      ]
+    },
+    {
+      "id": "6a1ec176ef1faeb9633e23ce",
+      "title": "Electric Flux and Gauss Law",
+      "count": 5,
+      "questionIds": [
+        "6a1ec074ef1faeb9633e1d94",
+        "6a1ec070ef1faeb9633e1d78",
+        "6a1ec0d4ef1faeb9633e1fec",
+        "6a1ec0d0ef1faeb9633e1fd2",
+        "6a1ec032ef1faeb9633e1bf2"
+      ]
+    }
+  ]
+}

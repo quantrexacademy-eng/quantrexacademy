@@ -1,9 +1,9 @@
 {
-  "build": "qxfix135",
-  "title": "Clean ExamGoal practice, pure NTA CBT test, and high-visibility dark mode",
-  "body": "Practice mode displays ExamGoal chips, Test mode provides pure NTA CBT interface, solutions highlight difficulty and exam metadata, and dark mode buttons have high contrast.",
-  "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
-  "site": "https://www.quantrexacademy.com",
-  "package": "com.quantrexacademy.app",
-  "ts": 1788328039188
+    "body": "qxmd117: Question proofread (stems, List-I/II, figures, math glue). UI/pattern unchanged. Firebase + GitHub.",
+    "build": "qxmd117",
+    "site": "https://www.quantrexacademy.com",
+    "ts": 1789128000000,
+    "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
+    "package": "com.quantrexacademy.app",
+    "title": "Question proofread · UI unchanged"
 }

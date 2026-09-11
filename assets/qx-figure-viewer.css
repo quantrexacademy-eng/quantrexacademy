@@ -1,0 +1,369 @@
+/* Quantrex figure host + zoom button + professional lightbox */
+
+/* Keep figures card-free */
+#qxDiagramSlot,
+.qx-diagram-slot,
+.qx-opt-diagram-slot,
+.qx-fig,
+.qx-pool-fig-wrap,
+.qx-fig-host {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Host for floating Zoom button — never collapse / hide question text */
+.qx-fig-host {
+  position: relative !important;
+  display: block !important;
+  max-width: 100% !important;
+  width: fit-content !important;
+  margin: 10px auto !important;
+  line-height: 0 !important;
+  vertical-align: middle !important;
+  border-radius: 12px;
+  overflow: visible !important;
+  min-height: 0 !important;
+  /* do not use transforms that clip siblings */
+  transform: none !important;
+}
+
+/* Marks-style plain figure (no zoom chrome) */
+.qx-fig-host > img,
+img.qx-fig-clickable,
+img.qx-pool-fig,
+img.qx-marks-native-fig {
+  max-width: min(100%, 560px) !important;
+  max-height: min(380px, 50vh) !important;
+  width: auto !important;
+  height: auto !important;
+  display: block !important;
+  margin: 8px auto !important;
+  object-fit: contain !important;
+  cursor: default !important;
+  border-radius: 4px;
+  background: #fff !important;
+  padding: 4px;
+  box-shadow: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.mtk-opt-text .qx-fig-host > img,
+.qx-prac-opt-text .qx-fig-host > img,
+.mtk-opt-text img.qx-fig-clickable,
+.qx-prac-opt-text img.qx-fig-clickable {
+  max-height: min(300px, 42vh) !important;
+  max-width: 100% !important;
+}
+
+/* Zoom button REMOVED — Marks website style (plain figures only) */
+button.qx-fig-zoom-btn,
+.qx-fig-zoom-btn,
+.qx-diag-btn,
+.qx-diag-toolbar,
+.qx-diagram-badge,
+.qx-diag-zoom-btns {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+.qx-fig-zoom-btn:hover,
+button.qx-fig-zoom-btn:hover {
+  transform: scale(1.06) !important;
+  box-shadow: 0 6px 18px rgba(13, 148, 136, 0.5) !important;
+  background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%) !important;
+}
+
+.qx-fig-zoom-btn:active {
+  transform: scale(0.97) !important;
+}
+
+.qx-fig-zoom-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.qx-fig-zoom-btn .qx-z-lbl {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+/* Options: slightly smaller pill */
+.mtk-opt-text .qx-fig-zoom-btn,
+.qx-prac-opt-text .qx-fig-zoom-btn {
+  top: 6px !important;
+  right: 6px !important;
+  min-width: 34px !important;
+  height: 32px !important;
+  padding: 0 8px !important;
+}
+
+.mtk-opt-text .qx-fig-zoom-btn .qx-z-lbl,
+.qx-prac-opt-text .qx-fig-zoom-btn .qx-z-lbl {
+  display: none;
+}
+
+/* ——— Lightbox (clean HD zoom, no watermark) ——— */
+.qx-fig-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+
+.qx-fig-lightbox.qx-lb-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.qx-lb-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.qx-lb-stage {
+  position: relative;
+  z-index: 1;
+  width: min(98vw, 1280px);
+  height: min(94vh, 960px);
+  display: flex;
+  flex-direction: column;
+  animation: qxLbIn 0.22s ease;
+}
+
+@keyframes qxLbIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.qx-lb-viewport {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.qx-lb-viewport.qx-lb-dragging {
+  cursor: grabbing;
+}
+
+.qx-lb-img {
+  max-width: 96%;
+  max-height: 96%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transform-origin: center center;
+  transition: opacity 0.18s ease;
+  pointer-events: none;
+  image-rendering: auto;
+  -webkit-user-drag: none;
+  background: #fff;
+}
+
+.qx-lb-loading {
+  position: absolute;
+  color: #0f766e;
+  font: 600 14px/1.4 system-ui, sans-serif;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 10px 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.12);
+}
+
+.qx-lb-hint {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #64748b;
+  font: 500 12px/1 system-ui, sans-serif;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px 12px;
+  border-radius: 999px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.qx-lb-close {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.qx-lb-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.8);
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.qx-lb-prev {
+  left: -8px;
+}
+.qx-lb-next {
+  right: -8px;
+}
+
+.qx-lb-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.qx-lb-tool {
+  min-width: 44px;
+  height: 40px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.88);
+  color: #f8fafc;
+  font: 700 15px/1 system-ui, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.qx-lb-tool:hover {
+  background: #0d9488;
+}
+
+.qx-lb-tool[data-act="in"] {
+  background: linear-gradient(135deg, #0d9488, #0f766e);
+  min-width: 52px;
+}
+
+.qx-lb-counter {
+  color: #e2e8f0;
+  font: 600 13px/1 system-ui, sans-serif;
+  margin-left: 8px;
+}
+
+.qx-lb-pct {
+  color: #94a3b8;
+  font: 600 12px/1 system-ui, sans-serif;
+  min-width: 40px;
+  text-align: center;
+}
+
+/* Lightbox open: lock scroll only — never hide practice question underneath */
+body.qx-fig-lb-open {
+  overflow: hidden !important;
+}
+body.qx-fig-lb-open .mtk-main,
+body.qx-fig-lb-open .qx-question-body,
+body.qx-fig-lb-open .mtk-q-text,
+body.qx-fig-lb-open #qaOpts {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
+}
+/* Question text must never clip when figures/zoom present */
+.mtk-test-root .mtk-main {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  max-height: none !important;
+}
+.mtk-test-root .mtk-q-text,
+.mtk-test-root .qx-question-body,
+.mtk-test-root .qx-content {
+  overflow: visible !important;
+  max-height: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  clip: auto !important;
+}
+
+@media (max-width: 720px) {
+  .qx-lb-stage {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
+  .qx-lb-viewport {
+    border-radius: 0;
+  }
+  .qx-lb-close {
+    top: 10px;
+    right: 10px;
+  }
+  .qx-lb-prev {
+    left: 6px;
+  }
+  .qx-lb-next {
+    right: 6px;
+  }
+  .qx-fig-zoom-btn {
+    min-width: 38px !important;
+    height: 34px !important;
+  }
+  .qx-fig-zoom-btn .qx-z-lbl {
+    display: none;
+  }
+  .qx-lb-hint {
+    font-size: 11px;
+    bottom: 8px;
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "subjectId": "65f032625469774910ab0337",
+  "chapterId": "66a0dcd3c03b9dcaf1afe7e0",
+  "topicId": "66a0dcd6c03b9dcaf1afe7ee",
+  "title": "Balancing of redox reactions",
+  "concepts": [
+    {
+      "title": "Oxidation number Method",
+      "conceptBody": "<h3><strong>Oxidation Number Method</strong></h3><p>For balancing a redox reaction by oxidation number method, follow the order of steps as listed below:</p><p>(i) Separate the reactants and products into two half-reactions involving the elements that changes its oxidation number. Write the skeletal equations for each half-reaction.</p><p>(ii) For each half-reaction, deduce the oxidation numbers of the element that is changing oxidation number.</p><p>(iii) Then balance the number of atoms of the element changing oxidation number.</p><p>(iv) Now find the total oxidation number change by determining the change per atom and multiplying by the total number of atoms that change oxidation number. Also, decide whether electrons are lost or gained. An increase in oxidation number is loss of electrons and a decrease in oxidation number is gain of electrons.</p><p>(v) Add the electrons lost or gained to the half equation. Lost electrons are placed on the product side and gained electrons are kept on the reactant side.</p><p>(vi) Now add both the half reactions after multiplying by suitable integers to make the number of electrons lost and gained same.</p><p>(vii) Transfer the coefficient of each reactant and product to the main skeleton equation.</p><p>(viii) If the coefficients developed are not correct, then change them by inspection (Such coefficient changes are required when an element from a compound goes in 2 different compounds, one with the same oxidation state &amp; the other with changed oxidation state).</p><p>(ix) Count the charges on both sides of the equation and balance the charges in the equation by adding requisite ${{\\text{H}}^{+}}$or $\\text{O}{{\\text{H}}^{-}}$to the required side. If the reaction occurs in acidic solution, use ${{\\text{H}}^{+}}$and if it occurs in basic solution, use $\\text{O}{{\\text{H}}^{-}}$. If the reaction occurs in a neutral solution, use ${{\\text{H}}^{+}}$or $\\text{O}{{\\text{H}}^{-}}$on any of the side as needed i.e. in a neutral solution, if negative charges are needed for balancing, use $\\text{O}{{\\text{H}}^{-}}$and if positive charges are needed, use ${{\\text{H}}^{+}}$.</p><p>(x) Balance the hydrogens and oxygens by adding the appropriate number of ${{\\text{H}}_{2}}\\text{O}$ molecules on the required side.</p>",
+      "position": 0,
+      "qcConcept": "66a0dcd6c03b9dcaf1afe7ef"
+    },
+    {
+      "title": "Ion-Electron Method",
+      "conceptBody": "<h3><strong>Ion-Electron Method</strong></h3><p>This method of balancing redox reaction involves following steps.</p><p>(i) Separate the reactants and products into half-reactions involving the elements that changes its oxidation number. Write the skeleton equations for each half-reaction.</p><p>(ii) Balance each half-reaction separately involving given steps.</p><p>1. First balance the atoms of the element undergoing oxidation or reduction.</p><p>2. Then balance atoms of the elements other than hydrogen and oxygen.</p><p>3. For balancing oxygen atoms in acidic or neutral medium, add suitable number of ${{\\text{H}}_{2}}\\text{O}$ molecules to the side deficient in $\\text{O}$ while in alkaline medium, add equal number of ${{\\text{H}}_{2}}\\text{O}$ molecules as the excess of $O$ on the side having excess of $O$ atoms and add double the number of $\\text{O}{{\\text{H}}^{-}}$ions on the opposite side of the equation.</p><p>4. In order to balance hydrogen atom in acidic or neutral medium, add required number of ${{\\text{H}}^{+}}$to the side deficient in $\\text{H}$ while in alkaline medium, add equal number of $\\text{O}{{\\text{H}}^{-}}$ions as the access number of atom on the side having access $\\text{H}$ and add equal number of ${{\\text{H}}_{2}}\\text{O}$ molecule on the opposite side of the equation.</p><p>(iii) Multiply each half-reaction by suitable integer to make the number of electrons lost and gained same and add both the half-equations to get a completely balanced reaction.</p>",
+      "position": 1,
+      "qcConcept": "66a0dcd6c03b9dcaf1afe7f0"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66584e551814fc7e94209d53",
+      "title": "The value of $x$ in the partial redox equation $\\mathrm{MnO}_4^{-}+8 \\mathrm{H}^{+}+x e \\rightleftharpoons \\mathrm{Mn}^{2+}+4 \\mathrm{H}_2 \\mathrm{O}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e551814fc7e94209d54",
+      "title": "In the balanced chemical reaction,\n$1 \\mathrm{O}_3^{-}+a \\mathrm{I}^{-}+b \\mathrm{H}^{+} \\rightarrow \\mathrm{cH}_2 \\mathrm{O}+d \\mathrm{I}_2$\n$a, b, c$ and $d$ respectively correspond to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e551814fc7e94209d55",
+      "title": "When $\\mathrm{KMnO}_4$ acts as an oxidizing agent and ultimately forms $\\left[\\mathrm{MnO}_4\\right]^{-2}, \\mathrm{MnO}_2, \\mathrm{Mn}_2 \\mathrm{O}_3, \\mathrm{Mn}^{+2}$ then the number of electrons transferred in each case respectively is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e551814fc7e94209d56",
+      "title": "In a balanced equation $\\mathrm{H}_2 \\mathrm{SO}_4+x \\mathrm{HI} \\rightarrow \\mathrm{H}_2 \\mathrm{~S}+y \\mathrm{I}_2+z \\mathrm{H}_2 \\mathrm{O}$, the values of $x, y, z$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa607a4468eb1307ceb0af",
+  "chapterId": "67fdff44378e1624ea7b6965",
+  "subject": "Mathematics",
+  "chapter": "Probability",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff81378e1624ea7b6c42",
+      "title": "Classical Definition of Probability",
+      "count": 5,
+      "questionIds": [
+        "68e7a680ce75e72648a45e7c",
+        "67fdff5c378e1624ea7b6aa2",
+        "67fdff56378e1624ea7b6a5a",
+        "67fdff4d378e1624ea7b69e4",
+        "67fdff44378e1624ea7b6963"
+      ]
+    },
+    {
+      "id": "67fdff81378e1624ea7b6c43",
+      "title": "Conditional Probability and Multiplication Theorem",
+      "count": 4,
+      "questionIds": [
+        "6a4521858c20d3b91d64f982",
+        "67fdff6f378e1624ea7b6b6d",
+        "67fdff69378e1624ea7b6b24",
+        "67fdff62378e1624ea7b6adf"
+      ]
+    },
+    {
+      "id": "67fdff81378e1624ea7b6c44",
+      "title": "Independent Events",
+      "count": 1,
+      "questionIds": [
+        "67fdff74378e1624ea7b6bb0"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,406 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isActiveTeacher() {
+      return isSignedIn()
+        && exists(/databases/$(database)/documents/teachers/$(request.auth.uid))
+        && get(/databases/$(database)/documents/teachers/$(request.auth.uid)).data.status == 'active';
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        request.auth.token.email == 'quantrexacademy@gmail.com'
+        || request.auth.token.phone_number == '+917750858874'
+        || exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function assignmentTeacherId(data) {
+      return data.teacherId != null ? data.teacherId : data.teacherUid;
+    }
+
+    function canReadAssignment(data) {
+      return isSignedIn() && (
+        assignmentTeacherId(data) == request.auth.uid
+        || (data.visibleToStudents != null && request.auth.uid in data.visibleToStudents)
+        || (data.active == true && data.visibleToStudents == null)
+      );
+    }
+
+    function validProgress() {
+      return request.resource.data.keys().hasAll(['exam', 'bookmarks', 'solved', 'notes', 'attempts'])
+        && request.resource.data.exam is string
+        && request.resource.data.bookmarks is list
+        && request.resource.data.solved is list
+        && request.resource.data.notes is list
+        && request.resource.data.attempts is list
+        && request.resource.data.bookmarks.size() <= 5000
+        && request.resource.data.solved.size() <= 50000
+        && request.resource.data.notes.size() <= 1000
+        && request.resource.data.attempts.size() <= 500;
+    }
+
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isOwner(userId)
+        && request.resource.data.uid == userId
+        && (!("role" in request.resource.data) || request.resource.data.role == "student");
+      allow update: if isOwner(userId)
+        && !request.resource.data.diff(resource.data).affectedKeys()
+            .hasAny(['role', 'subscriptionStatus']);
+
+      match /data/{docId} {
+        allow read: if isOwner(userId);
+        allow create, update: if isOwner(userId) && validProgress();
+        allow delete: if isOwner(userId);
+      }
+
+      match /progress/{progressId} {
+        allow read, write: if isOwner(userId);
+      }
+      match /attempts/{attemptId} {
+        allow read, write: if isOwner(userId);
+      }
+      match /bookmarks/{bookmarkId} {
+        allow read, write: if isOwner(userId);
+      }
+      match /notifications/{notificationId} {
+        allow read, write: if isOwner(userId);
+      }
+      match /subscriptions/{subscriptionId} {
+        allow read: if isOwner(userId);
+        allow write: if false;
+      }
+    }
+
+    match /courses/{courseId} {
+      allow read: if true;
+      allow write: if isAdmin();
+      match /subjects/{subjectId} {
+        allow read: if true;
+        allow write: if isAdmin();
+        match /chapters/{chapterId} {
+          allow read: if true;
+          allow write: if isAdmin();
+          match /topics/{topicId} {
+            allow read: if true;
+            allow write: if isAdmin();
+          }
+        }
+      }
+    }
+
+    match /catalog/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Public social-proof feed — no phone/email. Signed-in create only.
+    match /leads/{id} {
+      allow create: if request.resource.data.kind is string
+        && request.resource.data.kind.size() < 32
+        && request.resource.data.name is string
+        && request.resource.data.name.size() < 80;
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /live_purchases/{id} {
+      allow read: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 1
+        && request.resource.data.name.size() < 48
+        && request.resource.data.course is string
+        && request.resource.data.course.size() < 80
+        && request.resource.data.district is string
+        && request.resource.data.state is string;
+      allow update, delete: if isAdmin();
+    }
+
+    match /site_updates/{id} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /chapters/{chapterId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /migration_logs/{logId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    match /content_health/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /videos/{videoId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Teacher — password_hash lives in Firebase Auth only
+    match /teachers/{teacherId} {
+      allow read: if isSignedIn() && (
+        request.auth.uid == teacherId
+        || resource.data.status == 'active'
+      );
+      allow create: if isOwner(teacherId)
+        && (request.resource.data.teacherId == teacherId || request.resource.data.uid == teacherId)
+        && request.resource.data.status == 'active';
+      allow update: if isOwner(teacherId);
+    }
+
+    // Batch
+    match /batches/{batchId} {
+      allow read: if isSignedIn();
+      allow create: if isActiveTeacher()
+        && request.resource.data.teacherId == request.auth.uid
+        && request.resource.data.batchCode is string
+        && request.resource.data.batchName is string;
+      allow update: if isActiveTeacher() && resource.data.teacherId == request.auth.uid;
+    }
+
+    match /admins/{adminId} {
+      allow read: if isOwner(adminId) || isAdmin();
+      allow write: if false;
+    }
+
+    // Student — passwords never stored. UID is document id.
+    match /students/{studentId} {
+      allow read: if isOwner(studentId) || isActiveTeacher() || isAdmin();
+      allow create: if (isOwner(studentId)
+          && request.resource.data.uid == studentId
+          && request.resource.data.role == 'student')
+        || (isActiveTeacher()
+          && request.resource.data.studentId == studentId
+          && request.resource.data.isPlaceholder == true
+          && request.resource.data.createdByTeacher == request.auth.uid
+          && request.resource.data.studentCode is string
+          && request.resource.data.name is string);
+      allow update: if isAdmin()
+        || (isOwner(studentId)
+          && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'subscriptionStatus', 'subscriptionPlan']))
+          && request.resource.data.uid == studentId)
+        || (isActiveTeacher() && (
+          resource.data.createdByTeacher == request.auth.uid
+          || (resource.data.linkedTeacherIds != null && request.auth.uid in resource.data.linkedTeacherIds)
+        ));
+    }
+
+    // Direct teacher ↔ student link (1:1, manual add, student code claim)
+    match /teacher_student_links/{linkId} {
+      allow read: if isSignedIn() && (
+        resource.data.teacherId == request.auth.uid
+        || resource.data.studentId == request.auth.uid
+      );
+      allow create: if isActiveTeacher()
+        && request.resource.data.teacherId == request.auth.uid
+        && request.resource.data.studentId is string
+        && request.resource.data.linkType == 'direct';
+      allow update, delete: if isActiveTeacher() && resource.data.teacherId == request.auth.uid;
+    }
+
+    // StudentBatchMembership
+    match /student_batch_memberships/{membershipId} {
+      allow read: if isSignedIn() && (
+        resource.data.studentId == request.auth.uid
+        || resource.data.teacherId == request.auth.uid
+      );
+      allow create: if isSignedIn()
+        && request.resource.data.studentId == request.auth.uid
+        && request.resource.data.batchId is string
+        && request.resource.data.teacherId is string;
+      allow update: if isSignedIn() && (
+        resource.data.studentId == request.auth.uid
+        || resource.data.teacherId == request.auth.uid
+      );
+    }
+
+    // Legacy roster (backward compat)
+    match /teacher_roster/{linkId} {
+      allow read: if isSignedIn() && (
+        resource.data.teacherId == request.auth.uid
+        || resource.data.studentId == request.auth.uid
+      );
+      allow create: if isSignedIn() && request.resource.data.teacherId is string && (
+        request.resource.data.studentId == request.auth.uid
+        || (isActiveTeacher() && request.resource.data.teacherId == request.auth.uid)
+      );
+      allow update: if isSignedIn() && (
+        resource.data.studentId == request.auth.uid
+        || resource.data.teacherId == request.auth.uid
+      );
+    }
+
+    // Platform question bank — students read, only admin/teacher-owned teacher questions write
+    match /questions/{questionId} {
+      allow read: if true;
+      allow create: if isAdmin()
+        || (isActiveTeacher()
+          && request.resource.data.teacherId == request.auth.uid
+          && request.resource.data.sourceType is string);
+      allow update, delete: if isAdmin()
+        || (isActiveTeacher() && resource.data.teacherId == request.auth.uid);
+    }
+
+    match /tests/{testId} {
+      allow read: if true;
+      allow write: if isAdmin();
+      match /questions/{testQuestionId} {
+        allow read: if true;
+        allow write: if isAdmin();
+      }
+    }
+
+    // Assignment
+    match /assignments/{assignmentId} {
+      allow read: if canReadAssignment(resource.data);
+      allow create: if isActiveTeacher()
+        && request.resource.data.teacherId == request.auth.uid
+        && request.resource.data.title is string
+        && request.resource.data.questionIds is list;
+      allow update: if isSignedIn() && (
+        (isActiveTeacher() && assignmentTeacherId(resource.data) == request.auth.uid)
+        || (request.auth.uid in resource.data.visibleToStudents && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['attempts']))
+      );
+
+      match /submissions/{studentId} {
+        allow read: if isSignedIn() && (
+          (isActiveTeacher() && assignmentTeacherId(get(/databases/$(database)/documents/assignments/$(assignmentId)).data) == request.auth.uid)
+          || studentId == request.auth.uid
+        );
+        allow create, update: if isSignedIn()
+          && studentId == request.auth.uid
+          && request.resource.data.studentId == request.auth.uid
+          && (
+            request.auth.uid in get(/databases/$(database)/documents/assignments/$(assignmentId)).data.visibleToStudents
+            || get(/databases/$(database)/documents/assignments/$(assignmentId)).data.visibleToStudents == null
+          );
+      }
+    }
+
+    // AssignmentBatchLink
+    match /assignment_batch_links/{linkId} {
+      allow read: if isSignedIn();
+      allow create: if isActiveTeacher()
+        && request.resource.data.teacherId == request.auth.uid
+        && request.resource.data.assignmentId is string
+        && request.resource.data.batchId is string;
+      allow delete: if isActiveTeacher() && resource.data.teacherId == request.auth.uid;
+    }
+
+    // Submission (top-level)
+    match /submissions/{submissionId} {
+      allow read: if isSignedIn() && (
+        resource.data.studentId == request.auth.uid
+        || (isActiveTeacher() && resource.data.teacherId == request.auth.uid)
+      );
+      allow create, update: if isSignedIn()
+        && request.resource.data.studentId == request.auth.uid
+        && request.auth.uid in get(/databases/$(database)/documents/assignments/$(request.resource.data.assignmentId)).data.visibleToStudents;
+    }
+
+    match /teacher_pdf_files/{fileId} {
+      allow read: if isSignedIn() && (
+        resource.data.teacherId == request.auth.uid
+        || isActiveTeacher()
+      );
+      allow create: if isActiveTeacher()
+        && request.resource.data.teacherId == request.auth.uid
+        && request.resource.data.pdfUrl is string;
+      allow update, delete: if isActiveTeacher() && resource.data.teacherId == request.auth.uid;
+    }
+
+    // Teacher content library — PDF, video, lecture recording links
+    match /teacher_content/{contentId} {
+      allow read: if isSignedIn() && (
+        resource.data.teacherId == request.auth.uid
+        || isActiveTeacher()
+      );
+      allow create: if isActiveTeacher()
+        && request.resource.data.teacherId == request.auth.uid
+        && request.resource.data.type in ['pdf', 'video', 'lecture_link']
+        && request.resource.data.title is string
+        && request.resource.data.url is string;
+      allow update, delete: if isActiveTeacher() && resource.data.teacherId == request.auth.uid;
+    }
+
+    match /teacher_questions/{questionId} {
+      allow read: if isSignedIn() && resource.data.teacherId == request.auth.uid;
+      allow create: if isActiveTeacher() && request.resource.data.teacherId == request.auth.uid;
+      allow update, delete: if isActiveTeacher() && resource.data.teacherId == request.auth.uid;
+    }
+
+    match /app/{document=**} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+
+    match /content/{document=**} {
+      allow read: if isSignedIn();
+      allow write: if false;
+    }
+
+    match /payments/{paymentId} {
+      allow read: if isSignedIn() && resource.data.uid == request.auth.uid;
+      allow write: if false;
+    }
+
+    match /subscriptions/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create, update: if isAdmin() || (isOwner(userId)
+        && request.resource.data.uid == userId
+        && request.resource.data.active is bool
+        && request.resource.data.orderId is string);
+      allow delete: if isAdmin();
+    }
+
+    match /admin_audit/{id} {
+      allow read, create: if isAdmin();
+      allow update, delete: if isAdmin();
+    }
+
+    match /leaderboard/{userId} {
+      allow read: if true;
+      allow create, update: if isOwner(userId)
+        && request.resource.data.uid == userId
+        && request.resource.data.exam is string
+        && request.resource.data.points is number;
+    }
+
+    // Email OTP hashes — Cloud Functions only
+    match /auth_email_otps/{docId} {
+      allow read, write: if false;
+    }
+
+    // Phone OTP hashes — Cloud Functions only
+    match /auth_phone_otps/{docId} {
+      allow read, write: if false;
+    }
+
+    match /solutions/{questionKey} {
+      allow read: if isSignedIn();
+      match /posts/{postId} {
+        allow read: if isSignedIn();
+        allow create: if isSignedIn()
+          && request.resource.data.uid == request.auth.uid
+          && request.resource.data.text is string
+          && request.resource.data.text.size() <= 8000;
+        allow update, delete: if isSignedIn() && resource.data.uid == request.auth.uid;
+      }
+    }
+  }
+}

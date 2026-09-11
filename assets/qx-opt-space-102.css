@@ -1,0 +1,95 @@
+/* qxmd102: hide chapter strip; maximize question + options */
+.eg-test-root .eg-ch-line { display: none !important; height: 0 !important; padding: 0 !important; margin: 0 !important; border: 0 !important; }
+.eg-test-root .eg-body { min-height: 0 !important; }
+.eg-test-root .eg-main { padding: 4px 6px 0 !important; }
+.eg-test-root .eg-q-card {
+  padding: 6px 8px 8px !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+.eg-test-root .eg-q-stem,
+.eg-test-root #egQArea {
+  font-size: 17px !important;
+  line-height: 1.6 !important;
+  margin: 6px 0 12px !important;
+  min-height: 72px !important;
+}
+.eg-test-root #qxOpts,
+.eg-test-root .eg-opts {
+  flex: 1 1 auto !important;
+  gap: 12px !important;
+  margin: 0 0 8px !important;
+}
+.eg-test-root #qxOpts .mtk-opt { min-height: 56px !important; padding: 14px 16px !important; }
+.eg-test-root .eg-q-meta { padding: 4px 4px 2px !important; margin: 0 !important; }
+.eg-test-root .qx-paper-meta {
+  margin: 2px 0 4px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.eg-test-root .eg-top { min-height: 40px !important; padding: 2px 6px !important; }
+.eg-test-root .eg-subs { min-height: 36px !important; }
+.eg-test-root .eg-sub { padding: 6px 8px !important; font-size: 13px !important; }
+.eg-test-root .eg-qbar { display: none !important; }
+.eg-test-root.eg-qbar-open .eg-qbar { display: flex !important; padding: 3px 4px !important; }
+.eg-test-root .eg-foot { padding: 6px 8px !important; }
+.eg-test-root .eg-btn,
+.eg-test-root .eg-btn-next { min-height: 40px !important; padding: 8px 12px !important; font-size: 13px !important; }
+.eg-test-root .eg-action-row { margin: 8px 0 4px !important; }
+.qx-practice-page .qx-prac-q,
+.qx-practice-page .mtk-q-text,
+body.qx-book-mode .qx-prac-q,
+body.qx-book-mode .mtk-q-text { font-size: 17px !important; line-height: 1.6 !important; }
+.qx-practice-page .qx-prac-opts,
+body.qx-book-mode .qx-prac-opts { gap: 12px !important; }
+@media (max-width: 640px) {
+  .eg-test-root .eg-q-card { min-height: 0 !important; }
+  .eg-test-root .eg-q-stem,
+  .eg-test-root #egQArea { font-size: 16px !important; }
+}
+/* qxmd103: second strip = Subject | Chapter | Subtopic */
+.eg-test-root .eg-subs {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: stretch !important;
+  gap: 0 !important;
+  background: #0b1f4a !important;
+  border-bottom: 2px solid #f97316 !important;
+}
+.eg-test-root .eg-sub-n { display: none !important; }
+.eg-test-root .eg-topic-strip,
+.eg-test-root .eg-sub.eg-topic-strip {
+  flex: 1 1 100% !important;
+  width: 100% !important;
+  text-align: center !important;
+  justify-content: center !important;
+  color: #fb923c !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+  padding: 8px 12px !important;
+  background: transparent !important;
+  border: 0 !important;
+  white-space: normal !important;
+  line-height: 1.35 !important;
+  cursor: default !important;
+  pointer-events: none !important;
+}
+.eg-test-root .eg-topic-strip-multi {
+  flex: 1 1 100% !important;
+  text-align: center !important;
+  color: #fdba74 !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  padding: 4px 10px 8px !important;
+  border-top: 1px solid rgba(249, 115, 22, 0.35) !important;
+}
+.eg-test-root .eg-ch-sep { opacity: 0.75; padding: 0 4px; font-weight: 700; }
+.eg-test-root .eg-ch-line { display: none !important; }
+@media (max-width: 640px) {
+  .eg-test-root .eg-topic-strip,
+  .eg-test-root .eg-sub.eg-topic-strip { font-size: 13px !important; padding: 7px 10px !important; }
+}

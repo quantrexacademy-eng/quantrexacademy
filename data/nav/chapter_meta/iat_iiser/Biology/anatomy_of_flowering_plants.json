@@ -1,0 +1,36 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa60d64468eb1307ceb0b0",
+  "chapterId": "67fdff66378e1624ea7b6b02",
+  "subject": "Biology",
+  "chapter": "Anatomy of Flowering Plants",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff8c378e1624ea7b6cf0",
+      "title": "Permanent Tissues",
+      "count": 2,
+      "questionIds": [
+        "67fdff71378e1624ea7b6b8a",
+        "67fdff66378e1624ea7b6b00"
+      ]
+    },
+    {
+      "id": "6a4521878c20d3b91d64f993",
+      "title": "Anatomy of Plant Parts",
+      "count": 1,
+      "questionIds": [
+        "6a4521818c20d3b91d64f950"
+      ]
+    },
+    {
+      "id": "67fdff8c378e1624ea7b6cf1",
+      "title": "Secondary Growth",
+      "count": 1,
+      "questionIds": [
+        "67fdff6c378e1624ea7b6b47"
+      ]
+    }
+  ]
+}

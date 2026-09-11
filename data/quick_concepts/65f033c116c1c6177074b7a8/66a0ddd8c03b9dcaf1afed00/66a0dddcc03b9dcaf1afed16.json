@@ -1,0 +1,58 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddd8c03b9dcaf1afed00",
+  "topicId": "66a0dddcc03b9dcaf1afed16",
+  "title": "Transformation Formulas",
+  "concepts": [
+    {
+      "title": "Transformation of prodcut into sum or differences",
+      "conceptBody": "<h3>Transformation of product into sum or differences</h3><ul><li>$2\\text{sinAcosB}=\\text{sin}\\left( \\text{A}+\\text{B} \\right)+\\text{sin}\\left( \\text{A}-\\text{B} \\right)$</li><li>$2\\text{cos}A\\text{sin}B=\\text{sin}\\left( A+B \\right)-\\text{sin}\\left( A-B \\right)$</li><li>$2\\text{cosAcosB}=\\text{cos}\\left( \\text{A}+\\text{B} \\right)+\\text{cos}\\left( \\text{A}-\\text{B} \\right)$</li><li>$2\\text{sinAsinB}=\\text{cos}\\left( \\text{A}-\\text{B} \\right)-\\text{cos}\\left( \\text{A}+\\text{B} \\right)$</li></ul>",
+      "position": 0,
+      "qcConcept": "66a0dddcc03b9dcaf1afed17"
+    },
+    {
+      "title": "Transformation of sum and differences into product",
+      "conceptBody": "<h3>Transformation of sum &amp; differences into product</h3><ul><li>$\\text{ }\\!\\!~\\!\\!\\text{ sinA}+\\text{sinB}=2\\text{sin}\\left( \\frac{\\text{A}+\\text{B}}{2} \\right)\\text{cos}\\left( \\frac{\\text{A}-\\text{B}}{2} \\right)$</li><li>$\\text{ }\\!\\!~\\!\\!\\text{ sinA}-\\text{sinB}=2\\text{sin}\\left( \\frac{\\text{A}-\\text{B}}{2} \\right)\\text{cos}\\left( \\frac{\\text{A}+\\text{B}}{2} \\right)$</li><li>$\\text{ }\\!\\!~\\!\\!\\text{ cosA}+\\text{cosB}=2\\text{cos}\\left( \\frac{\\text{A}+\\text{B}}{2} \\right)\\text{cos}\\left( \\frac{\\text{A}-\\text{B}}{2} \\right)$</li><li>$\\text{ }\\!\\!~\\!\\!\\text{ cosA}-\\text{cosB}=-2\\text{sin}\\left( \\frac{\\text{A}+\\text{B}}{2} \\right)\\text{sin}\\left( \\frac{\\text{A}-\\text{B}}{2} \\right)$</li></ul>",
+      "position": 1,
+      "qcConcept": "66a0dddcc03b9dcaf1afed18"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f6e2d384bfb4a538486",
+      "title": "$(\\cos \\alpha+\\cos \\beta)^2+(\\sin \\alpha+\\sin \\beta)^2=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538487",
+      "title": "$\\sin (\\beta+\\gamma-\\alpha)+\\sin (\\gamma+\\alpha-\\beta)+\\sin (\\alpha+\\beta-\\gamma)-\\sin (\\alpha+\\beta+\\gamma)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538488",
+      "title": "If $\\cos x+\\cos y+\\cos \\alpha=0$ and $\\sin x+\\sin y+\\sin \\alpha=0$, then $\\cot \\left(\\frac{x+y}{2}\\right)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538489",
+      "title": "If $\\sin 2 \\theta+\\sin 2 \\phi=1 / 2$ and $\\cos 2 \\theta+\\cos 2 \\phi=3 / 2$, then $\\cos ^2(\\theta-\\phi)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a53848a",
+      "title": "If $\\cos A=\\frac{3}{4}$, then $32 \\sin \\frac{A}{2} \\cos \\frac{5}{2} A=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a53848b",
+      "title": "$2 \\sin A \\cos ^3 A-2 \\sin ^3 A \\cos A=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

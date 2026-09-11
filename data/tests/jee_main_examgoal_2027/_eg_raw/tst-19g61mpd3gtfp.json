@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mpd3gtfp",
+  "title": "Electrochemistry Test - 5 (Topic Test)",
+  "type": "topic",
+  "section": "Electrochemistry",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-08-02T12:30:00.000Z",
+  "status": "ok",
+  "analysisId": "3cd3729b-f866-45ea-aaa4-5bfa316f6b56",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g61mpd3gtfp",
+    "defaultLanguage": "en",
+    "description": "Nernst Equation and Its Applications",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-02T12:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-ms6bfdx3",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Calculate the cell EMF in V for</p><p>Pt|H<sub>2</sub> (1 atm) | HCl (0.01 M) || AgCl(s) | Ag(s) at 298 K</p><p>If $\\Delta G_f^\\circ$ values are at 298 K is -102.6 kJ/mol for AgCl(s) and -126.3 kJ/mol for HCl (aq.).</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.48 V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.28 V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.21 V</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.63 V</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The cell is</p>\n<p>$$ \\text{Pt}|\\text{H}_2(1\\text{ atm})|\\text{HCl}(0.01\\text{ M})||\\text{AgCl}(s)|\\text{Ag}(s) $$</p>\n<p>The half-cell reactions are:</p>\n<p>At anode:</p>\n<p>$$ \\text{H}_2 \\rightarrow 2\\text{H}^+ + 2e^- $$</p>\n<p>At cathode:</p>\n<p>$$ \\text{AgCl}(s) + e^- \\rightarrow \\text{Ag}(s) + \\text{Cl}^- $$</p>\n<p>So the overall cell reaction is:</p>\n<p>$$ \\text{H}_2(g) + 2\\text{AgCl}(s) \\rightarrow 2\\text{Ag}(s) + 2\\text{H}^+ + 2\\text{Cl}^- $$</p>\n<p>This is the same as writing:</p>\n<p>$$ \\text{H}_2(g) + 2\\text{AgCl}(s) \\rightarrow 2\\text{Ag}(s) + 2\\text{HCl}(aq) $$</p>\n<p>Now,</p>\n<p>$$ \\Delta G^\\circ = \\sum \\Delta G_f^\\circ(\\text{products}) - \\sum \\Delta G_f^\\circ(\\text{reactants}) $$</p>\n<p>Given:</p>\n<p>$$ \\Delta G_f^\\circ[\\text{AgCl}(s)] = -102.6 \\text{ kJ mol}^{-1} $$</p>\n<p>$$ \\Delta G_f^\\circ[\\text{HCl}(aq)] = -126.3 \\text{ kJ mol}^{-1} $$</p>\n<p>For elements like $\\text{H}_2$ and $\\text{Ag}$,</p>\n<p>$$ \\Delta G_f^\\circ = 0 $$</p>\n<p>So,</p>\n<p>$$ \\Delta G^\\circ = 2(-126.3) - 2(-102.6) $$</p>\n<p>$$ \\Delta G^\\circ = -252.6 + 205.2 $$</p>\n<p>$$ \\Delta G^\\circ = -47.4 \\text{ kJ} $$</p>\n<p>$$ \\Delta G^\\circ = -47400 \\text{ J} $$</p>\n<p>Now use :</p>\n<p>$$ \\Delta G^\\circ = -nFE^\\circ_{\\text{cell}} $$</p>\n<p>Here, $n = 2$.</p>\n<p>$$ E^\\circ_{\\text{cell}} = \\frac{47400}{2 \\times 96500} $$</p>\n<p>$$ E^\\circ_{\\text{cell}} \\approx 0.246 \\text{ V} $$</p>\n<p>Now apply the Nernst equation :</p>\n<p>$$ E_{\\text{cell}} = E^\\circ_{\\text{cell}} - \\frac{0.0591}{n}\\log Q $$</p>\n<p>For the reaction,</p>\n<p>$$ Q = \\frac{[\\text{H}^+]^2[\\text{Cl}^-]^2}{P_{\\text{H}_2}} $$</p>\n<p>Since HCl is $0.01$ M and it ionises completely,</p>\n<p>$$ [\\text{H}^+] = 0.01 = 10^{-2} $$</p>\n<p>$$ [\\text{Cl}^-] = 0.01 = 10^{-2} $$</p>\n<p>Also,</p>\n<p>$$ P_{\\text{H}_2} = 1 $$</p>\n<p>So,</p>\n<p>$$ Q = (10^{-2})^2(10^{-2})^2 $$</p>\n<p>$$ Q = 10^{-8} $$</p>\n<p>Now,</p>\n<p>$$ E_{\\text{cell}} = 0.246 - \\frac{0.0591}{2}\\log(10^{-8}) $$</p>\n<p>$$ E_{\\text{cell}} = 0.246 - \\frac{0.0591}{2}(-8) $$</p>\n<p>$$ E_{\\text{cell}} = 0.246 + 0.236 $$</p>\n<p>$$ E_{\\text{cell}} \\approx 0.482 \\text{ V} $$</p>\n<p>So,</p>\n<p>$$ E_{\\text{cell}} \\approx 0.48 \\text{ V} $$</p>\n<p>Correct option: A.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित के लिए सेल EMF की V में गणना कीजिए:</p><p>298 K पर Pt|H<sub>2</sub> (1 atm) | HCl (0.01 M) || AgCl(s) | Ag(s)</p><p>यदि 298 K पर $\\Delta G_f^\\circ$ के मान AgCl(s) के लिए -102.6 kJ/mol और HCl (aq.) के लिए -126.3 kJ/mol हैं।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.48 V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.28 V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.21 V</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.63 V</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms0fto0g",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A metal rod is dipped in a solution of its ions. Its electrode potential is independent of</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>temperature of the solution</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>concentration of the solution</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>area of the metal exposed</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>nature of the metal</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The electrode potential of a metal dipped in a solution of its own ions depends on:</p>\n<ul>\n<li><p>nature of the metal</p></li>\n<li><p>concentration of metal ions in solution</p></li>\n<li><p>temperature</p></li>\n</ul>\n<p>For a metal electrode,</p>\n<p>$$ M^{n+} + ne^- \\rightleftharpoons M $$</p>\n<p>According to the Nernst equation,</p>\n<p>$$ E = E^\\circ + \\frac{RT}{nF}\\ln [M^{n+}] $$</p>\n<p>This shows that electrode potential depends on temperature $T$ and ion concentration $[M^{n+}]$. The standard electrode potential $E^\\circ$ depends on the nature of the metal.</p>\n<p>But the area of the metal exposed only affects the rate or amount of current that may flow, not the electrode potential itself.</p>\n<p>So, the correct answer is:</p>\n<p>$$ \\boxed{\\text{Option C: area of the metal exposed}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक धातु की छड़ को उसके आयनों के विलयन में डुबाया जाता है। इसका इलेक्ट्रोड विभव किससे स्वतंत्र होता है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>विलयन का तापमान</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>विलयन की सांद्रता</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>अनावृत धातु का क्षेत्रफल</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>धातु की प्रकृति</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msbk3538",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Given below are two statements.</p>\n<p><b>Statement I</b> $E_{cell}$ and $\\Delta G$ of cell reaction both are extensive properties.</p>\n<p><b>Statement II</b> $\\Delta G^\\circ$ and $K$ are independent of electrode potential.</p>\n<p>Choose the correct answer from the options given below.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Both Statement I and Statement II are correct.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Statement I is correct but Statement II is incorrect.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "Statement I is incorrect but Statement II is correct. "
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "Both Statement I and Statement II are incorrect."
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<h3><strong>Analysis of Statement I</strong></h3>\n<ul>\n<li><p><strong>$E_{cell}$ (Cell Potential):</strong> Cell potential is an <strong>intensive property</strong>. It represents the potential difference between two electrodes and does not depend on the amount of substance (or the number of moles) undergoing the reaction. If you multiply a balanced cell reaction by a coefficient, the $E_{cell}$ remains unchanged.</p></li>\n<li><p><strong>$\\Delta G$ (Gibbs Free Energy):</strong> Gibbs free energy is an <strong>extensive property</strong>. It depends directly on the amount of substance reacting. This is evident from the relationship:</p></li>\n</ul>\n<p>$$\\Delta G = -nFE_{cell}$$</p>\n<p>Here, $n$ represents the number of moles of electrons transferred. Since $n$ changes depending on the stoichiometry of the reaction, $\\Delta G$ changes accordingly.</p>\n<p><strong>Conclusion for Statement I:</strong> Since $E_{cell}$ is intensive and $\\Delta G$ is extensive, <strong>Statement I is incorrect.</strong></p>\n\n<h3><strong>Analysis of Statement II</strong></h3>\n<p>Statement II claims that $\\Delta G^\\circ$ and $K$ (equilibrium constant) are independent of electrode potential. Let's look at their mathematical relationships with standard cell potential ($E^\\circ_{cell}$):</p>\n<ol>\n<li><strong>Relation to $\\Delta G^\\circ$:</strong></li>\n</ol>\n<p>$$\\Delta G^\\circ = -nFE^\\circ_{cell}$$</p>\n<p>This equation clearly shows that the standard Gibbs free energy change ($\\Delta G^\\circ$) is directly dependent on the standard electrode potential ($E^\\circ_{cell}$).</p>\n<ol start=\"2\">\n<li><strong>Relation to $K$ (Equilibrium Constant):</strong></li>\n</ol>\n<p>Using the Nernst equation at equilibrium (where $E_{cell} = 0$):</p>\n<p>$$E^\\circ_{cell} = \\frac{2.303RT}{nF} \\log K$$</p>\n<p>This equation demonstrates that the equilibrium constant $K$ is also fundamentally dependent on the standard electrode potential.</p>\n<p><strong>Conclusion for Statement II:</strong> Since both $\\Delta G^\\circ$ and $K$ depend on the standard electrode potential, <strong>Statement II is incorrect.</strong></p>\n<p><strong>Option D: Both Statement I and Statement II are incorrect.</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>नीचे दो कथन दिए गए हैं।</p><p><b>कथन I</b> सेल अभिक्रिया के $E_{cell}$ और $\\Delta G$ दोनों विस्तीर्ण (extensive) गुण हैं।</p><p><b>कथन II</b> $\\Delta G^\\circ$ और $K$ इलेक्ट्रोड विभव से स्वतंत्र होते हैं।</p><p>नीचे दिए गए विकल्पों में से सही उत्तर चुनें।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>कथन I और कथन II दोनों सही हैं。</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>कथन I सही है लेकिन कथन II गलत है。</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "कथन I गलत है लेकिन कथन II सही है। "
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "कथन I और कथन II दोनों गलत हैं।"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msbkba5j",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Calculate the cell potential $E$ at $25^{o}C$ for the reaction</p><p>2Al(s) + 3Fe$^{2+}$(aq) &rarr; 2Al$^{3+}$(aq) + 3Fe(s)</p><p><b>[Given : [Fe$^{2+}$] = 0.02 M, [Al$^{3+}$] = 0.2 M</b></p><p>$E^{\t{o}}_{\t{Al}^{3+}/{Al}}$ = -1.65 V, $E^{\t{o}}_{\t{Fe}^{2+}/\t{Fe}}$ = -0.44 V and</p><p>$\\left( \\frac{2.303RT}{F} \\right) = 0.06$</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>+1.17 V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>+1.16 V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>+1.24 V</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>+1.12 V</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<ul>\n<li><p><strong>Cathode (Reduction):</strong> $Fe^{2+} / Fe$ ($E^\\circ = -0.44\\text{ V}$)</p></li>\n<li><p><strong>Anode (Oxidation):</strong> $Al^{3+} / Al$ ($E^\\circ = -1.65\\text{ V}$)</p></li>\n</ul>\n<p>$$E^\\circ_{cell} = E^\\circ_{cathode} - E^\\circ_{anode}$$</p>\n<p>$$E^\\circ_{cell} = -0.44\\text{ V} - (-1.65\\text{ V}) = 1.21\\text{ V}$$</p>\n\n<p>Balance the half-reactions to find the total number of electrons exchanged:</p>\n<ul>\n<li><p><strong>Oxidation:</strong> $Al \\rightarrow Al^{3+} + 3e^-$ (Multiply by 2 $\\rightarrow 6e^-$)</p></li>\n<li><p><strong>Reduction:</strong> $Fe^{2+} + 2e^- \\rightarrow Fe$ (Multiply by 3 $\\rightarrow 6e^-$)</p></li>\n</ul>\n<p>Therefore, $n = 6$.</p>\n\n<p>For the given reaction $2Al(s) + 3Fe^{2+}(aq) \\rightarrow 2Al^{3+}(aq) + 3Fe(s)$:</p>\n<p>$$Q = \\frac{[Al^{3+}]^2}{[Fe^{2+}]^3}$$</p>\n<p>$$Q = \\frac{(0.2)^2}{(0.02)^3} = \\frac{0.04}{0.000008} = 5000$$</p>\n<p>Using the Nernst equation and the given value $\\frac{2.303RT}{F} = 0.06$:</p>\n<p>$$E_{cell} = E^\\circ_{cell} - \\frac{2.303RT}{nF} \\log Q$$</p>\n<p>$$E_{cell} = 1.21 - \\frac{0.06}{6} \\log(5000)$$</p>\n<p>Calculate the log term:</p>\n<p>$$\\log(5000) = \\log(5 \\times 10^3) = \\log(5) + 3 \\approx 0.699 + 3 = 3.699$$</p>\n\n<p>$$E_{cell} = 1.21 - 0.01 \\times 3.699$$</p>\n<p>$$E_{cell} = 1.21 - 0.03699$$</p>\n<p>$$E_{cell} \\approx 1.173\\text{ V}$$</p>\n\n<p>Rounding to two decimal places, the cell potential is <strong>+1.17 V</strong>.</p>\n<p>The correct choice is <strong>Option A</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$25^{o}C$ पर निम्नलिखित अभिक्रिया के लिए सेल विभव $E$ की गणना कीजिए:</p><p>2Al(s) + 3Fe$^{2+}$(aq) &rarr; 2Al$^{3+}$(aq) + 3Fe(s)</p><p><b>[दिया गया है : [Fe$^{2+}$] = 0.02 M, [Al$^{3+}$] = 0.2 M</b></p><p>$E^{  {o}}_{  {Al}^{3+}/{Al}}$ = -1.65 V, $E^{  {o}}_{  {Fe}^{2+}/  {Fe}}$ = -0.44 V तथा</p><p>$\\left( \\frac{2.303RT}{F} \\right) = 0.06$</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>+1.17 V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>+1.16 V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>+1.24 V</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>+1.12 V</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msblcp8r",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the cell,</p><p>Ag | AgBr(s) | Br<sup>−</sup> (aq) || Cl<sup>−</sup> (aq) | AgCl(s) | Ag(s) at 25°C.</p><p>The solubility product constants of AgBr and AgCl are respectively $6 \\times 10^{-13}$ and $3 \\times 10^{-10}$. For what ratio of the concentrations of Br<sup>−</sup> and Cl<sup>−</sup> ions when the emf of the cell is zero? ($E^\\circ_{\\text{Ag}^+/\\text{Ag}} = 0.08\\ \\text{V}$)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 : 500</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1 : 100</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>50 : 1</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>500 : 1</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "\n<p>For a metal-insoluble salt electrode, the standard reduction potential is directly linked to the solubility product ($K_{sp}$). The standard cell potential for this specific combination of electrodes is given by:</p>\n<p>$$E^{\\circ}_{\\text{cell}} = \\frac{RT}{nF}\\ln \\frac{K_{sp}(\\mathrm{AgBr})}{K_{sp}(\\mathrm{AgCl})} \\quad \\dots \\text{(i)}$$</p>\n\n<ul>\n<li><p><strong>Anode (Oxidation):</strong> $\\mathrm{Ag}(s) + \\mathrm{Cl}^{-}(aq) \\rightarrow \\mathrm{AgCl}(s) + e^{-}$</p></li>\n<li><p><strong>Cathode (Reduction):</strong> $\\mathrm{AgBr}(s) + e^{-} \\rightarrow \\mathrm{Ag}(s) + \\mathrm{Br}^{-}(aq)$</p></li>\n<li><p><strong>Net Cell Reaction:</strong> $\\mathrm{Cl}^{-}(aq) + \\mathrm{AgBr}(s) \\rightarrow \\mathrm{AgCl}(s) + \\mathrm{Br}^{-}(aq)$</p></li>\n</ul>\n<p><em>(Note: The reference simplifies the net reaction conceptually to just the aqueous ions: $\\mathrm{Cl}^{-} \\rightarrow \\mathrm{Br}^{-}$)</em></p>\n\n<p>For the net reaction, the reaction quotient is $Q = \\frac{[\\mathrm{Br}^{-}]}{[\\mathrm{Cl}^{-}]}$. The Nernst equation becomes:</p>\n<p>$$E_{\\text{cell}} = E^{\\circ}_{\\text{cell}} - \\frac{RT}{nF}\\ln \\frac{[\\mathrm{Br}^{-}]}{[\\mathrm{Cl}^{-}]}$$</p>\n<p>Since the cell is at equilibrium (the emf is zero), $E_{\\text{cell}} = 0$:</p>\n<p>$$0 = E^{\\circ}_{\\text{cell}} - \\frac{RT}{nF}\\ln \\frac{[\\mathrm{Br}^{-}]}{[\\mathrm{Cl}^{-}]}$$</p>\n<p>$$E^{\\circ}_{\\text{cell}} = \\frac{RT}{nF}\\ln \\frac{[\\mathrm{Br}^{-}]}{[\\mathrm{Cl}^{-}]} \\quad \\dots \\text{(ii)}$$</p>\n\n<p>By equating equation (i) and equation (ii), the $\\frac{RT}{nF}$ terms cancel out:</p>\n<p>$$\\frac{[\\mathrm{Br}^{-}]}{[\\mathrm{Cl}^{-}]} = \\frac{K_{sp}(\\mathrm{AgBr})}{K_{sp}(\\mathrm{AgCl})}$$</p>\n<ul>\n<li><p>$K_{sp}(\\mathrm{AgBr}) = 6 \\times 10^{-13}$</p></li>\n<li><p>$K_{sp}(\\mathrm{AgCl}) = 3 \\times 10^{-10}$</p></li>\n</ul>\n<p>$$\\frac{[\\mathrm{Br}^{-}]}{[\\mathrm{Cl}^{-}]} = \\frac{6 \\times 10^{-13}}{3 \\times 10^{-10}}$$</p>\n<p>$$\\frac{[\\mathrm{Br}^{-}]}{[\\mathrm{Cl}^{-}]} = 2 \\times 10^{-3}$$</p>\n<p>$$\\frac{[\\mathrm{Br}^{-}]}{[\\mathrm{Cl}^{-}]} = \\frac{2}{1000} = \\frac{1}{500}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित सेल पर विचार करें,</p><p>25°C पर Ag | AgBr(s) | Br<sup>−</sup> (aq) || Cl<sup>−</sup> (aq) | AgCl(s) | Ag(s)।</p><p>AgBr और AgCl के विलेयता गुणनफल स्थिरांक क्रमशः $6 \\times 10^{-13}$ और $3 \\times 10^{-10}$ हैं। जब सेल का विद्युत वाहक बल (emf) शून्य हो, तो Br<sup>−</sup> और Cl<sup>−</sup> आयनों की सांद्रता का अनुपात क्या होगा? ($E^\\circ_{\\text{Ag}^+/\\text{Ag}} = 0.08\\ \\text{V}$)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 : 500</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1 : 100</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>50 : 1</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>500 : 1</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msblrmqx",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>What will be the reduction potential of hydrogen electrode at 298 K which is prepared with the help of <i>aq.</i> solution of acetic acid with 0.01 M conc. at 1 atm pressure? ($K_a = 2.6 \\times 10^{-5}$)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.23</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.53</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>-0.194</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>-0.53</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For a weak acid like acetic acid, the concentration of hydrogen ions is given by $[\\mathrm{H}^{+}] = \\sqrt{K_a \\times c}$.</p>\n\n<p>$$[\\mathrm{H}^{+}]^2 = K_a \\times c$$</p>\n<p>$$[\\mathrm{H}^{+}]^2 = 2.6 \\times 10^{-5} \\times 0.01 = 2.6 \\times 10^{-7}$$</p>\n\n\n<p>For the reduction half-reaction: $2\\mathrm{H}^{+}(aq) + 2e^{-} \\longrightarrow \\mathrm{H}_2(g)$</p>\n<p>The Nernst equation is:</p>\n<p>$$E_{\\text{Redn}} = E_{\\text{Redn}}^{\\circ} - \\frac{0.059}{2} \\log \\frac{P_{\\mathrm{H}_2}}{[\\mathrm{H}^{+}]^2}$$</p>\n<p>Since the standard reduction potential of hydrogen is $E_{\\text{Redn}}^{\\circ} = 0 \\text{ V}$ and $P_{\\mathrm{H}_2} = 1 \\text{ atm}$:</p>\n<p>$$E_{\\text{Redn}} = 0 - \\frac{0.059}{2} \\log \\left( \\frac{1}{2.6 \\times 10^{-7}} \\right)$$</p>\n\n\n<p>$$E_{\\text{Redn}} = -\\frac{0.059}{2} \\log \\left( \\frac{10^7}{2.6} \\right)$$</p>\n<p>$$E_{\\text{Redn}} = -\\frac{0.059}{2} [7 - \\log 2.6]$$</p>\n<p>Given that $\\log 2.6 \\approx 0.415$:</p>\n<p>$$E_{\\text{Redn}} = -\\frac{0.059}{2} [7 - 0.415]$$</p>\n<p>$$E_{\\text{Redn}} = -\\frac{0.059}{2} \\times 6.585$$</p>\n<p>$$E_{\\text{Redn}} \\approx -0.194 \\text{ V}$$</p>\n\n<p>Therefore, the correct choice is <b>Option C</b>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>298 K पर 1 atm दाब और 0.01 M सांद्रता वाले एसिटिक अम्ल के <i>जलीय (aq.)</i> विलयन की सहायता से तैयार किए गए हाइड्रोजन इलेक्ट्रोड का अपचयन विभव क्या होगा? ($K_a = 2.6 \\times 10^{-5}$)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.23</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.53</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>-0.194</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>-0.53</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msbmtmzg",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The equilibrium $\\mathrm{Cu}^{2+} (aq) + \\mathrm{Cu}(s) \\rightarrow 2\\mathrm{Cu}^+ (aq)$ established at 293 K corresponds to </p><p>$\\dfrac{[\\mathrm{Cu}^{2+}]}{[\\mathrm{Cu}^+]^2} = 1.010 \\times 10^2$.</p><p>The standard potential $E_{\\mathrm{Cu}^{2+}/\\mathrm{Cu}}^\\circ = 0.33\\ \\mathrm{V}$ at this temperature.</p><p>The value of standard potential of $E_{\\mathrm{Cu}^+ / \\mathrm{Cu}}^\\circ$ will be</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.389 V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>+0.125 V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>+0.66 V</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>−0.250 V</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>At equilibrium, the cell potential $E_{\\text{cell}} = 0$. Using the Nernst equation at $298\\text{ K}$ (approximate standard standard state calculation):</p>\n<p>$$E^\\circ_{\\text{cell}} = \\frac{0.0591}{n} \\log K$$</p>\n<p>For the reaction $\\mathrm{Cu}^{2+}(aq) + \\mathrm{Cu}(s) \\rightarrow 2\\mathrm{Cu}^+(aq)$, the number of exchanged electrons is $n = 1$, and $K = \\frac{[\\mathrm{Cu}^+]^2}{[\\mathrm{Cu}^{2+}]}$.</p>\n<p>We are given $\\frac{[\\mathrm{Cu}^{2+}]}{[\\mathrm{Cu}^+]^2} = 1.010 \\times 10^2$, which means $K = \\frac{1}{1.010 \\times 10^2}$.</p>\n<p>$$E^\\circ_{\\text{cell}} = \\frac{0.0591}{1} \\log \\left(\\frac{1}{1.010 \\times 10^2}\\right)$$</p>\n<p>$$E^\\circ_{\\text{cell}} = 0.0591 \\times (-2.004) \\approx -0.118\\ \\mathrm{V}$$</p>\n\n\n<p>The overall cell reaction can be split into two half-reactions:</p>\n<ul>\n    <li>Cathode (Reduction): $\\mathrm{Cu}^{2+} + e^- \\rightarrow \\mathrm{Cu}^+$</li>\n    <li>Anode (Oxidation): $\\mathrm{Cu} \\rightarrow \\mathrm{Cu}^+ + e^-$</li>\n</ul>\n<p>$$E^\\circ_{\\text{cell}} = E^\\circ_{\\text{cathode}} - E^\\circ_{\\text{anode}}$$</p>\n<p>$$E^\\circ_{\\text{cell}} = E^\\circ_{\\mathrm{Cu}^{2+}/\\mathrm{Cu}^+} - E^\\circ_{\\mathrm{Cu}^+/\\mathrm{Cu}} = -0.118\\ \\mathrm{V} \\qquad \\dots \\text{(a)}$$</p>\n\n\n<p>Using the relationship $\\Delta G^\\circ = -nFE^\\circ$ for the standard reduction potentials:</p>\n<p>(i) $\\mathrm{Cu}^{2+} + 2e^- \\rightarrow \\mathrm{Cu} \\quad (\\Delta G_1 = -2FE_1)$</p>\n<p>(ii) $\\mathrm{Cu}^+ + e^- \\rightarrow \\mathrm{Cu} \\quad (\\Delta G_2 = -1FE_2)$</p>\n<p>(iii) $\\mathrm{Cu}^{2+} + e^- \\rightarrow \\mathrm{Cu}^+ \\quad (\\Delta G_3 = -1FE_3)$</p>\n<p>Reaction (iii) is obtained by subtracting equation (ii) from equation (i):</p>\n<p>$$\\Delta G_3 = \\Delta G_1 - \\Delta G_2$$</p>\n<p>$$-1FE_3 = -2FE_1 - (-1FE_2)$$</p>\n<p>$$-E_3 = -2E_1 + E_2$$</p>\n<p>$$E_3 = 2E_1 - E_2$$</p>\n<p>$$E^\\circ_{\\mathrm{Cu}^{2+}/\\mathrm{Cu}^+} = 2 \\times (0.33) - E^\\circ_{\\mathrm{Cu}^+/\\mathrm{Cu}}$$</p>\n<p>$$E^\\circ_{\\mathrm{Cu}^{2+}/\\mathrm{Cu}^+} = 0.66 - E^\\circ_{\\mathrm{Cu}^+/\\mathrm{Cu}}$$</p>\n\n\n<p>Substitute this expression back into equation (a):</p>\n<p>$$-0.118 = (0.66 - E^\\circ_{\\mathrm{Cu}^+/\\mathrm{Cu}}) - E^\\circ_{\\mathrm{Cu}^+/\\mathrm{Cu}}$$</p>\n<p>$$-0.118 = 0.66 - 2E^\\circ_{\\mathrm{Cu}^+/\\mathrm{Cu}}$$</p>\n<p>$$2E^\\circ_{\\mathrm{Cu}^+/\\mathrm{Cu}} = 0.66 + 0.118$$</p>\n<p>$$2E^\\circ_{\\mathrm{Cu}^+/\\mathrm{Cu}} = 0.778$$</p>\n<p>$$E^\\circ_{\\mathrm{Cu}^+/\\mathrm{Cu}} = \\frac{0.778}{2} = 0.389\\ \\mathrm{V}$$</p>\n\n<p>Therefore, the correct choice is <b>Option A</b>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>293 K पर स्थापित साम्य $\\mathrm{Cu}^{2+} (aq) + \\mathrm{Cu}(s) \\rightarrow 2\\mathrm{Cu}^+ (aq)$ निम्नलिखित के संगत है: </p><p>$\\dfrac{[\\mathrm{Cu}^{2+}]}{[\\mathrm{Cu}^+]^2} = 1.010 \\times 10^2$</p><p>इस तापमान पर मानक विभव $E_{\\mathrm{Cu}^{2+}/\\mathrm{Cu}}^\\circ = 0.33\\ \\mathrm{V}$ है।</p><p>$E_{\\mathrm{Cu}^+ / \\mathrm{Cu}}^\\circ$ के मानक विभव का मान होगा:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.389 V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>+0.125 V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>+0.66 V</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>−0.250 V</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msbqux7r",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the cell</p>\n<p>$\\mathrm{H}_2$(Pt) | $\\mathrm{H}_3\\mathrm{O}^+$(aq) | | $\\mathrm{Ag}^+$ | Ag.</p>\n<p>1 atm<span style=\"margin-right: 30px\"></span>pH = 5.03<span style=\"margin-right: 30px\"></span>$x$ M</p>\n<p>The measured EMF of the cell is 1.0 V. What is the value of $x$? $E^0_{\\mathrm{Ag}^+ / \\mathrm{Ag}} = +0.8$ V. [T = 25°C]</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2 \\times 10^{-2}$ M</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\times 10^{-3}$ M</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$1.5 \\times 10^{-3}$ M</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$1.5 \\times 10^{-2}$ M</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The given cell representation is:</p>\n<p>$$\\mathrm{H_2(Pt)\\ (1\\ atm)\\ |\\ H_3O^+\\ ||\\ Ag^+\\ (xM)\\ |\\ Ag}$$</p>\n<p>The net cell reaction for a 1-electron transfer is: $\\frac{1}{2}\\mathrm{H}_2(g) + \\mathrm{Ag}^+(aq) \\longrightarrow \\mathrm{H}^+(aq) + \\mathrm{Ag}(s)$</p>\n<p>$$E^\\circ_{\\text{cell}} = E^\\circ_{\\text{cathode}} - E^\\circ_{\\text{anode}} = 0.8\\ \\text{V} - 0.0\\ \\text{V} = 0.8\\ \\text{V}$$</p>\n\n\n<p>Using the Nernst equation (taking the standard approximation of $0.06$ for $\\frac{2.303RT}{F}$ to make calculations easier):</p>\n<p>$$E_{\\text{cell}} = E^\\circ_{\\text{cell}} - \\frac{0.06}{n} \\log \\frac{[\\mathrm{H}^+]}{[\\mathrm{Ag}^+]}$$</p>\n<p>Substitute the given values ($E_{\\text{cell}} = 1.0\\ \\text{V}$, $n = 1$, and $[\\mathrm{Ag}^+] = x$):</p>\n<p>$$1.0 = (0 + 0.8) - \\frac{0.06}{1} \\log \\frac{[\\mathrm{H}^+]}{x}$$</p>\n<p>$$0.2 = -0.06 \\log \\frac{[\\mathrm{H}^+]}{x}$$</p>\n<p>$$-\\frac{0.2}{0.06} = \\log \\frac{[\\mathrm{H}^+]}{x}$$</p>\n<p>$$-\\frac{10}{3} = \\log [\\mathrm{H}^+] - \\log x$$</p>\n\n\n<p>$$-\\frac{10}{3} = -\\mathrm{pH} - \\log x$$</p>\n\n<p>$$\\frac{10}{3} = \\mathrm{pH} + \\log x$$</p>\n<p>We are given $\\mathrm{pH} = 5.03$ and $\\frac{10}{3} \\approx 3.33$:</p>\n<p>$$3.33 = 5.03 + \\log x$$</p>\n<p>$$\\log x = 3.33 - 5.03$$</p>\n<p>$$\\log x = -1.7$$</p>\n\n\n\n<p>$$x = 10^{-1.7}$$</p>\n<p>This can be rewritten using standard log properties ($\\log 2 \\approx 0.30$):</p>\n<p>$$x = 10^{-2 + 0.3} = 10^{0.3} \\times 10^{-2}$$</p>\n<p>$$x = 2 \\times 10^{-2}\\ \\mathrm{M}$$</p>\n\n<p>Therefore, the correct choice is <b>Option A</b>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>सेल पर विचार करें:</p>\n<p>$\\mathrm{H}_2$(Pt) | $\\mathrm{H}_3\\mathrm{O}^+$(aq) | | $\\mathrm{Ag}^+$ | Ag.</p>\n<p>1 atm<span style=\"margin-right: 30px\"></span>pH = 5.03<span style=\"margin-right: 30px\"></span>$x$ M</p>\n<p>सेल का मापा गया EMF 1.0 V है। $x$ का मान क्या है? $E^0_{\\mathrm{Ag}^+ / \\mathrm{Ag}} = +0.8$ V. [T = 25°C]</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2 \\times 10^{-2}$ M</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\times 10^{-3}$ M</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$1.5 \\times 10^{-3}$ M</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$1.5 \\times 10^{-2}$ M</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msbqz3fs",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The standard emf for the cell reaction Zn + Cu<sup>2+</sup> &rarr; Zn<sup>2+</sup> + Cu is 1.10 volt at 25&deg;C. The emf for the cell reaction when 0.1 M Cu<sup>2+</sup> and 0.1 M Zn<sup>2+</sup> solutions are used at 25&deg;C is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1.10 volt</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.110 volt</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>-1.10 volt</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>-0.110 volt</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For the given cell reaction: $\\mathrm{Zn} + \\mathrm{Cu}^{2+} \\longrightarrow \\mathrm{Zn}^{2+} + \\mathrm{Cu}$</p>\n<p>The Nernst equation at $25^\\circ\\mathrm{C}$ is:</p>\n<p>$$E_{\\text{cell}} = E^\\circ_{\\text{cell}} - \\frac{0.059}{n} \\log \\frac{[\\mathrm{Zn}^{2+}]}{[\\mathrm{Cu}^{2+}]}$$</p>\n\n\n<ul>\n    <li>Standard emf ($E^\\circ_{\\text{cell}}$) = $1.10\\ \\text{V}$</li>\n    <li>Number of electrons transferred ($n$) = $2$</li>\n    <li>Concentration of product ions, $[\\mathrm{Zn}^{2+}]$ = $0.1\\ \\text{M}$</li>\n    <li>Concentration of reactant ions, $[\\mathrm{Cu}^{2+}]$ = $0.1\\ \\text{M}$</li>\n</ul>\n\n\n<p>Substitute the values into the Nernst equation:</p>\n<p>$$E_{\\text{cell}} = 1.10 - \\frac{0.059}{2} \\log \\left( \\frac{0.1}{0.1} \\right)$$</p>\n<p>$$E_{\\text{cell}} = 1.10 - 0.0295 \\log(1)$$</p>\n<p>Since the logarithm of $1$ is exactly $0$, the entire subtraction term drops out:</p>\n<p>$$E_{\\text{cell}} = 1.10 - 0 = 1.10\\ \\text{V}$$</p>\n\n<p>Therefore, the correct choice is <b>Option A</b>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>25&deg;C पर सेल अभिक्रिया Zn + Cu<sup>2+</sup> &rarr; Zn<sup>2+</sup> + Cu के लिए मानक emf 1.10 वोल्ट है। जब 25&deg;C पर 0.1 M Cu<sup>2+</sup> और 0.1 M Zn<sup>2+</sup> विलयनों का उपयोग किया जाता है, तो सेल अभिक्रिया के लिए emf है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1.10 वोल्ट</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.110 वोल्ट</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>-1.10 वोल्ट</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>-0.110 वोल्ट</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msbr2wox",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The EMF of a concentration cell consisting of two zinc electrodes, one dipping into $\\frac{M}{4}$ sol. of zinc sulphate &amp; the other into $\\frac{M}{16}$ sol. of the same salt at $25^{\\circ} C$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.0125 V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.0250 V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.0178 V</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.0356 V</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>In a concentration cell, both electrodes are made of the same material (Zinc in this case). Therefore, the standard cell potential is zero:</p>\n<p>$$E^\\circ_{\\text{cell}} = 0\\ \\text{V}$$</p>\n\n\n<p>For a concentration cell to act spontaneously (producing a positive EMF), oxidation (anode) must occur at the lower concentration half-cell, and reduction (cathode) must occur at the higher concentration half-cell.</p>\n<ul>\n    <li><b>Anode ($C_1$, lower concentration):</b> $\\frac{M}{16}$</li>\n    <li><b>Cathode ($C_2$, higher concentration):</b> $\\frac{M}{4}$</li>\n</ul>\n<p>The number of electrons exchanged in the Zinc half-reaction ($\\mathrm{Zn} \\rightleftharpoons \\mathrm{Zn}^{2+} + 2e^-$) is $n = 2$.</p>\n\n\n<p>The Nernst equation for a concentration cell at $25^\\circ\\mathrm{C}$ simplifies to:</p>\n<p>$$E_{\\text{cell}} = -\\frac{0.0591}{n} \\log \\frac{C_1}{C_2}$$</p>\n<p>Substitute the given values into the equation:</p>\n<p>$$E_{\\text{cell}} = -\\frac{0.0591}{2} \\log \\left( \\frac{1/16}{1/4} \\right)$$</p>\n<p>$$E_{\\text{cell}} = -\\frac{0.0591}{2} \\log \\left( \\frac{1}{4} \\right)$$</p>\n<p>Since $\\log(1/4) = \\log(4^{-1}) = -\\log(4)$:</p>\n<p>$$E_{\\text{cell}} = \\frac{0.0591}{2} \\log(4)$$</p>\n<p>We know that $\\log(4) = \\log(2^2) = 2 \\log(2)$:</p>\n<p>$$E_{\\text{cell}} = \\frac{0.0591}{2} \\times 2 \\log(2)$$</p>\n<p>$$E_{\\text{cell}} = 0.0591 \\times \\log(2)$$</p>\n<p>Taking $\\log(2) \\approx 0.3010$:</p>\n<p>$$E_{\\text{cell}} = 0.0591 \\times 0.3010$$</p>\n<p>$$E_{\\text{cell}} \\approx 0.0178\\ \\text{V}$$</p>\n\n<p>Therefore, the correct choice is <b>Option C</b>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$25^{\\circ} C$ पर एक सांद्रता सेल का EMF क्या होगा, जिसमें दो जिंक इलेक्ट्रोड हैं, जिनमें से एक जिंक सल्फेट के $\\frac{M}{4}$ विलयन में और दूसरा उसी लवण के $\\frac{M}{16}$ विलयन में डूबा हुआ है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.0125 V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.0250 V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.0178 V</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.0356 V</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msbn8pmc",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$$ \\mathrm{Cu}(\\mathrm{~s})+\\mathrm{Sn}^{2+}(0.002 \\mathrm{M}) \\longrightarrow \\mathrm{Cu}^{2+}(0.02 \\mathrm{M})+\\mathrm{Sn}(\\mathrm{~s}) . $$</p>\n<p>The Gibb's free energy change for the above reaction at 298 K is $x \\times 10^{-2} \\mathrm{~kJ} \\mathrm{~mol}^{-1}$. The value of $x$ is $\\_\\_\\_\\_$ .</p>\n<p>[Nearest integer]</p>\n<p>$$ \\begin{aligned} {\\left[E_{\\mathrm{Cu}^{2+} / \\mathrm{Cu}}^{\\circ}=0.34 ; E_{\\mathrm{Sn}^{2+} / \\mathrm{Sn}}^{\\circ}\\right.} & =-0.14 \\mathrm{~V} ;  \\mathrm{F} & \\left.=96500 \\mathrm{C} \\mathrm{~mol}^{-1}\\right] \\end{aligned} $$</p>",
+                "options": [],
+                "answer": "9843",
+                "explanation": "<p>For the given reaction: $\\mathrm{Cu(s) + Sn^{2+}(0.002\\ M) \\rightarrow Cu^{2+}(0.02\\ M) + Sn(s)}$</p>\n<p>Tin ($\\mathrm{Sn}^{2+}$) is reduced (cathode) and Copper ($\\mathrm{Cu}$) is oxidized (anode).</p>\n<p>$$E^{\\circ}_{\\text{cell}} = E^{\\circ}_{\\text{cathode}} - E^{\\circ}_{\\text{anode}}$$</p>\n<p>$$E^{\\circ}_{\\text{cell}} = -0.14 - (0.34) = -0.48\\ \\text{V}$$</p>\n\n\n<p>$$E_{\\text{cell}} = E^{\\circ}_{\\text{cell}} - \\frac{0.059}{n} \\log \\frac{[\\mathrm{Cu}^{2+}]}{[\\mathrm{Sn}^{2+}]}$$</p>\n<p>Since 2 electrons are exchanged, $n = 2$:</p>\n<p>$$E_{\\text{cell}} = -0.48 - \\frac{0.059}{2} \\log \\left(\\frac{0.02}{0.002}\\right)$$</p>\n<p>$$E_{\\text{cell}} = -0.48 - 0.0295 \\log(10)$$</p>\n<p>$$E_{\\text{cell}} = -0.48 - 0.0295 \\approx -0.51\\ \\text{V}$$</p>\n\n\n<p>The relationship between free energy and cell potential is:</p>\n<p>$$\\Delta G = -nF E_{\\text{cell}}$$</p>\n<p>$$\\Delta G = -2 \\times 96500 \\times (-0.51)$$</p>\n<p>$$\\Delta G = 98430\\ \\text{J/mol}$$</p>\n<p>Convert to $\\text{kJ/mol}$ by dividing by 1000:</p>\n<p>$$\\Delta G = 98.43\\ \\text{kJ/mol}$$</p>\n\n\n<p>Expressing the result in the requested scientific format ($x \\times 10^{-2}$):</p>\n<p>$$\\Delta G = 9843 \\times 10^{-2}\\ \\text{kJ/mol}$$</p>\n<p>Therefore, the value of $x$ is <b>9843</b>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$$ \\mathrm{Cu}(\\mathrm{~s})+\\mathrm{Sn}^{2+}(0.002 \\mathrm{M}) \\longrightarrow \\mathrm{Cu}^{2+}(0.02 \\mathrm{M})+\\mathrm{Sn}(\\mathrm{~s}) . $$</p><p>उपरोक्त अभिक्रिया के लिए 298 K पर गिब्स मुक्त ऊर्जा (Gibb's free energy) परिवर्तन $x \\times 10^{-2} \\mathrm{~kJ} \\mathrm{~mol}^{-1}$ है। $x$ का मान $\\_\\_\\_\\_$ है।</p><p>[निकटतम पूर्णांक]</p><p>$$ \\begin{aligned} {\\left[E_{\\mathrm{Cu}^{2+} / \\mathrm{Cu}}^{\\circ}=0.34 ; E_{\\mathrm{Sn}^{2+} / \\mathrm{Sn}}^{\\circ}\\right.} & =-0.14 \\mathrm{~V} ;  \\mathrm{F} & \\left.=96500 \\mathrm{C} \\mathrm{~mol}^{-1}\\right] \\end{aligned} $$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msbndpte",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Given the data at $25^{\\circ} \\mathrm{C}$,</p>\n<p>$$ \\begin{aligned} & \\mathrm{Ag}+\\mathrm{I}^{-} \\longrightarrow \\mathrm{AgI}+e^{-} ; \\mathrm{E}^0=0.152 \\mathrm{~V} \\\\ & \\mathrm{Ag} \\longrightarrow \\mathrm{Ag}^{+}+e^{-}, \\mathrm{E}^0=-0.800 \\mathrm{~V} \\end{aligned} $$</p>\n<p>The value of $K_{\\mathrm{sp}}$ for $A g \\mathrm{l}$ is $-x$. The value of $x$ is $\\_\\_\\_\\_$.</p>\n<p>(Nearest integer)</p>\n<p>$$ \\left(2.303 \\frac{R T}{F}=0.059 \\mathrm{~V}\\right) $$</p>",
+                "options": [],
+                "answer": "16",
+                "explanation": "<p>The given reactions are provided as oxidation half-reactions (electrons are lost on the product side):</p>\n<ul>\n    <li>$\\mathrm{Ag}(s) + \\mathrm{I}^-(aq) \\longrightarrow \\mathrm{AgI}(s) + e^-\\ \\ \\ \\ (E^\\circ_1 = 0.152\\ \\text{V})$</li>\n    <li>$\\mathrm{Ag}(s) \\longrightarrow \\mathrm{Ag}^+(aq) + e^-\\ \\ \\ \\ (E^\\circ_2 = -0.800\\ \\text{V})$</li>\n</ul>\n\n\n<p>The solubility product ($K_{sp}$) represents the equilibrium of the sparingly soluble salt dissolving into its ions:</p>\n<p>$$\\mathrm{AgI}(s) \\rightleftharpoons \\mathrm{Ag}^+(aq) + \\mathrm{I}^-(aq)$$</p>\n<p>To obtain this net reaction, we need to reverse the first reaction (making it a reduction) and add it to the second reaction (which remains an oxidation):</p>\n<ul>\n    <li><b>Cathode (Reduction):</b> $\\mathrm{AgI}(s) + e^- \\longrightarrow \\mathrm{Ag}(s) + \\mathrm{I}^-(aq)$ <br> <i>(Since the reaction is reversed, its potential changes sign: $E^\\circ_{\\text{red}} = -0.152\\ \\text{V}$)</i></li>\n    <li><b>Anode (Oxidation):</b> $\\mathrm{Ag}(s) \\longrightarrow \\mathrm{Ag}^+(aq) + e^-$ <br> <i>($E^\\circ_{\\text{ox}} = -0.800\\ \\text{V}$)</i></li>\n</ul>\n<p>The standard cell potential ($E^\\circ_{\\text{cell}}$) for the net reaction is the sum of the oxidation and reduction potentials:</p>\n<p>$$E^\\circ_{\\text{cell}} = E^\\circ_{\\text{red}} + E^\\circ_{\\text{ox}}$$</p>\n<p>$$E^\\circ_{\\text{cell}} = -0.152\\ \\text{V} + (-0.800\\ \\text{V}) = -0.952\\ \\text{V}$$</p>\n\n\n<p>The relationship between the standard cell potential and the equilibrium constant ($K_{sp}$) is given by:</p>\n<p>$$E^\\circ_{\\text{cell}} = \\frac{0.059}{n} \\log K_{sp}$$</p>\n<p>Since exactly $1$ mole of electrons is exchanged in the balanced net reaction, $n = 1$:</p>\n<p>$$-0.952 = \\frac{0.059}{1} \\log K_{sp}$$</p>\n<p>$$\\log K_{sp} = \\frac{-0.952}{0.059}$$</p>\n<p>$$\\log K_{sp} = -16.135$$</p>\n\n<p>The standard convention in such problems equates $\\log K_{sp}$ to $-x$ (or $K_{sp} = 10^{-x}$). By comparing our result:</p>\n<p>$$-x = -16.135$$</p>\n<p>$$x = 16.135$$</p>\n<p>Rounding to the nearest integer, we get $16$.</p>\n\n<p>Therefore, the value of $x$ is <b>16</b>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$25^{\\circ} \\mathrm{C}$ पर दिए गए डेटा के अनुसार,</p><p>$$ \\begin{aligned} & \\mathrm{Ag}+\\mathrm{I}^{-} \\longrightarrow \\mathrm{AgI}+e^{-} ; \\mathrm{E}^0=0.152 \\mathrm{~V} \\\\ & \\mathrm{Ag} \\longrightarrow \\mathrm{Ag}^{+}+e^{-}, \\mathrm{E}^0=-0.800 \\mathrm{~V} \\end{aligned} $$</p><p>$A g \\mathrm{l}$ के लिए $K_{\\mathrm{sp}}$ का मान $-x$ है। $x$ का मान $\\_\\_\\_\\_$ है।</p><p>(निकटतम पूर्णांक)</p><p>$$ \\left(2.303 \\frac{R T}{F}=0.059 \\mathrm{~V}\\right) $$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msbpzwe4",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The cell; $\\mathrm{Zn}\\left|\\mathrm{Zn}^{2+}(1 \\mathrm{M}) \\| \\mathrm{Cu}^{2+}(1 \\mathrm{M})\\right| \\mathrm{Cu}\\left(E_{\\text {cell }}^{\\circ}=1.10 \\mathrm{~V}\\right)$ was allowed to be completely discharged at 298 K . The relative concentration of $\\mathrm{Zn}^{2+}$ to $\\mathrm{Cu}^{2+}\\left(\\frac{\\left[\\mathrm{Zn}^{2+}\\right]}{\\left[\\mathrm{Cu}^{2+}\\right]}\\right)$ is $10^x$. The value of $x$ is $\\_\\_\\_\\_$ (Nearest integer)</p>",
+                "options": [],
+                "answer": "37",
+                "explanation": "<p>When a galvanic cell is completely discharged, it means the redox reaction has reached equilibrium. At this state, the cell can no longer do useful work, and the cell potential ($E_{\\text{cell}}$) becomes zero.</p>\n<p>$$E_{\\text{cell}} = 0$$</p>\n\n\n<p>For the given cell $\\mathrm{Zn}|\\mathrm{Zn}^{2+} || \\mathrm{Cu}^{2+}|\\mathrm{Cu}$, the net cell reaction is:</p>\n<p>$$\\mathrm{Zn}(s) + \\mathrm{Cu}^{2+}(aq) \\rightleftharpoons \\mathrm{Zn}^{2+}(aq) + \\mathrm{Cu}(s)$$</p>\n<p>The number of electrons exchanged in this process is $n = 2$.</p>\n<p>At equilibrium, the reaction quotient becomes the equilibrium constant ($K_c$):</p>\n<p>$$K_c = \\frac{[\\mathrm{Zn}^{2+}]}{[\\mathrm{Cu}^{2+}]}$$</p>\n\n\n<p>The Nernst equation at $298\\text{ K}$ is given by:</p>\n<p>$$E_{\\text{cell}} = E^{\\circ}_{\\text{cell}} - \\frac{0.059}{n} \\log K_c$$</p>\n<p>Substituting $E_{\\text{cell}} = 0$:</p>\n<p>$$0 = E^{\\circ}_{\\text{cell}} - \\frac{0.059}{2} \\log \\left(\\frac{[\\mathrm{Zn}^{2+}]}{[\\mathrm{Cu}^{2+}]}\\right)$$</p>\n<p>$$E^{\\circ}_{\\text{cell}} = \\frac{0.059}{2} \\log \\left(\\frac{[\\mathrm{Zn}^{2+}]}{[\\mathrm{Cu}^{2+}]}\\right)$$</p>\n\n\n<p>We are given $E^{\\circ}_{\\text{cell}} = 1.10\\ \\text{V}$ and $\\frac{[\\mathrm{Zn}^{2+}]}{[\\mathrm{Cu}^{2+}]} = 10^x$:</p>\n<p>$$1.10 = \\frac{0.059}{2} \\log(10^x)$$</p>\n<p>Using the property of logarithms ($\\log 10^x = x$):</p>\n<p>$$1.10 = 0.0295 \\times x$$</p>\n<p>$$x = \\frac{1.10}{0.0295}$$</p>\n<p>$$x = 37.288$$</p>\n<p>Rounding to the nearest integer, we get $37$.</p>\n\n<p>Therefore, the value of $x$ is <b>37</b>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>सेल; $\\mathrm{Zn}\\left|\\mathrm{Zn}^{2+}(1 \\mathrm{M}) \\| \\mathrm{Cu}^{2+}(1 \\mathrm{M})\\right| \\mathrm{Cu}\\left(E_{\\text {cell }}^{\\circ}=1.10 \\mathrm{~V}\\right)$ को 298 K पर पूर्णतः निरावेशित (discharged) होने दिया गया। $\\mathrm{Cu}^{2+}$ के सापेक्ष $\\mathrm{Zn}^{2+}$ की सांद्रता $\\left(\\frac{\\left[\\mathrm{Zn}^{2+}\\right]}{\\left[\\mathrm{Cu}^{2+}\\right]}\\right)$ $10^x$ है। $x$ का मान $\\____$ है। (निकटतम पूर्णांक)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msbq9h88",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The hydrogen electrode is dipped in a solution of $\\mathrm{pH}=4$ at $25^{\\circ} \\mathrm{C}$. The potential of the electrode will be $\\ldots \\ldots \\ldots \\times 10^{-2} \\mathrm{V}$</p>\n<p>$\\left(\\frac{2.303 R T}{F}=0.009 \\mathrm{~V}\\right)$ (Nearest integer)</p>",
+                "options": [],
+                "answer": "24",
+                "explanation": "<p>$$2\\mathrm{H}^+(aq) + 2e^- \\longrightarrow \\mathrm{H}_2(g)$$</p>\n\n\n<p>$$E_{\\text{cell}} = E^{\\circ}_{\\text{cell}} - \\frac{0.059}{2} \\log \\frac{P_{\\mathrm{H}_2}}{[\\mathrm{H}^+]^2}$$</p>\n<p>We know that $E^{\\circ}_{\\text{cell}} = 0\\ \\mathrm{V}$, $P_{\\mathrm{H}_2} = 1\\ \\mathrm{bar}$, and $[\\mathrm{H}^+] = 10^{-4}\\ \\mathrm{M}$ (since $\\mathrm{pH} = 4$).</p>\n\n\n<p>$$E_{\\text{cell}} = 0 - 0.059 \\times (-4)$$</p>\n<p>$$E_{\\text{cell}} = 0.236\\ \\mathrm{V}$$</p>\n\n\n<p>$$0.236\\ \\mathrm{V} = 23.6 \\times 10^{-2}\\ \\mathrm{V}$$</p>\n<p>Rounding $23.6$ to the nearest integer, we get $24$.</p>\n\n<p>Therefore, the value to fill in the blank is <b>24</b>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$25^{\\circ} \\mathrm{C}$ पर हाइड्रोजन इलेक्ट्रोड को $\\mathrm{pH}=4$ वाले विलयन में डुबाया जाता है। इलेक्ट्रोड का विभव $\\ldots \\ldots \\ldots \\times 10^{-2} \\mathrm{V}$ होगा।</p><p>$\\left(\\frac{2.303 R T}{F}=0.009 \\mathrm{~V}\\right)$ (निकटतम पूर्णांक)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msbrc7r9",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the $\\mathrm{Cu}^{2+} \\mid \\mathrm{Cu}$ electrode, the standard reduction potential is +0.34 V. Given that the solubility product of $\\mathrm{Cu}(\\mathrm{OH})_2$ is $1.0 \\times 10^{-19}$, find the pH of the solution when the reduction potential of this electrode is 0.31 V. $(2.303 R T / F=0.06)$</p>",
+                "options": [],
+                "answer": "5",
+                "explanation": "<p>For the reduction half-reaction: $\\mathrm{Cu}^{2+}(aq) + 2e^- \\longrightarrow \\mathrm{Cu}(s)$</p>\n<p>The Nernst equation at the given temperature is:</p>\n<p>$$E = E^\\circ - \\frac{2.303RT}{nF} \\log \\frac{1}{[\\mathrm{Cu}^{2+}]}$$</p>\n<p>We are given $E = 0.31\\ \\text{V}$, $E^\\circ = 0.34\\ \\text{V}$, $n = 2$ (since 2 electrons are exchanged), and $\\frac{2.303RT}{F} = 0.06$:</p>\n<p>$$0.31 = 0.34 - \\frac{0.06}{2} \\log \\frac{1}{[\\mathrm{Cu}^{2+}]}$$</p>\n<p>$$-0.03 = -0.03 \\log \\frac{1}{[\\mathrm{Cu}^{2+}]}$$</p>\n\n<p>$$1 = \\log \\frac{1}{[\\mathrm{Cu}^{2+}]}$$</p>\n\n<p>$$\\frac{1}{[\\mathrm{Cu}^{2+}]} = 10^1 = 10$$</p>\n<p>$$[\\mathrm{Cu}^{2+}] = \\frac{1}{10} = 0.1\\ \\text{M} = 10^{-1}\\ \\text{M}$$</p>\n\n\n<p>The dissociation of copper(II) hydroxide is:</p>\n<p>$$\\mathrm{Cu(OH)_2}(s) \\rightleftharpoons \\mathrm{Cu}^{2+}(aq) + 2\\mathrm{OH}^-(aq)$$</p>\n<p>The solubility product expression is:</p>\n<p>$$K_{sp} = [\\mathrm{Cu}^{2+}][\\mathrm{OH}^-]^2$$</p>\n\n<p>$$1.0 \\times 10^{-19} = (10^{-1}) \\times [\\mathrm{OH}^-]^2$$</p>\n<p>$$[\\mathrm{OH}^-]^2 = \\frac{1.0 \\times 10^{-19}}{10^{-1}} = 10^{-18}$$</p>\n\n<p>$$[\\mathrm{OH}^-] = 10^{-9}\\ \\text{M}$$</p>\n\n<p>First, find the pOH:</p>\n<p>$$\\mathrm{pOH} = -\\log[\\mathrm{OH}^-] = -\\log(10^{-9}) = 9$$</p>\n<p>Assuming standard temperature conditions where $\\mathrm{pH} + \\mathrm{pOH} = 14$:</p>\n<p>$$\\mathrm{pH} = 14 - \\mathrm{pOH}$$</p>\n<p>$$\\mathrm{pH} = 14 - 9 = 5$$</p>\n\n<p>Therefore, the pH of the solution is <b>5</b>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\mathrm{Cu}^{2+} \\mid \\mathrm{Cu}$ इलेक्ट्रोड के लिए, मानक अपचयन विभव +0.34 V है। दिया गया है कि $\\mathrm{Cu}(\\mathrm{OH})_2$ का विलेयता गुणनफल $1.0 \\times 10^{-19}$ है, जब इस इलेक्ट्रोड का अपचयन विभव 0.31 V हो, तो विलयन का pH ज्ञात कीजिए। $(2.303 R T / F=0.06)$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Nernst Equation and Its Applications",
+    "timeAllotted": 2160000,
+    "title": "Electrochemistry Test - 5 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mpd3gtfp",
+    "defaultLanguage": "en",
+    "description": "Nernst Equation and Its Applications",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-02T12:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Nernst Equation and Its Applications",
+    "timeAllotted": 2160000,
+    "title": "Electrochemistry Test - 5 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Electrochemistry"
+  }
+}

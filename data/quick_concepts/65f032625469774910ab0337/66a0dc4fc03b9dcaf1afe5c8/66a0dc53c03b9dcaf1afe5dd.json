@@ -1,0 +1,46 @@
+{
+  "subjectId": "65f032625469774910ab0337",
+  "chapterId": "66a0dc4fc03b9dcaf1afe5c8",
+  "topicId": "66a0dc53c03b9dcaf1afe5dd",
+  "title": "Stability of complex ion",
+  "concepts": [
+    {
+      "title": "Prepration of Complex compounds",
+      "conceptBody": "<h3><strong>Preparations of complex compounds</strong></h3><p>Complex compounds are generally prepared by the following methods:</p><p><strong>(i) Substitution reaction in aq. solutions&nbsp;</strong></p><p>This method involves a reaction between a metal salt in aq solution and a coordinating agent, e.g. aq. solution of $\\text{CuS}{{\\text{O}}_{4}}$ and excess $\\text{N}{{\\text{H}}_{3}}$ forms a $\\text{C}{{\\text{u}}^{2+}}$ ammine.</p><p>$\\left[ \\text{Cu}{{\\left( {{\\text{H}}_{2}}\\text{O} \\right)}_{6}} \\right]\\text{S}{{\\text{O}}_{4}}+4\\text{N}{{\\text{H}}_{3}}\\xrightarrow{{}}\\left[ \\text{Cu}{{\\left( \\text{N}{{\\text{H}}_{3}} \\right)}_{4}} \\right]\\text{S}{{\\text{O}}_{4}}+6{{\\text{H}}_{2}}\\text{O}$</p><p>(Blue) (Deep Blue)</p><p><strong>(ii) Substitution reactions in the absence of solvent&nbsp;</strong></p><p>Direct reaction between anhydrous metal salt and liquid$\\text{N}{{\\text{H}}_{3}}$ produces metal ammines, e.g.</p><p>$\\text{NiC}{{\\text{l}}_{2}}+6\\text{N}{{\\text{H}}_{3(1)}}\\xrightarrow{{}}\\left[ \\text{Ni}{{\\left( \\text{N}{{\\text{H}}_{3}} \\right)}_{6}} \\right]\\text{C}{{\\text{l}}_{2}}$</p><p>Yellow Violet</p><p><strong>(iii) Redox reactions&nbsp;</strong></p><p>Co(II) salt forms a $\\text{Co}$ (III) complex</p><p>$4\\left[ \\text{Co}{{\\left( {{\\text{H}}_{2}}\\text{O} \\right)}_{6}} \\right]\\text{C}{{\\text{l}}_{2}}+4\\text{N}{{\\text{H}}_{4}}\\text{Cl}+20\\text{N}{{\\text{H}}_{3}}+{{\\text{O}}_{2}}\\xrightarrow{{}}4\\left[ \\text{Co}{{\\left( \\text{N}{{\\text{H}}_{3}} \\right)}_{6}} \\right]\\text{C}{{\\text{l}}_{3}}+26{{\\text{H}}_{2}}\\text{O}$</p>",
+      "position": 0,
+      "qcConcept": "66a0dc53c03b9dcaf1afe5de"
+    },
+    {
+      "title": "Stability of Complex Compound",
+      "conceptBody": "<h3><strong>Stability of complex compound in solution</strong></h3><p>Complex formation can be seen as a Lewis acid - base reaction. The${{\\text{M}}^{\\text{n}+}}$ is Lewis acid and the ligands are Lewis bases. If the interaction between ${{\\text{M}}^{\\text{n}+}}$ and the ligands is strong, the complex is thermodynamically stable. The reaction between ${{\\text{M}}^{\\text{n}+}}$ and the ligands can be written as</p><p>${{\\text{M}}^{\\text{n}+}}+\\text{x}{{\\text{L}}^{\\text{m}-}}\\rightleftharpoons {{\\left[ \\text{M}{{\\text{L}}_{\\text{X}}} \\right)}^{\\text{p}+}}\\text{, where }(\\text{n}+)+(\\text{m}-)=(\\text{p}+)$</p><p>The equilibrium constant $\\text{k}$ is stability constant and it is defined as</p><p>$\\text{k}=\\frac{{{\\left[ \\text{M}{{\\text{L}}_{\\text{X}}} \\right]}^{\\text{p}+}}}{\\left[ {{\\text{M}}^{\\text{n}+}} \\right]{{\\left[ {{\\text{L}}^{\\text{m}-}} \\right]}^{\\text{X}}}}$</p><p>The numerical value of $\\text{k}$ gives an indication of thermodynamic stability. Some stability constants are given below.</p><p>$\\text{A}{{\\text{g}}^{+}}+2\\text{N}{{\\text{H}}_{3}}\\rightleftharpoons {{\\left[ \\text{Ag}{{\\left( \\text{N}{{\\text{H}}_{3}} \\right)}_{2}} \\right]}^{+}}\\quad \\,\\,\\,\\,1.6\\quad {{10}^{7}}$</p><p>$\\text{C}{{\\text{o}}^{3+}}+6\\text{N}{{\\text{H}}_{3}}\\rightleftharpoons {{\\left[ \\text{Co}{{\\left( \\text{N}{{\\text{H}}_{3}} \\right)}_{6}} \\right]}^{3+}}\\quad 5.3\\quad {{10}^{33}}$</p><p>$\\text{C}{{\\text{u}}^{2+}}+4\\text{C}{{\\text{N}}^{-}}\\rightleftharpoons {{\\left[ \\text{Cu}{{\\left( \\text{C}{{\\text{N}}_{4}} \\right)}^{2-}} \\right]}^{+}}\\quad \\begin{array}{*{35}{l}} 2.0 &amp; {{10}^{27}} \\\\ \\end{array}$</p><p>$\\text{C}{{\\text{u}}^{2+}}+4\\text{N}{{\\text{H}}_{3}}\\rightleftharpoons {{\\left[ \\text{Cu}{{\\left( \\text{N}{{\\text{H}}_{3}} \\right)}_{4}} \\right]}^{2+}}\\quad 4.5\\quad {{10}^{11}}$</p><p>The value of $\\text{k}$ for $\\text{C}{{\\text{u}}^{2+}}$ complexes with $\\text{N}{{\\text{H}}_{3}}$ and $\\text{C}{{\\text{N}}^{-}}$show that cyano-complex is more stable than $\\text{N}{{\\text{H}}_{3}}$ complex.</p>",
+      "position": 1,
+      "qcConcept": "66a0dc53c03b9dcaf1afe5df"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "6661c479164a1cdfacc30c40",
+      "title": "Which of the following complexes has the highest stability constant at 298 K",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "6661c479164a1cdfacc30c41",
+      "title": "The most stable ion is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "6661c479164a1cdfacc30c42",
+      "title": "Which of the following factors tends to increase the stability of metal ion complexes",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "6661c479164a1cdfacc30c43",
+      "title": "The correct order for the wavelength of absorption in the visible region is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

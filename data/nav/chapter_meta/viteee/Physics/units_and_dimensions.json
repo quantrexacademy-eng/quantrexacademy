@@ -1,0 +1,30 @@
+{
+  "examSlug": "viteee",
+  "examId": "61bb57e81213731910ea0b6f",
+  "subjectId": "61bb58181213731910ea0b70",
+  "chapterId": "61bb821fe687f7046baf88c0",
+  "subject": "Physics",
+  "chapter": "Units and Dimensions",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64e459aeec226f2f4360af39",
+      "title": "Units",
+      "count": 2,
+      "questionIds": [
+        "67793a5bbd05e008167c1116",
+        "64e45956ec226f2f4360ab3e"
+      ]
+    },
+    {
+      "id": "64e459adec226f2f4360af38",
+      "title": "Dimensions",
+      "count": 3,
+      "questionIds": [
+        "64e45901ec226f2f4360a7fc",
+        "64e45901ec226f2f4360a7fb",
+        "64e458cfec226f2f4360a612"
+      ]
+    }
+  ]
+}

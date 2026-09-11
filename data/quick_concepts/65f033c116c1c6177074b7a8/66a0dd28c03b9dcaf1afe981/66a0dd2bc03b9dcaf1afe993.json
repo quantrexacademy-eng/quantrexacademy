@@ -1,0 +1,46 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd28c03b9dcaf1afe981",
+  "topicId": "66a0dd2bc03b9dcaf1afe993",
+  "title": "Multinomial Theorem",
+  "concepts": [
+    {
+      "title": "Finding Greatest coefficient",
+      "conceptBody": "<h3><strong>Multinomial Theorem</strong></h3><p>For any positive integer $n$,</p><p>\\(\\left(x_4+x_2+\\ldots x_r\\right)^n=\\sum_{\\alpha_1+\\alpha_2 \\ldots \\alpha_r=n} \\frac{n !}{\\alpha ! \\alpha_{2} ! \\alpha_{3} ! \\ldots \\alpha_{r} !} x_1^{\\alpha_1} x_2^{\\alpha_2} \\ldots x_r^{\\alpha_r}\\)</p><p>For example,</p><p>in the same expansion of ${{(x+y+z)}^{10}}$ coefficient of ${{x}^{3}}{{y}^{2}}{{z}^{5}}$ will be $\\frac{10!}{2!3!5!}$ since while multiplying $x+y+z$ ten times one will get ${{x}^{3}}{{y}^{2}}{{z}^{5}}$, as many number of times as is the number of ways of arranging xxxyyzzzzz in a line.</p><p>Note : Binomial Theorem follows from multinomial theorem by putting $\\text{n}=2$.</p><p><strong>Example&nbsp;</strong></p><p><strong>Find the coefficient of ${{x}^{3}}{{y}^{4}}{{z}^{2}}$ in the expansion of ${{(2x-3y+4z)}^{9}}$.&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>General Term in ${{(2x-3y+4z)}^{9}}$</p><p>$~=9!/\\left( {{\\text{n}}_{1}}!\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{n}}_{2}}!\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{n}}_{3}}! \\right)\\cdot {{(2\\text{x})}^{\\text{n}1}}\\cdot {{(-3\\text{y})}^{\\text{n}2}}\\cdot {{(4\\text{z})}^{\\text{n}3}}$</p><p>$~=9!/\\left( {{\\text{n}}_{1}}!\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{n}}_{2}}!\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{n}}_{3}}! \\right)\\cdot {{2}^{\\text{n}1}}{{(-3)}^{\\text{n}2}}{{(-3)}^{\\text{n}2}}\\cdot {{(4)}^{\\text{n}3}}\\cdot {{\\text{x}}^{\\text{n}1}}\\cdot {{\\text{y}}^{\\text{n}2}}\\cdot {{\\text{z}}^{\\text{n}3}}$</p><p>Putting $\\text{n}1=3,\\text{n}2=4,\\text{n}3=2$</p><p>= $9!/(3!$ $4!$ $2!)\\cdot {{2}^{3}}{{(-3)}^{4}}\\cdot {{(4)}^{2}}\\cdot {{\\text{x}}^{3}}{{\\text{y}}^{4}}{{\\text{z}}^{2}}$</p><p>= $\\left[ 9.8.7.6.5.4!/\\left( 3.2.1\\cdot 4!\\cdot 2 \\right) \\right]/(3.2.1.$ $4!.2)]$ 8 81 $16{{\\text{x}}^{3}}{{\\text{y}}^{4}}{{\\text{z}}^{2}}$</p><p>$\\Rightarrow $ $\\text{ }\\!\\!~\\!\\!\\text{ Coefficient }\\!\\!~\\!\\!\\text{ of }\\!\\!~\\!\\!\\text{ }{{\\text{x}}^{3}}{{\\text{y}}^{4}}{{\\text{z}}^{2}}=9$ 8 7 5 8 81 8</p><p>= 13063600</p><p>Greatest coefficient in the expansion of ${{\\left( {{\\text{x}}_{1}}+{{\\text{x}}_{2}}+\\ldots \\ldots \\ldots +{{\\text{x}}_{\\text{m}}} \\right)}^{\\text{n}}}$</p><p>$=n!/{{(q!)}^{m-r}}{{[\\left( q+1 \\right)!]}^{r}}$</p><p>where ' $q$ ' is the quotient and ' $r$ ' is the remainder, when ' $n$ ' is divided by ' $m$ '.</p><p><strong>Ex : Find the greatest coefficient in the expansion of ${{(a+b+c+d)}^{15}}$&nbsp;</strong></p><p><strong>Sol. : </strong>Here $\\text{n}=15,\\text{ }\\!\\!~\\!\\!\\text{ m}=4$</p><p>$15/4$ is quotient 3 and remainder 3.</p><p>since $q=3$ and $r=3$</p><p>Hence greatest - coefficient $=15!/{{\\left[ {{(3!)}^{4-3}}\\times \\left( 3+1 \\right)! \\right)}^{3}}$</p><p>$\\left. =15!/\\left[ 3! \\right)\\times {{(4!)}^{3}} \\right]$</p><p>$~=15\\text{ }\\!\\!~\\!\\!\\text{ ! }\\!\\!~\\!\\!\\text{ / }\\!\\!~\\!\\!\\text{ (3! }\\!\\!~\\!\\!\\text{ 4! }\\!\\!~\\!\\!\\text{ 4! }\\!\\!~\\!\\!\\text{ 4!) }\\!\\!~\\!\\!\\text{ }$</p><p><strong>Example</strong></p><p><strong>Find the coefficient of ${{x}^{7}}$ in the expansion of ${{\\left( 1+3x-2{{x}^{3}} \\right)}^{10}}$.&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>General Term in ${{\\left( 1+3\\text{x}-2{{\\text{x}}^{3}} \\right)}^{10}}$</p><p>$\\begin{array}{*{35}{r}}<br>{} &amp; ~=10!/\\left( {{\\text{n}}_{1}}!\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{n}}_{2}}!{{\\text{n}}_{3}}! \\right){{(1)}^{\\text{n}}}{{~}_{1}}{{(3\\text{x})}^{\\text{n}}}{{~}_{2}}{{\\left( -2{{\\text{x}}^{3}} \\right)}^{\\text{n}}}{{~}_{3}} \\\\<br>\\end{array}$</p><p>= $10 ! /\\left(\\begin{array}{lll}\\mathrm{n}_1 &amp; \\mathrm{n}_{2} ! &amp; \\left.\\mathrm{n}_{3} !\\right) \\cdot 3 \\mathrm{n}_3{ }^{\\mathrm{n} 2}(-2)^{\\mathrm{n} 3} \\mathrm{x}_2{ }^{\\mathrm{n}+3 \\mathrm{n}}{ }_3\\end{array}\\right.$</p><p>Where ${{\\text{n}}_{1}}+{{\\text{n}}_{2}}+{{\\text{n}}_{3}}=10$……. (i)</p><p>For coefficient of ${{x}^{7}}:{{n}_{2}}+3{{n}_{3}}=7$….. (ii)</p><p>From (ii), possible non-negative integral values of ' ${{n}_{2}}$ ' and ' ${{n}_{3}}$ ' are :</p><p>${{\\text{n}}_{2}}$ $=7,{{\\text{n}}_{3}}=0$ $\\text{ }\\!\\!~\\!\\!\\text{ since }\\!\\!~\\!\\!\\text{ from }\\!\\!~\\!\\!\\text{ (i) }\\!\\!~\\!\\!\\text{ : }\\!\\!~\\!\\!\\text{ }$ ${{\\text{n}}_{1}}=3$</p><p>${{\\text{n}}_{2}}=1,{{\\text{n}}_{3}}=2$ $\\text{ }\\!\\!~\\!\\!\\text{ since }\\!\\!~\\!\\!\\text{ from }\\!\\!~\\!\\!\\text{ (i) }\\!\\!~\\!\\!\\text{ : }\\!\\!~\\!\\!\\text{ }$ ${{\\text{n}}_{1}}=7$</p><p>Or \\({{\\text{n}}_{2}}=4,{{\\text{n}}_{3}}=1\\)\\(\\text{ }\\!\\!~\\!\\!\\text{ since }\\!\\!~\\!\\!\\text{ from }\\!\\!~\\!\\!\\text{ (i) }\\!\\!~\\!\\!\\text{ : }\\!\\!~\\!\\!\\text{ }\\)</p><p>\\({{\\text{n}}_{1}}=5\\)</p><p>So required coefficient of ${{x}^{7}}$ : (will get it by adding the above 3 cases)</p><p>$10\\text{ }\\!\\!~\\!\\!\\text{ ! }\\!\\!~\\!\\!\\text{ / }\\!\\!~\\!\\!\\text{ }\\left( 3!\\times 7!\\times 0! \\right)\\cdot {{(3)}^{7}}{{(-2)}^{0}}+10!/\\left( 7!\\times 1!\\times 2! \\right)\\cdot {{(3)}^{1}}{{(-2)}^{2}}+10!/\\left( 5!\\times 4!\\times 1! \\right)\\cdot {{3}^{4}}{{(-2)}^{1}}$</p><p>(10. 9.87 !) / (7!.3.2.1)37 + (10.9.8. 7!) / (7!. 2) x 3 x $4-[(10.9.8.7.6.5$ !) / (5!. 4.3.2.1.)].3.2</p><p>$~=10\\times 9\\times {{43}^{6}}+10\\times 9\\times 4\\times 3\\times 4-10\\times 9\\times 7\\times 6\\times {{3}^{3}}\\times 2$</p><p>$~=10\\times 9\\times 4\\left( 36+12-7\\times 34 \\right)$</p><p>$~=360\\times \\left( 729+12-567 \\right)$</p><p>$~=62640$</p><p><strong>Example</strong></p><p><strong>Find the total number of terms in the expansion of ${{(x+y+z+w)}^{n}},n\\in N$&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>The number of terms in the expansion of ${{(x+y+z+w)}^{n}}$ is ${{~}^{n+4-1}}{{C}_{4-1}}$.</p><p>$~={{~}^{\\text{n}+3}}{{\\text{C}}_{3}}$</p><p>$~=\\frac{\\left( \\text{n}+3 \\right)\\left( \\text{n}+2 \\right)\\left( \\text{n}+1 \\right)}{6}$</p><p>You can learn this</p><p><strong>Alternative method&nbsp;</strong></p><p>We know that</p><p>\\(\\begin{aligned}<br>&amp; (\\mathrm{x}+\\mathrm{y}+\\mathrm{z}+\\mathrm{w})^{\\mathrm{n}}=\\{(\\mathrm{x}+\\mathrm{y})+(\\mathrm{z}+\\mathrm{w})\\}^{\\mathrm{n}} \\\\<br>&amp; = (\\mathrm{x}+\\mathrm{y})^{\\mathrm{n}}+{ }^n C_1\\left((\\mathrm{x}+\\mathrm{y})^{\\mathrm{n}-1}(\\mathrm{z}+\\mathrm{w})+{ }^{\\mathrm{n}} \\mathrm{C}_2(\\mathrm{x}+\\mathrm{y})^{\\mathrm{n}-2}(\\mathrm{z}+\\mathrm{w})^2+\\ldots \\ldots \\cdot{ }^{\\mathrm{n}} \\mathrm{C}_{\\mathrm{n}}(\\mathrm{z}+\\mathrm{w})^{\\mathrm{n}}\\right.<br>\\end{aligned}\\)<br>\\(\\therefore\\) Number of terms in RHS<br>\\(\\begin{aligned}<br>&amp; =(\\mathrm{n}+1)+\\mathrm{n} \\cdot 2+(\\mathrm{n}-1) \\cdot 3+\\ldots \\ldots+1(\\mathrm{n}+1) \\\\<br>&amp; =\\sum_{\\mathrm{r}=0}^{\\mathrm{n}}(\\mathrm{n}-\\mathrm{r}+1)(\\mathrm{r}+1) \\\\<br>&amp; =\\sum_{\\mathrm{r}=0}^{\\mathrm{n}}(\\mathrm{n}+1)+\\mathrm{nr}-\\mathrm{r}^2) \\\\<br>&amp; =(\\mathrm{n}+1) \\sum_{\\mathrm{r}=0}^{\\mathrm{n}} 1+\\mathrm{n} \\sum_{\\mathrm{r}=0}^{\\mathrm{n}} \\mathrm{r}-\\sum_{\\mathrm{r}=0}^{\\mathrm{n}} \\mathrm{r}^2 \\\\<br>&amp; =(\\mathrm{n}+1) \\cdot(\\mathrm{n})+\\mathrm{n} \\cdot \\frac{\\mathrm{n}(\\mathrm{n}+1)}{2}-\\frac{\\mathrm{n}(\\mathrm{n}+1)(2 \\mathrm{n}+1)}{6} \\\\<br>&amp; =\\frac{(\\mathrm{n}+1)(\\mathrm{n}+2)(\\mathrm{n}+3)}{6}<br>\\end{aligned}\\)</p>",
+      "position": 0,
+      "qcConcept": "66a0dd2bc03b9dcaf1afe994"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f342d384bfb4a537ec2",
+      "title": "The number of terms in the expansion of $(a+b+c)^n$ will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f342d384bfb4a537ec3",
+      "title": "If number of terms in the expansion of $(x-2 y+3 z)^n$ are 45, then $n=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f342d384bfb4a537ec4",
+      "title": "The coefficient of $x^5$ in the expansion of $\\left(x^2-x-2\\right)^5$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f342d384bfb4a537ec5",
+      "title": "In the expansion of $\\left(1+3 x+2 x^2\\right)^6$ the coefficient of $x^{11}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f342d384bfb4a537ec6",
+      "title": "In the expansion of $\\left(1+x+x^3+x^4\\right)^{10}$, the coefficient of $x^4$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

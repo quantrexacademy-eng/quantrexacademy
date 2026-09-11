@@ -1,0 +1,27 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d350647479b8e869647a",
+  "chapterId": "68091ffe3a10446a207fdd13",
+  "subject": "Chemistry",
+  "chapter": "Classification of Elements and Periodicity in Properties",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "680920673a10446a207fe1cb",
+      "title": "Modern periodic table",
+      "count": 1,
+      "questionIds": [
+        "680920033a10446a207fdd3d"
+      ]
+    },
+    {
+      "id": "680920663a10446a207fe1ca",
+      "title": "Periodic properties",
+      "count": 1,
+      "questionIds": [
+        "68091ffe3a10446a207fdd11"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1745 @@
+[
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{6}$",
+      "$-\\frac{1}{3}$",
+      "$-\\frac{1}{6}$",
+      "$\\frac{1}{3}$"
+    ],
+    "questionNumber": 1,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{x\\rightarrow 0}\\frac{\\cos(\\tan x)-\\cos x}{x^4}=$",
+    "correctOptionsArray": [
+      1
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "$\\frac{1}{3}$"
+    ],
+    "questionNumber": 2,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\lim_{x\\rightarrow 0}\\frac{(\\sin x-\\tan x)^2-(1-\\cos 2x)^4+x^5}{7(\\tan^{-1}x)^7+(\\sin^{-1}x)^6+3\\sin^5 x}$ equal to :",
+    "correctOptionsArray": [
+      3
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$a<b<c$",
+      "$b<c<a$",
+      "$a<c<b$",
+      "$b<a<c$"
+    ],
+    "questionNumber": 3,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $a=\\lim_{x\\rightarrow 0}\\frac{\\ln(\\cos 2x)}{3x^2}$, $b=\\lim_{x\\rightarrow 0}\\frac{\\sin^2 2x}{x(1-e^x)}$, $c=\\lim_{x\\rightarrow 1}\\frac{\\sqrt{x}-x}{\\ln x}$\nThen $a,b,c$ satisfy :",
+    "correctOptionsArray": [
+      3
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{3}{2(1+a^2)}$",
+      "$\\frac{3}{2}$",
+      "$\\frac{-3}{2(1+a^2)}$",
+      "$-\\frac{3}{2}$"
+    ],
+    "questionNumber": 4,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x)=\\cot^{-1}\\left(\\frac{3x-x^3}{1-3x^2}\\right)$ and $g(x)=\\cos^{-1}\\left(\\frac{1-x^2}{1+x^2}\\right)$, then $\\lim_{x\\rightarrow a}\\frac{f(x)-f(a)}{g(x)-g(a)}, 0<a<\\frac{1}{2}$ is :",
+    "correctOptionsArray": [
+      3
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$e^4$",
+      "$e^{-4}$",
+      "$e^8$",
+      "$e^{-8}$"
+    ],
+    "questionNumber": 5,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{x\\rightarrow 0} \\left( \\frac{(1+x)^{\\frac{2}{x}}}{e^2} \\right)^{\\frac{4}{\\sin x}}$ is :",
+    "correctOptionsArray": [
+      1
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$2$",
+      "$7$",
+      "$5$",
+      "$6$"
+    ],
+    "questionNumber": 6,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{x\\rightarrow \\infty}\\frac{3}{x} \\left[ \\frac{x}{4} \\right] = \\frac{p}{q}$ (where $[.]$ denotes greatest integer function), then $p+q$ (where $p, q$ are relative prime) is :",
+    "correctOptionsArray": [
+      1
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "(a) If $f : \\left[\\frac{\\pi}{3}, \\infty\\right) \\to \\left[\\frac{\\pi}{3}, \\infty\\right)$, then function is invertible",
+      "(b) $f(x) = f(-x)$ has infinite number of solutions",
+      "(c) $f(x) = |f(x)|$ has infinite number of solutions",
+      "(d) $f(x)$ is one-one function for all $x \\in R$"
+    ],
+    "questionNumber": 7,
+    "questionType": "SINGLE CORRECT",
+    "text": "$f(x) = \\lim_{n \\to \\infty} \\frac{x^n + \\left(\\frac{\\pi}{3}\\right)^n}{x^{n-1} + \\left(\\frac{\\pi}{3}\\right)^{n-1}}$, ($n$ is an even integer), then which of the following is incorrect ?",
+    "correctOptionsArray": [
+      3
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "(a) $\\pi$",
+      "(b) $\\frac{\\pi}{4}$",
+      "(c) $\\frac{\\pi}{2}$",
+      "(d) none of these"
+    ],
+    "questionNumber": 8,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{x \\to 0} \\frac{\\sin(\\pi \\cos^2(\\tan(\\sin x)))}{x^2} =$",
+    "correctOptionsArray": [
+      0
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "(a) $\\frac{9}{2}$",
+      "(b) $\\frac{2}{9}$",
+      "(c) $\\frac{2}{3}$",
+      "(d) none of these"
+    ],
+    "questionNumber": 9,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\begin{cases} \\frac{(e^{(x+3)\\ln 27})^{\\frac{x}{27}} - 9}{3^x - 27} & ; x < 3 \\\\ \\lambda \\frac{1 - \\cos(x-3)}{(x-3)\\tan(x-3)} & ; x > 3 \\end{cases}$\nIf $\\lim_{x \\to 3} f(x)$ exist, then $\\lambda =$",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "(a) $\\frac{2}{\\sqrt{3}}$",
+      "(b) $\\frac{1}{\\sqrt{3}}$",
+      "(c) $\\sqrt{3}$",
+      "(d) $\\frac{1}{2}$"
+    ],
+    "questionNumber": 10,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{x \\to \\frac{\\pi}{3}} \\frac{\\sin \\left(\\frac{\\pi}{3} - x\\right)}{2 \\cos x - 1}$ is equal to :",
+    "correctOptionsArray": [
+      1
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "(a) $\\frac{2}{\\pi}$",
+      "(b) $1$",
+      "(c) $\\frac{4}{\\pi}$",
+      "(d) does not exist"
+    ],
+    "questionNumber": 11,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{x \\to \\frac{\\pi}{2}} \\frac{\\sin x}{\\cos^{-1}\\left[\\frac{1}{4}(3\\sin x - \\sin 3x)\\right]}$, (where $[\\cdot]$ denotes greatest integer function) is :",
+    "correctOptionsArray": [
+      0
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "(a) $1$",
+      "(b) $0$",
+      "(c) $-1$",
+      "(d) $\\frac{1}{4}$"
+    ],
+    "questionNumber": 12,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f$ be a continuous function on $R$ such that $f\\left(\\frac{1}{4^n}\\right) = (\\sin e^n) e^{-n^2} + \\frac{n^2}{n^2 + 1}$, then $f(0) =$",
+    "correctOptionsArray": [
+      0
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{I}{2}$",
+      "$e - 2$",
+      "$I$",
+      "does not exist"
+    ],
+    "questionNumber": 13,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{x \\to I^-} \\frac{e^{\\{x\\}} - \\{x\\} - 1}{\\{x\\}^2}$ equals, where $\\{ \\cdot \\}$ is fractional part function and $I$ is an integer, to :",
+    "correctOptionsArray": [
+      1
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{11}{3}$",
+      "$\\frac{3}{11}$",
+      "$e^{\\frac{3}{11}}$",
+      "$e^{\\frac{11}{3}}$"
+    ],
+    "questionNumber": 14,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{x \\to \\infty} (e^{11x} - 7x)^{\\frac{1}{3x}}$ is equal to :",
+    "correctOptionsArray": [
+      3
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$e^n$",
+      "$e^{-n}$",
+      "$e^{3n}$",
+      "$e^{-3n}$"
+    ],
+    "questionNumber": 15,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\lim_{x \\to 0} \\left[ (1 - 2x)^n \\sum_{r=0}^n {^nC_r} \\left( \\frac{x + x^2}{1 - 2x} \\right)^r \\right]^{1/x}$ is :",
+    "correctOptionsArray": [
+      1
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{7}{5}$",
+      "$1$",
+      "$\\frac{2}{5}$",
+      "None of these"
+    ],
+    "questionNumber": 16,
+    "questionType": "SINGLE CORRECT",
+    "text": "For a certain value of '$c$', $\\lim_{x \\to \\infty} [(x^5 + 7x^4 + 2)^c - x]$ is finite and non-zero. Then the value of limit is :",
+    "correctOptionsArray": [
+      0
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$"
+    ],
+    "questionNumber": 17,
+    "questionType": "SINGLE CORRECT",
+    "text": "The number of non-negative integral values of $n$ for which $\\lim_{x \\to 0} \\frac{(\\cos x - 1)(\\cos x - e^x)}{x^n} = 0$ is :",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$e^{-1/3}$",
+      "$e^{1/3}$",
+      "$e^{-1/6}$",
+      "$e^{1/6}$"
+    ],
+    "questionNumber": 18,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\lim_{x \\to 0} \\left( \\frac{\\sin x}{x} \\right)^{\\frac{1}{1 - \\cos x}}$ :",
+    "correctOptionsArray": [
+      0
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$a$",
+      "$-a$",
+      "$2a$",
+      "$b$"
+    ],
+    "questionNumber": 19,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $\\lim_{x \\to \\infty} (\\sqrt{x^2 - x + 1} - ax - b) = 0$, then for $k \\ge 2, (k \\in \\mathbb{N})$ $\\lim_{n \\to \\infty} \\sec^{2n}(k! \\pi b) =$ ",
+    "correctOptionsArray": [
+      0
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$2$",
+      "$\\frac{2}{3}$",
+      "$\\frac{3}{2}$",
+      "None of these"
+    ],
+    "questionNumber": 20,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f$ is a positive function such that $f(x + T) = f(x) (T > 0), \\forall \\, x \\in \\mathbb{R}$, then $\\lim_{n \\to \\infty} n \\left( \\frac{f(x + T) + 2f(x + 2T) + \\dots + nf(x + nT)}{f(x + T) + 4f(x + 4T) + \\dots + n^2f(x + n^2T)} \\right) =$ ",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$-3$"
+    ],
+    "questionNumber": 21,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = 3x^{10} - 7x^8 + 5x^6 - 21x^3 + 3x^2 - 7$\n$265 \\left( \\lim_{h \\to 0} \\frac{h^4 + 3h^2}{(f(1 - h) - f(1)) \\sin 5h} \\right) =$ ",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$-\\frac{1}{2}$",
+      "$-1$",
+      "$-2$"
+    ],
+    "questionNumber": 22,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{x \\to 0} \\left( \\frac{\\cos x - \\sec x}{x^2(x+1)} \\right) =$",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$a f(x)$",
+      "$b f(x)$",
+      "$(a+b) f(x)$",
+      "$(a+2b) f(x)$"
+    ],
+    "questionNumber": 23,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x)$ be a continuous and differentiable function satisfying $f(x+y) = f(x)f(y)$ $\\forall x, y \\in R$ if $f(x)$ can be expressed as $f(x) = 1 + xP(x) + x^2Q(x)$ where $\\lim_{x \\to 0} P(x) = a$ and $\\lim_{x \\to 0} Q(x) = b$, then $f'(x)$ is equal to :",
+    "correctOptionsArray": [
+      0
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "not exist",
+      "$\\frac{1}{8}$",
+      "$\\frac{1}{16}$",
+      "$\\frac{1}{32}$"
+    ],
+    "questionNumber": 24,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{x \\to \\frac{\\pi}{2}} \\frac{\\left( 1 - \\tan \\frac{x}{2} \\right) (1 - \\sin x)}{\\left( 1 + \\tan \\frac{x}{2} \\right) (\\pi - 2x)^3} =$",
+    "correctOptionsArray": [
+      3
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$e$",
+      "$e^{-1}$",
+      "$e^{-5}$",
+      "$e^5$"
+    ],
+    "questionNumber": 25,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{x \\to \\infty} \\left( \\frac{x-3}{x+2} \\right)^x$ is equal to :",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$1$",
+      "$0$",
+      "$\\frac{1}{e}$",
+      "$\\frac{2}{e}$"
+    ],
+    "questionNumber": 26,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{x \\to \\frac{\\pi}{2}} (\\cos x)^{\\cos x}$ is :",
+    "correctOptionsArray": [
+      0
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "'$c$' can take only rational values",
+      "'$c$' can take only irrational values",
+      "'$c$' can take infinite values in which only one is irrational",
+      "'$c$' can take infinite values in which only one is rational"
+    ],
+    "questionNumber": 27,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $\\lim_{x \\to c^-} \\{\\ln x\\}$ and $\\lim_{x \\to c^+} \\{\\ln x\\}$ exists finitely but they are not equal (where $\\{ \\cdot \\}$ denotes fractional part function), then :",
+    "correctOptionsArray": [
+      3
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$e^{a/b}$",
+      "$ab$",
+      "$e^{ab}$",
+      "$e^{b/a}$"
+    ],
+    "questionNumber": 28,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{x \\to 0} \\left( 1 + \\frac{a \\sin bx}{\\cos x} \\right)^{\\frac{1}{x}}$, where $a, b$ are non-zero constants is equal to :",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\sqrt{e} + \\frac{3}{2}$",
+      "$\\frac{1}{\\sqrt{e}} + \\frac{3}{2}$",
+      "$\\sqrt{e} + 2$",
+      "$\\frac{1}{\\sqrt{e}} + 2$"
+    ],
+    "questionNumber": 29,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\lim_{x \\to 0} \\left( (\\cos x)^{\\frac{1}{\\sin^2 x}} + \\frac{\\sin 2x + 2\\tan^{-1} 3x + 3x^2}{\\ln (1 + 3x + \\sin^2 x) + xe^x} \\right)$ is :",
+    "correctOptionsArray": [
+      3
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "Idempotent",
+      "Involutary",
+      "Non-singular",
+      "Nilpotent"
+    ],
+    "questionNumber": 30,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $a = \\lim_{x \\to 1} \\left( \\frac{x}{\\ln x} - \\frac{1}{x \\ln x} \\right); b = \\lim_{x \\to 0} \\frac{x^3 - 16x}{4x + x^2} ; c = \\lim_{x \\to 0} \\frac{\\ln(1 + \\sin x)}{x}$ and $d = \\lim_{x \\to -1} \\frac{(x + 1)^3}{3[\\sin(x + 1) - (x + 1)]}$, then the matrix $\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}$ is :",
+    "correctOptionsArray": [
+      3
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$2$",
+      "$4$",
+      "$6$",
+      "$8$"
+    ],
+    "questionNumber": 31,
+    "questionType": "SINGLE CORRECT",
+    "text": "The integral value of $n$ so that $\\lim_{x \\to 0} f(x)$ where $f(x) = \\frac{(\\sin x - x)\\left(2\\sin x - \\ln\\left(\\frac{1+x}{1-x}\\right)\\right)}{x^n}$ is a finite non-zero number, is :",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "$3$"
+    ],
+    "questionNumber": 32,
+    "questionType": "SINGLE CORRECT",
+    "text": "Consider the function $f(x) = \\begin{cases} \\dfrac{\\max\\left(x, \\frac{1}{x}\\right)}{\\min\\left(x, \\frac{1}{x}\\right)} & , \\text{ if } x \\neq 0 \\\\ 1 & , \\text{ if } x = 0 \\end{cases}$, then $\\lim_{x \\to 0^-} \\{f(x)\\} + \\lim_{x \\to 1^-} \\{f(x)\\} + \\lim_{x \\to -1^-} [f(x)] =$ (where $\\{ \\cdot \\}$ denotes fraction part function and $[\\cdot]$ denotes greatest integer function)",
+    "correctOptionsArray": [
+      0
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\sqrt{2}$",
+      "$2\\sqrt{2}$",
+      "$4\\sqrt{2}$",
+      "$0$"
+    ],
+    "questionNumber": 33,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{x \\to \\left(\\frac{1}{\\sqrt{2}}\\right)^+} \\frac{\\cos^{-1} (2x\\sqrt{1-x^2})}{x - \\frac{1}{\\sqrt{2}}} - \\lim_{x \\to \\left(\\frac{1}{\\sqrt{2}}\\right)^-} \\frac{\\cos^{-1} (2x\\sqrt{1-x^2})}{x - \\frac{1}{\\sqrt{2}}} =$",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "$3$"
+    ],
+    "questionNumber": 34,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{n \\to \\infty} \\sum_{k=1}^n \\left( \\sin \\frac{\\pi}{2k} - \\cos \\frac{\\pi}{2k} - \\sin \\left( \\frac{\\pi}{2(k+2)} \\right) + \\cos \\frac{\\pi}{2(k+2)} \\right) =$",
+    "correctOptionsArray": [
+      3
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$e^2$",
+      "Does not exist"
+    ],
+    "questionNumber": 35,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{x \\to 0^+} [1 + [x]]^{\\frac{2}{x}}$, where $[\\cdot]$ is greatest integer function, is equal to :",
+    "correctOptionsArray": [
+      1
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$m - n$",
+      "$\\frac{1}{n} - \\frac{1}{m}$",
+      "$\\frac{m - n}{2mn}$",
+      "None of these"
+    ],
+    "questionNumber": 36,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $m$ and $n$ are positive integers, then $\\lim_{x \\to 0} \\frac{(\\cos x)^{\\frac{1}{m}} - (\\cos x)^{\\frac{1}{n}}}{x^2}$ equals to :",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\left(-\\frac{5}{2}, -\\frac{3}{2}\\right)$",
+      "$\\left(\\frac{5}{2}, \\frac{3}{2}\\right)$",
+      "$\\left(-\\frac{5}{2}, \\frac{3}{2}\\right)$",
+      "$\\left(\\frac{5}{2}, -\\frac{3}{2}\\right)$"
+    ],
+    "questionNumber": 37,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of ordered pair $(a, b)$ such that $\\lim_{x \\to 0} \\frac{x(1 + a\\cos x) - b\\sin x}{x^3} = 1$, is :",
+    "correctOptionsArray": [
+      0
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$-\\frac{1}{2}$"
+    ],
+    "questionNumber": 38,
+    "questionType": "SINGLE CORRECT",
+    "text": "What is the value of $a + b$, if $\\lim_{x \\to 0} \\frac{\\sin (ax) - \\ln(e^x \\cos x)}{x \\sin(bx)} = \\frac{1}{2}$?",
+    "correctOptionsArray": [
+      1
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{3}$",
+      "$\\frac{1}{4}$",
+      "$\\frac{1}{2}$",
+      "non existent"
+    ],
+    "questionNumber": 39,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $\\alpha = \\lim_{n \\to \\infty} \\frac{(1^3 - 1^2) + (2^3 - 2^2) + \\dots + (n^3 - n^2)}{n^4}$, then $\\alpha$ is equal to :",
+    "correctOptionsArray": [
+      1
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{5}$",
+      "$\\frac{1}{6}$",
+      "$\\frac{1}{4}$",
+      "$\\frac{1}{12}$"
+    ],
+    "questionNumber": 40,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\lim_{x \\to 0} \\frac{\\cos (\\sin x) - \\cos x}{x^4}$ is equal to :",
+    "correctOptionsArray": [
+      1
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\left(-\\frac{5}{2}, -\\frac{3}{2}\\right)$",
+      "$\\left(\\frac{5}{2}, \\frac{3}{2}\\right)$",
+      "$\\left(-\\frac{5}{2}, \\frac{3}{2}\\right)$",
+      "$\\left(\\frac{5}{2}, -\\frac{3}{2}\\right)$"
+    ],
+    "questionNumber": 41,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of ordered pair $(a, b)$ such that $\\lim_{x \\to 0} \\frac{x(1 + a\\cos x) - b\\sin x}{x^3} = 1$, is :",
+    "correctOptionsArray": [
+      0
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$1$",
+      "$e$",
+      "$\\frac{1}{2}$",
+      "$2$"
+    ],
+    "questionNumber": 42,
+    "questionType": "SINGLE CORRECT",
+    "text": "Consider the sequence :\n$$u_n = \\sum_{r=1}^{n} \\frac{r}{2^r}, \\ n \\ge 1$$\nThen the limit of $u_n$ as $n \\to \\infty$ is :",
+    "correctOptionsArray": [
+      3
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\sqrt{e} + \\frac{3}{2}$",
+      "$\\frac{1}{\\sqrt{e}} + \\frac{3}{2}$",
+      "$\\sqrt{e} + 2$",
+      "$\\frac{1}{\\sqrt{e}} + 2$"
+    ],
+    "questionNumber": 43,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\lim_{x \\to 0} \\left( (\\cos x)^{\\frac{1}{\\sin^2 x}} + \\frac{\\sin 2x + 2\\tan^{-1} 3x + 3x^2}{\\ln(1 + 3x + \\sin^2 x) + xe^x} \\right)$ is :",
+    "correctOptionsArray": [
+      3
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$2^n$",
+      "$2^{n-1}$",
+      "$2^{n+1}$"
+    ],
+    "questionNumber": 44,
+    "questionType": "SINGLE CORRECT",
+    "text": "For $n \\in N$ , let $f_n(x) = \\tan \\frac{x}{2} (1 + \\sec x) (1 + \\sec 2x) (1 + \\sec 4x) \\dots (1 + \\sec 2^n x)$, the $\\lim_{x \\to 0} \\frac{f_n(x)}{2x}$ is equal to :",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$e$",
+      "$\\frac{1}{e}$"
+    ],
+    "questionNumber": 45,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\lim_{x \\to \\frac{\\pi}{4}} (1 + [x])^{\\frac{1}{\\ln(\\tan x)}}$ is :\n(where $[ \\ . \\ ]$ denotes greatest integer function).",
+    "correctOptionsArray": [
+      1
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1 + \\frac{1}{n}$",
+      "$n$",
+      "$n + \\frac{1}{n}$"
+    ],
+    "questionNumber": 46,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $\\lim_{x \\to 0} \\frac{\\{ (a - n)nx - \\tan x \\} \\sin nx}{x^2} = 0, n \\neq 0$ then $a$ is equal to :",
+    "correctOptionsArray": [
+      3
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\left( \\frac{1}{e} \\right)^{3/4}$",
+      "$e^{3/4}$",
+      "$e^{-1}$",
+      "$0$"
+    ],
+    "questionNumber": 47,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\lim_{n \\to \\infty} \\left( \\frac{n!}{n^n} \\right)^{\\frac{3n^3 + 4}{4n^4 - 1}}$, $n \\in N$ is equal to :",
+    "correctOptionsArray": [
+      0
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$a$ only",
+      "$d$ only",
+      "$a$ and $d$ only",
+      "$a$, $b$ and $d$ only"
+    ],
+    "questionNumber": 48,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $\\lim_{x \\to \\infty} \\frac{ax^2 + bx + c}{dx + e}$ ($a, b, c, d, e \\in R - \\{0\\}$) depends on the sign of :",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{8}{3}$",
+      "$\\frac{7}{3}$",
+      "$\\frac{5}{3}$",
+      "$\\frac{2}{3}$"
+    ],
+    "questionNumber": 49,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\lim_{n \\to \\infty} \\tan^{-1}\\left(4n^2 \\left(1 - \\cos \\frac{x}{n}\\right)\\right)$ and $g(x) = \\lim_{n \\to \\infty} \\frac{n^2}{2} \\ln \\cos\\left(\\frac{2x}{n}\\right)$ then $\\lim_{x \\to 0} \\frac{e^{-2g(x)} - e^{f(x)}}{x^6}$ equals.",
+    "correctOptionsArray": [
+      0
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$-5$",
+      "$3$",
+      "$-2$"
+    ],
+    "questionNumber": 50,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x)$ be a cubic polynomial and $\\lim_{x \\to 0} \\frac{\\sin^2 x}{f(x)} = \\frac{1}{3}$ then $f(1)$ can not be equal to :",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{3}{2}$",
+      "$e^{3/2}$",
+      "$2$",
+      "$e^2$"
+    ],
+    "questionNumber": 51,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{x \\to 0} \\frac{2e^{\\sin x} - e^{-\\sin x} - 1}{x^2 + 2x}$ equals to :",
+    "correctOptionsArray": [
+      0
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$nx_1 + b$",
+      "$nx_1^{n-1} + a$",
+      "$nx_1^{n-1}$",
+      "$nx_1^{n-1}$"
+    ],
+    "questionNumber": 52,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $x_1, x_2, x_3, \\dots, x_n$ are the roots of $x^n + ax + b = 0$, then the value of $(x_1 - x_2)(x_1 - x_3)(x_1 - x_4) \\dots (x_1 - x_n)$ is equal to :",
+    "correctOptionsArray": [
+      1
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$-1$",
+      "$1$",
+      "$\\frac{1}{2}$",
+      "$-\\frac{1}{2}$"
+    ],
+    "questionNumber": 53,
+    "questionType": "SINGLE CORRECT",
+    "text": "$\\lim_{x \\to 0} \\frac{\\sqrt[3]{1 + \\sin^2 x} - \\sqrt[4]{1 - 2\\tan x}}{\\sin x + \\tan^2 x}$ is equal to :",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$-1$",
+      "Does not exist"
+    ],
+    "questionNumber": 54,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\begin{vmatrix} x \\cos x & 2x \\sin x & x \\tan x \\\\ 1 & x & 1 \\\\ 1 & 2x & 1 \\end{vmatrix}$, find $\\lim_{x \\to 0} \\frac{f(x)}{x^2}$.",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[SINGLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOptionsArray": [
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : Multiple Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$p = \\sqrt{2}, q = \\frac{1}{2\\sqrt{2}}$",
+      "$p = \\frac{1}{\\sqrt{2}}, q = 2\\sqrt{2}$",
+      "$p = 1, q = 2$",
+      "$p = 2, q = 4$"
+    ],
+    "questionNumber": 1,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If $\\lim_{x \\to 0} (p \\tan q x^2 - 3 \\cos^2 x + 4)^{1/(3x^2)} = e^{5/3}; p, q \\in R$ then :",
+    "correctOption": 1,
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOptionsArray": [
+      0,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise-2 : Multiple Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\lim_{x \\to 0} \\frac{2x - \\log_e(1 + x)^2}{5x^2}$",
+      "$\\lim_{x \\to 0} \\frac{e^{-x} - 1 + x}{x^2}$",
+      "$\\lim_{x \\to 0} \\frac{2(1 - \\cos x^2)}{5x^4}$",
+      "$\\lim_{x \\to 0} \\frac{\\sin \\frac{x}{5}}{x}$"
+    ],
+    "questionNumber": 2,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "$\\lim_{x \\to \\infty} 2 \\left(\\sqrt{25x^2 + x} - 5x\\right)$ is equal to :",
+    "correctOption": 0,
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOptionsArray": [
+      0,
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : Multiple Choice Problems",
+    "has_graph": false,
+    "options": [
+      "if $L = a (a > 0)$, then the range of $a$ is $[e, \\infty)$",
+      "if $L = 2e (a > 0)$, then the range of $a$ is $\\{2e\\}$",
+      "if $L = e (a > 0)$, then the range of $a$ is $(0, e]$",
+      "if $L = 2a (a > 1)$, then the range of $a$ is $\\left(\\frac{e}{2}, \\infty\\right)$"
+    ],
+    "questionNumber": 3,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $\\lim_{x \\to \\infty} (2^x + a^x + e^x)^{1/x} = L$\nwhich of the following statement(s) is(are) correct ?",
+    "correctOption": 0,
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOptionsArray": [
+      0,
+      2
+    ],
+    "exerciseName": "Exercise-2 : Multiple Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$x = 2$",
+      "$x = -1$",
+      "$y + 1 = 0$",
+      "$y = 2$"
+    ],
+    "questionNumber": 4,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $\\tan \\alpha \\cdot x + \\sin \\alpha \\cdot y = \\alpha$ and $\\alpha \\csc \\alpha \\cdot x + \\cos \\alpha \\cdot y = 1$ be two variable straight lines, $\\alpha$ being the parameter. Let $P$ be the point of intersection of the lines. In the limiting position when $\\alpha \\to 0$, the point $P$ lies on the line :",
+    "correctOption": 0,
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOptionsArray": [
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : Multiple Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$f$ is periodic with fundamental period $2\\pi$",
+      "Range of $f = [\\cos 1, 1]$",
+      "$\\lim_{x \\to \\frac{\\pi}{2}} \\left(f\\left(\\frac{\\pi}{2} - x\\right) + f\\left(\\frac{\\pi}{2} + x\\right)\\right) = 2$",
+      "$f$ is neither even nor odd function"
+    ],
+    "questionNumber": 5,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f: R \\to [-1, 1]$ be defined as $f(x) = \\cos(\\sin x)$, then which of the following is(are) correct ?",
+    "correctOption": 1,
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOptionsArray": [
+      0,
+      2
+    ],
+    "exerciseName": "Exercise-2 : Multiple Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\lim_{x \\to \\infty} g(x) = 1$",
+      "$\\lim_{x \\to \\infty} f(x) = 1$",
+      "$\\lim_{x \\to -\\infty} f(x) = -1$",
+      "$\\lim_{x \\to -\\infty} g(x) = -1$"
+    ],
+    "questionNumber": 6,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x) = x + \\sqrt{x^2 + 2x}$ and $g(x) = \\sqrt{x^2 + 2x} - x$, then :",
+    "correctOption": 0,
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOptionsArray": [
+      0,
+      3
+    ],
+    "exerciseName": "Exercise-2 : Multiple Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\lim_{x \\to \\infty} \\csc^{-1} \\left(\\frac{x}{x + 7}\\right)$",
+      "$\\lim_{x \\to 1} \\sec^{-1} (\\sin^{-1} x)$",
+      "$\\lim_{x \\to 0^+} x^{\\frac{1}{x}}$",
+      "$\\lim_{x \\to 0} \\left(\\tan \\left(\\frac{\\pi}{8} + x\\right)\\right)^{\\cot x}$"
+    ],
+    "questionNumber": 7,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Which of the following limits does not exist ?",
+    "correctOption": 0,
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOptionsArray": [
+      0,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise-2 : Multiple Choice Problems",
+    "has_graph": false,
+    "options": [
+      "(a) $\\lim_{x \\to 0} f(x) = 0$",
+      "(b) $\\lim_{x \\to \\frac{\\pi}{2}} f(x) = \\frac{3\\pi}{4}$",
+      "(c) $f(x) = \\frac{3x}{2} \\forall x \\in \\left[0, \\frac{\\pi}{2}\\right]$",
+      "(d) $f(x) = 0 \\forall x \\in \\left(\\frac{\\pi}{2}, \\frac{3\\pi}{2}\\right)$"
+    ],
+    "questionNumber": 8,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If $f(x) = \\lim_{n \\to \\infty} x \\left( \\frac{3}{2} + [\\cos x] \\left( \\sqrt{n^2 + 1} - \\sqrt{n^2 - 3n + 1} \\right) \\right)$ where $[y]$ denotes largest integer $\\le y$, then identify the correct statement(s).",
+    "correctOption": 0,
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOptionsArray": [
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : Multiple Choice Problems",
+    "has_graph": false,
+    "options": [
+      "(a) $\\lim_{x \\to 0} f(x) = 0$",
+      "(b) $\\lim_{x \\to 0} f(x)$ does not exist",
+      "(c) $\\lim_{x \\to 0} f(x)f(2x) = 0$",
+      "(d) $\\lim_{x \\to 0} f(x)f(2x)$ does not exist"
+    ],
+    "questionNumber": 9,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f : \\mathbb{R} \\to \\mathbb{R} ; f(x) = \\begin{cases} (-1)^n \\text{ if } x = \\frac{1}{2^n}, & n = 1, 2, 3, \\dots \\\\ 0 & \\text{otherwise} \\end{cases}$ then identify the correct statement(s).",
+    "correctOption": 1,
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOptionsArray": [
+      0,
+      3
+    ],
+    "exerciseName": "Exercise-2 : Multiple Choice Problems",
+    "has_graph": false,
+    "options": [
+      "(a) $\\lim_{x \\to a} f(x)$ is an integer",
+      "(b) $\\lim_{x \\to a} f(x)$ is non-integer",
+      "(c) $f(x)$ has local maximum at $x = a$",
+      "(d) $f(x)$ has local minimum at $x = a$"
+    ],
+    "questionNumber": 10,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If $\\lim_{x \\to a} f(x) = \\lim_{x \\to a} [f(x)]$ ($[\\cdot]$ denotes the greatest integer function) and $f(x)$ is non-constant continuous function, then :",
+    "correctOption": 0,
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOptionsArray": [
+      1,
+      3
+    ],
+    "exerciseName": "Exercise-2 : Multiple Choice Problems",
+    "has_graph": false,
+    "options": [
+      "(a) $\\lim_{x \\to 0^+} f(x) = \\frac{\\pi}{4}$",
+      "(b) $\\lim_{x \\to 0^+} f(x) = \\sqrt{2} \\lim_{x \\to 0^-} f(x)$",
+      "(c) $\\lim_{x \\to 0^-} f(x) = \\frac{\\pi}{4\\sqrt{2}}$",
+      "(d) $\\lim_{x \\to 0^-} f(x) = \\frac{\\pi}{2\\sqrt{2}}$"
+    ],
+    "questionNumber": 11,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x) = \\frac{\\cos^{-1} (1 - \\{x\\}) \\sin^{-1} (1 - \\{x\\})}{\\sqrt{2\\{x\\}(1 - \\{x\\})}}$ where $\\{x\\}$ denotes the fractional part of $x$, then :",
+    "correctOption": 1,
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOptionsArray": [
+      0,
+      2
+    ],
+    "exerciseName": "Exercise-2 : Multiple Choice Problems",
+    "has_graph": false,
+    "options": [
+      "(a) $a = 2$",
+      "(b) $a = -2$",
+      "(c) $c = 0$",
+      "(d) $b \\in \\mathbb{R}$"
+    ],
+    "questionNumber": 12,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If $\\lim_{x \\to 0} \\frac{(\\sin(\\sin x) - \\sin x)}{ax^3 + bx^5 + c} = -\\frac{1}{12}$, then:",
+    "correctOption": 0,
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOptionsArray": [
+      2,
+      3
+    ],
+    "exerciseName": "Exercise-2 : Multiple Choice Problems",
+    "has_graph": false,
+    "options": [
+      "(a) $f\\left(\\frac{1}{x}\\right) = 0$",
+      "(b) $f\\left(\\frac{1}{x}\\right) = \\frac{1}{f(x)}$",
+      "(c) $f\\left(\\frac{1}{x}\\right) = -f(x)$",
+      "(d) $f(xy) = f(x) + f(y)$"
+    ],
+    "questionNumber": 13,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If $f(x) = \\lim_{n \\to \\infty} (n(x^{1/n} - 1))$ for $x > 0$, then which of the following is/are true ?",
+    "correctOption": 2,
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOptionsArray": [
+      2
+    ],
+    "exerciseName": "Exercise-2 : Multiple Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{3}$",
+      "$\\frac{1}{2}$",
+      "$\\frac{1}{4}$",
+      "$\\frac{1}{9}$"
+    ],
+    "questionNumber": 14,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "The value of $\\lim_{n \\rightarrow \\infty} \\cos^2 (\\pi (\\sqrt[3]{n^3 + n^2 + 2n}))$ (where $n \\in N$):",
+    "correctOption": 2,
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOptionsArray": [
+      0,
+      1
+    ],
+    "exerciseName": "Exercise-2 : Multiple Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\alpha = -\\frac{\\pi}{6}$",
+      "$\\lambda = 2$",
+      "$\\alpha = -\\frac{\\pi}{3}$",
+      "$\\lambda = 1$"
+    ],
+    "questionNumber": 15,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If $\\alpha, \\beta \\in \\left(-\\frac{\\pi}{2}, 0\\right)$ such that $(\\sin \\alpha + \\sin \\beta) + \\frac{\\sin \\alpha}{\\sin \\beta} = 0$ and $(\\sin \\alpha + \\sin \\beta) \\frac{\\sin \\alpha}{\\sin \\beta} = -1$ and $\\lambda = \\lim_{n \\rightarrow \\infty} \\frac{1 + (2 \\sin \\alpha)^{2n}}{(2 \\sin \\beta)^{2n}}$ then :",
+    "correctOption": 0,
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOptionsArray": [
+      1
+    ],
+    "exerciseName": "Exercise-2 : Multiple Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$2$",
+      "$\\frac{5}{2}$",
+      "$3$",
+      "$\\frac{7}{2}$"
+    ],
+    "questionNumber": 16,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x) = \\begin{cases} |x-2| + a^2 - 6a + 9 & , \\ x < 2 \\\\ 5-2x & , \\ x \\ge 2 \\end{cases}$\n\nIf $\\lim_{x \\rightarrow 2} [f(x)]$ exists, the possible values $a$ can take is/are (where $[\\cdot]$ represents the greatest integer function)",
+    "correctOption": 1,
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Limit",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 0,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": true,
+    "options": [
+      "3",
+      "4",
+      "1",
+      "11"
+    ],
+    "questionNumber": 1,
+    "questionType": "COMPREHENSION",
+    "text": "$$\\text{\\textbf{Paragraph for Question Nos. 1 to 2}}$$ \nA circular disk of unit radius is filled with a number of smaller circular disks arranged in the form of hexagon. Let $A_n$ denotes a stack of disks arranged in the shape of a hexagon having 'n' disks on a side. The figure shows the configuration $A_3$. If 'A' be the area of large disk, $S_n$ be the number of disks in $A_n$ configuration and $r_n$ be the radius of each disk in $A_n$ configuration, then\n\n$\\lim_{n \\to \\infty} \\frac{S_n}{n^2}$ :",
+    "correctOptionsArray": [
+      0
+    ],
+    "typeLabel": "[COMPREHENSION]"
+  },
+  {
+    "chapter": "Limit",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 1,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": true,
+    "options": [
+      "$\\frac{1}{3}$",
+      "$\\frac{1}{2}$",
+      "$\\frac{1}{4}$",
+      "$\\frac{1}{11}$"
+    ],
+    "questionNumber": 2,
+    "questionType": "COMPREHENSION",
+    "text": "$$\\text{\\textbf{Paragraph for Question Nos. 1 to 2}}$$ \nA circular disk of unit radius is filled with a number of smaller circular disks arranged in the form of hexagon. Let $A_n$ denotes a stack of disks arranged in the shape of a hexagon having 'n' disks on a side. The figure shows the configuration $A_3$. If 'A' be the area of large disk, $S_n$ be the number of disks in $A_n$ configuration and $r_n$ be the radius of each disk in $A_n$ configuration, then\n\n$\\lim_{n \\to \\infty} n r_n$ :",
+    "correctOptionsArray": [
+      1
+    ],
+    "typeLabel": "[COMPREHENSION]"
+  },
+  {
+    "chapter": "Limit",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 1,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "2",
+      "4",
+      "5",
+      "None of these"
+    ],
+    "questionNumber": 3,
+    "questionType": "COMPREHENSION",
+    "text": "$$\\text{\\textbf{Paragraph for Question Nos. 3 to 4}}$$ \nLet $f(x) = \\begin{cases} x + 3 & ; -2 < x < 0 \\\\ 4 & ; x = 0 \\\\ 2x + 5 & ; 0 < x < 1 \\end{cases}$, then\n\n$\\lim_{x \\to 0^-} f([x - \\tan x])$ is : ($[\\cdot]$ denotes greatest integer function)",
+    "correctOptionsArray": [
+      1
+    ],
+    "typeLabel": "[COMPREHENSION]"
+  },
+  {
+    "chapter": "Limit",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "4",
+      "5",
+      "7",
+      "None of these"
+    ],
+    "questionNumber": 4,
+    "questionType": "COMPREHENSION",
+    "text": "$$\\text{\\textbf{Paragraph for Question Nos. 3 to 4}}$$ \nLet $f(x) = \\begin{cases} x + 3 & ; -2 < x < 0 \\\\ 4 & ; x = 0 \\\\ 2x + 5 & ; 0 < x < 1 \\end{cases}$, then\n\n$\\lim_{x \\to 0^+} f\\left(\\left\\{\\frac{x}{\\tan x}\\right\\}\\right)$ is : ($\\{\\cdot\\}$ denotes fractional part of function)",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[COMPREHENSION]"
+  },
+  {
+    "chapter": "Limit",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 3,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{2}{\\pi}$",
+      "$-\\frac{2}{\\pi}$",
+      "$e^{2/\\pi}$",
+      "Non-existent"
+    ],
+    "questionNumber": 5,
+    "questionType": "COMPREHENSION",
+    "text": "$$\\text{\\textbf{Paragraph for Question Nos. 5 to 6}}$$ \nA certain function $f(x)$ has the property that $f(3x) = \\alpha f(x)$ for all positive real values of $x$ and $f(x) = 1 - |x - 2|$ for $1 \\le x \\le 3$.\n\n$\\lim_{x \\to 2} (f(x))^{\\operatorname{cosec}\\left(\\frac{\\pi x}{2}\\right)}$ is :",
+    "correctOptionsArray": [
+      3
+    ],
+    "typeLabel": "[COMPREHENSION]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 3,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "(a) $1$",
+      "(b) $\\frac{3}{4}$",
+      "(c) $\\frac{1}{2}$",
+      "(d) $\\frac{1}{4}$"
+    ],
+    "questionNumber": 7,
+    "questionType": "COMPREHENSION",
+    "text": "$$\\text{\\textbf{Paragraph for Question Nos. 7 to 9}}$$ \nConsider the limit $\\lim_{x \\to 0} \\frac{1}{x^3} \\left( \\frac{1}{\\sqrt{1+x}} - \\frac{(1+ax)}{(1+bx)} \\right)$ exists, finite and has the value equal to $l$\n(where $a, b$ are real constants), then :\n\n$a =$",
+    "correctOptionsArray": [
+      3
+    ],
+    "typeLabel": "[COMPREHENSION]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "(a) $\\frac{3}{4}$",
+      "(b) $\\frac{1}{2}$",
+      "(c) $1$",
+      "(d) $0$"
+    ],
+    "questionNumber": 8,
+    "questionType": "COMPREHENSION",
+    "text": "$$\\text{\\textbf{Paragraph for Question Nos. 7 to 9}}$$ \nConsider the limit $\\lim_{x \\to 0} \\frac{1}{x^3} \\left( \\frac{1}{\\sqrt{1+x}} - \\frac{(1+ax)}{(1+bx)} \\right)$ exists, finite and has the value equal to $l$\n(where $a, b$ are real constants), then :\n\n$a + b =$",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[COMPREHENSION]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 3,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "(a) $38$",
+      "(b) $16$",
+      "(c) $72$",
+      "(d) $24$"
+    ],
+    "questionNumber": 9,
+    "questionType": "COMPREHENSION",
+    "text": "$$\\text{\\textbf{Paragraph for Question Nos. 7 to 9}}$$ \nConsider the limit $\\lim_{x \\to 0} \\frac{1}{x^3} \\left( \\frac{1}{\\sqrt{1+x}} - \\frac{(1+ax)}{(1+bx)} \\right)$ exists, finite and has the value equal to $l$\n(where $a, b$ are real constants), then :\n\n$\\left| \\frac{b}{l} \\right| =$",
+    "correctOptionsArray": [
+      3
+    ],
+    "typeLabel": "[COMPREHENSION]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "(a) $\\frac{1}{2}$",
+      "(b) $\\frac{1}{\\sqrt{2}}$",
+      "(c) $\\frac{3}{2}$",
+      "(d) $2$"
+    ],
+    "questionNumber": 10,
+    "questionType": "COMPREHENSION",
+    "text": "$$\\text{\\textbf{Paragraph for Question Nos. 10 to 11}}$$ \nFor the curve $\\sin x + \\sin y = 1$ lying in the first quadrant there exists a constant $\\alpha$ for which\n$$\\lim_{x \\to 0} x^\\alpha \\frac{d^2y}{dx^2} = L \\text{ (not zero)}$$\n\nThe value of $\\alpha$ :",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[COMPREHENSION]"
+  },
+  {
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "(a) $\\frac{1}{2}$",
+      "(b) $1$",
+      "(c) $\\frac{1}{2\\sqrt{2}}$",
+      "(d) $\\frac{1}{2\\sqrt{3}}$"
+    ],
+    "questionNumber": 11,
+    "questionType": "COMPREHENSION",
+    "text": "$$\\text{\\textbf{Paragraph for Question Nos. 10 to 11}}$$ \nFor the curve $\\sin x + \\sin y = 1$ lying in the first quadrant there exists a constant $\\alpha$ for which\n$$\\lim_{x \\to 0} x^\\alpha \\frac{d^2y}{dx^2} = L \\text{ (not zero)}$$\n\nThe value of $L$ :",
+    "correctOptionsArray": [
+      2
+    ],
+    "typeLabel": "[COMPREHENSION]"
+  },
+  {
+    "answerKeyStr": "A->P; B->Q; C->R; D->S",
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "exerciseName": "Exercise-4 : Matching Type Problems",
+    "has_graph": false,
+    "questionNumber": 1,
+    "questionType": "MATCH THE COLUMN",
+    "text": "Match the columns:\n\n$$\n\\begin{array}{|l|l|}\n\\hline\n\\text{\\textbf{Column-I}} & \\text{\\textbf{Column-II}} \\\\\n\\hline\n\\text{\\textbf{(A)} } \\lim_{n \\to \\infty} \\left( \\frac{1 + \\sqrt[n]{4}}{2} \\right)^n = & \\text{\\textbf{(P)} } 2 \\\\\n\\text{\\textbf{(B)} } \\text{Let } f(x) = \\lim_{n \\to \\infty} \\frac{2x}{\\pi} \\tan^{-1} (nx), \\text{then } \\lim_{x \\to 0^+} f(x) = & \\text{\\textbf{(Q)} } 0 \\\\\n\\text{\\textbf{(C)} } \\lim_{x \\to \\frac{\\pi}{2}^-} \\frac{\\cos(\\tan^{-1}(\\tan x))}{x - \\frac{\\pi}{2}} = & \\text{\\textbf{(R)} } 1 \\\\\n\\text{\\textbf{(D)} } \\text{If } \\lim_{x \\to 0^+} (x)^{\\frac{1}{\\ln \\sin x}} = e^L, \\text{then } L + 2 = & \\text{\\textbf{(S)} } 3 \\\\\n& \\text{\\textbf{(T)} } \\text{Non-existent} \\\\\n\\hline\n\\end{array}\n$$",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": [],
+    "typeLabel": "[MATCH THE COLUMN]"
+  },
+  {
+    "answerKeyStr": "A->Q; B->P; C->S; D->Q",
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "exerciseName": "Exercise-4 : Matching Type Problems",
+    "has_graph": false,
+    "questionNumber": 2,
+    "questionType": "MATCH THE COLUMN",
+    "text": "$[\\cdot]$ represents greatest integer function :\n\n$$\n\\begin{array}{|l|l|}\n\\hline\n\\text{\\textbf{Column-I}} & \\text{\\textbf{Column-II}} \\\\\n\\hline\n\\text{\\textbf{(A)} } \\text{If } f(x) = \\sin^{-1} x \\text{ and } \\lim_{x \\to \\frac{1}{2}^+} f(3x - 4x^3) = a - 3 \\lim_{x \\to \\frac{1}{2}^-} f(x), \\text{then } [a] = & \\text{\\textbf{(P)} } 2 \\\\\n\\text{\\textbf{(B)} } \\text{If } f(x) = \\tan^{-1} g(x) \\text{ where } g(x) = \\frac{3x - x^3}{1 - 3x^2} \\text{ and then find } \\left[ \\lim_{h \\to 0} \\frac{f\\left(\\frac{1}{2} + 6h\\right) - f\\left(\\frac{1}{2}\\right)}{6h} \\right] = & \\text{\\textbf{(Q)} } 3 \\\\\n\\text{\\textbf{(C)} } \\text{If } \\cos^{-1} (4x^3 - 3x) = a + b \\cos^{-1} x \\text{ for } -1 < x < \\frac{-1}{2}, \\text{then } [a + b + 2] = & \\text{\\textbf{(R)} } 4 \\\\\n\\text{\\textbf{(D)} } \\text{If } f(x) = \\cos^{-1} (4x^3 - 3x) \\text{ and } \\lim_{x \\to \\frac{1}{2}^+} f'(x) = a \\text{ and } \\lim_{x \\to \\frac{1}{2}^-} f'(x) = b, \\text{then } a + b + 3 = & \\text{\\textbf{(S)} } -2 \\\\\n& \\text{\\textbf{(T)} } \\text{Non-existent} \\\\\n\\hline\n\\end{array}\n$$",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": [],
+    "typeLabel": "[MATCH THE COLUMN]"
+  },
+  {
+    "answerKeyStr": "2",
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 1,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $\\lim_{x \\to 0} \\frac{\\ln \\cot \\left( \\frac{\\pi}{4} - \\beta x \\right)}{\\tan \\alpha x} = 1$, then $\\frac{\\alpha}{\\beta} = \\dots\\dots$",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": [],
+    "typeLabel": "[SUBJECTIVE TYPE]"
+  },
+  {
+    "answerKeyStr": "8",
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 2,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $\\lim_{x \\to 0} \\frac{f(x)}{\\sin^2 x} = 8$, $\\lim_{x \\to 0} \\frac{g(x)}{2 \\cos x - xe^x + x^3 + x - 2} = \\lambda$ and $\\lim_{x \\to 0} (1 + 2f(x))^{\\frac{1}{g(x)}} = \\frac{1}{e}$, then $\\lambda =$",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": [],
+    "typeLabel": "[SUBJECTIVE TYPE]"
+  },
+  {
+    "answerKeyStr": "1",
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 3,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $\\alpha, \\beta$ are two distinct real roots of the equation $ax^3 + x - 1 - a = 0$, ($a \\neq -1, 0$), none of which is equal to unity, then the value of $\\lim_{x \\to (1/\\alpha)} \\frac{(1 + a)x^3 - x^2 - a}{(e^{1 - \\alpha x} - 1)(x - 1)}$ is $\\frac{al(k\\alpha - \\beta)}{\\alpha}$. Find the value of $kl$.",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": [],
+    "typeLabel": "[SUBJECTIVE TYPE]"
+  },
+  {
+    "answerKeyStr": "5",
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 4,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "The value of $\\lim_{x \\to 0} \\frac{(140)^x - (35)^x - (28)^x - (20)^x + 7^x + 5^x + 4^x - 1}{x \\sin^2 x} = 2 \\ln 2 \\ln k \\ln 7$, then $k =$",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": [],
+    "typeLabel": "[SUBJECTIVE TYPE]"
+  },
+  {
+    "answerKeyStr": "2",
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 5,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $\\lim_{x \\to 0} \\frac{a \\cot x}{x} + \\frac{b}{x^2} = \\frac{1}{3}$, then $b - a =$",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": [],
+    "typeLabel": "[SUBJECTIVE TYPE]"
+  },
+  {
+    "answerKeyStr": "1",
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 6,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Find the value of $\\lim_{x \\to \\infty} \\left( x + \\frac{1}{x} \\right) e^{1/x} - x$.",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": [],
+    "typeLabel": "[SUBJECTIVE TYPE]"
+  },
+  {
+    "answerKeyStr": "0",
+    "chapter": "Limits",
+    "chapterId": "black-book-ch2-limits",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 7,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Find $\\lim_{x \\to \\alpha^+} \\left[ \\frac{\\min (\\sin x, \\{x\\})}{x - 1} \\right]$ where $\\alpha$ is root of equation $\\sin x + 1 = x$ (here $[.]$ represent greatest integer and $\\{.\\}$ represent fractional part function)",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": [],
+    "typeLabel": "[SUBJECTIVE TYPE]"
+  }
+]

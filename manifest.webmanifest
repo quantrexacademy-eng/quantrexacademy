@@ -1,0 +1,67 @@
+{
+  "id": "https://www.quantrexacademy.com/",
+  "name": "Quantrex Academy",
+  "short_name": "Quantrex",
+  "description": "JEE Main, JEE Advanced, NEET, NDA and BITSAT — PYQs, DPP, digital books, formula cards, mocks and test series. Same as the Quantrex website.",
+  "start_url": "/login.html?v=qxfix170",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#05070d",
+  "theme_color": "#1565C0",
+  "lang": "en-IN",
+  "dir": "ltr",
+  "categories": ["education"],
+  "icons": [
+    {
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Learn",
+      "short_name": "App",
+      "url": "/app.html",
+      "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "PYQ Bank",
+      "short_name": "PYQ",
+      "url": "/app.html#cpyqb",
+      "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Tests",
+      "short_name": "Tests",
+      "url": "/app.html#tests",
+      "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Digital Books",
+      "short_name": "Books",
+      "url": "/app.html#books",
+      "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "DPP",
+      "short_name": "DPP",
+      "url": "/app.html#dpp",
+      "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Dashboard",
+      "short_name": "Home",
+      "url": "/app.html#dashboard",
+      "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

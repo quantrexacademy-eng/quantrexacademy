@@ -1,0 +1,93 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19156220c83fbf1e0bce11",
+  "chapterId": "6a192b9fe4cc9575516b5663",
+  "subject": "Physics",
+  "chapter": "Semiconductors",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec176ef1faeb9633e23cf",
+      "title": "Energy Bands in Solids",
+      "count": 4,
+      "questionIds": [
+        "6a1ec073ef1faeb9633e1d8b",
+        "6a1ec0aeef1faeb9633e1efd",
+        "6a1ec00fef1faeb9633e1b15",
+        "6a1ec10fef1faeb9633e215d"
+      ]
+    },
+    {
+      "id": "6a1ec177ef1faeb9633e23d0",
+      "title": "Logic gates",
+      "count": 9,
+      "questionIds": [
+        "6a1ec0f3ef1faeb9633e20af",
+        "6a1ec073ef1faeb9633e1d8a",
+        "6a1ec0b4ef1faeb9633e1f24",
+        "6a1ec08eef1faeb9633e1e39",
+        "6a1ec035ef1faeb9633e1c04",
+        "6a1ec132ef1faeb9633e223d",
+        "6a1ec151ef1faeb9633e2303",
+        "6a1ec015ef1faeb9633e1b3c",
+        "6a1ec10fef1faeb9633e2160"
+      ]
+    },
+    {
+      "id": "6a1ec177ef1faeb9633e23d1",
+      "title": "Special purpose diodes",
+      "count": 6,
+      "questionIds": [
+        "6a1ec0f2ef1faeb9633e20a6",
+        "6a1ec0b4ef1faeb9633e1f25",
+        "6a1ec132ef1faeb9633e223c",
+        "6a1ec151ef1faeb9633e2302",
+        "6a1ec015ef1faeb9633e1b3d",
+        "6a1ec052ef1faeb9633e1cbc"
+      ]
+    },
+    {
+      "id": "6a1ec177ef1faeb9633e23d2",
+      "title": "Diodes",
+      "count": 4,
+      "questionIds": [
+        "6a1ec02fef1faeb9633e1bdd",
+        "6a1ec12def1faeb9633e221d",
+        "6a1ec153ef1faeb9633e230d",
+        "6a1ec052ef1faeb9633e1cbd"
+      ]
+    },
+    {
+      "id": "6a1ec177ef1faeb9633e23d3",
+      "title": "Junction Transistors",
+      "count": 4,
+      "questionIds": [
+        "6a1ec0d2ef1faeb9633e1fe3",
+        "6a1ec08fef1faeb9633e1e3d",
+        "6a1ec035ef1faeb9633e1c03",
+        "6a1ec10fef1faeb9633e215c"
+      ]
+    },
+    {
+      "id": "6a1ec178ef1faeb9633e23d4",
+      "title": "Semiconductors",
+      "count": 5,
+      "questionIds": [
+        "6a1ec0efef1faeb9633e2096",
+        "6a1ec074ef1faeb9633e1d95",
+        "6a1ec0d4ef1faeb9633e1fed",
+        "6a1ec090ef1faeb9633e1e41",
+        "6a1ec054ef1faeb9633e1ccc"
+      ]
+    },
+    {
+      "id": "6a1ec178ef1faeb9633e23d5",
+      "title": "Rectifier",
+      "count": 1,
+      "questionIds": [
+        "6a1ec0d2ef1faeb9633e1fe2"
+      ]
+    }
+  ]
+}

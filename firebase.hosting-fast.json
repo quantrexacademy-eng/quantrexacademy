@@ -1,0 +1,41 @@
+{
+  "hosting": {
+    "public": "hosting-fast",
+    "ignore": [
+      "firebase.json",
+      "firebase.hosting-fast.json",
+      "**/.*"
+    ],
+    "headers": [
+      {
+        "source": "**/*.{js,css}",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+        ]
+      },
+      {
+        "source": "**/*.{svg,png,jpg,jpeg,webp,woff,woff2,ico}",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        ]
+      },
+      {
+        "source": "**/*.html",
+        "headers": [
+          { "key": "Cache-Control", "value": "no-cache, must-revalidate" }
+        ]
+      },
+      {
+        "source": "data/**/*.json",
+        "headers": [
+          { "key": "Cache-Control", "value": "no-cache, must-revalidate" }
+        ]
+      }
+    ],
+    "rewrites": [
+      { "source": "/login", "destination": "/login.html" },
+      { "source": "/app", "destination": "/app.html" },
+      { "source": "/dashboard", "destination": "/app.html" }
+    ]
+  }
+}

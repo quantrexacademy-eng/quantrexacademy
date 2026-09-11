@@ -1,0 +1,122 @@
+{
+  "examSlug": "comedk",
+  "examId": "629105adee9e3ae00d63352e",
+  "subjectId": "629105adee9e3ae00d63352d",
+  "chapterId": "629109e4241a3dba507f7da2",
+  "subject": "Mathematics",
+  "chapter": "Differentiation",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64c57c2b20fc93db0c28be6c",
+      "title": "Differentiation of composite functions",
+      "count": 5,
+      "questionIds": [
+        "6881bd092781fbe80ff8d234",
+        "681377bc2d288c475c04cc10",
+        "681377922d288c475c04cac8",
+        "681377902d288c475c04cabb",
+        "64c57bb220fc93db0c28b99a"
+      ]
+    },
+    {
+      "id": "64c57c2b20fc93db0c28be6d",
+      "title": "Differentiation of implicit functions",
+      "count": 5,
+      "questionIds": [
+        "681377ea2d288c475c04cd6f",
+        "681377d62d288c475c04ccda",
+        "681377bb2d288c475c04cc0b",
+        "681377ba2d288c475c04cc00",
+        "64c57bc520fc93db0c28ba46"
+      ]
+    },
+    {
+      "id": "64c57c2a20fc93db0c28be67",
+      "title": "Parametric differentiation",
+      "count": 4,
+      "questionIds": [
+        "6a0c7b4872354c537d084ebd",
+        "6881bd2d2781fbe80ff8d39c",
+        "64c57b9d20fc93db0c28b8d7",
+        "64c57b2620fc93db0c28b4a6"
+      ]
+    },
+    {
+      "id": "64c57c2a20fc93db0c28be66",
+      "title": "Logarithmic differentiation",
+      "count": 6,
+      "questionIds": [
+        "6a0c7b5672354c537d084f53",
+        "6881bd0c2781fbe80ff8d246",
+        "681377eb2d288c475c04cd78",
+        "64c57bc620fc93db0c28ba4a",
+        "64c57bc520fc93db0c28ba45",
+        "64c57b2620fc93db0c28b4a5"
+      ]
+    },
+    {
+      "id": "64c57c2a20fc93db0c28be65",
+      "title": "Derivative of f(x) wrt g(x)",
+      "count": 10,
+      "questionIds": [
+        "6881bd1d2781fbe80ff8d2fa",
+        "64c57bb020fc93db0c28b985",
+        "64c57b7620fc93db0c28b77d",
+        "64c57b4c20fc93db0c28b5fe",
+        "64c57b3820fc93db0c28b54e",
+        "64c57b3720fc93db0c28b53d",
+        "64c57b3620fc93db0c28b53b",
+        "64c57b2520fc93db0c28b4a4",
+        "64c57b2520fc93db0c28b4a3",
+        "64c57b2320fc93db0c28b493"
+      ]
+    },
+    {
+      "id": "64c57c2b20fc93db0c28be6b",
+      "title": "Differentiation of Inverse Trigonometric Functions",
+      "count": 8,
+      "questionIds": [
+        "6a0c7b4872354c537d084ebf",
+        "6881bd3c2781fbe80ff8d437",
+        "6881bd1e2781fbe80ff8d304",
+        "6881bd1c2781fbe80ff8d2e6",
+        "6881bd092781fbe80ff8d233",
+        "681377ea2d288c475c04cd70",
+        "681377d02d288c475c04ccb0",
+        "64c57b8920fc93db0c28b822"
+      ]
+    },
+    {
+      "id": "64c57c2a20fc93db0c28be69",
+      "title": "Derivative of function and its inverse",
+      "count": 1,
+      "questionIds": [
+        "64c57b6420fc93db0c28b6d3"
+      ]
+    },
+    {
+      "id": "64c57c2b20fc93db0c28be6a",
+      "title": "Higher order derivatives",
+      "count": 6,
+      "questionIds": [
+        "6a0c7b5572354c537d084f4c",
+        "6881bd2d2781fbe80ff8d398",
+        "681377d12d288c475c04ccb5",
+        "64c57bc620fc93db0c28ba47",
+        "64c57bb320fc93db0c28b9a2",
+        "64c57b7620fc93db0c28b77e"
+      ]
+    },
+    {
+      "id": "64c57c2a20fc93db0c28be68",
+      "title": "Functional Equation",
+      "count": 3,
+      "questionIds": [
+        "64c57b6120fc93db0c28b6b8",
+        "64c57b6120fc93db0c28b6b7",
+        "64c57b6020fc93db0c28b6b2"
+      ]
+    }
+  ]
+}

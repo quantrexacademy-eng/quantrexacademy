@@ -1,0 +1,357 @@
+{
+  "manifest": {
+    "total": 828,
+    "available": 507,
+    "upcoming": 321,
+    "shards": 137
+  },
+  "qfiles": 137,
+  "tests": 137,
+  "qs": 2485,
+  "emptyStem": 0,
+  "badOpts": 1,
+  "nat": 717,
+  "natBad": 0,
+  "match": 8,
+  "matchBad": 2,
+  "needFig": 16,
+  "hasFig": 295,
+  "brokenHost": 0,
+  "cats": {
+    "pyq_physics": {
+      "title": "Physics PYQ",
+      "listed": 134,
+      "withFile": 0,
+      "upcoming": 0,
+      "available": 134
+    },
+    "pyq_chemistry": {
+      "title": "Chemistry PYQ",
+      "listed": 123,
+      "withFile": 0,
+      "upcoming": 0,
+      "available": 123
+    },
+    "pyq_mathematics": {
+      "title": "Mathematics PYQ",
+      "listed": 113,
+      "withFile": 0,
+      "upcoming": 0,
+      "available": 113
+    },
+    "physics": {
+      "title": "Physics",
+      "listed": 150,
+      "withFile": 42,
+      "upcoming": 108,
+      "available": 42
+    },
+    "mathematics": {
+      "title": "Mathematics",
+      "listed": 131,
+      "withFile": 42,
+      "upcoming": 89,
+      "available": 42
+    },
+    "chemistry": {
+      "title": "Chemistry",
+      "listed": 131,
+      "withFile": 44,
+      "upcoming": 87,
+      "available": 44
+    },
+    "ept": {
+      "title": "Part Tests",
+      "listed": 16,
+      "withFile": 9,
+      "upcoming": 7,
+      "available": 9
+    },
+    "eft": {
+      "title": "Full Tests",
+      "listed": 30,
+      "withFile": 0,
+      "upcoming": 30,
+      "available": 0
+    }
+  },
+  "broken": [
+    {
+      "file": "tst-19g61mo67xffr.json",
+      "id": 3766347938,
+      "eg": "tq-mq89fydv",
+      "marks": "",
+      "flags": [
+        "need_fig"
+      ],
+      "stem": "Which of the following reaction is redox?"
+    },
+    {
+      "file": "tst-19g61mo67xgdx.json",
+      "id": 2473231990,
+      "eg": "tq-mqbktk3t",
+      "marks": "",
+      "flags": [
+        "need_fig"
+      ],
+      "stem": "Find the valency factor $(n)$ for $\\mathrm{NH}_2 \\mathrm{OH}$ in given reaction "
+    },
+    {
+      "file": "tst-19g61mo67xi5r.json",
+      "id": 677695984,
+      "eg": "tq-mrexz0xn",
+      "marks": "",
+      "flags": [
+        "need_fig"
+      ],
+      "stem": "Consider the following reactions I. $\\mathrm{MnO}_4^{2-}+4 \\mathrm{H}^{+} \\longr"
+    },
+    {
+      "file": "tst-19g61mo67xi5r.json",
+      "id": 683681126,
+      "eg": "tq-mrey1cip",
+      "marks": "",
+      "flags": [
+        "need_fig"
+      ],
+      "stem": "Consider the following reaction \\begin{aligned} & $\\mathrm{H}_2 \\mathrm{O}$ + $\\"
+    },
+    {
+      "file": "tst-19g61mo7mnome.json",
+      "id": 3357780096,
+      "eg": "tq-mqhf37vj",
+      "marks": "",
+      "flags": [
+        "need_fig"
+      ],
+      "stem": "Given the following reaction at equilibrium N 2 (g) + 3H 2 (g) $\\text$ { ⇌ } 2NH"
+    },
+    {
+      "file": "tst-19g61mo7n5hri.json",
+      "id": 2347230449,
+      "eg": "tq-mqro2vzh",
+      "marks": "",
+      "flags": [
+        "need_fig"
+      ],
+      "stem": "In which of the following reactions, law of mass conservation is not valid?"
+    },
+    {
+      "file": "tst-19g61mpcxh1gn.json",
+      "id": 2244859114,
+      "eg": "tq-mr248hek",
+      "marks": "",
+      "flags": [
+        "need_fig"
+      ],
+      "stem": "The pH of 0.1 M solution of the following compounds increases in the order"
+    },
+    {
+      "file": "tst-19g61mpcyd05j.json",
+      "id": 3755270219,
+      "eg": "tq-mr520eix",
+      "marks": "",
+      "flags": [
+        "need_fig"
+      ],
+      "stem": "How many of the following reactions has a positive entropy change? I. $\\quad \\ma"
+    },
+    {
+      "file": "tst-19g61mpcyd112.json",
+      "id": 3690062214,
+      "eg": "tq-mr5nuzcd",
+      "marks": "",
+      "flags": [
+        "need_fig"
+      ],
+      "stem": "The following reaction is at equilibrium at 298 K 2NO (g, 0.00001 bar) + Cl 2 (g"
+    },
+    {
+      "file": "tst-19g61mpcyd1qt.json",
+      "id": 274426991,
+      "eg": "tq-mr8t7jyt",
+      "marks": "",
+      "flags": [
+        "need_fig"
+      ],
+      "stem": "Determine the lattice energy for the following reaction Li + (g) + Cl − (g) &rar"
+    },
+    {
+      "file": "tst-19g61mpcyd3su.json",
+      "id": 2375707159,
+      "eg": "tq-mrbvx0rk",
+      "marks": "",
+      "flags": [
+        "need_fig"
+      ],
+      "stem": "Heat of neutralisation of oxalic acid is $-53.35 \\mathrm{~kJ} / \\mathrm{g}$.eq. "
+    },
+    {
+      "file": "tst-19g61mpczvtet.json",
+      "id": 3676562261,
+      "eg": "tq-mrdgfgws",
+      "marks": "",
+      "flags": [
+        "bad_opts"
+      ],
+      "stem": "What is the normal boiling point of the solution represented by the phase diagra"
+    },
+    {
+      "file": "tst-19g61mpd1759y.json",
+      "id": 516015702,
+      "eg": "tq-mrkmbd0w",
+      "marks": "",
+      "flags": [
+        "need_fig"
+      ],
+      "stem": "Select the rate law that corresponds to the data shown for the following reactio"
+    },
+    {
+      "file": "tst-19g61mpd1791g.json",
+      "id": 85370167,
+      "eg": "tq-mrq0zrx8",
+      "marks": "",
+      "flags": [
+        "need_fig"
+      ],
+      "stem": "The kinetic data for the given reaction $A(g)+2 B(g) \\xrightarrow{k} C(g)$ is pr"
+    },
+    {
+      "file": "tst-19g61mpd1791g.json",
+      "id": 558625590,
+      "eg": "tq-mrq2ohff",
+      "marks": "",
+      "flags": [
+        "need_fig"
+      ],
+      "stem": "The following rate data were obtained at 303 K for the following reaction : $$ 2"
+    },
+    {
+      "file": "tst-19g61mpd17cxm.json",
+      "id": 370372291,
+      "eg": "tq-mrw75q9m",
+      "marks": "",
+      "flags": [
+        "need_fig"
+      ],
+      "stem": "In the following reaction, how is the rate of appearance of the underlined produ"
+    },
+    {
+      "file": "tst-19g71mnq6jhz0.json",
+      "id": 3711842405,
+      "eg": "tq-mq8rga3p",
+      "marks": "",
+      "flags": [
+        "match_no_table"
+      ],
+      "stem": "A bird is flying in a direction 30&deg; East of North with a speed of 5 kmh &min"
+    },
+    {
+      "file": "tst-19g71mnq7q716.json",
+      "id": 3968600798,
+      "eg": "tq-mqczthzc",
+      "marks": "",
+      "flags": [
+        "match_no_table"
+      ],
+      "stem": "A cyclist is moving on a circular track of radius 80 m with a velocity of $72 \\m"
+    },
+    {
+      "file": "tst-19g71mo0e09m3.json",
+      "id": 1704015915,
+      "eg": "tq-mpzs31in",
+      "marks": "",
+      "flags": [
+        "need_fig"
+      ],
+      "stem": "When 20.0 g of CaCO 3 is reacted with 20.0 g of HCl, what mass of CO 2 can be fo"
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "tst-19g61mo67xi5r.json",
+      "n": 25,
+      "broken": 2
+    },
+    {
+      "file": "tst-19g61mpd1791g.json",
+      "n": 15,
+      "broken": 2
+    },
+    {
+      "file": "tst-19g61mo67xffr.json",
+      "n": 15,
+      "broken": 1
+    },
+    {
+      "file": "tst-19g61mo67xgdx.json",
+      "n": 15,
+      "broken": 1
+    },
+    {
+      "file": "tst-19g61mo7mnome.json",
+      "n": 15,
+      "broken": 1
+    },
+    {
+      "file": "tst-19g61mo7n5hri.json",
+      "n": 75,
+      "broken": 1
+    },
+    {
+      "file": "tst-19g61mpcxh1gn.json",
+      "n": 25,
+      "broken": 1
+    },
+    {
+      "file": "tst-19g61mpcyd05j.json",
+      "n": 15,
+      "broken": 1
+    },
+    {
+      "file": "tst-19g61mpcyd112.json",
+      "n": 15,
+      "broken": 1
+    },
+    {
+      "file": "tst-19g61mpcyd1qt.json",
+      "n": 15,
+      "broken": 1
+    },
+    {
+      "file": "tst-19g61mpcyd3su.json",
+      "n": 25,
+      "broken": 1
+    },
+    {
+      "file": "tst-19g61mpczvtet.json",
+      "n": 25,
+      "broken": 1
+    },
+    {
+      "file": "tst-19g61mpd1759y.json",
+      "n": 15,
+      "broken": 1
+    },
+    {
+      "file": "tst-19g61mpd17cxm.json",
+      "n": 25,
+      "broken": 1
+    },
+    {
+      "file": "tst-19g71mnq6jhz0.json",
+      "n": 15,
+      "broken": 1
+    },
+    {
+      "file": "tst-19g71mnq7q716.json",
+      "n": 15,
+      "broken": 1
+    },
+    {
+      "file": "tst-19g71mo0e09m3.json",
+      "n": 15,
+      "broken": 1
+    }
+  ]
+}

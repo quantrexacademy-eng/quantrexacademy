@@ -1,0 +1,85 @@
+{
+  "examSlug": "comedk",
+  "examId": "629105adee9e3ae00d63352e",
+  "subjectId": "629105adee9e3ae00d63352b",
+  "chapterId": "629109f1da1b4d5a11b7952f",
+  "subject": "Physics",
+  "chapter": "Thermal Properties of Matter",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64c57c1620fc93db0c28bd7f",
+      "title": "Thermometry",
+      "count": 2,
+      "questionIds": [
+        "64c57b5120fc93db0c28b62c",
+        "64c57b4020fc93db0c28b595"
+      ]
+    },
+    {
+      "id": "64c57c1620fc93db0c28bd7e",
+      "title": "Calorimetry",
+      "count": 9,
+      "questionIds": [
+        "6a0c7b4f72354c537d084f0b",
+        "6a0c7b3d72354c537d084e46",
+        "6881bd322781fbe80ff8d3d3",
+        "681377f32d288c475c04cdbc",
+        "681377c72d288c475c04cc67",
+        "677d328f8b409a1009ac22a5",
+        "677d328f8b409a1009ac22a0",
+        "64c57b9120fc93db0c28b871",
+        "64c57b1820fc93db0c28b430"
+      ]
+    },
+    {
+      "id": "64c57c1620fc93db0c28bd80",
+      "title": "Conduction",
+      "count": 13,
+      "questionIds": [
+        "6881bd212781fbe80ff8d317",
+        "6881bd0e2781fbe80ff8d25c",
+        "6881bcfb2781fbe80ff8d1a5",
+        "681377b12d288c475c04cbbd",
+        "681377ac2d288c475c04cb94",
+        "654244d2242a07fec9fa75fd",
+        "654244d2242a07fec9fa75fb",
+        "64c57be120fc93db0c28bb3f",
+        "64c57bb520fc93db0c28b9b2",
+        "64c57ba320fc93db0c28b90b",
+        "64c57b9220fc93db0c28b874",
+        "64c57b6a20fc93db0c28b70a",
+        "64c57b4020fc93db0c28b596"
+      ]
+    },
+    {
+      "id": "64c57c1620fc93db0c28bd7d",
+      "title": "Radiation",
+      "count": 11,
+      "questionIds": [
+        "681377f52d288c475c04cdc5",
+        "681377932d288c475c04cad6",
+        "64c57be120fc93db0c28bb3d",
+        "64c57ba620fc93db0c28b92b",
+        "64c57b9220fc93db0c28b877",
+        "64c57b7920fc93db0c28b794",
+        "64c57b7920fc93db0c28b793",
+        "64c57b5220fc93db0c28b635",
+        "64c57b2d20fc93db0c28b4e6",
+        "64c57b2920fc93db0c28b4c4",
+        "64c57b1620fc93db0c28b41f"
+      ]
+    },
+    {
+      "id": "677d33098b409a1009ac2359",
+      "title": "Thermal Expansion",
+      "count": 4,
+      "questionIds": [
+        "681377d82d288c475c04ccea",
+        "677d32938b409a1009ac22c0",
+        "677d32908b409a1009ac22a6",
+        "677d328e8b409a1009ac2297"
+      ]
+    }
+  ]
+}

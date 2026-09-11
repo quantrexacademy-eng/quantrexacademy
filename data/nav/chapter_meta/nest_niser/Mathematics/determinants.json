@@ -1,0 +1,36 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d379647479b8e869647b",
+  "chapterId": "680920063a10446a207fdd5f",
+  "subject": "Mathematics",
+  "chapter": "Determinants",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "680920683a10446a207fe1e3",
+      "title": "Expansion of Determinants",
+      "count": 2,
+      "questionIds": [
+        "680920113a10446a207fddd4",
+        "680920063a10446a207fdd5d"
+      ]
+    },
+    {
+      "id": "6a45fe605aa758e832e06eec",
+      "title": "System of Linear Equations",
+      "count": 1,
+      "questionIds": [
+        "6a45fe545aa758e832e06ec7"
+      ]
+    },
+    {
+      "id": "680920683a10446a207fe1e4",
+      "title": "Adjoint and its Properties",
+      "count": 1,
+      "questionIds": [
+        "6809201e3a10446a207fde55"
+      ]
+    }
+  ]
+}

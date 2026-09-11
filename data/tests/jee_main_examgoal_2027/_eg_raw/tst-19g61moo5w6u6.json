@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61moo5w6u6",
+  "title": "Functions Test - 1 (Topic Test)",
+  "type": "topic",
+  "section": "Functions",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Mathematics",
+  "isUpcoming": false,
+  "liveAt": "2026-08-29T12:30:00.000Z",
+  "status": "ok",
+  "analysisId": "196de905-2c06-4b68-a9c1-dccd9b8bc667",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61moo5w6u6",
+    "defaultLanguage": "en",
+    "description": "Domain",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-29T12:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mt940gas",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Find domain of the function</p>\n<p>$ f(x) = \\sqrt{ -\\log_{\\frac{x+4}{2}} \\left( \\log_2 \\frac{2x-1}{3+x} \\right) } $</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(-4, -3) \\cup (4, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(-\\infty, -3) \\cup (4, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(-\\infty, -4) \\cup (3, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>$$f(x)=\\sqrt{-\\log_{\\frac{x+4}{2}}\\left(\\log_{2}\\left(\\frac{2x-1}{3+x}\\right)\\right)}$$</p>\n<p><b>Case-1:</b> $$\\frac{x+4}{2}>1 \\Rightarrow x>-2$$</p>\n<p>$$-\\log_{\\frac{x+4}{2}}\\log_{2}\\left(\\frac{2x-1}{x+3}\\right)\\geq 0$$</p>\n<p>$$\\Rightarrow \\log_{\\frac{x+4}{2}}\\log_{2}\\left(\\frac{2x-1}{x+3}\\right)\\leq 0$$</p>\n<p>$$\\Rightarrow \\log_{2}\\left(\\frac{2x-1}{x+3}\\right)\\leq 1 \\Rightarrow \\frac{2x-1}{x+3}\\leq 2$$</p>\n<p>$$\\Rightarrow \\frac{7}{x+3}\\geq 0 \\Rightarrow x>-3$$</p>\n<p>$$\\&\\ \\frac{2x-1}{x+3}>0 \\Rightarrow x>\\frac{1}{2};x<-3$$</p>\n<p>$$\\&\\ \\log_{2}\\left(\\frac{2x-1}{x+3}\\right)>0 \\Rightarrow \\frac{2x-1}{x+3}>1$$</p>\n<p>$$\\Rightarrow \\frac{x-4}{x+3}>0 \\Rightarrow x>4;x<-3$$</p>\n\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt93yl0i/c987eedc-dfcb-4ff0-be2e-1269511e79fa/38900c20-a0c2-11f1-9eed-d3ac518ae6d8/file-6y3zli1mt93yl0j.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt93yl0i/c987eedc-dfcb-4ff0-be2e-1269511e79fa/38900c20-a0c2-11f1-9eed-d3ac518ae6d8/file-6y3zli1mt93yl0j.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>$$\\therefore\\ x \\in (4,\\infty)\\ \\ldots\\ldots\\ (i)$$</p>\n<p><b>Case- 2:</b> $$0 < \\frac{x+4}{2} < 1 \\Rightarrow -4 < x < -2$$</p>\n<p>$$-\\log_{\\frac{x+4}{2}}\\log_{2}\\frac{2x-1}{x+3} \\geq 0$$</p>\n<p>$$\\Rightarrow \\log_{\\frac{x+4}{2}}\\log_{2}\\frac{2x-1}{x+3} \\leq 0 \\Rightarrow \\log_{2}\\frac{2x-1}{x+3} \\geq 1$$</p>\n<p>$$\\Rightarrow \\frac{7}{x+3} \\leq 0 \\Rightarrow x<-3$$</p>\n<p>$$\\frac{2x-1}{x+3}>0 \\Rightarrow x>\\frac{1}{2}; x<-3$$</p>\n<p>$$\\log_{2}\\left(\\frac{2x-1}{x+3}\\right)>0 \\Rightarrow \\frac{x-4}{x+3}>0$$</p>\n<p>$$\\Rightarrow x>4; x<-3 \\quad \\therefore x\\in(-4,-3)\\ldots(2)$$</p>\n<p>$$(1)\\cup(2) \\Rightarrow x\\in(-4,-3)\\cup(4,\\infty)$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>फलन का प्रांत ज्ञात कीजिए:</p>\n<p>$ f(x) = \\sqrt{ -\\log_{\\frac{x+4}{2}} \\left( \\log_2 \\frac{2x-1}{3+x} \\right) } $</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(-4, -3) \\cup (4, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(-\\infty, -3) \\cup (4, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(-\\infty, -4) \\cup (3, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "domain",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtdatd0c",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>The domain of definite of the function</b></p><p>$$f(x) = \\sqrt{\\left( \\frac{1 - |x|}{2 - |x|} \\right)}$$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(-\\infty, -2) \\cup (2, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(-\\infty, -2) \\cup (-1, 1) \\cup (2, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(-\\infty, -1) \\cup (1, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(-\\infty, -2) \\cup [-1, 1] \\cup (2, \\infty)$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Given, $f(x)=\\sqrt{\\frac{1-|x|}{2-|x|}}$</p>\n<p>$$f(x)=\\sqrt{\\frac{1-|x|}{2-|x|}}$$</p>\n<p>$f(x)$ is defined when</p>\n<p>$$\\frac{1-|x|}{2-|x|}\\geq 0$$</p>\n<p>$$\\frac{|x|-1}{|x|-2}\\geq 0$$</p>\n<p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtdarmwb/26f82c86-7f87-428b-a17b-b8ee7e8ec4b5/f9daf7b0-a30f-11f1-bea1-8fd810889305/file-6y3zli1mtdarmwc.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtdarmwb/26f82c86-7f87-428b-a17b-b8ee7e8ec4b5/f9daf7b0-a30f-11f1-bea1-8fd810889305/file-6y3zli1mtdarmwc.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$\\begin{aligned} & |x|=-1,-2,1,2 \\\\ \\therefore \\quad & \\text { Domain }=(-\\infty,-2) \\cup[-1,1] \\cup(2, \\infty)\\end{aligned}$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>फलन</b></p><p>$$f(x) = \\sqrt{\\left( \\frac{1 - |x|}{2 - |x|} \\right)}$$ <b>का प्रांत (domain) है</b></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(-\\infty, -2) \\cup (2, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(-\\infty, -2) \\cup (-1, 1) \\cup (2, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(-\\infty, -1) \\cup (1, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(-\\infty, -2) \\cup [-1, 1] \\cup (2, \\infty)$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "domain",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtdaab6r",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>The domain of the function</b></p>\n<p>$ f(x) = \\sqrt{\\frac{(\\sin x - e^x)(\\cos x - 3)(\\ln x + 2)}{\\left(x^4 - x + \\frac{1}{2}\\right) (2x - 7)^{30}}} $</p>\n<p><b>belongs to :</b></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\left[ \\frac{1}{e^2}, \\frac{7}{2} \\right) \\cup \\left( \\frac{7}{2}, \\infty \\right) $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\left(-\\frac{1}{2}, 0\\right) $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\left(0, \\frac{1}{e^5}\\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\left(\\frac{1}{e^5}, \\frac{1}{e^2}\\right]$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>First, for $\\ln x$ to be defined, we must have:</p>\n<p>$$ x > 0 $$</p>\n<p>Next, let us analyze each factor of the given expression for $x > 0$.</p>\n<p><strong>1. Numerator terms:</strong></p>\n<ul>\n<li><p>For $\\sin x - e^x$: </p>\n<p>We know that for all $x > 0$, $e^x > 1$ and $\\sin x \\le 1$. Therefore, </p>\n<p>$$ \\sin x - e^x < 0 \\quad (\\text{always negative}) $$</p></li>\n<li><p>For $\\cos x - 3$: </p>\n<p>Since the maximum value of $\\cos x$ is $1$, we have $\\cos x - 3 \\le 1 - 3 = -2$. Therefore, </p>\n<p>$$ \\cos x - 3 < 0 \\quad (\\text{always negative}) $$</p></li>\n</ul>\n<p>The product of these two factors is:</p>\n<p>$$ (\\sin x - e^x)(\\cos x - 3) > 0 \\quad (\\text{always positive}) $$</p>\n<p><strong>2. Denominator terms:</strong></p>\n<ul>\n<li><p>For $x^4 - x + \\frac{1}{2}$:</p>\n\n<p>$$ x^4 - x + \\frac{1}{2} = \\left(x^2 - \\frac{1}{2}\\right)^2 + x^2 - x + \\frac{1}{4} = \\left(x^2 - \\frac{1}{2}\\right)^2 + \\left(x - \\frac{1}{2}\\right)^2 $$</p>\n<p>Since both terms are squared and they cannot be zero at the same time, this expression is strictly positive for all real numbers:</p>\n<p>$$ x^4 - x + \\frac{1}{2} > 0 $$</p></li>\n<li><p>For $(2x - 7)^{30}$:</p>\n<p>Being an even power, this term is strictly positive except when $2x - 7 = 0$, which gives:</p>\n<p>$$ x \\neq \\frac{7}{2} $$</p></li>\n</ul>\n<p>Since both factors in the denominator are strictly positive for $x \\neq \\frac{7}{2}$, the entire denominator is positive.</p>\n<p><strong>3. Setting up the main inequality:</strong></p>\n<p>Now, for the quantity inside the square root to be non-negative:</p>\n<p>$$ \\frac{(\\sin x - e^x)(\\cos x - 3)(\\ln x + 2)}{\\left(x^4 - x + \\frac{1}{2}\\right) (2x - 7)^{30}} \\ge 0 $$</p>\n<p>Since all other terms in the expression are strictly positive, the sign entirely depends on the term $(\\ln x + 2)$:</p>\n<p>$$ \\ln x + 2 \\ge 0 $$</p>\n<p>$$ \\ln x \\ge -2 $$</p>\n<p>$$ x \\ge e^{-2} = \\frac{1}{e^2} $$</p>\n<p>Combining this with the condition that $x \\neq \\frac{7}{2}$, the domain of the function is:</p>\n<p>$$ x \\in \\left[ \\frac{1}{e^2}, \\frac{7}{2} \\right) \\cup \\left( \\frac{7}{2}, \\infty \\right) $$</p>\n<p>Therefore, the correct choice is <strong>Option A</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>फलन</b></p>\n<p>$ f(x) = \\sqrt{\\frac{(\\sin x - e^x)(\\cos x - 3)(\\ln x + 2)}{\\left(x^4 - x + \\frac{1}{2}\\right) (2x - 7)^{30}}} $</p>\n<p><b>का प्रांत (domain) निम्न में से किससे संबंधित है:</b></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\left[ \\frac{1}{e^2}, \\frac{7}{2} \\right) \\cup \\left( \\frac{7}{2}, \\infty \\right) $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\left(-\\frac{1}{2}, 0\\right) $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\left(0, \\frac{1}{e^5}\\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\left(\\frac{1}{e^5}, \\frac{1}{e^2}\\right]$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "domain",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtdak8xo",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>Find the domain of the function</b></p>\n<p>$ f(x) = \\ln \\left\\{ \\log_{|\\sin x|}(x^2 - 8x + 23) - \\frac{3}{\\log_2 |\\sin x|} \\right\\} $</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(3, 5) - \\{\\pi\\}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(3, 6) - \\left\\{\\pi, \\frac{3\\pi}{2}\\right\\}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(3, 5) - \\left\\{\\pi, \\frac{3\\pi}{2}\\right\\}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\left(3, \\frac{3\\pi}{2}\\right) \\cup \\left(\\frac{3\\pi}{2}, 5\\right)$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>To find the domain of the function $f(x) = \\ln \\left\\{ \\log_{|\\sin x|}(x^2 - 8x + 23) - \\frac{3}{\\log_2 |\\sin x|} \\right\\}$, we need to ensure that all logarithmic expressions are well-defined.</p>\n<p>First, look at the base $|\\sin x|$ of the logarithm. For any logarithm $\\log_b a$, the base $b$ must be strictly positive and not equal to $1$:</p>\n<p>$$ |\\sin x| > 0 \\implies \\sin x \\neq 0 \\implies x \\neq k\\pi, \\quad k \\in \\mathbb{Z} $$</p>\n<p>$$ |\\sin x| \\neq 1 \\implies \\sin x \\neq \\pm 1 \\implies x \\neq (2k+1)\\frac{\\pi}{2}, \\quad k \\in \\mathbb{Z} $$</p>\n<p>Next, check the quadratic expression inside the inner logarithm:</p>\n<p>$$ x^2 - 8x + 23 = (x - 4)^2 + 7 $$</p>\n<p>Since $(x - 4)^2 \\ge 0$, the expression $(x - 4)^2 + 7 > 0$ holds true for all real values of $x$.</p>\n\n<p>Using the change of base rule, $\\frac{1}{\\log_2 |\\sin x|} = \\log_{|\\sin x|} 2$, so:</p>\n<p>$$ \\frac{3}{\\log_2 |\\sin x|} = 3\\log_{|\\sin x|} 2 = \\log_{|\\sin x|} 2^3 = \\log_{|\\sin x|} 8 $$</p>\n<p>The argument of the natural logarithm must be strictly positive:</p>\n<p>$$ \\log_{|\\sin x|}(x^2 - 8x + 23) - \\log_{|\\sin x|} 8 > 0 $$</p>\n<p>$$ \\log_{|\\sin x|}(x^2 - 8x + 23) > \\log_{|\\sin x|} 8 $$</p>\n<p>Since $0 < |\\sin x| < 1$, the base of the logarithm is between $0$ and $1$. When the base is strictly between $0$ and $1$, the inequality reverses:</p>\n<p>$$ x^2 - 8x + 23 < 8 $$</p>\n<p>$$ x^2 - 8x + 15 < 0 $$</p>\n<p>$$ (x - 3)(x - 5) < 0 $$</p>\n<p>$$ x \\in (3, 5) $$</p>\n<p>Finally, we remove the undefined points from this interval:</p>\n<ul>\n<li><p>$x = \\pi \\approx 3.14$, which lies in $(3, 5)$</p></li>\n<li><p>$x = \\frac{3\\pi}{2} \\approx 4.71$, which also lies in $(3, 5)$</p></li>\n</ul>\n<p>Excluding these points gives:</p>\n<p>$$ x \\in (3, 5) - \\left\\{\\pi, \\frac{3\\pi}{2}\\right\\} $$</p>\n<p>Thus, the correct choice is <strong>Option C</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>फलन का प्रांत ज्ञात कीजिए:</b></p>\n<p>$ f(x) = \\ln \\left\\{ \\log_{|\\sin x|}(x^2 - 8x + 23) - \\frac{3}{\\log_2 |\\sin x|} \\right\\} $</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(3, 5) - \\{\\pi\\}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(3, 6) - \\left\\{\\pi, \\frac{3\\pi}{2}\\right\\}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(3, 5) - \\left\\{\\pi, \\frac{3\\pi}{2}\\right\\}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\left(3, \\frac{3\\pi}{2}\\right) \\cup \\left(\\frac{3\\pi}{2}, 5\\right)$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "domain",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtdb786j",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The domain of the function $f(x) = \\frac{\\sqrt{x-1}}{\\sqrt{(\\log_{(x-2)}[x+1]) - 2}}$,</p><p>(where [.] denotes the greatest integer function) are :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(3,\\; 2 + \\sqrt{5})$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>no values</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(1,\\; 2 + \\sqrt{5})$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(\\sqrt{5},\\; 2 + \\sqrt{5})$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>$\\log_{(x-2)}[x+1]$ is defined if $x-2>0$, $x-2\\ne 1$ and</p>\n<p>$[x+1]>0$</p>\n<p>$\\Rightarrow\\ x\\ge 0 \\quad \\Rightarrow\\quad x>2,\\ x\\ne 3$</p>\n<p><b>Case (i) :</b> Let $x\\in(2,3)$</p>\n<p>$\\Rightarrow\\ [x+1]<(x-2)^2$ or $[x]<x^2-4x+3$</p>\n<p><b>Case (ii) :</b> Let $x>3$</p>\n<p>$\\Rightarrow\\ [x+1]>(x-2)^2 \\quad \\Rightarrow\\quad [x]>x^2-4x+3$</p>\n<p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtdb4khh/d8a8a6f1-9e31-4bc4-8af2-215ae5ef4afa/6182ce50-a311-11f1-bea1-8fd810889305/file-6y3zli1mtdb4khi.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtdb4khh/d8a8a6f1-9e31-4bc4-8af2-215ae5ef4afa/6182ce50-a311-11f1-bea1-8fd810889305/file-6y3zli1mtdb4khi.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>From figure, it is clear that $x^2-4 x+3>[x]$ for $x<1$</p>\n<p>or $x>2+\\sqrt{5}$ which does not satisfy the condition $x \\in$ $(2,3)$. Hence no solution exist for case (i). and from fig, case (ii) is true for $x \\in(1,2+\\sqrt{5})$</p>\n<p>⇒ Solution for $\\log _{(x-2)}[x+1]>2$ is $(3,2+\\sqrt{5})$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>फलन $f(x) = \\frac{\\sqrt{x-1}}{\\sqrt{(\\log_{(x-2)}[x+1]) - 2}}$ का प्रांत (domain)</p><p>(जहाँ [.] महत्तम पूर्णांक फलन को दर्शाता है) है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(3,\\; 2 + \\sqrt{5})$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>कोई मान नहीं</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(1,\\; 2 + \\sqrt{5})$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(\\sqrt{5},\\; 2 + \\sqrt{5})$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "domain",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtdc5knn",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The domain of the function $\\sqrt{1 - f(x)}$ where $f^3(x) = 1 - x^3 - 3x f(x),\\ x \\in \\mathbb{R}$ is $(f(1) \\neq -1)$ :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\mathbb{R}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\mathbb{R} - \\{0\\}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\mathbb{R}^+ \\cup \\{0\\}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\mathbb{R}^-$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>$$f^3(x) + 3x\\,f(x) + x^3 - 1 = 0$$</p>\n\n<p>$$f^3(x) + x^3 + (-1)^3 + 3x\\,f(x) = 0$$</p>\n<p>This form should remind you of the identity</p>\n<p>$$a^3 + b^3 + c^3 - 3abc = (a+b+c)(a^2+b^2+c^2-ab-bc-ca)$$</p>\n<p>Take $a = f(x)$, $b = x$, $c = -1$. Then</p>\n<p>$$-3abc = -3\\cdot f(x)\\cdot x\\cdot(-1) = 3x\\,f(x)$$</p>\n<p>which matches the last term exactly. So the left side of our equation is precisely $a^3+b^3+c^3-3abc$, and hence</p>\n<p>$$\\big(f(x) + x - 1\\big)\\Big(f^2(x) + x^2 + 1 - x f(x) + x + f(x)\\Big) = 0$$</p>\n<p>The second bracket can be written as</p>\n<p>$$\\tfrac{1}{2}\\Big[(f(x)-x)^2 + (x+1)^2 + (f(x)+1)^2\\Big]$$</p>\n<p>and a sum of squares vanishes only when each term is zero, i.e. only if $f(x) = x = -1$. That single stray possibility is exactly what the condition $f(1)\\neq -1$ takes care of, so we discard this factor.</p>\n<p>That leaves</p>\n<p>$$f(x) + x - 1 = 0 \\quad \\Rightarrow \\quad f(x) = 1 - x$$</p>\n<p>Now put this into the given function:</p>\n<p>$$\\sqrt{1 - f(x)} = \\sqrt{1 - (1-x)} = \\sqrt{x}$$</p>\n<p>A square root is defined in $\\mathbb{R}$ only when the expression inside is non-negative, so we need $x \\geq 0$.</p>\n<p>Domain $= \\mathbb{R}^+ \\cup \\{0\\}$, which is <strong>Option C</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>फलन $\\sqrt{1 - f(x)}$ का प्रांत (डोमेन) जहाँ $f^3(x) = 1 - x^3 - 3x f(x),\\ x \\in \\mathbb{R}$ तथा $(f(1) \\neq -1)$ है, होगा:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\mathbb{R}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\mathbb{R} - \\{0\\}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\mathbb{R}^+ \\cup \\{0\\}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\mathbb{R}^-$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "domain",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtdco7o3",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The domain of the real valued function $f(x) = \\dfrac{\\sqrt{\\log_{10}\\left(\\frac{x}{x-2}\\right)}}{\\sqrt{[x]^2 - 5[x] + 6}}$ is (Here $[x]$ denotes the greatest integer function)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(-\\infty, 0) \\cup (2, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(2, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(-\\infty, 2) \\cup (4, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$[4, \\infty)$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For the function</p>\n<p>$$ f(x)=\\frac{\\sqrt{\\log_{10}\\left(\\frac{x}{x-2}\\right)}}{\\sqrt{[x]^2-5[x]+6}} $$</p>\n<p>to be real-valued, both square roots must be defined, and the denominator must not be zero.</p><p>Let us look at the numerator first:</p>\n<p>$$\\sqrt{\\log_{10}\\left(\\frac{x}{x-2}\\right)}$$</p>\n\n<p>$$\\log_{10}\\left(\\frac{x}{x-2}\\right) \\ge 0$$</p>\n\n<p>$$\\frac{x}{x-2} \\ge 10^0$$</p>\n<p>$$\\frac{x}{x-2} \\ge 1$$</p>\n\n<p>$$\\frac{x}{x-2} - 1 \\ge 0$$</p>\n<p>$$\\frac{x - (x - 2)}{x - 2} \\ge 0$$</p>\n<p>$$\\frac{2}{x - 2} \\ge 0$$</p>\n\n<p>$$x - 2 > 0 \\implies x > 2$$</p>\n<p>So, the condition from the numerator gives:</p>\n<p>$$x \\in (2, \\infty) \\quad \\text{--- (1)}$$</p>\n<p>Now, let us examine the denominator:</p>\n<p>$$\\sqrt{[x]^2 - 5[x] + 6}$$</p>\n\n<p>$$[x]^2 - 5[x] + 6 > 0$$</p>\n\n<p>$$([x] - 2)([x] - 3) > 0$$</p>\n<p>This gives two cases:</p>\n<p>$$[x] < 2 \\quad \\text{or} \\quad [x] > 3$$</p>\n<p>Since $[x]$ takes only integer values:</p>\n<ul>\n<li><p>$[x] < 2 \\implies [x] \\le 1 \\implies x < 2$</p></li>\n<li><p>$[x] > 3 \\implies [x] \\ge 4 \\implies x \\ge 4$</p></li>\n</ul>\n<p>Thus, the condition from the denominator gives:</p>\n<p>$$x \\in (-\\infty, 2) \\cup [4, \\infty) \\quad \\text{--- (2)}$$</p>\n<p>Finally, we take the intersection of conditions (1) and (2) to get the common domain:</p>\n<p>$$x \\in (2, \\infty) \\cap \\Big( (-\\infty, 2) \\cup [4, \\infty) \\Big)$$</p>\n<p>$$x \\in [4, \\infty)$$</p>\n<p>Therefore, the domain of the function is $[4, \\infty)$.</p>\n<p>Correct Option: <strong>Option D</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>वास्तविक मान फलन $f(x) = \\dfrac{\\sqrt{\\log_{10}\\left(\\frac{x}{x-2}\\right)}}{\\sqrt{[x]^2 - 5[x] + 6}}$ का प्रांत (domain) है (यहाँ $[x]$ महत्तम पूर्णांक फलन को निरूपित करता है)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(-\\infty, 0) \\cup (2, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(2, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(-\\infty, 2) \\cup (4, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$[4, \\infty)$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "domain",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtdgqhlu",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The domain of definition of the function $f(x) = \\sqrt[4]{\\frac{1 - 3^x}{5^{-x} - 5}}$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(-\\infty, -1) \\cup [0, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(-\\infty, -1] \\cup [0, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(-\\infty, -1) \\cup (0, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>We have,</p>\n<p>$$f(x)=\\sqrt[4]{\\frac{1-3^x}{5^{-x}-5}}$$</p>\n<p>$f(x)$ is defined, when</p>\n<p>$$\\frac{1-3^x}{5^{-x}-5}\\geq 0$$</p>\n<p>or</p>\n<p>$$\\frac{3^x-1}{5^{-x}-5}\\leq 0$$</p>\n<p>Case I If $3^x-1\\geq 0$ and $5^{-x}-5<0$</p>\n<p>$$\\Rightarrow 3^x\\geq 1 \\text{ and } 5^{-x}<5^1$$</p>\n<p>$$\\Rightarrow 3^x\\geq 3^0 \\text{ and } 5^{-x}<5^1$$</p>\n<p>$$\\therefore x\\geq 0 \\text{ and } -x<1$$</p>\n<p>$$\\Rightarrow x\\geq 0 \\text{ and } x>-1$$</p>\n<p>Hence, $x\\in[0,\\infty)$.</p>\n<p>Case II If $3^x-1\\leq 0$ and $5^{-x}-5>0$</p>\n<p>$$\\Rightarrow 3^x\\leq 1 \\text{ and } 5^{-x}>5$$</p>\n<p>$$\\Rightarrow 3^x\\leq 3^0 \\text{ and } 5^{-x}>5^1$$</p>\n<p>$$\\therefore x\\leq 0 \\text{ and } -x>1$$</p>\n<p>$$\\Rightarrow x\\leq 0 \\text{ and } x<-1$$</p>\n<p>Hence, $x\\in(-\\infty,-1)$.</p>\n<p>Combining both cases, we get</p>\n<p>$$x\\in(-\\infty,-1)\\cup[0,\\infty)$$</p>\n<p>Hence, domain is $(-\\infty,-1)\\cup[0,\\infty)$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>फलन $f(x) = \\sqrt[4]{\\frac{1 - 3^x}{5^{-x} - 5}}$ की परिभाषा का प्रांत (domain) है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(-\\infty, -1) \\cup [0, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(-\\infty, -1] \\cup [0, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(-\\infty, -1) \\cup (0, \\infty)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "domain",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtdgya9u",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $f(x) = \\cos^{-1}(x - x^2) + \\sqrt{\\left(1 - \\frac{1}{|x|}\\right)} + \\frac{1}{[x^2 - 1]}$,</p><p>then domain of $f(x)$ is (where $[.]$ is the greatest integer)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\left( \\sqrt{2}, \\frac{1 + \\sqrt{5}}{2} \\right]$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\left( -\\sqrt{2}, \\frac{1 - \\sqrt{5}}{2} \\right)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\left[ \\sqrt{2}, \\frac{1 + \\sqrt{5}}{2} \\right]$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The function is given by:</p>\n<p>$$f(x) = \\cos^{-1}(x - x^2) + \\sqrt{1 - \\frac{1}{|x|}} + \\frac{1}{[x^2 - 1]}$$</p>\n<p><strong>1. Condition for $\\cos^{-1}(x - x^2)$ to be defined:</strong></p>\n<p>The domain of $\\cos^{-1}(t)$ is $[-1, 1]$, so:</p>\n<p>$$-1 \\le x - x^2 \\le 1$$</p>\n<p>This gives two separate inequalities:</p>\n<ul>\n<li>For $x - x^2 \\le 1$:</li>\n</ul>\n<p>$$x^2 - x + 1 \\ge 0$$</p>\n<p>The discriminant of this quadratic is $D = (-1)^2 - 4(1)(1) = -3 < 0$. Since the coefficient of $x^2$ is positive and $D < 0$, this inequality holds true for all $x \\in \\mathbb{R}$.</p>\n<ul>\n<li>For $x - x^2 \\ge -1$:</li>\n</ul>\n<p>$$x^2 - x - 1 \\le 0$$</p>\n<p>Finding the roots of $x^2 - x - 1 = 0$:</p>\n<p>$$x = \\frac{1 \\pm \\sqrt{1 - 4(1)(-1)}}{2} = \\frac{1 \\pm \\sqrt{5}}{2}$$</p>\n<p>Therefore:</p>\n<p>$$x \\in \\left[ \\frac{1 - \\sqrt{5}}{2}, \\frac{1 + \\sqrt{5}}{2} \\right]$$</p>\n\n<p><strong>2. Condition for $\\sqrt{1 - \\frac{1}{|x|}}$ to be defined:</strong></p>\n<p>The expression inside the square root must be non-negative, and the denominator cannot be zero:</p>\n<p>$$x \\neq 0 \\quad \\text{and} \\quad 1 - \\frac{1}{|x|} \\ge 0$$</p>\n<p>$$\\frac{|x| - 1}{|x|} \\ge 0 \\implies |x| \\ge 1$$</p>\n<p>This gives:</p>\n<p>$$x \\in (-\\infty, -1] \\cup [1, \\infty)$$</p>\n<p>Taking the intersection of the first two conditions:</p>\n<p>$$\\left[ \\frac{1 - \\sqrt{5}}{2}, \\frac{1 + \\sqrt{5}}{2} \\right] \\cap \\Big( (-\\infty, -1] \\cup [1, \\infty) \\Big)$$</p>\n<p>Since $\\frac{1 - \\sqrt{5}}{2} \\approx -0.618$, there are no common values for $x \\le -1$. </p>\n<p>Thus, the common region is:</p>\n<p>$$x \\in \\left[ 1, \\frac{1 + \\sqrt{5}}{2} \\right]$$</p>\n\n<p><strong>3. Condition for $\\frac{1}{[x^2 - 1]}$ to be defined:</strong></p>\n<p>The denominator cannot be equal to zero:</p>\n<p>$$[x^2 - 1] \\neq 0$$</p>\n<p>By definition of the greatest integer function, $[t] = 0$ when $0 \\le t < 1$. </p>\n<p>Therefore, we must exclude all values where:</p>\n<p>$$0 \\le x^2 - 1 < 1$$</p>\n<p>$$1 \\le x^2 < 2$$</p>\n<p>So, for the denominator to be non-zero, we must have:</p>\n<p>$$x^2 < 1 \\quad \\text{or} \\quad x^2 \\ge 2$$</p>\n<p>This gives:</p>\n<p>$$x \\in (-1, 1) \\cup (-\\infty, -\\sqrt{2}] \\cup [\\sqrt{2}, \\infty)$$</p>\n\n<p><strong>Finding the overall domain:</strong></p>\n<p>Now, we take the intersection of $x \\in \\left[ 1, \\frac{1 + \\sqrt{5}}{2} \\right]$ with $x \\in (-1, 1) \\cup (-\\infty, -\\sqrt{2}] \\cup [\\sqrt{2}, \\infty)$:</p>\n<ul>\n<li><p>The interval $[1, \\frac{1 + \\sqrt{5}}{2}]$ has no overlap with $(-1, 1)$ or $(-\\infty, -\\sqrt{2}]$.</p></li>\n<li><p>Overlapping with $[\\sqrt{2}, \\infty)$ gives:</p></li>\n</ul>\n<p>$$x \\in \\left[ \\sqrt{2}, \\frac{1 + \\sqrt{5}}{2} \\right]$$</p>\n<p>Hence, the correct option is <strong>Option C</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $f(x) = \\cos^{-1}(x - x^2) + \\sqrt{\\left(1 - \\frac{1}{|x|}\\right)} + \\frac{1}{[x^2 - 1]}$ है,</p><p>तो $f(x)$ का प्रांत (domain) है (जहाँ $[.]$ महत्तम पूर्णांक फलन है)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\left( \\sqrt{2}, \\frac{1 + \\sqrt{5}}{2} \\right]$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\left( -\\sqrt{2}, \\frac{1 - \\sqrt{5}}{2} \\right)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\left[ \\sqrt{2}, \\frac{1 + \\sqrt{5}}{2} \\right]$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "domain",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtdh7jw4",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The domain of the function $f(x) = \\ln\\left( \\ln\\left( \\frac{x}{\\{x\\}} \\right) \\right)$ is</p><p>(where $\\{.\\}$ denotes the fractional part function)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(0, \\infty) - I$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(1, \\infty) - I$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\mathbb{R} - I$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(2, \\infty) - I$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For the function</p>\n<p>$$ f(x)=\\ln\\left(\\ln\\left(\\frac{x}{\\{x\\}}\\right)\\right) $$</p>\n<p>to be defined, the outer logarithm must have a positive argument.</p>\n<p>So we need</p>\n<p>$$ \\ln\\left(\\frac{x}{\\{x\\}}\\right)>0 $$</p>\n<p>This means</p>\n<p>$$ \\frac{x}{\\{x\\}}>1 $$</p>\n<p>Also, $\\{x\\}\\neq 0$, because it is in the denominator. So $x$ cannot be an integer.</p>\n<p>Now write any non-integer real number as</p>\n<p>$$ x=[x]+\\{x\\} $$</p>\n<p>where $[x]$ is the greatest integer part and $0<\\{x\\}<1$.</p>\n<p>Then</p>\n<p>$$ \\frac{x}{\\{x\\}}=\\frac{[x]+\\{x\\}}{\\{x\\}} = \\frac{[x]}{\\{x\\}}+1 $$</p>\n<p>We need</p>\n<p>$$ \\frac{x}{\\{x\\}}>1 $$</p>\n<p>So,</p>\n<p>$$ \\frac{[x]}{\\{x\\}}+1>1 $$</p>\n<p>Since $\\{x\\}>0$, this gives</p>\n<p>$$ [x]>0 $$</p>\n<p>So the greatest integer part of $x$ must be positive. That happens when</p>\n<p>$$ x>1 $$</p>\n<p>But integers must be removed because for integers, $\\{x\\}=0$.</p>\n<p>Hence the domain is</p>\n<p>$$ (1,\\infty)-I $$</p>\n<p>So the correct option is</p>\n<p>$$ \\boxed{\\text{Option B}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>फलन $f(x) = \\ln\\left( \\ln\\left( \\frac{x}{\\{x\\}} \\right) \\right)$ का प्रांत (domain) है</p><p>(जहाँ $\\{.\\}$ भिन्नात्मक भाग फलन को दर्शाता है)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(0, \\infty) - I$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(1, \\infty) - I$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\mathbb{R} - I$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(2, \\infty) - I$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "domain",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mtdgkk2s",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "If domain of $f(x)=\\frac{1}{\\sqrt{\\{x+4\\}-x^2+2 x}}$ is $\\left(\\frac{3-\\sqrt{a}}{2}, b\\right)-\\{0\\}$, then the value of $\\mathrm{a}+\\mathrm{b}$ is, where {.} denotes the fractional part function",
+                "options": [],
+                "answer": "15",
+                "explanation": "<p>To find the domain of the function </p>\n<p>$$f(x) = \\frac{1}{\\sqrt{\\{x+4\\}-x^2+2 x}}$$</p>\n<p>the expression under the square root in the denominator must be strictly positive:</p>\n<p>$$\\{x+4\\} - x^2 + 2x > 0$$</p>\n<p>Using the property of the fractional part function, $\\{x + n\\} = \\{x\\}$ for any integer $n$. Since $4$ is an integer, this simplifies to:</p>\n<p>$$\\{x\\} - x^2 + 2x > 0$$</p>\n<p>$$\\{x\\} > x^2 - 2x$$</p>\n<p>Since $0 \\le \\{x\\} < 1$, we can analyze the inequality across different unit intervals for $x$.</p>\n<p>For $x \\in (-1, 0)$:</p>\n<p>$$\\{x\\} = x - (-1) = x + 1$$</p>\n<p>Substituting this into the inequality gives:</p>\n<p>$$x + 1 > x^2 - 2x$$</p>\n<p>$$x^2 - 3x - 1 < 0$$</p>\n<p>The roots of the equation $x^2 - 3x - 1 = 0$ are:</p>\n<p>$$x = \\frac{3 \\pm \\sqrt{(-3)^2 - 4(1)(-1)}}{2} = \\frac{3 \\pm \\sqrt{13}}{2}$$</p>\n<p>This gives the solution interval:</p>\n<p>$$x \\in \\left(\\frac{3-\\sqrt{13}}{2}, \\frac{3+\\sqrt{13}}{2}\\right)$$</p>\n<p>Taking the intersection with $x \\in (-1, 0)$:</p>\n<p>$$x \\in \\left(\\frac{3-\\sqrt{13}}{2}, 0\\right)$$</p>\n<p>For $x \\in [0, 1)$:</p>\n<p>$$\\{x\\} = x$$</p>\n<p>For $x = 0$, the inequality gives $0 > 0$, which is not true. So, $x \\neq 0$.</p>\n<p>For $x \\in (0, 1)$:</p>\n<p>$$x > x^2 - 2x$$</p>\n<p>$$x^2 - 3x < 0$$</p>\n<p>$$x(x - 3) < 0 \\implies x \\in (0, 3)$$</p>\n<p>Taking the intersection with $x \\in (0, 1)$:</p>\n<p>$$x \\in (0, 1)$$</p>\n<p>For $x \\in [1, 2)$:</p>\n<p>$$\\{x\\} = x - 1$$</p>\n<p>$$x - 1 > x^2 - 2x$$</p>\n<p>$$x^2 - 3x + 1 < 0$$</p>\n<p>The roots of $x^2 - 3x + 1 = 0$ are:</p>\n<p>$$x = \\frac{3 \\pm \\sqrt{5}}{2}$$</p>\n<p>This gives $x \\in \\left(\\frac{3-\\sqrt{5}}{2}, \\frac{3+\\sqrt{5}}{2}\\right)$. Since this interval completely covers $[1, 2)$, all values in $[1, 2)$ satisfy the inequality.</p>\n<p>$$x \\in [1, 2)$$</p>\n<p>For $x \\ge 2$:</p>\n<p>When $x \\in [2, 3)$, $\\{x\\} = x - 2$.</p>\n<p>$$x - 2 > x^2 - 2x \\implies x^2 - 3x + 2 < 0 \\implies (x-1)(x-2) < 0 \\implies x \\in (1, 2)$$</p>\n<p>This gives no solution in $[2, 3)$. For $x \\ge 3$, $x^2 - 2x \\ge 3 > \\{x\\}$, so there are no further solutions.</p>\n<p>Combining all the valid intervals:</p>\n<p>$$\\text{Domain} = \\left(\\frac{3-\\sqrt{13}}{2}, 0\\right) \\cup (0, 1) \\cup [1, 2) = \\left(\\frac{3-\\sqrt{13}}{2}, 2\\right) - \\{0\\}$$</p>\n<p>Comparing this with the given domain $\\left(\\frac{3-\\sqrt{a}}{2}, b\\right)-\\{0\\}$, we get:</p>\n<p>$$a = 13$$</p>\n<p>$$b = 2$$</p>\n<p>Therefore,</p>\n<p>$$a + b = 13 + 2 = 15$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "यदि $f(x)=\\frac{1}{\\sqrt{\\{x+4\\}-x^2+2 x}}$ का प्रांत $\\left(\\frac{3-\\sqrt{a}}{2}, b\\right)-\\{0\\}$ है, तो $\\mathrm{a}+\\mathrm{b}$ का मान है, जहाँ {.} भिन्नात्मक भाग फलन (fractional part function) को दर्शाता है",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "domain",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtdhfp7m",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the domain of $f(x)=\\sqrt{12-3^x-3^{3-x}}+\\sin ^{-1}\\left(\\frac{2 x}{3}\\right)$ is $[a, b]$, then $a=\\ldots \\ldots$</p>",
+                "options": [],
+                "answer": "1",
+                "explanation": "<p>To find the domain of the given function $f(x) = \\sqrt{12-3^x-3^{3-x}}+\\sin ^{-1}\\left(\\frac{2 x}{3}\\right)$, we need to find the values of $x$ for which both terms are defined simultaneously.</p>\n<p>First, consider the square root term:</p>\n<p>$$\\sqrt{12-3^x-3^{3-x}}$$</p>\n<p>For the square root to be real and defined, the expression inside must be greater than or equal to zero:</p>\n<p>$$12 - 3^x - 3^{3-x} \\geq 0$$</p>\n\n<p>$$12 - 3^x - \\frac{27}{3^x} \\geq 0$$</p>\n<p>Let $t = 3^x$. Since $3^x > 0$ for all real values of $x$, $t$ is always positive. Substituting $t$ into the inequality gives:</p>\n<p>$$12 - t - \\frac{27}{t} \\geq 0$$</p>\n\n<p>$$12t - t^2 - 27 \\geq 0$$</p>\n\n<p>$$t^2 - 12t + 27 \\leq 0$$</p>\n\n<p>$$(t - 3)(t - 9) \\leq 0$$</p>\n\n<p>$$3 \\leq t \\leq 9$$</p>\n<p>Substitute back $t = 3^x$:</p>\n<p>$$3^1 \\leq 3^x \\leq 3^2$$</p>\n<p>Since the base $3$ is greater than $1$, we can compare the exponents directly:</p>\n<p>$$1 \\leq x \\leq 2$$</p>\n<p>So, for the first term, $x \\in [1, 2]$.</p>\n<p>Now, consider the inverse sine term:</p>\n<p>$$\\sin^{-1}\\left(\\frac{2x}{3}\\right)$$</p>\n<p>The domain of $\\sin^{-1}(y)$ is $-1 \\leq y \\leq 1$. Therefore:</p>\n<p>$$-1 \\leq \\frac{2x}{3} \\leq 1$$</p>\n\n<p>$$-3 \\leq 2x \\leq 3$$</p>\n\n<p>$$-\\frac{3}{2} \\leq x \\leq \\frac{3}{2}$$</p>\n<p>So, for the second term, $x \\in \\left[-\\frac{3}{2}, \\frac{3}{2}\\right]$.</p>\n<p>The domain of $f(x)$ is the intersection of the domains of both parts:</p>\n<p>$$x \\in [1, 2] \\cap \\left[-\\frac{3}{2}, \\frac{3}{2}\\right]$$</p>\n<p>$$x \\in \\left[1, \\frac{3}{2}\\right]$$</p>\n<p>Comparing this with the given domain $[a, b]$, we have:</p>\n<p>$$[a, b] = \\left[1, \\frac{3}{2}\\right]$$</p>\n<p>Thus, $a = 1$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $f(x)=\\sqrt{12-3^x-3^{3-x}}+\\sin ^{-1}\\left(\\frac{2 x}{3}\\right)$ का प्रांत $[a, b]$ है, तो $a=\\ldots \\ldots$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "domain",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtdhv6mt",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The domain of the function $y=\\sqrt{\\sin x+\\cos x}+\\sqrt{7 x-x^2-6}$ is $[p, q] \\cup[r, s]$ then value of $p+s$ is</p>",
+                "options": [],
+                "answer": "7",
+                "explanation": "<p>For the function</p>\n<p>$$ y=\\sqrt{\\sin x+\\cos x}+\\sqrt{7x-x^2-6} $$</p>\n<p>both square roots must be defined. So both radicands must be non-negative.</p>\n<p>First,</p>\n<p>$$ 7x-x^2-6 \\ge 0 $$</p>\n<p>$$ -(x^2-7x+6)\\ge 0 $$</p>\n<p>$$ -(x-1)(x-6)\\ge 0 $$</p>\n<p>This gives</p>\n<p>$$ 1\\le x\\le 6 $$</p>\n<p>Now,</p>\n<p>$$ \\sin x+\\cos x\\ge 0 $$</p>\n<p>We know</p>\n<p>$$ \\sin x+\\cos x=\\sqrt2\\sin\\left(x+\\frac{\\pi}{4}\\right) $$</p>\n<p>So,</p>\n<p>$$ \\sin\\left(x+\\frac{\\pi}{4}\\right)\\ge 0 $$</p>\n<p>In the interval $[1,6]$, the expression $\\sin x+\\cos x$ becomes zero at</p>\n<p>$$ x=\\frac{3\\pi}{4},\\ \\frac{7\\pi}{4} $$</p>\n<p>Checking the sign in $[1,6]$:</p>\n<p>$$ \\sin x+\\cos x\\ge 0 $$</p>\n<p>for</p>\n<p>$$ x\\in \\left[1,\\frac{3\\pi}{4}\\right]\\cup\\left[\\frac{7\\pi}{4},6\\right] $$</p>\n<p>So the domain is</p>\n<p>$$ [p,q]\\cup[r,s]=\\left[1,\\frac{3\\pi}{4}\\right]\\cup\\left[\\frac{7\\pi}{4},6\\right] $$</p>\n<p>Thus,</p>\n<p>$$ p=1,\\quad s=6 $$</p>\n<p>Hence,</p>\n<p>$$ p+s=1+6=7 $$</p>\n<p>$$ \\boxed{7} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>फलन $y=\\sqrt{\\sin x+\\cos x}+\\sqrt{7 x-x^2-6}$ का प्रांत $[p, q] \\cup[r, s]$ है, तो $p+s$ का मान है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "domain",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtdi0a4q",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The domain of the function</p>\n<p>$f(x)=\\log (\\sqrt{x-4}+\\sqrt{6-x})$ is $[a, b]$ then $a^2+b^2$ is $\\_\\_\\_\\_$ .</p>",
+                "options": [],
+                "answer": "52",
+                "explanation": "<p>For the function</p>\n<p>$$ f(x)=\\log\\left(\\sqrt{x-4}+\\sqrt{6-x}\\right) $$</p>\n<p>to be defined, both square roots must be real.</p>\n<p>So,</p>\n<p>$$ x-4 \\geq 0 $$</p>\n<p>which gives</p>\n<p>$$ x \\geq 4 $$</p>\n<p>Also,</p>\n<p>$$ 6-x \\geq 0 $$</p>\n<p>which gives</p>\n<p>$$ x \\leq 6 $$</p>\n<p>So $x$ must satisfy both conditions:</p>\n<p>$$ 4 \\leq x \\leq 6 $$</p>\n<p>Now, the argument of the logarithm must be positive. For every $x \\in [4,6]$,</p>\n<p>$$ \\sqrt{x-4}+\\sqrt{6-x} > 0 $$</p>\n<p>So the domain is</p>\n<p>$$ [4,6] $$</p>\n<p>Thus,</p>\n<p>$$ a=4,\\quad b=6 $$</p>\n<p>Now,</p>\n<p>$$ a^2+b^2=4^2+6^2 $$</p>\n<p>$$ =16+36 $$</p>\n<p>$$ =52 $$</p>\n<p>So the answer is</p>\n<p>$$ \\boxed{52} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि फलन</p><p>$f(x)=\\log (\\sqrt{x-4}+\\sqrt{6-x})$ का प्रांत $[a, b]$ है, तो $a^2+b^2$ का मान $\\_\\_\\_\\_$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "domain",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtdiaip2",
+            "chapter": "functions",
+            "chapterGroup": "calculus",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $(a, b]$ is the domain of the function $f(x)=\\sqrt{\\log _{0.5}\\left(\\frac{2 x-8}{x-2}\\right)}$ then value of $b-a$ is $\\_\\_\\_\\_$.</p>",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>To find the domain of the function $f(x) = \\sqrt{\\log_{0.5}\\left(\\frac{2x-8}{x-2}\\right)}$, we need to satisfy two conditions:</p>\n<p>The expression inside the square root must be greater than or equal to zero:</p>\n<p>$$\\log_{0.5}\\left(\\frac{2x-8}{x-2}\\right) \\ge 0$$</p>\n<p>The argument of the logarithmic function must be strictly positive:</p>\n<p>$$\\frac{2x-8}{x-2} > 0$$</p>\n<p>Since the base of the logarithm is $0.5$, which lies between $0$ and $1$, the inequality sign reverses when we remove the logarithm:</p>\n<p>$$\\frac{2x-8}{x-2} \\le (0.5)^0$$</p>\n<p>$$\\frac{2x-8}{x-2} \\le 1$$</p>\n<p>Combining both conditions gives the compound inequality:</p>\n<p>$$0 < \\frac{2x-8}{x-2} \\le 1$$</p>\n<p>Now, we solve this in two parts.</p>\n<p>First, solving $\\frac{2x-8}{x-2} > 0$:</p>\n<p>$$\\frac{2(x-4)}{x-2} > 0$$</p>\n<p>$$\\frac{x-4}{x-2} > 0$$</p>\n<p>This gives:</p>\n<p>$$x \\in (-\\infty, 2) \\cup (4, \\infty)$$</p>\n<p>Next, solving $\\frac{2x-8}{x-2} \\le 1$:</p>\n<p>$$\\frac{2x-8}{x-2} - 1 \\le 0$$</p>\n<p>$$\\frac{(2x-8) - (x-2)}{x-2} \\le 0$$</p>\n<p>$$\\frac{x-6}{x-2} \\le 0$$</p>\n<p>Since $x \\neq 2$, this inequality gives:</p>\n<p>$$x \\in (2, 6]$$</p>\n<p>Taking the intersection of both solutions:</p>\n<p>$$x \\in \\big((-\\infty, 2) \\cup (4, \\infty)\\big) \\cap (2, 6]$$</p>\n<p>$$x \\in (4, 6]$$</p>\n<p>Comparing this with the given domain $(a, b]$, we have:</p>\n<p>$$a = 4 \\quad \\text{and} \\quad b = 6$$</p>\n<p>Now, finding the value of $b - a$:</p>\n<p>$$b - a = 6 - 4 = 2$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि फलन $f(x)=\\sqrt{\\log _{0.5}\\left(\\frac{2 x-8}{x-2}\\right)}$ का प्रांत $(a, b]$ है, तो $b-a$ का मान $\\_\\_\\_\\_$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "domain",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Domain",
+    "timeAllotted": 2160000,
+    "title": "Functions Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61moo5w6u6",
+    "defaultLanguage": "en",
+    "description": "Domain",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-29T12:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Domain",
+    "timeAllotted": 2160000,
+    "title": "Functions Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Mathematics",
+    "_section": "Functions"
+  }
+}

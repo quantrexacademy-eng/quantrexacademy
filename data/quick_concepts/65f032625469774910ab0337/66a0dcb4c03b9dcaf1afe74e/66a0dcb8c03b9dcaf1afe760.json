@@ -1,0 +1,124 @@
+{
+  "subjectId": "65f032625469774910ab0337",
+  "chapterId": "66a0dcb4c03b9dcaf1afe74e",
+  "topicId": "66a0dcb8c03b9dcaf1afe760",
+  "title": "PH of solutions",
+  "concepts": [
+    {
+      "title": "pH scale",
+      "conceptBody": "<p>\n pH SCALE:\n</p>\n<p>\n $\\text{pH}$ of solution is the negative logarithm to the base 10 of the concentration of ${{\\text{H}}^{+}}$ions which it contains (Basically P acts as a mathematical operator: $p(A)=-{{\\log }_{10}}[~\\text{A}]$)\n</p>\n<p>\n \\[\\Rightarrow \\]\t\\[\\mathbf{pH=}\\mathbf{lo}{{\\mathbf{g}}_{\\mathbf{10}}}\\mathbf{[}{{\\mathbf{H}}^{\\mathbf{+}}}\\mathbf{]}\\]\n</p>\n<p>\n At $25\\text{C}$, using this definition, a scale called $\\text{pH}$ scale is developed as follows:\n</p>\n<p>\n For \t${{\\text{H}}_{2}}\\text{O},{{\\text{H}}^{+}}={{10}^{-7}}\\text{M}$\n</p>\n<p>\n $\\text{pH}\\left( {{\\text{H}}_{2}}\\text{O} \\right)=-\\log \\left( {{10}^{-7}} \\right)=7$\n</p>\n<p>\n $\\Rightarrow \\quad $ For a neutral solution; $\\text{pH}=7$\n</p>\n<p>\n (1) If $\\left[ {{\\text{H}}^{+}} \\right]&gt;{{10}^{-7}}$ in a solution i.e., solution is acidic then $\\text{pH}&lt;7$\n</p>\n<p>\n (2) If $\\left[ {{\\text{H}}^{+}} \\right]&lt;{{10}^{-7}}\\left( {} \\right.$ or $\\left[ \\text{O}{{\\text{H}}^{-}} \\right]&gt;{{10}^{-7}}$) i.e. solution is basic then $\\text{pH}&gt;7$.\n</p>\n<p>\n Acidic              \\[{{H}_{2}}O\\]\t       Basic\n</p>\n<p>\n At 25°C\t3      4      5      6      7      8      9      10      11\n</p>\n<p>\n (298 K)\n</p>\n<p>\n \\[\\text{Acidity increases }\\xleftarrow[{}]{{}}\\underset{(\\text{Neutral})}{\\mathop{\\text{ph}}}\\,\\xrightarrow[{}]{{}}\\text{Basicity increases}\\]\n</p>",
+      "position": 0,
+      "qcConcept": "66a0dcb8c03b9dcaf1afe761"
+    },
+    {
+      "title": "pH calculation of strong acid",
+      "conceptBody": "<p>\n 1.\tpH Calculation of strong acid\n</p>\n<p>\n A strong acid completely ionises in water.\n</p>\n<p>\n For example, $\\text{HCl}\\to {{\\text{H}}^{+}}+\\text{C}{{\\text{l}}^{-}}$\n</p>\n<p>\n Let $\\text{C}$ be the concentration of $\\text{HCl}$.\n</p>\n<p>\n The concentration of ${{\\text{H}}^{+}}$obtained from $\\text{HCl}$ will also be $\\text{C}$.\n</p>\n<p>\n $\\therefore \\text{pH}=-\\log \\text{C}$\n</p>\n<p>\n This process cannot be used to calculate the $\\text{pH}$ of ${{10}^{-7}}\\text{MHCl}$. Since, we know that any acidic solution will have $\\text{pH}$ less than 7 , we must adopt some other method.\n</p>\n<p>\n <strong>\n  Method I\n </strong>\n</p>\n<p>\n We already know the concentration of ${{\\text{H}}^{+}}$(or ${{\\text{H}}_{3}}{{\\text{O}}^{+}}$) ions from pure water is ${{10}^{-7}}\\text{M}$. So all we need to do is to add the ${{\\text{H}}^{+}}$ion concentration from water and ${{\\text{H}}^{+}}\\left( {} \\right.$or ${{\\text{H}}_{3}}{{\\text{O}}^{+}}$) ion concentration from $\\text{HCl}$ to get the ${{\\left[ {{\\text{H}}^{+}} \\right]}_{\\text{Total }}}$.\n</p>\n<p>\n $\\therefore \\quad {{\\left( {{\\text{H}}^{+}} \\right)}_{\\text{T}}}={{\\left( {{\\text{H}}^{+}} \\right)}_{\\text{HCl}}}+{{\\left( {{\\text{H}}^{+}} \\right)}_{\\text{water }}}={{10}^{-7}}\\text{M}+{{10}^{-7}}\\text{M}=2\\times {{10}^{-7}}\\text{M}$\n</p>\n<p>\n $\\therefore \\quad \\text{pH}=-\\log \\left( {{\\text{H}}^{+}} \\right)=-\\log 2\\quad {{10}^{-7}}=6.6989$\n</p>\n<p>\n Though the method looks correct but there is a mistake in it. In chemical equilibrium we have learnt about Le-ChatelierÊs Principle, which states that when concentration of a reactant or product is changed the reaction tends of go forward or reverse to finally reestablish equilibrium. We can see that in the present case, by adding \\[{{10}^{-7}}\\,M\\,\\,HCl\\] to water, we are increasing the $\\left[ {{\\text{H}}^{+}} \\right]$. This should make the reaction go in the reverse direction. Therefore the $\\left[ {{\\text{H}}^{+}} \\right]$from water would become less than ${{10}^{-7}}\\text{M}$.\n <strong>\n  So the method will yield incorrect result.\n </strong>\n</p>\n<p>\n <strong>\n  Method II\n </strong>\n</p>\n<p>\n The statement given above that \"the addition of an ion to an equilibrium, having the same ion makes the equilibrium move in a direction to consume that ion\" is called the common ion effect. This implies that water would dissociate less in the presence of $\\text{HCl}$. Let the amount of water dissociated be ${{\\text{x}}^{\\prime }}$ in the presence of ${{10}^{-7}}\\text{MHCl}$.\n</p>\n<p>\n $\\begin{array}{*{35}{r}}\n</p>\n<p>\n 2{{\\text{H}}_{2}}\\text{O}\\rightleftharpoons {{\\text{H}}_{3}}{{\\text{O}}^{+}}+\\text{O}{{\\text{H}}^{-}}  \\\\\n</p>\n<p>\n \\left( {{\\text{x}}^{\\prime }}+{{10}^{-7}} \\right)\\quad {{\\text{x}}^{\\prime }}  \\\\\n</p>\n<p>\n \\end{array}$\n</p>\n<p>\n At equilibrium\n</p>\n<p>\n $\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]\\left[ \\text{O}{{\\text{H}}^{-}} \\right]={{10}^{-14}}$\n</p>\n<p>\n $\\left( {{\\text{x}}^{\\prime }}+{{10}^{-7}} \\right)\\left( {{\\text{x}}^{\\prime }} \\right)={{10}^{-14}}$\n</p>\n<p>\n Calculating for ${{x}^{\\prime }}$, we get ${{x}^{\\prime }}=0.618\\quad {{10}^{-7}}\\text{M}$.\n</p>\n<p>\n Here we can clearly see the common ion effect in operation. Water which was dissociating to give ${{10}^{-7}}\\text{M}{{\\text{H}}_{3}}{{\\text{O}}^{+}}$ions, has now experienced the common ion effect and has now yielded only $0.618\\quad {{10}^{-7}}\\text{M}{{\\text{H}}_{3}}{{\\text{O}}^{+}}$ions.\n</p>\n<p>\n Therefore, ${{\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]}_{\\text{T}}}=\\left( {{10}^{-7}}+{{0.61810}^{-7}} \\right)\\text{M}$\n</p>\n<p>\n $\\therefore \\quad \\text{pH}=-\\log \\left( 1.618\\quad {{10}^{-7}} \\right)=\\mathbf{6}.\\mathbf{7910}$\n</p>\n<p>\n Now, let us answer the question as to why we take the $\\left[ {{\\text{H}}^{+}} \\right]$from water into account for calculating the $\\text{pH}$ of ${{10}^{-7}}\\text{MHCl}$ while for calculating the $\\text{pH}$ of ${{10}^{-6}}\\text{M},{{10}^{-5}}\\text{M},{{10}^{-4}}\\text{M},{{10}^{-3}}\\text{M},{{10}^{-2}}\\text{M}$ and ${{10}^{-1}}\\text{MHCl}$, we have not considered it. It can be seen that the ${{\\text{H}}^{+}}$ions from water, decreases due to the common ion from $\\text{HCl}$. Greater the concentration of the common ion added, greater will be the effect. Therefore, for concentrations higher than ${{10}^{-6}}\\text{M}$ (and inclusive of ${{10}^{-6}}\\text{M}$), the ${{\\text{H}}^{+}}$ from water will be even less than $0.618\\quad {{10}^{-7}}\\text{M}$ and would be so small in comparison to the $\\left[ {{\\text{H}}^{+}} \\right]$ from $\\text{HCl}$, that we can ignore it.\n</p>\n<p>\n <strong>\n  Thus, it is concluded that $\\left[ {{\\mathbf{H}}_{\\mathbf{3}}}{{\\mathbf{O}}^{\\mathbf{+}}} \\right]$from water needs to be considered only if the $\\left[ {{\\mathbf{H}}_{\\mathbf{3}}}{{\\mathbf{O}}^{\\mathbf{+}}} \\right]$ from acid is $\\mathbf{&lt;1}{{\\mathbf{0}}^{\\mathbf{6}}}\\mathbf{M}$ and if $\\left[ {{\\mathbf{H}}_{\\mathbf{3}}}{{\\mathbf{O}}^{\\mathbf{+}}} \\right]$from acid is $\\le \\mathbf{1}{{\\mathbf{0}}^{\\mathbf{6}}}\\mathbf{M}$, the $\\left[ {{\\mathbf{H}}_{\\mathbf{3}}}{{\\mathbf{O}}^{\\mathbf{+}}} \\right]$from water can be ignored.\n </strong>\n</p>",
+      "position": 1,
+      "qcConcept": "66a0dcb8c03b9dcaf1afe762"
+    },
+    {
+      "title": "pH calculation of weak acid",
+      "conceptBody": "<p>\n 2.\tpH Calculation of Weak Acid\n</p>\n<p>\n Weak acid is that which dissociate partially in water and soon comes in equilibrium with its ions as\n</p>\n<p>\n $\\text{C}{{\\text{H}}_{3}}\\text{COOH}+{{\\text{H}}_{2}}\\text{O}\\rightleftharpoons \\text{C}{{\\text{H}}_{3}}\\text{CO}{{\\text{O}}^{-}}+{{\\text{H}}_{3}}{{\\text{O}}^{+}}$\n</p>\n<p>\n The equilibrium constant is called ${{\\text{K}}_{\\text{a}}}$ (dissociation or ionization constant).\n</p>\n<p>\n ${{\\text{K}}_{\\text{a}}}=\\frac{\\left[ \\text{C}{{\\text{H}}_{3}}\\text{CO}{{\\text{O}}^{-}} \\right]\\times \\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]}{\\left[ \\text{C}{{\\text{H}}_{3}}\\text{COOH} \\right]}$\n</p>\n<p>\n Let the degree of dissociation of weak acid be$\\alpha \\text{. }$\n</p>\n<p>\n $\\text{C}{{\\text{H}}_{3}}\\text{COOH}+{{\\text{H}}_{2}}\\text{O}\\rightleftharpoons \\text{C}{{\\text{H}}_{3}}\\text{COO}{{\\text{H}}^{-}}+{{\\text{H}}_{3}}{{\\text{O}}^{+}}$\n</p>\n<p>\n Initial conc.\t                c                            0                0\n</p>\n<p>\n Conc. at equilib.     $c-c\\alpha $                     $c\\alpha $             $c\\alpha $\n</p>\n<p>\n If $\\alpha &lt;&lt;1\\text{ than }1-\\alpha \\approx 1\\text{ (i}\\text{.e}\\text{. for }\\alpha \\text{ less than or equal to }0.1\\text{ ) }$\n</p>\n<p>\n ${{\\text{K}}_{\\text{a}}}\\approx \\text{c}{{\\alpha }^{2}}\\quad \\text{ or }\\quad \\alpha =\\sqrt{\\frac{{{\\text{K}}_{\\text{a}}}}{\\text{c}}}$\n</p>\n<p>\n $\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]=\\text{c}\\alpha =\\text{c}\\times \\sqrt{\\frac{{{\\text{K}}_{\\text{a}}}}{\\text{c}}}=\\sqrt{{{\\text{K}}_{\\text{a}}}\\times \\text{c}}$\n</p>\n<p>\n Using the value of ${{\\text{K}}_{\\text{a}}}$ and $\\text{c},\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]$can be calculated and then $\\text{pH}$ of the solution can be calculated.\n</p>\n<p>\n Taking $\\log $ of both the sides of above equation,\n</p>\n<p>\n $\\log \\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]=1/2\\log {{\\text{K}}_{2}}+1/2\\log \\text{c}$\n</p>\n<img src=\"data:image/x-wmf;base64,183GmgAAAAAAAKAP4AEACQAAAABRUAEACQAAA7YBAAACAL8AAAAAAAUAAAACAQEAAAAFAAAAAQL///8ABQAAAC4BGQAAAAUAAAALAgAAAAAFAAAADALgAaAPCwAAACYGDwAMAE1hdGhUeXBlAABQABIAAAAmBg8AGgD/////AAAQAAAAwP///83///9gDwAArQEAAAUAAAAJAgAAAAIFAAAAFAJAATsAHAAAAPsCoP4AAAAAAACQAQAAAAAAAgAQVGltZXMgTmV3IFJvbWFuAHjRzwJhTGh2IAludgAAAAAEAAAALQEAACsAAAAyCgAAAAAYAAAATXVsdGlwbHlpbmdib3Roc2lkZXNieTEsOQGwAF0AYwBjALAAXQClAGMAsACwALAAsABjALAAiQBjALAAmgCJALAA0QGQAMACBQAAABQCQAGSDRwAAAD7AqD+AAAAAAAAkAEAAAABAAIAEFN5bWJvbAB2rndqdkAAAAB40c8CYUxodiAJbnYAAAAABAAAAC0BAQAEAAAA8AEAAAkAAAAyCgAAAAABAAAALQDAAr8AAAAmBg8AdAFBcHBzTUZDQwEATQEAAE0BAABEZXNpZ24gU2NpZW5jZSwgSW5jLgAFAQAHBERTTVQ3AAETV2luQWxsQmFzaWNDb2RlUGFnZXMAEQVUaW1lcyBOZXcgUm9tYW4AEQNTeW1ib2wAEQVDb3VyaWVyMTAgQlQAEQRNVCBFeHRyYQASAAghH0cPRV9BUPQQD0dfQVDyHx5BUPQVD0EA9EX0JfSPQl9BAPQQD0NfQQD0j0X0Kl9I9I9BAPQQD0D0j0F/SPQQD0EqX0RfRfRfRfRfQQ8MAQABAAEAAgACAAIAAQEBAAMAAQAEAAAKAQAQAAAAAAAAAA8BAgCDTQACAIN1AAIAg2wAAgCDdAACAINpAAIAg3AAAgCDbAACAIN5AAIAg2kAAgCDbgACAINnAAIAg2IAAgCDbwACAIN0AAIAg2gAAgCDcwACAINpAAIAg2QAAgCDZQACAINzAAIAg2IAAgCDeQACBIYSIi0CAIgxAAIAgiwAAAAKAAAAJgYPAAoA/////wEAAAAAABwAAAD7AhAABwAAAAAAvAIAAAAAAQICIlN5c3RlbQB2IQCKAgAACgAGAAAAIQCKAgAAAABY288CBAAAAC0BAAAEAAAA8AEBAAMAAAAAAA==\"/>\n<p>\n $-\\log \\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]=-1/2\\log {{\\text{K}}_{\\text{a}}}-1/2\\log \\text{c}$\n</p>\n<p>\n $$\n</p>",
+      "position": 2,
+      "qcConcept": "66a0dcb9c03b9dcaf1afe763"
+    },
+    {
+      "title": "Important pH results",
+      "conceptBody": "<p>\n Some Important Points:\n</p>\n<ul>\n <li>\n  Relative strength of two weak acids is a measure of $\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]$\n </li>\n</ul>\n<p>\n $\\frac{{{\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]}_{1}}}{{{\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]}_{2}}}=\\sqrt{\\frac{{{\\text{K}}_{1}}{{\\text{C}}_{1}}}{~{{\\text{K}}_{2}}{{\\text{C}}_{2}}}}$\n</p>\n<ul>\n <li>\n  pH of a weak monobasic acid\n </li>\n</ul>\n<p>\n $\\text{pH}=-\\log \\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]=-\\log \\sqrt{{{\\text{K}}_{\\text{a}}}\\text{C}}$\n</p>\n<p>\n $=\\frac{1}{2}\\left[ \\text{pK}{{\\text{a}}_{\\text{a}}}-\\log \\text{C} \\right]$\n</p>\n<p>\n Total $\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]$in a mixture of two weak acids.\n</p>\n<p>\n $\\left[ {{\\text{H}}_{3}}{{\\text{O}}^{+}} \\right]=\\sqrt{{{\\text{K}}_{1}}{{\\text{C}}_{1}}+{{\\text{K}}_{2}}{{\\text{C}}_{2}}}$\n</p>\n<ul>\n <li>\n  <strong>\n   For weak bases\n  </strong>\n </li>\n</ul>\n<p>\n $\\text{BOH}\\rightleftharpoons {{\\text{B}}^{+}}+\\text{O}{{\\text{H}}^{-}}$\n</p>\n<p>\n ${{\\text{K}}_{\\text{b}}}=\\frac{\\left[ {{\\text{B}}^{+}} \\right]\\left[ \\text{O}{{\\text{H}}^{-}} \\right]}{[\\text{BOH}]}=\\frac{\\text{C}{{\\text{x}}^{2}}}{(1-\\text{x})}=\\text{C}{{\\text{x}}^{2}}$\n</p>\n<p>\n $\\text{x}=\\sqrt{\\frac{{{\\text{K}}_{\\text{b}}}}{\\text{C}}}$\n</p>\n<p>\n ${{\\left[ \\text{O}{{\\text{H}}^{-}} \\right]}_{\\text{weak base }}}=\\text{Cx}=\\sqrt{{{\\text{K}}_{\\text{b}}}\\text{C}}$\n</p>\n<ul>\n <li>\n  Relative strength of two weak bases\n </li>\n</ul>\n<p>\n $\\frac{{{\\left[ \\text{O}{{\\text{H}}^{-}} \\right]}_{1}}}{{{\\left[ \\text{O}{{\\text{H}}^{-}} \\right]}_{2}}}=\\sqrt{\\frac{{{\\text{K}}_{1}}{{\\text{C}}_{1}}}{~{{\\text{K}}_{2}}{{\\text{C}}_{2}}}}$\n</p>\n<ul>\n <li>\n  $\\text{pOH}$ of weak monoacid base\n </li>\n</ul>\n<p>\n $\\text{pOH}=-\\log \\left( \\text{O}{{\\text{H}}^{-}} \\right)=\\frac{1}{2}\\left[ \\text{p}{{\\text{K}}_{\\text{b}}}-\\log \\text{C} \\right]$\n</p>\n<p>\n $\\text{pH}=14-\\text{pOH}$\n</p>\n<p>\n $=14-\\frac{1}{2}\\left[ p{{K}_{b}}-\\log C \\right]$\n</p>\n<p>\n Total $\\left[ \\text{O}{{\\text{H}}^{-}} \\right]$in a mixture of two weak bases.\n</p>\n<p>\n $$\n</p>",
+      "position": 3,
+      "qcConcept": "66a0dcb9c03b9dcaf1afe764"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66584e521814fc7e94209c6a",
+      "title": "What will be the sum of $\\mathrm{pH}$ and $\\mathrm{pOH}$ in an aqueous solution?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c6b",
+      "title": "$p H$ of a $10^{-3} \\mathrm{M}$ solution of hydrochloric acid will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c6c",
+      "title": "$A$ is an aqueous acid; $B$ is an aqueous base. They are diluted separately, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c6d",
+      "title": "pH of human blood is 7.4. Then $H^{+}$concentration will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c6e",
+      "title": "In a solution of acetic acid, sodium acetate is added, then its $\\mathrm{pH}$ value",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c6f",
+      "title": "If $\\mathrm{pOH}$ of a solution is 6.0 , then its $\\mathrm{pH}$ will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c70",
+      "title": "The $\\mathrm{pH}$ of a solution is increased from 3 to 6 . Its $\\mathrm{H}^{+}$ion concentration will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c71",
+      "title": "Given that the dissociation constant for $\\mathrm{H}_2 \\mathrm{O}$ is $K_w=1 \\times 10^{-14} \\mathrm{~mole}^2$ litre ${ }^{-2}$, what is the $\\mathrm{pH}$ of a 0.001 molar $\\mathrm{KOH}$ solution",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c72",
+      "title": "In a solution of $p H=5$, more acid is added in order to reduce the $p H=2$. The increase in hydrogen ion concentration is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c73",
+      "title": "Which solution contains maximum number of \\(H^{+}\\) ion?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c74",
+      "title": "The $\\mathrm{pH}$ of a solution obtained by mixing $50 \\mathrm{ml}$ of $0.4 \\mathrm{~N} \\mathrm{HCl}$ and $50 \\mathrm{ml}$ of $0.2 \\mathrm{~N} \\mathrm{NaOH}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c75",
+      "title": "What is the $\\mathrm{pH}$ of $\\mathrm{Ba}(\\mathrm{OH})_2$ if normality is 10",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c76",
+      "title": "If $0.4 \\mathrm{gm~} \\mathrm{NaOH}$ is present in 1 litre solution, then its $\\mathrm{pH}$ will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c77",
+      "title": "Calculate the $\\mathrm{H}^{+}$ion concentration in a $1.00(\\mathrm{M}) \\mathrm{HCN}$ litre solution $\\left(K_a=4 \\times 10^{-10}\\right)$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c78",
+      "title": "The $p H$ of $0.1 \\mathrm{M}$ solution of the following salts increases in the order",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

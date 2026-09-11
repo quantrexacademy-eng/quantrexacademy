@@ -1,0 +1,46 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd52c03b9dcaf1afea5f",
+  "topicId": "66a0dd57c03b9dcaf1afea7d",
+  "title": "Normal to ellipse",
+  "concepts": [
+    {
+      "title": "Equations of Normal ",
+      "conceptBody": "<h3><strong>Equation of Normal in Different Forms</strong></h3><p><strong>10.1. Point Form&nbsp;</strong></p><p>The required normal is the straight line which passes through the point $\\left( \\text{x'},\\text{y'} \\right)$ and is perpendicular to the tangent, i.e., to the straight line</p><p>$y=-\\frac{{{b}^{2}}{x}'}{{{a}^{2}}{y}'}x+\\frac{{{b}^{2}}}{{{y}'}}$</p><p>Its equation is therefore, $y-{y}'=m\\left( x-{x}' \\right)$</p><p>where $m\\left( -\\frac{{{b}^{2}}{x}'}{{{a}^{2}}{y}'} \\right)=-1$</p><p>i.e., $\\text{m}=\\frac{{{\\text{a}}^{2}}\\text{{y}'}}{{{\\text{b}}^{2}}\\text{{x}'}}$</p><p>The equation to the normal is therefore, $y-{y}'=\\frac{{{a}^{2}}{y}'}{{{b}^{2}}{x}'}\\left( x-{x}' \\right)$</p><p>i.e., $\\frac{x-{x}'}{\\frac{{{x}'}}{{{a}^{2}}}}=\\frac{y-{y}'}{\\frac{{{y}'}}{{{b}^{2}}}}$</p><p><strong>10.2. Parametric Form&nbsp;</strong></p><p>Equation to the normal at the point whose eccentric angle is $\\phi $. The coordinates of the point are $\\text{a}\\,\\text{cos}\\,\\phi $ and $\\text{b}\\,\\text{sin}\\,\\phi $.</p><p>Hence, in the result of the last article putting</p><p>$\\text{{x}'}=\\,\\,\\text{a}\\,\\,\\text{cos}\\,\\,\\phi \\text{ }\\!\\!~\\!\\!\\text{ and }\\!\\!~\\!\\!\\text{ {y}'}=\\,\\,\\text{b}\\,\\,\\text{sin}\\,\\phi $</p><p>it becomes $\\frac{\\text{x}-\\text{acos}\\phi }{\\frac{\\text{cos}\\phi }{\\text{a}}}=\\frac{\\text{y}-\\text{bsin}\\phi }{\\frac{\\text{sin}\\phi }{\\text{b}}}$</p><p>i.e., $\\frac{ax}{\\text{cos }\\phi }-{{a}^{2}}=\\frac{by}{\\text{sin}\\,\\phi }-{{b}^{2}}.$</p><p>The required normal is therefore</p><p>$\\text{ }\\!\\!~\\!\\!\\text{ ax }\\!\\!~\\!\\!\\text{ }sec\\,\\,\\phi \\,\\,-\\,\\,by\\,\\,cosec\\,\\,\\phi \\,\\,=\\,\\,{{a}^{2}}\\,\\,-\\,\\,{{b}^{2}}$</p><p><strong>10.3. Slope Form&nbsp;</strong></p><p>The equations of the normal of slope $m$ to the ellipse $\\frac{{{x}^{2}}}{{{a}^{2}}}+\\frac{{{y}^{2}}}{{{b}^{2}}}=1$ are given by</p><p>$y=mx\\mp \\frac{m\\left( {{a}^{2}}-{{b}^{2}} \\right)}{\\sqrt{\\left( {{a}^{2}}+{{b}^{2}}{{m}^{2}} \\right)}}$</p><p>at the points $\\left( \\pm \\frac{{{\\text{a}}^{2}}}{\\sqrt{\\left( {{\\text{a}}^{2}}+{{\\text{b}}^{2}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{m}}^{2}} \\right)}},\\pm \\frac{\\text{m}{{\\text{b}}^{2}}}{\\sqrt{\\left( {{\\text{a}}^{2}}+{{\\text{b}}^{2}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{m}}^{2}} \\right)}} \\right).$</p><p><strong>11. NORMALS FROM A GIVEN POINT&nbsp;</strong></p><p>Equation of normal at $\\left( a\\,\\text{cos}\\,\\,\\theta ,b\\,\\text{sin}\\,\\,\\theta \\right)$ to the ellipse $\\frac{{{x}^{2}}}{{{a}^{2}}}+\\frac{{{y}^{2}}}{{{b}^{2}}}=1$ is</p><p>$ax\\sec \\theta -by\\operatorname{cosec}\\theta ={{a}^{2}}-{{b}^{2}}$</p><ul><li>$\\frac{\\text{ax}\\left( 1+{{\\tan }^{2}}\\frac{\\theta }{2} \\right)}{\\left( 1-{{\\tan }^{2}}\\frac{\\theta }{2} \\right)}-\\frac{\\text{by}\\left( 1+{{\\tan }^{2}}\\frac{\\theta }{2} \\right)}{2\\tan \\frac{\\theta }{2}}={{\\text{a}}^{2}}-{{\\text{b}}^{2}}$</li></ul><p>⇒ Let $\\tan \\frac{\\theta }{2}=\\text{t}$</p><p>⇒ $by{{t}^{4}}+2\\left( ax+{{a}^{2}}-{{b}^{2}} \\right){{t}^{3}}+2\\left( ax-{{a}^{2}}+{{b}^{2}} \\right)t-by=0$</p><p>If this normal passes through a given point $\\left( \\text{h},\\text{k} \\right)$, then</p><p>$bk{{t}^{4}}+2\\left( ah+{{a}^{2}}-{{b}^{2}} \\right){{t}^{3}}+2\\left( ah-{{a}^{2}}+{{b}^{2}} \\right)t-bk=0$</p><p>This is a four degree equation in t which means maximum four normals can be drawn from a given point to the ellipse.</p><p>Let ${{t}_{1}},{{t}_{2}},{{t}_{3}}$ and ${{t}_{4}}$ be the roots of this equation, so that,</p><p>$\\mathrm{t}_1+\\mathrm{t}_2+\\mathrm{t}_3+\\mathrm{t}_4=-2 \\frac{\\mathrm{ah}+\\mathrm{a}^2 \\mathrm{e}^2}{\\mathrm{bk}}$ ...(i)</p><p>$\\Sigma \\mathrm{t}_1 \\mathrm{t}_2=0$ ...(ii)</p><p>$\\Sigma \\mathrm{t}_1 \\mathrm{t}_2 \\mathrm{t}_3=-2 \\frac{\\mathrm{ah}-\\mathrm{a}^2 \\mathrm{e}^2}{\\mathrm{bk}}$ ...(iii)</p><p>and $\\mathrm{t}_1 \\mathrm{t}_2 \\mathrm{t}_4=-1$ ...(iv)</p><p>we know</p><p>$\\tan \\left( \\frac{{{\\theta }_{1}}}{2}+\\frac{{{\\theta }_{2}}}{2}+\\frac{{{\\theta }_{3}}}{2}+\\frac{{{\\theta }_{4}}}{2} \\right)=\\frac{{{\\text{s}}_{1}}-{{\\text{s}}_{3}}}{1-{{\\text{s}}_{2}}+{{\\text{s}}_{4}}}=\\frac{{{\\text{s}}_{1}}-{{\\text{s}}_{3}}}{0}=\\infty \\,\\{from\\,\\,trigo\\}$</p><p>∴ $\\frac{{{\\theta }_{1}}+{{\\theta }_{2}}+{{\\theta }_{3}}+{{\\theta }_{4}}}{2}=\\text{n}\\pi +\\frac{\\pi }{2}$</p><p>$ $</p>",
+      "position": 0,
+      "qcConcept": "66a0dd57c03b9dcaf1afea7e"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f4a2d384bfb4a5380a8",
+      "title": "The equation of the normal to the ellipse $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ at the positive end of latus rectum in the first quadrant",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f4a2d384bfb4a5380a9",
+      "title": "The line $y=m x+c$ is a normal to the ellipse $\\frac{x^2}{a^2}+\\frac{y^2}{a^2}=1$, if $c=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f4a2d384bfb4a5380aa",
+      "title": "The equation of normal at the point $(0,3)$ of the ellipse $9 x^2+5 y^2=45$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f4a2d384bfb4a5380ab",
+      "title": "The equation of tangent and normal at point $(3,-2)$ of ellipse $4 x^2+9 y^2=36$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f4a2d384bfb4a5380ac",
+      "title": "The value of $\\lambda$, for which the line $2 x-\\frac{8}{3} \\lambda y=-3$ is a normal to the conic $x^2+\\frac{y^2}{4}=1$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

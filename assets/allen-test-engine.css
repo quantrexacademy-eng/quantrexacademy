@@ -1,0 +1,652 @@
+/* Quantrex Academy CBT theme — overrides marks-test-engine */
+/* Allen Digital / CBT interface theme for Quantrex tests */
+:root {
+  --allen-blue: #003DA5;
+  --allen-blue-dark: #002B75;
+  --allen-blue-light: #E8F0F8;
+  --allen-orange: #F58220;
+  /* ExamGoal-style solid blue top strip */
+  --allen-header-bg: #1565C0;
+  --allen-header-blue: #1565C0;
+  --allen-body-bg: #F4F7FB;
+  --allen-card: #FFFFFF;
+  --allen-border: #C5D4E8;
+  --allen-text: #1A2B4A;
+  --allen-muted: #5A6F8C;
+  --allen-green: #16a34a;
+  --allen-red: #dc2626;
+  --allen-purple: #7c3aed;
+}
+/* Palette legend chips — classic CBT colors */
+.mtk-test-root.allen-cbt .mtk-legend-answered,
+.mtk-test-root.allen-cbt .pal-ans { background: #16a34a !important; color: #fff !important; }
+.mtk-test-root.allen-cbt .mtk-legend-not-answered,
+.mtk-test-root.allen-cbt .pal-na { background: #dc2626 !important; color: #fff !important; }
+.mtk-test-root.allen-cbt .mtk-legend-marked,
+.mtk-test-root.allen-cbt .pal-mark { background: #7c3aed !important; color: #fff !important; }
+.mtk-test-root.allen-cbt .mtk-legend-not-visited,
+.mtk-test-root.allen-cbt .pal-nv { background: #e2e8f0 !important; color: #334155 !important; border: 1px solid #94a3b8; }
+.mtk-test-root.allen-cbt .mtk-header,
+.mtk-test-root.allen-practice .mtk-header {
+  min-height: 52px;
+  background: var(--allen-header-blue, #1565C0) !important;
+  border-bottom: none !important;
+  box-shadow: 0 2px 8px rgba(21, 101, 192, 0.28);
+  color: #fff !important;
+}
+.mtk-test-root.allen-cbt .mtk-brand-text,
+.mtk-test-root.allen-practice .mtk-brand-text,
+.mtk-test-root.allen-practice .mtk-prac-progress {
+  font-weight: 800; letter-spacing: .02em; font-size: 15px;
+  color: #fff !important;
+}
+
+body.allen-cbt-active { background: var(--allen-body-bg); }
+body.marks-test-active.allen-cbt-active { background: var(--allen-body-bg); }
+body.allen-practice-active .mtk-test-root.allen-practice { min-height: 100vh; height: auto; }
+/* Mouse-wheel + touch scroll on practice (full page, not locked) */
+body.allen-practice-active {
+  overflow: hidden !important;
+  height: 100%;
+}
+body.allen-practice-active #app-main,
+body.marks-test-active #app-main {
+  position: fixed; inset: 0; z-index: 9500;
+  padding: 0; max-width: none;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  touch-action: pan-y pinch-zoom !important;
+  pointer-events: auto !important;
+  background: var(--allen-body-bg, #f4f7fb);
+}
+body.allen-practice-active .mtk-test-root.allen-practice .mtk-body {
+  min-height: auto !important;
+  height: auto !important;
+  align-items: start;
+}
+body.allen-practice-active .mtk-test-root.allen-practice .mtk-main {
+  overflow: visible !important;
+  max-height: none !important;
+  pointer-events: auto !important;
+  touch-action: pan-y pinch-zoom !important;
+}
+body.allen-practice-active .mtk-test-root.allen-practice .mtk-palette {
+  max-height: calc(100vh - 100px);
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+}
+body.marks-test-active { background: var(--allen-body-bg, #f4f7fb); }
+
+/* Never let an empty mount block the whole app */
+body:not(.marks-test-active):not(.allen-practice-active) #app-main {
+  position: relative !important;
+  inset: auto !important;
+  z-index: auto !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  overflow: visible !important;
+}
+
+/* ── Instructions ── */
+.allen-instr-fullpage {
+  position: fixed; inset: 0; z-index: 10050;
+  display: flex; flex-direction: column;
+  background: var(--allen-body-bg); color: var(--allen-text);
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+.allen-instr-top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 24px; background: var(--allen-header-blue, #1565C0);
+  border-bottom: none; color: #fff;
+}
+.allen-instr-brand { display: flex; align-items: center; gap: 12px; }
+.allen-instr-brand strong { display: block; font-size: 17px; font-weight: 800; letter-spacing: .02em; }
+.allen-instr-brand small { color: rgba(255,255,255,.82); font-size: 13px; }
+.allen-instr-exit {
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.35);
+  color: #fff; border-radius: 8px; padding: 10px 18px; cursor: pointer;
+  font-family: inherit; font-weight: 700; font-size: 15px;
+  z-index: 2; position: relative;
+}
+.allen-instr-exit:hover { background: rgba(255,255,255,.22); }
+.allen-instr-scroll { flex: 1; overflow-y: auto; }
+.allen-instr-inner { max-width: 900px; margin: 0 auto; padding: 28px 32px 40px; }
+.allen-instr-banner {
+  background: linear-gradient(135deg, var(--allen-blue), var(--allen-blue-dark));
+  color: #fff; border-radius: 10px; padding: 22px 26px; margin-bottom: 20px;
+  border-left: 5px solid var(--allen-orange);
+}
+.allen-instr-title { font-size: 30px; font-weight: 800; margin: 0 0 8px; font-family: 'Poppins', 'Literata', Georgia, serif; line-height: 1.25; }
+.allen-instr-desc { margin: 0; font-size: 17px; opacity: .92; line-height: 1.5; }
+.allen-instr-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px;
+}
+.allen-instr-stats div {
+  background: var(--allen-card); border: 1px solid var(--allen-border);
+  border-radius: 10px; padding: 14px; text-align: center;
+  box-shadow: 0 1px 3px rgba(0,45,120,.06);
+}
+.allen-instr-stats span {
+  display: block; font-size: 12px; text-transform: uppercase;
+  letter-spacing: .07em; color: var(--allen-muted); margin-bottom: 6px;
+}
+.allen-instr-stats strong { font-size: 28px; color: var(--allen-blue); font-family: Poppins, Kanit, sans-serif; }
+.allen-instr-lead { font-size: 17px; margin: 0 0 20px; line-height: 1.65; }
+.allen-instr-block { margin-bottom: 22px; }
+.allen-instr-block h3 {
+  font-size: 17px; font-weight: 800; color: var(--allen-blue);
+  margin: 0 0 12px; text-transform: uppercase; letter-spacing: .04em;
+}
+.allen-instr-block p { font-size: 16px; line-height: 1.65; margin: 0; }
+.allen-instr-table { width: 100%; border-collapse: collapse; font-size: 15px; background: var(--allen-card); }
+.allen-instr-table th, .allen-instr-table td {
+  border: 1px solid var(--allen-border); padding: 12px 14px; text-align: left;
+}
+.allen-instr-table th { background: var(--allen-blue-light); color: var(--allen-blue-dark); font-weight: 700; font-size: 14px; }
+.allen-instr-note { font-size: 14px; color: var(--allen-muted); margin-top: 10px; line-height: 1.6; }
+.allen-instr-list {
+  margin: 0; padding-left: 24px; line-height: 1.8; font-size: 16px;
+  color: var(--allen-text); font-family: 'Inter', 'Literata', Georgia, serif;
+}
+.allen-instr-legend {
+  display: flex; flex-wrap: wrap; gap: 14px 22px; font-size: 15px; color: var(--allen-text);
+}
+.allen-instr-legend span { display: flex; align-items: center; gap: 8px; }
+.allen-instr-check {
+  display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 700;
+  margin-top: 16px; cursor: pointer; color: var(--allen-blue-dark);
+}
+.allen-instr-check input { width: 18px; height: 18px; }
+.allen-instr-foot {
+  display: flex; justify-content: flex-end; gap: 12px;
+  padding: 14px 28px; background: var(--allen-card);
+  border-top: 2px solid var(--allen-border);
+}
+.allen-instr-cancel {
+  padding: 14px 22px; border-radius: 8px; border: 1px solid var(--allen-border);
+  background: #fff; color: var(--allen-text); font-weight: 700; cursor: pointer; font-family: inherit;
+  font-size: 15px;
+}
+.allen-instr-proceed {
+  padding: 14px 28px; border-radius: 8px; border: none;
+  background: var(--allen-orange); color: #fff; font-weight: 800;
+  cursor: pointer; font-family: inherit; font-size: 16px;
+}
+.allen-instr-proceed:disabled { opacity: .45; cursor: not-allowed; }
+.allen-instr-proceed:hover:not(:disabled) { filter: brightness(1.06); }
+
+/* ── Test engine (Allen CBT) ── */
+.mtk-test-root.allen-cbt {
+  background: var(--allen-body-bg); color: var(--allen-text);
+}
+.mtk-test-root.allen-cbt .mtk-header,
+.mtk-test-root.allen-practice .mtk-header {
+  background: var(--allen-header-blue, #1565C0) !important;
+  border-bottom: none !important;
+  color: #fff !important;
+}
+.mtk-test-root.allen-cbt .mtk-brand-text,
+.mtk-test-root.allen-cbt .mtk-timer,
+.mtk-test-root.allen-cbt .mtk-q-num,
+.mtk-test-root.allen-practice .mtk-brand-text,
+.mtk-test-root.allen-practice .mtk-prac-progress { color: #fff !important; }
+.mtk-test-root.allen-cbt .mtk-close-btn {
+  border-color: rgba(255,255,255,.4); color: rgba(255,255,255,.9); background: rgba(255,255,255,.08);
+}
+.mtk-test-root.allen-cbt .mtk-close-btn:hover { background: rgba(255,255,255,.18); color: #fff; }
+.mtk-test-root.allen-cbt .allen-brand { gap: 10px; }
+.mtk-test-root.allen-cbt .allen-brand svg { flex-shrink: 0; }
+.mtk-test-root.allen-cbt .mtk-logo {
+  background: var(--qx-gradient, linear-gradient(135deg, #0D9488 0%, #6366F1 55%, #A855F7 100%));
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(99, 102, 241, 0.35);
+}
+/* Practice / CBT header brand mark — always visible, no monochrome filter */
+.mtk-test-root.allen-cbt .mtk-brand > svg,
+.mtk-test-root.allen-practice .mtk-brand > svg,
+.mtk-test-root .qx-brand-logo-svg,
+.mtk-test-root .mtk-logo img,
+.mtk-test-root .mtk-brand img.qx-ui-brand-logo {
+  filter: none !important;
+  -webkit-filter: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+.mtk-test-root .mtk-logo.mtk-logo-img {
+  width: 32px;
+  height: 32px;
+  padding: 2px;
+  box-sizing: border-box;
+  background: #05070d;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 175, 255, 0.3);
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.mtk-test-root .mtk-logo.mtk-logo-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.mtk-test-root.allen-cbt .mtk-submit-top {
+  background: var(--allen-orange); border-radius: 6px;
+}
+.mtk-test-root.allen-cbt .mtk-submit-top:hover { background: #e07418; }
+.mtk-test-root.allen-cbt .mtk-header-tools {
+  background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.25);
+}
+.mtk-test-root.allen-cbt .mtk-theme-btn,
+.mtk-test-root.allen-cbt .mtk-font-btn {
+  border-color: rgba(255,255,255,.35); color: #fff; background: rgba(255,255,255,.08);
+}
+.mtk-test-root.allen-cbt .mtk-theme-lbl { color: rgba(255,255,255,.85); }
+.mtk-test-root.allen-cbt .mtk-stop-btn {
+  border-color: #fbbf24; color: #fde68a; background: rgba(251,191,36,.15);
+}
+.mtk-test-root.allen-cbt .mtk-sec-bar {
+  background: var(--allen-blue-light); border-bottom: 1px solid var(--allen-border);
+}
+.mtk-test-root.allen-cbt .mtk-sec-tab { color: var(--allen-muted); }
+.mtk-test-root.allen-cbt .mtk-sec-tab.active { color: var(--allen-blue-dark); }
+.mtk-test-root.allen-cbt .mtk-sec-tab.mtk-sec-math.active { border-bottom-color: #2563eb; background: rgba(37,99,235,.1); color: #1d4ed8; }
+.mtk-test-root.allen-cbt .mtk-sec-tab.mtk-sec-phys.active { border-bottom-color: #16a34a; background: rgba(22,163,74,.1); color: #15803d; }
+.mtk-test-root.allen-cbt .mtk-sec-tab.mtk-sec-chem.active { border-bottom-color: #9333ea; background: rgba(147,51,234,.1); color: #7e22ce; }
+.mtk-test-root.allen-cbt .mtk-body {
+  grid-template-columns: minmax(0, 1fr) 272px;
+}
+.mtk-test-root.allen-cbt .mtk-main {
+  background: var(--allen-card);
+  padding: 10px 16px 12px;
+}
+.mtk-test-root.allen-cbt .mtk-q-head { margin-bottom: 8px; }
+.mtk-test-root.allen-cbt .mtk-q-text { margin-bottom: 8px; line-height: 1.45; }
+.mtk-test-root.allen-cbt .qx-question-body .mtk-q-text { margin-bottom: 4px !important; }
+.mtk-test-root.allen-cbt .mtk-options { margin-bottom: 16px; gap: 12px; }
+.mtk-test-root.allen-cbt .mtk-options-grid .mtk-opt,
+.mtk-test-root.allen-cbt .mtk-options-exam-cols .mtk-opt {
+  padding: 12px 14px;
+  align-items: flex-start;
+  min-height: 48px;
+  border-radius: 12px;
+}
+.mtk-test-root.allen-cbt .mtk-opt:not(.mtk-opt-multi) .mtk-opt-radio { display: none !important; }
+.mtk-test-root.allen-cbt .mtk-opt-letter {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  background: var(--allen-blue, #2563eb);
+  color: #fff !important;
+  font-weight: 800;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 61, 165, 0.3);
+}
+.mtk-test-root.allen-cbt .mtk-opt.selected .mtk-opt-letter {
+  background: var(--allen-blue-dark, #1d4ed8);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.4);
+}
+.mtk-test-root.allen-cbt .mtk-palette {
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
+}
+.mtk-test-root.allen-cbt .mtk-pal-groups { flex: 1; min-height: 0; }
+.mtk-test-root.allen-cbt .mtk-q-text,
+.mtk-test-root.allen-cbt .mtk-q-text .qx-content,
+.mtk-test-root.allen-cbt .mtk-opt-text,
+.mtk-test-root.allen-cbt .mtk-opt-text .qx-content { color: var(--allen-text); }
+.mtk-test-root.allen-cbt[data-test-theme="light"] .mtk-opt {
+  background: #f8fafc;
+  border-color: var(--allen-border);
+  color: var(--allen-text);
+}
+.mtk-test-root.allen-cbt[data-test-theme="light"] .mtk-opt:hover {
+  border-color: var(--allen-blue);
+  background: #fff;
+}
+.mtk-test-root.allen-cbt[data-test-theme="light"] .mtk-opt.selected {
+  border-color: var(--allen-blue);
+  background: #eff6ff;
+  box-shadow: 0 0 0 1px rgba(0, 61, 165, 0.2);
+}
+.mtk-test-root.allen-cbt .mtk-opt-multi .mtk-opt-check { margin-right: 2px; }
+.mtk-test-root.allen-cbt .mtk-controls { border-top-color: var(--allen-border); }
+.mtk-test-root.allen-cbt .mtk-btn-clear,
+.mtk-test-root.allen-cbt .mtk-btn-prev {
+  background: #fff; border: 1px solid var(--allen-border); color: var(--allen-text);
+}
+.mtk-test-root.allen-cbt .mtk-btn-review { background: #7c3aed; color: #fff; }
+.mtk-test-root.allen-cbt .mtk-btn-save {
+  background: var(--allen-blue); color: #fff; box-shadow: none;
+}
+.mtk-test-root.allen-cbt .mtk-btn-save:hover:not(:disabled) { background: var(--allen-blue-dark); }
+.mtk-test-root.allen-cbt .mtk-palette {
+  background: var(--allen-blue-light); border-left: 1px solid var(--allen-border);
+}
+.mtk-test-root.allen-cbt .mtk-pal-head-row strong,
+.mtk-test-root.allen-cbt .mtk-pal-head { color: var(--allen-blue-dark); font-size: 18px; }
+.mtk-test-root.allen-cbt .mtk-pal-legend { color: var(--allen-muted); font-size: 13px; }
+.mtk-test-root.allen-cbt .mtk-pal-stats { color: var(--allen-text); font-size: 13px; }
+.mtk-test-root.allen-cbt .mtk-pal-grp-label { font-size: 12px; color: var(--allen-muted); }
+.mtk-test-root.allen-cbt .mtk-pal-cell { font-size: 13px; }
+.mtk-test-root.allen-cbt .mtk-pal-cell.unvisited { background: #fff; border-color: #94a3b8; color: #64748b; }
+.mtk-test-root.allen-cbt .mtk-pal-cell.cur { box-shadow: 0 0 0 2px var(--allen-blue); border-color: var(--allen-blue); }
+.mtk-test-root.allen-cbt .mtk-submit-btn { background: var(--allen-orange); }
+.mtk-test-root.allen-cbt .mtk-submit-btn:hover { background: #e07418; }
+.mtk-test-root.allen-cbt .mtk-pos-mark { background: #16a34a; }
+.mtk-test-root.allen-cbt .mtk-neg-mark { background: #dc2626; }
+.mtk-test-root.allen-cbt .mtk-font-btn,
+.mtk-test-root.allen-cbt .mtk-font-gear {
+  background: #fff; border-color: var(--allen-border); color: var(--allen-blue);
+}
+.mtk-test-root.allen-cbt .mtk-numerical .qx-num-input {
+  background: #fff; border-color: var(--allen-border); color: var(--allen-text);
+}
+
+/* Practice mode extras */
+.mtk-test-root.allen-practice .mtk-prac-progress {
+  font-family: Kanit, sans-serif; font-size: 18px; font-weight: 800; color: #fff;
+}
+.allen-prac-chapter {
+  font-size: 12px; color: var(--allen-muted); font-weight: 600; margin-left: 8px;
+}
+/* Difficulty chip next to type badge (actual Easy / Medium / Hard only) */
+.mtk-q-head .tag.tag-diff {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+.mtk-q-head .tag-diff.diff-easy {
+  background: rgba(16, 185, 129, 0.16);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+.mtk-q-head .tag-diff.diff-medium {
+  background: rgba(245, 158, 11, 0.16);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.45);
+}
+.mtk-q-head .tag-diff.diff-hard {
+  background: rgba(239, 68, 68, 0.16);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.45);
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-q-head .tag-diff.diff-easy { color: #6ee7b7; }
+.mtk-test-root[data-test-theme="dark"] .mtk-q-head .tag-diff.diff-medium { color: #fcd34d; }
+.mtk-test-root[data-test-theme="dark"] .mtk-q-head .tag-diff.diff-hard { color: #fca5a5; }
+.mtk-test-root.allen-practice .mtk-body { min-height: calc(100vh - 120px); }
+/* Book figures always visible + colorful local assets */
+body.qx-book-mode .mtk-main .qx-marks-native img,
+body.qx-book-mode .mtk-main .qx-marks-native-q img,
+.mtk-test-root.qx-book-q .mtk-main .qx-marks-native img,
+.mtk-test-root.qx-book-q .mtk-main img.qx-book-fig {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: min(100%, 420px) !important;
+  max-height: min(42vh, 320px) !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 8px 0 !important;
+  object-fit: contain !important;
+  background: #fff !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  mix-blend-mode: normal !important;
+}
+.mtk-test-root.allen-practice #qaCommunity {
+  margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--allen-border);
+}
+
+/* Countdown — Allen style */
+body.allen-cbt-active .marks-countdown-overlay { background: var(--allen-header-bg); }
+body.allen-cbt-active .marks-countdown-num { color: var(--allen-orange); }
+body.allen-cbt-active .marks-countdown-grab { color: #fff; }
+
+/* Dark mode — full CBT shell (light/dark toggle) */
+.mtk-test-root.allen-cbt[data-test-theme="dark"] {
+  background: #0f1419;
+  color: #e2e8f0;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-header {
+  background: var(--allen-header-blue, #1565C0) !important;
+  border-bottom: none !important;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-main {
+  background: #1a1f28;
+  color: #e2e8f0;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-q-text,
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-q-text .qx-content,
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-opt-text {
+  color: #e8eaed;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-opt {
+  background: #232733;
+  border-color: #3b4254;
+  color: #e2e8f0;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-opt:hover {
+  border-color: #60a5fa;
+  background: #2a3040;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-opt.selected {
+  border-color: #3b82f6;
+  background: rgba(37, 99, 235, 0.14);
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.35);
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-opt-letter {
+  background: #2563eb;
+  color: #fff !important;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-opt.selected .mtk-opt-letter {
+  background: #1d4ed8;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-palette {
+  background: #1a1f28;
+  border-left-color: #2a2f3d;
+  color: #e2e8f0;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-sec-bar {
+  background: #141820;
+  border-bottom-color: #2a2f3d;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-sec-tab {
+  color: #94a3b8;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-sec-tab.active {
+  color: #f1f5f9;
+  border-bottom-color: #F58220;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-brand-text,
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-timer,
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-q-num {
+  color: #f1f5f9;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-header-tools {
+  background: rgba(20,24,32,.9);
+  border-color: #3b4254;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-theme-lbl {
+  color: #94a3b8;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-font-btn {
+  background: #232733;
+  border-color: #3b4254;
+  color: #cbd5e1;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-btn-clear,
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-btn-prev {
+  background: #374151;
+  border-color: #4b5563;
+  color: #e5e7eb;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .mtk-controls {
+  border-top-color: #2a2f3d;
+}
+.mtk-test-root.allen-cbt[data-test-theme="dark"] .qx-opt-fig {
+  background: #fff;
+}
+
+@media (max-width: 900px) {
+  .allen-instr-stats { grid-template-columns: 1fr; }
+  .allen-instr-inner { padding: 20px 16px 32px; }
+}
+
+@media (max-width: 720px) {
+  .mtk-test-root.allen-cbt .mtk-header {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 10px;
+    min-height: auto;
+  }
+  .mtk-test-root.allen-cbt .mtk-header-left { min-width: 0; flex: 1 1 100%; }
+  .mtk-test-root.allen-cbt .mtk-brand-text {
+    font-size: 12px;
+    max-width: min(52vw, 200px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .mtk-test-root.allen-cbt .mtk-theme-lbl { display: none; }
+  .mtk-test-root.allen-cbt .mtk-header-tools { padding: 4px 6px; gap: 4px; }
+  .mtk-test-root.allen-cbt .mtk-submit-top { padding: 6px 12px; font-size: 12px; }
+  .mtk-test-root.allen-cbt .mtk-stop-btn { padding: 6px 10px; font-size: 12px; }
+  .mtk-test-root.allen-cbt .mtk-timer { font-size: 13px; }
+  .mtk-test-root.allen-cbt .mtk-body { grid-template-columns: 1fr; }
+  .mtk-test-root.allen-cbt .mtk-palette { max-height: 240px; }
+}
+
+/* qx-prac-eg-tools:v1 */
+/* Practice header tools: match ExamGoal icon pills */
+.mtk-test-root.allen-practice .qx-prac-tools.eg-top-tools {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.12);
+}
+.mtk-test-root.allen-practice .qx-prac-tools .eg-ico {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #fff !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+}
+.mtk-test-root.allen-practice .qx-prac-tools .eg-ico svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+.mtk-test-root.allen-practice .qx-prac-tools .eg-ico:hover {
+  background: rgba(255,255,255,.18);
+}
+.mtk-test-root.allen-practice .qx-prac-tools .eg-ico.star { color: #fbbf24 !important; }
+.mtk-test-root.allen-practice .qx-prac-tools .eg-ico.star.on {
+  background: rgba(251,191,36,.28);
+}
+.mtk-test-root.allen-practice .qx-prac-tools .eg-ico.warn {
+  color: #fdba74 !important;
+  font-size: 18px;
+}
+.mtk-test-root.allen-practice .qx-prac-tools .qx-bm-lbl,
+.mtk-test-root.allen-practice .qx-prac-tools .qx-report-fab {
+  display: none !important;
+}
+.mtk-test-root.allen-practice .qx-prac-view-wrap { position: relative; }
+.mtk-test-root.allen-practice .qx-prac-view-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 40;
+  min-width: 240px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #fff;
+  color: #0f172a;
+  box-shadow: 0 12px 40px rgba(15,23,42,.25);
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .qx-prac-view-panel {
+  background: #1e293b;
+  color: #e2e8f0;
+  border: 1px solid #334155;
+}
+
+/* Dark/light: never hide question / options / solution / footer */
+.mtk-test-root.allen-practice .mtk-q-text,
+.mtk-test-root.allen-practice .mtk-opt-text,
+.mtk-test-root.allen-practice .qx-content,
+.mtk-test-root.allen-practice .sol-body,
+.mtk-test-root.allen-practice .qx-sol-body,
+.mtk-test-root.allen-practice #qaSolReveal,
+.mtk-test-root.allen-practice #qaResult,
+.mtk-test-root.allen-practice .result-box,
+.mtk-test-root.allen-practice .eg-foot,
+.mtk-test-root.allen-practice .eg-show,
+.mtk-test-root.allen-practice .eg-action-row {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-q-text,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-opt-text,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .qx-content,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .sol-body,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .qx-sol-body,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .result-box,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .eg-foot,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .eg-show,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .eg-note,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .allen-prac-chapter,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-q-num {
+  color: #e2e8f0 !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .result-box {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .eg-btn {
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+  background: #1e293b !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="dark"] .eg-btn-next,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .eg-check {
+  color: #fff !important;
+}
+.mtk-test-root.allen-practice[data-test-theme="light"] .mtk-q-text,
+.mtk-test-root.allen-practice[data-test-theme="light"] .mtk-opt-text,
+.mtk-test-root.allen-practice[data-test-theme="light"] .qx-content,
+.mtk-test-root.allen-practice[data-test-theme="light"] .sol-body {
+  color: #0f172a !important;
+}
+@media (max-width: 720px) {
+  .mtk-test-root.allen-practice .qx-prac-tools .eg-ico {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+  }
+}

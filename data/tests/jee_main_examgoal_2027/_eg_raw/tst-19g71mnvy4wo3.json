@@ -1,0 +1,1699 @@
+{
+  "testId": "tst-19g71mnvy4wo3",
+  "title": "Rotational Motion - Chapter Test",
+  "type": "chapter",
+  "section": "Rotational Motion",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-08-15T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "c19c5806-63f1-4938-96bf-759fead97d01",
+  "questions_count": 25,
+  "solutions_count": 25,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g71mnvy4wo3",
+    "defaultLanguage": "en",
+    "description": "Questions from all topics of the chapter",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-15T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 100,
+    "maxNegMarks": 25,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 80,
+        "maxNegMarks": 20,
+        "timeAllotted": 2880000,
+        "totalQuestions": 20,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msi5yvjy",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform cylinder free to turn around a fixed axis has a string wrapped around it as shown to the right. The string is pulled with a force F equal to the cylinder's weight. What is the acceleration of the string?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi5vgck%2F77855109-c911-4f75-af3f-4cf5d3550515%2F8a417440-91f0-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5vgcl.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi5vgck%2F77855109-c911-4f75-af3f-4cf5d3550515%2F8a417440-91f0-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5vgcl.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2g$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$g$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{g}{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{g}{4}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Mass of the uniform cylinder $=\\mathrm{M}$</p>\n<p>Radius of the cylinder $=\\mathrm{R}$</p>\n<p>The moment of inertia about its fixed central axis is $\\mathrm{I}=\\frac{1}{2} \\mathrm{MR}^2$</p>\n<p>Applied pull force, $\\mathrm{F}=$ Weight of cylinder $=\\mathrm{Mg}$</p>\n<p>The string is wrapped around the outer surface of the cylinder, so the pulling force F acts tangentially at distance R:</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi5wzl6%2F0ba48a48-7261-4a84-a94b-64c37e89f1ae%2Fb4ed38a0-91f0-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5wzl7.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi5wzl6%2F0ba48a48-7261-4a84-a94b-64c37e89f1ae%2Fb4ed38a0-91f0-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5wzl7.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$\\tau = F \\cdot R = (Mg)R$$</p>\n<p>Using rotational dynamics equation ($\\tau = I\\alpha$):</p>\n<p>$$(Mg)R = \\left(\\frac{1}{2}MR^2\\right)\\alpha$$</p>\n<p>$$MgR = \\frac{1}{2}MR^2\\alpha$$</p>\n<p>$$g = \\frac{1}{2}R\\alpha \\Rightarrow \\alpha = \\frac{2g}{R}$$</p>\n<p>Since the string unwinds from the outer rim without slipping, the linear acceleration $a$ of the string is equal to the tangential acceleration of a point on the rim $a = R\\cdot\\alpha$</p>\n<p>Substituting $\\alpha = 2gR$, the acceleration of the sting is,</p>\n<p>$$a = R\\cdot\\left(\\frac{2g}{R}\\right) = 2g$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक स्थिर अक्ष के परितः घूमने के लिए स्वतंत्र एक एकसमान बेलन पर एक डोरी लपेटी गई है, जैसा कि दाईं ओर दिखाया गया है। डोरी को बेलन के भार के बराबर बल F से खींचा जाता है। डोरी का त्वरण क्या है?</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi5vgck%2F77855109-c911-4f75-af3f-4cf5d3550515%2F8a417440-91f0-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5vgcl.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi5vgck%2F77855109-c911-4f75-af3f-4cf5d3550515%2F8a417440-91f0-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5vgcl.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2g$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$g$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{g}{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{g}{4}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-motion-about-fixed-axis-of-rigid-body",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msgbzlhz",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The beam and pans of a balance have negligible mass. An object weighs $W_1$ when placed in one pan and $W_2$ when placed in the other pan. The weight $W$ of the object is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\sqrt{W_1 W_2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\sqrt{(W_1 + W_2)}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$W_1^2 + W_2^2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{(W_1^{-1} + W_2^{-1})}{2}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Let the real weight of the object is $W$.</p>\n<p>The length of left arm of balance is $\\mathrm{L}_1$ and that of right arm $\\mathrm{L}_2$, with fulcrum at A.</p>\n<p>For equilibrium of a balance the net torque about the fulcrum should be equal to zero, torque on left arm is equal to torque on right arm.</p>\n<p>Case 1 when object placed in left pan</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msgbtn49%2F9953b979-3403-4f19-8e31-0e10df18a1c2%2F3d57b390-90ee-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgbtn4a.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msgbtn49%2F9953b979-3403-4f19-8e31-0e10df18a1c2%2F3d57b390-90ee-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgbtn4a.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Object of true weight $W$ is placed in the left pan with arm length $L_1$.</p>\n<p>To balance it, weight $W_1$ should be placed in the right pan with arm length $L_2$.</p>\n<p>Taking torque equilibrium about the fulcrum:</p>\n<p>$$W \\times L_1 = W_1 \\times L_2 \\Rightarrow \\frac{L_1}{L_2} = \\frac{W_1}{W} \\ldots \\text{(i)}$$</p>\n<p>Case 2 when object is placed in right pan</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msgbvpyu%2F11160029-2464-43ea-b883-f9b5838e6348%2F77297d60-90ee-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgbvpyv.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msgbvpyu%2F11160029-2464-43ea-b883-f9b5838e6348%2F77297d60-90ee-11f1-8960-eb3501eb7d16%2Ffile-6y3zli1msgbvpyv.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The same object of true weight $W$ is placed in the right pan with arm length $L_2$.</p>\n<p>To balance it, weight $W_2$ should be placed in the left pan with arm length $L_1$.</p>\n<p>Taking torque equilibrium about the fulcrum:</p>\n<p>$$W_2 \\times L_1 = W \\cdot L_2$$</p>\n<p>$$\\frac{L_1}{L_2} = \\frac{W}{W_2} \\ldots (ii)$$</p>\n<p>From both the equations,</p>\n<p>$$\\frac{W_1}{W} = \\frac{W}{W_2} \\Rightarrow W^2 = W_1 W_2$$</p>\n<p>$$\\Rightarrow W = \\sqrt{W_1 W_2}$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक तुला की डंडी और पलड़ों का द्रव्यमान नगण्य है। एक वस्तु को जब एक पलड़े में रखा जाता है तो उसका भार $W_1$ तथा जब दूसरे पलड़े में रखा जाता है तो उसका भार $W_2$ होता है। वस्तु का भार $W$ है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\sqrt{W_1 W_2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\sqrt{(W_1 + W_2)}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$W_1^2 + W_2^2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{(W_1^{-1} + W_2^{-1})}{2}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi6cf63",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform rod AB of length l is free to rotate in the vertical plane about a fixed horizontal axis passing through the end A. It starts rotating from rest from the vertical position as shown in figure. Its angular velocity after turning through an angle $\\theta$ is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi65uo9%2F0d05c723-5b2a-454a-a682-ef376258e93e%2Fab69a790-91f1-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi65uoa.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi65uo9%2F0d05c723-5b2a-454a-a682-ef376258e93e%2Fab69a790-91f1-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi65uoa.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\sqrt{\\frac{3g}{l}} \\sin \\theta$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\sqrt{\\frac{6g}{l}} \\sin \\frac{\\theta}{2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{\\frac{3g}{l}} \\cos \\theta$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{\\frac{3g}{l}} \\cos \\frac{\\theta}{2}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Uniform rod AB of length l and mass m hinged at upper end A .</p>\n<p>Initially it is in vertical position hanging vertically down and at rest</p>\n<p>So, the initial angular speed of rod is, $\\omega_0=0$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi675pl%2Fb532d5d1-c0df-43a7-8217-021f1c283f63%2Fcfbf6990-91f1-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi675pm.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi675pl%2Fb532d5d1-c0df-43a7-8217-021f1c283f63%2Fcfbf6990-91f1-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi675pm.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The Centre of mass of the rod is located at distance $\\mathrm{r}=\\frac{1}{2}$ from hinge A .</p>\n<p>Initial vertical distance of Centre of mass below hinge $\\mathrm{A} \\mathrm{h}_{\\mathrm{i}}=\\frac{1}{2}$.</p>\n<p>When the rod turns through an angle $\\theta$ relative to its initial vertical reference line</p>\n<p>Vertical distance of Centre of mass below hinge A at angle $\\theta$ is $\\mathrm{h}_{\\mathrm{f}}=\\frac{1}{2} \\cos \\theta$</p>\n<p>$$ \\Delta \\mathrm{h}=\\frac{1}{2}-\\frac{1}{2} \\cos \\theta=\\frac{1}{2}(1-\\cos \\theta) $$</p>\n<p>Using trigonometric half-angle identity $1-\\cos \\theta=2 \\sin ^2\\left(\\frac{\\theta}{2}\\right)$ :</p>\n<p>$$ \\Delta \\mathrm{h}=\\frac{1}{2} \\times 2 \\sin ^2\\left(\\frac{\\theta}{2}\\right)=1 \\sin ^2\\left(\\frac{\\theta}{2}\\right) $$</p>\n<p>So, the loss in potential energy is, $\\Delta \\mathrm{U}=\\mathrm{mg} \\Delta \\mathrm{h}=\\mathrm{mg} \\operatorname{lsin}^2\\left(\\frac{\\theta}{2}\\right)$</p>\n<p>For a uniform rod of mass m and length l pivoted at one end is $\\mathrm{I}_{\\mathrm{A}}=\\frac{1}{3} \\mathrm{~m} \\mathrm{l}^2$</p>\n<p>Using conservation of mechanical energy,</p>\n<p>Gain in rotational kinetic energy ($K_f$) = Loss in potential energy ($\\Delta U$):</p>\n<p>$$\\frac{1}{2} I_A \\, \\omega^2 = \\Delta U$$</p>\n<p>$$\\frac{1}{2} \\left(\\frac{1}{3} m l^2\\right) \\omega^2 = m g l \\sin^2\\left(\\frac{\\theta}{2}\\right)$$</p>\n<p>$$\\frac{1}{6} m l^2 \\, \\omega^2 = m g l \\sin^2\\left(\\frac{\\theta}{2}\\right)$$</p>\n<p>$$\\omega^2 = \\frac{6g}{l} \\sin^2\\left(\\frac{\\theta}{2}\\right) \\Rightarrow \\omega = \\sqrt{\\frac{6g}{l}} \\, \\sin\\left(\\frac{\\theta}{2}\\right)$$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>लम्बाई l की एकसमान छड़ AB एक स्थिर क्षैतिज अक्ष के परितः ऊर्ध्वाधर तल में घूमने के लिए स्वतंत्र है, जो सिरे A से होकर गुजरता है। यह चित्र में दर्शाए अनुसार ऊर्ध्वाधर स्थिति से विरामावस्था से घूमना शुरू करती है। कोण $\\theta$ से घूमने के बाद इसका कोणीय वेग है:</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi65uo9%2F0d05c723-5b2a-454a-a682-ef376258e93e%2Fab69a790-91f1-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi65uoa.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi65uo9%2F0d05c723-5b2a-454a-a682-ef376258e93e%2Fab69a790-91f1-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi65uoa.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\sqrt{\\frac{3g}{l}} \\sin \\theta$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\sqrt{\\frac{6g}{l}} \\sin \\frac{\\theta}{2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{\\frac{3g}{l}} \\cos \\theta$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{\\frac{3g}{l}} \\cos \\frac{\\theta}{2}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-motion-about-fixed-axis-of-rigid-body",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms8vneuj",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A disc of radius $\\frac{R}{2}$ is cut from a uniform disc of radius $R$ as shown in the figure. The mass of the disc (with cavity) is $M$. The moment of inertia of this disc about an axis $XX'$ which passes through the centre $O$ of the disc and is in the plane of the disc will be</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms8vivjb%2F8e2d3a68-cce0-442f-8537-c7c2b1bddcc0%2F03554a80-8cd5-11f1-ade7-6b9f7f58dea4%2Ffile-6y3zli1ms8vivjc.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms8vivjb%2F8e2d3a68-cce0-442f-8537-c7c2b1bddcc0%2F03554a80-8cd5-11f1-ade7-6b9f7f58dea4%2Ffile-6y3zli1ms8vivjc.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{7MR^2}{12} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{13MR^2}{24} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{13MR^2}{48} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{11MR^2}{36} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The radius of complete disc = $R$ and that of circular cavity = $r = \\frac{R}{2}$</p>\n<p>Distance between the centre of full disc $O$ and centre of cavity $O'$ = $d = \\frac{R}{2}$</p>\n<p>Let $\\sigma$ be the mass per unit area.</p>\n<p>Area of full disc is $A_{\\text{full}} = \\pi R^2$</p>\n<p>Area of cavity is $A_{\\text{cavity}} = \\pi \\left(\\frac{R}{2}\\right)^2 = \\frac{\\pi R^2}{4} = \\frac{A_{\\text{full}}}{4}$</p>\n<p>Then area of remaining disc (with cavity) is,</p>\n<p>$$A_{\\text{remaining}} = A_{\\text{full}} - A_{\\text{cavity}} = A_{\\text{full}} - \\frac{A_{\\text{full}}}{4} = \\frac{3}{4}A_{\\text{full}}$$</p>\n<p>It is given that the mass of the disc with cavity is $M$,</p>\n<p>$$M = \\sigma \\times A_{\\text{remaining}} = \\sigma \\times \\frac{3}{4}A_{\\text{full}}$$</p>\n<p>Therefore, the mass of the full complete disc $M_{\\text{full}}$ is:</p>\n<p>$$M_{\\text{full}} = \\sigma \\cdot A_{\\text{full}} = \\frac{4}{3}M$$</p>\n<p>The mass of the removed circular cavity portion $M_{\\text{cavity}}$ is:</p>\n<p>$$M_{\\text{cavity}} = \\sigma \\times A_{\\text{cavity}} = \\frac{1}{4}M_{\\text{full}} = \\frac{1}{3}M$$</p>\n<p>The axis $XX'$ passes through the centre $O$ in the plane of the disc.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms8vju6m%2Fda7f8755-4035-42c5-9e19-8023fc0f6c98%2F1e18cae0-8cd5-11f1-ade7-6b9f7f58dea4%2Ffile-6y3zli1ms8vju6n.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms8vju6m%2Fda7f8755-4035-42c5-9e19-8023fc0f6c98%2F1e18cae0-8cd5-11f1-ade7-6b9f7f58dea4%2Ffile-6y3zli1ms8vju6n.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>For any diameter axis in the plane of a uniform disc of mass $\\mathrm{M}_{\\text {full }}$ and radius R:</p>\n<p>$$ I_{\\text {full }}=\\frac{1}{4} M_{\\text {full }} R^2=\\frac{1}{4}\\left(\\frac{4}{3} M\\right) R^2=\\frac{1}{3} M R^2 $$</p>\n<p>The centre of cavity $\\mathrm{O}^{\\prime}$ lies along a line inclined at $45^{\\circ}$ to the axis $\\mathrm{XX}^{\\prime}$.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms8vl8k3%2Fb5e55742-0cce-4722-a3a2-bf573b31bbf5%2F45027e30-8cd5-11f1-ade7-6b9f7f58dea4%2Ffile-6y3zli1ms8vl8k4.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms8vl8k3%2Fb5e55742-0cce-4722-a3a2-bf573b31bbf5%2F45027e30-8cd5-11f1-ade7-6b9f7f58dea4%2Ffile-6y3zli1ms8vl8k4.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Perpendicular distance from centre of cavity O' to line XX':</p>\n<p>$$h = d\\sin(45^\\circ) = \\left(\\frac{R}{2}\\right)\\left(\\frac{1}{\\sqrt{2}}\\right) = \\frac{R}{2\\sqrt{2}}$$</p>\n<p>Moment of inertia of cavity about its own central diameter axis parallel to XX' is,</p>\n<p>$$I_{\\text{cavity,cm}} = \\frac{1}{4} M_{\\text{cavity}} r^2 = \\frac{1}{4}\\left(\\frac{1}{3}M\\right)\\left(\\frac{R}{2}\\right)^2 = \\frac{1}{12}M\\left(\\frac{R^2}{4}\\right) = \\frac{1}{48}MR^2$$</p>\n<p>Using parallel axis theorem moment of inertia of cavity about axis XX' is,</p>\n<p>$$I_{\\text{cavity,XX'}} = I_{\\text{cavity,cm}} + M_{\\text{cavity}}h^2$$</p>\n<p>$$I_{\\text{cavity,XX'}} = \\frac{1}{48}MR^2 + \\left(\\frac{1}{3}M\\right)\\left(\\frac{R}{2\\sqrt{2}}\\right)^2 = \\frac{1}{48}MR^2 + \\left(\\frac{1}{3}M\\right)\\left(\\frac{R^2}{8}\\right) = \\frac{1}{48}MR^2 + \\frac{1}{24}MR^2$$</p>\n<p>$$I_{\\text{cavity,XX'}} = \\left(\\frac{1}{48} + \\frac{2}{48}\\right)MR^2 = \\frac{3}{48}MR^2 = \\frac{1}{16}MR^2$$</p>\n<p>So, the moment of inertia of the remaining disc</p>\n<p>$$I_{\\text{remaining}} = I_{\\text{full}} - I_{\\text{cavity},XX'}$$</p>\n<p>$$I_{\\text{remaining}} = \\frac{1}{3}MR^2 - \\frac{1}{16}MR^2$$</p>\n<p>$$I_{\\text{remaining}} = \\left(\\frac{16-3}{48}\\right)MR^2 = \\frac{13}{48}MR^2$$</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दर्शाए अनुसार $R$ त्रिज्या की एक एकसमान डिस्क से $\\frac{R}{2}$ त्रिज्या की एक डिस्क काटी जाती है। डिस्क (गुहा सहित) का द्रव्यमान $M$ है। इस डिस्क का अक्ष $XX'$ के परितः जड़त्व आघूर्ण, जो डिस्क के केंद्र $O$ से होकर गुजरता है और डिस्क के तल में है, होगा</p> <img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms8vivjb%2F8e2d3a68-cce0-442f-8537-c7c2b1bddcc0%2F03554a80-8cd5-11f1-ade7-6b9f7f58dea4%2Ffile-6y3zli1ms8vivjc.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms8vivjb%2F8e2d3a68-cce0-442f-8537-c7c2b1bddcc0%2F03554a80-8cd5-11f1-ade7-6b9f7f58dea4%2Ffile-6y3zli1ms8vivjc.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{7MR^2}{12} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{13MR^2}{24} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{13MR^2}{48} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{11MR^2}{36} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "moment-of-inertia",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi8vmpv",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two uniform rods of equal length but different masses are rigidly joined to form an L-shaped body, which is then pivoted about O as shown. If in equilibrium the body is in the shown configuration, ratio $M/m$ will be</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi8se1h%2F046ce0c4-be7b-492f-922b-fa68f5e4b5f6%2Ff06ed450-91fb-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8se1i.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi8se1h%2F046ce0c4-be7b-492f-922b-fa68f5e4b5f6%2Ff06ed450-91fb-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8se1i.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>2</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>3</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{3}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Rod 1 is of length $\\mathrm{l}_1=\\mathrm{L}$, mass $\\mathrm{m}_1=\\mathrm{m}$.</p>\n<p>Centre of mass lies at distance $\\frac{\\mathrm{L}}{2}$ from pivot O along its length.</p>\n<p>Rod 2 is of length $\\mathrm{l}_2=\\mathrm{L}$, mass $\\mathrm{m}_2=\\mathrm{M}$.</p>\n<p>Centre of mass lies at distance $\\frac{\\mathrm{L}}{2}$ from pivot O along its length.</p>\n<p>The angle between the two rods is 90°.</p>\n<p>The rod of mass M makes an angle of $30^{\\circ}$ with the vertical line passing through pivot $\\mathrm{O}, \\theta_{\\mathrm{M}}=30^{\\circ}$</p>\n<p>Since the angle between the two rigid arms is $90^{\\circ}$, the angle that the rod of mass m makes with the vertical line is:</p>\n<p>$$ \\theta_{\\mathrm{m}}=90^{\\circ}-30^{\\circ}=60^{\\circ} $$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi8tx4m%2F9dce7749-48c5-4155-818a-a89b4e4c014c%2F1afc8960-91fc-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8tx4n.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi8tx4m%2F9dce7749-48c5-4155-818a-a89b4e4c014c%2F1afc8960-91fc-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8tx4n.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>The only forces producing torque about O are the gravitational forces acting at the Centre of mass of each rod:</p>\n<p>Perpendicular distance from pivot O to the line of action of weight $mg$ of rod 1 is, $d_m = \\frac{L}{2}\\sin(60^\\circ)$</p>\n<p>Torque due to mass $m$ is counter-clockwise torque (positive).</p>\n<p>Perpendicular distance from pivot O to the line of action of weight $Mg$ of rod 2 is, $d_M = \\frac{L}{2}\\sin(30^\\circ)$</p>\n<p>Torque due to mass $m$ is clockwise torque (negative).</p>\n<p>For the L-shaped body to be in static equilibrium, the net torque about the pivot O must equal zero:</p>\n<p>$$\\sum \\tau_O = 0 \\Rightarrow \\tau_m + \\tau_M = 0$$</p>\n<p>$$mg \\times d_m = Mg \\times d_M$$</p>\n<p>$$mg\\left(\\frac{L}{2}\\sin 60^\\circ\\right) = Mg\\left(\\frac{L}{2}\\sin 30^\\circ\\right)$$</p>\n<p>$$m \\times \\frac{\\sqrt{3}}{2} = M \\times \\frac{1}{2}$$</p>\n<p>$$m\\sqrt{3} = M \\Rightarrow \\frac{M}{m} = \\sqrt{3}$$</p>\n<p>Therefore, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "\n<p>समान लंबाई लेकिन अलग-अलग द्रव्यमान वाली दो एकसमान छड़ों को दृढ़तापूर्वक जोड़कर एक L-आकार का पिंड बनाया जाता है, जिसे फिर चित्रानुसार O के परितः कीलकित किया जाता है। यदि संतुलन में पिंड दर्शाए गए विन्यास में है, तो अनुपात $M/m$ होगा:</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi8se1h%2F046ce0c4-be7b-492f-922b-fa68f5e4b5f6%2Ff06ed450-91fb-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8se1i.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi8se1h%2F046ce0c4-be7b-492f-922b-fa68f5e4b5f6%2Ff06ed450-91fb-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8se1i.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>2</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>3</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{3}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi8r62x",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A thin hoop of weight 500 N and radius 1 m rests on a rough inclined plane as shown in the figure. The minimum coefficient of friction needed for this configuration is</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi8ng9t%2Ff1027f9f-9a24-40ce-b247-7748f7e8ea68%2F671c6910-91fb-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8ng9u.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi8ng9t%2Ff1027f9f-9a24-40ce-b247-7748f7e8ea68%2F671c6910-91fb-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8ng9u.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{1}{3\\sqrt{3}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{1}{\\sqrt{3}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{1}{2\\sqrt{3}}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Consider a thin hoop resting on an inclined plane of angle $\\theta=30^{\\circ}$.</p>\n<p>The given weight of the hoop is $\\mathrm{W}=500 \\mathrm{~N}$ acting vertically downward at its Centre of mass. </p>\n<p>Radius of hoop is $\\mathrm{R}=1 \\mathrm{~m}$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi8os97%2Fc731ef33-7dc2-4fdb-8efe-823b7928d3ea%2F8c2d3db0-91fb-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8os98.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi8os97%2Fc731ef33-7dc2-4fdb-8efe-823b7928d3ea%2F8c2d3db0-91fb-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8os98.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Normal force (N) acts perpendicular to the inclined plane, acting radially inward toward the Centre of the hoop.</p>\n<p>$$ N=W \\cos \\theta=500 \\cos \\left(30^{\\circ}\\right)=500 \\times \\frac{\\sqrt{3}}{2}=250 \\sqrt{3} N $$</p>\n<p>Component of weight parallel to incline is $\\mathrm{W} \\sin \\theta$ which is acting down the incline and passing through the Centre of mass.</p>\n<p>$$W \\sin \\theta = 500 \\sin(30^\\circ) = 500 \\times \\frac{1}{2} = 250\\ \\mathrm{N}$$</p>\n<p>Friction force ($f_s$) acts up the incline at the contact point.</p>\n<p>The tension in string acting tangential to the hoop and up the incline is $T$.</p>\n<p>For the hoop to in translational equilibrium parallel to incline</p>\n<p>$$\\sum\\limits F_{\\parallel} = 0 \\Rightarrow W \\sin \\theta - f_s - T = 0$$</p>\n<p>$$T + f_s = W \\sin \\theta = 250\\ \\mathrm{N} \\ldots (i)$$</p>\n<p>The normal force $N$ and weight $W$ pass through the Centre of mass, so their torque about the Centre of mass is zero, $\\tau_N = \\tau_W = 0$</p>\n<p>For rotational equilibrium of hoop about the Centre of mass,</p>\n<p>$$TR - f_sR = 0 \\Rightarrow T = f_s \\ldots (ii)$$</p>\n<p>From both the equations $2f_s = W \\sin \\theta \\Rightarrow f_s = \\frac{W \\sin \\theta}{2}$</p>\n<p>The static friction acting should be $f_s \\leq \\mu N$. At the threshold of slipping, the static friction force reaches its limiting maximum value $f_s = \\mu N$</p>\n<p>Substituting $f_s = W \\sin \\theta$ and $N = W \\cos \\theta$:</p>\n<p>$$\\mu (W \\cos \\theta) = \\frac{W \\sin \\theta}{2}$$</p>\n<p>$$\\mu = \\frac{\\sin \\theta}{2 \\cos \\theta} = \\frac{\\tan \\theta}{2}$$</p>\n<p>$$\\mu_{\\min} = \\frac{1}{2} \\times \\frac{1}{\\sqrt{3}} = \\frac{1}{2\\sqrt{3}}$$</p>\n<p>Therefore, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दर्शाए अनुसार 500 N भार तथा 1 m त्रिज्या का एक पतला छल्ला (hoop) एक खुरदरे आनत तल पर विरामावस्था में है। इस विन्यास के लिए आवश्यक न्यूनतम घर्षण गुणांक है</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi8ng9t%2Ff1027f9f-9a24-40ce-b247-7748f7e8ea68%2F671c6910-91fb-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8ng9u.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi8ng9t%2Ff1027f9f-9a24-40ce-b247-7748f7e8ea68%2F671c6910-91fb-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8ng9u.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{1}{3\\sqrt{3}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{1}{\\sqrt{3}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{1}{2\\sqrt{3}}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mstnjibt",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A cubical block of side a moving with velocity v on a horizontal smooth plane as shown. It hits a ridge at point O. The angular speed of the block after it hits O is</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstnikwx%2Fedd7cb04-f7b5-4e27-add2-02cac50f44b6%2F27bb5d10-9842-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnikwy.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstnikwx%2Fedd7cb04-f7b5-4e27-add2-02cac50f44b6%2F27bb5d10-9842-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnikwy.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{3v}{4a} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{3v}{2a} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{\\sqrt{3}}{\\sqrt{2}a} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>zero</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>A uniform cube of mass M and edge length a slides along a smooth horizontal surface with linear velocity v (without initial rotation, $\\omega_0=0$ ).</p>\n<p>It strikes a small ridge at point O on the bottom front edge.</p>\n<p>During the instantaneous collision, normal impulse forces act on the block through point O .</p>\n<p>Because these impact forces pass directly through point O , the net impulsive torque about point O is zero. Therefore, angular momentum about point O is conserved during the impact.</p>\n<p>Before collision, the cube has only translational motion with velocity $v$ of its centre of mass (CM).</p>\n<p>The centre of mass is located at height $\\mathrm{h}=\\frac{\\mathrm{a}}{2}$ above the bottom edge O .</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstng9sk%2Fdc38a1c7-739e-4dec-859d-04517a27e528%2Fe785d540-9841-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstng9sl.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstng9sk%2Fdc38a1c7-739e-4dec-859d-04517a27e528%2Fe785d540-9841-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstng9sl.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The linear momentum of the cube is $\\vec{p} = Mv$ directed horizontally towards point O.</p>\n<p>The angular momentum of the centre of mass about point O before impact is,</p>\n<p>$L_i = Mv d_\\perp$ where $d_\\perp$ perpendicular distance from O to line of velocity</p>\n<p>$$L_i = Mv\\left(\\frac{a}{2}\\right)$$</p>\n<p>Moment of inertia of a uniform solid cube about its centre of mass is $I_{cm} = \\frac{1}{6}Ma^2$</p>\n<p>The distance d from the centre of mass to an edge is,</p>\n<p>$$d^2 = \\left(\\frac{a}{2}\\right)^2 + \\left(\\frac{a}{2}\\right)^2 = \\frac{a^2}{4} + \\frac{a^2}{4} = \\frac{a^2}{2}$$</p>\n<p>Using parallel axis theorem, the moment of inertia of cube about O is,</p>\n<p>$$I_O = I_{cm} + Md^2 = \\frac{1}{6}Ma^2 + M\\left(\\frac{a^2}{2}\\right) = \\left(\\frac{1}{6} + \\frac{1}{2}\\right)Ma^2 = \\frac{4}{6}Ma^2 = \\frac{2}{3}Ma^2$$</p>\n<p>Immediately after impact, the cube rotates about point O as a fixed axis with angular velocity $\\omega$:</p>\n<p>So, the final angular momentum about point O is $L_f = I_O\\omega = \\left(\\frac{2}{3}Ma^2\\right)\\omega$</p>\n<p>Using conservation of angular momentum about point O,</p>\n<p>$$L_i = L_f$$</p>\n<p>$$Mv\\left(\\frac{a}{2}\\right) = \\left(\\frac{2}{3}Ma^2\\right)\\omega$$</p>\n<p>$$\\frac{v}{2} = \\frac{2}{3}a\\omega \\Rightarrow \\omega = \\frac{3v}{4a}$$</p>\n<p>Therefore, the angular speed of the block after it hits O is $\\frac{3v}{4a}$. Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दर्शाए गए अनुसार एक क्षैतिज चिकने तल पर v वेग से गतिमान भुजा a का एक घनाकार गुटका बिंदु O पर एक अवरोध (ridge) से टकराता है। O से टकराने के पश्चात् गुटके की कोणीय चाल है:</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstnikwx%2Fedd7cb04-f7b5-4e27-add2-02cac50f44b6%2F27bb5d10-9842-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnikwy.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstnikwx%2Fedd7cb04-f7b5-4e27-add2-02cac50f44b6%2F27bb5d10-9842-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnikwy.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{3v}{4a} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{3v}{2a} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{\\sqrt{3}}{\\sqrt{2}a} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>शून्य</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum-conservation",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi8h5e9",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A ladder 5 m long rests on a rough horizontal plane and against a smooth vertical wall. The ladder is about to slip on the rough plane when its lower end is at a distance 4 m from the wall. The coefficient of friction is</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi8ay3y%2Fd5088afe-209d-4ada-83c3-f1d616c5a41a%2F0b5ef4e0-91fa-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8ay3z.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi8ay3y%2Fd5088afe-209d-4ada-83c3-f1d616c5a41a%2F0b5ef4e0-91fa-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8ay3z.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{2}{3}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{3}{5}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{4}{5}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Length of the ladder is L = 5 m</p>\n<p>Distance of lower end from the wall x = 4 m</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi8dr14%2Ff349f6ab-d2a2-444f-8c0e-5300f1c9700a%2F59548980-91fa-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8dr15.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi8dr14%2Ff349f6ab-d2a2-444f-8c0e-5300f1c9700a%2F59548980-91fa-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8dr15.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>By Pythagoras theorem:</p>\n<p>$$ y=\\sqrt{L^2-x^2}=\\sqrt{5^2-4^2}=\\sqrt{25-16}=\\sqrt{9}=3 m $$</p>\n<p>So, height of upper end on vertical wall is $\\mathrm{y}=3 \\mathrm{~m}$.</p>\n<p>Let $\\theta$ be the angle the ladder makes with the horizontal ground, $\\cos \\theta=\\frac{\\mathrm{x}}{\\mathrm{L}}=\\frac{4}{5} ; \\sin \\theta=\\frac{\\mathrm{y}}{\\mathrm{L}}=\\frac{3}{5} ; \\tan \\theta=\\frac{\\mathrm{y}}{\\mathrm{x}}=\\frac{3}{4}$</p>\n<p>Let $\\mathrm{W}=\\mathrm{mg}$ be the total weight of the ladder acting downwards at its Centre of mass.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi8f162%2Fe3db3895-79d3-4184-905f-49ddd887f634%2F7cf860a0-91fa-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8f163.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi8f162%2Fe3db3895-79d3-4184-905f-49ddd887f634%2F7cf860a0-91fa-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8f163.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>At a distance of $\\frac{L}{2} = 2.5\\ \\mathrm{m}$ along the ladder from either end.</p>\n<p>Upward normal force from ground is = $N_g$</p>\n<p>Horizontal static friction force directed towards the wall = $f_s$</p>\n<p>Horizontal normal force from smooth vertical wall = $N_w$ away from the wall.</p>\n<p>Since the wall is smooth, friction at the wall is zero ($f_w = 0$).</p>\n<p>For translational equilibrium the components of force along coordinates axes should be equal to zero,</p>\n<p>$\\sum F_x = 0, \\sum F_y = 0, \\sum F_z = 0$</p>\n<p>Along vertical-axis, $N_g - W = 0 \\Rightarrow N_g = W$ … (i)</p>\n<p>Along horizontal direction, $f_s - N_w = 0 \\Rightarrow f_s = N_w$ … (ii)</p>\n<p>Taking torque about the base of the ladder (A), $\\sum \\tau_A = 0$</p>\n<p>Horizontal distance of Centre of mass from point A is $d_w = \\frac{x}{2} = \\frac{4}{2} = 2\\ \\mathrm{m}$</p>\n<p>The direction of torque due to weight (W) is clockwise (negative torque),</p>\n<p>$$\\tau_W = -W \\times \\left(\\frac{x}{2}\\right) = -2W$$</p>\n<p>Vertical height of contact point B from the level of point A is $d_B = y = 3\\ \\mathrm{m}$</p>\n<p>So, torque due to wall normal force $N_w$ is counter-clockwise (positive torque).</p>\n<p>$$\\tau_{N_w} = +N_w \\times y = 3N_w$$</p>\n<p>$$3N_w - 2W = 0$$</p>\n<p>$$3N_w = 2W \\Rightarrow N_w = \\frac{2}{3}W$$</p>\n<p>From equation (ii):</p>\n<p>$$f_s = N_w = \\frac{2}{3}W$$</p>\n<p>When the ladder is on the verge of slipping $f_s = f_{s,\\max} = \\mu N_g$</p>\n<p>$$f_s = \\mu W$$</p>\n\n<p>$$\\Rightarrow \\mu W = \\frac{2}{3} W$$</p>\n<p>$$\\Rightarrow $$ $$\\mu = \\frac{2}{3}$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>5 m लंबी एक सीढ़ी एक खुरदरे क्षैतिज तल पर और एक चिकनी ऊर्ध्वाधर दीवार के सहारे रखी हुई है। जब सीढ़ी का निचला सिरा दीवार से 4 m की दूरी पर होता है, तो सीढ़ी खुरदरे तल पर फिसलने ही वाली होती है। घर्षण गुणांक है</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi8ay3y%2Fd5088afe-209d-4ada-83c3-f1d616c5a41a%2F0b5ef4e0-91fa-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8ay3z.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi8ay3y%2Fd5088afe-209d-4ada-83c3-f1d616c5a41a%2F0b5ef4e0-91fa-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8ay3z.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{2}{3}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{3}{5}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{4}{5}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msnroeqc",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A bullet of mass m moving with velocity u just grazes the top of a solid cylinder of mass m and radius R resting on a rough horizontal surface as shown in figure. Assuming that the cylinder rolls without slipping, then the final velocity of bullet is</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msnricqx%2Fd3ea478c-b758-4681-bea9-d6612531dd83%2F120b1f90-9505-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnricqy.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msnricqx%2Fd3ea478c-b758-4681-bea9-d6612531dd83%2F120b1f90-9505-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnricqy.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{8u}{11} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{7u}{17} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{5u}{12} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{9u}{13} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The mass of solid cylinder $=\\mathrm{m}$, and its radius $=\\mathrm{R}$</p>\n<p>The mass of bullet $=\\mathrm{m}$, which is moving with initial velocity $=\\mathrm{u}$</p>\n<p>Initially, the cylinder is at rest $\\left(\\mathrm{v}_0=0, \\omega_0=0\\right)$</p>\n<p>As the bullet grazes the top of the cylinder, a kinetic friction force $\\mathrm{f}_{\\mathrm{k}}$ acts between the bullet and the top surface of the cylinder for a short duration $\\Delta \\mathrm{t}$.</p>\n<p>Let $\\mathrm{v}^{\\prime}$ be the final velocity of the bullet after grazing, v be the final linear velocity of the centre of mass of the cylinder, and $\\omega$ be its final angular velocity.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msnrjzmb%2F16fdc0c2-79bb-465d-bc92-2aa06a654abd%2F3f854630-9505-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnrjzmc.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msnrjzmb%2F16fdc0c2-79bb-465d-bc92-2aa06a654abd%2F3f854630-9505-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnrjzmc.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The backward frictional impulse $\\mathrm{J}=\\int \\mathrm{f}_{\\mathrm{k}} \\mathrm{dt}$ acts on the bullet</p>\n<p>$$m u - J = m v' \\Rightarrow J = m(u - v') \\, ...\\text{(i)}$$</p>\n<p>The forward frictional impulse $J$ acts at the top of the cylinder. Also, ground friction impulse $J_{\\mathrm{f}}=\\int \\mathrm{f}_{\\mathrm{g}} \\mathrm{dt}$ acts at the bottom contact point C .</p>\n<p>Linear momentum equation for cylinder $$J + J_g = m v \\, ...\\text{(ii)}$$</p>\n<p>Since the ground friction force acts at the bottom point of contact $C$, its torque about $C$ is zero. Therefore, total angular momentum of the system about the contact point $C$ on the ground is conserved throughout the interaction.</p>\n<p>Before the interaction, the cylinder is at rest. The bullet moves at a height of $2R$ above the ground:</p>\n<p>$$L_i = m \\cdot u \\cdot (2R) = 2muR$$</p>\n<p>After the grazing interaction, bullet's angular momentum about $C$ is $m \\cdot v' \\cdot (2R) = 2mv'R$</p>\n<p>Using parallel-axis theorem, the moment of inertia of cylinder about point $C$ is</p>\n<p>$$I_C = I_{cm} + mR^2 = \\frac{1}{2}mR^2 + mR^2 = \\frac{3}{2}mR^2$$</p>\n<p>Cylinder's angular momentum about $C$ is, $$L_{\\text{cylinder},C} = I_C\\,\\omega = \\left(\\frac{3}{2}mR^2\\right)\\omega$$</p>\n<p>So, total final angular momentum is $$L_f = 2mv'R + \\frac{3}{2}mR^2\\omega$$</p>\n<p>Using conservation of angular momentum,</p>\n<p>$$2muR = 2mv'R + \\frac{3}{2}mR^2\\omega$$</p>\n<p>$$2u = 2v' + \\frac{3}{2}\\omega R \\, ...\\text{(iii)}$$</p>\n<p>When grazing ends, the horizontal velocity of the top-most point of the cylinder becomes equal to the velocity of the bullet $v'$ so friction becomes zero:</p>\n<p>$$v_{\\text{top}} = v + \\omega R = v'$$</p>\n<p>Since the cylinder rolls without slipping on the ground $v = \\omega R$</p>\n\n<p>$$v' = \\omega R + \\omega R = 2\\omega R \\rightarrow \\omega R = \\frac{v'}{2}$$</p>\n<p>Substituting $\\omega R = \\frac{v'}{2}$ into equation (iii):</p>\n<p>$$2u = 2v' + \\frac{3}{2}\\left(\\frac{v'}{2}\\right)$$</p>\n<p>$$2u = 2v' + \\frac{3}{4}v'$$</p>\n<p>$$2u = \\frac{11}{4}v'$$</p>\n<p>$$v' = \\frac{8u}{11}$$</p>\n<p>Therefore, the final velocity of the bullet is $\\frac{8u}{11}$. Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>m द्रव्यमान की एक गोली जो u वेग से गतिमान है, चित्रानुसार एक खुरदरी क्षैतिज सतह पर रखे m द्रव्यमान और R त्रिज्या के एक ठोस बेलन के शीर्ष को स्पर्श करते हुए (grazes) निकलती है। यह मानते हुए कि बेलन बिना फिसले लुढ़कता है, गोली का अंतिम वेग है:</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msnricqx%2Fd3ea478c-b758-4681-bea9-d6612531dd83%2F120b1f90-9505-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnricqy.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msnricqx%2Fd3ea478c-b758-4681-bea9-d6612531dd83%2F120b1f90-9505-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnricqy.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{8u}{11} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{7u}{17} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{5u}{12} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{9u}{13} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision-of-rigid-bodies",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msnslqnn",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A battle tank is moving without slipping with a velocity $v$. Determine the kinetic energy of its chain/belt of mass $m$ (see figure). Assume length of the chain to be very large in comparison to wheel diameter.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msnsh2z6%2F172826ca-2632-4dca-ba98-b30171c57fc0%2Fd7d0d320-9508-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnsh2z7.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msnsh2z6%2F172826ca-2632-4dca-ba98-b30171c57fc0%2Fd7d0d320-9508-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnsh2z7.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2mv^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{1}{2}mv^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{3}{4}mv^2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$mv^2$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msnsimg8%2F4e882904-d0bd-47fb-be97-7672710e3bd2%2F02aafa80-9509-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnsimg9.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msnsimg8%2F4e882904-d0bd-47fb-be97-7672710e3bd2%2F02aafa80-9509-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnsimg9.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Since the length of the chain is given to be very large compared to the wheel diameter, we can neglect the mass of the small curved portions wrapped around the wheels.</p>\n<p>So, the bottom straight segment in contact with the stationary ground is of mass $\\mathrm{m}_{\\text {lower }}=\\frac{\\mathrm{m}}{2}$</p>\n<p>The top straight segment moving horizontally forward is of mass $\\mathrm{m}_{\\text {upper }}=\\frac{\\mathrm{m}}{2}$.</p>\n<p>As the tank moves without slipping relative to the ground with speed v , the bottom segment of the chain is in contact with the stationary ground without slipping, its velocity relative to the ground is zero.</p>\n<p>$$v_{\\text{lower}} = 0$$</p>\n<p>Therefore, the kinetic energy of the bottom segment of the chain is zero, $K_{\\text{lower}} = 0$</p>\n<p>The wheels move forward with centre of mass velocity $v$.</p>\n<p>Relative to the centre of the wheels, the chain moves around the perimeter at speed $v$.</p>\n<p>Thus, the velocity of the top segment relative to the ground is the sum of the centre of mass velocity and the relative speed:</p>\n<p>$$v_{\\text{upper}} = v + v = 2v$$</p>\n<p>Total kinetic energy of the chain $K$ is the sum of kinetic energies of the two segments:</p>\n<p>$$K = K_{\\text{upper}} + K_{\\text{lower}}$$</p>\n<p>$$K = \\frac{1}{2} \\, m_{\\text{upper}} \\, (v_{\\text{upper}})^2 + 0$$</p>\n<p>$$K = \\frac{1}{2} \\left(\\frac{m}{2}\\right) (2v)^2 = \\frac{m}{4} (4v^2)$$</p>\n<p>$$K = mv^2$$</p>\n<p>Therefore, the kinetic energy of the chain is $mv^2$. Thus, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक युद्धक टैंक बिना फिसले $v$ वेग से गति कर रहा है। इसके $m$ द्रव्यमान वाली चेन/बेल्ट की गतिज ऊर्जा ज्ञात कीजिए (चित्र देखें)। मान लीजिए कि चेन की लंबाई पहिए के व्यास की तुलना में बहुत अधिक है।</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msnsh2z6%2F172826ca-2632-4dca-ba98-b30171c57fc0%2Fd7d0d320-9508-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnsh2z7.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msnsh2z6%2F172826ca-2632-4dca-ba98-b30171c57fc0%2Fd7d0d320-9508-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnsh2z7.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2mv^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{1}{2}mv^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{3}{4}mv^2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$mv^2$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "combined-translational-and-rotational-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mstncj5f",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform disk turns at 2.4 rev/s around a frictionless axis. A non-rotating rod, of the same mass as the disk and length equal to the disk's diameter is dropped onto the freely spinning disk figure. They then both turn around the axis with their centres superposed. What is the angular frequency of the combination?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstn8egl%2Faee8639c-01ef-4e5a-8cd6-9cc8545bba28%2F0ca7b650-9841-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstn8egm.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstn8egl%2Faee8639c-01ef-4e5a-8cd6-9cc8545bba28%2F0ca7b650-9841-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstn8egm.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1.2 rev/s</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2.0 rev/s</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.44 rev/s</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.96 rev/s</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Let mass of the disk $=\\mathrm{M}$ and its radius is R .</p>\n<p>Initial angular frequency of the disk is $\\omega_0=2.4 \\mathrm{rev} / \\mathrm{s}$.</p>\n<p>The moment of inertia of a uniform solid disk about its central axis is $\\mathrm{I}_{\\text {disk }}=\\frac{1}{2} \\mathrm{M} \\mathrm{R}^2$</p>\n<p>Initial total angular momentum of the system before the rod is dropped,</p>\n<p>$$ \\mathrm{L}_{\\mathrm{i}}=\\mathrm{I}_{\\mathrm{disk}} \\omega_0=\\left(\\frac{1}{2} \\mathrm{M} \\mathrm{R}^2\\right) \\omega_0 $$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstnapxv%2F8f03d103-066e-445e-b370-9b07e76bfaf6%2F4d243230-9841-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnapxw.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstnapxv%2F8f03d103-066e-445e-b370-9b07e76bfaf6%2F4d243230-9841-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnapxw.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>When a non-rotating rod $\\left(\\omega_{\\text {rod }(\\mathrm{i})}=0\\right)$ of mass M and length equal to the disk's diameter L = 2R is dropped onto the disk, both rotate together with a final common angular frequency $\\omega_{\\mathrm{f}}$.</p>\n<p>For a rod of mass M and length L the moment of inertia of a uniform thin rod about its centre is $\\mathrm{I}_{\\text {rod }}=\\frac{1}{12} \\mathrm{M} \\mathrm{L}^2$</p>\n<p>$$ \\mathrm{I}_{\\mathrm{rod}}=\\frac{1}{12} \\mathrm{M}(2 \\mathrm{R})^2=\\frac{4}{12} \\mathrm{M} \\mathrm{R}^2=\\frac{1}{3} \\mathrm{M} \\mathrm{R}^2 $$</p>\n<p>The total moment of inertia of the combined system $\\mathrm{I}_{\\text {total }}$ about the central axis is :</p>\n\n<p>$$I_{\\text{total}} = I_{\\text{disk}} + I_{\\text{rod}} = \\frac{1}{2}MR^2 + \\frac{1}{3}MR^2 = \\left(\\frac{1}{2} + \\frac{1}{3}\\right)MR^2 = \\frac{5}{6}MR^2$$</p>\n<p>Since there are no net external torques acting on the system about the vertical axis of rotation, total angular momentum is conserved, $L_i = L_f$</p>\n<p>$$I_{\\text{disk}}\\,\\omega_0 = I_{\\text{total}}\\,\\omega_f$$</p>\n<p>$$\\left(\\frac{1}{2}MR^2\\right)\\omega_0 = \\left(\\frac{5}{6}MR^2\\right)\\omega_f$$</p>\n<p>$$\\frac{1}{2}\\omega_0 = \\frac{5}{6}\\omega_f$$</p>\n<p>$$\\omega_f = \\left(\\frac{1}{2}\\right) \\cdot \\left(\\frac{6}{5}\\right)\\omega_0 = \\frac{3}{5}\\omega_0 = 0.6\\,\\omega_0$$</p>\n<p>Substituting $\\omega_0 = 2.4\\ \\text{rev/s}$:</p>\n<p>$$\\omega_f = 0.6 \\times 2.4\\ \\text{rev/s} = 1.44\\ \\text{rev/s}$$</p>\n<p>Therefore, the final angular frequency of the combination is $1.44\\ \\text{rev/s}$. Thus, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक एकसमान चकती घर्षणरहित अक्ष के परितः 2.4 rev/s से घूमती है। चकती के समान द्रव्यमान और चकती के व्यास के बराबर लंबाई वाली एक अघूर्णी (non-rotating) छड़ को चित्र में दर्शाए अनुसार मुक्त रूप से घूमती हुई चकती पर गिराया जाता है। फिर वे दोनों अपने केंद्रों को संपाती करते हुए अक्ष के परितः एक साथ घूमते हैं। इस संयोजन की कोणीय आवृत्ति क्या है?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstn8egl%2Faee8639c-01ef-4e5a-8cd6-9cc8545bba28%2F0ca7b650-9841-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstn8egm.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstn8egl%2Faee8639c-01ef-4e5a-8cd6-9cc8545bba28%2F0ca7b650-9841-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstn8egm.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1.2 rev/s</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2.0 rev/s</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.44 rev/s</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.96 rev/s</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum-conservation",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msns9pgb",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A Yo-Yo has an axle of radius r and spool of radius R. It rolls without sliding on the horizontal plane. A string wound around the axle is pulled with a constant velocity v (see figure). The velocity of the centre of the axle is</b>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msns579x%2Fe5bbc01d-ade8-4176-8ce4-624209d3ff3c%2F8d6d3450-9507-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msns579y.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msns579x%2Fe5bbc01d-ade8-4176-8ce4-624209d3ff3c%2F8d6d3450-9507-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msns579y.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{vR}{R - r} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{vr}{R - r} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{vr}{R} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{v(R - r)}{R} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The radius of outer spool $=\\mathrm{R}$ and the radius of inner axle $=\\mathrm{r}$</p>\n<p>Linear velocity of centre of mass of axle $=\\mathrm{v}_{\\mathrm{cm}}$</p>\n<p>Let the angular velocity of rotation $=\\omega$ (clockwise)</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msns73bw%2Fa0394258-9fc9-41e9-92e2-23bc6805c3a0%2Fc1ff4dc0-9507-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msns73bx.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msns73bw%2Fa0394258-9fc9-41e9-92e2-23bc6805c3a0%2Fc1ff4dc0-9507-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msns73bx.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Since the Yo-Yo rolls without sliding (pure rolling) on the horizontal plane at the bottom of the spool</p>\n<p>$$v_{\\mathrm{cm}} = \\omega R \\Rightarrow \\omega = \\frac{v_{\\mathrm{cm}}}{R}$$</p>\n<p>The string is unwinding horizontally to the right from the bottom edge of the inner axle of radius $r$.</p>\n<p>The velocity of the point on the string held and pulled with constant velocity $v$ is equal to the net horizontal velocity of the lowermost point of the axle.</p>\n<p>Translational velocity of centre $= v_{\\mathrm{cm}}$ (towards right)</p>\n<p>Rotational velocity at bottom of axle $= \\omega r$ (towards left)</p>\n<p>So, the net horizontal velocity of a point on the inner axle at distance $r$ below the centre $v = v_{\\mathrm{cm}} - \\omega r$</p>\n<p>$$v = v_{\\mathrm{cm}} - \\left(\\frac{v_{\\mathrm{cm}}}{R}\\right) r$$</p>\n<p>$$v = v_{\\mathrm{cm}}\\left(1 - \\frac{r}{R}\\right) = v_{\\mathrm{cm}}\\left(\\frac{R-r}{R}\\right)$$</p>\n<p>$$v_{\\mathrm{cm}} = \\frac{vR}{R-r}$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक यो-यो (Yo-Yo) में r त्रिज्या की धुरी (axle) और R त्रिज्या की चरखी (spool) है। यह क्षैतिज तल पर बिना फिसले लुढ़कता है। धुरी पर लिपटे एक धागे को नियत वेग v से खींचा जाता है (चित्र देखें)। धुरी के केंद्र का वेग है</b> <img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msns579x%2Fe5bbc01d-ade8-4176-8ce4-624209d3ff3c%2F8d6d3450-9507-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msns579y.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msns579x%2Fe5bbc01d-ade8-4176-8ce4-624209d3ff3c%2F8d6d3450-9507-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msns579y.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{vR}{R - r} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{vr}{R - r} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{vr}{R} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{v(R - r)}{R} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "combined-translational-and-rotational-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msnrvxbk",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A time varying force $F = 2t$ is applied on a spool rolling as shown in figure. The angular momentum of the spool at time $t$ about bottom-most point is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msnrq3rz%2Ffb08a525-5831-4bfc-ab0c-a03ab6d3fc34%2Fe99642f0-9505-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnrq3s0.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msnrq3rz%2Ffb08a525-5831-4bfc-ab0c-a03ab6d3fc34%2Fe99642f0-9505-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnrq3s0.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{r^2 t^2}{R}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{(R + r)\\, 2 t^2}{r}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(R + r) t^2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>insufficient data</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The radius of outer wheel $=\\mathrm{R}$ and radius of inner axle $=\\mathrm{r}$</p>\n<p>The applied time-varying horizontal force $=\\mathrm{F}(\\mathrm{t})=2 \\mathrm{t}$</p>\n<p>The applied force F acts horizontally to the right at the bottom edge of the inner axle of radius r.so, perpendicular distance of the line of action of force F from the bottom-most point C :</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msnrs64z%2F108f41f7-5705-41e9-8600-08344d6fb775%2F23077630-9506-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnrs650.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msnrs64z%2F108f41f7-5705-41e9-8600-08344d6fb775%2F23077630-9506-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnrs650.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>$\\mathrm{d}_{\\perp}=\\mathrm{R}+\\mathrm{r}$</p>\n<p>By Newton's second law for rotation about a fixed point C</p>\n<p>$$\\tau_C=\\frac{dL_C}{dt}$$</p>\n<p>Where $\\tau_C$ is the total external torque about the contact point C and $L_C$ is the angular momentum of the spool about point C.</p>\n<p>The torque created by applied force F about point C is,</p>\n<p>$\\tau_{\\mathrm{C}}=\\mathrm{F} \\cdot \\mathrm{d}_{\\perp}=(2 \\mathrm{t}) \\cdot(\\mathrm{R}+\\mathrm{r})$</p>\n<p>$$\\Rightarrow dL_C=\\tau_C\\,dt$$</p>\n<p>$$\\Rightarrow dL_C=2(R+r)\\,t\\,dt$$</p>\n<p>Assuming the spool starts from rest at $t=0$ ($L_C=0$):</p>\n<p>$$\\int dL=2(R+r)\\int\\limits_{0}^{t} t\\,dt$$</p>\n<p>$$L_C=2(R+r)\\left[\\frac{t^2}{2}\\right]_{0}^{t}$$</p>\n<p>$$L_C=(R+r)t^2$$</p>\n<p>Therefore, the angular momentum about the bottom-most point is $(R+r)t^2$. Thus, the correct option (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दर्शाए गए अनुसार एक लुढ़कती हुई फिरकी (spool) पर एक समय-परिवर्ती बल $F = 2t$ लगाया जाता है। समय $t$ पर सबसे निचले बिंदु के परितः फिरकी का कोणीय संवेग है</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msnrq3rz%2Ffb08a525-5831-4bfc-ab0c-a03ab6d3fc34%2Fe99642f0-9505-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnrq3s0.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msnrq3rz%2Ffb08a525-5831-4bfc-ab0c-a03ab6d3fc34%2Fe99642f0-9505-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnrq3s0.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{r^2 t^2}{R}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{(R + r)\\, 2 t^2}{r}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(R + r) t^2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>आँकड़े अपर्याप्त हैं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "combined-translational-and-rotational-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mstnskfh",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A smooth uniform rod of length L and mass M has two identical beads of negligible size, each of mass m, which can slide freely along the rod. Initially, the two beads are at the centre of the rod and the system is rotating with angular velocity $\\omega_0$ about an axis perpendicular to rod and passing through the midpoint of rod. There are no external forces. When the beads reach the ends of the rod, then angular velocity of the system is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstnltyw%2F6c11b3a5-4b78-42b7-9b91-ed0a0f91407e%2F82276780-9842-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnltyx.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstnltyw%2F6c11b3a5-4b78-42b7-9b91-ed0a0f91407e%2F82276780-9842-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnltyx.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{M}{M+3m} \\omega_0$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{M}{M+6m} \\omega_0$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{M+6m}{M} \\omega_0$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\omega_0$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Mass of the rod $=\\mathrm{M}$, Length $=\\mathrm{L}$.</p>\n<p>Two beads, each of mass m , are initially located at the centre of the rod $(\\mathrm{r}=0)$.</p>\n<p>Initial angular velocity of the system $=\\omega_0$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstnnqe9%2F772e2d6e-ebe4-4a18-b8da-0fcc67b0e5a0%2Fb7030d10-9842-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnnqea.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstnnqe9%2F772e2d6e-ebe4-4a18-b8da-0fcc67b0e5a0%2Fb7030d10-9842-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnnqea.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Moment of inertia of the rod about its central axis is</p>\n<p>$$I_{\\mathrm{rod}} = \\frac{1}{12} M L^2$$</p>\n<p>Moment of inertia of the two beads at $r = 0$:</p>\n<p>$$I_{\\mathrm{beads(i)}} = 2m(0)^2 = 0$$</p>\n<p>So, total initial moment of inertia is,</p>\n<p>$$I_i = I_{\\mathrm{rod}} + I_{\\mathrm{beads(i)}} = \\frac{1}{12} M L^2$$</p>\n<p>So, initial angular momentum ($L_i$) is,</p>\n<p>$$L_i = I_i\\,\\omega_0 = \\left(\\frac{1}{12} M L^2\\right)\\omega_0$$</p>\n<p>When the two beads slide to the outer ends of the rod, distance of each bead from the centre = $$\\frac{L}{2}$$</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstnpvbf%2Fa864b948-2742-470f-92ec-01fe6054799d%2Ff26e89b0-9842-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnpvbg.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstnpvbf%2Fa864b948-2742-470f-92ec-01fe6054799d%2Ff26e89b0-9842-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnpvbg.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Final angular velocity = $\\omega_f$</p>\n<p>Moment of inertia of the two beads at $r = \\frac{L}{2}$ is,</p>\n<p>$$I_{\\text{beads}(f)} = 2m \\times \\left(\\frac{L}{2}\\right)^2 = 2m\\left(\\frac{L^2}{4}\\right) = \\frac{1}{2}mL^2$$</p>\n<p>So, total final moment of inertia is,</p>\n<p>$$I_f = I_{\\text{rod}} + I_{\\text{beads}(f)} = \\frac{1}{12}ML^2 + \\frac{1}{2}mL^2 = \\left(\\frac{1}{12}M + \\frac{1}{2}m\\right)L^2$$</p>\n<p>$$I_f = \\frac{(M + 6m)L^2}{12}$$</p>\n<p>Since there are no external torques acting on the system about the axis of rotation ($\\tau_{\\text{ext}} = 0$), so applying law of conservation of angular momentum,</p>\n<p>$$L_i = L_f$$</p>\n<p>$$I_i\\omega_0 = I_f\\omega_f$$</p>\n<p>$$\\left(\\frac{1}{12}ML^2\\right)\\omega_0 = \\left[\\frac{1}{12}(M + 6m)L^2\\right]\\omega_f$$</p>\n<p>$$M\\omega_0 = (M + 6m)\\omega_f$$</p>\n<p>$$\\omega_f = \\left(\\frac{M}{M + 6m}\\right)\\omega_0$$</p>\n<p>Therefore, the angular velocity of system is $\\left(\\frac{M}{M + 6m}\\right)\\omega_0$. Thus, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>L लंबाई और M द्रव्यमान की एक चिकनी एकसमान छड़ में नगण्य आकार के दो सर्वसम मनके (beads) हैं, जिनमें से प्रत्येक का द्रव्यमान m है, जो छड़ के अनुदिश स्वतंत्र रूप से खिसक सकते हैं। प्रारंभ में, दोनों मनके छड़ के केंद्र पर हैं और यह निकाय छड़ के लंबवत तथा छड़ के मध्य बिंदु से गुजरने वाले अक्ष के परितः $\\omega_0$ कोणीय वेग से घूर्णन कर रहा है। कोई बाह्य बल नहीं है। जब मनके छड़ के सिरों तक पहुँच जाते हैं, तो निकाय का कोणीय वेग है</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstnltyw%2F6c11b3a5-4b78-42b7-9b91-ed0a0f91407e%2F82276780-9842-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnltyx.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstnltyw%2F6c11b3a5-4b78-42b7-9b91-ed0a0f91407e%2F82276780-9842-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnltyx.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{M}{M+3m} \\omega_0$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{M}{M+6m} \\omega_0$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{M+6m}{M} \\omega_0$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\omega_0$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum-conservation",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msto1z5h",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A thin uniform circular ring of mass $m$ is rolling without slipping down an inclined plane of inclination $30^o$ with the horizontal. The coefficient of friction between the ring and the surface is $\\mu$.</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstnwwy0%2F4d536674-1d12-4af7-bb79-85d18e44beb4%2Fb65a5480-9843-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnwwy1.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstnwwy0%2F4d536674-1d12-4af7-bb79-85d18e44beb4%2Fb65a5480-9843-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnwwy1.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"><p><b>(A)</b> linear acceleration of the centre of the ring along the plane is $a = \\dfrac{g}{2}$</p><p><b>(B)</b> force of friction between the ring and the inclined plane is $F_{\\text{friction}} = \\dfrac{mg}{4}$</p><p><b>(C)</b> the ring keeps rolling for all values of the coefficient of friction $\\mu \\leq \\dfrac{1}{2(3)^{0.5}}$</p><p><b>(D)</b> linear acceleration of the centre of the ring along the plane is $a = \\dfrac{g}{4}$</p><p>Which statements are true?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>A, B, C</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>B, C, D</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>B, D</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>only D</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Consider a ring of mass m , radius R , and moment of inertia $\\mathrm{I}=\\mathrm{m} \\mathrm{R}^2$ rolling without slipping down an incline of angle $\\theta=30^{\\circ}$.</p>\n<p>Component of gravity down the incline is $\\mathrm{mg} \\sin \\theta$</p>\n<p>Friction force f acting up the incline opposing slipping.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstnzobw%2F85b6083d-ec90-45c9-9be1-f97800209687%2F032042c0-9844-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnzobx.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstnzobw%2F85b6083d-ec90-45c9-9be1-f97800209687%2F032042c0-9844-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnzobx.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Using Newton's 2nd Law along the incline, if $a$ is the acceleration,</p>\n<p>$$m g \\, \\sin \\theta - f = m a \\ldots (i)$$</p>\n<p>The torque about centre of mass due to friction is $\\tau = fR$ and as weight passes though the centre of mass its torque is zero.</p>\n<p>So, the net torque about the centre of mass is $\\tau = f \\cdot R$</p>\n\n<p>If $\\alpha$ is the angular acceleration of ring on the inclined surface then for pure rolling, $a = \\alpha R \\Rightarrow \\alpha = \\dfrac{a}{R}$</p>\n<p>Using second law of rotational motion $$\\tau = I\\alpha = fR \\ldots \\text{(ii)}$$</p>\n<p>Substituting $I = mR^2$ and $\\alpha = \\dfrac{a}{R}$ into equation (ii):</p>\n<p>$$fR = (mR^2)\\left(\\dfrac{a}{R}\\right) \\Rightarrow f = ma \\ldots \\text{(iii)}$$</p>\n<p>Substituting $f = ma$ into equation (i):</p>\n<p>$$mg\\sin\\theta - ma = ma$$</p>\n<p>$$2ma = mg\\sin\\theta \\Rightarrow a = \\dfrac{g\\sin\\theta}{2}$$</p>\n<p>The angle of inclination is $\\alpha = 30^\\circ$</p>\n<p>$$a = \\dfrac{g\\left(\\dfrac{1}{2}\\right)}{2} = \\dfrac{g}{4}$$</p>\n<p>So, the linear acceleration of the centre of the ring along the plane is $a = \\dfrac{g}{4}$. Hence, statement (a) is false and statement (d) is true.</p>\n<p>Substituting $a = \\dfrac{g}{4}$ into equation (iii):</p>\n<p>$$f = m\\left(\\dfrac{g}{4}\\right) = \\dfrac{mg}{4}$$</p>\n<p>So, the force of friction between the ring and the inclined plane is $F_{\\text{friction}} = \\dfrac{mg}{4}$. Hence, statement (b) is true.</p>\n<p>For rolling without slipping to occur, static friction force $f$ must not exceed the maximum static limit,</p>\n<p>$$f \\leq f_{\\max} = \\mu N$$</p>\n<p>Normal force perpendicular to incline is $N = mg\\cos\\theta = mg\\cos 30^\\circ = mg \\times \\dfrac{\\sqrt{3}}{2}$.</p>\n<p>Therefore,</p>\n<p>$$\\dfrac{mg}{4} \\leq \\mu \\left(mg \\times \\dfrac{\\sqrt{3}}{2}\\right) \\Rightarrow \\dfrac{1}{4} \\leq \\mu \\dfrac{\\sqrt{3}}{2} \\Rightarrow \\mu \\geq \\dfrac{2}{4\\sqrt{3}} = \\dfrac{1}{2\\sqrt{3}} = \\dfrac{1}{2(3)^{0.5}}$$</p>\n<p>Thus, pure rolling occurs for $\\mu \\geq \\dfrac{1}{2(3)^{0.5}}$, not $\\mu \\leq \\dfrac{1}{2(3)^{0.5}}$. Hence, the statement (C) is false.</p>\n<p>Therefore, the correct statements are (B) and (D). Thus, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$m$ द्रव्यमान की एक पतली एकसमान वृत्तीय वलय, क्षैतिज के साथ $30^o$ के आनत कोण वाले एक आनत तल पर बिना फिसले लुढ़क रही है। वलय और तल के बीच घर्षण गुणांक $\\mu$ है।</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstnwwy0%2F4d536674-1d12-4af7-bb79-85d18e44beb4%2Fb65a5480-9843-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnwwy1.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstnwwy0%2F4d536674-1d12-4af7-bb79-85d18e44beb4%2Fb65a5480-9843-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstnwwy1.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"><p><b>(A)</b> तल के अनुदिश वलय के केन्द्र का रैखिक त्वरण $a = \\dfrac{g}{2}$ है</p><p><b>(B)</b> वलय और आनत तल के बीच घर्षण बल $F_{\\text{friction}} = \\dfrac{mg}{4}$ है</p><p><b>(C)</b> घर्षण गुणांक के सभी मानों $\\mu \\leq \\dfrac{1}{2(3)^{0.5}}$ के लिए वलय लुढ़कती रहती है</p><p><b>(D)</b> तल के अनुदिश वलय के केन्द्र का रैखिक त्वरण $a = \\dfrac{g}{4}$ है</p><p>कौन से कथन सत्य हैं?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>A, B, C</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>B, C, D</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>B, D</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>केवल D</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "combined-translational-and-rotational-motion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mstonop7",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A circular hole of radius $R/4$ is made in a thin uniform disc having mass $M$ and radius $R$, as shown in figure. The moment of inertia of the remaining portion of the disc about an axis passing through the point $O$ and perpendicular to the plane of the disc is :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstolbcq%2Ff8ca4028-bba4-4f08-aa6c-765ef128bb0f%2F5cf1d000-9846-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstolbeo.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstolbcq%2Ff8ca4028-bba4-4f08-aa6c-765ef128bb0f%2F5cf1d000-9846-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstolbeo.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{219MR^2}{256}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{237MR^2}{512}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{19MR^2}{512}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{197MR^2}{256}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The mass of complete uniform disc without hole is M and its radius is R.</p>\n<p>Area of complete disc is $A = \\pi R^2$.</p>\n<p>So, the mass per unit area (surface density $\\sigma$) is $\\sigma = \\frac{M}{\\pi R^2}$</p>\n<p>The radius of the cut portion is $r_c = \\frac{R}{4}$.</p>\n<p>Area of the cut portion is $A_c = \\pi \\left(\\frac{R}{4}\\right)^2 = \\frac{\\pi R^2}{16} = \\frac{A}{16}$.</p>\n<p>So, mass of the cut portion is $m_c = \\sigma \\cdot A_c = \\frac{M}{\\pi R^2} \\times \\frac{\\pi R^2}{16} = \\frac{M}{16}$</p>\n<p>The central axis passes through point O, perpendicular to the plane of the disc.</p>\n<p>The moment of inertia of a uniform disc of mass M and radius R about its central perpendicular axis is $I_{\\text{total}} = \\frac{1}{2}MR^2$</p>\n<p>Distance between centre O of the complete disc and centre O' of the hole is $d = \\frac{3R}{4}$.</p>\n<p>Moment of inertia of the cut portion about its own central axis (through O') is</p>\n<p>$$I_{\\mathrm{cm,cut}} = \\frac{1}{2} m_c r_c^2 = \\frac{1}{2}\\left(\\frac{M}{16}\\right)\\left(\\frac{R}{4}\\right)^2 = \\frac{1}{2}\\left(\\frac{M}{16}\\right)\\left(\\frac{R^2}{16}\\right) = \\frac{MR^2}{512}$$</p>\n<p>Using parallel axis theorem to from O' to O $\\left(d = \\frac{3R}{4}\\right)$:</p>\n<p>$$I_{\\text{cut}} = I_{\\mathrm{cm,cut}} + m_c d^2$$</p>\n<p>$$I_{\\text{cut}}=\\frac{M R^2}{512}+\\left(\\frac{M}{16}\\right)\\left(\\frac{3R}{4}\\right)^2=\\frac{M R^2}{512}+\\left(\\frac{M}{16}\\right)\\left(\\frac{9R^2}{16}\\right)=\\frac{M R^2}{512}+\\frac{9 M R^2}{256}$$</p>\n<p>$$I_{\\text{cut}}=\\frac{M R^2+18 M R^2}{512}=\\frac{19 M R^2}{512}$$</p>\n<p>By principle of superposition moment of inertia of the remaining portion is,</p>\n<p>$$I_{\\text{remaining}}=I_{\\text{total}}-I_{\\text{cut}}$$</p>\n<p>$$I_{\\text{remaining}}=\\frac{1}{2} M R^2-\\frac{19 M R^2}{512}$$</p>\n<p>$$I_{\\text{remaining}}=\\frac{256 M R^2-19 M R^2}{512}=\\frac{(256-19) M R^2}{512}=\\frac{237 M R^2}{512}$$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दर्शाए अनुसार, द्रव्यमान $M$ और त्रिज्या $R$ वाली एक पतली एकसमान डिस्क में त्रिज्या $R/4$ का एक वृत्ताकार छिद्र बनाया गया है। डिस्क के तल के लंबवत और बिंदु $O$ से होकर गुजरने वाले अक्ष के परितः डिस्क के शेष भाग का जड़त्व आघूर्ण है :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstolbcq%2Ff8ca4028-bba4-4f08-aa6c-765ef128bb0f%2F5cf1d000-9846-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstolbeo.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstolbcq%2Ff8ca4028-bba4-4f08-aa6c-765ef128bb0f%2F5cf1d000-9846-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstolbeo.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{219MR^2}{256}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{237MR^2}{512}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{19MR^2}{512}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{197MR^2}{256}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "moment-of-inertia",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi7twao",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Find force F required to keep the system in equilibrium. The dimensions of the system are d = 0.3 m and a = 0.2 m. Assume the rods to be massless.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi7q1pv%2Fadd42662-816d-4f11-ba26-1e804aa59df2%2Fc62aa830-91f7-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi7q1pw.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi7q1pv%2Fadd42662-816d-4f11-ba26-1e804aa59df2%2Fc62aa830-91f7-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi7q1pw.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$150(\\hat{i})$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$150(\\hat{-k})$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$150(\\hat{-i})$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>It cannot be in equilibrium</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For the rigid structure to be in equilibrium, the total moment (torque) of external forces about the hinge pivot O must sum to zero:</p>\n<p>$$ \\sum \\vec{\\tau}_{\\mathrm{O}}=0 \\Rightarrow \\vec{\\tau}_{\\mathrm{A}}+\\vec{\\tau}_{\\mathrm{B}}=0 $$</p>\n<p>where $\\vec{\\tau}=\\overrightarrow{\\mathrm{r}} \\times \\overrightarrow{\\mathrm{F}}$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi7rv7z%2F1876ab3d-dd54-4a3a-80c9-897f9f63f0df%2Ff8c425f0-91f7-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi7rv80.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi7rv7z%2F1876ab3d-dd54-4a3a-80c9-897f9f63f0df%2Ff8c425f0-91f7-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi7rv80.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Position of end $A$ where force 100 N acts vertically upwards along $+\\hat{\\jmath}$ is $\\vec{r}_A=-d \\hat{\\imath}=-0.3 \\hat{\\imath} \\mathrm{~m}$</p>\n<p>The applied force is $\\overrightarrow{\\mathrm{F}}_{\\mathrm{A}}=100 \\hat{\\mathrm{\\jmath}} \\mathrm{~N}$</p>\n<p>Position of end B where force F acts horizontally is $\\overrightarrow{\\mathrm{r}}_{\\mathrm{B}}=-\\mathrm{a} \\hat{\\jmath}=-0.2 \\hat{\\jmath} \\mathrm{~m}$</p>\n<p>And the applied force is $\\overrightarrow{\\mathrm{F}}_{\\mathrm{B}}=-\\mathrm{F} \\hat{\\imath}$</p>\n<p>Torque due to force at A about the hinge O is,</p>\n<p>$$\\vec{\\tau}_A = \\vec{r}_A \\times \\vec{F}_A$$</p>\n<p>$$\\vec{\\tau}_A = (-0.3\\hat{i}) \\times (100\\hat{j})$$</p>\n<p>$$\\vec{\\tau}_A = -0.3 \\times 100\\,\\hat{k} = -30\\hat{k}\\,\\mathrm{N-m}$$</p>\n<p>Toque due to force at B about hinge O is,</p>\n<p>$$\\vec{\\tau}_B = \\vec{r}_B \\times \\vec{F}_B$$</p>\n<p>$$\\vec{\\tau}_B = (-0.2\\hat{j}) \\times (-F\\,\\hat{i})$$</p>\n<p>$$\\vec{\\tau}_B = (0.2F)(-\\hat{k}) = -0.2F\\hat{k}$$</p>\n<p>For rotational equilibrium $\\vec{\\tau}_A + \\vec{\\tau}_B = 0$</p>\n<p>$$-30\\hat{k} - 0.2F\\hat{k} = 0$$</p>\n<p>$$0.2F = -30$$</p>\n<p>$$F = -\\frac{30}{0.2} = -150\\,\\mathrm{N}$$</p>\n<p>The negative sign of $F$ shows that the assumed direction of applied force $F$ is opposite of actual, i.e., the assumed direction is towards left $(-\\hat{i})$, so the actual direction of required force should be towards right $(\\hat{i})$ and the magnitude of the force is $F = 150\\,\\mathrm{N}$.</p>\n<p>Therefore, the required force to keep the system in equilibrium is $\\vec{F} = 150(\\hat{i})\\,\\mathrm{N}$. Thus, the correct option (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निकाय को संतुलन में रखने के लिए आवश्यक बल F ज्ञात कीजिए। निकाय की विमाएँ d = 0.3 m और a = 0.2 m हैं। मान लीजिए कि छड़ें द्रव्यमानहीन हैं।</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi7q1pv%2Fadd42662-816d-4f11-ba26-1e804aa59df2%2Fc62aa830-91f7-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi7q1pw.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi7q1pv%2Fadd42662-816d-4f11-ba26-1e804aa59df2%2Fc62aa830-91f7-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi7q1pw.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$150(\\hat{i})$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$150(\\hat{-k})$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$150(\\hat{-i})$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>यह संतुलन में नहीं हो सकता है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi8luph",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A smooth rod of length l is kept inside a trolley at an angle &theta; as shown in the figure. What should be the acceleration a of the trolley, so that the rod remains in equilibrium with respect to it?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi8idmk%2F680dab36-185d-4055-90e8-7cd7708086d8%2Fda057bc0-91fa-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8idml.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi8idmk%2F680dab36-185d-4055-90e8-7cd7708086d8%2Fda057bc0-91fa-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8idml.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$g \\tan \\theta$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$g \\cos \\theta$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$g \\sin \\theta$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$g \\cot \\theta$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Let the trolley accelerate to the right with horizontal acceleration a.</p>\n<p>The smooth rod of length 1 makes an angle $\\theta$ with the horizontal plane inside the trolley.</p>\n<p>We analyse the equilibrium of the rod in the non-inertial frame of the accelerating trolley. In this frame, a pseudo force acts on every point of the rod, Centre of mass of the rod at midpoint, at distance $1 / 2$ from either end.</p>\n<p>Magnitude of total pseudo force = ma, where m is the mass of the rod. The pseudo force is horizontally to the left (opposite to trolley acceleration a).</p>\n<p>The force of gravity $(\\mathrm{m} \\mathrm{g})$ is acting vertically downward at the Centre of mass $\\left(\\frac{1}{2}\\right)$.</p>\n<p>Pseudo Force (m a) is acting horizontally to the left at the Centre of mass $\\left(\\frac{1}{2}\\right)$.</p>\n<p>The surface of the trolley exerts contact normal forces perpendicular to the smooth rod surfaces.</p>\n<p>For the rod to remain in static equilibrium with respect to the trolley without rotating, the net torque about the lower contact pivot point (or relative to any base point) must be zero.</p>\n<p>Let the torque along anti-clockwise is positive then the torque along clockwise is negative.</p>\n<p>Perpendicular distance from pivot to line of action of weight is $\\mathrm{d}_{\\text {gravity }}=\\frac{1}{2} \\cos \\theta$</p>\n<p>The torque due to weight $(\\mathrm{mg})$ about the lower contact point A of the rod with the trolley floor is anticlockwise.</p>\n<p>$$ \\tau_{\\text {gravity }}=\\mathrm{mg} \\times\\left(\\frac{1}{2} \\cos \\theta\\right) $$</p>\n<p>Perpendicular distance from pivot to line of action of pseudo force is $\\mathrm{d}_{\\mathrm{pseudo}}=\\frac{1}{2} \\sin \\theta$</p>\n<p>The torque due to pseudo force (m a) about the lower contact point A of the rod with the trolley floor is anticlockwise.</p>\n<p>$$ \\tau_{\\text {pseudo }}=\\mathrm{ma} \\times\\left(\\frac{1}{2} \\sin \\theta\\right) $$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi8kqyk%2F824d5e06-e272-4da7-998d-558afa792850%2F1bf07bc0-91fb-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8kqyl.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi8kqyk%2F824d5e06-e272-4da7-998d-558afa792850%2F1bf07bc0-91fb-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8kqyl.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>For net torque to be zero:</p>\n<p>$$\\tau_{\\text{pseudo}} = \\tau_{\\text{gravity}}$$</p>\n<p>$$ma \\times \\left(\\frac{l}{2}\\sin\\theta\\right) = mg \\times \\left(\\frac{l}{2}\\cos\\theta\\right)$$</p>\n<p>$$a\\sin\\theta = g\\cos\\theta$$</p>\n<p>$$a = \\frac{g\\cos\\theta}{\\sin\\theta}$$</p>\n<p>$$a = g\\cot\\theta$$</p>\n<p>Therefore, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दर्शाए अनुसार $l$ लंबाई की एक चिकनी छड़ को ट्रॉली के अंदर &theta; कोण पर रखा गया है। ट्रॉली का त्वरण a क्या होना चाहिए, ताकि छड़ इसके सापेक्ष साम्यावस्था में रहे?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi8idmk%2F680dab36-185d-4055-90e8-7cd7708086d8%2Fda057bc0-91fa-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8idml.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi8idmk%2F680dab36-185d-4055-90e8-7cd7708086d8%2Fda057bc0-91fa-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8idml.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$g \\tan \\theta$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$g \\cos \\theta$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$g \\sin \\theta$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$g \\cot \\theta$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mstp4sa0",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A thin rod of mass $m=1 \\mathrm{~kg}$ and length $l=3 m$ is hinged to a ceiling end is free to rotate in a vertical plane. A particle of mass $m=1 \\mathrm{~kg}$ moving with speed $v_0$ strikes as shown in figure and gets stick with the rod. The value of $\\mathbf{v}_{\\mathbf{0}}$ in (cm/s) for which the rod becomes horizontal after collision is (Take $\\mathbf{g}=$ $\\left.10 \\mathrm{~m} / \\mathrm{s}^2, \\sqrt{35}=5.9\\right)$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstoxt6l%2F9498240d-50c5-4604-8613-49bf203c0ee8%2Fb862aad0-9847-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstoxt6m.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstoxt6l%2F9498240d-50c5-4604-8613-49bf203c0ee8%2Fb862aad0-9847-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstoxt6m.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "23.6 cm/s"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "560 cm/s"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "2360 cm/s"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "56 cm/s"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The mass of the uniform rod $\\mathrm{M}=1 \\mathrm{~kg}$ and its length is $\\mathrm{l}=3 \\mathrm{~m}$.</p>\n<p>Mass of the colliding particle $\\mathrm{m}=1 \\mathrm{~kg}$.</p>\n<p>Point of collision is midway along the rod, at distance $r=\\frac{1}{2}$ from the top hinge point.</p>\n<p>Angle of particle velocity relative to the horizontal is $60^{\\circ}$</p>\n<p>The rod with the stuck particle rotates up to reach a horizontal position before momentarily coming to rest.</p>\n<p>Before collision, the rod is hanging stationary vertically downward.</p>\n<p>The particle approaches with speed $\\mathrm{v}_0$ at an angle $\\theta=60^{\\circ}$ relative to the line along the horizontal axis, making the component of velocity perpendicular to the rod equal to $\\mathrm{v}_{\\perp}=\\mathrm{v}_0 \\cos 60^{\\circ}=\\frac{\\mathrm{v}_0}{2}$</p>\n<p>Distance from the hinge to the point of impact $=\\frac{1}{2}$.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstozw40%2Fb40f3cbd-67ff-47b2-a66d-baa3fae006fc%2Ff2440500-9847-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstozw41.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstozw40%2Fb40f3cbd-67ff-47b2-a66d-baa3fae006fc%2Ff2440500-9847-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstozw41.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Therefore, the angular momentum of the incoming particle about the hinge point before collision is,</p>\n<p>$\\mathrm{L}_{\\mathrm{i}}=\\mathrm{mv}_{\\perp}\\left(\\frac{\\mathrm{l}}{2}\\right)=\\mathrm{m}\\left(\\frac{\\mathrm{v}_0}{2}\\right)\\left(\\frac{\\mathrm{l}}{2}\\right) \\Rightarrow \\mathrm{L}_{\\mathrm{i}}=\\frac{\\mathrm{m} \\mathrm{v}_0 \\mathrm{l}}{4}$</p>\n<p>The moment of inertia of the uniform rod of mass $m$ and length $l$ about its end hinge is $I_{\\text{rod}} = \\frac{1}{3} m l^2$</p>\n<p>The moment of inertia of the stuck particle of mass $m$ at distance $\\frac{1}{2}$ from the hinge is, $I_{\\text{particle}} = m \\left(\\frac{l}{2}\\right)^2 = \\frac{1}{4} m l^2$</p>\n<p>So, total moment of inertia after collision is,</p>\n<p>$$I_{\\text{total}} = I_{\\text{rod}} + I_{\\text{particle}} = \\frac{1}{3} m l^2 + \\frac{1}{4} m l^2 = \\left(\\frac{1}{3} + \\frac{1}{4}\\right) m l^2 = \\frac{7}{12} m l^2$$</p>\n<p>Since impulse due to gravitational forces act at the hinge and pass through it, torque about the hinge during collision is zero, so the angular momentum about the hinge is conserved.</p>\n<p>$$L_i = L_f$$</p>\n<p>$$\\frac{m v_0 l}{4} = I_{\\text{total}} \\, \\omega$$</p>\n<p>$$\\frac{m v_0 l}{4} = \\left(\\frac{7}{12} m l^2\\right) \\omega$$</p>\n<p>$$\\omega = \\frac{m v_0 l}{4} \\times \\frac{12}{7 m l^2} = \\frac{3 v_0}{7 l}$$</p>\n<p>As the rod rotates up from the vertical position $(\\theta = 0^\\circ)$ to the horizontal position $(\\theta = 90^\\circ)$:</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstp2emd%2F1def9ece-8d0b-411e-8eb2-603ca2b46ff1%2F382ebb50-9848-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstp2eme.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstp2emd%2F1def9ece-8d0b-411e-8eb2-603ca2b46ff1%2F382ebb50-9848-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstp2eme.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Initial kinetic energy is,</p>\n<p>$$K_i = \\frac{1}{2} I_{\\text{total}} \\omega^2 = \\frac{1}{2} \\left( \\frac{7}{12} m l^2 \\right) \\left( \\frac{3 v_0}{7 l} \\right)^2 = \\frac{7}{24} m l^2 \\times \\frac{9 v_0^2}{49 l^2} = \\frac{3 m v_0^2}{56}$$</p>\n<p>As the system comes to rest finally, so the final kinetic energy is; $K_f = 0$</p>\n<p>Height raised by centre of mass of the rod (at distance $\\frac{1}{2}$ from hinge) is $h_1 = \\frac{l}{2}$.</p>\n<p>Height raised by particle (at distance $l/2$ from hinge) is $h_2 = \\frac{l}{2}$.</p>\n<p>So, the change in gravitational potential energy is</p>\n<p>$$\\Delta U = m g h_1 + m g h_2 = m g \\left( \\frac{l}{2} \\right) + m g \\left( \\frac{l}{2} \\right) = m g l$$</p>\n<p>Using conservation of mechanical energy, $E_i = E_f \\Rightarrow K_i = \\Delta U$</p>\n<p>$$\\frac{3 m v_0^2}{56} = m g l \\Rightarrow \\frac{3 v_0^2}{56} = g l$$</p>\n<p>$$v_0^2 = \\frac{56 g l}{3} = \\frac{56 \\times 10 \\times 3}{3} = 560\\ \\text{m}^2/\\text{s}^2$$</p>\n<p>$$v_0 = \\sqrt{560} = \\sqrt{16 \\times 35} = 4\\sqrt{35}\\ \\text{m/s}$$</p>\n<p>Substituting $\\sqrt{35} = 5.9$:</p>\n<p>$$v_0 = 4 \\times 5.9 = 23.6\\ \\text{m/s}$$</p>\n<p>$$v_0 = 23.6 \\times 100\\ \\text{cm/s} = 2360\\ \\text{cm/s}$$</p>\n<p>Therefore, the value of $v_0$ is $2360\\ \\text{cm/s}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$m=1 \\mathrm{~kg}$ द्रव्यमान और $l=3 m$ लंबाई की एक पतली छड़ एक छत के सिरे से कीलकित है और एक ऊर्ध्वाधर तल में घूमने के लिए स्वतंत्र है। $m=1 \\mathrm{~kg}$ द्रव्यमान का एक कण $v_0$ चाल से गति करते हुए चित्र में दर्शाए अनुसार छड़ से टकराता है और उससे चिपक जाता है। (cm/s) में $\\mathbf{v}_{\\mathbf{0}}$ का वह मान जिसके लिए टक्कर के बाद छड़ क्षैतिज हो जाती है, है (मान लें $\\mathbf{g}=$ $\\left.10 \\mathrm{~m} / \\mathrm{s}^2, \\sqrt{35}=5.9\\right)$</p> <img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mstoxt6l%2F9498240d-50c5-4604-8613-49bf203c0ee8%2Fb862aad0-9847-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstoxt6m.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mstoxt6l%2F9498240d-50c5-4604-8613-49bf203c0ee8%2Fb862aad0-9847-11f1-a704-51720bfb8858%2Ffile-6y3zli1mstoxt6m.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "23.6 cm/s"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "560 cm/s"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "2360 cm/s"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "56 cm/s"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision-of-rigid-bodies",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi80qhq",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Figure shows a pair of pin jointed gripper tongs holding an object weighing 2000 N. The coefficient of friction at the gripping surface is 0.1. X&#8212;X' is the line of action of the input force and Y&#8212;Y' is the line of application of normal gripping force. If the pin-joint is assumed as frictionless, the magnitude of force F required to hold the weight is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi7wr5g%2F70b26ef0-2c6e-4558-918b-30a435f93b26%2F80aaf340-91f8-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi7wr5h.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi7wr5g%2F70b26ef0-2c6e-4558-918b-30a435f93b26%2F80aaf340-91f8-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi7wr5h.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1000 N</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2000 N</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2500 N</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>5000 N</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The object of weight $\\mathrm{W}=2000 \\mathrm{~N}$ is held between two jaws of the gripper tongs.</p>\n<p>Each jaw exerts a normal force N horizontally on the object.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi7yfts%2Fcb6cc563-ea48-4f6d-9129-784e371b4934%2Faf89da00-91f8-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi7yftt.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi7yfts%2Fcb6cc563-ea48-4f6d-9129-784e371b4934%2Faf89da00-91f8-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi7yftt.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>To prevent the object from falling downward, the static friction force at both contact surfaces acts vertically upward.</p>\n<p>Maximum static friction per surface is $f = \\mu N$</p>\n<p>Since there are 2 gripping surfaces, total upward friction force is $f_{\\text{total}} = 2f = 2\\mu N$</p>\n<p>For the object to be held without slipping</p>\n<p>$$\\sum F_y = 0 \\Rightarrow 2\\mu N = W$$</p>\n<p>The coefficient of friction is $\\mu = 0.1$</p>\n<p>$$2 \\times 0.1 \\times N = 2000$$</p>\n<p>$$0.2N = 2000$$</p>\n<p>$$N = \\frac{2000}{0.2} = 10{,}000\\ \\text{N}$$</p>\n<p>The input force (F) is applied along line X – X' at a perpendicular distance $d_1 = 30\\ \\text{cm}$ above the pin joint.</p>\n<p>Torque about pin joint is $\\tau_{\\text{input}} = F \\times d_1 = F \\times 30$</p>\n<p>Normal gripping force (N) is applied along line Y – Y' at a perpendicular distance $d_2 = 15\\ \\text{cm}$ below the pin joint.</p>\n<p>Torque about pin joint is $\\tau_{\\text{output}} = N \\times d_2 = N \\times 15$</p>\n<p>For the arm to be in rotational equilibrium about the pin joint:</p>\n<p>$$\\sum \\tau_{\\text{pin}} = 0$$</p>\n<p>$$\\tau_{\\text{input}} = \\tau_{\\text{output}}$$</p>\n<p>$$F \\times 30 = N \\times 15$$</p>\n<p>Substituting $N = 10{,}000\\ \\text{N}$,</p>\n\n<p>$$F \\times 30 = 10000 \\times 15$$</p>\n<p>$$F = \\frac{10000 \\times 15}{30}$$</p>\n<p>$$F = \\frac{10000}{2} = 5000\\,\\mathrm{N}$$</p>\n<p>Therefore, the required input force is $F = 5000\\,\\mathrm{N}$. Thus, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में पिन-जॉइंटेड ग्रिपर चिमटे का एक जोड़ा दिखाया गया है जो 2000 N भार वाली एक वस्तु को पकड़े हुए है। ग्रिपिंग सतह पर घर्षण गुणांक 0.1 है। X—X' इनपुट बल की क्रिया रेखा है और Y—Y' अभिलंब ग्रिपिंग बल की अनुप्रयोग रेखा है। यदि पिन-जॉइंट को घर्षण रहित माना जाता है, तो भार को थामे रखने के लिए आवश्यक बल F का परिमाण होगा:</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi7wr5g%2F70b26ef0-2c6e-4558-918b-30a435f93b26%2F80aaf340-91f8-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi7wr5h.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi7wr5g%2F70b26ef0-2c6e-4558-918b-30a435f93b26%2F80aaf340-91f8-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi7wr5h.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1000 N</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2000 N</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2500 N</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>5000 N</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msjcqb3t",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A block of mass $M$ is moving with a velocity $v_1$ on a frictionless surface. It passes over a cylinder of radius $R$ and mass $M$, which has a fixed axis and is initially at rest. When the block first makes contact with the cylinder, it slips on the cylinder, but the friction is large enough so that slipping ceases before it loses contact with the cylinder. Finally, it goes to the dotted position with velocity $v_2=\\frac{2}{n} v_1$. Find the value of $\\mathbf{n}$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msjclxb5%2Fbd209e7a-0f2b-426c-afa1-44660410022f%2Fa9d1c510-9297-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjclxb6.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msjclxb5%2Fbd209e7a-0f2b-426c-afa1-44660410022f%2Fa9d1c510-9297-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjclxb6.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>Since the axis of the cylinder is fixed, we can analyze the system by looking at the angular momentum about the fixed axis of the cylinder.</p>\n<p>Friction acts as an internal force that redistributes momentum between the block and the cylinder.</p>\n<p>Before contact, the block is moving with velocity $\\mathrm{v}_1$ at a perpendicular distance R from the center of the cylinder. The cylinder is at rest $\\left(\\omega_{\\mathrm{i}}=0\\right)$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msjcoci3%2F90cff9d3-9e8d-4685-809f-b63a2d0bf38e%2Fed2c81b0-9297-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjcoci4.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msjcoci3%2F90cff9d3-9e8d-4685-809f-b63a2d0bf38e%2Fed2c81b0-9297-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjcoci4.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>$$L_i = L_{\\text{block}} + L_{\\text{cylinder}}$$</p>\n<p>$$L_i = (M \\cdot v_1 \\cdot R) + I\\omega_i = Mv_1R + 0 = Mv_1R$$</p>\n<p>Here, $I$ is the moment of inertia of the cylinder, $I = \\frac{MR^2}{2}$, where $R$ is the radius of cylinder and $M$ is the mass of cylinder.</p>\n<p>When slipping ceases, the block moves with velocity $v_2$ and the cylinder rotates with angular velocity $\\omega$.</p>\n<p>So, the final angular momentum of the system is,</p>\n<p>$$L_f = (M \\cdot v_2 \\cdot R) + I\\omega$$</p>\n<p>Substituting $I = \\frac{1}{2}MR^2$ and the no-slipping condition $\\omega = \\frac{v_2}{R}$:</p>\n<p>$$L_f = Mv_2R + \\left(\\frac{1}{2}MR^2\\right)\\left(\\frac{v_2}{R}\\right)$$</p>\n<p>$$L_f = M v_2 R + \\frac{1}{2} M v_2 R = \\frac{3}{2} M v_2 R$$</p>\n<p>Since the only horizontal forces are internal friction forces between the block and the cylinder ($f_c = -f_M$), the total angular momentum about the fixed axis is conserved.</p>\n<p>$$L_i = L_f$$</p>\n<p>$$M v_1 R = \\frac{3}{2} M v_2 R$$</p>\n<p>$$v_1 = \\frac{3}{2} v_2$$</p>\n<p>$$v_2 = \\frac{2}{3} v_1 = \\frac{2}{n} v_1 \\Rightarrow n = 3$$</p>\n<p>Therefore, the value of $n$ is $3$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$M$ द्रव्यमान का एक गुटका एक घर्षण रहित सतह पर $v_1$ वेग से गति कर रहा है। यह $R$ त्रिज्या और $M$ द्रव्यमान के एक बेलन (सिलेंडर) के ऊपर से गुजरता है, जिसका अक्ष स्थिर है और जो प्रारंभ में विरामावस्था में है। जब गुटका पहली बार बेलन के संपर्क में आता है, तो यह बेलन पर फिसलता है, लेकिन घर्षण इतना अधिक है कि बेलन से संपर्क टूटने से पहले फिसलना बंद हो जाता है। अंत में, यह बिंदुदार (dotted) स्थिति में $v_2=\\frac{2}{n} v_1$ वेग से जाता है। $\\mathbf{n}$ का मान ज्ञात कीजिए।</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msjclxb5%2Fbd209e7a-0f2b-426c-afa1-44660410022f%2Fa9d1c510-9297-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjclxb6.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msjclxb5%2Fbd209e7a-0f2b-426c-afa1-44660410022f%2Fa9d1c510-9297-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjclxb6.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum-conservation",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msjcvlhk",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform thin rod is released from rest in the horizontal position as shown in the figure. The maximum angular acceleration is $\\frac{\\mathrm{gn}^{1 / 4}}{\\mathrm{~L}}$. The value of n is :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msjcrxcd%2F43acc382-6dd2-4712-b7db-edc1a7fced32%2F50b353d0-9298-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjcrxce.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msjcrxcd%2F43acc382-6dd2-4712-b7db-edc1a7fced32%2F50b353d0-9298-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjcrxce.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "9",
+                "explanation": "<p>The torque produced by the weight of the rod about the pivot point O is $\\tau = Mgx$, where $x$ is the distance from</p>\n<p>the pivot to the center of mass (COM).</p>\n<p>The moment of inertia of the thin rod of mass $M$ and length $L$ about its centre of mass and perpendicular to its</p>\n<p>axis is $I_{\\mathrm{COM}} = \\frac{ML^2}{12}$.</p>\n<p>According to the parallel axis theorem, the moment of inertia about pivot O is:</p>\n<p>$$I_O = I_{\\mathrm{com}} + Mx^2 = \\frac{ML^2}{12} + Mx^2$$</p>\n<p>Using second law of rotational motion, $\\tau = I\\alpha$.</p>\n<p>$$\\alpha = \\frac{Mgx}{\\frac{ML^2}{12} + Mx^2}$$</p>\n<p>$$\\alpha = \\frac{gx}{\\frac{L^2}{12} + x^2}$$</p>\n\n<p>To find the maximum angular acceleration, we differentiate $\\alpha$ with respect to $x$ and at maximum or minimum value, $\\dfrac{d\\alpha}{dx}=0$</p>\n<p>$$ \\frac{d}{dx}\\left(\\frac{gx}{\\dfrac{L^2}{12}+x^2}\\right)=0 \\Rightarrow \\frac{\\left(\\dfrac{L^2}{12}+x^2\\right)\\dfrac{d}{dx}(gx)-(gx)\\dfrac{d}{dx}\\left(\\dfrac{L^2}{12}+x^2\\right)}{\\left(\\dfrac{L^2}{12}+x^2\\right)^2}=0 $$</p>\n<p>$$ \\frac{\\left(\\dfrac{L^2}{12}+x^2\\right)(g)-(gx)(2x)}{\\left(\\dfrac{L^2}{12}+x^2\\right)^2}=0 $$</p>\n<p>$$ \\frac{L^2g}{12}+gx^2-2gx^2=0 $$</p>\n<p>$$ \\frac{L^2}{12}+x^2-2x^2=0 \\Rightarrow x^2=\\frac{L^2}{12} \\Rightarrow x=\\frac{L}{\\sqrt{12}} $$</p>\n<p>So, at $x=\\dfrac{L}{\\sqrt{12}}$ back into the expression for $\\alpha$ we get the maximum angular acceleration.</p>\n<p>$$ \\alpha_{\\max}=\\frac{g\\left(\\dfrac{L}{\\sqrt{12}}\\right)}{\\dfrac{L^2}{12}+\\left(\\dfrac{L}{\\sqrt{12}}\\right)^2} $$</p>\n<p>$$ \\alpha_{\\max}=\\frac{\\dfrac{gL}{\\sqrt{12}}}{\\dfrac{L^2}{12}+\\dfrac{L^2}{12}}=\\frac{\\dfrac{gL}{\\sqrt{12}}}{\\dfrac{2L^2}{12}} $$</p>\n<p>$$ \\alpha_{\\max}=\\frac{gL}{\\sqrt{12}}\\times\\frac{6}{L^2}=\\frac{6g}{\\sqrt{12}L} $$</p>\n<p>$$ \\alpha_{\\max}=\\frac{6g}{2\\sqrt{3}L}=\\frac{3g}{\\sqrt{3}L}=\\frac{\\sqrt{3}g}{L}=\\frac{g[3^2]^{1/4}}{L}=\\frac{g[9]^{1/4}}{L} $$</p>\n<p>On comparing the expression given,</p>\n<p>$$ \\frac{gn^{1/4}}{L}=\\frac{g[9]^{1/4}}{L} \\Rightarrow n=9 $$</p>\n<p>Therefore, the value of $n$ is 9.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक समान पतली छड़ को चित्र में दर्शाए अनुसार क्षैतिज स्थिति में विरामावस्था से छोड़ा जाता है। अधिकतम कोणीय त्वरण $\\frac{\\mathrm{gn}^{1 / 4}}{\\mathrm{~L}}$ है। n का मान है :</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msjcrxcd%2F43acc382-6dd2-4712-b7db-edc1a7fced32%2F50b353d0-9298-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjcrxce.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msjcrxcd%2F43acc382-6dd2-4712-b7db-edc1a7fced32%2F50b353d0-9298-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjcrxce.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-motion-about-fixed-axis-of-rigid-body",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msnqikq1",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A ring of radius $\\mathbf{R} \\boldsymbol{=} \\mathbf{1 0 ~ c m}$ rolls without slipping on a rough horizontal surface with a constant velocity. The radius of curvature (in cm) of the path followed by any particle of the ring at the highest point of its path will be:</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msnqeejt%2F16e92374-2894-4250-bfee-c9e3cbdd195d%2Fbb11f190-9500-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnqeeju.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msnqeejt%2F16e92374-2894-4250-bfee-c9e3cbdd195d%2Fbb11f190-9500-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnqeeju.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "40",
+                "explanation": "<p>The radius of the ring $=\\mathrm{R}=10 \\mathrm{~cm}$</p>\n<p>Linear velocity of the centre of mass $=\\mathrm{v}($ constant $)$</p>\n<p>Angular velocity of rotation $=\\omega=\\frac{\\mathrm{v}}{\\mathrm{R}}$</p>\n<p>As the ring rolls without slipping, any point on its circumference moves in a cycloidal trajectory.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msnqgbow%2F2d11d112-9c16-4207-9261-5f74d7ffcd7c%2Ff07ae300-9500-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnqgbox.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msnqgbow%2F2d11d112-9c16-4207-9261-5f74d7ffcd7c%2Ff07ae300-9500-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnqgbox.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>At the highest point of its trajectory, the particle has two velocity components:</p>\n<p>Translational velocity of centre of mass $\\vec{v}_t = v\\hat{i}$</p>\n<p>Rotational tangential velocity is $\\vec{v}_{\\mathrm{rot}} = \\omega R\\hat{i} = v\\hat{i}$</p>\n<p>The total velocity of the particle at the highest point ($v_{\\mathrm{top}}$) is $v_{\\mathrm{top}} = v + v = 2v$</p>\n<p>Since the ring rolls with constant linear velocity $v$, the centre of mass has zero acceleration ($a_{\\mathrm{cm}} = 0$).</p>\n<p>Therefore, the total acceleration of any particle on the rim is only its centripetal acceleration relative to the centre of mass, directed towards the centre.</p>\n<p>$$a_{\\mathrm{top}} = a_c = \\frac{v_{\\mathrm{rot}}^2}{R} = \\frac{v^2}{R}$$</p>\n<p>The radius of curvature $\\rho$ of any curved path at a given point is, $\\rho = \\frac{v_{\\mathrm{inst}}^2}{a_{\\perp}}$</p>\n<p>Where $v_{\\mathrm{inst}}$ is the instantaneous speed of the particle and $a_{\\perp}$ is the component of acceleration perpendicular to the velocity vector.</p>\n<p>At the highest point speed $v_{\\text{inst}} = v_{\\text{top}} = 2v$ along horizontal.</p>\n<p>Perpendicular acceleration $a_{\\perp} = a_{\\text{top}} = \\frac{v^2}{R}$ along vertically downwards.</p>\n<p>Using radius of curvature formula, $\\rho = \\frac{(2v)^2}{v^2/R}$</p>\n<p>$$\\rho = \\frac{4v^2}{v^2} R = 4R$$</p>\n<p>The given radius of ring is $R = 10\\ \\text{cm}$, so the radius of curvature of particle of the ring at the highest point of its path is $\\rho = 4 \\times 10\\ \\text{cm} = 40\\ \\text{cm}$.</p>\n<p>Therefore, the correct answer is $40$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>त्रिज्या $\\mathbf{R} \\boldsymbol{=} \\mathbf{1 0 ~ c m}$ का एक वलय (ring) एक खुरदरे क्षैतिज पृष्ठ पर नियत वेग से बिना फिसले लुढ़क रहा है। इसके पथ के उच्चतम बिंदु पर वलय के किसी भी कण द्वारा अनुसरित पथ की वक्रता त्रिज्या (cm में) होगी:</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msnqeejt%2F16e92374-2894-4250-bfee-c9e3cbdd195d%2Fbb11f190-9500-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnqeeju.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msnqeejt%2F16e92374-2894-4250-bfee-c9e3cbdd195d%2Fbb11f190-9500-11f1-b2ac-3df31c07c131%2Ffile-6y3zli1msnqeeju.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "combined-translational-and-rotational-motion",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msi95zkw",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform iron ribbon of mass 3 m and length 3 d is bent at $B$ as shown and placed on a horizontal table in vertical plane. A fly of mass $m$ is sitting at point $A$. What is the angle $\\alpha$ at which the ribbon is just about to topple ? Find $\\mathbf{3 2} \\boldsymbol{\\operatorname { c o s }} \\boldsymbol{\\alpha}$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi8x1be%2Fdf55fa2e-525b-4352-ae41-cb18c36bbf5e%2F71a634a0-91fc-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8x1bf.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi8x1be%2Fdf55fa2e-525b-4352-ae41-cb18c36bbf5e%2F71a634a0-91fc-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8x1bf.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "28",
+                "explanation": "<p>The uniform ribbon has total mass 3 m and total length 3 d :</p>\n<p>Linear mass density $\\lambda=\\frac{3 \\mathrm{~m}}{3 \\mathrm{~d}}=\\frac{\\mathrm{m}}{\\mathrm{d}}$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi8yr1m%2Fe06c1a9f-57df-40eb-8a42-5d1cb96a66d8%2Fa1553ca0-91fc-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8yr1n.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi8yr1m%2Fe06c1a9f-57df-40eb-8a42-5d1cb96a66d8%2Fa1553ca0-91fc-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8yr1n.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The length of segment $A B$ is $2 d$, so its mass will be $m_{A B}=\\lambda \\times 2 d=2 m$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi906o5%2Fdc5d7c04-b25e-4b25-a44c-3f54857e99f8%2Fc9366f50-91fc-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi906o6.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi906o5%2Fdc5d7c04-b25e-4b25-a44c-3f54857e99f8%2Fc9366f50-91fc-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi906o6.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Centre of mass lies at distance d along AB from B.</p>\n<p>Horizontal position relative to corner B is $\\mathrm{x}_{\\mathrm{AB}}=\\mathrm{d} \\cos \\alpha$</p>\n<p>The length of segment BC is d , so its mass will be $\\mathrm{m}_{\\mathrm{BC}}=\\lambda \\times \\mathrm{d}=\\mathrm{m}$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi91d12%2F759c57c6-9e03-4f41-8c68-692920830490%2Fe9ef0d60-91fc-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi91d13.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi91d12%2F759c57c6-9e03-4f41-8c68-692920830490%2Fe9ef0d60-91fc-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi91d13.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Centre of mass lies at distance $\\frac{\\mathrm{d}}{2}$ along BC from B.</p>\n<p>Horizontal position relative to corner $B$ is $x_{B C}=\\frac{d}{2}$</p>\n<p>The mass of fly at A is $\\mathrm{m}_{\\mathrm{fly}}=\\mathrm{m}$</p>\n<p>Position is at end A , which is at distance 2 d along AB from B .</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi93cyc%2F1f77ed78-800f-4c78-8b2d-ae2a2d7ce1b5%2F217e6140-91fd-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi93cyd.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi93cyc%2F1f77ed78-800f-4c78-8b2d-ae2a2d7ce1b5%2F217e6140-91fd-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi93cyd.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Horizontal position relative to corner B is $x_{\\mathrm{fly}} = 2d \\cos \\alpha$</p>\n<p>The system is supported on the table along segment BC (from $x = 0$ at B to $x = d$ at C).</p>\n<p>Moment due to fly at C is $M_{\\mathrm{fly}} = m \\times (2d \\cos \\alpha)$</p>\n<p>Moment due to segment AB is</p>\n<p>$$M_{AB} = 2m \\times (d \\cos \\alpha)$$</p>\n<p>Moment due to base segment BC is</p>\n<p>$$M_{BC} = m \\times \\left(\\frac{d}{2}\\right)$$</p>\n<p>When the structure is just about to topple over point C, the normal force from the table shifts to point C, and the net torque of all gravitational forces about point C must be zero, $\\sum \\tau_C = 0$</p>\n<p>Equivalently, the horizontal position of the overall Centre of mass of the combined system (ribbon + fly) relative to C must pass directly through point C ($x_{\\mathrm{com}} = d$).</p>\n<p>$$\\frac{m_{\\mathrm{fly}} x_{\\mathrm{fly}} + m_{AB} x_{AB} + m_{BC} x_{BC}}{\\sum m_i} = d$$</p>\n<p>$$\\frac{m\\,(2d \\cos \\alpha) + 2m\\,(d \\cos \\alpha) + m\\left(\\frac{d}{2}\\right)}{m + 2m + m} = d$$</p>\n<p>$$4d \\cos \\alpha + \\left(\\frac{d}{2}\\right) = 4d \\Rightarrow 4d \\cos \\alpha = 4d - \\frac{d}{2}$$</p>\n<p>$$\\Rightarrow 4d \\cos \\alpha = \\frac{7d}{2} \\Rightarrow \\cos \\alpha = \\frac{7}{8}$$</p>\n<p>$$ \\Rightarrow 32 \\cos \\alpha=32 \\times \\frac{7}{8}=28 $$</p>\n<p>The value of $32 \\cos \\alpha$ is 28 .</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान 3 m और लंबाई 3 d के एक एकसमान लोहे के फीते (रिबन) को दर्शाए गए अनुसार $B$ पर मोड़ा गया है और ऊर्ध्वाधर तल में एक क्षैतिज मेज पर रखा गया है। $m$ द्रव्यमान की एक मक्खी बिंदु $A$ पर बैठी है। वह कोण $\\alpha$ क्या है जिस पर फीता ठीक पलटने (topple) वाला है? $\\mathbf{3 2} \\boldsymbol{\\operatorname { c o s }} \\boldsymbol{\\alpha}$ ज्ञात कीजिए।</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi8x1be%2Fdf55fa2e-525b-4352-ae41-cb18c36bbf5e%2F71a634a0-91fc-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8x1bf.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi8x1be%2Fdf55fa2e-525b-4352-ae41-cb18c36bbf5e%2F71a634a0-91fc-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi8x1bf.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-equilibrium",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mstoadv6",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The moment of inertia of a thin sheet of mass $M$ of the given shape about the specified axis lying in the same plane of the sheet, is equal to $\\frac{x}{12} \\mathbf{M a}^{\\mathbf{2}}$. Value of $\\mathbf{x}$ is equal to</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msto59sb%2F95fa5cd2-7134-4ceb-9092-49ff6b625303%2F9ebef9b0-9844-11f1-a704-51720bfb8858%2Ffile-6y3zli1msto59sc.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msto59sb%2F95fa5cd2-7134-4ceb-9092-49ff6b625303%2F9ebef9b0-9844-11f1-a704-51720bfb8858%2Ffile-6y3zli1msto59sc.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "7",
+                "explanation": "<p>The sheet is a square plate of mass M and side a .</p>\n<p>The axis lies in the plane of the plate along the line inclined at the angle $45^{\\circ}$</p>\n<p>Let a uniform square sheet of side a and mass M lie in the xy -plane with its centre of mass at the origin ( 0,0 ).</p>\n<p>The moment of inertia of sheet about its centre of mass is $\\mathrm{I}_{\\mathrm{cm}}=\\frac{1}{12} \\mathrm{M} \\mathrm{a}^2$</p>\n<p>Moment of inertia about the horizontal axis through the COM is $\\mathrm{I}_{\\mathrm{x}}=\\frac{1}{12} \\mathrm{Ma}^2$</p>\n<p>Moment of inertia about the vertical axis through the COM is $\\mathrm{I}_{\\mathrm{y}}=\\frac{1}{12} \\mathrm{Ma}^2$</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msto7g3y%2F39d58dca-2a26-44e9-aa0c-e5c054cd7daf%2Fdb3fb6e0-9844-11f1-a704-51720bfb8858%2Ffile-6y3zli1msto7g3z.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msto7g3y%2F39d58dca-2a26-44e9-aa0c-e5c054cd7daf%2Fdb3fb6e0-9844-11f1-a704-51720bfb8858%2Ffile-6y3zli1msto7g3z.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>For any axis lying in the plane of the square and passing through its centre of mass at an angle $\\theta$:</p>\n<p>$$I_{\\mathrm{COM}} = I_x \\cos^2 \\theta + I_y \\sin^2 \\theta = \\frac{1}{12}Ma^2(\\cos^2 \\theta + \\sin^2 \\theta) = \\frac{1}{12}Ma^2$$</p>\n<p>The perpendicular distance $(d)$ from the centre of mass to the given axis is</p>\n<p>$$d = \\frac{\\text{diagonal}}{2} = \\frac{a\\sqrt{2}}{2} = \\frac{a}{\\sqrt{2}}$$</p>\n<p>Using parallel axis theorem the moment of inertia about the given axis is $I = I_{\\mathrm{COM}} + Md^2$</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msto8xl7%2F5fe9de8f-aac4-4a11-9887-a0a95ee6eb57%2F048f6db0-9845-11f1-a704-51720bfb8858%2Ffile-6y3zli1msto8xl8.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msto8xl7%2F5fe9de8f-aac4-4a11-9887-a0a95ee6eb57%2F048f6db0-9845-11f1-a704-51720bfb8858%2Ffile-6y3zli1msto8xl8.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>$$I = \\frac{1}{12}Ma^2 + M\\left(\\frac{a}{\\sqrt{2}}\\right)^2$$</p>\n<p>$$I = \\frac{1}{12}Ma^2 + \\frac{1}{2}Ma^2$$</p>\n<p>$$I = \\left(\\frac{1+6}{12}\\right)Ma^2 = \\frac{7}{12}Ma^2 = \\frac{x}{12}Ma^2 \\Rightarrow x = 7$$</p>\n<p>Therefore, the value of $x$ is $7$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The moment of inertia of a thin sheet of mass $M$ of the given shape about the specified axis lying in the same plane of the sheet, is equal to $\\frac{x}{12} \\mathbf{M a}^{\\mathbf{2}}$. Value of $\\mathbf{x}$ is equal to</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msto59sb%2F95fa5cd2-7134-4ceb-9092-49ff6b625303%2F9ebef9b0-9844-11f1-a704-51720bfb8858%2Ffile-6y3zli1msto59sc.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msto59sb%2F95fa5cd2-7134-4ceb-9092-49ff6b625303%2F9ebef9b0-9844-11f1-a704-51720bfb8858%2Ffile-6y3zli1msto59sc.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "moment-of-inertia",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Questions from all topics of the chapter",
+    "timeAllotted": 3600000,
+    "title": "Rotational Motion - Chapter Test",
+    "totalQuestions": 25,
+    "type": "chapter",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g71mnvy4wo3",
+    "defaultLanguage": "en",
+    "description": "Questions from all topics of the chapter",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-15T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 100,
+    "maxNegMarks": 25,
+    "policy": "jee-main",
+    "syllabus": "Questions from all topics of the chapter",
+    "timeAllotted": 3600000,
+    "title": "Rotational Motion - Chapter Test",
+    "totalQuestions": 25,
+    "type": "chapter",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Rotational Motion"
+  }
+}

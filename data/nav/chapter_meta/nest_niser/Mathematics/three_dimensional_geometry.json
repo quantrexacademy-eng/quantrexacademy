@@ -1,0 +1,30 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d379647479b8e869647b",
+  "chapterId": "680920163a10446a207fde08",
+  "subject": "Mathematics",
+  "chapter": "Three Dimensional Geometry",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6809206d3a10446a207fe229",
+      "title": "Basics of point in 3 dimension",
+      "count": 2,
+      "questionIds": [
+        "680920173a10446a207fde19",
+        "680920163a10446a207fde06"
+      ]
+    },
+    {
+      "id": "6809206e3a10446a207fe22a",
+      "title": "Line in Space",
+      "count": 3,
+      "questionIds": [
+        "68e78b116105b8763ce72c7f",
+        "68e78b0e6105b8763ce72c70",
+        "6809201c3a10446a207fde47"
+      ]
+    }
+  ]
+}

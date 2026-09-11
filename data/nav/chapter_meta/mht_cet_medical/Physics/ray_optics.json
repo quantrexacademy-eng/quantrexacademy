@@ -1,0 +1,63 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19156220c83fbf1e0bce11",
+  "chapterId": "6a192b9fe4cc9575516b5661",
+  "subject": "Physics",
+  "chapter": "Ray Optics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec174ef1faeb9633e23c5",
+      "title": "Lens Formula, Refraction of light from curved surface",
+      "count": 4,
+      "questionIds": [
+        "6a1ec0eeef1faeb9633e208e",
+        "6a1ec153ef1faeb9633e230b",
+        "6a1ec00eef1faeb9633e1b13",
+        "6a1ec053ef1faeb9633e1cc4"
+      ]
+    },
+    {
+      "id": "6a1ec174ef1faeb9633e23c6",
+      "title": "Prism and Dispersion of Light",
+      "count": 4,
+      "questionIds": [
+        "6a1ec0adef1faeb9633e1efb",
+        "6a1ec02eef1faeb9633e1bdb",
+        "6a1ec12def1faeb9633e221b",
+        "6a1ec054ef1faeb9633e1ccb"
+      ]
+    },
+    {
+      "id": "6a1ec174ef1faeb9633e23c7",
+      "title": "Refraction of light from plane surface",
+      "count": 7,
+      "questionIds": [
+        "6a1ec0f0ef1faeb9633e209a",
+        "6a1ec0edef1faeb9633e2087",
+        "6a1ec06fef1faeb9633e1d75",
+        "6a1ec0d3ef1faeb9633e1feb",
+        "6a1ec08fef1faeb9633e1e3e",
+        "6a1ec14eef1faeb9633e22ed",
+        "6a1ec113ef1faeb9633e217a"
+      ]
+    },
+    {
+      "id": "6a1ec175ef1faeb9633e23c8",
+      "title": "Optical Instruments",
+      "count": 1,
+      "questionIds": [
+        "6a1ec074ef1faeb9633e1d93"
+      ]
+    },
+    {
+      "id": "6a1ec175ef1faeb9633e23c9",
+      "title": "Mirror Formula, Reflection in Spherical Mirror",
+      "count": 1,
+      "questionIds": [
+        "6a1ec08eef1faeb9633e1e34"
+      ]
+    }
+  ]
+}

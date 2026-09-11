@@ -1,0 +1,38 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa607a4468eb1307ceb0af",
+  "chapterId": "67fdff56378e1624ea7b6a58",
+  "subject": "Mathematics",
+  "chapter": "Vector Algebra",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff8a378e1624ea7b6cd4",
+      "title": "Algebra of Vectors",
+      "count": 4,
+      "questionIds": [
+        "6a4521848c20d3b91d64f973",
+        "67fdff69378e1624ea7b6b27",
+        "67fdff56378e1624ea7b6a59",
+        "67fdff56378e1624ea7b6a56"
+      ]
+    },
+    {
+      "id": "68e7a692ce75e72648a45eab",
+      "title": "Vector Algebra",
+      "count": 1,
+      "questionIds": [
+        "68e7a680ce75e72648a45e77"
+      ]
+    },
+    {
+      "id": "67fdff8a378e1624ea7b6cd5",
+      "title": "Scalar Triple Product",
+      "count": 1,
+      "questionIds": [
+        "67fdff6a378e1624ea7b6b2e"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g71mo0e08ml",
+  "title": "Some Basic Concept of Chemistry Test - 2 (Topic Test)",
+  "type": "topic",
+  "section": "Some Basic Concept of Chemistry",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-06-02T00:30:00.000Z",
+  "status": "ok",
+  "analysisId": "d301c1c1-b586-4a44-a67b-64dcbc126b62",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g71mo0e08ml",
+    "defaultLanguage": "en",
+    "description": "Mole Concept, Laws of Chemical Composition, Dalton's Theory, Various Types of Masses",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": false,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-02T00:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mpz888xp",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two compounds I and II made up of carbon and oxygen contain 72.73% and 47.06% oxygen respectively. Therefore, they obey</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Law of multiple proportion</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Law of conservation of mass</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Law of definite proportion</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Law of reciprocal proportion</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "\n<p><strong>For substance I:</strong>  </p>\n<p>Oxygen = 72.73%, Carbon = 27.27%  </p>\n<p>Mass of oxygen per 100 g = 72.73 g  </p>\n<p>Mass of carbon per 100 g = 27.27 g  </p>\n<p>$ \\frac{\\text{O}}{\\text{C}} = \\frac{72.73}{27.27} \\approx 2.667 $</p>\n<p><strong>For substance II:</strong>  </p>\n<p>Oxygen = 47.06%, Carbon = 52.94%  </p>\n<p>Mass of oxygen per 100 g = 47.06 g  </p>\n<p>Mass of carbon per 100 g = 52.94 g  </p>\n<p>$ \\frac{\\text{O}}{\\text{C}} = \\frac{47.06}{52.94} \\approx 0.889 $</p>\n\n\n<p>Take 1 g of carbon.</p>\n<p><strong>In substance I:</strong>  </p>\n<p>From above, for 27.27 g C → 72.73 g O  </p>\n<p>So for 1 g C → $\\frac{72.73}{27.27} \\approx 2.667$ g O.</p>\n<p><strong>In substance II:</strong>  </p>\n<p>For 52.94 g C → 47.06 g O  </p>\n<p>So for 1 g C → $\\frac{47.06}{52.94} \\approx 0.889$ g O.</p>\n\n<p>The masses of oxygen combining with 1 g of carbon in the two compounds are in the ratio:</p>\n<p>$ 2.667 : 0.889 $</p>\n\n<p>Divide both by 0.889:</p>\n<p>$ \\frac{2.667}{0.889} \\approx 3.00 $</p>\n<p>$ \\frac{0.889}{0.889} = 1 $</p>\n<p>So the ratio is $3 : 1$, which is a simple whole-number ratio.</p>\n\n<p>When two elements form more than one compound, the masses of one element that combine with a fixed mass of the other are in a simple whole-number ratio. This is the <strong>law of multiple proportions</strong>.</p>\n<p>Here, carbon and oxygen form two compounds (likely CO and CO₂ or similar), and oxygen masses per fixed carbon mass are in ratio 3:1.</p>\n<p>Thus, the correct option is <strong>A: Law of multiple proportion</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>कार्बन और ऑक्सीजन से बने दो यौगिकों I और II में क्रमशः 72.73% और 47.06% ऑक्सीजन है। इसलिए, वे पालन करते हैं</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>गुणित अनुपात का नियम</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>द्रव्यमान संरक्षण का नियम</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>स्थिर अनुपात का नियम</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>व्युत्क्रम अनुपात का नियम</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "laws-of-chemical-combination",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mpzl5c8p",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which is not a basic postulate of Dalton's atomic theory?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Atoms are neither created nor destroyed in a chemical reaction.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Different elements have different types of atoms.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Atoms of an element may be different due to presence of isotopes.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Each element is composed of extremely small particles called atoms.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>John Dalton proposed his atomic theory in the early 19th century based on the laws of chemical combination. According to his theory, all matter is made up of extremely small, indivisible particles called atoms. This matches the statement given in Option D.</p>\n<p>He also stated that atoms can neither be created nor destroyed during a chemical reaction. This was his way of explaining the law of conservation of mass, confirming that Option A is indeed one of his postulates.</p>\n<p>Another important point Dalton made was that atoms of different elements vary in mass and chemical properties. This aligns perfectly with Option B.</p>\n<p>However, when it came to atoms of the very same element, Dalton firmly proposed that they are exactly identical in every respect, including their mass and properties. The concept of isotopes—which are atoms of the same element having different atomic masses—was discovered much later by other scientists. Since Dalton did not know about isotopes, the idea that atoms of a single element might be different from one another was not part of his theory. In fact, the discovery of isotopes showed one of the limitations of Dalton's original postulates.</p>\n<p>Because of this, the statement that atoms of an element may be different due to the presence of isotopes is a modern understanding and not a basic postulate of Dalton's atomic theory.</p>\n<p>Option C is the correct choice.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>डाल्टन के परमाणु सिद्धांत की मूल अभिधारणा कौन सी नहीं है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>रासायनिक अभिक्रिया में परमाणु न तो उत्पन्न होते हैं और न ही नष्ट होते हैं।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>भिन्न-भिन्न तत्त्वों के परमाणु भिन्न-भिन्न प्रकार के होते हैं।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>समस्थानिकों की उपस्थिति के कारण किसी तत्त्व के परमाणु भिन्न हो सकते हैं।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>प्रत्येक तत्त्व अत्यंत सूक्ष्म कणों से मिलकर बना होता है, जिन्हें परमाणु कहते हैं।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "laws-of-chemical-combination",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mpzbtwsi",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>12 g of alkaline earth metal gives 14.8 g of its nitride. Atomic weight of metal is -</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>12</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>20</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>40</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>14.8</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Let the alkaline earth metal be $M$. Its valency is $+2$, so its nitride will be $M_3N_2$.</p>\n<p>If the atomic weight of $M$ is $A$, then the molar mass of the metal is $A$ g/mol, and the molar mass of $M_3N_2$ is $3A + 28$ g/mol.</p>\n<p>We are told that $12$ g of the metal produces $14.8$ g of its nitride.</p>\n<p>From the reaction:</p>\n<p>$ 3M + N_2 \\rightarrow M_3N_2 $</p>\n<p>$3$ moles of $M$ produce $1$ mole of $M_3N_2$.</p>\n<p>So $3A$ g of metal gives $(3A + 28)$ g of nitride.</p>\n<p>Thus, by proportion:</p>\n<p>$ \\frac{3A}{3A + 28} = \\frac{12}{14.8} $</p>\n<p>Cross-multiplying:</p>\n<p>$ 3A \\times 14.8 = 12 \\times (3A + 28) $</p>\n<p>$ 44.4A = 36A + 336 $</p>\n<p>$ 44.4A - 36A = 336 $</p>\n<p>$ 8.4A = 336 $</p>\n<p>$ A = \\frac{336}{8.4} = 40 $</p>\n<p>So the atomic weight of the metal is $40$.</p>\n<p>That matches option C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>12 g क्षारीय मृदा धातु इसके नाइट्राइड का 14.8 g देती है। धातु का परमाणु भार है -</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>12</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>20</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>40</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>14.8</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "mole-concept",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mpzck3vq",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The law of multiple proportion is illustrated by the two compounds:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Sodium chloride and sodium bromide</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Ordinary water and heavy water</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Caustic soda and caustic potash</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Sulphur dioxide and sulphur trioxide</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The correct answer is <strong>Option D: Sulphur dioxide and sulphur trioxide</strong>.</p>\n<p>The law of multiple proportions applies when <strong>two elements combine to form more than one compound</strong>. In such cases, the masses of one element that combine with a fixed mass of the other element are in the ratio of small whole numbers.</p>\n<p>Now check the options:</p>\n<ul>\n<li><p><strong>Sodium chloride $(\\text{NaCl})$ and sodium bromide $(\\text{NaBr})$</strong>  </p>\n<p>These do not have the same two elements.</p></li>\n<li><p><strong>Ordinary water $(\\text{H}_2\\text{O})$ and heavy water $(\\text{D}_2\\text{O})$</strong>  </p>\n<p>Heavy water contains deuterium, which is an isotope of hydrogen. This is not a proper illustration of the law in the usual NCERT sense.</p></li>\n<li><p><strong>Caustic soda $(\\text{NaOH})$ and caustic potash $(\\text{KOH})$</strong>  </p>\n<p>These also do not have the same two elements.</p></li>\n<li><p><strong>Sulphur dioxide $(\\text{SO}_2)$ and sulphur trioxide $(\\text{SO}_3)$</strong>  </p>\n<p>These are made of the same two elements, sulphur and oxygen.</p></li>\n</ul>\n<p>If we fix the mass of sulphur, oxygen combines in the ratio:</p>\n<p>$$ \\text{In } \\text{SO}_2 : \\text{Oxygen} = 2 \\text{ atoms} $$</p>\n<p>$$ \\text{In } \\text{SO}_3 : \\text{Oxygen} = 3 \\text{ atoms} $$</p>\n<p>So the masses of oxygen combining with the same mass of sulphur are in the ratio:</p>\n<p>$$ 2:3 $$</p>\n<p>This is a simple whole-number ratio, so it illustrates the law of multiple proportions.</p>\n<p><strong>Answer: Option D, Sulphur dioxide and sulphur trioxide</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>गुणित अनुपात का नियम किन दो यौगिकों द्वारा दर्शाया जाता है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>सोडियम क्लोराइड और सोडियम ब्रोमाइड</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>साधारण जल और भारी जल</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>कास्टिक सोडा और कास्टिक पोटाश</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>सल्फर डाइऑक्साइड और सल्फर ट्राइऑक्साइड</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "laws-of-chemical-combination",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mpzctpp1",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If samples of water are collected from the sea, rivers, or lakes, each sample is found to have hydrogen and oxygen present in nearly the same mass ratio of 1 : 8. This observation supports which law?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Law of multiple proportions</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Law of definite proportions</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Law of reciprocal proportions</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>This supports the <strong>Law of definite proportions</strong>.</p>\n<p>In every sample of water, no matter whether it is taken from the sea, river, or lake, hydrogen and oxygen are present in the same fixed mass ratio of $1:8$.</p>\n<p>This is exactly what the law says:</p>\n<p>A pure chemical compound always contains the same elements combined in the same definite proportion by mass.</p>\n<p>So, the correct option is <strong>B. Law of definite proportions</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि समुद्र, नदियों या झीलों से जल के नमूने एकत्र किए जाते हैं, तो प्रत्येक नमूने में हाइड्रोजन और ऑक्सीजन लगभग 1 : 8 के समान द्रव्यमान अनुपात में उपस्थित पाए जाते हैं। यह प्रेक्षण किस नियम का समर्थन करता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>गुणित अनुपात का नियम</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>स्थिर अनुपात का नियम</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>व्युत्क्रम अनुपात का नियम</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "laws-of-chemical-combination",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mpzd4d58",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Hydrogen and oxygen react to give H<sub>2</sub>O<sub>2</sub> and H<sub>2</sub>O. In these compounds, the percentage of hydrogen is 5.93% and 11.2% respectively. This information shows the :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>law of conservation of mass</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>law of constant proportion</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>law of reciprocal proportion</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>law of multiple proportion</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Here the two compounds are formed by the same two elements, hydrogen and oxygen.</p>\n<p>In $H_2O_2$, hydrogen is $5.93\\%$.</p>\n<p>So oxygen is:</p>\n<p>$$100 - 5.93 = 94.07\\%$$</p>\n<p>In $H_2O$, hydrogen is $11.2\\%$.</p>\n<p>So oxygen is:</p>\n<p>$$100 - 11.2 = 88.8\\%$$</p>\n<p>Now compare the masses of oxygen that combine with a fixed mass of hydrogen.</p>\n<p>For $H_2O_2$:</p>\n<p>$$\\text{Oxygen : Hydrogen} = \\frac{94.07}{5.93} \\approx 15.86$$</p>\n<p>For $H_2O$:</p>\n<p>$$\\text{Oxygen : Hydrogen} = \\frac{88.8}{11.2} \\approx 7.93$$</p>\n<p>Now take the ratio of these two oxygen masses:</p>\n<p>$$15.86 : 7.93 = 2 : 1$$</p>\n<p>This is a simple whole number ratio.</p>\n<p>So, when two elements combine to form more than one compound, the masses of one element that combine with a fixed mass of the other are in a simple whole number ratio.</p>\n<p>This shows the law of multiple proportions.</p>\n<p>Option D: law of multiple proportion</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>हाइड्रोजन और ऑक्सीजन अभिक्रिया करके H<sub>2</sub>O<sub>2</sub> और H<sub>2</sub>O देते हैं। इन यौगिकों में, हाइड्रोजन का प्रतिशत क्रमशः 5.93% और 11.2% है। यह जानकारी दर्शाती है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>द्रव्यमान संरक्षण का नियम</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>स्थिर अनुपात का नियम</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>व्युत्क्रम अनुपात का नियम</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>गुणित अनुपात का नियम</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "laws-of-chemical-combination",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mpzdg8bm",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Carbon reacts with oxygen to give two compounds, carbon monoxide and carbon dioxide. In these, the mass ratio of carbon to oxygen is 12 : 16 and 12 : 32 respectively. These data show the:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Law of multiple proportions</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Law of reciprocal proportions</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Law of conservation of mass</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Law of constant proportions</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>This illustrates the <strong>Law of multiple proportions</strong>.</p>\n<p>In carbon monoxide, the ratio of carbon to oxygen is</p>\n<p>$$12:16$$</p>\n<p>In carbon dioxide, the ratio of carbon to oxygen is</p>\n<p>$$12:32$$</p>\n<p>Here, the mass of carbon is the same, that is $12$ parts in both compounds.  </p>\n<p>The masses of oxygen that combine with the same mass of carbon are $16$ and $32$.</p>\n<p>Now,</p>\n<p>$$16:32 = 1:2$$</p>\n<p>This is a simple whole number ratio.  </p>\n<p>So, when two elements combine to form more than one compound, the masses of one element that combine with a fixed mass of the other are in a simple whole number ratio.</p>\n<p>So the correct option is:</p>\n<p><strong>Option A: Law of multiple proportions</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>कार्बन, ऑक्सीजन के साथ अभिक्रिया करके दो यौगिक, कार्बन मोनोऑक्साइड और कार्बन डाइऑक्साइड देता है। इनमें, कार्बन और ऑक्सीजन के द्रव्यमान का अनुपात क्रमशः 12 : 16 और 12 : 32 है। ये आंकड़े दर्शाते हैं:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>गुणित अनुपात का नियम</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>व्युत्क्रम अनुपात का नियम</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>द्रव्यमान संरक्षण का नियम</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>स्थिर अनुपात का नियम</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "laws-of-chemical-combination",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mpzk9x6y",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A graph is plotted for an element by putting its mass on <i>X</i>-axis and the corresponding number of atoms on <i>Y</i>-axis. What is the atomic mass of the element for which the graph is plotted?(N<sub>A</sub> = 6.0 × 10<sup>23</sup>)</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mpzk74eh%2F298837a4-dba1-404a-ae77-c39acd0b98dd%2F3b72bf90-601d-11f1-a6d3-8386b3ff721c%2Ffile-6y3zli1mpzk74ei.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mpzk74eh%2F298837a4-dba1-404a-ae77-c39acd0b98dd%2F3b72bf90-601d-11f1-a6d3-8386b3ff721c%2Ffile-6y3zli1mpzk74ei.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>80</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>40</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.025</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>20</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mpzk74eh%2F298837a4-dba1-404a-ae77-c39acd0b98dd%2F3b72bf90-601d-11f1-a6d3-8386b3ff721c%2Ffile-6y3zli1mpzk74ei.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mpzk74eh%2F298837a4-dba1-404a-ae77-c39acd0b98dd%2F3b72bf90-601d-11f1-a6d3-8386b3ff721c%2Ffile-6y3zli1mpzk74ei.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$\\begin{aligned} & \\text { Slope }=\\frac{N_{\\mathrm{A}}}{\\text { Atomic mass }}=1.5 \\times 10^{22} \\\\ & \\Rightarrow \\text { Atomic mass }=40\\end{aligned}$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>किसी तत्व के द्रव्यमान को <i>X</i>-अक्ष पर और संगत परमाणुओं की संख्या को <i>Y</i>-अक्ष पर रखकर एक ग्राफ खींचा गया है। उस तत्व का परमाणु द्रव्यमान क्या है जिसके लिए ग्राफ खींचा गया है? (N<sub>A</sub> = 6.0 × 10<sup>23</sup>)</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mpzk74eh%2F298837a4-dba1-404a-ae77-c39acd0b98dd%2F3b72bf90-601d-11f1-a6d3-8386b3ff721c%2Ffile-6y3zli1mpzk74ei.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mpzk74eh%2F298837a4-dba1-404a-ae77-c39acd0b98dd%2F3b72bf90-601d-11f1-a6d3-8386b3ff721c%2Ffile-6y3zli1mpzk74ei.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>80</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>40</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.025</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>20</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "mole-concept",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mpzkosx3",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider a molecule of H<sub>2</sub>O composed of H<sup>1</sup> and O<sup>16</sup> isotopes. If the mass of a neutron is increased to twice its value and the mass of a proton is reduced by half, the relative molecular mass of water will</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>increase by nearly 25%.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>decrease by nearly 25%.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>increase by nearly 16.67%.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>decrease by nearly 16.67%.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For $\\mathrm{H_2O}$ containing only $\\mathrm{^1H}$ and $\\mathrm{^{16}O}$:</p>\n<ul>\n<li><p>A $\\mathrm{^1H}$ atom has $1$ proton and $0$ neutron.</p></li>\n<li><p>A $\\mathrm{^{16}O}$ atom has $8$ protons and $8$ neutrons.</p></li>\n</ul>\n<p>So, in one molecule of $\\mathrm{H_2O}$:</p>\n<ul>\n<li><p>From $2$ hydrogen atoms: $2$ protons</p></li>\n<li><p>From $1$ oxygen atom: $8$ protons and $8$ neutrons</p></li>\n</ul>\n<p>Total in $\\mathrm{H_2O}$:</p>\n<ul>\n<li><p>Protons $= 10$</p></li>\n<li><p>Neutrons $= 8$</p></li>\n</ul>\n<p>Initially, taking proton mass $= m$ and neutron mass $= m$ approximately,</p>\n<p>$$ \\text{original molecular mass} = 10m + 8m = 18m $$</p>\n<p>Now the changes are:</p>\n<ul>\n<li><p>proton mass becomes halved $\\Rightarrow \\dfrac{m}{2}$</p></li>\n<li><p>neutron mass becomes doubled $\\Rightarrow 2m$</p></li>\n</ul>\n<p>So new molecular mass is</p>\n<p>$$ 10\\left(\\frac{m}{2}\\right) + 8(2m) = 5m + 16m = 21m $$</p>\n<p>Increase in mass:</p>\n<p>$$ 21m - 18m = 3m $$</p>\n<p>Percentage increase:</p>\n<p>$$ \\frac{3m}{18m}\\times 100 = \\frac{1}{6}\\times 100 = 16.67\\% $$</p>\n<p>So the molecular mass will increase by about $16.67\\%$.</p>\n<p>Option C is correct.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>H<sup>1</sup> तथा O<sup>16</sup> समस्थानिकों से निर्मित H<sub>2</sub>O के एक अणु पर विचार कीजिए। यदि एक न्यूट्रॉन का द्रव्यमान बढ़ाकर इसके मान का दोगुना कर दिया जाए तथा एक प्रोटॉन का द्रव्यमान घटाकर आधा कर दिया जाए, तो जल का सापेक्ष आण्विक द्रव्यमान</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>लगभग 25% बढ़ जाएगा।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>लगभग 25% घट जाएगा।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>लगभग 16.67% बढ़ जाएगा।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>लगभग 16.67% घट जाएगा।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "mole-concept",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mpzl9taf",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>Statement-1</b> : Gram molecular weight of O<sub>2</sub> is 32 g.</p><p><b>Statement-2</b> : Relative atomic weight of oxygen is 32.</p><p>Choose the correct option :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Statement-1 is true, statement-2 is true and statement-2 is correct explanation for statement-1.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Statement-1 is true, statement-2 is true and statement-2 is not correct explanation for statement-1.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Statement-1 is true, statement-2 is false.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Statement-1 is false, statement-2 is true.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Statement-1 talks about the gram molecular weight of oxygen gas, $O_2$. Oxygen exists as a molecule made of two atoms. Since the atomic weight of one oxygen atom is 16, the molecule $O_2$ has a molecular weight of</p>\n<p>$$16 \\times 2 = 32$$</p>\n<p>So one gram molecular weight of $O_2$ is 32 g. This statement is true.</p>\n<p>Statement-2 says the relative atomic weight of oxygen is 32. But the relative atomic weight refers to a single atom, not the molecule. For one oxygen atom the value is 16, not 32. The figure 32 belongs to the molecule $O_2$, not to a single atom. So this statement is false.</p>\n<p>Since Statement-1 is true and Statement-2 is false, the correct choice is</p>\n<p><strong>Option C</strong>.</p>\n<p>The small point to remember here is the difference between atomic weight and molecular weight. Atomic weight is for one atom (16 for oxygen), while molecular weight is for the whole molecule (32 for $O_2$). Mixing these two up is exactly what makes Statement-2 wrong.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>कथन-1</b> : O<sub>2</sub> का ग्राम अणुभार 32 g है।</p><p><b>कथन-2</b> : ऑक्सीजन का आपेक्षिक परमाणु भार 32 है।</p><p>सही विकल्प चुनें :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 सत्य है और कथन-2, कथन-1 का सही स्पष्टीकरण है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 सत्य है और कथन-2, कथन-1 का सही स्पष्टीकरण नहीं है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 असत्य है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>कथन-1 असत्य है, कथन-2 सत्य है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "mole-concept",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mpzk2nkh",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Zinc ore (zinc sulphide) is reacted with sulphuric acid. After the reaction, a mixture of solution and some unreacted solid remains, and hydrogen sulphide gas is produced. When 10.8 g of zinc ore is treated with 50.0 ml of sulphuric acid (density $1.2 \\mathrm{~g} / \\mathrm{ml}$), the mass of the remaining solution along with the undissolved solid is 65.2 g. Hydrogen sulphide gas (density $1.4 \\mathrm{~g} / \\mathrm{L}$) is also evolved. Find the volume (in litres) of this gas.</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>The total mass before the reaction is the mass of the zinc ore plus the mass of the sulphuric acid solution.</p>\n<p>Mass of zinc ore = 10.8 g</p>\n<p>Mass of sulphuric acid = volume × density = $50.0 \\times 1.2 = 60.0$ g</p>\n<p>So total mass before reaction:</p>\n<p>$$10.8 + 60.0 = 70.8 \\text{ g}$$</p>\n<p>After the reaction, what remains is the solution together with the leftover solid, which weighs 65.2 g. The rest of the mass has escaped as hydrogen sulphide gas.</p>\n<p>So the mass of $H_2S$ gas produced:</p>\n<p>$$70.8 - 65.2 = 5.6 \\text{ g}$$</p>\n<p>Now I can find the volume of this gas using its density.</p>\n<p>$$\\text{Volume} = \\frac{\\text{mass}}{\\text{density}} = \\frac{5.6}{1.4} = 4 \\text{ L}$$</p>\n<p>So the volume of hydrogen sulphide gas evolved is $4$ litres.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>जिंक अयस्क (जिंक सल्फाइड) की सल्फ्यूरिक अम्ल के साथ अभिक्रिया कराई जाती है। अभिक्रिया के बाद, विलयन और कुछ अनभिकृत ठोस का मिश्रण शेष रहता है, तथा हाइड्रोजन सल्फाइड गैस उत्पन्न होती है। जब 10.8 g जिंक अयस्क को 50.0 ml सल्फ्यूरिक अम्ल (घनत्व $1.2 \\mathrm{~g} / \\mathrm{ml}$) के साथ उपचारित किया जाता है, तो अविलेय ठोस सहित शेष विलयन का द्रव्यमान 65.2 g होता है। हाइड्रोजन सल्फाइड गैस (घनत्व $1.4 \\mathrm{~g} / \\mathrm{L}$) भी मुक्त होती है। इस गैस का आयतन (लीटर में) ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "laws-of-chemical-combination",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mpzkchmx",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>An element X exists in three isotopic forms: $\\mathrm{X}^{20}$, $\\mathrm{X}^{21}$, and $\\mathrm{X}^{22}$. The isotope $\\mathrm{X}^{20}$ is present at $90\\%$ abundance, and the element has an average atomic mass of 20.18. What is the percentage abundance of $\\mathrm{X}^{21}$?</p>",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>Take the percentage abundance of $\\mathrm{X}^{21}$ as $x\\%$.</p>\n<p>Then the percentage abundance of $\\mathrm{X}^{22}$ will be</p>\n<p>$$ 100 - 90 - x = (10 - x)\\% $$</p>\n<p>Now use the formula for average atomic mass:</p>\n<p>$$ \\text{Average atomic mass}=\\frac{(20 \\times 90)+(21 \\times x)+(22 \\times (10-x))}{100} $$</p>\n<p>Given average atomic mass is $20.18$, so</p>\n<p>$$ \\frac{1800+21x+220-22x}{100}=20.18 $$</p>\n<p>$$ \\frac{2020-x}{100}=20.18 $$</p>\n<p>$$ 2020-x=2018 $$</p>\n<p>$$ x=2 $$</p>\n<p>So, the percentage abundance of $\\mathrm{X}^{21}$ is</p>\n<p>$$ 2\\% $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक तत्व X तीन समस्थानिक रूपों में मौजूद है: $\\mathrm{X}^{20}$, $\\mathrm{X}^{21}$, और $\\mathrm{X}^{22}$। समस्थानिक $\\mathrm{X}^{20}$ की प्रतिशत प्रचुरता $90\\%$ है, तथा तत्व का औसत परमाणु द्रव्यमान 20.18 है। $\\mathrm{X}^{21}$ की प्रतिशत प्रचुरता क्या है?</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "mole-concept",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mpzki11w",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A sample contains $2 \\times 10^{21}$ molecules of P mixed with $3 \\times 10^{21}$ molecules of Q. The total mass of this mixture is 0.60 g. If the molecular mass of P is 45, then the molecular mass of Q is $\\left(N_{\\mathrm{A}}=6 \\times 10^{23}\\right)$</p>",
+                "options": [],
+                "answer": "90",
+                "explanation": "<p>We know the total mass of the mixture is 0.60 g, and it contains both P and Q molecules. So if we find the mass of P, the rest must be the mass of Q.</p>\n<p>Let me first find the moles of each gas.</p>\n<p>For P:</p>\n<p>$$n_P = \\frac{2 \\times 10^{21}}{6 \\times 10^{23}} = \\frac{1}{300} \\text{ mol}$$</p>\n<p>For Q:</p>\n<p>$$n_Q = \\frac{3 \\times 10^{21}}{6 \\times 10^{23}} = \\frac{1}{200} \\text{ mol}$$</p>\n<p>Now the mass of P, using its molecular mass 45:</p>\n<p>$$\\text{mass of P} = \\frac{1}{300} \\times 45 = 0.15 \\text{ g}$$</p>\n<p>Since the total mass is 0.60 g, the mass of Q is:</p>\n<p>$$\\text{mass of Q} = 0.60 - 0.15 = 0.45 \\text{ g}$$</p>\n<p>The molecular mass of Q is its mass divided by its moles:</p>\n<p>$$M_Q = \\frac{0.45}{\\tfrac{1}{200}} = 0.45 \\times 200 = 90$$</p>\n<p>So the molecular mass of Q is $90$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक नमूने में P के $2 \\times 10^{21}$ अणु और Q के $3 \\times 10^{21}$ अणु मिश्रित हैं। इस मिश्रण का कुल द्रव्यमान 0.60 g है। यदि P का आणविक द्रव्यमान 45 है, तो Q का आणविक द्रव्यमान है $\\left(N_{\\mathrm{A}}=6 \\times 10^{23}\\right)$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "mole-concept",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mpzkudhx",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A mixture is made up of only two pure substances, X and Y. The total mass of this mixture is 3.72 g and the total amount of substance is 0.06 mol. The molar mass of Y is 48 g mol⁻¹, and the mixture contains 0.02 mol of X. Find the molar mass of X.</p>",
+                "options": [],
+                "answer": "90",
+                "explanation": "<p>The mixture has only $X$ and $Y$.</p>\n<p>Total moles in the mixture $= 0.06$</p>\n<p>Moles of $X = 0.02$</p>\n<p>So, moles of $Y$ will be</p>\n<p>$$ 0.06 - 0.02 = 0.04 $$</p>\n<p>Now mass of one mole of $Y = 48\\ \\text{g}$</p>\n<p>So mass of $0.04$ mole of $Y$ is</p>\n<p>$$ 0.04 \\times 48 = 1.92\\ \\text{g} $$</p>\n<p>Total mass of mixture $= 3.72\\ \\text{g}$</p>\n<p>So mass of $X$ in the mixture is</p>\n<p>$$ 3.72 - 1.92 = 1.80\\ \\text{g} $$</p>\n<p>This mass corresponds to $0.02$ mole of $X$.</p>\n<p>So mass of one mole of $X$ is</p>\n<p>$$ \\frac{1.80}{0.02} = 90\\ \\text{g} $$</p>\n<p>The mass of one mole of $X$ is $90\\ \\text{g}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक मिश्रण केवल दो शुद्ध पदार्थों, X और Y से बना है। इस मिश्रण का कुल द्रव्यमान 3.72 g है और पदार्थ की कुल मात्रा 0.06 mol है। Y का मोलर द्रव्यमान 48 g mol⁻¹ है, और मिश्रण में X के 0.02 mol हैं। X का मोलर द्रव्यमान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "mole-concept",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mpzleuhl",
+            "chapter": "some-basic-concepts-of-chemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>While determining atomic masses, Dalton assumed the formula of water to be HO. He also took the composition of water as hydrogen $=12.5 \\%$ and oxygen $=87.5 \\%$ by mass. Using this information, what will be the atomic mass of oxygen on the H-scale?</p>",
+                "options": [],
+                "answer": "7",
+                "explanation": "<p>Take the formula of water as $HO$.</p>\n<p>That means, in water, hydrogen and oxygen are present in the ratio of their atomic weights:</p>\n<p>$$ H : O = 1 : x $$</p>\n<p>where $x$ is the atomic weight of oxygen on the hydrogen scale.</p>\n<p>Now the composition by weight is given as:</p>\n<p>$$ \\text{Hydrogen} = 12.5\\%, \\qquad \\text{Oxygen} = 87.5\\% $$</p>\n<p>So the mass ratio of hydrogen to oxygen is</p>\n<p>$$ 12.5 : 87.5 = 1 : 7 $$</p>\n<p>Since the formula is $HO$, this ratio must be equal to the atomic weight ratio:</p>\n<p>$$ 1 : x = 1 : 7 $$</p>\n<p>Hence,</p>\n<p>$$ x = 7 $$</p>\n<p>So the atomic weight of oxygen on the hydrogen scale should be</p>\n<p>$$ \\boxed{7} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>परमाणु द्रव्यमान निर्धारित करते समय, डॉल्टन ने जल का सूत्र HO माना। उन्होंने जल का संघटन द्रव्यमान के अनुसार हाइड्रोजन $=12.5 \\%$ और ऑक्सीजन $=87.5 \\%$ लिया। इस जानकारी का उपयोग करते हुए, H-पैमाने (H-scale) पर ऑक्सीजन का परमाणु द्रव्यमान क्या होगा?</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "mole-concept",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Mole Concept, Laws of Chemical Composition, Dalton's Theory, Various Types of Masses",
+    "timeAllotted": 2160000,
+    "title": "Some Basic Concept of Chemistry Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g71mo0e08ml",
+    "defaultLanguage": "en",
+    "description": "Mole Concept, Laws of Chemical Composition, Dalton's Theory, Various Types of Masses",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": false,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-02T00:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Mole Concept, Laws of Chemical Composition, Dalton's Theory, Various Types of Masses",
+    "timeAllotted": 2160000,
+    "title": "Some Basic Concept of Chemistry Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Some Basic Concept of Chemistry"
+  }
+}

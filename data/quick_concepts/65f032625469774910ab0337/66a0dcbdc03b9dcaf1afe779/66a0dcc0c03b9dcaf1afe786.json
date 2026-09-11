@@ -1,0 +1,130 @@
+{
+  "subjectId": "65f032625469774910ab0337",
+  "chapterId": "66a0dcbdc03b9dcaf1afe779",
+  "topicId": "66a0dcc0c03b9dcaf1afe786",
+  "title": "Aluminium and Its Compounds",
+  "concepts": [
+    {
+      "title": "Aluminium Oxide",
+      "conceptBody": "<h3><strong>Compounds of Aluminium</strong></h3><p><strong>1. Aluminium oxide or Alumina, $\\mathbf{A}{{\\mathbf{l}}_{\\mathbf{2}}}{{\\mathbf{O}}_{\\mathbf{3}}}$</strong></p><p>$2\\text{Al}{{(\\text{OH})}_{3}}\\xrightarrow{{}}\\text{A}{{\\text{l}}_{2}}{{\\text{O}}_{3}}+3{{\\text{H}}_{2}}\\text{O}$</p><p>$\\,\\text{A}{{\\text{l}}_{2}}{{\\left( \\text{S}{{\\text{O}}_{4}} \\right)}_{3}}\\xrightarrow{{}}\\text{A}{{\\text{l}}_{2}}{{\\text{O}}_{3}}+3\\text{S}{{\\text{O}}_{3}}$</p><p>${{\\left( \\text{N}{{\\text{H}}_{4}} \\right)}_{2}}\\text{S}{{\\text{O}}_{4}}\\cdot \\text{A}{{\\text{l}}_{2}}{{\\left( \\text{S}{{\\text{O}}_{4}} \\right)}_{3}}\\cdot 24{{\\text{H}}_{2}}\\text{O}\\xrightarrow{{}}\\text{A}{{\\text{l}}_{2}}{{\\text{O}}_{3}}+2\\text{N}{{\\text{H}}_{3}}+4\\text{S}{{\\text{O}}_{3}}+25{{\\text{H}}_{2}}\\text{O}$</p>",
+      "position": 0,
+      "qcConcept": "66a0dcc0c03b9dcaf1afe787"
+    },
+    {
+      "title": "Aluminium Chloride",
+      "conceptBody": "<p><strong>2. Aluminium Chloride</strong></p><p>$\\text{AlC}{{\\text{l}}_{3}}$ exists as a dimer, thus attaining an octet of elections.</p><p><img src=\"data:image/png;base64,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\"></p><p>However, when the halides dissolve in ${{\\text{H}}_{2}}\\text{O}$, the high enthalpy of hydration is sufficient to break the covalent dimer into ${{\\left[ \\text{M}{{\\left( {{\\text{H}}_{2}}\\text{O} \\right)}_{6}} \\right]}^{3+}}$ and $3{{\\text{X}}^{-}}$ions.</p><p>$\\text{AlC}{{\\text{l}}_{3}}+3{{\\text{H}}_{2}}\\text{O}\\xrightarrow{{}}\\text{Al}{{(\\text{OH})}_{3}}+3\\text{HCl}$</p>",
+      "position": 1,
+      "qcConcept": "66a0dcc1c03b9dcaf1afe788"
+    },
+    {
+      "title": "Alums",
+      "conceptBody": "<h3><strong>&nbsp;Alums</strong></h3><p>Alums have general formula</p><p>${{\\text{M}}_{2}}\\text{S}{{\\text{O}}_{4}}\\cdot \\text{M}_{2}^{\\prime }{{\\left( \\text{S}{{\\text{O}}_{4}} \\right)}_{3}}\\cdot 24{{\\text{H}}_{2}}\\text{O}$</p><p>where $\\text{M}$ stands for monovalent basic radicals such as $\\text{N}{{\\text{a}}^{+}},{{\\text{K}}^{+}},\\text{R}{{\\text{b}}^{+}},\\text{C}{{\\text{s}}^{+}},\\text{A}{{\\text{g}}^{+}}$etc. and ${{\\text{M}}^{\\prime }}$ for trivalent basic radicals such as $\\text{A}{{\\text{l}}^{3+}},\\text{C}{{\\text{r}}^{3+}},\\text{F}{{\\text{e}}^{3+}},\\text{M}{{\\text{n}}^{3+}},\\text{C}{{\\text{o}}^{3+}}$</p><p>Some examples of alums are:</p><p>$\\begin{array}{*{35}{l}} &nbsp;\\text{ Potash Alum } &amp; {{\\text{K}}_{2}}\\text{S}{{\\text{O}}_{4}}\\cdot \\text{A}{{\\text{l}}_{2}}{{\\left( \\text{S}{{\\text{O}}_{4}} \\right)}_{3}}\\cdot 24{{\\text{H}}_{2}}\\text{O} \\\\ \\text{ Ferric alum } &amp; {{\\left( \\text{N}{{\\text{H}}_{4}} \\right)}_{2}}\\text{S}{{\\text{O}}_{4}}\\cdot \\text{F}{{\\text{e}}_{2}}{{\\left( \\text{S}{{\\text{O}}_{4}} \\right)}_{3}} \\\\ \\end{array}$</p><p>Alums are crystalline compounds. In alums each metal ion is surrounded by six water molecules and the crystals of alums consists of ${{\\left[ \\text{M}{{\\left( {{\\text{H}}_{2}}\\text{O} \\right)}_{6}} \\right]}^{+}},{{\\left[ {{\\text{M}}^{\\prime }}{{\\left( {{\\text{H}}_{2}}\\text{O} \\right)}_{6}} \\right]}^{3+}}$ and $\\text{SO}_{4}^{2-}$ ions.</p>",
+      "position": 2,
+      "qcConcept": "66a0dcc1c03b9dcaf1afe789"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66584e531814fc7e94209c9f",
+      "title": "Aluminium chloride exists as dimer, $\\mathrm{Al}_2 \\mathrm{Cl}_6$ in solid state as well as in solution of non-polar solvents such as benzene. When dissolved in water, it gives",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209ca0",
+      "title": "Alumina is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209ca1",
+      "title": "Aluminium is more reactive than iron. But aluminium is less easily corroded than iron because",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209ca2",
+      "title": "Aluminium vessels should not be washed with materials containing washing soda since",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209ca3",
+      "title": "Which of the statements about anhydrous aluminium chloride is correct",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209ca4",
+      "title": "Conc. $\\mathrm{HNO}_3$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209ca5",
+      "title": "Anhydrous $\\mathrm{AlCl}_3$ is obtained from",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209ca6",
+      "title": "Aluminium (III) chloride forms a dimer because",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209ca7",
+      "title": "Aluminium has a great affinity for oxygen and its oxidation is an exothermic process.This fact is made use of in",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209ca8",
+      "title": "Aluminium oxide is not reduced by chemical reactions since",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209ca9",
+      "title": "Aluminium is not used",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209caa",
+      "title": "In the metallurgy of alumminium, cryolite is mixed in the molten state because it",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209cab",
+      "title": "In the electrolytic extraction of aluminium, cryolite is used",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209cac",
+      "title": "In the extraction of aluminium bauxite cryolite is dissolved because",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209cad",
+      "title": "In the extraction of aluminium the electrolyte is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209cae",
+      "title": "Aluminium is obtained by",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209caf",
+      "title": "In the electrolysis of alumina, cryolite is added to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -7,7 +7,7 @@ const path = require("path");
 const crypto = require("crypto");
 
 const SITE = "https://www.quantrexacademy.com";
-const ROOT = process.cwd();
+const ROOT = process.env.QX_SITE_ROOT || process.cwd();
 const _shardCache = Object.create(null);
 const _shardOrder = [];
 
@@ -85,7 +85,6 @@ function publicImg(u) {
     return "/api/proxy-image?clean=1&url=" + encodeURIComponent(s);
   }
   return s;
-}
 }
 
 function extractImgs(blob) {

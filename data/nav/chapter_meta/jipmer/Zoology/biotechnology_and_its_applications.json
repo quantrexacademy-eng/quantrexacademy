@@ -1,0 +1,58 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "68c3e1d783711f15b32dcf9f",
+  "chapterId": "66d58561a75f05ee8564f6eb",
+  "subject": "Zoology",
+  "chapter": "Biotechnology and Its Applications",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d586c1a75f05ee8565045d",
+      "title": "Introduction",
+      "count": 1,
+      "questionIds": [
+        "66d585e0a75f05ee8564fb85"
+      ]
+    },
+    {
+      "id": "66d586c1a75f05ee8565045f",
+      "title": "Application in Agriculture",
+      "count": 2,
+      "questionIds": [
+        "66d5862ba75f05ee8564fe3d",
+        "66d58608a75f05ee8564fcf9"
+      ]
+    },
+    {
+      "id": "66d586c1a75f05ee8565045c",
+      "title": "Genetic Modified Crops",
+      "count": 4,
+      "questionIds": [
+        "66d585f4a75f05ee8564fc3a",
+        "66d585e3a75f05ee8564fb9c",
+        "66d5858ba75f05ee8564f872",
+        "66d5858ba75f05ee8564f870"
+      ]
+    },
+    {
+      "id": "66d586c1a75f05ee8565045b",
+      "title": "Application in Medicine",
+      "count": 4,
+      "questionIds": [
+        "66d58619a75f05ee8564fd94",
+        "66d585e4a75f05ee8564fba3",
+        "66d585d3a75f05ee8564fb04",
+        "66d58561a75f05ee8564f6e9"
+      ]
+    },
+    {
+      "id": "66d586c1a75f05ee8565045e",
+      "title": "Transgenic Animals",
+      "count": 1,
+      "questionIds": [
+        "66d58602a75f05ee8564fcb9"
+      ]
+    }
+  ]
+}

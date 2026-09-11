@@ -1,0 +1,106 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd25c03b9dcaf1afe973",
+  "topicId": "66a0dd27c03b9dcaf1afe97c",
+  "title": "Area bounded by Miscellaneous Curves",
+  "concepts": [
+    {
+      "title": "Check for Symmetry",
+      "conceptBody": "<h3><strong>Check for symmetry</strong></h3><ol><li>Check whether function is even.<ol><li>Replace x by - x</li><li>If no change in f(x), then function is even</li><li>Graph is symmetrical about y-axis.</li></ol></li><li>Check if function is odd<ol><li>Replace x by - x</li><li>If f (- x) = - f(x), then function is odd</li><li>Graph is symmetric about origin</li></ol></li><li>Replace y by - y, if no change, then the graph is symmetrical about x-axis.</li><li>If function is periodic, draw graph only in the period, as the remaining curve is a repetition of this one.</li></ol>",
+      "position": 0,
+      "qcConcept": "66a0dd27c03b9dcaf1afe97d"
+    },
+    {
+      "title": "Intersection Points",
+      "conceptBody": "<h3><strong>Intersection Points</strong></h3><p>a) Find points of intersection with $x$-axis &amp; $y$-axis. for $\\mathrm{x}$ axis, put $\\mathrm{y}=0$ $\\mathrm{y}$ axis, put $\\mathrm{x}=0$</p><p>&nbsp;<img src=\"https://cdn.mathpix.com/snip/images/yZeoP-j0o_G2Ei1p5q8p2867gl41xdy8ZlTvsL3iGTY.original.fullsize.png\"> <img src=\"https://cdn.mathpix.com/snip/images/NKfdNZ6t-KQw4E6YjdDLH1sdieIEkc4jM7IvwhJRAnI.original.fullsize.png\">&nbsp;</p><p>b) Special care of double \\&amp; triple roots<br>for example, if $f(x)=(x-a)^2 g(x)$<br>here $x=a$, is a double root of $f(x)$ or you can also say repeated root of $f(x)=0$<br>note in this case $\\mathrm{f}(\\mathrm{a})=0, \\mathrm{f}^{\\prime}(\\mathrm{a})=0$ but $\\mathrm{f}^{\\prime \\prime}(\\mathrm{a}) \\neq 0$ i.e. can be point of local maxima / local minima now take $f(x)=(x-a)^3 g(x)$<br>$\\Rightarrow \\mathrm{x}=\\mathrm{a}$ is a triple root of $\\mathrm{f}(\\mathrm{x})$ here, note<br>$\\begin{aligned} &amp; f(a)=0 \\\\ &amp; f^{\\prime}(a)=0 \\\\ &amp; f^{\\prime \\prime}(a)=0, \\text { but } \\\\ &amp; f^{\\prime \\prime}(a) \\neq 0\\end{aligned}$</p><p>$\\Rightarrow a$ is the point of inflection (as shown in diagram) i.e. the point where shape of the curve changes from convex to concave &amp; vice-versa.<br>$\\therefore \\quad$ TIP: if $f(x)=(x-a)^n g(x)$<br>$\\&amp;$ nth derivative is the first non-zero derivative then<br>if $\\mathrm{n}$ is even $\\rightarrow \\mathrm{x}=$ a is a point of local maxima / minima<br>$\\mathrm{n}$ is odd $\\rightarrow_{\\mathrm{x}}=\\mathrm{a}$ is a point of inflection<br>let us take another example<br>$\\mathrm{y}=\\mathrm{x}(\\mathrm{x}-1)^2$<br>we can see that $x=1$ is a double root of $f(x)$<br>Step 1: no symmetry<br>Step 2: $\\quad$ has double root at $\\mathrm{x}=1$<br>Step 3: $\\quad$ put $f(x)&gt;0$<br>$\\Rightarrow \\quad \\mathrm{x}(\\mathrm{x}-1)^2&gt;0$</p><p><img src=\"https://cdn.mathpix.com/snip/images/ylTqtD_nv9Lkuvid65kOTch6r0Iekiafvsm1XuFeaNk.original.fullsize.png\">&nbsp;</p><p>\\begin{gathered} \\Rightarrow \\quad \\text { for } x \\in(0, \\infty) y&gt;0 \\\\ x \\in(-\\infty, 0) y&lt;0 \\end{gathered} so approximate graph would be&nbsp;</p><p><img src=\"https://cdn.mathpix.com/snip/images/x17dIu3wiCWrfNzidtNGWvJb98Pc68Ks_XwYrgVTOkY.original.fullsize.png\">&nbsp;</p><p>from this we can also deduce that $\\mathrm{x}=1$ will be point of local minima &amp; not local maxima. If it was local maxima then the curve will come in the negative half.</p>",
+      "position": 1,
+      "qcConcept": "66a0dd27c03b9dcaf1afe97e"
+    },
+    {
+      "title": "Sign Of Graph",
+      "conceptBody": "<h3><strong>Sign Of Graph</strong></h3><p>(a) Put $y&gt;0$ and see where the graph is above $\\mathrm{x}$-axis \\&amp; where it is below $\\mathrm{x}$-axis for example, if $f(x)=x(x-1)(x-2)$ put $x(x-1)(x-2)&gt;0$</p><p>&nbsp;<img src=\"https://cdn.mathpix.com/snip/images/6-aponGXzp4MW7-MqmtdMb8jz5gRX4Lm7fmMBQXzcJo.original.fullsize.png\">&nbsp;</p><p>So, corresponding to it the graph will be above $\\mathrm{x}$-axis where region is +ve &amp; below $\\mathrm{x}$-axis where region is represented by - ve sign.</p><p>&nbsp;<img src=\"https://cdn.mathpix.com/snip/images/NFoF8AmugVT55-b7YBcNS-qCgoa_8g57pUWE5Xv82nI.original.fullsize.png\">&nbsp;</p><p>Further $\\mathrm{x}(\\mathrm{x}-1)(\\mathrm{x}-2)$ is a polynomial function, so it will be continuous &amp; hence the following will be the curve. <img src=\"https://cdn.mathpix.com/snip/images/Et5niseVIx84AnChAze7sHhYy2oKdEU3_YMCDPBHfjc.original.fullsize.png\">&nbsp;</p><p>Check the domain: Find the domain (especially in cases where denominator can become zero). Draw the curve only in its domain.</p>",
+      "position": 2,
+      "qcConcept": "66a0dd28c03b9dcaf1afe97f"
+    },
+    {
+      "title": "Asymptote",
+      "conceptBody": "<h3><strong>&nbsp;Examples of asymptote</strong></h3><p>&nbsp;<img src=\"https://cdn.mathpix.com/snip/images/IZamB2TnL7K5jhObw8ODNRbA-rAzby2JXlPAGzO7ulA.original.fullsize.png\">&nbsp;</p><p>(a) Horizontal asymptote - If $\\lim _{x \\rightarrow \\infty} \\mathrm{f}(\\mathrm{x})=c$, where $c_1$ is finite then $\\mathrm{y}=c$ is horizontal asymptote in right half. - If $\\lim _{x \\rightarrow-\\infty} \\mathrm{f}(\\mathrm{x})=c_2$, where $c_2$ is finite then $\\mathrm{y}=c_2$ is horizontal asymptote in left half. For example, $y=\\tan ^{-1} x$</p><p>&nbsp;<img src=\"https://cdn.mathpix.com/snip/images/iymUX8SQN5ahMb4sN8ZHzpdGO8oS-UQEOWLK9eJy59c.original.fullsize.png\">&nbsp;</p><p>here $\\quad y=\\pi / 2$ is a horizontal asymptote in right half. $y=-\\pi / 2$ is a horizontal asymptote in left half.&nbsp;</p><p>(b) Vertical Asymptote - If $\\lim _{y \\rightarrow \\infty} \\mathrm{g}(\\mathrm{y})=c_1$ is finite, then $\\mathrm{x}=c_1$ is a vertical asymptote OR in normal words, if for a finite value of $\\mathrm{x}$, $\\mathrm{y}$ approaches $(\\infty$ or $-\\infty)$ then $\\mathrm{x}=\\mathrm{c}$ is a vertical asymptote. e.g. <img src=\"https://cdn.mathpix.com/snip/images/YdHQNH5Amwa7XqyNoMovBtaBIFH_3uVmP_5zmZMZppk.original.fullsize.png\">&nbsp;</p><p>$\\mathrm{x}=\\pi / 2$, a vertical asymptote &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $\\mathrm{x}=0$, a vertical asymptote.</p><p>&nbsp;Take special care in case of (a) when denominator can be zero. Put denominator $=0$ to get the value of $x$ for which vertical asymptote will be formed. (b) Logarithm functions for $\\log (f(x))=0$, find $f(x)=1 \\&amp;$ for those values of $x$ it will be a vertical asymptote.</p>",
+      "position": 3,
+      "qcConcept": "66a0dd28c03b9dcaf1afe980"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f2a2d384bfb4a537e97",
+      "title": "The area of region $\\left\\{(x, y): x^2+y^2 \\leq 1 \\leq x+y\\right\\}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f2a2d384bfb4a537e98",
+      "title": "Let $y$ be the function which passes through $(1,2)$ having slope $(2 x+1)$. The area bounded between the curve and $x$-axis is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f2b2d384bfb4a537e99",
+      "title": "Let $f(x)$ be a non-negative continous function such that the area bounded by the curve $y=f(x), x$-axis and the ordinates $x=\\frac{\\pi}{4}, \\quad x=\\beta\\gt\\frac{\\pi}{4}$ is $\\left(\\beta \\sin \\beta+\\frac{\\pi}{4} \\cos \\beta+\\sqrt{2} \\beta\\right)$. Then $f\\left(\\frac{\\pi}{2}\\right)$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f2b2d384bfb4a537e9a",
+      "title": "The area bounded by the curve $y=(x+1)^2, y=(x-1)^2$ and the line $y=\\frac{1}{4}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f2b2d384bfb4a537e9b",
+      "title": "The area of the region bounded by the curve $9 x^2+4 y^2-36=0$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f2b2d384bfb4a537e9c",
+      "title": "The area enclosed between the curve $y=\\log _e(x+e)$ and the co-ordinate axes is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f2c2d384bfb4a537e9d",
+      "title": "The area of the smaller segment cut off from the circle $x^2+y^2=9$ by $x=1$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f2d2d384bfb4a537e9e",
+      "title": "Area of the region bounded by the curve $y=\\tan x$, tangent drawn to the curve at $x=\\frac{\\pi}{4}$ and the $x$-axis is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f2d2d384bfb4a537e9f",
+      "title": "The area of the triangle formed by the tangent to the hyperbola $x y=a^2$ and co-ordinate axes is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f2e2d384bfb4a537ea0",
+      "title": "The area formed by triangular shaped region bounded by the curves $y=\\sin x, y=\\cos x$ and $x=0$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f2e2d384bfb4a537ea1",
+      "title": "The area between the curve $y=\\sin ^2 x, \\quad x$ - axis and the ordinates $x=0$ and $x=\\frac{\\pi}{2}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f2e2d384bfb4a537ea2",
+      "title": "If a curve $y=a \\sqrt{x}+b x$ passes through the point $(1,2)$ and the area bounded by the curve, line $x=4$ and $x$-axis is $8 \\mathrm{sq}$. unit, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

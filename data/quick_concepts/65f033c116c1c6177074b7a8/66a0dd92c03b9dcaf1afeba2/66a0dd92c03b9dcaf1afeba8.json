@@ -1,0 +1,64 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd92c03b9dcaf1afeba2",
+  "topicId": "66a0dd92c03b9dcaf1afeba8",
+  "title": "Basic Algebra of Matrices",
+  "concepts": [
+    {
+      "title": "Addition and Subtraction operation on a matrix ",
+      "conceptBody": "<h3><strong>Algebra of Matrices</strong></h3><p><strong>(i) Addition of Matrices </strong>: Two matrices A and B can be added only if A and B are of same order. Sum is obtained by adding the corresponding elements of $\\text{A}$ and $\\text{B}$.</p><p>If $\\text{A}={{\\left[ {{\\text{a}}_{\\text{ij}}} \\right]}_{\\text{m}\\,\\,\\,\\,\\text{n}}}\\,\\quad $ and $\\text{B}={{\\left[ {{\\text{b}}_{\\text{ij}}} \\right]}_{\\text{m}\\,\\,\\,\\,\\,\\,\\,\\,\\text{n}}}$,</p><p>then, $A+B={{\\left[ {{a}_{ij}} \\right]}_{m\\,\\,\\,\\,\\,\\,n}}+{{\\left[ {{b}_{ij}} \\right]}_{m\\,\\,\\,\\,\\,\\,n}}={{\\left[ {{a}_{ij}}+{{b}_{ij}} \\right]}_{m\\,\\,\\,\\,\\,\\,\\,n}}$</p><p>For example: $\\text{If }\\quad \\text{A}=\\left[ \\begin{array}{*{35}{l}} 1 &amp; 5 &amp; 2 \\\\ 3 &amp; 7 &amp; 6 \\\\ \\end{array} \\right]\\quad \\text{ and }\\quad \\text{B}=\\left[ \\begin{array}{*{35}{l}} 4 &amp; 9 &amp; 8 \\\\ 3 &amp; 6 &amp; 1 \\\\ \\end{array} \\right]$</p><p>then, since order of A and B is same, both are $2\\quad 3$ matrices.</p><p>Therefore, we can add A and B.</p><p>$A+B=\\left[ \\begin{array}{*{35}{l}} 1 &amp; 5 &amp; 2 \\\\ 3 &amp; 7 &amp; 6 \\\\ \\end{array} \\right]+\\left[ \\begin{array}{*{35}{l}} 4 &amp; 9 &amp; 8 \\\\ 3 &amp; 6 &amp; 1 \\\\ \\end{array} \\right]$$=\\left[ \\begin{matrix} 1+4 &amp; 5+7 &amp; 2+8 \\\\ 3+3 &amp; 7+6 &amp; 6+1 \\\\ \\end{matrix} \\right]=\\left[ \\begin{matrix} 5 &amp; 14 &amp; 10 \\\\ 6 &amp; 13 &amp; 7 \\\\ \\end{matrix} \\right]$</p><p>Difference of matrices A and B of same order is obtained by adding A and - B. - B is obtained by changing the sign of each element of $\\text{B}$.</p><p>A - B can also be obtained by subtracting from the elements of A the corresponding elements of B.A and B must be of same order.</p><p>For A and B of last example,</p><p>$A-B=\\left[ \\begin{array}{*{35}{l}} 1 &amp; 5 &amp; 2 \\\\ 3 &amp; 7 &amp; 6 \\\\ \\end{array} \\right]-\\left[ \\begin{array}{*{35}{l}} 4 &amp; 9 &amp; 8 \\\\ 3 &amp; 6 &amp; 1 \\\\ \\end{array} \\right]$</p><p>$=\\left[ \\begin{matrix} 1-4 &amp; 5-9 &amp; 2-8 \\\\ 3-3 &amp; 7-6 &amp; 6-1 \\\\ \\end{matrix} \\right]=\\left[ \\begin{matrix} -3 &amp; -4 &amp; -6 \\\\ 0 &amp; 1 &amp; 5 \\\\ \\end{matrix} \\right]$</p><p><strong>Properties of Matrix Addition:</strong></p><p><strong>Property I: </strong>Matrix addition is commutative i.e. if $\\text{A}$ and $\\text{B}$ be any two $\\text{m}\\quad \\text{n}$ matrices, then $\\text{A}+\\text{B}=\\text{B}+\\text{A}$.</p><p><strong>Property II: </strong>Matrix addition is associative i.e. if $\\text{A},\\text{B}$ and $\\text{C}$ be three $\\text{m}\\quad \\text{n}$ matrices, then</p><p>$\\text{A}+(\\text{B}+\\text{C})=(\\text{A}+\\text{B})+\\text{C}$</p><p><strong>Property III: </strong>Cancellation laws hold good for addition of matrices</p><p>i.e. if $\\text{A},\\text{B},\\text{C}$, be any three $\\text{m}\\quad \\text{n}$ matrices, then</p><p>(i) $\\text{A}+\\text{B}=\\text{A}+\\text{C}\\Rightarrow \\text{B}=\\text{C}$ (left cancellation law)</p><p>(ii) $\\text{B}+\\text{A}=\\text{C}+\\text{A}\\Rightarrow \\text{B}=\\text{C}$ (right cancellation law)</p><p><strong>(ii) Negative of a Matrix: </strong>If A be a given Matrix then - $\\text{A}$ is called the negative of matrix $\\text{A}$ and all its elements are the corresponding elements of A multiplied by -1</p><p>Thus if $A=\\left[ \\begin{matrix} 2 &amp; 3 &amp; -1 \\\\ 6 &amp; -4 &amp; 2 \\\\ \\end{matrix} \\right]$</p><p>then $-A=\\left[ \\begin{matrix} -2 &amp; -3 &amp; 1 \\\\ -6 &amp; 4 &amp; -2 \\\\ \\end{matrix} \\right]$</p><p><strong>(iii) Scalar Multiple of a Matrix: </strong>If A be a given matrix and$\\text{k}$ is any scalar number real or complex. [We call it scalar $\\text{k}$ to distinguish it from matrix $[\\text{k}]$ which is 1 matrix] then by matrix $\\text{kA}=\\text{Ak}$ is meant the matrix all of whose elements are $\\text{k}$ times of the corresponding elements of $\\text{A}$.</p><p>If $\\text{A}=\\left[ \\begin{array}{*{35}{l}} 2 &amp; 3 &amp; 1 \\\\ 5 &amp; 2 &amp; 4 \\\\ \\end{array} \\right]$</p><p>then $3~\\text{A}=\\left[ \\begin{array}{*{35}{l}} 3.2 &amp; 3.3 &amp; 3.1 \\\\ 3.5 &amp; 3.2 &amp; 3.4 \\\\ \\end{array} \\right]$</p><p>or $3~\\text{A}=\\left[ \\begin{array}{*{35}{l}} 6 &amp; 9 &amp; 3 \\\\ 15 &amp; 6 &amp; 12 \\\\ \\end{array} \\right]$</p><p>Similarly $-4~\\text{A}=\\left[ \\begin{array}{*{35}{l}} -4.2 &amp; -4.3 &amp; -4.1 \\\\ -4.5 &amp; -4.2 &amp; -4.4 \\\\ \\end{array} \\right]$</p><p>$=\\left[ \\begin{matrix} -8 &amp; -12 &amp; -4 \\\\ -20 &amp; -8 &amp; -16 \\\\ \\end{matrix} \\right]$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd92c03b9dcaf1afeba9"
+    },
+    {
+      "title": "Properties of transpose of a matrix",
+      "conceptBody": "<h3><strong>Transpose of a matrix</strong></h3><p>Let $\\text{A}$ be any matrix then the matrix obtained by interchanging its rows and columns is called the transpose of $\\text{AO}$ and is denoted by ${{\\text{A}}^{\\prime }}$ or ${{\\text{A}}^{\\text{T}}}$. If $\\text{A}$ is a $\\text{m}\\times \\text{n}$ matrix then ${{\\text{A}}^{\\prime }}$ will be a $\\text{n}$ matrix.</p><p><strong>Example : $A=\\left( \\begin{array}{*{35}{l}} &nbsp;1 &amp; 2 &amp; 3 \\\\ &nbsp;2 &amp; 0 &amp; 5 \\\\ \\end{array} \\right)\\text{, then }{{A}^{\\prime }}=\\left[ \\begin{array}{*{35}{l}} 1 &amp; 2 \\\\ 2 &amp; 0 \\\\ 3 &amp; 5 \\\\ \\end{array} \\right]$&nbsp;</strong></p><p>$\\text{i}=1,2,\\ldots ,\\text{m}$</p><p><strong>Note: </strong>If $A=\\left| {{a}_{ij}} \\right|$; $\\text{j}=1,2,\\ldots ,\\text{n}$</p><p>$\\text{j}=1,2,\\ldots \\text{n}$</p><p>Then A’ = [a ji ]; $\\text{i}=1,2,\\ldots ,\\text{m}$</p><p>Property of transpose of Matrices:</p><p><strong>Property I. </strong>$\\mathbf{(A+B)}'\\mathbf{=A}'\\mathbf{+B}'$</p><p><strong>Property II. </strong>If A is any matrix, then ${{\\left( {{\\mathbf{A}}^{\\prime }} \\right)}^{\\prime }}=\\mathbf{A}$</p><p><strong>Property III. </strong>If $\\text{k}$ is any number real or complex and $\\text{A}$ be any matrix, then ${{(\\text{kA})}^{\\prime }}=\\text{k}{{\\text{A}}^{\\prime }}$</p><p><strong>Property IV. </strong>If A be a m $n$ matrix and B be an $p$ matrix, then ${{(\\mathbf{AB})}^{\\prime }}={{\\mathbf{B}}^{\\prime }}{{\\mathbf{A}}^{\\prime }}$.</p>",
+      "position": 1,
+      "qcConcept": "66a0dd92c03b9dcaf1afebaa"
+    },
+    {
+      "title": "Properties of complex conjugate of a matrix",
+      "conceptBody": "<h3>Complex Conjugate of a Matrix</h3><p>If a matrix $\\text{A}$ is having complex numbers as its elements, the matrix obtained from $\\text{A}$ by replacing each element of $\\text{A}$ by its conjugate $(\\overline{a\\pm ib}=a\\mp ib)$ is called the conjugate of matrix $A$ and is denoted by $\\bar{A}$.</p><p>For example:</p><p>$\\text{ If }\\quad A={{\\left[ \\begin{matrix} a+ib &amp; x-iy &amp; p-iq \\\\ \\lambda -i\\mu &amp; \\alpha +i\\beta &amp; \\gamma +i\\delta \\\\ r-is &amp; \\mu -iv &amp; \\theta +i\\phi \\\\ \\end{matrix} \\right]}_{3\\times 3}}$</p><p>$\\text{ then }\\quad \\overline{\\text{A}}={{\\left[ \\begin{matrix} \\text{a}-\\text{ib} &amp; \\text{x}+\\text{iy} &amp; \\text{p}+\\text{iq} \\\\ \\lambda +\\text{i}\\mu &amp; \\alpha -\\text{i}\\beta &amp; \\gamma -\\text{i}\\delta \\\\ \\text{r}+\\text{is} &amp; \\mu +\\text{iv} &amp; \\theta -\\text{i}\\phi \\\\ \\end{matrix} \\right]}_{3\\times 3}}$</p><p>Note: If all elements of $\\text{A}$ are real then $\\overline{\\text{A}}=\\text{A}$.</p><p>Properties of Complex Conjugate of a Matrix</p><p>(i) $({\\over{\\text{A}}})=\\text{A}$, i.e, conjugate of the conjugate of a matrix is the matrix itself.</p><p>(ii) $(\\overline{\\text{A}+\\text{B}})=\\overline{\\text{A}}+\\overline{\\text{B}}$, i.e., the conjugate of the sum of the two matrices is the sum of their conjugates.</p><p>(iii) $(\\overline{\\text{kA}})=\\text{k}\\overline{\\text{A}}$, where $\\text{k}$ is any number.</p><p>(iv) $(\\overline{\\text{AB}})=\\overline{\\text{A}}\\cdot \\overline{\\text{B}}$, where $\\text{A}$ and $\\text{B}$ being conformable to multiplication.</p>",
+      "position": 2,
+      "qcConcept": "66a0dd93c03b9dcaf1afebab"
+    },
+    {
+      "title": "Properties of complex transpose of a matrix",
+      "conceptBody": "<h3>Conjugate Transpose of a Matrix</h3><p>The conjugate of the transpose of a matrix $A$ is called the conjugate transpose of $A$ and is denoted by ${{A}^{\\theta }}$. Thus, ${{A}^{\\theta }}=$ Conjugate of ${{A}^{\\prime }}=\\left( \\overline{{{A}^{\\prime }}} \\right)$</p><p>$\\text{ If }\\quad \\text{A}=\\left[ \\begin{matrix} 2+4\\text{i} &amp; 3 &amp; 5-9\\text{i} \\\\ 4 &amp; \\alpha +\\text{i}\\beta &amp; 3\\text{i} \\\\ 2 &amp; -5 &amp; 4-\\text{i} \\\\ \\end{matrix} \\right]$</p><p>$\\text{ then }\\quad {{A}^{-}}=\\left( \\overline{{{\\text{A}}^{\\prime }}} \\right)=\\left[ \\begin{matrix} 2-4\\text{i} &amp; 4 &amp; 2 \\\\ 3 &amp; \\alpha -\\text{i}\\beta &amp; -5 \\\\ \\mathbf{5}+9\\text{i} &amp; -3\\text{i} &amp; 4+\\text{i} \\\\ \\end{matrix} \\right]$</p><p>Properties of Transposed Conjugate Matrix</p><p>(i) For any matrix$\\text{A},{{(\\overline{\\text{A}})}^{\\prime }}=\\left( {{\\overline{\\text{A}}}^{\\prime }} \\right)$, i.e., the transposed conjugate of a matrix is equal to the conjugate of its transpose.</p><p>(ii) For any matrix$\\text{A},{{\\left( {{\\text{A}}^{\\theta }} \\right)}^{\\theta }}=\\text{A}$</p><p>(iii) If$A$ and $B$ are two matrices conformable to addition, then ${{(A+B)}^{\\theta }}={{A}^{\\theta }}+{{B}^{\\theta }}$</p><p>(iv) For a matrix $\\text{A},{{(\\text{kA})}^{\\theta}}=\\text{k}{{\\text{A}}^{\\theta }}$, where $\\text{k}$ is a scalar.</p><p>(v) If $A$ and $B$ are two matrices conformable to the product A B, then ${{(AB)}^{\\theta }}={{B}^{\\theta }}{{A}^{\\theta }}$</p>",
+      "position": 3,
+      "qcConcept": "66a0dd93c03b9dcaf1afebac"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f662d384bfb4a538255",
+      "title": "If $\\left[\\begin{array}{cc}2 & -3 \\\\ 4 & 0\\end{array}\\right]-\\left[\\begin{array}{ll}a & c \\\\ b & d\\end{array}\\right]=\\left[\\begin{array}{cc}1 & 4 \\\\ 2 & -5\\end{array}\\right]$, then $(a, b, c, d)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538256",
+      "title": "If $A=\\left[\\begin{array}{ccc}0 & 1 & -2 \\\\ -1 & 0 & 5 \\\\ 2 & -5 & 0\\end{array}\\right]$, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538257",
+      "title": "If $A$ and $B$ are two matrices such that $A B=B$ and $B A=A$, then $A^2+B^2=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538258",
+      "title": "If $\\left|\\begin{array}{ccc}x+1 & 3 & 5 \\\\ 2 & x+2 & 5 \\\\ 2 & 3 & x+4\\end{array}\\right|=0$, then $x=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538259",
+      "title": "$A+B=\\left[\\begin{array}{ll}1 & 0 \\\\ 1 & 1\\end{array}\\right]$ and\n$A-2 B=\\left[\\begin{array}{cc}-1 & 1 \\\\ 0 & -1\\end{array}\\right]$, then $A=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

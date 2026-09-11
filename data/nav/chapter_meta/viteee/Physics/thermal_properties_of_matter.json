@@ -1,0 +1,50 @@
+{
+  "examSlug": "viteee",
+  "examId": "61bb57e81213731910ea0b6f",
+  "subjectId": "61bb58181213731910ea0b70",
+  "chapterId": "61bb8229fce3576e46202d7d",
+  "subject": "Physics",
+  "chapter": "Thermal Properties of Matter",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64e459afec226f2f4360af46",
+      "title": "Radiation",
+      "count": 1,
+      "questionIds": [
+        "64e45941ec226f2f4360aa71"
+      ]
+    },
+    {
+      "id": "64e459afec226f2f4360af44",
+      "title": "Calorimetry",
+      "count": 3,
+      "questionIds": [
+        "64e4596dec226f2f4360ac19",
+        "64e4593fec226f2f4360aa61",
+        "64e458d0ec226f2f4360a61e"
+      ]
+    },
+    {
+      "id": "64e459afec226f2f4360af45",
+      "title": "Conduction",
+      "count": 3,
+      "questionIds": [
+        "64e4594bec226f2f4360aad3",
+        "64e45931ec226f2f4360a9da",
+        "64e458d1ec226f2f4360a622"
+      ]
+    },
+    {
+      "id": "64e459afec226f2f4360af43",
+      "title": "Thermal Expansion",
+      "count": 4,
+      "questionIds": [
+        "64e4595fec226f2f4360ab9a",
+        "64e45957ec226f2f4360ab45",
+        "64e45926ec226f2f4360a96a",
+        "64e458d0ec226f2f4360a61d"
+      ]
+    }
+  ]
+}

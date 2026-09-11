@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g71mnvx77zm",
+  "title": "Center of Mass and Collision Test - 4 (Topic Test)",
+  "type": "topic",
+  "section": "Center of Mass and Collision",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-07-28T14:30:00.000Z",
+  "status": "ok",
+  "analysisId": "6162cec2-4143-417d-b154-1862077ce0a5",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g71mnvx77zm",
+    "defaultLanguage": "en",
+    "description": "Collision, Variable Mass",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-28T14:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-ms4i1uji",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the thrust force on a rocket which is ejecting gases with a relative velocity of 300 m/s, is 210 N. Then the rate of combustion of the fuel will be:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>10.7 kg/sec</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.07 kg/sec</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.4 kg/sec</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.7 kg/sec</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Consider a rocket of mass m at time t moving with velocity v .</p>\n<p>Suppose in a small time interval dt, a mass of gas dm is ejected backward with a constant exhaust velocity $\\mathrm{v}_{\\text {rel }}$ relative to the rocket.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4hzv60%2Fedf4347b-a578-42d8-b710-5b4a8a5dbd42%2Ff9659080-8a6c-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4hzv61.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4hzv60%2Fedf4347b-a578-42d8-b710-5b4a8a5dbd42%2Ff9659080-8a6c-11f1-8cb2-ab509113c908%2Ffile-6y3zli1ms4hzv61.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Change in momentum of the system in time dt is $dp = F_{\\text{ext}}\\,dt$</p>\n<p>Using Newton's second law, in the absence of external forces, the thrust force $F_{\\text{thrust}}$ acting on the rocket due to ejected mass is,</p>\n<p>$$F_{\\text{thrust}} = v_{\\text{rel}} \\cdot \\left(-\\frac{dm}{dt}\\right)$$</p>\n<p>$F_{\\text{thrust}} = 210\\ \\text{N}$ = Thrust force acting on the rocket,</p>\n<p>$v_{\\text{rel}} = 300\\ \\text{m/s}$ = Velocity of ejected gases relative to the rocket</p>\n<p>$\\left(-\\frac{dm}{dt}\\right) = \\mu$ = Rate of combustion/ejection of fuel (mass ejected per unit time)</p>\n<p>Substituting the given values into the thrust formula:</p>\n<p>$$F_{\\text{thrust}} = v_{\\text{rel}} \\times \\mu$$</p>\n<p>$$210 = 300 \\times \\mu$$</p>\n<p>$$\\mu = \\frac{210}{300}$$</p>\n<p>$$\\mu = \\frac{21}{30} = \\frac{7}{10} = 0.7\\ \\text{kg/sec}$$</p>\n<p>Therefore, the rate of combustion of the fuel is $0.7\\ \\text{kg/s}$. Thus, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि 300 m/s के सापेक्ष वेग से गैसों को बाहर निकालने वाले किसी रॉकेट पर प्रणोद बल 210 N है, तो ईंधन के दहन की दर होगी:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>10.7 kg/sec</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.07 kg/sec</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.4 kg/sec</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.7 kg/sec</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "variable-mass",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4lc1bb",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A plank of mass <b>m</b> moving with a velocity <b>v</b> along a frictionless horizontal track and a body of mass $\\frac{m}{2}$ moving with <b>2v</b> collides with plank elastically. Final speed of the plank is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4l6ypu%2F8ab52639-b0db-47cc-a8b8-8c0179a20aa6%2F7a30f220-8a79-11f1-9e3b-93541029ea8f%2Ffile-6y3zli1ms4l6ypv.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4l6ypu%2F8ab52639-b0db-47cc-a8b8-8c0179a20aa6%2F7a30f220-8a79-11f1-9e3b-93541029ea8f%2Ffile-6y3zli1ms4l6ypv.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{5v}{3}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$v$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{2v}{3}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The plank is of mass $\\mathrm{m}_1=\\mathrm{m}$ and moving with initial velocity of $\\mathrm{u}_1=+\\mathrm{v}$</p>\n<p>The body if of mass $\\mathrm{m}_2=\\frac{\\mathrm{m}}{2}$ and moving with initial velocity of body, $\\mathrm{u}_2=-2 \\mathrm{v}$; as it is moving opposite to the plank.</p>\n<p>Coefficient of restitution for elastic collision, $\\mathrm{e}=1$</p>\n<p>Let $\\mathrm{v}_1$ be the final velocity of the plank and $\\mathrm{v}_2$ be the final velocity of the body after collision.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4l8fc5%2F11d2a562-3964-49a9-b78e-e487c7a17a8e%2Fa2d6ad50-8a79-11f1-9e3b-93541029ea8f%2Ffile-6y3zli1ms4l8fc6.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4l8fc5%2F11d2a562-3964-49a9-b78e-e487c7a17a8e%2Fa2d6ad50-8a79-11f1-9e3b-93541029ea8f%2Ffile-6y3zli1ms4l8fc6.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>By the law of conservation of linear momentum :</p>\n<p>$$ \\mathrm{m}_1 \\mathrm{u}_1+\\mathrm{m}_2 \\mathrm{u}_2=\\mathrm{m}_1 \\mathrm{v}_1+\\mathrm{m}_2 \\mathrm{v}_2 $$</p>\n<p>$$m(v) + \\left(\\frac{m}{2}\\right)(-2v) = mv_1 + \\left(\\frac{m}{2}\\right)v_2$$</p>\n<p>$$mv - mv = mv_1 + \\frac{m}{2}v_2$$</p>\n<p>$$0 = mv_1 + \\frac{m}{2}v_2$$</p>\n<p>$$v_1 + \\frac{v_2}{2} = 0 \\Rightarrow v_2 = -2v_1 \\; ... \\; (i)$$</p>\n<p>For an elastic collision along a straight line ($e = 1$), the relative velocity of separation equals the relative velocity of approach</p>\n<p>$e = \\frac{v_2 - v_1}{u_1 - u_2} = 1$</p>\n<p>$$v_2 - v_1 = u_1 - u_2$$</p>\n<p>Substituting $u_1 = v$ and $u_2 = -2v$:</p>\n<p>$$v_2 - v_1 = v - (-2v)$$</p>\n<p>$$v_2 - v_1 = 3v \\; ... \\; (ii)$$</p>\n<p>Substituting $v_2 = -2v_1$ from equation (i) into equation (ii):</p>\n<p>$$(-2v_1) - v_1 = 3v$$</p>\n<p>$$-3v_1 = 3v$$</p>\n<p>$$\\Rightarrow v_1 = -v$$</p>\n<p>Therefore, the magnitude (speed) of the final velocity of the plank is $|v_1| = v$ and the negative sign shows that it is moving to the left. Thus, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>घर्षण रहित क्षैतिज पथ पर <b>v</b> वेग से गतिमान <b>m</b> द्रव्यमान का एक तख्ता और <b>2v</b> वेग से गतिमान $\\frac{m}{2}$ द्रव्यमान का एक पिंड तख्ते से प्रत्यास्थ रूप से टकराता है। तख्ते की अंतिम चाल है</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4l6ypu%2F8ab52639-b0db-47cc-a8b8-8c0179a20aa6%2F7a30f220-8a79-11f1-9e3b-93541029ea8f%2Ffile-6y3zli1ms4l6ypv.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4l6ypu%2F8ab52639-b0db-47cc-a8b8-8c0179a20aa6%2F7a30f220-8a79-11f1-9e3b-93541029ea8f%2Ffile-6y3zli1ms4l6ypv.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{5v}{3}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$v$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{2v}{3}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mroy5tq5",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The diagram shows the velocity - time graph for two masses R and S that collided elastically. Which of the following statements is true?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mroy4mjd%2F38591ca6-f3d5-4241-8fbb-e75a024fe740%2F8573e090-81df-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroy4mje.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mroy4mjd%2F38591ca6-f3d5-4241-8fbb-e75a024fe740%2F8573e090-81df-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroy4mje.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p><b>I.</b> R and S moved in the same direction after the collision.</p><p><b>II.</b> The velocities of R and S were equal at the mid time of the collision.</p><p><b>III.</b> The mass of R was greater than mass of S.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>I only</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>II only</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>I and II only</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>I, II and III</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>From the graph, after the collision (time $t > 3~\\mathrm{s}$), the velocity of mass S is approximately $1.0~\\mathrm{m/s}$ (positive).</p>\n<p>The velocity of mass R after the collision (time $t > 3~\\mathrm{s}$) is approximately $0.2~\\mathrm{m/s}$ (positive).</p>\n<p>Since both velocities are positive, both masses are moving in the same direction after the impact.</p>\n<p>Thus, statement I is true.</p>\n<p>The collision occurs between $t = 1~\\mathrm{s}$ and $t = 3~\\mathrm{s}$.</p>\n<p>At the mid-time of the collision (which would be $t = 2~\\mathrm{s}$), the two lines on the graph intersect.</p>\n<p>An intersection on a v-t graph means both objects have the same velocity at that specific instant.</p>\n<p>Thus, statement II is true.</p>\n<p>For mass R initial velocity is $u_R = 0.8~\\mathrm{m/s}$, and final velocity is $v_R = 0.2~\\mathrm{m/s}$.</p>\n<p>$$\\Delta v_R = |0.2 - 0.8| = 0.6~\\mathrm{m/s}$$</p>\n<p>For mass S initial velocity is $u_S = 0~\\mathrm{m/s}$, and final velocity is $v_S = 1.0~\\mathrm{m/s}$.</p>\n<p>$$\\Delta v_S = |1.0 - 0| = 1.0~\\mathrm{m/s}$$</p>\n<p>According to the law of conservation of momentum, the impulse experienced by both is equal and opposite</p>\n<p>$$m_R \\, \\Delta v_R = m_S \\, \\Delta v_S$$</p>\n<p>Therefore, the mass is inversely proportional to the change in velocity, $m \\propto \\frac{1}{\\Delta v}$.</p>\n<p>Since mass R had a smaller change in velocity $(0.6 < 1.0)$, it must have a larger mass.</p>\n<p>Thus, statement III is true.</p>\n<p>Therefore, all three statements (I, II, and III) are correct based on given graph. Hence, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र दो द्रव्यमानों R और S के लिए वेग-समय ग्राफ दर्शाता है जो प्रत्यास्थ रूप से टकराते हैं। निम्नलिखित में से कौन सा/से कथन सत्य है/हैं?</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mroy4mjd%2F38591ca6-f3d5-4241-8fbb-e75a024fe740%2F8573e090-81df-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroy4mje.webp?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mroy4mjd%2F38591ca6-f3d5-4241-8fbb-e75a024fe740%2F8573e090-81df-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroy4mje.webp?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"><p><b>I.</b> टक्कर के बाद R और S ने एक ही दिशा में गति की।</p><p><b>II.</b> टक्कर के मध्य समय पर R और S के वेग समान थे।</p><p><b>III.</b> R का द्रव्यमान S के द्रव्यमान से अधिक था।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>केवल I</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>केवल II</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>केवल I और II</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>I, II और III</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mroybkvl",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A ball collides with an inclined plane of inclination $\\theta$ after falling through a distance $h$. If it moves horizontally just after the impact, the coefficient of restitution is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\tan^2 \\theta$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\cot^2 \\theta$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\tan \\theta$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\cot \\theta$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The ball falls through a height h . Its velocity just before impact is :</p>\n<p>$$ v_1=\\sqrt{2 g h} $$</p>\n<p>This velocity is directed vertically downwards.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mroy9p07%2Fe0147876-4cee-4dd0-8d54-602085e151f3%2F12678e70-81e0-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroy9p08.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mroy9p07%2Fe0147876-4cee-4dd0-8d54-602085e151f3%2F12678e70-81e0-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroy9p08.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>On resolving the vertical velocity into components along the plane and normal to the plane:</p>\n<p>The normal to the plane makes an angle $\\theta$ with the vertical. Therefore, $v_1$ makes an angle $\\theta$ with the normal.</p>\n<p>Initial velocity component normal to the plane is, $u_{\\perp} = v_1 \\cos \\theta$</p>\n<p>Initial velocity component parallel to the plane is $u_{\\parallel} = v_1 \\sin \\theta$</p>\n<p>After impact, the ball moves horizontally with velocity $v_2$.</p>\n<p>Final velocity component parallel to the plane is $v_{\\parallel} = v_2 \\cos \\theta$</p>\n<p>Final velocity component normal to the plane is $v_{\\perp} = v_2 \\sin \\theta$</p>\n<p>Since the plane is smooth, there is no impulsive force parallel to it. Therefore, the velocity component parallel to the plane remains unchanged.</p>\n<p>$$v_{\\parallel} = u_{\\parallel}$$</p>\n<p>$$v_2 \\cos \\theta = v_1 \\sin \\theta$$</p>\n<p>$$v_2 = v_1 \\tan \\theta \\ldots (i)$$</p>\n<p>The coefficient of restitution $(e)$ relates the components of velocity normal to the surface of impact.</p>\n<p>$$e = \\frac{\\text{Velocity of separation normal to plane}}{\\text{Velocity of approach normal to plane}}$$</p>\n<p>$$e = \\frac{v_{\\perp}}{u_{\\perp}}$$</p>\n<p>$$e = \\frac{v_2 \\sin \\theta}{v_1 \\cos \\theta} \\ldots (ii)$$</p>\n<p>Substituting the value of $v_2$ from equation (i) into equation (ii):</p>\n<p>$$e = \\frac{(v_1 \\tan \\theta) \\sin \\theta}{v_1 \\cos \\theta}$$</p>\n<p>$$e = \\frac{\\tan \\theta \\sin \\theta}{\\cos \\theta} = \\tan^2 \\theta$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक गेंद $h$ दूरी तक गिरने के बाद $\\theta$ झुकाव वाले एक आनत तल से टकराती है। यदि टक्कर के ठीक बाद यह क्षैतिज दिशा में गति करती है, तो प्रत्यावस्थान गुणांक है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\tan^2 \\theta$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\cot^2 \\theta$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\tan \\theta$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\cot \\theta$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mroyjeo9",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "A ball of mass $m$ moving at a speed $v$ makes a head on collision with an identical ball at rest. The kinetic energy of the balls after the collision is $\\mathbf{3} / \\mathbf{4}$ of the original K.E. Calculate the coefficient of restitution.",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "$\\frac{1}{2}$"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "$\\frac{1}{3}$"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "$\\frac{1}{\\sqrt{3}}$"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "$\\frac{1}{\\sqrt{2}}$"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Let the two balls be A and B , both of mass m .</p>\n<p>Before collision, ball A has velocity $\\mathrm{v}_{\\mathrm{A}}=\\mathrm{v}$; ball B is at rest, $\\mathrm{v}_{\\mathrm{B}}=0$.</p>\n<p>After collision, ball A has velocity $\\mathrm{v}_1$; ball B has velocity $\\mathrm{v}_2$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mroyfjz2%2F2797ece8-7d88-4de2-b766-e1657ae2ea6c%2Fb55f5fe0-81e0-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroyfjz3.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mroyfjz2%2F2797ece8-7d88-4de2-b766-e1657ae2ea6c%2Fb55f5fe0-81e0-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroyfjz3.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Since no external horizontal forces act on the system, momentum is conserved:</p>\n<p>$$m(v) + m(0) = m(v_1) + m(v_2)$$</p>\n<p>$$v = v_1 + v_2 \t... (i)$$</p>\n<p>The coefficient of restitution is defined as the ratio of velocity of separation to velocity of approach:</p>\n<p>$$e = \\frac{v_2 - v_1}{v - 0}$$</p>\n<p>$$v_2 - v_1 = ev \\text{ ... (ii)}$$</p>\n<p>Adding equation (i) and equation (ii):</p>\n<p>$$2v_2 = v(1 + e) \\Rightarrow v_2 = \\frac{v(1 + e)}{2}$$</p>\n<p>Subtracting equation (ii) from equation (i):</p>\n<p>$$2v_1 = v(1 - e) \\Rightarrow v_1 = \\frac{v(1 - e)}{2}$$</p>\n<p>It is given that the final kinetic energy ($\\mathrm{KE}_f$) is $3/4$ of the initial kinetic energy ($\\mathrm{KE}_i$).</p>\n<p>Initial kinetic energy is $\\mathrm{KE}_i = \\frac{1}{2}mv^2$</p>\n<p>And the final kinetic energy is $\\mathrm{KE}_f = \\frac{1}{2}mv_1^2 + \\frac{1}{2}mv_2^2$</p>\n<p>According to the given condition:</p>\n<p>$$\\frac{1}{2}mv_1^2 + \\frac{1}{2}mv_2^2 = \\frac{3}{4}\\left(\\frac{1}{2}mv^2\\right)$$</p>\n<p>$$v_1^2 + v_2^2 = \\frac{3}{4}v^2$$</p>\n<p>Substituting the expressions for $v_1$ and $v_2$:</p>\n<p>$$\\left[\\frac{v(1-e)}{2}\\right]^2 + \\left[\\frac{v(1+e)}{2}\\right]^2 = \\frac{3}{4}v^2$$</p>\n<p>$$\\frac{v^2}{4}(1-2e+e^2) + \\frac{v^2}{4}(1+2e+e^2) = \\frac{3}{4}v^2$$</p>\n<p>$$(1-2e+e^2) + (1+2e+e^2) = 3$$</p>\n<p>$$2 + 2e^2 = 3$$</p>\n<p>$$2e^2 = 1$$</p>\n<p>$$e^2 = \\frac{1}{2}$$</p>\n<p>$$e = \\frac{1}{\\sqrt{2}}$$</p>\n<p>Therefore, the coefficient of restitution is $\\frac{1}{\\sqrt{2}}$ (or approximately $0.707$).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "$m$ द्रव्यमान की एक गेंद जो $v$ चाल से गति कर रही है, विरामावस्था में स्थित एक अन्य समान गेंद के साथ सम्मुख टक्कर करती है। टक्कर के बाद गेंदों की गतिज ऊर्जा प्रारंभिक गतिज ऊर्जा की $\\mathbf{3} / \\mathbf{4}$ हो जाती है। प्रत्यावस्थान गुणांक की गणना कीजिए।",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "$\\frac{1}{2}$"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "$\\frac{1}{3}$"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "$\\frac{1}{\\sqrt{3}}$"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "$\\frac{1}{\\sqrt{2}}$"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4ll94z",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Ball 1 collides with another identical ball 2 at rest as shown in figure. For what value of coefficient of restitution $e$, the velocity of second ball becomes two times that of 1 after collision?</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4lgijm%2F1d78352d-ae2b-40e4-bb50-8a07065a268c%2F83ca4330-8a7a-11f1-9e3b-93541029ea8f%2Ffile-6y3zli1ms4lgijn.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4lgijm%2F1d78352d-ae2b-40e4-bb50-8a07065a268c%2F83ca4330-8a7a-11f1-9e3b-93541029ea8f%2Ffile-6y3zli1ms4lgijn.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{1}{3}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{1}{4}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{1}{6}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The mass of ball1 and ball 2 same, $\\mathrm{m}_1=\\mathrm{m}_2=\\mathrm{m}$</p>\n<p>Initial velocity of ball $1, \\mathrm{u}_1=\\mathrm{v}$</p>\n<p>Initial velocity of ball $2, \\mathrm{u}_2=0$ (at rest)</p>\n<p>Let $v_1$ and $v_2$ be the velocities of ball 1 and ball 2 respectively after collision.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4li3bx%2F54fa7b74-ae90-4a7b-8bd0-f43004c7577a%2Fafa7d0d0-8a7a-11f1-9e3b-93541029ea8f%2Ffile-6y3zli1ms4li3by.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4li3bx%2F54fa7b74-ae90-4a7b-8bd0-f43004c7577a%2Fafa7d0d0-8a7a-11f1-9e3b-93541029ea8f%2Ffile-6y3zli1ms4li3by.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>$$v_2 = 2v_1 \\Rightarrow v_1 = \\frac{v_2}{2} \\ldots \\text{(i)}$$</p>\n<p>Since no external forces act on the two-ball system along the line of impact, total linear momentum is conserved:</p>\n<p>Initial Momentum = Final Momentum</p>\n<p>$$m\\,u_1 + m\\,u_2 = m\\,v_1 + m\\,v_2$$</p>\n<p>Substituting $u_1 = v$ and $u_2 = 0$:</p>\n<p>$$m\\,v + 0 = m\\,v_1 + m\\,v_2$$</p>\n<p>$$v = v_1 + v_2$$</p>\n<p>Substituting $v_1 = \\frac{v_2}{2}$:</p>\n<p>$$v = \\frac{v_2}{2} + v_2 = \\frac{3}{2}v_2$$</p>\n<p>$$v_2 = \\frac{2}{3}v$$</p>\n<p>So, the final velocity of ball 1 is $v_1 = \\frac{v_2}{2} = \\frac{1}{2}\\left(\\frac{2}{3}v\\right) = \\frac{1}{3}v$</p>\n<p>Using the formula for coefficient of restitution $e$ in one-dimensional head-on collision,</p>\n<p>$$e = \\frac{\\text{Velocity of Separation}}{\\text{Velocity of Approach}} = \\frac{v_2 - v_1}{u_1 - u_2}$$</p>\n\n<p>Substituting the values of $u_1$, $u_2$, $v_1$, and $v_2$:</p>\n<p>$$e = \\frac{\\frac{2}{3}v - \\frac{1}{3}v}{v - 0}$$</p>\n<p>$$e = \\frac{\\frac{1}{3}v}{v} = \\frac{1}{3}$$</p>\n<p>Therefore, the required value of coefficient of restitution is $\\frac{1}{3}$. Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दर्शाए अनुसार गेंद 1 विरामावस्था में रखी एक अन्य समान गेंद 2 से टकराती है। प्रत्यावस्थान गुणांक $e$ के किस मान के लिए, टक्कर के बाद दूसरी गेंद का वेग पहली गेंद के वेग का दोगुना हो जाता है?</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4lgijm%2F1d78352d-ae2b-40e4-bb50-8a07065a268c%2F83ca4330-8a7a-11f1-9e3b-93541029ea8f%2Ffile-6y3zli1ms4lgijn.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4lgijm%2F1d78352d-ae2b-40e4-bb50-8a07065a268c%2F83ca4330-8a7a-11f1-9e3b-93541029ea8f%2Ffile-6y3zli1ms4lgijn.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{1}{3}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{1}{4}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{1}{6}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4pff1b",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Three blocks are initially placed as shown in the figure. Block A has mass $m$ and initial velocity $v$ to the right. Block B with mass $m$ and block C with mass $4m$ are both initially at rest. Neglect friction. All collisions are elastic. The final velocity of block A is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4p7267%2F69fef828-cc08-4068-b01c-30d3dbf2981b%2F216054f0-8a89-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4p7268.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4p7267%2F69fef828-cc08-4068-b01c-30d3dbf2981b%2F216054f0-8a89-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4p7268.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$0.6v$ to the left</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$1.4v$ to the left</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$v$ to the left</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$0.4v$ to the right</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The mass of block $A$ is $m_A=m$ and it is moving with initial velocity of $u_A=v$ (to the right)</p>\n<p>The mass of block $B$ is $m_B=m$ and it is at rest, $u_B=0$</p>\n<p>The collision between A and B is elastic $(\\mathrm{e}=1)$</p>\n<p>When two bodies of equal mass undergo on dimensional elastic collision, they exchange their velocities :</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4p988k%2F5e1b768c-2de6-4468-a842-2921472f107b%2F5dae1b40-8a89-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4p988l.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4p988k%2F5e1b768c-2de6-4468-a842-2921472f107b%2F5dae1b40-8a89-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4p988l.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$ \\mathrm{v}_{\\mathrm{B}}^{\\prime}=\\mathrm{u}_{\\mathrm{A}}=\\mathrm{v} \\text { (to the right) } $$</p>\n<p>So, after the first collision block A comes to rest $\\left(\\mathrm{v}_{\\mathrm{A}}^{\\prime}=0\\right)$ and block B moves to the right with velocity v .</p>\n<p>The mass of block B is $\\mathrm{m}_{\\mathrm{B}}=\\mathrm{m}$ and velocity of B before collision is $\\mathrm{u}_{\\mathrm{B}}^{\\prime}=\\mathrm{v}$</p>\n<p>The mass of block C is $\\mathrm{m}_{\\mathrm{C}}=4 \\mathrm{~m}$ and it is at rest before collision $\\mathrm{u}_{\\mathrm{C}}^{\\prime}=0$</p>\n<p>The collision between B and C is elastic $(\\mathrm{e}=1)$</p>\n<p>Using the one dimensional elastic collision formula, velocity of block B after collision,</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4pasva%2F910f5b1f-3160-4414-b3a0-8e18298665d0%2F896d2460-8a89-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4pasvb.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4pasva%2F910f5b1f-3160-4414-b3a0-8e18298665d0%2F896d2460-8a89-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4pasvb.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>$$v_{B}^{\\prime\\prime}=\\left(\\frac{m_{B}-m_{C}}{m_{B}+m_{C}}\\right)u_{B}^{\\prime}+\\left(\\frac{2m_{C}}{m_{B}+m_{C}}\\right)u_{C}$$</p>\n<p>Substituting $m_{B}=m$, $m_{C}=4m$, $u_{B}^{\\prime}=v$, and $u_{C}=0$:</p>\n<p>$$v_{B}^{\\prime\\prime}=\\left(\\frac{m-4m}{m+4m}\\right)v+0=\\left(-\\frac{3m}{5m}\\right)v=-0.6\\,v$$</p>\n<p>The negative sign shows that block B rebounds and moves to the left with speed $0.6\\,v$.</p>\n<p>Velocity of block C after collision is,</p>\n<p>$$v_{C}^{\\prime}=\\left(\\frac{2m_{B}}{m_{B}+m_{C}}\\right)u_{B}^{\\prime}=\\left(\\frac{2m}{m+4m}\\right)v=\\frac{2}{5}v=0.4\\,v\\text{ (to the right)}$$</p>\n<p>As block C is moving to the right after collision with B where B is moving to the left; so there will be no any further collision between C and B.</p>\n<p>Now, block B is moving to the left with velocity $0.6\\,v$ towards block A, which is currently at rest ($v_{A}^{\\prime}=0$).</p>\n<p>The mass of block B is $m$</p>\n<p>The mass of block A is $m$</p>\n<p>The collision between C and B is elastic ($e=1$).</p>\n<p>Since block A and block B have equal masses ($m$), they exchange velocities during collision again :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4pe0gf%2F2376c4f5-1e06-4c92-8f71-1d1842f68b09%2Fe2b6f5f0-8a89-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4pe0gg.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4pe0gf%2F2376c4f5-1e06-4c92-8f71-1d1842f68b09%2Fe2b6f5f0-8a89-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4pe0gg.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>$$v_A'' = v_B'' = -0.6v$$</p>\n<p>$$v_B''' = v_A' = 0$$</p>\n<p>The negative sign shows that Block A moves to the left with speed $0.6v$.</p>\n<p>Since Block B comes to rest and Block C is moving to the right ($0.4v$), no further collisions occur.</p>\n<p>Therefore, the final velocity of block A is $0.6v$ to the left. Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>तीन ब्लॉकों को प्रारम्भ में चित्र में दर्शाए अनुसार रखा गया है। ब्लॉक A का द्रव्यमान $m$ है तथा यह दाईं ओर प्रारम्भिक वेग $v$ से गतिमान है। द्रव्यमान $m$ वाला ब्लॉक B और द्रव्यमान $4m$ वाला ब्लॉक C दोनों प्रारम्भ में विरामावस्था में हैं। घर्षण को नगण्य मान लीजिए। सभी संघट्ट प्रत्यास्थ हैं। ब्लॉक A का अन्तिम वेग है</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4p7267%2F69fef828-cc08-4068-b01c-30d3dbf2981b%2F216054f0-8a89-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4p7268.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4p7267%2F69fef828-cc08-4068-b01c-30d3dbf2981b%2F216054f0-8a89-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4p7268.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$0.6v$ बाईं ओर</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$1.4v$ बाईं ओर</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$v$ बाईं ओर</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$0.4v$ दाईं ओर</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4m1ep0",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In a one dimensional collision between two identical particles A and B, B is stationary and A has momentum $p$ before impact. During impact, B gives impulse $J$ to A. The coefficient of restitution is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{2J}{p} - 1$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{J}{p} + 1$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{J}{p} - 1$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{J}{2p} - 1$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The mass of particle A and B is $m$.</p>\n<p>Initial momentum of A is $p$ $\\Rightarrow$ Initial velocity of A is $u_1 = \\frac{p}{m}$</p>\n<p>Initial state of B is stationary, $u_2 = 0$.</p>\n<p>During impact, particle B exerts an impulse $J$ on particle A. By Newton's third law, this force acts in the direction opposite to A's motion,</p>\n<p>Impulse on A by B $$= \\Delta p_A = p_{Af} - p_{Ai}$$</p>\n<p>$$-J = m v_1 - p$$</p>\n<p>$$m v_1 = p - J \\Rightarrow v_1 = \\frac{p - J}{m}$$</p>\n<p>By Newton's third law, particle A exerts an equal and opposite impulse $+J$ on particle B:</p>\n<p>$$\\Delta p_B = m v_2 - 0 = J \\Rightarrow v_2 = \\frac{J}{m}$$</p>\n<p>The coefficient of restitution $e$ is,</p>\n<p>$$e = \\frac{\\text{Relative velocity of separation}}{\\text{Relative velocity of approach}} = \\frac{v_2 - v_1}{u_1 - u_2}$$</p>\n<p>Substituting the values of $u_1$, $u_2$, $v_1$, and $v_2$ :</p>\n<p>$$e = \\frac{\\left(\\frac{J}{m}\\right) - \\left(\\frac{p - J}{m}\\right)}{\\left(\\frac{p}{m}\\right) - 0}$$</p>\n<p>$$e = \\frac{J - (p - J)}{p/m}$$</p>\n<p>$$e = \\frac{(2J - p)/m}{p/m} = \\frac{2J - p}{p}$$</p>\n<p>$$e = \\frac{2J}{p} - \\frac{p}{p} = \\frac{2J}{p} - 1$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो सर्वसम कणों A और B के बीच एक-विमीय संघट्ट में, B स्थिर है तथा संघट्ट से पूर्व A का संवेग $p$ है। संघट्ट के दौरान, B द्वारा A को $J$ आवेग दिया जाता है। प्रत्यावस्थान गुणांक (coefficient of restitution) है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\\\dfrac{2J}{p} - 1$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\\\dfrac{J}{p} + 1$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\\\dfrac{J}{p} - 1$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\\\dfrac{J}{2p} - 1$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4pop8e",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>As shown above, a ball of mass m, suspended on the end of a wire, is released from height h and collides elastically, when it is at its lowest point, with a block of mass 2m at rest on a frictionless surface. After the collision, the ball rises to a final height equal to</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4pkvb0%2F7e89afca-42de-4038-8fea-a57e2c52b9df%2Fa1666bc0-8a8a-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4pkvb1.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4pkvb0%2F7e89afca-42de-4038-8fea-a57e2c52b9df%2Fa1666bc0-8a8a-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4pkvb1.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>h/9</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>h/8</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>h/3</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>h/2</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>When a ball of mass $m$ is released from height $h$, using conservation of mechanical energy its velocity $u_1$ at the lowest point just before collision is,</p>\n<p>$$ \\mathrm{mgh}=\\frac{1}{2} \\mathrm{mu}_1^2 \\Rightarrow \\mathrm{u}_1=\\sqrt{2 \\mathrm{gh}} $$</p>\n<p>The mass of ball is $\\mathrm{m}_1=\\mathrm{m}$ and its initial velocity (before impact) is $\\mathrm{u}_1=\\sqrt{2 \\mathrm{gh}}$</p>\n<p>The mass of block is $\\mathrm{m}_2=2 \\mathrm{~m}$ and it is initially at rest. So the velocity of block before impact is $\\mathrm{u}_2=0$</p>\n<p>The collision between the ball and the block at lowest point is elastic, so the coefficient of restitution, $\\mathrm{e}=1$.</p>\n<p>Using the elastic collision formula for the velocity of the ball $\\mathrm{v}_1$ just after collision is,</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4pmgrz%2F5d78ddd1-b7bd-42c9-936b-60009618ecd1%2Fcdcb9ff0-8a8a-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4pmgs0.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4pmgrz%2F5d78ddd1-b7bd-42c9-936b-60009618ecd1%2Fcdcb9ff0-8a8a-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4pmgs0.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>$$v_1 = \\left(\\frac{m_1 - m_2}{m_1 + m_2}\\right) u_1 + \\left(\\frac{2m_2}{m_1 + m_2}\\right) u_2$$</p>\n<p>Substituting $m_1 = m$, $m_2 = 2m$, $u_1 = \\sqrt{2gh}$, and $u_2 = 0$:</p>\n<p>$$v_1 = \\left(\\frac{m - 2m}{m + 2m}\\right) \\sqrt{2gh} + 0$$</p>\n<p>$$v_1 = \\left(-\\frac{m}{3m}\\right) \\sqrt{2gh} = -\\frac{1}{3}\\sqrt{2gh}$$</p>\n<p>The negative sign shows that the ball rebounds (moves backwards) with speed $|v_1| = \\frac{1}{3}\\sqrt{2gh}$.</p>\n<p>After rebounding with speed $|v_1|$, the ball rises to a final height $h'$ where its kinetic energy is converted into gravitational potential energy.</p>\n<p>Using mechanical energy conservation:</p>\n<p>$$E_i = E_f \\Rightarrow \\frac{1}{2} m v_1^2 = mgh'$$</p>\n<p>Substituting $|v_1| = \\frac{1}{3}\\sqrt{2gh}$ :</p>\n<p>$$\\Rightarrow \\frac{1}{2} m \\left(\\frac{1}{3}\\sqrt{2gh}\\right)^2 = mgh'$$</p>\n<p>$$\\Rightarrow \\frac{1}{2} m \\left(\\frac{1}{9} \\times 2gh\\right) = mgh'$$</p>\n<p>$$\\Rightarrow \\frac{1}{9} mgh = mgh' \\Rightarrow h' = \\frac{h}{9}$$</p>\n<p>Therefore, the ball rises to a final height equal to $\\frac{h}{9}$. Thus, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "\n<p>जैसा कि ऊपर दर्शाया गया है, एक तार के सिरे पर लटकी हुई m द्रव्यमान की एक गेंद को h ऊँचाई से छोड़ा जाता है और जब यह अपने निम्नतम बिंदु पर होती है, तो यह घर्षण रहित सतह पर विरामावस्था में रखे 2m द्रव्यमान के एक ब्लॉक से प्रत्यास्थ रूप से टकराती है। टक्कर के बाद, गेंद एक अंतिम ऊँचाई तक उठती है जो निम्न के बराबर है:</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4pkvb0%2F7e89afca-42de-4038-8fea-a57e2c52b9df%2Fa1666bc0-8a8a-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4pkvb1.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4pkvb0%2F7e89afca-42de-4038-8fea-a57e2c52b9df%2Fa1666bc0-8a8a-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4pkvb1.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>h/9</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>h/8</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>h/3</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>h/2</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms4p5tnp",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The friction coefficient between the horizontal surface and each of the block shown in the figure is 0.2. The collision between the blocks is perfectly elastic. The separation between them when they come to rest is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4p3kj4%2F4790afeb-7ec7-4acf-96ef-172894fedf2f%2Fc0524b00-8a88-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4p3kj5.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4p3kj4%2F4790afeb-7ec7-4acf-96ef-172894fedf2f%2Fc0524b00-8a88-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4p3kj5.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>5 cm</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>8 cm</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>10 cm</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>12 cm</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The mass of first block, $m_1 = 2\\ \\text{kg}$ moving with initial speed of $u = 1.0\\ \\text{m/s}$</p>\n<p>The mass of second block is $m_2 = 4\\ \\text{kg}$ and it at rest, $u_2 = 0$</p>\n<p>Initial distance between blocks, $d = 16\\ \\text{cm} = 0.16\\ \\text{m}$</p>\n<p>Coefficient of friction, $\\mu = 0.2$</p>\n<p>Acceleration due to gravity, $g = 10\\ \\text{m/s}^2$</p>\n<p>The magnitude of retarding force due to friction on any block of mass $m$ is $f_k = \\mu m g$.</p>\n<p>The constant retardation $a$ experienced by each block while sliding is:</p>\n<p>$$a = \\frac{f_k}{m} = \\mu g = 0.2 \\times 10 = 2\\ \\text{m/s}^2$$</p>\n<p>Using the third equation of motion ($v^2 = u^2 - 2ad$) for the 2 kg block traveling distance $d = 0.16\\ \\text{m}$:</p>\n<p>$$u_1^2 = (1.0)^2 - 2(2)(0.16)$$</p>\n<p>$$u_1^2 = 1.0 - 0.64 = 0.36$$</p>\n<p>$$u_1 = \\sqrt{0.36} = 0.6\\ \\text{m/s}$$</p>\n<p>So, the 2 kg block hits the 4 kg block with speed $u_1 = 0.6\\ \\text{m/s}$. The 4 kg block is stationary ($u_2 = 0$).</p>\n<p>For elastic collision between $m_1 = 2\\ \\text{kg}$ and $m_2 = 4\\ \\text{kg}$</p>\n<p>Final velocity of 2 kg block is,</p>\n\n<p>$$v_1 = \\left(\\frac{m_1-m_2}{m_1+m_2}\\right)u_1 = \\left(\\frac{2-4}{2+4}\\right)(0.6) = \\left(-\\frac{2}{6}\\right)(0.6) = -0.2\\ \\text{m/s}$$</p>\n<p>The negative sign means the 2 kg block rebounds back to the left with speed 0.2 m/s.</p>\n<p>Final velocity of 4 kg block is,</p>\n<p>$$v_2 = \\left(\\frac{2m_1}{m_1+m_2}\\right)u_1 = \\left(\\frac{2\\times 2}{2+4}\\right)(0.6) = \\left(\\frac{4}{6}\\right)(0.6) = 0.4\\ \\text{m/s}$$</p>\n<p>The 4 kg block moves forward to the right with speed 0.4 m/s.</p>\n<p>Using kinematic equation distance traveled by each block after collision before coming to rest,</p>\n<p>$$v^2 = u^2 - 2as \\Rightarrow s = \\frac{u^2}{2a}$$</p>\n<p>Distance moved by 2 kg block to the left is,</p>\n<p>$$s_1 = \\frac{v_1^2}{2a} = \\frac{(0.2)^2}{2(2)} = \\frac{0.04}{4} = 0.01\\ \\text{m} = 1\\ \\text{cm}$$</p>\n<p>Distance moved by 4 kg block to the right is,</p>\n<p>$$s_2 = \\frac{v_2^2}{2a} = \\frac{(0.4)^2}{2(2)} = \\frac{0.16}{4} = 0.04\\ \\text{m} = 4\\ \\text{cm}$$</p>\n<p>Since the 2 kg block moves 1 cm to the left and the 4 kg block moves 4 cm to the right after the collision point, they move in opposite directions.</p>\n<p>Total final separation S,</p>\n<p>$$S = s_1 + s_2 = 1\\ \\text{cm} + 4\\ \\text{cm} = 5\\ \\text{cm}$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>क्षैतिज सतह और चित्र में दिखाए गए प्रत्येक ब्लॉक के बीच घर्षण गुणांक 0.2 है। ब्लॉकों के बीच टक्कर पूर्णतः प्रत्यास्थ है। विरामावस्था में आने पर उनके बीच की दूरी है:</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4p3kj4%2F4790afeb-7ec7-4acf-96ef-172894fedf2f%2Fc0524b00-8a88-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4p3kj5.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4p3kj4%2F4790afeb-7ec7-4acf-96ef-172894fedf2f%2Fc0524b00-8a88-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4p3kj5.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>5 cm</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>8 cm</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>10 cm</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>12 cm</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mroxllzt",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A ball is projected with velocity $u=20 \\mathrm{~m} / \\mathrm{s}$ at an angle $\\theta=60^{\\circ}$ to the horizontal towards a massive wall which approaches the ball with velocity $u^{\\prime}=7 \\mathrm{~m} / \\mathrm{s}$. After collision, the ball re-traces its path to the point of projection. The coefficient of restitution between the ball and the wall is $\\frac{3}{10+k}$ Find the value of $k$.</p>",
+                "options": [],
+                "answer": "7",
+                "explanation": "<p>When the ball is projected, its velocity can be resolved into two components:</p>\n<p>The horizontal component is $\\mathrm{u}_{\\mathrm{x}}=\\mathrm{u} \\cos \\theta=20 \\cos 60^{\\circ}=20 \\times \\frac{1}{2}=10 \\mathrm{~m} / \\mathrm{s}$.</p>\n<p>The vertical component is $u_y=u \\sin \\theta=20 \\sin 60^{\\circ}=20 \\times \\frac{\\sqrt{3}}{2}=10 \\sqrt{3} \\mathrm{~m} / \\mathrm{s}$.</p>\n<p>For the ball to re-trace its path to the point of projection, the vertical motion must remain unaffected, but the horizontal velocity must be exactly reversed in direction.</p>\n<p>This means the horizontal velocity after collision ( $\\mathrm{v}_{\\mathrm{x}}$ ) must be $-10 \\mathrm{~m} / \\mathrm{s}$ (velocity relative to the ground).</p>\n<p>The vertical velocity component does not change during a collision with a vertical wall, so the ball will follow the same parabolic trajectory backward.</p>\n<p>The coefficient of restitution is defined as the ratio of the velocity of separation to the velocity of approach, measured along the line of impact (the horizontal direction in this case).</p>\n<p>Let the wall be moving toward the ball with velocity $\\mathrm{u}_{\\mathrm{w}}=-7 \\mathrm{~m} / \\mathrm{s}$.</p>\n<p>The ball moves right at $10 \\mathrm{~m} / \\mathrm{s}$ and the wall moves left at $7 \\mathrm{~m} / \\mathrm{s}$.</p>\n<p>So, the velocity of approach is $\\mathrm{v}_{\\mathrm{app}}=\\mathrm{u}_{\\mathrm{x}}+\\mathrm{u}_{\\mathrm{w}}=10+7=17 \\mathrm{~m} / \\mathrm{s}$</p>\n<p>After collision, the ball moves left at $10 \\mathrm{~m} / \\mathrm{s}$ (to retrace its path) and the wall continues to move left at $7 \\mathrm{~m} / \\mathrm{s}$ (it is massive, so its velocity is unchanged).</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mroxk1bg%2F1245f249-d86f-4fef-8fc7-7762ba48572c%2F48e0bec0-81dd-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroxk1bh.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mroxk1bg%2F1245f249-d86f-4fef-8fc7-7762ba48572c%2F48e0bec0-81dd-11f1-b96a-89b043b4c331%2Ffile-6y3zli1mroxk1bh.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>So, the velocity of separation is,</p>\n<p>$$v_{\\mathrm{sep}} = \\left|v_{\\mathrm{ball}} - v_{\\mathrm{wall}}\\right| = \\left|10 - 7\\right| = 3\\text{m/s}$$</p>\n<p>The coefficient of restitution is:</p>\n<p>$$e = \\frac{v_{\\mathrm{sep}}}{v_{\\mathrm{app}}} = \\frac{3}{17}$$</p>\n<p>$$\\Rightarrow \\frac{3}{17} = \\frac{3}{10 + k} \\Rightarrow 17 = 10 + k \\Rightarrow k = 7$$</p>\n<p>Therefore, the value of k is 7.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक गेंद को क्षैतिज से $\\theta=60^{\\circ}$ के कोण पर $u=20 \\mathrm{~m} / \\mathrm{s}$ के वेग से एक भारी दीवार की ओर प्रक्षेपित किया जाता है, जो गेंद की ओर $u^{\\prime}=7 \\mathrm{~m} / \\mathrm{s}$ के वेग से आ रही है। टक्कर के बाद, गेंद उसी पथ का अनुसरण करते हुए प्रक्षेपण बिंदु पर वापस लौट आती है। गेंद और दीवार के बीच प्रत्यावस्थान गुणांक $\\frac{3}{10+k}$ है। $k$ का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms4q94md",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "A block of mass 4 kg is moving with a velocity of 7 m/s on a surface. It collides with another block of mass 3 kg elastically. The surface is smooth for 4 kg block but rough for 3 kg block $(\\mu=0.4)$. Find the time (in s) after which next collision will occur.",
+                "options": [],
+                "answer": "8",
+                "explanation": "<p>The mass of block is $\\mathrm{m}_1=4 \\mathrm{~kg}$, moving with initial velocity $\\mathrm{u}_1=7 \\mathrm{~m} / \\mathrm{s}$</p>\n<p>The mass of second block $\\mathrm{m}_2=3 \\mathrm{~kg}$, which is initially at rest $\\mathrm{u}_2=0 \\mathrm{~m} / \\mathrm{s}$</p>\n<p>The collision between the ball and block is elastic, so the coefficient of restitution, $\\mathrm{e}=1$</p>\n<p>The coefficient of friction on the rough surface for 3 kg block, $\\mu=0.4$</p>\n<p>Surface is smooth for 4 kg block ( $\\mu=0$ )</p>\n<p>Acceleration due to gravity, $\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^2$</p>\n<p>Using the one dimensional elastic collision formulas for two masses $\\mathrm{m}_1$ and $\\mathrm{m}_2$ where $\\mathrm{u}_2=0$ :</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4pthbd%2F0e2574b3-b8ab-4df8-bbbd-8a567a481f54%2F90e044a0-8a8b-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4pthbe.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4pthbd%2F0e2574b3-b8ab-4df8-bbbd-8a567a481f54%2F90e044a0-8a8b-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4pthbe.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Velocity of 4 kg block,</p>\n<p>$$ \\mathrm{v}_1=\\left(\\frac{\\mathrm{m}_1-\\mathrm{m}_2}{\\mathrm{~m}_1+\\mathrm{m}_2}\\right) \\mathrm{u}_1=\\left(\\frac{4-3}{4+3}\\right) \\times 7=\\left(\\frac{1}{7}\\right) \\times 7=1 \\mathrm{~m} / \\mathrm{s} $$</p>\n<p>The 4 kg block continues to move in the same forward direction with a constant speed of 1 m/s (since its surface is smooth).</p>\n<p>Velocity of 3 kg block,</p>\n<p>$$ \\mathrm{v}_2=\\left(\\frac{2 \\mathrm{~m}_1}{\\mathrm{~m}_1+\\mathrm{m}_2}\\right) \\mathrm{u}_1=\\left(\\frac{2 \\times 4}{4+3}\\right) \\times 7=\\left(\\frac{8}{7}\\right) \\times 7=8 \\mathrm{~m} / \\mathrm{s} $$</p>\n<p>The 3 kg block moves forward with an initial speed of $8 \\mathrm{~m} / \\mathrm{s}$ on the rough surface.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4q4u4h%2F383eb80c-bd35-42b8-a3df-94b8876c8a70%2Fccab9f10-8a8c-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4q4u4i.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4q4u4h%2F383eb80c-bd35-42b8-a3df-94b8876c8a70%2Fccab9f10-8a8c-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4q4u4i.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Since the surface under 4 kg is smooth, no friction acts on it. It moves forward with a constant velocity:</p>\n<p>$$x_1(t) = v_1 \\, \\cdot \\, t = 1 \\cdot t = t \\text{ meters}$$</p>\n<p>Friction acts on the 3 kg block causing constant retardation $a = \\mu g = 0.4 \\times 10 = 4\\ \\text{m/s}^2$</p>\n<p>Using equation of motion time taken by the 3 kg block to come to complete rest,</p>\n<p>$$v = v_2 - a t_{\\text{stop}} \\Rightarrow 0 = 8 - 4 \\times t_{\\text{stop}} \\Rightarrow t_{\\text{stop}} = 2 \\text{ seconds}$$</p>\n<p>Total distance travelled by the 3 kg block before coming to rest is,</p>\n<p>$$s_{\\text{stop}} = \\frac{v_2^2}{2a} = \\frac{8^2}{2 \\times 4} = \\frac{64}{8} = 8 \\text{ meters}$$</p>\n<p>For the second collision to occur, the 4 kg block (moving at constant speed 1 m/s) must reach to the 3 kg block.</p>\n<p>The position of the 4 kg block at $t = t_{\\text{stop}} = 2\\ \\text{s}$:</p>\n<p>$$x_1(2) = 1 \\times 2 = 2 \\text{ meters}$$</p>\n<p>Since $2\\ \\text{m} < 8\\ \\text{m}$, the 4 kg block reaches the 3 kg block after the 3 kg block has already come to rest at distance $x = 8\\ \\text{m}$.</p>\n<p>The time $t$ required for the 4 kg block to cover this total distance of 8 meters at constant speed 1 m/s is:</p>\n<p>$$x_1(t) = 8 \\text{ meters}$$</p>\n<p>$$1t = 8 \\Rightarrow t = 8 \\text{ seconds}$$</p>\n<p>Therefore, the required time is 8 seconds.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "4 kg द्रव्यमान का एक गुटका एक सतह पर 7 m/s के वेग से गति कर रहा है। यह 3 kg द्रव्यमान के दूसरे गुटके से प्रत्यास्थ रूप से टकराता है। 4 kg के गुटके के लिए सतह चिकनी है लेकिन 3 kg के गुटके के लिए खुरदरी $(\\mu=0.4)$ है। वह समय (s में) ज्ञात कीजिए जिसके बाद अगली टक्कर होगी।",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms4qfd96",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In the given arrangement four identical balls of mass 1 kg are hanging from light string such that they are very close to each other. Suddenly, first ball gets impulse of 16 N -s to the right as shown in figure. Block of mass is 1 kg just able to complete one circular turn for radius r . If value of $\\mathrm{r}=\\left(\\frac{3}{2}\\right)^{\\mathrm{n}} \\times \\frac{1}{5 \\mathrm{~g}} \\mathrm{~m}$, find the value of $\\mathbf{n}$ (Coefficient of restitution $\\mathbf{e} \\boldsymbol{=} \\mathbf{0 . 5}$ and all surfaces are frictionless.)</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4qaz6q%2F4b784c94-6184-4dbf-9c20-e1ca3ffba4f6%2F776f9820-8a8d-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4qaz6r.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4qaz6q%2F4b784c94-6184-4dbf-9c20-e1ca3ffba4f6%2F776f9820-8a8d-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4qaz6r.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "8",
+                "explanation": "<p>The masses of 4 identical hanging balls are $\\mathrm{m}=1 \\mathrm{~kg}$</p>\n<p>Coefficient of restitution between balls, $\\mathrm{e}=0.5=\\frac{1}{2}$</p>\n<p>Initial impulse given to ball $1, J=16 \\mathrm{~N}-\\mathrm{s}$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4qd33s%2Fbc882216-8570-49fb-9528-841292ae28c4%2Fb214b780-8a8d-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4qd33t.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4qd33s%2Fbc882216-8570-49fb-9528-841292ae28c4%2Fb214b780-8a8d-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4qd33t.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>As the impulse is equal to the change in momentum ($J = \\Delta P = mv - mu$), so the initial velocity of ball 1 ($v_0$)</p>\n<p>will be</p>\n<p>$$v_0 = \\frac{J}{m} = \\frac{16}{1} = 16\\ \\text{m/s}$$</p>\n<p>When ball 1 collides with stationary ball 2 of equal mass m:</p>\n<p>Velocity of ball 2 after 1st collision:</p>\n<p>$$v_2 = \\left(\\frac{1 + e}{2}\\right) v_0 = \\left(\\frac{1 + 0.5}{2}\\right) 16 = \\left(\\frac{1.5}{2}\\right) 16 = \\frac{3}{4} \\times 16 = 12\\ \\text{m/s}$$</p>\n<p>When ball 2 collides with stationary ball 3, velocity of ball 3 after 2nd collision:</p>\n<p>$$v_3 = \\left(\\frac{1 + e}{2}\\right) v_2 = \\left(\\frac{3}{4}\\right) \\times \\frac{1}{2} = 9\\ \\text{m/s}$$</p>\n<p>When ball 3 collides with stationary ball 4, velocity of ball 4 after 3rd collision:</p>\n\n<p>$$v_4 = \\left(\\frac{1+e}{2}\\right) v_3 = \\left(\\frac{3}{4}\\right) \\times 9 = \\frac{27}{4}\\ \\text{m/s}$$</p>\n<p>When ball 4 collides with stationary block of same mass m, velocity of block at bottom of circular path after 4th collision:</p>\n<p>$$v_{\\text{bottom}} = \\left(\\frac{1+e}{2}\\right) v_4 = \\left(\\frac{3}{4}\\right) \\times \\frac{27}{4} = \\frac{81}{16} = \\left(\\frac{3}{2}\\right)^4\\ \\text{m/s}$$</p>\n<p>For a mass m attached to a light string to just complete a vertical circular loop of radius r, the minimum velocity required at the lowest point ($v_{\\text{bottom}}$) is</p>\n<p>$$v_{\\text{bottom}} = \\sqrt{5gr}$$</p>\n<p>Here, the 4th ball hits the block of mass $m = 1\\ \\text{kg}$ at the bottom level, giving this required minimum velocity</p>\n<p>$$v_{\\text{bottom}} = \\sqrt{5gr}$$</p>\n<p>Substituting $v_4 = \\frac{27}{4}\\ \\text{m/s}$:</p>\n<p>$$\\sqrt{5gr} = \\left(\\frac{3}{2}\\right)^4$$</p>\n<p>$$5gr = \\left[\\left(\\frac{3}{2}\\right)^4\\right]^2$$</p>\n<p>$$5gr = \\left(\\frac{3}{2}\\right)^8$$</p>\n<p>$$r = \\left(\\frac{3}{2}\\right)^8 \\times \\frac{1}{5g} = \\left(\\frac{3}{2}\\right)^n \\times \\frac{1}{5g}$$</p>\n<p>$$\\Rightarrow n = 8$$</p>\n<p>Therefore, the value of n is 8.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दी गई व्यवस्था में, 1 kg द्रव्यमान की चार एक समान गेंदें एक हल्की डोरी से इस प्रकार लटकी हुई हैं कि वे एक-दूसरे के बहुत करीब हैं। अचानक, चित्र में दर्शाए अनुसार पहली गेंद को दाईं ओर 16 N -s का आवेग मिलता है। 1 kg द्रव्यमान का ब्लॉक r त्रिज्या के वृत्ताकार पथ का ठीक एक चक्कर पूरा करने में सक्षम है। यदि $\\mathrm{r}=\\left(\\frac{3}{2}\\right)^{\\mathrm{n}} \\times \\frac{1}{5 \\mathrm{~g}} \\mathrm{~m}$ है, तो $\\mathbf{n}$ का मान ज्ञात कीजिए (प्रत्यावस्थान गुणांक $\\mathbf{e} \\boldsymbol{=} \\mathbf{0.5}$ है और सभी सतहें घर्षण रहित हैं)।</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4qaz6q%2F4b784c94-6184-4dbf-9c20-e1ca3ffba4f6%2F776f9820-8a8d-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4qaz6r.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4qaz6q%2F4b784c94-6184-4dbf-9c20-e1ca3ffba4f6%2F776f9820-8a8d-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4qaz6r.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms4qx1ab",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider a hypothetical field in which force acting on a particle varies with its horizontal distance from wall $A B$ is $F=\\alpha x$ and always towards wall. Coefficient of restitution for collision between particle and wall is $\\mathbf{e}=\\frac{1}{2}$. Find the maximum force (in N) acting on the particle after 3rd collision. (Use $\\boldsymbol{\\alpha} \\mathbf{x}_{\\mathbf{0}}=$ 16 N)</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4qusuc%2Ff71d78a6-7f95-40f9-9d35-5d78d95e7e0c%2F9eb7d440-8a8f-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4qusud.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4qusuc%2Ff71d78a6-7f95-40f9-9d35-5d78d95e7e0c%2F9eb7d440-8a8f-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4qusud.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>The magnitude of force directed towards the wall at distance $x$ from the wall is $F(x)=\\alpha x$</p>\n<p>The work done by this conservative restoring force when the particle moves from a maximum distance $x$ to the wall $(x=0)$ is:</p>\n<p>$$W = \\int\\limits_{0}^{x} F(x)\\,dx  = \\int\\limits_{0}^{x} \\alpha x\\,dx  = \\frac{1}{2}\\alpha x^2$$</p>\n<p>By conservation of energy, the kinetic energy $K$ of the particle just before hitting the wall equals the potential energy at its maximum distance $x$:</p>\n<p>$$\\frac{1}{2}mv^2 = \\frac{1}{2}\\alpha x^2 \\Rightarrow v = \\sqrt{\\frac{\\alpha}{m}}x$$</p>\n<p>Let $x_n$ be the maximum distance reached by the particle after the $n^{\\text{th}}$ collision, and $v_n$ be its velocity immediately after the $n$-th rebound.</p>\n<p>Before 1st collision the particle is released from distance $x_0$. Velocity just before 1st collision:</p>\n<p>$$v_0 = \\sqrt{\\frac{\\alpha}{m}}\\,x_0$$</p>\n<p>After 1st collision where coefficient of restitution is $e=\\frac{1}{2}$:</p>\n<p>$$v_1 = ev_0 = \\frac{1}{2}v_0$$</p>\n<p>Maximum distance reached after 1st collision is,</p>\n<p>$$x_1 = \\sqrt{\\frac{m}{\\alpha}}v_1 = \\sqrt{\\frac{m}{\\alpha}}\\left(\\frac{1}{2}v_0\\right) = \\frac{1}{2}x_0 \\Rightarrow x_1 = \\frac{1}{2}x_0$$</p>\n<p>After 2nd collision,</p>\n<p>$$v_2 = ev_1 = \\frac{1}{2}x_1\\sqrt{\\frac{\\alpha}{m}} \\Rightarrow x_2 = \\left(\\frac{1}{2}\\right)^2 x_0 \\Rightarrow x_2 = \\frac{1}{4}x_0$$</p>\n<p>After 3rd collision,</p>\n<p>$$x_3 = e^3x_0 = \\left(\\frac{1}{2}\\right)^3x_0 = \\frac{1}{8}x_0$$</p>\n<p>The force acting on the particle reaches its maximum value at the maximum distance $x_3$ from the wall.</p>\n<p>$$F_{\\text{max,3rd}} = \\alpha x_3$$</p>\n\n<p>Substituting $x_3 = \\frac{1}{8}x_0$:</p>\n<p>$$F_{\\text{max,3rd}} = \\alpha \\left(\\frac{x_0}{8}\\right) = \\frac{\\alpha x_0}{8}$$</p>\n<p>It is given that $\\alpha x_0 = 16\\ \\text{N}$:</p>\n<p>$$F_{\\text{max,3rd}} = \\frac{16}{8} = 2\\ \\text{N}$$</p>\n<p>Therefore, the correct answer is 2.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>मान लीजिए कि एक काल्पनिक क्षेत्र है जिसमें किसी कण पर कार्य करने वाला बल दीवार $A B$ से उसकी क्षैतिज दूरी के साथ $F=\\alpha x$ के रूप में परिवर्तित होता है और हमेशा दीवार की ओर लगता है। कण और दीवार के बीच टक्कर के लिए प्रत्यावस्थान गुणांक (coefficient of restitution) $\\mathbf{e}=\\frac{1}{2}$ है। तीसरी टक्कर के बाद कण पर कार्य करने वाला अधिकतम बल (N में) ज्ञात कीजिए। ($\\boldsymbol{\\alpha} \\mathbf{x}_{\\mathbf{0}}=$ 16 N का उपयोग करें)</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4qusuc%2Ff71d78a6-7f95-40f9-9d35-5d78d95e7e0c%2F9eb7d440-8a8f-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4qusud.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4qusuc%2Ff71d78a6-7f95-40f9-9d35-5d78d95e7e0c%2F9eb7d440-8a8f-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4qusud.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms4r4va4",
+            "chapter": "center-of-mass",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two identical smooth balls are projected from points $O$ and $A$ on the horizontal ground with same speed of projection. The angle of projection in each case in 30° (see figure). The distance between O and $A$ is $\\mathbf{1 0 0 ~ m}$. The balls collide in mid air and return to their respective points of projection. If the coefficient of restitution is 0.7 , find the speed of projection $u$ of either ball (in $m / s$ ). Fill the value of $\\frac{u \\sqrt{7}}{25}$</p>\n<p>(Take $\\sqrt{3}=1.7$ )</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4r40bh%2Fe84b23e2-567b-4874-a4a2-19e6488cf040%2F9ec684d0-8a90-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4r40bi.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4r40bh%2Fe84b23e2-567b-4874-a4a2-19e6488cf040%2F9ec684d0-8a90-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4r40bi.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>Both balls are projected simultaneously with identical speed u and angle $\\theta=30^{\\circ}$ towards each other.</p>\n<p>By symmetry, they collide at the midpoint of OA at distance $\\mathrm{x}=50 \\mathrm{~m}$ from O .</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4r7b5k%2F2224418a-2374-44d8-9c67-9d7a7d4a0861%2Ffa92bb80-8a90-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4r7b5l.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4r7b5k%2F2224418a-2374-44d8-9c67-9d7a7d4a0861%2Ffa92bb80-8a90-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4r7b5l.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The horizontal component of initial velocity for each ball is:</p>\n<p>$$u_x = u \\cos 30^\\circ = \\frac{u\\sqrt{3}}{2}$$</p>\n<p>For the balls to collide, the horizontal displacement covered by each ball up to collision is 50 m:</p>\n<p>$$x = u_x t_0 \\Rightarrow 50 = \\left(\\frac{u\\sqrt{3}}{2}\\right) t_0$$</p>\n<p>$$t_0 = \\frac{2x}{u\\sqrt{3}} = \\frac{2 \\times 50}{u\\sqrt{3}} = \\frac{100}{u\\sqrt{3}} \\ldots (i)$$</p>\n<p>At the point of collision, the vertical component of velocity $u_y$ is same for both balls, so relative motion occurs</p>\n<p>only along the horizontal line of impact.</p>\n<p>Horizontal velocity of ball 1 before collision = $+u_x$</p>\n<p>Horizontal velocity of ball 2 before collision $=-\\mathrm{u}_{\\mathrm{x}}$</p>\n<p>Since the collision is head-on between two identical balls with coefficient of restitution $\\mathrm{e}=0.7$, the horizontal velocity of each ball after collision rebounds with magnitude:</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4ra9e9%2F29d853de-3241-4183-bb2f-5c75d8618c4a%2F4ca46810-8a91-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4ra9ea.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4ra9e9%2F29d853de-3241-4183-bb2f-5c75d8618c4a%2F4ca46810-8a91-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4ra9ea.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$ \\mathrm{v}_{\\mathrm{x}}=\\mathrm{e} \\cdot \\mathrm{u}_{\\mathrm{x}}=0.7 \\mathrm{u}_{\\mathrm{x}} $$</p>\n<p>For the balls to return to their respective points of projection, the horizontal distance travelled back after collision must also be 50 m during the remaining time of flight $\\left(\\mathrm{t}^{\\prime}\\right)$.</p>\n<p>Since the vertical motion is unaffected by the horizontal impulse during collision, the time of flight remains the same,</p>\n<p>$$\\mathrm{T}=\\frac{2 \\mathrm{u}_{\\mathrm{y}}}{\\mathrm{~g}}=\\frac{2 \\mathrm{u} \\sin 30^{\\circ}}{\\mathrm{g}}=\\frac{\\mathrm{u}}{\\mathrm{~g}} \\ldots (ii)$$</p>\n<p>Let the time of descent back to ground is $\\mathrm{t}^{\\prime}$.</p>\n<p>The distance covered during return is $\\mathrm{x}_{\\text {return }}=\\mathrm{v}_{\\mathrm{x}} \\cdot \\mathrm{t}^{\\prime}=\\left(\\mathrm{eu}_{\\mathrm{x}}\\right) \\times \\mathrm{t}^{\\prime} \\Rightarrow \\mathrm{t}^{\\prime}=\\frac{\\mathrm{x}_{\\text {return }}}{\\mathrm{eu}_{\\mathrm{x}}}$</p>\n<p>Since $\\mathrm{x}_{\\text {return }}=50 \\mathrm{~m}$, the horizontal displacement after collision is 50 m.</p>\n<p>$$ \\mathrm{t}^{\\prime}=\\frac{50}{0.7 \\times \\mathrm{u} \\cos 30^{\\circ}}=\\frac{50}{0.7 \\times \\frac{\\mathrm{u} \\sqrt{3}}{2}}=\\frac{1000}{7 \\mathrm{u} \\sqrt{3}} $$ .......(iii)</p>\n\n<p>From three equations (i), (ii) and (iii),</p>\n<p>$$T=t'+t_0$$</p>\n<p>$$\\frac{u}{g}=\\frac{100}{u\\sqrt{3}}+\\frac{1000}{7u\\sqrt{3}}$$</p>\n<p>$$u^2=\\frac{100g}{\\sqrt{3}}\\left(1+\\frac{10}{7}\\right)=\\frac{100g}{\\sqrt{3}}\\times\\frac{17}{7}$$</p>\n<p>Putting the value of $\\sqrt{3}=1.7$,</p>\n<p>$$u^2=\\frac{100\\times10}{1.7}\\times\\frac{17}{7}=\\frac{10000}{7}\\Rightarrow u=\\frac{100}{\\sqrt{7}}$$</p>\n\n<p>$$\\Rightarrow uv\\sqrt{7} = 100$$</p>\n<p>$$\\Rightarrow \\frac{uv\\sqrt{7}}{25} = \\frac{100}{25} \\Rightarrow \\frac{uv\\sqrt{7}}{25} = 4$$</p>\n<p>Therefore, the value of $\\frac{uv\\sqrt{7}}{25}$ is $4$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो एकसमान चिकनी गेंदों को क्षैतिज सतह पर बिंदु $O$ और $A$ से समान प्रक्षेपण चाल से प्रक्षेपित किया जाता है। प्रत्येक स्थिति में प्रक्षेपण कोण 30° है (चित्र देखें)। O और $A$ के बीच की दूरी $\\mathbf{1 0 0 ~ m}$ है। गेंदें हवा में टकराती हैं और अपने-अपने प्रक्षेपण बिंदुओं पर लौट आती हैं। यदि प्रत्यावस्थान गुणांक 0.7 है, तो किसी भी गेंद की प्रक्षेपण चाल $u$ ($m / s$ में) ज्ञात कीजिए। $\\frac{u \\sqrt{7}}{25}$ का मान भरें</p><p>($\\sqrt{3}=1.7$ लें)</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms4r40bh%2Fe84b23e2-567b-4874-a4a2-19e6488cf040%2F9ec684d0-8a90-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4r40bi.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms4r40bh%2Fe84b23e2-567b-4874-a4a2-19e6488cf040%2F9ec684d0-8a90-11f1-af26-0de8631fccce%2Ffile-6y3zli1ms4r40bi.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "collision",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Collision, Variable Mass",
+    "timeAllotted": 2160000,
+    "title": "Center of Mass and Collision Test - 4 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g71mnvx77zm",
+    "defaultLanguage": "en",
+    "description": "Collision, Variable Mass",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-28T14:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Collision, Variable Mass",
+    "timeAllotted": 2160000,
+    "title": "Center of Mass and Collision Test - 4 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Center of Mass and Collision"
+  }
+}

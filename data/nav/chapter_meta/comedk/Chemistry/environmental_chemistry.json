@@ -1,0 +1,41 @@
+{
+  "examSlug": "comedk",
+  "examId": "629105adee9e3ae00d63352e",
+  "subjectId": "629105adee9e3ae00d63352c",
+  "chapterId": "629109dc3b4aac2eb82cd370",
+  "subject": "Chemistry",
+  "chapter": "Environmental Chemistry",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64c57c3420fc93db0c28becd",
+      "title": "Environmental Pollution and pollutants",
+      "count": 1,
+      "questionIds": [
+        "64c57be820fc93db0c28bb7f"
+      ]
+    },
+    {
+      "id": "64c57c3420fc93db0c28becb",
+      "title": "Air Pollution",
+      "count": 7,
+      "questionIds": [
+        "6813779f2d288c475c04cb2d",
+        "654244d3242a07fec9fa760b",
+        "64c57bd420fc93db0c28bac6",
+        "64c57bce20fc93db0c28ba97",
+        "64c57ba620fc93db0c28b92e",
+        "64c57b5c20fc93db0c28b68b",
+        "64c57b4520fc93db0c28b5bd"
+      ]
+    },
+    {
+      "id": "64c57c3420fc93db0c28becc",
+      "title": "Water Pollution",
+      "count": 1,
+      "questionIds": [
+        "64c57b5920fc93db0c28b671"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Seamless tile for page-wide light watermark pattern -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <g transform="translate(512 480)" opacity="0.95">
+    <ellipse cx="0" cy="-20" rx="140" ry="50" fill="none" stroke="#EAEAEA" stroke-width="14" transform="rotate(-28)"/>
+    <text x="0" y="28" text-anchor="middle"
+      font-family="Inter, Arial, Helvetica, sans-serif"
+      font-size="180" font-weight="800" fill="#EDEDED">Q</text>
+  </g>
+  <text x="512" y="700" text-anchor="middle"
+    font-family="Inter, Arial, Helvetica, sans-serif"
+    font-size="42" font-weight="700" letter-spacing="6" fill="#EBEBEB">QUANTREX</text>
+  <text x="512" y="760" text-anchor="middle"
+    font-family="Inter, Arial, Helvetica, sans-serif"
+    font-size="22" font-weight="600" letter-spacing="10" fill="#F0F0F0">ACADEMY</text>
+  <text x="512" y="820" text-anchor="middle"
+    font-family="Inter, Arial, Helvetica, sans-serif"
+    font-size="16" font-weight="600" letter-spacing="4" fill="#EFEFEF">CONCEPT CREATE DESTINY</text>
+</svg>

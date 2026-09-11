@@ -1,0 +1,345 @@
+/* qxmd101: ExamGoal-style select/correct/wrong + readable ink + compact chrome */
+
+/* --- Option cards: always light ink for math/figures --- */
+.mtk-opt,
+.eg-test-root #qxOpts .mtk-opt,
+.eg-test-root #qxOpts [data-opt],
+.qx-prac-opt,
+.qa-opt,
+html[data-theme="dark"] .mtk-opt,
+html[data-theme="dark"] .qx-prac-opt,
+html[data-theme="dark"] .qa-opt,
+.eg-test-root[data-test-theme="dark"] #qxOpts .mtk-opt,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt,
+body.qx-book-mode .qx-prac-opt,
+body.qx-book-mode .mtk-opt {
+  position: relative !important;
+  background: #ffffff !important;
+  border: 1.5px solid #c5cae9 !important;
+  border-radius: 12px !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  box-shadow: none !important;
+}
+.mtk-opt .mtk-opt-text,
+.mtk-opt .mtk-opt-text *,
+.mtk-opt .qx-content,
+.mtk-opt .qx-content *,
+.mtk-opt .katex,
+.mtk-opt .katex *,
+.qx-prac-opt .qx-prac-opt-text,
+.qx-prac-opt .qx-prac-opt-text *,
+.qx-prac-opt .katex,
+.qx-prac-opt .katex *,
+.eg-test-root[data-test-theme="dark"] #qxOpts .mtk-opt-text,
+.eg-test-root[data-test-theme="dark"] #qxOpts .mtk-opt-text *,
+.eg-test-root[data-test-theme="dark"] #qxOpts .mtk-opt .katex,
+.eg-test-root[data-test-theme="dark"] #qxOpts .mtk-opt .katex *,
+html[data-theme="dark"] .mtk-opt .mtk-opt-text,
+html[data-theme="dark"] .mtk-opt .mtk-opt-text *,
+html[data-theme="dark"] .mtk-opt .katex,
+html[data-theme="dark"] .mtk-opt .katex *,
+html[data-theme="dark"] .qx-prac-opt .qx-prac-opt-text,
+html[data-theme="dark"] .qx-prac-opt .qx-prac-opt-text * {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Selected — ExamGoal light indigo */
+.mtk-opt.selected:not(.correct):not(.wrong):not(.eg-opt-right):not(.eg-opt-wrong),
+.qx-prac-opt.selected:not(.correct):not(.wrong),
+.qa-opt.selected:not(.correct):not(.wrong),
+.eg-test-root #qxOpts .mtk-opt.selected:not(.eg-opt-right):not(.eg-opt-wrong),
+html[data-theme="dark"] .mtk-opt.selected:not(.correct):not(.wrong):not(.eg-opt-right):not(.eg-opt-wrong),
+html[data-theme="dark"] .qx-prac-opt.selected:not(.correct):not(.wrong) {
+  background: #e8eaf6 !important;
+  background-color: #e8eaf6 !important;
+  border: 2px solid #3f51b5 !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  box-shadow: none !important;
+}
+.mtk-opt.selected:not(.correct):not(.wrong):not(.eg-opt-right):not(.eg-opt-wrong) .mtk-opt-letter,
+.mtk-opt.selected:not(.correct):not(.wrong) .qx-opt-circle,
+.qx-prac-opt.selected:not(.correct):not(.wrong) .mtk-opt-letter,
+.qx-prac-opt.selected:not(.correct):not(.wrong) .qx-opt-circle {
+  background: #3f51b5 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* Correct — soft green + badge */
+.mtk-opt.eg-opt-right,
+.mtk-opt.correct,
+.qx-prac-opt.correct,
+.qa-opt.correct,
+.eg-test-root #qxOpts .mtk-opt.eg-opt-right,
+.eg-test-root #qxOpts .mtk-opt.correct {
+  background: #e8f5e9 !important;
+  background-color: #e8f5e9 !important;
+  border: 2px solid #43a047 !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  box-shadow: none !important;
+}
+.mtk-opt.eg-opt-right .mtk-opt-text,
+.mtk-opt.eg-opt-right .mtk-opt-text *,
+.mtk-opt.correct .mtk-opt-text,
+.mtk-opt.correct .mtk-opt-text *,
+.qx-prac-opt.correct .qx-prac-opt-text,
+.qx-prac-opt.correct .qx-prac-opt-text * {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+.mtk-opt.eg-opt-right .mtk-opt-letter,
+.mtk-opt.correct .mtk-opt-letter,
+.qx-prac-opt.correct .mtk-opt-letter,
+.qx-prac-opt.correct .qx-opt-circle {
+  background: #43a047 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+.mtk-opt.eg-opt-right::after,
+.mtk-opt.correct::after,
+.qx-prac-opt.correct::after,
+.qa-opt.correct::after {
+  content: "Correct answer";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #43a047;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .02em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  line-height: 1.2;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Wrong / your answer — soft red + badge */
+.mtk-opt.eg-opt-wrong,
+.mtk-opt.wrong,
+.qx-prac-opt.wrong,
+.qa-opt.wrong,
+.eg-test-root #qxOpts .mtk-opt.eg-opt-wrong,
+.eg-test-root #qxOpts .mtk-opt.wrong {
+  background: #ffebee !important;
+  background-color: #ffebee !important;
+  border: 2px solid #e53935 !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  box-shadow: none !important;
+}
+.mtk-opt.eg-opt-wrong .mtk-opt-text,
+.mtk-opt.eg-opt-wrong .mtk-opt-text *,
+.mtk-opt.wrong .mtk-opt-text,
+.mtk-opt.wrong .mtk-opt-text *,
+.qx-prac-opt.wrong .qx-prac-opt-text,
+.qx-prac-opt.wrong .qx-prac-opt-text * {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+.mtk-opt.eg-opt-wrong .mtk-opt-letter,
+.mtk-opt.wrong .mtk-opt-letter,
+.qx-prac-opt.wrong .mtk-opt-letter,
+.qx-prac-opt.wrong .qx-opt-circle {
+  background: #e53935 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+.mtk-opt.eg-opt-wrong::after,
+.mtk-opt.wrong::after,
+.qx-prac-opt.wrong::after,
+.qa-opt.wrong::after {
+  content: "Your answer";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #e53935;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .02em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  line-height: 1.2;
+  z-index: 2;
+  pointer-events: none;
+}
+/* If both correct and selected wrong labels conflict, correct wins */
+.mtk-opt.eg-opt-right.eg-opt-wrong::after,
+.mtk-opt.correct.wrong::after,
+.qx-prac-opt.correct.wrong::after {
+  content: "Correct answer";
+  background: #43a047;
+}
+
+/* --- Compact chrome: more room for question + options --- */
+.eg-test-root .eg-top {
+  min-height: 42px !important;
+  padding: 4px 8px !important;
+}
+.eg-test-root .eg-subs {
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+.eg-test-root .eg-sub {
+  padding: 8px 10px !important;
+  font-size: 13px !important;
+}
+.eg-test-root .eg-ch-line {
+  padding: 4px 10px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+.eg-test-root .eg-qbar {
+  padding: 4px 6px !important;
+  gap: 4px !important;
+}
+.eg-test-root .eg-qbar-n {
+  width: 28px !important;
+  height: 28px !important;
+  font-size: 11px !important;
+}
+.eg-test-root .eg-q-meta {
+  padding: 6px 10px 4px !important;
+  gap: 6px !important;
+  flex-wrap: wrap !important;
+}
+.eg-test-root .eg-q-card {
+  padding: 8px 10px 12px !important;
+}
+.eg-test-root .eg-q-stem,
+.eg-test-root #egQArea,
+.eg-test-root .mtk-q-text {
+  font-size: 16px !important;
+  line-height: 1.55 !important;
+  margin-bottom: 10px !important;
+}
+.eg-test-root #qxOpts,
+.eg-test-root .eg-opts,
+.eg-test-root .mtk-options {
+  gap: 10px !important;
+  margin-top: 4px !important;
+  margin-bottom: 8px !important;
+}
+.eg-test-root #qxOpts .mtk-opt {
+  min-height: 48px !important;
+  padding: 12px 14px !important;
+}
+.eg-test-root .eg-action-row {
+  margin: 10px 0 6px !important;
+}
+.eg-test-root .qx-paper-meta {
+  margin: 4px 0 6px !important;
+}
+.eg-test-root .qx-paper-chip {
+  font-size: 11px !important;
+  padding: 3px 8px !important;
+}
+@media (max-width: 640px) {
+  .eg-test-root .eg-top-title { font-size: 13px !important; max-width: 42vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .eg-test-root .eg-ico { width: 32px !important; height: 32px !important; }
+  .eg-test-root .eg-q-stem,
+  .eg-test-root #egQArea { font-size: 15.5px !important; }
+}
+/* qxmd102: hide chapter strip; maximize question + options */
+.eg-test-root .eg-ch-line { display: none !important; height: 0 !important; padding: 0 !important; margin: 0 !important; border: 0 !important; }
+.eg-test-root .eg-body { min-height: calc(100vh - 96px) !important; }
+.eg-test-root .eg-main { padding: 4px 6px 0 !important; }
+.eg-test-root .eg-q-card {
+  padding: 6px 8px 8px !important;
+  margin: 0 !important;
+  min-height: calc(100vh - 168px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+.eg-test-root .eg-q-stem,
+.eg-test-root #egQArea {
+  font-size: 17px !important;
+  line-height: 1.6 !important;
+  margin: 6px 0 12px !important;
+  min-height: 72px !important;
+}
+.eg-test-root #qxOpts,
+.eg-test-root .eg-opts {
+  flex: 1 1 auto !important;
+  gap: 12px !important;
+  margin: 0 0 8px !important;
+}
+.eg-test-root #qxOpts .mtk-opt { min-height: 56px !important; padding: 14px 16px !important; }
+.eg-test-root .eg-q-meta { padding: 4px 4px 2px !important; margin: 0 !important; }
+.eg-test-root .qx-paper-meta {
+  margin: 2px 0 4px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.eg-test-root .eg-top { min-height: 40px !important; padding: 2px 6px !important; }
+.eg-test-root .eg-subs { min-height: 36px !important; }
+.eg-test-root .eg-sub { padding: 6px 8px !important; font-size: 13px !important; }
+.eg-test-root .eg-qbar { display: none !important; }
+.eg-test-root.eg-qbar-open .eg-qbar { display: flex !important; padding: 3px 4px !important; }
+.eg-test-root .eg-foot { padding: 6px 8px !important; }
+.eg-test-root .eg-btn,
+.eg-test-root .eg-btn-next { min-height: 40px !important; padding: 8px 12px !important; font-size: 13px !important; }
+.eg-test-root .eg-action-row { margin: 8px 0 4px !important; }
+.qx-practice-page .qx-prac-q,
+.qx-practice-page .mtk-q-text,
+body.qx-book-mode .qx-prac-q,
+body.qx-book-mode .mtk-q-text { font-size: 17px !important; line-height: 1.6 !important; }
+.qx-practice-page .qx-prac-opts,
+body.qx-book-mode .qx-prac-opts { gap: 12px !important; }
+@media (max-width: 640px) {
+  .eg-test-root .eg-q-card { min-height: calc(100dvh - 150px) !important; }
+  .eg-test-root .eg-q-stem,
+  .eg-test-root #egQArea { font-size: 16px !important; }
+}
+/* qxmd103: second strip = Subject | Chapter | Subtopic */
+.eg-test-root .eg-subs {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: stretch !important;
+  gap: 0 !important;
+  background: #0b1f4a !important;
+  border-bottom: 2px solid #f97316 !important;
+}
+.eg-test-root .eg-sub-n { display: none !important; }
+.eg-test-root .eg-topic-strip,
+.eg-test-root .eg-sub.eg-topic-strip {
+  flex: 1 1 100% !important;
+  width: 100% !important;
+  text-align: center !important;
+  justify-content: center !important;
+  color: #fb923c !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+  padding: 8px 12px !important;
+  background: transparent !important;
+  border: 0 !important;
+  white-space: normal !important;
+  line-height: 1.35 !important;
+  cursor: default !important;
+  pointer-events: none !important;
+}
+.eg-test-root .eg-topic-strip-multi {
+  flex: 1 1 100% !important;
+  text-align: center !important;
+  color: #fdba74 !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  padding: 4px 10px 8px !important;
+  border-top: 1px solid rgba(249, 115, 22, 0.35) !important;
+}
+.eg-test-root .eg-ch-sep { opacity: 0.75; padding: 0 4px; font-weight: 700; }
+.eg-test-root .eg-ch-line { display: none !important; }
+@media (max-width: 640px) {
+  .eg-test-root .eg-topic-strip,
+  .eg-test-root .eg-sub.eg-topic-strip { font-size: 13px !important; padding: 7px 10px !important; }
+}

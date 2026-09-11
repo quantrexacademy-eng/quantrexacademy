@@ -1,0 +1,38 @@
+{
+  "examSlug": "jee_advanced",
+  "examId": "616059150283de43c87e3e21",
+  "subjectId": "616056cd0283de43c87e3e15",
+  "chapterId": "616023f028c7dc0334c22753",
+  "subject": "Physics",
+  "chapter": "Kinetic Theory of Gases",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64b16ae9f23ac7d519f9b96f",
+      "title": "Gas Laws",
+      "count": 2,
+      "questionIds": [
+        "64b16a25f23ac7d519f9b1c3",
+        "64b169faf23ac7d519f9b03a"
+      ]
+    },
+    {
+      "id": "64b16ae9f23ac7d519f9b970",
+      "title": "Speed of Gas",
+      "count": 2,
+      "questionIds": [
+        "64b16a41f23ac7d519f9b2bd",
+        "64b16a18f23ac7d519f9b14a"
+      ]
+    },
+    {
+      "id": "64b16ae9f23ac7d519f9b96e",
+      "title": "Degree of Freedom and Specific Heat",
+      "count": 2,
+      "questionIds": [
+        "64b169eef23ac7d519f9afcc",
+        "64b169d9f23ac7d519f9af04"
+      ]
+    }
+  ]
+}

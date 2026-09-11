@@ -1,0 +1,166 @@
+{
+  "examSlug": "comedk",
+  "examId": "629105adee9e3ae00d63352e",
+  "subjectId": "629105adee9e3ae00d63352b",
+  "chapterId": "629109ef0299d67104ca49d5",
+  "subject": "Physics",
+  "chapter": "Ray Optics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64c57c1220fc93db0c28bd4e",
+      "title": "Reflection of Light from Plane Mirror",
+      "count": 2,
+      "questionIds": [
+        "64c57b3e20fc93db0c28b57d",
+        "64c57b1820fc93db0c28b432"
+      ]
+    },
+    {
+      "id": "64c57c1220fc93db0c28bd52",
+      "title": "Mirror Formula, Reflection in Spherical Mirror",
+      "count": 5,
+      "questionIds": [
+        "6a0c7b3b72354c537d084e32",
+        "681377f72d288c475c04cdd8",
+        "64c57b7920fc93db0c28b796",
+        "64c57b5320fc93db0c28b639",
+        "64c57b3d20fc93db0c28b57c"
+      ]
+    },
+    {
+      "id": "64c57c1220fc93db0c28bd4f",
+      "title": "Critical angle and total internal reflection",
+      "count": 12,
+      "questionIds": [
+        "6a0c7b4b72354c537d084ed8",
+        "6a0c7b3b72354c537d084e30",
+        "6881bd102781fbe80ff8d272",
+        "6881bcfc2781fbe80ff8d1ad",
+        "681377c22d288c475c04cc42",
+        "681377992d288c475c04caff",
+        "64c57b8c20fc93db0c28b840",
+        "64c57b8c20fc93db0c28b83e",
+        "64c57b6820fc93db0c28b6ff",
+        "64c57b6620fc93db0c28b6ec",
+        "64c57b5220fc93db0c28b637",
+        "64c57b1820fc93db0c28b433"
+      ]
+    },
+    {
+      "id": "64c57c1220fc93db0c28bd53",
+      "title": "Refraction of light from plane surface",
+      "count": 18,
+      "questionIds": [
+        "6a0c7b3a72354c537d084e25",
+        "6881bd342781fbe80ff8d3df",
+        "6881bd122781fbe80ff8d283",
+        "6881bd102781fbe80ff8d273",
+        "681377f22d288c475c04cdb3",
+        "681377ef2d288c475c04cd9e",
+        "681377c52d288c475c04cc58",
+        "681377c12d288c475c04cc3b",
+        "677d32918b409a1009ac22b2",
+        "677d328d8b409a1009ac228f",
+        "681377ac2d288c475c04cb93",
+        "681377ab2d288c475c04cb88",
+        "681377942d288c475c04cad7",
+        "654244d1242a07fec9fa75ef",
+        "654244cd242a07fec9fa75cd",
+        "64c57be020fc93db0c28bb36",
+        "64c57b8c20fc93db0c28b83f",
+        "64c57b6820fc93db0c28b6fe"
+      ]
+    },
+    {
+      "id": "64c57c1220fc93db0c28bd51",
+      "title": "Lens Formula, Refraction of light from curved surface",
+      "count": 21,
+      "questionIds": [
+        "6a0c7b4e72354c537d084eff",
+        "6881bd362781fbe80ff8d3f4",
+        "6881bd322781fbe80ff8d3d4",
+        "6881bd202781fbe80ff8d310",
+        "6881bd202781fbe80ff8d30c",
+        "6881bd1f2781fbe80ff8d307",
+        "6881bd0f2781fbe80ff8d261",
+        "6881bd002781fbe80ff8d1d0",
+        "6881bcfe2781fbe80ff8d1bf",
+        "6881bcfc2781fbe80ff8d1b1",
+        "681377da2d288c475c04ccf9",
+        "681377d92d288c475c04ccf6",
+        "681377c82d288c475c04cc6e",
+        "677d32938b409a1009ac22bf",
+        "677d328c8b409a1009ac228c",
+        "681377972d288c475c04caf1",
+        "64c57bdc20fc93db0c28bb13",
+        "64c57ba020fc93db0c28b8f2",
+        "64c57b7920fc93db0c28b797",
+        "64c57b6920fc93db0c28b702",
+        "64c57b1820fc93db0c28b435"
+      ]
+    },
+    {
+      "id": "64c57c1120fc93db0c28bd4d",
+      "title": "Combination of Lens and Mirrors",
+      "count": 9,
+      "questionIds": [
+        "64c57bc820fc93db0c28ba5d",
+        "64c57bba20fc93db0c28b9dd",
+        "64c57ba220fc93db0c28b90a",
+        "64c57b8c20fc93db0c28b842",
+        "64c57b8c20fc93db0c28b841",
+        "64c57b6920fc93db0c28b703",
+        "64c57b3e20fc93db0c28b583",
+        "64c57b2e20fc93db0c28b4f1",
+        "64c57b1420fc93db0c28b411"
+      ]
+    },
+    {
+      "id": "64c57c1220fc93db0c28bd50",
+      "title": "Prism and Dispersion of Light",
+      "count": 14,
+      "questionIds": [
+        "6a0c7b4e72354c537d084efd",
+        "6881bd342781fbe80ff8d3e7",
+        "681377dd2d288c475c04cd0f",
+        "681377972d288c475c04caee",
+        "64c57bba20fc93db0c28b9de",
+        "64c57bb720fc93db0c28b9c4",
+        "64c57ba220fc93db0c28b909",
+        "64c57ba220fc93db0c28b906",
+        "64c57b6920fc93db0c28b700",
+        "64c57b5320fc93db0c28b638",
+        "64c57b3e20fc93db0c28b57f",
+        "64c57b3d20fc93db0c28b57b",
+        "64c57b2e20fc93db0c28b4ed",
+        "64c57b1820fc93db0c28b434"
+      ]
+    },
+    {
+      "id": "64c57c1220fc93db0c28bd55",
+      "title": "Optical Instruments",
+      "count": 10,
+      "questionIds": [
+        "6a0c7b4c72354c537d084ee6",
+        "6a0c7b3b72354c537d084e31",
+        "6881bd252781fbe80ff8d341",
+        "6881bd102781fbe80ff8d26b",
+        "681377f52d288c475c04cdc8",
+        "681377dd2d288c475c04cd10",
+        "677d32918b409a1009ac22b0",
+        "681377952d288c475c04cae3",
+        "64c57bcd20fc93db0c28ba87",
+        "64c57b7d20fc93db0c28b7b9"
+      ]
+    },
+    {
+      "id": "64c57c1220fc93db0c28bd54",
+      "title": "Human eye",
+      "count": 1,
+      "questionIds": [
+        "64c57b7920fc93db0c28b798"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddc0c03b9dcaf1afec94",
+  "topicId": "66a0ddc1c03b9dcaf1afec9c",
+  "title": "Median",
+  "concepts": [
+    {
+      "title": "Median",
+      "conceptBody": "<h3><strong>Median</strong></h3><p>The median is the central value of the set of observations provided all the observations are arranged in the ascending or descending orders.</p><p><strong>Calculation of median&nbsp;</strong></p><p>(i) <strong>Individual series:&nbsp;</strong></p><p>If <i>n </i>is odd, Median = value of ${{\\left( \\frac{n+1}{2} \\right)}^{th}}$ item.</p><p>If <i>n </i>is even, Median = $\\frac{1}{2}\\left[ \\text{ value of }{{\\left( \\frac{n}{2} \\right)}^{\\text{th }}}\\text{ Item }+\\text{ value of }{{\\left( \\frac{n}{2}+1 \\right)}^{\\text{th }}}\\text{ Item } \\right]$</p><p>(ii) <strong>Discrete series : </strong>In this case, we first find the cumulative frequencies of the variables arranged in</p><p>ascending or descending order and the median is given by</p><p>Median = ${{\\left( \\frac{n+1}{2} \\right)}^{th}}$observation, where <i>n </i>is the cumulative frequency.</p><p>(iii) <strong>For grouped or continuous distributions : </strong>In this case, following formula can be used.</p><p><strong>(a) For series in ascending order </strong>,</p><p>Median = $l+\\frac{\\left( \\frac{N}{2}-C \\right)}{f}\\times i$</p><p>Where <i>l </i>= Lower limit of the median class</p><p><i>f </i>= Frequency of the median class</p><p><i>N </i>= The sum of all frequencies</p><p><i>i </i>= The width of the median class</p><p><i>C </i>= The cumulative frequency of the class preceding to median class.</p><p><strong>(b) For series in descending order&nbsp;</strong></p><p>Median = $u-\\left( \\frac{\\frac{N}{2}-C}{f} \\right)\\times i$, where <i>u </i>= upper limit of the median class, $N=\\sum\\limits_{i=1}^{n}{{{f}_{i}}}$.</p>",
+      "position": 0,
+      "qcConcept": "66a0ddc1c03b9dcaf1afec9d"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66891f351010aab82c8aa6a1",
+      "title": "Which one of the following measures of marks is the most suitable one of central location for computing intelligence of students?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6a2",
+      "title": "If a variable takes the discrete values $\\alpha-4, \\alpha-\\frac{7}{2}, \\alpha-\\frac{5}{2}, \\alpha-3, \\alpha-2, \\alpha+\\frac{1}{2}, \\alpha-\\frac{1}{2}, \\alpha+5(\\alpha\\gt0)$, then the median is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6a3",
+      "title": "The median of a set of 9 distinct observations is 20.5 . If each of the largest 4 observation of the set is increased by 2 , then the median of the new set",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6a4",
+      "title": "Consider the following statements\n(1) Mode can be computed from histogram\n(2) Median is not independent of change of scale\n(3) Variance is independent of change of origin and scale\nWhich of these is/are correct?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6a5",
+      "title": "In a moderately asymmetrical distribution the mode and mean are 7 and 4 respectively. The median is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66891f351010aab82c8aa6a6",
+      "title": "If in a frequency distribution, the mean and median are 21 and 22 respectively, then its mode is approximately",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

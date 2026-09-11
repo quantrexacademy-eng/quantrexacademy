@@ -1,0 +1,861 @@
+/* Quantrex — consistent question layout (app + test series + practice) */
+
+.qx-question-body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  gap: 10px;
+  margin: 0 0 14px;
+  line-height: 1.7;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Flow: natural order text → figure → text (never dump all figures first) */
+.qx-question-body.qx-question-flow {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  align-items: stretch !important;
+}
+
+.qx-question-body.qx-question-flow .qx-q-seg-text,
+.qx-question-body.qx-question-flow .qx-q-text-only,
+.qx-question-body.qx-question-flow .mtk-q-text {
+  order: unset !important;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  line-height: 1.65;
+  font-size: inherit;
+}
+
+.qx-question-body.qx-question-flow .qx-diagram-seg,
+.qx-question-body.qx-question-flow .qx-diagram-slot {
+  order: unset !important;
+  align-self: center;
+  width: 100%;
+  max-width: min(100%, 640px);
+  margin: 6px auto !important;
+  padding: 8px !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  background: #fff !important;
+  border: 1px solid rgba(148, 163, 184, 0.25) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.qx-question-body.qx-question-flow .qx-diagram-seg img,
+.qx-question-body.qx-question-flow .qx-diagram-slot img,
+.eg-q-stem img:not(.qx-opt-fig-img),
+.mtk-q-text img:not(.qx-opt-fig-img) {
+  max-width: min(100%, 640px) !important;
+  max-height: min(70vh, 560px) !important;
+  height: auto !important;
+  width: auto !important;
+  margin: 8px auto !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+/* Options: keep letter + text aligned, math readable */
+.mtk-opt,
+.qx-prac-opt {
+  align-items: flex-start !important;
+  gap: 12px !important;
+  overflow: visible !important;
+  max-width: 100% !important;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background-color .12s ease, border-color .12s ease, box-shadow .12s ease, transform .08s ease;
+}
+.mtk-opt:active,
+.qx-prac-opt:active {
+  transform: scale(0.992);
+}
+.mtk-opt-text,
+.qx-prac-opt-text {
+  flex: 1 !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  text-align: left !important;
+  overflow-wrap: break-word;
+  word-break: normal;
+  overflow-x: visible;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+.mtk-opt-text img,
+.qx-prac-opt-text img,
+.qx-opt-diagram-slot img,
+.qx-opt-fig-img {
+  max-width: min(100%, 220px) !important;
+  max-height: 130px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 4px auto !important;
+}
+.mtk-opt-text .katex,
+.qx-prac-opt-text .katex,
+.mtk-q-text .katex,
+.qx-q-seg-text .katex {
+  font-size: var(--nta-math, 1.15em) !important;
+  line-height: 1.5 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+.mtk-q-text,
+.qx-q-seg-text,
+.qx-marks-native-q,
+.qx-question-body,
+.qx-content.qx-q-text-only {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+.katex, .katex-display, mjx-container {
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+/* Light CBT: stem + options + math always dark ink on white */
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .katex,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .katex *,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] mjx-container,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] mjx-container *,
+.mtk-test-root[data-test-theme="light"] .mtk-q-text,
+.mtk-test-root[data-test-theme="light"] .mtk-q-text .qx-content,
+.mtk-test-root[data-test-theme="light"] .qx-q-seg-text,
+.mtk-test-root[data-test-theme="light"] .eg-q-stem,
+.mtk-test-root[data-test-theme="light"] .mtk-opt-text,
+.mtk-test-root[data-test-theme="light"] .katex,
+.mtk-test-root[data-test-theme="light"] .katex *,
+.mtk-test-root[data-test-theme="light"] mjx-container,
+.mtk-test-root[data-test-theme="light"] mjx-container * {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.mtk-test-root[data-test-theme="dark"] .katex,
+.mtk-test-root[data-test-theme="dark"] .katex *,
+.mtk-test-root[data-test-theme="dark"] mjx-container,
+.mtk-test-root[data-test-theme="dark"] mjx-container *,
+.mtk-test-root[data-test-theme="dark"] .mtk-q-text,
+.mtk-test-root[data-test-theme="dark"] .eg-q-stem,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt-text {
+  color: #e5e7eb !important;
+  -webkit-text-fill-color: #e5e7eb !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.mtk-test-root[data-test-theme="light"] img.qx-pool-fig,
+.mtk-test-root[data-test-theme="light"] .qx-fig img,
+.mtk-test-root[data-test-theme="light"] .qx-opt-fig-img,
+.mtk-test-root[data-test-theme="dark"] img.qx-pool-fig,
+.mtk-test-root[data-test-theme="dark"] .qx-fig img,
+.mtk-test-root[data-test-theme="dark"] .qx-opt-fig-img {
+  background: #ffffff !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Solution body: same math scale + spacing */
+.sol-body .katex,
+.qx-sol-body .katex,
+.sol-body mjx-container,
+.qx-sol-body mjx-container {
+  font-size: var(--math-solution-size, 1.22em) !important;
+}
+.sol-body img,
+.qx-sol-body img {
+  max-width: min(100%, 560px) !important;
+  height: auto !important;
+  display: block !important;
+  margin: 12px auto !important;
+  border-radius: 10px !important;
+  background: #fff !important;
+}
+
+.qx-question-body.qx-question-flow .qx-diagram-seg .qx-fig {
+  margin: 2px auto !important;
+}
+
+.qx-question-body .qx-q-before,
+.qx-question-body .qx-q-after,
+.qx-question-body .qx-q-text-only,
+.qx-question-body .mtk-q-text,
+.qx-question-body .qx-q-seg-text,
+.mtk-q-text.qx-stem-forced,
+.mtk-q-text.qx-stem-rescued {
+  width: 100%;
+  text-align: left;
+  line-height: 1.7;
+  font-weight: 500;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  color: inherit;
+}
+
+/* Long sentence options: one column (NTA / student-friendly) */
+.mtk-options.qx-opts-stack,
+.mtk-options-exam.qx-opts-stack,
+.qx-prac-opts.qx-opts-stack {
+  display: flex !important;
+  flex-direction: column !important;
+  grid-template-columns: none !important;
+  gap: 10px !important;
+}
+.mtk-options.qx-opts-stack .mtk-opt,
+.qx-prac-opts.qx-opts-stack .qx-prac-opt {
+  width: 100%;
+  min-height: 48px;
+  touch-action: manipulation;
+}
+.mtk-test-root.allen-cbt .mtk-opt,
+.mtk-test-root.allen-cbt .qx-prac-opt,
+.mtk-test-root.allen-cbt .mtk-btn,
+.mtk-test-root.allen-cbt .qzrr-btn {
+  animation: none !important;
+  touch-action: manipulation;
+}
+.mtk-test-root.allen-cbt .mtk-opt:active,
+.mtk-test-root.allen-cbt .mtk-btn:active,
+.mtk-test-root.allen-cbt .qzrr-btn:active {
+  transform: scale(0.985);
+}
+.mtk-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+.mtk-act-left, .mtk-act-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.mtk-btn-save {
+  margin-left: 0;
+  min-width: 148px;
+  z-index: 3;
+}
+.mtk-act-right .mtk-btn-save { margin-left: 0; }
+
+/* Legacy single-slot before/after (only when not using flow segments) */
+.qx-question-body:not(.qx-question-flow) .qx-q-before {
+  order: 1;
+  margin-bottom: 4px;
+}
+
+.qx-question-body:not(.qx-question-flow) .qx-diagram-slot,
+.qx-question-body:not(.qx-question-flow) #qxDiagramSlot {
+  order: 2;
+  align-self: center;
+  width: 100%;
+  max-width: min(100%, 720px);
+  margin: 6px auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.qx-question-body:not(.qx-question-flow) .qx-q-after {
+  order: 3;
+  margin-top: 4px;
+}
+
+.qx-question-body p {
+  margin: 0 0 6px;
+}
+
+.qx-question-body p:last-child {
+  margin-bottom: 0;
+}
+
+.mtk-main .qx-question-body,
+.mtk-main .mtk-q-text {
+  font-size: inherit; /* beauty-read + font-scale control size */
+  color: inherit;
+  font-weight: 500;
+  line-height: inherit;
+}
+
+.mtk-main .qx-question-body .qx-fig,
+.mtk-main .qx-question-body .qx-pool-fig-wrap,
+.mtk-main .qx-question-body .qx-fig-inner {
+  margin: 0 auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.mtk-main .qx-question-body img.qx-pool-fig:not([data-qx-display-w]),
+.mtk-main #qxDiagramSlot img:not([data-qx-display-w]) {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: min(100%, 480px) !important;
+  max-height: 240px !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 8px auto !important;
+  object-fit: contain !important;
+}
+
+.mtk-opt-text .qx-opt-diagram-slot,
+.mtk-opt-text .qx-opt-fig {
+  margin: 0 auto;
+  text-align: center;
+  line-height: 0;
+}
+
+.mtk-options.qx-opts-img .qx-opt-diagram-slot,
+.mtk-options.qx-opts-img .qx-opt-fig {
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+.mtk-opt-text .qx-premium-wm-sheet {
+  display: none !important;
+}
+
+.qa-wrap .qx-question-body,
+.qx-prac-q-wrap .qx-question-body {
+  gap: 8px;
+}
+
+.qx-irodov-q-text {
+  display: block;
+  width: 100%;
+  margin: 0 0 12px;
+  padding: 0;
+  color: var(--qx-text, #1e293b);
+  font-size: var(--nta-q, 16px);
+  line-height: 1.65;
+  text-align: left;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* Marks-native digital books — compact Marks-style layout (tight figures) */
+.mtk-main .qx-marks-native,
+.mtk-main .qx-marks-native-q,
+body.qx-book-mode .mtk-main .mtk-q-text,
+.mtk-test-root.qx-book-q .mtk-main .mtk-q-text,
+.qx-practice-page.qx-book-q .qx-prac-q {
+  display: block;
+  width: 100%;
+  margin: 0 0 6px !important;
+  padding: 0 !important;
+  font-size: var(--nta-q, 16px);
+  line-height: 1.65;
+  text-align: left;
+  color: inherit;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.qx-marks-native p,
+.qx-marks-native-opt p,
+body.qx-book-mode .mtk-q-text p,
+.mtk-test-root.qx-book-q .mtk-q-text p {
+  margin: 0 0 4px;
+  padding: 0;
+}
+
+.qx-marks-native p:last-child,
+.qx-marks-native-opt p:last-child {
+  margin-bottom: 0;
+}
+
+.qx-marks-native br + br,
+body.qx-book-mode .mtk-q-text br + br,
+.mtk-test-root.qx-book-q .mtk-q-text br + br {
+  display: none;
+}
+
+/* Option figures stay compact inline. STEM figures are a full-width block
+   so the paragraph never wraps beside the diagram (screenshot 928). */
+.qx-marks-native-opt img,
+.mtk-opt-text img,
+.qx-prac-opt-text img {
+  display: inline-block !important;
+  vertical-align: middle !important;
+  max-width: min(100%, 380px) !important;
+  max-height: min(36vh, 260px) !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 4px 0 !important;
+  object-fit: contain !important;
+}
+
+.mtk-main .qx-question-body,
+.allen-practice .qx-question-body,
+.mtk-test-root.qx-book-q .mtk-main .qx-question-body,
+body.qx-book-mode .mtk-main .qx-question-body {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 12px !important;
+  width: 100% !important;
+}
+
+.mtk-main .qx-question-body > .mtk-q-text,
+.mtk-main .qx-question-body > .qx-q-seg-text,
+.mtk-main .qx-question-body > .qx-q-text-only,
+.allen-practice .qx-question-body > .mtk-q-text {
+  display: block !important;
+  width: 100% !important;
+  float: none !important;
+  order: 1;
+}
+
+.mtk-main .qx-question-body > .qx-fig,
+.mtk-main .qx-question-body > .qx-pool-fig-wrap,
+.mtk-main .qx-question-body > .qx-diagram-seg,
+.mtk-main .qx-question-body > figure,
+.mtk-main .qx-question-body > img,
+.allen-practice .qx-question-body > img {
+  display: block !important;
+  float: none !important;
+  clear: both !important;
+  order: 2;
+  margin: 8px auto 4px !important;
+  max-width: min(100%, 680px) !important;
+}
+
+.qx-marks-native img,
+.qx-marks-inline-fig,
+.mtk-q-text img,
+.qx-q-seg-text img,
+.qx-marks-native-q img,
+body.qx-book-mode .mtk-main .mtk-q-text img,
+body.qx-book-mode .mtk-main .qx-content img,
+.mtk-test-root.qx-book-q .mtk-main .qx-question-body img,
+.mtk-test-root.qx-book-q .mtk-main .mtk-q-text img:not(.qx-exam-logo) {
+  display: block !important;
+  float: none !important;
+  clear: both !important;
+  vertical-align: top !important;
+  max-width: min(100%, 680px) !important;
+  max-height: none !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 10px auto !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+  object-fit: contain !important;
+  background: #fff !important;
+}
+
+.qx-marks-native .qx-img-wrap,
+.qx-marks-native figure,
+.qx-marks-native .qx-fig,
+.qx-marks-native .qx-pool-fig-wrap,
+.qx-question-body .qx-fig,
+.qx-question-body .qx-pool-fig-wrap,
+body.qx-book-mode .mtk-main .qx-fig,
+body.qx-book-mode .mtk-main .qx-pool-fig-wrap,
+.mtk-test-root.qx-book-q .mtk-main .qx-fig,
+.mtk-test-root.qx-book-q .mtk-main .qx-pool-fig-wrap {
+  display: block !important;
+  float: none !important;
+  margin: 8px auto !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  max-width: min(100%, 680px) !important;
+}
+
+.qx-marks-native math,
+.qx-marks-native-opt math {
+  font-size: inherit;
+}
+
+/* List-I/II: keep structure figures inside cells */
+.qx-match-q-body table img,
+.qx-inline-table-figs table img,
+table.qx-match-list img,
+.qx-match-q-body td img,
+.qx-match-q-body th img {
+  display: block !important;
+  float: none !important;
+  max-width: min(100%, 220px) !important;
+  max-height: 170px !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 4px auto !important;
+  background: #fff !important;
+}
+.qx-match-q-body table,
+table.qx-match-list {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 14px;
+}
+.qx-match-q-body td,
+.qx-match-q-body th,
+table.qx-match-list td,
+table.qx-match-list th {
+  vertical-align: middle;
+  padding: 8px 10px;
+}
+
+.mtk-main .qx-marks-native img,
+.mtk-main .qx-marks-native-opt img {
+  min-height: 0 !important;
+  max-height: min(36vh, 260px) !important;
+}
+
+.mtk-options.qx-opts-img .mtk-opt-text .qx-marks-native-opt {
+  line-height: 1.45 !important;
+  text-align: left !important;
+}
+
+.mtk-options.qx-opts-img .mtk-opt-text .qx-marks-native-opt img {
+  display: inline-block !important;
+  margin: 2px 0 !important;
+  max-width: min(100%, 280px) !important;
+  max-height: min(28vh, 200px) !important;
+}
+
+/* Structure + IUPAC name options (img/latex : Name) — clean stacked layout, no leading colon */
+.qx-opt-pair {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.qx-opt-pair-struct {
+  display: block;
+  width: 100%;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.qx-opt-pair-struct img,
+.qx-opt-pair-struct .qx-fig,
+.qx-opt-pair-struct .qx-opt-diagram-slot {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.qx-opt-pair-name {
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--qx-text, #1e293b);
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.qx-prac-opt .qx-opt-pair-name,
+.mtk-opt .qx-opt-pair-name {
+  margin-top: 2px;
+}
+
+/* Image-only structure options (numbering MCQs): consistent card */
+.qx-prac-opts.qx-opts-img .qx-prac-opt,
+.mtk-options.qx-opts-img .mtk-opt {
+  align-items: flex-start;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.qx-prac-opts.qx-opts-img .qx-prac-opt-text,
+.mtk-options.qx-opts-img .mtk-opt-text {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* ss938: never keep the live shimmer bar under a real option figure */
+.qx-prac-opt:has(img) .qx-fig-loading,
+.mtk-opt:has(img) .qx-fig-loading,
+.qa-opt:has(img) .qx-fig-loading,
+.qx-prac-opt-text:has(img) .qx-fig-loading,
+.mtk-opt-text:has(img) .qx-fig-loading,
+img + .qx-fig-loading,
+.qx-fig-loading:has(~ img),
+.qx-opt-text-only:empty {
+  display: none !important;
+  min-height: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Watermark seal overlays the figure — never a second bar below it */
+.qx-org-qx-wm {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  pointer-events: none !important;
+}
+  text-align: center;
+  overflow: hidden;
+}
+.qx-opt-text-only {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+/* ── List-I / List-II match tables: perfect column + figure arrangement ── */
+.mtk-q-text table.qx-match-list,
+.qx-prac-q table.qx-match-list,
+.qx-content table.qx-match-list,
+.qa-q table.qx-match-list,
+.sol-body table.qx-match-list,
+.qx-sol-body table.qx-match-list {
+  width: 100% !important;
+  max-width: 100% !important;
+  table-layout: fixed !important;
+  border-collapse: collapse !important;
+  margin: 14px 0 !important;
+  font-size: 0.95em !important;
+  line-height: 1.55 !important;
+}
+
+.mtk-q-text table.qx-match-list th,
+.qx-prac-q table.qx-match-list th,
+.qx-content table.qx-match-list th,
+.qa-q table.qx-match-list th,
+.mtk-q-text table.qx-match-list td,
+.qx-prac-q table.qx-match-list td,
+.qx-content table.qx-match-list td,
+.qa-q table.qx-match-list td {
+  border: 1px solid rgba(148, 163, 184, 0.45) !important;
+  padding: 10px 12px !important;
+  /* top-align so multi-row List-I/II cells line up (not staggered) */
+  vertical-align: top !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word;
+}
+
+.mtk-q-text table.qx-match-list th,
+.qx-prac-q table.qx-match-list th,
+.qx-content table.qx-match-list th,
+.qa-q table.qx-match-list th {
+  text-align: center !important;
+  font-weight: 700 !important;
+  background: rgba(148, 163, 184, 0.12) !important;
+  letter-spacing: 0.02em;
+}
+
+/* Two equal columns only on true 2-col List-I | List-II.
+   :has(:nth-child(3)) keeps 4-col shape tables from crushing List-II (ss936). */
+table.qx-match-list:not(.qx-match-4col):not(:has(tr > :nth-child(3))) tr > th:nth-child(1),
+table.qx-match-list:not(.qx-match-4col):not(:has(tr > :nth-child(3))) tr > th:nth-child(2),
+table.qx-match-list:not(.qx-match-4col):not(:has(tr > :nth-child(3))) tr > td:nth-child(1),
+table.qx-match-list:not(.qx-match-4col):not(:has(tr > :nth-child(3))) tr > td:nth-child(2) {
+  width: 50% !important;
+  display: table-cell !important;
+  visibility: visible !important;
+  max-width: none !important;
+}
+table.qx-match-list:has(tr > :nth-child(3)) td,
+table.qx-match-list:has(tr > :nth-child(3)) th,
+table.qx-math-array-table td,
+table.qx-math-array-table th {
+  display: table-cell !important;
+  visibility: visible !important;
+  width: auto !important;
+  max-width: none !important;
+  overflow: visible !important;
+}
+table.qx-match-list td:first-child,
+table.qx-match-list th:first-child,
+.qx-match-q-body table td:first-child,
+.qx-match-q-body table th:first-child {
+  display: table-cell !important;
+  visibility: visible !important;
+  width: auto !important;
+  max-width: none !important;
+  white-space: normal !important;
+}
+
+/* 4-col: (P) | figure | (1) | observation */
+table.qx-match-list.qx-match-4col {
+  table-layout: fixed !important;
+}
+table.qx-match-list.qx-match-4col tr > th:nth-child(1),
+table.qx-match-list.qx-match-4col tr > td:nth-child(1),
+table.qx-match-list.qx-match-4col tr > th:nth-child(3),
+table.qx-match-list.qx-match-4col tr > td:nth-child(3) {
+  width: 8% !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+}
+table.qx-match-list.qx-match-4col tr > th:nth-child(2),
+table.qx-match-list.qx-match-4col tr > td:nth-child(2) {
+  width: 36% !important;
+}
+table.qx-match-list.qx-match-4col tr > th:nth-child(4),
+table.qx-match-list.qx-match-4col tr > td:nth-child(4) {
+  width: 48% !important;
+}
+
+.qx-list-lab {
+  font-weight: 700 !important;
+  font-family: var(--qx-font-ui, Inter, system-ui, sans-serif) !important;
+  margin-right: 6px;
+  white-space: nowrap;
+  color: inherit;
+}
+
+img.qx-match-fig,
+.qx-match-list img,
+.mtk-q-text table img,
+.qx-prac-q table img,
+.qa-q table img {
+  max-width: min(100%, 320px) !important;
+  width: auto !important;
+  height: auto !important;
+  display: block !important;
+  margin: 8px auto 0 !important;
+  object-fit: contain !important;
+  border-radius: 6px;
+  background: #fff;
+}
+
+/* Math inside match cells stays readable, not oversized */
+.qx-match-list .katex,
+.qx-match-list mjx-container,
+.mtk-q-text table .katex,
+.qx-prac-q table .katex {
+  font-size: 1em !important;
+  line-height: 1.35 !important;
+}
+
+/* Match mapping options: even spacing + clean chips */
+.mtk-opt-text,
+.qx-prac-opt-text {
+  word-spacing: 0.04em;
+}
+
+.qx-match-pairs {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px 4px !important;
+  align-items: center !important;
+  width: 100%;
+}
+
+.qx-match-pair {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  padding: 5px 11px !important;
+  border-radius: 8px !important;
+  background: #eff6ff !important;
+  border: 1px solid #93c5fd !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  font-family: Inter, system-ui, sans-serif !important;
+  color: #0f172a !important;
+  white-space: nowrap !important;
+  line-height: 1.3 !important;
+}
+
+.qx-match-lab, .qx-match-val {
+  font-weight: 800 !important;
+  color: #1e3a8a !important;
+  font-variant-numeric: tabular-nums;
+}
+.qx-match-arr { color: #2563eb !important; font-weight: 700 !important; opacity: 1 !important; }
+.qx-match-sep { color: #64748b !important; margin: 0 2px 0 4px; font-weight: 600; }
+
+.mtk-test-root[data-test-theme="dark"] .qx-match-pair,
+html[data-theme="dark"] .qx-match-pair {
+  background: rgba(59, 130, 246, 0.18) !important;
+  border-color: rgba(96, 165, 250, 0.45) !important;
+  color: #e2e8f0 !important;
+}
+.mtk-test-root[data-test-theme="dark"] .qx-match-lab,
+.mtk-test-root[data-test-theme="dark"] .qx-match-val,
+html[data-theme="dark"] .qx-match-lab,
+html[data-theme="dark"] .qx-match-val { color: #93c5fd !important; }
+.mtk-test-root[data-test-theme="dark"] .qx-match-arr,
+html[data-theme="dark"] .qx-match-arr { color: #60a5fa !important; }
+
+/* Inline table figures must never be hidden / zero-size (Amines List-I/II) */
+.qx-inline-table-figs table img,
+.qx-match-q-body table img,
+.qx-inline-table-figs img.qx-match-fig,
+.qx-match-list img,
+table.qx-match-list img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  max-width: min(100%, 300px) !important;
+  max-height: min(42vh, 260px) !important;
+  min-height: 48px !important;
+  width: auto !important;
+  height: auto !important;
+  display: block !important;
+  margin: 6px auto 0 !important;
+  object-fit: contain !important;
+  background: #fff !important;
+}
+
+/* Never hide pool/quizrr figures as "brand" */
+img.qx-pool-fig,
+img.qx-match-fig,
+img.qx-no-wm,
+img.qx-opt-fig-img,
+.qx-inline-table-figs img,
+.qx-match-q-body img {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Option chemistry math readable */
+.qx-prac-opt-text .katex,
+.mtk-opt-text .katex,
+.qx-match-combo .katex {
+  font-size: 1.05em !important;
+  line-height: 1.35 !important;
+}
+
+.qx-match-q-body .mtk-q-text,
+.qx-inline-table-figs {
+  width: 100%;
+  overflow-x: auto;
+}

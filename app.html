@@ -1,16 +1,16 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
-    <title>Quantrex Academy â€” JEE Main, NEET, NDA PYQs with Solutions</title>
+    <title>Quantrex Academy - JEE Main, NEET, NDA PYQs with Solutions</title>
     <meta name="description" content="Free JEE Main, JEE Advanced, NEET, NDA, BITSAT previous year questions with step-by-step solutions. Chapter-wise PYQ bank, mock tests, digital books. Practice on mobile or desktop.">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <meta name="theme-color" content="#8450CB" id="qxThemeColorMeta">
     <meta name="google-site-verification" content="pemTmZW6o6YInk0dhVyPgIz7R4v4mWvKhIb1AdI9Alw">
 
     <link rel="canonical" href="https://www.quantrexacademy.com/app.html">
-    <meta property="og:title" content="Quantrex Academy â€” JEE, NEET &amp; NDA PYQ Solutions">
+    <meta property="og:title" content="Quantrex Academy - JEE, NEET &amp; NDA PYQ Solutions">
     <meta property="og:description" content="Chapter-wise previous year questions with solutions for JEE Main, NEET, NDA, BITSAT. Free practice app.">
     <meta property="og:url" content="https://www.quantrexacademy.com/app.html">
     <meta property="og:type" content="website">
@@ -35,17 +35,18 @@
     <!-- Critical CSS (dashboard + reading) -->
     <link rel="stylesheet" href="assets/quantrex-brand.css?v=qxnta1">
     <link rel="stylesheet" href="assets/qx-quantrex-branding.css?v=p6view1">
-    <link rel="stylesheet" href="assets/qx-premium-ux.css?v=qxfix43">
+    <link rel="stylesheet" href="assets/qx-premium-ux.css?v=qxfix170">
     <link rel="stylesheet" href="assets/qx-typography.css?v=qxfix43">
-    <link rel="stylesheet" href="assets/qx-redesign-v2.css?v=qxfix59">
+    <link rel="stylesheet" href="assets/qx-redesign-v2.css?v=qxfix169">
     <link rel="stylesheet" href="assets/qx-identity.css?v=qxfix102">
     <link rel="stylesheet" href="assets/qx-premium-ui.css?v=qxfull1">
-    <link rel="stylesheet" href="assets/qx-mobile.css?v=qxfix102">
+    <link rel="stylesheet" href="assets/qx-mobile.css?v=qxfix160">
     <link rel="stylesheet" href="assets/qx-viewport.css?v=qxfix102">
     <link rel="stylesheet" href="assets/qx-touch-perf.css?v=qxfix102">
     <link rel="stylesheet" href="assets/qx-question-format.css?v=qxfix117">
     <link rel="stylesheet" href="assets/qx-marks-practice.css?v=qxfigwm3">
-    <link rel="stylesheet" href="assets/qx-text-visible.css?v=qxfix120">
+    <link rel="stylesheet" href="assets/qx-text-visible.css?v=qxmd115">
+  <link rel="stylesheet" href="assets/qx-vis-116.css?v=qxmd116">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         [data-theme="dark"] body { background: var(--bg); color: var(--text); }
@@ -2931,11 +2932,7 @@
         html[data-theme="dark"] .mtk-opt {
           border-color: rgba(148, 163, 184, 0.35) !important;
         }
-        html[data-theme="dark"] .qx-prac-opt.selected,
-        html[data-theme="dark"] .mtk-opt.selected {
-          background: rgba(37, 99, 235, 0.22) !important;
-          border-color: #60a5fa !important;
-        }
+        html[data-theme="dark"] .qx-prac-opt.selected, html[data-theme="dark"] .mtk-opt.selected { background: #86efac !important; border-color: #15803d !important; color: #14532d !important; box-shadow: 0 0 0 3px rgba(22,163,74,.45) !important; }
         /* Figures stay white plate (ink diagrams) â€” size capped above */
         html[data-theme="dark"] img.qx-pool-fig,
         html[data-theme="dark"] .mtk-q-text img,
@@ -3914,14 +3911,13 @@
         [data-theme="dark"] .qx-guest-banner strong {
           color: #f8fafc !important;
         }
-        [data-theme="dark"] .qc-ex-sol, 
-        [data-theme="dark"] .qc-ex-sol *,
-        [data-theme="dark"] .qx-sol-card,
-        [data-theme="dark"] .qx-sol-card *,
-        [data-theme="dark"] .eg-sol,
-        [data-theme="dark"] .eg-sol * {
+        [data-theme="dark"] .qc-ex-sol,
+        [data-theme="dark"] .qx-sol-card {
           color: #f8fafc !important;
-          -webkit-text-fill-color: #f8fafc !important;
+        }
+        html[data-theme="dark"] .eg-test-root[data-test-theme="dark"] .eg-sol,
+        html[data-theme="dark"] .eg-test-root[data-test-theme="dark"] .qx-sol-card {
+          color: #f8fafc !important;
         }
         [data-theme="dark"] .qc-ex-sol img,
         [data-theme="dark"] .qx-sol-card img,
@@ -3929,11 +3925,129 @@
           filter: brightness(0.9) contrast(1.1);
         }
 
+
+  /* === Flat options site-wide: no option boxes; A–D circles only; blue = selected === */
+  .mtk-opt,
+  .qx-prac-opt,
+  .qa-opt,
+  .eg-opts .mtk-opt,
+  .mtk-options .mtk-opt,
+  .qx-prac-opts .qx-prac-opt,
+  .mtk-opt-multi,
+  .qx-opts-multi .mtk-opt,
+  .mtk-options-multi .mtk-opt {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-width: 0 !important;
+    border-color: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    padding-left: 0 !important;
+    padding-right: 4px !important;
+  }
+  .mtk-opt.selected,
+  .qx-prac-opt.selected,
+  .qa-opt.selected,
+  .mtk-opt-multi.selected,
+  .mtk-options-multi .mtk-opt.selected,
+  .qx-opts-multi .mtk-opt.selected,
+  .mtk-opt.eg-opt-right,
+  .mtk-opt.eg-opt-wrong,
+  .mtk-opt.correct,
+  .mtk-opt.wrong,
+  .qx-prac-opt.correct,
+  .qx-prac-opt.wrong,
+  .qa-opt.correct,
+  .qa-opt.wrong {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  /* Hide radio / checkbox — letter circle is the only control chrome */
+  .mtk-opt-radio,
+  .mtk-opt-check,
+  .qx-prac-check,
+  .qx-prac-radio,
+  .mtk-opt-multi .mtk-opt-check,
+  .qx-prac-opt-multi .qx-prac-check,
+  .qx-prac-opt-multi .mtk-opt-check {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+  /* Letter circles always visible */
+  .opt-letter,
+  .mtk-opt-letter,
+  .qx-opt-circle,
+  .qx-prac-letter {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    border-radius: 50% !important;
+    flex-shrink: 0 !important;
+  }
+  /* Selected = blue circle only */
+  .mtk-opt.selected .mtk-opt-letter,
+  .mtk-opt.selected .qx-opt-circle,
+  .qx-prac-opt.selected .mtk-opt-letter,
+  .qx-prac-opt.selected .qx-opt-circle,
+  .qx-prac-opt.selected .qx-prac-letter,
+  .qa-opt.selected .opt-letter,
+  .mtk-opt[aria-pressed="true"] .mtk-opt-letter {
+    background: #2563eb !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  html[data-theme="dark"] .mtk-opt.selected .mtk-opt-letter,
+  html[data-theme="dark"] .qx-prac-opt.selected .mtk-opt-letter,
+  html[data-theme="dark"] .qx-prac-opt.selected .qx-opt-circle,
+  [data-theme="dark"] .mtk-opt.selected .mtk-opt-letter,
+  .mtk-test-root[data-test-theme="dark"] .mtk-opt.selected .mtk-opt-letter {
+    background: #3b82f6 !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+  }
+  /* Keep correct/wrong feedback on the circle, still no option box */
+  .mtk-opt.correct .mtk-opt-letter,
+  .qx-prac-opt.correct .mtk-opt-letter,
+  .qx-prac-opt.correct .qx-opt-circle,
+  .qa-opt.correct .opt-letter,
+  .mtk-opt.eg-opt-right .mtk-opt-letter {
+    background: #16a34a !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+  }
+  .mtk-opt.wrong .mtk-opt-letter,
+  .qx-prac-opt.wrong .mtk-opt-letter,
+  .qx-prac-opt.wrong .qx-opt-circle,
+  .qa-opt.wrong .opt-letter,
+  .mtk-opt.eg-opt-wrong .mtk-opt-letter {
+    background: #dc2626 !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+  }
+
   .qx-history, .qx-an-history, #tabHistory { display: none !important; }
 </style>
     <link rel="stylesheet" href="assets/qx-fig-proof.css?v=qxfix76">
-    <link rel="stylesheet" href="assets/qx-academy-id.css?v=qxfix110">
-<link rel="stylesheet" href="assets/qx-cbt-ux.css?v=qxcbt1">
+    <link rel="stylesheet" href="assets/qx-academy-id.css?v=qxfix140">
+<link rel="stylesheet" href="assets/qx-cbt-ux.css?v=qxmd116">
+    <link rel="stylesheet" href="assets/qx-examgoal-parity.css?v=qxeg1">
+    <link rel="stylesheet" href="assets/qx-app-polish.css?v=qxmd114">
+<link rel="stylesheet" href="assets/qx-vis-116.css?v=qxmd116">
 </head>
 <body>
     <div class="app">
@@ -3975,33 +4089,33 @@
                 <button type="button" class="sidebar-theme" id="sidebarThemeToggle" title="Toggle light/dark mode">
                     <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 3a9 9 0 1 0 9 9c0-.5 0-1-.1-1.5A7 7 0 0 1 12 3z"/></svg></span><span class="st-label">Turn on dark mode</span>
                 </button>
-                <a href="download.html" class="back-link" title="Official Android app on Google Play"><span class="ic">â–¶</span> Get the app</a>
-                <a href="app.html?exam=Engineering" class="back-link"><span class="ic">â†</span> Home</a>
+                <a href="download.html" class="back-link" title="Official Android app on Google Play"><span class="ic"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span> Get the app</a>
+                <a href="app.html?exam=Engineering" class="back-link"><span class="ic"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3l9 8h-3v9h-5v-6H11v6H6v-9H3z"/></svg></span> Home</a>
                 <div class="exam-pill" onclick="go('profile')">
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build Â· hard refresh if outdated">Build qxrd1</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build - hard refresh if outdated">Build qxfix149</div>
             </div>
         </aside>
 
         <div class="main">
             <div class="topbar">
-                <button class="menu-btn" id="navToggle" aria-label="Menu">â˜°</button>
+                <button class="menu-btn" id="navToggle" aria-label="Menu"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
                 <div class="qx-top-exams" id="qxTopExams" role="tablist" aria-label="Exam tracks">
                     <button type="button" class="qx-top-exam" data-exam="Engineering" title="JEE Main & Advanced">Engineering</button>
                     <button type="button" class="qx-top-exam" data-exam="Medical" title="NEET UG">Medical</button>
-                    <button type="button" class="qx-top-exam" data-exam="Defence" title="Defence Â· NDA">Defence</button>
-                    <button type="button" class="qx-top-exam" data-exam="Academic" title="Class 7â€“12">Academic</button>
+                    <button type="button" class="qx-top-exam" data-exam="Defence" title="Defence - NDA">Defence</button>
+                    <button type="button" class="qx-top-exam" data-exam="Academic" title="Class 7-12">Academic</button>
                 </div>
                 <div class="topbar-right">
-                    <button type="button" class="search-btn" id="searchBtn" title="Search questions">âŒ•</button>
-                    <button type="button" class="theme-btn" id="themeToggle" title="Toggle theme">â—</button>
+                    <button type="button" class="search-btn" id="searchBtn" title="Search questions"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
+                    <button type="button" class="theme-btn" id="themeToggle" title="Toggle theme"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
                     <a href="login.html" class="qx-login-hint" id="qxLoginHint" title="Login to save your progress">Login</a>
                     <span class="exam-tag" id="examPillTop" hidden>Engineering</span>
                     <button type="button" class="qx-user-chip" id="qxUserChip" hidden aria-label="Account"></button>
                     <div class="qx-user-menu" id="qxUserMenu" hidden></div>
-                    <button type="button" class="logout-link" id="logoutBtn" title="Logout" hidden>â»</button>
+                    <button type="button" class="logout-link" id="logoutBtn" title="Logout" hidden><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></button>
                 </div>
             </div>
             <div class="content" id="app-main"></div>
@@ -4015,22 +4129,22 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script>
-      window.QX_BUILD = "qxfix137";
+      window.QX_BUILD = "qxmd117";
       window.QX_NO_WM_PERMANENT = true;
       window.QX_FIG_LOCK = true;
       /* Secondary CSS/JS â€” loaded after first paint by qx-perf (not on critical path) */
       window.QX_SECONDARY_CSS = [
         "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css",
         "assets/qx-font-scale.css?v=qxfix43",
-        "assets/qx-beauty-read.css?v=qxfix61",
-        "assets/marks-test-engine.css?v=qxfix109",
+        "assets/qx-beauty-read.css?v=qxfix145",
+        "assets/marks-test-engine.css?v=qxfix145",
         "assets/qx-no-watermark.css?v=qxfix110",
         "assets/qx-soft-wm.css?v=qxfix34",
         "assets/qx-live-purchases.css?v=qxfix91",
         "assets/qx-admin.css?v=qxfix94",
-        "assets/qx-theme-practice.css?v=qxfix13",
-        "assets/qx-paper-meta.css?v=qxfix120",
-        "assets/allen-test-engine.css?v=p6fix1",
+        "assets/qx-theme-practice.css?v=qxfix160",
+        "assets/qx-paper-meta.css?v=qxfix164",
+        "assets/allen-test-engine.css?v=p6fix2",
         "assets/qx-brand-overlay.css?v=qxfix116",
         "assets/qx-figure.css?v=qxfix60",
         "assets/qx-figure-beauty.css?v=qxnta1",
@@ -4038,25 +4152,31 @@
         "assets/qx-figure-hd.css?v=qxfigstd1",
         "assets/qx-fig-standard.css?v=qxfix18",
         "assets/qx-image-clean.css?v=qxfull1",
-        "assets/qx-num-keypad.css?v=qxfix119",
+        "assets/qx-num-keypad.css?v=qxmd108",
         "assets/qx-image-quality.css?v=qxfull1",
-        "assets/qx-solution.css?v=qxfix120",
+        "assets/qx-solution.css?v=qxmd115",
         "assets/jovi.css?v=jovi6",
         "assets/exam-info.css?v=qxfull1",
-        "assets/qx-gemini-theme.css?v=qxfix61",
+        "assets/qx-gemini-theme.css?v=qxmd108",
         "assets/qx-fig-lock.css?v=qxiro2",
-        "assets/qx-motion.css?v=qxfix105",
+        "assets/qx-motion.css?v=qxfix170",
         "assets/qx-identity.css?v=qxfix102",
         "assets/examgoal-premium.css?v=qxfix56",
-        "assets/examgoal-test-ui.css?v=qxfix117",
-        "test-series-page.css?v=qxfix79",
+        "assets/examgoal-test-ui.css?v=qxmd108",
+      "assets/qx-opt-nta-vis.css?v=qxmd108",
+      "assets/qx-opt-space-102.css?v=qxmd105",
+      "assets/qx-topic-strip-103.css?v=qxmd105",
+      "assets/qx-foot-lock-104.css?v=qxmd105",
+        "test-series-page.css?v=qxmd116",
         "assets/qx-rfc.css?v=qxfix75",
-        "assets/qx-chapter-folders.css?v=qxfix64",
-        "assets/qx-math-nta.css?v=qxfix45",
-        "assets/qx-math-system.css?v=qxfix61",
+        "assets/qx-chapter-folders.css?v=qxmd98",
+        "assets/qx-math-nta.css?v=qxfix161",
+        "assets/qx-math-system.css?v=qxfix145",
         "assets/qx-palette-nav.css?v=qxfix60",
         "assets/qx-hw-sol.css?v=qxhw3",
-        "assets/qx-cbt-contrast.css?v=qxfix109"
+        "assets/qx-cbt-contrast.css?v=qxmd110",
+        "assets/qx-math-lock.css?v=qxfix163",
+        "assets/qx-vis-116.css?v=qxmd116"
       ];
       window.QX_SECONDARY_JS = [
         "https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js",
@@ -4116,14 +4236,14 @@
     <!-- Critical path (dashboard + practice + tests + core nav) -->
     <script src="firebase-config.js?v=qxfix69" defer></script>
     <script src="stack-config.js?v=qxpay2" defer></script>
-    <script src="assets/branding-strip.js?v=qxfix118" defer></script>
+    <script src="assets/branding-strip.js?v=qxmd95" defer></script>
     <script src="qx-brand-ui.js?v=qxfull1" defer></script>
     <script src="exam-logos.js?v=qxfull1" defer></script>
-    <script src="qx-redesign-nav.js?v=qxfix116" defer></script>
-    <script src="qx-card-icons.js?v=qxfix116" defer></script>
+    <script src="qx-redesign-nav.js?v=qxfix168" defer></script>
+    <script src="qx-card-icons.js?v=qxmd98" defer></script>
     <script src="qx-premium-watermark.js?v=qxfull1" defer></script>
     <script src="assets/qx-local-fig-map.js?v=qxfig111"></script>
-    <script src="qx-owned-figures.js?v=qxfix136" defer></script>
+    <script src="qx-owned-figures.js?v=qxsf139" defer></script>
     <script src="qx-proofread.js?v=qxfix67" defer></script>
     <script src="qx-image-clean.js?v=qxfix115" defer></script>
     <script src="qx-test-engine-perf.js?v=qxq861" defer></script>
@@ -4131,12 +4251,12 @@
     <script src="qx-nowm-guard.js?v=qxfix116" defer></script>
     <script src="qx-watermark.js?v=qxnobrand1" defer></script>
     <script src="qx-soft-wm.js?v=qxfix110" defer></script>
-    <script src="math-render.js?v=qxfix117" defer></script>
-    <script src="question-format.js?v=qxfix112" defer></script>
+    <script src="math-render.js?v=qxmd115" defer></script>
+    <script src="question-format.js?v=qxmd108" defer></script>
     <script src="assets/qx-question-qa.js?v=qxfull1" defer></script>
-    <script src="solution-format.js?v=qxfix116" defer></script>
+    <script src="solution-format.js?v=qxmd115" defer></script>
     <script src="assets/qx-question-cache.js?v=qxfix17"></script>
-    <script src="data.js?v=qxfix137" defer></script>
+    <script src="data.js?v=qxmd114" defer></script>
     <script src="firebase-db.js?v=qxfix115" defer></script>
     <script src="qx-firebase-bank.js?v=qxfix110" defer></script>
     <script src="quantrex-auth-otp.js?v=qxfix72" defer></script>
@@ -4153,12 +4273,12 @@
     <script src="premium.js?v=qxfix115" defer></script>
     <script src="leaderboard.js?v=qxfull1" defer></script>
     <script src="community.js?v=qxfull1" defer></script>
-    <script src="book-covers.js?v=qxfix105" defer></script>
+    <script src="book-covers.js?v=qxfix169" defer></script>
     <script src="marks-shell.js?v=qxfix64" defer></script>
     <script src="marks-live.js?v=qxfix64" defer></script>
-    <script src="marks-features.js?v=qxfix137" defer></script>
-    <script src="allen-test-ui.js?v=qxfix104" defer></script>
-    <script src="examgoal-test-ui.js?v=qxfix92" defer></script>
+    <script src="marks-features.js?v=qxmd116" defer></script>
+    <script src="allen-test-ui.js?v=qxmd93" defer></script>
+    <script src="examgoal-test-ui.js?v=qxmd108" defer></script>
     <script>
       window.TS_CFG = {
         seriesId: "jee_main_examgoal_2027",
@@ -4168,18 +4288,19 @@
         provider: "examgoal"
       };
     </script>
-    <script src="test-series.js?v=qxfix86" defer></script>
+    <script src="test-series.js?v=qxmd110" defer></script>
     <script src="assignments.js?v=qxfull1" defer></script>
     <script src="custom-test.js?v=qxfix64" defer></script>
-    <script src="test-engine.js?v=qxfix117" defer></script>
+    <script src="test-engine.js?v=qxmd116" defer></script>
     <script src="bookmarks.js?v=qxfix58" defer></script>
     <script src="search.js?v=qxfull1" defer></script>
-    <script src="theme.js?v=qxtheme1" defer></script>
+    <script src="theme.js?v=qxmd110" defer></script>
     <script src="qx-guest-trial.js?v=qxfix115" defer></script>
     <script src="qx-live-feed.js?v=qxfix93" defer></script>
-    <script src="app.js?v=qxfix136" defer></script>
-<script src="qx-settings.js?v=qxset1" defer>
-<script src="qx-cbt-ux.js?v=qxcbt1" defer></script>
+    <script src="app.js?v=qxmd93" defer></script>
+<script src="qx-settings.js?v=qxfix140" defer></script>
+<script src="qx-cbt-ux.js?v=qxmd116" defer></script>
+<script src="qx-q-fast.js?v=qxfix159" defer></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         try {
@@ -4201,6 +4322,6 @@
         })();
       });
     </script>
-<script src="pwa-register.js?v=qxfix104"></script>
+<script src="pwa-register.js?v=qxfix170"></script>
 </body>
 </html>

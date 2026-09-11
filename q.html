@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loading question… | Quantrex Academy</title>
+  <meta name="description" content="JEE, NEET, NDA previous year questions with solutions — Quantrex Academy">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" id="can" href="https://www.quantrexacademy.com/">
+  <meta name="theme-color" content="#0D9488">
+  <style>
+    body{margin:0;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}
+    .wrap{max-width:720px;margin:0 auto;padding:20px 14px}
+    a{color:#0d9488}
+  </style>
+  <script>
+    // Redirect browser users to server-rendered SEO HTML (same URL via rewrite)
+    (function () {
+      var path = location.pathname || "";
+      var m = path.match(/\/q\/([^/]+)/);
+      var slug = m ? decodeURIComponent(m[1]) : new URLSearchParams(location.search).get("slug");
+      if (slug) {
+        location.replace("/api/seo-q?slug=" + encodeURIComponent(slug));
+      } else {
+        location.replace("/app.html");
+      }
+    })();
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <p>Loading Quantrex question page…</p>
+    <p><a href="/app.html">Open the app</a></p>
+  </div>
+</body>
+</html>

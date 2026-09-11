@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mpe5i6f9",
+  "title": "Periodic Table & Periodicity Test - 4 (Topic Test)",
+  "type": "topic",
+  "section": "Periodic Table & Periodicity",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-08-06T12:30:00.000Z",
+  "status": "ok",
+  "analysisId": "2144b3ca-73b8-49bf-931e-cc561fc7e5af",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61mpe5i6f9",
+    "defaultLanguage": "en",
+    "description": "Electron Gain Enthalpy",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-06T12:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mshbxbyt",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p> The formation of the oxide ion $\\mathrm{O}^{2-}$ (g) requires first an exothermic and then an endothermic step as shown below :</p>\n<p><b>$O(g) + e^- \\rightarrow O^-(g);\\quad \\Delta H = -142\\ \\mathrm{kJ}\\ \\mathrm{mol}^{-1}$</b></p>\n<p><b>$O^-(g) + e^- \\rightarrow O^{2-}(g);\\quad \\Delta H = 844\\ \\mathrm{kJ}\\ \\mathrm{mol}^{-1}$</b></p>\n<p>This is because :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>O<sup>−</sup> ion has a comparatively larger size than the oxygen atom</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Oxygen has a high electron affinity</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>O<sup>−</sup> ion will tend to resist the addition of another electron</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Oxygen is more electronegative</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>According to NCERT, the first electron gain enthalpy for oxygen is negative because energy is released when a neutral oxygen atom accepts an electron to achieve a more stable configuration:</p>\n<p>$$O(g) + e^- \\rightarrow O^-(g) \\quad \\Delta_egH = -142\\text{ kJ mol}^{-1}$$</p>\n<p>However, when a second electron is added to the uni-negative $O^-(g)$ ion to form the oxide ion $O^{2-}(g)$, the incoming electron experiences strong electrostatic repulsion from the already negatively charged $O^-$ ion.</p>\n<p>To overcome this inter-electronic repulsion and force the second electron into the ion, energy must be supplied from the outside. This makes the second electron gain enthalpy highly positive (endothermic):</p>\n<p>$$O^-(g) + e^- \\rightarrow O^{2-}(g) \\quad \\Delta_egH = +844\\text{ kJ mol}^{-1}$$</p>\n<p>Therefore, the $O^-$ ion strongly resists the addition of another electron, which perfectly aligns with <strong>Option C</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p> ऑक्साइड आयन $\\mathrm{O}^{2-}$ (g) के निर्माण में पहले ऊष्माक्षेपी और फिर ऊष्माशोषी पद की आवश्यकता होती है जैसा कि नीचे दर्शाया गया है :</p> <p><b>$O(g) + e^- \\rightarrow O^-(g);\\quad \\Delta H = -142\\ \\mathrm{kJ}\\ \\mathrm{mol}^{-1}$</b></p> <p><b>$O^-(g) + e^- \\rightarrow O^{2-}(g);\\quad \\Delta H = 844\\ \\mathrm{kJ}\\ \\mathrm{mol}^{-1}$</b></p> <p>इसका कारण यह है कि :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>ऑक्सीजन परमाणु की तुलना में O<sup>−</sup> आयन का आकार अपेक्षाकृत बड़ा होता है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>ऑक्सीजन की इलेक्ट्रॉन बंधुता उच्च होती है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>O<sup>−</sup> आयन एक अन्य इलेक्ट्रॉन के जुड़ने का विरोध करेगा</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>ऑक्सीजन अधिक विद्युत् ऋणात्मक है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electron-gain-enthalpy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mshc2mfb",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Electron gain enthalpy of first element in the following pairs is higher?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>F, Cl</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Se, O</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>O, F</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>S, Cl</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p><strong>Correct Option: B</strong></p>\n<p><strong>Explanation:</strong></p>\n<p>According to NCERT Chemistry, when a question refers to a \"higher\" electron gain enthalpy, it typically means a higher magnitude or a more negative value (indicating that a greater amount of energy is released).</p>\n<p>In Group 16, oxygen (O) has a less negative electron gain enthalpy compared to subsequent elements like sulphur and selenium (Se). This anomaly is due to the very small size of the oxygen atom. When an incoming electron is added to oxygen's compact 2p-orbital, it experiences strong inter-electronic repulsion from the electrons already present.</p>\n<p>Because Selenium (Se) is a much larger atom, the incoming electron enters the larger 4p-orbital where inter-electronic repulsions are significantly lower.</p>\n<ul>\n<li><p><strong>$\\Delta_egH$ of Se</strong> $= -195\\text{ kJ mol}^{-1}$</p></li>\n<li><p><strong>$\\Delta_egH$ of O</strong> $= -141\\text{ kJ mol}^{-1}$</p></li>\n</ul>\n<p>Therefore, Selenium has a higher (more negative) electron gain enthalpy than Oxygen.</p>\n<p>In all the other pairs provided in the options, the <em>second</em> element has the higher/more negative electron gain enthalpy:</p>\n<ul>\n<li><p><strong>F, Cl:</strong> Cl is more negative than F.</p></li>\n<li><p><strong>O, F:</strong> F is more negative than O.</p></li>\n<li><p><strong>S, Cl:</strong> Cl is more negative than S.</p></li>\n</ul>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से किस युग्म में पहले तत्व की इलेक्ट्रॉन लब्धि एन्थैल्पी उच्च होती है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>F, Cl</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Se, O</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>O, F</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>S, Cl</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electron-gain-enthalpy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mshd111r",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In which of the following options the order of arrangement does not agree with the variation of property indicated against it?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Al<sup>3+</sup> &lt; Mg<sup>2+</sup> &lt; Na<sup>+</sup> &lt; F<sup>−</sup> (increasing ionic size)</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>B &lt; C &lt; O &lt; N (increasing first ionisation enthalpy)</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>I &lt; Br &lt; Cl &lt; F (increasing electron gain enthalpy)</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Li &lt; Na &lt; K &lt; Rb (increasing metallic radius)</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p><strong>Correct Option: C</strong></p>\n<p><strong>Explanation:</strong></p>\n<ul>\n<li><p><strong>Option C (Incorrect Order):</strong> In the halogen group, the magnitude of electron gain enthalpy generally decreases as we move down the group. However, Fluorine (F) has a <strong>less negative</strong> electron gain enthalpy than Chlorine (Cl). This anomaly occurs because the incoming electron in fluorine enters a very small, compact 2p-orbital, experiencing strong inter-electronic repulsion. In chlorine, the electron enters the larger 3p-orbital, where repulsions are much lower.</p></li>\n<li><p><strong>Correct Order:</strong> $I < Br < F < Cl$</p></li>\n<li><p><strong>Given Order:</strong> $I < Br < Cl < F$ (This does not agree with the property)</p></li>\n<li><p><strong>Option A (Correct Order):</strong> These are isoelectronic species (all have 10 electrons). For isoelectronic ions, the ionic radius decreases as the positive nuclear charge increases. Therefore, the size increases in the order $Al^{3+} < Mg^{2+} < Na^+ < F^-$.</p></li>\n<li><p><strong>Option B (Correct Order):</strong> Generally, first ionization enthalpy increases across a period. However, Nitrogen has a highly stable exactly half-filled $2p^3$ configuration, requiring more energy to remove an electron compared to Oxygen ($2p^4$). Therefore, the order is $B < C < O < N$.</p></li>\n<li><p><strong>Option D (Correct Order):</strong> Metallic radius consistently increases down Group 1 as new electron shells are added, giving the order $Li < Na < K < Rb$.</p></li>\n</ul>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से किस विकल्प में व्यवस्था का क्रम उसके सामने दर्शाए गए गुणधर्म के परिवर्तन से मेल नहीं खाता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Al<sup>3+</sup> &lt; Mg<sup>2+</sup> &lt; Na<sup>+</sup> &lt; F<sup>−</sup> (बढ़ता हुआ आयनिक आकार)</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>B &lt; C &lt; O &lt; N (बढ़ती हुई प्रथम आयनन एन्थैल्पी)</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>I &lt; Br &lt; Cl &lt; F (बढ़ती हुई इलेक्ट्रॉन लब्धि एन्थैल्पी)</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Li &lt; Na &lt; K &lt; Rb (बढ़ती हुई धात्विक त्रिज्या)</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electron-gain-enthalpy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mshcprtn",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Process in which maximum energy is released :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>O &rarr; O<sup>2&minus;</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Mg<sup>+</sup> &rarr; Mg<sup>2+</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Cl &rarr; Cl<sup>&minus;</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>F &rarr; F<sup>&minus;</sup></p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p><strong>Correct Option: C</strong></p>\n<p><strong>Explanation:</strong></p>\n<p>The release of energy when an electron is added to a neutral gaseous atom is measured by its electron gain enthalpy. The more negative the electron gain enthalpy, the more energy is released.</p>\n<ul>\n<li><p><strong>Option B ($Mg^+ \\rightarrow Mg^{2+}$):</strong> This is an ionization process (removing an electron). Ionization enthalpies are always positive (endothermic), meaning energy is absorbed, not released.</p></li>\n<li><p><strong>Option A ($O \\rightarrow O^{2-}$):</strong> While adding the first electron to oxygen releases energy, adding a second electron to the $O^-$ ion requires overcoming strong electrostatic repulsion. Thus, the second electron gain enthalpy is highly positive, making the overall formation of $O^{2-}$ endothermic.</p></li>\n<li><p><strong>Option C ($Cl \\rightarrow Cl^-$) vs Option D ($F \\rightarrow F^-$):</strong> Both release energy, but <strong>chlorine has the most negative electron gain enthalpy in the periodic table</strong>. This is a key NCERT concept: Fluorine has a very small atomic size, so adding an electron to its compact 2p-orbital causes strong inter-electronic repulsion. In chlorine, the electron enters the larger 3p-orbital, resulting in less repulsion and a greater release of energy.</p></li>\n</ul>\n<p>Therefore, the maximum energy is released in the process of adding an electron to a chlorine atom.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>वह प्रक्रिया जिसमें अधिकतम ऊर्जा मुक्त होती है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>O &rarr; O<sup>2&minus;</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Mg<sup>+</sup> &rarr; Mg<sup>2+</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Cl &rarr; Cl<sup>&minus;</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>F &rarr; F<sup>&minus;</sup></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electron-gain-enthalpy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mshchmv6",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>(i) The addition of an electron to an atom can either release heat or require heat.</p>\n<p>(ii) For many elements, a neutral gaseous atom gives out energy on receiving an electron.</p>\n<p>(iii) In each period, halogens are said to have maximum $\\Delta H_{eg}$ due to a stable electronic arrangement.</p>\n<p>(iv) The electron affinity relation is S &lt; O.</p>\n<p>(v) For noble gases, $\\Delta H_{eg}$ is positive in their respective period.</p>\n<p>Choose the correct code using true (T) and false (F).</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>TFFTF</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>FTTFT</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>TTFFT</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>FFFTF</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p><strong>Correct Option: C</strong> (TTFFT)</p>\n<ul>\n<li><p><strong>(i) True:</strong> The process of adding an electron to a neutral gaseous atom can be either exothermic (energy is released, giving a negative $\\Delta_egH$) or endothermic (energy is absorbed, giving a positive $\\Delta_egH$), depending on the element.</p></li>\n<li><p><strong>(ii) True:</strong> For most elements in the periodic table, energy is released when an electron is added to their neutral gaseous atom, meaning their electron gain enthalpy is negative.</p></li>\n<li><p><strong>(iii) False:</strong> Halogens have highly <em>negative</em> electron gain enthalpies because they have an $ns^2 np^5$ configuration and can <em>attain</em> a stable noble gas configuration by accepting one electron. The statement is false because it claims they already possess a stable configuration.</p></li>\n<li><p><strong>(iv) False:</strong> The electron gain enthalpy of Oxygen is less negative than that of Sulphur (meaning the electron affinity of O &lt; S). This is due to the small size of the oxygen atom; adding an electron to the compact 2p-orbital causes significant inter-electronic repulsion. The statement incorrectly claims S &lt; O.</p></li>\n<li><p><strong>(v) True:</strong> Inert (noble) gases have a highly stable $ns^2 np^6$ configuration. Adding an electron forces it into a higher principal quantum level, which is a highly unstable state. Therefore, energy must be supplied, resulting in a positive electron gain enthalpy ($\\Delta_egH$).</p></li>\n</ul>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>(i) किसी परमाणु में इलेक्ट्रॉन का जुड़ना या तो ऊष्मा मुक्त कर सकता है या इसके लिए ऊष्मा की आवश्यकता हो सकती है।</p><p>(ii) कई तत्वों के लिए, एक उदासीन गैसीय परमाणु इलेक्ट्रॉन ग्रहण करने पर ऊर्जा मुक्त करता है।</p><p>(iii) प्रत्येक आवर्त में, एक स्थायी इलेक्ट्रॉनिक व्यवस्था के कारण हैलोजन का $\\Delta H_{eg}$ अधिकतम कहा जाता है।</p><p>(iv) इलेक्ट्रॉन बंधुता का संबंध S &lt; O है।</p><p>(v) उत्कृष्ट गैसों के लिए, उनके संबंधित आवर्त में $\\Delta H_{eg}$ धनात्मक होता है।</p><p>सत्य (T) और असत्य (F) का उपयोग करते हुए सही कोड चुनें।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>TFFTF</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>FTTFT</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>TTFFT</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>FFFTF</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electron-gain-enthalpy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mshd716s",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>Which shows spontaneous process?</b></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\text{F}^- + \\text{Cl} \\rightarrow \\text{Cl}^- + \\text{F}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\text{O} + \\text{S}^- \\rightarrow \\text{O}^- + \\text{S}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\text{Si}^+ + \\text{Cl} \\rightarrow \\text{Si} + \\text{Cl}^+$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>All of the above</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p><strong>Correct Option: A</strong></p>\n<p><strong>Explanation:</strong></p>\n<p>A process involving electron transfer is spontaneous if the overall energy change is negative (exothermic). This depends on the relative electron gain enthalpies ($\\Delta_{eg}H$) of the elements involved.</p>\n<ul>\n<li><p><strong>Option A ($\\text{F}^- + \\text{Cl} \\rightarrow \\text{Cl}^- + \\text{F}$):</strong> Chlorine has a more negative electron gain enthalpy than Fluorine. This is a key NCERT exception: due to the very small size of the fluorine atom, the incoming electron experiences strong inter-electronic repulsion in the compact 2p-orbital. Chlorine's larger 3p-orbital accommodates the electron more easily. Because Cl has a greater tendency to accept an electron than F, the transfer of an electron from $\\text{F}^-$ to $\\text{Cl}$ releases energy and is <strong>spontaneous</strong>.</p></li>\n<li><p><strong>Option B ($\\text{O} + \\text{S}^- \\rightarrow \\text{O}^- + \\text{S}$):</strong> Similar to the F and Cl case, Sulphur has a more negative electron gain enthalpy than Oxygen. The small size of the oxygen atom leads to significant electron repulsion. Thus, Sulphur has a greater tendency to hold the extra electron, making the given reaction non-spontaneous (the reverse reaction would be spontaneous).</p></li>\n<li><p><strong>Option C ($\\text{Si}^+ + \\text{Cl} \\rightarrow \\text{Si} + \\text{Cl}^+$):</strong> Chlorine is a highly electronegative non-metal with a very high ionization enthalpy. It has a strong tendency to gain electrons, not lose them. Forming a $\\text{Cl}^+$ cation requires an enormous input of energy, making this process highly non-spontaneous.</p></li>\n</ul>\n<p>Therefore, only the reaction in Option A is spontaneous.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>कौन सा एक स्वतः प्रवर्तित प्रक्रम दर्शाता है?</b></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\text{F}^- + \\text{Cl} \\rightarrow \\text{Cl}^- + \\text{F}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\text{O} + \\text{S}^- \\rightarrow \\text{O}^- + \\text{S}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\text{Si}^+ + \\text{Cl} \\rightarrow \\text{Si} + \\text{Cl}^+$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>उपरोक्त सभी</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electron-gain-enthalpy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mshdddrq",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>IP and EA of O and S are 1.47, 10.3, 13.6 and 2.07 (eV) all in random order then :-</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>IP of O is 10.3 eV</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>EA of O is 13.6 eV</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>EA of S is 2.07 eV</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>IP of S is 2.07 eV</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p><strong>Correct Option: C</strong></p>\n<p><strong>Explanation:</strong></p>\n<li><p><strong>Ionization Potential (IP):</strong> IP generally decreases down a group because atomic size increases, making it easier to remove an outermost electron. Therefore, the IP of Oxygen (smaller size) is greater than the IP of Sulphur.</p></li>\n<li><p><strong>Electron Affinity (EA):</strong> This is a classic NCERT exception. Oxygen has a lower electron affinity than Sulphur. Because of the very small size of the oxygen atom, its 2p-orbital is compact, causing strong inter-electronic repulsion for an incoming electron. Sulphur's larger 3p-orbital accommodates the incoming electron more easily. Therefore, EA of Sulphur &gt; EA of Oxygen.</p></li>\n<li><p><strong>Magnitude:</strong> Removing an electron (IP) requires significantly more energy than the energy released when adding an electron (EA). Thus, the larger values (13.6 eV and 10.3 eV) correspond to IP, and the smaller values (2.07 eV and 1.47 eV) correspond to EA.</p></li>\n</ol>\n<p><strong>Assigning the values:</strong></p>\n<ul>\n<li><p><strong>IP values (13.6, 10.3):</strong> Since IP(O) &gt; IP(S), <strong>IP of O = 13.6 eV</strong> and <strong>IP of S = 10.3 eV</strong>.</p></li>\n<li><p><strong>EA values (2.07, 1.47):</strong> Since EA(S) &gt; EA(O), <strong>EA of S = 2.07 eV</strong> and <strong>EA of O = 1.47 eV</strong>.</p></li>\n</ul>\n<p>Looking at the given options, only <strong>Option C</strong> (EA of S is 2.07 eV) correctly matches these periodic trends.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>O और S के IP और EA 1.47, 10.3, 13.6 और 2.07 (eV) हैं, जो सभी यादृच्छिक (random) क्रम में हैं, तो :-</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>O का IP 10.3 eV है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>O की EA 13.6 eV है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>S की EA 2.07 eV है</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>S का IP 2.07 eV है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electron-gain-enthalpy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mshdoica",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Arrange the following inert gases in increasing order of positive electron gain enthalpy ($\\Delta_{eg}H$)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>He &lt; Ne &lt; Ar &lt; Kr &lt; Xe &lt; Rn</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Rn &lt; Xe &lt; Kr &lt; Ar &lt; Ne &lt; He</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>He &lt; Rn &lt; Xe &lt; Ar = Kr &lt; Ne</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>He &lt; Rn &lt; Xe &lt; Kr &lt; Ar &lt; Ne</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p><strong>Correct Option: C</strong></p>\n<p><strong>Explanation:</strong></p>\n<p>Noble gases have completely filled subshells ($ns^2np^6$, except He which is $1s^2$). Because their electron configurations are highly stable, energy must be supplied to force an additional electron into the next higher principal quantum shell, resulting in large positive electron gain enthalpies ($\\Delta_{eg}H$).</p>\n<p>The exact experimental values of positive electron gain enthalpy given in the NCERT data tables (in $\\text{kJ mol}^{-1}$) dictate this specific, non-linear order:</p>\n<ul>\n<li><p><strong>He:</strong> $+48$</p></li>\n<li><p><strong>Rn:</strong> $+68$</p></li>\n<li><p><strong>Xe:</strong> $+77$</p></li>\n<li><p><strong>Ar:</strong> $+96$</p></li>\n<li><p><strong>Kr:</strong> $+96$</p></li>\n<li><p><strong>Ne:</strong> $+116$</p></li>\n</ul>\n<p>Neon (Ne) has the highest positive electron gain enthalpy. This is because it is very small, and adding an electron to the already compact, fully-filled $2p$ orbital causes immense inter-electronic repulsion. Argon and Krypton happen to share the same value experimentally.</p>\n<p>Therefore, the correct increasing order is:</p>\n<p><strong>He < Rn < Xe < Ar = Kr < Ne</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित अक्रिय गैसों को धनात्मक इलेक्ट्रॉन लब्धि एन्थैल्पी ($\\Delta_{eg}H$) के बढ़ते क्रम में व्यवस्थित करें</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>He &lt; Ne &lt; Ar &lt; Kr &lt; Xe &lt; Rn</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Rn &lt; Xe &lt; Kr &lt; Ar &lt; Ne &lt; He</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>He &lt; Rn &lt; Xe &lt; Ar = Kr &lt; Ne</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>He &lt; Rn &lt; Xe &lt; Kr &lt; Ar &lt; Ne</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electron-gain-enthalpy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mshdrtoh",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In which case, the energy is not released?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Cl &rarr; Cl<sup>−</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>P &rarr; P<sup>−</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>N &rarr; N<sup>−</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>C &rarr; C<sup>−</sup></p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p><strong>Correct Option: C</strong></p>\n<p><strong>Explanation:</strong></p>\n<p>Energy is not released when an electron is added to an atom that has a highly stable electronic configuration. In such cases, the electron gain enthalpy is positive, meaning energy must be supplied to force the electron into the atom.</p>\n<ul>\n<li><p><strong>Nitrogen (Option C):</strong> Nitrogen has a highly stable exactly half-filled electronic configuration ($1s^2 2s^2 2p^3$). Adding an extra electron disrupts this stability and causes strong inter-electronic repulsion due to the very small size of the nitrogen atom. Therefore, the process $\\text{N} \\rightarrow \\text{N}^-$ is endothermic, and energy is <strong>not</strong> released.</p></li>\n<li><p><strong>Other Options:</strong></p></li>\n<li><p><strong>Chlorine (Cl):</strong> Has the highest negative electron gain enthalpy; it readily accepts an electron to achieve a noble gas configuration, releasing a large amount of energy.</p></li>\n<li><p><strong>Carbon (C):</strong> Readily accepts an electron to become closer to a stable configuration, releasing energy.</p></li>\n<li><p><strong>Phosphorus (P):</strong> Although it has a half-filled $3p^3$ configuration, its larger size means it still releases a small amount of energy upon gaining an electron compared to the extremely small Nitrogen atom.</p></li>\n</ul>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>किस स्थिति में ऊर्जा मुक्त नहीं होती है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Cl &rarr; Cl<sup>−</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>P &rarr; P<sup>−</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>N &rarr; N<sup>−</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>C &rarr; C<sup>−</sup></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electron-gain-enthalpy",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mshe1upi",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following statements is correct?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>The magnitude of the second electron affinity of sulphur is greater than that of oxygen</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>The magnitude of the second electron affinity of sulphur is less than that of oxygen</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>The first electron affinities of bromine and iodine are approximately the same</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>The first electron affinity of fluorine is greater than that of chlorine</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p><strong>Correct Option: B</strong></p>\n<p><strong>Explanation:</strong></p>\n<ul>\n<li><p><strong>Option B (Correct) & Option A (Incorrect):</strong> When a second electron is added to a uni-negative ion (like $O^-$ or $S^-$) to form a di-negative ion ($O^{2-}$ or $S^{2-}$), it experiences strong electrostatic repulsion. Energy must be absorbed to overcome this repulsion, making the second electron gain enthalpy positive. Because the oxygen atom is much smaller than the sulphur atom, the electron density on the $O^-$ ion is much higher than on the $S^-$ ion. Consequently, the repulsion for the incoming second electron is far greater in oxygen. Therefore, a larger amount of energy is required to add the second electron to oxygen compared to sulphur, meaning the magnitude of the second electron affinity of sulphur is less than that of oxygen.</p></li>\n<li><p><strong>Option C (Incorrect):</strong> The first electron gain enthalpy of bromine is significantly more negative ($-325\\text{ kJ mol}^{-1}$) than that of iodine ($-295\\text{ kJ mol}^{-1}$). They are not approximately the same.</p></li>\n<li><p><strong>Option D (Incorrect):</strong> This is a key NCERT exception. The first electron affinity of chlorine is greater than that of fluorine. The very small size of the fluorine atom means the incoming electron enters a compact 2p-orbital, experiencing strong inter-electronic repulsion. In chlorine, the electron enters the larger 3p-orbital, resulting in less repulsion.</p></li>\n</ul>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से कौन सा कथन सही है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>सल्फर की द्वितीय इलेक्ट्रॉन बंधुता का परिमाण ऑक्सीजन की तुलना में अधिक होता है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>सल्फर की द्वितीय इलेक्ट्रॉन बंधुता का परिमाण ऑक्सीजन की तुलना में कम होता है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>ब्रोमीन और आयोडीन की प्रथम इलेक्ट्रॉन बंधुताएं लगभग समान होती हैं</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>फ्लोरीन की प्रथम इलेक्ट्रॉन बंधुता क्लोरीन की तुलना में अधिक होती है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electron-gain-enthalpy",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mshe9vab",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "Total number of enthalpy(s) (out of given eight) of $\\mathrm{A}(\\mathrm{g})$ which is/are not associated with conversion of $A^{-}(g) \\rightarrow A^{+4}(g)$\n$I E_1, I E_2, I E_3, I E_4, I E_5, I E_6, E G E_1, E G E_2$\n(IE = ionisation energy, EGE = electron gain enthalpy)",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p><strong>Answer:</strong> 3</p>\n<p><strong>Explanation:</strong></p>\n<p>The given overall conversion is the removal of 5 electrons sequentially from the uni-negative ion $A^-(g)$ to form the tetra-positive ion $A^{+4}(g)$. We can break this down into individual steps to identify the associated enthalpies:</p>\n<ol>\n<li><strong>Removal of the first electron from $A^-(g)$:</strong></li>\n</ol>\n<p>$A^-(g) \\rightarrow A(g) + e^-$</p>\n<p>This is the exact reverse of adding an electron to a neutral gaseous atom $A(g)$. Therefore, the enthalpy change for this step is the negative of the first electron gain enthalpy ($-EGE_1$). Thus, <strong>$EGE_1$ is associated</strong>.</p>\n<ol start=\"2\">\n<li><strong>Removal of subsequent electrons from the neutral atom $A(g)$:</strong></li>\n</ol>\n<ul>\n<li><p>$A(g) \\rightarrow A^+(g) + e^-$ (Energy required = <strong>$IE_1$</strong>)</p></li>\n<li><p>$A^+(g) \\rightarrow A^{+2}(g) + e^-$ (Energy required = <strong>$IE_2$</strong>)</p></li>\n<li><p>$A^{+2}(g) \\rightarrow A^{+3}(g) + e^-$ (Energy required = <strong>$IE_3$</strong>)</p></li>\n<li><p>$A^{+3}(g) \\rightarrow A^{+4}(g) + e^-$ (Energy required = <strong>$IE_4$</strong>)</p></li>\n</ul>\n<p>The total enthalpies associated with this complete conversion are $EGE_1, IE_1, IE_2, IE_3,$ and $IE_4$.</p>\n<p>The remaining terms from the given list of eight that are <strong>not</strong> associated with this specific conversion are:</p>\n<ul>\n<li><p><strong>$IE_5$</strong>: Required for $A^{+4}(g) \\rightarrow A^{+5}(g)$</p></li>\n<li><p><strong>$IE_6$</strong>: Required for $A^{+5}(g) \\rightarrow A^{+6}(g)$</p></li>\n<li><p><strong>$EGE_2$</strong>: Associated with adding a second electron $A^-(g) + e^- \\rightarrow A^{-2}(g)$</p></li>\n</ul>\n<p>Therefore, there are <strong>3</strong> enthalpies out of the given eight that are not associated with the conversion.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "$\\mathrm{A}(\\mathrm{g})$ की दी गई आठ एन्थैल्पी में से उनकी कुल संख्या जो $A^{-}(g) \\rightarrow A^{+4}(g)$ के रूपांतरण से संबंधित नहीं है/हैं\n$I E_1, I E_2, I E_3, I E_4, I E_5, I E_6, E G E_1, E G E_2$\n(IE = आयनन ऊर्जा, EGE = इलेक्ट्रॉन लब्धि एन्थैल्पी)",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electron-gain-enthalpy",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mshf5pq0",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\mathrm{A}^{-}(\\mathrm{g}) \\rightarrow \\mathrm{A}^{2+}(\\mathrm{g}) ; \\Delta \\mathrm{H}=1100 \\mathrm{~kJ} / \\mathrm{mol}$</p>\n<p>$\\mathrm{A}(\\mathrm{g}) \\rightarrow \\mathrm{A}^{2+}(\\mathrm{g}) ; \\Delta \\mathrm{H}=1200 \\mathrm{~kJ} / \\mathrm{mol}$</p>\n<p>Electron gain enthalphy of $A$ is $P \\times 10^2 \\mathrm{~kJ} / \\mathrm{mol}$. What is the value of $P$ ?</p>",
+                "options": [],
+                "answer": "1",
+                "explanation": "<p><strong>Answer:</strong> 1</p>\n<p><strong>Explanation:</strong></p>\n<p>We can determine the electron gain enthalpy of atom $A$ by applying Hess's Law of constant heat summation to the given processes.</p>\n<p>We are given two reactions:</p>\n<ol>\n<li><p>$$A^-(g) \\rightarrow A^{2+}(g) + 3e^- \\quad \\Delta H_1 = 1100\\text{ kJ/mol}$$</p></li>\n<li><p>$$A(g) \\rightarrow A^{2+}(g) + 2e^- \\quad \\Delta H_2 = 1200\\text{ kJ/mol}$$</p></li>\n</ol>\n<p>The electron gain enthalpy ($\\Delta_{eg}H$) of $A$ corresponds to the energy change when a neutral gaseous atom accepts an electron:</p>\n<p>$$A(g) + e^- \\rightarrow A^-(g) \\quad \\Delta_{eg}H = ?$$</p>\n<p>To find this, we can manipulate the given equations to obtain the desired target equation.</p>\n<p>First, we reverse equation (1), which reverses the sign of its enthalpy change:</p>\n<p>$$A^{2+}(g) + 3e^- \\rightarrow A^-(g) \\quad \\Delta H = -1100\\text{ kJ/mol}$$</p>\n<h4>Next, we add equation (2) to this reversed equation:</h4>\n<p>$$A(g) \\rightarrow A^{2+}(g) + 2e^- \\quad \\Delta H = 1200\\text{ kJ/mol}$$</p>\n<p>$$A^{2+}(g) + 3e^- \\rightarrow A^-(g) \\quad \\Delta H = -1100\\text{ kJ/mol}$$</p>\n<p>$$A(g) + e^- \\rightarrow A^-(g) \\quad \\Delta_{eg}H = 1200 - 1100 = +100\\text{ kJ/mol}$$</p>\n<p>The electron gain enthalpy of $A$ is $100\\text{ kJ/mol}$.</p>\n<p>The problem states this value is $P \\times 10^2\\text{ kJ/mol}$.</p>\n<p>Therefore:</p>\n<p>$$100 = P \\times 10^2$$</p>\n<p>$$P = 1$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\mathrm{A}^{-}(\\mathrm{g}) \\rightarrow \\mathrm{A}^{2+}(\\mathrm{g}) ; \\Delta \\mathrm{H}=1100 \\mathrm{~kJ} / \\mathrm{mol}$</p><p>$\\mathrm{A}(\\mathrm{g}) \\rightarrow \\mathrm{A}^{2+}(\\mathrm{g}) ; \\Delta \\mathrm{H}=1200 \\mathrm{~kJ} / \\mathrm{mol}$</p><p>$A$ की इलेक्ट्रॉन ग्रहण एन्थैल्पी $P \\times 10^2 \\mathrm{~kJ} / \\mathrm{mol}$ है। $P$ का मान क्या है?</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electron-gain-enthalpy",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mshejgba",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Among the following elements, $\\mathrm{O}, \\mathrm{S}, \\mathrm{F}$ and Cl the sum of atomic number of element with least and most electron gain enthalpy with negative sign is $\\_\\_\\_\\_$</p>",
+                "options": [],
+                "answer": "25",
+                "explanation": "<ol>\n<li><strong>Element with the most negative electron gain enthalpy:</strong> Chlorine (Cl). While fluorine is more electronegative, chlorine has the highest negative electron gain enthalpy in the entire periodic table. This is because fluorine's extremely small size causes strong inter-electronic repulsion in its compact 2p-orbital, making chlorine's larger 3p-orbital more accommodating for an extra electron.</li>\n</ol>\n<ul>\n<li>Atomic number of Cl = 17</li>\n</ul>\n<ol>\n<li><strong>Element with the least negative electron gain enthalpy:</strong> Oxygen (O). Halogens (F, Cl) have much more negative electron gain enthalpies than Group 16 elements (O, S). Within Group 16, oxygen has a less negative electron gain enthalpy than sulphur due to the same small-size/high-repulsion anomaly seen in fluorine. Therefore, oxygen has the least negative value among the four given elements.</li>\n</ol>\n<ul>\n<li>Atomic number of O = 8</li>\n</ul>\n<p><strong>Calculation:</strong></p>\n<p>Sum of their atomic numbers = Atomic number of O + Atomic number of Cl</p>\n<p>Sum = $8 + 17 = 25$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित तत्वों $\\mathrm{O}, \\mathrm{S}, \\mathrm{F}$ और Cl में से, ऋणात्मक चिह्न के साथ न्यूनतम और अधिकतम इलेक्ट्रॉन लब्धि एन्थैल्पी वाले तत्वों के परमाणु क्रमांकों का योग $\\_\\_\\_\\_$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electron-gain-enthalpy",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msheqook",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Atomic number of element having maximum ionization energy in periodic table $=\\mathrm{x}$.</p>\n<p>Period number of element in Modern periodic table having maximum magnitude of electron gain enthalpy $=\\mathrm{y}$.</p>\n<p>Find $|x-y|$.</p>",
+                "options": [],
+                "answer": "1",
+                "explanation": "</ol>\n<p>Ionization energy generally increases across a period and decreases down a group. The element with the highest first ionization energy in the entire periodic table is <strong>Helium (He)</strong>. This is due to its very small atomic size and a highly stable, completely filled $1s^2$ electronic configuration, which means its electrons experience a very strong effective nuclear charge.</p>\n<ul>\n<li>Atomic number of Helium (He), <strong>$x = 2$</strong>.</li>\n</ul>\n<ol>\n<li><strong>Value of $y$ (Maximum Magnitude of Electron Gain Enthalpy):</strong></li>\n</ol>\n<p>While fluorine is the most electronegative element, <strong>Chlorine (Cl)</strong> has the highest negative electron gain enthalpy (maximum magnitude). This is a key NCERT exception: the fluorine atom is extremely small, so its 2p-orbital is very compact, causing strong inter-electronic repulsion for an incoming electron. Chlorine's larger 3p-orbital accommodates the extra electron more easily, releasing more energy.</p>\n<ul>\n<li><p>Chlorine belongs to the <strong>3rd period</strong> of the modern periodic table.</p></li>\n<li><p>Period number, <strong>$y = 3$</strong>.</p></li>\n</ul>\n<p><strong>Calculation:</strong></p>\n<ul>\n<li>$\\vert{}x - y\\vert{} = \\vert{}2 - 3\\vert{} = \\vert{}-1\\vert{} = 1$</li>\n</ul>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>आवर्त सारणी में अधिकतम आयनन ऊर्जा वाले तत्व का परमाणु क्रमांक $=\\mathrm{x}$ है।</p>\n<p>आधुनिक आवर्त सारणी में अधिकतम परिमाण की इलेक्ट्रॉन लब्धि एन्थैल्पी वाले तत्व की आवर्त संख्या $=\\mathrm{y}$ है।</p>\n<p>$|x-y|$ का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electron-gain-enthalpy",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mshexvm6",
+            "chapter": "periodic-table-and-periodicity",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In how many of the following cases, $\\Delta H$ is positive?</p>\n<p>(a) $$\\mathrm{N(g)} \\rightarrow \\mathrm{N^+(g)} + e^-$$ ........$\\Delta H_1$</p>\n<p>(b) $$\\mathrm{Ne(g)} + e^- \\rightarrow \\mathrm{Ne^-(g)}$$ ..........$\\Delta H_2$</p>\n<p>(c) $$\\mathrm{NaCl(s)} \\rightarrow \\mathrm{Na^+(g)} + \\mathrm{Cl^-(g)}$$ ........$\\Delta H_3$</p>\n<p>(d) $$\\mathrm{O^-(g)} + e^- \\rightarrow \\mathrm{O^{2-}(g)}$$ ..........$\\Delta H_4$</p>\n<p>(e) $$\\mathrm{O^-(g)} \\rightarrow \\mathrm{O(g)} + e^-$$ ..........$\\Delta H_5$</p>",
+                "options": [],
+                "answer": "5",
+                "explanation": "<p><strong>Answer:</strong> 5</p>\n<ul>\n<li><p><strong>(a) $\\mathrm{N(g)} \\rightarrow \\mathrm{N^+(g)} + e^-$ ($\\Delta H_1$):</strong> This represents the first ionization enthalpy of nitrogen. Energy is always required to remove an electron from a neutral gaseous atom. Thus, $\\Delta H_1$ is <strong>positive</strong> (endothermic).</p></li>\n<li><p><strong>(b) $\\mathrm{Ne(g)} + e^- \\rightarrow \\mathrm{Ne^-(g)}$ ($\\Delta H_2$):</strong> This represents the electron gain enthalpy of a noble gas (Neon). Noble gases have a highly stable, completely filled octet configuration ($ns^2np^6$). Adding an electron forces it into the next higher principal quantum shell, which is highly unstable. Thus, energy must be supplied, making $\\Delta H_2$ <strong>positive</strong>.</p></li>\n<li><p><strong>(c) $\\mathrm{NaCl(s)} \\rightarrow \\mathrm{Na^+(g)} + \\mathrm{Cl^-(g)}$ ($\\Delta H_3$):</strong> This is the lattice dissociation enthalpy. Breaking a stable solid ionic lattice into its constituent gaseous ions requires a large input of energy to overcome the strong electrostatic forces of attraction. Thus, $\\Delta H_3$ is <strong>positive</strong>.</p></li>\n<li><p><strong>(d) $\\mathrm{O^-(g)} + e^- \\rightarrow \\mathrm{O^{2-}(g)}$ ($\\Delta H_4$):</strong> This represents the second electron gain enthalpy of oxygen. When adding an electron to an already negatively charged ion ($O^-$), the incoming electron experiences strong electrostatic repulsion. Energy must be supplied to overcome this repulsion. Thus, $\\Delta H_4$ is highly <strong>positive</strong>.</p></li>\n<li><p><strong>(e) $\\mathrm{O^-(g)} \\rightarrow \\mathrm{O(g)} + e^-$ ($\\Delta H_5$):</strong> This process is the reverse of the first electron gain enthalpy of oxygen. Since adding an electron to a neutral oxygen atom releases energy ($\\Delta H$ is negative), the reverse process (removing that electron) will require an equal amount of energy to be absorbed. Thus, $\\Delta H_5$ is <strong>positive</strong>.</p></li>\n</ul>\n<p>Since $\\Delta H$ is positive in all of the given reactions, there are <strong>5</strong> such cases.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से कितने मामलों में, $\\Delta H$ धनात्मक है?</p>\n<p>(a) $$\\mathrm{N(g)} \\rightarrow \\mathrm{N^+(g)} + e^-$$ ........$\\Delta H_1$</p>\n<p>(b) $$\\mathrm{Ne(g)} + e^- \\rightarrow \\mathrm{Ne^-(g)}$$ ..........$\\Delta H_2$</p>\n<p>(c) $$\\mathrm{NaCl(s)} \\rightarrow \\mathrm{Na^+(g)} + \\mathrm{Cl^-(g)}$$ ........$\\Delta H_3$</p>\n<p>(d) $$\\mathrm{O^-(g)} + e^- \\rightarrow \\mathrm{O^{2-}(g)}$$ ..........$\\Delta H_4$</p>\n<p>(e) $$\\mathrm{O^-(g)} \\rightarrow \\mathrm{O(g)} + e^-$$ ..........$\\Delta H_5$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electron-gain-enthalpy",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Electron Gain Enthalpy",
+    "timeAllotted": 2160000,
+    "title": "Periodic Table & Periodicity Test - 4 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mpe5i6f9",
+    "defaultLanguage": "en",
+    "description": "Electron Gain Enthalpy",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-06T12:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Electron Gain Enthalpy",
+    "timeAllotted": 2160000,
+    "title": "Periodic Table & Periodicity Test - 4 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Periodic Table & Periodicity"
+  }
+}

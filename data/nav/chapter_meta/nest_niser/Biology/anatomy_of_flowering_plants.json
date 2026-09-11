@@ -1,0 +1,36 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d392647479b8e869647c",
+  "chapterId": "68091fc13a10446a207fda98",
+  "subject": "Biology",
+  "chapter": "Anatomy of Flowering Plants",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6809205d3a10446a207fe14f",
+      "title": "Meristematic Tissues",
+      "count": 1,
+      "questionIds": [
+        "68091fd83a10446a207fdb7c"
+      ]
+    },
+    {
+      "id": "6a45fe585aa758e832e06ee3",
+      "title": "Anatomy of Plant Parts",
+      "count": 1,
+      "questionIds": [
+        "6a45fe4e5aa758e832e06e95"
+      ]
+    },
+    {
+      "id": "6809205d3a10446a207fe14e",
+      "title": "Permanent Tissues",
+      "count": 2,
+      "questionIds": [
+        "68e78b0a6105b8763ce72c4f",
+        "68091fc13a10446a207fda96"
+      ]
+    }
+  ]
+}

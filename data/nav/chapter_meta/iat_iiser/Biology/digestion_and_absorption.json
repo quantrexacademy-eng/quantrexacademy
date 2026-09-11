@@ -1,0 +1,27 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa60d64468eb1307ceb0b0",
+  "chapterId": "67fdff60378e1624ea7b6ac9",
+  "subject": "Biology",
+  "chapter": "Digestion and Absorption",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff8c378e1624ea7b6cea",
+      "title": "Introduction",
+      "count": 1,
+      "questionIds": [
+        "67fdff6b378e1624ea7b6b43"
+      ]
+    },
+    {
+      "id": "67fdff8c378e1624ea7b6ce9",
+      "title": "Absorption of Digestied Food",
+      "count": 1,
+      "questionIds": [
+        "67fdff60378e1624ea7b6ac7"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,988 @@
+{
+  "testId": "tst-19g71mnvwjmrd",
+  "title": "Work, Energy and Power Test - 1 (Topic Test)",
+  "type": "topic",
+  "section": "Work, Energy and Power",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-07-13T15:30:00.000Z",
+  "status": "ok",
+  "analysisId": "688533f8-319d-4730-801e-352b841b3115",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g71mnvwjmrd",
+    "defaultLanguage": "en",
+    "description": "Work",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-13T15:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrjbou88",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A body of mass <b>m</b> moves along a circular path of radius <b>r</b> with uniform speed <b>v</b>. The force acting on it has magnitude $\\frac{mv^2}{r}$ and always acts towards the centre of the circle. How much work is done by this force when the body covers half of the circular path?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{mv^2}{\\pi} r^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Zero</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{mv^2}{r^2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{\\pi r^2}{mv^2}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The work done dW by a force $\\vec{F}$ during an infinitesimally small displacement $d \\vec{r}$ is</p>\n<p>$$ \\mathrm{dW}=\\overrightarrow{\\mathrm{F}} \\cdot \\mathrm{~d} \\overrightarrow{\\mathrm{r}} $$</p>\n<p>Using the definition of the vector dot product:</p>\n<p>$$ \\mathrm{dW}=\\mathrm{F} \\cdot \\mathrm{dr} \\cdot \\cos \\phi $$</p>\n<p>where $\\phi$ is the angle between the direction of the force vector $\\overrightarrow{\\mathrm{F}}$ and the direction of the instantaneous displacement vector $\\mathrm{d} \\overrightarrow{\\mathrm{r}}$.</p>\n<p>The body is moving along a circular path of radius $r$ at a constant speed $v$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrjbmep6%2F904fdc90-7f4c-4b45-8990-8e1d7d9c84ed%2F96be94a0-7ec7-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjbmep7.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrjbmep6%2F904fdc90-7f4c-4b45-8990-8e1d7d9c84ed%2F96be94a0-7ec7-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjbmep7.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>The force acting on the body is the centripetal force ($\\vec{F}_c$), which is to point radially inward toward the centre of</p>\n<p>the circle at every point along the path.</p>\n<p>The instantaneous displacement vector $d\\vec{r}$ represents the direction of motion at any instant.</p>\n<p>For a body moving along a curve, the instantaneous velocity and displacement are always along the tangent to</p>\n<p>the circular path at that point.</p>\n<p>As a radius drawn to a point on a circle is always perpendicular to the tangent line at that point.</p>\n<p>Therefore, the angle $\\phi$ between the centripetal force vector and the displacement vector is $90^{\\circ}$, $\\phi \\, = \\, 90^{\\circ}$ at all</p>\n<p>points during the motion.</p>\n<p>Substituting $\\phi \\, = \\, 90^{\\circ}$ into the work formula:</p>\n<p>$$dW \\, = \\, F_c \\times dr \\times \\cos(90^{\\circ})$$</p>\n<p>$$dW \\, = \\, F_c\\,dr \\times 0 \\, = \\, 0$$</p>\n<p>Since the work done during every segment of the path is zero, the total work done $W$ over any distance</p>\n<p>including half the circumference is the sum of these zeros:</p>\n<p>$$W \\, = \\int\\limits{} dW \\, = \\, 0$$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान <b>m</b> का एक पिंड त्रिज्या <b>r</b> के एक वृत्ताकार पथ पर एकसमान चाल <b>v</b> से गति करता है। इस पर कार्य करने वाले बल का परिमाण $\\frac{mv^2}{r}$ है और यह सदैव वृत्त के केंद्र की ओर कार्य करता है। जब पिंड आधा वृत्ताकार पथ तय करता है तो इस बल द्वारा कितना कार्य किया जाता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{mv^2}{\\pi} r^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>शून्य</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{mv^2}{r^2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{\\pi r^2}{mv^2}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mhi1mvr2",
+            "languages": [
+              "en"
+            ],
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "A block of mass $m$ is slowly pulled up a hill by a force $F$. The force $F$ is always tangential to the trajectory. The coefficient of friction between the block and the hill is $\\mu$, the hill's height is $h$, and the length of its base is $l$ (see figure). The work done by the force $F$ is,\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2Fjaoe38c1mhi1b22i%2Fb7797a67-2016-4c39-bdd8-ffd3f1e82d07%2F4d5b99a0-b818-11f0-b0f5-0d997137fc2b%2Ffile-jaoe38c1mhi1b22j.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2Fjaoe38c1mhi1b22i%2Fb7797a67-2016-4c39-bdd8-ffd3f1e82d07%2F4d5b99a0-b818-11f0-b0f5-0d997137fc2b%2Ffile-jaoe38c1mhi1b22j.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "$m g h$"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "$\\mu m g l$"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "$m g \\sqrt{h^2+\\mu^2 l^2}$"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "$m g(h+\\mu l)$"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Consider a point on the path at which the tangent makes an angle $\\theta$ with the horizontal. The forces on the block are applied force $F$, weight $m g$, normal reaction $N=m g \\cos \\theta$, and the frictional force $f=\\mu m g \\cos \\theta$. The net force on the block is zero (as it moves slowly with constant velocity) i.e.,</p>\n<p>$$ F=m g \\sin \\theta+\\mu m g \\cos \\theta $$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2Fjaoe38c1mhi1ig9t%2F6c3a928a-19fd-46b8-a3e3-3a9695a09ec8%2F1afe4510-b819-11f0-b0f5-0d997137fc2b%2Ffile-jaoe38c1mhi1ig9u.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2Fjaoe38c1mhi1ig9t%2F6c3a928a-19fd-46b8-a3e3-3a9695a09ec8%2F1afe4510-b819-11f0-b0f5-0d997137fc2b%2Ffile-jaoe38c1mhi1ig9u.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Let the block is displaced by a small displacement,</p>\n<p>$$ \\mathrm{d} \\vec{s}=\\mathrm{d} x \\hat{\\imath}+\\mathrm{d} y \\hat{\\jmath}=\\mathrm{d} s \\cos \\theta \\hat{\\imath}+\\mathrm{d} s \\sin \\theta \\hat{\\jmath} . $$</p>\n<p>The work done by the force $\\vec{F}$ is,</p>\n<p>$$ \\begin{aligned} \\mathrm{d} W & =\\vec{F} \\cdot \\mathrm{~d} \\vec{s}=F \\mathrm{~d} s (\\because \\vec{F} \\| \\mathrm{d} \\vec{s})\\\\ & =(m g \\sin \\theta+\\mu m g \\cos \\theta) \\mathrm{d} s \\\\ & =m g(\\sin \\theta \\mathrm{~d} s)+\\mu m g(\\cos \\theta \\mathrm{~d} s) \\\\ & =m g \\mathrm{~d} y+\\mu m g \\mathrm{~d} x \\end{aligned} $$</p>\n<p>Integrate to get the total work done by the force $\\vec{F}$ as</p>\n<p>$$ W=m g \\int_0^h \\mathrm{~d} y+\\mu m g \\int_0^l \\mathrm{~d} x=m g h+\\mu m g l $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "$m$ द्रव्यमान के एक गुटके को एक बल $F$ द्वारा धीरे-धीरे एक पहाड़ी पर ऊपर की ओर खींचा जाता है। बल $F$ सदैव प्रक्षेप पथ (trajectory) के स्पर्शरेखीय होता है। गुटके तथा पहाड़ी के मध्य घर्षण गुणांक $\\mu$ है, पहाड़ी की ऊँचाई $h$ है, तथा इसके आधार की लम्बाई $l$ है (चित्र देखें)। बल $F$ द्वारा किया गया कार्य है,\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2Fjaoe38c1mhi1b22i%2Fb7797a67-2016-4c39-bdd8-ffd3f1e82d07%2F4d5b99a0-b818-11f0-b0f5-0d997137fc2b%2Ffile-jaoe38c1mhi1b22j.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2Fjaoe38c1mhi1b22i%2Fb7797a67-2016-4c39-bdd8-ffd3f1e82d07%2F4d5b99a0-b818-11f0-b0f5-0d997137fc2b%2Ffile-jaoe38c1mhi1b22j.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "$m g h$"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "$\\mu m g l$"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "$m g \\sqrt{h^2+\\mu^2 l^2}$"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "$m g(h+\\mu l)$"
+                  }
+                ]
+              }
+            },
+            "type": "mcq",
+            "country": "in",
+            "examGroup": "jee",
+            "exam": "jee-main",
+            "subject": "physics",
+            "chapterGroup": "mechanics",
+            "chapter": "work-power-and-energy",
+            "topic": "work",
+            "marks": 4,
+            "negMarks": 1,
+            "timeAllotted": 90000,
+            "difficulty": "medium"
+          },
+          {
+            "questionId": "tq-mrjc270u",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A ball is dropped from rest from the top of a tower. What is the ratio of the work done by the gravitational force during the first, second and third seconds of its motion?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 : 2 : 3</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1 : 4 : 9</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1 : 3 : 5</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1 : 5 : 3</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The force of gravity acting on the ball is constant $\\mathrm{F}_{\\mathrm{g}}=\\mathrm{mg}$.</p>\n<p>Since the force of gravity is in the same direction as the motion, the work done by gravity in any time interval is :</p>\n<p>$$ \\mathrm{W}=\\mathrm{F}_{\\mathrm{g}} \\times(\\text { displacement })=\\mathrm{mg} \\times \\mathrm{h} $$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrjc0h0i%2F861e0798-ab18-4ba9-8802-74bb82aadaea%2F1ddc5020-7ec9-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjc0h0j.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrjc0h0i%2F861e0798-ab18-4ba9-8802-74bb82aadaea%2F1ddc5020-7ec9-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjc0h0j.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Therefore, the ratio of work done in different intervals is equal to the ratio of displacements covered in those intervals.</p>\n<p>The distance covered by an object starting from rest ($u = 0$) in the $n^{\\text{th}}$ second is,</p>\n<p>$$S_n = u + \\frac{a}{2}(2n - 1)$$</p>\n<p>Substituting $u = 0$ and $a = g$:</p>\n<p>$$S_n = \\frac{g}{2}(2n - 1)$$</p>\n<p>For the first second ($n = 1$), $S_1 = \\frac{g}{2}(2(1) - 1) = \\frac{g}{2}(1)$</p>\n<p>For the second second ($n = 2$), $S_2 = \\frac{g}{2}(2(2) - 1) = \\frac{g}{2}(3)$</p>\n<p>For the third second ($n = 3$), $S_3 = \\frac{g}{2}(2(3) - 1) = \\frac{g}{2}(5)$</p>\n<p>The ratio of work done $W_1 : W_2 : W_3$ is the same as the ratio of displacements $S_1 : S_2 : S_3$:</p>\n<p>$$W_1 : W_2 : W_3 = \\frac{g}{2}(1) : \\frac{g}{2}(3) : \\frac{g}{2}(5) = 1 : 3 : 5$$</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक मीनार के शीर्ष से एक गेंद को विरामावस्था से गिराया जाता है। इसकी गति के पहले, दूसरे और तीसरे सेकंड के दौरान गुरुत्वाकर्षण बल द्वारा किए गए कार्य का अनुपात क्या है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 : 2 : 3</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1 : 4 : 9</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1 : 3 : 5</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1 : 5 : 3</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrjd8qr6",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A small block of mass $m$ is kept on a rough inclined surface of inclination $\\theta$ fixed in an elevator. The elevator goes down with a uniform velocity $v$ and the block does not slide on the wedge. The work done by the force of friction on the block with respect to ground in time $t$ will be :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>zero</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$-mgvt\\cos^2 \\theta$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$-mgvt\\sin^2 \\theta$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$mgvt\\sin^2 \\theta$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The elevator moves downward at a constant, uniform velocity $v$. Because the velocity is uniform, the acceleration is zero ( $\\mathrm{a}=0$ )</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrjd68bt%2Fe57ed420-f10b-477f-959b-d54155907ed1%2Fa7228990-7ecd-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjd68bu.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrjd68bt%2Fe57ed420-f10b-477f-959b-d54155907ed1%2Fa7228990-7ecd-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjd68bu.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>The force of gravity ($mg$) is acting vertically downward.</p>\n<p>Normal reaction force ($N$) acting perpendicular to the inclined plane surface.</p>\n<p>The static friction force ($f_s$) is acting upward along the inclined surface, preventing the block from sliding down.</p>\n<p>Because the block does not slide, the forces along the surface of the incline must be balanced.</p>\n<p>The component of gravity acting down the incline is $mg \\sin \\theta$.</p>\n<p>Therefore, the static friction force balancing this component must point up the incline and equal:</p>\n<p>$$f_s = mg \\sin \\theta$$</p>\n<p>In a time interval $t$, the elevator and the block resting on it, move vertically downward by a distance:</p>\n<p>$$d = vt$$</p>\n<p>The displacement vector $\\vec{d}$ points vertically downward.</p>\n<p>The friction force $\\vec{f}_s$ points upwards along the incline.</p>\n<p>The angle of the incline with the horizontal is $\\theta$, so the incline makes an angle of $(90^\\circ - \\theta)$ with the vertical.</p>\n<p>Since the friction force points upward along the slope and the displacement points straight down, the angle $\\phi$ between the friction force vector and the downward displacement vector is:</p>\n<p>$$\\phi = 90^\\circ + \\theta$$</p>\n<p>Using the work formula $W = f_s \\cdot d \\cdot \\cos \\phi$:</p>\n<p>$$W = (mg \\sin \\theta) \\cdot (vt) \\cdot \\cos(90^\\circ + \\theta)$$</p>\n\n<p>$$W=(mg\\sin\\theta)\\cdot(vt)\\cdot(-\\sin\\theta)$$</p>\n<p>$$W=-mgvt\\sin^2\\theta$$</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक एलीवेटर में स्थिर $\\theta$ आनति वाले एक खुरदरे आनत तल पर $m$ द्रव्यमान का एक छोटा गुटका रखा गया है। एलीवेटर एकसमान वेग $v$ से नीचे की ओर जाता है और गुटका वेज (wedge) पर नहीं फिसलता है। $t$ समय में धरातल के सापेक्ष गुटके पर घर्षण बल द्वारा किया गया कार्य होगा :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>शून्य</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$-mgvt\\cos^2 \\theta$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$-mgvt\\sin^2 \\theta$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$mgvt\\sin^2 \\theta$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrjbyf2w",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A rigid body of mass m kg is lifted uniformly by a man to a height of one metre in 30 sec. Another man lifts the same mass with uniform velocity to the same height in 60 sec. The work done on the body against gravitation by them are in ratio</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 : 2</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1 : 1</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2 : 1</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>4 : 1</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>When an object of mass $m$ is lifted vertically upwards at a uniform velocity (constant speed), its acceleration $a$ is zero ($a = 0$).</p>\n<p>According to Newton's second law, the net force acting on the object must be zero.</p>\n<p>The upward pulling force $F$ applied by a man must balance the downward force of gravity ($mg$):</p>\n<p>$$F = mg$$</p>\n<p>The first man lifts the mass $m$ to a height $h = 1\\ \\text{m}$ along the vertical direction.</p>\n<p>The force he applies is $F_1 = mg$, pointing upwards.</p>\n<p>The displacement $s_1 = h$ is also pointing upwards ($\\theta = 0^{\\circ}$).</p>\n<p>The work done by the first man against gravity is:</p>\n<p>$$W_1 = F_1 \\cdot h \\cdot \\cos(0^{\\circ}) = mgh$$</p>\n<p>Substituting the given height value ($h = 1\\ \\text{m}$):</p>\n<p>$$W_1 = mg \\cdot (1) = mg\\ \\ldots\\ (i)$$</p>\n<p>The second man lifts the same mass $m$ to the same height $h = 1\\ \\text{m}$ at a uniform velocity.</p>\n<p>Therefore, the force he applies is also $F_2 = mg$, and his vertical displacement is $s_2 = h$.</p>\n<p>The work done by the second man against gravity is:</p>\n<p>$$W_2 = F_2 \\cdot h \\cdot \\cos(0^{\\circ}) = mgh$$</p>\n<p>Substituting the height value ($h = 1\\ \\text{m}$):</p>\n<p>$$W_2 = mg \\cdot (1) = mg\\ \\ldots\\ (ii)$$</p>\n<p>So, the ratio of $W_1$ to $W_2$ is $$\\frac{W_1}{W_2} = \\frac{mg}{mg} = \\frac{1}{1} = 1:1$$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>m kg द्रव्यमान के एक दृढ़ पिंड को एक आदमी द्वारा 30 सेकंड में एकसमान रूप से एक मीटर की ऊँचाई तक उठाया जाता है। दूसरा आदमी उसी द्रव्यमान को 60 सेकंड में एकसमान वेग से उसी ऊँचाई तक उठाता है। गुरुत्वाकर्षण के विरुद्ध उनके द्वारा पिंड पर किए गए कार्य का अनुपात है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 : 2</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1 : 1</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2 : 1</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>4 : 1</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrjbwxzt",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A man pushes wall and fails to displace it. He does</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Negative work</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Positive but not maximum work</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>No work at all</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Maximum work</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The work done W by a constant force applied on an object is the dot product of the force vector $\\overrightarrow{\\mathrm{F}}$ and the displacement vector $\\vec{S}$ of the object :</p>\n<p>$$ \\mathrm{W}=\\overrightarrow{\\mathrm{F}} \\cdot \\overrightarrow{\\mathrm{~s}}=\\mathrm{Fs} \\cos \\theta $$</p>\n<p>Where F is the magnitude of the applied force, s is the magnitude of the displacement of the point of application of the force and $\\theta$ is the angle between the force vector and the displacement vector.</p>\n<p>If a man applies a force F by pushing against a rigid wall and he fails to displace it. This means the wall remains stationary throughout the push.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrjbvpk5%2Fedaac1ce-eef5-4652-a221-2e4a2c7c150d%2F996a8550-7ec8-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjbvpk6.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrjbvpk5%2Fedaac1ce-eef5-4652-a221-2e4a2c7c150d%2F996a8550-7ec8-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjbvpk6.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Therefore, the displacement of the wall is zero :</p>\n<p>$$ s=0 $$</p>\n<p>Substituting $\\mathrm{s}=0$ into our work formula :</p>\n<p>$$ \\mathrm{W}=\\mathrm{F} \\times(0) \\cdot \\cos \\theta=0 $$</p>\n<p>Because the displacement is zero, the product becomes zero regardless of how much force (F) the man exerts.</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक आदमी दीवार को धक्का देता है और उसे विस्थापित करने में विफल रहता है। वह करता है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>ऋणात्मक कार्य</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>धनात्मक लेकिन अधिकतम कार्य नहीं</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>बिल्कुल कोई कार्य नहीं</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>अधिकतम कार्य</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrjcjtdz",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A rigid body is acted upon by a horizontal variable force which is inversely proportional to the distance covered from its initial position 's'. The work done by this force will be proportional to :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$s$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$s^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{s}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>It is given that a horizontal variable force F acts on a rigid body.</p>\n<p>The magnitude of this force is inversely proportional to the distance covered $s$ from its initial position:</p>\n<p>$$F \\propto \\frac{1}{s}$$</p>\n<p>Let a constant of proportionality $C$,</p>\n<p>$$F = \\frac{C}{s}$$</p>\n<p>The work done $W$ by a variable force $F(s)$ acting along the line of displacement for a distance $s$ starting from an initial position $(s_1)$ to a final position $(s_2)$ is given by the integral:</p>\n<p>$$W = \\int\\limits_{s_1}^{s_2} F\\, ds$$</p>\n<p>$$W = \\int\\limits_{s_1}^{s_2} \\left(\\frac{C}{s}\\right) ds$$</p>\n<p>$$W = C\\left[\\ln s\\right]_{s_1}^{s_2} = C\\left(\\ln s_2 - \\ln s_1\\right)$$</p>\n<p>$$W = C\\ln\\left(\\frac{s_2}{s_1}\\right)$$</p>\n<p>So, the work done by this variable force is related with displacement as,</p>\n<p>$$W \\propto \\ln(s)$$</p>\n<p>Therefore, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक दृढ़ पिंड पर एक क्षैतिज परिवर्ती बल कार्य कर रहा है जो उसकी प्रारंभिक स्थिति से तय की गई दूरी 's' के व्युत्क्रमानुपाती है। इस बल द्वारा किया गया कार्य किसके अनुक्रमानुपाती होगा :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$s$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$s^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{s}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrjc7hgg",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A block of mass m is suspended by a light thread from an elevator. The elevator is accelerating upward with uniform acceleration a. The work done by tension on the block during t seconds is (u = 0) :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrjc3n4v%2Fbcdc72c6-490b-4c4a-bf23-91f5b2500723%2F760436f0-7ec9-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjc3n4w.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrjc3n4v%2Fbcdc72c6-490b-4c4a-bf23-91f5b2500723%2F760436f0-7ec9-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjc3n4w.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{m}{2}(g+a)at^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{m}{2}(g-a)at^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{m}{2}gat^2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The block is inside an elevator accelerating upward with acceleration a.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrjc57xj%2F6d8c1fdf-fb3a-46f0-8a9e-52eee4645b26%2Fa1e3e770-7ec9-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjc57xk.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrjc57xj%2F6d8c1fdf-fb3a-46f0-8a9e-52eee4645b26%2Fa1e3e770-7ec9-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjc57xk.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Using Newton's second law on the block (mass m):</p>\n<p>$$T - mg = ma \\Rightarrow T = m(g + a)$$</p>\n<p>The block starts from rest $(u = 0)$ and moves with the same upward acceleration $a$ as the elevator.</p>\n<p>Using kinematics equation the displacement $s$ after time $t$ is:</p>\n<p>$$s = ut + \\frac{1}{2}at^2 = 0 + \\frac{1}{2}at^2 = \\frac{1}{2}at^2$$</p>\n<p>The tension force $T$ acts in the same upward direction as the displacement $s$.</p>\n<p>Work done is</p>\n<p>$$W = T \\times s \\times \\cos(0^\\circ)$$</p>\n<p>$$W = [m(g + a)] \\times \\left[\\frac{1}{2}at^2\\right]$$</p>\n<p>$$W = \\frac{m}{2}(g + a)at^2$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान m का एक गुटका एक लिफ्ट से एक हल्के धागे द्वारा लटकाया गया है। लिफ्ट एक समान त्वरण a के साथ ऊपर की ओर त्वरित हो रही है। t सेकंड के दौरान गुटके पर तनाव द्वारा किया गया कार्य है (u = 0) :</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrjc3n4v%2Fbcdc72c6-490b-4c4a-bf23-91f5b2500723%2F760436f0-7ec9-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjc3n4w.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrjc3n4v%2Fbcdc72c6-490b-4c4a-bf23-91f5b2500723%2F760436f0-7ec9-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjc3n4w.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{m}{2}(g+a)at^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{m}{2}(g-a)at^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{m}{2}gat^2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrjcb4oo",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Work done by force of kinetic friction on the system.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>must be zero</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>must be positive</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>must be negative</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For a single rigid block sliding on a rough fixed surface, the force of kinetic friction acting on the block always opposes its relative displacement. Therefore, the work done by kinetic friction on a single block is always negative, converting mechanical energy into heat.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrjc9v5b%2F6f2cd3f1-b255-4d28-92db-b0f49aebe5e4%2F230f87f0-7eca-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjc9v5c.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrjc9v5b%2F6f2cd3f1-b255-4d28-92db-b0f49aebe5e4%2F230f87f0-7eca-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjc9v5c.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>A system can consist of multiple interacting bodies.</p>\n<p>Kinetic friction always occurs as an action-reaction pair between two contacting surfaces.</p>\n<p>If body A exerts a kinetic friction force $\\vec{F}_k$ on body B, then by Newton's third law, body B exerts an equal and opposite kinetic friction force $-\\vec{F}_k$ on body A.</p>\n<p>during an infinitesimal time interval $dt$ let the displacement of the contact surface of body A be $d\\vec{r}_A$.</p>\n<p>The work done on body A is $dW_A = -\\vec{F}_k \\cdot d\\vec{r}_A$.</p>\n<p>Let the displacement of the contact surface of body B be $d\\vec{r}_B$. The work done on body B is</p>\n<p>$$dW_B = \\vec{F}_k \\cdot d\\vec{r}_B$$</p>\n<p>The total work done by kinetic friction on the two-body system is the sum of these individual works:</p>\n<p>$$dW_{\\text{system}} = dW_A + dW_B = \\vec{F}_k \\cdot (d\\vec{r}_B - d\\vec{r}_A)$$</p>\n<p>Here, $d\\vec{r}_B - d\\vec{r}_A$ is the relative displacement $(d\\vec{r}_{\\text{rel}})$ of body B with respect to body A.</p>\n<p>So, the direction of the friction force $\\vec{F}_k$ acting on a surface always directly opposes its relative velocity and relative displacement vector $(d\\vec{r}_{\\text{rel}})$.</p>\n<p>Because $\\vec{F}_k$ and $d\\vec{r}_{\\text{rel}}$ point in exactly opposite directions $(\\theta = 180^\\circ)$:</p>\n<p>$$dW_{\\text{system}} = f_k \\cdot dr_{\\text{rel}} \\cdot \\cos(180^\\circ) = -f_k \\cdot dr_{\\text{rel}}$$</p>\n<p>Since $f_k > 0$ and relative displacement $dr_{\\text{rel}} > 0$ whenever kinetic friction is active, the total work done by kinetic friction on the system must always be negative.</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निकाय पर गतिज घर्षण बल द्वारा किया गया कार्य:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>शून्य होना चाहिए</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>धनात्मक होना चाहिए</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>ऋणात्मक होना चाहिए</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrjcgpsp",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two springs have their force constant as $k_1$ and $k_2$ ($k_1 > k_2$). When they are stretched individually by the same constant force up to equilibrium -</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>No work is done by this force in case of both the springs</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Equal work is done by this force in case of both the springs</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>More work is done by this force in case of second spring</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>More work is done by this force in case of first spring</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Let the constant external stretching force applied to each spring be F.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrjce5k4%2F680f45f2-5a41-4437-9ee8-128699062122%2F9a56f640-7eca-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjce5k5.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrjce5k4%2F680f45f2-5a41-4437-9ee8-128699062122%2F9a56f640-7eca-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjce5k5.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>As each spring stretches slowly up to its static equilibrium position, the spring force increases until it is equal to the the external force.</p>\n<p>At equilibrium:</p>\n<p>$$F = k_1 x_1 \\Rightarrow x_1 = \\frac{F}{k_1}$$</p>\n<p>$$F = k_2 x_2 \\Rightarrow x_2 = \\frac{F}{k_2}$$</p>\n<p>where $x_1$ and $x_2$ are the final equilibrium extensions of the two springs.</p>\n<p>The work done by an external agent to slowly stretch a spring up to an extension $x$ is stored as elastic potential energy:</p>\n<p>$$W = \\frac{1}{2}kx^2$$</p>\n<p>Substituting the equilibrium extension $x = \\frac{F}{k}$ into the work formula:</p>\n<p>$$W = \\frac{1}{2}k\\left(\\frac{F}{k}\\right)^2 = \\frac{F^2}{2k}$$</p>\n<p>$$\\Rightarrow W_1 = \\frac{F^2}{2k_1}$$</p>\n<p>$$\\Rightarrow W_2 = \\frac{F^2}{2k_2}$$</p>\n<p>It is given that $k_1 > k_2$.</p>\n<p>The work done is inversely proportional to the spring constant $k$ for a fixed force magnitude $F$.</p>\n<p>Since $k_1 > k_2$,</p>\n<p>$$\\frac{1}{2}k_1 < \\frac{1}{2}k_2 \\Rightarrow \\frac{F^2}{2k_1} < \\frac{F^2}{2k_2}$$</p>\n<p>$$W_1 < W_2$$</p>\n<p>So, $W_2$ (the work done on the second spring) is greater than $W_1$ (the work done on the first spring).</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो स्प्रिंगों के बल नियतांक $k_1$ और $k_2$ ($k_1 > k_2$) हैं। जब उन्हें अलग-अलग समान नियत बल द्वारा साम्यावस्था तक खींचा जाता है -</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>दोनों स्प्रिंगों के मामले में इस बल द्वारा कोई कार्य नहीं किया जाता है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>दोनों स्प्रिंगों के मामले में इस बल द्वारा समान कार्य किया जाता है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>दूसरे स्प्रिंग के मामले में इस बल द्वारा अधिक कार्य किया जाता है</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>पहले स्प्रिंग के मामले में इस बल द्वारा अधिक कार्य किया जाता है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrjcwzyo",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A force varying with position, $F=7-2 x+3 x^2$ newton, acts on a small object of mass 2 kg and moves it from $x=0$ to $x=5 \\mathrm{~m}$. If the work done, in joules, is $15 x$, find the value of $x$.</p>",
+                "options": [],
+                "answer": "9",
+                "explanation": "<p>When a force varies as a function of position $x$, the work done $W$ is given as definite integral,</p>\n<p>$\\mathrm{W}=\\int\\limits_{\\mathrm{x}_1}^{\\mathrm{x}_2} \\mathrm{~F}(\\mathrm{x}) \\mathrm{dx}$</p>\n<p>The force function is given as $F(x) = 7 - 2x + 3x^2$</p>\n<p>The body is displaced from an initial position $x_1 = 0$ to a final position $x_2 = 5\\ \\text{m}$.</p>\n<p>$$W = \\int\\limits_{0}^{5} (7 - 2x + 3x^2)\\,dx$$</p>\n<p>$$W = \\left[7x - \\frac{2x^2}{2} + \\frac{3x^3}{3}\\right]_{0}^{5}$$</p>\n<p>$$W = \\left[7x - x^2 + x^3\\right]_{0}^{5}$$</p>\n<p>$$W = [7 \\times 5 - 5^2 + 5^3] - [7 \\times 0 - 0^2 + 0^3]$$</p>\n<p>$$W = 135 - 0 = 135\\ \\text{Joules}$$</p>\n<p>$$\\Rightarrow 15x = 135$$</p>\n<p>$$x = \\frac{135}{15} = 9$$</p>\n<p>Therefore, the value of $x$ is 9.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>स्थिति के साथ परिवर्तित होने वाला एक बल, $F=7-2 x+3 x^2$ न्यूटन, 2 kg द्रव्यमान की एक छोटी वस्तु पर कार्य करता है और इसे $x=0$ से $x=5 \\mathrm{~m}$ तक विस्थापित करता है। यदि किया गया कार्य, जूल में, $15 x$ है, तो $x$ का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrjcndta",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A force of 5 N acts on a rigid body and causes it to move 10 m in a straight line. If the work done on the body by this force is 25 joules, what is the angle (in degree) between the force and the direction of motion of the body?</p>",
+                "options": [],
+                "answer": "60",
+                "explanation": "<p>The magnitude of the constant force is $F = 5\\ \\mathrm{N}$</p>\n<p>The magnitude of the displacement vector is $s = 10\\ \\mathrm{m}$</p>\n<p>Total mechanical work done by this force, $W = 25\\ \\mathrm{J}$</p>\n<p>The work done by a constant force $\\vec{F}$ causing a displacement $\\vec{s}$ along a straight line is the scalar dot product of the two vectors:</p>\n<p>$$W = \\vec{F} \\cdot \\vec{s}$$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrjcmo5x%2Ff49340c8-8174-4c10-8da2-00a01d4167b7%2F872f7050-7ecb-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjcmo5y.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrjcmo5x%2Ff49340c8-8174-4c10-8da2-00a01d4167b7%2F872f7050-7ecb-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjcmo5y.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>If the angle between them is $\\theta$,</p>\n<p>$$W = F \\cdot s \\cdot \\cos\\theta$$</p>\n<p>$$25 = 5 \\times 10 \\times \\cos\\theta$$</p>\n<p>$$25 = 50 \\times \\cos\\theta$$</p>\n<p>$$\\cos\\theta = \\frac{25}{50}$$</p>\n<p>$$\\cos\\theta = \\frac{1}{2}$$</p>\n<p>$$\\Rightarrow \\theta = \\cos^{-1}\\left(\\frac{1}{2}\\right) = 60^{\\circ}$$</p>\n<p>Therefore, the correct answer is 60.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>5 N का एक बल एक दृढ़ पिंड पर कार्य करता है और इसे एक सीधी रेखा में 10 m तक विस्थापित करता है। यदि इस बल द्वारा पिंड पर किया गया कार्य 25 जूल है, तो बल और पिंड की गति की दिशा के बीच का कोण (डिग्री में) क्या होगा?</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrjcuqsx",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The force on a particle depends on its displacement $\\mathbf{x}$ according to $\\mathbf{F}=\\mathbf{a x}-\\mathbf{b} \\mathbf{x}^{\\mathbf{2}}$. Here $\\mathbf{a}=\\mathbf{1} \\mathbf{N} / \\mathbf{m}$ and $b=1 \\mathrm{~N} / \\mathrm{m}^2$. If the work done by this force during the first one meter ( $F$ is in newton; $x$ is in meters) is $\\frac{1}{\\mathrm{x}}$ Joule, find the value of x.</p>",
+                "options": [],
+                "answer": "6",
+                "explanation": "<p>The force $F(x)$ varies as a function of position $x$, $F(x)=ax-bx^2$</p>\n<p>The work done $W$ by a one-dimensional variable force from an initial position $x_1$ to a final position $x_2$ is given by the definite integral:</p>\n<p>$\\mathrm{W}=\\int\\limits_{\\mathrm{x}_1}^{\\mathrm{x}_2} \\mathrm{~F}(\\mathrm{x}) \\mathrm{dx}$</p>\n<p>The particle is moving through the first one meter, which means it goes from $x_1=0$ to $x_2=1\\ \\mathrm{m}$.</p>\n<p>The given constants are $a=1$ and $b=1$.</p>\n<p>Substituting these into the force equation gives:</p>\n<p>$$F(x)=(1)x-(1)x^2=x-x^2$$</p>\n<p>So, the work done is,</p>\n<p>$$W=\\int\\limits_{0}^{1} (x-x^2)\\,dx$$</p>\n<p>$$W=\\left[\\frac{x^2}{2}-\\frac{x^3}{3}\\right]_{0}^{1}$$</p>\n<p>$$W=\\left(\\frac{1^2}{2}-\\frac{1^3}{3}\\right)-(0-0)$$</p>\n<p>$$W=\\frac{1}{2}-\\frac{1}{3}$$</p>\n<p>$$W=\\frac{3-2}{6}=\\frac{1}{6}\\ \\text{Joule}$$</p>\n<p>$$\\Rightarrow \\frac{1}{x}=\\frac{1}{6} \\Rightarrow x=6$$</p>\n<p>Therefore, the value of $x$ is 6. Thus, the correct option is 6.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक कण पर लगने वाला बल उसके विस्थापन $\\mathbf{x}$ पर $\\mathbf{F}=\\mathbf{a x}-\\mathbf{b} \\mathbf{x}^{\\mathbf{2}}$ के अनुसार निर्भर करता है। यहाँ $\\mathbf{a}=\\mathbf{1} \\mathbf{N} / \\mathbf{m}$ और $b=1 \\mathrm{~N} / \\mathrm{m}^2$ है। यदि इस बल द्वारा पहले एक मीटर ( $F$ न्यूटन में है; $x$ मीटर में है) के दौरान किया गया कार्य $\\frac{1}{\\mathrm{x}}$ जूल है, तो x का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrjcp73h",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle is shifted from the position $\\overrightarrow{\\mathbf{r}}_{\\mathbf{1}}=\\mathbf{3} \\hat{\\mathbf{i}}+\\mathbf{2} \\hat{\\mathbf{j}}-\\mathbf{6} \\hat{\\mathbf{k}}$ to the position $\\overrightarrow{\\mathbf{r}}_{\\mathbf{2}}=\\mathbf{1 4} \\hat{\\mathbf{i}}+\\mathbf{1 3} \\hat{\\mathbf{j}}+\\mathbf{9} \\hat{\\mathbf{k}}$ by a force $4 \\hat{\\mathbf{i}}+\\hat{\\mathbf{j}}+3 \\hat{\\mathbf{k}} \\mathbf{N}$. If the work done by this force is $\\mathbf{1 0} \\mathbf{x}$ Joule, find the value of $\\mathbf{x}$.</p>",
+                "options": [],
+                "answer": "10",
+                "explanation": "<p>The initial position vector of particle is $$\\vec{r}_1 = 3\\hat{i} + 2\\hat{j} - 6\\hat{k}$$</p>\n<p>The final position vector is $$\\vec{r}_2 = 14\\hat{i} + 13\\hat{j} + 9\\hat{k}$$</p>\n<p>The constant force vector is $$\\vec{F} = 4\\hat{i} + \\hat{j} + 3\\hat{k}$$</p>\n<p>The displacement vector is the change in position,</p>\n<p>$$\\vec{s} = \\vec{r}_2 - \\vec{r}_1$$</p>\n<p>$$\\vec{s} = (14\\hat{i} + 13\\hat{j} + 9\\hat{k}) - (3\\hat{i} + 2\\hat{j} - 6\\hat{k})$$</p>\n<p>$$\\vec{s} = (14 - 3)\\hat{i} + (13 - 2)\\hat{j} + (9 - (-6))\\hat{k}$$</p>\n<p>$$\\vec{s} = 11\\hat{i} + 11\\hat{j} + 15\\hat{k}$$</p>\n<p>Since the force is constant, the total work done is given by:</p>\n<p>$$W = \\vec{F} \\cdot \\vec{s}$$</p>\n<p>$$W = (4\\hat{i} + \\hat{j} + 3\\hat{k}) \\cdot (11\\hat{i} + 11\\hat{j} + 15\\hat{k})$$</p>\n<p>$$W = (4 \\times 11) + (1 \\times 11) + (3 \\times 15)$$</p>\n<p>$$W = 44 + 11 + 45$$</p>\n<p>$$W = 100\\ \\text{Joules}$$</p>\n<p>$$\\Rightarrow 10x = 100$$</p>\n<p>$$x = \\frac{100}{10} = 10$$</p>\n<p>Therefore, the value of x is 10. Thus, the correct answer is 10.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक कण को एक बल $4 \\hat{\\mathbf{i}}+\\hat{\\mathbf{j}}+3 \\hat{\\mathbf{k}} \\mathbf{N}$ द्वारा स्थिति $\\overrightarrow{\\mathbf{r}}_{\\mathbf{1}}=\\mathbf{3} \\hat{\\mathbf{i}}+\\mathbf{2} \\hat{\\mathbf{j}}-\\mathbf{6} \\hat{\\mathbf{k}}$ से स्थिति $\\overrightarrow{\\mathbf{r}}_{\\mathbf{2}}=\\mathbf{1 4} \\hat{\\mathbf{i}}+\\mathbf{1 3} \\hat{\\mathbf{j}}+\\mathbf{9} \\hat{\\mathbf{k}}$ तक विस्थापित किया जाता है। यदि इस बल द्वारा किया गया कार्य $\\mathbf{1 0} \\mathbf{x}$ जूल है, तो $\\mathbf{x}$ का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrjcsfh2",
+            "chapter": "work-power-and-energy",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A man of mass 50 kg carries a 20 kg load on his head and goes up 20 steps, each of height 0.25 m. If the least work done by the man on the block while climbing is 50 x Joule, find the value of x . (use $\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^2$ )</p>",
+                "options": [],
+                "answer": "20",
+                "explanation": "<p>The block has a mass $\\mathrm{m}=20 \\mathrm{~kg}$.</p>\n<p>The downward force of gravity acting on the block is $\\mathrm{F}_{\\mathrm{g}}=\\mathrm{mg}$</p>\n<p>For the man to lift the block up the stairs, he must exert an upward normal force $\\mathrm{F}_{\\operatorname{man}}$ on it.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrjcr16t%2F8c48eead-5ac8-4a61-baa6-6d6f05602d8e%2F007baf50-7ecc-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjcr16u.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrjcr16t%2F8c48eead-5ac8-4a61-baa6-6d6f05602d8e%2F007baf50-7ecc-11f1-aed0-e7bddc7b939b%2Ffile-6y3zli1mrjcr16u.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"><p>To find the minimum work required, we assume the block is lifted slowly without gaining any kinetic energy ($\\Delta K = 0$). Thus, the upward force applied by the man balances gravity:</p>\n<p>$$F_{\\text{man}} = mg$$</p>\n<p>The man climbs up 20 steps, and each step has a vertical height of 0.25 m.</p>\n<p>The total vertical height ($h$) the block is raised is:</p>\n<p>$$h = 20 \\times 0.25\\,\\text{m} = 5\\,\\text{m}$$</p>\n<p>The upward force applied by the man is in the same direction as the vertical displacement ($\\theta = 0^\\circ$).</p>\n<p>The work done by the man on the block is:</p>\n<p>$$W = F_{\\text{man}} \\cdot h \\cdot \\cos(0^\\circ) = mgh$$</p>\n<p>Substituting the given values ($m = 20\\,\\text{kg}$, $g = 10\\,\\text{m/s}^2$, $h = 5\\,\\text{m}$):</p>\n<p>$$W = 20 \\times 10 \\times 5 = 1000\\ \\text{Joules}$$</p>\n<p>$$\\Rightarrow 50x = 1000$$</p>\n<p>$$x = \\frac{1000}{50} = 20$$</p>\n<p>Therefore, the value of $x$ is 20. Thus, the correct option is 20.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>50 kg द्रव्यमान का एक व्यक्ति अपने सिर पर 20 kg का भार उठाकर 20 सीढ़ियाँ चढ़ता है, जिनमें से प्रत्येक की ऊँचाई 0.25 m है। यदि चढ़ाई के दौरान व्यक्ति द्वारा गुटके पर किया गया न्यूनतम कार्य 50 x Joule है, तो x का मान ज्ञात कीजिए। ($\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^2$ का उपयोग करें)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "work",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Work",
+    "timeAllotted": 2160000,
+    "title": "Work, Energy and Power Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g71mnvwjmrd",
+    "defaultLanguage": "en",
+    "description": "Work",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-13T15:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Work",
+    "timeAllotted": 2160000,
+    "title": "Work, Energy and Power Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Work, Energy and Power"
+  }
+}

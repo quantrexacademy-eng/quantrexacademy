@@ -1,0 +1,88 @@
+{
+  "subjectId": "65f032625469774910ab0337",
+  "chapterId": "66a0dd05c03b9dcaf1afe8c5",
+  "topicId": "66a0dd0ac03b9dcaf1afe8e2",
+  "title": "Dual Behaviour of Matter and Heisenberg Uncertainty Principle",
+  "concepts": [
+    {
+      "title": "De Broglie's wavelength",
+      "conceptBody": "<h3><strong>De-Broglie Wavelength</strong></h3><p>The energy of an object (E) in motion is equal to its mass (m) times the square of its speed (s).</p><p>$\\text{E}=\\text{m}{{\\text{c}}^{2}}$</p><p>The energy of a wave (E) is proportional to its frequency (v) which is proportional to its speed (s) and inversely proportional to its wavelength(\\lambda) where h is Planck's constant.</p><p>$\\text{E}=\\text{hv}=\\frac{\\text{hc}}{\\lambda }$</p><p>If an object acts as both a particle in motion and a wave, then the two equations can be combined:</p><p>$\\text{m}{{\\text{c}}^{2}}=\\frac{\\text{hc}}{\\lambda }$</p><p>Cancelling like terms and rearranging the equation to solve for the wavelength results in the following:</p><p>$\\lambda=\\frac{\\mathrm{h}}{\\mathrm{mc}}$</p><p>By definition, momentum (p) of an object is equal to the product of its mass (m) times its speed (c), so$\\text{p}$can be substituted for me to get the de Broglie equation.</p><ul><li><strong>de Broglie equation: </strong>The wavelength($\\lambda$)of an object in motion is inversely proportional to its momentum (p) where h is Planck's constant (6.626$\\left. {{10}^{-34}}~\\text{J}-\\text{S} \\right)$.</li></ul><p>$<br>\\lambda=\\frac{\\mathrm{h}}{\\mathrm{p}}<br>$</p><p>With this equation, if the mass of an object is too large (as it is with most objects), the wavelength would be negligible. Very small particles such as electrons, however, are small enough to exhibit the properties of both waves and particles.</p>",
+      "position": 0,
+      "qcConcept": "66a0dd0bc03b9dcaf1afe8e3"
+    },
+    {
+      "title": "Heisenberg's Uncertainty principle",
+      "conceptBody": "<h3><strong>Heisenberg's Uncertainity Principle</strong></h3><p>In this work on formulating quantum mechanics, Werner Heisenberg postulated his uncertainty principle, which states:</p><p>$\\Delta \\mathrm{x} \\Delta \\mathrm{p} \\geq \\frac{\\mathrm{h}}{2}$</p><p>where</p><p>$\\Delta $ here indicates standard deviation, a measure of spread or uncertainty;</p><p>$\\text{x}$ and $\\text{p}$ are a particle's position and linear momentum respectively.</p><p>$\\text{h}$ is the reduced Planck's constant (Planck's constant divided by $2\\pi $ ).</p><p>Heisenberg originally explained this as a consequence of the process of measuring: Measuring position accurately would disturb momentum and vice-versa, offering an example (the \"gamma-ray microscope\") that depended crucially on the de-Broglie hypothesis. It is now thought, however, that this only partly explains the phenomenon, but that the uncertainty also exists in the particle itself, even before the measurement is made.</p><p>Example</p><p>Calculate the uncertainty in position assuming uncertainty in momentum within $0.1%$ for:</p><p>(a) a tennis ball weighing $0.2~\\text{kg}$ and moving with a velocity of $10~\\text{m}/\\text{s}$</p><p>(b) a electron moving in an atom with a velocity of $2\\quad {{10}^{6}}~\\text{m}/\\text{s}$</p><p><strong>Solution. </strong>Using Uncertainty Principle,</p><p>$\\Delta \\text{x}\\Delta \\text{p}=\\frac{\\text{h}}{4\\pi }$</p><p>(a) $\\text{p}=\\text{mv }=0.2\\quad 10=2.0\\text{Kgm}/\\text{s}$</p><p>$\\Delta \\text{p }=0.1%\\text{ of p}=2\\quad {{10}^{-3}}$</p><p>$\\Rightarrow \\quad \\Delta \\text{x}=\\frac{\\text{h}}{4\\pi \\Delta \\text{p}}=\\frac{6.63\\times {{10}^{-34}}}{4\\times 3.14\\times 2\\times {{10}^{-3}}}$</p><p>$=2.135\\quad {{10}^{-32}}~\\text{m}$</p><p>(b) For an electron, $\\text{p}=\\text{mv}$</p><p>$=9.1\\quad {{10}^{-31}}\\quad 2\\quad {{10}^{6}}$</p><p>$=1.82\\quad {{10}^{-24}}\\text{Kgm}/\\text{s}$</p><p>$\\Delta \\text{p}=0.1%\\text{ of p}=1.82\\quad {{10}^{-27}}\\text{Kgm}/\\text{s}$</p><p>$\\Delta \\text{x}=\\frac{\\text{h}}{4\\pi \\Delta \\text{p}}=\\frac{6.63\\times 10-34}{2\\times 3.14\\times 1.82\\times {{10}^{-21}}}$</p><p>$\\Rightarrow \\quad \\Delta \\text{x}=2.89\\quad {{10}^{-8}}~\\text{m}$</p>",
+      "position": 1,
+      "qcConcept": "66a0dd0bc03b9dcaf1afe8e4"
+    },
+    {
+      "title": "Concept and experimental results",
+      "conceptBody": "<h3><strong>Photoelectric effect</strong></h3><p>When a metallic surface is exposed to electromagnetic radiation above a certain threshold frequency (typically visible light), the light is absorbed and electrons are emitted. In 1902, Philipp Eduard Anton von Lenard observed that the energy of individual emitted electrons increased with the frequency, or color of the light. This was at odds with James Clerkk Maxwell's wave theory of light, which predicted that the electron energy would be proportional to the intensity of the radiation. In 1905, Einstein solved this paradox by describing light as composed of discrete quanta, now called <strong>photons </strong>, rather than continuous waves. Based upon Max Planck's theory of black-body radiation, Einstein theorized that the energy in each quantum of light was equal to the frequency multiplied by a constant, later called <strong>Planck's constant </strong>. A photon above a threshold frequency has the required energy to eject a single electron, creating the observed effect. This discovery led to the quantum revolution in physics and earned Einstein the Nobel Prize in 1921.</p><p>The photons of a light beam have a characteristic energy determined by the frequency of the light. In the photoemission process, if an electron within some material absorbs the energy of one photon and thus has more energy than the work function (the electron binding energy) of the material, it is ejected. If the photon energy is too low, the electron is unable to escape the material. Increasing the intensity of the light beam increases the number of photons in the light beam, and thus increases the number of electrons emitted, but does not increase the energy that each electron possesses. Thus the energy of the emitted electrons does not depend on the intensity of the incoming light, but only on the energy of the individual photons.</p><p>Electrons can absorb energy from photons when irradiated, but they follow an \"all or nothing\" principle. All of the energy from one photon must be absorbed and used to liberate one electron from atomic binding, or the energy is re-emitted. If the photon energy is absorbed, some of the energy liberates the electron from the atom, and the rest contributes to the electron's kinetic energy as a free particle.</p><p>&nbsp;Experimental results</p><p>1. For a given metal and frequency of incident radiation, the rate at which photoelectrons are ejected is directly proportional to the intensity of the incident light.</p><p>2. For a given metal, there exists a certain minimum frequency of incident radiation below which no photoelectrons can be emitted. This frequency is called the threshold frequency.</p><p>3. Above the threshold frequency, the maximum kinetic energy of the emitted photoelectron is independent of the intensity of the incident light but depends on the frequency of the incident light.</p><p>4. The time lag between the incidence of radiation and the emission of photoelectron is very small, less than ${{10}^{-9}}$ second.</p><p>In effect quantitatively using Einstein's method, the following equivalent equations are used:</p><p>Energy of photons = Energy needed to remove an electron + Kinetic energy of the emitted electron</p><p>Algebraically:</p><p>$\\mathrm{hf}=\\phi+\\mathrm{E}_{\\mathrm{k} \\max }$</p><p>where</p><ul><li>$\\text{h}$ is Planck's constant</li><li>$\\text{f}$ is the frequency of the incident photon</li><li>$\\phi =\\text{h}{{\\text{f}}_{0}}$ is the work function (sometimes denoted $\\text{W}$ instead), the minimum energy required to remove a delocalised electron from the surface of any given metal.</li></ul><p>${{\\text{E}}_{\\text{kmax}}}=\\frac{1}{2}\\text{mv}_{\\text{m}}^{2}$ is the maximum kinetic energy of ejected electrons.</p><ul><li>${{\\text{f}}_{0}}$ is the threshold frequency for the photoelectric effect to occur.</li><li>$\\text{m}$ is the rest mass of the ejected electron, and</li><li>${{\\text{v}}_{\\text{m}}}$ is the speed of the ejected electron.</li></ul><p>Since an emitted electron cannot have negative kinetic energy, the equation implies that if the photon's energy (hf) is less than the work function $(\\varphi )$, no electron will be emitted.</p><p>Example</p><p>Find the ratio of frequencies of violet light $\\left( \\lambda =4.10\\quad {{10}^{-5}}~\\text{cm} \\right)$ to that of red light $\\left( \\lambda ={{6.5610}^{-5}}~\\text{cm} \\right)$. Also determine the ratio of energies carried by them.</p><p><strong>Solution.&nbsp;</strong></p><p>$\\text{Using c}=\\text{v}\\lambda ;$</p><p>$c:\\text{ speed of light; v}=\\text{ frequency }\\lambda :\\text{ wavelength }$</p><p>$\\frac{{{\\text{v}}_{1}}}{{{\\text{v}}_{2}}}=\\frac{{{\\lambda }_{2}}}{{{\\lambda }_{1}}}\\quad 1:\\text{ red }\\quad \\text{ }\\!\\!\\And\\!\\!\\text{ }\\quad 2:\\text{ violet }$</p><p>$\\Rightarrow \\quad \\frac{{{\\text{v}}_{1}}}{{{\\text{v}}_{2}}}\\text{ }=\\frac{6.56\\times {{10}^{-5}}}{4.10\\times {{10}^{-5}}}=1.6$</p><p>Now the energy associated with electromagnetic radiation is given by $\\text{E}=\\text{hv}$.</p><p>$\\Rightarrow \\quad \\frac{{{\\text{E}}_{1}}}{{{\\text{E}}_{2}}}=\\frac{{{\\text{v}}_{1}}}{{{\\text{v}}_{2}}}=\\frac{{{\\lambda }_{2}}}{{{\\lambda }_{1}}}=1.6$</p><p>Hence the ratio of energies is same as that of frequencies.</p>",
+      "position": 2,
+      "qcConcept": "66a0dd0bc03b9dcaf1afe8e5"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66584e591814fc7e94209e87",
+      "title": "Which one of the following explains light both as a stream of particles and as wave motion",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209e88",
+      "title": "The de-Broglie wavelength of a particle with mass $1 \\mathrm{gm}$ and velocity $100 \\mathrm{~m} / \\mathrm{sec}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209e89",
+      "title": "If uncertainty in the position of an electron is zero, the uncertainty in its momentum would be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209e8a",
+      "title": "The de-Broglie wavelength associated with a material particle is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209e8b",
+      "title": "Which one is not the correct relation in the following",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209e8c",
+      "title": "Which quantum number is not related with Schrodinger equation",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209e8d",
+      "title": "The uncertainty in momentum of an electron is $1 \\times 10^{-5} \\mathrm{kgm} / \\mathrm{s}$. The uncertainty in its position will be $\\left(h=6.63 \\times 10^{-34} \\mathrm{Js}\\right)$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209e8e",
+      "title": "Uncertainty in position of a $0.25 \\mathrm{~g}$ particle is $10^{-5}$. Uncertainty of velocity is $\\left(h=6.6 \\times 10^{-34} \\mathrm{Js}\\right)$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209e8f",
+      "title": "The uncertainty in the position of a moving bullet of mass $10 \\mathrm{gm}$ is $10^{-5} \\mathrm{~m}$. Calculate the uncertainty in its velocity",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e591814fc7e94209e90",
+      "title": "According to Heisenberg's uncertainty principle, the product of uncertainties in position and velocities for an electron of mass $9.1 \\times 10^{-31} \\mathrm{~kg}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

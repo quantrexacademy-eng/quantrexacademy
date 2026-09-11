@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mobgpqvn",
+  "title": "Determinants Test - 3 (Topic Test)",
+  "type": "topic",
+  "section": "Determinants",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Mathematics",
+  "isUpcoming": false,
+  "liveAt": "2026-07-05T14:30:00.000Z",
+  "status": "ok",
+  "analysisId": "060bd34a-548b-4f9e-8471-c5260193087c",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61mobgpqvn",
+    "defaultLanguage": "en",
+    "description": "Product of Determinants, System of Equations",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-05T14:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mr7r8o95",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If three equations are consistent</p><p>$(a + 1)^3 x + (a + 2)^3 y = (a + 3)^3$</p><p>$(a + 1)x + (a + 2)y = a + 3$</p><p>$x + y = 1$, then $a =$</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>-2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>3</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Since the equations are consistant $\\therefore D=0$</p>\n<p>$$\\begin{vmatrix} (a+1)^3 & (a+2)^3 & -(a+3)^3 \\\\ (a+1) & (a+2) & -(a+3) \\\\ 1 & 1 & -1 \\end{vmatrix}=0$$</p>\n<p>Put $u=(a+1)$, $v=a+2$, $w=a+3$</p>\n<p>$u-v=-1$, $v-w=-1$, $w-u=2$</p>\n<p>$u+v+w=3a+6$</p>\n<p>$$\\therefore \\begin{vmatrix} u^3 & v^3 & w^3 \\\\ u & v & w \\\\ 1 & 1 & 1 \\end{vmatrix}=0$$</p>\n<p>$$(u-v)(v-w)(w-u)(u+v+w)=0$$</p>\n<p>$$(-1)(-1)(2)(3a+6)=0$$</p>\n<p>i.e.,</p>\n<p>$a=-2$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि तीन समीकरण संगत हैं</p><p>$(a + 1)^3 x + (a + 2)^3 y = (a + 3)^3$</p><p>$(a + 1)x + (a + 2)y = a + 3$</p><p>$x + y = 1$, तो $a =$</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>-2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>3</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "solutions-of-system-of-linear-equations-in-two-or-three-variables-using-determinants-and-matrices",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr7rgpn9",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Given <b>$a, b \\in \\{0, 1, 2, 3, 4, ....., 9, 10\\}$</b>. Consider the system of equations :</p>\n<p>$x + y + z = 4$</p>\n<p>$2x + y + 3z = 6$</p>\n<p>$x + 2y + az = b$</p>\n<p>Let <b>L</b> : denotes number of ordered pairs <b>(a, b)</b> so that the system of equations has unique solution,</p>\n<p><b>M</b> : denotes number of ordered pairs <b>(a, b)</b> so that the system of equations has no solution and</p>\n<p><b>N</b> : denotes number of ordered pairs <b>(a, b)</b> so that the system of equations has infinite solutions. The value of <b>(L + M + N)</b> is:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>120</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>121</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>122</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The coefficient matrix of the system is</p>\n<p>$$ A=\\begin{pmatrix} 1 & 1 & 1\\\\ 2 & 1 & 3\\\\ 1 & 2 & a \\end{pmatrix} $$</p>\n<p>Its determinant is</p>\n<p>$$ \\Delta = \\begin{vmatrix} 1 & 1 & 1\\\\ 2 & 1 & 3\\\\ 1 & 2 & a \\end{vmatrix} $$</p>\n<p>Expanding,</p>\n<p>$$ \\Delta = 1(a-6)-1(2a-3)+1(4-1) $$</p>\n<p>$$ \\Delta = a-6-2a+3+3 $$</p>\n<p>$$ \\Delta = -a $$</p>\n<p>For a unique solution, we need $\\Delta \\neq 0$.</p>\n<p>So,</p>\n<p>$$ -a \\neq 0 \\Rightarrow a \\neq 0 $$</p>\n<p>Since $a \\in \\{0,1,2,\\dots,10\\}$, there are $10$ possible values of $a$ for unique solution, namely $1$ to $10$.</p>\n<p>For each such $a$, $b$ can take $11$ values.</p>\n<p>So,</p>\n<p>$$ L = 10 \\times 11 = 110 $$</p>\n<p>Now check the case $a=0$.</p>\n<p>The system becomes</p>\n<p>$$ x+y+z=4 $$</p>\n<p>$$ 2x+y+3z=6 $$</p>\n<p>$$ x+2y=b $$</p>\n<p>From the first two equations,</p>\n<p>$$ 2x+y+3z - 2(x+y+z)=6-8 $$</p>\n<p>$$ -y+z=-2 $$</p>\n<p>$$ y-z=2 $$</p>\n<p>So,</p>\n<p>$$ y=z+2 $$</p>\n<p>Using this in $x+y+z=4$,</p>\n<p>$$ x+z+2+z=4 $$</p>\n<p>$$ x+2z=2 $$</p>\n<p>$$ x=2-2z $$</p>\n<p>Now,</p>\n<p>$$ x+2y=(2-2z)+2(z+2) $$</p>\n<p>$$ x+2y=6 $$</p>\n<p>So the third equation $x+2y=b$ will be consistent only when</p>\n<p>$$ b=6 $$</p>\n<p>For $a=0,\\ b=6$, there are infinitely many solutions.</p>\n<p>So,</p>\n<p>$$ N=1 $$</p>\n<p>For $a=0$ and $b \\neq 6$, there is no solution. Since $b$ has $11$ possible values and only one of them is $6$,</p>\n<p>$$ M=10 $$</p>\n<p>Hence,</p>\n<p>$$ L+M+N=110+10+1=121 $$</p>\n<p>So the correct option is</p>\n<p>$$ \\boxed{121} $$</p>\n<p>Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दिया गया है कि <b>$a, b \\in \\{0, 1, 2, 3, 4, ....., 9, 10\\}$</b>। समीकरणों के निकाय पर विचार करें:</p> <p>$x + y + z = 4$</p> <p>$2x + y + 3z = 6$</p> <p>$x + 2y + az = b$</p> <p>माना <b>L</b> : क्रमित युग्मों <b>(a, b)</b> की संख्या को दर्शाता है जिसके लिए समीकरण निकाय का अद्वितीय हल है,</p> <p><b>M</b> : क्रमित युग्मों <b>(a, b)</b> की संख्या को दर्शाता है जिसके लिए समीकरण निकाय का कोई हल नहीं है, तथा</p> <p><b>N</b> : क्रमित युग्मों <b>(a, b)</b> की संख्या को दर्शाता है जिसके लिए समीकरण निकाय के अनंत हल हैं। <b>(L + M + N)</b> का मान है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>120</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>121</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>122</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "solutions-of-system-of-linear-equations-in-two-or-three-variables-using-determinants-and-matrices",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr7ro3mr",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For a unique value of <b>p</b> and <b>q</b>, the system of equations given by $x + y + z = 6$, $x + 2y + 3z = 14$, $2x + 5y + pz = q$ has infinitely many solutions, then the value of $(p + q)$ is equal to :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>14</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>24</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>34</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>44</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For the system to have infinitely many solutions, the third equation must not give any new restriction.  </p>\n<p>So the third equation must be a linear combination of the first two equations.</p>\n<p>Given equations are</p>\n<p>$$x+y+z=6$$</p>\n<p>$$x+2y+3z=14$$</p>\n<p>$$2x+5y+pz=q$$</p>\n<p>Suppose the third equation is obtained by multiplying the first equation by $a$ and the second equation by $b$, then adding them.</p>\n<p>So,</p>\n<p>$$a(x+y+z)+b(x+2y+3z)=2x+5y+pz$$</p>\n<p>Comparing coefficients of $x$ and $y$,</p>\n<p>$$a+b=2$$</p>\n<p>$$a+2b=5$$</p>\n<p>Subtracting the first equation from the second,</p>\n<p>$$b=3$$</p>\n<p>Now,</p>\n<p>$$a+3=2$$</p>\n<p>$$a=-1$$</p>\n<p>Now compare the coefficient of $z$:</p>\n<p>$$p=a+3b$$</p>\n<p>$$p=-1+3(3)$$</p>\n<p>$$p=8$$</p>\n<p>Now compare the constant terms:</p>\n<p>$$q=6a+14b$$</p>\n<p>$$q=6(-1)+14(3)$$</p>\n<p>$$q=-6+42$$</p>\n<p>$$q=36$$</p>\n<p>So,</p>\n<p>$$p+q=8+36=44$$</p>\n<p>The correct option is <strong>D) 44</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>p</b> और <b>q</b> के एक अद्वितीय मान के लिए, यदि समीकरण निकाय $x + y + z = 6$, $x + 2y + 3z = 14$, $2x + 5y + pz = q$ के अनंत हल हैं, तो $(p + q)$ का मान बराबर है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>14</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>24</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>34</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>44</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "solutions-of-system-of-linear-equations-in-two-or-three-variables-using-determinants-and-matrices",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr7rvx0a",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The value of <b>a</b> for which the system of equations</p> <p>$a^3x + (a+1)^3y + (a+2)^3z = 0$</p><p>$ax + (a+1)y + (a+2)z = 0$</p><p>$x + y + z = 0$</p><p>has a non zero solution is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>-1</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For a system of homogeneous linear equations to have a non-zero (or non-trivial) solution, the determinant of its coefficient matrix must be equal to zero. </p>\n<p>The given system of equations is:</p>\n<p>$$a^3x + (a+1)^3y + (a+2)^3z = 0$$</p>\n<p>$$ax + (a+1)y + (a+2)z = 0$$</p>\n<p>$$x + y + z = 0$$</p>\n<p>Let's write the determinant of the coefficient matrix and set it to zero:</p>\n<p>$$ \\begin{vmatrix} a^3 & (a+1)^3 & (a+2)^3 \\\\ a & a+1 & a+2 \\\\ 1 & 1 & 1 \\end{vmatrix} = 0 $$</p>\n<p>Let's apply the column operations $C_2 \\to C_2 - C_1$ and $C_3 \\to C_3 - C_2$:</p>\n<p>$$ \\begin{vmatrix} a^3 & (a+1)^3 - a^3 & (a+2)^3 - (a+1)^3 \\\\ a & 1 & 1 \\\\ 1 & 0 & 0 \\end{vmatrix} = 0 $$</p>\n\n<p>$$ 1 \\cdot \\begin{vmatrix} (a+1)^3 - a^3 & (a+2)^3 - (a+1)^3 \\\\ 1 & 1 \\end{vmatrix} = 0 $$</p>\n\n<p>$$ [(a+1)^3 - a^3](1) - [(a+2)^3 - (a+1)^3](1) = 0 $$</p>\n\n<p>$$ (a+1)^3 - a^3 - (a+2)^3 + (a+1)^3 = 0 $$</p>\n<p>$$ 2(a+1)^3 - a^3 - (a+2)^3 = 0 $$</p>\n\n<p>$$ 2(a^3 + 3a^2 + 3a + 1) - a^3 - (a^3 + 3(a^2)(2) + 3(a)(2^2) + 2^3) = 0 $$</p>\n<p>$$ 2a^3 + 6a^2 + 6a + 2 - a^3 - (a^3 + 6a^2 + 12a + 8) = 0 $$</p>\n\n<p>$$ 2a^3 + 6a^2 + 6a + 2 - a^3 - a^3 - 6a^2 - 12a - 8 = 0 $$</p>\n\n<p>$$ (2a^3 - 2a^3) + (6a^2 - 6a^2) + (6a - 12a) + (2 - 8) = 0 $$</p>\n<p>$$ -6a - 6 = 0 $$</p>\n\n<p>$$ -6a = 6 $$</p>\n<p>$$ a = -1 $$</p>\n<p>Connecting this back to the choices given, the correct option is Option C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>a</b> का वह मान जिसके लिए समीकरण निकाय</p> <p>$a^3x + (a+1)^3y + (a+2)^3z = 0$</p><p>$ax + (a+1)y + (a+2)z = 0$</p><p>$x + y + z = 0$</p><p>का एक अशून्य हल है, है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>-1</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "solutions-of-system-of-linear-equations-in-two-or-three-variables-using-determinants-and-matrices",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr7s2lvj",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let $f(t) = t(t + 3)$, $g(t) = t(t + 4)$ and $h(t) = t(t + 1)$, then for what value of $t$ the system of equations \n<br/><br/>$f(t)x + g(t)y + h(t)z = 3$, \n<br/><br/>$x + 2y - z = 1$, \n<br/><br/>$-3x - 6y + 3z = -3$ is consistent :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$t \\in \\{0, -2\\}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$t = 0$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$t = -2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The third equation is</p>\n<p>$$-3x-6y+3z=-3$$</p>\n<p>This is exactly $-3$ times the second equation:</p>\n<p>$$x+2y-z=1$$</p>\n<p>So the third equation does not give any new condition. We only need to check the first two equations:</p>\n<p>$$f(t)x+g(t)y+h(t)z=3$$</p>\n<p>and</p>\n<p>$$x+2y-z=1$$</p>\n<p>where</p>\n<p>$$f(t)=t(t+3), \\quad g(t)=t(t+4), \\quad h(t)=t(t+1)$$</p>\n<p>The system will be inconsistent only when the left side of the first equation is a constant multiple of the left side of the second equation, but the right side is not in the same ratio.</p>\n<p>So we check when</p>\n<p>$$(f(t),g(t),h(t))$$</p>\n<p>is proportional to</p>\n<p>$$(1,2,-1)$$</p>\n<p>This means</p>\n<p>$$g(t)=2f(t)$$</p>\n<p>and</p>\n<p>$$h(t)=-f(t)$$</p>\n<p>Now,</p>\n<p>$$t(t+4)=2t(t+3)$$</p>\n<p>$$t(t+4)-2t(t+3)=0$$</p>\n<p>$$t[(t+4)-2(t+3)]=0$$</p>\n<p>$$t(-t-2)=0$$</p>\n<p>So,</p>\n<p>$$t=0 \\quad \\text{or} \\quad t=-2$$</p>\n<p>Also,</p>\n<p>$$t(t+1)=-t(t+3)$$</p>\n<p>$$t(t+1)+t(t+3)=0$$</p>\n<p>$$t(2t+4)=0$$</p>\n<p>$$t=0 \\quad \\text{or} \\quad t=-2$$</p>\n<p>So the first equation becomes proportional to the second only for</p>\n<p>$$t=0,-2$$</p>\n<p>Now check these values.</p>\n<p>For $t=0$,</p>\n<p>$$f(0)=g(0)=h(0)=0$$</p>\n<p>So the first equation becomes</p>\n<p>$$0=3$$</p>\n<p>which is impossible. Hence inconsistent.</p>\n<p>For $t=-2$,</p>\n<p>$$f(-2)=-2,\\quad g(-2)=-4,\\quad h(-2)=2$$</p>\n<p>So the first equation becomes</p>\n<p>$$-2x-4y+2z=3$$</p>\n<p>But the second equation gives</p>\n<p>$$x+2y-z=1$$</p>\n<p>$$-2x-4y+2z=-2$$</p>\n<p>This contradicts the first equation, which says</p>\n<p>$$-2x-4y+2z=3$$</p>\n<p>So $t=-2$ is also inconsistent.</p>\n<p>Thus the system is consistent for all real values of $t$ except $0$ and $-2$.</p>\n<p>Since this option is not given, the correct answer is:</p>\n<p>$$\\boxed{\\text{Option D: none of these}}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना $f(t) = t(t + 3)$, $g(t) = t(t + 4)$ और $h(t) = t(t + 1)$ हैं, तो $t$ के किस मान के लिए समीकरण निकाय <br/><br/>$f(t)x + g(t)y + h(t)z = 3$, <br/><br/>$x + 2y - z = 1$, <br/><br/>$-3x - 6y + 3z = -3$ संगत है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$t \\in \\{0, -2\\}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$t = 0$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$t = -2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "solutions-of-system-of-linear-equations-in-two-or-three-variables-using-determinants-and-matrices",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr7s815n",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The system of homogeneous equations $t x+(t+1) y+$</p>\n<p>$$ (t-1) z=0,(t+1) x+t y+(t+2) z=0,(t-1) x+(t+2) $$</p>\n<p>$y+t z=0$ has a non-trivial solution for :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "exactly three real values of $t$"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "exactly two real values of $t$"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "exactly one real value of $t$"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "infinite number of values of $t$"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For a homogeneous system to have a non-trivial solution, the determinant of the coefficient matrix must be zero.</p>\n\n<p>$$\\begin{vmatrix} t & t+1 & t-1 \\\\ t+1 & t & t+2 \\\\ t-1 & t+2 & t \\end{vmatrix} = 0$$</p>\n<p>Apply $C_1 \\to C_1 + C_2 + C_3$:</p>\n\n<p>$$\\begin{vmatrix} 3t & t+1 & t-1 \\\\ 3t+3 & t & t+2 \\\\ 3t+1 & t+2 & t \\end{vmatrix} = 0$$</p>\n<p>Apply $R_2 \\to R_2 - R_1$ and $R_3 \\to R_3 - R_1$:</p>\n<p>$$\\begin{vmatrix} 3t & t+1 & t-1 \\\\ 3 & -1 & 3 \\\\ 1 & 1 & 1 \\end{vmatrix} = 0$$</p>\n<p>$$3t\\big[(-1)(1) - (3)(1)\\big] - (t+1)\\big[(3)(1) - (3)(1)\\big] + (t-1)\\big[(3)(1) - (-1)(1)\\big] = 0$$</p>\n<p>$$3t(-1-3) - (t+1)(0) + (t-1)(4) = 0$$</p>\n<p>$$-12t + 4(t-1) = 0$$</p>\n<p>$$-12t + 4t - 4 = 0$$</p>\n<p>$$-8t = 4$$</p>\n<p>$$t = -\\frac{1}{2}$$</p>\n<p>So the system has a non-trivial solution for exactly one real value of $t$.</p>\n<p>The correct option is <strong>C</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>समघाती समीकरण निकाय $t x+(t+1) y+$</p> <p>$$ (t-1) z=0,(t+1) x+t y+(t+2) z=0,(t-1) x+(t+2) $$</p> <p>$y+t z=0$ का अतुच्छ (non-trivial) हल होगा :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "$t$ के ठीक तीन वास्तविक मानों के लिए"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "$t$ के ठीक दो वास्तविक मानों के लिए"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "$t$ के ठीक एक वास्तविक मान के लिए"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "$t$ के अनंत मानों के लिए"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "solutions-of-system-of-linear-equations-in-two-or-three-variables-using-determinants-and-matrices",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr7srbtb",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $A = \\begin{bmatrix} 1 & 0 & 2 \\\\ 0 & 2 & 1 \\\\ 2 & 0 & 3 \\end{bmatrix}$ is a root of polynomial $x^3 - 6x^2 + 7x + k = 0$, then the value of $k$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>4</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>-2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For a matrix to be a root of the polynomial</p>\n<p>$$ x^3-6x^2+7x+k=0, $$</p>\n<p>it should satisfy</p>\n<p>$$ A^3-6A^2+7A+kI=O. $$</p>\n<p>By the Cayley-Hamilton theorem, a square matrix satisfies its own characteristic polynomial. So we find the characteristic polynomial of $A$.</p>\n<p>Given</p>\n<p>$$ A=\\begin{bmatrix} 1&0&2\\\\ 0&2&1\\\\ 2&0&3 \\end{bmatrix} $$</p>\n<p>Now,</p>\n<p>$$ xI-A= \\begin{bmatrix} x-1&0&-2\\\\ 0&x-2&-1\\\\ -2&0&x-3 \\end{bmatrix} $$</p>\n<p>So the characteristic polynomial is</p>\n<p>$$ |xI-A|= \\begin{vmatrix} x-1&0&-2\\\\ 0&x-2&-1\\\\ -2&0&x-3 \\end{vmatrix} $$</p>\n<p>Expanding along the second column,</p>\n<p>$$ |xI-A|=(x-2) \\begin{vmatrix} x-1&-2\\\\ -2&x-3 \\end{vmatrix} $$</p>\n<p>$$ =(x-2)\\left[(x-1)(x-3)-4\\right] $$</p>\n<p>$$ =(x-2)(x^2-4x+3-4) $$</p>\n<p>$$ =(x-2)(x^2-4x-1) $$</p>\n<p>$$ =x^3-6x^2+7x+2 $$</p>\n<p>So the characteristic polynomial is</p>\n<p>$$ x^3-6x^2+7x+2=0 $$</p>\n<p>Comparing with</p>\n<p>$$ x^3-6x^2+7x+k=0, $$</p>\n<p>we get</p>\n<p>$$ k=2 $$</p>\n<p>So the correct option is Option A: $2$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $A = \\begin{bmatrix} 1 & 0 & 2 \\\\ 0 & 2 & 1 \\\\ 2 & 0 & 3 \\end{bmatrix}$ बहुपद $x^3 - 6x^2 + 7x + k = 0$ का एक मूल है, तो $k$ का मान है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>4</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>-2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "solutions-of-system-of-linear-equations-in-two-or-three-variables-using-determinants-and-matrices",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr7t21ge",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the system of equations $x + 2y + 3z = 4$, $x + py + 2z = 3$, $x + 4y + \\mu z = 3$ has an infinite number of solutions and solution triplet is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$p = 2$, $\\mu = 3$ and $(5-4\\lambda,\\; \\lambda-1,\\; \\lambda)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$p = 2$, $\\mu = 4$ and $(5-4\\lambda,\\; \\frac{\\lambda-1}{2},\\; 2\\lambda)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$3p = 2\\mu$ and $(5-4\\lambda,\\; \\lambda-1,\\; 2\\lambda)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$p = 4$, $\\mu = 2$ and $(5-4\\lambda,\\; \\frac{\\lambda-1}{2},\\; \\lambda)$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>$\\Delta=\\left|\\begin{array}{lll}1 & 2 & 3 \\\\ 1 & p & 2 \\\\ 1 & 4 & \\mu\\end{array}\\right| \\quad \\Delta_x=\\left|\\begin{array}{lll}4 & 2 & 3 \\\\ 3 & p & 2 \\\\ 3 & 4 & \\mu\\end{array}\\right|$</p>\n<p>$\\Delta_y=\\left|\\begin{array}{lll}1 & 4 & 3 \\\\ 1 & 3 & 2 \\\\ 1 & 3 & \\mu\\end{array}\\right| \\quad \\Delta_z=\\left|\\begin{array}{lll}1 & 2 & 4 \\\\ 1 & p & 3 \\\\ 1 & 4 & 3\\end{array}\\right|$</p>\n<p>For infinite no. of solution $\\Delta=\\Delta_x=\\Delta_y=\\Delta_z=0 \\Rightarrow \\mu=2, p=4$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि समीकरण निकाय $x + 2y + 3z = 4$, $x + py + 2z = 3$, $x + 4y + \\mu z = 3$ के अनंत हल हैं और इसका हल त्रिक है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$p = 2$, $\\mu = 3$ और $(5-4\\lambda,\\; \\lambda-1,\\; \\lambda)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$p = 2$, $\\mu = 4$ और $(5-4\\lambda,\\; \\frac{\\lambda-1}{2},\\; 2\\lambda)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$3p = 2\\mu$ और $(5-4\\lambda,\\; \\lambda-1,\\; 2\\lambda)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$p = 4$, $\\mu = 2$ और $(5-4\\lambda,\\; \\frac{\\lambda-1}{2},\\; \\lambda)$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "solutions-of-system-of-linear-equations-in-two-or-three-variables-using-determinants-and-matrices",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr7t8aye",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the system of equations $a x + y + z = 0$, $x + b y + z = 0$ and $x + y + c z = 0$, where $a, b, c \\neq 1$, has a non–trivial solution, then the value of</p><p>$$\\frac{1}{1-a} + \\frac{1}{1-b} + \\frac{1}{1-c}$$</p><p>is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>4</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For the given homogeneous system,</p>\n<p>$$ ax+y+z=0 $$</p>\n<p>$$ x+by+z=0 $$</p>\n<p>$$ x+y+cz=0 $$</p>\n<p>to have a non-trivial solution, the determinant of the coefficient matrix must be zero.</p>\n<p>So,</p>\n<p>$$ \\begin{vmatrix} a & 1 & 1 \\\\ 1 & b & 1 \\\\ 1 & 1 & c \\end{vmatrix}=0 $$</p>\n<p>Expanding,</p>\n<p>$$ a(bc-1)-1(c-1)+1(1-b)=0 $$</p>\n<p>$$ abc-a-c+1+1-b=0 $$</p>\n<p>$$ abc-a-b-c+2=0 $$</p>\n<p>Now put</p>\n<p>$$ p=1-a,\\quad q=1-b,\\quad r=1-c $$</p>\n<p>So,</p>\n<p>$$ a=1-p,\\quad b=1-q,\\quad c=1-r $$</p>\n<p>Using the condition</p>\n<p>$$ abc-a-b-c+2=0 $$</p>\n\n<p>$$ (1-p)(1-q)(1-r)-(1-p)-(1-q)-(1-r)+2=0 $$</p>\n\n<p>$$ 1-(p+q+r)+(pq+qr+rp)-pqr-3+(p+q+r)+2=0 $$</p>\n\n<p>$$ pq+qr+rp-pqr=0 $$</p>\n<p>So,</p>\n<p>$$ pq+qr+rp=pqr $$</p>\n\n<p>$$ \\frac{1}{p}+\\frac{1}{q}+\\frac{1}{r}=1 $$</p>\n<p>Since</p>\n<p>$$ p=1-a,\\quad q=1-b,\\quad r=1-c $$</p>\n<p>we get</p>\n<p>$$ \\frac{1}{1-a}+\\frac{1}{1-b}+\\frac{1}{1-c}=1 $$</p>\n<p>So the correct option is</p>\n<p>$$ \\boxed{1} $$</p>\n<p>Option A.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि समीकरण निकाय $a x + y + z = 0$, $x + b y + z = 0$ और $x + y + c z = 0$, जहाँ $a, b, c \\neq 1$, का एक अशून्य हल है, तो</p><p>$$\\frac{1}{1-a} + \\frac{1}{1-b} + \\frac{1}{1-c}$$</p><p>का मान है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>4</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "solutions-of-system-of-linear-equations-in-two-or-three-variables-using-determinants-and-matrices",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr7tdvl8",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the system of linear equations </p><p> $x_1 + 2x_2 + x_3 = 3$, $2x_1 + 3x_2 + x_3 = 3$, and $3x_1 + 5x_2 + 2x_3 = 1$. </p><p>The system has</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>no solution</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>infinite number of solutions</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>exactly three solutions</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>a unique solution</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Given equations are</p>\n<p>$$ x_1 + 2x_2 + x_3 = 3 $$</p>\n<p>$$ 2x_1 + 3x_2 + x_3 = 3 $$</p>\n<p>$$ 3x_1 + 5x_2 + 2x_3 = 1 $$</p>\n<p>Now, add the first two equations:</p>\n<p>$$ (x_1 + 2x_2 + x_3) + (2x_1 + 3x_2 + x_3) = 3 + 3 $$</p>\n<p>This gives</p>\n<p>$$ 3x_1 + 5x_2 + 2x_3 = 6 $$</p>\n<p>But the third equation says</p>\n<p>$$ 3x_1 + 5x_2 + 2x_3 = 1 $$</p>\n<p>So the same left-hand side is equal to both $6$ and $1$, which is not possible.</p>\n<p>Hence, the system is inconsistent and has no solution.</p>\n<p>So the correct option is</p>\n<p>$$ \\boxed{\\text{Option A: no solution}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>रैखिक समीकरणों के निकाय पर विचार कीजिए </p><p> $x_1 + 2x_2 + x_3 = 3$, $2x_1 + 3x_2 + x_3 = 3$, और $3x_1 + 5x_2 + 2x_3 = 1$। </p><p>इस निकाय का/के</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>कोई हल नहीं है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>अनंत हल हैं</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>ठीक तीन हल हैं</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>एक अद्वितीय हल है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "solutions-of-system-of-linear-equations-in-two-or-three-variables-using-determinants-and-matrices",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mr7sjygp",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In the system of equations</p>\n<p>$$ \\begin{aligned} & a x+b y+c z=A \\\\ & b x+c y+a z=B \\\\ & c x+a y+b z=C \\end{aligned} $$</p>\n<p>$A, B, C$ are the cofactors of $a, b, c$ in the determinant</p>\n<p>$$ \\left|\\begin{array}{lll} a & b & c \\\\ b & c & a \\\\ c & a & b \\end{array}\\right| . $$</p>\n<p>Then find the value of</p>\n<p>$$ \\frac{\\left(a^2+b^2+c^2-a b-b c-c a\\right)(a+b+c)}{\\left(3 x y z-x^3-y^3-z^3\\right)} $$</p>",
+                "options": [],
+                "answer": "1",
+                "explanation": "<p>Let</p>\n<p>$$ \\Delta=\\left|\\begin{array}{lll} a&b&c\\\\ b&c&a\\\\ c&a&b \\end{array}\\right| $$</p>\n<p>The cofactors of $a,b,c$ in the first row are</p>\n<p>$$ A=bc-a^2,\\qquad B=ac-b^2,\\qquad C=ab-c^2. $$</p>\n<p>Now the cofactor matrix of the given determinant becomes</p>\n<p>$$ \\left[\\begin{array}{lll} A&B&C\\\\ B&C&A\\\\ C&A&B \\end{array}\\right] $$</p>\n<p>So the adjoint of the coefficient matrix is also</p>\n<p>$$ \\operatorname{adj} M= \\left[\\begin{array}{lll} A&B&C\\\\ B&C&A\\\\ C&A&B \\end{array}\\right] $$</p>\n<p>where</p>\n<p>$$ M=\\left[\\begin{array}{lll} a&b&c\\\\ b&c&a\\\\ c&a&b \\end{array}\\right]. $$</p>\n<p>Also,</p>\n<p>$$ \\Delta=3abc-a^3-b^3-c^3 $$</p>\n<p>Using</p>\n<p>$$ a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca), $$</p>\n<p>we get</p>\n<p>$$ \\Delta=-(a+b+c)(a^2+b^2+c^2-ab-bc-ca). $$</p>\n<p>Now the given system is</p>\n<p>$$ M\\left[\\begin{array}{c}x\\\\y\\\\z\\end{array}\\right] = \\left[\\begin{array}{c}A\\\\B\\\\C\\end{array}\\right]. $$</p>\n<p>So,</p>\n<p>$$ \\left[\\begin{array}{c}x\\\\y\\\\z\\end{array}\\right] = M^{-1}\\left[\\begin{array}{c}A\\\\B\\\\C\\end{array}\\right] = \\frac{1}{\\Delta} \\left[\\begin{array}{lll} A&B&C\\\\ B&C&A\\\\ C&A&B \\end{array}\\right] \\left[\\begin{array}{c}A\\\\B\\\\C\\end{array}\\right]. $$</p>\n<p>Hence,</p>\n<p>$$ x=\\frac{A^2+B^2+C^2}{\\Delta} $$</p>\n<p>and</p>\n<p>$$ y=z=\\frac{AB+BC+CA}{\\Delta}. $$</p>\n<p>Let</p>\n<p>$$ P=A^2+B^2+C^2,\\qquad R=AB+BC+CA. $$</p>\n<p>Then</p>\n<p>$$ x=\\frac{P}{\\Delta},\\qquad y=z=\\frac{R}{\\Delta}. $$</p>\n<p>Now the denominator is</p>\n<p>$$ 3xyz-x^3-y^3-z^3. $$</p>\n<p>Since $y=z$,</p>\n<p>$$ 3xyz-x^3-y^3-z^3 = \\frac{3PR^2-P^3-2R^3}{\\Delta^3}. $$</p>\n<p>Using</p>\n<p>$$ P^3+2R^3-3PR^2=(P-R)^2(P+2R), $$</p>\n<p>we get</p>\n<p>$$ 3PR^2-P^3-2R^3=-(P-R)^2(P+2R). $$</p>\n<p>So,</p>\n<p>$$ 3xyz-x^3-y^3-z^3 = -\\frac{(P-R)^2(P+2R)}{\\Delta^3}. $$</p>\n<p>Now,</p>\n<p>$$ P+2R=(A+B+C)^2. $$</p>\n<p>But</p>\n<p>$$ A+B+C=bc-a^2+ac-b^2+ab-c^2 =ab+bc+ca-a^2-b^2-c^2. $$</p>\n<p>Thus,</p>\n<p>$$ A+B+C=-(a^2+b^2+c^2-ab-bc-ca). $$</p>\n<p>So,</p>\n<p>$$ P+2R=(a^2+b^2+c^2-ab-bc-ca)^2. $$</p>\n<p>Also,</p>\n<p>$$ P-R=A^2+B^2+C^2-AB-BC-CA. $$</p>\n<p>Using</p>\n<p>$$ A-B=(b-a)(a+b+c), $$</p>\n<p>$$ B-C=(c-b)(a+b+c), $$</p>\n<p>$$ C-A=(a-c)(a+b+c), $$</p>\n<p>we get</p>\n<p>$$ P-R=(a+b+c)^2(a^2+b^2+c^2-ab-bc-ca). $$</p>\n<p>Therefore,</p>\n<p>$$ 3xyz-x^3-y^3-z^3 = (a+b+c)(a^2+b^2+c^2-ab-bc-ca). $$</p>\n<p>Hence the required value is</p>\n<p>$$ \\frac{(a^2+b^2+c^2-ab-bc-ca)(a+b+c)} {3xyz-x^3-y^3-z^3} = \\frac{(a+b+c)(a^2+b^2+c^2-ab-bc-ca)} {(a+b+c)(a^2+b^2+c^2-ab-bc-ca)} =1. $$</p>\n<p>So the value is</p>\n<p>$$ \\boxed{1} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>समीकरण निकाय</p>\n<p>$$ \\begin{aligned} & a x+b y+c z=A \\ & b x+c y+a z=B \\ & c x+a y+b z=C \\end{aligned} $$</p>\n<p>में, $A, B, C$ सारणिक</p>\n<p>$$ \\left|\\begin{array}{lll} a & b & c \\ b & c & a \\ c & a & b \\end{array}\\right| $$</p>\n<p>में $a, b, c$ के सहखंड (cofactors) हैं।</p>\n<p>तो</p>\n<p>$$ \\frac{\\left(a^2+b^2+c^2-a b-b c-c a\\right)(a+b+c)}{\\left(3 x y z-x^3-y^3-z^3\\right)} $$</p>\n<p>का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "solutions-of-system-of-linear-equations-in-two-or-three-variables-using-determinants-and-matrices",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mr7t4zw3",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The value of ' $2 k$ ' for which the set of equations $3 x+k y-2 z=0, x+k y+3 z=0,2 x+3 y-4 z=0$ has a non-trivial solution over the set of rational is :</p>",
+                "options": [],
+                "answer": "33",
+                "explanation": "<p>For the homogeneous system</p>\n<p>$$ 3x+ky-2z=0 $$</p>\n<p>$$ x+ky+3z=0 $$</p>\n<p>$$ 2x+3y-4z=0 $$</p>\n<p>to have a non-trivial solution, the determinant of the coefficient matrix must be zero.</p>\n<p>The coefficient matrix is</p>\n<p>$$ \\begin{bmatrix} 3 & k & -2 \\\\ 1 & k & 3 \\\\ 2 & 3 & -4 \\end{bmatrix} $$</p>\n<p>So,</p>\n<p>$$ \\begin{vmatrix} 3 & k & -2 \\\\ 1 & k & 3 \\\\ 2 & 3 & -4 \\end{vmatrix} =0 $$</p>\n\n<p>$$ 3\\begin{vmatrix} k & 3 \\\\ 3 & -4 \\end{vmatrix} -k\\begin{vmatrix} 1 & 3 \\\\ 2 & -4 \\end{vmatrix} -2\\begin{vmatrix} 1 & k \\\\ 2 & 3 \\end{vmatrix} =0 $$</p>\n\n<p>$$ 3(-4k-9)-k(-4-6)-2(3-2k)=0 $$</p>\n<p>$$ -12k-27+10k-6+4k=0 $$</p>\n<p>$$ 2k-33=0 $$</p>\n<p>So,</p>\n<p>$$ 2k=33 $$</p>\n<p>Hence, the required value of $2k$ is</p>\n<p>$$ \\boxed{33} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>' $2 k$ ' का वह मान, जिसके लिए समीकरण निकाय $3 x+k y-2 z=0, x+k y+3 z=0,2 x+3 y-4 z=0$ का परिमेय संख्याओं के समुच्चय पर एक अतुच्छ हल है, है :</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "solutions-of-system-of-linear-equations-in-two-or-three-variables-using-determinants-and-matrices",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mr7ties8",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The equation $\\left[\\begin{array}{lll}1 & 2 & 2 \\\\ 1 & 3 & 4 \\\\ 3 & 4 & k\\end{array}\\right]\\left[\\begin{array}{l}x \\\\ y \\\\ z\\end{array}\\right]=\\left[\\begin{array}{l}0 \\\\ 0 \\\\ 0\\end{array}\\right]$ has a solution for $(x, y, z)$ besides $(0,0,0)$, then the value of $k$ is $\\_\\_\\_\\_$</p>",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>For the homogeneous system</p>\n<p>$$ \\begin{bmatrix} 1 & 2 & 2 \\\\ 1 & 3 & 4 \\\\ 3 & 4 & k \\end{bmatrix} \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 0 \\\\ 0 \\\\ 0 \\end{bmatrix}, $$</p>\n<p>a non-zero solution exists only when the determinant of the coefficient matrix is zero.</p>\n<p>So,</p>\n<p>$$ \\left| \\begin{array}{ccc} 1 & 2 & 2 \\\\ 1 & 3 & 4 \\\\ 3 & 4 & k \\end{array} \\right|=0 $$</p>\n<p>$$ =1(3k-16)-2(k-12)+2(4-9) $$</p>\n<p>$$ =3k-16-2k+24-10 $$</p>\n<p>$$ =k-2 $$</p>\n<p>For a non-trivial solution,</p>\n<p>$$ k-2=0 $$</p>\n<p>So,</p>\n<p>$$ k=2 $$</p>\n<p>Hence, the value of $k$ is</p>\n<p>$$ \\boxed{2} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>समीकरण $\\left[\\begin{array}{lll}1 & 2 & 2 \\\\ 1 & 3 & 4 \\\\ 3 & 4 & k\\end{array}\\right]\\left[\\begin{array}{l}x \\\\ y \\\\ z\\end{array}\\right]=\\left[\\begin{array}{l}0 \\\\ 0 \\\\ 0\\end{array}\\right]$ का $(0,0,0)$ के अतिरिक्त $(x, y, z)$ के लिए एक हल है, तो $k$ का मान \\_\\_\\_\\_ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "solutions-of-system-of-linear-equations-in-two-or-three-variables-using-determinants-and-matrices",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mr7toeho",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The sum of values of $p$ for which the equation $x+y+z=1, x+2 y+4 z=p$ and $x+4 y+10 z=p^2$ have a solution, is $\\_\\_\\_\\_$</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>Given,</p>\n<p>$$x+y+z=1$$ …(i)</p>\n<p>$$x+2y+4z=p$$…(ii)</p>\n<p>and</p>\n<p>$$x+4y+10z=p^2$$…(iii)</p>\n<p>$$ \\Delta= \\begin{vmatrix} 1 & 1 & 1\\\\ 1 & 2 & 4\\\\ 1 & 4 & 10 \\end{vmatrix} $$</p>\n<p>Applying $R_1 \\rightarrow R_1-R_2$ and $R_2 \\rightarrow R_2-R_3$, we get</p>\n<p>$$ \\begin{vmatrix} 0 & -1 & -3\\\\ 0 & -2 & -6\\\\ 1 & 4 & 10 \\end{vmatrix}=0 $$</p>\n<p>Since, $\\Delta=0$ solution is not unique.</p>\n<p>The system will have infinite solutions</p>\n<p>If $\\Delta_1=0, \\Delta_2=0, \\Delta_3=0$</p>\n<p>$$ \\Delta_1= \\begin{vmatrix} 1 & 1 & 1\\\\ p & 2 & 4\\\\ p^2 & 4 & 10 \\end{vmatrix}=0 $$</p>\n<p>Applying $C_3 \\rightarrow C_3-C_2$, we get</p>\n<p>$$ \\Delta_1= \\begin{vmatrix} 1 & 1 & 0\\\\ p & 2 & 2\\\\ p^2 & 4 & 6 \\end{vmatrix}=0 $$</p>\n<p>$$ \\Rightarrow 1(12-8)-1(6p-2p^2)=0 $$</p>\n<p>$$ \\Rightarrow 4-6p+2p^2=0 $$</p>\n<p>$$ \\Rightarrow 2(p^2-3p+2)=0 \\rightarrow p^2-3p+2=0 $$</p>\n<p>$$ \\Rightarrow p=1\\ \\text{or}\\ 2 $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$p$ के उन मानों का योग, जिनके लिए समीकरण $x+y+z=1, x+2 y+4 z=p$ और $x+4 y+10 z=p^2$ का एक हल है, \\_\\_\\_\\_ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "solutions-of-system-of-linear-equations-in-two-or-three-variables-using-determinants-and-matrices",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mr7tu3g9",
+            "chapter": "matrices-and-determinants",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The absolute value of a for which system of equations, $a^3 x+(a+1)^3 y+(a+2)^3 z=0$, $a x+(a+1) y+(a+2) z=0, x+y+z=0$, has a non-zero solution is :</p>",
+                "options": [],
+                "answer": "1",
+                "explanation": "<p>For a non-zero solution, the determinant of coefficients must be zero.</p>\n<p>$$\\begin{vmatrix} a^3 & (a+1)^3 & (a+2)^3 \\\\ a & a+1 & a+2 \\\\ 1 & 1 & 1 \\end{vmatrix} = 0$$</p>\n<p>Apply $C_2 \\to C_2 - C_1$ and $C_3 \\to C_3 - C_1$:</p>\n<p>$$\\begin{vmatrix} a^3 & (a+1)^3 - a^3 & (a+2)^3 - a^3 \\\\ a & 1 & 2 \\\\ 1 & 0 & 0 \\end{vmatrix} = 0$$</p>\n<p>Now expand along the third row:</p>\n<p>$$1 \\cdot \\left[ 2\\{(a+1)^3 - a^3\\} - \\{(a+2)^3 - a^3\\} \\right] = 0$$</p>\n<p>$(a+1)^3 - a^3 = 3a^2 + 3a + 1$</p>\n<p>$(a+2)^3 - a^3 = 6a^2 + 12a + 8$</p>\n<p>$$2(3a^2 + 3a + 1) - (6a^2 + 12a + 8) = 0$$</p>\n<p>$$6a^2 + 6a + 2 - 6a^2 - 12a - 8 = 0$$</p>\n<p>$$-6a - 6 = 0$$</p>\n<p>$$a = -1$$</p>\n<p>So the absolute value of $a$ is $1$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>a का वह निरपेक्ष मान जिसके लिए समीकरण निकाय, $a^3 x+(a+1)^3 y+(a+2)^3 z=0$, $a x+(a+1) y+(a+2) z=0, x+y+z=0$ का एक अशून्य हल है :</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "solutions-of-system-of-linear-equations-in-two-or-three-variables-using-determinants-and-matrices",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Product of Determinants, System of Equations",
+    "timeAllotted": 2160000,
+    "title": "Determinants Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mobgpqvn",
+    "defaultLanguage": "en",
+    "description": "Product of Determinants, System of Equations",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-05T14:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Product of Determinants, System of Equations",
+    "timeAllotted": 2160000,
+    "title": "Determinants Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Mathematics",
+    "_section": "Determinants"
+  }
+}

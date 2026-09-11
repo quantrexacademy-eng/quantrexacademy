@@ -1,0 +1,69 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19156220c83fbf1e0bce11",
+  "chapterId": "6a192b9fe4cc9575516b565f",
+  "subject": "Physics",
+  "chapter": "Thermal Properties of Matter",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec170ef1faeb9633e23b8",
+      "title": "Thermal Expansion",
+      "count": 3,
+      "questionIds": [
+        "6a1ec0adef1faeb9633e1efa",
+        "6a1ec152ef1faeb9633e2309",
+        "6a1ec00eef1faeb9633e1b11"
+      ]
+    },
+    {
+      "id": "6a1ec170ef1faeb9633e23b9",
+      "title": "Radiation",
+      "count": 15,
+      "questionIds": [
+        "6a1ec074ef1faeb9633e1d91",
+        "6a1ec06eef1faeb9633e1d6c",
+        "6a1ec0cdef1faeb9633e1fc4",
+        "6a1ec0afef1faeb9633e1f06",
+        "6a1ec093ef1faeb9633e1e54",
+        "6a1ec08fef1faeb9633e1e3a",
+        "6a1ec08eef1faeb9633e1e36",
+        "6a1ec030ef1faeb9633e1be6",
+        "6a1ec12eef1faeb9633e2226",
+        "6a1ec12eef1faeb9633e2225",
+        "6a1ec12cef1faeb9633e2219",
+        "6a1ec14def1faeb9633e22e4",
+        "6a1ec010ef1faeb9633e1b1e",
+        "6a1ec10eef1faeb9633e2156",
+        "6a1ec04fef1faeb9633e1caa"
+      ]
+    },
+    {
+      "id": "6a1ec170ef1faeb9633e23ba",
+      "title": "Calorimetry",
+      "count": 1,
+      "questionIds": [
+        "6a1ec02eef1faeb9633e1bd9"
+      ]
+    },
+    {
+      "id": "6a1ec171ef1faeb9633e23bb",
+      "title": "Conduction",
+      "count": 2,
+      "questionIds": [
+        "6a1ec0f3ef1faeb9633e20aa",
+        "6a1ec054ef1faeb9633e1cca"
+      ]
+    },
+    {
+      "id": "6a1ec171ef1faeb9633e23bc",
+      "title": "Thermometry",
+      "count": 2,
+      "questionIds": [
+        "6a1ec0d3ef1faeb9633e1fe9",
+        "6a1ec113ef1faeb9633e2179"
+      ]
+    }
+  ]
+}

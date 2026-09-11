@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mpe6cwmv",
+  "title": "Chemical Bonding & Molecular Structure Test - 3 (Topic Test)",
+  "type": "topic",
+  "section": "Chemical Bonding & Molecular Structure",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-08-18T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "00cf932a-4a4b-4cb2-8503-6800bfa64acd",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61mpe6cwmv",
+    "defaultLanguage": "en",
+    "description": "VSEPR Theory, Structure and Bond Angle of Molecules",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-18T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mswmf7t6",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following is V-shaped (angular)?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$S_3^{2-}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$I_3^-$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$N_3^-$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<h3>1. Analysis of $S_3^{2-}$</h3>\n<ul>\n<li><p><strong>Structure:</strong> The central sulfur atom is bonded to two other sulfur atoms.</p></li>\n<li><p><strong>Electron Pairs:</strong> The central atom has 2 bond pairs and 2 lone pairs.</p></li>\n<li><p><strong>Steric Number:</strong> $2 \\text{ (bond pairs)} + 2 \\text{ (lone pairs)} = 4$.</p></li>\n<li><p><strong>Hybridization:</strong> $sp^3$.</p></li>\n<li><p><strong>Shape:</strong> The expected tetrahedral geometry is distorted by the two lone pairs, resulting in a <strong>bent or V-shaped (angular)</strong> shape.</p></li>\n</ul>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mswm8cob%2Fdb48a4b4-72e0-43a4-93bc-8e7ef0256eef%2F7c184fb0-99e3-11f1-9a5a-ffb5eaff2a92%2Ffile-6y3zli1mswm8coc.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mswm8cob%2Fdb48a4b4-72e0-43a4-93bc-8e7ef0256eef%2F7c184fb0-99e3-11f1-9a5a-ffb5eaff2a92%2Ffile-6y3zli1mswm8coc.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<h3>2. Analysis of $I_3^{-}$</h3>\n<ul>\n<li><p><strong>Structure:</strong> The central iodine atom is bonded to two other iodine atoms via single bonds.</p></li>\n<li><p><strong>Electron Pairs:</strong> The central atom has 2 bond pairs and 3 lone pairs.</p></li>\n<li><p><strong>Steric Number:</strong> $2 + 3 = 5$.</p></li>\n<li><p><strong>Hybridization:</strong> $sp^3d$.</p></li>\n<li><p><strong>Shape:</strong> The three lone pairs occupy the equatorial positions to minimize repulsion, leaving the atoms in a <strong>linear</strong> arrangement.</p></li>\n</ul>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mswmbxrk%2F949e8315-6fd3-417e-a520-46088a32b0f5%2Fdfd06b00-99e3-11f1-9a5a-ffb5eaff2a92%2Ffile-6y3zli1mswmbxrl.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mswmbxrk%2F949e8315-6fd3-417e-a520-46088a32b0f5%2Fdfd06b00-99e3-11f1-9a5a-ffb5eaff2a92%2Ffile-6y3zli1mswmbxrl.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<h3>3. Analysis of $N_3^{-}$</h3>\n<ul>\n<li><p><strong>Structure:</strong> The central nitrogen atom is bonded to two other nitrogen atoms (drawn in the video with a triple bond to one nitrogen and a single bond to the other).</p></li>\n<li><p><strong>Electron Pairs:</strong> The central nitrogen has 2 sigma bond pairs and 0 lone pairs.</p></li>\n<li><p><strong>Steric Number:</strong> $2$.</p></li>\n<li><p><strong>Hybridization:</strong> $sp$.</p></li>\n<li><p><strong>Shape:</strong> Because there are no lone pairs on the central atom to distort the bonds, the shape is strictly <strong>linear</strong>.</p></li>\n</ul>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mswmejeq%2Fc665cded-cfcf-4563-ba75-e27208834e08%2F2826ca20-99e4-11f1-9a5a-ffb5eaff2a92%2Ffile-6y3zli1mswmejer.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mswmejeq%2Fc665cded-cfcf-4563-ba75-e27208834e08%2F2826ca20-99e4-11f1-9a5a-ffb5eaff2a92%2Ffile-6y3zli1mswmejer.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<h3>Conclusion</h3>\n<p>Since $S_3^{2-}$ is the only molecule analyzed that exhibits an angular geometry, the correct answer is <strong>Option (A)</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से कौन V-आकार (कोणीय) है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$S_3^{2-}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$I_3^-$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$N_3^-$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msxpr8m8",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In which of the following species maximum atom can lie in same plane?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>XeF$_2$O$_2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>PCl$_5$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>AsH$_4^+$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>XeF$_4$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>We have to analyze the structure and geometry of each species and then determine the maximum number of atoms that can lie in the same plane.</p>\n<p>A. $\\mathrm{XeF}_2 \\mathrm{O}_2$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msxp4dnk%2Fe27ac002-3923-4705-bb45-bba1cb5eb7c2%2F91a6d200-9a7b-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxp4dnl.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msxp4dnk%2Fe27ac002-3923-4705-bb45-bba1cb5eb7c2%2F91a6d200-9a7b-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxp4dnl.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>It has a trigonal bipyramidal geometry. Here, the maximum number of atoms in the same plane is $4(\\mathrm{Xe}, \\mathrm{F}, \\mathrm{F}$, and O$)$.</p>\n<p>B. $\\mathrm{PCl}_5$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msxpdmcp%2F8521d56d-315e-44e2-9100-7081c12f4db3%2F92a73590-9a7c-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxpdmcq.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msxpdmcp%2F8521d56d-315e-44e2-9100-7081c12f4db3%2F92a73590-9a7c-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxpdmcq.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>It also has a trigonal bipyramidal structure; here, the maximum number of atoms is 4 (P and 3Cl).</p>\n<p>C. $\\mathrm{AsH}_4{ }^{+}$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msxphn3u%2Ffd880d13-a9a4-4f67-a370-a9137f84ccab%2F0278d9a0-9a7d-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxphn3v.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msxphn3u%2Ffd880d13-a9a4-4f67-a370-a9137f84ccab%2F0278d9a0-9a7d-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxphn3v.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>It has a tetrahedral shape; here, the coplanar atoms are 3 ( As and 2H atoms).</p>\n<p>D. $\\mathrm{XeF}_4$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msxpowm1%2Ff90231c8-a896-42cf-971c-4005bf2c8f6c%2Fcc7a9090-9a7d-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxpowm2.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msxpowm1%2Ff90231c8-a896-42cf-971c-4005bf2c8f6c%2Fcc7a9090-9a7d-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxpowm2.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$\\mathrm{XeF}_4$ has a square planar structure, where 5 atoms lie in the same plane ( Xe and 4 F atoms).</p>\n<p>Since $\\mathrm{XeF}_4$ has the maximum coplanar atoms (5). Therefore, our answer is D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से किस स्पीशीज़ में अधिकतम परमाणु एक ही तल में स्थित हो सकते हैं?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>XeF$_2$O$_2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>PCl$_5$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>AsH$_4^+$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>XeF$_4$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msxpyjpb",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Correct statement regarding molecules SF<sub>4</sub>, CF<sub>4</sub> and XeF<sub>4</sub> are :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2, 0, and 1 lone pairs on the central atom, respectively</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1, 0, and 1 lone pairs on the central atom, respectively</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0, 0, and 2 lone pairs on the central atom, respectively</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1, 0, and 2 lone pairs on the central atom, respectively</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>S has 6 valence electrons, C has 4, and Xe has 8. We have to draw the structure to understand the lone pair on the central atom.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msxpv0p0%2F9b886415-96fc-48d0-840f-b6b6b44f1371%2F767cc040-9a7e-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxpv0p1.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msxpv0p0%2F9b886415-96fc-48d0-840f-b6b6b44f1371%2F767cc040-9a7e-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxpv0p1.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$\\mathrm{SF}_4$ forms a see-saw shape, and it has 1 lone pair on the central atom.</p>\n<p>$\\mathrm{CF}_4$ forms a tetrahedral shape, and it has 0 lone pairs on the central atom.</p>\n<p>$\\mathrm{XeF}_4$ forms a square planar shape, and it has 2 lone pairs on the central atom.</p>\n<p>Therefore, our answer is D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अणुओं SF<sub>4</sub>, CF<sub>4</sub> और XeF<sub>4</sub> के संबंध में सही कथन है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>केंद्रीय परमाणु पर क्रमशः 2, 0, और 1 एकाकी युग्म हैं</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>केंद्रीय परमाणु पर क्रमशः 1, 0, और 1 एकाकी युग्म हैं</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>केंद्रीय परमाणु पर क्रमशः 0, 0, और 2 एकाकी युग्म हैं</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>केंद्रीय परमाणु पर क्रमशः 1, 0, और 2 एकाकी युग्म हैं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msxq4cv8",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The geometrical arrangement of orbitals and shape of $I_3^-$ are respectively :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Trigonal bipyramidal geometry, linear shape</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Hexagonal geometry, T-shape</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Triangular planar geometry, triangular shape</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Tetrahedral geometry, pyramidal shape</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>First, we have to find the hybridization of $I_3^-$ molecule.</p>\n<p>$$H = \\frac{1}{2}(V + M - C + A)$$</p>\n<p>Here, $V$ = number of the valence electrons in the atom,</p>\n<p>$M$ = number of the monovalent atoms bonded to the central atom,</p>\n<p>$C$ = the charge on the cation</p>\n<p>$A$ = the charge on the anion</p>\n<p>Applying this we get, $$H = (7+2+1)/2 = 10/2 = 5$$</p>\n<p>So, the hybridization is $sp^3$ implies it has a Trigonal bipyramidal geometry</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msxq0fvx%2F66c58c4f-0268-4a75-bb96-ac1b8e766c3f%2F0d44c1d0-9a7f-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxq0fvy.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msxq0fvx%2F66c58c4f-0268-4a75-bb96-ac1b8e766c3f%2F0d44c1d0-9a7f-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxq0fvy.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Regarding the shape, the three lone pairs occupy the equatorial positions to minimize repulsion. Therefore, it has a linear shape.</p>\n<p>Answer : A</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$I_3^-$ के कक्षकों की ज्यामितीय व्यवस्था और आकृति क्रमशः हैं:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>त्रिकोणीय द्विपिरामिडीय ज्यामिति, रैखिक आकृति</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>षट्कोणीय ज्यामिति, T-आकृति</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>त्रिकोणीय समतलीय ज्यामिति, त्रिकोणीय आकृति</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>चतुष्फलकीय ज्यामिति, पिरामिडीय आकृति</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msxqh4yv",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The correct order of bond angle is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>NO$_2^+$ &gt; NO$_3^-$ &gt; NO$_2^-$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>NO$_2^+$ &gt; NO$_2^-$ &gt; NO$_3^-$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>NO$_2^-$ &gt; NO$_2^+$ &gt; NO$_3^-$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>NO$_2^-$ &gt; NO$_3^-$ &gt; NO$_2^+$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msxqggqi%2Fe50f9848-f079-48a3-a298-efbbfbad2b20%2Fcadf01a0-9a80-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxqggqj.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msxqggqi%2Fe50f9848-f079-48a3-a298-efbbfbad2b20%2Fcadf01a0-9a80-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxqggqj.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>आबंध कोण का सही क्रम है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>NO$_2^+$ &gt; NO$_3^-$ &gt; NO$_2^-$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>NO$_2^+$ &gt; NO$_2^-$ &gt; NO$_3^-$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>NO$_2^-$ &gt; NO$_2^+$ &gt; NO$_3^-$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>NO$_2^-$ &gt; NO$_3^-$ &gt; NO$_2^+$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msxqch0f",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The shapes of $\\mathrm{CF_3^-}$, $\\mathrm{PCl_4^-}$ and $\\mathrm{BrF_5}$ respectively are</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>tetrahedral, pentagonal bipyramidal and octahedral.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>trigonal planar, tetrahedral and pentagonal bipyramidal.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>pyramidal, triangular pyramidal and square pyramidal.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>pyramidal, see-saw and square pyramidal.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msxqaud0%2F055c5b33-ac50-49c7-be5d-161c5cd360bb%2F2e8a8f40-9a80-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxqaud1.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msxqaud0%2F055c5b33-ac50-49c7-be5d-161c5cd360bb%2F2e8a8f40-9a80-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxqaud1.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msxqbu08%2Fc3d4d88d-40f2-4e5b-b346-026304fc9509%2F4a138280-9a80-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxqbu09.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msxqbu08%2Fc3d4d88d-40f2-4e5b-b346-026304fc9509%2F4a138280-9a80-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxqbu09.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\mathrm{CF_3^-}$, $\\mathrm{PCl_4^-}$ और $\\mathrm{BrF_5}$ की आकृतियाँ क्रमशः हैं</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>चतुष्फलकीय, पंचकोणीय द्विपिरामिडीय और अष्टफलकीय।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>त्रिकोणीय समतलीय, चतुष्फलकीय और पंचकोणीय द्विपिरामिडीय।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>पिरामिडीय, त्रिकोणीय पिरामिडीय और वर्ग पिरामिडीय।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>पिरामिडीय, सी-सॉ और वर्ग पिरामिडीय।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msxquylp",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Select pair of compounds in which both have different hybridisation but have the same molecular geometry:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>BF<sub>3</sub>, BrF<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>ICl<sub>2</sub><sup>-</sup>, BeCl<sub>2</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>BCl<sub>3</sub>, PCl<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>PCl<sub>3</sub>, NCl<sub>3</sub></p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msxqrymh%2Fae3a4e37-e4fa-4297-8277-c6fc4c60f66e%2F0a96ff90-9a82-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxqrymi.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msxqrymh%2Fae3a4e37-e4fa-4297-8277-c6fc4c60f66e%2F0a96ff90-9a82-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxqrymi.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msxqskpo%2Fe1a43689-672f-4f71-9648-479147de1795%2F1ba721c0-9a82-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxqskpp.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msxqskpo%2Fe1a43689-672f-4f71-9648-479147de1795%2F1ba721c0-9a82-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxqskpp.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msxqtl7i%2Ffee0a3b5-ac9b-4f04-9255-94ddd5fc4eb9%2F37d83be0-9a82-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxqtl7j.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msxqtl7i%2Ffee0a3b5-ac9b-4f04-9255-94ddd5fc4eb9%2F37d83be0-9a82-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxqtl7j.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msxquf4n%2F6997ec89-0a9a-4620-a86d-c1f70685a172%2F4ef52270-9a82-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxquf4o.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msxquf4n%2F6997ec89-0a9a-4620-a86d-c1f70685a172%2F4ef52270-9a82-11f1-92fd-cfb39faab82a%2Ffile-6y3zli1msxquf4o.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यौगिकों के उस युग्म का चयन कीजिए जिसमें दोनों का संकरण भिन्न है लेकिन आणविक ज्यामिति समान है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>BF<sub>3</sub>, BrF<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>ICl<sub>2</sub><sup>-</sup>, BeCl<sub>2</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>BCl<sub>3</sub>, PCl<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>PCl<sub>3</sub>, NCl<sub>3</sub></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msxzztw9",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Find the species which is not perfectly planar</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>CH<sub>3</sub><sup>&#8226;</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "$$\\mathop C\\limits^ \\bullet  H{F_2}$$"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>:CH<sub>2</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "$$\\mathop N\\limits^ \\bullet  {O_2}$$"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msxzy4e0%2F64d8ebd4-3d3b-4dd8-9b7e-77796f0d23ea%2Fe80f8a90-9aa5-11f1-89dd-dd277fd0ad41%2Ffile-6y3zli1msxzy4e1.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msxzy4e0%2F64d8ebd4-3d3b-4dd8-9b7e-77796f0d23ea%2Fe80f8a90-9aa5-11f1-89dd-dd277fd0ad41%2Ffile-6y3zli1msxzy4e1.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>वह स्पीशीज़ ज्ञात कीजिए जो पूर्णतः समतलीय नहीं है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>CH<sub>3</sub><sup>&#8226;</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "$$\\mathop C\\limits^ \\bullet  H{F_2}$$"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>:CH<sub>2</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "$$\\mathop N\\limits^ \\bullet  {O_2}$$"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msy04a12",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The hybrid state of phosphorus in each PCl<sub>5</sub> and PBr<sub>5</sub> in gaseous phase are ‘x’. But in solid phase ‘P’ in PCl<sub>5</sub> phosphorus shows ‘y’ and ‘z’ hybrid state while P in PBr<sub>5</sub> is in ‘z’ hybrid state.</p><p>The value of x, y and z are respectively.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>sp<sup>3</sup>d, sp<sup>3</sup>, sp<sup>3</sup>d<sup>2</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>sp<sup>3</sup>, sp<sup>3</sup>, sp<sup>3</sup>d</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>sp<sup>3</sup>d, sp<sup>3</sup>d<sup>2</sup>, sp<sup>3</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>sp<sup>3</sup>d, sp<sup>3</sup>d, sp<sup>3</sup>d<sup>2</sup></p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The hybrid state of phosphorus in each $\\mathrm{PCl}_5$ and $\\mathrm{PBr}_5$ in gaseous phase are $s p^3 d$.</p>\n<p>$\\mathrm{PCl}_5$ in solid form exists as $\\left[\\mathrm{PCl}_6\\right]^{\\ominus}\\left[\\mathrm{PCl}_4\\right]^{\\oplus}$</p>\n<p>The hybridisation of $\\left[\\mathrm{PCl}_6\\right]^{\\ominus}$ is $s p^3 d^2$ and $\\left[\\mathrm{PCl}_4\\right]^{\\oplus}$ is $s p^3$.</p>\n<p>$\\mathrm{PBr}_5$ is solid form exists as $\\left[\\mathrm{PBr}_4\\right]^{+}\\left[\\mathrm{Br}^{\\ominus}\\right.$</p>\n<p>The hybridisation of $\\left[\\mathrm{PBr}_4\\right]^{\\oplus}$ is $s p^3$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>गैसीय अवस्था में PCl<sub>5</sub> और PBr<sub>5</sub> प्रत्येक में फॉस्फोरस की संकरण अवस्था 'x' है। लेकिन ठोस अवस्था में PCl<sub>5</sub> में फॉस्फोरस 'y' और 'z' संकरण अवस्था दर्शाता है, जबकि PBr<sub>5</sub> में P 'z' संकरण अवस्था में होता है।</p><p>x, y और z के मान क्रमशः हैं:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>sp<sup>3</sup>d, sp<sup>3</sup>, sp<sup>3</sup>d<sup>2</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>sp<sup>3</sup>, sp<sup>3</sup>, sp<sup>3</sup>d</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>sp<sup>3</sup>d, sp<sup>3</sup>d<sup>2</sup>, sp<sup>3</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>sp<sup>3</sup>d, sp<sup>3</sup>d, sp<sup>3</sup>d<sup>2</sup></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msy0hbuu",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which species is planar?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\ce{CO3^{2-}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\ce{SO3^{2-}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\ce{ClO3^{-}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\ce{BF4^{-}}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msy0cw3o%2F8f54feec-c943-4ba4-aa84-46418c97486c%2F82cbdb50-9aa7-11f1-89dd-dd277fd0ad41%2Ffile-6y3zli1msy0cw3p.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msy0cw3o%2F8f54feec-c943-4ba4-aa84-46418c97486c%2F82cbdb50-9aa7-11f1-89dd-dd277fd0ad41%2Ffile-6y3zli1msy0cw3p.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>कौन-सी स्पीशीज़ समतलीय है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\ce{CO3^{2-}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\ce{SO3^{2-}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\ce{ClO3^{-}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\ce{BF4^{-}}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msy08iks",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>BrF<sub>3</sub> is a liquid which considerably undergoes self ionisation to form cationic and anionic species. Based on VSEPR theory, number of 90 degree F—Br—F bond angles in anionic species are</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>The self ionisation of $\\mathrm{BrF}_3$ proceeds are</p>\n<p>$$ 2 \\mathrm{BrF}_3 \\rightleftharpoons\\left[\\mathrm{BrF}_2\\right]^{+}+\\left[\\mathrm{BrF}_4\\right]^{\\ominus} $$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msy072b3%2Fb8575e91-bc2e-499e-933a-d0a0d388d58d%2Fe0bc1ff0-9aa6-11f1-89dd-dd277fd0ad41%2Ffile-6y3zli1msy072b4.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msy072b3%2Fb8575e91-bc2e-499e-933a-d0a0d388d58d%2Fe0bc1ff0-9aa6-11f1-89dd-dd277fd0ad41%2Ffile-6y3zli1msy072b4.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>it is a planar molecule there are $4,90^{\\circ} \\mathrm{F}-\\mathrm{Br}-\\mathrm{F}$ bond angles.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>BrF<sub>3</sub> एक द्रव है जो धनायनिक और ऋणायनिक स्पीशीज़ बनाने के लिए काफी हद तक स्व-आयनन से गुजरता है। VSEPR सिद्धांत के आधार पर, ऋणायनिक स्पीशीज़ में 90 डिग्री के F—Br—F बंध कोणों की संख्या है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msy0s9oi",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In $\\mathrm{ICl}_2^{+}, \\mathrm{ICl}_2^{-}$and $\\mathrm{ICl}_4^{-}$, the total sum of the bond pairs and lone pairs on each iodine atom is</p>",
+                "options": [],
+                "answer": "15",
+                "explanation": "<p>Structure of $\\mathrm{ICl}_2^{+}, \\mathrm{ICl}_2^{-}$and $\\mathrm{ICl}_4^{-}$are</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msy0pyno%2F1c3d008b-8f7f-4534-b3f7-5e363892a2b4%2Fee49e740-9aa8-11f1-89dd-dd277fd0ad41%2Ffile-6y3zli1msy0pynp.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msy0pyno%2F1c3d008b-8f7f-4534-b3f7-5e363892a2b4%2Fee49e740-9aa8-11f1-89dd-dd277fd0ad41%2Ffile-6y3zli1msy0pynp.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Total sum of bond pair and lone pair on iodine atom in each structure is $8+7=15$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\mathrm{ICl}_2^{+}, \\mathrm{ICl}_2^{-}$और $\\mathrm{ICl}_4^{-}$ में, प्रत्येक आयोडीन परमाणु पर आबंध युग्मों और एकाकी युग्मों का कुल योग है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msy11w3i",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Number of lone pair-bond pair repulsion at 90° are $(P)$ in $\\mathrm{I}_3^{-}$.</p>\n<p>Number of lone pair- bond pair repulsion at 90° are (Q) in $\\mathrm{ICl}_4^{-}$.</p>\n<p>Find difference of $(P)$ and $(Q)$.</p>",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>The structure of $\\mathrm{I}_3^{-}$and $\\mathrm{ICl}_4^{-}$are respectively.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msy0zer6%2F742f7ee2-eb4b-4d40-a97a-8b3c66d9ce84%2Ff5017520-9aa9-11f1-89dd-dd277fd0ad41%2Ffile-6y3zli1msy0zer7.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msy0zer6%2F742f7ee2-eb4b-4d40-a97a-8b3c66d9ce84%2Ff5017520-9aa9-11f1-89dd-dd277fd0ad41%2Ffile-6y3zli1msy0zer7.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Hence, the difference of $(P)$ and $(Q)$ is 2 .</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\mathrm{I}_3^{-}$ में 90° पर एकाकी युग्म-आबंध युग्म प्रतिकर्षणों की संख्या $(P)$ है।</p><p>$\\mathrm{ICl}_4^{-}$ में 90° पर एकाकी युग्म-आबंध युग्म प्रतिकर्षणों की संख्या (Q) है।</p><p>$(P)$ और $(Q)$ का अंतर ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msy1nd8h",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>How many of the following species are planar?</p>\n<p>$$ \\mathrm{PCl}_3, \\mathrm{NH}_2^{-}, \\mathrm{BrF}_3, \\mathrm{XeO}_2 \\mathrm{~F}_2, \\mathrm{XeF}_4, \\mathrm{SiO}_2, \\mathrm{CO}_2, \\mathrm{SF}_4 $$</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<ol>\n<li><p>$\\mathrm{PCl}_3$: Phosphorus has 5 valence electrons. It forms 3 bond pairs with chlorine atoms and has 1 lone pair. The steric number is 4 ($sp^3$ hybridized), giving it a <strong>trigonal pyramidal</strong> shape. Since the atoms do not lie in one plane, it is non-planar.</p></li>\n<li><p>$\\mathrm{NH}_2^{-}$: Nitrogen has 5 valence electrons, plus 1 extra electron from the negative charge, making 6. It forms 2 bond pairs with hydrogen atoms and has 2 lone pairs. The shape is <strong>bent (V-shaped)</strong>. Because any triatomic molecule or ion has its three nuclei lying in a single plane, it is planar.</p></li>\n<li><p>$\\mathrm{BrF}_3$: Bromine has 7 valence electrons. It forms 3 bond pairs with fluorine atoms and has 2 lone pairs ($sp^3d$ hybridized). To minimize repulsion, the lone pairs occupy equatorial positions, resulting in a <strong>T-shaped</strong> geometry. All four atoms lie in a single plane, so it is planar.</p></li>\n<li><p>$\\mathrm{XeO}_2\\mathrm{F}_2$: Xenon has 8 valence electrons. It forms 2 double bonds with oxygen and 2 single bonds with fluorine, leaving 1 lone pair ($sp^3d$ hybridized). This forms a <strong>seesaw</strong> shape, which is non-planar.</p></li>\n<li><p>$\\mathrm{XeF}_4$: Xenon forms 4 bond pairs with fluorine atoms and has 2 lone pairs ($sp^3d^2$ hybridized). The lone pairs sit opposite each other in axial positions, leaving the four fluorine atoms arranged around xenon in a single plane. This gives a <strong>square planar</strong> shape, so it is planar.</p></li>\n<li><p>$\\mathrm{SiO}_2$: Silicon dioxide exists as a continuous three-dimensional covalent network solid where each silicon atom is tetrahedrally linked to four oxygen atoms. Therefore, it is non-planar.</p></li>\n<li><p>$\\mathrm{CO}_2$: Carbon forms 2 double bonds with oxygen atoms and has no lone pairs ($sp$ hybridized). The geometry is <strong>linear</strong>, meaning all three atoms lie on a straight line, so it is planar.</p></li>\n<li><p>$\\mathrm{SF}_4$: Sulfur has 6 valence electrons, forming 4 bond pairs and keeping 1 lone pair ($sp^3d$ hybridized). This gives a <strong>seesaw</strong> shape, which is non-planar.</p></li>\n</ol>\n<p>The planar species among the given options are $\\mathrm{NH}_2^{-}$, $\\mathrm{BrF}_3$, $\\mathrm{XeF}_4$, and $\\mathrm{CO}_2$.</p>\n<p>Out of the given 8 species, <strong>4</strong> are planar.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से कितनी स्पीशीज़ समतलीय (planar) हैं?</p><p>$$ \\mathrm{PCl}_3, \\mathrm{NH}_2^{-}, \\mathrm{BrF}_3, \\mathrm{XeO}_2 \\mathrm{~F}_2, \\mathrm{XeF}_4, \\mathrm{SiO}_2, \\mathrm{CO}_2, \\mathrm{SF}_4 $$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msy1v2sn",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Number of molecules or ions which has/have any bond angle of $120^{\\circ}$ is</p>\n<p>$$ \\stackrel{-}{\\mathrm{C}} \\mathrm{H}_3, \\stackrel{\\oplus}{\\mathrm{C}} \\mathrm{H}_3, \\mathrm{NH}_3, \\mathrm{CO}_3^{2-}, \\mathrm{BCl}_3, \\mathrm{PCl}_5 $$</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>The species which have at least one bond angle of $120^\\circ$ are:</p>\n<p>$$\\overset{+}{\\mathrm{C}}\\mathrm{H}_3,\\ \\mathrm{CO}_3^{2-},\\ \\mathrm{BCl}_3,\\ \\mathrm{PCl}_5$$</p>\n<p>Using VSEPR idea:</p>\n<ul>\n<li><p>$\\overset{-}{\\mathrm{C}}\\mathrm{H}_3$ has $3$ bond pairs and $1$ lone pair on carbon.  </p>\n<p>Its shape is pyramidal, similar to $\\mathrm{NH}_3$, so the bond angle is not $120^\\circ$.</p></li>\n<li><p>$\\overset{+}{\\mathrm{C}}\\mathrm{H}_3$ has $3$ bond pairs and no lone pair on carbon.  </p>\n<p>It is trigonal planar, so:</p>\n<p>$$\\angle \\mathrm{HCH}=120^\\circ$$</p></li>\n<li><p>$\\mathrm{NH}_3$ has $3$ bond pairs and $1$ lone pair on nitrogen.  </p>\n<p>It is pyramidal with bond angle about $107^\\circ$, not $120^\\circ$.</p></li>\n<li><p>$\\mathrm{CO}_3^{2-}$ is trigonal planar around carbon, so:</p>\n<p>$$\\angle \\mathrm{OCO}=120^\\circ$$</p></li>\n<li><p>$\\mathrm{BCl}_3$ is trigonal planar, so:</p>\n<p>$$\\angle \\mathrm{ClBCl}=120^\\circ$$</p></li>\n<li><p>$\\mathrm{PCl}_5$ has trigonal bipyramidal geometry.  </p>\n<p>The angle between two equatorial chlorine atoms is:</p>\n<p>$$120^\\circ$$</p></li>\n</ul>\n<p>So, the number of species having any bond angle of $120^\\circ$ is</p>\n<p>$$\\boxed{4}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$120^{\\circ}$ का आबंध कोण रखने वाले अणुओं या आयनों की संख्या है:</p> <p>$$ \\stackrel{-}{\\mathrm{C}} \\mathrm{H}_3, \\stackrel{\\oplus}{\\mathrm{C}} \\mathrm{H}_3, \\mathrm{NH}_3, \\mathrm{CO}_3^{2-}, \\mathrm{BCl}_3, \\mathrm{PCl}_5 $$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "VSEPR Theory, Structure and Bond Angle of Molecules",
+    "timeAllotted": 2160000,
+    "title": "Chemical Bonding & Molecular Structure Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mpe6cwmv",
+    "defaultLanguage": "en",
+    "description": "VSEPR Theory, Structure and Bond Angle of Molecules",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-18T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "VSEPR Theory, Structure and Bond Angle of Molecules",
+    "timeAllotted": 2160000,
+    "title": "Chemical Bonding & Molecular Structure Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Chemical Bonding & Molecular Structure"
+  }
+}

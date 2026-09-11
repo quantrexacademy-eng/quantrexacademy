@@ -1,0 +1,39 @@
+{
+  "examSlug": "kcet",
+  "examId": "62962075e7f8e9ac4daeafda",
+  "subjectId": "62962075e7f8e9ac4daeafd7",
+  "chapterId": "6296212199d37d09c0a9daba",
+  "subject": "Physics",
+  "chapter": "Communication System",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64cc9b3c08d12fed62b18ed9",
+      "title": "Communication System",
+      "count": 5,
+      "questionIds": [
+        "64cc9aa608d12fed62b188a3",
+        "64cc9aa308d12fed62b18887",
+        "64cc9a9108d12fed62b187ec",
+        "64cc9a7b08d12fed62b18727",
+        "64cc9a6908d12fed62b18685"
+      ]
+    },
+    {
+      "id": "64cc9b3c08d12fed62b18ed8",
+      "title": "Propagation of EM Waves",
+      "count": 1,
+      "questionIds": [
+        "64cc9a5108d12fed62b185b1"
+      ]
+    },
+    {
+      "id": "64cc9b3c08d12fed62b18ed7",
+      "title": "Modulation",
+      "count": 1,
+      "questionIds": [
+        "64cc9a5108d12fed62b185af"
+      ]
+    }
+  ]
+}

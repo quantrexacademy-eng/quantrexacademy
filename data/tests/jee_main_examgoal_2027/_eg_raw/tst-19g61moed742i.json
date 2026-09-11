@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61moed742i",
+  "title": "Probability Test - 1 (Topic Test)",
+  "type": "topic",
+  "section": "Probability",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Mathematics",
+  "isUpcoming": false,
+  "liveAt": "2026-07-23T15:30:00.000Z",
+  "status": "ok",
+  "analysisId": "667029dc-68e7-4d54-849d-0f6d97369293",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g61moed742i",
+    "defaultLanguage": "en",
+    "description": "Classical Defininition of Probability, Permutation and Combination Based Problem",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-23T15:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrxkvp2b",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A 4 digit number is randomly picked from all the 4 digit numbers, then the probability that the product of its digits is divisible by 3 is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{107}{125}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{109}{125}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{111}{125}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p><b>Assumptions :</b></p>\n<ol>\n\n<li><p>$A$ is the event that the product of the digits is divisible by $3$</p></li>\n\n<li><p>$B$ is the event that the product of the digits is not divisible by $3$</p></li>\n\n<li><p>$N_e$ and $N_f$ are the total number of exhaustive and favourable cases</p></li>\n\n</ol>\n<p><b>Mathematical Synthesis :</b></p>\n<p>Exhaustive cases : $1000,\\\\ 1001,\\\\ 1002,\\\\ 1003,\\\\ 1004,\\\\ 1005,\\ \\ldots,\\ 9999$ : $N_e = 9000$ ….. $(i)$</p>\n<p>By theory of complement : $P(A) = 1 - P(B)$ ….. $(ii)$</p>\n<p>Let us count all the $4$ digit numbers where product of digits for each number is not divisible by $3$ :</p>\n<p>The mutually exclusive segregation for atleast any one of the $4$ digits $(d_i)$ : $i \\in \\{1,2,3,4\\}$ are as follows :</p>\n<table>\n\n  <tr>\n\n    <th>$(d_1)\\cdot(d_2)\\cdot(d_3)\\cdot(d_4)$</th>\n\n    <th>$d_1$</th>\n\n    <th>$d_2$</th>\n\n    <th>$d_3$</th>\n\n    <th>$d_4$</th>\n\n    <th>Remarks</th>\n\n  </tr>\n\n  <tr>\n\n    <td>Divisible by 3</td>\n\n    <td>$\\in \\{3,6,9\\}$</td>\n\n    <td>$\\in \\{0,3,6,9\\}$</td>\n\n    <td>$\\in \\{0,3,6,9\\}$</td>\n\n    <td>$\\in \\{0,3,6,9\\}$</td>\n\n    <td>At least 1 digit must comply</td>\n\n  </tr>\n\n  <tr>\n\n    <td>Not divisible by 3</td>\n\n    <td>$\\in \\{1,2,4,5,7,8\\}$</td>\n\n    <td>$\\in \\{1,2,4,5,7,8\\}$</td>\n\n    <td>$\\in \\{1,2,4,5,7,8\\}$</td>\n\n    <td>$\\in \\{1,2,4,5,7,8\\}$</td>\n\n    <td>All 4 digits must comply</td>\n\n  </tr>\n\n</table>\n<p>From equation $(\\boldsymbol{i}),(\\boldsymbol{i i})$ and chart we compute :</p>\n<p>$\\boldsymbol{P}(\\boldsymbol{B})=\\frac{\\left({ }^6 \\boldsymbol{C}_1\\right) \\cdot\\left({ }^6 \\boldsymbol{C}_1\\right) \\cdot\\left({ }^6 \\boldsymbol{C}_1\\right) \\cdot\\left({ }^6 \\boldsymbol{C}_1\\right)}{9000}$</p>\n<p>$\\Rightarrow \\boldsymbol{P}(\\boldsymbol{A})=1-\\frac{1296}{9000}$</p>\n<p>$\\begin{aligned} & =\\frac{7704}{9000} \\\\ & =\\frac{107}{125}\\end{aligned}$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>सभी 4 अंकों की संख्याओं में से यादृच्छिक रूप से एक 4 अंकों की संख्या चुनी जाती है, तो इसके अंकों का गुणनफल 3 से विभाज्य होने की प्रायिकता है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{107}{125}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{109}{125}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{111}{125}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "permutation-and-combination-based-problem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrxm2y16",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Six fair dice are thrown independently, and the outcomes are noted. Let <i>E</i> be the event that there are exactly 2 different pairs of outcomes, for example (2, 1, 2, 5, 6, 5). Probability of event <i>E</i> is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{5}{72}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{25}{72}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{125}{144}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{5}{36}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Since each die has 6 possible outcomes, the total number of ordered outcomes is $6^6$.</p>\n<p>In the required event, exactly two numbers appear twice, while two other numbers appear once each. So, there must be 4 different numbers among the six outcomes.</p>\n<p>These 4 different numbers can be chosen from the numbers 1 to 6 in ${}^6C_4$ ways.</p>\n<p>Out of these 4 chosen numbers, the 2 numbers that will appear twice can be selected in ${}^4C_2$ ways.</p>\n<p>For any such selection, the six outcomes contain two pairs and two single numbers. Their number of arrangements, such as</p>\n<p>$(2, 1, 2, 5, 6, 5)$, is $$\\frac{6!}{2!2!}$$</p>\n<p>$$\\therefore\\ \\text{Required probability} = \\frac{{}^6C_4 \\times {}^4C_2 \\times \\frac{6!}{2!\\times 2!}}{6^6} = \\frac{25}{72}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>छह निष्पक्ष पासों को स्वतंत्र रूप से फेंका जाता है, और उनके परिणामों को नोट किया जाता है। माना <i>E</i> एक घटना है जिसमें परिणामों के ठीक 2 भिन्न युग्म आते हैं, उदाहरण के लिए (2, 1, 2, 5, 6, 5)। घटना <i>E</i> की प्रायिकता है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{5}{72}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{25}{72}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{125}{144}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{5}{36}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "permutation-and-combination-based-problem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrxlepw4",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Three numbers are randomly selected from the set $ \\{10, 11, 12, \\ldots, 100\\} $. Probability that they form a Geometric progression with integral common ratio greater than 1 is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\dfrac{15}{^{91}C_{3}} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\dfrac{16}{^{91}C_{3}} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\dfrac{17}{^{91}C_{3}} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\dfrac{18}{^{91}C_{3}} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<table>\n\n  <tr>\n\n    <th>Precondition</th>\n\n    <th>Integer Set $(S)$</th>\n\n    <th>Random Selection of 3 numbers</th>\n\n    <th>Conditions</th>\n\n    <th>Task</th>\n\n  </tr>\n\n  <tr>\n\n    <td>Integer Set</td>\n\n    <td>$\\{10,11,12,13,14,15,\\ldots,100\\}$</td>\n\n    <td>$\\{x,y,z\\}$</td>\n\n    <td>\n\n      <ul>\n\n        <li>$x,\\;y\\;\\text{and}\\;z$ are in GP</li>\n\n        <li>Common ratio $>1$</li>\n\n        <li>Common ratio must be an integer</li>\n\n      </ul>\n\n    </td>\n\n    <td>Find Probability</td>\n\n  </tr>\n\n</table>\n<p>$$ \\begin{aligned} &\\text { 1. Classical definition of Probability : } \\boldsymbol{P}=\\frac{\\boldsymbol{n}(\\boldsymbol{F})}{\\boldsymbol{n}(\\boldsymbol{E})}\\\\ &\\text { 2. Counting methods and Strategy : } \\operatorname{Min}(\\boldsymbol{x})=10 ; \\operatorname{Max}(\\boldsymbol{z})=100 ; \\frac{\\boldsymbol{y}}{\\boldsymbol{x}}=\\frac{\\boldsymbol{z}}{\\boldsymbol{y}}=\\boldsymbol{r} \\in\\{2,3\\} \\end{aligned} $$</p>\n<p><b>Chart 1 :</b></p>\n<table>\n\n  <tr>\n\n    <th>Source</th>\n\n    <th>Common Ratio</th>\n\n    <th>$x$</th>\n\n    <th>$y$</th>\n\n    <th>$z$</th>\n\n    <th>Cumulative $n$</th>\n\n    <th>Favourable Set of Triplets $(F)$</th>\n\n  </tr>\n\n  <tr>\n\n    <td>Precondition</td>\n\n    <td>2</td>\n\n    <td>10</td>\n\n    <td>20</td>\n\n    <td>40</td>\n\n    <td>1</td>\n\n    <td>✓</td>\n\n  </tr>\n\n  <tr>\n\n    <td></td>\n\n    <td></td>\n\n    <td>11</td>\n\n    <td>22</td>\n\n    <td>44</td>\n\n    <td>2</td>\n\n    <td>✓</td>\n\n  </tr>\n\n  <tr>\n\n    <td></td>\n\n    <td></td>\n\n    <td>12</td>\n\n    <td>24</td>\n\n    <td>48</td>\n\n    <td>3</td>\n\n    <td>✓</td>\n\n  </tr>\n\n  <tr>\n\n    <td></td>\n\n    <td></td>\n\n    <td>13</td>\n\n    <td>26</td>\n\n    <td>52</td>\n\n    <td>4</td>\n\n    <td>✓</td>\n\n  </tr>\n\n  <tr>\n\n    <td></td>\n\n    <td></td>\n\n    <td>14</td>\n\n    <td>28</td>\n\n    <td>56</td>\n\n    <td>5</td>\n\n    <td>✓</td>\n\n  </tr>\n\n  <tr>\n\n    <td></td>\n\n    <td></td>\n\n    <td>15</td>\n\n    <td>30</td>\n\n    <td>60</td>\n\n    <td>6</td>\n\n    <td>✓</td>\n\n  </tr>\n\n  <tr>\n\n    <td></td>\n\n    <td></td>\n\n    <td>$\\vdots$</td>\n\n    <td>$\\vdots$</td>\n\n    <td>$\\vdots$</td>\n\n    <td>$\\vdots$</td>\n\n    <td>✓</td>\n\n  </tr>\n\n  <tr>\n\n    <td></td>\n\n    <td></td>\n\n    <td>$\\vdots$</td>\n\n    <td>$\\vdots$</td>\n\n    <td>$\\vdots$</td>\n\n    <td>$\\vdots$</td>\n\n    <td>✓</td>\n\n  </tr>\n\n  <tr>\n\n    <td></td>\n\n    <td></td>\n\n    <td>$\\vdots$</td>\n\n    <td>$\\vdots$</td>\n\n    <td>$\\vdots$</td>\n\n    <td>$\\vdots$</td>\n\n    <td>✓</td>\n\n  </tr>\n\n  <tr>\n\n    <td></td>\n\n    <td></td>\n\n    <td>25</td>\n\n    <td>50</td>\n\n    <td>100</td>\n\n    <td>16</td>\n\n    <td>✓</td>\n\n  </tr>\n\n  <tr>\n\n    <td>Precondition</td>\n\n    <td>3</td>\n\n    <td>10</td>\n\n    <td>30</td>\n\n    <td>90</td>\n\n    <td>17</td>\n\n    <td>✓</td>\n\n  </tr>\n\n  <tr>\n\n    <td></td>\n\n    <td></td>\n\n    <td>11</td>\n\n    <td>33</td>\n\n    <td>99</td>\n\n    <td>18</td>\n\n    <td>✓</td>\n\n  </tr>\n\n  <tr>\n\n    <td></td>\n\n    <td></td>\n\n    <td>12</td>\n\n    <td>36</td>\n\n    <td>108</td>\n\n    <td></td>\n\n    <td>Outside Set $S$</td>\n\n  </tr>\n\n  <tr>\n\n    <td></td>\n\n    <td>4</td>\n\n    <td>10</td>\n\n    <td>40</td>\n\n    <td>120</td>\n\n    <td></td>\n\n    <td>Outside Set $S$</td>\n\n  </tr>\n\n  <tr>\n\n    <td></td>\n\n    <td>$\\ge 5$</td>\n\n    <td></td>\n\n    <td></td>\n\n    <td></td>\n\n    <td></td>\n\n    <td>Outside Set $S$</td>\n\n  </tr>\n\n</table>\n<table>\n\n  <tr>\n\n    <th>Source</th>\n\n    <th>$n(S)$</th>\n\n    <th>Exhaustive Set of Triplets</th>\n\n    <th>$n(E)$</th>\n\n    <th>$n(F)$</th>\n\n    <th>Probability $(P)$</th>\n\n  </tr>\n\n  <tr>\n\n    <td>Precondition</td>\n\n    <td>91</td>\n\n    <td>$E$</td>\n\n    <td>$\\left({ }^{91} \\boldsymbol{C}_3\\right)$</td>\n\n    <td></td>\n\n    <td></td>\n\n  </tr>\n\n  <tr>\n\n    <td>Chart 1</td>\n\n    <td></td>\n\n    <td></td>\n\n    <td></td>\n\n    <td>18</td>\n\n    <td>$\\frac{18}{\\left({ }^{91} \\boldsymbol{C}_3\\right)}$</td>\n\n  </tr>\n\n</table>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>समुच्चय $ \\{10, 11, 12, \\ldots, 100\\} $ से तीन संख्याएँ यादृच्छिक रूप से चुनी जाती हैं। इस बात की प्रायिकता कि वे 1 से अधिक पूर्णांकीय सार्व अनुपात के साथ एक गुणोत्तर श्रेढ़ी बनाती हैं, है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\dfrac{15}{^{91}C_{3}} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\dfrac{16}{^{91}C_{3}} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\dfrac{17}{^{91}C_{3}} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\dfrac{18}{^{91}C_{3}} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "permutation-and-combination-based-problem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrxllcdv",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Letters of the word TITANIC are arranged to form all the possible words. What is the probability that a word formed starts either with a T or a vowel?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{2}{7}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{4}{7}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{3}{7}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{5}{7}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<table>\n\n  <tr>\n\n    <th>Chart</th>\n\n    <th>Word</th>\n\n    <th>Pattern</th>\n\n    <th>Total Permutation $(N)$</th>\n\n    <th>...</th>\n\n    <th>Pattern</th>\n\n    <th>Total Permutation $(n_t)$</th>\n\n    <th>Pattern</th>\n\n    <th>Total Permutation $(n_a)$</th>\n\n    <th>Pattern</th>\n\n    <th>Total Permutation $(n_i)$</th>\n\n  </tr>\n\n  <tr>\n\n    <td>1</td>\n\n    <td><b>TITANIC</b></td>\n\n    <td>Random</td>\n\n    <td>$\\dfrac{7!}{2!\\,2!}$</td>\n\n    <td>...</td>\n\n    <td><b>T</b>______</td>\n\n    <td>$\\dfrac{6!}{2!}$</td>\n\n    <td><b>A</b>______</td>\n\n    <td>$\\dfrac{6!}{2!\\,2!}$</td>\n\n    <td><b>I</b>______</td>\n\n    <td>$\\dfrac{6!}{2!}$</td>\n\n  </tr>\n\n</table>\n\n<table>\n\n  <tr>\n\n    <th>Source</th>\n\n    <th>Probability Expression $(P)$</th>\n\n    <th>Value</th>\n\n  </tr>\n\n  <tr>\n\n    <td>Chart 1</td>\n\n    <td>\n\n      $       \\frac{n_t+n_a+n_i}{N}       $\n\n    </td>\n\n    <td>\n\n      $       \\frac{\\left(\\dfrac{6!}{2!}\\right)+\\left(\\dfrac{6!}{2!\\,2!}\\right)+\\left(\\dfrac{6!}{2!}\\right)}       {\\left(\\dfrac{7!}{2!\\,2!}\\right)}       =       \\frac{900}{1260}       $\n\n      $       =       \\frac{90}{126}       $\n\n      $       =       \\frac{5}{7}       $\n\n    </td>\n\n  </tr>\n\n</table>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>शब्द TITANIC के अक्षरों को व्यवस्थित करके सभी संभव शब्द बनाए जाते हैं। इसकी क्या प्रायिकता है कि बनने वाला शब्द या तो T से या किसी स्वर (vowel) से प्रारंभ होता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{2}{7}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{4}{7}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{3}{7}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{5}{7}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "permutation-and-combination-based-problem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrxmbqdj",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the letters of the word <b>MATHEMATICS</b> are arranged arbitrarily, then the probability that <b>C</b> comes before <b>E</b>, <b>E</b> before <b>H</b>, <b>H</b> before <b>I</b> and <b>I</b> before <b>S</b> is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{1}{75} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{1}{24} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{1}{120} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{1}{720} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Total numbers of arrangements = $$\\frac{11!}{2!2!2!}=\\frac{11!}{8}$$</p>\n<p>Number of arrangements in which C, E, H, I, S appear in that</p>\n<p>order = $$^{11}C_{5}\\times \\frac{6!}{2!\\times 2!\\times 2!}=\\frac{11!}{8\\times 5!}$$</p>\n<p>$\\therefore$ Required Probability = $$\\frac{\\frac{11!}{8\\times 5!}}{\\frac{11!}{8}}=\\frac{1}{120}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि शब्द <b>MATHEMATICS</b> के अक्षरों को यादृच्छिक रूप से व्यवस्थित किया जाता है, तो <b>C</b> के <b>E</b> से पहले, <b>E</b> के <b>H</b> से पहले, <b>H</b> के <b>I</b> से पहले और <b>I</b> के <b>S</b> से पहले आने की प्रायिकता है-</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{1}{75} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{1}{24} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{1}{120} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{1}{720} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "permutation-and-combination-based-problem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrxmlmn9",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If <i>a</i> and <i>b</i> are randomly chosen from the set {1, 2, 3, 4, 5, 6, 7, 8, 9}, then the probability that the expression</p> <p>$ax^4 + bx^3 + (a+1)x^2 + bx + 1$ has positive values for all real values of $x$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{34}{81}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{31}{81}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{32}{81}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{10}{27}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The given expression is</p>\n<p>$$ ax^4+bx^3+(a+1)x^2+bx+1 $$</p>\n<p>Notice that it can be factorised as</p>\n<p>$$ ax^4+bx^3+(a+1)x^2+bx+1=(x^2+1)(ax^2+bx+1) $$</p>\n<p>Now, for every real value of $x$,</p>\n<p>$$ x^2+1>0 $$</p>\n<p>So the whole expression will be positive for all real $x$ only when</p>\n<p>$$ ax^2+bx+1>0 $$</p>\n<p>for all real $x$.</p>\n<p>The quadratic $ax^2+bx+1$ opens upwards because $a>0$. For it to be positive for all real $x$, its discriminant must be negative:</p>\n<p>$$ D<0 $$</p>\n<p>Here,</p>\n<p>$$ D=b^2-4a $$</p>\n<p>So we need</p>\n<p>$$ b^2-4a<0 $$</p>\n<p>or</p>\n<p>$$ b^2<4a $$</p>\n<p>Now count the possible ordered pairs $(a,b)$ from $\\{1,2,3,4,5,6,7,8,9\\}$.</p>\n<p>For each value of $b$:</p>\n<ul>\n<li><p>If $b=1$, then $1<4a$, so $a=1$ to $9$: $9$ choices</p></li>\n<li><p>If $b=2$, then $4<4a$, so $a>1$: $8$ choices</p></li>\n<li><p>If $b=3$, then $9<4a$, so $a\\ge 3$: $7$ choices</p></li>\n<li><p>If $b=4$, then $16<4a$, so $a>4$: $5$ choices</p></li>\n<li><p>If $b=5$, then $25<4a$, so $a\\ge 7$: $3$ choices</p></li>\n<li><p>If $b\\ge 6$, no value of $a\\le 9$ satisfies the condition.</p></li>\n</ul>\n<p>Total favourable pairs:</p>\n<p>$$ 9+8+7+5+3=32 $$</p>\n<p>Total possible pairs:</p>\n<p>$$ 9\\times 9=81 $$</p>\n<p>Hence the required probability is</p>\n<p>$$ \\frac{32}{81} $$</p>\n<p>So the correct option is <strong>Option C</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि <i>a</i> और <i>b</i> को समुच्चय {1, 2, 3, 4, 5, 6, 7, 8, 9} से यादृच्छिक रूप से चुना जाता है, तो व्यंजक</p> <p>$ax^4 + bx^3 + (a+1)x^2 + bx + 1$ द्वारा $x$ के सभी वास्तविक मानों के लिए धनात्मक मान रखने की प्रायिकता है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{34}{81}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{31}{81}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{32}{81}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{10}{27}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "permutation-and-combination-based-problem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrxmhg4z",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two smallest squares are chosen at random on a chessboard.<br>What is the probability that they have a side in common?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1/18</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>64/4032</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>63/64</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1/9</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>On a chessboard, there are $64$ smallest squares.</p>\n<p>We choose $2$ squares at random. So the total number of ways to choose them is</p>\n<p>$$ {}^{64}C_2=\\frac{64 \\times 63}{2}=2016 $$</p>\n<p>Now count the pairs of squares which have a side in common.</p>\n<p>In each row, there are $8$ small squares. Adjacent pairs in one row are:</p>\n<p>$$ 7 $$</p>\n<p>Since there are $8$ rows, horizontal adjacent pairs are</p>\n<p>$$ 8 \\times 7=56 $$</p>\n<p>Similarly, in each column there are $7$ vertical adjacent pairs, and there are $8$ columns. So vertical adjacent pairs are</p>\n<p>$$ 8 \\times 7=56 $$</p>\n<p>Total favourable pairs are</p>\n<p>$$ 56+56=112 $$</p>\n<p>So the required probability is</p>\n<p>$$ \\frac{112}{2016} $$</p>\n<p>Simplifying,</p>\n<p>$$ \\frac{112}{2016}=\\frac{1}{18} $$</p>\n<p>So the correct answer is</p>\n<p>$$ \\boxed{\\frac{1}{18}} $$</p>\n<p>Option A.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>शतरंज के एक बोर्ड पर यादृच्छिक रूप से दो सबसे छोटे वर्ग चुने जाते हैं।<br>इसकी क्या प्रायिकता है कि उनकी एक भुजा उभयनिष्ठ हो?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1/18</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>64/4032</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>63/64</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1/9</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "permutation-and-combination-based-problem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrxmser6",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A word of at least 5 letters is made using 3 vowels and 3 consonants, all the letters being different. The probability that no consonant falls between any two vowels in the word is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{9}{20} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{9}{10} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{7}{10} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{11}{20} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Since 3 vowels and 3 consonants are available, a word of at least 5 letters can have either 5 letters or 6 letters.</p>\n<p>$E_5$: event of making word of 5 letters</p>\n<p>$E_6$: event of making word of 6 letters</p>\n<p>No consonant should come between two vowels. So all the vowels used in the word must remain together as one block.</p>\n<p>For a 6-letter word, treat the 3 vowels as one block. Along with the 3 consonants, there are 4 units to arrange. The vowels within their block can be arranged in $3!$ ways.</p>\n<p>$$P(E_6)=\\frac{4!\\times 3!}{6!},$$ arrangement being done by considering all the vowels together for calculating $n(E_6)$</p>\n<p>For a 5-letter word, there are two possible cases: either 2 vowels and 3 consonants are used, or 3 vowels and 2 consonants are used.</p>\n<p>In the first case, 2 vowels are selected in ${}^3C_2$ ways. They are treated as one block, giving 4 units to arrange. The 2 vowels inside the block can be arranged in $2!$ ways.</p>\n<p>In the second case, 2 consonants are selected in ${}^3C_2$ ways. The 3 vowels form one block, giving 3 units to arrange. The vowels inside the block can be arranged in $3!$ ways.</p>\n<p>$$P(E_5)=\\frac{{}^3C_2\\times 4!\\times 2! + {}^3C_2\\times 3!\\times 3!}{{}^6P_5}$$</p>\n<p>$\\{\\therefore$ there are 2 vowels, 3 consonants or 3 vowels, 2 consonants$\\}$</p>\n<p>$\\therefore$ Required probability $= P(E_6) + P(E_5)$</p>\n<p>Since ${}^6P_5=6!$, both terms can be written with denominator $6!$.</p>\n<p>$$=\\frac{4!\\times 3! + 3\\times 4!\\times 2! + 3\\times 3!\\times 3!}{6!}$$</p>\n<p>$$=\\frac{144+144+108}{720}=\\frac{396}{720}=\\frac{11}{20}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>3 स्वरों और 3 व्यंजनों का उपयोग करके कम से कम 5 अक्षरों का एक शब्द बनाया जाता है, जिसमें सभी अक्षर भिन्न होते हैं। शब्द में किन्हीं भी दो स्वरों के बीच कोई व्यंजन न आने की प्रायिकता है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{9}{20} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{9}{10} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{7}{10} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{11}{20} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "permutation-and-combination-based-problem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrxmzwxw",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Four pairs of gloves are distributed to four persons. Each person is given a right glove and a left glove. Then the probability that no person gets a correct pair of gloves is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{3}{8}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{5}{8}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{1}{4}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{3}{4}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>We have 4 pairs of gloves to be distributed among 4 persons. Let us name the right gloves as $R_1, R_2, R_3, R_4$ and the left gloves as $L_1, L_2, L_3, L_4$. </p>\n<p>Each person receives one right glove and one left glove. Let us first hand out the right gloves. We can imagine the four persons standing in a line, and we give the first person $R_1$, the second person $R_2$, the third person $R_3$, and the fourth person $R_4$. </p>\n<p>The total number of ways we can distribute the 4 left gloves among the 4 persons is simply the number of arrangements of 4 items, which is:</p>\n<p>$$\\text{Total ways} = 4! = 24$$</p>\n<p>The condition given is that no person should get a correct pair of gloves. Since the first person has $R_1$, they must not get $L_1$. Similarly, the second person cannot get $L_2$, the third cannot get $L_3$, and the fourth cannot get $L_4$. </p>\n<p>This means we need to arrange the left gloves in such a way that none of them go to their matching position. In mathematics, this kind of arrangement is called a derangement. </p>\n<p>The number of ways to arrange $n$ objects such that none of them are in their correct original positions is given by the derangement formula:</p>\n<p>$$D_n = n! \\left( 1 - \\frac{1}{1!} + \\frac{1}{2!} - \\frac{1}{3!} + \\dots + \\frac{(-1)^n}{n!} \\right)$$</p>\n<p>For $n = 4$, we can find the number of ways to distribute the left gloves wrongly to everyone:</p>\n<p>$$D_4 = 4! \\left( 1 - 1 + \\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!} \\right)$$</p>\n<p>$$D_4 = 24 \\left( \\frac{1}{2} - \\frac{1}{6} + \\frac{1}{24} \\right)$$</p>\n\n<p>$$D_4 = 12 - 4 + 1 = 9$$</p>\n<p>So, there are 9 favorable ways to distribute the left gloves so that nobody gets a complete matching pair. </p>\n<p>Now, we can find the required probability by dividing the number of favorable ways by the total possible ways:</p>\n<p>$$\\text{Probability} = \\frac{\\text{Favorable ways}}{\\text{Total ways}} = \\frac{9}{24}$$</p>\n<p>By simplifying the fraction, we get:</p>\n<p>$$\\text{Probability} = \\frac{3}{8}$$</p>\n<p>Option A is the correct answer.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चार व्यक्तियों को दस्तानों के चार जोड़े बांटे जाते हैं। प्रत्येक व्यक्ति को एक दायां दस्ताना और एक बायां दस्ताना दिया जाता है। तब किसी भी व्यक्ति को दस्तानों का सही जोड़ा न मिलने की प्रायिकता है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{3}{8}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{5}{8}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{1}{4}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{3}{4}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "permutation-and-combination-based-problem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrxn335p",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>An experiment results in four possible outcomes $S_1, S_2, S_3$ and $S_4$ with probabilities $p_1, p_2, p_3$ and $p_4$ respectively. Which one of the following probability assignment is possible?</p><p>[Assume $S_1, S_2, S_3$ and $S_4$ are mutually exclusive]</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$p_1 = 0.25, \\ p_2 = 0.35, \\ p_3 = 0.10, \\ p_4 = 0.05$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$p_1 = 0.40, \\ p_2 = -0.20, \\ p_3 = 0.60, \\ p_4 = 0.20$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$p_1 = 0.30, \\ p_2 = 0.60, \\ p_3 = 0.10, \\ p_4 = 0.10$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$p_1 = 0.20, \\ p_2 = 0.30, \\ p_3 = 0.40, \\ p_4 = 0.10$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For a probability assignment to be possible, two conditions must be satisfied:</p>\n<ol>\n<li><p>Each probability must be between $0$ and $1$.</p></li>\n<li><p>Since the experiment has four possible outcomes $S_1, S_2, S_3, S_4$, their probabilities must add up to $1$.</p></li>\n</ol>\n<p>That means,</p>\n<p>$$ p_1 + p_2 + p_3 + p_4 = 1 $$</p>\n<p>Now check each option.</p>\n<p>Option A:</p>\n<p>$$ 0.25 + 0.35 + 0.10 + 0.05 = 0.75 $$</p>\n<p>The sum is not $1$, so this is not possible.</p>\n<p>Option B:</p>\n<p>$$ p_2 = -0.20 $$</p>\n<p>A probability cannot be negative, so this is not possible.</p>\n<p>Option C:</p>\n<p>$$ 0.30 + 0.60 + 0.10 + 0.10 = 1.10 $$</p>\n<p>The sum is more than $1$, so this is not possible.</p>\n<p>Option D:</p>\n<p>$$ 0.20 + 0.30 + 0.40 + 0.10 = 1 $$</p>\n<p>Also, all probabilities are between $0$ and $1$.</p>\n<p>So the possible probability assignment is:</p>\n<p>$$ \\boxed{\\text{Option D}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक प्रयोग के चार संभावित परिणाम $S_1, S_2, S_3$ और $S_4$ हैं, जिनकी प्रायिकताएँ क्रमशः $p_1, p_2, p_3$ और $p_4$ हैं। निम्नलिखित में से कौन सा प्रायिकता निर्धारण संभव है?</p><p>[मान लीजिए कि $S_1, S_2, S_3$ और $S_4$ परस्पर अपवर्जी हैं]</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$p_1 = 0.25, \\ p_2 = 0.35, \\ p_3 = 0.10, \\ p_4 = 0.05$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$p_1 = 0.40, \\ p_2 = -0.20, \\ p_3 = 0.60, \\ p_4 = 0.20$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$p_1 = 0.30, \\ p_2 = 0.60, \\ p_3 = 0.10, \\ p_4 = 0.10$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$p_1 = 0.20, \\ p_2 = 0.30, \\ p_3 = 0.40, \\ p_4 = 0.10$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "classical-defininition-of-probability",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrxn7wxd",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Five different balls are thrown towards five different boxes randomly and each ball lands into a box. If the probability that exactly two boxes remain empty given each box can hold any number of balls is $p$ then the value of $100 p$ is $\\_\\_\\_\\_$.</p>",
+                "options": [],
+                "answer": "48",
+                "explanation": "<p>Each of the 5 different balls can go into any one of the 5 boxes.</p>\n<p>$$\\therefore\\ \\text{Total number of ways, } n(S)=5^5$$</p>\n<p>For exactly two boxes to remain empty, first choose these two boxes. This can be done in ${}^5C_2$ ways.</p>\n<p>The 5 balls must be placed in the remaining 3 boxes, with no box empty. The possible distributions of balls are $(2,2,1)$ and $(3,1,1)$.</p>\n<p>The number of ways to make these distributions is</p>\n<p>$$3!\\times \\left[\\frac{5!}{2!\\times 2!\\times 2!}+\\frac{5!}{3!\\times 2!}\\right]=150\\ \\text{ways.}$$</p>\n<p>Thus, the number of favourable cases is</p>\n<p>$$\\therefore\\ \\text{Number of favourable cases, } n(A)={}^5C_2\\cdot 150$$</p>\n<p>Hence,</p>\n<p>$$P(A)={}^5C_2\\cdot \\frac{150}{5^5}=\\frac{60}{125}=\\frac{12}{25}$$</p>\n<p>Since $p=\\frac{12}{25}$,</p>\n<p>$$100p=100\\times\\frac{12}{25}=48$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>पाँच अलग-अलग गेंदों को यादृच्छिक रूप से पाँच अलग-अलग बक्सों की ओर फेंका जाता है और प्रत्येक गेंद एक बक्से में गिरती है। यदि यह मानते हुए कि प्रत्येक बक्से में कितनी भी गेंदें आ सकती हैं, ठीक दो बक्सों के खाली रहने की प्रायिकता $p$ है, तो $100 p$ का मान $\\_\\_\\_\\_$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "permutation-and-combination-based-problem",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrxnbsg6",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A teacher gives 10 different books and 2 different pens to 3 students so that each gets equal number of things. If the probability that the same student does not receive both the pens is $p$, then the value of $99 p$ is $\\_\\_\\_\\_$.</p>",
+                "options": [],
+                "answer": "72",
+                "explanation": "<p>There are $12$ different things in total: $10$ books and $2$ pens. Since the things are given equally to $3$ students, each student receives $4$ things.</p>\n<p>The total number of ways to distribute the $12$ different things among the $3$ students is</p>\n<p>$n(S)=\\frac{12!}{4!4!4!3!} 3!=\\frac{12!}{4!4!4!}$</p>\n<p>Let $E$ be the event that one student receives both pens.</p>\n<p>$n(E)=$ Number of ways in which any one student gets both the pens</p>\n<p>Choose the student who receives both pens in ${}^3C_1$ ways. Since that student must receive $4$ things, choose $2$ books from the $10$ books in ${}^{10}C_2$ ways. Distribute the remaining $8$ books equally between the other two students.</p>\n<p>$$ ={ }^3 C_1{ }^{10} C_2 \\frac{8!}{4!4!2!} 2!=3 \\times 45 \\frac{8!}{4!4!} $$</p>\n<p>Thus, the probability that one student receives both pens is</p>\n<p>$$ \\begin{aligned} &\\therefore \\quad P(E)=\\frac{3 \\times 45 \\frac{8!}{4!4!}}{\\frac{12!}{4!4!4!}}=\\frac{3}{11}\\\\ &\\text { ∴ } \\text { Required probability }=1-\\frac{3}{11}=\\frac{8}{11} \\end{aligned} $$</p>\n<p>Hence, $p=\\frac{8}{11}$, so</p>\n<p>$$99p=99\\times\\frac{8}{11}=72$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक शिक्षक 3 छात्रों को 10 विभिन्न पुस्तकें और 2 विभिन्न पेन इस प्रकार देता है कि प्रत्येक को वस्तुओं की समान संख्या मिले। यदि एक ही छात्र को दोनों पेन न मिलने की प्रायिकता $p$ है, तो $99 p$ का मान $\\_\\_\\_\\_$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "permutation-and-combination-based-problem",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrxnf6by",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A mapping is selected at random from all the mappings of set $S=\\{1,2,3, \\ldots, n\\}$ to itself such that the probability that the mapping is many-one is $29 / 32$. Then $n$ is equal to\n$\\_\\_\\_\\_$.</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>Total number of mappings from $S=\\{1,2,3,\\ldots,n\\}$ to itself is</p>\n<p>$$ n^n $$</p>\n<p>because each of the $n$ elements of the domain can be mapped to any of the $n$ elements of $S$.</p>\n<p>A mapping is many-one when at least two elements of the domain have the same image.  </p>\n<p>So, the mappings which are not many-one are one-one mappings.</p>\n<p>Since the domain and codomain both have $n$ elements, the number of one-one mappings is</p>\n<p>$$ n! $$</p>\n<p>So,</p>\n<p>$$ P(\\text{one-one})=\\frac{n!}{n^n} $$</p>\n<p>Given,</p>\n<p>$$ P(\\text{many-one})=\\frac{29}{32} $$</p>\n<p>Hence,</p>\n<p>$$ P(\\text{one-one})=1-\\frac{29}{32} $$</p>\n<p>$$ P(\\text{one-one})=\\frac{3}{32} $$</p>\n<p>So,</p>\n<p>$$ \\frac{n!}{n^n}=\\frac{3}{32} $$</p>\n<p>Now check $n=4$:</p>\n<p>$$ \\frac{4!}{4^4}=\\frac{24}{256}=\\frac{3}{32} $$</p>\n<p>So,</p>\n<p>$$ n=4 $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>समुच्चय $S=\\{1,2,3, \\ldots, n\\}$ से स्वयं तक के सभी प्रतिचित्रणों में से एक प्रतिचित्रण यादृच्छिक रूप से इस प्रकार चुना जाता है कि प्रतिचित्रण के बहु-एक (many-one) होने की प्रायिकता $29 / 32$ है। तब $n$ का मान \\_\\_\\_\\_ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "permutation-and-combination-based-problem",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrxni3yb",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In a meeting, there are six ministers all speak exactly two languages. $M_1$ speaks only $L_1$ and $L_2, M_2$ speaks only $L_2$ and $L_3, M_3$ speaks only $L_3$ and $L_4, M_4$ speaks only $L_4$ and $L_2, M_5$ speaks only $L_4$ and $L_1, M_6$ speaks only $L_1$ and $L_3$. If two ministers are chosen at random, the probability that they speak common language is $\\lambda$, then the value of $20 \\lambda$ is $\\_\\_\\_\\_$.</p>",
+                "options": [],
+                "answer": "16",
+                "explanation": "<p>Total number of ways to choose two ministers from $6$ is</p>\n<p>$$ {}^6C_2=\\frac{6 \\times 5}{2}=15 $$</p>\n<p>Now, two ministers will not have a common language only if their two languages are completely different.</p>\n<p>The pairs with no common language are:</p>\n<p>$$ M_1(L_1,L_2) \\text{ and } M_3(L_3,L_4) $$</p>\n<p>$$ M_2(L_2,L_3) \\text{ and } M_5(L_4,L_1) $$</p>\n<p>$$ M_4(L_4,L_2) \\text{ and } M_6(L_1,L_3) $$</p>\n<p>So, number of pairs with no common language is $3$.</p>\n<p>Hence, number of pairs having at least one common language is</p>\n<p>$$ 15-3=12 $$</p>\n<p>So the required probability is</p>\n<p>$$ \\lambda=\\frac{12}{15}=\\frac{4}{5} $$</p>\n<p>Now,</p>\n<p>$$ 20\\lambda=20 \\times \\frac{4}{5}=16 $$</p>\n<p>So the value of $20\\lambda$ is</p>\n<p>$$ \\boxed{16} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक बैठक में छह मंत्री हैं, जो सभी ठीक दो भाषाएँ बोलते हैं। $M_1$ केवल $L_1$ और $L_2$ बोलता है, $M_2$ केवल $L_2$ और $L_3$ बोलता है, $M_3$ केवल $L_3$ और $L_4$ बोलता है, $M_4$ केवल $L_4$ और $L_2$ बोलता है, $M_5$ केवल $L_4$ और $L_1$ बोलता है, $M_6$ केवल $L_1$ और $L_3$ बोलता है। यदि यादृच्छिक रूप से दो मंत्रियों को चुना जाता है, तथा उनके एक समान भाषा बोलने की प्रायिकता $\\lambda$ है, तो $20 \\lambda$ का मान \\_\\_\\_\\_ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "permutation-and-combination-based-problem",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrxnn21b",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "Two distinct numbers $a$ and $b$ are chosen randomly from the set $\\left\\{2,2^2, 2^3, \\ldots, 2^{25}\\right\\}$. Then the probability that $\\log _a b$ is an integer is p, then the value of 600p",
+                "options": [],
+                "answer": "62",
+                "explanation": "<p>To find the probability that $\\log_a b$ is an integer, let us break the problem down into simple steps.</p>\n<p>We are given a set of 25 numbers: </p>\n<p>$$S = \\{2^1, 2^2, 2^3, \\dots, 2^{25}\\}$$</p>\n<p>When we choose two distinct numbers $a$ and $b$ from this set, it means we are picking an ordered pair $(a, b)$. </p>\n<p>The total number of ways to choose a first number $a$ and a second distinct number $b$ is:</p>\n<p>$$\\text{Total number of outcomes} = 25 \\times 24 = 600$$</p>\n<p>Since $a$ and $b$ are chosen from the set $S$, we can write them as $a = 2^x$ and $b = 2^y$, where $x$ and $y$ are distinct integers from the set $\\{1, 2, 3, \\ldots, 25\\}$.</p>\n<p>The expression given in the question is $\\log_a b$. Substituting our values for $a$ and $b$:</p>\n<p>$$\\log_a b = \\log_{2^x} 2^y = \\frac{y}{x}$$</p>\n<p>For $\\log_a b$ to be an integer, $\\frac{y}{x}$ must be an integer. This happens only if $x$ completely divides $y$. </p>\n<p>Since $x$ and $y$ are distinct ($x \\neq y$) and $\\frac{y}{x}$ is a positive integer, it must be the case that $y > x$.</p>\n<p>Now, let us count the number of favorable pairs $(x, y)$ by finding the multiples of $x$ that are greater than $x$ and up to 25. The number of such multiples for any given $x$ is given by $\\lfloor\\frac{25}{x}\\rfloor - 1$. </p>\n<p>Counting them for each possible value of $x$:</p>\n<ul>\n<li><p>For $x = 1$: multiples are $2, 3, \\ldots, 25$ $\\rightarrow$ <strong>24</strong> values</p></li>\n<li><p>For $x = 2$: multiples are $4, 6, 8, \\ldots, 24$ $\\rightarrow$ <strong>11</strong> values</p></li>\n<li><p>For $x = 3$: multiples are $6, 9, 12, 15, 18, 21, 24$ $\\rightarrow$ <strong>7</strong> values</p></li>\n<li><p>For $x = 4$: multiples are $8, 12, 16, 20, 24$ $\\rightarrow$ <strong>5</strong> values</p></li>\n<li><p>For $x = 5$: multiples are $10, 15, 20, 25$ $\\rightarrow$ <strong>4</strong> values</p></li>\n<li><p>For $x = 6$: multiples are $12, 18, 24$ $\\rightarrow$ <strong>3</strong> values</p></li>\n<li><p>For $x = 7$: multiples are $14, 21$ $\\rightarrow$ <strong>2</strong> values</p></li>\n<li><p>For $x = 8$: multiples are $16, 24$ $\\rightarrow$ <strong>2</strong> values</p></li>\n<li><p>For $x = 9$: multiple is $18$ $\\rightarrow$ <strong>1</strong> value</p></li>\n<li><p>For $x = 10$: multiple is $20$ $\\rightarrow$ <strong>1</strong> value</p></li>\n<li><p>For $x = 11$: multiple is $22$ $\\rightarrow$ <strong>1</strong> value</p></li>\n<li><p>For $x = 12$: multiple is $24$ $\\rightarrow$ <strong>1</strong> value</p></li>\n<li><p>For $x \\ge 13$: There are no multiples $\\le 25$ strictly greater than $x$ $\\rightarrow$ <strong>0</strong> values</p></li>\n</ul>\n<p>Now, we add all the favorable pairs together to get our total favorable outcomes:</p>\n<p>$$\\text{Favorable outcomes} = 24 + 11 + 7 + 5 + 4 + 3 + 2 + 2 + 1 + 1 + 1 + 1 = 62$$</p>\n<p>The probability $p$ that $\\log_a b$ is an integer is therefore the number of favorable outcomes divided by the total number of outcomes:</p>\n<p>$$p = \\frac{62}{600}$$</p>\n<p>The question asks for the value of $600p$:</p>\n<p>$$600p = 600 \\times \\frac{62}{600} = 62$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "समुच्चय $\\left\\{2,2^2, 2^3, \\ldots, 2^{25}\\right\\}$ में से दो भिन्न संख्याएँ $a$ और $b$ यादृच्छिक रूप से चुनी जाती हैं। यदि $\\log _a b$ के एक पूर्णांक होने की प्रायिकता p है, तो 600p का मान है",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "permutation-and-combination-based-problem",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Classical Defininition of Probability, Permutation and Combination Based Problem",
+    "timeAllotted": 2160000,
+    "title": "Probability Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61moed742i",
+    "defaultLanguage": "en",
+    "description": "Classical Defininition of Probability, Permutation and Combination Based Problem",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-23T15:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Classical Defininition of Probability, Permutation and Combination Based Problem",
+    "timeAllotted": 2160000,
+    "title": "Probability Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Mathematics",
+    "_section": "Probability"
+  }
+}

@@ -1,0 +1,182 @@
+/* Light CBT / practice: ink must stay dark even if html[data-theme=dark].
+   Dark CBT: keep pale ink. Never paint option text white-on-white. */
+
+.mtk-test-root[data-test-theme="light"],
+.eg-test-root[data-test-theme="light"],
+.qx-practice-page {
+  color: #0f172a;
+}
+
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-q-text,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-q-text .qx-content,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-q-text *:not(img):not(svg):not(path):not(.mtk-opt-letter),
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-opt,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-opt-text,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-opt-text .qx-content,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-opt-text *:not(img):not(svg):not(path):not(.mtk-opt-letter),
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .qx-question-body,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .qx-question-body *:not(img):not(svg):not(path),
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .katex,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .katex *,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] mjx-container,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] mjx-container *,
+.mtk-test-root[data-test-theme="light"] .mtk-q-text,
+.mtk-test-root[data-test-theme="light"] .mtk-q-text .qx-content,
+.mtk-test-root[data-test-theme="light"] .mtk-q-text *:not(img):not(svg):not(path):not(.mtk-opt-letter),
+.mtk-test-root[data-test-theme="light"] .mtk-opt,
+.mtk-test-root[data-test-theme="light"] .mtk-opt-text,
+.mtk-test-root[data-test-theme="light"] .mtk-opt-text .qx-content,
+.mtk-test-root[data-test-theme="light"] .mtk-opt-text *:not(img):not(svg):not(path):not(.mtk-opt-letter),
+.mtk-test-root[data-test-theme="light"] .qx-question-body *:not(img):not(svg):not(path),
+.mtk-test-root[data-test-theme="light"] .katex,
+.mtk-test-root[data-test-theme="light"] .katex *,
+.mtk-test-root[data-test-theme="light"] mjx-container,
+.mtk-test-root[data-test-theme="light"] mjx-container *,
+html[data-theme="light"] .qx-prac-opt-text,
+html[data-theme="light"] .qx-prac-opt-text .qx-content,
+html[data-theme="light"] .qx-prac-q,
+html[data-theme="light"] .qx-prac-q .qx-content,
+html[data-theme="light"] .qx-prac-q .katex,
+html[data-theme="light"] .qx-prac-q .katex *,
+html[data-theme="light"] .qx-prac-opt-text .katex,
+html[data-theme="light"] .qx-prac-opt-text .katex * {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.mtk-test-root[data-test-theme="light"] .mtk-opt {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-opt:hover {
+  background: #f8fafc !important;
+  border-color: #93c5fd !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-opt.selected {
+  background: #eff6ff !important;
+  border-color: #2563eb !important;
+  color: #0f172a !important;
+}
+.mtk-test-root[data-test-theme="light"] .mtk-opt.selected .mtk-opt-text,
+.mtk-test-root[data-test-theme="light"] .mtk-opt.selected .mtk-opt-text .qx-content,
+.mtk-test-root[data-test-theme="light"] .mtk-opt.selected .katex,
+.mtk-test-root[data-test-theme="light"] .mtk-opt.selected .katex * {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+
+/* A/B/C/D stay white on blue */
+.mtk-test-root[data-test-theme="light"] .mtk-opt-letter,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-opt-letter {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* After check: green/red boxes keep white text */
+.mtk-test-root[data-test-theme="light"] .mtk-opt.correct,
+.mtk-test-root[data-test-theme="light"] .mtk-opt.wrong,
+.mtk-test-root[data-test-theme="light"] .mtk-opt.correct .mtk-opt-text,
+.mtk-test-root[data-test-theme="light"] .mtk-opt.wrong .mtk-opt-text,
+.mtk-test-root[data-test-theme="light"] .mtk-opt.correct .katex,
+.mtk-test-root[data-test-theme="light"] .mtk-opt.wrong .katex,
+.mtk-test-root[data-test-theme="light"] .mtk-opt.correct .katex *,
+.mtk-test-root[data-test-theme="light"] .mtk-opt.wrong .katex * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.mtk-test-root[data-test-theme="dark"] .mtk-opt {
+  background: #1e2128 !important;
+  border-color: #3d4455 !important;
+  color: #e8eef7 !important;
+}
+.mtk-test-root[data-test-theme="dark"] .mtk-opt-text,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt-text .qx-content,
+.mtk-test-root[data-test-theme="dark"] .mtk-q-text,
+.mtk-test-root[data-test-theme="dark"] .katex,
+.mtk-test-root[data-test-theme="dark"] .katex * {
+  color: #e8eef7 !important;
+  -webkit-text-fill-color: #e8eef7 !important;
+}
+
+/* Figures: always on a white plate, never faded or inverted */
+.mtk-q-text img,
+.mtk-opt-text img,
+.qx-prac-q img,
+.qx-question-body img,
+.sol-body img,
+.qx-content img.qx-pool-fig,
+.qx-fig img,
+img.qx-pool-fig,
+img.qx-fig-img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  max-width: min(100%, 560px) !important;
+  height: auto !important;
+  display: block !important;
+  margin: 10px auto !important;
+  background: #ffffff !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  object-fit: contain !important;
+}
+.mtk-opt-text img {
+  max-width: min(100%, 280px) !important;
+}
+
+img.qx-img-hidden { display: none !important; }
+
+html[data-theme="light"] .mtk-test-root[data-test-theme="light"] .mtk-opt .mtk-opt-text { color: #0f172a !important; -webkit-text-fill-color: #0f172a !important; }
+html[data-theme="light"] .mtk-test-root[data-test-theme="light"] .mtk-opt.wrong .mtk-opt-text,
+html[data-theme="light"] .mtk-test-root[data-test-theme="light"] .mtk-opt.correct .mtk-opt-text { color: #fff !important; -webkit-text-fill-color: #fff !important; }
+
+/* Numerical fill box: typed digits stay visible in both themes (WebKit fill-color) */
+.eg-test-root .qx-num-keypad,
+.mtk-test-root .qx-num-keypad,
+#qxNumKeypad,
+.qx-num-key {
+  display: none !important;
+}
+.eg-test-root[data-test-theme="dark"] input.qx-num-input,
+.mtk-test-root[data-test-theme="dark"] input.qx-num-input,
+html[data-theme="dark"] .eg-test-root[data-test-theme="dark"] input.qx-num-input {
+  background: #0b1220 !important;
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  caret-color: #93c5fd !important;
+  border-color: #60a5fa !important;
+}
+.eg-test-root[data-test-theme="light"] input.qx-num-input,
+.mtk-test-root[data-test-theme="light"] input.qx-num-input,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] input.qx-num-input,
+html[data-theme="light"] input.qx-num-input {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  caret-color: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+/* Solution figures: never hide via theme filters */
+.qx-sol-flow img,
+.qx-sol-card img,
+.sol-body img,
+.eg-sol img,
+img.qx-sol-fig {
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  display: block !important;
+  background: #ffffff !important;
+}
+img.qx-img-broken {
+  display: block !important;
+  opacity: 0.35 !important;
+  min-height: 48px;
+  outline: 1px dashed #94a3b8;
+}

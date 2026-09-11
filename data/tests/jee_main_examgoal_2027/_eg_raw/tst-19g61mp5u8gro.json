@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mp5u8gro",
+  "title": "Elasticity Test - 2 (Topic Test)",
+  "type": "topic",
+  "section": "Elasticity",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-08-29T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "4272cc49-6af1-4957-a54a-0b7518e1182c",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61mp5u8gro",
+    "defaultLanguage": "en",
+    "description": "Longitudinal Stress and Strain and Poisson Ratio, Longitudinal Stress and Strain and Youngs Modulus",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-29T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mq5958xr",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In a Searle's experiment for determination of Young's Modulus, when a load of 50 kg is added to a 3-meter-long wire micrometre screw having pitch 1 mm needs to be given a quarter turn in order to restore the horizontal position of spirit level. Young's modulus of the wire if its cross sectional area is $10^{-5}$ m$^2$ is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$6 \\times 10^{11}$ N/m$^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$1.5 \\times 10^{11}$ N/m$^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$3 \\times 10^{11}$ N/m$^2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The pitch of a micrometer screw is the linear distance moved by the screw spindle in one complete rotation.</p>\n<p>Pitch = 1 mm</p>\n<p>A quarter turn represents $\\frac{1}{4}$ of a full rotation. Therefore, the linear advancement or displacement $(\\Delta L)$ to restore the spirit level balance is:</p>\n<p>$$\\Delta L = \\frac{1}{4} \\times \\text{Pitch}$$</p>\n<p>$$\\Delta L = \\frac{1}{4} \\times 1\\ \\text{mm} = 0.25\\ \\text{mm} = 0.25 \\times 10^{-3}\\ \\text{m}$$</p>\n<p>The mass applied is $m = 50\\ \\text{kg}$</p>\n<p>The tension force applied to elongate the wire due to gravity is,</p>\n<p>$$F = mg = 50\\ \\text{kg} \\times 10\\ \\text{m/s}^2 = 500\\ \\text{N}$$</p>\n<p>The original length of the wire is $L = 3\\text{m}$ and its cross-sectional area is $A = 10^{-5}\\ \\text{m}^2$.</p>\n<p>By Hooke's Law within elastic limits, Stress $(\\sigma)$ is directly proportional to Strain $(\\varepsilon)$.</p>\n<p>$$\\sigma = \\frac{\\text{Force}}{\\text{Area}} = \\frac{F}{A}$$</p>\n<p>$$\\varepsilon = \\frac{\\text{Change in length}}{\\text{Original length}} = \\frac{\\Delta L}{L}$$</p>\n<p>Young's Modulus $(Y)$ is defined as the ratio of tensile stress to tensile strain:</p>\n<p>$$Y = \\frac{\\text{Stress}}{\\text{Strain}} = \\frac{F/A}{\\Delta L/L} = \\frac{F \\cdot L}{A \\cdot \\Delta L}$$</p>\n<p>Substituting the given values,</p>\n<p>$$Y = \\frac{500 \\times 3}{10^{-5} \\times (0.25 \\times 10^{-3})}$$</p>\n<p>$$Y = \\frac{1500}{0.25 \\times 10^{-8}}$$</p>\n<p>$$Y = \\frac{1500}{2.5 \\times 10^{-9}}$$</p>\n<p>$$ \\mathrm{Y}=600 \\times 10^9=6 \\times 10^{11} \\mathrm{~N} / \\mathrm{m}^2 $$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यंग प्रत्यास्थता गुणांक के निर्धारण के लिए सर्ल के प्रयोग में, जब 3 मीटर लंबे तार पर 50 kg का भार बढ़ाया जाता है, तो स्पिरिट लेवल की क्षैतिज स्थिति को पुनः प्राप्त करने के लिए 1 mm पिच (चूड़ी अंतराल) वाले माइक्रोमीटर स्क्रू को एक चौथाई चक्कर घुमाने की आवश्यकता होती है। यदि तार का अनुप्रस्थ काट क्षेत्रफल $10^{-5}$ m$^2$ है, तो तार का यंग प्रत्यास्थता गुणांक है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$6 \\times 10^{11}$ N/m$^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$1.5 \\times 10^{11}$ N/m$^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$3 \\times 10^{11}$ N/m$^2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "longitudinal-stress-and-strain-and-poisson-ratio-longitudinal-stress-and-strain-and-youngs-modulus",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt6qikza",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two wires of equal length and cross-section area are suspended as shown in figure. Their Young's modulus are $Y_1$ and $Y_2$, respectively. The equivalent Young's modulus will be</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt6qf2qj/2dc332e8-28cb-4d58-9440-7aad483157b7/b217b6b0-9f73-11f1-9715-d175926eff58/file-6y3zli1mt6qf2qk.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt6qf2qj/2dc332e8-28cb-4d58-9440-7aad483157b7/b217b6b0-9f73-11f1-9715-d175926eff58/file-6y3zli1mt6qf2qk.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>$Y_1 + Y_2$</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>$\\dfrac{Y_1 + Y_2}{2}$</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>$\\dfrac{Y_1 Y_2}{Y_1 + Y_2}$</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>$\\sqrt{Y_1 Y_2}$</b></p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let each individual wire have length L and cross-sectional area A. Since both wires are attached symmetrically to a rigid horizontal bar at the top and support a rigid bar at the bottom, both wires undergo the exact same extension $\\Delta \\mathrm{L}$ when stretched by a load.</p>\n<p>Using Young's modulus,</p>\n<p>$$ \\mathrm{Y}=\\frac{\\text { Stress }}{\\text { Strain }}=\\frac{\\mathrm{F} / \\mathrm{A}}{\\Delta \\mathrm{~L} / \\mathrm{L}} \\Rightarrow \\mathrm{~F}=\\frac{\\mathrm{YA} \\Delta \\mathrm{~L}}{\\mathrm{~L}} $$</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt6qh6je/45c19bd7-e58c-43b9-aaa7-7f1b809260c7/eca5cba0-9f73-11f1-9715-d175926eff58/file-6y3zli1mt6qh6jf.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt6qh6je/45c19bd7-e58c-43b9-aaa7-7f1b809260c7/eca5cba0-9f73-11f1-9715-d175926eff58/file-6y3zli1mt6qh6jf.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>For the first wire $\\mathrm{F}_1=\\frac{\\mathrm{Y}_1 \\mathrm{~A} \\Delta \\mathrm{~L}}{\\mathrm{~L}}$</p>\n<p>For the second wire $\\mathrm{F}_2=\\frac{\\mathrm{Y}_2 \\mathrm{~A} \\Delta \\mathrm{~L}}{\\mathrm{~L}}$</p>\n<p>The total restoring tension $F_{\\text{total}}$ provided by both wires is:</p>\n<p>$$F_{\\text{total}}=F_1+F_2=\\frac{Y_1A\\,\\Delta L}{L}+\\frac{Y_2A\\,\\Delta L}{L}=\\frac{(Y_1+Y_2)A\\,\\Delta L}{L}$$</p>\n<p>To replace the two parallel wires with a single equivalent wire.</p>\n<p>The length of the single wire should be same $L$</p>\n<p>The area of cross-section should be of combined total cross-sectional area $A_{\\text{eq}}=A+A=2A$</p>\n<p>Let equivalent Young's modulus is $Y_{\\text{eq}}$ with same extension $\\Delta L$ under the total load $F_{\\text{total}}$</p>\n<p>The force exerted by this equivalent wire is,</p>\n<p>$$F_{\\text{total}}=\\frac{Y_{\\text{eq}}A_{\\text{eq}}\\,\\Delta L}{L}=\\frac{Y_{\\text{eq}}(2A)\\,\\Delta L}{L}$$</p>\n<p>So, the force in both the cases must be same;</p>\n<p>$$\\frac{Y_{\\text{eq}}(2A)\\,\\Delta L}{L}=\\frac{(Y_1+Y_2)A\\,\\Delta L}{L}$$</p>\n<p>$$2Y_{\\text{eq}}=Y_1+Y_2\\Rightarrow Y_{\\text{eq}}=\\frac{Y_1+Y_2}{2}$$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>समान लंबाई और अनुप्रस्थ काट क्षेत्रफल वाले दो तारों को चित्र में दर्शाए अनुसार लटकाया गया है। उनके यंग प्रत्यास्थता गुणांक क्रमशः $Y_1$ और $Y_2$ हैं। तुल्य यंग प्रत्यास्थता गुणांक होगा:</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt6qf2qj/2dc332e8-28cb-4d58-9440-7aad483157b7/b217b6b0-9f73-11f1-9715-d175926eff58/file-6y3zli1mt6qf2qk.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt6qf2qj/2dc332e8-28cb-4d58-9440-7aad483157b7/b217b6b0-9f73-11f1-9715-d175926eff58/file-6y3zli1mt6qf2qk.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>$Y_1 + Y_2$</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>$\\dfrac{Y_1 + Y_2}{2}$</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>$\\dfrac{Y_1 Y_2}{Y_1 + Y_2}$</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>$\\sqrt{Y_1 Y_2}$</b></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "longitudinal-stress-and-strain-and-poisson-ratio-longitudinal-stress-and-strain-and-youngs-modulus",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtbxrums",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A wire of length L and radius r is fixed at one end. When a stretching force F is applied on the free end, the extension in the wire is l. Another wire of length 2L and radius 2r and of the same material is also fixed at one end. If a stretching force 2F is applied on the other end, then the elongation in the length of the wire will be</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{1}{2}l$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$l$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2l$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$4l$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let a wire of original length $L$ and uniform cross-sectional area $A$ be subjected to a stretching force $F$.</p>\n<p>For a wire of circular cross-section with radius $r$, the cross-sectional area is</p>\n<p>$$A = \t\\pi r^2$$</p>\n<p>Tensile stress is the force applied per unit cross-sectional area, $\\sigma = \\frac{F}{A}$</p>\n<p>$$\\sigma = \\frac{F}{\\pi r^2}$$</p>\n<p>Tensile strain is the fractional change in length</p>\n<p>$$\\varepsilon = \\frac{\\Delta L}{L}$$</p>\n<p>By Hooke's law, within the elastic limit, the ratio of tensile stress to tensile strain is a constant characteristic of the material, known as Young's modulus $(Y)$:</p>\n<p>$$Y = \\frac{\\sigma}{\\varepsilon} = \\frac{F/A}{\\Delta L/L} = \\frac{FL}{A\\,\\Delta L}$$</p>\n<p>$$\\Delta L = \\frac{FL}{AY} = \\frac{FL}{\\pi r^2 Y}$$</p>\n<p>For the first wire, original length $= L$, radius $= r$, stretching force $= F$</p>\n<p>Material's Young's modulus $= Y$ and elongation is $\\Delta L_1 = l$</p>\n<p>Using the formula for elongation, $l = \\frac{FL}{\\pi r^2 Y}$ … (i)</p>\n<p>For the second wire, original length $L' = 2L$, radius $r' = 2r$, stretching force $F' = 2F$</p>\n<p>Material's Young's modulus $= Y$ and elongation is $\\Delta L_1 = l$</p>\n<p>Using the formula for elongation, $l = \\frac{FL}{\\pi r^2 Y}$ … (i)</p>\n<p>As the material of second wire is same as that of first wire, so Young's modulus is also $Y$.</p>\n<p>Let the elongation in the second wire be $\\Delta L_2$.</p>\n<p>Substituting these values into the formula for elongation:</p>\n<p>$$\\Delta L_2 = \\frac{F'L'}{\\pi (r')^2 Y} = \\frac{(2F) \\times (2L)}{\\pi (2r)^2 Y}$$</p>\n<p>$$\\Delta L_2 = \\frac{4FL}{\\pi (4r^2) Y}$$</p>\n<p>$$\\Delta L_2 = \\frac{4FL}{4\\pi r^2 Y} = \\frac{FL}{\\pi r^2 Y}$$</p>\n<p>From equation (i), we have $l = \\frac{FL}{\\pi r^2 Y}$.</p>\n<p>Therefore $\\Delta \\mathrm{L}_2=\\mathrm{l}$. Thus, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>लंबाई L और त्रिज्या r वाला एक तार एक सिरे पर स्थिर (दृढ़) है। जब इसके मुक्त सिरे पर एक तनन बल F लगाया जाता है, तो तार में विस्तार l होता है। समान पदार्थ का एक अन्य तार, जिसकी लंबाई 2L और त्रिज्या 2r है, भी एक सिरे पर स्थिर है। यदि दूसरे सिरे पर 2F तनन बल लगाया जाता है, तो तार की लंबाई में वृद्धि (विस्तार) होगी:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{1}{2}l$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$l$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2l$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$4l$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "longitudinal-stress-and-strain-and-poisson-ratio-longitudinal-stress-and-strain-and-youngs-modulus",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtbxwosr",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The load versus elongation graph for four wires of the same material is shown in the figure. The thinnest wire is represented by the line</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtbxtq6k/127e206b-3c72-4be7-9a3e-38e19ada976f/94aec0c0-a250-11f1-b9db-ab431e96d529/file-6y3zli1mtbxtq6l.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtbxtq6k/127e206b-3c72-4be7-9a3e-38e19ada976f/94aec0c0-a250-11f1-b9db-ab431e96d529/file-6y3zli1mtbxtq6l.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>OC</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>OD</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>OA</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>OB</b></p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Let the load applied on the wire be F and it is plotted on the vertical axis, y-axis.</p>\n<p>Let the elongation produced be $\\Delta \\mathrm{L}$ and it is plotted on the horizontal axis, x-axis.</p>\n<p>From the definition of Young's modulus (Y), it is the mechanical stress $(\\sigma)$ per unit fractional change in length $\\left(\\frac{\\Delta \\mathrm{L}}{\\mathrm{L}}\\right)$.</p>\n<p>$\\mathrm{Y}=\\frac{\\sigma}{\\varepsilon}=\\frac{\\mathrm{F} / \\mathrm{A}}{\\Delta \\mathrm{L} / \\mathrm{L}}$ where A is the cross-sectional area and L is the length of the wire.</p>\n<p>$$ \\mathrm{F}=\\left(\\frac{\\mathrm{Y}}{\\mathrm{AL}}\\right) \\Delta \\mathrm{L} $$</p>\n<p>For the given graph where load (F) is on the y-axis and elongation $(\\Delta \\mathrm{L})$ is on the x-axis.</p>\n<p>The equation of a straight line passing through the origin is $\\mathrm{y}=\\mathrm{m} \\mathrm{x}$, where m is the slope.</p>\n<p>Comparing $\\mathrm{F}=\\left(\\frac{\\mathrm{YA}}{\\mathrm{L}}\\right) \\Delta \\mathrm{L}$ with $\\mathrm{y}=\\mathrm{mx}$,</p>\n<p>Slope (m) $=\\frac{\\mathrm{F}}{\\Delta \\mathrm{L}}=\\frac{\\mathrm{YA}}{\\mathrm{L}}$</p>\n<p>Since the wires are of the same material and of length, Y and L are constants.</p>\n<p>Therefore slope (m) $\\propto \\mathrm{A} \\Rightarrow$ Area $(\\mathrm{A}) \\propto$ Slope</p>\n<p>The thinnest wire will be the wire with the smallest cross-sectional area (A).</p>\n<p>Since A is directly proportional to the slope, smallest area A ⇒ smallest (minimum) slope</p>\n<p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtbxvnv8/2512a9d4-7b5d-43ee-a6e3-12df43069406/ca834540-a250-11f1-b9db-ab431e96d529/file-6y3zli1mtbxvnv9.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtbxvnv8/2512a9d4-7b5d-43ee-a6e3-12df43069406/ca834540-a250-11f1-b9db-ab431e96d529/file-6y3zli1mtbxvnv9.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Line OD has the greatest slope and line OA has the smallest slope with respect to the elongation axis (x-axis).</p>\n<p>Therefore, the line with the least slope corresponds to the smallest cross-sectional area (the thinnest wire), which is line OA.</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक ही पदार्थ के चार तारों के लिए भार बनाम प्रसार का आरेख चित्र में दर्शाया गया है। सबसे पतला तार किस रेखा द्वारा निरूपित किया गया है?</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtbxtq6k/127e206b-3c72-4be7-9a3e-38e19ada976f/94aec0c0-a250-11f1-b9db-ab431e96d529/file-6y3zli1mtbxtq6l.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtbxtq6k/127e206b-3c72-4be7-9a3e-38e19ada976f/94aec0c0-a250-11f1-b9db-ab431e96d529/file-6y3zli1mtbxtq6l.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>OC</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>OD</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>OA</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>OB</b></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "longitudinal-stress-and-strain-and-poisson-ratio-longitudinal-stress-and-strain-and-youngs-modulus",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtby4wej",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The adjacent graph shows the extension ($\\Delta l$) of a wire of length 1 m suspended from the top of a roof at one end and with a load w connected to the other end. If the cross-sectional area of the wire is $10^{-6} \\mathrm{m}^2$, calculate the Young's modulus of the material of the wire.</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtbxyyaz/8f9b1bbf-3009-41f0-af75-c705741ded3f/2600bfb0-a251-11f1-b9db-ab431e96d529/file-6y3zli1mtbxyyb0.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtbxyyaz/8f9b1bbf-3009-41f0-af75-c705741ded3f/2600bfb0-a251-11f1-b9db-ab431e96d529/file-6y3zli1mtbxyyb0.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2 \\times 10^{11} \\ \\mathrm{N/m}^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\times 10^{-11} \\ \\mathrm{N/m}^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$3 \\times 10^{-12} \\ \\mathrm{N/m}^2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$3 \\times 10^{12} \\ \\mathrm{N/m}^2$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Let a wire of initial length L and cross-sectional area A be suspended under an applied stretching force (load) w.</p>\n<p>Tensile stress ($\\sigma$) is the deforming force acting per unit cross-sectional area of the wire:</p>\n<p>$$\\sigma = \\frac{w}{A}$$</p>\n<p>Tensile strain ($\\varepsilon$) is the change in length ($\\Delta l$) per unit original length (L),</p>\n<p>$$\\varepsilon = \\frac{\\Delta L}{L}$$</p>\n<p>According to Hooke's law, within the proportional limit, the ratio of tensile stress to tensile strain is Young's modulus (Y),</p>\n<p>$$Y = \\frac{\\sigma}{\\varepsilon} = \\frac{w/A}{\\Delta l/L} = \\frac{wL}{A\\,\\Delta l}$$</p>\n<p>$$Y = \\frac{L}{A\\left[\\frac{(\\Delta l)}{w}\\right]} = \\frac{L/A}{\\left[\\frac{(\\Delta l)}{w}\\right]}$$</p>\n<p>The length of the wire, L $= 1\\ \\text{m}$</p>\n<p>Cross-sectional area, A $= 10^{-6}\\ \\text{m}^2$</p>\n<p>From the given straight-line graph of $\\Delta l$ versus w :</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtby13gs/93315269-17db-4a6b-a5f1-90854475fec2/619bb0c0-a251-11f1-b9db-ab431e96d529/file-6y3zli1mtby13gt.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtby13gs/93315269-17db-4a6b-a5f1-90854475fec2/619bb0c0-a251-11f1-b9db-ab431e96d529/file-6y3zli1mtby13gt.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>At $\\mathrm{w}_1=20 \\mathrm{~N}, \\Delta \\mathrm{l}_1=1 \\times 10^{-4} \\mathrm{~m}$</p>\n<p>At $\\mathrm{w}_2=80 \\mathrm{~N}, \\Delta \\mathrm{l}_2=4 \\times 10^{-4} \\mathrm{~m}$</p>\n<p>Change in load is $\\Delta \\mathrm{w}=\\mathrm{w}_2-\\mathrm{w}_1=80-20=60 \\mathrm{~N}$</p>\n<p>Corresponding change in extension is $\\Delta(\\Delta \\mathrm{l})=(4-1) \\times 10^{-4} \\mathrm{~m}=3 \\times 10^{-4} \\mathrm{~m}$</p>\n<p>So, the slope of graph is</p>\n<p>$$m = \\frac{\\triangle(\\triangle l)}{\\triangle w} = \\frac{3 \\times 10^{-4}}{60}$$</p>\n<p>$$Y = \\frac{L}{A} \\times \\text{slope}$$</p>\n<p>$$Y = \\frac{1}{10^{-6}} \\times \\frac{60}{3 \\times 10^{-4}}$$</p>\n<p>$$Y = \\frac{1}{10^{-6}} \\times (20 \\times 10^{4})$$</p>\n<p>$$Y = 2 \\times 10^{5} \\times 10^{6} = 2 \\times 10^{11}\\ \\text{N/m}^2$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>संलग्न ग्राफ 1 m लंबाई वाले एक तार के विस्तार ($\\Delta l$) को दर्शाता है, जो एक सिरे से छत के शीर्ष से लटका हुआ है और दूसरे सिरे से एक भार w जुड़ा हुआ है। यदि तार का अनुप्रस्थ काट क्षेत्रफल $10^{-6} \\mathrm{m}^2$ है, तो तार के पदार्थ का यंग प्रत्यास्थता गुणांक परिकलित कीजिए।</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtbxyyaz/8f9b1bbf-3009-41f0-af75-c705741ded3f/2600bfb0-a251-11f1-b9db-ab431e96d529/file-6y3zli1mtbxyyb0.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtbxyyaz/8f9b1bbf-3009-41f0-af75-c705741ded3f/2600bfb0-a251-11f1-b9db-ab431e96d529/file-6y3zli1mtbxyyb0.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2 \\times 10^{11} \\ \\mathrm{N/m}^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\times 10^{-11} \\ \\mathrm{N/m}^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$3 \\times 10^{-12} \\ \\mathrm{N/m}^2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$3 \\times 10^{12} \\ \\mathrm{N/m}^2$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "longitudinal-stress-and-strain-and-poisson-ratio-longitudinal-stress-and-strain-and-youngs-modulus",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtc1ieaj",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The stress versus strain graphs for wires of two materials A and B are as shown in the figure. If $Y_A$ and $Y_B$ are the young's moduli of the materials, then :</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc1gngk/f5f117ec-cb1a-47ad-8221-b5461de91970/cd93d840-a25e-11f1-b9db-ab431e96d529/file-6y3zli1mtc1gngl.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc1gngk/f5f117ec-cb1a-47ad-8221-b5461de91970/cd93d840-a25e-11f1-b9db-ab431e96d529/file-6y3zli1mtc1gngl.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$Y_B = 2Y_A$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$Y_A = 3Y_B$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$Y_B = 3Y_A$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$Y_A = Y_B$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Tensile stress ($\\sigma$) is plotted on the vertical y-axis.</p>\n<p>Tensile strain ($\\varepsilon$) is plotted on the horizontal x-axis.</p>\n<p>Using Hook’s law, Young's modulus ($Y$) is the ratio of tensile stress to tensile strain within the elastic limit,</p>\n<p>$$Y = \\frac{\\text{Stress}}{\\text{Strain}} = \\frac{\\sigma}{\\varepsilon}$$</p>\n<p>The slope of a straight line making an angle $\\theta$ with the horizontal x-axis (the strain axis) is,</p>\n<p>$$\\text{Slope} = \\tan(\\theta) = \\frac{y}{x} = \\frac{\\text{Stress}}{\\text{Strain}}$$</p>\n<p>Therefore, the Young's modulus is directly equal to the tangent of the angle made by the line with the strain axis:</p>\n<p>$$Y = \\tan(\\theta)$$</p>\n<p>For material A, the line makes an angle of $\\theta_A = 30^{\\circ}$ with the strain (x) axis.</p>\n<p>$$Y_A = \\tan(30^{\\circ}) = \\frac{1}{\\sqrt{3}}$$</p>\n<p>For material B, the total angle from the strain axis is $\\theta_B = 60^{\\circ}$ (as labeled by the outer arc from the x-axis).</p>\n<p>$$Y_B = \\tan(60^{\\circ}) = \\sqrt{3}$$</p>\n<p>Taking the ratio of $Y_A$ to $Y_B$,</p>\n<p>$$\\frac{Y_A}{Y_B} = \\frac{1/\\sqrt{3}}{\\sqrt{3}} = \\frac{1}{\\sqrt{3} \\times \\sqrt{3}} = \\frac{1}{3}$$</p>\n<p>$$Y_B = 3Y_A$$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो पदार्थों A और B के तारों के लिए प्रतिबल बनाम विकृति ग्राफ चित्र में दर्शाए गए हैं। यदि $Y_A$ और $Y_B$ पदार्थों के यंग प्रत्यास्थता गुणांक हैं, तो :</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc1gngk/f5f117ec-cb1a-47ad-8221-b5461de91970/cd93d840-a25e-11f1-b9db-ab431e96d529/file-6y3zli1mtc1gngl.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc1gngk/f5f117ec-cb1a-47ad-8221-b5461de91970/cd93d840-a25e-11f1-b9db-ab431e96d529/file-6y3zli1mtc1gngl.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$Y_B = 2Y_A$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$Y_A = 3Y_B$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$Y_B = 3Y_A$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$Y_A = Y_B$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "longitudinal-stress-and-strain-and-poisson-ratio-longitudinal-stress-and-strain-and-youngs-modulus",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtbz17rf",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform slender rod of length L, cross-sectional area A and Young's modulus Y is acted upon by the forces shown in the figure. The elongation of the rod is</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtbyx1uk/9e5cb4b2-eba8-4502-89c7-b8d192c86b64/da405dc0-a254-11f1-b9db-ab431e96d529/file-6y3zli1mtbyx1ul.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtbyx1uk/9e5cb4b2-eba8-4502-89c7-b8d192c86b64/da405dc0-a254-11f1-b9db-ab431e96d529/file-6y3zli1mtbyx1ul.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{3FL}{5AY}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{2FL}{5AY}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{3FL}{8AY}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{8FL}{3AY}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Consider an infinitesimal element of length dx inside a rod of cross-sectional area A and Young's modulus Y,</p>\n<p>subjected to an internal axial force P.</p>\n<p>Tensile stress is the internal force per unit cross-sectional area,</p>\n<p>$$\\text{Stress}(\\sigma) = \\frac{P}{A}$$</p>\n<p>Tensile strain of the element of length dx stretching by d\\delta is,</p>\n<p>$$\\text{Strain}(\\epsilon) = \\frac{d\\delta}{dx}$$</p>\n<p>From Hooke's law:</p>\n<p>$$Y = \\frac{\\text{Stress}}{\\text{Strain}} = \\frac{P/A}{d\\delta/dx} \\rightarrow d\\delta = \\frac{P}{AY}dx$$</p>\n<p>For a segment of uniform length $L_i$ carrying a constant internal normal force $P_i$, the total elongation $\\Delta\\,L_i$ is the</p>\n<p>sum of all elemental change in length over its length,</p>\n<p>$$\\Delta\\,L_i = \\int\\limits_{0}^{L_i} \\left(\\frac{P_i}{AY}\\right) dx = \\left(\\frac{P_i}{AY}\\right) \\int\\limits_{0}^{L_i} dx = \\frac{P_i\\,L_i}{AY}$$</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtbyzcwz/07d5deab-b4fd-4f22-abb6-2edb0f900428/1a6b3730-a255-11f1-b9db-ab431e96d529/file-6y3zli1mtbyzcx0.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtbyzcwz/07d5deab-b4fd-4f22-abb6-2edb0f900428/1a6b3730-a255-11f1-b9db-ab431e96d529/file-6y3zli1mtbyzcx0.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The rod is of segments of lengths $L_1 = \\frac{L}{3}$ and $L_2 = L - \\frac{L}{3} = \\frac{2L}{3}$.</p>\n<p>The net external force on the rod is zero $$\\sum F_x = -F + 3F - 2F = 0.$$ </p>\n<p>The change in length of first segment is $$\\Delta L_1 = \\frac{(2F)\\left(\\frac{L}{3}\\right)}{AY} = \\frac{2FL}{3AY}$$</p>\n<p>The change in length of second segment is $$\\Delta L_2 = \\frac{(3F)\\left(\\frac{2L}{3}\\right)}{AY} = \\frac{2FL}{AY}$$</p>\n<p>So, the total elongation $\\Delta L_{\\text{total}}$ is</p>\n<p>$$\\Delta L_{\\text{total}} = \\Delta L_1 + \\Delta L_2$$</p>\n<p>$$\\Delta L_{\\text{total}} = \\frac{2FL}{3AY} + \\frac{2FL}{AY} = \\frac{8FL}{3AY}$$</p>\n<p>Therefore, the total elongation of the rod is $\\frac{8FL}{3AY}$. Thus, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>लंबाई L, अनुप्रस्थ काट क्षेत्रफल A और यंग प्रत्यास्थता गुणांक Y वाली एकसमान पतली छड़ पर चित्र में दिखाए गए बल लग रहे हैं। छड़ की लंबाई में वृद्धि (प्रसार) है</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtbyx1uk/9e5cb4b2-eba8-4502-89c7-b8d192c86b64/da405dc0-a254-11f1-b9db-ab431e96d529/file-6y3zli1mtbyx1ul.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtbyx1uk/9e5cb4b2-eba8-4502-89c7-b8d192c86b64/da405dc0-a254-11f1-b9db-ab431e96d529/file-6y3zli1mtbyx1ul.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{3FL}{5AY}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{2FL}{5AY}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{3FL}{8AY}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{8FL}{3AY}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "longitudinal-stress-and-strain-and-poisson-ratio-longitudinal-stress-and-strain-and-youngs-modulus",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtc1mm4h",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A rod of length 1000 mm and coefficient of linear expansion $\\alpha = 10^{-4}$ per degree is placed symmetrically between fixed walls separated by 1001 mm. The Young's modulus of the rod is $10^{11} \\text{ N/m}^2$. If the temperature is increased by 20$^\\circ$C, then the stress developed in the rod is (in N/m$^2$) :</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc1kavf/e6bbc873-7cd8-4a22-9a3a-87a9cffa15e8/33173db0-a25f-11f1-b9db-ab431e96d529/file-6y3zli1mtc1kavg.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc1kavf/e6bbc873-7cd8-4a22-9a3a-87a9cffa15e8/33173db0-a25f-11f1-b9db-ab431e96d529/file-6y3zli1mtc1kavg.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$10^8$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\times 10^8$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$10^9$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>cannot be calculated</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Let the initial length of the rod be $\\mathrm{L}_0$ and the separation between the rigid walls be d .</p>\n<p>The initial length of rod, $\\mathrm{L}_0=1000 \\mathrm{~mm}=1 \\mathrm{~m}$</p>\n<p>The separation between walls, $\\mathrm{d}=1001 \\mathrm{~mm}=1.001 \\mathrm{~m}$</p>\n<p>The coefficient of linear expansion, $\\alpha=10^{-4} /{ }^{\\circ} \\mathrm{C}$</p>\n<p>The temperature increased by $\\Delta \\mathrm{T}=20^{\\circ} \\mathrm{C}$</p>\n<p>The Young's modulus, $\\mathrm{Y}=10^{11} \\mathrm{~N} / \\mathrm{m}^2$</p>\n<p>So, the initial gap is $\\Delta \\mathrm{L}_{\\text {gap }}=1001 \\mathrm{~mm}-1000 \\mathrm{~mm}=1 \\mathrm{~mm}=10^{-3} \\mathrm{~m}$</p>\n<p>When the temperature increases by $\\Delta \\mathrm{T}$, the free thermal expansion of the rod would be,</p>\n<p>$$ \\Delta \\mathrm{L}_{\\text {thermal }}=\\mathrm{L}_0 \\alpha \\Delta \\mathrm{~T} $$</p>\n<p>The free thermal expansion is,</p>\n<p>$$ \\Delta \\mathrm{L}_{\\text {thermal }}=\\mathrm{L}_0 \\alpha \\Delta \\mathrm{~T}=(1000) \\times\\left(10^{-4} /{ }^{\\circ} \\mathrm{C}\\right) \\times\\left(20^{\\circ} \\mathrm{C}\\right)=2 \\mathrm{~mm}=2 \\times 10^{-3} \\mathrm{~m} $$</p>\n<p>If $\\Delta \\mathrm{L}_{\\text {thermal }}>\\Delta \\mathrm{L}_{\\text {gap }}$, the rod first expands freely to close the gap of $\\Delta \\mathrm{L}_{\\text {gap }}$, and the remaining expansion is prevented by the rigid walls.</p>\n<p>The prevented expansion is</p>\n<p>$$ \\begin{gathered} \\Delta \\mathrm{L}_{\\text {prevented }}=\\Delta \\mathrm{L}_{\\text {thermal }}-\\Delta \\mathrm{L}_{\\text {gap }}=\\left(\\mathrm{L}_0 \\alpha \\Delta \\mathrm{~T}\\right)-\\left(\\mathrm{d}-\\mathrm{L}_0\\right) \\\\ \\Delta \\mathrm{L}_{\\text {prevented }}=\\Delta \\mathrm{L}_{\\text {thermal }}-\\Delta \\mathrm{L}_{\\text {gap }}=2 \\mathrm{~mm}-1 \\mathrm{~mm}=1 \\mathrm{~mm}=10^{-3} \\mathrm{~m} \\end{gathered} $$</p>\n<p>The compressive strain produced in the rod due to the constraining walls is:</p>\n<p>$$ \\text { Strain }(\\varepsilon)=\\frac{\\Delta \\mathrm{L}_{\\text {prevented }}}{\\mathrm{L}_0} $$</p>\n<p>So, the compressive strain is $\\varepsilon=\\frac{\\Delta \\mathrm{L}_{\\text {prevented }}}{\\mathrm{L}_0}=\\frac{1 \\mathrm{~mm}}{1000 \\mathrm{~mm}}=10^{-3}$</p>\n<p>From Hooke's Law, the resulting thermal stress is:</p>\n<p>$$ \\text { Stress }(\\sigma)=\\mathrm{Y} \\varepsilon=\\mathrm{Y} \\times\\left(\\frac{\\Delta \\mathrm{L}_{\\text {prevented }}}{\\mathrm{L}_0}\\right) $$</p>\n<p>So, the stress developed $\\sigma=\\mathrm{Y} \\varepsilon=\\left(10^{11}\\right) \\times 10^{-3}=10^8 \\mathrm{~N} / \\mathrm{m}^2$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>1000 mm लम्बाई तथा रेखीय प्रसार गुणांक $\\alpha = 10^{-4}$ प्रति डिग्री वाली एक छड़ को 1001 mm की दूरी पर स्थित दृढ़ दीवारों के बीच सममित रूप से रखा गया है। छड़ का यंग प्रत्यास्थता गुणांक $10^{11} \\text{ N/m}^2$ है। यदि तापमान में 20$^\\circ$C की वृद्धि की जाती है, तो छड़ में उत्पन्न प्रतिबल (N/m$^2$ में) होगा :</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc1kavf/e6bbc873-7cd8-4a22-9a3a-87a9cffa15e8/33173db0-a25f-11f1-b9db-ab431e96d529/file-6y3zli1mtc1kavg.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc1kavf/e6bbc873-7cd8-4a22-9a3a-87a9cffa15e8/33173db0-a25f-11f1-b9db-ab431e96d529/file-6y3zli1mtc1kavg.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$10^8$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\times 10^8$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$10^9$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>गणना नहीं की जा सकती</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "longitudinal-stress-and-strain-and-poisson-ratio-longitudinal-stress-and-strain-and-youngs-modulus",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtc0i9wa",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform steel wire hangs from the ceiling and elongates due to its own weight. The ratio of elongation of the upper half of the wire to the elongation of the lower half of wire is</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc0cgpq/2dd0d13e-852d-41e8-a180-9966ca51ca1c/70004be0-a25a-11f1-b9db-ab431e96d529/file-6y3zli1mtc0cgpr.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc0cgpq/2dd0d13e-852d-41e8-a180-9966ca51ca1c/70004be0-a25a-11f1-b9db-ab431e96d529/file-6y3zli1mtc0cgpr.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>4 : 1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>3 : 1</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3 : 2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let the total length of the uniform wire be L, its total mass be M, cross-sectional area be A, and Young's modulus be Y.</p>\n<p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc0dw8v/da4836b0-9c64-4ee1-be53-0f9f5bdf39ea/97cee0f0-a25a-11f1-b9db-ab431e96d529/file-6y3zli1mtc0dw8w.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc0dw8v/da4836b0-9c64-4ee1-be53-0f9f5bdf39ea/97cee0f0-a25a-11f1-b9db-ab431e96d529/file-6y3zli1mtc0dw8w.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The mass per unit length of the wire is $\\mu=\\frac{\\mathrm{M}}{\\mathrm{L}}$</p>\n<p>Let y is the vertical distance measured upwards from the bottom end of the wire, so $\\mathrm{y} \\in[0, \\mathrm{~L}]$.</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc0f9rx/bb1c74ae-ba01-4ac6-9cb5-9f1d3e8670fc/be117ed0-a25a-11f1-b9db-ab431e96d529/file-6y3zli1mtc0f9ry.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc0f9rx/bb1c74ae-ba01-4ac6-9cb5-9f1d3e8670fc/be117ed0-a25a-11f1-b9db-ab431e96d529/file-6y3zli1mtc0f9ry.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>The tension $T_y$ at any cross-section at a distance $y$ from the bottom is only due to the weight of the portion of the wire hanging below that section which has length $y$):</p>\n<p>$\\mathrm{T}_{\\mathrm{y}}=\\mathrm{m}_{\\mathrm{y}} \\mathrm{g}=(\\mu \\mathrm{y}) \\mathrm{g}=\\frac{\\mathrm{Mgy}}{\\mathrm{L}}$</p>\n<p>Considering an infinitesimal element of length $dy$ at a distance $y$ from the bottom end.</p>\n<p>Tensile Stress at this cross-section is Stress $(\\sigma_y)$</p>\n<p>$$= \\frac{T_y}{A} = \\frac{Mgy}{AL}$$</p>\n<p>From Hooke's law, $Y = \\frac{\\text{Stress}}{\\text{Strain}} = \\frac{T_y/A}{d\\delta/dy}$, where $d\\delta$ is the elongation of the infinitesimal element $dy$.</p>\n<p>$$d\\delta = \\frac{T_y}{AY}\\,dy = \\frac{Mg}{ALY}y\\,dy$$</p>\n<p>For the lower half $y$ is varying from $y=0$ to $y=\\frac{L}{2}$.</p>\n<p>$$\\Delta L_{\\text{lower}} = \\int\\limits_{0}^{L/2} \\frac{Mg}{ALY}y\\,dy = \\frac{Mg}{ALY}\\int\\limits_{0}^{L/2} y\\,dy = \\frac{Mg}{ALY}\\left[\\frac{y^2}{2}\\right]_{0}^{L/2} = \\frac{Mg}{ALY} \\times \\frac{1}{2}\\left(\\frac{L^2}{4}\\right) = \\frac{MgL}{8AY}$$</p>\n<p>For the upper half $y$ varying from $y=\\frac{L}{2}$ to $y=L$.</p>\n<p>$$\\Delta L_{\\text{upper}} = \\int\\limits_{L/2}^{L} \\frac{Mg}{ALY}y\\,dy = \\frac{Mg}{ALY}\\int\\limits_{L/2}^{L} y\\,dy = \\frac{Mg}{ALY}\\left[\\frac{y^2}{2}\\right]_{L/2}^{L} = \\frac{Mg}{ALY} \\times \\frac{1}{2}\\left(L^2 - \\frac{L^2}{4}\\right)$$</p>\n<p>$$= \\frac{Mg}{ALY} \\times \\frac{1}{2}\\left(\\frac{3L^2}{4}\\right) = \\frac{3MgL}{8AY}$$</p>\n<p>Taking the ratio of elongation of the upper half to that of the lower half:</p>\n<p>$$\\frac{\\Delta L_{\\text{upper}}}{\\Delta L_{\\text{lower}}} = \\frac{3MgL/8AY}{MgL/8AY} = \\frac{3}{1} = 3:1$$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक एकसमान स्टील का तार छत से लटक रहा है और अपने स्वयं के भार के कारण इसमें दैर्ध्य-वृद्धि (प्रसार) होती है। तार के ऊपरी आधे भाग के प्रसार का तार के निचले आधे भाग के प्रसार से अनुपात क्या है?</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc0cgpq/2dd0d13e-852d-41e8-a180-9966ca51ca1c/70004be0-a25a-11f1-b9db-ab431e96d529/file-6y3zli1mtc0cgpr.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc0cgpq/2dd0d13e-852d-41e8-a180-9966ca51ca1c/70004be0-a25a-11f1-b9db-ab431e96d529/file-6y3zli1mtc0cgpr.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>4 : 1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>3 : 1</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3 : 2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "longitudinal-stress-and-strain-and-poisson-ratio-longitudinal-stress-and-strain-and-youngs-modulus",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtbz9u7j",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The bar shown in the figure is made of a single piece of material. It is fixed at one end. It consists of two segments of equal length $L/2$ but different cross-sectional area $A$ and $2A$. What is the change in length of the entire system under the action of an axial force $F$? Consider the shape of joint to remain circular. (Given, $Y =$ Young's modulus).</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtbz5o46/84cd7f2c-60de-4404-96d0-55d9a924f3e2/c9ecdf60-a255-11f1-b9db-ab431e96d529/file-6y3zli1mtbz5o47.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtbz5o46/84cd7f2c-60de-4404-96d0-55d9a924f3e2/c9ecdf60-a255-11f1-b9db-ab431e96d529/file-6y3zli1mtbz5o47.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\dfrac{3FL}{4AY} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\dfrac{3FL}{8AY} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\dfrac{3FL}{2AY} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For a segment of uniform cross-sectional area $A_i$, length $L_i$, Young's modulus $Y$, under an tensile force $F$ :</p>\n<p>The stress is $\\sigma_{\\mathrm{i}}=\\frac{\\mathrm{F}}{\\mathrm{A}_{\\mathrm{i}}}$ and strain is $\\varepsilon_{\\mathrm{i}}=\\frac{\\Delta \\mathrm{L}_{\\mathrm{i}}}{\\mathrm{L}_{\\mathrm{i}}}$</p>\n<p>From Hooke's for Young's modulus,</p>\n<p>$$ \\mathrm{Y}=\\frac{\\sigma_{\\mathrm{i}}}{\\varepsilon_{\\mathrm{i}}}=\\frac{\\mathrm{F} / \\mathrm{A}_{\\mathrm{i}}}{\\Delta \\mathrm{~L}_{\\mathrm{i}} / \\mathrm{L}_{\\mathrm{i}}} \\Rightarrow \\Delta \\mathrm{~L}_{\\mathrm{i}}=\\frac{\\mathrm{F} \\mathrm{~L}_{\\mathrm{i}}}{\\mathrm{~A}_{\\mathrm{i}} \\mathrm{Y}} $$</p>\n<p>The composite bar is subjected to tensile force F . Since the segments are connected in series, the same tensile force F is transmitted through both segments.</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtbz8amw/4f8feecc-d16f-49cc-a0b6-dc058a7802fd/12f09580-a256-11f1-b9db-ab431e96d529/file-6y3zli1mtbz8amx.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtbz8amw/4f8feecc-d16f-49cc-a0b6-dc058a7802fd/12f09580-a256-11f1-b9db-ab431e96d529/file-6y3zli1mtbz8amx.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>For segment 1, Length, $L_1 = \\dfrac{L}{2}$, cross-sectional area, $A_1 = 2A$ and Young's modulus = Y</p>\n<p>So, the elongation in first segment is,</p>\n<p>$$\\Delta L_1 = \\dfrac{F L_1}{A_1 Y} = \\dfrac{F\\left(\\dfrac{L}{2}\\right)}{(2A)Y} = \\dfrac{FL}{4AY}$$</p>\n<p>For segment 2, Length, $L_2 = \\dfrac{L}{2}$, cross-sectional area, $A_2 = A$ and Young's modulus = Y</p>\n<p>So, the elongation in second segment is,</p>\n<p>$$\\Delta L_2 = \\dfrac{F L_2}{A_2 Y} = \\dfrac{F\\left(\\dfrac{L}{2}\\right)}{(A)Y} = \\dfrac{FL}{2AY}$$</p>\n<p>The total change in length of the entire system is the sum of the changes in length of both individual segments:</p>\n<p>$$\\Delta L_{\\text{total}} = \\Delta L_1 + \\Delta L_2$$</p>\n<p>$$\\Delta L_{\\text{total}} = \\dfrac{FL}{4AY} + \\dfrac{FL}{2AY}$$</p>\n<p>$$\\Delta L_{\\text{total}} = \\dfrac{FL + 2FL}{4AY} = \\dfrac{3FL}{4AY}$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दिखाई गई छड़ एक ही पदार्थ के टुकड़े से बनी है। यह एक सिरे पर बद्ध है। इसमें समान लंबाई $L/2$ लेकिन भिन्न अनुप्रस्थ काट क्षेत्रफल $A$ और $2A$ के दो खंड हैं। अक्षीय बल $F$ की क्रिया के अंतर्गत संपूर्ण निकाय की लंबाई में क्या परिवर्तन होगा? जोड़ के आकार को वृत्ताकार ही मानिए। (दिया है, $Y =$ यंग प्रत्यास्थता गुणांक)।</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtbz5o46/84cd7f2c-60de-4404-96d0-55d9a924f3e2/c9ecdf60-a255-11f1-b9db-ab431e96d529/file-6y3zli1mtbz5o47.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtbz5o46/84cd7f2c-60de-4404-96d0-55d9a924f3e2/c9ecdf60-a255-11f1-b9db-ab431e96d529/file-6y3zli1mtbz5o47.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\dfrac{3FL}{4AY} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\dfrac{3FL}{8AY} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\dfrac{3FL}{2AY} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "longitudinal-stress-and-strain-and-poisson-ratio-longitudinal-stress-and-strain-and-youngs-modulus",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mtbyh1xl",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>One end of a steel wire is fixed to ceiling of an elevator moving up with an acceleration $2 \\mathrm{~m} / \\mathrm{s}^2$ and a load of 10 kg hangs from other end. Area of cross-section of the wire is $2 \\mathrm{~cm}^2$. If the longitudinal strain in the wire $\\mathbf{n} \\times \\mathbf{1 0}^{-\\mathbf{6}}$, then find $\\mathbf{n}$. (Take, $\\mathbf{g}=\\mathbf{1 0} \\mathbf{~ m} / \\mathbf{s}^{\\mathbf{2}}$ and $\\mathbf{Y}=\\mathbf{2} \\times \\mathbf{1 0}^{\\mathbf{1 1}} \\mathbf{N} \\boldsymbol{/} \\mathbf{m}^{\\mathbf{2}}$ )</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtbydeis/3b7ff981-f84c-4e66-b154-38a6b3cd9987/b7dba840-a252-11f1-b9db-ab431e96d529/file-6y3zli1mtbydeit.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtbydeis/3b7ff981-f84c-4e66-b154-38a6b3cd9987/b7dba840-a252-11f1-b9db-ab431e96d529/file-6y3zli1mtbydeit.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>Let a mass m be suspended inside an elevator moving upward with an acceleration $\\mathrm{a}_0$.</p>\n<p>Considering the forces acting on the hanging mass in an inertial reference frame,</p>\n<p>Downward gravitational force, $\\mathrm{W}=\\mathrm{mg}$</p>\n<p>Upward pulling tension from the wire, T</p>\n<p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtbyflm1/849fa95c-ffc7-4ebe-8f5f-0b4c19bb9a06/f4f41190-a252-11f1-b9db-ab431e96d529/file-6y3zli1mtbyflm2.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtbyflm1/849fa95c-ffc7-4ebe-8f5f-0b4c19bb9a06/f4f41190-a252-11f1-b9db-ab431e96d529/file-6y3zli1mtbyflm2.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>By Newton's second law of motion :</p>\n<p>$$ \\mathrm{F}_{\\text {net }}=\\mathrm{m} \\cdot \\mathrm{a}_0 $$</p>\n<p>$$T - m \\, g = m a_0$$</p>\n<p>$$T = m(g + a_0)$$</p>\n<p>Tensile stress ($\\sigma$) is defined as the force per unit cross-sectional area:</p>\n<p>$$\\sigma = \\frac{T}{A} = \\frac{m(g + a_0)}{A}$$</p>\n<p>According to Hooke's law, Young's modulus ($Y$) is the ratio of tensile stress to tensile strain:</p>\n<p>$$Y = \\frac{\\sigma}{\\varepsilon}$$</p>\n<p>$$\\varepsilon = \\frac{\\sigma}{Y} = \\frac{m(g + a_0)}{AY}$$</p>\n<p>The mass of the load, $m = 10\\ \\mathrm{kg}$</p>\n<p>Upward acceleration of elevator, $a_0 = 2\\ \\mathrm{m/s^2}$</p>\n<p>Acceleration due to gravity, $g = 10\\ \\mathrm{m/s^2}$</p>\n<p>Area of cross-section, $A = 2\\ \\mathrm{cm^2} = 2 \\times 10^{-4}\\ \\mathrm{m^2}$</p>\n<p>Young's modulus, $Y = 2 \\times 10^{11}\\ \\mathrm{N/m^2}$</p>\n<p>Putting the values,</p>\n<p>$$\\varepsilon = \\frac{10 \\times (10 + 2)}{(2 \\times 10^{-4}) \\times (2 \\times 10^{11})} = \\frac{10 \\times 12}{4 \\times 10^7} = 120\\ \\mathrm{N}$$</p>\n<p>$$\\varepsilon = 3 \\times 10^{-6} = n \\times 10^{-6} \\Rightarrow n = 3$$</p>\n<p>Therefore, the value of $n$ is 3.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक स्टील के तार का एक सिरा $2 \text{ m/s}^2$ के त्वरण से ऊपर की ओर गतिमान एक लिफ्ट की छत से बंधा है तथा दूसरे सिरे से $10\text{ kg}$ का भार लटका हुआ है। तार के अनुप्रस्थ-काट का क्षेत्रफल $2 \text{ cm}^2$ है। यदि तार में अनुदैर्ध्य विकृति $\\mathbf{n} \\times \\mathbf{10}^{-\\mathbf{6}}$ है, तो $\\mathbf{n}$ का मान ज्ञात कीजिए। (दिया है, $\\mathbf{g}=\\mathbf{10} \\text{ m/s}^{\\mathbf{2}}$ तथा $\\mathbf{Y}=\\mathbf{2} \\times \\mathbf{10}^{\\mathbf{11}} \\text{ N/m}^{\\mathbf{2}}$ )</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtbydeis/3b7ff981-f84c-4e66-b154-38a6b3cd9987/b7dba840-a252-11f1-b9db-ab431e96d529/file-6y3zli1mtbydeit.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtbydeis/3b7ff981-f84c-4e66-b154-38a6b3cd9987/b7dba840-a252-11f1-b9db-ab431e96d529/file-6y3zli1mtbydeit.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "longitudinal-stress-and-strain-and-poisson-ratio-longitudinal-stress-and-strain-and-youngs-modulus",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtbyv2z8",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A block of weight 100 N is suspended by copper and steel wires of same cross-sectional area $0.5 \\mathrm{~cm}^2$ and length $\\sqrt{3}$ and 1 m , respectively. Their other ends are fixed on a ceiling as shown in figure. The angles subtended by copper and steel wires with ceiling are 30° and 60°, respectively. If elongation in copper wire is $\\left(\\Delta \\mathrm{l}_{\\mathrm{c}}\\right)$ and elongation in steel wire is $\\left(\\Delta \\mathrm{l}_{\\mathrm{s}}\\right)$, then find the ratio $\\frac{\\Delta \\mathrm{l}_{\\mathrm{c}}}{\\Delta \\mathrm{l}_{\\mathrm{s}}}$. [Young's modulus for copper and steel are $1 \\times 10^{11} \\mathrm{~N} / \\mathrm{m}^2$ and $2 \\times 10^{11} \\mathrm{~N} / \\mathrm{m}^2$, respectively]</p>\n\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtbyq995/f797e9fb-0dac-4ff3-a808-5f8c5958fdde/1d4ec490-a254-11f1-b9db-ab431e96d529/file-6y3zli1mtbyq996.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtbyq995/f797e9fb-0dac-4ff3-a808-5f8c5958fdde/1d4ec490-a254-11f1-b9db-ab431e96d529/file-6y3zli1mtbyq996.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>Tensile stress developed in a wire carrying tension T with cross-sectional area A is:</p>\n<p>$$ \\operatorname{Stress}(\\sigma)=\\frac{\\mathrm{T}}{\\mathrm{~A}} $$</p>\n<p>Tensile strain for initial length L and elongation $\\Delta \\mathrm{l}$ is:</p>\n<p>$$ \\operatorname{Strain}(\\varepsilon)=\\frac{\\Delta \\mathrm{l}}{\\mathrm{~L}} $$</p>\n<p>From Young's modulus formula,</p>\n<p>$$ \\mathrm{Y}=\\frac{\\text { Stress }}{\\text { Strain }}=\\frac{\\mathrm{T} / \\mathrm{A}}{\\Delta \\mathrm{l} / \\mathrm{L}}=\\frac{\\mathrm{TL}}{\\mathrm{~A} \\Delta \\mathrm{l}} \\Rightarrow \\Delta \\mathrm{l}=\\frac{\\mathrm{TL}}{\\mathrm{AY}} $$</p>\n<p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtbysx62/6b44150b-a2b3-45ec-8e80-be1e670ab9b8/676634a0-a254-11f1-b9db-ab431e96d529/file-6y3zli1mtbysx63.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtbysx62/6b44150b-a2b3-45ec-8e80-be1e670ab9b8/676634a0-a254-11f1-b9db-ab431e96d529/file-6y3zli1mtbysx63.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Let $\\mathrm{T}_{\\mathrm{s}}$ be the tension in the steel wire and $\\mathrm{T}_{\\mathrm{c}}$ be the tension in the copper wire. The steel wire makes an angle of $60^{\\circ}$ with the horizontal ceiling, and the copper wire makes an angle of $30^{\\circ}$ with the horizontal ceiling. At the junction where the weight $\\mathrm{W}=100 \\mathrm{~N}$ is suspended :</p>\n<p>For horizontal equilibrium ($\\sum F_x = 0$):</p>\n<p>$$T_s \\cos(60^{\\circ}) = T_c \\cos(30^{\\circ})$$</p>\n<p>$$T_s \\left(\\frac{1}{2}\\right) = T_c \\left(\\frac{\\sqrt{3}}{2}\\right) \\Rightarrow T_s = \\sqrt{3}\\,T_c \\ldots (i)$$</p>\n<p>For vertical equilibrium ($\\sum F_y = 0$),</p>\n<p>$$T_s \\sin(60^{\\circ}) + T_c \\sin(30^{\\circ}) = W$$</p>\n<p>Substituting $T_s = \\sqrt{3}\\,T_c$:</p>\n<p>$$\\left(\\sqrt{3}\\,T_c\\right)\\left(\\frac{\\sqrt{3}}{2}\\right) + T_c\\left(\\frac{1}{2}\\right) = W$$</p>\n<p>$$\\frac{3}{2}T_c + \\frac{1}{2}T_c = W \\Rightarrow 2T_c = W \\Rightarrow T_c = \\frac{W}{2}$$</p>\n<p>From equation (i),</p>\n<p>$$T_s = \\sqrt{3} \\times \\left(\\frac{W}{2}\\right) = \\frac{\\sqrt{3}W}{2}$$</p>\n<p>So, the ratio of tensions is $\\frac{T_c}{T_s} = \\frac{W/2}{\\sqrt{3}W/2} = \\frac{1}{\\sqrt{3}}$</p>\n<p>Using the elongation formula for each wire:</p>\n<p>For copper wire: $\\Delta l_c = \\frac{T_cL_c}{A_cY_c}$</p>\n<p>For steel wire $\\Delta l_s = \\frac{T_sL_s}{A_sY_s}$</p>\n<p>Taking the ratio:</p>\n<p>$$\\frac{\\Delta l_c}{\\Delta l_s} = \\left(\\frac{T_c}{T_s}\\right) \\times \\left(\\frac{L_c}{L_s}\\right) \\times \\left(\\frac{A_s}{A_c}\\right) \\times \\left(\\frac{Y_s}{Y_c}\\right)$$</p>\n<p>Substitute the given values:</p>\n<p>The ratio of tensions in wire is $\\frac{T_c}{T_s} = \\frac{1}{\\sqrt{3}}$</p>\n<p>The ratio of lengths of wire is $\\frac{L_c}{L_s} = \\frac{\\sqrt{3}}{1}$</p>\n<p>Cross-sectional areas are equal $A_c = A_s = 0.5\\ \\text{cm}^2 \\Rightarrow \\frac{A_s}{A_c} = 1$</p>\n<p>Young's modulus of copper is $Y_c = 1 \\times 10^{11}\\ \\text{N/m}^2$, and that of steel wire is $Y_s = 2 \\times 10^{11}\\ \\text{N/m}^2$</p>\n<p>So, the ratio of Young’s moduli of both wires is $\\frac{Y_s}{Y_c} = \\frac{2 \\times 10^{11}}{1 \\times 10^{11}} = 2$</p>\n<p>Substituting the ratio:</p>\n<p>$$\\frac{\\Delta l_c}{\\Delta l_s} = \\left(\\frac{1}{\\sqrt{3}}\\right) \\times \\left(\\frac{\\sqrt{3}}{1}\\right) \\times (1) \\times (2) = 1 \\times 2 = 2$$</p>\n<p>Therefore, the required ratio is 2.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$100\\mathrm{~N}$ भार का एक गुटका समान अनुप्रस्थ-काट क्षेत्रफल $0.5 \\mathrm{~cm}^2$ तथा क्रमशः $\\sqrt{3}\\mathrm{~m}$ और $1\\mathrm{~m}$ लंबाई वाले तांबे और स्टील के तारों द्वारा लटकाया गया है। उनके अन्य सिरे चित्र में दिखाए अनुसार एक छत से जुड़े हैं। तांबे और स्टील के तारों द्वारा छत के साथ बनाए गए कोण क्रमशः 30° और 60° हैं। यदि तांबे के तार में प्रसार $\\left(\\Delta \\mathrm{l}_{\\mathrm{c}}\\right)$ तथा स्टील के तार में प्रसार $\\left(\\Delta \\mathrm{l}_{\\mathrm{s}}\\right)$ है, तो अनुपात $\\frac{\\Delta \\mathrm{l}_{\\mathrm{c}}}{\\Delta \\mathrm{l}_{\\mathrm{s}}}$ ज्ञात कीजिए। [तांबे और स्टील के लिए यंग प्रत्यास्थता गुणांक क्रमशः $1 \\times 10^{11} \\mathrm{~N} / \\mathrm{m}^2$ और $2 \\times 10^{11} \\mathrm{~N} / \\mathrm{m}^2$ हैं]</p>\n\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtbyq995/f797e9fb-0dac-4ff3-a808-5f8c5958fdde/1d4ec490-a254-11f1-b9db-ab431e96d529/file-6y3zli1mtbyq996.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtbyq995/f797e9fb-0dac-4ff3-a808-5f8c5958fdde/1d4ec490-a254-11f1-b9db-ab431e96d529/file-6y3zli1mtbyq996.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "longitudinal-stress-and-strain-and-poisson-ratio-longitudinal-stress-and-strain-and-youngs-modulus",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtc10b58",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two vertical wires each, $\\mathbf{l}=\\mathbf{1 5 0 ~ c m}$ long one of steel having cross-sectional area $\\mathbf{A}_{\\mathbf{s}}=\\mathbf{2} \\times \\mathbf{1 0}^{-\\mathbf{6}} \\mathbf{m}^{\\mathbf{2}}$ and second of bronze of cross-sectional area $A_b=1 \\times 10^{-6} \\mathbf{m}^2$ are suspended from a ceiling with horizontal distance $\\mathbf{r}=\\mathbf{5 5 ~ c m}$ as shown in figure. A light but rigid horizontal rod connect lower ends of wires. A vertical downward force $\\mathbf{F}$ is applied on the rod at a distance $\\mathbf{x ~ c m}$ from steel wire as shown in figure such that the rod remains horizontal even after application of force. Find $\\mathbf{x}$. Given, $\\mathbf{Y}_{\\mathbf{s}}=\\mathbf{2} \\times{ }^{\\mathbf{a}}$ $\\mathbf{1 0}^{\\mathbf{1 1}} \\mathbf{N} / \\mathbf{m}^2, \\mathbf{Y}_{\\mathbf{b}}=\\mathbf{1 . 5} \\times \\mathbf{1 0}^{\\mathbf{1 1}} \\mathbf{N} / \\mathbf{m}^2$.</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc0wgdm/d79c53d6-5ba6-4d8a-a7a8-97e47b859ff8/9bec94a0-a25c-11f1-b9db-ab431e96d529/file-6y3zli1mtc0wgdn.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc0wgdm/d79c53d6-5ba6-4d8a-a7a8-97e47b859ff8/9bec94a0-a25c-11f1-b9db-ab431e96d529/file-6y3zli1mtc0wgdn.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "15",
+                "explanation": "<p>Let a wire have initial length $l$, cross-sectional area $A$, and Young's modulus $Y$. When subjected to a tension $T$.</p>\n<p>Tensile stress is $$\\sigma = \\frac{T}{A}$$</p>\n<p>If the change in length is $\\Delta l$, then tensile strain is $$\\varepsilon = \\frac{\\Delta l}{l}$$</p>\n<p>According to Hooke's law, the Young’s modulus is $$Y = \\frac{\\text{Stress}(\\sigma)}{\\text{Strain}(\\varepsilon)} = \\frac{T/A}{\\Delta l/l}$$</p>\n<p>$$\\Rightarrow \\Delta l = \\frac{Tl}{AY}$$</p>\n<p>For the rigid horizontal rod to remain horizontal after the load $F$ is applied, the vertical displacement of both ends must be equal.</p>\n<p>Therefore, the elongation in the steel wire $(\\Delta l_s)$ must be equal to the elongation in the bronze wire $(\\Delta l_b)$,</p>\n<p>$$\\Delta l_s = \\Delta l_b$$</p>\n<p>Substituting the elongation formula for both wires, $$\\frac{T_s l}{A_s Y_s} = \\frac{T_b l}{A_b Y_b}$$</p>\n<p>Since both wires have the same original length $l = 150\\ \\text{cm}$,</p>\n<p>$$\\frac{T_s}{A_s Y_s} = \\frac{T_b}{A_b Y_b}$$</p>\n<p>$$\\frac{T_s}{T_b} = \\frac{A_s Y_s}{A_b Y_b}$$</p>\n<p>The cross-sectional area of steel wire is $$A_s = 2 \\times 10^{-6}\\ \\text{m}^2$$</p>\n<p>Young's modulus of steel, $Y_s = 2 \\times 10^{11}\\ \\mathrm{N/m^2}$</p>\n<p>The cross-sectional area of bronze wire, $A_b = 1 \\times 10^{-6}\\ \\mathrm{m^2}$</p>\n<p>Young's modulus of bronze, $Y_b = 1.5 \\times 10^{11}\\ \\mathrm{N/m^2}$</p>\n<p>Substituting the values into the ratio,</p>\n<p>$$\\frac{T_s}{T_b} = \\frac{(2 \\times 10^{-6}) \\times (2 \\times 10^{11})}{(1 \\times 10^{-6}) \\times (1.5 \\times 10^{11})} = \\frac{4}{1.5} = \\frac{8}{3}$$</p>\n<p>$$\\Rightarrow T_s = \\frac{8}{3} T_b$$</p>\n<p>The total length between the two hanging wires is $r = 55\\ \\mathrm{cm}.$</p>\n\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc0ypmt/92c1c6af-e546-430f-a9ac-22f55f8a9657/dab12750-a25c-11f1-b9db-ab431e96d529/file-6y3zli1mtc0ypmu.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc0ypmt/92c1c6af-e546-430f-a9ac-22f55f8a9657/dab12750-a25c-11f1-b9db-ab431e96d529/file-6y3zli1mtc0ypmu.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The downward force F acts at a distance $x$ from the steel wire, which is a distance $(r - x)$ from the bronze wire.</p>\n<p>For the rod to remain in rotational equilibrium, the net torque about the point of application of the load $F$ must be zero:</p>\n<p>$$\\sum\\limits \\tau = 0 \\Rightarrow T_s x = T_b (r - x)$$</p>\n<p>Substituting $T_s = \\frac{8}{3} T_b$:</p>\n<p>$$\\left(\\frac{8}{3} T_b\\right)x = T_b(r - x)$$</p>\n<p>$$\\frac{8}{3}x = r - x$$</p>\n<p>$$\\frac{8}{3}x + x = r$$</p>\n<p>$$\\frac{11}{3}x = r$$</p>\n<p>$$x = \\frac{3}{11}r$$</p>\n<p>The given value of $r$ is $r = 55\\ \\text{cm}$:</p>\n<p>$$x = \\frac{3}{11} \\times 55\\ \\text{cm} = 3 \\times 5\\ \\text{cm} = 15\\ \\text{cm}$$</p>\n<p>Therefore, the value of $x$ is 15.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो ऊर्ध्वाधर तार, जिनमें से प्रत्येक की लंबाई $\\mathbf{l}=\\mathbf{1 5 0 ~ c m}$ है, एक स्टील का जिसका अनुप्रस्थ काट क्षेत्रफल $\\mathbf{A}_{\\mathbf{s}}=\\mathbf{2} \\times \\mathbf{1 0}^{-\\mathbf{6}} \\mathbf{m}^{\\mathbf{2}}$ है और दूसरा कांस्य का जिसका अनुप्रस्थ काट क्षेत्रफल $A_b=1 \\times 10^{-6} \\mathbf{m}^2$ है, चित्रानुसार एक छत से क्षैतिज दूरी $\\mathbf{r}=\\mathbf{5 5 ~ c m}$ पर लटकाए गए हैं। एक हल्की लेकिन दृढ़ क्षैतिज छड़ तारों के निचले सिरों को जोड़ती है। छड़ पर स्टील के तार से $\\mathbf{x ~ c m}$ की दूरी पर एक ऊर्ध्वाधर नीचे की ओर बल $\\mathbf{F}$ इस प्रकार लगाया जाता है कि बल लगाने के बाद भी छड़ क्षैतिज ही रहे, जैसा कि चित्र में दिखाया गया है। $\\mathbf{x}$ का मान ज्ञात कीजिए। दिया है, $\\mathbf{Y}_{\\mathbf{s}}=\\mathbf{2} \\times{ }^{\\mathbf{a}}$ $\\mathbf{1 0}^{\\mathbf{1 1}} \\mathbf{N} / \\mathbf{m}^2, \\mathbf{Y}_{\\mathbf{b}}=\\mathbf{1 . 5} \\times \\mathbf{1 0}^{\\mathbf{1 1}} \\mathbf{N} / \\mathbf{m}^2$।</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc0wgdm/d79c53d6-5ba6-4d8a-a7a8-97e47b859ff8/9bec94a0-a25c-11f1-b9db-ab431e96d529/file-6y3zli1mtc0wgdn.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc0wgdm/d79c53d6-5ba6-4d8a-a7a8-97e47b859ff8/9bec94a0-a25c-11f1-b9db-ab431e96d529/file-6y3zli1mtc0wgdn.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "longitudinal-stress-and-strain-and-poisson-ratio-longitudinal-stress-and-strain-and-youngs-modulus",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtc16bnt",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A block is hanged by means of two identical wires having cross section area $\\mathbf{A}$ ( $\\mathbf{1} \\mathbf{~ m m}^{\\mathbf{2}}$ ) as shown in the diagram. If temperature is lowered by $\\boldsymbol{\\Delta} \\mathbf{T}\\left(\\mathbf{1 0}{ }^{\\boldsymbol{\\circ}} \\mathbf{C}\\right)$, find the mass (in $\\mathbf{k g}$ ) to be added to hanging mass such that junction remains at initial position. Given, that co-efficient of linear expansion $\\alpha=\\frac{2 \\times 10^{-5}}{{ }^{\\circ} \\mathrm{C}}$ and Young's modulus $\\mathrm{Y}=5 \\times 10^{11} \\mathrm{~N} / \\mathrm{m}^2$ for the wire.</p>\n\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc12532/c906cd17-2a8f-4841-a68f-3cc4d6da9592/3a0e25e0-a25d-11f1-b9db-ab431e96d529/file-6y3zli1mtc12533.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc12532/c906cd17-2a8f-4841-a68f-3cc4d6da9592/3a0e25e0-a25d-11f1-b9db-ab431e96d529/file-6y3zli1mtc12533.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "12",
+                "explanation": "<p>For the junction point to remain at its original position, the physical length of each wire must remain unchanged.</p>\n<p>When temperature decreases by $\\Delta T$, thermal contraction tends to shorten the wire by,</p>\n<p>$$\\Delta L_{\\text{thermal}} = L\\alpha\\,\\Delta T$$</p>\n<p>To keep the length constant, the additional mechanical tension created by adding mass $\\Delta m$ must produce an equal and opposite mechanical elongation.</p>\n<p>$$\\Delta L_{\\text{mechanical}} = \\Delta L_{\\text{thermal}}$$</p>\n<p>Mechanical elongation due to an increase in tension $\\Delta T_{\\text{wire}}$ is,</p>\n<p>$$\\Delta L_{\\text{mechanical}} = \\frac{\\Delta T_{\\text{wire}}L}{AY}$$</p>\n<p>$$\\Rightarrow \\frac{\\Delta T_{\\text{wire}}L}{AY} = L\\alpha\\,\\Delta T$$</p>\n<p>$$\\Delta T_{\\text{wire}} = YA\\alpha\\,\\Delta T$$</p>\n<p>As each wire makes an angle of $\\theta = 37^\\circ$ with the horizontal ceiling.</p>\n<p>The Young's modulus is $Y = 5 \\times 10^{11}\\ \\text{N/m}^2$ and the area of cross-section is $A = 1\\ \\text{mm}^2 = 10^{-6}\\ \\text{m}^2$</p>\n<p>The coefficient of thermal expansion is $\\alpha = 2 \\times 10^{-5}/^\\circ\\text{C}$</p>\n<p>The decrease in temperature is $\\Delta T = 10^\\circ\\text{C}$</p>\n<p>$$\\Delta T_{\\text{wire}} = (5 \\times 10^{11}) \\times (10^{-6}) \\times (2 \\times 10^{-5}) \\times (10) = 5 \\times 10^5 \\times 2 \\times 10^{-4} = 100\\ \\text{N}$$</p>\n<p>Let the added hanging mass be $\\Delta m$. The extra downward gravitational force is $\\Delta W = \\Delta m\\,g$.</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc14m7i/c297d4e8-e921-498d-bd46-c915735f68f1/7ee6a8e0-a25d-11f1-b9db-ab431e96d529/file-6y3zli1mtc14m7j.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc14m7i/c297d4e8-e921-498d-bd46-c915735f68f1/7ee6a8e0-a25d-11f1-b9db-ab431e96d529/file-6y3zli1mtc14m7j.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>For vertical equilibrium at the junction:</p>\n<p>$$2\\,\\Delta T_{\\text{wire}}\\sin(37^{\\circ}) = \\Delta m\\,g$$</p>\n<p>$$\\Delta m = \\frac{2\\,\\Delta T_{\\text{wire}}\\sin(37^{\\circ})}{g}$$</p>\n<p>Substitute $\\Delta T_{\\text{wire}} = YA\\alpha\\,\\Delta T$:</p>\n<p>$$\\Delta m = \\frac{2Y A\\alpha\\,\\Delta T\\sin(37^{\\circ})}{g}$$</p>\n<p>$$\\Delta m = \\frac{2 \\times 100 \\times 0.6}{10} = \\frac{120}{10} = 12\\,\\text{kg}$$</p>\n<p>Therefore, the value of extra mass added is $12\\,\\text{kg}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दर्शाए अनुसार एक गुटके को अनुप्रस्थ-काट क्षेत्रफल $\\mathbf{A}$ ( $\\mathbf{1} \\mathbf{~ m m}^{\\mathbf{2}}$ ) वाले दो सर्वसम तारों द्वारा लटकाया गया है। यदि तापमान में $\\boldsymbol{\\Delta} \\mathbf{T}\\left(\\mathbf{1 0}{ }^{\\boldsymbol{\\circ}} \\mathbf{C}\\right)$ की कमी की जाती है, तो लटके हुए द्रव्यमान में जोड़े जाने वाले द्रव्यमान ( $\\mathbf{k g}$ में) का मान ज्ञात कीजिए ताकि संधि अपनी प्रारंभिक स्थिति में बनी रहे। दिया गया है कि तार के लिए रेखीय प्रसार गुणांक $\\alpha=\\frac{2 \\times 10^{-5}}{{ }^{\\circ} \\mathrm{C}}$ तथा यंग प्रत्यास्थता गुणांक $\\mathrm{Y}=5 \\times 10^{11} \\mathrm{~N} / \\mathrm{m}^2$ है।</p>\n\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc12532/c906cd17-2a8f-4841-a68f-3cc4d6da9592/3a0e25e0-a25d-11f1-b9db-ab431e96d529/file-6y3zli1mtc12533.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc12532/c906cd17-2a8f-4841-a68f-3cc4d6da9592/3a0e25e0-a25d-11f1-b9db-ab431e96d529/file-6y3zli1mtc12533.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "longitudinal-stress-and-strain-and-poisson-ratio-longitudinal-stress-and-strain-and-youngs-modulus",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtc1xug1",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The elongation of a wire on the surface of the earth is $10^{-3} \\mathrm{~m}$. The same wire of same dimensions is elongated by $6 \\times 10^{-4} \\mathrm{~m}$ on another planet. The acceleration due to gravity on the planet will be $\\_\\_\\_\\_$ $\\mathrm{ms}^{-2}$. (Take, acceleration due to gravity on the surface of earth $\\left.=10 \\mathrm{~ms}^{-2}\\right)$</p>",
+                "options": [],
+                "answer": "6",
+                "explanation": "<p>When a load of mass $m$ is suspended from a wire, the tension in the wire is equal to the weight of the load, which is $F = mg$. </p>\n<p>Young's modulus of the material of the wire is given by:</p>\n<p>$$Y = \\frac{\\text{Stress}}{\\text{Strain}} = \\frac{F/A}{\\Delta L/L}$$</p>\n<p>Rearranging this formula for elongation ($\\Delta L$), we get:</p>\n<p>$$\\Delta L = \\frac{mgL}{AY}$$</p>\n<p>Here, the length $L$, cross-sectional area $A$, Young's modulus $Y$, and the suspended mass $m$ remain the same in both cases. </p>\n<p>This means the elongation is directly proportional to the acceleration due to gravity:</p>\n<p>$$\\Delta L \\propto g$$</p>\n<p>Taking the ratio of elongation on the planet to that on the Earth:</p>\n<p>$$\\frac{\\Delta L_p}{\\Delta L_e} = \\frac{g_p}{g_e}$$</p>\n<p>Substitute the given values into the equation:</p>\n<p>$$\\frac{6 \\times 10^{-4}}{10^{-3}} = \\frac{g_p}{10}$$</p>\n<p>$$0.6 = \\frac{g_p}{10}$$</p>\n<p>$$g_p = 0.6 \\times 10 = 6\\text{ ms}^{-2}$$</p>\n<p>The acceleration due to gravity on the planet will be $6\\text{ ms}^{-2}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>पृथ्वी की सतह पर एक तार का प्रसार $10^{-3} \\mathrm{~m}$ है। समान विमाओं वाले उसी तार में किसी अन्य ग्रह पर प्रसार $6 \\times 10^{-4} \\mathrm{~m}$ होता है। उस ग्रह पर गुरुत्वीय त्वरण $\\_\\_\\_\\_$ $\\mathrm{ms}^{-2}$ होगा। (पृथ्वी की सतह पर गुरुत्वीय त्वरण $\\left.=10 \\mathrm{~ms}^{-2}\\right)$ लीजिए)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "longitudinal-stress-and-strain-and-poisson-ratio-longitudinal-stress-and-strain-and-youngs-modulus",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Longitudinal Stress and Strain and Poisson Ratio, Longitudinal Stress and Strain and Youngs Modulus",
+    "timeAllotted": 2160000,
+    "title": "Elasticity Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mp5u8gro",
+    "defaultLanguage": "en",
+    "description": "Longitudinal Stress and Strain and Poisson Ratio, Longitudinal Stress and Strain and Youngs Modulus",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-29T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Longitudinal Stress and Strain and Poisson Ratio, Longitudinal Stress and Strain and Youngs Modulus",
+    "timeAllotted": 2160000,
+    "title": "Elasticity Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Elasticity"
+  }
+}

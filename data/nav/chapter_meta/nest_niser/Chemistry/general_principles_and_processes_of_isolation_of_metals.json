@@ -1,0 +1,45 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d350647479b8e869647a",
+  "chapterId": "68091fe33a10446a207fdbf4",
+  "subject": "Chemistry",
+  "chapter": "General Principles and Processes of Isolation of Metals",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "680920633a10446a207fe1a0",
+      "title": "Concentration of the Ore",
+      "count": 1,
+      "questionIds": [
+        "68091fec3a10446a207fdc53"
+      ]
+    },
+    {
+      "id": "680920633a10446a207fe19f",
+      "title": "Reduction to Crude Metal",
+      "count": 3,
+      "questionIds": [
+        "68091ff03a10446a207fdc79",
+        "68091fe93a10446a207fdc31",
+        "68091fe83a10446a207fdc2d"
+      ]
+    },
+    {
+      "id": "680920633a10446a207fe1a1",
+      "title": "Refining of Crude Metal",
+      "count": 1,
+      "questionIds": [
+        "68091fed3a10446a207fdc5f"
+      ]
+    },
+    {
+      "id": "680920633a10446a207fe19e",
+      "title": "Extraction of Metals",
+      "count": 1,
+      "questionIds": [
+        "68091fe33a10446a207fdbf2"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g71mp3q4gcc",
+  "title": "Trigonometric Ratio and Identites Test - 3 (Topic Test)",
+  "type": "topic",
+  "section": "Trigonometric Ratio and Identites",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Mathematics",
+  "isUpcoming": false,
+  "liveAt": "2026-08-21T12:30:00.000Z",
+  "status": "ok",
+  "analysisId": "429eb54e-6026-4b1a-9287-5b596ffdd060",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g71mp3q4gcc",
+    "defaultLanguage": "en",
+    "description": "Transformation Formulas, Maximum and Minimum Values",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-21T12:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mt2bexeq",
+            "chapter": "trigonometric-ratio-and-identites",
+            "chapterGroup": "trigonometry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The value of $\\sin 78^\u000b{o} - \\sin 66^\u000b{o} - \\sin 42^\u000b{o} + \\sin 6^\u000b{o}$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$-\\frac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$-1$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let the given expression be:</p>\n<p>$$S = \\sin 78^\\circ - \\sin 66^\\circ - \\sin 42^\\circ + \\sin 6^\\circ$$</p>\n<p>We can rearrange and group the terms into pairs:</p>\n<p>$$S = (\\sin 78^\\circ - \\sin 42^\\circ) - (\\sin 66^\\circ - \\sin 6^\\circ)$$</p>\n<p>Using the transformation formula $\\sin C - \\sin D = 2 \\cos\\left(\\frac{C+D}{2}\\right) \\sin\\left(\\frac{C-D}{2}\\right)$, we get:</p>\n<p>For the first pair:</p>\n<p>$$\\sin 78^\\circ - \\sin 42^\\circ = 2 \\cos\\left(\\frac{78^\\circ + 42^\\circ}{2}\\right) \\sin\\left(\\frac{78^\\circ - 42^\\circ}{2}\\right) = 2 \\cos 60^\\circ \\sin 18^\\circ$$</p>\n<p>For the second pair:</p>\n<p>$$\\sin 66^\\circ - \\sin 6^\\circ = 2 \\cos\\left(\\frac{66^\\circ + 6^\\circ}{2}\\right) \\sin\\left(\\frac{66^\\circ - 6^\\circ}{2}\\right) = 2 \\cos 36^\\circ \\sin 30^\\circ$$</p>\n<p>Substitute these back into the expression:</p>\n<p>$$S = 2 \\cos 60^\\circ \\sin 18^\\circ - 2 \\cos 36^\\circ \\sin 30^\\circ$$</p>\n<p>Since $\\cos 60^\\circ = \\frac{1}{2}$ and $\\sin 30^\\circ = \\frac{1}{2}$, this simplifies to:</p>\n<p>$$S = 2\\left(\\frac{1}{2}\\right) \\sin 18^\\circ - 2 \\cos 36^\\circ \\left(\\frac{1}{2}\\right)$$</p>\n<p>$$S = \\sin 18^\\circ - \\cos 36^\\circ$$</p>\n<p>Now, using the standard trigonometric values $\\sin 18^\\circ = \\frac{\\sqrt{5} - 1}{4}$ and $\\cos 36^\\circ = \\frac{\\sqrt{5} + 1}{4}$:</p>\n<p>$$S = \\frac{\\sqrt{5} - 1}{4} - \\frac{\\sqrt{5} + 1}{4}$$</p>\n<p>$$S = \\frac{(\\sqrt{5} - 1) - (\\sqrt{5} + 1)}{4}$$</p>\n<p>$$S = \\frac{-2}{4} = -\\frac{1}{2}$$</p>\n<p>The correct option is <strong>Option B</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\sin 78^{\\circ} - \\sin 66^{\\circ} - \\sin 42^{\\circ} + \\sin 6^{\\circ}$ का मान है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$-\\frac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$-1$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "transformation-formula",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt2byv8n",
+            "chapter": "trigonometric-ratio-and-identites",
+            "chapterGroup": "trigonometry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $\\sin x + \\sin y = \\sqrt{3} (\\cos y - \\cos x)$, then $\\sin 3x + \\sin 3y$ is equal to</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2 \\sin 3x$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$0$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$1$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Given that</p>\n<p>$$\\sin x + \\sin y = \\sqrt{3}(\\cos y - \\cos x)$$</p>\n<p>Divide both sides by $\\cos y - \\cos x$.</p>\n<p>$$\\frac{\\sin x + \\sin y}{\\cos y - \\cos x} = \\sqrt{3}$$</p>\n<p>Use the sum-to-product formulae:</p>\n<p>$$\\sin x+\\sin y=2\\sin\\left(\\frac{x+y}{2}\\right)\\cos\\left(\\frac{x-y}{2}\\right)$$</p>\n<p>and</p>\n<p>$$\\cos y-\\cos x=2\\sin\\left(\\frac{x+y}{2}\\right)\\sin\\left(\\frac{x-y}{2}\\right)$$</p>\n<p>So we get</p>\n<p>$$\\frac{2\\sin\\left(\\frac{x+y}{2}\\right)\\cos\\left(\\frac{x-y}{2}\\right)}{2\\sin\\left(\\frac{x+y}{2}\\right)\\sin\\left(\\frac{x-y}{2}\\right)} = \\sqrt{3}$$</p>\n<p>After cancelling the common factor,</p>\n<p>$$\\cot\\left(\\frac{x-y}{2}\\right) = \\sqrt{3} \\Rightarrow \\cot\\left(\\frac{x-y}{2}\\right) = \\cot 30^\\circ$$</p>\n<p>So,</p>\n<p>$$\\therefore \\frac{x-y}{2} = 30^\\circ \\qquad \\ldots (i)$$</p>\n<p>Now we have to find $\\sin 3x+\\sin 3y$. Again use the sum-to-product formula.</p>\n<p>Now, $$\\sin 3x + \\sin 3y = 2\\sin 3\\left(\\frac{x+y}{2}\\right)\\cos 3\\left(\\frac{x-y}{2}\\right)$$</p>\n<p>Using Eq. (i), replace $\\frac{x-y}{2}$ by $30^\\circ$.</p>\n<p>$$= 2\\sin 3\\left(\\frac{x+y}{2}\\right)\\cos 3(30^\\circ)$$</p>\n<p>[from Eq. (i)]</p>\n<p>Since $3(30^\\circ)=90^\\circ$ and $\\cos 90^\\circ=0$,</p>\n<p>$$= 2\\sin 3\\left(\\frac{x+y}{2}\\right) \\times 0 = 0$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $\\sin x + \\sin y = \\sqrt{3} (\\cos y - \\cos x)$ है, तो $\\sin 3x + \\sin 3y$ बराबर है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2 \\sin 3x$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$0$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$1$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "transformation-formula",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt2ccgxh",
+            "chapter": "trigonometric-ratio-and-identites",
+            "chapterGroup": "trigonometry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $0 &lt; x, y &lt; \\pi$ and $\\cos x + \\cos y - \\cos(x + y) = \\frac{3}{2}$, then $\\sin x + \\cos y$ is equal to</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{1 + \\sqrt{3}}{2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{\\sqrt{3}}{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{1 - \\sqrt{3}}{2}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>We have, $\\cos x + \\cos y - \\cos(x+y) = \\dfrac{3}{2}$</p>\n<p>$$2\\cos\\left(\\dfrac{x+y}{2}\\right)\\cos\\left(\\dfrac{x-y}{2}\\right) - \\left[2\\cos^2\\left(\\dfrac{x+y}{2}\\right) - 1\\right] = \\dfrac{3}{2}$$</p>\n<p>$$\\Rightarrow 2\\cos\\left(\\dfrac{x+y}{2}\\right)\\left[\\cos\\left(\\dfrac{x-y}{2}\\right) - \\cos\\left(\\dfrac{x+y}{2}\\right)\\right] = \\dfrac{1}{2}$$</p>\n<p>$$\\Rightarrow 2\\cos\\left(\\dfrac{x+y}{2}\\right)\\left[2\\sin\\dfrac{x}{2} \\cdot \\sin\\dfrac{y}{2}\\right] = \\dfrac{1}{2}$$</p>\n<p>$$\\cos\\left(\\dfrac{x+y}{2}\\right)\\sin\\dfrac{x}{2} \\cdot \\sin\\dfrac{y}{2} = \\dfrac{1}{8}$$</p>\n<p>Possible when $\\dfrac{x}{2} = 30^\\circ$ and $\\dfrac{y}{2} = 30^\\circ$</p>\n<p>$$\\Rightarrow x = y = 60^\\circ$$</p>\n<p>Hence, $\\sin x + \\cos y = \\dfrac{\\sqrt{3}}{2} + \\dfrac{1}{2} = \\dfrac{\\sqrt{3}+1}{2}$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $0 &lt; x, y &lt; \\pi$ और $\\cos x + \\cos y - \\cos(x + y) = \\frac{3}{2}$ है, तो $\\sin x + \\cos y$ बराबर है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{1 + \\sqrt{3}}{2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{\\sqrt{3}}{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{1 - \\sqrt{3}}{2}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "transformation-formula",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt2c7d6m",
+            "chapter": "trigonometric-ratio-and-identites",
+            "chapterGroup": "trigonometry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $\\sin 2\\theta = \\lambda \\sin 2\\phi$, then $\\frac{\\tan (\\theta + \\phi)}{\\tan (\\theta - \\phi)}$ is equal to</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{\\lambda - 1}{\\lambda + 1}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{\\lambda + 1}{\\lambda - 1}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\lambda + 1$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\lambda$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>We are given the relation:</p>\n<p>$$\\sin 2\\theta = \\lambda \\sin 2\\phi$$</p>\n\n<p>$$\\frac{\\sin 2\\theta}{\\sin 2\\phi} = \\frac{\\lambda}{1}$$</p>\n<p>Applying componendo and dividendo to both sides:</p>\n<p>$$\\frac{\\sin 2\\theta + \\sin 2\\phi}{\\sin 2\\theta - \\sin 2\\phi} = \\frac{\\lambda + 1}{\\lambda - 1}$$</p>\n<p>Now, we use the standard trigonometric sum-to-product formulas:</p>\n<ul>\n<li><p>$\\sin C + \\sin D = 2 \\sin\\left(\\frac{C+D}{2}\\right) \\cos\\left(\\frac{C-D}{2}\\right)$</p></li>\n<li><p>$\\sin C - \\sin D = 2 \\cos\\left(\\frac{C+D}{2}\\right) \\sin\\left(\\frac{C-D}{2}\\right)$</p></li>\n</ul>\n<p>Substituting these formulas on the left-hand side:</p>\n<p>$$\\frac{2 \\sin\\left(\\frac{2\\theta + 2\\phi}{2}\\right) \\cos\\left(\\frac{2\\theta - 2\\phi}{2}\\right)}{2 \\cos\\left(\\frac{2\\theta + 2\\phi}{2}\\right) \\sin\\left(\\frac{2\\theta - 2\\phi}{2}\\right)} = \\frac{\\lambda + 1}{\\lambda - 1}$$</p>\n\n<p>$$\\frac{\\sin(\\theta + \\phi) \\cos(\\theta - \\phi)}{\\cos(\\theta + \\phi) \\sin(\\theta - \\phi)} = \\frac{\\lambda + 1}{\\lambda - 1}$$</p>\n\n<p>$$\\left(\\frac{\\sin(\\theta + \\phi)}{\\cos(\\theta + \\phi)}\\right) \\cdot \\left(\\frac{\\cos(\\theta - \\phi)}{\\sin(\\theta - \\phi)}\\right) = \\frac{\\lambda + 1}{\\lambda - 1}$$</p>\n<p>Since $\\frac{\\sin x}{\\cos x} = \\tan x$ and $\\frac{\\cos x}{\\sin x} = \\frac{1}{\\tan x}$, we have:</p>\n<p>$$\\tan(\\theta + \\phi) \\cdot \\frac{1}{\\tan(\\theta - \\phi)} = \\frac{\\lambda + 1}{\\lambda - 1}$$</p>\n<p>$$\\frac{\\tan(\\theta + \\phi)}{\\tan(\\theta - \\phi)} = \\frac{\\lambda + 1}{\\lambda - 1}$$</p>\n<p>Thus, the correct option is <strong>Option B</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $\\sin 2\\theta = \\lambda \\sin 2\\phi$ है, तो $\\frac{\\tan (\\theta + \\phi)}{\\tan (\\theta - \\phi)}$ किसके बराबर है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{\\lambda - 1}{\\lambda + 1}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{\\lambda + 1}{\\lambda - 1}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\lambda + 1$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\lambda$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "transformation-formula",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt2czujx",
+            "chapter": "trigonometric-ratio-and-identites",
+            "chapterGroup": "trigonometry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The minimum and maximum values of $ab \\sin x + b \\sqrt{(1 - a^2)} \\cos x + c$ ($|a| < 1, b > 0$) respectively are</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>{b - c, b + c}</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>{b + c, b - c}</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>{c - b, b + c}</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The given expression is:</p>\n<p>$$E = ab \\sin x + b \\sqrt{1 - a^2} \\cos x + c$$</p>\n<p>We know that for any expression of the form $A \\sin x + B \\cos x + C$, the minimum and maximum values depend on the amplitude $\\sqrt{A^2 + B^2}$. </p>\n<p>The range of $A \\sin x + B \\cos x$ lies between $-\\sqrt{A^2 + B^2}$ and $\\sqrt{A^2 + B^2}$. </p>\n<p>From the given expression, we identify:</p>\n<p>$$A = ab$$</p>\n<p>$$B = b\\sqrt{1 - a^2}$$</p>\n<p>$$C = c$$</p>\n<p>Now, let us find the value of $\\sqrt{A^2 + B^2}$:</p>\n<p>$$A^2 + B^2 = (ab)^2 + \\left(b\\sqrt{1 - a^2}\\right)^2$$</p>\n<p>$$A^2 + B^2 = a^2b^2 + b^2(1 - a^2)$$</p>\n<p>$$A^2 + B^2 = a^2b^2 + b^2 - a^2b^2$$</p>\n<p>$$A^2 + B^2 = b^2$$</p>\n<p>Taking the square root on both sides, since $b > 0$:</p>\n<p>$$\\sqrt{A^2 + B^2} = \\sqrt{b^2} = b$$</p>\n<p>Now, we can find the extreme values of the complete expression:</p>\n<p>The minimum value is:</p>\n<p>$$c - \\sqrt{A^2 + B^2} = c - b$$</p>\n<p>The maximum value is:</p>\n<p>$$c + \\sqrt{A^2 + B^2} = c + b = b + c$$</p>\n<p>Thus, the minimum and maximum values respectively are $\\{c - b, b + c\\}$.</p>\n<p>Correct Option: Option C</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$ab \\sin x + b \\sqrt{(1 - a^2)} \\cos x + c$ ($|a| < 1, b > 0$) के क्रमशः न्यूनतम और अधिकतम मान हैं:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>{b - c, b + c}</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>{b + c, b - c}</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>{c - b, b + c}</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range-of-trigonometric-functions",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt2d82xb",
+            "chapter": "trigonometric-ratio-and-identites",
+            "chapterGroup": "trigonometry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The maximum value of the expression $\\left| \\sqrt{\\sin^2 x + 2a^2} - \\sqrt{2a^2 - 1 - \\cos^2 x} \\right|$, where $a$ and $x$ are real numbers, is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\sqrt{3} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\sqrt{2} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\sqrt{5} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For maximum value</p>\n<p>$$2a^2 - 1 - \\cos^2 x = 0$$</p>\n<p>$$\\Rightarrow \\cos^2 x = 2a^2 - 1$$</p>\n<p>and</p>\n<p>$$\\sin^2 x = 1 - \\cos^2 x = 1 - (2a^2 - 1)$$</p>\n<p>$$\\sin^2 x = 2 - 2a^2 \\Rightarrow 2a^2 + \\sin^2 x = 2$$</p>\n<p>$$\\Rightarrow \\sqrt{2a^2 + \\sin^2 x} = \\sqrt{2}$$</p>\n<p>$$\\therefore \\text{ Maximum value of } \\left|\\sqrt{\\sin^2 x + 2a^2} - \\sqrt{2a^2 - 1 - \\cos^2 x}\\right| = |\\sqrt{2} - 0| = \\sqrt{2}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>व्यंजक $\\left| \\sqrt{\\sin^2 x + 2a^2} - \\sqrt{2a^2 - 1 - \\cos^2 x} \\right|$, जहाँ $a$ और $x$ वास्तविक संख्याएँ हैं, का अधिकतम मान है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\sqrt{3} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\sqrt{2} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\sqrt{5} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range-of-trigonometric-functions",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt2dduyd",
+            "chapter": "trigonometric-ratio-and-identites",
+            "chapterGroup": "trigonometry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Minimum value of $4x^2 - 4|x|\\sin\\theta - \\cos^2\\theta$ is equal to</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>-2</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>-1</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$-\\frac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let the given expression be:</p>\n<p>$$E = 4x^2 - 4|x|\\sin\\theta - \\cos^2\\theta$$</p>\n<p>Since $x^2 = |x|^2$, we can rewrite the expression in terms of $|x|$:</p>\n<p>$$E = 4|x|^2 - 4|x|\\sin\\theta - \\cos^2\\theta$$</p>\n<p>Now, complete the square with respect to $|x|$:</p>\n<p>$$E = (2|x|)^2 - 2(2|x|)\\sin\\theta + \\sin^2\\theta - \\sin^2\\theta - \\cos^2\\theta$$</p>\n<p>$$E = (2|x| - \\sin\\theta)^2 - (\\sin^2\\theta + \\cos^2\\theta)$$</p>\n<p>Using the trigonometric identity $\\sin^2\\theta + \\cos^2\\theta = 1$, this simplifies to:</p>\n<p>$$E = (2|x| - \\sin\\theta)^2 - 1$$</p>\n<p>Since the square of any real number is always non-negative:</p>\n<p>$$(2|x| - \\sin\\theta)^2 \\ge 0$$</p>\n<p>The minimum value of $(2|x| - \\sin\\theta)^2$ is $0$, which occurs when $|x| = \\frac{\\sin\\theta}{2}$ (for $\\sin\\theta \\ge 0$).</p>\n<p>Therefore, the minimum value of the expression is:</p>\n<p>$$E_{\\text{min}} = 0 - 1 = -1$$</p>\n<p>Correct Option: <strong>Option B</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$4x^2 - 4|x|\\sin\\theta - \\cos^2\\theta$ का न्यूनतम मान बराबर है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>-2</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>-1</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$-\\frac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range-of-trigonometric-functions",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt2dmwfs",
+            "chapter": "trigonometric-ratio-and-identites",
+            "chapterGroup": "trigonometry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $u = \\sqrt{a^2 \\cos^2 \\theta + b^2 \\sin^2 \\theta} + \\sqrt{a^2 \\sin^2 \\theta + b^2 \\cos^2 \\theta}$ where $a, b &gt; 0$. Then the difference between the maximum and minimum values of $u^2$ is given by</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(a + b)^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\sqrt{a^2 + b^2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2\\left(a^2 + b^2\\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(a-b)^2$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>We are given the expression:</p>\n<p>$$u = \\sqrt{a^2 \\cos^2 \\theta + b^2 \\sin^2 \\theta} + \\sqrt{a^2 \\sin^2 \\theta + b^2 \\cos^2 \\theta}$$</p>\n<p>Using the trigonometric formulas $\\cos^2 \\theta = \\frac{1+\\cos 2\\theta}{2}$ and $\\sin^2 \\theta = \\frac{1-\\cos 2\\theta}{2}$, we can rewrite the terms inside the square roots:</p>\n<p>$$u = \\sqrt{\\frac{a^2(1+\\cos 2\\theta)}{2} + \\frac{b^2(1-\\cos 2\\theta)}{2}} + \\sqrt{\\frac{a^2(1-\\cos 2\\theta)}{2} + \\frac{b^2(1+\\cos 2\\theta)}{2}}$$</p>\n<p>Simplifying the terms gives:</p>\n<p>$$u = \\sqrt{\\frac{a^2+b^2}{2} + \\left(\\frac{a^2-b^2}{2}\\right)\\cos 2\\theta} + \\sqrt{\\frac{a^2+b^2}{2} - \\left(\\frac{a^2-b^2}{2}\\right)\\cos 2\\theta}$$</p>\n<p>Squaring both sides using the identity $(x+y)^2 = x^2 + y^2 + 2xy$:</p>\n<p>$$u^2 = (a^2+b^2) + 2\\sqrt{\\left(\\frac{a^2+b^2}{2}\\right)^2 - \\left(\\frac{a^2-b^2}{2}\\right)^2 \\cos^2 2\\theta}$$</p>\n<p>The value of $u^2$ is maximum when the term being subtracted inside the square root is minimum, which happens when $\\cos^2 2\\theta = 0$:</p>\n<p>$$\\text{Maximum value of } u^2 = a^2 + b^2 + 2\\left(\\frac{a^2+b^2}{2}\\right) = 2(a^2+b^2)$$</p>\n<p>The value of $u^2$ is minimum when $\\cos^2 2\\theta = 1$:</p>\n<p>$$\\text{Minimum value of } u^2 = a^2 + b^2 + 2\\sqrt{\\left(\\frac{a^2+b^2}{2}\\right)^2 - \\left(\\frac{a^2-b^2}{2}\\right)^2}$$</p>\n<p>$$= a^2 + b^2 + 2\\sqrt{a^2b^2} = a^2 + b^2 + 2ab = (a+b)^2$$</p>\n<p>Now, we find the difference between the maximum and minimum values:</p>\n<p>$$\\text{Difference} = 2(a^2+b^2) - (a+b)^2$$</p>\n<p>$$= 2a^2 + 2b^2 - (a^2 + b^2 + 2ab) = a^2 + b^2 - 2ab = (a-b)^2$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $u = \\sqrt{a^2 \\cos^2 \\theta + b^2 \\sin^2 \\theta} + \\sqrt{a^2 \\sin^2 \\theta + b^2 \\cos^2 \\theta}$ है जहाँ $a, b &gt; 0$ है, तो $u^2$ के अधिकतम और न्यूनतम मानों के बीच का अंतर है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(a + b)^2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\sqrt{a^2 + b^2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2\\left(a^2 + b^2\\right)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(a-b)^2$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range-of-trigonometric-functions",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt2e0ye2",
+            "chapter": "trigonometric-ratio-and-identites",
+            "chapterGroup": "trigonometry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Minimum value of $27^{\\cos x}+81^{\\sin x}$ is equal to</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{2}{3\\sqrt{3}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{2}{9\\sqrt{3}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{4}{3\\sqrt{3}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>$$27^{\\cos x} = (3^3)^{\\cos x} = 3^{3\\cos x}$$</p>\n<p>$$81^{\\sin x} = (3^4)^{\\sin x} = 3^{4\\sin x}$$</p>\n<p>The expression becomes:</p>\n<p>$$3^{3\\cos x} + 3^{4\\sin x}$$</p>\n<p>Since both terms are positive for all real values of $x$, we can apply the Arithmetic Mean - Geometric Mean ($\\text{AM} \\ge \\text{GM}$) inequality:</p>\n<p>$$\\frac{3^{3\\cos x} + 3^{4\\sin x}}{2} \\ge \\sqrt{3^{3\\cos x} \\cdot 3^{4\\sin x}}$$</p>\n\n<p>$$3^{3\\cos x} + 3^{4\\sin x} \\ge 2\\sqrt{3^{3\\cos x + 4\\sin x}}$$</p>\n<p>$$3^{3\\cos x} + 3^{4\\sin x} \\ge 2 \\cdot 3^{\\frac{3\\cos x + 4\\sin x}{2}}$$</p>\n<p>To minimize this expression, we need the minimum value of the exponent $3\\cos x + 4\\sin x$.</p>\n<p>For any expression of the form $a\\cos x + b\\sin x$, the minimum value is given by $-\\sqrt{a^2 + b^2}$.</p>\n<p>Here, $a = 3$ and $b = 4$:</p>\n<p>$$\\text{Minimum value of }(3\\cos x + 4\\sin x) = -\\sqrt{3^2 + 4^2} = -\\sqrt{9 + 16} = -5$$</p>\n<p>Substituting this minimum value into the inequality:</p>\n<p>$$3^{3\\cos x} + 3^{4\\sin x} \\ge 2 \\cdot 3^{-\\frac{5}{2}}$$</p>\n\n<p>$$3^{-\\frac{5}{2}} = \\frac{1}{3^{5/2}} = \\frac{1}{3^2 \\cdot 3^{1/2}} = \\frac{1}{9\\sqrt{3}}$$</p>\n<p>Therefore, the minimum value is:</p>\n<p>$$2 \\cdot \\frac{1}{9\\sqrt{3}} = \\frac{2}{9\\sqrt{3}}$$</p>\n<p>The correct option is <strong>Option B</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$27^{\\cos x}+81^{\\sin x}$ का न्यूनतम मान है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{2}{3\\sqrt{3}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{2}{9\\sqrt{3}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{4}{3\\sqrt{3}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range-of-trigonometric-functions",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt2e6s52",
+            "chapter": "trigonometric-ratio-and-identites",
+            "chapterGroup": "trigonometry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The value of </p>\n<p>$ \\left( \\sin \\frac{2\\pi}{7} \\sin \\frac{4\\pi}{7} + \\sin \\frac{4\\pi}{7} \\sin \\frac{8\\pi}{7} + \\sin \\frac{8\\pi}{7} \\sin \\frac{2\\pi}{7} \\right) $ equals</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1/2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>-1/2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Let the given expression be $S$:</p>\n<p>$$S = \\sin \\frac{2\\pi}{7} \\sin \\frac{4\\pi}{7} + \\sin \\frac{4\\pi}{7} \\sin \\frac{8\\pi}{7} + \\sin \\frac{8\\pi}{7} \\sin \\frac{2\\pi}{7}$$</p>\n<p>To simplify this, we can multiply the whole expression by $2$ and use the standard trigonometric identity:</p>\n<p>$$2\\sin A \\sin B = \\cos(A - B) - \\cos(A + B)$$</p>\n<p>Applying this identity to each term:</p>\n<p>$$2S = 2\\sin \\frac{2\\pi}{7} \\sin \\frac{4\\pi}{7} + 2\\sin \\frac{4\\pi}{7} \\sin \\frac{8\\pi}{7} + 2\\sin \\frac{8\\pi}{7} \\sin \\frac{2\\pi}{7}$$</p>\n<p>Writing out each term separately:</p>\n<p>$$2\\sin \\frac{2\\pi}{7} \\sin \\frac{4\\pi}{7} = \\cos\\left(\\frac{4\\pi}{7} - \\frac{2\\pi}{7}\\right) - \\cos\\left(\\frac{4\\pi}{7} + \\frac{2\\pi}{7}\\right) = \\cos \\frac{2\\pi}{7} - \\cos \\frac{6\\pi}{7}$$</p>\n<p>$$2\\sin \\frac{4\\pi}{7} \\sin \\frac{8\\pi}{7} = \\cos\\left(\\frac{8\\pi}{7} - \\frac{4\\pi}{7}\\right) - \\cos\\left(\\frac{8\\pi}{7} + \\frac{4\\pi}{7}\\right) = \\cos \\frac{4\\pi}{7} - \\cos \\frac{12\\pi}{7}$$</p>\n<p>$$2\\sin \\frac{8\\pi}{7} \\sin \\frac{2\\pi}{7} = \\cos\\left(\\frac{8\\pi}{7} - \\frac{2\\pi}{7}\\right) - \\cos\\left(\\frac{8\\pi}{7} + \\frac{2\\pi}{7}\\right) = \\cos \\frac{6\\pi}{7} - \\cos \\frac{10\\pi}{7}$$</p>\n<p>Adding these three equations together gives:</p>\n<p>$$2S = \\left(\\cos \\frac{2\\pi}{7} - \\cos \\frac{6\\pi}{7}\\right) + \\left(\\cos \\frac{4\\pi}{7} - \\cos \\frac{12\\pi}{7}\\right) + \\left(\\cos \\frac{6\\pi}{7} - \\cos \\frac{10\\pi}{7}\\right)$$</p>\n<p>Now, let us simplify the angles greater than $\\pi$ using $\\cos(2\\pi - \\theta) = \\cos \\theta$:</p>\n<p>$$\\cos \\frac{12\\pi}{7} = \\cos\\left(2\\pi - \\frac{2\\pi}{7}\\right) = \\cos \\frac{2\\pi}{7}$$</p>\n<p>$$\\cos \\frac{10\\pi}{7} = \\cos\\left(2\\pi - \\frac{4\\pi}{7}\\right) = \\cos \\frac{4\\pi}{7}$$</p>\n<p>Substitute these values back into the expression for $2S$:</p>\n<p>$$2S = \\cos \\frac{2\\pi}{7} - \\cos \\frac{6\\pi}{7} + \\cos \\frac{4\\pi}{7} - \\cos \\frac{2\\pi}{7} + \\cos \\frac{6\\pi}{7} - \\cos \\frac{4\\pi}{7}$$</p>\n<p>All the terms cancel each other out:</p>\n<p>$$2S = 0$$</p>\n<p>$$S = 0$$</p>\n<p>Correct Option: <strong>Option A</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित का मान</p>\n<p>$ \\left( \\sin \\frac{2\\pi}{7} \\sin \\frac{4\\pi}{7} + \\sin \\frac{4\\pi}{7} \\sin \\frac{8\\pi}{7} + \\sin \\frac{8\\pi}{7} \\sin \\frac{2\\pi}{7} \\right) $ के बराबर है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1/2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>-1/2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "transformation-formula",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mt2cpwao",
+            "chapter": "trigonometric-ratio-and-identites",
+            "chapterGroup": "trigonometry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The value of $\\cot 16^{\\circ} \\cot 44^{\\circ}+\\cot 44^{\\circ} \\cot 76^{\\circ}-\\cot 76^{\\circ} \\cot 16^{\\circ}$ is</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>Now, $\\cot A \\cot B \\mp 1 = \\dfrac{\\cos(A \\pm B)}{\\sin A \\sin B}$</p>\n<p>i.e. $\\cot A \\cdot \\cot B - 1 = \\dfrac{\\cos(A+B)}{\\sin A \\sin B}$</p>\n<p>and $\\cot A \\cot B + 1 = \\dfrac{\\cos(A-B)}{\\sin A \\sin B}$</p>\n<p>So,</p>\n<p>$$\\cot 16^\\circ \\cot 44^\\circ - 1 = \\dfrac{\\cos 60^\\circ}{\\sin 16^\\circ \\sin 44^\\circ}$$</p>\n<p>$$\\cot 76^\\circ \\cot 44^\\circ - 1 = \\dfrac{\\cos 120^\\circ}{\\sin 76^\\circ \\sin 44^\\circ}$$</p>\n<p>$$\\cot 76^\\circ \\cot 16^\\circ + 1 = \\frac{\\cos 60^\\circ}{\\sin 76^\\circ \\sin 16^\\circ}$$</p>\n<p>Now, $$\\cot 16^\\circ \\cdot \\cot 44^\\circ + \\cot 44^\\circ \\cdot \\cot 76^\\circ - \\cot 76^\\circ \\cdot \\cot 16^\\circ$$</p>\n<p>$$= \\frac{\\cos 60^\\circ}{\\sin 16^\\circ \\, \\sin 44^\\circ} + \\frac{\\cos 120^\\circ}{\\sin 76^\\circ \\, \\sin 44^\\circ} - \\frac{\\cos 60^\\circ}{\\sin 76^\\circ \\, \\sin 16^\\circ} + 3$$</p>\n<p>$$= \\frac{\\cos 60^\\circ \\sin 76^\\circ + \\cos 120^\\circ \\sin 16^\\circ - \\cos 60^\\circ \\sin 44^\\circ}{\\sin 16^\\circ \\, \\sin 44^\\circ \\, \\sin 76^\\circ} + 3$$</p>\n<p>$$= \\frac{1}{2} \\left[ \\frac{\\sin 76^\\circ - \\sin 16^\\circ - \\sin 44^\\circ}{\\sin 16^\\circ \\, \\sin 44^\\circ \\, \\sin 76^\\circ} \\right] + 3$$</p>\n<p>$$= \\frac{1}{2} \\left[ \\frac{(\\sin 76^\\circ - \\sin 16^\\circ) - \\sin 44^\\circ}{\\sin 16^\\circ \\, \\sin 44^\\circ \\, \\sin 76^\\circ} \\right] + 3$$</p>\n<p>$$= \\frac{1}{2} \\left[ \\frac{2 \\sin 30^\\circ \\cos 46^\\circ - \\sin 44^\\circ}{\\sin 16^\\circ \\, \\sin 44^\\circ \\, \\sin 76^\\circ} \\right] + 3$$</p>\n<p>$$= \\frac{1}{2} \\left[ \\frac{\\cos 46^\\circ - \\sin 44^\\circ}{\\sin 16^\\circ \\, \\sin 44^\\circ \\, \\sin 76^\\circ} \\right] + 3$$</p>\n<p>$$= \\frac{1}{2} \\left[ \\frac{\\cos 46^\\circ - \\sin 44^\\circ}{\\sin 16^\\circ \\, \\sin 44^\\circ \\, \\sin 76^\\circ} \\right] + 3$$</p>\n<p>$$= \\frac{1}{2} \\left[ \\frac{\\cos 46^\\circ - \\cos 46^\\circ}{\\sin 16^\\circ \\, \\sin 44^\\circ \\, \\sin 76^\\circ} \\right] + 3$$</p>\n<p>$$= 0 + 3 = 3$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\cot 16^{\\circ} \\cot 44^{\\circ}+\\cot 44^{\\circ} \\cot 76^{\\circ}-\\cot 76^{\\circ} \\cot 16^{\\circ}$ का मान है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "transformation-formula",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mt2cic9g",
+            "chapter": "trigonometric-ratio-and-identites",
+            "chapterGroup": "trigonometry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $\\cos \\alpha + \\cos \\beta + \\cos \\gamma + \\cos (\\alpha + \\beta + \\gamma) = \\lambda \\cos \\left( \\frac{\\alpha + \\beta}{2} \\right) \\cos \\left( \\frac{\\beta + \\gamma}{2} \\right) \\cos \\left( \\frac{\\gamma + \\alpha}{2} \\right)$, then value of $\\lambda$ is</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>To find the value of $\\lambda$, let us simplify the left-hand side of the given equation:</p>\n<p>$$\\text{LHS} = \\cos \\alpha + \\cos \\beta + \\cos \\gamma + \\cos (\\alpha + \\beta + \\gamma)$$</p>\n<p>We can pair the terms to apply the sum-to-product formula $\\cos C + \\cos D = 2 \\cos \\left(\\frac{C+D}{2}\\right) \\cos \\left(\\frac{C-D}{2}\\right)$.</p>\n<p>Group the first two terms and the last two terms:</p>\n<p>$$\\text{LHS} = (\\cos \\alpha + \\cos \\beta) + [\\cos(\\alpha + \\beta + \\gamma) + \\cos \\gamma]$$</p>\n<p>Applying the formula to both pairs:</p>\n<p>$$\\cos \\alpha + \\cos \\beta = 2 \\cos \\left(\\frac{\\alpha + \\beta}{2}\\right) \\cos \\left(\\frac{\\alpha - \\beta}{2}\\right)$$</p>\n<p>$$\\cos(\\alpha + \\beta + \\gamma) + \\cos \\gamma = 2 \\cos \\left(\\frac{\\alpha + \\beta + 2\\gamma}{2}\\right) \\cos \\left(\\frac{\\alpha + \\beta}{2}\\right)$$</p>\n<p>Substitute these back into the expression:</p>\n<p>$$\\text{LHS} = 2 \\cos \\left(\\frac{\\alpha + \\beta}{2}\\right) \\cos \\left(\\frac{\\alpha - \\beta}{2}\\right) + 2 \\cos \\left(\\frac{\\alpha + \\beta + 2\\gamma}{2}\\right) \\cos \\left(\\frac{\\alpha + \\beta}{2}\\right)$$</p>\n<p>$$\\text{LHS} = 2 \\cos \\left(\\frac{\\alpha + \\beta}{2}\\right) \\left[ \\cos \\left(\\frac{\\alpha - \\beta}{2}\\right) + \\cos \\left(\\frac{\\alpha + \\beta + 2\\gamma}{2}\\right) \\right]$$</p>\n<p>Now, apply the sum-to-product formula once more inside the brackets:</p>\n<p>$$\\cos \\left(\\frac{\\alpha - \\beta}{2}\\right) + \\cos \\left(\\frac{\\alpha + \\beta + 2\\gamma}{2}\\right) = 2 \\cos \\left( \\frac{\\frac{\\alpha - \\beta}{2} + \\frac{\\alpha + \\beta + 2\\gamma}{2}}{2} \\right) \\cos \\left( \\frac{\\frac{\\alpha - \\beta}{2} - \\frac{\\alpha + \\beta + 2\\gamma}{2}}{2} \\right)$$</p>\n<p>Simplifying the angles:</p>\n<p>$$\\frac{\\frac{\\alpha - \\beta + \\alpha + \\beta + 2\\gamma}{2}}{2} = \\frac{2\\alpha + 2\\gamma}{4} = \\frac{\\alpha + \\gamma}{2}$$</p>\n<p>$$\\frac{\\frac{\\alpha - \\beta - \\alpha - \\beta - 2\\gamma}{2}}{2} = \\frac{-2\\beta - 2\\gamma}{4} = -\\left(\\frac{\\beta + \\gamma}{2}\\right)$$</p>\n<p>Since $\\cos(-\\theta) = \\cos \\theta$, the bracket simplifies to:</p>\n<p>$$2 \\cos \\left(\\frac{\\gamma + \\alpha}{2}\\right) \\cos \\left(\\frac{\\beta + \\gamma}{2}\\right)$$</p>\n<p>Putting this back into the main expression gives:</p>\n<p>$$\\text{LHS} = 2 \\cos \\left(\\frac{\\alpha + \\beta}{2}\\right) \\cdot 2 \\cos \\left(\\frac{\\gamma + \\alpha}{2}\\right) \\cos \\left(\\frac{\\beta + \\gamma}{2}\\right)$$</p>\n<p>$$\\text{LHS} = 4 \\cos \\left(\\frac{\\alpha + \\beta}{2}\\right) \\cos \\left(\\frac{\\beta + \\gamma}{2}\\right) \\cos \\left(\\frac{\\gamma + \\alpha}{2}\\right)$$</p>\n<p>Comparing this result with the given right-hand side, $\\lambda \\cos \\left( \\frac{\\alpha + \\beta}{2} \\right) \\cos \\left( \\frac{\\beta + \\gamma}{2} \\right) \\cos \\left( \\frac{\\gamma + \\alpha}{2} \\right)$, we get:</p>\n<p>$$\\lambda = 4$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $\\cos \\alpha + \\cos \\beta + \\cos \\gamma + \\cos (\\alpha + \\beta + \\gamma) = \\lambda \\cos \\left( \\frac{\\alpha + \\beta}{2} \\right) \\cos \\left( \\frac{\\beta + \\gamma}{2} \\right) \\cos \\left( \\frac{\\gamma + \\alpha}{2} \\right)$ है, तो $\\lambda$ का मान है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "transformation-formula",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mt2edpyd",
+            "chapter": "trigonometric-ratio-and-identites",
+            "chapterGroup": "trigonometry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If maximum $\\&amp;$ minimum value of $y=3 \\cos \\left(\\theta+\\frac{\\pi}{3}\\right)+5 \\cos \\theta+3$ is $M$ and $m$ respectively then value of $M^2-m^2$ is</p>",
+                "options": [],
+                "answer": "84",
+                "explanation": "<p>The given function is:</p>\n<p>$$y = 3 \\cos \\left(\\theta+\\frac{\\pi}{3}\\right)+5 \\cos \\theta+3$$</p>\n<p>Using the identity $\\cos(A + B) = \\cos A \\cos B - \\sin A \\sin B$, we can expand the first term:</p>\n<p>$$3 \\cos \\left(\\theta+\\frac{\\pi}{3}\\right) = 3 \\left(\\cos \\theta \\cos \\frac{\\pi}{3} - \\sin \\theta \\sin \\frac{\\pi}{3}\\right)$$</p>\n\n<p>$$3 \\cos \\left(\\theta+\\frac{\\pi}{3}\\right) = 3 \\left(\\frac{1}{2}\\cos \\theta - \\frac{\\sqrt{3}}{2}\\sin \\theta\\right) = \\frac{3}{2}\\cos \\theta - \\frac{3\\sqrt{3}}{2}\\sin \\theta$$</p>\n<p>Substitute this back into the expression for $y$:</p>\n<p>$$y = \\frac{3}{2}\\cos \\theta - \\frac{3\\sqrt{3}}{2}\\sin \\theta + 5 \\cos \\theta + 3$$</p>\n\n<p>$$y = \\left(\\frac{3}{2} + 5\\right)\\cos \\theta - \\frac{3\\sqrt{3}}{2}\\sin \\theta + 3$$</p>\n<p>$$y = \\frac{13}{2}\\cos \\theta - \\frac{3\\sqrt{3}}{2}\\sin \\theta + 3$$</p>\n<p>An expression of the form $a\\cos \\theta + b\\sin \\theta + c$ has:</p>\n<ul>\n<li><p>Maximum value $= \\sqrt{a^2 + b^2} + c$</p></li>\n<li><p>Minimum value $= -\\sqrt{a^2 + b^2} + c$</p></li>\n</ul>\n<p>Here, $a = \\frac{13}{2}$, $b = -\\frac{3\\sqrt{3}}{2}$, and $c = 3$.</p>\n\n<p>$$\\sqrt{a^2 + b^2} = \\sqrt{\\left(\\frac{13}{2}\\right)^2 + \\left(-\\frac{3\\sqrt{3}}{2}\\right)^2}$$</p>\n<p>$$= \\sqrt{\\frac{169}{4} + \\frac{27}{4}} = \\sqrt{\\frac{196}{4}} = \\sqrt{49} = 7$$</p>\n<p>Now, determine the maximum value $M$ and minimum value $m$:</p>\n<p>$$M = 7 + 3 = 10$$</p>\n<p>$$m = -7 + 3 = -4$$</p>\n<p>Finally, we need to calculate $M^2 - m^2$:</p>\n<p>$$M^2 - m^2 = (10)^2 - (-4)^2$$</p>\n<p>$$M^2 - m^2 = 100 - 16 = 84$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $y=3 \\cos \\left(\\theta+\\frac{\\pi}{3}\\right)+5 \\cos \\theta+3$ का अधिकतम और न्यूनतम मान क्रमशः $M$ तथा $m$ है, तो $M^2-m^2$ का मान है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range-of-trigonometric-functions",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mt2egkq3",
+            "chapter": "trigonometric-ratio-and-identites",
+            "chapterGroup": "trigonometry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The maximum value of the expression $\\frac{1}{\\sin ^2 \\theta+3 \\sin \\theta \\cos \\theta+5 \\cos ^2 \\theta}$ is</p>",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>Let the given expression be $E$:</p>\n<p>$$E = \\frac{1}{\\sin^2 \\theta + 3\\sin \\theta \\cos \\theta + 5\\cos^2 \\theta}$$</p>\n<p>Let us simplify the denominator, $D$:</p>\n<p>$$D = \\sin^2 \\theta + 3\\sin \\theta \\cos \\theta + 5\\cos^2 \\theta$$</p>\n<p>We know the standard trigonometric identities:</p>\n<p>$$\\sin^2 \\theta = \\frac{1 - \\cos 2\\theta}{2}$$</p>\n<p>$$\\cos^2 \\theta = \\frac{1 + \\cos 2\\theta}{2}$$</p>\n<p>$$\\sin \\theta \\cos \\theta = \\frac{\\sin 2\\theta}{2}$$</p>\n<p>Substituting these identities into $D$:</p>\n<p>$$D = \\frac{1 - \\cos 2\\theta}{2} + 3\\left(\\frac{\\sin 2\\theta}{2}\\right) + 5\\left(\\frac{1 + \\cos 2\\theta}{2}\\right)$$</p>\n\n<p>$$D = \\frac{1 - \\cos 2\\theta + 3\\sin 2\\theta + 5 + 5\\cos 2\\theta}{2}$$</p>\n<p>$$D = \\frac{6 + 3\\sin 2\\theta + 4\\cos 2\\theta}{2}$$</p>\n<p>$$D = 3 + \\frac{3\\sin 2\\theta + 4\\cos 2\\theta}{2}$$</p>\n<p>We know that for any expression of the form $a\\sin x + b\\cos x$, the minimum value is given by $-\\sqrt{a^2 + b^2}$.</p>\n<p>For the term $3\\sin 2\\theta + 4\\cos 2\\theta$:</p>\n<p>$$\\text{Minimum value} = -\\sqrt{3^2 + 4^2} = -\\sqrt{9 + 16} = -5$$</p>\n<p>Now, substitute this minimum value into the denominator $D$:</p>\n<p>$$D_{\\text{min}} = 3 + \\frac{-5}{2} = 3 - \\frac{5}{2} = \\frac{1}{2}$$</p>\n<p>The maximum value of the entire expression occurs when the denominator is at its minimum:</p>\n<p>$$E_{\\text{max}} = \\frac{1}{D_{\\text{min}}} = \\frac{1}{\\frac{1}{2}} = 2$$</p>\n<p>The maximum value of the given expression is $2$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>व्यंजक $\\frac{1}{\\sin ^2 \\theta+3 \\sin \\theta \\cos \\theta+5 \\cos ^2 \\theta}$ का अधिकतम मान है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "range-of-trigonometric-functions",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mt2eoov6",
+            "chapter": "trigonometric-ratio-and-identites",
+            "chapterGroup": "trigonometry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let $\\alpha, \\beta, \\gamma$ be the measures of angles such that $\\sin \\alpha+\\sin \\beta+\\sin \\gamma \\geq 2$. Then the greatest integral value of $\\cos \\alpha+\\cos \\beta+\\cos \\gamma$ is $\\_\\_\\_\\_$.</p>",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>We are given that:</p>\n<p>$$\\sin \\alpha + \\sin \\beta + \\sin \\gamma \\ge 2$$</p>\n<p>Squaring both sides gives:</p>\n<p>$$(\\sin \\alpha + \\sin \\beta + \\sin \\gamma)^2 \\ge 4$$</p>\n<p>Expanding the left side, we get:</p>\n<p>$$\\sin^2 \\alpha + \\sin^2 \\beta + \\sin^2 \\gamma + 2(\\sin \\alpha \\sin \\beta + \\sin \\beta \\sin \\gamma + \\sin \\gamma \\sin \\alpha) \\ge 4$$</p>\n<p>Using the identity $\\sin^2 \\theta = 1 - \\cos^2 \\theta$ for each term:</p>\n<p>$$(1 - \\cos^2 \\alpha) + (1 - \\cos^2 \\beta) + (1 - \\cos^2 \\gamma) + 2\\sum \\sin \\alpha \\sin \\beta \\ge 4$$</p>\n<p>$$3 - (\\cos^2 \\alpha + \\cos^2 \\beta + \\cos^2 \\gamma) + 2\\sum \\sin \\alpha \\sin \\beta \\ge 4$$</p>\n<p>$$2\\sum \\sin \\alpha \\sin \\beta \\ge 1 + (\\cos^2 \\alpha + \\cos^2 \\beta + \\cos^2 \\gamma)$$</p>\n<p>Now, add $2(\\cos \\alpha \\cos \\beta + \\cos \\beta \\cos \\gamma + \\cos \\gamma \\cos \\alpha)$ to both sides:</p>\n<p>$$2\\sum (\\cos \\alpha \\cos \\beta + \\sin \\alpha \\sin \\beta) \\ge 1 + \\left(\\cos^2 \\alpha + \\cos^2 \\beta + \\cos^2 \\gamma + 2\\sum \\cos \\alpha \\cos \\beta\\right)$$</p>\n<p>Using the identity $\\cos(A - B) = \\cos A \\cos B + \\sin A \\sin B$ and the expansion of $(\\cos \\alpha + \\cos \\beta + \\cos \\gamma)^2$:</p>\n<p>$$2[\\cos(\\alpha - \\beta) + \\cos(\\beta - \\gamma) + \\cos(\\gamma - \\alpha)] \\ge 1 + (\\cos \\alpha + \\cos \\beta + \\cos \\gamma)^2$$</p>\n<p>Since the maximum value of any cosine function is $1$, we know that:</p>\n<p>$$2[\\cos(\\alpha - \\beta) + \\cos(\\beta - \\gamma) + \\cos(\\gamma - \\alpha)] \\le 2(1 + 1 + 1) = 6$$</p>\n<p>Therefore:</p>\n<p>$$(\\cos \\alpha + \\cos \\beta + \\cos \\gamma)^2 + 1 \\le 6$$</p>\n<p>$$(\\cos \\alpha + \\cos \\beta + \\cos \\gamma)^2 \\le 5$$</p>\n<p>$$\\cos \\alpha + \\cos \\beta + \\cos \\gamma \\le \\sqrt{5}$$</p>\n<p>Since $\\sqrt{5} \\approx 2.236$, the greatest integer less than or equal to $\\sqrt{5}$ is $2$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना $\\alpha, \\beta, \\gamma$ कोणों के ऐसे माप हैं कि $\\sin \\alpha+\\sin \\beta+\\sin \\gamma \\geq 2$ है। तब $\\cos \\alpha+\\cos \\beta+\\cos \\gamma$ का महत्तम पूर्णांक मान $\\_\\_\\_\\_$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "transformation-formula",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Transformation Formulas, Maximum and Minimum Values",
+    "timeAllotted": 2160000,
+    "title": "Trigonometric Ratio and Identites Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g71mp3q4gcc",
+    "defaultLanguage": "en",
+    "description": "Transformation Formulas, Maximum and Minimum Values",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-21T12:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Transformation Formulas, Maximum and Minimum Values",
+    "timeAllotted": 2160000,
+    "title": "Trigonometric Ratio and Identites Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Mathematics",
+    "_section": "Trigonometric Ratio and Identites"
+  }
+}

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Help & Inquiry — Quantrex Academy</title>
+  <meta name="theme-color" content="#06101f">
+  <link rel="icon" type="image/png" href="assets/favicon-32x32.png?v=robo2">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Kanit:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #06101f; --gold: #f5c518; --ink: #e8eef8; --muted: #93a4c4;
+      --primary: #2563eb; --ok: #14b8a6; --wa: #10b981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { min-height: 100%; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(900px 520px at 8% -8%, rgba(37,99,235,.42), transparent 55%),
+        radial-gradient(720px 420px at 108% 4%, rgba(245,197,24,.22), transparent 50%),
+        radial-gradient(640px 380px at 50% 110%, rgba(16,185,129,.16), transparent 55%),
+        linear-gradient(180deg, #081428 0%, #040914 100%);
+      animation: bgShift 16s ease-in-out infinite alternate;
+      overflow-x: hidden;
+    }
+    @keyframes bgShift {
+      from { filter: hue-rotate(0deg); }
+      to { filter: hue-rotate(14deg); }
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(28px) scale(.98); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes pulseGold {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(245,197,24,.4); }
+      50% { box-shadow: 0 0 0 12px rgba(245,197,24,0); }
+    }
+    @keyframes pulseWa {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,.45); }
+      50% { box-shadow: 0 0 0 12px rgba(16,185,129,0); }
+    }
+    @keyframes shine {
+      0% { transform: translateX(-120%) rotate(12deg); }
+      100% { transform: translateX(220%) rotate(12deg); }
+    }
+    @keyframes orb {
+      0%, 100% { transform: translate(0,0) scale(1); opacity: .55; }
+      50% { transform: translate(18px, -22px) scale(1.12); opacity: .9; }
+    }
+    @keyframes spinSlow { to { transform: rotate(360deg); } }
+    .orb {
+      position: fixed; border-radius: 50%; filter: blur(40px); pointer-events: none; z-index: 0;
+      animation: orb 9s ease-in-out infinite;
+    }
+    .orb.a { width: 220px; height: 220px; background: #2563eb; top: 12%; left: -60px; }
+    .orb.b { width: 180px; height: 180px; background: #f5c518; bottom: 8%; right: -40px; animation-delay: -3s; }
+    .orb.c { width: 140px; height: 140px; background: #10b981; top: 48%; right: 12%; animation-delay: -6s; opacity: .35; }
+
+    .top {
+      position: sticky; top: 0; z-index: 8;
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 18px;
+      background: rgba(6,16,31,.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .top a { color: #7dd3fc; font-weight: 800; text-decoration: none; font-size: 14px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; letter-spacing: .04em; }
+    .brand img { width: 36px; height: 36px; object-fit: contain; animation: floaty 4.2s ease-in-out infinite; }
+    .brand small { display: block; font-size: 9px; letter-spacing: .18em; color: var(--gold); }
+
+    .wrap { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 28px 16px 72px; }
+    .hero { text-align: center; animation: rise .7s ease both; margin-bottom: 22px; }
+    .kicker {
+      display: inline-block; background: #2563eb; color: #fff;
+      font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 999px; letter-spacing: .08em;
+    }
+    h1 { font-family: Kanit, sans-serif; font-size: clamp(28px, 5vw, 44px); line-height: 1.08; margin: 12px 0 8px; }
+    h1 span { color: var(--gold); }
+    .lead { color: var(--muted); font-size: 15px; line-height: 1.6; max-width: 560px; margin: 0 auto 16px; }
+    .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 4px; }
+    .chip {
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 700;
+      animation: rise .55s ease both;
+    }
+    .chip:nth-child(2) { animation-delay: .06s; }
+    .chip:nth-child(3) { animation-delay: .12s; }
+    .chip:nth-child(4) { animation-delay: .18s; }
+
+    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 22px 0 18px; }
+    .act {
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
+      text-decoration: none; color: #fff;
+      border-radius: 18px; padding: 18px 16px 16px;
+      min-height: 108px;
+      animation: rise .65s ease both;
+      transition: transform .22s ease, filter .22s ease;
+    }
+    .act:hover { transform: translateY(-6px) scale(1.01); filter: brightness(1.06); }
+    .act .shine {
+      position: absolute; inset: -20% auto -20% -40%; width: 40%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.28), transparent);
+      animation: shine 3.6s ease-in-out infinite;
+    }
+    .act.wa { background: linear-gradient(145deg, #10b981, #047857); animation: pulseWa 2.4s ease-in-out infinite; }
+    .act.call { background: linear-gradient(145deg, #2563eb, #1e3a8a); animation-delay: .12s; }
+    .act.play { background: linear-gradient(145deg, #01875f, #065f46); animation-delay: .18s; grid-column: 1 / -1; min-height: 88px; }
+    .act b { font-size: 16px; font-weight: 900; }
+    .act span { font-size: 12px; opacity: .92; font-weight: 700; }
+    .act i { font-style: normal; font-size: 22px; margin-bottom: 6px; }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.98), #f8fbff);
+      color: #0f172a;
+      border-radius: 22px;
+      padding: 20px 18px 22px;
+      box-shadow: 0 24px 50px rgba(0,0,0,.28);
+      animation: rise .75s ease .08s both;
+    }
+    .card h2 { font-family: Kanit, sans-serif; font-size: 22px; margin: 0 0 4px; }
+    .card .sub { color: #64748b; font-size: 13px; line-height: 1.5; margin-bottom: 8px; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    label { display: block; font-size: 12px; font-weight: 800; margin-top: 12px; color: #0f172a; }
+    input, select, textarea {
+      width: 100%; margin-top: 6px; border: 1.5px solid #dbe7f5; border-radius: 12px;
+      padding: 11px 12px; font: inherit; background: #f4f8fd; color: #0f172a;
+      transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: 0; border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37,99,235,.18);
+      transform: translateY(-1px); background: #fff;
+    }
+    textarea { min-height: 108px; resize: vertical; }
+    .qx-ex-lab { font-size: 11px; font-weight: 800; letter-spacing: .08em; color: #64748b; margin: 14px 0 6px; text-transform: uppercase; }
+    .qx-ex-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .qx-ex-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 800; background: #e8f1fb; color: #0f172a;
+      border-radius: 999px; padding: 7px 12px; cursor: pointer;
+      transition: transform .18s ease, background .18s ease, color .18s ease;
+    }
+    .qx-ex-chip:hover { transform: translateY(-2px); background: #dbeafe; }
+    .qx-ex-chip:has(input:checked) { background: #1d4ed8; color: #fff; }
+    .qx-ex-other-in { margin-top: 8px; }
+    .qx-yn-row {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 12px; font-size: 13px; font-weight: 800;
+      background: #f1f5f9; border-radius: 12px; padding: 10px 12px;
+    }
+    .qx-yn { margin-left: 10px; font-weight: 700; }
+    .go {
+      position: relative; overflow: hidden;
+      width: 100%; height: 52px; margin-top: 16px; border: 0; border-radius: 14px;
+      background: var(--gold); color: #111; font-weight: 900; font-size: 16px; cursor: pointer;
+      animation: pulseGold 2.4s ease-in-out infinite;
+    }
+    .go:hover { filter: brightness(1.06); transform: translateY(-1px); }
+    .msg { display: none; margin-top: 12px; padding: 12px; border-radius: 12px; font-size: 13px; font-weight: 800; }
+    .msg.on { display: block; animation: rise .4s ease both; }
+    .msg.ok { background: #d1fae5; color: #065f46; }
+    .msg.err { background: #fee2e2; color: #991b1b; }
+    .foot { text-align: center; color: var(--muted); font-size: 12px; font-weight: 700; margin-top: 18px; animation: rise .8s ease .2s both; }
+    .foot a { color: #7dd3fc; }
+    @media (max-width: 640px) {
+      .actions, .grid2 { grid-template-columns: 1fr; }
+      .act { min-height: 92px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb a" aria-hidden="true"></div>
+  <div class="orb b" aria-hidden="true"></div>
+  <div class="orb c" aria-hidden="true"></div>
+  <div class="top">
+    <a href="login.html">← Login</a>
+    <div class="brand">
+      <img src="assets/quantrex-logo-3d-64.png" alt="">
+      <div>QUANTREX ACADEMY<small>CONCEPTS CREATE DESTINY</small></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="hero">
+      <span class="kicker">MATHS MENTOR · CALL BACK</span>
+      <h1>Talk to a Quantrex<br><span>Maths teacher</span></h1>
+      <p class="lead">Ajay teaches <strong>Mathematics</strong> for every exam on this site — JEE Main, JEE Advanced, NEET maths, NDA, BITSAT, MHT CET and boards. Tell us what you need. We call you.</p>
+      <div class="chips">
+        <span class="chip">Individual class</span>
+        <span class="chip">Group class</span>
+        <span class="chip">Live class every day</span>
+        <span class="chip">All exams on Quantrex</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <a class="act wa" href="https://wa.me/918700508344" target="_blank" rel="noopener">
+        <span class="shine" aria-hidden="true"></span>
+        <i>💬</i>
+        <b>WhatsApp now</b>
+        <span>8700508344 · reply in minutes</span>
+      </a>
+      <a class="act call" href="tel:+918700508344">
+        <span class="shine" aria-hidden="true"></span>
+        <i>📞</i>
+        <b>Call Quantrex</b>
+        <span>8700508344 · talk to a teacher</span>
+      </a>
+      <a class="act play" href="download.html">
+        <span class="shine" aria-hidden="true"></span>
+        <i>▶</i>
+        <b>Get the Quantrex app</b>
+        <span>Google Play · same login as the website · JEE NEET NDA BITSAT PYQ</span>
+      </a>
+    </div>
+
+    <form class="card" id="inqForm">
+      <h2>Inquiry form</h2>
+      <p class="sub">No payment to ask. Fill what you know — skip the rest. Your details go to Quantrex WhatsApp and email.</p>
+      <div class="grid2">
+        <label>Full name<input id="inqName" name="name" autocomplete="name" maxlength="48" placeholder="Your name"></label>
+        <label>Mobile<input id="inqPhone" name="phone" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile"></label>
+      </div>
+      <label>Email (optional)<input id="inqEmail" name="email" type="email" placeholder="you@email.com"></label>
+      <div class="grid2">
+        <label>Class<select id="inqClass"></select></label>
+        <label>State<select id="inqState"></select></label>
+      </div>
+      <input id="inqClassOther" placeholder="Other class" hidden>
+      <input id="inqStateOther" placeholder="Other state / country" hidden>
+      <label>District<select id="inqDistrict"></select></label>
+      <input id="inqDistrictOther" placeholder="Other district / city" hidden>
+      <div id="inqExams"></div>
+      <div class="qx-yn-row"><span>Individual Maths class</span><span id="inqInd"></span></div>
+      <div class="qx-yn-row"><span>Group class</span><span id="inqGroup"></span></div>
+      <div class="qx-yn-row"><span>Live class every day</span><span id="inqLive"></span></div>
+      <label>How can we help?<textarea id="inqNote" placeholder="Example: Class 12, JEE Main + Advanced Maths, want individual class 3 days a week. Please call after 6 pm."></textarea></label>
+      <button type="submit" class="go">Send inquiry →</button>
+      <div class="msg" id="inqMsg"></div>
+    </form>
+    <p class="foot">Help line <a href="tel:+918700508344">8700508344</a> · Admin WhatsApp <a href="https://wa.me/917750858874">7750858874</a> · <a href="mailto:quantrexacademy@gmail.com">quantrexacademy@gmail.com</a> · <a href="download.html">Get the app</a> · <a href="https://play.google.com/store/apps/details?id=com.quantrexacademy.app" rel="noopener" target="_blank">Google Play</a></p>
+  </div>
+  <script src="qx-india-geo.js?v=qxfix68"></script>
+  <script src="qx-exams.js?v=qxfix71"></script>
+  <script src="qx-profile.js?v=qxfix71"></script>
+  <script src="qx-leads.js?v=qxfix68"></script>
+  <script>
+    (function () {
+      const p = typeof QxProfile !== "undefined" ? QxProfile.get() : {};
+      document.getElementById("inqName").value = p.name || "";
+      document.getElementById("inqPhone").value = p.phone || "";
+      document.getElementById("inqEmail").value = p.email || "";
+      QxProfile.fillClassSelect(document.getElementById("inqClass"), p.className);
+      QxProfile.fillStateSelect(document.getElementById("inqState"), p.state);
+      QxProfile.fillDistrictSelect(document.getElementById("inqDistrict"), p.state, p.district);
+      QxProfile.bindPair(document.getElementById("inqState"), document.getElementById("inqDistrict"));
+      QxProfile.bindOtherField(document.getElementById("inqClass"), document.getElementById("inqClassOther"));
+      QxProfile.bindOtherField(document.getElementById("inqState"), document.getElementById("inqStateOther"));
+      QxProfile.bindOtherField(document.getElementById("inqDistrict"), document.getElementById("inqDistrictOther"));
+      document.getElementById("inqExams").innerHTML = QxExams.checkboxHtml(p.exams || []);
+      if (QxExams.bind) QxExams.bind(document);
+      document.getElementById("inqInd").innerHTML = QxProfile.yesNoHtml("qxIndMath", p.individualMaths);
+      document.getElementById("inqGroup").innerHTML = QxProfile.yesNoHtml("qxGroupClass", p.groupClass);
+      document.getElementById("inqLive").innerHTML = QxProfile.yesNoHtml("qxLiveClass", p.liveClass);
+      document.getElementById("inqForm").addEventListener("submit", async function (ev) {
+        ev.preventDefault();
+        const msg = document.getElementById("inqMsg");
+        const btn = ev.target.querySelector(".go");
+        const name = document.getElementById("inqName").value.trim();
+        const phone = document.getElementById("inqPhone").value.replace(/\D/g, "").slice(-10);
+        if (!name && phone.length !== 10) {
+          msg.className = "msg on err";
+          msg.textContent = "Add your name or a 10-digit mobile so we can call you.";
+          return;
+        }
+        let className = document.getElementById("inqClass").value;
+        if (className === "Other") className = document.getElementById("inqClassOther").value.trim() || "Other";
+        let state = document.getElementById("inqState").value;
+        if (state === "Other") state = document.getElementById("inqStateOther").value.trim() || "Other";
+        let district = document.getElementById("inqDistrict").value;
+        if (district === "Other") district = document.getElementById("inqDistrictOther").value.trim() || "Other";
+        const extra = {
+          name: name,
+          phone: phone,
+          email: document.getElementById("inqEmail").value.trim(),
+          className: className,
+          state: state,
+          district: district,
+          exams: QxExams.readChecked(document),
+          individualMaths: QxProfile.readYesNo("qxIndMath"),
+          groupClass: QxProfile.readYesNo("qxGroupClass"),
+          liveClass: QxProfile.readYesNo("qxLiveClass"),
+          note: document.getElementById("inqNote").value.trim()
+        };
+        QxProfile.save(extra);
+        if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
+        await QxLeads.submit("inquiry", extra, { help: true });
+        if (btn) { btn.disabled = false; btn.textContent = "Send inquiry →"; }
+        msg.className = "msg on ok";
+        msg.textContent = "Inquiry sent. WhatsApp 8700508344 is open with your message. We will call you.";
+      });
+    })();
+  </script>
+</body>
+</html>

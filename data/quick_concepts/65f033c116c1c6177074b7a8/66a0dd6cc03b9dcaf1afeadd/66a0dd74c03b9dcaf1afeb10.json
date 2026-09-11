@@ -1,0 +1,34 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd6cc03b9dcaf1afeadd",
+  "topicId": "66a0dd74c03b9dcaf1afeb10",
+  "title": "Diameter to hyperbola",
+  "concepts": [
+    {
+      "title": "Conjugate diameter",
+      "conceptBody": "<h3><strong>Conjugate Diameters&nbsp;</strong></h3><p>Two diameters of a hyperbola are said to be conjugate diameters if each bisects the chord parallel to the other. If ${{\\text{m}}_{1}}$ and ${{\\text{m}}_{2}}$ be the slopes of the conjugate diameters of a hyperbola $\\frac{{{\\text{x}}^{2}}}{{{\\text{a}}^{2}}}-\\frac{{{\\text{y}}^{2}}}{\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}^{2}}}=1$, then ${{\\text{m}}_{1}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{m}}_{2}}=\\frac{{{\\text{b}}^{2}}}{{{\\text{a}}^{2}}}$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd74c03b9dcaf1afeb11"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f602d384bfb4a538143",
+      "title": "The diameter of $16 x^2-9 y^2=144$, which is conjugate to $x=2 y$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f602d384bfb4a538144",
+      "title": "Find the equation of that diameter which bisects the chords $7 x+y-20=0$ of the hyperbola $\\frac{x^2}{3}-\\frac{y^2}{7}=1$.",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f602d384bfb4a538145",
+      "title": "If a diameter of a hyperbola meets the hyperbola in real points then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

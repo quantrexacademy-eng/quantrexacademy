@@ -1,0 +1,64 @@
+{
+  "examSlug": "wbjee",
+  "examId": "61961adca5a5260118868013",
+  "subjectId": "61964f81a5a526011886801d",
+  "chapterId": "61964c721898e31221afc8be",
+  "subject": "Physics",
+  "chapter": "Mathematics in Physics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64a814d6e0ff5a5425a86014",
+      "title": "Fundamentals of Vectors",
+      "count": 4,
+      "questionIds": [
+        "6a22caf59b544592bfdee691",
+        "67729bf8546ddd78415aaf5d",
+        "64a813f1e0ff5a5425a856fd",
+        "64a813abe0ff5a5425a8545d"
+      ]
+    },
+    {
+      "id": "64a814d6e0ff5a5425a86013",
+      "title": "Addition and Subtraction of Vectors",
+      "count": 9,
+      "questionIds": [
+        "6a22caf49b544592bfdee686",
+        "684b1a8560ec9a39241c1757",
+        "64a81428e0ff5a5425a85907",
+        "64a81404e0ff5a5425a857ac",
+        "64a813efe0ff5a5425a856e8",
+        "64a813dee0ff5a5425a85642",
+        "64a813cce0ff5a5425a8559c",
+        "64a813bde0ff5a5425a8550d",
+        "64a813aae0ff5a5425a8545c"
+      ]
+    },
+    {
+      "id": "64a814d6e0ff5a5425a86016",
+      "title": "Multiplication of Vectors",
+      "count": 6,
+      "questionIds": [
+        "64a8148ce0ff5a5425a85caf",
+        "64a8146ae0ff5a5425a85b71",
+        "64a81449e0ff5a5425a85a40",
+        "64a8143be0ff5a5425a859b4",
+        "64a81402e0ff5a5425a8579a",
+        "64a813bde0ff5a5425a8550c"
+      ]
+    },
+    {
+      "id": "64a814d6e0ff5a5425a86015",
+      "title": "Errors of Measurement",
+      "count": 6,
+      "questionIds": [
+        "684b1a8860ec9a39241c1763",
+        "64a8149de0ff5a5425a85d56",
+        "64a8148ce0ff5a5425a85cb3",
+        "64a8145ae0ff5a5425a85ad5",
+        "64a813dee0ff5a5425a85649",
+        "64a813bce0ff5a5425a85502"
+      ]
+    }
+  ]
+}

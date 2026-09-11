@@ -282,3 +282,153 @@ html[data-theme="dark"] .qx-fmt-card {
   border: 0;
   border-radius: 12px;
 }
+
+
+/* ===== Immersive full-window question (ExamGoal) — Practice + CBT ===== */
+html.qx-q-fullscreen,
+body.qx-q-fullscreen {
+  overflow: hidden !important;
+  height: 100% !important;
+  overscroll-behavior: none;
+}
+body.qx-q-fullscreen #sidebar,
+body.qx-q-fullscreen .sidebar,
+body.qx-q-fullscreen .topbar,
+body.qx-q-fullscreen .qx-top-exams,
+body.qx-q-fullscreen .jovi-fab,
+body.qx-q-fullscreen #joviFab,
+body.qx-q-fullscreen .qx-update-bar,
+body.qx-q-fullscreen .qx-brand-overlay,
+body.qx-q-fullscreen #qxBrandOverlay,
+body.qx-q-fullscreen .marks-bottom-nav,
+body.qx-q-fullscreen .qx-bottom-nav,
+body.qx-q-fullscreen #qxBottomNav,
+body.qx-q-fullscreen .qx-mobile-tabbar,
+body.qx-q-fullscreen .nav-dock,
+body.qx-q-fullscreen .sidebar-foot,
+body.marks-test-active #sidebar,
+body.marks-test-active .sidebar,
+body.marks-test-active .topbar,
+body.marks-test-active .qx-top-exams,
+body.marks-test-active .jovi-fab,
+body.allen-practice-active #sidebar,
+body.allen-practice-active .sidebar,
+body.allen-practice-active .topbar,
+body.allen-practice-active .qx-top-exams,
+body.allen-practice-active .jovi-fab,
+body.allen-cbt-active #sidebar,
+body.allen-cbt-active .sidebar,
+body.allen-cbt-active .topbar,
+body.allen-cbt-active .jovi-fab {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+body.qx-q-fullscreen .main,
+body.marks-test-active .main,
+body.allen-practice-active .main {
+  margin-left: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+body.qx-q-fullscreen #app-main,
+body.marks-test-active #app-main,
+body.allen-practice-active #app-main {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9500 !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
+  height: 100dvh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch;
+  background: var(--eg-bg, #eef2f7);
+}
+body.qx-q-fullscreen::before,
+body.marks-test-active::before,
+body.allen-practice-active::before {
+  display: none !important;
+}
+
+/* Practice page: full viewport, ExamGoal-like sticky chrome */
+body.qx-q-fullscreen .qx-practice-page,
+body.allen-practice-active .qx-practice-page {
+  min-height: 100%;
+  min-height: 100dvh;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 0 calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+  box-sizing: border-box;
+}
+body.qx-q-fullscreen .qx-prac-bar,
+body.allen-practice-active .qx-prac-bar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #1e40af;
+  color: #fff;
+  min-height: 48px;
+}
+body.qx-q-fullscreen .qx-prac-bar .qx-prac-back,
+body.qx-q-fullscreen .qx-prac-bar .qx-prac-icon,
+body.qx-q-fullscreen .qx-prac-bar strong {
+  color: #fff !important;
+}
+body.qx-q-fullscreen .qx-prac-q,
+body.qx-q-fullscreen .qx-prac-opts,
+body.qx-q-fullscreen .qx-prac-meta {
+  padding-left: 14px;
+  padding-right: 14px;
+}
+body.qx-q-fullscreen .qx-prac-opt,
+body.allen-practice-active .qx-prac-opt {
+  width: 100%;
+  text-align: left;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  padding: 12px 14px;
+  margin: 8px 0;
+  min-height: 48px;
+}
+body.qx-q-fullscreen .qx-prac-foot.eg-foot,
+body.allen-practice-active .qx-prac-foot.eg-foot {
+  position: fixed !important;
+  left: 0; right: 0; bottom: 0;
+  z-index: 50;
+  background: #fff;
+  box-shadow: 0 -6px 18px rgba(15,23,42,.1);
+  padding: 8px 12px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+/* CBT question stem uses full width */
+body.qx-q-fullscreen .mtk-main,
+body.qx-q-fullscreen .eg-main,
+body.qx-q-fullscreen .eg-q-card {
+  max-width: none !important;
+  width: 100% !important;
+}
+body.qx-q-fullscreen .mtk-q-text img.qx-pool-fig,
+body.qx-q-fullscreen .qx-prac-q img,
+body.qx-q-fullscreen #qxDiagramSlot img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+@media (max-width: 720px) {
+  body.qx-q-fullscreen .qzrr-cbt .qzrr-side,
+  body.qx-q-fullscreen .mtk-palette {
+    /* palette stays as drawer — do not steal half the screen permanently */
+  }
+  body.qx-q-fullscreen .qx-prac-bar .qx-report-fab {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+}

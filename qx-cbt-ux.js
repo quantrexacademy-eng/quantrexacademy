@@ -1,13 +1,14 @@
 /**
  * Quantrex CBT UX — dual format enforcement + mobile Tests entry labels
  * QUANTREX FORMAT (examgoal/Allen practice) = flexible Practice
- * NTA FORMAT (quizrr) = exact Marks/ExamGoal NTA shell for Mock / Test Series / PYQ Mock
+ * NTA FORMAT (quizrr) = exact Marks/ExamGoal NTA shell for Test Series only
+ * PYQ Mock = ExamGoal / Quantrex practice chrome (same as chapter-wise)
  * Additive only. No payment / bank changes.
  */
 (function (global) {
   "use strict";
 
-  var VERSION = "qxcbt1";
+  var VERSION = "qxmd116";
   var FORMAT_KEY = "qx_cbt_format_pref"; // "quantrex" | "nta"
 
   function isPracticeConfig(cfg) {
@@ -24,7 +25,7 @@
     if (ui === "quizrr") return true;
     if (ui === "examgoal" || ui === "quantrex") return false;
     var tt = String(cfg.testType || cfg.modeLabel || cfg.title || "");
-    if (/series|pyqmock|pyq|mock|full.?test|part.?test/i.test(tt)) return true;
+    if (/^testseries$/i.test(tt) || /(?:^|[\s_-])(?:test)?series(?:$|[\s_-])/i.test(tt) || /full.?test|part.?test/i.test(tt)) return true;
     if (cfg.timed && cfg.marksMode) return true;
     return false;
   }
@@ -41,14 +42,20 @@
       return cfg;
     }
 
-    // 2) PYQ Mock Test (timed) → always NTA FORMAT (exact quizrr shell)
+        // 2) Test Series → always NTA (quizrr). PYQ Mock → ExamGoal (chapter-practice UX).
     if (/^pyqmock$/i.test(tt)) {
+      cfg.uiMode = "examgoal";
+      cfg._qxFormat = "quantrex";
+      return cfg;
+    }
+    if (/^testseries$/i.test(tt)) {
       cfg.uiMode = "quizrr";
       cfg._qxFormat = "nta";
+      cfg.practiceMode = false;
       return cfg;
     }
 
-    // 3) Explicit chooser / caller
+    // 3) Explicit chooser / caller (practice / custom only)
     if (ui === "quantrex") {
       cfg.uiMode = "examgoal";
       cfg._qxFormat = "quantrex";
@@ -59,7 +66,6 @@
       return cfg;
     }
     if (ui === "examgoal") {
-      // Test Series Quantrex layout choice
       cfg._qxFormat = "quantrex";
       return cfg;
     }
@@ -100,6 +106,141 @@
       global.__qxCbtStartWrapped = true;
     }
     attempt();
+  }
+
+
+  /** Immersive full-window question view (ExamGoal feel) — Practice + Test/CBT */
+  function syncQuestionFullscreen() {
+    function isQuestionOpen() {
+      var b = document.body;
+      if (!b) return false;
+      if (document.querySelector(".eg-test-root, .qzrr-cbt, .mtk-test-root.allen-cbt")) return true;
+      if (
+        b.classList.contains("marks-test-active") ||
+        b.classList.contains("allen-cbt-active") ||
+        b.classList.contains("allen-practice-active") ||
+        b.classList.contains("qzrr-instr-active") ||
+        b.classList.contains("marks-instr-active")
+      ) return true;
+      return false;
+    }
+    function sync() {
+      var b = document.body;
+      if (!b) return;
+      var on = isQuestionOpen();
+      // Keep results analysis as immersive too (hide chrome) but allow scroll
+      var results = b.classList.contains("marks-results-active") || b.classList.contains("qzrr-analysis-active");
+      var immersive = on || results;
+      b.classList.toggle("qx-q-fullscreen", !!immersive);
+      b.classList.toggle("qx-cbt-session", !!on || !!results);
+      try {
+        document.documentElement.classList.toggle("qx-q-fullscreen", !!immersive);
+      } catch (_) { /* */ }
+      // Hide chrome elements that CSS may miss (inline display from other scripts)
+      var hideSel = [
+        "#sidebar", ".sidebar", ".topbar", ".qx-top-exams",
+        ".jovi-fab", "#joviFab", ".qx-update-bar",
+        ".qx-brand-overlay", "#qxBrandOverlay",
+        ".marks-bottom-nav", ".qx-bottom-nav", "#qxBottomNav",
+        ".qx-mobile-tabbar", ".nav-dock"
+      ];
+      hideSel.forEach(function (sel) {
+        document.querySelectorAll(sel).forEach(function (el) {
+          if (!el) return;
+          if (immersive) {
+            if (!el.hasAttribute("data-qx-fs-prev")) {
+              el.setAttribute("data-qx-fs-prev", el.style.display || "");
+            }
+            el.style.display = "none";
+            el.setAttribute("hidden", "");
+          } else if (el.hasAttribute("data-qx-fs-prev")) {
+            var prev = el.getAttribute("data-qx-fs-prev");
+            el.style.display = prev;
+            el.removeAttribute("data-qx-fs-prev");
+            el.removeAttribute("hidden");
+          }
+        });
+      });
+      // Ensure #app-main fills viewport only while a real CBT/practice shell is open
+      var main = document.getElementById("app-main");
+      if (main && immersive && on) {
+        if (typeof global.qxShowTestMount === "function") {
+          try { global.qxShowTestMount(main); } catch (_) { /* */ }
+        } else {
+          main.style.position = "fixed";
+          main.style.inset = "0";
+          main.style.zIndex = "9500";
+          main.style.overflow = "auto";
+          main.style.padding = "0";
+          main.style.maxWidth = "none";
+        }
+      } else if (main && !immersive && !document.querySelector(".eg-test-root, .qzrr-cbt, .mtk-test-root.allen-cbt")) {
+        if (typeof global.qxClearMountInlineStyles === "function") {
+          try { global.qxClearMountInlineStyles(main); } catch (_) { /* */ }
+        } else {
+          main.style.position = "";
+          main.style.inset = "";
+          main.style.zIndex = "";
+          main.style.overflow = "";
+          main.style.padding = "";
+          main.style.maxWidth = "";
+          main.style.background = "";
+        }
+      }
+      var bar = document.querySelector(".qx-update-bar");
+      if (bar && immersive) bar.setAttribute("hidden", "");
+      try {
+        if (immersive && global.QxLiveFeed && typeof global.QxLiveFeed.hideBar === "function") {
+          global.QxLiveFeed.hideBar();
+        }
+      } catch (_) { /* */ }
+      try {
+        if (immersive) document.body.style.overflow = on ? "hidden" : "";
+        else document.body.style.overflow = "";
+      } catch (_) { /* */ }
+    }
+    sync();
+    if (global.__qxQFsObs) return;
+    global.__qxQFsObs = true;
+    try {
+      var mo = new MutationObserver(function () { sync(); });
+      mo.observe(document.documentElement, {
+        subtree: true,
+        childList: true,
+        attributes: true,
+        attributeFilter: ["class"]
+      });
+    } catch (_) {
+      setInterval(sync, 1200);
+    }
+    document.addEventListener("qx:test-start", sync);
+    document.addEventListener("qx:test-end", sync);
+    document.addEventListener("qx:question-rendered", sync);
+    ["hashchange", "popstate"].forEach(function (ev) {
+      window.addEventListener(ev, function () { setTimeout(sync, 30); });
+    });
+    // Wrap practice enter/exit if present
+    function wrap(name, after) {
+      if (typeof global[name] !== "function" || global[name].__qxFsWrapped) return;
+      var orig = global[name];
+      function wrapped() {
+        var r = orig.apply(this, arguments);
+        try { after(); } catch (_) { /* */ }
+        return r;
+      }
+      wrapped.__qxFsWrapped = true;
+      global[name] = wrapped;
+    }
+    var tries = 0;
+    (function attempt() {
+      tries++;
+      wrap("enterAllenPracticeMode", sync);
+      wrap("exitAllenPracticeMode", sync);
+      wrap("enterMarksTestMode", sync);
+      wrap("exitMarksTestMode", sync);
+      wrap("qxForceResetShell", sync);
+      if (tries < 60) setTimeout(attempt, 150);
+    })();
   }
 
   function hideUpdateBarInCbt() {
@@ -330,13 +471,64 @@
     }
   }
 
+  function bindTestToolsCapture() {
+    if (global.__qxToolCap) return;
+    global.__qxToolCap = true;
+    // qxmd111: never blanket-stopPropagation on .qzrr-tool-btn — that killed
+    // View Settings / Instructions / Question Paper onclick from bindQuizrrChrome.
+    document.addEventListener("click", function (e) {
+      var t = e.target && e.target.closest && e.target.closest(
+        "#qzrrA11yBtn, #qzrrInstrBtn, #qzrrPaperBtn, #qzrrPaperChipBtn, " +
+        "#mtkFontDown, #mtkFontUp, #mtkFontDownHdr, #mtkFontUpHdr, " +
+        ".qzrr-zoom-circle, .qzrr-top-zoom-fab, [data-qzrr-zoom], " +
+        "#egFmtBtn, #mtkThemeBtn, #egMenuBtn, #egFullBtn, #qzrrSideToggle, #qzrrPalClose, #mtkPalClose"
+      );
+      if (!t) return;
+      var id = t.id || "";
+      try {
+        if (id === "qzrrA11yBtn") {
+          e.preventDefault();
+          e.stopPropagation();
+          if (typeof window.qxOpenQzrrA11y === "function") window.qxOpenQzrrA11y(e);
+          return;
+        }
+        if (id === "qzrrInstrBtn") {
+          e.preventDefault();
+          e.stopPropagation();
+          if (typeof window.qxOpenQzrrInstr === "function") window.qxOpenQzrrInstr(e);
+          return;
+        }
+        if (id === "qzrrPaperBtn" || id === "qzrrPaperChipBtn") {
+          e.preventDefault();
+          e.stopPropagation();
+          if (typeof window.qxOpenQzrrPaper === "function") window.qxOpenQzrrPaper(e);
+          return;
+        }
+        // Font A+/- handled by test-engine _qxZoomClickBound — avoid double-scale
+        if (id === "mtkFontDown" || id === "mtkFontUp" || id === "mtkFontDownHdr" || id === "mtkFontUpHdr" ||
+            (t.classList && t.classList.contains("mtk-font-btn"))) {
+          return;
+        }
+        if ((t.classList.contains("qzrr-zoom-circle") || t.getAttribute("data-qzrr-zoom")) && typeof bumpTestZoom === "function") {
+          e.preventDefault();
+          e.stopPropagation();
+          var d = parseInt(t.getAttribute("data-qzrr-zoom") || (/\+|plus|in/i.test(t.id + t.className) ? "1" : "-1"), 10);
+          bumpTestZoom(d);
+          if (typeof applyTestZoomToDom === "function") applyTestZoomToDom(typeof getTestZoom === "function" ? getTestZoom() : 1);
+        }
+      } catch (_) { /* */ }
+    }, true);
+  }
+
   function init() {
     wrapStartTest();
+    syncQuestionFullscreen();
     hideUpdateBarInCbt();
     ensureCbtFontChip();
     enhanceTestsEntry();
     enhanceFormatChooser();
     enhancePyqModeBadges();
+    bindTestToolsCapture();
   }
 
   if (document.readyState === "loading") {
@@ -349,6 +541,45 @@
     version: VERSION,
     normalizeConfig: normalizeConfig,
     FORMAT_KEY: FORMAT_KEY,
+    syncQuestionFullscreen: syncQuestionFullscreen,
     init: init
   };
 })(typeof window !== "undefined" ? window : this);
+
+/* qxmd111Capture: NTA toolbar openers + submit backup (idempotent) */
+(function qxmd111Capture() {
+  if (window.__qxmd111Capture) return;
+  window.__qxmd111Capture = true;
+  document.addEventListener("click", function (ev) {
+    try {
+      var t = ev.target && ev.target.closest
+        ? ev.target.closest("#qzrrA11yBtn,#qzrrInstrBtn,#qzrrPaperBtn,#qzrrPaperChipBtn,#mtkExitBtn,#qxSubmitBtn,#qxSubmitTop,[data-qx-exit='1']")
+        : null;
+      if (!t) return;
+      var id = t.id || "";
+      if (id === "qzrrA11yBtn" && typeof window.qxOpenQzrrA11y === "function") {
+        if (!ev.defaultPrevented) { ev.preventDefault(); window.qxOpenQzrrA11y(ev); }
+        return;
+      }
+      if (id === "qzrrInstrBtn" && typeof window.qxOpenQzrrInstr === "function") {
+        if (!ev.defaultPrevented) { ev.preventDefault(); window.qxOpenQzrrInstr(ev); }
+        return;
+      }
+      if ((id === "qzrrPaperBtn" || id === "qzrrPaperChipBtn") && typeof window.qxOpenQzrrPaper === "function") {
+        if (!ev.defaultPrevented) { ev.preventDefault(); window.qxOpenQzrrPaper(ev); }
+        return;
+      }
+      if ((id === "qxSubmitBtn" || id === "qxSubmitTop") && typeof window.qxSubmitTest === "function") {
+        if (!t.__qxmd111Bound) {
+          t.__qxmd111Bound = true;
+          t.addEventListener("click", function (e) {
+            try {
+              if (e) { e.preventDefault(); e.stopPropagation(); }
+              window.qxSubmitTest();
+            } catch (_) {}
+          }, true);
+        }
+      }
+    } catch (_) {}
+  }, true);
+})();

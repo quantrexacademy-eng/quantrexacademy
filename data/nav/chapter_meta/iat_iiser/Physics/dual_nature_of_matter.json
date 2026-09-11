@@ -1,0 +1,33 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff56378e1624ea7b6a5f",
+  "subject": "Physics",
+  "chapter": "Dual Nature of Matter",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff8a378e1624ea7b6cd6",
+      "title": "Matter Waves",
+      "count": 2,
+      "questionIds": [
+        "68e7a681ce75e72648a45e8e",
+        "67fdff56378e1624ea7b6a5d"
+      ]
+    },
+    {
+      "id": "67fdff8a378e1624ea7b6cd7",
+      "title": "Photoelectric Effect",
+      "count": 6,
+      "questionIds": [
+        "6a4521878c20d3b91d64f98e",
+        "6a4521868c20d3b91d64f98d",
+        "67fdff76378e1624ea7b6bc1",
+        "67fdff6b378e1624ea7b6b40",
+        "67fdff65378e1624ea7b6afa",
+        "67fdff5d378e1624ea7b6aaf"
+      ]
+    }
+  ]
+}

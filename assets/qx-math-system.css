@@ -1,0 +1,223 @@
+/* Quantrex mathematical typography system (loki.txt).
+   Load LAST. Do not set font-family on .katex * — KaTeX_Main / Math / Size* must stand. */
+
+:root {
+  --nta-q: 18px;
+  --nta-lh: 1.7;
+  --nta-math: 1.22em;
+  --math-inline-size: 1.22em;
+  --math-display-size: 1.38em;
+  --math-option-size: 1.22em;
+  --math-solution-size: 1.22em;
+  --math-mobile-size: 1.2em;
+  --qx-content-zoom: 1;
+  --qx-fs-q: var(--nta-q);
+  --qx-fs-opt: var(--nta-q);
+  --qx-fs-sol: var(--nta-q);
+}
+
+html, body, .mtk-test-root, .qx-practice-page, .qx-font-host {
+  --nta-q: 18px;
+  --nta-lh: 1.7;
+  --nta-math: 1.22em;
+  --math-inline-size: 1.22em;
+  --math-display-size: 1.38em;
+  --qx-fs-q: var(--nta-q);
+  --qx-fs-opt: var(--nta-q);
+  --qx-fs-sol: var(--nta-q);
+}
+
+.mtk-test-root[data-font-scale="small"],
+html[data-font-scale="small"] .mtk-test-root,
+html[data-font-scale="small"] .qx-practice-page,
+.qx-practice-page[data-font-scale="small"] {
+  --nta-q: 16px;
+  --nta-lh: 1.62;
+  --nta-math: 1.2em;
+  --math-inline-size: 1.2em;
+  --math-display-size: 1.32em;
+}
+.mtk-test-root[data-font-scale="medium"],
+html[data-font-scale="medium"] .mtk-test-root,
+html[data-font-scale="medium"] .qx-practice-page,
+.qx-practice-page[data-font-scale="medium"] {
+  --nta-q: 18px;
+  --nta-lh: 1.7;
+  --nta-math: 1.22em;
+  --math-inline-size: 1.22em;
+  --math-display-size: 1.38em;
+}
+.mtk-test-root[data-font-scale="large"],
+html[data-font-scale="large"] .mtk-test-root,
+html[data-font-scale="large"] .qx-practice-page,
+.qx-practice-page[data-font-scale="large"] {
+  --nta-q: 20px;
+  --nta-lh: 1.72;
+  --nta-math: 1.22em;
+  --math-inline-size: 1.22em;
+  --math-display-size: 1.4em;
+}
+.mtk-test-root[data-font-scale="xlarge"],
+html[data-font-scale="xlarge"] .mtk-test-root,
+html[data-font-scale="xlarge"] .qx-practice-page,
+.qx-practice-page[data-font-scale="xlarge"] {
+  --nta-q: 22px;
+  --nta-lh: 1.75;
+  --nta-math: 1.24em;
+  --math-inline-size: 1.24em;
+  --math-display-size: 1.42em;
+}
+
+/* Stem / options / solutions — exam reading size */
+.mtk-q-text,
+.mtk-q-text .qx-content,
+.qx-q-seg-text,
+.qx-question-body,
+.qx-content.qx-q-text-only,
+.qzrr-q-area,
+.mtk-opt-text,
+.qx-prac-opt-text,
+.sol-body,
+.qx-sol-body,
+.qx-prac-q,
+.qa-q,
+.qa-opt,
+.q-card .q-text {
+  font-size: var(--nta-q) !important;
+  line-height: var(--nta-lh) !important;
+}
+
+/* Restore KaTeX engine fonts (undo body-font !important on .katex *) */
+.katex,
+.katex .mathnormal,
+.katex .mathit,
+.katex .mathrm,
+.katex .mathbf,
+.katex .textrm,
+.katex .textit,
+.katex .textbf,
+.katex .mathsf,
+.katex .mathtt {
+  font-family: KaTeX_Main, "KaTeX_Main", "Times New Roman", Times, serif;
+}
+.katex .mathdefault,
+.katex .mathit {
+  font-family: KaTeX_Math, "KaTeX_Math", "Times New Roman", Times, serif;
+}
+
+.katex {
+  font-size: var(--math-inline-size) !important;
+  line-height: 1.35 !important;
+  font-style: normal;
+  color: inherit !important;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+}
+
+.mtk-opt-text .katex,
+.qx-prac-opt-text .katex,
+.qa-opt .katex {
+  font-size: var(--math-option-size) !important;
+}
+.sol-body .katex,
+.qx-sol-body .katex {
+  font-size: var(--math-solution-size) !important;
+}
+
+.katex {
+  overflow: visible !important;
+}
+.katex-display:not(.qx-math-block),
+.qx-math-inline-fix {
+  display: inline !important;
+  overflow: visible !important;
+  margin: 0 0.08em !important;
+  padding: 0 !important;
+  max-width: none !important;
+  vertical-align: baseline !important;
+  text-align: left !important;
+}
+.katex-display:not(.qx-math-block) > .katex,
+.qx-math-inline-fix > .katex {
+  white-space: normal !important;
+  display: inline !important;
+}
+.katex-display.qx-math-block {
+  display: block !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  max-width: 100%;
+  margin: 12px 0 !important;
+  padding: 4px 2px 6px;
+  text-align: left !important;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.katex-display.qx-math-block > .katex {
+  font-size: var(--math-display-size) !important;
+  text-align: left !important;
+  white-space: nowrap;
+}
+
+mjx-container {
+  font-size: var(--math-inline-size) !important;
+  color: inherit !important;
+}
+mjx-container[display="true"] {
+  font-size: var(--math-display-size) !important;
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+  margin: 16px 0;
+  text-align: left !important;
+}
+
+/* Never shrink math on narrow screens */
+@media (max-width: 640px) {
+  :root, html, body, .mtk-test-root, .qx-practice-page {
+    --nta-q: 16px;
+    --nta-lh: 1.65;
+    --math-inline-size: 1.2em;
+    --math-display-size: 1.32em;
+    --math-option-size: 1.2em;
+    --math-solution-size: 1.2em;
+  }
+  .katex,
+  .mtk-q-text .katex,
+  .mtk-opt-text .katex,
+  .qx-prac-q .katex,
+  .sol-body .katex {
+    font-size: var(--math-inline-size) !important;
+  }
+  .katex-display > .katex {
+    font-size: var(--math-display-size) !important;
+  }
+}
+
+html[data-theme="dark"] body:not(.marks-test-active) .katex,
+html[data-theme="dark"] body:not(.marks-test-active) mjx-container,
+.mtk-test-root[data-test-theme="dark"] .katex,
+.mtk-test-root[data-test-theme="dark"] mjx-container {
+  color: #f1f5f9 !important;
+  opacity: 1 !important;
+}
+
+.mtk-q-text,
+.qx-prac-q,
+.sol-body,
+.qx-sol-body,
+.qx-sol-flow,
+.eg-sol,
+.eg-q-stem,
+.qzrr-q-area {
+  overflow-x: visible;
+  max-width: 100%;
+}
+.mtk-q-text img,
+.qx-prac-q img,
+.sol-body img,
+.mtk-opt-text img,
+.qx-prac-opt-text img {
+  max-width: 100%;
+  height: auto;
+}

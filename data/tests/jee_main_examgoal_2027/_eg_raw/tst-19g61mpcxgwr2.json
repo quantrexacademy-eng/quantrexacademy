@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mpcxgwr2",
+  "title": "Ionic Equilibrium Test - 1 (Topic Test)",
+  "type": "topic",
+  "section": "Ionic Equilibrium",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-06-22T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "c5731dc9-4bfd-414f-ba43-f60f666b6b6c",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g61mpcxgwr2",
+    "defaultLanguage": "en",
+    "description": "Ostwald's Dilution Law and Concept of Acid and Base",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-22T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mqo7jz9m",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following has the maximum degree of ionisation?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 M NH<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.001 M NH<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.1 M NH<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.0001 M NH<sub>3</sub></p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For $NH_3$, which is a weak base, the degree of ionisation increases when the solution is diluted.</p>\n<p>The ionisation is:</p>\n<p>$$ NH_3 + H_2O \\rightleftharpoons NH_4^+ + OH^- $$</p>\n<p>For a weak base,</p>\n<p>$$ \\alpha = \\sqrt{\\frac{K_b}{C}} $$</p>\n<p>Here, $K_b$ is constant for $NH_3$ at a fixed temperature, and $C$ is the concentration.</p>\n<p>So,</p>\n<p>$$ \\alpha \\propto \\frac{1}{\\sqrt{C}} $$</p>\n<p>This means lower the concentration, higher the degree of ionisation.</p>\n<p>Among the given concentrations:</p>\n<p>$$ 1\\,M,\\quad 0.1\\,M,\\quad 0.001\\,M,\\quad 0.0001\\,M $$</p>\n<p>the lowest concentration is:</p>\n<p>$$ 0.0001\\,M $$</p>\n<p>So it will have the maximum degree of ionisation.</p>\n<p>The correct answer is:</p>\n<p>$$ \\boxed{\\text{Option D: } 0.0001\\,M\\ NH_3} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से किसकी आयनन की मात्रा अधिकतम है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 M NH<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.001 M NH<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.1 M NH<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.0001 M NH<sub>3</sub></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ostwalds-dilution-law-and-concept-of-acid-and-base",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqo7pfvf",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>At 25\u0000C, the degree of ionisation (dissociation) of pure water is measured as $1.8 \\times 10^{-9}$. The value of the dissociation constant, $K_d$, of water at 25\u0000C is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$10^{-14}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$1.8 \\times 10^{-16}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$5.56 \\times 10^{-13}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$1.8 \\times 10^{-14}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For pure water, dissociation is</p>\n<p>$$ H_2O \\rightleftharpoons H^+ + OH^- $$</p>\n<p>The degree of dissociation of water is given as</p>\n<p>$$ \\alpha = 1.8 \\times 10^{-9} $$</p>\n<p>Pure water has concentration approximately</p>\n<p>$$ C = \\frac{1000}{18} = 55.56 \\text{ mol L}^{-1} $$</p>\n<p>For a weakly dissociated substance,</p>\n<p>$$ K_d = \\frac{C\\alpha^2}{1-\\alpha} $$</p>\n<p>Since $\\alpha$ is very small, $1-\\alpha \\approx 1$.</p>\n<p>So,</p>\n<p>$$ K_d \\approx C\\alpha^2 $$</p>\n<p>Substituting the values,</p>\n<p>$$ K_d = 55.56 \\times (1.8 \\times 10^{-9})^2 $$</p>\n<p>$$ K_d = 55.56 \\times 3.24 \\times 10^{-18} $$</p>\n<p>$$ K_d \\approx 1.8 \\times 10^{-16} $$</p>\n<p>So, the correct option is</p>\n<p>$$ \\boxed{1.8 \\times 10^{-16}} $$</p>\n<p>Option B is correct.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>25\\u0000C पर, शुद्ध जल के आयनन (वियोजन) की मात्रा $1.8 \\times 10^{-9}$ मापी गई है। 25\\u0000C पर जल के वियोजन स्थिरांक, $K_d$ का मान है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$10^{-14}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$1.8 \\times 10^{-16}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$5.56 \\times 10^{-13}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$1.8 \\times 10^{-14}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ostwalds-dilution-law-and-concept-of-acid-and-base",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqo949gs",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The increasing order of base strength is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>I<sup>-</sup> &gt; Cl<sup>-</sup> &gt; NO<sub>2</sub><sup>-</sup> &gt; CN<sup>-</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>I<sup>-</sup> &lt; Cl<sup>-</sup> &lt; NO<sub>2</sub><sup>-</sup> &lt; CN<sup>-</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>I<sup>-</sup> &lt; NO<sub>2</sub><sup>-</sup> &lt; Cl<sup>-</sup> &lt; CN<sup>-</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>I<sup>-</sup> &lt; CN<sup>-</sup> &lt; Cl<sup>-</sup> &lt; NO<sub>2</sub><sup>-</sup></p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The basic strength of an ion depends on the strength of its conjugate acid.</p>\n<p>A simple rule is:</p>\n<p>If the conjugate acid is stronger, its conjugate base is weaker.</p>\n<p>The given bases are:</p>\n<p>$$I^-,\\ Cl^-,\\ NO_2^-,\\ CN^-$$</p>\n<p>Their conjugate acids are:</p>\n<p>$$HI,\\ HCl,\\ HNO_2,\\ HCN$$</p>\n<p>Now compare the acid strengths:</p>\n<p>$$HI > HCl > HNO_2 > HCN$$</p>\n<p>So their conjugate bases will have the reverse order of basic strength:</p>\n<p>$$I^- < Cl^- < NO_2^- < CN^-$$</p>\n<p>Here, $I^-$ is the weakest base because $HI$ is a very strong acid.  </p>\n<p>$CN^-$ is the strongest base because $HCN$ is the weakest acid among these.</p>\n<p>So the increasing order of base strength is:</p>\n<p>$$I^- < Cl^- < NO_2^- < CN^-$$</p>\n<p>Correct option: B</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>क्षारीय सामर्थ्य का बढ़ता हुआ क्रम है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>I<sup>-</sup> &gt; Cl<sup>-</sup> &gt; NO<sub>2</sub><sup>-</sup> &gt; CN<sup>-</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>I<sup>-</sup> &lt; Cl<sup>-</sup> &lt; NO<sub>2</sub><sup>-</sup> &lt; CN<sup>-</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>I<sup>-</sup> &lt; NO<sub>2</sub><sup>-</sup> &lt; Cl<sup>-</sup> &lt; CN<sup>-</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>I<sup>-</sup> &lt; CN<sup>-</sup> &lt; Cl<sup>-</sup> &lt; NO<sub>2</sub><sup>-</sup></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ostwalds-dilution-law-and-concept-of-acid-and-base",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqo7t3jv",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The values of dissociation constants ($K_a$) for formic acid and acetic acid are $1.77 \\times 10^{-4}$ and $1.75 \\times 10^{-5}$, respectively. Which one of the following statements is correct?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>At the same concentration, formic acid is 3.18 times stronger than acetic acid.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>At the same concentration, acetic acid is 3.18 times stronger than formic acid.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>At the same concentration, formic acid is 10.11 times stronger than acetic acid.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>At different concentrations, formic acid is 10.11 times stronger than acetic acid.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For weak acids at the same concentration, the acidic strength is compared using the amount of $H^+$ ions produced.</p>\n<p>For a weak acid,</p>\n<p>$$ [H^+] = \\sqrt{K_a C} $$</p>\n<p>where $K_a$ is the dissociation constant and $C$ is the concentration.</p>\n<p>Since both acids are at equal concentration, $C$ is the same. So,</p>\n<p>$$ \\frac{[H^+]_{\\text{formic acid}}}{[H^+]_{\\text{acetic acid}}} = \\sqrt{\\frac{K_a \\text{ of formic acid}}{K_a \\text{ of acetic acid}}} $$</p>\n<p>Substitute the values:</p>\n<p>$$ \\frac{[H^+]_{\\text{formic}}}{[H^+]_{\\text{acetic}}} = \\sqrt{\\frac{1.77 \\times 10^{-4}}{1.75 \\times 10^{-5}}} $$</p>\n<p>$$ = \\sqrt{10.11} $$</p>\n<p>$$ = 3.18 $$</p>\n<p>So, formic acid produces $3.18$ times more $H^+$ ions than acetic acid at equal concentration.</p>\n<p>Hence, the correct option is:</p>\n<p>$$ \\boxed{\\text{Option A: Formic acid is 3.18 times stronger than acetic acid at equal concentration.}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>फॉर्मिक अम्ल और ऐसीटिक अम्ल के लिए वियोजन स्थिरांक ($K_a$) के मान क्रमशः $1.77 \\times 10^{-4}$ और $1.75 \\times 10^{-5}$ हैं। निम्नलिखित में से कौन सा कथन सही है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>समान सांद्रता पर, फॉर्मिक अम्ल, ऐसीटिक अम्ल की तुलना में 3.18 गुना अधिक प्रबल है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>समान सांद्रता पर, ऐसीटिक अम्ल, फॉर्मिक अम्ल की तुलना में 3.18 गुना अधिक प्रबल है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>समान सांद्रता पर, फॉर्मिक अम्ल, ऐसीटिक अम्ल की तुलना में 10.11 गुना अधिक प्रबल है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>भिन्न सांद्रता पर, फॉर्मिक अम्ल, ऐसीटिक अम्ल की तुलना में 10.11 गुना अधिक प्रबल है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ostwalds-dilution-law-and-concept-of-acid-and-base",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqo81feb",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>At 298 K, the dissociation constant (Ka) of acetic acid is 0.000018, while that of cyanoacetic acid is 0.0036. If two separate solutions are prepared such that each contains the same number of moles of the respective acid, what should be the ratio of their volumes so that both solutions are isohydric?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 : 1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1 : $\\sqrt{200}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1 : 200</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>200 : 1</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For a weak monobasic acid,</p>\n<p>$$ [H^+] = \\sqrt{K_a C} $$</p>\n<p>For the two acid solutions to be isohydric, their hydrogen ion concentrations must be equal.</p>\n<p>So,</p>\n<p>$$ \\sqrt{K_1 C_1}=\\sqrt{K_2 C_2} $$</p>\n\n<p>$$ K_1 C_1 = K_2 C_2 $$</p>\n<p>Each solution contains equal moles of acid. If the number of moles is $n$, then</p>\n<p>$$ C=\\frac{n}{V} $$</p>\n<p>So,</p>\n<p>$$ K_1 \\frac{n}{V_1}=K_2 \\frac{n}{V_2} $$</p>\n\n<p>$$ \\frac{K_1}{V_1}=\\frac{K_2}{V_2} $$</p>\n\n<p>$$ \\frac{V_1}{V_2}=\\frac{K_1}{K_2} $$</p>\n<p>For acetic acid,</p>\n<p>$$ K_1=0.000018=1.8 \\times 10^{-5} $$</p>\n<p>For cyanoacetic acid,</p>\n<p>$$ K_2=0.0036=3.6 \\times 10^{-3} $$</p>\n<p>Thus,</p>\n<p>$$ \\frac{V_{\\text{acetic}}}{V_{\\text{cyanoacetic}}} = \\frac{1.8 \\times 10^{-5}}{3.6 \\times 10^{-3}} $$</p>\n<p>$$ = \\frac{1}{200} $$</p>\n<p>So the required ratio is</p>\n<p>$$ V_{\\text{acetic}} : V_{\\text{cyanoacetic}} = 1 : 200 $$</p>\n<p>Correct option: C, $1:200$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>298 K पर, एसिटिक अम्ल का वियोजन स्थिरांक (Ka) 0.000018 है, जबकि साइनोएसिटिक अम्ल का 0.0036 है। यदि दो अलग-अलग विलयन इस प्रकार तैयार किए जाते हैं कि प्रत्येक में संबंधित अम्ल के मोलों की संख्या समान है, तो उनके आयतनों का अनुपात क्या होना चाहिए ताकि दोनों विलयन समहाइड्रिक (isohydric) हों?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 : 1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1 : $\\sqrt{200}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1 : 200</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>200 : 1</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ostwalds-dilution-law-and-concept-of-acid-and-base",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqo96bgm",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>When hydrogen chloride is added to acetic acid, the following equilibrium is formed:</p>\n<p>$\\mathrm{HCl} + \\mathrm{CH_3COOH} \\rightleftharpoons \\mathrm{Cl^-} + \\mathrm{CH_3COOH_2^+}$</p>\n<p>The correct set representing the conjugate acid–base pairs is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(\\mathrm{HCl},\\ \\mathrm{CH_3COOH})$ and $(\\mathrm{CH_3COOH_2^+},\\ \\mathrm{Cl^-})$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(\\mathrm{HCl},\\ \\mathrm{CH_3COOH_2^+})$ and $(\\mathrm{CH_3COOH},\\ \\mathrm{Cl^-})$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(\\mathrm{CH_3COOH_2^+},\\ \\mathrm{HCl})$ and $(\\mathrm{Cl^-},\\ \\mathrm{CH_3COOH})$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(\\mathrm{HCl},\\ \\mathrm{Cl^-})$ and $(\\mathrm{CH_3COOH_2^+},\\ \\mathrm{CH_3COOH})$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>In the equilibrium,</p>\n<p>$$ \\mathrm{HCl} + \\mathrm{CH_3COOH} \\rightleftharpoons \\mathrm{Cl^-} + \\mathrm{CH_3COOH_2^+} $$</p>\n<p>we identify the conjugate acid-base pairs by checking which species differ by one proton, $H^+$.</p>\n<p>Here, $\\mathrm{HCl}$ donates a proton:</p>\n<p>$$ \\mathrm{HCl} \\rightarrow \\mathrm{Cl^-} + H^+ $$</p>\n<p>So, $\\mathrm{HCl}$ is the acid and $\\mathrm{Cl^-}$ is its conjugate base.</p>\n<p>Acetic acid, $\\mathrm{CH_3COOH}$, accepts a proton:</p>\n<p>$$ \\mathrm{CH_3COOH} + H^+ \\rightarrow \\mathrm{CH_3COOH_2^+} $$</p>\n<p>So, $\\mathrm{CH_3COOH}$ is the base and $\\mathrm{CH_3COOH_2^+}$ is its conjugate acid.</p>\n<p>Thus, the conjugate acid-base pairs are:</p>\n<p>$$ (\\mathrm{HCl},\\ \\mathrm{Cl^-}) $$</p>\n<p>and</p>\n<p>$$ (\\mathrm{CH_3COOH_2^+},\\ \\mathrm{CH_3COOH}) $$</p>\n<p>So, the correct option is:</p>\n<p>$$ \\boxed{\\text{Option D}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>जब एसिटिक अम्ल में हाइड्रोजन क्लोराइड मिलाया जाता है, तो निम्नलिखित साम्यावस्था बनती है:</p>\n<p>$\\mathrm{HCl} + \\mathrm{CH_3COOH} \\rightleftharpoons \\mathrm{Cl^-} + \\mathrm{CH_3COOH_2^+}$</p>\n<p>संयुग्मी अम्ल-क्षार युग्मों को निरूपित करने वाला सही समुच्चय है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$(\\mathrm{HCl},\\ \\mathrm{CH_3COOH})$ और $(\\mathrm{CH_3COOH_2^+},\\ \\mathrm{Cl^-})$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$(\\mathrm{HCl},\\ \\mathrm{CH_3COOH_2^+})$ और $(\\mathrm{CH_3COOH},\\ \\mathrm{Cl^-})$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$(\\mathrm{CH_3COOH_2^+},\\ \\mathrm{HCl})$ और $(\\mathrm{Cl^-},\\ \\mathrm{CH_3COOH})$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(\\mathrm{HCl},\\ \\mathrm{Cl^-})$ और $(\\mathrm{CH_3COOH_2^+},\\ \\mathrm{CH_3COOH})$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ostwalds-dilution-law-and-concept-of-acid-and-base",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqo8bgbv",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For a weak electrolyte AB, the degree of ionization is (where $V$ is the volume of solution that contains 1 mole of the electrolyte, and $K$ is the ionization constant of the electrolyte)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{K}{V^2} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ K \\cdot V $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{K}{V} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\sqrt{K \\cdot V} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For weak electrolyte $AB$,</p>\n<p>$$ AB \\rightleftharpoons A^+ + B^- $$</p>\n<p>Suppose $1$ mole of electrolyte is dissolved in volume $V$.</p>\n<p>So, concentration of electrolyte is</p>\n<p>$$ C=\\frac{1}{V} $$</p>\n<p>If $\\alpha$ is the degree of ionization, then at equilibrium:</p>\n<p>$$ [AB]=\\frac{1-\\alpha}{V} $$</p>\n<p>$$ [A^+]=\\frac{\\alpha}{V}, \\qquad [B^-]=\\frac{\\alpha}{V} $$</p>\n<p>The ionization constant is</p>\n<p>$$ K=\\frac{[A^+][B^-]}{[AB]} $$</p>\n\n<p>$$ K=\\frac{\\left(\\frac{\\alpha}{V}\\right)\\left(\\frac{\\alpha}{V}\\right)}{\\frac{1-\\alpha}{V}} $$</p>\n<p>$$ K=\\frac{\\alpha^2}{V(1-\\alpha)} $$</p>\n<p>For a weak electrolyte, $\\alpha$ is very small, so</p>\n<p>$$ 1-\\alpha \\approx 1 $$</p>\n\n<p>$$ K=\\frac{\\alpha^2}{V} $$</p>\n<p>$$ \\alpha^2=KV $$</p>\n<p>$$ \\alpha=\\sqrt{KV} $$</p>\n<p>So, the degree of ionization is</p>\n<p>$$ \\boxed{\\sqrt{K \\cdot V}} $$</p>\n<p>Correct option: Option D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक दुर्बल वैद्युतअपघट्य AB के लिए, आयनन की मात्रा है (जहाँ $V$ विलयन का आयतन है जिसमें 1 मोल वैद्युतअपघट्य उपस्थित है, और $K$ वैद्युतअपघट्य का आयनन स्थिरांक है)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{K}{V^2} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ K \\cdot V $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{K}{V} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\sqrt{K \\cdot V} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ostwalds-dilution-law-and-concept-of-acid-and-base",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqo913du",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In a mixture of two weak monobasic acids HX (degree of dissociation $\\alpha_1$) and HY (degree of dissociation $\\alpha_2$) with concentration $C_1$ and $C_2$ and dissociation constants $K_1$ and $K_2$, select correct statement(s).</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$K_1 = \\dfrac{[C_1 \\alpha_1 + C_2 \\alpha_2] C_1 \\alpha_1}{C_1 (1 - \\alpha_1)}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$K_2 = \\dfrac{[C_1 \\alpha_1 + C_2 \\alpha_2] C_2 \\alpha_2}{C_2 (1 - \\alpha_2)}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Both of the above are correct</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For acid $HX$:</p>\n<p>$$ HX \\rightleftharpoons H^+ + X^- $$</p>\n<p>If its initial concentration is $C_1$ and degree of dissociation in the mixture is $\\alpha_1$, then</p>\n<p>$$ [HX] = C_1(1-\\alpha_1) $$</p>\n<p>and</p>\n<p>$$ [X^-] = C_1\\alpha_1 $$</p>\n<p>For acid $HY$:</p>\n<p>$$ HY \\rightleftharpoons H^+ + Y^- $$</p>\n<p>Similarly,</p>\n<p>$$ [HY] = C_2(1-\\alpha_2) $$</p>\n<p>and</p>\n<p>$$ [Y^-] = C_2\\alpha_2 $$</p>\n<p>Since both acids produce $H^+$ ions, the total hydrogen ion concentration is</p>\n<p>$$ [H^+] = C_1\\alpha_1 + C_2\\alpha_2 $$</p>\n<p>Now, for $HX$:</p>\n<p>$$ K_1 = \\frac{[H^+][X^-]}{[HX]} $$</p>\n\n<p>$$ K_1 = \\frac{[C_1\\alpha_1 + C_2\\alpha_2]C_1\\alpha_1}{C_1(1-\\alpha_1)} $$</p>\n<p>So option A is correct.</p>\n<p>For $HY$:</p>\n<p>$$ K_2 = \\frac{[H^+][Y^-]}{[HY]} $$</p>\n\n<p>$$ K_2 = \\frac{[C_1\\alpha_1 + C_2\\alpha_2]C_2\\alpha_2}{C_2(1-\\alpha_2)} $$</p>\n<p>So option B is also correct.</p>\n<p>Hence, both A and B are correct.</p>\n<p>Correct option: C</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो दुर्बल एकक्षारकीय अम्लों HX (वियोजन की मात्रा $\\alpha_1$) और HY (वियोजन की मात्रा $\\alpha_2$) जिनकी सांद्रता $C_1$ और $C_2$ तथा वियोजन स्थिरांक $K_1$ और $K_2$ हैं, के एक मिश्रण के लिए सही कथन/कथनों का चयन कीजिए।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$K_1 = \\dfrac{[C_1 \\alpha_1 + C_2 \\alpha_2] C_1 \\alpha_1}{C_1 (1 - \\alpha_1)}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$K_2 = \\dfrac{[C_1 \\alpha_1 + C_2 \\alpha_2] C_2 \\alpha_2}{C_2 (1 - \\alpha_2)}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>उपरोक्त दोनों सही हैं</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ostwalds-dilution-law-and-concept-of-acid-and-base",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqo8elkb",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Isohydric solutions are those solutions in which the concentration of hydronium ions is equal. If a 0.2 M solution of HA is isohydric with a $4 \\times 10^{-4}$ M solution of HCl, then the value of $K_b$ for $A^-$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$8 \\times 10^{-7}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$1.25 \\times 10^{-8}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$1.25 \\times 10^{-6}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$8 \\times 10^{7}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Isohydric solutions have the same concentration of hydronium ion, $[H_3O^+]$.</p>\n<p>Given HCl solution is $4 \\times 10^{-4}\\,M$.</p>\n<p>Since HCl is a strong acid, it ionises completely:</p>\n<p>$$ [H_3O^+] = 4 \\times 10^{-4}\\,M $$</p>\n<p>The $0.2\\,M$ solution of weak acid HA is isohydric with this HCl solution, so for HA also,</p>\n<p>$$ [H_3O^+] = 4 \\times 10^{-4}\\,M $$</p>\n<p>For weak acid HA:</p>\n<p>$$ HA \\rightleftharpoons H^+ + A^- $$</p>\n<p>If $[H^+] = 4 \\times 10^{-4}\\,M$, then</p>\n<p>$$ [A^-] = 4 \\times 10^{-4}\\,M $$</p>\n<p>and the concentration of undissociated acid left is approximately</p>\n<p>$$ [HA] = 0.2 - 4 \\times 10^{-4} \\approx 0.2 $$</p>\n<p>Now,</p>\n<p>$$ K_a = \\frac{[H^+][A^-]}{[HA]} $$</p>\n<p>$$ K_a = \\frac{(4 \\times 10^{-4})(4 \\times 10^{-4})}{0.2} $$</p>\n<p>$$ K_a = \\frac{16 \\times 10^{-8}}{0.2} $$</p>\n<p>$$ K_a = 8 \\times 10^{-7} $$</p>\n<p>For conjugate acid-base pair,</p>\n<p>$$ K_a \\times K_b = K_w $$</p>\n<p>So,</p>\n<p>$$ K_b = \\frac{K_w}{K_a} $$</p>\n<p>$$ K_b = \\frac{10^{-14}}{8 \\times 10^{-7}} $$</p>\n<p>$$ K_b = 1.25 \\times 10^{-8} $$</p>\n<p>So the correct option is:</p>\n<p>$$ \\boxed{1.25 \\times 10^{-8}} $$</p>\n<p>Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>आइसोहाइड्रिक विलयन वे विलयन होते हैं जिनमें हाइड्रोनियम आयनों की सांद्रता समान होती है। यदि HA का 0.2 M विलयन HCl के $4 \\times 10^{-4}$ M विलयन के साथ आइसोहाइड्रिक है, तो $A^-$ के लिए $K_b$ का मान है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$8 \\times 10^{-7}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$1.25 \\times 10^{-8}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$1.25 \\times 10^{-6}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$8 \\times 10^{7}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ostwalds-dilution-law-and-concept-of-acid-and-base",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mqo9dof9",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The decreasing base strength of $OH^-, NH_2^-, HC \\equiv C^-$ and $CH_3CH_2^-$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$CH_3CH_2^- > NH_2^- > HC \\equiv C^- > OH^-$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$HC \\equiv C^- > CH_3CH_2^- > NH_2^- > OH^-$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$OH^- > NH_2^- > HC \\equiv C^- > CH_3CH_2^-$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$NH_2^- > HC \\equiv C^- > OH^- > CH_3CH_2^-$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The correct decreasing order of base strength is</p>\n<p>$$ CH_3CH_2^- > NH_2^- > HC \\equiv C^- > OH^- $$</p>\n<p>So, the correct option is <strong>Option A</strong>.</p>\n<p>A stronger base has a greater tendency to accept $H^+$. We can compare these bases by looking at their conjugate acids:</p>\n<p>$$ CH_3CH_2^- \\rightarrow CH_3CH_3 $$</p>\n<p>$$ NH_2^- \\rightarrow NH_3 $$</p>\n<p>$$ HC \\equiv C^- \\rightarrow HC \\equiv CH $$</p>\n<p>$$ OH^- \\rightarrow H_2O $$</p>\n<p>The weaker the conjugate acid, the stronger its conjugate base.</p>\n<p>Approximate acidic strength order of the conjugate acids is:</p>\n<p>$$ H_2O > HC \\equiv CH > NH_3 > CH_3CH_3 $$</p>\n<p>So the basic strength order will be the reverse:</p>\n<p>$$ CH_3CH_2^- > NH_2^- > HC \\equiv C^- > OH^- $$</p>\n<p>Also, $CH_3CH_2^-$ is very unstable because the negative charge is on an $sp^3$ carbon, so it accepts $H^+$ most strongly. Hence it is the strongest base here.</p>\n<p>$OH^-$ is the weakest base among these because oxygen is highly electronegative and can hold the negative charge relatively better.</p>\n<p>Thus, the answer is:</p>\n<p>$$ \\boxed{CH_3CH_2^- > NH_2^- > HC \\equiv C^- > OH^-} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$OH^-, NH_2^-, HC \\equiv C^-$ और $CH_3CH_2^-$ के क्षारीय सामर्थ्य का घटता हुआ क्रम है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$CH_3CH_2^- > NH_2^- > HC \\equiv C^- > OH^-$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$HC \\equiv C^- > CH_3CH_2^- > NH_2^- > OH^-$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$OH^- > NH_2^- > HC \\equiv C^- > CH_3CH_2^-$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$NH_2^- > HC \\equiv C^- > OH^- > CH_3CH_2^-$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ostwalds-dilution-law-and-concept-of-acid-and-base",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mqoaac5b",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>How many of the following are amphiprotic?</p>\n<p>(i) $\\mathrm{H}_2 \\mathrm{PO}_2^{-}$</p>\n<p>(ii) $\\mathrm{H}_2 \\mathrm{PO}_3^{-}$</p>\n<p>(iii) $\\mathrm{H}_2 \\mathrm{PO}_4^{-}$</p>\n<p>(iv) $\\mathrm{HPO}_3^{2-}$</p>\n<p>(v) $\\mathrm{HPO}_4^{2-}$</p>\n<p>(vi) $\\mathrm{NH}_4^{+}$</p>\n<p>(vii) $\\mathrm{CH}_3 \\mathrm{COOH}_2^{+}$</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>A species is amphiprotic if it can both donate a proton, $H^+$, and accept a proton, $H^+$.</p>\n<p>For phosphorus oxyacids and their ions, an important NCERT point is:</p>\n<p>Hydrogen attached to oxygen, that is $\\mathrm{O-H}$, is ionisable.</p>\n<p>Hydrogen attached directly to phosphorus, that is $\\mathrm{P-H}$, is not ionisable.</p>\n<p>Now check each species.</p>\n<p>(i) $\\mathrm{H}_2\\mathrm{PO}_2^-$</p>\n<p>This ion comes from $\\mathrm{H}_3\\mathrm{PO}_2$, which has only one ionisable $\\mathrm{O-H}$ hydrogen. In $\\mathrm{H}_2\\mathrm{PO}_2^-$, the remaining hydrogens are attached to phosphorus.</p>\n<p>So it cannot donate $H^+$, but it can accept $H^+$.</p>\n<p>Not amphiprotic.</p>\n<p>(ii) $\\mathrm{H}_2\\mathrm{PO}_3^-$</p>\n<p>This ion still has one ionisable $\\mathrm{O-H}$ hydrogen and also has negative charge, so it can donate as well as accept $H^+$.</p>\n<p>$$ \\mathrm{H}_2\\mathrm{PO}_3^- \\rightarrow \\mathrm{HPO}_3^{2-} + \\mathrm{H}^+ $$</p>\n<p>$$ \\mathrm{H}_2\\mathrm{PO}_3^- + \\mathrm{H}^+ \\rightarrow \\mathrm{H}_3\\mathrm{PO}_3 $$</p>\n<p>So it is amphiprotic.</p>\n<p>(iii) $\\mathrm{H}_2\\mathrm{PO}_4^-$</p>\n<p>It can donate $H^+$:</p>\n<p>$$ \\mathrm{H}_2\\mathrm{PO}_4^- \\rightarrow \\mathrm{HPO}_4^{2-} + \\mathrm{H}^+ $$</p>\n<p>It can also accept $H^+$:</p>\n<p>$$ \\mathrm{H}_2\\mathrm{PO}_4^- + \\mathrm{H}^+ \\rightarrow \\mathrm{H}_3\\mathrm{PO}_4 $$</p>\n<p>So it is amphiprotic.</p>\n<p>(iv) $\\mathrm{HPO}_3^{2-}$</p>\n<p>Here the hydrogen is directly attached to phosphorus, so it is not ionisable. It can accept $H^+$, but cannot donate $H^+$.</p>\n<p>Not amphiprotic.</p>\n<p>(v) $\\mathrm{HPO}_4^{2-}$</p>\n<p>It can donate $H^+$:</p>\n<p>$$ \\mathrm{HPO}_4^{2-} \\rightarrow \\mathrm{PO}_4^{3-} + \\mathrm{H}^+ $$</p>\n<p>It can also accept $H^+$:</p>\n<p>$$ \\mathrm{HPO}_4^{2-} + \\mathrm{H}^+ \\rightarrow \\mathrm{H}_2\\mathrm{PO}_4^- $$</p>\n<p>So it is amphiprotic.</p>\n<p>(vi) $\\mathrm{NH}_4^+$</p>\n<p>It can donate $H^+$ to form $\\mathrm{NH}_3$:</p>\n<p>$$ \\mathrm{NH}_4^+ \\rightarrow \\mathrm{NH}_3 + \\mathrm{H}^+ $$</p>\n<p>But nitrogen in $\\mathrm{NH}_4^+$ has no lone pair available to accept another proton.</p>\n<p>Not amphiprotic.</p>\n<p>(vii) $\\mathrm{CH}_3\\mathrm{COOH}_2^+$</p>\n<p>This is protonated acetic acid. It can donate $H^+$ to form $\\mathrm{CH}_3\\mathrm{COOH}$, but it is not normally considered a proton acceptor in this context.</p>\n<p>Not amphiprotic.</p>\n<p>Thus the amphiprotic species are:</p>\n<p>$$ \\mathrm{H}_2\\mathrm{PO}_3^-,\\quad \\mathrm{H}_2\\mathrm{PO}_4^-,\\quad \\mathrm{HPO}_4^{2-} $$</p>\n<p>So the number of amphiprotic species is</p>\n<p>$$ \\boxed{3} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से कितने उभयप्रोटिक (amphiprotic) हैं?</p>\n<p>(i) $\\mathrm{H}_2 \\mathrm{PO}_2^{-}$</p>\n<p>(ii) $\\mathrm{H}_2 \\mathrm{PO}_3^{-}$</p>\n<p>(iii) $\\mathrm{H}_2 \\mathrm{PO}_4^{-}$</p>\n<p>(iv) $\\mathrm{HPO}_3^{2-}$</p>\n<p>(v) $\\mathrm{HPO}_4^{2-}$</p>\n<p>(vi) $\\mathrm{NH}_4^{+}$</p>\n<p>(vii) $\\mathrm{CH}_3 \\mathrm{COOH}_2^{+}$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ostwalds-dilution-law-and-concept-of-acid-and-base",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqoa1e9h",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A mixture of weak acid is 0.1 M in $\\mathrm{HCOOH}\\left(K_a=1.8 \\times\\right. \\left.10^{-4}\\right)$ and 0.1 M in $\\mathrm{HOCN}\\left(K_a=3.1 \\times 10^{-4}\\right)$. Hence, $\\left(\\mathrm{H}_3 \\mathrm{O}^{+}\\right)$ is $x \\times 10^{-3}$. Thus $x$ is………..</p>",
+                "options": [],
+                "answer": "7",
+                "explanation": "<p>For a mixture of two weak acids with initial concentrations $C_1$ and $C_2$, and dissociation constants $K_{a1}$ and $K_{a2}$, we can find the total hydronium ion concentration using the relation:</p>\n<p>$$[\\mathrm{H}_3 \\mathrm{O}^+] = \\sqrt{K_{a1}C_1 + K_{a2}C_2}$$</p>\n\n<p>For the first acid, $\\mathrm{HCOOH}$:</p>\n<p>$C_1 = 0.1 \\mathrm{~M}$</p>\n<p>$K_{a1} = 1.8 \\times 10^{-4}$</p>\n<p>For the second acid, $\\mathrm{HOCN}$:</p>\n<p>$C_2 = 0.1 \\mathrm{~M}$</p>\n<p>$K_{a2} = 3.1 \\times 10^{-4}$</p>\n\n<p>$$[\\mathrm{H}_3 \\mathrm{O}^+] = \\sqrt{(1.8 \\times 10^{-4} \\times 0.1) + (3.1 \\times 10^{-4} \\times 0.1)}$$</p>\n\n<p>$$[\\mathrm{H}_3 \\mathrm{O}^+] = \\sqrt{(1.8 \\times 10^{-5}) + (3.1 \\times 10^{-5})}$$</p>\n\n<p>$$[\\mathrm{H}_3 \\mathrm{O}^+] = \\sqrt{4.9 \\times 10^{-5}}$$</p>\n\n<p>$$[\\mathrm{H}_3 \\mathrm{O}^+] = \\sqrt{49 \\times 10^{-6}}$$</p>\n<p>$$[\\mathrm{H}_3 \\mathrm{O}^+] = 7 \\times 10^{-3} \\mathrm{~M}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दुर्बल अम्ल के एक मिश्रण में 0.1 M $\\mathrm{HCOOH}\\left(K_a=1.8 \\times\\right. \\left.10^{-4}\\right)$ तथा 0.1 M $\\mathrm{HOCN}\\left(K_a=3.1 \\times 10^{-4}\\right)$ हैं। अतः, $\\left(\\mathrm{H}_3 \\mathrm{O}^{+}\\right)$ का मान $x \\times 10^{-3}$ है। इस प्रकार $x$ ........... है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ostwalds-dilution-law-and-concept-of-acid-and-base",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqo9lvjw",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A weak acid shows $\\%$ ionization equal to $1 \\%$ in a 1 M solution. If the $\\%$ ionization becomes x in a 4 M solution, then find 10x.</p>",
+                "options": [],
+                "answer": "5",
+                "explanation": "<p>For a weak acid, according to Ostwald’s dilution law,</p>\n<p>$$ K_a = C\\alpha^2 $$</p>\n<p>when ionization is very small.</p>\n<p>Here, $\\alpha$ is degree of ionization and $C$ is concentration.</p>\n<p>So,</p>\n<p>$$ \\alpha \\propto \\frac{1}{\\sqrt{C}} $$</p>\n<p>Given at $1 \\, \\text{M}$,</p>\n<p>$$ \\% \\text{ ionization} = 1\\% $$</p>\n<p>At $4 \\, \\text{M}$, let percent ionization be $x$.</p>\n<p>Using the relation,</p>\n<p>$$ \\frac{x}{1} = \\sqrt{\\frac{1}{4}} $$</p>\n<p>$$ x = \\frac{1}{2} $$</p>\n<p>$$ x = 0.5\\% $$</p>\n<p>So,</p>\n<p>$$ 10x = 10 \\times 0.5 = 5 $$</p>\n<p>$$ \\boxed{5} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक दुर्बल अम्ल 1 M विलयन में $1 \\%$ के बराबर $\\%$ आयनन दर्शाता है। यदि 4 M विलयन में $\\%$ आयनन x हो जाता है, तो 10x का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ostwalds-dilution-law-and-concept-of-acid-and-base",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqob00ry",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>At $25^{\\circ} \\mathrm{C}$, the dissociation constant of a base BOH is $1.0 \\times 10^{-12}$. The concentration of Hydroxyl ions in 0.01 M aqueous solution of the base would be $1.0 \\times 10^{-x} \\mathrm{~mol} \\mathrm{~L}^{-1}$, then $x$ value is :</p>",
+                "options": [],
+                "answer": "7",
+                "explanation": "<p>For the weak base,</p>\n<p>$$ \\mathrm{BOH} \\rightleftharpoons \\mathrm{B^+} + \\mathrm{OH^-} $$</p>\n<p>Given concentration of base,</p>\n<p>$$ C = 0.01\\,\\mathrm{M} = 10^{-2}\\,\\mathrm{M} $$</p>\n<p>and</p>\n<p>$$ K_b = 1.0 \\times 10^{-12} $$</p>\n<p>For a weak base,</p>\n<p>$$ [\\mathrm{OH^-}] = \\sqrt{K_b \\times C} $$</p>\n<p>So,</p>\n<p>$$ [\\mathrm{OH^-}] = \\sqrt{(10^{-12})(10^{-2})} $$</p>\n<p>$$ [\\mathrm{OH^-}] = \\sqrt{10^{-14}} $$</p>\n<p>$$ [\\mathrm{OH^-}] = 10^{-7}\\,\\mathrm{mol\\,L^{-1}} $$</p>\n<p>It is given as</p>\n<p>$$ 1.0 \\times 10^{-x} $$</p>\n<p>So,</p>\n<p>$$ x = 7 $$</p>\n<p>The value of $x$ is $\\boxed{7}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$25^{\\circ} \\mathrm{C}$ पर, एक क्षार BOH का वियोजन स्थिरांक $1.0 \\times 10^{-12}$ है। क्षार के 0.01 M जलीय विलयन में हाइड्रॉक्सिल आयनों की सांद्रता $1.0 \\times 10^{-x} \\mathrm{~mol} \\mathrm{~L}^{-1}$ होगी, तो $x$ का मान है :</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ostwalds-dilution-law-and-concept-of-acid-and-base",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mqob4c13",
+            "chapter": "ionic-equilibrium",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For $\\mathrm{H}_2 \\mathrm{~A}, \\mathrm{~K}_{\\mathrm{a}}=10^{-20}$. The concentration of $\\mathrm{A}^{2-}$ in a solution that is 0.01 M in $\\mathrm{H}_2 \\mathrm{~A}$ and 0.1 M in HCl will be $10^{-x} M$, then $x$ value is :</p>",
+                "options": [],
+                "answer": "20",
+                "explanation": "<p>For the dissociation of $\\mathrm{H_2A}$,</p>\n<p>$$ \\mathrm{H_2A \\rightleftharpoons 2H^+ + A^{2-}} $$</p>\n<p>The acid dissociation constant is</p>\n<p>$$ K_a=\\frac{[H^+]^2[A^{2-}]}{[H_2A]} $$</p>\n<p>Given,</p>\n<p>$$ K_a=10^{-20} $$</p>\n<p>The solution contains $0.1\\,M$ HCl, so HCl being a strong acid gives</p>\n<p>$$ [H^+] \\approx 0.1 = 10^{-1}\\,M $$</p>\n<p>Also,</p>\n<p>$$ [H_2A] \\approx 0.01 = 10^{-2}\\,M $$</p>\n\n<p>$$ 10^{-20}=\\frac{(10^{-1})^2[A^{2-}]}{10^{-2}} $$</p>\n<p>$$ 10^{-20}=\\frac{10^{-2}[A^{2-}]}{10^{-2}} $$</p>\n<p>$$ [A^{2-}]=10^{-20}\\,M $$</p>\n<p>So,</p>\n<p>$$ 10^{-x}=10^{-20} $$</p>\n<p>Hence,</p>\n<p>$$ x=20 $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\mathrm{H}_2 \\mathrm{~A}$ के लिए, $\\mathrm{~K}_{\\mathrm{a}}=10^{-20}$ है। एक विलयन जो $\\mathrm{H}_2 \\mathrm{~A}$ में 0.01 M और HCl में 0.1 M है, उसमें $\\mathrm{A}^{2-}$ की सांद्रता $10^{-x} M$ होगी, तो $x$ का मान है :</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ostwalds-dilution-law-and-concept-of-acid-and-base",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Ostwald's Dilution Law and Concept of Acid and Base",
+    "timeAllotted": 2160000,
+    "title": "Ionic Equilibrium Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mpcxgwr2",
+    "defaultLanguage": "en",
+    "description": "Ostwald's Dilution Law and Concept of Acid and Base",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-06-22T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Ostwald's Dilution Law and Concept of Acid and Base",
+    "timeAllotted": 2160000,
+    "title": "Ionic Equilibrium Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Ionic Equilibrium"
+  }
+}

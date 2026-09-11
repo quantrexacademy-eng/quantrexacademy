@@ -1,0 +1,830 @@
+/* Exam / chapter / test-series labels must stay readable in both themes */
+html[data-theme="light"] {
+  --qx-ink: #0f172a;
+  --qx-muted-ink: #334155;
+}
+html[data-theme="dark"] {
+  --qx-ink: #f8fafc;
+  --qx-muted-ink: #cbd5e1;
+}
+
+html[data-theme="light"] body,
+html[data-theme="light"] #app-main,
+html[data-theme="light"] .content {
+  color: #0f172a;
+}
+html[data-theme="dark"] body,
+html[data-theme="dark"] #app-main,
+html[data-theme="dark"] .content {
+  color: #f8fafc;
+}
+
+html[data-theme="light"] .exam-pill-card,
+html[data-theme="light"] .cpyqb-exam-tile,
+html[data-theme="light"] .ch-card,
+html[data-theme="light"] .qx-topic-card,
+html[data-theme="light"] .qx-folder-card,
+html[data-theme="light"] .subj-mini,
+html[data-theme="light"] .book-card,
+html[data-theme="light"] .mth-card,
+html[data-theme="light"] .mth-body,
+html[data-theme="light"] .marks-ts-section,
+html[data-theme="light"] .qx-module-card,
+html[data-theme="light"] .nav-item {
+  color: #0f172a;
+}
+html[data-theme="light"] .exam-pill-card strong,
+html[data-theme="light"] .cpyqb-exam-tile strong,
+html[data-theme="light"] .ch-card strong,
+html[data-theme="light"] .qx-topic-name,
+html[data-theme="light"] .book-card strong,
+html[data-theme="light"] .mth-body strong,
+html[data-theme="light"] .subj-mini strong,
+html[data-theme="light"] .qx-folder-card strong,
+html[data-theme="light"] .marks-tests-head h1,
+html[data-theme="light"] .marks-ts-section h3,
+html[data-theme="light"] .logo-text,
+html[data-theme="light"] .topbar,
+html[data-theme="light"] .qx-top-exam {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="light"] .qx-top-exam.on,
+html[data-theme="light"] .nav-item.active {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+html[data-theme="light"] .mth-body small,
+html[data-theme="light"] .ch-card small,
+html[data-theme="light"] .book-card small,
+html[data-theme="light"] .sec-desc,
+html[data-theme="light"] .marks-ts-sub {
+  color: #334155 !important;
+  -webkit-text-fill-color: #334155 !important;
+  opacity: 1 !important;
+}
+
+html[data-theme="dark"] .exam-pill-card,
+html[data-theme="dark"] .cpyqb-exam-tile,
+html[data-theme="dark"] .ch-card,
+html[data-theme="dark"] .qx-topic-card,
+html[data-theme="dark"] .qx-folder-card,
+html[data-theme="dark"] .subj-mini,
+html[data-theme="dark"] .book-card,
+html[data-theme="dark"] .mth-card,
+html[data-theme="dark"] .mth-body,
+html[data-theme="dark"] .marks-ts-section,
+html[data-theme="dark"] .qx-module-card,
+html[data-theme="dark"] .nav-item,
+html[data-theme="dark"] .sidebar,
+html[data-theme="dark"] .topbar {
+  color: #f8fafc;
+}
+html[data-theme="dark"] .exam-pill-card strong,
+html[data-theme="dark"] .cpyqb-exam-tile strong,
+html[data-theme="dark"] .ch-card strong,
+html[data-theme="dark"] .qx-topic-name,
+html[data-theme="dark"] .book-card strong,
+html[data-theme="dark"] .mth-body strong,
+html[data-theme="dark"] .subj-mini strong,
+html[data-theme="dark"] .qx-folder-card strong,
+html[data-theme="dark"] .marks-tests-head h1,
+html[data-theme="dark"] .marks-ts-section h3,
+html[data-theme="dark"] .logo-text,
+html[data-theme="dark"] .qx-top-exam,
+html[data-theme="dark"] .nav-item {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="dark"] .qx-top-exam.on,
+html[data-theme="dark"] .nav-item.active {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+html[data-theme="dark"] .mth-body small,
+html[data-theme="dark"] .ch-card small,
+html[data-theme="dark"] .book-card small,
+html[data-theme="dark"] .sec-desc,
+html[data-theme="dark"] .marks-ts-sub,
+html[data-theme="dark"] .logo-tagline {
+  color: #cbd5e1 !important;
+  -webkit-text-fill-color: #cbd5e1 !important;
+  opacity: 1 !important;
+}
+
+html[data-theme="light"] .mtk-q-text,
+html[data-theme="light"] .qx-prac-q,
+html[data-theme="light"] .qx-content,
+html[data-theme="light"] .mtk-opt-text,
+html[data-theme="light"] .qx-prac-opt-text {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+html[data-theme="dark"] .mtk-q-text,
+html[data-theme="dark"] .qx-prac-q,
+html[data-theme="dark"] .qx-content,
+html[data-theme="dark"] .mtk-opt-text,
+html[data-theme="dark"] .qx-prac-opt-text {
+  color: #e5e7eb !important;
+  -webkit-text-fill-color: #e5e7eb !important;
+}
+
+html[data-theme="light"] .eg-q-stem,
+html[data-theme="light"] .eg-q-stem .qx-content,
+html[data-theme="light"] .qzrr-q-area,
+html[data-theme="light"] .qzrr-qno {
+  color: #0f172a !important;
+}
+html[data-theme="dark"] .eg-test-root[data-test-theme="dark"] .eg-q-stem,
+html[data-theme="dark"] .eg-test-root[data-test-theme="dark"] .eg-q-stem .qx-content,
+html[data-theme="dark"] .qzrr-cbt.qzrr-dark .qzrr-q-area,
+html[data-theme="dark"] .qzrr-cbt.qzrr-dark .qzrr-qno {
+  color: #e5e7eb !important;
+}
+
+/* White strips / light test chrome — never use light ink on white */
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .eg-q-card,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .eg-q-stem,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .eg-q-stem *,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .eg-q-meta,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .eg-q-time,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .eg-type,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .eg-foot,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .eg-sol,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .sol-body,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .qx-sol-body,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .qx-sol-flow,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-q-text,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-opt-text,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-q-card,
+html[data-theme="light"] .eg-q-card,
+html[data-theme="light"] .eg-q-stem,
+html[data-theme="light"] .eg-sol,
+html[data-theme="light"] .sol-body,
+html[data-theme="light"] .dpp-set-card,
+html[data-theme="light"] .dpp-set-card strong,
+html[data-theme="light"] .pyqmock-paper-card,
+html[data-theme="light"] .pyqmock-paper-card strong,
+html[data-theme="light"] .qx-rfc-ch,
+html[data-theme="light"] .qx-rfc-ch strong {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .eg-qbar {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+html[data-theme="dark"] .dpp-set-card strong,
+html[data-theme="dark"] .dpp-set-card small,
+html[data-theme="dark"] .pyqmock-paper-card strong,
+html[data-theme="dark"] .pyqmock-paper-main,
+html[data-theme="dark"] .breadcrumb,
+html[data-theme="dark"] .breadcrumb .bc-cur,
+html[data-theme="dark"] .cpyqb-filter-bar,
+html[data-theme="dark"] .topbar,
+html[data-theme="dark"] .topbar * {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Question + solution follow the active theme (light ink on light, light ink on dark) */
+html[data-theme="light"] .qx-sol-card,
+html[data-theme="light"] .qx-sol-body,
+html[data-theme="light"] .qx-sol-flow,
+html[data-theme="light"] .qx-sol-flow p,
+html[data-theme="light"] .qx-sol-flow .qx-sol-p,
+html[data-theme="light"] .qx-sol-flow-inner,
+html[data-theme="light"] .sol-body,
+html[data-theme="light"] .sol-body p,
+html[data-theme="light"] .sol-body li,
+html[data-theme="light"] .sol-body td,
+html[data-theme="light"] .sol-body th,
+html[data-theme="light"] .eg-sol,
+html[data-theme="light"] .qx-sol-reveal-box,
+html[data-theme="light"] .qx-easy-sol,
+html[data-theme="light"] .qx-easy-idea,
+html[data-theme="light"] .qx-easy-t,
+html[data-theme="light"] .qx-question-body,
+html[data-theme="light"] .qx-practice-page,
+.mtk-test-root[data-test-theme="light"] .qx-sol-card,
+.mtk-test-root[data-test-theme="light"] .qx-sol-flow,
+.mtk-test-root[data-test-theme="light"] .sol-body,
+.mtk-test-root[data-test-theme="light"] .eg-sol {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+html[data-theme="light"] .qx-sol-card,
+html[data-theme="light"] .eg-sol,
+html[data-theme="light"] .qx-sol-reveal-box,
+html[data-theme="light"] .qx-easy-sol,
+.mtk-test-root[data-test-theme="light"] .qx-sol-card,
+.mtk-test-root[data-test-theme="light"] .eg-sol {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+html[data-theme="light"] .qx-sol-card .katex,
+html[data-theme="light"] .qx-sol-flow .katex,
+html[data-theme="light"] .sol-body .katex,
+html[data-theme="light"] .eg-sol .katex,
+html[data-theme="light"] .qx-question-body .katex,
+html[data-theme="light"] .qx-prac-q .katex {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+
+html[data-theme="dark"] .qx-sol-card,
+html[data-theme="dark"] .qx-sol-body,
+html[data-theme="dark"] .qx-sol-flow,
+html[data-theme="dark"] .qx-sol-flow p,
+html[data-theme="dark"] .qx-sol-flow .qx-sol-p,
+html[data-theme="dark"] .qx-sol-flow-inner,
+html[data-theme="dark"] .sol-body,
+html[data-theme="dark"] .sol-body p,
+html[data-theme="dark"] .sol-body li,
+html[data-theme="dark"] .sol-body td,
+html[data-theme="dark"] .sol-body th,
+html[data-theme="dark"] .eg-sol,
+html[data-theme="dark"] .qx-sol-reveal-box,
+html[data-theme="dark"] .qx-easy-sol,
+html[data-theme="dark"] .qx-easy-idea,
+html[data-theme="dark"] .qx-easy-t,
+html[data-theme="dark"] .qx-question-body,
+html[data-theme="dark"] .qx-practice-page,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-card,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-flow,
+.mtk-test-root[data-test-theme="dark"] .sol-body,
+.mtk-test-root[data-test-theme="dark"] .eg-sol {
+  color: #e8eef7 !important;
+  -webkit-text-fill-color: #e8eef7 !important;
+}
+html[data-theme="dark"] .qx-sol-card,
+html[data-theme="dark"] .eg-sol,
+html[data-theme="dark"] .qx-sol-reveal-box,
+html[data-theme="dark"] .qx-easy-sol,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-card,
+.mtk-test-root[data-test-theme="dark"] .eg-sol {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+html[data-theme="dark"] .qx-sol-card .katex,
+html[data-theme="dark"] .qx-sol-flow .katex,
+html[data-theme="dark"] .sol-body .katex,
+html[data-theme="dark"] .eg-sol .katex,
+html[data-theme="dark"] .qx-question-body .katex,
+html[data-theme="dark"] .qx-prac-q .katex,
+html[data-theme="dark"] .mtk-q-text .katex {
+  color: #e8eef7 !important;
+  -webkit-text-fill-color: #e8eef7 !important;
+}
+
+/* Marks HTML often ships black/white inline colors — follow the app theme */
+html[data-theme="dark"] .qx-sol-flow [style*="color:#000"],
+html[data-theme="dark"] .qx-sol-flow [style*="color: #000"],
+html[data-theme="dark"] .qx-sol-flow [style*="color:black"],
+html[data-theme="dark"] .qx-sol-flow [style*="color: rgb(0"],
+html[data-theme="dark"] .sol-body [style*="color:#000"],
+html[data-theme="dark"] .sol-body [style*="color: #000"],
+html[data-theme="dark"] .sol-body [style*="color:black"],
+html[data-theme="dark"] .eg-sol [style*="color:#000"],
+html[data-theme="dark"] .mtk-q-text [style*="color:#000"],
+html[data-theme="dark"] .qx-prac-q [style*="color:#000"],
+html[data-theme="dark"] .qx-content [style*="color:#000"] {
+  color: #e8eef7 !important;
+  -webkit-text-fill-color: #e8eef7 !important;
+}
+html[data-theme="light"] .qx-sol-flow [style*="color:#fff"],
+html[data-theme="light"] .qx-sol-flow [style*="color: #fff"],
+html[data-theme="light"] .qx-sol-flow [style*="color:white"],
+html[data-theme="light"] .sol-body [style*="color:#fff"],
+html[data-theme="light"] .eg-sol [style*="color:#fff"],
+html[data-theme="light"] .mtk-q-text [style*="color:#fff"],
+html[data-theme="light"] .qx-prac-q [style*="color:#fff"],
+html[data-theme="light"] .qx-content [style*="color:#fff"] {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+
+/* Diagram plates stay paper-white in both themes */
+html[data-theme="dark"] .qx-sol-flow img,
+html[data-theme="dark"] .sol-body img,
+html[data-theme="dark"] .eg-sol img,
+html[data-theme="light"] .qx-sol-flow img,
+html[data-theme="light"] .sol-body img,
+html[data-theme="light"] .eg-sol img {
+  background: #fff !important;
+  border-radius: 8px;
+}
+
+/* Dashboard / folders / PYQ tiles — readable in both themes */
+html[data-theme="dark"] .qx-folder-title,
+html[data-theme="dark"] .qx-folder-card,
+html[data-theme="dark"] .marks-sec-head h3,
+html[data-theme="dark"] .dash-ncert-head h2,
+html[data-theme="dark"] .dash-util-card strong,
+html[data-theme="dark"] .exam-pill-card strong,
+html[data-theme="dark"] .qx-class-chip,
+html[data-theme="dark"] .book-info strong,
+html[data-theme="dark"] .qx-book-card .book-info strong {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  opacity: 1 !important;
+}
+html[data-theme="dark"] .qx-folder-sub,
+html[data-theme="dark"] .sec-desc,
+html[data-theme="dark"] .exam-pill-card small,
+html[data-theme="dark"] .dash-util-card small,
+html[data-theme="dark"] .dash-ncert-head p,
+html[data-theme="dark"] .book-info small,
+html[data-theme="dark"] .qx-book-card .book-info small,
+html[data-theme="dark"] .qx-course-row span,
+html[data-theme="dark"] .qx-desk-grid span,
+html[data-theme="dark"] .qx-class-chip:not(.on) {
+  color: #cbd5e1 !important;
+  -webkit-text-fill-color: #cbd5e1 !important;
+  opacity: 1 !important;
+}
+html[data-theme="light"] .qx-folder-title,
+html[data-theme="light"] .marks-sec-head h3,
+html[data-theme="light"] .exam-pill-card strong,
+html[data-theme="light"] .dash-util-card strong,
+html[data-theme="light"] .book-info strong {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+html[data-theme="light"] .qx-folder-sub,
+html[data-theme="light"] .sec-desc,
+html[data-theme="light"] .exam-pill-card small,
+html[data-theme="light"] .dash-util-card small,
+html[data-theme="light"] .book-info small {
+  color: #334155 !important;
+  -webkit-text-fill-color: #334155 !important;
+  opacity: 1 !important;
+}
+
+html[data-theme="dark"] .qx-folder-ic:has(.qx-ch-icon) {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+html[data-theme="dark"] .qx-folder-ic:has(img.qx-exam-folder-logo),
+html[data-theme="light"] .qx-folder-ic:has(img.qx-exam-folder-logo),
+html[data-theme="dark"] .qx-folder-ic:has(img.qx-exam-logo),
+html[data-theme="light"] .qx-folder-ic:has(img.qx-exam-logo) {
+  background: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12) !important;
+}
+html[data-theme="dark"] .qx-folder-ic img.qx-exam-folder-logo,
+html[data-theme="light"] .qx-folder-ic img.qx-exam-folder-logo {
+  width: 40px !important;
+  height: 40px !important;
+  object-fit: contain !important;
+}
+html[data-theme="dark"] .qx-folder-ic svg,
+html[data-theme="dark"] .qx-folder-ic img,
+html[data-theme="light"] .qx-folder-ic svg,
+html[data-theme="light"] .qx-folder-ic img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+html[data-theme="dark"] .qx-med-fc-chip {
+  color: #fff !important;
+  background: #334155;
+}
+html[data-theme="dark"] .qx-med-fc-chip.phy,
+html[data-theme="light"] .qx-med-fc-chip.phy { background: linear-gradient(135deg, #38bdf8, #2563eb); color: #fff !important; }
+html[data-theme="dark"] .qx-med-fc-chip.chem,
+html[data-theme="light"] .qx-med-fc-chip.chem { background: linear-gradient(135deg, #4ade80, #16a34a); color: #fff !important; }
+html[data-theme="dark"] .qx-med-fc-chip.math,
+html[data-theme="light"] .qx-med-fc-chip.math { background: linear-gradient(135deg, #c084fc, #7c3aed); color: #fff !important; }
+html[data-theme="light"] .qx-med-fc-chip { color: #0f172a; background: #e2e8f0; }
+
+/* Options + letters + figure plates — both themes */
+html[data-theme="light"] .qa-opt,
+html[data-theme="light"] .mtk-opt,
+html[data-theme="light"] .mtk-opt-text,
+html[data-theme="light"] .qx-prac-opt-text,
+html[data-theme="light"] .mtk-opt-key,
+html[data-theme="light"] .eg-opt,
+html[data-theme="light"] .eg-choice,
+html[data-theme="light"] .qzrr-opt {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="dark"] .qa-opt,
+html[data-theme="dark"] .mtk-opt,
+html[data-theme="dark"] .mtk-opt-text,
+html[data-theme="dark"] .qx-prac-opt-text,
+html[data-theme="dark"] .mtk-opt-key,
+html[data-theme="dark"] .eg-opt,
+html[data-theme="dark"] .eg-choice,
+html[data-theme="dark"] .qzrr-opt,
+html[data-theme="dark"] .mtk-opt .katex,
+html[data-theme="dark"] .qa-opt .katex,
+html[data-theme="dark"] .qx-prac-opt-text .katex {
+  color: #e8eef7 !important;
+  -webkit-text-fill-color: #e8eef7 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="dark"] .mtk-opt,
+html[data-theme="dark"] .qa-opt {
+  background: #1e293b !important;
+  border-color: #475569 !important;
+}
+html[data-theme="light"] .mtk-opt,
+html[data-theme="light"] .qa-opt {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+html[data-theme="dark"] .mtk-opt-text img,
+html[data-theme="dark"] .qx-prac-opt-text img,
+html[data-theme="dark"] .qa-opt img,
+html[data-theme="dark"] .mtk-q-text img,
+html[data-theme="dark"] .qx-prac-q img,
+html[data-theme="light"] .mtk-opt-text img,
+html[data-theme="light"] .qx-prac-opt-text img,
+html[data-theme="light"] .qa-opt img,
+html[data-theme="light"] .mtk-q-text img,
+html[data-theme="light"] .qx-prac-q img {
+  background: #ffffff !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: inline-block !important;
+}
+.qx-ch-icon, .qx-ch-glyph-img, .qx-ch-orbit, .qx-exam-folder-logo {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.qx-dash-fc-covers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 8px;
+}
+@media (max-width: 720px) {
+  .qx-dash-fc-covers { grid-template-columns: 1fr 1fr; }
+}
+.qx-dash-fc-cover {
+  min-height: 168px !important;
+  width: 100%;
+  color: #fff !important;
+}
+.qx-dash-fc-cover strong,
+.qx-dash-fc-cover small,
+.qx-dash-fc-cover em {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* ==========================================================================
+   Complete Dark Mode Button Visibility Guarantee
+   ========================================================================== */
+
+/* Top header tools in dark mode */
+html[data-theme="dark"] .eg-top,
+.eg-test-root[data-test-theme="dark"] .eg-top,
+.mtk-test-root[data-test-theme="dark"] .mtk-header,
+.qzrr-cbt.qzrr-dark .qzrr-black-bar {
+  background: #0f172a !important;
+  border-bottom: 1px solid #1e293b !important;
+}
+
+html[data-theme="dark"] .eg-top-tools .eg-ico,
+.eg-test-root[data-test-theme="dark"] .eg-top-tools .eg-ico,
+html[data-theme="dark"] .qzrr-tool-btn,
+.qzrr-cbt.qzrr-dark .qzrr-tool-btn,
+html[data-theme="dark"] .mtk-font-btn,
+.mtk-test-root[data-test-theme="dark"] .mtk-font-btn,
+html[data-theme="dark"] .eg-back {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  border: 1px solid #334155 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html[data-theme="dark"] .qzrr-tool-btn svg path,
+html[data-theme="dark"] .qzrr-tool-btn svg circle,
+.qzrr-cbt.qzrr-dark .qzrr-tool-btn svg path,
+.qzrr-cbt.qzrr-dark .qzrr-tool-btn svg circle {
+  stroke: #60a5fa !important;
+}
+
+/* Check Answer button in dark mode */
+html[data-theme="dark"] .eg-check,
+.eg-test-root[data-test-theme="dark"] .eg-check,
+.mtk-test-root[data-test-theme="dark"] .eg-check,
+.qx-practice-page .eg-check,
+#egCheckBtn, #qxPracSubmit {
+  background: #15803d !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 1px solid #22c55e !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="dark"] .eg-check:disabled,
+#egCheckBtn:disabled, #qxPracSubmit:disabled {
+  opacity: 0.45 !important;
+}
+
+/* Note button in dark mode */
+html[data-theme="dark"] .eg-note,
+.eg-test-root[data-test-theme="dark"] .eg-note,
+.mtk-test-root[data-test-theme="dark"] .eg-note,
+#egNoteBtn, #qxPracNote {
+  background: rgba(37, 99, 235, 0.25) !important;
+  color: #93c5fd !important;
+  -webkit-text-fill-color: #93c5fd !important;
+  border: 1px solid #3b82f6 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Bottom Action Buttons in dark mode */
+html[data-theme="dark"] .eg-foot,
+.eg-test-root[data-test-theme="dark"] .eg-foot,
+.mtk-test-root[data-test-theme="dark"] .eg-foot,
+.mtk-test-root[data-test-theme="dark"] .mtk-controls,
+.qzrr-cbt.qzrr-dark .qzrr-footer-actions {
+  background: #0f172a !important;
+  border-top: 1px solid #1e293b !important;
+}
+
+html[data-theme="dark"] .eg-btn,
+.eg-test-root[data-test-theme="dark"] .eg-btn,
+.mtk-test-root[data-test-theme="dark"] .mtk-btn-clear,
+.mtk-test-root[data-test-theme="dark"] .mtk-btn-prev,
+.mtk-test-root[data-test-theme="dark"] .mtk-btn-ghost,
+.qzrr-cbt.qzrr-dark .qzrr-btn-outline,
+.qzrr-cbt.qzrr-dark #qxClearBtn,
+.qzrr-cbt.qzrr-dark #qxPrevBtn,
+.qzrr-cbt.qzrr-dark #qxReviewNextBtn,
+html[data-theme="dark"] .eg-test-root[data-test-theme="dark"] #qxPracClear,
+html[data-theme="dark"] .eg-test-root[data-test-theme="dark"] #qxPracPrev,
+.eg-test-root[data-test-theme="dark"] #qxPracClear,
+.eg-test-root[data-test-theme="dark"] #qxPracPrev {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  -webkit-text-fill-color: #f1f5f9 !important;
+  border: 1px solid #475569 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Light CBT / practice: outline footer labels MUST be dark ink (never pale-on-white) */
+.qzrr-cbt:not(.qzrr-dark) .qzrr-btn-outline,
+.qzrr-cbt:not(.qzrr-dark) #qxClearBtn,
+.qzrr-cbt:not(.qzrr-dark) #qxPrevBtn,
+.qzrr-cbt:not(.qzrr-dark) #qxReviewNextBtn,
+.qzrr-cbt[data-test-theme="light"] .qzrr-btn-outline,
+.qzrr-cbt[data-test-theme="light"] #qxClearBtn,
+.qzrr-cbt[data-test-theme="light"] #qxPrevBtn,
+.qzrr-cbt[data-test-theme="light"] #qxReviewNextBtn,
+.eg-test-root[data-test-theme="light"] .eg-btn:not(.eg-btn-next):not(.eg-submit),
+.mtk-test-root[data-test-theme="light"] .mtk-btn-clear,
+.mtk-test-root[data-test-theme="light"] .mtk-btn-prev,
+.mtk-test-root[data-test-theme="light"] .mtk-btn-ghost,
+.mtk-test-root[data-test-theme="light"] .mtk-btn-review {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  border: 1px solid #94a3b8 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html[data-theme="dark"] .eg-btn-next,
+.eg-test-root[data-test-theme="dark"] .eg-btn-next,
+.mtk-test-root[data-test-theme="dark"] .mtk-btn-save,
+.qzrr-cbt.qzrr-dark .qzrr-btn-primary,
+#qxNextBtn, #qxSaveBtn, #qxPracNext {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 1px solid #3b82f6 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html[data-theme="dark"] .qzrr-cbt.qzrr-dark #qxReviewNextBtn,
+.qzrr-cbt.qzrr-dark #qxReviewNextBtn,
+.mtk-test-root[data-test-theme="dark"] .mtk-btn-review {
+  background: #7c3aed !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 1px solid #8b5cf6 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html[data-theme="dark"] .eg-submit,
+.eg-test-root[data-test-theme="dark"] .eg-submit,
+.mtk-test-root[data-test-theme="dark"] .mtk-submit-top,
+.qzrr-cbt.qzrr-dark .qzrr-submit-mobile,
+#qxSubmitTop, #qxSubmitBtn {
+  background: #dc2626 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 1px solid #ef4444 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html[data-theme="dark"] .eg-show,
+.eg-test-root[data-test-theme="dark"] .eg-show {
+  color: #e2e8f0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Options letter in dark mode */
+html[data-theme="dark"] .mtk-opt-letter,
+html[data-theme="dark"] .eg-opt-letter,
+html[data-theme="dark"] .qx-opt-circle,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt-letter,
+.eg-test-root[data-test-theme="dark"] .eg-opt-letter {
+  background: #0f172a !important;
+  color: #93c5fd !important;
+  -webkit-text-fill-color: #93c5fd !important;
+  border: 1.5px solid #3b82f6 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Exit button */
+html[data-theme="dark"] #mtkExitBtn,
+.mtk-test-root[data-test-theme="dark"] #mtkExitBtn,
+.qzrr-cbt.qzrr-dark .qzrr-exit {
+  background: #991b1b !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 1px solid #ef4444 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Dark mode: Engineering / Medical / chapter folder labels must stay readable */
+html[data-theme="dark"] .exam-opt,
+html[data-theme="dark"] .exam-opt strong,
+html[data-theme="dark"] .qx-top-exam,
+html[data-theme="dark"] .qx-module-card,
+html[data-theme="dark"] .qx-module-body,
+html[data-theme="dark"] .qx-module-body strong,
+html[data-theme="dark"] .cpyqb-exam-tile,
+html[data-theme="dark"] .cpyqb-exam-tile strong,
+html[data-theme="dark"] .subj-card,
+html[data-theme="dark"] .subj-card strong {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="dark"] .exam-opt {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+html[data-theme="dark"] .qx-module-body small,
+html[data-theme="dark"] .qx-module-card small,
+html[data-theme="dark"] .exam-opt small,
+html[data-theme="dark"] .subj-card small,
+html[data-theme="dark"] .cpyqb-exam-tile small {
+  color: #cbd5e1 !important;
+  -webkit-text-fill-color: #cbd5e1 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="dark"] .qx-ch-hub-hero h1,
+html[data-theme="dark"] .qx-ch-hub-hero p {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+}
+html[data-theme="dark"] .pyqmock-practice,
+html[data-theme="dark"] .cpyqb-eg-actions .pyqmock-practice {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  border-color: #475569 !important;
+}
+
+/* Dark home: Medical/Engineering folders + sidebar must stay readable */
+html[data-theme="dark"] body,
+html[data-theme="dark"] #app-main,
+html[data-theme="dark"] .content,
+html[data-theme="dark"] .qx-home,
+html[data-theme="dark"] .qx-med-home,
+html[data-theme="dark"] .marks-section,
+html[data-theme="dark"] .marks-sec-head h3 {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .sidebar {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+html[data-theme="dark"] .nav-item,
+html[data-theme="dark"] .nav-item span,
+html[data-theme="dark"] .logo-text,
+html[data-theme="dark"] .logo-tagline {
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="dark"] .nav-item.active {
+  background: #334155 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+html[data-theme="dark"] .qx-med-rev-card,
+html[data-theme="dark"] .qx-med-test-card,
+html[data-theme="dark"] .qx-med-nb-card,
+html[data-theme="dark"] .qx-med-subj-card,
+html[data-theme="dark"] .qx-ncert-tool,
+html[data-theme="dark"] .qx-med-util,
+html[data-theme="dark"] .qx-rev-subj,
+html[data-theme="dark"] .qx-folder-card,
+html[data-theme="dark"] .book-card,
+html[data-theme="dark"] .qx-book-card {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  border: 1px solid #64748b !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="dark"] .qx-med-rev-card strong,
+html[data-theme="dark"] .qx-med-test-card strong,
+html[data-theme="dark"] .qx-med-nb-card strong,
+html[data-theme="dark"] .qx-med-subj-card strong,
+html[data-theme="dark"] .qx-ncert-tool strong,
+html[data-theme="dark"] .qx-med-util,
+html[data-theme="dark"] .book-card strong,
+html[data-theme="dark"] .qx-book-card strong {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+html[data-theme="dark"] .qx-med-rev-card small,
+html[data-theme="dark"] .qx-med-test-card small,
+html[data-theme="dark"] .qx-med-nb-card small,
+html[data-theme="dark"] .qx-ncert-tool small,
+html[data-theme="dark"] .qx-med-subj-card small,
+html[data-theme="dark"] .book-card small,
+html[data-theme="dark"] .qx-book-card small {
+  color: #cbd5e1 !important;
+  -webkit-text-fill-color: #cbd5e1 !important;
+  opacity: 1 !important;
+}
+html[data-theme="dark"] .qx-med-ncert-banner,
+html[data-theme="dark"] .qx-med-dpp-banner,
+html[data-theme="dark"] .qx-med-board-banner,
+html[data-theme="dark"] .qx-med-an-card {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid #334155 !important;
+}
+html[data-theme="dark"] .qx-med-ncert-banner .marks-sec-head h3,
+html[data-theme="dark"] .qx-med-dpp-banner .marks-sec-head h3,
+html[data-theme="dark"] .qx-med-board-banner .marks-sec-head h3,
+html[data-theme="dark"] .qx-med-an-card h3 {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+/* Question stems: never hyphenate leaked KaTeX / English */
+.eg-q-stem,
+.mtk-q-text,
+.qx-content,
+.q-text,
+.qx-prac-q,
+.qx-q-seg-text,
+.qx-q-text-only,
+.eg-q-stem .qx-content {
+  hyphens: none !important;
+  -webkit-hyphens: none !important;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+.katex,
+.katex-html,
+.katex-mathml,
+.katex *,
+.mjx-container {
+  hyphens: none !important;
+  -webkit-hyphens: none !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}

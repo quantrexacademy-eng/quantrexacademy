@@ -1,0 +1,3464 @@
+{
+  "subjects": [
+    {
+      "name": "Botany",
+      "chapters": [
+        {
+          "name": "Anatomy of Flowering Plants",
+          "count": 214,
+          "file": "data/ncert_offline/chapters/botany_anatomy_of_flowering_plants.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 214
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 50
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 22
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 40
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 60
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 30
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 3
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "name": "Animal Kingdom",
+          "count": 338,
+          "file": "data/ncert_offline/chapters/botany_animal_kingdom.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 338
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 108
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 68
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 46
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 33
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 52
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 12
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 19
+            }
+          ]
+        },
+        {
+          "name": "Biodiversity and its Conservation",
+          "count": 259,
+          "file": "data/ncert_offline/chapters/botany_biodiversity_and_its_conservation.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 259
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 137
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 20
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 34
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 28
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 14
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 6
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 20
+            }
+          ]
+        },
+        {
+          "name": "Biological Classification",
+          "count": 289,
+          "file": "data/ncert_offline/chapters/botany_biological_classification.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 289
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 136
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 39
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 44
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 29
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 13
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 8
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 20
+            }
+          ]
+        },
+        {
+          "name": "Biomolecules (B)",
+          "count": 259,
+          "file": "data/ncert_offline/chapters/botany_biomolecules_b.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 259
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 94
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 30
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 47
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 37
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 30
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 4
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 17
+            }
+          ]
+        },
+        {
+          "name": "Cell - The Unit of Life",
+          "count": 313,
+          "file": "data/ncert_offline/chapters/botany_cell_the_unit_of_life.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 313
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 118
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 45
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 45
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 29
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 49
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 9
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 18
+            }
+          ]
+        },
+        {
+          "name": "Cell Cycle and Cell Division",
+          "count": 281,
+          "file": "data/ncert_offline/chapters/botany_cell_cycle_and_cell_division.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 281
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 219
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 8
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 4
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 20
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 12
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 18
+            }
+          ]
+        },
+        {
+          "name": "Ecosystem",
+          "count": 212,
+          "file": "data/ncert_offline/chapters/botany_ecosystem.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 212
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 80
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 31
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 40
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 23
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 13
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 11
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 14
+            }
+          ]
+        },
+        {
+          "name": "Morphology of Flowering Plants",
+          "count": 264,
+          "file": "data/ncert_offline/chapters/botany_morphology_of_flowering_plants.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 264
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 79
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 62
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 48
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 6
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 46
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 14
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "name": "Photosynthesis in Higher Plants",
+          "count": 308,
+          "file": "data/ncert_offline/chapters/botany_photosynthesis_in_higher_plants.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 308
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 196
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 36
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 29
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 20
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 21
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "name": "Plant - Growth and Development",
+          "count": 238,
+          "file": "data/ncert_offline/chapters/botany_plant_growth_and_development.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 238
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 127
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 27
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 33
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 29
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 13
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "name": "Plant Kingdom",
+          "count": 338,
+          "file": "data/ncert_offline/chapters/botany_plant_kingdom.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 338
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 174
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 37
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 68
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 34
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 15
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 10
+            }
+          ]
+        },
+        {
+          "name": "Respiration in Plants",
+          "count": 245,
+          "file": "data/ncert_offline/chapters/botany_respiration_in_plants.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 245
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 125
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 24
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 44
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 27
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 15
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 10
+            }
+          ]
+        },
+        {
+          "name": "Sexual Reproduction in Flowering Plants",
+          "count": 429,
+          "file": "data/ncert_offline/chapters/botany_sexual_reproduction_in_flowering_plants.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 429
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 233
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 67
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 88
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 2
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 25
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 14
+            }
+          ]
+        },
+        {
+          "name": "The Living World",
+          "count": 116,
+          "file": "data/ncert_offline/chapters/botany_the_living_world.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 116
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 45
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 10
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 18
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 1
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 30
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chemistry",
+      "chapters": [
+        {
+          "name": "Alcohols Phenols and Ethers",
+          "count": 433,
+          "file": "data/ncert_offline/chapters/chemistry_alcohols_phenols_and_ethers.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 433
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 246
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 8
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 6
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 10
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 125
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 38
+            }
+          ]
+        },
+        {
+          "name": "Aldehydes and Ketones",
+          "count": 301,
+          "file": "data/ncert_offline/chapters/chemistry_aldehydes_and_ketones.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 301
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 134
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 10
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 5
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 15
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 106
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 31
+            }
+          ]
+        },
+        {
+          "name": "Amines",
+          "count": 258,
+          "file": "data/ncert_offline/chapters/chemistry_amines.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 258
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 122
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 19
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 2
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 9
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 76
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 30
+            }
+          ]
+        },
+        {
+          "name": "Biomolecules",
+          "count": 410,
+          "file": "data/ncert_offline/chapters/chemistry_biomolecules.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 410
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 291
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 20
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 11
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 14
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 39
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 35
+            }
+          ]
+        },
+        {
+          "name": "Carboxylic Acid Derivatives",
+          "count": 143,
+          "file": "data/ncert_offline/chapters/chemistry_carboxylic_acid_derivatives.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 143
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 118
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 14
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 2
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "name": "Chemical Bonding and Molecular Structure",
+          "count": 641,
+          "file": "data/ncert_offline/chapters/chemistry_chemical_bonding_and_molecular_structure.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 641
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 466
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 2
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 20
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 21
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 42
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 69
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 21
+            }
+          ]
+        },
+        {
+          "name": "Chemical Equilibrium",
+          "count": 167,
+          "file": "data/ncert_offline/chapters/chemistry_chemical_equilibrium.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 167
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 142
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 11
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 9
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 3
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "name": "Chemical Kinetics",
+          "count": 332,
+          "file": "data/ncert_offline/chapters/chemistry_chemical_kinetics.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 332
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 175
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 52
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 15
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 2
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 1
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 62
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 25
+            }
+          ]
+        },
+        {
+          "name": "Chemistry in Everyday Life",
+          "count": 298,
+          "file": "data/ncert_offline/chapters/chemistry_chemistry_in_everyday_life.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 298
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 213
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 0
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 0
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 0
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 32
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 53
+            }
+          ]
+        },
+        {
+          "name": "Classification of Elements and Periodicity in Properties",
+          "count": 360,
+          "file": "data/ncert_offline/chapters/chemistry_classification_of_elements_and_periodicity_in_properties.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 360
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 218
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 2
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 22
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 19
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 11
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 67
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 21
+            }
+          ]
+        },
+        {
+          "name": "Coordination Compounds",
+          "count": 520,
+          "file": "data/ncert_offline/chapters/chemistry_coordination_compounds.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 520
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 320
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 1
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 11
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 11
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 26
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 125
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 26
+            }
+          ]
+        },
+        {
+          "name": "d and f Block Elements",
+          "count": 571,
+          "file": "data/ncert_offline/chapters/chemistry_d_and_f_block_elements.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 571
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 395
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 15
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 20
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 9
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 97
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 35
+            }
+          ]
+        },
+        {
+          "name": "Electrochemistry",
+          "count": 352,
+          "file": "data/ncert_offline/chapters/chemistry_electrochemistry.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 352
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 229
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 11
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 10
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 5
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 10
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 56
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 31
+            }
+          ]
+        },
+        {
+          "name": "Environmental Chemistry",
+          "count": 295,
+          "file": "data/ncert_offline/chapters/chemistry_environmental_chemistry.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 295
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 250
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 0
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 0
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 0
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 23
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 22
+            }
+          ]
+        },
+        {
+          "name": "General Organic Chemistry",
+          "count": 648,
+          "file": "data/ncert_offline/chapters/chemistry_general_organic_chemistry.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 648
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 434
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 1
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 25
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 15
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 19
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 120
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 34
+            }
+          ]
+        },
+        {
+          "name": "General Principles and Processes of Isolation of Metals",
+          "count": 180,
+          "file": "data/ncert_offline/chapters/chemistry_general_principles_and_processes_of_isolation_of_metals.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 180
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 116
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 0
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 0
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 0
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 42
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 22
+            }
+          ]
+        },
+        {
+          "name": "Haloalkanes and Haloarenes",
+          "count": 344,
+          "file": "data/ncert_offline/chapters/chemistry_haloalkanes_and_haloarenes.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 344
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 163
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 1
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 10
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 9
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 13
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 109
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 39
+            }
+          ]
+        },
+        {
+          "name": "Hydrocarbons",
+          "count": 504,
+          "file": "data/ncert_offline/chapters/chemistry_hydrocarbons.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 504
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 398
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 1
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 12
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 5
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 4
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 62
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 22
+            }
+          ]
+        },
+        {
+          "name": "Hydrogen",
+          "count": 344,
+          "file": "data/ncert_offline/chapters/chemistry_hydrogen.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 344
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 237
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 0
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 0
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 0
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 64
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 43
+            }
+          ]
+        },
+        {
+          "name": "Ionic Equilibrium",
+          "count": 333,
+          "file": "data/ncert_offline/chapters/chemistry_ionic_equilibrium.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 333
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 162
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 3
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 10
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 5
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 10
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 124
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 19
+            }
+          ]
+        },
+        {
+          "name": "p Block Elements (Group 13 & 14)",
+          "count": 434,
+          "file": "data/ncert_offline/chapters/chemistry_p_block_elements_group_13_14.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 434
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 249
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 15
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 28
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 10
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 98
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 34
+            }
+          ]
+        },
+        {
+          "name": "p Block Elements (Group 15, 16, 17 & 18)",
+          "count": 648,
+          "file": "data/ncert_offline/chapters/chemistry_p_block_elements_group_15_16_17_18.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 648
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 498
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 19
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 12
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 17
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 73
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 29
+            }
+          ]
+        },
+        {
+          "name": "Polymers",
+          "count": 209,
+          "file": "data/ncert_offline/chapters/chemistry_polymers.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 209
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 149
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 0
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 0
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 0
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 38
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 22
+            }
+          ]
+        },
+        {
+          "name": "Practical Chemistry",
+          "count": 8,
+          "file": "data/ncert_offline/chapters/chemistry_practical_chemistry.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 8
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 3
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 0
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "name": "Redox Reactions",
+          "count": 306,
+          "file": "data/ncert_offline/chapters/chemistry_redox_reactions.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 306
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 155
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 2
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 14
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 8
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 5
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 88
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 34
+            }
+          ]
+        },
+        {
+          "name": "s Block Elements",
+          "count": 372,
+          "file": "data/ncert_offline/chapters/chemistry_s_block_elements.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 372
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 288
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 0
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 0
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 0
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 58
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 26
+            }
+          ]
+        },
+        {
+          "name": "Solid State",
+          "count": 442,
+          "file": "data/ncert_offline/chapters/chemistry_solid_state.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 442
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 338
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 0
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 0
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 0
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 90
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 14
+            }
+          ]
+        },
+        {
+          "name": "Solutions",
+          "count": 296,
+          "file": "data/ncert_offline/chapters/chemistry_solutions.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 296
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 159
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 10
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 10
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 10
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 9
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 78
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 20
+            }
+          ]
+        },
+        {
+          "name": "Some Basic Concepts of Chemistry",
+          "count": 198,
+          "file": "data/ncert_offline/chapters/chemistry_some_basic_concepts_of_chemistry.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 198
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 91
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 14
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 5
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 10
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 62
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 16
+            }
+          ]
+        },
+        {
+          "name": "States of Matter",
+          "count": 284,
+          "file": "data/ncert_offline/chapters/chemistry_states_of_matter.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 284
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 224
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 0
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 0
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 0
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 28
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 32
+            }
+          ]
+        },
+        {
+          "name": "Structure of Atom",
+          "count": 445,
+          "file": "data/ncert_offline/chapters/chemistry_structure_of_atom.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 445
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 233
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 19
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 20
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 12
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 18
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 113
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 30
+            }
+          ]
+        },
+        {
+          "name": "Surface Chemistry",
+          "count": 409,
+          "file": "data/ncert_offline/chapters/chemistry_surface_chemistry.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 409
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 295
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 10
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 10
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 10
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 51
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 33
+            }
+          ]
+        },
+        {
+          "name": "Thermodynamics (C)",
+          "count": 350,
+          "file": "data/ncert_offline/chapters/chemistry_thermodynamics_c.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 350
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 237
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 10
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 14
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 12
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 10
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 33
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 34
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Physics",
+      "chapters": [
+        {
+          "name": "Alternating Current",
+          "count": 87,
+          "file": "data/ncert_offline/chapters/physics_alternating_current.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 87
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 20
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 10
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 5
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 15
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 27
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 10
+            }
+          ]
+        },
+        {
+          "name": "Atomic Physics",
+          "count": 49,
+          "file": "data/ncert_offline/chapters/physics_atomic_physics.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 49
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 2
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 10
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 5
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 4
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 15
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 13
+            }
+          ]
+        },
+        {
+          "name": "Capacitance",
+          "count": 81,
+          "file": "data/ncert_offline/chapters/physics_capacitance.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 81
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 7
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 15
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 3
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 7
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 38
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 11
+            }
+          ]
+        },
+        {
+          "name": "Center of Mass, Momentum and Collision",
+          "count": 33,
+          "file": "data/ncert_offline/chapters/physics_center_of_mass_momentum_and_collision.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 33
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 9
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 15
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 5
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "name": "Current Electricity",
+          "count": 89,
+          "file": "data/ncert_offline/chapters/physics_current_electricity.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 89
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 20
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 15
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 15
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 5
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 20
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 14
+            }
+          ]
+        },
+        {
+          "name": "Dual Nature of Matter",
+          "count": 91,
+          "file": "data/ncert_offline/chapters/physics_dual_nature_of_matter.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 91
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 29
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 16
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 5
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 5
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 22
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 14
+            }
+          ]
+        },
+        {
+          "name": "Electromagnetic Induction",
+          "count": 78,
+          "file": "data/ncert_offline/chapters/physics_electromagnetic_induction.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 78
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 17
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 10
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 7
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 5
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 25
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 14
+            }
+          ]
+        },
+        {
+          "name": "Electromagnetic Waves",
+          "count": 46,
+          "file": "data/ncert_offline/chapters/physics_electromagnetic_waves.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 46
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 5
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 5
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 15
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 13
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "name": "Electrostatics",
+          "count": 124,
+          "file": "data/ncert_offline/chapters/physics_electrostatics.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 124
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 28
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 20
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 8
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 10
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 46
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 12
+            }
+          ]
+        },
+        {
+          "name": "Experimental Physics",
+          "count": 9,
+          "file": "data/ncert_offline/chapters/physics_experimental_physics.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 9
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 2
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 4
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 0
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "name": "Gravitation",
+          "count": 102,
+          "file": "data/ncert_offline/chapters/physics_gravitation.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 102
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 13
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 18
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 10
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 10
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 35
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 16
+            }
+          ]
+        },
+        {
+          "name": "Kinetic Theory of Gases",
+          "count": 72,
+          "file": "data/ncert_offline/chapters/physics_kinetic_theory_of_gases.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 72
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 6
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 9
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 11
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 5
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 25
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 16
+            }
+          ]
+        },
+        {
+          "name": "Laws of Motion",
+          "count": 98,
+          "file": "data/ncert_offline/chapters/physics_laws_of_motion.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 98
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 10
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 12
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 1
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 5
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 48
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 22
+            }
+          ]
+        },
+        {
+          "name": "Magnetic Effects of Current",
+          "count": 79,
+          "file": "data/ncert_offline/chapters/physics_magnetic_effects_of_current.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 79
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 14
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 19
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 5
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 7
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 22
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 12
+            }
+          ]
+        },
+        {
+          "name": "Magnetic Properties of Matter",
+          "count": 45,
+          "file": "data/ncert_offline/chapters/physics_magnetic_properties_of_matter.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 45
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 4
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 8
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 2
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 2
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 21
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "name": "Mathematics in Physics",
+          "count": 9,
+          "file": "data/ncert_offline/chapters/physics_mathematics_in_physics.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 9
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 2
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 4
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 1
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "name": "Mechanical Properties of Fluids",
+          "count": 82,
+          "file": "data/ncert_offline/chapters/physics_mechanical_properties_of_fluids.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 82
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 7
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 11
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 5
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 5
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 38
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 16
+            }
+          ]
+        },
+        {
+          "name": "Mechanical Properties of Solids",
+          "count": 68,
+          "file": "data/ncert_offline/chapters/physics_mechanical_properties_of_solids.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 68
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 11
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 7
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 5
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 5
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 24
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 16
+            }
+          ]
+        },
+        {
+          "name": "Motion in One Dimension",
+          "count": 129,
+          "file": "data/ncert_offline/chapters/physics_motion_in_one_dimension.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 129
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 53
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 16
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 5
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 4
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 34
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 17
+            }
+          ]
+        },
+        {
+          "name": "Motion in Two Dimensions",
+          "count": 72,
+          "file": "data/ncert_offline/chapters/physics_motion_in_two_dimensions.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 72
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 7
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 13
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 0
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 4
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 35
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 13
+            }
+          ]
+        },
+        {
+          "name": "Nuclear Physics",
+          "count": 66,
+          "file": "data/ncert_offline/chapters/physics_nuclear_physics.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 66
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 18
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 10
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 7
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 7
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 13
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 11
+            }
+          ]
+        },
+        {
+          "name": "Oscillations",
+          "count": 104,
+          "file": "data/ncert_offline/chapters/physics_oscillations.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 104
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 15
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 10
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 9
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 9
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 45
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 16
+            }
+          ]
+        },
+        {
+          "name": "Ray Optics",
+          "count": 97,
+          "file": "data/ncert_offline/chapters/physics_ray_optics.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 97
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 10
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 12
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 7
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 9
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 49
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 10
+            }
+          ]
+        },
+        {
+          "name": "Rotational Motion",
+          "count": 70,
+          "file": "data/ncert_offline/chapters/physics_rotational_motion.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 70
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 7
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 10
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 1
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 10
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 28
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 14
+            }
+          ]
+        },
+        {
+          "name": "Semiconductors",
+          "count": 74,
+          "file": "data/ncert_offline/chapters/physics_semiconductors.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 74
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 22
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 10
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 5
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 7
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 12
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 18
+            }
+          ]
+        },
+        {
+          "name": "Thermal Properties of Matter",
+          "count": 75,
+          "file": "data/ncert_offline/chapters/physics_thermal_properties_of_matter.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 75
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 10
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 7
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 2
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 9
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 36
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 11
+            }
+          ]
+        },
+        {
+          "name": "Thermodynamics",
+          "count": 92,
+          "file": "data/ncert_offline/chapters/physics_thermodynamics.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 92
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 39
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 9
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 3
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 14
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 14
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 13
+            }
+          ]
+        },
+        {
+          "name": "Units and Dimensions",
+          "count": 33,
+          "file": "data/ncert_offline/chapters/physics_units_and_dimensions.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 33
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 1
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 11
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 0
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 21
+            }
+          ]
+        },
+        {
+          "name": "Wave Optics",
+          "count": 44,
+          "file": "data/ncert_offline/chapters/physics_wave_optics.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 44
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 2
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 15
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 3
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 1
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 13
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 10
+            }
+          ]
+        },
+        {
+          "name": "Waves and Sound",
+          "count": 99,
+          "file": "data/ncert_offline/chapters/physics_waves_and_sound.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 99
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 16
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 10
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 1
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 10
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 37
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 25
+            }
+          ]
+        },
+        {
+          "name": "Work, Power and Energy",
+          "count": 102,
+          "file": "data/ncert_offline/chapters/physics_work_power_energy.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 102
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 18
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 15
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 1
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 8
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 40
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Zoology",
+      "chapters": [
+        {
+          "name": "Biotechnology - Principles and Processes",
+          "count": 311,
+          "file": "data/ncert_offline/chapters/zoology_biotechnology_principles_and_processes.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 311
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 166
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 33
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 25
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 22
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 35
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 8
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 22
+            }
+          ]
+        },
+        {
+          "name": "Biotechnology and Its Applications",
+          "count": 214,
+          "file": "data/ncert_offline/chapters/zoology_biotechnology_and_its_applications.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 214
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 113
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 16
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 24
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 22
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 17
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 5
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 17
+            }
+          ]
+        },
+        {
+          "name": "Body Fluids and Circulation",
+          "count": 272,
+          "file": "data/ncert_offline/chapters/zoology_body_fluids_and_circulation.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 272
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 193
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 12
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 9
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 2
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 25
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 8
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 23
+            }
+          ]
+        },
+        {
+          "name": "Breathing and Exchange of Gases",
+          "count": 282,
+          "file": "data/ncert_offline/chapters/zoology_breathing_and_exchange_of_gases.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 282
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 153
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 36
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 23
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 16
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 20
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 9
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 25
+            }
+          ]
+        },
+        {
+          "name": "Chemical Coordination and Integration",
+          "count": 319,
+          "file": "data/ncert_offline/chapters/zoology_chemical_coordination_and_integration.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 319
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 144
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 24
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 64
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 39
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 21
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 12
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 15
+            }
+          ]
+        },
+        {
+          "name": "Evolution",
+          "count": 240,
+          "file": "data/ncert_offline/chapters/zoology_evolution.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 240
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 104
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 34
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 40
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 22
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 14
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 4
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 22
+            }
+          ]
+        },
+        {
+          "name": "Excretory Products and their Elimination",
+          "count": 237,
+          "file": "data/ncert_offline/chapters/zoology_excretory_products_and_their_elimination.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 237
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 141
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 24
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 6
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 8
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 22
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 10
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 26
+            }
+          ]
+        },
+        {
+          "name": "Human Health and Diseases",
+          "count": 383,
+          "file": "data/ncert_offline/chapters/zoology_human_health_and_diseases.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 383
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 187
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 33
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 62
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 32
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 30
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 12
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 27
+            }
+          ]
+        },
+        {
+          "name": "Human Reproduction",
+          "count": 374,
+          "file": "data/ncert_offline/chapters/zoology_human_reproduction.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 374
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 133
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 45
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 78
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 45
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 29
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 22
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 22
+            }
+          ]
+        },
+        {
+          "name": "Locomotion and Movement",
+          "count": 299,
+          "file": "data/ncert_offline/chapters/zoology_locomotion_and_movement.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 299
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 155
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 26
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 30
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 32
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 25
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 11
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 20
+            }
+          ]
+        },
+        {
+          "name": "Microbes in Human Welfare",
+          "count": 245,
+          "file": "data/ncert_offline/chapters/zoology_microbes_in_human_welfare.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 245
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 137
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 32
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 33
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 1
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 17
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 7
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 18
+            }
+          ]
+        },
+        {
+          "name": "Molecular Basis of Inheritance",
+          "count": 399,
+          "file": "data/ncert_offline/chapters/zoology_molecular_basis_of_inheritance.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 399
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 238
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 71
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 8
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 8
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 30
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 13
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 31
+            }
+          ]
+        },
+        {
+          "name": "Neural Control and Coordination",
+          "count": 159,
+          "file": "data/ncert_offline/chapters/zoology_neural_control_and_coordination.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 159
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 96
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 9
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 6
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 15
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 16
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 6
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 11
+            }
+          ]
+        },
+        {
+          "name": "Organisms and Populations",
+          "count": 289,
+          "file": "data/ncert_offline/chapters/zoology_organisms_and_populations.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 289
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 153
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 26
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 31
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 18
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 40
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 9
+            },
+            {
+              "title": "NCERT Exemplar Qs",
+              "count": 12
+            }
+          ]
+        },
+        {
+          "name": "Principles of Inheritance and Variation",
+          "count": 389,
+          "file": "data/ncert_offline/chapters/zoology_principles_of_inheritance_and_variation.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 389
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 281
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 64
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 5
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 1
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 28
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 10
+            }
+          ]
+        },
+        {
+          "name": "Reproductive Health",
+          "count": 201,
+          "file": "data/ncert_offline/chapters/zoology_reproductive_health.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 201
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 98
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 24
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 31
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 22
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 18
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "name": "Structural Organisation in Animals",
+          "count": 214,
+          "file": "data/ncert_offline/chapters/zoology_structural_organisation_in_animals.json",
+          "sets": [
+            {
+              "title": "All NCERT",
+              "count": 214
+            },
+            {
+              "title": "NCERT Line By Line Qs",
+              "count": 136
+            },
+            {
+              "title": "Diagram Based Qs",
+              "count": 23
+            },
+            {
+              "title": "Assertion Reason Qs",
+              "count": 11
+            },
+            {
+              "title": "Multi Statement Qs",
+              "count": 9
+            },
+            {
+              "title": "Matrix Match Qs",
+              "count": 34
+            },
+            {
+              "title": "NCERT Exercises Qs",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

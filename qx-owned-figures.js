@@ -24,7 +24,7 @@
     return m;
   })();
   const UI_KEEP = /ic_content_exam_|cpyqb\/subjects|ncert_toolbox|app_assets\/img\/exams\//i;
-  const FIG_VER = "qxfig111";
+  const FIG_VER = "qxfig138";
   const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr|watermarked_images|\/pyq\/|AKCR2_|2026_modules/i;
   let LOCAL_FIG_MAP = {};
   try {
@@ -155,21 +155,32 @@
     if (!raw) return "";
     if (/^data:/i.test(raw)) return raw;
     if (UI_KEEP.test(raw) && !FOREIGN.test(raw) && !isCardArt(raw)) return raw;
-        const baseMatch = raw.match(/(qx-(?:book|self)-[a-f0-9]+)(?:\.(png|webp|jpe?g|gif))?/i);
+    const mappedLocal = localDiagramRemote(raw);
+    if (mappedLocal) {
+      if (needsWipe(mappedLocal) || isCardArt(mappedLocal)) {
+        return "/api/proxy-image?url=" + encodeURIComponent(mappedLocal) + "&clean=1&v=" + FIG_VER;
+      }
+      return mappedLocal;
+    }
+    const irodovDisp = irodovStorageUrl(raw);
+    if (irodovDisp) return irodovDisp;
+    const baseMatch = raw.match(/(qx-(?:book|self)-[a-f0-9]+)(?:\.(png|webp|jpe?g|gif))?/i);
     if (baseMatch) {
       const ext = baseMatch[2] ? baseMatch[2].toLowerCase() : "png";
       const name = baseMatch[1] + "." + ext;
       return storageUrlForPath("questions/figs/diagrams/" + name) + "&v=stem2";
     }
-    const irodovDisp = irodovStorageUrl(raw);
-    if (irodovDisp) return irodovDisp;
     if (/\/assets\/(book-covers|folder-icons|qx-figures|exam-logos)\//i.test(raw) && !isForeignHost(raw)) {
       return raw.split("?")[0] || raw;
     }
-    if (/\/assets\/diagrams\/qx-(?:book|org|self)-/i.test(raw) && !isForeignHost(raw)) {
-      const remote = localDiagramRemote(raw);
-      if (remote && remote !== raw) return displaySrc(remote);
-      return raw.split("?")[0] || raw;
+    // Hosting ignores assets/diagrams/** — map to Firebase Storage instead of 404 paths.
+    if (/\/assets\/diagrams\/(qx-org-[a-f0-9]+\.(?:png|webp|jpe?g))/i.test(raw)) {
+      const orgName = (raw.match(/\/assets\/diagrams\/(qx-org-[a-f0-9]+\.(?:png|webp|jpe?g))/i) || [])[1];
+      if (orgName) return storageUrlForPath("questions/figs/org/" + orgName) + "&v=stem2";
+    }
+    if (/\/assets\/diagrams\/(qx-(?:book|self)-[a-f0-9]+\.(?:png|webp|jpe?g))/i.test(raw)) {
+      const diagName = (raw.match(/\/assets\/diagrams\/(qx-(?:book|self)-[a-f0-9]+\.(?:png|webp|jpe?g))/i) || [])[1];
+      if (diagName) return storageUrlForPath("questions/figs/diagrams/" + diagName) + "&v=stem2";
     }
     if (/\/images\/[^?\s]+\.(png|jpe?g|webp|gif)/i.test(raw) && !isForeignHost(raw)) {
       return raw.split("?")[0] || raw;
@@ -243,14 +254,29 @@
   function rewriteHtml(html) {
     const s = String(html || "");
     if (!s || !/<img\b/i.test(s)) return s;
-    return s.replace(/\bsrc=(["'])([^"']+)\1/gi, (all, q, url) => {
-      if (/^data:/i.test(url)) return all;
+    // Only rewrite real src= — never data-qx-orig-src / data-qx-storage-src
+    // (\bsrc= wrongly matches those and duplicates/corrupts fallback attrs).
+    return s.replace(/<img\b([^>]*)>/gi, (full, attrs) => {
+      let a = String(attrs || "");
+      const srcM = a.match(/(^|\s)src=(["'])([^"']*)\2/i);
+      if (!srcM) return full;
+      const sp = srcM[1], q = srcM[2], url = srcM[3];
+      if (/^data:/i.test(url)) return full;
+      // Already on Quantrex Storage / clean proxy — leave intact (idempotent).
+      if (/\/api\/proxy-image/i.test(url) && /firebasestorage|quantrexacademy-app\.firebasestorage/i.test(url)) {
+        return full;
+      }
+      if (/firebasestorage\.googleapis\.com|quantrexacademy-app\.firebasestorage/i.test(url)
+        && /questions(%2F|\/)figs/i.test(url)) {
+        return full;
+      }
       const disp = displaySrc(url);
-      if (!disp || disp === url) return all;
+      if (!disp || disp === url) return full;
       const stored = ownedFigureUrl(url) || disp;
-      return "src=" + q + disp + q
-        + " data-qx-orig-src=" + q + stored + q
-        + " data-qx-storage-src=" + q + stored + q;
+      a = a.replace(/(^|\s)src=(["'])([^"']*)\2/i, sp + "src=" + q + disp + q);
+      if (!/\bdata-qx-orig-src=/i.test(a)) a += " data-qx-orig-src=" + q + stored + q;
+      if (!/\bdata-qx-storage-src=/i.test(a)) a += " data-qx-storage-src=" + q + stored + q;
+      return "<img" + a + ">";
     });
   }
 

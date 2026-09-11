@@ -1,0 +1,457 @@
+{
+  "id": "a1b2c3d4e5f6010203040508",
+  "title": "Black Book Advanced Problems in Mathematics",
+  "type": "exam",
+  "banner": "",
+  "exam": "JEE Main & Advanced",
+  "redirectType": "subject",
+  "hasExercises": true,
+  "count": 1201,
+  "modules": [
+    {
+      "id": "bbmod001",
+      "title": "Black Book \u2014 Advanced Problems in Mathematics",
+      "subtitle": "Vikas Gupta \u00b7 Pankaj Joshi \u00b7 Exercises 1\u20135",
+      "count": 1201,
+      "subjects": [
+        {
+          "id": "bbmath001",
+          "name": "Mathematics",
+          "count": 1201,
+          "chapters": [
+            {
+              "id": "black-book-ch1-functions",
+              "name": "Functions",
+              "count": 183,
+              "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch1-functions__single-choice",
+              "exercises": [
+                {
+                  "id": "single-choice",
+                  "name": "Exercise 1: Single Choice Problems",
+                  "short": "Ex 1",
+                  "count": 98,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch1-functions__single-choice"
+                },
+                {
+                  "id": "multiple-choice",
+                  "name": "Exercise 2: Multiple Choice Problems",
+                  "short": "Ex 2",
+                  "count": 24,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch1-functions__multiple-choice"
+                },
+                {
+                  "id": "comprehension",
+                  "name": "Exercise 3: Comprehension Type Problems",
+                  "short": "Ex 3",
+                  "count": 16,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch1-functions__comprehension"
+                },
+                {
+                  "id": "matrix-match",
+                  "name": "Exercise 4: Matrix Match Type Problems",
+                  "short": "Ex 4",
+                  "count": 7,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch1-functions__matrix-match"
+                },
+                {
+                  "id": "integer",
+                  "name": "Exercise 5: Integer Type Problems",
+                  "short": "Ex 5",
+                  "count": 38,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch1-functions__integer"
+                }
+              ]
+            },
+            {
+              "id": "black-book-ch2-limits",
+              "name": "Limits",
+              "count": 89,
+              "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch2-limits__single-choice",
+              "exercises": [
+                {
+                  "id": "single-choice",
+                  "name": "Exercise 1: Single Choice Problems",
+                  "short": "Ex 1",
+                  "count": 54,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch2-limits__single-choice"
+                },
+                {
+                  "id": "multiple-choice",
+                  "name": "Exercise 2: Multiple Choice Problems",
+                  "short": "Ex 2",
+                  "count": 16,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch2-limits__multiple-choice"
+                },
+                {
+                  "id": "comprehension",
+                  "name": "Exercise 3: Comprehension Type Problems",
+                  "short": "Ex 3",
+                  "count": 10,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch2-limits__comprehension"
+                },
+                {
+                  "id": "matrix-match",
+                  "name": "Exercise 4: Matrix Match Type Problems",
+                  "short": "Ex 4",
+                  "count": 2,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch2-limits__matrix-match"
+                },
+                {
+                  "id": "integer",
+                  "name": "Exercise 5: Integer Type Problems",
+                  "short": "Ex 5",
+                  "count": 7,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch2-limits__integer"
+                }
+              ]
+            },
+            {
+              "id": "black-book-ch3-continuity",
+              "name": "Continuity and Differentiability",
+              "count": 187,
+              "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch3-continuity__single-choice",
+              "exercises": [
+                {
+                  "id": "single-choice",
+                  "name": "Exercise 1: Single Choice Problems",
+                  "short": "Ex 1",
+                  "count": 90,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch3-continuity__single-choice"
+                },
+                {
+                  "id": "multiple-choice",
+                  "name": "Exercise 2: Multiple Choice Problems",
+                  "short": "Ex 2",
+                  "count": 36,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch3-continuity__multiple-choice"
+                },
+                {
+                  "id": "comprehension",
+                  "name": "Exercise 3: Comprehension Type Problems",
+                  "short": "Ex 3",
+                  "count": 32,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch3-continuity__comprehension"
+                },
+                {
+                  "id": "matrix-match",
+                  "name": "Exercise 4: Matrix Match Type Problems",
+                  "short": "Ex 4",
+                  "count": 5,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch3-continuity__matrix-match"
+                },
+                {
+                  "id": "integer",
+                  "name": "Exercise 5: Integer Type Problems",
+                  "short": "Ex 5",
+                  "count": 24,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch3-continuity__integer"
+                }
+              ]
+            },
+            {
+              "id": "black-book-ch4-aod",
+              "name": "Application of Derivatives",
+              "count": 145,
+              "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch4-aod__single-choice",
+              "exercises": [
+                {
+                  "id": "single-choice",
+                  "name": "Exercise 1: Single Choice Problems",
+                  "short": "Ex 1",
+                  "count": 70,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch4-aod__single-choice"
+                },
+                {
+                  "id": "multiple-choice",
+                  "name": "Exercise 2: Multiple Choice Problems",
+                  "short": "Ex 2",
+                  "count": 29,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch4-aod__multiple-choice"
+                },
+                {
+                  "id": "comprehension",
+                  "name": "Exercise 3: Comprehension Type Problems",
+                  "short": "Ex 3",
+                  "count": 16,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch4-aod__comprehension"
+                },
+                {
+                  "id": "matrix-match",
+                  "name": "Exercise 4: Matrix Match Type Problems",
+                  "short": "Ex 4",
+                  "count": 8,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch4-aod__matrix-match"
+                },
+                {
+                  "id": "integer",
+                  "name": "Exercise 5: Integer Type Problems",
+                  "short": "Ex 5",
+                  "count": 22,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch4-aod__integer"
+                }
+              ]
+            },
+            {
+              "id": "black-book-ch5-integration",
+              "name": "Indefinite and Definite Integration",
+              "count": 183,
+              "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch5-integration__single-choice",
+              "exercises": [
+                {
+                  "id": "single-choice",
+                  "name": "Exercise 1: Single Choice Problems",
+                  "short": "Ex 1",
+                  "count": 116,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch5-integration__single-choice"
+                },
+                {
+                  "id": "multiple-choice",
+                  "name": "Exercise 2: Multiple Choice Problems",
+                  "short": "Ex 2",
+                  "count": 16,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch5-integration__multiple-choice"
+                },
+                {
+                  "id": "comprehension",
+                  "name": "Exercise 3: Comprehension Type Problems",
+                  "short": "Ex 3",
+                  "count": 17,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch5-integration__comprehension"
+                },
+                {
+                  "id": "matrix-match",
+                  "name": "Exercise 4: Matrix Match Type Problems",
+                  "short": "Ex 4",
+                  "count": 5,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch5-integration__matrix-match"
+                },
+                {
+                  "id": "integer",
+                  "name": "Exercise 5: Integer Type Problems",
+                  "short": "Ex 5",
+                  "count": 29,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__black-book-ch5-integration__integer"
+                }
+              ]
+            },
+            {
+              "id": "quadratic-equations",
+              "name": "Quadratic Equation",
+              "count": 269,
+              "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__quadratic-equations__single-choice",
+              "exercises": [
+                {
+                  "id": "single-choice",
+                  "name": "Exercise 1: Single Choice Problems",
+                  "short": "Ex 1",
+                  "count": 153,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__quadratic-equations__single-choice"
+                },
+                {
+                  "id": "multiple-choice",
+                  "name": "Exercise 2: Multiple Choice Problems",
+                  "short": "Ex 2",
+                  "count": 44,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__quadratic-equations__multiple-choice"
+                },
+                {
+                  "id": "comprehension",
+                  "name": "Exercise 3: Comprehension Type Problems",
+                  "short": "Ex 3",
+                  "count": 23,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__quadratic-equations__comprehension"
+                },
+                {
+                  "id": "matrix-match",
+                  "name": "Exercise 4: Matrix Match Type Problems",
+                  "short": "Ex 4",
+                  "count": 4,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__quadratic-equations__matrix-match"
+                },
+                {
+                  "id": "integer",
+                  "name": "Exercise 5: Integer Type Problems",
+                  "short": "Ex 5",
+                  "count": 45,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__quadratic-equations__integer"
+                }
+              ]
+            },
+            {
+              "id": "sequence-and-series",
+              "name": "Sequences and Series",
+              "count": 10,
+              "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__sequence-and-series__single-choice",
+              "exercises": [
+                {
+                  "id": "single-choice",
+                  "name": "Exercise 1: Single Choice Problems",
+                  "short": "Ex 1",
+                  "count": 10,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__sequence-and-series__single-choice"
+                },
+                {
+                  "id": "multiple-choice",
+                  "name": "Exercise 2: Multiple Choice Problems",
+                  "short": "Ex 2",
+                  "count": 0,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__sequence-and-series__multiple-choice"
+                },
+                {
+                  "id": "comprehension",
+                  "name": "Exercise 3: Comprehension Type Problems",
+                  "short": "Ex 3",
+                  "count": 0,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__sequence-and-series__comprehension"
+                },
+                {
+                  "id": "matrix-match",
+                  "name": "Exercise 4: Matrix Match Type Problems",
+                  "short": "Ex 4",
+                  "count": 0,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__sequence-and-series__matrix-match"
+                },
+                {
+                  "id": "integer",
+                  "name": "Exercise 5: Integer Type Problems",
+                  "short": "Ex 5",
+                  "count": 0,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__sequence-and-series__integer"
+                }
+              ]
+            },
+            {
+              "id": "determinants",
+              "name": "Determinants",
+              "count": 49,
+              "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__determinants__single-choice",
+              "exercises": [
+                {
+                  "id": "single-choice",
+                  "name": "Exercise 1: Single Choice Problems",
+                  "short": "Ex 1",
+                  "count": 26,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__determinants__single-choice"
+                },
+                {
+                  "id": "multiple-choice",
+                  "name": "Exercise 2: Multiple Choice Problems",
+                  "short": "Ex 2",
+                  "count": 8,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__determinants__multiple-choice"
+                },
+                {
+                  "id": "comprehension",
+                  "name": "Exercise 3: Comprehension Type Problems",
+                  "short": "Ex 3",
+                  "count": 3,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__determinants__comprehension"
+                },
+                {
+                  "id": "matrix-match",
+                  "name": "Exercise 4: Matrix Match Type Problems",
+                  "short": "Ex 4",
+                  "count": 12,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__determinants__matrix-match"
+                },
+                {
+                  "id": "integer",
+                  "name": "Exercise 5: Integer Type Problems",
+                  "short": "Ex 5",
+                  "count": 0,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__determinants__integer"
+                }
+              ]
+            },
+            {
+              "id": "adv-area-under-curves",
+              "name": "Area Under Curves",
+              "count": 37,
+              "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__adv-area-under-curves__single-choice",
+              "exercises": [
+                {
+                  "id": "single-choice",
+                  "name": "Exercise 1: Single Choice Problems",
+                  "short": "Ex 1",
+                  "count": 18,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__adv-area-under-curves__single-choice"
+                },
+                {
+                  "id": "multiple-choice",
+                  "name": "Exercise 2: Multiple Choice Problems",
+                  "short": "Ex 2",
+                  "count": 4,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__adv-area-under-curves__multiple-choice"
+                },
+                {
+                  "id": "comprehension",
+                  "name": "Exercise 3: Comprehension Type Problems",
+                  "short": "Ex 3",
+                  "count": 6,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__adv-area-under-curves__comprehension"
+                },
+                {
+                  "id": "matrix-match",
+                  "name": "Exercise 4: Matrix Match Type Problems",
+                  "short": "Ex 4",
+                  "count": 1,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__adv-area-under-curves__matrix-match"
+                },
+                {
+                  "id": "integer",
+                  "name": "Exercise 5: Integer Type Problems",
+                  "short": "Ex 5",
+                  "count": 8,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__adv-area-under-curves__integer"
+                }
+              ]
+            },
+            {
+              "id": "adv-differential-equations",
+              "name": "Differential Equations",
+              "count": 49,
+              "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__adv-differential-equations__single-choice",
+              "exercises": [
+                {
+                  "id": "single-choice",
+                  "name": "Exercise 1: Single Choice Problems",
+                  "short": "Ex 1",
+                  "count": 27,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__adv-differential-equations__single-choice"
+                },
+                {
+                  "id": "multiple-choice",
+                  "name": "Exercise 2: Multiple Choice Problems",
+                  "short": "Ex 2",
+                  "count": 6,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__adv-differential-equations__multiple-choice"
+                },
+                {
+                  "id": "comprehension",
+                  "name": "Exercise 3: Comprehension Type Problems",
+                  "short": "Ex 3",
+                  "count": 8,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__adv-differential-equations__comprehension"
+                },
+                {
+                  "id": "matrix-match",
+                  "name": "Exercise 4: Matrix Match Type Problems",
+                  "short": "Ex 4",
+                  "count": 2,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__adv-differential-equations__matrix-match"
+                },
+                {
+                  "id": "integer",
+                  "name": "Exercise 5: Integer Type Problems",
+                  "short": "Ex 5",
+                  "count": 6,
+                  "key": "a1b2c3d4e5f6010203040508__bbmod001__bbmath001__adv-differential-equations__integer"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

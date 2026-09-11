@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mpe6czsw",
+  "title": "Chemical Bonding & Molecular Structure Test - 5 (Topic Test)",
+  "type": "topic",
+  "section": "Chemical Bonding & Molecular Structure",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-08-24T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "e59f4171-68a2-458e-af45-109642f26fa9",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61mpe6czsw",
+    "defaultLanguage": "en",
+    "description": "Weak Forces and Hydrogen Bonding, Molecular Orbital Theory, Polarization, Hydrolysis",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-24T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mt58kfrq",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If Pauli exclusion principle is not applicable and one orbital has three electrons, then last electrons of N<sub>2</sub> molecule will be present in......</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>σ(2s) orbital</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>σ<sup>* </sup>(2s) orbital</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>π<sup>*</sup>2p<sub>y</sub> orbital</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>π2p<sub>y</sub> orbital</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p><strong>Answer: (D) $\\pi 2p_y$ orbital</strong></p>\n<p>A nitrogen molecule has a total of $14$ electrons ($7$ from each N atom). These electrons are filled into the molecular orbitals in order of increasing energy:</p>\n<p>$$\\sigma 1s < \\sigma^* 1s < \\sigma 2s < \\sigma^* 2s < \\pi 2p_x = \\pi 2p_y < \\sigma 2p_z$$</p>\n<p>Normally each orbital takes only $2$ electrons because of the Pauli exclusion principle. But here we are told that this restriction is removed and every orbital can hold $3$ electrons. So the capacity of each molecular orbital becomes three instead of two.</p>\n<p>Now fill the electrons:</p>\n<p>$\\sigma 1s \\to 3$ electrons</p>\n<p>$\\sigma^* 1s \\to 3$ electrons</p>\n<p>$\\sigma 2s \\to 3$ electrons</p>\n<p>$\\sigma^* 2s \\to 3$ electrons</p>\n<p>That accounts for $3+3+3+3 = 12$ electrons.</p>\n<p>Only $2$ electrons are left, and the next available orbitals are the two degenerate $\\pi$ orbitals, $\\pi 2p_x$ and $\\pi 2p_y$. Since these have equal energy, Hund's rule still applies, so the electrons go in singly — one into $\\pi 2p_x$ and the last one into $\\pi 2p_y$.</p>\n<p>So the configuration becomes</p>\n<p>$$\\sigma 1s^3\\ \\sigma^* 1s^3\\ \\sigma 2s^3\\ \\sigma^* 2s^3\\ \\pi 2p_x^1\\ \\pi 2p_y^1$$</p>\n<p>The last electron therefore sits in the $\\pi 2p_y$ orbital.</p>\n<p>A small point worth noticing: the $\\pi^* 2p_y$ orbital is antibonding and lies much higher in energy, so electrons can reach it only after the bonding $\\pi$ and $\\sigma 2p_z$ orbitals are filled. With only $14$ electrons and larger orbital capacity, the filling stops well before that.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि पाउली का अपवर्जन सिद्धांत लागू नहीं होता है और एक कक्षक में तीन इलेक्ट्रॉन होते हैं, तो N<sub>2</sub> अणु का अंतिम इलेक्ट्रॉन किसमें उपस्थित होगा......</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>σ(2s) कक्षक</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>σ<sup>* </sup>(2s) कक्षक</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>π<sup>*</sup>2p<sub>y</sub> कक्षक</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>π2p<sub>y</sub> कक्षक</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "molecular-orbital-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt59bxoy",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The incorrect statements regarding molecular orbital(s) are :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>If there is a nodal plane perpendicular to the internuclear axis and lying between the nuclei of bonded atoms, then the corresponding orbital is an antibonding M.O.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>If a nodal plane lies in the internuclear axis, then the corresponding orbitals are pi(π) bonding M.O.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>The σ-bonding molecular orbital does not contain nodal planes containing the internuclear axis.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>The δ-bonding molecular orbital possesses three nodal planes containing the internuclear axis.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>A. This option is correct because the defining characteristic of an antibonding molecular orbital $\\left(\\sigma^*\\right.$ or $\\left.\\pi^*\\right)$ is the presence of a nodal plane between the two nuclei, perpendicular to the internuclear axis. This plane represents a region of zero electron density, which leads to nuclear repulsion rather than bonding.</p>\n<p>B. This option is correct because a $\\pi$-bonding MO has one nodal plane which contains the internuclear axis. Here, the electron density lies above and below the axis.</p>\n<p>C. This option is correct because a $\\sigma$-bonding MO is cylindrically symmetric about the internuclear axis and has no nodal plane containing the axis.</p>\n<p>D. This is an incorrect option because a $\\delta$-bonding MO has two nodal planes containing the internuclear axis, not three.</p>\n<p>Answer: D</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>आण्विक कक्षक(कों) के संबंध में गलत कथन हैं :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>यदि अंतर्नाभिकीय अक्ष के लंबवत तथा बंधित परमाणुओं के नाभिकों के मध्य कोई नोडल तल स्थित है, तो संगत कक्षक एक प्रतिआबंधी M.O. है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>यदि कोई नोडल तल अंतर्नाभिकीय अक्ष में स्थित है, तो संगत कक्षक pi(π) आबंधी M.O. होते हैं।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>σ-आबंधी आण्विक कक्षक में अंतर्नाभिकीय अक्ष को शामिल करने वाले नोडल तल नहीं होते हैं।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>δ-आबंधी आण्विक कक्षक में अंतर्नाभिकीय अक्ष को शामिल करने वाले तीन नोडल तल होते हैं।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "molecular-orbital-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt5wno49",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following combination will result in the formation of a $\\pi$-BMO?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt5whd78/8c0a7c8a-e6b5-467d-a757-2e11c61f7b98/9feb5d40-9efe-11f1-b99b-9d545e360f81/file-6y3zli1mt5whd79.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt5whd78/8c0a7c8a-e6b5-467d-a757-2e11c61f7b98/9feb5d40-9efe-11f1-b99b-9d545e360f81/file-6y3zli1mt5whd79.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt5whxvg/c45730af-610d-4df2-80e7-c444276c7fdd/afe37fc0-9efe-11f1-b99b-9d545e360f81/file-6y3zli1mt5whxvh.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt5whxvg/c45730af-610d-4df2-80e7-c444276c7fdd/afe37fc0-9efe-11f1-b99b-9d545e360f81/file-6y3zli1mt5whxvh.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt5wj0sj/061c6cfe-8a59-484e-bb1f-60b5b6cc4bcc/cdf3e130-9efe-11f1-b99b-9d545e360f81/file-6y3zli1mt5wj0sk.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt5wj0sj/061c6cfe-8a59-484e-bb1f-60b5b6cc4bcc/cdf3e130-9efe-11f1-b99b-9d545e360f81/file-6y3zli1mt5wj0sk.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt5wjzhq/c2427e33-7b3f-41bc-9d26-e0fe39e83b78/e8c1e8e0-9efe-11f1-b99b-9d545e360f81/file-6y3zli1mt5wjzhr.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt5wjzhq/c2427e33-7b3f-41bc-9d26-e0fe39e83b78/e8c1e8e0-9efe-11f1-b99b-9d545e360f81/file-6y3zli1mt5wjzhr.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt5wm8re/653f0da6-08ef-4cc9-bdf9-ce83135e8387/278913a0-9eff-11f1-b99b-9d545e360f81/file-6y3zli1mt5wm8rf.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt5wm8re/653f0da6-08ef-4cc9-bdf9-ce83135e8387/278913a0-9eff-11f1-b99b-9d545e360f81/file-6y3zli1mt5wm8rf.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से किस संयोजन के परिणामस्वरूप $\\pi$-BMO का निर्माण होगा?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt5whd78/8c0a7c8a-e6b5-467d-a757-2e11c61f7b98/9feb5d40-9efe-11f1-b99b-9d545e360f81/file-6y3zli1mt5whd79.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt5whd78/8c0a7c8a-e6b5-467d-a757-2e11c61f7b98/9feb5d40-9efe-11f1-b99b-9d545e360f81/file-6y3zli1mt5whd79.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt5whxvg/c45730af-610d-4df2-80e7-c444276c7fdd/afe37fc0-9efe-11f1-b99b-9d545e360f81/file-6y3zli1mt5whxvh.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt5whxvg/c45730af-610d-4df2-80e7-c444276c7fdd/afe37fc0-9efe-11f1-b99b-9d545e360f81/file-6y3zli1mt5whxvh.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt5wj0sj/061c6cfe-8a59-484e-bb1f-60b5b6cc4bcc/cdf3e130-9efe-11f1-b99b-9d545e360f81/file-6y3zli1mt5wj0sk.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt5wj0sj/061c6cfe-8a59-484e-bb1f-60b5b6cc4bcc/cdf3e130-9efe-11f1-b99b-9d545e360f81/file-6y3zli1mt5wj0sk.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt5wjzhq/c2427e33-7b3f-41bc-9d26-e0fe39e83b78/e8c1e8e0-9efe-11f1-b99b-9d545e360f81/file-6y3zli1mt5wjzhr.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt5wjzhq/c2427e33-7b3f-41bc-9d26-e0fe39e83b78/e8c1e8e0-9efe-11f1-b99b-9d545e360f81/file-6y3zli1mt5wjzhr.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "molecular-orbital-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt5wvu0p",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of lobes and nodal planes present in $\\pi^* 3d_{xy}$ respectively will be</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>4 and 3.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>6 and 2.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>8 and 3.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>8 and 2.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>There will be eight lobes and two nodal planes in $\\pi^* 3 d_{x y}$</p>\n\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt5wuxgy/205a0f51-e4fd-408c-afea-dc2568dfe7e7/1918ad20-9f00-11f1-b99b-9d545e360f81/file-6y3zli1mt5wuxgz.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt5wuxgy/205a0f51-e4fd-408c-afea-dc2568dfe7e7/1918ad20-9f00-11f1-b99b-9d545e360f81/file-6y3zli1mt5wuxgz.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\pi^* 3d_{xy}$ में उपस्थित लोब और नोडल तलों की संख्या क्रमशः होगी</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>4 और 3</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>6 और 2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>8 और 3</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>8 और 2</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "molecular-orbital-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt6i93v2",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following will form hydrogen bond with another molecule of same substance?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>CH<sub>2</sub>Cl<sub>2</sub></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>H<sub>3</sub>COCH<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>H<sub>3</sub>PO<sub>4</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>PH<sub>3</sub></p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The correct option is <strong>C: $H_3PO_4$</strong>.</p>\n<p>Hydrogen bonding takes place when hydrogen is directly attached to a highly electronegative atom like $F$, $O$, or $N$. The molecule should also have a lone pair on an electronegative atom so that another molecule can attract that hydrogen.</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt6i77jz/6bd58c93-a8da-4cd4-89c1-40e4591af5fb/8e4f0000-9f53-11f1-94ab-a7a63d6e5487/file-6y3zli1mt6i77k0.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt6i77jz/6bd58c93-a8da-4cd4-89c1-40e4591af5fb/8e4f0000-9f53-11f1-94ab-a7a63d6e5487/file-6y3zli1mt6i77k0.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>In $H_3PO_4$ phosphoric acid, the structure has $O-H$ bonds:</p>\n<p>$$ H_3PO_4 \\text{ has } P-OH \\text{ groups} $$</p>\n<p>Here, hydrogen is directly bonded to oxygen. Oxygen is highly electronegative and also has lone pairs. So one molecule of $H_3PO_4$ can form hydrogen bonds with another molecule of $H_3PO_4$.</p>\n<p>Checking the other options:</p>\n<p>$CH_2Cl_2$ has hydrogen attached to carbon, not to $F$, $O$, or $N$, so it does not form hydrogen bonding with itself.</p>\n<p>$H_3COCH_3$, or $CH_3OCH_3$, has an oxygen atom, but no hydrogen is directly attached to oxygen. So it cannot form hydrogen bonds with another molecule of the same substance.</p>\n<p>$PH_3$ has $P-H$ bonds, but phosphorus is not electronegative enough to form strong hydrogen bonding like $N$, $O$, or $F$.</p>\n<p>So, the substance that forms hydrogen bonds with another molecule of the same substance is:</p>\n<p>$$ \\boxed{H_3PO_4} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से कौन समान पदार्थ के दूसरे अणु के साथ हाइड्रोजन बंध बनाएगा?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>CH<sub>2</sub>Cl<sub>2</sub></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>H<sub>3</sub>COCH<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>H<sub>3</sub>PO<sub>4</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>PH<sub>3</sub></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hydrogen-bonding",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt6ilanj",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which orbitals of two atoms produce δ-bond (four lobe interaction)?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$d_{z^2}$ &rarr; Overlap on z-axis &larr; $d_{z^2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$d_{xy}$ &rarr; Overlap on x-axis &larr; $d_{xy}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$d_{x^2-y^2}$ &rarr; Overlap on y-axis &larr; $d_{x^2-y^2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$d_{xz}$ &rarr; Overlap on y-axis &larr; $d_{xx}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The correct choice is <strong>Option D</strong>, but it should be read as</p>\n<p>$$ d_{xz} \\;\\rightarrow\\; \\text{overlap along } y\\text{-axis} \\;\\leftarrow\\; d_{xz} $$</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt6ik453/08556e84-4072-42eb-9668-cecec098031e/f530a070-9f54-11f1-94ab-a7a63d6e5487/file-6y3zli1mt6ik454.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt6ik453/08556e84-4072-42eb-9668-cecec098031e/f530a070-9f54-11f1-94ab-a7a63d6e5487/file-6y3zli1mt6ik454.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>A $\\delta$-bond is formed by sidewise overlap of two $d$-orbitals in such a way that <strong>four lobes interact</strong>.</p>\n<p>For a $\\delta$-bond, the internuclear axis should not pass through the lobes directly. Instead, the lobes should lie around the axis, giving four regions of overlap.</p>\n<p>Here, if the bond axis is the $y$-axis, then the orbital $d_{xz}$ is suitable because $d_{xz}$ has lobes in the $xz$-plane. The $y$-axis passes between these lobes, so four-lobe sidewise overlap is possible.</p>\n<p>So,</p>\n<p>$$ d_{xz} - d_{xz} $$</p>\n<p>overlap along the $y$-axis gives a $\\delta$-bond.</p>\n<p>Option A gives a $\\sigma$-bond because $d_{z^2}$ overlaps directly along the $z$-axis.</p>\n<p>Option B gives $\\pi$-type overlap along the $x$-axis.</p>\n<p>Option C has lobes along the $y$-axis, so it is not the usual $\\delta$ overlap.</p>\n<p>Also, $d_{xx}$ is not a standard $d$-orbital. So Option D is correct only if the second orbital is meant to be $d_{xz}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो परमाणुओं के कौन से कक्षक δ-आबंध (चार पालि अन्योन्यक्रिया) बनाते हैं?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$d_{z^2}$ &rarr; z-अक्ष पर अतिव्यापन &larr; $d_{z^2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$d_{xy}$ &rarr; x-अक्ष पर अतिव्यापन &larr; $d_{xy}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$d_{x^2-y^2}$ &rarr; y-अक्ष पर अतिव्यापन &larr; $d_{x^2-y^2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$d_{xz}$ &rarr; y-अक्ष पर अतिव्यापन &larr; $d_{xx}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "molecular-orbital-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt6jkebq",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following will have a higher boiling point than <i>meta</i>-nitrophenol?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><i>ortho</i>-nitrophenol</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><i>para</i>-nitrophenol</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Benzene</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Nitrobenzene</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Ortho-nitrophenol has a lower boiling point than meta-nitrophenol due to intramolecular hydrogen bonding in the former.</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt6jjtbx/39c0cf27-210a-4455-9b18-2be74b254c84/d5f815e0-9f58-11f1-94ab-a7a63d6e5487/file-6y3zli1mt6jjtby.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt6jjtbx/39c0cf27-210a-4455-9b18-2be74b254c84/d5f815e0-9f58-11f1-94ab-a7a63d6e5487/file-6y3zli1mt6jjtby.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Also, benzene and nitrobenzene do not show hydrogen bonding, thus will have lower boiling point.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से किसका क्वथनांक <i>मेटा</i>-नाइट्रोफीनॉल से अधिक होगा?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><i>ऑर्थो</i>-नाइट्रोफीनॉल</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><i>पैरा</i>-नाइट्रोफीनॉल</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>बेंजीन</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>नाइट्रोबेंजीन</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hydrogen-bonding",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt6j6nbi",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The polarizability of the anions changes as</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Cl<sup>−</sup> &lt; S<sup>2−</sup> &lt; P<sup>3−</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>F<sup>−</sup> &gt; Cl<sup>−</sup> &gt; Br<sup>−</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>F<sup>−</sup> &gt; O<sup>2−</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>O<sup>2−</sup> &gt; S<sup>2−</sup></p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Polarizability means how easily the electron cloud of an anion can be distorted.</p>\n<p>An anion becomes more polarizable when:</p>\n<ul>\n<li><p>its size is larger,</p></li>\n<li><p>its negative charge is higher,</p></li>\n<li><p>its effective nuclear attraction on outer electrons is weaker.</p></li>\n</ul>\n<p>Now check the options.</p>\n<p>For option A:</p>\n<p>$$ \\text{Cl}^- ,\\ \\text{S}^{2-},\\ \\text{P}^{3-} $$</p>\n<p>These three ions are isoelectronic. Each has $18$ electrons.</p>\n<p>But their nuclear charges are different:</p>\n<p>$$ \\text{Cl} = 17,\\quad \\text{S} = 16,\\quad \\text{P} = 15 $$</p>\n<p>In an isoelectronic series, the ion with smaller nuclear charge has larger size because the same number of electrons are held less strongly.</p>\n<p>So the size order is:</p>\n<p>$$ \\text{Cl}^- < \\text{S}^{2-} < \\text{P}^{3-} $$</p>\n<p>Hence polarizability also increases in the same order:</p>\n<p>$$ \\text{Cl}^- < \\text{S}^{2-} < \\text{P}^{3-} $$</p>\n<p>So the correct option is:</p>\n<p>$$ \\boxed{\\text{Option A}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>ऋणायनों की ध्रुवणता इस प्रकार परिवर्तित होती है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Cl<sup>−</sup> &lt; S<sup>2−</sup> &lt; P<sup>3−</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>F<sup>−</sup> &gt; Cl<sup>−</sup> &gt; Br<sup>−</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>F<sup>−</sup> &gt; O<sup>2−</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>O<sup>2−</sup> &gt; S<sup>2−</sup></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "ionic-bond",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt6jccn2",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following does not undergo hydrolysis?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>SF<sub>6</sub> and TeF<sub>6</sub></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>CCl<sub>4</sub> and SiCl<sub>4</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>CCl<sub>4</sub> and SF<sub>6</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>SiCl<sub>4</sub> and TeF<sub>6</sub></p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<ol>\n<li><strong>Carbon tetrachloride ($\\text{CCl}_4$):</strong>  </li>\n</ol>\n<p>Hydrolysis requires the central atom to accept a lone pair of electrons from a water molecule. The central carbon atom in $\\text{CCl}_4$ belongs to the second period and has the electronic configuration $1s^2\\, 2s^2\\, 2p^2$. Because it lacks vacant $d$-orbitals in its valence shell, it cannot expand its octet to accommodate the incoming lone pair from water. Therefore, $\\text{CCl}_4$ does not undergo hydrolysis.</p>\n<ol start=\"2\">\n<li><strong>Silicon tetrachloride ($\\text{SiCl}_4$):</strong>  </li>\n</ol>\n<p>Silicon belongs to the third period and has vacant $3d$-orbitals. It easily accepts lone pairs of electrons from water molecules and undergoes rapid hydrolysis to form silicic acid:</p>\n<p>$$\\text{SiCl}_4 + 4\\text{H}_2\\text{O} \\rightarrow \\text{Si(OH)}_4 + 4\\text{HCl}$$</p>\n<ol start=\"3\">\n<li><strong>Sulfur hexafluoride ($\\text{SF}_6$):</strong>  </li>\n</ol>\n<p>Although sulfur has vacant $d$-orbitals, it is surrounded by six small and highly electronegative fluorine atoms. These six fluorine atoms tightly shield the central sulfur atom, causing high steric hindrance. As a result, water molecules cannot approach the sulfur atom, making $\\text{SF}_6$ chemically inert and resistant to hydrolysis.</p>\n<ol start=\"4\">\n<li><strong>Tellurium hexafluoride ($\\text{TeF}_6$):</strong>  </li>\n</ol>\n<p>Tellurium is a much larger atom than sulfur. Due to its larger size, the steric crowding around tellurium is significantly reduced, allowing water molecules to attack the central atom. Hence, $\\text{TeF}_6$ undergoes hydrolysis easily.</p>\n<p>Both $\\text{CCl}_4$ and $\\text{SF}_6$ do not undergo hydrolysis.</p>\n<p>Correct Option: <strong>Option C</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से किसका जल अपघटन नहीं होता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>SF<sub>6</sub> और TeF<sub>6</sub></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>CCl<sub>4</sub> और SiCl<sub>4</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>CCl<sub>4</sub> और SF<sub>6</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>SiCl<sub>4</sub> और TeF<sub>6</sub></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hydrolysis",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt6joaio",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Intramolecular hydrogen bonding is shown by</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>salicylaldehyde.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>salicylic acid.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>chloral hydrate.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>all of these.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mt6jniaz/f6939587-1ca6-40ee-b004-42bed62075a0/3cb02ac0-9f59-11f1-94ab-a7a63d6e5487/file-6y3zli1mt6jnib0.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mt6jniaz/f6939587-1ca6-40ee-b004-42bed62075a0/3cb02ac0-9f59-11f1-94ab-a7a63d6e5487/file-6y3zli1mt6jnib0.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अंतःअणुक हाइड्रोजन आबंधन किसके द्वारा दर्शाया जाता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>सैलिसिल्डिहाइड</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>सैलिसिलिक अम्ल</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>क्लोरल हाइड्रेट</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इन सभी</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hydrogen-bonding",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mt6k5csj",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Write sum of the bond order of following species: $\\mathrm{C}_2^{2-}, \\mathrm{B}_2, \\mathrm{NO}, \\mathrm{O}_2^{+}, \\mathrm{O}_2^{-}, \\mathrm{Cl}_2, \\mathrm{~S}_2$ [upto nearest integer]</p>",
+                "options": [],
+                "answer": "14",
+                "explanation": "\n<p>The formula for calculating bond order is:</p>\n<p>$$\\text{Bond Order} = \\frac{N_b - N_a}{2}$$</p>\n<p>where $N_b$ is the number of electrons in bonding molecular orbitals and $N_a$ is the number of electrons in antibonding molecular orbitals.</p>\n<p>For diatomic species with up to 14 electrons, the order of filling molecular orbitals is:</p>\n<p>$$\\sigma 1s < \\sigma^* 1s < \\sigma 2s < \\sigma^* 2s < (\\pi 2p_x = \\pi 2p_y) < \\sigma 2p_z < (\\pi^* 2p_x = \\pi^* 2p_y) < \\sigma^* 2p_z$$</p>\n<p>For species with more than 14 electrons, $\\sigma 2p_z$ is filled before the $\\pi 2p$ orbitals:</p>\n<p>$$\\sigma 1s < \\sigma^* 1s < \\sigma 2s < \\sigma^* 2s < \\sigma 2p_z < (\\pi 2p_x = \\pi 2p_y) < (\\pi^* 2p_x = \\pi^* 2p_y) < \\sigma^* 2p_z$$</p>\n<ol>\n<li>$\\mathrm{C}_2^{2-}$</li>\n</ol>\n<p>Total electrons $= 6 + 6 + 2 = 14$</p>\n<p>Configuration: $\\sigma 1s^2 \\sigma^* 1s^2 \\sigma 2s^2 \\sigma^* 2s^2 \\pi 2p_x^2 \\pi 2p_y^2 \\sigma 2p_z^2$</p>\n<p>$$\\text{Bond Order} = \\frac{10 - 4}{2} = 3$$</p>\n<ol start=\"2\">\n<li>$\\mathrm{B}_2$</li>\n</ol>\n<p>Total electrons $= 5 + 5 = 10$</p>\n<p>Configuration: $\\sigma 1s^2 \\sigma^* 1s^2 \\sigma 2s^2 \\sigma^* 2s^2 \\pi 2p_x^1 \\pi 2p_y^1$</p>\n<p>$$\\text{Bond Order} = \\frac{6 - 4}{2} = 1$$</p>\n<ol start=\"3\">\n<li>$\\mathrm{NO}$</li>\n</ol>\n<p>Total electrons $= 7 + 8 = 15$</p>\n<p>Configuration: $\\sigma 1s^2 \\sigma^* 1s^2 \\sigma 2s^2 \\sigma^* 2s^2 \\sigma 2p_z^2 \\pi 2p_x^2 \\pi 2p_y^2 \\pi^* 2p_x^1$</p>\n<p>$$\\text{Bond Order} = \\frac{10 - 5}{2} = 2.5$$</p>\n<ol start=\"4\">\n<li>$\\mathrm{O}_2^{+}$</li>\n</ol>\n<p>Total electrons $= 8 + 8 - 1 = 15$</p>\n<p>Configuration: $\\sigma 1s^2 \\sigma^* 1s^2 \\sigma 2s^2 \\sigma^* 2s^2 \\sigma 2p_z^2 \\pi 2p_x^2 \\pi 2p_y^2 \\pi^* 2p_x^1$</p>\n<p>$$\\text{Bond Order} = \\frac{10 - 5}{2} = 2.5$$</p>\n<ol start=\"5\">\n<li>$\\mathrm{O}_2^{-}$</li>\n</ol>\n<p>Total electrons $= 8 + 8 + 1 = 17$</p>\n<p>Configuration: $\\sigma 1s^2 \\sigma^* 1s^2 \\sigma 2s^2 \\sigma^* 2s^2 \\sigma 2p_z^2 \\pi 2p_x^2 \\pi 2p_y^2 \\pi^* 2p_x^2 \\pi^* 2p_y^1$</p>\n<p>$$\\text{Bond Order} = \\frac{10 - 7}{2} = 1.5$$</p>\n<ol start=\"6\">\n<li>$\\mathrm{Cl}_2$</li>\n</ol>\n<p>Chlorine forms a single covalent bond between the two atoms to complete their octets.</p>\n<p>$$\\text{Bond Order} = 1$$</p>\n<ol start=\"7\">\n<li>$\\mathrm{S}_2$</li>\n</ol>\n<p>$\\mathrm{S}_2$ has 12 valence electrons and is isoelectronic with $\\mathrm{O}_2$ in its valence shell, having two unpaired electrons in the antibonding orbitals.</p>\n<p>$$\\text{Bond Order} = 2$$</p>\n<p>Now, adding the bond orders of all the given species:</p>\n<p>$$\\text{Sum} = 3 + 1 + 2.5 + 2.5 + 1.5 + 1 + 2 = 13.5$$</p>\n<p>Rounding off to the nearest integer gives $14$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित स्पीशीज की आबंध कोटि (bond order) का योग लिखिए: $\\mathrm{C}_2^{2-}, \\mathrm{B}_2, \\mathrm{NO}, \\mathrm{O}_2^{+}, \\mathrm{O}_2^{-}, \\mathrm{Cl}_2, \\mathrm{~S}_2$ [निकटतम पूर्णांक तक]</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "molecular-orbital-theory",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mt6kcefj",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the following orbitals.</p>\n<p>(i) $3 p_x$</p>\n<p>(ii) $4 d_{z^2}$</p>\n<p>(iii) $3 d_{x^2-y^2}$</p>\n<p>(iv) $3 d_{x y}$</p>\n<p>Then, calculate the value of \" $a+b+c$ \".</p>\n<p>$a=$ Total number of grade orbitals in the above given orbitals.</p>\n<p>$b=$ Total number of ungerade orbitals in the above given orbitals.</p>\n<p>$c=$ Total number of axial orbitals in the above given orbitals.</p>",
+                "options": [],
+                "answer": "7",
+                "explanation": "<p>For atomic orbitals, gerade or ungerade character depends on the value of azimuthal quantum number $l$.</p>\n<p>If $l$ is even, the orbital is gerade $(g)$.</p>\n<p>If $l$ is odd, the orbital is ungerade $(u)$.</p>\n<p>Now,</p>\n<p>$3p_x$ is a $p$-orbital, so $l=1$.</p>\n<p>Since $l$ is odd, $3p_x$ is ungerade.</p>\n<p>$4d_{z^2}$, $3d_{x^2-y^2}$ and $3d_{xy}$ are all $d$-orbitals, so $l=2$.</p>\n<p>Since $l$ is even, all these $d$-orbitals are gerade.</p>\n<p>So,</p>\n<p>$$ a=3 $$</p>\n<p>and</p>\n<p>$$ b=1 $$</p>\n<p>Now, axial orbitals are those orbitals whose lobes lie along the coordinate axes.</p>\n<p>Among the given orbitals:</p>\n<p>$3p_x$ lies along the $x$-axis, so it is axial.</p>\n<p>$4d_{z^2}$ lies along the $z$-axis, so it is axial.</p>\n<p>$3d_{x^2-y^2}$ lies along the $x$ and $y$ axes, so it is axial.</p>\n<p>$3d_{xy}$ lies between the axes, so it is not axial.</p>\n<p>Thus,</p>\n<p>$$ c=3 $$</p>\n<p>Hence,</p>\n<p>$$ a+b+c=3+1+3=7 $$</p>\n<p>So, the value of $a+b+c$ is</p>\n<p>$$ \\boxed{7} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित कक्षकों पर विचार कीजिए।</p><p>(i) $3 p_x$</p><p>(ii) $4 d_{z^2}$</p><p>(iii) $3 d_{x^2-y^2}$</p><p>(iv) $3 d_{x y}$</p><p>तब, \" $a+b+c$ \" का मान ज्ञात कीजिए।</p><p>$a=$ ऊपर दिए गए कक्षकों में जिरेड (gerade) कक्षकों की कुल संख्या।</p><p>$b=$ ऊपर दिए गए कक्षकों में अनजिरेड (ungerade) कक्षकों की कुल संख्या।</p><p>$c=$ ऊपर दिए गए कक्षकों में अक्षीय (axial) कक्षकों की कुल संख्या।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "molecular-orbital-theory",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mt6k9vgw",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "Among $\\mathrm{H}_2, \\mathrm{He}_2^{+}, \\mathrm{Li}_2, \\mathrm{Be}_2, \\mathrm{C}_2, \\mathrm{~N}_2, \\mathrm{O}_2^{-}$and $\\mathrm{F}_2$, the number of diamagnetic species is: (Atomic number): $(\\mathrm{H}=1, \\mathrm{He}=2, \\mathrm{Li}=3, \\mathrm{Be}=4, \\mathrm{C}=6, \\mathrm{~N}=7, \\mathrm{O}=8, \\mathrm{~F}=9)$",
+                "options": [],
+                "answer": "6",
+                "explanation": "<p>A species is diamagnetic when all electrons are paired in its molecular orbital configuration.</p>\n<p>For $\\mathrm{H}_2$:</p>\n<p>$$ \\mathrm{H}_2: \\sigma_{1s}^2 $$</p>\n<p>Both electrons are paired, so $\\mathrm{H}_2$ is diamagnetic.</p>\n<p>For $\\mathrm{He}_2^+$, total electrons $= 3$:</p>\n<p>$$ \\mathrm{He}_2^+: \\sigma_{1s}^2 \\, \\sigma_{1s}^{*1} $$</p>\n<p>One electron is unpaired, so $\\mathrm{He}_2^+$ is paramagnetic.</p>\n<p>For $\\mathrm{Li}_2$:</p>\n<p>$$ \\mathrm{Li}_2: \\sigma_{1s}^2 \\, \\sigma_{1s}^{*2} \\, \\sigma_{2s}^2 $$</p>\n<p>All electrons are paired, so $\\mathrm{Li}_2$ is diamagnetic.</p>\n<p>For $\\mathrm{Be}_2$:</p>\n<p>$$ \\mathrm{Be}_2: \\sigma_{1s}^2 \\, \\sigma_{1s}^{*2} \\, \\sigma_{2s}^2 \\, \\sigma_{2s}^{*2} $$</p>\n<p>All electrons are paired, so $\\mathrm{Be}_2$ is diamagnetic.  </p>\n<p>Its bond order is zero, so it is not stable, but based on electron pairing it is diamagnetic.</p>\n<p>For $\\mathrm{C}_2$, the order of filling for molecules up to $\\mathrm{N}_2$ is:</p>\n<p>$$ \\sigma_{2s},\\ \\sigma_{2s}^*,\\ \\pi_{2p_x}=\\pi_{2p_y},\\ \\sigma_{2p_z} $$</p>\n<p>So,</p>\n<p>$$ \\mathrm{C}_2: \\sigma_{2s}^2 \\, \\sigma_{2s}^{*2} \\, \\pi_{2p_x}^2 \\, \\pi_{2p_y}^2 $$</p>\n<p>All electrons are paired, so $\\mathrm{C}_2$ is diamagnetic.</p>\n<p>For $\\mathrm{N}_2$:</p>\n<p>$$ \\mathrm{N}_2: \\sigma_{2s}^2 \\, \\sigma_{2s}^{*2} \\, \\pi_{2p_x}^2 \\, \\pi_{2p_y}^2 \\, \\sigma_{2p_z}^2 $$</p>\n<p>All electrons are paired, so $\\mathrm{N}_2$ is diamagnetic.</p>\n<p>For $\\mathrm{O}_2^-$, oxygen and fluorine follow the order:</p>\n<p>$$ \\sigma_{2s},\\ \\sigma_{2s}^*,\\ \\sigma_{2p_z},\\ \\pi_{2p_x}=\\pi_{2p_y},\\ \\pi_{2p_x}^*=\\pi_{2p_y}^* $$</p>\n<p>$\\mathrm{O}_2^-$ has one extra electron compared to $\\mathrm{O}_2$. In the antibonding $\\pi^*$ orbitals, one electron remains unpaired:</p>\n<p>$$ \\pi_{2p_x}^{*2} \\, \\pi_{2p_y}^{*1} $$</p>\n<p>So $\\mathrm{O}_2^-$ is paramagnetic.</p>\n<p>For $\\mathrm{F}_2$:</p>\n<p>$$ \\mathrm{F}_2: \\sigma_{2s}^2 \\, \\sigma_{2s}^{*2} \\, \\sigma_{2p_z}^2 \\, \\pi_{2p_x}^2 \\, \\pi_{2p_y}^2 \\, \\pi_{2p_x}^{*2} \\, \\pi_{2p_y}^{*2} $$</p>\n<p>All electrons are paired, so $\\mathrm{F}_2$ is diamagnetic.</p>\n<p>Diamagnetic species are:</p>\n<p>$$ \\mathrm{H}_2,\\ \\mathrm{Li}_2,\\ \\mathrm{Be}_2,\\ \\mathrm{C}_2,\\ \\mathrm{N}_2,\\ \\mathrm{F}_2 $$</p>\n<p>Hence, the number of diamagnetic species is</p>\n<p>$$ \\boxed{6} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "$\\mathrm{H}_2, \\mathrm{He}_2^{+}, \\mathrm{Li}_2, \\mathrm{Be}_2, \\mathrm{C}_2, \\mathrm{~N}_2, \\mathrm{O}_2^{-}$ और $\\mathrm{F}_2$ में से, प्रतिचुंबकीय (diamagnetic) स्पीशीज की संख्या है: (परमाणु क्रमांक): $(\\mathrm{H}=1, \\mathrm{He}=2, \\mathrm{Li}=3, \\mathrm{Be}=4, \\mathrm{C}=6, \\mathrm{~N}=7, \\mathrm{O}=8, \\mathrm{~F}=9)$",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "molecular-orbital-theory",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mt6khaal",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>Set A :</b> Among the species, $\\mathrm{NO}, \\mathrm{CO}$ and $\\mathrm{O}_2$ the number of species will undergo an increase in bond order on ionisation is ' $x$ '.</p>\n<p><b>Set B :</b> Among the species, $\\mathrm{O}_2, \\mathrm{O}_2^{+}, \\mathrm{O}_2^{2+}$ and $\\mathrm{O}_2^{2-}$, the number of species which will not show a change in its magnetic behaviour on ionisation is ' $y$ '.</p>\n<p>The value of $x+y$ is $\\_\\_\\_\\_$</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>Ionisation involves the removal of one electron from the neutral or ionic species ($\\text{M} \\rightarrow \\text{M}^+ + \\text{e}^-$). </p>\n<p>The bond order is given by:</p>\n<p>$$\\text{Bond Order} = \\frac{N_b - N_a}{2}$$</p>\n<p>where $N_b$ is the number of bonding electrons and $N_a$ is the number of antibonding electrons.</p>\n\n<h3>Finding the value of $x$ (Set A)</h3>\n<p>We check the effect of removing one electron on the bond order for each species:</p>\n<ul>\n<li><p><strong>$\\mathrm{NO}$ (15 electrons):</strong></p></li>\n<li><p>Configuration: $\\sigma_{1s}^2 \\sigma_{1s}^{*2} \\sigma_{2s}^2 \\sigma_{2s}^{*2} \\sigma_{2p_z}^2 \\pi_{2p_x}^2 \\pi_{2p_y}^2 \\pi_{2p_x}^{*1}$</p></li>\n<li><p>$\\text{Bond Order of } \\mathrm{NO} = \\frac{10 - 5}{2} = 2.5$</p></li>\n<li><p>On ionisation to $\\mathrm{NO}^+$ (14 electrons), the electron is removed from the antibonding orbital ($\\pi_{2p}^*$).</p></li>\n<li><p>$\\text{Bond Order of } \\mathrm{NO}^+ = \\frac{10 - 4}{2} = 3.0$ (Increases)</p></li>\n<li><p><strong>$\\mathrm{CO}$ (14 electrons):</strong></p></li>\n<li><p>Configuration: $\\sigma_{1s}^2 \\sigma_{1s}^{*2} \\sigma_{2s}^2 \\sigma_{2s}^{*2} \\pi_{2p_x}^2 \\pi_{2p_y}^2 \\sigma_{2p_z}^2$</p></li>\n<li><p>$\\text{Bond Order of } \\mathrm{CO} = \\frac{10 - 4}{2} = 3.0$</p></li>\n<li><p>On ionisation to $\\mathrm{CO}^+$ (13 electrons), an electron is removed from a bonding orbital ($\\sigma_{2p_z}$).</p></li>\n<li><p>$\\text{Bond Order of } \\mathrm{CO}^+ = \\frac{9 - 4}{2} = 2.5$ (Decreases)</p></li>\n<li><p><strong>$\\mathrm{O}_2$ (16 electrons):</strong></p></li>\n<li><p>Configuration: $\\sigma_{1s}^2 \\sigma_{1s}^{*2} \\sigma_{2s}^2 \\sigma_{2s}^{*2} \\sigma_{2p_z}^2 \\pi_{2p_x}^2 \\pi_{2p_y}^2 \\pi_{2p_x}^{*1} \\pi_{2p_y}^{*1}$</p></li>\n<li><p>$\\text{Bond Order of } \\mathrm{O}_2 = \\frac{10 - 6}{2} = 2.0$</p></li>\n<li><p>On ionisation to $\\mathrm{O}_2^+$ (15 electrons), the electron is removed from the antibonding orbital ($\\pi_{2p}^*$).</p></li>\n<li><p>$\\text{Bond Order of } \\mathrm{O}_2^+ = \\frac{10 - 5}{2} = 2.5$ (Increases)</p></li>\n</ul>\n<p>The species showing an increase in bond order on ionisation are $\\mathrm{NO}$ and $\\mathrm{O}_2$.</p>\n<p>$$x = 2$$</p>\n\n<h3>Finding the value of $y$ (Set B)</h3>\n<p>We check the magnetic nature before and after ionisation:</p>\n<ul>\n<li><p><strong>$\\mathrm{O}_2$ (16 electrons) $\\rightarrow \\mathrm{O}_2^+$ (15 electrons):</strong></p></li>\n<li><p>$\\mathrm{O}_2$ has 2 unpaired electrons (Paramagnetic).</p></li>\n<li><p>$\\mathrm{O}_2^+$ has 1 unpaired electron (Paramagnetic).</p></li>\n<li><p>Magnetic behaviour remains the same (No change).</p></li>\n<li><p><strong>$\\mathrm{O}_2^+$ (15 electrons) $\\rightarrow \\mathrm{O}_2^{2+}$ (14 electrons):</strong></p></li>\n<li><p>$\\mathrm{O}_2^+$ is Paramagnetic.</p></li>\n<li><p>$\\mathrm{O}_2^{2+}$ has 0 unpaired electrons (Diamagnetic).</p></li>\n<li><p>Magnetic behaviour changes.</p></li>\n<li><p><strong>$\\mathrm{O}_2^{2+}$ (14 electrons) $\\rightarrow \\mathrm{O}_2^{3+}$ (13 electrons):</strong></p></li>\n<li><p>$\\mathrm{O}_2^{2+}$ is Diamagnetic.</p></li>\n<li><p>$\\mathrm{O}_2^{3+}$ has 1 unpaired electron (Paramagnetic).</p></li>\n<li><p>Magnetic behaviour changes.</p></li>\n<li><p><strong>$\\mathrm{O}_2^{2-}$ (18 electrons) $\\rightarrow \\mathrm{O}_2^-$ (17 electrons):</strong></p></li>\n<li><p>$\\mathrm{O}_2^{2-}$ is Diamagnetic.</p></li>\n<li><p>$\\mathrm{O}_2^-$ has 1 unpaired electron (Paramagnetic).</p></li>\n<li><p>Magnetic behaviour changes.</p></li>\n</ul>\n<p>Only $\\mathrm{O}_2$ does not show a change in its magnetic behaviour.</p>\n<p>$$y = 1$$</p>\n\n<h3>Value of $x + y$</h3>\n<p>$$x + y = 2 + 1 = 3$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>समुच्चय A :</b> स्पीशीज $\\mathrm{NO}, \\mathrm{CO}$ तथा $\\mathrm{O}_2$ में से उन स्पीशीज की संख्या ' $x$ ' है जिनके आयनन पर आबंध कोटि में वृद्धि होगी।</p>\n<p><b>समुच्चय B :</b> स्पीशीज $\\mathrm{O}_2, \\mathrm{O}_2^{+}, \\mathrm{O}_2^{2+}$ तथा $\\mathrm{O}_2^{2-}$ में से उन स्पीशीज की संख्या ' $y$ ' है जिनके आयनन पर इनके चुंबकीय व्यवहार में कोई परिवर्तन नहीं होगा।</p>\n<p>$x+y$ का मान $\\_\\_\\_\\_$ है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "molecular-orbital-theory",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mt6kuczp",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Total number of species which has/have symmetrical electronic distribution in their HOMO and also paramagnetic.</p>\n<p>$$ \\mathrm{N}_2^{+}, \\mathrm{O}_2^{2-}, \\mathrm{C}_2, \\mathrm{O}_2, \\mathrm{~B}_2, \\mathrm{C}_2^{2-}, \\mathrm{N}_2^{2-} $$</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<ol>\n<li><p><strong>For species with $\\le 14$ electrons:</strong> $\\sigma_{1s} < \\sigma^*_{1s} < \\sigma_{2s} < \\sigma^*_{2s} < (\\pi_{2p_x} = \\pi_{2p_y}) < \\sigma_{2p_z}$</p></li>\n<li><p><strong>For species with $> 14$ electrons:</strong> $\\sigma_{1s} < \\sigma^*_{1s} < \\sigma_{2s} < \\sigma^*_{2s} < \\sigma_{2p_z} < (\\pi_{2p_x} = \\pi_{2p_y}) < (\\pi^*_{2p_x} = \\pi^*_{2p_y})$</p></li>\n</ol>\n<p>Here is the step-by-step breakdown for the solution field:</p>\n<h3>MO Configuration and Analysis</h3>\n<ul>\n<li><strong>$\\mathrm{N}_2^+$ ($13e^-$):</strong></li>\n</ul>\n<p>$$\\dots \\sigma_{2s}^2 \\sigma_{2s}^{*2} (\\pi_{2p_x}^2 = \\pi_{2p_y}^2) \\sigma_{2p_z}^1$$</p>\n<ul>\n<li><p><strong>Magnetic Nature:</strong> 1 unpaired electron $\\rightarrow$ <strong>Paramagnetic</strong>.</p></li>\n<li><p><strong>HOMO Symmetry:</strong> The HOMO is the $\\sigma_{2p_z}$ orbital. Since sigma orbitals are non-degenerate and possess cylindrical symmetry around the internuclear axis, a single electron here constitutes a symmetrical electronic distribution. <em>(Condition Met)</em></p></li>\n<li><p><strong>$\\mathrm{O}_2^{2-}$ ($18e^-$):</strong></p></li>\n</ul>\n<p>$$\\dots \\sigma_{2p_z}^2 (\\pi_{2p_x}^2 = \\pi_{2p_y}^2) (\\pi_{2p_x}^{*2} = \\pi_{2p_y}^{*2})$$</p>\n<ul>\n<li><p><strong>Magnetic Nature:</strong> 0 unpaired electrons $\\rightarrow$ <strong>Diamagnetic</strong>. <em>(Condition Not Met)</em></p></li>\n<li><p><strong>$\\mathrm{C}_2$ ($12e^-$):</strong></p></li>\n</ul>\n<p>$$\\dots \\sigma_{2s}^2 \\sigma_{2s}^{*2} (\\pi_{2p_x}^2 = \\pi_{2p_y}^2)$$</p>\n<ul>\n<li><p><strong>Magnetic Nature:</strong> 0 unpaired electrons $\\rightarrow$ <strong>Diamagnetic</strong>. <em>(Condition Not Met)</em></p></li>\n<li><p><strong>$\\mathrm{O}_2$ ($16e^-$):</strong></p></li>\n</ul>\n<p>$$\\dots \\sigma_{2p_z}^2 (\\pi_{2p_x}^2 = \\pi_{2p_y}^2) (\\pi_{2p_x}^{*1} = \\pi_{2p_y}^{*1})$$</p>\n<ul>\n<li><p><strong>Magnetic Nature:</strong> 2 unpaired electrons $\\rightarrow$ <strong>Paramagnetic</strong>.</p></li>\n<li><p><strong>HOMO Symmetry:</strong> The HOMO is the degenerate $\\pi^*$ set. Each orbital holds exactly one electron, resulting in a symmetrically half-filled degenerate set. <em>(Condition Met)</em></p></li>\n<li><p><strong>$\\mathrm{B}_2$ ($10e^-$):</strong></p></li>\n</ul>\n<p>$$\\dots \\sigma_{2s}^2 \\sigma_{2s}^{*2} (\\pi_{2p_x}^1 = \\pi_{2p_y}^1)$$</p>\n<ul>\n<li><p><strong>Magnetic Nature:</strong> 2 unpaired electrons $\\rightarrow$ <strong>Paramagnetic</strong>.</p></li>\n<li><p><strong>HOMO Symmetry:</strong> The HOMO degenerate $\\pi$ set is symmetrically half-filled with one electron in each orbital. <em>(Condition Met)</em></p></li>\n<li><p><strong>$\\mathrm{C}_2^{2-}$ ($14e^-$):</strong></p></li>\n</ul>\n<p>$$\\dots \\sigma_{2s}^2 \\sigma_{2s}^{*2} (\\pi_{2p_x}^2 = \\pi_{2p_y}^2) \\sigma_{2p_z}^2$$</p>\n<ul>\n<li><p><strong>Magnetic Nature:</strong> 0 unpaired electrons $\\rightarrow$ <strong>Diamagnetic</strong>. <em>(Condition Not Met)</em></p></li>\n<li><p><strong>$\\mathrm{N}_2^{2-}$ ($16e^-$):</strong></p></li>\n<li><p>Isoelectronic with $\\mathrm{O}_2$.</p></li>\n<li><p><strong>Magnetic Nature:</strong> 2 unpaired electrons $\\rightarrow$ <strong>Paramagnetic</strong>.</p></li>\n<li><p><strong>HOMO Symmetry:</strong> Symmetrically half-filled $\\pi^*$ degenerate orbitals. <em>(Condition Met)</em></p></li>\n</ul>\n\n\n<p>The species that are both paramagnetic and possess a symmetrical electronic distribution in their HOMO are <strong>$\\mathrm{N}_2^+$</strong>, <strong>$\\mathrm{O}_2$</strong>, <strong>$\\mathrm{B}_2$</strong>, and <strong>$\\mathrm{N}_2^{2-}$</strong>.</p>\n<p><strong>Total Number = 4</strong></p>\n"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>उन स्पीशीज की कुल संख्या जिनका/जिनके HOMO में सममित (symmetrical) इलेक्ट्रॉनिक वितरण है और साथ ही अनुचुंबकीय (paramagnetic) भी हैं।</p>\n<p>$$ \\mathrm{N}_2^{+}, \\mathrm{O}_2^{2-}, \\mathrm{C}_2, \\mathrm{O}_2, \\mathrm{~B}_2, \\mathrm{C}_2^{2-}, \\mathrm{N}_2^{2-} $$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "molecular-orbital-theory",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Weak Forces and Hydrogen Bonding, Molecular Orbital Theory, Polarization, Hydrolysis",
+    "timeAllotted": 2160000,
+    "title": "Chemical Bonding & Molecular Structure Test - 5 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mpe6czsw",
+    "defaultLanguage": "en",
+    "description": "Weak Forces and Hydrogen Bonding, Molecular Orbital Theory, Polarization, Hydrolysis",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-24T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Weak Forces and Hydrogen Bonding, Molecular Orbital Theory, Polarization, Hydrolysis",
+    "timeAllotted": 2160000,
+    "title": "Chemical Bonding & Molecular Structure Test - 5 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Chemical Bonding & Molecular Structure"
+  }
+}

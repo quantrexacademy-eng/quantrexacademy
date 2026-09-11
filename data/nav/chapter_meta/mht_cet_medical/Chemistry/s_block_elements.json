@@ -1,0 +1,44 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19157088eaed7250738f35",
+  "chapterId": "6a192bbc49662a74891331ab",
+  "subject": "Chemistry",
+  "chapter": "s Block Elements",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec1e0ef1faeb9633e254d",
+      "title": "Compounds of Alkali Metals",
+      "count": 2,
+      "questionIds": [
+        "6a1ec0f5ef1faeb9633e20ba",
+        "6a1ec036ef1faeb9633e1c0a"
+      ]
+    },
+    {
+      "id": "6a1ec1e0ef1faeb9633e254e",
+      "title": "General Characteristics of Alkali Metals",
+      "count": 1,
+      "questionIds": [
+        "6a1ec03aef1faeb9633e1c22"
+      ]
+    },
+    {
+      "id": "6a1ec1e0ef1faeb9633e254f",
+      "title": "Compounds of Alkaline Earth Metals",
+      "count": 1,
+      "questionIds": [
+        "6a1ec055ef1faeb9633e1cd2"
+      ]
+    },
+    {
+      "id": "6a1ec1e0ef1faeb9633e2550",
+      "title": "Alkaline Earth Metals",
+      "count": 1,
+      "questionIds": [
+        "6a1ec075ef1faeb9633e1d9a"
+      ]
+    }
+  ]
+}

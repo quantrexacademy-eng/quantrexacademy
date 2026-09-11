@@ -1,0 +1,52 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddabc03b9dcaf1afec2a",
+  "topicId": "66a0ddabc03b9dcaf1afec2f",
+  "title": "Cosine Rule and Projection Formula",
+  "concepts": [
+    {
+      "title": "Cosine Rule",
+      "conceptBody": "<h3><strong>Cosine rule&nbsp;</strong></h3><p>In any triangle $\\text{ABC}$ we have</p><p>$\\begin{array}{*{35}{r}} {{a}^{2}}={{b}^{2}}+{{c}^{2}}-2bc\\text{cos}A \\\\ {{b}^{2}}={{c}^{2}}+{{a}^{2}}-2ca\\text{cos}B \\\\ {{c}^{2}}={{a}^{2}}+{{b}^{2}}-2ab\\text{cos}C \\\\ \\text{cos}A=\\frac{{{b}^{2}}+{{c}^{2}}-{{a}^{2}}}{2bc} \\\\ \\text{cos}B=\\frac{{{a}^{2}}+{{c}^{2}}-{{b}^{2}}}{2ac} \\\\ \\text{cos}C=\\frac{{{a}^{2}}+{{b}^{2}}-{{c}^{2}}}{2ab} \\\\ \\end{array}$</p>",
+      "position": 0,
+      "qcConcept": "66a0ddabc03b9dcaf1afec30"
+    },
+    {
+      "title": "Projection Formula",
+      "conceptBody": "<h3><strong>Projection formula</strong></h3><p>$\\begin{array}{*{35}{r}} {} &amp; a=b\\text{cos}C+c\\text{cos}B \\\\ {} &amp; b=c\\text{cos}A+a\\text{cos}C \\\\ {} &amp; c=a\\text{cos}B+b\\text{cos}A \\\\ \\end{array}$</p>",
+      "position": 1,
+      "qcConcept": "66a0ddacc03b9dcaf1afec31"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f6c2d384bfb4a538348",
+      "title": "In a $\\triangle A B C, a=2 \\mathrm{~cm}, b=3 \\mathrm{~cm}, c=4 \\mathrm{~cm}$ then $\\cos A$ equals to -",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a538349",
+      "title": "The smallest angle of the triangle whose sides are $6+\\sqrt{12}, \\sqrt{48}, \\sqrt{24}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53834a",
+      "title": "Consider the following for the next two $(02)$ items that follow :\nIn the triangle $A B C$,\n$a^2+b^2+c^2=a c+\\sqrt{3} b c$\nIf $\\mathrm{c}=8$, what is the area of the triangle?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53834b",
+      "title": "In a triangle $A B C$ if the angles $A, B, C$ are in $A P$, then which one of the following is correct?",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53834c",
+      "title": "The angle between the two sides of the triangle having length $6 \\mathrm{~cm}$ and $8 \\mathrm{~cm}$ is $60^{\\circ}$, find the third side of the triangle.",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

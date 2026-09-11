@@ -1,0 +1,119 @@
+/* PERMANENT Quantrex figure lock — same look everywhere.
+   Practice · CBT · PYQ · Test series · Digital books · Solutions · Analysis
+   Do not regress: WM only on figures, theme-matched paper, compact clear size. */
+
+.qx-org-fig-host,
+.qx-org-fig-host-opt,
+.qx-org-fig-host-cell,
+.sol-body .qx-org-fig-host,
+.qx-sol-body .qx-org-fig-host,
+.mk-sol-fig-wrap,
+.qa-opt .qx-org-fig-host {
+  position: relative !important;
+  display: inline-block !important;
+  max-width: 100% !important;
+  vertical-align: middle !important;
+  overflow: visible !important;
+  line-height: 0 !important;
+  text-align: center !important;
+}
+
+.qx-org-qx-wm {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 0.82 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: url("quantrex-fig-wm-organic.png") center / 50% no-repeat !important;
+  transform: none !important;
+  mix-blend-mode: multiply !important;
+  z-index: 3 !important;
+}
+.qx-org-fig-host-opt .qx-org-qx-wm,
+.qx-org-fig-host-cell .qx-org-qx-wm {
+  background-size: 42% !important;
+  opacity: 0.7 !important;
+}
+.qx-org-fig-host-scan .qx-org-qx-wm {
+  background-size: 30% !important;
+  opacity: 0.32 !important;
+}
+
+img.qx-pool-fig,
+img.qx-fig-img,
+img.qx-opt-fig-img,
+img.qx-match-fig,
+img.qx-no-wm,
+.mtk-q-text img,
+.qx-prac-q img,
+.mtk-opt-text img,
+.qx-prac-opt-text img,
+.sol-body img,
+.qx-sol-body img,
+.mk-sol-q img,
+.qa-opt img,
+.qx-marks-native img,
+.qx-marks-native-q img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Stem / book / Irodov — readable, not full-screen */
+.mtk-q-text img.qx-pool-fig,
+.qx-prac-q img.qx-pool-fig,
+.qx-marks-native-q img,
+.qx-org-fig-host:not(.qx-org-fig-host-opt):not(.qx-org-fig-host-cell) img,
+img.qx-irodov-stem,
+img[src*="AKCR2_"],
+img[src*="2026_modules"] {
+  content-visibility: visible !important;
+  contain: none !important;
+  max-width: min(100%, 680px) !important;
+  max-height: min(72vh, 680px) !important;
+  min-height: 140px !important;
+  margin: 8px auto !important;
+}
+
+/* Options — compact 2×2 */
+.mtk-opt-text img,
+.qx-prac-opt-text img,
+.qa-opt img,
+.qx-org-fig-host-opt img,
+.qx-opt-diagram-slot img {
+  max-width: min(100%, 320px) !important;
+  max-height: min(32vh, 220px) !important;
+  margin: 6px auto !important;
+}
+
+.qx-org-fig-host-cell img,
+table img.qx-pool-fig,
+.qx-match-q-body img {
+  max-width: min(100%, 260px) !important;
+  max-height: min(38vh, 200px) !important;
+}
+
+html[data-theme="light"] img.qx-pool-fig,
+html[data-theme="light"] .mtk-q-text img,
+html[data-theme="light"] .mtk-opt-text img,
+html[data-theme="light"] .sol-body img,
+.mtk-test-root[data-test-theme="light"] img.qx-pool-fig,
+.mtk-test-root[data-test-theme="light"] .qx-org-fig-host img {
+  background: #ffffff !important;
+}
+html[data-theme="dark"] img.qx-pool-fig,
+html[data-theme="dark"] .mtk-q-text img,
+html[data-theme="dark"] .mtk-opt-text img,
+html[data-theme="dark"] .sol-body img,
+.mtk-test-root[data-test-theme="dark"] img.qx-pool-fig,
+.mtk-test-root[data-test-theme="dark"] .qx-org-fig-host img {
+  background: #eceae4 !important;
+}

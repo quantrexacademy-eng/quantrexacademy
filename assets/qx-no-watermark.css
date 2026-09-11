@@ -1,0 +1,328 @@
+/* Quantrex — PERMANENT no watermarks (MARKS + Quantrex overlays, ALL exams) */
+/* Build: qxnowm2 — never stamp brand on figures; hide any residual chrome */
+
+/* HTML overlay watermarks from imported content — never hide real pool diagrams */
+/* CRITICAL: do NOT use bare src*="watermark" — Quizrr paths are .../watermarked_images/...
+   and clean proxy URLs embed that string in ?url= — that was hiding ALL List-I/II figures. */
+[class*="watermark"]:not(.qx-pool-fig-wrap):not(:has(img.qx-pool-fig)):not(:has(img.qx-match-fig)),
+[class*="Watermark"]:not(.qx-pool-fig-wrap):not(:has(img.qx-pool-fig)):not(:has(img.qx-match-fig)),
+[data-brand="marks"]:not(:has(img.qx-pool-fig)),
+[data-watermark]:not(:has(img.qx-pool-fig)),
+.marks-brand:not(:has(img.qx-pool-fig)),
+.getmarks-brand:not(:has(img.qx-pool-fig)),
+.watermark-text:not(:has(img.qx-pool-fig)),
+.watermark-overlay:not(:has(img.qx-pool-fig)),
+/* Only true brand watermark FILES — exclude quizrr watermarked_images + proxy */
+img[src*="quantrex-watermark"]:not(.qx-ui-brand-logo):not(.qx-soft-wm-logo):not(.qx-wm-layer__img),
+img[src*="watermark-overlay"]:not(.qx-pool-fig):not(.qx-no-wm),
+img[src*="marks-premium"]:not(.qx-pool-fig):not(.qx-no-wm):not(.qx-marks-icon),
+img[src*="marks_selected"]:not(.qx-pool-fig):not(.qx-no-wm):not(.qx-marks-icon),
+img[src*="getmarks-brand"]:not(.qx-pool-fig):not(.qx-no-wm),
+img[src*="web_assets"][alt*="Marks"]:not(.qx-pool-fig):not(.qx-no-wm):not(.qx-marks-icon),
+img[alt*="Get Marks App"]:not(.qx-pool-fig):not(.qx-no-wm),
+img[src*="allen-logo"]:not(.qx-pool-fig):not(.qx-no-wm),
+img[src*="allen_logo"]:not(.qx-pool-fig):not(.qx-no-wm),
+img[src*="vedantu-logo"]:not(.qx-pool-fig):not(.qx-no-wm),
+img[src*="aakash-logo"]:not(.qx-pool-fig):not(.qx-no-wm),
+img[src*="unacademy-logo"]:not(.qx-pool-fig):not(.qx-no-wm),
+img[alt="ALLEN"]:not(.qx-pool-fig):not(.qx-no-wm),
+img[alt="Quizrr"]:not(.qx-pool-fig):not(.qx-no-wm),
+img[alt="Vedantu"]:not(.qx-pool-fig):not(.qx-no-wm) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* FORCE-SHOW question figures (List-I/II, options) — overrides any hide rule */
+img[src*="watermarked_images"],
+img[src*="cdn.quizrr"],
+img[src*="cdn-question-pool"],
+img[src*="/pyq/"],
+img[src*="/api/proxy-image"],
+img[src*="proxy-image"],
+#qxRfcImg,
+.qx-rfc-sheet img,
+.qx-rfc-ch img,
+img.qx-rfc-img,
+.qx-fc-page img,
+img.fc-img,
+img.qx-fc-img,
+.fc-formula img,
+#qxFcReaderImg,
+.qx-fc-reader-page img,
+img.qx-pool-fig,
+img.qx-match-fig,
+img.qx-no-wm,
+img.qx-opt-fig-img,
+img.qx-sol-fig,
+.qx-book-q img,
+.qx-marks-native img,
+.sol-body img,
+.qx-sol-flow img,
+.qx-sol-card img,
+.qx-match-q-body img,
+.qx-inline-table-figs img,
+.qx-match-list img,
+table img[src*="quizrr"],
+table img[src*="proxy-image"],
+table img[src*="cdn-question-pool"],
+.mtk-q-text table img,
+.qx-prac-q table img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-height: none !important;
+  max-width: min(100%, 720px) !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
+  position: static !important;
+  left: auto !important;
+  z-index: auto !important;
+  object-fit: contain !important;
+  background: #fff !important;
+}
+
+.qx-fc-page img,
+img.fc-img,
+img.qx-fc-img,
+.fc-formula img,
+#qxFcReaderImg,
+.qx-fc-reader-page img,
+.qx-rfc-sheet img,
+#qxRfcImg,
+img.qx-rfc-img {
+  max-width: 100% !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Organic-book Quantrex seal — keep visible (global figure standard) */
+.qx-org-fig-host,
+.qx-org-fig-host-opt,
+.qx-org-fig-host-cell,
+.qx-org-qx-wm {
+  display: block !important;
+  visibility: visible !important;
+  pointer-events: none;
+}
+.qx-org-fig-host img,
+.qx-org-fig-host-opt img,
+.qx-org-fig-host-cell img {
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* All Quantrex/MARKS brand layers hidden permanently — every exam / practice / test */
+.qx-diag-watermark,
+.qx-brand-overlay,
+.qx-quantrex-wm:not(.qx-ui-brand-seal):not(.qx-ui-brand-corner),
+.qx-quantrex-black-wm,
+.qx-quantrex-black-seal,
+.qx-premium-wm,
+.qx-premium-wm-sheet,
+.qx-premium-wm-sheet.qx-wm-diagonal,
+.qx-premium-wm-title,
+.qx-premium-wm-tag,
+.qx-premium-wm-logo,
+.qx-wm-diagonal,
+.qx-coaching-wm:not(.qx-ui-brand-logo),
+.qx-wm-corner-badge:not(.qx-ui-brand-corner),
+.qx-marks-strip,
+.qx-wm-mask,
+.qx-marks-scrub,
+.qx-wm-active > .qx-premium-wm-sheet,
+.qx-fig.qx-wm-active::after,
+.qx-opt-fig.qx-wm-active::after,
+img.qx-coaching-wm,
+img.qx-quantrex-wm-overlay:not(.qx-soft-wm-logo):not(.qx-soft-wm-cover),
+/* Figure stamps hidden — UI brand + soft pilot wm logo stay visible */
+img[src*="quantrex-academy-brand"]:not(.qx-ui-brand-logo):not(.qx-soft-wm-logo):not(.qx-soft-wm-cover):not(.qx-wm-layer__img),
+img[src*="quantrex-academy-watermark"]:not(.qx-ui-brand-logo):not(.qx-soft-wm-logo):not(.qx-soft-wm-cover):not(.qx-wm-layer__img),
+img[src*="quantrex-watermark"]:not(.qx-ui-brand-logo):not(.qx-soft-wm-logo):not(.qx-soft-wm-cover):not(.qx-wm-layer__img),
+img[src*="quantrex-diag-watermark"]:not(.qx-ui-brand-logo):not(.qx-soft-wm-logo):not(.qx-soft-wm-cover):not(.qx-wm-layer__img),
+img[src*="quantrex-fig-stamp"]:not(.qx-ui-brand-logo):not(.qx-soft-wm-logo):not(.qx-soft-wm-cover):not(.qx-wm-layer__img),
+img[src*="quantrex-fig-seal"]:not(.qx-ui-brand-logo):not(.qx-soft-wm-logo):not(.qx-soft-wm-cover):not(.qx-wm-layer__img),
+img[src*="quantrex-brand-overlay"]:not(.qx-ui-brand-logo):not(.qx-soft-wm-logo):not(.qx-soft-wm-cover):not(.qx-wm-layer__img),
+img[src*="quantrex-brand-badge"]:not(.qx-ui-brand-logo):not(.qx-soft-wm-logo):not(.qx-soft-wm-cover):not(.qx-wm-layer__img),
+img[src*="watermark-overlay"]:not(.qx-ui-brand-logo):not(.qx-soft-wm-logo):not(.qx-soft-wm-cover):not(.qx-wm-layer__img),
+canvas.qx-premium-wm-canvas,
+canvas.qx-marks-scrub-canvas,
+/* Pseudo watermark layers (any leftover) */
+.qx-fig-inner.qx-wm-stack::before,
+.qx-fig-inner.qx-wm-stack::after,
+.qx-fig-inner[data-qx-pool-wm]::before,
+.qx-fig-inner[data-qx-pool-wm]::after,
+.qx-pool-fig-wrap::before,
+.qx-pool-fig-wrap::after {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  max-height: 0 !important;
+  max-width: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  left: -9999px !important;
+  z-index: -1 !important;
+  content: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.qx-diagram-slot .qx-premium-wm-sheet,
+#qxDiagramSlot .qx-premium-wm-sheet,
+.qx-question-body .qx-premium-wm-sheet {
+  display: none !important;
+}
+
+/* Quantrex UI branding must always remain visible */
+img.qx-ui-brand-logo,
+.logo-mark img.qx-ui-brand-logo,
+.qx-ui-brand-seal img,
+.qx-ui-brand-chip img,
+.qx-ui-brand-corner img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+  max-width: none !important;
+  max-height: none !important;
+  width: auto !important;
+  height: auto !important;
+  position: static !important;
+  left: auto !important;
+  z-index: auto !important;
+}
+/* Brand overlays removed */
+.qx-ui-brand-seal,
+.qx-ui-brand-chip,
+.qx-ui-brand-corner {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+.qx-ui-brand-chip {
+  position: relative !important;
+  z-index: 2 !important;
+}
+.qx-ui-brand-corner {
+  position: absolute !important;
+  z-index: 3 !important;
+}
+
+/* Real figures ALWAYS visible (never hide while cleaning / navigating) */
+img.qx-pool-fig,
+img.qx-no-wm.qx-pool-fig,
+img.qx-fig-img,
+img.qx-no-wm,
+img.qx-wm-loading,
+img.qx-wm-clean,
+.qx-pool-fig-wrap,
+.qx-pool-fig-wrap img,
+.qx-fig,
+.qx-fig img,
+.qx-opt-fig,
+.qx-opt-fig img,
+.qx-fig-inner,
+.qx-fig-inner img,
+#qxDiagramSlot,
+#qxDiagramSlot img,
+.qx-diagram-slot,
+.qx-diagram-slot img,
+.qx-opt-diagram-slot img,
+.mtk-opt-text img,
+.qx-prac-opt-text img,
+.mtk-opt-text img.qx-pool-fig,
+.qx-prac-opt-text img.qx-pool-fig,
+.qx-opt-direct-img img,
+.qx-opt-pair-struct img,
+.qx-opt-diagram-slot img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  overflow: visible !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  max-height: none !important;
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 48px !important;
+  object-fit: contain !important;
+}
+
+/* Option structure figures — never blank empty cards */
+.mtk-opt-text img,
+.qx-prac-opt-text img,
+.mtk-opt .qx-opt-diagram-slot img,
+.qx-prac-opt .qx-opt-diagram-slot img,
+.qx-opt-pair-struct img,
+.qx-opt-direct-img img {
+  min-height: 72px !important;
+  max-height: 220px !important;
+  margin: 6px auto !important;
+  background: #fff !important;
+}
+
+/* Kill loading hide states that blank figures */
+.qx-wm-loading,
+.qx-fig.qx-wm-loading,
+.qx-fig-inner.qx-wm-loading,
+.qx-pool-fig-wrap.qx-wm-loading {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Keep legitimate UI icons visible — full color */
+img.qx-marks-icon,
+img.fc-img,
+.marks-exam-ic-img,
+.marks-board-subj-ic,
+.exam-pill-logo,
+.subj-mini-ic img,
+.dash-board-logo,
+.dash-tool-logo,
+.qx-exam-logo,
+img[src*="ic_content_exam_"],
+img[src*="cdn-assets.getmarks.app/app_assets/img/exams/"],
+img[src*="cdn-assets.getmarks.app/app_assets/img/cpyqb/subjects/"],
+img[src*="ncert_toolbox"] {
+  filter: none !important;
+  -webkit-filter: none !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  object-fit: contain !important;
+  pointer-events: auto !important;
+}
+
+/* IE Irodov stems — never skip decode (content-visibility:auto + min-height:0 = blank load) */
+img.qx-irodov-stem,
+img[src*="AKCR2"],
+img[src*="2026_modules"],
+img[src*="jee_advanced_physics"],
+body.qx-book-mode img.qx-irodov-stem,
+body.qx-book-mode .mtk-q-text img[src*="AKCR2"],
+body.qx-book-mode .qx-prac-q img[src*="AKCR2"] {
+  content-visibility: visible !important;
+  contain: none !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: min(100%, 720px) !important;
+  max-height: min(72vh, 680px) !important;
+  min-height: 140px !important;
+  width: auto !important;
+  height: auto !important;
+  background: #fff !important;
+  object-fit: contain !important;
+}

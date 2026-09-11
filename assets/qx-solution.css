@@ -1,0 +1,1067 @@
+/* One solution card — stem-aligned, not scattered handwritten chips */
+.qx-sol-n { display: none !important; }
+.qx-sol-step-line { display: block; margin: 0 0 8px; }
+.qx-sol-flow .qx-sol-p { margin: 0 0 12px; line-height: 1.75; }
+.qx-sol-card {
+  margin: 14px 0 8px;
+  padding: 16px 18px 18px;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  background: #fff;
+  color: #0f172a;
+  line-height: 1.8;
+  font-size: 17px;
+}
+.qx-sol-card-h {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #334155;
+  margin: 0 0 12px;
+}
+.qx-sol-ans {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 0 12px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #ecfdf5;
+  border: 1px solid #86efac;
+}
+.qx-sol-ans-lab {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: #047857;
+}
+.qx-sol-ans-val {
+  font-size: 16px;
+  font-weight: 700;
+  color: #065f46;
+  line-height: 1.5;
+}
+.qx-sol-flow,
+.qx-sol-flow p,
+.qx-sol-flow .qx-sol-p,
+.qx-sol-flow-inner {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  float: none !important;
+  font-family: "Source Serif 4", Literata, Georgia, serif;
+  font-size: var(--nta-q, 18px);
+  line-height: 1.7;
+  color: inherit;
+}
+.qx-sol-flow p,
+.qx-sol-flow .qx-sol-p {
+  margin: 0 0 14px;
+  line-height: 1.75;
+  max-width: 72ch;
+}
+.qx-sol-flow .qx-sol-p:last-child { margin-bottom: 0; }
+.qx-sol-flow .katex { font-size: 1.05em; }
+.qx-sol-step-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 0 10px;
+  max-width: 100%;
+}
+.qx-sol-n {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+  border-radius: 50%;
+  background: #0f766e;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 22px;
+  text-align: center;
+  font-family: inherit;
+}
+.qx-sol-step-txt {
+  flex: 1;
+  min-width: 0;
+  display: block;
+  overflow-x: auto;
+  line-height: 1.7;
+}
+.qx-sol-step-txt .katex-display {
+  display: block !important;
+  margin: 16px 0 !important;
+  text-align: left !important;
+}
+.qx-sol-card .katex-display {
+  display: block !important;
+  margin: 16px 0 !important;
+}
+.qx-sol-flow img,
+.qx-sol-card img,
+.qx-sol-fig {
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  display: block !important;
+  float: none !important;
+  margin: 12px auto !important;
+  background: #fff;
+  object-fit: contain;
+}
+.qx-sol-missing {
+  margin: 0;
+  font-size: 14px;
+  color: #64748b;
+  font-style: italic;
+}
+html[data-theme="dark"] .qx-sol-missing,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-missing { color: #94a3b8; }
+.qx-sol-flow table {
+  border-collapse: collapse;
+  margin: 10px 0;
+  max-width: 100%;
+}
+html[data-theme="dark"] .qx-sol-card,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+html[data-theme="dark"] .qx-sol-card-h,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-card-h { color: #e2e8f0; }
+html[data-theme="dark"] .qx-sol-n,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-n { background: #14b8a6; }
+
+/* Easy explanation — short idea + steps + answer, full solution collapsed */
+
+.qx-easy-sol {
+  margin-top: 12px;
+  padding: 14px 16px 12px;
+  border-radius: 14px;
+  border: 1px solid #c7d2fe;
+  background: linear-gradient(180deg, #eef2ff 0%, #fff 42%);
+}
+.qx-easy-head {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #4338ca;
+  margin-bottom: 10px;
+}
+.qx-easy-ans {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 0 10px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #ecfdf5;
+  border: 1px solid #86efac;
+}
+.qx-easy-ans-lab {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: #047857;
+}
+.qx-easy-ans-val {
+  font-size: 16px;
+  font-weight: 700;
+  color: #065f46;
+  line-height: 1.45;
+}
+.qx-easy-idea {
+  margin: 0 0 10px;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: #1e293b;
+  font-weight: 600;
+}
+.qx-easy-steps {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.qx-easy-steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: #334155;
+}
+.qx-easy-n {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #4f46e5;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+.qx-easy-t { flex: 1; min-width: 0; }
+.qx-easy-more {
+  margin-top: 6px;
+  border-top: 1px dashed #c7d2fe;
+  padding-top: 8px;
+}
+.qx-easy-more summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  color: #4338ca;
+  list-style: none;
+  user-select: none;
+}
+.qx-easy-more summary::-webkit-details-marker { display: none; }
+.qx-easy-more summary::after { content: " ▾"; font-weight: 800; }
+.qx-easy-more[open] summary::after { content: " ▴"; }
+.qx-easy-more .qx-hw-sol { margin-top: 10px; }
+html[data-theme="dark"] .qx-easy-sol,
+.mtk-test-root[data-test-theme="dark"] .qx-easy-sol {
+  background: linear-gradient(180deg, #1e1b4b 0%, #1e293b 50%);
+  border-color: #3730a3;
+}
+html[data-theme="dark"] .qx-easy-head,
+.mtk-test-root[data-test-theme="dark"] .qx-easy-head { color: #a5b4fc; }
+html[data-theme="dark"] .qx-easy-idea,
+html[data-theme="dark"] .qx-easy-t,
+.mtk-test-root[data-test-theme="dark"] .qx-easy-idea,
+.mtk-test-root[data-test-theme="dark"] .qx-easy-t { color: #e2e8f0; }
+html[data-theme="dark"] .qx-easy-ans {
+  background: #064e3b;
+  border-color: #059669;
+}
+html[data-theme="dark"] .qx-easy-ans-val { color: #6ee7b7; }
+html[data-theme="dark"] .qx-easy-more summary { color: #a5b4fc; }
+
+/* Quantrex — professional solution cards with shortcut corner */
+
+.qx-sol-card {
+  position: relative;
+  border-radius: 14px;
+  border: 1px solid rgba(13, 148, 136, 0.22);
+  background: linear-gradient(145deg, rgba(13, 148, 136, 0.06) 0%, rgba(255, 255, 255, 0.02) 48%);
+  padding: 14px 16px 16px;
+  margin-top: 10px;
+  overflow: visible;
+}
+
+.qx-sol-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #0d9488, #14b8a6);
+  border-radius: 14px 0 0 14px;
+}
+
+.qx-sol-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.qx-sol-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0f766e;
+  background: rgba(13, 148, 136, 0.12);
+  border: 1px solid rgba(13, 148, 136, 0.25);
+}
+
+.qx-sol-shortcut-panel {
+  margin: 0 0 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(251, 191, 36, 0.05));
+  border: 1px solid rgba(245, 158, 11, 0.32);
+}
+
+.qx-sol-shortcut-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.qx-sol-shortcut-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.qx-sol-shortcut-title {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #b45309;
+}
+
+.qx-sol-shortcut-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.qx-sol-shortcut-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(245, 158, 11, 0.18);
+}
+
+.qx-sol-shortcut-num {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.qx-sol-shortcut-text {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.55;
+  color: #78350f;
+  word-break: break-word;
+}
+
+.qx-sol-shortcut-text mjx-container {
+  font-size: 105% !important;
+}
+
+.qx-sol-body,
+.qx-font-sol {
+  font-family: "Literata", "Source Serif 4", "STIX Two Text", Georgia, "Times New Roman", serif !important;
+  font-size: 15.5px !important;
+  line-height: 1.72 !important;
+  font-weight: 450 !important;
+  letter-spacing: -0.006em !important;
+  color: var(--text, #1e293b);
+  overflow-x: auto;
+  word-break: break-word;
+  font-optical-sizing: auto;
+}
+
+.qx-sol-body p,
+.qx-sol-para { margin: 10px 0; }
+.qx-sol-body strong { color: #0f766e; font-weight: 700; }
+
+/* Unique colourful solution chrome */
+.qx-sol-type-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #5b21b6;
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.25), rgba(99, 102, 241, 0.12));
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  font-family: Inter, system-ui, sans-serif;
+}
+.qx-sol-explain-label {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0d9488;
+  margin: 4px 0 10px;
+}
+.qx-sol-concept {
+  margin: 10px 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(14, 165, 233, 0.08));
+  border: 1px solid rgba(99, 102, 241, 0.28);
+}
+.qx-sol-concept-label {
+  display: block;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4f46e5;
+  margin-bottom: 6px;
+}
+.qx-sol-final {
+  margin: 12px 0 4px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.14), rgba(34, 197, 94, 0.08));
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.08);
+}
+.qx-sol-final-label {
+  display: block;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #047857;
+  margin-bottom: 6px;
+}
+.qx-sol-step-num .qx-sol-step-label {
+  background: linear-gradient(135deg, #0d9488, #14b8a6) !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: 0 2px 6px rgba(13, 148, 136, 0.35);
+}
+.qx-sol-phys .qx-sol-step-num .qx-sol-step-label {
+  background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+}
+.qx-sol-chem .qx-sol-step-num .qx-sol-step-label {
+  background: linear-gradient(135deg, #7c3aed, #a855f7) !important;
+}
+.qx-sol-math .qx-sol-step-num .qx-sol-step-label {
+  background: linear-gradient(135deg, #0d9488, #2dd4bf) !important;
+}
+.qx-sol-bio .qx-sol-step-num .qx-sol-step-label {
+  background: linear-gradient(135deg, #16a34a, #22c55e) !important;
+}
+
+.qx-sol-body .katex,
+.qx-sol-body mjx-container {
+  font-size: 1.1em !important;
+}
+
+/* Chemistry arrows / symbols in solutions */
+.qx-sol-body,
+.sol-body {
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+.qx-sol-step {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  margin: 8px 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(13, 148, 136, 0.12);
+}
+
+.qx-sol-step-label {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 800;
+  color: #0f766e;
+  background: rgba(13, 148, 136, 0.14);
+  border: 1px solid rgba(13, 148, 136, 0.22);
+}
+
+.qx-sol-step-body {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.65;
+}
+
+.qx-sol-step-plain .qx-sol-step-body { width: 100%; }
+
+.qx-sol-warn {
+  margin: 0 0 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #92400e;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+}
+
+.qx-prac-result-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 16px 0;
+}
+
+.qx-prac-result-wrap .result-box { margin: 0; }
+.qx-prac-result-wrap .qx-sol-reveal-box { margin: 0; }
+
+/* Subject accent themes */
+.qx-sol-phys {
+  border-color: rgba(37, 99, 235, 0.28);
+  background: linear-gradient(145deg, rgba(37, 99, 235, 0.07) 0%, rgba(255, 255, 255, 0.02) 50%);
+}
+.qx-sol-phys::before { background: linear-gradient(180deg, #2563eb, #3b82f6); }
+.qx-sol-phys .qx-sol-badge { color: #1d4ed8; background: rgba(37, 99, 235, 0.1); border-color: rgba(37, 99, 235, 0.25); }
+
+.qx-sol-chem {
+  border-color: rgba(147, 51, 234, 0.28);
+  background: linear-gradient(145deg, rgba(147, 51, 234, 0.07) 0%, rgba(255, 255, 255, 0.02) 50%);
+}
+.qx-sol-chem::before { background: linear-gradient(180deg, #7c3aed, #a855f7); }
+.qx-sol-chem .qx-sol-badge { color: #6d28d9; background: rgba(147, 51, 234, 0.1); border-color: rgba(147, 51, 234, 0.25); }
+
+.qx-sol-math {
+  border-color: rgba(13, 148, 136, 0.28);
+  background: linear-gradient(145deg, rgba(13, 148, 136, 0.08) 0%, rgba(255, 255, 255, 0.02) 50%);
+}
+
+.qx-sol-bio {
+  border-color: rgba(22, 163, 74, 0.28);
+  background: linear-gradient(145deg, rgba(22, 163, 74, 0.07) 0%, rgba(255, 255, 255, 0.02) 50%);
+}
+.qx-sol-bio::before { background: linear-gradient(180deg, #16a34a, #22c55e); }
+.qx-sol-bio .qx-sol-badge { color: #15803d; background: rgba(22, 163, 74, 0.1); border-color: rgba(22, 163, 74, 0.25); }
+
+.qx-sol-reveal-box .qx-sol-card { margin-top: 0; }
+
+.marks-result .qx-sol-card,
+.qx-exam-sol .qx-sol-card {
+  margin-top: 8px;
+}
+
+/* ——— Dark mode: full solution visibility ——— */
+[data-theme="dark"] .qx-sol-card,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-card {
+  background: #1e293b !important;
+  border-color: rgba(45, 212, 191, 0.35) !important;
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .qx-sol-body,
+[data-theme="dark"] .sol-body,
+[data-theme="dark"] .qx-sol-reveal-box,
+[data-theme="dark"] .qx-sol-reveal-box .sol-body,
+[data-theme="dark"] .result-box .sol-body,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-body,
+.mtk-test-root[data-test-theme="dark"] .sol-body,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-reveal-box,
+.mtk-test-root[data-test-theme="dark"] .result-box {
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .result-box.ok,
+.mtk-test-root[data-test-theme="dark"] .result-box.ok {
+  background: rgba(16, 185, 129, 0.12) !important;
+  border-color: #34d399 !important;
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .result-box.no,
+.mtk-test-root[data-test-theme="dark"] .result-box.no {
+  background: rgba(239, 68, 68, 0.12) !important;
+  border-color: #f87171 !important;
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .result-box.partial,
+.mtk-test-root[data-test-theme="dark"] .result-box.partial {
+  background: rgba(245, 158, 11, 0.12) !important;
+  border-color: #fbbf24 !important;
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .result-box strong,
+[data-theme="dark"] .qx-sol-reveal-box strong,
+.mtk-test-root[data-test-theme="dark"] .result-box strong {
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .qx-sol-badge,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-badge {
+  color: #5eead4 !important;
+  background: rgba(13, 148, 136, 0.2) !important;
+  border-color: rgba(45, 212, 191, 0.35) !important;
+}
+[data-theme="dark"] .qx-sol-body strong,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-body strong {
+  color: #5eead4 !important;
+}
+[data-theme="dark"] .qx-sol-step,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-step {
+  background: rgba(15, 23, 42, 0.65) !important;
+  border-color: rgba(45, 212, 191, 0.2) !important;
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .qx-sol-step-label,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-step-label {
+  color: #5eead4 !important;
+  background: rgba(13, 148, 136, 0.22) !important;
+  border-color: rgba(45, 212, 191, 0.35) !important;
+}
+[data-theme="dark"] .qx-sol-step-body,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-step-body {
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .qx-sol-shortcut-text { color: #fcd34d !important; }
+[data-theme="dark"] .qx-sol-shortcut-title { color: #fbbf24 !important; }
+[data-theme="dark"] .qx-sol-shortcut-panel {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(0, 0, 0, 0.2)) !important;
+  border-color: rgba(251, 191, 36, 0.35) !important;
+}
+[data-theme="dark"] .qx-sol-shortcut-item {
+  background: rgba(15, 23, 42, 0.55) !important;
+  border-color: rgba(245, 158, 11, 0.25) !important;
+}
+[data-theme="dark"] .qx-sol-warn,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-warn {
+  color: #fcd34d !important;
+  background: rgba(245, 158, 11, 0.15) !important;
+  border-color: rgba(251, 191, 36, 0.35) !important;
+}
+[data-theme="dark"] .qx-prac-correct-ans,
+.mtk-test-root[data-test-theme="dark"] .qx-prac-correct-ans {
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .qx-no-sol-note,
+.mtk-test-root[data-test-theme="dark"] .qx-no-sol-note {
+  color: #94a3b8 !important;
+}
+
+/* Solution body readable size */
+.qx-sol-body,
+.sol-body,
+.qx-sol-reveal-box .sol-body {
+  font-family: "Roboto", "Inter", "Noto Sans Devanagari", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+@media (max-width: 640px) {
+  .qx-sol-shortcut-text { font-size: 13px; }
+}
+
+/* Dark mode: every solution fragment stays readable */
+html[data-theme="dark"] .eg-sol,
+html[data-theme="dark"] .qx-sol-card,
+html[data-theme="dark"] .qx-sol-body,
+html[data-theme="dark"] .qx-sol-flow,
+html[data-theme="dark"] .qx-sol-flow p,
+html[data-theme="dark"] .qx-sol-flow .qx-sol-p,
+html[data-theme="dark"] .qx-sol-flow-inner,
+html[data-theme="dark"] .sol-body,
+html[data-theme="dark"] .sol-body p,
+html[data-theme="dark"] .sol-body li,
+html[data-theme="dark"] .sol-body td,
+html[data-theme="dark"] .sol-body th,
+html[data-theme="dark"] .sol-body span,
+html[data-theme="dark"] .qx-sol-reveal-box,
+html[data-theme="dark"] .qx-easy-sol,
+.mtk-test-root[data-test-theme="dark"] .eg-sol,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-card,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-body,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-flow,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-flow p,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-flow .qx-sol-p,
+.mtk-test-root[data-test-theme="dark"] .sol-body,
+.mtk-test-root[data-test-theme="dark"] .sol-body p,
+.mtk-test-root[data-test-theme="dark"] .sol-body li,
+.mtk-test-root[data-test-theme="dark"] .sol-body td,
+.mtk-test-root[data-test-theme="dark"] .sol-body span,
+.eg-test-root[data-test-theme="dark"] .eg-sol,
+.eg-test-root[data-test-theme="dark"] .qx-sol-flow,
+.eg-test-root[data-test-theme="dark"] .sol-body,
+.eg-test-root[data-test-theme="dark"] .qx-sol-body {
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="dark"] .eg-sol .katex,
+html[data-theme="dark"] .eg-sol .katex *,
+html[data-theme="dark"] .sol-body .katex,
+html[data-theme="dark"] .sol-body .katex *,
+html[data-theme="dark"] .qx-sol-body .katex,
+html[data-theme="dark"] .qx-sol-body .katex *,
+html[data-theme="dark"] .qx-sol-flow .katex,
+html[data-theme="dark"] .qx-sol-flow .katex *,
+.mtk-test-root[data-test-theme="dark"] .eg-sol .katex,
+.mtk-test-root[data-test-theme="dark"] .eg-sol .katex *,
+.mtk-test-root[data-test-theme="dark"] .sol-body .katex,
+.mtk-test-root[data-test-theme="dark"] .sol-body .katex *,
+.eg-test-root[data-test-theme="dark"] .eg-sol .katex,
+.eg-test-root[data-test-theme="dark"] .eg-sol .katex * {
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="dark"] .qx-sol-ans,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-ans,
+.eg-test-root[data-test-theme="dark"] .qx-sol-ans {
+  background: rgba(16, 185, 129, 0.16) !important;
+  border-color: #34d399 !important;
+}
+html[data-theme="dark"] .qx-sol-ans-lab,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-ans-lab { color: #6ee7b7 !important; }
+html[data-theme="dark"] .qx-sol-ans-val,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-ans-val { color: #d1fae5 !important; }
+html[data-theme="dark"] .eg-sol table,
+html[data-theme="dark"] .sol-body table,
+.mtk-test-root[data-test-theme="dark"] .eg-sol table,
+.eg-test-root[data-test-theme="dark"] .eg-sol table {
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+html[data-theme="dark"] .eg-sol img,
+html[data-theme="dark"] .sol-body img,
+.mtk-test-root[data-test-theme="dark"] .eg-sol img,
+.eg-test-root[data-test-theme="dark"] .eg-sol img,
+html[data-theme="dark"] .qx-sol-card img,
+html[data-theme="dark"] .qx-sol-flow img,
+html[data-theme="light"] .eg-sol img,
+html[data-theme="light"] .sol-body img,
+html[data-theme="light"] .qx-sol-card img,
+html[data-theme="light"] .qx-sol-flow img,
+.mtk-test-root[data-test-theme="light"] .eg-sol img,
+.mtk-test-root[data-test-theme="light"] .sol-body img,
+.qx-sol-card img,
+.qx-sol-flow img,
+.qx-sol-fig,
+.sol-body img,
+.eg-sol img,
+.qx-sol-reveal-box img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  max-height: min(70vh, 560px) !important;
+  max-width: min(100%, 720px) !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  background: #ffffff !important;
+  border-radius: 8px !important;
+  margin: 12px auto !important;
+  padding: 8px !important;
+  box-shadow: none !important;
+}
+.qx-sol-card,
+.qx-sol-flow,
+.sol-body,
+.eg-sol,
+.qx-sol-reveal-box {
+  overflow: visible !important;
+}
+
+/* Light = dark ink on white. Dark = light ink on slate. CBT theme wins over app chrome. */
+.mtk-test-root[data-test-theme="light"] .qx-sol-card,
+.mtk-test-root[data-test-theme="light"] .qx-sol-body,
+.mtk-test-root[data-test-theme="light"] .qx-sol-flow,
+.mtk-test-root[data-test-theme="light"] .qx-sol-flow p,
+.mtk-test-root[data-test-theme="light"] .qx-sol-flow span,
+.mtk-test-root[data-test-theme="light"] .sol-body,
+.mtk-test-root[data-test-theme="light"] .sol-body p,
+.mtk-test-root[data-test-theme="light"] .sol-body span,
+.mtk-test-root[data-test-theme="light"] .eg-sol,
+.mtk-test-root[data-test-theme="light"] .eg-sol p,
+.mtk-test-root[data-test-theme="light"] .eg-sol span,
+.eg-test-root[data-test-theme="light"] .qx-sol-card,
+.eg-test-root[data-test-theme="light"] .sol-body,
+.eg-test-root[data-test-theme="light"] .eg-sol,
+html[data-theme="light"] .qx-sol-card,
+html[data-theme="light"] .qx-sol-body,
+html[data-theme="light"] .qx-sol-flow,
+html[data-theme="light"] .qx-sol-flow p,
+html[data-theme="light"] .qx-sol-flow span,
+html[data-theme="light"] .sol-body,
+html[data-theme="light"] .sol-body p,
+html[data-theme="light"] .sol-body span,
+html[data-theme="light"] .eg-sol,
+html[data-theme="light"] .eg-sol p,
+html[data-theme="light"] .eg-sol span,
+html[data-theme="light"] .qx-easy-idea,
+html[data-theme="light"] .qx-easy-t {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  opacity: 1 !important;
+}
+/* ==========================================================================
+   Comprehensive Theme Contrast Rules for Solutions (Light & Dark)
+   ========================================================================== */
+
+/* LIGHT MODE: Crisp white card, dark readable text (#0f172a) */
+.eg-test-root[data-test-theme="light"] .qx-sol-card,
+.eg-test-root[data-test-theme="light"] .eg-sol,
+.eg-test-root[data-test-theme="light"] .sol-body,
+.eg-test-root[data-test-theme="light"] .qx-sol-body,
+.eg-test-root[data-test-theme="light"] .qx-sol-flow,
+.eg-test-root[data-test-theme="light"] .qx-sol-flow p,
+.eg-test-root[data-test-theme="light"] .qx-sol-flow .qx-sol-p,
+.eg-test-root[data-test-theme="light"] .qx-sol-flow span,
+.eg-test-root[data-test-theme="light"] .sol-body p,
+.eg-test-root[data-test-theme="light"] .sol-body span,
+.eg-test-root[data-test-theme="light"] .sol-body li,
+.eg-test-root[data-test-theme="light"] .sol-body td,
+.eg-test-root[data-test-theme="light"] .sol-body th,
+.mtk-test-root[data-test-theme="light"] .qx-sol-card,
+.mtk-test-root[data-test-theme="light"] .eg-sol,
+.mtk-test-root[data-test-theme="light"] .sol-body,
+.mtk-test-root[data-test-theme="light"] .qx-sol-body,
+.mtk-test-root[data-test-theme="light"] .qx-sol-flow,
+.mtk-test-root[data-test-theme="light"] .qx-sol-flow p,
+.mtk-test-root[data-test-theme="light"] .qx-sol-flow .qx-sol-p,
+.mtk-test-root[data-test-theme="light"] .qx-sol-flow span,
+.mtk-test-root[data-test-theme="light"] .sol-body p,
+.mtk-test-root[data-test-theme="light"] .sol-body span,
+html[data-theme="light"] .qx-sol-card,
+html[data-theme="light"] .qx-sol-body,
+html[data-theme="light"] .qx-sol-flow,
+html[data-theme="light"] .qx-sol-flow p,
+html[data-theme="light"] .qx-sol-flow .qx-sol-p,
+html[data-theme="light"] .qx-sol-flow span,
+html[data-theme="light"] .sol-body,
+html[data-theme="light"] .sol-body p,
+html[data-theme="light"] .sol-body span,
+html[data-theme="light"] .eg-sol,
+html[data-theme="light"] .eg-sol p,
+html[data-theme="light"] .eg-sol span,
+html[data-theme="light"] .qx-easy-idea,
+html[data-theme="light"] .qx-easy-t,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .qx-sol-card,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .eg-sol,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .sol-body,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .qx-sol-flow,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .qx-sol-card,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .eg-sol,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .sol-body,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .qx-sol-flow {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  opacity: 1 !important;
+}
+
+.mtk-test-root[data-test-theme="light"] .qx-sol-card,
+.eg-test-root[data-test-theme="light"] .qx-sol-card,
+html[data-theme="light"] .qx-sol-card,
+html[data-theme="light"] .qx-sol-reveal-box,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .qx-sol-card,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .qx-sol-card {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+.eg-test-root[data-test-theme="light"] .eg-sol,
+.mtk-test-root[data-test-theme="light"] .eg-sol,
+html[data-theme="light"] .eg-sol,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .eg-sol,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .eg-sol {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-left: 3px solid #0d9488 !important;
+}
+
+.eg-test-root[data-test-theme="light"] .qx-sol-card-h,
+.mtk-test-root[data-test-theme="light"] .qx-sol-card-h,
+html[data-theme="light"] .qx-sol-card-h {
+  color: #1e293b !important;
+}
+
+.eg-test-root[data-test-theme="light"] .qx-sol-ans,
+.mtk-test-root[data-test-theme="light"] .qx-sol-ans,
+html[data-theme="light"] .qx-sol-ans {
+  background: #ecfdf5 !important;
+  border: 1px solid #86efac !important;
+}
+.eg-test-root[data-test-theme="light"] .qx-sol-ans-lab,
+.mtk-test-root[data-test-theme="light"] .qx-sol-ans-lab,
+html[data-theme="light"] .qx-sol-ans-lab {
+  color: #047857 !important;
+}
+.eg-test-root[data-test-theme="light"] .qx-sol-ans-val,
+.mtk-test-root[data-test-theme="light"] .qx-sol-ans-val,
+html[data-theme="light"] .qx-sol-ans-val {
+  color: #065f46 !important;
+}
+
+.eg-test-root[data-test-theme="light"] .qx-sol-shortcut-panel,
+.mtk-test-root[data-test-theme="light"] .qx-sol-shortcut-panel,
+html[data-theme="light"] .qx-sol-shortcut-panel {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(251, 191, 36, 0.06)) !important;
+  border: 1px solid rgba(245, 158, 11, 0.32) !important;
+}
+.eg-test-root[data-test-theme="light"] .qx-sol-shortcut-item,
+.mtk-test-root[data-test-theme="light"] .qx-sol-shortcut-item,
+html[data-theme="light"] .qx-sol-shortcut-item {
+  background: #ffffff !important;
+  border: 1px solid rgba(245, 158, 11, 0.22) !important;
+}
+.eg-test-root[data-test-theme="light"] .qx-sol-shortcut-text,
+.mtk-test-root[data-test-theme="light"] .qx-sol-shortcut-text,
+html[data-theme="light"] .qx-sol-shortcut-text {
+  color: #78350f !important;
+  -webkit-text-fill-color: #78350f !important;
+}
+
+.mtk-test-root[data-test-theme="light"] .katex,
+.mtk-test-root[data-test-theme="light"] .katex *,
+.eg-test-root[data-test-theme="light"] .katex,
+.eg-test-root[data-test-theme="light"] .katex *,
+html[data-theme="light"] .qx-sol-flow .katex,
+html[data-theme="light"] .qx-sol-flow .katex *,
+html[data-theme="light"] .sol-body .katex,
+html[data-theme="light"] .sol-body .katex *,
+html[data-theme="light"] .eg-sol .katex,
+html[data-theme="light"] .eg-sol .katex *,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .katex,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .katex *,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .katex,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .katex * {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+
+/* DARK MODE: Clean dark card, white/light text (#f8fafc) */
+.mtk-test-root[data-test-theme="dark"] .qx-sol-card,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-body,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-flow,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-flow p,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-flow .qx-sol-p,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-flow span,
+.mtk-test-root[data-test-theme="dark"] .sol-body,
+.mtk-test-root[data-test-theme="dark"] .sol-body p,
+.mtk-test-root[data-test-theme="dark"] .sol-body span,
+.mtk-test-root[data-test-theme="dark"] .eg-sol,
+.mtk-test-root[data-test-theme="dark"] .eg-sol p,
+.mtk-test-root[data-test-theme="dark"] .eg-sol span,
+.eg-test-root[data-test-theme="dark"] .qx-sol-card,
+.eg-test-root[data-test-theme="dark"] .sol-body,
+.eg-test-root[data-test-theme="dark"] .qx-sol-flow,
+.eg-test-root[data-test-theme="dark"] .qx-sol-flow p,
+.eg-test-root[data-test-theme="dark"] .qx-sol-flow .qx-sol-p,
+.eg-test-root[data-test-theme="dark"] .eg-sol,
+.eg-test-root[data-test-theme="dark"] .eg-sol p,
+html[data-theme="dark"]:not(:has(.eg-test-root[data-test-theme="light"])) .qx-sol-card,
+html[data-theme="dark"]:not(:has(.eg-test-root[data-test-theme="light"])) .qx-sol-body,
+html[data-theme="dark"]:not(:has(.eg-test-root[data-test-theme="light"])) .qx-sol-flow,
+html[data-theme="dark"]:not(:has(.eg-test-root[data-test-theme="light"])) .qx-sol-flow p,
+html[data-theme="dark"]:not(:has(.eg-test-root[data-test-theme="light"])) .qx-sol-flow .qx-sol-p,
+html[data-theme="dark"]:not(:has(.eg-test-root[data-test-theme="light"])) .qx-sol-flow span,
+html[data-theme="dark"]:not(:has(.eg-test-root[data-test-theme="light"])) .sol-body,
+html[data-theme="dark"]:not(:has(.eg-test-root[data-test-theme="light"])) .sol-body p,
+html[data-theme="dark"]:not(:has(.eg-test-root[data-test-theme="light"])) .sol-body span,
+html[data-theme="dark"]:not(:has(.eg-test-root[data-test-theme="light"])) .eg-sol,
+html[data-theme="dark"]:not(:has(.eg-test-root[data-test-theme="light"])) .eg-sol p,
+html[data-theme="dark"]:not(:has(.eg-test-root[data-test-theme="light"])) .eg-sol span,
+html[data-theme="dark"] .qx-easy-idea,
+html[data-theme="dark"] .qx-easy-t {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  opacity: 1 !important;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-sol-card,
+.eg-test-root[data-test-theme="dark"] .qx-sol-card,
+html[data-theme="dark"]:not(:has([data-test-theme="light"])) .qx-sol-card,
+html[data-theme="dark"]:not(:has([data-test-theme="light"])) .qx-sol-reveal-box {
+  background: #0f172a !important;
+  border: 1px solid #334155 !important;
+}
+
+.mtk-test-root[data-test-theme="dark"] .eg-sol,
+.eg-test-root[data-test-theme="dark"] .eg-sol,
+html[data-theme="dark"]:not(:has([data-test-theme="light"])) .eg-sol {
+  background: #0b1220 !important;
+  border: 1px solid #1e293b !important;
+  border-left: 3px solid #14b8a6 !important;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-sol-card-h,
+.eg-test-root[data-test-theme="dark"] .qx-sol-card-h {
+  color: #e2e8f0 !important;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-sol-ans,
+.eg-test-root[data-test-theme="dark"] .qx-sol-ans {
+  background: rgba(16, 185, 129, 0.18) !important;
+  border: 1px solid rgba(16, 185, 129, 0.4) !important;
+}
+.mtk-test-root[data-test-theme="dark"] .qx-sol-ans-val,
+.eg-test-root[data-test-theme="dark"] .qx-sol-ans-val {
+  color: #6ee7b7 !important;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-sol-shortcut-panel,
+.eg-test-root[data-test-theme="dark"] .qx-sol-shortcut-panel {
+  background: rgba(245, 158, 11, 0.15) !important;
+  border: 1px solid rgba(245, 158, 11, 0.35) !important;
+}
+.mtk-test-root[data-test-theme="dark"] .qx-sol-shortcut-item,
+.eg-test-root[data-test-theme="dark"] .qx-sol-shortcut-item {
+  background: rgba(15, 23, 42, 0.85) !important;
+  border: 1px solid rgba(245, 158, 11, 0.25) !important;
+}
+.mtk-test-root[data-test-theme="dark"] .qx-sol-shortcut-text,
+.eg-test-root[data-test-theme="dark"] .qx-sol-shortcut-text {
+  color: #fde68a !important;
+  -webkit-text-fill-color: #fde68a !important;
+}
+
+.mtk-test-root[data-test-theme="dark"] .katex,
+.mtk-test-root[data-test-theme="dark"] .katex *,
+.eg-test-root[data-test-theme="dark"] .katex,
+.eg-test-root[data-test-theme="dark"] .katex *,
+html[data-theme="dark"] .qx-sol-flow .katex,
+html[data-theme="dark"] .qx-sol-flow .katex *,
+html[data-theme="dark"] .sol-body .katex,
+html[data-theme="dark"] .sol-body .katex *,
+html[data-theme="dark"] .eg-sol .katex,
+html[data-theme="dark"] .eg-sol .katex * {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+
+
+.qx-sol-step-head { display: inline-block; color: #1565C0; font-weight: 700; margin-right: 6px; text-transform: capitalize; font-family: var(--qx-font-ui, sans-serif); }
+html[data-theme='dark'] .qx-sol-step-head, .mtk-test-root[data-test-theme='dark'] .qx-sol-step-head { color: #3b82f6; }
+
+/* ===== qxmd115 lining cleanup (keep with qx-vis-115) ===== */
+.qx-sol-card hr, .sol-body hr, .qx-sol-flow hr, .mtk-sol hr { display: none !important; }
+.qx-sol-flow p, .qx-sol-flow .qx-sol-p, .sol-body p {
+  border: 0 !important; border-bottom: 0 !important; text-decoration: none !important; box-shadow: none !important;
+}
+.sol-body > .qx-sol-flow { margin: 0 !important; padding: 0 !important; border: 0 !important; background: transparent !important; }

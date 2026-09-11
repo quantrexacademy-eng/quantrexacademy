@@ -1,0 +1,112 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddccc03b9dcaf1afecce",
+  "topicId": "66a0ddcdc03b9dcaf1afecd0",
+  "title": "Direction Cosines and Direction Ratios",
+  "concepts": [
+    {
+      "title": "Direction Ratio",
+      "conceptBody": "<h3><strong>Direction Ratios and Directions Cosines</strong></h3><p>Let's start with an example to easily understand:</p><p>If $\\frac{2}{3},-\\frac{2}{3},\\frac{1}{3}$ are direction cosines of a vector $\\vec{r}$, then its direction ratios are $2,-2,1$ or $-2,2,-1$ or $4,-4,2$, because</p><p>$\\begin{array}{l} \\frac{2/3}{2} =\\frac{-2/3}{2}=\\frac{1/3}{1},\\frac{2/3}{-2}=\\frac{-2/3}{2} \\\\ =\\frac{1/3}{-1},\\frac{2/3}{4}=\\frac{-2/3}{-4}=\\frac{1/3}{2}. \\\\ \\end{array}$</p><p>It is evident from the above definition that to obtain direction ratios of a vector from its direction cosines we just multiply them by a common number. This also shows that there can be infinitely many sets of direction ratios for a given vector. But the direction cosines are unique.</p><p>Obtaining Direction Cosines (DC) from Direction Ratios (DR)</p><p>Let a,b,c be direction ratios of a vector $\\vec{r}$ having direction cosines $1,m,n$. Then,</p><p>$\\frac{\\text{l}}{\\text{a}}=\\frac{\\text{m}}{\\text{b}}=\\frac{\\text{n}}{\\text{c}}$</p><p>Let $\\frac{\\text{l}}{\\text{a}}=\\frac{\\text{m}}{\\text{b}}=\\frac{\\text{n}}{\\text{c}}=\\lambda $. Then $\\text{l}=\\text{a}\\lambda ,\\text{m}=\\text{b}\\lambda ,\\text{n}=\\text{c}\\lambda $</p><p>$\\begin{array}{*{35}{l}} {} &amp; \\text{ }{{\\text{l}}^{2}}+{{\\text{m}}^{2}}+{{\\text{n}}^{2}}=1 \\\\ \\Rightarrow &amp; \\text{ }{{\\text{a}}^{2}}{{\\lambda }^{2}}+{{\\text{b}}^{2}}{{\\lambda }^{2}}+{{\\text{c}}^{2}}{{\\lambda }^{2}}=1 \\\\ \\Rightarrow &amp; \\lambda =\\pm \\frac{1}{\\sqrt{{{\\text{a}}^{2}}+{{\\text{b}}^{2}}+{{\\text{c}}^{2}}}} \\\\ \\end{array}$</p><p>So, $\\text{ }\\!\\!~\\!\\!\\text{ }l=\\pm \\frac{a}{\\sqrt{{{a}^{2}}+{{b}^{2}}+{{c}^{2}}}},m=\\pm \\frac{b}{\\sqrt{{{a}^{2}}+{{b}^{2}}+{{c}^{2}}}},n=\\pm \\frac{c}{\\sqrt{{{a}^{2}}+{{b}^{2}}+{{c}^{2}}}}$</p><p>where the signs should be taken all positive or all negative.</p><p>Thus, if a,b,c are direction ratios of a vector, then its direction cosines are given by</p><p>$\\pm \\frac{\\text{a}}{\\sqrt{{{\\text{a}}^{2}}+{{\\text{b}}^{2}}+{{\\text{c}}^{2}}}},\\pm \\frac{\\text{b}}{\\sqrt{{{\\text{a}}^{2}}+{{\\text{b}}^{2}}+{{\\text{c}}^{2}}}},\\pm \\frac{\\text{c}}{\\sqrt{{{\\text{a}}^{2}}+{{\\text{b}}^{2}}+{{\\text{c}}^{2}}}}$</p><p>where the signs should be taken all positive or all negative.</p><p>For example, if $3,-4,12$ are direction ratios of a vector then its direction cosines are</p><p>$\\frac{3}{\\sqrt{{{(3)}^{2}}+{{(-4)}^{2}}+{{(12)}^{2}}}},\\frac{-4}{\\sqrt{{{(3)}^{2}}+{{(-4)}^{2}}+{{(12)}^{2}}}},\\frac{12}{\\sqrt{{{(3)}^{2}}+{{(-4)}^{2}}+{{(12)}^{2}}}}\\text{ }\\!\\!~\\!\\!\\text{ }\\!\\!~\\!\\!\\text{ or }\\!\\!~\\!\\!\\text{ }\\!\\!~\\!\\!\\text{ }\\frac{3}{13},-\\frac{4}{13},\\frac{12}{13}$</p>",
+      "position": 0,
+      "qcConcept": "66a0ddcdc03b9dcaf1afecd1"
+    },
+    {
+      "title": "DR of Line",
+      "conceptBody": "<h3>Some Other Result</h3><p><strong>The DC's &amp; DR's for a given point $r$&nbsp;</strong></p><p>if $\\vec{r}=\\text{a}\\overset{}{\\mathop{\\text{i}}}\\,+\\text{b}\\overset{}{\\mathop{\\text{j}}}\\,+\\text{c}\\overset{}{\\mathop{\\text{k}}}\\,$</p><p>then the Direction Ratios are given by a,b &amp; c only where the Direction Cosines $\\left( \\text{l},\\text{m},\\text{n} \\right)$ are given by</p><p>$\\text{l}=\\frac{\\text{a}}{\\left| \\text{r} \\right|},\\text{m}=\\frac{\\text{b}}{\\left| {\\vec{r}} \\right|},\\text{n}=\\frac{\\text{c}}{\\left| {\\vec{r}} \\right|}$</p><p>If a vector $\\vec{r}$ has direction ratios a,b,c then</p><p>$\\vec{r}=\\frac{\\left| {\\vec{r}} \\right|}{\\sqrt{{{\\text{a}}^{2}}+{{\\text{b}}^{2}}+{{\\text{c}}^{2}}}}\\left( \\text{ai}+\\text{b}\\overset{}{\\mathop{j}}\\,+\\text{ck} \\right)$</p><p><strong>Direction Ratio of a Line&nbsp;</strong></p><p>If $\\text{P}\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}},{{\\text{z}}_{1}} \\right)~\\And~ \\text{Q}\\left( {{\\text{x}}_{2}},{{\\text{y}}_{2}},{{\\text{z}}_{2}} \\right)$ are points given which have to form the line, then the</p><p>DRs of $PQ$ are $\\left( {{x}_{2}}-{{x}_{1}} \\right),\\left( {{y}_{2}}-{{y}_{1}} \\right),\\left( {{z}_{2}}-{{z}_{1}} \\right)$</p><p>DC's of $\\text{PQ}$ are $\\frac{\\left( {{\\text{x}}_{2}}-{{\\text{x}}_{1}} \\right)}{\\left| \\overline{\\text{PQ}} \\right|},\\frac{{{\\text{y}}_{2}}-{{\\text{y}}_{1}}}{\\left| \\overline{\\text{PQ}} \\right|},\\frac{\\left( {{\\text{z}}_{2}}-{{\\text{z}}_{1}} \\right)}{\\overline{\\text{PQ}}}$</p><p><strong>NOTE :&nbsp;</strong></p><ul><li>The DC's of a line are defined as the direction cosines of any vector whose support is the given line.</li><li>If $1,m,n$ are DC of a given line, then $-1,-m,-n$ are also the DC's of the same line.</li></ul><p><strong>Case of Parallel lines / vectors&nbsp;</strong></p><p>If $\\bar{a}~\\And~ \\bar{b}$ are 2 parallel vectors then they have same DR &amp; DC.</p><p><strong>Projection of a segment on a line&nbsp;</strong></p><p>The projection of line segment joining points $\\text{P}\\left( {{\\text{x}}_{1}},{{\\text{y}}_{1}},{{\\text{z}}_{1}} \\right)~\\And~ \\text{Q}\\left( {{\\text{x}}_{2}},{{\\text{y}}_{2}},{{\\text{z}}_{2}} \\right)$ on a line with DC's $1,\\text{ }\\!\\!~\\!\\!\\text{ m},\\text{n}$ is</p><p>$\\left( {{\\text{x}}_{2}}-{{\\text{x}}_{1}} \\right)\\text{l}+\\left( {{\\text{y}}_{2}}-{{\\text{y}}_{1}} \\right)\\text{m}+\\left( {{\\text{z}}_{2}}-{{\\text{z}}_{1}} \\right)\\text{n}$</p><p><strong>DC's of angle bisector&nbsp;</strong></p><p>If $\\left( {{\\text{l}}_{1}},\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{m}}_{1}},{{\\text{n}}_{1}} \\right)~\\And~ \\left( {{\\text{l}}_{2}},\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{m}}_{2}},{{\\text{n}}_{2}} \\right)$ are DCs of two concurrent lines, then the DC's of the lines bisecting the angle between them is given by</p><p>$\\left( {{l}_{1}}\\pm {{l}_{2}},{{m}_{1}}\\pm {{m}_{2}},{{n}_{1}}\\pm {{n}_{2}} \\right).$</p>",
+      "position": 1,
+      "qcConcept": "66a0ddcdc03b9dcaf1afecd2"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f6e2d384bfb4a53840e",
+      "title": "The direction cosines of the normal to the plane $2 x+3 y-6 z=5$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a53840f",
+      "title": "If $\\alpha, \\beta, \\gamma$ be the angles which a line makes with the positive direction of co-ordinate axes, then $\\sin ^2 \\alpha+\\sin ^2 \\beta+\\sin ^2 \\gamma=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538410",
+      "title": "If $\\alpha, \\beta, \\gamma$ be the direction angles of a vector and $\\cos \\alpha=\\frac{14}{15}, \\quad \\cos \\beta=\\frac{1}{3}$ then $\\cos \\gamma=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538411",
+      "title": "The direction cosines of the line $x=y=z$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538412",
+      "title": "Direction ratios of the normal to the plane passing through the points $(0,1,1),(1,1,2)$ and $(-1,2,-2)$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538413",
+      "title": "If the length of a vector be 21 and direction ratios be $2,-3,6$ then its direction cosines are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538414",
+      "title": "The projections of a line on the cl-ordinate axes are $4,6,12$. The direction cosines of the line are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538415",
+      "title": "The line joining the points $(-2,1,-8)$ and $(a, b, c)$ is parallel to the line whose direction ratios are $6,2,3$. The values of $a, b, c$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538416",
+      "title": "The direction ratios of the line joining the points $(4,3,-5)$ and $(-2,1,-8)$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538417",
+      "title": "The co-ordinates of the point $P$ are $(x, y, z)$ and the direction cosines of the line $O P$ when $O$ is the origin, are $1, m, n$. If $O P=r$, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538418",
+      "title": "The projection of the line segment joining the points $(-1,0,3)$ and $(2,5,1)$ on the line whose direction ratios are $6,2,3$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a538419",
+      "title": "If $l_1, m_1, n_1$ and $l_2, m_2, n_2$ are the direction cosines of two perpendicular lines, then the direction cosine of the line which is perpendicular to both the lines, will be",
+      "isAttempted": true,
+      "evalStatus": "correct"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a53841a",
+      "title": "The direction cosines of the line $\\frac{3 x+1}{-3}=\\frac{3 y+2}{6}=\\frac{z}{-1}$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a53841b",
+      "title": "The direction cosines of a line equally inclined to three mutually perpendicular lines having direction cosines as $l_1, m_1, n_1 ; l_2, m_2, n_2$ and $l_3, m_3, n_3$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6e2d384bfb4a53841c",
+      "title": "The co-ordinates of a point $P$ are $(3,12,4)$ with respect to origin $O$, then the direction cosines of $O P$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

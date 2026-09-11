@@ -1,0 +1,311 @@
+/* Quantrex Academy — full figure visible; NO premium/brand watermark (permanent) */
+
+.qx-fig,
+.qx-opt-fig,
+.qx-diagram-slot,
+#qxDiagramSlot,
+.qx-opt-diagram-slot,
+.qx-pool-fig-wrap {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.qx-fig.qx-brand-covered,
+.qx-fig-stack,
+.qx-fig.qx-wm-active,
+.qx-opt-fig.qx-wm-active,
+.qx-pool-fig-wrap.qx-wm-active,
+.qx-premium-wm-active {
+  position: relative;
+  overflow: visible !important;
+}
+
+.qx-fig-inner.qx-wm-stack {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  width: fit-content;
+  max-width: 100%;
+  height: fit-content;
+  vertical-align: top;
+  overflow: visible;
+}
+
+.qx-fig-inner.qx-wm-stack > img:not([data-qx-display-w]) {
+  display: block !important;
+  position: relative;
+  z-index: 1;
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* Hide heavy overlays; light coaching brand stays (qx-figure-beauty.css) */
+canvas.qx-marks-scrub-canvas,
+canvas.qx-wm-canvas,
+canvas.qx-premium-wm-canvas,
+.qx-premium-wm-sheet,
+.qx-premium-wm-title,
+.qx-premium-wm-tag,
+.qx-wm-diagonal,
+.qx-brand-overlay,
+.qx-diag-watermark {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* No large center pseudo-shield — it was hiding diagram content */
+.qx-fig-inner.qx-wm-stack[data-qx-pool-wm="1"]::before,
+.qx-fig-inner.qx-wm-stack:has(> img[src*="cdn-question-pool.getmarks"])::before {
+  display: none !important;
+}
+
+.qx-marks-strip {
+  display: none !important;
+}
+
+.qx-marks-strip--br {
+  right: 0;
+  bottom: 0;
+  width: 22%;
+  height: 14%;
+  border-radius: 6px 0 0 0;
+}
+
+.qx-marks-strip--mid {
+  display: none !important;
+}
+
+.qx-marks-strip--diag {
+  display: none !important;
+}
+
+/* Pool figures stay visible while loading — never hide diagram area */
+img.qx-pool-fig,
+.qx-fig-inner > img.qx-pool-fig,
+img.qx-pool-fig[data-qx-orig-src],
+.qx-fig-inner:has(> img.qx-pool-fig) > img.qx-pool-fig {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+img.qx-pool-fig[src*="/api/restore-image"],
+img.qx-pool-fig[src*="/api/proxy-image"],
+img.qx-pool-fig[data-qx-primed="1"],
+.qx-fig-inner:has(> img.qx-pool-fig[src*="/api/restore-image"]) > img.qx-pool-fig,
+.qx-fig-inner:has(> img.qx-pool-fig[src*="/api/proxy-image"]) > img.qx-pool-fig,
+.qx-fig-inner:has(> img.qx-pool-fig[data-qx-primed="1"]) {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.qx-fig-inner.qx-fig-ready > img.qx-pool-fig,
+img.qx-pool-fig.qx-fig-ready,
+img.qx-pool-fig.qx-cleaned {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.qx-fig img:not([data-qx-display-w]),
+.qx-fig-img:not([data-qx-display-w]),
+.qx-pool-fig:not([data-qx-display-w]),
+.qx-diagram-slot img:not([data-qx-display-w]),
+#qxDiagramSlot img:not([data-qx-display-w]),
+.mtk-main #qxDiagramSlot img:not([data-qx-display-w]),
+.mtk-main .qx-diagram-slot img:not([data-qx-display-w]),
+.sol-body img.qx-pool-fig:not([data-qx-display-w]) {
+  position: relative;
+  z-index: 1;
+  display: block !important;
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+  background: #fff;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+img.qx-wm-none,
+.qx-fig:has(img.qx-wm-none) .qx-premium-wm-sheet,
+.qx-fig:has(img.qx-wm-none) .qx-quantrex-wm {
+  display: none !important;
+}
+
+/* Watermark sheets disabled permanently (user: remove Quantrex watermark from figures) */
+.qx-premium-wm-sheet,
+.qx-premium-wm-sheet.qx-wm-diagonal,
+.qx-wm-active .qx-premium-wm-sheet,
+.qx-wm-active .qx-premium-wm-sheet.qx-wm-diagonal,
+.qx-fig-inner.qx-wm-canvas-active .qx-premium-wm-sheet {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.qx-premium-wm-logo {
+  display: none !important;
+}
+
+.qx-premium-wm-title {
+  position: relative;
+  z-index: 1;
+  font-family: 'Kanit', 'Inter', sans-serif;
+  font-size: clamp(10px, 4.8vw, 24px);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.05;
+  white-space: nowrap;
+  opacity: 0.085;
+  margin-bottom: 0.35em;
+}
+
+.qx-premium-wm-tag {
+  position: relative;
+  z-index: 1;
+  font-family: 'Kanit', 'Inter', sans-serif;
+  font-size: clamp(7px, 2.5vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0.065;
+}
+
+.qx-premium-wm--dark .qx-premium-wm-title {
+  color: rgba(248, 250, 252, 0.92);
+  text-shadow: 0 1px 2px rgba(15, 23, 42, 0.25);
+}
+
+.qx-premium-wm--dark .qx-premium-wm-tag {
+  color: rgba(203, 213, 225, 0.85);
+  text-shadow: none;
+}
+
+.qx-premium-wm--light .qx-premium-wm-title {
+  color: rgba(51, 65, 85, 0.9);
+  text-shadow: 0 1px 2px rgba(15, 23, 42, 0.1);
+}
+
+.qx-premium-wm--light .qx-premium-wm-tag {
+  color: rgba(100, 116, 139, 0.85);
+  text-shadow: none;
+}
+
+.qx-fig-inner.qx-wm-canvas-active .qx-marks-strip {
+  display: none !important;
+}
+
+.qx-wm-corner-badge,
+.qx-quantrex-wm.qx-wm-corner-badge {
+  display: none !important;
+}
+
+.qx-diag-watermark,
+.qx-brand-overlay,
+.qx-wm-mask,
+canvas.qx-premium-wm-canvas {
+  display: none !important;
+}
+
+#qxDiagramSlot,
+.mtk-main #qxDiagramSlot,
+.mtk-main .qx-diagram-slot {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 8px auto 10px;
+  max-width: min(100%, 720px);
+  overflow: visible !important;
+  box-shadow: none;
+}
+
+.qx-fig::after,
+.qx-opt-fig::after,
+.qx-fig::before,
+.qx-opt-fig::before {
+  display: none !important;
+}
+
+/* JEE Test Series 2027 — full figure, subtle watermark, no box */
+body.marks-test-active .mtk-main .qx-question-body .qx-diagram-slot,
+body.marks-test-active .mtk-main #qxDiagramSlot,
+body.marks-test-active .mtk-main .qx-diagram-slot {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 8px auto !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+  box-shadow: none !important;
+}
+
+body.marks-test-active .mtk-main .qx-fig,
+body.marks-test-active .mtk-main .qx-pool-fig-wrap,
+body.marks-test-active .mtk-main .qx-fig-inner {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+body.marks-test-active .mtk-main img.qx-pool-fig,
+body.marks-test-active .mtk-main #qxDiagramSlot img,
+body.marks-test-active .mtk-main .qx-diagram-slot img,
+body.marks-test-active .mtk-q-text img.qx-pool-fig {
+  max-height: none !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+body.marks-test-active .qx-premium-wm-logo,
+body.marks-test-active .qx-premium-wm-title,
+body.marks-test-active .qx-premium-wm-tag,
+body.marks-test-active .qx-premium-wm-sheet,
+body.allen-practice-active .qx-premium-wm-sheet {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+/* Quantrex-only figure watermark (Marks / ALLEN / Quizrr stay hidden) */
+.qx-qx-wm-host {
+  position: relative !important;
+}
+.qx-qx-wm-host::after {
+  content: "QUANTREX";
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  z-index: 4;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: rgba(132, 80, 203, 0.42);
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+html[data-theme="dark"] .qx-qx-wm-host::after,
+[data-test-theme="dark"] .qx-qx-wm-host::after {
+  color: rgba(196, 181, 253, 0.5);
+}
+.qx-ch-icon::after,
+.qx-exam-folder-logo::after,
+.qx-folder-ic::after {
+  content: none !important;
+}
+  visibility: hidden !important;
+}

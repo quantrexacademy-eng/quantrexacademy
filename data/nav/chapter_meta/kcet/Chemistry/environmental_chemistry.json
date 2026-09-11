@@ -1,0 +1,30 @@
+{
+  "examSlug": "kcet",
+  "examId": "62962075e7f8e9ac4daeafda",
+  "subjectId": "62962075e7f8e9ac4daeafd8",
+  "chapterId": "62962118ffb7e4184a23c13b",
+  "subject": "Chemistry",
+  "chapter": "Environmental Chemistry",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64cc9b3c08d12fed62b18eda",
+      "title": "Air Pollution",
+      "count": 4,
+      "questionIds": [
+        "65423ea41b8c26a3894b72de",
+        "64cc9aad08d12fed62b188e7",
+        "64cc9aaa08d12fed62b188c7",
+        "64cc9a6f08d12fed62b186bc"
+      ]
+    },
+    {
+      "id": "64cc9b3c08d12fed62b18edb",
+      "title": "Water Pollution",
+      "count": 1,
+      "questionIds": [
+        "64cc9a9b08d12fed62b18841"
+      ]
+    }
+  ]
+}

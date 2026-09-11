@@ -1,0 +1,76 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd33c03b9dcaf1afe9c6",
+  "topicId": "66a0dd38c03b9dcaf1afe9e0",
+  "title": "Cube Root of Unity",
+  "concepts": [
+    {
+      "title": "Properties of cube root of unity",
+      "conceptBody": "<h3><strong>Properties of cube roots of unity&nbsp;</strong></h3><p>1. $\\quad{w}^3=1$&nbsp;</p><p>2. $\\quad 1+w+w^2=0$&nbsp;</p><p>3. $\\quad 1+w^{=}+w^n \\mathbf{n}=\\left\\{\\begin{array}{l}0, \\text { if } n \\text { is not a multiple of } S \\\\ 3, \\text { if } \\mathrm{n} \\text { is a multiple of } \\mathrm{S}\\end{array}\\right\\}$&nbsp;</p><p>4. &nbsp; &nbsp;cube roots of -1 are $-1,-\\mathrm{w},-\\mathrm{w}^2$&nbsp;</p><p>5. &nbsp; &nbsp;$z^3-1=(z-1)(z-w)\\left(z-w^3\\right)$&nbsp;</p><p>6. &nbsp; &nbsp;$z^3+1=(z+1)(z+w)(z+w)$&nbsp;</p><p>7. &nbsp; &nbsp;$a^3+b^3=(a+b)(a+b w)\\left(a+b w^2\\right)$&nbsp;</p><p>8. &nbsp; &nbsp;$a^3-b^3=(a-b)(a-b w)\\left(a-b w^2\\right)$&nbsp;</p><p>9. $\\quad a^2+b^2+c^2-a b-b c-c a=\\left(a+b w+c w^2\\right)\\left(a+b w^2+c w^2\\right)$&nbsp;</p><p>10. &nbsp; $a^3+b^3+c^3-3 a b c=(a+b+c)\\left(a+b w+c w^2\\right)\\left(a+b w^2+c w\\right)$&nbsp;</p><p><strong>Tip: • </strong>$\\left| \\text{w} \\right|=\\left| {{\\text{w}}^{2}} \\right|=1$</p><ul><li>$\\text{ }\\!\\!~\\!\\!\\text{ }$ Square root of $i=\\pm \\left( \\frac{1+i}{\\sqrt{2}} \\right)$</li><li>$\\text{ }\\!\\!~\\!\\!\\text{ }$ Square root of $\\text{w}=\\pm {{\\text{w}}^{2}}$</li><li>$\\text{ }\\!\\!~\\!\\!\\text{ }$ Square root of ${{\\text{w}}^{2}}=\\pm \\text{w}$</li><li>You can also remember that $\\text{w},{{\\text{w}}^{2}}$ are also the roots of equation ${{\\text{x}}^{2}}+\\text{x}+1$ as this equation is encountered very often}</li></ul>",
+      "position": 0,
+      "qcConcept": "66a0dd38c03b9dcaf1afe9e1"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f3e2d384bfb4a537f43",
+      "title": "One of the cube roots of unity is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3e2d384bfb4a537f44",
+      "title": "If $\\omega$ is a cube root of unity, then $(1+\\omega)^3-\\left(1+\\omega^2\\right)^3=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3e2d384bfb4a537f45",
+      "title": "Square of either of the two imaginary cube roots of unity will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3e2d384bfb4a537f46",
+      "title": "If $\\alpha$ and $\\beta$ are imaginary cube roots of unity, then $\\alpha^4+\\beta^4+\\frac{1}{\\alpha \\beta}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3e2d384bfb4a537f47",
+      "title": "If $\\omega$ is a complex cube root of unity, then $(1-\\omega)\\left(1-\\omega^2\\right)\\left(1-\\omega^4\\right)\\left(1-\\omega^8\\right)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3e2d384bfb4a537f48",
+      "title": "If $\\omega$ is a cube root of unity, then the value of $\\left(1-\\omega+\\omega^2\\right)^5+\\left(1+\\omega-\\omega^2\\right)^5=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3e2d384bfb4a537f49",
+      "title": "If $\\omega$ is a complex cube root of unity, then $(x-y)(x \\omega-y)\\left(x \\omega^2-y\\right)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3e2d384bfb4a537f4a",
+      "title": "If $\\omega$ is a complex cube root of unity, then $(1+\\omega)\\left(1+\\omega^2\\right) \\quad\\left(1+\\omega^4\\right)\\left(1+\\omega^8\\right) \\ldots$ to $2 n$ factors $=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3e2d384bfb4a537f4b",
+      "title": "The cube roots of unity when represented on the Argand plane form the vertices of an",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3e2d384bfb4a537f4c",
+      "title": "$\\left(\\frac{-1+i \\sqrt{3}}{2}\\right)^{20}+\\left(\\frac{-1-i \\sqrt{3}}{2}\\right)^{20}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19156220c83fbf1e0bce11",
+  "chapterId": "6a192ba0e4cc9575516b5672",
+  "subject": "Physics",
+  "chapter": "Magnetic Properties of Matter",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec1dfef1faeb9633e254b",
+      "title": "Magnetic Materials and their Properties",
+      "count": 3,
+      "questionIds": [
+        "6a1ec093ef1faeb9633e1e58",
+        "6a1ec033ef1faeb9633e1bf9",
+        "6a1ec133ef1faeb9633e2242"
+      ]
+    },
+    {
+      "id": "6a1ec1e0ef1faeb9633e254c",
+      "title": "Magnetism and Properties of Magnet",
+      "count": 6,
+      "questionIds": [
+        "6a1ec0f4ef1faeb9633e20b5",
+        "6a1ec071ef1faeb9633e1d7f",
+        "6a1ec0d0ef1faeb9633e1fd7",
+        "6a1ec0b2ef1faeb9633e1f18",
+        "6a1ec150ef1faeb9633e22f7",
+        "6a1ec04eef1faeb9633e1ca6"
+      ]
+    }
+  ]
+}

@@ -750,20 +750,20 @@ function tsFormatChooserHtml(config) {
         <p class="ts-fmt-meta">${n} questions · ${mins} minutes</p>
       </div>
       <h3 class="ts-fmt-section">Layout Mode</h3>
-      <p class="ts-fmt-hint" style="margin:0 0 12px;text-align:left">Choose your preferred test layout and language</p>
+      <p class="ts-fmt-hint" style="margin:0 0 12px;text-align:left">Test Series defaults to <b>NTA FORMAT</b>. Pick QUANTREX FORMAT for ExamGoal-style practice layout.</p>
       <div class="ts-fmt-grid">
         <button type="button" class="ts-fmt-opt ts-fmt-qx${ntaOn ? "" : " on"}" id="tsFmtQuantrex" data-ui="examgoal">
-          <div class="ts-fmt-opt-icon">QX</div>
+          <div class="ts-fmt-opt-icon">EG</div>
           <div class="ts-fmt-opt-body">
-            <strong>Quantrex</strong>
-            <span>Clean &amp; intuitive interface</span>
+            <strong>QUANTREX FORMAT</strong>
+            <span>Flexible practice UI — ExamGoal-style on phone</span>
           </div>
         </button>
         <button type="button" class="ts-fmt-opt ts-fmt-qz${ntaOn ? " on" : ""}" id="tsFmtQuizrr" data-ui="quizrr">
           <div class="ts-fmt-opt-icon">NTA</div>
           <div class="ts-fmt-opt-body">
-            <strong>NTA</strong>
-            <span>Mimics official NTA exam</span>
+            <strong>NTA FORMAT</strong>
+            <span>Exact official exam shell · palette · timer · Save &amp; Next</span>
           </div>
         </button>
       </div>
@@ -780,9 +780,9 @@ function showTsFormatChooser(config, onPick, onCancel) {
   document.body.insertAdjacentHTML("beforeend", tsFormatChooserHtml(config));
   const root = document.getElementById("tsFormatChooser");
   const finish = (ui) => {
+    try { localStorage.setItem("ts_last_ui_mode", ui); } catch (_) { /* */ }
     root?.remove();
     document.body.classList.remove("ts-fmt-chooser-active");
-    // keep marks-instr-active if instructions follow immediately
     if (typeof onPick === "function") onPick(ui);
   };
   const cancel = () => {
@@ -793,7 +793,7 @@ function showTsFormatChooser(config, onPick, onCancel) {
   let picked = "quizrr";
   try {
     const saved = localStorage.getItem("ts_last_ui_mode") || "quizrr";
-    picked = (saved === "examgoal" || saved === "quantrex") ? "examgoal" : "quizrr";
+    picked = saved === "examgoal" || saved === "quantrex" ? "examgoal" : "quizrr";
   } catch (_) { /* */ }
   const mark = (ui) => {
     picked = ui;
@@ -2319,6 +2319,9 @@ function tsStandaloneLaunchTest(testId, test, meta, seriesId, questionIds, opts,
     if (o.resumeData.uiMode) config.uiMode = o.resumeData.uiMode;
   }
   if (o.uiMode) config.uiMode = o.uiMode;
+  // qxmd108: Test Series always NTA quizrr shell (tools + no topic strip)
+  config.uiMode = "quizrr";
+  if (config.resumeData) config.resumeData = Object.assign({}, config.resumeData, { uiMode: "quizrr" });
 
   try {
     const gate = {

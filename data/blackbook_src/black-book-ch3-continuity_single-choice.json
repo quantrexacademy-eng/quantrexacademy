@@ -1,0 +1,3626 @@
+[
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "AP",
+      "GP",
+      "HP",
+      "None of these"
+    ],
+    "questionNumber": 1,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f$ be a differentiable real valued function satisfying $f(x+2y) = f(x) + f(2y) + 6xy(x + 2y) \\quad \\forall \\, x, y \\in \\mathbb{R}$. Then $f''(0), f''(1), f''(2), \\dots$ are in :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "4",
+      "3",
+      "2",
+      "5"
+    ],
+    "questionNumber": 2,
+    "questionType": "SINGLE CORRECT",
+    "text": "The number of points of non-differentiability for $f(x) = \\max \\left\\{ \\left| |x| - 1 \\right|, \\frac{1}{2} \\right\\}$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "50",
+      "51",
+      "52",
+      "61"
+    ],
+    "questionNumber": 3,
+    "questionType": "SINGLE CORRECT",
+    "text": "Number of points of discontinuity of $f(x) = \\left\\{ \\frac{x}{5} \\right\\} + \\left[ \\frac{x}{2} \\right]$ in $x \\in [0, 100]$ is/are (where $[\\cdot]$ denotes greatest integer function and $\\{\\cdot\\}$ denotes fractional part function)",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\lim_{x \\to a} f(x)$ does not exist",
+      "$\\lim_{x \\to a} f(x) + f(a) = 0$",
+      "$f(a) = 0$",
+      "None of these"
+    ],
+    "questionNumber": 4,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x)$ has isolated point of discontinuity at $x = a$ such that $|f(x)|$ is continuous at $x = a$ then :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "12",
+      "None of these"
+    ],
+    "questionNumber": 5,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x)$ is a thrice differentiable function such that, $\\lim_{x \\to 0} \\frac{f(4x) - 3f(3x) + 3f(2x) - f(x)}{x^3} = 12$ then the value of $f'''(0)$ equals to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "$\\sqrt{3}$",
+      "None of these"
+    ],
+    "questionNumber": 6,
+    "questionType": "SINGLE CORRECT",
+    "text": "$y = \\frac{1}{1 + (\\tan \\theta)^{\\sin \\theta - \\cos \\theta} + (\\cot \\theta)^{\\cos \\theta - \\cot \\theta}} + \\frac{1}{1 + (\\tan \\theta)^{\\cos \\theta - \\sin \\theta} + (\\cot \\theta)^{\\sin \\theta - \\cot \\theta}} + \\frac{1}{1 + (\\tan \\theta)^{\\cos \\theta - \\cot \\theta} + (\\cot \\theta)^{\\cot \\theta - \\sin \\theta}}$ then $\\frac{dy}{dx}$ at $\\theta = \\pi/3$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$2 \\sin 2$",
+      "$2 \\cos 2$",
+      "$2 \\sin 4$",
+      "$\\cos 2$"
+    ],
+    "questionNumber": 7,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f'(x) = \\sin(x^2)$ and $y = f(x^2 + 1)$ then $\\frac{dy}{dx}$ at $x = 1$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{\\sqrt{3} + 1}{2}$",
+      "$\\frac{1 - \\sqrt{3}}{2}$",
+      "$\\frac{\\sqrt{3} - 1}{2}$",
+      "$\\frac{-1 - \\sqrt{3}}{2}$"
+    ],
+    "questionNumber": 8,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\big| |\\sin x| - |\\cos x| \\big|$, then $f'\\left(\\frac{7\\pi}{6}\right) =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "-4",
+      "-2",
+      "-6",
+      "0"
+    ],
+    "questionNumber": 9,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $2\\sin x \\cdot \\cos y = 1$, then $\\frac{d^2 y}{dx^2}$ at $\\left(\\frac{\\pi}{4}, \\frac{\\pi}{4}\\right)$ is ........",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{3}{4} \\left( \\frac{f''(1) + f'(1)}{(f'(1))^2} \\right)$",
+      "$\\frac{3}{4} \\left( \\frac{f'(1) \\cdot f''(1) - f''(1)}{(f'(1))^2} \\right)$",
+      "$\\frac{4}{3} \\frac{f''(1)}{(f'(1))^2}$",
+      "$\\frac{4}{3} \\left( \\frac{f'(1) f''(1) - f''(1)}{(f'(1))^2} \\right)$"
+    ],
+    "questionNumber": 10,
+    "questionType": "SINGLE CORRECT",
+    "text": "$f$ is a differentiable function such that $x = f(t^2)$, $y = f(t^3)$ and $f'(1) \\neq 0$ if $\\left(\\frac{d^2 y}{dx^2}\\right)_{t=1} =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "2",
+      "4"
+    ],
+    "questionNumber": 11,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\begin{cases} ax + 1 & \\text{if } x < 1 \\\\ 3 & \\text{if } x = 1 \\\\ bx^2 + 1 & \\text{if } x > 1 \\end{cases}$. If $f(x)$ is continuous at $x = 1$ then $(a - b)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$y \\left( \\frac{\\alpha}{\\alpha - x} + \\frac{\\beta}{\\beta - x} + \\frac{\\gamma}{\\gamma - x} \\right)$",
+      "$\\frac{y}{x} \\left( \\frac{\\alpha}{1/x - \\alpha} + \\frac{\\beta}{1/x - \\beta} + \\frac{\\gamma}{1/x - \\gamma} \\right)$",
+      "$y \\left( \\frac{\\alpha}{1/x - \\alpha} + \\frac{\\beta}{1/x - \\beta} + \\frac{\\gamma}{1/x - \\gamma} \\right)$",
+      "$\\frac{y}{x} \\left( \\frac{\\alpha/x}{1/x - \\alpha} + \\frac{\\beta/x}{1/x - \\beta} + \\frac{\\gamma/x}{1/x - \\gamma} \\right)$"
+    ],
+    "questionNumber": 12,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $y = 1 + \\frac{\\alpha}{\\left(\\frac{1}{x} - \\alpha\\right)} + \\frac{\\beta/x}{\\left(\\frac{1}{x} - \\alpha\\right)\\left(\\frac{1}{x} - \\beta\\right)} + \\frac{\\gamma/x^2}{\\left(\\frac{1}{x} - \\alpha\\right)\\left(\\frac{1}{x} - \\beta\\right)\\left(\\frac{1}{x} - \\gamma\\right)}$, then $\\frac{dy}{dx}$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "4",
+      "3",
+      "2",
+      "1"
+    ],
+    "questionNumber": 13,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\sqrt{\\frac{1 + \\sin^{-1} x}{1 - \\tan^{-1} x}}$; then $f'(0)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\left\\{ (2n + 1)\\frac{\\pi}{2}, n \\in I \\right\\}$",
+      "a null set",
+      "$\\{ n\\pi, n \\in I \\}$",
+      "set of all rational numbers"
+    ],
+    "questionNumber": 14,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\begin{cases} \\sin^2 x , & x \\text{ is rational} \\\\ -\\sin^2 x , & x \\text{ is irrational} \\end{cases}$, then set of points, where $f(x)$ is continuous, is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "3",
+      "4",
+      "0",
+      "1"
+    ],
+    "questionNumber": 15,
+    "questionType": "SINGLE CORRECT",
+    "text": "The number of values of $x$ in $(0, 2\\pi)$ where the function $f(x) = \\frac{\\tan x + \\cot x}{2} - \\left| \\frac{\\tan x - \\cot x}{2} \\right|$ is continuous but non-derivable :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$1$ for $x > 2$",
+      "$1$ for $2 < x < 3$",
+      "$-1$ for $2 < x < 3$",
+      "$-1$ for $x > 3$"
+    ],
+    "questionNumber": 16,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = |x - 1|$ and $g(x) = f(f(f(x)))$, then $g'(x)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "3",
+      "5",
+      "6",
+      "7"
+    ],
+    "questionNumber": 17,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x)$ is a continuous function $\\forall \\, x \\in \\mathbb{R}$ and the range of $f(x)$ is $(2, \\sqrt{26})$ and $g(x) = \\left[ \\frac{f(x)}{C} \\right]$ is continuous $\\forall \\, x \\in \\mathbb{R}$, then the least positive integral value of $C$ is : (where $[\\cdot]$ denotes the greatest integer function.)",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$-\\frac{1}{9}$",
+      "$-\\frac{2}{27}$",
+      "$\\frac{2}{27}$",
+      "$\\frac{1}{9}$"
+    ],
+    "questionNumber": 18,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $y = x + e^x$, then $\\left(\\frac{d^2 x}{dy^2}\\right)_{x = \\ln 2}$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "-2",
+      "2",
+      "$\\frac{1}{2}$",
+      "None of these"
+    ],
+    "questionNumber": 19,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = x^3 + 4x^2 + 6x$ and $g(x)$ be its inverse then the value of $g'(-4)$ :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "1",
+      "-1",
+      "2",
+      "-2"
+    ],
+    "questionNumber": 20,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = 2 + |x| - |x - 1| - |x + 1|$, then $f'\\left(-\\frac{1}{2}\\right) + f'\\left(\\frac{1}{2}\\right) + f'\\left(\\frac{3}{2}\\right) + f'\\left(\\frac{5}{2}\\right)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$-\\sqrt{\\frac{\\pi}{2}}$",
+      "$\\sqrt{\\frac{\\pi}{2}}$",
+      "0",
+      "$\\sqrt{\\frac{\\pi}{4}}$"
+    ],
+    "questionNumber": 21,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\cos(x^2 - 4[x]); 0 < x < 1$, (where $[\\cdot]$ denotes greatest integer function) then $f'\\left(\\frac{\\sqrt{\\pi}}{2}\\right)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{1 + (g(x))^5}$",
+      "$\\frac{g'(x)}{1 + (g(x))^5}$",
+      "$5(g(x))^4 (1 + (g(x))^5)$",
+      "$1 + (g(x))^5$"
+    ],
+    "questionNumber": 22,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $g(x)$ be the inverse of $f(x)$ such that $f'(x) = \\frac{1}{1 + x^5}$, then $\\frac{d^2(g(x))}{dx^2}$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$f(x)$ is not differentiable at $x = 0$",
+      "$f(x)$ is not differentiable at exactly two points",
+      "$f(x)$ is continuous everywhere",
+      "$f(x)$ is strictly increasing $\\forall \\, x \\in \\mathbb{R}$"
+    ],
+    "questionNumber": 23,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\begin{cases} \\min(x, x^2) & x \\geq 0 \\\\ \\max(2x, x - 1) & x < 0 \\end{cases}$, then which of the following is not true ?",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{\\sin x}{x}$",
+      "$\\frac{x}{\\sin x}$",
+      "$\\frac{x \\cos x - \\sin x}{x^2}$",
+      "$\\frac{\\sin x - x \\cos x}{x^2}$"
+    ],
+    "questionNumber": 24,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\lim_{n \\to \\infty} \\left[ \\prod_{i=1}^n \\cos\\left(\\frac{x}{2^i}\\right) \\right]$ then $f'(x)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "1",
+      "$\\frac{1}{2}$",
+      "$-\\frac{1}{2}$",
+      "-1"
+    ],
+    "questionNumber": 25,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\begin{cases} \\frac{1 - \\tan x}{4x - \\pi} & x \\neq \\frac{\\pi}{4} \\\\ \\lambda & x = \\frac{\\pi}{4} \\end{cases}; x \\in \\left[0, \\frac{\\pi}{2}\\right)$. If $f(x)$ is continuous in $\\left[0, \\frac{\\pi}{2}\\right)$, then $\\lambda$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "1",
+      "-1",
+      "0",
+      "Does not exist"
+    ],
+    "questionNumber": 26,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\begin{cases} e^{-\\frac{1}{x^2}} \\sin\\frac{1}{x} & x \\neq 0 \\\\ 0 & x = 0 \\end{cases}$, then $f'(0) =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "questionNumber": 27,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f$ be a differentiable function satisfying $f'(x) = 2f(x) + 10 \\ \\forall\\ x \\in \\mathbb{R}$ and $f(0) = 0$, then the number of real roots of the equation $f(x) + 5\\sec^2 x = 0$ in $(0, 2\\pi)$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$f(x)$ is continuous at $x = \\frac{\\pi}{2}$",
+      "$\\lim_{x \\to \\frac{\\pi}{2}} f(x)$ does not exist",
+      "$\\lim_{x \\to \\frac{\\pi}{2}} f(x)$ exists, but $f$ is not continuous at $x = \\frac{\\pi}{2}$",
+      "$\\lim_{x \\to \\frac{\\pi}{2}} f(x) = 1$"
+    ],
+    "questionNumber": 28,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\begin{cases} \\frac{\\sin\\{ \\cos x \\}}{x - \\frac{\\pi}{2}} & x \\neq \\frac{\\pi}{2} \\\\ 1 & x = \\frac{\\pi}{2} \\end{cases}$, where $\\{k\\}$ represents the fractional part of $k$, then :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$f''(e^x)e^x + f'(e^x)$",
+      "$f''(e^x)e^{2x} + f'(e^x)e^{2x}$",
+      "$f''(e^x)e^x + f'(e^x)e^{2x}$",
+      "$f''(e^x)e^{2x} + e^x f'(e^x)$"
+    ],
+    "questionNumber": 29,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x)$ be a polynomial in $x$. The second derivative of $f(e^x)$ w.r.t. $x$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$e^x + x$",
+      "$e^{e^x} e^{e^x}$",
+      "$e^{e^x + x}$",
+      "$e^{e^x}$"
+    ],
+    "questionNumber": 30,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $e^{f(x)} = \\log_e x$ and $g(x)$ is the inverse function of $f(x)$, then $g'(x)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$y = |f(x)|$ is differentiable $\\forall x \\in R$",
+      "$y = f^2(x)$ is non-differentiable for atleast one $x$",
+      "$y = f(x)|f(x)|$ is non-differentiable for atleast one $x$",
+      "$y = |f(x)|^3$ is differentiable $\\forall x \\in R$"
+    ],
+    "questionNumber": 31,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $y = f(x)$ is differentiable $\\forall x \\in R$, then",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "$6$"
+    ],
+    "questionNumber": 32,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = (x - 1)^4 (x - 2)^3 (x - 3)^2$ then the value of $f'''(1) + f''(2) + f'(3)$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\tan(f(x))$ and $\\frac{1}{f(x)}$ are both continuous",
+      "$\\tan(f(x))$ and $\\frac{1}{f(x)}$ are both discontinuous",
+      "$\\tan(f(x))$ and $f^{-1}(x)$ are both continuous",
+      "$\\tan f(x)$ is continuous but $f^{-1}(x)$ is not"
+    ],
+    "questionNumber": 33,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\left(\\frac{x}{2}\\right) - 1$, then on the interval $[0, \\pi]$ :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "$4$"
+    ],
+    "questionNumber": 34,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\begin{cases} \\frac{\\frac{1}{e^{\\frac{1}{x-2}} - 3}}{\\frac{1}{3^{x-2} + 1}} & ; x > 2 \\\\ \\frac{b \\sin \\{-x\\}}{\\{-x\\}} & ; x < 2 \\\\ c & ; x = 2 \\end{cases}$, where $\\{\\cdot\\}$ denotes fraction part function, is continuous at $x = 2$, then $b + c =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{2}$",
+      "$\\frac{2}{3}$",
+      "$\\frac{3}{2}$",
+      "$2$"
+    ],
+    "questionNumber": 35,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\frac{e^{\\tan x} - e^x + \\ln(\\sec x + \\tan x) - x}{\\tan x - x}$ be a continuous function at $x = 0$. The value of $f(0)$ equals :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$3$",
+      "$6$",
+      "$7$",
+      "$8$"
+    ],
+    "questionNumber": 36,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\begin{cases} (1 + ax)^{1/x} & ; x < 0 \\\\ b & ; x = 0 \\\\ \\frac{(x+c)^{1/3} - 1}{(x+1)^{1/2} - 1} & ; x > 0 \\end{cases}$, is continuous at $x = 0$, then $3(e^a + b + c)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{2}{5}$",
+      "$\\frac{4}{25}$",
+      "$\\frac{2}{25}$",
+      "$\\frac{1}{25}$"
+    ],
+    "questionNumber": 37,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $\\sqrt{x+y} + \\sqrt{y-x} = 5$, then $\\frac{d^2y}{dx^2} =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$8$",
+      "$\\frac{1}{8}$",
+      "$2$",
+      "$\\frac{1}{4}$"
+    ],
+    "questionNumber": 38,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = x^3 + x^4 + \\log x$ and $g$ is the inverse of $f$, then $g'(2)$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "$3$"
+    ],
+    "questionNumber": 39,
+    "questionType": "SINGLE CORRECT",
+    "text": "The number of points at which the function, $f(x) = \\begin{cases} \\min\\{|x|, x^2\\} & ; \\text{if } x \\in (-\\infty, 1) \\\\ \\min\\{2x - 1, x^2\\} & ; \\text{otherwise} \\end{cases}$ is not differentiable is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$3$",
+      "$5$",
+      "$8$"
+    ],
+    "questionNumber": 40,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x)$ is a function such that $f(x) + f''(x) = 0$ and $g(x) = (f(x))^2 + (f'(x))^2$ and $g(3) = 8$, then $g(8) =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$e^{-a^2}$",
+      "$e^{\\frac{a^2}{4}}$",
+      "$e^{-\\frac{a^2}{2}}$",
+      "$e^{-2a^2}$"
+    ],
+    "questionNumber": 41,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f$ is twice differentiable on $R$ such that $f(0) = 1, f'(0) = 0$ and $f''(0) = -1$, then for $a \\in R$, $\\lim_{x\\to \\infty} \\left( f\\left(\\frac{a}{\\sqrt{x}}\\right) \\right)^x =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$f_n(x)$",
+      "$f_n(x) f_{n-1}(x) \\dots\\dots f_2(x) f_1(x)$",
+      "$f_n(x) f_{n-1}(x)$",
+      "$f_n(x) f_{n-1}(x) \\dots\\dots f_2(x) f_1(x) e^x$"
+    ],
+    "questionNumber": 42,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f_1(x) = e^x$ and $f_{n+1}(x) = e^{f_n(x)}$ for any $n \\ge 1, n \\in N$. Then for any fixed $n$, the value of $\\frac{d}{dx} f_n(x)$ equals :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{x^{2/3}(1 + x^{2/3})}$",
+      "$\\frac{3}{x^{2/3}(1 + x^{2/3})}$",
+      "$\\frac{1}{3x^{2/3}(1 + x^{2/3})}$",
+      "$\\frac{1}{3x^{1/3}(1 + x^{2/3})}$"
+    ],
+    "questionNumber": 43,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $y = \\tan^{-1} \\left( \\frac{x^{1/3} - a^{1/3}}{1 + x^{1/3} a^{1/3}} \\right), x > 0, a > 0$, then $\\frac{dy}{dx}$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$1$",
+      "$2$",
+      "$\\frac{5}{4}$",
+      "$0$"
+    ],
+    "questionNumber": 44,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $k + f(0)$ so that $f(x) = \\begin{cases} \\frac{\\sin (4k-1) x}{3x} & ; x < 0 \\\\ \\frac{\\tan (4k+1) x}{5x} & ; 0 < x < \\frac{\\pi}{2} \\\\ 1 & ; x = 0 \\end{cases}$ can be made continuous at $x = 0$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{\\sqrt{3}}$",
+      "$3$",
+      "$\\frac{\\sqrt{3}}{2}$",
+      "$\\frac{2}{\\sqrt{3}}$"
+    ],
+    "questionNumber": 45,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $y = \\tan^{-1} \\left( \\frac{x}{1 + \\sqrt{1 - x^2}} \\right), |x| \\le 1$, then $\\frac{dy}{dx}$ at $\\left(\\frac{1}{2}\\right)$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$-1$",
+      "$2$"
+    ],
+    "questionNumber": 46,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\frac{e^x x \\cos x - x \\log_e (1+x) - x}{x^2}, x \\neq 0$. If $f(x)$ is continuous at $x = 0$, then $f(0)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$2$",
+      "$1$",
+      "$3$",
+      "$4$"
+    ],
+    "questionNumber": 47,
+    "questionType": "SINGLE CORRECT",
+    "text": "A function $f(x) = \\max(\\sin x, \\cos x, 1 - \\cos x)$ is non-derivable for $n$ values of $x \\in [0, 2\\pi]$. Then the value of $n$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$1$",
+      "$4$",
+      "$16$",
+      "$64$"
+    ],
+    "questionNumber": 48,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $g$ be the inverse function of a differentiable function $f$ and $G(x) = \\frac{1}{g(x)}$. If $f(4) = 2$ and $f'(4) = \\frac{1}{16}$, then the value of $(G'(2))^2$ equals to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$1$",
+      "$81$",
+      "$82$",
+      "$\\frac{82}{81}$"
+    ],
+    "questionNumber": 49,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\max\\left(x^4, x^2, \\frac{1}{81}\\right) \\forall x \\in [0, \\infty)$, then the sum of the square of reciprocal of all the values of $x$ where $f(x)$ is non-differentiable, is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$"
+    ],
+    "questionNumber": 50,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x)$ is derivable at $x = 2$ such that $f(2) = 2$ and $f'(2) = 4$, then the value of $\\lim_{h\\to 0} \\frac{1}{h^2} (\\ln(f(2+h^2)) - \\ln(f(2-h^2)))$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$5$",
+      "$4$",
+      "$3$",
+      "$2$"
+    ],
+    "questionNumber": 51,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = (x^2 - 3x + 2)|(x^3 - 6x^2 + 11x - 6)| + \\left|\\sin\\left(x + \\frac{\\pi}{4}\\right)\\right|$. Number of points at which the function $f(x)$ is non-differentiable in $[0, 2\\pi]$, is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$28$",
+      "$24$",
+      "$32$",
+      "$18$"
+    ],
+    "questionNumber": 52,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f$ and $g$ be differentiable functions on $R$ (the set of all real numbers) such that $g(1) = 2 = g'(1)$ and $f'(0) = 4$. If $h(x) = f(2x g(x) + \\cos \\pi x - 3)$ then $h'(1)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$10$",
+      "$11$",
+      "$13$",
+      "$15$"
+    ],
+    "questionNumber": 53,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\frac{(x+1)^7 \\sqrt{1+x^2}}{(x^2-x+1)^6}$, then the value of $f'(0)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "Statement-1 is true, Statement-2 is true and Statement-2 is correct explanation for Statement-1",
+      "Statement-1 is true, Statement-2 is true and Statement-2 is not the correct explanation for Statement-1",
+      "Statement-1 is true, Statement-2 is false",
+      "Statement-1 is false, Statement-2 is true"
+    ],
+    "questionNumber": 54,
+    "questionType": "SINGLE CORRECT",
+    "text": "Statement-1 : The function $f(x) = \\lim_{n\\to \\infty} \\frac{\\log_e (1+x) - x^{2n} \\sin(2x)}{1 + x^{2n}}$ is discontinuous at $x = 1$.\\nStatement-2 : L.H.L = R.H.L $\\neq f(1)$.",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "Infinitely many"
+    ],
+    "questionNumber": 55,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\begin{cases} x & ; \\text{if } x \\text{ is rational} \\\\ 1-x & ; \\text{if } x \\text{ is irrational} \\end{cases}$, then number of points for $x \\in R$, where $y = f(f(x))$ is discontinuous is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "None of these"
+    ],
+    "questionNumber": 56,
+    "questionType": "SINGLE CORRECT",
+    "text": "Number of points where $f(x) = \\begin{cases} \\max(|x^2-x-2|, x^2-3x) & ; x \\ge 0 \\\\ \\max(\\ln(-x), e^x) & ; x < 0 \\end{cases}$ is non-differentiable will be :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{5}$",
+      "$-\\frac{1}{5}$",
+      "$\\frac{6}{7}$",
+      "$-\\frac{6}{7}$"
+    ],
+    "questionNumber": 57,
+    "questionType": "SINGLE CORRECT",
+    "text": "If the function $f(x) = -4e^{\\frac{1-x}{2}} + 1 + x + \\frac{x^2}{2} + \\frac{x^3}{3}$ and $g(x) = f^{-1}(x)$, then the value of $g'\\left(\\frac{-7}{6}\\right)$ equals to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{2}{3}$",
+      "$\\frac{1}{9}$",
+      "$\\frac{2}{9}$",
+      "Not possible"
+    ],
+    "questionNumber": 58,
+    "questionType": "SINGLE CORRECT",
+    "text": "Find $k$; if possible; so that $f(x) = \\begin{cases} \\frac{\\ln(2 - \\cos 2x)}{\\ln^2(1 + \\sin 3x)} & ; x < 0 \\\\ k & ; x = 0 \\\\ \\frac{e^{\\sin 2x} - 1}{\\ln(1 + \\tan 9x)} & ; x > 0 \\end{cases}$ is continuous at $x = 0$.",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$2$",
+      "$0$",
+      "$-1$",
+      "$-2$"
+    ],
+    "questionNumber": 59,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $x = \\frac{1+t}{t^3}; y = \\frac{3}{2t^2} + \\frac{2}{t}$ then the value of $\\frac{dy}{dx} - x \\left( \\frac{dy}{dx} \\right)^3$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$7$",
+      "$8$",
+      "$9$",
+      "$10$"
+    ],
+    "questionNumber": 60,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $y^{-2} = 1 + 2\\sqrt{2}\\cos 2x$, then :\n$\\frac{d^2 y}{dx^2} = y(py^2 + 1)(qy^2 - 1)$ then the value of $(p+q)$ equals to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$3$",
+      "$5$",
+      "$10$",
+      "$15$"
+    ],
+    "questionNumber": 61,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f:\\mathbb{R} \\rightarrow \\mathbb{R}$ is not identically zero, differentiable function and satisfy the equations\n$f(xy) = f(x)f(y)$ and $f(x+z) = f(x) + f(z)$, then $f(5) =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "$3$"
+    ],
+    "questionNumber": 62,
+    "questionType": "SINGLE CORRECT",
+    "text": "Number of points at which the function $f(x) = \\begin{cases} \\min(x, x^2) & \\text{if } -\\infty < x < 1 \\\\ \\min(2x - 1, x^2) & \\text{if } x \\ge 1 \\end{cases}$ is not derivable is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$n^2 y$",
+      "$-n^2 y$",
+      "$-y$",
+      "$2x^2 y$"
+    ],
+    "questionNumber": 63,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $y = (x + \\sqrt{1 + x^2})^n$, then $(1 + x^2) \\frac{d^2 y}{dx^2} + x \\frac{dy}{dx}$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$1 - x^2$",
+      "$\\sqrt{1 - x^2}$",
+      "$2x \\left(x + \\sqrt{1 - x^2}\\right)$",
+      "$2x \\left(x - \\sqrt{1 - x^2}\\right)$"
+    ],
+    "questionNumber": 64,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $g(x) = f\\left(x - \\sqrt{1 - x^2}\\right)$ and $f'(x) = 1 - x^2$ then $g'(x)$ equals to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$f(x)$ is continuous at $x = 1$",
+      "$\\lim_{x \\rightarrow 1^-} f(x) = \\log_e 3$",
+      "$\\lim_{x \\rightarrow 1^+} f(x) = -\\sin 1$",
+      "$\\lim_{x \\rightarrow 1^+} f(x)$ does not exist"
+    ],
+    "questionNumber": 65,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\lim_{n \\rightarrow \\infty} \\frac{\\log_e (2+x) - x^{2n} \\sin x}{1 + x^{2n}}$ then :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$3$",
+      "$1$",
+      "$-6$",
+      "$6$"
+    ],
+    "questionNumber": 66,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x+y) = f(x)f(y)$ for all $x$ and $y$, and $f(5) = -2$, $f'(0) = 3$, then $f'(5)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$f(x)$ is continuous at $x = 1$",
+      "$\\lim_{x \\rightarrow 1^+} f(x) = \\log_e 3$",
+      "$\\lim_{x \\rightarrow 1^+} f(x) = -\\sin 1$",
+      "$\\lim_{x \\rightarrow 1^-} f(x)$ does not exist"
+    ],
+    "questionNumber": 67,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\lim_{n \\rightarrow \\infty} \\frac{\\log_e (2+x) - x^{2n} \\sin x}{1 + x^{2n}}$ then :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$k = \\frac{-5}{2}$",
+      "$\\{k\\} = \\frac{1}{2}$",
+      "$[k] = -2$",
+      "$[k]\\{k\\} = \\frac{-3}{2}$"
+    ],
+    "questionNumber": 68,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\begin{cases} \\frac{x - e^x + 1 - \\{1 - \\cos 2x\\}}{x^2} & x \\ne 0 \\\\ k & x = 0 \\end{cases}$ is continuous at $x = 0$ then, which of the following statement is false ?\n(where $[\\cdot]$ denotes greatest integer function and $\\{\\cdot\\}$ denotes fraction part function.)",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$(4, \\infty)$",
+      "$(0, 4)$",
+      "$[0, 4]$",
+      "$(-4, 4)$"
+    ],
+    "questionNumber": 69,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = ||x^2 - 10x + 21| - p|$; then the exhaustive set of values of $p$ for which $f(x)$ has exactly 6 points of non-derivability, is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$4$",
+      "$3$",
+      "$2$",
+      "$1$"
+    ],
+    "questionNumber": 70,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\sqrt{\\frac{1 + \\sin^{-1} x}{1 - \\tan^{-1} x}}$; then $f'(0)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{x^2}{y^2}$",
+      "$\\frac{y^2}{x^2}$",
+      "$\\frac{x^2 + y^2}{y^2}$",
+      "$\\frac{x^2 + y^2}{x^2}$"
+    ],
+    "questionNumber": 71,
+    "questionType": "SINGLE CORRECT",
+    "text": "For $t \\in (0, 1)$; let $x = \\sqrt{2^{\\sin^{-1} t}}$ and $y = \\sqrt{2^{\\cos^{-1} t}}$, then $1 + \\left( \\frac{dy}{dx} \\right)^2$ equals :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\{0, 1, 2\\}$",
+      "$\\{0, 2\\}$",
+      "$\\{0\\}$",
+      "an empty set"
+    ],
+    "questionNumber": 72,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = -1 + |x - 2|$ and $g(x) = 1 - |x|$ then set of all possible value(s) of $x$ for which $(f \\circ g)(x)$ is discontinuous is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$(k-1)\\pi(-1)^k$",
+      "$k\\pi$",
+      "$k\\pi(-1)^{k+1}$",
+      "$(k-1)\\pi(-1)^{k+1}$"
+    ],
+    "questionNumber": 73,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = [x]\\tan(\\pi x)$ then $f'(k^+)$ is equal to ($k \\in I$ and $[\\cdot]$ denotes greatest integer function):",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$a = b = c$",
+      "$a = 2b = 3c$",
+      "$a = b = 2c$",
+      "$2a = 2b = c$"
+    ],
+    "questionNumber": 74,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\begin{cases} \\frac{a e^{\\sin x} + b e^{-\\sin x} - c}{x^2} & ; x \\ne 0 \\\\ 2 & ; x = 0 \\end{cases}$ is continuous at $x = 0$; then :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "$3$"
+    ],
+    "questionNumber": 75,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $\\tan x \\cdot \\cot y = \\sec \\alpha$ where $\\alpha$ is constant and $\\alpha \\in \\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$ then $\\frac{d^2 y}{dx^2}$ at $\\left(\\frac{\\pi}{4}, \\frac{\\pi}{4}\\right)$ equals to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$-101$",
+      "$48$",
+      "$56$",
+      "$190$"
+    ],
+    "questionNumber": 76,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $y = (x - 3)(x - 2)(x - 1)x(x + 1)(x + 2)(x + 3)$, then $\\frac{d^2 y}{dx^2}$ at $x = 1$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "all natural numbers only",
+      "all integers only",
+      "all rational numbers only",
+      "all real numbers"
+    ],
+    "questionNumber": 77,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x+y) = f(x)f(y)$ $\\forall x, y \\in \\mathbb{R}$, $f(0) \\ne 0$. If $f(x)$ is continuous at $x = 0$, then $f(x)$ is continuous at :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$1$",
+      "$\\frac{1}{2}$",
+      "$2$",
+      "$3$"
+    ],
+    "questionNumber": 78,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = 3x^9 - 2x^4 + 2x^3 - 3x^2 + x + \\cos x + 5$ and $g(x) = f^{-1}(x)$; then the value of $g'(6)$ equals :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{g'f'' - f'g''}{(g')^2}$",
+      "$\\frac{g'f'' - f'g''}{(g')^3}$",
+      "$\\frac{f'g'' - g'f''}{(g')^3}$",
+      "None of these"
+    ],
+    "questionNumber": 79,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $y = f(x)$ and $z = g(x)$ then $\\frac{d^2 y}{dz^2}$ equals",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "None of these"
+    ],
+    "questionNumber": 80,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\begin{cases} x + 1 & ; x < 0 \\\\ |x - 1| & ; x \\ge 0 \\end{cases}$ and $g(x) = \\begin{cases} x + 1 & ; x < 0 \\\\ (x - 1)^2 & ; x \\ge 0 \\end{cases}$ then the number of points where $g(f(x))$ is not differentiable.",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "questionNumber": 81,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = [\\sin x] + [\\cos x]$, $x \\in [0, 2\\pi]$, where $[\\cdot]$ denotes the greatest integer function, total number of points where $f(x)$ is non differentiable is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$g(x)$ is discontinuous at $x = \\pi$",
+      "$g(x)$ is continuous for $x \\in [0, \\infty)$",
+      "$g(x)$ is differentiable at $x = \\pi$",
+      "$g(x)$ is differentiable for $x \\in [0, \\infty)$"
+    ],
+    "questionNumber": 82,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\cos x, g(x) = \\begin{cases} \\min\\{f(t) : 0 \\le t \\le x\\} & , x \\in [0, \\pi] \\\\ (\\sin x) - 1 & , x > \\pi \\end{cases}$\nThen",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$2^n$",
+      "$3^n$",
+      "$5^n$",
+      "$4^n$"
+    ],
+    "questionNumber": 83,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = (4 + x)^n, n \\in \\mathbb{N}$ and $f^r(0)$ represents the $r^{\\text{th}}$ derivative of $f(x)$ at $x = 0$, then the value of $\\sum_{r=0}^{\\infty} \\frac{f^r(0)}{r!}$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$(-\\infty, \\infty)$",
+      "$(-\\infty, \\infty) - \\{-1, 0, 1\\}$",
+      "$(-\\infty, \\infty) - \\{-1, 1\\}$",
+      "$(-\\infty, \\infty) - \\{0\\}$"
+    ],
+    "questionNumber": 84,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\begin{cases} \\frac{x}{1 + |x|} & , |x| \\ge 1 \\\\ \\frac{x}{1 - |x|} & , |x| < 1 \\end{cases}$, then domain of $f'(x)$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{5}$",
+      "$-\\frac{1}{5}$",
+      "$\\frac{6}{7}$",
+      "$-\\frac{6}{7}$"
+    ],
+    "questionNumber": 85,
+    "questionType": "SINGLE CORRECT",
+    "text": "If the function $f(x) = -4e^{\\frac{1-x}{2}} + 1 + x + \\frac{x^2}{2} + \\frac{x^3}{3}$ and $g(x) = f^{-1}(x)$, then the value of $g'\\left(\\frac{-7}{6}\\right)$ equals :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "Zero",
+      "One",
+      "Two",
+      "Three"
+    ],
+    "questionNumber": 86,
+    "questionType": "SINGLE CORRECT",
+    "text": "The number of points at which the function $f(x) = (x - |x|)^2 (1 - x + |x|)^2$ is not differentiable in the interval $(-3, 4)$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$4$",
+      "$3$",
+      "$2$",
+      "$1$"
+    ],
+    "questionNumber": 87,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\sqrt{\\frac{1 + \\sin^{-1} x}{1 - \\tan^{-1} x}}$; then $f'(0)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$(2, 3)$",
+      "$(1, 2)$",
+      "$(3, 2)$",
+      "$(2, 2)$"
+    ],
+    "questionNumber": 88,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\begin{cases} e^{x-1} & ; \\ 0 \\le x \\le 1 \\\\ x + 1 - \\{x\\} & ; \\ 1 < x < 3 \\end{cases}$ and $g(x) = x^2 - ax + b$ such that $f(x)g(x)$ is continuous in $[0, 3)$ then the ordered pair $(a, b)$ is (where $\\{\\cdot\\}$ denotes fractional part function) :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$\\frac{1}{5}$",
+      "$\\frac{1}{10}$",
+      "$\\frac{1}{7}$"
+    ],
+    "questionNumber": 89,
+    "questionType": "SINGLE CORRECT",
+    "text": "Use the following table and the fact that $f(x)$ is invertible and differentiable everywhere to find $(f^{-1})'(3)$ :\n\n| $x$ | $f(x)$ | $f'(x)$ |\n|---|---|---|\n| $3$ | $1$ | $7$ |\n| $6$ | $2$ | $10$ |\n| $9$ | $3$ | $5$ |",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-1 : Single Choice Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "$3$"
+    ],
+    "questionNumber": 90,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\begin{cases} x^n \\sin \\frac{1}{x} & , \\ x \\neq 0 \\\\ 0 & , \\ x = 0 \\end{cases}$\nSuch that $f(x)$ is continuous at $x = 0$; $f'(0)$ is real and finite; and $\\lim_{x \\to 0} f'(x)$ does not exist. This holds true for which of the following values of $n$ ?",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "correctOptionsArray": [
+      2,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$1$",
+      "$-1$",
+      "$2$",
+      "$-2$"
+    ],
+    "questionNumber": 1,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If $f(x) = \\tan^{-1} (\\text{sgn} (x^2 - \\lambda x + 1))$ has exactly one point of discontinuity, then the value of $\\lambda$ can be :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$f(x)$ is non-differentiable at exactly three points",
+      "$f(x)$ is continuous in $(-\\infty, 1]$",
+      "$f(x)$ is differentiable in $(-\\infty, -1)$",
+      "$f(x)$ is finite type of discontinuity at $x = 1$, but continuous at $x = -1$"
+    ],
+    "questionNumber": 2,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "$f(x) = \\begin{cases} 2(x + 1) & ; \\ x \\le -1 \\\\ \\sqrt{1 - x^2} & ; \\ -1 < x < 1 \\\\ | |x| - 1 | - 1 | & ; \\ x \\ge 1 \\end{cases}$, then :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$f(x)$ is continuous at $x = 0$",
+      "$f(x)$ is non-derivable at $x = 0$",
+      "$f'(0^+) = -3$",
+      "$f'(0^-)$ does not exist"
+    ],
+    "questionNumber": 3,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x) = \\begin{cases} \\frac{x(3e^{1/x} + 4)}{2 - e^{1/x}} & ; \\ x \\neq 0 \\\\ 0 & ; \\ x = 0 \\end{cases}$\nwhich of the following statement(s) is/are correct ?",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$f(x)$ is continuous at $x = 0$",
+      "$f(x)$ is differentiable at $x = 0$",
+      "$f(x)$ is continuous but not differentiable at $x = 0$",
+      "$f(0) = 0$"
+    ],
+    "questionNumber": 4,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $|f(x)| \\le \\sin^2 x, \\forall x \\in R$, then",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$a + c = -1$",
+      "$b + c = -4$",
+      "$a + b = -5$",
+      "$c + d = \\text{an irrational number}$"
+    ],
+    "questionNumber": 5,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x) = \\begin{cases} \\frac{a(1 - x \\sin x) + b \\cos x + 5}{x^2} & ; \\ x < 0 \\\\ 3 & ; \\ x = 0 \\\\ \\left(1 + \\left(\\frac{cx + dx^3}{x^2}\\right)\\right)^{\\frac{1}{x}} & ; \\ x > 0 \\end{cases}$\nIf $f$ is continuous at $x = 0$ then correct statement(s) is/are :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "correctOptionsArray": [
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$-1$",
+      "$-2$",
+      "$2$"
+    ],
+    "questionNumber": 6,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If $f(x) = |||x| - 2| + p|$ have more than 3 points of non-derivability then the value of $p$ can be :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$f(x) = \\sqrt[3]{x^2} |x| - 1 - |x|$ is no where non-differentiable",
+      "$\\lim_{x \\to \\infty} ((x + 5) \\tan^{-1}(x + 1) - (x + 1) \\tan^{-1}(x + 1)) = 2\\pi$",
+      "$f(x) = \\sin(\\ln(x + \\sqrt{x^2 + 1}))$ is an odd function",
+      "$f(x) = \\frac{4 - x^2}{4x - x^3}$ is discontinuous at exactly one point"
+    ],
+    "questionNumber": 7,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Identify the options having correct statement :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$1$",
+      "$-1$",
+      "$2$",
+      "$-2$"
+    ],
+    "questionNumber": 8,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "A twice differentiable function $f(x)$ is defined for all real numbers and satisfies the following conditions :\n$f(0) = 2; \\quad f'(0) = -5 \\quad \\text{and} \\quad f''(0) = 3.$\nThe function $g(x)$ is defined by $g(x) = e^{ax} + f(x) \\ \\forall x \\in R$, where '$a$' is any constant. If $g'(0) + g''(0) = 0$ then '$a$' can be equal to :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "differentiable everywhere",
+      "not differentiable at $x = n\\pi, n \\in I$",
+      "not differentiable at $x = 0$",
+      "continuous at $x = 0$"
+    ],
+    "questionNumber": 9,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If $f(x) = |x| \\sin x$, then $f$ is :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "correctOptionsArray": [
+      1,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$\\lim_{x \\to 0} f(x)$ does not exist",
+      "$f(x)$ is continuous at $x = 0$",
+      "$f(x)$ is not differentiable at $x = 0$",
+      "$f'(0) = 0$"
+    ],
+    "questionNumber": 10,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $[\\ ]$ denotes the greatest integer function and $f(x) = [\\tan^2 x]$, then",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "If $f(1) = f(2)$, then $f(-1) = f(-2)$",
+      "$\\frac{1}{2} f(x) + \\frac{1}{2} f(y) = f\\left(\\frac{1}{2} (x + y)\\right)$ for all real values of $x, y$",
+      "Let $f(x)$ be an even function, then $f(x) = 0 \\ \\forall x \\in R$",
+      "$f(x) + f(-x) = 2f(0) \\ \\forall x \\in R$"
+    ],
+    "questionNumber": 11,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f$ be a differentiable function satisfying $f'(x) = f'(-x) \\ \\forall x \\in R$. Then",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "correctOptionsArray": [
+      1,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "discontinuous at $x = 0$",
+      "continuous at $x = 0$",
+      "non-differentiable at $x = 0$",
+      "differentiable at $x = 0$"
+    ],
+    "questionNumber": 12,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f : R \\to R$ be a function, such that $|f(x)| \\le x^{4n}, \\ n \\in N \\ \\forall x \\in R$ then $f(x)$ is :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$\\lim_{x \\to 1} g(x)$ exists, but $g(x)$ is not continuous at $x = 1$",
+      "$\\lim_{x \\to 1} f(x)$ does not exist",
+      "$gof$ is continuous for all $x$",
+      "$fog$ is continuous for all $x$"
+    ],
+    "questionNumber": 13,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x) = [x]$ and $g(x) = 0$ when $x$ is an integer and $g(x) = x^2$ when $x$ is not an integer ($[\\ ]$ is the greatest integer function) then :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$f(x)$ is continuous in $R$ if $3p + 10q = 4$",
+      "$f(x)$ is differentiable in $R$ if $p = q = \\frac{4}{13}$",
+      "If $p = -2, q = 1$, then $f(x)$ is continuous in $R$",
+      "$f(x)$ is differentiable in $R$ if $2p + 11q = 4$"
+    ],
+    "questionNumber": 14,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let the function $f$ be defined by $f(x) = \\begin{cases} p + qx + x^2 & , \\ x < 2 \\\\ 2px + 3qx^2 & , \\ x \\ge 2 \\end{cases}$. Then :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$f(x)$ is not differentiable at $x = \\frac{9}{2}$",
+      "$f(x)$ is not differentiable at $x = \\frac{-9}{2}$",
+      "$f(x)$ is not differentiable at $x = 0$",
+      "$f(x)$ is differentiable at $x = \\frac{-9}{2}, 0, \\frac{9}{2}$"
+    ],
+    "questionNumber": 15,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x) = |2x - 9| + |2x| + |2x + 9|$. Which of the following are true ?",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$f(x)$ is continuous in $-2 \\le x \\le 2$",
+      "$f(x)$ is not differentiable at $x = 1$",
+      "$f(-1) + f\\left(\\frac{3}{2}\\right) = \\frac{35}{8}$",
+      "$f'(-1) f'\\left(\\frac{3}{2}\\right) = \\frac{-35}{4}$"
+    ],
+    "questionNumber": 16,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x) = \\max(x, x^2, x^3)$ in $-2 \\le x \\le 2$. Then :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$\\text{sgn}(f(x))$ is non-differentiable at exactly one point",
+      "$\\lim_{x \\to 0} \\frac{x^2(\\cos x - 1)}{f(x)} = 0$",
+      "$f(x) = x$ has 3 solutions",
+      "$f(f(x)) - f^3(x) = 0$ has infinitely many solutions"
+    ],
+    "questionNumber": 17,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If $f(x)$ be a differentiable function satisfying $f(y) f\\left(\\frac{x}{y}\\right) = f(x) \\ \\forall x, y \\in R, y \\neq 0$ and $f(1) \\neq 0$, $f'(1) = 3$, then :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      2
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$[\\alpha] = -2$",
+      "$[\\beta] = -1$",
+      "$[\\beta] = 0$",
+      "$[\\gamma] = 1$"
+    ],
+    "questionNumber": 18,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x) = (x^2 - 3x + 2)(x^2 + 3x + 2)$ and $\\alpha, \\beta, \\gamma$ satisfy $\\alpha < \\beta < \\gamma$ are the roots of $f'(x) = 0$ then which of the following is/are correct ($[\\cdot]$ denotes greatest integer function) ?",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$f(x)$ is continuous in $R$ if $3p + 10q = 4$",
+      "$f(x)$ is differentiable in $R$ if $p = q = \\frac{4}{13}$",
+      "If $p = -2, q = 1$, then $f(x)$ is continuous in $R$",
+      "$f(x)$ is differentiable in $R$ if $2p + 11q = 4$"
+    ],
+    "questionNumber": 19,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let the function $f$ be defined by $f(x) = \\begin{cases} p + qx + x^2 & , \\ x < 2 \\\\ 2px + 3qx^2 & , \\ x \\ge 2 \\end{cases}$. Then :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$e^{x \\sin(x^3)}[3x^3 \\cos(x^3) + \\sin(x^3)] + (\\tan x)^x[\\ln \\tan x + 2x \\text{cosec } 2x]$",
+      "$e^{x \\sin(x^3)}[x^3 \\cos(x^3) + \\sin(x^3)] + (\\tan x)^x[\\ln \\tan x + 2x \\text{cosec } 2x]$",
+      "$e^{x \\sin(x^3)}[x^3 \\sin(x^3) + \\cos(x^3)] + (\\tan x)^x[\\ln \\tan x + 2\\text{cosec } 2x]$",
+      "$e^{x \\sin(x^3)}[3x^3 \\cos(x^3) + \\sin(x^3)] + (\\tan x)^x\\left[ \\ln \\tan x + \\frac{x \\sec^2 x}{\\tan x} \\right]$"
+    ],
+    "questionNumber": 20,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If $y = e^{x \\sin(x^3)} + (\\tan x)^x$ then $\\frac{dy}{dx}$ may be equal to :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "correctOptionsArray": [
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$f(x) = - \\prod_{r=1}^n (1-x^r)$",
+      "$f(x) = 1 - \\prod_{r=1}^n (1-x^r)$",
+      "$f'(x) = (1-f(x)) \\left( \\sum_{r=1}^n \\frac{rx^{r-1}}{(1-x^r)} \\right)$",
+      "$f'(x) = f(x) \\left( \\sum_{r=1}^n \\frac{rx^{r-1}}{(1-x^r)} \\right)$"
+    ],
+    "questionNumber": 21,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x) = x + (1-x)x^2 + (1-x)(1-x^2)x^3 + \\dots \\dots + (1-x)(1-x^2)\\dots\\dots(1-x^{n-1})x^n$; $(n \\ge 4)$ then :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$a+b = -3$",
+      "$a-b = 1$",
+      "$\\frac{ab}{\\lambda} = 3$",
+      "$\\frac{-b}{\\lambda} = 3$"
+    ],
+    "questionNumber": 22,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x) = \\begin{cases} x^2 + a ; & 0 \\le x < 1 \\\\ -2x + b ; & 1 \\le x \\le 2 \\end{cases}$ and $g(x) = \\begin{cases} 3x + b ; & 0 \\le x < 1 \\\\ x^3 ; & 1 \\le x \\le 2 \\end{cases}$\nIf derivative of $f(x)$ w.r.t. $g(x)$ at $x = 1$ exists and is equal to $\\lambda$, then which of the following is/are correct ?",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "correctOptionsArray": [
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$a = \\frac{1}{3}$",
+      "$a = \\frac{1}{6}$",
+      "$b = \\frac{\\pi}{4} - \\frac{13}{6}$",
+      "$b = \\frac{\\pi}{4} - \\frac{7}{3}$"
+    ],
+    "questionNumber": 23,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If $f(x) = \\begin{cases} \\dfrac{\\sin[x^2]\\pi}{x^2 - 3x + 8} + ax^3 + b ; & 0 \\le x \\le 1 \\\\ 2 \\cos \\pi x + \\tan^{-1} x ; & 1 < x \\le 2 \\end{cases}$ is differentiable in $[0, 2]$ then :\n($[\\cdot]$ denotes greatest integer function)",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$x = 1$",
+      "$x = 2$",
+      "$x = \\frac{5}{2}$",
+      "$x = 3$"
+    ],
+    "questionNumber": 24,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If $f(x) = \\begin{cases} 1+x & 0 \\le x \\le 2 \\\\ 3-x & 2 < x \\le 3 \\end{cases}$, then $f(f(x))$ is not differentiable at :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      2
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$n < 2$",
+      "$n > 2$",
+      "$n < 100$",
+      "$n > 100$"
+    ],
+    "questionNumber": 25,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x) = (x+1)(x+2)(x+3)\\dots\\dots(x+100)$ and $g(x) = f(x) f''(x) - (f'(x))^2$. Let $n$ be the number of real roots of $g(x) = 0$, then :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$a = -3, b = 0$",
+      "$a = -3, b = -1$",
+      "$a = 2, b = 1$",
+      "$a = 0, b = 1$"
+    ],
+    "questionNumber": 26,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If $f(x) = \\begin{cases} |x|-3 & , \\ \\ x < 1 \\\\ |x-2|+a & , \\ \\ x \\ge 1 \\end{cases}$, $g(x) = \\begin{cases} 2-|x| & , \\ \\ x < 2 \\\\ \\text{sgn}(x)-b & , \\ \\ x \\ge 2 \\end{cases}$\nIf $h(x) = f(x) + g(x)$ is discontinuous at exactly one point, then which of the following are correct ?",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "correctOptionsArray": [
+      2,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$a+b+c = 0$",
+      "$b = a+c$",
+      "$c = 1+b$",
+      "$b^2+c^2 = 1$"
+    ],
+    "questionNumber": 27,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x)$ be a continuous function in $[-1, 1]$ such that\n$f(x) = \\begin{cases} \\dfrac{\\ln(ax^2+bx+c)}{x^2} & ; \\ \\ -1 \\le x < 0 \\\\ 1 & ; \\ \\ x = 0 \\\\ \\dfrac{\\sin(e^{x^2}-1)}{x^2} & ; \\ \\ 0 < x \\le 1 \\end{cases}$\nThen which of the following is/are correct ?",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$[f(3)] = 3$ ($[\\cdot]$ denotes greatest integer function)",
+      "$f(\\sqrt{7}) = 3$",
+      "$f(x)$ is even",
+      "$f'(0) = 0$"
+    ],
+    "questionNumber": 28,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "$f(x)$ is differentiable function satisfying the relationship $f^2(x) + f^2(y) + 2(xy-1) = f^2(x+y)$ $\\forall x, y \\in R$\nAlso $f(x) > 0 \\ \\forall x \\in R$ and $f(\\sqrt{2}) = 2$. Then which of the following statement(s) is/are correct about $f(x)$ ?",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "has domain $[-1, 1]$",
+      "is discontinuous at two points in its domain",
+      "is discontinuous at $x = 0$",
+      "is discontinuous at $x = 1$"
+    ],
+    "questionNumber": 29,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "The function $f(x) = \\left[ \\sqrt{1-\\sqrt{1-x^2}} \\right]$, (where $[\\cdot]$ denotes greatest integer function) :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$f(x)$ is a polynomial function",
+      "$f(x)$ is an exponential function",
+      "$f(x)$ is twice differentiable for all $x \\in R$",
+      "$f'(3) = 8$"
+    ],
+    "questionNumber": 30,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "A function $f(x)$ satisfies the relation :\n$f(x+y) = f(x) + f(y) + xy(x+y) \\ \\forall x,y \\in R$. If $f'(0) = -1$, then :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "correctOptionsArray": [
+      1,
+      2
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$\\frac{\\pi}{6}$",
+      "$\\frac{\\pi}{3}$",
+      "$\\frac{\\pi}{2}$",
+      "$\\pi$"
+    ],
+    "questionNumber": 31,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "The points of discontinuities of $f(x) = \\left[ \\frac{6x}{\\pi} \\right] \\cos\\left[ \\frac{3x}{\\pi} \\right]$ in $\\left[ \\frac{\\pi}{6}, \\pi \\right]$ is/are :\n(where $[\\cdot]$ denotes greatest integer function)",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$f(x), f'(x)$ are continuous",
+      "$f'(x)$ is continuous, $f''(x)$ is not continuous",
+      "$f''(x)$ is continuous",
+      "$f''(x)$ is non differentiable"
+    ],
+    "questionNumber": 32,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x) = \\begin{cases} \\dfrac{x^2}{2} & 0 \\le x < 1 \\\\ 2x^2 - 3x + \\dfrac{3}{2} & 1 \\le x \\le 2 \\end{cases}$, then in $[0, 2]$ :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "correctOptionsArray": [
+      1,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$\\frac{\\phi'\\psi'' - \\psi'\\phi''}{(\\phi')^2}$",
+      "$\\frac{\\phi'\\psi'' - \\psi'\\phi''}{(\\phi')^3}$",
+      "$\\frac{\\psi''}{\\phi'} - \\frac{\\psi'\\phi''}{(\\phi')^2}$",
+      "$\\frac{\\psi''}{(\\phi')^2} - \\frac{\\psi'\\phi''}{(\\phi')^3}$"
+    ],
+    "questionNumber": 33,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If $x = \\phi(t), y = \\psi(t)$, then $\\frac{d^2y}{dx^2} =$",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$gof$ is continuous for all $x$",
+      "$gof$ is not continuous for all $x$",
+      "$fog$ is continuous everywhere",
+      "$fog$ is not continuous everywhere"
+    ],
+    "questionNumber": 34,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "$f(x) = [x]$ and $g(x) = \\begin{cases} 0 & , \\ \\ x \\in I \\\\ x^2 & , \\ \\ x \\notin I \\end{cases}$ where $[\\cdot]$ denotes the greatest integer function. Then",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$g''(e) = \\frac{1-e}{(1+e)^3}$",
+      "$g''(e) = \\frac{e-1}{(1+e)^3}$",
+      "$g'(e) = e+1$",
+      "$g'(e) = \\frac{1}{e+1}$"
+    ],
+    "questionNumber": 35,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f : R^+ \\rightarrow R$ defined as $f(x) = e^x + \\ln x$ and $g = f^{-1}$ then correct statement(s) is/are :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise-2 : One or More than One Answer Is/are Correct",
+    "has_graph": false,
+    "options": [
+      "$\\lim_{x \\rightarrow 2} f(x) = 1$",
+      "$f(x)$ is differentiable at $x = 2$",
+      "$f(x)$ is continuous at $x = 2$",
+      "$f(x)$ is discontinuus at $x = 3$"
+    ],
+    "questionNumber": 36,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x) = \\begin{cases} \\dfrac{3x-x^2}{2} & ; \\ \\ x < 2 \\\\ [x-1] & ; \\ \\ 2 \\le x < 3 \\\\ x^2-8x+17 & ; \\ \\ x \\ge 3 \\end{cases}$; then which of the following hold(s) good ?\n($[\\cdot]$ denotes greatest integer function)",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$-1$",
+      "Does not exist"
+    ],
+    "questionNumber": 1,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 1 to 2**\nLet $f(x) = \\lim_{n \\rightarrow \\infty} n^2 \\tan\\left(\\ln\\left(\\sec \\frac{x}{n}\\right)\\right)$ and $g(x) = \\min(f(x), \\{x\\})$\n(where $\\{\\cdot\\}$ denotes fractional part function)\n\nLeft hand derivative of $\\phi(x) = e^{\\sqrt{2f(x)}}$ at $x = 0$ is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$2$",
+      "$1$",
+      "$0$",
+      "$3$"
+    ],
+    "questionNumber": 2,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 1 to 2**\nLet $f(x) = \\lim_{n \\rightarrow \\infty} n^2 \\tan\\left(\\ln\\left(\\sec \\frac{x}{n}\\right)\\right)$ and $g(x) = \\min(f(x), \\{x\\})$\n(where $\\{\\cdot\\}$ denotes fractional part function)\n\nNumber of points in $x \\in [-1, 2]$ at which $g(x)$ is discontinuous :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "$3$"
+    ],
+    "questionNumber": 3,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 3 to 4**\nLet $f(x)$ and $g(x)$ be two differentiable functions, defined as :\n$f(x) = x^2 + xg'(1) + g''(2)$ and $g(x) = f(1)x^2 + xf'(x) + f''(x)$.\n\nThe value of $f(1) + g(-1)$ is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "Infinite"
+    ],
+    "questionNumber": 4,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 3 to 4**\nLet $f(x)$ and $g(x)$ be two differentiable functions, defined as :\n$f(x) = x^2 + xg'(1) + g''(2)$ and $g(x) = f(1)x^2 + xf'(x) + f''(x)$.\n\nThe number of integers in the domain of the function $F(x) = \\sqrt{-\\frac{f(x)}{g(x)}} + \\sqrt{3-x}$ is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$3, 6$",
+      "$2, 3$",
+      "$2, 4$",
+      "$2, 5$"
+    ],
+    "questionNumber": 5,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 5 to 6**\nDefine : $f(x) = |x^2 - 4x + 3| \\ln x + 2(x - 2)^{1/3}, x > 0$\n$h(x) = \\begin{cases} x - 1 & , \\ \\ x \\in Q \\\\ x^2 - x - 2 & , \\ \\ x \\notin Q \\end{cases}$\n\n$f(x)$ is non-differentiable at ........ points and the sum of corresponding $x$ value(s) is ........",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$1 + \\sqrt{2}$",
+      "$\\tan \\frac{3\\pi}{8}$",
+      "$\\tan \\frac{7\\pi}{8}$",
+      "$\\sqrt{2} - 1$"
+    ],
+    "questionNumber": 6,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 5 to 6**\nDefine : $f(x) = |x^2 - 4x + 3| \\ln x + 2(x - 2)^{1/3}, x > 0$\n$h(x) = \\begin{cases} x - 1 & , \\ \\ x \\in Q \\\\ x^2 - x - 2 & , \\ \\ x \\notin Q \\end{cases}$\n\n$h(x)$ is discontinuous at $x = \\dots \\dots$",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "2",
+      "4"
+    ],
+    "questionNumber": 7,
+    "questionType": "COMPREHENSION",
+    "text": "Consider a function defined in $[-2, 2]$\n$$f(x) = \\begin{cases} \\{x\\} & -2 \\le x < -1 \\\\ |\\operatorname{sgn} x| & -1 \\le x \\le 1 \\\\ \\{-x\\} & 1 < x \\le 2 \\end{cases}$$\nwhere $\\{\\cdot\\}$ denotes the fractional part function.\n\nThe total number of points of discontinuity of $f(x)$ for $x \\in [-2, 2]$ is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "questionNumber": 8,
+    "questionType": "COMPREHENSION",
+    "text": "Consider a function defined in $[-2, 2]$\n$$f(x) = \\begin{cases} \\{x\\} & -2 \\le x < -1 \\\\ |\\operatorname{sgn} x| & -1 \\le x \\le 1 \\\\ \\{-x\\} & 1 < x \\le 2 \\end{cases}$$\nwhere $\\{\\cdot\\}$ denotes the fractional part function.\n\nThe number of points for $x \\in [-2, 2]$ where $f(x)$ is non-differentiable is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "questionNumber": 9,
+    "questionType": "COMPREHENSION",
+    "text": "Consider a function $f(x)$ in $[0, 2\\pi]$ defined as :\n$$f(x) = \\begin{cases} [\\sin x] + [\\cos x] & ; \\ \\ 0 \\le x \\le \\pi \\\\ [\\sin x] - [\\cos x] & ; \\ \\ \\pi < x \\le 2\\pi \\end{cases}$$\nwhere $[\\cdot]$ denotes greatest integer function then\n\nNumber of points where $f(x)$ is non-derivable :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "-1",
+      "2"
+    ],
+    "questionNumber": 10,
+    "questionType": "COMPREHENSION",
+    "text": "Consider a function $f(x)$ in $[0, 2\\pi]$ defined as :\n$$f(x) = \\begin{cases} [\\sin x] + [\\cos x] & ; \\ \\ 0 \\le x \\le \\pi \\\\ [\\sin x] - [\\cos x] & ; \\ \\ \\pi < x \\le 2\\pi \\end{cases}$$\nwhere $[\\cdot]$ denotes greatest integer function then\n\n$\\displaystyle \\lim_{x \\to \\left(\\frac{3\\pi}{2}\\right)^+} f(x)$ equals",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "questionNumber": 11,
+    "questionType": "COMPREHENSION",
+    "text": "Let $f(x) = \\begin{cases} x[x] & 0 \\le x < 2 \\\\ (x-1)[x] & 2 \\le x \\le 3 \\end{cases}$ where $[x] = \\text{greatest integer less than or equal to } x$, then :\n\nThe number of values of $x$ for $x \\in [0, 3]$ where $f(x)$ is discontinuous is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "questionNumber": 12,
+    "questionType": "COMPREHENSION",
+    "text": "Let $f(x) = \\begin{cases} x[x] & 0 \\le x < 2 \\\\ (x-1)[x] & 2 \\le x \\le 3 \\end{cases}$ where $[x] = \\text{greatest integer less than or equal to } x$, then :\n\nThe number of values of $x$ for $x \\in [0, 3]$ where $f(x)$ is non-differentiable is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "questionNumber": 13,
+    "questionType": "COMPREHENSION",
+    "text": "Let $f(x) = \\begin{cases} x[x] & 0 \\le x < 2 \\\\ (x-1)[x] & 2 \\le x \\le 3 \\end{cases}$ where $[x] = \\text{greatest integer less than or equal to } x$, then :\n\nThe number of integers in the range of $y = f(x)$ is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$f(2) = e^4$",
+      "$f(2) = 2e^2$",
+      "$f(1) < 4$",
+      "$f(3) > 729$"
+    ],
+    "questionNumber": 14,
+    "questionType": "COMPREHENSION",
+    "text": "Let $f : \\mathbb{R} \\to \\mathbb{R}$ be a continuous and differentiable function such that $f(x+y) = f(x) \\cdot f(y)$ $\\forall\\ x, y$, $f(x) \\neq 0$ and $f(0) = 1$ and $f'(0) = 2$.\nLet $g(xy) = g(x) \\cdot g(y)$ $\\forall\\ x, y$ and $g'(1) = 2; g(1) \\neq 0$\n\nIdentify the correct option :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$g(2) = 2$",
+      "$g(3) = 3$",
+      "$g(3) = 9$",
+      "$g(3) = 6$"
+    ],
+    "questionNumber": 15,
+    "questionType": "COMPREHENSION",
+    "text": "Let $f : \\mathbb{R} \\to \\mathbb{R}$ be a continuous and differentiable function such that $f(x+y) = f(x) \\cdot f(y)$ $\\forall\\ x, y$, $f(x) \\neq 0$ and $f(0) = 1$ and $f'(0) = 2$.\nLet $g(xy) = g(x) \\cdot g(y)$ $\\forall\\ x, y$ and $g'(1) = 2; g(1) \\neq 0$\n\nIdentify the correct option :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "questionNumber": 16,
+    "questionType": "COMPREHENSION",
+    "text": "Let $f : \\mathbb{R} \\to \\mathbb{R}$ be a continuous and differentiable function such that $f(x+y) = f(x) \\cdot f(y)$ $\\forall\\ x, y$, $f(x) \\neq 0$ and $f(0) = 1$ and $f'(0) = 2$.\nLet $g(xy) = g(x) \\cdot g(y)$ $\\forall\\ x, y$ and $g'(1) = 2; g(1) \\neq 0$\n\nThe number of values of $x$, where $f(x) = g(x)$ :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$\\displaystyle \\frac{(1 - \\cos x)(f(x) - \\lambda)}{\\cos x}$",
+      "$\\displaystyle \\frac{(1 - \\cos x)(\\lambda - f(x))}{\\cos x}$",
+      "$\\displaystyle \\frac{(1 - \\cos x)(\\lambda - f(x))}{f(x)}$",
+      "$\\displaystyle \\frac{(1 - \\cos x)(\\lambda - f(x))}{(f(x))^2}$"
+    ],
+    "questionNumber": 17,
+    "questionType": "COMPREHENSION",
+    "text": "Let $\\displaystyle f(x) = \\frac{\\cos^2 x}{1 + \\cos x + \\cos^2 x}$ and $g(x) = \\lambda \\tan x + (1 - \\lambda)\\sin x - x$, where $\\lambda \\in \\mathbb{R}$ and $x \\in [0, \\pi/2)$.\n\n$g'(x)$ equals",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$[1, \\infty)$",
+      "$[0, \\infty)$",
+      "$\\displaystyle \\left[\\frac{1}{2}, \\infty\\right)$",
+      "$\\displaystyle \\left[\\frac{1}{3}, \\infty\\right)$"
+    ],
+    "questionNumber": 18,
+    "questionType": "COMPREHENSION",
+    "text": "Let $\\displaystyle f(x) = \\frac{\\cos^2 x}{1 + \\cos x + \\cos^2 x}$ and $g(x) = \\lambda \\tan x + (1 - \\lambda)\\sin x - x$, where $\\lambda \\in \\mathbb{R}$ and $x \\in [0, \\pi/2)$.\n\nThe exhaustive set of values of '$\\lambda$' such that $g'(x) \\ge 0$ for any $x \\in [0, \\pi/2)$ :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "questionNumber": 19,
+    "questionType": "COMPREHENSION",
+    "text": "Let $\\displaystyle f(x) = \\lim_{n \\to \\infty} \\frac{x^2 + 2(x+1)^{2n}}{(x+1)^{2n+1} + x^2 + 1}, n \\in \\mathbb{N}$ and\n$\\displaystyle g(x) = \\tan\\left( \\frac{1}{2} \\sin^{-1} \\left( \\frac{2f(x)}{1 + f^2(x)} \\right) \\right)$, then\n\nThe number of points where $g(x)$ is non-differentiable $\\forall\\ x \\in \\mathbb{R}$ is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "1",
+      "2",
+      "4",
+      "Non-existent"
+    ],
+    "questionNumber": 20,
+    "questionType": "COMPREHENSION",
+    "text": "Let $\\displaystyle f(x) = \\lim_{n \\to \\infty} \\frac{x^2 + 2(x+1)^{2n}}{(x+1)^{2n+1} + x^2 + 1}, n \\in \\mathbb{N}$ and\n$\\displaystyle g(x) = \\tan\\left( \\frac{1}{2} \\sin^{-1} \\left( \\frac{2f(x)}{1 + f^2(x)} \\right) \\right)$, then\n\n$\\displaystyle \\lim_{x \\to -3} \\frac{(x^2 + 4x + 3)}{\\sin(x+3)g(x)}$ is equal to :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "7",
+      "8",
+      "12",
+      "Non-existent"
+    ],
+    "questionNumber": 21,
+    "questionType": "COMPREHENSION",
+    "text": "Let $\\displaystyle f(x) = \\lim_{n \\to \\infty} \\frac{x^2 + 2(x+1)^{2n}}{(x+1)^{2n+1} + x^2 + 1}, n \\in \\mathbb{N}$ and\n$\\displaystyle g(x) = \\tan\\left( \\frac{1}{2} \\sin^{-1} \\left( \\frac{2f(x)}{1 + f^2(x)} \\right) \\right)$, then\n\n$\\displaystyle \\lim_{x \\to 0^-} \\left\\{ \\frac{f(x)}{\\tan^2 x} \\right\\} + \\lim_{x \\to -2^-} f(x) + \\lim_{x \\to -2^+} (5f(x))$ is equal to\n(where $\\{\\cdot\\}$ denotes fraction part function)",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "1",
+      "2",
+      "3",
+      "infinite"
+    ],
+    "questionNumber": 22,
+    "questionType": "COMPREHENSION",
+    "text": "Let $f$ and $g$ be two differentiable functions such that :\n$$f(x) = g'(1) \\sin x + (g''(2) - 1)x$$\n$$g(x) = x^2 - f'\\left(\\frac{\\pi}{2}\\right)x + f''\\left(-\\frac{\\pi}{2}\\right)$$\n\nThe number of solution(s) of the equation $f(x) = g(x)$ is/are :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$3\\sqrt{2}$",
+      "$2\\sqrt{3}$",
+      "$\\sqrt{3}$",
+      "$\\displaystyle \\frac{1}{\\sqrt{3}}$"
+    ],
+    "questionNumber": 23,
+    "questionType": "COMPREHENSION",
+    "text": "Let $f$ and $g$ be two differentiable functions such that :\n$$f(x) = g'(1) \\sin x + (g''(2) - 1)x$$\n$$g(x) = x^2 - f'\\left(\\frac{\\pi}{2}\\right)x + f''\\left(-\\frac{\\pi}{2}\\right)$$\n\nIf $\\displaystyle \\int \\frac{g(\\cos x)}{f(x)-x}dx = \\cos x + \\ln(h(x)) + C$ where $C$ is constant and $\\displaystyle h\\left(\\frac{\\pi}{2}\\right) = 1$ then $\\displaystyle \\left| h\\left(\\frac{2\\pi}{3}\\right) \\right|$ is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 2,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$\\displaystyle \\frac{\\pi}{2} + 1$",
+      "$\\displaystyle \\frac{\\pi}{2}$",
+      "1",
+      "0"
+    ],
+    "questionNumber": 24,
+    "questionType": "COMPREHENSION",
+    "text": "Let $f$ and $g$ be two differentiable functions such that :\n$$f(x) = g'(1) \\sin x + (g''(2) - 1)x$$\n$$g(x) = x^2 - f'\\left(\\frac{\\pi}{2}\\right)x + f''\\left(-\\frac{\\pi}{2}\\right)$$\n\nIf $\\phi(x) = f^{-1}(x)$ then $\\displaystyle \\phi'\\left(\\frac{\\pi}{2} + 1\\right)$ equals to :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$(-\\infty, -1) \\cup (-1, 0) \\cup (0, 1) \\cup (1, \\infty)$",
+      "$(-\\infty, \\infty)$",
+      "$(-\\infty, -1) \\cup (-1, 0)$",
+      "$(0, 1) \\cup (1, \\infty)$"
+    ],
+    "questionNumber": 25,
+    "questionType": "COMPREHENSION",
+    "text": "Suppose a function $f(x)$ satisfies the following conditions\n$$f(x+y) = \\frac{f(x) + f(y)}{1 + f(x) f(y)}, \\forall\\ x, y \\in \\mathbb{R} \\text{ and } f'(0) = 1$$\nAlso $-1 < f(x) < 1$, $\\forall\\ x \\in \\mathbb{R}$\n\n$f(x)$ increases in the complete interval :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "$e$",
+      "$e^2$"
+    ],
+    "questionNumber": 26,
+    "questionType": "COMPREHENSION",
+    "text": "Suppose a function $f(x)$ satisfies the following conditions\n$$f(x+y) = \\frac{f(x) + f(y)}{1 + f(x) f(y)}, \\forall\\ x, y \\in \\mathbb{R} \\text{ and } f'(0) = 1$$\nAlso $-1 < f(x) < 1$, $\\forall\\ x \\in \\mathbb{R}$\n\nThe value of the limit $\\displaystyle \\lim_{x \\to \\infty} (f(x))^x$ is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "-16",
+      "16",
+      "$\\displaystyle \\frac{16}{2}$",
+      "$\\displaystyle \\frac{-16}{2}$"
+    ],
+    "questionNumber": 27,
+    "questionType": "COMPREHENSION",
+    "text": "Let $f(x)$ be a polynomial satisfying $\\displaystyle \\lim_{x \\to \\infty} \\frac{x^4 f(x)}{x^8 + 1} = 3$\n$f(2) = 5, f(3) = 10, f(-1) = 2, f(-6) = 37$\n\nThe value of $\\displaystyle \\lim_{x \\to -6} \\frac{f(x) - x^2 - 1}{3(x+6)}$ equals to :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "4",
+      "3",
+      "1",
+      "0"
+    ],
+    "questionNumber": 28,
+    "questionType": "COMPREHENSION",
+    "text": "Let $f(x)$ be a polynomial satisfying $\\displaystyle \\lim_{x \\to \\infty} \\frac{x^4 f(x)}{x^8 + 1} = 3$\n$f(2) = 5, f(3) = 10, f(-1) = 2, f(-6) = 37$\n\nThe number of points of discontinuity of $\\displaystyle g(x) = \\frac{1}{x^2 + 1 - f(x)}$ in $\\displaystyle \\left[\\frac{-15}{2}, \\frac{5}{2}\\right]$ equals :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$4 - e^2$",
+      "$e^2 - 4$",
+      "$4 - e$",
+      "$e - 4$"
+    ],
+    "questionNumber": 29,
+    "questionType": "COMPREHENSION",
+    "text": "Consider $f(x) = x^{\\ln x}$ and $g(x) = e^2x$. Let $\\alpha$ and $\\beta$ be two values of $x$ satisfying $f(x) = g(x)$ $(\\alpha < \\beta)$\n\nIf $\\displaystyle \\lim_{x \\to \\beta} \\frac{f(x) - c\\beta}{g(x) - \\beta^2} = l$ then the value of $c - l$ equals to :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 3,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "$e$",
+      "$-e$",
+      "$3e$",
+      "$-3e$"
+    ],
+    "questionNumber": 30,
+    "questionType": "COMPREHENSION",
+    "text": "Consider $f(x) = x^{\\ln x}$ and $g(x) = e^2x$. Let $\\alpha$ and $\\beta$ be two values of $x$ satisfying $f(x) = g(x)$ $(\\alpha < \\beta)$\n\nIf $\\displaystyle h(x) = \\frac{f(x)}{g(x)}$ then $h'(\\alpha)$ equals to :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 1,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "1",
+      "2",
+      "$\\sqrt{2}$",
+      "4"
+    ],
+    "questionNumber": 31,
+    "questionType": "COMPREHENSION",
+    "text": "Let $\\displaystyle f_n(x) + f_n(y) = \\frac{x^n + y^n}{x^n y^n}$ $\\forall\\ x, y \\in \\mathbb{R} - \\{0\\}$ where $n \\in \\mathbb{N}$ and \n$\\displaystyle g(x) = \\max \\left\\{ f_2(x), f_3(x), \\frac{1}{2} \\right\\}$ $\\forall\\ x \\in \\mathbb{R} - \\{0\\}$\n\nThe minimum value of $\\displaystyle \\sum_{k=1}^{\\infty} f_{2k}(\\operatorname{cosec} \\theta) + \\sum_{k=1}^{\\infty} f_{2k}(\\sec \\theta)$, where $\\displaystyle \\theta \\neq \\frac{k\\pi}{2} ; k \\in I$ is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "correctOption": 0,
+    "exerciseName": "Exercise-3 : Comprehension Type Problems",
+    "has_graph": false,
+    "options": [
+      "3",
+      "4",
+      "5",
+      "1"
+    ],
+    "questionNumber": 32,
+    "questionType": "COMPREHENSION",
+    "text": "Let $\\displaystyle f_n(x) + f_n(y) = \\frac{x^n + y^n}{x^n y^n}$ $\\forall\\ x, y \\in \\mathbb{R} - \\{0\\}$ where $n \\in \\mathbb{N}$ and \n$\\displaystyle g(x) = \\max \\left\\{ f_2(x), f_3(x), \\frac{1}{2} \\right\\}$ $\\forall\\ x \\in \\mathbb{R} - \\{0\\}$\n\nThe number of values of $x$ for which $g(x)$ is non-differentiable ($x \\in \\mathbb{R} - \\{0\\}$) :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "answerKeyStr": "A->P,Q,R; B->Q; C->P,Q; D->R,S,T",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-4 : Matching Type Problems",
+    "has_graph": false,
+    "questionNumber": 1,
+    "questionType": "MATCH THE COLUMN",
+    "text": "Match the following:\n\n$$\n\\begin{array}{|l|l|}\n\\hline\n\\text{\\textbf{Column-I}} & \\text{\\textbf{Column-II}} \\\\\n\\hline\n\\text{(A) If } \\displaystyle \\int_{0}^{\\pi} \\frac{\\log \\sin x}{\\cos^2 x} \\, dx = -K \\text{ then the value of } \\frac{3K}{\\pi} \\text{ is greater than} & \\text{(P) } 0 \\\\\n\\hline\n\\text{(B) If } e^{x+y} + e^{y-x} = 1 \\text{ and } y'' - (y')^2 + K = 0\\text{, then } K \\text{ is equal to} & \\text{(Q) } 1 \\\\\n\\hline\n\\text{(C) If } f(x) = x \\ln x \\text{ then } 2(f^{-1})'(\\ln 4) \\text{ is more than} & \\text{(R) } 2 \\\\\n\\hline\n\\text{(D) } \\displaystyle \\lim_{x \\to \\infty} (x \\ln x)^{\\frac{1}{x^2+1}} \\text{ is less than} & \\text{(S) } 4 \\\\\n\\hline\n& \\text{(T) } 5 \\\\\n\\hline\n\\end{array}\n$$",
+    "typeLabel": "[MATCH THE COLUMN]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "A->P,Q,R,S,T; B->P,T; C->Q,S; D->P,R,T",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-4 : Matching Type Problems",
+    "has_graph": false,
+    "questionNumber": 2,
+    "questionType": "MATCH THE COLUMN",
+    "text": "Let $\\displaystyle f(x) = \\begin{cases} [x] & , -2 \\le x < 0 \\\\ |x| & , 0 \\le x \\le 2 \\end{cases}$ (where $[\\cdot]$ denotes the greatest integer function) and $\\displaystyle g(x) = \\sec x, x \\in R - (2n+1)\\frac{\\pi}{2}, n \\in I$.\n\nMatch the following statements in Column-I with their values in Column-II in the interval $\\displaystyle \\left(-\\frac{3\\pi}{2}, \\frac{3\\pi}{2}\\right)$:\n\n$$\n\\begin{array}{|l|l|}\n\\hline\n\\text{\\textbf{Column-I}} & \\text{\\textbf{Column-II}} \\\\\n\\hline\n\\text{(A) Abscissa of points where limit of } (f \\circ g)(x) \\text{ exist is/are} & \\text{(P) } -1 \\\\\n\\hline\n\\text{(B) Abscissa of points in domain of } (g \\circ f)(x)\\text{, where limit of } (g \\circ f)(x) \\text{ does not exist is/are} & \\text{(Q) } \\pi \\\\\n\\hline\n\\text{(C) Abscissa of points of discontinuity of } (f \\circ g)(x) \\text{ is/are} & \\text{(R) } \\displaystyle \\frac{5\\pi}{6} \\\\\n\\hline\n\\text{(D) Abscissa of points of differentiability of } (f \\circ g)(x) \\text{ is/are} & \\text{(S) } -\\pi \\\\\n\\hline\n& \\text{(T) } 0 \\\\\n\\hline\n\\end{array}\n$$",
+    "typeLabel": "[MATCH THE COLUMN]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "A->Q; B->S; C->P; D->R",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-4 : Matching Type Problems",
+    "has_graph": false,
+    "questionNumber": 3,
+    "questionType": "MATCH THE COLUMN",
+    "text": "Let a function $f(x) = [x]\\{x\\} - |x|$ where $[\\cdot]$, $\\{\\cdot\\}$ are greatest integer and fractional part respectively. Match the following Column-I with Column-II in domain $(-3, \\infty)$:\n\n$$\n\\begin{array}{|l|l|}\n\\hline\n\\text{\\textbf{Column-I}} & \\text{\\textbf{Column-II}} \\\\\n\\hline\n\\text{(A) } f(x) \\text{ is continuous at } x \\text{ equal to} & \\text{(P) } 3 \\\\\n\\hline\n\\text{(B) } \\left| \\frac{4}{3} \\displaystyle \\int_{2}^{3} f(x) \\, dx \\right| \\text{ is equal to} & \\text{(Q) } 1 \\\\\n\\hline\n\\text{(C) If } g(x) = x - 1 \\text{ and if } f(x) = g(x)\\text{, then number of solutions is} & \\text{(R) } 4 \\\\\n\\hline\n\\text{(D) If } l = \\displaystyle \\lim_{x \\to 4^+} f(x)\\text{, then } -l \\text{ is equal to} & \\text{(S) } 2 \\\\\n\\hline\n\\end{array}\n$$",
+    "typeLabel": "[MATCH THE COLUMN]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "A->P; B->S; C->Q; D->R",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-4 : Matching Type Problems",
+    "has_graph": false,
+    "questionNumber": 4,
+    "questionType": "MATCH THE COLUMN",
+    "text": "Match the columns:\n\n$$\n\\begin{array}{|l|l|}\n\\hline\n\\text{\\textbf{Column-I}} & \\text{\\textbf{Column-II}} \\\\\n\\hline\n\\text{(A) } \\displaystyle \\lim_{x \\to \\infty} \\left( \\frac{x^2 + 2x - 1}{2x^2 - 3x - 2} \\right)^{\\frac{2x+1}{2x-1}} = & \\text{(P) } \\frac{1}{2} \\\\\n\\hline\n\\text{(B) } \\displaystyle \\lim_{x \\to 0} \\frac{\\log_{\\sec x/2} \\cos x}{\\log_{\\sec x} \\cos \\frac{x}{2}} = & \\text{(Q) } 2 \\\\\n\\hline\n\\text{(C) Let } f(x) = \\max (\\cos x, x, 2x - 1) \\text{ where } x \\ge 0 \\text{ then number of points} & \\text{(R) } 5 \\\\\n\\text{of non-differentiability of } f(x) \\text{ is} & \\\\\n\\hline\n\\text{(D) If } f(x) = [2 + 3 \\sin x]\\text{, } 0 < x < \\pi \\text{ then number of points at which} & \\text{(S) } 16 \\\\\n\\text{the function is discontinuous, is} & \\\\\n\\hline\n\\end{array}\n$$",
+    "typeLabel": "[MATCH THE COLUMN]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "A->S; B->Q; C->P; D->R",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-4 : Matching Type Problems",
+    "has_graph": false,
+    "questionNumber": 5,
+    "questionType": "MATCH THE COLUMN",
+    "text": "Let the function:\n$$f(x) = \\begin{cases} ax(x-1) + b & ; \\quad x < 1 \\\\ x - 1 & ; \\quad 1 \\le x \\le 3 \\\\ px^2 + qx + 2 & ; \\quad x > 3 \\end{cases}$$\nIf $f(x)$ is continuous for all $x$, $f'(1)$ does not exist, and $f'(x)$ is continuous at $x = 3$.\n\nMatch the values in Column-I with Column-II:\n\n$$\n\\begin{array}{|l|l|}\n\\hline\n\\text{\\textbf{Column-I}} & \\text{\\textbf{Column-II}} \\\\\n\\hline\n\\text{(A) } a \\text{ cannot have value} & \\text{(P) } 1/3 \\\\\n\\hline\n\\text{(B) } b \\text{ has value} & \\text{(Q) } 0 \\\\\n\\hline\n\\text{(C) } p \\text{ has value} & \\text{(R) } -1 \\\\\n\\hline\n\\text{(D) } q \\text{ has value} & \\text{(S) } 1 \\\\\n\\hline\n\\end{array}\n$$",
+    "typeLabel": "[MATCH THE COLUMN]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "3",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 1,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(x) = \\begin{cases} ax(x-1) + b & ; \\quad x < 1 \\\\ x + 2 & ; \\quad 1 \\le x \\le 3 \\\\ px^2 + qx + 2 & ; \\quad x > 3 \\end{cases}$ is continuous $\\forall x \\in R$ except $x = 1$ but $|f(x)|$ is differentiable everywhere and $f'(x)$ is continuous at $x = 3$ and $|a + p + b + q| = k$, then $k =$",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "64",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 2,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $y = \\sin(8 \\sin^{-1} x)$ then $(1-x^2) \\frac{d^2 y}{dx^2} - x \\frac{dy}{dx} = -ky$, where $k =$",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "16",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 3,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $y^2 = 4ax$, then $\\frac{d^2 y}{dx^2} = \\frac{ka^2}{y^3}$, where $k^2 =$",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "8",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 4,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "The number of values of $x, x \\in [-2, 3]$ where $f(x) = [x^2] \\sin(\\pi x)$ is discontinuous is\n(where $[\\cdot]$ denotes greatest integer function)",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "3",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 5,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $f(x)$ is continuous and differentiable in $[-3, 9]$ and $f'(x) \\in [-2, 8] \\forall x \\in (-3, 9)$. Let $N$ be the number of divisors of the greatest possible value of $f(9) - f(-3)$, then find the sum of digits of $N$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "2",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 6,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $f(x) = \\left[ \\begin{array}{ll} \\cos x^3 & ; \\quad x < 0 \\\\ \\sin x^3 - |x^3 - 1| & ; \\quad x \\ge 0 \\end{array} \\right.$\nthen find the number of points where $g(x) = f(|x|)$ is non-differentiable.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "17",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 7,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(x) = x^2 + ax + 3$ and $g(x) = x + b$, where $F(x) = \\lim_{n \\to \\infty} \\frac{f(x) + (x^2)^n g(x)}{1 + (x^2)^n}$. If $F(x)$ is continuous at $x = 1$ and $x = -1$ then find the value of $(a^2 + b^2)$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "2",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 8,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(x) = \\begin{cases} 2-x & , \\quad -3 \\le x \\le 0 \\\\ x-2 & , \\quad 0 < x < 4 \\end{cases}$\nThen $f^{-1}(x)$ is discontinuous at $x =$",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "4",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 9,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $f(x) + 2f(1-x) = x^2 + 2 \\forall x \\in R$ and $f(x)$ is a differentiable function, then the value of $f'(8)$ is",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "3",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 10,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(x) = \\text{signum}(x)$ and $g(x) = x(x^2 - 10x + 21)$, then the number of points of discontinuity of $f[g(x)]$ is",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "7",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 11,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $\\frac{d^2}{dx^2} \\left( \\frac{\\sin^4 x + \\sin^2 x + 1}{\\sin^2 x + \\sin x + 1} \\right) = a \\sin^2 x + b \\sin x + c$ then the value of $b + c - a$ is",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "2",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 12,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $f(x) = a \\cos(\\pi x) + b$, $f'\\left(\\frac{1}{2}\\right) = \\pi$ and $\\int_{1/2}^{3/2} f(x) dx = \\frac{2}{\\pi} + 1$, then find the value of\n$-\\frac{12}{\\pi} \\left( \\sin^{-1} a + \\cos^{-1} b \\right)$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "9",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 13,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $\\alpha(x) = f(x) - f(2x)$ and $\\beta(x) = f(x) - f(4x)$\nand $\\alpha'(1) = 5, \\alpha'(2) = 7$\nthen find the value of $\\beta'(1) - 10$",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "5",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 14,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(x) = -4 \\cdot e^{\\frac{1-x}{2}} + \\frac{x^3}{3} + \\frac{x^2}{2} + x + 1$ and $g$ be inverse function of $f$ and $h(x) = \\frac{a + bx^{3/2}}{x^{5/4}}$,\n$h'(5) = 0$, then $\\frac{a^2}{5b^2 g'\\left(\\frac{-7}{6}\\right)} =$",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "4",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 15,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $y = e^{2 \\sin^{-1} x}$ then $\\frac{(x^2 - 1)y'' + xy'}{y}$ is equal to",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "0",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 16,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f$ be a continuous function on $[0, \\infty)$ such that $\\lim_{x \\to \\infty} \\left( f(x) + \\int_{0}^{x} f(t) dt \\right)$ exists. Find $\\lim_{x \\to \\infty} f(x)$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "1",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 17,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(x) = x + \\frac{x^2}{2} + \\frac{x^3}{3} + \\frac{x^4}{4} + \\frac{x^5}{5}$ and let $g(x) = f^{-1}(x)$. Find $g'''(0)$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "2",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 18,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $f(x) = \\left[ \\begin{array}{ll} \\cos x^3 & ; \\quad x < 0 \\\\ \\sin x^3 - |x^3 - 1| & ; \\quad x \\ge 0 \\end{array} \\right.$\nthen find the number of points where $g(x) = f(|x|)$ is non-differentiable.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "2",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 19,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f : R^+ \\to R$ be a differentiable function satisfying :\n$f(xy) = \\frac{f(x)}{y} + \\frac{f(y)}{x} \\forall x, y \\in R^+$ also $f(1) = 0; f'(1) = 1$\nfind $\\lim_{x \\to e} \\left[ \\frac{1}{f(x)} \\right]$ (where $[\\cdot]$ denotes greatest integer function).",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "3",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 20,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "For the curve $\\sin x + \\sin y = 1$ lying in the first quadrant there exists a constant $\\alpha$ for which\n$\\lim_{x \\to 0} x^\\alpha \\frac{d^2 y}{dx^2} = L$ (not zero), then $2\\alpha =$",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "2",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 21,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(x) = x \\tan^{-1}(x^2) + x^4$. Let $f^k(x)$ denotes $k^{th}$ derivative of $f(x)$ w.r.t. $x, k \\in N$. If $f^{2m}(0) \\neq 0, m \\in N$, then $m =$",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "3",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 22,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $x = \\cos \\theta$ and $y = \\sin^3 \\theta$, then $\\left| \\frac{y d^2 y}{dx^2} + \\left( \\frac{dy}{dx} \\right)^2 \\right|$ at $\\theta = \\frac{\\pi}{2}$ is :",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "4",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 23,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "The value of $x, x \\in (2, \\infty)$ where $f(x) = \\sqrt{x + \\sqrt{8x - 16}} + \\sqrt{x - \\sqrt{8x - 16}}$ is not differentiable is :",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  },
+  {
+    "answerKeyStr": "3",
+    "chapter": "Continuity, Differentiability and Differentiation",
+    "chapterId": "black-book-ch3-continuity",
+    "exerciseName": "Exercise-5 : Subjective Type Problems",
+    "has_graph": false,
+    "questionNumber": 24,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "The number of non differentiability points of function $f(x) = \\min \\left( [x], \\{x\\}, \\left| x - \\frac{3}{2} \\right| \\right)$ for $x \\in (0, 2)$, where $[\\cdot]$ and $\\{\\cdot\\}$ denote greatest integer function and fractional part function respectively.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOption": -1,
+    "correctOptionsArray": [],
+    "options": []
+  }
+]

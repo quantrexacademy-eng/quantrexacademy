@@ -1,0 +1,487 @@
+/* ExamGoal / ExamSIDE-style paper · date · shift meta (light + dark) */
+
+.qx-paper-chip.qx-paper-actual {
+  display: none !important;
+}
+
+.qx-paper-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 0 12px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-paper-meta,
+.eg-test-root[data-test-theme="dark"] .qx-paper-meta {
+  background: #1e293b;
+  border-color: #334155;
+}
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .qx-paper-meta,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .qx-paper-meta {
+  background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 100%) !important;
+  border-color: #c7d2fe !important;
+}
+
+/* NTA / JEE Main logo — small chip beside paper text (normal form, not huge) */
+.qx-paper-exam-logo,
+.qx-paper-meta img.qx-exam-logo,
+.qx-paper-meta img.qx-paper-exam-logo,
+.qx-paper-meta img.qx-nta-chip,
+.qx-paper-chip img.qx-exam-logo,
+.qx-paper-chip img.qx-paper-exam-logo,
+.qx-paper-chip img.qx-nta-chip,
+.qx-paper-chip img.qx-marks-icon,
+.mtk-main .qx-paper-meta img,
+.allen-practice .qx-paper-meta img,
+.qx-practice-page .qx-paper-meta img,
+.qx-src-tag img,
+img[src*="ic_content_exam_jee_main"],
+img[src*="ic_content_exam_neet"].qx-paper-exam-logo {
+  width: 16px !important;
+  height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  border-radius: 3px !important;
+  flex-shrink: 0 !important;
+  object-fit: contain !important;
+  display: inline-block !important;
+  vertical-align: -3px !important;
+  margin: 0 5px 0 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.qx-paper-chip.qx-paper-exam {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  line-height: 1.2 !important;
+}
+.qx-paper-exam-txt {
+  display: inline;
+}
+
+.qx-paper-meta-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.qx-paper-chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: "Roboto", "Inter", system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Light mode chips — ExamSIDE-like muted meta */
+.qx-paper-chip {
+  color: #475569;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+.qx-paper-exam {
+  color: #1e3a8a !important;
+  background: linear-gradient(135deg, #dbeafe, #ede9fe) !important;
+  border-color: #93c5fd !important;
+  font-weight: 800 !important;
+  font-size: 12px !important;
+}
+
+.qx-paper-mode {
+  color: #0f766e !important;
+  background: #ccfbf1 !important;
+  border-color: #5eead4 !important;
+  font-weight: 700 !important;
+}
+
+.qx-paper-date {
+  color: #9a3412 !important;
+  background: linear-gradient(135deg, #ffedd5, #fef3c7) !important;
+  border-color: #fdba74 !important;
+  font-weight: 800 !important;
+}
+
+.qx-paper-shift {
+  color: #6b21a8 !important;
+  background: linear-gradient(135deg, #f3e8ff, #e0e7ff) !important;
+  border-color: #c4b5fd !important;
+  font-weight: 800 !important;
+}
+.qx-paper-actual {
+  color: #065f46 !important;
+  background: #d1fae5 !important;
+  border-color: #6ee7b7 !important;
+  font-weight: 800 !important;
+}
+.eg-q-card .qx-paper-diff,
+.qx-prac-meta .tag-diff,
+.mtk-q-head .tag-diff {
+  display: none !important;
+}
+.qx-sol-diff-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.qx-paper-diff-easy {
+  color: #166534 !important;
+  background: #dcfce7 !important;
+  border-color: #86efac !important;
+  font-weight: 800 !important;
+}
+.qx-paper-diff-medium {
+  color: #92400e !important;
+  background: #fef3c7 !important;
+  border-color: #fcd34d !important;
+  font-weight: 800 !important;
+}
+.qx-paper-diff-hard {
+  color: #991b1b !important;
+  background: #fee2e2 !important;
+  border-color: #fca5a5 !important;
+  font-weight: 800 !important;
+}
+html[data-theme="dark"] .qx-paper-actual,
+.mtk-test-root[data-test-theme="dark"] .qx-paper-actual {
+  color: #6ee7b7 !important;
+  background: #123226 !important;
+  border-color: #14532d !important;
+}
+html[data-theme="dark"] .qx-paper-diff-easy,
+.mtk-test-root[data-test-theme="dark"] .qx-paper-diff-easy {
+  color: #6ee7b7 !important;
+  background: #123226 !important;
+}
+html[data-theme="dark"] .qx-paper-diff-hard,
+.mtk-test-root[data-test-theme="dark"] .qx-paper-diff-hard {
+  color: #fca5a5 !important;
+  background: #3a1717 !important;
+}
+
+.qx-paper-paper {
+  color: #1e40af !important;
+  background: #dbeafe !important;
+  border-color: #93c5fd !important;
+  font-weight: 700 !important;
+}
+
+/* (NTA chip size rules consolidated above — 16px) */
+
+.qx-paper-shift,
+.qx-paper-paper {
+  color: #7c3aed;
+  background: #f5f3ff;
+  border-color: #ddd6fe;
+  font-weight: 700;
+}
+
+.qx-paper-chapter {
+  color: #64748b;
+  background: transparent;
+  border-color: transparent;
+  font-size: 10px;
+  font-weight: 600;
+  opacity: 0.9;
+  padding-left: 2px;
+}
+
+.qx-paper-subject {
+  color: #0d9488;
+  background: #ccfbf1;
+  border-color: #99f6e4;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Dark mode — soft contrast like ExamSIDE dark utilities */
+.mtk-test-root[data-test-theme="dark"] .qx-paper-chip,
+html[data-theme="dark"] .qx-paper-chip {
+  color: #cbd5e1;
+  background: #0f172a;
+  border-color: #334155;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-paper-exam,
+html[data-theme="dark"] .qx-paper-exam {
+  color: #93c5fd !important;
+  background: rgba(37, 99, 235, 0.28) !important;
+  border-color: rgba(96, 165, 250, 0.55) !important;
+  font-weight: 800 !important;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-paper-mode,
+html[data-theme="dark"] .qx-paper-mode {
+  color: #5eead4 !important;
+  background: rgba(13, 148, 136, 0.25) !important;
+  border-color: rgba(45, 212, 191, 0.45) !important;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-paper-date,
+html[data-theme="dark"] .qx-paper-date {
+  color: #fdba74 !important;
+  background: rgba(249, 115, 22, 0.22) !important;
+  border-color: rgba(251, 146, 60, 0.5) !important;
+  font-weight: 800 !important;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-paper-shift,
+html[data-theme="dark"] .qx-paper-shift {
+  color: #d8b4fe !important;
+  background: rgba(132, 80, 203, 0.28) !important;
+  border-color: rgba(167, 139, 250, 0.5) !important;
+  font-weight: 800 !important;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-paper-paper,
+html[data-theme="dark"] .qx-paper-paper {
+  color: #93c5fd !important;
+  background: #1e3a5f !important;
+  border-color: #3b82f6 !important;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-paper-chapter,
+html[data-theme="dark"] .qx-paper-chapter {
+  color: #94a3b8;
+  background: transparent;
+  border-color: transparent;
+}
+
+.mtk-test-root[data-test-theme="dark"] .qx-paper-subject,
+html[data-theme="dark"] .qx-paper-subject {
+  color: #5eead4;
+  background: rgba(13, 148, 136, 0.2);
+  border-color: rgba(45, 212, 191, 0.3);
+}
+
+/* Question body typography closer to ExamSIDE */
+.mtk-main .mtk-q-text,
+.mtk-main .qx-content.qx-q-text-only,
+.mtk-main .question {
+  font-family: "Roboto", "Inter", "Noto Sans Devanagari", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+@media (min-width: 1280px) {
+  .mtk-main .mtk-q-text,
+  .mtk-main .qx-content.qx-q-text-only {
+    font-size: 17px; /* xl:text-lg-ish */
+  }
+}
+
+.mtk-main .mtk-opt-text,
+.mtk-main .qx-prac-opt-text {
+  font-family: "Roboto", "Inter", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* List cards — compact paper line + tiny NTA chip */
+.q-footer .qx-src-label,
+.q-card .qx-paper-meta {
+  font-size: 11px;
+}
+.q-card .qx-paper-meta {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+.q-footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+}
+.q-footer-meta {
+  flex: 1 !important;
+  min-width: 0 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+.q-card .qx-paper-meta img,
+.q-footer img[src*="ic_content_exam"],
+.q-footer img.qx-exam-logo,
+.q-footer img.qx-paper-exam-logo,
+.q-footer img.qx-nta-chip {
+  width: 14px !important;
+  height: 14px !important;
+  max-width: 14px !important;
+  max-height: 14px !important;
+  display: inline-block !important;
+  margin: 0 4px 0 0 !important;
+  vertical-align: -2px !important;
+}
+
+/* Force readable labels in light + dark (question page, list, ExamGoal CBT) */
+html[data-theme="light"] .qx-paper-chip,
+.mtk-test-root[data-test-theme="light"] .qx-paper-chip,
+.eg-test-root[data-test-theme="light"] .qx-paper-chip {
+  color: #0f172a !important;
+  -webkit-text-fill-color: currentColor !important;
+  opacity: 1 !important;
+}
+html[data-theme="light"] .qx-paper-exam,
+.mtk-test-root[data-test-theme="light"] .qx-paper-exam {
+  color: #1e3a8a !important;
+  -webkit-text-fill-color: #1e3a8a !important;
+  background: #dbeafe !important;
+  border: 1px solid #3b82f6 !important;
+}
+html[data-theme="light"] .qx-paper-date,
+.mtk-test-root[data-test-theme="light"] .qx-paper-date {
+  color: #9a3412 !important;
+  -webkit-text-fill-color: #9a3412 !important;
+  background: #ffedd5 !important;
+  border: 1px solid #f97316 !important;
+}
+html[data-theme="light"] .qx-paper-shift,
+.mtk-test-root[data-test-theme="light"] .qx-paper-shift {
+  color: #6b21a8 !important;
+  -webkit-text-fill-color: #6b21a8 !important;
+  background: #f3e8ff !important;
+  border: 1px solid #a855f7 !important;
+}
+html[data-theme="light"] .qx-paper-mode,
+html[data-theme="light"] .qx-paper-paper,
+.mtk-test-root[data-test-theme="light"] .qx-paper-mode,
+.mtk-test-root[data-test-theme="light"] .qx-paper-paper {
+  color: #0f766e !important;
+  -webkit-text-fill-color: #0f766e !important;
+  background: #ccfbf1 !important;
+  border: 1px solid #14b8a6 !important;
+}
+html[data-theme="light"] .qx-paper-diff-easy { color: #14532d !important; -webkit-text-fill-color: #14532d !important; background: #dcfce7 !important; border: 1px solid #22c55e !important; }
+html[data-theme="light"] .qx-paper-diff-medium { color: #854d0e !important; -webkit-text-fill-color: #854d0e !important; background: #fef3c7 !important; border: 1px solid #eab308 !important; }
+html[data-theme="light"] .qx-paper-diff-hard { color: #7f1d1d !important; -webkit-text-fill-color: #7f1d1d !important; background: #fee2e2 !important; border: 1px solid #ef4444 !important; }
+
+html[data-theme="dark"] .qx-paper-chip,
+.mtk-test-root[data-test-theme="dark"] .qx-paper-chip,
+.eg-test-root[data-test-theme="dark"] .qx-paper-chip {
+  opacity: 1 !important;
+  visibility: visible !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+html[data-theme="dark"] .qx-paper-exam,
+.mtk-test-root[data-test-theme="dark"] .qx-paper-exam,
+.eg-test-root[data-test-theme="dark"] .qx-paper-exam {
+  color: #bfdbfe !important;
+  -webkit-text-fill-color: #bfdbfe !important;
+  background: #1e3a8a !important;
+  border: 1px solid #60a5fa !important;
+}
+html[data-theme="dark"] .qx-paper-date,
+.mtk-test-root[data-test-theme="dark"] .qx-paper-date,
+.eg-test-root[data-test-theme="dark"] .qx-paper-date {
+  color: #fed7aa !important;
+  -webkit-text-fill-color: #fed7aa !important;
+  background: #7c2d12 !important;
+  border: 1px solid #fb923c !important;
+}
+html[data-theme="dark"] .qx-paper-shift,
+.mtk-test-root[data-test-theme="dark"] .qx-paper-shift,
+.eg-test-root[data-test-theme="dark"] .qx-paper-shift {
+  color: #e9d5ff !important;
+  -webkit-text-fill-color: #e9d5ff !important;
+  background: #5b21b6 !important;
+  border: 1px solid #c084fc !important;
+}
+html[data-theme="dark"] .qx-paper-mode,
+html[data-theme="dark"] .qx-paper-paper,
+.mtk-test-root[data-test-theme="dark"] .qx-paper-mode,
+.mtk-test-root[data-test-theme="dark"] .qx-paper-paper,
+.eg-test-root[data-test-theme="dark"] .qx-paper-mode,
+.eg-test-root[data-test-theme="dark"] .qx-paper-paper {
+  color: #99f6e4 !important;
+  -webkit-text-fill-color: #99f6e4 !important;
+  background: #115e59 !important;
+  border: 1px solid #2dd4bf !important;
+}
+html[data-theme="dark"] .qx-paper-diff-easy,
+.mtk-test-root[data-test-theme="dark"] .qx-paper-diff-easy {
+  color: #bbf7d0 !important;
+  -webkit-text-fill-color: #bbf7d0 !important;
+  background: #14532d !important;
+  border: 1px solid #4ade80 !important;
+}
+html[data-theme="dark"] .qx-paper-diff-medium,
+.mtk-test-root[data-test-theme="dark"] .qx-paper-diff-medium,
+.eg-test-root[data-test-theme="dark"] .qx-paper-diff-medium,
+.eg-test-root[data-test-theme="dark"] .qx-paper-chip.qx-paper-diff-medium {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: #fde68a !important;
+  -webkit-text-fill-color: #fde68a !important;
+  background: #854d0e !important;
+  border: 1px solid #facc15 !important;
+}
+html[data-theme="dark"] .qx-paper-diff-hard,
+.mtk-test-root[data-test-theme="dark"] .qx-paper-diff-hard {
+  color: #fecaca !important;
+  -webkit-text-fill-color: #fecaca !important;
+  background: #7f1d1d !important;
+  border: 1px solid #f87171 !important;
+}
+
+html[data-theme="light"] .q-card .tag,
+html[data-theme="light"] .q-meta .tag {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="dark"] .q-card .tag,
+html[data-theme="dark"] .q-meta .tag,
+.mtk-test-root[data-test-theme="dark"] .q-meta .tag {
+  opacity: 1 !important;
+  visibility: visible !important;
+  border: 1px solid #64748b !important;
+}
+html[data-theme="dark"] .tag-physics { background: #1e3a5f !important; color: #93c5fd !important; -webkit-text-fill-color: #93c5fd !important; }
+html[data-theme="dark"] .tag-chemistry { background: #14532d !important; color: #86efac !important; -webkit-text-fill-color: #86efac !important; }
+html[data-theme="dark"] .tag-mathematics { background: #4c1d95 !important; color: #ddd6fe !important; -webkit-text-fill-color: #ddd6fe !important; }
+html[data-theme="dark"] .tag-biology,
+html[data-theme="dark"] .tag-science,
+html[data-theme="dark"] .tag-zoology,
+html[data-theme="dark"] .tag-botany { background: #7f1d1d !important; color: #fecaca !important; -webkit-text-fill-color: #fecaca !important; }
+html[data-theme="dark"] .tag-chapter { background: #1e293b !important; color: #e2e8f0 !important; -webkit-text-fill-color: #e2e8f0 !important; }
+html[data-theme="dark"] .tag-sol { background: #1e3a8a !important; color: #bfdbfe !important; -webkit-text-fill-color: #bfdbfe !important; }
+html[data-theme="dark"] .tag-diff.diff-easy { background: #14532d !important; color: #bbf7d0 !important; -webkit-text-fill-color: #bbf7d0 !important; }
+html[data-theme="dark"] .tag-diff.diff-medium { background: #713f12 !important; color: #fde68a !important; -webkit-text-fill-color: #fde68a !important; }
+html[data-theme="dark"] .tag-diff.diff-hard { background: #7f1d1d !important; color: #fecaca !important; -webkit-text-fill-color: #fecaca !important; }
+html[data-theme="light"] .tag-chapter { background: #e2e8f0 !important; color: #0f172a !important; -webkit-text-fill-color: #0f172a !important; }
+html[data-theme="dark"] .qx-src-label,
+html[data-theme="dark"] .qx-book-badge { color: #e2e8f0 !important; -webkit-text-fill-color: #e2e8f0 !important; }
+html[data-theme="light"] .qx-src-label,
+html[data-theme="light"] .qx-book-badge { color: #0f172a !important; -webkit-text-fill-color: #0f172a !important; }

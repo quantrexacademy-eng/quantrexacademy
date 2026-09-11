@@ -1,0 +1,51 @@
+{
+  "examSlug": "wbjee",
+  "examId": "61961adca5a5260118868013",
+  "subjectId": "61964f94a5a526011886801e",
+  "chapterId": "61964ca6146849521d9afe86",
+  "subject": "Chemistry",
+  "chapter": "Solid State",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64a814ede0ff5a5425a86123",
+      "title": "Crystal Structure of Solids",
+      "count": 1,
+      "questionIds": [
+        "64a8148fe0ff5a5425a85cd0"
+      ]
+    },
+    {
+      "id": "64a814ede0ff5a5425a86120",
+      "title": "Cubic system",
+      "count": 8,
+      "questionIds": [
+        "6a22caf89b544592bfdee6a7",
+        "684b1a8d60ec9a39241c1780",
+        "64a814a0e0ff5a5425a85d6a",
+        "64a8147fe0ff5a5425a85c31",
+        "64a8146fe0ff5a5425a85b98",
+        "64a8144ee0ff5a5425a85a6f",
+        "64a8143fe0ff5a5425a859de",
+        "64a8141de0ff5a5425a8589f"
+      ]
+    },
+    {
+      "id": "64a814ede0ff5a5425a86121",
+      "title": "Stoichiometric defects",
+      "count": 1,
+      "questionIds": [
+        "64a8142ee0ff5a5425a8593d"
+      ]
+    },
+    {
+      "id": "64a814ede0ff5a5425a86122",
+      "title": "Electrical and Magnetic properties",
+      "count": 2,
+      "questionIds": [
+        "67729bff546ddd78415aaf87",
+        "64a8143de0ff5a5425a859ca"
+      ]
+    }
+  ]
+}

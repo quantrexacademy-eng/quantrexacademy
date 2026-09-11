@@ -1,0 +1,29 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa607a4468eb1307ceb0af",
+  "chapterId": "67fdff63378e1624ea7b6ae3",
+  "subject": "Mathematics",
+  "chapter": "Area Under Curves",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff8c378e1624ea7b6cec",
+      "title": "Area of Curve along axis",
+      "count": 3,
+      "questionIds": [
+        "67fdff6f378e1624ea7b6b6f",
+        "67fdff64378e1624ea7b6aea",
+        "67fdff63378e1624ea7b6ae1"
+      ]
+    },
+    {
+      "id": "67fdff8c378e1624ea7b6ced",
+      "title": "Area bounded by two curves",
+      "count": 1,
+      "questionIds": [
+        "67fdff69378e1624ea7b6b2a"
+      ]
+    }
+  ]
+}

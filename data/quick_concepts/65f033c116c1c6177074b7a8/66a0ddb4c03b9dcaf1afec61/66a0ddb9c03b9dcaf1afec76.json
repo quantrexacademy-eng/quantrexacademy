@@ -1,0 +1,160 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0ddb4c03b9dcaf1afec61",
+  "topicId": "66a0ddb9c03b9dcaf1afec76",
+  "title": "Means",
+  "concepts": [
+    {
+      "title": "Arithmetic Mean",
+      "conceptBody": "<h3><strong>Arithmetic Mean (AM)&nbsp;</strong></h3><p>When three quantities are in $\\text{AP}$, then the middle one is a arithmetic mean of other two.</p><p>If $\\text{a}$ and $\\text{b}$ are two numbers and $\\text{A}$ is arithmetic mean of $\\text{a}$ and $\\text{b}$, then $\\text{a},\\text{A},\\text{b}$ are in AP.</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ A}-\\text{a}=\\text{b}-\\text{A}$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ A}=\\frac{\\text{a}+\\text{b}}{2}$</p><p>So if $\\text{a},\\text{b},\\text{c}$ are 3 numbers in AP then $\\text{b}$ is the arithmetic mean of a &amp; c.</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ b}-\\text{a}=\\text{c}-\\text{b}$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ b}=\\frac{\\text{a}+\\text{c}}{2}$</p>",
+      "position": 0,
+      "qcConcept": "66a0ddbac03b9dcaf1afec77"
+    },
+    {
+      "title": "Inserting n-number of Arithmetic Means between two given numbers",
+      "conceptBody": "<h3><strong>Inserting n arithmetic means between two number&nbsp;</strong></h3><p>${{\\text{A}}_{1}}, {{\\text{A}}_{2}}, {{\\text{A}}_{3}},\\ldots \\ldots .{{\\text{A}}_{\\text{n}}}$ are called $\\text{n}$ arithmetic means between two numbers $\\text{a}$ and $\\text{b}$, if the series a, ${{A}_{1}},{{A}_{2}},{{A}_{3}},{{A}_{4}},\\ldots ..,{{A}_{n}},b$ is an AP.</p><p>For this AP, first term is a, number of terms is $\\left( n+2 \\right)$, &amp; the last term $=b={{T}_{n+2}}$. Let $d$ be the common difference of this AP, then</p><p>$\\begin{array}{l} {} &amp; &nbsp;\\Rightarrow &nbsp;{{\\text{T}}_{\\text{n}+2}}=\\text{b}=\\text{a}+\\left\\{ \\left( \\text{n}+2 \\right)-1 \\right\\}\\text{d} \\\\ {} &amp; &nbsp;\\Rightarrow &nbsp;\\text{ b}=\\text{a}+\\left( \\text{n}+1 \\right)\\text{d} \\\\ {} &amp; &nbsp;\\Rightarrow &nbsp;\\text{ d}=\\frac{\\text{b}-\\text{a}}{\\text{n}+1} \\\\ {} &amp; &nbsp;\\Rightarrow {{A}_{1}}=a+d=a+\\frac{b-a}{n+1} \\text{ and } {{A}_{2}}=a+2d=a+2\\frac{b-a}{n+1} \\\\ \\end{array}$</p><p>$\\text{ In } \\text{ general } {{\\text{k}}^{\\text{th } }} \\text{ arithmetic } \\text{ mean } \\text{ is } {{\\text{A}}_{\\text{k}}}=\\text{a}+\\text{kd}=\\text{a}+\\text{k}\\frac{\\text{b}-\\text{a}}{\\text{n}+1}$</p>",
+      "position": 1,
+      "qcConcept": "66a0ddbac03b9dcaf1afec78"
+    },
+    {
+      "title": "Sum of all Arithmetic Means inserted between two numbers",
+      "conceptBody": "<h3>Important Point to remember</h3><p><strong>Sum of all AM's inserted between two numbers a &amp; b is $n\\left( \\frac{a+b}{2} \\right)$ i.e. $\\sum _{i=1}^{n}{{A}_{i}}=n\\left( \\frac{a+b}{2} \\right)$</strong></p><p><strong>Proof : </strong>We know ${{A}_{i}}=a+i\\frac{\\left( b-a \\right)}{n+1}$</p><p>So $\\sum_{i=1}^n A_i=\\sum_{i=1}^n a+\\sum_{i=1}^n i \\frac{(b-a)}{n+1}$</p><p>$=a \\sum_{i=1}^n 1+\\left(\\frac{b-a}{n+a}\\right) \\sum_{i=1}^n i$</p><p>$=a(n)+\\left(\\frac{b-a}{n+1}\\right)(1+2+3 \\ldots n)$</p><p>$=\\mathrm{a}(\\mathrm{n})+\\left(\\frac{\\mathrm{b}-\\mathrm{a}}{\\mathrm{n}+1}\\right)\\left(\\frac{\\mathrm{n}(\\mathrm{n}+1)}{2}\\right)$</p><p>$=a n=\\frac{(b-a) n}{2}$</p><p>$=\\mathrm{n}\\left(\\mathrm{a}+\\frac{\\mathrm{b}-\\mathrm{a}}{2}\\right)=\\frac{\\mathrm{n}(\\mathrm{a}+\\mathrm{b})}{2}$</p>",
+      "position": 2,
+      "qcConcept": "66a0ddbac03b9dcaf1afec79"
+    },
+    {
+      "title": "Solved Example based on property of Arithmetic Mean",
+      "conceptBody": "<h3><strong>Solved Example based on property of Arithmetic Mean</strong></h3><p><strong>Q) The sum of 2 numbers is $\\frac{13}{6}$. An even number of arithmetic means are inserted between them and their sum exceeds their number by 1 . Find the number of means inserted.&nbsp;</strong></p><p><strong>Solution :&nbsp;</strong></p><p>Let the 2 numbers be a $\\And b$. then, $a+b=\\frac{13}{6}$ (1)</p><p>Suppose ${{A}_{1}},{{A}_{2}}\\ldots .{{A}_{2N}}$ be $2n$ arithmetic means inserted between a &amp; $b$.</p><p>Then ${{\\text{A}}_{1}}+{{\\text{A}}_{2}}+\\ldots {{\\text{A}}_{2\\text{n}}}=2\\text{n}\\left( \\frac{\\text{a}+\\text{b}}{2} \\right)$</p><p>$\\left( \\because \\right.$ We know that sum of AM's is $\\left. \\frac{n}{2}\\left( a+b \\right) \\right)$ putting value from (i)</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{A}}_{1}}+{{\\text{A}}_{2}}\\ldots {{\\text{A}}_{2\\text{n}}}=\\text{n}\\left( \\frac{13}{6} \\right)$ (2)</p><p>Also it is given in the question that</p><p>${{\\text{A}}_{1}}+{{\\text{A}}_{2}}\\ldots .{{\\text{A}}_{2\\text{n}}}=2\\text{n}+1$ (3)</p><p>equating (ii) &amp; (iii)</p><p>$\\begin{array}{*{35}{r}} {} &amp; \\text{n}\\left( \\frac{13}{6} \\right)=2\\text{n}+1 \\\\ \\therefore \\text{ }\\!\\!~\\!\\!\\text{ } &amp; 13\\text{n}=12\\text{n}+6 \\\\ {} &amp; \\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ n}=6 \\\\ \\end{array}$</p><p>$\\therefore 12$ means are inserted between a &amp; b.</p>",
+      "position": 3,
+      "qcConcept": "66a0ddbac03b9dcaf1afec7a"
+    },
+    {
+      "title": "Geometric Mean",
+      "conceptBody": "<h3><strong>Geometric Means (G.M.)&nbsp;</strong></h3><p>If ${{G}_{1}},{{G}_{2}},{{G}_{3}},{{G}_{4}}\\ldots \\ldots .{{G}_{n}}$ are GM's between $a$ and $b$ then $a,G1,{{G}_{2}},\\ldots \\ldots .{{G}_{n}}$, $b$ are in G.P.</p><p>Now $\\text{b}$ is ${{\\text{t}}_{\\text{n}+2}}$ so $\\text{b}=a{{r}^{\\text{n}+1}}$</p><p>Or $r={{\\left( \\frac{b}{a} \\right)}^{\\frac{1}{n+1}}}$</p><p>and thus ${{G}_{1}}=a{{\\left( \\frac{b}{a} \\right)}^{\\frac{1}{n+1}}}$</p>",
+      "position": 4,
+      "qcConcept": "66a0ddbac03b9dcaf1afec7b"
+    },
+    {
+      "title": "Properties of Geometric Mean",
+      "conceptBody": "<h3><strong>Property of GM&nbsp;</strong></h3><p>(1) The product of $n$ G.M's between $a$ and $b$ is equal to ${{n}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ power of one G.M. between a and b. i.e. $\\text{ }\\!\\!~\\!\\!\\text{ }{{G}_{1}},{{G}_{2}},\\ldots \\ldots {{G}_{n}}={{(\\sqrt{ab})}^{n}}$</p><p>i.e. $\\mathrm{G}_1, \\mathrm{G}_2, \\ldots \\ldots \\mathrm{G}_{\\mathrm{n}}=(\\sqrt{\\mathrm{ab}})^{\\mathrm{n}}$</p><p>$\\mathrm{G}_{\\mathrm{i}}=\\mathrm{a}\\left(\\frac{\\mathrm{b}}{\\mathrm{a}}\\right)^{\\frac{\\mathrm{i}}{\\mathrm{n}+1}}$</p><p>$\\mathrm{G}_1, \\mathrm{G}_2, \\ldots . . \\mathrm{G}_{\\mathrm{n}}=\\mathrm{a}^{\\mathrm{n}} \\sum_{\\mathrm{i}=1}^{\\mathrm{n}}\\left(\\frac{\\mathrm{b}}{\\mathrm{a}}\\right)^{\\frac{\\mathrm{i}}{\\mathrm{n}+1}}$</p><p>$=a^n\\left(\\frac{b}{a}\\right)^{\\frac{\\Sigma i}{n+1}}$</p><p>$=a^n\\left(\\frac{b}{a}\\right)^{\\frac{n(b+1)}{2(n+1)}}$</p><p>$=(\\mathrm{ab})^{\\frac{\\mathrm{n}}{2}}=(\\sqrt{\\mathrm{ab}})^{\\mathrm{n}}$</p><p>(2) If ${{\\text{a}}_{1}},{{\\text{a}}_{2}},\\ldots \\ldots \\ldots {{\\text{a}}_{\\text{n}}}$ are $\\text{n}$ non-zero numbers then their G.M is given by</p><p>$\\text{G}={{\\left( {{\\text{a}}_{1}},{{\\text{a}}_{2}}\\ldots \\ldots {{\\text{a}}_{\\text{n}}} \\right)}^{\\frac{1}{\\text{n}}}}$</p><p><strong>Note: </strong>You can check the analogy of formulas between Arithmetic Progression &amp; Geometric progression.</p>",
+      "position": 5,
+      "qcConcept": "66a0ddbbc03b9dcaf1afec7c"
+    },
+    {
+      "title": "Solved Problems based on Properties of Geometric Mean",
+      "conceptBody": "<h3>Solved examples</h3><p><strong>Q) If we insert odd number $\\left( 2n+1 \\right)$ G.M.'s between 4 and 2916 then find the value of ${{(n+1)}^{\\text{th }\\!\\!~\\!\\!\\text{ }}}$ G.M.?&nbsp;</strong></p><p><strong>Solution :&nbsp;</strong></p><p>Now $4,{{G}_{1}},{{G}_{2}},{{G}_{3}}\\ldots \\ldots \\ldots {{G}_{n+1}},\\ldots \\ldots .{{G}_{2n}},{{G}_{2n+1}},2916$ are in G.P. So ${{G}_{n+1}}$ will be the middle mean of $\\left( 2\\text{n}+1 \\right)$ odd means and so it will equidistant from ${{1}^{\\text{st }\\!\\!~\\!\\!\\text{ }}}$ and last term. So, $4,{{\\text{G}}_{\\text{n}+1}},2916$ are also in GP.</p><p>And thus,</p><p>$\\mathrm{G}_{\\mathrm{n}+1}=(4.2916)^{\\frac{1}{2}}$</p><p>$=(4 \\times 9 \\times 324)^{\\frac{1}{2}}$</p><p>$=(4 \\times 9 \\times 4 \\times 81)^{\\frac{1}{2}}$</p><p>$=\\left(\\begin{array}{llll}2 &amp; 3 &amp; 2 &amp; 9\\end{array}\\right)$</p><p>$=108$</p>",
+      "position": 6,
+      "qcConcept": "66a0ddbbc03b9dcaf1afec7d"
+    },
+    {
+      "title": "Properties of Harmonic Mean",
+      "conceptBody": "<h3><strong>Harmonic Means (H.M.)</strong></h3><p>If ${{\\text{H}}_{1}},{{\\text{H}}_{2}},{{\\text{H}}_{3}}\\ldots \\ldots .{{\\text{H}}_{\\text{n}}}$ be $\\text{n}$ H.M.'s between a and $\\text{b}$ then $\\text{a},{{\\text{H}}_{1}},{{\\text{H}}_{2}},{{\\text{H}}_{3}}\\ldots \\ldots ..{{\\text{H}}_{\\text{n}}}$, b is a H.P.</p><p>This means $\\frac{1}{\\text{a}},\\frac{1}{\\text{H}},\\frac{1}{{{\\text{H}}_{2}}}\\ldots \\ldots \\frac{1}{{{\\text{H}}_{\\text{n}}}},\\frac{1}{\\text{ }\\!\\!~\\!\\!\\text{ b}}$ is a A.P.</p><p>And hence $\\frac{1}{{{\\text{H}}_{\\text{i}}}}=\\frac{1}{\\text{a}}+\\frac{\\text{i}\\left( \\text{a}-\\text{b} \\right)}{\\left( \\text{n}+1 \\right)\\text{ab}}$</p><p><strong>Note : </strong>If ${{a}_{1}},{{a}_{2}},{{a}_{3}}\\ldots ....$. an are $n$ non-zero numbers then H.M. of these number is given by</p><p>$H=\\frac{n}{\\frac{1}{{{a}_{1}}}+\\frac{1}{{{a}_{2}}}+\\ldots \\ldots \\ldots +\\frac{1}{{{a}_{n}}}}$</p><p>$\\text{a},\\text{b},\\text{c}$ are in H.P. so, $\\frac{1}{\\text{a}},\\frac{1}{\\text{ }\\!\\!~\\!\\!\\text{ b}},\\frac{1}{\\text{c}}$ are in $\\text{AP}$</p><p>And $\\frac{2}{\\text{ }\\!\\!~\\!\\!\\text{ b}}=\\frac{1}{\\text{a}}+\\frac{1}{\\text{c}}\\Rightarrow \\frac{2\\text{ac}}{\\text{a}+\\text{c}}=\\text{b}$</p>",
+      "position": 7,
+      "qcConcept": "66a0ddbbc03b9dcaf1afec7e"
+    },
+    {
+      "title": "Relation between Arithmetic ,Geometric and Harmonic Mean",
+      "conceptBody": "<h3><strong>Some Important Theorems&nbsp;</strong></h3><p>Let $\\text{A},\\text{G},\\text{H}$ be the $\\text{AM},\\text{GM},\\text{HM}$ respectively between two positive unequal quantities. First of all let us prove $A&gt;G$</p><p>$\\text{A}=\\frac{\\text{x}+\\text{y}}{2}\\text{ }\\!\\!~\\!\\!\\text{ and }\\!\\!~\\!\\!\\text{ G}=\\sqrt{\\text{xy}}$</p><p>So to prove $\\text{ }\\!\\!~\\!\\!\\text{ }\\frac{\\text{x}+\\text{y}}{2}&gt;\\sqrt{\\text{xy}}$</p><p>Now $\\text{ }\\!\\!~\\!\\!\\text{ }{{(\\sqrt{\\text{x}}-\\sqrt{\\text{y}})}^{2}}&gt;0(\\therefore \\text{x},\\text{y}$ are positive $)$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ x}+\\text{y}-2\\sqrt{\\text{xy}}&gt;0$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }\\frac{\\text{x}+\\text{y}}{2}&gt;\\sqrt{\\text{xy}}$</p><p>Hence <strong>A &gt; G </strong>(i)</p><p>Now let us prove $\\text{G}&gt;\\text{H}$</p><p>Again $H=\\frac{2xy}{x+y}$</p><p>Also ${{(\\sqrt{\\text{x}}-\\text{y})}^{2}}&gt;0$</p><p>$\\Rightarrow $ $x+y&gt;2\\sqrt{xy}$</p><p>$\\Rightarrow $ $1&gt;\\frac{2\\sqrt{xy}}{x+y}$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ G}&gt;\\text{H}$ (ii)</p><p>Combining (1) and (2) we get $\\mathbf{A}&gt;\\mathbf{G}&gt;\\mathbf{H}$</p><p>Now we can prove :</p><p><strong>$G^2$ = AH&nbsp;</strong></p><p>Let $\\text{x},\\text{y}$ be two numbers.</p><p>So, $A=\\frac{x+y}{2},G=\\sqrt{xy},H=\\frac{2xy}{x+y}$</p><p>Hence $A=\\frac{x+y}{2}, G=\\sqrt{x y}, H=\\frac{2 x y}{x+y}$</p><p>$\\mathrm{AH}=\\left(\\frac{\\mathrm{x}+\\mathrm{y}}{2}\\right)\\left(\\frac{2 \\mathrm{xy}}{\\mathrm{x}+\\mathrm{y}}\\right)$</p><p>$=x y$</p><p>$=\\mathrm{G}^2$</p>",
+      "position": 8,
+      "qcConcept": "66a0ddbbc03b9dcaf1afec7f"
+    },
+    {
+      "title": "Some Solved Problems based on the inequality existing between Arithmetic,Geometric and Harmonic Progression",
+      "conceptBody": "<h3>Solved examples</h3><p><strong>Q) If $a,b,c,d$ be four distinct positive quantities in H.P. then show that $a+d&gt;b+c.$&nbsp;</strong></p><p><strong>Solution :&nbsp;</strong></p><p>$\\text{a},\\text{b},\\text{c},\\text{d}$ are in H.P.</p><p>Then $\\text{AM}&gt;\\text{H}.\\text{M}\\text{. }\\!\\!~\\!\\!\\text{ }$</p><p>For first three terms</p><p>$\\therefore$ $\\frac{a+c}{2}&gt;b$</p><p>$\\Rightarrow$ $a+c&gt;2 b$ (1)</p><p>And for last three terms</p><p>$\\frac{b+d}{2}&gt;c$</p><p>$\\Rightarrow$ $b+d&gt;2 c$ (2)</p><p>From (1) and (2)</p><p>$a+c+b+d&gt;2 b+2 c$</p><p>$\\Rightarrow$ $a+d&gt;b+c$</p><p><strong>Q) Prove that ${{\\left( \\frac{a+b}{2} \\right)}^{a+b}}&gt;{{a}^{b}}{{b}^{a}},ab\\in \\mathbf{N}\\And a\\ne b$.&nbsp;</strong></p><p><strong>Solution&nbsp;</strong></p><p>By just seeing the question we get the feel that it is kind of $\\text{AM}&gt;\\text{GM}$ So, we get the idea from R.H.S.</p><p>a repeated b times$\\And $ b repeated a times</p><p>Now applying $\\text{AM}&gt;\\text{GM}$</p><p>$\\frac{(\\mathrm{a}+\\mathrm{a}+\\ldots \\mathrm{b} \\text { times })+(\\mathrm{b}+\\mathrm{b}+\\ldots \\ldots . \\mathrm{a} \\text { times })}{\\begin{array}{c}\\mathrm{a}+\\mathrm{b} \\\\ \\left(\\begin{array}{l}\\text { since no. of terms }) \\\\ \\text { are } \\mathrm{a}+\\mathrm{b}\\end{array}\\right.\\end{array}}$$&gt;[(\\text { a.a.a...) (b..b..b. })]^{\\frac{1}{a+b}}$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }\\frac{ab+ab}{a+b}&gt;{{\\left( {{a}^{b}}{{b}^{a}} \\right)}^{\\frac{1}{a+b}}}$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }\\frac{2ab}{a+b}&gt;{{\\left( {{a}^{b}}{{b}^{a}} \\right)}^{\\frac{1}{a+b}}}$ (i)</p><p>Now, we know that $\\text{AM}&gt;\\text{HM}$</p><p>i.e. $\\frac{a+b}{2}&gt;\\frac{2ab}{a+b}$ (ii)</p><p>So from (i) &amp; (ii)</p><p>$\\frac{a+b}{2}&gt;\\left(a^b b^a\\right)^{\\frac{1}{a+b}}$</p><p>$\\Rightarrow$ $\\left(\\frac{a+b}{2}\\right)^{a+b}&gt;a^b b^a$</p>",
+      "position": 9,
+      "qcConcept": "66a0ddbbc03b9dcaf1afec80"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f6c2d384bfb4a538399",
+      "title": "The four arithmetic means between 3 and 23 are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53839a",
+      "title": "If $A_1, A_2$ be two arithmetic means between $\\frac{1}{3}$ and $\\frac{1}{24}$, then their values are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53839b",
+      "title": "A number is the reciprocal of the other. If the arithmetic mean of the two numbers be $\\frac{13}{12}$, then the numbers are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53839c",
+      "title": "If $A$ be an arithmetic mean between two numbers and $S$ be the sum of $n$ arithmetic means between the same numbers, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53839d",
+      "title": "The arithmetic mean of first $n$ natural number",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53839e",
+      "title": "After inserting $n$ A.M.'s between 2 and 38 , the sum of the resulting progression is 200 . The value of $n$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a53839f",
+      "title": "If $n$ geometric means be inserted between $a$ and $b$ then the $n^{\\text {th }}$ geometric mean will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a5383a0",
+      "title": "If three geometric means be inserted between 2 and 32 , then the third geometric mean will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a5383a1",
+      "title": "If five G.M.'s are inserted between 486 and $2 / 3$ then fourth G.M. will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a5383a2",
+      "title": "The product of three geometric means between 4 and $\\frac{1}{4}$ will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a5383a3",
+      "title": "The two geometric means between the number 1 and 64 are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a5383a4",
+      "title": "If $H$ is the harmonic mean between $p$ and $q$, then the value of $\\frac{H}{p}+\\frac{H}{q}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a5383a5",
+      "title": "If the harmonic mean between $a$ and $b$ be $H$, then the value of $\\frac{1}{H-a}+\\frac{1}{H-b}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a5383a6",
+      "title": "H.M. between the roots of the equation $x^2-10 x+11=0$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f6c2d384bfb4a5383a7",
+      "title": "The sixth H.M. between 3 and $\\frac{6}{13}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

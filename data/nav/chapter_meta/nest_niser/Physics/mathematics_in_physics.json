@@ -1,0 +1,27 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d2ad647479b8e8696479",
+  "chapterId": "6809202c3a10446a207fdeee",
+  "subject": "Physics",
+  "chapter": "Mathematics in Physics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "680920723a10446a207fe267",
+      "title": "Multiplication of Vectors",
+      "count": 1,
+      "questionIds": [
+        "6809202c3a10446a207fdeec"
+      ]
+    },
+    {
+      "id": "680920723a10446a207fe268",
+      "title": "Errors of Measurement",
+      "count": 1,
+      "questionIds": [
+        "6809203f3a10446a207fdfd4"
+      ]
+    }
+  ]
+}

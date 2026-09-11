@@ -1,0 +1,125 @@
+/* Quantrex Academy — Signature Brand Tokens (v2) */
+:root {
+  --primary: #0b57d0;
+  --primary-dark: #0842a0;
+  --primary-light: #d3e3fd;
+  --accent: #0b57d0;
+  --accent-light: #d3e3fd;
+  --green: #10B981;
+  --green-light: #D1FAE5;
+  --purple: #8B5CF6;
+  --purple-light: #EDE9FE;
+  --orange: #F59E0B;
+  --orange-light: #FEF3C7;
+  --red: #EF4444;
+  --red-light: #FEE2E2;
+  --gold: #EAB308;
+  --coral: #F97316;
+  --dark: #1f1f1f;
+  --gray: #444746;
+  --bg: #ffffff;
+  --border: #cfd8dc;
+  --white: #FFFFFF;
+  --card: #FFFFFF;
+  --text: #1f1f1f;
+  --shadow: rgba(31, 31, 31, 0.06);
+  --qx-glow: rgba(11, 87, 208, 0.18);
+  --qx-gradient: linear-gradient(135deg, #0b57d0 0%, #8ab4f8 100%);
+  --qx-gradient-soft: linear-gradient(135deg, #d3e3fd 0%, #e9eef6 100%);
+  --qx-radius: 14px;
+  --qx-font-display: "Inter", "Poppins", "Segoe UI", system-ui, sans-serif;
+  --qx-font-body: "Inter", "Poppins", "Segoe UI", system-ui, sans-serif;
+  --qx-font-math: "STIX Two Math", "STIX Two Text", "Cambria Math", serif;
+}
+
+[data-theme="dark"] {
+  --primary: #8ab4f8;
+  --primary-dark: #a8c7fa;
+  --primary-light: #3d4f66;
+  --accent: #8ab4f8;
+  --accent-light: #3d4f66;
+  --green-light: #1f3d32;
+  --purple-light: #3a3450;
+  --orange-light: #4a3820;
+  --red-light: #4a2424;
+  --bg: #2a2a2c;
+  --border: #454548;
+  --white: #333336;
+  --card: #333336;
+  --dark: #eceae4;
+  --gray: #c4c3bd;
+  --text: #eceae4;
+  --shadow: rgba(0, 0, 0, 0.28);
+  --qx-glow: rgba(138, 180, 248, 0.16);
+  --qx-gradient-soft: linear-gradient(135deg, #3d4f66 0%, #333336 100%);
+}
+
+/* Brand polish — app shell */
+.logo-mark {
+  background: #05070d !important;
+  box-shadow: 0 4px 14px rgba(0, 175, 255, 0.28);
+  border-radius: 12px !important;
+}
+.logo-mark img {
+  object-fit: contain !important;
+}
+.logo-text {
+  letter-spacing: -0.03em;
+  background: var(--qx-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.sidebar {
+  border-right-color: var(--border);
+  background: var(--card);
+}
+.sidebar-head {
+  border-bottom-color: var(--border);
+}
+.nav-item.active {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  font-weight: 700;
+  box-shadow: inset 3px 0 0 var(--primary);
+}
+[data-theme="dark"] .nav-item.active {
+  color: var(--primary);
+  box-shadow: inset 3px 0 0 var(--primary);
+}
+.page-head h1 {
+  letter-spacing: -0.04em;
+  font-family: var(--qx-font-display);
+}
+.ds strong, .ct-hero-stat strong {
+  background: var(--qx-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.dash-card:hover, .book-card:hover:not(.soon), .qx-book-card:hover:not(.soon) {
+  box-shadow: 0 14px 32px var(--qx-glow) !important;
+}
+.dpp-banner {
+  background: linear-gradient(135deg, #F59E0B, #F97316) !important;
+}
+.btn-primary, .btn-primary.big {
+  background: var(--qx-gradient) !important;
+  border: none;
+}
+.btn-primary:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 8px 22px var(--qx-glow);
+}
+.exam-tag {
+  background: var(--primary-light) !important;
+  color: var(--primary-dark) !important;
+  border: 1px solid rgba(13, 148, 136, 0.2);
+}
+[data-theme="dark"] .exam-tag {
+  color: var(--primary) !important;
+}
+.chip.active {
+  background: var(--qx-gradient) !important;
+  border-color: transparent !important;
+}

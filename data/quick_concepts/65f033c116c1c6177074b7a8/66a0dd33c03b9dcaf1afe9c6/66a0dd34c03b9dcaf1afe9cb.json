@@ -1,0 +1,106 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd33c03b9dcaf1afe9c6",
+  "topicId": "66a0dd34c03b9dcaf1afe9cb",
+  "title": "Algebra of complex numbers",
+  "concepts": [
+    {
+      "title": "Addition of complex numbers",
+      "conceptBody": "<h3><strong>Addition:&nbsp;</strong></h3><p>$\\begin{align} &amp; \\text{for z}={{\\text{z}}_{1}}+{{\\text{z}}_{2}}\\text{ }\\!\\!~\\!\\!\\text{ } \\\\ &amp; \\text{ }=\\text{Re}\\left( {{\\text{z}}_{1}}+{{\\text{z}}_{2}} \\right)+\\text{Im}\\left( {{\\text{z}}_{1}}+{{\\text{z}}_{2}} \\right) \\\\ \\end{align}$&nbsp;</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ z}=\\left( {{\\text{a}}_{1}}+{{\\text{a}}_{2}} \\right)+\\text{i}\\left( {{\\text{b}}_{1}}+{{\\text{b}}_{2}} \\right)$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd34c03b9dcaf1afe9cc"
+    },
+    {
+      "title": "Subtraction of complex numbers",
+      "conceptBody": "<h3><strong>Subtraction&nbsp;</strong></h3><p>\\(\\begin{align} &amp; \\text{z}~={{\\text{z}}_{1}}-{{\\text{z}}_{2}} \\\\ &amp; ~=\\text{Re}\\left( {{\\text{z}}_{1}}-{{\\text{z}}_{2}} \\right)+\\text{Im}\\left( {{\\text{z}}_{1}}-{{\\text{z}}_{2}} \\right) \\\\ &amp; ~=\\left( {{\\text{a}}_{1}}-{{\\text{a}}_{2}} \\right)+\\text{i}\\left( {{\\text{b}}_{1}}-{{\\text{b}}_{2}} \\right) \\\\ \\end{align}\\)</p>",
+      "position": 1,
+      "qcConcept": "66a0dd35c03b9dcaf1afe9cd"
+    },
+    {
+      "title": "Multiplication of complex numbers",
+      "conceptBody": "<h3><strong>Multiplication&nbsp;</strong></h3><p>$\\begin{align} &amp; \\text{z}~={{\\text{z}}_{1}}{{\\text{z}}_{2}} \\\\ &amp; ~=\\left( {{\\text{a}}_{1}}+{{\\text{b}}_{1}}\\text{i} \\right)\\left( {{\\text{a}}_{2}}+i\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}_{2}} \\right) \\\\ &amp; ~=\\left( {{\\text{a}}_{1}}{{\\text{a}}_{2}}-{{\\text{b}}_{1}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}_{2}} \\right)+\\text{i}\\left( {{\\text{a}}_{1}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}_{2}}+{{\\text{a}}_{2}}\\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{b}}_{1}} \\right) \\\\ &amp; \\therefore \\text{ }\\!\\!~\\!\\!\\text{ z}~=\\left[ \\text{Re}\\left( {{\\text{z}}_{1}} \\right)\\text{Re}\\left( {{\\text{z}}_{2}} \\right)-\\text{Im}\\left( {{\\text{z}}_{1}} \\right)\\text{Im}\\left( {{\\text{z}}_{2}} \\right) \\right]+\\text{i}\\left[ \\text{Re}\\left( {{\\text{z}}_{1}} \\right)\\text{Im}\\left( {{\\text{z}}_{2}} \\right)+\\text{Re}\\left( {{\\text{z}}_{2}} \\right)\\text{Im}\\left( {{\\text{z}}_{1}} \\right) \\right] \\\\ \\end{align}$</p>",
+      "position": 2,
+      "qcConcept": "66a0dd35c03b9dcaf1afe9ce"
+    },
+    {
+      "title": "Division of complex numbers",
+      "conceptBody": "<h3><strong>Division&nbsp;</strong></h3><p>$\\begin{align} &amp; z~=\\frac{{{z}_{1}}}{{{z}_{2}}} \\\\ &amp; ~=\\frac{{{a}_{1}}+i{{b}_{1}}}{{{a}_{2}}+i{{b}_{2}}}=\\frac{{{a}_{1}}+i{{b}_{1}}}{\\left( {{a}_{2}}+i{{b}_{2}} \\right)}\\frac{\\left( {{a}_{2}}-i{{b}_{2}} \\right)}{\\left( {{a}_{2}}-i{{b}_{2}} \\right)} \\\\ &amp; ~=\\frac{\\left( {{a}_{1}}+i{{b}_{1}} \\right)\\left( {{a}_{2}}-i{{b}_{2}} \\right)}{a_{2}^{2}-{{(ib)}^{2}}}\\frac{\\left( {{a}_{1}}+i{{b}_{1}} \\right)\\left( {{a}_{2}}-i{{b}_{2}} \\right)}{a_{2}^{2}+b_{2}^{2}} \\\\ &amp; ~=\\frac{\\left( {{a}_{1}}{{a}_{2}}+{{b}_{1}}{{b}_{2}} \\right)+i\\left( {{a}_{2}}{{b}_{1}}-{{a}_{1}}{{b}_{2}} \\right)}{a_{2}^{2}+b_{2}^{2}} \\\\ \\end{align}$</p><p>$=(\\underbrace{\\frac{{{a}_{1}}{{a}_{2}}+{{b}_{1}}{{b}_{2}}}{a_{2}^{2}+b_{2}^{2}}}_{\\text{Real part }})+\\underbrace{\\frac{\\left( {{a}_{2}}{{b}_{1}}-{{a}_{1}}{{b}_{2}} \\right)}{a_{2}^{2}+b_{2}^{2}}}_{\\text{Imaginary part }}$</p>",
+      "position": 3,
+      "qcConcept": "66a0dd35c03b9dcaf1afe9cf"
+    },
+    {
+      "title": "Equality of complex numbers",
+      "conceptBody": "<h3><strong>Equality&nbsp;</strong></h3><p>i.e., ${{z}_{1}}={{z}_{2}}$</p><p>this is true, only when $\\text{Re}\\left( {{\\text{z}}_{1}} \\right)=\\text{Re}\\left( {{\\text{z}}_{2}} \\right)\\And $</p><p>$\\text{Im}\\left( {{z}_{1}} \\right)=\\text{Im}\\left( {{z}_{2}} \\right)$</p><p>Note: There is no order relation between complex numbers i.e., $\\left( {{a}_{1}}+i{{b}_{1}} \\right)&gt;\\left( {{a}_{2}}+i{{b}_{2}} \\right)$ is not a valid inequality.</p>",
+      "position": 4,
+      "qcConcept": "66a0dd35c03b9dcaf1afe9d0"
+    },
+    {
+      "title": "Important formulae for reciprocal of complex number",
+      "conceptBody": "<h3><strong>Reciprocal/Multiplicative Inverse&nbsp;</strong></h3><p>for complex $z=a+ib$</p><p>$\\frac{1}{z}=\\frac{1}{a+ib}$</p><p>&amp; we know this is equal to $\\frac{a-ib}{{{a}^{2}}+{{b}^{2}}}$</p><p>here $a-ib=\\overset{{}}{\\mathop{\\overline{z}}}\\,\\And {{a}^{2}}+{{b}^{2}}=|z{{|}^{2}}$</p><p>\\(\\therefore \\frac{1}{z}=\\frac{\\bar{z}}{|z|^2}\\)</p>",
+      "position": 5,
+      "qcConcept": "66a0dd35c03b9dcaf1afe9d1"
+    },
+    {
+      "title": "Procedure to calculate square root of a complex number",
+      "conceptBody": "<h3><strong>Square roots of a complex number&nbsp;</strong></h3><p>Let $z=a+ib$ be the complex number of which we want to find out the root, then</p><p>$\\sqrt{a+ib}=x+iy$</p><p>Squaring</p><p>$a+ib={{(x+iy)}^{2}}=\\left( {{x}^{2}}-{{y}^{2}} \\right)+2ixy$</p><p>equating real &amp; imaginary coefficients on both sides</p><p>$a=x^2-y^2$ …(i)</p><p>$b=2xy$ …(ii)</p><p>now ${{x}^{2}}+{{y}^{2}}=\\sqrt{{{\\left( {{x}^{2}}-{{y}^{2}} \\right)}^{2}}+4{{x}^{2}}{{y}^{2}}}$</p><p>$=\\sqrt{{{\\text{a}}^{2}}+{{\\text{b}}^{2}}}$ …(iii)</p><p>from (i), (ii) &amp; (iii)</p><p>$\\begin{array}{*{35}{r}} {{x}^{2}}=\\frac{1}{2}\\left\\{ a+\\sqrt{{{a}^{2}}+{{b}^{2}}} \\right\\}\\text{ }\\!\\!~\\!\\!\\text{ }\\And \\text{ }\\!\\!~\\!\\!\\text{ }{{y}^{2}}=\\frac{1}{2}\\left\\{ \\sqrt{{{a}^{2}}+{{b}^{2}}}-a \\right\\} \\\\ \\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }x\\text{ }\\!\\!~\\!\\!\\text{ }=\\pm \\sqrt{\\left( \\frac{1}{2} \\right)\\left\\{ a+\\sqrt{{{a}^{2}}+{{b}^{2}}} \\right\\}}\\text{ }\\!\\!~\\!\\!\\text{ }y=\\pm \\sqrt{\\frac{1}{2}\\left\\{ \\sqrt{{{a}^{2}}+{{b}^{2}}}-a \\right\\}} \\\\ \\therefore \\text{ }\\!\\!~\\!\\!\\text{ }\\sqrt{a+ib}=\\pm \\left\\{ \\sqrt{\\frac{1}{2}\\left( \\sqrt{{{a}^{2}}+{{b}^{2}}}+a \\right)}+i\\sqrt{\\left( \\frac{1}{2} \\right)\\sqrt{{{a}^{2}}+{{b}^{2}}}-a} \\right\\} \\\\ \\end{array}$</p><p>if $b&gt;0$, because if $b&gt;0$ then $xy&gt;0$</p><p>$\\therefore \\text{ }\\!\\!~\\!\\!\\text{ x}\\And \\text{y}$ are both + ve or - ve.</p><p>$= \\pm\\left\\{\\sqrt{\\left(\\frac{1}{2}\\right) \\sqrt{a^2+b^2}+a}-i \\sqrt{\\left(\\frac{1}{2}\\right) \\sqrt{a^2+b^2}-a}\\right\\}$</p><p>if $b&lt;0, x y&lt;0 \\quad \\Rightarrow \\quad x&gt;0, y&lt;0$</p><p>or $\\quad \\mathrm{x}&lt;0, \\mathrm{y}&gt;0$</p><p>We can also write.</p><p>\\(\\sqrt{a+i b}= \\pm\\left\\{\\sqrt{\\frac{1}{2}(|z|)+a} \\pm i \\sqrt{\\left(\\frac{1}{2}\\right)(|z|-a)}\\right\\}\\)</p>",
+      "position": 6,
+      "qcConcept": "66a0dd36c03b9dcaf1afe9d2"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f3d2d384bfb4a537f30",
+      "title": "$\\frac{1-2 i}{2+i}+\\frac{4-i}{3+2 i}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3d2d384bfb4a537f31",
+      "title": "$\\left\\{\\frac{2 i}{1+i}\\right\\}^2=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3d2d384bfb4a537f32",
+      "title": "$\\operatorname{Re} \\frac{(1+i)^2}{3-i}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3d2d384bfb4a537f33",
+      "title": "The imaginary part of $\\frac{(1+i)^2}{(2-i)}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3d2d384bfb4a537f34",
+      "title": "The real part of $(1-\\cos \\theta+2 i \\sin \\theta)^{-1}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3d2d384bfb4a537f35",
+      "title": "If $\\left|\\begin{array}{rrr}6 i & -3 i & 1 \\\\ 4 & 3 i & -1 \\\\ 20 & 3 & i\\end{array}\\right|=x+i y$ then $(x, y)$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3d2d384bfb4a537f36",
+      "title": "$a+i b \\gt c+i d$ can be explained only when",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3d2d384bfb4a537f37",
+      "title": "If $x+\\frac{1}{x}=2 \\cos \\theta$, then $x$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3d2d384bfb4a537f38",
+      "title": "The values of $x$ and $y$ satisfying the equation $\\frac{(1+i) x-2 i}{3+i}+\\frac{(2-3 i) y+i}{3-i}=i$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

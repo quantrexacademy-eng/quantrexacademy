@@ -1,0 +1,102 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "68c3e1cdf05812c281fd03ce",
+  "chapterId": "66d58545a75f05ee8564f5da",
+  "subject": "Botany",
+  "chapter": "Biological Classification",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d586aaa75f05ee8565035f",
+      "title": "Introduction",
+      "count": 4,
+      "questionIds": [
+        "66d585c4a75f05ee8564fa7f",
+        "66d5859da75f05ee8564f917",
+        "66d58599a75f05ee8564f8ef",
+        "66d5854da75f05ee8564f627"
+      ]
+    },
+    {
+      "id": "66d586aaa75f05ee8565035e",
+      "title": "Kingdom Monera",
+      "count": 10,
+      "questionIds": [
+        "66d5866aa75f05ee85650080",
+        "66d58642a75f05ee8564ff12",
+        "66d5861ca75f05ee8564fdae",
+        "66d585f6a75f05ee8564fc4a",
+        "66d585d3a75f05ee8564fb08",
+        "66d585c3a75f05ee8564fa78",
+        "66d585c0a75f05ee8564fa59",
+        "66d5859da75f05ee8564f918",
+        "66d58599a75f05ee8564f8f0",
+        "66d58545a75f05ee8564f5d8"
+      ]
+    },
+    {
+      "id": "66d586aba75f05ee85650361",
+      "title": "Kingdom Protista",
+      "count": 7,
+      "questionIds": [
+        "66d58652a75f05ee8564ff9f",
+        "66d58642a75f05ee8564ff0c",
+        "66d58630a75f05ee8564fe6b",
+        "66d585f6a75f05ee8564fc4d",
+        "66d585bda75f05ee8564fa3c",
+        "66d5855ea75f05ee8564f6cd",
+        "66d5855ea75f05ee8564f6cb"
+      ]
+    },
+    {
+      "id": "66d586aaa75f05ee85650360",
+      "title": "Kingdom Fungi",
+      "count": 14,
+      "questionIds": [
+        "66d58656a75f05ee8564ffc5",
+        "66d585e7a75f05ee8564fbc1",
+        "66d585d3a75f05ee8564fb07",
+        "66d585d3a75f05ee8564fb05",
+        "66d585b1a75f05ee8564f9ce",
+        "66d585b1a75f05ee8564f9cc",
+        "66d5859ea75f05ee8564f91c",
+        "66d58599a75f05ee8564f8f4",
+        "66d58587a75f05ee8564f84c",
+        "66d58565a75f05ee8564f70e",
+        "66d58563a75f05ee8564f6fa",
+        "66d58551a75f05ee8564f655",
+        "66d58550a75f05ee8564f64b",
+        "66d5854da75f05ee8564f62f"
+      ]
+    },
+    {
+      "id": "66d586aba75f05ee85650363",
+      "title": "Viruses",
+      "count": 4,
+      "questionIds": [
+        "66d5861ca75f05ee8564fdab",
+        "66d58605a75f05ee8564fcd5",
+        "66d585d5a75f05ee8564fb1c",
+        "66d585bca75f05ee8564fa31"
+      ]
+    },
+    {
+      "id": "66d586aba75f05ee85650364",
+      "title": "Viroids",
+      "count": 1,
+      "questionIds": [
+        "66d58605a75f05ee8564fcd6"
+      ]
+    },
+    {
+      "id": "66d586aba75f05ee85650362",
+      "title": "Prions",
+      "count": 2,
+      "questionIds": [
+        "66d585d3a75f05ee8564fb06",
+        "66d58563a75f05ee8564f700"
+      ]
+    }
+  ]
+}

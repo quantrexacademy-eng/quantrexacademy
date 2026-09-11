@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mpcyd1qt",
+  "title": "Thermodynamics Test - 4 (Topic Test)",
+  "type": "topic",
+  "section": "Thermodynamics",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-07-06T06:30:00.000Z",
+  "status": "ok",
+  "analysisId": "665bdb02-e92c-4245-8587-4c0aaa0ee9ed",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61mpcyd1qt",
+    "defaultLanguage": "en",
+    "description": "Enthalpy of Formation, Enthalpy of Combustion, Enthalpy of Neutralization, Hess's Law",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-06T06:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mr8rohka",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For a chemical reaction, the enthalpy change is independent of</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>the physical states of the reactants and products.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>the chemical nature of the reactants and products.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>the various intermediate stages through which the reaction occurs.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>the enthalpy values of the system at the beginning and at the end.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The enthalpy change of a reaction does not depend upon</p>\n<p>$$\\boxed{\\text{Option C: different intermediate steps in the reaction}}$$</p>\n<p>Enthalpy is a state function. This means its change depends only on the initial state and final state of the system.</p>\n<p>For a reaction,</p>\n<p>$$ \\Delta H = H_{\\text{products}} - H_{\\text{reactants}} $$</p>\n<p>So, enthalpy change depends on:</p>\n<ul>\n<li><p>the state of reactants and products, like solid, liquid, gas or aqueous</p></li>\n<li><p>the nature of reactants and products</p></li>\n<li><p>the initial and final enthalpy values of the system</p></li>\n</ul>\n<p>But it does not depend on the path followed by the reaction or the different intermediate steps.</p>\n<p>This is also the basis of Hess’s law. Hence, the correct answer is:</p>\n<p>$$\\boxed{\\text{Option C}}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक रासायनिक अभिक्रिया के लिए, एन्थैल्पी परिवर्तन स्वतंत्र होता है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>अभिकारकों और उत्पादों की भौतिक अवस्थाओं से।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>अभिकारकों और उत्पादों की रासायनिक प्रकृति से।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>विभिन्न मध्यवर्ती चरणों से जिनसे होकर अभिक्रिया संपन्न होती है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>प्रारंभ और अंत में निकाय के एन्थैल्पी मानों से।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr8rxa8r",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For methane(g), the enthalpy change for formation at constant pressure is $-18,500$ cal/mol at $27^{\\circ}C$. What will be the corresponding enthalpy of formation at constant volume?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>−19,700 cal</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>−17,300 cal</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>−18,498.8 cal</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>−18,500 cal</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>We are given the enthalpy of formation of methane at constant pressure ($\\Delta H$), and we need to find the enthalpy of formation at constant volume ($\\Delta E$).</p>\n\n<p>$$\\mathrm{CH_4(g) + 2O_2(g) \\rightarrow CO_2(g) + 2H_2O(l);}$$</p>\n<p>Notice that water here is in liquid form, not gas. This matters because we only count moles of gaseous substances when calculating the change in gas moles.</p>\n<p>On the product side, we have 1 mole of gas ($CO_2$). Water is liquid, so it doesn't count.</p>\n<p>On the reactant side, we have 1 mole of $CH_4$ gas plus 2 moles of $O_2$ gas, giving a total of 3 moles of gas.</p>\n<p>So the change in number of gas moles, $\\Delta n_g$, is:</p>\n<p>$$\\Delta n_g = \\text{moles of gas in products} - \\text{moles of gas in reactants} = 1 - 3 = -2$$</p>\n<p>Now we use the relation connecting $\\Delta H$ (enthalpy at constant pressure) and $\\Delta E$ (energy at constant volume):</p>\n<p>$$\\Delta H = \\Delta E + \\Delta n_g RT$$</p>\n\n<p>$$\\Delta E = \\Delta H - \\Delta n_g RT$$</p>\n\n<p>$$\\Delta E = (-18500) - (-2) \\times 2 \\times 300$$</p>\n\n<p>$$\\Delta E = -18500 + 1200 = -17300\\,\\mathrm{cal/mol}$$</p>\n<p>So, the enthalpy of formation of methane at constant volume comes out to be $-17300$ cal/mol.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>मीथेन(g) के लिए, $27^{\\circ}C$ पर स्थिर दाब पर विरचन एन्थैल्पी में परिवर्तन $-18,500$ cal/mol है। स्थिर आयतन पर संगत विरचन एन्थैल्पी क्या होगी?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>−19,700 cal</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>−17,300 cal</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>−18,498.8 cal</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>−18,500 cal</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr8s71tv",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Identify the reactions in which, at constant pressure, work is done by the surroundings on the system:</p>\n<p>I. &nbsp;&nbsp;&nbsp;4NH<sub>3</sub> (g) + 7O<sub>2</sub> (g) &rarr; 4NO<sub>2</sub> (g) + 6H<sub>2</sub>O (g)</p>\n<p>II. &nbsp;&nbsp;&nbsp;CO (g) + 2H<sub>2</sub> (g) &rarr; CH<sub>3</sub>OH (l)</p>\n<p>III. &nbsp;&nbsp;&nbsp;C (s, graphite) + H<sub>2</sub>O (g) &rarr; CO (g) + H<sub>2</sub> (g)</p>\n<p>IV. &nbsp;&nbsp;&nbsp;H<sub>2</sub>O (s) &rarr; H<sub>2</sub>O (l)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>III, IV</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>II and III</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>II, IV</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>I and II, IV</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>At constant pressure, the work done on the system is given by</p>\n<p>$$w = -P\\Delta V = -\\Delta n_g RT$$</p>\n<p>So the surroundings do work on the system when the gas moles decrease, i.e. $\\Delta n_g < 0$. This makes $w$ positive (work done on system).</p>\n<p>Reaction I: $4NH_3(g) + 7O_2(g) \\rightarrow 4NO_2(g) + 6H_2O(g)$</p>\n<p>$\\Delta n_g = (4+6) - (4+7) = 10 - 11 = -1$</p>\n<p>Gas moles decrease, so surroundings do work on the system. ✓</p>\n<p>Reaction II: $CO(g) + 2H_2(g) \\rightarrow CH_3OH(l)$</p>\n<p>$\\Delta n_g = 0 - (1+2) = -3$</p>\n<p>Gas moles decrease, so surroundings do work on the system. ✓</p>\n<p>Reaction III: $C(s) + H_2O(g) \\rightarrow CO(g) + H_2(g)$</p>\n<p>$\\Delta n_g = (1+1) - 1 = +1$</p>\n<p>Gas moles increase, so system does work on the surroundings. ✗</p>\n<p>Reaction IV: $H_2O(s) \\rightarrow H_2O(l)$</p>\n<p>When ice melts, volume slightly decreases (ice is less dense than water), so $\\Delta V < 0$. This means surroundings do work on the system. ✓</p>\n<p>So the reactions where the surroundings do work on the system are I, II and IV.</p>\n<p>The correct option is <strong>D: I, II and IV</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>उन अभिक्रियाओं को पहचानिए जिनमें, स्थिर दाब पर, परिवेश द्वारा निकाय पर कार्य किया जाता है:</p><p>I. &nbsp;&nbsp;&nbsp;4NH<sub>3</sub> (g) + 7O<sub>2</sub> (g) &rarr; 4NO<sub>2</sub> (g) + 6H<sub>2</sub>O (g)</p><p>II. &nbsp;&nbsp;&nbsp;CO (g) + 2H<sub>2</sub> (g) &rarr; CH<sub>3</sub>OH (l)</p><p>III. &nbsp;&nbsp;&nbsp;C (s, ग्रेफाइट) + H<sub>2</sub>O (g) &rarr; CO (g) + H<sub>2</sub> (g)</p><p>IV. &nbsp;&nbsp;&nbsp;H<sub>2</sub>O (s) &rarr; H<sub>2</sub>O (l)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>III, IV</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>II और III</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>II, IV</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>I और II, IV</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr8svxku",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The heat released on complete combustion of sucrose ($C_{12}H_{22}O_{11}$) is 1350 kcal/mol. What amount of heat will be given out when 17.1 g of sucrose is burnt?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>67.5 kcal</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>13.5 kcal</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>40.5 kcal</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>25.5 kcal</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The molar mass of sucrose $C_{12}H_{22}O_{11}$ is</p>\n<p>$$M = 12(12) + 22(1) + 11(16) = 144 + 22 + 176 = 342 \\text{ g/mol}$$</p>\n<p>So 1 mole (342 g) of sucrose gives 1350 kcal of heat on combustion.</p>\n<p>For 17.1 g of sucrose, the number of moles is</p>\n<p>$$n = \\frac{17.1}{342} = 0.05 \\text{ mol}$$</p>\n<p>Heat liberated will be</p>\n<p>$$Q = 0.05 \\times 1350 = 67.5 \\text{ kcal}$$</p>\n<p>So the correct answer is Option A: 67.5 kcal.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The heat released on complete combustion of sucrose ($C_{12}H_{22}O_{11}$) is 1350 kcal/mol. What amount of heat will be given out when 17.1 g of sucrose is burnt?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>67.5 kcal</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>13.5 kcal</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>40.5 kcal</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>25.5 kcal</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr8t7jyt",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Determine the lattice energy for the following reaction</p>\n<p>Li<sup>+</sup>(g) + Cl<sup>−</sup>(g) &rarr; LiCl(s)</p>\n<p>The given data are:</p>\n<p>&Delta;H<sub>sub</sub>(Li) = 160 ; &Delta;H<sub>diss</sub>(Cl<sub>2</sub>) = 244 ; IP(Li) = 520 ;</p>\n<p>EA(Cl) = 365 and &Delta;H<sub>f</sub>(LiCl) = -400 (all in kJ mole<sup>-1</sup>)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>-837</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>-959</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>-1567</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>-37</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For forming $1$ mole of $\\text{LiCl}(s)$, the Born-Haber cycle is used.</p>\n<p>The enthalpy of formation is for the reaction:</p>\n<p>$$ \\text{Li}(s) + \\frac{1}{2}\\text{Cl}_2(g) \\rightarrow \\text{LiCl}(s) $$</p>\n<p>Given:</p>\n<p>$$ \\Delta H_f = -400 \\text{ kJ mol}^{-1} $$</p>\n<p>We break this formation into smaller changes:</p>\n<p>$$ \\text{Li}(s) \\rightarrow \\text{Li}(g) $$</p>\n<p>$$ \\Delta H_{\\text{sub}} = 160 $$</p>\n<p>$$ \\frac{1}{2}\\text{Cl}_2(g) \\rightarrow \\text{Cl}(g) $$</p>\n<p>Since bond dissociation of $\\text{Cl}_2$ is $244$, for half mole:</p>\n<p>$$ \\frac{244}{2} = 122 $$</p>\n<p>$$ \\text{Li}(g) \\rightarrow \\text{Li}^+(g) + e^- $$</p>\n<p>$$ IP = 520 $$</p>\n<p>$$ \\text{Cl}(g) + e^- \\rightarrow \\text{Cl}^-(g) $$</p>\n<p>Electron affinity releases energy, so:</p>\n<p>$$ EA = -365 $$</p>\n<p>Finally:</p>\n<p>$$ \\text{Li}^+(g) + \\text{Cl}^-(g) \\rightarrow \\text{LiCl}(s) $$</p>\n<p>Let lattice energy be $U$.</p>\n<p>Using Hess’s law:</p>\n<p>$$ \\Delta H_f = \\Delta H_{\\text{sub}} + \\frac{1}{2}\\Delta H_{\\text{diss}} + IP + EA + U $$</p>\n<p>$$ -400 = 160 + 122 + 520 - 365 + U $$</p>\n<p>$$ -400 = 437 + U $$</p>\n<p>$$ U = -400 - 437 $$</p>\n<p>$$ U = -837 \\text{ kJ mol}^{-1} $$</p>\n<p>So, the lattice energy for</p>\n<p>$$ \\text{Li}^+(g) + \\text{Cl}^-(g) \\rightarrow \\text{LiCl}(s) $$</p>\n<p>is:</p>\n<p>$$ \\boxed{-837 \\text{ kJ mol}^{-1}} $$</p>\n<p>Correct option: A.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित अभिक्रिया के लिए जालक ऊर्जा (lattice energy) ज्ञात कीजिए</p><p>Li<sup>+</sup>(g) + Cl<sup>−</sup>(g) &rarr; LiCl(s)</p><p>दिए गए आँकड़े हैं:</p><p>&Delta;H<sub>sub</sub>(Li) = 160 ; &Delta;H<sub>diss</sub>(Cl<sub>2</sub>) = 244 ; IP(Li) = 520 ;</p><p>EA(Cl) = 365 तथा &Delta;H<sub>f</sub>(LiCl) = -400 (सभी kJ mole<sup>-1</sup> में)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>-837</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>-959</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>-1567</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>-37</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr8sbtlo",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>C (s) + O<sub>2</sub> (g) &rarr; CO<sub>2</sub> (g); &emsp; &Delta;H = -94.3 kcal/mol</p>\n<p>CO (g) + $ \\frac{1}{2} $ O<sub>2</sub> (g) &rarr; CO<sub>2</sub> (g); &emsp; &Delta;H = -67.4 kcal/mol</p>\n<p>O<sub>2</sub> (g) &rarr; 2O (g); &emsp; &Delta;H = 117.4 kcal/mol</p>\n<p>CO (g) &rarr; C (g) + O (g); &emsp; &Delta;H = 230.6 kcal/mol</p>\n<p><b>Find the value of &Delta;H for C (s) &rarr; C (g) in kcal/mol.</b></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>171</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>154</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>117</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>145</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>We need to find $\\Delta H$ for $C(s) \\rightarrow C(g)$.</p>\n\n<p>(1) $C(s) + O_2(g) \\rightarrow CO_2(g)$;  $\\Delta H_1 = -94.3$ kcal/mol</p>\n<p>(2) $CO(g) + \\frac{1}{2}O_2(g) \\rightarrow CO_2(g)$;  $\\Delta H_2 = -67.4$ kcal/mol</p>\n<p>(3) $O_2(g) \\rightarrow 2O(g)$;  $\\Delta H_3 = 117.4$ kcal/mol</p>\n<p>(4) $CO(g) \\rightarrow C(g) + O(g)$;  $\\Delta H_4 = 230.6$ kcal/mol</p>\n<p>Start with equation (1): $C(s) + O_2 \\rightarrow CO_2$</p>\n<p>Reverse equation (2): $CO_2 \\rightarrow CO + \\frac{1}{2}O_2$;  $\\Delta H = +67.4$</p>\n<p>Adding these gives: $C(s) + \\frac{1}{2}O_2 \\rightarrow CO$;  $\\Delta H = -94.3 + 67.4 = -26.9$ kcal/mol</p>\n<p>Now add equation (4): $CO \\rightarrow C(g) + O(g)$;  $\\Delta H = 230.6$</p>\n<p>This gives: $C(s) + \\frac{1}{2}O_2 \\rightarrow C(g) + O(g)$;  $\\Delta H = -26.9 + 230.6 = 203.7$ kcal/mol</p>\n<p>To remove $O(g)$ and $\\frac{1}{2}O_2$ from the equation, reverse half of equation (3):</p>\n<p>$O(g) \\rightarrow \\frac{1}{2}O_2(g)$;  $\\Delta H = -\\frac{117.4}{2} = -58.7$ kcal/mol</p>\n<p>Adding this:</p>\n<p>$$C(s) + \\frac{1}{2}O_2 + O(g) \\rightarrow C(g) + O(g) + \\frac{1}{2}O_2$$</p>\n\n<p>$$C(s) \\rightarrow C(g)$$</p>\n<p>$$\\Delta H = 203.7 + (-58.7) = 145 \\text{ kcal/mol}$$</p>\n<p>So the answer is <strong>Option D: 145 kcal/mol</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>C (s) + O<sub>2</sub> (g) &rarr; CO<sub>2</sub> (g); &emsp; &Delta;H = -94.3 kcal/mol</p><p>CO (g) + $ \\frac{1}{2} $ O<sub>2</sub> (g) &rarr; CO<sub>2</sub> (g); &emsp; &Delta;H = -67.4 kcal/mol</p><p>O<sub>2</sub> (g) &rarr; 2O (g); &emsp; &Delta;H = 117.4 kcal/mol</p><p>CO (g) &rarr; C (g) + O (g); &emsp; &Delta;H = 230.6 kcal/mol</p><p><b>C (s) &rarr; C (g) के लिए &Delta;H का मान kcal/mol में ज्ञात कीजिए।</b></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>171</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>154</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>117</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>145</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr8sxf9e",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A given quantity of ethylene on complete combustion released 5644 kJ of heat. If the heat of combustion of ethylene is 1411 kJ, then the volume of O<sub>2</sub> (at NTP) taking part in the reaction is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>268.8 ml</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>268.8 L</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>6226 &times; 22.4 L</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>22.4 L</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The combustion of ethylene is:</p>\n<p>$$C_2H_4 + 3O_2 \\rightarrow 2CO_2 + 2H_2O$$</p>\n<p>Burning 1 mole of ethylene gives 1411 kJ of heat. Since 5644 kJ was released, the moles of ethylene burnt are:</p>\n<p>$$\\frac{5644}{1411} = 4 \\text{ moles}$$</p>\n<p>From the balanced equation, 1 mole of ethylene needs 3 moles of oxygen. So 4 moles of ethylene will need:</p>\n<p>$$4 \\times 3 = 12 \\text{ moles of } O_2$$</p>\n<p>At NTP, 1 mole of any gas occupies 22.4 L. So the volume of oxygen used is:</p>\n<p>$$12 \\times 22.4 = 268.8 \\text{ L}$$</p>\n<p>The correct option is B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एथिलीन की एक निश्चित मात्रा के पूर्ण दहन पर 5644 kJ ऊष्मा मुक्त होती है। यदि एथिलीन की दहन ऊष्मा 1411 kJ है, तो अभिक्रिया में भाग लेने वाले O<sub>2</sub> का आयतन (NTP पर) है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>268.8 ml</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>268.8 L</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>6226 &times; 22.4 L</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>22.4 L</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr8t4m9n",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>When 5 liter of ethylene reacts with 5 liter of H<sub>2</sub> gas at 1.5 atm pressure, the enthalpy change is &Delta;H = -0.5 kJ. The value of &Delta;U will be : (1 atm Lt = 100 J)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>-1.25 kJ</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>+1.25 kJ</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.25 kJ</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>-0.25 kJ</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The reaction is:</p>\n<p>$$C_2H_4(g) + H_2(g) \\rightarrow C_2H_6(g)$$</p>\n<p>Here 1 mole of gas is formed from 2 moles of gas, so $\\Delta n_g = -1$.</p>\n<p>We use the relation:</p>\n<p>$$\\Delta H = \\Delta U + \\Delta n_g \\, RT$$</p>\n<p>But since we are dealing with actual volumes at given pressure, it's easier to use:</p>\n<p>$$\\Delta H = \\Delta U + P\\Delta V$$</p>\n<p>The volume changes from $5 + 5 = 10$ L (reactants) to $5$ L (product, since volumes are in same ratio as moles at same P and T).</p>\n<p>So $\\Delta V = 5 - 10 = -5$ L at $P = 1.5$ atm.</p>\n<p>$$P\\Delta V = 1.5 \\times (-5) = -7.5 \\text{ atm L}$$</p>\n<p>Converting: $P\\Delta V = -7.5 \\times 100 = -750$ J $= -0.75$ kJ</p>\n<p>Now,</p>\n<p>$$\\Delta U = \\Delta H - P\\Delta V = -0.5 - (-0.75) = 0.25 \\text{ kJ}$$</p>\n<p>So the answer is option C: $\\Delta U = +0.25$ kJ.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>जब 1.5 atm दाब पर 5 लीटर एथिलीन 5 लीटर H<sub>2</sub> गैस के साथ अभिक्रिया करती है, तो एन्थैल्पी परिवर्तन &Delta;H = -0.5 kJ होता है। &Delta;U का मान होगा : (1 atm Lt = 100 J)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>-1.25 kJ</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>+1.25 kJ</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.25 kJ</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>-0.25 kJ</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr8t8yye",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For which acid-base pair is the heat of neutralization approximately $-13.6$ kcal?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>HCN and NaOH</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>CH<sub>3</sub>COOH and NH<sub>4</sub>OH</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>HCl and KOH</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>HCl and NH<sub>4</sub>OH</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The enthalpy of neutralization is nearly $-13.6 \\text{ kcal mol}^{-1}$ when a strong acid reacts with a strong base.</p>\n<p>This is because strong acids and strong bases are completely ionised in aqueous solution. So the main reaction is simply:</p>\n<p>$$ \\text{H}^+ (aq) + \\text{OH}^- (aq) \\rightarrow \\text{H}_2\\text{O}(l) $$</p>\n<p>For this reaction, the heat evolved is nearly constant:</p>\n<p>$$ \\Delta H = -13.6 \\text{ kcal mol}^{-1} $$</p>\n<p>Now check the options:</p>\n<ul>\n<li><p>HCN is a weak acid, so Option A is not correct.</p></li>\n<li><p>$\\text{CH}_3\\text{COOH}$ is a weak acid and $\\text{NH}_4\\text{OH}$ is a weak base, so Option B is not correct.</p></li>\n<li><p>HCl is a strong acid and KOH is a strong base, so this gives nearly $-13.6 \\text{ kcal mol}^{-1}$.</p></li>\n<li><p>$\\text{NH}_4\\text{OH}$ is a weak base, so Option D is not correct.</p></li>\n</ul>\n<p>So the correct answer is:</p>\n<p>$$ \\boxed{\\text{Option C: HCl and KOH}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>किस अम्ल-क्षार युग्म के लिए उदासीनीकरण ऊष्मा लगभग $-13.6$ kcal होती है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>HCN और NaOH</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>CH<sub>3</sub>COOH और NH<sub>4</sub>OH</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>HCl और KOH</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>HCl और NH<sub>4</sub>OH</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr8sjnyc",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the reactions given below,</p>\n<p>C(diamond) + O<sub>2</sub> &rarr; CO<sub>2</sub>(g) ; &Delta;H = -97.6 kcal/mol</p>\n<p>C(graphite) + O<sub>2</sub> &rarr; CO<sub>2</sub>(g) ; &Delta;H = -94.3 kcal/mol</p>\n<p>The amount of heat needed to convert 1 g of C(graphite) &rarr; C(diamond) is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1.59 kcal</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.1375 kcal</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.55 kcal</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.275 kcal</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For the conversion,</p>\n<p>$$ \\text{C(graphite)} \\rightarrow \\text{C(diamond)} $$</p>\n<p>we can use Hess’s law.</p>\n<p>Given:</p>\n<p>$$ \\text{C(diamond)} + O_2 \\rightarrow CO_2(g), \\quad \\Delta H = -97.6 \\text{ kcal mol}^{-1} $$</p>\n<p>$$ \\text{C(graphite)} + O_2 \\rightarrow CO_2(g), \\quad \\Delta H = -94.3 \\text{ kcal mol}^{-1} $$</p>\n<p>To get graphite changing into diamond, reverse the first equation:</p>\n<p>$$ CO_2(g) \\rightarrow \\text{C(diamond)} + O_2, \\quad \\Delta H = +97.6 \\text{ kcal mol}^{-1} $$</p>\n<p>Now add it to the second equation:</p>\n<p>$$ \\text{C(graphite)} + O_2 \\rightarrow CO_2(g), \\quad \\Delta H = -94.3 $$</p>\n<p>$$ CO_2(g) \\rightarrow \\text{C(diamond)} + O_2, \\quad \\Delta H = +97.6 $$</p>\n<p>On adding, $CO_2$ and $O_2$ cancel out:</p>\n<p>$$ \\text{C(graphite)} \\rightarrow \\text{C(diamond)} $$</p>\n<p>So,</p>\n<p>$$ \\Delta H = 97.6 - 94.3 = 3.3 \\text{ kcal mol}^{-1} $$</p>\n<p>This is for $1$ mole of carbon, that is $12$ g of carbon.</p>\n<p>Heat required for $1$ g carbon:</p>\n<p>$$ = \\frac{3.3}{12} $$</p>\n<p>$$ = 0.275 \\text{ kcal} $$</p>\n<p>So, the correct answer is:</p>\n<p>$$ \\boxed{0.275 \\text{ kcal}} $$</p>\n<p>Option D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>नीचे दी गई अभिक्रियाओं पर विचार कीजिए,</p>\n<p>C(हीरा) + O<sub>2</sub> &rarr; CO<sub>2</sub>(g) ; &Delta;H = -97.6 kcal/mol</p>\n<p>C(ग्रेफाइट) + O<sub>2</sub> &rarr; CO<sub>2</sub>(g) ; &Delta;H = -94.3 kcal/mol</p>\n<p>1 g C(ग्रेफाइट) &rarr; C(हीरा) में परिवर्तित करने के लिए आवश्यक ऊष्मा की मात्रा है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1.59 kcal</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.1375 kcal</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.55 kcal</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.275 kcal</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mr8tduiu",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The chemical reactions of gold were an important area of study for alchemists. Consider the reactions written below,</p>\n<p>$$ \\begin{array}{ll} \\mathrm{Au}(\\mathrm{OH})_3+4 \\mathrm{HCl} \\longrightarrow \\mathrm{HAuCl}_4+3 \\mathrm{H}_2 \\mathrm{O}, & \\Delta \\mathrm{H}=-28 \\mathrm{kcal} \\\\ \\mathrm{Au}(\\mathrm{OH})_3+4 \\mathrm{HBr} \\longrightarrow \\mathrm{HAuBr}_4+3 \\mathrm{H}_2 \\mathrm{O}, & \\Delta \\mathrm{H}=-36.8 \\mathrm{kcal} \\end{array} $$</p>\n<p>In a given experiment, 0.44 kcal of heat was absorbed when one mole of $\\mathrm{HAuBr}_4$ was mixed with 4 moles of HCl . Find the fraction of $\\mathrm{HAuBr}_4$ that changed into $\\mathrm{HAuCl}_4$ (percentage conversion)</p>",
+                "options": [],
+                "answer": "5",
+                "explanation": "<p>Using Hess’s law, first find the heat change for the conversion reaction:</p>\n<p>$$ \\mathrm{HAuBr}_4 + 4\\mathrm{HCl} \\longrightarrow \\mathrm{HAuCl}_4 + 4\\mathrm{HBr} $$</p>\n<p>Given:</p>\n<p>$$ \\mathrm{Au(OH)}_3 + 4\\mathrm{HCl} \\longrightarrow \\mathrm{HAuCl}_4 + 3\\mathrm{H}_2\\mathrm{O} \\qquad \\Delta H = -28 \\text{ kcal} $$</p>\n<p>and</p>\n<p>$$ \\mathrm{Au(OH)}_3 + 4\\mathrm{HBr} \\longrightarrow \\mathrm{HAuBr}_4 + 3\\mathrm{H}_2\\mathrm{O} \\qquad \\Delta H = -36.8 \\text{ kcal} $$</p>\n<p>Reverse the second reaction:</p>\n<p>$$ \\mathrm{HAuBr}_4 + 3\\mathrm{H}_2\\mathrm{O} \\longrightarrow \\mathrm{Au(OH)}_3 + 4\\mathrm{HBr} \\qquad \\Delta H = +36.8 \\text{ kcal} $$</p>\n<p>Add this to the first reaction:</p>\n<p>$$ \\mathrm{Au(OH)}_3 + 4\\mathrm{HCl} \\longrightarrow \\mathrm{HAuCl}_4 + 3\\mathrm{H}_2\\mathrm{O} \\qquad \\Delta H = -28 \\text{ kcal} $$</p>\n<p>On cancellation, we get:</p>\n<p>$$ \\mathrm{HAuBr}_4 + 4\\mathrm{HCl} \\longrightarrow \\mathrm{HAuCl}_4 + 4\\mathrm{HBr} $$</p>\n<p>The enthalpy change is:</p>\n<p>$$ \\Delta H = 36.8 - 28 = +8.8 \\text{ kcal} $$</p>\n<p>So, complete conversion of $1$ mole of $\\mathrm{HAuBr}_4$ absorbs $8.8$ kcal.</p>\n<p>But in the experiment, heat absorbed is only $0.44$ kcal.</p>\n<p>If the fraction converted is $x$, then:</p>\n<p>$$ 8.8x = 0.44 $$</p>\n<p>$$ x = \\frac{0.44}{8.8} = 0.05 $$</p>\n<p>So the percentage conversion is:</p>\n<p>$$ 0.05 \\times 100 = 5\\% $$</p>\n<p>Hence, the fraction of $\\mathrm{HAuBr}_4$ converted is $0.05$, or $5\\%$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>सोने की रासायनिक अभिक्रियाएँ कीमियागरों के अध्ययन का एक महत्वपूर्ण क्षेत्र थीं। नीचे दी गई अभिक्रियाओं पर विचार करें,</p><p>$$ \\begin{array}{ll} \\mathrm{Au}(\\mathrm{OH})_3+4 \\mathrm{HCl} \\longrightarrow \\mathrm{HAuCl}_4+3 \\mathrm{H}_2 \\mathrm{O}, & \\Delta \\mathrm{H}=-28 \\mathrm{kcal} \\\\\\\\ \\mathrm{Au}(\\mathrm{OH})_3+4 \\mathrm{HBr} \\longrightarrow \\mathrm{HAuBr}_4+3 \\mathrm{H}_2 \\mathrm{O}, & \\Delta \\mathrm{H}=-36.8 \\mathrm{kcal} \\end{array} $$</p><p>एक दिए गए प्रयोग में, जब एक मोल $\\mathrm{HAuBr}_4$ को 4 मोल HCl के साथ मिलाया गया तो 0.44 kcal ऊष्मा अवशोषित हुई। $\\mathrm{HAuCl}_4$ में परिवर्तित होने वाले $\\mathrm{HAuBr}_4$ का अंश (प्रतिशत रूपांतरण) ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mr8titnm",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Calculate the resonance energy of gaseous benzene from the given data \n<br/><br/>$\\Delta \\mathrm{H}_{\\mathrm{C}-\\mathrm{H}}=416 ; \\Delta \\mathrm{H}_{\\mathrm{C}-\\mathrm{C}}=331 ; \\Delta \\mathrm{H}_{\\mathrm{C}=\\mathrm{C}}=591 ; \\Delta \\mathrm{H}_{\\text {sub }}(\\mathrm{C}$, graphite $)=718 \\Delta \\mathrm{H}_{\\text {diss }}\\left(\\mathrm{H}_2, \\mathrm{~g}\\right)=436$ and $\\Delta \\mathrm{H}_{\\mathrm{f}}($ benzene, g$)=83\\left(\\right.$ all unit in kJ mole $\\left.^{-1}\\right)$</p>",
+                "options": [],
+                "answer": "271",
+                "explanation": "<p>To find the resonance energy, we compare the theoretical enthalpy of formation of benzene (assuming Kekulé structure with 3 single and 3 double C–C bonds) with the experimental value.</p>\n<p>The formation reaction is:</p>\n<p>$$6\\,C(graphite) + 3\\,H_2(g) \\rightarrow C_6H_6(g)$$</p>\n<p>Energy needed to convert reactants into gaseous atoms:</p>\n<p>Sublimation of 6 C atoms:</p>\n<p>$$6 \\times 718 = 4308 \\text{ kJ}$$</p>\n<p>Dissociation of 3 H₂ molecules:</p>\n<p>$$3 \\times 436 = 1308 \\text{ kJ}$$</p>\n<p>Total energy absorbed $= 4308 + 1308 = 5616$ kJ</p>\n<p>Now energy released when bonds form in benzene (Kekulé structure):</p>\n<ul>\n<li><p>6 C–H bonds: $6 \\times 416 = 2496$ kJ</p></li>\n<li><p>3 C–C bonds: $3 \\times 331 = 993$ kJ</p></li>\n<li><p>3 C=C bonds: $3 \\times 591 = 1773$ kJ</p></li>\n</ul>\n<p>Total energy released $= 2496 + 993 + 1773 = 5262$ kJ</p>\n<p>Theoretical $\\Delta H_f$ of benzene:</p>\n<p>$$\\Delta H_f(\\text{theoretical}) = 5616 - 5262 = 354 \\text{ kJ mol}^{-1}$$</p>\n<p>The experimental value is $83$ kJ/mol, which is lower. This extra stability is the resonance energy.</p>\n<p>$$\\text{Resonance energy} = \\Delta H_f(\\text{experimental}) - \\Delta H_f(\\text{theoretical})$$</p>\n<p>$$= 83 - 354 = -271 \\text{ kJ mol}^{-1}$$</p>\n<p>So the resonance energy of gaseous benzene is about $-271$ kJ/mol. The negative sign shows that benzene is more stable than the hypothetical Kekulé structure by $271$ kJ/mol.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दिए गए डेटा से गैसीय बेंजीन की अनुनाद ऊर्जा की गणना कीजिए <br/><br/>$\\Delta \\mathrm{H}_{\\mathrm{C}-\\mathrm{H}}=416 ; \\Delta \\mathrm{H}_{\\mathrm{C}-\\mathrm{C}}=331 ; \\Delta \\mathrm{H}_{\\mathrm{C}=\\mathrm{C}}=591 ; \\Delta \\mathrm{H}_{\\text {sub }}(\\mathrm{C}\\text{, ग्रेफाइट})=718 \\Delta \\mathrm{H}_{\\text {diss }}\\left(\\mathrm{H}_2, \\mathrm{~g}\\right)=436 \\text{ और } \\Delta \\mathrm{H}_{\\mathrm{f}}(\\text{बेंजीन, g})=83 \\left(\\text{सभी इकाइयाँ kJ mole}^{-1} \\text{ में}\\right)$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mr8tlyn1",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For a 1 M solution of a weak acid, the enthalpy of neutralisation with a strong base is $-56.1 \\mathrm{~kJ} \\mathrm{~mol}^{-1}$. If the ionization enthalpy of the acid is $1.5 \\mathrm{~kJ} \\mathrm{~mol}^{-1}$ and the enthalpy of neutralization of a strong acid by a strong base is -57.3 kJ equiv ${ }^{-1}$, find the $\\%$ ionization of the weak acid in the molar solution (assume that the acid is monobasic).</p>",
+                "options": [],
+                "answer": "20",
+                "explanation": "<p>Let the degree of ionization of the weak acid in $1\\,\\text{M}$ solution be $\\alpha$.</p>\n<p>Since the acid is monobasic, $1$ mole of acid can give $1$ mole of $\\text{H}^+$ ions.</p>\n<p>For a strong acid and strong base, the enthalpy of neutralisation is</p>\n<p>$$ \\text{H}^+ + \\text{OH}^- \\rightarrow \\text{H}_2\\text{O} $$</p>\n<p>$$ \\Delta H = -57.3\\,\\text{kJ mol}^{-1} $$</p>\n<p>For a weak acid, some part is already ionized and some part is unionized.</p>\n<p>If $\\alpha$ mole is already ionized, then $(1-\\alpha)$ mole is unionized.</p>\n<p>The unionized part must first ionize, and this needs energy:</p>\n<p>$$ \\Delta H_{\\text{ionization}} = +1.5\\,\\text{kJ mol}^{-1} $$</p>\n<p>So, the heat released during neutralisation of weak acid is less than that of a strong acid by the amount needed to ionize the unionized acid.</p>\n<p>Given:</p>\n<p>$$ \\Delta H_{\\text{weak acid}} = -56.1\\,\\text{kJ mol}^{-1} $$</p>\n<p>So,</p>\n<p>$$ -56.1 = -57.3 + 1.5(1-\\alpha) $$</p>\n<p>$$ 1.5(1-\\alpha) = 57.3 - 56.1 $$</p>\n<p>$$ 1.5(1-\\alpha) = 1.2 $$</p>\n<p>$$ 1-\\alpha = \\frac{1.2}{1.5} $$</p>\n<p>$$ 1-\\alpha = 0.8 $$</p>\n<p>$$ \\alpha = 0.2 $$</p>\n<p>Percentage ionization:</p>\n<p>$$ \\% \\text{ ionization} = \\alpha \\times 100 $$</p>\n<p>$$ = 0.2 \\times 100 $$</p>\n<p>$$ = 20\\% $$</p>\n<p>So, the weak acid is $20\\%$ ionized in molar solution.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक दुर्बल अम्ल के 1 M विलयन के लिए, प्रबल क्षार के साथ उदासीनीकरण की एन्थैल्पी $-56.1 \\mathrm{~kJ} \\mathrm{~mol}^{-1}$ है। यदि अम्ल की आयनन एन्थैल्पी $1.5 \\mathrm{~kJ} \\mathrm{~mol}^{-1}$ है और एक प्रबल क्षार द्वारा प्रबल अम्ल के उदासीनीकरण की एन्थैल्पी -57.3 kJ equiv ${ }^{-1}$ है, तो मोलर विलयन में दुर्बल अम्ल का $\\%$ आयनन ज्ञात कीजिए (मान लीजिए कि अम्ल एकक्षारकीय है)।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mr8tkban",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Using the data provided, find the resonance energy of isoprene $\\left(\\mathrm{C}_5 \\mathrm{H}_8\\right)$.</p>\n<p>It is given that $\\Delta \\mathrm{HC}_{\\mathrm{C}=\\mathrm{C}}=615 \\mathrm{kJmole}^{-1} ; \\Delta \\mathrm{H}_{\\mathrm{O}-\\mathrm{C}}=348 \\mathrm{~kJ} \\mathrm{~mole}^{-1} ; \\Delta \\mathrm{H}_{\\mathrm{C}-\\mathrm{H}}=413 \\mathrm{kJmole}^{-1} ; \\Delta \\mathrm{H}_{\\mathrm{H}-\\mathrm{H}}=435 \\mathrm{kJmole}^{-1}$ The standard heat of sublimation of graphite is $718 \\mathrm{kJmole}^{-1}$ and the heat of formation of $\\mathrm{C}_5 \\mathrm{H}_8(\\mathrm{~g})$ is 79 $\\mathrm{kJmole}^{-1}$</p>\n<p>(Write your answer in kcal mole-1; nearest integer).</p>",
+                "options": [],
+                "answer": "5",
+                "explanation": "<p>For isoprene, the structure is</p>\n<p>$$ \\mathrm{CH_2=C(CH_3)-CH=CH_2} $$</p>\n<p>So the molecule contains:</p>\n<ul>\n<li><p>$2$ carbon-carbon double bonds, $\\mathrm{C=C}$</p></li>\n<li><p>$2$ carbon-carbon single bonds, $\\mathrm{C-C}$</p></li>\n<li><p>$8$ carbon-hydrogen bonds, $\\mathrm{C-H}$</p></li>\n</ul>\n<p>The energy needed to form separate atoms from the elements is:</p>\n<p>$$ 5 \\times 718 + 4 \\times 435 $$</p>\n<p>because isoprene has $5$ carbon atoms and $8$ hydrogen atoms, i.e. $4\\mathrm{H_2}$ molecules.</p>\n<p>$$ = 3590 + 1740 $$</p>\n<p>$$ = 5330 \\ \\mathrm{kJ\\,mol^{-1}} $$</p>\n<p>Now, if isoprene had only ordinary localized bonds, the bond energy released on formation would be:</p>\n<p>$$ 2(\\mathrm{C=C}) + 2(\\mathrm{C-C}) + 8(\\mathrm{C-H}) $$</p>\n<p>$$ = 2(615) + 2(348) + 8(413) $$</p>\n<p>$$ = 1230 + 696 + 3304 $$</p>\n<p>$$ = 5230 \\ \\mathrm{kJ\\,mol^{-1}} $$</p>\n<p>So the calculated heat of formation without resonance would be:</p>\n<p>$$ \\Delta H_f = 5330 - 5230 $$</p>\n<p>$$ = 100 \\ \\mathrm{kJ\\,mol^{-1}} $$</p>\n<p>But the given actual heat of formation is:</p>\n<p>$$ 79 \\ \\mathrm{kJ\\,mol^{-1}} $$</p>\n<p>The actual molecule is more stable because of resonance. Hence resonance energy is:</p>\n<p>$$ 100 - 79 = 21 \\ \\mathrm{kJ\\,mol^{-1}} $$</p>\n<p>Converting into kcal:</p>\n<p>$$ \\frac{21}{4.184} \\approx 5 \\ \\mathrm{kcal\\,mol^{-1}} $$</p>\n<p>$$ \\boxed{5 \\ \\mathrm{kcal\\,mol^{-1}}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दिए गए आंकड़ों का उपयोग करते हुए, आइसोप्रीन $\\left(\\mathrm{C}_5 \\mathrm{H}_8\\right)$ की अनुनाद ऊर्जा ज्ञात कीजिए।</p> <p>यह दिया गया है कि $\\Delta \\mathrm{HC}_{\\mathrm{C}=\\mathrm{C}}=615 \\mathrm{kJmole}^{-1} ; \\Delta \\mathrm{H}_{\\mathrm{O}-\\mathrm{C}}=348 \\mathrm{~kJ} \\mathrm{~mole}^{-1} ; \\Delta \\mathrm{H}_{\\mathrm{C}-\\mathrm{H}}=413 \\mathrm{kJmole}^{-1} ; \\Delta \\mathrm{H}_{\\mathrm{H}-\\mathrm{H}}=435 \\mathrm{kJmole}^{-1}$ ग्रेफाइट के ऊर्ध्वपातन की मानक ऊष्मा $718 \\mathrm{kJmole}^{-1}$ है और $\\mathrm{C}_5 \\mathrm{H}_8(\\mathrm{~g})$ की विरचन ऊष्मा $79 \\mathrm{kJmole}^{-1}$ है।</p> <p>(अपना उत्तर kcal mole-1 में लिखें; निकटतम पूर्णांक तक)।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mr8tqtco",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>On complete combustion of 1 g of starch, $\\left(\\mathrm{C}_6 \\mathrm{H}_{10} \\mathrm{O}_5\\right)_x$, to form $\\mathrm{CO}_2(\\mathrm{~g})$ and $\\mathrm{H}_2 \\mathrm{O}(\\mathrm{l})$, 4.6 kcal of heat is released. The heats of formation of $\\mathrm{CO}_2(\\mathrm{~g})$ and $\\mathrm{H}_2 \\mathrm{O}(\\mathrm{l})$ are -94.2 and $-68.4 \\mathrm{kcal} / \\mathrm{mol}$, respectively. Find the magnitude of the standard enthalpy of formation of 1 g of starch (in kcal).</p>",
+                "options": [],
+                "answer": "1",
+                "explanation": "<p>The combustion of one repeating unit of starch is</p>\n<p>$$(\\mathrm{C_6H_{10}O_5}) + 6\\,\\mathrm{O_2} \\longrightarrow 6\\,\\mathrm{CO_2} + 5\\,\\mathrm{H_2O}$$</p>\n<p>The molar mass of one unit $\\mathrm{C_6H_{10}O_5}$ is $162$ g.</p>\n<p>Since 1 g gives 4.6 kcal of heat, the heat released per mole (per unit) is</p>\n<p>$$\\Delta H_{\\text{comb}} = -4.6 \\times 162 = -745.2 \\ \\text{kcal/mol}$$</p>\n<p>Using the relation</p>\n<p>$$\\Delta H_{\\text{comb}} = \\sum \\Delta H_f(\\text{products}) - \\sum \\Delta H_f(\\text{reactants})$$</p>\n<p>$$-745.2 = [6(-94.2) + 5(-68.4)] - \\Delta H_f(\\text{starch unit})$$</p>\n<p>$$-745.2 = [-565.2 - 342.0] - \\Delta H_f(\\text{starch unit})$$</p>\n<p>$$-745.2 = -907.2 - \\Delta H_f(\\text{starch unit})$$</p>\n<p>$$\\Delta H_f(\\text{starch unit}) = -907.2 + 745.2 = -162 \\ \\text{kcal/mol}$$</p>\n<p>So the enthalpy of formation per gram of starch is</p>\n<p>$$\\frac{-162}{162} = -1 \\ \\text{kcal/g}$$</p>\n<p>The magnitude is $1$ kcal.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>1 g स्टार्च, $\\left(\\mathrm{C}_6 \\mathrm{H}_{10} \\mathrm{O}_5\\right)_x$, के पूर्ण दहन पर $\\mathrm{CO}_2(\\mathrm{~g})$ और $\\mathrm{H}_2 \\mathrm{O}(\\mathrm{l})$ बनाने के लिए 4.6 kcal ऊष्मा मुक्त होती है। $\\mathrm{CO}_2(\\mathrm{~g})$ और $\\mathrm{H}_2 \\mathrm{O}(\\mathrm{l})$ की विरचन ऊष्माएँ क्रमशः -94.2 और $-68.4 \\mathrm{kcal} / \\mathrm{mol}$ हैं। 1 g स्टार्च की मानक विरचन एन्थैल्पी का परिमाण (kcal में) ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Enthalpy of Formation, Enthalpy of Combustion, Enthalpy of Neutralization, Hess's Law",
+    "timeAllotted": 2160000,
+    "title": "Thermodynamics Test - 4 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mpcyd1qt",
+    "defaultLanguage": "en",
+    "description": "Enthalpy of Formation, Enthalpy of Combustion, Enthalpy of Neutralization, Hess's Law",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-06T06:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Enthalpy of Formation, Enthalpy of Combustion, Enthalpy of Neutralization, Hess's Law",
+    "timeAllotted": 2160000,
+    "title": "Thermodynamics Test - 4 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Thermodynamics"
+  }
+}

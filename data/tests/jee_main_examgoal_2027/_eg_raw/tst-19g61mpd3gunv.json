@@ -1,0 +1,1699 @@
+{
+  "testId": "tst-19g61mpd3gunv",
+  "title": "Electrochemistry - Chapter Test",
+  "type": "chapter",
+  "section": "Electrochemistry",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-08-14T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "f73d289a-264f-433f-8be1-53ac8dd6bc83",
+  "questions_count": 25,
+  "solutions_count": 25,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61mpd3gunv",
+    "defaultLanguage": "en",
+    "description": "Questions from all topics of the chapter",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-14T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 100,
+    "maxNegMarks": 25,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 80,
+        "maxNegMarks": 20,
+        "timeAllotted": 2880000,
+        "totalQuestions": 20,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msbmhcg5",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The standard reduction potential for $\\mathrm{Fe^{2+}/Fe}$ and $\\mathrm{Sn^{2+}/Sn}$ electrodes are $-0.44$ and $-0.14$ volt respectively. For the given cell reaction</p><p>$\\mathrm{Fe^{2+} + Sn \\rightarrow Fe + Sn^{2+}}$, the standard EMF will be</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>+0.38 V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>-0.58 V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>+0.58 V</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>-0.30 V</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>From the given cell reaction: $\\mathrm{Fe^{2+} + Sn \\rightarrow Fe + Sn^{2+}}$</p>\n<ul>\n    <li>Tin ($\\mathrm{Sn}$) is oxidized to $\\mathrm{Sn^{2+}}$ ($\\mathrm{Sn \\rightarrow Sn^{2+} + 2e^{-}}$). Therefore, it acts as the <b>anode</b>.</li>\n    <li>Iron ($\\mathrm{Fe^{2+}}$) is reduced to $\\mathrm{Fe}$ ($\\mathrm{Fe^{2+} + 2e^{-} \\rightarrow Fe}$). Therefore, it acts as the <b>cathode</b>.</li>\n</ul>\n\n\n<p>Given in the problem:</p>\n<ul>\n    <li>$E^{\\circ}_{\\text{cathode}} (\\mathrm{Fe^{2+}/Fe}) = -0.44 \\text{ V}$</li>\n    <li>$E^{\\circ}_{\\text{anode}} (\\mathrm{Sn^{2+}/Sn}) = -0.14 \\text{ V}$</li>\n</ul>\n\n\n<p>The formula for the standard cell potential is:</p>\n<p>$$E^{\\circ}_{\\text{cell}} = E^{\\circ}_{\\text{cathode}} - E^{\\circ}_{\\text{anode}}$$</p>\n<p>Substitute the values:</p>\n<p>$$E^{\\circ}_{\\text{cell}} = -0.44 \\text{ V} - (-0.14 \\text{ V})$$</p>\n<p>$$E^{\\circ}_{\\text{cell}} = -0.44 + 0.14$$</p>\n<p>$$E^{\\circ}_{\\text{cell}} = -0.30 \\text{ V}$$</p>\n\n<p>Therefore, the correct choice is <b>Option D</b>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\mathrm{Fe^{2+}/Fe}$ और $\\mathrm{Sn^{2+}/Sn}$ इलेक्ट्रोड के लिए मानक अपचयन विभव क्रमशः $-0.44$ और $-0.14$ वोल्ट हैं। दी गई सेल अभिक्रिया</p><p>$\\mathrm{Fe^{2+} + Sn \\rightarrow Fe + Sn^{2+}}$ के लिए, मानक EMF होगा</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>+0.38 V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>-0.58 V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>+0.58 V</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>-0.30 V</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electrochemical-series-cell-and-their-emf",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msbmwvmw",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following changes will convert a galvanic cell to an electrolytic cell?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Increasing the concentration of electrolyte.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Connecting the cell to a battery supplying a higher voltage in reverse direction.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Replacing salt bridge with a porous membrane.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Using inert electrodes instead of reactive ones.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<ul>\n    <li><b>Galvanic Cell:</b> Converts chemical energy into electrical energy through a spontaneous redox reaction.</li>\n    <li><b>Electrolytic Cell:</b> Uses electrical energy from an external source to drive a non-spontaneous chemical reaction.</li>\n</ul>\n\n<p>According to NCERT, when an external opposing voltage ($E_{\\text{ext}}$) is applied to a galvanic cell, three situations can arise:</p>\n<ul>\n    <li>If $E_{\\text{ext}} < E_{\\text{cell}}$: The cell continues to act as a galvanic cell, and current flows normally.</li>\n    <li>If $E_{\\text{ext}} = E_{\\text{cell}}$: The chemical reaction stops, and no current flows.</li>\n    <li><b>If $E_{\\text{ext}} > E_{\\text{cell}}$:</b> The reaction reverses its direction. The cell now consumes electrical energy to drive the non-spontaneous reverse reaction, thus functioning as an <b>electrolytic cell</b>.</li>\n</ul>\n\n<p><b>Conclusion</b></p>\n<p>To convert a galvanic cell into an electrolytic cell, we must apply an external opposing voltage greater than the cell's own potential. This is achieved by connecting it to a battery supplying a higher voltage in the reverse direction.</p>\n\n<p>Therefore, the correct choice is <b>Option B</b>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से कौन सा परिवर्तन गैल्वेनिक सेल को विद्युत अपघटनी सेल में परिवर्तित कर देगा?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>विद्युत अपघट्य की सांद्रता बढ़ाना।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>सेल को विपरीत दिशा में उच्च वोल्टेज की आपूर्ति करने वाली बैटरी से जोड़ना।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>लवण सेतु को सरंध्र झिल्ली से बदलना।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>प्रतिक्रियाशील इलेक्ट्रोड के बजाय अक्रिय इलेक्ट्रोड का उपयोग करना।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electrochemical-series-cell-and-their-emf",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms6b10py",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Given standard electrode potentials:</p><p>$\\mathrm{Fe}^{3+} + 3e^- \\rightarrow \\mathrm{Fe}$; $E^\\circ = -0.036$ volt</p><p>$\\mathrm{Fe}^{2+} + 2e^- \\rightarrow \\mathrm{Fe}$; $E^\\circ = -0.440$ volt</p><p>The standard electrode potential $E^\\circ$ for $\\mathrm{Fe}^{3+} + e^- \\rightarrow \\mathrm{Fe}^{2+}$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>–0.476 volt</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>–0.404 volt</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.440 volt</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.772 volt</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For electrode potentials, we should not add or subtract $E^\\circ$ values directly, because electrode potential is not an extensive quantity.</p>\n<p>We use the relation:</p>\n<p>$$ \\Delta G^\\circ = -nFE^\\circ $$</p>\n<p>For the reaction:</p>\n<p>$$ \\mathrm{Fe}^{3+} + 3e^- \\Rightarrow \\mathrm{Fe} $$</p>\n<p>$n = 3$ and $E^\\circ = -0.036\\ \\text{V}$</p>\n<p>So,</p>\n<p>$$ \\Delta G_1^\\circ = -3F(-0.036) $$</p>\n<p>$$ \\Delta G_1^\\circ = 0.108F $$</p>\n<p>For the reaction:</p>\n<p>$$ \\mathrm{Fe}^{2+} + 2e^- \\Rightarrow \\mathrm{Fe} $$</p>\n<p>$n = 2$ and $E^\\circ = -0.440\\ \\text{V}$</p>\n<p>So,</p>\n<p>$$ \\Delta G_2^\\circ = -2F(-0.440) $$</p>\n<p>$$ \\Delta G_2^\\circ = 0.880F $$</p>\n<p>We need the reaction:</p>\n<p>$$ \\mathrm{Fe}^{3+} + e^- \\Rightarrow \\mathrm{Fe}^{2+} $$</p>\n<p>Notice that:</p>\n<p>$$ \\mathrm{Fe}^{3+} + e^- \\Rightarrow \\mathrm{Fe}^{2+} $$</p>\n<p>combined with</p>\n<p>$$ \\mathrm{Fe}^{2+} + 2e^- \\Rightarrow \\mathrm{Fe} $$</p>\n<p>gives</p>\n<p>$$ \\mathrm{Fe}^{3+} + 3e^- \\Rightarrow \\mathrm{Fe} $$</p>\n<p>So,</p>\n<p>$$ \\Delta G_1^\\circ = \\Delta G^\\circ + \\Delta G_2^\\circ $$</p>\n<p>Hence,</p>\n<p>$$ \\Delta G^\\circ = \\Delta G_1^\\circ - \\Delta G_2^\\circ $$</p>\n<p>$$ \\Delta G^\\circ = 0.108F - 0.880F $$</p>\n<p>$$ \\Delta G^\\circ = -0.772F $$</p>\n<p>For the required reaction, $n = 1$.</p>\n<p>Using</p>\n<p>$$ \\Delta G^\\circ = -nFE^\\circ $$</p>\n<p>$$ -0.772F = -1 \\times F \\times E^\\circ $$</p>\n<p>$$ E^\\circ = 0.772\\ \\text{V} $$</p>\n<p>So, the correct answer is:</p>\n<p>$$ \\boxed{0.772\\ \\text{volt}} $$</p>\n<p>Option D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दिए गए मानक इलेक्ट्रोड विभव हैं:</p><p>$\\mathrm{Fe}^{3+} + 3e^- \\rightarrow \\mathrm{Fe}$; $E^\\circ = -0.036$ वोल्ट</p><p>$\\mathrm{Fe}^{2+} + 2e^- \\rightarrow \\mathrm{Fe}$; $E^\\circ = -0.440$ वोल्ट</p><p>$\\mathrm{Fe}^{3+} + e^- \\rightarrow \\mathrm{Fe}^{2+}$ के लिए मानक इलेक्ट्रोड विभव $E^\\circ$ है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>–0.476 वोल्ट</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>–0.404 वोल्ट</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.440 वोल्ट</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.772 वोल्ट</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electrochemical-series-cell-and-their-emf",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mses8b6x",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The standard EMF of a Daniel cell at 298 K is $E_1$. When the concentration of ZnSO$_4$ is 1.0 M and that of CuSO$_4$ is 0.01 M, the EMF becomes $E_2$ at 298 K. The correct relationship between $E_1$ and $E_2$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$E_1 = E_2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$E_2 = 0$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$E_1 > E_2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$E_1 < E_2$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The Daniel cell involves the following redox reaction:</p>\n<p>$$\\text{Zn}(s) + \\text{Cu}^{2+}(aq) \\rightarrow \\text{Zn}^{2+}(aq) + \\text{Cu}(s)$$</p>\n<p>The Nernst equation for the cell potential at $298 \\text{ K}$ is given by:</p>\n<p>$$E_{\\text{cell}} = E^\\circ_{\\text{cell}} - \\frac{0.0591}{n} \\log \\frac{[\\text{Zn}^{2+}]}{[\\text{Cu}^{2+}]}$$</p>\n<p>Where:</p>\n<ul>\n<li><p>$E^\\circ_{\\text{cell}}$ is the standard EMF of the cell.</p></li>\n<li><p>$n$ is the number of moles of electrons transferred (for this reaction, $n = 2$).</p></li>\n</ul>\n\n<p>The question states that $E_1$ is the <strong>standard EMF</strong> of the Daniel cell. Under standard conditions, the concentrations of aqueous ions are $1 \\text{ M}$.</p>\n<p>$$E_1 = E^\\circ_{\\text{cell}}$$</p>\n\n<p>For the new state, the given concentrations are:</p>\n<ul>\n<li><p>$[\\text{Zn}^{2+}] = 1.0 \\text{ M}$</p></li>\n<li><p>$[\\text{Cu}^{2+}] = 0.01 \\text{ M} = 10^{-2} \\text{ M}$</p></li>\n</ul>\n<p>Substitute these values into the Nernst equation to find $E_2$:</p>\n<p>$$E_2 = E_1 - \\frac{0.0591}{2} \\log \\left( \\frac{1.0}{10^{-2}} \\right)$$</p>\n<p>$$E_2 = E_1 - \\frac{0.0591}{2} \\log (10^2)$$</p>\n<p>$$E_2 = E_1 - \\frac{0.0591}{2} \\times 2$$</p>\n<p>$$E_2 = E_1 - 0.0591 \\text{ V}$$</p>\n<p>Since we are subtracting a positive value ($0.0591 \\text{ V}$) from $E_1$ to get $E_2$, it is clear that $E_2$ is smaller than $E_1$.</p>\n<p>$$E_1 > E_2$$</p>\n<p><strong>Final Answer:</strong></p>\n<p><strong>Option C:</strong> $E_1 > E_2$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>298 K पर डेनियल सेल का मानक विद्युत वाहक बल (EMF) $E_1$ है। जब ZnSO$_4$ की सांद्रता 1.0 M और CuSO$_4$ की सांद्रता 0.01 M होती है, तो 298 K पर EMF $E_2$ हो जाता है। $E_1$ और $E_2$ के बीच सही संबंध है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$E_1 = E_2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$E_2 = 0$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$E_1 > E_2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$E_1 < E_2$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mss1gklr",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the disproportionation reaction of a metal ion <b>M<sup>+</sup></b> in an aqueous solution:</p><p style='text-align:center;'>3M<sup>+</sup> (aq) &rarr; 2M(s) + M<sup>3+</sup> (aq)</p><p>You are given the following standard reduction potentials:</p><div style='text-align:center; margin-bottom:10px;'><p>M<sup>3+</sup>(aq) + 3e<sup>&minus;</sup> &rarr; M(s) <span style='margin-left:30px;'>E<sup>&deg;</sup> = x V</span></p><p>M<sup>3+</sup>(aq) + 2e<sup>&minus;</sup> &rarr; M<sup>+</sup>(aq) <span style='margin-left:30px;'>E<sup>&deg;</sup> = y V</span></p></div><p>What is the standard cell potential (<b>E<sup>&deg;</sup><sub>cell</sub></b>) for this disproportionation reaction?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><i>x - y</i></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><i>3x - 3y</i></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><i>3y - 3x</i></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><i>3x - 2y</i></p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "\n<p>The overall reaction is $3\\mathrm{M}^{+} \\rightarrow 2\\mathrm{M} + \\mathrm{M}^{3+}$. We can split this into an oxidation half-reaction (anode) and a reduction half-reaction (cathode):</p>\n<ul>\n<li><p><strong>Oxidation (Anode):</strong> $\\mathrm{M}^{+} \\rightarrow \\mathrm{M}^{3+} + 2\\mathrm{e}^{-}$</p></li>\n<li><p><strong>Reduction (Cathode):</strong> $\\mathrm{M}^{+} + \\mathrm{e}^{-} \\rightarrow \\mathrm{M}$</p></li>\n</ul>\n<p>The standard cell potential is calculated as:</p>\n<p>$$\\mathrm{E}^{\\circ}_{\\text{cell}} = \\mathrm{E}^{\\circ}_{\\text{cathode}} - \\mathrm{E}^{\\circ}_{\\text{anode}}$$</p>\n\n<p>The anode half-reaction is the reverse of the given reaction $\\mathrm{M}^{3+} + 2\\mathrm{e}^{-} \\rightarrow \\mathrm{M}^{+}$.</p>\n<p>The standard reduction potential for this couple is simply the value given:</p>\n<p>$$\\mathrm{E}^{\\circ}_{\\mathrm{M}^{3+} / \\mathrm{M}^{+}} = \\mathrm{y}$$</p>\n\n<p>We need the standard reduction potential for $\\mathrm{M}^{+} + \\mathrm{e}^{-} \\rightarrow \\mathrm{M}$, but it is not directly given. Because standard potentials ($\\mathrm{E}^{\\circ}$) are intensive properties, they cannot be added directly. We must use standard Gibbs free energy ($\\Delta \\mathrm{G}^{\\circ} = -n\\mathrm{FE}^{\\circ}$), which is an extensive property.</p>\n<p>Let's write out the knowns in terms of $\\Delta \\mathrm{G}^{\\circ}$:</p>\n<ol>\n<li><p>$\\mathrm{M}^{3+} + 3\\mathrm{e}^{-} \\rightarrow \\mathrm{M} \\quad \\Delta \\mathrm{G}_{1}^{\\circ} = -3\\mathrm{Fx}$</p></li>\n<li><p>$\\mathrm{M}^{3+} + 2\\mathrm{e}^{-} \\rightarrow \\mathrm{M}^{+} \\quad \\Delta \\mathrm{G}_{2}^{\\circ} = -2\\mathrm{Fy}$</p></li>\n</ol>\n<p>To get our target half-reaction ($\\mathrm{M}^{+} + \\mathrm{e}^{-} \\rightarrow \\mathrm{M}$), we subtract reaction (2) from reaction (1):</p>\n<p>$$(\\mathrm{M}^{3+} + 3\\mathrm{e}^{-} \\rightarrow \\mathrm{M}) - (\\mathrm{M}^{3+} + 2\\mathrm{e}^{-} \\rightarrow \\mathrm{M}^{+})$$</p>\n<p>$$\\Rightarrow \\mathrm{M}^{+} + \\mathrm{e}^{-} \\rightarrow \\mathrm{M}$$</p>\n<p>Therefore, the Gibbs free energy for the target reduction is:</p>\n<p>$$\\Delta \\mathrm{G}_{3}^{\\circ} = \\Delta \\mathrm{G}_{1}^{\\circ} - \\Delta \\mathrm{G}_{2}^{\\circ}$$</p>\n<p>$$\\Delta \\mathrm{G}_{3}^{\\circ} = (-3\\mathrm{Fx}) - (-2\\mathrm{Fy}) = 2\\mathrm{Fy} - 3\\mathrm{Fx}$$</p>\n<p>Now, convert this back to a standard potential for the 1-electron reduction:</p>\n<p>$$\\Delta \\mathrm{G}_{3}^{\\circ} = -1 \\cdot \\mathrm{F} \\cdot \\mathrm{E}^{\\circ}_{\\mathrm{M}^{+} / \\mathrm{M}}$$</p>\n<p>$$- \\mathrm{F} \\cdot \\mathrm{E}^{\\circ}_{\\mathrm{M}^{+} / \\mathrm{M}} = \\mathrm{F}(2\\mathrm{y} - 3\\mathrm{x})$$</p>\n<p>$$\\mathrm{E}^{\\circ}_{\\mathrm{M}^{+} / \\mathrm{M}} = 3\\mathrm{x} - 2\\mathrm{y}$$</p>\n<p>This gives us our $\\mathrm{E}^{\\circ}_{\\text{cathode}}$.</p>\n\n\n<p>$$\\mathrm{E}^{\\circ}_{\\text{cell}} = \\mathrm{E}^{\\circ}_{\\text{cathode}} - \\mathrm{E}^{\\circ}_{\\text{anode}}$$</p>\n<p>$$\\mathrm{E}^{\\circ}_{\\text{cell}} = (3\\mathrm{x} - 2\\mathrm{y}) - \\mathrm{y}$$</p>\n<p>$$\\mathrm{E}^{\\circ}_{\\text{cell}} = 3\\mathrm{x} - 3\\mathrm{y}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>जलीय विलयन में एक धातु आयन <b>M<sup>+</sup></b> की असमानुपातन (disproportionation) अभिक्रिया पर विचार कीजिए:</p><p style='text-align:center;'>3M<sup>+</sup> (aq) &rarr; 2M(s) + M<sup>3+</sup> (aq)</p><p>आपको निम्नलिखित मानक अपचयन विभव दिए गए हैं:</p><div style='text-align:center; margin-bottom:10px;'><p>M<sup>3+</sup>(aq) + 3e<sup>&minus;</sup> &rarr; M(s) <span style='margin-left:30px;'>E<sup>&deg;</sup> = x V</span></p><p>M<sup>3+</sup>(aq) + 2e<sup>&minus;</sup> &rarr; M<sup>+</sup>(aq) <span style='margin-left:30px;'>E<sup>&deg;</sup> = y V</span></p></div><p>इस असमानुपातन अभिक्रिया के लिए मानक सेल विभव (<b>E<sup>&deg;</sup><sub>cell</sub></b>) क्या है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><i>x - y</i></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><i>3x - 3y</i></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><i>3y - 3x</i></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><i>3x - 2y</i></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electrochemical-series-cell-and-their-emf",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mss1pmmr",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the following standard electrode potentials for the species of a hypothetical transition metal M in an acidic solution:</p>\n<p>1. $ \\mathrm{MO_3^-} \\xrightarrow{1.40\\ \\mathrm{V}} \\mathrm{MO^-} $<br>\n\n2. $ \\mathrm{MO_2^-} \\xrightarrow{1.20\\ \\mathrm{V}} \\mathrm{M} $<br>\n\n3. $ \\mathrm{MO_3^-} \\xrightarrow{0.90\\ \\mathrm{V}} \\mathrm{MO_2^-} $</p>\n<p>What is the standard electrode potential ($E^\\circ$) for the reduction of $ \\mathrm{MO^-} $ to $M$?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>−0.20 V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.20 V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.70 V</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>−0.40 V</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "\n<ul>\n<li><p>$\\mathrm{MO}_3^-$ : Let O be $-2$. Then $x + 3(-2) = -1 \\implies x = +5$</p></li>\n<li><p>$\\mathrm{MO}_2^-$ : Let O be $-2$. Then $x + 2(-2) = -1 \\implies x = +3$</p></li>\n<li><p>$\\mathrm{MO}^-$ : Let O be $-2$. Then $x + 1(-2) = -1 \\implies x = +1$</p></li>\n<li><p>$\\mathrm{M}$ : Elemental state $\\implies 0$</p></li>\n</ul>\n\n<p>Standard electrode potentials ($E^\\circ$) cannot be added directly. We must convert them to standard Gibbs free energy ($\\Delta G^\\circ$) using the formula:</p>\n<p>$$\\Delta G^\\circ = -nFE^\\circ$$</p>\n<p><em>(where $n$ is the number of electrons transferred, which equals the change in oxidation state).</em></p>\n<ul>\n<li><strong>Reaction 1 (+5 to +1):</strong> $n = 4$</li>\n</ul>\n<p>$$\\Delta G_1^\\circ = -4 \\times 1.40 \\times F = -5.60 F$$</p>\n<ul>\n<li><strong>Reaction 2 (+3 to 0):</strong> $n = 3$</li>\n</ul>\n<p>$$\\Delta G_2^\\circ = -3 \\times 1.20 \\times F = -3.60 F$$</p>\n<ul>\n<li><strong>Reaction 3 (+5 to +3):</strong> $n = 2$</li>\n</ul>\n<p>$$\\Delta G_3^\\circ = -2 \\times 0.90 \\times F = -1.80 F$$</p>\n\n<p>Notice that the overall jump from +5 to +1 (Reaction 1) is the sum of the jump from +5 to +3 (Reaction 3) and the jump from +3 to +1:</p>\n<p>$$\\Delta G_1^\\circ = \\Delta G_3^\\circ + \\Delta G_{(+3 \\rightarrow +1)}^\\circ$$</p>\n<p>$$-5.60 F = -1.80 F + \\Delta G_{(+3 \\rightarrow +1)}^\\circ$$</p>\n<p>$$\\Delta G_{(+3 \\rightarrow +1)}^\\circ = -3.80 F$$</p>\n\n<p>Notice that the jump from +3 to 0 (Reaction 2) is the sum of the jump from +3 to +1 (which we just found) and our target jump from +1 to 0:</p>\n<p>$$\\Delta G_2^\\circ = \\Delta G_{(+3 \\rightarrow +1)}^\\circ + \\Delta G_{target}^\\circ$$</p>\n<p>$$-3.60 F = -3.80 F + \\Delta G_{target}^\\circ$$</p>\n<p>$$\\Delta G_{target}^\\circ = -3.60 F + 3.80 F = +0.20 F$$</p>\n<p>For the target step ($\\mathrm{MO}^- \\rightarrow \\mathrm{M}$), the oxidation state changes from +1 to 0, so $n = 1$.</p>\n<p>$$\\Delta G_{target}^\\circ = -nFE_{target}^\\circ$$</p>\n<p>$$+0.20 F = -(1) \\times F \\times E_{target}^\\circ$$</p>\n<p>$$E_{target}^\\circ = -0.20 \\mathrm{~V}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अम्लीय विलयन में एक काल्पनिक संक्रमण धातु M की प्रजातियों के लिए निम्नलिखित मानक इलेक्ट्रोड विभवों पर विचार कीजिए:</p>\n<p>1. $ \\mathrm{MO_3^-} \\xrightarrow{1.40\\ \\mathrm{V}} \\mathrm{MO^-} $<br>\n2. $ \\mathrm{MO_2^-} \\xrightarrow{1.20\\ \\mathrm{V}} \\mathrm{M} $<br>\n3. $ \\mathrm{MO_3^-} \\xrightarrow{0.90\\ \\mathrm{V}} \\mathrm{MO_2^-} $</p>\n<p>$ \\mathrm{MO^-} $ के $M$ में अपचयन के लिए मानक इलेक्ट्रोड विभव ($E^\\circ$) क्या है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>−0.20 V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.20 V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.70 V</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>−0.40 V</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electrode-potential",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mss1xufb",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The standard electrode potentials (reduction) of Pt/Fe<sup>3+</sup>, Fe<sup>2+</sup> and Pt/Sn<sup>4+</sup>, Sn<sup>2+</sup> are +0.77 V and 0.15 V respectively at 25&deg;C. The standard EMF of the reaction \n<br/><br/>Sn<sup>4+</sup> + 2Fe<sup>2+</sup> &rarr; Sn<sup>2+</sup> + 2Fe<sup>3+</sup> is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>&minus;0.62 V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>&minus;0.92 V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>+0.31 V</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>+0.85 V</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>For the reaction,</p>\n<p>$$ \\text{Sn}^{4+} + 2\\text{Fe}^{2+} \\rightarrow \\text{Sn}^{2+} + 2\\text{Fe}^{3+} $$</p>\n<p>we identify which species is reduced and which is oxidised.</p>\n<p>Here,</p>\n<p>$$ \\text{Sn}^{4+} \\rightarrow \\text{Sn}^{2+} $$</p>\n<p>This is reduction, because oxidation state decreases from $+4$ to $+2$.</p>\n<p>Given standard reduction potential:</p>\n<p>$$ E^\\circ_{\\text{Sn}^{4+}/\\text{Sn}^{2+}} = +0.15 \\text{ V} $$</p>\n<p>Also,</p>\n<p>$$ \\text{Fe}^{2+} \\rightarrow \\text{Fe}^{3+} $$</p>\n<p>This is oxidation. But the given value is for reduction:</p>\n<p>$$ \\text{Fe}^{3+} + e^- \\rightarrow \\text{Fe}^{2+} $$</p>\n<p>with</p>\n<p>$$ E^\\circ_{\\text{Fe}^{3+}/\\text{Fe}^{2+}} = +0.77 \\text{ V} $$</p>\n<p>Now,</p>\n<p>$$ E^\\circ_{\\text{cell}} = E^\\circ_{\\text{cathode}} - E^\\circ_{\\text{anode}} $$</p>\n<p>Here cathode is the reduction of $\\text{Sn}^{4+}$, and anode corresponds to the $\\text{Fe}^{3+}/\\text{Fe}^{2+}$ electrode.</p>\n<p>So,</p>\n<p>$$ E^\\circ_{\\text{cell}} = 0.15 - 0.77 $$</p>\n<p>$$ E^\\circ_{\\text{cell}} = -0.62 \\text{ V} $$</p>\n<p>So the standard EMF of the reaction is</p>\n<p>$$ \\boxed{-0.62 \\text{ V}} $$</p>\n<p>Correct option: A.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>25&deg;C पर Pt/Fe<sup>3+</sup>, Fe<sup>2+</sup> और Pt/Sn<sup>4+</sup>, Sn<sup>2+</sup> के मानक इलेक्ट्रोड विभव (अपचयन) क्रमशः +0.77 V और 0.15 V हैं। अभिक्रिया <br/><br/>Sn<sup>4+</sup> + 2Fe<sup>2+</sup> &rarr; Sn<sup>2+</sup> + 2Fe<sup>3+</sup> का मानक EMF है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>&minus;0.62 V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>&minus;0.92 V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>+0.31 V</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>+0.85 V</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electrochemical-series-cell-and-their-emf",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mss2gwli",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which is/are correct among the following?</p><p>Given, the half cell emf's $E^0_{Cu^{+2}/Cu} = 0.337$, $E^0_{Cu^{+1}/Cu} = 0.521$</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Cu<sup>+1</sup> disproportionates</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Cu and Cu<sup>2+</sup> comproportionates.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$E^0_{Cu^{+1}/Cu^{+2}} + E^0_{Cu^{+1}/Cu}$ is positive</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>(1) and (3) Both</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The useful idea here is that $Cu^+$ can either get reduced to $Cu$ or get oxidised to $Cu^{2+}$.</p>\n<p>Given:</p>\n<p>$$ E^\\circ_{Cu^{2+}/Cu}=0.337\\text{ V} $$</p>\n<p>$$ E^\\circ_{Cu^+/Cu}=0.521\\text{ V} $$</p>\n<p>First find $E^\\circ_{Cu^{2+}/Cu^+}$.</p>\n<p>For the overall reduction,</p>\n<p>$$ Cu^{2+}+2e^- \\rightarrow Cu $$</p>\n<p>it can be written as:</p>\n<p>$$ Cu^{2+}+e^- \\rightarrow Cu^+ $$</p>\n<p>and</p>\n<p>$$ Cu^+ + e^- \\rightarrow Cu $$</p>\n<p>Using the relation based on $\\Delta G^\\circ = -nFE^\\circ$:</p>\n<p>$$ 2E^\\circ_{Cu^{2+}/Cu}=E^\\circ_{Cu^{2+}/Cu^+}+E^\\circ_{Cu^+/Cu} $$</p>\n<p>So,</p>\n<p>$$ 2(0.337)=E^\\circ_{Cu^{2+}/Cu^+}+0.521 $$</p>\n<p>$$ 0.674=E^\\circ_{Cu^{2+}/Cu^+}+0.521 $$</p>\n<p>$$ E^\\circ_{Cu^{2+}/Cu^+}=0.153\\text{ V} $$</p>\n<p>Now check disproportionation of $Cu^+$:</p>\n<p>$$ 2Cu^+ \\rightarrow Cu^{2+}+Cu $$</p>\n<p>Here,</p>\n<p>Reduction:</p>\n<p>$$ Cu^+ + e^- \\rightarrow Cu $$</p>\n<p>$$ E^\\circ_{\\text{red}}=0.521\\text{ V} $$</p>\n<p>Oxidation:</p>\n<p>$$ Cu^+ \\rightarrow Cu^{2+}+e^- $$</p>\n<p>For the reverse of $Cu^{2+}/Cu^+$,</p>\n<p>$$ E^\\circ_{\\text{ox}}=-0.153\\text{ V} $$</p>\n<p>So,</p>\n<p>$$ E^\\circ_{\\text{cell}}=0.521-0.153 $$</p>\n<p>$$ E^\\circ_{\\text{cell}}=0.368\\text{ V} $$</p>\n<p>Since $E^\\circ_{\\text{cell}}$ is positive, $Cu^+$ disproportionates.</p>\n<p>So option A is correct.</p>\n<p>Now for comproportionation:</p>\n<p>$$ Cu+Cu^{2+}\\rightarrow 2Cu^+ $$</p>\n<p>This is just the reverse of disproportionation, so its $E^\\circ_{\\text{cell}}$ will be negative:</p>\n<p>$$ E^\\circ_{\\text{cell}}=-0.368\\text{ V} $$</p>\n<p>So it is not spontaneous. Option B is incorrect.</p>\n<p>Also,</p>\n<p>$$ E^\\circ_{Cu^+/Cu^{2+}}+E^\\circ_{Cu^+/Cu} = (-0.153)+0.521 $$</p>\n<p>$$ =0.368\\text{ V} $$</p>\n<p>which is positive. So option C is also correct.</p>\n<p>Hence, the correct statements are A and C.</p>\n<p>So the correct choice is option D: (1) and (3) both.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से कौन सा/से सही है/हैं?</p><p>दिया गया है, अर्ध सेल emf $E^0_{Cu^{+2}/Cu} = 0.337$, $E^0_{Cu^{+1}/Cu} = 0.521$</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Cu<sup>+1</sup> असमानुपातित होता है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Cu और Cu<sup>2+</sup> समानुपातित होते हैं।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$E^0_{Cu^{+1}/Cu^{+2}} + E^0_{Cu^{+1}/Cu}$ धनात्मक है</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>(1) और (3) दोनों</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electrochemical-series-cell-and-their-emf",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mss2mwks",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>How much will the reduction potential of a hydrogen electrode change when its solution initially at pH = 0 is neutralised to pH = 7 at 25&deg;C?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Increases by 0.059 V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Decreases by 0.059 V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Increases by 0.41 V</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Decreases by 0.41 V</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For the hydrogen electrode, the reduction reaction is</p>\n<p>$$ 2H^+ + 2e^- \\rightarrow H_2 $$</p>\n<p>At $25^\\circ \\text{C}$, using the Nernst equation:</p>\n<p>$$ E = E^\\circ - \\frac{0.059}{2}\\log \\frac{P_{H_2}}{[H^+]^2} $$</p>\n<p>For a standard hydrogen electrode, $E^\\circ = 0$ and usually $P_{H_2} = 1$ atm.</p>\n<p>So,</p>\n<p>$$ E = - \\frac{0.059}{2}\\log \\frac{1}{[H^+]^2} $$</p>\n<p>This simplifies to</p>\n<p>$$ E = -0.059 \\, \\text{pH} $$</p>\n<p>Initially, pH $= 0$:</p>\n<p>$$ E_1 = -0.059 \\times 0 = 0 \\text{ V} $$</p>\n<p>After neutralisation, pH $= 7$:</p>\n<p>$$ E_2 = -0.059 \\times 7 $$</p>\n<p>$$ E_2 = -0.413 \\text{ V} $$</p>\n<p>So the reduction potential changes from $0$ V to about $-0.41$ V.</p>\n<p>Hence, the reduction potential decreases by $0.41$ V.</p>\n<p>The correct option is:</p>\n<p>$$ \\boxed{\\text{Option D: Decreases by } 0.41 \\text{ V}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>25&deg;C पर हाइड्रोजन इलेक्ट्रोड के अपचयन विभव में कितना परिवर्तन होगा जब इसके विलयन को प्रारम्भिक pH = 0 से pH = 7 तक उदासीन किया जाता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.059 V से बढ़ता है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.059 V से घटता है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.41 V से बढ़ता है</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.41 V से घटता है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mss5d72q",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In the given figure, the electrolytic cell contains 1 L of an aqueous 1 M Copper (II) sulphate solution. If 0.4 mole of electrons are passed through the cell, the concentration of copper ions after passage of the charge will be :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mss558pz%2F9d19ef21-561f-4314-8cdb-3806a3240e30%2F87d1f770-976d-11f1-9c23-4d69e2abc438%2Ffile-6y3zli1mss558q0.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mss558pz%2F9d19ef21-561f-4314-8cdb-3806a3240e30%2F87d1f770-976d-11f1-9c23-4d69e2abc438%2Ffile-6y3zli1mss558q0.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.4 M</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.8 M</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.0 M</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1.2 M</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>We are given:</p>\n<p>• Volume of CuSO$_4$ solution = 1 L</p>\n<p>• Initial concentration of Cu$^{2+}$ = 1 M</p>\n<p>• Moles of electrons passed = 0.4 mol</p>\n<p>We have to find the concentration of copper ions; for that, we have to do the following steps:</p>\n\n<p>Initial moles of Cu$^{2+}$ = Molarity × Volume = $1 \\times 1 = 1$ mol</p>\n\n<p>Anode (Oxidation): $\\mathrm{Cu(s)} \\rightarrow \\mathrm{Cu}^{2+} + 2e^{-}$</p>\n<p>Cathode (Reduction): $\\mathrm{Cu}^{2+} + 2e^{-} \\rightarrow \\mathrm{Cu(s)}$</p>\n\n<p>From the reactions, $2$ mol of electrons correspond to $1$ mol of Cu$^{2+}$.</p>\n\n<p>Moles of $\\mathrm{Cu}^{2+}$ formed at the anode = $0.4/2 = 0.2$ mol</p>\n<p>Moles of $\\mathrm{Cu}^{2+}$ consumed at the cathode = $0.4/2 = 0.2$ mol</p>\n<p>Thus, the increase in $\\mathrm{Cu}^{2+}$ concentration at the anode is exactly equal to the decrease at the cathode.</p>\n<p>Net change in moles of $\\mathrm{Cu}^{2+}$ = $0$</p>\n\n<p>Final moles of $\\mathrm{Cu}^{2+}$ = $1$ mol</p>\n<p>Final concentration = $1/1 = 1.0\\ \\mathrm{M}$</p>\n<p>Since the concentration of $\\mathrm{Cu}^{2+}$ after passing the charge remains $1.0\\ \\mathrm{M}$, our answer is C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दी गई आकृति में, विद्युत अपघटनी सेल में 1 M कॉपर (II) सल्फेट जलीय विलयन का 1 L है। यदि सेल से 0.4 मोल इलेक्ट्रॉन प्रवाहित किए जाते हैं, तो आवेश प्रवाहित होने के बाद कॉपर आयनों की सांद्रता होगी :</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mss558pz%2F9d19ef21-561f-4314-8cdb-3806a3240e30%2F87d1f770-976d-11f1-9c23-4d69e2abc438%2Ffile-6y3zli1mss558q0.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mss558pz%2F9d19ef21-561f-4314-8cdb-3806a3240e30%2F87d1f770-976d-11f1-9c23-4d69e2abc438%2Ffile-6y3zli1mss558q0.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.4 M</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.8 M</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.0 M</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1.2 M</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "faradays-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms0fwfvy",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Indicator electrode is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>SHE</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Calomel electrode</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Ag/AgCl electrode</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Quinhydrone electrode</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The correct answer is:</p>\n<p>Option D: Quinhydrone electrode</p>\n<p>An indicator electrode is an electrode whose potential changes according to the concentration of the ion being measured.</p>\n<p>The quinhydrone electrode is used to find the hydrogen ion concentration, or pH, of a solution. Its potential depends on the concentration of $H^+$ ions, so it acts as an indicator electrode.</p>\n<p>The other electrodes are mainly reference electrodes:</p>\n<ul>\n<li><p>SHE: Standard hydrogen electrode, a primary reference electrode</p></li>\n<li><p>Calomel electrode: reference electrode</p></li>\n<li><p>Ag/AgCl electrode: reference electrode</p></li>\n</ul>\n<p>So, the indicator electrode is:</p>\n<p>$$\\boxed{\\text{Quinhydrone electrode}}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>सूचक इलेक्ट्रोड है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>SHE</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>कैलोमेल इलेक्ट्रोड</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Ag/AgCl इलेक्ट्रोड</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>क्विनहाइड्रोन इलेक्ट्रोड</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electrode-potential",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mss51cik",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Zn + Cu<sup>2+</sup>(aq) &harr; Cu + Zn<sup>2+</sup>(aq) Reaction quotient is Q = $ \\frac{[\\text{Zn}^{2+}]}{[\\text{Cu}^{2+}]} $</p>\n<p>$ E^\\circ_{\\text{cell}} = 1.10 $ V.  $ E_{\\text{cell}} $ will be 1.1591 V when :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mss4y791%2F103b024b-859d-4a3b-b6bb-e6418406657e%2Fc4052650-976c-11f1-9c23-4d69e2abc438%2Ffile-6y3zli1mss4y792.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mss4y791%2F103b024b-859d-4a3b-b6bb-e6418406657e%2Fc4052650-976c-11f1-9c23-4d69e2abc438%2Ffile-6y3zli1mss4y792.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>[Cu<sup>2+</sup>]/[Zn<sup>2+</sup>] = 0.01</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>[Zn<sup>2+</sup>]/[Cu<sup>2+</sup>] = 0.01</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>[Zn<sup>2+</sup>]/[Cu<sup>2+</sup>] = 0.1</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>[Zn<sup>2+</sup>]/[Cu<sup>2+</sup>] = 1</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>We are given the reaction:</p>\n<p>$\\mathrm{Zn}+\\mathrm{Cu}^{2+}(\\mathrm{aq}) \\rightleftharpoons \\mathrm{Cu}+\\mathrm{Zn}^{2+}(\\mathrm{aq})$</p>\n<p>The reaction quotient is:</p>\n<p>$\\mathrm{Q}=\\left[\\mathrm{Zn}^{2+}\\right] /\\left[\\mathrm{Cu}^{2+}\\right]$</p>\n<p>Also,</p>\n<p>$$ \\begin{aligned} & \\mathrm{E}^{\\circ} \\text { cell }=1.10 \\mathrm{~V} \\\\ & \\text { Ecell }=1.1591 \\mathrm{~V} \\end{aligned} $$</p>\n<p>We use the Nernst equation:</p>\n<p>Ecell $=\\mathrm{E}^{\\circ}$ cell $-(0.0591 / \\mathrm{n}) \\log \\mathrm{Q}$</p>\n<p>In this reaction, zinc loses 2 electrons and copper ions gain 2 electrons. So, $\\mathrm{n}=2$.</p>\n<p>Substitute the values in the equation:</p>\n<p>$1.1591=1.10-(0.0591 / 2) \\log Q$</p>\n<p>Now simplify:</p>\n<p>$1.1591-1.10=-0.02955 \\log Q$</p>\n<p>$0.0591=-0.02955 \\log Q$</p>\n<p>So, $\\log Q=-2$</p>\n<p>Hence,</p>\n<p>$\\mathrm{Q}=10^{-2}=0.01$</p>\n<p>But we know:</p>\n<p>$\\mathrm{Q}=\\left[\\mathrm{Zn}^{2+}\\right] /\\left[\\mathrm{Cu}^{2+}\\right]$</p>\n<p>So,</p>\n<p>$\\left[\\mathrm{Zn}^{2+}\\right] /\\left[\\mathrm{Cu}^{2+}\\right]=0.01$</p>\n<p>This matches option B.</p>\n<p>Answer: B</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Zn + Cu<sup>2+</sup>(aq) &harr; Cu + Zn<sup>2+</sup>(aq) अभिक्रिया भागफल (Reaction quotient) Q = $ \\frac{[\\text{Zn}^{2+}]}{[\\text{Cu}^{2+}]} $ है</p>\n<p>$ E^\\circ_{\\text{cell}} = 1.10 $ V.  $ E_{\\text{cell}} $ 1.1591 V होगा जब :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mss4y791%2F103b024b-859d-4a3b-b6bb-e6418406657e%2Fc4052650-976c-11f1-9c23-4d69e2abc438%2Ffile-6y3zli1mss4y792.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mss4y791%2F103b024b-859d-4a3b-b6bb-e6418406657e%2Fc4052650-976c-11f1-9c23-4d69e2abc438%2Ffile-6y3zli1mss4y792.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>[Cu<sup>2+</sup>]/[Zn<sup>2+</sup>] = 0.01</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>[Zn<sup>2+</sup>]/[Cu<sup>2+</sup>] = 0.01</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>[Zn<sup>2+</sup>]/[Cu<sup>2+</sup>] = 0.1</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>[Zn<sup>2+</sup>]/[Cu<sup>2+</sup>] = 1</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mss5lxgw",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the following Galvanic cell as shown in the figure. By what value will the cell voltage change when the concentration of ions in anodic and cathodic compartments is both increased by a factor of 10 at 298K?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mss5gk1z%2Fd6a075ca-fd23-42b0-9690-8d05fd4cbcec%2Fc279b970-976e-11f1-9c23-4d69e2abc438%2Ffile-6y3zli1mss5gk20.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mss5gk1z%2Fd6a075ca-fd23-42b0-9690-8d05fd4cbcec%2Fc279b970-976e-11f1-9c23-4d69e2abc438%2Ffile-6y3zli1mss5gk20.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>+0.591 V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>–0.0591 V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>–0.1182 V</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0 V</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For this cell, the Nernst equation contains the product $[\\mathrm{H}^{+}][\\mathrm{Cl}^{-}]$ in the logarithm.</p>\n<p>$\\begin{aligned} & E_{\\text {cell }}=E_{\\text {cell }}^{\\circ}-\\frac{0.0591}{1} \\log _{10}\\left[\\mathrm{H}^{+}\\right]\\left[\\mathrm{Cl}^{-}\\right] \\quad \\text { and } \\quad E_{\\text {cell }}^{\\prime}=E_{\\text {cell }}^{\\circ}-\\frac{0.0591}{1} \\log _{10} 100\\left[\\mathrm{H}^{+}\\right]\\left[\\mathrm{Cl}^{-}\\right] \\\\ & E_{\\text {cell }}^{\\prime}-E_{\\text {cell }}=-2 \\times 0.0591=-0.1182 .\\end{aligned}$</p>\n<p>Both ion concentrations are increased by a factor of $10$. So the product $[\\mathrm{H}^{+}][\\mathrm{Cl}^{-}]$ becomes $10 \\times 10 = 100$ times the original product.</p>\n<p>Since $\\log_{10}100=2$, the cell voltage decreases by $2 \\times 0.0591 = 0.1182 \\text{ V}$.</p>\n<p>So, the change in cell voltage is $-0.1182 \\text{ V}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दर्शाए गए निम्नलिखित गैल्वेनिक सेल पर विचार कीजिए। 298K पर जब एनोडिक और कैथोडिक कक्षों दोनों में आयनों की सांद्रता को 10 के गुणक से बढ़ा दिया जाता है, तो सेल विभव में कितने मान का परिवर्तन होगा?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mss5gk1z%2Fd6a075ca-fd23-42b0-9690-8d05fd4cbcec%2Fc279b970-976e-11f1-9c23-4d69e2abc438%2Ffile-6y3zli1mss5gk20.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mss5gk1z%2Fd6a075ca-fd23-42b0-9690-8d05fd4cbcec%2Fc279b970-976e-11f1-9c23-4d69e2abc438%2Ffile-6y3zli1mss5gk20.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>+0.591 V</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>–0.0591 V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>–0.1182 V</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0 V</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mss5xlyl",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In a cell that utilise the reaction: <b>Zn (s) + 2H<sup>+</sup> (0.1M) &rarr; Zn<sup>2+</sup> (aq) + H<sub>2</sub> (g)</b> addition of 0.1 M H<sub>2</sub>SO<sub>4</sub> to cathode compartment will :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>increase the cell emf and shift equilibrium to the left.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>lower the cell emf and shift equilibrium to the right.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>increase the cell emf and shift equilibrium to the right.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>lower the cell emf and shift equilibrium to the left.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The given cell reaction is:</p>\n<p>$$Zn(s) + 2H^+(aq) \\rightleftharpoons Zn^{2+}(aq) + H_2(g)$$</p>\n<ul>\n<li><p><strong>Addition of $H_2SO_4$:</strong> $H_2SO_4$ is a strong electrolyte that dissociates completely in water to give $H^+$ and $SO_4^{2-}$ ions.</p></li>\n<li><p>Adding 0.1 M $H_2SO_4$ to the cathode compartment increases the concentration of reactant $H^+$ ions.</p></li>\n<li><p>If the concentration of a reactant is increased, the system counteracts the change by consuming the added reactant. Therefore, the equilibrium will <strong>shift to the right</strong> (forward direction).</p></li>\n</ul>\n\n<p>According to the Nernst equation for the given reaction at 298 K:</p>\n<p>$$E_{cell} = E^\\circ_{cell} - \\frac{0.0591}{n} \\log \\frac{[Zn^{2+}][P_{H_2}]}{[H^+]^2}$$</p>\n<p>Here, $n = 2$ (since 2 electrons are exchanged).</p>\n<ul>\n<li><p>The concentration of $H^+$ ions ($[H^+]$) is in the denominator of the logarithmic term.</p></li>\n<li><p>When we add $H_2SO_4$, the $[H^+]$ increases.</p></li>\n<li><p>As the denominator $[H^+]^2$ increases, the overall value of the reaction quotient $Q = \\frac{[Zn^{2+}][P_{H_2}]}{[H^+]^2}$ decreases.</p></li>\n<li><p>Consequently, the value being subtracted from $E^\\circ_{cell}$ becomes smaller, which means the <strong>overall cell EMF ($E_{cell}$) increases</strong>.</p></li>\n</ul>\n<p><strong>Conclusion:</strong> The addition of 0.1 M $H_2SO_4$ will increase the cell emf and shift the equilibrium to the right.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक सेल में जो इस अभिक्रिया का उपयोग करता है: <b>Zn (s) + 2H<sup>+</sup> (0.1M) &rarr; Zn<sup>2+</sup> (aq) + H<sub>2</sub> (g)</b> कैथोड कक्ष में 0.1 M H<sub>2</sub>SO<sub>4</sub> मिलाने पर :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>सेल emf बढ़ जाएगा और साम्य बाईं ओर विस्थापित हो जाएगा।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>सेल emf कम हो जाएगा और साम्य दाईं ओर विस्थापित हो जाएगा।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>सेल emf बढ़ जाएगा और साम्य दाईं ओर विस्थापित हो जाएगा।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>सेल emf कम हो जाएगा और साम्य बाईं ओर विस्थापित हो जाएगा।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mss6pexn",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Given below are two statements.</p>\n<p><b>Statement I :</b> In the reaction of copper with nitric acid, Cu is oxidised to $\\mathrm{Cu}^{2+}$ ion by nitrate ion.</p>\n<p><b>Statement II :</b> The reduction potential half cell will be negative if $p\\left(\\mathrm{H}_2\\right)=1 \\mathrm{~atm}$ and $\\left[\\mathrm{H}^{+}\\right]=2.0 \\mathrm{M}$.</p>\n<p>In the light of the above statement choose the correct answer from the options given below.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "Both Statement I and Statement II are correct."
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "Both Statement I and Statement II are incorrect."
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "Statement I is correct but Statement II is incorrect."
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "Statement I is incorrect but Statement II is correct."
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<ul>\n<li><p><strong>Statement:</strong> In the reaction of copper with nitric acid, $\\text{Cu}$ is oxidised to $\\text{Cu}^{2+}$ ion by nitrate ion.</p></li>\n<li><p><strong>Analysis:</strong> Copper reacts with both dilute and concentrated nitric acid. In both cases, nitric acid acts as an oxidizing agent.</p></li>\n<li><p>With dilute $\\text{HNO}_3$:</p></li>\n</ul>\n<p>$$3\\text{Cu} + 8\\text{HNO}_3 \\rightarrow 3\\text{Cu}(\\text{NO}_3)_2 + 2\\text{NO} + 4\\text{H}_2\\text{O}$$</p>\n<ul>\n<li>With concentrated $\\text{HNO}_3$:</li>\n</ul>\n<p>$$\\text{Cu} + 4\\text{HNO}_3 \\rightarrow \\text{Cu}(\\text{NO}_3)_2 + 2\\text{NO}_2 + 2\\text{H}_2\\text{O}$$</p>\n<ul>\n<li><p>In these reactions, copper ($\\text{Cu}$) goes from an oxidation state of $0$ to $+2$ ($\\text{Cu}^{2+}$), and the nitrate ion ($\\text{NO}_3^-$) is the species getting reduced (to $\\text{NO}$ or $\\text{NO}_2$), thereby oxidizing the copper.</p></li>\n<li><p><strong>Conclusion:</strong> Statement I is <strong>correct</strong>.</p></li>\n</ul>\n\n<ul>\n<li><p><strong>Statement:</strong> The reduction potential half cell will be negative if $p(\\text{H}_2) = 1 \\text{ atm}$ and $[\\text{H}^+] = 2.0 \\text{ M}$.</p></li>\n<li><p><strong>Analysis:</strong> We use the Nernst equation for the hydrogen reduction half-reaction:</p></li>\n</ul>\n<p>$$2\\text{H}^+ + 2e^- \\rightarrow \\text{H}_2(g)$$</p>\n<ul>\n<li>The Nernst equation for reduction potential is:</li>\n</ul>\n<p>$$E = E^\\circ - \\frac{0.059}{n} \\log \\frac{P_{\\text{H}_2}}{[\\text{H}^+]^2}$$</p>\n<ul>\n<li>Given $E^\\circ = 0 \\text{ V}$ for the Standard Hydrogen Electrode, $n = 2$, $P_{\\text{H}_2} = 1 \\text{ atm}$, and $[\\text{H}^+] = 2.0 \\text{ M}$:</li>\n</ul>\n<p>$$E = 0 - \\frac{0.059}{2} \\log \\frac{1}{(2.0)^2}$$</p>\n<p>$$E = - \\frac{0.059}{2} \\log \\left(\\frac{1}{4}\\right)$$</p>\n<p>$$E = - \\frac{0.059}{2} (\\log 1 - \\log 4)$$</p>\n<p>$$E = - \\frac{0.059}{2} (0 - 0.602)$$</p>\n<p>$$E = + \\frac{0.059 \\times 0.602}{2}$$</p>\n<ul>\n<li><p>The calculated reduction potential $E$ comes out to be <strong>positive</strong> ($\\approx +0.0177 \\text{ V}$), not negative.</p></li>\n<li><p><strong>Conclusion:</strong> Statement II is <strong>incorrect</strong>.</p></li>\n</ul>\n<p><strong>Correct Option:</strong></p>\n<p><strong>Option C:</strong> Statement I is correct but Statement II is incorrect.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>नीचे दो कथन दिए गए हैं:</p><p><b>कथन I :</b> नाइट्रिक अम्ल के साथ कॉपर की अभिक्रिया में, नाइट्रेट आयन द्वारा Cu को $\\mathrm{Cu}^{2+}$ आयन में ऑक्सीकृत किया जाता है।</p><p><b>कथन II :</b> यदि $p\\left(\\mathrm{H}_2\\right)=1 \\mathrm{~atm}$ और $\\left[\\mathrm{H}^{+}\\right]=2.0 \\mathrm{M}$ है, तो अर्ध सेल का अपचयन विभव ऋणात्मक होगा।</p><p>उपर्युक्त कथनों के आलोक में, नीचे दिए गए विकल्पों में से सही उत्तर चुनें।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "कथन I और कथन II दोनों सही हैं।"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "कथन I और कथन II दोनों गलत हैं।"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "कथन I सही है लेकिन कथन II गलत है।"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "कथन I गलत है लेकिन कथन II सही है।"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mss6dgyf",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the cell, Pt | H<sub>2</sub> (g) | H<sup>+</sup> (aq) || Cu<sup>2+</sup> (aq) | Cu (s); $E^\\circ_{\\mathrm{Cu}/\\mathrm{Cu}^{2+}} = -0.34\\ \\text{V}$.</p><p>Then calculate approximate value of $K_{\\mathrm{eq}}$?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$5 \\times 10^{12}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\times 10^{11}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2 \\times 10^{-11}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$5 \\times 10^{-12}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For the cell</p>\n<p>$$ \\text{Pt} \\mid \\text{H}_2(g) \\mid \\text{H}^+(aq) \\parallel \\text{Cu}^{2+}(aq) \\mid \\text{Cu}(s) $$</p>\n<p>the left side is the hydrogen electrode and the right side is the copper electrode.</p>\n<p>The standard electrode potential of hydrogen electrode is</p>\n<p>$$ E^\\circ_{\\text{H}^+/\\text{H}_2}=0 $$</p>\n<p>Given:</p>\n<p>$$ E^\\circ_{\\text{Cu}/\\text{Cu}^{2+}}=-0.34\\ \\text{V} $$</p>\n<p>This is for oxidation of copper. So for reduction,</p>\n<p>$$ E^\\circ_{\\text{Cu}^{2+}/\\text{Cu}}=+0.34\\ \\text{V} $$</p>\n<p>So the standard emf of the cell is</p>\n<p>$$ E^\\circ_{\\text{cell}}=E^\\circ_{\\text{cathode}}-E^\\circ_{\\text{anode}} $$</p>\n<p>$$ E^\\circ_{\\text{cell}}=0.34-0=0.34\\ \\text{V} $$</p>\n<p>The cell reaction is</p>\n<p>$$ \\text{H}_2(g)+\\text{Cu}^{2+}(aq)\\rightarrow 2\\text{H}^+(aq)+\\text{Cu}(s) $$</p>\n<p>Here, number of electrons exchanged is</p>\n<p>$$ n=2 $$</p>\n<p>At $298\\ \\text{K}$,</p>\n<p>$$ \\log K_{\\text{eq}}=\\frac{nE^\\circ_{\\text{cell}}}{0.0591} $$</p>\n<p>Substitute the values:</p>\n<p>$$ \\log K_{\\text{eq}}=\\frac{2\\times 0.34}{0.0591} $$</p>\n<p>$$ \\log K_{\\text{eq}}\\approx 11.5 $$</p>\n<p>So,</p>\n<p>$$ K_{\\text{eq}}\\approx 10^{11.5} $$</p>\n<p>$$ K_{\\text{eq}}\\approx 3\\times 10^{11} $$</p>\n<p>The closest option is</p>\n<p>$$ \\boxed{2\\times 10^{11}} $$</p>\n<p>So the correct answer is Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>सेल, Pt | H<sub>2</sub> (g) | H<sup>+</sup> (aq) || Cu<sup>2+</sup> (aq) | Cu (s); $E^\\circ_{\\mathrm{Cu}/\\mathrm{Cu}^{2+}} = -0.34\\ \\text{V}$ के लिए,</p><p>तब $K_{\\mathrm{eq}}$ के अनुमानित मान की गणना करें?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$5 \\times 10^{12}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2 \\times 10^{11}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2 \\times 10^{-11}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$5 \\times 10^{-12}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electrochemical-series-cell-and-their-emf",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mss6gupv",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Cost of electricity for the production of 'X' litre H<sub>2</sub> at NTP at cathode is Rs. X. Then cost of electricity for the production 'X' litre O<sub>2</sub> gas at NTP at anode will: (assume 1 mole of electrons as one unit of electricity)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2X</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>4X</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>16X</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>32X</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<ul>\n<li><strong>At Cathode (Reduction of Hydrogen):</strong></li>\n</ul>\n<p>$2H^+ + 2e^- \\rightarrow H_2$</p>\n<p>This shows that $2 \\text{ moles}$ of electrons ($2 \\text{ F}$) are required to produce $1 \\text{ mole}$ of $H_2$ gas.</p>\n<ul>\n<li><strong>At Anode (Oxidation of Water to Oxygen):</strong></li>\n</ul>\n<p>$2H_2O \\rightarrow O_2 + 4H^+ + 4e^-$</p>\n<p>This shows that $4 \\text{ moles}$ of electrons ($4 \\text{ F}$) are required to produce $1 \\text{ mole}$ of $O_2$ gas.</p>\n\n<p>At NTP, $1 \\text{ mole}$ of any ideal gas occupies $22.4 \\text{ L}$.</p>\n<ul>\n<li><p>To produce $22.4 \\text{ L}$ of $H_2$, we need $2 \\text{ moles}$ of electrons.</p></li>\n<li><p>To produce $X \\text{ L}$ of $H_2$, the moles of electrons required $= \\frac{2 \\times X}{22.4} = \\frac{X}{11.2}$ moles.</p></li>\n</ul>\n\n<p>We are given that the cost to produce $X \\text{ L}$ of $H_2$ (which uses $\\frac{X}{11.2}$ moles of electrons) is Rs. $X$.</p>\n<ul>\n<li>Cost per mole of electron $= \\frac{\\text{Total Cost}}{\\text{Moles of Electrons}} = \\frac{X}{\\frac{X}{11.2}} = \\text{Rs. } 11.2$</li>\n</ul>\n\n<p>Now, we need to produce $X \\text{ L}$ of $O_2$ gas.</p>\n<ul>\n<li><p>To produce $22.4 \\text{ L}$ of $O_2$, we need $4 \\text{ moles}$ of electrons.</p></li>\n<li><p>To produce $X \\text{ L}$ of $O_2$, the moles of electrons required $= \\frac{4 \\times X}{22.4} = \\frac{X}{5.6}$ moles.</p></li>\n</ul>\n<p>Finally, calculate the cost using the rate we found in Step 3:</p>\n<ul>\n<li><p>$\\text{Total Cost for } O_2 = (\\text{Moles of electrons needed}) \\times (\\text{Cost per mole})$</p></li>\n<li><p>$\\text{Total Cost} = \\frac{X}{5.6} \\times 11.2 = \\mathbf{2X}$</p></li>\n</ul>\n<p><strong>Correct Option:</strong> <strong>A (2X)</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>कैथोड पर NTP पर 'X' लीटर H<sub>2</sub> के उत्पादन के लिए बिजली की लागत X रुपये है। तो एनोड पर NTP पर 'X' लीटर O<sub>2</sub> गैस के उत्पादन के लिए बिजली की लागत क्या होगी: (मान लें कि 1 मोल इलेक्ट्रॉन बिजली की एक इकाई है)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2X</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>4X</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>16X</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>32X</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "faradays-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mss6up5r",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Given below are two statements, one is labelled as and other is Assertion (A) and Reason (R).</p>\n<p><b>Assertion (A)</b> Conductivity always decreases with decrease in concentration of both weak and strong electrolytes.</p>\n<p><b>Reason (R)</b> The number ions per unit volume that carry the current in a solution decreases on dilution.</p>\n<p>In the light of the above statements choose the correct answer from the options given below.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Both (A) and (R) are true and (R) is the correct explanation of (A).</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Both (A) and (R) are true but (R) is not the correct explanation of (A).</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>(A) is true but (R) is false.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>(A) is false but (R) is true.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<ul>\n<li><p><strong>Statement:</strong> Conductivity always decreases with decrease in concentration of both weak and strong electrolytes.</p></li>\n<li><p><strong>Analysis:</strong> Conductivity (also known as specific conductance, $\\kappa$) is defined as the conductance of one unit volume (e.g., $1 \\text{ cm}^3$) of the solution. When the concentration decreases (which means the solution is diluted), the volume of the solution increases. Even though the total number of ions might increase (especially for weak electrolytes due to higher degree of dissociation), the volume increases at a much faster rate. As a result, the number of current-carrying ions per unit volume decreases.</p></li>\n<li><p><strong>Conclusion:</strong> Therefore, conductivity always decreases with a decrease in concentration for both weak and strong electrolytes. Assertion (A) is <strong>True</strong>.</p></li>\n</ul>\n\n<ul>\n<li><p><strong>Statement:</strong> The number of ions per unit volume that carry the current in a solution decreases on dilution.</p></li>\n<li><p><strong>Analysis:</strong> As explained above, this is the exact fundamental reason why conductivity drops when a solution is diluted.</p></li>\n<li><p><strong>Conclusion:</strong> Reason (R) is <strong>True</strong> and it is the <strong>correct explanation</strong> for Assertion (A).</p></li>\n</ul>\n<p><strong>Correct Option:</strong></p>\n<p><strong>Option A:</strong> Both (A) and (R) are true and (R) is the correct explanation of (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>नीचे दो कथन दिए गए हैं: एक को अभिकथन (A) और दूसरे को कारण (R) कहा गया है।</p><p><b>अभिकथन (A)</b> दुर्बल और प्रबल दोनों विद्युत अपघट्यों की सांद्रता में कमी के साथ चालकता हमेशा घटती है।</p><p><b>कारण (R)</b> तनुकरण करने पर किसी विलयन में विद्युत धारा ले जाने वाले प्रति इकाई आयतन आयनों की संख्या घट जाती है।</p><p>उपर्युक्त कथनों के आलोक में, नीचे दिए गए विकल्पों में से सही उत्तर का चयन कीजिए।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>(A) और (R) दोनों सत्य हैं और (R), (A) की सही व्याख्या है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>(A) और (R) दोनों सत्य हैं परंतु (R), (A) की सही व्याख्या नहीं है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>(A) सत्य है परंतु (R) असत्य है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>(A) असत्य है परंतु (R) सत्य है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electrical-conductance",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mss6zrdv",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Molar conductances of BaCl<sub>2</sub>, H<sub>2</sub>SO<sub>4</sub> and HCl at infinite dilutions are $x_1$, $x_2$ and $x_3$, respectively.</p><p>Equivalent conductance of BaSO<sub>4</sub> at infinite dilution will be:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{x_1 + x_2 - x_3}{2} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{x_1 - x_2 - x_3}{2} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2 (x_1 + x_2 - 2x_3)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{x_1 + x_2 - 2x_3}{2} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>We are given the molar conductivities at infinite dilution ($\\Lambda^\\circ_m$) for the following strong electrolytes:</p>\n<ul>\n<li><p>$\\Lambda^\\circ_m(\\text{BaCl}_2) = x_1$</p></li>\n<li><p>$\\Lambda^\\circ_m(\\text{H}_2\\text{SO}_4) = x_2$</p></li>\n<li><p>$\\Lambda^\\circ_m(\\text{HCl}) = x_3$</p></li>\n</ul>\n\n<p>According to Kohlrausch's law, the molar conductivity of an electrolyte at infinite dilution can be expressed as the sum of the individual contributions of its anions and cations.</p>\n<p>To find $\\Lambda^\\circ_m(\\text{BaSO}_4)$, we need the molar ionic conductivities of $\\text{Ba}^{2+}$ and $\\text{SO}_4^{2-}$:</p>\n<p>$$\\Lambda^\\circ_m(\\text{BaSO}_4) = \\lambda^\\circ_m(\\text{Ba}^{2+}) + \\lambda^\\circ_m(\\text{SO}_4^{2-})$$</p>\n<p>We can obtain this by algebraically manipulating the given electrolytes:</p>\n<ul>\n<li><p>$\\text{BaCl}_2$ gives us $\\text{Ba}^{2+}$ and $2\\text{Cl}^-$</p></li>\n<li><p>$\\text{H}_2\\text{SO}_4$ gives us $2\\text{H}^+$ and $\\text{SO}_4^{2-}$</p></li>\n<li><p>$\\text{HCl}$ gives us $\\text{H}^+$ and $\\text{Cl}^-$</p></li>\n</ul>\n<p>By adding the molar conductances of $\\text{BaCl}_2$ and $\\text{H}_2\\text{SO}_4$, we get the desired ions but with extra $2\\text{H}^+$ and $2\\text{Cl}^-$ ions:</p>\n<p>$$x_1 + x_2 = [\\lambda^\\circ_m(\\text{Ba}^{2+}) + 2\\lambda^\\circ_m(\\text{Cl}^-)] + [2\\lambda^\\circ_m(\\text{H}^+) + \\lambda^\\circ_m(\\text{SO}_4^{2-})]$$</p>\n<p>To remove the extra $2\\text{H}^+$ and $2\\text{Cl}^-$ ions, we must subtract $2 \\times \\Lambda^\\circ_m(\\text{HCl})$:</p>\n<p>$$\\Lambda^\\circ_m(\\text{BaSO}_4) = \\Lambda^\\circ_m(\\text{BaCl}_2) + \\Lambda^\\circ_m(\\text{H}_2\\text{SO}_4) - 2\\Lambda^\\circ_m(\\text{HCl})$$</p>\n<p>$$\\Lambda^\\circ_m(\\text{BaSO}_4) = x_1 + x_2 - 2x_3$$</p>\n\n<p>The relationship between equivalent conductance ($\\Lambda^\\circ_{eq}$) and molar conductance ($\\Lambda^\\circ_m$) for a salt is:</p>\n<p>$$\\Lambda^\\circ_{eq} = \\frac{\\Lambda^\\circ_m}{n\\text{-factor}}$$</p>\n<p>For $\\text{BaSO}_4$, the total positive charge on the cation ($\\text{Ba}^{2+}$) or the total negative charge on the anion ($\\text{SO}_4^{2-}$) is $2$. Therefore, the $n\\text{-factor}$ is $2$.</p>\n<p>$$\\Lambda^\\circ_{eq}(\\text{BaSO}_4) = \\frac{\\Lambda^\\circ_m(\\text{BaSO}_4)}{2}$$</p>\n<p>$$\\Lambda^\\circ_{eq}(\\text{BaSO}_4) = \\frac{x_1 + x_2 - 2x_3}{2}$$</p>\n<p><strong>Correct Option:</strong></p>\n<p><strong>Option D:</strong> $\\frac{x_1 + x_2 - 2x_3}{2}$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अनंत तनुता पर BaCl<sub>2</sub>, H<sub>2</sub>SO<sub>4</sub> और HCl की मोलर चालकताएँ क्रमशः $x_1$, $x_2$ और $x_3$ हैं।</p><p>अनंत तनुता पर BaSO<sub>4</sub> की तुल्यांकी चालकता होगी:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{x_1 + x_2 - x_3}{2} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{x_1 - x_2 - x_3}{2} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2 (x_1 + x_2 - 2x_3)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{x_1 + x_2 - 2x_3}{2} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "kohlrausch-law-and-its-application",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mss7ozlm",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Copper can be deposited from acidified copper sulphate and alkaline cuprous cyanide. If the same current is passed for a definite time</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>the amount of copper deposited from acidic copper sulphate will be higher</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>the amount of copper deposited from alkaline cuprous cyanide will be higher</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>the same amount of copper will be deposited</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>copper will not deposit in either case</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Faraday's Second Law of Electrolysis states that when the same quantity of electricity is passed through different electrolytes, the mass of the substances deposited is directly proportional to their equivalent weights.</p>\n<p>$$W \\propto E$$</p>\n<p>Where $W$ is the mass deposited and $E$ is the equivalent weight.</p>\n<p>$$E = \\frac{\\text{Atomic Mass}}{n\\text{-factor}}$$</p>\n\n<p>In copper sulphate ($\\text{CuSO}_4$), copper exists in the $+2$ oxidation state (cupric ion).</p>\n<p>$$\\text{Cu}^{2+} + 2e^- \\rightarrow \\text{Cu}$$</p>\n<ul>\n<li><p>The $n\\text{-factor}$ for this reduction is $2$.</p></li>\n<li><p>Equivalent weight ($E_1$) $= \\frac{M}{2}$ (where $M$ is the atomic mass of copper).</p></li>\n</ul>\n\n<p>In cuprous cyanide, copper exists in the $+1$ oxidation state (cuprous ion).</p>\n<p>$$\\text{Cu}^+ + 1e^- \\rightarrow \\text{Cu}$$</p>\n<ul>\n<li><p>The $n\\text{-factor}$ for this reduction is $1$.</p></li>\n<li><p>Equivalent weight ($E_2$) $= \\frac{M}{1} = M$.</p></li>\n</ul>\n\n<p>Since the same current is passed for the same time, the same quantity of charge is delivered.</p>\n<p>Comparing the equivalent weights:</p>\n<p>$$E_2 (M) > E_1 \\left(\\frac{M}{2}\\right)$$</p>\n<p>Because the equivalent weight of copper in cuprous cyanide is twice that in copper sulphate, the mass of copper deposited from the alkaline cuprous cyanide solution will be twice the mass deposited from the acidic copper sulphate solution.</p>\n<p><strong>Correct Option:</strong></p>\n<p><strong>Option B:</strong> the amount of copper deposited from alkaline cuprous cyanide will be higher</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>कॉपर को अम्लीकृत कॉपर सल्फेट और क्षारीय क्यूप्रस साइनाइड से निक्षेपित किया जा सकता है। यदि समान धारा एक निश्चित समय के लिए प्रवाहित की जाती है, तो</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>अम्लीय कॉपर सल्फेट से निक्षेपित कॉपर की मात्रा अधिक होगी</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>क्षारीय क्यूप्रस साइनाइड से निक्षेपित कॉपर की मात्रा अधिक होगी</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>कॉपर की समान मात्रा निक्षेपित होगी</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>दोनों में से किसी भी स्थिति में कॉपर निक्षेपित नहीं होगा</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "faradays-law",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mss08y39",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Electrolysis of 600 mL aqueous solution of NaCl for 4 min changes the pH of the solution to 10 . The current in amperes used for the given electrolysis is $x \\times 10^{-4}$ (Nearest integer). The value of $x$ is</p>",
+                "options": [],
+                "answer": "241",
+                "explanation": "<p>The pH of the solution changes to 10. Assuming standard room temperature (where $\\text{pH} + \\text{pOH} = 14$):</p>\n<p>$$\\text{pOH} = 14 - \\text{pH} = 14 - 10 = 4$$</p>\n<p>$$[\\text{OH}^-] = 10^{-\\text{pOH}} = 10^{-4} \\text{ M}$$</p>\n<p><em>(Note: The initial concentration of $\\text{OH}^-$ in the neutral aqueous NaCl solution is $10^{-7}$ M, which is negligible compared to the final concentration of $10^{-4}$ M).</em></p>\n\n<p>The volume of the solution is given as $600\\text{ mL} = 0.6\\text{ L}$.</p>\n<p>$$\\text{Moles of OH}^- = \\text{Molarity} \\times \\text{Volume (in L)}$$</p>\n<p>$$\\text{Moles of OH}^- = 10^{-4} \\times 0.6 = 6 \\times 10^{-5} \\text{ moles}$$</p>\n\n<p>During the electrolysis of aqueous NaCl, water is reduced at the cathode to produce hydrogen gas and hydroxide ions:</p>\n<p>$$2\\text{H}_2\\text{O}(l) + 2e^- \\longrightarrow \\text{H}_2(g) + 2\\text{OH}^-(aq)$$</p>\n<p>From the stoichiometry of the reaction, 2 moles of electrons produce 2 moles of $\\text{OH}^-$ ions. Therefore, the ratio is 1:1.</p>\n<p>$$\\text{Moles of electrons } (n_e) = \\text{Moles of OH}^- = 6 \\times 10^{-5} \\text{ moles}$$</p>\n\n<p>Using Faraday's constant ($F \\approx 96500\\text{ C mol}^{-1}$):</p>\n<p>$$Q = n_e \\times F$$</p>\n<p>$$Q = (6 \\times 10^{-5} \\text{ mol}) \\times (96500 \\text{ C mol}^{-1})$$</p>\n<p>$$Q = 5.79 \\text{ C}$$</p>\n\n<p>The time for electrolysis is $t = 4\\text{ minutes} = 4 \\times 60 = 240\\text{ seconds}$.</p>\n<p>Using the formula $Q = I \\times t$:</p>\n<p>$$I = \\frac{Q}{t}$$</p>\n<p>$$I = \\frac{5.79}{240} \\text{ A}$$</p>\n<p>$$I = 0.024125 \\text{ A}$$</p>\n<p>$$I = 241.25 \\times 10^{-4} \\text{ A}$$</p>\n<p>Comparing this to the given expression $x \\times 10^{-4}$ A:</p>\n<p>$$x = 241.25$$</p>\n<p>Rounding to the nearest integer, we get <strong>241</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>4 मिनट के लिए NaCl के 600 mL जलीय विलयन का विद्युत अपघटन करने पर विलयन का pH बदलकर 10 हो जाता है। दिए गए विद्युत अपघटन के लिए उपयोग की जाने वाली धारा (ऐम्पियर में) $x \\times 10^{-4}$ है (निकटतम पूर्णांक)। $x$ का मान है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "faradays-law",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mss0duf3",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the following two half-cell reactions along with the standard reduction potentials given:</p>\n<p>$$2\\text{CO}_2 + 12\\text{H}^+ + 12e^- \\longrightarrow \\text{C}_2\\text{H}_5\\text{OH} + 3\\text{H}_2\\text{O} \\quad E_{\\text{red}}^\\circ = 0.08\\text{ V}$$</p>\n<p>$$\\text{O}_2 + 4\\text{H}^+ + 4e^- \\longrightarrow 2\\text{H}_2\\text{O} \\quad E_{\\text{red}}^\\circ = 1.23\\text{ V}$$</p>\n<p>A fuel cell was set up using the above two reactions such that the cell operates under the standard condition of 1 bar pressure and 298 K temperature. The fuel cell works with 60% efficiency. If the work derived from the cell using 0.5 mol of $\\text{C}_2\\text{H}_5\\text{OH}$ is used to compress an ideal gas isothermally against a constant pressure of 2 bar, then the magnitude of the change in the volume of the gas, $\\vert{}\\Delta V\\vert{} =$ <em>__</em> $\\text{m}^3$. (nearest integer)</p>\n<p>Given: $F = 96500\\text{ C mol}^{-1}$</p>\n\n",
+                "options": [],
+                "answer": "2",
+                "explanation": "\n<p>In a fuel cell, the fuel ($\\text{C}_2\\text{H}_5\\text{OH}$) undergoes oxidation at the anode, while oxygen ($\\text{O}_2$) undergoes reduction at the cathode.</p>\n<ul>\n<li><strong>Anode (Oxidation):</strong> Reverse the first half-reaction.</li>\n</ul>\n<p>$$\\text{C}_2\\text{H}_5\\text{OH} + 3\\text{H}_2\\text{O} \\longrightarrow 2\\text{CO}_2 + 12\\text{H}^+ + 12e^-$$</p>\n<p>$E_{\\text{ox}}^\\circ = -0.08\\text{ V}$</p>\n<ul>\n<li><strong>Cathode (Reduction):</strong> Multiply the second half-reaction by 3 to balance the electrons.</li>\n</ul>\n<p>$$3\\text{O}_2 + 12\\text{H}^+ + 12e^- \\longrightarrow 6\\text{H}_2\\text{O}$$</p>\n<p>$E_{\\text{red}}^\\circ = 1.23\\text{ V}$</p>\n<ul>\n<li><strong>Overall Cell Potential ($E_{\\text{cell}}^\\circ$):</strong></li>\n</ul>\n<p>$$E_{\\text{cell}}^\\circ = E_{\\text{cathode}}^\\circ - E_{\\text{anode}}^\\circ = 1.23\\text{ V} - 0.08\\text{ V} = 1.15\\text{ V}$$</p>\n\n<p><em>Trick:</em> Notice that the balanced oxidation reaction for <strong>1 mole</strong> of ethanol ($\\text{C}_2\\text{H}_5\\text{OH}$) involves the transfer of <strong>12 moles</strong> of electrons ($n = 12$).</p>\n<p>The problem states that only 0.5 mol of ethanol is used. Therefore, the total number of moles of electrons transferred is:</p>\n<p>$$n_{\\text{eq}} = 12 \\times 0.5 = 6\\text{ moles}$$</p>\n<p>The maximum electrical work is given by $\\Delta G^\\circ$:</p>\n<p>$$W_{\\text{max}} = n_{\\text{eq}} \\times F \\times E_{\\text{cell}}^\\circ$$</p>\n<p>$$W_{\\text{max}} = 6 \\times 96500 \\times 1.15 = 665,850\\text{ J}$$</p>\n\n<p>The fuel cell operates at 60% efficiency.</p>\n<p>$$W_{\\text{actual}} = 0.60 \\times 665,850\\text{ J} = 399,510\\text{ J}$$</p>\n\n<p>The work is used to compress a gas against a constant external pressure (an irreversible isothermal compression).</p>\n<p>$$W = P_{\\text{ext}} \\times \\vert{}\\Delta V\\vert{}$$</p>\n<p><em>Trick:</em> The external pressure is given as 2 bar. To get the volume in standard SI units ($\\text{m}^3$), the pressure must be converted to Pascals (N/$\\text{m}^2$).</p>\n<p>$$P_{\\text{ext}} = 2\\text{ bar} = 2 \\times 10^5\\text{ Pa}$$</p>\n<p>Substitute the values into the work equation:</p>\n<p>$$399,510 = (2 \\times 10^5) \\times \\vert{}\\Delta V\\vert{}$$</p>\n<p>$$\\vert{}\\Delta V\\vert{} = \\frac{399,510}{200,000} = 1.99755\\text{ m}^3$$</p>\n<p>Rounding to the nearest integer, we get <strong>2</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>नीचे दी गई दो अर्ध-सेल अभिक्रियाओं और उनके मानक अपचयन विभवों (standard reduction potentials) पर विचार करें:</p>\n<p>$$2\\text{CO}_2 + 12\\text{H}^+ + 12e^- \\longrightarrow \\text{C}_2\\text{H}_5\\text{OH} + 3\\text{H}_2\\text{O} \\quad E_{\\text{red}}^\\circ = 0.08\\text{ V}$$</p>\n<p>$$\\text{O}_2 + 4\\text{H}^+ + 4e^- \\longrightarrow 2\\text{H}_2\\text{O} \\quad E_{\\text{red}}^\\circ = 1.23\\text{ V}$$</p>\n<p>उपरोक्त दो अभिक्रियाओं का उपयोग करके एक ईंधन सेल (fuel cell) इस प्रकार स्थापित किया गया था कि सेल 1 bar दाब और 298 K तापमान की मानक स्थिति के अंतर्गत कार्य करता है। ईंधन सेल 60% दक्षता के साथ काम करता है। यदि 0.5 mol $\\text{C}_2\\text{H}_5\\text{OH}$ का उपयोग करके सेल से प्राप्त कार्य का उपयोग एक आदर्श गैस को 2 bar के नियत दाब के विरुद्ध समतापीय (isothermally) रूप से संपीड़ित (compress) करने के लिए किया जाता है, तो गैस के आयतन में परिवर्तन का परिमाण, $\\vert{}\\Delta V\\vert{} =$ <em>__</em> $\\text{m}^3$ है। (निकटतम पूर्णांक तक)</p>\n<p>दिया गया है: $F = 96500\\text{ C mol}^{-1}$</p>\n",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "batteries-fuel-cells-and-corrosion",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mss0jyxf",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The pH and electrical resistance of a solution of a weak monoacidic base (BOH) were found to be 10 and $4000 \\ \\Omega$, respectively. The resistance was measured at $298 \\mathrm{~K}$ using a conductivity cell whose electrodes have a surface area of $10 \\mathrm{~cm}^2$ and are placed $1 \\mathrm{~cm}$ apart. The value of the limiting molar conductivity for the base is $\\_\\_\\_\\_$ $\\mathrm{S \\ cm}^2 \\mathrm{~mol}^{-1}$. (nearest integer)</p>\n<p>(Given: degree of dissociation of the weak base $(\\alpha) \\ll 1$)</p>",
+                "options": [],
+                "answer": "250",
+                "explanation": "<p>The pH of the weak base solution is $10$.</p>\n<p>So,</p>\n<p>$$ \\text{pOH} = 14 - \\text{pH} = 14 - 10 = 4 $$</p>\n<p>Hence,</p>\n<p>$$ [\\text{OH}^-] = 10^{-4}\\ \\text{mol L}^{-1} $$</p>\n<p>For the weak monoacidic base,</p>\n<p>$$ \\text{BOH} \\rightleftharpoons \\text{B}^+ + \\text{OH}^- $$</p>\n<p>If the concentration of the base is $C$ and degree of dissociation is $\\alpha$, then</p>\n<p>$$ [\\text{OH}^-] = C\\alpha $$</p>\n<p>So,</p>\n<p>$$ C\\alpha = 10^{-4} $$</p>\n<p>Now, the resistance of the solution is</p>\n<p>$$ R = 4000\\ \\Omega $$</p>\n<p>Conductance is</p>\n<p>$$ G = \\frac{1}{R} = \\frac{1}{4000}\\ \\text{S} $$</p>\n<p>The cell constant is</p>\n<p>$$ \\frac{l}{A} = \\frac{1}{10} = 0.1\\ \\text{cm}^{-1} $$</p>\n<p>So, the conductivity is</p>\n<p>$$ \\kappa = G \\times \\frac{l}{A} $$</p>\n<p>$$ \\kappa = \\frac{1}{4000} \\times 0.1 $$</p>\n<p>$$ \\kappa = 2.5 \\times 10^{-5}\\ \\text{S cm}^{-1} $$</p>\n<p>Molar conductivity at concentration $C$ is</p>\n<p>$$ \\Lambda_m = \\frac{\\kappa \\times 1000}{C} $$</p>\n<p>For a weak electrolyte,</p>\n<p>$$ \\alpha = \\frac{\\Lambda_m}{\\Lambda_m^\\circ} $$</p>\n<p>So,</p>\n<p>$$ \\Lambda_m = \\alpha \\Lambda_m^\\circ $$</p>\n<p>Substituting $\\Lambda_m = \\frac{\\kappa \\times 1000}{C}$,</p>\n<p>$$ \\frac{\\kappa \\times 1000}{C} = \\alpha \\Lambda_m^\\circ $$</p>\n<p>Since $C\\alpha = 10^{-4}$,</p>\n<p>$$ \\Lambda_m^\\circ = \\frac{\\kappa \\times 1000}{C\\alpha} $$</p>\n<p>$$ \\Lambda_m^\\circ = \\frac{2.5 \\times 10^{-5} \\times 1000}{10^{-4}} $$</p>\n<p>$$ \\Lambda_m^\\circ = 250\\ \\text{S cm}^2\\text{ mol}^{-1} $$</p>\n<p>So, the value of the limiting molar conductivity is</p>\n<p>$$ \\boxed{250} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक दुर्बल मोनोएसिडिक क्षार (BOH) के विलयन का pH और वैद्युत प्रतिरोध क्रमशः 10 और $4000 \\ \\Omega$ पाया गया। $298 \\mathrm{~K}$ पर एक चालकता सेल का उपयोग करके प्रतिरोध मापा गया था, जिसके इलेक्ट्रोड का पृष्ठीय क्षेत्रफल $10 \\mathrm{~cm}^2$ है और वे $1 \\mathrm{~cm}$ की दूरी पर रखे गए हैं। क्षार के लिए सीमांत मोलर चालकता का मान $\\_\\_\\_\\_$ $\\mathrm{S \\ cm}^2 \\mathrm{~mol}^{-1}$ है। (निकटतम पूर्णांक)</p> <p>(दिया गया है: दुर्बल क्षार के वियोजन की मात्रा $(\\alpha) \\ll 1$)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "electrical-conductance",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mss16kww",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the following half-cell reaction involving Vanadium species:</p>\n<p>$$\\mathrm{VO}^{2+}(\\mathrm{aq}) + 2\\mathrm{H}^+(\\mathrm{aq}) + \\mathrm{e}^- \\rightarrow \\mathrm{V}^{3+}(\\mathrm{aq}) + \\mathrm{H}_2\\mathrm{O}(\\ell)$$</p>\n<p>The half-cell was prepared by mixing $400 \\text{ mL}$ of a $0.05 \\text{ M}$ $\\mathrm{VCl}_3$ solution with $100 \\text{ mL}$ of a $0.002 \\text{ M}$ $\\mathrm{VOSO}_4$ solution, along with an appropriate buffer to maintain a constant pH (assume volumes are perfectly additive).</p>\n<p>The pH value at which the reduction potential (EMF) of this half-cell will become exactly zero is:</p>\n<p>$\\_\\_\\_\\_$</p>\n<p>(nearest integer value)</p>\n<p>[Given: standard half cell reduction potential $E_{\\mathrm{VO}^{2+},\\mathrm{H}^+/\\mathrm{V}^{3+}}^\\circ = 0.354 \\text{ V}, \\frac{2.303 RT}{F} = 0.059 \\text{ V}$.]</p>",
+                "options": [],
+                "answer": "2",
+                "explanation": "\n<p>When the two solutions are mixed, the total volume becomes $400 \\text{ mL} + 100 \\text{ mL} = 500 \\text{ mL}$. We must calculate the new molarity for both the $\\mathrm{V}^{3+}$ and $\\mathrm{VO}^{2+}$ ions.</p>\n<ul>\n<li><strong>For $\\mathrm{V}^{3+}$ (from $\\mathrm{VCl}_3$):</strong></li>\n</ul>\n<p>$$M_1V_1 = M_2V_2$$</p>\n<p>$$0.05 \\text{ M} \\times 400 \\text{ mL} = [\\mathrm{V}^{3+}] \\times 500 \\text{ mL}$$</p>\n<p>$$[\\mathrm{V}^{3+}] = \\frac{20}{500} = 0.04 \\text{ M}$$</p>\n<ul>\n<li><strong>For $\\mathrm{VO}^{2+}$ (from $\\mathrm{VOSO}_4$):</strong></li>\n</ul>\n<p>$$M_1V_1 = M_2V_2$$</p>\n<p>$$0.002 \\text{ M} \\times 100 \\text{ mL} = [\\mathrm{VO}^{2+}] \\times 500 \\text{ mL}$$</p>\n<p>$$[\\mathrm{VO}^{2+}] = \\frac{0.2}{500} = 0.0004 \\text{ M}$$</p>\n\n<p>The Nernst equation for the given half-cell reaction is:</p>\n<p>$$E = E^\\circ - \\frac{0.059}{n} \\log Q$$</p>\n<p>For the reaction $\\mathrm{VO}^{2+} + 2\\mathrm{H}^+ + \\mathrm{e}^- \\rightarrow \\mathrm{V}^{3+} + \\mathrm{H}_2\\mathrm{O}$, the number of transferred electrons ($n$) is $1$. The reaction quotient ($Q$) is expressed as:</p>\n<p>$$Q = \\frac{[\\mathrm{V}^{3+}]}{[\\mathrm{VO}^{2+}][\\mathrm{H}^+]^2}$$</p>\n<p>Substitute the known values and set the EMF ($E$) to $0$:</p>\n<p>$$0 = 0.354 - \\frac{0.059}{1} \\log \\left( \\frac{0.04}{0.0004 \\times [\\mathrm{H}^+]^2} \\right)$$</p>\n\n<p>First, simplify the concentration ratio:</p>\n<p>$$\\frac{0.04}{0.0004} = 100 = 10^2$$</p>\n<p>Now substitute this back into the equation:</p>\n<p>$$0 = 0.354 - 0.059 \\log \\left( \\frac{10^2}{[\\mathrm{H}^+]^2} \\right)$$</p>\n<p>$$0.354 = 0.059 \\left( \\log(10^2) - \\log([\\mathrm{H}^+]^2) \\right)$$</p>\n\n<p>$$\\frac{0.354}{0.059} = 2 - 2\\log[\\mathrm{H}^+]$$</p>\n<p>$$6 = 2 + 2(-\\log[\\mathrm{H}^+])$$</p>\n<p>Since $\\mathrm{pH} = -\\log[\\mathrm{H}^+]$, we can substitute $\\mathrm{pH}$ into the equation:</p>\n<p>$$6 = 2 + 2\\mathrm{pH}$$</p>\n<p>$$4 = 2\\mathrm{pH}$$</p>\n<p>$$\\mathrm{pH} = 2$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>वैनेडियम प्रजातियों से जुड़ी निम्नलिखित अर्ध-सेल अभिक्रिया पर विचार कीजिए:</p>\n<p>$$\\mathrm{VO}^{2+}(\\mathrm{aq}) + 2\\mathrm{H}^+(\\mathrm{aq}) + \\mathrm{e}^- \\rightarrow \\mathrm{V}^{3+}(\\mathrm{aq}) + \\mathrm{H}_2\\mathrm{O}(\\ell)$$</p>\n<p>यह अर्ध-सेल $0.05 \\text{ M}$ $\\mathrm{VCl}_3$ विलयन के $400 \\text{ mL}$ को $0.002 \\text{ M}$ $\\mathrm{VOSO}_4$ विलयन के $100 \\text{ mL}$ और स्थिर pH बनाए रखने के लिए एक उपयुक्त बफर के साथ मिलाकर तैयार किया गया था (मान लें कि आयतन पूर्णतः योगात्मक हैं)।</p>\n<p>वह pH मान जिस पर इस अर्ध-सेल का अपचयन विभव (EMF) पूर्णतः शून्य हो जाएगा, है:</p>\n<p>$\\_\\_\\_\\_$</p>\n<p>(निकटतम पूर्णांक मान)</p>\n<p>[दिया गया है: मानक अर्ध-सेल अपचयन विभव $E_{\\mathrm{VO}^{2+},\\mathrm{H}^+/\\mathrm{V}^{3+}}^\\circ = 0.354 \\text{ V}, \\frac{2.303 RT}{F} = 0.059 \\text{ V}$]</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "nernst-equation-and-its-application",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mss1blf3",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The amount of electricity (in coulombs) required to deposit 1 mole of Al from molten $\\mathrm{AlCl}_3$ is $\\_\\_\\_\\_$ $\\times 10^5$ (Nearest integer)</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>For molten $\\mathrm{AlCl_3}$, aluminium is present as $\\mathrm{Al^{3+}}$ ions.</p>\n<p>To deposit aluminium metal:</p>\n<p>$$ \\mathrm{Al^{3+} + 3e^- \\rightarrow Al} $$</p>\n<p>So, to deposit $1$ mole of Al, we need $3$ moles of electrons.</p>\n<p>Charge carried by $1$ mole of electrons is $1$ Faraday:</p>\n<p>$$ 1F = 96500 \\ \\mathrm{C} $$</p>\n<p>Hence, charge required is:</p>\n<p>$$ Q = 3F $$</p>\n<p>$$ Q = 3 \\times 96500 $$</p>\n<p>$$ Q = 289500 \\ \\mathrm{C} $$</p>\n<p>Writing this in the form $\\_\\_\\_\\_ \\times 10^5$:</p>\n<p>$$ 289500 = 2.895 \\times 10^5 $$</p>\n<p>Nearest integer to $2.895$ is $3$.</p>\n<p>So, the answer is:</p>\n<p>$$ \\boxed{3} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>गलित $\\mathrm{AlCl}_3$ से 1 मोल Al को निक्षेपित करने के लिए आवश्यक विद्युत की मात्रा (कूलॉम में) $\\_\\_\\_\\_$ $\\times 10^5$ है (निकटतम पूर्णांक)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "faradays-law",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Questions from all topics of the chapter",
+    "timeAllotted": 3600000,
+    "title": "Electrochemistry - Chapter Test",
+    "totalQuestions": 25,
+    "type": "chapter",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mpd3gunv",
+    "defaultLanguage": "en",
+    "description": "Questions from all topics of the chapter",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-14T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 100,
+    "maxNegMarks": 25,
+    "policy": "jee-main",
+    "syllabus": "Questions from all topics of the chapter",
+    "timeAllotted": 3600000,
+    "title": "Electrochemistry - Chapter Test",
+    "totalQuestions": 25,
+    "type": "chapter",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Electrochemistry"
+  }
+}

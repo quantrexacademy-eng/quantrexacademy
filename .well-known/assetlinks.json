@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.quantrexacademy.app",
+    "sha256_cert_fingerprints": ["2C:F4:94:BB:08:6F:84:CB:BD:0A:E4:1F:13:CC:D8:D8:3D:EA:B8:DD:85:9B:33:8E:C5:7F:47:9E:2C:32:24:5F"]
+  }
+}]

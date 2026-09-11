@@ -1,0 +1,40 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa602f4468eb1307ceb0ae",
+  "chapterId": "67fdff42378e1624ea7b6947",
+  "subject": "Chemistry",
+  "chapter": "Chemical Kinetics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff7f378e1624ea7b6c2a",
+      "title": "Rate law and rate constant",
+      "count": 2,
+      "questionIds": [
+        "68e7a67fce75e72648a45e6b",
+        "67fdff41378e1624ea7b6945"
+      ]
+    },
+    {
+      "id": "67fdff7f378e1624ea7b6c2c",
+      "title": "Integrated rate laws",
+      "count": 3,
+      "questionIds": [
+        "67fdff73378e1624ea7b6ba1",
+        "67fdff62378e1624ea7b6adb",
+        "67fdff5a378e1624ea7b6a92"
+      ]
+    },
+    {
+      "id": "67fdff7f378e1624ea7b6c2b",
+      "title": "Arrhenius theory",
+      "count": 3,
+      "questionIds": [
+        "6a4521848c20d3b91d64f970",
+        "67fdff62378e1624ea7b6add",
+        "67fdff53378e1624ea7b6a3b"
+      ]
+    }
+  ]
+}

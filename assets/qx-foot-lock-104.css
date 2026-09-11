@@ -1,0 +1,145 @@
+/* qxmd104: Previous/Next/Clear always visible — never clipped */
+.eg-test-root {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  overflow: hidden !important;
+}
+.eg-test-root .eg-top,
+.eg-test-root .eg-subs,
+.eg-test-root .eg-qbar {
+  flex: 0 0 auto !important;
+}
+.eg-test-root .eg-body {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  overflow: hidden !important;
+}
+.eg-test-root .eg-main {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+.eg-test-root .eg-q-card {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  height: auto !important;
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 8px 10px 12px !important;
+}
+.eg-test-root .eg-foot {
+  flex: 0 0 auto !important;
+  position: sticky !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 200 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 8px !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 8px 10px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+  background: var(--eg-card, #fff) !important;
+  border-top: 1px solid var(--eg-line, #e2e8f0) !important;
+  box-shadow: 0 -6px 16px rgba(15, 23, 42, 0.12) !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+.eg-test-root .eg-foot-left,
+.eg-test-root .eg-foot-right {
+  display: flex !important;
+  width: 100% !important;
+  margin: 0 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  flex-wrap: nowrap !important;
+  gap: 6px !important;
+}
+.eg-test-root .eg-foot-right {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1.2fr !important;
+}
+.eg-test-root #qxPrevBtn,
+.eg-test-root #qxNextBtn,
+.eg-test-root #qxClearBtn,
+.eg-test-root #qxSaveBtn,
+.eg-test-root #qxReviewNextBtn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  min-height: 44px !important;
+  width: 100% !important;
+  z-index: 201 !important;
+}
+.eg-test-root #qxNextBtn,
+.eg-test-root .eg-btn-next {
+  background: #2563eb !important;
+  color: #fff !important;
+  border-color: #2563eb !important;
+  font-weight: 800 !important;
+}
+/* Kill the oversized card that pushed footer off-screen */
+.eg-test-root .eg-q-card {
+  min-height: 0 !important;
+}
+.eg-test-root .eg-body {
+  min-height: 0 !important;
+}
+/* Keep FAB from covering Next */
+.eg-test-root .eg-rail-toggle,
+.eg-test-root #egRailBtn {
+  bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
+}
+@media (min-width: 900px) {
+  .eg-test-root .eg-foot {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+  .eg-test-root .eg-foot-left,
+  .eg-test-root .eg-foot-right {
+    width: auto !important;
+  }
+  .eg-test-root .eg-foot-right {
+    display: flex !important;
+    grid-template-columns: none !important;
+  }
+  .eg-test-root #qxPrevBtn,
+  .eg-test-root #qxNextBtn,
+  .eg-test-root #qxClearBtn {
+    width: auto !important;
+    min-width: 110px !important;
+  }
+}
+/* Practice / book pages too */
+.qx-practice-page .eg-foot,
+.allen-practice .eg-foot,
+.qx-prac-foot.eg-foot {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: sticky !important;
+  bottom: 0 !important;
+  z-index: 200 !important;
+}

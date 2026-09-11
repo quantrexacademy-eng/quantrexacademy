@@ -1,0 +1,1699 @@
+{
+  "testId": "tst-19g61mpcyd3su",
+  "title": "Thermodynamics - Chapter Test",
+  "type": "chapter",
+  "section": "Thermodynamics",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-07-08T10:30:00.000Z",
+  "status": "ok",
+  "analysisId": "7a3eca55-91ee-4e87-b245-1e87570ad85c",
+  "questions_count": 25,
+  "solutions_count": 25,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61mpcyd3su",
+    "defaultLanguage": "en",
+    "description": "Questions from all topics of the chapter",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-08T10:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 100,
+    "maxNegMarks": 25,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 80,
+        "maxNegMarks": 20,
+        "timeAllotted": 2880000,
+        "totalQuestions": 20,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrbsny20",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>1 mole of an ideal gas is expanded from an initial pressure of 1 bar to final pressure of 0.1 bar at constant temperature of 0°C. Identify the incorrect one for the process</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\Delta U = 0$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\Delta S = 0$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\Delta H = 0$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\Delta (PV) = 0$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For an ideal gas, internal energy and enthalpy depend only on temperature.</p>\n<p>Here the gas is expanded at constant temperature, from $1 \\text{ bar}$ to $0.1 \\text{ bar}$.</p>\n<p>Since temperature is constant,</p>\n<p>$$ \\Delta U = 0 $$</p>\n<p>So option A is correct.</p>\n<p>Also, for an ideal gas,</p>\n<p>$$ H = U + PV $$</p>\n<p>and $H$ also depends only on temperature. Since temperature does not change,</p>\n<p>$$ \\Delta H = 0 $$</p>\n<p>So option C is correct.</p>\n<p>Now, from the ideal gas equation,</p>\n<p>$$ PV = nRT $$</p>\n<p>Here $n = 1$ mole and $T$ is constant. So $PV$ remains constant.</p>\n<p>$$ \\Delta(PV) = 0 $$</p>\n<p>So option D is also correct.</p>\n<p>But entropy changes during isothermal expansion. For an ideal gas,</p>\n<p>$$ \\Delta S = nR \\ln \\frac{V_2}{V_1} $$</p>\n<p>At constant temperature,</p>\n<p>$$ P_1V_1 = P_2V_2 $$</p>\n<p>So,</p>\n<p>$$ \\frac{V_2}{V_1} = \\frac{P_1}{P_2} $$</p>\n<p>Given,</p>\n<p>$$ \\frac{P_1}{P_2} = \\frac{1}{0.1} = 10 $$</p>\n<p>Thus,</p>\n<p>$$ \\Delta S = R \\ln 10 $$</p>\n<p>This is not zero.</p>\n<p>So the incorrect statement is:</p>\n<p>$$ \\boxed{\\text{Option B: } \\Delta S = 0} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>0°C के नियत ताप पर एक आदर्श गैस के 1 मोल को 1 bar के प्रारंभिक दाब से 0.1 bar के अंतिम दाब तक प्रसारित किया जाता है। इस प्रक्रम के लिए गलत विकल्प की पहचान कीजिए।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\Delta U = 0$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\Delta S = 0$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\Delta H = 0$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\Delta (PV) = 0$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr8shltj",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Given, H<sub>2</sub>(g) + Br<sub>2</sub>(g) &rarr; 2HBr(g), $\\Delta H_1^\\circ$, and standard enthalpy of condensation of bromine is $\\Delta H_2^\\circ$, standard enthalpy of formation of HBr at 25&deg;C is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\Delta H_1^\\circ / 2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\Delta H_1^\\circ / 2 + \\Delta H_2^\\circ$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\Delta H_1^\\circ / 2 - \\Delta H_2^\\circ$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(\\Delta H_1^\\circ - \\Delta H_2^\\circ) / 2$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The standard enthalpy of formation of HBr is defined for the reaction where the elements are taken in their standard states. At 25°C, bromine's standard state is liquid, not gas. So we need the reaction:</p>\n<p>$$\\tfrac{1}{2} H_2(g) + \\tfrac{1}{2} Br_2(l) \\rightarrow HBr(g)$$</p>\n<p>The given reaction uses $Br_2(g)$:</p>\n<p>$$H_2(g) + Br_2(g) \\rightarrow 2HBr(g), \\quad \\Delta H_1^\\circ$$</p>\n<p>And condensation of bromine is:</p>\n<p>$$Br_2(g) \\rightarrow Br_2(l), \\quad \\Delta H_2^\\circ$$</p>\n<p>To reach the formation reaction, first reverse the condensation to convert $Br_2(l)$ into $Br_2(g)$, which costs $-\\Delta H_2^\\circ$. Then use the given reaction to form 2 HBr, which contributes $\\Delta H_1^\\circ$.</p>\n<p>So for 2 moles of HBr:</p>\n<p>$$\\Delta H = \\Delta H_1^\\circ - \\Delta H_2^\\circ$$</p>\n<p>For 1 mole (which is what formation enthalpy needs):</p>\n<p>$$\\Delta H_f^\\circ(HBr) = \\frac{\\Delta H_1^\\circ - \\Delta H_2^\\circ}{2}$$</p>\n<p>The correct option is D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दिया गया है, H<sub>2</sub>(g) + Br<sub>2</sub>(g) &rarr; 2HBr(g), $\\Delta H_1^\\circ$, तथा ब्रोमीन के संघनन की मानक एन्थैल्पी $\\Delta H_2^\\circ$ है, 25&deg;C पर HBr के विरचन की मानक एन्थैल्पी है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\Delta H_1^\\circ / 2$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\Delta H_1^\\circ / 2 + \\Delta H_2^\\circ$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\Delta H_1^\\circ / 2 - \\Delta H_2^\\circ$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$(\\Delta H_1^\\circ - \\Delta H_2^\\circ) / 2$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mr8t10fz",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If enthalpy of dissociation of CH<sub>4</sub> and C<sub>2</sub>H<sub>6</sub> are 320 and 600 calories respectively then bond energy of C–C bond is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>80 cal</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>40 cal</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>60 cal</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>120 cal</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For methane, $CH_4$, there are $4$ C–H bonds.</p>\n<p>Given enthalpy of dissociation of $CH_4 = 320$ cal.</p>\n<p>So, bond energy of one C–H bond is</p>\n<p>$$ \\frac{320}{4} = 80 \\text{ cal} $$</p>\n<p>Now, ethane is $C_2H_6$.</p>\n<p>Its structure has:</p>\n<ul>\n<li><p>$6$ C–H bonds</p></li>\n<li><p>$1$ C–C bond</p></li>\n</ul>\n<p>Given enthalpy of dissociation of $C_2H_6 = 600$ cal.</p>\n<p>So,</p>\n<p>$$ 6(\\text{C–H bond energy}) + \\text{C–C bond energy} = 600 $$</p>\n<p>$$ 6(80) + \\text{C–C bond energy} = 600 $$</p>\n<p>$$ 480 + \\text{C–C bond energy} = 600 $$</p>\n<p>$$ \\text{C–C bond energy} = 600 - 480 = 120 \\text{ cal} $$</p>\n<p>So, the bond energy of the C–C bond is</p>\n<p>$$ \\boxed{120 \\text{ cal}} $$</p>\n<p>Correct option: D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि CH<sub>4</sub> और C<sub>2</sub>H<sub>6</sub> की वियोजन एन्थैल्पी क्रमशः 320 और 600 कैलोरी है, तो C–C बंध की बंध ऊर्जा है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>80 cal</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>40 cal</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>60 cal</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>120 cal</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrbsy8ch",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>At 25°C and 1 atm pressure, the enthalpy of combustion of benzene (l) and acetylene (g) are $-3268~\\mathrm{kJ~mol^{-1}}$ and $-1300~\\mathrm{kJ~mol^{-1}}$, respectively. The change in enthalpy for the reaction $3\\mathrm{C}_2\\mathrm{H}_2(\\mathrm{g})\\rightarrow \\mathrm{C}_6\\mathrm{H}_6(\\mathrm{l})$, is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>+324 kJ mol<sup>−1</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>+632 kJ mol<sup>−1</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>−632 kJ mol<sup>−1</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>−732 kJ mol<sup>−1</sup></p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For acetylene combustion:</p>\n<p>$$ \\mathrm{C_2H_2(g)}+\\frac{5}{2}\\mathrm{O_2(g)} \\rightarrow 2\\mathrm{CO_2(g)}+\\mathrm{H_2O(l)} $$</p>\n<p>$$ \\Delta H=-1300~\\mathrm{kJ~mol^{-1}} $$</p>\n<p>For $3$ moles of acetylene:</p>\n<p>$$ 3\\mathrm{C_2H_2(g)}+\\frac{15}{2}\\mathrm{O_2(g)} \\rightarrow 6\\mathrm{CO_2(g)}+3\\mathrm{H_2O(l)} $$</p>\n<p>$$ \\Delta H=3(-1300)=-3900~\\mathrm{kJ} $$</p>\n<p>For benzene combustion:</p>\n<p>$$ \\mathrm{C_6H_6(l)}+\\frac{15}{2}\\mathrm{O_2(g)} \\rightarrow 6\\mathrm{CO_2(g)}+3\\mathrm{H_2O(l)} $$</p>\n<p>$$ \\Delta H=-3268~\\mathrm{kJ~mol^{-1}} $$</p>\n<p>We need benzene on the product side, so reverse this reaction:</p>\n<p>$$ 6\\mathrm{CO_2(g)}+3\\mathrm{H_2O(l)} \\rightarrow \\mathrm{C_6H_6(l)}+\\frac{15}{2}\\mathrm{O_2(g)} $$</p>\n<p>$$ \\Delta H=+3268~\\mathrm{kJ} $$</p>\n<p>Now add the two reactions:</p>\n<p>$$ 3\\mathrm{C_2H_2(g)}+\\frac{15}{2}\\mathrm{O_2(g)} \\rightarrow 6\\mathrm{CO_2(g)}+3\\mathrm{H_2O(l)} $$</p>\n<p>$$ 6\\mathrm{CO_2(g)}+3\\mathrm{H_2O(l)} \\rightarrow \\mathrm{C_6H_6(l)}+\\frac{15}{2}\\mathrm{O_2(g)} $$</p>\n<p>Common terms cancel, giving:</p>\n<p>$$ 3\\mathrm{C_2H_2(g)}\\rightarrow \\mathrm{C_6H_6(l)} $$</p>\n<p>So,</p>\n<p>$$ \\Delta H=-3900+3268 $$</p>\n<p>$$ \\Delta H=-632~\\mathrm{kJ~mol^{-1}} $$</p>\n<p>The correct option is:</p>\n<p>$$ \\boxed{\\text{Option C: } -632~\\mathrm{kJ~mol^{-1}}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>25°C और 1 atm दाब पर, बेंजीन (l) और एसिटिलीन (g) के दहन की एन्थैल्पी क्रमशः $-3268~\\mathrm{kJ~mol^{-1}}$ और $-1300~\\mathrm{kJ~mol^{-1}}$ हैं। अभिक्रिया $3\\mathrm{C}_2\\mathrm{H}_2(\\mathrm{g})\\rightarrow \\mathrm{C}_6\\mathrm{H}_6(\\mathrm{l})$ के लिए एन्थैल्पी में परिवर्तन है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>+324 kJ mol<sup>−1</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>+632 kJ mol<sup>−1</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>−632 kJ mol<sup>−1</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>−732 kJ mol<sup>−1</sup></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrbtnnyk",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A sample of gas is compressed from an initial volume of $2V_0$ to $V_0$ using three different processes.</p> <p><b>First:</b> Using reversible isothermal</p><p><b>Second:</b> Using reversible adiabatic</p><p><b>Third:</b> Using irreversible adiabatic under a constant external pressure, then :</p><p>Which of the following statements is correct?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Final temperature of gas will be highest at the end of third process.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Final temperature of gas will be highest at the end of second process.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Enthalpy change of sample will be highest in isothermal process. (magnitude wise)</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Final pressure of gas will be highest at the end of second process.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Take the gas as ideal. Let the initial temperature be $T_0$ and initial pressure be $P_0$ at volume $2V_0$.</p>\n<p>For the reversible isothermal compression,</p>\n<p>$$ T_f=T_0 $$</p>\n<p>So temperature does not change.</p>\n<p>For the reversible adiabatic compression,</p>\n<p>$$ TV^{\\gamma-1}=\\text{constant} $$</p>\n<p>So,</p>\n<p>$$ T_f=T_0\\left(\\frac{2V_0}{V_0}\\right)^{\\gamma-1} $$</p>\n<p>$$ T_f=T_0\\,2^{\\gamma-1} $$</p>\n<p>Temperature rises because the gas is compressed adiabatically.</p>\n<p>For the irreversible adiabatic compression against constant external pressure, $q=0$.</p>\n<p>Using NCERT sign convention,</p>\n<p>$$ \\Delta U=q+w $$</p>\n<p>Since $q=0$,</p>\n<p>$$ \\Delta U=w $$</p>\n<p>For compression from $2V_0$ to $V_0$,</p>\n<p>$$ w=-P_{\\text{ext}}(V_f-V_i) $$</p>\n<p>$$ w=-P_{\\text{ext}}(V_0-2V_0)=P_{\\text{ext}}V_0 $$</p>\n<p>At the final equilibrium state,</p>\n<p>$$ P_{\\text{ext}}=P_f $$</p>\n<p>So,</p>\n<p>$$ w=P_fV_0=nRT_f $$</p>\n<p>Also,</p>\n<p>$$ \\Delta U=nC_V(T_f-T_0) $$</p>\n<p>Thus,</p>\n<p>$$ nC_V(T_f-T_0)=nRT_f $$</p>\n<p>$$ C_V(T_f-T_0)=RT_f $$</p>\n<p>Since $R=C_P-C_V=(\\gamma-1)C_V$,</p>\n<p>$$ T_f-T_0=(\\gamma-1)T_f $$</p>\n<p>$$ T_0=(2-\\gamma)T_f $$</p>\n<p>$$ T_f=\\frac{T_0}{2-\\gamma} $$</p>\n<p>For gases, $1<\\gamma<2$, so this temperature is greater than the reversible adiabatic final temperature. Physically also, irreversible adiabatic compression needs more work than reversible adiabatic compression for the same change in volume, and since no heat is lost, this extra work increases the temperature more.</p>\n<p>So the final temperature is highest in the third process.</p>\n<p>Also, for an ideal gas, enthalpy depends only on temperature. In the isothermal process,</p>\n<p>$$ \\Delta T=0 $$</p>\n<p>so</p>\n<p>$$ \\Delta H=0 $$</p>\n<p>Thus option C is false.</p>\n<p>The final pressure is also not highest in the reversible adiabatic process; it is higher in the irreversible adiabatic case.</p>\n<p>Correct option: A.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>गैस के एक नमूने को तीन अलग-अलग प्रक्रमों का उपयोग करके प्रारंभिक आयतन $2V_0$ से $V_0$ तक संपीडित किया जाता है।</p> <p><b>पहला:</b> उत्क्रमणीय समतापीय प्रक्रम का उपयोग करके</p><p><b>दूसरा:</b> उत्क्रमणीय रुद्धोष्म प्रक्रम का उपयोग करके</p><p><b>तीसरा:</b> नियत बाह्य दाब के अंतर्गत अनुत्क्रमणीय रुद्धोष्म प्रक्रम का उपयोग करके, तब :</p><p>निम्नलिखित में से कौन सा कथन सही है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>तीसरे प्रक्रम के अंत में गैस का अंतिम तापमान सबसे अधिक होगा।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>दूसरे प्रक्रम के अंत में गैस का अंतिम तापमान सबसे अधिक होगा।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>समतापीय प्रक्रम में नमूने का एन्थैल्पी परिवर्तन (परिमाण के अनुसार) सबसे अधिक होगा।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>दूसरे प्रक्रम के अंत में गैस का अंतिम दाब सबसे अधिक होगा।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "first-law-of-thermodynamics",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrbtufdl",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following statements is not correct for a reversible process?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>The system stays in thermodynamic equilibrium throughout the process.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>The process occurs at an extremely slow rate.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>At any stage, the process can be reversed by applying an infinitesimally small change in the opposite direction.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Reversible processes can be carried out in a finite time.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The incorrect statement is:</p>\n<p>$$\\boxed{\\text{Option D: Reversible processes may be performed in finite time.}}$$</p>\n<p>In a reversible process, the system passes through a continuous series of equilibrium states. So, at every stage, the system must remain in thermodynamic equilibrium.</p>\n<p>That is why a reversible process has to be carried out extremely slowly. If it is done quickly, finite differences in pressure, temperature, etc., will appear, and the process will become irreversible.</p>\n<p>Also, a reversible process can be reversed at any stage by making only an infinitesimally small change in the opposite direction. This means the driving force is almost zero.</p>\n<p>So:</p>\n<ul>\n<li><p>Option A is correct.</p></li>\n<li><p>Option B is correct.</p></li>\n<li><p>Option C is correct.</p></li>\n<li><p>Option D is incorrect.</p></li>\n</ul>\n<p>A truly reversible process is an ideal process and would take infinite time, not finite time.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>उत्क्रमणीय प्रक्रम के लिए निम्नलिखित में से कौन सा कथन सही नहीं है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>प्रक्रम के दौरान निकाय पूरे समय ऊष्मागतिक साम्य में रहता है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>यह प्रक्रम अत्यंत धीमी दर से होता है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>किसी भी स्तर पर, विपरीत दिशा में अत्यंत सूक्ष्म परिवर्तन करके प्रक्रम को उत्क्रमित किया जा सकता है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>उत्क्रमणीय प्रक्रमों को एक परिमित समय में संपन्न किया जा सकता है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "fundamentals-of-thermodynamics",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrbu0v27",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>An ideal gas sample of five moles undergoes a reversible isothermal expansion at $27^{\\circ}$C, with its pressure changing from 100 atm to 1 atm. Calculate the work done by the gas (ln100 = 4.6)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2760 cal</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>6000 cal</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>13,800 cal</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For an ideal gas expanding isothermally and reversibly, the work done by the gas is</p>\n<p>$$ W = nRT \\ln \\frac{V_2}{V_1} $$</p>\n<p>Since the temperature is constant, for an ideal gas,</p>\n<p>$$ P_1V_1 = P_2V_2 $$</p>\n<p>So,</p>\n<p>$$ \\frac{V_2}{V_1} = \\frac{P_1}{P_2} $$</p>\n<p>Hence,</p>\n<p>$$ W = nRT \\ln \\frac{P_1}{P_2} $$</p>\n<p>Given:</p>\n<p>$$ n = 5 $$</p>\n<p>$$ T = 27^\\circ C = 300 \\, K $$</p>\n<p>$$ P_1 = 100 \\, atm $$</p>\n<p>$$ P_2 = 1 \\, atm $$</p>\n<p>$$ \\ln 100 = 4.6 $$</p>\n<p>Using $R = 2 \\, cal \\, mol^{-1} K^{-1}$,</p>\n<p>$$ W = 5 \\times 2 \\times 300 \\times 4.6 $$</p>\n<p>$$ W = 13800 \\, cal $$</p>\n<p>So, the work done by the gas is</p>\n<p>$$ \\boxed{13,800 \\, cal} $$</p>\n<p>Correct option: D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>पाँच मोल के एक आदर्श गैस के नमूने का $27^{\\circ}$C पर उत्क्रमणीय समतापीय प्रसार होता है, जिसमें इसका दाब 100 atm से बदलकर 1 atm हो जाता है। गैस द्वारा किए गए कार्य की गणना कीजिए (ln100 = 4.6)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2760 cal</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>6000 cal</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>13,800 cal</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "first-law-of-thermodynamics",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrbu43in",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>One mole of monoatomic ideal gas at <i>T</i> K is expanded from 1 L to 2 L adiabatically under a constant external pressure of 1 atm. The final temperature of the gas in Kelvin is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><i>T</i></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{T}{2^{(\\frac{5}{3}-1)}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$T - \\dfrac{2}{3 \\times 0.0821}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$T + \\dfrac{3}{2 \\times 0.0821}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For an adiabatic process,</p>\n<p>$$q=0$$</p>\n<p>Using the first law of thermodynamics,</p>\n<p>$$\\Delta U = q+w$$</p>\n<p>So,</p>\n<p>$$\\Delta U=w$$</p>\n<p>The gas expands against a constant external pressure of $1\\ \\text{atm}$ from $1\\ \\text{L}$ to $2\\ \\text{L}$.</p>\n<p>So the work done is</p>\n<p>$$w=-P_{\\text{ext}}(V_2-V_1)$$</p>\n<p>$$w=-1(2-1)$$</p>\n<p>$$w=-1\\ \\text{L atm}$$</p>\n<p>For one mole of a monoatomic ideal gas,</p>\n<p>$$\\Delta U=nC_V\\Delta T$$</p>\n<p>For monoatomic gas,</p>\n<p>$$C_V=\\frac{3}{2}R$$</p>\n<p>So,</p>\n<p>$$\\Delta U=\\frac{3}{2}R(T_f-T)$$</p>\n<p>Since $\\Delta U=w$,</p>\n<p>$$\\frac{3}{2}R(T_f-T)=-1$$</p>\n<p>Using $R=0.0821\\ \\text{L atm mol}^{-1}\\text{K}^{-1}$,</p>\n<p>$$\\frac{3}{2}(0.0821)(T_f-T)=-1$$</p>\n<p>$$T_f-T=-\\frac{2}{3\\times 0.0821}$$</p>\n<p>$$T_f=T-\\frac{2}{3\\times 0.0821}$$</p>\n<p>So the final temperature is</p>\n<p>$$\\boxed{T-\\frac{2}{3\\times 0.0821}}$$</p>\n<p>Correct option: C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><i>T</i> K पर एकपरमाणुक आदर्श गैस के एक मोल को 1 atm के नियत बाह्य दाब के विरुद्ध 1 L से 2 L तक रुद्धोष्म रूप से प्रसारित किया जाता है। केल्विन में गैस का अंतिम ताप है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><i>T</i></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{T}{2^{(\\frac{5}{3}-1)}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$T - \\dfrac{2}{3 \\times 0.0821}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$T + \\dfrac{3}{2 \\times 0.0821}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "first-law-of-thermodynamics",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrbubinu",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For an ideal gas, the expression in adiabatic process is $T = K V^{-2/5}$. The gas may be</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>He</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Ne</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>O$_2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>NH$_3$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For an ideal gas in an adiabatic process,</p>\n<p>$$ TV^{\\gamma-1}=\\text{constant} $$</p>\n<p>So we can write it as</p>\n<p>$$ T = K V^{-(\\gamma-1)} $$</p>\n<p>Given expression is</p>\n<p>$$ T = K V^{-2/5} $$</p>\n<p>Comparing the powers of $V$,</p>\n<p>$$ \\gamma - 1 = \\frac{2}{5} $$</p>\n<p>So,</p>\n<p>$$ \\gamma = 1 + \\frac{2}{5} = \\frac{7}{5} $$</p>\n<p>Now, $\\gamma = \\frac{7}{5}$ is the value for a diatomic gas at ordinary temperature.</p>\n<p>Among the given gases:</p>\n<ul>\n<li><p>He and Ne are monoatomic gases, so $\\gamma = \\frac{5}{3}$</p></li>\n<li><p>$O_2$ is a diatomic gas, so $\\gamma = \\frac{7}{5}$</p></li>\n<li><p>$NH_3$ is polyatomic</p></li>\n</ul>\n<p>Hence, the gas may be</p>\n<p>$$ \\boxed{O_2} $$</p>\n<p>Correct option: C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक आदर्श गैस के लिए, रुद्धोष्म प्रक्रम में व्यंजक $T = K V^{-2/5}$ है। यह गैस हो सकती है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>He</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Ne</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>O$_2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>NH$_3$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "first-law-of-thermodynamics",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrbuhd1i",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>1 mol of monoatomic ideal gas at 300 K expands from 1 L to 8 L in two different processes</p><p><b>Process I :</b> Reversible adiabatic expansion</p><p><b>Process II :</b> Irreversible adiabatic expansion against the constant external pressure of 1 atm (given 1 atm L = 101 J)</p><p>Select the correct statement.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$|W_{\\text{Process I}}| = |W_{\\text{Process II}}|$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$|T_{f_{\\text{Process I}}}| = |T_{f_{\\text{Process II}}}|$ (f $\\to$ final)</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$|T_{f_{\\text{Process I}}}| > |T_{f_{\\text{Process II}}}|$ (f $\\to$ final)</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Change in internal energy in process II is less than change in internal energy of process I (Only magnitude)</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<h3><strong>Process I: Reversible Adiabatic Expansion</strong></h3>\n<p>For a reversible adiabatic process, the relationship between temperature and volume is given by:</p>\n<p>$$T_1 V_1^{\\gamma-1} = T_2 V_2^{\\gamma-1}$$</p>\n<p>Using the given initial state ($T_1 = 300 \\text{ K}$, $V_1 = 1 \\text{ L}$) and final volume ($V_2 = 8 \\text{ L}$):</p>\n<p>$$300 \\times (1)^{\\frac{5}{3} - 1} = T_{f,\\text{I}} \\times (8)^{\\frac{5}{3} - 1}$$</p>\n<p>$$300 \\times 1 = T_{f,\\text{I}} \\times 8^{2/3}$$</p>\n<p>Since $8^{2/3} = (2^3)^{2/3} = 2^2 = 4$, we get:</p>\n<p>$$300 = T_{f,\\text{I}} \\times 4 \\implies T_{f,\\text{I}} = 75 \\text{ K}$$</p>\n<p>In an adiabatic process, there is no heat exchange ($q = 0$). By the first law of thermodynamics, the work done equals the change in internal energy ($W = \\Delta U$). </p>\n<p>$$\\Delta U_{\\text{I}} = n C_v (T_{f,\\text{I}} - T_1)$$</p>\n<p>$$\\Delta U_{\\text{I}} = 1 \\times \\left(\\frac{3}{2} \\times 8.314\\right) \\times (75 - 300)$$</p>\n<p>$$\\Delta U_{\\text{I}} = 12.471 \\times (-225) \\approx -2806 \\text{ J}$$</p>\n<p>So, the magnitude of the change in internal energy (and the work done) for Process I is:</p>\n<p>$$|\\Delta U_{\\text{I}}| = 2806 \\text{ J}$$</p>\n<p>$$|W_{\\text{I}}| = 2806 \\text{ J}$$</p>\n\n<h3><strong>Process II: Irreversible Adiabatic Expansion</strong></h3>\n<p>For an irreversible process against a constant external pressure, the work done is:</p>\n<p>$$W_{\\text{II}} = -P_{\\text{ext}} (V_2 - V_1)$$</p>\n<p>Using $P_{\\text{ext}} = 1 \\text{ atm}$:</p>\n<p>$$W_{\\text{II}} = -1 \\text{ atm} \\times (8 \\text{ L} - 1 \\text{ L}) = -7 \\text{ atm L}$$</p>\n<p>We are given that $1 \\text{ atm L} = 101 \\text{ J}$, so we convert the work into Joules:</p>\n<p>$$W_{\\text{II}} = -7 \\times 101 \\text{ J} = -707 \\text{ J}$$</p>\n<p>Again, since the process is adiabatic ($q = 0$), the change in internal energy equals the work done:</p>\n<p>$$\\Delta U_{\\text{II}} = W_{\\text{II}} = -707 \\text{ J}$$</p>\n<p>The magnitude of the change in internal energy for Process II is:</p>\n<p>$$|\\Delta U_{\\text{II}}| = 707 \\text{ J}$$</p>\n<p>We can also quickly find the final temperature for this process using $\\Delta U = n C_v (T_{f,\\text{II}} - T_1)$:</p>\n<p>$$-707 = 1 \\times 12.471 \\times (T_{f,\\text{II}} - 300)$$</p>\n<p>$$T_{f,\\text{II}} - 300 \\approx -56.7 \\implies T_{f,\\text{II}} \\approx 243.3 \\text{ K}$$</p>\n\n\n<ul>\n<li><p><strong>Option A:</strong> $|W_{\\text{I}}| = 2806 \\text{ J}$ and $|W_{\\text{II}}| = 707 \\text{ J}$. They are not equal. </p></li>\n<li><p><strong>Options B & C:</strong> $T_{f,\\text{I}} = 75 \\text{ K}$ and $T_{f,\\text{II}} \\approx 243.3 \\text{ K}$. The correct relation is $|T_{f,\\text{I}}| < |T_{f,\\text{II}}|$. Both options are incorrect.</p></li>\n<li><p><strong>Option D:</strong> Comparing the magnitudes of internal energy changes, $|\\Delta U_{\\text{II}}| = 707 \\text{ J}$ and $|\\Delta U_{\\text{I}}| = 2806 \\text{ J}$. It is visibly clear that the magnitude of internal energy change in Process II is less than that of Process I. </p></li>\n</ul>\n\n<p><strong>Correct Answer:</strong></p>\n<p><strong>Option D:</strong> Change in internal energy in process II is less than change in internal energy of process I (Only magnitude)</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>300 K पर एकपरमाणुक आदर्श गैस का 1 मोल दो अलग-अलग प्रक्रमों में 1 L से 8 L तक प्रसारित होता है</p><p><b>प्रक्रम I :</b> उत्क्रमणीय रुद्धोष्म प्रसार</p><p><b>प्रक्रम II :</b> 1 atm के नियत बाह्य दाब के विरुद्ध अनुत्क्रमणीय रुद्धोष्म प्रसार (दिया गया है 1 atm L = 101 J)</p><p>सही कथन का चयन कीजिए।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$|W_{\\text{Process I}}| = |W_{\\text{Process II}}|$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$|T_{f_{\\text{Process I}}}| = |T_{f_{\\text{Process II}}}|$ (f $\\to$ अंतिम)</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$|T_{f_{\\text{Process I}}}| > |T_{f_{\\text{Process II}}}|$ (f $\\to$ अंतिम)</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>प्रक्रम II में आंतरिक ऊर्जा में परिवर्तन, प्रक्रम I की आंतरिक ऊर्जा में परिवर्तन से कम है (केवल परिमाण)</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "first-law-of-thermodynamics",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrbul3ge",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Standard heat of formation of ammonia is $-x$ kJ/mol. The heat of reaction when 28 gm of $N_2(g)$ reacted with 6 g of $H_2(g)$ at S.T.P.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$-x$ kJ</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$-2x$ kJ</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$x$ kJ</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$2x$ kJ</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Standard heat of formation of ammonia means the heat change when $1$ mole of $NH_3$ is formed from its elements in their standard states.</p>\n<p>So,</p>\n<p>$$ \\frac{1}{2}N_2(g)+\\frac{3}{2}H_2(g)\\rightarrow NH_3(g) $$</p>\n<p>For formation of $1$ mole of $NH_3$,</p>\n<p>$$ \\Delta H=-x\\ \\text{kJ} $$</p>\n<p>Now given:</p>\n<p>$$ 28\\text{ g of }N_2 = 1\\text{ mole of }N_2 $$</p>\n<p>and</p>\n<p>$$ 6\\text{ g of }H_2 = 3\\text{ moles of }H_2 $$</p>\n<p>The balanced reaction is:</p>\n<p>$$ N_2(g)+3H_2(g)\\rightarrow 2NH_3(g) $$</p>\n<p>Here, $1$ mole of $N_2$ reacts with $3$ moles of $H_2$ to form $2$ moles of $NH_3$.</p>\n<p>Since heat of formation of $1$ mole of $NH_3$ is $-x$ kJ, heat released for formation of $2$ moles of $NH_3$ is:</p>\n<p>$$ 2(-x)=-2x\\ \\text{kJ} $$</p>\n<p>So, the heat of reaction is:</p>\n<p>$$ \\boxed{-2x\\ \\text{kJ}} $$</p>\n<p>Correct option: B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अमोनिया की मानक विरचन ऊष्मा $-x$ kJ/mol है। S.T.P. पर 28 ग्राम $N_2(g)$ की 6 ग्राम $H_2(g)$ के साथ अभिक्रिया होने पर अभिक्रिया की ऊष्मा होगी:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$-x$ kJ</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$-2x$ kJ</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$x$ kJ</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$2x$ kJ</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrbumlsf",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Enthalpy of formation of H<sub>2</sub>O(l), CO<sub>2</sub>(g), and C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>(s) at standard state is x, y, and z kJ/mol. The heat of combustion of C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>(s) at standard state (in kJ/mol) is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>x + y - z</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>6x + 6y - 6z</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>6x + 6y - z</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>x + y - 6z</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For combustion of glucose, the balanced chemical equation is</p>\n<p>$$ \\mathrm{C_6H_{12}O_6(s) + 6O_2(g) \\rightarrow 6CO_2(g) + 6H_2O(l)} $$</p>\n<p>The heat of reaction is found using standard enthalpies of formation:</p>\n<p>$$ \\Delta H^\\circ_{\\text{reaction}} = \\sum \\Delta H_f^\\circ(\\text{products}) - \\sum \\Delta H_f^\\circ(\\text{reactants}) $$</p>\n<p>Given:</p>\n<p>$$ \\Delta H_f^\\circ \\left(\\mathrm{H_2O(l)}\\right) = x $$</p>\n<p>$$ \\Delta H_f^\\circ \\left(\\mathrm{CO_2(g)}\\right) = y $$</p>\n<p>$$ \\Delta H_f^\\circ \\left(\\mathrm{C_6H_{12}O_6(s)}\\right) = z $$</p>\n<p>Also, oxygen is in its standard elemental form, so</p>\n<p>$$ \\Delta H_f^\\circ \\left(\\mathrm{O_2(g)}\\right) = 0 $$</p>\n<p>Now substitute:</p>\n<p>$$ \\Delta H^\\circ_{\\text{combustion}} = \\left[6y + 6x\\right] - \\left[z + 6(0)\\right] $$</p>\n<p>$$ \\Delta H^\\circ_{\\text{combustion}} = 6x + 6y - z $$</p>\n<p>So the correct option is</p>\n<p>$$ \\boxed{6x + 6y - z} $$</p>\n<p>Option C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>मानक अवस्था पर H<sub>2</sub>O(l), CO<sub>2</sub>(g), और C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>(s) की विरचन एन्थैल्पी क्रमशः x, y, और z kJ/mol है। मानक अवस्था पर C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>(s) की दहन ऊष्मा (kJ/mol में) है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>x + y - z</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>6x + 6y - 6z</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>6x + 6y - z</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>x + y - 6z</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrbuo8n8",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>As stated by the second law of thermodynamics, only a portion of heat can be changed into useful work, while the remaining portion</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>changes into electrical energy.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>is necessarily lost as waste.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>adds to the body's weight.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>changes into kinetic energy.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>According to the second law of thermodynamics, a heat engine cannot convert all the heat supplied to it into useful work.</p>\n<p>Only a part of the heat is converted into work. The remaining part is rejected to the surroundings or sink, so it is not available for useful work.</p>\n<p>So the correct option is:</p>\n<p>Option B: is always wasted.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>ऊष्मागतिकी के द्वितीय नियम के अनुसार, ऊष्मा के केवल एक भाग को ही उपयोगी कार्य में बदला जा सकता है, जबकि शेष भाग</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>विद्युत ऊर्जा में बदल जाता है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>अनिवार्य रूप से व्यर्थ हो जाता है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>पिंड के भार को बढ़ाता है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>गतिज ऊर्जा में परिवर्तित हो जाता है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "second-law-of-thermodynamics",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrbuqci3",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>At 273 K and 1 atm, one mole of ice changes to water. The entropies of H<sub>2</sub>O (s) and H<sub>2</sub>O (l) are 38.0 and 58.0 J/K-mol, respectively. The enthalpy change for this process is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>5460 kJ/mol</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>5460 J/mol</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>−5460 J/mol</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>20 J/mol</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For the conversion of ice into water at $273\\ \\text{K}$:</p>\n<p>$$ \\text{H}_2\\text{O}(s) \\rightarrow \\text{H}_2\\text{O}(l) $$</p>\n<p>The entropy change is</p>\n<p>$$ \\Delta S = S_{\\text{liquid}} - S_{\\text{solid}} $$</p>\n<p>Given,</p>\n<p>$$ S_{\\text{solid}} = 38.0\\ \\text{J K}^{-1}\\text{mol}^{-1} $$</p>\n<p>$$ S_{\\text{liquid}} = 58.0\\ \\text{J K}^{-1}\\text{mol}^{-1} $$</p>\n<p>So,</p>\n<p>$$ \\Delta S = 58.0 - 38.0 = 20.0\\ \\text{J K}^{-1}\\text{mol}^{-1} $$</p>\n<p>At the melting point, ice and water are in equilibrium, so</p>\n<p>$$ \\Delta G = 0 $$</p>\n<p>Using</p>\n<p>$$ \\Delta G = \\Delta H - T\\Delta S $$</p>\n<p>we get</p>\n<p>$$ 0 = \\Delta H - T\\Delta S $$</p>\n<p>So,</p>\n<p>$$ \\Delta H = T\\Delta S $$</p>\n<p>Now substitute the values:</p>\n<p>$$ \\Delta H = 273 \\times 20.0 $$</p>\n<p>$$ \\Delta H = 5460\\ \\text{J mol}^{-1} $$</p>\n<p>Since melting of ice is an endothermic process, the enthalpy change is positive.</p>\n<p>So, the correct answer is:</p>\n<p>$$ \\boxed{5460\\ \\text{J mol}^{-1}} $$</p>\n<p>Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>273 K और 1 atm पर, एक मोल बर्फ जल में परिवर्तित होती है। H<sub>2</sub>O (s) और H<sub>2</sub>O (l) की एन्ट्रॉपी क्रमशः 38.0 और 58.0 J/K-mol है। इस प्रक्रम के लिए एन्थैल्पी परिवर्तन है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>5460 kJ/mol</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>5460 J/mol</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>−5460 J/mol</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>20 J/mol</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "entropy-free-energy-change-and-spontaneity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrbusxfv",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>At 298 K, the solubility of NaCl(s) in water is nearly 6 moles per litre. Now, if 1 mole of NaCl(s) is put into 1 litre of water, then for the reaction:</p>\n<p>NaCl(s) + H<sub>2</sub>O &rarr; NaCl(aq)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\Delta G > 0$, $\\Delta S > 0$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\Delta G < 0$, $\\Delta S > 0$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\Delta G > 0$, $\\Delta S < 0$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\Delta G < 0$, $\\Delta S < 0$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Since the solubility of NaCl in water at $298\\ \\text{K}$ is about $6\\ \\text{mol L}^{-1}$, adding only $1$ mole of NaCl to $1$ litre of water means the salt will dissolve completely.</p>\n<p>If a process happens on its own under the given conditions, then</p>\n<p>$$ \\Delta G < 0 $$</p>\n<p>So, for dissolving $1$ mole of NaCl in $1$ litre of water, the Gibbs free energy change is negative.</p>\n<p>Now think about entropy. When solid NaCl dissolves, the ordered crystal lattice breaks and the ions spread into the solution. This increases randomness of the system. So,</p>\n<p>$$ \\Delta S > 0 $$</p>\n<p>Hence the correct option is:</p>\n<p>$$ \\boxed{\\text{Option B: } \\Delta G < 0,\\ \\Delta S > 0} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>298 K पर, जल में NaCl(s) की विलेयता लगभग 6 मोल प्रति लीटर है। अब, यदि 1 मोल NaCl(s) को 1 लीटर जल में डाला जाता है, तो अभिक्रिया के लिए:</p> <p>NaCl(s) + H<sub>2</sub>O &rarr; NaCl(aq)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\Delta G > 0$, $\\Delta S > 0$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\Delta G < 0$, $\\Delta S > 0$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\Delta G > 0$, $\\Delta S < 0$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\Delta G < 0$, $\\Delta S < 0$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "entropy-free-energy-change-and-spontaneity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrbuw1u1",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A reaction cannot be spontaneous if</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>both $\\Delta H$ and $\\Delta S$ have negative values.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\Delta H$ and $\\Delta S$ have positive values.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\Delta H$ has a negative value and $\\Delta S$ has a positive value.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\Delta H$ has a positive value and $\\Delta S$ has a negative value.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For a reaction to be spontaneous, Gibbs free energy should be negative:</p>\n<p>$$ \\Delta G = \\Delta H - T\\Delta S $$</p>\n<p>Now check each case.</p>\n<p>If $\\Delta H < 0$ and $\\Delta S > 0$, then</p>\n<p>$$ \\Delta G = \\text{negative} - T(\\text{positive}) $$</p>\n<p>So $\\Delta G$ is always negative. The reaction is always spontaneous.</p>\n<p>If $\\Delta H > 0$ and $\\Delta S < 0$, then</p>\n<p>$$ \\Delta G = \\text{positive} - T(\\text{negative}) = \\text{positive} + \\text{positive} $$</p>\n<p>So $\\Delta G$ is always positive. The reaction can never be spontaneous.</p>\n<p>That means a spontaneous reaction is impossible when $\\Delta H$ is positive and $\\Delta S$ is negative.</p>\n<p>$$ \\boxed{\\text{Option D}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक अभिक्रिया स्वतः प्रवर्तित नहीं हो सकती है यदि</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\Delta H$ और $\\Delta S$ दोनों के मान ऋणात्मक हों।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\Delta H$ और $\\Delta S$ के मान धनात्मक हों।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\Delta H$ का मान ऋणात्मक और $\\Delta S$ का मान धनात्मक हो।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\Delta H$ का मान धनात्मक और $\\Delta S$ का मान ऋणात्मक हो।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "entropy-free-energy-change-and-spontaneity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrbv1a2v",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Ethyl chloride is formed when ethene reacts with hydrogen chloride as follows</p>\n<p>$\\mathrm{C}_2\\mathrm{H}_4(g) + \\mathrm{HCl}(g) \\rightarrow \\mathrm{C}_2\\mathrm{H}_5\\mathrm{Cl}(g): \\Delta H = -72.3\\ \\mathrm{kJ}$</p>\n<p>Find the value of $\\Delta U$ (in kJ) when 70 g of ethene and 73 g of HCl are made to react at 25$^\\circ$C.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>-69.8</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>-180.75</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>-174.5</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>-139.6</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For the reaction</p>\n<p>$$ \\mathrm{C}_2\\mathrm{H}_4(g) + \\mathrm{HCl}(g) \\rightarrow \\mathrm{C}_2\\mathrm{H}_5\\mathrm{Cl}(g) $$</p>\n<p>given,</p>\n<p>$$ \\Delta H = -72.3\\ \\text{kJ} $$</p>\n<p>We need to find $\\Delta U$ at $25^\\circ \\text{C}$.</p>\n<p>The relation between $\\Delta H$ and $\\Delta U$ is</p>\n<p>$$ \\Delta H = \\Delta U + \\Delta n_g RT $$</p>\n<p>so,</p>\n<p>$$ \\Delta U = \\Delta H - \\Delta n_g RT $$</p>\n\n<p>On the reactant side, moles of gaseous substances $= 2$</p>\n<p>On the product side, moles of gaseous substances $= 1$</p>\n<p>So,</p>\n<p>$$ \\Delta n_g = 1 - 2 = -1 $$</p>\n<p>Now for one mole of reaction,</p>\n<p>$$ \\Delta U = -72.3 - (-1)\\times R \\times T $$</p>\n<p>At $25^\\circ\\text{C} = 298\\ \\text{K}$ and $R = 8.314\\ \\text{J mol}^{-1}\\text{K}^{-1}$,</p>\n<p>$$ RT = 8.314 \\times 298 = 2477.6\\ \\text{J} = 2.48\\ \\text{kJ} $$</p>\n<p>So,</p>\n<p>$$ \\Delta U = -72.3 + 2.48 = -69.82\\ \\text{kJ} $$</p>\n<p>This is for 1 mole of reaction.</p>\n<p>Now check the given amounts.</p>\n<p>Moles of ethylene:</p>\n<p>$$ \\frac{70}{28} = 2.5\\ \\text{mol} $$</p>\n<p>Moles of HCl:</p>\n<p>$$ \\frac{73}{36.5} = 2.0\\ \\text{mol} $$</p>\n<p>Reaction is in the ratio $1:1$, so HCl is the limiting reagent.</p>\n<p>Hence, number of moles of reaction $= 2$.</p>\n<p>So total $\\Delta U$ is</p>\n<p>$$ \\Delta U_{\\text{total}} = 2 \\times (-69.82) = -139.64\\ \\text{kJ} $$</p>\n<p>So the correct answer is</p>\n<p>$$ \\boxed{-139.6\\ \\text{kJ}} $$</p>\n<p>Option D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एथिल क्लोराइड तब बनता है जब एथीन हाइड्रोजन क्लोराइड के साथ निम्न प्रकार से अभिक्रिया करता है:</p><p>$\\mathrm{C}_2\\mathrm{H}_4(g) + \\mathrm{HCl}(g) \\rightarrow \\mathrm{C}_2\\mathrm{H}_5\\mathrm{Cl}(g): \\Delta H = -72.3\\ \\mathrm{kJ}$</p><p>जब 25$^\\circ$C पर 70 g एथीन और 73 g HCl की अभिक्रिया कराई जाती है, तो $\\Delta U$ का मान (kJ में) ज्ञात कीजिए।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>-69.8</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>-180.75</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>-174.5</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>-139.6</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrbv50b8",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the neutralization of a strong acid with a strong base, the enthalpy change is $-57.32$ kJ mol<sup>−1</sup>. The enthalpy of formation of water is $-285.84$ kJ mol<sup>−1</sup>. The enthalpy of formation of aqueous hydroxyl ion is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>+228.52 kJ/mol</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>−114.26 kJ/mol</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>−228.52 kJ/mol</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>+114.2 kJ/mol</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For a strong acid and a strong base, the neutralization reaction is</p>\n<p>$$ \\mathrm{H^+(aq) + OH^-(aq) \\rightarrow H_2O(l)} $$</p>\n<p>Its enthalpy change is given as</p>\n<p>$$ \\Delta H = -57.32\\ \\text{kJ mol}^{-1} $$</p>\n<p>Now use enthalpy of formation relation:</p>\n<p>$$ \\Delta H = \\Delta H_f^\\circ(\\text{products}) - \\Delta H_f^\\circ(\\text{reactants}) $$</p>\n<p>So,</p>\n<p>$$ -57.32 = \\Delta H_f^\\circ(H_2O) - \\left[\\Delta H_f^\\circ(H^+) + \\Delta H_f^\\circ(OH^-)\\right] $$</p>\n<p>We know:</p>\n<p>$$ \\Delta H_f^\\circ(H_2O) = -285.84\\ \\text{kJ mol}^{-1} $$</p>\n<p>Also, for hydrogen ion in aqueous state,</p>\n<p>$$ \\Delta H_f^\\circ(H^+) = 0 $$</p>\n<p>Putting these values:</p>\n<p>$$ -57.32 = -285.84 - \\Delta H_f^\\circ(OH^-) $$</p>\n<p>Rearranging,</p>\n<p>$$ \\Delta H_f^\\circ(OH^-) = -285.84 + 57.32 $$</p>\n<p>$$ \\Delta H_f^\\circ(OH^-) = -228.52\\ \\text{kJ mol}^{-1} $$</p>\n<p>So the correct answer is:</p>\n<p>$$ \\boxed{-228.52\\ \\text{kJ mol}^{-1}} $$</p>\n<p>Option C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक प्रबल अम्ल के एक प्रबल क्षार के साथ उदासीनीकरण के लिए, एन्थैल्पी परिवर्तन $-57.32$ kJ mol<sup>−1</sup> है। जल की विरचन एन्थैल्पी (enthalpy of formation) $-285.84$ kJ mol<sup>−1</sup> है। जलीय हाइड्रॉक्सिल आयन की विरचन एन्थैल्पी है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>+228.52 kJ/mol</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>−114.26 kJ/mol</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>−228.52 kJ/mol</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>+114.2 kJ/mol</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrbvipog",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Find the enthalpy of formation (in kcal/mol) of HI(g) using the data given below.</p>\n<p>H<sub>2</sub>(g) + Cl<sub>2</sub>(g) &rarr; 2HCl(g): &Delta;H = -44.20 kcal</p>\n<p>HCl(g) + aq &rarr; HCl(aq): &Delta;H = -17.31 kcal</p>\n<p>HI(g) + aq &rarr; HI(aq): &Delta;H = -19.21 kcal</p>\n<p>KOH(aq) + HCl(aq) &rarr; KCl(aq): &Delta;H = -13.74 kcal</p>\n<p>KOH(aq) + HI(aq) &rarr; KI(aq): &Delta;H = -13.67 kcal</p>\n<p>Cl<sub>2</sub>(g) + 2KI(aq) &rarr; 2KCl(aq) + I<sub>2</sub>(s): &Delta;H = -52.42 kcal</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>+19.21</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>-32.87</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>+5.94</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>+7.82</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>We need the enthalpy of formation of $HI(g)$, that is for the reaction</p>\n<p>$$\\frac{1}{2}H_2(g)+\\frac{1}{2}I_2(s)\\rightarrow HI(g)$$</p>\n<p>We will use Hess’s law and build this reaction from the given equations.</p>\n\n<p>$$H_2(g)+Cl_2(g)\\rightarrow 2HCl(g), \\quad \\Delta H=-44.20\\ \\text{kcal}$$</p>\n<p>for $1$ mole of $HCl(g)$:</p>\n<p>$$\\frac{1}{2}H_2(g)+\\frac{1}{2}Cl_2(g)\\rightarrow HCl(g), \\quad \\Delta H=-22.10$$</p>\n<p>Now convert $HCl(g)$ into $HCl(aq)$:</p>\n<p>$$HCl(g)\\rightarrow HCl(aq), \\quad \\Delta H=-17.31$$</p>\n<p>Adding these two,</p>\n<p>$$\\frac{1}{2}H_2(g)+\\frac{1}{2}Cl_2(g)\\rightarrow HCl(aq)$$</p>\n<p>$$\\Delta H=-22.10-17.31=-39.41\\ \\text{kcal}$$</p>\n<p>Now use the neutralisation reaction:</p>\n<p>$$KOH(aq)+HCl(aq)\\rightarrow KCl(aq), \\quad \\Delta H=-13.74$$</p>\n<p>Reverse it:</p>\n<p>$$KCl(aq)\\rightarrow KOH(aq)+HCl(aq), \\quad \\Delta H=+13.74$$</p>\n<p>Adding with the previous result, $HCl(aq)$ cancels:</p>\n<p>$$\\frac{1}{2}H_2(g)+\\frac{1}{2}Cl_2(g)+KOH(aq)\\rightarrow KCl(aq)$$</p>\n<p>$$\\Delta H=-39.41-13.74=-53.15\\ \\text{kcal}$$</p>\n<p>Now take</p>\n<p>$$Cl_2(g)+2KI(aq)\\rightarrow 2KCl(aq)+I_2(s), \\quad \\Delta H=-52.42$$</p>\n<p>Divide by $2$:</p>\n<p>$$\\frac{1}{2}Cl_2(g)+KI(aq)\\rightarrow KCl(aq)+\\frac{1}{2}I_2(s), \\quad \\Delta H=-26.21$$</p>\n<p>Reverse it:</p>\n<p>$$KCl(aq)+\\frac{1}{2}I_2(s)\\rightarrow \\frac{1}{2}Cl_2(g)+KI(aq), \\quad \\Delta H=+26.21$$</p>\n<p>Add this to the earlier equation:</p>\n<p>$$\\frac{1}{2}H_2(g)+KOH(aq)+\\frac{1}{2}I_2(s)\\rightarrow KI(aq)$$</p>\n<p>$$\\Delta H=-53.15+26.21=-26.94\\ \\text{kcal}$$</p>\n<p>Now use</p>\n<p>$$KOH(aq)+HI(aq)\\rightarrow KI(aq), \\quad \\Delta H=-13.67$$</p>\n<p>Reverse it:</p>\n<p>$$KI(aq)\\rightarrow KOH(aq)+HI(aq), \\quad \\Delta H=+13.67$$</p>\n<p>Add:</p>\n<p>$$\\frac{1}{2}H_2(g)+\\frac{1}{2}I_2(s)\\rightarrow HI(aq)$$</p>\n<p>$$\\Delta H=-26.94+13.67=-13.27\\ \\text{kcal}$$</p>\n<p>Now convert aqueous $HI$ to gaseous $HI$.</p>\n<p>Given:</p>\n<p>$$HI(g)\\rightarrow HI(aq), \\quad \\Delta H=-19.21$$</p>\n<p>Reverse it:</p>\n<p>$$HI(aq)\\rightarrow HI(g), \\quad \\Delta H=+19.21$$</p>\n<p>Add this:</p>\n<p>$$\\frac{1}{2}H_2(g)+\\frac{1}{2}I_2(s)\\rightarrow HI(g)$$</p>\n<p>$$\\Delta H=-13.27+19.21=+5.94\\ \\text{kcal/mol}$$</p>\n<p>So the enthalpy of formation of $HI(g)$ is</p>\n<p>$$\\boxed{+5.94\\ \\text{kcal/mol}}$$</p>\n<p>Correct option: $C$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>नीचे दिए गए आँकड़ों का उपयोग करके HI(g) की संभवन एन्थैल्पी (kcal/mol में) ज्ञात कीजिए।</p>\n<p>H<sub>2</sub>(g) + Cl<sub>2</sub>(g) &rarr; 2HCl(g): &Delta;H = -44.20 kcal</p>\n<p>HCl(g) + aq &rarr; HCl(aq): &Delta;H = -17.31 kcal</p>\n<p>HI(g) + aq &rarr; HI(aq): &Delta;H = -19.21 kcal</p>\n<p>KOH(aq) + HCl(aq) &rarr; KCl(aq): &Delta;H = -13.74 kcal</p>\n<p>KOH(aq) + HI(aq) &rarr; KI(aq): &Delta;H = -13.67 kcal</p>\n<p>Cl<sub>2</sub>(g) + 2KI(aq) &rarr; 2KCl(aq) + I<sub>2</sub>(s): &Delta;H = -52.42 kcal</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>+19.21</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>-32.87</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>+5.94</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>+7.82</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrbvpffd",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\mathrm{C_2H_6\\ (g) + 3.5\\ O_2\\ (g) \\rightarrow 2CO_2(g) + 3H_2O(g)}$</p><p>$\\Delta S_{vap}\\ (H_2O, l) = x_1 \\ \\text{cal}\\ K^{-1}$ (boiling point = $T_1$)</p><p>$\\Delta H_f (H_2O, l) = x_2$</p><p>$\\Delta H_f (CO_2) = x_3$</p><p>$\\Delta H_f (C_2H_6) = x_4$</p><p>Hence, $\\Delta H$ for the reaction is:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2x_3 + 3x_2 - x_4$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2x_3 + 3x_2 - x_4 + 3x_1 T_1$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2x_3 + 3x_2 - x_4 = 3x_1 T_1$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$x_1 T_1 + x_2 + x_3 - x_4$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For the reaction</p>\n<p>$$\\mathrm{C_2H_6(g) + \\frac{7}{2}O_2(g) \\rightarrow 2CO_2(g) + 3H_2O(g)}$$</p>\n<p>we need $\\Delta H$ of reaction.</p>\n<p>We are given:</p>\n<ul>\n<li><p>$\\Delta H_f\\big(\\mathrm{H_2O(l)}\\big) = x_2$</p></li>\n<li><p>$\\Delta H_f\\big(\\mathrm{CO_2(g)}\\big) = x_3$</p></li>\n<li><p>$\\Delta H_f\\big(\\mathrm{C_2H_6(g)}\\big) = x_4$</p></li>\n<li><p>$\\Delta S_{vap}\\big(\\mathrm{H_2O(l)}\\big) = x_1$ at boiling point $T_1$</p></li>\n</ul>\n<p>The important point is that in the reaction, water is formed as gas, but the given enthalpy of formation is for $\\mathrm{H_2O(l)}$.</p>\n<p>So first we find enthalpy of vaporisation of water.</p>\n<p>At boiling point,</p>\n<p>$$\\Delta G_{vap} = 0$$</p>\n<p>So,</p>\n<p>$$\\Delta H_{vap} = T_1 \\Delta S_{vap} = T_1 x_1$$</p>\n<p>Hence,</p>\n<p>$$\\Delta H_f\\big(\\mathrm{H_2O(g)}\\big) = \\Delta H_f\\big(\\mathrm{H_2O(l)}\\big) + \\Delta H_{vap}$$</p>\n<p>$$= x_2 + x_1 T_1$$</p>\n<p>Now use</p>\n<p>$$\\Delta H_{reaction} = \\sum \\Delta H_f(\\text{products}) - \\sum \\Delta H_f(\\text{reactants})$$</p>\n<p>For products:</p>\n<p>$$2\\Delta H_f(\\mathrm{CO_2}) + 3\\Delta H_f(\\mathrm{H_2O(g)})$$</p>\n<p>$$= 2x_3 + 3(x_2 + x_1T_1)$$</p>\n<p>For reactants:</p>\n<p>$$\\Delta H_f(\\mathrm{C_2H_6}) + \\frac{7}{2}\\Delta H_f(\\mathrm{O_2})$$</p>\n<p>Since $\\Delta H_f(\\mathrm{O_2}) = 0$,</p>\n<p>$$= x_4$$</p>\n<p>So,</p>\n<p>$$\\Delta H = 2x_3 + 3(x_2 + x_1T_1) - x_4$$</p>\n<p>$$\\Delta H = 2x_3 + 3x_2 - x_4 + 3x_1T_1$$</p>\n<p>So the correct option is</p>\n<p>$$\\boxed{2x_3 + 3x_2 - x_4 + 3x_1T_1}$$</p>\n<p>Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\mathrm{C_2H_6\\ (g) + 3.5\\ O_2\\ (g) \\rightarrow 2CO_2(g) + 3H_2O(g)}$</p><p>$\\Delta S_{vap}\\ (H_2O, l) = x_1 \\ \\text{cal}\\ K^{-1}$ (क्वथनांक = $T_1$)</p><p>$\\Delta H_f (H_2O, l) = x_2$</p><p>$\\Delta H_f (CO_2) = x_3$</p><p>$\\Delta H_f (C_2H_6) = x_4$</p><p>अतः, अभिक्रिया के लिए $\\Delta H$ है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$2x_3 + 3x_2 - x_4$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$2x_3 + 3x_2 - x_4 + 3x_1 T_1$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2x_3 + 3x_2 - x_4 = 3x_1 T_1$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$x_1 T_1 + x_2 + x_3 - x_4$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrbvtmlh",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>One mole of an ideal monoatomic gas expands reversibly and adiabatically from a volume of $x$ litre to 14 litre at $27^{\\circ} \\mathrm{C}$. Then value of $x$ will be [Given, final temperature 189 K and $\\mathrm{C}_{\\mathrm{v}}=3 / 2 \\mathrm{R}$ ].</p>",
+                "options": [],
+                "answer": "7",
+                "explanation": "<p>For a reversible adiabatic process of an ideal gas,</p>\n<p>$$ T V^{\\gamma-1}=\\text{constant} $$</p>\n<p>For a monoatomic gas,</p>\n<p>$$ C_v=\\frac{3}{2}R \\quad \\Rightarrow \\quad C_p=C_v+R=\\frac{5}{2}R $$</p>\n<p>So,</p>\n<p>$$ \\gamma=\\frac{C_p}{C_v}=\\frac{\\frac{5}{2}R}{\\frac{3}{2}R}=\\frac{5}{3} $$</p>\n<p>Now use</p>\n<p>$$ T_1 V_1^{\\gamma-1}=T_2 V_2^{\\gamma-1} $$</p>\n<p>Given:</p>\n<p>$$ T_1=27^\\circ C=300\\text{ K}, \\quad T_2=189\\text{ K}, \\quad V_2=14\\text{ L} $$</p>\n<p>and</p>\n<p>$$ \\gamma-1=\\frac{5}{3}-1=\\frac{2}{3} $$</p>\n<p>So,</p>\n<p>$$ 300 \\, x^{2/3}=189 \\times 14^{2/3} $$</p>\n\n<p>$$ x^{2/3}=\\frac{189}{300}\\times 14^{2/3} $$</p>\n<p>$$ x^{2/3}=\\frac{63}{100}\\times 14^{2/3} $$</p>\n\n<p>$$ x=\\left(\\frac{189}{300}\\right)^{3/2}\\times 14 $$</p>\n\n<p>$$ x=(0.63)^{3/2}\\times 14 $$</p>\n<p>Also,</p>\n<p>$$ (0.63)^{3/2}=(\\sqrt{0.63})^3 \\approx (0.794)^3 \\approx 0.5 $$</p>\n<p>Hence,</p>\n<p>$$ x \\approx 0.5 \\times 14=7 $$</p>\n<p>So the value of $x$ is</p>\n<p>$$ \\boxed{7\\text{ litre}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक आदर्श एकपरमाणुक गैस का एक मोल $27^{\\circ} \\mathrm{C}$ पर उत्क्रमणीय और रुद्धोष्म रूप से $x$ लीटर के आयतन से 14 लीटर तक प्रसारित होता है। तो $x$ का मान होगा [दिया गया है, अंतिम तापमान 189 K और $\\mathrm{C}_{\\mathrm{v}}=3 / 2 \\mathrm{R}$]।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "first-law-of-thermodynamics",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrbvx0rk",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Heat of neutralisation of oxalic acid is $-53.35 \\mathrm{~kJ} / \\mathrm{g}$.eq. using NaOH . Calculate the value of $\\Delta \\mathrm{H}$ for the given reaction. (Round off to nearest integer)</p>\n<p>$$ \\mathrm{H}_2 \\mathrm{C}_2 \\mathrm{O}_4 \\rightleftharpoons \\mathrm{C}_2 \\mathrm{O}_4^{2-}+2 \\mathrm{H}^{+} $$</p>",
+                "options": [],
+                "answer": "8",
+                "explanation": "<p>For a strong base like NaOH, the heat of neutralisation of a strong acid is about</p>\n<p>$$ \\mathrm{H}^{+}(aq)+\\mathrm{OH}^{-}(aq)\\rightarrow \\mathrm{H_2O}(l), \\qquad \\Delta H=-57.3\\ \\text{kJ g.eq}^{-1} $$</p>\n<p>Given for oxalic acid, heat of neutralisation is</p>\n<p>$$ -53.35\\ \\text{kJ g.eq}^{-1} $$</p>\n<p>Since oxalic acid is a weak acid, some heat is used in ionising it first. So,</p>\n<p>$$ \\Delta H_{\\text{ionisation}}+\\Delta H_{\\text{neutralisation (strong acid-strong base)}}=\\Delta H_{\\text{neutralisation of oxalic acid}} $$</p>\n<p>So for $1$ gram equivalent,</p>\n<p>$$ \\Delta H_{\\text{ionisation}}+(-57.3)=-53.35 $$</p>\n<p>$$ \\Delta H_{\\text{ionisation}}=+3.95\\ \\text{kJ g.eq}^{-1} $$</p>\n<p>Now the given reaction is</p>\n<p>$$ \\mathrm{H_2C_2O_4}\\rightarrow \\mathrm{C_2O_4^{2-}}+2\\mathrm{H^+} $$</p>\n<p>Oxalic acid gives $2$ moles of $\\mathrm{H^+}$, so for $1$ mole of oxalic acid there are $2$ gram equivalents.</p>\n<p>Hence total enthalpy change is</p>\n<p>$$ \\Delta H=2\\times 3.95=7.9\\ \\text{kJ mol}^{-1} $$</p>\n<p>Rounded to nearest integer,</p>\n<p>$$ \\boxed{+8\\ \\text{kJ mol}^{-1}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>NaOH का उपयोग करते हुए ऑक्सेलिक अम्ल की उदासीनीकरण ऊष्मा $-53.35 \\mathrm{~kJ} / \\mathrm{g}$.eq. है। दी गई अभिक्रिया के लिए $\\Delta \\mathrm{H}$ के मान की गणना कीजिए। (निकटतम पूर्णांक तक पूर्णांकित करें)</p><p>$$ \\mathrm{H}_2 \\mathrm{C}_2 \\mathrm{O}_4 \\rightleftharpoons \\mathrm{C}_2 \\mathrm{O}_4^{2-}+2 \\mathrm{H}^{+} $$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrbw1m5x",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The chemical reaction : $\\mathrm{A} \\rightarrow \\mathrm{P}, \\Delta \\mathrm{H}^{\\circ}=2.8 \\mathrm{~kJ}$ is spontaneous only above 400 K . Therefore $\\Delta \\mathrm{S}$ of reaction must be at least ( $\\mathrm{JK}^{-1}$ ).</p>",
+                "options": [],
+                "answer": "7",
+                "explanation": "<p>For spontaneity, the condition is</p>\n<p>$$ \\Delta G = \\Delta H - T\\Delta S < 0 $$</p>\n<p>Here, the reaction is spontaneous only above $400\\ \\text{K}$.  </p>\n<p>So at the limiting temperature $T = 400\\ \\text{K}$, we take</p>\n<p>$$ \\Delta G = 0 $$</p>\n<p>Then,</p>\n<p>$$ \\Delta H = T\\Delta S $$</p>\n<p>Given,</p>\n<p>$$ \\Delta H = 2.8\\ \\text{kJ} = 2800\\ \\text{J} $$</p>\n<p>So,</p>\n<p>$$ \\Delta S = \\frac{\\Delta H}{T} = \\frac{2800}{400} = 7\\ \\text{J K}^{-1} $$</p>\n<p>Since the reaction is spontaneous only above $400\\ \\text{K}$, $\\Delta S$ must be at least</p>\n<p>$$ 7\\ \\text{J K}^{-1} $$</p>\n<p>So the answer is:</p>\n<p>$$ \\boxed{7\\ \\text{J K}^{-1}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>रासायनिक अभिक्रिया : $\\mathrm{A} \\rightarrow \\mathrm{P}, \\Delta \\mathrm{H}^{\\circ}=2.8 \\mathrm{~kJ}$ केवल 400 K से ऊपर स्वतः प्रवर्तित है। इसलिए अभिक्रिया का $\\Delta \\mathrm{S}$ कम से कम ( $\\mathrm{JK}^{-1}$ ) होना चाहिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "entropy-free-energy-change-and-spontaneity",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrbw47lv",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The lattice energy of $\\mathrm{NaCl}(s)$ is $-790 \\mathrm{~kJ} \\mathrm{~mol}^{-1}$ and the hydration enthalpy is $-785 \\mathrm{~kJ} \\mathrm{~mol}^{-1}$. Find the enthalpy of solution of $\\mathrm{NaCl}(s)$.</p>",
+                "options": [],
+                "answer": "5",
+                "explanation": "<p>For dissolving $\\mathrm{NaCl}(s)$ in water, we use the relation</p>\n<p>$$ \\Delta H_{\\text{solution}}=\\Delta H_{\\text{lattice dissociation}}+\\Delta H_{\\text{hydration}} $$</p>\n<p>Here, lattice energy is given as $-790\\ \\mathrm{kJ\\,mol^{-1}}$.</p>\n<p>This value is for lattice formation.  </p>\n<p>So, for breaking the lattice during dissolution, the enthalpy will be the opposite:</p>\n<p>$$ \\Delta H_{\\text{lattice dissociation}}=+790\\ \\mathrm{kJ\\,mol^{-1}} $$</p>\n<p>Enthalpy of hydration is given as</p>\n<p>$$ \\Delta H_{\\text{hydration}}=-785\\ \\mathrm{kJ\\,mol^{-1}} $$</p>\n<p>Now,</p>\n<p>$$ \\Delta H_{\\text{solution}}=790+(-785) $$</p>\n<p>$$ \\Delta H_{\\text{solution}}=+5\\ \\mathrm{kJ\\,mol^{-1}} $$</p>\n<p>So, the enthalpy of solution of $\\mathrm{NaCl}(s)$ is</p>\n<p>$$ \\boxed{+5\\ \\mathrm{kJ\\,mol^{-1}}} $$</p>\n<p>This means dissolution of $\\mathrm{NaCl}$ is slightly endothermic.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\mathrm{NaCl}(s)$ की जालक ऊर्जा $-790 \\mathrm{~kJ} \\mathrm{~mol}^{-1}$ और जलयोजन एन्थैल्पी $-785 \\mathrm{~kJ} \\mathrm{~mol}^{-1}$ है। $\\mathrm{NaCl}(s)$ की विलयन एन्थैल्पी ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrbw7wfb",
+            "chapter": "thermodynamics",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For KCl, the Born-Haber cycle is considered using the following data</p>\n<p>$$ \\Delta_f H^{\\circ} \\text { of } \\mathrm{KCl}=-436.7 \\mathrm{~kJ} \\mathrm{~mol}^{-1} ; \\Delta_{\\mathrm{Sub}} H^{\\circ} \\text { of } K=89.2 \\mathrm{~kJ} \\mathrm{~mol}^{-1} $$</p>\n<p>$\\Delta_{\\text {Ionization }} H^{\\circ}$ for $K=419.0 \\mathrm{~kJ} \\mathrm{~mol}^{-1}$; $\\Delta_{\\text {Electron gain }} H^{\\circ}$ for $\\mathrm{Cl}(\\mathrm{g})=-348.6 \\mathrm{~kJ} \\mathrm{~mol}^{-1}$;</p>\n<p>$$ \\Delta_{\\text {Bond }} H^{\\circ} \\text { of } \\mathrm{Cl}_2=243.0 \\mathrm{~kJ} \\mathrm{~mol}^{-1} $$</p>\n<p>The value of the lattice enthalpy of KCl in $\\mathrm{kJ} \\mathrm{mol}^{-1}$ is $\\_\\_\\_\\_$ . (Nearest integer)</p>",
+                "options": [],
+                "answer": "718",
+                "explanation": "<p>For the Born–Haber cycle of $\\mathrm{KCl}$, we write all the changes needed to form $\\mathrm{KCl(s)}$ from its elements:</p>\n<p>$$ \\mathrm{K(s) + \\frac{1}{2}Cl_2(g) \\rightarrow KCl(s)} $$</p>\n<p>Given,</p>\n<p>$$ \\Delta_f H^\\circ = -436.7\\ \\mathrm{kJ\\,mol^{-1}} $$</p>\n\n<ol>\n<li>Sublimation of potassium:</li>\n</ol>\n<p>$$ \\mathrm{K(s) \\rightarrow K(g)} \\qquad \\Delta H = 89.2 $$</p>\n<ol start=\"2\">\n<li>Ionization of potassium:</li>\n</ol>\n<p>$$ \\mathrm{K(g) \\rightarrow K^+(g) + e^-} \\qquad \\Delta H = 419.0 $$</p>\n<ol start=\"3\">\n<li>Dissociation of chlorine:</li>\n</ol>\n<p>Since only $\\frac{1}{2}\\mathrm{Cl_2}$ is needed,</p>\n<p>$$ \\mathrm{\\frac{1}{2}Cl_2(g) \\rightarrow Cl(g)} \\qquad \\Delta H = \\frac{243.0}{2} = 121.5 $$</p>\n<ol start=\"4\">\n<li>Electron gain by chlorine:</li>\n</ol>\n<p>$$ \\mathrm{Cl(g) + e^- \\rightarrow Cl^-(g)} \\qquad \\Delta H = -348.6 $$</p>\n<ol start=\"5\">\n<li>Formation of solid crystal from gaseous ions:</li>\n</ol>\n<p>$$ \\mathrm{K^+(g) + Cl^-(g) \\rightarrow KCl(s)} \\qquad \\Delta H = -U $$</p>\n<p>Here, $U$ is the magnitude of lattice enthalpy.</p>\n<p>Now apply Hess’s law:</p>\n<p>$$ -436.7 = 89.2 + 419.0 + 121.5 - 348.6 - U $$</p>\n\n<p>$$\\Rightarrow $$ $$ -436.7 = 281.1 - U $$</p>\n<p>$$\\Rightarrow $$$$ U = 281.1 + 436.7 = 717.8 $$</p>\n<p>Nearest integer:</p>\n<p>$$ \\boxed{718\\ \\mathrm{kJ\\,mol^{-1}}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित आँकड़ों का उपयोग करते हुए KCl के लिए बॉर्न-हैबर चक्र पर विचार किया जाता है</p>\n<p>$$ \\Delta_f H^{\\circ} \\text { of } \\mathrm{KCl}=-436.7 \\mathrm{~kJ} \\mathrm{~mol}^{-1} ; \\Delta_{\\mathrm{Sub}} H^{\\circ} \\text { of } K=89.2 \\mathrm{~kJ} \\mathrm{~mol}^{-1} $$</p>\n<p>$\\Delta_{\\text {Ionization }} H^{\\circ}$, $K=419.0 \\mathrm{~kJ} \\mathrm{~mol}^{-1}$ के लिए; \\(\\Delta_{\\text {Electron gain }} H^{\\circ}\\), $\\mathrm{Cl}(\\mathrm{g})=-348.6 \\mathrm{~kJ} \\mathrm{~mol}^{-1}$ के लिए;</p>\n<p>$$ \\Delta_{\\text {Bond }} H^{\\circ} \\text { of } \\mathrm{Cl}_2=243.0 \\mathrm{~kJ} \\mathrm{~mol}^{-1} $$</p>\n<p>$\\mathrm{kJ} \\mathrm{mol}^{-1}$ में KCl की जालक एन्थैल्पी का मान $\\____$ है। (निकटतम पूर्णांक)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "reactions-related-to-enthalpies-and-hesss-law",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Questions from all topics of the chapter",
+    "timeAllotted": 3600000,
+    "title": "Thermodynamics - Chapter Test",
+    "totalQuestions": 25,
+    "type": "chapter",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mpcyd3su",
+    "defaultLanguage": "en",
+    "description": "Questions from all topics of the chapter",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-08T10:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 100,
+    "maxNegMarks": 25,
+    "policy": "jee-main",
+    "syllabus": "Questions from all topics of the chapter",
+    "timeAllotted": 3600000,
+    "title": "Thermodynamics - Chapter Test",
+    "totalQuestions": 25,
+    "type": "chapter",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Thermodynamics"
+  }
+}

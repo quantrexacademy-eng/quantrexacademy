@@ -1,0 +1,66 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b34d4b564dfab4f94cc",
+  "chapterId": "66d58536a75f05ee8564f546",
+  "subject": "Physics",
+  "chapter": "Thermodynamics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d58698a75f05ee85650293",
+      "title": "Thermodynamic Systems",
+      "count": 4,
+      "questionIds": [
+        "66d58647a75f05ee8564ff3b",
+        "66d58647a75f05ee8564ff3a",
+        "66d585a5a75f05ee8564f95b",
+        "66d5853ba75f05ee8564f578"
+      ]
+    },
+    {
+      "id": "66d58697a75f05ee85650292",
+      "title": "First Law of Thermodynamics",
+      "count": 3,
+      "questionIds": [
+        "66d5860ba75f05ee8564fd14",
+        "66d58557a75f05ee8564f688",
+        "66d58536a75f05ee8564f544"
+      ]
+    },
+    {
+      "id": "66d58698a75f05ee85650294",
+      "title": "Thermodynamic Processes",
+      "count": 14,
+      "questionIds": [
+        "66d58644a75f05ee8564ff25",
+        "66d58635a75f05ee8564fe95",
+        "66d58623a75f05ee8564fdf3",
+        "66d58623a75f05ee8564fdef",
+        "66d5860fa75f05ee8564fd35",
+        "66d5860fa75f05ee8564fd34",
+        "66d5860ba75f05ee8564fd0d",
+        "66d585fca75f05ee8564fc85",
+        "66d585b4a75f05ee8564f9ed",
+        "66d585a5a75f05ee8564f95f",
+        "66d5858ba75f05ee8564f874",
+        "66d5857ba75f05ee8564f7d9",
+        "66d5856aa75f05ee8564f740",
+        "66d5856aa75f05ee8564f73d"
+      ]
+    },
+    {
+      "id": "66d58698a75f05ee85650295",
+      "title": "Heat Engine, Refrigerator and Second Law of Thermodynamics",
+      "count": 6,
+      "questionIds": [
+        "66d58647a75f05ee8564ff41",
+        "66d58644a75f05ee8564ff23",
+        "66d58637a75f05ee8564fea7",
+        "66d585c7a75f05ee8564fa98",
+        "66d5858fa75f05ee8564f896",
+        "66d5857ba75f05ee8564f7df"
+      ]
+    }
+  ]
+}

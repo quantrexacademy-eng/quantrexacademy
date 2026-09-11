@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g71mnvy4uec",
+  "title": "Rotational Motion Test - 4 (Topic Test)",
+  "type": "topic",
+  "section": "Rotational Motion",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-08-08T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "3d5499a6-097b-4189-af4e-abe344b2ea07",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g71mnvy4uec",
+    "defaultLanguage": "en",
+    "description": "Angular Momentum and Angular Momentum Conservation",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-08T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-ms8kwlrq",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider a particle of mass <b>m</b> traveling in a circle of radius <b>r</b> with an angular speed $\\omega$. The centre of the circle lies at the point $(0, 0, h)$ and the plane of the circle is parallel to the x-y plane (see figure).</p><p>Which of the following statements is <b>false</b> about the angular momentum of the particle with respect to the origin?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms8ksemd%2Fd349c2ed-95e1-41ab-b571-537f0ade1121%2F07efd350-8cab-11f1-bc06-8f56b2bef033%2Ffile-6y3zli1ms8kseme.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms8ksemd%2Fd349c2ed-95e1-41ab-b571-537f0ade1121%2F07efd350-8cab-11f1-bc06-8f56b2bef033%2Ffile-6y3zli1ms8kseme.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>its direction depends on the instantaneous position of the particle.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>it rotates on curved surface of a cone of half angle $\\tan^{-1} \\left( \\frac{r}{h} \\right)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>its z component is constant with magnitude $mr^2 \\omega$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>its direction is not parallel to the angular velocity.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let the particle move counter-clockwise in a circular path of radius r centred at $(0,0, \\mathrm{~h})$. At any instant, if the angular displacement in the circle is $\\theta=\\omega \\mathrm{t}$ :</p>\n<p>Position vector of the particle with respect to the origin (0,0,0) :</p>\n<p>$$ \\vec{r}=(r \\cos \\theta) \\hat{\\imath}+(r \\sin \\theta) \\hat{\\jmath}+h \\hat{k} $$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms8kufxq%2F487307c2-1caa-4261-999c-abe3e8600f85%2F409244e0-8cab-11f1-bc06-8f56b2bef033%2Ffile-6y3zli1ms8kufxr.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms8kufxq%2F487307c2-1caa-4261-999c-abe3e8600f85%2F409244e0-8cab-11f1-bc06-8f56b2bef033%2Ffile-6y3zli1ms8kufxr.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Linear velocity vector of the particle:</p>\n<p>$$\\vec{v}=\\frac{d\\vec{r}}{dt}=(-r\\omega\\sin\\theta)\\,\\hat{i}+(r\\omega\\cos\\theta)\\,\\hat{j}+0\\,\\hat{k}$$</p>\n<p>The angular momentum vector $\\vec{L}$ about the origin is,</p>\n<p>$$\\vec{L}=\\vec{r}\\times\\vec{p}=m\\,(\\vec{r}\\times\\vec{v})$$</p>\n<p>$$\\vec{L}=m\\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k}\\\\ r\\cos\\theta & r\\sin\\theta & h\\\\ -r\\omega\\sin\\theta & r\\omega\\cos\\theta & 0 \\end{vmatrix}$$</p>\n<p>$$\\vec{L}=m\\left[\\hat{i}\\,\\big[(r\\sin\\theta)(0)-h(r\\omega\\cos\\theta)\\big]-\\hat{j}\\,\\big[(r\\cos\\theta)(0)-h(-r\\omega\\sin\\theta)\\big]+\\hat{k}\\,\\big[(r\\cos\\theta)(r\\omega\\cos\\theta)-(r\\sin\\theta)(-r\\omega\\sin\\theta)\\big]\\right]$$</p>\n<p>$$\\vec{L}=(-mhr\\omega\\cos\\theta)\\,\\hat{i}-(mhr\\omega\\sin\\theta)\\,\\hat{j}+mr^2\\omega(\\cos^2\\theta+\\sin^2\\theta)\\,\\hat{k}$$</p>\n<p>$$\\vec{L}=-mhr\\omega\\cos(\\omega t)\\,\\hat{i}-mhr\\omega\\sin(\\omega t)\\,\\hat{j}+mr^2\\omega\\,\\hat{k}$$</p>\n<p>The expression for $\\vec{L}$ shows that the x and y components depend on $\\theta=\\omega t$, which changes as the particle moves. Hence, the direction of $\\vec{L}$ constantly changes as the particle orbits the axis. Thus, statement in option (A) is true (not False).</p>\n<p>Let $\\phi$ be the angle between $\\vec{L}$ and the z-axis.</p>\n<p>The z-component of $\\vec{L}$ is $L_z=mr^2\\omega$.</p>\n<p>The perpendicular component in the x-y plane is,</p>\n<p>$$L_{\\perp}=\\sqrt{(-mhr\\omega\\cos\\theta)^2+(-mhr\\omega\\sin\\theta)^2}=mhr\\omega$$</p>\n<p>Therefore, the half-angle of the cone traced by $\\vec{L}$ is:</p>\n<p>$$\\tan\\phi=\\frac{L_{\\perp}}{L_z}=\\frac{mhr\\omega}{mr^2\\omega}=\\frac{h}{r}$$</p>\n<p>$$\\Rightarrow \\phi=\\tan^{-1}\\left(\\frac{h}{r}\\right)$$</p>\n<p>Thus, statement in option (B) is FALSE.</p>\n<p>As the component of angular momentum along z -axis is, $\\mathrm{L}_{\\mathrm{z}}=\\mathrm{m} \\mathrm{r}^2 \\omega$, which is independent of time and constant.</p>\n<p>Thus, statement in option (C) is true (not False).</p>\n<p>The angular velocity vector $\\vec{\\omega}$ points along the $+z$-axis, $\\vec{\\omega}=\\omega \\hat{\\mathrm{k}}$.</p>\n<p>Since $\\overrightarrow{\\mathrm{L}}$ has non-zero x and y components, $\\overrightarrow{\\mathrm{L}}$ is not parallel to $\\vec{\\omega}$. Thus, the statement in option (D) is true (not False).</p>\n<p>Therefore, the only false statement is the statement of option (B). Thus, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>मान लीजिए कि <b>m</b> द्रव्यमान का एक कण <b>r</b> त्रिज्या वाले एक वृत्त में $\\omega$ कोणीय चाल से गति कर रहा है। वृत्त का केंद्र बिंदु $(0, 0, h)$ पर स्थित है और वृत्त का तल x-y तल के समांतर है (चित्र देखें)।</p><p>मूल बिंदु के सापेक्ष कण के कोणीय संवेग के बारे में निम्नलिखित में से कौन सा कथन <b>गलत</b> है?</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms8ksemd%2Fd349c2ed-95e1-41ab-b571-537f0ade1121%2F07efd350-8cab-11f1-bc06-8f56b2bef033%2Ffile-6y3zli1ms8kseme.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms8ksemd%2Fd349c2ed-95e1-41ab-b571-537f0ade1121%2F07efd350-8cab-11f1-bc06-8f56b2bef033%2Ffile-6y3zli1ms8kseme.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>इसकी दिशा कण की तात्क्षणिक स्थिति पर निर्भर करती है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>यह $\\tan^{-1} \\left( \\frac{r}{h} \\right)$ अर्ध कोण वाले शंकु के वक्र पृष्ठ पर घूर्णन करता है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>इसका z घटक नियत है जिसका परिमाण $mr^2 \\omega$ है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इसकी दिशा कोणीय वेग के समांतर नहीं है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrm869n6",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A massless frictionless rod AB can rotate in a horizontal plane about a vertical axis passing through its end A. The rod is fitted with a small sleeve of mass <b>m</b> attached to the end A by a massless spring of spring constant <b>k</b> and natural length <b>$x_0$</b> (see figure). The work done on the system for slowly increasing its angular speed from zero to <b>$\\omega$</b> is,</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrm8166t%2F70f2abb4-6d0b-4fce-b619-ed61abd45916%2Fe6bd4c50-805f-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm8166u.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrm8166t%2F70f2abb4-6d0b-4fce-b619-ed61abd45916%2Fe6bd4c50-805f-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm8166u.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{k x_0^2}{2} \\frac{m \\omega^2 (k+m\\omega^2)}{(k-m\\omega^2)^2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{k x_0^2}{2} \\frac{m \\omega^2 (k-m\\omega^2)}{(k+m\\omega^2)^2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{k x_0^2}{2} \\frac{k+m\\omega^2}{k-m\\omega^2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{k x_0^2}{2} \\frac{k-m\\omega^2}{k+m\\omega^2}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>When the rod rotates at a constant angular speed $\\omega$, let the extension of the spring be x .</p>\n<p>The total distance of the sleeve of mass m from the axis of rotation A becomes $\\mathrm{r}=\\mathrm{x}_0+\\mathrm{x}$.</p>\n<p>In the rotating frame of the rod, the sleeve experiences an outward centrifugal force equal to $\\mathrm{m} \\omega^2 \\mathrm{r}= \\mathrm{m} \\omega^2\\left(\\mathrm{x}_0+\\mathrm{x}\\right)$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrm82cm8%2Fc605ee88-4403-4101-bbbb-227b1cd36575%2F0783a600-8060-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm82cm9.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrm82cm8%2Fc605ee88-4403-4101-bbbb-227b1cd36575%2F0783a600-8060-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm82cm9.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>This outward force is balanced by the inward restoring spring force $kx$ :</p>\n<p>$$kx = m{\\omega}^{2}(x_0 + x)$$</p>\n<p>$$kx - m\\omega^{2}x = m\\omega^{2}x_0 \\Rightarrow x(k - m\\omega^{2}) = m\\omega^{2}x_0$$</p>\n<p>$$x = \\frac{m\\omega^{2}x_0}{k - m\\omega^{2}}$$</p>\n<p>The final length of the spring is, $x_0 + x = x_0 + \\frac{m\\omega^{2}x_0}{k - m\\omega^{2}} = x_0\\left(1 + \\frac{m\\omega^{2}}{k - m\\omega^{2}}\\right) = x_0\\left(\\frac{k}{k - m\\omega^{2}}\\right)$</p>\n<p>As the angular speed is changed slowly, which means there is no radial kinetic energy.</p>\n<p>By the Work-Energy Theorem, the total external work done on the system $(W_{\\text{total}})$ is equal to the total change in mechanical energy :</p>\n<p>$$W_{\\text{total}} = \\Delta K_{\\text{rotational}} + \\Delta U_{\\text{spring}}$$</p>\n<p>Change in spring potential energy is,</p>\n<p>$$\\Delta U_{\\text{spring}} = \\frac{1}{2}kx^{2} = \\frac{1}{2}k\\left(\\frac{m\\omega^{2}x_0}{k - m\\omega^{2}}\\right)^{2}$$</p>\n<p>The mass $m$ is rotating at a final distance of $r = x_0 + x$. Its rotational kinetic energy is :</p>\n<p>$$K_{\\text{rotational}}=\\frac{1}{2}I\\omega^2=\\frac{1}{2}mr^2\\omega^2=\\frac{1}{2}m\\omega^2(x_0+x)^2$$</p>\n<p>$$K_{\\text{rotational}}=\\frac{1}{2}m\\omega^2\\left(\\frac{kx_0}{k-m\\omega^2}\\right)^2=\\frac{1}{2}m\\omega^2k^2x_0^2\\left(\\frac{1}{k-m\\omega^2}\\right)^2$$</p>\n<p>So, the total work done is,</p>\n<p>$$W_{\\text{total}}=\\frac{1}{2}m\\omega^2k^2x_0^2\\left(\\frac{1}{k-m\\omega^2}\\right)^2+\\frac{1}{2}km^2\\omega^4x_0^2\\left(\\frac{1}{k-m\\omega^2}\\right)^2$$</p>\n<p>$$W_{\\text{total}}=\\frac{kx_0^2}{2}m\\omega^2\\left(\\frac{1}{k-m\\omega^2}\\right)^2\\left[k+m\\omega^2\\right]$$</p>\n<p>$$W_{\\text{total}}=\\frac{kx_0^2m\\omega^2(k+m\\omega^2)}{2(k-m\\omega^2)^2}$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक द्रव्यमान रहित और घर्षण रहित छड़ AB अपने सिरे A से गुजरने वाले ऊर्ध्वाधर अक्ष के परितः क्षैतिज तल में घूर्णन कर सकती है। छड़ में <b>m</b> द्रव्यमान की एक छोटी स्लीव (sleeve) लगी है जो सिरे A से एक द्रव्यमान रहित स्प्रिंग, जिसका स्प्रिंग नियतांक <b>k</b> और स्वाभाविक लंबाई <b>$x_0$</b> है, द्वारा जुड़ी है (चित्र देखें)। निकाय की कोणीय चाल को शून्य से <b>$\\omega$</b> तक धीरे-धीरे बढ़ाने के लिए निकाय पर किया गया कार्य है,</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1mrm8166t%2F70f2abb4-6d0b-4fce-b619-ed61abd45916%2Fe6bd4c50-805f-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm8166u.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1mrm8166t%2F70f2abb4-6d0b-4fce-b619-ed61abd45916%2Fe6bd4c50-805f-11f1-a12d-61aeecc18391%2Ffile-6y3zli1mrm8166u.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{k x_0^2}{2} \\frac{m \\omega^2 (k+m\\omega^2)}{(k-m\\omega^2)^2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{k x_0^2}{2} \\frac{m \\omega^2 (k-m\\omega^2)}{(k+m\\omega^2)^2}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{k x_0^2}{2} \\frac{k+m\\omega^2}{k-m\\omega^2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{k x_0^2}{2} \\frac{k-m\\omega^2}{k+m\\omega^2}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms8l1s74",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle of mass m is dropped from a point P. It falls under gravity in the z-y plane. Which of the following statements is false at time t?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>The torque on the particle about the origin O is $mgx_0\\hat{k}$.</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>The angular momentum of the particle about the origin O is $mgx_0 t\\hat{k}$.</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>The torque and angular momentum of the particle about a point lying on the line $x = x_0$ are zero.</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>The torque and angular momentum of a particle moving in a straight line are zero.</b></p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The particle is dropped from rest at $\\mathrm{t}=0$ and falls vertically downwards under gravity g along the +y direction.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1ms8kz5g0%2Fe014dd6b-9414-42a9-909a-aa1d85085e05%2Fc3831500-8cab-11f1-bc06-8f56b2bef033%2Ffile-6y3zli1ms8kz5g1.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1ms8kz5g0%2Fe014dd6b-9414-42a9-909a-aa1d85085e05%2Fc3831500-8cab-11f1-bc06-8f56b2bef033%2Ffile-6y3zli1ms8kz5g1.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>At any time t, position vector of the particle relative to origin O is</p>\n<p>$$ \\vec{r}=x_0 \\hat{\\imath}+y(t) \\hat{\\jmath}=x_0 \\hat{\\imath}+\\frac{1}{2} g t^2 \\hat{\\jmath} $$</p>\n<p>The velocity vector of the particle at this instant is,</p>\n<p>$$\\vec{v} = \\frac{d\\vec{r}}{dt} = gt\\,\\hat{\\jmath}$$</p>\n<p>Gravitational force acting on the particle $\\vec{F} = mg\\,\\hat{\\jmath}$</p>\n<p>Torque $\\vec{\\tau}$ about the origin O is, $\\vec{\\tau}_0 = \\vec{r} \\times \\vec{F}$</p>\n<p>$$\\vec{\\tau}_0 = \\left(x_0\\,\\hat{\\imath} + \\frac{1}{2}gt^2\\,\\hat{\\jmath}\\right) \\times (mg\\,\\hat{\\jmath})$$</p>\n<p>$$\\vec{\\tau}_0 = (x_0 \\cdot mg)(\\hat{\\imath} \\times \\hat{\\jmath}) + \\left(\\frac{1}{2}gt^2 \\cdot mg\\right)(\\hat{\\jmath} \\times \\hat{\\jmath})$$</p>\n<p>Since $\\hat{\\imath} \\times \\hat{\\jmath} = \\hat{k}$ and $\\hat{\\jmath} \\times \\hat{\\jmath} = 0$:</p>\n<p>$$\\vec{\\tau}_0 = mg\\,x_0\\,\\hat{k}$$</p>\n<p>Thus, the statement in option (A) is true.</p>\n<p>Angular momentum $\\vec{L}$ about the origin O is,</p>\n<p>$$\\vec{L}_0 = \\vec{r} \\times \\vec{p} = \\vec{r} \\times (m\\vec{v})$$</p>\n<p>$$\\vec{L}_0 = \\left(x_0\\,\\hat{\\imath} + \\frac{1}{2}gt^2\\,\\hat{\\jmath}\\right) \\times (mgt\\,\\hat{\\jmath})$$</p>\n<p>$$\\vec{L}_0 = (x_0 \\cdot mgt)(\\hat{\\imath} \\times \\hat{\\jmath}) + \\left(\\frac{1}{2}gt^2 \\cdot mgt\\right)(\\hat{\\jmath} \\times \\hat{\\jmath})$$</p>\n<p>$$\\vec{L}_0 = mgx_0 t\\,\\hat{k}$$</p>\n<p>Thus, the statement in option (B) is true.</p>\n<p>Let Q be any point on the line $x = x_0$, with coordinates $(x_0, y_Q)$.</p>\n<p>Position vector of the particle relative to point Q is,</p>\n<p>$$\\vec{r}\\,' = \\vec{r} - \\vec{r}_Q = (x_0\\,\\hat{\\imath} + y\\,\\hat{\\jmath}) - (x_0\\,\\hat{\\imath} + y_Q\\,\\hat{\\jmath}) = (y - y_Q)\\,\\hat{\\jmath}$$</p>\n<p>Torque about point Q,</p>\n<p>$$\\vec{\\tau}_Q = \\vec{r}\\,' \\times \\vec{F} = (y - y_Q)\\,\\hat{\\jmath} \\times mg\\,\\hat{\\jmath} = 0$$</p>\n<p>Angular momentum about point Q:</p>\n<p>$$\\vec{L}_Q = \\vec{r}\\,' \\times m\\vec{v} = (y - y_Q)\\,\\hat{\\jmath} \\times mgt\\,\\hat{\\jmath} = 0$$</p>\n<p>Thus, the statement in option (C) is true.</p>\n<p>As the particle moves in a straight vertical line $\\mathrm{x}=\\mathrm{x}_0$, yet its torque and angular momentum about origin O are non-zero $\\left(\\vec{\\tau}_{\\mathrm{O}}=\\operatorname{mgx}_0 \\widehat{\\mathrm{k}}\\right.$ and $\\left.\\overrightarrow{\\mathrm{L}}_{\\mathrm{O}}=\\operatorname{mgx}_0 \\mathrm{t} \\widehat{\\mathrm{k}}\\right)$.</p>\n<p>Torque and angular momentum about a point depend on the position vector relative to that point. They are zero only if the line of motion passes through the point of reference.</p>\n<p>Thus, the statement in option (D) is false.</p>\n<p>Therefore, the option with false statement is option (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान m के एक कण को बिंदु P से गिराया जाता है। यह z-y तल में गुरुत्वाकर्षण के अधीन गिरता है। समय t पर निम्नलिखित में से कौन सा कथन गलत है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>मूल बिंदु O के परितः कण पर बलाघूर्ण $mgx_0\\hat{k}$ है।</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>मूल बिंदु O के परितः कण का कोणीय संवेग $mgx_0 t\\hat{k}$ है।</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>रेखा $x = x_0$ पर स्थित किसी बिंदु के परितः कण का बलाघूर्ण और कोणीय संवेग शून्य होते हैं।</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>एक सीधी रेखा में गतिमान कण का बलाघूर्ण और कोणीय संवेग शून्य होते हैं।</b></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi6gb03",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A circular platform is mounted on a vertical frictionless axle. Its radius is $r = 2\\text{ m}$ and its moment of inertia $I = 220\\ \\mathrm{kg\\ m^2}$. It is initially at rest. A 70 kg man stands on the edge of the platform and begins to walk along the edge at speed $v_0 = 10\\,\\mathrm{ms}^{-1}$ relative to the platform. The angular velocity of the platform is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1.5 rad/s</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1.8 rad/s</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2.0 rad/s</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>2.8 rad/s</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Mass of the man, $\\mathrm{m}=70 \\mathrm{~kg}$</p>\n<p>Radius of the platform, $\\mathrm{r}=2 \\mathrm{~m}$</p>\n<p>Relative speed of the man with respect to the platform, $\\mathrm{v}_0=10 \\mathrm{~m} / \\mathrm{s}$</p>\n<p>Moment of inertia of the platform about the vertical axle, $\\mathrm{I}_{\\mathrm{p}}=220 \\mathrm{~kg} \\cdot \\mathrm{~m}^2$</p>\n<p>Moment of inertia of the man at distance r from the axle is $\\mathrm{I}_{\\mathrm{m}}=\\mathrm{mr}^2$</p>\n<p>Initially the system is at rest, so initial angular momentum $\\mathrm{L}_{\\mathrm{i}}=0$.</p>\n<p>Since the vertical axle is frictionless, there is no net external torque acting on the (platform + man ) system about the axle $\\left(\\tau_{\\text {ext }}=0\\right)$.</p>\n<p>By Newton's second law for rotation, total angular momentum L is conserved, $\\mathrm{L}_{\\mathrm{i}}=\\mathrm{L}_{\\mathrm{f}}=0$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi6ejj5%2F4e43bf2f-161e-48fa-bbaf-83708193455c%2F9d168d10-91f2-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi6ejj6.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi6ejj5%2F4e43bf2f-161e-48fa-bbaf-83708193455c%2F9d168d10-91f2-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi6ejj6.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Let $\\omega$ be the angular velocity of the platform relative to the ground in the counter-clockwise direction.</p>\n<p>Linear speed of a point on the rim of the platform relative to the ground $= \\omega r$.</p>\n<p>The man walks along the rim at speed $v_0$ relative to the platform.</p>\n<p>Therefore, the tangential velocity of the man relative to the ground is:</p>\n<p>$$v_{m/p}=v_m-v_p \\Rightarrow v_m=v_{m/p}+v_p=v_0+(-\\omega r)$$</p>\n<p>Angular momentum of the platform $L_{\\text{platform}}=-I_p\\omega$</p>\n<p>Angular momentum of the man $L_{\\text{man}}=m\\cdot v_m\\cdot r=m(v_0-\\omega r)r$</p>\n<p>Total final angular momentum $L_f=0$:</p>\n<p>$$m(v_0-\\omega r)r-I_p\\omega=0$$</p>\n<p>$$mv_0r-m\\omega r^2-I_p\\omega=0$$</p>\n<p>$$mv_0r=(I_p+mr^2)\\omega$$</p>\n<p>$$\\omega=\\frac{mv_0r}{I_p+mr^2}$$</p>\n<p>Putting the values,</p>\n<p>$$\\omega=\\frac{70\\times 10\\times 2}{220+70\\times (2)^2}=\\frac{1400}{500}=2.8\\,\\text{rad/s}$$</p>\n<p>Therefore, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक वृत्ताकार प्लेटफॉर्म एक ऊर्ध्वाधर घर्षण रहित धुरी पर स्थापित है। इसकी त्रिज्या $r = 2\\text{ m}$ और इसका जड़त्व आघूर्ण $I = 220\\ \\mathrm{kg\\ m^2}$ है। यह प्रारम्भ में विरामावस्था में है। 70 kg का एक व्यक्ति प्लेटफॉर्म के किनारे पर खड़ा है और प्लेटफॉर्म के सापेक्ष $v_0 = 10\\,\\mathrm{ms}^{-1}$ की चाल से किनारे के अनुदिश चलना शुरू करता है। प्लेटफॉर्म का कोणीय वेग है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1.5 rad/s</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1.8 rad/s</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2.0 rad/s</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>2.8 rad/s</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum-conservation",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi6mcjd",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform rod of mass M is hinged at its upper end. A particle of mass m moving horizontally strikes the rod at its mid-point elastically. If the particle comes to rest after collision, then the value of $\\dfrac{M}{m}$ is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi6i4pk%2F68f3f529-6517-4a34-a34f-b41222a71ffd%2F00e00d80-91f3-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi6i4pl.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi6i4pk%2F68f3f529-6517-4a34-a34f-b41222a71ffd%2F00e00d80-91f3-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi6i4pl.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\dfrac{3}{4} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\dfrac{4}{3} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\dfrac{2}{3} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Mass of striking particle $=m$ which strikes the rod at distance $d=\\frac{L}{2}$ from the hinge.</p>\n<p>Let the initial velocity of particle $=\\mathrm{v}$</p>\n<p>Final velocity of particle after collision $=0$ (comes to rest).</p>\n<p>Let the angular velocity of the rod immediately after collision be $\\omega$.</p>\n<p>Mass of uniform rod = M, total length = L.</p>\n<p>The moment of inertia about the top hinge is, $\\mathrm{I}_{\\mathrm{H}}=\\frac{1}{3} \\mathrm{M} \\mathrm{L}^2$</p>\n<p>During the collision, impulsive forces act at the hinge, so linear momentum is not conserved. But, the torque of the hinge reaction about the hinge itself is zero.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi6jx1t%2F0aa2968e-7a58-463c-ad0d-ce01c9d47483%2F3293bf20-91f3-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi6jx1u.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi6jx1t%2F0aa2968e-7a58-463c-ad0d-ce01c9d47483%2F3293bf20-91f3-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi6jx1u.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Therefore, angular momentum about the hinge is conserved $L_{Hi} = L_{Hf}$</p>\n<p>Particle moves horizontally with speed $v$ at perpendicular distance $\\frac{L}{2}$ from hinge:</p>\n<p>So, initial angular momentum of striking particle about hinge is $L_{1i} = m \\cdot v \\cdot \\left(\\frac{L}{2}\\right)$</p>\n<p>And the rod is initially at rest before impact, so the initial angular momentum of rod is zero, $L_{2i} = 0$</p>\n<p>So, total initial angular momentum is, $L_i = L_{1i} + L_{2f} \\Rightarrow L_i = \\frac{mvL}{2}$</p>\n<p>Particle comes to rest ($v_{1f} = 0$), so its final angular momentum is zero, $L_{1f} = 0$.</p>\n<p>Rod rotates with angular velocity $\\omega$, $L_{2f} = I_H \\cdot \\omega = \\left(\\frac{1}{3} M\\,L^2\\right)\\omega$</p>\n<p>Using conservation of angular momentum,</p>\n<p>$$m\\,v\\left(\\frac{L}{2}\\right) = \\frac{1}{3} M\\,L^2\\,\\omega$$</p>\n<p>$$\\frac{m\\,v}{2} = \\frac{1}{3} M\\,L\\,\\omega$$</p>\n<p>$$\\omega = \\frac{3\\,m\\,v}{2\\,M\\,L} \\ldots (i)$$</p>\n<p>Since the collision is elastic, total mechanical kinetic energy is conserved $K_i = K_f$</p>\n<p>Initial kinetic energy is $K_i = K_{1i} + K_{2i} = \\frac{1}{2} m\\,v^2 + 0 = \\frac{1}{2} m\\,v^2$</p>\n<p>Final kinetic energy is, $K_f = K_{1f} + K_{2f} = 0 + \\frac{1}{2} I_H\\,\\omega^2 = \\frac{1}{2}\\left(\\frac{1}{3} M\\,L^2\\right)\\omega^2$</p>\n<p>$$\\Rightarrow \\frac{1}{2} m\\,v^2 = \\frac{1}{6} M\\,L^2\\,\\omega^2 \\ldots (ii)$$</p>\n<p>Substituting equation (i) ($\\omega = \\frac{3\\,m\\,v}{2\\,M\\,L}$) into equation (ii):</p>\n<p>$$\\frac{1}{2} m\\,v^2 = \\frac{1}{6} M\\,L^2 \\left(\\frac{3\\,m\\,v}{2\\,M\\,L}\\right)^2$$</p>\n\n<p>$$\\frac{1}{2}mv^2 = \\frac{1}{6}ML^2\\left(\\frac{9m^2v^2}{4M^2L^2}\\right)$$</p>\n<p>$$\\frac{1}{2}mv^2 = \\frac{9m^2v^2}{24M}$$</p>\n<p>$$\\frac{1}{2} = \\frac{9m}{24M} = \\frac{3m}{8M} \\Rightarrow \\frac{M}{m} = \\frac{6}{8} = \\frac{3}{4}$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>M द्रव्यमान की एक एकसमान छड़ अपने ऊपरी सिरे पर कीलकित (hinged) है। m द्रव्यमान का एक कण क्षैतिज रूप से गति करते हुए छड़ के मध्य-बिंदु पर प्रत्यास्थ रूप से टकराता है। यदि टक्कर के बाद कण विरामावस्था में आ जाता है, तो $\\dfrac{M}{m}$ का मान है:</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi6i4pk%2F68f3f529-6517-4a34-a34f-b41222a71ffd%2F00e00d80-91f3-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi6i4pl.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi6i4pk%2F68f3f529-6517-4a34-a34f-b41222a71ffd%2F00e00d80-91f3-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi6i4pl.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\dfrac{3}{4} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\dfrac{4}{3} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\dfrac{2}{3} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum-conservation",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi6rp2h",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A child is standing on the edge of a merry-go-round that has the shape of a disk, as shown in the figure above. The mass of the child is 40 kg. The merry-go-round has a mass of 200 kg and a radius of 2.5 m, and it is rotating with an angular velocity of $\\omega = 2.0\\ \\text{rad/s}$. The child then walks slowly toward the centre of the merry-go-round. What will be the final angular velocity of the merry-go-round when the child reaches the centre? (The size of the child can be neglected)</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi6nuhk%2Fcea9c679-0e8a-4ac5-b8b6-ef2709c0317a%2F9fd59090-91f3-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi6nuhl.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi6nuhk%2Fcea9c679-0e8a-4ac5-b8b6-ef2709c0317a%2F9fd59090-91f3-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi6nuhl.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2.0 rad/s</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2.2 rad/s</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2.4 rad/s</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>2.8 rad/s</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Mass of the child (assuming it as a point mass), $m = 40\text{ kg}$</p>\n<p>Mass of the merry-go-round (disk), $M = 200\text{ kg}$</p>\n<p>Radius of the merry-go-round, $R = 2.5\text{ m}$</p>\n<p>Initial angular velocity of the system, $\\omega_1 = 2.0\\text{ rad/s}$</p>\n<p>The moment of inertia of the disk $I_d = \\frac{1}{2}MR^2$</p>\n<p>Substituting the values,</p>\n<p>$$I_d = \\frac{1}{2} \\times 200 \\times (2.5)^2 = 100 \\times 6.25 = 625\\text{ kg} \\cdot \\text{m}^2$$</p>\n<p>When the child stands on the outer edge $(r = R)$, the initial moment of inertia of child is,</p>\n<p>$$I_{c,i} = mR^2 = 40 \\times (2.5)^2 = 40 \\times 6.25 = 250\\text{ kg} \\cdot \\text{m}^2$$</p>\n<p>So, initial moment of inertia of system is</p>\n<p>$$I_1 = I_d + I_{c,i} = 625 + 250 = 875\\text{ kg} \\cdot \\text{m}^2$$</p>\n<p>When the child reaches the Centre $(r = 0)$, its final moment of inertia is $I_{c,f} = m(0)^2 = 0$</p>\n<p>So, the final moment of inertia of system is $$I_2 = I_d = 625\\text{ kg} \\cdot \\text{m}^2$$</p>\n<p>Since no external torque acts on the merry-go-round system about the central vertical axis $(\\tau_{\\text{ext}} = 0)$, the total angular momentum $L$ remains conserved $L_1 = L_2$</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi6qp75%2F34b39709-e2f6-4dc2-8a36-f79e84fd54c3%2Fef2cd810-91f3-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi6qp76.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi6qp75%2F34b39709-e2f6-4dc2-8a36-f79e84fd54c3%2Fef2cd810-91f3-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi6qp76.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$I_1\\,\\omega_1 = I_2\\,\\omega_2 \\Rightarrow \\omega_2 = \\frac{I_1\\omega_1}{I_2}$$</p>\n<p>Substituting $I_1 = 875\\ \\mathrm{kg\\cdot m^2}$, $I_2 = 625\\ \\mathrm{kg\\cdot m^2}$, and $\\omega_1 = 2.0\\ \\mathrm{rad/s}$:</p>\n<p>$$\\omega_2 = \\frac{875 \\times 2.0}{625} = \\frac{1750}{625} = 2.8\\ \\mathrm{rad/s}$$</p>\n<p>Therefore, the correct option is (D).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>जैसा कि ऊपर चित्र में दिखाया गया है, एक बच्चा डिस्क के आकार वाले एक मेरी-गो-राउंड (झूले) के किनारे पर खड़ा है। बच्चे का द्रव्यमान 40 kg है। मेरी-गो-राउंड का द्रव्यमान 200 kg और त्रिज्या 2.5 m है, और यह $\\omega = 2.0\\ \\text{rad/s}$ के कोणीय वेग से घूम रहा है। फिर बच्चा धीरे-धीरे मेरी-गो-राउंड के केंद्र की ओर चलता है। जब बच्चा केंद्र पर पहुँच जाएगा, तो मेरी-गो-राउंड का अंतिम कोणीय वेग क्या होगा? (बच्चे के आकार को नगण्य माना जा सकता है)</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi6nuhk%2Fcea9c679-0e8a-4ac5-b8b6-ef2709c0317a%2F9fd59090-91f3-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi6nuhl.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi6nuhk%2Fcea9c679-0e8a-4ac5-b8b6-ef2709c0317a%2F9fd59090-91f3-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi6nuhl.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2.0 rad/s</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2.2 rad/s</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>2.4 rad/s</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>2.8 rad/s</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum-conservation",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msjc40qe",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $\\vec{L}$ denotes angular momentum of the earth about the sun then which of the following statement is true? [make suitable approximations, if necessary.]</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\vec{L}$ makes an angle $\\approx 23.5^\\circ$ with the spinning axis of the earth.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\vec{L}$ is perpendicular to the earth's orbital plane.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\vec{L}$ is parallel to the spinning axis of the earth.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\vec{L}$ rotates on the curved surface of a right circular cone of half angle $\\approx 23.5^\\circ$.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The angular momentum of the earth about the sun is almost perpendicular to its orbital plane. </p>\n<p>The earth, of mass $m=5.97 \\times 10^{24} \\mathrm{~kg}$ and radius $r=6.38 \\times 10^6 \\mathrm{~m}$, moves in a nearly circular orbit of radius $R=1.50 \\times 10^{11} \\mathrm{~m}$ around the sun with an orbital period $T_{\\text {orbital }}=365.25$ days. In addition, the earth spins about an axis through its centre of mass with a period $T_{\\text {spin }}=23 \\mathrm{hr} 56 \\mathrm{~min}$. The spin axis is fixed in space and makes an angle of $23.5^{\\circ}$ with the normal to the orbital plane.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msjbwtg2%2F20f18425-d35d-4cf8-8223-1a80d12a6200%2Fef9b3f20-9294-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjbwtg3.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msjbwtg2%2F20f18425-d35d-4cf8-8223-1a80d12a6200%2Fef9b3f20-9294-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjbwtg3.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Let $\\hat{k}$ be a unit vector normal to the earth's orbital plane and $\\hat{n}$ be a unit vector along the spin axis. The angle between $\\hat{k}$ and $\\hat{n}$ is $23.5^{\\circ}$. The angular momentum of the earth about the sun is</p>\n<p>$$ \\begin{aligned} \\vec{L} & =\\vec{L}_{\\mathrm{cm}}+\\vec{L}_{\\text {about } \\mathrm{cm}}=\\vec{L}_{\\text {orbital }}+\\vec{L}_{\\text {spin }} \\\\ & =m R \\cdot \\frac{2 \\pi R}{T_{\\text {orbit }}} \\hat{k}+\\frac{2}{5} m r^2 \\cdot \\frac{2 \\pi}{T_{\\text {spin }}} \\hat{n} \\\\ & =\\left(2.68 \\times 10^{40} \\hat{k}+7.10 \\times 10^{33} \\hat{n}\\right) \\mathrm{kg} \\mathrm{~m}^2 / \\mathrm{s} \\end{aligned} $$</p>\n<p>The angle between $\\vec{L}$ and $\\hat{n}$ is</p>\n<p>$$ \\theta=\\cos ^{-1} \\frac{\\vec{L} \\cdot \\hat{n}}{|\\vec{L}||\\hat{n}|} \\approx 23.5^{\\circ} $$</p>\n<p>because $\\left|\\vec{L}_{\\text {orbital }}\\right| \\gg\\left|\\vec{L}_{\\text {spin }}\\right|$. Thus, $\\vec{L}$ is almost perpendicular to the orbital plane.</p>\n<p>The approximations used are (i) fixed heavy sun (ii) circular orbit (iii) uniform spherical earth etc. If the sun-earth system is considered isolated (i.e., neglecting the effect of other celestial bodies), then $\\vec{L}$ is conserved. Thus, the earth's orbital plane and its spin axis remain 'almost fixed' in space.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $\\vec{L}$ सूर्य के परितः पृथ्वी के कोणीय संवेग को निरूपित करता है, तो निम्नलिखित में से कौन सा कथन सत्य है? [यदि आवश्यक हो, तो उपयुक्त सन्निकटन (approximations) करें।]</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\vec{L}$ पृथ्वी के घूर्णन अक्ष के साथ $\\approx 23.5^\\circ$ का कोण बनाता है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\vec{L}$ पृथ्वी के कक्षीय तल के लंबवत है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\vec{L}$ पृथ्वी के घूर्णन अक्ष के समानांतर है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\vec{L}$, $\\approx 23.5^\\circ$ अर्ध-कोण वाले एक लंब वृत्तीय शंकु के वक्र पृष्ठ पर घूर्णन करता है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msjdcro0",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform rod of mass <b>m</b> and length <b>l</b> rotates in clockwise direction with an angular velocity <b>&omega;</b> and its centre of mass moves rightward with a velocity <b>v</b> (see figure). The angular momentum of the rod can be zero about the point</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msjd9mb4%2F20df667c-7d6e-4cd4-9f57-727db2a192da%2F3cbdb300-929a-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjd9mb5.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msjd9mb4%2F20df667c-7d6e-4cd4-9f57-727db2a192da%2F3cbdb300-929a-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjd9mb5.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>P</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Q</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>R</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The angular momentum of a rigid body about a point A is given by</p>\n<p>$$\\vec{L}_A = \\vec{L}_{\\mathrm{cm}} + \\vec{L}_{\\mathrm{about\\ cm}}$$</p>\n<p>$$= \\vec{r}_{\\mathrm{cm}} \\times \\vec{p}_{\\mathrm{cm}} + I_{\\mathrm{cm}}\\vec{\\omega},$$</p>\n<p>where $\\vec{r}_{\\mathrm{cm}}$ is the position vector of the centre of mass measured from A, $\\vec{p}$ $(= m\\vec{v}_{\\mathrm{cm}})$ is the linear momentum of the centre of mass, $I_{\\mathrm{cm}}$ is the moment of inertia about an axis through the centre of mass, and $\\vec{\\omega}$ is the angular velocity (axis of rotation is perpendicular to the plane of motion).</p>\n<p>The vector $\\vec{L}_{\\mathrm{about\\ cm}}$ points into the plane of the paper. The vector $\\vec{L}_{\\mathrm{cm}}$ also points into the plane of the paper for $\\vec{L}_R$, is zero for $\\vec{L}_Q$, and points out of the paper for $\\vec{L}_P$. Hence, only in the case of point P can the total angular momentum possibly become zero.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>द्रव्यमान <b>m</b> और लंबाई <b>l</b> की एक एकसमान छड़ दक्षिणावर्त दिशा में कोणीय वेग <b>&omega;</b> से घूर्णन कर रही है और इसका द्रव्यमान केंद्र दाईं ओर वेग <b>v</b> से गति कर रहा है (चित्र देखें)। छड़ का कोणीय संवेग किस बिंदु के परितः शून्य हो सकता है?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msjd9mb4%2F20df667c-7d6e-4cd4-9f57-727db2a192da%2F3cbdb300-929a-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjd9mb5.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msjd9mb4%2F20df667c-7d6e-4cd4-9f57-727db2a192da%2F3cbdb300-929a-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjd9mb5.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>P</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Q</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>R</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msjdo2jl",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform cube of side $a$ rests on a horizontal plane whose friction coefficient is $\\mu$. The cube is set in motion with an initial velocity, travels some distance over the plane and comes to a standstill. The angular momentum of the cube relative to the axis lying in the plane at right angles to the cube's motion direction</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>is conserved.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>becomes zero because normal force from the ground acts ahead of the gravitational force by a distance $\\mu a/2$.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>becomes zero because normal force from the ground acts behind the gravitational force by a distance $\\mu a/2$.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>becomes zero because normal force from the ground acts behind the gravitational force by a distance $\\mu a$.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let $m$ be the mass of the cube and C its centre of mass. Let $x$ axis be along the direction of initial velocity $v$ and $z$ axis be perpendicular to it. The $x$ and $z$ axes lie in the horizontal plane.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msjditho%2F31d9bde8-e8aa-42f9-9f36-0eed041e8483%2F3c9240c0-929b-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjdithp.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msjditho%2F31d9bde8-e8aa-42f9-9f36-0eed041e8483%2F3c9240c0-929b-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjdithp.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The angular momentum of a body is defined about a point. Let the angular momentum $\\vec{L}$ be defined about a point P lying on the $z$-axis and $L_z$ be $z$-component of $\\vec{L}$. The component $L_z$ is sometimes called angular momentum of the body relative to $z$-axis. It is independent of the point P lying on the $z$-axis.</p>\n<p>Initially, the angular momentum of the cube relative to the $z$-axis (i.e., $z$-component of the angular momentum) is given by $L_z=-m v a / 2$. Finally, the cube comes to rest and hence $L_z=0$. To change $L_z$, there must be a $z$-component of torque on the cube about a point lying on the $z$-axis.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msjdkg4l%2Fd2308acc-731a-4ecb-8b9a-5107b77e8c08%2F69dddd50-929b-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjdkg4m.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msjdkg4l%2Fd2308acc-731a-4ecb-8b9a-5107b77e8c08%2F69dddd50-929b-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjdkg4m.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The forces on the cube are its weight $m g$, normal reaction $N$, and the frictional force $f$. The frictional force acts at the cube-plane interface i.e., $x-z$ plane. The $z$-component of torque due to $f$ about a point lying on the $z$-axis is zero.</p>\n<p>The normal reaction $N$ acts at the cube-plane interface and the weight $m g$ acts at the cube's centre of mass C. Apply Newton's second law in the vertical direction to get $N=m g$. The normal force should act ahead of C to generate a torque along $z$-axis (see figure).</p>\n<p>The angular acceleration of the cube is zero. Thus, net torque on the cube about its centre of mass C is zero i.e.,</p>\n<p>$$ \\tau_C=N d-f(a / 2)=m g d-\\mu m g(a / 2)=0 $$</p>\n<p>which gives $d=\\mu a / 2$. Note that the frictional force attains its limiting value $f=\\mu N$ because the cube slides on the surface.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$a$ भुजा वाला एक एकसमान घन एक क्षैतिज तल पर रखा है, जिसका घर्षण गुणांक $\\mu$ है। घन को एक प्रारंभिक वेग से गतिमान किया जाता है, यह तल पर कुछ दूरी तय करता है और रुक जाता है। घन की गति की दिशा के समकोण पर तल में स्थित अक्ष के सापेक्ष घन का कोणीय संवेग</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>संरक्षित रहता है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>शून्य हो जाता है क्योंकि जमीन से अभिलंब बल गुरुत्वाकर्षण बल के आगे $\\mu a/2$ दूरी पर कार्य करता है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>शून्य हो जाता है क्योंकि जमीन से अभिलंब बल गुरुत्वाकर्षण बल के पीछे $\\mu a/2$ दूरी पर कार्य करता है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>शून्य हो जाता है क्योंकि जमीन से अभिलंब बल गुरुत्वाकर्षण बल के पीछे $\\mu a$ दूरी पर कार्य करता है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum-conservation",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msjdus9s",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following statements is incorrect?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>If linear momentum of a rigid body is zero then its angular momentum about the origin is equal to its angular momentum about any other point.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>If external force on a rigid body is zero then torque on it about the origin is equal to the torque about any other point.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>The statement \"angular momentum about an axis\" means component of the angular momentum along the axis, which is same about any point on the axis.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>A lollipop is made of a solid sphere of mass $m$ and radius $r$ that is radially pierced by a massless horizontal stick. The free end of the stick is pivoted on a vertical pole and the sphere rolls on the ground without slipping, with its centre moving in a circle of radius $R$. If $\\vec{L}$ is angular momentum of the lollipop about the pivot then direction of $\\vec{L}$ is same whether sphere is solid or hollow.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The angular momentum of a rigid body is given by $\\vec{L}=\\vec{L}_{\\mathrm{of}, \\mathrm{cm}}+\\vec{L}_{\\mathrm{about}, \\mathrm{cm}}$. The first term, $\\vec{L}_{\\mathrm{of}, \\mathrm{cm}}=$ $\\vec{r}_{\\mathrm{cm}} \\times \\vec{p}_{\\mathrm{cm}}$, depends on the origin because $\\vec{r}_{\\mathrm{cm}}$ is different for different origins. If linear momentum of the body is zero then $\\vec{L}_{\\text {of, } \\mathrm{cm}}=\\overrightarrow{0}$ for any $\\vec{r}_{\\mathrm{cm}}$ (it is zero for any origin). The second term, $L_{\\text {about }, \\mathrm{cm}}=I \\omega$, is independent of the choice of origin. It is an intrinsic property of the body and is generally called its spin angular momentum.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msjdtgf9%2F56e7ff28-4c8c-442c-a974-5cc23e85ad79%2F6460b950-929c-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjdtgfa.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msjdtgf9%2F56e7ff28-4c8c-442c-a974-5cc23e85ad79%2F6460b950-929c-11f1-baa9-bda8fc6879c2%2Ffile-6y3zli1msjdtgfa.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Let O be the origin and A be an arbitrary point with position vector $\\vec{r}_0$. You can easily show that the torque about $\\mathrm{O}, \\vec{\\tau}_O=\\sum \\vec{r}_i \\times \\vec{F}_i$ is equal to the torque about A, $\\vec{\\tau}_A=\\sum\\left(\\vec{r}_i-\\vec{r}_0\\right) \\times \\vec{F}_i$ if net external force is $\\sum \\vec{F}_i=\\overrightarrow{0}$. This result is a generalization of the statement \"torque due to a couple is same about any point\".</p>\n<p>The angular momentum (also torque) is defined about a specific point. This point is not specified in statement \"angular momentum about an axis\" if angular momentum is the same about any point on the axis. A similar statement \"angular momentum of a body\" neither specifies the point nor the axis. It usually means spin angular momentum of the body (which is independent of the origin).</p>\n<p>The formula $L=I \\omega$ may tempt you to believe that $\\vec{L}$ is parallel to $\\vec{\\omega}$. It is true in special cases when rotation is confined to a fixed plane. In case of lollipop, whether sphere is solid or hollow, the angular velocity is along the line joining pivot point and the contact point of the sphere with the ground (these points are instantaneously at rest). But angular momentum also depends on the moment of inertia. Its direction for the solid sphere is different from that for the hollow sphere.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से कौन सा कथन गलत है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>यदि किसी दृढ़ पिंड का रैखिक संवेग शून्य है, तो मूल बिंदु के परितः इसका कोणीय संवेग किसी अन्य बिंदु के परितः इसके कोणीय संवेग के बराबर होता है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>यदि किसी दृढ़ पिंड पर बाह्य बल शून्य है, तो मूल बिंदु के परितः इस पर बल आघूर्ण किसी अन्य बिंदु के परितः बल आघूर्ण के बराबर होता है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>कथन \"एक अक्ष के परितः कोणीय संवेग\" का अर्थ अक्ष के अनुदिश कोणीय संवेग का घटक है, जो अक्ष पर किसी भी बिंदु के परितः समान होता है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>एक लॉलीपॉप द्रव्यमान $m$ और त्रिज्या $r$ वाले एक ठोस गोले से बना है, जिसमें त्रिज्य रूप से एक द्रव्यमान रहित क्षैतिज छड़ी पिरोई गई है। छड़ी का स्वतंत्र सिरा एक ऊर्ध्वाधर खंभे पर कीलकित (pivoted) है और गोला जमीन पर बिना फिसले लुढ़कता है, तथा इसका केंद्र त्रिज्या $R$ के एक वृत्त में गति करता है। यदि $\\vec{L}$ कीलक के परितः लॉलीपॉप का कोणीय संवेग है, तो $\\vec{L}$ की दिशा समान होगी, चाहे गोला ठोस हो या खोखला।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum-conservation",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msi4i3xx",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The torque applied to a ring revolving about its own axis so as to change its angular momentum by 2 J-s in 5 s, is $\\frac{\\mathbf{p}}{\\mathbf{1 0}} \\mathbf{N}-\\mathbf{m}$, then find p.</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>Torque ($\\tau$) is defined as the time rate of change of angular momentum ($L$) of a rotating system.</p>\n<p>Using Newton's second law for rotational motion</p>\n<p>$$\\tau = \\frac{dL}{dt}$$</p>\n<p>For a constant torque acting over a finite time interval $\\Delta t$, the average torque applied is,</p>\n<p>$$\\tau = \\frac{\\Delta L}{\\Delta t}$$</p>\n<p>Change in angular momentum is</p>\n<p>$$\\Delta L = 2\\ \\mathrm{Js}$$</p>\n<p>Time interval is</p>\n<p>$$\\Delta t = 5\\ \\mathrm{s}$$</p>\n<p>Applied torque is given as</p>\n<p>$$\\tau = \\frac{p}{10}\\ \\mathrm{N-m}$$</p>\n<p>Substituting the values of $\\Delta L$ and $\\Delta t$ into the torque formula:</p>\n<p>$$\\tau = \\frac{2}{5} = 0.4\\ \\mathrm{Nm}$$</p>\n<p>$$\\Rightarrow \\frac{p}{10} = \\frac{2}{5}$$</p>\n<p>$$p = 2 \\times \\frac{10}{5} = 4$$</p>\n<p>Therefore, the value of $p$ is 4.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अपने अक्ष के परितः घूर्णन कर रहे एक वलय का कोणीय संवेग 5 s में 2 J-s से परिवर्तित करने के लिए उस पर लगाया गया बल आघूर्ण $\\frac{\\mathbf{p}}{\\mathbf{1 0}} \\mathbf{N}-\\mathbf{m}$ है, तो p का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msi4lue3",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the radius of the earth is suddenly contracts to half of its present value, then the duration of day (in hours) will be of</p>",
+                "options": [],
+                "answer": "6",
+                "explanation": "<p>Let assume Earth as a uniform solid sphere rotating about its central axis.</p>\n<p>When the Earth contracts internally due to internal forces, no external torque acts on the Earth ($\\tau_{\\text{ext}} = 0$).</p>\n<p>By Newton's law for rotation, when $\\tau_{\\text{ext}} = 0$, total angular momentum ($L$) remains conserved:</p>\n<p>$$L_1 = L_2$$</p>\n<p>Consider a uniform solid sphere of mass $M$ and radius $R$.</p>\n<p>The moment of inertia of a uniform solid sphere about its central diameter axis is $I = \\frac{2}{5}MR^2$</p>\n<p>Initial radius of Earth = $R_1$</p>\n<p>Initial moment of inertia = $I_1 = \\frac{2}{5}MR_1^2$</p>\n<p>Final radius of Earth = $R_2 = \\frac{R_1}{2}$</p>\n<p>Final moment of inertia =</p>\n<p>$$I_2 = \\frac{2}{5}M R_2^2 = \\frac{2}{5}M\\left(\\frac{R_1}{2}\\right)^2 = \\frac{1}{4}\\left(\\frac{2}{5}MR_1^2\\right) = \\frac{I_1}{4}$$</p>\n<p>The angular momentum of a rigid object of moment of inertia $I$ and angular velocity $\\omega$ is $L = I\\omega$</p>\n\n<p>Using conservation of angular momentum, $$I_1 \\, \\omega_1 \\, = \\, I_2 \\, \\omega_2$$</p>\n<p>Since angular velocity $\\omega$ is related to time period $T$ (duration of one day) by $\\omega \\, = \\, \\frac{2\\pi}{T}$:</p>\n<p>$$I_1 \\left(\\frac{2\\pi}{T_1}\\right) \\, = \\, I_2 \\left(\\frac{2\\pi}{T_2}\\right)$$</p>\n<p>$$\\frac{I_1}{T_1} \\, = \\, \\frac{I_2}{T_2} \\Rightarrow T_2 \\, = \\, T_1 \\left(\\frac{I_2}{I_1}\\right)$$</p>\n<p>The original duration of day, $T_1 \\, = \\, 24$ hours</p>\n<p>Substituting $I_2 \\, = \\, \\frac{I_1}{4}$:</p>\n<p>$$T_2 \\, = \\, 24 \\times \\left(\\frac{I_1}{4I_1}\\right) \\, = \\, \\frac{24}{4} \\, = \\, 6 \\text{ hours}$$</p>\n<p>Therefore, the duration of the day becomes 6 hours.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि पृथ्वी की त्रिज्या अचानक सिकुड़कर अपने वर्तमान मान की आधी रह जाए, तो दिन की अवधि (घंटों में) कितनी होगी</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum-conservation",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msdjtc0j",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "A binary star consists of two stars $A$ of mass $2.2 M_s$ and $B$ of mass $11 M_s$ where $M_s$ is the mass of the sun. They are separated by distance $d$ and are rotating about their centre of mass, which is stationary. Calculate the ratio of the total angular momentum of the system to the angular momentum of star B about the centre of mass.",
+                "options": [],
+                "answer": "6",
+                "explanation": "<p>Let star $A\\left(\\right.$ mass $\\left.m_A=2.2 M_S\\right)$ be at position $r_1$ and star $B\\left(\\right.$ mass $\\left.m_B=11 M_S\\right)$ be at position $r_2$ from the COM.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msdjrb9n%2F43fd0639-f182-4371-b394-7088415cdd26%2Feba7b9b0-8f66-11f1-a6e5-6d73fff3c3a3%2Ffile-6y3zli1msdjrb9o.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msdjrb9n%2F43fd0639-f182-4371-b394-7088415cdd26%2Feba7b9b0-8f66-11f1-a6e5-6d73fff3c3a3%2Ffile-6y3zli1msdjrb9o.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The total distance is $d = r_1 + r_2$.</p>\n<p>By the definition of the centre of mass $m_A r_1 = m_B r_2$</p>\n<p>$$2.2M_s r_1 = 11M_s r_2 \\Rightarrow r_1 = \\frac{11}{2.2}r_2 \\Rightarrow r_1 = 5r_2$$</p>\n<p>Since $r_1 + r_2 = d$:</p>\n<p>$$5r_2 + r_2 = d \\Rightarrow 6r_2 = d$$</p>\n<p>$r_2 = \\frac{d}{6}$ and $r_1 = \\frac{5d}{6}$</p>\n<p>Both stars rotate about the COM with the same angular velocity $\\omega$ to maintain their relative positions.</p>\n<p>The angular momentum $L$ of a point mass moving in a circle is $L = I\\omega = mr^2\\omega$.</p>\n<p>Angular momentum of star B,</p>\n<p>$$L_B = m_B r_2^2 \\omega = (11M_s)\\left(\\frac{d}{6}\\right)^2 \\omega = \\frac{11M_s\\, d^2\\, \\omega}{36}$$</p>\n<p>Angular momentum of star A:</p>\n<p>$$L_A = m_A r_1^2 \\omega = (2.2\\, M_s)\\left(\\frac{5d}{6}\\right)^2 \\omega = \\frac{55M_s\\, d^2\\, \\omega}{36}$$</p>\n<p>So, total angular momentum of system is,</p>\n<p>$$L_{total} = L_A + L_B = \\frac{55M_s\\, d^2\\, \\omega}{36} + \\frac{11M_s\\, d^2\\, \\omega}{36} = \\frac{66M_s\\, d^2\\, \\omega}{36} = \\frac{11M_s\\, d^2\\, \\omega}{6}$$</p>\n<p>We need the ratio $\\frac{L_{total}}{L_B}$,</p>\n<p>$$\\frac{L_{total}}{L_B} = \\frac{(11M_s\\, d^2\\, \\omega)/6}{(11M_s\\, d^2\\, \\omega)/36} = \\frac{36}{6} = 6$$</p>\n<p>Therefore, the ratio of the total angular momentum to the angular momentum of star B is $6$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "एक युग्मतारे (binary star) में दो तारे $A$ और $B$ हैं, जिनका द्रव्यमान क्रमशः $2.2 M_s$ और $11 M_s$ है, जहाँ $M_s$ सूर्य का द्रव्यमान है। वे एक-दूसरे से $d$ दूरी पर हैं और अपने द्रव्यमान केंद्र के परितः घूर्णन कर रहे हैं, जो कि स्थिर है। निकाय के कुल कोणीय संवेग और द्रव्यमान केंद्र के परितः तारे B के कोणीय संवेग का अनुपात ज्ञात कीजिए।",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msi4r1dk",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A particle performs uniform circular motion with an angular momentum $L=40 \\mathrm{kgm}^2 / \\mathrm{s}$. If the frequency of particle's motion is doubled and its kinetic energy is halved, the angular momentum (in $\\left.\\mathbf{k g m}^{\\mathbf{2}} / \\mathbf{s}\\right)$ becomes :</p>",
+                "options": [],
+                "answer": "10",
+                "explanation": "<p>For a particle of mass $m$ moving in a circle of radius $r$ with speed $v$:</p>\n<p>Angular velocity $\\omega = 2\\pi f$, where $f$ is frequency.</p>\n<p>Linear speed $v = r\\omega$.</p>\n<p>Moment of inertia $I = mr^2$.</p>\n<p>The angular momentum $L$ is given by $L = I\\omega = (mr^2)\\omega$</p>\n<p>The rotational kinetic energy $K$ is,</p>\n<p>$$K = \\frac{1}{2} I\\omega^2 = \\frac{1}{2}(I\\omega)\\omega = \\frac{1}{2}L\\omega$$</p>\n<p>From the expression $K = \\frac{1}{2}L\\omega$, substituting $\\omega = 2\\pi f$:</p>\n<p>$$K = \\frac{1}{2}L(2\\pi f) = \\pi Lf \\rightarrow L = \\frac{K}{\\pi f}$$</p>\n<p>So, the angular momentum $L$ is directly proportional to kinetic energy $K$ and inversely proportional to frequency $f$, $L \\propto \\frac{K}{f}$</p>\n<p>Initial angular momentum $L_1 = 40\\,\\mathrm{kg\\cdot m^2/s}$</p>\n<p>Initial frequency $= f_1$</p>\n<p>Initial kinetic energy $= K_1$</p>\n<p>Final frequency $f_2 = 2f_1$</p>\n<p>Final kinetic energy $K_2 = \\frac{K_1}{2}$</p>\n\n<p>Using the relation between angular momentum, kinetic energy and frequency,</p>\n<p>$$\\frac{L_2}{L_1} = \\frac{K_2}{K_1} \\times \\frac{f_1}{f_2}$$</p>\n<p>Substituting $K_2 = \\frac{K_1}{2}$ and $f_2 = 2f_1$:</p>\n<p>$$\\frac{L_2}{L_1} = \\left(\\frac{K_1}{2K_1}\\right) \\times \\left(\\frac{f_1}{2f_1}\\right) = \\left(\\frac{1}{2}\\right) \\times \\left(\\frac{1}{2}\\right) = \\frac{1}{4}$$</p>\n<p>$$L_2 = \\frac{L_1}{4} = \\frac{40}{4} = 10\\ \\mathrm{kg} \\cdot \\mathrm{m}^2/\\mathrm{s}$$</p>\n<p>Therefore, the final angular momentum of particle is $10\\ \\mathrm{kg} \\cdot \\mathrm{m}^2/\\mathrm{s}$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक कण कोणीय संवेग $L=40 \\mathrm{kgm}^2 / \\mathrm{s}$ के साथ एकसमान वृत्तीय गति करता है। यदि कण की गति की आवृत्ति को दोगुना कर दिया जाए और इसकी गतिज ऊर्जा को आधा कर दिया जाए, तो कोणीय संवेग ($\\left.\\mathbf{k g m}^{\\mathbf{2}} / \\mathbf{s}\\right)$ में) हो जाएगा :</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msi7dd6h",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "One side of a spring of initial, unstretched length $I_0=1 \\mathrm{~m}$, lying on a frictionless table, is fixed, the other one is fastened to a small puck of mass $m=0.1 \\mathrm{~kg}$. The puck is given velocity in a direction perpendicular to the spring, at an initial speed $\\mathbf{v}_{\\mathbf{0}}=\\mathbf{1 1 m} / \\mathbf{s}$. In the course of the motion, the maximum elongation of the spring is $I=\\frac{I_0}{10}$ What is the force constant of the spring (in SI units)?\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi77hti%2Fcf373e9f-3315-4e21-9995-31547612a614%2Fc23b0960-91f5-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi77htj.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi77hti%2Fcf373e9f-3315-4e21-9995-31547612a614%2Fc23b0960-91f5-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi77htj.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "210",
+                "explanation": "<p>Unstretched natural length of spring, $\\mathrm{l}_0=1 \\mathrm{~m}$</p>\n<p>Mass of the puck, $\\mathrm{m}=0.1 \\mathrm{~kg}$</p>\n<p>Initial tangential speed, $\\mathrm{v}_0=11 \\frac{\\mathrm{~m}}{\\mathrm{~s}}$</p>\n<p>Initial radius of motion, $\\mathrm{r}_1=\\mathrm{l}_0=1 \\mathrm{~m}$</p>\n<p>Maximum elongation of spring, $\\mathrm{x}=1=\\frac{\\mathrm{l}_0}{10}=\\frac{1}{10}=0.1 \\mathrm{~m}$</p>\n<p>Maximum stretched radius, $\\mathrm{r}_2=\\mathrm{l}_0+\\mathrm{x}=1+0.1=1.1 \\mathrm{~m}=\\frac{11}{10} \\mathrm{~m}$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi7blt6%2Ffed58d53-cd77-410b-bc50-064f47d5a8f9%2F348cc8a0-91f6-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi7blt7.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi7blt6%2Ffed58d53-cd77-410b-bc50-064f47d5a8f9%2F348cc8a0-91f6-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi7blt7.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>Since the spring force is directed towards the fixed pivot point, net external torque about the pivot is zero</p>\n<p>($\\tau = 0$).</p>\n<p>Therefore, angular momentum of the puck is conserved $L_1 = L_2$</p>\n<p>$$m v_0 r_1 = m v_2 r_2$$</p>\n<p>$$v_0 r_1 = v_2 r_2$$</p>\n<p>Substituting $r_1 = 1\\ \\text{m}$, $r_2 = 1.1\\ \\text{m}$, and $v_0 = 11\\ \\text{m/s}$:</p>\n<p>$$11 \\times 1 = v_2 \\times 1.1$$</p>\n<p>$$v_2 = \\frac{11}{1.1} = 10\\ \\mathrm{m/s}$$</p>\n<p>As there are no non-conservative forces act on the system. Total mechanical energy is conserved $E_1 = E_2$</p>\n<p>Initially when the spring is unstretched,</p>\n<p>$$E_1 = \\frac{1}{2} m v_0^2 + 0 = \\frac{1}{2} (0.1)(11)^2 = 0.05 \\times 121 = 6.05\\ \\mathrm{J}$$</p>\n<p>Finally at maximum extension $x = 0.1\\ \\mathrm{m}$:</p>\n<p>$$E_2 = \\frac{1}{2} m v_2^2 + \\frac{1}{2} k x^2$$</p>\n<p>Using conservation of energy;</p>\n<p>$$\\frac{1}{2} m v_0^2 = \\frac{1}{2} m v_2^2 + \\frac{1}{2} k x^2$$</p>\n<p>$$m v_0^2 = m v_2^2 + k x^2$$</p>\n<p>$$k x^2 = m (v_0^2 - v_2^2)$$</p>\n<p>Substituting $m = 0.1\\ \\mathrm{kg}$, $v_0 = 11\\ \\mathrm{m/s}$, $v_2 = 10\\ \\mathrm{m/s}$, and $x = 0.1\\ \\mathrm{m}$:</p>\n<p>$$k (0.1)^2 = 0.1 (11^2 - 10^2)$$</p>\n<p>$$k (0.01) = 0.1 (121 - 100)$$</p>\n<p>$$0.01 k = 0.1 \\times 21$$</p>\n<p>$$0.01 k = 2.1$$</p>\n<p>$$k = \\frac{2.1}{0.01} = 210\\ \\mathrm{N/m}$$</p>\n<p>Therefore, the spring constant is $210\\ \\mathrm{N/m}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "घर्षणरहित मेज पर रखी हुई प्रारंभिक, बिना खिंची हुई लंबाई $I_0=1 \\mathrm{~m}$ की एक स्प्रिंग का एक सिरा स्थिर है, तथा दूसरे सिरे को $m=0.1 \\mathrm{~kg}$ द्रव्यमान के एक छोटे पक (puck) से बाँधा गया है। पक को स्प्रिंग के लंबवत् दिशा में, प्रारंभिक चाल $\\mathbf{v}_{\\mathbf{0}}=\\mathbf{1 1 m} / \\mathbf{s}$ से वेग दिया जाता है। गति के दौरान, स्प्रिंग का अधिकतम खिंचाव $I=\\frac{I_0}{10}$ है। स्प्रिंग का बल नियतांक (SI मात्रक में) क्या है?\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi77hti%2Fcf373e9f-3315-4e21-9995-31547612a614%2Fc23b0960-91f5-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi77htj.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi77hti%2Fcf373e9f-3315-4e21-9995-31547612a614%2Fc23b0960-91f5-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi77htj.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "angular-momentum-conservation",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Angular Momentum and Angular Momentum Conservation",
+    "timeAllotted": 2160000,
+    "title": "Rotational Motion Test - 4 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g71mnvy4uec",
+    "defaultLanguage": "en",
+    "description": "Angular Momentum and Angular Momentum Conservation",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-08T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Angular Momentum and Angular Momentum Conservation",
+    "timeAllotted": 2160000,
+    "title": "Rotational Motion Test - 4 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Rotational Motion"
+  }
+}

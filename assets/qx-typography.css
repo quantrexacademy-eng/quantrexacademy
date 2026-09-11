@@ -1,0 +1,221 @@
+/**
+ * Quantrex Academy — Best-in-class Typography
+ *
+ * UI:        Inter (system-clear, modern)
+ * Questions: Source Serif 4 + Literata (long-form exam reading)
+ * Math:      STIX Two Math + KaTeX
+ * Mono:      system mono for codes
+ */
+
+:root {
+  --qx-font-display: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --qx-font-ui: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --qx-font-question: "Source Serif 4", "Literata", "STIX Two Text", Georgia, "Times New Roman", serif;
+  --qx-font-body: "Inter", system-ui, sans-serif;
+  --qx-font-math: "STIX Two Math", "STIX Two Text", "Cambria Math", "Latin Modern Math", "Source Serif 4", serif;
+  --qx-font-mono: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+
+  --qx-fw-regular: 400;
+  --qx-fw-medium: 500;
+  --qx-fw-semibold: 600;
+  --qx-fw-bold: 700;
+
+  --qx-ls-tight: -0.022em;
+  --qx-ls-snug: -0.012em;
+  --qx-ls-normal: -0.006em;
+  --qx-ls-wide: 0.02em;
+
+  --qx-lh-tight: 1.28;
+  --qx-lh-snug: 1.45;
+  --qx-lh-body: 1.6;
+  --qx-lh-question: 1.78;
+
+  /* NTA CBT: 18px stem; math uses KaTeX fonts via qx-math-system.css */
+  --nta-q: 18px;
+  --nta-math: 1.22em;
+  --qx-fs-q: var(--nta-q, 16px);
+  --qx-fs-opt: var(--nta-q, 16px);
+  --qx-fs-sol: var(--nta-q, 16px);
+  --qx-fs-ui: 0.9375rem;  /* 15px UI */
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "ss01" 0;
+  font-size: 16px;
+}
+
+body,
+.main,
+.content,
+#app-main {
+  font-family: var(--qx-font-ui) !important;
+  font-weight: var(--qx-fw-regular);
+  letter-spacing: var(--qx-ls-normal);
+  line-height: var(--qx-lh-body);
+  color: var(--text, #0f172a);
+  font-size: var(--qx-fs-ui);
+}
+
+/* ── UI headings / nav ── */
+h1, h2, h3, h4, h5, h6,
+.page-head h1,
+.logo-text,
+.dash-greet-left h1,
+.ds strong,
+.sec-title,
+.cpyqb-exam-bank-head h1,
+.cpyqb-marks-head h1,
+.qx-all-topics-label,
+.qx-subject-hero h1,
+.btn-primary,
+.btn-soft,
+.qx-top-exam,
+.nav-item,
+.chip,
+.tag,
+.subj-card strong,
+.ch-card strong {
+  font-family: var(--qx-font-display) !important;
+  font-weight: var(--qx-fw-bold);
+  letter-spacing: var(--qx-ls-tight);
+  line-height: var(--qx-lh-tight);
+}
+
+button,
+.btn-primary,
+.btn-soft,
+.mtk-btn,
+.qx-bm-btn,
+.qx-diff-chip,
+input,
+select,
+label {
+  font-family: var(--qx-font-ui) !important;
+  letter-spacing: var(--qx-ls-snug);
+}
+
+/* ═══════════════════════════════════════════════════
+   QUESTIONS · OPTIONS · SOLUTIONS — best reading fonts
+   ═══════════════════════════════════════════════════ */
+
+.mtk-q-text,
+.qx-prac-q,
+.qx-content.qx-q-text-only,
+.qx-question-body,
+.qx-q-seg-text,
+.q-text,
+.q-card .q-text,
+.qa-q,
+.mtk-main .mtk-q-text,
+.allen-practice .mtk-q-text,
+.qx-practice-page .qx-prac-q,
+.qx-marks-native,
+.qx-marks-native-q {
+  font-family: var(--qx-font-question) !important;
+  font-size: var(--qx-fs-q) !important;
+  font-weight: 500 !important;
+  line-height: var(--qx-lh-question) !important;
+  letter-spacing: 0.01em !important;
+  word-spacing: 0.06em !important;
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 18;
+  color: inherit !important;
+}
+
+.mtk-opt-text,
+.qx-prac-opt-text,
+.qa-opt,
+#qaOpts .qx-content,
+#qxOpts .mtk-opt-text,
+.mtk-opt .qx-content,
+.qx-prac-opt .qx-content,
+.qx-letter-opt,
+.qx-practice-page .qx-prac-opt-text {
+  font-family: var(--qx-font-question) !important;
+  font-size: var(--qx-fs-opt) !important;
+  font-weight: 500 !important;
+  line-height: var(--qx-lh-question) !important;
+  letter-spacing: 0.01em !important;
+  word-spacing: 0.05em !important;
+  font-optical-sizing: auto;
+  color: inherit !important;
+}
+
+.sol-body,
+.qx-sol-body,
+.qx-sol-step-body,
+.qx-sol-para,
+.qx-sol-shortcut-text,
+.qx-content.sol-body,
+.mtk-sol .qx-content,
+.result-box .qx-content {
+  font-family: var(--qx-font-question) !important;
+  font-size: var(--qx-fs-sol) !important;
+  font-weight: 450 !important;
+  line-height: 1.82 !important;
+  letter-spacing: 0.01em !important;
+  word-spacing: 0.05em !important;
+  font-optical-sizing: auto;
+}
+
+/* Subject-tinted solution badges stay UI font */
+.qx-sol-badge,
+.qx-sol-shortcut-title,
+.qx-sol-step-label {
+  font-family: var(--qx-font-ui) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* Paper meta chips — compact UI */
+.qx-paper-meta,
+.qx-paper-chip,
+.tag {
+  font-family: var(--qx-font-ui) !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+}
+
+/* ── KaTeX + MathJax: size only. Never override .katex * font-family
+   (KaTeX_Main / KaTeX_Math / KaTeX_Size1–4 must remain). ── */
+.katex {
+  font-size: var(--nta-math, 1.22em) !important;
+  line-height: 1.35 !important;
+  color: inherit !important;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+}
+
+.MathJax,
+.MathJax_Display,
+mjx-container {
+  font-family: var(--qx-font-math) !important;
+}
+
+/* Tables inside questions */
+.mtk-q-text table,
+.qx-content table,
+.sol-body table {
+  font-family: var(--qx-font-question) !important;
+  font-size: 0.95em !important;
+  line-height: 1.55 !important;
+}
+
+/* Mobile: slightly larger stems for thumb reading */
+@media (max-width: 640px) {
+  :root {
+    --qx-lh-question: 1.7;
+  }
+}
+
+/* Desktop large screens: same uniform size, slightly more line height */
+@media (min-width: 1100px) {
+  :root {
+    --qx-fs-q: 1.125rem;
+    --qx-fs-opt: 1.125rem;
+    --qx-fs-sol: 1.125rem;
+  }
+}

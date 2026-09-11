@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mpd3gqgp",
+  "title": "Electrochemistry Test - 3 (Topic Test)",
+  "type": "topic",
+  "section": "Electrochemistry",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-07-27T14:30:00.000Z",
+  "status": "ok",
+  "analysisId": "cea2b84f-cd9d-4c11-af06-872fd405c28e",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g61mpd3gqgp",
+    "defaultLanguage": "en",
+    "description": "Batteries, Fuel Cells and Corrosion",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-27T14:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-ms38bdil",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>During discharge of a lead storage cell the density of sulphuric acid in the cell :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>increasing</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>decreasing</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>remains unchanged</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>initially increases but decreases subsequently</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p><strong>Option B: decreasing</strong></p>\n<p>During the discharge of a lead storage cell, sulfuric acid ($H_2SO_4$) is continuously consumed while water ($H_2O$) is produced.</p>\n<p>Here is the overall chemical reaction for the discharge process:</p>\n<p>$$Pb(s) + PbO_2(s) + 2H_2SO_4(aq) \\rightarrow 2PbSO_4(s) + 2H_2O(l)$$</p>\n<p>Because the denser sulfuric acid is converted into less dense water, the overall density of the electrolyte solution decreases as the battery loses its charge. This property is exactly why mechanics can test a car battery's charge level by measuring the specific gravity (density) of its fluid.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>लेड स्टोरेज सेल के निरावेशन (डिस्चार्ज) के दौरान सेल में सल्फ्यूरिक अम्ल का घनत्व :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>बढ़ता है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>घटता है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>अपरिवर्तित रहता है</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>प्रारंभ में बढ़ता है लेकिन बाद में घटता है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "batteries-fuel-cells-and-corrosion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms381ky6",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For a lead storage cell, the oxidation taking place at the anode is</p>\n<p>Pb(s) + HSO$_4^-$ + H$_2$O &rarr; PbSO$_4$(s) + H$_3$O$^+$ + 2e$^-$.<br>What mass of Pb is consumed when a current of 1 A is supplied for 100 h? (Pb = 208)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>776 g</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>388 g</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>194 g</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.1 g</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Given anode reaction:</p>\n<p>$$ \\text{Pb}(s) + \\text{HSO}_4^- + \\text{H}_2\\text{O} \\rightarrow \\text{PbSO}_4(s) + \\text{H}_3\\text{O}^+ + 2e^- $$</p>\n<p>From the reaction, $1$ mole of Pb gives $2$ moles of electrons.</p>\n<p>Current passed is $1 \\, \\text{A}$ for $100 \\, \\text{h}$.</p>\n<p>Convert time into seconds:</p>\n<p>$$ 100 \\, \\text{h} = 100 \\times 60 \\times 60 = 360000 \\, \\text{s} $$</p>\n<p>Charge passed:</p>\n<p>$$ Q = It $$</p>\n<p>$$ Q = 1 \\times 360000 = 360000 \\, \\text{C} $$</p>\n<p>Now, $1$ mole of electrons carries charge equal to $1$ Faraday.</p>\n<p>$$ 1F = 96500 \\, \\text{C} $$</p>\n<p>So, moles of electrons passed:</p>\n<p>$$ \\frac{360000}{96500} \\approx 3.73 \\, \\text{mol} $$</p>\n<p>Since $2$ moles of electrons are produced by $1$ mole of Pb,</p>\n<p>$$ \\text{moles of Pb used} = \\frac{3.73}{2} \\approx 1.865 $$</p>\n<p>Mass of Pb used:</p>\n<p>$$ \\text{mass} = 1.865 \\times 208 $$</p>\n<p>$$ \\text{mass} \\approx 388 \\, \\text{g} $$</p>\n<p>So, the amount of Pb used up is:</p>\n<p>$$ \\boxed{388 \\, \\text{g}} $$</p>\n<p>Correct option: <strong>B</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक सीसा संचायक सेल (lead storage cell) के लिए, एनोड पर होने वाला ऑक्सीकरण निम्न है:</p><p>Pb(s) + HSO$_4^-$ + H$_2$O &rarr; PbSO$_4$(s) + H$_3$O$^+$ + 2e$^-$.<br>जब 100 h के लिए 1 A की धारा प्रवाहित की जाती है, तो Pb का कितना द्रव्यमान खपत होता है? (Pb = 208)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>776 g</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>388 g</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>194 g</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.1 g</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "batteries-fuel-cells-and-corrosion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms38e0wf",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In H<sub>2</sub>–O<sub>2</sub> fuel cell the reaction occuring at cathode is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2H<sub>2</sub>O + O<sub>2</sub> + 4e<sup>−</sup> &rarr; 4OH<sup>−</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2H<sub>2</sub> + O<sub>2</sub> &rarr; 2H<sub>2</sub>O (l)</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>H<sup>+</sup> + OH<sup>−</sup> &rarr; H<sub>2</sub>O</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>H<sup>+</sup> + e<sup>−</sup> &rarr; $ \\frac{1}{2} $ H<sub>2</sub>.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>In a $\\mathrm{H_2-O_2}$ fuel cell, oxygen is reduced at the cathode.</p>\n<p>In the commonly used alkaline medium, oxygen takes electrons and reacts with water to form hydroxide ions:</p>\n<p>$$ \\mathrm{O_2 + 2H_2O + 4e^- \\rightarrow 4OH^-} $$</p>\n<p>This matches Option A:</p>\n<p>$$ \\mathrm{2H_2O + O_2 + 4e^- \\rightarrow 4OH^-} $$</p>\n<p>So, the correct answer is:</p>\n<p>$$ \\boxed{\\text{Option A}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>H<sub>2</sub>–O<sub>2</sub> ईंधन सेल में कैथोड पर होने वाली अभिक्रिया है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2H<sub>2</sub>O + O<sub>2</sub> + 4e<sup>−</sup> &rarr; 4OH<sup>−</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2H<sub>2</sub> + O<sub>2</sub> &rarr; 2H<sub>2</sub>O (l)</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>H<sup>+</sup> + OH<sup>−</sup> &rarr; H<sub>2</sub>O</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>H<sup>+</sup> + e<sup>−</sup> &rarr; $ \\frac{1}{2} $ H<sub>2</sub>.</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "batteries-fuel-cells-and-corrosion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms38tv5z",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following statements is incorrect?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Mercury cell is suitable for low current devices.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Secondary cell after use can be recharged.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>38% solution of $H_2SO_4$ is used as an electrolyte in lead storage battery.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Lead storage cell has longer life than Ni-Cd cell.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The incorrect statement is:</p>\n<p>$$\\boxed{\\text{Option D}}$$</p>\n<p>Lead storage cell does not have a longer life than a Ni-Cd cell.</p>\n<p>According to NCERT, a nickel-cadmium cell has a longer life than a lead storage cell, although it is more expensive.</p>\n<p>The other statements are correct:</p>\n<p>Mercury cell is used in low current devices like hearing aids and watches.</p>\n<p>Secondary cells can be recharged after use.</p>\n<p>In a lead storage battery, $38\\%$ solution of $H_2SO_4$ is used as the electrolyte.</p>\n<p>So, the incorrect statement is:</p>\n<p>$$\\text{Lead storage cell has longer life than Ni-Cd cell.}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से कौन सा कथन गलत है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>मर्करी सेल कम धारा वाले उपकरणों के लिए उपयुक्त है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>उपयोग के पश्चात द्वितीयक सेल को पुनः आवेशित किया जा सकता है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>लेड संचायक बैटरी में $H_2SO_4$ के 38% विलयन का उपयोग वैद्युत अपघट्य के रूप में किया जाता है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>लेड संचायक सेल का जीवनकाल Ni-Cd सेल से अधिक होता है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "batteries-fuel-cells-and-corrosion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms38rozh",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following statements is correct regarding salt bridge in galvanic cell?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>It does not participate chemically in the cell reaction.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>It stops the diffusion of ions from one electrode to another electrode.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Ensures mixing of the two electrolytic solutions.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>It is necessary for the occurrence of the cell reaction.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Option A is correct.</p>\n<p>A salt bridge contains an inert electrolyte like $KCl$, $KNO_3$ or $NH_4NO_3$. Its ions move into the two half-cells to maintain electrical neutrality, but they do not take part in the actual redox reaction of the cell.</p>\n<p>So,</p>\n<p>$$ \\text{Salt bridge does not participate chemically in the cell reaction.} $$</p>\n<p>Option B is not correct because the salt bridge allows movement of ions to complete the circuit.</p>\n<p>Option C is not correct because the salt bridge prevents direct mixing of the two electrolyte solutions.</p>\n<p>Option D is too absolute. In a usual galvanic cell with two separate half-cells, the salt bridge is needed for continuous working of the cell, but it is not a chemical reactant in the cell reaction.</p>\n<p>Hence, the correct answer is:</p>\n<p>$$ \\boxed{\\text{Option A}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>गैल्वेनिक सेल में लवण सेतु (salt bridge) के संबंध में निम्नलिखित में से कौन सा कथन सही है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>यह सेल अभिक्रिया में रासायनिक रूप से भाग नहीं लेता है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>यह एक इलेक्ट्रोड से दूसरे इलेक्ट्रोड तक आयनों के विसरण (diffusion) को रोकता है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>यह दोनों वैद्युतअपघट्य विलयनों के मिलने (mixing) को सुनिश्चित करता है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>यह सेल अभिक्रिया के होने के लिए आवश्यक है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "batteries-fuel-cells-and-corrosion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms38niom",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following statements is incorrect?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Galvanisation is applying a coating of copper.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>PbO<sub>2</sub> is a strong oxidising agent, it is a part of lead storage battery.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Fuel cell, using hydrogen and oxygen as fuels, is eco-friendly.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Fuel cell is a type of galvanic cell only.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The incorrect statement is:</p>\n<p>$$\\text{Option A: Galvanisation is applying a coating of copper.}$$</p>\n<p>Galvanisation means applying a protective coating of zinc on iron or steel to prevent rusting.</p>\n<p>So the correct idea is:</p>\n<p>$$\\text{Galvanisation is coating with zinc, not copper.}$$</p>\n<p>The other statements are correct.</p>\n<p>$PbO_2$ is a strong oxidising agent and is used as the positive plate material in a lead storage battery.</p>\n<p>A hydrogen-oxygen fuel cell is eco-friendly because its main product is water.</p>\n<p>A fuel cell is also a type of galvanic cell because it converts chemical energy into electrical energy through a spontaneous redox reaction.</p>\n<p>So, the incorrect statement is:</p>\n<p>$$\\boxed{\\text{Option A}}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से कौन सा कथन गलत है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>गैल्वेनीकरण तांबे की परत चढ़ाना है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>PbO<sub>2</sub> एक प्रबल ऑक्सीकारक है, यह लेड स्टोरेज बैटरी का हिस्सा है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>ईंधन सेल, जिसमें हाइड्रोजन और ऑक्सीजन का ईंधन के रूप में उपयोग होता है, पर्यावरण के अनुकूल है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>ईंधन सेल केवल एक प्रकार का गैल्वेनिक सेल है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "batteries-fuel-cells-and-corrosion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms3940kp",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the following statements.</p><p><b>(A)</b> Mercury cell consists of Zn–Hg as anode and a paste of HgO and carbon as the cathode.</p><p><b>(B)</b> Nickel-cadmium cell is secondary cell.</p><p><b>(C)</b> Platinum is incorporated into fuel cell electrode to decrease the rate of electrode reaction.</p><p><b>(D)</b> In mercury cell, the cell potential is approximately 1.35&nbsp;V and remains constant during its life.</p><p><b>(E)</b> Fuel cells produce electricity with an efficiency of about 70% compared to thermal plants having efficiency of about 40%.</p><p>Choose the correct statements from the options given below</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>A, B, D and E</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>B, C and D</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>A, B and C</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>A, B and E</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Statement (A): The mercury cell has zinc-mercury amalgam (Zn–Hg) as the anode, and the cathode is a paste of HgO with carbon. This is exactly how the mercury cell is described in NCERT. So (A) is correct.</p>\n<p>Statement (B): The nickel-cadmium cell can be recharged after use, just like the lead storage battery. Cells that can be recharged are called secondary cells. So (B) is correct.</p>\n<p>Statement (C): In a fuel cell, catalysts like platinum or palladium are added into the electrodes. But the purpose is to <em>increase</em> the rate of the electrode reaction, not to decrease it. So the wording here is wrong, and (C) is incorrect.</p>\n<p>Statement (D): In the mercury cell, the overall reaction does not involve any ion whose concentration changes during the working of the cell. Because of this, the cell potential stays steady at about $1.35\\ \\text{V}$ throughout its life. So (D) is correct.</p>\n<p>Statement (E): Fuel cells convert chemical energy into electrical energy with an efficiency of around 70%, while conventional thermal power plants work at about 40% efficiency. This matches the NCERT statement, so (E) is correct.</p>\n<p>The correct statements are A, B, D and E.</p>\n<p>The answer is <strong>Option A</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित कथनों पर विचार कीजिए।</p><p><b>(A)</b> मरकरी (पारद) सेल में एनोड के रूप में Zn–Hg और कैथोड के रूप में HgO तथा कार्बन का पेस्ट होता है।</p><p><b>(B)</b> निकेल-कैडमियम सेल एक द्वितीयक सेल है।</p><p><b>(C)</b> इलेक्ट्रोड अभिक्रिया की दर को कम करने के लिए ईंधन सेल इलेक्ट्रोड में प्लैटिनम मिलाया जाता है।</p><p><b>(D)</b> मरकरी सेल में, सेल विभव लगभग 1.35&nbsp;V होता है और इसके सम्पूर्ण जीवनकाल में स्थिर रहता है।</p><p><b>(E)</b> ईंधन सेल लगभग 70% की दक्षता के साथ विद्युत का उत्पादन करते हैं, जबकि तापीय संयंत्रों की दक्षता लगभग 40% होती है।</p><p>नीचे दिए गए विकल्पों में से सही कथन चुनें:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>A, B, D और E</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>B, C और D</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>A, B और C</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>A, B और E</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "batteries-fuel-cells-and-corrosion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms39g92s",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Given below are two statements one is labelled as Assertion (A) and the other one is labelled as Reason (R)</p><p><b>Assertion (A) :</b> Fuel cell, using hydrogen and oxygen as fuels has been used in spaceship.</p><p><b>Reason (R) :</b> As fuel cell has efficiency of 40% to produce electricity.</p><p>In the light of the above statements, choose the most appropriate answer form the options given below.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Both A and R are true and R is the correct explanation of A.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>A is true but R is false.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>A is false but R is true.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Both A and R are true but R is not the correct explanation of A.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Assertion (A) is true.</p>\n<p>Hydrogen-oxygen fuel cells have been used in spaceships. In these cells, hydrogen and oxygen combine to produce electricity, and the product formed is water. This water can also be used by astronauts.</p>\n<p>The cell reaction is:</p>\n<p>$$ 2H_2(g) + O_2(g) \\Rightarrow 2H_2O(l) $$</p>\n<p>Reason (R) is false.</p>\n<p>According to NCERT, fuel cells are more efficient than ordinary methods of producing electricity. Their efficiency is about $70\\%$, while thermal plants have an efficiency of about $40\\%$.</p>\n<p>So, the statement that fuel cells have an efficiency of $40\\%$ is not correct.</p>\n<p>Hence, the correct answer is:</p>\n<p>$$ \\boxed{\\text{Option B: A is true but R is false.}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>नीचे दो कथन दिए गए हैं : एक अभिकथन (A) के रूप में और दूसरा कारण (R) के रूप में है।</p><p><b>अभिकथन (A) :</b> हाइड्रोजन और ऑक्सीजन को ईंधन के रूप में उपयोग करने वाले ईंधन सेल का अंतरिक्ष यान में उपयोग किया गया है।</p><p><b>कारण (R) :</b> क्योंकि ईंधन सेल की विद्युत उत्पन्न करने की दक्षता 40% होती है।</p><p>उपर्युक्त कथनों के आलोक में, नीचे दिए गए विकल्पों में से सबसे उपयुक्त उत्तर चुनें।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>A और R दोनों सत्य हैं और R, A की सही व्याख्या है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>A सत्य है लेकिन R असत्य है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>A असत्य है लेकिन R सत्य है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>A और R दोनों सत्य हैं लेकिन R, A की सही व्याख्या नहीं है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "batteries-fuel-cells-and-corrosion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms39jo3d",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Match Column-I (Types of cell) with Column-II (Characteristics shown by cells) and mark the appropriate option :</p>\n<table><style>  table {      width: 100%;      border-collapse: collapse;      margin: 20px 0;  }  th {      background-color: blue;      color: white;      border: 1px solid lightgrey;      padding: 10px;  }  td {      border: 1px solid lightgrey;      padding: 10px;      text-align: left;  }</style><tr><th>Column I<br>(Type of cell)</th><th>Column II<br>(Characteristics)</th></tr><tr><td>A. Lechlanche cell</td><td>1. Cell reaction <br>$2H_2 + O_2 \\Rightarrow 2H_2O$</td></tr><tr><td>B. Ni–Cd cell</td><td>2. Does not involve any ion in solutions and is used in hearing aids.</td></tr><tr><td>C. Fuel cell</td><td>3. Rechargeable</td></tr><tr><td>D. Mercury cell</td><td>4. Reaction at anode,<br>$Zn \\Rightarrow Zn^{2+} + 2e^-$</td></tr></table>\n<p>Choose the correct option :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>A → 2, B → 3, C → 4, D → 1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>A → 4, B → 3, C → 1, D → 2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>A → 1, B → 4, C → 3, D → 2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>A → 4, B → 1, C → 2, D → 3</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>A. Leclanché cell is a dry cell. In this cell, zinc acts as the anode and gets oxidised.</p>\n<p>$$ Zn \\rightarrow Zn^{2+} + 2e^- $$</p>\n<p>So, A matches with 4.</p>\n<p>B. Ni–Cd cell means nickel-cadmium cell. It is a secondary cell, so it can be recharged.</p>\n<p>So, B matches with 3.</p>\n<p>C. Fuel cell uses hydrogen and oxygen as reactants. Its overall cell reaction is:</p>\n<p>$$ 2H_2 + O_2 \\rightarrow 2H_2O $$</p>\n<p>So, C matches with 1.</p>\n<p>D. Mercury cell does not involve ions in solution during its cell reaction, so its potential remains almost constant. It is used in devices like hearing aids.</p>\n<p>So, D matches with 2.</p>\n<p>Hence the correct matching is:</p>\n<p>$$ A \\rightarrow 4,\\quad B \\rightarrow 3,\\quad C \\rightarrow 1,\\quad D \\rightarrow 2 $$</p>\n<p>Correct option: Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>कॉलम-I (सेल के प्रकार) का कॉलम-II (सेलों द्वारा दर्शाए गए लक्षणों) के साथ मिलान करें और उचित विकल्प को चिह्नित करें :</p><table><style>  table {      width: 100%;      border-collapse: collapse;      margin: 20px 0;  }  th {      background-color: blue;      color: white;      border: 1px solid lightgrey;      padding: 10px;  }  td {      border: 1px solid lightgrey;      padding: 10px;      text-align: left;  }</style><tr><th>कॉलम I<br>(सेल का प्रकार)</th><th>कॉलम II<br>(लक्षण)</th></tr><tr><td>A. लेक्लांचे सेल</td><td>1. सेल अभिक्रिया <br>$2H_2 + O_2 \\Rightarrow 2H_2O$</td></tr><tr><td>B. Ni–Cd सेल</td><td>2. विलयन में कोई आयन शामिल नहीं होता है और इसे श्रवण यंत्रों में उपयोग किया जाता है।</td></tr><tr><td>C. ईंधन सेल</td><td>3. पुनः आवेशित करने योग्य (Rechargeable)</td></tr><tr><td>D. मर्करी सेल</td><td>4. एनोड पर अभिक्रिया,<br>$Zn \\Rightarrow Zn^{2+} + 2e^-$</td></tr></table><p>सही विकल्प चुनें :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>A → 2, B → 3, C → 4, D → 1</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>A → 4, B → 3, C → 1, D → 2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>A → 1, B → 4, C → 3, D → 2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>A → 4, B → 1, C → 2, D → 3</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "batteries-fuel-cells-and-corrosion",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-ms398fcc",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the following statements</p><p><b>Statement I :</b> A nickel-cadmium cell is rechargeable cell.</p><p><b>Statement II :</b> In secondary cell, energy is released through spontaneous electrochemical reactions as the battery discharges.</p><p>In the light of the above statements, choose the most appropriate answer form the options given below.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Both Statement I and Statement II are correct.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Statement I is correct but Statement II is incorrect.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Both Statement I and Statement II are incorrect.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Statement I is incorrect but Statement II is correct.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Both statements are correct.</p>\n<p>A nickel-cadmium cell is a secondary cell, which means it can be recharged after discharge. So, Statement I is correct.</p>\n<p>In a secondary cell, during discharge, the cell works like a galvanic cell. The chemical reaction taking place is spontaneous, and chemical energy is converted into electrical energy. So, energy is released through spontaneous electrochemical reactions during discharge. Hence, Statement II is also correct.</p>\n<p>So, the correct option is:</p>\n<p>Option A: Both Statement I and Statement II are correct.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित कथनों पर विचार कीजिए:</p><p><b>कथन I :</b> निकल-कैडमियम सेल एक पुनरावेशनीय (rechargeable) सेल है।</p><p><b>कथन II :</b> द्वितीयक सेल में, बैटरी के डिस्चार्ज होने पर स्वतः प्रवर्तित विद्युतरासायनिक अभिक्रियाओं के माध्यम से ऊर्जा मुक्त होती है।</p><p>उपर्युक्त कथनों के आलोक में, नीचे दिए गए विकल्पों में से सबसे उपयुक्त उत्तर चुनें।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>कथन I और कथन II दोनों सही हैं।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>कथन I सही है लेकिन कथन II गलत है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>कथन I और कथन II दोनों गलत हैं।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>कथन I गलत है लेकिन कथन II सही है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "batteries-fuel-cells-and-corrosion",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-ms39nlyj",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In a hydrogen fuel cell, hydrogen gas reacts at the anode as follows</p>\n<p>$$ 2 \\mathrm{H}_2 \\longrightarrow 4 \\mathrm{HI}+2 e^{-} $$</p>\n<p>If 1.5 moles of $\\mathrm{H}_2$ gas is consumed in the fuel cell. Then total energy that released is $\\_\\_\\_\\_$J.</p>\n<p>(Given, The standard cell potential is 1.23 V )</p>",
+                "options": [],
+                "answer": "356085",
+                "explanation": "<p>For a hydrogen fuel cell, the electrical energy released is found using</p>\n<p>$$ \\Delta G = -nFE^\\circ_{\\text{cell}} $$</p>\n<p>So, magnitude of energy released is</p>\n<p>$$ \\text{Energy} = nFE^\\circ_{\\text{cell}} $$</p>\n<p>In a hydrogen fuel cell, $1$ mole of $\\mathrm{H}_2$ gives $2$ moles of electrons:</p>\n<p>$$ \\mathrm{H}_2 \\Rightarrow 2\\mathrm{H}^+ + 2e^- $$</p>\n<p>So, for $1.5$ moles of $\\mathrm{H}_2$,</p>\n<p>$$ n = 1.5 \\times 2 = 3 $$</p>\n<p>Now,</p>\n<p>$$ \\text{Energy} = nFE^\\circ_{\\text{cell}} $$</p>\n<p>Using</p>\n<p>$$ F = 96500 \\ \\mathrm{C \\ mol^{-1}}, \\qquad E^\\circ_{\\text{cell}} = 1.23 \\ \\mathrm{V} $$</p>\n<p>we get</p>\n<p>$$ \\text{Energy} = 3 \\times 96500 \\times 1.23 $$</p>\n<p>$$ \\text{Energy} = 356085 \\ \\mathrm{J} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक हाइड्रोजन ईंधन सेल में, एनोड पर हाइड्रोजन गैस इस प्रकार अभिक्रिया करती है</p><p>$$ 2 \\mathrm{H}_2 \\longrightarrow 4 \\mathrm{HI}+2 e^{-} $$</p><p>यदि ईंधन सेल में 1.5 मोल $\\mathrm{H}_2$ गैस की खपत होती है, तो मुक्त होने वाली कुल ऊर्जा $\\_\\_\\_\\_$J है।</p><p>(दिया गया है, मानक सेल विभव 1.23 V है)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "batteries-fuel-cells-and-corrosion",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms39x6er",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Identify the correct electrolytes used in various types of cells or batteries.</p>\n<p>I. Dry cell — $\\mathrm{MnO_2 + C}$ (touching cathode),</p>\n<p>$\\mathrm{NH_4Cl + ZnCl_2}$ (touching anode)</p>\n<p>II. $\\mathrm{H_2O_2}$ fuel cell — KOH solution</p>\n<p>III. Ni—Cd cell — Concentrated aqueous KOH solution.</p>\n<p>IV. Lead storage battery — $38\\%\\ \\mathrm{H_2SO_4}$</p>\n<p>V. Mercury cell — $\\mathrm{HgO + KOH}$</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>The correct ones are:</p>\n<p>$$\\text{II, III and IV}$$</p>\n<p>For a dry cell, the electrolyte is a moist paste of:</p>\n<p>$$\\mathrm{NH_4Cl + ZnCl_2}$$</p>\n<p>The mixture $\\mathrm{MnO_2 + C}$ is not the electrolyte. It is placed around the carbon cathode. Here, $\\mathrm{MnO_2}$ acts mainly as a depolariser, and carbon improves conductivity.</p>\n<p>So statement I is not fully correct as an electrolyte description.</p>\n<p>For a hydrogen-oxygen fuel cell, an aqueous solution of $\\mathrm{KOH}$ is commonly used as the electrolyte.</p>\n<p>So II is correct.</p>\n<p>For a Ni-Cd cell, the electrolyte is concentrated aqueous $\\mathrm{KOH}$ solution.</p>\n<p>So III is correct.</p>\n<p>For a lead storage battery, the electrolyte is about $38\\%$ $\\mathrm{H_2SO_4}$ solution.</p>\n<p>So IV is correct.</p>\n<p>For a mercury cell, the electrolyte is a paste of:</p>\n<p>$$\\mathrm{KOH + ZnO}$$</p>\n<p>The $\\mathrm{HgO}$ is used as the cathode material, not as the electrolyte.</p>\n<p>So V is incorrect.</p>\n<p>Hence, the correct statements are:</p>\n<p>$$\\boxed{\\text{II, III and IV}}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>विभिन्न प्रकार के सेलों या बैटरियों में उपयोग किए जाने वाले सही विद्युत अपघट्यों (electrolytes) की पहचान करें।</p>\n<p>I. शुष्क सेल — $\\mathrm{MnO_2 + C}$ (कैथोड के संपर्क में),</p>\n<p>$\\mathrm{NH_4Cl + ZnCl_2}$ (एनोड के संपर्क में)</p>\n<p>II. $\\mathrm{H_2O_2}$ ईंधन सेल — KOH विलयन</p>\n<p>III. Ni—Cd सेल — सांद्र जलीय KOH विलयन।</p>\n<p>IV. लेड संचायक बैटरी — $38\\%\\ \\mathrm{H_2SO_4}$</p>\n<p>V. मर्करी सेल — $\\mathrm{HgO + KOH}$</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "batteries-fuel-cells-and-corrosion",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms3a9j8m",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In a $\\mathrm{Zn}-\\mathrm{MnO}_2$ dry cell, zinc acts as the anode, while the cathode is a carbon rod packed with a mixture containing $\\mathrm{MnO}_2$, carbon, $\\mathrm{NH}_4 \\mathrm{Cl}$ and $\\mathrm{ZnCl}_2$ in aqueous base. If the cathode compartment contains $8.7 \\mathrm{~g} \\mathrm{MnO}_2$, for how many days can the cell supply a current of $3.99 \\times 10^{-3} \\mathrm{~A}$ ?</p>",
+                "options": [],
+                "answer": "28",
+                "explanation": "<p>In the dry cell, $\\mathrm{MnO_2}$ is reduced at the cathode.</p>\n<p>The cathode reaction may be written as:</p>\n<p>$$ \\mathrm{MnO_2 + NH_4^+ + e^- \\Rightarrow MnO(OH) + NH_3} $$</p>\n<p>So, $1$ mole of $\\mathrm{MnO_2}$ requires $1$ mole of electrons.</p>\n<p>Given mass of $\\mathrm{MnO_2}$:</p>\n<p>$$ 8.7 \\ \\mathrm{g} $$</p>\n<p>Molar mass of $\\mathrm{MnO_2}$:</p>\n<p>$$ 55 + 2(16) = 87 \\ \\mathrm{g \\ mol^{-1}} $$</p>\n<p>So moles of $\\mathrm{MnO_2}$:</p>\n<p>$$ \\frac{8.7}{87} = 0.1 \\ \\mathrm{mol} $$</p>\n<p>Since $1$ mole of $\\mathrm{MnO_2}$ consumes $1$ mole of electrons,</p>\n<p>$$ \\text{moles of electrons} = 0.1 \\ \\mathrm{mol} $$</p>\n<p>Charge supplied by $0.1$ mole of electrons:</p>\n<p>$$ Q = nF $$</p>\n<p>$$ Q = 0.1 \\times 96500 $$</p>\n<p>$$ Q = 9650 \\ \\mathrm{C} $$</p>\n<p>Current is given as:</p>\n<p>$$ I = 3.99 \\times 10^{-3} \\ \\mathrm{A} $$</p>\n<p>Using</p>\n<p>$$ Q = It $$</p>\n<p>we get</p>\n<p>$$ t = \\frac{Q}{I} $$</p>\n<p>$$ t = \\frac{9650}{3.99 \\times 10^{-3}} $$</p>\n<p>$$ t \\approx 2.42 \\times 10^6 \\ \\mathrm{s} $$</p>\n<p>Now convert seconds into days:</p>\n<p>$$ 1 \\ \\text{day} = 24 \\times 60 \\times 60 = 86400 \\ \\mathrm{s} $$</p>\n<p>$$ \\text{Number of days} = \\frac{2.42 \\times 10^6}{86400} $$</p>\n<p>$$ \\text{Number of days} \\approx 28 $$</p>\n<p>So, the dry cell will continue to give the current for about</p>\n<p>$$ \\boxed{28 \\ \\text{days}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक $\\mathrm{Zn}-\\mathrm{MnO}_2$ शुष्क सेल में, जिंक ऐनोड के रूप में कार्य करता है, जबकि कैथोड एक कार्बन छड़ होती है जिसमें जलीय माध्यम में $\\mathrm{MnO}_2$, कार्बन, $\\mathrm{NH}_4 \\mathrm{Cl}$ और $\\mathrm{ZnCl}_2$ युक्त मिश्रण भरा होता है। यदि कैथोड कक्ष में $8.7 \\mathrm{~g} \\mathrm{MnO}_2$ है, तो यह सेल कितने दिनों तक $3.99 \\times 10^{-3} \\mathrm{~A}$ की धारा की आपूर्ति कर सकता है?</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "batteries-fuel-cells-and-corrosion",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms39zku4",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of correct statements from the following is/are</p>\n<p>I. in dry cell, zinc acts a anode and graphite as cathode.</p>\n<p>II. mercury cell supplies constant voltage of 1.35 V throughout its life.</p>\n<p>III. MnO$_2$ is used as a depolariser in dry cell.</p>\n<p>IV. in primary cells electrode reactions can be reversed by external energy source.</p>\n<p>V. rust is faster in sea water because of dissolved salts.</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>The correct statements are I, II, III and V.</p>\n<p>I. In a dry cell, the zinc container acts as the anode and the graphite rod acts as the cathode.</p>\n<p>This is correct. Zinc undergoes oxidation, so it is the anode.</p>\n<p>II. A mercury cell supplies a constant voltage of $1.35 \\, \\text{V}$ throughout its life.</p>\n<p>This is correct. In a mercury cell, the overall cell reaction does not involve any ion in solution whose concentration changes significantly, so the voltage remains nearly constant.</p>\n<p>III. $MnO_2$ is used as a depolariser in a dry cell.</p>\n<p>This is correct. $MnO_2$ helps in removing hydrogen formed near the cathode, so it acts as a depolariser.</p>\n<p>IV. In primary cells, electrode reactions can be reversed by an external energy source.</p>\n<p>This is incorrect. In primary cells, the reactions are not reversible. Once the reactants are consumed, the cell cannot be recharged. Reversible reactions are seen in secondary cells.</p>\n<p>V. Rusting is faster in sea water because of dissolved salts.</p>\n<p>This is correct. Dissolved salts increase the electrical conductivity of water, which makes electrochemical corrosion faster.</p>\n<p>So, the number of correct statements is</p>\n<p>$$ \\boxed{4} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से सही कथनों की संख्या है/हैं</p><p>I. शुष्क सेल में, जिंक एनोड के रूप में और ग्रेफाइट कैथोड के रूप में कार्य करता है।</p><p>II. मर्करी सेल अपने संपूर्ण जीवनकाल में 1.35 V का नियत वोल्टेज प्रदान करता है।</p><p>III. शुष्क सेल में MnO$_2$ का उपयोग विध्रुवक (depolariser) के रूप में किया जाता है।</p><p>IV. प्राथमिक सेलों में इलेक्ट्रोड अभिक्रियाओं को बाह्य ऊर्जा स्रोत द्वारा उत्क्रमित (reverse) किया जा सकता है।</p><p>V. समुद्री जल में घुले हुए लवणों के कारण जंग लगने की प्रक्रिया (rusting) तेज हो जाती है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "batteries-fuel-cells-and-corrosion",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-ms3aco08",
+            "chapter": "electrochemistry",
+            "chapterGroup": "physical-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>During the discharge of a lead storage battery, the density of $40 \\% \\mathrm{H}_2 \\mathrm{SO}_4$ by weight fell from 1.225 to 0.98 (which is $20 \\%$ by weight). What is the change in molarities of $\\mathrm{H}_2 \\mathrm{SO}_4$ ?</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>Molar mass of $\\mathrm{H}_2 \\mathrm{SO}_4 = 2(1) + 32 + 4(16) = 98 \\text{ g/mol}$.</p>\n<p>Let's look at the initial state of the battery. The solution is given as $40 \\%$ $\\mathrm{H}_2 \\mathrm{SO}_4$ by weight, and its density is $1.225 \\text{ g/mL}$. </p>\n<p>This percentage tells us that if we take $100 \\text{ g}$ of the solution, it will contain $40 \\text{ g}$ of $\\mathrm{H}_2 \\mathrm{SO}_4$.</p>\n<p>To find molarity, we need the volume of this $100 \\text{ g}$ solution. We can find this using the density formula:</p>\n<p>$$ \\text{Volume} = \\frac{\\text{Mass}}{\\text{Density}} $$</p>\n<p>$$ \\text{Volume of solution} = \\frac{100}{1.225} \\text{ mL} $$</p>\n<p>Since molarity is defined per litre of solution, we divide this by $1000$ to express the volume in litres:</p>\n<p>$$ \\text{Volume in litres} = \\frac{100}{1.225 \\times 1000} \\text{ L} $$</p>\n<p>Now, let's find the number of moles of $\\mathrm{H}_2 \\mathrm{SO}_4$ in that $40 \\text{ g}$:</p>\n<p>$$ \\text{Moles of } \\mathrm{H}_2 \\mathrm{SO}_4 = \\frac{\\text{Given mass}}{\\text{Molar mass}} = \\frac{40}{98} \\text{ mol} $$</p>\n<p>Now we can calculate the initial molarity ($M_1$):</p>\n<p>$$ M_1 = \\frac{\\text{Moles of solute}}{\\text{Volume of solution in L}} $$</p>\n<p>$$ M_1 = \\frac{\\frac{40}{98}}{\\frac{100}{1.225 \\times 1000}} $$</p>\n<p>$$ M_1 = \\frac{40 \\times 1.225 \\times 1000}{98 \\times 100} $$</p>\n<p>$$ M_1 = \\frac{40 \\times 12.25}{98} = \\frac{490}{98} = 5 \\text{ M} $$</p>\n<p>Now let's examine the final state after discharge. The concentration drops to $20 \\%$ by weight, and the density becomes $0.98 \\text{ g/mL}$. </p>\n<p>Following the same logic, $100 \\text{ g}$ of this new solution contains $20 \\text{ g}$ of $\\mathrm{H}_2 \\mathrm{SO}_4$.</p>\n<p>The volume of $100 \\text{ g}$ of this solution is:</p>\n<p>$$ \\text{Volume} = \\frac{100}{0.98} \\text{ mL} = \\frac{100}{0.98 \\times 1000} \\text{ L} $$</p>\n<p>The number of moles of $\\mathrm{H}_2 \\mathrm{SO}_4$ is now:</p>\n<p>$$ \\text{Moles} = \\frac{20}{98} \\text{ mol} $$</p>\n<p>Let's calculate the final molarity ($M_2$):</p>\n<p>$$ M_2 = \\frac{\\frac{20}{98}}{\\frac{100}{0.98 \\times 1000}} $$</p>\n<p>$$ M_2 = \\frac{20 \\times 0.98 \\times 1000}{98 \\times 100} $$</p>\n<p>$$ M_2 = \\frac{20 \\times 9.8}{98} = \\frac{196}{98} = 2 \\text{ M} $$</p>\n<p>We have the initial and final molarities, so we just subtract them to find the change.</p>\n<p>$$ \\text{Change in molarity} = M_1 - M_2 $$</p>\n<p>$$ \\text{Change in molarity} = 5 \\text{ M} - 2 \\text{ M} = 3 \\text{ M} $$</p>\n<p>The change in the molarity of $\\mathrm{H}_2 \\mathrm{SO}_4$ during the discharge is $3 \\text{ M}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>लेड स्टोरेज बैटरी के डिस्चार्ज होने के दौरान, $40 \\% \\mathrm{H}_2 \\mathrm{SO}_4$ (भारानुसार) का घनत्व 1.225 से गिरकर 0.98 (जो $20 \\%$ भारानुसार है) हो गया। $\\mathrm{H}_2 \\mathrm{SO}_4$ की मोलरता में क्या परिवर्तन होता है?</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "batteries-fuel-cells-and-corrosion",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Batteries, Fuel Cells and Corrosion",
+    "timeAllotted": 2160000,
+    "title": "Electrochemistry Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mpd3gqgp",
+    "defaultLanguage": "en",
+    "description": "Batteries, Fuel Cells and Corrosion",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-27T14:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Batteries, Fuel Cells and Corrosion",
+    "timeAllotted": 2160000,
+    "title": "Electrochemistry Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Electrochemistry"
+  }
+}

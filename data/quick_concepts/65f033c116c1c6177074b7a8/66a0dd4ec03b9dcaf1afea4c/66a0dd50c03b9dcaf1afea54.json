@@ -1,0 +1,64 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd4ec03b9dcaf1afea4c",
+  "topicId": "66a0dd50c03b9dcaf1afea54",
+  "title": "Differentiation of implicit functions",
+  "concepts": [
+    {
+      "title": "Derivative of Implicit Function",
+      "conceptBody": "<h3><strong>Differentiation of implicit function</strong></h3><p>If a relation between $\\text{x}$ and $\\text{y}$ is such that $\\text{y}$ cannot be expressed in terms of $\\text{x}$ then $\\text{y}$ is called an implicit function of $\\text{x}$. Here we will give method to find $\\frac{dy}{dx}$ if $y$ is an implicit function of $x$Working Rule:</p><p>(i) Differentiate the given relation between $\\text{x}$ and $\\text{y}$ w.r.t. $\\text{x}$.</p><p>(ii) Bring all the terms containing $\\frac{\\text{dy}}{\\text{dx}}$ on left hand side and remaining terms on right hand side and then find $\\frac{dy}{dx}$.</p><p>(iii) Use the given relation between $\\text{x}$ and $\\text{y}$ to get the result in simplified form.</p><p>&nbsp;</p><p><strong>Q) If $xy={{x}^{3}}+{{y}^{3}}$, find $\\frac{dy}{dx}$.&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>Given $xy={{x}^{3}}+{{y}^{3}}$s</p><p>differentiating w.r.t. $\\text{x}$, we get (i)</p><p>$\\frac{d}{d x}(x y)=\\frac{d}{d x}\\left(x^3\\right)+\\frac{d}{d x}\\left(y^3\\right)$</p><p>$1 \\cdot y+x \\cdot \\frac{d y}{d x}=3 x^2+3 y^2 \\frac{d y}{d x}$</p><p>or $\\quad\\left(x-3 y^2\\right) \\frac{d y}{d x}=3 x^2-y$</p><p>$\\therefore \\quad \\frac{\\mathrm{dy}}{\\mathrm{dx}}=\\frac{3 \\mathrm{x}^2-2}{\\mathrm{x}-3 \\mathrm{y}^2}$</p><p>&nbsp;</p><p><strong>Q) If $x+y=\\text{sin}\\left( xy \\right)$, find $\\frac{dy}{dx}$.&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>Given $\\text{x}+\\text{y}=\\text{sin}\\left( \\text{xy} \\right)$</p><p>differentiating w.r.t. $\\text{x}$, we get (ii)</p><p>$1+\\frac{dy}{dx}=\\frac{d}{dx}\\left( \\text{sin}\\left( xy \\right) \\right)=\\frac{d}{dx}\\text{sin}\\left( xy \\right)\\cdot \\frac{d}{dx}\\left( xy \\right)$</p><p>$=\\cos (x y) \\cdot\\left(1 \\cdot y+x \\frac{d y}{d x}\\right)=y \\cos (x y)+x \\cos (x y) \\frac{d y}{d x}$</p><p>$\\therefore \\quad[1-x \\cos (x y)] \\frac{d y}{d x}=y \\cos (x y)-1$</p><p>$\\therefore \\quad \\frac{\\mathrm{dy}}{\\mathrm{dx}}=\\frac{\\mathrm{y} \\cos (\\mathrm{xy})-1}{1-\\mathrm{x} \\cos (\\mathrm{xy})}$</p><p>&nbsp;</p><p><strong>Q) If ${{x}^{3}}+{{y}^{3}}=\\text{sin}\\left( x+y \\right)$, find $\\frac{dy}{dx}$.&nbsp;</strong></p><p><strong>Solution:&nbsp;</strong></p><p>Given, ${{x}^{3}}+{{y}^{3}}=\\text{sin}\\left( x+y \\right)$</p><p>differentiating w.r.t. $\\text{x}$, we get</p><p>$\\frac{\\mathrm{d}}{\\mathrm{dx}}\\left(\\mathrm{x}^3\\right)+\\frac{\\mathrm{d}}{\\mathrm{dx}}\\left(\\mathrm{y}^3\\right)=\\frac{\\mathrm{d}}{\\mathrm{dx}}[\\sin (\\mathrm{x}+\\mathrm{y})]$</p><p>$\\frac{d}{d x}\\left(x^3\\right)+\\frac{d}{d x}\\left(y^3\\right) \\frac{d y}{d x}=\\frac{d \\sin (x+y)}{d(x+y)} \\cdot \\frac{d}{d x}(x+y)$</p><p>or $\\quad 3 x^2+3 y^2 \\frac{d y}{d x}=\\cos (x+y) \\cdot\\left(1+\\frac{d y}{d x}\\right)$</p><p>or $\\quad\\left[3 y^2-\\cos (x+y)\\right] \\frac{d y}{d x}=\\cos (x+y)-3 x^2$</p><p>$\\therefore \\quad \\frac{\\mathrm{dy}}{\\mathrm{dx}}=\\frac{\\cos (\\mathrm{x}+\\mathrm{y})-3 \\mathrm{x}^2}{3 \\mathrm{y}^2-\\cos (\\mathrm{x}+\\mathrm{y})}$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd50c03b9dcaf1afea55"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f472d384bfb4a53805c",
+      "title": "If $x^3+8 x y+y^3=64$, then $\\frac{d y}{d x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f472d384bfb4a53805d",
+      "title": "If $a x^2+2 h x y+b y^2+2 g x+2 f y+c=0$, then $\\frac{d y}{d x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f472d384bfb4a53805e",
+      "title": "$x \\sqrt{1+y}+y \\sqrt{1+x}=0$, then $\\frac{d y}{d x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f472d384bfb4a53805f",
+      "title": "If $\\sin y=x \\sin (a+y)$, then $\\frac{d y}{d x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f472d384bfb4a538060",
+      "title": "If $\\tan (x+y)+\\tan (x-y)=1$, then $\\frac{d y}{d x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f472d384bfb4a538061",
+      "title": "If $y \\sec x+\\tan x+x^2 y=0$, then $\\frac{d y}{d x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f472d384bfb4a538062",
+      "title": "If $\\sin ^2 x+2 \\cos y+x y=0$, then $\\frac{d y}{d x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f472d384bfb4a538063",
+      "title": "If $x^2+y^2=t-\\frac{1}{t}, x^4+y^4=t^2+\\frac{1}{t^2}$, then $x^3 y \\frac{d y}{d x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

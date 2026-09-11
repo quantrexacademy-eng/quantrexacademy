@@ -1,0 +1,86 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19156220c83fbf1e0bce11",
+  "chapterId": "6a192b9fe4cc9575516b5665",
+  "subject": "Physics",
+  "chapter": "Mechanical Properties of Fluids",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec179ef1faeb9633e23d9",
+      "title": "Hydrodynamics",
+      "count": 5,
+      "questionIds": [
+        "6a1ec0cdef1faeb9633e1fbf",
+        "6a1ec0aeef1faeb9633e1f02",
+        "6a1ec14cef1faeb9633e22e1",
+        "6a1ec00fef1faeb9633e1b19",
+        "6a1ec053ef1faeb9633e1cc3"
+      ]
+    },
+    {
+      "id": "6a1ec179ef1faeb9633e23da",
+      "title": "Surface tension",
+      "count": 13,
+      "questionIds": [
+        "6a1ec0efef1faeb9633e2093",
+        "6a1ec06def1faeb9633e1d68",
+        "6a1ec0cdef1faeb9633e1fc0",
+        "6a1ec0afef1faeb9633e1f03",
+        "6a1ec08eef1faeb9633e1e33",
+        "6a1ec030ef1faeb9633e1be3",
+        "6a1ec02fef1faeb9633e1be1",
+        "6a1ec12eef1faeb9633e2223",
+        "6a1ec14cef1faeb9633e22e0",
+        "6a1ec010ef1faeb9633e1b1a",
+        "6a1ec110ef1faeb9633e2163",
+        "6a1ec110ef1faeb9633e2162",
+        "6a1ec053ef1faeb9633e1cc2"
+      ]
+    },
+    {
+      "id": "6a1ec179ef1faeb9633e23db",
+      "title": "Archmidies Principle",
+      "count": 6,
+      "questionIds": [
+        "6a1ec092ef1faeb9633e1e50",
+        "6a1ec090ef1faeb9633e1e46",
+        "6a1ec030ef1faeb9633e1be2",
+        "6a1ec12eef1faeb9633e2222",
+        "6a1ec010ef1faeb9633e1b1b",
+        "6a1ec10fef1faeb9633e2161"
+      ]
+    },
+    {
+      "id": "6a1ec17aef1faeb9633e23dc",
+      "title": "Pressure and thrust",
+      "count": 4,
+      "questionIds": [
+        "6a1ec06def1faeb9633e1d67",
+        "6a1ec0aeef1faeb9633e1f01",
+        "6a1ec14cef1faeb9633e22df",
+        "6a1ec053ef1faeb9633e1cc1"
+      ]
+    },
+    {
+      "id": "6a1ec17aef1faeb9633e23dd",
+      "title": "Viscosity",
+      "count": 4,
+      "questionIds": [
+        "6a1ec0edef1faeb9633e2085",
+        "6a1ec06eef1faeb9633e1d69",
+        "6a1ec0cdef1faeb9633e1fc1",
+        "6a1ec12def1faeb9633e2221"
+      ]
+    },
+    {
+      "id": "6a1ec17aef1faeb9633e23de",
+      "title": "Efflux of liquid",
+      "count": 1,
+      "questionIds": [
+        "6a1ec0eeef1faeb9633e208b"
+      ]
+    }
+  ]
+}

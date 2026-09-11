@@ -1,0 +1,30 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a1915fc6f6e9bf164f6d502",
+  "chapterId": "6a192ac4b5b1198845125ae0",
+  "subject": "Biology",
+  "chapter": "Cell - The Unit of Life",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec1c3ef1faeb9633e24f1",
+      "title": "Cell Organelles",
+      "count": 4,
+      "questionIds": [
+        "6a1ec0e4ef1faeb9633e2051",
+        "6a1ec040ef1faeb9633e1c4c",
+        "6a1ec13eef1faeb9633e2288",
+        "6a1ec024ef1faeb9633e1b9a"
+      ]
+    },
+    {
+      "id": "6a1ec1c3ef1faeb9633e24f2",
+      "title": "Cell Wall",
+      "count": 1,
+      "questionIds": [
+        "6a1ec120ef1faeb9633e21c9"
+      ]
+    }
+  ]
+}

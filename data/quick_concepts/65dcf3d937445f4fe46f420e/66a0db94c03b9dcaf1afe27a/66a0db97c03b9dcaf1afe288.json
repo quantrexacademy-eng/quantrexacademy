@@ -1,0 +1,52 @@
+{
+  "subjectId": "65dcf3d937445f4fe46f420e",
+  "chapterId": "66a0db94c03b9dcaf1afe27a",
+  "topicId": "66a0db97c03b9dcaf1afe288",
+  "title": "Time Period and Frequency",
+  "concepts": [
+    {
+      "title": "Time Period of SHM",
+      "conceptBody": "<h3><strong>Time Period of SHM</strong></h3><p>Periodic functions $\\text{f}\\left( \\text{t} \\right)$ with period $\\text{T}$ are those functions of the variable ' $\\text{t}$ ' which have the property,</p><p>$\\text{f}\\left( \\text{t}+\\text{T} \\right)=\\text{f}\\left( \\text{t} \\right)$</p><p>Both $\\text{sin}\\left( \\omega t+\\phi \\right)$ and $\\text{cos}\\left( \\omega t+\\phi \\right)$ will repeat their values if the angle $\\left( \\omega t+\\phi \\right)$ increases by $2\\pi $ or its multiple. As $\\text{T}$ is the $2\\pi $ smallest time for repetition.</p><p>\\(\\begin{aligned} \\omega(\\mathrm{t}+\\mathrm{T})+\\phi &amp; =\\omega \\mathrm{t}+\\phi+2 \\pi \\\\ \\therefore \\omega \\mathrm{T} &amp; =2 \\pi \\text { or } \\mathrm{T}=\\frac{2 \\mathrm{~T}}{\\omega}\\end{aligned}\\)</p><p>Since</p><p>$\\begin{matrix} \\omega =\\sqrt{\\frac{\\text{k}}{\\text{m}}} \\\\ \\text{T}=2\\pi \\sqrt{\\frac{\\text{m}}{\\text{k}}} \\\\ \\end{matrix}$</p>",
+      "position": 0,
+      "qcConcept": "66a0db97c03b9dcaf1afe289"
+    },
+    {
+      "title": "Frequency of SHM",
+      "conceptBody": "<h3><strong>Frequency And Angular Frequency</strong></h3><p>Frequency is defined as the number of oscillations per second or simply the reciprocal of time period.</p><p>$\\begin{matrix} v=\\frac{1}{\\text{ }\\!\\!~\\!\\!\\text{ T}}=\\frac{\\omega }{2\\pi }=\\frac{1}{2\\pi }\\sqrt{\\frac{\\text{k}}{\\text{m}}} \\\\ v=\\frac{1}{2\\pi }\\sqrt{\\frac{\\text{k}}{\\text{m}}} \\\\ \\end{matrix}$</p><p>The constant $\\omega $ is called the angular frequency. The angular frequency and period in simple harmonic motion are independent of the amplitude.</p>",
+      "position": 1,
+      "qcConcept": "66a0db97c03b9dcaf1afe28a"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "665850f71ebdecde60539b4d",
+      "title": "A particle executing S.H.M. of amplitude $4 \\mathrm{~cm}$ and $T=4 \\mathrm{sec}$. The time taken by it to move from positive extreme position to half the amplitude is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f71ebdecde60539b4e",
+      "title": "A particle executes a simple harmonic motion of time period $T$. Find the time taken by the particle to go directly from its mean position to half the amplitude",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f71ebdecde60539b4f",
+      "title": "The periodic time of a body executing simple harmonic motion is $3 \\mathrm{sec}$. After how much interval from time $t=0$, its displacement will be half of its amplitude",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f71ebdecde60539b50",
+      "title": "A particle executes S.H.M. with a period of 6 second and amplitude of $3 \\mathrm{~cm}$. Its maximum speed in $\\mathrm{cm} / \\mathrm{sec}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "665850f71ebdecde60539b51",
+      "title": "If the displacement of a particle executing SHM is given by $y=0.30 \\sin (220 t+0.64)$ in metre, then the frequency and maximum velocity of the particle is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

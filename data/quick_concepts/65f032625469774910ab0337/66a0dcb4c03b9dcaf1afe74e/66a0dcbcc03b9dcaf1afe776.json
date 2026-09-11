@@ -1,0 +1,112 @@
+{
+  "subjectId": "65f032625469774910ab0337",
+  "chapterId": "66a0dcb4c03b9dcaf1afe74e",
+  "topicId": "66a0dcbcc03b9dcaf1afe776",
+  "title": "Solubility",
+  "concepts": [
+    {
+      "title": "Solubility and Molar Solubility",
+      "conceptBody": "<p>\n SOLUBILITY, MOLAR SOLUBILITY AND SOLUBILITY PRODUCT\n</p>\n<p>\n There are two ways to express a substance’s solubility (a) solubility and (b) molar solubility.\n</p>\n<p>\n (a)\tThe number of grams of solute in one litre of a saturated solution ($\\text{g}/\\text{litre}$) is termed as solubility.\n</p>\n<p>\n (b)\tThe number of moles of solute in one litre of a saturated solution (moles / litre) is defined as molar solubility.\n</p>\n<p>\n Both these definitions refer to the concentration of saturated solutions at some given temperature (usually 25).\n</p>\n<p>\n Let us consider solubility of any general salt, ${{\\text{A}}_{\\text{x}}}{{\\text{B}}_{\\text{y}}}$. Let the solubility of this salt be ‘s’ mol per litre.\n</p>\n<p>\n ${{\\text{A}}_{\\text{x}}}{{\\text{B}}_{\\text{y}}}(\\text{s})\\rightleftharpoons \\underset{xs}{\\mathop{\\text{x}{{\\text{A}}^{\\text{y}+}}(\\text{aq})}}\\,+\\underset{ys}{\\mathop{\\text{y}{{\\text{B}}^{\\text{x}-}}(\\text{aq})}}\\,$\n</p>\n<p>\n For saturated solution (at equilibrium), ${{K}_{eq}}=\\frac{{{\\left[ {{A}^{y+}} \\right]}^{x}}\\times {{\\left[ {{B}^{X-}} \\right]}^{y}}}{\\left[ {{A}_{x}}{{B}_{y}} \\right]}$\n</p>\n<p>\n ${{\\text{K}}_{\\text{eq }}}\\left[ {{\\text{A}}_{\\text{X}}}{{\\text{B}}_{\\text{y}}} \\right]={{\\left[ {{\\text{A}}^{\\text{y}-}} \\right]}^{\\text{x}}}{{\\left[ {{\\text{B}}^{\\text{x}-}} \\right]}^{\\text{y}}}$\n</p>\n<p>\n ${{\\text{K}}_{\\text{sp}}}={{\\left[ {{\\text{A}}^{\\text{y}+}} \\right]}^{\\text{x}}}{{\\left[ {{\\text{B}}^{\\text{x}-}} \\right]}^{\\text{y}}}\\quad $ (since ${{\\text{A}}_{\\text{x}}}{{\\text{B}}_{\\text{y}}}$ is a pure solid)\n</p>\n<p>\n where ${{K}_{sp}}$ is called\n <strong>\n  solubility product\n </strong>\n . The term on right hand side is called solubility product if the solution is saturated and ionic product if the solution is not saturated (i.e., not at equilibrium).\n</p>\n<p>\n ${{\\text{K}}_{\\text{sp}}}={{(\\text{xs})}^{\\text{x}}}\\times {{(\\text{yx})}^{\\text{y}}}$\n</p>\n<p>\n ${{\\text{K}}_{\\text{sp}}}={{\\text{x}}^{\\text{x}}}\\times {{\\text{y}}^{\\text{y}}}\\times {{\\text{s}}^{(\\text{x}+\\text{y})}}$\n</p>\n<p>\n It should be noted that if the ionic product is more than ${{K}_{SP}}$, the equilibrium will shift in backward direction and some amount of salt is thrown out of solution (precipitation) and finally an equilibrium is developed in such a way that the ionic product becomes equal to solubility product. If ionic product is less than ${{\\text{K}}_{\\text{SP}}}$, the solution is\n <strong>\n  unsaturated\n </strong>\n and more of the salt can be dissolved. If ionic product is equal to ${{\\text{K}}_{\\text{SP}}}$, the solution is\n <strong>\n  saturated\n </strong>\n and if ionic product is more than ${{\\text{K}}_{\\text{SP}}}$, the solution is called\n <strong>\n  super saturated\n </strong>\n .\n</p>\n<p>\n From the solubility product principle, we may infer that,\n</p>\n<ul>\n <li>\n  When the ionic product of a salt in solution is equal to its solubility product, the solution is saturated and the undissociated salt remains in equilibrium with its ions in the solution.\n </li>\n <li>\n  The solubility of a salt in water depends upon other substances (ions) present is water (at that time) and the solubility product is a constant value (at a given temperature) and is independent of presence of any other ion present. Like other equilibrium constants such as: ${{\\text{K}}_{\\text{p}}},{{\\text{K}}_{\\text{c}}},{{\\text{K}}_{\\text{a}}}$ &amp; ${{\\text{K}}_{\\text{b}}}$, it is also constant at a certain temperature &amp; can change only when temperature changes.\n </li>\n <li>\n  The salts like $\\text{AgCl}$ are regarded as sparingly soluble salts. Some of them are: $\\text{A}{{\\text{g}}_{2}}\\text{S}{{\\text{O}}_{4}}$, $\\text{A}{{\\text{g}}_{2}}\\text{C}{{\\text{O}}_{3}},\\text{PbC}{{\\text{l}}_{2}},\\text{PbCr}{{\\text{O}}_{4}},\\text{PbS},\\text{ZnS},\\text{Al}{{(\\text{OH})}_{3}},\\text{C}{{\\text{a}}_{3}}{{\\left( \\text{P}{{\\text{O}}_{4}} \\right)}_{2}},\\text{BaS}{{\\text{O}}_{4}},\\text{CaS}{{\\text{O}}_{4}},\\text{MnS}$ etc.\n </li>\n</ul>\n<p>\n ${{\\text{K}}_{\\text{sp}}}\\text{ for A}{{\\text{g}}_{2}}\\text{S}{{\\text{O}}_{4}}$\t\t:\t$\\text{A}{{\\text{g}}_{2}}\\text{S}{{\\text{O}}_{4}}\\rightleftharpoons 2\\text{A}{{\\text{g}}^{+}}+\\text{SO}_{4}^{2-}$\n</p>\n<p>\n ${{\\text{K}}_{\\text{sp}}}={{\\left[ 2\\text{A}{{\\text{g}}^{+}} \\right]}^{2}}\\left[ \\text{SO}_{4}^{2-} \\right]$\n</p>\n<p>\n ${{\\text{K}}_{\\text{sp}}}\\text{ for C}{{\\text{a}}_{3}}{{\\left( \\text{P}{{\\text{O}}_{4}} \\right)}_{2}}$\t:\t$\\text{C}{{\\text{a}}_{3}}{{\\left( \\text{P}{{\\text{O}}_{4}} \\right)}_{2}}\\rightleftharpoons 3\\text{C}{{\\text{a}}^{2+}}+2\\text{PO}_{4}^{3-}$\n</p>\n<p>\n ${{\\text{K}}_{\\text{sp}}}={{\\left[ \\text{C}{{\\text{a}}^{2+}} \\right]}^{3}}{{\\left[ \\text{PO}_{4}^{3-} \\right]}^{2}}$\n</p>\n<p>\n In solubilities of sparingly soluble salts, we will deal with mainly two types of problems: one to find out soloubility in water if ${{\\text{K}}_{\\text{sp}}}$ of a salt is given &amp; vice-versa. Secondly, to find out solubility of a salt in presence of other (common) ions in water.\n</p>\n<p>\n Comparison of solubility product and ionic product\n</p>\n<table>\n <tr>\n  <td>\n   <p>\n    <strong>\n     Solubility product\n    </strong>\n   </p>\n  </td>\n  <td>\n   <p>\n    <strong>\n     Ionic product\n    </strong>\n   </p>\n  </td>\n </tr>\n <tr>\n  <td>\n   <p>\n    It is the product of the concentration of ions of the electrolyte each raised to the power of their coefficients in the balanced chemical equation in a saturated solution\n   </p>\n   <p>\n    It is applicable to only saturated solutions\n   </p>\n   <p>\n    It has a constant value for an electrolyte at a constant temperature\n   </p>\n  </td>\n  <td>\n   <p>\n    It is the product of the concentration of ions of the electrolyte each raised to the power of their coefficients in the balanced chemical equation in a solution at any concentration.\n   </p>\n   <p>\n    It is applicable to all types of solutions of any concentration\n   </p>\n   <p>\n    Its value is not constant and varies with change\n   </p>\n   <p>\n    in concentration.\n   </p>\n  </td>\n </tr>\n</table>",
+      "position": 0,
+      "qcConcept": "66a0dcbdc03b9dcaf1afe777"
+    },
+    {
+      "title": "Precipitation of Salts",
+      "conceptBody": "<p>\n Precipitation of Salts:\n</p>\n<p>\n For a salt (sparingly soluble) when dissolved in water:\n</p>\n<p>\n <img src=\"data:image/x-wmf;base64,183GmgAAAAAAACAJIAIBCQAAAAAQVQEACQAAA+UBAAACAKcAAAAAAAUAAAACAQEAAAAFAAAAAQL///8ABQAAAC4BGQAAAAUAAAALAgAAAAAFAAAADAIgAiAJCwAAACYGDwAMAE1hdGhUeXBlAABAABIAAAAmBg8AGgD/////AAAQAAAAwP///7n////gCAAA2QEAAAUAAAAJAgAAAAIFAAAAFAKgATsAHAAAAPsCoP4AAAAAAACQAQAAAAAAAgAQVGltZXMgTmV3IFJvbWFuAHjRzwJhTGh2IAludgAAAAAEAAAALQEAAA0AAAAyCgAAAAAEAAAAQUJBQvcAIwMPA8ACBQAAABQCAgFlBRwAAAD7Agr/AAAAAAAAkAEAAAABAAIAEFN5bWJvbAB2rndqdkAAAAB40c8CYUxodiAJbnYAAAAABAAAAC0BAQAEAAAA8AEAAAoAAAAyCgAAAAACAAAAKy3uAuwBBQAAABQCoAFaBhwAAAD7AqD+AAAAAAAAkAEAAAABAAIAEFN5bWJvbAB2rndqdkAAAAB40c8CYUxodiAJbnYAAAAABAAAAC0BAAAEAAAA8AEBAAkAAAAyCgAAAAABAAAAKwDAAgUAAAAUAqABYwIcAAAA+wKg/gAAAAAAAJABAAAAAQACABBNVCBFeHRyYQB3anZAAAAAeNHPAmFMaHYgCW52AAAAAAQAAAAtAQEABAAAAPABAAAJAAAAMgoAAAAAAQAAAIMtwAKnAAAAJgYPAEMBQXBwc01GQ0MBABwBAAAcAQAARGVzaWduIFNjaWVuY2UsIEluYy4ABQEABwREU01UNwABE1dpbkFsbEJhc2ljQ29kZVBhZ2VzABEFVGltZXMgTmV3IFJvbWFuABEDU3ltYm9sABEFQ291cmllcjEwIEJUABEETVQgRXh0cmEAEgAIIR9HD0VfQVD0EA9HX0FQ8h8eQVD0FQ9BAPRF9CX0j0JfQQD0EA9DX0EA9I9F9CpfSPSPQQD0EA9A9I9Bf0j0EA9BKl9EX0X0X0X0X0EPDAEAAQABAAIAAgACAAEBAQADAAEABAAACgEAEAAAAAAAAAAPAQIAgUEAAgCBQgACBIvMIYMCAIFBAA8AAwAcAAALAQEBAA8BAgSGKwArAAAKAgSGKwArAgCBQgAPAAMAHAAACwEBAQAPAQIEhhIiLQAAAAAACgAAACYGDwAKAP////8BAAAAAAAcAAAA+wIQAAcAAAAAALwCAAAAAAECAiJTeXN0ZW0AdiEAigIAAAoABgAAACEAigIAAAAAWNvPAgQAAAAtAQAABAAAAPABAQADAAAAAAA=\"/>\n</p>\n<p>\n at equilibrium (saturation)$\\quad {{\\text{K}}_{\\text{sp}}}=\\left[ {{\\text{A}}^{+}} \\right]+\\left[ {{\\text{B}}^{-}} \\right]$\n</p>\n<p>\n When we mix ions or if there be two or more ions in water, we define reaction coefficient (Q), called as ionic-product (IP) in this case, giving the products of ions in water (ions of soluble salts &amp; other common ions).\n</p>\n<p>\n IP is product of ionic concentration due to ions already present in water or from a salt. It may be &amp; may not be equal to${{\\text{K}}_{\\text{sp}}}$.\n</p>\n<p>\n 1. \tIf Ionic Product $(IP)&gt;{{K}_{sp}};$ precipitation takes place till I.P. equals ${{\\text{K}}_{\\text{sp}}}$\n</p>\n<p>\n 2.\tIf Ionic Product $&lt;{{\\text{K}}_{\\text{sp}}}$; a precipitate will not be formed and the solution will be unsaturated.\n</p>\n<p>\n 3.\tIf Ionic Product $={{\\text{K}}_{\\text{sp}}}$; a precipitate will not form and the solution is saturated in that salt. (Or we can say that solution is at a critical stage, when precipitation just begins, but actually has not occurred yet in real sense).\n</p>",
+      "position": 1,
+      "qcConcept": "66a0dcbdc03b9dcaf1afe778"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66584e521814fc7e94209c81",
+      "title": "The solubility of $\\mathrm{CaF}_2$ is s moles/litre. Then its solubility product is ________.",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c82",
+      "title": "The expression for the solubility product of $\\mathrm{Al}_2\\left(\\mathrm{SO}_4\\right)_3$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c83",
+      "title": "Solubility product of a sulphide $M S$ is $3 \\times 10^{-25}$ and that of another sulphide $N S$ is $4 \\times 10^{-40}$. In ammoniacal solution",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c84",
+      "title": "The precipitation occurs if ionic concentration is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c85",
+      "title": "The solubility of silver chromate in $0.01 \\mathrm{M} \\mathrm{K}_2 \\mathrm{CrO}_4$ is $2 \\times 10^{-8} \\mathrm{~mol} \\mathrm{dm}^{-3}$. The solubility product of silver chromate will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c86",
+      "title": "Solubility of $\\mathrm{AgCl}$ will be minimum in",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e521814fc7e94209c87",
+      "title": "The solubility of $\\mathrm{Agl}$ in $\\mathrm{Nal}$ solution is less than that in pure water because",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209c88",
+      "title": "The solubility of $\\mathrm{BaSO}_4$ in water is $2.33 \\times 10^{-3} \\mathrm{gm} /$ litre. $\\left.\\mathrm{BaSO}_4=233\\right)$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209c89",
+      "title": "The solubility of $\\mathrm{PbCl}_2$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209c8a",
+      "title": "If the solubility of a sparingly soluble salt of the type $B A_2$ (giving three ions on dissociation of a molecule) is $x$ moles per litre, then its solubility product is given by",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209c8b",
+      "title": "Any precipitate is formed when",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209c8c",
+      "title": "The solubility product of $\\mathrm{AgCl}$ is $4.0 \\times 10^{-10}$ at $298 \\mathrm{~K}$. The solubility of $\\mathrm{AgCl}$ in $0.04 \\mathrm{~m} \\mathrm{CaCl}{ }_2$ will be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209c8d",
+      "title": "Which one of the following is most soluble",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209c8e",
+      "title": "The solubility of \\(\\mathrm{BaSO}_4\\), in water, is \\(2.33 \\times 10^{-3}\\) gram/litre. Its solubility product will be (molecular weight of \\(\\mathrm{BaSO}_4=233\\))",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66584e531814fc7e94209c8f",
+      "title": "The $K_{S P}$ of $A g I$ is $1.5 \\times 10^{-16}$. On mixing equal volumes of the following solutions, precipitation will occur only with",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

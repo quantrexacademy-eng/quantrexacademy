@@ -1,0 +1,46 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd59c03b9dcaf1afea8c",
+  "topicId": "66a0dd6cc03b9dcaf1afeadb",
+  "title": "Functional Equation",
+  "concepts": [
+    {
+      "title": "Functional equations",
+      "conceptBody": "<h3><strong>Function as Series</strong></h3><p>In this type, the function is given in the form of a series i.e. it is dependent on the values</p><p>previous to it. Or some such relation is given to you.</p><p>Let us solve some questions to understand the concept.</p><p><strong>Q) Let $f$ &nbsp;be a function satisfying $f\\left( x+y \\right)=f\\left( x \\right)+f\\left( y \\right)$ for all $x,y\\in R$. If&nbsp;</strong></p><p><strong>$f\\left( 1 \\right)=k$ then find $f\\left( n \\right)$.&nbsp;</strong></p><p><strong>Solution :&nbsp;</strong></p><p>We are given the value of \\(f(1)\\,=\\text{ i}\\text{.e}\\text{. }\\text{ f}\\left( 1 \\right)=\\text{k}\\)</p><p>$\\And $ $f(x+y)\\,=\\text{f}\\left( \\text{x} \\right)+\\text{f}\\left( \\text{y} \\right)$</p><p>$\\And $ we have to find $f\\left( n \\right)$</p><p>putting</p><p>$\\begin{array}{*{35}{l}} \\text{x} &amp; =1 ~\\And~\\text{ y}=1\\text{ in }\\left( \\text{i} \\right) \\\\ \\text{f}\\left( 2 \\right)=\\text{f}\\left( 1 \\right)+\\text{f}\\left( 1 \\right) &amp; =2\\text{f}\\left( 1 \\right)=2\\text{k} \\\\ \\text{f}\\left( 3 \\right)=\\text{f}\\left( 2 \\right)+\\text{f}\\left( 1 \\right) &amp; =2\\text{k}+\\text{k}=3\\text{k} \\\\ \\text{f}\\left( 4 \\right)=\\text{f}\\left( 3 \\right)+\\text{f}\\left( 1 \\right) &amp; =3\\text{k}+\\text{k}=4\\text{k} \\\\ \\text{f}\\left( \\text{n} \\right)=\\text{f}\\left( \\text{n}-1 \\right)+\\text{f}\\left( 1 \\right) &amp; =\\left( \\text{n}-1 \\right)\\text{k}+\\text{k}=\\text{nk} \\\\ \\text{f}\\left( \\text{n} \\right) &amp; =\\text{nk} \\\\ \\end{array}$</p><p><strong>Tricky one</strong></p><p><strong>Q) If $af\\left( x+1 \\right)+bf\\left( \\frac{1}{x+1} \\right)=x,x\\ne -1,a\\ne b$ then find the value of $f\\left( 2 \\right)$.&nbsp;</strong></p><p><strong>Solution :&nbsp;</strong></p><p>Given $\\text{af}\\left( \\text{x}+1 \\right)+\\text{bf}\\left( \\frac{1}{\\text{x}+1} \\right)=\\text{x}$</p><p>rewriting it</p><p>$\\text{af}\\left( \\text{x}+1 \\right)+\\text{b}\\left( \\frac{1}{\\text{x}+1} \\right)=\\left( \\text{x}+1 \\right)-1$</p><p>replacing $\\left( x+1 \\right)$ by $\\frac{1}{x+1}$</p><p>$\\Rightarrow \\text{ af }\\left( \\frac{1}{x+1} \\right)+bf\\left( x+1 \\right)=\\left( \\frac{1}{x+1} \\right)-1$</p><p>now doing a (i) - b (ii), we get</p><p>$\\left( {{a}^{2}}-{{b}^{2}} \\right)f\\left( x+1 \\right)=a\\left( x+1 \\right)-\\left( \\frac{b}{x+1} \\right)+\\left( b-a \\right)$</p><p>Putting $x=1\\text{ to }\\text{ get }f\\left( 2 \\right)$</p><p>$\\begin{array}{*{35}{l}} \\left( {{a}^{2}}-{{b}^{2}} \\right)f\\left( 2 \\right) &amp; =2a-\\frac{b}{2}+\\left( b-a \\right) \\\\ {} &amp; =a+\\frac{b}{2} \\\\ \\Rightarrow f\\left( 2 \\right) &amp; =\\frac{2a+b}{2\\left( {{a}^{2}}-{{b}^{2}} \\right)} \\\\ \\end{array}$</p>",
+      "position": 0,
+      "qcConcept": "66a0dd6cc03b9dcaf1afeadc"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f4c2d384bfb4a5380ea",
+      "title": "$f\\left(x_1\\right)-f\\left(x_2\\right)=f\\left(\\frac{x_1-x_2}{1-x_1 x_2}\\right)$ for $x_1, x_2 \\in[-1,1]$, then $f(x)$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f4c2d384bfb4a5380eb",
+      "title": "The value of $b$ and $c$ for which the identity $f(x+1)-f(x)=8 x+3$ is satisfied, where $f(x)=b x^2+c x+d$, are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f4c2d384bfb4a5380ec",
+      "title": "Given the function $f(x)=\\frac{a^x+a^{-x}}{2},(a\\gt2)$. Then $f(x+y)+f(x-y)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f4c2d384bfb4a5380ed",
+      "title": "$f(x)=\\frac{x}{x-1}$, then $\\frac{f(a)}{f(a+1)}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f4c2d384bfb4a5380ee",
+      "title": "If $f(x)=\\cos (\\log x)$, then the value of $f(x) \\cdot f(4)-\\frac{1}{2}\\left[f\\left(\\frac{x}{4}\\right)+f(4 x)\\right]$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

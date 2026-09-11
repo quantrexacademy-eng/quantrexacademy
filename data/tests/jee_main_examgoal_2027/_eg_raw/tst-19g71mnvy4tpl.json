@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g71mnvy4tpl",
+  "title": "Rotational Motion Test - 3 (Topic Test)",
+  "type": "topic",
+  "section": "Rotational Motion",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-08-07T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "285ad53b-a68f-4dde-b85d-7d8b2a777a93",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g71mnvy4tpl",
+    "defaultLanguage": "en",
+    "description": "Rotational Motion about Fixed Axis of Rigid Body",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-07T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msi2o4de",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A rigid body is made of three identical thin rods, each of length L fastened together in the form of the letter H. The body is free to rotate about a horizontal axis that runs along the length of one of the legs of the H. The body is allowed to fall from rest from a position in which the plane of the H is horizontal.</p><p>What is the angular speed of the body when the plane of H is vertical $\\frac{3}{2}\\sqrt{\\frac{g}{L}}$</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi2j161%2Faa490908-95a3-4a8e-a605-02864438c1c7%2F756e6990-91e3-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi2j162.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi2j161%2Faa490908-95a3-4a8e-a605-02864438c1c7%2F756e6990-91e3-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi2j162.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{5}{2}\\sqrt{\\frac{g}{L}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{3}{2}\\sqrt{\\frac{g}{L}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{3}{4}\\sqrt{\\frac{g}{L}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{\\frac{g}{L}}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let the mass of each identical thin rod be m and length be L .</p>\n<p>Total mass of the system $=3 \\mathrm{~m}$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi2ls8j%2Fcc439f1e-8839-49be-af75-d1b3de58932f%2Fc1f5c830-91e3-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi2ls8k.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi2ls8j%2Fcc439f1e-8839-49be-af75-d1b3de58932f%2Fc1f5c830-91e3-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi2ls8k.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>For rod 1 which is lying along the axis of rotation, all its mass lies on the axis of rotation. So, its moment of inertia about this axis is $\\mathrm{I}_1=0$</p>\n<p>For rod 2 which is perpendicular crossbar of length L has one end on the axis of rotation and extends perpendicularly to distance L. So, its moment of inertia is $\\mathrm{I}_2=\\frac{1}{3} \\mathrm{~mL}^2$</p>\n<p>For rod 3 which is parallel at distance L from the axis, every mass element of this rod is at a constant perpendicular distance $\\mathrm{r}=\\mathrm{L}$ from the axis of rotation.</p>\n<p>$$ \\mathrm{I}_3=\\int \\mathrm{r}^2 \\mathrm{dm}=\\mathrm{L}^2 \\int \\mathrm{dm}=\\mathrm{mL}^2 $$</p>\n\n<p>Total moment of inertia is,</p>\n<p>$$I = I_1 + I_2 + I_3 = 0 + \\frac{1}{3}mL^2 + mL^2 = \\frac{4}{3}mL^2$$</p>\n<p>Initially the letter H is in the horizontal position and at rest.</p>\n<p>Centre of mass of rod 1 is on the axis (height = 0).</p>\n<p>Centre of mass of rod 2 is at distance $\\frac{L}{2}$ from the axis.</p>\n<p>Centre of mass of rod 3 is at distance $L$ from the axis.</p>\n<p>Position of Centre of mass of the entire system is,</p>\n<p>$$h_{\\mathrm{cm}} = \\frac{m(0)\\; +\\; m\\left(\\frac{L}{2}\\right)\\; +\\; m(L)}{m\\; +\\; m\\; +\\; m} = \\frac{\\frac{3}{2}mL}{3m} = \\frac{L}{2}$$</p>\n<p>When the body falls from the horizontal position to the vertical position, its Centre of mass drops by a vertical height:</p>\n<p>$$\\Delta h = h_{\\mathrm{cm}} = \\frac{L}{2}$$</p>\n<p>Loss in potential energy of the system is</p>\n<p>$$\\Delta U = (\\text{Total Mass})g \\times \\Delta h = (3m)g\\left(\\frac{L}{2}\\right) = \\frac{3}{2}mgL$$</p>\n<p>Since the system starts from rest, initial kinetic energy is $K_i = 0$.</p>\n<p>By energy conservation, the loss in potential energy equals the gain in rotational kinetic energy ($K_f$):</p>\n<p>$$K_f = \\Delta U$$</p>\n<p>The rotational kinetic energy of a body rotating with angular speed $\\omega$ is $K_f = \\frac{1}{2}I\\omega^2$</p>\n<p>Substituting the expression for moment of inertia $I = \\frac{4}{3}mL^2$ and $\\Delta U = \\frac{3}{2}mgL$:</p>\n<p>$$\\frac{1}{2}\\left(\\frac{4}{3}mL^2\\right)\\omega^2 = \\frac{3}{2}mgL$$</p>\n<p>$$\\frac{2}{3}mL^2\\,\\omega^2 = \\frac{3}{2}mgL$$</p>\n<p>$$\\frac{2}{3}L\\,\\omega^2 = \\frac{3}{2}g$$</p>\n<p>$$\\omega^2 = \\frac{3}{2} \\times \\frac{3g}{2L} = \\frac{9g}{4L}$$</p>\n<p>$$\\omega = \\sqrt{\\frac{9g}{4L}} = \\frac{3}{2}\\sqrt{\\frac{g}{L}}$$</p>\n<p>Therefore, the angular speed of the body when the plane of H is vertical is $\\frac{3}{2}\\sqrt{\\frac{g}{L}}$. Thus, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक दृढ़ पिंड तीन एकसमान पतली छड़ों से बना है, जिनमें से प्रत्येक की लंबाई L है तथा उन्हें H अक्षर के रूप में एक साथ जोड़ा गया है। पिंड एक क्षैतिज अक्ष के परितः घूर्णन करने के लिए स्वतंत्र है, जो H के एक पैर की लंबाई के अनुदिश से होकर जाती है। पिंड को उस स्थिति से विराम से गिरने दिया जाता है जिसमें H का तल क्षैतिज होता है।</p><p>जब H का तल ऊर्ध्वाधर हो जाता है, तब पिंड की कोणीय चाल क्या होगी $\\frac{3}{2}\\sqrt{\\frac{g}{L}}$</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi2j161%2Faa490908-95a3-4a8e-a605-02864438c1c7%2F756e6990-91e3-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi2j162.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi2j161%2Faa490908-95a3-4a8e-a605-02864438c1c7%2F756e6990-91e3-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi2j162.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{5}{2}\\sqrt{\\frac{g}{L}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{3}{2}\\sqrt{\\frac{g}{L}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{3}{4}\\sqrt{\\frac{g}{L}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{\\frac{g}{L}}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-motion-about-fixed-axis-of-rigid-body",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi3fgqa",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform circular disc A of radius $r$ is made from a metal plate of thickness $t$ and another uniform circular disc B of radius $4r$ is made from the same metal plate of thickness $t/4$. If equal torques act on the discs A and B, initially both being at rest. At a later instant, the angular speeds of a point on the rim of A and another point on the rim of B are $\\omega_A$ and $\\omega_B$ respectively. We have</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\omega_A > \\omega_B$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\omega_A = \\omega_B$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\omega_A < \\omega_B$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>the relation depends on the actual magnitude of the torques.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Let the density of the metal plate is $\\rho$</p>\n<p>If the radius of circular disc is r and of thickness t, then the volume of circular disc is $\\mathrm{V}=\\mathrm{At}=\\pi \\mathrm{r}^2 \\mathrm{t}$.</p>\n<p>Then mass of a uniform disc is $\\mathrm{m}=\\rho \\mathrm{V}=\\pi \\mathrm{r}^2 \\mathrm{t} \\rho$</p>\n<p>For disc A radius is r , and thickness t , mass is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi3dzr4%2F1b623371-6ef0-418f-8b93-1f23488cbdaa%2Fd26c1400-91e6-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi3dzr5.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi3dzr4%2F1b623371-6ef0-418f-8b93-1f23488cbdaa%2Fd26c1400-91e6-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi3dzr5.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>$$m_A = \\rho\\, \\pi\\, r^2\\, t$$</p>\n<p>For disc B radius is $4r$, and thickness $\\frac{t}{4}$, mass is</p>\n<p>$$m_B = \\rho\\, \\pi\\, (4r)^2\\left(\\frac{t}{4}\\right) = \\rho\\, \\pi\\, (16\\, r^2)\\left(\\frac{t}{4}\\right) = 4\\, \\rho\\, \\pi\\, r^2\\, t = 4\\, m_A$$</p>\n<p>The moment of inertia of disc (or cylinder) of mass $m$ and radius $r$ about an axis passing through the Centre is</p>\n<p>$$I = \\frac{1}{2}mr^2$$</p>\n<p>Moment of inertia of disc A is $I_A = \\frac{1}{2}m_A\\, r^2$</p>\n<p>Moment of inertia of disc B is</p>\n<p>$$I_B = \\frac{1}{2}m_B(4r)^2 = \\frac{1}{2}(4m_A)(16r^2) = 32\\, m_A r^2 = 64\\, I_A$$</p>\n<p>Using Newton's second law for rotation, torque $\\tau$ relates to angular acceleration $\\alpha$ by:</p>\n<p>$$\\tau = I\\alpha \\Rightarrow \\alpha = \\frac{\\tau}{I}$$</p>\n<p>Since both discs start from rest ($\\omega_0 = 0$) under equal torque $\\tau$ for time $t$:</p>\n<p>$$\\omega = \\alpha t = \\frac{\\tau t}{I}$$</p>\n<p>So, final angular speed of disc A is $\\omega_A = \\frac{\\tau t}{I_A}$</p>\n<p>And the final angular speed of disc B is $\\omega_B = \\frac{\\tau t}{I_B} = \\frac{\\tau t}{64 I_A}$</p>\n<p>$$\\Rightarrow \\omega_A = 64\\, \\omega_B \\Rightarrow \\omega_A > \\omega_B$$</p>\n<p>Therefore, the correct option is (A).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>त्रिज्या $r$ की एक एकसमान वृत्तीय चकती A मोटाई $t$ की धातु की प्लेट से बनी है और त्रिज्या $4r$ की एक अन्य एकसमान वृत्तीय चकती B उसी धातु की प्लेट से बनी है जिसकी मोटाई $t/4$ है। यदि चकती A और B पर समान बल आघूर्ण कार्य करते हैं, तथा प्रारम्भ में दोनों विरामावस्था में हैं। कुछ समय पश्चात्, A की परिधि पर एक बिंदु और B की परिधि पर एक अन्य बिंदु की कोणीय चाल क्रमशः $\\omega_A$ और $\\omega_B$ हैं। हमारे पास है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\omega_A > \\omega_B$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\omega_A = \\omega_B$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\omega_A < \\omega_B$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>यह संबंध बल आघूर्णों के वास्तविक परिमाण पर निर्भर करता है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-motion-about-fixed-axis-of-rigid-body",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi3qt7t",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two men support a uniform horizontal rod at its two ends. If one of them suddenly lets go, the force exerted by the rod on the other man just after this moment will :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>remain unaffected</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>increase</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>decrease</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>become unequal to the force exerted by him on the rod.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Let the uniform horizontal rod have mass m and length L .</p>\n<p>Initially, two men support the rod symmetrically at its two ends A and B.</p>\n<p>Downward gravitational force acts at the Centre of mass is $\\mathrm{W}=\\mathrm{mg}$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi3lro3%2F12c4117e-f893-4796-a379-e61310e9a051%2Faaa68a30-91e7-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi3lro4.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi3lro3%2F12c4117e-f893-4796-a379-e61310e9a051%2Faaa68a30-91e7-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi3lro4.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>By symmetry, each man exerts an upward normal force $\\mathrm{N}_{\\mathrm{A} 0}=\\mathrm{N}_{\\mathrm{B} 0}=\\frac{\\mathrm{mg}}{2}$</p>\n<p>As soon as end B is released, the rod begins to rotate about the remaining support point at end A.</p>\n<p>At this instantaneous moment, the rod is still horizontal $(\\theta=0)$.</p>\n<p>Let $\\mathrm{N}_{\\mathrm{A}}$ be the new upward vertical force exerted by the remaining support at end A on the rod.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi3ndxa%2Fe9a0cf15-066e-47a3-a8d3-a29d7c10c423%2Fd7a6c5e0-91e7-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi3ndxb.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi3ndxa%2Fe9a0cf15-066e-47a3-a8d3-a29d7c10c423%2Fd7a6c5e0-91e7-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi3ndxb.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The moment of inertia of rod about end A is $\\mathrm{I}=\\frac{1}{3} \\mathrm{~mL}^2$</p>\n<p>Taking torque about end A is $\\tau_{\\mathrm{A}}=\\mathrm{I}_{\\mathrm{A}} \\alpha$</p>\n<p>The only force causing torque about end A is weight mg acting at the Centre of mass which is at distance $\\frac{\\mathrm{L}}{2}$ from A:</p>\n<p>$$ \\tau_{\\mathrm{A}}=\\mathrm{mg}\\left(\\frac{\\mathrm{~L}}{2}\\right) $$</p>\n<p>$$\\Rightarrow mg\\left(\\frac{L}{2}\\right)=\\left(\\frac{1}{3}mL^2\\right)\\alpha$$</p>\n<p>$$\\Rightarrow \\alpha=\\frac{mg\\left(\\frac{L}{2}\\right)}{\\frac{1}{3}mL^2}=\\frac{3g}{2L}$$</p>\n<p>The Centre of mass is located at distance $r=\\frac{L}{2}$ from the pivot end A.</p>\n<p>Since angular velocity $\\omega=0$ at $t=0^{+}$, centripetal acceleration is zero.</p>\n<p>The downward linear acceleration of the Centre of mass is tangential:</p>\n<p>$$a_{\\mathrm{cm}}=\\alpha\\times\\frac{L}{2}=\\left(\\frac{3g}{2L}\\right)\\left(\\frac{L}{2}\\right)=\\frac{3}{4}g$$</p>\n<p>Applying Newton's second law for vertical motion of the Centre of mass:</p>\n<p>$$F_{\\mathrm{net},y}=m\\cdot a_{\\mathrm{cm}}$$</p>\n<p>$$mg-N_A=m\\left(\\frac{3}{4}g\\right)$$</p>\n<p>$$N_A=mg-\\frac{3}{4}mg=\\frac{1}{4}mg$$</p>\n<p>Initial force exerted by the rod on the man $N_{A0}=\\frac{1}{2}mg=0.50mg$.</p>\n<p>Force exerted immediately after release $N_A=\\frac{1}{4}mg=0.25mg$.</p>\n<p>Since $0.25mg<0.50mg$, the force decreases.</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो व्यक्ति एक एकसमान क्षैतिज छड़ को उसके दोनों सिरों से साधे हुए हैं। यदि उनमें से एक अचानक इसे छोड़ देता है, तो ठीक इस क्षण के बाद छड़ द्वारा दूसरे व्यक्ति पर लगाया गया बल :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>अप्रभावित रहेगा</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>बढ़ेगा</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>घटेगा</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>छड़ पर उसके द्वारा लगाए गए बल के असमान हो जाएगा।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-motion-about-fixed-axis-of-rigid-body",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi3w2r0",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform metre stick is held vertically with one end on the floor and is allowed to fall. The speed of the other end when it hits the floor assuming that the end at the floor does not slip :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\sqrt{4g} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\sqrt{3g} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\sqrt{5g} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\sqrt{g} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>A metre stick has length $\\mathrm{L}=1 \\mathrm{~m}$.</p>\n<p>Mass of the metre stick $=\\mathrm{m}$.</p>\n<p>Initially the stick is vertical, so the initial angle with horizontal is $\\theta_{\\mathrm{i}}=90^{\\circ}$</p>\n<p>Finally the stick is horizontal, so the final angle with horizontal is $\\theta_{\\mathrm{f}}=0^{\\circ}$ just before hitting the floor.</p>\n<p>Centre of mass of a uniform rod of length L is at height $\\mathrm{h}=\\frac{\\mathrm{L}}{2}$.</p>\n<p>Initial height of Centre of mass, $\\mathrm{h}_{\\mathrm{i}}=\\frac{\\mathrm{L}}{2}$.</p>\n<p>Final height of Centre of mass when flat on floor, $\\mathrm{h}_{\\mathrm{f}}=0$.</p>\n<p>Loss in potential energy is $\\Delta \\mathrm{U}=\\mathrm{mg}\\left(\\mathrm{h}_{\\mathrm{i}}-\\mathrm{h}_{\\mathrm{f}}\\right)=\\mathrm{mg}\\left(\\frac{\\mathrm{L}}{2}\\right)$</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi3trpu%2F563bad97-4fa4-4c3e-af43-06d9745cd51f%2F89294720-91e8-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi3trpv.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi3trpu%2F563bad97-4fa4-4c3e-af43-06d9745cd51f%2F89294720-91e8-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi3trpv.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>The bottom end at the floor acts as a fixed pivot (no slipping). So, the moment of inertia of stick about the fixed end is</p>\n<p>$$I = \\frac{1}{3}mL^2$$</p>\n<p>Gain in rotational kinetic energy at angular speed $\\omega$:</p>\n<p>$$K_f = \\frac{1}{2}I\\omega^2 = \\frac{1}{2}\\left(\\frac{1}{3}mL^2\\right)\\omega^2 = \\frac{1}{6}mL^2\\omega^2$$</p>\n<p>Assuming no non-conservative work is done, the total mechanical energy of stick remains unchanged.</p>\n<p>$$\\Delta U = K_f$$</p>\n<p>$$mg\\left(\\frac{L}{2}\\right) = \\frac{1}{6}mL^2\\omega^2$$</p>\n<p>$$\\frac{gL}{2} = \\frac{L^2\\omega^2}{6}$$</p>\n<p>$$\\omega^2 = \\frac{6gL}{2L^2} = \\frac{3g}{L}$$</p>\n<p>$$\\omega = \\sqrt{\\frac{3g}{L}}$$</p>\n<p>The top end is at distance $r = L$ from the bottom pivoted end.</p>\n<p>Linear speed $v$ is given by $v = \\omega L$:</p>\n<p>$$v = \\sqrt{\\frac{3g}{L}} \\times L = \\sqrt{3gL}$$</p>\n<p>Since it is a metre stick, length $L = 1\\ \\mathrm{m}$:</p>\n<p>$$v = \\sqrt{3g(1)} = \\sqrt{3g}$$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक समरूप मीटर छड़ को ऊर्ध्वाधर रूप से इस प्रकार पकड़ा जाता है कि इसका एक सिरा फर्श पर हो और फिर इसे गिरने दिया जाता है। यह मानते हुए कि फर्श वाला सिरा फिसलता नहीं है, जब दूसरा सिरा फर्श से टकराता है तो उसकी चाल होगी :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\sqrt{4g} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\sqrt{3g} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\sqrt{5g} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\sqrt{g} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-motion-about-fixed-axis-of-rigid-body",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi51cdy",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A light rod of length 1 m pivoted at its centre and two masses of 5 kg and 2 kg are hung from the ends as shown in figure. Assuming that it was horizontal in the beginning, the initial angular acceleration of the rod is [g = 10 m/s<sup>2</sup>]</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi4wcbo%2F74da7817-ed76-4027-82db-dc5c47490000%2Fb9d3a240-91ec-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi4wcbp.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi4wcbo%2F74da7817-ed76-4027-82db-dc5c47490000%2Fb9d3a240-91ec-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi4wcbp.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>8.2 rad/s<sup>2</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>8.6 rad/s<sup>2</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>7.2 rad/s<sup>2</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>6.2 rad/s<sup>2</sup></p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Length of the light rod, $L = 1\text{ m}$, pivoted at centre of the rod</p>\n<p>Distance of each mass from central pivot, $r = \\frac{L}{2} = \\frac{1}{2} = 0.5\text{ m}$</p>\n<p>Left mass, $m_1 = 2\tkg$</p>\n<p>Right mass, $m_2 = 5\tkg$</p>\n<p>Acceleration due to gravity, $g = 10m/s^2$</p>\n<p>Since the rod is light (negligible mass), the moment of inertia is of the two point masses attached at its ends:</p>\n<p>$$I = m_1 r^2 + m_2 r^2 = (m_1 + m_2)r^2$$</p>\n<p>Substituting $m_1 = 2kg$, $m_2 = 5\tkg$, and $r = 0.5\tm$:</p>\n<p>$$I = (2 + 5) \\times (0.5)^2 = 7 \\times 0.25 = 1.75\\text{ kg} \\cdot \\text{m}^2$$</p>\n<p>Let the clockwise torque is negative and anti-clockwise torque is positive.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi4zqcu%2F3733a9ee-f6ad-4dc5-991f-efe2b7bbcebc%2F181804e0-91ed-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi4zqcv.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi4zqcu%2F3733a9ee-f6ad-4dc5-991f-efe2b7bbcebc%2F181804e0-91ed-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi4zqcv.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Torque produced by 2 kg mass about pivot point is counter-clockwise (positive).</p>\n<p>$$\\tau_1 = m_1 g \\times r = 2 \\times 10 \\times 0.5 = 10\\ \\mathrm{N\\cdot m}$$</p>\n<p>Torque produced by 5 kg mass about pivot point is clockwise (negative).</p>\n<p>$$\\tau_2 = -m_2 g \\times r = -5 \\times 10 \\times 0.5 = -25\\ \\mathrm{N\\cdot m}$$</p>\n<p>Net torque acting on the rod:</p>\n<p>$$\\tau_{\\mathrm{net}} = \\tau_1 + \\tau_2 = 10 - 25 = -15\\ \\mathrm{N\\cdot m}$$</p>\n<p>So, the magnitude of initial angular acceleration of rod is 15Nm</p>\n<p>Using Newton's second law for rotation:</p>\n<p>$$\\tau_{\\mathrm{net}} = I \\cdot \\alpha$$</p>\n<p>$$\\alpha = \\frac{\\tau_{\\mathrm{net}}}{I} = \\frac{15}{1.75} = \\frac{60}{7}\\ \\mathrm{rad/s^2}$$</p>\n<p>$$\\alpha \\approx 8.5714\\ \\mathrm{rad/s^2} \\approx 8.6\\ \\mathrm{rad/s^2}$$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>1 m लम्बाई की एक हल्की छड़ इसके केन्द्र पर कीलकित है तथा 5 kg और 2 kg के दो द्रव्यमान इसके सिरों से चित्रानुसार लटकाए गए हैं। यह मानते हुए कि यह प्रारम्भ में क्षैतिज थी, छड़ का प्रारम्भिक कोणीय त्वरण है [g = 10 m/s<sup>2</sup>]</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi4wcbo%2F74da7817-ed76-4027-82db-dc5c47490000%2Fb9d3a240-91ec-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi4wcbp.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi4wcbo%2F74da7817-ed76-4027-82db-dc5c47490000%2Fb9d3a240-91ec-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi4wcbp.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>8.2 rad/s<sup>2</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>8.6 rad/s<sup>2</sup></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>7.2 rad/s<sup>2</sup></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>6.2 rad/s<sup>2</sup></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-motion-about-fixed-axis-of-rigid-body",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi57e6e",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In the arrangement shown in figure, two equal masses hung from light cords wrapped around a uniform solid cylinder of mass M and radius R. The cylinder is free to rotate about a horizontal axis. If the system is released from rest, then, the linear acceleration of each mass is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi533fo%2F79c33e12-9b56-42a7-a321-19e99f1c775b%2F759fce40-91ed-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi533fp.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi533fo%2F79c33e12-9b56-42a7-a321-19e99f1c775b%2F759fce40-91ed-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi533fp.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{2mg}{M+4m}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{4mg}{M+4m}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{mg}{M+m}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{2mg}{M+4m}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let the cylinder have mass M and radius R .</p>\n<p>As the system releases from rest, both masses move downward together with a linear acceleration a.</p>\n<p>The unwinding cords cause the cylinder to rotate with angular acceleration $\\alpha$.</p>\n<p>Let the tension in each of the two vertical cords be T.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi54eq3%2F22b994d6-4eb5-465f-8666-9e773a8103b6%2F9a2775b0-91ed-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi54eq4.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi54eq3%2F22b994d6-4eb5-465f-8666-9e773a8103b6%2F9a2775b0-91ed-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi54eq4.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>The moment of inertia of a uniform solid cylinder of mass M and radius R about its central axis is</p>\n<p>$$ \\mathrm{I}=\\frac{1}{2} \\mathrm{M} \\mathrm{R}^2 $$</p>\n<p>Each mass m experiences a downward gravitational force mg and an upward tension force T .</p>\n<p>Using Newton's second law $\\left(\\mathrm{F}_{\\text {net }}=\\mathrm{m} \\mathrm{a}\\right)$ for one mass:</p>\n<p>$$ \\mathrm{mg}-\\mathrm{T}=\\mathrm{ma} \\Rightarrow \\mathrm{~T}=\\mathrm{m}(\\mathrm{~g}-\\mathrm{a}) $$</p>\n<p>Since there are two identical masses, the total upward force acting on the cylinder from both cords is 2T.</p>\n<p>The magnitude of torque due to each cord on the cylinder is $\\tau=\\mathrm{T} \\cdot \\mathrm{R}$ on the outer edge of the cylinder in the same direction of rotation.</p>\n<p>Total torque acting on the cylinder:</p>\n<p>$$ \\tau_{\\text {net }}=\\mathrm{TR}+\\mathrm{TR}=2 \\mathrm{TR} $$</p>\n\n<p>Using Newton's second law for rotation ($\\tau_{\\text{net}} = I\\alpha$):</p>\n<p>$$2TR = I\\alpha$$</p>\n<p>Since the cords unwind without slipping, the linear acceleration $a$ of the downward moving masses is related with the angular acceleration $\\alpha$ of the cylinder:</p>\n<p>$$a = \\alpha R \\Rightarrow \\alpha = \\frac{a}{R}$$</p>\n<p>Substituting $I = \\frac{1}{2}MR^2$ and $\\alpha = \\frac{a}{R}$ into the torque equation:</p>\n<p>$$2TR = \\left(\\frac{1}{2}MR^2\\right)\\left(\\frac{a}{R}\\right) = \\frac{1}{2}Ma$$</p>\n<p>$$\\Rightarrow T = \\frac{1}{4}Ma \\Rightarrow m(g-a) = \\frac{1}{4}Ma$$</p>\n<p>$$mg - ma = \\frac{1}{4}Ma$$</p>\n<p>$$mg = ma + \\frac{1}{4}Ma = a\\left(m + \\frac{M}{4}\\right) = a\\left(\\frac{4m+M}{4}\\right)$$</p>\n<p>$$a = \\frac{4mg}{M+4m}$$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में दर्शाई गई व्यवस्था में, द्रव्यमान M और त्रिज्या R के एक एकसमान ठोस बेलन के चारों ओर लिपटी हल्की डोरियों से दो समान द्रव्यमान लटके हुए हैं। बेलन एक क्षैतिज अक्ष के परितः घूमने के लिए स्वतंत्र है। यदि निकाय को विरामावस्था से छोड़ा जाता है, तो प्रत्येक द्रव्यमान का रैखिक त्वरण है</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi533fo%2F79c33e12-9b56-42a7-a321-19e99f1c775b%2F759fce40-91ed-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi533fp.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi533fo%2F79c33e12-9b56-42a7-a321-19e99f1c775b%2F759fce40-91ed-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi533fp.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{2mg}{M+4m}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{4mg}{M+4m}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{mg}{M+m}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{2mg}{M+4m}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-motion-about-fixed-axis-of-rigid-body",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi5ete4",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A wheel 4 m in diameter rotates about a fixed frictionless horizontal axis, about which its moment of inertia is $10\\text{kgm}^2$. A constant tension of 40 N is maintained on a rope wrapped around the rim of the wheel. If the wheel starts from rest at $t = 0\\ \\text{s}$, find the length of rope unwounded till $t = 3\\ \\text{s}$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi5bnlw%2F0978d4c3-e045-4111-97f4-a75661c2ac1b%2F63ae5750-91ee-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5bnlx.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi5bnlw%2F0978d4c3-e045-4111-97f4-a75661c2ac1b%2F63ae5750-91ee-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5bnlx.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>36.0 m</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>72.0 m</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>18.0 m</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>720 m</b></p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Moment of inertia of the wheel, $\\mathrm{I}=10 \\mathrm{~kg} \\cdot \\mathrm{~m}^2$</p>\n<p>Initial time, $\\mathrm{t}=0 \\mathrm{~s}$ with initial angular velocity $\\omega_0=0 \\mathrm{rad} / \\mathrm{s}$</p>\n<p>Duration, $\\mathrm{t}=3 \\mathrm{~s}$</p>\n<p>The rope is wrapped around the rim of the wheel, so the force acts tangentially at distance R from the center:</p>\n<p>$$ \\tau=\\mathrm{T} \\cdot \\mathrm{R} $$</p>\n<p>Diameter of the wheel, $\\mathrm{D}=4 \\mathrm{~m}$</p>\n<p>Radius of the wheel, $\\mathrm{R}=\\frac{\\mathrm{D}}{2}=2 \\mathrm{~m}$</p>\n<p>Tension applied by the rope, $\\mathrm{T}=40 \\mathrm{~N}$</p>\n<p>Substituting $\\mathrm{T}=40 \\mathrm{~N}$ and $\\mathrm{R}=2 \\mathrm{~m}$ :</p>\n<p>$$ \\tau=40 \\times 2=80 \\mathrm{~N} \\cdot \\mathrm{~m} $$</p>\n<p>From Newton's second law for rotation:</p>\n<p>$$\\tau = I \\cdot \\alpha$$</p>\n<p>$$\\alpha = \\frac{\\tau}{I} = \\frac{80}{10} = 8\\text{ rad/s}^2$$</p>\n<p>Using the equation of rotational kinematics for constant angular acceleration:</p>\n<p>$$\\theta = \\omega_0 t + \\frac{1}{2}\\alpha t^2$$</p>\n<p>Since the wheel starts from rest ($\\omega_0 = 0$),</p>\n<p>$$ \\theta=\\frac{1}{2} \\times 8 \\times(3)^2=4 \\times 9=36 \\text { radians } $$</p>\n<p>If the linear distance (length of rope unwound) is s and angular displacement is $\\theta$ (in radians), $\\mathrm{s}=\\mathrm{R} \\theta$ Substituting $\\mathrm{R}=2 \\mathrm{~m}$ and $\\theta=36 \\mathrm{rad}$ :</p>\n<p>$$ \\mathrm{s}=2 \\times 36=72.0 \\mathrm{~m} $$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>4 m व्यास का एक पहिया एक स्थिर घर्षणरहित क्षैतिज अक्ष के परितः घूमता है, जिसके परितः इसका जड़त्व आघूर्ण $10\\text{kgm}^2$ है। पहिये के रिम के चारों ओर लिपटी एक रस्सी पर 40 N का नियत तनाव बनाए रखा जाता है। यदि पहिया $t = 0\\ \\text{s}$ पर विरामावस्था से चलना प्रारम्भ करता है, तो $t = 3\\ \\text{s}$ तक खुली हुई रस्सी की लंबाई ज्ञात कीजिए।</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi5bnlw%2F0978d4c3-e045-4111-97f4-a75661c2ac1b%2F63ae5750-91ee-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5bnlx.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi5bnlw%2F0978d4c3-e045-4111-97f4-a75661c2ac1b%2F63ae5750-91ee-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5bnlx.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>36.0 m</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>72.0 m</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>18.0 m</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>720 m</b></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-motion-about-fixed-axis-of-rigid-body",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi5mqa5",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A rod is hinged at its centre and rotated by applying a constant torque starting from rest. The power developed by the external torque as a function of time is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi5g8ky%2Ff38a982d-e347-4284-bb48-d705e27325ae%2Fe31e6520-91ee-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5g8kz.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi5g8ky%2Ff38a982d-e347-4284-bb48-d705e27325ae%2Fe31e6520-91ee-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5g8kz.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi5hyx4%2F1522c4c6-4ee1-4d72-a318-79ddb9ba83ce%2F1345f880-91ef-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5hyx5.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi5hyx4%2F1522c4c6-4ee1-4d72-a318-79ddb9ba83ce%2F1345f880-91ef-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5hyx5.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi5jd86%2Fce4cf45e-ca4d-46ab-b714-faaa76c10c74%2F3a226560-91ef-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5jd87.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi5jd86%2Fce4cf45e-ca4d-46ab-b714-faaa76c10c74%2F3a226560-91ef-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5jd87.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi5j3wa%2Fcbc32ce4-2742-46e7-91a4-dc816f6fb853%2F32ed4da0-91ef-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5j3wb.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi5j3wa%2Fcbc32ce4-2742-46e7-91a4-dc816f6fb853%2F32ed4da0-91ef-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5j3wb.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Rotational power generated by a torque $\\tau$ acting on a body rotating with angular velocity $\\omega(t)$ is the work done</p>\n<p>per unit time in rotating the body,</p>\n<p>$$\\frac{dW}{dt}=\\frac{d}{dt}(\\tau d\\theta)=P_{\\mathrm{ext}}=\\tau\\cdot\\frac{d\\theta}{dt}$$</p>\n<p>$$P_{\\mathrm{ext}}=\\tau\\cdot\\omega(t)$$</p>\n<p>Let the moment of inertia of the rod about its central hinge be $I$.</p>\n<p>Since the applied torque $\\tau$ is constant, the angular acceleration $\\alpha$ is also constant:</p>\n<p>$$\\alpha=\\frac{\\tau}{I}=\\text{constant}$$</p>\n<p>Starting from rest ($\\omega_0=0$), the angular velocity at time $t$ is given by:</p>\n<p>$$\\omega(t)=\\omega_0+\\alpha t=\\alpha t=\\left(\\frac{\\tau}{I}\\right)t$$</p>\n<p>Substituting the expression for $\\omega(t)$ into the power equation:</p>\n<p>$$P_{\\mathrm{ext}}(t)=\\tau\\cdot\\left(\\frac{\\tau}{I}\\right)t=\\left(\\frac{\\tau^2}{I}\\right)t$$</p>\n<p>Since $\\tau$ and $I$ are constants, let $k=\\frac{\\tau^2}{I}$.</p>\n<p>$$ \\mathrm{P}_{\\mathrm{ext}}(\\mathrm{t})=\\mathrm{k} \\cdot \\mathrm{t} $$</p>\n<p>The relationship $\\mathrm{P}_{\\text {ext }} \\propto \\mathrm{t}$ represents a straight line equation of the form $\\mathrm{y}=\\mathrm{mx}$.</p>\n<p>At $\\mathrm{t}=0, \\mathrm{P}_{\\mathrm{ext}}=0$, which means the graph passes through the origin.</p>\n<p>The slope of the line is positive $\\left(\\mathrm{m}=\\frac{\\tau^2}{\\mathrm{I}}>0\\right)$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi5ligs%2F83da29b4-fced-43dd-aa70-e93cc0bb8c36%2F75ccbfc0-91ef-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5ligt.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi5ligs%2F83da29b4-fced-43dd-aa70-e93cc0bb8c36%2F75ccbfc0-91ef-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5ligt.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Thus, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक छड़ को उसके केंद्र पर कीलकित किया गया है और विरामावस्था से प्रारंभ कर एक नियत बल आघूर्ण लगाकर इसे घुमाया जाता है। बाह्य बल आघूर्ण द्वारा उत्पन्न शक्ति समय के फलन के रूप में है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi5g8ky%2Ff38a982d-e347-4284-bb48-d705e27325ae%2Fe31e6520-91ee-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5g8kz.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi5g8ky%2Ff38a982d-e347-4284-bb48-d705e27325ae%2Fe31e6520-91ee-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5g8kz.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi5hyx4%2F1522c4c6-4ee1-4d72-a318-79ddb9ba83ce%2F1345f880-91ef-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5hyx5.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi5hyx4%2F1522c4c6-4ee1-4d72-a318-79ddb9ba83ce%2F1345f880-91ef-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5hyx5.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi5jd86%2Fce4cf45e-ca4d-46ab-b714-faaa76c10c74%2F3a226560-91ef-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5jd87.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi5jd86%2Fce4cf45e-ca4d-46ab-b714-faaa76c10c74%2F3a226560-91ef-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5jd87.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi5j3wa%2Fcbc32ce4-2742-46e7-91a4-dc816f6fb853%2F32ed4da0-91ef-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5j3wb.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi5j3wa%2Fcbc32ce4-2742-46e7-91a4-dc816f6fb853%2F32ed4da0-91ef-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5j3wb.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-motion-about-fixed-axis-of-rigid-body",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi5ts0v",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform bar AB of mass $m$ and a ball of the same mass are released from rest from the same horizontal position. The bar is hinged at end A. There is gravity downwards. What is the distance of the point from point B that has the same acceleration as the ball, immediately after release?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi5pf79%2F8d573a48-3306-41bd-8e76-b18ffd43fe79%2Fe283b650-91ef-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5pf7a.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi5pf79%2F8d573a48-3306-41bd-8e76-b18ffd43fe79%2Fe283b650-91ef-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5pf7a.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{2L}{3}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{L}{3}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{L}{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{3L}{4}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The ball of mass $m$ is released from rest in a vertical gravitational field.</p>\n<p>The only force acting on the ball is gravity ( mg ).</p>\n<p>By Newton's second law, its acceleration immediately after release is:</p>\n<p>$$ \\mathrm{a}_{\\text {ball }}=\\mathrm{g}(\\text { downward }) $$</p>\n<p>The moment of inertia of uniform rod about pivot A (one of its end) is $\\mathrm{I}_{\\mathrm{A}}=\\frac{1}{3} \\mathrm{~mL}^2$</p>\n<p>Right after release from the horizontal position, torque about hinge A is provided by the weight mg acting at the Centre of mass.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi5rbnf%2Fe311153e-049c-47de-8f3f-18820e265c69%2F1763c8b0-91f0-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5rbng.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi5rbnf%2Fe311153e-049c-47de-8f3f-18820e265c69%2F1763c8b0-91f0-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5rbng.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$$\\tau_A = mg\\left(\\frac{L}{2}\\right)$$</p>\n<p>Using Newton's second law for rotation ($\\tau_A = I_A \\cdot \\alpha$):</p>\n<p>$$mg\\left(\\frac{L}{2}\\right) = \\left(\\frac{1}{3}mL^2\\right)\\alpha \\Rightarrow \\frac{mg\\left(\\frac{L}{2}\\right)}{\\frac{1}{3}mL^2} = \\frac{3g}{2L}$$</p>\n<p>At distance $x$ from hinge A, the linear tangential acceleration $a(x)$ is $a(x) = \\alpha \\cdot x = \\left(\\frac{3g}{2L}\\right)x$</p>\n<p>The distance $x$ from end A where $a(x) = a_{\\text{ball}} = g$:</p>\n<p>$$\\left(\\frac{3g}{2L}\\right)x = g$$</p>\n<p>$$x = \\frac{2L}{3}$$</p>\n<p>As the point is located at distance $x = \\frac{2L}{3}$ from end A, so the distance of this point from point B is,</p>\n<p>$$L - x = L - \\frac{2L}{3} = \\frac{L}{3}$$</p>\n<p>Therefore, the correct option is (B).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$m$ द्रव्यमान की एक एकसमान छड़ AB और समान द्रव्यमान की एक गेंद को एक ही क्षैतिज स्थिति से विरामावस्था से छोड़ा जाता है। छड़ सिरे A पर कीलकित है। गुरुत्वाकर्षण नीचे की ओर है। छोड़े जाने के तुरंत बाद, बिंदु B से उस बिंदु की दूरी क्या होगी जिसका त्वरण गेंद के त्वरण के समान है?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi5pf79%2F8d573a48-3306-41bd-8e76-b18ffd43fe79%2Fe283b650-91ef-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5pf7a.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi5pf79%2F8d573a48-3306-41bd-8e76-b18ffd43fe79%2Fe283b650-91ef-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi5pf7a.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{2L}{3}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{L}{3}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{L}{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{3L}{4}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-motion-about-fixed-axis-of-rigid-body",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msi645dk",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The figure shows a 15 kg solid cylinder mounted on a fixed axle, with a radius 25 cm rotating at an angular speed of 500 rotations per minute. If a 100 N braking force is applied normal to the curved surface of the cylinder bringing it to rest in 15 s, what is the coefficient of kinetic friction between the brake shoe and the cylinder (approx.)?</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi600ms%2Ff94572d8-99ea-4dd7-aadc-a9e7afaaef50%2F09293f40-91f1-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi600mt.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi600ms%2Ff94572d8-99ea-4dd7-aadc-a9e7afaaef50%2F09293f40-91f1-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi600mt.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.027</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.042</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.066</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.140</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>Initial angular speed, $N = 500$ rpm (rotations per minute)</p>\n<p>So, initial angular speed in rad/s is $$\\omega_0 = \\frac{2\\pi N}{60} = \\frac{2\\pi \\times 500}{60} = \\frac{100\\pi}{6} = \\frac{50\\pi}{3}\\ \\text{rad/s}$$</p>\n<p>Normal braking force applied, $N_n = 100\\ \\text{N}$</p>\n<p>Time taken to stop, $t = 15\\ \\text{s}$</p>\n<p>Final angular speed, $\\omega_f = 0\\ \\text{rad/s}$</p>\n<p>Using the rotational kinematics equation:</p>\n<p>$$\\omega_f = \\omega_0 + \\alpha t$$</p>\n<p>$$0 = \\frac{50\\pi}{3} + (-\\alpha)(15)$$</p>\n<p>$$15\\alpha = \\frac{50\\pi}{3} \\Rightarrow \\alpha = \\frac{50\\pi}{45} = \\frac{10\\pi}{9}\\ \\text{rad/s}^2$$</p>\n<p>For a uniform solid cylinder of mass $m$ and radius $R$ rotating about its fixed central axle:</p>\n<p>$$I = \\frac{1}{2} m R^2$$</p>\n<p>Mass of the solid cylinder, $m = 15\\ \\text{kg}$</p>\n<p>Radius of the cylinder, $R = 25\\ \\text{cm} = 0.25\\ \\text{m} = \\frac{1}{4}\\ \\text{m}$</p>\n<p>Substituting $m = 15\\ \\text{kg}$ and $R = \\frac{1}{4}\\ \\text{m}$:</p>\n<p>$$ \\mathrm{I}=\\frac{1}{2} \\times 15 \\times\\left(\\frac{1}{4}\\right)^2=\\frac{15}{32} \\mathrm{~kg} \\cdot \\mathrm{~m}^2 $$</p>\n<p>The friction force $\\mathrm{f}_{\\mathrm{k}}$ acting tangentially on the outer surface of the cylinder is:</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi6283g%2F26bd3cda-9911-40bb-a7d4-d14084524d37%2F468b5bc0-91f1-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi6283h.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi6283g%2F26bd3cda-9911-40bb-a7d4-d14084524d37%2F468b5bc0-91f1-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi6283h.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>$$f_k = \\mu_k \\cdot N_n$$</p>\n<p>Torque exerted by kinetic friction about the fixed axle:</p>\n<p>$$\\tau = f_k \\cdot R = (\\mu_k \\cdot N_n) \\cdot R$$</p>\n<p>From Newton's second law for rotation ($\\tau = I\\alpha$):</p>\n<p>$$\\mu_k \\cdot N_n \\cdot R = I\\alpha$$</p>\n<p>$$\\mu_k = \\frac{I\\alpha}{N_n \\cdot R}$$</p>\n<p>$$\\mu_k = \\frac{\\left(\\frac{15}{32}\\right) \\times \\left(\\frac{10\\pi}{9}\\right)}{100 \\times 0.25} = \\frac{150\\pi}{288 \\times 25} = \\frac{\\pi}{48}$$</p>\n<p>$$\\mu_k = \\frac{3.14}{48} \\approx 0.066$$</p>\n<p>Therefore, the correct option is (C).</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>चित्र में 15 kg का एक ठोस बेलन दिखाया गया है जो एक स्थिर धुरी पर स्थापित है, इसकी त्रिज्या 25 cm है और यह 500 चक्कर प्रति मिनट की कोणीय चाल से घूम रहा है। यदि बेलन के वक्र पृष्ठ के लंबवत 100 N का ब्रेकिंग बल लगाया जाता है, जिससे यह 15 s में विरामावस्था में आ जाता है, तो ब्रेक शू और बेलन के बीच गतिज घर्षण गुणांक (लगभग) क्या है?</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi600ms%2Ff94572d8-99ea-4dd7-aadc-a9e7afaaef50%2F09293f40-91f1-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi600mt.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi600ms%2Ff94572d8-99ea-4dd7-aadc-a9e7afaaef50%2F09293f40-91f1-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi600mt.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.027</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.042</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.066</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.140</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-motion-about-fixed-axis-of-rigid-body",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msi43qu8",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The uniform rod of mass 20 kg and length of 1.6 m is pivoted at its end and swings freely in the vertical plane. Angular acceleration of rod just after the rod is released from rest in the horizontal position is $\\frac{\\mathbf{p g}}{\\mathbf{1 6}}$ ( radian $/$ sec $^2$ ), then find $\\mathbf{p}$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi3yz2p%2F94f4eb67-6b81-488f-a399-974667210c24%2F19e3e810-91e9-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi3yz2q.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi3yz2p%2F94f4eb67-6b81-488f-a399-974667210c24%2F19e3e810-91e9-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi3yz2q.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "15",
+                "explanation": "<p>Mass of the uniform rod, $\\mathrm{m}=20 \\mathrm{~kg}$</p>\n<p>Length of the uniform rod, $\\mathrm{L}=1.6 \\mathrm{~m}$</p>\n<p>Pivot point is located at one end of the rod.</p>\n<p>The rod is released from rest in the horizontal position.</p>\n<p>The moment of inertia I about the pivot at the end is $\\mathrm{I}=\\frac{1}{3} \\mathrm{~m} \\mathrm{~L}^2$</p>\n<p>When the rod is released from its horizontal position:</p>\n<p>The force of gravity $(\\mathrm{mg})$ acts vertically downward at the Centre of mass of the rod.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi410ol%2F13f62036-572c-4bc4-9227-004898afa394%2F52c05560-91e9-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi410om.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi410ol%2F13f62036-572c-4bc4-9227-004898afa394%2F52c05560-91e9-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi410om.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Centre of mass is located at a distance of $r=\\frac{L}{2}$ from the pivoted end.</p>\n<p>Torque $\\tau$ about the pivot due to gravitational force is,</p>\n<p>$$\\tau=(mg)\\left(\\frac{L}{2}\\right)=\\frac{mgL}{2}$$</p>\n<p>Using Newton's second law for rotation $\\tau=I\\alpha$</p>\n<p>$$\\frac{mgL}{2}=\\left(\\frac{1}{3}mL^2\\right)\\alpha$$</p>\n<p>$$\\frac{g}{2}=\\frac{L}{3}\\alpha$$</p>\n<p>$$\\alpha=\\frac{3g}{2L}$$</p>\n<p>$$\\alpha=\\frac{3g}{2(1.6)}=\\frac{30g}{32}=\\frac{15g}{16}$$</p>\n<p>$$\\Rightarrow \\frac{pg}{16}=\\frac{15g}{16}$$</p>\n<p>$$\\Rightarrow p=15$$</p>\n<p>Therefore, the value of p is 15.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>20 kg द्रव्यमान और 1.6 m लंबाई की एक समान छड़ को उसके एक सिरे पर कीलकित (pivoted) किया गया है और यह ऊर्ध्वाधर तल में स्वतंत्र रूप से झूलती है। क्षैतिज स्थिति में विरामावस्था से छोड़े जाने के ठीक बाद छड़ का कोणीय त्वरण $\\frac{\\mathbf{p g}}{\\mathbf{1 6}}$ ( रेडियन $/$ सेकंड $^2$ ) है, तो $\\mathbf{p}$ ज्ञात कीजिए।</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi3yz2p%2F94f4eb67-6b81-488f-a399-974667210c24%2F19e3e810-91e9-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi3yz2q.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi3yz2p%2F94f4eb67-6b81-488f-a399-974667210c24%2F19e3e810-91e9-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi3yz2q.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-motion-about-fixed-axis-of-rigid-body",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msi4drpj",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A rod of negligible mass and length (is pivoted at its centre. A particle of mass $m$ is fixed to its left end $\\&amp;$ another particle of mass 2 m is fixed to the right end. If the system is released from rest and after sometime becomes vertical, angular velocity at that instant $\\sqrt{\\frac{\\mathbf{p}}{\\mathbf{3l}}}$ radian/sec., then find $\\mathbf{p} .\\left(\\mathbf{g}=\\mathbf{1 0 m} \\boldsymbol{/} \\mathbf{s}^{\\mathbf{2}}\\right)$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi46odn%2F4c3bde7d-95e3-458d-aac6-fc5dcf80a1fa%2Ff019dbb0-91e9-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi46odo.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi46odn%2F4c3bde7d-95e3-458d-aac6-fc5dcf80a1fa%2Ff019dbb0-91e9-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi46odo.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "40",
+                "explanation": "<p>Length of the light rod (negligible mass) $=1$</p>\n<p>The rod is fixed at centre of the rod, so the distance of each mass from the pivot $=\\frac{1}{2}$.</p>\n<p>Mass attached at left end $\\mathrm{m}_1=\\mathrm{m}$</p>\n<p>Mass attached at right end $\\mathrm{m}_2=2 \\mathrm{~m}$</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi4838k%2F2ce64967-2d4e-4fe4-ac93-1d90bbba7689%2F17636240-91ea-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi4838l.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi4838k%2F2ce64967-2d4e-4fe4-ac93-1d90bbba7689%2F17636240-91ea-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi4838l.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Since the rod has negligible mass, the total moment of inertia about the central pivot:</p>\n<p>$$I = m_1 r_1^2 + m_2 r_2^2$$</p>\n<p>Substituting $m_1 = m$, $m_2 = 2m$, and $r_1 = r_2 = \\frac{l}{2}$:</p>\n<p>$$I = m\\left(\\frac{l}{2}\\right)^2 + 2m\\left(\\frac{l}{2}\\right)^2$$</p>\n<p>$$I = \\frac{ml^2}{4} + \\frac{2ml^2}{4} = \\frac{3}{4}ml^2$$</p>\n<p>Let the horizontal position be the initial reference for gravitational potential energy, $U_i = 0$.</p>\n<p>When released, the heavier mass $(2m)$ swings downwards by distance $\\frac{l}{2}$, while the lighter mass $(m)$ swings upwards by distance $\\frac{l}{2}$:</p>\n<p>Final height of mass $m$ is $h_1 = +\\frac{l}{2}$</p>\n<p>Final height of mass $2m$ is $h_2 = -\\frac{l}{2}$</p>\n<p>So, the final potential energy is,</p>\n\n<p>$\\mathrm{U}_{\\mathrm{f}}=\\mathrm{mg}\\left(+\\frac{1}{2}\\right)+(2 \\mathrm{~m}) \\mathrm{g}\\left(-\\frac{1}{2}\\right)$</p>\n<p>$$U_f = \\frac{mgl}{2} - \\frac{2mgl}{2} = -\\frac{mgl}{2}$$</p>\n<p>Decrease in potential energy is,</p>\n<p>$$\\Delta U = U_i - U_f = 0 - \\left(-\\frac{mgl}{2}\\right) = \\frac{mgl}{2}$$</p>\n<p>The system is released from rest, so initial kinetic energy $K_i = 0$.</p>\n<p>By work-energy theorem $\\Delta U = K_f$</p>\n<p>Rotational kinetic energy when the rod becomes vertical with angular speed $\\omega$:</p>\n<p>$$K_f = \\frac{1}{2} I\\omega^2$$</p>\n<p>$$\\Rightarrow \\frac{1}{2} I\\omega^2 = \\frac{mgl}{2}$$</p>\n<p>$$\\frac{1}{2}\\left(\\frac{3}{4}ml^2\\right)\\omega^2 = \\frac{mgl}{2}$$</p>\n<p>$$\\frac{3}{8}ml^2\\omega^2 = \\frac{mgl}{2}$$</p>\n<p>$$\\frac{3}{8}l^2\\omega^2 = \\frac{gl}{2}$$</p>\n<p>$$\\Rightarrow \\omega^2 = \\frac{8}{3}\\times\\frac{gl}{2l^2} = \\frac{4g}{3l}$$</p>\n<p>$$\\Rightarrow \\omega^2 = \\frac{4(10)}{3l} = \\frac{40}{3l} = \\sqrt{\\frac{40}{3l}}$$</p>\n<p>$$\\Rightarrow \\sqrt{\\frac{p}{3l}} = \\sqrt{\\frac{40}{3l}}$$</p>\n<p>$$\\Rightarrow p = 40$$</p>\n<p>Therefore, the value of $p$ is 40.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक नगण्य द्रव्यमान और $l$ लंबाई की छड़ को उसके केंद्र पर कीलकित (pivoted) किया गया है। $m$ द्रव्यमान का एक कण इसके बाएँ सिरे पर और 2 m द्रव्यमान का एक अन्य कण दाएँ सिरे पर स्थिर किया गया है। यदि निकाय को विरामावस्था से छोड़ा जाता है और कुछ समय बाद यह ऊर्ध्वाधर हो जाता है, उस क्षण पर कोणीय वेग $\\sqrt{\\frac{\\mathbf{p}}{\\mathbf{3l}}}$ रेडियन/सेकंड है, तो $\\mathbf{p}$ का मान ज्ञात कीजिए। $\\left(\\mathbf{g}=\\mathbf{1 0 m} \\boldsymbol{/} \\mathbf{s}^{\\mathbf{2}}\\right)$।</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi46odn%2F4c3bde7d-95e3-458d-aac6-fc5dcf80a1fa%2Ff019dbb0-91e9-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi46odo.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi46odn%2F4c3bde7d-95e3-458d-aac6-fc5dcf80a1fa%2Ff019dbb0-91e9-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi46odo.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-motion-about-fixed-axis-of-rigid-body",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msi75kdt",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Somehow a scientist created no gravity region below the broken line. Above the broken line gravity is unchanged i.e. g downwards. If a hinged uniform rod is released from horizontal position, then its angular speed when it becomes vertical is $\\sqrt{\\frac{\\eta \\mathrm{g}}{4 \\mathrm{~L}}}$ Find $\\eta$.</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi70fhm%2F874e6fcc-f68d-49c6-885c-27588dfc492d%2Ffdc43ca0-91f4-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi70fhn.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi70fhm%2F874e6fcc-f68d-49c6-885c-27588dfc492d%2Ffdc43ca0-91f4-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi70fhn.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "9",
+                "explanation": "<p>A uniform rod of mass m and total length L is hinged at one end.</p>\n<p>Initially, the rod lies horizontally at rest $\\left(\\omega_0=0\\right)$ along the boundary line dividing the space.</p>\n<p>Above the broken line gravity is active (g downwards).</p>\n<p>Below the broken line there is no gravity $(\\mathrm{g}=0)$.</p>\n<p>As the rod falls from the horizontal position to the vertical position, its Centre of mass moves downwards from the horizontal boundary line through a total vertical distance of $\\frac{\\mathrm{L}}{2}$.</p>\n<p>Only the upper half of the region has gravity acting on the mass elements.</p>\n<p>The moment of inertia (I) about hinge is $\\mathrm{I}=\\frac{1}{3} \\mathrm{~m} \\mathrm{~L}^2$</p>\n<p>Initially the rod is released from rest, so the initial kinetic energy is $\\mathrm{K}_{\\mathrm{i}}=0$</p>\n<p>Considering a small element of the rod of length dx at distance x from the hinge $(0 \\leq \\mathrm{x} \\leq \\mathrm{L})$.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi72qfm%2Feb59d38b-f95c-4986-8bd4-5a87a7713ca6%2F3dd6d320-91f5-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi72qfn.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi72qfm%2Feb59d38b-f95c-4986-8bd4-5a87a7713ca6%2F3dd6d320-91f5-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi72qfn.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>Mass of the element is $\\mathrm{dm}=\\left(\\frac{\\mathrm{m}}{\\mathrm{L}}\\right) \\mathrm{dx}$</p>\n<p>When the rod rotates by 90° to become vertical, the element at distance x drops vertically by distance $\\mathrm{h}(\\mathrm{x})=\\mathrm{x}$.</p>\n<p>If $\\mathrm{x} \\leq \\frac{\\mathrm{L}}{2}$ the element stays above the broken line, i.e., in the gravity region and the vertical distance fallen in gravity region $=\\mathrm{x}$.</p>\n<p>If $x > \\frac{L}{2}$, the element enters the no-gravity region below height $\\frac{L}{2}$, vertical distance fallen within the gravity region = $\\frac{L}{2}$.</p>\n<p>So, potential energy lost by all elements in the gravitational field:</p>\n<p>$$ \\Delta U = \\int\\limits_{0}^{L/2} (\\mathrm{d}m)\\, g\\, x + \\int\\limits_{L/2}^{L} (\\mathrm{d}m)\\, g\\left(\\frac{L}{2}\\right) $$</p>\n<p>$$ \\Delta U = \\int\\limits_{0}^{L/2} \\left(\\frac{m}{L}\\, \\mathrm{d}x\\right) g\\, x + \\int\\limits_{0}^{L/2} \\left(\\frac{m}{L}\\, \\mathrm{d}x\\right) g\\left(\\frac{L}{2}\\right) $$</p>\n<p>$$ \\Delta U = mgL\\left[\\frac{x^2}{2}\\right]_{0}^{L/2} + \\frac{mg}{2}[x]_{L/2}^{L} $$</p>\n<p>$$ \\Delta U = mgL\\left(\\frac{L^2}{8}\\right) + \\frac{mg}{2}\\left(L - \\frac{L}{2}\\right) $$</p>\n<p>$$ \\Delta U = \\frac{mgL}{8} + \\frac{mgL}{4} = \\frac{mg}{L} + \\frac{2mgL}{8} = \\frac{3mgL}{8} $$</p>\n<p>Using conservation of energy,</p>\n<p>Gain in rotational kinetic energy = Loss in potential energy</p>\n<p>$$ \\frac{1}{2} I\\omega^2 = \\Delta U $$</p>\n<p>$$ \\Rightarrow \\frac{1}{2} \\left(\\frac{1}{3} mL^2\\right) \\omega^2 = \\frac{3mgL}{8} $$</p>\n<p>$$ \\frac{1}{6} mL^2 \\omega^2 = \\frac{3mgL}{8} $$</p>\n<p>$$ \\frac{1}{6} L\\omega^2 = \\frac{3g}{8} $$</p>\n<p>$$ \\omega^2 = 6 \\times \\frac{3g}{8L} = \\frac{18g}{8L} = \\frac{9g}{4L} $$</p>\n<p>$$ \\omega = \\sqrt{\\frac{9g}{4L}} $$</p>\n<p>$$ \\Rightarrow \\sqrt{\\frac{ng}{4L}} = \\sqrt{\\frac{9g}{4L}} $$</p>\n<p>$$ \\Rightarrow n = 9 $$</p>\n<p>Therefore, the value of $n$ is 9.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>किसी तरह एक वैज्ञानिक ने खंडित रेखा (broken line) के नीचे गुरुत्वाकर्षण रहित क्षेत्र बनाया। खंडित रेखा के ऊपर गुरुत्वाकर्षण अपरिवर्तित रहता है अर्थात g नीचे की ओर है। यदि एक कीलकित (hinged) एकसमान छड़ को क्षैतिज स्थिति से मुक्त किया जाता है, तो इसके ऊर्ध्वाधर होने पर इसकी कोणीय चाल $\\sqrt{\\frac{\\eta \\mathrm{g}}{4 \\mathrm{~L}}}$ होती है। $\\eta$ का मान ज्ञात कीजिए।</p>\n\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi70fhm%2F874e6fcc-f68d-49c6-885c-27588dfc492d%2Ffdc43ca0-91f4-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi70fhn.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi70fhm%2F874e6fcc-f68d-49c6-885c-27588dfc492d%2Ffdc43ca0-91f4-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi70fhn.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-motion-about-fixed-axis-of-rigid-body",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msi9i58v",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform thin rod of mass $M$ and length Lis supported horizontally by two supports, one at each end. At time $\\mathbf{t}=\\mathbf{0}$, the left support is removed. Normal force on the right support immediately after the left support is removed is $\\frac{M g}{x}$. Find $x$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi9byrl%2Fedd58964-cfc0-40f9-b074-e84bed0f92d8%2F10d10310-91fe-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi9byrm.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi9byrl%2Fedd58964-cfc0-40f9-b074-e84bed0f92d8%2F10d10310-91fe-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi9byrm.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>Let the uniform thin rod have mass M , length L , and be pivoted at its right end support $\\mathrm{B}(\\mathrm{x}=\\mathrm{L})$. </p>\n<p>Immediately after the left support at $\\mathrm{A}(\\mathrm{x}=0)$ is removed :</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi9ehei%2Fd1052200-28ce-4a41-8bb1-8b7da57b1563%2F56d4bfa0-91fe-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi9ehej.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi9ehei%2Fd1052200-28ce-4a41-8bb1-8b7da57b1563%2F56d4bfa0-91fe-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi9ehej.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>Downward gravitational force Mg acting at its Centre of mass $\\left(\\mathrm{x}=\\frac{\\mathrm{L}}{2}\\right)$.</p>\n<p>Upward normal reaction force $\\mathrm{N}_{\\mathrm{B}}^{\\prime}$ exerted by the right support at $\\mathrm{B}(\\mathrm{x}=\\mathrm{L})$.</p>\n<p>The rod begins to rotate about the right end support B.</p>\n<p>The weight $Mg$ acts at a distance of $\\frac{L}{2}$ from B.</p>\n<p>$$\\tau_B = Mg \\times \\left(\\frac{L}{2}\\right)$$</p>\n<p>The moment of inertia of for a uniform thin rod about an axis passing through one end perpendicular to its length is</p>\n<p>$$I_B = \\frac{1}{3} M L^2$$</p>\n<p>Using Newton's second law for rotation ($\\tau_B = I_B\\alpha$):</p>\n<p>$$Mg \\times \\left(\\frac{L}{2}\\right) = \\left(\\frac{1}{3} M L^2\\right)\\alpha$$</p>\n<p>$$\\alpha = \\frac{Mg\\left(\\frac{L}{2}\\right)}{\\frac{1}{3} M L^2} = \\frac{3g}{2L}$$</p>\n<p>The linear vertical acceleration of the Centre of mass ($a_{\\mathrm{com}}$) is related to the angular acceleration $\\alpha$ by:</p>\n<p>$$a_{\\mathrm{com}} = r\\alpha$$</p>\n<p>where $r = \\frac{L}{2}$ is the distance from the pivot B to the Centre of mass.</p>\n<p>$$a_{\\mathrm{com}} = \\left(\\frac{L}{2}\\right) \\times \\alpha = \\left(\\frac{L}{2}\\right) \\times \\left(\\frac{3g}{2L}\\right) = \\frac{3}{4}g$$</p>\n<p>Applying Newton's second law for vertical translation of the Centre of mass:</p>\n<p>$$\\sum\\limits F_y = M a_{\\mathrm{com}}$$</p>\n<p>$$Mg - N_B' = M a_{\\mathrm{com}}$$</p>\n<p>$$Mg - N'_B = M \\times \\left(\\frac{3}{4}g\\right)$$</p>\n<p>$$N'_B = Mg - \\frac{3}{4}Mg$$</p>\n<p>$$N'_B = \\frac{1}{4}Mg = \\frac{Mg}{4}$$</p>\n<p>$$\\Rightarrow N'_B = \\frac{Mg}{x} = \\frac{Mg}{4} \\Rightarrow x = 4$$</p>\n<p>Therefore, the value of x is 4.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$M$ द्रव्यमान और L लंबाई की एक समान पतली छड़ को दोनों सिरों पर एक-एक टेक द्वारा क्षैतिज रूप से सहारा दिया गया है। समय $\\mathbf{t}=\\mathbf{0}$ पर, बायीं टेक हटा दी जाती है। बायीं टेक हटाए जाने के तुरंत बाद दायीं टेक पर अभिलंब बल $\\frac{M g}{x}$ है। $x$ ज्ञात कीजिए।</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi9byrl%2Fedd58964-cfc0-40f9-b074-e84bed0f92d8%2F10d10310-91fe-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi9byrm.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi9byrl%2Fedd58964-cfc0-40f9-b074-e84bed0f92d8%2F10d10310-91fe-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi9byrm.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-motion-about-fixed-axis-of-rigid-body",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msi9q0bl",
+            "chapter": "rotational-motion",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform cylinder of radius $\\mathbf{R}(=\\mathbf{3 m})$ is spun about its axis at an angular velocity $\\omega_0(=40 \\sqrt{\\pi} \\mathrm{rad} / \\mathrm{s})$ and placed between two perpendicular walls. The coefficient of friction between the walls and cylinder is $\\mu(=0.2)$. If this cylinder makes $N$ turns before it stops, then find the value of $N$.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi9k9la%2F85769e14-1e70-4ada-adf3-061551967878%2Ff7a6cae0-91fe-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi9k9lb.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi9k9la%2F85769e14-1e70-4ada-adf3-061551967878%2Ff7a6cae0-91fe-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi9k9lb.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "260",
+                "explanation": "<p>Let $\\mathrm{N}_1$ be the normal force exerted by the vertical wall and $\\mathrm{N}_2$ be the normal force exerted by the horizontal floor.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi9milv%2F1b5b2528-3e66-44cf-a406-94181a981c74%2F363c1030-91ff-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi9milw.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi9milv%2F1b5b2528-3e66-44cf-a406-94181a981c74%2F363c1030-91ff-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi9milw.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p>As the cylinder spins counter-clockwise, kinetic friction forces oppose its motion at both contact surfaces:</p>\n<p>Friction force at the vertical wall is $\\mathrm{f}_1=\\mu \\mathrm{N}_1$</p>\n<p>Friction force at the horizontal floor is $\\mathrm{f}_2=\\mu \\mathrm{N}_2$</p>\n<p>Since the cylinder remains stationary at the corner while spinning:</p>\n<p>Net horizontal force is zero,</p>\n<p>$$\\sum F_x = N_1 - f_2 = 0 \\Rightarrow N_1 = \\mu N_2 \\ldots (i)$$</p>\n<p>Net vertical force is zero,</p>\n<p>$$\\sum F_y = N_2 + f_1 - Mg = 0 \\Rightarrow N_2 + \\mu N_1 = Mg \\ldots (ii)$$</p>\n<p>Substituting $N_1 = \\mu N_2$ into equation (ii):</p>\n<p>$$N_2 + \\mu(\\mu N_2) = Mg$$</p>\n<p>$$N_2(1+\\mu^2) = Mg \\Rightarrow N_2 = \\frac{Mg}{1+\\mu^2}$$</p>\n<p>Then substituting $N_2$ back to find $N_1$,</p>\n<p>$$N_1 = \\frac{\\mu Mg}{1+\\mu^2}$$</p>\n<p>Both friction forces exert retarding torques in the same sense to slow down the cylinder's rotation:</p>\n<p>$$\\tau_{\\text{net}} = f_1R + f_2R = \\mu N_1 R + \\mu N_2 R = \\mu R(N_1 + N_2)$$</p>\n<p>$$\\tau_{\\text{net}} = \\mu R\\left(\\frac{\\mu Mg}{1+\\mu^2} + \\frac{Mg}{1+\\mu^2}\\right) = \\frac{\\mu(1+\\mu)MgR}{1+\\mu^2}$$</p>\n<p>The moment of inertia of a solid uniform cylinder about its central axis is:</p>\n<p>$$I = \\frac{1}{2}MR^2$$</p>\n<p>Using Newton's second law for rotation ($\\tau_{\\text{net}} = I\\alpha$) :</p>\n\n<p>$$\\frac{\\mu(1+\\mu)MgR}{1+\\mu^2}=\\left(\\frac{1}{2}MR^2\\right)\\alpha$$</p>\n<p>$$\\alpha=\\frac{2\\mu(1+\\mu)g}{(1+\\mu^2)R}$$</p>\n<p>The coefficient of kinetic friction is $\\mu=0.2$, the radius of cylinder is $R=3\\ \\mathrm{m}$ and acceleration due to gravity is $g=10\\ \\mathrm{m/s^2}$</p>\n<p>Substituting these values:</p>\n<p>$$\\alpha=\\frac{2\\times0.2\\times(1+0.2)\\times10}{(1+0.2^2)\\times3}=\\frac{0.4\\times1.2\\times10}{1.04\\times3}=\\frac{4.8}{3.12}=\\frac{20\\,\\mathrm{rad}}{13\\,\\mathrm{s^2}}$$</p>\n<p>Using the third rotational equation of motion ($\\omega^2=\\omega_0^2-2\\alpha\\theta$):</p>\n<p>$$0=\\omega_0^2-2\\alpha\\theta \\rightarrow \\theta=\\frac{\\omega_0^2}{2\\alpha}$$</p>\n<p>Given $\\omega_0=40\\sqrt{\\pi}\\ \\mathrm{rad/s}$:</p>\n<p>$$\\theta=\\frac{1600\\pi}{2\\times\\left(\\frac{20}{13}\\right)}=\\frac{1600\\pi\\times13}{40}=520\\pi\\ \\mathrm{rad}$$</p>\n<p>Since 1 complete turn $=2\\pi\\ \\mathrm{rad}$:</p>\n<p>$$N=\\frac{\\theta}{2\\pi}=\\frac{520\\pi}{2\\pi}=260$$</p>\n<p>Therefore, the cylinder makes 260 turns before stopping.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>त्रिज्या $\\mathbf{R}(=\\mathbf{3 m})$ वाले एक एकसमान बेलन को इसके अक्ष के परितः कोणीय वेग $\\omega_0(=40 \\sqrt{\\pi} \\mathrm{rad} / \\mathrm{s})$ से घुमाया जाता है और दो लंबवत दीवारों के बीच रखा जाता है। दीवारों और बेलन के बीच घर्षण गुणांक $\\mu(=0.2)$ है। यदि यह बेलन रुकने से पहले $N$ चक्कर लगाता है, तो $N$ का मान ज्ञात कीजिए।</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msi9k9la%2F85769e14-1e70-4ada-adf3-061551967878%2Ff7a6cae0-91fe-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi9k9lb.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msi9k9la%2F85769e14-1e70-4ada-adf3-061551967878%2Ff7a6cae0-91fe-11f1-9f13-c92e7d6dae5a%2Ffile-6y3zli1msi9k9lb.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "rotational-motion-about-fixed-axis-of-rigid-body",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Rotational Motion about Fixed Axis of Rigid Body",
+    "timeAllotted": 2160000,
+    "title": "Rotational Motion Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v"
+  },
+  "_meta": {
+    "testId": "tst-19g71mnvy4tpl",
+    "defaultLanguage": "en",
+    "description": "Rotational Motion about Fixed Axis of Rigid Body",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-07T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Rotational Motion about Fixed Axis of Rigid Body",
+    "timeAllotted": 2160000,
+    "title": "Rotational Motion Test - 3 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "isUpcoming": false,
+    "seriesId": "tsr-19g61mnpryz1v",
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Rotational Motion"
+  }
+}

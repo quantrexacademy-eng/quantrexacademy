@@ -1,0 +1,76 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd4ec03b9dcaf1afea4c",
+  "topicId": "66a0dd51c03b9dcaf1afea57",
+  "title": "Logarithmic differentiation",
+  "concepts": [
+    {
+      "title": "Logarithmic Differentiation",
+      "conceptBody": "<h3><strong>Logarithmic Differentiation&nbsp;</strong></h3><p>So far, we have discussed derivatives of the functions of the form ${{(f\\left( x \\right))}^{n}},{{n}^{f\\left( x \\right)}}$ and ${{n}^{n}}$, where $\\text{f}\\left( \\text{x} \\right)$ is a function of $\\text{x}$ and $\\text{n}$ is a constant. In this section, we will be mainly discussing derivatives of the functions of the form ${{(f\\left( x \\right))}^{g\\left( x \\right)}}$, where $f\\left( x \\right)$ and $g\\left( x \\right)$ are functions of $x$. To find the derivatives of this type of functions we proceed as follows:</p><p>Let $y={{(f\\left( x \\right))}^{g\\left( x \\right)}}$, taking logarithm of both the sides, we have</p><p>$\\text{log}y=g\\left( x \\right)\\text{log}\\left\\{ f\\left( x \\right) \\right\\}$</p><p>Differentiating w.r.t. $\\text{x}$, we get</p><p>$\\frac{1}{y} \\cdot \\frac{d y}{d x}=g(x) \\cdot \\frac{1}{f(x)} \\cdot \\frac{d f(x)}{d x}+\\log \\{f(x)\\} \\cdot \\frac{d g(x)}{d x}$</p><p>$\\therefore \\quad \\frac{\\mathrm{dy}}{\\mathrm{dx}}=\\mathrm{y}\\left[\\frac{\\mathrm{g}(\\mathrm{x})}{\\mathrm{f}(\\mathrm{x})} \\cdot \\frac{\\mathrm{df}(\\mathrm{x})}{\\mathrm{dx}}+\\log \\{\\mathrm{f}(\\mathrm{x})\\} \\cdot \\frac{\\mathrm{dg}(\\mathrm{x})}{\\mathrm{dx}}\\right]$</p><p>or $\\quad \\frac{d y}{d x}=(f(x))^{g(x)}\\left\\{\\frac{g(x)}{f(x)} \\cdot \\frac{d f(x)}{d x}+\\log \\{f(x)\\} \\cdot \\frac{d g(x)}{d x}\\right\\}$</p><p><strong>Logarithmic Differentiating (Objective Approach)&nbsp;</strong></p><p>If $\\text{y}={{\\{\\text{f}\\left( \\text{x} \\right)\\}}^{\\phi \\left( \\text{x} \\right)}}$ then</p><p>$\\frac{d y}{d x}=$ d.c. of $\\{f(x)\\}^{\\phi(x)} \\quad$ w.r.t. $x$ taking $\\phi(x)$ as a constant</p><p>+ d.c. of $\\{\\mathrm{f}(\\mathrm{x})\\}^{\\phi(\\mathrm{x})}$ w.r.t. $\\mathrm{x}$ taking $\\mathrm{f}(\\mathrm{x})$ as a constant.</p><p>$\\Rightarrow \\quad \\frac{\\mathrm{dy}}{\\mathrm{dx}}=\\phi(\\mathrm{x}) \\cdot\\{\\mathrm{f}(\\mathrm{x})\\}^{\\phi(\\mathrm{x})-1} \\cdot \\frac{\\mathrm{df}(\\mathrm{x})}{\\mathrm{dx}}+\\{\\mathrm{f}(\\mathrm{x})\\}^{\\phi(\\mathrm{x})} \\cdot \\log \\mathrm{f}(\\mathrm{x}) \\cdot \\frac{\\mathrm{d} \\phi(\\mathrm{x})}{\\mathrm{dx}}$</p><p>or when we have to differentiate the function of the form (variable), take log on both sides and differentiate.</p>",
+      "position": 0,
+      "qcConcept": "66a0dd51c03b9dcaf1afea58"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f482d384bfb4a538064",
+      "title": "$\\frac{d}{d x} \\log (\\log x)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f482d384bfb4a538065",
+      "title": "$y=\\log _{10} x+\\log _x 10+\\log _x x+\\log _{10} 10$, then $\\frac{d y}{d x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f482d384bfb4a538066",
+      "title": "If $f(x)=\\log _x(\\log x)$, then $f(x)$ at $x=e$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f482d384bfb4a538067",
+      "title": "$\\frac{d}{d x} \\log (\\sqrt{x-a}+\\sqrt{x-b})=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f482d384bfb4a538068",
+      "title": "$y=\\log \\frac{1+\\sqrt{x}}{1-\\sqrt{x}}$, then $\\frac{d y}{d x}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f482d384bfb4a538069",
+      "title": "$\\frac{d}{d x} \\log \\tan \\left(\\frac{\\pi}{4}+\\frac{x}{2}\\right)=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f482d384bfb4a53806a",
+      "title": "$\\frac{d}{d x}\\left[\\log \\sqrt{\\frac{1-\\cos x}{1+\\cos x}}\\right]=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f482d384bfb4a53806b",
+      "title": "$\\frac{d}{d x}\\left\\{e^{-a x^2} \\log (\\sin x)\\right\\}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f482d384bfb4a53806c",
+      "title": "$\\left.\\frac{d}{d x}\\left(\\log _e x\\right)\\left(\\log _3 x\\right)\\right]=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f482d384bfb4a53806d",
+      "title": "$\\frac{d}{d x}\\left\\{\\log \\left(\\frac{e^x}{1+e^x}\\right)\\right\\}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

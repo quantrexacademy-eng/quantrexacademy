@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61moerqgzo",
+  "title": "Statistics Test - 1 (Topic Test)",
+  "type": "topic",
+  "section": "Statistics",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Mathematics",
+  "isUpcoming": false,
+  "liveAt": "2026-08-26T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "57c1b363-f6db-4d02-994e-f898e732c468",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61moerqgzo",
+    "defaultLanguage": "en",
+    "description": "Calculation of Mean, Median and Mode of Grouped and Ungrouped Data",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-26T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mt98sfqk",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the mean of the set of numbers $x_1, x_2, x_3, \\ldots, x_n$ is $\\bar{x}$, then the mean of the numbers $x_i + 2i$, $1 \\leq i \\leq n$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\bar{x} + 2n$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\bar{x} + n + 1$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\bar{x} + 2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\bar{x} + n$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>We are given that the mean of the numbers $x_1, x_2, x_3, \\ldots, x_n$ is $\\bar{x}$. </p>\n<p>Using the formula for the mean, we have:</p>\n<p>$$\\bar{x} = \\frac{\\sum\\limits_{i=1}^{n} x_i}{n}$$</p>\n<p>This gives the sum of all the original observations as:</p>\n<p>$$\\sum\\limits_{i=1}^{n} x_i = n\\bar{x}$$</p>\n<p>Now, the new set of observations is given by $x_i + 2i$ for $1 \\leq i \\leq n$.</p>\n<p>Let the new mean be $\\bar{y}$. To find $\\bar{y}$, we divide the sum of the new observations by the total number of observations $n$:</p>\n<p>$$\\bar{y} = \\frac{\\sum\\limits_{i=1}^{n} (x_i + 2i)}{n}$$</p>\n\n<p>$$\\bar{y} = \\frac{\\sum\\limits_{i=1}^{n} x_i + 2\\sum\\limits_{i=1}^{n} i}{n}$$</p>\n<p>We know that the sum of the first $n$ natural numbers is given by:</p>\n<p>$$\\sum\\limits_{i=1}^{n} i = \\frac{n(n+1)}{2}$$</p>\n<p>Substitute the values of $\\sum\\limits_{i=1}^{n} x_i$ and $\\sum\\limits_{i=1}^{n} i$ into the formula for $\\bar{y}$:</p>\n<p>$$\\bar{y} = \\frac{n\\bar{x} + 2 \\cdot \\frac{n(n+1)}{2}}{n}$$</p>\n<p>$$\\bar{y} = \\frac{n\\bar{x} + n(n+1)}{n}$$</p>\n\n<p>$$\\bar{y} = \\frac{n(\\bar{x} + n + 1)}{n}$$</p>\n<p>$$\\bar{y} = \\bar{x} + n + 1$$</p>\n<p>Thus, the mean of the new numbers is $\\bar{x} + n + 1$.</p>\n<p>Correct Option: Option B</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि संख्याओं के समुच्चय $x_1, x_2, x_3, \\ldots, x_n$ का माध्य $\\bar{x}$ है, तो संख्याओं $x_i + 2i$, $1 \\leq i \\leq n$ का माध्य है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\bar{x} + 2n$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\bar{x} + n + 1$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\bar{x} + 2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\bar{x} + n$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-mean-median-and-mode-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt98pmcu",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the mean of the distribution is 2.6, then the value of $y$ is</p><style> table {width: 100%;border-collapse: collapse;margin: 20px 0;}th {background-color: blue;color: white;border: 1px solid lightgrey;padding: 10px;}td {border: 1px solid lightgrey;padding: 10px;text-align: left;} </style><table><tr><th>Variate $x$</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr><tr><th>Frequency $f$ of $x$</th><td>4</td><td>5</td><td>y</td><td>1</td><td>2</td></tr></table>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>24</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>13</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>8</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>3</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>To find the value of $y$, we use the formula for the mean of a frequency distribution:</p>\n<p>$$\\bar{x} = \\frac{\\sum f_i x_i}{\\sum f_i}$$</p>\n<p>Let us first find the sum of all frequencies, $\\sum f_i$:</p>\n<p>$$\\sum f_i = 4 + 5 + y + 1 + 2 = 12 + y$$</p>\n<p>Next, we calculate the sum of the products of each variate and its frequency, $\\sum f_i x_i$:</p>\n<p>$$\\sum f_i x_i = (1 \\times 4) + (2 \\times 5) + (3 \\times y) + (4 \\times 1) + (5 \\times 2)$$</p>\n<p>$$\\sum f_i x_i = 4 + 10 + 3y + 4 + 10$$</p>\n<p>$$\\sum f_i x_i = 28 + 3y$$</p>\n<p>We are given that the mean $\\bar{x} = 2.6$. Substituting these values into the mean formula gives:</p>\n<p>$$2.6 = \\frac{28 + 3y}{12 + y}$$</p>\n<p>$$2.6(12 + y) = 28 + 3y$$</p>\n<p>$$31.2 + 2.6y = 28 + 3y$$</p>\n<p>$$31.2 - 28 = 3y - 2.6y$$</p>\n<p>$$3.2 = 0.4y$$</p>\n<p>$$y = \\frac{3.2}{0.4}$$</p>\n<p>$$y = 8$$</p>\n<p>Thus, the value of $y$ is $8$.</p>\n<p>Correct Option: <strong>Option C</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि बंटन का माध्य 2.6 है, तो $y$ का मान है:</p><style> table {width: 100%;border-collapse: collapse;margin: 20px 0;}th {background-color: blue;color: white;border: 1px solid lightgrey;padding: 10px;}td {border: 1px solid lightgrey;padding: 10px;text-align: left;} </style><table><tr><th>विचर $x$</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr><tr><th>$x$ की बारंबारता $f$</th><td>4</td><td>5</td><td>y</td><td>1</td><td>2</td></tr></table>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>24</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>13</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>8</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>3</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-mean-median-and-mode-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt993urt",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The average of <b>n</b> numbers $x_1, x_2, x_3, ..., x_n$ is $M$. If $x_n$ is replaced by $x'$, then new average is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$M - x_n + x'$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{nM - x_n + x'}{n} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{(x - 1)M + x'}{n} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{M - x_n + x'}{n} $</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>$M=\\frac{x_1+x_2+x_3, \\ldots, x_n}{n}$</p>\n<p>$\\begin{array}{lr}\\Rightarrow  n M=x_1+x_2+x_3+\\ldots+x_{n-1}+x_n \\\\ \\Rightarrow  n M-x_n=x_1+x_2+x_3+\\ldots+x_{n-1} \\\\ \\Rightarrow  n M-x_n+x^{\\prime}=x_1+x_2+x_3+\\ldots+x_{n-1}+x^{\\prime} \\\\ \\Rightarrow  \\frac{n M-x_n+x^{\\prime}}{n}=\\frac{x_1+x_2+x_3+\\ldots+x_{n-1}+x^{\\prime}}{n} \\\\ \\therefore  \\text { New average }=\\frac{n M-x_n+x^{\\prime}}{n}\\end{array}$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>n</b> संख्याओं $x_1, x_2, x_3, ..., x_n$ का औसत $M$ है। यदि $x_n$ को $x'$ से प्रतिस्थापित कर दिया जाए, तो नया औसत है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$M - x_n + x'$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ \\frac{nM - x_n + x'}{n} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{(x - 1)M + x'}{n} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$ \\frac{M - x_n + x'}{n} $</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-mean-median-and-mode-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt9d3b2e",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The mean of 20 observations is 15. On checking it was found that two observations were wrongly copied as 3 and 6. If wrong observations are replaced by correct values 8 and 4, then the correct mean is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>15</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>15.15</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>16.15</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>17</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>We know that the formula for the mean of a set of observations is:</p>\n<p>$$\\text{Mean} = \\frac{\\text{Sum of all observations}}{\\text{Total number of observations}}$$</p>\n<p>Here, the total number of observations is $n = 20$, and the given incorrect mean is $15$.</p>\n<p>First, let us find the incorrect sum of all observations:</p>\n<p>$$\\text{Incorrect sum} = 20 \\times 15 = 300$$</p>\n<p>Two wrong values, $3$ and $6$, were added into this total. We need to remove these wrong values and add the correct values, which are $8$ and $4$.</p>\n<p>$$\\text{Correct sum} = \\text{Incorrect sum} - (\\text{Wrong observations}) + (\\text{Correct observations})$$</p>\n<p>$$\\text{Correct sum} = 300 - (3 + 6) + (8 + 4)$$</p>\n<p>$$\\text{Correct sum} = 300 - 9 + 12 = 303$$</p>\n<p>Now, we calculate the correct mean by dividing the correct sum by the total number of observations:</p>\n<p>$$\\text{Correct mean} = \\frac{303}{20} = 15.15$$</p>\n<p>Thus, the correct option is <strong>Option B</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>20 प्रेक्षणों का माध्य 15 है। जाँच करने पर यह पाया गया कि दो प्रेक्षण गलती से 3 और 6 दर्ज कर लिए गए थे। यदि गलत प्रेक्षणों को सही मानों 8 और 4 से बदल दिया जाए, तो सही माध्य है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>15</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>15.15</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>16.15</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>17</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-mean-median-and-mode-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt9d8jm9",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Mean of <i>n</i> items is $\\bar{x}$. If these <i>n</i> items are successively increased by $2, 2^2, 2^3, \\ldots, 2^n$, then the new mean is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\bar{x} + \\frac{2^{n+1}}{n}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\bar{x} + \\frac{2^{n+1}}{n} - \\frac{2}{n}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "$\\vec{x}+\\frac{2^n}{n}$"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "$\\bar{x}+2^n$"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let the original $n$ items be $x_1, x_2, x_3, \\ldots, x_n$.</p>\n<p>The mean of these $n$ items is given by:</p>\n<p>$$\\bar{x} = \\frac{x_1 + x_2 + x_3 + \\ldots + x_n}{n}$$</p>\n<p>This gives the sum of all the original items as:</p>\n<p>$$x_1 + x_2 + x_3 + \\ldots + x_n = n\\bar{x}$$</p>\n<p>Now, each item is successively increased by $2, 2^2, 2^3, \\ldots, 2^n$. </p>\n<p>The new items are:</p>\n<p>$$x_1 + 2, \\quad x_2 + 2^2, \\quad x_3 + 2^3, \\quad \\ldots, \\quad x_n + 2^n$$</p>\n<p>The new mean will be the sum of these new items divided by $n$:</p>\n<p>$$\\text{New Mean} = \\frac{(x_1 + 2) + (x_2 + 2^2) + (x_3 + 2^3) + \\ldots + (x_n + 2^n)}{n}$$</p>\n\n<p>$$= \\frac{(x_1 + x_2 + x_3 + \\ldots + x_n) + (2 + 2^2 + 2^3 + \\ldots + 2^n)}{n}$$</p>\n<p>The series $2 + 2^2 + 2^3 + \\ldots + 2^n$ is a Geometric Progression (G.P.) where:</p>\n<ul>\n<li><p>First term, $a = 2$</p></li>\n<li><p>Common ratio, $r = 2$</p></li>\n<li><p>Number of terms $= n$</p></li>\n</ul>\n<p>Using the sum formula for a G.P., $S_n = \\frac{a(r^n - 1)}{r - 1}$:</p>\n<p>$$S_n = \\frac{2(2^n - 1)}{2 - 1} = 2^{n+1} - 2$$</p>\n<p>Substitute the sum of the original items and the sum of the G.P. into the expression for the new mean:</p>\n<p>$$\\text{New Mean} = \\frac{n\\bar{x} + (2^{n+1} - 2)}{n}$$</p>\n\n<p>$$\\text{New Mean} = \\bar{x} + \\frac{2^{n+1}}{n} - \\frac{2}{n}$$</p>\n<p>Correct Option: <strong>Option B</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><i>n</i> पदों का माध्य $\\bar{x}$ है। यदि इन <i>n</i> पदों में क्रमशः $2, 2^2, 2^3, \\ldots, 2^n$ की वृद्धि की जाती है, तो नया माध्य है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\bar{x} + \\frac{2^{n+1}}{n}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\bar{x} + \\frac{2^{n+1}}{n} - \\frac{2}{n}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "$\\vec{x}+\\frac{2^n}{n}$"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "$\\bar{x}+2^n$"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-mean-median-and-mode-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt9dc16b",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Observe the following statements :</p> <p><b>Statement-I</b> : 10 is the mean of a set of 7 observations and 5 is the mean of a set of 3 observations. The mean of a combined set is 9.</p> <p><b>Statement-II</b> : If $\\overline{x}_i (i = 1, 2, \\ldots, k)$ are the means of $k$-series of sizes $n_i$, $(i = 1, 2, 3, \\ldots, k)$ respectively, then the combined or composite mean is</p> <p>$\\displaystyle \\overline{x} = \\frac{n_1 \\overline{x}_1 + n_2 \\overline{x}_2 + \\ldots + n_k \\overline{x}_k}{n_1 + n_2 + \\ldots + n_k}$ </p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Statement-I is true, Statement-II is true, Statement-II is a correct explanation for Statement-I</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Statement-I is true, Statement-II is true; Statement-II is not a correct explanation for Statement-I</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Statement-I is true, Statement-II is false</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Statement-I is false, Statement-II is true</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>According to <strong>Statement-II</strong>, the formula for the combined mean of $k$ different series is:</p>\n<p>$$\\overline{x} = \\frac{n_1 \\overline{x}_1 + n_2 \\overline{x}_2 + \\ldots + n_k \\overline{x}_k}{n_1 + n_2 + \\ldots + n_k}$$</p>\n<p>This is the standard and correct formula for finding the combined mean (or weighted mean) of multiple groups. Hence, <strong>Statement-II is true</strong>.</p>\n<p>Now, let us use this formula to check <strong>Statement-I</strong>:</p>\n<p>For the first set of observations:</p>\n<ul>\n<li><p>Number of observations, $n_1 = 7$</p></li>\n<li><p>Mean, $\\overline{x}_1 = 10$</p></li>\n</ul>\n<p>For the second set of observations:</p>\n<ul>\n<li><p>Number of observations, $n_2 = 3$</p></li>\n<li><p>Mean, $\\overline{x}_2 = 5$</p></li>\n</ul>\n<p>The combined mean $\\overline{x}$ is calculated as:</p>\n<p>$$\\overline{x} = \\frac{n_1 \\overline{x}_1 + n_2 \\overline{x}_2}{n_1 + n_2}$$</p>\n<p>$$\\overline{x} = \\frac{(7 \\times 10) + (3 \\times 5)}{7 + 3}$$</p>\n<p>$$\\overline{x} = \\frac{70 + 15}{10}$$</p>\n<p>$$\\overline{x} = \\frac{85}{10} = 8.5$$</p>\n<p>The combined mean is $8.5$, but Statement-I states that it is $9$. Hence, <strong>Statement-I is false</strong>.</p>\n<p>Therefore, Statement-I is false and Statement-II is true.</p>\n<p><strong>Correct Option:</strong> <strong>Option D</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित कथनों का अवलोकन कीजिए :</p> <p><b>कथन-I</b> : 7 प्रेक्षणों के एक समुच्चय का माध्य 10 है और 3 प्रेक्षणों के एक समुच्चय का माध्य 5 है। संयुक्त समुच्चय का माध्य 9 है।</p> <p><b>कथन-II</b> : यदि क्रमशः आकारों $n_i$, $(i = 1, 2, 3, \\ldots, k)$ की $k$-श्रेणियों के माध्य $\\overline{x}_i (i = 1, 2, \\ldots, k)$ हैं, तो संयुक्त या सम्मिश्र माध्य निम्न है:</p> <p>$\\displaystyle \\overline{x} = \\frac{n_1 \\overline{x}_1 + n_2 \\overline{x}_2 + \\ldots + n_k \\overline{x}_k}{n_1 + n_2 + \\ldots + n_k}$ </p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>कथन-I सत्य है, कथन-II सत्य है, कथन-II, कथन-I का सही स्पष्टीकरण है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>कथन-I सत्य है, कथन-II सत्य है; कथन-II, कथन-I का सही स्पष्टीकरण नहीं है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>कथन-I सत्य है, कथन-II असत्य है</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>कथन-I असत्य है, कथन-II सत्य है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-mean-median-and-mode-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt9dj3ri",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The following data give the distribution of heights of students</p>\n<table>\n  <tr>\n    <th>Height (in cm)</th>\n    <th>160</th>\n    <th>150</th>\n    <th>152</th>\n    <th>161</th>\n    <th>156</th>\n    <th>154</th>\n    <th>155</th>\n  </tr>\n  <tr>\n    <td>Number of students</td>\n    <td>12</td>\n    <td>8</td>\n    <td>4</td>\n    <td>4</td>\n    <td>3</td>\n    <td>3</td>\n    <td>7</td>\n  </tr>\n</table>\n<p>The median of the distribution is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>154</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>155</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>160</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>161</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>To find the median, we first arrange the heights in ascending order along with their corresponding frequencies and calculate the cumulative frequency for each value.</p>\n<p>$$\\begin{array}{|c|c|c|} \\hline \\text{Height (in cm) } (x_i) & \\text{Number of students } (f_i) & \\text{Cumulative Frequency } (cf) \\\\ \\hline 150 & 8 & 8 \\\\ 152 & 4 & 12 \\\\ 154 & 3 & 15 \\\\ 155 & 7 & 22 \\\\ 156 & 3 & 25 \\\\ 160 & 12 & 37 \\\\ 161 & 4 & 41 \\\\ \\hline \\text{Total } (N) & 41 & \\\\ \\hline \\end{array}$$</p>\n<p>Here, the total number of students is $N = 41$, which is an odd number.</p>\n<p>For an odd number of observations, the median is given by the value of the $\\left(\\frac{N + 1}{2}\\right)^{\\text{th}}$ observation.</p>\n<p>$$\\text{Median} = \\left(\\frac{41 + 1}{2}\\right)^{\\text{th}} \\text{ observation} = 21^{\\text{st}} \\text{ observation}$$</p>\n<p>Looking at the cumulative frequency column, the $21^{\\text{st}}$ observation falls in the class with cumulative frequency $22$, which corresponds to the height of $155\\text{ cm}$.</p>\n<p>$$\\text{Median} = 155\\text{ cm}$$</p>\n<p>The correct option is Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित आँकड़े विद्यार्थियों की लंबाई के बंटन को दर्शाते हैं</p>\n<table>\n  <tr>\n    <th>लंबाई (cm में)</th>\n    <th>160</th>\n    <th>150</th>\n    <th>152</th>\n    <th>161</th>\n    <th>156</th>\n    <th>154</th>\n    <th>155</th>\n  </tr>\n  <tr>\n    <td>विद्यार्थियों की संख्या</td>\n    <td>12</td>\n    <td>8</td>\n    <td>4</td>\n    <td>4</td>\n    <td>3</td>\n    <td>3</td>\n    <td>7</td>\n  </tr>\n</table>\n<p>बंटन की माध्यिका है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>154</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>155</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>160</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>161</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-mean-median-and-mode-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt9dnvo7",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For a normal distribution if the mean is $M$, mode is $M_0$ and median is $M_e$, then</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$M > M_e > M_0$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$M < M_e < M_0$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$M = M_e M_0$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$M = M_e = M_0$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>For a normal distribution, the curve is perfectly symmetric about its centre.</p>\n<p>In such a symmetric distribution, the mean, median, and mode all lie at the same central point.</p>\n<p>So,</p>\n<p>$$ M = M_e = M_0 $$</p>\n<p>Hence, the correct option is:</p>\n<p>$$ \\boxed{\\text{Option D } \\; M = M_e = M_0} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक प्रसामान्य बंटन के लिए यदि माध्य $M$, बहुलक $M_0$ तथा माध्यिका $M_e$ है, तो</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$M > M_e > M_0$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$M < M_e < M_0$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$M = M_e M_0$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$M = M_e = M_0$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-mean-median-and-mode-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt9gme35",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the following frequency distribution :</p>\n<table>\n\n  <tr>\n\n    <th>Class</th>\n\n    <th>0-6</th>\n\n    <th>6-12</th>\n\n    <th>12-18</th>\n\n    <th>18-24</th>\n\n    <th>24-30</th>\n\n  </tr>\n\n  <tr>\n\n    <td>Frequency</td>\n\n    <td>$a$</td>\n\n    <td>$b$</td>\n\n    <td>12</td>\n\n    <td>9</td>\n\n    <td>5</td>\n\n  </tr>\n\n</table>\n<p>If mean $= \\frac{309}{22}$ and median $= 14$, then :</p>\n<p>$$ \\begin{aligned} &\\text { (A) }(a-b)^2 \\text { is divisible by } 3\\\\ &\\text { (B) }(a-b)^2 \\text { is divisible by } 4\\\\ &\\text { (C) } a^b+b^a \\text { is an odd number }\\\\ &\\text { (D) }(a+b)^{|a-b|}=324 \\end{aligned} $$</p>\n<p>Which one of the above is/are correct?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "B and D only"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "A, B, C and D"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "B, C and D Only"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "A, B and D Only"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>To find the values of $a$ and $b$, let us first set up the table with the mid-values ($x_i$) and cumulative frequencies.</p>\n<p>$$\\begin{array}{|c|c|c|c|c|} \\hline \\text{Class} & \\text{Frequency } (f_i) & \\text{Mid-value } (x_i) & f_i x_i & \\text{Cumulative Frequency } (cf) \\\\ \\hline 0-6 & a & 3 & 3a & a \\\\ 6-12 & b & 9 & 9b & a+b \\\\ 12-18 & 12 & 15 & 180 & a+b+12 \\\\ 18-24 & 9 & 21 & 189 & a+b+21 \\\\ 24-30 & 5 & 27 & 135 & a+b+26 \\\\ \\hline \\text{Total} & N = a+b+26 & & 3a+9b+504 & \\\\ \\hline \\end{array}$$</p>\n<p>The mean of the distribution is given as $\\frac{309}{22}$.</p>\n<p>$$\\text{Mean} = \\frac{\\sum f_i x_i}{N}$$</p>\n<p>$$\\frac{3a + 9b + 504}{a + b + 26} = \\frac{309}{22}$$</p>\n<p>Dividing the numerator on the left-hand side and the right-hand side numerator by $3$:</p>\n<p>$$\\frac{a + 3b + 168}{a + b + 26} = \\frac{103}{22}$$</p>\n<p>Cross-multiplying:</p>\n<p>$$22(a + 3b + 168) = 103(a + b + 26)$$</p>\n<p>$$22a + 66b + 3696 = 103a + 103b + 2678$$</p>\n<p>$$81a + 37b = 1018 \\quad \\text{--- (1)}$$</p>\n<p>Next, the median is given as $14$, which lies in the class interval $12-18$. </p>\n<p>So, the median class is $12-18$.</p>\n<ul>\n<li><p>Lower limit, $l = 12$</p></li>\n<li><p>Class size, $h = 6$</p></li>\n<li><p>Frequency of the median class, $f = 12$</p></li>\n<li><p>Cumulative frequency of the preceding class, $cf = a + b$</p></li>\n<li><p>Total frequency, $N = a + b + 26$</p></li>\n</ul>\n<p>Using the median formula:</p>\n<p>$$\\text{Median} = l + \\left( \\frac{\\frac{N}{2} - cf}{f} \\right) \\times h$$</p>\n<p>$$14 = 12 + \\left( \\frac{\\frac{a + b + 26}{2} - (a + b)}{12} \\right) \\times 6$$</p>\n<p>$$14 - 12 = \\frac{26 - (a + b)}{2 \\times 12} \\times 6$$</p>\n<p>$$2 = \\frac{26 - (a + b)}{4}$$</p>\n<p>$$8 = 26 - (a + b)$$</p>\n<p>$$a + b = 18 \\quad \\text{--- (2)}$$</p>\n<p>From equation (2), $b = 18 - a$. Substituting this into equation (1):</p>\n<p>$$81a + 37(18 - a) = 1018$$</p>\n<p>$$81a + 666 - 37a = 1018$$</p>\n<p>$$44a = 352$$</p>\n<p>$$a = 8$$</p>\n<p>Substituting $a = 8$ back into equation (2):</p>\n<p>$$b = 18 - 8 = 10$$</p>\n<p>Now, checking the given options:</p>\n<ul>\n<li><p>$(a - b)^2 = (8 - 10)^2 = (-2)^2 = 4$, which is divisible by $4$.</p></li>\n<li><p>$(a + b)^{|a - b|} = (8 + 10)^{|8 - 10|} = 18^2 = 324$.</p></li>\n</ul>\n<p>Both Option B and Option D are correct.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित बारंबारता बंटन पर विचार कीजिए :</p>\n<table>\n\n  <tr>\n\n    <th>वर्ग</th>\n\n    <th>0-6</th>\n\n    <th>6-12</th>\n\n    <th>12-18</th>\n\n    <th>18-24</th>\n\n    <th>24-30</th>\n\n  </tr>\n\n  <tr>\n\n    <td>बारंबारता</td>\n\n    <td>$a$</td>\n\n    <td>$b$</td>\n\n    <td>12</td>\n\n    <td>9</td>\n\n    <td>5</td>\n\n  </tr>\n\n</table>\n<p>यदि माध्य $= \\frac{309}{22}$ तथा माध्यक $= 14$ है, तो :</p>\n<p>$$ \\begin{aligned} &\\text { (A) }(a-b)^2, 3 \\text { से विभाज्य है }\\\\ &\\text { (B) }(a-b)^2, 4 \\text { से विभाज्य है }\\\\ &\\text { (C) } a^b+b^a \\text { एक विषम संख्या है }\\\\ &\\text { (D) }(a+b)^{|a-b|}=324 \\end{aligned} $$</p>\n<p>उपरोक्त में से कौन-सा/से सही है/हैं?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "केवल B तथा D"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "A, B, C तथा D"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "केवल B, C तथा D"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "केवल A, B तथा D"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-mean-median-and-mode-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mt9gsyp3",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The weighted mean of the first $n$ natural numbers whose weights are equal to the squares of the corresponding numbers is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{3n(n+1)}{2(2n+1)}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{n(n+1)}{2(2n+1)}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{3n(n+1)}{(2n+1)}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{3n(n+1)}{4(2n+1)}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The given numbers are the first $n$ natural numbers:</p>\n<p>$$x_1 = 1, \\; x_2 = 2, \\; x_3 = 3, \\; \\dots, \\; x_n = n$$</p>\n<p>The weights assigned to these numbers are equal to their squares:</p>\n<p>$$w_1 = 1^2, \\; w_2 = 2^2, \\; w_3 = 3^2, \\; \\dots, \\; w_n = n^2$$</p>\n<p>The formula for the weighted mean $\\bar{x}_w$ is:</p>\n<p>$$\\bar{x}_w = \\frac{\\sum w_i x_i}{\\sum w_i}$$</p>\n<p>First, let us find the numerator $\\sum w_i x_i$:</p>\n<p>$$\\sum\\limits_{i=1}^{n} w_i x_i = (1^2 \\cdot 1) + (2^2 \\cdot 2) + (3^2 \\cdot 3) + \\dots + (n^2 \\cdot n)$$</p>\n<p>$$\\sum\\limits_{i=1}^{n} w_i x_i = 1^3 + 2^3 + 3^3 + \\dots + n^3$$</p>\n<p>Using the standard formula for the sum of cubes of the first $n$ natural numbers:</p>\n<p>$$\\sum\\limits_{i=1}^{n} i^3 = \\left[\\frac{n(n+1)}{2}\\right]^2 = \\frac{n^2(n+1)^2}{4}$$</p>\n<p>Now, let us find the denominator $\\sum w_i$:</p>\n<p>$$\\sum\\limits_{i=1}^{n} w_i = 1^2 + 2^2 + 3^2 + \\dots + n^2$$</p>\n<p>Using the formula for the sum of squares of the first $n$ natural numbers:</p>\n<p>$$\\sum\\limits_{i=1}^{n} i^2 = \\frac{n(n+1)(2n+1)}{6}$$</p>\n<p>Substituting both values into the weighted mean formula gives:</p>\n<p>$$\\bar{x}_w = \\frac{\\frac{n^2(n+1)^2}{4}}{\\frac{n(n+1)(2n+1)}{6}}$$</p>\n<p>$$\\bar{x}_w = \\frac{n^2(n+1)^2}{4} \\times \\frac{6}{n(n+1)(2n+1)}$$</p>\n\n<p>$$\\bar{x}_w = \\frac{6n(n+1)}{4(2n+1)} = \\frac{3n(n+1)}{2(2n+1)}$$</p>\n<p>Thus, the correct option is <strong>Option A</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>प्रथम $n$ प्राकृतिक संख्याओं का भारित माध्य (weighted mean), जिनके भार संगत संख्याओं के वर्गों के बराबर हैं, है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{3n(n+1)}{2(2n+1)}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{n(n+1)}{2(2n+1)}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\dfrac{3n(n+1)}{(2n+1)}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\dfrac{3n(n+1)}{4(2n+1)}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-mean-median-and-mode-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mt9h0krk",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the mean of the numbers $27+x, 31+x, 89+x, 107+$ $x, 156+x$ is 82 , then the mean of $130+x, 126+x, 68+$ $x, 50+x, 1+x$ is :</p>",
+                "options": [],
+                "answer": "75",
+                "explanation": "<p>The mean of the numbers $27+x, 31+x, 89+x, 107+x, 156+x$ is $82$.</p>\n<p>So,</p>\n<p>$$ \\frac{(27+x)+(31+x)+(89+x)+(107+x)+(156+x)}{5}=82 $$</p>\n\n<p>$$ \\frac{410+5x}{5}=82 $$</p>\n\n<p>$$ 410+5x=410 $$</p>\n<p>$$ 5x=0 $$</p>\n<p>$$ x=0 $$</p>\n<p>Now find the mean of $130+x, 126+x, 68+x, 50+x, 1+x$.</p>\n<p>Since $x=0$, the numbers are:</p>\n<p>$$ 130, 126, 68, 50, 1 $$</p>\n<p>Their sum is:</p>\n<p>$$ 130+126+68+50+1=375 $$</p>\n<p>So the mean is:</p>\n<p>$$ \\frac{375}{5}=75 $$</p>\n<p>Hence, the mean is</p>\n<p>$$ \\boxed{75} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि संख्याओं $27+x, 31+x, 89+x, 107+$ $x, 156+x$ का माध्य 82 है, तो $130+x, 126+x, 68+$ $x, 50+x, 1+x$ का माध्य है :</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-mean-median-and-mode-of-grouped-and-ungrouped-data",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mt9gwwhs",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the mean of 9 observations is 100 and mean of 6 observations is 80 , then the mean of 15 observations is :</p>",
+                "options": [],
+                "answer": "92",
+                "explanation": "<p>We know that the formula for the mean of a set of observations is:</p>\n<p>$$\\text{Mean} = \\frac{\\text{Sum of observations}}{\\text{Number of observations}}$$</p>\n<p>From this, the sum of observations can be written as:</p>\n<p>$$\\text{Sum of observations} = \\text{Mean} \\times \\text{Number of observations}$$</p>\n<p>For the first group:</p>\n<ul>\n<li><p>Number of observations ($n_1$) = $9$</p></li>\n<li><p>Mean ($\\bar{x}_1$) = $100$</p></li>\n</ul>\n<p>$$\\text{Sum of first 9 observations} = 9 \\times 100 = 900$$</p>\n<p>For the second group:</p>\n<ul>\n<li><p>Number of observations ($n_2$) = $6$</p></li>\n<li><p>Mean ($\\bar{x}_2$) = $80$</p></li>\n</ul>\n<p>$$\\text{Sum of next 6 observations} = 6 \\times 80 = 480$$</p>\n<p>Now, we combine both groups to find the total sum and the total number of observations.</p>\n<p>$$\\text{Total sum of 15 observations} = 900 + 480 = 1380$$</p>\n<p>$$\\text{Total number of observations} = 9 + 6 = 15$$</p>\n<p>Now, we calculate the mean of all $15$ observations:</p>\n<p>$$\\text{Combined Mean} = \\frac{\\text{Total sum of 15 observations}}{\\text{Total number of observations}}$$</p>\n<p>$$\\text{Combined Mean} = \\frac{1380}{15} = 92$$</p>\n<p>The mean of the $15$ observations is $92$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि 9 प्रेक्षणों का माध्य 100 है तथा 6 प्रेक्षणों का माध्य 80 है, तो 15 प्रेक्षणों का माध्य है :</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-mean-median-and-mode-of-grouped-and-ungrouped-data",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mt9h5wkh",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the data on $x$ taking the values $0,2,4,8 \\ldots, 2^n$ with frequencies ${ }^n C_0,{ }^n C_1,{ }^n C_2, \\ldots,{ }^n C_n$ respectively. If the mean of this data is $\\frac{728}{2^n}$, then $n$ is equal to $\\_\\_\\_\\_$</p>",
+                "options": [],
+                "answer": "6",
+                "explanation": "<p>We know that for a frequency distribution, the mean $\\bar{x}$ is given by the formula:</p>\n<p>$$\\bar{x} = \\frac{\\sum f_i x_i}{\\sum f_i}$$</p>\n<p>Let us first find the total frequency, which is the sum of all $f_i$:</p>\n<p>$$\\sum f_i = {}^n C_0 + {}^n C_1 + {}^n C_2 + \\dots + {}^n C_n$$</p>\n<p>Using the binomial expansion of $(1 + 1)^n$, this sum simplifies to:</p>\n<p>$$\\sum f_i = 2^n$$</p>\n<p>Now, let us calculate the sum of the products of each value and its corresponding frequency, $\\sum f_i x_i$:</p>\n<p>$$\\sum f_i x_i = (0 \\times {}^n C_0) + (2^1 \\times {}^n C_1) + (2^2 \\times {}^n C_2) + \\dots + (2^n \\times {}^n C_n)$$</p>\n<p>$$\\sum f_i x_i = {}^n C_1 2^1 + {}^n C_2 2^2 + \\dots + {}^n C_n 2^n$$</p>\n<p>We know from the binomial theorem that:</p>\n<p>$$(1 + x)^n = {}^n C_0 + {}^n C_1 x + {}^n C_2 x^2 + \\dots + {}^n C_n x^n$$</p>\n<p>Putting $x = 2$ in this expansion:</p>\n<p>$$(1 + 2)^n = {}^n C_0 + {}^n C_1 2^1 + {}^n C_2 2^2 + \\dots + {}^n C_n 2^n$$</p>\n<p>$$3^n = 1 + ({}^n C_1 2^1 + {}^n C_2 2^2 + \\dots + {}^n C_n 2^n)$$</p>\n<p>Subtracting $1$ from both sides gives:</p>\n<p>$$\\sum f_i x_i = 3^n - 1$$</p>\n<p>Now, substituting the values into the formula for the mean:</p>\n<p>$$\\bar{x} = \\frac{3^n - 1}{2^n}$$</p>\n<p>We are given that the mean is $\\frac{728}{2^n}$. Equating the two expressions:</p>\n<p>$$\\frac{3^n - 1}{2^n} = \\frac{728}{2^n}$$</p>\n<p>$$3^n - 1 = 728$$</p>\n<p>$$3^n = 729$$</p>\n<p>$$3^n = 3^6$$</p>\n<p>$$n = 6$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>मान लीजिए कि आँकड़ों में $x$ के मान क्रमशः $0,2,4,8 \\ldots, 2^n$ हैं जिनकी बारंबारताएँ क्रमशः ${ }^n C_0,{ }^n C_1,{ }^n C_2, \\ldots,{ }^n C_n$ हैं। यदि इन आँकड़ों का माध्य $\\frac{728}{2^n}$ है, तो $n$ का मान $\\_\\_\\_\\_$ के बराबर है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-mean-median-and-mode-of-grouped-and-ungrouped-data",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mt9hgwwo",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Consider the following frequency distribution</p>\n<table>\n\n  <tr>\n\n    <th>Class</th>\n\n    <th>10-20</th>\n\n    <th>20-30</th>\n\n    <th>30-40</th>\n\n    <th>40-50</th>\n\n    <th>50-60</th>\n\n  </tr>\n\n  <tr>\n\n    <td>Frequency</td>\n\n    <td>$\\alpha$</td>\n\n    <td>110</td>\n\n    <td>54</td>\n\n    <td>30</td>\n\n    <td>$\\beta$</td>\n\n  </tr>\n\n</table>\n<p>If the sum of all frequencies is 584 and median is 45 , then $|\\alpha-\\beta|$ is equal to _______.</p>",
+                "options": [],
+                "answer": "164",
+                "explanation": "<p>The total frequency is $584$.</p>\n<p>So,</p>\n<p>$$ \\alpha + 110 + 54 + 30 + \\beta = 584 $$</p>\n<p>$$ \\alpha + \\beta + 194 = 584 $$</p>\n<p>$$ \\alpha + \\beta = 390 $$</p>\n<p>Now, the median is $45$, which lies in the class $40-50$.</p>\n<p>So the median class is $40-50$.</p>\n<p>For grouped data,</p>\n<p>$$ \\text{Median} = l + \\frac{\\frac{N}{2} - c_f}{f} \\times h $$</p>\n<p>Here,</p>\n<p>$$ l = 40,\\quad N = 584,\\quad \\frac{N}{2} = 292 $$</p>\n<p>Frequency of median class:</p>\n<p>$$ f = 30 $$</p>\n<p>Cumulative frequency before median class:</p>\n<p>$$ c_f = \\alpha + 110 + 54 = \\alpha + 164 $$</p>\n<p>Class width:</p>\n<p>$$ h = 10 $$</p>\n<p>Substitute the values:</p>\n<p>$$ 45 = 40 + \\frac{292 - (\\alpha + 164)}{30} \\times 10 $$</p>\n<p>$$ 45 = 40 + \\frac{128 - \\alpha}{3} $$</p>\n<p>$$ 5 = \\frac{128 - \\alpha}{3} $$</p>\n<p>$$ 15 = 128 - \\alpha $$</p>\n<p>$$ \\alpha = 113 $$</p>\n<p>Now use $\\alpha + \\beta = 390$:</p>\n<p>$$ 113 + \\beta = 390 $$</p>\n<p>$$ \\beta = 277 $$</p>\n<p>So,</p>\n<p>$$ |\\alpha - \\beta| = |113 - 277| = 164 $$</p>\n<p>$$ \\boxed{164} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित बारंबारता बंटन पर विचार कीजिए:</p>\n<table>\n\n  <tr>\n\n    <th>वर्ग</th>\n\n    <th>10-20</th>\n\n    <th>20-30</th>\n\n    <th>30-40</th>\n\n    <th>40-50</th>\n\n    <th>50-60</th>\n\n  </tr>\n\n  <tr>\n\n    <td>बारंबारता</td>\n\n    <td>$\\alpha$</td>\n\n    <td>110</td>\n\n    <td>54</td>\n\n    <td>30</td>\n\n    <td>$\\beta$</td>\n\n  </tr>\n\n</table>\n<p>यदि सभी बारंबारताओं का योग 584 है तथा माध्यिका 45 है, तो $|\\alpha-\\beta|$ का मान _______ के बराबर है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-mean-median-and-mode-of-grouped-and-ungrouped-data",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mt9hjw5r",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The mean age of 25 teachers in a school is 40 years. A teacher retires at the age of 60 years and a new teacher is appointed in his place. If now the mean age of the teachers in this school is 39 years, then the age (in years) of the newly appointed teacher is :</p>",
+                "options": [],
+                "answer": "35",
+                "explanation": "<p>We know that:</p>\n<p>$$\\text{Mean} = \\frac{\\text{Sum of all observations}}{\\text{Total number of observations}}$$</p>\n<p>First, let us find the total age of all $25$ teachers initially.</p>\n<p>$$\\text{Total initial age} = 25 \\times 40 = 1000\\text{ years}$$</p>\n<p>A teacher aged $60$ years retires, and a new teacher joins the group. The total number of teachers remains $25$.</p>\n<p>The new mean age is given as $39$ years. </p>\n<p>So, the new total age of the $25$ teachers is:</p>\n<p>$$\\text{New total age} = 25 \\times 39 = 975\\text{ years}$$</p>\n<p>Let the age of the newly appointed teacher be $x$ years.</p>\n<p>We can relate the initial total age and the new total age as:</p>\n<p>$$\\text{New total age} = \\text{Initial total age} - \\text{Age of retired teacher} + \\text{Age of new teacher}$$</p>\n<p>Substitute the values into the equation:</p>\n<p>$$975 = 1000 - 60 + x$$</p>\n<p>$$975 = 940 + x$$</p>\n<p>$$x = 975 - 940$$</p>\n<p>$$x = 35$$</p>\n<p>The age of the newly appointed teacher is $35$ years.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक विद्यालय में 25 शिक्षकों की माध्य आयु 40 वर्ष है। एक शिक्षक 60 वर्ष की आयु में सेवानिवृत्त होता है और उसके स्थान पर एक नया शिक्षक नियुक्त किया जाता है। यदि अब इस विद्यालय में शिक्षकों की माध्य आयु 39 वर्ष है, तो नवनियुक्त शिक्षक की आयु (वर्षों में) है :</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-mean-median-and-mode-of-grouped-and-ungrouped-data",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Calculation of Mean, Median and Mode of Grouped and Ungrouped Data",
+    "timeAllotted": 2160000,
+    "title": "Statistics Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61moerqgzo",
+    "defaultLanguage": "en",
+    "description": "Calculation of Mean, Median and Mode of Grouped and Ungrouped Data",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-26T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Calculation of Mean, Median and Mode of Grouped and Ungrouped Data",
+    "timeAllotted": 2160000,
+    "title": "Statistics Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Mathematics",
+    "_section": "Statistics"
+  }
+}

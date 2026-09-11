@@ -1,0 +1,142 @@
+/* Handwritten teacher solution — arranged lines, blue + color pens. Content unchanged. */
+
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@400;700&family=Patrick+Hand&display=swap");
+
+.qx-hw-sol { margin-top: 16px; position: relative; }
+.qx-hw-sol-head {
+  display: flex; align-items: baseline; gap: 10px;
+  margin: 0 6px 8px; flex-wrap: wrap;
+}
+.qx-hw-sol-title {
+  font-family: "Caveat", "Kalam", cursive;
+  font-size: 30px; font-weight: 700; color: #1d4ed8;
+  line-height: 1; transform: rotate(-1deg);
+  text-decoration: underline; text-underline-offset: 5px;
+}
+.qx-hw-sol-sub {
+  font-family: "Kalam", cursive; font-size: 13px; color: #64748b;
+}
+
+.qx-hw-paper {
+  position: relative;
+  background-color: #fffcef;
+  background-image:
+    linear-gradient(90deg, rgba(239,68,68,.22) 0, rgba(239,68,68,.22) 2px, transparent 2px),
+    repeating-linear-gradient(to bottom, transparent 0, transparent 35px, rgba(37,99,235,.12) 35px, rgba(37,99,235,.12) 36px);
+  background-position: 30px 0, 0 4px;
+  border: 1px solid #ead9b8;
+  border-radius: 3px 12px 8px 3px;
+  box-shadow: 0 12px 30px rgba(28,25,23,.09);
+  padding: 16px 18px 24px 46px;
+  overflow-x: auto;
+}
+
+.qx-hw-ink,
+.qx-hw-ink p,
+.qx-hw-ink .qx-hw-line,
+.qx-hw-ink .qx-sol-step,
+.qx-hw-ink .qx-sol-step-body,
+.qx-hw-ink .mk-sol-body,
+.qx-hw-ink li {
+  font-family: "Patrick Hand", "Kalam", "Caveat", cursive !important;
+  font-size: 20px !important;
+  line-height: 36px !important;
+  font-weight: 400 !important;
+  color: #1e3a8a !important; /* blue pen */
+  letter-spacing: .015em;
+}
+.qx-hw-ink p,
+.qx-hw-ink .qx-hw-line,
+.qx-hw-ink .qx-sol-step,
+.qx-hw-ink .qx-sol-step-plain,
+.qx-hw-ink .qx-sol-body-wrap,
+.qx-hw-ink .qx-hw-flow {
+  display: block !important;
+  margin: 0 0 2px !important;
+  min-height: 36px;
+  max-width: 100%;
+}
+
+/* Blue pen equations */
+.qx-hw-ink .katex,
+.qx-hw-ink .katex *,
+.qx-hw-ink mjx-container,
+.qx-hw-ink mjx-container * { color: #1d4ed8 !important; }
+.qx-hw-ink .katex { font-size: 1.06em !important; }
+.qx-hw-ink .katex-display.qx-math-block,
+.qx-hw-ink mjx-container[display="true"] {
+  display: block !important;
+  margin: 4px 0 10px !important;
+  text-align: left !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+.qx-hw-ink .katex-display:not(.qx-math-block) {
+  display: inline !important;
+  overflow: visible !important;
+  margin: 0 0.08em !important;
+}
+
+/* Red pen — key / important */
+.qx-hw-ink strong, .qx-hw-ink b, .qx-hw-ink em {
+  color: #b91c1c !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+}
+
+/* Purple pen — substitution */
+.qx-hw-ink .qx-sol-sub,
+.qx-hw-ink .qx-sol-sub .qx-sol-step-body { color: #6d28d9 !important; }
+
+/* Green pen — final answer */
+.qx-hw-ink .qx-sol-final,
+.qx-hw-ans {
+  display: inline-block !important;
+  margin-top: 10px;
+  padding: 1px 10px 3px;
+  border: 1.5px solid rgba(22,163,74,.5);
+  border-radius: 3px;
+  background: rgba(187,247,208,.35);
+}
+.qx-hw-ink .qx-sol-final,
+.qx-hw-ink .qx-sol-final .qx-sol-step-body,
+.qx-hw-ink .qx-sol-final .katex,
+.qx-hw-ink .qx-sol-final .katex * { color: #15803d !important; font-weight: 700 !important; }
+.qx-hw-ink .qx-sol-final-label, .qx-hw-ans-lab,
+.qx-hw-ink .qx-sol-step-label, .qx-hw-ink .qx-sol-concept-label,
+.qx-hw-ink .qx-sol-shortcut-panel { display: none !important; }
+
+.qx-hw-ink .qx-sol-step,
+.qx-hw-ink .qx-sol-concept,
+.qx-hw-ink .qx-sol-card {
+  background: transparent !important; border: 0 !important;
+  box-shadow: none !important; padding: 0 !important;
+}
+
+.qx-hw-ink table { width: 100%; border-collapse: collapse; }
+.qx-hw-ink td, .qx-hw-ink th {
+  display: block !important;
+  border: 0 !important; padding: 0 !important;
+  background: transparent !important;
+}
+.qx-hw-ink img, .qx-hw-ink img.qx-sol-fig {
+  max-width: 100% !important; height: auto !important;
+  display: block !important; margin: 10px 0 !important;
+  object-fit: contain !important; background: #fff;
+}
+
+.qx-hw-sol.qx-sol-math .qx-hw-sol-title { color: #0f766e; }
+.qx-hw-sol.qx-sol-phys .qx-hw-sol-title { color: #1d4ed8; }
+.qx-hw-sol.qx-sol-chem .qx-hw-sol-title { color: #6d28d9; }
+
+[data-theme="dark"] .qx-hw-paper { background-color: #2a2722; border-color: #44403c; }
+[data-theme="dark"] .qx-hw-ink, [data-theme="dark"] .qx-hw-ink p { color: #93c5fd !important; }
+
+@media (max-width: 720px) {
+  .qx-hw-paper { padding: 12px 10px 16px 28px; background-position: 16px 0, 0 4px; }
+  .qx-hw-ink, .qx-hw-ink p, .qx-hw-ink .qx-hw-line, .qx-hw-ink .qx-sol-step-body {
+    font-size: 17px !important; line-height: 32px !important;
+  }
+  .qx-hw-sol-title { font-size: 24px; }
+}

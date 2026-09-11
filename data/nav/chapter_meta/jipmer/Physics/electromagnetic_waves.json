@@ -1,0 +1,41 @@
+{
+  "examSlug": "jipmer",
+  "examId": "66b79ae6d4b564dfab4f94ca",
+  "subjectId": "66b79b34d4b564dfab4f94cc",
+  "chapterId": "66d58538a75f05ee8564f558",
+  "subject": "Physics",
+  "chapter": "Electromagnetic Waves",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "66d5869aa75f05ee856502ad",
+      "title": "Electromagnetic Waves and Maxwell's equations",
+      "count": 3,
+      "questionIds": [
+        "66d5865ca75f05ee8564fffc",
+        "66d58634a75f05ee8564fe8c",
+        "66d5861ea75f05ee8564fdc0"
+      ]
+    },
+    {
+      "id": "66d5869aa75f05ee856502ac",
+      "title": "Electromagnetic Spectrum",
+      "count": 2,
+      "questionIds": [
+        "66d5858ea75f05ee8564f891",
+        "66d5857ca75f05ee8564f7eb"
+      ]
+    },
+    {
+      "id": "66d5869aa75f05ee856502ab",
+      "title": "X-Rays",
+      "count": 4,
+      "questionIds": [
+        "66d5860ea75f05ee8564fd31",
+        "66d58568a75f05ee8564f729",
+        "66d58557a75f05ee8564f687",
+        "66d58538a75f05ee8564f556"
+      ]
+    }
+  ]
+}

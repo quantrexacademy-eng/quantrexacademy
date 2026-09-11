@@ -1,0 +1,34 @@
+{
+  "subjectId": "65f032625469774910ab0337",
+  "chapterId": "66a0dc5cc03b9dcaf1afe60c",
+  "topicId": "66a0dc68c03b9dcaf1afe642",
+  "title": "Types of half cells",
+  "concepts": [
+    {
+      "title": "Half Cell Potential (Single-Electrode Potential)",
+      "conceptBody": "<h3><strong>Half Cell Potential (Single-Electrode Potential)</strong></h3><p>When a metal is dipped into a solution containing its own ions, a half cell or a single electrode is formed. In a half cell there are two opposing tendencies. Firstly, the metal, say M, may dissolve in the solution or rather may go into the solution in the form of ions ( $\\text{M}\\rightleftharpoons {{\\text{M}}^{\\text{n}+}}+\\text{ne}$; oxd.) and secondly, the ions ${{\\text{M}}^{\\text{n}+}}$, from the solution may deposit on the electrode $\\left( {{\\text{M}}^{\\text{n}+}}+\\text{ne}\\rightleftharpoons \\text{M} \\right.$; red.). When one of these two tendencies dominates over the other, there develops a half cell potential or electrode potential.</p><p>The tendency to lose electrons, i.e., to get oxidised is called <strong>oxidation potential </strong>and similarly the tendency to gain electrons, i.e., to get reduced is called <strong>reduction potential </strong>.</p><p>Since any half cell reaction can be written as a reversible process e.g., $\\text{C}{{\\text{u}}^{2+}}+2\\text{e}\\rightleftharpoons \\text{Cu}$, the reduction potential and oxidation potential for a single electrode are equal in magnitude but opposite in sign. For the electrode $\\text{Cu}/\\text{CuS}{{\\text{O}}_{4}}(1\\text{M})$, the reduction potential, ${{\\text{E}}_{\\text{C}{{\\text{u}}^{2+}},\\text{Cu}}}=+0.34$ $\\text{V}$ and so its oxidation potential ${{\\text{E}}_{\\text{Cu},\\text{C}{{\\text{u}}^{2+}}}}=-0.34~\\text{V}$ at $25\\text{C}$. The half cell potentials cannot be directly determined as there is no way of isolating a single half cell reaction. The electrode potential can be determined by coupling it with a standard hydrogen electrode (i.e., by forming a cell). As the electrode potential of a standard hydrogen electrode has been arbitrarily fixed as zero volt at $25\\text{C}$, the emf of such a cell gives the single electrode potential or emf of half cell. A standard hydrogen electrode is represented as:</p><p>$\\text{ Pt, }{{\\text{H}}_{2}}(1~\\text{atm}),\\text{HCl}\\left( \\left[ {{\\text{H}}^{+}} \\right]=1\\text{M} \\right)$</p>",
+      "position": 0,
+      "qcConcept": "66a0dc68c03b9dcaf1afe643"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "6661c47a164a1cdfacc30cba",
+      "title": "If the half cell reaction $A+e^{-} \\rightarrow A^{-}$has a large negative reduction potential, it follows that",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "6661c47a164a1cdfacc30cbb",
+      "title": "In the experiment set up for the measurement of EMF of a half cell using a reference electrode and a salt bridge, when the salt bridge is removed, the voltage",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "6661c47a164a1cdfacc30cbc",
+      "title": "What is the potential of a half-cell consisting of zinc electrode in $0.01 \\mathrm{~m} \\mathrm{ZnSO}_4$ solution at $258^{\\circ} \\mathrm{C}$\n$\\left(E^{\\circ}=0.763 \\mathrm{~V}\\right)$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

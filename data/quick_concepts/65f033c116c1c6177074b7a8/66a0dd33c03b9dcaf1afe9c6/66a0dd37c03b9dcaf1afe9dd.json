@@ -1,0 +1,64 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd33c03b9dcaf1afe9c6",
+  "topicId": "66a0dd37c03b9dcaf1afe9dd",
+  "title": "De Moivres Theorem",
+  "concepts": [
+    {
+      "title": "Roots of a complex number",
+      "conceptBody": "<h3><strong>Roots of a Complex Number&nbsp;</strong></h3><p>Let $z=a+ib$ be written in polar form like $z=r\\left( \\text{cosn}\\theta +i\\text{sin}\\theta \\right)=r{{e}^{i\\theta }}$</p><p>Then the nth roots of $\\text{z}$ are given by</p><p>${{z}^{1/n}}={{r}^{1/n}}\\left[ \\text{cos}\\frac{\\left( 2k\\pi +\\theta \\right)}{n}+i\\text{sin}\\frac{\\left( 2k\\pi +\\theta \\right)}{n} \\right]$</p><p>where $\\text{k}$ can take value from $0,1,2,\\ldots \\left( \\text{n}-1 \\right)$. (i.e., one less than the denominator) for $\\text{k}\\ge \\text{n}$, the roots will repeat.</p><p>put $\\text{k}=0$ in the above equation.</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{z}}^{1/\\text{n}}}={{\\text{r}}^{1/\\text{n}}}\\left[ \\text{cos}\\left( \\frac{\\theta }{\\text{n}} \\right)+\\text{isin}\\left( \\frac{\\theta }{\\text{n}} \\right) \\right]$ …(i)</p><p>now put $\\text{k}=\\text{n}$</p><p>$\\Rightarrow \\text{ }\\!\\!~\\!\\!\\text{ }{{\\text{z}}^{1/\\text{n}}}={{\\text{r}}^{1/\\text{n}}}\\left[ \\text{cos}\\left( \\frac{2\\text{n}\\pi +\\theta }{\\text{n}} \\right)+\\text{isin}\\left( \\frac{2\\text{n}\\pi +\\theta }{\\text{n}} \\right) \\right]$ $={{r}^{1/n}}\\left[ \\text{cos}\\left( \\frac{2n\\pi }{n}+\\frac{\\theta }{n} \\right)+i\\text{sin}\\left( \\frac{2n\\pi }{n}+\\theta \\right) \\right]$</p><p>$={{r}^{1/n}}\\left[ \\text{cos}\\left( \\frac{\\theta }{n} \\right)+i\\text{sin}\\left( \\theta /n \\right) \\right]$</p><p>which is same as (i)</p>",
+      "position": 0,
+      "qcConcept": "66a0dd38c03b9dcaf1afe9de"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f3e2d384bfb4a537f4d",
+      "title": "$z=\\frac{1+i \\sqrt{3}}{\\sqrt{3}+i}$, then $(\\bar{z})^{100}$ lies in",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3f2d384bfb4a537f4e",
+      "title": "$(-1+i \\sqrt{3})^{20}$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3f2d384bfb4a537f4f",
+      "title": "If $z=\\frac{7-i}{3-4 i}$ then $z^{14}=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3f2d384bfb4a537f50",
+      "title": "If $(1+i \\sqrt{3})^9=a+i b$, then $b$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3f2d384bfb4a537f51",
+      "title": "If $x_r=\\cos \\left(\\frac{\\pi}{2^r}\\right)+i \\sin \\left(\\frac{\\pi}{2^r}\\right)$, then $x_1 \\cdot x_2 \\cdots \\cdots \\infty$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3f2d384bfb4a537f52",
+      "title": "$\\frac{(\\cos \\theta+i \\sin \\theta)^4}{(\\sin \\theta+i \\cos \\theta)^5}$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3f2d384bfb4a537f53",
+      "title": "If $z=\\left(\\frac{\\sqrt{3}}{2}+\\frac{i}{2}\\right)^5+\\left(\\frac{\\sqrt{3}}{2}-\\frac{i}{2}\\right)^5$ then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3f2d384bfb4a537f54",
+      "title": "$\\left(\\frac{1+\\cos \\phi+i \\sin \\phi}{1+\\cos \\phi-i \\sin \\phi}\\right)^n=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

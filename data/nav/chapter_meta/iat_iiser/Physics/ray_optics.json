@@ -1,0 +1,53 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa5fef4468eb1307ceb0ad",
+  "chapterId": "67fdff46378e1624ea7b6984",
+  "subject": "Physics",
+  "chapter": "Ray Optics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff82378e1624ea7b6c5c",
+      "title": "Critical angle and total internal reflection",
+      "count": 1,
+      "questionIds": [
+        "67fdff5e378e1624ea7b6ab7"
+      ]
+    },
+    {
+      "id": "6a45218d8c20d3b91d64f99e",
+      "title": "Combination of Lens and Mirrors",
+      "count": 1,
+      "questionIds": [
+        "6a4521868c20d3b91d64f985"
+      ]
+    },
+    {
+      "id": "67fdff82378e1624ea7b6c5e",
+      "title": "Refraction of light from plane surface",
+      "count": 2,
+      "questionIds": [
+        "68e7a681ce75e72648a45e8b",
+        "67fdff76378e1624ea7b6bc0"
+      ]
+    },
+    {
+      "id": "67fdff82378e1624ea7b6c5d",
+      "title": "Lens Formula, Refraction of light from curved surface",
+      "count": 2,
+      "questionIds": [
+        "67fdff70378e1624ea7b6b79",
+        "67fdff6b378e1624ea7b6b3e"
+      ]
+    },
+    {
+      "id": "67fdff82378e1624ea7b6c5b",
+      "title": "Prism and Dispersion of Light",
+      "count": 1,
+      "questionIds": [
+        "67fdff46378e1624ea7b6982"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "quantrexacademy",
+  "version": "1.0.0",
+  "private": true,
+  "main": "functions/index.js",
+  "description": "Quantrex Academy - IIT JEE & NEET Prep Platform",
+  "scripts": {
+    "start": "npx serve . -l 3000",
+    "dev": "npx serve . -l 3000",
+    "deploy": "npm run deploy:firebase",
+    "deploy:vercel": "vercel --prod --yes",
+    "deploy:firebase": "firebase deploy --only hosting,functions --project quantrexacademy-app",
+    "deploy:firebase:preview": "firebase hosting:channel:deploy preview --project quantrexacademy-app --expires 14d",
+    "migrate:firebase": "node scripts/migrate-banks-to-firebase.js",
+    "migrate:firebase:text": "node scripts/migrate-banks-to-firebase.js --text",
+    "migrate:firebase:figures": "node scripts/migrate-banks-to-firebase.js --figures",
+    "verify:marks-blocked": "node scripts/verify-marks-blocked.js",
+    "deploy:github": "git add . && git commit -m \"Deploy update\" && git push origin main",
+    "deploy:all": "npm run deploy:github && npm run deploy"
+  },
+  "devDependencies": {
+    "firebase-admin": "^14.2.0",
+    "serve": "^14.2.4"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.0.0",
+    "firebase-functions": "^6.3.0",
+    "razorpay": "^2.9.8",
+    "sharp": "^0.35.3"
+  }
+}

@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61moerqhnq",
+  "title": "Statistics Test - 2 (Topic Test)",
+  "type": "topic",
+  "section": "Statistics",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Mathematics",
+  "isUpcoming": false,
+  "liveAt": "2026-08-27T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "52490063-9ec9-4ac0-b1da-8ead3123e928",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61moerqhnq",
+    "defaultLanguage": "en",
+    "description": "Calculation of Standard Deviation, Variance and Mean Deviation of Grouped and Ungrouped Data",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-27T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mtaphbmu",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let $V_1 = \\text{variance of } \\{13, 16, 19, \\ldots, 103\\}$ and $V_2 = \\text{variance of } \\{20, 26, 32, \\ldots, 200\\}$. Then $V_1 : V_2$ is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 : 2</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1 : 1</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>4 : 9</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1 : 4</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Let the first data set be $A = \\{13, 16, 19, \\ldots, 103\\}$.</p>\n<p>This is an arithmetic progression where:</p>\n<p>First term, $a_1 = 13$</p>\n<p>Common difference, $d_1 = 16 - 13 = 3$</p>\n<p>Last term, $l_1 = 103$</p>\n<p>To find the number of terms $n_1$:</p>\n<p>$$103 = 13 + (n_1 - 1)3$$</p>\n<p>$$90 = (n_1 - 1)3$$</p>\n<p>$$n_1 - 1 = 30$$</p>\n<p>$$n_1 = 31$$</p>\n<p>Now consider the second data set, $B = \\{20, 26, 32, \\ldots, 200\\}$.</p>\n<p>This is also an arithmetic progression where:</p>\n<p>First term, $a_2 = 20$</p>\n<p>Common difference, $d_2 = 26 - 20 = 6$</p>\n<p>Last term, $l_2 = 200$</p>\n<p>To find the number of terms $n_2$:</p>\n<p>$$200 = 20 + (n_2 - 1)6$$</p>\n<p>$$180 = (n_2 - 1)6$$</p>\n<p>$$n_2 - 1 = 30$$</p>\n<p>$$n_2 = 31$$</p>\n<p>The variance of an arithmetic progression with $n$ terms and common difference $d$ is given by the formula:</p>\n<p>$$\\text{Variance} = \\frac{n^2 - 1}{12} \\cdot d^2$$</p>\n<p>Since both sets have the same number of terms ($n = 31$), the variance depends only on the square of their common differences:</p>\n<p>$$V_1 = \\frac{31^2 - 1}{12} \\cdot (3)^2$$</p>\n<p>$$V_2 = \\frac{31^2 - 1}{12} \\cdot (6)^2$$</p>\n<p>Taking the ratio of $V_1$ to $V_2$:</p>\n<p>$$\\frac{V_1}{V_2} = \\frac{3^2}{6^2} = \\frac{9}{36} = \\frac{1}{4}$$</p>\n<p>Thus, $V_1 : V_2 = 1 : 4$.</p>\n<p>The correct option is Option D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना $V_1 = \\{13, 16, 19, \\ldots, 103\\} \\text{ का प्रसरण}$ और $V_2 = \\{20, 26, 32, \\ldots, 200\\} \\text{ का प्रसरण}$ है। तब $V_1 : V_2$ है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>1 : 2</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>1 : 1</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>4 : 9</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1 : 4</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-standard-deviation-variance-and-mean-deviation-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtaq71tj",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let <b>r</b> be the range and $s^2 = \\frac{1}{n-1} \\sum\\limits_{i=1}^{n} (x_i - \\overline{x})^2$ be the standard deviation of 's' a set of observations $x_1, x_2, ..., x_n$, then</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$s \\leq r \\sqrt{\\frac{n}{n-1}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$s = r \\sqrt{\\frac{n}{n-1}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$s \\geq r \\sqrt{\\frac{n}{n-1}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>We have, $r = \\max |x_i - x_j|$</p>\n<p>and $$s^2 = \\frac{1}{n-1} \\sum\\limits_{i=1}^{n} (x_i - \\bar{x})^2$$</p>\n<p>Now, $$(x_i - \\bar{x})^2 = \\left(x_i - \\frac{x_1 + x_2 + \\ldots + x_n}{n}\\right)^2$$</p>\n<p>$$= \\frac{1}{n^2} \\left[(x_i - x_1) + (x_i - x_2) + \\ldots + (x_i - x_{i-1}) + (x_i - x_{i+1}) + \\ldots + (x_i - x_n)\\right]^2$$</p>\n<p>$$\\leq \\frac{1}{n^2} \\left[(n-1)r\\right]^2 \\quad [\\because |x_i - x_j| \\leq r]$$</p>\n<p>$$\\Rightarrow (x_i - \\bar{x})^2 \\leq r^2$$</p>\n<p>$$\\Rightarrow \\sum\\limits_{i=1}^{n} (x_i - \\bar{x})^2 \\leq nr^2$$</p>\n<p>$$\\Rightarrow \\frac{1}{n-1} \\sum\\limits_{i=1}^{n} (x_i - \\bar{x})^2 \\leq \\frac{nr^2}{n-1}$$</p>\n<p>$$\\Rightarrow s^2 \\leq \\frac{nr^2}{n-1}$$</p>\n<p>$$\\Rightarrow s \\leq r\\sqrt{\\frac{n}{n-1}}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना <b>r</b> परिसर है तथा $s^2 = \\frac{1}{n-1} \\sum\\limits_{i=1}^{n} (x_i - \\overline{x})^2$ प्रेक्षणों $x_1, x_2, ..., x_n$ के एक समुच्चय का मानक विचलन 's' है, तो</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$s \\leq r \\sqrt{\\frac{n}{n-1}}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$s = r \\sqrt{\\frac{n}{n-1}}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$s \\geq r \\sqrt{\\frac{n}{n-1}}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-standard-deviation-variance-and-mean-deviation-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtaqbb5x",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the standard deviation of the numbers 2, 3, $a$ and 11 is 3.5, then which of the following is true?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$3a^2 - 32a + 84 = 0$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$3a^2 - 34a + 91 = 0$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$3a^2 - 23a + 44 = 0$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$3a^2 - 26a + 55 = 0$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The given observations are $2, 3, a$, and $11$. </p>\n<p>The total number of observations is $n = 4$.</p>\n<p>The standard deviation ($\\sigma$) is given as $3.5$. </p>\n<p>So, the variance ($\\sigma^2$) is:</p>\n<p>$$\\sigma^2 = (3.5)^2 = 12.25 = \\frac{49}{4}$$</p>\n<p>First, let us find the mean ($\\bar{x}$) of the observations:</p>\n<p>$$\\bar{x} = \\frac{\\sum x_i}{n} = \\frac{2 + 3 + a + 11}{4} = \\frac{16 + a}{4}$$</p>\n<p>Next, we find the sum of the squares of the observations ($\\sum x_i^2$):</p>\n<p>$$\\sum x_i^2 = 2^2 + 3^2 + a^2 + 11^2 = 4 + 9 + a^2 + 121 = a^2 + 134$$</p>\n<p>The formula for variance is:</p>\n<p>$$\\sigma^2 = \\frac{\\sum x_i^2}{n} - (\\bar{x})^2$$</p>\n\n<p>$$\\frac{49}{4} = \\frac{a^2 + 134}{4} - \\left(\\frac{16 + a}{4}\\right)^2$$</p>\n<p>$$\\frac{49}{4} = \\frac{a^2 + 134}{4} - \\frac{a^2 + 32a + 256}{16}$$</p>\n\n<p>$$4 \\times 49 = 4(a^2 + 134) - (a^2 + 32a + 256)$$</p>\n<p>$$196 = 4a^2 + 536 - a^2 - 32a - 256$$</p>\n<p>$$196 = 3a^2 - 32a + 280$$</p>\n\n<p>$$3a^2 - 32a + 280 - 196 = 0$$</p>\n<p>$$3a^2 - 32a + 84 = 0$$</p>\n<p>Thus, Option A is the correct choice.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि संख्याओं 2, 3, $a$ और 11 का मानक विचलन 3.5 है, तो निम्नलिखित में से कौन-सा सत्य है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$3a^2 - 32a + 84 = 0$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$3a^2 - 34a + 91 = 0$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$3a^2 - 23a + 44 = 0$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$3a^2 - 26a + 55 = 0$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-standard-deviation-variance-and-mean-deviation-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtaqpuu2",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The outcome of each of 30 items was observed; 10 items gave an outcome $\\frac{1}{2} - d$ each, 10 items gave outcome $\\frac{1}{2}$ each and the remaining 10 items gave outcome $\\frac{1}{2} + d$ each. If the variance of this outcome data is $\\frac{4}{3}$ then $|d|$ equals :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\sqrt{2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{2}{3}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{\\sqrt{5}}{2}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<ol start=\"4\">\n<li>$$\\sigma^2 = \\frac{\\Sigma x^2}{N} - \\mu^2$$</li>\n</ol>\n<p>$$= \\frac{10\\left(\\frac{1}{2}+d\\right)^2 + 10 \\times \\frac{1}{4} + 10\\left(\\frac{1}{2}-d\\right)^2}{30} - \\left(\\frac{10\\left(\\frac{1}{2}+d\\right) + 10 \\times \\frac{1}{2} + 10\\left(\\frac{1}{2}-d\\right)}{30}\\right)^2$$</p>\n<p>$$= \\frac{20\\left(\\frac{1}{4}+d^2\\right) + \\frac{5}{2}}{30} - \\frac{1}{9}\\left(\\frac{3}{2}\\right)^2$$</p>\n<p>$$= \\frac{5 + 20d^2 + \\frac{5}{2}}{30} - \\frac{1}{4}$$</p>\n<p>$$= \\frac{\\frac{3}{2} + 4d^2}{6} - \\frac{1}{4}$$</p>\n<p>$$= \\frac{3 + 8d^2}{12} - \\frac{1}{4} = \\frac{2d^2}{3} = \\frac{4}{3}$$</p>\n<p>$$\\Rightarrow |d| = \\sqrt{2}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>30 मदों में से प्रत्येक के परिणाम का प्रेक्षण किया गया; 10 मदों में से प्रत्येक का परिणाम $\\frac{1}{2} - d$, 10 मदों में से प्रत्येक का परिणाम $\\frac{1}{2}$ तथा शेष 10 मदों में से प्रत्येक का परिणाम $\\frac{1}{2} + d$ रहा। यदि इन परिणामों के आँकड़ों का प्रसरण $\\frac{4}{3}$ है, तो $|d|$ बराबर है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\sqrt{2}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{2}{3}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$2$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{\\sqrt{5}}{2}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-standard-deviation-variance-and-mean-deviation-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtarellf",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A scientist is weighing each of 30 fishes. Their mean weight worked out is 30 gm and a standard deviation of 2 gm. Later, it was found that the measuring scale was misaligned and always under reported every fish weight by 2 gm . The correct mean and standard deviation (in gm) of fishes are respectively :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>32, 2</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>32, 4</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>28, 2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>28, 4</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The scale under reported every fish weight by $2$ gm.</p>\n<p>So each recorded weight was $2$ gm less than the actual weight.</p>\n<p>That means:</p>\n<p>$$ \\text{Correct weight} = \\text{Recorded weight} + 2 $$</p>\n<p>The recorded mean weight was:</p>\n<p>$$ 30 \\text{ gm} $$</p>\n<p>If we add $2$ gm to every observation, the mean also increases by $2$ gm.</p>\n<p>So the correct mean is:</p>\n<p>$$ 30 + 2 = 32 \\text{ gm} $$</p>\n<p>Now, standard deviation measures the spread of observations from the mean.</p>\n<p>When the same number is added to every observation, all values shift equally. The spread does not change.</p>\n<p>So the standard deviation remains:</p>\n<p>$$ 2 \\text{ gm} $$</p>\n<p>Hence, the correct mean and standard deviation are:</p>\n<p>$$ 32,\\ 2 $$</p>\n<p>Correct option: A</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक वैज्ञानिक 30 मछलियों में से प्रत्येक का भार मापता है। उनका परिकलित माध्य भार 30 gm और मानक विचलन 2 gm प्राप्त होता है। बाद में, यह पाया गया कि मापक पैमाना गलत संरेखित था और प्रत्येक मछली का भार हमेशा 2 gm कम बताता था। मछलियों का सही माध्य और मानक विचलन (gm में) क्रमशः हैं :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>32, 2</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>32, 4</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>28, 2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>28, 4</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-standard-deviation-variance-and-mean-deviation-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtargujn",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let $x_1, x_2, \\ldots, x_n$ be $n$ observations, and let $\\bar{x}$ be their arithmetic mean and $\\sigma^2$ be the variance.</p><p><b>Statement-1</b> : Variance of $2x_1, 2x_2, \\ldots, 2x_n$ is $4\\sigma^2$.</p><p><b>Statement-2</b> : Arithmetic mean $2x_1, 2x_2, \\ldots, 2x_n$ is $4\\bar{x}$.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Statement-1 is false, Statement-2 is true.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Statement-1 is true, Statement-2 is true; Statement-2 is a correct explanation for Statement-1.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Statement-1 is true, Statement-2 is true; Statement-2 is not a correct explanation for Statement-1.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Statement-1 is true, Statement-2 is false.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Let the original observations be $x_1, x_2, \\ldots, x_n$. </p>\n<p>The arithmetic mean of these observations is given by:</p>\n<p>$$\\bar{x} = \\frac{\\sum\\limits_{i=1}^{n} x_i}{n}$$</p>\n<p>The variance is given by:</p>\n<p>$$\\sigma^2 = \\frac{\\sum\\limits_{i=1}^{n} (x_i - \\bar{x})^2}{n}$$</p>\n<p>Now, let each observation be multiplied by $2$, so the new observations are $y_i = 2x_i$ for $i = 1, 2, \\ldots, n$.</p>\n<p>The new arithmetic mean $\\bar{y}$ is:</p>\n<p>$$\\bar{y} = \\frac{\\sum\\limits_{i=1}^{n} 2x_i}{n} = 2 \\left(\\frac{\\sum\\limits_{i=1}^{n} x_i}{n}\\right) = 2\\bar{x}$$</p>\n<p>Statement-2 says the arithmetic mean is $4\\bar{x}$, which means Statement-2 is false.</p>\n<p>Next, find the variance of the new observations:</p>\n<p>$$\\sigma_y^2 = \\frac{\\sum\\limits_{i=1}^{n} (y_i - \\bar{y})^2}{n}$$</p>\n<p>Substitute $y_i = 2x_i$ and $\\bar{y} = 2\\bar{x}$:</p>\n<p>$$\\sigma_y^2 = \\frac{\\sum\\limits_{i=1}^{n} (2x_i - 2\\bar{x})^2}{n}$$</p>\n<p>$$\\sigma_y^2 = \\frac{\\sum\\limits_{i=1}^{n} 4(x_i - \\bar{x})^2}{n}$$</p>\n<p>$$\\sigma_y^2 = 4 \\left(\\frac{\\sum\\limits_{i=1}^{n} (x_i - \\bar{x})^2}{n}\\right) = 4\\sigma^2$$</p>\n<p>This matches Statement-1, so Statement-1 is true.</p>\n<p>Thus, Statement-1 is true and Statement-2 is false.</p>\n<p>The correct choice is Option D.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना $x_1, x_2, \\ldots, x_n$, $n$ प्रेक्षण हैं, और माना $\\bar{x}$ इनका समांतर माध्य तथा $\\sigma^2$ इनका प्रसरण है।</p><p><b>कथन-1</b> : $2x_1, 2x_2, \\ldots, 2x_n$ का प्रसरण $4\\sigma^2$ है।</p><p><b>कथन-2</b> : $2x_1, 2x_2, \\ldots, 2x_n$ का समांतर माध्य $4\\bar{x}$ है।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>कथन-1 असत्य है, कथन-2 सत्य है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 सत्य है; कथन-2, कथन-1 की सही व्याख्या है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 सत्य है; कथन-2, कथन-1 की सही व्याख्या नहीं है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>कथन-1 सत्य है, कथन-2 असत्य है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-standard-deviation-variance-and-mean-deviation-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtarky5f",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A data consists of <i>n</i> observations:</p>\n<p>$x_1, x_2, ..., x_n$. If $\\sum\\limits_{i=1}^{n} (x_i + 1)^2 = 9n$ and $\\sum\\limits_{i=1}^{n} (x_i - 1)^2 = 5n$</p>\n<p>then the standard deviation of this data is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>5</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{5}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{7}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>We are given the following two equations:</p>\n<p>$$\\sum\\limits_{i=1}^{n} (x_i + 1)^2 = 9n$$</p>\n<p>$$\\sum\\limits_{i=1}^{n} (x_i - 1)^2 = 5n$$</p>\n<p>Let us expand the squares inside the summations. </p>\n<p>Expanding the first equation:</p>\n<p>$$\\sum\\limits_{i=1}^{n} (x_i^2 + 2x_i + 1) = 9n$$</p>\n<p>$$\\sum\\limits_{i=1}^{n} x_i^2 + 2\\sum\\limits_{i=1}^{n} x_i + \\sum\\limits_{i=1}^{n} 1 = 9n$$</p>\n<p>Since $\\sum\\limits_{i=1}^{n} 1 = n$, this becomes:</p>\n<p>$$\\sum\\limits_{i=1}^{n} x_i^2 + 2\\sum\\limits_{i=1}^{n} x_i + n = 9n$$</p>\n<p>$$\\sum\\limits_{i=1}^{n} x_i^2 + 2\\sum\\limits_{i=1}^{n} x_i = 8n \\quad \\text{--- (1)}$$</p>\n<p>Now, expanding the second equation in the same way:</p>\n<p>$$\\sum\\limits_{i=1}^{n} (x_i^2 - 2x_i + 1) = 5n$$</p>\n<p>$$\\sum\\limits_{i=1}^{n} x_i^2 - 2\\sum\\limits_{i=1}^{n} x_i + n = 5n$$</p>\n<p>$$\\sum\\limits_{i=1}^{n} x_i^2 - 2\\sum\\limits_{i=1}^{n} x_i = 4n \\quad \\text{--- (2)}$$</p>\n<p>Adding equation (1) and equation (2):</p>\n<p>$$2\\sum\\limits_{i=1}^{n} x_i^2 = 12n$$</p>\n<p>$$\\sum\\limits_{i=1}^{n} x_i^2 = 6n$$</p>\n\n<p>$$\\frac{\\sum\\limits_{i=1}^{n} x_i^2}{n} = 6$$</p>\n<p>Next, subtracting equation (2) from equation (1):</p>\n<p>$$4\\sum\\limits_{i=1}^{n} x_i = 4n$$</p>\n<p>$$\\sum\\limits_{i=1}^{n} x_i = n$$</p>\n<p>The mean of the data, $\\bar{x}$, is:</p>\n<p>$$\\bar{x} = \\frac{\\sum\\limits_{i=1}^{n} x_i}{n} = \\frac{n}{n} = 1$$</p>\n<p>The standard deviation ($\\sigma$) is given by the formula:</p>\n<p>$$\\sigma = \\sqrt{\\frac{\\sum\\limits_{i=1}^{n} x_i^2}{n} - (\\bar{x})^2}$$</p>\n<p>Substitute the values we found:</p>\n<p>$$\\sigma = \\sqrt{6 - (1)^2} = \\sqrt{6 - 1} = \\sqrt{5}$$</p>\n<p>Thus, the standard deviation is $\\sqrt{5}$.</p>\n<p>Correct Option: Option C</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक डेटा में <i>n</i> प्रेक्षण $x_1, x_2, ..., x_n$ हैं। यदि $\\sum\\limits_{i=1}^{n} (x_i + 1)^2 = 9n$ और $\\sum\\limits_{i=1}^{n} (x_i - 1)^2 = 5n$ हैं,</p>\n<p>तो इस डेटा का मानक विचलन है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>5</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>2</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\sqrt{5}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\sqrt{7}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-standard-deviation-variance-and-mean-deviation-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtas0tvy",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The median and standard deviation (S.D.) of a distribution will be, if each term is increased by 2 :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>median and S.D. will increased by 2</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>median will increased by 2 but S.D. will remain same</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>median will remain same but S.D. will increased by 2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>median and S.D. will remain same</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>If each term of a distribution is increased by $2$, then every observation shifts equally to the right.</p>\n<p>So the middle value also increases by $2$.</p>\n<p>Hence, the median increases by $2$.</p>\n<p>But standard deviation measures the spread of the observations around the mean. When we add the same number $2$ to every observation, the mean also increases by $2$, so the deviations from the mean remain the same.</p>\n<p>For example, if an observation is $x$ and the mean is $\\bar{x}$, then after adding $2$:</p>\n<p>$$ x \\to x+2 $$</p>\n<p>and</p>\n<p>$$ \\bar{x} \\to \\bar{x}+2 $$</p>\n<p>So the new deviation is</p>\n<p>$$ (x+2)-(\\bar{x}+2)=x-\\bar{x} $$</p>\n<p>The deviations do not change, so the standard deviation remains the same.</p>\n<p>Hence, the correct option is:</p>\n<p>$$ \\boxed{\\text{Option B: median will increase by 2 but S.D. will remain same}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि किसी बंटन के प्रत्येक पद में 2 की वृद्धि कर दी जाए, तो माध्यिका और मानक विचलन (S.D.) होंगे:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>माध्यिका और S.D. में 2 की वृद्धि होगी</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>माध्यिका में 2 की वृद्धि होगी लेकिन S.D. समान रहेगा</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>माध्यिका समान रहेगी लेकिन S.D. में 2 की वृद्धि होगी</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>माध्यिका और S.D. समान रहेंगे</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-standard-deviation-variance-and-mean-deviation-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtas6j0e",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The standard deviation of a variate $x$ is $\\sigma$. The standard deviation of the variate $(a x + b)/c$, where $a$, $b$ and $c$ are constants, is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\left(\\frac{a}{c}\\right) \\sigma$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\left| \\frac{a}{c} \\right| \\sigma$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\left( \\frac{a^2}{c^2} \\right) \\sigma$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>None of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let $y=\\dfrac{ax+b}{c}$ i.e. $y=\\dfrac{a}{c}x+\\dfrac{b}{c}$ i.e. $y=\\dfrac{a}{c}x+\\dfrac{b}{c}$</p>\n<p>$\\therefore$ $$\\bar{y}=A\\bar{x}+B$$</p>\n<p>$\\therefore$ $$y-\\bar{y}=A(x-\\bar{x})$$</p>\n<p>$\\Rightarrow$ $$\\left(y-\\bar{y}\\right)^2=A^2\\left(x-\\bar{x}\\right)^2$$</p>\n<p>$\\Rightarrow$ $$\\sum\\limits (y-\\bar{y})^2=A^2\\sum\\limits (x-\\bar{x})^2$$</p>\n<p>$\\Rightarrow$ $$n\\cdot\\sigma_y^2=A^2\\cdot n\\sigma_x^2$$</p>\n<p>$\\Rightarrow$ $$\\sigma_y^2=A^2\\sigma_x^2 \\Rightarrow \\sigma_y=|A|\\sigma_x$$</p>\n<p>$\\Rightarrow$ $$\\sigma_y=\\left|\\dfrac{a}{c}\\right|\\sigma_x$$</p>\n<p>Thus, new SD $=\\left|\\dfrac{a}{c}\\right|\\sigma$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक चर $x$ का मानक विचलन $\\sigma$ है। चर $(a x + b)/c$, जहाँ $a$, $b$ और $c$ अचर हैं, का मानक विचलन है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\left(\\frac{a}{c}\\right) \\sigma$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\left| \\frac{a}{c} \\right| \\sigma$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\left( \\frac{a^2}{c^2} \\right) \\sigma$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-standard-deviation-variance-and-mean-deviation-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtasa4fe",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For $(2n+1)$ observations $x_1, -x_1, x_2, -x_2, \\ldots, x_n, -x_n$ and $0$, where all $x$'s are distinct, let SD and MD denote the standard deviation and median, respectively. Then, which of the following is always true?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>SD &lt; MD</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>SD &gt; MD</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>SD = MD</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Nothing can be said in general about the relationship between SD and MD</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let us first find the median ($\\text{MD}$) of the given set of observations.</p>\n<p>The given observations are:</p>\n<p>$$-x_n, \\ldots, -x_2, -x_1, 0, x_1, x_2, \\ldots, x_n$$</p>\n<p>The total number of observations is $N = 2n + 1$, which is an odd number.</p>\n<p>When these values are arranged in increasing order, the negative values lie to the left of $0$ and the positive values lie to the right of $0$. </p>\n<p>The median is given by the middle term, which is the $\\left(\\frac{N + 1}{2}\\right)^{\\text{th}}$ term:</p>\n<p>$$\\text{Term number} = \\frac{(2n + 1) + 1}{2} = n + 1$$</p>\n<p>The $(n + 1)^{\\text{th}}$ term in this arrangement is $0$. </p>\n<p>Therefore, </p>\n<p>$$\\text{MD} = 0$$</p>\n<p>Now, let us find the mean ($\\bar{x}$) to determine the standard deviation ($\\text{SD}$).</p>\n<p>$$\\bar{x} = \\frac{\\sum x}{N} = \\frac{(x_1 - x_1) + (x_2 - x_2) + \\dots + (x_n - x_n) + 0}{2n + 1} = 0$$</p>\n<p>The formula for variance ($\\sigma^2$) is:</p>\n<p>$$\\sigma^2 = \\frac{1}{N}\\sum (x_i - \\bar{x})^2$$</p>\n<p>Since $\\bar{x} = 0$, we get:</p>\n<p>$$\\sigma^2 = \\frac{1}{2n+1} \\left[ 2(x_1^2 + x_2^2 + \\dots + x_n^2) + 0^2 \\right]$$</p>\n<p>Since the values $x_1, x_2, \\dots, x_n$ are distinct non-zero numbers, the sum of their squares is strictly positive. </p>\n<p>This means:</p>\n<p>$$\\sigma^2 > 0$$</p>\n<p>Taking the positive square root, the standard deviation is:</p>\n<p>$$\\text{SD} > 0$$</p>\n<p>Since $\\text{SD} > 0$ and $\\text{MD} = 0$, it is always true that:</p>\n<p>$$\\text{SD} > \\text{MD}$$</p>\n<p>Correct Option: <strong>Option B</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$(2n+1)$ प्रेक्षणों $x_1, -x_1, x_2, -x_2, \\ldots, x_n, -x_n$ और $0$ के लिए, जहाँ सभी $x$ भिन्न हैं, मान लीजिए SD और MD क्रमशः मानक विचलन और माध्यिका को दर्शाते हैं। तब, निम्नलिखित में से कौन-सा सदैव सत्य है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>SD &lt; MD</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>SD &gt; MD</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>SD = MD</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>SD और MD के बीच संबंध के बारे में सामान्यतः कुछ नहीं कहा जा सकता है</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-standard-deviation-variance-and-mean-deviation-of-grouped-and-ungrouped-data",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mt98mu90",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let the mean and the variance of 5 observations $x_1, x_2, x_3, x_4, x_5$ be $\\frac{24}{5}$ and $\\frac{194}{25}$ respectively. If the mean and variance of the first 4 observations are $\\frac{7}{2}$ and a respectively, then $\\left(4 a+x_5\\right)$ is equal to:</p>",
+                "options": [],
+                "answer": "15",
+                "explanation": "<p>We are given that the mean of the 5 observations is $\\frac{24}{5}$.</p>\n<p>The sum of all 5 observations is:</p>\n<p>$$\\sum\\limits_{i=1}^{5} x_i = 5 \\times \\frac{24}{5} = 24$$</p>\n<p>The mean of the first 4 observations is given as $\\frac{7}{2}$. </p>\n<p>The sum of the first 4 observations is:</p>\n<p>$$\\sum\\limits_{i=1}^{4} x_i = 4 \\times \\frac{7}{2} = 14$$</p>\n<p>Now we can find the fifth observation, $x_5$:</p>\n<p>$$x_5 = \\sum\\limits_{i=1}^{5} x_i - \\sum\\limits_{i=1}^{4} x_i$$</p>\n<p>$$x_5 = 24 - 14 = 10$$</p>\n<p>Next, we use the formula for the variance of 5 observations:</p>\n<p>$$\\sigma^2 = \\frac{1}{5} \\sum\\limits_{i=1}^{5} x_i^2 - (\\bar{x})^2$$</p>\n<p>Substitute the given values into the formula:</p>\n<p>$$\\frac{194}{25} = \\frac{1}{5} \\sum\\limits_{i=1}^{5} x_i^2 - \\left(\\frac{24}{5}\\right)^2$$</p>\n<p>$$\\frac{194}{25} = \\frac{1}{5} \\sum\\limits_{i=1}^{5} x_i^2 - \\frac{576}{25}$$</p>\n<p>$$\\frac{1}{5} \\sum\\limits_{i=1}^{5} x_i^2 = \\frac{194}{25} + \\frac{576}{25}$$</p>\n<p>$$\\frac{1}{5} \\sum\\limits_{i=1}^{5} x_i^2 = \\frac{770}{25} = \\frac{154}{5}$$</p>\n<p>$$\\sum\\limits_{i=1}^{5} x_i^2 = 154$$</p>\n<p>We can separate the sum of squares of the first 4 observations from the total sum:</p>\n<p>$$\\sum\\limits_{i=1}^{4} x_i^2 + x_5^2 = 154$$</p>\n<p>$$\\sum\\limits_{i=1}^{4} x_i^2 + (10)^2 = 154$$</p>\n<p>$$\\sum\\limits_{i=1}^{4} x_i^2 = 154 - 100 = 54$$</p>\n<p>Now, we find the variance $a$ of the first 4 observations:</p>\n<p>$$a = \\frac{1}{4} \\sum\\limits_{i=1}^{4} x_i^2 - (\\bar{x}_4)^2$$</p>\n<p>$$a = \\frac{54}{4} - \\left(\\frac{7}{2}\\right)^2$$</p>\n<p>$$a = \\frac{54}{4} - \\frac{49}{4} = \\frac{5}{4}$$</p>\n<p>Finally, we calculate the required value:</p>\n<p>$$4a + x_5 = 4\\left(\\frac{5}{4}\\right) + 10$$</p>\n<p>$$4a + x_5 = 5 + 10 = 15$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना 5 प्रेक्षणों $x_1, x_2, x_3, x_4, x_5$ का माध्य और प्रसरण क्रमशः $\\frac{24}{5}$ और $\\frac{194}{25}$ हैं। यदि प्रथम 4 प्रेक्षणों का माध्य और प्रसरण क्रमशः $\\frac{7}{2}$ और a हैं, तो $\\left(4 a+x_5\\right)$ बराबर है:</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-standard-deviation-variance-and-mean-deviation-of-grouped-and-ungrouped-data",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtapnsd0",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $\\sum\\limits_{i=1}^5\\left(x_i-6\\right)=5$ and $\\sum\\limits_{i=1}^5\\left(x_i-6\\right)^2=25$, then the standard deviation of observations $3 x_1+2,3 x_2+2,3 x_3+2,3 x_4+2$ and $3 x_5+2$ is equal to</p>",
+                "options": [],
+                "answer": "6",
+                "explanation": "<p>Let $d_i = x_i - 6$. </p>\n<p>We are given the number of observations $n = 5$.</p>\n<p>$$\\sum\\limits_{i=1}^5 d_i = 5$$</p>\n<p>$$\\sum\\limits_{i=1}^5 d_i^2 = 25$$</p>\n<p>The formula for the variance of $d_i$ is:</p>\n<p>$$\\sigma_d^2 = \\frac{1}{n}\\sum\\limits_{i=1}^5 d_i^2 - \\left(\\frac{1}{n}\\sum\\limits_{i=1}^5 d_i\\right)^2$$</p>\n<p>$$\\sigma_d^2 = \\frac{25}{5} - \\left(\\frac{5}{5}\\right)^2$$</p>\n<p>$$\\sigma_d^2 = 5 - (1)^2 = 4$$</p>\n<p>Taking the square root gives the standard deviation of $d_i$:</p>\n<p>$$\\sigma_d = \\sqrt{4} = 2$$</p>\n<p>Since subtracting a constant from each observation changes only the origin and does not affect the spread of the data, the standard deviation of $x_i$ is equal to the standard deviation of $d_i$:</p>\n<p>$$\\sigma_x = \\sigma_d = 2$$</p>\n<p>Now, let the new observations be $y_i = 3x_i + 2$.</p>\n<p>When each observation is multiplied by a constant $a$ and a constant $b$ is added to it, the new standard deviation depends only on the scale factor $a$:</p>\n<p>$$\\sigma_y = |a| \\cdot \\sigma_x$$</p>\n<p>Here, $a = 3$ and $b = 2$:</p>\n<p>$$\\sigma_y = 3 \\times 2 = 6$$</p>\n<p>The standard deviation of the given observations is $6$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $\\sum\\limits_{i=1}^5\\left(x_i-6\\right)=5$ और $\\sum\\limits_{i=1}^5\\left(x_i-6\\right)^2=25$ है, तो प्रेक्षणों $3 x_1+2,3 x_2+2,3 x_3+2,3 x_4+2$ और $3 x_5+2$ का मानक विचलन किसके बराबर है?</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-standard-deviation-variance-and-mean-deviation-of-grouped-and-ungrouped-data",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtapv5wa",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let $x_1, x_2, \\ldots \\ldots \\ldots, x_{100}$ are 100 observations such that</p>\n<p>$\\sum x_i=0, \\sum\\limits_{1 \\leq i < j \\leq 100}\\left|x_i x_j\\right|=80000 \\&$ mean deviation from their mean is 5 , then their standard deviation, is-</p>",
+                "options": [],
+                "answer": "30",
+                "explanation": "<ul>\n\n<li><p>Total observations, $n = 100$</p></li>\n\n<li><p>Sum of observations, $\\sum x_i = 0$</p></li>\n\n<li><p>Sum of the absolute products of pairs, $\\sum\\limits_{1 \\le i < j \\le 100} \\vert{}x_i x_j\\vert{} = 80000$</p></li>\n\n<li><p>Mean deviation from the mean $= 5$</p></li>\n\n</ul>\n\n<p>$$\\bar{x} = \\frac{\\sum x_i}{100} = \\frac{0}{100} = 0$$</p>\n\n<p>The formula for mean deviation from the mean is:</p>\n<p>$$M.D. = \\frac{\\sum \\vert{}x_i - \\bar{x}\\vert{}}{100}$$</p>\n<p>Substitute the known values ($M.D. = 5$ and $\\bar{x} = 0$):</p>\n<p>$$5 = \\frac{\\sum \\vert{}x_i - 0\\vert{}}{100}$$</p>\n<p>$$\\sum \\vert{}x_i\\vert{} = 500$$</p>\n\n<p>Using the algebraic identity $(\\sum a_i)^2 = \\sum a_i^2 + 2 \\sum\\limits_{i < j} a_i a_j$, substitute $a_i$ with $\\vert{}x_i\\vert{}$:</p>\n<p>$$\\left( \\sum \\vert{}x_i\\vert{} \\right)^2 = \\sum \\vert{}x_i\\vert{}^2 + 2 \\sum\\limits_{1 \\le i < j \\le 100} \\vert{}x_i\\vert{} \\vert{}x_j\\vert{}$$</p>\n<p>Since $\\vert{}x_i\\vert{}^2 = x_i^2$ and $\\vert{}x_i\\vert{} \\vert{}x_j\\vert{} = \\vert{}x_i x_j\\vert{}$, we get:</p>\n<p>$$(500)^2 = \\sum x_i^2 + 2 \\sum\\limits_{1 \\le i < j \\le 100} \\vert{}x_i x_j\\vert{}$$</p>\n<p>$$250000 = \\sum x_i^2 + 2(80000)$$</p>\n<p>$$250000 = \\sum x_i^2 + 160000$$</p>\n<p>$$\\sum x_i^2 = 90000$$</p>\n\n<p>The formula for variance ($\\sigma^2$) is:</p>\n<p>$$\\sigma^2 = \\frac{\\sum x_i^2}{n} - (\\bar{x})^2$$</p>\n<p>$$\\sigma^2 = \\frac{90000}{100} - 0^2$$</p>\n<p>$$\\sigma^2 = 900$$</p>\n<p>$$\\sigma = \\sqrt{900} = 30$$</p>\n<p>The standard deviation of the observations is <strong>30</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना $x_1, x_2, \\ldots \\ldots \\ldots, x_{100}$ ऐसे 100 प्रेक्षण हैं कि</p>\n<p>$\\sum x_i=0, \\sum\\limits_{1 \\leq i < j \\leq 100}\\left|x_i x_j\\right|=80000$ तथा उनके माध्य से माध्य विचलन 5 है, तो उनका मानक विचलन है-</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-standard-deviation-variance-and-mean-deviation-of-grouped-and-ungrouped-data",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtaqif1h",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>What is the standard deviation of the following data?</p><style>table {width: 100%; border-collapse: collapse; margin: 20px 0;} th {background-color: blue; color: white; border: 1px solid lightgrey; padding: 10px;} td {border: 1px solid lightgrey; padding: 10px; text-align: left;} </style><table> <tr> <th>Measurement</th> <th>0-10</th> <th>10-20</th> <th>20-30</th> <th>30-40</th> </tr> <tr> <td>Frequency</td> <td>1</td> <td>3</td> <td>4</td> <td>2</td> </tr> </table>",
+                "options": [],
+                "answer": "9",
+                "explanation": "<p>To find the standard deviation, we first determine the class mid-points ($x_i$) for each interval, calculate the mean ($\\bar{x}$), and then find the deviations from the mean.</p>\n<p>The mid-point of each class is calculated using the formula:</p>\n<p>$$x_i = \\frac{\\text{Lower limit} + \\text{Upper limit}}{2}$$</p>\n<p>Let us construct the calculation table:</p>\n<table>\n<thead>\n<tr>\n<th style=\"text-align:center;\">Class Interval</th>\n<th style=\"text-align:center;\">Mid-point ($x_i$)</th>\n<th style=\"text-align:center;\">Frequency ($f_i$)</th>\n<th style=\"text-align:center;\">$f_i x_i$</th>\n<th style=\"text-align:center;\">$(x_i - \\bar{x})$</th>\n<th style=\"text-align:center;\">$(x_i - \\bar{x})^2$</th>\n<th style=\"text-align:center;\">$f_i (x_i - \\bar{x})^2$</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align:center;\">$0 - 10$</td>\n<td style=\"text-align:center;\">$5$</td>\n<td style=\"text-align:center;\">$1$</td>\n<td style=\"text-align:center;\">$5$</td>\n<td style=\"text-align:center;\">$5 - 22 = -17$</td>\n<td style=\"text-align:center;\">$289$</td>\n<td style=\"text-align:center;\">$1 \\times 289 = 289$</td>\n</tr>\n<tr>\n<td style=\"text-align:center;\">$10 - 20$</td>\n<td style=\"text-align:center;\">$15$</td>\n<td style=\"text-align:center;\">$3$</td>\n<td style=\"text-align:center;\">$45$</td>\n<td style=\"text-align:center;\">$15 - 22 = -7$</td>\n<td style=\"text-align:center;\">$49$</td>\n<td style=\"text-align:center;\">$3 \\times 49 = 147$</td>\n</tr>\n<tr>\n<td style=\"text-align:center;\">$20 - 30$</td>\n<td style=\"text-align:center;\">$25$</td>\n<td style=\"text-align:center;\">$4$</td>\n<td style=\"text-align:center;\">$100$</td>\n<td style=\"text-align:center;\">$25 - 22 = 3$</td>\n<td style=\"text-align:center;\">$9$</td>\n<td style=\"text-align:center;\">$4 \\times 9 = 36$</td>\n</tr>\n<tr>\n<td style=\"text-align:center;\">$30 - 40$</td>\n<td style=\"text-align:center;\">$35$</td>\n<td style=\"text-align:center;\">$2$</td>\n<td style=\"text-align:center;\">$70$</td>\n<td style=\"text-align:center;\">$35 - 22 = 13$</td>\n<td style=\"text-align:center;\">$169$</td>\n<td style=\"text-align:center;\">$2 \\times 169 = 338$</td>\n</tr>\n<tr>\n<td style=\"text-align:center;\"><strong>Total</strong></td>\n<td style=\"text-align:center;\"></td>\n<td style=\"text-align:center;\">$N = \\sum f_i = 10$</td>\n<td style=\"text-align:center;\">$\\sum f_i x_i = 220$</td>\n<td style=\"text-align:center;\"></td>\n<td style=\"text-align:center;\"></td>\n<td style=\"text-align:center;\">$\\sum f_i (x_i - \\bar{x})^2 = 810$</td>\n</tr>\n</tbody>\n</table>\n<p>Now, we calculate the mean ($\\bar{x}$):</p>\n<p>$$\\bar{x} = \\frac{\\sum f_i x_i}{N} = \\frac{220}{10} = 22$$</p>\n<p>Next, we calculate the variance ($\\sigma^2$):</p>\n<p>$$\\sigma^2 = \\frac{\\sum f_i (x_i - \\bar{x})^2}{N}$$</p>\n<p>$$\\sigma^2 = \\frac{810}{10} = 81$$</p>\n<p>The standard deviation ($\\sigma$) is the positive square root of the variance:</p>\n<p>$$\\sigma = \\sqrt{81} = 9$$</p>\n<p>The standard deviation of the given data is $9$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित आँकड़ों का मानक विचलन क्या है?</p><style>table {width: 100%; border-collapse: collapse; margin: 20px 0;} th {background-color: blue; color: white; border: 1px solid lightgrey; padding: 10px;} td {border: 1px solid lightgrey; padding: 10px; text-align: left;} </style><table> <tr> <th>माप</th> <th>0-10</th> <th>10-20</th> <th>20-30</th> <th>30-40</th> </tr> <tr> <td>बारंबारता</td> <td>1</td> <td>3</td> <td>4</td> <td>2</td> </tr> </table>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-standard-deviation-variance-and-mean-deviation-of-grouped-and-ungrouped-data",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtaruxyh",
+            "chapter": "statistics",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The mean and standard deviation of some data for the time taken to complete a test are calculated with the number of observations $=25$, mean $=18.2 \\mathrm{~s}$, standard deviation $=3.25 \\mathrm{~s}$ Further, another of 15 observations $x_1, x_2, \\ldots \\ldots x_{15}$, also in seconds, is now available and we have $\\sum\\limits_{i=1}^{15} x_i=279$ and $\\sum\\limits_{i=1}^{13}\\left(x_i\\right)^2=5524$, then the standard deviation based on all 40 observations has integral part as.</p>",
+                "options": [],
+                "answer": "3",
+                "explanation": "<p>For the first set of observations, we have:</p>\n<p>$$n_1 = 25, \\quad \\bar{x}_1 = 18.2, \\quad \\sigma_1 = 3.25$$</p>\n<p>The sum of these $25$ observations is:</p>\n<p>$$\\sum x = n_1 \\bar{x}_1 = 25 \\times 18.2 = 455$$</p>\n<p>Using the variance formula $\\sigma_1^2 = \\dfrac{\\sum x^2}{n_1} - (\\bar{x}_1)^2$:</p>\n<p>$$(3.25)^2 = \\dfrac{\\sum x^2}{25} - (18.2)^2$$</p>\n<p>$$10.5625 = \\dfrac{\\sum x^2}{25} - 331.24$$</p>\n<p>$$\\dfrac{\\sum x^2}{25} = 331.24 + 10.5625 = 341.8025$$</p>\n<p>$$\\sum x^2 = 25 \\times 341.8025 = 8545.0625$$</p>\n<p>For the second set of $15$ observations, we are given:</p>\n<p>$$n_2 = 15, \\quad \\sum x_i = 279, \\quad \\sum x_i^2 = 5524$$</p>\n<p>Now, combining both sets gives a total of $N = 25 + 15 = 40$ observations.</p>\n<p>The combined sum of the observations is:</p>\n<p>$$\\sum X = 455 + 279 = 734$$</p>\n<p>The combined mean is:</p>\n<p>$$\\bar{X} = \\frac{734}{40} = 18.35$$</p>\n<p>The combined sum of squares is:</p>\n<p>$$\\sum X^2 = 8545.0625 + 5524 = 14069.0625$$</p>\n<p>Now, we can find the combined variance:</p>\n<p>$$\\sigma^2 = \\frac{\\sum X^2}{N} - (\\bar{X})^2$$</p>\n<p>$$\\sigma^2 = \\frac{14069.0625}{40} - (18.35)^2$$</p>\n<p>$$\\sigma^2 = 351.7265625 - 336.7225 = 15.0040625$$</p>\n<p>Taking the square root to get the combined standard deviation:</p>\n<p>$$\\sigma = \\sqrt{15.0040625} \\approx 3.87$$</p>\n<p>The integral part of the standard deviation is $3$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>किसी परीक्षा को पूरा करने में लगे समय के कुछ आंकड़ों के लिए माध्य और मानक विचलन की गणना की जाती है, जिसमें प्रेक्षणों की संख्या $=25$, माध्य $=18.2 \\mathrm{~s}$, मानक विचलन $=3.25 \\mathrm{~s}$ है। इसके अतिरिक्त, $15$ अन्य प्रेक्षण $x_1, x_2, \\ldots \\ldots x_{15}$, जो सेकंड में भी हैं, अब उपलब्ध हैं और हमारे पास $\\sum\\limits_{i=1}^{15} x_i=279$ तथा $\\sum\\limits_{i=1}^{13}\\left(x_i\\right)^2=5524$ हैं, तो सभी $40$ प्रेक्षणों पर आधारित मानक विचलन का पूर्णांक भाग है:</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "calculation-of-standard-deviation-variance-and-mean-deviation-of-grouped-and-ungrouped-data",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Calculation of Standard Deviation, Variance and Mean Deviation of Grouped and Ungrouped Data",
+    "timeAllotted": 2160000,
+    "title": "Statistics Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61moerqhnq",
+    "defaultLanguage": "en",
+    "description": "Calculation of Standard Deviation, Variance and Mean Deviation of Grouped and Ungrouped Data",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-27T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Calculation of Standard Deviation, Variance and Mean Deviation of Grouped and Ungrouped Data",
+    "timeAllotted": 2160000,
+    "title": "Statistics Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Mathematics",
+    "_section": "Statistics"
+  }
+}

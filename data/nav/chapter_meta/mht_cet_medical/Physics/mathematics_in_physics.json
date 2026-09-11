@@ -1,0 +1,57 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19156220c83fbf1e0bce11",
+  "chapterId": "6a192b9ee4cc9575516b565a",
+  "subject": "Physics",
+  "chapter": "Mathematics in Physics",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec16cef1faeb9633e23a4",
+      "title": "Errors of Measurement",
+      "count": 8,
+      "questionIds": [
+        "6a1ec0edef1faeb9633e2084",
+        "6a1ec073ef1faeb9633e1d8c",
+        "6a1ec0d2ef1faeb9633e1fe4",
+        "6a1ec0acef1faeb9633e1ef4",
+        "6a1ec08def1faeb9633e1e30",
+        "6a1ec02def1faeb9633e1bd4",
+        "6a1ec152ef1faeb9633e2304",
+        "6a1ec00def1faeb9633e1b0c"
+      ]
+    },
+    {
+      "id": "6a1ec16cef1faeb9633e23a5",
+      "title": "Addition and Subtraction of Vectors",
+      "count": 3,
+      "questionIds": [
+        "6a1ec0f2ef1faeb9633e20a3",
+        "6a1ec02eef1faeb9633e1bd6",
+        "6a1ec053ef1faeb9633e1cc5"
+      ]
+    },
+    {
+      "id": "6a1ec16cef1faeb9633e23a6",
+      "title": "Fundamentals of Vectors",
+      "count": 3,
+      "questionIds": [
+        "6a1ec073ef1faeb9633e1d8d",
+        "6a1ec0acef1faeb9633e1ef5",
+        "6a1ec12cef1faeb9633e2215"
+      ]
+    },
+    {
+      "id": "6a1ec16cef1faeb9633e23a7",
+      "title": "Multiplication of Vectors",
+      "count": 4,
+      "questionIds": [
+        "6a1ec0d3ef1faeb9633e1fe5",
+        "6a1ec090ef1faeb9633e1e45",
+        "6a1ec152ef1faeb9633e2305",
+        "6a1ec114ef1faeb9633e217c"
+      ]
+    }
+  ]
+}

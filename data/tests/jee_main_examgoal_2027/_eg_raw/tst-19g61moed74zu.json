@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61moed74zu",
+  "title": "Probability Test - 2 (Topic Test)",
+  "type": "topic",
+  "section": "Probability",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Mathematics",
+  "isUpcoming": false,
+  "liveAt": "2026-07-24T10:30:00.000Z",
+  "status": "ok",
+  "analysisId": "d734f0dc-e928-4a7c-9f80-4bf1b8ff9058",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": null,
+  "test": {
+    "testId": "tst-19g61moed74zu",
+    "defaultLanguage": "en",
+    "description": "Permutation and Combination Based Problem, Addition Theorem of Probability",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-24T10:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mrymzxlc",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>A</b> & <b>B</b> are two independent events such that $P(\\overline{A}) = 0.7$, $P(\\overline{B}) = a$ & $P(A \\cup B) = 0.8$, then, $a =$</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{5}{7}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{2}{7}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$1$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Since $A$ and $B$ are independent events, their complements $\\overline{A}$ and $\\overline{B}$ are also independent.</p>\n<p>We know:</p>\n<p>$$ P(\\overline{A}) = 0.7 $$</p>\n<p>$$ P(\\overline{B}) = a $$</p>\n<p>Also,</p>\n<p>$$ P(A \\cup B) = 0.8 $$</p>\n<p>Now use the complement rule:</p>\n<p>$$ P(\\overline{A \\cup B}) = 1 - P(A \\cup B) $$</p>\n<p>So,</p>\n<p>$$ P(\\overline{A \\cup B}) = 1 - 0.8 = 0.2 $$</p>\n<p>By De Morgan’s law,</p>\n<p>$$ \\overline{A \\cup B} = \\overline{A} \\cap \\overline{B} $$</p>\n<p>So,</p>\n<p>$$ P(\\overline{A} \\cap \\overline{B}) = 0.2 $$</p>\n<p>Since $\\overline{A}$ and $\\overline{B}$ are independent,</p>\n<p>$$ P(\\overline{A} \\cap \\overline{B}) = P(\\overline{A})P(\\overline{B}) $$</p>\n<p>Thus,</p>\n<p>$$ 0.7 \\times a = 0.2 $$</p>\n<p>$$ a = \\frac{0.2}{0.7} $$</p>\n<p>$$ a = \\frac{2}{7} $$</p>\n<p>So, the correct option is</p>\n<p>$$ \\boxed{\\frac{2}{7}} $$</p>\n<p>Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>A</b> और <b>B</b> दो स्वतंत्र घटनाएँ इस प्रकार हैं कि $P(\\overline{A}) = 0.7$, $P(\\overline{B}) = a$ और $P(A \\cup B) = 0.8$, तब $a =$</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\dfrac{5}{7}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\dfrac{2}{7}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$1$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "addition-theorem-of-probability",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrymwn4y",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Let <i>A</i> & <i>B</i> be two events. Suppose $P(A) = 0.4$, $P(B) = p$ & $P(A \\cup B) = 0.7$. The value of $p$ for which <i>A</i> & <i>B</i> are independent is :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{1}{3}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{1}{4}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{1}{5}$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>For two events $A$ and $B$,</p>\n<p>$$ P(A \\cup B)=P(A)+P(B)-P(A \\cap B) $$</p>\n<p>Given,</p>\n<p>$$ P(A)=0.4,\\quad P(B)=p,\\quad P(A \\cup B)=0.7 $$</p>\n<p>If $A$ and $B$ are independent, then</p>\n<p>$$ P(A \\cap B)=P(A)P(B) $$</p>\n<p>So,</p>\n<p>$$ P(A \\cap B)=0.4p $$</p>\n<p>Now substitute in the union formula:</p>\n<p>$$ 0.7=0.4+p-0.4p $$</p>\n<p>$$ 0.7=0.4+0.6p $$</p>\n<p>$$ 0.3=0.6p $$</p>\n<p>$$ p=\\frac{0.3}{0.6}=\\frac{1}{2} $$</p>\n<p>So the value of $p$ is</p>\n<p>$$ \\boxed{\\frac{1}{2}} $$</p>\n<p>Correct option: C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>माना <i>A</i> तथा <i>B</i> दो घटनाएँ हैं। मान लीजिए $P(A) = 0.4$, $P(B) = p$ तथा $P(A \\cup B) = 0.7$ है। $p$ का वह मान जिसके लिए <i>A</i> तथा <i>B</i> स्वतंत्र हैं, है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$\\frac{1}{3}$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$\\frac{1}{4}$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$\\frac{1}{2}$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$\\frac{1}{5}$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "addition-theorem-of-probability",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mrynzgta",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The probabilities that a student will obtain grades <b>A</b>, <b>B</b>, <b>C</b> or <b>D</b> are 0.30, 0.35, 0.20 and 0.15 respectively. The probability that he will receive at least <b>C</b> grade, is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.65</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.85</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.80</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.20</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>“At least C grade” means the student gets grade $C$ or any grade better than $C$.</p>\n<p>So the possible grades are:</p>\n<p>$$A,\\ B,\\ C$$</p>\n<p>Given probabilities are:</p>\n<p>$$P(A)=0.30,\\quad P(B)=0.35,\\quad P(C)=0.20$$</p>\n<p>So,</p>\n<p>$$P(\\text{at least } C)=P(A)+P(B)+P(C)$$</p>\n<p>$$=0.30+0.35+0.20$$</p>\n<p>$$=0.85$$</p>\n<p>So the correct answer is:</p>\n<p>$$\\boxed{0.85}$$</p>\n<p>Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक छात्र के <b>A</b>, <b>B</b>, <b>C</b> या <b>D</b> ग्रेड प्राप्त करने की प्रायिकताएँ क्रमशः 0.30, 0.35, 0.20 और 0.15 हैं। उसके कम से कम <b>C</b> ग्रेड प्राप्त करने की प्रायिकता है-</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.65</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.85</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.80</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.20</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "addition-theorem-of-probability",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mryo3p18",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If the probability for <b>A</b> to fail in an examination is 0.2 and that for <b>B</b> is 0.3, then the probability that either <b>A</b> or <b>B</b> fails, is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.38</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.44</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.50</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.94</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let $A$ be the event that student A fails, and $B$ be the event that student B fails.</p>\n<p>Given,</p>\n<p>$$ P(A)=0.2 $$</p>\n<p>$$ P(B)=0.3 $$</p>\n<p>Assuming the results of A and B are independent,</p>\n<p>$$ P(A \\cap B)=P(A)\\times P(B) $$</p>\n<p>$$ P(A \\cap B)=0.2 \\times 0.3=0.06 $$</p>\n<p>The probability that either A or B fails means at least one of them fails.</p>\n<p>So,</p>\n<p>$$ P(A \\cup B)=P(A)+P(B)-P(A \\cap B) $$</p>\n<p>$$ P(A \\cup B)=0.2+0.3-0.06 $$</p>\n<p>$$ P(A \\cup B)=0.44 $$</p>\n<p>So, the correct option is:</p>\n<p>$$ \\boxed{0.44} $$</p>\n<p>Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि किसी परीक्षा में <b>A</b> के असफल होने की प्रायिकता 0.2 है और <b>B</b> के लिए यह 0.3 है, तो या तो <b>A</b> या <b>B</b> के असफल होने की प्रायिकता है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.38</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.44</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.50</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.94</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "addition-theorem-of-probability",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mryogulb",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>If $A$ and $B$ are any two events, then the probability that exactly one of them occurs, is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$P(A \\cap \\overline{B}) + P(\\overline{A} \\cap B)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$P(A \\cup \\overline{B}) + P(\\overline{A} \\cup B)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$P(A) + P(B) - P(A \\cap B)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$P(A) + P(B) + 2P(A \\cap B)$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Exactly one of the events $A$ and $B$ occurs means:</p>\n<ul>\n<li><p>$A$ occurs and $B$ does not occur, or</p></li>\n<li><p>$B$ occurs and $A$ does not occur.</p></li>\n</ul>\n<p>So the required event is</p>\n<p>$$ (A \\cap \\overline{B}) \\cup (\\overline{A} \\cap B) $$</p>\n<p>These two events cannot occur together, so they are mutually exclusive. Hence, the required probability is</p>\n<p>$$ P(A \\cap \\overline{B}) + P(\\overline{A} \\cap B) $$</p>\n<p>So the correct option is:</p>\n<p>$$ \\boxed{\\text{Option A}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यदि $A$ और $B$ कोई दो घटनाएँ हैं, तो उनमें से ठीक एक के घटित होने की प्रायिकता है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$P(A \\cap \\overline{B}) + P(\\overline{A} \\cap B)$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$P(A \\cup \\overline{B}) + P(\\overline{A} \\cup B)$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$P(A) + P(B) - P(A \\cap B)$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$P(A) + P(B) + 2P(A \\cap B)$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "addition-theorem-of-probability",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mryob9ir",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The probabilities of two events <b>A</b> and <b>B</b> are 0.3 and 0.6 respectively. The probability that both <b>A</b> and <b>B</b> occur simultaneously is 0.18. Then, the probability that neither <b>A</b> nor <b>B</b> occurs is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.10</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.28</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.42</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.72</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Given,</p>\n<p>$$P(A)=0.3$$</p>\n<p>$$P(B)=0.6$$</p>\n<p>$$P(A \\cap B)=0.18$$</p>\n<p>We need the probability that neither $A$ nor $B$ occurs.</p>\n<p>First find the probability that at least one of $A$ or $B$ occurs, that is $P(A \\cup B)$.</p>\n<p>Using the addition rule of probability,</p>\n<p>$$P(A \\cup B)=P(A)+P(B)-P(A \\cap B)$$</p>\n<p>Substitute the values:</p>\n<p>$$P(A \\cup B)=0.3+0.6-0.18$$</p>\n<p>$$P(A \\cup B)=0.72$$</p>\n<p>Now, the event that neither $A$ nor $B$ occurs is the complement of the event that at least one of them occurs.</p>\n<p>So,</p>\n<p>$$P(\\text{neither } A \\text{ nor } B)=1-P(A \\cup B)$$</p>\n<p>$$=1-0.72$$</p>\n<p>$$=0.28$$</p>\n<p>So, the correct option is:</p>\n<p>$$\\boxed{0.28}$$</p>\n<p>Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दो घटनाओं <b>A</b> तथा <b>B</b> की प्रायिकताएँ क्रमशः 0.3 तथा 0.6 हैं। <b>A</b> तथा <b>B</b> दोनों के एक साथ घटित होने की प्रायिकता 0.18 है। तब, न तो <b>A</b> और न ही <b>B</b> के घटित होने की प्रायिकता है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.10</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.28</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.42</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>0.72</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "addition-theorem-of-probability",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mryo7zf7",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Three athletes <i>A</i>, <i>B</i> and <i>C</i> participate in a race. Both <i>A</i> and <i>B</i> have the same probability of winning the race and each is twice as likely to win as <i>C</i>. The probability that <i>B</i> or <i>C</i> wins the race is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2/3</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>3/5</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3/4</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>13/25</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Let the probability that $C$ wins the race be $x$.</p>\n<p>Since $A$ and $B$ are each twice as likely to win as $C$,</p>\n<p>$$ P(A)=2x,\\quad P(B)=2x,\\quad P(C)=x $$</p>\n<p>One of the three athletes must win the race, so the sum of their probabilities is $1$.</p>\n<p>$$ 2x+2x+x=1 $$</p>\n<p>$$ 5x=1 $$</p>\n<p>$$ x=\\frac{1}{5} $$</p>\n<p>So,</p>\n<p>$$ P(B)=2x=\\frac{2}{5} $$</p>\n<p>and</p>\n<p>$$ P(C)=x=\\frac{1}{5} $$</p>\n<p>Since only one athlete can win, the events “$B$ wins” and “$C$ wins” are mutually exclusive.</p>\n<p>$$ P(B \\text{ or } C)=P(B)+P(C) $$</p>\n<p>$$ =\\frac{2}{5}+\\frac{1}{5} $$</p>\n<p>$$ =\\frac{3}{5} $$</p>\n<p>So, the probability that $B$ or $C$ wins the race is</p>\n<p>$$ \\boxed{\\frac{3}{5}} $$</p>\n<p>Correct option: B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>तीन एथलीट <i>A</i>, <i>B</i> और <i>C</i> एक दौड़ में भाग लेते हैं। <i>A</i> और <i>B</i> दोनों के दौड़ जीतने की प्रायिकता समान है और प्रत्येक के जीतने की प्रायिकता <i>C</i> की तुलना में दोगुनी है। <i>B</i> या <i>C</i> के दौड़ जीतने की प्रायिकता है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>2/3</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>3/5</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>3/4</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>13/25</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "addition-theorem-of-probability",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mryof18p",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The probability that at least one of the events <b>A</b> and <b>B</b> occur is 0.6. If <b>A</b> and <b>B</b> occur simultaneously with probability 0.2, then $P(\\overline{A}) + P(\\overline{B})$, where $\\overline{A}$ and $\\overline{B}$ are complements of <b>A</b> and <b>B</b> respectively, is equal to</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.4</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.8</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1.4</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The probability that at least one of $A$ and $B$ occurs means</p>\n<p>$$ P(A \\cup B)=0.6 $$</p>\n<p>Also, the probability that both occur simultaneously is</p>\n<p>$$ P(A \\cap B)=0.2 $$</p>\n<p>Using the addition rule of probability,</p>\n<p>$$ P(A \\cup B)=P(A)+P(B)-P(A \\cap B) $$</p>\n<p>Substitute the given values:</p>\n<p>$$ 0.6=P(A)+P(B)-0.2 $$</p>\n<p>So,</p>\n<p>$$ P(A)+P(B)=0.8 $$</p>\n<p>Now,</p>\n<p>$$ P(\\overline{A})=1-P(A) $$</p>\n<p>and</p>\n<p>$$ P(\\overline{B})=1-P(B) $$</p>\n<p>So,</p>\n<p>$$ P(\\overline{A})+P(\\overline{B}) = [1-P(A)] + [1-P(B)] $$</p>\n<p>$$ =2-[P(A)+P(B)] $$</p>\n<p>$$ =2-0.8 $$</p>\n<p>$$ =1.2 $$</p>\n<p>So the correct option is</p>\n<p>$$ \\boxed{1.2} $$</p>\n<p>Option C.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>घटनाओं <b>A</b> और <b>B</b> में से कम से कम एक के घटित होने की प्रायिकता 0.6 है। यदि <b>A</b> और <b>B</b> के एक साथ घटित होने की प्रायिकता 0.2 है, तो $P(\\overline{A}) + P(\\overline{B})$, जहाँ $\\overline{A}$ और $\\overline{B}$ क्रमशः <b>A</b> और <b>B</b> के पूरक (complements) हैं, का मान है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.4</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.8</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.2</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1.4</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "addition-theorem-of-probability",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mryon5yf",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The probability that out of 10 persons, all born in April, at least two have the same birthday is</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{^{30}C_{10}}{(30)^{10}} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ 1 - \\frac{^{30}C_{10}}{30!} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{(30)^{10} - \\,^{30}C_{10}}{(30)^{10}} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>none of these</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>All 10 persons are born in April, and April has 30 days. So each person can have their birthday on any one of these 30 days.</p>\n<p>To find the total number of ways all 10 persons can have their birthdays, we let each person independently choose one of the 30 days.</p>\n<p>$$n(S)=30\\times 30\\times \\ldots \\times 30\\ \\text{(10 times)}=30^{10}$$</p>\n<p>Now, the event $E$ is that <b>at least two</b> persons share the same birthday. It's easier to first think about the opposite case, where all 10 have <i>different</i> birthdays, and then subtract it from the total.</p>\n<p>So the number of favourable outcomes for $E$ is the total number of outcomes minus the number of ways in which all 10 persons have different birthdays.</p>\n<p>$$n(E)=30^{10}-{}^{30}C_{10}$$</p>\n<p>Finally, the probability of at least two persons having the same birthday is found by dividing the favourable outcomes by the total outcomes.</p>\n<p>$$P(E)=\\frac{n(E)}{n(S)}=\\frac{30^{10}-{}^{30}C_{10}}{30^{10}}$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>अप्रैल में जन्मे 10 व्यक्तियों में से कम से कम दो व्यक्तियों का जन्मदिन एक ही दिन होने की प्रायिकता है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$ \\frac{^{30}C_{10}}{(30)^{10}} $</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$ 1 - \\frac{^{30}C_{10}}{30!} $</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$ \\frac{(30)^{10} - \\,^{30}C_{10}}{(30)^{10}} $</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>इनमें से कोई नहीं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "permutation-and-combination-based-problem",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mryoseoq",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Read the following pair of statements:</p>\n<p><b>S<sub>1</sub></b>: If $P(A) = 0.71$, $P(B) = 0.42$, $P(A \\cap B) = 0.6$, then the probabilities $P(A)$ and $P(B)$ can be defined consistently.</p>\n<p><b>S<sub>2</sub></b>: If $P(A) = 0.54$, $P(B) = 0.61$, $P(A \\cup B) = 0.7$, then the probabilities $P(A)$ and $P(B)$ can be defined consistently.</p>\n<p>Therefore,</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$S_1$ alone is true</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$S_2$ alone is true</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Neither $S_1$ nor $S_2$ is true</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Both $S_1$ and $S_2$ are true</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For probabilities to be consistently defined, they must follow basic probability rules.</p>\n<p>For $S_1$:</p>\n<p>Given,</p>\n<p>$$ P(A)=0.71,\\quad P(B)=0.42,\\quad P(A\\cap B)=0.6 $$</p>\n<p>We know that the probability of intersection cannot be greater than the probability of either event.</p>\n<p>So,</p>\n<p>$$ P(A\\cap B)\\leq P(A) $$</p>\n<p>and</p>\n<p>$$ P(A\\cap B)\\leq P(B) $$</p>\n<p>But here,</p>\n<p>$$ P(A\\cap B)=0.6 $$</p>\n<p>and</p>\n<p>$$ P(B)=0.42 $$</p>\n<p>So,</p>\n<p>$$ 0.6>0.42 $$</p>\n<p>This is not possible. Hence, $S_1$ is false.</p>\n<p>For $S_2$:</p>\n<p>Given,</p>\n<p>$$ P(A)=0.54,\\quad P(B)=0.61,\\quad P(A\\cup B)=0.7 $$</p>\n<p>Using the formula,</p>\n<p>$$ P(A\\cup B)=P(A)+P(B)-P(A\\cap B) $$</p>\n<p>So,</p>\n<p>$$ 0.7=0.54+0.61-P(A\\cap B) $$</p>\n<p>$$ P(A\\cap B)=1.15-0.7=0.45 $$</p>\n<p>Now check whether this is possible:</p>\n<p>$$ 0.45\\leq 0.54 $$</p>\n<p>and</p>\n<p>$$ 0.45\\leq 0.61 $$</p>\n<p>So the intersection is not greater than either event. Also, it is non-negative.</p>\n<p>Hence, $S_2$ is true.</p>\n<p>So, only $S_2$ is true.</p>\n<p>$$ \\boxed{\\text{Option B}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>कथनों के निम्नलिखित युग्म को पढ़ें:</p><p><b>S<sub>1</sub></b>: यदि $P(A) = 0.71$, $P(B) = 0.42$, $P(A \\cap B) = 0.6$ है, तो प्रायिकताओं $P(A)$ तथा $P(B)$ को संगत रूप से परिभाषित किया जा सकता है।</p><p><b>S<sub>2</sub></b>: यदि $P(A) = 0.54$, $P(B) = 0.61$, $P(A \\cup B) = 0.7$ है, तो प्रायिकताओं $P(A)$ तथा $P(B)$ को संगत रूप से परिभाषित किया जा सकता है।</p><p>इसलिए,</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>केवल $S_1$ सत्य है</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>केवल $S_2$ सत्य है</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>न तो $S_1$ और न ही $S_2$ सत्य है</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$S_1$ और $S_2$ दोनों सत्य हैं</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "addition-theorem-of-probability",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mryozogv",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "hard",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Suppose $A, B, C$ are three events. The probability that exactly one event occurs among $A$ and $B$ is $1-a$, among $B$ and $C$ is $1-2 a$, among $C$ and $A$ is</p>\n<p>$1-a$, and the probability that all the three events occur together is $a^2$. If the probability that at least one of $A, B, C$ occurs is greater than $\\lambda$, then the value of $2050 \\lambda$ must be</p>",
+                "options": [],
+                "answer": "1025",
+                "explanation": "<p>For events $A$ and $B$, \"exactly one of them\" means:</p>\n<p>$$P(A) + P(B) - 2P(A \\cap B) = 1 - a$$</p>\n<p>Similarly for $B$ and $C$:</p>\n<p>$$P(B) + P(C) - 2P(B \\cap C) = 1 - 2a$$</p>\n<p>And for $C$ and $A$:</p>\n<p>$$P(C) + P(A) - 2P(C \\cap A) = 1 - a$$</p>\n<p>Also we know:</p>\n<p>$$P(A \\cap B \\cap C) = a^2$$</p>\n<p>From the addition rule:</p>\n<p>$$P(A \\cup B \\cup C) = P(A) + P(B) + P(C) - P(A\\cap B) - P(B\\cap C) - P(C\\cap A) + P(A\\cap B\\cap C)$$</p>\n<p>The trick is to add the three \"exactly one\" equations. Whenwe add them together, each of $P(A), P(B), P(C)$ appears twice:</p>\n<p>$$2\\big(P(A) + P(B) + P(C)\\big) - 2\\big(P(A\\cap B) + P(B\\cap C) + P(C\\cap A)\\big)$$</p>\n<p>$$= (1-a) + (1-2a) + (1-a) = 3 - 4a$$</p>\n\n<p>$$P(A) + P(B) + P(C) - P(A\\cap B) - P(B\\cap C) - P(C\\cap A) = \\frac{3 - 4a}{2}$$</p>\n<p>Notice that this is exactly the part of the union formula before adding the triple intersection. So:</p>\n<p>$$P(A \\cup B \\cup C) = \\frac{3 - 4a}{2} + a^2$$</p>\n<p>$$P(A \\cup B \\cup C) = a^2 - 2a + \\frac{3}{2}$$</p>\n\n<p>This is a quadratic in $a$. To find its minimum, complete the square:</p>\n<p>$$a^2 - 2a + \\frac{3}{2} = (a - 1)^2 - 1 + \\frac{3}{2} = (a-1)^2 + \\frac{1}{2}$$</p>\n<p>Since $(a-1)^2 \\geq 0$, the smallest value the expression can reach is $\\frac{1}{2}$, when $a = 1$.</p>\n<p>So the probability that at least one event occurs is always at least $\\frac{1}{2}$:</p>\n<p>$$P(A \\cup B \\cup C) \\geq \\frac{1}{2}$$</p>\n<p>This means the probability is greater than $\\lambda$ where</p>\n<p>$$\\lambda = \\frac{1}{2}$$</p>\n<p>Finally:</p>\n<p>$$2050\\lambda = 2050 \\times \\frac{1}{2} = 1025$$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>मान लीजिए कि $A, B, C$ तीन घटनाएँ हैं। $A$ और $B$ में से ठीक एक घटना के घटित होने की प्रायिकता $1-a$ है, $B$ और $C$ में से $1-2 a$ है, $C$ और $A$ में से</p><p>$1-a$ है, तथा सभी तीनों घटनाओं के एक साथ घटित होने की प्रायिकता $a^2$ है। यदि $A, B, C$ में से कम से कम एक के घटित होने की प्रायिकता $\\lambda$ से अधिक है, तो $2050 \\lambda$ का मान होना चाहिए</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "addition-theorem-of-probability",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrypdhfa",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A bag contains 10 different balls. Five balls are drawn simultaneously and then replaced and then seven balls are drawn. If the probability that exactly 3 balls are common to the 2 draws is $p$, then the value of $8 p$ is …</p>",
+                "options": [],
+                "answer": "7",
+                "explanation": "<p>There are 10 balls in the bag. In the first draw we take out 5 balls, note them, and put them back. Then we draw 7 balls. We want the chance that exactly 3 balls are the same in both draws.</p>\n<p>To count things easily, we can fix the second draw and see in how many ways the first draw can be made. The number of ways of drawing 7 balls is $^{10}C_7$.</p>\n<p>Now think about the second set of 7 balls. Out of these 7 balls, 3 must be the same as the balls picked in the first draw. So from the 7 balls of the second draw, we choose 3 to be the common ones, which can be done in $^{7}C_3$ ways.</p>\n<p>But the first draw had 5 balls. If 3 of them are common (chosen from the second draw's 7), then the remaining 2 balls of the first draw must come from the balls that were <i>not</i> in the second draw. Since 7 balls were in the second draw, $10 - 7 = 3$ balls are left, and we pick 2 of them. That gives $^{3}C_2$ ways.</p>\n<p>So for each choice of the 7 balls in the second draw, the number of favourable ways of making the first draw is $^{7}C_3 \\times {}^{3}C_2$.</p>\n<p>This gives the probability of exactly 3 balls being common as</p>\n<p>$$ p = \\frac{{}^{7}C_3 \\times {}^{3}C_2}{{}^{10}C_7} = \\frac{7}{8} $$</p>\n<p>Finally, since the question asks for $8p$, we multiply:</p>\n<p>$$ 8p = 8 \\times \\frac{7}{8} = 7 $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक थैले में 10 अलग-अलग गेंदें हैं। पाँच गेंदें एक साथ निकाली जाती हैं और फिर उन्हें वापस रख दिया जाता है और उसके बाद सात गेंदें निकाली जाती हैं। यदि दोनों बार निकाली गई गेंदों में ठीक 3 गेंदें उभयनिष्ठ होने की प्रायिकता $p$ है, तो $8 p$ का मान … है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "permutation-and-combination-based-problem",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mrypodr3",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Suppose $A$ and $B$ are two events with $P(A)=0.5$ and $P(A \\cup B)=0.8$. Let $P(B)=p$, if $A$ and $B$ are mutually exclusive and $P(B)=q$ if $A$ and $B$ are independent events, then the value of $\\frac{q}{p}$ is ………</p>",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>For two events, we use the formula</p>\n<p>$$ P(A \\cup B)=P(A)+P(B)-P(A \\cap B) $$</p>\n<p>First, when $A$ and $B$ are mutually exclusive, they cannot occur together, so</p>\n<p>$$ P(A \\cap B)=0 $$</p>\n<p>Thus,</p>\n<p>$$ P(A \\cup B)=P(A)+P(B) $$</p>\n<p>Given,</p>\n<p>$$ 0.8=0.5+p $$</p>\n<p>So,</p>\n<p>$$ p=0.3 $$</p>\n<p>Now, when $A$ and $B$ are independent events,</p>\n<p>$$ P(A \\cap B)=P(A)P(B) $$</p>\n<p>Here $P(B)=q$, so</p>\n<p>$$ P(A \\cap B)=0.5q $$</p>\n<p>Using the union formula,</p>\n<p>$$ 0.8=0.5+q-0.5q $$</p>\n<p>$$ 0.8=0.5+0.5q $$</p>\n<p>$$ 0.3=0.5q $$</p>\n<p>$$ q=0.6 $$</p>\n<p>Now,</p>\n<p>$$ \\frac{q}{p}=\\frac{0.6}{0.3}=2 $$</p>\n<p>So, the value of $\\frac{q}{p}$ is</p>\n<p>$$ \\boxed{2} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>मान लीजिए $A$ और $B$ दो ऐसी घटनाएँ हैं कि $P(A)=0.5$ और $P(A \\cup B)=0.8$ है। माना $P(B)=p$ यदि $A$ और $B$ परस्पर अपवर्जी हैं और $P(B)=q$ यदि $A$ और $B$ स्वतंत्र घटनाएँ हैं, तो $\\frac{q}{p}$ का मान ……… है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "addition-theorem-of-probability",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mryqieg0",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$X$ wants to put 5 different rings into three different pockets is that no pocket is empty. Then the probability of such event occurring is $\\frac{1}{P}$. Then the value of $[P]$ is</p>\n<p>$\\_\\_\\_\\_$ ([.] is greatest integer function)</p>",
+                "options": [],
+                "answer": "1",
+                "explanation": "<p>Each ring can be put into any one of the $3$ different pockets.</p>\n<p>So, total number of ways to put $5$ different rings into $3$ different pockets is</p>\n<p>$$ 3^5=243 $$</p>\n<p>Now we need the number of ways such that no pocket is empty.</p>\n<p>Using inclusion-exclusion:</p>\n<p>Number of ways with all pockets non-empty is</p>\n<p>$$ 3^5-\\binom{3}{1}2^5+\\binom{3}{2}1^5 $$</p>\n<p>$$ =243-3(32)+3(1) $$</p>\n<p>$$ =243-96+3=150 $$</p>\n<p>So the required probability is</p>\n<p>$$ \\frac{150}{243}=\\frac{50}{81} $$</p>\n<p>Given that this probability is $\\frac{1}{P}$,</p>\n<p>$$ \\frac{1}{P}=\\frac{50}{81} $$</p>\n<p>So,</p>\n<p>$$ P=\\frac{81}{50}=1.62 $$</p>\n<p>Hence,</p>\n<p>$$ [P]=[1.62]=1 $$</p>\n<p>So the value of $[P]$ is</p>\n<p>$$ \\boxed{1} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$X$ 5 अलग-अलग अंगूठियों को तीन अलग-अलग जेबों में इस प्रकार रखना चाहता है कि कोई भी जेब खाली न रहे। तब इस घटना के घटित होने की प्रायिकता $\\frac{1}{P}$ है। तो $[P]$ का मान है</p><p>$\\_\\_\\_\\_$ ([.] महत्तम पूर्णांक फलन है)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "permutation-and-combination-based-problem",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mryqx3uh",
+            "chapter": "probability",
+            "chapterGroup": "algebra",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Three numbers are chosen at random without replacement from $\\{1,2,3, \\ldots, 10\\}$. The probability that the smallest of the chosen numbers is 3 , or the greatest one is 7 is p. Then find the value of 80p.</p>",
+                "options": [],
+                "answer": "22",
+                "explanation": "<p>We are picking 3 numbers from $\\{1, 2, 3, \\ldots, 10\\}$ without putting any back. We want the chance that either the smallest number picked is 3, or the largest number picked is 7.</p>\n<p>Since two things are being asked about (\"smallest is 3\" or \"greatest is 7\"), let us name them so it stays clear.</p>\n<p>Let $E_1$ be the event that the smallest chosen number is 3.<br>Let $E_2$ be the event that the greatest chosen number is 7.</p>\n<p><b>Finding $P(E_1)$:</b> If 3 is the smallest number, then 3 must be one of our picks, and the other two numbers must be bigger than 3. The numbers bigger than 3 are 4 to 10, which gives us 7 choices for those two numbers.</p>\n<p>So we fix 3 as one number, and choose 2 more from the 7 numbers (4 to 10):</p>\n<p>$$ P(E_1) = \\frac{{}^1C_1 \\times {}^7C_2}{{}^{10}C_3}=\\frac{7}{40} $$</p>\n<p><b>Finding $P(E_2)$:</b> If 7 is the greatest number, then 7 must be picked, and the other two must be smaller than 7. The numbers smaller than 7 are 1 to 6, giving 6 choices.</p>\n<p>So we fix 7, and choose 2 more from the 6 numbers (1 to 6):</p>\n<p>$$ P(E_2) = \\frac{{}^1C_1 \\times {}^6C_2}{{}^{10}C_3}=\\frac{1}{8} $$</p>\n<p><b>Finding $P(E_1 \\cap E_2)$:</b> This is the case where both things happen together. The smallest number is 3 and the greatest is 7. That means 3 and 7 are both picked, and the third number must be between them, so it comes from 4, 5, or 6. That gives 3 choices.</p>\n<p>$$ P(E_1 \\cap E_2) = \\frac{{}^1C_1 \\times {}^1C_1 \\times {}^3C_1}{{}^{10}C_3} = \\frac{1}{40} $$</p>\n<p>Now, since we want \"either one or the other\" (this is the union), we add the two probabilities but subtract the overlap once, so we don't count it twice.</p>\n<p>$$ P(E_1 \\cup E_2) = P(E_1) + P(E_2) - P(E_1 \\cap E_2) $$</p>\n<p>$$= \\frac{7}{40} + \\frac{1}{8} - \\frac{1}{40}$$</p>\n<p>$$= \\frac{7 + 5 - 1}{40} = \\frac{11}{40}$$</p>\n<p>So $p = \\dfrac{11}{40}$. The question asks for $80p$:</p>\n<p>$$ 80p = 80 \\times \\frac{11}{40} = 22 $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>समुच्चय $\\{1,2,3, \\ldots, 10\\}$ से बिना प्रतिस्थापन के यादृच्छिक रूप से तीन संख्याएँ चुनी जाती हैं। चुनी गई संख्याओं में से सबसे छोटी संख्या के 3 होने, या सबसे बड़ी संख्या के 7 होने की प्रायिकता p है। तो 80p का मान ज्ञात कीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "mathematics",
+            "timeAllotted": 90000,
+            "topic": "addition-theorem-of-probability",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Permutation and Combination Based Problem, Addition Theorem of Probability",
+    "timeAllotted": 2160000,
+    "title": "Probability Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61moed74zu",
+    "defaultLanguage": "en",
+    "description": "Permutation and Combination Based Problem, Addition Theorem of Probability",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-07-24T10:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Permutation and Combination Based Problem, Addition Theorem of Probability",
+    "timeAllotted": 2160000,
+    "title": "Probability Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Mathematics",
+    "_section": "Probability"
+  }
+}

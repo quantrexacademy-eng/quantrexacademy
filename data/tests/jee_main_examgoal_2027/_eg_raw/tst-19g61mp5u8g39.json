@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mp5u8g39",
+  "title": "Elasticity Test - 1 (Topic Test)",
+  "type": "topic",
+  "section": "Elasticity",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Physics",
+  "isUpcoming": false,
+  "liveAt": "2026-08-28T03:30:00.000Z",
+  "status": "ok",
+  "analysisId": "f83857dc-3576-4272-b932-d956e07e510c",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61mp5u8g39",
+    "defaultLanguage": "en",
+    "description": "Stress, Breaking Stress and Breaking Force, Strain, Relation between Stress and Strain and Modulus of Elasticity",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-28T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mtc2hgq2",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Two blocks of masses 2 kg and 4 kg are connected by a metal wire going over a smooth pulley. The breaking stress of the metal is</p><p>$\\frac{28}{\\pi} \\times 10^2$ Nm$^{-2}$.</p><p>The minimum radius of the wire will be ... (Take, $g = 10$ ms$^{-2}$)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>97 cm</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>9.7 cm</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.97 cm</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>12.5 cm</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For the wire to just avoid breaking, the stress in the wire should be equal to the breaking stress.</p>\n<p>The two masses form an Atwood machine.</p>\n<p>Given:</p>\n<p>$$m_1 = 2 \\text{ kg}, \\quad m_2 = 4 \\text{ kg}, \\quad g = 10 \\text{ m s}^{-2}$$</p>\n<p>For two masses connected over a smooth pulley, the tension in the wire is</p>\n<p>$$T = \\frac{2m_1m_2g}{m_1 + m_2}$$</p>\n<p>$$T = \\frac{2 \\times 2 \\times 4 \\times 10}{2 + 4}$$</p>\n<p>$$T = \\frac{160}{6} = \\frac{80}{3} \\text{ N}$$</p>\n<p>Breaking stress is given as</p>\n<p>$$\\frac{28}{\\pi} \\times 10^2 \\text{ N m}^{-2}$$</p>\n<p>So,</p>\n<p>$$\\text{Breaking stress} = \\frac{2800}{\\pi} \\text{ N m}^{-2}$$</p>\n<p>Stress in the wire is</p>\n<p>$$\\text{Stress} = \\frac{T}{A}$$</p>\n<p>For minimum radius, the wire is just at breaking point:</p>\n<p>$$\\frac{T}{A} = \\frac{2800}{\\pi}$$</p>\n<p>So,</p>\n<p>$$A = \\frac{T}{\\text{Breaking stress}}$$</p>\n<p>$$A = \\frac{\\frac{80}{3}}{\\frac{2800}{\\pi}}$$</p>\n<p>$$A = \\frac{80\\pi}{8400}$$</p>\n<p>$$A = \\frac{\\pi}{105} \\text{ m}^2$$</p>\n<p>But area of cross-section of wire is</p>\n<p>$$A = \\pi r^2$$</p>\n<p>So,</p>\n<p>$$\\pi r^2 = \\frac{\\pi}{105}$$</p>\n<p>$$r^2 = \\frac{1}{105}$$</p>\n<p>$$r = \\frac{1}{\\sqrt{105}} \\text{ m}$$</p>\n<p>$$r \\approx 0.097 \\text{ m}$$</p>\n<p>Converting into cm:</p>\n<p>$$0.097 \\text{ m} = 9.7 \\text{ cm}$$</p>\n<p>So, the minimum radius of the wire is</p>\n<p>$$\\boxed{9.7 \\text{ cm}}$$</p>\n<p>Correct option: B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>2 kg और 4 kg द्रव्यमान के दो गुटके एक चिकनी घिरनी के ऊपर से होकर गुजरने वाले एक धातु के तार से जुड़े हैं। धातु का भंजक प्रतिबल (breaking stress) है</p><p>$\\frac{28}{\\pi} \\times 10^2$ Nm$^{-2}$।</p><p>तार की न्यूनतम त्रिज्या होगी ... ($g = 10$ ms$^{-2}$ लें)</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>97 cm</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>9.7 cm</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>0.97 cm</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>12.5 cm</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "stress-breaking-stress-and-breaking-force-strain-relation-between-stress-and-strain-and-modulus-of-elasticity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtc2fsbi",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The strength of a material is determined by</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>ultimate stress in stress-strain curve</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>breaking stress in stress-strain curve</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>yield point stress in stress-strain curve</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>permanent set in stress-strain curve</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The correct option is <strong>Option A: ultimate stress in stress-strain curve</strong>.</p>\n<p>The <strong>strength of a material</strong> means the maximum stress that the material can withstand before it starts failing.</p>\n<p>In a stress-strain curve, the highest point of the curve represents the <strong>ultimate stress</strong>. This is also called the <strong>ultimate tensile strength</strong> of the material.</p>\n<p>After this point, the material becomes weak due to necking and finally breaks at the breaking point. So, the breaking stress may be less than the ultimate stress, especially for ductile materials.</p>\n<p>So, the strength of a material is determined by its <strong>ultimate stress</strong>.</p>\n<p>$$ \\text{Strength of material} = \\text{Ultimate stress} $$</p>\n<p>Hence, the answer is <strong>Option A</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>किसी पदार्थ का सामर्थ्य (strength) किसके द्वारा निर्धारित होता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>प्रतिबल-विकृति वक्र में चरम प्रतिबल (ultimate stress)</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>प्रतिबल-विकृति वक्र में भंजक प्रतिबल (breaking stress)</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>प्रतिबल-विकृति वक्र में पराभव बिंदु प्रतिबल (yield point stress)</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>प्रतिबल-विकृति वक्र में स्थायी विरूपण (permanent set)</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "stress-breaking-stress-and-breaking-force-strain-relation-between-stress-and-strain-and-modulus-of-elasticity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtc2tjdb",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A uniform rod of length $L$ and density $\\rho$ is being pulled along a smooth floor with a horizontal acceleration $\\alpha$ (see figure). The magnitude of the stress at the transverse cross-section through the mid-point of the rod is</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc2lc80/603e428e-f9e9-4621-86c5-b97641d7c988/39125200-a263-11f1-b9db-ab431e96d529/file-6y3zli1mtc2lc81.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc2lc80/603e428e-f9e9-4621-86c5-b97641d7c988/39125200-a263-11f1-b9db-ab431e96d529/file-6y3zli1mtc2lc81.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "$\\frac{1}{2} \\rho \\alpha L$"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "$\\frac{1}{4} \\rho \\alpha L$"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "$\\frac{2 \\rho \\alpha}{L}$"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "$\\frac{4 \\rho \\alpha}{L}$"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>Let $A$ be the area of cross-section of the rod.</p>\n<p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc2lc80/603e428e-f9e9-4621-86c5-b97641d7c988/39125200-a263-11f1-b9db-ab431e96d529/file-6y3zli1mtc2lc81.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc2lc80/603e428e-f9e9-4621-86c5-b97641d7c988/39125200-a263-11f1-b9db-ab431e96d529/file-6y3zli1mtc2lc81.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>FBD of rod at mid-point</p>\n<p>Mass, $m=$ Volume × Density</p>\n<p>$$ =\\left(\\frac{L}{2} \\cdot A\\right) \\rho $$</p>\n<p><img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc2s364/736fb581-bd21-4013-b384-a1d29f52fe74/f4be24c0-a263-11f1-b9db-ab431e96d529/file-6y3zli1mtc2s365.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc2s364/736fb581-bd21-4013-b384-a1d29f52fe74/f4be24c0-a263-11f1-b9db-ab431e96d529/file-6y3zli1mtc2s365.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>$\\begin{aligned} & \\therefore T=m \\alpha=\\frac{L}{2} A \\rho \\alpha \\\\ & \\therefore \\text { Stress }=\\frac{T}{A}=\\frac{1}{2} \\rho \\alpha L\\end{aligned}$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>लंबाई $L$ और घनत्व $\\rho$ वाली एकसमान छड़ को एक क्षैतिज त्वरण $\\alpha$ के साथ एक चिकने फर्श पर खींचा जा रहा है (चित्र देखें)। छड़ के मध्य-बिंदु से गुजरने वाले अनुप्रस्थ काट पर प्रतिबल का परिमाण है</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc2lc80/603e428e-f9e9-4621-86c5-b97641d7c988/39125200-a263-11f1-b9db-ab431e96d529/file-6y3zli1mtc2lc81.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc2lc80/603e428e-f9e9-4621-86c5-b97641d7c988/39125200-a263-11f1-b9db-ab431e96d529/file-6y3zli1mtc2lc81.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "$\\frac{1}{2} \\rho \\alpha L$"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "$\\frac{1}{4} \\rho \\alpha L$"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "$\\frac{2 \\rho \\alpha}{L}$"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "$\\frac{4 \\rho \\alpha}{L}$"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "stress-breaking-stress-and-breaking-force-strain-relation-between-stress-and-strain-and-modulus-of-elasticity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtc2vdfi",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The elastic limit of brass is 300 MPa. What should be the minimum diameter of a brass rod, if it is to support a 500 N load without exceeding its elastic limit?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.90 m</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.0014 m</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.16 m</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1.36 m</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The rod should not be stressed beyond its elastic limit.</p>\n<p>Elastic limit of brass:</p>\n<p>$$ \\sigma = 300 \\text{ MPa} = 300 \\times 10^6 \\text{ Pa} $$</p>\n<p>Load supported by the rod:</p>\n<p>$$ F = 500 \\text{ N} $$</p>\n<p>Stress is given by</p>\n<p>$$ \\sigma = \\frac{F}{A} $$</p>\n<p>So the minimum cross-sectional area required is</p>\n<p>$$ A = \\frac{F}{\\sigma} $$</p>\n<p>$$ A = \\frac{500}{300 \\times 10^6} $$</p>\n<p>$$ A = 1.67 \\times 10^{-6} \\text{ m}^2 $$</p>\n<p>For a circular rod,</p>\n<p>$$ A = \\frac{\\pi d^2}{4} $$</p>\n<p>So,</p>\n<p>$$ d = \\sqrt{\\frac{4A}{\\pi}} $$</p>\n<p>$$ d = \\sqrt{\\frac{4 \\times 1.67 \\times 10^{-6}}{3.14}} $$</p>\n<p>$$ d \\approx 1.46 \\times 10^{-3} \\text{ m} $$</p>\n<p>$$ d \\approx 0.0014 \\text{ m} $$</p>\n<p>So the minimum diameter of the brass rod should be</p>\n<p>$$ \\boxed{0.0014 \\text{ m}} $$</p>\n<p>Correct option: Option B.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>पीतल की प्रत्यास्थता सीमा 300 MPa है। यदि एक पीतल की छड़ को अपनी प्रत्यास्थता सीमा को पार किए बिना 500 N का भार वहन करना है, तो इसका न्यूनतम व्यास कितना होना चाहिए?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>0.90 m</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>0.0014 m</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>1.16 m</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>1.36 m</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "stress-breaking-stress-and-breaking-force-strain-relation-between-stress-and-strain-and-modulus-of-elasticity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-lx28eac6",
+            "languages": [
+              "en"
+            ],
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>On withdrawing the applied force on some objects, the deformity caused gradually diminishes with time. This is called :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>elastic fatigue</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>elastic limit</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>coefficient of elasticity</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>elastic after effect</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>When the deformity caused in an object gradually diminishes with time upon the withdrawal of the applied force, the phenomenon is known as:</p>\n\n<p><strong>Option D</strong></p>\n\n<p><strong>elastic after effect</strong></p>\n\n<p>Elastic after effect refers to the delay in the return of a material to its original shape or position after the deforming force is removed. This effect is observed in materials that exhibit viscoelastic properties, meaning they have both viscous and elastic characteristics. The material takes a finite amount of time to fully recover from the deformation, which is the essence of the elastic after effect.</p>\n\n<p>To clarify the other options:</p>\n\n<p><strong>Option A: elastic fatigue</strong></p>\n\n<p>Elastic fatigue refers to the weakening of a material's elasticity due to repeated cycles of stress or strain. Over time, the material may lose its ability to return to its original shape.</p>\n\n<p><strong>Option B: elastic limit</strong></p>\n\n<p>The elastic limit is the maximum amount of stress or strain that a material can withstand while still being able to return to its original shape after the removal of the force. Beyond this limit, the material will undergo permanent deformation.</p>\n\n<p><strong>Option C: coefficient of elasticity</strong></p>\n\n<p>The coefficient of elasticity, often referred to as the modulus of elasticity, is a measure of a material's stiffness. It is a constant that quantifies how much a material will deform under a given amount of stress.</p>\n\n<p>In summary, the correct answer is Option D: elastic after effect.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>कुछ वस्तुओं पर लगाए गए बल को हटाने पर, उत्पन्न विरूपण समय के साथ धीरे-धीरे कम होता है। इसे कहा जाता है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>प्रत्यास्थ श्रांति (elastic fatigue)</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>प्रत्यास्थता सीमा (elastic limit)</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>प्रत्यास्थता गुणांक (coefficient of elasticity)</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>प्रत्यास्थ उत्तर प्रभाव (elastic after effect)</p>"
+                  }
+                ]
+              }
+            },
+            "type": "mcq",
+            "country": "in",
+            "examGroup": "jee",
+            "exam": "jee-main",
+            "subject": "physics",
+            "chapterGroup": "mechanics",
+            "chapter": "elasticity",
+            "topic": "stress-breaking-stress-and-breaking-force-strain-relation-between-stress-and-strain-and-modulus-of-elasticity",
+            "marks": 4,
+            "negMarks": 1,
+            "timeAllotted": 120000,
+            "difficulty": "medium",
+            "subTopic": null
+          },
+          {
+            "questionId": "tq-lx1nhyu8",
+            "languages": [
+              "en"
+            ],
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The maximum load a wire can withstand without breaking, when its length is reduced to half of its original length, will</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>be double</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>be half</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>be four times</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>remain same</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The correct answer is <strong>Option D: remain the same</strong>. Let us understand the reason clearly.</p>\n<p>Whether a wire breaks or not depends on the <strong>stress</strong> acting inside it, not on how long the wire is. Stress is the force applied per unit area:</p>\n<p>$$\\text{Stress} = \\frac{\\text{Force}}{\\text{Area of cross-section}}$$</p>\n<p>Every material can bear stress only up to a certain limit. This limiting value is called the <strong>breaking stress</strong> (or tensile strength) of the material. Beyond this value, the wire snaps.</p>\n<p>The important point is that breaking stress depends only on the <i>material</i> of the wire. It does not depend on the length of the wire at all.</p>\n<p>So the maximum force the wire can bear is:</p>\n<p>$$F_{\\max} = \\text{Breaking stress} \\times \\text{Area of cross-section}$$</p>\n<p>Now, when the length of the wire is reduced to half, its cross-sectional area does not change. The material also stays the same. Since both quantities on the right side of the equation remain unchanged, $F_{\\max}$ also stays exactly the same.</p>\n<p>A simple way to picture this: take a rope that can just about hold a certain weight. If you cut it into half its length, it does not suddenly become stronger or weaker. It still holds the same maximum weight, only over a shorter span.</p>\n<p>Two related terms worth remembering here:</p>\n<ul>\n\n<li><strong>Stress:</strong> the internal restoring force per unit area, given by $\\dfrac{F}{A}$.</li>\n\n<br/><li><strong>Strain:</strong> the change in length compared to the original length, $\\dfrac{\\Delta L}{L}$. Strain does change with length, but breaking depends on stress, not strain length.</li>\n\n</ul>\n<p>Hence, halving the length has no effect on the maximum load, and the answer is that it remains the same.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>जब किसी तार की लंबाई घटाकर उसकी मूल लंबाई की आधी कर दी जाती है, तो वह अधिकतम भार जिसे तार बिना टूटे सहन कर सकता है,</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>दोगुना हो जाएगा</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>आधा हो जाएगा</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>चार गुना हो जाएगा</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>समान रहेगा</p>"
+                  }
+                ]
+              }
+            },
+            "type": "mcq",
+            "country": "in",
+            "examGroup": "jee",
+            "exam": "jee-main",
+            "subject": "physics",
+            "chapterGroup": "mechanics",
+            "chapter": "elasticity",
+            "topic": "stress-breaking-stress-and-breaking-force-strain-relation-between-stress-and-strain-and-modulus-of-elasticity",
+            "marks": 4,
+            "negMarks": 1,
+            "timeAllotted": 120000,
+            "difficulty": "easy",
+            "subTopic": null
+          },
+          {
+            "questionId": "tq-lx27sij5",
+            "languages": [
+              "en"
+            ],
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>For the following statement :</p> <p>(a) Glass is more elastic than rubber</p> <p>(b) Rubber is more elastic than glass</p> <p>(c) Steel is more elastic than rubber</p> <p>(d) Rubber is more elastic than steel</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>(a) and (b) are correct</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>(a) and (c) are correct</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>(b) and (c) are correct</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>(b) and (d) are correct</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>The correct option is <strong>Option B: (a) and (c) are correct</strong>.</p>\n<p>In physics, a material is said to be <strong>more elastic</strong> if it regains its original shape more easily after the deforming force is removed.</p>\n<p>More precisely, elasticity is compared using <strong>Young’s modulus</strong>.</p>\n<p>$$ Y=\\frac{\\text{stress}}{\\text{strain}} $$</p>\n<p>For the same stress, the material which produces <strong>less strain</strong> has a higher Young’s modulus and is called <strong>more elastic</strong>.</p>\n<p>Rubber stretches a lot even under small force, so it has a large strain. Its Young’s modulus is small.  </p>\n<p>Glass and steel stretch very little for the same force, so they have higher Young’s modulus.</p>\n<p>Among the given materials:</p>\n<p>$$ Y_{\\text{steel}} > Y_{\\text{glass}} > Y_{\\text{rubber}} $$</p>\n<p>So,</p>\n<p>(a) Glass is more elastic than rubber — <strong>correct</strong></p>\n<p>(b) Rubber is more elastic than glass — <strong>incorrect</strong></p>\n<p>(c) Steel is more elastic than rubber — <strong>correct</strong></p>\n<p>(d) Rubber is more elastic than steel — <strong>incorrect</strong></p>\n<p>Hence, the correct answer is:</p>\n<p>$$ \\boxed{\\text{Option B}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित कथनों के लिए:</p> <p>(a) कांच, रबर की तुलना में अधिक प्रत्यास्थ है</p> <p>(b) रबर, कांच की तुलना में अधिक प्रत्यास्थ है</p> <p>(c) स्टील, रबर की तुलना में अधिक प्रत्यास्थ है</p> <p>(d) रबर, स्टील की तुलना में अधिक प्रत्यास्थ है</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>(a) और (b) सही हैं</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>(a) और (c) सही हैं</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>(b) और (c) सही हैं</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>(b) और (d) सही हैं</p>"
+                  }
+                ]
+              }
+            },
+            "type": "mcq",
+            "country": "in",
+            "examGroup": "jee",
+            "exam": "jee-main",
+            "subject": "physics",
+            "chapterGroup": "mechanics",
+            "chapter": "elasticity",
+            "topic": "stress-breaking-stress-and-breaking-force-strain-relation-between-stress-and-strain-and-modulus-of-elasticity",
+            "marks": 4,
+            "negMarks": 1,
+            "timeAllotted": 120000,
+            "difficulty": "easy",
+            "subTopic": null
+          },
+          {
+            "questionId": "tq-lx27x0ez",
+            "languages": [
+              "en"
+            ],
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>On stretching some substances, permanent elongation is caused, because–</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>they are perfectly elastic</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>they are perfectly plastic</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>more stress acts on them</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>their strain is infinite</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>When we stretch a material, it can behave in two different ways once the force is removed. Either it comes back to its original length, or it stays stretched. Which one happens depends on the nature of the material. Let us look at each option and see which one explains permanent elongation.</p>\n<p><strong>Option A: They are perfectly elastic</strong></p>\n<p>A perfectly elastic body regains its original shape and size completely as soon as the stretching force is removed. So nothing permanent is left behind. This is exactly the opposite of what the question is asking about, so this option is wrong.</p>\n<p><strong>Option B: They are perfectly plastic</strong></p>\n<p>A perfectly plastic body does not return to its original shape after the force is removed. Once it is stretched beyond its elastic limit, the change in length stays with it permanently. This matches the idea of permanent elongation, so this is the right choice.</p>\n<p><strong>Option C: More stress acts on them</strong></p>\n<p>Applying more stress does produce more strain, that is true. But large stress alone does not decide whether the change is permanent or temporary. A highly elastic body can be stretched a lot and still spring back. The permanent change happens only if the material behaves plastically. So this option does not explain the reason properly.</p>\n<p><strong>Option D: Their strain is infinite</strong></p>\n<p>Strain can never be infinite in a real material. Before that stage, the body either yields or simply breaks. So this option has no physical meaning here.</p>\n<p>Permanent elongation is caused because such substances are <strong>perfectly plastic</strong> in nature.</p>\n<p><strong>Correct Answer: Option B</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>कुछ पदार्थों को खींचने पर उनमें स्थायी दीर्घीकरण उत्पन्न होता है, क्योंकि–</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>वे पूर्णतः प्रत्यास्थ होते हैं</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>वे पूर्णतः प्लास्टिक (सुघट्य) होते हैं</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>उन पर अधिक प्रतिबल कार्य करता है</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>उनकी विकृति अनंत होती है</p>"
+                  }
+                ]
+              }
+            },
+            "type": "mcq",
+            "country": "in",
+            "examGroup": "jee",
+            "exam": "jee-main",
+            "subject": "physics",
+            "chapterGroup": "mechanics",
+            "chapter": "elasticity",
+            "topic": "stress-breaking-stress-and-breaking-force-strain-relation-between-stress-and-strain-and-modulus-of-elasticity",
+            "marks": 4,
+            "negMarks": 1,
+            "timeAllotted": 120000,
+            "difficulty": "easy",
+            "subTopic": null
+          },
+          {
+            "questionId": "tq-mtc3pjqa",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The breaking stress of a wire depends on</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>material of the wire</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>length of the wire</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>radius of the wire</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>shape of the cross-section</p>"
+                  }
+                ],
+                "correct_options": [
+                  "A"
+                ],
+                "explanation": "<p>The breaking stress of a wire depends on the <strong>material of the wire</strong>.</p>\n<p>So, the correct option is:</p>\n<p><strong>Option A: material of the wire</strong></p>\n<p>Breaking stress is the maximum stress a wire can bear before it breaks. It is given by</p>\n<p>$$ \\text{Breaking stress}=\\frac{\\text{Breaking force}}{\\text{area of cross-section}} $$</p>\n<p>For a given material, breaking stress is a characteristic property. It does not depend on the length or radius of the wire. If the radius changes, the breaking force changes because the area changes, but the breaking stress remains the same for that material.</p>\n<p>So, the breaking stress depends only on the <strong>nature of the material</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>किसी तार का भंजक प्रतिबल किस पर निर्भर करता है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>तार के पदार्थ पर</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>तार की लंबाई पर</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>तार की त्रिज्या पर</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>अनुप्रस्थ काट की आकृति पर</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "stress-breaking-stress-and-breaking-force-strain-relation-between-stress-and-strain-and-modulus-of-elasticity",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-mtc9ca6q",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>Statement-1</b><br>Figure shows that stress-strain curves for two different types of rubber. Rubber <i>A</i> rather than rubber <i>B</i> should be used as a car tyre.</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc98imv/086dcc8f-6c4c-4ef1-9cce-b9810986216e/34691670-a27d-11f1-a60b-2d2ea2819a75/file-6y3zli1mtc98imw.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc98imv/086dcc8f-6c4c-4ef1-9cce-b9810986216e/34691670-a27d-11f1-a60b-2d2ea2819a75/file-6y3zli1mtc98imw.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p><b>Statement-2</b><br>Rubber <i>A</i> dissipates larger amount heat energy than rubber <i>B</i>.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>Both Statement-1 and Statement-2 are correct and Statement-2 is the correct explanation for Statement-1.</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>Both Statement-1 and Statement-2 are correct but Statement-2 is not the correct explanation for Statement-1.</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>Statement-1 is correct but Statement-2 is incorrect.</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>Statement-1 is incorrect but Statement-2 is correct.</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The correct choice is (C). The area of the hysteresis loop for rubber $A$ much smaller than that for rubber $B$. This implies that rubber $A$ dissipates a smaller amount of heat energy than rubber $B$. Consequently, tyres made of rubber $A$ will not get heated to a high temperature. This prevents wear and tear of tyres.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><b>कथन-1</b><br>चित्र दो अलग-अलग प्रकार के रबर के लिए प्रतिबल-विकृति वक्र दर्शाता है। कार के टायर के रूप में रबर <i>B</i> की तुलना में रबर <i>A</i> का उपयोग किया जाना चाहिए।</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc98imv/086dcc8f-6c4c-4ef1-9cce-b9810986216e/34691670-a27d-11f1-a60b-2d2ea2819a75/file-6y3zli1mtc98imw.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc98imv/086dcc8f-6c4c-4ef1-9cce-b9810986216e/34691670-a27d-11f1-a60b-2d2ea2819a75/file-6y3zli1mtc98imw.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<p><b>कथन-2</b><br>रबर <i>A</i>, रबर <i>B</i> की तुलना में अधिक मात्रा में ऊष्मा ऊर्जा का क्षय करता है।</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>कथन-1 और कथन-2 दोनों सही हैं तथा कथन-2, कथन-1 की सही व्याख्या है।</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>कथन-1 और कथन-2 दोनों सही हैं लेकिन कथन-2, कथन-1 की सही व्याख्या नहीं है।</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>कथन-1 सही है लेकिन कथन-2 गलत है।</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>कथन-1 गलत है लेकिन कथन-2 सही है।</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "stress-breaking-stress-and-breaking-force-strain-relation-between-stress-and-strain-and-modulus-of-elasticity",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-mtc1ao6q",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A ring of radius $R$ made of wire of density $\\rho$ is rotated about a stationary vertical axis passing through its centre and perpendicular to the plane of the ring. Determine the angular velocity (in $\\mathbf{r a d} / \\mathbf{s}$ ) of ring at which the ring breaks. The wire breaks at tensile stress $\\sigma$. Ignore gravity. Take, $\\frac{\\sigma}{\\rho}=4$ and $R=1 \\mathrm{~m}$.</p>",
+                "options": [],
+                "answer": "2",
+                "explanation": "<p>Considering an infinitesimal element of the rotating ring subtending an angle $\\mathrm{d} \\theta$ at the center.</p>\n<p>Radius of the ring is R and uniform cross-sectional area is A .</p>\n<p>The arc length of this element is, $\\mathrm{ds}=\\mathrm{R} \\mathrm{d} \\theta$</p>\n<p>Mass of this infinitesimal element $\\mathrm{dm}=\\rho \\mathrm{Ads}=\\rho \\mathrm{ARd} \\theta$</p>\n<img src=\"https://app-content.cdn.examgoal.net/fly/@width/image/6y3zli1mtc18l6i/56f0d49f-88dc-4ecd-8d78-564ed0949518/ed57f9a0-a25d-11f1-b9db-ab431e96d529/file-6y3zli1mtc18l6j.png?format=png\" data-orsrc=\"https://app-content.cdn.examgoal.net/image/6y3zli1mtc18l6i/56f0d49f-88dc-4ecd-8d78-564ed0949518/ed57f9a0-a25d-11f1-b9db-ab431e96d529/file-6y3zli1mtc18l6j.png\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n\n<p>When rotating with angular velocity $\\omega$, the centripetal force required to keep this element in circular motion is</p>\n<p>$$ dF_c = dm \\cdot \\omega^2 R = (\\rho A R\\, d\\theta)\\, \\omega^2 R = \\rho A R^2 \\omega^2\\, d\\theta $$</p>\n<p>This centripetal force is provided by the inward components of the tangential tension $T$ acting at both ends of</p>\n<p>the element,</p>\n<p>$$ 2T\\sin\\left(\\frac{d\\theta}{2}\\right)=dF_c $$</p>\n<p>For very small angles $d\\theta$, the value of $\\sin\\left(\\frac{d\\theta}{2}\\right) \\approx \\frac{d\\theta}{2}$,</p>\n<p>$$ 2T\\left(\\frac{d\\theta}{2}\\right)=\\rho A R^2 \\omega^2 d\\theta $$</p>\n<p>$$ T\\cdot d\\theta = \\rho A R^2 \\omega^2 d\\theta $$</p>\n<p>$$ T = \\rho A R^2 \\omega^2 $$</p>\n<p>The tensile stress developed in the ring wire is:</p>\n<p>$$ \\sigma = \\frac{T}{A} = \\frac{\\rho A R^2 \\omega^2}{A} = \\rho R^2 \\omega^2 $$</p>\n<p>At the breaking point, the stress equals the breaking tensile stress $\\sigma$.</p>\n<p>$$ \\sigma = \\rho R^2 \\omega^2 $$</p>\n\n<p>$$\\Rightarrow \\omega^2 = \\frac{\\sigma \\rho}{R^2} = \\frac{1}{R^2}\\left(\\frac{\\sigma}{\\rho}\\right)$$</p>\n<p>$$\\omega = \\frac{1}{R}\\sqrt{\\frac{\\sigma}{\\rho}}$$</p>\n<p>The ratio of maximum tensile stress and density of wire is $\\frac{\\sigma}{\\rho} = 4\\ \\mathrm{m}^2/\\mathrm{s}^2$</p>\n<p>The radius of the circular loop is $R = 1\\ \\mathrm{m}$</p>\n<p>$$\\omega = \\frac{1}{1}\\sqrt{4} = 2\\ \\mathrm{rad/s}$$</p>\n<p>Therefore, the required angular velocity is $2\\ \\mathrm{rad/s}.$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>घनत्व $\\rho$ के तार से बनी त्रिज्या $R$ की एक वलय को उसके केंद्र से गुजरने वाले और वलय के तल के लंबवत एक स्थिर ऊर्ध्वाधर अक्ष के परितः घुमाया जाता है। वलय का वह कोणीय वेग ($\\mathbf{r a d} / \\mathbf{s}$ में) ज्ञात कीजिए जिस पर वलय टूट जाती है। तार तनन प्रतिबल $\\sigma$ पर टूट जाता है। गुरुत्वाकर्षण को नगण्य मानिए। $\\frac{\\sigma}{\\rho}=4$ और $R=1 \\mathrm{~m}$ लीजिए।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "stress-breaking-stress-and-breaking-force-strain-relation-between-stress-and-strain-and-modulus-of-elasticity",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtc3um7y",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A rope 1 cm in diameter breaks, if the tension in it exceeds 500 N . The maximum tension that may be given to a similar rope of diameter 2 cm is</p>",
+                "options": [],
+                "answer": "2000",
+                "explanation": "<p>The breaking strength of a material is determined by its breaking stress. Since both ropes are made of the same material, the breaking stress remains the same for both.</p>\n<p>Breaking stress is defined as the maximum force (tension) per unit cross-sectional area:</p>\n<p>$$\\text{Breaking Stress} = \\frac{\\text{Maximum Tension}}{\\text{Area of cross-section}}$$</p>\n<p>For a rope of diameter $d$, the cross-sectional area $A$ is given by:</p>\n<p>$$A = \\frac{\\pi d^2}{4}$$</p>\n<p>So, the breaking stress $\\sigma$ is:</p>\n<p>$$\\sigma = \\frac{T}{\\frac{\\pi d^2}{4}} = \\frac{4T}{\\pi d^2}$$</p>\n<p>Since $\\sigma$ is a constant for the given material, the maximum tension $T$ is directly proportional to the square of the diameter:</p>\n<p>$$T \\propto d^2$$</p>\n<p>This gives the relation:</p>\n<p>$$\\frac{T_2}{T_1} = \\left(\\frac{d_2}{d_1}\\right)^2$$</p>\n<p>From the given values:</p>\n<ul>\n<li><p>Initial diameter, $d_1 = 1\\text{ cm}$</p></li>\n<li><p>Initial maximum tension, $T_1 = 500\\text{ N}$</p></li>\n<li><p>New diameter, $d_2 = 2\\text{ cm}$</p></li>\n</ul>\n<p>Substitute these values into the relation:</p>\n<p>$$\\frac{T_2}{500} = \\left(\\frac{2}{1}\\right)^2$$</p>\n<p>$$\\frac{T_2}{500} = 4$$</p>\n<p>$$T_2 = 500 \\times 4 = 2000\\text{ N}$$</p>\n<p>The maximum tension that the rope of diameter $2\\text{ cm}$ can withstand is $2000\\text{ N}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$1\\text{ cm}$ व्यास वाली एक रस्सी टूट जाती है, यदि इसमें तनाव $500\\text{ N}$ से अधिक हो जाता है। $2\\text{ cm}$ व्यास वाली एक समान रस्सी को दिया जा सकने वाला अधिकतम तनाव है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "stress-breaking-stress-and-breaking-force-strain-relation-between-stress-and-strain-and-modulus-of-elasticity",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtc3wipp",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>A body of mass 10 kg is attached to a wire 0.3 m long. Its breaking stress is $4.8 \\times 10^7 \\mathrm{~N} / \\mathrm{m}^2$. The area of cross-section of the wire is $10^{-6} \\mathrm{~m}^2$. The maximum angular velocity with which it can be rotated in a horizontal circle without breaking is</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>The wire will break when the tension in it becomes equal to the maximum force it can bear.</p>\n<p>Breaking stress is</p>\n<p>$$ \\text{Breaking stress}=\\frac{\\text{Breaking force}}{\\text{Area}} $$</p>\n<p>So,</p>\n<p>$$ \\text{Breaking force}=\\text{Breaking stress} \\times \\text{Area} $$</p>\n<p>Given,</p>\n<p>$$ \\text{Breaking stress}=4.8\\times 10^7 \\ \\text{N/m}^2 $$</p>\n<p>$$ A=10^{-6}\\ \\text{m}^2 $$</p>\n<p>So maximum tension in the wire is</p>\n<p>$$ T_{\\max}=4.8\\times 10^7 \\times 10^{-6} $$</p>\n<p>$$ T_{\\max}=48\\ \\text{N} $$</p>\n<p>When the body rotates in a horizontal circle, the tension provides the centripetal force:</p>\n<p>$$ T=m\\omega^2 r $$</p>\n<p>Here,</p>\n<p>$$ m=10\\ \\text{kg}, \\qquad r=0.3\\ \\text{m} $$</p>\n<p>For maximum angular velocity,</p>\n<p>$$ 48=10\\times \\omega^2 \\times 0.3 $$</p>\n<p>$$ 48=3\\omega^2 $$</p>\n<p>$$ \\omega^2=16 $$</p>\n<p>$$ \\omega=4\\ \\text{rad/s} $$</p>\n<p>So, the maximum angular velocity is</p>\n<p>$$ \\boxed{4\\ \\text{rad/s}} $$</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$10\\text{ kg}$ द्रव्यमान का एक पिण्ड $0.3\\text{ m}$ लंबे तार से जुड़ा है। इसका भंजक प्रतिबल $4.8 \\times 10^7 \\mathrm{~N} / \\mathrm{m}^2$ है। तार के अनुप्रस्थ-काट का क्षेत्रफल $10^{-6} \\mathrm{~m}^2$ है। वह अधिकतम कोणीय वेग जिससे इसे बिना टूटे एक क्षैतिज वृत्त में घुमाया जा सकता है, है:</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "stress-breaking-stress-and-breaking-force-strain-relation-between-stress-and-strain-and-modulus-of-elasticity",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtca9q6s",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The elastic limit of an elevator cable is $2 \\times 10^9 \\mathrm{~N} / \\mathrm{m}^2$. The maximum upward acceleration that an elevator of mass $2 \\times 10^3 \\mathrm{~kg}$ can have when supported by a cable whose cross-sectional area is $10^{-4} \\mathrm{~m}^2$, provided the stress in cable would not exceed half of the elastic limit would be ( Take g = 10 m/s<sup>2</sup>)</p>",
+                "options": [],
+                "answer": "40",
+                "explanation": "<p>The maximum allowable stress is half of the elastic limit:</p>\n<p>$$\\text{Maximum Stress } (\\sigma_{\\text{max}}) = \\frac{2 \\times 10^9 \\text{ N/m}^2}{2} = 10^9 \\text{ N/m}^2$$</p>\n<p>We know that stress is defined as force (tension) divided by the cross-sectional area:</p>\n<p>$$\\text{Stress} = \\frac{T}{A}$$</p>\n<p>This gives the maximum tension $T_{\\text{max}}$ in the cable:</p>\n<p>$$T_{\\text{max}} = \\sigma_{\\text{max}} \\times A$$</p>\n<p>$$T_{\\text{max}} = 10^9 \\text{ N/m}^2 \\times 10^{-4} \\text{ m}^2 = 10^5 \\text{ N}$$</p>\n<p>When the elevator moves upwards with an acceleration $a$, the tension in the cable must support both the weight of the elevator and provide the net force for acceleration:</p>\n<p>$$T - mg = ma$$</p>\n<p>$$T = m(g + a)$$</p>\n<p>$$10^5 = 2 \\times 10^3 (10 + a)$$</p>\n\n<p>$$\\frac{10^5}{2 \\times 10^3} = 10 + a$$</p>\n<p>$$50 = 10 + a$$</p>\n<p>$$a = 50 - 10 = 40 \\text{ m/s}^2$$</p>\n<p>The maximum upward acceleration the elevator can have is $40 \\text{ m/s}^2$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक लिफ्ट की केबल की प्रत्यास्थता सीमा $2 \\times 10^9 \\mathrm{~N} / \\mathrm{m}^2$ है। $2 \\times 10^3 \\mathrm{~kg}$ द्रव्यमान की एक लिफ्ट को $10^{-4} \\mathrm{~m}^2$ अनुप्रस्थ-काट क्षेत्रफल वाली केबल द्वारा आलंबित करने पर उसका अधिकतम ऊर्ध्वगामी त्वरण क्या हो सकता है, बशर्ते कि केबल में प्रतिबल उसकी प्रत्यास्थता सीमा के आधे से अधिक न हो? (g = 10 m/s<sup>2</sup> लें)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "stress-breaking-stress-and-breaking-force-strain-relation-between-stress-and-strain-and-modulus-of-elasticity",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-mtcaeck3",
+            "chapter": "elasticity",
+            "chapterGroup": "mechanics",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>To break a wire, a stress of $10^6 \\mathrm{~N} / \\mathrm{m}^2$ is required. If the density of the material is $3 \\times 10^3 \\mathrm{~kg} / \\mathrm{m}^3$, then the minimum length of the wire which will break by its own weight will be ( Take g = 9.8 m/s<sup>2</sup>) </p>",
+                "options": [],
+                "answer": "34",
+                "explanation": "<p>When a wire hangs vertically, the tension is greatest at the top point because it has to support the entire weight of the wire. Therefore, the maximum stress also occurs at the topmost cross-section.</p>\n<p>Let the length of the wire be $L$ and its uniform cross-sectional area be $A$.</p>\n<p>The volume of the wire is:</p>\n<p>$$\\text{Volume} = A \\times L$$</p>\n<p>The mass $M$ of the wire in terms of its density $\\rho$ is:</p>\n<p>$$M = \\text{Volume} \\times \\rho = A L \\rho$$</p>\n<p>The total weight $W$ hanging from the top is:</p>\n<p>$$W = M g = A L \\rho g$$</p>\n<p>The stress developed at the top support is:</p>\n<p>$$\\text{Stress} = \\frac{\\text{Force}}{\\text{Area}} = \\frac{W}{A}$$</p>\n<p>$$\\text{Stress} = \\frac{A L \\rho g}{A} = L \\rho g$$</p>\n<p>For the wire to break under its own weight, this stress must be equal to the breaking stress $\\sigma$:</p>\n<p>$$L \\rho g = \\sigma$$</p>\n\n<p>$$L = \\frac{\\sigma}{\\rho g}$$</p>\n<p>Given values:</p>\n<ul>\n<li><p>Breaking stress, $\\sigma = 10^6 \\text{ N/m}^2$</p></li>\n<li><p>Density, $\\rho = 3 \\times 10^3 \\text{ kg/m}^3$</p></li>\n<li><p>Acceleration due to gravity, $g = 9.8 \\text{ m/s}^2$</p></li>\n</ul>\n\n<p>$$L = \\frac{10^6}{(3 \\times 10^3) \\times 9.8}$$</p>\n<p>$$L = \\frac{1000}{29.4} \\approx 34.01 \\text{ m}$$</p>\n<p>The minimum length of the wire that will break under its own weight is approximately $34 \\text{ m}$.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>एक तार को तोड़ने के लिए $10^6 \\mathrm{~N} / \\mathrm{m}^2$ के प्रतिबल की आवश्यकता होती है। यदि पदार्थ का घनत्व $3 \\times 10^3 \\mathrm{~kg} / \\mathrm{m}^3$ है, तो तार की वह न्यूनतम लंबाई क्या होगी जो अपने स्वयं के भार से टूट जाएगी? (g = 9.8 m/s<sup>2</sup> लीजिए)</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "physics",
+            "timeAllotted": 90000,
+            "topic": "stress-breaking-stress-and-breaking-force-strain-relation-between-stress-and-strain-and-modulus-of-elasticity",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Stress, Breaking Stress and Breaking Force, Strain, Relation between Stress and Strain and Modulus of Elasticity",
+    "timeAllotted": 2160000,
+    "title": "Elasticity Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mp5u8g39",
+    "defaultLanguage": "en",
+    "description": "Stress, Breaking Stress and Breaking Force, Strain, Relation between Stress and Strain and Modulus of Elasticity",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-28T03:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Stress, Breaking Stress and Breaking Force, Strain, Relation between Stress and Strain and Modulus of Elasticity",
+    "timeAllotted": 2160000,
+    "title": "Elasticity Test - 1 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Physics",
+    "_section": "Elasticity"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd97c03b9dcaf1afebc2",
+  "topicId": "66a0dd9ac03b9dcaf1afebd2",
+  "title": "Line and parabola",
+  "concepts": [
+    {
+      "title": "Condition for line to be Tangent and Secant ",
+      "conceptBody": "<h3><strong>Intersection of a line and parabola</strong></h3><p>For a parabola ${{\\text{y}}^{2}}=4\\text{ax}$ and a line $\\text{y}=\\text{mx}+\\text{c}$. there are 3 cases possible :</p><ol><li>The line and the parabola do not intersect.</li><li>The line and the parabola intersect at one point only. This is the case of touching the parabola i.e. tangent to parabola.</li><li>The line and parabola intersect at 2 points i.e., the line has a line segment which acts as chord to parabola.</li></ol><p>The above 3 conditions are algebraically equivalent to saying that the quadratic equation formed by the intersection of two curves will either have:</p><ol><li>No roots.</li><li>Only one real root.</li><li>2 distinct real roots.</li></ol><p>So putting value of $y$, i.e. $y=mx+c$ in ${{y}^{2}}=4ax$</p><p>&nbsp;$\\begin{array}{l} {{(\\text{mx}+\\text{c})}^{2}} =4\\text{ax} \\\\ \\Rightarrow {{\\text{m}}^{2}}{{\\text{x}}^{2}}+{{\\text{c}}^{2}}+2\\text{mcx} =4\\text{ax} \\\\ \\Rightarrow {{\\text{m}}^{2}}{{\\text{x}}^{2}}+\\left( 2\\text{mc}-4\\text{a} \\right)\\text{x}+{{\\text{c}}^{2}} =0 \\\\ \\end{array}$</p><p>Discriminant of this equation</p><p>$\\begin{array}{l} {{D}^{2}} ~={{(2mc-4a)}^{2}}-4{{m}^{2}}{{c}^{2}} \\\\ ~=4\\left\\{ {{(mc-2a)}^{2}}-{{m}^{2}}{{c}^{2}} \\right\\} \\\\ ~=16\\left( {{a}^{2}}-amc \\right) \\\\ \\end{array}$</p><p>Now for our 3 cases</p><ol><li>No real roots, $\\text{D}&lt;0\\Rightarrow \\text{a}&lt;\\text{mc}$ i.e. no intersection.</li><li>Only one real root, $\\text{D}=0\\Rightarrow \\text{a}=\\text{mc}$ i.e., tangent.</li><li>2 real distinct roots $\\text{D}&gt;0\\Rightarrow \\text{a}&gt;\\text{mc}$ i.e., chord to parabola.</li></ol><p>Let us discuss the case 3 first and find out the length of chord formed.</p><p><strong>Case 3 : </strong>Let the line meet parabola in 2 distinct points $\\left( {{x}_{1}},{{y}_{1}} \\right)$ and $\\left( {{x}_{2}},{{y}_{2}} \\right)$. Then the</p><p>length of chord will be :</p><p>$\\sqrt{{{\\left( {{\\text{x}}_{2}}-{{\\text{x}}_{1}} \\right)}^{2}}+{{\\left( {{\\text{y}}_{2}}-{{\\text{y}}_{1}} \\right)}^{2}}}=\\sqrt{{{\\left( {{\\text{x}}_{2}}-{{\\text{x}}_{1}} \\right)}^{2}}+{{\\left( \\text{m}{{\\text{x}}_{2}}+\\text{c}-\\text{m}{{\\text{x}}_{1}}-\\text{c} \\right)}^{2}}}$</p><p>$\\begin{array}{l} ~=\\sqrt{{{\\left( {{x}_{2}}-{{x}_{1}} \\right)}^{2}}+{{m}^{2}}{{\\left( {{x}_{2}}-{{x}_{1}} \\right)}^{2}}} \\\\ ~=\\sqrt{1+{{m}^{2}}}\\sqrt{{{\\left( {{x}_{2}}-{{x}_{1}} \\right)}^{2}}} \\\\ ~=\\sqrt{1+{{m}^{2}}}\\sqrt{{{\\left( {{x}_{1}}+{{x}_{2}} \\right)}^{2}}-4{{x}_{1}}{{x}_{2}}} \\\\ ~=\\sqrt{1+{{m}^{2}}}\\sqrt{\\frac{4{{(mc-2a)}^{2}}}{{{m}^{4}}}-\\frac{4{{c}^{2}}}{{{m}^{2}}}} \\\\ \\end{array}$</p><p>because from (i) ${{x}_{1}}+{{x}_{2}}=\\frac{-2\\left( mc-2a \\right)}{{{m}^{2}}}$</p><p>$\\begin{array}{l} {{x}_{1}}{{x}_{2}} ~=\\frac{{{c}^{2}}}{{{m}^{2}}} \\\\ ~=\\frac{2}{{{m}^{2}}}\\sqrt{1+{{m}^{2}}}\\sqrt{{{(mc-2a)}^{2}}-{{c}^{2}}{{m}^{2}}} \\\\ ~=\\frac{2}{{{m}^{2}}}\\sqrt{1+{{m}^{2}}}\\sqrt{4{{a}^{2}}-4amc} \\\\ ~=\\frac{4}{{{m}^{2}}}\\sqrt{1+{{m}^{2}}}\\sqrt{{{a}^{2}}-amc} \\\\ ~=\\frac{4}{{{m}^{2}}}\\sqrt{1+{{m}^{2}}}\\sqrt{a\\left( a-mc \\right)} \\\\ \\end{array}$</p><p><strong>So the length of chord cut by the line $=\\frac{4}{{{m}^{2}}}\\sqrt{1+{{m}^{2}}}\\sqrt{a\\left( a-mc \\right)}$&nbsp;</strong></p><p>Now let us discuss the case 2 .</p><p><strong>Case 2 : Condition for tangency :&nbsp;</strong></p><p>as done earlier, for this $D=0$ then the condition is $~'c'$ $=\\frac{\\text{a}}{\\text{m}}$</p><p>So putting this value of $\\text{c}$ in line to get the tangent equation</p><p>$y=mx+\\frac{a}{m}$</p><p><strong>Point of contact :&nbsp;</strong></p><p>Putting $\\text{c}=\\frac{\\text{a}}{\\text{m}}$ in quadratic equation for finding the points on parabola.</p><p>${{\\text{m}}^{2}}{{\\text{x}}^{2}}+\\left( 2\\text{ m}\\left( \\frac{\\text{a}}{\\text{m}} \\right)-4\\text{a} \\right)\\text{x}+\\frac{{{\\text{a}}^{2}}}{{{\\text{m}}^{2}}}=0$</p><p>$\\begin{array}{l} {{\\text{m}}^{2}}{{\\text{x}}^{2}}-2\\text{ax}+\\frac{{{\\text{a}}^{2}}}{{{\\text{m}}^{2}}} =0 \\\\ {{\\left( \\text{mx}-\\frac{\\text{a}}{\\text{m}} \\right)}^{2}} =0 \\\\ \\Rightarrow \\text{ x} =\\frac{\\text{a}}{{{\\text{m}}^{2}}} \\\\ \\end{array}$</p><p>Putting this equation of line to get value of $y$</p><p>$y=mx+\\frac{a}{m}=m\\left( \\frac{a}{{{m}^{2}}} \\right)+\\frac{a}{m}=\\frac{2a}{m}$</p><p><strong>$\\therefore $ Point of contact becomes $:\\left( \\frac{\\text{a}}{{{\\text{m}}^{2}}},\\frac{2\\mathbf{a}}{\\text{m}} \\right)$</strong></p>",
+      "position": 0,
+      "qcConcept": "66a0dd9ac03b9dcaf1afebd3"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f662d384bfb4a538295",
+      "title": "The line $1 x+m y+n=0$ will touch the parabola $y^2=4 a x$, if",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538296",
+      "title": "The line $x \\cos \\alpha+y \\sin \\alpha=p$ will touch the parabola $y^2=4 a(x+a)$, if",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538297",
+      "title": "The straight line $y=2 x+\\lambda$ does not meet the parabola $y^2=2 x$, if",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538298",
+      "title": "The line $y=2 x+c$ is a tangent to the parabola $y^2=16 x$, if $c$ equals",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a538299",
+      "title": "If the line $y=m x+c$ is a tangent to the parabola $y^2=4 a(x+a)$ then $m a+\\frac{a}{m}$ is equal to",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53829a",
+      "title": "The line $y=m x+c$ touches the parabola $x^2=4 a y$, if",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53829b",
+      "title": "The condition for which the straight line $y=m x+c$ touches the parabola $y^2=4 a x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f662d384bfb4a53829c",
+      "title": "If $l x+m y+n=0$ is tangent to the parabola $x^2=y$, then condition of tangency is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

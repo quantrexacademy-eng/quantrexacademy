@@ -1,0 +1,3532 @@
+[
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$[0, 1]$",
+      "$(-\\infty, 1]$",
+      "$[-1, 1]$",
+      "$(-\\infty, \\infty)$"
+    ],
+    "questionNumber": 1,
+    "questionType": "SINGLE CORRECT",
+    "text": "Range of the function $f(x) = \\log_2(2 - \\log_{\\sqrt{2}}(16\\sin^2 x + 1))$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$a \\in (-3, \\infty), b = 0$",
+      "$a \\in (2, \\infty), b = 0$",
+      "$a \\in (3, \\infty), b \\in R$",
+      "$a \\in (2, \\infty), b = a$"
+    ],
+    "questionNumber": 2,
+    "questionType": "SINGLE CORRECT",
+    "text": "The value of $a$ and $b$ for which $|e^{|x - b|} - a| = 2$, has four distinct solutions, are :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$(-\\pi/2, \\pi/2)$",
+      "$[-\\pi/2, \\pi/2] - \\{0\\}$",
+      "$[-\\pi/2, \\pi/2]$",
+      "$(-3\\pi/4, 3\\pi/4)$"
+    ],
+    "questionNumber": 3,
+    "questionType": "SINGLE CORRECT",
+    "text": "The range of the function :\n$$f(x) = \\tan^{-1} x + \\frac{1}{2} \\sin^{-1} x$$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "questionNumber": 4,
+    "questionType": "SINGLE CORRECT",
+    "text": "Find the number of real ordered pair(s) $(x, y)$ for which :\n$$16^{x^2 + y} + 16^{x + y^2} = 1$$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$(-\\infty, -1)$",
+      "$(-\\infty, \\infty)$",
+      "$(-1, 1)$",
+      "$(-1, \\infty)$"
+    ],
+    "questionNumber": 5,
+    "questionType": "SINGLE CORRECT",
+    "text": "The complete range of values of 'a' such that $\\left(\\frac{1}{2}\\right)^{|x|} = x^2 - a$ is satisfied for maximum number of values of x is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "One-one but not onto",
+      "Onto but not one-one",
+      "Both one-one and onto",
+      "Neither one-one nor onto"
+    ],
+    "questionNumber": 6,
+    "questionType": "SINGLE CORRECT",
+    "text": "For a real number x, let [x] denotes the greatest integer less than or equal to x. Let f : R -> R be defined by f(x) = 2x + [x] + sin x cos x. Then f is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{5\\pi}{6}$",
+      "$\\frac{5\\pi}{12}$",
+      "$\\frac{7\\pi}{12}$",
+      "$\\frac{2\\pi}{3}$"
+    ],
+    "questionNumber": 7,
+    "questionType": "SINGLE CORRECT",
+    "text": "The maximum value of $\\sec^{-1} \\left( \\frac{7 - 5(x^2 + 3)}{2(x^2 + 2)} \\right)$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "13",
+      "14",
+      "15",
+      "16"
+    ],
+    "questionNumber": 8,
+    "questionType": "SINGLE CORRECT",
+    "text": "Number of ordered pair (a, b) from the set A = {1, 2, 3, 4, 5} so that the function f(x) = x^3/3 + (a/2)x^2 + bx + 10 is an injective mapping for all x in R :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "A > B",
+      "A < B",
+      "A = B",
+      "2A + B = 4"
+    ],
+    "questionNumber": 9,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let A be the greatest value of the function f(x) = log_x [x], (where [.] denotes greatest integer function) and B be the least value of the function g(x) = |sin x| + |cos x|, then :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "a = 1, B = [5, \\infty)",
+      "a = 2, B = [10, \\infty)",
+      "a = 0, B = [6, \\infty)",
+      "a = -1, B = [1, \\infty)"
+    ],
+    "questionNumber": 10,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let A = [a, \\infty) denotes domain, then f: [a, \\infty) -> B, f(x) = 2x^3 - 3x^2 + 6 will have an inverse for the smallest real value of a, if :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "x in (-2, 1)",
+      "x in I (I denote set of integers)",
+      "x in [0, 1)",
+      "x in [-2, 0)"
+    ],
+    "questionNumber": 11,
+    "questionType": "SINGLE CORRECT",
+    "text": "Solution of the inequation {x}({x} - 1)({x} + 2) &gt;= 0 (where {.} denotes fractional part function) is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "f(x) - g(x) - |g(x) - f(x)|",
+      "f(x) + g(x) - |g(x) - f(x)|",
+      "f(x) - g(x) + |g(x) - f(x)|",
+      "f(x) + g(x) + |g(x) - f(x)|"
+    ],
+    "questionNumber": 12,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let f(x), g(x) be two real valued functions then the function h(x) = 2 max{f(x) - g(x), 0} is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "a function",
+      "reflexive",
+      "not symmetric",
+      "transitive"
+    ],
+    "questionNumber": 13,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let R = {(1, 3), (4, 2), (2, 4), (2, 3), (3, 1)} be a relation on the set A = {1, 2, 3, 4}. The relation R is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "[1/4, 1/2]",
+      "[1, 3]",
+      "[1/6, 1/2]",
+      "[2, 4]"
+    ],
+    "questionNumber": 14,
+    "questionType": "SINGLE CORRECT",
+    "text": "The true set of values of 'K' for which sin^-1(1 / (1 + sin^2 x)) = (K*pi)/6 may have a solution is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "-f(x)",
+      "f(x)",
+      "f(a) + f(a - x)",
+      "f(-x)"
+    ],
+    "questionNumber": 15,
+    "questionType": "SINGLE CORRECT",
+    "text": "A real valued function f(x) satisfies the functional equation f(x - y) = f(x)f(y) - f(a - x)f(a + y) where 'a' is a given constant and f(0) = 1, f(2a - x) is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "(x + 1 - 4^n) * 4^{-n}",
+      "(x - 1 + 4^n) * 4^{-n}",
+      "(x + 1 + 4^n) * 4^{-n}",
+      "None of these"
+    ],
+    "questionNumber": 16,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let g : R -> R be given by g(x) = 3 + 4x if g^n(x) = g o g o g ... o g(x) n times. Then inverse of g^n(x) is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "0 <= a <= 1",
+      "0 < a <= 1",
+      "0 <= a < 1",
+      "0 < a < 1"
+    ],
+    "questionNumber": 17,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let f : D -> R be defined as : f(x) = (x^2 + 2x + a) / (x^2 + 4x + 3a) where D and R denote the domain of f and the set of all real numbers respectively. If f is surjective mapping, then the complete range of a is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$2 - \\sqrt{4-x}$",
+      "$2 + \\sqrt{4-x}$",
+      "$-2 + \\sqrt{4-x}$",
+      "$-2 - \\sqrt{4-x}$"
+    ],
+    "questionNumber": 18,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f : (-\\infty, 2] \\to (-\\infty, 4]$, where $f(x) = x(4-x)$, then $f^{-1}(x)$ is given by :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$[-2, -1)$",
+      "$\\left[ -\\frac{3\\sqrt{3} + 2}{5}, -1 \\right)$",
+      "$[-2, -\\sqrt{3})$",
+      "$\\left[ -\\frac{3\\sqrt{3} + 4}{5}, -1 \\right)$"
+    ],
+    "questionNumber": 19,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $[5\\sin x] + [\\cos x] + 6 = 0$, then range of $f(x) = \\sqrt{3}\\cos x + \\sin x$ corresponding to solution set of the given equation is : (where $[\\cdot]$ denotes greatest integer function)",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$(-2, -1] \\cup [1, 2)$",
+      "$[-1, 1]$",
+      "$(-\\infty, -1] \\cup [1, \\infty)$",
+      "$(-\\infty, -2] \\cup [2, \\infty)$"
+    ],
+    "questionNumber": 20,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f : \\mathbb{R} \\to \\mathbb{R}$, $f(x) = ax + \\cos x$ is an invertible function, then complete set of values of $a$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\left\\{ \\frac{n^2+n-2}{2}, \\frac{n(n+1)}{2} \\right\\}$",
+      "$\\left\\{ \\frac{n(n+1)}{2} \\right\\}$",
+      "$\\left\\{ \\frac{n(n+1)}{2}, \\frac{n^2+n+2}{2}, \\frac{n^2+n+4}{2} \\right\\}$",
+      "$\\left\\{ \\frac{n(n+1)}{2}, \\frac{n^2+n+2}{2} \\right\\}$"
+    ],
+    "questionNumber": 21,
+    "questionType": "SINGLE CORRECT",
+    "text": "The range of function $f(x) = [1 + \\sin x] + \\left[2 + \\sin \\frac{x}{2}\\right] + \\left[3 + \\sin \\frac{x}{3}\\right] + \\ldots + \\left[n + \\sin \\frac{x}{n}\\right] \\forall \\ x \\in [0, \\pi]$, $n \\in \\mathbb{N}$ ($[\\cdot]$ denotes greatest integer function) is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$(-\\infty, \\infty)$",
+      "$(-\\infty, 0)$",
+      "$(0, \\infty)$",
+      "not possible"
+    ],
+    "questionNumber": 22,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f : \\mathbb{R} \\to \\mathbb{R}$, $f(x) = \\frac{x^2+ax+1}{x^2+x+1}$, then the complete set of values of '$a$' such that $f(x)$ is onto is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$f(x)$ and $h(x)$ are identical functions",
+      "$f(x) = g(x)$ has no solution",
+      "$f(x) + h(x) > 0$ has no solution",
+      "$f(x) - h(x)$ is a periodic function"
+    ],
+    "questionNumber": 23,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x)$ and $g(x)$ are two functions such that $f(x) = [x] + [-x]$ and $g(x) = \\{x\\} \\ \\forall \\ x \\in \\mathbb{R}$ and $h(x) = f(g(x))$; then which of the following is incorrect ?\n($[\\cdot]$ denotes greatest integer function and $\\{\\cdot\\}$ denotes fractional part function)",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$5$",
+      "$6$",
+      "$7$",
+      "Infinite"
+    ],
+    "questionNumber": 24,
+    "questionType": "SINGLE CORRECT",
+    "text": "Number of elements in the range set of $f(x) = \\left[\\frac{x}{15}\\right]\\left[-\\frac{15}{x}\\right] \\forall \\ x \\in (0, 90)$; (where $[\\cdot]$ denotes greatest integer function) :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": true,
+    "imageUrl": "/images/q25_graph.png",
+    "questionNumber": 25,
+    "questionType": "SINGLE CORRECT",
+    "text": "The graph of function $f(x)$ is shown below :\n\nThen the graph of $g(x) = \\frac{1}{f(|x|)}$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ],
+    "options": []
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$f(x) = x \\sin y + y \\sin x$",
+      "$g(x) = xe^{\\frac{y}{x}} + ye^{\\frac{x}{y}}$",
+      "$h(x) = \\frac{xy}{x+y^2}$",
+      "$\\phi(x) = \\frac{x-y\\cos x}{y\\sin x + y}$"
+    ],
+    "questionNumber": 26,
+    "questionType": "SINGLE CORRECT",
+    "text": "Which of the following function is homogeneous ?",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "questionNumber": 27,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\begin{cases} 2x + 3 & ; \\quad x \\le 1 \\\\ a^2x + 1 & ; \\quad x &gt; 1 \\end{cases}$. If the range of $f(x) = R$ (set of real numbers) then number of integral value(s), which $a$ may take :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "5",
+      "7",
+      "8",
+      "9"
+    ],
+    "questionNumber": 28,
+    "questionType": "SINGLE CORRECT",
+    "text": "The maximum integral value of $x$ in the domain of $f(x) = \\log_{10}(\\log_{1/3}(\\log_4(x - 5)))$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$(0, \\infty)$",
+      "$\\left[ \\frac{1}{2}, 1 \\right]$",
+      "$[1, 2]$",
+      "$\\left[ \\frac{1}{4}, 1 \\right]$"
+    ],
+    "questionNumber": 29,
+    "questionType": "SINGLE CORRECT",
+    "text": "Range of the function $f(x) = \\log_2 \\left( \\frac{4}{\\sqrt{x+2} + \\sqrt{2-x}} \\right)$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "3",
+      "5",
+      "7",
+      "9"
+    ],
+    "questionNumber": 30,
+    "questionType": "SINGLE CORRECT",
+    "text": "Number of integers statisfying the equation $|x^2 + 5x| + |x - x^2| = |6x|$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\ln \\left( \\frac{x^4 + x^2 + 1}{(x^2 + x + 1)^2} \\right)$",
+      "$\\text{sgn} (\\text{sgn} (x))$",
+      "$\\sin (\\tan x)$",
+      "$f(x)$, where $f(x) + f\\left(\\frac{1}{x}\\right) = f(x) \\cdot f\\left(\\frac{1}{x}\\right) \\forall x \\in R - \\{0\\}$ and $f(2) = 33$"
+    ],
+    "questionNumber": 31,
+    "questionType": "SINGLE CORRECT",
+    "text": "Which of the following is not an odd function ?",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$f(x) = \\cos x + \\left[ \\frac{\\sin x}{2} \\right]$; where $[ \\cdot ]$ denotes greatest integer function",
+      "$g(x) = \\frac{\\sin x + \\sin 7x}{\\cos x + \\cos 7x} + |\\sin x|$",
+      "$h(x) = \\{x\\} + |\\cos x|$; where $\\{ \\cdot \\}$ denotes fractional part function",
+      "$\\phi(x) = |\\cos x| + \\ln (\\sin x)$"
+    ],
+    "questionNumber": 32,
+    "questionType": "SINGLE CORRECT",
+    "text": "Which of the following function is periodic with fundamental period $\\pi$ ?",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$f(x)$ is bijective",
+      "$f(x)$ is injective but not surjective",
+      "$f(x)$ is not injective but surjective",
+      "$f(x)$ is neither injective nor surjective"
+    ],
+    "questionNumber": 33,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f : N \\longrightarrow Z$ and $f(x) = \\begin{cases} \\frac{x-1}{2} & ; \\text{ when } x \\text{ is odd} \\\\ -\\frac{x}{2} & ; \\text{ when } x \\text{ is even} \\end{cases}$, then :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{2} \\log_2 \\left( \\frac{2+x}{2-x} \\right)$",
+      "$-\\frac{1}{2} \\log_2 \\left( \\frac{2+x}{2-x} \\right)$",
+      "$\\log_2 \\left( \\frac{2+x}{2-x} \\right)$",
+      "$\\log_2 \\left( \\frac{2-x}{2+x} \\right)$"
+    ],
+    "questionNumber": 34,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $g(x)$ be the inverse of $f(x) = \\frac{2^{x+1} - 2^{1-x}}{2^x + 2^{-x}}$ then $g(x)$ be :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": true,
+    "imageUrl": "/images/q35_graph.png",
+    "options": [
+      "Graph (a)",
+      "Graph (b)",
+      "Graph (c)",
+      "Graph (d)"
+    ],
+    "questionNumber": 35,
+    "questionType": "SINGLE CORRECT",
+    "text": "Which of the following is the graph of the curve $\\sqrt{|y|} = x$ is ?",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\{1, 2\\}$",
+      "$(-\\infty, 2)$",
+      "$(-\\infty, \\log_2 5]$",
+      "$[\\log_2 5, 3]$"
+    ],
+    "questionNumber": 36,
+    "questionType": "SINGLE CORRECT",
+    "text": "Range of $f(x) = \\log_{[x]} (9 - x^2)$; where $[ \\cdot ]$ denotes G.I.F. is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "Domain is $(-\\infty, 1)$",
+      "Range is $(-\\infty, 1]$",
+      "Domain is $(-\\infty, 0]$",
+      "Range is $(-\\infty, 0]$"
+    ],
+    "questionNumber": 37,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $e^x + e^{f(x)} = e$, then for $f(x)$ :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$y = x^2$",
+      "$y = \\text{sgn}(-e^x)$",
+      "$y = \\log_{1/3} x$",
+      "$y = m + |x|; m > 3$"
+    ],
+    "questionNumber": 38,
+    "questionType": "SINGLE CORRECT",
+    "text": "If high voltage current is applied on the field given by the graph $y + |y| - x - |x| = 0$. On which of the following curve a person can move so that he remains safe ?",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$x \\in [-2, 2]$",
+      "$x \\in (-\\infty, -2) \\cup (2, \\infty)$",
+      "$x \\in [-\\sqrt{6}, \\sqrt{6}]$",
+      "$x \\in [-5, -2] \\cup [2, 5]$"
+    ],
+    "questionNumber": 39,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $|f(x) + 6 - x^2| = |f(x)| + |4 - x^2| + 2$, then $f(x)$ is necessarily non-negative for :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "Positive real number",
+      "Negative real number",
+      "Rational",
+      "Prime"
+    ],
+    "questionNumber": 40,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\cos(px) + \\sin x$ be periodic, then $p$ must be :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\left( \\frac{1}{e}, 1 \\right)$",
+      "$(-e, -1)$",
+      "$\\left( -1, -\\frac{1}{e} \\right)$",
+      "$(-e, -1) \\cup (1, e)$"
+    ],
+    "questionNumber": 41,
+    "questionType": "SINGLE CORRECT",
+    "text": "The domain of $f(x)$ is $(0, 1)$, therefore, the domain of $y = f(e^x) + f(\\ln|x|)$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\{(1, 3), (2, 1), (3, 2), (4, 4)\\}$",
+      "$\\{(1, 3), (2, 4), (3, 1), (4, 2)\\}$",
+      "$\\{(1, 3), (2, 2), (3, 4), (4, 3)\\}$",
+      "$\\{(1, 3), (2, 4), (3, 2), (4, 1)\\}$"
+    ],
+    "questionNumber": 42,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $A = \\{1, 2, 3, 4\\}$ and $f : A \\rightarrow A$ satisfy $f(1) = 2, f(2) = 3, f(3) = 4, f(4) = 1$.\nSuppose $g : A \\rightarrow A$ satisfies $g(1) = 3$ and $fog = gof$, then $g =$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "Infinite"
+    ],
+    "questionNumber": 43,
+    "questionType": "SINGLE CORRECT",
+    "text": "The number of solutions of the equation $[y + [y]] = 2\\cos x$ is :\n(where $y = \\frac{1}{3}[\\sin x + [\\sin x + [\\sin x]]]$ and $[\\cdot] = \\text{greatest integer function}$)",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "Odd function",
+      "Even function",
+      "Neither odd nor even function",
+      "Constant function"
+    ],
+    "questionNumber": 44,
+    "questionType": "SINGLE CORRECT",
+    "text": "The function, $f(x) = \\begin{cases} \\frac{(x^{2n})}{(x^{2n} \\text{sgn } x)^{2n+1}} \\left( \\frac{e^{\\frac{1}{x}} - e^{-\\frac{1}{x}}}{e^{\\frac{1}{x}} + e^{-\\frac{1}{x}}} \\right) & x \\neq 0 \\\\ 1 & x = 0 \\end{cases} \\quad n \\in N \\text{ is :}$",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{3^m - 1}{2}$",
+      "$3^m$",
+      "$3^{m-1}$",
+      "$\\frac{3^{m-1} - 1}{2}$"
+    ],
+    "questionNumber": 45,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(1) = 1$, and $f(n) = 2 \\sum_{r=1}^{n-1} f(r)$. Then $\\sum_{r=1}^m f(r)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{x}{\\sqrt{1 + \\left( \\sum_{r=1}^n r \\right) x^2}}$",
+      "$\\frac{x}{\\sqrt{1 + \\left( \\sum_{r=1}^n 1 \\right) x^2}}$",
+      "$\\left( \\frac{x}{\\sqrt{1+x^2}} \\right)^n$",
+      "$\\frac{nx}{\\sqrt{1+nx^2}}$"
+    ],
+    "questionNumber": 46,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\frac{x}{\\sqrt{1+x^2}}$, then $\\underbrace{fofofo \\dots \\text{of}}_{n \\text{ times}} (x)$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "One-one and into",
+      "One-one and onto",
+      "Many-one and into",
+      "Many-one and onto"
+    ],
+    "questionNumber": 47,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f : R \\rightarrow R$, $f(x) = 2x + |\\cos x|$, then $f$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "One-one and into",
+      "One-one and onto",
+      "Many-one and into",
+      "Many-one and onto"
+    ],
+    "questionNumber": 48,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f : R \\rightarrow R$, $f(x) = x^3 + x^2 + 3x + \\sin x$, then $f$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$5050$",
+      "$4950$",
+      "$41$",
+      "$14$"
+    ],
+    "questionNumber": 49,
+    "questionType": "SINGLE CORRECT",
+    "text": "$f(x) = \\{x\\} + \\{x + 1\\} + \\{x + 2\\} + \\dots + \\{x + 99\\}$, then $[f(\\sqrt{2})]$, (where $\\{\\cdot\\}$ denotes fractional part function and $[\\cdot]$ denotes the greatest integer function) is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$[0, \\pi]$",
+      "$\\left(0, \\frac{\\pi}{2}\\right]$",
+      "$\\left(0, \\frac{\\pi}{2}\\right] \\cup \\left[\\frac{3\\pi}{2}, 2\\pi\\right)$",
+      "$\\left(\\pi, \\frac{3\\pi}{2}\\right] \\cup \\left[\\frac{7\\pi}{4}, 2\\pi\\right]$"
+    ],
+    "questionNumber": 50,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $|\\cot x + \\text{cosec } x| = |\\cot x| + |\\text{cosec } x|$; $x \\in [0, 2\\pi]$, then complete set of values of $x$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$12$",
+      "$32$",
+      "$16$",
+      "$15$"
+    ],
+    "questionNumber": 51,
+    "questionType": "SINGLE CORRECT",
+    "text": "The function $f(x) = 0$ has eight distinct real solution and $f$ also satisfy $f(4 + x) = f(4 - x)$. The sum of all the eight solution of $f(x) = 0$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$24$",
+      "$120$",
+      "$720$"
+    ],
+    "questionNumber": 52,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x)$ be a polynomial of degree $5$ with leading coefficient unity such that $f(1) = 5$, $f(2) = 4$, $f(3) = 3$, $f(4) = 2$, $f(5) = 1$. Then $f(6)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$A = [3, 4]$",
+      "$A = [2, 3]$",
+      "$A = [2, 2\\sqrt{3}]$",
+      "$[2, 2\\sqrt{2}]$"
+    ],
+    "questionNumber": 53,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f : A \\rightarrow B$ be a function such that $f(x) = \\sqrt{x - 2} + \\sqrt{4 - x}$, is invertible, then which of the following is not possible ?",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$21$",
+      "$22$",
+      "$23$",
+      "$24$"
+    ],
+    "questionNumber": 54,
+    "questionType": "SINGLE CORRECT",
+    "text": "The number of positive integral values of $x$ satisfying $\\left[ \\frac{x}{9} \\right] = \\left[ \\frac{x}{11} \\right]$ is :\n(where $[\\cdot]$ denotes greatest integer function)",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\left[ \\frac{3}{2}, \\infty \\right)$",
+      "$(2, \\infty)$",
+      "$\\left( -\\frac{1}{2}, \\infty \\right) - \\left\\{ \\frac{1}{2} \\right\\}$",
+      "$\\left( \\frac{1}{2}, 1 \\right) \\cup (1, \\infty)$"
+    ],
+    "questionNumber": 55,
+    "questionType": "SINGLE CORRECT",
+    "text": "The domain of function $f(x) = \\log_{\\left[ x + \\frac{1}{2} \\right]} (2x^2 + x - 1)$, where $[\\cdot]$ denotes the greatest integer function is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$[-1, 0) \\cup [1, 2)$",
+      "$[-2, -1) \\cup [1, 2)$",
+      "$[1, 2)$",
+      "$[-3, -2) \\cup [2, 3)$"
+    ],
+    "questionNumber": 56,
+    "questionType": "SINGLE CORRECT",
+    "text": "The solution set of the equation $[x]^2 + [x + 1] - 3 = 0$, where $[\\cdot]$ represents greatest integer function is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$x^2 + y^2 = r^2$",
+      "$\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = r^2$",
+      "$y^2 = 4ax$",
+      "$x^2 = 4ay$"
+    ],
+    "questionNumber": 57,
+    "questionType": "SINGLE CORRECT",
+    "text": "Which among the following relations is a function ?\n(where $a, b, r$ are constants)",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{\\sqrt{x-1}}{3}$",
+      "$\\frac{1}{3}\\sqrt{x-1}$",
+      "$f^{-1} \\text{ does not exist}$",
+      "$\\sqrt{\\frac{x-1}{3}}$"
+    ],
+    "questionNumber": 58,
+    "questionType": "SINGLE CORRECT",
+    "text": "A funciton $f : R \\rightarrow R$ is defined as $f(x) = 3x^2 + 1$. Then $f^{-1}(x)$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$f(f(x)) = \\begin{cases} 4+x, & x \\ge 0 \\\\ 6-x, & x < 0 \\end{cases}$",
+      "$f(f(x)) = \\begin{cases} 4+x, & x \\ge 0 \\\\ x, & x < 0 \\end{cases}$",
+      "$f(f(x)) = \\begin{cases} 4-x, & x \\ge 0 \\\\ x, & x < 0 \\end{cases}$",
+      "$f(f(x)) = \\begin{cases} 4-2x, & x \\ge 0 \\\\ 4+2x, & x < 0 \\end{cases}$"
+    ],
+    "questionNumber": 59,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\begin{cases} 2+x, & x \\ge 0 \\\\ 4-x, & x &lt; 0 \\end{cases}$, then $f(f(x))$ is given by :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "One to one but not onto",
+      "Onto but not one to one",
+      "Both one to one and onto",
+      "Neither one to one nor onto"
+    ],
+    "questionNumber": 60,
+    "questionType": "SINGLE CORRECT",
+    "text": "The function $f : R \\to R$ defined as $f(x) = \\frac{3x^2 + 3x - 4}{3 + 3x - 4x^2}$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "$3$"
+    ],
+    "questionNumber": 61,
+    "questionType": "SINGLE CORRECT",
+    "text": "The number of solutions of the equation $e^x - \\log|x| = 0$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$2$",
+      "$1$",
+      "$4$"
+    ],
+    "questionNumber": 62,
+    "questionType": "SINGLE CORRECT",
+    "text": "If complete solution set of $e^{-x} \\le 4 - x$ is $[\\alpha, \\beta]$, then $[\\alpha] + [\\beta]$ is equal to :\n(where $[\\cdot]$ denotes greatest integer function)",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$[0, 1)$",
+      "$\\{0, 1\\}$",
+      "$\\{0\\}$",
+      "$[1, 7]$"
+    ],
+    "questionNumber": 63,
+    "questionType": "SINGLE CORRECT",
+    "text": "Range of $f(x) = \\sqrt{\\sin(\\log_7(\\cos(\\sin x)))}$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$[-3, 2]$",
+      "$[-2, 3)$",
+      "$[-3, 3]$",
+      "$[-2, 3]$"
+    ],
+    "questionNumber": 64,
+    "questionType": "SINGLE CORRECT",
+    "text": "If domain of $y = f(x)$ is $x \\in [-3, 2]$, then domain of $y = f([|x|])$ :\n(where $[\\cdot]$ denotes greatest integer function)",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\left(\\frac{3\\pi}{4}, \\pi\\right)$",
+      "$\\left[\\frac{3\\pi}{4}, \\pi\\right)$",
+      "$\\left[\\frac{3\\pi}{4}, \\pi\\right]$",
+      "$\\left(\\frac{3\\pi}{4}, \\pi\\right]$"
+    ],
+    "questionNumber": 65,
+    "questionType": "SINGLE CORRECT",
+    "text": "Range of the function $f(x) = \\cot^{-1}(\\{-x\\}) + \\sin^{-1}\\{x\\} + \\cos^{-1}\\{x\\}$, where $\\{\\cdot\\}$ denotes fractional part function :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\frac{2x^2 + 5}{2x - 3}$",
+      "$\\frac{x^2 + 5}{2x - 3}$",
+      "$\\frac{2x^2 - 5}{2x - 3}$",
+      "$\\frac{x^2 - 5}{2x - 3}$"
+    ],
+    "questionNumber": 66,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f : R - \\left\\{\\frac{3}{2}\\right\\} \\to R, f(x) = \\frac{3x+5}{2x-3}$. Let $f_1(x) = f(x), f_n(x) = f(f_{n-1}(x))$ for $n \\ge 2, n \\in N$, then $f_{2008}(x) + f_{2009}(x) =$ ",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$[0, \\infty)$",
+      "$[2, \\infty)$",
+      "$[4, \\infty)$",
+      "$[6, \\infty)$"
+    ],
+    "questionNumber": 67,
+    "questionType": "SINGLE CORRECT",
+    "text": "Range of the function, $f(x) = \\frac{(1+x+x^2)(1+x^4)}{x^3}$, for $x &gt; 0$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "Many-one and onto",
+      "Many-one and into",
+      "One to one and onto",
+      "One to one and into"
+    ],
+    "questionNumber": 68,
+    "questionType": "SINGLE CORRECT",
+    "text": "The function $f : (-\\infty, 3] \\to (0, e^7]$ defined by $f(x) = e^{x^3 - 3x^2 - 9x + 2}$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$[-1, 1]$",
+      "$[0, 1]$",
+      "$(-1, 1)$",
+      "None of these"
+    ],
+    "questionNumber": 69,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $f(x) = \\sin\\left\\{ \\log\\left( \\frac{\\sqrt{4 - x^2}}{1 - x} \\right) \\right\\} ; x \\in R$, then range of $f(x)$ is given by :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$(-\\infty, 1] \\cup [4, \\infty)$",
+      "$[1, 4]$",
+      "$[1, \\infty)$",
+      "$[-\\infty, 4]$"
+    ],
+    "questionNumber": 70,
+    "questionType": "SINGLE CORRECT",
+    "text": "Set of values of '$a$' for which the function $f : R \\to R$, given by $f(x) = x^3 + (a + 2)x^2 + 3ax + 10$ is one-one is given by :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$b^2 = 3c$",
+      "$b^2 = 4c$",
+      "$b^2 = 12c$",
+      "$b^2 = 8c$"
+    ],
+    "questionNumber": 71,
+    "questionType": "SINGLE CORRECT",
+    "text": "If the range of the function $f(x) = \\tan^{-1}(3x^2 + bx + c)$ is $\\left[ 0, \\frac{\\pi}{2} \\right)$; (domain is $R$), then :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\left( 0, \\frac{\\pi}{2} \\right]$",
+      "$\\left( 0, \\frac{\\pi}{2} \\right)$",
+      "$\\left[ \\frac{\\pi}{2}, \\frac{3\\pi}{2} \\right)$",
+      "$\\left[ \\pi, \\frac{3\\pi}{2} \\right]$"
+    ],
+    "questionNumber": 72,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = \\sin^{-1} x - \\cos^{-1} x$, then the set of values of $k$ for which of $|f(x)| = k$ has exactly two distinct solutions is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\{1, 2\\}$",
+      "$\\phi$",
+      "$\\{2, 5\\}$",
+      "None of these"
+    ],
+    "questionNumber": 73,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f : R \\to R$ is defined by $f(x) = \\begin{cases} (x + 1)^3 & ; \\quad x \\le 1 \\\\ \\ln x + (b^2 - 3b + 10) & ; \\quad x &gt; 1 \\end{cases}$. If $f(x)$ is invertible, then the set of all values of '$b$' is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$[0, 1]$",
+      "$\\left[ 0, \\frac{e^2 + 1}{e^2 - 1} \\right]$",
+      "$\\left[ 0, \\frac{e^2 - 1}{e^2 + 1} \\right]$",
+      "$\\left[ \\frac{-e^2 + 1}{e^2 + 1}, 0 \\right]$"
+    ],
+    "questionNumber": 74,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x)$ is continuous function with range $[-1, 1]$ and $f(x)$ is defined $\\forall x \\in R$. If $g(x) = \\frac{e^{f(x)} - e^{|f(x)|}}{e^{f(x)} + e^{|f(x)|}}$, then range of $g(x)$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "4",
+      "8",
+      "12",
+      "16"
+    ],
+    "questionNumber": 75,
+    "questionType": "SINGLE CORRECT",
+    "text": "Consider all functions $f : \\{1, 2, 3, 4\\} \\to \\{1, 2, 3, 4\\}$ which are one-one, onto and satisfy the following property :\nif $f(k)$ is odd then $f(k + 1)$ is even, $k = 1, 2, 3$.\nThe number of such functions is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$f$ is one-one but not onto",
+      "$f$ is onto but not one-one",
+      "$f$ is neither one-one nor onto",
+      "$f$ is both one-one and onto"
+    ],
+    "questionNumber": 76,
+    "questionType": "SINGLE CORRECT",
+    "text": "Consider the function $f : R - \\{1\\} \\to R - \\{2\\}$ given by $f(x) = \\frac{2x}{x - 1}$. Then :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$[-2, 4]$",
+      "$[-1, 2]$",
+      "$[-3, 9]$",
+      "$[-2, 2]$"
+    ],
+    "questionNumber": 77,
+    "questionType": "SINGLE CORRECT",
+    "text": "If range of function $f(x)$ whose domain is set of all real numbers is $[-2, 4]$, then range of function $g(x) = \\frac{1}{2} f(2x + 1)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "One-one, into",
+      "Many-one, onto",
+      "One-one, onto",
+      "Many one, into"
+    ],
+    "questionNumber": 78,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f : \\mathbb{R} \\rightarrow \\mathbb{R}$ and $f(x) = \\frac{x(x^4 + 1)(x + 1) + x^4 + 2}{x^2 + x + 1}$, then $f(x)$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$[0, 1]$",
+      "$[-1, 0]$",
+      "$\\left[ -\\frac{1}{2}, \\frac{1}{2} \\right]$",
+      "$[-1, 1]$"
+    ],
+    "questionNumber": 79,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x)$ be defined as :\n$$f(x) = \\begin{cases} |x| & 0 \\le x &lt; 1 \\\\ |x - 1| + |x - 2| & 1 \\le x &lt; 2 \\\\ |x - 3| & 2 \\le x &lt; 3 \\end{cases}$$\nThe range of function $g(x) = \\sin(7(f(x)))$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$7$",
+      "$8$",
+      "$9$",
+      "both (b) and (c)"
+    ],
+    "questionNumber": 80,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $[x]^2 - 7[x] + 10 &lt; 0$ and $4[y]^2 - 16[y] + 7 &lt; 0$, then $[x + y]$ cannot be ($[\\cdot]$ denotes greatest integer function) :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$f(x)$ is many one, onto function",
+      "$f(x)$ is many one, into function",
+      "$f(x)$ is decreasing function $\\forall x \\in \\mathbb{R}$",
+      "$f(x)$ is bijective function"
+    ],
+    "questionNumber": 81,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f : \\mathbb{R} \\rightarrow \\mathbb{R}$ be a function defined by $f(x) = \\frac{e^{|x|} - e^{-x}}{e^x + e^{-x}}$, then",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$-2$",
+      "$-1$",
+      "$0$",
+      "$1$"
+    ],
+    "questionNumber": 82,
+    "questionType": "SINGLE CORRECT",
+    "text": "The function $f(x)$ satisfy the equation $f(1 - x) + 2f(x) = 3x \\ \\forall \\ x \\in \\mathbb{R}$, then $f(0) =$ ",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$a$",
+      "$b$",
+      "$c$",
+      "$a + b + c$"
+    ],
+    "questionNumber": 83,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f : [0, 5] \\rightarrow [0, 5]$ be an invertible function defined by $f(x) = ax^2 + bx + c$, where $a, b, c \\in \\mathbb{R}$, $abc \\ne 0$, then one of the root of the equation $cx^2 + bx + a = 0$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$2$",
+      "$3$",
+      "$4$",
+      "$6$"
+    ],
+    "questionNumber": 84,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = x^2 + \\lambda x + \\mu \\cos x$, $\\lambda$ being an integer and $\\mu$ is a real number. The number of ordered pairs $(\\lambda, \\mu)$ for which the equation $f(x) = 0$ and $f(f(x)) = 0$ have the same (non empty) set of real roots is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$4$",
+      "$8$",
+      "$12$",
+      "$16$"
+    ],
+    "questionNumber": 85,
+    "questionType": "SINGLE CORRECT",
+    "text": "Consider all function $f : \\{1, 2, 3, 4\\} \\rightarrow \\{1, 2, 3, 4\\}$ which are one-one, onto and satisfy the following property :\nif $f(k)$ is odd then $f(k + 1)$ is even, $k = 1, 2, 3$.\nThe number of such function is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": true,
+    "imageUrl": "/images/q86_graph.png",
+    "questionNumber": 86,
+    "questionType": "SINGLE CORRECT",
+    "text": "Which of the following is closest to the graph of $y = \\tan(\\sin x)$, $x &gt; 0$?",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ],
+    "options": []
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$f$ is one-one but not onto",
+      "$f$ is onto but not one-one",
+      "$f$ is neither one-one nor onto",
+      "$f$ is both one-one and onto"
+    ],
+    "questionNumber": 87,
+    "questionType": "SINGLE CORRECT",
+    "text": "Consider the function $f : \\mathbb{R} - \\{1\\} \\to \\mathbb{R} - \\{2\\}$ given by $f(x) = \\frac{2x}{x - 1}$. Then",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$[-2, 4]$",
+      "$[-1, 2]$",
+      "$[-3, 9]$",
+      "$[-2, 2]$"
+    ],
+    "questionNumber": 88,
+    "questionType": "SINGLE CORRECT",
+    "text": "If range of function $f(x)$ whose domain is set of all real numbers is $[-2, 4]$, then range of function $g(x) = \\frac{1}{2}f(2x + 1)$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "One-one, into",
+      "Many one, onto",
+      "One-one, onto",
+      "Many one, into"
+    ],
+    "questionNumber": 89,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f : \\mathbb{R} \\to \\mathbb{R}$ and $f(x) = \\frac{x(x^4 + 1)(x + 1) + x^4 + 2}{x^2 + x + 1}$, then $f(x)$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$[0, 1]$",
+      "$[-1, 0]$",
+      "$\\left[ -\\frac{1}{2}, \\frac{1}{2} \\right]$",
+      "$[-1, 1]$"
+    ],
+    "questionNumber": 90,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x)$ be defined as\n$$f(x) = \\begin{cases} |x| & 0 \\le x &lt; 1 \\\\ |x - 1| + |x - 2| & 1 \\le x &lt; 2 \\\\ |x - 3| & 2 \\le x &lt; 3 \\end{cases}$$\nThe range of function $g(x) = \\sin(\\pi f(x))$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "questionNumber": 91,
+    "questionType": "SINGLE CORRECT",
+    "text": "The number of integral values of $x$ in the domain of function $f$ defined as\n$f(x) = \\sqrt{\\ln|\\ln|x||} + \\sqrt{7|x| - |x|^2 - 10}$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$\\left(-\\frac{1}{3}, 0\\right) \\cup \\left(\\frac{1}{3}, 1\\right) \\cup (2, \\infty)$",
+      "$(0, 1) \\cup (1, \\infty)$",
+      "$\\left(-\\frac{2}{3}, 0\\right) \\cup \\left(\\frac{1}{3}, 1\\right) \\cup (1, \\infty)$",
+      "$\\left(-\\frac{1}{3}, 0\\right) \\cup \\left(\\frac{1}{3}, 1\\right) \\cup (1, \\infty)$"
+    ],
+    "questionNumber": 92,
+    "questionType": "SINGLE CORRECT",
+    "text": "The complete set of values of $x$ in the domain of function $f(x) = \\sqrt{\\log_{x+2\\{x\\}}([x]^2 - 5[x] + 7)}$\n(where $[\\cdot]$ denote greatest integer function and $\\{\\cdot\\}$ denote fraction part function) is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$2$",
+      "$4$",
+      "$6$",
+      "$12$"
+    ],
+    "questionNumber": 93,
+    "questionType": "SINGLE CORRECT",
+    "text": "The number of integral ordered pair $(x, y)$ that satisfy the system of equation $|x + y - 4| = 5$ and $|x - 3| + |y - 1| = 5$ is/are :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$(-\\infty, \\infty)$",
+      "$(-\\infty, 0)$",
+      "$(0, \\infty)$",
+      "Empty set"
+    ],
+    "questionNumber": 94,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f : R \\rightarrow R$, where $f(x) = \\frac{x^2 + ax + 1}{x^2 + x + 1}$. Then the complete set of values of '$a$' such that $f(x)$ is onto is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$"
+    ],
+    "questionNumber": 95,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $A = \\{1, 2, 3, 4\\}$ and $f : A \\rightarrow A$, then total number of invertible function '$f$' such that $f(2) \\neq 2$, $f(4) \\neq 4, f(1) = 1$ is equal to :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$R$",
+      "$R - \\{0\\}$",
+      "$R - \\{0, 1\\}$",
+      "$R - \\{1\\}$"
+    ],
+    "questionNumber": 96,
+    "questionType": "SINGLE CORRECT",
+    "text": "The domain of definition of $f(x) = \\log_{(x^2 - x + 1)}(2x^2 - 7x + 9)$ is :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$182$",
+      "$181$",
+      "$183$",
+      "none of these"
+    ],
+    "questionNumber": 97,
+    "questionType": "SINGLE CORRECT",
+    "text": "If $A = \\{1, 2, 3, 4\\}, B = \\{1, 2, 3, 4, 5, 6\\}$ and $f : A \\rightarrow B$ is an injective mapping satisfying $f(i) \\neq i$, then number of such mappings are :",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 1",
+    "has_graph": false,
+    "options": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "$4$"
+    ],
+    "questionNumber": 98,
+    "questionType": "SINGLE CORRECT",
+    "text": "Let $f(x) = x^2 - 2x - 3 ; x \\geq 1$ and $g(x) = 1 + \\sqrt{x + 4} ; x \\geq -4$ then the number of real solutions of equation $f(x) = g(x)$ is/are",
+    "typeLabel": "[SINGLE CORRECT]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      3
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$f(-4) = 40$",
+      "$\\frac{f(-13) - f(11)}{f(13) + f(-11)} = \\frac{17}{21}$",
+      "$f(5)$ is not defined",
+      "Range of $f(x)$ is $[0, 50]$"
+    ],
+    "questionNumber": 1,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "$f(x)$ is an even periodic function with period 10. In $[0, 5], f(x) = \\begin{cases} 2x & 0 \\le x &lt; 2 \\\\ 3x^2 - 8 & 2 \\le x &lt; 4 \\\\ 10x & 4 \\le x \\le 5 \\end{cases}$. Then :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$f(x) = m$ has exactly two real solutions of different sign $\\forall m > 2$",
+      "$f(x) = m$ has exactly two real solutions $\\forall m \\in (2, \\infty) \\cup \\{0\\}$",
+      "$f(x) = m$ has no solutions $\\forall m < 0$",
+      "$f(x) = m$ has four distinct real solution $\\forall m \\in (0, 1)$"
+    ],
+    "questionNumber": 2,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x) = \\left| |x^2 - 4x + 3| - 2 \\right|$. Which of the following is/are correct ?",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "correctOptionsArray": [
+      2,
+      3
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "Domain is $R$",
+      "Range is $[0, \\pi]$",
+      "$f(x)$ is even",
+      "$f(x)$ is derivable in $(\\pi, 2\\pi)$"
+    ],
+    "questionNumber": 3,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x) = \\cos^{-1} \\left( \\frac{1 - \\tan^2 (x/2)}{1 + \\tan^2 (x/2)} \\right)$\nWhich of the following statement(s) is/are correct about $f(x)$ ?",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$(-4, -2)$",
+      "$(4, 6)$",
+      "$(e^{-1}, e)$",
+      "$(e^{-2}, e^{-1})$"
+    ],
+    "questionNumber": 4,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "$\\left| \\log_e |x| \\right| = |k - 1| - 3$ has four distinct roots then $k$ satisfies : (where $|x| &lt; e^2, x \\neq 0$)",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$f(x) = \\sin[x] + \\cos[x]$",
+      "$f(x) = \\sec^{-1} (1 + \\sin^2 x)$",
+      "$f(x) = \\sqrt{\\frac{9}{8} + \\cos x + \\cos 2x}$",
+      "$f(x) = \\tan(\\ln(1 + |x|))$"
+    ],
+    "questionNumber": 5,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Which of the following functions are defined for all $x \\in R$ ?\n(Where $[\\cdot]$ denotes greatest integer function)",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$f\\left(f\\left(f\\left(\\frac{3}{2}\\right)\\right)\\right) = f\\left(\\frac{3}{2}\\right)$",
+      "$1 + f\\left(f\\left(f\\left(\\frac{5}{2}\\right)\\right)\\right) = f\\left(\\frac{5}{2}\\right)$",
+      "$f(f(f(2))) = f(1)$",
+      "$\\underbrace{f(f(f(\\dots f(4))\\dots)}_{1004 \\text{ times}} = 2012$"
+    ],
+    "questionNumber": 6,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x) = \\begin{cases} x^2 & 0 &lt; x &lt; 2 \\\\ 2x - 3 & 2 \\le x &lt; 3 \\\\ x + 2 & x \\ge 3 \\end{cases}$, then the true equations :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      3
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$f^{-1}(1) = \\frac{4\\pi}{3}$",
+      "$f^{-1}(1) = \\pi$",
+      "$f^{-1}(2) = \\frac{5\\pi}{6}$",
+      "$f^{-1}(2) = \\frac{7\\pi}{6}$"
+    ],
+    "questionNumber": 7,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f : \\left[ \\frac{2\\pi}{3}, \\frac{5\\pi}{3} \\right] \\longrightarrow [0, 4]$ be a function defined as $f(x) = \\sqrt{3} \\sin x - \\cos x + 2$, then :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$f(x) = x$ also have same two real roots",
+      "$f^{-1}(x) = x$ also have same two real roots",
+      "$f(x) = f^{-1}(x)$ also have same two real roots",
+      "Area of triangle formed by $(0, 0), (\\alpha, f(\\alpha))$, and $(\\beta, f(\\beta))$ is $1$ unit"
+    ],
+    "questionNumber": 8,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x)$ be invertible function and let $f^{-1}(x)$ be its inverse. Let equation $f(x) = f^{-1}(x)$ has two real roots $\\alpha$ and $\\beta$ (with in domain of $f(x)$), then :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "correctOptionsArray": [
+      1,
+      2
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "Range of $f(x)$ is $\\left[\\frac{\\pi}{3}, \\frac{10\\pi}{3}\\right]$",
+      "Range of $f(x)$ is $\\left[\\frac{\\pi}{3}, \\frac{5\\pi}{3}\\right]$",
+      "$f(x)$ is one-one for $x \\in \\left[-1, \\frac{1}{2}\\right]$",
+      "$f(x)$ is one-one for $x \\in \\left[\\frac{1}{2}, 1\\right]$"
+    ],
+    "questionNumber": 9,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "The function $f(x) = \\cos^{-1} x + \\cos^{-1}\\left(\\frac{x}{2} + \\frac{\\sqrt{3-3x^2}}{2}\\right)$, then :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      3
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$f$ is many-one but not even function",
+      "Range of $f$ contains two prime numbers",
+      "$f$ is a periodic",
+      "Graph of $f$ does not lie below $x$-axis"
+    ],
+    "questionNumber": 10,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f: \\mathbb{R} \\to \\mathbb{R}$ defined by $f(x) = \\cos^{-1} (-\\{ -x \\})$, where $\\{x\\}$ is fractional part function. Then which of the following is/are correct ?",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      3
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$f: \\mathbb{R} \\to \\mathbb{R}$, $f(x) = e^{|x|} - e^{-x}$ is many-one into function",
+      "$f: \\mathbb{R} \\to \\mathbb{R}$, $f(x) = 2x + |\\sin x|$ is one-one onto",
+      "$f: \\mathbb{R} \\to \\mathbb{R}$, $f(x) = \\frac{x^2 + 4x + 30}{x^2 - 8x + 18}$ is many-one onto",
+      "$f: \\mathbb{R} \\to \\mathbb{R}$, $f(x) = \\frac{2x^2 - x + 5}{7x^2 + 2x + 10}$ is many-one into"
+    ],
+    "questionNumber": 11,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Which option(s) is/are true ?",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      2
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "range of $h(x)$ is $\\{-1, 0\\}$",
+      "If $h(x) = 0$, then $x$ must be irrational",
+      "If $h(x) = -1$, then $x$ can be rational as well as irrational",
+      "$h(x)$ is periodic function"
+    ],
+    "questionNumber": 12,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If $h(x) = \\left[ \\ln \\frac{x}{e} \\right] + \\left[ \\ln \\frac{e}{x} \\right]$, where $[\\cdot]$ denotes greatest integer function, then which of the following are true ?",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "correctOptionsArray": [
+      2,
+      3
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$f(x)$ is periodic",
+      "$f(x)$ is many-one",
+      "$f(x)$ is one-one",
+      "range of the function is $\\mathbb{R}$"
+    ],
+    "questionNumber": 13,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If $f(x) = \\begin{cases} x^3 & ; \\quad x \\in \\mathbb{Q} \\\\ -x^3 & ; \\quad x \\notin \\mathbb{Q} \\end{cases}$, then :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$f(x)$ is a periodic function",
+      "$f(x)$ is a constant function",
+      "$f(x) = \\frac{1}{2}$",
+      "$f(x) = \\frac{\\cos x}{2}$"
+    ],
+    "questionNumber": 14,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x)$ be a real valued continuous function such that\n$f(0) = \\frac{1}{2}$ and $f(x + y) = f(x)f(a - y) + f(y)f(a - x) \\forall x, y \\in R$,\nthen for some real $a$ :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      3
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$f(-4) = 40$",
+      "$\\frac{f(-13) - f(11)}{f(13) + f(-11)} = \\frac{17}{21}$",
+      "$f(5)$ is not defined",
+      "Range of $f(x)$ is $[0, 50]$"
+    ],
+    "questionNumber": 15,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "$f(x)$ is an even periodic function with period 10. In $[0, 5]$, $f(x) = \\begin{cases} 2x & 0 \\le x &lt; 2 \\\\ 3x^2 - 8 & 2 \\le x &lt; 4 \\\\ 10x & 4 \\le x \\le 5 \\end{cases}$. Then :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "correctOptionsArray": [
+      1,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "when $\\lambda \\in (0, \\infty)$ equation has 2 real and distinct roots",
+      "when $\\lambda \\in (-\\infty, -e^2)$ equation has 2 real and distinct roots",
+      "when $\\lambda \\in (0, \\infty)$ equation has 1 real root",
+      "when $\\lambda \\in (-e, 0)$ equation has no real root"
+    ],
+    "questionNumber": 16,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "For the equation $\\frac{e^{-x}}{1+x} = \\lambda$ which of the following statement(s) is/are correct ?",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$\\frac{1}{\\sqrt{2}} \\tan \\frac{\\pi}{8}$",
+      "$\\frac{1}{\\sqrt{2}} \\cot \\frac{\\pi}{8}$",
+      "$\\frac{1}{\\sqrt{2}} \\tan \\frac{\\pi}{12}$",
+      "$\\frac{1}{\\sqrt{2}} \\cot \\frac{\\pi}{12}$"
+    ],
+    "questionNumber": 17,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "For $x \\in R^{+}$, if $x, [x], \\{x\\}$ are in harmonic progression then the value of $x$ can not be equal to :\n(where $[\\cdot]$ denotes greatest integer function, $\\{\\cdot\\}$ denotes fractional part function)",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "3 distinct real roots for unique value of $a$",
+      "4 distinct real roots for $a \\in (-\\infty, -4)$",
+      "2 distinct real roots for $|a| < 4$",
+      "no real roots for $a > 4$"
+    ],
+    "questionNumber": 18,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "The equation $||x-1|+a| = 4, a \\in R$, has :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$f_2(x) > 1$ for all $x \\in \\left( 2k\\pi, (4k+1)\\frac{\\pi}{2} \\right), k \\in I$",
+      "$f_2(x) = 1$ for $x = 2k\\pi, k \\in I$",
+      "$f_2(x) > f_3(x)$ for all $x \\in \\left( 2k\\pi, (4k+1)\\frac{\\pi}{2} \\right), k \\in I$",
+      "$f_3(x) \\ge f_5(x)$ for all $x \\in \\left( 2k\\pi, (4k+1)\\frac{\\pi}{2} \\right), k \\in I$"
+    ],
+    "questionNumber": 19,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f_n(x) = (\\sin x)^{1/n} + (\\cos x)^{1/n}, x \\in R$, then :\n(Where $I$ denotes set of integers)",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      3
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$a, b$ are the roots of the equation $x^4 - 3x^3 - x + 3 = 0$",
+      "$a, b$ are the roots of the equation $x^4 - x^3 + x^2 - 2x + 1 = 0$",
+      "$a^3 + d^3 = 1$",
+      "$a^2 + b^2 + c^2 + d^2 = 11$"
+    ],
+    "questionNumber": 20,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If the domain of $f(x) = \\frac{1}{\\pi} \\cos^{-1}\\left[\\log_3 \\left(\\frac{x^2}{3}\\right)\\right]$ where, $x &gt; 0$ is $[a, b]$ and the range of $f(x)$ is $[c, d]$, then :",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1,
+      2
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$7$",
+      "$8$",
+      "$9$",
+      "$10$"
+    ],
+    "questionNumber": 21,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "The number of real values of $x$ satisfying the equation ; $\\left[\\frac{2x+1}{3}\\right] + \\left[\\frac{4x+5}{6}\\right] = \\frac{3x-1}{2}$ are greater than or equal to ($[\\cdot]$ denotes greatest integer function):",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      2,
+      3
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$f^{2014}(0) = -\\frac{3}{8}$",
+      "$f^{2015}(0) = \\frac{3}{8}$",
+      "$f^{2010}\\left(\\frac{\\pi}{2}\\right) = 0$",
+      "$f^{2011}\\left(\\frac{\\pi}{2}\\right) = \\frac{3}{8}$"
+    ],
+    "questionNumber": 22,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Let $f(x) = \\sin^6\\left(\\frac{x}{4}\\right) + \\cos^6\\left(\\frac{x}{4}\\right)$. If $f^n(x)$ denotes $n^{\\text{th}}$ derivative of $f$ evaluated at $x$. Then which of the following hold ?",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "If $f(x) = \\sin x$ and $g(x) = \\ln x$ then range of $g(f(x))$ is $[-1, 1]$",
+      "If $x^2 + ax + 9 > x \\; \\forall x \\in \\mathbb{R}$ then $-5 < a < 7$",
+      "If $f(x) = (2011 - x^{2012})^{\\frac{1}{2012}}$ then $f(f(2)) = \\frac{1}{2}$",
+      "The function $f:\\mathbb{R} \\to \\mathbb{R}$ defined as $f(x) = \\frac{x^2 + 4x + 30}{x^2 - 8x + 18}$ is not surjective."
+    ],
+    "questionNumber": 23,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "Which of the following is(are) incorrect ?",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "correctOptionsArray": [
+      0,
+      1
+    ],
+    "exerciseName": "Exercise 2",
+    "has_graph": false,
+    "options": [
+      "$S$ is a composite number",
+      "Exponent of $S$ in $100!$ is $12$",
+      "Number of factors of $S$ is $10$",
+      "$^{2S}C_r$ is max when $r = 51$"
+    ],
+    "questionNumber": 24,
+    "questionType": "MULTIPLE CORRECT",
+    "text": "If $[x]$ denotes the integral part of $x$ for real $x$, and\n$$S = \\left[\\frac{1}{4}\\right] + \\left[\\frac{1}{4} + \\frac{1}{200}\\right] + \\left[\\frac{1}{4} + \\frac{1}{100}\\right] + \\left[\\frac{1}{4} + \\frac{3}{200}\\right] \\dots + \\left[\\frac{1}{4} + \\frac{199}{200}\\right]$$ then",
+    "typeLabel": "[MULTIPLE CORRECT]"
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "5",
+      "4",
+      "3",
+      "2"
+    ],
+    "questionNumber": 1,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 1 to 3**\n\nLet $f(x) = \\log_{\\{x\\}} [x]$\n$g(x) = \\log_{\\{x\\}} \\{x\\}$\n$h(x) = \\log_{[x]} \\{x\\}$\nwhere $[\\ ], \\{ \\}$ denotes the greatest integer function and fractional part fucntion respectively.\n\nFor $x \\in (1, 5)$ the $f(x)$ is not defined at how many points :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "$(2, 3)$",
+      "$(1, 3)$",
+      "$(1, 2)$",
+      "None of these"
+    ],
+    "questionNumber": 2,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 1 to 3**\n\nLet $f(x) = \\log_{\\{x\\}} [x]$\n$g(x) = \\log_{\\{x\\}} \\{x\\}$\n$h(x) = \\log_{[x]} \\{x\\}$\nwhere $[\\ ], \\{ \\}$ denotes the greatest integer function and fractional part fucntion respectively.\n\nIf $A = \\{x : x \\in \\text{domain of } f(x)\\}$ and $B = \\{x : x \\in \\text{domain of } g(x)\\}$ then $\\forall x \\in (1, 5)$, $A - B$ will be :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "$[2, \\infty)$",
+      "$[1, \\infty)$",
+      "$[2, \\infty) - \\{I\\}$",
+      "$R^+ - \\{I\\}$"
+    ],
+    "questionNumber": 3,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 1 to 3**\n\nLet $f(x) = \\log_{\\{x\\}} [x]$\n$g(x) = \\log_{\\{x\\}} \\{x\\}$\n$h(x) = \\log_{[x]} \\{x\\}$\nwhere $[\\ ], \\{ \\}$ denotes the greatest integer function and fractional part fucntion respectively.\n\nDomain of $h(x)$ is :\n$I$ denotes integers.",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "$\\left[\\frac{3}{4}, \\frac{\\pi}{2}\\right]$",
+      "$\\left[\\frac{3}{5}, \\frac{7}{8}\\right]$",
+      "$\\left[\\frac{5}{6}, \\frac{\\pi}{2}\\right]$",
+      "$\\left[\\frac{6}{7}, \\frac{\\pi}{2}\\right]$"
+    ],
+    "questionNumber": 4,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 4 to 6**\n\n$\\theta$ is said to be well behaved if it lies in interval $\\left[0, \\frac{\\pi}{2}\\right]$. They are intelligent if they make domain of $f + g$ and $g$ equal. The values of $\\theta$ for which $h(\\theta)$ is defined are handsome. Let\n$f(x) = \\sqrt{\\theta x^2 - 2(\\theta^2 - 3)x - 12\\theta}, g(x) = \\ln(x^2 - 49),$\n$h(\\theta) = \\ln \\left[ \\int_0^\\theta 4 \\cos^2 t \\, dt - \\theta^2 \\right]$, where $\\theta$ is in radians.\n\nComplete set of values of $\\theta$ which are well behaved as well as intelligent is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "$\\left[\\frac{6}{7}, \\frac{7}{2}\\right]$",
+      "$\\left(0, \\frac{\\pi}{3}\\right]$",
+      "$\\left[\\frac{1}{4}, \\frac{6}{7}\\right]$",
+      "$\\left[\\frac{1}{2}, \\frac{\\pi}{2}\\right]$"
+    ],
+    "questionNumber": 5,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 4 to 6**\n\n$\\theta$ is said to be well behaved if it lies in interval $\\left[0, \\frac{\\pi}{2}\\right]$. They are intelligent if they make domain of $f + g$ and $g$ equal. The values of $\\theta$ for which $h(\\theta)$ is defined are handsome. Let\n$f(x) = \\sqrt{\\theta x^2 - 2(\\theta^2 - 3)x - 12\\theta}, g(x) = \\ln(x^2 - 49),$\n$h(\\theta) = \\ln \\left[ \\int_0^\\theta 4 \\cos^2 t \\, dt - \\theta^2 \\right]$, where $\\theta$ is in radians.\n\nComplete set of values of $\\theta$ which are intelligent is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "$\\left(0, \\frac{\\pi}{2}\\right]$",
+      "$\\left[\\frac{6}{7}, \\frac{\\pi}{2}\\right]$",
+      "$\\left[\\frac{3}{4}, \\frac{\\pi}{2}\\right]$",
+      "$\\left[\\frac{3}{5}, \\frac{\\pi}{2}\\right]$"
+    ],
+    "questionNumber": 6,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 4 to 6**\n\n$\\theta$ is said to be well behaved if it lies in interval $\\left[0, \\frac{\\pi}{2}\\right]$. They are intelligent if they make domain of $f + g$ and $g$ equal. The values of $\\theta$ for which $h(\\theta)$ is defined are handsome. Let\n$f(x) = \\sqrt{\\theta x^2 - 2(\\theta^2 - 3)x - 12\\theta}, g(x) = \\ln(x^2 - 49),$\n$h(\\theta) = \\ln \\left[ \\int_0^\\theta 4 \\cos^2 t \\, dt - \\theta^2 \\right]$, where $\\theta$ is in radians.\n\nComplete set of values of $\\theta$ which are well behaved, intelligent and handsome is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "16",
+      "32",
+      "64",
+      "8"
+    ],
+    "questionNumber": 7,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 7 to 8**\nLet $f(x) = 2 - |x - 3|$, $1 \\leq x \\leq 5$ and for rest of the values $f(x)$ can be obtained by using the relation $f(5x) = \\alpha f(x) \\forall x \\in R$.\n\nThe maximum value of $f(x)$ in $[5^4, 5^5]$ for $\\alpha = 2$ is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "1118",
+      "2007",
+      "1250",
+      "132"
+    ],
+    "questionNumber": 8,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 7 to 8**\nLet $f(x) = 2 - |x - 3|$, $1 \\leq x \\leq 5$ and for rest of the values $f(x)$ can be obtained by using the relation $f(5x) = \\alpha f(x) \\forall x \\in R$.\n\nThe value of $f(2007)$, taking $\\alpha = 5$, is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "$\\{f(3.26)\\}$",
+      "$\\{f(7.88)\\}$",
+      "$\\{f(2.12)\\}$",
+      "$\\{f(5.88)\\}$"
+    ],
+    "questionNumber": 9,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 9 to 10**\nAn even periodic function $f : R \\rightarrow R$ with period $4$ is such that\n$$f(x) = \\begin{cases} \\max(|x|, x^2) & ; \\ 0 \\leq x &lt; 1 \\\\ x & ; \\ 1 \\leq x \\leq 2 \\end{cases}$$\n\nThe value of $\\{f(5.12)\\}$ (where $\\{\\cdot\\}$ denotes fractional part function), is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "5",
+      "3",
+      "7",
+      "9"
+    ],
+    "questionNumber": 10,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 9 to 10**\nAn even periodic function $f : R \\rightarrow R$ with period $4$ is such that\n$$f(x) = \\begin{cases} \\max(|x|, x^2) & ; \\ 0 \\leq x &lt; 1 \\\\ x & ; \\ 1 \\leq x \\leq 2 \\end{cases}$$\n\nThe number of solutions of $f(x) = |3 \\sin x|$ for $x \\in (-6, 6)$ are :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "$R - \\{3\\}$",
+      "$\\left(-\\infty, \\frac{1}{3}\\right] \\cup (2, \\infty)$",
+      "$\\left(-2, \\frac{1}{3}\\right] \\cup (2, \\infty)$",
+      "$R$"
+    ],
+    "questionNumber": 11,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 11 to 12**\nLet $f(x) = \\frac{2|x| - 1}{x - 3}$\n\nRange of $f(x)$ :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "$\\left(-2, \\frac{1}{3}\\right)$",
+      "$(-2, 1]$",
+      "$\\left(0, \\frac{2}{3}\\right]$",
+      "$(-\\infty, -2)$"
+    ],
+    "questionNumber": 12,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 11 to 12**\nLet $f(x) = \\frac{2|x| - 1}{x - 3}$\n\nRange of the values of '$k$' for which $f(x) = k$ has exactly two distinct solutions :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 0,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "A.P.",
+      "G.P.",
+      "H.P.",
+      "A.G.P."
+    ],
+    "questionNumber": 13,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 13 to 14**\nLet $f(x)$ be a continuous function (define for all $x$) which satisfies $f^3(x) - 5f^2(x) + 10f(x) - 12 \\geq 0$, $f^2(x) - 4f(x) + 3 \\geq 0$ and $f^2(x) - 5f(x) + 6 \\leq 0$\n\nIf distinct positive number $b_1, b_2$ and $b_3$ are in G.P then $f(1) + \\ln b_1, f(2) + \\ln b_2, f(3) + \\ln b_3$ are in :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      0
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 2,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "$y = 24(x + 2)$",
+      "$y = 12(x + 2)$",
+      "$y = 24(x - 2)$",
+      "$y = 12(x - 2)$"
+    ],
+    "questionNumber": 14,
+    "questionType": "COMPREHENSION",
+    "text": "**Paragraph for Question Nos. 13 to 14**\nLet $f(x)$ be a continuous function (define for all $x$) which satisfies $f^3(x) - 5f^2(x) + 10f(x) - 12 \\geq 0$, $f^2(x) - 4f(x) + 3 \\geq 0$ and $f^2(x) - 5f(x) + 6 \\leq 0$\n\nThe equation of tangent that can be drawn from $(2, 0)$ on the curve $y = x^2 f(\\sin x)$ is :",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      2
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 1,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "$\\sqrt{2 + \\sqrt{4 - \\log_2 x}}$",
+      "$\\sqrt{2 + \\sqrt{4 + \\log_2 x}}$",
+      "$\\sqrt{4 + \\sqrt{2 + \\log_2 x}}$",
+      "$\\sqrt{4 - \\sqrt{2 + \\log_2 x}}$"
+    ],
+    "questionNumber": 15,
+    "questionType": "COMPREHENSION",
+    "text": "Paragraph for Question Nos. 15 to 16\nLet $f:[2, \\infty) \\to [1, \\infty)$ defined by $f(x) = 2^{x^4 - 4x^2}$ and $g:\\left[ \\frac{\\pi}{2}, \\pi \\right] \\to A$ defined by $g(x) = \\frac{\\sin x + 4}{\\sin x - 2}$ be two invertible functions, then\n\n$f^{-1}(x)$ is equal to",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      1
+    ]
+  },
+  {
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": 3,
+    "exerciseName": "Exercise 3",
+    "has_graph": false,
+    "options": [
+      "$[5, 2]$",
+      "$[-2, 5]$",
+      "$[-5, 2]$",
+      "$[-5, -2]$"
+    ],
+    "questionNumber": 16,
+    "questionType": "COMPREHENSION",
+    "text": "Paragraph for Question Nos. 15 to 16\nLet $f:[2, \\infty) \\to [1, \\infty)$ defined by $f(x) = 2^{x^4 - 4x^2}$ and $g:\\left[ \\frac{\\pi}{2}, \\pi \\right] \\to A$ defined by $g(x) = \\frac{\\sin x + 4}{\\sin x - 2}$ be two invertible functions, then\n\nThe set '$A$' equals to",
+    "typeLabel": "[COMPREHENSION]",
+    "correctOptionsArray": [
+      3
+    ]
+  },
+  {
+    "answerKeyStr": "A→P,Q,S,T; B→Q,R; C→P,Q,S; D→P,S",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 4",
+    "has_graph": false,
+    "questionNumber": 4,
+    "questionType": "MATCH THE COLUMN",
+    "text": "Match the following columns:\n\n| Column-I | Column-II |\n|---|---|\n| (A) $f(x) = \\sin^2 2x - 2\\sin^2 x$ | (P) Range contains no natural number |\n| (B) $f(x) = \\frac{4}{\\pi} (\\sin^{-1}(\\sin \\pi x))$ | (Q) Range contains atleast one integer |\n| (C) $f(x) = \\sqrt{\\ln(\\cos(\\sin x))}$ | (R) Many one but not even function |\n| (D) $f(x) = \\tan^{-1} \\left( \\frac{x^2+1}{x^2+\\sqrt{3}} \\right)$ | (S) Both many one and even function |\n| | (T) Periodic but not odd function |",
+    "typeLabel": "[MATCH THE COLUMN]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "A→Q; B→P; C→S; D→R",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 4",
+    "has_graph": false,
+    "questionNumber": 5,
+    "questionType": "MATCH THE COLUMN",
+    "text": "Match the following columns:\n\n| Column-I | Column-II |\n|---|---|\n| (A) If $|x^2-x| \\ge x^2+x$, then complete set of values of $x$ is | (P) $(0, \\infty)$ |\n| (B) If $|x+y| &gt; x-y$, where $x &gt; 0$, then complete set of values of $y$ is | (Q) $(-\\infty, 0]$ |\n| (C) If $\\log_2 x \\ge \\log_2 (x^2)$, then complete set of values of $x$ is | (R) $[-1, \\infty)$ |",
+    "typeLabel": "[MATCH THE COLUMN]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "A→R; B→P; C→T; D→S",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 4",
+    "has_graph": false,
+    "questionNumber": 6,
+    "questionType": "MATCH THE COLUMN",
+    "text": "Match the following columns:\n\n| Column-I | Column-II |\n| :--- | :--- |\n| (A) Domain of $f(x) = \\ln \\tan^{-1} \\{ (x^3 - 6x^2 + 11x - 6)x(e^x - 1) \\}$ is | (P) $\\left[-1, \\frac{5}{4}\\right]$ |\n| (B) Range of $f(x) = \\sin^2 \\frac{x}{4} + \\cos \\frac{x}{4}$ is | (Q) $[2, \\infty)$ |\n| (C) The domain of function $f(x) = \\sqrt{\\log_{(|x| - 1)}(x^2 + 4x + 4)}$ is | (R) $(1, 2) \\cup (3, \\infty)$ |\n| (D) Let $f(x) = \\begin{cases} x^2 & x &lt; 1 \\\\ x + 1 & x \\ge 1 \\end{cases}; g(x) = \\begin{cases} x + 2 & x &lt; 1 \\\\ x^2 & x \\ge 1 \\end{cases}$. Then range of function $f(g(x))$ is | (S) $[0, \\infty)$ |\n| | (T) $(-\\infty, -3) \\cup (-2, -1) \\cup (2, \\infty)$ |",
+    "typeLabel": "[MATCH THE COLUMN]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "A→R; B→R; C→R; D→S",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 4",
+    "has_graph": false,
+    "questionNumber": 7,
+    "questionType": "MATCH THE COLUMN",
+    "text": "Let $f(x) = \\begin{cases} 1 + x; & 0 \\le x \\le 2 \\\\ 3 - x; & 2 &lt; x \\le 3 \\end{cases}$;\n$g(x) = f(f(x))$ :\n\n| Column-I | Column-II |\n| :--- | :--- |\n| (A) If domain of $g(x)$ is $[a, b]$ then $b - a$ is | (P) $1$ |\n| (B) If range of $g(x)$ is $[c, d]$ then $c + d$ is | (Q) $2$ |\n| (C) $f(f(f(2))) + f(f(f(3)))$, is | (R) $3$ |\n| (D) $m = \\text{maximum value of } g(x) \\text{ then } 2m - 2 \\text{ is :}$ | (S) $4$ |",
+    "typeLabel": "[MATCH THE COLUMN]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "26",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 1,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(x)$ be a polynomial of degree $6$ with leading coefficient $2009$. Suppose further, that $f(1)=1, f(2)=3, f(3)=5, f(4)=7, f(5)=9, f'(2)=2$, then the sum of all the digits of $f(6)$ is",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "7",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 2,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(x) = x^3 - 3x + 1$. Find the number of different real solution of the equation $f(f(x))=0$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "9",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 3,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $f(x+y+1) = (\\sqrt{f(x)}+\\sqrt{f(y)})^2$ $\\forall \\ x, y \\in R$ and $f(0)=1$, then $f(2) = \\ldots\\ldots$",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "1",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 4,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If the domain of $f(x) = \\sqrt{12-3^x-3^{3-x}} + \\sin^{-1}\\left(\\frac{2x}{3}\\right)$ is $[a, b]$, then $a = \\ldots\\ldots$",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "1",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 5,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "The number of elements in the range of the function :\n$y = \\sin^{-1}\\left[x^2+\\frac{5}{9}\\right] + \\cos^{-1}\\left[x^2-\\frac{4}{9}\\right]$ where $[\\cdot]$ denotes the greatest integer function is",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "4",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 6,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "The number of solutions of the equation $f(x-1)+f(x+1)=\\sin\\alpha, \\ 0 &lt; \\alpha &lt; \\frac{\\pi}{2}$ where\n$f(x) = \\begin{cases} 1-|x| & , \\ |x| \\le 1 \\\\ 0 & , \\ |x| &gt; 1 \\end{cases}$ is",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "5",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 7,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "The number of integers in the range of function $f(x) = [\\sin x] + [\\cos x] + [\\sin x + \\cos x]$ is\n(where $[\\cdot]$ denotes greatest integer function)",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "6",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 8,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $P(x)$ is a polynomial of degree $4$ such that $P(-1) = P(1) = 5$ and $P(-2) = P(0) = P(2) = 2$, then find the maximum value of $P(x)$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "1",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 9,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "The number of integral value(s) of $k$ for which the curve $y = \\sqrt{-x^2-2x}$ and $x+y-k=0$ intersect at 2 distinct points is/are",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "12",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 10,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let the solution set of the equation :\n$\\sqrt{\\left[x+\\left[\\frac{x}{2}\\right]\\right]} + \\left[\\sqrt{\\{x\\}} + \\left[\\frac{x}{3}\\right]\\right] = 3$\nis $[a, b)$. Find the product $ab$.\n(where $[\\cdot]$ and $\\{\\cdot\\}$ denote greatest integer and fractional part function respectively).",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "1",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 11,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "For all real number $x$, let $f(x) = \\frac{1}{\\sqrt[2011]{1-x^{2011}}}$. Find the number of real roots of the equation\n$f(f(\\ldots\\ldots(f(x))\\ldots\\ldots)) = \\{-x\\}$\nwhere $f$ is applied $2013$ times and $\\{\\cdot\\}$ denotes fractional part function.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "6",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 12,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Find the number of elements contained in the range of the function $f(x) = \\left[\\frac{x}{6}\\right]\\left[\\frac{-6}{x}\\right]$ $\\forall \\ x \\in (0, 30]$ (where $[\\cdot]$ denotes greatest integer function)",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "4",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 13,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(x,y) = x^2-y^2$ and $g(x,y) = 2xy$.\nsuch that $(f(x,y))^2 - (g(x,y))^2 = \\frac{1}{2}$ and $f(x,y) \\cdot g(x,y) = \\frac{\\sqrt{3}}{4}$\nFind the number of ordered pairs $(x,y)$?",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "6",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 14,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(x) = \\frac{x+5}{\\sqrt{x^2+1}} \\forall x \\in R$, then the smallest integral value of $k$ for which $f(x) \\le k \\forall x \\in R$ is",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "0",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 15,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "In the above problem, $f(x)$ is injective in the interval $x \\in (-\\infty, a]$, and $\\lambda$ is the largest possible value of $a$, then $[\\lambda] =$\n(where $[x]$ denote greatest integer $\\le x$)",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "6",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 16,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "The number of integral values of $m$ for which $f : R \\to R ; f(x) = \\frac{x^3}{3} + (m-1)x^2 + (m+5)x + n$ is bijective is :",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "7",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 17,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "The number of roots of equation :\n$$ \\left( \\frac{(x-1)(x-3)}{(x-2)(x-4)} - e^x \\right) \\left( \\frac{(x+1)(x+3)e^x}{(x+2)(x+4)} - 1 \\right) (x^3 - \\cos x) = 0 $$",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "76",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 18,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "The number of solutions of the equation $\\cos^{-1}\\left(\\frac{1-x^2-2x}{(x+1)^2}\\right) = \\pi(1-\\{x\\})$, for $x \\in [0, 76]$ is equal to. (where $\\{\\}$ denote fraction part function)",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "6",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 19,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(x) = x^2 - bx + c, b$ is an odd positive integer. Given that $f(x) = 0$ has two prime numbers as roots and $b+c = 35$. If the least value of $f(x) \\forall x \\in R$ is $\\lambda$, then $\\left[ \\left| \\frac{\\lambda}{3} \\right| \\right]$ is equal to\n(where $[\\cdot]$ denotes greatest integer function)",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "8",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 20,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(x)$ be continuous function such that $f(0) = 1$ and $f(x) - f\\left(\\frac{x}{7}\\right) = \\frac{x}{7} \\forall x \\in R$, then $f(42) =$",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "5",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 21,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $f(x) = 4x^3 - x^2 - 2x + 1$ and $g(x) = \\begin{cases} \\min\\{f(t) : 0 \\le t \\le x\\} & ; \\ 0 \\le x \\le 1 \\\\ 3 - x & ; \\ 1 &lt; x \\le 2 \\end{cases}$ and if $\\lambda = g\\left(\\frac{1}{4}\\right) + g\\left(\\frac{3}{4}\\right) + g\\left(\\frac{5}{4}\\right)$, then $2\\lambda =$",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "5",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 22,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $x = 10 \\sum_{r=3}^{100} \\frac{1}{(r^2-4)}$, then $[x] =$\n(where $[\\cdot]$ denotes greatest integer function)",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "9",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 23,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(x) = \\frac{ax+b}{cx+d}$, where $a, b, c, d$ are non zero. If $f(7) = 7$, $f(11) = 11$ and $f(f(x)) = x$ for all $x$ except $-\\frac{d}{c}$. The unique number which is not in the range of $f$ is",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "3",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 24,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $A = \\{x | x^2 - 4x + 3 &lt; 0, x \\in R\\}$\n$B = \\{x | 2^{1-x} + p \\le 0; x^2 - 2(p+7)x + 5 \\le 0\\}$\nIf $A \\subseteq B$, then the range of real number $p \\in [a, b]$ where $a, b$ are integers.\nFind the value of $(b - a)$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "7",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 25,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let the maximum value of expression $y = \\frac{x^4 - x^2}{x^6 + 2x^3 - 1}$ for $x &gt; 1$ is $\\frac{p}{q}$, where $p$ and $q$ are relatively prime natural numbers, then $p + q =$",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "4",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 26,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $f(x)$ is an even function, then the number of distinct real numbers $x$ such that $f(x) = f\\left(\\frac{x + 1}{x + 2}\\right)$ is :",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "1",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 27,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "The least integral value of $m$, $m \\in \\mathbb{R}$ for which the range of function $f(x) = \\frac{x + m}{x^2 + 1}$ contains the interval $[0, 1]$ is :",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "3",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 28,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $x_1, x_2, x_3$ satisfying the equation $x^3 - x^2 + \\beta x + \\gamma = 0$ are in G.P. where $x_1, x_2, x_3$ are positive numbers. Then the maximum value of $[\\beta] + [\\gamma] + 4$ is where $[\\cdot]$ denotes greatest integer function is :",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "5",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 29,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $A = \\{1, 2, 3, 4\\}$ and $B = \\{0, 1, 2, 3, 4, 5\\}$. If '$m$' is the number of strictly increasing function $f$, $f: A \\rightarrow B$ and $n$ is the number of onto functions $g$, $g: B \\rightarrow A$. Then the last digit of $n - m$ is.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "8",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 30,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If $\\sum_{r=1}^n [\\log_2 r] = 2010$, where $[\\cdot]$ denotes greatest integer function, then the sum of the digits of $n$ is :",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "9",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 31,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(x) = \\frac{ax + b}{cx + d}$, where $a, b, c, d$ are non-zero. If $f(7) = 7, f(11) = 11$ and $f(f(x)) = x$ for all $x$ except $-\\frac{d}{c}$. The unique number which is not in the range of $f$ is",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "3",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 32,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "It is pouring down rain, and the amount of rain hitting point $(x, y)$ is given by $f(x, y) = |x^3 + 2x^2y - 5xy^2 - 6y^3|$. If Mr. 'A' starts at $(0, 0)$; find number of possible value(s) for '$m$' such that $y = mx$ is a line along which Mr. 'A' could walk without any rain falling on him.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "2",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 33,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $P(x)$ be a cubic polynomial with leading co-efficient unity. Let the remainder when $P(x)$ is divided by $x^2 - 5x + 6$ equals 2 times the remainder when $P(x)$ is divided by $x^2 - 5x + 4$. If $P(0) = 100$, find the sum of the digits of $P(5)$:",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "2",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 34,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Let $f(x) = x^2 + 10x + 20$. Find the number of real solution of the equation $f(f(f(f(x)))) = 0$",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "6",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 35,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "If range of $f(x) = \\frac{(\\ln x)(\\ln x^2) + \\ln x^3 + 3}{\\ln^2 x + \\ln x^2 + 2}$ can be expressed as $\\left[\\frac{a}{b}, \\frac{c}{d}\\right]$ where $a, b, c$ and $d$ are prime numbers (not necessarily distinct) then find the value of $\\frac{(a + b + c + d)}{2}$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "4",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 36,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Polynomial $P(x)$ contains only terms of odd degree. When $P(x)$ is divided by $(x - 3)$, then remainder is 6. If $P(x)$ is divided by $(x^2 - 9)$ then remainder is $g(x)$. Find the value of $g(2)$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "0",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 37,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "The equation $2x^3 - 3x^2 + p = 0$ has three real roots. Then find the minimum value of $p$.",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "2",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 5",
+    "has_graph": false,
+    "questionNumber": 38,
+    "questionType": "SUBJECTIVE TYPE",
+    "text": "Find the number of integers in the domain of $f(x) = \\frac{1}{\\sqrt{\\ln \\cos^{-1} x}}$",
+    "typeLabel": "[SUBJECTIVE TYPE]",
+    "correctOptionsArray": [
+      -1
+    ],
+    "options": []
+  },
+  {
+    "answerKeyStr": "A→R; B→S; C→P; D→Q",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 4",
+    "has_graph": false,
+    "options": [
+      "(a) (A) $\\rightarrow$ (P); (B) $\\rightarrow$ (Q); (C) $\\rightarrow$ (R); (D) $\\rightarrow$ (S)",
+      "(b) (A) $\\rightarrow$ (Q); (B) $\\rightarrow$ (P); (C) $\\rightarrow$ (S); (D) $\\rightarrow$ (R)",
+      "(c) (A) $\\rightarrow$ (R); (B) $\\rightarrow$ (S); (C) $\\rightarrow$ (P); (D) $\\rightarrow$ (Q)",
+      "(d) (A) $\\rightarrow$ (S); (B) $\\rightarrow$ (R); (C) $\\rightarrow$ (Q); (D) $\\rightarrow$ (P)"
+    ],
+    "questionNumber": 1,
+    "questionType": "MATCH THE COLUMN",
+    "text": "Match the statements of Column I with values of Column II.\n\n$$\n\\begin{array}{|l|l|}\n\\hline\n\\text{\\textbf{Column-I}} & \\text{\\textbf{Column-II}} \\\\\n\\hline\n\\text{\\textbf{(A)} } \\text{If } f(x) = \\frac{x}{1+x} \\text{ and } g(x) = f(f(x)) \\text{, then } g'(x) \\text{ at } x=1 \\text{ is} & \\text{\\textbf{(P)} } \\text{is bounded} \\\\\n\\text{\\textbf{(B)} } \\text{The function } f(x) = \\sin(x) + \\cos(x) & \\text{\\textbf{(Q)} } \\frac{1}{4} \\\\\n\\text{\\textbf{(C)} } \\text{The period of } f(x) = \\sin^4(x) + \\cos^4(x) \\text{ is} & \\text{\\textbf{(R)} } \\frac{\\pi}{2} \\\\\n\\text{\\textbf{(D)} } \\text{If } f(x) = x^3 + x \\text{, then } f^{-1}(2) \\text{ is} & \\text{\\textbf{(S)} } 1 \\\\\n\\hline\n\\end{array}\n$$",
+    "typeLabel": "[MATCH THE COLUMN]",
+    "correctOptionsArray": [
+      -1
+    ]
+  },
+  {
+    "answerKeyStr": "A→S; B→P; C→Q; D→R",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 4",
+    "has_graph": false,
+    "options": [
+      "(a) (A) $\\rightarrow$ (P); (B) $\\rightarrow$ (Q); (C) $\\rightarrow$ (R); (D) $\\rightarrow$ (S)",
+      "(b) (A) $\\rightarrow$ (Q); (B) $\\rightarrow$ (P); (C) $\\rightarrow$ (S); (D) $\\rightarrow$ (R)",
+      "(c) (A) $\\rightarrow$ (R); (B) $\\rightarrow$ (S); (C) $\\rightarrow$ (P); (D) $\\rightarrow$ (Q)",
+      "(d) (A) $\\rightarrow$ (S); (B) $\\rightarrow$ (R); (C) $\\rightarrow$ (Q); (D) $\\rightarrow$ (P)"
+    ],
+    "questionNumber": 2,
+    "questionType": "MATCH THE COLUMN",
+    "text": "Match the functions in Column I with their properties in Column II.\n\n$$\n\\begin{array}{|l|l|}\n\\hline\n\\text{\\textbf{Column-I}} & \\text{\\textbf{Column-II}} \\\\\n\\hline\n\\text{\\textbf{(A)} } f(x) = \\frac{x}{|x|} & \\text{\\textbf{(P)} } \\text{Continuous everywhere} \\\\\n\\text{\\textbf{(B)} } f(x) = x|x| & \\text{\\textbf{(Q)} } \\text{Discontinuous at } x=0 \\\\\n\\text{\\textbf{(C)} } f(x) = [x] & \\text{\\textbf{(R)} } \\text{Non-differentiable at } x=0 \\\\\n\\text{\\textbf{(D)} } f(x) = \\sin(|x|) & \\text{\\textbf{(S)} } \\text{Discontinuous at integer points} \\\\\n\\hline\n\\end{array}\n$$",
+    "typeLabel": "[MATCH THE COLUMN]",
+    "correctOptionsArray": [
+      -1
+    ]
+  },
+  {
+    "answerKeyStr": "A→Q; B→R; C→P; D→S",
+    "chapter": "Functions",
+    "chapterId": "black-book-ch1-functions",
+    "correctOption": -1,
+    "exerciseName": "Exercise 4",
+    "has_graph": true,
+    "imageUrl": "/images/ex4_q7_original.png",
+    "imageUrl2": "/images/ex4_q7_options.png",
+    "options": [
+      "(a) (A) $\\rightarrow$ (P); (B) $\\rightarrow$ (Q); (C) $\\rightarrow$ (R); (D) $\\rightarrow$ (S)",
+      "(b) (A) $\\rightarrow$ (Q); (B) $\\rightarrow$ (P); (C) $\\rightarrow$ (S); (D) $\\rightarrow$ (R)",
+      "(c) (A) $\\rightarrow$ (R); (B) $\\rightarrow$ (S); (C) $\\rightarrow$ (P); (D) $\\rightarrow$ (Q)",
+      "(d) (A) $\\rightarrow$ (S); (B) $\\rightarrow$ (R); (C) $\\rightarrow$ (Q); (D) $\\rightarrow$ (P)"
+    ],
+    "questionNumber": 3,
+    "questionType": "MATCH THE COLUMN",
+    "text": "Given the graph of $y = f(x)$ below:\n\nMatch the functions in Column-I with their correct graphs in Column-II:\n\n$$\n\\begin{array}{|l|l|}\n\\hline\n\\text{\\textbf{Column-I (Function)}} & \\text{\\textbf{Column-II (Graph)}} \\\\\n\\hline\n\\text{\\textbf{(A)} } y = f(1-x) \\text{ [Reflection about } x = \\frac{1}{2} \\text{]} & \\text{\\textbf{(P)} } \\text{Graph shifted: passes through } (-1,-2), (0,0), (1,1), (2,0) \\\\\n\\text{\\textbf{(B)} } y = f(2x) \\text{ [Horizontal compression by 2]} & \\text{\\textbf{(Q)} } \\text{Original } f(x) \\text{ — peaks at } (0,1) \\\\\n\\text{\\textbf{(C)} } y = -2f(x) \\text{ [Vertical flip and scale } \\times 2 \\text{]} & \\text{\\textbf{(R)} } \\text{Graph compressed: peaks at } (0,1) \\text{, x-range } [-\\frac{1}{2}, 1] \\\\\n\\text{\\textbf{(D)} } y = 1 - f(x) \\text{ [Vertical flip + shift up 1]} & \\text{\\textbf{(S)} } \\text{Graph: passes through } (-1,0) \\text{, minimum } (0,-2) \\text{, passes through } (1,0) \\text{, to } (2,4) \\\\\n\\hline\n\\end{array}\n$$",
+    "typeLabel": "[MATCH THE COLUMN]",
+    "correctOptionsArray": [
+      -1
+    ]
+  }
+]

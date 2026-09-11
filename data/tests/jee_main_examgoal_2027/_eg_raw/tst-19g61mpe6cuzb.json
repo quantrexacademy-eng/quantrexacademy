@@ -1,0 +1,989 @@
+{
+  "testId": "tst-19g61mpe6cuzb",
+  "title": "Chemical Bonding & Molecular Structure Test - 2 (Topic Test)",
+  "type": "topic",
+  "section": "Chemical Bonding & Molecular Structure",
+  "categoryTitle": "Chapter and Topic Wise Tests",
+  "groupTitle": "Chemistry",
+  "isUpcoming": false,
+  "liveAt": "2026-08-16T14:30:00.000Z",
+  "status": "ok",
+  "analysisId": "d607a4b9-6a54-4c03-87ba-03565a9ae690",
+  "questions_count": 15,
+  "solutions_count": 15,
+  "submit_note": "submitted",
+  "test": {
+    "testId": "tst-19g61mpe6cuzb",
+    "defaultLanguage": "en",
+    "description": "Valence Bond Theory and Hybridization",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-16T14:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "sections": [
+      {
+        "id": "f6973310-2ec3-4189-abb9-cd37e98fa0d2",
+        "title": "SECTION A",
+        "description": null,
+        "maxMarks": 40,
+        "maxNegMarks": 10,
+        "timeAllotted": 1440000,
+        "totalQuestions": 10,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msvsv6mw",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The fluorine molecule is formed by :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>p–p orbitals (sideways overlap)</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>p–p orbitals (end to end overlap)</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>sp–sp orbitals</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>s–s orbitals</p>"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>Each F atom have an electronic configuration of: $1 \\mathrm{~s}^2 2 \\mathrm{~s}^2 2 \\mathrm{p}^5$</p>\n<p>In $\\mathrm{F}_2$ each atom have one unpaired $\\mathrm{e}^{-}$in the 2 p orbital, and when F atoms combine the two half-filled 2p orbitals overlap along the internuclear axis (head-on or end-to-end overlap) ad forms a $\\sigma$ (sigma) bond.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvsuc39%2F5b25d752-c482-48ca-b617-feaf4f94cb7e%2F8d91de50-9970-11f1-b784-99db0d67d301%2Ffile-6y3zli1msvsuc3a.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvsuc39%2F5b25d752-c482-48ca-b617-feaf4f94cb7e%2F8d91de50-9970-11f1-b784-99db0d67d301%2Ffile-6y3zli1msvsuc3a.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>फ्लुओरीन अणु किसके द्वारा बनता है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>p–p कक्षक (पार्श्वीय अतिव्यापन)</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>p–p कक्षक (सिरे से सिरे का अतिव्यापन)</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>sp–sp कक्षक</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>s–s कक्षक</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "valence-bond-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msvt57eb",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following leads to bonding :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvszhbk%2Fe6bc1199-89bf-4496-a29a-dd05254e6dcb%2F1ca7f700-9971-11f1-b784-99db0d67d301%2Ffile-6y3zli1msvszhbl.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvszhbk%2Fe6bc1199-89bf-4496-a29a-dd05254e6dcb%2F1ca7f700-9971-11f1-b784-99db0d67d301%2Ffile-6y3zli1msvszhbl.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvt126k%2F3fab62c7-341e-42ec-ab6b-f28380c91404%2F489478c0-9971-11f1-b784-99db0d67d301%2Ffile-6y3zli1msvt126l.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvt126k%2F3fab62c7-341e-42ec-ab6b-f28380c91404%2F489478c0-9971-11f1-b784-99db0d67d301%2Ffile-6y3zli1msvt126l.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvt2f0v%2F7de8707a-84c3-4578-b1d6-242f4b6faf58%2F6e4f21f0-9971-11f1-b784-99db0d67d301%2Ffile-6y3zli1msvt2f0w.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvt2f0v%2F7de8707a-84c3-4578-b1d6-242f4b6faf58%2F6e4f21f0-9971-11f1-b784-99db0d67d301%2Ffile-6y3zli1msvt2f0w.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvt3tn4%2F050aa9b8-9b01-499a-a317-38e5226733b9%2F95690d00-9971-11f1-b784-99db0d67d301%2Ffile-6y3zli1msvt3tn5.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvt3tn4%2F050aa9b8-9b01-499a-a317-38e5226733b9%2F95690d00-9971-11f1-b784-99db0d67d301%2Ffile-6y3zli1msvt3tn5.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  }
+                ],
+                "correct_options": [
+                  "B"
+                ],
+                "explanation": "<p>For forming a chemical bond between two atoms, their atomic orbitals must go with constructive (positive overlap). Which means + go with a + sign and - go with a - sign.</p>\n<p>A. Here, s-orbital overlaps with a p-orbital sideways. The positive and negative lobes of the p-orbital overlap equally with the s-orbital. Therefore. The bonding and antibonding interactions cancel each other, resulting in no net bond.</p>\n<p>B. s-orbital overlaps end-to-end with the positive lobe of the p-orbital, which is a constructive overlap, forming a $\\sigma(\\mathrm{s}-\\mathrm{p})$ bond. Therefore, Bonding occurs</p>\n<p>C. Here, two p-orbitals overlap sideways, but the overlapping lobes have opposite phases. This gives destructive overlap (antibonding). Therefore, No bonding.</p>\n<p>D. A p-orbital overlaps sideways with a d-orbital, but the overlapping lobes have opposite phases in the overlap region. This does not produce a bonding interaction. Therefore, in this option, there will be no bonding.</p>\n<p>Answer: B</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से किसके कारण आबंधन (bonding) होता है :</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvszhbk%2Fe6bc1199-89bf-4496-a29a-dd05254e6dcb%2F1ca7f700-9971-11f1-b784-99db0d67d301%2Ffile-6y3zli1msvszhbl.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvszhbk%2Fe6bc1199-89bf-4496-a29a-dd05254e6dcb%2F1ca7f700-9971-11f1-b784-99db0d67d301%2Ffile-6y3zli1msvszhbl.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvt126k%2F3fab62c7-341e-42ec-ab6b-f28380c91404%2F489478c0-9971-11f1-b784-99db0d67d301%2Ffile-6y3zli1msvt126l.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvt126k%2F3fab62c7-341e-42ec-ab6b-f28380c91404%2F489478c0-9971-11f1-b784-99db0d67d301%2Ffile-6y3zli1msvt126l.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvt2f0v%2F7de8707a-84c3-4578-b1d6-242f4b6faf58%2F6e4f21f0-9971-11f1-b784-99db0d67d301%2Ffile-6y3zli1msvt2f0w.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvt2f0v%2F7de8707a-84c3-4578-b1d6-242f4b6faf58%2F6e4f21f0-9971-11f1-b784-99db0d67d301%2Ffile-6y3zli1msvt2f0w.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvt3tn4%2F050aa9b8-9b01-499a-a317-38e5226733b9%2F95690d00-9971-11f1-b784-99db0d67d301%2Ffile-6y3zli1msvt3tn5.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvt3tn4%2F050aa9b8-9b01-499a-a317-38e5226733b9%2F95690d00-9971-11f1-b784-99db0d67d301%2Ffile-6y3zli1msvt3tn5.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "valence-bond-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msvviki1",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The maximum number of atoms having <i>sp<sup>2</sup></i> hybridization in the following molecule is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvveqwa%2F74cf4d91-da42-4434-8466-d8337dfc4232%2F9772d0a0-997a-11f1-a792-fda3b191edaf%2Ffile-6y3zli1msvveqwb.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvveqwa%2F74cf4d91-da42-4434-8466-d8337dfc4232%2F9772d0a0-997a-11f1-a792-fda3b191edaf%2Ffile-6y3zli1msvveqwb.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>3</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>6</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>9</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>12</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvvgsw8%2Ffc305054-5fcf-48b1-b4af-0f2a1895694e%2Fd09c7390-997a-11f1-a792-fda3b191edaf%2Ffile-6y3zli1msvvgsw9.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvvgsw8%2Ffc305054-5fcf-48b1-b4af-0f2a1895694e%2Fd09c7390-997a-11f1-a792-fda3b191edaf%2Ffile-6y3zli1msvvgsw9.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित अणु में <i>sp<sup>2</sup></i> संकरण वाले परमाणुओं की अधिकतम संख्या है</p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvveqwa%2F74cf4d91-da42-4434-8466-d8337dfc4232%2F9772d0a0-997a-11f1-a792-fda3b191edaf%2Ffile-6y3zli1msvveqwb.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvveqwa%2F74cf4d91-da42-4434-8466-d8337dfc4232%2F9772d0a0-997a-11f1-a792-fda3b191edaf%2Ffile-6y3zli1msvveqwb.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>3</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>6</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>9</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>12</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msvtrbsj",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The state of hybridisation for the transition state of hydrolysis mechanism of BCl<sub>3</sub> and SF<sub>4</sub> are respectively.</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$sp^2$ and $sp^3d$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$sp^2$ and $sp^3d^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$sp^3$ and $sp^3$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$sp^3$ and $sp^3d^2$</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>The reaction proceeds as follow-</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvtq4nf%2Fa5f2abc1-467a-48c4-b1f1-1fbcf94f8ce2%2F01b71db0-9974-11f1-9a49-b9cf3f9d0d40%2Ffile-6y3zli1msvtq4ng.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvtq4nf%2Fa5f2abc1-467a-48c4-b1f1-1fbcf94f8ce2%2F01b71db0-9974-11f1-9a49-b9cf3f9d0d40%2Ffile-6y3zli1msvtq4ng.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvtpurt%2F0a656187-4b38-4f7d-b659-69a0abffdf18%2Ffa15af90-9973-11f1-9a49-b9cf3f9d0d40%2Ffile-6y3zli1msvtpuru.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvtpurt%2F0a656187-4b38-4f7d-b659-69a0abffdf18%2Ffa15af90-9973-11f1-9a49-b9cf3f9d0d40%2Ffile-6y3zli1msvtpuru.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>BCl<sub>3</sub> और SF<sub>4</sub> की जल अपघटन क्रियाविधि की संक्रमण अवस्था के लिए संकरण की अवस्था क्रमशः है:</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>$sp^2$ और $sp^3d$</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>$sp^2$ और $sp^3d^2$</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>$sp^3$ और $sp^3$</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>$sp^3$ और $sp^3d^2$</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msvtz5ng",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In which of the following pairs, the hybridisation of central atoms is same, but geometry is not the same?</p>\n",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>SO<sub>3</sub>, CO<sub>3</sub><sup>2−</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>SO<sub>3</sub><sup>2−</sup>, NH<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>PCl<sub>5</sub>, POCl<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>XeF<sub>2</sub>, ICl<sub>3</sub></p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>Among the given pairs, in $\\mathrm{XeF}_2, \\mathrm{ICl}_3$ in which the hybridisation of central atoms is same but geometry is not same.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvtxbfq%2F943cc070-094a-412e-9a6c-968b274d67c1%2Fc99f1c60-9974-11f1-9a49-b9cf3f9d0d40%2Ffile-6y3zli1msvtxbfr.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvtxbfq%2F943cc070-094a-412e-9a6c-968b274d67c1%2Fc99f1c60-9974-11f1-9a49-b9cf3f9d0d40%2Ffile-6y3zli1msvtxbfr.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से किस युग्म में, केंद्रीय परमाणुओं का संकरण समान है, लेकिन ज्यामिति समान नहीं है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>SO<sub>3</sub>, CO<sub>3</sub><sup>2−</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>SO<sub>3</sub><sup>2−</sup>, NH<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>PCl<sub>5</sub>, POCl<sub>3</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>XeF<sub>2</sub>, ICl<sub>3</sub></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msvvw2eb",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In <i>sp</i><sup>3</sup><i>d</i><sup>3</sup> hybridization</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>the axial bonds are longer and weaker than the equatorial.</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>the <i>d</i>-orbitals participating are <i>d</i><sub>xy</sub>, <i>d</i><sub>yz</sub> and <i>d</i><sub>zx</sub>.</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>the <i>d</i>-orbitals participating are <i>d</i><sub>x<sup>2</sup>-y<sup>2</sup></sub>, <i>d</i><sub>xy</sub> and <i>d</i><sub>z<sup>2</sup></sub>.</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>it is a combination of two sets of hybridization i.e., <i>sp</i><sup>2</sup><i>d</i><sup>2</sup> (s, p<sub>x</sub>, p<sub>y</sub>, d<sub>xy</sub> and d<sub>zx</sub>) and pd (p<sub>z</sub>, d<sub>z<sup>2</sup></sub>)</b></p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<p>The $sp^3d^3$ hybridization corresponds to a <strong>pentagonal bipyramidal</strong> geometry (a classic example being the $IF_7$ molecule).</p>\n<p>This geometry can be conceptually split into two parts:</p>\n<ul>\n<li><p>A <strong>pentagonal planar</strong> equatorial base.</p></li>\n<li><p>A <strong>linear</strong> axial component perpendicular to the base.</p></li>\n</ul>\n\n<p>To achieve this specific geometry, the central atom mixes its orbitals along specific axes:</p>\n<ul>\n<li><p><strong>Equatorial (Pentagonal Planar) Component:</strong> This lies in the $xy$-plane. The orbitals that lie in or can be directed within this plane are the $s$, $p_x$, $p_y$, $d_{x^2-y^2}$, and $d_{xy}$ orbitals.</p></li>\n<li><p><strong>Axial Component:</strong> This lies along the $z$-axis (perpendicular to the $xy$-plane). The orbitals directed along this axis are the $p_z$ and $d_{z^2}$ orbitals.</p></li>\n</ul>\n<p>By combining these, the total set of seven hybridized orbitals is formed using:</p>\n<p>$$s + p_x + p_y + p_z + d_{x^2-y^2} + d_{xy} + d_{z^2}$$</p>\n<p>Therefore, the specific $d$-orbitals involved are <strong>$d_{x^2-y^2}$, $d_{xy}$, and $d_{z^2}$</strong>.</p>\n\n<ul>\n<li><p><strong>Option A:</strong> <em>Incorrect.</em> In $sp^3d^3$ hybridization, the 5 equatorial bonds are crowded at an angle of 72° to each other, leading to high steric repulsion. The axial bonds are at 90° to the equatorial bonds. Due to the severe repulsion in the pentagonal plane, the <strong>equatorial bonds are longer and weaker</strong> than the axial bonds (the opposite of what is seen in $sp^3d$ hybridization like $PCl_5$).</p></li>\n<li><p><strong>Option B:</strong> <em>Incorrect.</em> It lists the wrong set of $d$-orbitals ($d_{xy}$, $d_{yz}$, and $d_{zx}$).</p></li>\n<li><p><strong>Option C: \"the d-orbitals participating are $d_{x^2-y^2}$, $d_{xy}$ and $d_{z^2}$.\"</strong></p></li>\n<li><p><strong>Correct.</strong> This perfectly matches our orbital breakdown.</p></li>\n<li><p><strong>Option D:</strong> <em>Incorrect.</em> While it correctly attempts to split the hybridization into two sets, it incorrectly assigns $d_{zx}$ to the equatorial $sp^2d^2$ set instead of $d_{x^2-y^2}$.</p></li>\n</ul>\n<p>The correct statement is <strong>Option C</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><i>sp</i><sup>3</sup><i>d</i><sup>3</sup> संकरण में</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p><b>अक्षीय आबंध, विषुवतीय आबंधों की तुलना में लंबे और दुर्बल होते हैं।</b></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p><b>भाग लेने वाले <i>d</i>-कक्षक <i>d</i><sub>xy</sub>, <i>d</i><sub>yz</sub> और <i>d</i><sub>zx</sub> हैं।</b></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p><b>भाग लेने वाले <i>d</i>-कक्षक <i>d</i><sub>x<sup>2</sup>-y<sup>2</sup></sub>, <i>d</i><sub>xy</sub> और <i>d</i><sub>z<sup>2</sup></sub> हैं।</b></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p><b>यह संकरण के दो समुच्चयों अर्थात् <i>sp</i><sup>2</sup><i>d</i><sup>2</sup> (s, p<sub>x</sub>, p<sub>y</sub>, d<sub>xy</sub> और d<sub>zx</sub>) और pd (p<sub>z</sub>, d<sub>z<sup>2</sup></sub>) का संयोजन है</b></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msvua336",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>According to VBT, which of the following overlapping results in <b>&pi;-type</b> covalent bond in O<sub>2</sub> molecule formation, when Z-axis is an internuclear axis?</p><p>I. 2s &ndash; 2s</p><p>II. 2p<sub>x</sub> &ndash; 2p<sub>x</sub></p><p>III. 1s &ndash; 1s</p><p>IV. 2p<sub>y</sub> &ndash; 2p<sub>y</sub></p><p>V. 2p<sub>z</sub> &ndash; 2p<sub>z</sub></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>I, III</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>II, V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>II, IV</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>IV, V</p>"
+                  }
+                ],
+                "correct_options": [
+                  "C"
+                ],
+                "explanation": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvu9eyf%2Fe1e449b7-105f-4871-97c4-ac42029d6b20%2F1a0cc070-9976-11f1-9a49-b9cf3f9d0d40%2Ffile-6y3zli1msvu9eyg.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvu9eyf%2Fe1e449b7-105f-4871-97c4-ac42029d6b20%2F1a0cc070-9976-11f1-9a49-b9cf3f9d0d40%2Ffile-6y3zli1msvu9eyg.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>VBT के अनुसार, जब Z-अक्ष अंतर्नाभिकीय अक्ष हो, तो O<sub>2</sub> अणु के निर्माण में निम्नलिखित में से किस अतिव्यापन के परिणामस्वरूप <b>&pi;-प्रकार</b> का सहसंयोजक आबंध बनता है?</p><p>I. 2s &ndash; 2s</p><p>II. 2p<sub>x</sub> &ndash; 2p<sub>x</sub></p><p>III. 1s &ndash; 1s</p><p>IV. 2p<sub>y</sub> &ndash; 2p<sub>y</sub></p><p>V. 2p<sub>z</sub> &ndash; 2p<sub>z</sub></p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>I, III</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>II, V</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>II, IV</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>IV, V</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "valence-bond-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msvux3es",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following overlaps is incorrect (assuming Z-axis is internuclear axis)?</p><p>A. $2p_y + 2p_y \\rightarrow \\pi$-Bond formation</p><p>B. $2p_x + 2p_x \\rightarrow \\sigma$-Bond formation</p><p>C. $3d_{xy} + 3d_{xy} \\rightarrow \\pi$-Bond formation</p><p>D. $2s + 2p_y \\rightarrow \\pi$-Bond formation</p><p>E. $3d_{xy} + 3d_{xy} \\rightarrow \\delta$-Bond formation</p><p>E. $2p_z + 2p_z \\rightarrow \\sigma$-Bond formation</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>A, B, C</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>C, F</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>B, E</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>B, C, D</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>When two atoms approach each other to form a bond, the imaginary line connecting their nuclei is the internuclear axis. Since the problem defines this as the <strong>Z-axis</strong>:</p>\n<ul>\n<li><p><strong>$\\sigma$ (Sigma) Bonds:</strong> Formed by <strong>head-on</strong> overlap. Orbitals must lie directly on the Z-axis.</p></li>\n<li><p><strong>$\\pi$ (Pi) Bonds:</strong> Formed by <strong>sideways (lateral)</strong> overlap. Orbitals must be parallel to each other and perpendicular to the Z-axis (lying on the X or Y axes).</p></li>\n<li><p><strong>Zero Overlap:</strong> Occurs when orbital symmetries don't match, resulting in the positive phase overlap canceling out the negative phase overlap. No bond forms.</p></li>\n</ul>\n\n\n<h2>Why B, C, and D are Incorrect Statements</h2>\n<p>Here is exactly why these three specific combinations fail to produce the bonds listed in the options:</p>\n<ul>\n<li><p><strong>Statement B ($2p_x + 2p_x \\rightarrow \\sigma$-bond):</strong> The $p_x$ orbitals lie on the X-axis, meaning they are perpendicular to our internuclear Z-axis. When they approach each other, they meet side-by-side. Sideways overlap forms a <strong>$\\pi$-bond</strong>, not a $\\sigma$-bond.</p></li>\n<li><p><strong>Statement C ($3d_{xy} + 3d_{xy} \\rightarrow \\pi$-bond):</strong> The $d_{xy}$ orbitals lie completely flat in the XY-plane. When they approach along the perpendicular Z-axis, all four lobes of one orbital face all four lobes of the other. This unique 4-lobe face-to-face overlap creates a <strong>$\\delta$ (delta) bond</strong>, not a $\\pi$-bond.</p></li>\n<li><p><strong>Statement D ($2s + 2p_y \\rightarrow \\pi$-bond):</strong> A spherical $s$ orbital can only ever form $\\sigma$-bonds. Furthermore, when it approaches a $p_y$ orbital along the Z-axis (as shown in the image above), it hits the \"waist\" of the $p$ orbital. The positive overlap with the top lobe perfectly cancels out the negative overlap with the bottom lobe, resulting in <strong>zero overlap</strong>. No bond is formed at all.</p></li>\n</ul>\n\n<h2>Why A, E, and F are Correct Statements</h2>\n<p>For completeness, here is why the remaining statements are chemically accurate:</p>\n<ul>\n<li><p><strong>Statement A ($2p_y + 2p_y \\rightarrow \\pi$-bond):</strong> The $p_y$ orbitals are perpendicular to the Z-axis. They approach sideways, successfully forming a $\\pi$-bond.</p></li>\n<li><p><strong>Statement E ($3d_{xy} + 3d_{xy} \\rightarrow \\delta$-bond):</strong> As explained in Statement C, the four-lobe face-to-face overlap of $d$-orbitals approaching on a perpendicular axis forms a $\\delta$-bond.</p></li>\n<li><p><strong>Statement F ($2p_z + 2p_z \\rightarrow \\sigma$-bond):</strong> Both $p_z$ orbitals lie directly on the internuclear Z-axis. They meet head-on, successfully forming a $\\sigma$-bond.</p></li>\n</ul>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>निम्नलिखित में से कौन सा अतिव्यापन गलत है (यह मानते हुए कि Z-अक्ष अंतर्नाभिकीय अक्ष है)?</p><p>A. $2p_y + 2p_y \\rightarrow \\pi$-आबंध निर्माण</p><p>B. $2p_x + 2p_x \\rightarrow \\sigma$-आबंध निर्माण</p><p>C. $3d_{xy} + 3d_{xy} \\rightarrow \\pi$-आबंध निर्माण</p><p>D. $2s + 2p_y \\rightarrow \\pi$-आबंध निर्माण</p><p>E. $3d_{xy} + 3d_{xy} \\rightarrow \\delta$-आबंध निर्माण</p><p>F. $2p_z + 2p_z \\rightarrow \\sigma$-आबंध निर्माण</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>A, B, C</p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>C, F</p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>B, E</p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>B, C, D</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "valence-bond-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msvvc06w",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Which of the following overlapping is not present in XeO<sub>3</sub> molecule?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>sp<sup>3</sup> + p<sub>x</sub></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>sp<sup>3</sup> + p<sub>y</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>d<sub>xz</sub> + p<sub>x</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>sp<sup>3</sup> + s</p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<p>We know that Xenon belongs to VII A and Oxygen belongs to VI A period of the periodic table. Xe has completely filled the last s and p orbitals in the ground state. However, in the excited state, the 3p orbital electron jumps to the d-orbitals, which are further involved in hybridization and bond formation.</p>\n<p><img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvv4r1p%2F1bc40efe-8dff-46d2-bad2-2862ba60e121%2F817929d0-9979-11f1-a792-fda3b191edaf%2Ffile-6y3zli1msvv4r1q.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvv4r1p%2F1bc40efe-8dff-46d2-bad2-2862ba60e121%2F817929d0-9979-11f1-a792-fda3b191edaf%2Ffile-6y3zli1msvv4r1q.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\"></p>\n<p>As described in the image, A. $s p^3+p_x$ is present, B. $s p^3+p_y$ is present, and C. $d_{x z}+p_x$ is also present.</p>\n<p>D. $\\mathrm{sp}^3+\\mathrm{s}$ is not present. Therefore, our answer is D.</p>\n<p>Answer: D</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>XeO<sub>3</sub> अणु में निम्नलिखित में से कौन सा अतिव्यापन उपस्थित नहीं है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>sp<sup>3</sup> + p<sub>x</sub></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>sp<sup>3</sup> + p<sub>y</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>d<sub>xz</sub> + p<sub>x</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>sp<sup>3</sup> + s</p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "valence-bond-theory",
+            "type": "mcq"
+          },
+          {
+            "questionId": "tq-msvvs63s",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "easy",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Highest number of <i>p</i>π–<i>d</i>π bonds are present in</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>HSO<sub>3</sub><sup>−</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>SO<sub>2</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>SO<sub>2</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>SO<sub>3</sub></p>"
+                  }
+                ],
+                "correct_options": [
+                  "D"
+                ],
+                "explanation": "<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvvr7e3%2F107b9b30-4138-4fd8-8b80-95cbd0bc6b0b%2Ff1e65fb0-997b-11f1-a792-fda3b191edaf%2Ffile-6y3zli1msvvr7e4.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvvr7e3%2F107b9b30-4138-4fd8-8b80-95cbd0bc6b0b%2Ff1e65fb0-997b-11f1-a792-fda3b191edaf%2Ffile-6y3zli1msvvr7e4.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p><i>p</i>π–<i>d</i>π आबंधों की सर्वाधिक संख्या किसमें उपस्थित है?</p>",
+                "options": [
+                  {
+                    "identifier": "A",
+                    "content": "<p>HSO<sub>3</sub><sup>−</sup></p>"
+                  },
+                  {
+                    "identifier": "B",
+                    "content": "<p>SO<sub>2</sub></p>"
+                  },
+                  {
+                    "identifier": "C",
+                    "content": "<p>SO<sub>2</sub></p>"
+                  },
+                  {
+                    "identifier": "D",
+                    "content": "<p>SO<sub>3</sub></p>"
+                  }
+                ]
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "valence-bond-theory",
+            "type": "mcq"
+          }
+        ],
+        "instructions": null
+      },
+      {
+        "id": "32f0027d-91c1-43e1-b437-13c0a923644e",
+        "title": "SECTION B",
+        "description": null,
+        "maxMarks": 20,
+        "maxNegMarks": 5,
+        "timeAllotted": 720000,
+        "totalQuestions": 5,
+        "optional": [],
+        "questions": [
+          {
+            "questionId": "tq-msvvo2vo",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The maximum number of atoms having highest $\\%$ of $s$-character in their hybridization state in the given molecule is</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvvk9ia%2Ffb680f75-8a33-4399-a499-22474007bb3d%2F30def020-997b-11f1-a792-fda3b191edaf%2Ffile-6y3zli1msvvk9ib.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvvk9ia%2Ffb680f75-8a33-4399-a499-22474007bb3d%2F30def020-997b-11f1-a792-fda3b191edaf%2Ffile-6y3zli1msvvk9ib.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>Atom with $s p$-hybridization will have highest $\\%$ $s$-character.</p>\n<img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvvna5e%2F47fe34b3-4650-4814-ae42-2bbc4f90928e%2F84cb5020-997b-11f1-a792-fda3b191edaf%2Ffile-6y3zli1msvvna5f.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvvna5e%2F47fe34b3-4650-4814-ae42-2bbc4f90928e%2F84cb5020-997b-11f1-a792-fda3b191edaf%2Ffile-6y3zli1msvvna5f.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दिए गए अणु में अपनी संकरण अवस्था में $s$-लक्षण का उच्चतम % रखने वाले परमाणुओं की अधिकतम संख्या है</p> <img src=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Ffly%2F%40width%2Fimage%2F6y3zli1msvvk9ia%2Ffb680f75-8a33-4399-a499-22474007bb3d%2F30def020-997b-11f1-a792-fda3b191edaf%2Ffile-6y3zli1msvvk9ib.png?alt=media\" data-orsrc=\"https://firebasestorage.googleapis.com/v0/b/quantrexacademy-app.firebasestorage.app/o/questions%2Ffigs%2Fexamgoal%2Fimage%2F6y3zli1msvvk9ia%2Ffb680f75-8a33-4399-a499-22474007bb3d%2F30def020-997b-11f1-a792-fda3b191edaf%2Ffile-6y3zli1msvvk9ib.png?alt=media\" loading=\"lazy\" style=\"max-width: 100%;height: auto;display: block;margin: 0 auto;max-height: 40vh;vertical-align: baseline\">",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msvw448s",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>The number of $s p$ hybrid atoms in the molecule of tetracyanomethane is</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "\n<h3><strong>Structure of Tetracyanomethane</strong></h3>\n<p>The chemical formula is $C(CN)_4$.</p>\n<p>It consists of one central carbon atom bonded to four cyano ($-C \\equiv N$) groups.</p>\n\n<p>The hybridization of an atom is determined by its steric number (the number of $\\sigma$ bonds plus the number of lone pairs).</p>\n<p><strong>The Central Carbon Atom:</strong></p>\n<ul>\n<li><p>It forms 4 single ($\\sigma$) bonds (one to each cyano group).</p></li>\n<li><p>It has 0 lone pairs.</p></li>\n<li><p>Steric number = $4 + 0 = 4$</p></li>\n<li><p>Hybridization = <strong>$sp^3$</strong></p></li>\n<li><p><em>(This carbon is not $sp$ hybridized, so we do not count it).</em></p></li>\n</ul>\n<p><strong>The Four Cyano Carbon Atoms ($-C \\equiv N$):</strong></p>\n<ul>\n<li><p>Let's look at just one of these carbon atoms. It forms a single ($\\sigma$) bond with the central carbon and a triple bond (which consists of $1\\sigma$ and $2\\pi$ bonds) with the nitrogen atom.</p></li>\n<li><p>Total $\\sigma$ bonds for each cyano carbon = $2$</p></li>\n<li><p>It has 0 lone pairs.</p></li>\n<li><p>Steric number = $2 + 0 = 2$</p></li>\n<li><p>Hybridization = <strong>$sp$</strong></p></li>\n<li><p>Since there are four cyano groups in the molecule, there are <strong>$4$</strong> such $sp$ hybridized carbon atoms.</p></li>\n</ul>\n\n<p>While it is true that the four nitrogen atoms are also $sp$ hybridized (each has 1 $\\sigma$ bond and 1 lone pair), questions in this format almost always ask specifically to \"find the number of $sp$ hybridized <strong>carbon</strong> atoms.\"</p>\n<p>When we restrict our count strictly to the carbon atoms, we find:</p>\n<ul>\n<li><p>1 $sp^3$ carbon</p></li>\n<li><p>4 $sp$ carbons</p></li>\n</ul>\n<p>Therefore, the final answer is <strong>4</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>टेट्रासायनोमीथेन के अणु में $s p$ संकरित परमाणुओं की संख्या है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msvw8iii",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Among the given, triatomic molecules/ions, $\\mathrm{BeCl}_2$, $\\mathrm{N}_3^{\\ominus}, \\mathrm{N}_2 \\mathrm{O}, \\mathrm{NO}_2^{\\oplus}, \\mathrm{O}_3, \\mathrm{SCl}_2, \\mathrm{ICl}_2^{\\ominus}, \\mathrm{I}_3^{\\ominus}$ and $\\mathrm{XeF}_2$, the total number of linear molecules/ion(s) where the hybridisation of the central atom does not have contribution from the $d$-orbital(s).</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<ol>\n<li><p><strong>Shape:</strong> The molecule/ion must be <strong>linear</strong>.</p></li>\n<li><p><strong>Hybridisation:</strong> The central atom's hybridisation must <strong>not</strong> involve $d$-orbitals (i.e., it must be $sp$, $sp^2$, or $sp^3$).</p></li>\n</ol>\n<p>Let's break down the structure and hybridisation for each species using the Steric Number ($SN = \\text{Sigma Bond Pairs} + \\text{Lone Pairs}$).</p>\n\n<ul>\n<li><p><strong>$\\mathrm{BeCl}_2$</strong></p></li>\n<li><p>Central atom: Be (Valence electrons = 2)</p></li>\n<li><p>$SN = 2$ bond pairs + $0$ lone pairs = $2 \\implies$ <strong>$sp$ hybridised</strong>.</p></li>\n<li><p><strong>Shape:</strong> Linear.</p></li>\n<li><p><strong>Verdict:</strong> Matches both conditions.</p></li>\n<li><p><strong>$\\mathrm{N}_3^{\\ominus}$ (Azide ion)</strong></p></li>\n<li><p>Central atom: N (Structure: $[\\mathrm{N} = \\mathrm{N} = \\mathrm{N}]^{\\ominus}$)</p></li>\n<li><p>$SN = 2$ sigma bonds + $0$ lone pairs = $2 \\implies$ <strong>$sp$ hybridised</strong>.</p></li>\n<li><p><strong>Shape:</strong> Linear.</p></li>\n<li><p><strong>Verdict:</strong> Matches both conditions.</p></li>\n<li><p><strong>$\\mathrm{N}_2\\mathrm{O}$ (Nitrous oxide)</strong></p></li>\n<li><p>Central atom: N (Structure: $\\mathrm{N} \\equiv \\mathrm{N} \\rightarrow \\mathrm{O}$)</p></li>\n<li><p>$SN = 2$ sigma bonds + $0$ lone pairs = $2 \\implies$ <strong>$sp$ hybridised</strong>.</p></li>\n<li><p><strong>Shape:</strong> Linear.</p></li>\n<li><p><strong>Verdict:</strong> Matches both conditions.</p></li>\n<li><p><strong>$\\mathrm{NO}_2^{\\oplus}$ (Nitronium ion)</strong></p></li>\n<li><p>Central atom: N (Valence electrons = 5 - 1 = 4)</p></li>\n<li><p>$SN = 2$ sigma bonds (double bonds) + $0$ lone pairs = $2 \\implies$ <strong>$sp$ hybridised</strong>.</p></li>\n<li><p><strong>Shape:</strong> Linear.</p></li>\n<li><p><strong>Verdict:</strong> Matches both conditions.</p></li>\n<li><p><strong>$\\mathrm{O}_3$ (Ozone)</strong></p></li>\n<li><p>Central atom: O</p></li>\n<li><p>$SN = 2$ sigma bonds + $1$ lone pair = $3 \\implies$ <strong>$sp^2$ hybridised</strong>.</p></li>\n<li><p><strong>Shape:</strong> Bent (V-shape).</p></li>\n<li><p><strong>Verdict:</strong> Fails condition 1 (not linear).</p></li>\n<li><p><strong>$\\mathrm{SCl}_2$ (Sulfur dichloride)</strong></p></li>\n<li><p>Central atom: S (Valence electrons = 6)</p></li>\n<li><p>$SN = 2$ bond pairs + $2$ lone pairs = $4 \\implies$ <strong>$sp^3$ hybridised</strong>.</p></li>\n<li><p><strong>Shape:</strong> Bent (V-shape).</p></li>\n<li><p><strong>Verdict:</strong> Fails condition 1 (not linear).</p></li>\n<li><p><strong>$\\mathrm{ICl}_2^{\\ominus}$</strong></p></li>\n<li><p>Central atom: I (Valence electrons = 7 + 1 = 8)</p></li>\n<li><p>$SN = 2$ bond pairs + $3$ lone pairs = $5 \\implies$ <strong>$sp^3d$ hybridised</strong>.</p></li>\n<li><p><strong>Shape:</strong> Linear (lone pairs occupy equatorial positions).</p></li>\n<li><p><strong>Verdict:</strong> Fails condition 2 (involves $d$-orbital).</p></li>\n<li><p><strong>$\\mathrm{I}_3^{\\ominus}$ (Triiodide ion)</strong></p></li>\n<li><p>Central atom: I (Valence electrons = 7 + 1 = 8)</p></li>\n<li><p>$SN = 2$ bond pairs + $3$ lone pairs = $5 \\implies$ <strong>$sp^3d$ hybridised</strong>.</p></li>\n<li><p><strong>Shape:</strong> Linear.</p></li>\n<li><p><strong>Verdict:</strong> Fails condition 2 (involves $d$-orbital).</p></li>\n<li><p><strong>$\\mathrm{XeF}_2$ (Xenon difluoride)</strong></p></li>\n<li><p>Central atom: Xe (Valence electrons = 8)</p></li>\n<li><p>$SN = 2$ bond pairs + $3$ lone pairs = $5 \\implies$ <strong>$sp^3d$ hybridised</strong>.</p></li>\n<li><p><strong>Shape:</strong> Linear.</p></li>\n<li><p><strong>Verdict:</strong> Fails condition 2 (involves $d$-orbital).</p></li>\n</ul>\n\n<h3><strong>Conclusion</strong></h3>\n<p>The species that are both linear AND do not involve $d$-orbitals in their central atom's hybridisation are <strong>$\\mathrm{BeCl}_2$, $\\mathrm{N}_3^{\\ominus}$, $\\mathrm{N}_2\\mathrm{O}$,</strong> and <strong>$\\mathrm{NO}_2^{\\oplus}$</strong>.</p>\n<p>The total number of molecules/ions satisfying the given criteria is <strong>4</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>दिए गए त्रिपरमाणुक अणुओं/आयनों, $\\mathrm{BeCl}_2$, $\\mathrm{N}_3^{\\ominus}, \\mathrm{N}_2 \\mathrm{O}, \\mathrm{NO}_2^{\\oplus}, \\mathrm{O}_3, \\mathrm{SCl}_2, \\mathrm{ICl}_2^{\\ominus}, \\mathrm{I}_3^{\\ominus}$ और $\\mathrm{XeF}_2$ में से, उन रैखिक अणुओं/आयनों की कुल संख्या जिनमें केंद्रीय परमाणु के संकरण में $d$-कक्षक (कक्षकों) का कोई योगदान नहीं है।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msvwceoh",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>Compound, $\\mathrm{SF}_2, \\mathrm{SF}_4$ and $\\mathrm{SF}_6$ have the hybridisation at sulphur atom ' $X$ ', ' $Y$ ' and ' $Z$ ' respectively.</p>\n<p>Given,</p>\n<p>$$ \\begin{aligned} & A=\\text { Number of } p \\text {-orbital in ' } X \\text { ' } \\\\ & B=\\text { Number of } p \\text {-and } d \\text {-orbital in ' } Y \\text { ' } \\\\ & C=\\text { Number of } d \\text {-orbital in ' } Z \\text { ' } \\end{aligned} $$</p>\n<p>The value of $A+B+3 C$ is</p>",
+                "options": [],
+                "answer": "13",
+                "explanation": "<p>To find the hybridization, we calculate the steric number ($Z$) for the central sulfur atom in each molecule. The formula is:</p>\n<p>$$Z = (\\text{Number of bond pairs}) + (\\text{Number of lone pairs})$$</p>\n<p>Sulfur (Group 16) has 6 valence electrons.</p>\n<p><strong>For $\\text{SF}_2$ (Hybridization 'X'):</strong></p>\n<ul>\n<li><p><strong>Bond pairs (bp):</strong> 2 (bonded to 2 Fluorine atoms)</p></li>\n<li><p><strong>Lone pairs (lp):</strong> $\\frac{6 - 2}{2} = 2$ lone pairs</p></li>\n<li><p><strong>Steric Number ($Z$):</strong> $2 + 2 = 4$</p></li>\n<li><p>A steric number of 4 corresponds to <strong>$sp^3$</strong> hybridization.</p></li>\n<li><p>Therefore, <strong>$X = sp^3$</strong>.</p></li>\n</ul>\n<p><strong>For $\\text{SF}_4$ (Hybridization 'Y'):</strong></p>\n<ul>\n<li><p><strong>Bond pairs (bp):</strong> 4 (bonded to 4 Fluorine atoms)</p></li>\n<li><p><strong>Lone pairs (lp):</strong> $\\frac{6 - 4}{2} = 1$ lone pair</p></li>\n<li><p><strong>Steric Number ($Z$):</strong> $4 + 1 = 5$</p></li>\n<li><p>A steric number of 5 corresponds to <strong>$sp^3d$</strong> hybridization.</p></li>\n<li><p>Therefore, <strong>$Y = sp^3d$</strong>.</p></li>\n</ul>\n<p><strong>For $\\text{SF}_6$ (Hybridization 'Z'):</strong></p>\n<ul>\n<li><p><strong>Bond pairs (bp):</strong> 6 (bonded to 6 Fluorine atoms)</p></li>\n<li><p><strong>Lone pairs (lp):</strong> $\\frac{6 - 6}{2} = 0$ lone pairs</p></li>\n<li><p><strong>Steric Number ($Z$):</strong> $6 + 0 = 6$</p></li>\n<li><p>A steric number of 6 corresponds to <strong>$sp^3d^2$</strong> hybridization.</p></li>\n<li><p>Therefore, <strong>$Z = sp^3d^2$</strong>.</p></li>\n</ul>\n\n\n\n<ul>\n<li><strong>$A = \\text{Number of } p\\text{-orbitals in } X (sp^3)$</strong></li>\n</ul>\n<p>There are 3 $p$-orbitals involved in $sp^3$ hybridization.</p>\n<p>$$A = 3$$</p>\n<ul>\n<li><strong>$B = \\text{Number of } p\\text{- and } d\\text{-orbitals in } Y (sp^3d)$</strong></li>\n</ul>\n<p>There are 3 $p$-orbitals and 1 $d$-orbital involved in $sp^3d$ hybridization ($3 + 1 = 4$).</p>\n<p>$$B = 4$$</p>\n<ul>\n<li><strong>$C = \\text{Number of } d\\text{-orbitals in } Z (sp^3d^2)$</strong></li>\n</ul>\n<p>There are 2 $d$-orbitals involved in $sp^3d^2$ hybridization.</p>\n<p>$$C = 2$$</p>\n\n\n<p>We need to find the value of the expression $A + B + 3C$:</p>\n<p>$$A + B + 3C = 3 + 4 + 3(2)$$</p>\n<p>$$= 7 + 6$$</p>\n<p>$$= 13$$</p>\n<p>The correct integer answer for the problem is <strong>13</strong>.</p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>यौगिक $\\mathrm{SF}_2, \\mathrm{SF}_4$ और $\\mathrm{SF}_6$ में सल्फर परमाणु पर संकरण क्रमशः ' $X$ ', ' $Y$ ' और ' $Z$ ' है।</p><p>दिया गया है,</p><p>$$ \\begin{aligned} & A=\\text { '$X$' में } p \\text {-कक्षकों की संख्या } \\\\ & B=\\text { '$Y$' में } p \\text {- और } d \\text {-कक्षकों की संख्या } \\\\ & C=\\text { '$Z$' में } d \\text {-कक्षकों की संख्या } \\end{aligned} $$</p><p>$A+B+3 C$ का मान है</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "integer"
+          },
+          {
+            "questionId": "tq-msvwgcfi",
+            "chapter": "chemical-bonding-and-molecular-structure",
+            "chapterGroup": "inorganic-chemistry",
+            "country": "in",
+            "difficulty": "medium",
+            "exam": "jee-main",
+            "examGroup": "jee",
+            "languages": [
+              "en"
+            ],
+            "marks": 4,
+            "negMarks": 1,
+            "question": {
+              "en": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>In $\\mathrm{XeF}_5^{-}$and $\\mathrm{XeF}_5^{+}$find the sum of axial $d$-orbital which are used in hybridisation of both species.</p>",
+                "options": [],
+                "answer": "4",
+                "explanation": "<p>The problem requires finding the hybridization of two species, identifying the specific $d$-orbitals involved in those hybridizations, and counting how many of those are <strong>axial</strong> $d$-orbitals.</p>\n<ul>\n<li><p><strong>Axial $d$-orbitals</strong> have their lobes lying directly on the axes: <strong>$d_{x^2-y^2}$</strong> and <strong>$d_{z^2}$</strong>.</p></li>\n<li><p><strong>Non-axial $d$-orbitals</strong> have their lobes lying between the axes: <strong>$d_{xy}$</strong>, <strong>$d_{yz}$</strong>, and <strong>$d_{zx}$</strong>.</p></li>\n</ul>\n<p>We calculate the Steric Number ($H$) to find the hybridization:</p>\n<p>$$H = \\frac{1}{2}(V + M - C + A)$$</p>\n<p>Where:</p>\n<ul>\n<li><p>$V$ = Valence electrons of the central atom (Xe = 8)</p></li>\n<li><p>$M$ = Number of monovalent surrounding atoms (F = 5)</p></li>\n<li><p>$C$ = Cationic charge</p></li>\n<li><p>$A$ = Anionic charge</p></li>\n</ul>\n\n<h3><strong> $\\mathrm{XeF}_5^{-}$</strong></h3>\n<ul>\n<li><strong>Steric Number ($H$):</strong></li>\n</ul>\n<p>$$H = \\frac{1}{2}(8 + 5 - 0 + 1) = \\frac{1}{2}(14) = 7$$</p>\n<ul>\n<li><p><strong>Hybridization:</strong> $sp^3d^3$ (Geometry: Pentagonal bipyramidal)</p></li>\n<li><p><strong>$d$-orbitals involved:</strong> In $sp^3d^3$ hybridization, the three $d$-orbitals used are $d_{x^2-y^2}$, $d_{z^2}$, and $d_{xy}$.</p></li>\n<li><p><strong>Axial $d$-orbitals count:</strong> The axial ones are $d_{x^2-y^2}$ and $d_{z^2}$.</p></li>\n</ul>\n<p><strong>Total = 2</strong></p>\n\n<h3><strong>$\\mathrm{XeF}_5^{+}$</strong></h3>\n<ul>\n<li><strong>Steric Number ($H$):</strong></li>\n</ul>\n<p>$$H = \\frac{1}{2}(8 + 5 - 1 + 0) = \\frac{1}{2}(12) = 6$$</p>\n<ul>\n<li><p><strong>Hybridization:</strong> $sp^3d^2$ (Geometry: Octahedral electron geometry; Square pyramidal molecular shape)</p></li>\n<li><p><strong>$d$-orbitals involved:</strong> In $sp^3d^2$ hybridization, the two $d$-orbitals used are $d_{x^2-y^2}$ and $d_{z^2}$.</p></li>\n<li><p><strong>Axial $d$-orbitals count:</strong> Both $d_{x^2-y^2}$ and $d_{z^2}$ are axial.</p></li>\n</ul>\n<p><strong>Total = 2</strong></p>\n\n<p>The sum of the axial $d$-orbitals used in the hybridization of both species is:</p>\n<p>$$2 (\\text{from } \\mathrm{XeF}_5^{-}) + 2 (\\text{from } \\mathrm{XeF}_5^{+}) = 4$$</p>\n<p><strong>Final Answer:</strong> <strong>4</strong></p>"
+              },
+              "hi": {
+                "comprehension": null,
+                "direction": null,
+                "content": "<p>$\\mathrm{XeF}_5^{-}$ और $\\mathrm{XeF}_5^{+}$ में, उन अक्षीय $d$-कक्षाकों का योग ज्ञात कीजिए जो दोनों स्पीशीज़ के संकरण में उपयोग किए जाते हैं।</p>",
+                "options": []
+              }
+            },
+            "subTopic": null,
+            "subject": "chemistry",
+            "timeAllotted": 90000,
+            "topic": "hybridization-and-vsepr-theory",
+            "type": "integer"
+          }
+        ],
+        "instructions": null
+      }
+    ],
+    "syllabus": "Valence Bond Theory and Hybridization",
+    "timeAllotted": 2160000,
+    "title": "Chemical Bonding & Molecular Structure Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false
+  },
+  "_meta": {
+    "testId": "tst-19g61mpe6cuzb",
+    "defaultLanguage": "en",
+    "description": "Valence Bond Theory and Hybridization",
+    "difficulty": null,
+    "instructions": null,
+    "isAnalysisDeletable": false,
+    "isPremium": true,
+    "keyValuePairs": {},
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "layout": "nta",
+    "liveAt": "2026-08-16T14:30:00.000Z",
+    "maxAttempt": 2,
+    "maxMarks": 60,
+    "maxNegMarks": 15,
+    "policy": "jee-main",
+    "syllabus": "Valence Bond Theory and Hybridization",
+    "timeAllotted": 2160000,
+    "title": "Chemical Bonding & Molecular Structure Test - 2 (Topic Test)",
+    "totalQuestions": 15,
+    "type": "topic",
+    "isWatermarkEnabled": true,
+    "percentileId": "prc-19g61mlq40gq7",
+    "seriesId": "tsr-19g61mnpryz1v",
+    "isUpcoming": false,
+    "_categoryTitle": "Chapter and Topic Wise Tests",
+    "_groupTitle": "Chemistry",
+    "_section": "Chemical Bonding & Molecular Structure"
+  }
+}

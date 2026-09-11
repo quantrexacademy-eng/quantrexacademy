@@ -1,0 +1,14 @@
+{
+  "name": "quantrex-functions",
+  "private": true,
+  "engines": {
+    "node": "20"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^13.0.0",
+    "firebase-functions": "^6.3.0",
+    "razorpay": "^2.9.8",
+    "sharp": "^0.35.3"
+  }
+}

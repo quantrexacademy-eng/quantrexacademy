@@ -1,0 +1,18 @@
+/* DISABLED — figure zoom controls removed.
+   Use click-to-present (qx-figure-viewer) instead. */
+
+.qx-diag-toolbar,
+.qx-diag-zoom-btns,
+.qx-diag-btn,
+.qx-diag-pct,
+.qx-diag-label,
+.qx-diagram-hint,
+.qx-diagram-badge,
+.qx-diagram-panel {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+}

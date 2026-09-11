@@ -1,0 +1,79 @@
+{
+  "examSlug": "mht_cet_medical",
+  "examId": "6a1855d403a76e5089429e36",
+  "subjectId": "6a19157088eaed7250738f35",
+  "chapterId": "6a192bbb49662a748913319d",
+  "subject": "Chemistry",
+  "chapter": "Thermodynamics (C)",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6a1ec192ef1faeb9633e2445",
+      "title": "System and surrounding",
+      "count": 2,
+      "questionIds": [
+        "6a1ec0d7ef1faeb9633e2001",
+        "6a1ec018ef1faeb9633e1b51"
+      ]
+    },
+    {
+      "id": "6a1ec192ef1faeb9633e2446",
+      "title": "First Law and Basic Fundamentals of Thermodynamics",
+      "count": 16,
+      "questionIds": [
+        "6a1ec0f8ef1faeb9633e20cb",
+        "6a1ec0f8ef1faeb9633e20c9",
+        "6a1ec078ef1faeb9633e1dab",
+        "6a1ec0b8ef1faeb9633e1f3b",
+        "6a1ec0b7ef1faeb9633e1f3a",
+        "6a1ec0b7ef1faeb9633e1f39",
+        "6a1ec098ef1faeb9633e1e73",
+        "6a1ec097ef1faeb9633e1e72",
+        "6a1ec039ef1faeb9633e1c1b",
+        "6a1ec038ef1faeb9633e1c1a",
+        "6a1ec156ef1faeb9633e2323",
+        "6a1ec019ef1faeb9633e1b52",
+        "6a1ec117ef1faeb9633e2193",
+        "6a1ec116ef1faeb9633e218d",
+        "6a1ec058ef1faeb9633e1ce3",
+        "6a1ec058ef1faeb9633e1ce1"
+      ]
+    },
+    {
+      "id": "6a1ec192ef1faeb9633e2447",
+      "title": "Third law of thermodynamics",
+      "count": 4,
+      "questionIds": [
+        "6a1ec0d7ef1faeb9633e2002",
+        "6a1ec156ef1faeb9633e2322",
+        "6a1ec156ef1faeb9633e2321",
+        "6a1ec019ef1faeb9633e1b53"
+      ]
+    },
+    {
+      "id": "6a1ec192ef1faeb9633e2448",
+      "title": "Laws of Thermochemistry and Enthalpy Change",
+      "count": 8,
+      "questionIds": [
+        "6a1ec0f8ef1faeb9633e20ca",
+        "6a1ec078ef1faeb9633e1daa",
+        "6a1ec0d7ef1faeb9633e2003",
+        "6a1ec097ef1faeb9633e1e71",
+        "6a1ec038ef1faeb9633e1c19",
+        "6a1ec137ef1faeb9633e225a",
+        "6a1ec117ef1faeb9633e2192",
+        "6a1ec058ef1faeb9633e1ce2"
+      ]
+    },
+    {
+      "id": "6a1ec193ef1faeb9633e2449",
+      "title": "Entropy and Second law of thermodynamics",
+      "count": 3,
+      "questionIds": [
+        "6a1ec078ef1faeb9633e1da9",
+        "6a1ec136ef1faeb9633e2259",
+        "6a1ec117ef1faeb9633e2191"
+      ]
+    }
+  ]
+}

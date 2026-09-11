@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Test Quantrex Academy app — JEE NEET NDA BITSAT</title>
+  <meta name="description" content="Open and test the official Quantrex Academy app. JEE Main, NEET, NDA, BITSAT PYQ, DPP, mocks and books. Same login on phone and website.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://www.quantrexacademy.com/test">
+  <link rel="icon" type="image/png" href="assets/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <meta name="theme-color" content="#1565C0">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Quantrex Academy">
+  <meta property="og:title" content="Quantrex Academy — test the official app">
+  <meta property="og:description" content="JEE · NEET · NDA · BITSAT. Open the app, login, try PYQ, DPP and tests. Share this link on WhatsApp or YouTube.">
+  <meta property="og:url" content="https://www.quantrexacademy.com/test">
+  <meta property="og:image" content="https://www.quantrexacademy.com/assets/icon-512.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Quantrex Academy — test the official app">
+  <meta name="twitter:description" content="Open the JEE NEET NDA BITSAT app. Same login as the website.">
+  <meta name="twitter:image" content="https://www.quantrexacademy.com/assets/icon-512.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Kanit:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#07111f; --card:#101c32; --text:#eef3fb; --muted:#8fa3c0;
+      --line:#1e3254; --primary:#5b9dff; --btn:#1565C0; --ok:#18a058;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html, body { min-height:100%; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 420px at 50% -10%, rgba(21,101,192,.38), transparent 58%),
+        var(--bg);
+    }
+    .wrap { max-width: 440px; margin: 0 auto; padding: 28px 18px 72px; }
+    .brand { display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+    .brand img { width:56px; height:56px; border-radius:14px; background:#000; }
+    .brand b { font-family: Kanit, Inter, sans-serif; font-size:20px; line-height:1.1; display:block; }
+    .brand small { color:var(--muted); font-size:12px; font-weight:600; }
+    h1 { font-family: Kanit, Inter, sans-serif; font-size: clamp(28px, 7vw, 34px); line-height:1.12; margin: 8px 0 10px; }
+    .lead { color:var(--muted); line-height:1.55; margin-bottom:18px; }
+    .linkbox {
+      display:flex; gap:8px; align-items:center;
+      background:#0a1628; border:1px solid var(--line); border-radius:14px;
+      padding:10px 12px; margin: 0 0 16px;
+    }
+    .linkbox code { flex:1; font-size:12px; color:#cfe0ff; word-break:break-all; }
+    .ghost, .btn {
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      width:100%; text-decoration:none; border:0; cursor:pointer; font-family:inherit;
+      font-weight:800; border-radius:14px; padding:14px 16px; font-size:16px;
+    }
+    .btn { color:#fff; background:var(--btn); margin-bottom:10px; }
+    .btn.play { background:#01875f; }
+    .btn.wa { background:#128C7E; }
+    .btn.apk { background:#0f172a; border:1px solid var(--line); }
+    .ghost {
+      color:var(--text); background:transparent; border:1px solid var(--line);
+      font-size:13px; padding:10px 12px; width:auto; flex:0 0 auto;
+    }
+    .row { display:flex; gap:8px; margin-bottom:18px; }
+    .row .ghost { flex:1; }
+    .card {
+      background:var(--card); border:1px solid var(--line); border-radius:18px;
+      padding:16px; margin:14px 0;
+    }
+    .card h2 { font-size:15px; margin-bottom:8px; }
+    .card ol, .card ul { margin:0 0 0 18px; color:var(--muted); line-height:1.7; font-size:14px; }
+    .card li { color:var(--text); }
+    .chips { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 4px; }
+    .chips span {
+      background:rgba(91,157,255,.12); color:var(--primary);
+      font-size:11px; font-weight:800; padding:6px 10px; border-radius:999px;
+    }
+    .note { font-size:12px; color:var(--muted); line-height:1.5; margin-top:10px; }
+    .ok { color:#7ddea8; font-weight:700; }
+    #copied { display:none; color:#7ddea8; font-size:13px; font-weight:700; text-align:center; margin:6px 0 12px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <img src="assets/quantrex-logo-3d-64.png?v=qxfix104" alt="Quantrex Academy">
+      <div>
+        <b>Quantrex Academy</b>
+        <small>Official app test link</small>
+      </div>
+    </div>
+    <h1>Open the app. Share this link.</h1>
+    <p class="lead">Anyone can tap this on WhatsApp or YouTube and start Quantrex — JEE, NEET, NDA, BITSAT. Same login on phone and website.</p>
+
+    <div class="linkbox">
+      <code id="shareUrl">https://www.quantrexacademy.com/test</code>
+      <button class="ghost" type="button" id="copyBtn">Copy</button>
+    </div>
+    <p id="copied">Link copied. Paste it in WhatsApp or YouTube.</p>
+
+    <a class="btn" href="login.html">Open Quantrex now</a>
+    <a class="btn play" href="https://play.google.com/apps/internaltest/4700461937324665005" rel="noopener" target="_blank">Install from Google Play (test)</a>
+    <a class="btn wa" id="waShare" href="#">Share on WhatsApp</a>
+    <div class="row">
+      <button class="ghost" type="button" id="sysShare">Share…</button>
+      <a class="ghost" href="Quantrex-Academy.apk" download="Quantrex-Academy.apk">Android APK</a>
+    </div>
+
+    <div class="chips">
+      <span>JEE Main</span><span>JEE Advanced</span><span>NEET</span>
+      <span>NDA</span><span>BITSAT</span><span>PYQ</span><span>DPP</span><span>Tests</span>
+    </div>
+
+    <div class="card">
+      <h2>How testers open it</h2>
+      <ol>
+        <li>Tap <strong>Open Quantrex now</strong> — works on Android, iPhone and computer.</li>
+        <li>Login with Google, email or mobile OTP. Use your own account.</li>
+        <li>Open Tests, PYQ, DPP, books and plans. Website and app stay on the same ID.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h2>Google Play install</h2>
+      <ul>
+        <li>Open the green Play button on an Android phone.</li>
+        <li>Sign in with the <strong>same Gmail</strong> that was added as a tester, tap Become a tester, then Install.</li>
+        <li>If Play says the app is not available, use <strong>Open Quantrex now</strong> or the APK. Public Play search is not live yet.</li>
+      </ul>
+      <p class="note">Need Play access? Send your Gmail on WhatsApp to <a href="https://wa.me/917750858874" style="color:var(--primary)">+91 77508 58874</a> so it can be added to the tester list.</p>
+    </div>
+    <p class="note">YouTube description / WhatsApp status — paste this one link:<br><span class="ok">https://www.quantrexacademy.com/test</span></p>
+  </div>
+  <script>
+    (function () {
+      var LINK = "https://www.quantrexacademy.com/test";
+      var MSG = "Quantrex Academy app test (JEE / NEET / NDA / BITSAT)\n\nOpen here:\n" + LINK;
+      var wa = document.getElementById("waShare");
+      wa.href = "https://wa.me/?text=" + encodeURIComponent(MSG);
+      document.getElementById("copyBtn").onclick = async function () {
+        try { await navigator.clipboard.writeText(LINK); } catch (e) {
+          var t = document.createElement("textarea"); t.value = LINK; document.body.appendChild(t); t.select(); document.execCommand("copy"); t.remove();
+        }
+        document.getElementById("copied").style.display = "block";
+      };
+      document.getElementById("sysShare").onclick = async function () {
+        if (navigator.share) {
+          try { await navigator.share({ title: "Quantrex Academy", text: MSG, url: LINK }); return; } catch (e) {}
+        }
+        location.href = wa.href;
+      };
+    })();
+  </script>
+</body>
+</html>

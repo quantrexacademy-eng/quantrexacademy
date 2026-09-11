@@ -1,0 +1,82 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd25c03b9dcaf1afe973",
+  "topicId": "66a0dd25c03b9dcaf1afe975",
+  "title": "Area of Curve along axis",
+  "concepts": [
+    {
+      "title": "Area along X axis ",
+      "conceptBody": "<h3>Area of Bounded Regions</h3><p>1. For a continuous function $f(x)$ defined over $[a, b]$, the area bounded by the curve $y=f(x)$, the $x$-axis and the ordinates $\\mathrm{x}=\\mathrm{a}$ and $\\mathrm{x}=\\mathrm{b}$ is given by $ \\int_a^b f(x) d x \\quad \\int_a^b y d x $ <img src=\"https://cdn.mathpix.com/snip/images/uytrtn1Naie_5W_b_NzFuOr4W9nIXNEYDL4gksovlzE.original.fullsize.png\"></p><h4>Other types</h4><p>2. When $f(x)$ is below $x$-axis then the value of integral will come out to be negative but as we know area is a positive quantity. $ \\therefore \\text { Area }=-\\int_a^b f(x) d x=\\left|\\int_a^b f(x) d x\\right| $</p><p>&nbsp;<img src=\"https://cdn.mathpix.com/snip/images/GD9qPN2-zSus0fDlLs_9Wjmb8mihtCGmRiC0kHHCFak.original.fullsize.png\">&nbsp;</p><p>3. Area of such curves is obtained by using the above 2 types \\begin{aligned} \\text { Area } &amp; =\\text { Area (I) }+ \\text { Area (II) }+ \\text { Area (III) } \\\\ &amp; =\\int_a^b f(x) d x-\\int_b^c f(x) d x+\\int_c^d f(x) d x \\end{aligned} <img src=\"https://cdn.mathpix.com/snip/images/SMAZsLNhwOXwsHI-J6gm0Sy0EBzDntqJ7jK8x1urr1c.original.fullsize.png\"></p>",
+      "position": 0,
+      "qcConcept": "66a0dd25c03b9dcaf1afe976"
+    },
+    {
+      "title": "Area along Y axis",
+      "conceptBody": "<h3><strong>Region of Curve Along the Axis</strong></h3><p>Sometimes it is easier to take area with $\\mathrm{y}$-axis as in following cases:&nbsp;</p><p>1. Area $=\\int_a^b f(y) d y$ Note: The function inside the integral is a function of $y$ not $x$. It is because we have to integrate with respect to $y$.</p><p><img src=\"https://cdn.mathpix.com/snip/images/rPhKW48xidNq4w1iHTdApWbD9hlpKgVurE46f8Pil0s.original.fullsize.png\">&nbsp;</p><p>&nbsp;</p><p>2. $\\begin{aligned} \\text { Area } &amp; =-\\int_a^b f(y) d y =\\left|\\int_a^b f(y) d y\\right| \\end{aligned}$ when we were integrating with respect to $\\mathrm{x}$, portion below $\\mathrm{x}$-axis gave negative area, $\\&amp;$ here left part will give negative area.&nbsp;</p><p><img src=\"https://cdn.mathpix.com/snip/images/XJy66Fc7n7isP_xozOVPWm_lbBRD8pCvJ_8HKINa4Hk.original.fullsize.png\">&nbsp;</p><p>3. Here Area $=$ Area (I) + Area (II) + Area (III) $=\\int_a^b f(y) d y-\\int_b^c f(y) d y+\\int_c^d f(y) d y$</p><p><img src=\"https://cdn.mathpix.com/snip/images/YqoS_OvquXWSB6LCUu3tOqVwpj9EJI9jxovWZbBD3Sg.original.fullsize.png\"></p>",
+      "position": 1,
+      "qcConcept": "66a0dd26c03b9dcaf1afe977"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f322d384bfb4a537eb4",
+      "title": "Area bounded by the curve $y=\\log x, x$ - axis and the ordinates $x=1, x=2$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f322d384bfb4a537eb5",
+      "title": "Area bounded by the curve $y=\\sin x$ between $x=0$ and $x=2 \\pi$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f322d384bfb4a537eb6",
+      "title": "Area bounded by the curve $y=x e^{x^2}, x$ - axis and the ordinates $x=0, x=a$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f322d384bfb4a537eb7",
+      "title": "Area bounded by the lines $y=x, x=-1, x=2$ and $x$-axis is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f332d384bfb4a537eb8",
+      "title": "Area between the curve $y=\\cos x$ and $x$ - axis when $0 \\leq x$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f332d384bfb4a537eb9",
+      "title": "Area bounded by curve $x y=c, x$ - axis between $x=1$ and $x=4$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f332d384bfb4a537eba",
+      "title": "Area bounded by $y=x \\sin x$ and $x$ - axis between $x=0$ and $x=2 \\pi$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f332d384bfb4a537ebb",
+      "title": "Area under the curve $y=\\sin 2 x+\\cos 2 x$ between $x=0$ and $x=\\frac{\\pi}{4}$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f332d384bfb4a537ebc",
+      "title": "Area under the curve $y=\\sqrt{3 x+4}$ between $x=0$ and $x=4$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f332d384bfb4a537ebd",
+      "title": "Area bounded by curve $y=x^3, x$ - axis and ordinates $x=1$ and $x=4$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}

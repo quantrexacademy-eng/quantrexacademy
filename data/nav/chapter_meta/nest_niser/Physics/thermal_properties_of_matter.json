@@ -1,0 +1,61 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d2ad647479b8e8696479",
+  "chapterId": "680920293a10446a207fdec5",
+  "subject": "Physics",
+  "chapter": "Thermal Properties of Matter",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6809206e3a10446a207fe231",
+      "title": "Thermal Expansion",
+      "count": 5,
+      "questionIds": [
+        "6809203e3a10446a207fdfc6",
+        "6809203a3a10446a207fdf97",
+        "680920383a10446a207fdf82",
+        "680920323a10446a207fdf3b",
+        "6809202d3a10446a207fdf00"
+      ]
+    },
+    {
+      "id": "6809206e3a10446a207fe233",
+      "title": "Calorimetry",
+      "count": 1,
+      "questionIds": [
+        "6809203c3a10446a207fdfae"
+      ]
+    },
+    {
+      "id": "6809206e3a10446a207fe232",
+      "title": "Conduction",
+      "count": 6,
+      "questionIds": [
+        "680920443a10446a207fe011",
+        "6809203b3a10446a207fdfa6",
+        "680920373a10446a207fdf71",
+        "680920363a10446a207fdf65",
+        "680920343a10446a207fdf54",
+        "6809202e3a10446a207fdf03"
+      ]
+    },
+    {
+      "id": "6809206e3a10446a207fe230",
+      "title": "Radiation",
+      "count": 10,
+      "questionIds": [
+        "6a45fe565aa758e832e06edc",
+        "68e78b136105b8763ce72c8e",
+        "680920473a10446a207fe02e",
+        "680920453a10446a207fe01d",
+        "680920413a10446a207fdfed",
+        "680920413a10446a207fdfe6",
+        "6809203f3a10446a207fdfd7",
+        "6809203c3a10446a207fdfac",
+        "680920323a10446a207fdf35",
+        "680920293a10446a207fdec3"
+      ]
+    }
+  ]
+}

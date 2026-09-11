@@ -1,0 +1,46 @@
+{
+  "examSlug": "iat_iiser",
+  "examId": "67fd2422aa40a51a0b2c545b",
+  "subjectId": "67fa60d64468eb1307ceb0b0",
+  "chapterId": "67fdff3c378e1624ea7b691f",
+  "subject": "Biology",
+  "chapter": "Biomolecules (B)",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "67fdff7d378e1624ea7b6c0c",
+      "title": "Protein",
+      "count": 1,
+      "questionIds": [
+        "67fdff6b378e1624ea7b6b44"
+      ]
+    },
+    {
+      "id": "67fdff7d378e1624ea7b6c0b",
+      "title": "Lipids",
+      "count": 1,
+      "questionIds": [
+        "67fdff58378e1624ea7b6a79"
+      ]
+    },
+    {
+      "id": "67fdff7d378e1624ea7b6c09",
+      "title": "Enzymes",
+      "count": 4,
+      "questionIds": [
+        "6a4521828c20d3b91d64f953",
+        "67fdff6c378e1624ea7b6b4d",
+        "67fdff51378e1624ea7b6a17",
+        "67fdff3c378e1624ea7b691d"
+      ]
+    },
+    {
+      "id": "67fdff7d378e1624ea7b6c0a",
+      "title": "Primary and Secondary Metabolites",
+      "count": 1,
+      "questionIds": [
+        "67fdff4a378e1624ea7b69b5"
+      ]
+    }
+  ]
+}

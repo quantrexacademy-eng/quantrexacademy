@@ -1,0 +1,36 @@
+{
+  "examSlug": "nest_niser",
+  "examId": "6807d48e647479b8e869647d",
+  "subjectId": "6807d392647479b8e869647c",
+  "chapterId": "68091fc33a10446a207fdaae",
+  "subject": "Biology",
+  "chapter": "Plant Kingdom",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "6809205d3a10446a207fe156",
+      "title": "Introduction",
+      "count": 2,
+      "questionIds": [
+        "68091fcb3a10446a207fdafb",
+        "68091fc33a10446a207fdaac"
+      ]
+    },
+    {
+      "id": "6809205e3a10446a207fe158",
+      "title": "Algae: Thallophytes",
+      "count": 1,
+      "questionIds": [
+        "68091fdd3a10446a207fdbb0"
+      ]
+    },
+    {
+      "id": "6809205d3a10446a207fe157",
+      "title": "Plant Life Cycles",
+      "count": 1,
+      "questionIds": [
+        "68091fc43a10446a207fdab0"
+      ]
+    }
+  ]
+}

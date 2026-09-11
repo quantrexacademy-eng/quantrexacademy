@@ -1,0 +1,80 @@
+{
+  "examSlug": "kcet",
+  "examId": "62962075e7f8e9ac4daeafda",
+  "subjectId": "62962075e7f8e9ac4daeafd7",
+  "chapterId": "629621250160e8ee846a120c",
+  "subject": "Physics",
+  "chapter": "Thermal Properties of Matter",
+  "buckets": [],
+  "topics": [
+    {
+      "id": "64cc9b3108d12fed62b18e68",
+      "title": "Thermal Expansion",
+      "count": 3,
+      "questionIds": [
+        "64cc9ace08d12fed62b18a0a",
+        "64cc9a5208d12fed62b185be",
+        "64cc9a3e08d12fed62b18506"
+      ]
+    },
+    {
+      "id": "64cc9b3108d12fed62b18e67",
+      "title": "Calorimetry",
+      "count": 3,
+      "questionIds": [
+        "65423e9d1b8c26a3894b729f",
+        "64cc9a5208d12fed62b185bd",
+        "64cc99da08d12fed62b18196"
+      ]
+    },
+    {
+      "id": "64cc9b3108d12fed62b18e65",
+      "title": "Conduction",
+      "count": 8,
+      "questionIds": [
+        "684b1340a54ceb3b13fdb83e",
+        "64cc9a6608d12fed62b1866d",
+        "64cc9a2e08d12fed62b18479",
+        "64cc9a1a08d12fed62b183cb",
+        "64cc9a0108d12fed62b182ea",
+        "64cc99ef08d12fed62b1824f",
+        "64cc99c808d12fed62b180f1",
+        "64cc99b308d12fed62b18035"
+      ]
+    },
+    {
+      "id": "64cc9b3108d12fed62b18e69",
+      "title": "Convection",
+      "count": 1,
+      "questionIds": [
+        "64cc9ab608d12fed62b18936"
+      ]
+    },
+    {
+      "id": "64cc9b3108d12fed62b18e66",
+      "title": "Radiation",
+      "count": 11,
+      "questionIds": [
+        "64cc9a9208d12fed62b187f0",
+        "64cc9a6608d12fed62b1866c",
+        "64cc9a2e08d12fed62b1847a",
+        "64cc9a1708d12fed62b183ae",
+        "64cc9a0108d12fed62b182ec",
+        "64cc99ef08d12fed62b18250",
+        "64cc99dc08d12fed62b181a7",
+        "64cc99db08d12fed62b1819d",
+        "64cc99db08d12fed62b18199",
+        "64cc99c808d12fed62b180f4",
+        "64cc99b308d12fed62b1803c"
+      ]
+    },
+    {
+      "id": "677d2d498098cf077bbe127d",
+      "title": "Thermometry",
+      "count": 1,
+      "questionIds": [
+        "677d2c868098cf077bbe1253"
+      ]
+    }
+  ]
+}

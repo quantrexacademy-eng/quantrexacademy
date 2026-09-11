@@ -1,0 +1,88 @@
+{
+  "subjectId": "65f033c116c1c6177074b7a8",
+  "chapterId": "66a0dd33c03b9dcaf1afe9c6",
+  "topicId": "66a0dd36c03b9dcaf1afe9d4",
+  "title": "Conjugate, modulus and argument",
+  "concepts": [
+    {
+      "title": "Properties of conjugate of complex number",
+      "conceptBody": "<h3><strong>Properties of conjugate&nbsp;</strong></h3><p>1. $\\left( \\overset{{}}{\\mathop{\\overline{z}}}\\, \\right)=\\text{z}$</p><p>2. $z+\\overset{{}}{\\mathop{\\overline{z}}}\\,=2\\text{Re}\\left( \\text{z} \\right)$</p><p>3. $\\text{z}-\\bar{z}=2\\text{Im}\\left( \\text{z} \\right)$</p><p>4. $\\overline{{{z}_{1}}+{{z}_{2}}}=\\overline{{{z}_{1}}}+\\overline{{{z}_{2}}}$</p><p>5. $\\overline{{{z}_{1}}-{{z}_{2}}}=\\overline{{{z}_{1}}-{{z}_{2}}}$</p><p>6. $\\overline{{{\\text{z}}_{1}}{{\\text{z}}_{2}}}=\\overline{{{\\text{z}}_{1}}}\\overline{{{\\text{z}}_{2}}}$</p><p>7. $\\left( \\frac{\\overline{{{z}_{1}}}}{\\overline{{{z}_{2}}}} \\right)=\\frac{\\overline{{{z}_{1}}}}{\\overline{{{z}_{2}}}}$</p><p>8. If $\\text{z}=\\bar{z}\\Rightarrow \\text{z}$ is purely real</p><ol><li>If $\\text{z}+\\bar{z}=0\\Rightarrow \\text{z}$ is purely imaginary.</li><li>$z\\bar{z}={{\\{\\operatorname{Re}(z)\\}}^{2}}+{{\\{\\operatorname{Im}(z)\\}}^{2}}$</li></ol>",
+      "position": 0,
+      "qcConcept": "66a0dd36c03b9dcaf1afe9d5"
+    },
+    {
+      "title": "Properties of modulus of complex number",
+      "conceptBody": "<h3><strong>Properties of Modulus&nbsp;</strong></h3><ul><li>$\\left| z \\right|\\ge 0\\Rightarrow \\left| z \\right|=0$ iff $z=0$ and $\\left| z \\right|&gt;0$ iff $z\\ne 0$</li><li><strong>$\\text{ }\\!\\!~\\!\\!\\text{ }-\\left| z \\right|\\le \\text{Re}\\left( z \\right)\\le \\left| z \\right|$ and $-\\left| lm(z)\\right|\\le \\left| z \\right|$.&nbsp;</strong></li><li><strong>$|z|=|\\bar{z}|-|\\bar{z}|=|-z|=|-\\bar{z}|$&nbsp;</strong></li><li><strong>$z\\bar{z}=|z{{|}^{2}}$&nbsp;</strong></li></ul><p>In general, $\\left| {{z}_{1}}{{z}_{2}}{{z}_{3}}\\ldots \\ldots {{z}_{n}} \\right|=\\left| {{z}_{1}} \\right|\\text{ }\\!\\!~\\!\\!\\text{ }\\left| {{z}_{2}} \\right|\\text{ }\\!\\!~\\!\\!\\text{ }\\left| {{z}_{3}} \\right|\\ldots .\\left| {{z}_{n}} \\right|$</p><ul><li><strong>$\\text{ }\\!\\!~\\!\\!\\text{ }\\left| \\frac{{{z}_{1}}}{{{z}_{2}}} \\right|=\\frac{\\left| {{z}_{1}} \\right|}{\\left| {{z}_{2}} \\right|}\\text{ }\\!\\!~\\!\\!\\text{ }\\left( {{z}_{2}}\\ne 0 \\right)$&nbsp;</strong></li><li><strong>$\\text{ }\\!\\!~\\!\\!\\text{ }\\left| {{z}_{1}}\\pm {{z}_{2}} \\right|\\le \\left| {{z}_{1}} \\right|+\\left| {{z}_{2}} \\right|$&nbsp;</strong></li></ul><p>In particular, if $\\left| {{z}_{1}}+{{z}_{2}} \\right|=\\left| {{z}_{1}} \\right|+\\left| {{z}_{2}} \\right|$, then origin, ${{z}_{1}}$ and ${{z}_{2}}$ are collinear with origin at one of the ends.</p><ul><li><strong>$\\left| {{z}_{1}}\\pm {{z}_{2}} \\right|\\ge ||{{z}_{1}}\\left| - \\right|{{z}_{2}}\\parallel $&nbsp;</strong></li></ul><p>In particular, if $\\left| {{z}_{1}}-{{z}_{2}} \\right|=\\left| \\left| {{z}_{1}}\\left| - \\right|{{z}_{2}} \\right| \\right|$, then origin, ${{z}_{1}}$ and ${{z}_{2}}$ are collinear with origin at one of the ends.</p><ul><li><strong>$\\text{ }\\!\\!~\\!\\!\\text{ }\\left| {{z}^{n}} \\right|=|z{{|}^{n}}$&nbsp;</strong></li><li><strong>$\\left| \\left| {{z}_{1}} \\right|-\\left| {{z}_{2}} \\right| \\right|\\le \\left| \\left| {{z}_{1}} \\right|+\\left| {{z}_{2}} \\right| \\right|$</strong></li></ul><p>Thus $\\left| {{z}_{1}} \\right|+\\left| {{z}_{2}} \\right|$ is the greatest possible value of $\\left| {{z}_{1}}+{{z}_{2}} \\right|$ and ||${{z}_{1}}\\left| - \\right|{{z}_{2}}||$ is the least possible value of $\\left| {{z}_{1}}+{{z}_{2}} \\right|$</p><ul><li>${{\\left| {{z}_{1}}\\pm {{z}_{2}} \\right|}^{2}}=\\left( {{z}_{1}}\\pm {{z}_{2}} \\right)\\left( \\overline{{{z}_{1}}}\\pm \\overline{{{z}_{2}}} \\right)={{\\left| {{z}_{1}} \\right|}^{2}}+{{\\left| {{z}_{2}} \\right|}^{2}}\\pm \\left( {{z}_{1}}\\overline{{{z}_{2}}}+\\overline{{{z}_{1}}}{{z}_{2}} \\right)$ or</li></ul><p>${{\\left| {{z}_{1}} \\right|}^{2}}+{{\\left| {{z}_{2}} \\right|}^{2}}\\pm 2\\text{Re}\\left( {{z}_{1}}\\overline{{{z}_{2}}} \\right)$</p><ul><li>${{\\text{z}}_{1}}\\overline{{{\\text{z}}_{2}}}+\\overline{{{\\text{z}}_{1}}}{{\\text{z}}_{2}}=2\\left| {{\\text{z}}_{1}} \\right|\\left| {{\\text{z}}_{2}} \\right|\\text{cos}\\left( {{\\theta }_{1}}-{{\\theta }_{2}} \\right)$ where ${{\\theta }_{1}}=\\text{arg}\\left( {{\\text{z}}_{1}} \\right)$ and ${{\\theta }_{2}}=\\text{arg}\\left( {{\\text{z}}_{2}} \\right)$.</li><li>${{\\left| {{\\text{z}}_{1}}+{{\\text{z}}_{2}} \\right|}^{2}}={{\\left| {{\\text{z}}_{1}} \\right|}^{2}}+{{\\left| {{\\text{z}}_{2}} \\right|}^{2}}\\Leftrightarrow \\frac{{{\\text{z}}_{1}}}{{{\\text{z}}_{2}}}$ is purely imaginary.</li><li>${{\\left| {{z}_{1}}+{{z}_{2}} \\right|}^{2}}+{{\\left| {{z}_{1}}-{{z}_{2}} \\right|}^{2}}=2\\left\\{ {{\\left| {{z}_{2}} \\right|}^{2}}+{{\\left| {{z}_{2}} \\right|}^{2}} \\right\\}$</li><li>$\\text{ }\\!\\!~\\!\\!\\text{ }{{\\left| a{{z}_{1}}-b{{z}_{2}} \\right|}^{2}}+{{\\left| b{{z}_{1}}+a{{z}_{2}} \\right|}^{2}}=\\left( {{a}^{2}}+{{b}^{2}} \\right)\\left( {{\\left| {{z}_{1}} \\right|}^{2}}+{{\\left| {{z}_{2}} \\right|}^{2}} \\right)$ where a, b $\\in $ R.</li><li><strong>Unimodular: </strong>i.e., unit modulus.</li></ul><p>If $\\text{z}$ is unimodular then $\\left| \\text{z} \\right|=1$. A unimodular complex number can always be expressed as $\\text{cos}\\theta +\\text{isin}\\theta ,\\theta \\in \\text{R}$.</p><p><strong>Note $:\\frac{\\text{z}}{\\left| \\text{z} \\right|}$ </strong>is always a unimodular complex number if $\\text{z}\\ne 0$.</p>",
+      "position": 1,
+      "qcConcept": "66a0dd36c03b9dcaf1afe9d6"
+    },
+    {
+      "title": "Properties of argument of complex number",
+      "conceptBody": "<h3><strong>Properties of Arguments&nbsp;</strong></h3><ul><li>$\\text{Arg}\\left( {{z}_{1}}{{z}_{2}} \\right)=\\text{Arg}\\left( {{z}_{1}} \\right)+\\text{Arg}\\left( {{z}_{2}} \\right)+2k\\pi (k=0$ or 1 or -1$)$</li></ul><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;In general, $\\text{Arg}\\left( {{z}_{1}}{{z}_{2}}{{z}_{3}}\\ldots ..{{z}_{n}} \\right)=\\text{Arg}\\left( {{z}_{1}} \\right)+\\text{Arg}\\left( {{z}_{2}} \\right)+\\text{Arg}\\left( {{z}_{3}} \\right)+\\ldots +\\text{Arg}\\left( {{z}_{n}} \\right)+2k\\pi $ (where $\\text{k}\\in \\text{I}$ )</p><ul><li>$\\text{Arg}\\left( \\frac{{{z}_{1}}}{{{z}_{2}}} \\right)=\\text{Arg}{{z}_{1}}-\\text{Arg}{{z}_{2}}+2k\\pi$ (k=0 or 1 or -1$)$</li><li>$\\text{ Arg}\\left( \\frac{\\text{z}}{{\\bar{z}}} \\right)=2\\text{Argz}+2\\text{k}\\pi (\\text{k}=0]$ or 1 or -1)</li><li>$\\text{ Arg}\\left( {{\\text{z}}^{\\text{n}}} \\right)=\\text{nArgz}+2\\text{k}\\pi$ (k=0 or 1 or -1$)$</li><li>If $\\text{Arg}\\left( \\frac{{{z}_{2}}}{{{z}_{1}}} \\right)=\\theta$, then $\\text{Arg}\\left( \\frac{{{z}_{1}}}{{{z}_{2}}} \\right)=2k\\pi -\\theta$ where $k\\in I$</li><li>$\\text{ Arg}\\bar{z}=-\\text{Argz}$</li><li>If $\\text{arg}\\left( \\text{z} \\right)=0\\Rightarrow \\text{z}$ is real</li></ul><p><strong>Note: </strong>Proper value of $k$ must be chosen so, that R.H.S. of (i), (ii), (iii), (iv) lies in $\\left( -\\pi ,\\pi \\right]$. All the above formulae are written on the basic of principal argument.</p>",
+      "position": 2,
+      "qcConcept": "66a0dd36c03b9dcaf1afe9d7"
+    }
+  ],
+  "examples": [
+    {
+      "_id": "66588f3d2d384bfb4a537f39",
+      "title": "Conjugate of $1+i$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3e2d384bfb4a537f3a",
+      "title": "The conjugate of the complex number $\\frac{2+5 i}{4-3 i}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3e2d384bfb4a537f3b",
+      "title": "The values of $x$ and $y$ for which the numbers $3+i x^2 y$ and $x^2+y+4 i$ are conjugate complex can be",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3e2d384bfb4a537f3c",
+      "title": "If the conjugate of $(x+i y)(1-2 i)$ be $1+i$, then",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3e2d384bfb4a537f3d",
+      "title": "The conjugate of $\\frac{(2+i)^2}{3+i}$, in the form of $a+i b$, is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3e2d384bfb4a537f3e",
+      "title": "If $\\frac{2 z_1}{3 z_2}$ is a purely imaginary number, then $\\left|\\frac{z_1-z_2}{z_1+z_2}\\right|=$",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3e2d384bfb4a537f3f",
+      "title": "The modulus and amplitude of $\\frac{1+2 i}{1-(1-i)^2}$ are",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3e2d384bfb4a537f40",
+      "title": "Modulus of $\\left(\\frac{3+2 i}{3-2 i}\\right)$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3e2d384bfb4a537f41",
+      "title": "The product of two complex numbers each of unit modulus is also a complex number, of",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    },
+    {
+      "_id": "66588f3e2d384bfb4a537f42",
+      "title": "Argument of $-1-i \\sqrt{3}$ is",
+      "isAttempted": false,
+      "evalStatus": "notAttempted"
+    }
+  ]
+}
