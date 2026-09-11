@@ -4,6 +4,7 @@ serviceAccount*.json
 *-firebase-adminsdk-*.json
 .secret/
 secrets/
+.github/workflows/deploy-firebase.yml
 .vercel/
 .firebase/
 .env
