@@ -8,6 +8,8 @@ const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
 const zlib = require("zlib");
+const { convertHtml } = require("./_qx_mathml");
+const { proofreadHtml } = require("../qx-proofread");
 
 const ROOT = path.resolve(__dirname, "..");
 const PACK = path.join(ROOT, "data", "tests", "jee_main_examgoal_2027");
@@ -31,7 +33,13 @@ function strip(s) {
   return String(s || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 }
 function proof(s) {
-  return String(s == null ? "" : s);
+  let t = String(s == null ? "" : s);
+  if (!t) return t;
+  t = convertHtml(t).html;
+  t = proofreadHtml(t);
+  t = t.replace(/cdn-question-pool\.\.+app/gi, "cdn-question-pool.getmarks.app");
+  t = t.replace(/\{([A-Za-z])\}\^\{/g, "$1^{");
+  return t;
 }
 function titleCaseSlug(s) {
   return String(s || "")

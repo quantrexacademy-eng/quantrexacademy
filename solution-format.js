@@ -178,6 +178,7 @@ const QuantrexSolution = (() => {
   function isCleanLatex(expr) {
     const s = String(expr || "").trim();
     if (!s || s.length < 3 || s.length > 80) return false;
+    if (/<[^>]+>|<\/?t[dh]|tdstyle|text-align|nbsp;|&nbsp;/i.test(s)) return false;
     if (/f\s*['′]|prime|\.\.\.|undefined|NaN/i.test(s)) return false;
     if (/[{}]/.test(s) && (s.split("{").length !== s.split("}").length)) return false;
     return /[=+\-*/\\^]|\\frac|\\sqrt|\\int|\\sum|\\le|\\ge/.test(s);

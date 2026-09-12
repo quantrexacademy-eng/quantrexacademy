@@ -103,6 +103,10 @@
     out = out.replace(/<math\b[^>]*>\s*(?:<m(?:o|row|n|i|text)\b[^>]*>\s*<\/m(?:o|row|n|i|text)>\s*)*<\/math>/gi, "");
     out = out.replace(/<math\b[^>]*\/>/gi, "");
     out = out.replace(/<\/?math\b[^>]*>/gi, "");
+    out = out.replace(/cdn-question-pool\.\.+app/gi, "cdn-question-pool.getmarks.app");
+    out = out.replace(/https?:\/\/cdn-question-pool\.\.app\//gi, "https://cdn-question-pool.getmarks.app/");
+    out = out.replace(/\$([^$]*?)&nbsp;([^$]*?)\$/g, (_, a, b) => "$" + a + "~" + b + "$");
+    out = out.replace(/\{([A-Za-z])\}\^\{/g, "$1^{");
     out = out.replace(/\$pm\s*\.\$/g, "pm.");
     out = out.replace(
       /\$([A-Za-z]|[0-9]+(?:\.[0-9]+)?)(rpm|ppm|kPa|MPa|GPa|keV|MeV|GeV|eV|pm|nm|mm|cm|km|kg|mg|ms|ns|ps|Hz)\$/g,
