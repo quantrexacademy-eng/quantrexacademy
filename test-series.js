@@ -150,9 +150,14 @@ function tsPaintLocks() {
 }
 
 function tsQuantrexBrand(s) {
-  if (!s || TS_CFG.provider !== "examgoal") return s;
+  if (!s) return s;
+  if (typeof QuantrexStrip !== "undefined" && QuantrexStrip.displayText) {
+    return QuantrexStrip.displayText(s);
+  }
   return String(s)
     .replace(/ExamGOAL|ExamGoal|Examgoal/g, "Quantrex")
+    .replace(/\bQuizrr\b/gi, "Quantrex")
+    .replace(/Get\s*Marks(?:\s*App)?/gi, "Quantrex")
     .replace(/\s*·?\s*Brand Coaching Style/gi, "")
     .replace(/Allen[- ]style\s*CBT/gi, "CBT")
     .replace(/NTA-style\s+Allen\s+CBT/gi, "NTA-style CBT")
@@ -160,7 +165,7 @@ function tsQuantrexBrand(s) {
 }
 
 function tsBrandManifest(m) {
-  if (!m || TS_CFG.provider !== "examgoal") return m;
+  if (!m) return m;
   const out = { ...m };
   if (out.subtitle) out.subtitle = tsQuantrexBrand(out.subtitle);
   if (out.tagline) out.tagline = tsQuantrexBrand(out.tagline);
@@ -180,7 +185,7 @@ function tsBrandManifest(m) {
 }
 
 function tsBrandCategoryData(data) {
-  if (!data || TS_CFG.provider !== "examgoal") return data;
+  if (!data) return data;
   const out = { ...data };
   if (out.category) {
     out.category = { ...out.category, section: tsQuantrexBrand(out.category.section) };
@@ -200,7 +205,7 @@ function tsBrandCategoryData(data) {
 }
 
 function tsBrandInstructionMeta(meta) {
-  if (!meta || TS_CFG.provider !== "examgoal") return meta;
+  if (!meta) return meta;
   return { ...meta, title: tsQuantrexBrand(meta.title) };
 }
 
@@ -750,13 +755,13 @@ function tsFormatChooserHtml(config) {
         <p class="ts-fmt-meta">${n} questions · ${mins} minutes</p>
       </div>
       <h3 class="ts-fmt-section">Layout Mode</h3>
-      <p class="ts-fmt-hint" style="margin:0 0 12px;text-align:left">Test Series defaults to <b>NTA FORMAT</b>. Pick QUANTREX FORMAT for ExamGoal-style practice layout.</p>
+      <p class="ts-fmt-hint" style="margin:0 0 12px;text-align:left">Test Series defaults to <b>NTA FORMAT</b>. Pick QUANTREX FORMAT for Quantrex practice layout.</p>
       <div class="ts-fmt-grid">
         <button type="button" class="ts-fmt-opt ts-fmt-qx${ntaOn ? "" : " on"}" id="tsFmtQuantrex" data-ui="examgoal">
-          <div class="ts-fmt-opt-icon">EG</div>
+          <div class="ts-fmt-opt-icon">QX</div>
           <div class="ts-fmt-opt-body">
             <strong>QUANTREX FORMAT</strong>
-            <span>Flexible practice UI — ExamGoal-style on phone</span>
+            <span>Flexible Quantrex practice UI on phone</span>
           </div>
         </button>
         <button type="button" class="ts-fmt-opt ts-fmt-qz${ntaOn ? " on" : ""}" id="tsFmtQuizrr" data-ui="quizrr">

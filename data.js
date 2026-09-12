@@ -30,6 +30,16 @@ const EXAMS = {
   }
 };
 
+function _qxBrandQuestionMeta(q) {
+  if (!q) return q;
+  if (typeof QuantrexStrip !== "undefined" && QuantrexStrip.displayText) {
+    if (q.source) q.source = QuantrexStrip.displayText(q.source);
+    if (q.paperSource) q.paperSource = QuantrexStrip.displayText(q.paperSource);
+    if (q.examName) q.examName = QuantrexStrip.displayText(q.examName);
+  }
+  return q;
+}
+
 const CHAPTERS = {
   "Botany": [
     "Anatomy of Flowering Plants",
@@ -743,6 +753,7 @@ async function loadChapterBank(slug, subject, chapter) {
       if (cat && !q.exam) q.exam = cat;
       if (q.source && !q._sourceFull) q._sourceFull = q.source;
       if (q.source && !q.paperSource) q.paperSource = q.source;
+      _qxBrandQuestionMeta(q);
       if (q.id != null && have[String(q.id)]) continue;
       add.push(q);
     }
@@ -871,6 +882,7 @@ async function loadSingleBank(slug, opts) {
       // Lock full paper label so hydrate cannot wipe date/shift
       if (q.source && !q._sourceFull) q._sourceFull = q.source;
       if (q.source && !q.paperSource) q.paperSource = q.source;
+      _qxBrandQuestionMeta(q);
     }
     _qxUnindexBank(slug);
     QUESTIONS = QUESTIONS.concat(raw);

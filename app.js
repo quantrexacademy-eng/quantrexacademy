@@ -805,7 +805,7 @@ function viewPractice() {
         ${sv ? `<span class="tag ${sv.correct?'tag-ok':'tag-no'}">${sv.correct?'✓ Correct':'✗ Wrong'}</span>` : ''}
       </div>
       <div class="q-text qx-content">${typeof Mx!=="undefined"?Mx.html(q.q):q.q}</div>
-      <div class="q-footer"><small>📖 ${q.chapter || ""}${q.chapter && q.source ? " · " : ""}📌 ${q.source || ""}</small><span class="bm">${bm ? '🔖' : '🤍'}</span></div>
+      <div class="q-footer"><small>📖 ${q.chapter || ""}${q.chapter && q.source ? " · " : ""}📌 ${typeof QuantrexStrip !== "undefined" && QuantrexStrip.sourceLabel ? QuantrexStrip.sourceLabel(q) : (q.source || "")}</small><span class="bm">${bm ? '🔖' : '🤍'}</span></div>
     </div>`;
   }).join("") : `<div class="empty">${activeSlug ? "No questions match these filters." : "Select an exam paper to begin."}</div>`;
 

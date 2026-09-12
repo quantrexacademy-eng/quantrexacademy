@@ -66,8 +66,11 @@
     out = out.replace(/\$\$\s*\$\$/g, "");
     out = out.replace(/\$\s*\$/g, "");
 
-    out = out.replace(/\bGet\s*Marks(?:\s*App)?\b/gi, "");
-    out = out.replace(/\bMarks App\b/gi, "");
+    out = out.replace(/\bGet\s*Marks(?:\s*App)?\b/gi, "Quantrex Academy");
+    out = out.replace(/\bMarks App\b/gi, "Quantrex Academy");
+    out = out.replace(/\bExamGOAL\b/gi, "Quantrex");
+    out = out.replace(/\bExamGoal\b/gi, "Quantrex");
+    out = out.replace(/\bQuizrr\b/gi, "Quantrex");
     out = out.replace(/\bweb\.getmarks\.app\b/gi, "");
     out = out.replace(/support us by uploading[\s\S]{0,120}/gi, "");
     out = out.replace(/official solution is not available\.?/gi, "");

@@ -23,7 +23,7 @@ window.QX_EXAM_TRENDS = (function () {
 
   const DISC =
     note(
-      "Based on multi-year PYQ trend analyses (similar to ExamGoal / Marks / major coaching 5-year chapter studies). Multi-shift exams mean absolute question counts vary. NTA does not publish official chapter marks — use for prioritisation only."
+      "Based on multi-year PYQ trend analyses (Quantrex 5-year chapter studies). Multi-shift exams mean absolute question counts vary. NTA does not publish official chapter marks — use for prioritisation only."
     );
 
   /* —— JEE Main: past ~5 years chapter % (trend) —— */

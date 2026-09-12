@@ -284,7 +284,7 @@ window.Mx = (() => {
     /\bVedantu\b/gi, /\bUnacademy\b/gi, /\bAakash\b/gi, /\bFIITJEE\b/gi, /\bResonance\b/gi,
     /Powered\s+by\s+MARKS/gi, /MOG\s*Premium/gi, /\bMARKS\s*Premium\b/gi,
     /\bMARKS\s*Selected\b/gi, /marks_selected/gi, /\bMARKS\s*web\b/gi,
-    /\bALLEN\s*Digital\b/gi, /\bQuizrr\b/gi
+    /\bALLEN\s*Digital\b/gi, /\bQuizrr\b/gi, /\bExamGOAL\b/gi, /\bExamGoal\b/gi
   ];
   const PYQ_CDN = "https://cdn-question-pool.getmarks.app/";
   const BROKEN_CDN_RX = /https?:\/\/\.app\//gi;
@@ -3118,6 +3118,79 @@ window.Mx = (() => {
    * Repair broken List-I / List-II match tables + normalize figure/cell layout.
    * Handles nested unclosed <td>(P) <td>(1)…, missing </td>, and cell images.
    */
+  function unwrapArrayCell(s) {
+    let t = String(s || "");
+    t = t.replace(/\$/g, "");
+    t = t.replace(/\\hline/g, "");
+    t = t.replace(/\\text\{([^{}]*)\}/g, "$1");
+    t = t.replace(/\\mathrm\{([^{}]*)\}/g, "$1");
+    t = t.replace(/\\textbf\{([^{}]*)\}/g, "$1");
+    t = t.replace(/\\mathbf\{([^{}]*)\}/g, "$1");
+    t = t.replace(/\\\\/g, "<br>");
+    t = t.replace(/\\,|\\;|\\ |~/g, " ");
+    t = t.replace(/\\left|\\right/g, "");
+    t = t.replace(/\s+/g, " ").trim();
+    return t;
+  }
+
+  function findArrayBlock(s, from) {
+    const open = "\\begin{array}";
+    const close = "\\end{array}";
+    const start = String(s || "").indexOf(open, from || 0);
+    if (start < 0) return null;
+    let depth = 1;
+    let j = start + open.length;
+    while (j < s.length && depth > 0) {
+      const n1 = s.indexOf(open, j);
+      const n2 = s.indexOf(close, j);
+      if (n2 < 0) return null;
+      if (n1 >= 0 && n1 < n2) {
+        depth++;
+        j = n1 + open.length;
+      } else {
+        depth--;
+        if (depth === 0) return { start: start, end: n2 + close.length };
+        j = n2 + close.length;
+      }
+    }
+    return null;
+  }
+
+  function arrayBlockToTable(block) {
+    let inner = String(block || "").replace(/^\\begin\{array\}\{[^}]*\}/, "").replace(/\\end\{array\}$/, "");
+    let guard = 0;
+    while (/\\begin\{array\}/.test(inner) && guard++ < 16) {
+      const nest = findArrayBlock(inner, 0);
+      if (!nest) break;
+      const nb = inner.slice(nest.start, nest.end);
+      const nbInner = nb.replace(/^\\begin\{array\}\{[^}]*\}/, "").replace(/\\end\{array\}$/, "");
+      const flat = nbInner.split(/\\\\/).map((r) => unwrapArrayCell(r.replace(/&/g, " "))).filter(Boolean).join("<br>");
+      inner = inner.slice(0, nest.start) + flat + inner.slice(nest.end);
+    }
+    inner = inner.replace(/\$/g, "");
+    const rows = inner.split(/\\\\/).map((r) => r.replace(/\\hline/g, "").trim()).filter((r) => r && r !== "\\hline");
+    if (!rows.length) return unwrapArrayCell(inner);
+    const trs = rows.map((row) => {
+      const cells = row.split("&").map((c) => "<td>" + unwrapArrayCell(c) + "</td>");
+      return "<tr>" + cells.join("") + "</tr>";
+    });
+    return '<table class="qx-match-list qx-match-table" border="1" cellpadding="6" cellspacing="0">' + trs.join("") + "</table>";
+  }
+
+  function latexArraysToHtmlTables(html) {
+    let s = String(html || "");
+    if (!/\\begin\{array\}/.test(s)) return s;
+    s = s.replace(/\$(\s*)(\\begin\{array\})/g, "$1$2");
+    s = s.replace(/(\\end\{array\})(\s*)\$/g, "$1$2");
+    let guard = 0;
+    while (/\\begin\{array\}/.test(s) && guard++ < 24) {
+      const blk = findArrayBlock(s, 0);
+      if (!blk) break;
+      s = s.slice(0, blk.start) + arrayBlockToTable(s.slice(blk.start, blk.end)) + s.slice(blk.end);
+    }
+    return s;
+  }
+
   function repairMatchListTableHtml(s) {
     let out = String(s || "");
     if (!/<table/i.test(out)) return out;
@@ -3929,6 +4002,7 @@ window.Mx = (() => {
     const matchFigSlots = [];
     let s0 = parkAxisHyphenMath(stripLatexRowSkips(cacheKey.trim()));
     try { s0 = piecewiseAlignedToCases(s0); } catch (_) { /* */ }
+    try { s0 = latexArraysToHtmlTables(s0); } catch (_) { /* */ }
     s0 = s0.replace(/\$([^$]{1,8000})\$/g, function (all, inner) {
       if (/\\begin\s*\{/.test(inner)) return all;
       return "$" + String(inner).replace(/&(?![a-zA-Z#][a-zA-Z0-9]*;)/g, "\\,") + "$";
@@ -4755,6 +4829,8 @@ window.Mx = (() => {
     typeset,
     afterRender,
     afterRenderLight,
+    whenKatexReady: loadKatex,
+    latexArraysToHtmlTables,
     fixMathFlowInDom,
     repairKatexLeakInDom,
     looksLikeLeakedKatex,
