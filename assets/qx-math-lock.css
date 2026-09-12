@@ -112,7 +112,10 @@
 
 .eg-test-root .katex-error,
 .eg-test-root [class*="katex-error"] {
-  display: none !important;
+  display: inline !important;
+  visibility: visible !important;
+  color: inherit !important;
+  background: transparent !important;
 }
 
 .eg-test-root .qx-math-fallback {

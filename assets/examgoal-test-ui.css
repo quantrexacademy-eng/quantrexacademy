@@ -1460,7 +1460,10 @@ html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .qx-num-input {
 }
 .eg-sol::-webkit-scrollbar, .eg-q-stem::-webkit-scrollbar { height: 0; width: 0; }
 .eg-sol .katex-error, .eg-q-stem .katex-error, .sol-body .katex-error {
-  display: none !important;
+  display: inline !important;
+  visibility: visible !important;
+  color: inherit !important;
+  background: transparent !important;
 }
 .eg-sol, .eg-sol.eg-sol-open, #egSol,
 .eg-test-root .eg-sol,
@@ -1807,7 +1810,10 @@ html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .qx-paper-meta {
 }
 .eg-test-root .katex-error,
 .eg-test-root [class*="katex-error"] {
-  display: none !important;
+  display: inline !important;
+  visibility: visible !important;
+  color: inherit !important;
+  background: transparent !important;
 }
 .eg-test-root #qxOpts,
 .eg-test-root .mtk-opt {

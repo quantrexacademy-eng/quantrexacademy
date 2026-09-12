@@ -1970,9 +1970,102 @@ window.Mx = (() => {
   }
 
   function mmlKids(body) {
-    return String(body || "").match(
-      /<m(?:i|n|o|row|frac|sup|sub|subsup|sqrt|fenced|text|table|underover|under|over)\b[\s\S]*?<\/m(?:i|n|o|row|frac|sup|sub|subsup|sqrt|fenced|text|table|underover|under|over)>/gi
-    ) || [];
+    const s = String(body || "");
+    const kids = [];
+    let i = 0;
+    while (i < s.length) {
+      if (s[i] !== "<") { i++; continue; }
+      if (s.startsWith("</", i)) { i++; continue; }
+      const m = s.slice(i).match(/^<([a-zA-Z][\w:-]*)\b[^>]*>/);
+      if (!m) { i++; continue; }
+      const name = m[1];
+      const start = i;
+      i += m[0].length;
+      if (/\/>$/.test(m[0])) { kids.push(s.slice(start, i)); continue; }
+      const esc = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      let depth = 1;
+      while (i < s.length && depth > 0) {
+        const next = s.indexOf("<", i);
+        if (next < 0) { i = s.length; break; }
+        const rest = s.slice(next);
+        const close = rest.match(new RegExp("^</" + esc + "\\s*>", "i"));
+        const open = rest.match(new RegExp("^<" + esc + "(?=[\\s>/])", "i"));
+        if (close && rest.indexOf(close[0]) === 0) {
+          depth--;
+          i = next + close[0].length;
+        } else if (open && rest.indexOf(open[0]) === 0 && !s.startsWith("</", next)) {
+          const om = rest.match(/^<[a-zA-Z][\w:-]*\b[^>]*>/);
+          if (om && /\/>$/.test(om[0])) i = next + om[0].length;
+          else { depth++; i = next + (om ? om[0].length : 1); }
+        } else i = next + 1;
+      }
+      kids.push(s.slice(start, i));
+    }
+    return kids;
+  }
+
+  function mmlFindClose(str, tag, from) {
+    const esc = String(tag).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const openRe = new RegExp("<" + esc + "(?=[\\s>/])", "i");
+    const closeRe = new RegExp("</" + esc + "\\s*>", "i");
+    let depth = 1;
+    let j = from;
+    while (j < str.length && depth > 0) {
+      const next = str.indexOf("<", j);
+      if (next < 0) return -1;
+      const rest = str.slice(next);
+      const cl = rest.match(closeRe);
+      const op = rest.match(openRe);
+      const clAt = cl && rest.indexOf(cl[0]) === 0 && /^<\//.test(rest);
+      const opAt = op && rest.indexOf(op[0]) === 0 && !str.startsWith("</", next);
+      if (clAt) {
+        depth--;
+        j = next + cl[0].length;
+        if (depth === 0) return next;
+      } else if (opAt) {
+        const om = rest.match(/^<[a-zA-Z][\w:-]*\b[^>]*>/);
+        if (om && /\/>$/.test(om[0])) j = next + om[0].length;
+        else {
+          depth++;
+          j = next + (om ? om[0].length : 1);
+        }
+      } else j = next + 1;
+    }
+    return -1;
+  }
+
+  function mmlReplaceTag(s, tag, fn) {
+    const str = String(s || "");
+    const esc = String(tag).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const openRe = new RegExp("<" + esc + "\\b([^>]*)>", "i");
+    let out = "";
+    let i = 0;
+    while (i < str.length) {
+      const slice = str.slice(i);
+      const m = slice.match(openRe);
+      if (!m || m.index == null) {
+        out += slice;
+        break;
+      }
+      out += slice.slice(0, m.index);
+      const abs = i + m.index;
+      const afterOpen = abs + m[0].length;
+      if (/\/>$/.test(m[0])) {
+        out += fn(m[1] || "", "");
+        i = afterOpen;
+        continue;
+      }
+      const closeAt = mmlFindClose(str, tag, afterOpen);
+      if (closeAt < 0) {
+        out += str.slice(abs);
+        break;
+      }
+      const body = str.slice(afterOpen, closeAt);
+      const closeM = str.slice(closeAt).match(new RegExp("^</" + esc + "\\s*>", "i"));
+      out += fn(m[1] || "", body);
+      i = closeAt + (closeM ? closeM[0].length : 0);
+    }
+    return out;
   }
 
   function mathmlToTex(inner) {
@@ -2009,7 +2102,7 @@ window.Mx = (() => {
       if (two) return "\\begin{cases}" + texRows.join(" \\\\ ") + "\\end{cases}";
       return "\\begin{array}{ll}" + texRows.join(" \\\\ ") + "\\end{array}";
     });
-    s = s.replace(/<munderover\b[^>]*>([\s\S]*?)<\/munderover>/gi, (_, body) => {
+    s = mmlReplaceTag(s, "munderover", (_, body) => {
       const kids = mmlKids(body);
       if (kids.length >= 3) {
         const base = mathmlToTex(kids[0]);
@@ -2020,43 +2113,53 @@ window.Mx = (() => {
       }
       return mathmlToTex(body);
     });
-    s = s.replace(/<munder\b[^>]*>([\s\S]*?)<\/munder>/gi, (_, body) => {
+    s = mmlReplaceTag(s, "munder", (_, body) => {
       const kids = mmlKids(body);
-      if (kids.length >= 2) return "\\mathop{" + mathmlToTex(kids[0]) + "}_{" + mathmlToTex(kids[1]) + "}";
+      if (kids.length >= 2) {
+        const base = mathmlToTex(kids[0]);
+        const und = mathmlToTex(kids[1]);
+        if (/lim/i.test(base)) return "\\lim_{" + und + "}";
+        return "\\mathop{" + base + "}_{" + und + "}";
+      }
       return mathmlToTex(body);
     });
-    s = s.replace(/<mover\b[^>]*>([\s\S]*?)<\/mover>/gi, (_, body) => {
+    s = mmlReplaceTag(s, "mover", (_, body) => {
       const kids = mmlKids(body);
       if (kids.length >= 2) return "\\overset{" + mathmlToTex(kids[1]) + "}{" + mathmlToTex(kids[0]) + "}";
       return mathmlToTex(body);
     });
-    s = s.replace(/<msubsup\b[^>]*>([\s\S]*?)<\/msubsup>/gi, (_, body) => {
+    s = mmlReplaceTag(s, "msubsup", (_, body) => {
       const kids = mmlKids(body);
       if (kids.length >= 3) {
         return "{" + mathmlToTex(kids[0]) + "}_{" + mathmlToTex(kids[1]) + "}^{" + mathmlToTex(kids[2]) + "}";
       }
       return mathmlToTex(body);
     });
-    s = s.replace(/<mfenced\b[^>]*>([\s\S]*?)<\/mfenced>/gi, (_, body) =>
-      "\\left(" + mathmlToTex(body) + "\\right)"
-    );
-    s = s.replace(/<mfrac\b[^>]*>([\s\S]*?)<\/mfrac>/gi, (_, body) => {
-      const kids = String(body || "").match(/<m(?:i|n|o|row|frac|sup|sub|sqrt|fenced|text)\b[\s\S]*?<\/m(?:i|n|o|row|frac|sup|sub|sqrt|fenced|text)>/gi) || [];
-      if (kids.length >= 2) return "\\frac{" + mathmlToTex(kids[0]) + "}{" + mathmlToTex(kids[1]) + "}";
+    s = mmlReplaceTag(s, "mfenced", (attrs, body) => {
+      const o = /open\s*=\s*["']([^"']*)["']/i.exec(attrs || "");
+      const c = /close\s*=\s*["']([^"']*)["']/i.exec(attrs || "");
+      const L = (o && o[1] != null) ? o[1] : "(";
+      const R = (c && c[1] != null) ? c[1] : ")";
+      const map = { "(": "(", ")": ")", "[": "[", "]": "]", "{": "\\{", "}": "\\}" };
+      return "\\left" + (map[L] || L) + mathmlToTex(body) + "\\right" + (map[R] || R);
+    });
+    s = mmlReplaceTag(s, "mfrac", (_, body) => {
+      const kids = mmlKids(body);
+      if (kids.length >= 2) return "\\dfrac{" + mathmlToTex(kids[0]) + "}{" + mathmlToTex(kids[1]) + "}";
       return mathmlToTex(body);
     });
-    s = s.replace(/<msup\b[^>]*>([\s\S]*?)<\/msup>/gi, (_, body) => {
-      const kids = String(body || "").match(/<m(?:i|n|o|row|frac|sup|sub|sqrt|fenced|text)\b[\s\S]*?<\/m(?:i|n|o|row|frac|sup|sub|sqrt|fenced|text)>/gi) || [];
+    s = mmlReplaceTag(s, "msup", (_, body) => {
+      const kids = mmlKids(body);
       if (kids.length >= 2) return "{" + mathmlToTex(kids[0]) + "}^{" + mathmlToTex(kids[1]) + "}";
       return mathmlToTex(body);
     });
-    s = s.replace(/<msub\b[^>]*>([\s\S]*?)<\/msub>/gi, (_, body) => {
-      const kids = String(body || "").match(/<m(?:i|n|o|row|frac|sup|sub|sqrt|fenced|text)\b[\s\S]*?<\/m(?:i|n|o|row|frac|sup|sub|sqrt|fenced|text)>/gi) || [];
+    s = mmlReplaceTag(s, "msub", (_, body) => {
+      const kids = mmlKids(body);
       if (kids.length >= 2) return "{" + mathmlToTex(kids[0]) + "}_{" + mathmlToTex(kids[1]) + "}";
       return mathmlToTex(body);
     });
-    s = s.replace(/<msqrt\b[^>]*>([\s\S]*?)<\/msqrt>/gi, (_, body) => "\\sqrt{" + mathmlToTex(body) + "}");
-    s = s.replace(/<mrow\b[^>]*>([\s\S]*?)<\/mrow>/gi, (_, body) => mathmlToTex(body));
+    s = mmlReplaceTag(s, "msqrt", (_, body) => "\\sqrt{" + mathmlToTex(body) + "}");
+    s = mmlReplaceTag(s, "mrow", (_, body) => mathmlToTex(body));
     s = s.replace(/<mtext\b[^>]*>([\s\S]*?)<\/mtext>/gi, (_, t) => {
       const v = mmlDecodeText(String(t || "").replace(/<[^>]+>/g, ""));
       return v ? "\\text{" + v + "}" : "";
@@ -2073,7 +2176,11 @@ window.Mx = (() => {
     });
     s = s.replace(/<\/?(?:math|semantics|annotation(?:-xml)?|mstyle|mspace|mphantom)[^>]*>/gi, "");
     s = s.replace(/<[^>]+>/g, " ");
-    return s.replace(/\s+/g, " ").trim();
+    s = s.replace(/\s+/g, " ").trim();
+    s = s.replace(/:\s*\\to\s*R\s*\\to/g, ":\\mathbb{R}\\to ");
+    s = s.replace(/:\s*\\rightarrow\s*R\s*\\rightarrow/g, ":\\mathbb{R}\\to ");
+    s = s.replace(/\\sqrt\{((?:[^{}]|\{[^{}]*\})*)\s-\s*\}\\sqrt\{/g, "\\sqrt{$1}-\\sqrt{");
+    return s;
   }
 
   function convertAllMathML(s) {
@@ -2083,12 +2190,11 @@ window.Mx = (() => {
     out = out.replace(/LIST\s*[-–]?\s*<math\b[^>]*>[\s\S]*?<\/math>/gi, (m) =>
       /II|2/i.test(m.replace(/<[^>]+>/g, "")) ? "List-II" : "List-I"
     );
-    out = out.replace(/<math\b[^>]*>([\s\S]*?)<\/math>/gi, (full, inner) => {
+    out = mmlReplaceTag(out, "math", (_, inner) => {
       let tex = "";
       try { tex = mathmlToTex(inner); } catch (_) { tex = ""; }
       const texCore = String(tex || "").replace(/\\begin\{[^}]+\}|\\end\{[^}]+\}|&/g, "").replace(/[. ,;:]/g, "").trim();
       if (tex && texCore) return "$" + tex + "$";
-      // Never drop the island — "Let . Consider" happens when MathML becomes ""
       const plain = String(inner || "")
         .replace(/<[^>]+>/g, " ")
         .replace(/&nbsp;|&#160;/gi, " ")
@@ -2096,9 +2202,10 @@ window.Mx = (() => {
         .replace(/\s+/g, " ")
         .trim();
       if (plain && !/^[.,;:]+$/.test(plain)) return "$" + plain + "$";
-      if (tex && !/^[.,;:\s]*$/.test(tex)) return "$" + tex + "$";
-      return full;
+      if (tex) return tex;
+      return "";
     });
+    out = out.replace(/<\/?math\b[^>]*>/gi, "");
     out = out.replace(/&nbsp;|&#160;|&#x0*A0;/gi, " ");
     out = out.replace(/\\le\s*ft\b/g, "\\left").replace(/\\ri\s*ght\b/g, "\\right");
     // For$\alpha$ → For $\alpha$   $4$is → $4$ is. Never split $x$-axis.
