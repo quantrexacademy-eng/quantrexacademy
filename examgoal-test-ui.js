@@ -558,12 +558,13 @@
       "</div>" +
       '<div class="eg-body">' +
       '<div class="eg-main"><div class="eg-q-card">' +
-      /* qxmd160: when Practice Show/Check Answer opens Solution, hide stem so it
-         does not sit above the panel looking like a reprint. Options stay for marking.
-         Exam/Take-Test mode never sets showSol. Restored on close via refresh(). */
+      /* qxmd161: when Practice Show/Check Answer opens Solution, hide stem visually
+         (eg-stem-sol-hidden + hidden/aria-hidden + CSS display:none). ALWAYS keep stem
+         HTML in the DOM — omitting markup emptied #egQArea and broke Check/Show Answer.
+         Options stay for marking. Exam/Take-Test never sets showSol. */
       '<div class="eg-q-stem' + (showSol ? " eg-stem-sol-hidden" : "") + '" id="egQArea"' +
       (showSol ? ' hidden aria-hidden="true"' : ' aria-hidden="false"') + ">" +
-      (showSol ? "" : stem) + "</div>" +
+      stem + "</div>" +
       (ctx.sectionInstr || "") +
       '<div class="' + (ctx.optsClass || "mtk-options mtk-options-grid") + ' eg-opts" id="qxOpts">' + (ctx.opts || "") + "</div>" +
       checkRow +

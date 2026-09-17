@@ -1,10 +1,10 @@
 {
-  "build": "qxmd160",
-  "cache": "qx-pwa-qxmd160",
-  "title": "qxmd160 \u00b7 Practice stem hide + Given/def echo harden",
-  "body": "Practice Show/Check Answer hides #egQArea stem while Solution panel is open (options stay). stripLeadingStemEcho hardened for Given,+ restated set/def openings that duplicate stem math; stem variants without Let/Consider. Exam/Take-Test mode unchanged. No Vercel.",
+  "build": "qxmd161",
+  "cache": "qx-pwa-qxmd161",
+  "title": "qxmd161 · Check/Show Answer stem-DOM + orphan $⇒ + Mx try/catch",
+  "body": "Practice Check/Show Answer: keep stem HTML in #egQArea DOM (CSS-hide only; omitting stem emptied area and made buttons look dead). stripLeadingDefEchoes/tidyAfterStemCut repair leading orphan $ before ⇒ (Q33261). formatBody/renderBlock wrap Mx.html in try/catch so KaTeX throw never aborts Practice refresh. No Vercel.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1789664400000
+  "ts": 1789671000000
 }

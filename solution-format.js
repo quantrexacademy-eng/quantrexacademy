@@ -681,7 +681,35 @@ const QuantrexSolution = (() => {
    * (e.g. set A = {...} copied before the real ⇒ work), and match stem without leading
    * "Let/Consider/Suppose".
    */
+  /**
+   * qxmd161: after stem/def cuts, repair leading orphan "$" before ⇒/=>/⟹
+   * (e.g. Q33261 leaves "$⇒ A = (-3, 1)$" when the open "$" belonged to a
+   * cut math block). Never leave a dangling "$" at the start.
+   */
+  function repairLeadingOrphanDollar(s) {
+    let r = String(s || "");
+    // Optional wrappers then $⇒ / $=> / $⟹ → drop the orphan "$"
+    r = r.replace(
+      /^((?:(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)*)?)\$(\s*)(?=⇒|=>|⟹)/u,
+      "$1$2"
+    );
+    // Absolute dangling "$" at start before implication / end / close-tag
+    r = r.replace(
+      /^((?:(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)*)?)\$+(?=\s*(?:⇒|=>|⟹|<\/|$))/u,
+      "$1"
+    );
+    // Drop the matching close "$" on the implication line (was paired with removed open)
+    r = r.replace(
+      /^((?:(?:\s|&nbsp;|<br\s*\/?\s*>|<(?:p|div|span)[^>]*>)*)?)(⇒|=>|⟹)([^$<\n]{0,220}?)\$(\s*)(?=<\/(?:p|div|span)>|<br\s*\/?\s*>|$)/u,
+      "$1$2$3$4"
+    );
+    // Bare start "$" leftover with no closer soon — strip once more
+    r = r.replace(/^\$+(?=⇒|=>|⟹)/u, "");
+    return r;
+  }
+
   function tidyAfterStemCut(rest) {
+
     let r = String(rest || "");
     r = r.replace(/^[a-zA-Z]{1,12}(?=[\s,.;:!?<]|&nbsp;|<|$)/, "");
     r = r.replace(/^\$+/g, "");
@@ -692,6 +720,7 @@ const QuantrexSolution = (() => {
     r = r.replace(/^\$+/g, "");
     r = r.replace(/^<\/(?:p|div|span)>/i, "");
     r = stripLeadingSolMeta(r);
+    r = repairLeadingOrphanDollar(r);
     return r;
   }
 
@@ -761,7 +790,7 @@ const QuantrexSolution = (() => {
       s = s.slice(end);
       if (s === before) break;
     }
-    return s;
+    return repairLeadingOrphanDollar(s);
   }
 
   function stripLeadingStemEcho(html, q) {
@@ -975,9 +1004,15 @@ const QuantrexSolution = (() => {
       try { raw = Mx.upgradePlainMathNotation(raw); } catch (_) { /* */ }
     }
     raw = toCleanFlow(raw);
-    let html = typeof Mx !== "undefined" ? Mx.html(raw) : raw;
-    html = polishHtml(html);
-    html = cleanSolutionFigHtml(html);
+    let html;
+    try {
+      html = typeof Mx !== "undefined" ? Mx.html(raw) : raw;
+    } catch (err) {
+      /* qxmd161: KaTeX/Mx throw must not abort Practice Check/Show Answer refresh */
+      try { html = esc(raw); } catch (_) { html = String(raw || ""); }
+    }
+    try { html = polishHtml(html); } catch (_) { /* keep */ }
+    try { html = cleanSolutionFigHtml(html); } catch (_) { /* keep */ }
     html = String(html || "")
       .replace(/(<br\s*\/?>\s*){3,}/gi, "<br><br>")
       .replace(/\n{3,}/g, "\n\n");
@@ -1013,7 +1048,12 @@ const QuantrexSolution = (() => {
       label = String(q.correctValue).trim();
     }
     if (!label || label.length > 160) return "";
-    const val = typeof Mx !== "undefined" ? Mx.html(label) : esc(label);
+    let val;
+    try {
+      val = typeof Mx !== "undefined" ? Mx.html(label) : esc(label);
+    } catch (_) {
+      val = esc(label);
+    }
     return `<div class="qx-sol-ans"><span class="qx-sol-ans-lab">Answer</span><span class="qx-sol-ans-val qx-content">${val}</span></div>`;
   }
 
@@ -1081,18 +1121,29 @@ const QuantrexSolution = (() => {
         <p class="qx-sol-missing">Solution not available.</p>
       </div>`;
     }
-    const body = formatBody(sol, q);
+    let body = "";
+    try {
+      body = formatBody(sol, q);
+    } catch (err) {
+      /* qxmd161: never abort whole Practice refresh on format/render throw */
+      try { body = esc(String(sol || "")); } catch (_) { body = String(sol || ""); }
+    }
     const fromSol = [];
-    const keyFormula = extractKeyFormula(sol);
-    if (keyFormula) fromSol.push(keyFormula);
-    const shortcutHtml = renderShortcutPanel(fromSol);
+    try {
+      const keyFormula = extractKeyFormula(sol);
+      if (keyFormula) fromSol.push(keyFormula);
+    } catch (_) { /* */ }
+    let shortcutHtml = "";
+    try { shortcutHtml = renderShortcutPanel(fromSol); } catch (_) { shortcutHtml = ""; }
+    let ansHtml = "";
+    try { ansHtml = officialAnswerHtml(q); } catch (_) { ansHtml = ""; }
     return `<div class="qx-sol-card ${theme}">
       <div class="qx-sol-card-h" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
         <span>${head}</span>
         ${diffBadge}
       </div>
       ${examMeta || ""}
-      ${officialAnswerHtml(q)}
+      ${ansHtml}
       ${shortcutHtml}
       <div class="qx-content sol-body qx-sol-flow">${body}</div>
     </div>`;
