@@ -4,11 +4,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap");
 
 :root {
-  --primary: #0D9488;
-  --primary-dark: #0F766E;
-  --primary-light: #CCFBF1;
-  --accent: #4F46E5;
-  --accent-light: #E0E7FF;
+  --primary: #0b57d0; /* qxmd166 Quantrex blue */
+  --primary-dark: #0842a0;
+  --primary-light: #d3e3fd;
+  --accent: #0b57d0;
+  --accent-light: #d3e3fd;
   --green: #16A34A;
   --green-light: #DCFCE7;
   --red: #DC2626;
@@ -29,7 +29,7 @@
   --radius-card: 12px;
   --radius-btn: 8px;
   --radius-pill: 999px;
-  --qx-gradient: linear-gradient(135deg, #0D9488 0%, #4F46E5 100%);
+  --qx-gradient: linear-gradient(135deg, #0b57d0 0%, #8ab4f8 100%);
   --qx-font-display: "Poppins", "Inter", "Noto Sans Devanagari", system-ui, sans-serif;
   --qx-font-body: "Inter", "Noto Sans Devanagari", system-ui, sans-serif;
   --space-1: 4px;
@@ -47,8 +47,8 @@
   --text: #E2E8F0;
   --dark: #E2E8F0;
   --gray: #94A3B8;
-  --primary-light: #134E4A;
-  --accent-light: #312E81;
+  --primary-light: #3d4f66;
+  --accent-light: #3d4f66;
   --shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
@@ -118,7 +118,7 @@ mjx-container {
   background: var(--qx-gradient) !important;
   border: none !important;
   border-radius: var(--radius-btn) !important;
-  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.28);
+  box-shadow: 0 4px 14px rgba(11, 87, 208, 0.28);
   font-weight: 700;
   transition: transform 0.12s ease, filter 0.12s ease;
 }

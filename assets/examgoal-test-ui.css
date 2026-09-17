@@ -1,9 +1,9 @@
 /* ExamGOAL-faithful PYQ practice/test chrome (ss 966, 971–973) */
 .eg-test-root,
 .eg-test-root.mtk-test-root {
-  --eg-blue: #2563eb;
+  --eg-blue: #0b57d0; /* qxmd166 */
   --eg-blue-2: #3b82f6;
-  --eg-header: #2563eb;
+  --eg-header: #0b57d0;
   --eg-tab: #3b82f6;
   --eg-tab-on: #1d4ed8;
   --eg-bg: #eef2f7;
@@ -16,7 +16,7 @@
   --eg-red: #ef4444;
   --eg-yellow: #f59e0b;
   --eg-purple: #a855f7;
-  --eg-opt-letter: #2563eb;
+  --eg-opt-letter: #0b57d0;
   height: 100dvh;
   position: fixed;
   inset: 0;
@@ -660,7 +660,7 @@ body.marks-test-active::before { display: none !important; }
 .allen-practice,
 .qx-practice-page,
 .mtk-test-root {
-  --eg-blue: #2563eb;
+  --eg-blue: #0b57d0; /* qxmd166 */
   --eg-card: #ffffff;
   --eg-text: #0f172a;
   --eg-muted: #64748b;
@@ -4827,4 +4827,96 @@ html[data-theme="light"] .eg-test-root[data-test-theme="light"].eg-sol-showing .
   width: 0 !important;
   clip: rect(0, 0, 0, 0) !important;
   pointer-events: none !important;
+}
+
+
+/* qxmd165: Practice Aa pop — palette preference (Right / Top / Both) */
+.eg-fmt-pop .eg-fmt-pal-h {
+  margin: 10px 0 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+.eg-fmt-pop .eg-fmt-pal button {
+  flex: 1 1 0;
+  min-width: 0;
+  font-size: 12px;
+  padding: 6px 8px;
+}
+
+
+/* ========== qxmd165: stem hide sitewide (Practice + Allen + Examgoal) dark/light ========== */
+html .eg-test-root.eg-sol-showing .eg-q-stem,
+html .eg-test-root.eg-sol-showing #egQArea,
+html .eg-test-root.eg-sol-showing .mtk-q-text.eg-stem-sol-hidden,
+html .mtk-test-root.eg-sol-showing .mtk-q-text,
+html .mtk-test-root.eg-sol-showing .mq-stem,
+html .mtk-test-root.eg-sol-showing .qx-prac-q,
+html .mtk-test-root.qx-sol-showing .mtk-q-text,
+html .allen-practice.eg-sol-showing .mtk-q-text,
+html .allen-practice.qx-sol-showing .mtk-q-text,
+html .qx-practice-page.eg-sol-showing .qx-prac-q,
+html .qx-practice-page.qx-sol-showing .qx-prac-q,
+html .eg-stem-sol-hidden,
+html .qx-stem-sol-hidden,
+html[data-theme="dark"] .eg-test-root.eg-sol-showing .eg-q-stem,
+html[data-theme="dark"] .eg-test-root.eg-sol-showing #egQArea,
+html[data-theme="dark"] .mtk-test-root.eg-sol-showing .mtk-q-text,
+html[data-theme="dark"] .allen-practice.eg-sol-showing .mtk-q-text,
+html[data-theme="light"] .eg-test-root.eg-sol-showing .eg-q-stem,
+html[data-theme="light"] .eg-test-root.eg-sol-showing #egQArea,
+html[data-theme="light"] .mtk-test-root.eg-sol-showing .mtk-q-text,
+html[data-theme="light"] .allen-practice.eg-sol-showing .mtk-q-text,
+html .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem,
+html .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem,
+html .mtk-test-root[data-test-theme="dark"].eg-sol-showing .mtk-q-text,
+html .mtk-test-root[data-test-theme="light"].eg-sol-showing .mtk-q-text {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  clip: rect(0, 0, 0, 0) !important;
+  position: absolute !important;
+  left: -9999px !important;
+  pointer-events: none !important;
+  color: transparent !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
+/* Solution math readable in both themes */
+html[data-theme="dark"] .eg-sol-panel,
+html[data-theme="dark"] .qx-sol-card,
+html[data-theme="dark"] .qx-sol-reveal-box,
+html[data-theme="dark"] .mk-sol-row .qx-sol-card,
+html .eg-test-root[data-test-theme="dark"] .eg-sol-panel,
+html .eg-test-root[data-test-theme="dark"] .qx-sol-card,
+html .mtk-test-root[data-test-theme="dark"] .qx-sol-card {
+  color: #e2e8f0;
+}
+html[data-theme="dark"] .eg-sol-panel .katex,
+html[data-theme="dark"] .qx-sol-card .katex,
+html[data-theme="dark"] .qx-sol-reveal-box .katex,
+html .eg-test-root[data-test-theme="dark"] .eg-sol .katex,
+html .mtk-test-root[data-test-theme="dark"] .qx-sol-card .katex {
+  color: #f1f5f9 !important;
+}
+html[data-theme="light"] .eg-sol-panel,
+html[data-theme="light"] .qx-sol-card,
+html[data-theme="light"] .qx-sol-reveal-box,
+html .eg-test-root[data-test-theme="light"] .eg-sol-panel,
+html .mtk-test-root[data-test-theme="light"] .qx-sol-card {
+  color: #0f172a;
+}
+html[data-theme="light"] .eg-sol-panel .katex,
+html[data-theme="light"] .qx-sol-card .katex,
+html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
+  color: #0f172a !important;
 }

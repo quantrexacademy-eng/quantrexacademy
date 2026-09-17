@@ -796,3 +796,363 @@ html[data-theme="light"] .eg-test-root[data-test-theme="light"].eg-sol-showing .
   clip: rect(0, 0, 0, 0) !important;
   pointer-events: none !important;
 }
+
+
+/* ========== qxmd165: stem hide sitewide (Practice + Allen + Examgoal) dark/light ========== */
+html .eg-test-root.eg-sol-showing .eg-q-stem,
+html .eg-test-root.eg-sol-showing #egQArea,
+html .eg-test-root.eg-sol-showing .mtk-q-text.eg-stem-sol-hidden,
+html .mtk-test-root.eg-sol-showing .mtk-q-text,
+html .mtk-test-root.eg-sol-showing .mq-stem,
+html .mtk-test-root.eg-sol-showing .qx-prac-q,
+html .mtk-test-root.qx-sol-showing .mtk-q-text,
+html .allen-practice.eg-sol-showing .mtk-q-text,
+html .allen-practice.qx-sol-showing .mtk-q-text,
+html .qx-practice-page.eg-sol-showing .qx-prac-q,
+html .qx-practice-page.qx-sol-showing .qx-prac-q,
+html .eg-stem-sol-hidden,
+html .qx-stem-sol-hidden,
+html[data-theme="dark"] .eg-test-root.eg-sol-showing .eg-q-stem,
+html[data-theme="dark"] .eg-test-root.eg-sol-showing #egQArea,
+html[data-theme="dark"] .mtk-test-root.eg-sol-showing .mtk-q-text,
+html[data-theme="dark"] .allen-practice.eg-sol-showing .mtk-q-text,
+html[data-theme="light"] .eg-test-root.eg-sol-showing .eg-q-stem,
+html[data-theme="light"] .eg-test-root.eg-sol-showing #egQArea,
+html[data-theme="light"] .mtk-test-root.eg-sol-showing .mtk-q-text,
+html[data-theme="light"] .allen-practice.eg-sol-showing .mtk-q-text,
+html .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem,
+html .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem,
+html .mtk-test-root[data-test-theme="dark"].eg-sol-showing .mtk-q-text,
+html .mtk-test-root[data-test-theme="light"].eg-sol-showing .mtk-q-text {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  clip: rect(0, 0, 0, 0) !important;
+  position: absolute !important;
+  left: -9999px !important;
+  pointer-events: none !important;
+  color: transparent !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
+/* Solution math readable in both themes */
+html[data-theme="dark"] .eg-sol-panel,
+html[data-theme="dark"] .qx-sol-card,
+html[data-theme="dark"] .qx-sol-reveal-box,
+html[data-theme="dark"] .mk-sol-row .qx-sol-card,
+html .eg-test-root[data-test-theme="dark"] .eg-sol-panel,
+html .eg-test-root[data-test-theme="dark"] .qx-sol-card,
+html .mtk-test-root[data-test-theme="dark"] .qx-sol-card {
+  color: #e2e8f0;
+}
+html[data-theme="dark"] .eg-sol-panel .katex,
+html[data-theme="dark"] .qx-sol-card .katex,
+html[data-theme="dark"] .qx-sol-reveal-box .katex,
+html .eg-test-root[data-test-theme="dark"] .eg-sol .katex,
+html .mtk-test-root[data-test-theme="dark"] .qx-sol-card .katex {
+  color: #f1f5f9 !important;
+}
+html[data-theme="light"] .eg-sol-panel,
+html[data-theme="light"] .qx-sol-card,
+html[data-theme="light"] .qx-sol-reveal-box,
+html .eg-test-root[data-test-theme="light"] .eg-sol-panel,
+html .mtk-test-root[data-test-theme="light"] .qx-sol-card {
+  color: #0f172a;
+}
+html[data-theme="light"] .eg-sol-panel .katex,
+html[data-theme="light"] .qx-sol-card .katex,
+html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
+  color: #0f172a !important;
+}
+
+
+/* qxmd165-home-polish: dashboard / home attractive in dark + light */
+html[data-theme="dark"] .qx-guest-banner {
+  background: linear-gradient(135deg, #0f172a, #1e3a5f) !important;
+  border-color: rgba(96,165,250,.35) !important;
+  color: #e2e8f0 !important;
+}
+html[data-theme="dark"] .qx-guest-banner.urgent {
+  background: linear-gradient(135deg, #1c1917, #422006) !important;
+  border-color: rgba(251,191,36,.4) !important;
+}
+html[data-theme="dark"] .qx-guest-banner-btn { color: #93c5fd !important; }
+html[data-theme="light"] .qx-guest-banner {
+  background: linear-gradient(135deg, #ecfdf5, #e0f2fe);
+  border-color: #99f6e4;
+  color: #0f172a;
+}
+html[data-theme="dark"] .dash-board-hero-text p { color: #94a3b8 !important; }
+html[data-theme="dark"] .dash-board-hero-top:hover { background: rgba(148,163,184,.12) !important; }
+html[data-theme="dark"] .dash-board-go { color: #93c5fd !important; }
+html[data-theme="dark"] .dash-greet-left h1 { color: #f8fafc !important; }
+html[data-theme="dark"] .dash-greet-left p { color: #94a3b8 !important; }
+html[data-theme="light"] .dash-board-hero {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 55%, #e0f2fe 100%);
+  border-color: rgba(30,58,138,.15);
+}
+html[data-theme="light"] .dash-board-hero-text h3 { color: #1e3a8a; }
+html[data-theme="light"] .dash-board-hero-text p { color: #475569; }
+html[data-theme="dark"] .dash-tool-card {
+  background: #0f172a;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+html[data-theme="dark"] .dash-tool-card small { color: #94a3b8; }
+html[data-theme="dark"] .dash-tool-card:hover {
+  border-color: #60a5fa;
+  box-shadow: 0 8px 22px rgba(37,99,235,.25);
+}
+html[data-theme="light"] .dash-tool-card {
+  background: var(--card, #fff);
+  border-color: var(--border, #e2e8f0);
+}
+/* Soft section breathing room on home */
+.dash-marks-wrap .dash-greet-bar { margin-bottom: 18px; }
+.dash-marks-wrap .dash-board-block { margin-bottom: 20px; }
+
+
+/* ========== qxmd166: uniform Quantrex colour tokens (final authority) ========== */
+html[data-theme="light"],
+html:not([data-theme="dark"]) {
+  --primary: #0b57d0;
+  --primary-dark: #0842a0;
+  --primary-light: #d3e3fd;
+  --accent: #0b57d0;
+  --accent-light: #d3e3fd;
+  --qx-primary: #0b57d0;
+  --qx-accent: #1565c0;
+  --qx-ink: #0f172a;
+  --qx-ink-muted: #334155;
+  --qx-surface: #ffffff;
+  --qx-surface-2: #f0f4f9;
+  --qx-line: #e2e8f0;
+  --qx-radius-card: 12px;
+  --qx-radius-btn: 10px;
+  --qx-radius-pill: 999px;
+  --qx-gradient: linear-gradient(135deg, #0b57d0 0%, #8ab4f8 100%);
+  --bg: #f0f4f9;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --dark: #0f172a;
+  --gray: #475569;
+}
+html[data-theme="dark"] {
+  --primary: #8ab4f8;
+  --primary-dark: #a8c7fa;
+  --primary-light: #3d4f66;
+  --accent: #8ab4f8;
+  --accent-light: #3d4f66;
+  --qx-primary: #8ab4f8;
+  --qx-accent: #a8c7fa;
+  --qx-ink: #f8fafc;
+  --qx-ink-muted: #cbd5e1;
+  --qx-surface: #0f172a;
+  --qx-surface-2: #1e293b;
+  --qx-line: #334155;
+  --qx-radius-card: 12px;
+  --qx-radius-btn: 10px;
+  --qx-radius-pill: 999px;
+  --qx-gradient: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  --bg: #0b1120;
+  --card: #0f172a;
+  --border: #334155;
+  --text: #f8fafc;
+  --dark: #f8fafc;
+  --gray: #94a3b8;
+}
+
+/* Shared button / card chrome — home + shell (Med + Eng share) */
+.btn-primary, .btn-primary.big, .mtk-btn-save, .qx-prac-next,
+.eg-btn-next, .eg-check, .marks-modal-apply {
+  border-radius: var(--qx-radius-btn, 10px) !important;
+}
+.dash-card, .book-card, .qx-book-card, .subj-card, .ch-card, .exam-card,
+.exam-pill-card, .cpyqb-exam-tile, .dash-tool-card, .dpp-set-card,
+.qx-module-card, .qx-folder-card, .qx-topic-card, .dash-util-card,
+.qx-med-test-card, .qx-med-nb-card {
+  border-radius: var(--qx-radius-card, 12px) !important;
+  border-color: var(--qx-line, var(--border)) !important;
+}
+html[data-theme="light"] .dash-card,
+html[data-theme="light"] .dash-tool-card,
+html[data-theme="light"] .exam-pill-card,
+html[data-theme="light"] .qx-folder-card,
+html[data-theme="light"] .ch-card,
+html[data-theme="light"] .qx-module-card {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+html[data-theme="dark"] .dash-card,
+html[data-theme="dark"] .dash-tool-card,
+html[data-theme="dark"] .exam-pill-card,
+html[data-theme="dark"] .qx-folder-card,
+html[data-theme="dark"] .ch-card,
+html[data-theme="dark"] .qx-module-card,
+html[data-theme="dark"] .qx-med-test-card,
+html[data-theme="dark"] .qx-med-nb-card {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+  color: #e2e8f0 !important;
+}
+
+/* Pro homepage / guest shell */
+html[data-theme="light"] .qx-guest-banner {
+  background: linear-gradient(135deg, #eff6ff, #e0f2fe) !important;
+  border: 1px solid #bfdbfe !important;
+  color: #0f172a !important;
+  border-radius: 14px !important;
+}
+html[data-theme="dark"] .qx-guest-banner {
+  background: linear-gradient(135deg, #0f172a, #1e3a5f) !important;
+  border: 1px solid rgba(96,165,250,.35) !important;
+  color: #e2e8f0 !important;
+  border-radius: 14px !important;
+}
+html[data-theme="light"] .dash-board-hero {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 55%, #e0f2fe 100%) !important;
+  border: 1px solid rgba(11,87,208,.18) !important;
+  border-radius: 16px !important;
+}
+html[data-theme="dark"] .dash-board-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%) !important;
+  border: 1px solid rgba(96,165,250,.25) !important;
+  border-radius: 16px !important;
+}
+html[data-theme="light"] .dash-board-hero-text h3 { color: #0842a0 !important; }
+html[data-theme="dark"] .dash-board-hero-text h3 { color: #93c5fd !important; }
+html[data-theme="light"] .dash-greet-left h1 { color: #0f172a !important; }
+html[data-theme="dark"] .dash-greet-left h1 { color: #f8fafc !important; }
+
+/* Nav / chips: kill leftover teal/violet clash */
+.nav-item.active,
+html[data-theme="light"] .nav-item.active {
+  background: #d3e3fd !important;
+  color: #0842a0 !important;
+  box-shadow: inset 3px 0 0 #0b57d0 !important;
+}
+html[data-theme="dark"] .nav-item.active {
+  background: #1e3a5f !important;
+  color: #8ab4f8 !important;
+  box-shadow: inset 3px 0 0 #8ab4f8 !important;
+}
+.qx-top-exam.on,
+.qx-class-chip.on {
+  background: #0b57d0 !important;
+  color: #fff !important;
+  border-color: #0b57d0 !important;
+}
+html[data-theme="dark"] .qx-top-exam.on,
+html[data-theme="dark"] .qx-class-chip.on {
+  background: #1d4ed8 !important;
+  color: #fff !important;
+}
+
+/* Practice Answer badge / Check — Quantrex blue family */
+.eg-test-root .eg-check,
+.eg-test-root.eg-qxtool8 .eg-check {
+  border-radius: 10px !important;
+}
+.qx-ans-badge, .eg-sol-ans, .qx-sol-ans-pill {
+  border-radius: 999px !important;
+}
+
+/* Toolbar icons: consistent hit + contrast */
+.eg-test-root .eg-top-tools .eg-tool-btn {
+  border-radius: 10px !important;
+}
+html .eg-test-root[data-test-theme="dark"] .eg-top-tools .eg-tool-btn {
+  color: #e2e8f0;
+}
+html .eg-test-root[data-test-theme="light"] .eg-top-tools .eg-tool-btn {
+  color: #0f172a;
+}
+
+/* Align Examgoal chrome primary with Quantrex blue (Med + Eng share) */
+.eg-test-root,
+.eg-test-root.mtk-test-root {
+  --eg-blue: #0b57d0;
+  --eg-blue-2: #2563eb;
+  --eg-header: #0b57d0;
+  --eg-tab: #2563eb;
+  --eg-tab-on: #0842a0;
+  --eg-opt-letter: #0b57d0;
+}
+.eg-test-root[data-test-theme="dark"],
+.eg-test-root.mtk-test-root[data-test-theme="dark"] {
+  --eg-header: #1e3a8a;
+  --eg-tab: #1e40af;
+  --eg-tab-on: #172554;
+  --eg-opt-letter: #8ab4f8;
+}
+
+/* Speed: palette / theme / All-Q stay CSS-instant (no heavy transition thrash) */
+.eg-test-root .eg-side,
+.eg-test-root .eg-qbar,
+.eg-test-root .eg-preview {
+  transition: transform 0.14s ease, opacity 0.12s ease !important;
+}
+.eg-test-root.eg-side-collapsed .eg-side,
+.eg-test-root:not(.eg-side-open) .eg-side {
+  /* class toggles only — no JS rebuild */
+}
+
+/* Soft section breathing on home */
+.dash-marks-wrap .dash-greet-bar { margin-bottom: 18px; }
+.dash-marks-wrap .dash-board-block { margin-bottom: 20px; }
+.qx-home .content, #app-main .qx-home { max-width: 1100px; }
+
+
+/* qxmd166-orbit-logos: homepage track badges always visible */
+.cat img, .stage-hub img.qx-ui-brand-logo, .brand-mark img.qx-ui-brand-logo {
+  background: #ffffff !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+
+/* qxmd166-home-uniform: kill leftover multi-hue clash on dash hero/greet */
+html[data-theme="dark"] .dash-greet-bar,
+html[data-theme="dark"] .qx-home .dash-greet-bar {
+  background: linear-gradient(135deg, #0b57d0 0%, #1e3a8a 55%, #0f172a 100%) !important;
+}
+html[data-theme="light"] .dash-greet-bar,
+html[data-theme="light"] .qx-home .dash-greet-bar {
+  background: linear-gradient(135deg, #0b57d0 0%, #2563eb 60%, #1d4ed8 100%) !important;
+  color: #fff !important;
+}
+html .dash-greet-bar h1,
+html .dash-greet-bar p,
+html .dash-greet-left h1,
+html .dash-greet-bar .dash-greet-left h1 {
+  /* greet sits on blue gradient — keep white ink */
+}
+.qx-home .dash-greet-bar h1,
+.qx-home .dash-greet-bar p,
+.dash-greet-bar h1,
+.dash-greet-bar p {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+.qx-premium-pill, .dash-premium-btn, .dash-greet-bar .qx-premium-pill {
+  background: linear-gradient(135deg, #0b57d0, #2563eb) !important;
+  color: #fff !important;
+  border: none !important;
+}
+/* Update toast buttons — Quantrex blue, not yellow clash */
+#updateBanner .btn-primary,
+.pwa-update-toast button.primary,
+.qx-update-bar .btn-primary {
+  background: #0b57d0 !important;
+  color: #fff !important;
+}

@@ -7,7 +7,8 @@
 <meta name="description" content="Quantrex Academy — JEE Main &amp; JEE Advanced previous year questions, JEE Mathematics, mock tests and DPP. NEET, NDA, BITSAT PYQs with solutions. Same login on website and Google Play.">
 <meta name="google-site-verification" content="pemTmZW6o6YInk0dhVyPgIz7R4v4mWvKhIb1AdI9Alw">
 <meta name="theme-color" content="#1565C0">
-  <meta property="og:title" content="Quantrex Academy — JEE, NEET, NDA PYQs with Solutions">
+<meta name="robots" content="index,follow,max-snippet:-1">
+<meta property="og:title" content="Quantrex Academy — JEE, NEET, NDA PYQs with Solutions">
 <meta property="og:description" content="Chapter-wise previous year questions with answers and solutions. Login for the full Quantrex Academy app.">
 <meta property="og:url" content="https://www.quantrexacademy.com/">
 <meta property="og:image" content="https://www.quantrexacademy.com/assets/quantrex-logo-3d-192.png">
@@ -400,6 +401,24 @@ h1 em {
 .cat-engineering { --tx: 148px;  --ty: 0px; }
 .cat-medical     { --tx: 0px;    --ty: 148px; }
 .cat-defence     { --tx: -148px; --ty: 0px; }
+
+/* qxmd166-orbit-logos: keep track logos crisp on white plates (light+dark) */
+.cat img, .stage-hub img, .brand-mark img {
+  background: #ffffff !important;
+  border-radius: 50%;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  image-rendering: -webkit-optimize-contrast;
+}
+html[data-theme="dark"] .cat img,
+html[data-theme="dark"] .stage-hub img,
+html[data-theme="dark"] .brand-mark img {
+  background: #ffffff !important;
+  box-shadow: 0 0 0 2px rgba(148,163,184,.25);
+}
+.cat-engineering img { /* prefer clearer main seal if advanced looks faint at 44px */ }
 .cat img {
   width: 44px; height: 44px; object-fit: contain; display: block;
   border-radius: 50%; background: #fff; padding: 4px;
@@ -755,6 +774,7 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
 }
   .qx-build-pill, #updateBanner, .pwa-update-toast { display: none !important; }
 </style>
+    <link rel="stylesheet" href="assets/qx-site-contrast.css?v=qxmd166">
 </head>
 <body>
   <header class="top">
@@ -805,7 +825,7 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
             <span class="sub">Class 7–12 · CBSE</span>
           </button>
           <button type="button" class="cat cat-engineering" data-cat="Engineering" title="Engineering">
-            <img src="assets/exam-logos/ic_content_exam_jee_advanced.png?v=anim1" alt="">
+            <img src="assets/exam-logos/ic_content_exam_jee_main.png?v=qxmd166" alt="Engineering" onerror="this.onerror=null;this.src='assets/exam-logos/ic_content_exam_jee_advanced.png'">
             <span class="lab">Engineering</span>
             <span class="sub">JEE Advanced</span>
           </button>
@@ -1209,13 +1229,15 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
         const plan = new URLSearchParams(location.search).get("plan");
         return "pay.html" + (plan ? "?plan=" + encodeURIComponent(plan) : "");
       }
-    } catch (_) {}
-    return "app.html?exam=" + encodeURIComponent(chosenExam || "Engineering");
+    } catch (_) { /* */ }
+    var ex = (typeof chosenExam !== "undefined" && chosenExam) ? chosenExam : "Engineering";
+    try { ex = localStorage.getItem("quantrex_exam") || ex; } catch (_) {}
+    return "app.html?exam=" + encodeURIComponent(ex || "Engineering") + "&login=1#dashboard";
   }
 
   function appHome() {
     try { localStorage.setItem("quantrex_exam", chosenExam || "Engineering"); } catch (_) {}
-    window.location.href = afterLoginUrl();
+    window.location.replace(afterLoginUrl());
   }
 
   let completing = false;
@@ -1224,9 +1246,15 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
     completing = true;
     authBusy = true;
     const exam = (extra && extra.exam) || chosenExam || "Engineering";
+    function withTimeout(p, ms) {
+      return Promise.race([
+        Promise.resolve(p),
+        new Promise(function (resolve) { setTimeout(resolve, ms); })
+      ]);
+    }
     try {
       if (typeof QuantrexStudentAuth !== "undefined" && QuantrexStudentAuth.finishLogin) {
-        await QuantrexStudentAuth.finishLogin(user, Object.assign({ exam: exam }, extra || {}));
+        await withTimeout(QuantrexStudentAuth.finishLogin(user, Object.assign({ exam: exam }, extra || {})), 6000);
       }
     } catch (_) { /* session still saved locally */ }
     const name = (extra && extra.name) || user.displayName || user.email || user.phoneNumber || "Student";
@@ -1258,16 +1286,16 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
       }
     } catch (_) {}
     try {
-      if (typeof QuantrexSession !== "undefined") await QuantrexSession.claim(user);
+      if (typeof QuantrexSession !== "undefined") await withTimeout(QuantrexSession.claim(user), 5000);
     } catch (_) {}
     if (owner) {
-      window.location.href = afterLoginUrl();
+      window.location.replace(afterLoginUrl());
       return;
     }
     if (!(extra && extra.skipWelcome)) {
       if (showWelcome(user, extra)) return;
     }
-    window.location.href = afterLoginUrl();
+    window.location.replace(afterLoginUrl());
   }
   function paintInterest(root) {
     const box = (root || document).querySelector("#welcomeExams") || document.getElementById("regExamBox");
@@ -1326,7 +1354,7 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
       try { await QxLeads.submit("register", extra, { silent: true }); } catch (_) { /* */ }
     }
     completing = false;
-    window.location.href = afterLoginUrl();
+    window.location.replace(afterLoginUrl());
   }
   async function saveSession(user) {
     return completeLogin(user, { exam: chosenExam, provider: "google" });
@@ -1343,10 +1371,21 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
   auth.getRedirectResult().then((cred) => {
     if (cred && cred.user) {
       try { sessionStorage.setItem("qx_just_signed_in", "1"); } catch (_) {}
+      try { localStorage.setItem("qx_just_signed_in", "1"); } catch (_) {}
+      try { localStorage.removeItem("qx_google_redirect_pending"); } catch (_) {}
       saveSession(cred.user);
     }
   }).catch((err) => {
     const code = err && err.code;
+    const msg = String((err && (err.message || err.customData && err.customData.message)) || "");
+    const missingState = /missing initial state/i.test(msg)
+      || code === "auth/missing-or-invalid-initial-state"
+      || code === "auth/argument-error";
+    try { localStorage.removeItem("qx_google_redirect_pending"); } catch (_) {}
+    if (missingState) {
+      showMsg("Google login was interrupted on this phone browser. Tap Google again, or use Mobile OTP / Email.");
+      return;
+    }
     if (code && code !== "auth/popup-closed-by-user") {
       showMsg(googleErr(err));
     }
@@ -1370,23 +1409,36 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
     const btn = document.getElementById("googleBtn");
     btn.disabled = true;
     btn.textContent = "Connecting...";
-    try {
-      showMsg("Opening Google login…", "ok");
-      await auth.signInWithRedirect(googleProvider());
-      return;
-    } catch (err) {
-      try {
-        const cred = await auth.signInWithPopup(googleProvider());
-        try { sessionStorage.setItem("qx_just_signed_in", "1"); } catch (_) {}
-        showMsg("Signed in to Quantrex Academy. Opening your student dashboard…", "ok");
-        saveSession(cred.user);
-        return;
-      } catch (e2) {
-        showMsg(googleErr(e2 || err));
-      }
+    const resetBtn = () => {
       btn.disabled = false;
       btn.innerHTML = gBtnHtml;
       authBusy = false;
+    };
+    try {
+      try { await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL); } catch (_) {}
+      showMsg("Continue with Google to access Quantrex Academy…", "ok");
+      // Prefer popup first — avoids "missing initial state" on mobile / partitioned storage.
+      try {
+        const cred = await auth.signInWithPopup(googleProvider());
+        try { sessionStorage.setItem("qx_just_signed_in", "1"); } catch (_) {}
+        try { localStorage.setItem("qx_just_signed_in", "1"); } catch (_) {}
+        showMsg("Signed in to Quantrex Academy. Opening your student dashboard…", "ok");
+        saveSession(cred.user);
+        return;
+      } catch (popErr) {
+        const pcode = popErr && popErr.code;
+        const canRedirect = pcode === "auth/popup-blocked"
+          || pcode === "auth/operation-not-supported-in-this-environment"
+          || pcode === "auth/cancelled-popup-request";
+        if (!canRedirect) throw popErr;
+        try { localStorage.setItem("qx_google_redirect_pending", "1"); } catch (_) {}
+        showMsg("Popup blocked — opening full-page Google login…", "ok");
+        await auth.signInWithRedirect(googleProvider());
+        return;
+      }
+    } catch (err) {
+      showMsg(googleErr(err));
+      resetBtn();
     }
   });
 
@@ -1484,7 +1536,7 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
     if (!pass) return showMsg("Enter your password.");
     authBusy = true;
     try {
-      showMsg("Signing in…", "ok");
+      showMsg("Signing you in to Quantrex Academy…", "ok");
       try {
         const ar = await fetch("/api/admin-login", {
           method: "POST",
@@ -1510,7 +1562,7 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
           if (typeof QuantrexAccess !== "undefined" && QuantrexAccess.grantAdmin) {
             QuantrexAccess.grantAdmin({ email: ad.email, phone: ad.phone });
           }
-          window.location.href = afterLoginUrl();
+          window.location.replace(afterLoginUrl());
           return;
         }
       } catch (_) { /* not admin */ }
@@ -1536,14 +1588,14 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
     }
     authBusy = true;
     try {
-      showMsg("Sending login link…", "ok");
+      showMsg("Sending your Quantrex Academy sign-in link…", "ok");
       const url = location.origin + "/login.html" + (location.search || "");
       await auth.sendSignInLinkToEmail(email, {
         url: url,
         handleCodeInApp: true
       });
       try { localStorage.setItem("qx_email_link", email); } catch (_) {}
-      showMsg("Login link sent to " + email + ". Open it on this device.", "ok");
+      showMsg("Sign-in link sent to " + email + ". Open it on this phone or computer to continue to Quantrex Academy.", "ok");
     } catch (e) {
       showMsg(QuantrexStudentAuth.friendly(e));
     } finally {
@@ -1560,7 +1612,7 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
       if (!email) return showMsg("Email is required to finish login.");
       authBusy = true;
       try {
-        showMsg("Signing in with email link…", "ok");
+        showMsg("Signing you in to Quantrex Academy…", "ok");
         const cred = await auth.signInWithEmailLink(email, location.href);
         try { localStorage.removeItem("qx_email_link"); } catch (_) {}
         await completeLogin(cred.user, { exam: chosenExam, email: email, provider: "emailLink" });
@@ -1599,7 +1651,7 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
     if (pass !== pass2) return showMsg("Passwords do not match.");
     authBusy = true;
     try {
-      showMsg("Creating account…", "ok");
+      showMsg("Creating your Quantrex Academy account…", "ok");
       const prof = (typeof QxProfile !== "undefined") ? QxProfile.collectForm("reg") : {};
       if (!prof.name || !prof.className || !prof.state || !prof.district) {
         authBusy = false;

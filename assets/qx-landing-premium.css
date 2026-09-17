@@ -1,13 +1,13 @@
 /* Quantrex Academy - Master Premium CSS v3 */
 :root {
-  --primary: #4338CA; /* Deep Violet from Examifly */
-  --primary-hover: #312E81;
-  --text-dark: #1E1B4B;
+  --primary: #0b57d0; /* qxmd166 Quantrex blue */
+  --primary-hover: #0842a0;
+  --text-dark: #0f172a;
   --text-gray: #475569;
   --text-light: #94A3B8;
-  --bg-light: #F5F3FF; /* Soft violet-tinted off-white */
+  --bg-light: #eef4ff; /* Soft blue-tinted */
   --bg-white: #FFFFFF;
-  --border: #E0E7FF;
+  --border: #d3e3fd;
   
   --c-blue: #2563EB;
   --c-green: #059669; /* Forest green inspired by Allen */
@@ -23,8 +23,8 @@
 }
 
 html[data-theme='dark'] {
-  --primary: #3B82F6;
-  --primary-hover: #60A5FA;
+  --primary: #8ab4f8;
+  --primary-hover: #a8c7fa;
   --text-dark: #F8FAFC;
   --text-gray: #94A3B8;
   --text-light: #64748B;
@@ -36,8 +36,9 @@ html[data-theme='dark'] {
   --shadow-md: 0 10px 20px rgba(0,0,0,0.5);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: var(--font); color: var(--text-dark); background: var(--bg-white); line-height: 1.5; overflow-x: hidden; transition: background 0.3s, color 0.3s; }
+/* qxmd166: scoped — avoid global * reset when sheet coexists with app/login */
+.qx-landing-root, .qx-landing-root * { box-sizing: border-box; }
+body.qx-landing-page { font-family: var(--font); color: var(--text-dark); background: var(--bg-white); line-height: 1.5; overflow-x: hidden; transition: background 0.3s, color 0.3s; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
@@ -391,3 +392,50 @@ html[data-theme='light'] .tcf-icon { background: #F3E8FF; }
 @media (max-width: 768px) { .app-showcase-grid { grid-template-columns: 1fr !important; text-align: center; } .app-showcase-content ul { align-items: center; } .exam-logo-strip { gap: 20px !important; } .exam-logo-strip img { height: 35px !important; } } 
   
 .result-fade-container { position: relative; width: 100%; max-width: 600px; height: 600px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); } .result-fade-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; animation: fade5 20s infinite; } .result-fade-container img:nth-child(1) { animation-delay: 0s; } .result-fade-container img:nth-child(2) { animation-delay: 4s; } .result-fade-container img:nth-child(3) { animation-delay: 8s; } .result-fade-container img:nth-child(4) { animation-delay: 12s; } .result-fade-container img:nth-child(5) { animation-delay: 16s; } @keyframes fade5 { 0%, 15% { opacity: 1; } 20%, 95% { opacity: 0; } 100% { opacity: 1; } } @media (max-width: 768px) { .result-fade-container { height: 400px; } }
+
+
+/* qxmd165-landing: dark/light polish */
+html[data-theme="dark"] .badge-red { background: #450a0a; color: #fda4af; border-color: #7f1d1d; }
+html[data-theme="dark"] .badge-green { background: #052e16; color: #6ee7b7; border-color: #14532d; }
+html[data-theme="dark"] .tag { background: #0f172a; border-color: #334155; color: #e2e8f0; }
+html[data-theme="dark"] .hero-title { color: #f8fafc; }
+html[data-theme="light"] .hero-title { color: #0f172a; }
+
+
+/* ========== qxmd166: uniform Quantrex tokens + pro cards/buttons ========== */
+:root {
+  --qx-primary: #0b57d0;
+  --qx-primary-dark: #0842a0;
+  --qx-accent: #1565c0;
+  --qx-radius-card: 12px;
+  --qx-radius-btn: 10px;
+  --qx-radius-pill: 999px;
+}
+.btn, .btn-primary, .btn-outline, .btn-lg {
+  border-radius: var(--qx-radius-btn) !important;
+}
+.feature-card, .tool-card, .exam-card, .teacher-box, .tc-f, .mk-phone, .stat-card {
+  border-radius: var(--qx-radius-card);
+}
+html[data-theme="light"] body { background: #ffffff; color: #0f172a; }
+html[data-theme="dark"] body { background: #0b1120; color: #f8fafc; }
+html[data-theme="dark"] .feature-card,
+html[data-theme="dark"] .tool-card,
+html[data-theme="dark"] .exam-card,
+html[data-theme="dark"] .tc-f {
+  background: #0f172a;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+html[data-theme="light"] .feature-card,
+html[data-theme="light"] .tool-card,
+html[data-theme="light"] .exam-card,
+html[data-theme="light"] .tc-f {
+  background: #ffffff;
+  border-color: #d3e3fd;
+  color: #0f172a;
+}
+.btn-primary {
+  background: var(--primary) !important;
+  box-shadow: 0 4px 14px rgba(11, 87, 208, 0.28) !important;
+}

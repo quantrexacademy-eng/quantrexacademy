@@ -190,9 +190,18 @@ const QuantrexSolution = (() => {
   function formatShortcutLine(text) {
     let t = String(text || "").trim();
     if (!t) return "";
-    t = t.replace(/\s+/g, " ");
+    // Keep line breaks so multi-line shortcuts still render each math island
+    t = t.replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n");
+    try { t = repairSolutionDelimiters(t); } catch (_) { /* */ }
     if (isCleanLatex(t) && !/\$/.test(t)) t = `$${t}$`;
-    if (typeof Mx !== "undefined") return Mx.html(t);
+    // Wrap remaining bare TeX chunks when some $ already present
+    try {
+      if (typeof Mx !== "undefined" && Mx.ensureMathDelimiters) t = Mx.ensureMathDelimiters(t);
+    } catch (_) { /* */ }
+    try {
+      if (typeof MathTextRenderer !== "undefined" && MathTextRenderer.render) return MathTextRenderer.render(t);
+    } catch (_) { /* */ }
+    if (typeof Mx !== "undefined" && Mx.html) return Mx.html(t);
     return esc(t);
   }
 
@@ -536,12 +545,17 @@ const QuantrexSolution = (() => {
     s = s.replace(/(^|[^$A-Za-z\\])([ab])R([ab])(?![A-Za-z])/g, "$1$$$2R$3$");
 
     s = s.replace(/Since\s*,\s*/gi, "Since ");
-    s = s.replace(/,\s*\|/g, ", $|");
-    s = s.replace(/\|\s*,/g, "|$,");
-    s = s.replace(/([,;:])\|/g, "$1 $|");
+    /* qxmd165: never inject $ around | that belongs to \left| / \right| / \lvert / \rvert */
+    s = s.replace(/(^|[^$\\])(?<!\\left)(?<!\\right)(?<!\\l)(?<!\\r),\s*\|(?!\s*(?:right|\\))/g, "$1, $|");
+    s = s.replace(/(^|[^$\\|])\|\s*,(?!\s*\$)/g, (all, pre) => {
+      if (/\\(?:left|right|lvert|rvert)\s*$/.test(pre)) return all;
+      return pre + "|$,";
+    });
 
-    s = s.replace(/(^|[^$])\|([a-zA-Z0-9+\-−=\s\\]{1,40})\|(?!\$)/g, (all, pre, inner) => {
+    // Absolute-value prose |x| only — skip TeX delimiters \left| … \right|
+    s = s.replace(/(^|[^$\\])(?<!\\left)(?<!\\right)(?<!\\lvert)(?<!\\rvert)\|([a-zA-Z0-9+\-−=\s]{1,40})\|(?!\$)/g, (all, pre, inner) => {
       if (/\$/.test(inner)) return all;
+      if (/\\/.test(inner)) return all; // already TeX — leave for delimiter repair
       return pre + "$|" + inner.trim() + "|$";
     });
 
@@ -566,6 +580,94 @@ const QuantrexSolution = (() => {
     s = s.replace(/\s{2,}/g, " ");
     s = s.replace(/ *\n */g, "\n");
     return s.trim();
+  }
+
+  /**
+   * qxmd165: restore balanced $…$ / $$…$$ after stem-echo / prose repair.
+   * Never invents math — only fixes delimiter damage so KaTeX / Mx.html can render.
+   */
+  function repairSolutionDelimiters(html) {
+    let s = String(html || "");
+    if (!s.trim()) return s;
+    if (/class=["'][^"']*katex|<\/?math[\s>]/i.test(s)) return s;
+
+    // Marks-export command fixes when sanitize is available
+    try {
+      if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.repairMarksExportTex) {
+        s = QxMathSanitize.repairMarksExportTex(s);
+      }
+    } catch (_) { /* */ }
+
+    // Undo pipe-$ damage: \left$| → \left| , \right|$ → \right|
+    s = s.replace(/(\\left)\s*\$\s*\|/g, "$1|");
+    s = s.replace(/\|\s*\$\s*(\\right)/g, "|$1");
+    s = s.replace(/(\\right)\s*\$\s*\|/g, "$1|");
+    s = s.replace(/(\\left)\s*\$\s*([([.|])/g, "$1$2");
+    s = s.replace(/(\\right)\s*\$\s*([)\].|])/g, "$1$2");
+
+    // Trailing display junk: $$\s*\\ → $$  or  $\dfrac{1}{2}$$\s*\\ → $\dfrac{1}{2}$
+    s = s.replace(/\$\$\s*\\\\\s*/g, "$$ ");
+    s = s.replace(/\$\$\s*\\(?![a-zA-Z])/g, "$$ ");
+    // Half-open: … $\dfrac{1}{2}$$ → … $\dfrac{1}{2}$
+    s = s.replace(/\$([^$\n]{1,200})\$\$/g, "$$$1$");
+    // Orphan leading $$ before inline content
+    s = s.replace(/\$\$\s*(?=\\[a-zA-Z]|[A-Za-z0-9])/g, "$");
+    // Collapse $$$+
+    s = s.replace(/\${3,}/g, "$$");
+    s = s.replace(/\$\s+\$/g, " ");
+
+    // Wrap bare TeX lines so KaTeX sees them; also close half-open bare+$\dfrac$ mixes
+    function wrapBareLine(line) {
+      let L = String(line || "").trim();
+      if (!L) return line;
+      if (/class=["'][^"']*katex|<math[\s>]/i.test(L)) return line;
+      // Bare operators: sin 2x → \sin 2x inside upcoming math
+      L = L.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc|log|ln)(?=\s*[0-9A-Za-z(_{])/g,
+        (_, pre, fn) => pre + "\\" + fn);
+      // Half-open: bare TeX … = ± $\dfrac{1}{2}$ → one island
+      if (/\\[a-zA-Z]/.test(L) && /\$/.test(L)) {
+        const dollars = (L.match(/\$/g) || []).length;
+        if (dollars % 2 === 1) {
+          // odd $ — prepend opener if starts with TeX
+          if (/^\\|^[|=]/.test(L) || /\\left|\\frac|\\dfrac/.test(L)) L = "$" + L.replace(/\$/g, "");
+          else L = L + "$";
+        } else if (!/^\$/.test(L) && /\\(?:left|frac|dfrac|sqrt|sin|cos|log)/.test(L)) {
+          // bare prefix then closed $…$ — merge into one island
+          L = "$" + L.replace(/\$/g, "") + "$";
+        }
+        return L;
+      }
+      if (/\$|\\\(|\\\[/.test(L)) return L;
+      if (!/\\[a-zA-Z]/.test(L) && !/\\left|\\right|\\frac|\\dfrac|\\sqrt/.test(L)) return L;
+      const plain = L.replace(/\\[a-zA-Z]+\s*\{?[^{}]*\}?/g, " ").replace(/[{}^_|&]/g, " ").replace(/\s+/g, " ").trim();
+      if (plain.length > 48 && /[A-Za-z]{4,}/.test(plain) && !/^(?:sin|cos|tan|log|ln|sec|csc|cot)\b/i.test(plain)) {
+        L = L.replace(
+          /((?:\\(?:left|right|frac|dfrac|tfrac|sqrt|log|ln|sin|cos|tan|pm|mp|cdot|times|le|ge|neq|in|cup|cap|mathbb|mathrm|text)|[=+\-−]|\\[a-zA-Z]+)[^<\n]{0,160})/g,
+          (m) => {
+            if (/\$/.test(m)) return m;
+            if (!/\\[a-zA-Z]|[=]/.test(m)) return m;
+            return "$" + m.trim() + "$";
+          }
+        );
+        return L;
+      }
+      return "$" + L.trim() + "$";
+    }
+
+    // Process by <br>/newline segments outside existing math (simple split)
+    const parts = s.split(/(<br\s*\/?\s*>|\n+)/i);
+    for (let i = 0; i < parts.length; i++) {
+      if (/^<br/i.test(parts[i]) || /^\n+$/.test(parts[i])) continue;
+      parts[i] = wrapBareLine(parts[i]);
+    }
+    s = parts.join("");
+
+    // Final: ensureMathDelimiters if Mx exposes it
+    try {
+      if (typeof Mx !== "undefined" && Mx.ensureMathDelimiters) s = Mx.ensureMathDelimiters(s);
+    } catch (_) { /* */ }
+
+    return s;
   }
 
   /** Official solution as short clean paragraphs. No step numbers. Never invents text. */
@@ -809,10 +911,9 @@ const QuantrexSolution = (() => {
       s = s.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)+/i, "");
       if (!s.trim()) break;
 
-      if (/^(?:<(?:p|div|span|strong|b)[^>]*>\s*)*(?:⇒|=>|⟹|hence|therefore|thus|so\b|clearly|we\s+(?:have|get|obtain)|option\s*[a-d]|correct\s+option|answer\s*[:\-])/i.test(s)) {
-        const end0 = firstBlockEnd(s);
-        const bp0 = barePlain(stemComparePlain(s.slice(0, end0)));
-        if (!inStem(bp0)) break;
+      /* qxmd165: work / implication blocks are NEVER stem echoes — stop even if tokens overlap stem */
+      if (/^(?:<(?:p|div|span|strong|b)[^>]*>\s*)*(?:\$\s*)?(?:⇒|=>|⟹|\\Rightarrow|\\implies|hence|therefore|thus|so\b|clearly|we\s+(?:have|get|obtain)|option\s*[a-d]|correct\s+option|answer\s*[:\-])/i.test(s)) {
+        break;
       }
 
       const end = firstBlockEnd(s);
@@ -824,14 +925,18 @@ const QuantrexSolution = (() => {
       s = s.slice(end);
       if (s === before) break;
     }
-    // qxmd163/164: drop a leading lone math island that restates the stem equation
+    // qxmd163/165: drop a leading lone math island that restates the stem equation
+    // Never strip islands that are work steps (⇒ / => / \Rightarrow)
     s = s.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)*/i, "");
     const lone = /^(\$\$[\s\S]+?\$\$|\$[^$]+\$)/.exec(s);
     if (lone && lone[0] && stem.length >= 6) {
-      const bp = barePlain(stemComparePlain(lone[0]));
-      if (bp && inStem(bp)) {
-        s = s.slice(lone[0].length);
-        s = s.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>|<\/(?:p|div|span)>)+/i, "");
+      const loneRaw = lone[0];
+      if (!/(?:⇒|=>|⟹|\\Rightarrow|\\implies)/.test(loneRaw)) {
+        const bp = barePlain(stemComparePlain(loneRaw));
+        if (bp && inStem(bp)) {
+          s = s.slice(loneRaw.length);
+          s = s.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>|<\/(?:p|div|span)>)+/i, "");
+        }
       }
     }
     return repairLeadingOrphanDollar(s);
@@ -1056,6 +1161,7 @@ const QuantrexSolution = (() => {
       try { raw = QxProof.proofreadHtml(raw); } catch (_) { /* */ }
     }
     raw = repairSolutionProse(raw);
+    try { raw = repairSolutionDelimiters(raw); } catch (_) { /* */ }
     raw = polishScientificSymbols(raw);
     if (typeof Mx !== "undefined" && Mx.upgradePlainMathNotation) {
       try { raw = Mx.upgradePlainMathNotation(raw); } catch (_) { /* */ }
@@ -1212,7 +1318,7 @@ const QuantrexSolution = (() => {
 
   return {
     renderBlock, renderInline, renderShortcutPanel, polishHtml, extractShortcut, subjectTheme, formatBody,
-    repairSolutionProse,
+    repairSolutionProse, repairSolutionDelimiters,
     isPlaceholderSolution,
     cleanSolutionFigHtml, handleSolImgErr, polishScientificSymbols, extractEasyExplain, renderEasyExplain,
     solutionLooksRelevant, isMatchQuestion, structureSolutionBody, formatShortcutLine,

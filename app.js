@@ -2482,6 +2482,36 @@ function qxPracticeWireExtra(scope, ctx, qid) {
   }
 }
 
+/** qxmd165: hide practice stem whenever Solution is open (Allen + legacy + Medical/Engineering). */
+function qxHidePracticeStem(scope) {
+  try {
+    const root = scope || document.getElementById("app-main") || document;
+    const hosts = root.querySelectorAll(
+      ".mtk-q-text, .qx-prac-q, .mq-stem, .qx-q-text-only, .qx-question-body, #egQArea"
+    );
+    hosts.forEach(function (el) {
+      if (!el) return;
+      if (el.closest("#qaSolReveal, #qaResult, .qx-sol-card, .eg-sol-panel, .result-box, #qaOpts, .mtk-options, .eg-opts")) return;
+      try { el.innerHTML = ""; } catch (_) { /* */ }
+      el.classList.add("eg-stem-sol-hidden", "qx-stem-sol-hidden");
+      el.setAttribute("hidden", "");
+      el.setAttribute("aria-hidden", "true");
+      try {
+        el.style.setProperty("display", "none", "important");
+        el.style.setProperty("visibility", "hidden", "important");
+        el.style.setProperty("opacity", "0", "important");
+        el.style.setProperty("height", "0", "important");
+        el.style.setProperty("max-height", "0", "important");
+        el.style.setProperty("overflow", "hidden", "important");
+        el.style.setProperty("margin", "0", "important");
+        el.style.setProperty("padding", "0", "important");
+      } catch (_) { /* */ }
+    });
+    const wrap = root.querySelector(".mtk-test-root, .allen-practice, .qx-practice-page, .eg-test-root");
+    if (wrap) wrap.classList.add("eg-sol-showing", "qx-sol-showing");
+  } catch (_) { /* */ }
+}
+
 function qxRevealSolution(qid) {
   const q = getQ(qid);
   if (!q || !qxHasSolution(q)) {
@@ -2494,8 +2524,14 @@ function qxRevealSolution(qid) {
   const el = document.getElementById("qaSolReveal");
   if (el) {
     el.innerHTML = qxSolutionBlockHtml(q);
-    if (typeof Mx !== "undefined") Mx.afterRender(el);
+    if (typeof Mx !== "undefined") {
+      try {
+        if (Mx.afterRender) Mx.afterRender(el);
+        else if (Mx.afterRenderLight) Mx.afterRenderLight(el);
+      } catch (_) { /* */ }
+    }
   }
+  try { qxHidePracticeStem(document.getElementById("app-main")); } catch (_) { /* */ }
   const btn = document.getElementById("qxViewSolBtn");
   if (btn) btn.remove();
 }
@@ -2544,6 +2580,7 @@ async function answerQ(qid, response) {
     res.innerHTML = qxPracticeResultHtml(q, response);
     if (typeof Mx !== "undefined") Mx.afterRender(res);
   }
+  try { qxHidePracticeStem(main); } catch (_) { /* */ }
   const sub = main.querySelector("#qxPracSubmit");
   if (sub) sub.disabled = true;
   // Practice stays clean — no auto Jovi panel / inline card (user opens FAB only)

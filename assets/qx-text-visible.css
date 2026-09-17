@@ -763,3 +763,170 @@ html[data-theme="light"] .eg-test-root[data-test-theme="light"].eg-sol-showing .
   clip: rect(0, 0, 0, 0) !important;
   pointer-events: none !important;
 }
+
+
+/* ========== qxmd165: stem hide sitewide (Practice + Allen + Examgoal) dark/light ========== */
+html .eg-test-root.eg-sol-showing .eg-q-stem,
+html .eg-test-root.eg-sol-showing #egQArea,
+html .eg-test-root.eg-sol-showing .mtk-q-text.eg-stem-sol-hidden,
+html .mtk-test-root.eg-sol-showing .mtk-q-text,
+html .mtk-test-root.eg-sol-showing .mq-stem,
+html .mtk-test-root.eg-sol-showing .qx-prac-q,
+html .mtk-test-root.qx-sol-showing .mtk-q-text,
+html .allen-practice.eg-sol-showing .mtk-q-text,
+html .allen-practice.qx-sol-showing .mtk-q-text,
+html .qx-practice-page.eg-sol-showing .qx-prac-q,
+html .qx-practice-page.qx-sol-showing .qx-prac-q,
+html .eg-stem-sol-hidden,
+html .qx-stem-sol-hidden,
+html[data-theme="dark"] .eg-test-root.eg-sol-showing .eg-q-stem,
+html[data-theme="dark"] .eg-test-root.eg-sol-showing #egQArea,
+html[data-theme="dark"] .mtk-test-root.eg-sol-showing .mtk-q-text,
+html[data-theme="dark"] .allen-practice.eg-sol-showing .mtk-q-text,
+html[data-theme="light"] .eg-test-root.eg-sol-showing .eg-q-stem,
+html[data-theme="light"] .eg-test-root.eg-sol-showing #egQArea,
+html[data-theme="light"] .mtk-test-root.eg-sol-showing .mtk-q-text,
+html[data-theme="light"] .allen-practice.eg-sol-showing .mtk-q-text,
+html .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem,
+html .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem,
+html .mtk-test-root[data-test-theme="dark"].eg-sol-showing .mtk-q-text,
+html .mtk-test-root[data-test-theme="light"].eg-sol-showing .mtk-q-text {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  clip: rect(0, 0, 0, 0) !important;
+  position: absolute !important;
+  left: -9999px !important;
+  pointer-events: none !important;
+  color: transparent !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
+/* Solution math readable in both themes */
+html[data-theme="dark"] .eg-sol-panel,
+html[data-theme="dark"] .qx-sol-card,
+html[data-theme="dark"] .qx-sol-reveal-box,
+html[data-theme="dark"] .mk-sol-row .qx-sol-card,
+html .eg-test-root[data-test-theme="dark"] .eg-sol-panel,
+html .eg-test-root[data-test-theme="dark"] .qx-sol-card,
+html .mtk-test-root[data-test-theme="dark"] .qx-sol-card {
+  color: #e2e8f0;
+}
+html[data-theme="dark"] .eg-sol-panel .katex,
+html[data-theme="dark"] .qx-sol-card .katex,
+html[data-theme="dark"] .qx-sol-reveal-box .katex,
+html .eg-test-root[data-test-theme="dark"] .eg-sol .katex,
+html .mtk-test-root[data-test-theme="dark"] .qx-sol-card .katex {
+  color: #f1f5f9 !important;
+}
+html[data-theme="light"] .eg-sol-panel,
+html[data-theme="light"] .qx-sol-card,
+html[data-theme="light"] .qx-sol-reveal-box,
+html .eg-test-root[data-test-theme="light"] .eg-sol-panel,
+html .mtk-test-root[data-test-theme="light"] .qx-sol-card {
+  color: #0f172a;
+}
+html[data-theme="light"] .eg-sol-panel .katex,
+html[data-theme="light"] .qx-sol-card .katex,
+html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
+  color: #0f172a !important;
+}
+
+
+/* ========== qxmd166: question text + images clear (dark + light, Med+Eng) ========== */
+/* Stem / options / katex — high contrast both themes */
+html[data-theme="light"] .eg-test-root .eg-q-stem,
+html[data-theme="light"] .eg-test-root .mtk-q-text,
+html[data-theme="light"] .eg-test-root .mtk-opt-text,
+html[data-theme="light"] .eg-test-root .eg-opt,
+html[data-theme="light"] .mtk-test-root .mtk-q-text,
+html[data-theme="light"] .mtk-test-root .mtk-opt-text,
+html[data-theme="light"] .allen-practice .mtk-q-text,
+html[data-theme="light"] .qx-prac-q,
+html[data-theme="light"] .qx-prac-opt-text,
+html .eg-test-root[data-test-theme="light"] .eg-q-stem,
+html .eg-test-root[data-test-theme="light"] .mtk-q-text,
+html .eg-test-root[data-test-theme="light"] .mtk-opt-text,
+html .mtk-test-root[data-test-theme="light"] .mtk-q-text {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="dark"] .eg-test-root .eg-q-stem,
+html[data-theme="dark"] .eg-test-root .mtk-q-text,
+html[data-theme="dark"] .eg-test-root .mtk-opt-text,
+html[data-theme="dark"] .eg-test-root .eg-opt,
+html[data-theme="dark"] .mtk-test-root .mtk-q-text,
+html[data-theme="dark"] .allen-practice .mtk-q-text,
+html[data-theme="dark"] .qx-prac-q,
+html[data-theme="dark"] .qx-prac-opt-text,
+html .eg-test-root[data-test-theme="dark"] .eg-q-stem,
+html .eg-test-root[data-test-theme="dark"] .mtk-q-text,
+html .eg-test-root[data-test-theme="dark"] .mtk-opt-text,
+html .mtk-test-root[data-test-theme="dark"] .mtk-q-text {
+  color: #f1f5f9 !important;
+  -webkit-text-fill-color: #f1f5f9 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Figure plates: white paper, NEVER invert/dim/crush (stem + options + sol) */
+html[data-theme="dark"] .eg-test-root .eg-q-stem img,
+html[data-theme="dark"] .eg-test-root #egQArea img,
+html[data-theme="dark"] .eg-test-root .mtk-opt-text img,
+html[data-theme="dark"] .eg-test-root .eg-opt img,
+html[data-theme="dark"] .eg-test-root .eg-sol img,
+html[data-theme="dark"] .eg-test-root .qx-sol-card img,
+html[data-theme="dark"] .mtk-test-root .mtk-q-text img,
+html[data-theme="dark"] .mtk-test-root .mtk-opt-text img,
+html[data-theme="dark"] .mtk-test-root .qx-sol-card img,
+html[data-theme="dark"] .allen-practice .mtk-q-text img,
+html[data-theme="dark"] .allen-practice .mtk-opt-text img,
+html[data-theme="dark"] .qx-prac-q img,
+html[data-theme="dark"] .qx-prac-opt-text img,
+html[data-theme="light"] .eg-test-root .eg-q-stem img,
+html[data-theme="light"] .eg-test-root #egQArea img,
+html[data-theme="light"] .eg-test-root .mtk-opt-text img,
+html[data-theme="light"] .eg-test-root .eg-opt img,
+html[data-theme="light"] .eg-test-root .eg-sol img,
+html[data-theme="light"] .mtk-test-root .mtk-q-text img,
+html[data-theme="light"] .mtk-test-root .mtk-opt-text img,
+html[data-theme="light"] .allen-practice .mtk-q-text img,
+html[data-theme="light"] .qx-prac-q img,
+html .eg-test-root[data-test-theme="dark"] img.qx-pool-fig,
+html .eg-test-root[data-test-theme="dark"] .qx-fig img,
+html .eg-test-root[data-test-theme="dark"] .qx-opt-fig-img,
+html .eg-test-root[data-test-theme="light"] img.qx-pool-fig,
+html .mtk-test-root[data-test-theme="dark"] .mtk-q-text img,
+html .mtk-test-root[data-test-theme="dark"] .mtk-opt-text img {
+  background: #ffffff !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  mix-blend-mode: normal !important;
+  border-radius: 8px;
+}
+
+/* Stem-hide must still win (do not regress qxmd165) */
+html .eg-test-root.eg-sol-showing .eg-q-stem,
+html .eg-test-root.eg-sol-showing #egQArea,
+html .eg-test-root.eg-sol-showing .eg-q-stem img,
+html .eg-test-root.eg-sol-showing #egQArea img,
+html .mtk-test-root.eg-sol-showing .mtk-q-text,
+html .allen-practice.eg-sol-showing .mtk-q-text,
+html .eg-stem-sol-hidden,
+html .qx-stem-sol-hidden {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}

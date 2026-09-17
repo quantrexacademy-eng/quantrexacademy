@@ -81,6 +81,46 @@
     };
   }
 
+  /** qxmd165: palette layout preference — side | strip | both (default both) */
+  var EG_PALETTE_PREF_KEY = "qx_eg_palette_mode";
+  function getPalettePref() {
+    try {
+      if (typeof QxSettings !== "undefined" && QxSettings.getPaletteMode) {
+        return QxSettings.getPaletteMode();
+      }
+    } catch (_) { /* */ }
+    try {
+      var v = localStorage.getItem(EG_PALETTE_PREF_KEY);
+      if (v === "side" || v === "strip" || v === "both") return v;
+    } catch (_) { /* */ }
+    return "both";
+  }
+  function setPalettePref(mode) {
+    var m = mode === "side" || mode === "strip" || mode === "both" ? mode : "both";
+    try { localStorage.setItem(EG_PALETTE_PREF_KEY, m); } catch (_) { /* */ }
+    try {
+      if (typeof QxSettings !== "undefined" && QxSettings.setPaletteMode) QxSettings.setPaletteMode(m);
+    } catch (_) { /* */ }
+    return m;
+  }
+  /** Apply preference when user opens Palette (does not force-close the other independently). */
+  function applyPalettePrefOpen(session) {
+    var pref = getPalettePref();
+    if (pref === "side") {
+      session._egSideOpen = true;
+      session._egSideCollapsed = false;
+      session._egSideUserOpened = true;
+    } else if (pref === "strip") {
+      session._egStripOpen = true;
+      session._egSideUserOpened = true;
+    } else {
+      session._egStripOpen = true;
+      session._egSideOpen = true;
+      session._egSideCollapsed = false;
+      session._egSideUserOpened = true;
+    }
+  }
+
   /** Plain stem snippet for Questions Preview rows (ExamGoal-like) */
   function stemPreviewText(q) {
     if (!q) return "Question";
@@ -440,11 +480,16 @@
 
     const timer = '<span class="eg-timer" id="egTimer">' +
       formatClock(session.remainingSec != null ? session.remainingSec : 0) + "</span>";
+    const palPref = getPalettePref();
     const fmt = fmtOpen
       ? '<div class="eg-fmt-pop" id="egFmtPop"><h5>Text size</h5><div class="eg-fmt-row">' +
         '<button type="button" data-eg-scale="small"' + (fontScale === "small" ? ' class="on"' : "") + ">A−</button>" +
         '<button type="button" data-eg-scale="medium"' + (fontScale === "medium" ? ' class="on"' : "") + ">A</button>" +
         '<button type="button" data-eg-scale="large"' + (fontScale === "large" ? ' class="on"' : "") + ">A+</button>" +
+        '</div><h5 class="eg-fmt-pal-h">Palette</h5><div class="eg-fmt-row eg-fmt-pal" role="group" aria-label="Palette layout">' +
+        '<button type="button" data-eg-pal="side"' + (palPref === "side" ? ' class="on"' : "") + ' title="Right sidebar">Right</button>' +
+        '<button type="button" data-eg-pal="strip"' + (palPref === "strip" ? ' class="on"' : "") + ' title="Top question bar">Top</button>' +
+        '<button type="button" data-eg-pal="both"' + (palPref === "both" ? ' class="on"' : "") + ' title="Right sidebar and top bar">Both</button>' +
         "</div></div>"
       : "";
 
@@ -802,6 +847,8 @@
     const qArea = root.querySelector("#egQArea");
     if (qArea) {
       try {
+        /* qxmd165: empty stem text while Solution open — keep #egQArea node */
+        try { qArea.innerHTML = ""; } catch (_) { /* */ }
         qArea.classList.add("eg-stem-sol-hidden");
         qArea.setAttribute("hidden", "");
         qArea.setAttribute("aria-hidden", "true");
@@ -864,8 +911,10 @@
     try { applyOptDecor(root, session, q, session.idx); } catch (_) { /* */ }
     try {
       if (panel && typeof Mx !== "undefined") {
-        if (Mx.afterRender) Mx.afterRender(panel);
-        else if (Mx.afterRenderLight) Mx.afterRenderLight(panel);
+        const solEl = panel.querySelector("#egSol") || panel;
+        if (Mx.afterRender) Mx.afterRender(solEl);
+        else if (Mx.afterRenderLight) Mx.afterRenderLight(solEl);
+        else if (Mx.typeset) Mx.typeset(solEl);
       }
     } catch (_) { /* */ }
     if (panel && panel.scrollIntoView) {
@@ -1281,11 +1330,37 @@
       if (window._egMenuToggleLock && Date.now() - window._egMenuToggleLock < 200) return;
       window._egMenuToggleLock = Date.now();
       const cf = chromeFlags(session);
+      const pref = getPalettePref();
+      /* Palette button: toggle according to preference; ✕ on strip/side still independent */
+      if (pref === "strip") {
+        if (cf.stripOpen) collapseEgStripOnly();
+        else {
+          applyPalettePrefOpen(session);
+          session._egSideIgnoreScrimUntil = Date.now() + 280;
+          syncCycleBtn();
+        }
+        return;
+      }
+      if (pref === "both") {
+        if (cf.sideOpen && cf.stripOpen) {
+          collapseEgSideOnly(); /* close side first; strip stays until its ✕ / All Q */
+        } else if (cf.sideOpen || cf.stripOpen) {
+          /* one open — open the missing one to honour Both, or close side if only side */
+          if (cf.sideOpen && !cf.stripOpen) collapseEgSideOnly();
+          else applyPalettePrefOpen(session);
+          session._egSideIgnoreScrimUntil = Date.now() + 280;
+          syncCycleBtn();
+        } else {
+          applyPalettePrefOpen(session);
+          session._egSideIgnoreScrimUntil = Date.now() + 280;
+          syncCycleBtn();
+        }
+        return;
+      }
+      /* pref === side (default path) */
       if (cf.sideOpen) collapseEgSideOnly();
       else {
-        session._egSideOpen = true; /* qxeg6/7: Palette/Menu opens #egSide */
-        session._egSideCollapsed = false;
-        session._egSideUserOpened = true;
+        applyPalettePrefOpen(session);
         session._egSideIgnoreScrimUntil = Date.now() + 280;
         syncCycleBtn(); /* CSS class only — instant */
       }
@@ -1455,6 +1530,34 @@
       b.onclick = function (e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
         if (typeof setTestFontScale === "function") setTestFontScale(b.getAttribute("data-eg-scale"));
+      };
+    });
+    root.querySelectorAll("[data-eg-pal]").forEach(function (b) {
+      b.onclick = function (e) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        var mode = b.getAttribute("data-eg-pal");
+        setPalettePref(mode);
+        root.querySelectorAll("[data-eg-pal]").forEach(function (x) {
+          x.classList.toggle("on", x.getAttribute("data-eg-pal") === mode);
+        });
+        /* Apply immediately without full refresh */
+        applyPalettePrefOpen(session);
+        if (mode === "side") {
+          session._egStripOpen = false;
+          session._egSideOpen = true;
+        } else if (mode === "strip") {
+          session._egStripOpen = true;
+          session._egSideOpen = false;
+        } else {
+          session._egStripOpen = true;
+          session._egSideOpen = true;
+        }
+        session._egSideCollapsed = !session._egSideOpen;
+        session._egSideUserOpened = !!(session._egSideOpen || session._egStripOpen);
+        syncCycleBtn();
+        if (typeof showToast === "function") {
+          showToast(mode === "side" ? "Palette: Right sidebar" : mode === "strip" ? "Palette: Top bar" : "Palette: Both");
+        }
       };
     });
     const menu = root.querySelector("#egMenuBtn");
@@ -1800,6 +1903,9 @@
     revealPracticeSolution: revealPracticeSolution,
     wantShowSol: wantShowSol,
     egCheckedAt: egCheckedAt,
-    solutionHtml: solutionHtml
+    solutionHtml: solutionHtml,
+    getPalettePref: getPalettePref,
+    setPalettePref: setPalettePref,
+    applyPalettePrefOpen: applyPalettePrefOpen
   };
 })(window);

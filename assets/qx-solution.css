@@ -1270,3 +1270,28 @@ html[data-theme="dark"] .qx-sol-card-h,
   border-bottom-color: rgba(148, 163, 184, 0.25);
   color: #e2e8f0 !important;
 }
+
+
+/* qxmd165-sol-theme: solution contrast dark + light */
+html[data-theme="dark"] .qx-sol-card,
+html[data-theme="dark"] .qx-sol-reveal-box {
+  background: #0f172a;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+html[data-theme="dark"] .qx-sol-ans {
+  background: #052e1a;
+  border-color: #166534;
+  color: #bbf7d0;
+}
+html[data-theme="dark"] .qx-sol-ans-lab { color: #86efac; }
+html[data-theme="dark"] .qx-sol-shortcut-panel {
+  background: #1e293b;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+html[data-theme="light"] .qx-sol-card,
+html[data-theme="light"] .qx-sol-reveal-box {
+  background: #fff;
+  color: #0f172a;
+}

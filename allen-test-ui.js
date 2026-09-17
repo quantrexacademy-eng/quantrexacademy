@@ -606,129 +606,271 @@ const AllenTestUI = (() => {
     </div>`;
   }
 
+  function isQxAppShell() {
+    try {
+      if (typeof window === "undefined") return false;
+      // Official Android TWA / installed PWA
+      if (window.matchMedia && (
+        window.matchMedia("(display-mode: standalone)").matches ||
+        window.matchMedia("(display-mode: fullscreen)").matches ||
+        window.matchMedia("(display-mode: minimal-ui)").matches
+      )) return true;
+      if (navigator.standalone) return true; // iOS Add to Home
+      var ref = String(document.referrer || "");
+      if (ref.indexOf("android-app://") === 0) return true;
+      if (/\bapp=1\b/.test(String(location.search || ""))) return true;
+      try { if (localStorage.getItem("qx_force_app_ui") === "1") return true; } catch (_) {}
+      // Phone WebView / narrow Android Chrome used as the Play app shell
+      var ua = String(navigator.userAgent || "");
+      var narrow = window.matchMedia && window.matchMedia("(max-width: 900px)").matches;
+      if (narrow && /Android|iPhone|iPad|Mobile/i.test(ua)) return true;
+    } catch (_) { /* */ }
+    return false;
+  }
+
   function practiceHtml(q, ctx, parts) {
     try {
       if (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.ensureCss) ExamgoalTestUI.ensureCss();
     } catch (_) { /* */ }
-    const pc = ctx || { ids: [], idx: 0, done: {}, selected: {} };
-    const pos = pc.idx + 1;
-    const total = pc.ids.length;
-    const done = !!pc.done[q.id];
-    const sel = pc.selected[q.id];
-    const subj = (q.subject || "").toLowerCase();
-    let secCls = "";
-    if (subj.includes("math")) secCls = "mtk-sec-math";
-    else if (subj.includes("phys")) secCls = "mtk-sec-phys";
-    else if (subj.includes("chem")) secCls = "mtk-sec-chem";
-
-    // Sync practice shell with app theme (dark app → dark practice; light → light)
+    const pc = ctx || window._qxPracticeCtx || { ids: [], idx: 0, done: {}, selected: {}, showAnswer: false };
+    const partsSafe = parts || {};
+    const total = (pc.ids && pc.ids.length) || 1;
+    const pos = (pc.idx || 0) + 1;
+    const done = !!(pc.done && pc.done[q.id]);
+    const incomplete = !!partsSafe.incomplete;
+    const canSubmit = !!partsSafe.canSubmit;
+    const bmOn = (typeof QuantrexBookmarks !== "undefined" && QuantrexBookmarks.isBookmarked)
+      ? QuantrexBookmarks.isBookmarked(q.id)
+      : (typeof isBookmarked === "function" && isBookmarked(q.id));
+    const qidAttr = typeof qxJsId === "function"
+      ? qxJsId(q.id)
+      : (typeof q.id === "number" ? q.id : JSON.stringify(String(q.id)));
+    const esc = (s) => String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    const chapter = (typeof QuantrexStrip !== "undefined" && QuantrexStrip.humanChapter)
+      ? (QuantrexStrip.humanChapter(q) || "")
+      : (!/^[a-f0-9]{24}$/i.test(String(q.chapter || "")) ? (q.chapter || "") : "");
+    const subject = (typeof QuantrexStrip !== "undefined" && QuantrexStrip.humanSubject)
+      ? (QuantrexStrip.humanSubject(q) || "")
+      : (!/^[a-f0-9]{24}$/i.test(String(q.subject || "")) ? (q.subject || "") : "");
+    const exam = (q.exam || q.examName || "JEE Main").toString().replace(/<[^>]+>/g, " ").trim() || "JEE Main";
+    const crumb = esc(exam) + (chapter ? (" &gt; " + esc(chapter)) : (subject ? (" &gt; " + esc(subject)) : ""));
+    let paperText = (q.paper || q.examName || q.source || q.shift || "").toString().trim();
+    if (!paperText) paperText = subject ? (subject + (chapter ? " · " + chapter : "")) : "Quantrex Practice";
+    paperText = paperText.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    const fontScale = typeof getTestFontScale === "function" ? getTestFontScale() : "medium";
+    const bookCls = (q && (q._book || q._bookId)) ? " qx-book-q" : "";
     const appTheme = (typeof document !== "undefined"
       && document.documentElement.getAttribute("data-theme") === "dark")
       ? "dark" : "light";
-
-    // Same default + saved scale as Test Series (medium unless user changed A−/A+)
-    const fontScale = (typeof getTestFontScale === "function" ? getTestFontScale() : "medium");
-    const bmOn = typeof QuantrexBookmarks !== "undefined" && QuantrexBookmarks.isBookmarked(q.id);
-    const qidAttr = typeof q.id === "number" ? q.id : `'${String(q.id).replace(/'/g, "\\'")}'`;
-    const BM_SVG = `<svg class="qx-bm-svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 3.5h12a1.5 1.5 0 0 1 1.5 1.5v15.2a.9.9 0 0 1-1.4.75L12 16.6l-6.1 4.35A.9.9 0 0 1 4.5 20.2V5A1.5 1.5 0 0 1 6 3.5z" fill="currentColor"/></svg>`;
-    const FOLDER_SVG = `<svg class="qx-bm-svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M3.5 7.5A2 2 0 0 1 5.5 5.5h3.1l1.4 1.6h8.5a2 2 0 0 1 2 2v8.4a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2v-10z" fill="currentColor"/></svg>`;
-
-    const bookCls = (q && (q._book || q._bookId)) ? " qx-book-q" : "";
     const sizeOn = (s) => (fontScale === s ? " on" : "");
-    const zoomPct = (typeof getTestZoom === "function"
-      ? Math.round(getTestZoom() * 100)
-      : 100) + "%";
-    const themeLbl = appTheme === "dark" ? "Light" : "Dark";
-    return `<div class="mtk-test-root allen-cbt allen-practice qx-font-host${bookCls}" data-test-theme="${appTheme}" data-font-scale="${fontScale}">
-      <header class="mtk-header">
-        <div class="mtk-header-left">
-          <button type="button" class="mtk-close-btn" id="qxPracBackBtn" title="Back" aria-label="Back">&larr;</button>
-          <div class="mtk-brand allen-brand">${LOGO_SVG}<span class="mtk-brand-text">${BRAND_NAME} · Practice</span></div>
-        </div>
-        <div class="mtk-prac-progress">Q${pos} / ${total}</div>
-        <div class="mtk-header-tools qx-prac-tools eg-top-tools">
-          <button type="button" class="eg-ico star ${bmOn ? "on" : ""}" onclick="typeof toggleBm==='function'&&toggleBm(${qidAttr})" title="${bmOn ? "Remove bookmark" : "Bookmark question"}" aria-label="Bookmark" aria-pressed="${bmOn ? "true" : "false"}">${bmOn
-            ? '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 18.77 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>'
-            : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 18.77 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>'}</button>
-          <button type="button" class="eg-ico" onclick="typeof toggleBmWithGroup==='function'&&toggleBmWithGroup(${qidAttr})" title="Save to notebook group" aria-label="Save to group"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
-          <button type="button" class="eg-ico warn" onclick="typeof openQuestionReport==='function'&&openQuestionReport(${qidAttr})" title="Report Question" aria-label="Report">!</button>
-          <button type="button" class="eg-ico mtk-theme-btn qx-prac-theme-btn${appTheme === "light" ? " eg-moon" : ""}" id="pracThemeToggle" title="Toggle light / dark mode" aria-label="Toggle theme">${appTheme === "dark"
-            ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>'
-            : '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'}</button>
-          <div class="qx-prac-view-wrap">
-            <button type="button" class="eg-ico qx-prac-view-btn" id="pracViewMenuBtn" title="Text size and zoom" aria-expanded="false" aria-controls="pracViewPanel" aria-label="Text size">Aa</button>
-            <div class="qx-prac-view-panel" id="pracViewPanel" hidden>
-              <div class="qx-prac-view-sec">
-                <div class="qx-prac-view-label">Text size</div>
-                <div class="qx-prac-size-row">
-                  <button type="button" class="qx-prac-size-btn${sizeOn("small")}" data-scale="small">Standard</button>
-                  <button type="button" class="qx-prac-size-btn${sizeOn("medium")}" data-scale="medium">Medium</button>
-                  <button type="button" class="qx-prac-size-btn${sizeOn("large")}" data-scale="large">Large</button>
-                  <button type="button" class="qx-prac-size-btn${sizeOn("xlarge")}" data-scale="xlarge">Extra Large</button>
-                </div>
-              </div>
-              <div class="qx-prac-view-sec">
-                <div class="qx-prac-view-label">Zoom (unlimited)</div>
-                <div class="qx-prac-zoom-row">
-                  <button type="button" class="mtk-font-btn" id="pracZoomOut" title="Zoom out">−</button>
-                  <span class="qx-zoom-lbl" id="pracZoomLbl">${zoomPct}</span>
-                  <button type="button" class="mtk-font-btn" id="pracZoomIn" title="Zoom in">+</button>
-                  <button type="button" class="qx-prac-zoom-reset" id="pracZoomReset" title="Reset zoom">100%</button>
-                </div>
-                <p class="qx-prac-view-hint">Zoom 50%–300% · Text size is separate</p>
+    const zoomPct = (typeof getTestZoom === "function" ? Math.round(getTestZoom() * 100) : 100) + "%";
+    const qBody = partsSafe.qBody || "";
+    const opts = partsSafe.opts || "";
+    const optsClass = partsSafe.optsClass || "mtk-options mtk-options-grid";
+    const typeBadge = partsSafe.typeBadge || `<span class="qx-best-mcq">MCQ</span>`;
+    const appShell = isQxAppShell();
+    /* qxmd165: stem gone whenever Show Answer / Check Answer solution is open */
+    const solOpen = !!(pc.showAnswer || (partsSafe.solReveal && String(partsSafe.solReveal).trim())
+      || (partsSafe.resultHtml && /qx-sol-reveal-box|qx-sol-card|sol-body/i.test(String(partsSafe.resultHtml))));
+    const stemHtml = solOpen
+      ? `<div class="mtk-q-text qx-content eg-stem-sol-hidden qx-stem-sol-hidden" id="egQArea" hidden aria-hidden="true" style="display:none!important;visibility:hidden!important;opacity:0!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important"></div>`
+      : null;
+
+    // Website / desktop: keep classic Allen practice (do not force phone chrome)
+    if (!appShell) {
+      const BM_SVG = `<svg class="qx-bm-svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 3.5h12a1.5 1.5 0 0 1 1.5 1.5v15.2a.9.9 0 0 1-1.4.75L12 16.6l-6.1 4.35A.9.9 0 0 1 4.5 20.2V5A1.5 1.5 0 0 1 6 3.5z" fill="currentColor"/></svg>`;
+      const themeLbl = appTheme === "dark" ? "Light" : "Dark";
+      const subj = (subject || "").toLowerCase();
+      let secCls = "";
+      if (subj.includes("math")) secCls = "mtk-sec-math";
+      else if (subj.includes("phys")) secCls = "mtk-sec-phys";
+      else if (subj.includes("chem")) secCls = "mtk-sec-chem";
+      const cells = (pc.ids || []).map((id, i) => {
+        const d = !!(pc.done && pc.done[id]);
+        const cur = i === (pc.idx || 0) ? " cur" : "";
+        const st = d ? "answered" : (i === (pc.idx || 0) ? "not-answered" : "unvisited");
+        return `<button type="button" class="mtk-pal-cell ${st}${cur}" data-prac-idx="${i}">${i + 1}</button>`;
+      }).join("");
+      return `<div class="mtk-test-root allen-cbt allen-practice qx-font-host${bookCls}${solOpen ? " eg-sol-showing qx-sol-showing" : ""}" data-test-theme="${appTheme}" data-font-scale="${fontScale}">
+        <header class="mtk-header">
+          <div class="mtk-header-left">
+            <button type="button" class="mtk-close-btn" id="qxPracBackBtn" title="Back" aria-label="Back">&larr;</button>
+            <div class="mtk-brand allen-brand"><span class="mtk-brand-text">Quantrex Academy · Practice</span></div>
+          </div>
+          <div class="mtk-prac-progress">Q${pos} / ${total}</div>
+          <div class="mtk-header-tools qx-prac-tools">
+            <button type="button" class="qx-bm-btn eg-tool-btn ${bmOn ? "on" : ""}" onclick="typeof toggleBm==='function'&&toggleBm(${qidAttr})" data-tip="Bookmark" title="Bookmark" aria-label="Bookmark">${BM_SVG}<span class="eg-tip">Bookmark</span></button>
+            <button type="button" class="eg-tool-btn" onclick="typeof toggleBmWithGroup==='function'&&toggleBmWithGroup(${qidAttr})" data-tip="Create group" title="Create group" aria-label="Create group">+<span class="eg-tip">Group</span></button>
+            <button type="button" class="qx-report-fab eg-tool-btn" onclick="typeof openQuestionReport==='function'&&openQuestionReport(${qidAttr})" data-tip="Report" title="Report" aria-label="Report">!<span class="eg-tip">Report</span></button>
+            <button type="button" class="mtk-font-btn qx-prac-theme-btn eg-tool-btn" id="pracThemeToggle" data-tip="Theme" title="Theme">${themeLbl}<span class="eg-tip">Theme</span></button>
+            <button type="button" class="mtk-font-btn qx-prac-view-btn eg-tool-btn" id="pracViewMenuBtn" data-tip="Text size" title="Text size" aria-expanded="false" aria-controls="pracViewPanel">Aa<span class="eg-tip">Aa</span></button>
+          </div>
+        </header>
+        <div class="mtk-sec-bar"><div class="mtk-sec-tabs"><button type="button" class="mtk-sec-tab ${secCls} active">${esc(subject || "Question")}</button></div></div>
+        <div class="mtk-body">
+          <div class="mtk-main">
+            <div class="mtk-q-head"><span class="mtk-q-num">Q${pos}</span>${typeBadge}</div>
+            ${partsSafe.paperMeta || ""}
+            ${partsSafe.diagramSlot || ""}
+            ${stemHtml || (String(qBody).includes("qx-question-body") ? qBody : `<div class="mtk-q-text qx-content" data-qx-qid="${q.id}">${qBody}</div>`)}
+            <div class="${optsClass}" id="qaOpts">${opts}</div>
+            <div class="eg-action-row">
+              <div class="eg-check-wrap">${done || incomplete ? "" : `<button type="button" class="eg-check" id="qxPracSubmit" ${canSubmit ? "" : "disabled"}>Check Answer</button>`}</div>
+              <button type="button" class="eg-note" id="qxPracNote">Add a Note</button>
+            </div>
+            ${partsSafe.solActions || ""}
+            <div id="qaSolReveal">${partsSafe.solReveal || ""}</div>
+            <div id="qaResult">${partsSafe.resultHtml || ""}</div>
+            <div class="eg-foot mtk-controls">
+              <div class="eg-foot-left"><label class="eg-show"><span class="eg-switch"><input type="checkbox" id="qxPracShowAns"${pc.showAnswer ? " checked" : ""}><span class="eg-switch-knob" aria-hidden="true"></span></span> Show Answer</label></div>
+              <div class="eg-foot-right">
+                <button type="button" class="eg-btn" id="qxPracClear">Clear</button>
+                <button type="button" class="eg-btn" id="qxPracPrev" ${pc.idx <= 0 ? "disabled" : ""}>Previous</button>
+                <button type="button" class="eg-btn eg-btn-next" id="qxPracNext" ${pc.idx >= total - 1 ? "disabled" : ""}>Next</button>
               </div>
             </div>
           </div>
+          <aside class="mtk-palette"><div class="mtk-pal-grp-grid flat">${cells}</div></aside>
         </div>
+        <div class="qx-prac-view-panel" id="pracViewPanel" hidden>
+          <div class="qx-prac-view-sec"><div class="qx-prac-view-label">Text size</div>
+            <div class="qx-prac-size-row">
+              <button type="button" class="qx-prac-size-btn${sizeOn("small")}" data-scale="small">S</button>
+              <button type="button" class="qx-prac-size-btn${sizeOn("medium")}" data-scale="medium">M</button>
+              <button type="button" class="qx-prac-size-btn${sizeOn("large")}" data-scale="large">L</button>
+              <button type="button" class="qx-prac-size-btn${sizeOn("xlarge")}" data-scale="xlarge">XL</button>
+            </div></div>
+          <div class="qx-prac-view-sec"><div class="qx-prac-view-label">Zoom</div>
+            <div class="qx-prac-zoom-row">
+              <button type="button" class="qx-zoom-btn mtk-font-btn" id="pracZoomOut">−</button>
+              <span class="qx-zoom-lbl" id="pracZoomLbl">${zoomPct}</span>
+              <button type="button" class="qx-zoom-btn mtk-font-btn" id="pracZoomIn">+</button>
+              <button type="button" class="qx-prac-zoom-reset" id="pracZoomReset">100%</button>
+            </div></div>
+        </div>
+      </div>`;
+    }
+
+    // APP ONLY — unique Quantrex chrome (best of Marks + ExamGoal, not a clone)
+    let strip = "";
+    const maxStrip = Math.min(total, 40);
+    for (let i = 0; i < maxStrip; i++) {
+      const idAt = pc.ids && pc.ids[i];
+      const answered = !!(idAt && pc.done && pc.done[idAt]);
+      const on = i === (pc.idx || 0) ? " on" : "";
+      const ans = answered ? " answered" : "";
+      strip += `<button type="button" class="qx-best-pill${on}${ans}" data-prac-idx="${i}">${i + 1}</button>`;
+    }
+    if (total > maxStrip) strip += `<span class="qx-best-more">+${total - maxStrip}</span>`;
+
+    try { document.body.classList.add("qx-app-shell", "qx-q-fullscreen"); } catch (_) {}
+
+    return `<div class="mtk-test-root allen-cbt allen-practice egmq-root mq-qx-best qx-font-host${bookCls}${solOpen ? " eg-sol-showing qx-sol-showing" : ""}" data-test-theme="${appTheme}" data-font-scale="${fontScale}">
+      <header class="qx-best-head">
+        <button type="button" class="qx-best-icon" id="qxPracBackBtn" aria-label="Back">←</button>
+        <div class="qx-best-mid">
+          <div class="qx-best-brand">Quantrex</div>
+          <div class="qx-best-crumb">${crumb}</div>
+        </div>
+        <button type="button" class="qx-best-icon" id="pracViewMenuBtn" aria-label="Options" aria-expanded="false" aria-controls="pracViewPanel">☰</button>
       </header>
-      ${practiceColorStrip()}
-      <div class="mtk-sec-bar">
-        <div class="mtk-sec-tabs"><button type="button" class="mtk-sec-tab ${secCls} active">${esc(
-          (typeof QuantrexStrip !== "undefined" && QuantrexStrip.humanSubject
-            ? QuantrexStrip.humanSubject(q)
-            : "") || (!/^[a-f0-9]{24}$/i.test(String(q.subject || "")) ? (q.subject || "Question") : "Question")
-        )}</button></div>
+      <nav class="qx-best-strip" aria-label="Questions">${strip}</nav>
+      <div class="qx-best-exambar">${esc(paperText)}</div>
+      <div class="qx-best-meta">
+        <span class="qx-best-qno">${String(pos).padStart(2, "0")}</span>
+        <span class="qx-best-timer" id="egmqQTime"><span id="egmqTimerSec">0s</span></span>
+        <span class="qx-best-marks"><b class="ok">+4</b><b class="bad">−1</b></span>
+        <span class="qx-best-actions qx-prac-tools">
+          <button type="button" class="qx-best-ico eg-tool-btn ${bmOn ? "on" : ""}" onclick="typeof toggleBm==='function'&&toggleBm(${qidAttr})" data-tip="Bookmark" title="Bookmark" aria-label="Bookmark">☆<span class="eg-tip">Bookmark</span></button>
+          <button type="button" class="qx-best-ico eg-tool-btn" onclick="typeof toggleBmWithGroup==='function'&&toggleBmWithGroup(${qidAttr})" data-tip="Create group" title="Create group" aria-label="Create group">+<span class="eg-tip">Group</span></button>
+          <button type="button" class="qx-best-ico warn eg-tool-btn" onclick="typeof openQuestionReport==='function'&&openQuestionReport(${qidAttr})" data-tip="Report" title="Report" aria-label="Report">⚠<span class="eg-tip">Report</span></button>
+        </span>
       </div>
-      <div class="mtk-body">
-        <div class="mtk-main">
-          <div class="mtk-q-head">
-            <span class="mtk-q-num">Q${pos}</span>
-            ${parts.typeBadge || ""}
-            ${(() => {
-              const ch = (typeof QuantrexStrip !== "undefined" && QuantrexStrip.humanChapter)
-                ? QuantrexStrip.humanChapter(q)
-                : (!/^[a-f0-9]{24}$/i.test(String(q.chapter || "")) ? (q.chapter || "") : "");
-              return ch ? `<span class="allen-prac-chapter">${esc(ch)}</span>` : "";
-            })()}
-            <button type="button" class="qx-bm-icon-only ${bmOn ? "on" : ""}" onclick="typeof toggleBm==='function'&&toggleBm(${qidAttr})" title="${bmOn ? "Remove bookmark" : "Bookmark"}" aria-label="Bookmark">${BM_SVG}</button>
-          </div>
-          ${parts.paperMeta || (typeof QuantrexStrip !== "undefined" && QuantrexStrip.paperMetaHtml ? QuantrexStrip.paperMetaHtml(q, { includeChapter: false, includeSubject: false }) : "")}
-          ${parts.diagramSlot || ""}
-          ${(parts.qBody || "").includes("qx-question-body")
-            ? (parts.qBody || "")
-            : `<div class="mtk-q-text qx-content qx-q-text-only" data-qx-qid="${q.id}">${parts.qBody || ""}</div>`}
-          <div class="${parts.optsClass || "mtk-options mtk-options-grid"}" id="qaOpts">${parts.opts || ""}</div>
-          <div class="eg-action-row">
-            <div class="eg-check-wrap">${done || parts.incomplete ? "" : `<button type="button" class="eg-check" id="qxPracSubmit" ${parts.canSubmit ? "" : "disabled"}>Check Answer</button>`}</div>
-            <button type="button" class="eg-note" id="qxPracNote">Add a Note</button>
-          </div>
-          <div id="qaSolReveal">${parts.solReveal || ""}</div>
-          <div id="qaResult">${parts.resultHtml || ""}</div>
-          <div class="eg-foot mtk-controls">
-            <div class="eg-foot-left">
-              <label class="eg-show"><span class="eg-switch"><input type="checkbox" id="qxPracShowAns"${pc.showAnswer ? " checked" : ""}><span class="eg-switch-knob" aria-hidden="true"></span></span> Show Answer</label>
-            </div>
-            <div class="eg-foot-right">
-              <button type="button" class="eg-btn" id="qxPracClear">Clear Response</button>
-              <button type="button" class="eg-btn" id="qxPracPrev" ${pc.idx <= 0 ? "disabled" : ""}>← Previous</button>
-              <button type="button" class="eg-btn eg-btn-next" id="qxPracNext" ${pc.idx >= total - 1 ? "disabled" : ""}>Next →</button>
-            </div>
-          </div>
-          <div id="qaCommunity">${parts.community || ""}</div>
+      <div class="qx-best-body mtk-main egmq-body">
+        <div class="qx-best-type">${typeBadge}</div>
+        ${partsSafe.diagramSlot || ""}
+        ${String(qBody).includes("qx-question-body")
+          ? qBody
+          : (stemHtml || `<div class="mtk-q-text qx-content mq-stem" data-qx-qid="${q.id}">${qBody}</div>`)}
+        <div class="${optsClass} mq-opts egmq-opts" id="qaOpts">${opts}</div>
+        ${partsSafe.solActions || ""}
+        <div id="qaSolReveal">${partsSafe.solReveal || ""}</div>
+        <div id="qaResult">${partsSafe.resultHtml || ""}</div>
+        <button type="button" class="qx-best-note" id="qxPracNote">Add a Note</button>
+      </div>
+      <div class="qx-best-foot egmq-foot mtk-controls">
+        <button type="button" class="qx-best-btn" id="qxPracPrev" ${pc.idx <= 0 ? "disabled" : ""}>Previous</button>
+        ${done || incomplete
+          ? `<button type="button" class="qx-best-btn qx-best-check" id="qxPracClear">Clear</button>`
+          : `<button type="button" class="qx-best-btn qx-best-check" id="qxPracSubmit" ${canSubmit ? "" : "disabled"}>Check Answer</button>`}
+        <button type="button" class="qx-best-btn qx-best-next" id="qxPracNext" ${pc.idx >= total - 1 ? "disabled" : ""}>Next</button>
+      </div>
+      <div class="qx-prac-view-panel egmq-view-panel" id="pracViewPanel" hidden>
+        <div class="qx-prac-view-sec"><div class="qx-prac-view-label">Text size</div>
+          <div class="qx-prac-size-row">
+            <button type="button" class="qx-prac-size-btn${sizeOn("small")}" data-scale="small">S</button>
+            <button type="button" class="qx-prac-size-btn${sizeOn("medium")}" data-scale="medium">M</button>
+            <button type="button" class="qx-prac-size-btn${sizeOn("large")}" data-scale="large">L</button>
+            <button type="button" class="qx-prac-size-btn${sizeOn("xlarge")}" data-scale="xlarge">XL</button>
+          </div></div>
+        <div class="qx-prac-view-sec"><div class="qx-prac-view-label">Zoom</div>
+          <div class="qx-prac-zoom-row">
+            <button type="button" class="qx-zoom-btn mtk-font-btn" id="pracZoomOut">−</button>
+            <span class="qx-zoom-lbl" id="pracZoomLbl">${zoomPct}</span>
+            <button type="button" class="qx-zoom-btn mtk-font-btn" id="pracZoomIn">+</button>
+            <button type="button" class="qx-prac-zoom-reset" id="pracZoomReset">100%</button>
+          </div></div>
+        <div class="qx-prac-view-sec">
+          <label class="eg-show" style="display:flex;align-items:center;gap:8px"><span class="eg-switch"><input type="checkbox" id="qxPracShowAns"${pc.showAnswer ? " checked" : ""}><span class="eg-switch-knob" aria-hidden="true"></span></span> Show Answer</label>
         </div>
-        ${practicePalette(pc)}
+        <div class="qx-prac-view-sec">
+          <button type="button" class="mtk-font-btn qx-prac-theme-btn" id="pracThemeToggle">${appTheme === "dark" ? "Light" : "Dark"} mode</button>
+        </div>
       </div>
     </div>`;
+  }
+
+  function fmtEgmqClock(totalSec) {
+    totalSec = Math.max(0, Math.floor(totalSec || 0));
+    const h = Math.floor(totalSec / 3600);
+    const m = Math.floor((totalSec % 3600) / 60);
+    const s = totalSec % 60;
+    const pad = (n) => String(n).padStart(2, "0");
+    return h > 0 ? `${pad(h)}:${pad(m)}:${pad(s)}` : `${pad(m)}:${pad(s)}`;
+  }
+
+  function startEgmqTimers(root) {
+    if (!root || !root.querySelector) return;
+    const sessionEl = root.querySelector("#egmqTimer");
+    const qEl = root.querySelector("#egmqQTime");
+    if (!sessionEl && !qEl) return;
+    // Clear previous interval on this root
+    if (root._egmqTimerId) {
+      try { clearInterval(root._egmqTimerId); } catch (_) {}
+      root._egmqTimerId = null;
+    }
+    if (typeof window._egmqSessionStart !== "number") window._egmqSessionStart = Date.now();
+    const qStart = Date.now();
+    const tick = () => {
+      if (!root.isConnected) {
+        try { clearInterval(root._egmqTimerId); } catch (_) {}
+        return;
+      }
+      const qSec = Math.floor((Date.now() - qStart) / 1000);
+      const secEl = root.querySelector("#egmqTimerSec");
+      if (secEl) secEl.textContent = qSec + "s";
+      else if (qEl) {
+        // Marks pill may wrap the seconds span; fall back to whole pill text
+        if (!qEl.querySelector("#egmqTimerSec")) qEl.textContent = qSec + "s";
+      }
+      if (sessionEl && sessionEl.id === "egmqTimer") {
+        const sec = Math.floor((Date.now() - window._egmqSessionStart) / 1000);
+        sessionEl.textContent = fmtEgmqClock(sec);
+      }
+    };
+    tick();
+    root._egmqTimerId = setInterval(tick, 1000);
   }
 
   function syncPracticeTheme(root, mode) {
@@ -737,9 +879,11 @@ const AllenTestUI = (() => {
       ? root
       : root && root.querySelector && root.querySelector(".mtk-test-root"));
     if (shell) shell.setAttribute("data-test-theme", m);
-    document.querySelectorAll(".mtk-test-root.allen-practice, .mtk-test-root.allen-cbt").forEach(el => {
-      el.setAttribute("data-test-theme", m);
-    });
+    try {
+      document.querySelectorAll(".mtk-test-root.allen-practice, .mtk-test-root.allen-cbt, .mq-qx-best").forEach(el => {
+        el.setAttribute("data-test-theme", m);
+      });
+    } catch (_) { /* */ }
   }
 
   function bindPractice(root, callbacks) {
@@ -756,12 +900,6 @@ const AllenTestUI = (() => {
       // Kill any leftover zoom chrome
       root.querySelectorAll(".qx-fig-zoom-btn, button.qx-fig-zoom-btn").forEach((el) => el.remove());
       window.dispatchEvent(new CustomEvent("qx:question-rendered", { detail: { root } }));
-      try {
-        if (typeof Mx !== "undefined") {
-          if (Mx.afterRenderLight) Mx.afterRenderLight(root);
-          else if (Mx.afterRender) Mx.afterRender(root);
-        }
-      } catch (_) { /* */ }
     } catch (_) { /* */ }
 
     const backBtn = root.querySelector("#qxPracBackBtn");
@@ -776,10 +914,10 @@ const AllenTestUI = (() => {
     }
     root.querySelector("#qxPracPrev")?.addEventListener("click", () => cbs.onNav && cbs.onNav(-1));
     root.querySelector("#qxPracNext")?.addEventListener("click", () => cbs.onNav && cbs.onNav(1));
-    root.querySelectorAll("[data-prac-idx]").forEach(btn => {
+    root.querySelectorAll("[data-prac-idx], [data-prac-jump]").forEach(btn => {
       btn.addEventListener("click", () => {
-        const idx = parseInt(btn.dataset.pracIdx, 10);
-        if (cbs.onJump) cbs.onJump(idx);
+        const idx = parseInt(btn.dataset.pracIdx != null ? btn.dataset.pracIdx : btn.dataset.pracJump, 10);
+        if (!Number.isNaN(idx) && cbs.onJump) cbs.onJump(idx);
       });
     });
     if (typeof syncQuestionFontScale === "function") {
@@ -840,12 +978,7 @@ const AllenTestUI = (() => {
       syncPracticeTheme(root, next);
       const tbtn = root.querySelector("#pracThemeToggle");
       // Button shows the mode you can switch TO
-      if (tbtn) {
-        tbtn.classList.toggle("eg-moon", next === "light");
-        tbtn.innerHTML = next === "dark"
-          ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>'
-          : '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-      }
+      if (tbtn) tbtn.textContent = next === "dark" ? "Light" : "Dark";
     });
   }
 

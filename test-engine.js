@@ -3096,8 +3096,14 @@ const QuantrexTestEngine = (() => {
       if (typeof QuantrexSolution !== "undefined" && QuantrexSolution.flattenMarksSolTables) {
         raw = QuantrexSolution.flattenMarksSolTables(raw);
       }
+      if (typeof QuantrexSolution !== "undefined" && QuantrexSolution.stripLeadingStemEcho) {
+        try { raw = QuantrexSolution.stripLeadingStemEcho(raw, q); } catch (_) { /* */ }
+      }
       if (typeof QuantrexSolution !== "undefined" && QuantrexSolution.repairSolutionProse) {
         raw = QuantrexSolution.repairSolutionProse(raw);
+      }
+      if (typeof QuantrexSolution !== "undefined" && QuantrexSolution.repairSolutionDelimiters) {
+        try { raw = QuantrexSolution.repairSolutionDelimiters(raw); } catch (_) { /* */ }
       }
       if (typeof QuantrexSolution !== "undefined" && QuantrexSolution.cleanSolutionFigHtml) {
         raw = QuantrexSolution.cleanSolutionFigHtml(raw);

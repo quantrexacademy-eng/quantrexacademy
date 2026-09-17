@@ -4,9 +4,9 @@
    ========================================================= */
 
 :root {
-  --qx-brand-teal: #0D9488;
-  --qx-brand-indigo: #6366F1;
-  --qx-brand-grad: linear-gradient(135deg, #0D9488 0%, #6366F1 55%, #7C3AED 100%);
+  --qx-brand-teal: #0b57d0; /* qxmd166 aligned */
+  --qx-brand-indigo: #1565c0;
+  --qx-brand-grad: linear-gradient(135deg, #0b57d0 0%, #4285f4 55%, #8ab4f8 100%);
 }
 
 /* ---------- Sidebar logo (normal header — keep) ---------- */
