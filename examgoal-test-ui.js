@@ -510,6 +510,7 @@
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
+      (showSol ? " eg-sol-showing" : "") +
       '" data-test-theme="' + theme + '" data-font-scale="' + fontScale +
       '" data-eg-mode="' + (practice ? "practice" : "test") + '" data-ui="examgoal" data-eg-cycle="' + (chromeOpen ? "1" : "0") + '">' +
       '<header class="eg-top">' +
@@ -557,7 +558,12 @@
       "</div>" +
       '<div class="eg-body">' +
       '<div class="eg-main"><div class="eg-q-card">' +
-      '<div class="eg-q-stem" id="egQArea">' + stem + "</div>" +
+      /* qxmd160: when Practice Show/Check Answer opens Solution, hide stem so it
+         does not sit above the panel looking like a reprint. Options stay for marking.
+         Exam/Take-Test mode never sets showSol. Restored on close via refresh(). */
+      '<div class="eg-q-stem' + (showSol ? " eg-stem-sol-hidden" : "") + '" id="egQArea"' +
+      (showSol ? ' hidden aria-hidden="true"' : ' aria-hidden="false"') + ">" +
+      (showSol ? "" : stem) + "</div>" +
       (ctx.sectionInstr || "") +
       '<div class="' + (ctx.optsClass || "mtk-options mtk-options-grid") + ' eg-opts" id="qxOpts">' + (ctx.opts || "") + "</div>" +
       checkRow +

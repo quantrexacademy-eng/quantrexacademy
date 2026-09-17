@@ -677,6 +677,9 @@ const QuantrexSolution = (() => {
    *
    * qxmd159: plainWithMap MUST mirror stemComparePlain (emit spaces for ^ _ $ { }) —
    * qxmd158 failed because x^2 → "x2" vs "x 2", so align never fired on live UX.
+   * qxmd160: also strip "Given," + leading definition paragraphs that restate stem math
+   * (e.g. set A = {...} copied before the real ⇒ work), and match stem without leading
+   * "Let/Consider/Suppose".
    */
   function tidyAfterStemCut(rest) {
     let r = String(rest || "");
@@ -690,6 +693,75 @@ const QuantrexSolution = (() => {
     r = r.replace(/^<\/(?:p|div|span)>/i, "");
     r = stripLeadingSolMeta(r);
     return r;
+  }
+
+  /**
+   * Strip leading paragraphs that only restate stem math (common after "Given,").
+   * Stops at first block that is new work (⇒ result, hence, option, …) or not in stem.
+   */
+  function stripLeadingDefEchoes(html, stemP) {
+    let s = String(html || "");
+    const stem = String(stemP || "");
+    if (stem.length < 10 || !s.trim()) return s;
+
+    function firstBlockEnd(src) {
+      // Prefer real HTML paragraphs (Given + set-def pattern)
+      const p = /^<(?:p|div)[^>]*>[\s\S]*?<\/(?:p|div)>/i.exec(src);
+      if (p && p[0].length) return p[0].length;
+      const brTag = /<br\s*\/?\s*>/i.exec(src);
+      if (brTag && brTag.index >= 8) return brTag.index + brTag[0].length;
+      const nextP = src.search(/<(?:p|div)\b/i);
+      if (nextP > 8) return nextP;
+      // Untagged prose: stop at sentence end so we never swallow "stem. Hence …"
+      const sent = /[.?!](?:\s+|$)/.exec(src);
+      if (sent && sent.index >= 10 && sent.index < 180) return sent.index + 1;
+      // Last resort: short head only (avoid eating whole solution)
+      return Math.min(src.length, 96);
+    }
+
+    function barePlain(p) {
+      return String(p || "")
+        .replace(/^(?:given(?:\s+that)?|as\s+given|now|also|again|here|let|consider|suppose|and|then|from\s+the\s+(?:given\s+)?question)\s+/i, "")
+        .trim();
+    }
+
+    function inStem(bp) {
+      if (!bp || bp.length < 10) return false;
+      // Reject blocks that are clearly stem + explanation (longer than stem)
+      if (bp.length > stem.length + 6) return false;
+      if (stem.indexOf(bp) >= 0) return true;
+      const toks = bp.split(/\s+/).filter(Boolean);
+      if (toks.length < 4) return false;
+      const win = toks.join(" ");
+      if (stem.indexOf(win) >= 0) return true;
+      // Contiguous head overlap only when block is not longer than stem
+      if (bp.length > stem.length) return false;
+      const need = Math.max(4, Math.ceil(toks.length * 0.85));
+      const head = toks.slice(0, need).join(" ");
+      return head.length >= 10 && stem.indexOf(head) >= 0;
+    }
+
+    for (let n = 0; n < 8; n++) {
+      const before = s;
+      s = s.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)+/i, "");
+      if (!s.trim()) break;
+
+      if (/^(?:<(?:p|div|span|strong|b)[^>]*>\s*)*(?:⇒|=>|⟹|hence|therefore|thus|so\b|clearly|we\s+(?:have|get|obtain)|option\s*[a-d]|correct\s+option|answer\s*[:\-])/i.test(s)) {
+        const end0 = firstBlockEnd(s);
+        const bp0 = barePlain(stemComparePlain(s.slice(0, end0)));
+        if (!inStem(bp0)) break;
+      }
+
+      const end = firstBlockEnd(s);
+      if (end < 8) break;
+      const block = s.slice(0, end);
+      const bp = barePlain(stemComparePlain(block));
+      if (bp.length < 10) break;
+      if (!inStem(bp)) break;
+      s = s.slice(end);
+      if (s === before) break;
+    }
+    return s;
   }
 
   function stripLeadingStemEcho(html, q) {
@@ -708,6 +780,18 @@ const QuantrexSolution = (() => {
     )) || "";
     const stemP = stemComparePlain(stemSrc);
     if (stemP.length < 6) return stripLeadingSolMeta(out);
+
+    // qxmd160: drop "Given," + leading set/def paragraphs that only restate stem math
+    try { out = stripLeadingDefEchoes(out, stemP); } catch (_) { /* */ }
+    out = stripLeadingSolMeta(out);
+
+    // Stem variants without leading discourse (Let / Consider / Suppose / …)
+    const stemVariants = [stemP];
+    const stemBare = stemP.replace(
+      /^(?:let|consider|suppose|if|given(?:\s+that)?|assume|take|for)\s+/,
+      ""
+    );
+    if (stemBare && stemBare !== stemP && stemBare.length >= 6) stemVariants.push(stemBare);
 
     /**
      * Walk HTML with the SAME reductions as stemComparePlain, recording
@@ -796,55 +880,73 @@ const QuantrexSolution = (() => {
     }
 
     const { plain: solP, map } = plainWithMap(out);
-    const probeLen = Math.min(stemP.length, Math.max(32, Math.floor(stemP.length * 0.82)));
-    const probe = stemP.slice(0, probeLen);
-    const head = stemP.slice(0, Math.min(40, stemP.length));
     let align = -1;
-    if (solP.startsWith(probe) || solP.startsWith(head)) align = 0;
-    else {
+    let matchedStem = stemP;
+    for (let vi = 0; vi < stemVariants.length; vi++) {
+      const sv = stemVariants[vi];
+      const probeLen = Math.min(sv.length, Math.max(32, Math.floor(sv.length * 0.82)));
+      const probe = sv.slice(0, probeLen);
+      const head = sv.slice(0, Math.min(40, sv.length));
+      if (solP.startsWith(probe) || solP.startsWith(head)) {
+        align = 0;
+        matchedStem = sv;
+        break;
+      }
       const at = solP.indexOf(head);
-      if (at >= 0 && at <= 64) align = at;
+      if (at >= 0 && at <= 64) {
+        align = at;
+        matchedStem = sv;
+        break;
+      }
     }
     // Fallback: stemComparePlain agreement when map walker still drifts
     if (align < 0) {
       const solSC = stemComparePlain(out);
-      if (solSC.startsWith(probe) || solSC.startsWith(head)) {
-        // Approximate cut: find stem tail phrase in raw HTML (case-insensitive alnum)
-        const tailLen = Math.min(36, Math.max(16, Math.floor(stemP.length / 3)));
-        const tailWords = stemP.slice(-tailLen).trim().split(/\s+/).filter(Boolean).slice(-4);
-        if (tailWords.length) {
-          const tailRe = new RegExp(
-            tailWords.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("[^a-zA-Z0-9]{0,12}"),
-            "i"
-          );
-          const tm = tailRe.exec(out);
-          if (tm) {
-            let cutAt = tm.index + tm[0].length;
-            let rest = tidyAfterStemCut(out.slice(cutAt));
-            const restPlain = stemComparePlain(rest);
-            if (restPlain.length >= 8 || solSC.length <= restPlain.length + 40) {
-              return rest || stripLeadingSolMeta(out);
+      for (let vi = 0; vi < stemVariants.length && align < 0; vi++) {
+        const sv = stemVariants[vi];
+        const probeLen = Math.min(sv.length, Math.max(32, Math.floor(sv.length * 0.82)));
+        const probe = sv.slice(0, probeLen);
+        const head = sv.slice(0, Math.min(40, sv.length));
+        if (solSC.startsWith(probe) || solSC.startsWith(head)) {
+          const tailLen = Math.min(36, Math.max(16, Math.floor(sv.length / 3)));
+          const tailWords = sv.slice(-tailLen).trim().split(/\s+/).filter(Boolean).slice(-4);
+          if (tailWords.length) {
+            const tailRe = new RegExp(
+              tailWords.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("[^a-zA-Z0-9]{0,12}"),
+              "i"
+            );
+            const tm = tailRe.exec(out);
+            if (tm) {
+              let cutAt = tm.index + tm[0].length;
+              let rest = tidyAfterStemCut(out.slice(cutAt));
+              try { rest = stripLeadingDefEchoes(rest, stemP); } catch (_) { /* */ }
+              const restPlain = stemComparePlain(rest);
+              if (restPlain.length >= 8 || solSC.length <= restPlain.length + 40) {
+                return rest || stripLeadingSolMeta(out);
+              }
             }
           }
         }
       }
+      // Def-echo pass alone may have cleaned Given+defs — return that
       return stripLeadingSolMeta(out);
     }
     if (!map.length) return stripLeadingSolMeta(out);
 
-    const tailLen = Math.min(42, Math.max(18, Math.floor(stemP.length / 3)));
-    const tail = stemP.slice(-tailLen);
-    let cutPlainEnd = align + stemP.length;
+    const tailLen = Math.min(42, Math.max(18, Math.floor(matchedStem.length / 3)));
+    const tail = matchedStem.slice(-tailLen);
+    let cutPlainEnd = align + matchedStem.length;
     const tailAt = solP.indexOf(tail, align);
-    if (tailAt >= align && tailAt + tail.length <= align + stemP.length + 80) {
+    if (tailAt >= align && tailAt + tail.length <= align + matchedStem.length + 80) {
       cutPlainEnd = tailAt + tail.length;
     }
-    cutPlainEnd = Math.min(Math.max(cutPlainEnd, align + Math.min(20, stemP.length)), map.length);
-    if (cutPlainEnd < Math.min(12, Math.max(4, stemP.length))) return stripLeadingSolMeta(out);
+    cutPlainEnd = Math.min(Math.max(cutPlainEnd, align + Math.min(20, matchedStem.length)), map.length);
+    if (cutPlainEnd < Math.min(12, Math.max(4, matchedStem.length))) return stripLeadingSolMeta(out);
     const cutAt = map[cutPlainEnd - 1];
     if (!(cutAt > 0)) return stripLeadingSolMeta(out);
 
     let rest = tidyAfterStemCut(out.slice(cutAt));
+    try { rest = stripLeadingDefEchoes(rest, stemP); } catch (_) { /* */ }
 
     const restPlain = stemComparePlain(rest);
     // Restore only when cut erased essentially the whole solution (not when a short real explanation remains)
