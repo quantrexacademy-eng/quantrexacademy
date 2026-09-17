@@ -748,12 +748,32 @@ const QuantrexTestEngine = (() => {
       pinQuestionDiagrams(q);
     }
     const renderFn = marksNativeHtmlFn(q);
+    // qxmd163: MathTextRenderer / bestStemHtml prefer clean _qxOrigStem over Marks-broken q.q
+    let stemSrc = q && q.q;
+    try {
+      if (typeof MathTextRenderer !== "undefined" && MathTextRenderer.pickStemSource) {
+        stemSrc = MathTextRenderer.pickStemSource(q, q.q);
+      } else if (typeof QxImgClean !== "undefined" && QxImgClean.bestStemHtml) {
+        stemSrc = QxImgClean.bestStemHtml(q, q.q);
+      } else {
+        stemSrc = (q && (q._qxOrigStem || q._qxBankQ || q.q)) || "";
+      }
+    } catch (_) {
+      stemSrc = (q && (q._qxOrigStem || q._qxBankQ || q.q)) || "";
+    }
+    const paint = function (src) {
+      try {
+        if (typeof MathTextRenderer !== "undefined" && MathTextRenderer.render) {
+          return MathTextRenderer.render(src);
+        }
+      } catch (_) { /* */ }
+      return renderFn(src);
+    };
     if (typeof QxImgClean !== "undefined" && QxImgClean.buildQuestionBodyHtml) {
       try { if (QxImgClean.pinOriginalQuestion) QxImgClean.pinOriginalQuestion(q); } catch (_) { /* */ }
-      const stemSrc = QxImgClean.bestStemHtml ? QxImgClean.bestStemHtml(q, q.q) : (q._qxOrigStem || q._qxBankQ || q.q);
-      return QxImgClean.buildQuestionBodyHtml(q.id, stemSrc, renderFn, q);
+      return QxImgClean.buildQuestionBodyHtml(q.id, stemSrc, paint, q);
     }
-    return `<div class="mtk-q-text qx-content" data-qx-qid="${q.id}">${renderFn(q.q)}</div>`;
+    return `<div class="mtk-q-text qx-content" data-qx-qid="${q.id}">${paint(stemSrc)}</div>`;
   }
 
   /** True when this Q must show integer keypad (type OR current NUM section) */

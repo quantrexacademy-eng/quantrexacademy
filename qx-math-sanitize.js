@@ -253,6 +253,47 @@
     return s;
   }
 
+  /**
+   * qxmd163 — Marks/Firestore export quirks → KaTeX-safe TeX (meaning-preserving).
+   * Does NOT change math meaning; only unwraps broken wrappers / invisible ops / escapes.
+   */
+  function repairMarksExportTex(s) {
+    let t = String(s || "");
+    if (!t) return t;
+    // Invisible math operators (U+2061 function application, etc.)
+    t = t.replace(/[\u2061\u2062\u2063\u2064]/g, "");
+    // Double-escaped grouping braces around commands: \{\log\} → \log
+    t = t.replace(/\\\{(\\[a-zA-Z]+)\\\}/g, "$1");
+    // Braced command group {\log} / {log} → \log (common Marks log-base export)
+    t = t.replace(/\{\\?(log|ln|sin|cos|tan|cot|sec|csc|lim|exp|max|min|det|gcd|lcm|arg|deg)\}/gi,
+      (_, n) => "\\" + String(n).toLowerCase());
+    // \left|sin → \left|\sin
+    t = t.replace(/(\\left\s*\|)\s*(sin|cos|tan|cot|sec|csc)\b/gi,
+      (_, left, fn) => left + "\\" + String(fn).toLowerCase());
+    // Bare sin/cos after | : |sin x|
+    t = t.replace(/(\|)\s*(sin|cos|tan|cot|sec|csc)\s+(?=[A-Za-z])/gi,
+      (_, bar, fn) => bar + "\\" + String(fn).toLowerCase() + " ");
+    // Subscript _{1 / 2} → _{1/2}
+    t = t.replace(/_\{\s*(\d+)\s*\/\s*(\d+)\s*\}/g, "_{$1/$2}");
+    // Collapse leftover \\{ \\} that are not \left\{ / \right\}
+    t = t.replace(/(^|[^\\])\\\{(?![a-zA-Z])/g, "$1{");
+    t = t.replace(/(^|[^\\])\\\}/g, "$1}");
+    // Restore \left\{ \right\} if over-collapsed
+    t = t.replace(/(\\left)\s*\{/g, "$1\\{");
+    t = t.replace(/(\\right)\s*\}/g, "$1\\}");
+    return t;
+  }
+
+  function looksMarksBrokenTex(s) {
+    const t = String(s || "");
+    if (!t) return false;
+    if (/[\u2061\u2062\u2063\u2064]/.test(t)) return true;
+    if (/\\\{(?:\\)?(?:log|ln|sin|cos|tan)\}/.test(t)) return true;
+    if (/\{\\?(?:log|ln|sin|cos|tan)\}/.test(t)) return true;
+    if (/\\left\s*\|\s*(?:sin|cos|tan)\b/i.test(t)) return true;
+    return false;
+  }
+
   function tidyWhitespace(html) {
     let s = String(html || "");
     s = s.replace(/(?:&nbsp;|\u00a0){2,}/gi, " ");
@@ -302,6 +343,8 @@
     if (/\\[a-zA-Z]/.test(s)) {
       s = s.replace(/\\{2,}([a-zA-Z]+)/g, "\\$1");
     }
+    // qxmd163: also collapse \\{ before letters already done; repair Marks braces/U+2061
+    try { s = repairMarksExportTex(s); } catch (_) { /* */ }
     s = normalizeDelimiters(s);
     s = tidyWhitespace(s);
 
@@ -460,6 +503,8 @@
     recoverKatexHtml,
     normalizeMathContent,
     normalizeLatex: normalizeDelimiters,
+    repairMarksExportTex,
+    looksMarksBrokenTex,
     sanitizeQuestionContent,
     sanitizeSolutionContent,
     sanitizeHtml: stripUnsafeHtml,

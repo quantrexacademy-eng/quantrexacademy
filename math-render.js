@@ -4558,35 +4558,77 @@ window.Mx = (() => {
   };
 })();
 
-/* qxmd159 — shared MathTextRenderer facade (brief architecture).
- * All stems/options/solutions/hints should go through this or Mx.html (same pipeline).
- * Invalid LaTeX never crashes the test: Mx.html uses throwOnError:false + safe fallback.
+/* qxmd163 — MathTextRenderer: Firebase → normalize (meaning-preserving) → Mx.html → KaTeX.
+ * Used for stem/options/answer/solution/explanation/hints across practice, PYQ, mocks, DPP.
+ * Invalid LaTeX never crashes the test: throwOnError:false + safe fallback + optional debug.
  */
 (function (w) {
   if (!w || !w.Mx) return;
-  function render(text, opts) {
+  function debugOn() {
+    try {
+      return !!(w.QX_DEBUG || (typeof localStorage !== "undefined" && localStorage.getItem("qx_debug_math") === "1"));
+    } catch (_) { return false; }
+  }
+  function normalize(text) {
+    let t = text == null ? "" : text;
     try {
       if (typeof w.QxMathSanitize !== "undefined" && w.QxMathSanitize.normalizeMathContent) {
-        text = w.QxMathSanitize.normalizeMathContent(text).html;
+        t = w.QxMathSanitize.normalizeMathContent(t).html;
       }
-      return w.Mx.html(text, opts);
+    } catch (err) {
+      if (debugOn()) try { console.warn("[MathTextRenderer.normalize]", err && err.message); } catch (_) {}
+    }
+    return t;
+  }
+  function render(text, opts) {
+    try {
+      const cleaned = normalize(text);
+      return w.Mx.html(cleaned, opts);
     } catch (err) {
       try {
-        if (w.QX_DEBUG || (typeof localStorage !== "undefined" && localStorage.getItem("qx_debug_math") === "1")) {
-          console.warn("[MathTextRenderer] fallback", err && err.message, String(text || "").slice(0, 120));
-        }
+        if (debugOn()) console.warn("[MathTextRenderer] fallback", err && err.message, String(text || "").slice(0, 120));
       } catch (_) {}
       const safe = String(text == null ? "" : text)
         .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
       return '<span class="qx-math-fallback">' + safe + "</span>";
     }
   }
+  /** Prefer clean _qxOrigStem / _qxBankQ when Marks-export q.q is broken. Images untouched. */
+  function pickStemSource(q, fallback) {
+    try {
+      if (typeof w.QxImgClean !== "undefined" && w.QxImgClean.bestStemHtml) {
+        return w.QxImgClean.bestStemHtml(q, fallback != null ? fallback : (q && q.q));
+      }
+    } catch (_) { /* */ }
+    if (!q) return fallback || "";
+    const raw = q.q || q.question || fallback || "";
+    const orig = q._qxOrigStem || q._qxBankQ || "";
+    try {
+      if (orig && typeof w.QxMathSanitize !== "undefined" && w.QxMathSanitize.looksMarksBrokenTex) {
+        if (w.QxMathSanitize.looksMarksBrokenTex(raw) && !w.QxMathSanitize.looksMarksBrokenTex(orig)) return orig;
+      }
+    } catch (_) { /* */ }
+    if (orig && /[\u2061\u2062]/.test(String(raw)) && !/[\u2061\u2062]/.test(String(orig))) return orig;
+    return raw || orig || "";
+  }
+  function renderQuestionStem(q, opts) {
+    return render(pickStemSource(q), opts);
+  }
+  function renderField(q, field, opts) {
+    if (!q) return "";
+    const v = q[field];
+    if (v == null) return "";
+    if (typeof v === "string") return render(v, opts);
+    return render(String(v), opts);
+  }
   w.MathTextRenderer = {
     render,
     renderInline: (t) => render(t, { displayMode: false }),
     renderDisplay: (t) => render(t, { displayMode: true }),
-    normalize: (t) => (w.Mx.normalizeLatex ? w.Mx.normalizeLatex(t) : t),
-    sanitize: (t) => (w.QxMathSanitize && w.QxMathSanitize.normalizeMathContent
-      ? w.QxMathSanitize.normalizeMathContent(t).html : t)
+    renderQuestionStem,
+    renderField,
+    pickStemSource,
+    normalize,
+    sanitize: normalize
   };
 })(typeof window !== "undefined" ? window : undefined);

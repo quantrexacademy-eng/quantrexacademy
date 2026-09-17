@@ -5138,6 +5138,24 @@ window.QxImgClean = (() => {
     return q;
   }
 
+  function stemMathQualityScore(html) {
+    const s = String(html || "");
+    if (!s) return -1e9;
+    let n = matchTableRichness(s) || stemPlainText(s).length;
+    // qxmd163: prefer clean TeX over Marks-export broken wrappers (U+2061, {\log}, \left|sin)
+    try {
+      if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.looksMarksBrokenTex
+        && QxMathSanitize.looksMarksBrokenTex(s)) n -= 800;
+    } catch (_) { /* */ }
+    if (/[\u2061\u2062\u2063\u2064]/.test(s)) n -= 800;
+    if (/\{\\?(?:log|ln|sin|cos|tan)\}/.test(s)) n -= 400;
+    if (/\\left\s*\|\s*(?:sin|cos|tan)\b/i.test(s)) n -= 200;
+    // Bonus for clean log/sin forms
+    if (/\\log_\{|\\sin\b|\\cos\b/.test(s) && !/[\u2061]/.test(s)) n += 120;
+    if (/\\log_\{1\/2\}/.test(s)) n += 80;
+    return n;
+  }
+
   function bestStemHtml(q, rawHtml) {
     const cands = [];
     if (q) {
@@ -5154,9 +5172,9 @@ window.QxImgClean = (() => {
       }
     } catch (_) { /* */ }
     let best = String(rawHtml || (q && q.q) || "");
-    let bestN = matchTableRichness(best) || stemPlainText(best).length;
+    let bestN = stemMathQualityScore(best);
     cands.forEach((c) => {
-      const n = matchTableRichness(c) || stemPlainText(c).length;
+      const n = stemMathQualityScore(c);
       if (n > bestN) {
         best = String(c);
         bestN = n;

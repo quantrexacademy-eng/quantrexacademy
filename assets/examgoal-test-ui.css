@@ -4762,17 +4762,28 @@ body.qx-immersive .eg-test-root.eg-qxeg5 .eg-foot {
 }
 
 
-/* qxmd160 — Practice Show/Check Answer: hide question stem while Solution panel is open
-   so the stem above Solution does not look like a reprint. Options remain visible. */
+/* qxmd160/qxmd163 — Practice Show/Check Answer: hide question stem while Solution open.
+   Must beat theme rules that set visibility:visible !important on .eg-q-stem. */
 .eg-test-root.eg-sol-showing .eg-q-stem.eg-stem-sol-hidden,
-.eg-q-stem.eg-stem-sol-hidden[hidden] {
+.eg-test-root.eg-sol-showing #egQArea.eg-stem-sol-hidden,
+.eg-test-root.eg-sol-showing #egQArea[hidden],
+.eg-q-stem.eg-stem-sol-hidden[hidden],
+#egQArea.eg-stem-sol-hidden[hidden] {
   display: none !important;
   visibility: hidden !important;
+  opacity: 0 !important;
+  -webkit-text-fill-color: transparent !important;
   height: 0 !important;
+  max-height: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
   overflow: hidden !important;
   border: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  clip: rect(0,0,0,0) !important;
 }
 .eg-test-root.eg-sol-showing .eg-sol-panel {
   margin-top: 8px;

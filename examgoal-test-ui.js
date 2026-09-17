@@ -264,7 +264,16 @@
             cleanSol = QuantrexSolution.stripLeadingStemEcho(sol, q);
           }
         } catch (_) { /* */ }
-        const html = typeof Mx !== "undefined" && Mx.html ? Mx.html(cleanSol) : cleanSol;
+        let html = cleanSol;
+        try {
+          if (typeof MathTextRenderer !== "undefined" && MathTextRenderer.render) {
+            html = MathTextRenderer.render(cleanSol);
+          } else if (typeof Mx !== "undefined" && Mx.html) {
+            html = Mx.html(cleanSol);
+          }
+        } catch (_) {
+          html = typeof Mx !== "undefined" && Mx.html ? Mx.html(cleanSol) : cleanSol;
+        }
         solContent = '<div class="qx-content sol-body qx-sol-flow">' + html + "</div>";
       }
     }
@@ -582,7 +591,9 @@
          HTML in the DOM — omitting markup emptied #egQArea and broke Check/Show Answer.
          Options stay for marking. Exam/Take-Test never sets showSol. */
       '<div class="eg-q-stem' + (showSol ? " eg-stem-sol-hidden" : "") + '" id="egQArea"' +
-      (showSol ? ' hidden aria-hidden="true"' : ' aria-hidden="false"') + ">" +
+      (showSol
+        ? ' hidden aria-hidden="true" style="display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important"'
+        : ' aria-hidden="false"') + ">" +
       stem + "</div>" +
       (ctx.sectionInstr || "") +
       '<div class="' + (ctx.optsClass || "mtk-options mtk-options-grid") + ' eg-opts" id="qxOpts">' + (ctx.opts || "") + "</div>" +
@@ -793,6 +804,13 @@
         qArea.classList.add("eg-stem-sol-hidden");
         qArea.setAttribute("hidden", "");
         qArea.setAttribute("aria-hidden", "true");
+        // qxmd163: inline !important beats theme visibility:visible rules
+        qArea.style.setProperty("display", "none", "important");
+        qArea.style.setProperty("visibility", "hidden", "important");
+        qArea.style.setProperty("height", "0", "important");
+        qArea.style.setProperty("overflow", "hidden", "important");
+        qArea.style.setProperty("margin", "0", "important");
+        qArea.style.setProperty("padding", "0", "important");
       } catch (_) { /* */ }
     }
 
@@ -816,6 +834,14 @@
             qArea.classList.remove("eg-stem-sol-hidden");
             qArea.removeAttribute("hidden");
             qArea.setAttribute("aria-hidden", "false");
+            try {
+              qArea.style.removeProperty("display");
+              qArea.style.removeProperty("visibility");
+              qArea.style.removeProperty("height");
+              qArea.style.removeProperty("overflow");
+              qArea.style.removeProperty("margin");
+              qArea.style.removeProperty("padding");
+            } catch (_) { /* */ }
           }
         } catch (_) { /* */ }
         if (typeof api.refresh === "function") {
@@ -848,6 +874,14 @@
         qArea.classList.remove("eg-stem-sol-hidden");
         qArea.removeAttribute("hidden");
         qArea.setAttribute("aria-hidden", "false");
+        try {
+          qArea.style.removeProperty("display");
+          qArea.style.removeProperty("visibility");
+          qArea.style.removeProperty("height");
+          qArea.style.removeProperty("overflow");
+          qArea.style.removeProperty("margin");
+          qArea.style.removeProperty("padding");
+        } catch (_) { /* */ }
       }
     } catch (_) { /* */ }
   }

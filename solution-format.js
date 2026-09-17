@@ -790,6 +790,16 @@ const QuantrexSolution = (() => {
       s = s.slice(end);
       if (s === before) break;
     }
+    // qxmd163: also drop a leading lone math island that restates the stem equation
+    s = s.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)*/i, "");
+    const lone = /^(\$\$[\s\S]+?\$\$|\$[^$]+\$)/.exec(s);
+    if (lone && lone[0] && stem.length >= 10) {
+      const bp = barePlain(stemComparePlain(lone[0]));
+      if (bp.length >= 10 && inStem(bp)) {
+        s = s.slice(lone[0].length);
+        s = s.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>)+/i, "");
+      }
+    }
     return repairLeadingOrphanDollar(s);
   }
 
@@ -988,7 +998,18 @@ const QuantrexSolution = (() => {
     return rest || out;
   }
 
-  function formatBody(solution, q) {
+  function solRenderHtml(raw) {
+    const s = String(raw || "");
+    try {
+      if (typeof MathTextRenderer !== "undefined" && MathTextRenderer.render) return MathTextRenderer.render(s);
+    } catch (_) { /* */ }
+    try {
+      if (typeof Mx !== "undefined" && Mx.html) return Mx.html(s);
+    } catch (_) { /* */ }
+    return s;
+  }
+
+    function formatBody(solution, q) {
     let raw = flattenMarksSolTables(String(solution || ""));
     raw = stripLeadingStemEcho(raw, q);
     // Same deep TeX/symbol repair as stems/options (solutions were missing shatter/tofu fixes)
@@ -1006,7 +1027,7 @@ const QuantrexSolution = (() => {
     raw = toCleanFlow(raw);
     let html;
     try {
-      html = typeof Mx !== "undefined" ? Mx.html(raw) : raw;
+      html = solRenderHtml(raw);
     } catch (err) {
       /* qxmd161: KaTeX/Mx throw must not abort Practice Check/Show Answer refresh */
       try { html = esc(raw); } catch (_) { html = String(raw || ""); }
