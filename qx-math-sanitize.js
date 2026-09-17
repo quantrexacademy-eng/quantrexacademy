@@ -260,19 +260,46 @@
   function repairMarksExportTex(s) {
     let t = String(s || "");
     if (!t) return t;
-    // Invisible math operators (U+2061 function application, etc.)
-    t = t.replace(/[\u2061\u2062\u2063\u2064]/g, "");
+    // Invisible math operators + zero-widths
+    t = t.replace(/[\u2061\u2062\u2063\u2064\u2060\u200b\u200c\u200d\ufeff]/g, "");
     // Double-escaped grouping braces around commands: \{\log\} → \log
     t = t.replace(/\\\{(\\[a-zA-Z]+)\\\}/g, "$1");
     // Braced command group {\log} / {log} → \log (common Marks log-base export)
     t = t.replace(/\{\\?(log|ln|sin|cos|tan|cot|sec|csc|lim|exp|max|min|det|gcd|lcm|arg|deg)\}/gi,
       (_, n) => "\\" + String(n).toLowerCase());
+    // {log}_{cosx} / {\log}_{sinx} → \log_{\cos x}
+    t = t.replace(/\{\\?(log|ln)\}_\{(sin|cos|tan|cot|sec|csc)x\}/gi,
+      (_, a, b) => "\\" + a.toLowerCase() + "_{\\" + b.toLowerCase() + " x}");
+    t = t.replace(/\\(log|ln)_\{(sin|cos|tan|cot|sec|csc)x\}/gi,
+      (_, a, b) => "\\" + a.toLowerCase() + "_{\\" + b.toLowerCase() + " x}");
     // \left|sin → \left|\sin
     t = t.replace(/(\\left\s*\|)\s*(sin|cos|tan|cot|sec|csc)\b/gi,
       (_, left, fn) => left + "\\" + String(fn).toLowerCase());
     // Bare sin/cos after | : |sin x|
     t = t.replace(/(\|)\s*(sin|cos|tan|cot|sec|csc)\s+(?=[A-Za-z])/gi,
       (_, bar, fn) => bar + "\\" + String(fn).toLowerCase() + " ");
+    // qxmd167: glued trig/log words — sinx / cosx / tanx
+    t = t.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc|log|ln)(x|y|z|t|u|v)\b/gi,
+      (_, pre, fn, v) => pre + "\\" + fn.toLowerCase() + " " + v);
+    // Bare fn before digit/paren: sin 2x / cos( → \sin
+    t = t.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc|log|ln)\s*(?=[0-9(])/gi,
+      (_, pre, fn) => pre + "\\" + fn.toLowerCase() + " ");
+    // After a command already present: \sin xcos → \sin x \cos
+    t = t.replace(/(\\(?:sin|cos|tan|cot|sec|csc|ln|log)\s+[A-Za-z0-9])(sin|cos|tan|cot|sec|csc)\b/gi,
+      (_, left, fn) => left + " \\" + fn.toLowerCase());
+    // \lnsinx / \lncosx (command glued to sin/cos)
+    t = t.replace(/\\(ln|log)(sin|cos|tan|cot|sec|csc)([A-Za-z0-9]?)/gi,
+      (_, a, b, v) => "\\" + a.toLowerCase() + " \\" + b.toLowerCase() + (v ? " " + v : ""));
+    // Greek glued to English: \betaare → \beta are
+    t = t.replace(/\\(alpha|beta|gamma|delta|theta|phi|psi|omega|mu|nu|sigma|lambda|rho|tau|epsilon|varepsilon|pi)([a-z]{2,})/gi,
+      (_, g, word) => {
+        const w = String(word);
+        if (/^(re|are|is|of|to|in|on|at|as|be|or|an|the|and|for|with|from|that|this|then|than|into|over|under)$/i.test(w) ||
+            /^[a-z]{3,}$/i.test(w)) {
+          return "\\" + g.toLowerCase() + " " + w;
+        }
+        return "\\" + g + w;
+      });
     // Subscript _{1 / 2} → _{1/2}
     t = t.replace(/_\{\s*(\d+)\s*\/\s*(\d+)\s*\}/g, "_{$1/$2}");
     // Collapse leftover \\{ \\} that are not \left\{ / \right\}
@@ -291,6 +318,9 @@
     if (/\\\{(?:\\)?(?:log|ln|sin|cos|tan)\}/.test(t)) return true;
     if (/\{\\?(?:log|ln|sin|cos|tan)\}/.test(t)) return true;
     if (/\\left\s*\|\s*(?:sin|cos|tan)\b/i.test(t)) return true;
+    if (/(?:^|[^\\])(?:sin|cos|tan|ln|log)x\b/i.test(t)) return true;
+    if (/\\(?:ln|log)(?:sin|cos)/i.test(t)) return true;
+    if (/\\(?:alpha|beta|gamma|theta)[a-z]{2,}/i.test(t)) return true;
     return false;
   }
 

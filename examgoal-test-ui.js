@@ -81,7 +81,7 @@
     };
   }
 
-  /** qxmd165: palette layout preference — side | strip | both (default both) */
+  /** qxmd167: palette layout preference — side | strip | both (default side = simple) */
   var EG_PALETTE_PREF_KEY = "qx_eg_palette_mode";
   function getPalettePref() {
     try {
@@ -93,10 +93,10 @@
       var v = localStorage.getItem(EG_PALETTE_PREF_KEY);
       if (v === "side" || v === "strip" || v === "both") return v;
     } catch (_) { /* */ }
-    return "both";
+    return "side";
   }
   function setPalettePref(mode) {
-    var m = mode === "side" || mode === "strip" || mode === "both" ? mode : "both";
+    var m = mode === "side" || mode === "strip" || mode === "both" ? mode : "side";
     try { localStorage.setItem(EG_PALETTE_PREF_KEY, m); } catch (_) { /* */ }
     try {
       if (typeof QxSettings !== "undefined" && QxSettings.setPaletteMode) QxSettings.setPaletteMode(m);
@@ -472,8 +472,9 @@
 
     const legend = practice
       ? '<div class="eg-legend"><span><i class="eg-dot correct"></i>Correct</span><span><i class="eg-dot wrong"></i>Wrong</span>' +
-        '<span><i class="eg-dot att"></i>Attempted</span><span><i class="eg-dot seen-p"></i>Seen</span>' +
-        '<span><i class="eg-dot unseen"></i>Unseen</span></div>'
+        '<span><i class="eg-dot att"></i>Answered</span><span><i class="eg-dot marked"></i>Marked</span>' +
+        '<span><i class="eg-dot att-mark"></i>Ans+Mark</span>' +
+        '<span><i class="eg-dot seen-p"></i>Seen</span><span><i class="eg-dot unseen"></i>Unseen</span></div>'
       : '<div class="eg-legend"><span><i class="eg-dot attempted"></i>Answered</span><span><i class="eg-dot marked"></i>Marked</span>' +
         '<span><i class="eg-dot att-mark"></i>Ans+Mark</span><span><i class="eg-dot seen-t"></i>Not ans</span>' +
         '<span><i class="eg-dot unseen"></i>Not visited</span></div>';
@@ -481,6 +482,14 @@
     const timer = '<span class="eg-timer" id="egTimer">' +
       formatClock(session.remainingSec != null ? session.remainingSec : 0) + "</span>";
     const palPref = getPalettePref();
+    const fmtSec = practice
+      ? '<h5 class="eg-fmt-pal-h eg-fmt-more-h">More</h5><div class="eg-fmt-row eg-fmt-more" role="group" aria-label="More tools">' +
+        '<button type="button" data-eg-fmt-act="star" title="Bookmark">Bookmark</button>' +
+        '<button type="button" data-eg-fmt-act="plus" title="Create group">Group</button>' +
+        '<button type="button" data-eg-fmt-act="full" title="Fullscreen">Full</button>' +
+        '<button type="button" data-eg-fmt-act="report" title="Report question">Report</button>' +
+        "</div>"
+      : "";
     const fmt = fmtOpen
       ? '<div class="eg-fmt-pop" id="egFmtPop"><h5>Text size</h5><div class="eg-fmt-row">' +
         '<button type="button" data-eg-scale="small"' + (fontScale === "small" ? ' class="on"' : "") + ">A−</button>" +
@@ -490,7 +499,7 @@
         '<button type="button" data-eg-pal="side"' + (palPref === "side" ? ' class="on"' : "") + ' title="Right sidebar">Right</button>' +
         '<button type="button" data-eg-pal="strip"' + (palPref === "strip" ? ' class="on"' : "") + ' title="Top question bar">Top</button>' +
         '<button type="button" data-eg-pal="both"' + (palPref === "both" ? ' class="on"' : "") + ' title="Right sidebar and top bar">Both</button>' +
-        "</div></div>"
+        "</div>" + fmtSec + "</div>"
       : "";
 
     const checkRow = practice
@@ -516,13 +525,18 @@
       ? '<button type="button" class="eg-btn eg-btn-close-pal" id="egFootClose" title="Close palette">✕ Close</button>'
       : "";
     /* Prev | Next ALWAYS in foot from first paint */
+    /* qxmd167: Practice gets ExamGoal actions (Mark/Clear/Save) + Show Answer; no Submit */
     const foot = practice
-      ? '<div class="eg-foot" id="egFoot">' +
-        '<div class="eg-foot-left">' + showSwitch + "</div>" +
+      ? '<div class="eg-foot eg-foot-practice" id="egFoot">' +
+        '<div class="eg-foot-left">' +
+        showSwitch +
+        '<button type="button" class="eg-btn eg-btn-review" id="qxReviewNextBtn">Mark for Review &amp; Next</button>' +
+        '<button type="button" class="eg-btn eg-btn-clear" id="qxClearBtn">Clear Response</button>' +
+        "</div>" +
         '<div class="eg-foot-right">' +
         (footClose || "") +
         '<button type="button" class="eg-btn" id="qxPrevBtn"' + (firstQ ? " disabled" : "") + ">Previous</button>" +
-        '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn"' + (lastQ ? " disabled" : "") + ">Next</button>" +
+        '<button type="button" class="eg-btn eg-btn-next" id="qxSaveBtn"' + (lastQ ? " disabled" : "") + ">Save &amp; Next</button>" +
         "</div></div>"
       : '<div class="eg-foot" id="egFoot">' +
         '<div class="eg-foot-left">' +
@@ -579,7 +593,7 @@
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
-      " eg-tools-closed eg-compact eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
+      " eg-tools-closed eg-compact eg-qxmd167 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
@@ -591,23 +605,25 @@
       '<div class="eg-top-title">' + titleEsc + ' <span class="eg-mode-pill">' + mode + "</span></div>" +
       '<div class="eg-top-tools qx-prac-tools" role="toolbar" aria-label="Question tools">' +
       (!practice ? timer : "") +
-      '<button type="button" class="eg-ico star eg-tool-btn' + (bmOn ? " on" : "") + '" id="egStarBtn" data-tip="Bookmark" title="Bookmark" aria-label="Bookmark">' +
-      (bmOn ? "★" : "☆") + '<span class="eg-tip">Bookmark</span></button>' +
-      '<button type="button" class="eg-ico eg-tool-btn" id="egPlusBtn" data-tip="Group" title="Create group" aria-label="Create group">' +
-      groupIco + '<span class="eg-tip">Group</span></button>' +
-      '<button type="button" class="eg-ico eg-tool-btn eg-allq-btn' + (allQOn ? " on" : "") + '" id="egAllQBtn" data-tip="All Q" title="' + allQTitle + '" aria-label="' + allQTitle + '" aria-expanded="' + (allQOn ? "true" : "false") + '" data-eg-cycle="' + (allQOn ? "1" : "0") + '">' +
-      gridIco + '<span class="eg-tip">All Q</span></button>' +
-      '<button type="button" class="eg-ico eg-tool-btn" id="egFullBtn" data-tip="Fullscreen" title="Fullscreen" aria-label="Fullscreen">' +
-      ico('<path d="M8 3H3v5M16 3h5v5M8 21H3v-5M21 16v5h-5"/>') + '<span class="eg-tip">Full</span></button>' +
-      '<button type="button" class="eg-ico mtk-theme-btn eg-tool-btn' + (theme === "light" ? " eg-moon" : "") + '" id="mtkThemeBtn" data-tip="Theme" title="Light / dark" aria-label="Light / dark">' +
+      /* qxmd167: primary always-visible row — Theme, Aa, All Q, Palette */
+      '<button type="button" class="eg-ico mtk-theme-btn eg-tool-btn eg-tool-pri' + (theme === "light" ? " eg-moon" : "") + '" id="mtkThemeBtn" data-tip="Theme" title="Light / dark" aria-label="Light / dark">' +
       (theme === "dark"
         ? ico('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>')
         : '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>') +
       '<span class="eg-tip">Theme</span></button>' +
-      '<button type="button" class="eg-ico eg-tool-btn" id="egFmtBtn" data-tip="Text size" title="Text size" aria-label="Text size">Aa<span class="eg-tip">Aa</span></button>' +
-      '<button type="button" class="eg-ico warn eg-tool-btn" id="mtkReportBtn" data-tip="Report" title="Report question" aria-label="Report">!<span class="eg-tip">Report</span></button>' +
-      '<button type="button" class="eg-ico eg-tool-btn eg-menu-btn eg-lines-btn' + (sideOpen ? " on" : "") + '" id="egMenuBtn" data-tip="Palette" title="' + sideTitle + '" aria-label="' + sideTitle + '" aria-expanded="' + (sideOpen ? "true" : "false") + '">' +
+      '<button type="button" class="eg-ico eg-tool-btn eg-tool-pri" id="egFmtBtn" data-tip="Text size" title="Text size" aria-label="Text size">Aa<span class="eg-tip">Aa</span></button>' +
+      '<button type="button" class="eg-ico eg-tool-btn eg-allq-btn eg-tool-pri' + (allQOn ? " on" : "") + '" id="egAllQBtn" data-tip="All Q" title="' + allQTitle + '" aria-label="' + allQTitle + '" aria-expanded="' + (allQOn ? "true" : "false") + '" data-eg-cycle="' + (allQOn ? "1" : "0") + '">' +
+      gridIco + '<span class="eg-tip">All Q</span></button>' +
+      '<button type="button" class="eg-ico eg-tool-btn eg-menu-btn eg-lines-btn eg-tool-pri' + (sideOpen ? " on" : "") + '" id="egMenuBtn" data-tip="Palette" title="' + sideTitle + '" aria-label="' + sideTitle + '" aria-expanded="' + (sideOpen ? "true" : "false") + '">' +
       menuIco + '<span class="eg-tip">Palette</span></button>' +
+      /* secondary — stay if fit; mobile CSS may tuck into Aa */
+      '<button type="button" class="eg-ico star eg-tool-btn eg-tool-sec' + (bmOn ? " on" : "") + '" id="egStarBtn" data-tip="Bookmark" title="Bookmark" aria-label="Bookmark">' +
+      (bmOn ? "★" : "☆") + '<span class="eg-tip">Bookmark</span></button>' +
+      '<button type="button" class="eg-ico eg-tool-btn eg-tool-sec" id="egPlusBtn" data-tip="Group" title="Create group" aria-label="Create group">' +
+      groupIco + '<span class="eg-tip">Group</span></button>' +
+      '<button type="button" class="eg-ico eg-tool-btn eg-tool-sec" id="egFullBtn" data-tip="Fullscreen" title="Fullscreen" aria-label="Fullscreen">' +
+      ico('<path d="M8 3H3v5M16 3h5v5M8 21H3v-5M21 16v5h-5"/>') + '<span class="eg-tip">Full</span></button>' +
+      '<button type="button" class="eg-ico warn eg-tool-btn eg-tool-sec" id="mtkReportBtn" data-tip="Report" title="Report question" aria-label="Report">!<span class="eg-tip">Report</span></button>' +
       "</div>" + fmt +
       "</header>" +
       '<div class="eg-subs">' + tabs + "</div>" +
@@ -1170,7 +1186,7 @@
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
         root.classList.remove("eg-tools-open");
-        root.classList.add("eg-tools-closed", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
+        root.classList.add("eg-tools-closed", "eg-qxmd167", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
         root.setAttribute("data-eg-cycle", bothOpen ? "1" : "0");
         const strip = root.querySelector("#egQBar");
         if (strip) {
@@ -1267,7 +1283,15 @@
       } catch (_) { /* */ }
     }
     function openEgSide() {
-      openEgBoth();
+      /* qxmd167: side only — do not force strip (keeps Palette simple/fast) */
+      try {
+        session._egSideOpen = true;
+        session._egSideCollapsed = false;
+        session._egSideUserOpened = true;
+        session._egHdrCycle = 1;
+        session._egSideIgnoreScrimUntil = Date.now() + 450;
+        syncCycleBtn();
+      } catch (_) { /* */ }
     }
     function collapseEgBoth() {
       try {
@@ -1557,6 +1581,26 @@
         syncCycleBtn();
         if (typeof showToast === "function") {
           showToast(mode === "side" ? "Palette: Right sidebar" : mode === "strip" ? "Palette: Top bar" : "Palette: Both");
+        }
+      };
+    });
+    /* qxmd167: Aa More row → proxy to toolbar buttons (no extra clutter in Practice foot) */
+    root.querySelectorAll("[data-eg-fmt-act]").forEach(function (b) {
+      b.onclick = function (e) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        var act = b.getAttribute("data-eg-fmt-act");
+        var map = { star: "#egStarBtn", plus: "#egPlusBtn", full: "#egFullBtn", report: "#mtkReportBtn" };
+        var sel = map[act];
+        var tgt = sel && root.querySelector(sel);
+        session._egFmtOpen = false;
+        try {
+          var pop = root.querySelector("#egFmtPop");
+          if (pop) pop.remove();
+        } catch (_) { /* */ }
+        if (tgt) {
+          try { tgt.click(); } catch (_) {
+            try { if (typeof tgt.onclick === "function") tgt.onclick(); } catch (_2) { /* */ }
+          }
         }
       };
     });

@@ -919,7 +919,7 @@ html[data-theme="light"] .dash-tool-card {
 .dash-marks-wrap .dash-board-block { margin-bottom: 20px; }
 
 
-/* ========== qxmd166: uniform Quantrex colour tokens (final authority) ========== */
+/* ========== qxmd167: uniform Quantrex colour tokens (final authority) ========== */
 html[data-theme="light"],
 html:not([data-theme="dark"]) {
   --primary: #0b57d0;
@@ -1111,7 +1111,7 @@ html .eg-test-root[data-test-theme="light"] .eg-top-tools .eg-tool-btn {
 .qx-home .content, #app-main .qx-home { max-width: 1100px; }
 
 
-/* qxmd166-orbit-logos: homepage track badges always visible */
+/* qxmd167-orbit-logos: homepage track badges always visible */
 .cat img, .stage-hub img.qx-ui-brand-logo, .brand-mark img.qx-ui-brand-logo {
   background: #ffffff !important;
   opacity: 1 !important;
@@ -1121,7 +1121,7 @@ html .eg-test-root[data-test-theme="light"] .eg-top-tools .eg-tool-btn {
 }
 
 
-/* qxmd166-home-uniform: kill leftover multi-hue clash on dash hero/greet */
+/* qxmd167-home-uniform: kill leftover multi-hue clash on dash hero/greet */
 html[data-theme="dark"] .dash-greet-bar,
 html[data-theme="dark"] .qx-home .dash-greet-bar {
   background: linear-gradient(135deg, #0b57d0 0%, #1e3a8a 55%, #0f172a 100%) !important;

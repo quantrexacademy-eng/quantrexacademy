@@ -1,6 +1,6 @@
 /* Quantrex Academy - Master Premium CSS v3 */
 :root {
-  --primary: #0b57d0; /* qxmd166 Quantrex blue */
+  --primary: #0b57d0; /* qxmd167 Quantrex blue */
   --primary-hover: #0842a0;
   --text-dark: #0f172a;
   --text-gray: #475569;
@@ -36,7 +36,7 @@ html[data-theme='dark'] {
   --shadow-md: 0 10px 20px rgba(0,0,0,0.5);
 }
 
-/* qxmd166: scoped — avoid global * reset when sheet coexists with app/login */
+/* qxmd167: scoped — avoid global * reset when sheet coexists with app/login */
 .qx-landing-root, .qx-landing-root * { box-sizing: border-box; }
 body.qx-landing-page { font-family: var(--font); color: var(--text-dark); background: var(--bg-white); line-height: 1.5; overflow-x: hidden; transition: background 0.3s, color 0.3s; }
 a { text-decoration: none; color: inherit; }
@@ -402,7 +402,7 @@ html[data-theme="dark"] .hero-title { color: #f8fafc; }
 html[data-theme="light"] .hero-title { color: #0f172a; }
 
 
-/* ========== qxmd166: uniform Quantrex tokens + pro cards/buttons ========== */
+/* ========== qxmd167: uniform Quantrex tokens + pro cards/buttons ========== */
 :root {
   --qx-primary: #0b57d0;
   --qx-primary-dark: #0842a0;

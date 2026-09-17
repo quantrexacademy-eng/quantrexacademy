@@ -149,11 +149,16 @@ body.qx-nav-open::before {
   }
   .qx-prac-foot,
   .mtk-controls {
-    position: sticky;
+    position: fixed;
+    left: 0;
+    right: 0;
     bottom: 0;
-    z-index: 20;
+    z-index: 90;
     background: #fff;
     padding-bottom: calc(10px + env(safe-area-inset-bottom));
+    width: 100%;
+    visibility: visible !important;
+    pointer-events: auto !important;
   }
   img.qx-pool-fig,
   img.qx-org-fig,
@@ -211,18 +216,21 @@ body.qx-nav-open::before {
     overflow-y: auto;
   }
   .mtk-test-root.allen-cbt:not(.allen-practice) .mtk-controls {
-    position: sticky;
-    left: auto;
-    right: auto;
+    position: fixed;
+    left: 0;
+    right: 0;
     bottom: 0;
-    z-index: 20;
+    z-index: 90;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    width: 100%;
     padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
     background: #fff;
     border-top: 1px solid var(--allen-border, #c5d4e8);
     box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+    visibility: visible !important;
+    pointer-events: auto !important;
   }
   .mtk-test-root.allen-cbt[data-test-theme="dark"]:not(.allen-practice) .mtk-controls {
     background: #1e2128;
@@ -276,11 +284,19 @@ body.qx-nav-open::before {
     flex-wrap: nowrap;
     gap: 8px;
     justify-content: flex-start;
-    position: sticky;
+    position: fixed;
+    left: 0;
+    right: 0;
     bottom: 0;
-    z-index: 30;
-    background: inherit;
+    width: 100%;
+    z-index: 90;
+    background: var(--eg-card, #fff);
     padding: 8px 10px calc(10px + env(safe-area-inset-bottom, 0px));
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+  body.allen-practice-active .mtk-test-root.allen-practice .mtk-main {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
   }
   body.allen-practice-active .mtk-test-root.allen-practice .mtk-controls .mtk-btn,
   body.allen-practice-active .mtk-test-root.allen-practice .eg-foot .eg-btn {
@@ -307,16 +323,10 @@ body.qx-nav-open::before {
     margin-bottom: 6px !important;
   }
   .qx-num-input, .mtk-num-input, .eg-num-input {
-    font-size: 22px !important;
-    min-height: 48px !important;
-    height: 48px !important;
-    width: 240px !important;
-    max-width: min(240px, calc(100vw - 40px)) !important;
-  }
-  .qx-num-keypad,
-  #qxNumKeypad,
-  .qx-num-key {
-    display: none !important;
+    font-size: 16px !important;
+    min-height: 34px !important;
+    height: 34px !important;
+    max-width: 110px !important;
   }
   .qx-num-hint {
     font-size: 11px !important;
@@ -515,4 +525,342 @@ html { -webkit-text-size-adjust: 100%; }
 /* Prefer landscape safe padding for CBT */
 @media (max-width: 900px) and (orientation: landscape) {
   .mtk-test-root.allen-cbt .mtk-header { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+}
+
+/* ===== qxproof1: jank polish (no regress qxexam2 / qxfast2) ===== */
+@media (max-width: 900px) {
+  body.allen-practice-active .mtk-test-root.allen-practice .mtk-main,
+  body.allen-practice-active .egmq-root .egmq-body {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  }
+  .mtk-opt, .qx-prac-opt, #qaOpts .mtk-opt, .eg-opts .mtk-opt {
+    overflow: visible;
+    max-width: 100%;
+  }
+  .mtk-opt-text, .qx-prac-opt-text, .mtk-q-text, .eg-q-stem {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+  .mtk-palette button, .mtk-pal-btn, .egmq-qpill, .qx-pal-btn {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .mtk-main, .egmq-body, .qx-prac-scroll {
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+.egmq-root:not([data-test-theme="dark"]) .egmq-qstrip {
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+}
+.egmq-root:not([data-test-theme="dark"]) .egmq-qpill { color: #64748b; }
+.egmq-root:not([data-test-theme="dark"]) .egmq-qpill.on { color: #1e4fd6; }
+@media (prefers-reduced-motion: no-preference) {
+  .mtk-opt, .qx-prac-opt, .egmq-qpill {
+    transition: background-color .12s ease, border-color .12s ease, color .12s ease;
+  }
+}
+
+/* qxtool8: Prev/Next foot never hidden on practice open */
+.eg-test-root .eg-foot,
+.eg-test-root.eg-side-collapsed .eg-foot,
+.eg-test-root.eg-qxtool8 .eg-foot,
+#egFoot {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  z-index: 14000 !important;
+}
+/* qxeg6: strip follows strip-open / strip-collapsed — NOT side-collapsed (QXFAST6 legacy killed) */
+.eg-test-root.eg-qxtool8:not(.eg-qxeg2):not(.eg-qxeg6) .eg-qbar.eg-strip-collapsed {
+  display: none !important;
+  visibility: hidden !important;
+}
+.eg-test-root.eg-qxtool8.eg-strip-open .eg-qbar.eg-strip:not(.eg-strip-collapsed),
+.eg-test-root.eg-qxtool8:not(.eg-qxeg2).eg-side-open .eg-qbar.eg-strip:not(.eg-strip-collapsed) {
+  display: flex !important;
+  visibility: visible !important;
+}
+
+
+/* qxeg6: mobile hide only when strip collapsed; desktop/strip-open show */
+.eg-test-root.eg-qxtool8:not(.eg-strip-open):not(.eg-desktop-mode) .eg-qbar.eg-strip,
+.eg-test-root.eg-qxtool8:not(.eg-desktop-mode) .eg-qbar.eg-strip-collapsed {
+  display: none !important;
+  visibility: hidden !important;
+}
+.eg-test-root.eg-qxtool8.eg-strip-open .eg-qbar.eg-strip:not(.eg-strip-collapsed),
+.eg-test-root.eg-qxtool8.eg-desktop-mode .eg-qbar.eg-strip:not(.eg-strip-collapsed),
+.eg-test-root.eg-qxtool8.eg-desktop-mode.eg-side-open .eg-qbar.eg-strip {
+  display: flex !important;
+  visibility: visible !important;
+  height: auto !important;
+  opacity: 1 !important;
+}
+.eg-test-root.eg-qxtool8.eg-desktop-mode .eg-qbar-n {
+  display: inline-flex !important;
+  visibility: visible !important;
+}
+
+
+/* QXTOOL7 P0 foot contrast */
+.eg-test-root.eg-qxtool8 .eg-foot #qxPrevBtn,
+.eg-test-root.eg-qxtool8 .eg-foot #qxNextBtn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.eg-test-root.eg-qxtool8:not([data-test-theme="dark"]) .eg-foot #qxPrevBtn {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  background: #e2e8f0 !important;
+}
+.eg-test-root.eg-qxtool8:not([data-test-theme="dark"]) .eg-foot #qxNextBtn {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background: #2563eb !important;
+}
+
+
+/* QXTOOL8 nuclear foot mobile */
+.eg-test-root.eg-qxtool8 .eg-foot, #egFoot {
+  display: flex !important;
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 99999 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.eg-test-root.eg-qxtool8:not([data-test-theme="dark"]) .eg-foot #qxPrevBtn {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+.eg-test-root.eg-qxtool8:not([data-test-theme="dark"]) .eg-foot #qxNextBtn {
+  background: #2563eb !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* QXFAST6 P0 */
+/* qxeg1: legacy qxfast6 coupling kept for non-qxeg1 only */
+.eg-test-root.eg-qxtool8:not(.eg-qxeg1).eg-side-collapsed #egQBar,
+.eg-test-root.eg-qxtool8:not(.eg-qxeg1):not(.eg-desktop-mode):not(.eg-side-open) #egQBar {
+  display: none !important; visibility: hidden !important; height: 0 !important;
+}
+.eg-test-root.eg-qxtool8:not(.eg-qxeg1).eg-side-collapsed #egSide,
+.eg-test-root.eg-qxtool8:not(.eg-qxeg1):not(.eg-desktop-mode):not(.eg-side-open) #egSide {
+  display: none !important; visibility: hidden !important;
+}
+.eg-test-root.eg-qxtool8 #egFoot, .eg-test-root.eg-qxtool8 .eg-foot {
+  z-index: 200000 !important; pointer-events: auto !important;
+}
+
+
+/* QXEG1: strip/side independent on mobile — do not couple strip to side-open */
+.eg-test-root.eg-qxeg1.eg-strip-collapsed #egQBar,
+.eg-test-root.eg-qxeg1:not(.eg-strip-open) #egQBar {
+  display: none !important; visibility: hidden !important; height: 0 !important;
+}
+.eg-test-root.eg-qxeg1.eg-strip-open #egQBar {
+  display: flex !important; visibility: visible !important; height: auto !important; opacity: 1 !important;
+}
+.eg-test-root.eg-qxeg1.eg-side-collapsed #egSide,
+.eg-test-root.eg-qxeg1:not(.eg-side-open) #egSide {
+  display: none !important; visibility: hidden !important;
+}
+.eg-test-root.eg-qxeg1.eg-side-open #egSide {
+  display: flex !important; visibility: visible !important;
+}
+/* Override qxfast6 rules that hid strip whenever side collapsed */
+.eg-test-root.eg-qxeg1.eg-side-collapsed.eg-strip-open #egQBar {
+  display: flex !important; visibility: visible !important; height: auto !important;
+}
+.eg-test-root.eg-qxeg1.eg-qxtool8.eg-side-collapsed.eg-strip-open #egQBar {
+  display: flex !important; visibility: visible !important; height: auto !important;
+}
+
+
+/* ========== QXEG2 mobile: independent strip + full-width + nuclear foot ========== */
+.eg-test-root.eg-qxeg2.eg-side-collapsed.eg-strip-open #egQBar,
+.eg-test-root.eg-qxeg2.eg-strip-open #egQBar {
+  display: flex !important;
+  visibility: visible !important;
+  height: auto !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.eg-test-root.eg-qxeg2.eg-strip-collapsed #egQBar,
+.eg-test-root.eg-qxeg2:not(.eg-strip-open) #egQBar {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+}
+.eg-test-root.eg-qxeg2.eg-side-collapsed #egSide,
+.eg-test-root.eg-qxeg2:not(.eg-side-open) #egSide {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  pointer-events: none !important;
+}
+.eg-test-root.eg-qxeg2.eg-side-collapsed .eg-body,
+.eg-test-root.eg-qxeg2:not(.eg-side-open) .eg-body {
+  grid-template-columns: 1fr !important;
+  width: 100% !important;
+}
+.eg-test-root.eg-qxeg2.eg-side-collapsed .eg-main,
+.eg-test-root.eg-qxeg2:not(.eg-side-open) .eg-main {
+  width: 100% !important;
+  max-width: 100% !important;
+  grid-column: 1 / -1 !important;
+}
+.eg-test-root.eg-qxeg2 #egFoot,
+.eg-test-root.eg-qxeg2 .eg-foot {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 2147483000 !important;
+}
+.eg-test-root.eg-qxeg2 #qxPrevBtn,
+.eg-test-root.eg-qxeg2 #qxNextBtn,
+.eg-test-root.eg-qxeg2 #qxSaveBtn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  min-height: 48px !important;
+}
+
+/* qxeg4: strip independent of side; foot never buried */
+.eg-test-root.eg-qxeg4.eg-strip-open #egQBar,
+.eg-test-root.eg-qxeg4.eg-side-collapsed.eg-strip-open #egQBar,
+.eg-test-root.eg-qxeg4.eg-qxtool8.eg-side-collapsed.eg-strip-open #egQBar {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  min-height: 42px !important;
+  pointer-events: auto !important;
+}
+.eg-test-root.eg-qxeg4 #egFoot,
+.eg-test-root.eg-qxeg4 .eg-foot,
+.eg-test-root.eg-qxeg4 #qxPrevBtn,
+.eg-test-root.eg-qxeg4 #qxNextBtn,
+.eg-test-root.eg-qxeg4 #qxSaveBtn {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  z-index: 2147483000 !important;
+}
+.eg-test-root.eg-qxeg4 #qxPrevBtn,
+.eg-test-root.eg-qxeg4 #qxNextBtn,
+.eg-test-root.eg-qxeg4 #qxSaveBtn {
+  display: inline-flex !important;
+  z-index: 2147483001 !important;
+}
+
+
+/* qxeg5: strip independent of side; raised foot never buried */
+.eg-test-root.eg-qxeg5.eg-strip-open #egQBar,
+.eg-test-root.eg-qxeg5.eg-side-collapsed.eg-strip-open #egQBar,
+.eg-test-root.eg-qxeg5.eg-qxtool8.eg-side-collapsed.eg-strip-open #egQBar {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-height: 56px !important;
+}
+.eg-test-root.eg-qxeg5 #egFoot,
+.eg-test-root.eg-qxeg5 .eg-foot,
+.eg-test-root.eg-qxeg5 #qxPrevBtn,
+.eg-test-root.eg-qxeg5 #qxNextBtn,
+.eg-test-root.eg-qxeg5 #qxSaveBtn {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  z-index: 2147483000 !important;
+}
+.eg-test-root.eg-qxeg5 #egFoot,
+.eg-test-root.eg-qxeg5 .eg-foot {
+  bottom: max(8px, env(safe-area-inset-bottom, 0px)) !important;
+}
+.eg-test-root.eg-qxeg5 #qxPrevBtn,
+.eg-test-root.eg-qxeg5 #qxNextBtn,
+.eg-test-root.eg-qxeg5 #qxSaveBtn {
+  display: inline-flex !important;
+  z-index: 2147483001 !important;
+}
+
+/* ========== QXEG6 mobile nuclear strip ========== */
+.eg-test-root.eg-qxeg6.eg-strip-open #egQBar,
+.eg-test-root.eg-qxeg6.eg-strip-open.eg-side-collapsed #egQBar,
+.eg-test-root.eg-qxeg6.eg-qxtool8.eg-side-collapsed.eg-strip-open #egQBar {
+  display: flex !important;
+  visibility: visible !important;
+  height: auto !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.eg-test-root.eg-qxeg6.eg-side-open #egSide {
+  display: flex !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+.eg-test-root.eg-qxeg6 #egFoot,
+.eg-test-root.eg-qxeg6 .eg-foot,
+.eg-test-root.eg-qxeg6 #qxPrevBtn,
+.eg-test-root.eg-qxeg6 #qxNextBtn,
+.eg-test-root.eg-qxeg6 #qxSaveBtn {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.eg-test-root.eg-qxeg6 #qxPrevBtn,
+.eg-test-root.eg-qxeg6 #qxNextBtn,
+.eg-test-root.eg-qxeg6 #qxSaveBtn {
+  display: inline-flex !important;
+}
+
+
+/* ========== qxmd167: mobile Practice toolbar + side-only palette ========== */
+@media (max-width: 720px) {
+  .eg-test-root .eg-top-tools,
+  .eg-test-root.eg-qxtool8 .eg-top-tools,
+  .eg-test-root.eg-qxmd167 .eg-top-tools {
+    max-width: none !important;
+    overflow-x: visible !important;
+    overflow: visible !important;
+    flex-wrap: wrap !important;
+  }
+  .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-tool-pri {
+    display: inline-flex !important;
+    visibility: visible !important;
+  }
+  .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-tool-sec {
+    display: none !important;
+  }
+}
+
+/* Strip never forced by side-open alone */
+.eg-test-root.eg-qxmd167.eg-side-open:not(.eg-strip-open) #egQBar,
+.eg-test-root.eg-qxmd167.eg-qxtool8.eg-side-open:not(.eg-strip-open) .eg-qbar.eg-strip,
+.eg-test-root.eg-qxmd167.eg-qxtool8.eg-desktop-mode.eg-side-open:not(.eg-strip-open) .eg-qbar.eg-strip {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }

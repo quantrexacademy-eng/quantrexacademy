@@ -96,12 +96,13 @@
   }
 
   function getPaletteMode() {
-    var v = lsGet(PREF.palette, "both");
-    return v === "side" || v === "strip" || v === "both" ? v : "both";
+    /* qxmd167: default side (right sidebar only) — simpler/faster than Both */
+    var v = lsGet(PREF.palette, "side");
+    return v === "side" || v === "strip" || v === "both" ? v : "side";
   }
 
   function setPaletteMode(mode) {
-    var m = mode === "side" || mode === "strip" || mode === "both" ? mode : "both";
+    var m = mode === "side" || mode === "strip" || mode === "both" ? mode : "side";
     lsSet(PREF.palette, m);
     return m;
   }

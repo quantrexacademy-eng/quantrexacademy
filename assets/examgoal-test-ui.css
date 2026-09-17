@@ -1,7 +1,7 @@
 /* ExamGOAL-faithful PYQ practice/test chrome (ss 966, 971–973) */
 .eg-test-root,
 .eg-test-root.mtk-test-root {
-  --eg-blue: #0b57d0; /* qxmd166 */
+  --eg-blue: #0b57d0; /* qxmd167 */
   --eg-blue-2: #3b82f6;
   --eg-header: #0b57d0;
   --eg-tab: #3b82f6;
@@ -660,7 +660,7 @@ body.marks-test-active::before { display: none !important; }
 .allen-practice,
 .qx-practice-page,
 .mtk-test-root {
-  --eg-blue: #0b57d0; /* qxmd166 */
+  --eg-blue: #0b57d0; /* qxmd167 */
   --eg-card: #ffffff;
   --eg-text: #0f172a;
   --eg-muted: #64748b;
@@ -4920,3 +4920,256 @@ html[data-theme="light"] .qx-sol-card .katex,
 html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
   color: #0f172a !important;
 }
+
+
+/* ========== qxmd167: simple Practice chrome · instant Palette · mobile toolbar ========== */
+
+.eg-test-root.eg-qxmd167,
+.eg-test-root.eg-qxeg7.eg-qxmd167 {
+  --eg-chrome-ms: 140ms;
+  --eg-chrome-ease: cubic-bezier(.2,.8,.2,1);
+}
+
+/* Palette open: beat [hidden] so first paint is immediate (no wait for attr sync) */
+.eg-test-root.eg-side-open #egSide,
+.eg-test-root.eg-side-open #egSide[hidden],
+.eg-test-root.eg-qxmd167.eg-side-open #egSide,
+.eg-test-root.eg-qxmd167.eg-side-open #egSide[hidden] {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Side slide ≤150ms */
+.eg-test-root.eg-qxmd167 #egSide,
+.eg-test-root.eg-qxmd167 .eg-side {
+  transition:
+    opacity var(--eg-chrome-ms, 140ms) var(--eg-chrome-ease, cubic-bezier(.2,.8,.2,1)),
+    transform var(--eg-chrome-ms, 140ms) var(--eg-chrome-ease, cubic-bezier(.2,.8,.2,1)),
+    visibility 0s linear var(--eg-chrome-ms, 140ms) !important;
+  will-change: opacity, transform;
+}
+.eg-test-root.eg-qxmd167.eg-side-open #egSide,
+.eg-test-root.eg-qxmd167.eg-side-open .eg-side {
+  transform: translateX(0) translateZ(0) !important;
+  transition:
+    opacity var(--eg-chrome-ms, 140ms) var(--eg-chrome-ease, cubic-bezier(.2,.8,.2,1)),
+    transform var(--eg-chrome-ms, 140ms) var(--eg-chrome-ease, cubic-bezier(.2,.8,.2,1)),
+    visibility 0s linear 0s !important;
+}
+.eg-test-root.eg-qxmd167:not(.eg-side-open) #egSide:not([hidden]),
+.eg-test-root.eg-qxmd167.eg-side-collapsed #egSide:not([hidden]) {
+  transform: translateX(16px) translateZ(0) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+/* Closed + [hidden]: hard hide (no thrash) */
+.eg-test-root.eg-qxmd167:not(.eg-side-open) #egSide[hidden],
+.eg-test-root.eg-qxmd167.eg-side-collapsed #egSide[hidden] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* CRITICAL: strip follows strip-open ONLY — Palette(side) must NOT open top strip */
+.eg-test-root.eg-qxmd167.eg-side-open:not(.eg-strip-open) #egQBar,
+.eg-test-root.eg-qxmd167.eg-side-open:not(.eg-strip-open) .eg-qbar.eg-strip,
+.eg-test-root.eg-qxmd167.eg-desktop-mode.eg-side-open:not(.eg-strip-open) #egQBar,
+.eg-test-root.eg-qxmd167.eg-desktop-mode.eg-side-open:not(.eg-strip-open) .eg-qbar.eg-strip,
+.eg-test-root.eg-qxmd167.eg-qxtool8.eg-side-open:not(.eg-strip-open) #egQBar,
+.eg-test-root.eg-qxmd167.eg-qxtool8.eg-desktop-mode.eg-side-open:not(.eg-strip-open) #egQBar,
+.eg-test-root.eg-qxmd167.eg-qxtool8.eg-desktop-mode.eg-side-open:not(.eg-strip-open) .eg-qbar.eg-strip {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  border: 0 !important;
+}
+
+/* Toolbar: never hide behind overflow / 58% cap */
+.eg-test-root.eg-qxmd167 .eg-top {
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  row-gap: 2px !important;
+  overflow: visible !important;
+}
+.eg-test-root.eg-qxmd167 .eg-top-title {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+.eg-test-root.eg-qxmd167 .eg-top-tools,
+.eg-test-root.eg-qxmd167.eg-qxtool8 .eg-top-tools,
+.eg-test-root.eg-qxmd167 .eg-top-tools.qx-prac-tools {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 1px !important;
+  max-width: none !important;
+  width: auto !important;
+  overflow: visible !important;
+  overflow-x: visible !important;
+  -webkit-overflow-scrolling: auto;
+}
+.eg-test-root.eg-qxmd167 .eg-top-tools .eg-tool-pri,
+.eg-test-root.eg-qxmd167 .eg-top-tools #mtkThemeBtn,
+.eg-test-root.eg-qxmd167 .eg-top-tools #egFmtBtn,
+.eg-test-root.eg-qxmd167 .eg-top-tools #egAllQBtn,
+.eg-test-root.eg-qxmd167 .eg-top-tools #egMenuBtn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  flex: 0 0 auto !important;
+}
+
+@media (max-width: 720px) {
+  /* Kill legacy 58% overflow-hide */
+  .eg-test-root.eg-qxmd167 .eg-top-tools,
+  .eg-test-root .eg-top-tools {
+    max-width: none !important;
+    overflow-x: visible !important;
+    flex-wrap: wrap !important;
+  }
+  .eg-test-root.eg-qxmd167 .eg-top {
+    flex-wrap: wrap !important;
+    min-height: 44px !important;
+  }
+  /* Shrink icons so primary row fits; title truncates */
+  .eg-test-root.eg-qxmd167.eg-qxtool8 .eg-top-tools .eg-tool-btn,
+  .eg-test-root.eg-qxmd167.eg-qxtool8 .eg-top-tools .eg-ico,
+  .eg-test-root.eg-qxmd167 .eg-top-tools .eg-tool-btn,
+  .eg-test-root.eg-qxmd167 .eg-top-tools .eg-ico {
+    min-width: 36px !important;
+    width: auto !important;
+    min-height: 36px !important;
+    padding: 2px 3px !important;
+  }
+  .eg-test-root.eg-qxmd167.eg-qxtool8 .eg-top-tools .eg-tip {
+    font-size: 8px !important;
+  }
+  /* Practice: if still crowded, tuck secondary into Aa More (keep primary row clean) */
+  .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-tool-sec {
+    display: none !important;
+  }
+  .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-fmt-more,
+  .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-fmt-more-h {
+    display: flex !important;
+  }
+}
+
+/* Desktop / wide: secondary stay in toolbar; Aa More optional */
+@media (min-width: 721px) {
+  .eg-test-root.eg-qxmd167 .eg-top-tools .eg-tool-sec {
+    display: inline-flex !important;
+  }
+  .eg-test-root.eg-qxmd167 .eg-fmt-more,
+  .eg-test-root.eg-qxmd167 .eg-fmt-more-h {
+    display: none !important;
+  }
+}
+
+.eg-fmt-pop .eg-fmt-more {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.eg-fmt-pop .eg-fmt-more button {
+  flex: 1 1 40%;
+  min-width: 0;
+  font-size: 12px;
+  padding: 6px 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eg-test-root.eg-qxmd167 #egSide,
+  .eg-test-root.eg-qxmd167 .eg-side,
+  .eg-test-root.eg-qxmd167 #egQBar {
+    transition: none !important;
+  }
+}
+
+
+/* ========== qxmd167-practice-foot: ExamGoal actions tidy on Practice ========== */
+.eg-test-root.eg-qxmd167 .eg-foot-practice {
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  align-items: center !important;
+}
+.eg-test-root.eg-qxmd167 .eg-foot-practice .eg-foot-left {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 6px !important;
+  width: auto !important;
+  flex: 1 1 auto !important;
+}
+.eg-test-root.eg-qxmd167 .eg-foot-practice .eg-foot-right {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  flex: 1 1 auto !important;
+  width: auto !important;
+  grid-template-columns: none !important;
+}
+.eg-test-root.eg-qxmd167 .eg-foot-practice .eg-btn {
+  min-height: 42px !important;
+  font-size: 12px !important;
+  padding: 8px 10px !important;
+  white-space: nowrap !important;
+}
+.eg-test-root.eg-qxmd167 .eg-foot-practice .eg-show {
+  margin-right: 4px;
+}
+@media (max-width: 720px) {
+  .eg-test-root.eg-qxmd167 .eg-foot-practice .eg-btn-review {
+    flex: 1 1 100%;
+  }
+  .eg-test-root.eg-qxmd167 .eg-foot-practice .eg-btn-clear {
+    flex: 1 1 auto;
+  }
+  .eg-test-root.eg-qxmd167.eg-qxtool8 .eg-foot-practice .eg-foot-right {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    width: 100% !important;
+    flex: 1 1 100% !important;
+  }
+}
+
+/* Radio never overlaps letter circle — letter IS the control (sitewide) */
+.eg-test-root .mtk-opt-radio,
+.mtk-test-root .mtk-opt-radio,
+.qx-practice-page .mtk-opt-radio,
+.allen-practice .mtk-opt-radio,
+.eg-test-root .mtk-opt:not(.mtk-opt-multi) .mtk-opt-radio,
+.mtk-test-root .mtk-opt:not(.mtk-opt-multi) .mtk-opt-radio {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+}
+.eg-test-root .mtk-opt.selected .mtk-opt-letter,
+.eg-test-root .mtk-opt.selected .qx-opt-circle,
+.mtk-test-root .mtk-opt.selected .mtk-opt-letter,
+.mtk-test-root .mtk-opt.selected .qx-opt-circle,
+.eg-test-root .qx-prac-opt.selected .mtk-opt-letter,
+.eg-test-root .qx-prac-opt.selected .qx-opt-circle {
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.45);
+}
+
+/* Practice legend marked colors */
+.eg-legend .eg-dot.marked { background: #a855f7; }
+.eg-legend .eg-dot.att-mark { background: #a855f7; box-shadow: 0 0 0 2px #22c55e; }
