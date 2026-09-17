@@ -201,7 +201,7 @@
     const visited = !!(session.visited && session.visited.has(i));
     const marked = !!(session.review && session.review.has(i));
     const practice = !!session.practiceMode;
-    const revealed = !!(session._egShowAnswer || (session._egChecked && session._egChecked[i]));
+    const revealed = !!(session._egShowAnswer || egCheckedAt(session, i));
     if (practice) {
       if (revealed && hasAns) {
         return (session._egCorrect && session._egCorrect[i]) ? "eg-correct" : "eg-wrong";
@@ -225,6 +225,24 @@
       : (isMultiQ ? (sc.multiCorrect != null ? sc.multiCorrect : 4) : (sc.correct != null ? sc.correct : 4));
     const neg = isNumQ ? 0 : (sc.wrong != null ? sc.wrong : -1);
     return { pos: pos, neg: neg };
+  }
+
+
+  /** True if practice checked/show flags say reveal solution for index i */
+  function egCheckedAt(session, i) {
+    if (!session || !session._egChecked) return false;
+    if (session._egChecked[i]) return true;
+    try {
+      if (session._egChecked[String(i)]) return true;
+    } catch (_) { /* */ }
+    return false;
+  }
+
+  function wantShowSol(session, idx) {
+    if (!session || !session.practiceMode) return false;
+    if (session._egShowAnswer) return true;
+    var i = idx != null ? idx : session.idx;
+    return egCheckedAt(session, i);
   }
 
   function solutionHtml(q) {
@@ -279,7 +297,8 @@
   }
 
   function render(ctx) {
-    ensureCss();
+    try {
+    try { ensureCss(); } catch (_egCssErr) { /* never abort render for CSS */ }
     const session = ctx.session;
     normalizeSessionSets(session);
     const q = ctx.q;
@@ -352,7 +371,7 @@
 
     const titleEsc = String(session.title || "Test").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const stem = typeof ctx.renderQuestionText === "function" ? ctx.renderQuestionText(q, ctx.textReady) : "";
-    const showSol = !!(practice && (session._egShowAnswer || (session._egChecked && session._egChecked[session.idx])));
+    const showSol = wantShowSol(session, session.idx);
     const hasAns = ctx.hasAnswerAt ? ctx.hasAnswerAt(session.idx) : session.answers[session.idx] != null;
     const fmtOpen = !!session._egFmtOpen;
     const starred = session.review && session.review.has(session.idx);
@@ -568,13 +587,18 @@
       (ctx.sectionInstr || "") +
       '<div class="' + (ctx.optsClass || "mtk-options mtk-options-grid") + ' eg-opts" id="qxOpts">' + (ctx.opts || "") + "</div>" +
       checkRow +
-      (showSol ? '<div class="eg-sol-panel" id="egSolPanel" role="region" aria-label="Solution">' +
-        '<header class="eg-sol-panel-head">' +
-        '<strong>Solution</strong>' +
-        '<button type="button" class="eg-sol-panel-close" id="egSolClose" title="Close">✕</button>' +
-        '</header>' +
-        '<div class="eg-sol eg-sol-inline" id="egSol">' + solutionHtml(q) + '</div>' +
-        '</div>' : "") +
+      (showSol ? (function () {
+        var solInner = "";
+        try { solInner = solutionHtml(q); } catch (_solErr) { solInner = ""; }
+        if (!solInner) solInner = '<p class="qx-sol-missing">Solution unavailable</p>';
+        return '<div class="eg-sol-panel" id="egSolPanel" role="region" aria-label="Solution">' +
+          '<header class="eg-sol-panel-head">' +
+          '<strong>Solution</strong>' +
+          '<button type="button" class="eg-sol-panel-close" id="egSolClose" title="Close">✕</button>' +
+          '</header>' +
+          '<div class="eg-sol eg-sol-inline" id="egSol">' + solInner + '</div>' +
+          '</div>';
+      })() : "") +
       '</div>' +
       "</div>" +
       '<aside class="eg-side" id="egSide"' + (sideOpen ? ' aria-hidden="false"' : ' hidden aria-hidden="true"') + '>' +
@@ -586,11 +610,32 @@
       foot +
       previewHtml +
       "</div>";
+    } catch (_renderErr) {
+      try { console.warn("[ExamgoalTestUI.render]", _renderErr); } catch (_) { /* */ }
+      var sess = ctx && ctx.session;
+      var practiceFail = !!(sess && sess.practiceMode);
+      var wantSolFail = false;
+      try { wantSolFail = wantShowSol(sess, sess && sess.idx); } catch (_) { wantSolFail = !!(sess && (sess._egShowAnswer || egCheckedAt(sess, sess && sess.idx))); }
+      var fallbackSol = wantSolFail
+        ? '<div class="eg-sol-panel" id="egSolPanel" role="region" aria-label="Solution">' +
+          '<header class="eg-sol-panel-head"><strong>Solution</strong>' +
+          '<button type="button" class="eg-sol-panel-close" id="egSolClose" title="Close">✕</button></header>' +
+          '<div class="eg-sol eg-sol-inline" id="egSol"><p class="qx-sol-missing">Solution unavailable</p></div></div>'
+        : "";
+      var titleFail = String((sess && sess.title) || "Test").replace(/</g, "&lt;");
+      return '<div class="eg-test-root mtk-test-root eg-sol-showing" data-ui="examgoal" data-eg-mode="' +
+        (practiceFail ? "practice" : "test") + '">' +
+        '<header class="eg-top"><div class="eg-top-title">' + titleFail + "</div></header>" +
+        '<div class="eg-body"><div class="eg-main"><div class="eg-q-card">' +
+        '<p class="qx-sol-missing">Unable to render question chrome.</p>' +
+        fallbackSol +
+        "</div></div></div></div>";
+    }
   }
 
   function applyOptDecor(root, session, q, idx) {
     if (!root || !q) return;
-    const show = !!(session._egShowAnswer || (session._egChecked && session._egChecked[idx]));
+    const show = !!(session._egShowAnswer || egCheckedAt(session, idx));
     if (!show || typeof QuantrexQFormat === "undefined") return;
     let cor = [];
     try { cor = QuantrexQFormat.correctIndices(q) || []; } catch (_) { cor = []; }
@@ -677,17 +722,134 @@
     if (!session._egChecked) session._egChecked = {};
     if (!session._egCorrect) session._egCorrect = {};
     session._egChecked[session.idx] = true;
+    try { session._egChecked[String(session.idx)] = true; } catch (_) { /* */ }
     try {
       if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.grade) {
         const g = QuantrexQFormat.grade(q, chosen);
         session._egCorrect[session.idx] = !!(g && g.correct);
+        try { session._egCorrect[String(session.idx)] = session._egCorrect[session.idx]; } catch (_) { /* */ }
       } else {
         session._egCorrect[session.idx] = chosen === q.answer;
+        try { session._egCorrect[String(session.idx)] = session._egCorrect[session.idx]; } catch (_) { /* */ }
       }
     } catch (_) {
       session._egCorrect[session.idx] = chosen === q.answer;
+      try { session._egCorrect[String(session.idx)] = session._egCorrect[session.idx]; } catch (_) { /* */ }
     }
     return true;
+  }
+
+
+  /**
+   * qxmd162: Immediate DOM Solution reveal for Practice Check/Show Answer.
+   * Does not rely on api.refresh() — inserts/replaces #egSolPanel even if refresh fails.
+   */
+  function revealPracticeSolution(root, api) {
+    if (!root || !api || !api.session) return false;
+    const session = api.session;
+    if (!session.practiceMode) return false;
+    if (!wantShowSol(session, session.idx)) return false;
+    let q = null;
+    try { q = api.getQ ? api.getQ(session.ids[session.idx]) : null; } catch (_) { q = null; }
+    let solInner = "";
+    try { solInner = solutionHtml(q); } catch (_solErr) { solInner = ""; }
+    if (!solInner) solInner = '<p class="qx-sol-missing">Solution unavailable</p>';
+
+    const panelHtml =
+      '<div class="eg-sol-panel" id="egSolPanel" role="region" aria-label="Solution">' +
+      '<header class="eg-sol-panel-head">' +
+      '<strong>Solution</strong>' +
+      '<button type="button" class="eg-sol-panel-close" id="egSolClose" title="Close">✕</button>' +
+      '</header>' +
+      '<div class="eg-sol eg-sol-inline" id="egSol">' + solInner + '</div>' +
+      '</div>';
+
+    try {
+      const existing = root.querySelector("#egSolPanel");
+      if (existing) {
+        existing.outerHTML = panelHtml;
+      } else {
+        const actionRow = root.querySelector(".eg-action-row");
+        const opts = root.querySelector("#qxOpts");
+        const card = root.querySelector(".eg-q-card");
+        const insertAfter = actionRow || opts;
+        if (insertAfter && insertAfter.parentNode) {
+          insertAfter.insertAdjacentHTML("afterend", panelHtml);
+        } else if (card) {
+          card.insertAdjacentHTML("beforeend", panelHtml);
+        } else {
+          return false;
+        }
+      }
+    } catch (_domErr) {
+      try { console.warn("[revealPracticeSolution]", _domErr); } catch (_) { /* */ }
+      return false;
+    }
+
+    try { root.classList.add("eg-sol-showing"); } catch (_) { /* */ }
+    const qArea = root.querySelector("#egQArea");
+    if (qArea) {
+      try {
+        qArea.classList.add("eg-stem-sol-hidden");
+        qArea.setAttribute("hidden", "");
+        qArea.setAttribute("aria-hidden", "true");
+      } catch (_) { /* */ }
+    }
+
+    const panel = root.querySelector("#egSolPanel");
+    const solClose = root.querySelector("#egSolClose");
+    if (solClose) {
+      solClose.onclick = function (e) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        session._egShowAnswer = false;
+        if (session._egChecked) {
+          try { delete session._egChecked[session.idx]; } catch (_) { /* */ }
+          try { delete session._egChecked[String(session.idx)]; } catch (_) { /* */ }
+        }
+        const showEl = root.querySelector("#egShowAns");
+        if (showEl) showEl.checked = false;
+        try {
+          const p = root.querySelector("#egSolPanel");
+          if (p) p.remove();
+          root.classList.remove("eg-sol-showing");
+          if (qArea) {
+            qArea.classList.remove("eg-stem-sol-hidden");
+            qArea.removeAttribute("hidden");
+            qArea.setAttribute("aria-hidden", "false");
+          }
+        } catch (_) { /* */ }
+        if (typeof api.refresh === "function") {
+          try { api.refresh(); } catch (_) { /* */ }
+        }
+      };
+    }
+
+    try { applyOptDecor(root, session, q, session.idx); } catch (_) { /* */ }
+    try {
+      if (panel && typeof Mx !== "undefined") {
+        if (Mx.afterRender) Mx.afterRender(panel);
+        else if (Mx.afterRenderLight) Mx.afterRenderLight(panel);
+      }
+    } catch (_) { /* */ }
+    if (panel && panel.scrollIntoView) {
+      try { panel.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (_) { /* */ }
+    }
+    return !!panel;
+  }
+
+  function hidePracticeSolutionDom(root) {
+    if (!root) return;
+    try {
+      const p = root.querySelector("#egSolPanel");
+      if (p) p.remove();
+      root.classList.remove("eg-sol-showing");
+      const qArea = root.querySelector("#egQArea");
+      if (qArea) {
+        qArea.classList.remove("eg-stem-sol-hidden");
+        qArea.removeAttribute("hidden");
+        qArea.setAttribute("aria-hidden", "false");
+      }
+    } catch (_) { /* */ }
   }
 
   function bind(root, api) {
@@ -725,21 +887,44 @@
     const check = root.querySelector("#egCheckBtn");
     if (check) check.onclick = function (e) {
       if (e) { e.preventDefault(); e.stopPropagation(); }
-      checkAnswer(session, api.getQ);
-      if (typeof api.refresh === "function") api.refresh();
+      var ok = false;
+      try { ok = !!checkAnswer(session, api.getQ); } catch (_) { ok = false; }
+      if (ok) {
+        try { revealPracticeSolution(root, api); } catch (_rev) {
+          try { console.warn("[egCheckBtn reveal]", _rev); } catch (_) { /* */ }
+        }
+      }
+      if (typeof api.refresh === "function") {
+        try { api.refresh(); } catch (_) { /* */ }
+      }
     };
     const show = root.querySelector("#egShowAns");
     if (show) show.onchange = function () {
       session._egShowAnswer = !!show.checked;
-      if (typeof api.refresh === "function") api.refresh();
+      if (session._egShowAnswer) {
+        try { revealPracticeSolution(root, api); } catch (_rev) {
+          try { console.warn("[egShowAns reveal]", _rev); } catch (_) { /* */ }
+        }
+      } else {
+        hidePracticeSolutionDom(root);
+      }
+      if (typeof api.refresh === "function") {
+        try { api.refresh(); } catch (_) { /* */ }
+      }
     };
     const solClose = root.querySelector("#egSolClose");
     if (solClose) solClose.onclick = function (e) {
       if (e) { e.preventDefault(); e.stopPropagation(); }
       session._egShowAnswer = false;
-      if (session._egChecked) delete session._egChecked[session.idx];
+      if (session._egChecked) {
+        try { delete session._egChecked[session.idx]; } catch (_) { /* */ }
+        try { delete session._egChecked[String(session.idx)]; } catch (_) { /* */ }
+      }
       if (show) show.checked = false;
-      if (typeof api.refresh === "function") api.refresh();
+      hidePracticeSolutionDom(root);
+      if (typeof api.refresh === "function") {
+        try { api.refresh(); } catch (_) { /* */ }
+      }
     };
     // Typeset inline bottom solution panel math
     try {
@@ -1554,6 +1739,10 @@
     normalizeSessionSets: normalizeSessionSets,
     toIndexSet: toIndexSet,
     chromeFlags: chromeFlags,
-    syncTheme: syncTheme
+    syncTheme: syncTheme,
+    revealPracticeSolution: revealPracticeSolution,
+    wantShowSol: wantShowSol,
+    egCheckedAt: egCheckedAt,
+    solutionHtml: solutionHtml
   };
 })(window);

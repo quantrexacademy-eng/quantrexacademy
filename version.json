@@ -1,10 +1,10 @@
 {
-  "build": "qxmd161",
-  "cache": "qx-pwa-qxmd161",
-  "title": "qxmd161 · Check/Show Answer stem-DOM + orphan $⇒ + Mx try/catch",
-  "body": "Practice Check/Show Answer: keep stem HTML in #egQArea DOM (CSS-hide only; omitting stem emptied area and made buttons look dead). stripLeadingDefEchoes/tidyAfterStemCut repair leading orphan $ before ⇒ (Q33261). formatBody/renderBlock wrap Mx.html in try/catch so KaTeX throw never aborts Practice refresh. No Vercel.",
+  "build": "qxmd162",
+  "cache": "qx-pwa-qxmd162",
+  "title": "qxmd162 \u00b7 Practice Solution panel DOM reveal + render never-throw",
+  "body": "Practice Check/Show Answer: immediate #egSolPanel DOM insert via revealPracticeSolution (does not rely on refresh alone). ExamgoalTestUI.render never throws \u2014 ensureCss/solutionHtml/render wrapped; fallback Solution unavailable. showSol gate accepts String(idx) _egChecked keys. paintQuestionNow force-clears stuck data-qx-painting after 50ms. No Vercel.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1789671000000
+  "ts": 1789672800000
 }
