@@ -30,16 +30,6 @@ const EXAMS = {
   }
 };
 
-function _qxBrandQuestionMeta(q) {
-  if (!q) return q;
-  if (typeof QuantrexStrip !== "undefined" && QuantrexStrip.displayText) {
-    if (q.source) q.source = QuantrexStrip.displayText(q.source);
-    if (q.paperSource) q.paperSource = QuantrexStrip.displayText(q.paperSource);
-    if (q.examName) q.examName = QuantrexStrip.displayText(q.examName);
-  }
-  return q;
-}
-
 const CHAPTERS = {
   "Botany": [
     "Anatomy of Flowering Plants",
@@ -101,7 +91,7 @@ const CHAPTERS = {
     "Alternating Current",
     "Atomic Physics",
     "Capacitance",
-    "Center of Mass, Momentum and Collision",
+    "Center of Mass Momentum and Collision",
     "Communication System",
     "Current Electricity",
     "Dual Nature of Matter",
@@ -117,8 +107,8 @@ const CHAPTERS = {
     "Mathematics in Physics",
     "Mechanical Properties of Fluids",
     "Mechanical Properties of Solids",
-    "Motion in One Dimension",
-    "Motion in Two Dimensions",
+    "Motion In One Dimension",
+    "Motion In Two Dimensions",
     "Nuclear Physics",
     "Oscillations",
     "Ray Optics",
@@ -129,7 +119,7 @@ const CHAPTERS = {
     "Units and Dimensions",
     "Wave Optics",
     "Waves and Sound",
-    "Work, Power and Energy"
+    "Work Power Energy"
   ],
   "Zoology": [
     "Biotechnology - Principles and Processes",
@@ -155,7 +145,7 @@ const CHAPTERS = {
   "Mathematics": [
     "Application of Derivatives",
     "Area Under Curves",
-    "Basics of Mathematics",
+    "Basic of Mathematics",
     "Binary Numbers",
     "Binomial Theorem",
     "Circle",
@@ -178,7 +168,7 @@ const CHAPTERS = {
     "Matrices",
     "Pair of Lines",
     "Parabola",
-    "Permutation and Combination",
+    "Permutation Combination",
     "Probability",
     "Properties of Triangles",
     "Quadratic Equation",
@@ -672,7 +662,7 @@ async function qxLoadChapterIndex(slug) {
   if (_qxChapterIndexPromises[slug]) return _qxChapterIndexPromises[slug];
   _qxChapterIndexPromises[slug] = (async () => {
     try {
-      const bust = (typeof window !== "undefined" && window.QX_BUILD) || "qxfix137";
+      const bust = (typeof window !== "undefined" && window.QX_BUILD) || "qxmd159";
       const res = await fetch("data/banks/chapters/" + encodeURIComponent(slug) + "/index.json?v=" + encodeURIComponent(bust), { cache: "force-cache" });
       _qxChapterIndex[slug] = res.ok ? await res.json() : null;
     } catch (_) {
@@ -722,7 +712,7 @@ async function loadChapterBank(slug, subject, chapter) {
     const idx = await qxLoadChapterIndex(slug);
     let rel = qxFindChapterRel(idx, subject, chapter);
     if (!rel) rel = qxBankPathSlug(subject) + "/" + qxBankPathSlug(chapter) + ".json";
-    const bust = (typeof window !== "undefined" && window.QX_BUILD) || "qxfix137";
+    const bust = (typeof window !== "undefined" && window.QX_BUILD) || "qxmd159";
     const parts = String(rel).split("/").map(encodeURIComponent).join("/");
     const url = "data/banks/chapters/" + encodeURIComponent(slug) + "/" + parts + "?v=" + encodeURIComponent(bust);
     let res;
@@ -730,6 +720,17 @@ async function loadChapterBank(slug, subject, chapter) {
       res = await fetch(url, { cache: "force-cache" });
     } catch (_) {
       return [];
+    }
+    if (!res || !res.ok) {
+      // Alias fallback: basic-of ↔ basics-of
+      try {
+        const altRel = String(rel).replace(/basics-of-/g, "basic-of-").replace(/basic-of-/g, "basics-of-");
+        if (altRel !== rel) {
+          const altParts = altRel.split("/").map(encodeURIComponent).join("/");
+          const altUrl = "data/banks/chapters/" + encodeURIComponent(slug) + "/" + altParts + "?v=" + encodeURIComponent(bust);
+          res = await fetch(altUrl, { cache: "force-cache" });
+        }
+      } catch (_) { /* */ }
     }
     if (!res || !res.ok) return [];
     let data;
@@ -753,6 +754,21 @@ async function loadChapterBank(slug, subject, chapter) {
       if (cat && !q.exam) q.exam = cat;
       if (q.source && !q._sourceFull) q._sourceFull = q.source;
       if (q.source && !q.paperSource) q.paperSource = q.source;
+      // Sanitize stems/options/solutions at ingest (qxmath1 pipeline)
+      try {
+        if (typeof Mx !== "undefined" && Mx.cleanQuestionText) {
+          if (q.q) q.q = Mx.cleanQuestionText(q.q);
+          if (q.question && q.question !== q.q) q.question = Mx.cleanQuestionText(q.question);
+          if (q.solution) q.solution = Mx.cleanQuestionText(q.solution);
+          if (q.explanation) q.explanation = Mx.cleanQuestionText(q.explanation);
+          if (Array.isArray(q.options)) q.options = q.options.map((o) => (typeof o === "string" ? Mx.cleanQuestionText(o) : o));
+        } else if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.normalizeMathContent) {
+          const norm = (s) => QxMathSanitize.normalizeMathContent(s).html || s;
+          if (q.q) q.q = norm(q.q);
+          if (q.solution) q.solution = norm(q.solution);
+          if (Array.isArray(q.options)) q.options = q.options.map((o) => (typeof o === "string" ? norm(o) : o));
+        }
+      } catch (_) { /* */ }
       _qxBrandQuestionMeta(q);
       if (q.id != null && have[String(q.id)]) continue;
       add.push(q);
@@ -882,7 +898,6 @@ async function loadSingleBank(slug, opts) {
       // Lock full paper label so hydrate cannot wipe date/shift
       if (q.source && !q._sourceFull) q._sourceFull = q.source;
       if (q.source && !q.paperSource) q.paperSource = q.source;
-      _qxBrandQuestionMeta(q);
     }
     _qxUnindexBank(slug);
     QUESTIONS = QUESTIONS.concat(raw);
@@ -7879,7 +7894,7 @@ const DPPS = [
     "title": "Mathematics — Easy DPP 1",
     "date": "",
     "subject": "Mathematics",
-    "chapter": "Permutation and Combination",
+    "chapter": "Permutation Combination",
     "questions": [
       124422,
       124423,
@@ -7898,7 +7913,7 @@ const DPPS = [
     "title": "Mathematics — Easy DPP 2",
     "date": "",
     "subject": "Mathematics",
-    "chapter": "Permutation and Combination",
+    "chapter": "Permutation Combination",
     "questions": [
       124432,
       124433,
@@ -7917,7 +7932,7 @@ const DPPS = [
     "title": "Mathematics — Easy DPP 3",
     "date": "",
     "subject": "Mathematics",
-    "chapter": "Permutation and Combination",
+    "chapter": "Permutation Combination",
     "questions": [
       124442,
       124443,
@@ -7936,7 +7951,7 @@ const DPPS = [
     "title": "Mathematics — Moderate DPP 1",
     "date": "",
     "subject": "Mathematics",
-    "chapter": "Permutation and Combination",
+    "chapter": "Permutation Combination",
     "questions": [
       124452,
       124453,
@@ -7955,7 +7970,7 @@ const DPPS = [
     "title": "Mathematics — Moderate DPP 2",
     "date": "",
     "subject": "Mathematics",
-    "chapter": "Permutation and Combination",
+    "chapter": "Permutation Combination",
     "questions": [
       124462,
       124463,
@@ -7974,7 +7989,7 @@ const DPPS = [
     "title": "Mathematics — Moderate DPP 3",
     "date": "",
     "subject": "Mathematics",
-    "chapter": "Permutation and Combination",
+    "chapter": "Permutation Combination",
     "questions": [
       124472,
       124473,
@@ -7993,7 +8008,7 @@ const DPPS = [
     "title": "Mathematics — Tough DPP 1",
     "date": "",
     "subject": "Mathematics",
-    "chapter": "Permutation and Combination",
+    "chapter": "Permutation Combination",
     "questions": [
       124482,
       124483,
@@ -8012,7 +8027,7 @@ const DPPS = [
     "title": "Mathematics — Tough DPP 2",
     "date": "",
     "subject": "Mathematics",
-    "chapter": "Permutation and Combination",
+    "chapter": "Permutation Combination",
     "questions": [
       124492,
       124493,
@@ -8031,7 +8046,7 @@ const DPPS = [
     "title": "Mathematics — Tough DPP 3",
     "date": "",
     "subject": "Mathematics",
-    "chapter": "Permutation and Combination",
+    "chapter": "Permutation Combination",
     "questions": [
       124502,
       124503,
@@ -10007,7 +10022,7 @@ const DPPS = [
     "title": "Physics — Easy DPP 1",
     "date": "",
     "subject": "Physics",
-    "chapter": "Center of Mass, Momentum and Collision",
+    "chapter": "Center of Mass Momentum and Collision",
     "questions": [
       125542,
       125543,
@@ -10026,7 +10041,7 @@ const DPPS = [
     "title": "Physics — Easy DPP 2",
     "date": "",
     "subject": "Physics",
-    "chapter": "Center of Mass, Momentum and Collision",
+    "chapter": "Center of Mass Momentum and Collision",
     "questions": [
       125552,
       125553,
@@ -10045,7 +10060,7 @@ const DPPS = [
     "title": "Physics — Easy DPP 3",
     "date": "",
     "subject": "Physics",
-    "chapter": "Center of Mass, Momentum and Collision",
+    "chapter": "Center of Mass Momentum and Collision",
     "questions": [
       125562,
       125563,
@@ -10064,7 +10079,7 @@ const DPPS = [
     "title": "Physics — Moderate DPP 1",
     "date": "",
     "subject": "Physics",
-    "chapter": "Center of Mass, Momentum and Collision",
+    "chapter": "Center of Mass Momentum and Collision",
     "questions": [
       125572,
       125573,
@@ -10083,7 +10098,7 @@ const DPPS = [
     "title": "Physics — Moderate DPP 2",
     "date": "",
     "subject": "Physics",
-    "chapter": "Center of Mass, Momentum and Collision",
+    "chapter": "Center of Mass Momentum and Collision",
     "questions": [
       125582,
       125583,
@@ -10102,7 +10117,7 @@ const DPPS = [
     "title": "Physics — Moderate DPP 3",
     "date": "",
     "subject": "Physics",
-    "chapter": "Center of Mass, Momentum and Collision",
+    "chapter": "Center of Mass Momentum and Collision",
     "questions": [
       125592,
       125593,
@@ -10121,7 +10136,7 @@ const DPPS = [
     "title": "Physics — Tough DPP 1",
     "date": "",
     "subject": "Physics",
-    "chapter": "Center of Mass, Momentum and Collision",
+    "chapter": "Center of Mass Momentum and Collision",
     "questions": [
       125602,
       125603,
@@ -10140,7 +10155,7 @@ const DPPS = [
     "title": "Physics — Tough DPP 2",
     "date": "",
     "subject": "Physics",
-    "chapter": "Center of Mass, Momentum and Collision",
+    "chapter": "Center of Mass Momentum and Collision",
     "questions": [
       125612,
       125613,
@@ -10159,7 +10174,7 @@ const DPPS = [
     "title": "Physics — Tough DPP 3",
     "date": "",
     "subject": "Physics",
-    "chapter": "Center of Mass, Momentum and Collision",
+    "chapter": "Center of Mass Momentum and Collision",
     "questions": [
       125622,
       125623,
@@ -12287,7 +12302,7 @@ const DPPS = [
     "title": "Physics — Easy DPP 1",
     "date": "",
     "subject": "Physics",
-    "chapter": "Motion in One Dimension",
+    "chapter": "Motion In One Dimension",
     "questions": [
       126742,
       126743,
@@ -12306,7 +12321,7 @@ const DPPS = [
     "title": "Physics — Easy DPP 2",
     "date": "",
     "subject": "Physics",
-    "chapter": "Motion in One Dimension",
+    "chapter": "Motion In One Dimension",
     "questions": [
       126752,
       126753,
@@ -12325,7 +12340,7 @@ const DPPS = [
     "title": "Physics — Easy DPP 3",
     "date": "",
     "subject": "Physics",
-    "chapter": "Motion in One Dimension",
+    "chapter": "Motion In One Dimension",
     "questions": [
       126762,
       126763,
@@ -12344,7 +12359,7 @@ const DPPS = [
     "title": "Physics — Moderate DPP 1",
     "date": "",
     "subject": "Physics",
-    "chapter": "Motion in One Dimension",
+    "chapter": "Motion In One Dimension",
     "questions": [
       126772,
       126773,
@@ -12363,7 +12378,7 @@ const DPPS = [
     "title": "Physics — Moderate DPP 2",
     "date": "",
     "subject": "Physics",
-    "chapter": "Motion in One Dimension",
+    "chapter": "Motion In One Dimension",
     "questions": [
       126782,
       126783,
@@ -12382,7 +12397,7 @@ const DPPS = [
     "title": "Physics — Moderate DPP 3",
     "date": "",
     "subject": "Physics",
-    "chapter": "Motion in One Dimension",
+    "chapter": "Motion In One Dimension",
     "questions": [
       126792,
       126793,
@@ -12401,7 +12416,7 @@ const DPPS = [
     "title": "Physics — Tough DPP 1",
     "date": "",
     "subject": "Physics",
-    "chapter": "Motion in One Dimension",
+    "chapter": "Motion In One Dimension",
     "questions": [
       126802,
       126803,
@@ -12420,7 +12435,7 @@ const DPPS = [
     "title": "Physics — Tough DPP 2",
     "date": "",
     "subject": "Physics",
-    "chapter": "Motion in One Dimension",
+    "chapter": "Motion In One Dimension",
     "questions": [
       126812,
       126813,
@@ -12439,7 +12454,7 @@ const DPPS = [
     "title": "Physics — Tough DPP 3",
     "date": "",
     "subject": "Physics",
-    "chapter": "Motion in One Dimension",
+    "chapter": "Motion In One Dimension",
     "questions": [
       126822,
       126823,
@@ -12458,7 +12473,7 @@ const DPPS = [
     "title": "Physics — Easy DPP 1",
     "date": "",
     "subject": "Physics",
-    "chapter": "Motion in Two Dimensions",
+    "chapter": "Motion In Two Dimensions",
     "questions": [
       126832,
       126833,
@@ -12477,7 +12492,7 @@ const DPPS = [
     "title": "Physics — Easy DPP 2",
     "date": "",
     "subject": "Physics",
-    "chapter": "Motion in Two Dimensions",
+    "chapter": "Motion In Two Dimensions",
     "questions": [
       126842,
       126843,
@@ -12496,7 +12511,7 @@ const DPPS = [
     "title": "Physics — Easy DPP 3",
     "date": "",
     "subject": "Physics",
-    "chapter": "Motion in Two Dimensions",
+    "chapter": "Motion In Two Dimensions",
     "questions": [
       126852,
       126853,
@@ -12515,7 +12530,7 @@ const DPPS = [
     "title": "Physics — Moderate DPP 1",
     "date": "",
     "subject": "Physics",
-    "chapter": "Motion in Two Dimensions",
+    "chapter": "Motion In Two Dimensions",
     "questions": [
       126862,
       126863,
@@ -12534,7 +12549,7 @@ const DPPS = [
     "title": "Physics — Moderate DPP 2",
     "date": "",
     "subject": "Physics",
-    "chapter": "Motion in Two Dimensions",
+    "chapter": "Motion In Two Dimensions",
     "questions": [
       126872,
       126873,
@@ -12553,7 +12568,7 @@ const DPPS = [
     "title": "Physics — Moderate DPP 3",
     "date": "",
     "subject": "Physics",
-    "chapter": "Motion in Two Dimensions",
+    "chapter": "Motion In Two Dimensions",
     "questions": [
       126882,
       126883,
@@ -12572,7 +12587,7 @@ const DPPS = [
     "title": "Physics — Tough DPP 1",
     "date": "",
     "subject": "Physics",
-    "chapter": "Motion in Two Dimensions",
+    "chapter": "Motion In Two Dimensions",
     "questions": [
       126892,
       126893,
@@ -12591,7 +12606,7 @@ const DPPS = [
     "title": "Physics — Tough DPP 2",
     "date": "",
     "subject": "Physics",
-    "chapter": "Motion in Two Dimensions",
+    "chapter": "Motion In Two Dimensions",
     "questions": [
       126902,
       126903,
@@ -12610,7 +12625,7 @@ const DPPS = [
     "title": "Physics — Tough DPP 3",
     "date": "",
     "subject": "Physics",
-    "chapter": "Motion in Two Dimensions",
+    "chapter": "Motion In Two Dimensions",
     "questions": [
       126912,
       126913,
@@ -14168,7 +14183,7 @@ const DPPS = [
     "title": "Physics — Easy DPP 1",
     "date": "",
     "subject": "Physics",
-    "chapter": "Work, Power and Energy",
+    "chapter": "Work Power Energy",
     "questions": [
       127732,
       127733,
@@ -14187,7 +14202,7 @@ const DPPS = [
     "title": "Physics — Easy DPP 2",
     "date": "",
     "subject": "Physics",
-    "chapter": "Work, Power and Energy",
+    "chapter": "Work Power Energy",
     "questions": [
       127742,
       127743,
@@ -14206,7 +14221,7 @@ const DPPS = [
     "title": "Physics — Easy DPP 3",
     "date": "",
     "subject": "Physics",
-    "chapter": "Work, Power and Energy",
+    "chapter": "Work Power Energy",
     "questions": [
       127752,
       127753,
@@ -14225,7 +14240,7 @@ const DPPS = [
     "title": "Physics — Moderate DPP 1",
     "date": "",
     "subject": "Physics",
-    "chapter": "Work, Power and Energy",
+    "chapter": "Work Power Energy",
     "questions": [
       127762,
       127763,
@@ -14244,7 +14259,7 @@ const DPPS = [
     "title": "Physics — Moderate DPP 2",
     "date": "",
     "subject": "Physics",
-    "chapter": "Work, Power and Energy",
+    "chapter": "Work Power Energy",
     "questions": [
       127772,
       127773,
@@ -14263,7 +14278,7 @@ const DPPS = [
     "title": "Physics — Moderate DPP 3",
     "date": "",
     "subject": "Physics",
-    "chapter": "Work, Power and Energy",
+    "chapter": "Work Power Energy",
     "questions": [
       127782,
       127783,
@@ -14282,7 +14297,7 @@ const DPPS = [
     "title": "Physics — Tough DPP 1",
     "date": "",
     "subject": "Physics",
-    "chapter": "Work, Power and Energy",
+    "chapter": "Work Power Energy",
     "questions": [
       127792,
       127793,
@@ -14301,7 +14316,7 @@ const DPPS = [
     "title": "Physics — Tough DPP 2",
     "date": "",
     "subject": "Physics",
-    "chapter": "Work, Power and Energy",
+    "chapter": "Work Power Energy",
     "questions": [
       127802,
       127803,
@@ -14320,7 +14335,7 @@ const DPPS = [
     "title": "Physics — Tough DPP 3",
     "date": "",
     "subject": "Physics",
-    "chapter": "Work, Power and Energy",
+    "chapter": "Work Power Energy",
     "questions": [
       127812,
       127813,
@@ -14379,33 +14394,20 @@ const STATE = {
   },
   get solved() { return JSON.parse(localStorage.getItem("quantrex_solved") || "[]"); },
   markSolved(id, correct, extra) {
-    this.markSolvedBatch([{ id, correct, extra }]);
-  },
-  // qxmd113: one parse/stringify for N solves (submit used to freeze on 75× localStorage)
-  markSolvedBatch(items) {
-    if (!items || !items.length) return;
     const s = JSON.parse(localStorage.getItem("quantrex_solved") || "[]");
-    let anyCorrect = false;
-    items.forEach((it) => {
-      if (!it || it.id == null) return;
-      const rec = { id: it.id, correct: !!it.correct, date: Date.now() };
-      const extra = it.extra;
-      if (extra && typeof extra === "object") {
-        if (extra.subject) rec.subject = extra.subject;
-        if (extra.chapter) rec.chapter = extra.chapter;
-        if (extra.exam) rec.exam = extra.exam;
-        if (extra.ms != null) rec.ms = extra.ms;
-      }
-      if (it.correct) anyCorrect = true;
-      const i = s.findIndex(x => String(x.id) === String(it.id));
-      if (i >= 0) s[i] = { ...s[i], ...rec };
-      else s.push(rec);
-    });
+    const rec = { id, correct, date: Date.now() };
+    if (extra && typeof extra === "object") {
+      if (extra.subject) rec.subject = extra.subject;
+      if (extra.chapter) rec.chapter = extra.chapter;
+      if (extra.exam) rec.exam = extra.exam;
+      if (extra.ms != null) rec.ms = extra.ms;
+    }
+    const i = s.findIndex(x => String(x.id) === String(id));
+    if (i >= 0) s[i] = { ...s[i], ...rec };
+    else s.push(rec);
     localStorage.setItem("quantrex_solved", JSON.stringify(s.slice(-4000)));
     _syncDb();
-    if (anyCorrect && typeof QuantrexLeaderboard !== "undefined") {
-      try { QuantrexLeaderboard.recordSolve(true); } catch (_) { /* */ }
-    }
+    if (typeof QuantrexLeaderboard !== "undefined") QuantrexLeaderboard.recordSolve(correct);
   },
   get notes() { return JSON.parse(localStorage.getItem("quantrex_notes") || "[]"); },
   addNote(text) { const n=this.notes; n.unshift({id:Date.now(),text,date:new Date().toLocaleString()}); localStorage.setItem("quantrex_notes",JSON.stringify(n)); _syncDb(); },
@@ -14534,36 +14536,25 @@ function qxResolveBookId(bookId) {
 }
 
 async function fetchBookNav(bookId) {
-  const orig = String(bookId || "");
-  const aliased = qxResolveBookId(orig);
-  if (_bookNavCache[orig]) return _bookNavCache[orig];
-  if (_bookNavCache[aliased]) return _bookNavCache[aliased];
+  bookId = qxResolveBookId(bookId);
+  if (_bookNavCache[bookId]) return _bookNavCache[bookId];
   const bust = typeof _qxBookDataVer !== "undefined" ? _qxBookDataVer : (typeof QX_BUILD !== "undefined" ? QX_BUILD : Date.now());
-  const tryIds = orig === aliased ? [orig] : [orig, aliased];
-  let lastErr = null;
-  for (let i = 0; i < tryIds.length; i++) {
-    const id = tryIds[i];
-    const ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
-    const to = setTimeout(() => { try { ctrl && ctrl.abort(); } catch (_) { /* */ } }, 15000);
-    try {
-      const res = await fetch(`data/nav/books/${encodeURIComponent(id)}.json?v=${encodeURIComponent(bust)}`, {
-        cache: "no-store",
-        signal: ctrl ? ctrl.signal : undefined
-      });
-      clearTimeout(to);
-      if (!res.ok) throw new Error(res.status);
-      const json = await res.json();
-      _bookNavCache[orig] = json;
-      _bookNavCache[id] = json;
-      return json;
-    } catch (e) {
-      clearTimeout(to);
-      lastErr = e;
-    }
+  const ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
+  const to = setTimeout(() => { try { ctrl && ctrl.abort(); } catch (_) { /* */ } }, 15000);
+  try {
+    const res = await fetch(`data/nav/books/${bookId}.json?v=${encodeURIComponent(bust)}`, {
+      cache: "no-store",
+      signal: ctrl ? ctrl.signal : undefined
+    });
+    clearTimeout(to);
+    if (!res.ok) throw new Error(res.status);
+    _bookNavCache[bookId] = await res.json();
+  } catch (e) {
+    clearTimeout(to);
+    console.warn("fetchBookNav fail", bookId, e);
+    _bookNavCache[bookId] = null;
   }
-  console.warn("fetchBookNav fail", orig, lastErr);
-  _bookNavCache[orig] = null;
-  return null;
+  return _bookNavCache[bookId];
 }
 
 async function qxLoadBookChapterFromBank(bookId, chapterKey) {
@@ -14578,44 +14569,21 @@ async function qxLoadBookChapterFromBank(bookId, chapterKey) {
     });
   });
   if (!meta) return [];
-  const stripJeeMain = String(bookId) === "6a9158833d351af582b98369" || !!(nav && nav.qxNeetOnly) || !!(meta && meta.qxNeetOnly);
-  const useSlug = meta.sourceBank
-    || (String(bookId) === "6a9158833d351af582b98369" || String(bookId) === "69a684ac213ecfafb0629c0d" ? "neet" : "")
-    || (String(bookId) === "69a6ea53213ecfafb0629c18" || String(bookId) === "69a6eaf1213ecfafb0629c19" ? "jee_main" : "");
-  if (!useSlug) return [];
+  const bank = meta.sourceBank || (nav.qxBankFallback && String(chapterKey).includes("neet") ? "neet" : "");
+  const slug = meta.sourceBank || (String(chapterKey).split("__")[0] === "69a684ac213ecfafb0629c0d" ? "neet" : (String(bookId).indexOf("69a6ea") === 0 || String(bookId).indexOf("69a6eaf") === 0 ? "jee_main" : ""));
+  const useSlug = meta.sourceBank || (String(bookId) === "69a684ac213ecfafb0629c0d" ? "neet" : ((String(bookId) === "69a6ea53213ecfafb0629c18" || String(bookId) === "69a6eaf1213ecfafb0629c19") ? "jee_main" : slug));
+  if (!useSlug || typeof loadSingleBank !== "function") return [];
+  try {
+    await loadSingleBank(useSlug, { allowLarge: true });
+  } catch (_) {
+    return [];
+  }
   const subj = meta.sourceSubject;
   const ch = meta.sourceChapter;
-  let qs = [];
-  try {
-    if (typeof loadChapterBank === "function" && subj && ch) {
-      qs = await loadChapterBank(useSlug, subj, ch);
-    }
-  } catch (_) { qs = []; }
-  if ((!qs || !qs.length) && typeof loadSingleBank === "function") {
-    try {
-      await loadSingleBank(useSlug, { allowLarge: true });
-      qs = (typeof getChapterQuestions === "function")
-        ? getChapterQuestions(useSlug, subj, ch)
-        : QUESTIONS.filter((q) => q._bank === useSlug && (!subj || q.subject === subj) && (!ch || q.chapter === ch));
-    } catch (_) { qs = []; }
-  }
   const ids = new Set((meta.sourceIds || []).map(String));
-  if (ids.size) {
-    const filtered = (qs || []).filter((q) => q && (ids.has(String(q.id)) || ids.has(String(q._marksId))));
-    if (filtered.length) qs = filtered;
-  }
-  if (stripJeeMain) {
-    qs = (qs || []).filter((q) => {
-      const blob = String(q.source || "") + " " + String(q.paperSource || "") + " " + String(q.examName || "") + " " + String(q.exam || "");
-      return !/jee\s*main/i.test(blob);
-    });
-    qs = (qs || []).map((q) => {
-      const o = { ...q };
-      if (!o.examName || /jee/i.test(String(o.examName))) o.examName = "NEET";
-      if (!o.source || /jee\s*main/i.test(String(o.source))) o.source = /neet/i.test(String(o.source || "")) ? o.source : "NEET";
-      return o;
-    });
-  }
+  let qs = QUESTIONS.filter((q) => q._bank === useSlug);
+  if (ids.size) qs = qs.filter((q) => ids.has(String(q.id)));
+  else qs = qs.filter((q) => (!subj || q.subject === subj) && (!ch || q.chapter === ch));
   const tagged = qs.map((q) => ({ ...q, _book: bookId, _bookId: bookId, _chapterKey: chapterKey }));
   QUESTIONS = QUESTIONS.filter((q) => !(q._book === bookId && q._chapterKey === chapterKey)).concat(tagged);
   try {
@@ -14638,7 +14606,7 @@ async function loadBookChapter(bookId, chapterKey) {
   const to = setTimeout(() => { try { ctrl && ctrl.abort(); } catch (_) { /* */ } }, 20000);
   let res;
   try {
-    res = await fetch(`data/books/chapters/${encodeURIComponent(resolvedId)}/${String(chapterKey || "").split("/").map(encodeURIComponent).join("/")}.json?v=${bust}`, {
+    res = await fetch(`data/books/chapters/${resolvedId}/${chapterKey}.json?v=${bust}`, {
       cache: "force-cache",
       signal: ctrl ? ctrl.signal : undefined
     });
@@ -14698,24 +14666,6 @@ async function loadBookChapter(bookId, chapterKey) {
     if (o.q && !o._qxOrigStem) o._qxOrigStem = o.q;
     if (Array.isArray(o.options) && !o._qxBankOptions) o._qxBankOptions = o.options.slice();
     if (Array.isArray(o.options) && !o._qxOrigOptions) o._qxOrigOptions = o.options.slice();
-    try {
-      // Digital books: Exercise Multiple Choice must stay multi-select (exam-style)
-      const ck = String(chapterKey || o._chapterKey || o._bbExercise || "");
-      const t0 = String(o.questionType || o.type || "").toLowerCase();
-      const multiKey = /multiple-choice|multiple_choice|multiplecorrect|multi-correct|__mc\b/i.test(ck);
-      const multiType = /multiple|one.?or.?more/.test(t0) || (Array.isArray(o.answers) && o.answers.length > 1);
-      if (multiKey || multiType) {
-        o.questionType = "multipleCorrect";
-        o.type = "multipleCorrect";
-        o._advSection = "MC";
-      } else if (/single-choice|single_choice|__sc\b/i.test(ck) && !multiType) {
-        if (!o.questionType || o.questionType === "unk") {
-          o.questionType = "singleCorrect";
-          o.type = "singleCorrect";
-        }
-        if (!o._advSection) o._advSection = "SC";
-      }
-    } catch (_) { /* */ }
     try {
       if (typeof QxImgClean !== "undefined" && QxImgClean.pinOriginalQuestion) QxImgClean.pinOriginalQuestion(o);
     } catch (_) { /* */ }
