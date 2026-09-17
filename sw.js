@@ -1,5 +1,5 @@
-/* Quantrex PWA — website + Android TWA share this cache. */
-const CACHE = "qx-pwa-v180";
+﻿/* Quantrex PWA — website + Android TWA share this cache. */
+const CACHE = "qx-pwa-qxmd158";
 const PRECACHE = ["/login.html", "/manifest.webmanifest", "/assets/icon-192.png", "/assets/icon-512.png"];
 const SKIP = /\.(mp4|webm|apk|m4a|mp3)$/i;
 const ASSET_IMG = /\.(png|jpe?g|webp|svg|gif|ico|woff2?)$/i;
@@ -52,17 +52,16 @@ self.addEventListener("fetch", (event) => {
   }
 
   if (isCode) {
+    // qxmd157: math-render.js + examgoal-test-ui.js/css network-first (no stale TWA cache)
     event.respondWith(
       fetch(req, { cache: "no-store" }).catch(() => caches.match(req))
     );
     return;
   }
   if (isChapterBank) {
+    // qxmd157: network-first so scrubbed banks win over stale SW cache
     event.respondWith(
-      caches.match(req).then((hit) => {
-        const net = fetch(req).then(putCache).catch(() => hit);
-        return hit || net;
-      })
+      fetch(req, { cache: "no-store" }).then(putCache).catch(() => caches.match(req))
     );
     return;
   }

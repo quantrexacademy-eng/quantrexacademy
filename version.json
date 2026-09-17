@@ -1,9 +1,10 @@
 {
-    "body": "qxmd125: Quantrex-only student branding. No paywall.",
-    "build": "qxmd125",
-    "site": "https://www.quantrexacademy.com",
-    "ts": 1789308000000,
-    "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
-    "package": "com.quantrexacademy.app",
-    "title": "Quantrex branding only"
+  "build": "qxmd158",
+  "cache": "qx-pwa-qxmd158",
+  "title": "qxmd158 · strip stem-echo after Check Answer (solution panel)",
+  "body": "After Check Answer / Show Answer, QuantrexSolution.stripLeadingStemEcho removes a leading question-stem duplicate (and Marks DIFFICULTY/ANSWER meta) from solution HTML before Mx.html. Feedback shows correct-option result + clean explanation only — never re-prints the stem. Preserves qx-math-sanitize / Mx.html pipeline (qxmath1).",
+  "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
+  "site": "https://www.quantrexacademy.com",
+  "package": "com.quantrexacademy.app",
+  "ts": 1789000000000
 }

@@ -118,6 +118,10 @@ const QuantrexSolution = (() => {
     try {
       if (typeof Mx !== "undefined" && Mx.cleanQuestionText) out = Mx.cleanQuestionText(out);
     } catch (_) { /* */ }
+    // qxproof1 residual: empty fences + chem triple-bond shatter in solutions
+    out = out.replace(/\$\\left\(\s*\\right\)\$/g, "");
+    out = out.replace(/\\left\(\s*\\right\)/g, "");
+    out = out.replace(/-\$\s*C\\equiv\s*C\$\s*[–—−-]/g, "-C\\equiv C-$");
 
     const text = plainText(out);
     const stepMarkers = text.match(/\([A-D]\)/gi) || [];
@@ -178,7 +182,6 @@ const QuantrexSolution = (() => {
   function isCleanLatex(expr) {
     const s = String(expr || "").trim();
     if (!s || s.length < 3 || s.length > 80) return false;
-    if (/<[^>]+>|<\/?t[dh]|tdstyle|text-align|nbsp;|&nbsp;/i.test(s)) return false;
     if (/f\s*['′]|prime|\.\.\.|undefined|NaN/i.test(s)) return false;
     if (/[{}]/.test(s) && (s.split("{").length !== s.split("}").length)) return false;
     return /[=+\-*/\\^]|\\frac|\\sqrt|\\int|\\sum|\\le|\\ge/.test(s);
@@ -456,17 +459,14 @@ const QuantrexSolution = (() => {
     out = out.replace(/px(["'])src=/gi, "px$1 src=");
     out = out.replace(/<img\b([^>]*)>/gi, (full, attrs) => {
       let a = String(attrs || "");
-      // (^|\s)src= — never match data-qx-orig-src / data-qx-storage-src
-      const srcM = a.match(/(^|\s)src=(["'])([^"']*)\2/i);
-      let src = srcM ? srcM[3] : "";
+      const srcM = a.match(/\bsrc=(["'])([^"']+)\1/i);
+      let src = srcM ? srcM[2] : "";
       if (src && /https?:\/\/\.app\//i.test(src)) {
         src = src.replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/");
-        a = a.replace(/(^|\s)src=(["'])[^"']*\2/i, `$1src=$2${src}$2`);
+        a = a.replace(/\bsrc=(["'])[^"']+\1/i, `src=$1${src}$1`);
       }
-      // Always rewrite local /assets/diagrams and Marks CDN figs to Firebase Storage / proxy.
-      // Hosting intentionally ignores assets/diagrams/** (20k+ files) so local paths 404 live.
-      const alreadyOk = /^data:|\/api\/proxy-image|firebasestorage\.googleapis\.com|quantrexacademy-app\.firebasestorage/i.test(src);
-      const disp = (!alreadyOk && typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc)
+      const isLocalBook = /qx-book-|qx-org-|\/assets\/diagrams\/qx-(?:book|org)-/i.test(src);
+      const disp = (!isLocalBook && typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc)
         ? QxOwnedFigs.displaySrc(src)
         : "";
       const stored = (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.ownedFigureUrl)
@@ -474,7 +474,7 @@ const QuantrexSolution = (() => {
         : src;
       if (disp && disp !== src) {
         if (!/\bdata-qx-orig-src=/i.test(a)) a += ` data-qx-orig-src="${String(stored).replace(/"/g, "&quot;")}"`;
-        a = a.replace(/(^|\s)src=(["'])[^"']*\2/i, `$1src=$2${disp}$2`);
+        a = a.replace(/\bsrc=(["'])[^"']+\1/i, `src=$1${disp}$1`);
       } else if (src && !/\bdata-qx-orig-src=/i.test(a)) {
         a += ` data-qx-orig-src="${String(stored).replace(/"/g, "&quot;")}"`;
       }
@@ -498,37 +498,15 @@ const QuantrexSolution = (() => {
 
   function handleSolImgErr(img) {
     if (!img) return;
-    try {
-      img.style.display = "block";
-      img.style.visibility = "visible";
-      img.style.opacity = "1";
-    } catch (_) { /* */ }
-    const orig = img.getAttribute("data-qx-storage-src") || img.getAttribute("data-qx-orig-src") || img.src;
-    const tryN = parseInt(img.dataset.qxSolFigTry || "0", 10);
-    img.dataset.qxSolFigTry = String(tryN + 1);
-    if (tryN === 0 && typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc) {
-      const disp = QxOwnedFigs.displaySrc(orig);
-      if (disp && disp !== img.src) {
-        img.src = disp;
+    const orig = img.getAttribute("data-qx-orig-src") || img.src;
+    if (!img.dataset.retried && orig && !orig.startsWith("data:")) {
+      img.dataset.retried = "1";
+      if (!orig.includes("/api/proxy-image")) {
+        img.src = "/api/proxy-image?clean=1&url=" + encodeURIComponent(orig);
         return;
       }
     }
-    if (tryN <= 1 && orig && !String(orig).startsWith("data:")) {
-      if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.retryOnError) {
-        QxOwnedFigs.retryOnError(img);
-        return;
-      }
-      if (!String(img.src || "").includes("/api/proxy-image")) {
-        const owned = (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.ownedFigureUrl)
-          ? (QxOwnedFigs.ownedFigureUrl(orig) || orig)
-          : orig;
-        img.src = "/api/proxy-image?clean=1&url=" + encodeURIComponent(owned);
-        return;
-      }
-    }
-    // Keep plate visible rather than collapsing layout; mark failed for CSS if needed
-    img.classList.add("qx-img-broken");
-    img.alt = img.alt || "Figure unavailable";
+    img.classList.add("qx-img-hidden"); img.style.display = "none";
   }
 
   /**
@@ -543,6 +521,7 @@ const QuantrexSolution = (() => {
     s = s.replace(/\\because/gi, " because ");
     s = s.replace(/\\therefore/gi, " so ");
     s = s.replace(/\\forall/g, " for all ");
+    s = s.replace(/\\in(?![A-Za-z])/g, " in ");
     s = s.replace(/\\mathbb\s*\{\s*R\s*\}/g, "\\mathbb{R}");
     s = s.replace(/\\R(?![A-Za-z])/g, "\\mathbb{R}");
     s = s.replace(/\\Rightarrow/g, "\\Rightarrow");
@@ -597,7 +576,7 @@ const QuantrexSolution = (() => {
       return k;
     };
     let s = String(html || "");
-    if (/class=["'][^"']*katex|<\/?math[\s>]|spanclass\s*=\s*"\s*katex/i.test(s)) {
+    if (/class=["'][^"']*katex|<\/?math[\s>]/i.test(s) && !/<br\s*\/?>/i.test(s)) {
       return `<div class="qx-sol-flow">${s}</div>`;
     }
     s = s.replace(/\$\$[\s\S]+?\$\$/g, park);
@@ -612,16 +591,10 @@ const QuantrexSolution = (() => {
     s = s.replace(/<\/p>/gi, "\n");
     s = s.replace(/<p\b[^>]*>/gi, "");
     s = s.replace(/^\s*(?:step\s*)?\d+[\).:\-]\s*/gim, "");
-    const lines = [];
-    s.split(/\n+/).forEach(function (rawLine) {
-      let l = rawLine.replace(/^\s*(?:step\s*)?\d+[\).:\-]\s*/i, "").trim();
-      if (!l) return;
-      if (/^[-–—•]+$/.test(l)) return;
-      if (/^[.,;:!?]+$/.test(l) && lines.length) {
-        lines[lines.length - 1] += l;
-        return;
-      }
-      lines.push(l);
+    const lines = s.split(/\n+/).map((l) => l.replace(/^\s*(?:step\s*)?\d+[\).:\-]\s*/i, "").trim()).filter((l) => {
+      if (!l) return false;
+      if (/^[-–—•]+$/.test(l)) return false;
+      return true;
     });
     const unpark = (t) => String(t || "").replace(/\uE700(\d+)\uE701/g, (_, i) => parked[+i] || "");
     if (!lines.length) return `<div class="qx-sol-flow">${unpark(s)}</div>`;
@@ -633,24 +606,202 @@ const QuantrexSolution = (() => {
     }).join("")}</div>`;
   }
 
+  /**
+   * Normalize HTML/TeX for stem-vs-solution prefix compare.
+   * Strips tags, entities, $ delimiters, and common TeX commands so
+   * "\mathrm{A}" / "\leqslant" match the rendered stem text.
+   */
+  function stemComparePlain(html) {
+    return String(html || "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<br\s*\/?>/gi, " ")
+      .replace(/<\/(?:p|div|li|tr|h[1-6])>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/&nbsp;/gi, " ")
+      .replace(/&#(\d+);/g, (_, n) => {
+        try { return String.fromCharCode(+n); } catch (e) { return " "; }
+      })
+      .replace(/&[a-z]+;/gi, " ")
+      .replace(/\$+/g, " ")
+      .replace(/\\[,;!~\s]/g, " ")
+      .replace(/\\(?:mathrm|mathbf|boldsymbol|mathit|mathsf|mathtt|text|operatorname|mathbb|mathcal|leqslant|geqslant|leq|geq|neq|approx|equiv|sim|propto|infty|partial|nabla|cdot|times|div|pm|mp|oplus|otimes|cup|cap|subset|subseteq|supset|supseteq|in|notin|ni|forall|exists|neg|land|lor|rightarrow|leftarrow|Rightarrow|Leftarrow|leftrightarrow|mapsto|ldots|dots|cdots|vdots|frac|dfrac|tfrac|sqrt|left|right|big|Big|bigg|Bigg|begin|end|over|underline|overline|hat|bar|vec|dot|ddot|tilde|widehat|overline)\s*\{?/gi, " ")
+      .replace(/\\[a-zA-Z]+\s*\{?/g, " ")
+      .replace(/[{}]/g, " ")
+      .replace(/[_^]/g, " ")
+      .replace(/[^a-zA-Z0-9]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .toLowerCase();
+  }
+
+  /** Strip Marks-style leading DIFFICULTY / ANSWER / Correct option meta (renderBlock already shows these). */
+  function stripLeadingSolMeta(html) {
+    let s = String(html || "");
+    for (let n = 0; n < 10; n++) {
+      const before = s;
+      s = s.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span|strong|b|em|h[1-6])\b[^>]*>)+/i, "");
+      // Plain or wrapped DIFFICULTY / LEVEL line
+      s = s.replace(
+        /^(?:<(?:div|span|p|strong|b)[^>]*>\s*)*(?:difficulty|level)\s*[:\-–]?\s*(?:easy|medium|hard|moderate|tough)?\s*(?:<\/(?:div|span|p|strong|b)>)?(?:\s|&nbsp;|<br\s*\/?\s*>|\n)*/i,
+        ""
+      );
+      // Plain or wrapped ANSWER / Correct option line (letter, option, or short value)
+      s = s.replace(
+        /^(?:<(?:div|span|p|strong|b)[^>]*>\s*)*(?:correct\s*(?:option|answer|choice)|answer|ans)\s*[:\-–]?\s*(?:\(?[A-D]\)?|option\s*[A-D]|[^\n<]{0,40})?\s*(?:<\/(?:div|span|p|strong|b)>)?(?:\s|&nbsp;|<br\s*\/?\s*>|\n)*/i,
+        ""
+      );
+      if (s === before) break;
+    }
+    return s;
+  }
+
+  /**
+   * After Check Answer / Show Answer the solution panel must NOT re-print the question stem.
+   * Many bank/Marks solutions start with a full stem echo (often raw TeX). Strip that prefix
+   * when it duplicates questionText / q, then drop leading DIFFICULTY/ANSWER meta.
+   * Never invents content — only removes a leading duplicate.
+   */
+  function stripLeadingStemEcho(html, q) {
+    let out = String(html || "");
+    if (!out.trim()) return out;
+    out = stripLeadingSolMeta(out);
+    // Drop common "Given," wrappers that precede a stem echo in Marks/bank solutions
+    out = out.replace(
+      /^(?:(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)*)(?:given(?:\s+that)?|as\s+given|from\s+the\s+(?:given\s+)?question|according\s+to\s+the\s+question|question)\s*[,:\-–]?\s*/i,
+      ""
+    );
+
+    const stemSrc = (q && (
+      q.questionText || q.q || q.question || q.text || q._qxOrigStem || q._qxBankQ || ""
+    )) || "";
+    const stemP = stemComparePlain(stemSrc);
+    if (stemP.length < 20) return stripLeadingSolMeta(out);
+
+    /**
+     * Walk HTML with the same reductions as stemComparePlain, recording
+     * html index after each emitted plain character (including spaces).
+     */
+    function plainWithMap(src) {
+      const map = []; // map[k] = html index AFTER plain[k]
+      let plain = "";
+      let i = 0;
+      const s = String(src || "");
+      const emitSpace = (htmlIdx) => {
+        if (!plain.length || plain[plain.length - 1] === " ") return;
+        plain += " ";
+        map.push(htmlIdx);
+      };
+      const emitChar = (ch, htmlIdx) => {
+        plain += ch.toLowerCase();
+        map.push(htmlIdx);
+      };
+      while (i < s.length) {
+        if (s[i] === "<") {
+          const close = s.indexOf(">", i);
+          if (close < 0) break;
+          const tag = s.slice(i, close + 1);
+          if (/^<(?:br\b|\/(?:p|div|li|tr|h[1-6])\b)/i.test(tag)) emitSpace(close + 1);
+          i = close + 1;
+          continue;
+        }
+        if (s[i] === "&") {
+          const semi = s.indexOf(";", i);
+          if (semi > i && semi - i < 14) {
+            const ent = s.slice(i, semi + 1);
+            let ch = " ";
+            const mNum = ent.match(/^&#(\d+);$/);
+            if (mNum) {
+              try { ch = String.fromCharCode(+mNum[1]); } catch (_) { ch = " "; }
+            } else if (!/^&nbsp;$/i.test(ent)) {
+              ch = " ";
+            }
+            if (/[a-zA-Z0-9]/.test(ch)) emitChar(ch, semi + 1);
+            else emitSpace(semi + 1);
+            i = semi + 1;
+            continue;
+          }
+        }
+        if (s[i] === "\\") {
+          let j = i + 1;
+          while (j < s.length && /[a-zA-Z]/.test(s[j])) j++;
+          // Skip command name only; emit brace contents (\mathrm{A} → A) like stemComparePlain
+          emitSpace(j);
+          i = j;
+          continue;
+        }
+        if (s[i] === "$" || s[i] === "{" || s[i] === "}" || s[i] === "_" || s[i] === "^") {
+          i++;
+          continue;
+        }
+        const ch = s[i];
+        if (/[a-zA-Z0-9]/.test(ch)) emitChar(ch, i + 1);
+        else emitSpace(i + 1);
+        i++;
+      }
+      // trim trailing space like stemComparePlain
+      while (plain.endsWith(" ")) {
+        plain = plain.slice(0, -1);
+        map.pop();
+      }
+      // trim leading space
+      while (plain.startsWith(" ")) {
+        plain = plain.slice(1);
+        map.shift();
+      }
+      return { plain, map };
+    }
+
+    const { plain: solP, map } = plainWithMap(out);
+    const probeLen = Math.min(stemP.length, Math.max(32, Math.floor(stemP.length * 0.82)));
+    const probe = stemP.slice(0, probeLen);
+    const head = stemP.slice(0, Math.min(40, stemP.length));
+    let align = -1;
+    if (solP.startsWith(probe) || solP.startsWith(head)) align = 0;
+    else {
+      const at = solP.indexOf(head);
+      if (at >= 0 && at <= 48) align = at;
+    }
+    if (align < 0 || !map.length) return stripLeadingSolMeta(out);
+
+    // Prefer cutting after the stem's trailing phrase (tolerates "And"/"Each" mid-echo drift)
+    const tailLen = Math.min(42, Math.max(18, Math.floor(stemP.length / 3)));
+    const tail = stemP.slice(-tailLen);
+    let cutPlainEnd = align + stemP.length;
+    const tailAt = solP.indexOf(tail, align);
+    if (tailAt >= align && tailAt + tail.length <= align + stemP.length + 80) {
+      cutPlainEnd = tailAt + tail.length;
+    }
+    cutPlainEnd = Math.min(Math.max(cutPlainEnd, align + Math.min(20, stemP.length)), map.length);
+    if (cutPlainEnd < 12) return stripLeadingSolMeta(out);
+    const cutAt = map[cutPlainEnd - 1];
+    if (!(cutAt > 0)) return stripLeadingSolMeta(out);
+
+    let rest = out.slice(cutAt);
+    // If cut landed mid-word, snap to next break
+    rest = rest.replace(/^[a-zA-Z]{1,12}(?=[\s,.;:!?<]|&nbsp;|<|$)/, "");
+    rest = rest.replace(/^[\s.?!,;:\-–—)'"\]]+/u, "");
+    rest = rest.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)+/i, "");
+    rest = rest.replace(/^(?:<(?:div|span|p)[^>]*>\s*)*(?:given(?:\s+that)?|as\s+given)\s*[,:\-–]?\s*/i, "");
+    rest = stripLeadingSolMeta(rest);
+
+    const restPlain = stemComparePlain(rest);
+    if (restPlain.length < 8 && solP.length > restPlain.length + 40) {
+      return stripLeadingSolMeta(String(html || ""));
+    }
+    // Fill-in / short solutions where stem ≈ whole sol: keep after meta strip only
+    if (restPlain.length < 12 && stemP.length >= solP.length - 8) {
+      return stripLeadingSolMeta(String(html || ""));
+    }
+    return rest || out;
+  }
+
   function formatBody(solution, q) {
     let raw = flattenMarksSolTables(String(solution || ""));
-    try {
-      if (typeof Mx !== "undefined" && Mx.flattenUnsafeMathDollars) {
-        raw = Mx.flattenUnsafeMathDollars(raw);
-      }
-    } catch (_) { /* */ }
-    if (/katex-error|ParseError:/i.test(raw)) {
-      try {
-        if (typeof Mx !== "undefined" && Mx.flattenUnsafeMathDollars) raw = Mx.flattenUnsafeMathDollars(raw);
-      } catch (_) { /* */ }
-    }
-    if (/class=["'][^"']*katex(?!-error)|spanclass\s*=\s*"\s*katex/i.test(raw)
-      && !/katex-error|ParseError:/i.test(raw)) {
-      if (typeof Mx !== "undefined" && typeof Mx.html === "function") {
-        try { return Mx.html(raw); } catch (_) { /* */ }
-      }
-      return raw;
+    raw = stripLeadingStemEcho(raw, q);
+    // Same deep TeX/symbol repair as stems/options (solutions were missing shatter/tofu fixes)
+    if (typeof Mx !== "undefined" && Mx.cleanQuestionText) {
+      try { raw = Mx.cleanQuestionText(raw); } catch (_) { /* */ }
     }
     if (typeof QxProof !== "undefined" && QxProof.proofreadHtml) {
       try { raw = QxProof.proofreadHtml(raw); } catch (_) { /* */ }
@@ -662,31 +813,8 @@ const QuantrexSolution = (() => {
     }
     raw = toCleanFlow(raw);
     let html = typeof Mx !== "undefined" ? Mx.html(raw) : raw;
-    if (typeof Mx !== "undefined" && /spanclass|katex-html/i.test(html)) {
-      try { html = Mx.html(html); } catch (_) { /* */ }
-    }
     html = polishHtml(html);
     html = cleanSolutionFigHtml(html);
-        /* qx-sol-dollar-heal:v2 qxmd115 */
-    // Always run heal+KaTeX+scrub so View Solution never shows raw $
-    try {
-      if (typeof Mx !== "undefined") {
-        if (Mx.healFakeColorEntities) html = Mx.healFakeColorEntities(html);
-        if (Mx.healSolutionHtml) {
-          html = Mx.healSolutionHtml(html);
-        } else {
-          if (Mx.flattenUnsafeMathDollars) html = Mx.flattenUnsafeMathDollars(html);
-          if (Mx.katexRenderIslands) html = Mx.katexRenderIslands(html);
-          else if (Mx.html && /\$/.test(html)) html = Mx.html(html);
-          if (Mx.scrubLeftoverDollars) html = Mx.scrubLeftoverDollars(html);
-        }
-      }
-    } catch (_) { /* */ }
-    // Lining clutter from bank HTML
-    html = String(html || "")
-      .replace(/<hr\s*\/?>/gi, "")
-      .replace(/\s*text-decoration\s*:\s*underline\s*;?/gi, "")
-      .replace(/<u\b[^>]*>([\s\S]*?)<\/u>/gi, "$1");
     html = String(html || "")
       .replace(/(<br\s*\/?>\s*){3,}/gi, "<br><br>")
       .replace(/\n{3,}/g, "\n\n");
@@ -747,20 +875,23 @@ const QuantrexSolution = (() => {
 
   function renderBlock(q, rawSolution) {
     try { ensureSolCss(); } catch (_) { /* */ }
-    const sol = rawSolution != null ? rawSolution : (q && (q.solution || q.sol || q.explanation));
+    let sol = rawSolution != null ? rawSolution : (q && (q.solution || q.sol || q.explanation));
+    try { sol = stripLeadingStemEcho(sol, q); } catch (_) { /* */ }
     const has = !isPlaceholderSolution(sol);
     const theme = subjectTheme(q);
     const head = subjectBadgeLabel(q);
 
+    // Difficulty badge for solution view
+    const rawDiff = q && (q.difficulty || q.level || q.difficultyLevel);
     let diffBadge = "";
-    try {
-      if (typeof QuantrexStrip !== "undefined" && QuantrexStrip.solDifficultyHtml) {
-        diffBadge = QuantrexStrip.solDifficultyHtml(q) || "";
-      } else if (typeof qxQuestionDifficulty === "function") {
-        const d = qxQuestionDifficulty(q);
-        if (d) diffBadge = `<span class="qx-sol-diff-badge">Difficulty: ${String(d).replace(/</g, "&lt;")}</span>`;
-      }
-    } catch (_) { /* */ }
+    if (rawDiff) {
+      const dStr = String(rawDiff).trim();
+      const norm = /easy/i.test(dStr) ? "Easy" : (/hard|tough/i.test(dStr) ? "Hard" : "Medium");
+      const col = norm === "Easy" ? "#16a34a" : (norm === "Hard" ? "#dc2626" : "#d97706");
+      const bg = norm === "Easy" ? "#ecfdf5" : (norm === "Hard" ? "#fef2f2" : "#fffbeb");
+      const bdr = norm === "Easy" ? "#86efac" : (norm === "Hard" ? "#fca5a5" : "#fde68a");
+      diffBadge = `<span class="qx-sol-diff-badge" style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:${col};background:${bg};border:1px solid ${bdr}">Difficulty: ${norm}</span>`;
+    }
 
     // Exam / Paper metadata line inside solution
     let examMeta = "";
@@ -800,7 +931,7 @@ const QuantrexSolution = (() => {
       ${examMeta || ""}
       ${officialAnswerHtml(q)}
       ${shortcutHtml}
-      <div class="qx-content sol-body">${body}</div>
+      <div class="qx-content sol-body qx-sol-flow">${body}</div>
     </div>`;
   }
 
@@ -814,6 +945,7 @@ const QuantrexSolution = (() => {
     isPlaceholderSolution,
     cleanSolutionFigHtml, handleSolImgErr, polishScientificSymbols, extractEasyExplain, renderEasyExplain,
     solutionLooksRelevant, isMatchQuestion, structureSolutionBody, formatShortcutLine,
-    flattenMarksSolTables, renderTeacherWrap, looksHollowStem
+    flattenMarksSolTables, renderTeacherWrap, looksHollowStem,
+    stripLeadingStemEcho, stripLeadingSolMeta, stemComparePlain
   };
 })();
