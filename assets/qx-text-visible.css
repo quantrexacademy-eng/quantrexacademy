@@ -568,39 +568,11 @@ html[data-theme="dark"] .eg-btn,
 .mtk-test-root[data-test-theme="dark"] .mtk-btn-prev,
 .mtk-test-root[data-test-theme="dark"] .mtk-btn-ghost,
 .qzrr-cbt.qzrr-dark .qzrr-btn-outline,
-.qzrr-cbt.qzrr-dark #qxClearBtn,
-.qzrr-cbt.qzrr-dark #qxPrevBtn,
-.qzrr-cbt.qzrr-dark #qxReviewNextBtn,
-html[data-theme="dark"] .eg-test-root[data-test-theme="dark"] #qxPracClear,
-html[data-theme="dark"] .eg-test-root[data-test-theme="dark"] #qxPracPrev,
-.eg-test-root[data-test-theme="dark"] #qxPracClear,
-.eg-test-root[data-test-theme="dark"] #qxPracPrev {
+#qxClearBtn, #qxPrevBtn, #qxPracClear, #qxPracPrev {
   background: #1e293b !important;
   color: #f1f5f9 !important;
   -webkit-text-fill-color: #f1f5f9 !important;
   border: 1px solid #475569 !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-/* Light CBT / practice: outline footer labels MUST be dark ink (never pale-on-white) */
-.qzrr-cbt:not(.qzrr-dark) .qzrr-btn-outline,
-.qzrr-cbt:not(.qzrr-dark) #qxClearBtn,
-.qzrr-cbt:not(.qzrr-dark) #qxPrevBtn,
-.qzrr-cbt:not(.qzrr-dark) #qxReviewNextBtn,
-.qzrr-cbt[data-test-theme="light"] .qzrr-btn-outline,
-.qzrr-cbt[data-test-theme="light"] #qxClearBtn,
-.qzrr-cbt[data-test-theme="light"] #qxPrevBtn,
-.qzrr-cbt[data-test-theme="light"] #qxReviewNextBtn,
-.eg-test-root[data-test-theme="light"] .eg-btn:not(.eg-btn-next):not(.eg-submit),
-.mtk-test-root[data-test-theme="light"] .mtk-btn-clear,
-.mtk-test-root[data-test-theme="light"] .mtk-btn-prev,
-.mtk-test-root[data-test-theme="light"] .mtk-btn-ghost,
-.mtk-test-root[data-test-theme="light"] .mtk-btn-review {
-  background: #ffffff !important;
-  color: #0f172a !important;
-  -webkit-text-fill-color: #0f172a !important;
-  border: 1px solid #94a3b8 !important;
   opacity: 1 !important;
   visibility: visible !important;
 }
@@ -618,8 +590,7 @@ html[data-theme="dark"] .eg-btn-next,
   visibility: visible !important;
 }
 
-html[data-theme="dark"] .qzrr-cbt.qzrr-dark #qxReviewNextBtn,
-.qzrr-cbt.qzrr-dark #qxReviewNextBtn,
+html[data-theme="dark"] #qxReviewNextBtn,
 .mtk-test-root[data-test-theme="dark"] .mtk-btn-review {
   background: #7c3aed !important;
   color: #ffffff !important;
@@ -675,156 +646,120 @@ html[data-theme="dark"] #mtkExitBtn,
   visibility: visible !important;
 }
 
-/* Dark mode: Engineering / Medical / chapter folder labels must stay readable */
-html[data-theme="dark"] .exam-opt,
-html[data-theme="dark"] .exam-opt strong,
-html[data-theme="dark"] .qx-top-exam,
-html[data-theme="dark"] .qx-module-card,
-html[data-theme="dark"] .qx-module-body,
-html[data-theme="dark"] .qx-module-body strong,
-html[data-theme="dark"] .cpyqb-exam-tile,
-html[data-theme="dark"] .cpyqb-exam-tile strong,
-html[data-theme="dark"] .subj-card,
-html[data-theme="dark"] .subj-card strong {
-  color: #f8fafc !important;
-  -webkit-text-fill-color: #f8fafc !important;
+/* QXNAV3_QSTRIP — never bleach horizontal Q numbers in light mode */
+html[data-theme="light"] .eg-qbar-n,
+html[data-theme="light"] .eg-q-dot,
+.eg-test-root[data-test-theme="light"] .eg-qbar-n,
+.eg-test-root[data-test-theme="light"] .eg-q-dot {
   opacity: 1 !important;
   visibility: visible !important;
+  font-weight: 800 !important;
 }
-html[data-theme="dark"] .exam-opt {
-  background: #1e293b !important;
-  border-color: #334155 !important;
-}
-html[data-theme="dark"] .qx-module-body small,
-html[data-theme="dark"] .qx-module-card small,
-html[data-theme="dark"] .exam-opt small,
-html[data-theme="dark"] .subj-card small,
-html[data-theme="dark"] .cpyqb-exam-tile small {
-  color: #cbd5e1 !important;
-  -webkit-text-fill-color: #cbd5e1 !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-html[data-theme="dark"] .qx-ch-hub-hero h1,
-html[data-theme="dark"] .qx-ch-hub-hero p {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  opacity: 1 !important;
-}
-html[data-theme="dark"] .pyqmock-practice,
-html[data-theme="dark"] .cpyqb-eg-actions .pyqmock-practice {
-  background: #1e293b !important;
-  color: #f8fafc !important;
-  -webkit-text-fill-color: #f8fafc !important;
-  border-color: #475569 !important;
+html[data-theme="light"] .eg-qbar-n.eg-unseen,
+html[data-theme="light"] .eg-q-dot.eg-unseen,
+.eg-test-root[data-test-theme="light"] .eg-qbar-n.eg-unseen,
+.eg-test-root[data-test-theme="light"] .eg-q-dot.eg-unseen {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  background: #e2e8f0 !important;
+  border: 2px solid #94a3b8 !important;
 }
 
-/* Dark home: Medical/Engineering folders + sidebar must stay readable */
-html[data-theme="dark"] body,
-html[data-theme="dark"] #app-main,
-html[data-theme="dark"] .content,
-html[data-theme="dark"] .qx-home,
-html[data-theme="dark"] .qx-med-home,
-html[data-theme="dark"] .marks-section,
-html[data-theme="dark"] .marks-sec-head h3 {
-  color: #f8fafc !important;
-}
-html[data-theme="dark"] .sidebar {
-  background: #0f172a !important;
-  color: #f8fafc !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-html[data-theme="dark"] .nav-item,
-html[data-theme="dark"] .nav-item span,
-html[data-theme="dark"] .logo-text,
-html[data-theme="dark"] .logo-tagline {
-  color: #e2e8f0 !important;
-  -webkit-text-fill-color: #e2e8f0 !important;
-  opacity: 1 !important;
+
+/* QXTOOL8: never hide foot / Prev Next in light */
+.eg-test-root .eg-foot,
+.eg-test-root[data-test-theme="light"] .eg-foot,
+html[data-theme="light"] .eg-foot,
+#egFoot, #qxPrevBtn, #qxNextBtn {
   visibility: visible !important;
+  opacity: 1 !important;
 }
-html[data-theme="dark"] .nav-item.active {
-  background: #334155 !important;
+
+/* ========== qxvis1 early paint (full rules in qx-cbt-contrast) ========== */
+.mtk-test-root .mtk-header .mtk-brand-text,
+.mtk-test-root .mtk-header .mtk-timer,
+.mtk-test-root .mtk-header .mtk-prac-progress,
+.eg-test-root .eg-top,
+.eg-test-root .eg-top-title,
+.eg-test-root .eg-timer {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
-html[data-theme="dark"] .qx-med-rev-card,
-html[data-theme="dark"] .qx-med-test-card,
-html[data-theme="dark"] .qx-med-nb-card,
-html[data-theme="dark"] .qx-med-subj-card,
-html[data-theme="dark"] .qx-ncert-tool,
-html[data-theme="dark"] .qx-med-util,
-html[data-theme="dark"] .qx-rev-subj,
-html[data-theme="dark"] .qx-folder-card,
-html[data-theme="dark"] .book-card,
-html[data-theme="dark"] .qx-book-card {
-  background: #1e293b !important;
-  color: #f8fafc !important;
-  -webkit-text-fill-color: #f8fafc !important;
-  border: 1px solid #64748b !important;
-  opacity: 1 !important;
-  visibility: visible !important;
+/* Pale EG feedback must NOT use white text in light mode */
+.eg-test-root[data-test-theme="light"] .mtk-opt.correct,
+.eg-test-root[data-test-theme="light"] .mtk-opt.wrong,
+.eg-test-root[data-test-theme="light"] .mtk-opt.eg-opt-right,
+.eg-test-root[data-test-theme="light"] .mtk-opt.eg-opt-wrong,
+.mtk-test-root.allen-practice[data-test-theme="light"] .mtk-opt.correct,
+.mtk-test-root.allen-practice[data-test-theme="light"] .mtk-opt.wrong {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
 }
-html[data-theme="dark"] .qx-med-rev-card strong,
+.eg-test-root[data-test-theme="light"] .mtk-opt.correct .mtk-opt-text,
+.eg-test-root[data-test-theme="light"] .mtk-opt.wrong .mtk-opt-text,
+.eg-test-root[data-test-theme="light"] .mtk-opt.correct .katex,
+.eg-test-root[data-test-theme="light"] .mtk-opt.wrong .katex,
+.eg-test-root[data-test-theme="light"] .mtk-opt.correct .katex *,
+.eg-test-root[data-test-theme="light"] .mtk-opt.wrong .katex * {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+
+/* ========== qxvis2 early-paint site shells ========== */
 html[data-theme="dark"] .qx-med-test-card strong,
 html[data-theme="dark"] .qx-med-nb-card strong,
-html[data-theme="dark"] .qx-med-subj-card strong,
-html[data-theme="dark"] .qx-ncert-tool strong,
-html[data-theme="dark"] .qx-med-util,
-html[data-theme="dark"] .book-card strong,
-html[data-theme="dark"] .qx-book-card strong {
+html[data-theme="dark"] .qx-bm-drawer,
+html[data-theme="dark"] .qx-bm-drawer-head h3,
+html[data-theme="dark"] .qx-top-exam:not(.on),
+html[data-theme="dark"] .qx-best-q,
+html[data-theme="dark"] .qx-best-opt {
   color: #f8fafc !important;
   -webkit-text-fill-color: #f8fafc !important;
-}
-html[data-theme="dark"] .qx-med-rev-card small,
-html[data-theme="dark"] .qx-med-test-card small,
-html[data-theme="dark"] .qx-med-nb-card small,
-html[data-theme="dark"] .qx-ncert-tool small,
-html[data-theme="dark"] .qx-med-subj-card small,
-html[data-theme="dark"] .book-card small,
-html[data-theme="dark"] .qx-book-card small {
-  color: #cbd5e1 !important;
-  -webkit-text-fill-color: #cbd5e1 !important;
   opacity: 1 !important;
 }
-html[data-theme="dark"] .qx-med-ncert-banner,
-html[data-theme="dark"] .qx-med-dpp-banner,
-html[data-theme="dark"] .qx-med-board-banner,
-html[data-theme="dark"] .qx-med-an-card {
-  background: #1e293b !important;
-  color: #f8fafc !important;
-  border: 1px solid #334155 !important;
+html[data-theme="light"] .qx-med-test-card strong,
+html[data-theme="light"] .qx-bm-drawer-head h3,
+html[data-theme="light"] .qx-top-exam:not(.on),
+html[data-theme="light"] .qx-best-q {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  opacity: 1 !important;
 }
-html[data-theme="dark"] .qx-med-ncert-banner .marks-sec-head h3,
-html[data-theme="dark"] .qx-med-dpp-banner .marks-sec-head h3,
-html[data-theme="dark"] .qx-med-board-banner .marks-sec-head h3,
-html[data-theme="dark"] .qx-med-an-card h3 {
-  color: #f8fafc !important;
-  -webkit-text-fill-color: #f8fafc !important;
+html[data-theme="dark"] .qx-sum-compare-eq {
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
 }
 
-/* Question stems: never hyphenate leaked KaTeX / English */
-.eg-q-stem,
-.mtk-q-text,
-.qx-content,
-.q-text,
-.qx-prac-q,
-.qx-q-seg-text,
-.qx-q-text-only,
-.eg-q-stem .qx-content {
-  hyphens: none !important;
-  -webkit-hyphens: none !important;
-  overflow-wrap: break-word;
-  word-break: normal;
-}
-.katex,
-.katex-html,
-.katex-mathml,
-.katex *,
-.mjx-container {
-  hyphens: none !important;
-  -webkit-hyphens: none !important;
-  word-break: normal !important;
-  overflow-wrap: normal !important;
+/* qxmd164 — Practice Solution open: kill stem even against theme visibility:visible !important */
+html .eg-test-root.eg-sol-showing .eg-q-stem,
+html .eg-test-root.eg-sol-showing .eg-q-stem.eg-stem-sol-hidden,
+html .eg-test-root.eg-sol-showing #egQArea,
+html .eg-test-root.eg-sol-showing #egQArea *,
+html[data-theme="dark"] .eg-test-root.eg-sol-showing .eg-q-stem,
+html[data-theme="dark"] .eg-test-root.eg-sol-showing .eg-q-stem *,
+html[data-theme="dark"] .eg-test-root.eg-sol-showing .eg-q-stem .qx-content,
+html[data-theme="light"] .eg-test-root.eg-sol-showing .eg-q-stem,
+html[data-theme="light"] .eg-test-root.eg-sol-showing .eg-q-stem *,
+html[data-theme="dark"] .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem,
+html[data-theme="dark"] .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem *,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem *,
+html[data-theme="light"] .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem,
+html[data-theme="light"] .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem,
+.eg-test-root.eg-sol-showing .eg-q-stem .katex,
+.eg-test-root.eg-sol-showing .eg-q-stem .katex * {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  position: absolute !important;
+  left: -10000px !important;
+  width: 0 !important;
+  clip: rect(0, 0, 0, 0) !important;
+  pointer-events: none !important;
 }

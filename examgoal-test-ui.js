@@ -592,9 +592,10 @@
          Options stay for marking. Exam/Take-Test never sets showSol. */
       '<div class="eg-q-stem' + (showSol ? " eg-stem-sol-hidden" : "") + '" id="egQArea"' +
       (showSol
-        ? ' hidden aria-hidden="true" style="display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important"'
+        ? ' hidden aria-hidden="true" style="display:none!important;visibility:hidden!important;opacity:0!important;height:0!important;max-height:0!important;overflow:hidden!important;margin:0!important;padding:0!important;position:absolute!important;left:-9999px!important;clip:rect(0,0,0,0)!important"'
         : ' aria-hidden="false"') + ">" +
-      stem + "</div>" +
+      /* qxmd164: empty stem markup while Solution open — keep #egQArea node */
+      (showSol ? "" : stem) + "</div>" +
       (ctx.sectionInstr || "") +
       '<div class="' + (ctx.optsClass || "mtk-options mtk-options-grid") + ' eg-opts" id="qxOpts">' + (ctx.opts || "") + "</div>" +
       checkRow +
@@ -807,10 +808,15 @@
         // qxmd163: inline !important beats theme visibility:visible rules
         qArea.style.setProperty("display", "none", "important");
         qArea.style.setProperty("visibility", "hidden", "important");
+        qArea.style.setProperty("opacity", "0", "important");
         qArea.style.setProperty("height", "0", "important");
+        qArea.style.setProperty("max-height", "0", "important");
         qArea.style.setProperty("overflow", "hidden", "important");
         qArea.style.setProperty("margin", "0", "important");
         qArea.style.setProperty("padding", "0", "important");
+        qArea.style.setProperty("position", "absolute", "important");
+        qArea.style.setProperty("left", "-9999px", "important");
+        qArea.style.setProperty("clip", "rect(0, 0, 0, 0)", "important");
       } catch (_) { /* */ }
     }
 
@@ -837,10 +843,15 @@
             try {
               qArea.style.removeProperty("display");
               qArea.style.removeProperty("visibility");
+              qArea.style.removeProperty("opacity");
               qArea.style.removeProperty("height");
+              qArea.style.removeProperty("max-height");
               qArea.style.removeProperty("overflow");
               qArea.style.removeProperty("margin");
               qArea.style.removeProperty("padding");
+              qArea.style.removeProperty("position");
+              qArea.style.removeProperty("left");
+              qArea.style.removeProperty("clip");
             } catch (_) { /* */ }
           }
         } catch (_) { /* */ }
@@ -877,10 +888,15 @@
         try {
           qArea.style.removeProperty("display");
           qArea.style.removeProperty("visibility");
+          qArea.style.removeProperty("opacity");
           qArea.style.removeProperty("height");
+          qArea.style.removeProperty("max-height");
           qArea.style.removeProperty("overflow");
           qArea.style.removeProperty("margin");
           qArea.style.removeProperty("padding");
+          qArea.style.removeProperty("position");
+          qArea.style.removeProperty("left");
+          qArea.style.removeProperty("clip");
         } catch (_) { /* */ }
       }
     } catch (_) { /* */ }
@@ -891,6 +907,13 @@
     const session = api.session;
     normalizeSessionSets(session);
     applyOptDecor(root, session, api.getQ(session.ids[session.idx]), session.idx);
+    /* qxmd164: re-apply stem hide after every bind/refresh — theme CSS + refresh wipe otherwise */
+    try {
+      if (wantShowSol(session, session.idx)) {
+        revealPracticeSolution(root, api);
+        setTimeout(function () { try { revealPracticeSolution(root, api); } catch (_) {} }, 0);
+      }
+    } catch (_) { /* */ }
 
     // Live Per-Question Ticking Timer
     if (global._egQTimerInterval) {

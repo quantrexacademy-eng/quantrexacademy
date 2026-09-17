@@ -4762,19 +4762,23 @@ body.qx-immersive .eg-test-root.eg-qxeg5 .eg-foot {
 }
 
 
-/* qxmd160/qxmd163 — Practice Show/Check Answer: hide question stem while Solution open.
-   Must beat theme rules that set visibility:visible !important on .eg-q-stem. */
+/* qxmd160/qxmd163/qxmd164 — Practice Show/Check Answer: hide question stem while Solution open.
+   Must beat theme rules that set visibility:visible !important on .eg-q-stem.
+   qxmd164: also cover .eg-q-stem without requiring both classes; keep #egQArea fully gone. */
 .eg-test-root.eg-sol-showing .eg-q-stem.eg-stem-sol-hidden,
 .eg-test-root.eg-sol-showing #egQArea.eg-stem-sol-hidden,
 .eg-test-root.eg-sol-showing #egQArea[hidden],
+.eg-test-root.eg-sol-showing .eg-q-stem[hidden],
 .eg-q-stem.eg-stem-sol-hidden[hidden],
-#egQArea.eg-stem-sol-hidden[hidden] {
+#egQArea.eg-stem-sol-hidden[hidden],
+#egQArea.eg-stem-sol-hidden {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
   -webkit-text-fill-color: transparent !important;
   height: 0 !important;
   max-height: 0 !important;
+  min-height: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
   overflow: hidden !important;
@@ -4782,9 +4786,45 @@ body.qx-immersive .eg-test-root.eg-qxeg5 .eg-foot {
   pointer-events: none !important;
   position: absolute !important;
   left: -9999px !important;
+  top: 0 !important;
   width: 1px !important;
   clip: rect(0,0,0,0) !important;
+  clip-path: inset(50%) !important;
 }
 .eg-test-root.eg-sol-showing .eg-sol-panel {
-  margin-top: 8px;
+  margin-top: 12px;
+}
+
+/* qxmd164 — Practice Solution open: kill stem even against theme visibility:visible !important */
+html .eg-test-root.eg-sol-showing .eg-q-stem,
+html .eg-test-root.eg-sol-showing .eg-q-stem.eg-stem-sol-hidden,
+html .eg-test-root.eg-sol-showing #egQArea,
+html .eg-test-root.eg-sol-showing #egQArea *,
+html[data-theme="dark"] .eg-test-root.eg-sol-showing .eg-q-stem,
+html[data-theme="dark"] .eg-test-root.eg-sol-showing .eg-q-stem *,
+html[data-theme="dark"] .eg-test-root.eg-sol-showing .eg-q-stem .qx-content,
+html[data-theme="light"] .eg-test-root.eg-sol-showing .eg-q-stem,
+html[data-theme="light"] .eg-test-root.eg-sol-showing .eg-q-stem *,
+html[data-theme="dark"] .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem,
+html[data-theme="dark"] .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem *,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem *,
+html[data-theme="light"] .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem,
+html[data-theme="light"] .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem,
+.eg-test-root.eg-sol-showing .eg-q-stem .katex,
+.eg-test-root.eg-sol-showing .eg-q-stem .katex * {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  position: absolute !important;
+  left: -10000px !important;
+  width: 0 !important;
+  clip: rect(0, 0, 0, 0) !important;
+  pointer-events: none !important;
 }

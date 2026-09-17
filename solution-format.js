@@ -552,6 +552,10 @@ const QuantrexSolution = (() => {
     s = s.replace(/\bBut\s+(?=[A-Z$\\])/g, "\nBut ");
     s = s.replace(/\bHence\s*,?/g, "\nHence ");
     s = s.replace(/\bTherefore\s*,?/g, "\nTherefore ");
+    // qxmd164: probability / combinatorics — break steps on implication arrows
+    s = s.replace(/(?:<br\s*\/?\s*>|\n)?\s*(⇒|⟹|=>)\s*/g, "\n$1 ");
+    s = s.replace(/\b(?:Favourable|Favorable|Total)\s+(?:outcomes?|cases?)\b/gi, "\n$&");
+    s = s.replace(/\bRequired\s+probability\b/gi, "\nRequired probability");
     s = s.replace(/\bHowever\s*,/g, "\nHowever,");
     s = s.replace(/[∴]\s*/g, ".\n");
     s = s.replace(/(?<!\d)\.\s+(?=[A-Z$\\])/g, ".\n");
@@ -705,46 +709,58 @@ const QuantrexSolution = (() => {
     );
     // Bare start "$" leftover with no closer soon — strip once more
     r = r.replace(/^\$+(?=⇒|=>|⟹)/u, "");
+    // qxmd164: if stem-cut ate the opening "$" of the next math island, restore it
+    // e.g. "|\\sin x\\cos x|=1/4$" or "\\frac{1}{4}$" or "x^2=4$"
+    if (!/^\$/.test(r.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)+/i, ""))) {
+      const head = r.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)+/i, "");
+      if (/^(?:\||\\|\^|[A-Za-z0-9])[^$\n]{0,200}\$/.test(head) && (head.match(/\$/g) || []).length === 1) {
+        r = r.replace(
+          /^((?:(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)*)?)(?=\||\\|[A-Za-z0-9^])/,
+          "$1$"
+        );
+      }
+    }
     return r;
   }
 
   function tidyAfterStemCut(rest) {
-
     let r = String(rest || "");
+    // Drop a short English fragment left from mid-word/stem cut (e.g. "is", "of")
     r = r.replace(/^[a-zA-Z]{1,12}(?=[\s,.;:!?<]|&nbsp;|<|$)/, "");
-    r = r.replace(/^\$+/g, "");
-    r = r.replace(/^[\s.$\\?!,;:\-–—)'"\]]+/u, "");
+    // Soft wrappers only — do NOT strip "\\" or a real math-opening "$"
     r = r.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)+/i, "");
     r = r.replace(/^(?:<(?:div|span|p)[^>]*>\s*)*(?:given(?:\s+that)?|as\s+given)\s*[,:\-–]?\s*/i, "");
-    r = stripLeadingSolMeta(r);
-    r = r.replace(/^\$+/g, "");
-    r = r.replace(/^<\/(?:p|div|span)>/i, "");
+    r = r.replace(/^<\/(?:p|div|span)>\s*/i, "");
     r = stripLeadingSolMeta(r);
     r = repairLeadingOrphanDollar(r);
+    // Trailing punctuation crumbs only (keep "\\frac", "|sin", "$…$")
+    r = r.replace(/^[,;:\-–—)'"\]]+/u, "");
+    r = r.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>)+/i, "");
     return r;
   }
 
   /**
    * Strip leading paragraphs that only restate stem math (common after "Given,").
    * Stops at first block that is new work (⇒ result, hence, option, …) or not in stem.
+   * qxmd164: short math defs (e.g. "a 1 2") and lone $…$ echoes also strip when in stem.
    */
   function stripLeadingDefEchoes(html, stemP) {
     let s = String(html || "");
     const stem = String(stemP || "");
-    if (stem.length < 10 || !s.trim()) return s;
+    if (stem.length < 6 || !s.trim()) return s;
 
     function firstBlockEnd(src) {
-      // Prefer real HTML paragraphs (Given + set-def pattern)
       const p = /^<(?:p|div)[^>]*>[\s\S]*?<\/(?:p|div)>/i.exec(src);
       if (p && p[0].length) return p[0].length;
+      // Lone / leading math island then break or next block
+      const mathEnd = /^(\$\$[\s\S]+?\$\$|\$[^$]+\$)\s*(?:<\/(?:p|div|span)>|<br\s*\/?\s*>|$)/i.exec(src);
+      if (mathEnd && mathEnd[0].length >= 5) return mathEnd[0].length;
       const brTag = /<br\s*\/?\s*>/i.exec(src);
-      if (brTag && brTag.index >= 8) return brTag.index + brTag[0].length;
+      if (brTag && brTag.index >= 5) return brTag.index + brTag[0].length;
       const nextP = src.search(/<(?:p|div)\b/i);
-      if (nextP > 8) return nextP;
-      // Untagged prose: stop at sentence end so we never swallow "stem. Hence …"
+      if (nextP > 5) return nextP;
       const sent = /[.?!](?:\s+|$)/.exec(src);
-      if (sent && sent.index >= 10 && sent.index < 180) return sent.index + 1;
-      // Last resort: short head only (avoid eating whole solution)
+      if (sent && sent.index >= 8 && sent.index < 180) return sent.index + 1;
       return Math.min(src.length, 96);
     }
 
@@ -754,23 +770,41 @@ const QuantrexSolution = (() => {
         .trim();
     }
 
-    function inStem(bp) {
-      if (!bp || bp.length < 10) return false;
-      // Reject blocks that are clearly stem + explanation (longer than stem)
-      if (bp.length > stem.length + 6) return false;
-      if (stem.indexOf(bp) >= 0) return true;
+    function isShortMath(bp) {
+      // "a 1 2", "x 2 4", "b 3" — short tokenized math leftovers
+      if (!bp) return false;
+      if (bp.length > 48) return false;
       const toks = bp.split(/\s+/).filter(Boolean);
-      if (toks.length < 4) return false;
-      const win = toks.join(" ");
-      if (stem.indexOf(win) >= 0) return true;
-      // Contiguous head overlap only when block is not longer than stem
-      if (bp.length > stem.length) return false;
-      const need = Math.max(4, Math.ceil(toks.length * 0.85));
-      const head = toks.slice(0, need).join(" ");
-      return head.length >= 10 && stem.indexOf(head) >= 0;
+      if (toks.length < 2 || toks.length > 10) return false;
+      return toks.every((t) => /^[a-z0-9]+$/i.test(t));
     }
 
-    for (let n = 0; n < 8; n++) {
+    function inStem(bp) {
+      if (!bp) return false;
+      if (bp.length > stem.length + 6) return false;
+      if (stem.indexOf(bp) >= 0) return bp.length >= 5 || isShortMath(bp);
+      const toks = bp.split(/\s+/).filter(Boolean);
+      if (toks.length >= 2 && toks.length <= 8 && isShortMath(bp)) {
+        // All tokens appear in stem in order
+        let from = 0;
+        for (const t of toks) {
+          const at = stem.indexOf(t, from);
+          if (at < 0) return false;
+          from = at + t.length;
+        }
+        return true;
+      }
+      if (bp.length < 8) return false;
+      if (toks.length < 3) return false;
+      const win = toks.join(" ");
+      if (stem.indexOf(win) >= 0) return true;
+      if (bp.length > stem.length) return false;
+      const need = Math.max(3, Math.ceil(toks.length * 0.85));
+      const head = toks.slice(0, need).join(" ");
+      return head.length >= 6 && stem.indexOf(head) >= 0;
+    }
+
+    for (let n = 0; n < 10; n++) {
       const before = s;
       s = s.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)+/i, "");
       if (!s.trim()) break;
@@ -782,34 +816,36 @@ const QuantrexSolution = (() => {
       }
 
       const end = firstBlockEnd(s);
-      if (end < 8) break;
+      if (end < 5) break;
       const block = s.slice(0, end);
       const bp = barePlain(stemComparePlain(block));
-      if (bp.length < 10) break;
+      if (!bp || (!inStem(bp) && bp.length < 5)) break;
       if (!inStem(bp)) break;
       s = s.slice(end);
       if (s === before) break;
     }
-    // qxmd163: also drop a leading lone math island that restates the stem equation
+    // qxmd163/164: drop a leading lone math island that restates the stem equation
     s = s.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)*/i, "");
     const lone = /^(\$\$[\s\S]+?\$\$|\$[^$]+\$)/.exec(s);
-    if (lone && lone[0] && stem.length >= 10) {
+    if (lone && lone[0] && stem.length >= 6) {
       const bp = barePlain(stemComparePlain(lone[0]));
-      if (bp.length >= 10 && inStem(bp)) {
+      if (bp && inStem(bp)) {
         s = s.slice(lone[0].length);
-        s = s.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>)+/i, "");
+        s = s.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>|<\/(?:p|div|span)>)+/i, "");
       }
     }
     return repairLeadingOrphanDollar(s);
   }
+
 
   function stripLeadingStemEcho(html, q) {
     let out = String(html || "");
     if (!out.trim()) return out;
     out = stripLeadingSolMeta(out);
     // Drop common wrappers that precede a stem echo in Marks/bank solutions
+    // qxmd164: also swallow the closing </p> after "Given," so defs start clean
     out = out.replace(
-      /^(?:(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)*)(?:given(?:\s+that)?|as\s+given|from\s+the\s+(?:given\s+)?question|according\s+to\s+the\s+question|question)\s*(?:<[^>]+>)*\s*[,:\-–]?\s*/i,
+      /^(?:(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)*)(?:given(?:\s+that)?|as\s+given|from\s+the\s+(?:given\s+)?question|according\s+to\s+the\s+question|question)\s*(?:<[^>]+>)*\s*[,:\-–]?\s*(?:<\/(?:p|div|span)>\s*)*/i,
       ""
     );
     out = stripLeadingSolMeta(out);
