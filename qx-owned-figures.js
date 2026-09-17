@@ -24,7 +24,7 @@
     return m;
   })();
   const UI_KEEP = /ic_content_exam_|cpyqb\/subjects|ncert_toolbox|app_assets\/img\/exams\//i;
-  const FIG_VER = "qxfig138";
+  const FIG_VER = "qxfig136";
   const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr|watermarked_images|\/pyq\/|AKCR2_|2026_modules/i;
   let LOCAL_FIG_MAP = {};
   try {
@@ -150,6 +150,18 @@
     return false;
   }
 
+  function qxBookLocalSrc(raw) {
+    const m = String(raw || "").match(/(qx-(?:book|self)-[a-f0-9]+)(?:\.(png|webp|jpe?g|gif))?/i);
+    if (!m) return "";
+    const ext = m[2] ? m[2].toLowerCase() : "png";
+    return "/assets/diagrams/" + m[1] + "." + ext;
+  }
+  function qxBookStorageSrc(raw) {
+    const m = String(raw || "").match(/(qx-(?:book|self)-[a-f0-9]+)(?:\.(png|webp|jpe?g|gif))?/i);
+    if (!m) return "";
+    const ext = m[2] ? m[2].toLowerCase() : "png";
+    return storageUrlForPath("questions/figs/diagrams/" + m[1] + "." + ext) + "&v=qxmd168";
+  }
   function displaySrc(src) {
     const raw = unwrap(src);
     if (!raw) return "";
@@ -164,23 +176,18 @@
     }
     const irodovDisp = irodovStorageUrl(raw);
     if (irodovDisp) return irodovDisp;
-    const baseMatch = raw.match(/(qx-(?:book|self)-[a-f0-9]+)(?:\.(png|webp|jpe?g|gif))?/i);
-    if (baseMatch) {
-      const ext = baseMatch[2] ? baseMatch[2].toLowerCase() : "png";
-      const name = baseMatch[1] + "." + ext;
-      return storageUrlForPath("questions/figs/diagrams/" + name) + "&v=stem2";
+    // qxmd168: prefer local /assets/diagrams/qx-book-* ; Firebase on storage/error path
+    const bookLocal = qxBookLocalSrc(raw);
+    const bookStore = qxBookStorageSrc(raw);
+    if (bookLocal && bookStore) {
+      if (/firebasestorage|questions(?:%2F|\/)figs(?:%2F|\/)diagrams/i.test(raw)) return bookStore;
+      return bookLocal;
     }
     if (/\/assets\/(book-covers|folder-icons|qx-figures|exam-logos)\//i.test(raw) && !isForeignHost(raw)) {
       return raw.split("?")[0] || raw;
     }
-    // Hosting ignores assets/diagrams/** — map to Firebase Storage instead of 404 paths.
-    if (/\/assets\/diagrams\/(qx-org-[a-f0-9]+\.(?:png|webp|jpe?g))/i.test(raw)) {
-      const orgName = (raw.match(/\/assets\/diagrams\/(qx-org-[a-f0-9]+\.(?:png|webp|jpe?g))/i) || [])[1];
-      if (orgName) return storageUrlForPath("questions/figs/org/" + orgName) + "&v=stem2";
-    }
-    if (/\/assets\/diagrams\/(qx-(?:book|self)-[a-f0-9]+\.(?:png|webp|jpe?g))/i.test(raw)) {
-      const diagName = (raw.match(/\/assets\/diagrams\/(qx-(?:book|self)-[a-f0-9]+\.(?:png|webp|jpe?g))/i) || [])[1];
-      if (diagName) return storageUrlForPath("questions/figs/diagrams/" + diagName) + "&v=stem2";
+    if (/\/assets\/diagrams\/qx-org-/i.test(raw) && !isForeignHost(raw)) {
+      return raw.split("?")[0] || raw;
     }
     if (/\/images\/[^?\s]+\.(png|jpe?g|webp|gif)/i.test(raw) && !isForeignHost(raw)) {
       return raw.split("?")[0] || raw;
@@ -231,11 +238,18 @@
     const nextTry = String(t + 1);
     el.dataset.qxFigTry = nextTry;
     if (t === 0) {
+      const bookFb = qxBookStorageSrc(o || cur) || qxBookStorageSrc(el.getAttribute("data-qx-storage-src") || "");
+      if (bookFb && bookFb !== cur) {
+        el.src = bookFb;
+        return;
+      }
       const disp = displaySrc(o || cur);
-      if (disp && disp !== cur) {
+      if (disp && disp !== cur && !/\/assets\/diagrams\/qx-book-/i.test(disp)) {
         el.src = disp;
         return;
       }
+      if (bookFb) { el.src = bookFb; return; }
+      if (disp && disp !== cur) { el.src = disp; return; }
       if (o) {
         el.src = "/api/proxy-image?url=" + encodeURIComponent(o) + "&clean=1&v=" + FIG_VER;
         return;
@@ -254,29 +268,16 @@
   function rewriteHtml(html) {
     const s = String(html || "");
     if (!s || !/<img\b/i.test(s)) return s;
-    // Only rewrite real src= — never data-qx-orig-src / data-qx-storage-src
-    // (\bsrc= wrongly matches those and duplicates/corrupts fallback attrs).
-    return s.replace(/<img\b([^>]*)>/gi, (full, attrs) => {
-      let a = String(attrs || "");
-      const srcM = a.match(/(^|\s)src=(["'])([^"']*)\2/i);
-      if (!srcM) return full;
-      const sp = srcM[1], q = srcM[2], url = srcM[3];
-      if (/^data:/i.test(url)) return full;
-      // Already on Quantrex Storage / clean proxy — leave intact (idempotent).
-      if (/\/api\/proxy-image/i.test(url) && /firebasestorage|quantrexacademy-app\.firebasestorage/i.test(url)) {
-        return full;
-      }
-      if (/firebasestorage\.googleapis\.com|quantrexacademy-app\.firebasestorage/i.test(url)
-        && /questions(%2F|\/)figs/i.test(url)) {
-        return full;
-      }
+    return s.replace(/\bsrc=(["'])([^"']+)\1/gi, (all, q, url) => {
+      if (/^data:/i.test(url)) return all;
       const disp = displaySrc(url);
-      if (!disp || disp === url) return full;
-      const stored = ownedFigureUrl(url) || disp;
-      a = a.replace(/(^|\s)src=(["'])([^"']*)\2/i, sp + "src=" + q + disp + q);
-      if (!/\bdata-qx-orig-src=/i.test(a)) a += " data-qx-orig-src=" + q + stored + q;
-      if (!/\bdata-qx-storage-src=/i.test(a)) a += " data-qx-storage-src=" + q + stored + q;
-      return "<img" + a + ">";
+      const bookStore = qxBookStorageSrc(url) || qxBookStorageSrc(disp);
+      const stored = bookStore || ownedFigureUrl(url) || (disp && /firebasestorage/i.test(disp) ? disp : "") || disp;
+      if (!disp) return all;
+      if (disp === url && !bookStore) return all;
+      return "src=" + q + disp + q
+        + (url ? " data-qx-orig-src=" + q + url + q : "")
+        + (stored ? " data-qx-storage-src=" + q + stored + q : "");
     });
   }
 

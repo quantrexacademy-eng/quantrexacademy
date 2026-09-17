@@ -22,22 +22,8 @@ const QuantrexQFormat = (() => {
     return `<img class="qx-pool-fig qx-smiles-fig qx-no-wm qx-fig-ready qx-opt-fig-img" src="${pub}" data-qx-smiles="${safe}" data-qx-fallback="${cactus}" alt="Structure" loading="eager" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.qxFallback){const f=this.dataset.qxFallback;delete this.dataset.qxFallback;this.src=f;}else{this.alt='Structure unavailable';this.style.opacity='0.35'}" style="max-width:min(100%,220px);max-height:130px;width:auto;height:auto;display:block;margin:4px auto;padding:2px;background:#fff;border-radius:8px;object-fit:contain">`;
   }
 
-  function repairBrokenLatex(html) {
-    let s = String(html || "");
-    s = s.replace(/\\text\$\s*\{/g, "\\text{");
-    s = s.replace(/\\mathrm\$\s*\{/g, "\\mathrm{");
-    s = s.replace(/\\mathbf\$\s*\{/g, "\\mathbf{");
-    s = s.replace(/\\left\$\s*\(/g, "\\left(");
-    s = s.replace(/\\right\$\s*\)/g, "\\right)");
-    s = s.replace(/\\left\$\s*\[/g, "\\left[");
-    s = s.replace(/\\right\$\s*\]/g, "\\right]");
-    s = s.replace(/\\left\$\s*\\\{/g, "\\left\\{");
-    s = s.replace(/\\right\$\s*\\\}/g, "\\right\\}");
-    return s;
-  }
-
   function expandSmilesHtml(html) {
-    let s = repairBrokenLatex(html);
+    let s = String(html || "");
     // Live bank: "< smiles>O=C(...) < /smiles>" and guillemet variants
     s = s.replace(/[‹«＜<\u2039\u3008]\s*\/?\s*smiles\s*[›»＞>\u203a\u3009]/gi, (m) => {
       if (/\//.test(m)) return "</smiles>";
@@ -417,18 +403,35 @@ const QuantrexQFormat = (() => {
 
   function renderNumericalEntry(val, opts) {
     const o = opts || {};
-    const valEsc = String(val != null ? val : "").replace(/"/g, "&quot;");
+    // qxeg1: empty rectangle only — never show default/pre-filled digits; keypad fills the box
+    const raw = (val != null && String(val).trim() !== "") ? String(val).trim() : "";
+    const valEsc = raw.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
     const disabled = o.disabled ? " disabled" : "";
-    const readonly = o.readonly === true ? " readonly" : "";
-    // ExamGoal-style empty fill box only — native phone keyboard, no on-screen keypad
+    // Always readonly so soft-keyboard stays closed; digits only via keypad (ExamGoal-style)
+    const readonly = o.disabled ? "" : " readonly";
     const wrapCls = o.wrapClass || "qx-prac-numerical";
-    return `<div class="${wrapCls} mtk-numerical mtk-numerical-wrap">
-      <div class="qx-num-entry qx-num-cbt qx-num-nta qx-num-panel qx-num-box-only">
+    return `<div class="${wrapCls} mtk-numerical mtk-numerical-wrap qx-num-eg">
+      <div class="qx-num-entry qx-num-cbt qx-num-nta qx-num-eg-compact qx-num-qxeg1">
         <div class="qx-num-box-wrap">
-          <input type="text" class="qx-num-input" id="qxNumInput" inputmode="decimal" enterkeyhint="done"
-            autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false"
+          <input type="text" class="qx-num-input eg-num-input" id="qxNumInput" inputmode="none" autocomplete="off"
             placeholder="" value="${valEsc}"${readonly}${disabled}
-            aria-label="Numerical answer" maxlength="16">
+            aria-label="Numerical answer" maxlength="12" data-qx-num-keypad-only="1">
+        </div>
+        <div class="qx-num-keypad qx-num-keypad-eg" id="qxNumKeypad" role="group" aria-label="Numeric keypad">
+          <button type="button" class="qx-num-key qx-num-key-wide qx-num-key-back" data-num-key="back">⌫</button>
+          <button type="button" class="qx-num-key" data-num-key="7">7</button>
+          <button type="button" class="qx-num-key" data-num-key="8">8</button>
+          <button type="button" class="qx-num-key" data-num-key="9">9</button>
+          <button type="button" class="qx-num-key" data-num-key="4">4</button>
+          <button type="button" class="qx-num-key" data-num-key="5">5</button>
+          <button type="button" class="qx-num-key" data-num-key="6">6</button>
+          <button type="button" class="qx-num-key" data-num-key="1">1</button>
+          <button type="button" class="qx-num-key" data-num-key="2">2</button>
+          <button type="button" class="qx-num-key" data-num-key="3">3</button>
+          <button type="button" class="qx-num-key" data-num-key="-">−</button>
+          <button type="button" class="qx-num-key" data-num-key="0">0</button>
+          <button type="button" class="qx-num-key" data-num-key=".">.</button>
+          <button type="button" class="qx-num-key qx-num-key-wide qx-num-key-clear" data-num-key="clear">Clear</button>
         </div>
       </div>
       ${o.correctHtml || ""}
@@ -446,7 +449,7 @@ const QuantrexQFormat = (() => {
       if (typeof onChange === "function") onChange(v);
     };
     const applyKey = (key) => {
-      if (input.disabled || input.readOnly) return;
+      if (input.disabled) return; /* qxeg1: readonly OK — keypad fills the empty box */
       let v = String(input.value || "");
       const pos = input.selectionStart != null ? input.selectionStart : v.length;
       if (key === "back") {
@@ -528,17 +531,8 @@ const QuantrexQFormat = (() => {
       input.value = sanitizeNumVal(text);
       emit();
     };
-    // Mobile: do NOT autofocus — native keypad only when user taps inside the box
-    if (!input.disabled && !input.dataset.qxTapReady) {
-      input.dataset.qxTapReady = "1";
-      input.setAttribute("readonly", "readonly");
-      const unlock = function () {
-        input.removeAttribute("readonly");
-        try { input.focus(); input.setSelectionRange(input.value.length, input.value.length); } catch (err) { /* ignore */ }
-      };
-      input.addEventListener("pointerdown", unlock, { once: true });
-      input.addEventListener("touchstart", unlock, { once: true, passive: true });
-      input.addEventListener("click", unlock, { once: true });
+    if (!input.disabled) {
+      try { input.focus(); input.setSelectionRange(input.value.length, input.value.length); } catch (err) { /* ignore */ }
     }
     emit();
   }
@@ -1227,11 +1221,13 @@ const QuantrexQFormat = (() => {
     if (isEmpty) {
       return `<div class="empty qx-load-opts" style="padding:20px;grid-column:1/-1">Loading options… <button type="button" class="btn-soft sm" onclick="typeof qxRetryPracticeLoad==='function'&&qxRetryPracticeLoad()">Retry</button></div>`;
     }
-    // Book pack bug: pure A–D with no stem figure → still loading (Rank Booster)
+    // Book pack: pure A-D is valid (figure often in stem). Never stall on Loading.
     const letterOnly = plainOpts.length >= 2 && plainOpts.every(t => /^[A-D]$/i.test(t));
     const stemHasFig = /<img\b/i.test(String((q && q.q) || ""));
     const isBook = !!(q && (q._book || q._bookId));
-    // Digital books: letter-only A–D is valid when the figure is in the stem — never stall on Loading
+    if (letterOnly && (isBook || stemHasFig || plainOpts.length >= 2)) {
+      void stemHasFig; // explicit: letter-only options render below, not Loading
+    }
 
     /**
      * Fix `$C < B < A$` — bare < in LaTeX was parsed as HTML and options vanished.
@@ -1816,3 +1812,6 @@ const QuantrexQFormat = (() => {
     bindPractice, bindNumericalKeypad, sanitizeNumVal, applyPracticeResult, revealAnswers, isMatchColumn, checkNumerical
   };
 })();
+
+try { window.QuantrexQFormat = QuantrexQFormat; } catch (_) { /* */ }
+if (typeof globalThis !== "undefined") { try { globalThis.QuantrexQFormat = QuantrexQFormat; } catch (_) { /* */ } }

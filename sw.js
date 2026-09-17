@@ -1,14 +1,14 @@
 /* Quantrex PWA — website + Android TWA share this cache.
    Bump CACHE on every release so activate deletes ALL old qx-pwa-* caches.
    Critical question/math/test JS must NEVER be served stale from cache. */
-const CACHE = "qx-pwa-qxmd167";
+const CACHE = "qx-pwa-qxmd168";
 const PRECACHE = ["/login.html", "/manifest.webmanifest", "/assets/icon-192.png", "/assets/icon-512.png"];
 const SKIP = /\.(mp4|webm|apk|m4a|mp3)$/i;
 const ASSET_IMG = /\.(png|jpe?g|webp|svg|gif|ico|woff2?)$/i;
 const ASSET_CODE = /\.(css|js)$/i;
 
 /* Never fall back to stale copies of these — question format / math / test engine. */
-const NEVER_STALE = /(?:^|\/)(qx-math-sanitize|math-render|qx-proofread|solution-format|test-engine|examgoal-test-ui|allen-test-ui|app|question-format|qx-settings|marks-features|marks-shell|marks-live|qx-cbt-ux|jovi|qx-q-fast|qx-catalog|qx-session|theme)\.(?:js|css)$/i;
+const NEVER_STALE = /(?:^|\/)(qx-math-sanitize|math-render|qx-proofread|solution-format|test-engine|examgoal-test-ui|allen-test-ui|app|question-format|qx-settings|marks-features|marks-shell|marks-live|qx-cbt-ux|jovi|qx-q-fast|qx-catalog|qx-session|theme|data|book-covers|qx-image-clean|qx-owned-figures)\.(?:js|css)$/i;
 const NEVER_STALE_HTML = /(?:^|\/)(app|login|examgoal-test-series|quantrex-test-series)\.html$/i;
 const QUESTION_DATA = /\/data\/(?:banks\/chapters\/|nav\/pyq_paper_packs\/|.*\.(?:json))$/i;
 const HTML_DOC = /\.html$/i;
@@ -29,7 +29,7 @@ self.addEventListener("activate", (event) => {
       )
     ).then(() => self.clients.claim()).then(() =>
       self.clients.matchAll({ type: "window", includeUncontrolled: true }).then((clients) => {
-        clients.forEach((c) => c.postMessage({ type: "QX_UPDATED", cache: CACHE, build: "qxmd167" }));
+        clients.forEach((c) => c.postMessage({ type: "QX_UPDATED", cache: CACHE, build: "qxmd168" }));
       })
     )
   );

@@ -14561,31 +14561,60 @@ async function qxLoadBookChapterFromBank(bookId, chapterKey) {
   const nav = await fetchBookNav(bookId);
   if (!nav) return [];
   let meta = null;
+  let exMeta = null;
   (nav.modules || []).forEach((m) => {
     (m.subjects || []).forEach((s) => {
       (s.chapters || []).forEach((c) => {
-        if (c.key === chapterKey || (c.exercises || []).some((e) => e.key === chapterKey)) meta = c;
+        if (c.key === chapterKey) meta = c;
+        (c.exercises || []).forEach((e) => {
+          if (e.key === chapterKey) { meta = c; exMeta = e; }
+        });
       });
     });
   });
   if (!meta) return [];
-  const bank = meta.sourceBank || (nav.qxBankFallback && String(chapterKey).includes("neet") ? "neet" : "");
-  const slug = meta.sourceBank || (String(chapterKey).split("__")[0] === "69a684ac213ecfafb0629c0d" ? "neet" : (String(bookId).indexOf("69a6ea") === 0 || String(bookId).indexOf("69a6eaf") === 0 ? "jee_main" : ""));
-  const useSlug = meta.sourceBank || (String(bookId) === "69a684ac213ecfafb0629c0d" ? "neet" : ((String(bookId) === "69a6ea53213ecfafb0629c18" || String(bookId) === "69a6eaf1213ecfafb0629c19") ? "jee_main" : slug));
-  if (!useSlug || typeof loadSingleBank !== "function") return [];
-  try {
-    await loadSingleBank(useSlug, { allowLarge: true });
-  } catch (_) {
-    return [];
-  }
+  const useSlug = meta.sourceBank
+    || (String(bookId) === "69a684ac213ecfafb0629c0d" ? "neet" : "")
+    || ((String(bookId) === "69a6ea53213ecfafb0629c18" || String(bookId) === "69a6eaf1213ecfafb0629c19") ? "jee_main" : "")
+    || (nav.qxBankFallback && String(chapterKey).includes("neet") ? "neet" : "");
+  if (!useSlug) return [];
   const subj = meta.sourceSubject;
-  const ch = meta.sourceChapter;
-  const ids = new Set((meta.sourceIds || []).map(String));
-  let qs = QUESTIONS.filter((q) => q._bank === useSlug);
+  const ch = (exMeta && exMeta.sourceChapter) || meta.sourceChapter;
+  const ids = new Set(((exMeta && exMeta.sourceIds) || meta.sourceIds || []).map(String));
+  // Anti-hang: load ONE chapter shard (0.2–2MB), never the 50MB+ bank JSON.
+  let pool = [];
+  if (subj && ch && typeof loadChapterBank === "function") {
+    try { pool = await loadChapterBank(useSlug, subj, ch); } catch (_) { pool = []; }
+  }
+  if ((!pool || !pool.length) && ids.size && typeof QuantrexCatalog !== "undefined" && QuantrexCatalog.question) {
+    // Top-500 style: resolve listed ids via catalog without full bank
+    const got = [];
+    for (const id of ids) {
+      try {
+        let q = typeof getQ === "function" ? getQ(id) : null;
+        if (!q) {
+          const data = await QuantrexCatalog.question(id, useSlug);
+          const rec = data && (data.question || (data.questions && data.questions[0]));
+          if (rec) {
+            q = { ...rec, id: /^\d+$/.test(String(id)) ? Number(id) : id, _bank: useSlug };
+            if (!getQ(q.id)) { QUESTIONS.push(q); if (typeof _qxIndexQuestion === "function") _qxIndexQuestion(q); }
+          }
+        }
+        if (q) got.push(q);
+      } catch (_) { /* */ }
+    }
+    pool = got;
+  }
+  if ((!pool || !pool.length) && typeof loadSingleBank === "function") {
+    // Last resort only — still allowLarge so Biology can recover offline
+    try { await loadSingleBank(useSlug, { allowLarge: true }); } catch (_) { return []; }
+    pool = QUESTIONS.filter((q) => q._bank === useSlug);
+  }
+  let qs = pool || [];
   if (ids.size) qs = qs.filter((q) => ids.has(String(q.id)));
   else qs = qs.filter((q) => (!subj || q.subject === subj) && (!ch || q.chapter === ch));
   const tagged = qs.map((q) => ({ ...q, _book: bookId, _bookId: bookId, _chapterKey: chapterKey }));
-  QUESTIONS = QUESTIONS.filter((q) => !(q._book === bookId && q._chapterKey === chapterKey)).concat(tagged);
+  QUESTIONS = QUESTIONS.filter((q) => !(q._book === bookId && q._chapterKey === chapterKey) && !(q._bookId === bookId && q._chapterKey === chapterKey)).concat(tagged);
   try {
     tagged.forEach((q) => { if (typeof _qxIndexQuestion === "function") _qxIndexQuestion(q); });
   } catch (_) { /* */ }
@@ -14596,7 +14625,7 @@ async function loadBookChapter(bookId, chapterKey) {
   const resolvedId = qxResolveBookId(bookId);
   const cacheKey = resolvedId + "::" + chapterKey + "::" + _qxBookDataVer;
   if (_bookChaptersLoaded[cacheKey]) {
-    return QUESTIONS.filter(q => (q._book === bookId || q._book === resolvedId) && q._chapterKey === chapterKey);
+    return QUESTIONS.filter(q => (q._book === bookId || q._book === resolvedId || q._bookId === bookId || q._bookId === resolvedId) && q._chapterKey === chapterKey);
   }
   if (qxIsOrganicBook(bookId) || qxIsOrganicBook(resolvedId)) {
     try { await qxLoadOrganicFigMap(); } catch (_) { /* offline map may already be in JSON */ }
@@ -14606,8 +14635,9 @@ async function loadBookChapter(bookId, chapterKey) {
   const to = setTimeout(() => { try { ctrl && ctrl.abort(); } catch (_) { /* */ } }, 20000);
   let res;
   try {
+    // no-store: never reuse a stale empty/404 from SW or HTTP cache (books "not loading")
     res = await fetch(`data/books/chapters/${resolvedId}/${chapterKey}.json?v=${bust}`, {
-      cache: "force-cache",
+      cache: "no-store",
       signal: ctrl ? ctrl.signal : undefined
     });
   } catch (e) {
@@ -14621,6 +14651,7 @@ async function loadBookChapter(bookId, chapterKey) {
       _bookChaptersLoaded[cacheKey] = true;
       return fallback;
     }
+    // Do NOT mark loaded — Retry must re-fetch
     if (!res || !res.ok) return [];
   }
   let data;
@@ -14671,20 +14702,41 @@ async function loadBookChapter(bookId, chapterKey) {
     } catch (_) { /* */ }
     return o;
   });
-  QUESTIONS = QUESTIONS.filter(q => !(q._book === bookId && q._chapterKey === chapterKey)).concat(qs);
+  QUESTIONS = QUESTIONS.filter(q => !((q._book === bookId || q._bookId === bookId) && q._chapterKey === chapterKey)).concat(qs);
   // Index for getQ / openPracticeQuestion (Black Book pages + all books)
   try {
     qs.forEach(q => {
       if (typeof _qxIndexQuestion === "function") _qxIndexQuestion(q);
     });
   } catch (_) { /* */ }
-  _bookChaptersLoaded[cacheKey] = true;
+  // Only cache successful non-empty loads so Retry recovers from empty/corrupt packs
+  if (qs.length) _bookChaptersLoaded[cacheKey] = true;
   return qs;
 }
 
 function getBookQuestions(bookId, chapterKey) {
-  return QUESTIONS.filter(q => q._book === bookId && q._chapterKey === chapterKey);
+  const resolved = typeof qxResolveBookId === "function" ? qxResolveBookId(bookId) : bookId;
+  return QUESTIONS.filter(q => {
+    const b = q._book || q._bookId;
+    return (b === bookId || b === resolved) && q._chapterKey === chapterKey;
+  });
 }
+
+/** Clear digital-book nav/chapter caches so Retry actually reloads. */
+function clearBookLoadCaches(bookId) {
+  if (bookId) {
+    const resolved = typeof qxResolveBookId === "function" ? qxResolveBookId(bookId) : bookId;
+    delete _bookNavCache[bookId];
+    delete _bookNavCache[resolved];
+    Object.keys(_bookChaptersLoaded).forEach((k) => {
+      if (k.indexOf(resolved + "::") === 0 || k.indexOf(bookId + "::") === 0) delete _bookChaptersLoaded[k];
+    });
+  } else {
+    _bookNavCache = {};
+    _bookChaptersLoaded = {};
+  }
+}
+try { if (typeof window !== "undefined") window.clearBookLoadCaches = clearBookLoadCaches; } catch (_) { /* */ }
 
 function getQ(id) {
   if (id == null || id === "") return null;
@@ -14759,9 +14811,11 @@ async function loadBookQidIndex() {
   if (_qxBookQidIndexPromise) return _qxBookQidIndexPromise;
   _qxBookQidIndexPromise = (async () => {
     try {
-      const res = await fetch("data/qx_book_qid_index.json?v=qxbook1", { cache: "force-cache" });
-      if (res.ok) _qxBookQidIndex = await res.json();
-      else _qxBookQidIndex = {};
+      const res = await fetch("data/qx_book_qid_index.json?v=qxmd168", { cache: "force-cache" });
+      if (res.ok) {
+        const j = await res.json();
+        _qxBookQidIndex = (j && j.map && typeof j.map === "object") ? j.map : (j || {});
+      } else _qxBookQidIndex = {};
     } catch (_) {
       _qxBookQidIndex = {};
     }

@@ -15,7 +15,7 @@
       "moduleId": "6a916235cb18ffc9d00d5aa1",
       "count": 4289,
       "type": "exam",
-      "tag": "PYQ 2022–2026"
+      "tag": "PYQ 2022\u20132026"
     },
     {
       "id": "6a0addba4b032b031e049a36",
@@ -103,7 +103,7 @@
     },
     {
       "id": "a1b2c3d4e5f6010203040506",
-      "title": "Skills in Mathematics — Differential Calculus",
+      "title": "Skills in Mathematics \u2014 Differential Calculus",
       "cover": "assets/book-covers/skills-diff-calculus.png",
       "subject": "Mathematics",
       "badge": "Amit M Agarwal",
@@ -118,7 +118,7 @@
     },
     {
       "id": "a1b2c3d4e5f6010203040507",
-      "title": "Skills in Mathematics — Integral Calculus",
+      "title": "Skills in Mathematics \u2014 Integral Calculus",
       "cover": "assets/book-covers/skills-integral-calculus.png",
       "subject": "Mathematics",
       "badge": "Amit M Agarwal",
@@ -143,7 +143,7 @@
       "redirectType": "subject",
       "count": 1201,
       "type": "exam",
-      "tag": "Vikas Gupta · Pankaj Joshi · Ex 1–5"
+      "tag": "Vikas Gupta \u00b7 Pankaj Joshi \u00b7 Ex 1\u20135"
     },
     {
       "id": "68946f70ebd145663de38728",
@@ -190,21 +190,6 @@
   ],
   "medical": [
     {
-      "id": "6a9158833d351af582b98369",
-      "title": "Most Important PYQ Based Questions",
-      "cover": "assets/book-covers/biology-360.jpg",
-      "description": "For NEET 2027",
-      "isComingSoon": false,
-      "subject": "PCB",
-      "badge": "NEET PYQ",
-      "exam": "NEET 2027",
-      "type": "exam",
-      "count": 4941,
-      "moduleId": "6a9161f1a69a205613f39f1b",
-      "tag": "Most Imp PYQ",
-      "bankSlug": "neet"
-    },
-    {
       "id": "6a507da9107f81233d9985c1",
       "title": "Fundamentals of Organic Chemistry",
       "cover": "assets/book-covers/organic-chemistry.jpg",
@@ -214,20 +199,31 @@
       "badge": "Organic",
       "exam": "NEET",
       "type": "exam",
-      "count": 1151,
-      "moduleId": "6a4e0d3356b4707f06d61c7b"
+      "count": 1151
     },
     {
       "id": "6a0adb714b032b031e049a34",
       "title": "Concepts Of Physics MCQ Edition [Volume 2]",
       "cover": "assets/book-covers/hc-verma-v2.jpg",
-      "description": "Objective I · II · Exercises",
+      "description": "Objective I \u00b7 II \u00b7 Exercises",
       "isComingSoon": false,
       "subject": "Physics",
       "badge": "HC Verma",
       "exam": "NEET",
       "type": "exam",
       "count": 1854
+    },
+    {
+      "id": "69cfb4af611e9b07b5d55e79",
+      "title": "Physics Top Irodov Problems",
+      "cover": "assets/book-covers/irodov.jpg",
+      "description": "MCQs for NEET",
+      "isComingSoon": false,
+      "subject": "Physics",
+      "badge": "Irodov",
+      "exam": "NEET",
+      "type": "exam",
+      "count": 158
     },
     {
       "id": "69a684ac213ecfafb0629c0d",
@@ -245,7 +241,7 @@
       "id": "69f9ccfa011347df7bce2a38",
       "title": "Concepts Of Physics MCQ Edition [Volume 1]",
       "cover": "assets/book-covers/hc-verma-v1.jpg",
-      "description": "Objective I · II · Exercises",
+      "description": "Objective I \u00b7 II \u00b7 Exercises",
       "isComingSoon": false,
       "subject": "Physics",
       "badge": "HC Verma",
@@ -254,23 +250,10 @@
       "count": 1853
     },
     {
-      "id": "69cfb4af611e9b07b5d55e79",
-      "title": "Physics Top Irodov Problems",
-      "cover": "assets/book-covers/irodov.jpg",
-      "description": "MCQs for NEET",
-      "isComingSoon": false,
-      "subject": "Physics",
-      "badge": "Irodov",
-      "exam": "NEET",
-      "type": "exam",
-      "count": 158,
-      "moduleId": "69d34798097639b3bf3ea47a"
-    },
-    {
       "id": "69a6ea53213ecfafb0629c18",
-      "title": "Top 500 JEE Main PYQs for NEET Physics",
+      "title": "Top 500 JEE Main PYQs for NEET 2027",
       "cover": "assets/book-covers/top500-physics.jpg",
-      "description": "Expert picked for NEET",
+      "description": "Physics",
       "isComingSoon": false,
       "subject": "Physics",
       "badge": "Top 500",
@@ -280,9 +263,9 @@
     },
     {
       "id": "69a6eaf1213ecfafb0629c19",
-      "title": "Top 500 JEE Main PYQs for NEET Chemistry",
+      "title": "Top 500 JEE Main PYQs for NEET 2027",
       "cover": "assets/book-covers/top500-chemistry.jpg",
-      "description": "Expert picked for NEET",
+      "description": "Chemistry",
       "isComingSoon": false,
       "subject": "Chemistry",
       "badge": "Top 500",
@@ -291,6 +274,45 @@
       "count": 500
     }
   ],
-  "curated": [],
-  "defence": []
+  "curated": [
+    {
+      "id": "67656ccf18ff438b6c18cc4c",
+      "title": "Must Do Top Qs of JEE Main 2024",
+      "cover": "assets/book-covers/must-do-2024.jpg",
+      "subject": "PCM",
+      "badge": "New",
+      "exam": "JEE Main",
+      "isComingSoon": false,
+      "bankSlug": "jee_main",
+      "count": 490,
+      "type": "curated",
+      "tag": "New"
+    },
+    {
+      "id": "67656cf0a790fd9b172cf0d2",
+      "title": "Top 100 Numerical Qs of JEE Main 2023-2020",
+      "cover": "assets/book-covers/top-100-numerical.jpg",
+      "subject": "PCM",
+      "badge": "Numerical",
+      "exam": "JEE Main",
+      "isComingSoon": false,
+      "bankSlug": "jee_main",
+      "count": 300,
+      "type": "curated",
+      "tag": "Numerical"
+    },
+    {
+      "id": "67656d13c83ed0673b8b7b68",
+      "title": "Top 250 Single Correct Qs of JEE Main 2023-2020",
+      "cover": "assets/book-covers/top-250.jpg",
+      "subject": "PCM",
+      "badge": "PYQ",
+      "exam": "JEE Main",
+      "isComingSoon": false,
+      "bankSlug": "jee_main",
+      "count": 750,
+      "type": "curated",
+      "tag": "PYQ"
+    }
+  ]
 }

@@ -389,7 +389,8 @@ function go(view, payload) {
   }
   currentView = view;
   try { document.body.setAttribute("data-qx-view", String(view || "")); } catch (_) { /* */ }
-  if (view === "books" && typeof resetBooksCache === "function") resetBooksCache();
+  // qxmd168: do NOT reset books cache on every Books nav (broke Retry + re-fetched forever).
+  // Explicit Retry / forceReload clears via resetBooksCache().
   const main = document.getElementById("app-main");
   if (main) main.scrollTop = 0;
   document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));

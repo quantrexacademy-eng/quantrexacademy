@@ -154,7 +154,7 @@ async function fetchNav(name) {
     const ver = (typeof QX_BUILD !== "undefined" && QX_BUILD) || "qxmed6";
     const bust = name === "cpyqb" ? "?v=qxfold1" : name === "rfc" ? "?v=qxrfc1" : ("?v=" + encodeURIComponent(ver));
     const ac = typeof AbortController !== "undefined" ? new AbortController() : null;
-    const to = setTimeout(() => { try { ac && ac.abort(); } catch (_) {} }, 20000);
+    const to = setTimeout(() => { try { ac && ac.abort(); } catch (_) {} }, 8000);
     const res = await fetch(`data/nav/${name}.json${bust}`, { signal: ac ? ac.signal : undefined });
     clearTimeout(to);
     if (!res.ok) throw new Error(res.status);
@@ -210,7 +210,7 @@ async function fetchModuleNav(name) {
   try {
     const ver = (typeof QX_BUILD !== "undefined" && QX_BUILD) || "qxmed6";
     const ac = typeof AbortController !== "undefined" ? new AbortController() : null;
-    const to = setTimeout(() => { try { ac && ac.abort(); } catch (_) {} }, 20000);
+    const to = setTimeout(() => { try { ac && ac.abort(); } catch (_) {} }, 8000);
     const res = await fetch(`data/nav/${name}.json?v=${encodeURIComponent(ver)}`, { signal: ac ? ac.signal : undefined });
     clearTimeout(to);
     if (!res.ok) throw new Error(res.status);
@@ -661,74 +661,6 @@ async function fetchChapterMeta(examSlug, subject, chapter) {
   return _chapterMetaCache[key];
 }
 
-/** Marks CPYQB bucket titles (stable IDs from production.getmarks.app). */
-const MARKS_BUCKET_TITLES = {
-  "61f50b3c142c1c74748dc817": "Beginner Qs",
-  "61f50b3c0ae5689b304c5593": "Rank Booster",
-  "61f50b3cde53a577a2a1f422": "Advanced",
-  "6765739265285150702e7f87": "Must Do Qs of last 5 Years",
-  "6765739465285150702e7f88": "Top Numerical"
-};
-
-function qxIsAllQuestionsFolder(title) {
-  return /^(all questions|all pyqs|all previous year q(?:ue)?s?|all)$/i.test(String(title || "").trim());
-}
-
-function qxMarksBucketTitle(b) {
-  if (!b) return "";
-  const id = String(b.id || b._id || "");
-  if (MARKS_BUCKET_TITLES[id]) return MARKS_BUCKET_TITLES[id];
-  const t = String(b.title || "").trim();
-  if (/^beginner$/i.test(t)) return "Beginner Qs";
-  if (/target mains/i.test(t)) return "Rank Booster";
-  if (/advance climb/i.test(t)) return "Advanced";
-  return t;
-}
-
-function qxUniqueChapterQs(qs) {
-  try {
-    if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.uniqueQuestionRecords) {
-      return QuantrexTestEngine.uniqueQuestionRecords(qs || []);
-    }
-  } catch (_) { /* */ }
-  return qs || [];
-}
-
-function qxMarksTopicFolders(meta) {
-  return ((meta && meta.topics) || []).filter((t) => t && !qxIsAllQuestionsFolder(t.title));
-}
-
-function qxUniqueMetaCount(meta) {
-  if (!meta) return 0;
-  const seen = new Set();
-  const add = (id) => {
-    const k = String(id == null ? "" : id);
-    if (!k || k === "undefined" || k === "null") return;
-    seen.add(k);
-  };
-  (meta.questionIds || meta.question_ids || meta.allQuestionIds || []).forEach(add);
-  (meta.buckets || []).forEach((b) => ((b && b.questionIds) || []).forEach(add));
-  qxMarksTopicFolders(meta).forEach((t) => ((t && t.questionIds) || []).forEach(add));
-  if (seen.size) return seen.size;
-  (meta.topics || []).forEach((t) => ((t && t.questionIds) || []).forEach(add));
-  return seen.size;
-}
-
-function qxChapterPyqCount(meta, qs) {
-  const nMeta = qxUniqueMetaCount(meta);
-  if (nMeta) return nMeta;
-  return qxUniqueChapterQs(qs || []).length || 0;
-}
-
-function qxChapterTotalMarks(examSlug, qCount) {
-  const n = Number(qCount) || 0;
-  if (!n) return 0;
-  const fmt = typeof marksExamFormat === "function" ? marksExamFormat(examSlug) : null;
-  const exam = (fmt && fmt.exam) || String(examSlug || "");
-  if (/jee_advanced/i.test(exam)) return Math.round(n * 3);
-  return n * 4;
-}
-
 /**
  * Marks-sourced exam display names (was wrongly mapping everything → "JEE Main").
  */
@@ -1114,7 +1046,7 @@ function qxParsePaperBits(q) {
   if (m) out.paper = "Paper " + m[1];
   m = raw.match(/\b(Online|Offline)\b/i);
   if (m) out.mode = m[1];
-  m = raw.match(/\(?\s*(\d{1,2})(?:st|nd|rd|th)?[\s\-/]+([A-Za-z]{3,9})\.?(?:[\s\-/]+(\d{4}))?[\s,]+Shift\s*[-–]?\s*([12])/i)
+  m = raw.match(/\(?\s*(\d{1,2})(?:st|nd|rd|th)?[\s\-/]+([A-Za-z]{3,9})\.?(?:[\s\-/]+(\d{4}))?\s*[,\s]+Shift\s*[-–]?\s*([12])/i)
     || raw.match(/\b(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]{3,9})\.?(?:\s+(\d{4}))?\s*(?:Online|Offline)?\s*Shift\s*[-–]?\s*([12])\b/i);
   if (m) {
     const mon = m[2].charAt(0).toUpperCase() + m[2].slice(1).toLowerCase();
@@ -1148,8 +1080,7 @@ function qxStripPaperOriginWords(s) {
     .trim();
 }
 
-function qxFallbackPaperMetaHtml(q, opts) {
-  opts = opts || {};
+function qxFallbackPaperMetaHtml(q) {
   const bits = qxParsePaperBits(q);
   const chips = [];
   const examName = qxStripPaperOriginWords(bits.exam);
@@ -1159,15 +1090,13 @@ function qxFallbackPaperMetaHtml(q, opts) {
     dateTxt = dateTxt.replace(new RegExp("(^|\\s)" + yearTxt + "(?=\\s|$)", "g"), " ").replace(/\s+/g, " ").trim();
   }
   const examTxt = examName ? (yearTxt ? examName + " " + yearTxt : examName) : yearTxt;
-  const dateShiftOnly = !!(opts && (opts.dateShiftOnly || opts.pyqMock));
+  if (examTxt) chips.push(`<span class="qx-paper-chip qx-paper-exam"><span class="qx-paper-exam-txt">${examTxt.replace(/</g, "&lt;")}</span></span>`);
   if (dateTxt) chips.push(`<span class="qx-paper-chip qx-paper-date">📅 ${String(dateTxt).replace(/</g, "&lt;")}</span>`);
   if (bits.shift) chips.push(`<span class="qx-paper-chip qx-paper-shift">${bits.shift}</span>`);
-  if (!dateShiftOnly) {
-    if (examTxt) chips.unshift(`<span class="qx-paper-chip qx-paper-exam"><span class="qx-paper-exam-txt">${examTxt.replace(/</g, "&lt;")}</span></span>`);
-    if (bits.mode) chips.push(`<span class="qx-paper-chip qx-paper-mode">${String(bits.mode).replace(/</g, "&lt;")}</span>`);
-    if (bits.paper) chips.push(`<span class="qx-paper-chip qx-paper-paper">${String(bits.paper).replace(/</g, "&lt;")}</span>`);
-  }
-  if (!dateShiftOnly && !chips.length && bits.raw) {
+  if (bits.mode) chips.push(`<span class="qx-paper-chip qx-paper-mode">${String(bits.mode).replace(/</g, "&lt;")}</span>`);
+  if (bits.paper) chips.push(`<span class="qx-paper-chip qx-paper-paper">${String(bits.paper).replace(/</g, "&lt;")}</span>`);
+  /* Difficulty stays in solution only — not on question paper chips */
+  if (!chips.length && bits.raw) {
     const full = qxStripPaperOriginWords(bits.raw);
     if (full) chips.push(`<span class="qx-paper-chip qx-paper-full">${String(full).replace(/</g, "&lt;")}</span>`);
   }
@@ -1176,13 +1105,10 @@ function qxFallbackPaperMetaHtml(q, opts) {
 }
 
 function qxPaperMetaBlock(q) {
-  const pyq = typeof QuantrexStrip !== "undefined" && QuantrexStrip.isPyqMockSession
-    ? QuantrexStrip.isPyqMockSession()
-    : false;
   if (typeof QuantrexStrip !== "undefined" && QuantrexStrip.paperMetaHtml) {
-    return QuantrexStrip.paperMetaHtml(q, { includeChapter: false, includeSubject: false, dateShiftOnly: pyq, pyqMock: pyq });
+    return QuantrexStrip.paperMetaHtml(q, { includeChapter: false, includeSubject: false });
   }
-  return qxFallbackPaperMetaHtml(q, { dateShiftOnly: pyq, pyqMock: pyq });
+  return qxFallbackPaperMetaHtml(q);
 }
 
 function qxDifficultyTag(rawOrQ) {
@@ -1235,17 +1161,17 @@ function cpyqbFindCtChapter(ctSubj, chapterName) {
 
 /**
  * Marks default chapter priority (position): foundation chapters first
- * (e.g. Maths → Basics of Mathematics first), then unit order from CT.
+ * (e.g. Maths → Basic of Mathematics first), then unit order from CT.
  * Importance high→low is only when user picks that sort filter.
  */
 const MARKS_FOUNDATION_FIRST = {
   Mathematics: [
-    "Basics of Mathematics", "Sets and Relations", "Functions", "Limits",
+    "Basic of Mathematics", "Sets and Relations", "Functions", "Limits",
     "Trigonometric Ratios & Identities", "Quadratic Equation", "Complex Number"
   ],
   Physics: [
-    "Units and Dimensions", "Mathematics in Physics", "Motion in One Dimension",
-    "Motion in Two Dimensions", "Laws of Motion", "Work, Power and Energy"
+    "Units and Dimensions", "Mathematics in Physics", "Motion In One Dimension",
+    "Motion In Two Dimensions", "Laws of Motion", "Work Power Energy"
   ],
   Chemistry: [
     "Some Basic Concepts of Chemistry", "Structure of Atom", "Atomic Structure",
@@ -1819,7 +1745,7 @@ function renderCpyqbExamBank(allExams) {
       <p class="sec-desc">${head}</p>
     </div>
     <h2 class="cpyqb-exam-sec-title">${title}</h2>
-    <div class="cpyqb-exam-grid">${exams.map(tile).join("") || '<div class="empty" style="color:#0f172a;background:#fff;border:1px solid #cbd5e1">No exams for this track. <button type="button" class="btn-primary sm" onclick="go(\'cpyqb\',{step:\'exams\',forceExamList:true})">Retry</button></div>'}</div>
+    <div class="cpyqb-exam-grid">${exams.map(tile).join("") || '<div class="empty">No exams for this track.</div>'}</div>
   </div>`;
 }
 
@@ -1887,14 +1813,9 @@ function bindCpyqbFilters(root) {
 }
 
 function filterByMarksIds(qs, ids) {
-  if (!ids || !ids.length) return qs || [];
-  const set = new Set((ids || []).map((id) => String(id)));
-  return (qs || []).filter((q) => {
-    if (!q) return false;
-    if (q._marksId != null && set.has(String(q._marksId))) return true;
-    if (q.id != null && set.has(String(q.id))) return true;
-    return false;
-  });
+  if (!ids || !ids.length) return qs;
+  const set = new Set(ids);
+  return qs.filter(q => q._marksId && set.has(q._marksId));
 }
 
 function marksIdsFromMeta(meta, mode, bucketId, bucketTitle, topicId, topicTitle) {
@@ -1919,11 +1840,7 @@ function marksIdsFromMeta(meta, mode, bucketId, bucketTitle, topicId, topicTitle
   }
   pushAll(meta.questionIds || meta.question_ids || meta.allQuestionIds);
   (meta.buckets || []).forEach(b => pushAll(b && b.questionIds));
-  const realTopics = (meta.topics || []).filter((t) => t && !qxIsAllQuestionsFolder(t.title));
-  realTopics.forEach(t => pushAll(t && t.questionIds));
-  if (!ids.length) {
-    (meta.topics || []).forEach(t => pushAll(t && t.questionIds));
-  }
+  (meta.topics || []).forEach(t => pushAll(t && t.questionIds));
   (meta.subtopics || []).forEach(t => pushAll(t && t.questionIds));
   (meta.sections || []).forEach(s => {
     pushAll(s && s.questionIds);
@@ -2019,7 +1936,7 @@ async function qxFillStubsFromCatalog(qs) {
   return list;
 }
 
-async function ensureCpyqbChapterQuestionsRaw(examSlug, subject, chapter, meta, opts) {
+async function ensureCpyqbChapterQuestions(examSlug, subject, chapter, meta, opts) {
   opts = opts || {};
   // 0) Fast path: one chapter JSON (~0.2–2 MB), never parse 52 MB jee_main.json
   if (typeof loadChapterBank === "function") {
@@ -2212,24 +2129,6 @@ async function ensureCpyqbChapterQuestionsRaw(examSlug, subject, chapter, meta, 
   return qs;
 }
 
-async function ensureCpyqbChapterQuestions(examSlug, subject, chapter, meta, opts) {
-  opts = opts || {};
-  if (!meta) {
-    try { meta = await fetchChapterMeta(examSlug, subject, chapter); } catch (_) { meta = null; }
-  }
-  const qs = await ensureCpyqbChapterQuestionsRaw(examSlug, subject, chapter, meta, opts);
-  let out = qxUniqueChapterQs(qs);
-  const scoped = opts.mode === "bucket" || opts.mode === "topic" || opts.mode === "typeLevel";
-  if (!scoped && meta) {
-    const ids = marksIdsFromMeta(meta, "all");
-    if (ids.length) {
-      const filtered = filterByMarksIds(out, ids);
-      if (filtered.length) out = qxUniqueChapterQs(filtered);
-    }
-  }
-  return out;
-}
-
 function findMetaItem(list, id, title) {
   if (!list || !list.length) return null;
   if (id) {
@@ -2253,7 +2152,7 @@ function bucketTone(bucket) {
   if (level.includes("numerical") || level === "5") return "bucket-numerical";
   const t = String(b.title || "").toLowerCase();
   if (t.includes("beginner")) return "bucket-beginner";
-  if (t.includes("rank booster") || t.includes("target") || t.includes("mains")) return "bucket-mains";
+  if (t.includes("target") || t.includes("mains")) return "bucket-mains";
   if (t.includes("advance") || t.includes("climb")) return "bucket-advance";
   if (t.includes("must do") || t.includes("5 year")) return "bucket-mustdo";
   if (t.includes("numerical")) return "bucket-numerical";
@@ -2424,7 +2323,7 @@ function renderJeeAdvTypeLevelCards(p, typeBuckets) {
         <span class="qx-adv-level-ic" aria-hidden="true">${b.icon || "Q"}</span>
         <div class="qx-ch-body">
           <strong>${b.title}</strong>
-          <small>${empty ? "Coming soon" : `${b.count} question${b.count === 1 ? "" : "s"} · JEE Advanced`}</small>
+          <small>${empty ? "No questions in this chapter yet" : `${b.count} question${b.count === 1 ? "" : "s"} · JEE Advanced`}</small>
         </div>
       </div>
       <div class="qx-topic-details">
@@ -2442,124 +2341,15 @@ function renderJeeAdvTypeLevelCards(p, typeBuckets) {
   </div>`;
 }
 
-function qxFolderNavHasChapter(navName, subject, chapter) {
-  const nav = typeof _navCache !== "undefined" ? _navCache[navName] : null;
-  if (!Array.isArray(nav) || !nav.length) return null;
-  const match = (a, b) => (typeof qxFcTopicMatch === "function" ? qxFcTopicMatch(a, b)
-    : String(a || "").toLowerCase() === String(b || "").toLowerCase());
-  const subj = nav.find((s) => match(s && s.name, subject) || match(s && s.id, subject));
-  if (!subj) return null;
-  const ch = (subj.chapters || []).find((c) => match(c && c.name, chapter) || match(c && c.id, chapter));
-  if (!ch) return null;
-  const n = Number(ch.count || ch.topicsCount || ((ch.topics || []).length) || 0);
-  if (n < 1 && !(ch.topics && ch.topics.length)) return null;
-  return {
-    subject: subj.name || subject,
-    chapter: ch.name || chapter,
-    subjectId: subj.id || "",
-    chapterId: ch.id || ""
-  };
-}
-
-function qxFormulaHasChapter(subject, chapter) {
-  const hit = qxFolderNavHasChapter("formulas", subject, chapter);
-  if (hit) return hit;
-  if (typeof FORMULAS !== "undefined" && Array.isArray(FORMULAS)) {
-    const f = FORMULAS.find((x) => qxFcTopicMatch(x.subject, subject) && qxFcTopicMatch(x.chapter, chapter));
-    if (f) return { subject: f.subject || subject, chapter: f.chapter || chapter };
-  }
-  return null;
-}
-
-/** Real module links only. Never copy PYQ into video/notes/formula. Empty → Coming soon. */
-function qxChapterResourceMods(p, pyqCount) {
-  const qc = qxFolderNavHasChapter("quick_concepts", p.subject, p.chapter);
-  const fc = qxFormulaHasChapter(p.subject, p.chapter);
-  const hasPyq = Number(pyqCount) > 0;
-  const qcPay = qc
-    ? mg("quickconcepts", {
-      step: "topics",
-      subjectId: qc.subjectId,
-      subjectName: qc.subject,
-      chapterId: qc.chapterId,
-      chapterName: qc.chapter
-    })
-    : null;
-  const fcPay = fc
-    ? mg("formula", { step: "cards", subject: fc.subject, chapter: fc.chapter })
-    : null;
-  const pyqPay = hasPyq
-    ? mg("cpyqb", { step: "questions", exam: p.exam, subject: p.subject, chapter: p.chapter })
-    : null;
-  // Practice Questions used the same PYQ set — keep only Previous Year Questions.
-  return [
-    { id: "video", title: "Concept Video(s)", sub: "Coming soon", soon: true, payload: null },
-    { id: "notes", title: "Notes (PDF)", sub: qc ? "Chapter notes" : "Coming soon", soon: !qc, payload: qcPay },
-    { id: "formula", title: "Formula Sheet (PDF)", sub: fc ? "Chapter formulas" : "Coming soon", soon: !fc, payload: fcPay },
-    { id: "revision", title: "Revision / Quick Concepts", sub: qc ? "Chapter revision" : "Coming soon", soon: !qc, payload: qcPay },
-    { id: "pyq", title: "Previous Year Questions", sub: hasPyq ? `${pyqCount} PYQs` : "Coming soon", soon: !hasPyq, payload: pyqPay }
-  ];
-}
-
-function qxResourceModCards(mods, grad) {
-  const g = grad || "jee";
-  return mods.map((m) => {
-    const click = m.soon || !m.payload
-      ? `onclick="typeof showToast==='function'&&showToast('${String(m.title || "").replace(/'/g, "")} — Coming soon')"`
-      : m.payload;
-    const ic = (typeof QxCardIcons !== "undefined" && QxCardIcons.chapterIconHtml)
-      ? QxCardIcons.chapterIconHtml(m.title, "")
-      : "";
-    return `<button type="button" class="qx-module-card${m.soon ? " soon" : ""}" style="--folder-grad:var(--grad-${g})" ${click}>
-      <span class="qx-module-ic" aria-hidden="true">${ic}</span>
-      <span class="qx-module-body"><strong>${m.title}</strong><small>${m.sub}</small></span>
-      <span class="qx-module-chev" aria-hidden="true">›</span>
-    </button>`;
-  }).join("");
-}
-
-function renderMarksBucketFolders(p, meta) {
-  const buckets = (meta && meta.buckets) || [];
-  if (!buckets.length) return "";
-  const cards = buckets.map((b) => {
-    const title = qxMarksBucketTitle(b) || "Folder";
-    const n = Number(b.count || ((b.questionIds || []).length) || 0);
-    const empty = n < 1;
-    const safe = String(title).replace(/'/g, "");
-    const click = empty
-      ? `onclick="typeof showToast==='function'&&showToast('${safe} — Coming soon')"`
-      : mg("cpyqb", {
-        step: "questions",
-        mode: "bucket",
-        exam: p.exam,
-        subject: p.subject,
-        chapter: p.chapter,
-        bucketId: b.id,
-        bucketTitle: b.title
-      });
-    const ic = (typeof QxCardIcons !== "undefined" && QxCardIcons.chapterIconHtml)
-      ? QxCardIcons.chapterIconHtml(title, p.subject)
-      : "";
-    return `<button type="button" class="qx-module-card${empty ? " soon" : ""}" ${click}>
-      <span class="qx-module-ic" aria-hidden="true">${ic}</span>
-      <span class="qx-module-body"><strong>${title}</strong><small>${empty ? "Coming soon" : n + " questions"}</small></span>
-      <span class="qx-module-chev" aria-hidden="true">›</span>
-    </button>`;
-  }).join("");
-  return `<h3 class="qx-all-topics-label">Special Question Buckets</h3>
-    <div class="qx-module-grid" style="margin-top:8px">${cards}</div>`;
-}
-
 function renderChapterHubPage(exam, p, meta, qs, stats) {
   const buckets = (meta && meta.buckets) || [];
-  const topics = qxMarksTopicFolders(meta);
+  const topics = (meta && meta.topics) || [];
   const isAdv = p.exam === "jee_advanced" || /jee.?advanced/i.test(exam.title || "");
   // Marks-like type levels for JEE Advanced (SC / Multi / T-F / Match / Subjective)
   const typeBuckets = isAdv ? buildJeeAdvTypeBuckets(qs || []) : [];
-  const pyqCount = qxChapterPyqCount(meta, qs)
+  const pyqCount = qs.length || buckets.reduce((s, b) => s + (b.count || 0), 0)
     || typeBuckets.reduce((s, b) => s + b.count, 0);
   const topicCount = topics.length;
-  const totalMarks = qxChapterTotalMarks(p.exam, pyqCount);
   const correct = (() => {
     let c = 0;
     (qs || []).forEach(q => {
@@ -2574,10 +2364,29 @@ function renderChapterHubPage(exam, p, meta, qs, stats) {
   // JEE Advanced: resources (Video/PDF/Formula like Main) + type folders + PYQs
   // IMPORTANT: do NOT use .ch-hub-page (1fr 280px) — it shoved type cards into a 280px column.
   if (isAdv && typeBuckets.length) {
-    const resourceMods = qxChapterResourceMods(p, pyqCount).filter((m) =>
-      m.id === "video" || m.id === "notes" || m.id === "formula" || m.id === "revision"
-    );
-    const resourceCards = qxResourceModCards(resourceMods, "jee");
+    const formulaPayload = mg("formula", { step: "chapters", subject: p.subject });
+    const notesPayload = mg("quickconcepts", { step: "subjects" });
+    const videoPayload = mg("quickconcepts", { step: "subjects" });
+    const revisionPayload = mg("quickconcepts", { step: "subjects" });
+    const resourceMods = [
+      { id: "video", title: "Concept Video(s)", sub: "Chapter explanation videos", payload: videoPayload, soon: false },
+      { id: "notes", title: "Notes (PDF)", sub: "Downloadable chapter notes", payload: notesPayload, soon: false },
+      { id: "formula", title: "Formula Sheet (PDF)", sub: "Quick-reference formulas", payload: formulaPayload, soon: false },
+      { id: "revision", title: "Revision / Quick Concepts", sub: "Last-minute revision notes", payload: revisionPayload, soon: false }
+    ];
+    const resourceCards = resourceMods.map((m) => {
+      const click = m.soon
+        ? `onclick="typeof showToast==='function'&&showToast('${m.title} — Coming Soon')"`
+        : m.payload;
+      const ic = (typeof QxCardIcons !== "undefined" && QxCardIcons.chapterIconHtml)
+        ? QxCardIcons.chapterIconHtml(m.title, p.subject)
+        : "";
+      return `<button type="button" class="qx-module-card${m.soon ? " soon" : ""}" style="--folder-grad:var(--grad-jee)" ${click}>
+        <span class="qx-module-ic" aria-hidden="true">${ic}</span>
+        <span class="qx-module-body"><strong>${m.title}</strong><small>${m.sub}</small></span>
+        <span class="qx-module-chev" aria-hidden="true">›</span>
+      </button>`;
+    }).join("");
     const topicIc = (typeof QxCardIcons !== "undefined" && QxCardIcons.chapterIconHtml)
       ? QxCardIcons.chapterIconHtml("Topic-Wise PYQs", p.subject)
       : "";
@@ -2590,14 +2399,10 @@ function renderChapterHubPage(exam, p, meta, qs, stats) {
           <span class="qx-module-body"><strong>Topic-Wise PYQs</strong><small>${topicCount} Topics</small></span>
           <span class="qx-module-chev">›</span>
         </button>`
-      : `<button type="button" class="qx-module-card soon" onclick="typeof showToast==='function'&&showToast('Topic-Wise PYQs — Coming soon')">
-          <span class="qx-module-ic">${topicIc}</span>
-          <span class="qx-module-body"><strong>Topic-Wise PYQs</strong><small>Coming soon</small></span>
-          <span class="qx-module-chev">›</span>
-        </button>`;
+      : "";
     const allCard = `<button type="button" class="qx-module-card" ${mg("cpyqb", { step: "questions", mode: "all", exam: p.exam, subject: p.subject, chapter: p.chapter })}>
         <span class="qx-module-ic">${allIc}</span>
-        <span class="qx-module-body"><strong>All Previous Year Qs</strong><small>${pyqCount ? `${pyqCount} PYQs · mixed types` : "Coming soon"}</small></span>
+        <span class="qx-module-body"><strong>All Previous Year Qs</strong><small>${pyqCount} PYQs · mixed types</small></span>
         <span class="qx-module-chev">›</span>
       </button>`;
     const sessionBar = typeof cpyqbChapterSessionBar === "function"
@@ -2607,7 +2412,7 @@ function renderChapterHubPage(exam, p, meta, qs, stats) {
       <div class="qx-adv-hub-main">
         <div class="ch-hub-title-row"><span class="ch-hub-bolt">⚡</span><div>
           <h1>${p.chapter}</h1>
-          <p>JEE (Advanced) · ${p.subject} · ${pyqCount} PYQs${totalMarks ? ` · ${totalMarks} marks` : ""}</p>
+          <p>JEE (Advanced) · ${p.subject} · ${pyqCount} PYQs</p>
         </div></div>
 
         <h3 class="qx-all-topics-label">Study Resources <small style="font-weight:600;opacity:.75">· Video · PDF · Formula</small></h3>
@@ -2630,27 +2435,32 @@ function renderChapterHubPage(exam, p, meta, qs, stats) {
 
   // Redesign module grid (labels/counts unchanged; modules without data = Coming Soon)
   if (typeof QxRedesign !== "undefined" && QxRedesign.renderChapterHub) {
-    const mods = qxChapterResourceMods(p, pyqCount);
-    const byId = (id) => mods.find((m) => m.id === id) || {};
+    const practicePayload = (buckets.length || pyqCount)
+      ? mg("cpyqb", { step: buckets.length ? "buckets" : "questions", exam: p.exam, subject: p.subject, chapter: p.chapter })
+      : null;
+    const pyqPayload = practicePayload;
+    const revisionPayload = mg("quickconcepts", { step: "subjects" });
+    const formulaPayload = mg("formula", { step: "chapters", subject: p.subject });
+    const notesPayload = mg("quickconcepts", { step: "subjects" });
+    const videoPayload = mg("quickconcepts", { step: "subjects" });
     const hub = QxRedesign.renderChapterHub({
       title: p.chapter,
-      subtitle: `${exam.title} · ${p.subject}${pyqCount ? ` · ${pyqCount} PYQs` : ""}${totalMarks ? ` · ${totalMarks} marks` : ""}${topicCount ? ` · ${topicCount} Topics` : ""}`,
+      subtitle: `${exam.title} · ${p.subject}${pyqCount ? ` · ${pyqCount} PYQs` : ""}${topicCount ? ` · ${topicCount} Topics` : ""}`,
       examKey,
       examSlug: p.exam,
       subject: p.subject,
       questionCount: pyqCount,
-      totalMarks,
-      practicePayload: null,
-      pyqPayload: byId("pyq").payload || null,
-      revisionPayload: byId("revision").payload || null,
-      formulaPayload: byId("formula").payload || null,
-      notesPayload: byId("notes").payload || null,
-      videoPayload: byId("video").payload || null
+      practicePayload,
+      pyqPayload,
+      revisionPayload,
+      formulaPayload,
+      notesPayload,
+      videoPayload
     });
     const progress = `<div class="ch-hub-side" style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px">
       <section class="ch-hub-panel ch-hub-progress"><h4>Your Progress</h4>
-        <div class="ch-hub-prog-row"><span class="ch-prog-ic">📘</span><div><strong>${stats.solved}/${stats.total || pyqCount}</strong><small>PYQ Solved</small></div></div>
-        <div class="ch-hub-prog-row"><span class="ch-prog-ic">✓</span><div><strong>${correct}/${stats.total || pyqCount}</strong><small>Correct Qs</small></div></div>
+        <div class="ch-hub-prog-row"><span class="ch-prog-ic">📘</span><div><strong>${stats.solved}/${stats.total}</strong><small>PYQ Solved</small></div></div>
+        <div class="ch-hub-prog-row"><span class="ch-prog-ic">✓</span><div><strong>${correct}/${stats.total}</strong><small>Correct Qs</small></div></div>
         <div class="ch-hub-prog-row"><span class="ch-prog-ic">🎯</span><div><strong>${stats.accuracy}%</strong><small>Accuracy</small></div></div>
       </section>
     </div>`;
@@ -2663,15 +2473,11 @@ function renderChapterHubPage(exam, p, meta, qs, stats) {
           <span class="qx-module-body"><strong>Topic-Wise PYQs</strong><small>${topicCount} Topics</small></span>
           <span class="qx-module-chev">›</span>
         </button></div>`
-      : `<div class="qx-module-grid" style="margin-top:12px"><button type="button" class="qx-module-card soon" onclick="typeof showToast==='function'&&showToast('Topic-Wise PYQs — Coming soon')">
-          <span class="qx-module-ic">${topicIcHub}</span>
-          <span class="qx-module-body"><strong>Topic-Wise PYQs</strong><small>Coming soon</small></span>
-          <span class="qx-module-chev">›</span>
-        </button></div>`;
+      : "";
     const sessionBar = typeof cpyqbChapterSessionBar === "function"
       ? cpyqbChapterSessionBar({ exam: p.exam, subject: p.subject, chapter: p.chapter }, pyqCount)
       : "";
-    return sessionBar + hub + renderMarksBucketFolders(p, meta) + topicCard + progress;
+    return sessionBar + hub + topicCard + progress;
   }
   // Fallback (legacy layout)
   const modeCards = [];
@@ -2688,12 +2494,6 @@ function renderChapterHubPage(exam, p, meta, qs, stats) {
       <div><strong>Topic-Wise PYQs</strong><small>${topicCount} Topics</small></div>
       <span class="ch-hub-mode-go">›</span>
     </div>`);
-  } else {
-    modeCards.push(`<div class="ch-hub-mode-card soon" onclick="typeof showToast==='function'&&showToast('Topic-Wise PYQs — Coming soon')">
-      <div class="ch-hub-mode-ic">${(typeof QxCardIcons !== "undefined" && QxCardIcons.chapterIconHtml) ? QxCardIcons.chapterIconHtml("Topic-Wise PYQs", p.subject) : ""}</div>
-      <div><strong>Topic-Wise PYQs</strong><small>Coming soon</small></div>
-      <span class="ch-hub-mode-go">›</span>
-    </div>`);
   }
   const sessionBarFb = typeof cpyqbChapterSessionBar === "function"
     ? cpyqbChapterSessionBar({ exam: p.exam, subject: p.subject, chapter: p.chapter }, pyqCount)
@@ -2701,9 +2501,9 @@ function renderChapterHubPage(exam, p, meta, qs, stats) {
   return `${sessionBarFb}<div class="ch-hub-page"><div class="ch-hub-main">
     <div class="ch-hub-title-row"><span class="ch-hub-bolt">⚡</span><div>
       <h1>${p.chapter}</h1>
-      <p>${exam.title} · ${pyqCount} PYQs${totalMarks ? ` · ${totalMarks} marks` : ""}${topicCount ? ` | ${topicCount} Topics` : ""}</p>
+      <p>${exam.title} · ${pyqCount} PYQs${topicCount ? ` | ${topicCount} Topics` : ""}</p>
     </div></div>
-    <div class="ch-hub-modes">${modeCards.join("") || '<div class="empty">Coming soon</div>'}</div>
+    <div class="ch-hub-modes">${modeCards.join("") || '<div class="empty">No PYQs in this chapter yet.</div>'}</div>
   </div></div>`;
 }
 
@@ -2777,32 +2577,7 @@ async function viewCpyqb(payload) {
     const locked = typeof qxAccessBlock === "function" ? qxAccessBlock("cpyqb", p) : "";
     if (locked) return locked;
   } catch (_) { /* */ }
-  let nav = [];
-  try {
-    nav = await fetchNav("cpyqb");
-  } catch (err) {
-    console.warn("cpyqb nav", err);
-    nav = [];
-  }
-  try { fetchNav("quick_concepts").catch(function () {}); } catch (_) { /* */ }
-  try { fetchNav("formulas").catch(function () {}); } catch (_) { /* */ }
-  if (!Array.isArray(nav) || !nav.length) {
-    try {
-      if (typeof BANK_INDEX !== "undefined") {
-        nav = Object.keys(BANK_INDEX).map(function (slug) {
-          const bi = BANK_INDEX[slug] || {};
-          return {
-            slug: slug,
-            title: bi.title || slug,
-            category: bi.category || "Engineering",
-            count: bi.count || 0,
-            subjects: bi.subjects || [],
-            isComingSoon: !!bi.isComingSoon
-          };
-        }).filter(function (e) { return e.slug && e.slug !== "dpp"; });
-      }
-    } catch (_) { nav = nav || []; }
-  }
+  const nav = await fetchNav("cpyqb");
   const track = typeof cpyqbActiveTrack === "function" ? cpyqbActiveTrack() : STATE.exam;
   // Engineering / Medical / Defence lists: always include real bank exams even if category label drifts
   const exams = nav.filter(e => {
@@ -3199,18 +2974,9 @@ async function viewCpyqb(payload) {
   }
 
   if (p.step === "chapterHub" || (!p.mode && !p.bucketId && !p.bucketTitle && !p.topicId && !p.topicTitle && !p.levelId && p.step !== "buckets" && p.step !== "topics" && p.step !== "questions" && p.step !== "summaryNotes")) {
-    try {
-      await Promise.race([
-        Promise.all([
-          fetchNav("quick_concepts").catch(function () { return []; }),
-          fetchNav("formulas").catch(function () { return []; })
-        ]),
-        new Promise(function (r) { setTimeout(r, 220); })
-      ]);
-    } catch (_) { /* */ }
     const meta = await resolveChapterMeta();
     const hasBuckets = !!(meta && meta.buckets && meta.buckets.length);
-    const hasTopics = qxMarksTopicFolders(meta).length > 0;
+    const hasTopics = !!(meta && meta.topics && meta.topics.length);
     const isAdv = p.exam === "jee_advanced";
     // JEE Advanced: always show Marks-like type levels (SC/Multi/TF/Match/Subjective)
     if (isAdv) {
@@ -3271,17 +3037,21 @@ async function viewCpyqb(payload) {
           </div>`;
       }
       return `${topbar(p.chapter, `${exam.title} · ${p.subject}`)}${bc}
-        <p class="result-count">${allQs.length ? `Showing all ${allQs.length} questions` : "Coming soon"}.</p>
-        ${allQs.length ? renderQList(allQs, _listPage, testMeta) : `<div class="empty">Coming soon</div>`}`;
+        <p class="result-count">${allQs.length ? `Showing all ${allQs.length} questions` : "No questions in this chapter yet"}.</p>
+        ${allQs.length ? renderQList(allQs, _listPage, testMeta) : `<div class="empty">No questions found for this chapter.</div>`}`;
     }
-    // Hub only needs meta unique counts / modes — never sum overlapping buckets
-    const hubCount = qxChapterPyqCount(meta, []);
+    // Hub only needs meta counts / modes — never block on full bank
+    const hubCount = (meta && meta.buckets
+      ? meta.buckets.reduce((s, b) => s + (b.count || (b.questionIds || []).length || 0), 0)
+      : 0) || (meta && meta.topics
+      ? meta.topics.reduce((s, t) => s + (t.count || (t.questionIds || []).length || 0), 0)
+      : 0);
     const hubQs = _banksLoaded[p.exam]
       ? ((typeof getChapterQuestions === "function")
         ? getChapterQuestions(p.exam, p.subject, p.chapter)
         : QUESTIONS.filter(q => q._bank === p.exam && q.subject === p.subject && q.chapter === p.chapter))
       : [];
-    const hubStats = cpyqbChapterStats(p.exam, p.subject, p.chapter, hubCount || hubQs.length);
+    const hubStats = cpyqbChapterStats(p.exam, p.subject, p.chapter, hubQs.length || hubCount);
     return `${topbar(p.chapter, "Choose practice mode")}${bc}${renderChapterHubPage(exam, p, meta, hubQs, hubStats)}`;
   }
 
@@ -3291,51 +3061,32 @@ async function viewCpyqb(payload) {
     _lastListFn = () => ({ step: "buckets", exam: p.exam, subject: p.subject, chapter: p.chapter });
     const buckets = (meta && meta.buckets) || (chMetaNav && chMetaNav.buckets) || [];
     const bc = breadcrumb(baseBc.concat([{ label: "All PYQs" }]));
-    const cards = buckets.length ? buckets.map(b => {
-      const title = qxMarksBucketTitle(b) || b.title || "Folder";
-      const n = Number(b.count || ((b.questionIds || []).length) || 0);
-      const empty = n < 1;
-      const safe = String(title).replace(/'/g, "");
-      const click = empty
-        ? `onclick="typeof showToast==='function'&&showToast('${safe} — Coming soon')"`
-        : mg("cpyqb", { step: "questions", mode: "bucket", exam: p.exam, subject: p.subject, chapter: p.chapter, bucketId: b.id, bucketTitle: b.title });
-      return `
-      <div class="ch-card qx-bucket-card qx-ch-card-rich ${bucketTone(b)}${empty ? " soon" : ""}" ${click}>
+    const cards = buckets.length ? buckets.map(b => `
+      <div class="ch-card qx-bucket-card qx-ch-card-rich ${bucketTone(b)}" ${mg("cpyqb", { step: "questions", mode: "bucket", exam: p.exam, subject: p.subject, chapter: p.chapter, bucketId: b.id, bucketTitle: b.title })}>
         <div class="qx-ch-card-top">
-          ${cpyqbChapterIcon(null, p.subject, title || p.chapter)}
-          <div class="qx-ch-body"><strong>${title}</strong><small>${empty ? "Coming soon" : n.toLocaleString() + " questions"}</small></div>
+          ${cpyqbChapterIcon(null, p.subject, b.title || p.chapter)}
+          <div class="qx-ch-body"><strong>${b.title}</strong><small>${(b.count || 0).toLocaleString()} questions</small></div>
         </div>
-        ${qxProgressBar(0, n)}
-      </div>`;
-    }).join("") : `<div class="empty">Coming soon</div>`;
+        ${qxProgressBar(0, b.count || 0)}
+      </div>`).join("") : `<div class="empty">No PYQ buckets for this chapter yet.</div>`;
     return `${topbar(p.chapter, "All PYQs")}${bc}<div class="ch-grid">${cards}</div>`;
   }
 
   if (p.step === "topics" && !p.topicId && !p.topicTitle) {
     _lastListFn = () => ({ step: "topics", exam: p.exam, subject: p.subject, chapter: p.chapter });
-    const topics = qxMarksTopicFolders(meta).length
-      ? qxMarksTopicFolders(meta)
-      : ((chMetaNav && chMetaNav.topics) || []).filter((t) => t && !qxIsAllQuestionsFolder(t.title));
+    const topics = (meta && meta.topics) || (chMetaNav && chMetaNav.topics) || [];
     const bc = breadcrumb(baseBc.concat([{ label: "Topicwise PYQs" }]));
-    const cards = topics.length ? topics.map(t => {
-      const n = Number(t.count || ((t.questionIds || []).length) || 0);
-      const empty = n < 1;
-      const safe = String(t.title || "Topic").replace(/'/g, "");
-      const click = empty
-        ? `onclick="typeof showToast==='function'&&showToast('${safe} — Coming soon')"`
-        : mg("cpyqb", { step: "questions", mode: "topic", exam: p.exam, subject: p.subject, chapter: p.chapter, topicId: t.id, topicTitle: t.title });
-      return `
-      <div class="ch-card qx-topic-card qx-ch-card-rich${empty ? " soon" : ""}" ${click}>
+    const cards = topics.length ? topics.map(t => `
+      <div class="ch-card qx-topic-card qx-ch-card-rich" ${mg("cpyqb", { step: "questions", mode: "topic", exam: p.exam, subject: p.subject, chapter: p.chapter, topicId: t.id, topicTitle: t.title })}>
         <div class="qx-ch-card-top">
           ${cpyqbChapterIcon(null, p.subject, t.title)}
           <div class="qx-topic-body qx-ch-body">
             <strong>${t.title}</strong>
-            <small>${empty ? "Coming soon" : n.toLocaleString() + " questions"}</small>
+            <small>${(t.count || 0).toLocaleString()} questions</small>
           </div>
         </div>
-        ${qxProgressBar(0, n)}
-      </div>`;
-    }).join("") : `<div class="empty">Coming soon</div>`;
+        ${qxProgressBar(0, t.count || 0)}
+      </div>`).join("") : `<div class="empty">No subtopics for this chapter yet.</div>`;
     return `${topbar(p.chapter, "Topicwise PYQs")}${bc}<div class="ch-grid qx-topic-grid">${cards}</div>`;
   }
 
@@ -3413,7 +3164,7 @@ async function viewCpyqb(payload) {
     ${filterNote}
     ${p.levelId === "multipleCorrect" ? `<p class="result-count" style="color:#b45309;font-weight:600">Multi Correct — select one or more options (A–D), Marks style.</p>` : ""}
     ${p.levelId === "columnMatch" ? `<p class="result-count">Column Matching — choose the correct List-I ↔ List-II option.</p>` : ""}
-    ${qs.length ? renderQList(qs, _listPage, testMeta) : `<div class="empty">Coming soon</div>`}`;
+    ${qs.length ? renderQList(qs, _listPage, testMeta) : `<div class="empty">No questions in this type for this chapter.</div>`}`;
 }
 
 // ============ ALL QUESTION BANK / NCERT (MARKS NEET modules) ============
@@ -3756,7 +3507,7 @@ async function viewNeetModuleBank(payload, moduleId, opts) {
   }
 
   if (p.step === "chapterHub" || (!p.topicId && !p.topicTitle && p.step !== "topics" && p.step !== "questions")) {
-    const localTopics = ((chNav && chNav.topics) || []).filter((t) => t && !qxIsAllQuestionsFolder(t.title));
+    const localTopics = (chNav && chNav.topics) || [];
     if (localTopics.length) return viewNeetModuleBank({ ...p, step: "topics" }, moduleId, opts);
     let meta = null;
     try {
@@ -3765,7 +3516,7 @@ async function viewNeetModuleBank(payload, moduleId, opts) {
         new Promise((resolve) => setTimeout(() => resolve(null), 3500))
       ]);
     } catch (_) { meta = null; }
-    const topics = qxMarksTopicFolders(meta);
+    const topics = (meta && meta.topics) || [];
     if (topics.length) return viewNeetModuleBank({ ...p, step: "topics" }, moduleId, opts);
     return viewNeetModuleBank({ ...p, step: "questions" }, moduleId, opts);
   }
@@ -3773,9 +3524,7 @@ async function viewNeetModuleBank(payload, moduleId, opts) {
   if (p.step === "topics" && !p.topicId && !p.topicTitle) {
     _lastListFn = () => ({ module: moduleId, step: "topics", subject: p.subject, chapter: p.chapter, ...(opts.ncertKind ? { ncertKind: opts.ncertKind } : {}) });
     const meta = await resolveMeta();
-    const topics = qxMarksTopicFolders(meta).length
-      ? qxMarksTopicFolders(meta)
-      : ((chNav && chNav.topics) || []).filter((t) => t && !qxIsAllQuestionsFolder(t.title));
+    const topics = (meta && meta.topics) || (chNav && chNav.topics) || [];
     const bc = breadcrumb(baseBc.slice(0, -1).concat([{ label: p.chapter }]));
     const cards = topics.map(t => `
       <div class="ch-card qx-topic-card qx-ch-card-rich" ${mg(viewKey, { step: "questions", mode: "topic", subject: p.subject, chapter: p.chapter, topicId: t.id, topicTitle: t.title, ...(opts.ncertKind ? { ncertKind: opts.ncertKind } : {}) })}>
@@ -3785,7 +3534,7 @@ async function viewNeetModuleBank(payload, moduleId, opts) {
         </div>
         ${qxProgressBar(0, t.count || 0)}
       </div>`).join("");
-    return `${topbar(p.chapter, "Topicwise · " + title)}${bc}<div class="ch-grid qx-topic-grid">${cards || '<div class="empty">Coming soon</div>'}</div>`;
+    return `${topbar(p.chapter, "Topicwise · " + title)}${bc}<div class="ch-grid qx-topic-grid">${cards || '<div class="empty">No subtopics for this chapter yet.</div>'}</div>`;
   }
 
   const bankSlugs = qxBankSlugsForFolder(moduleId, p.subject, opts);
@@ -5356,11 +5105,11 @@ function qxEnsureRfcSkin() {
     link.rel = "stylesheet";
     document.head.appendChild(link);
   }
-  link.href = "assets/qx-rfc.css?v=qxfix75";
+  link.href = "assets/qx-rfc.css?v=qxeg7";
   if (!document.getElementById("qxRfcJs")) {
     const s = document.createElement("script");
     s.id = "qxRfcJs";
-    s.src = "assets/qx-rfc.js?v=qxfix75";
+    s.src = "assets/qx-rfc.js?v=qxeg7";
     s.onload = function () { window._qxRfcReady = true; };
     document.head.appendChild(s);
   } else {
@@ -5646,7 +5395,7 @@ async function viewFormulaMarks(payload) {
     ...(p.topicTitle ? [{ label: p.topicTitle }] : [])
   ]);
   if (!list.length) {
-    return `${topbar(p.chapter, p.subject)}${bc}<div class="empty">Coming soon
+    return `${topbar(p.chapter, p.subject)}${bc}<div class="empty">No formula cards in this ${p.topicTitle ? "topic" : "chapter"} yet.
       <button type="button" class="btn-soft" ${mg("formula", { step: "chapters", subject: p.subject })}>Back to chapters</button></div>`;
   }
   const sheetTone = qxFcTone(p.subject);
@@ -6040,16 +5789,8 @@ function pyqMatchesFilter(slug, paper) {
 function pyqPreviewModalHtml(slug, source, paper) {
   const subLine = pyqSubjectLine(paper.subjects);
   const y = typeof qYearFromSource === "function" ? qYearFromSource(source) : (paper.year || null);
-  const qn = paper.officialCount || paper.count;
-  const duration = pyqPaperDuration(qn, slug, y, source);
+  const duration = pyqPaperDuration(paper.officialCount || paper.count, slug, y, source);
   const mins = Math.floor(duration / 60);
-  let marks = paper.totalMarks;
-  if (!marks && typeof pyqOfficialPattern === "function") {
-    try {
-      const offPrev = pyqOfficialPattern(slug, y, qn);
-      marks = offPrev && offPrev.totalMarks;
-    } catch (_) { /* */ }
-  }
   const status = pyqAttemptStatus(slug, source);
   const rec = pyqGetAttempt(slug, source);
   const hasSnap = !!(rec && rec.snapshot && rec.status === "completed");
@@ -6078,8 +5819,7 @@ function pyqPreviewModalHtml(slug, source, paper) {
           ${status === "inProgress" ? `<span class="marks-preview-badge exam">In progress</span>` : ""}
         </div>
         <div class="marks-preview-stats">
-          <div class="marks-preview-stat"><strong>${qn}</strong><small>Questions</small></div>
-          <div class="marks-preview-stat"><strong>${marks || "—"}</strong><small>Total Marks</small></div>
+          <div class="marks-preview-stat"><strong>${paper.officialCount || paper.count}</strong><small>Questions</small></div>
           <div class="marks-preview-stat"><strong>${mins} Mins</strong><small>Duration</small></div>
         </div>
         <p class="marks-preview-chapters">${subLine}</p>
@@ -6126,11 +5866,11 @@ function qxPyqBlocked(slug, source) {
       year: qxPyqYearHint(source),
       step: "take"
     };
-    if (QuantrexAccess.ALL_COURSES_FREE || QuantrexAccess.allow("pyqmock", gate)) return false;
+    if (QuantrexAccess.allow("pyqmock", gate)) return false;
     pyqClosePreview();
     const html = QuantrexAccess.paywallHtml("pyqmock", gate);
-    if (!html) return false;
     if (typeof finishRender === "function") finishRender(html);
+    else if (typeof showToast === "function") showToast("This paper is Premium — buy the matching course to unlock");
     return true;
   } catch (_) {
     return false;
@@ -6609,34 +6349,26 @@ async function cpyqbStartSession(mode) {
       return evals.indexOf("wrong") >= 0;
     });
   }
-  try {
-    if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.uniqueQuestionRecords) {
-      qs = QuantrexTestEngine.uniqueQuestionRecords(qs);
-    }
-  } catch (_) { /* */ }
   const ids = qs.map((q) => q.id).filter(Boolean);
-  const uniqIds = [];
-  const seenId = new Set();
-  ids.forEach(function (id) {
-    const k = String(id);
-    if (!k || seenId.has(k)) return;
-    seenId.add(k);
-    uniqIds.push(id);
-  });
-  if (!uniqIds.length) {
+  if (!ids.length) {
     if (typeof showToast === "function") showToast("No questions match these filters");
     return;
   }
-  if (!qxBookQsAlreadyLoaded(uniqIds) && typeof QuantrexCatalog !== "undefined" && QuantrexCatalog.hydrateIds) {
-    QuantrexCatalog.hydrateIds(uniqIds.slice(0, 6)).catch(function () {});
+  // NEVER await 80 hydrates before first paint — startTest progressive-hydrates first ~6
+  if (!qxBookQsAlreadyLoaded(ids)) {
+    try {
+      if (typeof QuantrexCatalog !== "undefined" && QuantrexCatalog.hydrateIds) {
+        Promise.resolve().then(function () {
+          return QuantrexCatalog.hydrateIds(ids.slice(0, 6));
+        }).catch(function () { /* */ });
+      }
+    } catch (_) { /* */ }
   }
+  try { if (typeof qxArmPracticeFailsafe === "function") qxArmPracticeFailsafe(3000); } catch (_) { /* */ }
   const isPractice = mode !== "test";
-  const mins = Math.max(10, Math.ceil(uniqIds.length * 1.5));
+  const mins = Math.max(10, Math.ceil(ids.length * 1.5));
   const ret = ctx.returnTo || "cpyqb";
-  const totalMarks = typeof qxChapterTotalMarks === "function"
-    ? qxChapterTotalMarks(ctx.exam, uniqIds.length)
-    : uniqIds.length * 4;
-  await startTest(uniqIds, ctx.chapter + " · " + (ctx.subject || "PYQ"), ret, {
+  await startTest(ids, ctx.chapter + " · " + (ctx.subject || "PYQ"), ret, {
     testType: ret === "books" ? "book" : (ret === "board" ? "board" : "chapter"),
     practiceMode: isPractice,
     timed: !isPractice,
@@ -6648,9 +6380,6 @@ async function cpyqbStartSession(mode) {
     uiMode: "examgoal",
     organizeJee: false,
     startIdx: 0,
-    catalogTotalQs: uniqIds.length,
-    expectedQs: uniqIds.length,
-    totalMarks,
     meta: { slug: ctx.exam, subject: ctx.subject, chapter: ctx.chapter, bookId: ctx.bookId }
   });
 }
@@ -6668,11 +6397,29 @@ function qxBookQsAlreadyLoaded(ids) {
 
 async function cpyqbLaunchList(ids, title, startIdx, returnTo) {
   if (!ids || !ids.length) return;
-  const ret = returnTo || (typeof currentView !== "undefined" ? currentView : "cpyqb");
-  const i0 = startIdx || 0;
-  if (typeof QuantrexCatalog !== "undefined" && QuantrexCatalog.hydrateIds) {
-    QuantrexCatalog.hydrateIds(ids.slice(Math.max(0, i0), Math.max(0, i0) + 4)).catch(function () {});
+  try {
+    const main = document.getElementById("app-main");
+    if (main && typeof qxLoadLogoHtml === "function" && !main.querySelector(".eg-test-root, .mtk-test-root")) {
+      main.innerHTML = qxLoadLogoHtml("Opening practice…");
+    }
+  } catch (_) { /* */ }
+  try { if (typeof qxArmPracticeFailsafe === "function") qxArmPracticeFailsafe(3000); } catch (_) { /* */ }
+  const bookReady = qxBookQsAlreadyLoaded(ids);
+  // Kick first-6 around startIdx; race ≤900ms — never await full chapter ids
+  if (!bookReady) {
+    try {
+      if (typeof QuantrexCatalog !== "undefined" && QuantrexCatalog.hydrateIds) {
+        const startAt = Math.max(0, Number(startIdx) || 0);
+        const from = Math.max(0, Math.min(startAt, Math.max(0, ids.length - 6)));
+        const windowIds = ids.slice(from, from + 6);
+        Promise.race([
+          QuantrexCatalog.hydrateIds(windowIds),
+          new Promise(function (resolve) { setTimeout(resolve, 900); })
+        ]).catch(function () { /* */ });
+      }
+    } catch (_) { /* */ }
   }
+  const ret = returnTo || (typeof currentView !== "undefined" ? currentView : "cpyqb");
   return startTest(ids, title || "Chapter PYQ", ret, {
     testType: ret === "books" ? "book" : (ret === "board" ? "board" : "chapter"),
     practiceMode: true,
@@ -6712,6 +6459,7 @@ function qxAskBookPracticeOrTest(ids, title, startIdx, returnTo) {
     if (main && typeof qxLoadLogoHtml === "function") {
       main.innerHTML = qxLoadLogoHtml(mode === "test" ? "Starting test…" : "Opening practice…");
     }
+    try { if (typeof qxArmPracticeFailsafe === "function") qxArmPracticeFailsafe(mode === "test" ? 8000 : 3000); } catch (_) { /* */ }
     const isPractice = mode !== "test";
     const mins = Math.max(10, Math.ceil(n * 1.5));
     const testType = ret === "books" ? "book" : (ret === "board" ? "board" : "chapter");
@@ -6720,25 +6468,6 @@ function qxAskBookPracticeOrTest(ids, title, startIdx, returnTo) {
       return;
     }
     if (typeof startTest === "function") {
-      let meta = (typeof cpyqbSessionKeys === "function" ? cpyqbSessionKeys({ returnTo: ret }) : {}) || {};
-      try {
-        if (window._qxChapterMeta) meta = Object.assign({}, meta, window._qxChapterMeta);
-        (ids || []).forEach(function (id) {
-          const q = typeof getQ === "function" ? getQ(id) : null;
-          if (!q) return;
-          const ck = String((meta && meta.chapterKey) || q._chapterKey || "");
-          const multi = !!(meta && meta.multiSelect)
-            || /multiple-choice|multiple_choice|multiplecorrect/i.test(ck)
-            || /multiple|one.?or.?more/i.test(String(q.questionType || q.type || ""))
-            || (Array.isArray(q.answers) && q.answers.length > 1);
-          if (multi) {
-            q.questionType = "multipleCorrect";
-            q.type = "multipleCorrect";
-            q._advSection = "MC";
-            meta.multiSelect = true;
-          }
-        });
-      } catch (_) { /* */ }
       startTest(ids, title || "Questions", ret, {
         testType: testType,
         practiceMode: isPractice,
@@ -6751,7 +6480,7 @@ function qxAskBookPracticeOrTest(ids, title, startIdx, returnTo) {
         uiMode: "examgoal",
         organizeJee: false,
         startIdx: isPractice ? (startIdx || 0) : 0,
-        meta: meta
+        meta: (typeof cpyqbSessionKeys === "function" ? cpyqbSessionKeys({ returnTo: ret }) : {})
       });
     }
   }
@@ -6774,21 +6503,13 @@ function pyqPaperLabel(source) {
 }
 
 function pyqSubjectLine(subjects) {
-  const short = {
-    Mathematics: "Math", Physics: "Phy", Chemistry: "Chem", Biology: "Bio",
-    Botany: "Bot", Zoology: "Zoo", English: "Eng",
-    "General Science": "GS", "General Studies": "GS", "General Ability": "GA"
-  };
   const order = ["Mathematics", "Physics", "Chemistry", "Biology", "Botany", "Zoology", "English", "General Science", "General Studies", "General Ability"];
   const subs = subjects || {};
-  const parts = [];
-  order.forEach((sname) => {
-    if (subs[sname] != null) parts.push((short[sname] || sname) + " " + subs[sname]);
+  const lines = order.filter(s => subs[s]).map(s => `${s}: ${subs[s]}`);
+  Object.keys(subs).forEach(s => {
+    if (!order.includes(s)) lines.push(`${s}: ${subs[s]}`);
   });
-  Object.keys(subs).forEach((sname) => {
-    if (!order.includes(sname)) parts.push((short[sname] || sname) + " " + subs[sname]);
-  });
-  return parts.join(" · ");
+  return lines.join(" · ");
 }
 
 function pyqSubjectNames(subjects) {
@@ -6884,18 +6605,17 @@ async function pyqResumePaper(slug, source) {
   pyqSaveAttempt(attemptKey, { status: "inProgress", slug, source });
   startTest(saved.ids, saved.title || pyqPaperLabel(source), "tests", {
     testType: "pyqmock",
-    timed: false,
-    durationSec: null,
+    timed: true,
+    durationSec: saved.remainingSec != null ? saved.remainingSec : saved.durationSec,
     shuffle: false,
     marksMode: true,
     organizeJee: true,
-    // Resume: PYQ mock uses ExamGoal / chapter-practice chrome (qxmd116)
-    uiMode: "examgoal",
-    practiceMode: true,
+    // Marks website format (not Quizrr) for PYQ mocks
+    uiMode: (saved && saved.uiMode) || "quantrex",
     paperFormat: saved.paperFormat || slug,
     skipCountdown: true,
     persistKey: key,
-    resumeData: Object.assign({}, saved, { uiMode: "examgoal" }),
+    resumeData: Object.assign({}, saved, { uiMode: (saved && saved.uiMode) || "quantrex" }),
     meta: { slug, source, year: typeof qYearFromSource === "function" ? qYearFromSource(source) : null },
     modeLabel: `Full Paper · ${saved.ids.length} Qs`,
     onComplete: (data, snapshot) => {
@@ -7119,7 +6839,7 @@ async function buildPyqPaperIndex(slug) {
 
   // 1) Lightweight paper index (instant — no 40MB bank parse). Built offline for PYQ mock list.
   try {
-    const res = await fetch(`data/nav/pyq_paper_index/${encodeURIComponent(slug)}.json?v=qxmd106`, { cache: "force-cache" });
+    const res = await fetch(`data/nav/pyq_paper_index/${encodeURIComponent(slug)}.json?v=qxfix50`, { cache: "force-cache" });
     if (res.ok) {
       const byYear = await res.json();
       if (byYear && typeof byYear === "object" && Object.keys(byYear).length) {
@@ -7215,7 +6935,7 @@ async function viewPyqMock(payload) {
       return `<div class="pyqmock-paper-card ${stCls}"${pyqPeekAttr(p.exam, paper.source, p.year)}>
         <div class="pyqmock-paper-main" onclick="${clickFn}">
           <strong>${pyqPaperLabel(paper.source)}</strong>
-          <small class="pyqmock-subs">${subLine || ""}</small>
+          <small>${subLine || ""} · English</small>
         </div>
         <div class="pyqmock-eg-actions">
           <button type="button" class="pyqmock-take" onclick="event.stopPropagation();pyqOpenTestModal('${p.exam}', decodeURIComponent('${srcEnc}'))">Take Test</button>
@@ -7254,7 +6974,7 @@ async function viewPyqMock(payload) {
     const exam = exams.find(e => e.slug === p.exam) || { slug: p.exam, title: String(p.exam).replace(/_/g, " ") };
     let mods = [];
     try {
-      const res = await fetch(`data/nav/pyq_paper_index/${encodeURIComponent(p.exam)}_modules.json?v=qxmd106`, { cache: "force-cache" });
+      const res = await fetch(`data/nav/pyq_paper_index/${encodeURIComponent(p.exam)}_modules.json?v=qxfix50`, { cache: "force-cache" });
       if (res.ok) {
         const j = await res.json();
         mods = (j && j.modules) || [];
@@ -7354,251 +7074,44 @@ async function viewPyqMock(payload) {
   </div>`;
 }
 
-/** Load one PYQ paper via slim paper JSON / chapter shards / bank cache (qxmd114). */
+/** Load one PYQ paper via catalog ID list (Marks order). Never JSON.parse a 15k–41k bank on the phone. */
 async function qxLoadPyqPaper(slug, source) {
   const src = String(source || "");
   const norm = (s) => String(s || "").replace(/\s+/g, " ").trim().toLowerCase();
   const want = norm(src);
-  const CAP = 220;
   let qs = [];
-
-  function paperCacheKey(sl, so) {
-    return "qx_pyq_paper_v1:" + String(sl) + "|" + norm(so);
-  }
-  function paperFileName(source) {
-    return String(source || "paper")
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "")
-      .slice(0, 120) || "paper";
-  }
-  function readPaperSessionCache(sl, so) {
-    try {
-      const raw = sessionStorage.getItem(paperCacheKey(sl, so));
-      if (!raw) return null;
-      const parsed = JSON.parse(raw);
-      if (parsed && Array.isArray(parsed.questions) && parsed.questions.length) return parsed.questions;
-    } catch (_) { /* */ }
-    return null;
-  }
-  function writePaperSessionCache(sl, so, list) {
-    try {
-      // Slim: keep fields needed for test; avoid blowing sessionStorage quota
-      const slim = (list || []).map(function (q) {
-        return {
-          id: q.id, q: q.q, options: q.options, answer: q.answer,
-          correctValue: q.correctValue, solution: q.solution, sol: q.sol,
-          explanation: q.explanation, subject: q.subject, chapter: q.chapter,
-          difficulty: q.difficulty, questionType: q.questionType, type: q.type,
-          source: q.source || so, paperSource: q.paperSource, exam: q.exam,
-          examName: q.examName, _marksId: q._marksId
-        };
-      });
-      sessionStorage.setItem(paperCacheKey(sl, so), JSON.stringify({ questions: slim, ts: Date.now() }));
-    } catch (_) {
-      try { sessionStorage.removeItem(paperCacheKey(sl, so)); } catch (e2) { /* */ }
-    }
-  }
-
-  function pushQs(list) {
-    // Never QUESTIONS.some over full bank; O(1) index only paper Qs
-    const out = [];
-    (list || []).forEach((rec) => {
-      if (!rec) return;
-      const q = Object.assign({}, rec, { _bank: slug, source: rec.source || src, _catalogTried: true });
-      try {
-        if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.getType) QuantrexQFormat.getType(q);
-      } catch (_) { /* */ }
-      let existing = null;
-      try {
-        if (typeof getQ === "function" && q.id != null) existing = getQ(q.id);
-      } catch (_) { /* */ }
-      if (existing) {
-        if (!existing.source && q.source) existing.source = q.source;
-        if (!existing._sourceFull && q.source) existing._sourceFull = q.source;
-        existing._catalogTried = true;
-        // Prefer richer fields from paper payload when existing stub is thin
-        if (q.q && (!existing.q || String(q.q).length > String(existing.q).length)) existing.q = q.q;
-        if (q.options && q.options.length && !(existing.options && existing.options.length)) existing.options = q.options;
-        if (q.solution && (!existing.solution || String(q.solution).length > String(existing.solution || "").length)) existing.solution = q.solution;
-        out.push(existing);
-        return;
-      }
-      if (typeof QUESTIONS !== "undefined") QUESTIONS.push(q);
-      try {
-        if (typeof _qxIndexQuestion === "function") _qxIndexQuestion(q);
-        else if (typeof window !== "undefined" && window._qxIndexQuestion) window._qxIndexQuestion(q);
-      } catch (_) { /* */ }
-      out.push(q);
-    });
-    return out;
-  }
-
-  function pickIdMap(idMap) {
-    if (!idMap || typeof idMap !== "object") return null;
-    if (Array.isArray(idMap[src]) && idMap[src].length) return idMap[src];
-    const keys = Object.keys(idMap);
-    for (let i = 0; i < keys.length; i++) {
-      if (norm(keys[i]) === want) return idMap[keys[i]];
-    }
-    return null;
-  }
-
-  function setOpenProgress(detail) {
-    try {
-      const mount = typeof getTestMountEl === "function" ? getTestMountEl() : document.getElementById("app-main");
-      if (!mount) return;
-      const el = mount.querySelector(".qx-load-logo p, .qx-paper-load-prog");
-      if (el) el.textContent = detail || "Opening this paper…";
-    } catch (_) { /* */ }
-  }
-
-  async function loadBankQuestions() {
-    if (!window._qxBankCache) window._qxBankCache = Object.create(null);
-    if (Array.isArray(window._qxBankCache[slug])) {
-      // Cache hit — instant, do NOT re-parse
-      return window._qxBankCache[slug];
-    }
-    // Also check a byId index cache
-    if (window._qxBankById && window._qxBankById[slug]) {
-      const vals = Object.keys(window._qxBankById[slug]).map(function (k) { return window._qxBankById[slug][k]; });
-      if (vals.length) {
-        window._qxBankCache[slug] = vals;
-        return vals;
-      }
-    }
-    setOpenProgress("Downloading question bank…");
-    const bankUrl = "data/banks/" + encodeURIComponent(slug) + ".json?v=" + "qxmd114";
-    const raw = await fetch(bankUrl, { cache: "force-cache" }).then((r) => {
-      if (!r.ok) throw new Error("bank HTTP " + r.status);
-      setOpenProgress("Parsing question bank…");
-      return r.json();
-    });
-    const list = Array.isArray(raw) ? raw : ((raw && raw.questions) || (raw && raw.data) || []);
-    window._qxBankCache[slug] = list;
-    // Build byId once for fast paper picks (never push full bank into QUESTIONS)
-    if (!window._qxBankById) window._qxBankById = Object.create(null);
-    const byId = Object.create(null);
-    for (let i = 0; i < list.length; i++) {
-      const q = list[i];
-      if (q && q.id != null) byId[String(q.id)] = q;
-    }
-    window._qxBankById[slug] = byId;
-    return list;
-  }
-
-  function bankById(slug) {
-    if (window._qxBankById && window._qxBankById[slug]) return window._qxBankById[slug];
-    const list = window._qxBankCache && window._qxBankCache[slug];
-    if (!Array.isArray(list)) return null;
-    const byId = Object.create(null);
-    for (let i = 0; i < list.length; i++) {
-      const q = list[i];
-      if (q && q.id != null) byId[String(q.id)] = q;
-    }
-    if (!window._qxBankById) window._qxBankById = Object.create(null);
-    window._qxBankById[slug] = byId;
-    return byId;
-  }
-
-  // 0) sessionStorage paper cache — second open instant
-  try {
-    const cached = readPaperSessionCache(slug, src);
-    if (cached && cached.length) {
-      qs = pushQs(cached.slice(0, CAP));
-      if (qs.length) return qs.slice(0, CAP);
-    }
-  } catch (_) { /* */ }
-
-  // 1) Slim per-paper JSON (~150KB) — preferred over 54MB bank
-  try {
-    setOpenProgress("Loading paper…");
-    let fname = null;
-    try {
-      const idxUrl = "data/nav/pyq_papers/" + encodeURIComponent(slug) + "/_index.json?v=" + "qxmd114";
-      const idx = await fetch(idxUrl, { cache: "force-cache" }).then((r) => (r.ok ? r.json() : null));
-      if (idx && idx.papers) {
-        if (idx.papers[src]) fname = idx.papers[src];
-        else {
-          const keys = Object.keys(idx.papers);
-          for (let i = 0; i < keys.length; i++) {
-            if (norm(keys[i]) === want) { fname = idx.papers[keys[i]]; break; }
-          }
-        }
-      }
-    } catch (_) { /* */ }
-    if (!fname) fname = paperFileName(src) + ".json";
-    const paperUrl = "data/nav/pyq_papers/" + encodeURIComponent(slug) + "/" + fname + "?v=" + "qxmd114";
-    const paper = await fetch(paperUrl, { cache: "force-cache" }).then((r) => (r.ok ? r.json() : null));
-    if (paper && Array.isArray(paper.questions) && paper.questions.length) {
-      qs = pushQs(paper.questions.slice(0, CAP));
-      if (qs.length) {
-        writePaperSessionCache(slug, src, qs);
-        return qs.slice(0, CAP);
-      }
-    }
-  } catch (e) {
-    try { console.warn("qxLoadPyqPaper slim paper", e); } catch (_) {}
-  }
-
-  // 2) Cloud /api/catalog
   try {
     if (typeof showToast === "function") showToast("Loading paper…");
-    const url = "/api/catalog?action=paper&exam=" + encodeURIComponent(slug) + "&source=" + encodeURIComponent(src) + "&v=" + "qxmd114";
-    const data = await fetch(url, { cache: "force-cache" }).then((r) => r.json());
+    const url = "/api/catalog?action=paper&exam=" + encodeURIComponent(slug) + "&source=" + encodeURIComponent(src) + "&v=qxfast1";
+    // Network-first (no force-cache hang on stale SW/HTTP); abort soft at 4s
+    const ctrl = (typeof AbortController !== "undefined") ? new AbortController() : null;
+    const to = setTimeout(function () { try { if (ctrl) ctrl.abort(); } catch (_) { /* */ } }, 4000);
+    let data = null;
+    try {
+      const r = await fetch(url, { cache: "no-cache", signal: ctrl ? ctrl.signal : undefined });
+      data = await r.json();
+    } finally {
+      clearTimeout(to);
+    }
     if (data && data.ok && Array.isArray(data.questions) && data.questions.length) {
-      qs = pushQs(data.questions.slice(0, CAP));
+      qs = data.questions.map((rec) => {
+        const q = Object.assign({}, rec, { _bank: slug, source: rec.source || src, _catalogTried: true });
+        try {
+          if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.getType) QuantrexQFormat.getType(q);
+        } catch (_) { /* */ }
+        if (typeof QUESTIONS !== "undefined" && !QUESTIONS.some((x) => x && String(x.id) === String(q.id))) {
+          QUESTIONS.push(q);
+        }
+        return q;
+      });
     }
   } catch (_) { /* */ }
-  if (qs.length) {
-    writePaperSessionCache(slug, src, qs);
-    return qs.slice(0, CAP);
-  }
-
-  // 3) ID map + bank cache (only paper Qs enter QUESTIONS — never full bank)
-  try {
-    let idList = null;
-    try {
-      const mapUrl = "data/nav/pyq_paper_ids/" + encodeURIComponent(slug) + ".json?v=" + "qxmd114";
-      const idMap = await fetch(mapUrl, { cache: "force-cache" }).then((r) => (r.ok ? r.json() : null));
-      idList = pickIdMap(idMap);
-    } catch (_) { /* map optional */ }
-
-    // qxmd114: slim paper JSON preferred; bank cache fallback (only paper Qs via pushQs).
-
-    if (!qs.length) {
-      const bankQs = await loadBankQuestions();
-      const byId = bankById(slug) || Object.create(null);
-      if (idList && idList.length) {
-        const picked = [];
-        for (let i = 0; i < idList.length && picked.length < CAP; i++) {
-          const q = byId[String(idList[i])];
-          if (q) picked.push(q);
-        }
-        qs = pushQs(picked);
-      }
-      if (!qs.length && bankQs.length) {
-        const filtered = bankQs.filter((q) => q && (
-          q.source === src || q.paperSource === src || q._sourceFull === src
-          || norm(q.source) === want || norm(q.paperSource) === want || norm(q._sourceFull) === want
-        )).slice(0, CAP);
-        qs = pushQs(filtered);
-      }
-    }
-  } catch (e) {
-    try { console.warn("qxLoadPyqPaper bank fallback", e); } catch (_) { /* */ }
-  }
-  if (qs.length) {
-    writePaperSessionCache(slug, src, qs);
-    return qs.slice(0, CAP);
-  }
-
-  // 4) Already-hydrated QUESTIONS (legacy) — paper Qs only
+  if (qs.length) return qs;
   qs = (typeof QUESTIONS !== "undefined" ? QUESTIONS : []).filter((q) => q && q._bank === slug && (
     q.source === src || q.paperSource === src || q._sourceFull === src
     || norm(q.source) === want || norm(q.paperSource) === want
   ));
-  return qs.slice(0, CAP);
+  return qs;
 }
 
 async function startPyqPaperMock(slug, source, freshStart, practiceOpts) {
@@ -7612,6 +7125,7 @@ async function startPyqPaperMock(slug, source, freshStart, practiceOpts) {
         ? qxLoadLogoHtml("Opening this paper…")
         : '<div class="qx-load-logo"><p>Opening this paper…</p></div>';
     }
+    try { if (typeof qxArmPracticeFailsafe === "function") qxArmPracticeFailsafe((prac && prac.practice) ? 3000 : 8000); } catch (_) { /* */ }
   } catch (_) { /* */ }
   let qs = await qxLoadPyqPaper(slug, src);
   if (!qs.length) {
@@ -7619,11 +7133,6 @@ async function startPyqPaperMock(slug, source, freshStart, practiceOpts) {
     showToast("⚠️ Paper not found. Try another paper or hard-refresh (Ctrl+Shift+R).");
     return;
   }
-  try {
-    if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.uniqueQuestionRecords) {
-      qs = QuantrexTestEngine.uniqueQuestionRecords(qs);
-    }
-  } catch (_) { /* */ }
   try { await buildPyqPaperIndex(slug); } catch (_) { /* */ }
   const paperMeta = typeof pyqFindPaperMeta === "function" ? pyqFindPaperMeta(slug, src) : null;
   window._pyqActivePaperMeta = paperMeta || null;
@@ -7755,8 +7264,8 @@ async function startPyqPaperMock(slug, source, freshStart, practiceOpts) {
   }
   pyqSaveAttempt(attemptKey, { status: "inProgress", slug, source, title });
 
-  const catalogTotalQs = (paperMeta && (paperMeta.officialCount || paperMeta.count)) || off.catalogTotalQs || qs.length;
-  const totalMarks = (paperMeta && paperMeta.totalMarks) || (off.totalMarks != null ? off.totalMarks : (qs.length * 4));
+  const catalogTotalQs = off.catalogTotalQs || qs.length;
+  const totalMarks = off.totalMarks != null ? off.totalMarks : (qs.length * 4);
   const examKey = off.exam || (fmt && fmt.exam) || "jee_main";
   const examTitle = (examKey === "jee_advanced")
     ? "JEE (Advanced)"
@@ -7769,17 +7278,16 @@ async function startPyqPaperMock(slug, source, freshStart, practiceOpts) {
 
   startTest(ids, title, "tests", {
     testType: "pyqmock",
-    // qxmd116: PYQ Mock = chapter-wise practice UX (Check Answer, topic strip, EG chrome).
-    // Take Test stays full-paper practice (filters from modal); not NTA. Optional timer only if explicitly timed mock requested later.
-    timed: false,
-    durationSec: null,
-    practiceMode: true,
-    // JEE Advanced mock: keep official NTA instructions screen; Main mock / practice skip
-    skipInstructions: !!(prac && prac.practice) || examKey !== "jee_advanced",
+    timed: !(prac && prac.practice),
+    durationSec: (prac && prac.practice) ? null : duration,
+    practiceMode: !!(prac && prac.practice),
+    skipInstructions: true,
     skipCountdown: true,
     shuffle: false,
-    // qxmd116: PYQ Mock always ExamGoal (match chapter-wise practice UX); never NTA quizrr
-    uiMode: "examgoal",
+    // Dual format: Practice → QUANTREX (examgoal); Mock/Test → NTA (quizrr) exact shell
+    marksMode: true,
+    organizeJee: true,
+    uiMode: (prac && prac.practice) ? "examgoal" : "quizrr",
     paperFormat: paperFormat,
     scoring,
     catalogTotalQs,
@@ -7855,20 +7363,25 @@ const QX_BOOKS_CATALOG = {
     { id: "68f1ce4cc729e5251bd00430", title: "Most Important Selected Qs for JEE Advanced", cover: "assets/book-covers/rank-booster.jpg", subject: "PCM", badge: "Rank Booster", exam: "JEE Advanced", isComingSoon: false, bankSlug: "jee_advanced", redirectType: "module", moduleId: null, count: 2793, type: "exam" },
     { id: "68946f70ebd145663de38728", title: "99 Percentile Qs Bank for JEE Main", cover: "assets/book-covers/99-percentile.jpg", subject: "PCM", badge: "99 Percentile", exam: "High Yield", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "689470b46cc631f0fbe63f08", count: 3139, type: "exam" },
     { id: "6894d29d3156b1f3ca5ad0be", title: "Highly selective Backlog Qs for JEE Main", cover: "assets/book-covers/backlog-booster.jpg", subject: "PCM", badge: "Backlog Booster", exam: "Selective PYQs", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6894d2f5d0af19a8bc64156f", count: 760, type: "exam" },
-    { id: "69048808ef55966cf1d71f1d", title: "Olympiad workbook", cover: "assets/book-covers/olympiad.jpg", subject: "PCM", badge: "Olympiad", exam: "Olympiad", isComingSoon: false, bankSlug: "jee_main", redirectType: "module", moduleId: null, count: 1512, type: "exam" }
+    { id: "69048808ef55966cf1d71f1d", title: "Olympiad workbook", cover: "assets/book-covers/olympiad.jpg", subject: "PCM", badge: "Olympiad", exam: "Olympiad", isComingSoon: false, bankSlug: "jee_main", redirectType: "module", moduleId: null, count: 1512, type: "exam" },
+    { id: "a1b2c3d4e5f6010203040508", title: "Black Book Advanced Problems in Mathematics", cover: "assets/book-covers/black-book-math.png", subject: "Mathematics", badge: "Black Book", exam: "JEE Advanced", isComingSoon: false, bankSlug: "jee_advanced", redirectType: "module", moduleId: null, count: 1512, type: "exam", tag: "Maths" },
+    { id: "a1b2c3d4e5f6010203040506", title: "Skills in Mathematics — Differential Calculus", cover: "assets/book-covers/skills-diff-calculus.png", subject: "Mathematics", badge: "Amit M Agarwal", exam: "JEE", isComingSoon: true, count: 0, type: "exam" },
+    { id: "a1b2c3d4e5f6010203040507", title: "Skills in Mathematics — Integral Calculus", cover: "assets/book-covers/skills-integral-calculus.png", subject: "Mathematics", badge: "Amit M Agarwal", exam: "JEE", isComingSoon: true, count: 0, type: "exam" }
   ],
   medical: [
-    { id: "6a9158833d351af582b98369", title: "Most Important PYQ Based Questions", cover: "assets/book-covers/biology-360.jpg", description: "For NEET 2027", isComingSoon: false, subject: "PCB", badge: "NEET PYQ", exam: "NEET 2027", type: "exam", count: 4941, moduleId: "6a9161f1a69a205613f39f1b", tag: "Most Imp PYQ", bankSlug: "neet" },
-    { id: "6a507da9107f81233d9985c1", title: "Fundamentals of Organic Chemistry", cover: "assets/book-covers/organic-chemistry.jpg", description: "for NEET 2027", isComingSoon: false, subject: "Chemistry", badge: "Organic", exam: "NEET", type: "exam", count: 1151, moduleId: "6a4e0d3356b4707f06d61c7b" },
+    { id: "6a507da9107f81233d9985c1", title: "Fundamentals of Organic Chemistry", cover: "assets/book-covers/organic-chemistry.jpg", description: "for NEET 2027", isComingSoon: false, subject: "Chemistry", badge: "Organic", exam: "NEET", type: "exam", count: 1151 },
     { id: "6a0adb714b032b031e049a34", title: "Concepts Of Physics MCQ Edition [Volume 2]", cover: "assets/book-covers/hc-verma-v2.jpg", description: "Objective I · II · Exercises", isComingSoon: false, subject: "Physics", badge: "HC Verma", exam: "NEET", type: "exam", count: 1854 },
+    { id: "69cfb4af611e9b07b5d55e79", title: "Physics Top Irodov Problems", cover: "assets/book-covers/irodov.jpg", description: "MCQs for NEET", isComingSoon: false, subject: "Physics", badge: "Irodov", exam: "NEET", type: "exam", count: 158 },
     { id: "69a684ac213ecfafb0629c0d", title: "Biology 360/360 for NEET 2027", cover: "assets/book-covers/biology-360.jpg", description: "Botany + Zoology complete", isComingSoon: false, subject: "Biology", badge: "NEET 2027", exam: "NEET", type: "exam", count: 17415 },
     { id: "69f9ccfa011347df7bce2a38", title: "Concepts Of Physics MCQ Edition [Volume 1]", cover: "assets/book-covers/hc-verma-v1.jpg", description: "Objective I · II · Exercises", isComingSoon: false, subject: "Physics", badge: "HC Verma", exam: "NEET", type: "exam", count: 1853 },
-    { id: "69cfb4af611e9b07b5d55e79", title: "Physics Top Irodov Problems", cover: "assets/book-covers/irodov.jpg", description: "MCQs for NEET", isComingSoon: false, subject: "Physics", badge: "Irodov", exam: "NEET", type: "exam", count: 158, moduleId: "69d34798097639b3bf3ea47a" },
-    { id: "69a6ea53213ecfafb0629c18", title: "Top 500 JEE Main PYQs for NEET Physics", cover: "assets/book-covers/top500-physics.jpg", description: "Expert picked for NEET", isComingSoon: false, subject: "Physics", badge: "Top 500", exam: "NEET", type: "exam", count: 500 },
-    { id: "69a6eaf1213ecfafb0629c19", title: "Top 500 JEE Main PYQs for NEET Chemistry", cover: "assets/book-covers/top500-chemistry.jpg", description: "Expert picked for NEET", isComingSoon: false, subject: "Chemistry", badge: "Top 500", exam: "NEET", type: "exam", count: 500 }
+    { id: "69a6ea53213ecfafb0629c18", title: "Top 500 JEE Main PYQs for NEET 2027", cover: "assets/book-covers/top500-physics.jpg", description: "Physics", isComingSoon: false, subject: "Physics", badge: "Top 500", exam: "NEET", type: "exam", count: 500 },
+    { id: "69a6eaf1213ecfafb0629c19", title: "Top 500 JEE Main PYQs for NEET 2027", cover: "assets/book-covers/top500-chemistry.jpg", description: "Chemistry", isComingSoon: false, subject: "Chemistry", badge: "Top 500", exam: "NEET", type: "exam", count: 500 }
   ],
-  defence: [],
-  curated: []
+  curated: [
+    { id: "67656ccf18ff438b6c18cc4c", title: "Must Do Top Qs of JEE Main 2024", cover: "assets/book-covers/must-do-2024.jpg", subject: "PCM", badge: "PYQ 2024", exam: "JEE Main", isComingSoon: false, bankSlug: "jee_main", count: 490, type: "curated", tag: "New" },
+    { id: "67656d13c83ed0673b8b7b68", title: "Top 250 Single Correct Qs of JEE Main 2023-2020", cover: "assets/book-covers/top-250.jpg", subject: "PCM", badge: "PYQ Collection", exam: "JEE Main", isComingSoon: false, bankSlug: "jee_main", count: 750, type: "curated", tag: "PYQ" },
+    { id: "67656cf0a790fd9b172cf0d2", title: "Top 100 Numerical Qs of JEE Main 2023-2020", cover: "assets/book-covers/top-100-numerical.jpg", subject: "Phy + Math", badge: "Numerical PYQ", exam: "JEE Main", isComingSoon: false, bankSlug: "jee_main", count: 300, type: "curated", tag: "Numerical" }
+  ]
 };
 
 function filterActiveBooks(list) {
@@ -7882,7 +7395,7 @@ function mergeBooksCatalog(remote, base) {
     title: r.title || b.title,
     subtitle: r.subtitle || b.subtitle
   };
-  ["engineering", "medical", "defence", "curated"].forEach(key => {
+  ["engineering", "medical", "curated"].forEach(key => {
     const byId = new Map();
     filterActiveBooks(b[key]).forEach(book => byId.set(book.id, { ...book }));
     filterActiveBooks(r[key]).forEach(book => byId.set(book.id, { ...byId.get(book.id), ...book }));
@@ -7893,18 +7406,27 @@ function mergeBooksCatalog(remote, base) {
 
 function booksForExam(catalog, examKey) {
   const c = catalog || QX_BOOKS_CATALOG;
-  if (examKey === "Medical") return filterActiveBooks(c.medical || []);
-  if (examKey === "Defence") return filterActiveBooks(c.defence || []);
-  return filterActiveBooks(c.engineering || []);
+  if (examKey === "Medical") {
+    const med = filterActiveBooks(c.medical || []);
+    return med.length ? med : filterActiveBooks(c.engineering || []);
+  }
+  const eng = filterActiveBooks(c.engineering || []);
+  const curated = filterActiveBooks(c.curated || []);
+  return eng.concat(curated);
 }
 
 let _booksCache = null;
 let _booksPayload = { step: "list" };
 
-function resetBooksCache() {
+function resetBooksCache(opts) {
   _booksCache = null;
-  _booksPayload = { step: "list" };
+  const keepPayload = opts && opts.keepPayload;
+  if (!keepPayload) _booksPayload = { step: "list" };
+  try {
+    if (typeof clearBookLoadCaches === "function") clearBookLoadCaches(opts && opts.bookId);
+  } catch (_) { /* */ }
 }
+try { if (typeof window !== "undefined") window.resetBooksCache = resetBooksCache; } catch (_) { /* */ }
 
 async function fetchBooks(force) {
   if (_booksCache && !force) return _booksCache;
@@ -7924,8 +7446,10 @@ async function fetchBooks(force) {
   } catch (e) {
     clearTimeout(to);
     console.warn("fetchBooks:", e.message || e);
-    if (_booksCache && booksForExam(_booksCache, "Engineering").length) return _booksCache;
-    _booksCache = mergeBooksCatalog({}, QX_BOOKS_CATALOG);
+    // Always fall back to embedded + last good cache merge so list never stays empty
+    const fallback = mergeBooksCatalog({}, QX_BOOKS_CATALOG);
+    if (_booksCache) _booksCache = mergeBooksCatalog(_booksCache, fallback);
+    else _booksCache = fallback;
   }
   return _booksCache;
 }
@@ -7966,7 +7490,7 @@ async function viewBooks(payload) {
     return viewBooks({ step: "list" });
   }
   _booksPayload = p;
-  const catalog = await fetchBooks();
+  const catalog = await fetchBooks(!!p.forceReload);
 
   if (!p.bookId || p.step === "list") {
     const isMed = STATE.exam === "Medical";
@@ -7986,7 +7510,7 @@ async function viewBooks(payload) {
       : `<p class="sec-desc">${engCount} digital books${curatedCount ? ` · ${curatedCount} PYQ collections` : ""} — tap a cover to practice</p>`;
 
     if (isMed) {
-      const recIds = ["6a9158833d351af582b98369", "6a507da9107f81233d9985c1", "69f9ccfa011347df7bce2a38"];
+      const recIds = ["6a507da9107f81233d9985c1", "6a0adb714b032b031e049a34", "69cfb4af611e9b07b5d55e79"];
       const rec = recIds.map((id) => examBooks.find((b) => b.id === id)).filter(Boolean);
       const recCards = rec.map((b) => { try { return renderCard({ ...b, type: b.type || "exam" }); } catch (_) { return ""; } }).join("");
       return `${topbar("Most Important Digital Books", "No need to buy bulky physical books. Get them all in one place!")}
@@ -8018,7 +7542,7 @@ async function viewBooks(payload) {
       <div class="empty" style="padding:28px;text-align:center;max-width:420px;margin:24px auto">
         <p style="font-weight:700;margin-bottom:8px">📚 Book catalog not loaded</p>
         <p style="font-size:13px;color:var(--gray);margin:0 0 14px;line-height:1.45">Network timeout or missing nav file. Retry, or pick another book.</p>
-        <button type="button" class="btn-primary" onclick="resetBooksCache();go('books',{step:'modules',bookId:'${String(p.bookId || "").replace(/'/g, "")}'})">Retry book</button>
+        <button type="button" class="btn-primary" onclick="resetBooksCache({bookId:'${String(p.bookId || "").replace(/'/g, "")}'});go('books',{step:'modules',bookId:'${String(p.bookId || "").replace(/'/g, "")}',forceReload:1})">Retry book</button>
         <button type="button" class="btn-soft" ${mg("books", { step: "list" })} style="margin-left:8px">← All books</button>
       </div>`;
   }
@@ -8163,6 +7687,9 @@ async function viewBooks(payload) {
   }
   if (!chapterKey) return viewBooks({ step: "chapters", bookId: p.bookId, moduleId: p.moduleId, subjectId: p.subjectId });
 
+  if (p.forceReload && typeof resetBooksCache === "function") {
+    try { resetBooksCache({ bookId: p.bookId, keepPayload: true }); } catch (_) { /* */ }
+  }
   try {
     await loadBookChapter(p.bookId, chapterKey);
   } catch (e) {
@@ -8185,24 +7712,14 @@ async function viewBooks(payload) {
     { label: subj.name, view: "books", payload: { step: "chapters", bookId: p.bookId, moduleId: p.moduleId, subjectId: p.subjectId, subjectName: subj.name } },
     { label: chapterName }
   ]);
-  const bookMulti = /multiple-choice|multiple_choice|multiplecorrect|multi-correct/i.test(String(chapterKey || ""))
-    || (qs || []).some(q => /multiple|one.?or.?more/i.test(String(q.questionType || q.type || "")) || (Array.isArray(q.answers) && q.answers.length > 1));
-  if (bookMulti) {
-    (qs || []).forEach(q => {
-      try {
-        q.questionType = "multipleCorrect";
-        q.type = "multipleCorrect";
-        q._advSection = "MC";
-      } catch (_) { /* */ }
-    });
-  }
-  const testMeta = { title: `${subj.name} · ${chapterName} · Book Test`, returnTo: "books", limit: 30, exam: p.bookId, subject: subj.name, chapter: chapterName, bookId: p.bookId, chapterKey, multiSelect: !!bookMulti };
+  const testMeta = { title: `${subj.name} · ${chapterName} · Book Test`, returnTo: "books", limit: 30, exam: p.bookId, subject: subj.name, chapter: chapterName, bookId: p.bookId, chapterKey };
   const qHead = `${topbar(subj.name + " · " + chapterName, bookTitle + " · " + (qs.length || 0) + " questions in this exercise only")}`;
   if (!qs.length) {
+    const retryPayload = { step: "questions", bookId: p.bookId, moduleId: p.moduleId, subjectId: p.subjectId, subjectName: subj.name, chapterId: p.chapterId, chapterName, chapterKey, forceReload: 1 };
     return `${qHead}${bc}<div class="empty" style="padding:24px;text-align:center">
       <p style="font-weight:700">No questions loaded for this exercise</p>
-      <p style="font-size:13px;color:var(--gray)">File may be missing or network timed out.</p>
-      <button type="button" class="btn-primary" onclick="go('books',${JSON.stringify({ step: "questions", bookId: p.bookId, moduleId: p.moduleId, subjectId: p.subjectId, subjectName: subj.name, chapterId: p.chapterId, chapterName, chapterKey }).replace(/"/g, "&quot;")})">Retry</button>
+      <p style="font-size:13px;color:var(--gray)">File may be missing or network timed out. Retry clears the book cache.</p>
+      <button type="button" class="btn-primary" onclick="typeof resetBooksCache==='function'&&resetBooksCache({bookId:'${String(p.bookId||"").replace(/'/g,"")}'} );go('books',${JSON.stringify(retryPayload).replace(/"/g, "&quot;")})">Retry</button>
       <button type="button" class="btn-soft" ${mg("books", { step: "chapters", bookId: p.bookId, moduleId: p.moduleId, subjectId: p.subjectId, subjectName: subj.name })} style="margin-left:8px">← Chapters</button>
     </div>`;
   }
@@ -8459,17 +7976,13 @@ async function viewQuickConcepts(payload) {
     const cards = (subj.chapters || []).map((c, idx) => {
       const g = ["g0", "g1", "g2", "g3", "g4", "g5", "g6", "g7"][idx % 8];
       const tc = c.topicsCount || (c.topics || []).length || 0;
-      const soon = tc < 1;
-      const click = soon
-        ? `onclick="typeof showToast==='function'&&showToast('${String(c.name || "").replace(/'/g, "")} — Coming soon')"`
-        : mg("quickconcepts", { step: "topics", subjectId: p.subjectId, subjectName: subj.name, chapterId: c.id, chapterName: c.name });
-      return `<button type="button" class="qx-topic-card qx-topic-rich qx-topic-${g} ch-card qx-ch-card-rich${soon ? " soon" : ""}" ${click}>
+      return `<button type="button" class="qx-topic-card qx-topic-rich qx-topic-${g} ch-card qx-ch-card-rich" ${mg("quickconcepts", { step: "topics", subjectId: p.subjectId, subjectName: subj.name, chapterId: c.id, chapterName: c.name })}>
         <div class="qx-topic-top">
           <span class="qx-topic-ic" aria-hidden="true">${cpyqbChapterIcon(null, subj.name, c.name)}</span>
         </div>
         <strong class="qx-topic-name">${c.name}</strong>
         <div class="qx-topic-details">
-          <span class="qx-ch-pill qs">${soon ? "Coming soon" : tc + " topics"}</span>
+          <span class="qx-ch-pill qs">${tc} topics</span>
         </div>
       </button>`;
     }).join("");
@@ -8489,7 +8002,7 @@ async function viewQuickConcepts(payload) {
       <div class="ch-card qx-topic-card" ${mg("quickconcepts", { step: "content", subjectId: p.subjectId, subjectName: subj.name, chapterId: p.chapterId, chapterName: ch.name, topicId: t.id, topicTitle: t.title })}>
         <div class="qx-topic-body"><strong>${t.title}</strong></div>
       </div>`).join("");
-    return `${topbar(ch.name, subj.name)}${bc}<div class="ch-grid qx-topic-grid">${cards || '<div class="empty">Coming soon</div>'}</div>`;
+    return `${topbar(ch.name, subj.name)}${bc}<div class="ch-grid qx-topic-grid">${cards || '<div class="empty">No topics for this chapter yet.</div>'}</div>`;
   }
 
   const content = await fetchQcContent(p.subjectId, p.chapterId, p.topicId);
@@ -8501,7 +8014,7 @@ async function viewQuickConcepts(payload) {
   ]);
   if (!content) {
     return `${topbar(p.topicTitle || "Topic", ch.name)}${bc}
-      <div class="empty">Coming soon</div>`;
+      <div class="empty">Topic content syncing — run extract_qc_content.py</div>`;
   }
   const exampleQs = await loadQcExampleQuestions(content.examples, {
     subject: subj.name,
@@ -8518,38 +8031,6 @@ async function viewQuickConcepts(payload) {
 }
 
 // ============ MARKS-STYLE DASHBOARD (screens 407 + 408 flow) ============
-function qxMedBooksHtml() {
-  try {
-    const cat = typeof QX_BOOKS_CATALOG !== "undefined" ? QX_BOOKS_CATALOG : null;
-    const list = typeof booksForExam === "function"
-      ? booksForExam(cat, "Medical")
-      : ((cat && cat.medical) || []);
-    if (typeof renderBookScroll === "function") {
-      const html = renderBookScroll(list, 12);
-      if (html) return html;
-    }
-    if (list && list.length) {
-      return '<div class="books-scroll">' + list.slice(0, 12).map(function (b) {
-        const title = String(b.title || "Book").replace(/</g, "&lt;");
-        const meta = String(b.exam || b.badge || "").replace(/</g, "&lt;");
-        const payload = JSON.stringify({ step: "subjects", bookId: b.id }).replace(/'/g, "&#39;");
-        return '<button type="button" class="book-card qx-book-card" data-mg="books" data-mgp=\'' +
-          payload + '\'><strong>' + title + "</strong><small>" + meta + "</small></button>";
-      }).join("") + "</div>";
-    }
-  } catch (_) { /* */ }
-  return '<p class="sec-desc"><a href="#" data-mg="books" data-mgp=\'{"step":"list"}\'>Open Digital Books →</a></p>';
-}
-
-function qxPaintMedBooksMount(root) {
-  const scope = root && root.querySelector ? root : (typeof document !== "undefined" ? document : null);
-  if (!scope || !scope.querySelector) return;
-  const mount = scope.querySelector("#qxMedBooksMount");
-  if (!mount) return;
-  if (mount.querySelector && mount.querySelector(".book-card, .qx-book-card, .books-scroll")) return;
-  mount.innerHTML = qxMedBooksHtml();
-}
-
 /** Marks-style Medical home: Physics / Chem / Zoology / Botany + NCERT + Tests + Revision */
 function renderMedicalMarksHomeExtras(rfcNav) {
   if (STATE.exam !== "Medical") return "";
@@ -8663,8 +8144,8 @@ function renderMedicalMarksHomeExtras(rfcNav) {
         <div class="marks-sec-head"><h3>${QX_UX.library}</h3>
           <a href="#" ${mg("books", { step: "list" })}>View All →</a>
         </div>
-        <p class="sec-desc">Most Important PYQ · HC Verma · Organic · Irodov · Biology 360 · Top 500</p>
-        <div id="qxMedBooksMount" class="qx-med-books-mount">${qxMedBooksHtml()}</div>
+        <p class="sec-desc">HC Verma Objective I / II / Exercises · Organic · Irodov · Biology 360 · Top 500</p>
+        <div id="qxMedBooksMount" class="qx-med-books-mount">Loading books…</div>
       </div>
       <div class="marks-section qx-med-board-banner">
         <div class="marks-sec-head"><h3>CBSE Board PYQs</h3>
@@ -8743,7 +8224,7 @@ async function marksDashboardSections() {
   if (STATE.exam === "Medical") {
     try {
       const bookCatalog = (typeof QX_BOOKS_CATALOG !== "undefined") ? QX_BOOKS_CATALOG : null;
-      const rfcNavEarly = await fetchNav("rfc").catch(() => []);
+      const rfcNavEarly = await Promise.race([fetchNav("rfc").catch(function () { return []; }), new Promise(function (r) { setTimeout(function () { r([]); }, 1200); })]);
       const med = renderMedicalMarksHomeExtras(rfcNavEarly);
       const [cpyqbNav, formulaNav, rfcNav] = await Promise.all([
         fetchNav("cpyqb").catch(() => []),
@@ -8764,7 +8245,7 @@ async function marksDashboardSections() {
       const medHydrated = String(med || "")
         .replace(
           '<div id="qxMedBooksMount" class="qx-med-books-mount">Loading books…</div>',
-          '<div id="qxMedBooksMount" class="qx-med-books-mount">' + (bookScroll || qxMedBooksHtml()) + "</div>"
+          bookScroll || '<p class="sec-desc">Open Digital Books</p>'
         )
         .replace(
           '<div id="qxMedFormulaMount" class="qx-med-fc-mount"></div>',
@@ -8796,11 +8277,19 @@ async function marksDashboardSections() {
     }
   }
 
+  const qxDashRace = function (p, ms, fallback) {
+    return Promise.race([
+      Promise.resolve().then(function () { return p; }).catch(function () { return fallback; }),
+      new Promise(function (resolve) { setTimeout(function () { resolve(fallback); }, ms); })
+    ]);
+  };
   const [cpyqbNav, bookCatalog, marksDash] = await Promise.all([
-    fetchNav("cpyqb"),
-    fetchBooks(),
-    fetchMarksDashboard(),
-    typeof QuantrexExamLogos !== "undefined" ? QuantrexExamLogos.loadExamIconsFromApi() : Promise.resolve()
+    qxDashRace(fetchNav("cpyqb"), 1500, []),
+    qxDashRace(fetchBooks(), 1500, null),
+    qxDashRace(fetchMarksDashboard(), 1500, null),
+    typeof QuantrexExamLogos !== "undefined"
+      ? qxDashRace(QuantrexExamLogos.loadExamIconsFromApi(), 1200, null)
+      : Promise.resolve()
   ]);
   const dashExams = typeof cpyqbExamsForCategory === "function"
     ? cpyqbExamsForCategory(cpyqbNav || [], STATE.exam)
@@ -8824,12 +8313,18 @@ async function marksDashboardSections() {
     { id: "HSC", label: "HSC (Maharashtra)" }
   ];
   let boardExamData = null;
+  // Never block home paint on Marks board API — logos fallback is fine
   if (typeof MarksLive !== "undefined") {
     try {
-      await MarksLive.ensureToken();
       const examId = MarksLive.BOARD_EXAMS[board] || MarksLive.BOARD_EXAMS.CBSE;
-      boardExamData = await MarksLive.boardSubjects(examId);
-    } catch (e) { /* use fallback logos */ }
+      boardExamData = await Promise.race([
+        (async function () {
+          try { await MarksLive.ensureToken(); } catch (_) {}
+          return MarksLive.boardSubjects(examId);
+        })(),
+        new Promise(function (resolve) { setTimeout(function () { resolve(null); }, 800); })
+      ]);
+    } catch (e) { boardExamData = null; }
   }
   const boardTitle = (boardExamData && boardExamData.title) || (board === "HSC" ? "HSC (Maharashtra)" : "CBSE");
   const boardLogo = boardExamData
