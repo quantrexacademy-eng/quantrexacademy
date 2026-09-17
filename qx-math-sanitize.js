@@ -297,6 +297,11 @@
     s = decodeEntities(s);
 
     s = stripUnsafeHtml(s);
+    // qxmd159: Firestore/JSON double-escaped commands (\\frac) → \frac for KaTeX. Never strip slash to bare "frac".
+    // Collapse only when a TeX command name follows; keep \\ matrix newlines (\\ + non-letter).
+    if (/\\[a-zA-Z]/.test(s)) {
+      s = s.replace(/\\{2,}([a-zA-Z]+)/g, "\\$1");
+    }
     s = normalizeDelimiters(s);
     s = tidyWhitespace(s);
 

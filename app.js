@@ -224,7 +224,10 @@ function qxPushHistory(view, payload) {
 
 /** Parse location.hash + session into { view, payload } for boot / popstate */
 function qxParseRouteFromLocation() {
-  const raw = (location.hash || "").replace(/^#/, "").trim();
+  let raw = (location.hash || "").replace(/^#/, "").trim();
+  // Login sometimes used #_dashboard; strip leading underscores/junk
+  raw = raw.replace(/^_+/,"");
+  if (raw === "_dashboard") raw = "dashboard";
   // Permanent (687): ?question=ID works even without hash (user bookmarks / share links)
   const urlQ = typeof qxUrlQuestionId === "function" ? qxUrlQuestionId() : null;
   if (!raw && urlQ) {
@@ -473,9 +476,6 @@ function finishRender(html) {
     try {
       if (window.lucide && lucide.createIcons) lucide.createIcons();
     } catch (_) { /* */ }
-    try {
-      if (typeof qxPaintMedBooksMount === "function") qxPaintMedBooksMount(main);
-    } catch (_) { /* */ }
   };
   if (typeof requestAnimationFrame === "function") {
     requestAnimationFrame(() => setTimeout(afterPaint, 0));
@@ -506,12 +506,9 @@ function finishRender(html) {
 }
 
 function render(view, payload) {
-  if (typeof QuantrexAccess !== "undefined" && !QuantrexAccess.ALL_COURSES_FREE && !QuantrexAccess.allow(view, payload)) {
-    const wall = QuantrexAccess.paywallHtml(view, payload);
-    if (wall) {
-      finishRender(wall);
-      return;
-    }
+  if (typeof QuantrexAccess !== "undefined" && !QuantrexAccess.allow(view, payload)) {
+    finishRender(QuantrexAccess.paywallHtml(view, payload));
+    return;
   }
   const asyncMap = {
     dashboard: viewDashboard,
@@ -536,14 +533,57 @@ function render(view, payload) {
     // Drop stale async paints when user clicks another exam quickly
     window._qxRenderSeq = (window._qxRenderSeq || 0) + 1;
     const seq = window._qxRenderSeq;
-    finishRender(qxLoadLogoHtml("Opening your Academy desk…"));
-    asyncMap[view](payload).then((html) => {
+    const deskSplash = "Opening your Academy desk…";
+    finishRender(qxLoadLogoHtml(deskSplash));
+    const qxSlowRetryHtml = function () {
+      return '<div class="empty" style="padding:36px;text-align:center">' +
+        '<p style="font-weight:800;margin-bottom:8px">This is taking longer than usual</p>' +
+        '<p style="color:#64748b;font-size:13px;margin-bottom:14px">Tap Retry to continue. All questions stay free.</p>' +
+        '<button type="button" class="btn-primary" onclick="location.reload()">Retry</button> ' +
+        '<button type="button" class="btn-soft" onclick="go(\'dashboard\')">Home</button></div>';
+    };
+    // Soft nudge at 8s; hard failsafe only after a real hang (20s) — never wipe early
+    const slowTimer = setTimeout(function () {
+      if (seq !== window._qxRenderSeq) return;
+      const main = document.getElementById("app-main");
+      const html = (main && main.innerHTML) || "";
+      if (!/Opening your Academy desk/i.test(html)) return;
+      try {
+        const st = main.querySelector(".qx-load-status");
+        if (st) st.textContent = "Still loading — almost ready";
+      } catch (_) { /* */ }
+    }, 8000);
+    const hardTimer = setTimeout(function () {
+      if (seq !== window._qxRenderSeq) return;
+      const main = document.getElementById("app-main");
+      const html = (main && main.innerHTML) || "";
+      if (!/Opening your Academy desk|Still loading/i.test(html)) return;
+      window._qxRenderSeq = seq + 1;
+      finishRender(qxSlowRetryHtml());
+    }, 20000);
+    const viewPromise = Promise.resolve().then(function () { return asyncMap[view](payload); });
+    const raced = Promise.race([
+      viewPromise,
+      new Promise(function (_, reject) {
+        setTimeout(function () { reject(new Error("View render timeout")); }, 20000);
+      })
+    ]);
+    raced.then((html) => {
+      clearTimeout(slowTimer);
+      clearTimeout(hardTimer);
       if (seq !== window._qxRenderSeq) return;
       finishRender(html);
     }).catch((err) => {
+      clearTimeout(slowTimer);
+      clearTimeout(hardTimer);
       if (seq !== window._qxRenderSeq) return;
       console.warn("View load failed:", view, err);
       const msg = String((err && err.message) || "");
+      if (/View render timeout/i.test(msg)) {
+        window._qxRenderSeq = seq + 1;
+        finishRender(qxSlowRetryHtml());
+        return;
+      }
       const isBankJson = /JSON|question bank|invalid|delimiter|property value/i.test(msg);
       const hint = view === "teacher"
         ? "Could not load teacher portal. <a href=\"login.html\">Sign in</a> or <a href=\"teacher-login.html\">teacher sign in</a>."
@@ -656,7 +696,7 @@ async function viewDashboard() {
     try {
       marksSections = await Promise.race([
         marksDashboardSections(),
-        new Promise((resolve) => setTimeout(() => resolve(""), 8000))
+        new Promise((resolve) => setTimeout(() => resolve(""), 1500))
       ]);
       if (marksSections == null) marksSections = "";
     } catch (e) {
@@ -666,7 +706,15 @@ async function viewDashboard() {
 
   const guestBanner = typeof QuantrexGuestTrial !== "undefined" ? QuantrexGuestTrial.bannerHtml() : "";
 
+  const homeExamRow = `<div class="qx-home-exams" id="qxHomeExams" role="tablist" aria-label="Exam tracks">
+      <button type="button" class="qx-top-exam qx-home-exam" data-exam="Engineering" data-short="Eng" title="JEE Main & Advanced" aria-label="Engineering"><span class="qx-exam-long">Engineering</span><span class="qx-exam-short" aria-hidden="true">Eng</span></button>
+      <button type="button" class="qx-top-exam qx-home-exam" data-exam="Medical" data-short="Med" title="NEET UG" aria-label="Medical"><span class="qx-exam-long">Medical</span><span class="qx-exam-short" aria-hidden="true">Med</span></button>
+      <button type="button" class="qx-top-exam qx-home-exam" data-exam="Defence" data-short="Def" title="Defence (NDA)" aria-label="Defence (NDA)"><span class="qx-exam-long">Defence</span><span class="qx-exam-short" aria-hidden="true">Def</span></button>
+      <button type="button" class="qx-top-exam qx-home-exam" data-exam="Academic" data-short="Acad" title="Class 7–12" aria-label="Academic"><span class="qx-exam-long">Academic</span><span class="qx-exam-short" aria-hidden="true">Acad</span></button>
+    </div>`;
+
   return `<div class="dash-marks-wrap qx-home">
+    ${homeExamRow}
     ${guestBanner}
     <div class="dash-greet-bar qx-hero">
       <div class="dash-greet-left">
@@ -801,11 +849,11 @@ function viewPractice() {
     return `<div class="q-card" onclick="openPracticeQuestion(${q.id})">
       <div class="q-meta">
         <span class="tag tag-${subjTag}">${q.subject}</span>
-        ${typeof qxDifficultyTag === "function" ? qxDifficultyTag(q) : ""}
+        
         ${sv ? `<span class="tag ${sv.correct?'tag-ok':'tag-no'}">${sv.correct?'✓ Correct':'✗ Wrong'}</span>` : ''}
       </div>
       <div class="q-text qx-content">${typeof Mx!=="undefined"?Mx.html(q.q):q.q}</div>
-      <div class="q-footer"><small>📖 ${q.chapter || ""}${q.chapter && q.source ? " · " : ""}📌 ${typeof QuantrexStrip !== "undefined" && QuantrexStrip.sourceLabel ? QuantrexStrip.sourceLabel(q) : (q.source || "")}</small><span class="bm">${bm ? '🔖' : '🤍'}</span></div>
+      <div class="q-footer"><small>📖 ${q.chapter || ""}${q.chapter && q.source ? " · " : ""}📌 ${q.source || ""}</small><span class="bm">${bm ? '🔖' : '🤍'}</span></div>
     </div>`;
   }).join("") : `<div class="empty">${activeSlug ? "No questions match these filters." : "Select an exam paper to begin."}</div>`;
 
@@ -1516,12 +1564,9 @@ function openPracticeQuestion(id) {
       chapter: cpy.chapter || ctx.chapter || "",
       qid: id
     };
-    if (typeof QuantrexAccess !== "undefined" && !QuantrexAccess.ALL_COURSES_FREE && QuantrexAccess.allow && !QuantrexAccess.allow("question", gate)) {
-      const wall = QuantrexAccess.paywallHtml("question", gate);
-      if (wall && typeof finishRender === "function") {
-        finishRender(wall);
-        return;
-      }
+    if (typeof QuantrexAccess !== "undefined" && QuantrexAccess.allow && !QuantrexAccess.allow("question", gate)) {
+      if (typeof finishRender === "function") finishRender(QuantrexAccess.paywallHtml("question", gate));
+      return;
     }
   } catch (_) { /* */ }
   // Chapter-wise PYQ list → ExamGOAL full-window practice (same chrome as mock)
@@ -2257,7 +2302,7 @@ function viewQuestion(id) {
         <strong>Q${pos} <span class="qx-prac-of">/ ${total}</span></strong>
         <small>${q.chapter || q.subject}</small>
       </div>
-      <div class="qx-prac-actions">
+      <div class="qx-prac-actions qx-prac-tools">
         <button type="button" class="qx-prac-icon qx-font-btn" onclick="typeof bumpTestFont==='function'&&bumpTestFont(-1)" title="Decrease text size">A−</button>
         <span class="qx-font-lbl" id="qxFontLbl" title="Text size">${fontLbl}</span>
         <button type="button" class="qx-prac-icon qx-font-btn" onclick="typeof bumpTestFont==='function'&&bumpTestFont(1)" title="Increase text size">A+</button>
@@ -2268,6 +2313,7 @@ function viewQuestion(id) {
     </header>
     <div class="qx-prac-meta">
       ${qTypeBadge}
+      
       ${(() => {
         // Chapter once here; subject already in header elsewhere when using Allen UI
         const ch = (typeof QuantrexStrip !== "undefined" && QuantrexStrip.humanChapter)
@@ -2304,10 +2350,16 @@ function viewQuestion(id) {
 
 function qxSolutionBlockHtml(q) {
   if (!qxHasSolution(q)) return "";
-  if (typeof QuantrexSolution !== "undefined") {
+  if (typeof QuantrexSolution !== "undefined" && QuantrexSolution.renderBlock) {
     return `<div class="result-box ok qx-sol-reveal-box">${QuantrexSolution.renderBlock(q)}</div>`;
   }
-  let solHtml = typeof Mx !== "undefined" ? Mx.html(q.solution) : q.solution;
+  let solRaw = q.solution || q.sol || q.explanation || "";
+  try {
+    if (typeof QuantrexSolution !== "undefined" && QuantrexSolution.stripLeadingStemEcho) {
+      solRaw = QuantrexSolution.stripLeadingStemEcho(solRaw, q);
+    }
+  } catch (_) { /* */ }
+  let solHtml = typeof Mx !== "undefined" ? Mx.html(solRaw) : solRaw;
   if (typeof QuantrexSolution !== "undefined" && QuantrexSolution.cleanSolutionFigHtml) {
     solHtml = QuantrexSolution.cleanSolutionFigHtml(solHtml);
   }
@@ -2442,13 +2494,7 @@ function qxRevealSolution(qid) {
   const el = document.getElementById("qaSolReveal");
   if (el) {
     el.innerHTML = qxSolutionBlockHtml(q);
-    if (typeof Mx !== "undefined") {
-      try {
-        if (Mx.afterRenderLight) Mx.afterRenderLight(el);
-        else Mx.afterRender(el);
-        if (Mx.typeset) Mx.typeset(el);
-      } catch (_) { /* */ }
-    }
+    if (typeof Mx !== "undefined") Mx.afterRender(el);
   }
   const btn = document.getElementById("qxViewSolBtn");
   if (btn) btn.remove();
@@ -2860,17 +2906,22 @@ function qxSyncTopExamBar() {
 }
 
 function qxBindTopExamBar() {
-  const bar = document.getElementById("qxTopExams");
-  if (!bar || bar._qxBound) return;
-  bar._qxBound = true;
-  bar.querySelectorAll(".qx-top-exam[data-exam]").forEach(btn => {
+  // Bind top header + sidebar drawer exam pills (same switchExam handler)
+  document.querySelectorAll(".qx-top-exam[data-exam]").forEach(btn => {
+    if (btn._qxExamBound) return;
+    btn._qxExamBound = true;
     btn.onclick = (e) => {
       e.preventDefault();
+      e.stopPropagation();
       const key = btn.getAttribute("data-exam");
       if (!key) return;
       if (typeof switchExam === "function") switchExam(key, { open: "dashboard" });
     };
   });
+  const bar = document.getElementById("qxTopExams");
+  if (bar) bar._qxBound = true;
+  const side = document.getElementById("qxSideExams");
+  if (side) side._qxBound = true;
   qxSyncTopExamBar();
 }
 
@@ -2888,6 +2939,11 @@ function switchExam(key, opts) {
   }
   STATE.exam = key;
   localStorage.setItem("quantrex_exam", key);
+  try {
+    const u = new URL(location.href);
+    u.searchParams.set("exam", key);
+    history.replaceState(history.state, "", u.pathname + u.search + (u.hash || ""));
+  } catch (_) { /* */ }
   practiceFilter = { subject: "all", chapter: "all" };
   practicePage = 1;
   try {
@@ -2907,8 +2963,13 @@ function switchExam(key, opts) {
     }
   } catch (_) { /* */ }
   if (typeof qxSyncTopExamBar === "function") qxSyncTopExamBar();
+  try {
+    document.body.classList.remove("qx-nav-open");
+    const sb = document.getElementById("sidebar");
+    if (sb) sb.classList.remove("open");
+  } catch (_) { /* */ }
   showToast(`✅ ${EXAMS[key].name}`);
-  // Top bar: open that track's home desk (Engineering and Medical both dashboard).
+  // Top bar / sidebar: open that track's home desk.
   const dest = opts.open || "dashboard";
   if (dest === "cpyqb" && typeof go === "function") {
     go("cpyqb", { step: "exams", forceExamList: true });
@@ -2977,36 +3038,204 @@ function bindDynamic() {
   }
 }
 
+// ---------- Practice / paper load failsafe (fast first paint; never endless splash) ----------
+let _qxPracticeFailsafeTimer = null;
+let _qxPracticeSplashAt = 0;
+let _qxPracticeFailsafeMs = 12000;
+let _qxPracticePartialTimer = null;
+let _qxNetInflight = 0;
+let _qxPracticeUiObserver = null;
+let _qxPracticeFailsafeExtended = false;
+
+(function qxTrackFetchInflight() {
+  if (window._qxFetchTracked) return;
+  window._qxFetchTracked = true;
+  const orig = window.fetch;
+  if (typeof orig !== "function") return;
+  window.fetch = function () {
+    _qxNetInflight++;
+    try {
+      return orig.apply(this, arguments).finally(function () {
+        _qxNetInflight = Math.max(0, _qxNetInflight - 1);
+      });
+    } catch (err) {
+      _qxNetInflight = Math.max(0, _qxNetInflight - 1);
+      throw err;
+    }
+  };
+})();
+
+function qxHardReloadApp() {
+  try {
+    const u = new URL(location.href);
+    const bust = (typeof window.QX_BUILD === "string" && window.QX_BUILD) || "qxload1";
+    u.searchParams.set("v", bust);
+    location.href = u.toString();
+  } catch (_) {
+    const bust = (typeof window.QX_BUILD === "string" && window.QX_BUILD) || "qxload1";
+    location.href = location.pathname + "?v=" + encodeURIComponent(bust) + location.hash;
+  }
+}
+
+function qxPracticeUiReady(root) {
+  try {
+    const main = root || document.getElementById("app-main");
+    if (!main) return false;
+    return !!(main.querySelector(".eg-test-root, .mtk-test-root, .mq-qx-best"));
+  } catch (_) {
+    return false;
+  }
+}
+
+function qxPracticeSplashActive(root) {
+  try {
+    const main = root || document.getElementById("app-main");
+    if (!main || qxPracticeUiReady(main)) return false;
+    const html = main.innerHTML || "";
+    return /Opening practice|Starting test|Opening this paper|Loading questions/i.test(html);
+  } catch (_) {
+    return false;
+  }
+}
+
+function qxShowPracticeLoadError(reason) {
+  try {
+    const main = document.getElementById("app-main");
+    if (!main) return;
+    if (qxPracticeUiReady(main)) return;
+    const detail = String(reason || "Tap Retry to continue. All questions stay free.")
+      .replace(/</g, "&lt;");
+    window._qxRenderSeq = (window._qxRenderSeq || 0) + 1;
+    main.innerHTML = '<div class="empty" style="padding:40px;text-align:center">' +
+      '<p style="font-weight:800;margin-bottom:8px">This is taking longer than usual</p>' +
+      '<p style="color:#64748b;font-size:13px;margin-bottom:16px">' + detail + "</p>" +
+      '<button type="button" class="btn-primary" onclick="qxHardReloadApp()">Retry</button> ' +
+      '<button type="button" class="btn-soft" onclick="go(\'tests\')">Home</button></div>';
+  } catch (_) { /* */ }
+}
+
+function qxEnsurePracticeUiObserver() {
+  if (_qxPracticeUiObserver || typeof MutationObserver === "undefined") return;
+  try {
+    const main = document.getElementById("app-main");
+    if (!main) return;
+    _qxPracticeUiObserver = new MutationObserver(function () {
+      if (qxPracticeUiReady(main)) qxClearPracticeFailsafe();
+    });
+    _qxPracticeUiObserver.observe(main, { childList: true, subtree: true });
+  } catch (_) { /* */ }
+}
+
+function qxClearPracticeFailsafe() {
+  if (_qxPracticeFailsafeTimer) {
+    clearTimeout(_qxPracticeFailsafeTimer);
+    _qxPracticeFailsafeTimer = null;
+  }
+  if (_qxPracticePartialTimer) {
+    clearTimeout(_qxPracticePartialTimer);
+    _qxPracticePartialTimer = null;
+  }
+  _qxPracticeFailsafeExtended = false;
+}
+
+function qxArmPracticeFailsafe(ms) {
+  qxClearPracticeFailsafe();
+  _qxPracticeSplashAt = Date.now();
+  // Practice: ~12s soft; papers pass longer budget; avoid premature wipe
+  const wait = Math.max(10000, Number(ms) || 12000);
+  _qxPracticeFailsafeMs = wait;
+  qxEnsurePracticeUiObserver();
+  // At 2s nudge: force partial UI paint — never imply wait forever
+  if (_qxPracticePartialTimer) clearTimeout(_qxPracticePartialTimer);
+  _qxPracticePartialTimer = setTimeout(function () {
+    try {
+      const main = document.getElementById("app-main");
+      if (!main || qxPracticeUiReady(main) || !qxPracticeSplashActive(main)) return;
+      const st = main.querySelector(".qx-load-status");
+      if (st) st.textContent = "Almost ready — hang tight";
+      // Hint engine to paint with whatever is already hydrated
+      if (typeof window.qxForcePracticeFirstPaint === "function") {
+        try { window.qxForcePracticeFirstPaint(); } catch (_) { /* */ }
+      }
+    } catch (_) { /* */ }
+  }, 2000);
+  function tick() {
+    try {
+      const main = document.getElementById("app-main");
+      if (!main) return;
+      if (qxPracticeUiReady(main)) {
+        qxClearPracticeFailsafe();
+        return;
+      }
+      if (!qxPracticeSplashActive(main)) {
+        qxClearPracticeFailsafe();
+        return;
+      }
+      const age = Date.now() - _qxPracticeSplashAt;
+      // Do NOT extend forever while fetches are inflight — that left mobile on splash
+      if (age < _qxPracticeFailsafeMs) {
+        _qxPracticeFailsafeTimer = setTimeout(tick, 800);
+        return;
+      }
+      // Soft recovery: paint attempt + one inflight extension before wipe
+      if (typeof window.qxForcePracticeFirstPaint === "function") {
+        try { window.qxForcePracticeFirstPaint(); } catch (_) { /* */ }
+      }
+      if (_qxNetInflight > 0 && !_qxPracticeFailsafeExtended) {
+        _qxPracticeFailsafeExtended = true;
+        try {
+          const st = document.querySelector("#app-main .qx-load-status");
+          if (st) st.textContent = "Still loading — almost ready";
+        } catch (_) { /* */ }
+        _qxPracticeFailsafeTimer = setTimeout(tick, 10000);
+        return;
+      }
+      setTimeout(function () {
+        try {
+          const m2 = document.getElementById("app-main");
+          if (m2 && qxPracticeUiReady(m2)) { qxClearPracticeFailsafe(); return; }
+          if (m2 && !qxPracticeSplashActive(m2)) { qxClearPracticeFailsafe(); return; }
+          console.warn("practice failsafe: splash exceeded", _qxPracticeFailsafeMs, "ms; inflight=", _qxNetInflight);
+          qxShowPracticeLoadError(
+            "Tap Retry to continue. All questions stay free."
+          );
+          _qxPracticeFailsafeTimer = null;
+        } catch (_) { /* */ }
+      }, 700);
+    } catch (_) { /* */ }
+  }
+  _qxPracticeFailsafeTimer = setTimeout(tick, wait);
+}
+
+window.qxClearPracticeFailsafe = qxClearPracticeFailsafe;
+window.qxArmPracticeFailsafe = qxArmPracticeFailsafe;
+window.qxHardReloadApp = qxHardReloadApp;
+window.qxShowPracticeLoadError = qxShowPracticeLoadError;
+
 // ---------- Init ----------
 let _qxBooted = false;
 let _qxAuthResolved = false;
 
-const QX_LOAD_QUOTES = [
-  "Small steps every day beat talent that rests.",
-  "Consistency is the real rank booster.",
-  "One honest mock is better than ten unread notes.",
-  "Speed comes after accuracy — then both stay.",
-  "Revise the mistake, not just the chapter.",
-  "Quiet work today is the rank you want tomorrow.",
-  "Finish this question. Then the next. That’s the exam."
-];
-function qxLoadQuote() {
-  try {
-    const i = Math.floor(Date.now() / 8000) % QX_LOAD_QUOTES.length;
-    return QX_LOAD_QUOTES[i];
-  } catch (_) {
-    return QX_LOAD_QUOTES[0];
-  }
-}
 function qxLoadLogoHtml(msg) {
-  const t = String(msg || "Loading questions…");
-  const q = qxLoadQuote();
+  const t = String(msg || "Loading questions…").replace(/</g, "&lt;");
+  const quotes = [
+    "Loading your questions…",
+    "Preparing this paper for you",
+    "Fetching options and figures",
+    "Almost ready — hang tight"
+  ];
+  const qHtml = quotes.map(function (q) {
+    return "<span>" + String(q).replace(/</g, "&lt;") + "</span>";
+  }).join("");
   return '<div class="qx-load-logo" role="status" aria-live="polite">' +
-    '<div class="qx-load-orbit"><span class="qx-load-ring" aria-hidden="true"></span><span class="qx-load-ring qx-load-ring-2" aria-hidden="true"></span>' +
-    '<img src="/assets/quantrex-logo-3d-64.png?v=qxfix110" alt="Quantrex" class="qx-ui-brand-logo" width="64" height="64"></div>' +
-    "<p>" + t + "</p>" +
-    '<p class="qx-load-quote">“' + q + '”</p>' +
-    "</div>";
+    '<div class="qx-load-orbit" aria-hidden="true">' +
+      '<span class="qx-load-ring"></span>' +
+      '<span class="qx-load-ring qx-load-ring-2"></span>' +
+      '<img src="/assets/quantrex-logo-3d-64.png?v=qxfix110" alt="Quantrex" class="qx-ui-brand-logo" width="56" height="56">' +
+    '</div>' +
+    '<p class="qx-load-status">' + t + '</p>' +
+    '<div class="qx-load-quotes">' + qHtml + '</div>' +
+    '</div>';
 }
 
 function qxShowBootLoading() {
@@ -3023,10 +3252,6 @@ function qxScheduleBoot() {
 }
 
 function bootApp() {
-  try {
-    const pill = document.getElementById("qxBuildPill");
-    if (pill && window.QX_BUILD) pill.textContent = "Build " + window.QX_BUILD;
-  } catch (_) { /* */ }
   qxApplyUrlExam();
   if (typeof QuantrexGuestTrial !== "undefined") QuantrexGuestTrial.ensureStart();
   if (typeof qxForceResetShell === "function") qxForceResetShell({ clearContent: false });
@@ -3089,17 +3314,53 @@ function bootApp() {
     }
     QxPerf.onIdle(() => QxPerf.lazyImages(document));
   }
+  const bootView = (route && route.view && route.view !== "page-not-found") ? route.view : "dashboard";
+  const bootPayload = route && route.payload;
   try {
     _qxHistoryIgnore = true;
-    go(route.view || "dashboard", route.payload);
+    go(bootView || "dashboard", bootPayload);
+  } catch (err) {
+    console.warn("boot go failed", err);
+    try { go("dashboard"); } catch (_) { /* */ }
   } finally {
     _qxHistoryIgnore = false;
   }
+  // Desk splash only (do NOT redirect practice/paper splash at 2.5s — pyqmock packs need 25–30s).
+  setTimeout(function () {
+    try {
+      const main = document.getElementById("app-main");
+      const html = (main && main.innerHTML) || "";
+      if (!/Opening your Academy desk|Opening Quantrex Academy/i.test(html)) return;
+      const st = main.querySelector(".qx-load-status");
+      if (st) st.textContent = "Still loading — almost ready";
+    } catch (_) { /* */ }
+  }, 8000);
+  setTimeout(function () {
+    try {
+      const main = document.getElementById("app-main");
+      const html = (main && main.innerHTML) || "";
+      if (!/Opening your Academy desk|Opening Quantrex Academy|Still loading/i.test(html)) return;
+      console.warn("boot failsafe: desk splash stuck — showing Retry");
+      window._qxRenderSeq = (window._qxRenderSeq || 0) + 1;
+      main.innerHTML = '<div class="empty" style="padding:36px;text-align:center">' +
+        '<p style="font-weight:800;margin-bottom:8px">This is taking longer than usual</p>' +
+        '<p style="color:#64748b;font-size:13px;margin-bottom:14px">Tap Retry to continue. All questions stay free.</p>' +
+        '<button type="button" class="btn-primary" onclick="qxHardReloadApp()">Retry</button> ' +
+        '<button type="button" class="btn-soft" onclick="go(\'dashboard\')">Home</button></div>';
+    } catch (_) { /* */ }
+  }, 20000);
+  // Soft arm only if boot already landed on practice/paper splash (deep-link).
+  // startTest / startPyqPaperMock re-arm with full 28s budget; UI paint clears it.
+  try {
+    if (qxPracticeSplashActive()) qxArmPracticeFailsafe(12000);
+    else qxEnsurePracticeUiObserver();
+  } catch (_) { /* */ }
+
   // Ensure URL reflects restored route (refresh-safe)
   try {
-    const want = qxBuildHash(route.view || "dashboard", route.payload);
+    const want = qxBuildHash(bootView || "dashboard", bootPayload);
     if (location.hash !== want) {
-      history.replaceState({ view: route.view, payload: route.payload }, "", want);
+      history.replaceState({ view: bootView, payload: bootPayload }, "", want);
     }
   } catch (_) { /* */ }
 }
@@ -3187,12 +3448,9 @@ document.addEventListener("DOMContentLoaded", () => {
 const _origGo = go;
 go = function(view, payload) {
   currentView = view;
-  if (typeof QuantrexAccess !== "undefined" && !QuantrexAccess.ALL_COURSES_FREE && !QuantrexAccess.allow(view, payload)) {
-    const wall = QuantrexAccess.paywallHtml(view, payload);
-    if (wall) {
-      finishRender(wall);
-      return;
-    }
+  if (typeof QuantrexAccess !== "undefined" && !QuantrexAccess.allow(view, payload)) {
+    finishRender(QuantrexAccess.paywallHtml(view, payload));
+    return;
   }
   if (view !== "test" && view !== "question" && !qxRequireLogin(view, payload)) return;
   const main = document.getElementById("app-main");
@@ -3207,12 +3465,9 @@ go = function(view, payload) {
   // Deep-link + session so refresh never dumps user on home
   qxPushHistory(view, payload);
 
-  if (view !== "test" && view !== "question") {
-    try {
-      if (typeof qxForceResetShell === "function") qxForceResetShell({ clearContent: false });
-      else if (typeof qxRestoreAppChrome === "function") qxRestoreAppChrome();
-      else if (typeof qxClearBlockingMount === "function") qxClearBlockingMount();
-    } catch (_) { /* */ }
+  if (view !== "test" && view !== "question" && typeof qxClearBlockingMount === "function") {
+    qxClearBlockingMount();
+    document.body.classList.remove("allen-cbt-active", "allen-practice-active", "marks-instr-active");
   }
 
   if (view === "question") {

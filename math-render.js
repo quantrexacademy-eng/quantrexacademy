@@ -118,13 +118,9 @@ window.Mx = (() => {
       const s = document.createElement("style");
       s.id = "qxWorldMathCss";
       s.textContent = [
-        ".katex{font-size:1.08em;line-height:1.35;overflow:visible}",
-        ".katex-display.qx-math-block{margin:0.7em 0;overflow-x:auto;overflow-y:visible;padding:6px 0}",
-        ".katex-display.qx-math-block>.katex{display:inline-block;max-width:100%}",
-        ".katex .frac-line,.katex .sqrt-line,.katex .overline-line,.katex .underline-line,.katex .hline,.katex .rule{",
-        "border-bottom-style:solid!important;border-bottom-width:0.06em!important;border-bottom-color:currentColor!important;",
-        "background:transparent!important;height:0!important;display:inline-block!important;width:100%!important}",
-        ".qx-math-inline-fix,.katex-display:not(.qx-math-block){display:inline;overflow:visible;margin:0 .08em;padding:0;vertical-align:baseline}",
+        ".katex{font-size:1.08em;line-height:1.35}",
+        ".katex-display{margin:0.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0}",
+        ".katex-display>.katex{display:inline-block;max-width:100%}",
         ".mtk-q-text,.qx-question-body,.mtk-opt-text,.sol-body,.qx-sol-flow{",
         "  font-variant-numeric:lining-nums;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}",
         "code.qx-tex-code,.mtk-q-text code,.qx-question-body code,.mtk-opt-text code{",
@@ -284,7 +280,7 @@ window.Mx = (() => {
     /\bVedantu\b/gi, /\bUnacademy\b/gi, /\bAakash\b/gi, /\bFIITJEE\b/gi, /\bResonance\b/gi,
     /Powered\s+by\s+MARKS/gi, /MOG\s*Premium/gi, /\bMARKS\s*Premium\b/gi,
     /\bMARKS\s*Selected\b/gi, /marks_selected/gi, /\bMARKS\s*web\b/gi,
-    /\bALLEN\s*Digital\b/gi, /\bQuizrr\b/gi, /\bExamGOAL\b/gi, /\bExamGoal\b/gi
+    /\bALLEN\s*Digital\b/gi, /\bQuizrr\b/gi
   ];
   const PYQ_CDN = "https://cdn-question-pool.getmarks.app/";
   const BROKEN_CDN_RX = /https?:\/\/\.app\//gi;
@@ -572,18 +568,9 @@ window.Mx = (() => {
     return html(s);
   }
 
-  /** Strip Quizrr/NTA fake color entities (&yellow; etc.) that break KaTeX units */
-  function healFakeColorEntities(s) {
-    return String(s || "")
-      .replace(/&(?:yellow|red|green|blue|orange|pink|purple|cyan|magenta|lime|white|black|gray|grey|brown|violet|indigo|teal|navy|maroon|olive|aqua|fuchsia)\b;?/gi, " ")
-      .replace(/\\(?:color|textcolor|colorbox)\s*\{\s*(?:yellow|red|green|blue|orange)\s*\}/gi, "")
-      .replace(/\\(?:yellow|red|green|blue)\b/gi, " ");
-  }
-
   /** Decode HTML entities inside math so KaTeX sees real < > & */
   function decodeEntitiesInMath(s) {
-    s = healFakeColorEntities(s);
-    const decodeInner = (inner) => healFakeColorEntities(String(inner || ""))
+    const decodeInner = (inner) => String(inner || "")
       .replace(/&lt;/gi, "<")
       .replace(/&gt;/gi, ">")
       .replace(/&amp;/gi, "&")
@@ -833,7 +820,8 @@ window.Mx = (() => {
       const maxCols = Math.max(...parsed.map((r) => r.length), 1);
       // Probability / multi-col data tables (3+ cols) OR List match
       const isDataTable = maxCols >= 3 || parsed.some((r) => r.length >= 3);
-      const isListMatch = /List|\\mathrm\s*\{[A-D]\}|[A-D]\.\s|&\s*[IVX]+\./i.test(body);
+      const isListMatch = /List[\s\-]*[IVX]*|\\mathrm\s*\{[A-D]\}|[A-D]\.\s|&\s*[IVX]+\./.test(body)
+        || /list[\s\-]*[ivx]+/i.test(body);
       const specClean = String(spec || "").replace(/[| ]/g, "");
       const specMatrix = /^[clr]{1,6}$/i.test(specClean);
       // Matrices (cc/ll/ccc) stay KaTeX — do not dump HTML inside \left[ ] (ss943)
@@ -934,10 +922,16 @@ window.Mx = (() => {
       /\$\s*\\begin\{array\}(?:\{([^}]*)\})?([\s\S]*?)\\end\{array\}\s*\$/g,
       (m, spec, body) => convertBody(body, false, spec) || m
     );
-    // Bare \begin{array} — List-I/II only (never cc/ll/ccc matrices)
+    // Bare \begin{array} — List-I/II only (never cc/ll/ccc matrices; never inside \left)
     out = out.replace(
       /\\begin\{array\}(?:\{([^}]*)\})?([\s\S]*?)\\end\{array\}/g,
-      (m, spec, body) => convertBody(body, false, spec) || m
+      (m, spec, body, offset, full) => {
+        const before = full.slice(Math.max(0, offset - 48), offset);
+        if (/\\left\s*(?:\\[{}()[\].|]|[()\[\]{}.|])?\s*$/.test(before)) return m;
+        // Already inside an open $…$ math island that started with matrix delimiters
+        if (/\\left\s*\[\s*$/.test(before) || /\\left\s*$/.test(before)) return m;
+        return convertBody(body, false, spec) || m;
+      }
     );
     // Residual broken display: List-II\A. / \B. / \I.
     out = out.replace(/\\([A-D])\./g, " $1.");
@@ -1021,25 +1015,26 @@ window.Mx = (() => {
    */
   function parkAxisHyphenMath(s) {
     const AXIS = "(?:axis|axes|coordinate|intercept|intercepts|th|direction|component|bound|interval)s?";
+    const VAR = "(?:\\\\mathrm\\s*\\{[A-Za-z]\\}|[A-Za-z])";
     return String(s || "")
-      // Already paired: $x$-axis
+      // Already paired: $x$-axis / $\mathrm{x}$-axis
       .replace(
-        new RegExp("\\$([A-Za-z])\\$-(?=" + AXIS + "\\b)", "gi"),
+        new RegExp("\\$(" + VAR + ")\\$-(?=" + AXIS + "\\b)", "gi"),
         "\uE410$1\uE411"
       )
-      // Closed island $x-axis$ / $x–axis$ — consume BOTH dollars (ss933 shatter)
+      // Closed island $x-axis$ / $\mathrm{x}-axis$
       .replace(
-        new RegExp("\\$([A-Za-z])\\s*[–—−-]\\s*(" + AXIS + ")\\$", "gi"),
+        new RegExp("\\$(" + VAR + ")\\s*[–—−-]\\s*(" + AXIS + ")\\$", "gi"),
         "\uE410$1\uE411$2"
       )
-      // Unclosed $x–axis
+      // Unclosed $x–axis / $\mathrm{y}-$ axis
       .replace(
-        new RegExp("\\$([A-Za-z])\\s*[–—−-]\\s*(" + AXIS + ")\\b", "gi"),
+        new RegExp("\\$(" + VAR + ")\\s*[–—−-]\\s*(" + AXIS + ")\\b", "gi"),
         "\uE410$1\uE411$2"
       );
   }
   function restoreAxisHyphenMath(s) {
-    return String(s || "").replace(/\uE410([A-Za-z])\uE411/g, "$$$1$-");
+    return String(s || "").replace(/\uE410((?:\\mathrm\s*\{[A-Za-z]\}|[A-Za-z]))\uE411/g, "$$$1$-");
   }
   function spaceGluedDollars(s) {
     let out = parkAxisHyphenMath(s);
@@ -1076,63 +1071,6 @@ window.Mx = (() => {
   }
 
   /** Convert $...$ / $$...$$ / \(...\) islands to KaTeX HTML (works inside HTML stems). */
-  function texNeedsDisplay(tex) {
-    const t = String(tex || "");
-    if (/\\begin\{(?:aligned|align\*?|array|cases|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|gather|eqnarray|split)/.test(t)) return true;
-    if (/\\\\/.test(t) && /&/.test(t)) return true;
-    if (/\\dfrac/.test(t)) return true;
-    if ((t.match(/\\(?:d?frac)/g) || []).length >= 2) return true;
-    if ((t.match(/\\\\/g) || []).length >= 1 && t.replace(/\\[a-zA-Z]+/g, "").length > 48) return true;
-    return false;
-  }
-
-  function demoteSimpleDisplayTex(html) {
-    return String(html || "")
-      .replace(/\$\$([\s\S]+?)\$\$/g, function (all, tex) {
-        return texNeedsDisplay(tex) ? all : "$" + String(tex).trim() + "$";
-      })
-      .replace(/\\\[([\s\S]+?)\\\]/g, function (all, tex) {
-        return texNeedsDisplay(tex) ? all : "\\(" + String(tex).trim() + "\\)";
-      });
-  }
-
-  /** Keep math in the sentence. Only aligned/cases/matrix stay as a block. */
-  function fixMathFlowInDom(root) {
-    if (!root) return;
-    const list = [];
-    if (root.classList && root.classList.contains("katex-display")) list.push(root);
-    if (root.querySelectorAll) {
-      root.querySelectorAll(".katex-display").forEach(function (n) { list.push(n); });
-    }
-    list.forEach(function (el) {
-      if (!el || !el.parentNode) return;
-      let tex = "";
-      try {
-        const ann = el.querySelector("annotation[encoding='application/x-tex'], .katex-mathml annotation");
-        tex = ann ? (ann.textContent || "") : "";
-      } catch (_) { tex = ""; }
-      if (texNeedsDisplay(tex)) {
-        el.classList.add("qx-math-block");
-        return;
-      }
-      el.classList.remove("katex-display");
-      el.classList.add("qx-math-inline-fix");
-      try { el.style.display = "inline"; el.style.overflow = "visible"; el.style.margin = "0 0.08em"; } catch (_) { /* */ }
-      let n = el.nextSibling;
-      while (n && n.nodeType === 3 && /^\s+$/.test(n.nodeValue || "")) {
-        const nx = n.nextSibling;
-        n.parentNode.removeChild(n);
-        n = nx;
-      }
-      if (n && n.nodeType === 3) {
-        n.nodeValue = String(n.nodeValue || "").replace(/^\s+([.,;:!?)\]])/, "$1");
-      } else if (n && n.nodeType === 1 && !n.querySelector(".katex") && /^[.,;:!?)\]]+$/.test(String(n.textContent || "").trim())) {
-        el.after(document.createTextNode(String(n.textContent || "").trim()));
-        n.remove();
-      }
-    });
-  }
-
   function katexRenderIslands(s) {
     const src = String(s || "");
     if (/class\s*=\s*["'][^"']*katex/.test(src)) {
@@ -1178,152 +1116,29 @@ window.Mx = (() => {
       try {
         return window.katex.renderToString(t, Object.assign({ displayMode: !!display }, KATEX_OPTS));
       } catch (_) {
-        return String(t || "").replace(/[<>&]/g, (ch) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;" }[ch])); /* qxmd115 no-$ fallback */;
+        return display ? ("$$" + t + "$$") : ("$" + t + "$");
       }
     };
-    out = out.replace(/\$\$([\s\S]+?)\$\$/g, (_, tex) => paint(tex, texNeedsDisplay(tex)));
-    out = out.replace(/\\\[([\s\S]+?)\\\]/g, (_, tex) => paint(tex, texNeedsDisplay(tex)));
+    out = out.replace(/\$\$([\s\S]+?)\$\$/g, (_, tex) => paint(tex, true));
+    out = out.replace(/\\\[([\s\S]+?)\\\]/g, (_, tex) => paint(tex, true));
     out = out.replace(/\\\(([\s\S]+?)\\\)/g, (_, tex) => paint(tex, false));
     out = out.replace(/\$([^$]{1,8000})\$/g, (all, tex) => {
       const t = String(tex || "");
-      if (/^\s*[₹Rs.]?\s*\d{1,3}(?:,\d{2,3})+(?:\.\d+)?\s*$/.test(t)) return all;
-      if (/^\s*\d+(?:\.\d+)?\s*$/.test(t)) return all;
-      return paint(t, texNeedsDisplay(t));
+      if (/^\s*\d/.test(t) && !/[\\^_{}]/.test(t)) return all;
+      const display = /\\begin\{(?:aligned|align|array|cases|matrix|pmatrix|bmatrix)/.test(t);
+      return paint(t, display);
     });
     out = out.replace(/\uE300(\d+)\uE301/g, (_, i) => parked[+i] || "");
     return repairSpacedKatexTags(out);
   }
 
-  function looksLikeLeakedKatex(s) {
-    return /spanclass|svgxmlns|pathd\s*=|katex\s+-\s+html|<\s+\/?\s*span|&lt;\s*\/?\s*span/i.test(String(s || ""));
-  }
-
-  function ungluePhysicsPhrases(s) {
-    return String(s || "")
-      .replace(/\bseparatedbyadistanceof\b/gi, "separated by a distance of")
-      .replace(/\bfromthecenterof\b/gi, "from the center of")
-      .replace(/\bfromthecentreof\b/gi, "from the centre of")
-      .replace(/\btoapointonthe\b/gi, "to a point on the")
-      .replace(/\btoapointon\b/gi, "to a point on")
-      .replace(/\bisreleasedfromrest\b/gi, "is released from rest")
-      .replace(/\bofmass m\b/g, "of mass m")
-      .replace(/\btheaxialline\b/gi, "the axial line")
-      .replace(/\btheequatorialplane\b/gi, "the equatorial plane")
-      .replace(/\buniformlycharged\b/gi, "uniformly charged")
-      .replace(/\btotalcharge\b/gi, "total charge")
-      .replace(/\bpointcharge\b/gi, "point charge")
-      .replace(/\bneglectgravity\b/gi, "neglect gravity")
-      .replace(/\bpermittivityofvacuum\b/gi, "permittivity of vacuum")
-      .replace(/\bfromrestat\b/gi, "from rest at")
-      .replace(/\bwhentit\b/gi, "when it")
-      .replace(/\breachesthecentre\b/gi, "reaches the centre")
-      .replace(/\breachesthecenter\b/gi, "reaches the center");
-  }
-
   function repairSpacedKatexTags(s) {
-    let out = String(s || "");
-    if (!/katex|spanclass|svgxmlns|&lt;\s*span|<\s+span/i.test(out)) return out;
-    if (/&lt;\s*\/?\s*(?:span|svg|math|path|sub|sup)|spanclass|&amp;lt;/i.test(out)) {
-      out = out.replace(/&amp;lt;/gi, "<").replace(/&amp;gt;/gi, ">");
-      out = out.replace(/&lt;/gi, "<").replace(/&gt;/gi, ">");
-    }
-    out = out
-      .replace(/<\s+\/\s*/g, "</")
-      .replace(/<\s+/g, "<")
-      .replace(/<\/\s+/g, "</")
-      .replace(/\s+>/g, ">")
-      .replace(/\/\s+>/g, "/>")
-      .replace(/\bspanclass\b/gi, "span class")
-      .replace(/\bsvgxmlns\b/gi, "svg xmlns")
-      .replace(/\bpathd=/gi, "path d=")
-      .replace(/\bspanstyle\b/gi, "span style")
-      .replace(/\bspanaria\b/gi, "span aria")
-      .replace(/<(span|div|svg|path|math|annotation|mi|mo|mn|mrow|msup|msub|mfrac|msqrt)(?=(?:aria|style|class|xmlns|width|height|viewBox))/gi, "<$1 ")
-      .replace(/katex\s*-\s*/gi, "katex-")
-      .replace(/aria\s*-\s*/gi, "aria-")
-      .replace(/vertical\s*-\s*align/gi, "vertical-align")
-      .replace(/min\s*-\s*width/gi, "min-width")
-      .replace(/max\s*-\s*width/gi, "max-width")
-      .replace(/padding\s*-\s*(left|right|top|bottom)/gi, "padding-$1")
-      .replace(/margin\s*-\s*(left|right|top|bottom)/gi, "margin-$1")
-      .replace(/font\s*-\s*(size|family|weight|style)/gi, "font-$1")
-      .replace(/line\s*-\s*height/gi, "line-height")
-      .replace(/white\s*-\s*space/gi, "white-space")
-      .replace(/text\s*-\s*(align|indent)/gi, "text-$1")
-      .replace(/overflow\s*-\s*(x|y|wrap)/gi, "overflow-$1")
-      .replace(/z\s*-\s*index/gi, "z-index")
-      .replace(/view\s*Box/g, "viewBox")
-      .replace(/preserve\s*Aspect\s*Ratio/gi, "preserveAspectRatio")
-      .replace(/xMinY\s+Min\s*slice/gi, "xMinYMin slice")
-      .replace(/xMinY\s+Min/gi, "xMinYMin")
-      .replace(/\b(height|width|top|left|right|bottom|min-width|max-width|vertical-align|padding-left|line-height)\s*:\s*/gi, "$1:")
-      .replace(/https\s*:\s*\/\s*\//gi, "https://")
-      .replace(/http\s*:\s*\/\s*\//gi, "http://")
-      .replace(/<\s*sub\s*>/gi, "<sub>")
-      .replace(/<\s*\/\s*sub\s*>/gi, "</sub>")
-      .replace(/<\s*sup\s*>/gi, "<sup>")
-      .replace(/<\s*\/\s*sup\s*>/gi, "</sup>")
-      .replace(/\sstyle\s*=\s*"/gi, ' style="');
-    return out;
-  }
-
-  function reRenderKatexFromAnnotations(html) {
-    if (typeof document === "undefined") return html;
-    const d = document.createElement("div");
-    d.innerHTML = html;
-    const nodes = d.querySelectorAll(".katex");
-    if (!nodes.length) return html;
-    if (!(window.katex && window.katex.renderToString)) return d.innerHTML;
-    Array.prototype.forEach.call(nodes, function (el) {
-      let tex = "";
-      try {
-        const ann = el.querySelector("annotation[encoding='application/x-tex'], .katex-mathml annotation");
-        tex = ann ? String(ann.textContent || "").trim() : "";
-      } catch (_) { tex = ""; }
-      if (!tex) return;
-      try {
-        const display = !!(el.classList && el.classList.contains("katex-display"));
-        el.outerHTML = window.katex.renderToString(tex, Object.assign({ displayMode: display }, KATEX_OPTS));
-      } catch (_) { /* keep original node */ }
-    });
-    return d.innerHTML;
-  }
-
-  function salvageLeakedKatexHtml(s) {
-    let out = repairSpacedKatexTags(String(s || ""));
-    try { out = reRenderKatexFromAnnotations(out); } catch (_) { /* */ }
-    if (looksLikeLeakedKatex(out) && !/<span[^>]*class=["'][^"']*katex/i.test(out)) {
-      out = String(s || "")
-        .replace(/<\s*svg[\s\S]*?(?:<\s*\/\s*svg\s*>|$)/gi, " ")
-        .replace(/<\s*\/?\s*[a-zA-Z][^>]*>/g, " ")
-        .replace(/&lt;\s*\/?\s*[a-zA-Z][^&]*&gt;/g, " ")
-        .replace(/\b(?:height|width|vertical-align|padding-left|min-width|viewBox|preserveAspectRatio)\s*=\s*"[^"]*"/gi, " ");
-      out = out.replace(/\s+/g, " ").trim();
-    }
-    return ungluePhysicsPhrases(out);
-  }
-
-  function repairKatexLeakInDom(root) {
-    if (!root) return;
-    const nodes = [];
-    if (root.innerHTML) nodes.push(root);
-    if (root.querySelectorAll) {
-      root.querySelectorAll(".eg-sol, .sol-body, .qx-sol-flow, .qx-sol-card, .qx-content, .mtk-q-text, .eg-q-stem, .mtk-opt-text, .qx-sol-body, .qx-q-seg-text, .qx-q-text-only").forEach(function (n) {
-        nodes.push(n);
-      });
-    }
-    nodes.forEach(function (node) {
-      if (!node || !node.innerHTML) return;
-      const t = node.textContent || "";
-      const h = node.innerHTML || "";
-      if (!looksLikeLeakedKatex(t + h)) return;
-      let s = salvageLeakedKatexHtml(h);
-      if (s && s !== h) node.innerHTML = s;
-      if (looksLikeLeakedKatex(node.textContent || "") && !node.querySelector(".katex")) {
-        const salvage = salvageLeakedKatexHtml(node.textContent || h);
-        try { node.innerHTML = html(salvage); } catch (_) { node.innerHTML = salvage; }
-      }
-    });
+    return String(s || "")
+      .replace(/<\s*spanclass\s*=\s*"\s*katex\s*-\s*display\s*"\s*>/gi, '<span class="katex-display">')
+      .replace(/<\s*span\s+class\s*=\s*"\s*katex\s*-\s*display\s*"\s*>/gi, '<span class="katex-display">')
+      .replace(/<\s*spanclass\s*=\s*"\s*katex\s*"\s*>/gi, '<span class="katex">')
+      .replace(/class\s*=\s*"\s*katex\s*-\s*html\s*"/gi, 'class="katex-html"')
+      .replace(/class\s*=\s*"\s*katex\s*-\s*display\s*"/gi, 'class="katex-display"');
   }
 
   /** Quizrr/Marks \\[4pt] row skips must not become a table cell. */
@@ -1371,15 +1186,25 @@ window.Mx = (() => {
   function healShatteredTex(s) {
     let out = restoreAxisHyphenMath(parkAxisHyphenMath(s));
     out = out.replace(/\\\$/g, "$");
+    try { out = repairShatteredMathDollars(out); } catch (_) { /* */ }
     // $x–axis / $x-axis / $x-axis$ → $x$-axis (never leave a trailing $)
     out = out.replace(
-      /\$([A-Za-z])\s*[–—−-]\s*(axis|axes|coordinate|intercept|th)s?\b\$?/gi,
+      /\$((?:\\mathrm\s*\{[A-Za-z]\}|[A-Za-z]))\s*[–—−-]\s*(axis|axes|coordinate|intercept|th)s?\b\$?/gi,
       (_, v, w) => "$" + v + "$-" + w
-    );
+    )
     // $$\mathrm{A}$$ / $$\cos \alpha$$ crumbs → inline
     out = out.replace(
       /\$\$\s*(\\mathrm\s*\{[A-Za-z0-9]+\}|\\operatorname\s*\{[^}]+\}|\\(?:cos|sin|tan|cot|sec|csc|ln|log|lim|alpha|beta|gamma|theta|pi|infty)\b(?:\s*[A-Za-z\\{][^$]{0,36})?|\\frac\s*\{[^{}]+\}\s*\{[^{}]+\}|[A-Za-z])\s*\$\$/g,
       (_, inner) => "$" + String(inner).replace(/\s+/g, " ").trim() + "$"
+    );
+    // $\mathrm{y}-$ axis / $y-$ axis → $\mathrm{y}$-axis
+    out = out.replace(
+      /\$((?:\\mathrm\s*\{[A-Za-z]\}|[A-Za-z]))\$-\s+(axis|axes|coordinate|intercept|th)s?\b/gi,
+      (_, v, w) => "$" + v + "$-" + w
+    );
+    out = out.replace(
+      /\$((?:\\mathrm\s*\{[A-Za-z]\}|[A-Za-z]))\s*-\s*\$\s+(axis|axes|coordinate|intercept|th)s?\b/gi,
+      (_, v, w) => "$" + v + "$-" + w
     );
     // Join glued islands: $(vec)$$\mathrm{m}$  /  $E=$$\mathrm{m}_{e}c^{2}$
     out = out.replace(/\$([^$\n]{0,160})\$\$(\\mathrm\{)/g, "$$$1 $2");
@@ -1407,8 +1232,231 @@ window.Mx = (() => {
     return out;
   }
 
+  /**
+   * Join shattered math dollars that leave bare \\left / \\begin outside $…$
+   * (nested $\\tan $\\left, split $A=$\\left[, tofu from ensureMathDelimiters).
+   * Keep $-\\frac intact; peel organic-chain orphan dollars for readable chem.
+   */
+  function repairShatteredMathDollars(s) {
+    let out = String(s || "");
+    if (!out) return out;
+
+    // Join incomplete island before \\left / \\begin
+    out = out.replace(
+      /\$([^$\n]{0,120}?)\$(?=\s*\\(?:left|begin)\b)/g,
+      (m, inner) => {
+        const trim = String(inner || "").replace(/\s+$/g, "");
+        if (!trim) return m;
+        if (/=\s*$|[+\u2212\-]\s*$/.test(trim)) return "$" + trim;
+        if (/\\(?:tan|sin|cos|cot|sec|csc|log|ln|lim|frac|sqrt|mathrm|mathbf|text|operatorname)\s*$/.test(trim)) {
+          return "$" + trim + " ";
+        }
+        if (/^(?:\\)?(?:tan|sin|cos|cot|sec|csc)\s*$/i.test(trim)) return "$" + trim + " ";
+        if (/^[A-Za-z][A-Za-z0-9]*\([^)]{0,24}\)\s*=\s*$/.test(trim)) return "$" + trim;
+        return m;
+      }
+    );
+
+    out = out.replace(/\$\$+(?=\\(?:left|begin)\b)/g, "$");
+
+    // Chem label: $A = $ CH_3… → $A =$ CH_3…
+    out = out.replace(/\$([A-Z])\s*=\s*\$\s*(?=[A-Z])/g, "$$$1 =$ ");
+    // Mid-chain orphan dollars between chem atoms only (never $3,4,5$-Name)
+    out = out.replace(
+      /((?:\\mathrm\s*\{[A-Z][A-Za-z0-9]*\}|CH|NH|OH|COOH|CHO|HO|Br|Cl)(?:_\{?\d+\}?)?)\s*\$\s*[-–—−]\s*(?:\$\s*)?(?=(?:\\mathrm\s*\{|CH|NH|OH|COOH|CHO|HO|Br|Cl)(?:_|\b|\{|\$))/g,
+      "$1–"
+    );
+    out = out.replace(
+      /((?:\\mathrm\s*\{[A-Z][A-Za-z0-9]*\}|CH|NH|OH|HO|Br|Cl)(?:_\{?\d+\}?)?)\s*\$\s*[-–—−]\s*(?=\s*(?:OH|NH_?2|COOH|CHO)\b)/g,
+      "$1–"
+    );
+    // Double-bond shatter: CH_2 =$ CH → CH_2=CH (qxaudit1)
+    // Do NOT match single-letter labels like $A =$ CH…
+    out = out.replace(
+      /((?:\\mathrm\s*\{[A-Z][A-Za-z0-9]*\}|CH|NH|OH|COOH|CHO)(?:_\{?\d+\}?)?)\s*=\s*\$\s*(?=(?:\\mathrm\s*\{|CH|NH|OH|COOH|CHO|HO)(?:_|\b|\{))/g,
+      "$1="
+    );
+    // Spaced single bonds without $: CH - CH_2 → CH–CH_2
+    // Lookahead must allow CH_2 (underscore is a word char, so avoid CH\b)
+    out = out.replace(
+      /\b((?:CH|NH|OH)(?:_\{?\d+\}?)?)\s+[-–—−]\s+(?=(?:CH|NH|OH|COOH|CHO)(?:_|\b|\{|\$))/g,
+      "$1–"
+    );
+    // qxaudit2: peel leftover CH_n$ – CH_m / atom$–atom after first pass (multi-hop chains)
+    for (let _i = 0; _i < 4; _i++) {
+      const prev = out;
+      out = out.replace(
+        /\b((?:CH|NH|OH|COOH|CHO|HO)(?:_\{?\d+\}?)?)\s*\$\s*([-–—−=])\s*(?:\$\s*)?(?=(?:CH|NH|OH|COOH|CHO|HO|Br|Cl)(?:_|\b|\{|\$))/g,
+        "$1$2"
+      );
+      out = out.replace(
+        /\b((?:CH|NH|OH)(?:_\{?\d+\}?\^?[+\-–]?)?)\s*\$\s*(?=>)/g,
+        "$1"
+      );
+      // Carbanion list shatter: CH_3^->$ CH_3$-CH_2^-
+      out = out.replace(/\$\s*(?=>\s*\$?\s*\(?CH)/g, "");
+      out = out.replace(/(CH(?:_\{?\d+\}?)?\^?[-–−]?)\s*\$\s*-\s*\$?\s*(?=CH)/g, "$1–");
+      if (out === prev) break;
+    }
+    // Collapse same-segment chem labels (qxaudit2):
+
+    // "$L =$ FORMULA$" → "$L = FORMULA$" (no backslash/newline in FORMULA)
+    out = out.replace(/\$([A-Z])\s*=\$\s*([^$\\]+?)\$/g, function (m, lab, body) {
+      const b = String(body || "").trim();
+      if (!b) return m;
+      if (!/(?:CH|NH|OH|HO|COOH|CHO|\\mathrm)/.test(b)) return m;
+      return "$" + lab + " = " + b + "$";
+    });
+    // Label with formula until \\ or <br> and no closing $: "$L =$ FORMULA \\" → "$L = FORMULA$ \\"
+    out = out.replace(/\$([A-Z])\s*=\$\s*((?:CH|NH|OH|HO|COOH|CHO|\\mathrm)[^$\\]*?)(?=\s*\\\\|\s*<br|\s*$)/g, function (m, lab, body) {
+      const b = String(body || "").trim();
+      if (!b) return m;
+      return "$" + lab + " = " + b + "$";
+    });
+
+    
+    // qxproof2: close $\mathrm{X}=$ ONLY before English prose words (Rydberg, Fire…).
+    // Never before TeX (\\cmd), math idents f(x), or when a closing $ already exists
+    // within the same line — prior qxqa1 rules shattered valid islands (E=\\sqrt, y=f(x)).
+    out = out.replace(/\$(\\mathrm\{[A-Za-z0-9]+\}(?:_[^{}\s$]+)?)=\s*(?=[A-Z][a-z]{2,}(?:\s|[.,;:<]|$))/g, function (m, cmd, offset, full) {
+      const after = full.slice(offset + m.length);
+      if (/^\$/.test(after)) return m;
+      // TeX or another math island closer soon → leave intact
+      const untilNl = after.split(/\n|<br/i)[0] || after;
+      if (/\\[a-zA-Z]/.test(untilNl)) return m;
+      if (/^[^$\n]{1,400}\$/.test(untilNl)) return m;
+      return "$" + cmd + "=$ ";
+    });
+    // En-dash after closed chem label before English: $\mathrm{X}–Word
+    out = out.replace(/\$(\\mathrm\{[^}]+\}(?:_[^{}\s$]*)?)[–—](?=[A-Z][a-z]{2,})/g, function (m, cmd, offset, full) {
+      const before = full.slice(0, offset);
+      if ((before.match(/\$/g) || []).length % 2 === 1) return m;
+      return "$" + cmd + "$ – ";
+    });
+    out = out.replace(/\$\$(\\mathrm\{[^}]+\})\$(?:\s*-\s*\$\s*|\s*-\s+)/g, "$$$1$ – ");
+
+
+    // qxproof2: heal acid OCR — prefer preserving outer $…$ when present
+    out = out.replace(/\$\s*(H_\{?\d\}?)\s*\$\s*((?:SO|PO|CO|NO)_\{?\d\}?)\s*\$/g, "$$$1$2$");
+    out = out.replace(/(^|[^$])\b(H_\{?\d\}?)\s*\$\s*((?:SO|PO|CO|NO)_\{?\d\}?)\s*\$/g, "$1$2$3");
+    // `$H_2SO_4 or $ H_3PO_4` residue → `$H_2SO_4$ or $H_3PO_4$`
+    out = out.replace(/\$\s*(H_\{?\d\}?(?:SO|PO)_\{?\d\}?)\s+or\s*\$\s*(H_\{?\d\}?(?:SO|PO)_\{?\d\}?)\s*\$?/gi, "$$$1$ or $$$2$");
+    // Double-bond option shatter: CH_2 =$ CH → CH_2=CH
+    out = out.replace(/\b(CH_\{?\d\}?)\s*=\s*\$\s*(?=CH)/g, "$1=");
+    out = out.replace(/\$\s*-\s*\$\s*(?=CH|NH|OH|HO)/g, "–");
+    // Trailing orphan $ after chem fragment at cell/string end
+    out = out.replace(/(^|[^A-Za-z0-9_])((?:CH|NH|OH|HO)(?:_\{?\d+\}?)?(?:\([^)]+\))?)\s*\$(?=<\/|[<\n]|$)/g, function (m, pre, chem, offset, full) {
+      const before = full.slice(0, offset + String(pre || "").length);
+      const n = (before.match(/\$/g) || []).length;
+      if (n % 2 === 1) return m; // closes real math — keep
+      return pre + chem;
+    });
+    // Shatter chain: HO $-$ C$H_2-$ CH_2-$ CH $=$ CH_2$ → HO–CH_2–CH_2–CH=CH_2
+        out = out.replace(/HO\s*\$?\s*-\s*\$?\s*(?:C\s*\$?\s*)?H_2\s*\$?\s*-\s*\$?\s*CH_2\s*\$?\s*-\s*\$?\s*CH\s*\$?\s*=\s*\$?\s*CH_2\s*\$?/g, "HO–CH_2–CH_2–CH=CH_2");
+    // Only peel C$H_2 (OCR split carbon) — never blanket $-$ which breaks signed math
+    out = out.replace(/\bC\s*\$\s*H_(\d)/g, "CH_$1");
+
+    // Close `$L = chem…` islands missing `$` before <br>/end (qxproof2)
+    out = out.replace(/\$([A-Z])\s*=\s*((?:HO|CH|NH|OH)[^$\n<]{0,80}?)(?=\s*<br|\s*$)/g, (m, lab, body) => {
+      const b = String(body || "").trim();
+      if (!b || /\\/.test(b)) return m;
+      return "$" + lab + " = " + b + "$";
+    });
+
+    // Carbanion stability order shatter → one balanced island (tokens already present)
+    out = out.replace(
+      /\$\\mathrm\{CH\}_3\^->\s*\$\s*CH_3\s*[–—−-]\s*CH_2\^?-\s*>\$?\s*\(\$?\s*CH_3\$?\s*\)_2\s*\$?\s*CH\$?\s*\^?-\s*>\$?\s*\(\$?\s*CH_3\$?\s*\)_3\s*\$?\s*C\$?\s*\^?-+\.?\$/g,
+      "$\\mathrm{CH}_3^- > \\mathrm{CH}_3–CH_2^- > (\\mathrm{CH}_3)_2CH^- > (\\mathrm{CH}_3)_3C^-$"
+    );
+
+    return out;
+  }
+
+
+  function repairChemAndShatteredTex(s) {
+    let out = String(s || "");
+    if (!out) return out;
+
+    // Broken arrow: "\right arrow" split from \rightarrow
+    out = out.replace(/\\right\s+arrow\b/gi, "\\rightarrow");
+    out = out.replace(/\\left\s+arrow\b/gi, "\\leftarrow");
+    out = out.replace(/\\right\s*-\s*arrow\b/gi, "\\rightarrow");
+    out = out.replace(/\\long\s*right\s*arrow\b/gi, "\\longrightarrow");
+    out = out.replace(/\\to\s+arrow\b/gi, "\\rightarrow");
+
+    // \{HNO\} _{3}  (BOTH braces escaped) → \mathrm{HNO}_{3}
+    out = out.replace(/\\\{([A-Z][A-Za-z0-9]*)\\\}(\s*(_\{[0-9]+\}|_[0-9]|\^\{?[0-9]+\}?))?/g, function (_, name, sub) {
+      return "\\mathrm{" + name + "}" + (sub || "");
+    });
+    // Single-escaped open only: \{HNO}_{3}
+    out = out.replace(/\\\{([A-Z][A-Za-z0-9]*)\}(\s*(_\{[0-9]+\}|_[0-9]))?/g, function (_, name, sub) {
+      return "\\mathrm{" + name + "}" + (sub || "");
+    });
+
+    // Bare {Cl}_{2} / {H}_{2} chem (capital start, short)
+    out = out.replace(/(^|[^\\$A-Za-z])\{([A-Z][A-Za-z0-9]{0,8})\}(_\{[0-9]+\}|_[0-9])/g, "$1\\mathrm{$2}$3");
+
+    // Normalize chem state spacing: \left( l \right) → \left(l\right)
+    out = out.replace(/\\left\s*\(\s*([lgsaq]|aq|sol|liq)\s*\\right\s*\)/gi, "\\left($1\\right)");
+
+    // ── Shattered-$ repair: CHEM REACTIONS ONLY ─────────────────────────
+    // Prior broad rules stripped closing $ after \right), ate $ before \left,
+    // and turned $-\frac{…}$ into " - \frac{…}$" — shattering JEE math stems
+    // and making signed options look like duplicates (Q14 / Q22 PYQ).
+    // Only peel mid-reaction orphan $ when more chem continues after \right.
+    const looksChemReaction =
+      /\\rightarrow|\\longrightarrow|\\ce\{/.test(out) ||
+      (/\\mathrm\{[A-Z][A-Za-z0-9]*\}/.test(out) && /\\left\s*\(/.test(out) && /\\right\s*\)/.test(out));
+
+    if (looksChemReaction) {
+      // \right) $ \left( / \right) $ + / \right) $ \mathrm{…}  (mid-reaction shatter)
+      out = out.replace(
+        /(\\right\s*(?:\\[{}()[\].|]|[).\]|}]))\s*\$\s*(?=\s*(?:\\left|\\mathrm|[+\u2212=]|\\rightarrow|\\longrightarrow))/g,
+        "$1 "
+      );
+      // chem atom $ \left(  e.g. \mathrm{HCl}$\left(aq\right)
+      out = out.replace(
+        /(\\mathrm\{[^}]+\})\s*\$\s*(?=\\left\b)/g,
+        "$1 "
+      );
+      // operator $ \left  mid reaction — never $-fraction / $-digit
+      out = out.replace(
+        /([+\u2212=])\s*\$\s*(?=\\left\b|\\mathrm\{)/g,
+        "$1 "
+      );
+      // $ + or $ = before chem (not $ - \frac / $ - 2)
+      // NEVER peel when $ opens the island ($+\mathrm{O}_2…$) — only mid-shatter closers
+      // qxproof2: only peel mid-reaction $ before chem/TeX — NEVER English prose (Final, Binding…)
+      out = out.replace(
+        /\$\s*([+\u2212=])\s*(?=\\(?:mathrm|left|ce|text)\b|(?:CH|NH|OH|COOH|CHO|Br|Cl|Fe|Cu|Ag|Na|H_?\d|O_?\d|N_?\d|C_?\d)\b)/g,
+        (m, op, offset, full) => {
+          const before = full.slice(0, offset);
+          const n = (before.match(/\$/g) || []).length;
+          if (n % 2 === 0) return m;
+          return " " + op + " ";
+        }
+      );
+
+      // If still has chem \left runs with no dollars, wrap a reasonable span
+      if (/\\left\s*\(/.test(out) && /\\mathrm\{[A-Z]|\\rightarrow|_\{?[0-9]/.test(out)) {
+        out = out.replace(/\$\$+/g, "$");
+        if (!/\$/.test(out) || (out.match(/\$/g) || []).length % 2 !== 0) {
+          const plain = out.replace(/\$/g, "");
+          if (/\\left/.test(plain) && /\\rightarrow|\\mathrm\{/.test(plain)) {
+            out = "$" + plain.trim() + "$";
+          }
+        }
+      }
+    }
+
+    out = out.replace(/\\right\s+arrow\b/gi, "\\rightarrow");
+    return out;
+  }
+
   function repairBrokenLatex(s) {
     let out = parkAxisHyphenMath(String(s || ""));
+    try { out = repairChemAndShatteredTex(out); } catch (_) { /* */ }
+    try { out = repairShatteredMathDollars(out); } catch (_) { /* */ }
     try { out = sanitizeHtmlInMath(out); } catch (_) { /* */ }
     out = out.replace(/\\le\s*ft\b/g, "\\left").replace(/\\ri\s*ght\b/g, "\\right");
     out = out.replace(/\\left\s*\$\s*\(/g, "\\left(");
@@ -1429,7 +1477,7 @@ window.Mx = (() => {
     // Marks/JSON double-escape: \\frac \\rightarrow → \frac \rightarrow
     // BUT never collapse TeX array row breaks "\\" when followed by space/letter label A. I.
     // Only collapse before known TeX command names
-    out = out.replace(/\\{2,}(frac|dfrac|sqrt|mathrm|mathbf|text|textbf|left|right|begin|end|in|notin|subset|subseteq|cup|cap|emptyset|mathbb|times|div|lt|gt|le|ge|leq|geq|neq|rightarrow|leftarrow|alpha|beta|gamma|delta|theta|pi|infty|cdot|pm|vec|hat|bar|sin|cos|tan|log|ln|sum|int|prod|partial|nabla|circ|angle|perp)\b/g, "\\$1");
+    out = out.replace(/\\{2,}(frac|dfrac|sqrt|mathrm|mathbf|text|textbf|left|right|begin|end|in|notin|subset|subseteq|cup|cap|emptyset|mathbb|times|leq|geq|neq|rightarrow|leftarrow|alpha|beta|gamma|delta|theta|pi|infty|cdot|pm|vec|hat|bar|sin|cos|tan|log|ln|sum|int|prod|partial|nabla|circ|angle|perp)\b/g, "\\$1");
     // "\ rightarrow" / "\  frac" spaced command after backslash
     out = out.replace(/\\\s+([a-zA-Z]+)/g, "\\$1");
 
@@ -1582,9 +1630,24 @@ window.Mx = (() => {
     out = out.replace(/(^|[^\\])mathrm\s*\{\s*([^}]*)\s*\}/g, "$1\\mathrm{$2}");
     out = out.replace(/(^|[^\\])mathrm\s*\(\s*([^)]*)\s*\)/g, "$1\\mathrm{$2}");
 
-    // Lone "$ - word" en-dash. NEVER eat the closer of $x$-axis (ss933).
-    out = out.replace(/([A-Za-z])-\$\s*(?=[\s,.;)]|$)/g, "$1–");
-    out = out.replace(/(^|[^A-Za-z$\uE410-\uE411])\$\s*-\s*([A-Za-z])/g, "$1–$2");
+    // Lone "letter-$" en-dash (prose only). NEVER eat closing $ of $-C\\equiv C-$ / signed math.
+    out = out.replace(/([A-Za-z])-\$\s*(?=[\s,.;)]|$)/g, (m, letter, offset, full) => {
+      const before = full.slice(0, offset);
+      const n = (before.match(/\$/g) || []).length;
+      // Odd count ⇒ this $ closes real math (…C-$ / …x-$) — keep delimiter
+      if (n % 2 === 1) return m;
+      return letter + "–";
+    });
+    out = out.replace(/(^|[^A-Za-z$\\\uE410-\uE411])\$\s+-\s+([A-Za-z]{3,})\b/g, (m, pre, word, offset, full) => {
+      const before = full.slice(0, offset + String(pre || "").length);
+      const n = (before.match(/\$/g) || []).length;
+      // Odd count ⇒ this $ closes real math ($3,4,5$-Tribromo / $\mathrm{x}$-axis)
+      if (n % 2 === 1) return m;
+      // Signed math opener: $-x...$ / $-\frac — keep dollars
+      const after = full.slice(offset + m.length - String(word).length);
+      if (/^(?:\\|[a-zA-Z]\s*[+\-–=^_({]|[a-zA-Z]\d)/.test(word + after)) return m;
+      return pre + "–" + word;
+    });
 
     // Angle / degree: 108.9° already unicode; O-C-H style
     // Keep as single math token: 60^{\circ} not 60^$\circ$
@@ -1604,6 +1667,19 @@ window.Mx = (() => {
     out = out.replace(/\$\$+/g, "$$");
     out = out.replace(/\$\s*\$/g, " ");
 
+    // qxproof1: empty MathML fence leftovers / unit parentheticals
+    out = out.replace(/\$\\left\(\s*\\right\)\$/g, "");
+    out = out.replace(/\\left\(\s*\\right\)/g, "");
+    // Allotrope / state OCR dollars: (diamond $) · ($ diamond $) · (graphite $)
+    // Keep $C$ / $\quad C$ islands intact — only strip the orphan $ glued to the word.
+    out = out.replace(/\(\s*\$\s*(diamond|graphite|gas|liquid|solid|aq)\s*\$\s*\)/gi, "($1)");
+    out = out.replace(/\(\s*(diamond|graphite|gas|liquid|solid|aq)\s*\$\s*\)/gi, "($1)");
+    out = out.replace(/\(\s*\$\s*(diamond|graphite)\s*\)/gi, "($1)");
+    // Heal chem triple-bond shatter: -$ C\\equiv C$– → -C\\equiv C-$
+    out = out.replace(/-\$\s*C\\equiv\s*C\$\s*[–—−-]/g, "-C\\equiv C-$");
+    out = out.replace(/\$\s*-\s*\$\s*C\\equiv\s*C\$\s*[–—−-]/g, "$-C\\equiv C-$");
+
+    try { out = restoreAxisHyphenMath(out); } catch (_) { /* */ }
     return out;
   }
 
@@ -1655,7 +1731,7 @@ window.Mx = (() => {
       chunk = parkAxisHyphenMath(chunk);
       // Repair spaces in commands before wrapping (screenshot 773)
       chunk = repairLatexCommandSpaces(chunk);
-      if (!/\\[a-zA-Z]/.test(chunk) && !/\d\s*\\pi\b/.test(chunk)) return chunk;
+      if (!/\\[a-zA-Z]/.test(chunk) && !/\d\s*\\pi\b/.test(chunk)) return restoreAxisHyphenMath(chunk);
 
       const slots = [];
       const park = (m) => {
@@ -1760,8 +1836,20 @@ window.Mx = (() => {
         }
       );
 
+      // Nested parks (e.g. \frac inside \left...\right) need multi-pass restore
+      for (let _ri = 0; _ri < 8 && /\uE100\d+\uE101/.test(c); _ri++) c = restore(c);
       c = restore(c);
       c = restoreAxisHyphenMath(c);
+      // Flatten nested dollars from inner parks: $\left(1- $\frac{1}{5}$ \right)$ → one island
+      for (let _ni = 0; _ni < 6; _ni++) {
+        const flat = c.replace(/\$([^$\n]{0,400}?)\$(\\(?:frac|dfrac|sqrt|mathrm|mathbf|text|left|begin|sin|cos|tan|vec|hat)[^$\n]{0,200}?)\$([^$\n]{0,400}?)\$/g,
+          (full, a, mid, b) => {
+            if (/\$/.test(a + mid + b)) return full;
+            return "$" + a + mid + b + "$";
+          });
+        if (flat === c) break;
+        c = flat;
+      }
       // Collapse only empty $$ crumbs — never $$cases$$ / $$matrix$$
       c = c.replace(/\$\$+(?=\$)/g, "$");
       c = c.replace(/\$\s*\$/g, " ");
@@ -1815,21 +1903,19 @@ window.Mx = (() => {
       slots.push(m);
       return "§§QXIMG" + (slots.length - 1) + "§§";
     });
-    out = mapMathParts(out, (tex) => String(tex).replace(/÷/g, "\\div ").replace(/×/g, "\\times "), null);
     out = replaceOutsideMathFn(out, (chunk) => {
       if (!chunk) return chunk;
       if (/cdn-question-pool|proxy-image|getmarks\.app|watermark_improved|AKCR2_/i.test(chunk)) return chunk;
       let c = chunk
-        .replace(/≤/g, "≤")
-        .replace(/≥/g, "≥")
-        .replace(/≠/g, "≠")
+        .replace(/≤/g, "$\\leq$")
+        .replace(/≥/g, "$\\geq$")
+        .replace(/≠/g, "$\\neq$")
         .replace(/≈/g, "$\\approx$")
         .replace(/≡/g, "$\\equiv$")
         .replace(/∝/g, "$\\propto$")
         .replace(/∞/g, "$\\infty$")
         .replace(/±/g, "$\\pm$")
         .replace(/∓/g, "$\\mp$")
-        .replace(/(\d+(?:\.\d+)?)\s*÷\s*(\d+(?:\.\d+)?)/g, "$$$1\\div $2$")
         .replace(/×/g, "$\\times$")
         .replace(/÷/g, "$\\div$")
         .replace(/∈/g, "$\\in$")
@@ -1843,10 +1929,10 @@ window.Mx = (() => {
         .replace(/∅/g, "$\\emptyset$")
         .replace(/∀/g, "$\\forall$")
         .replace(/∃/g, "$\\exists$")
-        .replace(/⇒/g, "⇒")
-        .replace(/⇔/g, "⇔")
-        .replace(/→/g, "→")
-        .replace(/←/g, "←")
+        .replace(/⇒/g, "$\\Rightarrow$")
+        .replace(/⇔/g, "$\\Leftrightarrow$")
+        .replace(/→/g, "$\\rightarrow$")
+        .replace(/←/g, "$\\leftarrow$")
         .replace(/⇌/g, "$\\rightleftharpoons$")
         .replace(/∂/g, "$\\partial$")
         .replace(/∇/g, "$\\nabla$")
@@ -1970,102 +2056,40 @@ window.Mx = (() => {
   }
 
   function mmlKids(body) {
+    // Balanced top-level MathML children (nested <msub> inside <mfenced> must not truncate)
     const s = String(body || "");
     const kids = [];
-    let i = 0;
-    while (i < s.length) {
-      if (s[i] !== "<") { i++; continue; }
-      if (s.startsWith("</", i)) { i++; continue; }
-      const m = s.slice(i).match(/^<([a-zA-Z][\w:-]*)\b[^>]*>/);
-      if (!m) { i++; continue; }
-      const name = m[1];
-      const start = i;
-      i += m[0].length;
-      if (/\/>$/.test(m[0])) { kids.push(s.slice(start, i)); continue; }
-      const esc = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const openRe = /<(m(?:i|n|o|row|frac|sup|sub|subsup|sqrt|fenced|text|table|underover|under|over))\b[^>]*>/gi;
+    let m;
+    while ((m = openRe.exec(s))) {
+      const tag = m[1];
+      const start = m.index;
+      let pos = start + m[0].length;
       let depth = 1;
-      while (i < s.length && depth > 0) {
-        const next = s.indexOf("<", i);
-        if (next < 0) { i = s.length; break; }
-        const rest = s.slice(next);
-        const close = rest.match(new RegExp("^</" + esc + "\\s*>", "i"));
-        const open = rest.match(new RegExp("^<" + esc + "(?=[\\s>/])", "i"));
-        if (close && rest.indexOf(close[0]) === 0) {
+      const openTok = new RegExp("<" + tag + "\\b", "gi");
+      const closeTok = new RegExp("</" + tag + "\\s*>", "gi");
+      while (pos < s.length && depth > 0) {
+        openTok.lastIndex = pos;
+        closeTok.lastIndex = pos;
+        const o = openTok.exec(s);
+        const c = closeTok.exec(s);
+        if (!c) { pos = s.length; depth = 0; break; }
+        if (o && o.index < c.index) {
+          depth++;
+          pos = o.index + o[0].length;
+        } else {
           depth--;
-          i = next + close[0].length;
-        } else if (open && rest.indexOf(open[0]) === 0 && !s.startsWith("</", next)) {
-          const om = rest.match(/^<[a-zA-Z][\w:-]*\b[^>]*>/);
-          if (om && /\/>$/.test(om[0])) i = next + om[0].length;
-          else { depth++; i = next + (om ? om[0].length : 1); }
-        } else i = next + 1;
+          pos = c.index + c[0].length;
+          if (depth === 0) {
+            kids.push(s.slice(start, pos));
+            openRe.lastIndex = pos;
+            break;
+          }
+        }
       }
-      kids.push(s.slice(start, i));
+      if (depth !== 0) break;
     }
     return kids;
-  }
-
-  function mmlFindClose(str, tag, from) {
-    const esc = String(tag).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const openRe = new RegExp("<" + esc + "(?=[\\s>/])", "i");
-    const closeRe = new RegExp("</" + esc + "\\s*>", "i");
-    let depth = 1;
-    let j = from;
-    while (j < str.length && depth > 0) {
-      const next = str.indexOf("<", j);
-      if (next < 0) return -1;
-      const rest = str.slice(next);
-      const cl = rest.match(closeRe);
-      const op = rest.match(openRe);
-      const clAt = cl && rest.indexOf(cl[0]) === 0 && /^<\//.test(rest);
-      const opAt = op && rest.indexOf(op[0]) === 0 && !str.startsWith("</", next);
-      if (clAt) {
-        depth--;
-        j = next + cl[0].length;
-        if (depth === 0) return next;
-      } else if (opAt) {
-        const om = rest.match(/^<[a-zA-Z][\w:-]*\b[^>]*>/);
-        if (om && /\/>$/.test(om[0])) j = next + om[0].length;
-        else {
-          depth++;
-          j = next + (om ? om[0].length : 1);
-        }
-      } else j = next + 1;
-    }
-    return -1;
-  }
-
-  function mmlReplaceTag(s, tag, fn) {
-    const str = String(s || "");
-    const esc = String(tag).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const openRe = new RegExp("<" + esc + "\\b([^>]*)>", "i");
-    let out = "";
-    let i = 0;
-    while (i < str.length) {
-      const slice = str.slice(i);
-      const m = slice.match(openRe);
-      if (!m || m.index == null) {
-        out += slice;
-        break;
-      }
-      out += slice.slice(0, m.index);
-      const abs = i + m.index;
-      const afterOpen = abs + m[0].length;
-      if (/\/>$/.test(m[0])) {
-        out += fn(m[1] || "", "");
-        i = afterOpen;
-        continue;
-      }
-      const closeAt = mmlFindClose(str, tag, afterOpen);
-      if (closeAt < 0) {
-        out += str.slice(abs);
-        break;
-      }
-      const body = str.slice(afterOpen, closeAt);
-      const closeM = str.slice(closeAt).match(new RegExp("^</" + esc + "\\s*>", "i"));
-      out += fn(m[1] || "", body);
-      i = closeAt + (closeM ? closeM[0].length : 0);
-    }
-    return out;
   }
 
   function mathmlToTex(inner) {
@@ -2102,7 +2126,7 @@ window.Mx = (() => {
       if (two) return "\\begin{cases}" + texRows.join(" \\\\ ") + "\\end{cases}";
       return "\\begin{array}{ll}" + texRows.join(" \\\\ ") + "\\end{array}";
     });
-    s = mmlReplaceTag(s, "munderover", (_, body) => {
+    s = s.replace(/<munderover\b[^>]*>([\s\S]*?)<\/munderover>/gi, (_, body) => {
       const kids = mmlKids(body);
       if (kids.length >= 3) {
         const base = mathmlToTex(kids[0]);
@@ -2113,53 +2137,56 @@ window.Mx = (() => {
       }
       return mathmlToTex(body);
     });
-    s = mmlReplaceTag(s, "munder", (_, body) => {
+    s = s.replace(/<munder\b[^>]*>([\s\S]*?)<\/munder>/gi, (_, body) => {
       const kids = mmlKids(body);
-      if (kids.length >= 2) {
-        const base = mathmlToTex(kids[0]);
-        const und = mathmlToTex(kids[1]);
-        if (/lim/i.test(base)) return "\\lim_{" + und + "}";
-        return "\\mathop{" + base + "}_{" + und + "}";
-      }
+      if (kids.length >= 2) return "\\mathop{" + mathmlToTex(kids[0]) + "}_{" + mathmlToTex(kids[1]) + "}";
       return mathmlToTex(body);
     });
-    s = mmlReplaceTag(s, "mover", (_, body) => {
+    s = s.replace(/<mover\b[^>]*>([\s\S]*?)<\/mover>/gi, (_, body) => {
       const kids = mmlKids(body);
       if (kids.length >= 2) return "\\overset{" + mathmlToTex(kids[1]) + "}{" + mathmlToTex(kids[0]) + "}";
       return mathmlToTex(body);
     });
-    s = mmlReplaceTag(s, "msubsup", (_, body) => {
+    s = s.replace(/<msubsup\b[^>]*>([\s\S]*?)<\/msubsup>/gi, (_, body) => {
       const kids = mmlKids(body);
       if (kids.length >= 3) {
         return "{" + mathmlToTex(kids[0]) + "}_{" + mathmlToTex(kids[1]) + "}^{" + mathmlToTex(kids[2]) + "}";
       }
       return mathmlToTex(body);
     });
-    s = mmlReplaceTag(s, "mfenced", (attrs, body) => {
-      const o = /open\s*=\s*["']([^"']*)["']/i.exec(attrs || "");
-      const c = /close\s*=\s*["']([^"']*)["']/i.exec(attrs || "");
-      const L = (o && o[1] != null) ? o[1] : "(";
-      const R = (c && c[1] != null) ? c[1] : ")";
-      const map = { "(": "(", ")": ")", "[": "[", "]": "]", "{": "\\{", "}": "\\}" };
-      return "\\left" + (map[L] || L) + mathmlToTex(body) + "\\right" + (map[R] || R);
-    });
-    s = mmlReplaceTag(s, "mfrac", (_, body) => {
+    // msup/msub/mfrac BEFORE mfenced so [\mathrm{FeF}_6]^{3-} keeps base+sup kids
+    s = s.replace(/<mfrac\b[^>]*>([\s\S]*?)<\/mfrac>/gi, (_, body) => {
       const kids = mmlKids(body);
-      if (kids.length >= 2) return "\\dfrac{" + mathmlToTex(kids[0]) + "}{" + mathmlToTex(kids[1]) + "}";
+      if (kids.length >= 2) return "\\frac{" + mathmlToTex(kids[0]) + "}{" + mathmlToTex(kids[1]) + "}";
       return mathmlToTex(body);
     });
-    s = mmlReplaceTag(s, "msup", (_, body) => {
+    s = s.replace(/<msup\b[^>]*>([\s\S]*?)<\/msup>/gi, (_, body) => {
       const kids = mmlKids(body);
       if (kids.length >= 2) return "{" + mathmlToTex(kids[0]) + "}^{" + mathmlToTex(kids[1]) + "}";
       return mathmlToTex(body);
     });
-    s = mmlReplaceTag(s, "msub", (_, body) => {
+    s = s.replace(/<msub\b[^>]*>([\s\S]*?)<\/msub>/gi, (_, body) => {
       const kids = mmlKids(body);
       if (kids.length >= 2) return "{" + mathmlToTex(kids[0]) + "}_{" + mathmlToTex(kids[1]) + "}";
       return mathmlToTex(body);
     });
-    s = mmlReplaceTag(s, "msqrt", (_, body) => "\\sqrt{" + mathmlToTex(body) + "}");
-    s = mmlReplaceTag(s, "mrow", (_, body) => mathmlToTex(body));
+    s = s.replace(/<mfenced\b([^>]*)>([\s\S]*?)<\/mfenced>/gi, (_, attrs, body) => {
+      const inner = mathmlToTex(body);
+      if (!String(inner || "").trim()) return "";
+      const oa = /open\s*=\s*["']([^"']*)["']/i.exec(attrs || "");
+      const ca = /close\s*=\s*["']([^"']*)["']/i.exec(attrs || "");
+      let o = (oa && oa[1]) != null ? oa[1] : "(";
+      let c = (ca && ca[1]) != null ? ca[1] : ")";
+      if (o === "{") o = "\\{";
+      if (c === "}") c = "\\}";
+      // empty open/close (Marks unit parentheticals) → skip fence
+      if (o === "" && c === "") return inner;
+      if (o === "") o = ".";
+      if (c === "") c = ".";
+      return "\\left" + o + inner + "\\right" + c;
+    });
+    s = s.replace(/<msqrt\b[^>]*>([\s\S]*?)<\/msqrt>/gi, (_, body) => "\\sqrt{" + mathmlToTex(body) + "}");
+    s = s.replace(/<mrow\b[^>]*>([\s\S]*?)<\/mrow>/gi, (_, body) => mathmlToTex(body));
     s = s.replace(/<mtext\b[^>]*>([\s\S]*?)<\/mtext>/gi, (_, t) => {
       const v = mmlDecodeText(String(t || "").replace(/<[^>]+>/g, ""));
       return v ? "\\text{" + v + "}" : "";
@@ -2176,11 +2203,7 @@ window.Mx = (() => {
     });
     s = s.replace(/<\/?(?:math|semantics|annotation(?:-xml)?|mstyle|mspace|mphantom)[^>]*>/gi, "");
     s = s.replace(/<[^>]+>/g, " ");
-    s = s.replace(/\s+/g, " ").trim();
-    s = s.replace(/:\s*\\to\s*R\s*\\to/g, ":\\mathbb{R}\\to ");
-    s = s.replace(/:\s*\\rightarrow\s*R\s*\\rightarrow/g, ":\\mathbb{R}\\to ");
-    s = s.replace(/\\sqrt\{((?:[^{}]|\{[^{}]*\})*)\s-\s*\}\\sqrt\{/g, "\\sqrt{$1}-\\sqrt{");
-    return s;
+    return s.replace(/\s+/g, " ").trim();
   }
 
   function convertAllMathML(s) {
@@ -2190,11 +2213,12 @@ window.Mx = (() => {
     out = out.replace(/LIST\s*[-–]?\s*<math\b[^>]*>[\s\S]*?<\/math>/gi, (m) =>
       /II|2/i.test(m.replace(/<[^>]+>/g, "")) ? "List-II" : "List-I"
     );
-    out = mmlReplaceTag(out, "math", (_, inner) => {
+    out = out.replace(/<math\b[^>]*>([\s\S]*?)<\/math>/gi, (full, inner) => {
       let tex = "";
       try { tex = mathmlToTex(inner); } catch (_) { tex = ""; }
       const texCore = String(tex || "").replace(/\\begin\{[^}]+\}|\\end\{[^}]+\}|&/g, "").replace(/[. ,;:]/g, "").trim();
       if (tex && texCore) return "$" + tex + "$";
+      // Never drop the island — "Let . Consider" happens when MathML becomes ""
       const plain = String(inner || "")
         .replace(/<[^>]+>/g, " ")
         .replace(/&nbsp;|&#160;/gi, " ")
@@ -2202,10 +2226,10 @@ window.Mx = (() => {
         .replace(/\s+/g, " ")
         .trim();
       if (plain && !/^[.,;:]+$/.test(plain)) return "$" + plain + "$";
-      if (tex) return tex;
+      if (tex && !/^[.,;:\s]*$/.test(tex)) return "$" + tex + "$";
+      // qxproof1: drop empty MathML shells (Marks unit parentheticals)
       return "";
     });
-    out = out.replace(/<\/?math\b[^>]*>/gi, "");
     out = out.replace(/&nbsp;|&#160;|&#x0*A0;/gi, " ");
     out = out.replace(/\\le\s*ft\b/g, "\\left").replace(/\\ri\s*ght\b/g, "\\right");
     // For$\alpha$ → For $\alpha$   $4$is → $4$ is. Never split $x$-axis.
@@ -2256,7 +2280,9 @@ window.Mx = (() => {
         if (!b) return full;
         const isMatrix = /&/.test(b) || /\\\\/.test(b);
         if (!isMatrix) return full;
-        if (/\\begin\{/.test(b)) return "$" + full + "$";
+        // Already a proper array/matrix env — do NOT wrap with extra $
+        // (double-$ split $A=$\left[...$$ and nested park left tofu in PYQ stems)
+        if (/\\begin\{/.test(b)) return full;
         b = b.replace(/^\s*\\\\|\\\\\s*$/g, "").trim();
         return "$\\begin{bmatrix}" + b + "\\end{bmatrix}$";
       }
@@ -2280,8 +2306,9 @@ window.Mx = (() => {
         .replace(/&gt;/gi, " \\gt ")
         .replace(/‹/g, " \\lt ")
         .replace(/›/g, " \\gt ")
-        .replace(/(^|[^<\\])<(?!\/?(?:span|div|p|br|img|table|td|tr|th|math|mi|mo|mn|mrow|svg|path|sub|sup|b|i|em|strong|u|font|a|ul|ol|li|hr|h[1-6]|button|input)\b)/gi, "$1 \\lt ")
-        .replace(/(^|[^>\\])>(?![=])/g, "$1 \\gt ");
+        // bare < > that are comparisons (not HTML tags)
+        .replace(/(^|[^<\\\/])<(?![a-zA-Z\/!])/g, "$1 \\lt ")
+        .replace(/(^|[^>])>(?![=])/g, "$1 \\gt ");
       t = t.replace(/\s{2,}/g, " ").trim();
       return `$${t}$`;
     });
@@ -2299,87 +2326,13 @@ window.Mx = (() => {
    */
   function convertSimpleFracs(expr) {
     let e = String(expr || "").trim();
-    if (!e || /\\frac|\\dfrac/.test(e) && !/\d+\s*\/\s*\d+/.test(e) && !/\)\s*\/\s*\(/.test(e)) {
-      /* still allow leftover n/m beside existing frac */
-    }
-    const parked = [];
-    e = e.replace(/\b((?:m|km|cm|mm|nm|μm|um|ms|ns)\s*\/\s*(?:s2|s\^2|s²|s|hr|h)|N\/m|J\/K|J\/kg|rad\/s|rev\/min|km\/h|m\/s)\b/gi, (m) => {
-      parked.push(m);
-      return "\uE510" + (parked.length - 1) + "\uE511";
-    });
     for (let i = 0; i < 6; i++) {
       let next = e.replace(/\(([^()]+)\)\s*\/\s*\(([^()]+)\)/g, "\\frac{$1}{$2}");
       next = next.replace(/(\d+)\s*\/\s*(\d+)/g, "\\frac{$1}{$2}");
-      next = next.replace(/\b([A-Za-z])\s*\/\s*(\d+|[A-Za-z])\b/g, "\\frac{$1}{$2}");
-      next = next.replace(/\\(pi|theta|alpha|beta|gamma|delta)\s*\/\s*(\d+|[A-Za-z])/g, "\\frac{\\$1}{$2}");
       if (next === e) break;
       e = next;
     }
-    e = e.replace(/\uE510(\d+)\uE511/g, (_, i) => parked[+i] || "");
     return e;
-  }
-
-  function mergeSplitOpIslands(s) {
-    let out = String(s || "");
-    const op = "\\\\(?:div|times|lt|gt|le|ge|leq|geq|pm|cdot|neq|ne|in|rightarrow|to)";
-    for (let i = 0; i < 4; i++) {
-      out = out.replace(new RegExp("\\$([^$]{1,80})\\$\\s*\\$(" + op + ")\\$\\s*\\$([^$]{1,80})\\$", "g"), "$$$1 $2 $3$$");
-      out = out.replace(new RegExp("\\$([^$]{1,80})\\$\\s*\\$(" + op + ")\\$", "g"), "$$$1 $2$$");
-      out = out.replace(new RegExp("\\$(" + op + ")\\$\\s*\\$([^$]{1,80})\\$", "g"), "$$$1 $2$$");
-    }
-    return out;
-  }
-
-  function mapMathParts(s, inFn, outFn) {
-    const parts = String(s || "").split(/(\$\$[\s\S]+?\$\$|\$[^$]*\$|\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\])/g);
-    for (let i = 0; i < parts.length; i++) {
-      const p = parts[i];
-      if (i % 2 === 1) {
-        if (!inFn) continue;
-        if (p.slice(0, 2) === "$$" && p.slice(-2) === "$$") parts[i] = "$$" + inFn(p.slice(2, -2)) + "$$";
-        else if (p.slice(0, 2) === "\\[" && p.slice(-2) === "\\]") parts[i] = "\\[" + inFn(p.slice(2, -2)) + "\\]";
-        else if (p.slice(0, 2) === "\\(" && p.slice(-2) === "\\)") parts[i] = "\\(" + inFn(p.slice(2, -2)) + "\\)";
-        else if (p.charAt(0) === "$" && p.charAt(p.length - 1) === "$") parts[i] = "$" + inFn(p.slice(1, -1)) + "$";
-      } else if (outFn) {
-        parts[i] = outFn(p);
-      }
-    }
-    return parts.join("");
-  }
-
-  function texifyOpsEverywhere(s) {
-    const inMath = (tex) => String(tex || "")
-      .replace(/÷/g, "\\div ")
-      .replace(/×/g, "\\times ")
-      .replace(/±/g, "\\pm ")
-      .replace(/∞/g, "\\infty ")
-      .replace(/π/g, "\\pi ")
-      .replace(/θ/g, "\\theta ")
-      .replace(/α/g, "\\alpha ")
-      .replace(/β/g, "\\beta ")
-      .replace(/γ/g, "\\gamma ")
-      .replace(/Δ/g, "\\Delta ")
-      .replace(/Ω/g, "\\Omega ")
-      .replace(/μ/g, "\\mu ")
-      .replace(/√\s*\(([^)]+)\)/g, "\\sqrt{$1}")
-      .replace(/√\s*([A-Za-z0-9]+)/g, "\\sqrt{$1}");
-    const outMath = (plain) => String(plain || "")
-      .replace(/(\d+(?:\.\d+)?)\s*÷\s*(\d+(?:\.\d+)?)/g, "\\($1\\div $2\\)")
-      .replace(/÷/g, "\\(\\div\\)")
-      .replace(/×/g, "\\(\\times\\)")
-      .replace(/±/g, "\\(\\pm\\)")
-      .replace(/∞/g, "\\(\\infty\\)")
-      .replace(/π/g, "\\(\\pi\\)")
-      .replace(/θ/g, "\\(\\theta\\)")
-      .replace(/α/g, "\\(\\alpha\\)")
-      .replace(/β/g, "\\(\\beta\\)")
-      .replace(/γ/g, "\\(\\gamma\\)")
-      .replace(/Δ/g, "\\(\\Delta\\)")
-      .replace(/Ω/g, "\\(\\Omega\\)")
-      .replace(/μ/g, "\\(\\mu\\)")
-      .replace(/√\s*\(([^)]+)\)/g, "\\(\\sqrt{$1}\\)")
-      .replace(/√\s*([A-Za-z0-9]+)/g, "\\(\\sqrt{$1}\\)");
-    return mapMathParts(s, inMath, outMath);
   }
 
   /** Extract balanced (...) starting at index of '(' */
@@ -2587,10 +2540,8 @@ window.Mx = (() => {
     c = replaceOutsideMath(c, /θ/g, " $\\theta$ ");
     c = replaceOutsideMath(c, /±/g, " $\\pm$ ");
     c = replaceOutsideMath(c, /×/g, " $\\times$ ");
-    c = replaceOutsideMath(c, /(\d+(?:\.\d+)?)\s*÷\s*(\d+(?:\.\d+)?)/g, " $$$1\\div $2$ ");
     c = replaceOutsideMath(c, /÷/g, " $\\div$ ");
-    c = replaceOutsideMath(c, /√\s*\(([^)]+)\)/g, " $\\sqrt{$1}$ ");
-    c = replaceOutsideMath(c, /√\s*([A-Za-z0-9]+)/g, " $\\sqrt{$1}$ ");
+    c = replaceOutsideMath(c, /√/g, " $\\sqrt{}$ ");
 
     c = c.replace(/\$\s*\$/g, " ");
     // Merge adjacent math: $a$$b$ → $a b$ (never collapse $$cases$$)
@@ -2777,11 +2728,9 @@ window.Mx = (() => {
       [/\bcorres\s+ponding\b/gi, "corresponding"],
       [/\bobta\s+ined\b/gi, "obtained"],
       // Glued phrase repairs (common OCR dumps)
-      [/\bseparatedbyadistanceof\b/gi, "separated by a distance of"],
-      [/\bfromthecenterof\b/gi, "from the center of"],
-      [/\bfromthecentreof\b/gi, "from the centre of"],
-      [/\btoapointonthe\b/gi, "to a point on the"],
-      [/\bisreleasedfromrest\b/gi, "is released from rest"],
+      [/\bbetwomatrices\b/gi, "between matrices"],
+      [/\bbetweenmatrices\b/gi, "between matrices"],
+      [/\bbetweenmatrix\b/gi, "between matrices"],
       [/\bMatchthe\b/g, "Match the"],
       [/\bchoosethe\b/gi, "choose the"],
       [/\bcorrectoption\b/gi, "correct option"],
@@ -2904,7 +2853,15 @@ window.Mx = (() => {
 
     c = c.replace(GLUE_WORDS_CAP_RE, "$1 ");
 
+    // qxproof2: park unit tokens so ([a-z])([A-Z]) does not split MeV → Me V
+    const UNIT_PARK = [];
+    c = c.replace(/\b(?:MeV|keV|GeV|TeV|eV|mV|kV|MV|GV|mA|kA|MA|mW|kW|MW|GW|mHz|kHz|MHz|GHz)\b/g, (m) => {
+      UNIT_PARK.push(m);
+      return "\uE210" + (UNIT_PARK.length - 1) + "\uE211";
+    });
+
     c = c.replace(/([a-z])([A-Z])/g, "$1 $2");
+    c = c.replace(/\uE210(\d+)\uE211/g, (_, i) => UNIT_PARK[+i] || "");
     c = c.replace(
       /(^|[^A-Za-z])(Mn|Fe|Cu|Zn|Ca|Na|Cl|Br|Mg|Ni|Cr|Pb|Ag|Au|Pt|Hg|Sn|Si|Ti)(bridge|oxide|ion|ous|ic|ate|ide)\b/g,
       "$1$2 $3"
@@ -3031,7 +2988,7 @@ window.Mx = (() => {
   }
 
   function normalizeLatex(s) {
-    let out = healFakeColorEntities(String(s || ""));
+    let out = String(s || "");
     try { out = convertAllMathML(out); } catch (_) { /* */ }
     try { out = unglueTexFromWords(out); } catch (_) { /* */ }
     out = repairBrokenLatex(out);
@@ -3052,15 +3009,8 @@ window.Mx = (() => {
     try { out = promoteCasesToDisplay(out); } catch (e) { /* */ }
     // Plain JEE math → LaTeX (log base, fractions, powers) BEFORE delimiter wrap
     try { out = upgradePlainMathNotation(out); } catch (e) { console.warn("upgradePlainMath", e); }
-    try {
-      out = mapMathParts(out, function (tex) {
-        let t = convertSimpleFracs(tex);
-        return String(t).replace(/÷/g, "\\div ").replace(/×/g, "\\times ");
-      }, null);
-    } catch (_) { /* */ }
-    try { out = mergeSplitOpIslands(out); } catch (_) { /* */ }
     // Inverse trig leftovers — ALWAYS wrap in $…$ (bare \sin^{-1} shows raw on screen)
-    out = out.replace(/\b(tan|sin|cos|cot|sec|csc)\s*(?:\^\s*\{?\s*-1\s*\}?|[-–]\s*1)\s*\/\s*(\d+)/gi, (_, fn, n) => `$\\${fn.toLowerCase()}^{-1}${n}$`);
+    out = out.replace(/\b(tan|sin|cos|cot|sec|csc)\s*[-–]?\s*1\s*\/\s*(\d+)/gi, (_, fn, n) => `$\\${fn.toLowerCase()}^{-1}${n}$`);
     out = replaceOutsideMathFn(out, (chunk) =>
       chunk.replace(
         /\b(tan|sin|cos|cot|sec|csc)\s*\^\s*\{?\s*-1\s*\}?/gi,
@@ -3088,7 +3038,6 @@ window.Mx = (() => {
     try { out = piecewiseAlignedToCases(out); } catch (e) { /* */ }
     out = ensureMathDelimiters(out);
     try { out = healShatteredTex(out); } catch (e) { /* */ }
-    try { out = mergeSplitOpIslands(out); } catch (_) { /* */ }
     // Wrap repaired \frac...\left...\right blocks still outside $…$
     out = replaceOutsideMathFn(out, (chunk) => {
       if (!/\\frac|\\left|\\sqrt|\\textbf|\\mathrm|\\mathbf/.test(chunk)) return chunk;
@@ -3118,79 +3067,6 @@ window.Mx = (() => {
    * Repair broken List-I / List-II match tables + normalize figure/cell layout.
    * Handles nested unclosed <td>(P) <td>(1)…, missing </td>, and cell images.
    */
-  function unwrapArrayCell(s) {
-    let t = String(s || "");
-    t = t.replace(/\$/g, "");
-    t = t.replace(/\\hline/g, "");
-    t = t.replace(/\\text\{([^{}]*)\}/g, "$1");
-    t = t.replace(/\\mathrm\{([^{}]*)\}/g, "$1");
-    t = t.replace(/\\textbf\{([^{}]*)\}/g, "$1");
-    t = t.replace(/\\mathbf\{([^{}]*)\}/g, "$1");
-    t = t.replace(/\\\\/g, "<br>");
-    t = t.replace(/\\,|\\;|\\ |~/g, " ");
-    t = t.replace(/\\left|\\right/g, "");
-    t = t.replace(/\s+/g, " ").trim();
-    return t;
-  }
-
-  function findArrayBlock(s, from) {
-    const open = "\\begin{array}";
-    const close = "\\end{array}";
-    const start = String(s || "").indexOf(open, from || 0);
-    if (start < 0) return null;
-    let depth = 1;
-    let j = start + open.length;
-    while (j < s.length && depth > 0) {
-      const n1 = s.indexOf(open, j);
-      const n2 = s.indexOf(close, j);
-      if (n2 < 0) return null;
-      if (n1 >= 0 && n1 < n2) {
-        depth++;
-        j = n1 + open.length;
-      } else {
-        depth--;
-        if (depth === 0) return { start: start, end: n2 + close.length };
-        j = n2 + close.length;
-      }
-    }
-    return null;
-  }
-
-  function arrayBlockToTable(block) {
-    let inner = String(block || "").replace(/^\\begin\{array\}\{[^}]*\}/, "").replace(/\\end\{array\}$/, "");
-    let guard = 0;
-    while (/\\begin\{array\}/.test(inner) && guard++ < 16) {
-      const nest = findArrayBlock(inner, 0);
-      if (!nest) break;
-      const nb = inner.slice(nest.start, nest.end);
-      const nbInner = nb.replace(/^\\begin\{array\}\{[^}]*\}/, "").replace(/\\end\{array\}$/, "");
-      const flat = nbInner.split(/\\\\/).map((r) => unwrapArrayCell(r.replace(/&/g, " "))).filter(Boolean).join("<br>");
-      inner = inner.slice(0, nest.start) + flat + inner.slice(nest.end);
-    }
-    inner = inner.replace(/\$/g, "");
-    const rows = inner.split(/\\\\/).map((r) => r.replace(/\\hline/g, "").trim()).filter((r) => r && r !== "\\hline");
-    if (!rows.length) return unwrapArrayCell(inner);
-    const trs = rows.map((row) => {
-      const cells = row.split("&").map((c) => "<td>" + unwrapArrayCell(c) + "</td>");
-      return "<tr>" + cells.join("") + "</tr>";
-    });
-    return '<table class="qx-match-list qx-match-table" border="1" cellpadding="6" cellspacing="0">' + trs.join("") + "</table>";
-  }
-
-  function latexArraysToHtmlTables(html) {
-    let s = String(html || "");
-    if (!/\\begin\{array\}/.test(s)) return s;
-    s = s.replace(/\$(\s*)(\\begin\{array\})/g, "$1$2");
-    s = s.replace(/(\\end\{array\})(\s*)\$/g, "$1$2");
-    let guard = 0;
-    while (/\\begin\{array\}/.test(s) && guard++ < 24) {
-      const blk = findArrayBlock(s, 0);
-      if (!blk) break;
-      s = s.slice(0, blk.start) + arrayBlockToTable(s.slice(blk.start, blk.end)) + s.slice(blk.end);
-    }
-    return s;
-  }
-
   function repairMatchListTableHtml(s) {
     let out = String(s || "");
     if (!/<table/i.test(out)) return out;
@@ -3817,10 +3693,6 @@ window.Mx = (() => {
       // Full-host rewrite ONLY for pure-text hosts (no element children) — never strip <sub>/<br>/<math>
       const plain = host.textContent || "";
       const onlyText = !host.children || host.children.length === 0;
-      if (looksLikeLeakedKatex(plain) || looksLikeLeakedKatex(host.innerHTML || "")) {
-        try { repairKatexLeakInDom(host); } catch (_) { /* */ }
-        return;
-      }
       if (onlyText && (bareRx.test(plain) || missingBs.test(plain) || /\\[a-zA-Z]+/.test(plain))) {
         try {
           let fixed = plain;
@@ -3865,17 +3737,25 @@ window.Mx = (() => {
         return chunk;
       }
       return chunk
-        .replace(/→/g, " → ")
-        .replace(/←/g, " ← ")
-        .replace(/↔/g, " ↔ ")
-        .replace(/⇒/g, " ⇒ ");
+        .replace(/→/g, " $\\rightarrow$ ")
+        .replace(/←/g, " $\\leftarrow$ ")
+        .replace(/↔/g, " $\\leftrightarrow$ ")
+        .replace(/⇒/g, " $\\Rightarrow$ ");
     });
-    // Keep unicode operators. Wrapping as $\le$ inside a broken $…$ island
-    // dumps KaTeX error HTML onto the page (screenshot 1050).
+    out = replaceOutsideMath(out, /≤/g, " $\\le$ ");
+    out = replaceOutsideMath(out, /≥/g, " $\\ge$ ");
+    out = replaceOutsideMath(out, /≠/g, " $\\ne$ ");
+    out = replaceOutsideMath(out, /≈/g, " $\\approx$ ");
+    out = replaceOutsideMath(out, /·/g, " $\\cdot$ ");
+    out = replaceOutsideMath(out, /×/g, " $\\times$ ");
+    out = replaceOutsideMath(out, /÷/g, " $\\div$ ");
+    out = replaceOutsideMath(out, /±/g, " $\\pm$ ");
+    out = replaceOutsideMath(out, /°/g, "$^{\\circ}$");
+    // Bare letter-order comparisons outside math: C < B < A → C $\lt$ B $\lt$ A
     out = replaceOutsideMathFn(out, (chunk) =>
       chunk
-        .replace(/([A-D])\s*<\s*(?=[A-D])/g, "$1 < ")
-        .replace(/([A-D])\s*>\s*(?=[A-D])/g, "$1 > ")
+        .replace(/([A-D])\s*<\s*(?=[A-D])/g, "$1 $\\lt$ ")
+        .replace(/([A-D])\s*>\s*(?=[A-D])/g, "$1 $\\gt$ ")
     );
     out = protectMathComparisons(out);
     return out;
@@ -3883,9 +3763,6 @@ window.Mx = (() => {
 
   const _htmlMemo = new Map();
   function memoHtml(key, value) {
-    if (looksLikeLeakedKatex(value)) {
-      try { value = salvageLeakedKatexHtml(value); } catch (_) { /* */ }
-    }
     if (key && key.length < 10000) {
       const hollow = /\bLet\s+[.,;:]\s|\bLet\s+\.\s|Let\s+Consider/i.test(String(value || "").replace(/<[^>]+>/g, " "));
       const unrendered = /\$[^$]{1,400}\$|\\\(|\\\[/.test(String(value || ""))
@@ -3901,96 +3778,23 @@ window.Mx = (() => {
     return value;
   }
 
-  /**
-   * Permanent: never let nested $\lt$ / katex-error HTML leak onto the page.
-   * KaTeX error spans contain raw "<" in title/body which breaks HTML parsing
-   * so the tag itself paints as text (screenshot 1050).
-   */
-  function flattenUnsafeMathDollars(s) {
-    let out = String(s == null ? "" : s);
-    if (!out) return out;
-    /* Already-painted KaTeX must not be flattened — that leaks span/svg as text. */
-    if (looksLikeLeakedKatex(out) || /katex-html|class=["']katex/i.test(out)) {
-      try { return salvageLeakedKatexHtml(out); } catch (_) { return out; }
-    }
-    /* Live option/question trees keep `&lt;` as-is. Decoding to `<` makes the
-       HTML parser eat A–D after Check Answer (ExamGoal: options stay). */
-    const isLiveHtml = /<(?:button|div|span|p|img|table|svg)\b/i.test(out)
-      && /(?:class\s*=|data-opt=|mtk-opt|eg-opts|katex-html)/i.test(out);
-    if (!isLiveHtml) {
-      out = out
-        .replace(/&lt;/g, "\\lt ")
-        .replace(/&gt;/g, "\\gt ")
-        .replace(/&amp;/g, "&")
-        .replace(/&#x27;|&#39;|&apos;/gi, "'")
-        .replace(/&quot;/g, "\"");
-    }
-    out = out.replace(/<span[^>]*class=["'][^"']*katex-error[^"']*["'][^>]*>([\s\S]*?)<\/span>/gi, "$1");
-    out = out.replace(/ParseError:[^<\n]{0,500}/g, "");
-    out = out.replace(/KaTeX parse error:[^<\n]{0,500}/g, "");
-    out = out.replace(/Can't use function[^<\n]{0,120}/g, "");
-    out = out.replace(/Can\s*&\s*#x27;[^\n]{0,80}/g, "");
-    const cmdMap = {
-      lt: " \\lt ", gt: " \\gt ", le: " ≤ ", ge: " ≥ ", leq: " ≤ ", geq: " ≥ ",
-      ne: " ≠ ", neq: " ≠ ", Rightarrow: " ⇒ ", rightarrow: " → ",
-      leftarrow: " ← ", to: " → ", times: " × ", div: " \\div ", cdot: " · ", pm: " ± "
-    };
-    out = out.replace(/\$\s*\\(lt|gt|le|ge|leq|geq|ne|neq|Rightarrow|rightarrow|leftarrow|to|times|div|cdot|pm)\s*\$/g,
-      (_, cmd) => cmdMap[cmd] || " ");
-    // Nested $ inside set-builder leaks raw TeX: { n $\in \mathbb{N}$: $10 \le n \le 100$ }
-    out = out.replace(
-      /set\s*\{\s*([^${}]*?)\$\s*(\\in\s*\\mathbb\{N\})\s*\$\s*:\s*\$([^$]+)\$/gi,
-      "set $\\{ $1$2 : $3 \\}$"
-    );
-    out = out.replace(/and\s*3\s*\^\s*\{\s*n\s*\}/g, "and $3^{n}$");
-    out = out.replace(/and3\^\{n\}/g, "and $3^{n}$");
-    return out;
-  }
 
-  function stripKatexErrorDom(root) {
-    if (!root || !root.querySelectorAll) return;
+  /** qxmath1 — run central sanitize before any render (never store raw katex HTML) */
+  function qxSanitizeIncoming(s) {
     try {
-      const isOpts = !!(root.id === "qxOpts"
-        || (root.classList && (root.classList.contains("eg-opts") || root.classList.contains("mtk-options")))
-        || (root.querySelector && root.querySelector(".mtk-opt, [data-opt]")));
-      if (!isOpts) {
-        const html0 = root.innerHTML || "";
-        if (/katex-error|ParseError:|KaTeX parse error/i.test(html0)) {
-          const cleaned = flattenUnsafeMathDollars(html0);
-          if (cleaned !== html0) root.innerHTML = cleaned;
-        }
+      if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.normalizeMathContent) {
+        return QxMathSanitize.normalizeMathContent(s).html;
       }
-      root.querySelectorAll(".katex-error, [class*='katex-error']").forEach(function (el) {
-        const t = (el.textContent || "").replace(/ParseError:[\s\S]*$/i, "").trim();
-        const span = document.createElement("span");
-        span.className = "qx-math-fallback";
-        span.textContent = t;
-        if (el.parentNode) el.parentNode.replaceChild(span, el);
-      });
     } catch (_) { /* */ }
+    return s;
   }
 
   // Render content: HTML preserved, branding stripped, plain text escaped, LaTeX intact
   function html(content) {
     if (content == null) return "";
     try { loadKatex(); } catch (_) { /* */ }
-    const raw0 = String(content);
-    if (looksLikeLeakedKatex(raw0) || /katex-html|class=["']katex/i.test(raw0)) {
-      try {
-        let fixed = salvageLeakedKatexHtml(raw0);
-        try { fixed = katexRenderIslands(fixed); } catch (_) { /* */ }
-        if (/<span[^>]*class=["'][^"']*katex/i.test(fixed) && !looksLikeLeakedKatex(fixed)) return fixed;
-        if (!looksLikeLeakedKatex(fixed)) raw0 = fixed;
-      } catch (_) { /* */ }
-    }
-    let cacheKey = flattenUnsafeMathDollars(raw0);
-    if (/katex-error|ParseError:/i.test(String(content))) {
-      cacheKey = flattenUnsafeMathDollars(String(content));
-    }
-    if (/katex-html|katex-display|class=["'][^"']*katex(?!-error)/i.test(cacheKey)
-      && !/katex-error|ParseError:/i.test(cacheKey)) {
-      return repairSpacedKatexTags(cacheKey);
-    }
+    content = qxSanitizeIncoming(content);
+    const cacheKey = String(content);
     if (cacheKey.length < 10000 && _htmlMemo.has(cacheKey)) {
       const hit = _htmlMemo.get(cacheKey);
       const stillTex = /\$[^$]{1,800}\$|\\\(|\\\[/.test(hit);
@@ -4002,17 +3806,6 @@ window.Mx = (() => {
     const matchFigSlots = [];
     let s0 = parkAxisHyphenMath(stripLatexRowSkips(cacheKey.trim()));
     try { s0 = piecewiseAlignedToCases(s0); } catch (_) { /* */ }
-    try { s0 = latexArraysToHtmlTables(s0); } catch (_) { /* */ }
-    s0 = s0.replace(/\$([^$]{1,8000})\$/g, function (all, inner) {
-      if (/\\begin\s*\{/.test(inner)) return all;
-      return "$" + String(inner).replace(/&(?![a-zA-Z#][a-zA-Z0-9]*;)/g, "\\,") + "$";
-    });
-    s0 = s0.replace(/\\\(([\s\S]+?)\\\)/g, function (all, inner) {
-      return "\\(" + String(inner).replace(/&(?![a-zA-Z#][a-zA-Z0-9]*;)/g, "\\,") + "\\)";
-    });
-    s0 = s0.replace(/\\\[([\s\S]+?)\\\]/g, function (all, inner) {
-      return "\\[" + String(inner).replace(/&(?![a-zA-Z#][a-zA-Z0-9]*;)/g, "\\,") + "\\]";
-    });
     s0 = s0
       .replace(/\$\{\s*\}\s*\^\{\s*([^}]+)\s*\}\s*C_\{\s*([^}]+)\s*\}\s*\$/g, "$\\binom{$1}{$2}$")
       .replace(/\$\{\s*\^\{\s*([^}]+)\s*\}\s*C_\{\s*([^}]+)\s*\}\s*\$/g, "$\\binom{$1}{$2}$")
@@ -4044,9 +3837,7 @@ window.Mx = (() => {
       try { s = formatMatchOptionText(s); } catch (_) { /* */ }
     }
     // One proofread pass (second pass only if leftover glue / raw errors)
-    if (!/class=["']katex|katex-html|spanclass/i.test(s)) {
-      try { s = cleanQuestionText(s); } catch (_) { /* */ }
-    }
+    try { s = cleanQuestionText(s); } catch (_) { /* */ }
     // Never drop a full $f(x)=…$ island (screenshot 882 / 895: "Let . Consider")
     {
       const inW = (cacheKey.match(/\$/g) || []).length + (cacheKey.match(/\\[a-zA-Z]+/g) || []).length + (cacheKey.match(/<math\b/gi) || []).length * 4;
@@ -4126,7 +3917,6 @@ window.Mx = (() => {
     try { s = stripLatexPtJunk(s); } catch (_) { /* */ }
     try { s = professionalizeSgnPiecewise(s); } catch (_) { /* */ }
     try { s = healShatteredTex(s); } catch (_) { /* */ }
-    try { s = mergeSplitOpIslands(s); } catch (_) { /* */ }
     // HTML content: still protect math comparisons; math already upgraded in normalizeLatex
     if (isHtml(s) || /<table\b/i.test(s) || /<\/t(?:able|d|h|r)\b/i.test(s)) {
       s = protectMathComparisons(s);
@@ -4139,10 +3929,32 @@ window.Mx = (() => {
     // Plain / LaTeX: escape only outside math so `$C < B$` stays valid for MathJax
     let out = escapeHtmlOutsideMath(s);
     out = protectMathComparisons(out);
-    try { out = texifyOpsEverywhere(out); } catch (_) { /* */ }
+    // Unicode math → KaTeX-friendly (keep readable even if typeset fails)
+    out = out.replace(/×/g, "\\(\\times\\)");
+    out = out.replace(/÷/g, "\\(\\div\\)");
+    out = out.replace(/±/g, "\\(\\pm\\)");
+    out = out.replace(/∞/g, "\\(\\infty\\)");
+    out = out.replace(/π/g, "\\(\\pi\\)");
+    out = out.replace(/θ/g, "\\(\\theta\\)");
+    out = out.replace(/α/g, "\\(\\alpha\\)");
+    out = out.replace(/β/g, "\\(\\beta\\)");
+    out = out.replace(/γ/g, "\\(\\gamma\\)");
+    out = out.replace(/Δ/g, "\\(\\Delta\\)");
+    out = out.replace(/Ω/g, "\\(\\Omega\\)");
+    out = out.replace(/μ/g, "\\(\\mu\\)");
+    // Superscripts/subscripts as unicode stay fine; also offer KaTeX when next to identifiers
+    out = out.replace(/([A-Za-z0-9\)\]])²/g, "$1^{2}");
+    out = out.replace(/([A-Za-z0-9\)\]])³/g, "$1^{3}");
+    out = out.replace(/²/g, "²");
+    out = out.replace(/³/g, "³");
+    out = out.replace(/⁻¹/g, "^{-1}");
+    out = out.replace(/⁻/g, "⁻");
+    // √x or √(…) — never empty \sqrt{}
+    out = out.replace(/√\s*\(([^)]+)\)/g, "\\(\\sqrt{$1}\\)");
+    out = out.replace(/√\s*([A-Za-z0-9]+)/g, "\\(\\sqrt{$1}\\)");
+    out = out.replace(/√/g, "√");
     out = out.replace(/\n/g, "<br>");
     try { out = healShatteredTex(out); } catch (_) { /* */ }
-    try { out = mergeSplitOpIslands(out); } catch (_) { /* */ }
     try { out = katexRenderIslands(out); } catch (_) { /* */ }
     try { out = repairSpacedKatexTags(out); } catch (_) { /* */ }
     return memoHtml(cacheKey, out);
@@ -4191,13 +4003,6 @@ window.Mx = (() => {
       const unicodeFallback = (tex) => {
         let plain = String(tex || "")
           .replace(/^\$+|\$+$/g, "")
-          .replace(/\\frac\s*\{([^{}]+)\}\s*\{([^{}]+)\}/g, "($1)/($2)")
-          .replace(/\\dfrac\s*\{([^{}]+)\}\s*\{([^{}]+)\}/g, "($1)/($2)")
-          .replace(/\\lim\s*_\{([^{}]+)\}/g, "lim_{$1}")
-          .replace(/\\sqrt\s*\{([^{}]+)\}/g, "√($1)")
-          .replace(/\\mathbb\s*\{([^}]+)\}/g, "$1")
-          .replace(/\\mathrm\s*\{([^}]*)\}/g, "$1")
-          .replace(/\\text\s*\{([^}]*)\}/g, "$1")
           .replace(/\\pi\b/g, "π")
           .replace(/\\theta\b/g, "θ")
           .replace(/\\alpha\b/g, "α")
@@ -4211,6 +4016,9 @@ window.Mx = (() => {
           .replace(/\\times\b/g, "×")
           .replace(/\\pm\b/g, "±")
           .replace(/\\rightarrow\b|\\to\b/g, "→")
+          .replace(/\\arg\b/g, "arg")
+          .replace(/\\mathrm\{([^}]*)\}/g, "$1")
+          .replace(/\\text\{([^}]*)\}/g, "$1")
           .replace(/\\left|\\right/g, "")
           .replace(/\\[a-zA-Z]+/g, "")
           .replace(/[{}]/g, "")
@@ -4218,7 +4026,6 @@ window.Mx = (() => {
           .trim();
         return plain;
       };
-      stripKatexErrorDom(scope);
       scope.querySelectorAll("mjx-merror, .MathJax_Error, [data-mjx-error], .katex-error").forEach((errEl) => {
         let plain = unicodeFallback(texFromErr(errEl));
         const host = errEl.closest("mjx-container") || errEl.closest(".katex") || errEl;
@@ -4279,24 +4086,16 @@ window.Mx = (() => {
     }, KATEX_OPTS);
     list.forEach(node => {
       try {
-        if (node.querySelector && node.querySelector(".katex") && !/\$|\\\(|\\\[/.test(node.textContent || "")) {
-          fixMathFlowInDom(node);
-          return;
-        }
+        if (node.querySelector && node.querySelector(".katex") && !/\$|\\\(|\\\[/.test(node.textContent || "")) return;
         const raw = node.innerHTML || "";
-        if (!node.querySelector(".katex")) {
-          const demoted = demoteSimpleDisplayTex(raw);
-          if (demoted !== raw) node.innerHTML = demoted;
-        }
-        if (/\\begin\{cases\}/.test(node.innerHTML || "") && !/\$\$[^$]*\\begin\{cases\}/.test(node.innerHTML || "")) {
-          const up = (node.innerHTML || "").replace(
+        if (/\\begin\{cases\}/.test(raw) && !/\$\$[^$]*\\begin\{cases\}/.test(raw)) {
+          const up = raw.replace(
             /\$([^$]*\\begin\{cases\}[\s\S]*?\\end\{cases\}[^$]*)\$/g,
             "$$$$$1$$$$"
           );
-          if (up !== node.innerHTML) node.innerHTML = up;
+          if (up !== raw) node.innerHTML = up;
         }
         window.renderMathInElement(node, opts);
-        fixMathFlowInDom(node);
       } catch (e) { /* */ }
     });
     return Promise.resolve();
@@ -4363,9 +4162,7 @@ window.Mx = (() => {
   }
 
   function stemLooksHollow(html) {
-    const raw = String(html || "");
-    if (looksLikeLeakedKatex(raw)) return true;
-    const t = raw.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    const t = String(html || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
     return /\bLet\s+[.,;:]\s|\bLet\s+\.\s|Let\s+Consider/i.test(t);
   }
 
@@ -4423,21 +4220,20 @@ window.Mx = (() => {
         const mathRoots = el.querySelectorAll(
           ".mtk-q-text, .qx-q-text-only, .qx-q-seg-text, .qx-marks-native-q, " +
           ".qx-question-body, #qzrrQArea, .qzrr-q-area, .qx-prac-q, .allen-q-body, " +
-          ".mtk-opt-text, .qx-prac-opt-text, #qaOpts, .sol-body, .qx-sol-body, .eg-sol, .qx-sol-flow, " +
+          ".eg-q-stem, #egQArea, .eg-opts, .eg-sol, #egSol, .eg-sol-bottom, " +
+          ".mtk-opt-text, .qx-prac-opt-text, #qaOpts, #qxOpts, .sol-body, .qx-sol-body, " +
           ".mtk-numerical, .qx-opt-text-only, .qx-content, .q-text, .mtk-q, " +
-          ".qx-match-item-body, .qx-match-grid, .qx-match-col-body, .qx-given-box"
+          ".qx-match-item-body, .qx-match-grid, .qx-match-col-body, .qx-given-box, " +
+          ".mk-sol-stem, .mk-sol-opt-text, .qc-ex-q, .qc-ex-opts, .qx-sum-card, " +
+          ".qx-formula-card, .qx-rev-card, .qx-bm-q, .seo-q-stem, .q-stem"
         );
-        return mathRoots.length ? Array.prototype.slice.call(mathRoots, 0, 80) : [el];
+        // Cap low for first paint / mobile — offscreen roots hydrate later
+        return mathRoots.length ? Array.prototype.slice.call(mathRoots, 0, 16) : [el];
       };
       const healStemDollarsInDom = () => {
-        el.querySelectorAll(".mtk-q-text, .qx-q-seg-text, .qx-marks-native-q, .qx-q-text-only, .qx-given-box, .mtk-opt-text, .qx-prac-opt-text, .sol-body, .qx-sol-body, .qx-sol-flow, .eg-sol, .mk-sol-stem, .mk-sol-opt-text, .mtk-sol .qx-content").forEach((node) => {
+        el.querySelectorAll(".mtk-q-text, .qx-q-seg-text, .qx-marks-native-q, .qx-q-text-only, .qx-given-box, .mtk-opt-text, .qx-prac-opt-text, .eg-q-stem, #egQArea, .eg-sol, #egSol, .mk-sol-stem, .qc-ex-q, .sol-body, .qx-sol-body").forEach((node) => {
           if (!node || node.closest(".katex, mjx-container")) return;
-          if (node.querySelector && node.querySelector(".katex, .katex-html")) return;
           const before = node.innerHTML || "";
-          if (looksLikeLeakedKatex(before)) {
-            try { repairKatexLeakInDom(node); } catch (_) { /* */ }
-            return;
-          }
           if (!/\$|\\mathrm|\\begin\{|\\left\\\{/.test(before)) return;
           try {
             let h = parkAxisHyphenMath(before);
@@ -4445,6 +4241,8 @@ window.Mx = (() => {
             h = stripLatexPtJunk(h);
             h = professionalizeSgnPiecewise(h);
             h = piecewiseAlignedToCases(h);
+            try { h = repairChemAndShatteredTex(h); } catch (_) { /* */ }
+            try { h = repairShatteredMathDollars(h); } catch (_) { /* */ }
             h = healShatteredTex(h);
             if (h !== before) node.innerHTML = h;
           } catch (_) { /* */ }
@@ -4493,9 +4291,6 @@ window.Mx = (() => {
             }).catch(() => typesetKatex(live))
           : Promise.resolve();
         pass2.finally(() => {
-          try { repairKatexLeakInDom(el); } catch (_) { /* */ }
-          try { fixMathFlowInDom(el); } catch (_) { /* */ }
-          try { scrubLeftoverDollarsInDom(el); } catch (_) { /* */ }
           try { recoverHollowStemInDom(el); } catch (_) { /* */ }
           try {
             if (typeof QxImgClean !== "undefined" && QxImgClean.arrangePortraitFigures
@@ -4511,21 +4306,22 @@ window.Mx = (() => {
         .then(() => {
           el.querySelectorAll(
             ".mtk-q-text, .qx-q-seg-text, .qx-marks-native-q, .qx-q-text-only, " +
-            ".mtk-opt-text, .qx-prac-opt-text, .sol-body, .qx-sol-body, .qx-content, .eg-sol, .qx-sol-flow"
+            ".mtk-opt-text, .qx-prac-opt-text, .sol-body, .qx-sol-body, .qx-content"
           ).forEach((node) => {
             if (!node || (node.closest && node.closest(".katex, mjx-container"))) return;
             if (node.querySelector && node.querySelector(".katex")) {
-              try { repairKatexLeakInDom(node); } catch (_) { /* */ }
-              return;
+              const textBits = Array.prototype.map.call(node.childNodes, function (n) {
+                return n.nodeType === 3 ? (n.nodeValue || "") : "";
+              }).join("");
+              if (!/\$|\\\(|\\\[|\\left|\\right|\\mathrm|\\\{/.test(textBits)) return;
             }
             const before = node.innerHTML || "";
-            if (!/\$|\\\(|\\\[/.test(before)) return;
+            if (!/\$|\\\(|\\\[|\\left|\\right|\\mathrm|\\ce\b|\\\{/.test(before)) return;
             try {
               const painted = katexRenderIslands(before);
               if (painted && painted !== before) node.innerHTML = painted;
             } catch (_) { /* */ }
           });
-          try { fixMathFlowInDom(el); } catch (_) { /* */ }
         })
         .then(() => typesetKatex(pickMathRoots()))
         .then(() => {
@@ -4608,6 +4404,7 @@ window.Mx = (() => {
    */
   function proofreadExamText(s) {
     let out = String(s || "");
+    try { out = repairChemAndShatteredTex(out); } catch (_) { /* */ }
     // Export junk: literal "undefined" from broken Marks/API fields (Sets/Relations solutions too)
     out = out.replace(/(?:<br\s*\/?>\s*){0,3}\bundefined\b(?:\s*<br\s*\/?>){0,3}/gi, " ");
     out = out.replace(/\bundefined\b/gi, "");
@@ -4644,7 +4441,7 @@ window.Mx = (() => {
     out = out.replace(/\bstatemen\s*t\(s\)\b/gi, "statement(s)");
     out = out.replace(/\bstatemen t\b/gi, "statement");
     // Paragraph:/Question: glued to next word (screenshot 826)
-    out = out.replace(/\b(Paragraph|Question|Assertion|Reason|Passage|Comprehension)\b\s*:?\s*(?=[A-Za-z(])/gi, "$1: ");
+    out = out.replace(/\b(Paragraph|Question|Assertion|Reason|Passage|Comprehension)\s*:?\s*(?=[A-Za-z(])/gi, "$1: ");
     out = out.replace(/\b(Paragraph|Question|Assertion|Reason)([A-Z])/g, "$1: $2");
     out = out.replace(/\b(Paragraph|Question):\s*/g, "$1: ");
     out = out.replace(/\bassertioni\b/gi, "Assertion I");
@@ -4674,14 +4471,18 @@ window.Mx = (() => {
       return a + " " + b;
     });
     // Space before units when glued: 5m/s → 5 m/s (outside math)
-    out = replaceOutsideMathFn(out, (chunk) =>
-      chunk
-        .replace(/(\d)(m\/s\b|ms\b|km\/h\b|kg\b|g\b|cm\b|mm\b|nm\b|mol\b|atm\b|Pa\b|N\b|J\b|W\b|V\b|A\b|Hz\b|eV\b)/g, "$1 $2")
+    out = replaceOutsideMathFn(out, (chunk) => {
+      // Skip URL / query / percent-encoded chunks ( %3A must not become %3 A via Ampere unit rule )
+      if (/%[0-9A-Fa-f]{2}/.test(chunk) || /https?:|proxy-image|cdn-question-pool|firebasestorage/i.test(chunk)) {
+        return chunk;
+      }
+      return chunk
+        .replace(/(?<!%)(\d)(m\/s\b|ms\b|km\/h\b|kg\b|g\b|cm\b|mm\b|nm\b|mol\b|atm\b|Pa\b|N\b|J\b|W\b|V\b|A\b|Hz\b|eV\b)/g, "$1 $2")
         .replace(/(\d)\s*\^\s*o\b/gi, "$1^\\circ")
         .replace(/\s+([,.;:!?])/g, "$1")
         .replace(/([(\[])\s+/g, "$1")
-        .replace(/\s+([)\]])/g, "$1")
-    );
+        .replace(/\s+([)\]])/g, "$1");
+    });
     // Multi-space between words outside tags
     if (/<[a-zA-Z]/.test(out)) {
       out = out.replace(/(>)([^<]+)(<)/g, (_, a, t, b) =>
@@ -4693,118 +4494,11 @@ window.Mx = (() => {
     return out;
   }
 
-  /** qxmd115: strip leftover bare $ after KaTeX — never show dollar litter */
-  function scrubLeftoverDollars(html) {
-    let s = String(html == null ? "" : html);
-    if (!/\$/.test(s)) return s;
-    const parked = [];
-    const park = (m) => {
-      const k = "\uE800" + parked.length + "\uE801";
-      parked.push(m);
-      return k;
-    };
-    s = s.replace(/<span\b[^>]*class=["'][^"']*katex[^"']*["'][\s\S]*?<\/span>/gi, park);
-    s = s.replace(/<math\b[\s\S]*?<\/math>/gi, park);
-    s = s.replace(/<(?:script|style)\b[\s\S]*?<\/(?:script|style)>/gi, park);
-    s = s.replace(/<img\b[^>]*>/gi, park);
-    s = s.replace(/<svg\b[\s\S]*?<\/svg>/gi, park);
-    const hasKatex = (typeof window !== "undefined" && window.katex && window.katex.renderToString);
-    if (hasKatex) {
-      try { s = katexRenderIslands(s); } catch (_) { /* */ }
-      // After paint: demote any remaining $ islands to plain (no litter)
-      s = s.replace(/\$\$([\s\S]+?)\$\$/g, (_, inner) => String(inner || "").trim());
-      s = s.replace(/\$([^$]{1,8000})\$/g, (_, inner) => {
-        const t = String(inner || "").trim();
-        if (/^[₹Rs.]?\s*\d/.test(t) && !/[\\^_{}]/.test(t)) return t;
-        return t;
-      });
-      s = s.replace(/(^|[^\\])\$(?!\$)/g, "$1");
-    } else {
-      // KaTeX not ready: keep $...$ pairs for later typeset; drop orphan singles only
-      let out = "";
-      let i = 0;
-      while (i < s.length) {
-        if (s[i] === "$" && (i === 0 || s[i - 1] !== "\\")) {
-          let j = i + 1;
-          let found = -1;
-          while (j < s.length) {
-            if (s[j] === "$" && s[j - 1] !== "\\") { found = j; break; }
-            j++;
-          }
-          if (found > i) {
-            out += s.slice(i, found + 1);
-            i = found + 1;
-            continue;
-          }
-          i++; // drop orphan
-          continue;
-        }
-        out += s[i];
-        i++;
-      }
-      s = out;
-    }
-    s = s.replace(/\uE800(\d+)\uE801/g, (_, i) => parked[+i] || "");
-    return s;
-  }
-
-  /** qxmd115: full solution heal pipeline (colors → flatten → KaTeX → scrub $) */
-  function healSolutionHtml(s) {
-    let out = healFakeColorEntities(String(s == null ? "" : s));
-    try { out = flattenUnsafeMathDollars(out); } catch (_) { /* */ }
-    try {
-      if (typeof cleanQuestionText === "function") out = cleanQuestionText(out);
-    } catch (_) { /* */ }
-    try { out = katexRenderIslands(out); } catch (_) { /* */ }
-    out = scrubLeftoverDollars(out);
-    if (/\$/.test(out.replace(/<span\b[^>]*class=["'][^"']*katex[^"']*["'][\s\S]*?<\/span>/gi, " "))) {
-      out = scrubLeftoverDollars(out);
-    }
-    return out;
-  }
-
-  /** qxmd115: DOM pass — re-heal solution nodes that still show $ */
-  function scrubLeftoverDollarsInDom(root) {
-    if (!root || !root.querySelectorAll) return;
-    const nodes = root.querySelectorAll(
-      ".sol-body, .qx-sol-body, .qx-sol-flow, .qx-sol-p, .mtk-sol .qx-content, " +
-      ".eg-sol, .mk-sol-stem, .mk-sol-opt-text, .qx-sol-ans-val, .qx-content.sol-body"
-    );
-    nodes.forEach((node) => {
-      try {
-        if (!node || (node.closest && node.closest(".katex, mjx-container"))) return;
-        const before = node.innerHTML || "";
-        if (!/\$/.test(before)) return;
-        if (node.querySelector && node.querySelector(".katex") && !/\$/.test(node.textContent || "")) return;
-        let h = before;
-        try { h = healFakeColorEntities(h); } catch (_) { /* */ }
-        try { h = katexRenderIslands(h); } catch (_) { /* */ }
-        h = scrubLeftoverDollars(h);
-        if (h && h !== before) node.innerHTML = h;
-      } catch (_) { /* */ }
-    });
-    try {
-      const scope = root.querySelector(".mk-sol-row, .qx-sol-card, .mtk-sol, #qaSolReveal, .qx-sol-reveal-box") || root;
-      const walker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, null);
-      const dirty = [];
-      while (walker.nextNode()) {
-        const n = walker.currentNode;
-        if (!n || !n.nodeValue || n.nodeValue.indexOf("$") < 0) continue;
-        if (n.parentElement && n.parentElement.closest && n.parentElement.closest(".katex, mjx-container, script, style, .qx-tex-code")) continue;
-        dirty.push(n);
-      }
-      dirty.forEach((n) => {
-        n.nodeValue = String(n.nodeValue).replace(/(^|[^\\])\$(?!\$)/g, "$1");
-      });
-    } catch (_) { /* */ }
-  }
-
-
   /** Clean any question/option/solution string (all screens) — single proofread entry */
   function cleanQuestionText(s) {
     if (s == null || s === "") return s;
     try {
-      let out = flattenUnsafeMathDollars(String(s));
+      let out = qxSanitizeIncoming(String(s));
       try { out = convertAllMathML(out); } catch (_) { /* */ }
       out = proofreadExamText(out);
       out = healBrokenEnglishWords(out);
@@ -4817,6 +4511,14 @@ window.Mx = (() => {
       }
       out = ensureMathDelimiters(out);
       out = healBrokenEnglishWords(out);
+      try { out = restoreAxisHyphenMath(out); } catch (_) { /* */ }
+      // Safety: never leak private-use park tokens (tofu boxes) into student UI
+      if (/[\uE100-\uE111\uE200-\uE211\uE410-\uE411]/.test(out)) {
+        out = out.replace(/\uE100\d+\uE101/g, "");
+        out = out.replace(/\uE200\d+\uE201/g, "");
+        out = out.replace(/\uE410([^\uE411]*)\uE411/g, "$$$1$-");
+        out = out.replace(/[\uE000-\uF8FF]/g, "");
+      }
       return out;
     } catch (e) {
       return s;
@@ -4829,25 +4531,17 @@ window.Mx = (() => {
     typeset,
     afterRender,
     afterRenderLight,
-    whenKatexReady: loadKatex,
-    latexArraysToHtmlTables,
-    fixMathFlowInDom,
-    repairKatexLeakInDom,
-    looksLikeLeakedKatex,
-    flattenUnsafeMathDollars,
-    stripKatexErrorDom,
     recoverHollowStemInDom,
     cleanDom,
     fixWordSpacing,
     fixSpacingInDom,
     cleanQuestionText,
-    healFakeColorEntities,
-    scrubLeftoverDollars,
-    healSolutionHtml,
-    scrubLeftoverDollarsInDom,
-    katexRenderIslands,
+    sanitizeIncoming: qxSanitizeIncoming,
+    detectBrokenKatex: (t) => (typeof QxMathSanitize !== "undefined" && QxMathSanitize.detectBrokenKatex)
+      ? QxMathSanitize.detectBrokenKatex(t) : /katex-html|class\s*=\s*["'][^"']*\bmord\b/i.test(String(t || "")),
     proofreadExamText,
-    repairSpacedKatexTags,
+    repairChemAndShatteredTex,
+    repairShatteredMathDollars,
     repairLatexCommandSpaces,
     repairMatchListTableHtml,
     beautifyMatchTablesInDom,
@@ -4864,119 +4558,35 @@ window.Mx = (() => {
   };
 })();
 
-/* qxmd103LogTrigHeal: fix broken log/lim/trig in stems before KaTeX */
-(function () {
-  function qxHealLogTrig(s) {
-    if (!s || typeof s !== "string") return s;
-    var c = s;
-    // log_base(arg) / log_{1/2}(...) without backslash
-    c = c.replace(/(^|[^\\A-Za-z])log\s*_\{([^}]+)\}\s*\(/g, "$1\\log_{$2}(");
-    c = c.replace(/(^|[^\\A-Za-z])log\s*_\{([^}]+)\}/g, "$1\\log_{$2}");
-    c = c.replace(/(^|[^\\A-Za-z])log\s*_([0-9]+(?:\s*\/\s*[0-9]+)?)\s*\(/g, "$1\\log_{$2}(");
-    c = c.replace(/(^|[^\\A-Za-z])lim\s*_\{([^}]+)\}/g, "$1\\lim_{$2}");
-    c = c.replace(/(^|[^\\A-Za-z])lim\s*_([^\s$\\{,;]+)/g, "$1\\lim_{$2}");
-    // sinx cosx tanx -> \sin x
-    c = c.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc)(x|y|z|\\theta|\\alpha|\\beta)\b/g, "$1\\$2 $3");
-    c = c.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc)\s*\(/g, "$1\\$2(");
-    // bare lim as "li" breakage from over-stripped m — restore lim token if "$li $" patterns rare; skip
-    return c;
-  }
-  if (typeof Mx !== "undefined") {
-    var prev = Mx.cleanExamText || Mx.html;
-    if (typeof Mx.cleanExamText === "function") {
-      var _ce = Mx.cleanExamText.bind(Mx);
-      Mx.cleanExamText = function (s) { return _ce(qxHealLogTrig(s)); };
-    }
-    if (typeof Mx.normalizeLatex === "function") {
-      var _nl = Mx.normalizeLatex.bind(Mx);
-      Mx.normalizeLatex = function (s) { return _nl(qxHealLogTrig(s)); };
-    }
-    Mx.qxHealLogTrig = qxHealLogTrig;
-  }
-})();
-
-/* qxmd104MathHeal: repair common stem corruptions without changing meaning */
-(function () {
-  function qxHeal104(s) {
-    if (!s || typeof s !== "string") return s;
-    var c = s;
-    c = c.replace(/\$\\\$/g, "$");
-    c = c.replace(/\\\$\\left/g, "\\left");
-    c = c.replace(/\$\\\$\\left/g, "$\\left");
-    c = c.replace(/\\sqrt\s*-\s*/g, "\\sqrt{");
-    c = c.replace(/\\sqrt\s+(?=[0-9A-Za-z\\(])/g, "\\sqrt{");
-    c = c.replace(/\\mathbb\s*\{?\s*R\s*\}?/g, "\\mathbb{R}");
-    c = c.replace(/(^|[^\\])\bge\b(?!\w)/g, "$1\\ge");
-    c = c.replace(/(^|[^\\])\ble\b(?!\w)/g, "$1\\le");
-    c = c.replace(/&\s*2\s*\\sqrt/g, "\\land 2\\sqrt");
-    // unwrap accidental double dollars with broken escapes
-    c = c.replace(/\$\s*\\\$/g, "$");
-    return c;
-  }
-  if (typeof Mx !== "undefined") {
-    if (typeof Mx.qxHealLogTrig === "function") {
-      var prev = Mx.qxHealLogTrig;
-      Mx.qxHealLogTrig = function (s) { return qxHeal104(prev(s)); };
-    }
-    if (typeof Mx.cleanExamText === "function") {
-      var ce = Mx.cleanExamText.bind(Mx);
-      Mx.cleanExamText = function (s) { return ce(qxHeal104(s)); };
-    }
-    if (typeof Mx.normalizeLatex === "function") {
-      var nl = Mx.normalizeLatex.bind(Mx);
-      Mx.normalizeLatex = function (s) { return nl(qxHeal104(s)); };
-    }
-  }
-})();
-
-/* qxmd105: never mangle already-rendered KaTeX/HTML in heal wrappers */
-(function () {
-  function isPaintedHtml(s) {
-    s = String(s || "");
-    return /class=["'][^"']*katex|katex-html|spanclass|<\/?(?:span|div|svg|math|button)\b|&lt;\s*\/?\s*span/i.test(s);
-  }
-  function safeHeal(fn) {
-    return function (s) {
-      if (isPaintedHtml(s)) {
-        try {
-          if (typeof Mx !== "undefined" && Mx.repairSpacedKatexTags) return Mx.repairSpacedKatexTags(s);
-          if (typeof repairSpacedKatexTags === "function") return repairSpacedKatexTags(s);
-        } catch (_) { /* */ }
-        return s;
+/* qxmd159 — shared MathTextRenderer facade (brief architecture).
+ * All stems/options/solutions/hints should go through this or Mx.html (same pipeline).
+ * Invalid LaTeX never crashes the test: Mx.html uses throwOnError:false + safe fallback.
+ */
+(function (w) {
+  if (!w || !w.Mx) return;
+  function render(text, opts) {
+    try {
+      if (typeof w.QxMathSanitize !== "undefined" && w.QxMathSanitize.normalizeMathContent) {
+        text = w.QxMathSanitize.normalizeMathContent(text).html;
       }
-      return fn(s);
-    };
+      return w.Mx.html(text, opts);
+    } catch (err) {
+      try {
+        if (w.QX_DEBUG || (typeof localStorage !== "undefined" && localStorage.getItem("qx_debug_math") === "1")) {
+          console.warn("[MathTextRenderer] fallback", err && err.message, String(text || "").slice(0, 120));
+        }
+      } catch (_) {}
+      const safe = String(text == null ? "" : text)
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      return '<span class="qx-math-fallback">' + safe + "</span>";
+    }
   }
-  if (typeof Mx === "undefined") return;
-  if (typeof Mx.qxHealLogTrig === "function") Mx.qxHealLogTrig = safeHeal(Mx.qxHealLogTrig);
-  if (typeof Mx.cleanExamText === "function") {
-    var ce = Mx.cleanExamText.bind(Mx);
-    Mx.cleanExamText = safeHeal(ce);
-  }
-  if (typeof Mx.normalizeLatex === "function") {
-    var nl = Mx.normalizeLatex.bind(Mx);
-    Mx.normalizeLatex = safeHeal(nl);
-  }
-  // Prefer re-typesetting from source TeX instead of showing leaked HTML
-  if (typeof Mx.html === "function") {
-    var _html = Mx.html.bind(Mx);
-    Mx.html = function (s, opts) {
-      var raw = String(s == null ? "" : s);
-      if (/spanclass|<\s+span|katex\s*-\s*html|&lt;\s*span/i.test(raw)) {
-        try {
-          if (Mx.salvageLeakedKatexHtml) raw = Mx.salvageLeakedKatexHtml(raw);
-          else if (Mx.repairSpacedKatexTags) raw = Mx.repairSpacedKatexTags(raw);
-        } catch (_) { /* */ }
-      }
-      return _html(raw, opts);
-    };
-  }
-})();
-
-try {
-  if (typeof Mx !== "undefined") {
-    if (typeof repairSpacedKatexTags === "function") Mx.repairSpacedKatexTags = repairSpacedKatexTags;
-    if (typeof salvageLeakedKatexHtml === "function") Mx.salvageLeakedKatexHtml = salvageLeakedKatexHtml;
-    if (typeof looksLikeLeakedKatex === "function") Mx.looksLikeLeakedKatex = looksLikeLeakedKatex;
-  }
-} catch (_) { /* */ }
+  w.MathTextRenderer = {
+    render,
+    renderInline: (t) => render(t, { displayMode: false }),
+    renderDisplay: (t) => render(t, { displayMode: true }),
+    normalize: (t) => (w.Mx.normalizeLatex ? w.Mx.normalizeLatex(t) : t),
+    sanitize: (t) => (w.QxMathSanitize && w.QxMathSanitize.normalizeMathContent
+      ? w.QxMathSanitize.normalizeMathContent(t).html : t)
+  };
+})(typeof window !== "undefined" ? window : undefined);

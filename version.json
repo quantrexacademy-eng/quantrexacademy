@@ -1,10 +1,10 @@
 {
-  "build": "qxmd158",
-  "cache": "qx-pwa-qxmd158",
-  "title": "qxmd158 · strip stem-echo after Check Answer (solution panel)",
-  "body": "After Check Answer / Show Answer, QuantrexSolution.stripLeadingStemEcho removes a leading question-stem duplicate (and Marks DIFFICULTY/ANSWER meta) from solution HTML before Mx.html. Feedback shows correct-option result + clean explanation only — never re-prints the stem. Preserves qx-math-sanitize / Mx.html pipeline (qxmath1).",
+  "build": "qxmd159",
+  "cache": "qx-pwa-qxmd159",
+  "title": "qxmd159 \u00b7 MathTextRenderer + stem-echo harden (sitewide KaTeX)",
+  "body": "Shared MathTextRenderer over Mx.html/QxMathSanitize; JSON double-escape \\\\frac\u2192\\\\frac collapse (never strip to frac). Stem-echo strip on every Check/Show/View solution path (plainWithMap\u2261stemComparePlain). throwOnError:false safe fallback. Chapter ingest sanitize restored. No question content invented.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1789000000000
+  "ts": 1789660800000
 }

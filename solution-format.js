@@ -626,6 +626,8 @@ const QuantrexSolution = (() => {
       .replace(/\$+/g, " ")
       .replace(/\\[,;!~\s]/g, " ")
       .replace(/\\(?:mathrm|mathbf|boldsymbol|mathit|mathsf|mathtt|text|operatorname|mathbb|mathcal|leqslant|geqslant|leq|geq|neq|approx|equiv|sim|propto|infty|partial|nabla|cdot|times|div|pm|mp|oplus|otimes|cup|cap|subset|subseteq|supset|supseteq|in|notin|ni|forall|exists|neg|land|lor|rightarrow|leftarrow|Rightarrow|Leftarrow|leftrightarrow|mapsto|ldots|dots|cdots|vdots|frac|dfrac|tfrac|sqrt|left|right|big|Big|bigg|Bigg|begin|end|over|underline|overline|hat|bar|vec|dot|ddot|tilde|widehat|overline)\s*\{?/gi, " ")
+      .replace(/\\(sin|cos|tan|cot|sec|csc|log|ln|exp|det|min|max|inf|sup|lim|ker|arg|dim|gcd|Pr|sinh|cosh|tanh|arcsin|arccos|arctan)\b/gi, " $1 ")
+      .replace(/\\circ\b/gi, " deg ")
       .replace(/\\[a-zA-Z]+\s*\{?/g, " ")
       .replace(/[{}]/g, " ")
       .replace(/[_^]/g, " ")
@@ -638,17 +640,28 @@ const QuantrexSolution = (() => {
   /** Strip Marks-style leading DIFFICULTY / ANSWER / Correct option meta (renderBlock already shows these). */
   function stripLeadingSolMeta(html) {
     let s = String(html || "");
-    for (let n = 0; n < 10; n++) {
+    for (let n = 0; n < 14; n++) {
       const before = s;
+      // Leading whitespace / breaks / empty wrappers
       s = s.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span|strong|b|em|h[1-6])\b[^>]*>)+/i, "");
-      // Plain or wrapped DIFFICULTY / LEVEL line
+      // DIFFICULTY / LEVEL — tolerate split tags: <b>DIFFICULTY</b>: Easy</div>
       s = s.replace(
-        /^(?:<(?:div|span|p|strong|b)[^>]*>\s*)*(?:difficulty|level)\s*[:\-–]?\s*(?:easy|medium|hard|moderate|tough)?\s*(?:<\/(?:div|span|p|strong|b)>)?(?:\s|&nbsp;|<br\s*\/?\s*>|\n)*/i,
+        /^(?:<(?:div|span|p|strong|b)[^>]*>\s*)*(?:difficulty|level)\s*(?:<\/(?:div|span|p|strong|b)>)?\s*[:\-–]?\s*(?:<(?:div|span|p|strong|b)[^>]*>\s*)*(?:easy|medium|hard|moderate|tough)?\s*(?:<\/(?:div|span|p|strong|b)>)?(?:\s|&nbsp;|<br\s*\/?\s*>|\n)*/i,
         ""
       );
-      // Plain or wrapped ANSWER / Correct option line (letter, option, or short value)
+      // Orphan ": Easy</div>" left after partial DIFFICULTY strip
       s = s.replace(
-        /^(?:<(?:div|span|p|strong|b)[^>]*>\s*)*(?:correct\s*(?:option|answer|choice)|answer|ans)\s*[:\-–]?\s*(?:\(?[A-D]\)?|option\s*[A-D]|[^\n<]{0,40})?\s*(?:<\/(?:div|span|p|strong|b)>)?(?:\s|&nbsp;|<br\s*\/?\s*>|\n)*/i,
+        /^[:\-–]\s*(?:easy|medium|hard|moderate|tough)\s*(?:<\/(?:div|span|p|strong|b)>)?(?:\s|&nbsp;|<br\s*\/?\s*>|\n)*/i,
+        ""
+      );
+      // ANSWER / Correct option
+      s = s.replace(
+        /^(?:<(?:div|span|p|strong|b)[^>]*>\s*)*(?:correct\s*(?:option|answer|choice)|answer|ans)\s*(?:<\/(?:div|span|p|strong|b)>)?\s*[:\-–]?\s*(?:<(?:div|span|p|strong|b)[^>]*>\s*)*(?:\(?[A-D]\)?|option\s*[A-D]|[^\n<]{0,48})?\s*(?:<\/(?:div|span|p|strong|b)>)?(?:\s|&nbsp;|<br\s*\/?\s*>|\n)*/i,
+        ""
+      );
+      // Orphan ": (B)</div>" after ANSWER strip
+      s = s.replace(
+        /^[:\-–]\s*(?:\(?[A-D]\)?|option\s*[A-D])\s*(?:<\/(?:div|span|p|strong|b)>)?(?:\s|&nbsp;|<br\s*\/?\s*>|\n)*/i,
         ""
       );
       if (s === before) break;
@@ -661,25 +674,43 @@ const QuantrexSolution = (() => {
    * Many bank/Marks solutions start with a full stem echo (often raw TeX). Strip that prefix
    * when it duplicates questionText / q, then drop leading DIFFICULTY/ANSWER meta.
    * Never invents content — only removes a leading duplicate.
+   *
+   * qxmd159: plainWithMap MUST mirror stemComparePlain (emit spaces for ^ _ $ { }) —
+   * qxmd158 failed because x^2 → "x2" vs "x 2", so align never fired on live UX.
    */
+  function tidyAfterStemCut(rest) {
+    let r = String(rest || "");
+    r = r.replace(/^[a-zA-Z]{1,12}(?=[\s,.;:!?<]|&nbsp;|<|$)/, "");
+    r = r.replace(/^\$+/g, "");
+    r = r.replace(/^[\s.$\\?!,;:\-–—)'"\]]+/u, "");
+    r = r.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)+/i, "");
+    r = r.replace(/^(?:<(?:div|span|p)[^>]*>\s*)*(?:given(?:\s+that)?|as\s+given)\s*[,:\-–]?\s*/i, "");
+    r = stripLeadingSolMeta(r);
+    r = r.replace(/^\$+/g, "");
+    r = r.replace(/^<\/(?:p|div|span)>/i, "");
+    r = stripLeadingSolMeta(r);
+    return r;
+  }
+
   function stripLeadingStemEcho(html, q) {
     let out = String(html || "");
     if (!out.trim()) return out;
     out = stripLeadingSolMeta(out);
-    // Drop common "Given," wrappers that precede a stem echo in Marks/bank solutions
+    // Drop common wrappers that precede a stem echo in Marks/bank solutions
     out = out.replace(
-      /^(?:(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)*)(?:given(?:\s+that)?|as\s+given|from\s+the\s+(?:given\s+)?question|according\s+to\s+the\s+question|question)\s*[,:\-–]?\s*/i,
+      /^(?:(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)*)(?:given(?:\s+that)?|as\s+given|from\s+the\s+(?:given\s+)?question|according\s+to\s+the\s+question|question)\s*(?:<[^>]+>)*\s*[,:\-–]?\s*/i,
       ""
     );
+    out = stripLeadingSolMeta(out);
 
     const stemSrc = (q && (
       q.questionText || q.q || q.question || q.text || q._qxOrigStem || q._qxBankQ || ""
     )) || "";
     const stemP = stemComparePlain(stemSrc);
-    if (stemP.length < 20) return stripLeadingSolMeta(out);
+    if (stemP.length < 6) return stripLeadingSolMeta(out);
 
     /**
-     * Walk HTML with the same reductions as stemComparePlain, recording
+     * Walk HTML with the SAME reductions as stemComparePlain, recording
      * html index after each emitted plain character (including spaces).
      */
     function plainWithMap(src) {
@@ -713,7 +744,9 @@ const QuantrexSolution = (() => {
             const mNum = ent.match(/^&#(\d+);$/);
             if (mNum) {
               try { ch = String.fromCharCode(+mNum[1]); } catch (_) { ch = " "; }
-            } else if (!/^&nbsp;$/i.test(ent)) {
+            } else if (/^&nbsp;$/i.test(ent)) {
+              ch = " ";
+            } else {
               ch = " ";
             }
             if (/[a-zA-Z0-9]/.test(ch)) emitChar(ch, semi + 1);
@@ -725,12 +758,24 @@ const QuantrexSolution = (() => {
         if (s[i] === "\\") {
           let j = i + 1;
           while (j < s.length && /[a-zA-Z]/.test(s[j])) j++;
-          // Skip command name only; emit brace contents (\mathrm{A} → A) like stemComparePlain
-          emitSpace(j);
+          const cmd = s.slice(i + 1, j).toLowerCase();
+          // Keep operator names (sin/log/…) so short stems still match; else skip like stemComparePlain
+          if (/^(sin|cos|tan|cot|sec|csc|log|ln|exp|det|min|max|inf|sup|lim|ker|arg|dim|gcd|pr|sinh|cosh|tanh|arcsin|arccos|arctan)$/.test(cmd)) {
+            for (const ch of cmd) emitChar(ch, j);
+            emitSpace(j);
+          } else if (cmd === "circ") {
+            for (const ch of "deg") emitChar(ch, j);
+            emitSpace(j);
+          } else {
+            // Skip TeX command name; brace contents still emitted (\mathrm{A} → A)
+            emitSpace(j);
+          }
           i = j;
           continue;
         }
+        // Mirror stemComparePlain: $ { } _ ^ become spaces (NOT silent skips)
         if (s[i] === "$" || s[i] === "{" || s[i] === "}" || s[i] === "_" || s[i] === "^") {
+          emitSpace(i + 1);
           i++;
           continue;
         }
@@ -739,12 +784,10 @@ const QuantrexSolution = (() => {
         else emitSpace(i + 1);
         i++;
       }
-      // trim trailing space like stemComparePlain
       while (plain.endsWith(" ")) {
         plain = plain.slice(0, -1);
         map.pop();
       }
-      // trim leading space
       while (plain.startsWith(" ")) {
         plain = plain.slice(1);
         map.shift();
@@ -760,11 +803,35 @@ const QuantrexSolution = (() => {
     if (solP.startsWith(probe) || solP.startsWith(head)) align = 0;
     else {
       const at = solP.indexOf(head);
-      if (at >= 0 && at <= 48) align = at;
+      if (at >= 0 && at <= 64) align = at;
     }
-    if (align < 0 || !map.length) return stripLeadingSolMeta(out);
+    // Fallback: stemComparePlain agreement when map walker still drifts
+    if (align < 0) {
+      const solSC = stemComparePlain(out);
+      if (solSC.startsWith(probe) || solSC.startsWith(head)) {
+        // Approximate cut: find stem tail phrase in raw HTML (case-insensitive alnum)
+        const tailLen = Math.min(36, Math.max(16, Math.floor(stemP.length / 3)));
+        const tailWords = stemP.slice(-tailLen).trim().split(/\s+/).filter(Boolean).slice(-4);
+        if (tailWords.length) {
+          const tailRe = new RegExp(
+            tailWords.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("[^a-zA-Z0-9]{0,12}"),
+            "i"
+          );
+          const tm = tailRe.exec(out);
+          if (tm) {
+            let cutAt = tm.index + tm[0].length;
+            let rest = tidyAfterStemCut(out.slice(cutAt));
+            const restPlain = stemComparePlain(rest);
+            if (restPlain.length >= 8 || solSC.length <= restPlain.length + 40) {
+              return rest || stripLeadingSolMeta(out);
+            }
+          }
+        }
+      }
+      return stripLeadingSolMeta(out);
+    }
+    if (!map.length) return stripLeadingSolMeta(out);
 
-    // Prefer cutting after the stem's trailing phrase (tolerates "And"/"Each" mid-echo drift)
     const tailLen = Math.min(42, Math.max(18, Math.floor(stemP.length / 3)));
     const tail = stemP.slice(-tailLen);
     let cutPlainEnd = align + stemP.length;
@@ -773,24 +840,18 @@ const QuantrexSolution = (() => {
       cutPlainEnd = tailAt + tail.length;
     }
     cutPlainEnd = Math.min(Math.max(cutPlainEnd, align + Math.min(20, stemP.length)), map.length);
-    if (cutPlainEnd < 12) return stripLeadingSolMeta(out);
+    if (cutPlainEnd < Math.min(12, Math.max(4, stemP.length))) return stripLeadingSolMeta(out);
     const cutAt = map[cutPlainEnd - 1];
     if (!(cutAt > 0)) return stripLeadingSolMeta(out);
 
-    let rest = out.slice(cutAt);
-    // If cut landed mid-word, snap to next break
-    rest = rest.replace(/^[a-zA-Z]{1,12}(?=[\s,.;:!?<]|&nbsp;|<|$)/, "");
-    rest = rest.replace(/^[\s.?!,;:\-–—)'"\]]+/u, "");
-    rest = rest.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)+/i, "");
-    rest = rest.replace(/^(?:<(?:div|span|p)[^>]*>\s*)*(?:given(?:\s+that)?|as\s+given)\s*[,:\-–]?\s*/i, "");
-    rest = stripLeadingSolMeta(rest);
+    let rest = tidyAfterStemCut(out.slice(cutAt));
 
     const restPlain = stemComparePlain(rest);
-    if (restPlain.length < 8 && solP.length > restPlain.length + 40) {
+    // Restore only when cut erased essentially the whole solution (not when a short real explanation remains)
+    if (restPlain.length < 3 && solP.length > restPlain.length + 40) {
       return stripLeadingSolMeta(String(html || ""));
     }
-    // Fill-in / short solutions where stem ≈ whole sol: keep after meta strip only
-    if (restPlain.length < 12 && stemP.length >= solP.length - 8) {
+    if (restPlain.length < 3 && stemP.length >= solP.length - 4) {
       return stripLeadingSolMeta(String(html || ""));
     }
     return rest || out;
