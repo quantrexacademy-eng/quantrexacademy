@@ -2488,7 +2488,7 @@ function qxHidePracticeStem(scope) {
   try {
     const root = scope || document.getElementById("app-main") || document;
     const hosts = root.querySelectorAll(
-      ".mtk-q-text, .qx-prac-q, .mq-stem, .qx-q-text-only, .qx-question-body, #egQArea"
+      ".mtk-q-text, .qx-prac-q, .mq-stem, .qx-q-text-only, .qx-question-body, #egQArea, .eg-q-stem, .allen-q-body, .qx-marks-native-q"
     );
     hosts.forEach(function (el) {
       if (!el) return;
@@ -2525,12 +2525,18 @@ function qxRevealSolution(qid) {
   const el = document.getElementById("qaSolReveal");
   if (el) {
     el.innerHTML = qxSolutionBlockHtml(q);
-    if (typeof Mx !== "undefined") {
+    function qxTs(node) {
+      if (!node || typeof Mx === "undefined") return;
       try {
-        if (Mx.afterRender) Mx.afterRender(el);
-        else if (Mx.afterRenderLight) Mx.afterRenderLight(el);
+        if (Mx.afterRender) Mx.afterRender(node);
+        else if (Mx.afterRenderLight) Mx.afterRenderLight(node);
+        else if (Mx.typeset) Mx.typeset(node);
       } catch (_) { /* */ }
     }
+    qxTs(el);
+    [50, 200, 500].forEach(function (ms) {
+      setTimeout(function () { qxTs(document.getElementById("qaSolReveal") || el); }, ms);
+    });
   }
   try { qxHidePracticeStem(document.getElementById("app-main")); } catch (_) { /* */ }
   const btn = document.getElementById("qxViewSolBtn");
@@ -2579,7 +2585,20 @@ async function answerQ(qid, response) {
   const res = document.getElementById("qaResult");
   if (res) {
     res.innerHTML = qxPracticeResultHtml(q, response);
-    if (typeof Mx !== "undefined") Mx.afterRender(res);
+    try {
+      if (typeof Mx !== "undefined") {
+        if (Mx.afterRender) Mx.afterRender(res);
+        else if (Mx.afterRenderLight) Mx.afterRenderLight(res);
+      }
+    } catch (_) { /* */ }
+    [50, 200, 500].forEach(function (ms) {
+      setTimeout(function () {
+        try {
+          var live = document.getElementById("qaResult");
+          if (live && typeof Mx !== "undefined" && Mx.afterRender) Mx.afterRender(live);
+        } catch (_) { /* */ }
+      }, ms);
+    });
   }
   try { qxHidePracticeStem(main); } catch (_) { /* */ }
   const sub = main.querySelector("#qxPracSubmit");

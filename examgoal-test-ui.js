@@ -614,7 +614,7 @@
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
-      " eg-tools-closed eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
+      " eg-tools-closed eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd175 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
@@ -676,23 +676,24 @@
       (showSol
         ? ' hidden aria-hidden="true" style="display:none!important;visibility:hidden!important;opacity:0!important;height:0!important;max-height:0!important;overflow:hidden!important;margin:0!important;padding:0!important;position:absolute!important;left:-9999px!important;clip:rect(0,0,0,0)!important"'
         : ' aria-hidden="false"') + ">" +
-      /* qxmd164: empty stem markup while Solution open — keep #egQArea node */
+      /* qxmd164/175: empty stem while Solution open — keep #egQArea node */
       (showSol ? "" : stem) + "</div>" +
-      (ctx.sectionInstr || "") +
-      '<div class="' + (ctx.optsClass || "mtk-options mtk-options-grid") + ' eg-opts" id="qxOpts">' + (ctx.opts || "") + "</div>" +
-      checkRow +
+      /* qxmd175 Marks-way: Solution REPLACES stem slot (not a split under the question) */
       (showSol ? (function () {
         var solInner = "";
         try { solInner = solutionHtml(q); } catch (_solErr) { solInner = ""; }
         if (!solInner) solInner = '<p class="qx-sol-missing">Solution unavailable</p>';
-        return '<div class="eg-sol-panel" id="egSolPanel" role="region" aria-label="Solution">' +
+        return '<div class="eg-sol-panel eg-sol-marks-way" id="egSolPanel" role="region" aria-label="Solution">' +
           '<header class="eg-sol-panel-head">' +
           '<strong>Solution</strong>' +
           '<button type="button" class="eg-sol-panel-close" id="egSolClose" title="Close">✕</button>' +
           '</header>' +
-          '<div class="eg-sol eg-sol-inline" id="egSol">' + solInner + '</div>' +
+          '<div class="eg-sol eg-sol-inline qx-content" id="egSol">' + solInner + '</div>' +
           '</div>';
       })() : "") +
+      (ctx.sectionInstr || "") +
+      '<div class="' + (ctx.optsClass || "mtk-options mtk-options-grid") + ' eg-opts" id="qxOpts">' + (ctx.opts || "") + "</div>" +
+      checkRow +
       '</div>' +
       "</div>" +
       '<aside class="eg-side" id="egSide"' + (sideOpen ? ' aria-hidden="false"' : ' hidden aria-hidden="true"') + '>' +
@@ -711,7 +712,7 @@
       var wantSolFail = false;
       try { wantSolFail = wantShowSol(sess, sess && sess.idx); } catch (_) { wantSolFail = !!(sess && (sess._egShowAnswer || egCheckedAt(sess, sess && sess.idx))); }
       var fallbackSol = wantSolFail
-        ? '<div class="eg-sol-panel" id="egSolPanel" role="region" aria-label="Solution">' +
+        ? '<div class="eg-sol-panel eg-sol-marks-way" id="egSolPanel" role="region" aria-label="Solution">' +
           '<header class="eg-sol-panel-head"><strong>Solution</strong>' +
           '<button type="button" class="eg-sol-panel-close" id="egSolClose" title="Close">✕</button></header>' +
           '<div class="eg-sol eg-sol-inline" id="egSol"><p class="qx-sol-missing">Solution unavailable</p></div></div>'
@@ -850,7 +851,7 @@
     if (!solInner) solInner = '<p class="qx-sol-missing">Solution unavailable</p>';
 
     const panelHtml =
-      '<div class="eg-sol-panel" id="egSolPanel" role="region" aria-label="Solution">' +
+      '<div class="eg-sol-panel eg-sol-marks-way" id="egSolPanel" role="region" aria-label="Solution">' +
       '<header class="eg-sol-panel-head">' +
       '<strong>Solution</strong>' +
       '<button type="button" class="eg-sol-panel-close" id="egSolClose" title="Close">✕</button>' +
@@ -863,16 +864,22 @@
       if (existing) {
         existing.outerHTML = panelHtml;
       } else {
+        /* qxmd175 Marks-way: inject Solution where the stem was (after #egQArea), not under a split */
+        const qSlot = root.querySelector("#egQArea");
+        const card = root.querySelector(".eg-q-card");
         const actionRow = root.querySelector(".eg-action-row");
         const opts = root.querySelector("#qxOpts");
-        const card = root.querySelector(".eg-q-card");
-        const insertAfter = actionRow || opts;
-        if (insertAfter && insertAfter.parentNode) {
-          insertAfter.insertAdjacentHTML("afterend", panelHtml);
+        if (qSlot && qSlot.parentNode) {
+          qSlot.insertAdjacentHTML("afterend", panelHtml);
         } else if (card) {
-          card.insertAdjacentHTML("beforeend", panelHtml);
+          card.insertAdjacentHTML("afterbegin", panelHtml);
         } else {
-          return false;
+          const insertAfter = actionRow || opts;
+          if (insertAfter && insertAfter.parentNode) {
+            insertAfter.insertAdjacentHTML("afterend", panelHtml);
+          } else {
+            return false;
+          }
         }
       }
     } catch (_domErr) {
@@ -880,7 +887,11 @@
       return false;
     }
 
-    try { root.classList.add("eg-sol-showing"); } catch (_) { /* */ }
+    try {
+      root.classList.add("eg-sol-showing", "eg-qxmd175");
+      const egRoot = root.classList.contains("eg-test-root") ? root : (root.closest && root.closest(".eg-test-root"));
+      if (egRoot) egRoot.classList.add("eg-sol-showing", "eg-qxmd175");
+    } catch (_) { /* */ }
     const qArea = root.querySelector("#egQArea");
     if (qArea) {
       try {
@@ -946,13 +957,32 @@
     }
 
     try { applyOptDecor(root, session, q, session.idx); } catch (_) { /* */ }
+    /* qxmd175: typeset solution after inject — KaTeX race + afterRender root-self miss */
+    function qxTypesetSol(el) {
+      if (!el || typeof Mx === "undefined") return;
+      try {
+        if (Mx.afterRender) Mx.afterRender(el);
+        else if (Mx.afterRenderLight) Mx.afterRenderLight(el);
+        else if (Mx.typeset) Mx.typeset(el);
+      } catch (_) { /* */ }
+    }
     try {
-      if (panel && typeof Mx !== "undefined") {
+      if (panel) {
         const solEl = panel.querySelector("#egSol") || panel;
-        if (Mx.afterRender) Mx.afterRender(solEl);
-        else if (Mx.afterRenderLight) Mx.afterRenderLight(solEl);
-        else if (Mx.typeset) Mx.typeset(solEl);
+        qxTypesetSol(solEl);
+        qxTypesetSol(panel);
+        [50, 200, 500].forEach(function (ms) {
+          setTimeout(function () {
+            try {
+              const live = root.querySelector("#egSolPanel #egSol") || root.querySelector("#egSolPanel");
+              qxTypesetSol(live);
+            } catch (_) { /* */ }
+          }, ms);
+        });
       }
+    } catch (_) { /* */ }
+    try {
+      if (root && typeof root._egForceFoot === "function") root._egForceFoot(true);
     } catch (_) { /* */ }
     if (panel && panel.scrollIntoView) {
       try { panel.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (_) { /* */ }
@@ -1040,6 +1070,7 @@
       if (typeof api.refresh === "function") {
         try { api.refresh(); } catch (_) { /* */ }
       }
+      try { if (typeof forceFootVisible === "function") forceFootVisible(true); } catch (_) { /* */ }
     };
     const show = root.querySelector("#egShowAns");
     if (show) show.onchange = function () {
@@ -1093,15 +1124,25 @@
         if (!foot) {
           foot = document.createElement("div");
           foot.id = "egFoot";
-          foot.className = "eg-foot";
+          var prac = !!(root.getAttribute("data-eg-mode") === "practice");
+          foot.className = prac
+            ? "eg-foot eg-foot-practice eg-marks-foot"
+            : "eg-foot";
           foot.innerHTML = '<div class="eg-foot-left"></div><div class="eg-foot-right">' +
             '<button type="button" class="eg-btn" id="qxPrevBtn">Previous</button>' +
             '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn">Next</button></div>';
           root.appendChild(foot);
           _egFootPainted = false;
         }
+        /* qxmd175: never lose practice foot classes (CSS Prev|Next + Clear-hide depend on them) */
+        try {
+          if (root.getAttribute("data-eg-mode") === "practice") {
+            foot.classList.add("eg-foot-practice", "eg-marks-foot");
+          }
+          foot.classList.add("eg-foot");
+        } catch (_) { /* */ }
         foot.removeAttribute("hidden");
-        root.classList.add("eg-foot-ready", "eg-qxeg7");
+        root.classList.add("eg-foot-ready", "eg-qxeg7", "eg-qxmd173", "eg-qxmd175");
         /* Skip heavy inline cssText once CSS has painted foot (unless force) */
         if (_egFootPainted && !force && foot.querySelector("#qxPrevBtn") && (foot.querySelector("#qxNextBtn") || foot.querySelector("#qxSaveBtn"))) {
           var p0 = foot.querySelector("#qxPrevBtn");
@@ -1233,7 +1274,7 @@
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
         root.classList.remove("eg-tools-open");
-        root.classList.add("eg-tools-closed", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
+        root.classList.add("eg-tools-closed", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd175", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
         root.setAttribute("data-eg-cycle", bothOpen ? "1" : "0");
         const strip = root.querySelector("#egQBar");
         if (strip) {
@@ -1520,6 +1561,7 @@
     }
     root._egBindNavBtns = bindNavBtns;
     bindNavBtns();
+    root._egForceFoot = forceFootVisible;
     forceFootVisible(true); /* one paint on bind — foot already in DOM */
     if (typeof requestAnimationFrame === "function") {
       requestAnimationFrame(function () { try { bindNavBtns(); } catch (_) {} });

@@ -5720,3 +5720,117 @@ html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
     z-index: 2147483000 !important;
   }
 }
+
+/* ========== qxmd175: Marks-way Check Answer + mobile Prev/Next never clipped ========== */
+
+/* Stem must stay gone while Solution open (beat qxmd167 visibility:visible) */
+html .eg-test-root.eg-sol-showing.eg-qxmd175 .eg-q-stem,
+html .eg-test-root.eg-sol-showing.eg-qxmd175 #egQArea,
+html .eg-test-root.eg-sol-showing .eg-q-stem.eg-stem-sol-hidden,
+html .eg-test-root.eg-sol-showing #egQArea.eg-stem-sol-hidden,
+html .mtk-test-root.eg-sol-showing .mtk-q-text,
+html .allen-practice.eg-sol-showing .mtk-q-text,
+html .eg-stem-sol-hidden,
+html .qx-stem-sol-hidden {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+  clip: rect(0, 0, 0, 0) !important;
+  pointer-events: none !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
+/* Marks-way panel sits where the stem was — full width, not a side-by-side split */
+.eg-test-root.eg-sol-showing .eg-sol-panel.eg-sol-marks-way,
+.eg-test-root.eg-qxmd175 .eg-sol-panel.eg-sol-marks-way,
+.eg-sol-panel.eg-sol-marks-way {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 0 12px !important;
+  float: none !important;
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  grid-column: 1 / -1 !important;
+}
+
+/* Never lay out stem+sol as two columns */
+.eg-test-root.eg-sol-showing .eg-q-card,
+.eg-test-root.eg-sol-showing .eg-main {
+  display: block !important;
+  grid-template-columns: none !important;
+}
+
+@media (max-width: 768px) {
+  /* Foot always above solution / keyboard / overflow */
+  .eg-test-root.eg-qxmd175 .eg-foot,
+  .eg-test-root.eg-qxmd175 .eg-foot-practice,
+  .eg-test-root.eg-qxmd175 #egFoot,
+  .eg-test-root.eg-sol-showing.eg-qxmd175 .eg-foot,
+  .eg-test-root.eg-sol-showing.eg-qxmd175 #egFoot {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 2147483000 !important;
+    transform: none !important;
+    overflow: visible !important;
+    clip: auto !important;
+    max-height: none !important;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+    min-height: 64px !important;
+  }
+
+  .eg-test-root.eg-qxmd175 .eg-foot-practice #qxPrevBtn,
+  .eg-test-root.eg-qxmd175 .eg-foot-practice #qxNextBtn,
+  .eg-test-root.eg-qxmd175.eg-sol-showing .eg-foot #qxPrevBtn,
+  .eg-test-root.eg-qxmd175.eg-sol-showing .eg-foot #qxNextBtn {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    min-height: 52px !important;
+    width: 100% !important;
+  }
+
+  /* Clear stays hidden on mobile (qxmd173) */
+  .eg-test-root.eg-qxmd175 .eg-foot-practice .eg-btn-clear,
+  .eg-test-root.eg-qxmd175 .eg-foot-practice #qxClearBtn {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Solution must not cover the foot */
+  .eg-test-root.eg-qxmd175.eg-sol-showing .eg-sol-panel,
+  .eg-test-root.eg-qxmd175.eg-sol-showing .eg-main,
+  .eg-test-root.eg-qxmd175.eg-sol-showing .eg-q-card,
+  .eg-test-root.eg-qxmd175.eg-sol-showing .eg-scroll,
+  .eg-test-root.eg-qxmd175.eg-sol-showing .eg-body {
+    padding-bottom: calc(120px + env(safe-area-inset-bottom, 0px)) !important;
+    margin-bottom: 0 !important;
+  }
+
+  .eg-test-root.eg-qxmd175.eg-sol-showing .eg-sol-panel {
+    max-height: none !important;
+    z-index: 2 !important;
+    overflow: visible !important;
+  }
+}

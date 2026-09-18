@@ -1,10 +1,10 @@
 {
-  "build": "qxmd174",
-  "cache": "qx-pwa-qxmd174",
-  "title": "qxmd174 \u00b7 Fix raw LaTeX ($$ strip) + Existence of Limit load",
-  "body": "Client sanitize no longer strips display $$\u2026$$ (was leaving raw \\mathrm/\\begin{pmatrix}/\\int). Keep TeX \\{ \\} set braces. Topic load: fuzzy Existance/Existence, stubs when filter misses, single empty state. Preview strips bare TeX. No bank rewrite. No Vercel.",
+  "build": "qxmd175",
+  "cache": "qx-pwa-qxmd175",
+  "title": "qxmd175 \u00b7 Marks-way Check Answer + mobile Prev/Next + math typeset",
+  "body": "Check Answer = Marks Practice: stem hides/replaced (no split). Mobile Prev|Next stay visible with safe-area; Clear stays hidden. Client math: keep adjacent $$\u2026$$$$\u2026$$, typeset after Check Answer inject, sol/options/preview hooks. No bank rewrite. No Vercel.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1789706400000
+  "ts": 1789710000000
 }

@@ -4217,18 +4217,32 @@ window.Mx = (() => {
       try { upgradeBareTexInDom(el); } catch (_) { /* */ }
       // Typeset ALL question/option/solution surfaces for uniform math
       const pickMathRoots = () => {
-        const mathRoots = el.querySelectorAll(
+        const SEL =
           ".mtk-q-text, .qx-q-text-only, .qx-q-seg-text, .qx-marks-native-q, " +
           ".qx-question-body, #qzrrQArea, .qzrr-q-area, .qx-prac-q, .allen-q-body, " +
           ".eg-q-stem, #egQArea, .eg-opts, .eg-sol, #egSol, .eg-sol-bottom, " +
+          ".eg-sol-panel, #egSolPanel, .eg-sol-inline, .eg-sol-marks-way, " +
           ".mtk-opt-text, .qx-prac-opt-text, #qaOpts, #qxOpts, .sol-body, .qx-sol-body, " +
           ".mtk-numerical, .qx-opt-text-only, .qx-content, .q-text, .mtk-q, " +
           ".qx-match-item-body, .qx-match-grid, .qx-match-col-body, .qx-given-box, " +
           ".mk-sol-stem, .mk-sol-opt-text, .qc-ex-q, .qc-ex-opts, .qx-sum-card, " +
-          ".qx-formula-card, .qx-rev-card, .qx-bm-q, .seo-q-stem, .q-stem"
-        );
-        // Cap low for first paint / mobile — offscreen roots hydrate later
-        return mathRoots.length ? Array.prototype.slice.call(mathRoots, 0, 16) : [el];
+          ".qx-formula-card, .qx-rev-card, .qx-bm-q, .seo-q-stem, .q-stem, " +
+          ".qx-sol-card, .qx-sol-flow, #qaSolReveal, #qaResult";
+        const mathRoots = el.querySelectorAll(SEL);
+        const list = mathRoots.length ? Array.prototype.slice.call(mathRoots, 0, 24) : [];
+        // qxmd175: when afterRender(solEl) is called on #egSol itself, querySelectorAll
+        // misses the root — always include el if it looks like a math host.
+        try {
+          if (el && el.nodeType === 1) {
+            const id = el.id || "";
+            const cls = el.className && String(el.className) || "";
+            if (/^(egSol|egSolPanel|qaSolReveal|qaResult)$/.test(id) ||
+                /eg-sol|sol-body|qx-sol|qx-content|eg-opts|mtk-opt|eg-q-stem/.test(cls)) {
+              if (list.indexOf(el) < 0) list.unshift(el);
+            }
+          }
+        } catch (_) { /* */ }
+        return list.length ? list : [el];
       };
       const healStemDollarsInDom = () => {
         el.querySelectorAll(".mtk-q-text, .qx-q-seg-text, .qx-marks-native-q, .qx-q-text-only, .qx-given-box, .mtk-opt-text, .qx-prac-opt-text, .eg-q-stem, #egQArea, .eg-sol, #egSol, .mk-sol-stem, .qc-ex-q, .sol-body, .qx-sol-body").forEach((node) => {
@@ -4306,7 +4320,9 @@ window.Mx = (() => {
         .then(() => {
           el.querySelectorAll(
             ".mtk-q-text, .qx-q-seg-text, .qx-marks-native-q, .qx-q-text-only, " +
-            ".mtk-opt-text, .qx-prac-opt-text, .sol-body, .qx-sol-body, .qx-content"
+            ".mtk-opt-text, .qx-prac-opt-text, .sol-body, .qx-sol-body, .qx-content, " +
+            ".eg-sol, #egSol, .eg-sol-inline, .eg-sol-panel, #egSolPanel, " +
+            ".qx-sol-card, .qx-sol-flow, #qaSolReveal, #qaResult, .eg-opts, .mtk-opt-text"
           ).forEach((node) => {
             if (!node || (node.closest && node.closest(".katex, mjx-container"))) return;
             if (node.querySelector && node.querySelector(".katex")) {

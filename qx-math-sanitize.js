@@ -248,7 +248,9 @@
     // Collapse EMPTY math islands only.
     // CRITICAL (qxmd174): never use /\$\s*\$/ — that also matches display "$$…$$" delimiters
     // and strips them, leaving raw \begin{pmatrix} / \mathrm / \int visible sitewide.
-    s = s.replace(/\$\$\s*\$\$/g, "");           // empty display $$ $$
+    // qxmd175: require WHITESPACE inside empty display — /\$\$\s*\$\$/ also matched
+    // the boundary of adjacent blocks $$x$$$$y$$ and glued them into $$xy$$ (raw broken math).
+    s = s.replace(/\$\$[ \t\n\r]+\$\$/g, ""); // empty display $$ $$ only (not adjacent $$$$ )
     s = s.replace(/(^|[^$])\$\s+\$(?!\$)/g, "$1"); // empty inline $  $ (needs whitespace)
     s = s.replace(/\\\(\s*\\\)/g, "");
     s = s.replace(/\\\[\s*\\\]/g, "");
